@@ -84,6 +84,7 @@ func (c *Client) DescribeFinanceFraudUltimateWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeFinanceFraudUltimateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tds", APIVersion, "DescribeFinanceFraudUltimate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFinanceFraudUltimate require credential")
@@ -135,6 +136,7 @@ func (c *Client) DescribeFraudBaseWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeFraudBaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tds", APIVersion, "DescribeFraudBase")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFraudBase require credential")
@@ -186,6 +188,7 @@ func (c *Client) DescribeFraudPremiumWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFraudPremiumRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tds", APIVersion, "DescribeFraudPremium")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFraudPremium require credential")
@@ -237,6 +240,7 @@ func (c *Client) DescribeFraudUltimateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFraudUltimateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tds", APIVersion, "DescribeFraudUltimate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFraudUltimate require credential")
@@ -286,6 +290,7 @@ func (c *Client) DescribeTrustedIDWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeTrustedIDRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tds", APIVersion, "DescribeTrustedID")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrustedID require credential")

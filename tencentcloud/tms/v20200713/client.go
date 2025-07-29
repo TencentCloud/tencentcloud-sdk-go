@@ -104,6 +104,7 @@ func (c *Client) AccountTipoffAccessWithContext(ctx context.Context, request *Ac
     if request == nil {
         request = NewAccountTipoffAccessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tms", APIVersion, "AccountTipoffAccess")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AccountTipoffAccess require credential")
@@ -167,6 +168,7 @@ func (c *Client) DescribeTextLibWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeTextLibRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tms", APIVersion, "DescribeTextLib")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTextLib require credential")
@@ -222,6 +224,7 @@ func (c *Client) DescribeTextStatWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTextStatRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tms", APIVersion, "DescribeTextStat")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTextStat require credential")
@@ -281,6 +284,7 @@ func (c *Client) TextModerationWithContext(ctx context.Context, request *TextMod
     if request == nil {
         request = NewTextModerationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tms", APIVersion, "TextModeration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextModeration require credential")

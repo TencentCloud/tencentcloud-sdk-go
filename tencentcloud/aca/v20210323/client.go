@@ -76,6 +76,7 @@ func (c *Client) GetDrugIndicationsWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetDrugIndicationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aca", APIVersion, "GetDrugIndications")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDrugIndications require credential")
@@ -129,6 +130,7 @@ func (c *Client) LoginHisToolWithContext(ctx context.Context, request *LoginHisT
     if request == nil {
         request = NewLoginHisToolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aca", APIVersion, "LoginHisTool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("LoginHisTool require credential")
@@ -182,6 +184,7 @@ func (c *Client) LoginOutHisToolWithContext(ctx context.Context, request *LoginO
     if request == nil {
         request = NewLoginOutHisToolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aca", APIVersion, "LoginOutHisTool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("LoginOutHisTool require credential")
@@ -235,6 +238,7 @@ func (c *Client) SmartDrugInfoWithContext(ctx context.Context, request *SmartDru
     if request == nil {
         request = NewSmartDrugInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aca", APIVersion, "SmartDrugInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SmartDrugInfo require credential")
@@ -288,6 +292,7 @@ func (c *Client) SmartPredictWithContext(ctx context.Context, request *SmartPred
     if request == nil {
         request = NewSmartPredictRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aca", APIVersion, "SmartPredict")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SmartPredict require credential")
@@ -341,6 +346,7 @@ func (c *Client) SyncDepartmentWithContext(ctx context.Context, request *SyncDep
     if request == nil {
         request = NewSyncDepartmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aca", APIVersion, "SyncDepartment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncDepartment require credential")
@@ -394,6 +400,7 @@ func (c *Client) SyncStandardDictWithContext(ctx context.Context, request *SyncS
     if request == nil {
         request = NewSyncStandardDictRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aca", APIVersion, "SyncStandardDict")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncStandardDict require credential")
@@ -447,6 +454,7 @@ func (c *Client) UploadDrugsWithContext(ctx context.Context, request *UploadDrug
     if request == nil {
         request = NewUploadDrugsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aca", APIVersion, "UploadDrugs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadDrugs require credential")

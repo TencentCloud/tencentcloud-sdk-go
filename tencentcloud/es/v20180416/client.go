@@ -76,6 +76,7 @@ func (c *Client) CheckMigrateIndexMetaDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCheckMigrateIndexMetaDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CheckMigrateIndexMetaData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckMigrateIndexMetaData require credential")
@@ -133,6 +134,7 @@ func (c *Client) CreateClusterSnapshotWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateClusterSnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CreateClusterSnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterSnapshot require credential")
@@ -190,6 +192,7 @@ func (c *Client) CreateCosMigrateToServerlessInstanceWithContext(ctx context.Con
     if request == nil {
         request = NewCreateCosMigrateToServerlessInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CreateCosMigrateToServerlessInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCosMigrateToServerlessInstance require credential")
@@ -255,6 +258,7 @@ func (c *Client) CreateIndexWithContext(ctx context.Context, request *CreateInde
     if request == nil {
         request = NewCreateIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CreateIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIndex require credential")
@@ -390,6 +394,7 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     if request == nil {
         request = NewCreateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CreateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInstance require credential")
@@ -655,6 +660,7 @@ func (c *Client) CreateLogstashInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateLogstashInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CreateLogstashInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLogstashInstance require credential")
@@ -746,6 +752,7 @@ func (c *Client) CreateServerlessInstanceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateServerlessInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CreateServerlessInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateServerlessInstance require credential")
@@ -839,6 +846,7 @@ func (c *Client) CreateServerlessSpaceV2WithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateServerlessSpaceV2Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CreateServerlessSpaceV2")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateServerlessSpaceV2 require credential")
@@ -932,6 +940,7 @@ func (c *Client) DeleteClusterSnapshotWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteClusterSnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DeleteClusterSnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterSnapshot require credential")
@@ -993,6 +1002,7 @@ func (c *Client) DeleteIndexWithContext(ctx context.Context, request *DeleteInde
     if request == nil {
         request = NewDeleteIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DeleteIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIndex require credential")
@@ -1062,6 +1072,7 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
     if request == nil {
         request = NewDeleteInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DeleteInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteInstance require credential")
@@ -1117,6 +1128,7 @@ func (c *Client) DeleteLogstashInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteLogstashInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DeleteLogstashInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLogstashInstance require credential")
@@ -1170,6 +1182,7 @@ func (c *Client) DeleteLogstashPipelinesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteLogstashPipelinesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DeleteLogstashPipelines")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLogstashPipelines require credential")
@@ -1247,6 +1260,7 @@ func (c *Client) DeleteServerlessInstanceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteServerlessInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DeleteServerlessInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteServerlessInstance require credential")
@@ -1330,6 +1344,7 @@ func (c *Client) DeleteServerlessSpaceUserWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteServerlessSpaceUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DeleteServerlessSpaceUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteServerlessSpaceUser require credential")
@@ -1379,6 +1394,7 @@ func (c *Client) DescribeClusterSnapshotWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeClusterSnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeClusterSnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterSnapshot require credential")
@@ -1442,6 +1458,7 @@ func (c *Client) DescribeDiagnoseWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeDiagnoseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeDiagnose")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDiagnose require credential")
@@ -1505,6 +1522,7 @@ func (c *Client) DescribeIndexListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeIndexListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeIndexList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIndexList require credential")
@@ -1568,6 +1586,7 @@ func (c *Client) DescribeIndexMetaWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeIndexMetaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeIndexMeta")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIndexMeta require credential")
@@ -1641,6 +1660,7 @@ func (c *Client) DescribeInstanceLogsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeInstanceLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeInstanceLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceLogs require credential")
@@ -1700,6 +1720,7 @@ func (c *Client) DescribeInstanceOperationsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstanceOperationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeInstanceOperations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceOperations require credential")
@@ -1757,6 +1778,7 @@ func (c *Client) DescribeInstancePluginListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstancePluginListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeInstancePluginList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstancePluginList require credential")
@@ -1840,6 +1862,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -1899,6 +1922,7 @@ func (c *Client) DescribeLogstashInstanceLogsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeLogstashInstanceLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeLogstashInstanceLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogstashInstanceLogs require credential")
@@ -1952,6 +1976,7 @@ func (c *Client) DescribeLogstashInstanceOperationsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeLogstashInstanceOperationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeLogstashInstanceOperations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogstashInstanceOperations require credential")
@@ -2005,6 +2030,7 @@ func (c *Client) DescribeLogstashInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeLogstashInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeLogstashInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogstashInstances require credential")
@@ -2056,6 +2082,7 @@ func (c *Client) DescribeLogstashPipelinesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeLogstashPipelinesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeLogstashPipelines")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogstashPipelines require credential")
@@ -2145,6 +2172,7 @@ func (c *Client) DescribeServerlessInstancesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeServerlessInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeServerlessInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServerlessInstances require credential")
@@ -2200,6 +2228,7 @@ func (c *Client) DescribeServerlessMetricsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeServerlessMetricsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeServerlessMetrics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServerlessMetrics require credential")
@@ -2287,6 +2316,7 @@ func (c *Client) DescribeServerlessSpaceUserWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeServerlessSpaceUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeServerlessSpaceUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServerlessSpaceUser require credential")
@@ -2368,6 +2398,7 @@ func (c *Client) DescribeServerlessSpacesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeServerlessSpacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeServerlessSpaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServerlessSpaces require credential")
@@ -2417,6 +2448,7 @@ func (c *Client) DescribeSpaceKibanaToolsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSpaceKibanaToolsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeSpaceKibanaTools")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSpaceKibanaTools require credential")
@@ -2468,6 +2500,7 @@ func (c *Client) DescribeUserCosSnapshotListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeUserCosSnapshotListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeUserCosSnapshotList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserCosSnapshotList require credential")
@@ -2533,6 +2566,7 @@ func (c *Client) DescribeViewsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeViewsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeViews")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeViews require credential")
@@ -2602,6 +2636,7 @@ func (c *Client) DiagnoseInstanceWithContext(ctx context.Context, request *Diagn
     if request == nil {
         request = NewDiagnoseInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DiagnoseInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DiagnoseInstance require credential")
@@ -2661,6 +2696,7 @@ func (c *Client) GetDiagnoseSettingsWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetDiagnoseSettingsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "GetDiagnoseSettings")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDiagnoseSettings require credential")
@@ -2720,6 +2756,7 @@ func (c *Client) GetRequestTargetNodeTypesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewGetRequestTargetNodeTypesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "GetRequestTargetNodeTypes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRequestTargetNodeTypes require credential")
@@ -2777,6 +2814,7 @@ func (c *Client) InquirePriceRenewInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewInquirePriceRenewInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "InquirePriceRenewInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquirePriceRenewInstance require credential")
@@ -2834,6 +2872,7 @@ func (c *Client) InstallInstanceModelWithContext(ctx context.Context, request *I
     if request == nil {
         request = NewInstallInstanceModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "InstallInstanceModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InstallInstanceModel require credential")
@@ -2893,6 +2932,7 @@ func (c *Client) ModifyEsVipSecurityGroupWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyEsVipSecurityGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ModifyEsVipSecurityGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEsVipSecurityGroup require credential")
@@ -2972,6 +3012,7 @@ func (c *Client) RestartInstanceWithContext(ctx context.Context, request *Restar
     if request == nil {
         request = NewRestartInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "RestartInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartInstance require credential")
@@ -3033,6 +3074,7 @@ func (c *Client) RestartKibanaWithContext(ctx context.Context, request *RestartK
     if request == nil {
         request = NewRestartKibanaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "RestartKibana")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartKibana require credential")
@@ -3090,6 +3132,7 @@ func (c *Client) RestartLogstashInstanceWithContext(ctx context.Context, request
     if request == nil {
         request = NewRestartLogstashInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "RestartLogstashInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartLogstashInstance require credential")
@@ -3179,6 +3222,7 @@ func (c *Client) RestartNodesWithContext(ctx context.Context, request *RestartNo
     if request == nil {
         request = NewRestartNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "RestartNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartNodes require credential")
@@ -3232,6 +3276,7 @@ func (c *Client) RestoreClusterSnapshotWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRestoreClusterSnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "RestoreClusterSnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestoreClusterSnapshot require credential")
@@ -3281,6 +3326,7 @@ func (c *Client) SaveAndDeployLogstashPipelineWithContext(ctx context.Context, r
     if request == nil {
         request = NewSaveAndDeployLogstashPipelineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "SaveAndDeployLogstashPipeline")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SaveAndDeployLogstashPipeline require credential")
@@ -3334,6 +3380,7 @@ func (c *Client) StartLogstashPipelinesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewStartLogstashPipelinesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "StartLogstashPipelines")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartLogstashPipelines require credential")
@@ -3387,6 +3434,7 @@ func (c *Client) StopLogstashPipelinesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewStopLogstashPipelinesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "StopLogstashPipelines")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopLogstashPipelines require credential")
@@ -3448,6 +3496,7 @@ func (c *Client) UpdateDiagnoseSettingsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateDiagnoseSettingsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateDiagnoseSettings")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDiagnoseSettings require credential")
@@ -3529,6 +3578,7 @@ func (c *Client) UpdateDictionariesWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateDictionariesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateDictionaries")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDictionaries require credential")
@@ -3596,6 +3646,7 @@ func (c *Client) UpdateIndexWithContext(ctx context.Context, request *UpdateInde
     if request == nil {
         request = NewUpdateIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateIndex require credential")
@@ -3813,6 +3864,7 @@ func (c *Client) UpdateInstanceWithContext(ctx context.Context, request *UpdateI
     if request == nil {
         request = NewUpdateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateInstance require credential")
@@ -3882,6 +3934,7 @@ func (c *Client) UpdateJdkWithContext(ctx context.Context, request *UpdateJdkReq
     if request == nil {
         request = NewUpdateJdkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateJdk")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateJdk require credential")
@@ -3973,6 +4026,7 @@ func (c *Client) UpdateLogstashInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateLogstashInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateLogstashInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateLogstashInstance require credential")
@@ -4026,6 +4080,7 @@ func (c *Client) UpdateLogstashPipelineDescWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateLogstashPipelineDescRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateLogstashPipelineDesc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateLogstashPipelineDesc require credential")
@@ -4111,6 +4166,7 @@ func (c *Client) UpdatePluginsWithContext(ctx context.Context, request *UpdatePl
     if request == nil {
         request = NewUpdatePluginsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdatePlugins")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdatePlugins require credential")
@@ -4174,6 +4230,7 @@ func (c *Client) UpdateRequestTargetNodeTypesWithContext(ctx context.Context, re
     if request == nil {
         request = NewUpdateRequestTargetNodeTypesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateRequestTargetNodeTypes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateRequestTargetNodeTypes require credential")
@@ -4275,6 +4332,7 @@ func (c *Client) UpdateServerlessInstanceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUpdateServerlessInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateServerlessInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateServerlessInstance require credential")
@@ -4368,6 +4426,7 @@ func (c *Client) UpdateServerlessSpaceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewUpdateServerlessSpaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateServerlessSpace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateServerlessSpace require credential")
@@ -4467,6 +4526,7 @@ func (c *Client) UpgradeInstanceWithContext(ctx context.Context, request *Upgrad
     if request == nil {
         request = NewUpgradeInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpgradeInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradeInstance require credential")
@@ -4606,6 +4666,7 @@ func (c *Client) UpgradeLicenseWithContext(ctx context.Context, request *Upgrade
     if request == nil {
         request = NewUpgradeLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpgradeLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradeLicense require credential")

@@ -76,6 +76,7 @@ func (c *Client) CreateSavingPlanOrderWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateSavingPlanOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "svp", APIVersion, "CreateSavingPlanOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSavingPlanOrder require credential")
@@ -127,6 +128,7 @@ func (c *Client) DescribeSavingPlanCoverageWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeSavingPlanCoverageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "svp", APIVersion, "DescribeSavingPlanCoverage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSavingPlanCoverage require credential")
@@ -176,6 +178,7 @@ func (c *Client) DescribeSavingPlanDeductWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSavingPlanDeductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "svp", APIVersion, "DescribeSavingPlanDeduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSavingPlanDeduct require credential")
@@ -225,6 +228,7 @@ func (c *Client) DescribeSavingPlanOverviewWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeSavingPlanOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "svp", APIVersion, "DescribeSavingPlanOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSavingPlanOverview require credential")
@@ -274,6 +278,7 @@ func (c *Client) DescribeSavingPlanUsageWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSavingPlanUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "svp", APIVersion, "DescribeSavingPlanUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSavingPlanUsage require credential")

@@ -90,6 +90,7 @@ func (c *Client) BatchDescribeOrderCertificateWithContext(ctx context.Context, r
     if request == nil {
         request = NewBatchDescribeOrderCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ape", APIVersion, "BatchDescribeOrderCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchDescribeOrderCertificate require credential")
@@ -149,6 +150,7 @@ func (c *Client) BatchDescribeOrderImageWithContext(ctx context.Context, request
     if request == nil {
         request = NewBatchDescribeOrderImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ape", APIVersion, "BatchDescribeOrderImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchDescribeOrderImage require credential")
@@ -206,6 +208,7 @@ func (c *Client) CreateOrderAndDownloadsWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateOrderAndDownloadsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ape", APIVersion, "CreateOrderAndDownloads")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrderAndDownloads require credential")
@@ -269,6 +272,7 @@ func (c *Client) CreateOrderAndPayWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateOrderAndPayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ape", APIVersion, "CreateOrderAndPay")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrderAndPay require credential")
@@ -322,6 +326,7 @@ func (c *Client) DescribeAuthUsersWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAuthUsersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ape", APIVersion, "DescribeAuthUsers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuthUsers require credential")
@@ -373,6 +378,7 @@ func (c *Client) DescribeDownloadInfosWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDownloadInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ape", APIVersion, "DescribeDownloadInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDownloadInfos require credential")
@@ -436,6 +442,7 @@ func (c *Client) DescribeImageWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ape", APIVersion, "DescribeImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImage require credential")
@@ -495,6 +502,7 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ape", APIVersion, "DescribeImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImages require credential")

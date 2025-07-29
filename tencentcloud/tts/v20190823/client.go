@@ -226,6 +226,7 @@ func (c *Client) CreateTtsTaskWithContext(ctx context.Context, request *CreateTt
     if request == nil {
         request = NewCreateTtsTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tts", APIVersion, "CreateTtsTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTtsTask require credential")
@@ -363,6 +364,7 @@ func (c *Client) DescribeTtsTaskStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTtsTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tts", APIVersion, "DescribeTtsTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTtsTaskStatus require credential")
@@ -512,6 +514,7 @@ func (c *Client) TextToVoiceWithContext(ctx context.Context, request *TextToVoic
     if request == nil {
         request = NewTextToVoiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tts", APIVersion, "TextToVoice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextToVoice require credential")

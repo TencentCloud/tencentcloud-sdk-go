@@ -104,6 +104,7 @@ func (c *Client) DescribeMaterialListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMaterialListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "facefusion", APIVersion, "DescribeMaterialList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMaterialList require credential")
@@ -223,6 +224,7 @@ func (c *Client) FuseFaceWithContext(ctx context.Context, request *FuseFaceReque
     if request == nil {
         request = NewFuseFaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "facefusion", APIVersion, "FuseFace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FuseFace require credential")
@@ -332,6 +334,7 @@ func (c *Client) FuseFaceUltraWithContext(ctx context.Context, request *FuseFace
     if request == nil {
         request = NewFuseFaceUltraRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "facefusion", APIVersion, "FuseFaceUltra")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FuseFaceUltra require credential")

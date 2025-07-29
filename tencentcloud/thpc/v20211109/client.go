@@ -92,6 +92,7 @@ func (c *Client) BindAutoScalingGroupWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBindAutoScalingGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "BindAutoScalingGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindAutoScalingGroup require credential")
@@ -153,6 +154,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "CreateCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCluster require credential")
@@ -206,6 +208,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DeleteCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCluster require credential")
@@ -255,6 +258,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusters require credential")

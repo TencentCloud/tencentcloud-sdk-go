@@ -162,6 +162,7 @@ func (c *Client) GetAntiFraudVipWithContext(ctx context.Context, request *GetAnt
     if request == nil {
         request = NewGetAntiFraudVipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "afc", APIVersion, "GetAntiFraudVip")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAntiFraudVip require credential")
@@ -257,6 +258,7 @@ func (c *Client) QueryAntiFraudVipWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryAntiFraudVipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "afc", APIVersion, "QueryAntiFraudVip")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryAntiFraudVip require credential")
@@ -344,6 +346,7 @@ func (c *Client) TransportGeneralInterfaceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewTransportGeneralInterfaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "afc", APIVersion, "TransportGeneralInterface")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TransportGeneralInterface require credential")

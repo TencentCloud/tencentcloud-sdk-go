@@ -86,6 +86,7 @@ func (c *Client) DescribeCloudDedicatedZoneHostsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeCloudDedicatedZoneHostsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdz", APIVersion, "DescribeCloudDedicatedZoneHosts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudDedicatedZoneHosts require credential")
@@ -135,6 +136,7 @@ func (c *Client) DescribeCloudDedicatedZoneResourceSummaryWithContext(ctx contex
     if request == nil {
         request = NewDescribeCloudDedicatedZoneResourceSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdz", APIVersion, "DescribeCloudDedicatedZoneResourceSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudDedicatedZoneResourceSummary require credential")

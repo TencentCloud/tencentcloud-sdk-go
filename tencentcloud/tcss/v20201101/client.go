@@ -94,6 +94,7 @@ func (c *Client) AddAndPublishNetworkFirewallPolicyDetailWithContext(ctx context
     if request == nil {
         request = NewAddAndPublishNetworkFirewallPolicyDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddAndPublishNetworkFirewallPolicyDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddAndPublishNetworkFirewallPolicyDetail require credential")
@@ -155,6 +156,7 @@ func (c *Client) AddAndPublishNetworkFirewallPolicyYamlDetailWithContext(ctx con
     if request == nil {
         request = NewAddAndPublishNetworkFirewallPolicyYamlDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddAndPublishNetworkFirewallPolicyYamlDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddAndPublishNetworkFirewallPolicyYamlDetail require credential")
@@ -220,6 +222,7 @@ func (c *Client) AddAssetImageRegistryRegistryDetailWithContext(ctx context.Cont
     if request == nil {
         request = NewAddAssetImageRegistryRegistryDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddAssetImageRegistryRegistryDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddAssetImageRegistryRegistryDetail require credential")
@@ -285,6 +288,7 @@ func (c *Client) AddComplianceAssetPolicySetToWhitelistWithContext(ctx context.C
     if request == nil {
         request = NewAddComplianceAssetPolicySetToWhitelistRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddComplianceAssetPolicySetToWhitelist")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddComplianceAssetPolicySetToWhitelist require credential")
@@ -350,6 +354,7 @@ func (c *Client) AddCompliancePolicyAssetSetToWhitelistWithContext(ctx context.C
     if request == nil {
         request = NewAddCompliancePolicyAssetSetToWhitelistRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddCompliancePolicyAssetSetToWhitelist")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddCompliancePolicyAssetSetToWhitelist require credential")
@@ -411,6 +416,7 @@ func (c *Client) AddCompliancePolicyItemToWhitelistWithContext(ctx context.Conte
     if request == nil {
         request = NewAddCompliancePolicyItemToWhitelistRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddCompliancePolicyItemToWhitelist")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddCompliancePolicyItemToWhitelist require credential")
@@ -486,6 +492,7 @@ func (c *Client) AddEditAbnormalProcessRuleWithContext(ctx context.Context, requ
     if request == nil {
         request = NewAddEditAbnormalProcessRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddEditAbnormalProcessRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddEditAbnormalProcessRule require credential")
@@ -559,6 +566,7 @@ func (c *Client) AddEditAccessControlRuleWithContext(ctx context.Context, reques
     if request == nil {
         request = NewAddEditAccessControlRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddEditAccessControlRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddEditAccessControlRule require credential")
@@ -628,6 +636,7 @@ func (c *Client) AddEditImageAutoAuthorizedRuleWithContext(ctx context.Context, 
     if request == nil {
         request = NewAddEditImageAutoAuthorizedRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddEditImageAutoAuthorizedRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddEditImageAutoAuthorizedRule require credential")
@@ -707,6 +716,7 @@ func (c *Client) AddEditReverseShellWhiteListWithContext(ctx context.Context, re
     if request == nil {
         request = NewAddEditReverseShellWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddEditReverseShellWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddEditReverseShellWhiteList require credential")
@@ -780,6 +790,7 @@ func (c *Client) AddEditRiskSyscallWhiteListWithContext(ctx context.Context, req
     if request == nil {
         request = NewAddEditRiskSyscallWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddEditRiskSyscallWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddEditRiskSyscallWhiteList require credential")
@@ -833,6 +844,7 @@ func (c *Client) AddEditWarningRulesWithContext(ctx context.Context, request *Ad
     if request == nil {
         request = NewAddEditWarningRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddEditWarningRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddEditWarningRules require credential")
@@ -898,6 +910,7 @@ func (c *Client) AddEscapeWhiteListWithContext(ctx context.Context, request *Add
     if request == nil {
         request = NewAddEscapeWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddEscapeWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddEscapeWhiteList require credential")
@@ -965,6 +978,7 @@ func (c *Client) AddIgnoreVulWithContext(ctx context.Context, request *AddIgnore
     if request == nil {
         request = NewAddIgnoreVulRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddIgnoreVul")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddIgnoreVul require credential")
@@ -1026,6 +1040,7 @@ func (c *Client) AddNetworkFirewallPolicyDetailWithContext(ctx context.Context, 
     if request == nil {
         request = NewAddNetworkFirewallPolicyDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddNetworkFirewallPolicyDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddNetworkFirewallPolicyDetail require credential")
@@ -1087,6 +1102,7 @@ func (c *Client) AddNetworkFirewallPolicyYamlDetailWithContext(ctx context.Conte
     if request == nil {
         request = NewAddNetworkFirewallPolicyYamlDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddNetworkFirewallPolicyYamlDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddNetworkFirewallPolicyYamlDetail require credential")
@@ -1148,6 +1164,7 @@ func (c *Client) CheckNetworkFirewallPolicyYamlWithContext(ctx context.Context, 
     if request == nil {
         request = NewCheckNetworkFirewallPolicyYamlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CheckNetworkFirewallPolicyYaml")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckNetworkFirewallPolicyYaml require credential")
@@ -1213,6 +1230,7 @@ func (c *Client) CheckRepeatAssetImageRegistryWithContext(ctx context.Context, r
     if request == nil {
         request = NewCheckRepeatAssetImageRegistryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CheckRepeatAssetImageRegistry")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckRepeatAssetImageRegistry require credential")
@@ -1274,6 +1292,7 @@ func (c *Client) ConfirmNetworkFirewallPolicyWithContext(ctx context.Context, re
     if request == nil {
         request = NewConfirmNetworkFirewallPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ConfirmNetworkFirewallPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ConfirmNetworkFirewallPolicy require credential")
@@ -1325,6 +1344,7 @@ func (c *Client) CreateAbnormalProcessRulesExportJobWithContext(ctx context.Cont
     if request == nil {
         request = NewCreateAbnormalProcessRulesExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateAbnormalProcessRulesExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAbnormalProcessRulesExportJob require credential")
@@ -1376,6 +1396,7 @@ func (c *Client) CreateAccessControlsRuleExportJobWithContext(ctx context.Contex
     if request == nil {
         request = NewCreateAccessControlsRuleExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateAccessControlsRuleExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAccessControlsRuleExportJob require credential")
@@ -1429,6 +1450,7 @@ func (c *Client) CreateAssetImageRegistryScanTaskWithContext(ctx context.Context
     if request == nil {
         request = NewCreateAssetImageRegistryScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateAssetImageRegistryScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAssetImageRegistryScanTask require credential")
@@ -1482,6 +1504,7 @@ func (c *Client) CreateAssetImageRegistryScanTaskOneKeyWithContext(ctx context.C
     if request == nil {
         request = NewCreateAssetImageRegistryScanTaskOneKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateAssetImageRegistryScanTaskOneKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAssetImageRegistryScanTaskOneKey require credential")
@@ -1539,6 +1562,7 @@ func (c *Client) CreateAssetImageScanSettingWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateAssetImageScanSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateAssetImageScanSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAssetImageScanSetting require credential")
@@ -1598,6 +1622,7 @@ func (c *Client) CreateAssetImageScanTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAssetImageScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateAssetImageScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAssetImageScanTask require credential")
@@ -1661,6 +1686,7 @@ func (c *Client) CreateAssetImageVirusExportJobWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateAssetImageVirusExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateAssetImageVirusExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAssetImageVirusExportJob require credential")
@@ -1722,6 +1748,7 @@ func (c *Client) CreateCheckComponentWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateCheckComponentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateCheckComponent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCheckComponent require credential")
@@ -1783,6 +1810,7 @@ func (c *Client) CreateClusterCheckTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateClusterCheckTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateClusterCheckTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterCheckTask require credential")
@@ -1846,6 +1874,7 @@ func (c *Client) CreateComplianceTaskWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateComplianceTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateComplianceTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateComplianceTask require credential")
@@ -1913,6 +1942,7 @@ func (c *Client) CreateComponentExportJobWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateComponentExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateComponentExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateComponentExportJob require credential")
@@ -1976,6 +2006,7 @@ func (c *Client) CreateDefenceVulExportJobWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateDefenceVulExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateDefenceVulExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDefenceVulExportJob require credential")
@@ -2039,6 +2070,7 @@ func (c *Client) CreateEmergencyVulExportJobWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateEmergencyVulExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateEmergencyVulExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEmergencyVulExportJob require credential")
@@ -2106,6 +2138,7 @@ func (c *Client) CreateEscapeEventsExportJobWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateEscapeEventsExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateEscapeEventsExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEscapeEventsExportJob require credential")
@@ -2173,6 +2206,7 @@ func (c *Client) CreateEscapeWhiteListExportJobWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateEscapeWhiteListExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateEscapeWhiteListExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEscapeWhiteListExportJob require credential")
@@ -2234,6 +2268,7 @@ func (c *Client) CreateExportComplianceStatusListJobWithContext(ctx context.Cont
     if request == nil {
         request = NewCreateExportComplianceStatusListJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateExportComplianceStatusListJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateExportComplianceStatusListJob require credential")
@@ -2297,6 +2332,7 @@ func (c *Client) CreateHostExportJobWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateHostExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateHostExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateHostExportJob require credential")
@@ -2348,6 +2384,7 @@ func (c *Client) CreateImageExportJobWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateImageExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateImageExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateImageExportJob require credential")
@@ -2399,6 +2436,7 @@ func (c *Client) CreateK8sApiAbnormalEventExportJobWithContext(ctx context.Conte
     if request == nil {
         request = NewCreateK8sApiAbnormalEventExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateK8sApiAbnormalEventExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateK8sApiAbnormalEventExportJob require credential")
@@ -2450,6 +2488,7 @@ func (c *Client) CreateK8sApiAbnormalRuleExportJobWithContext(ctx context.Contex
     if request == nil {
         request = NewCreateK8sApiAbnormalRuleExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateK8sApiAbnormalRuleExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateK8sApiAbnormalRuleExportJob require credential")
@@ -2501,6 +2540,7 @@ func (c *Client) CreateK8sApiAbnormalRuleInfoWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateK8sApiAbnormalRuleInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateK8sApiAbnormalRuleInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateK8sApiAbnormalRuleInfo require credential")
@@ -2562,6 +2602,7 @@ func (c *Client) CreateNetworkFirewallClusterRefreshWithContext(ctx context.Cont
     if request == nil {
         request = NewCreateNetworkFirewallClusterRefreshRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateNetworkFirewallClusterRefresh")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNetworkFirewallClusterRefresh require credential")
@@ -2623,6 +2664,7 @@ func (c *Client) CreateNetworkFirewallPolicyDiscoverWithContext(ctx context.Cont
     if request == nil {
         request = NewCreateNetworkFirewallPolicyDiscoverRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateNetworkFirewallPolicyDiscover")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNetworkFirewallPolicyDiscover require credential")
@@ -2684,6 +2726,7 @@ func (c *Client) CreateNetworkFirewallPublishWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateNetworkFirewallPublishRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateNetworkFirewallPublish")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNetworkFirewallPublish require credential")
@@ -2745,6 +2788,7 @@ func (c *Client) CreateNetworkFirewallUndoPublishWithContext(ctx context.Context
     if request == nil {
         request = NewCreateNetworkFirewallUndoPublishRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateNetworkFirewallUndoPublish")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNetworkFirewallUndoPublish require credential")
@@ -2800,6 +2844,7 @@ func (c *Client) CreateOrModifyPostPayCoresWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateOrModifyPostPayCoresRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateOrModifyPostPayCores")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrModifyPostPayCores require credential")
@@ -2859,6 +2904,7 @@ func (c *Client) CreateProcessEventsExportJobWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateProcessEventsExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateProcessEventsExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProcessEventsExportJob require credential")
@@ -2920,6 +2966,7 @@ func (c *Client) CreateRefreshTaskWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateRefreshTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateRefreshTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRefreshTask require credential")
@@ -2987,6 +3034,7 @@ func (c *Client) CreateRiskDnsEventExportJobWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateRiskDnsEventExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateRiskDnsEventExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRiskDnsEventExportJob require credential")
@@ -3040,6 +3088,7 @@ func (c *Client) CreateSearchTemplateWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateSearchTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateSearchTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSearchTemplate require credential")
@@ -3105,6 +3154,7 @@ func (c *Client) CreateSystemVulExportJobWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateSystemVulExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateSystemVulExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSystemVulExportJob require credential")
@@ -3168,6 +3218,7 @@ func (c *Client) CreateVirusScanAgainWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateVirusScanAgainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateVirusScanAgain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVirusScanAgain require credential")
@@ -3223,6 +3274,7 @@ func (c *Client) CreateVirusScanTaskWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateVirusScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateVirusScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVirusScanTask require credential")
@@ -3290,6 +3342,7 @@ func (c *Client) CreateVulContainerExportJobWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateVulContainerExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateVulContainerExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVulContainerExportJob require credential")
@@ -3359,6 +3412,7 @@ func (c *Client) CreateVulDefenceEventExportJobWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateVulDefenceEventExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateVulDefenceEventExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVulDefenceEventExportJob require credential")
@@ -3428,6 +3482,7 @@ func (c *Client) CreateVulDefenceHostExportJobWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateVulDefenceHostExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateVulDefenceHostExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVulDefenceHostExportJob require credential")
@@ -3495,6 +3550,7 @@ func (c *Client) CreateVulExportJobWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateVulExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateVulExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVulExportJob require credential")
@@ -3560,6 +3616,7 @@ func (c *Client) CreateVulImageExportJobWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateVulImageExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateVulImageExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVulImageExportJob require credential")
@@ -3629,6 +3686,7 @@ func (c *Client) CreateVulScanTaskWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateVulScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateVulScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVulScanTask require credential")
@@ -3692,6 +3750,7 @@ func (c *Client) CreateWebVulExportJobWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateWebVulExportJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateWebVulExportJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWebVulExportJob require credential")
@@ -3753,6 +3812,7 @@ func (c *Client) DeleteAbnormalProcessRulesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteAbnormalProcessRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteAbnormalProcessRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAbnormalProcessRules require credential")
@@ -3814,6 +3874,7 @@ func (c *Client) DeleteAccessControlRulesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteAccessControlRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteAccessControlRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAccessControlRules require credential")
@@ -3879,6 +3940,7 @@ func (c *Client) DeleteComplianceAssetPolicySetFromWhitelistWithContext(ctx cont
     if request == nil {
         request = NewDeleteComplianceAssetPolicySetFromWhitelistRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteComplianceAssetPolicySetFromWhitelist")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteComplianceAssetPolicySetFromWhitelist require credential")
@@ -3940,6 +4002,7 @@ func (c *Client) DeleteCompliancePolicyAssetSetFromWhitelistWithContext(ctx cont
     if request == nil {
         request = NewDeleteCompliancePolicyAssetSetFromWhitelistRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteCompliancePolicyAssetSetFromWhitelist")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCompliancePolicyAssetSetFromWhitelist require credential")
@@ -4007,6 +4070,7 @@ func (c *Client) DeleteCompliancePolicyItemFromWhitelistWithContext(ctx context.
     if request == nil {
         request = NewDeleteCompliancePolicyItemFromWhitelistRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteCompliancePolicyItemFromWhitelist")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCompliancePolicyItemFromWhitelist require credential")
@@ -4074,6 +4138,7 @@ func (c *Client) DeleteEscapeWhiteListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteEscapeWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteEscapeWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEscapeWhiteList require credential")
@@ -4141,6 +4206,7 @@ func (c *Client) DeleteIgnoreVulWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteIgnoreVulRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteIgnoreVul")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIgnoreVul require credential")
@@ -4192,6 +4258,7 @@ func (c *Client) DeleteK8sApiAbnormalRuleWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteK8sApiAbnormalRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteK8sApiAbnormalRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteK8sApiAbnormalRule require credential")
@@ -4261,6 +4328,7 @@ func (c *Client) DeleteMachineWithContext(ctx context.Context, request *DeleteMa
     if request == nil {
         request = NewDeleteMachineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteMachine")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMachine require credential")
@@ -4322,6 +4390,7 @@ func (c *Client) DeleteNetworkFirewallPolicyDetailWithContext(ctx context.Contex
     if request == nil {
         request = NewDeleteNetworkFirewallPolicyDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteNetworkFirewallPolicyDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNetworkFirewallPolicyDetail require credential")
@@ -4385,6 +4454,7 @@ func (c *Client) DeleteRaspRulesWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteRaspRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteRaspRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRaspRules require credential")
@@ -4444,6 +4514,7 @@ func (c *Client) DeleteReverseShellEventsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteReverseShellEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteReverseShellEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteReverseShellEvents require credential")
@@ -4503,6 +4574,7 @@ func (c *Client) DeleteReverseShellWhiteListsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteReverseShellWhiteListsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteReverseShellWhiteLists")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteReverseShellWhiteLists require credential")
@@ -4562,6 +4634,7 @@ func (c *Client) DeleteRiskSyscallEventsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteRiskSyscallEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteRiskSyscallEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRiskSyscallEvents require credential")
@@ -4621,6 +4694,7 @@ func (c *Client) DeleteRiskSyscallWhiteListsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteRiskSyscallWhiteListsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteRiskSyscallWhiteLists")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRiskSyscallWhiteLists require credential")
@@ -4674,6 +4748,7 @@ func (c *Client) DeleteSearchTemplateWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteSearchTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteSearchTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSearchTemplate require credential")
@@ -4725,6 +4800,7 @@ func (c *Client) DescribeABTestConfigWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeABTestConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeABTestConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeABTestConfig require credential")
@@ -4788,6 +4864,7 @@ func (c *Client) DescribeAbnormalProcessDetailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAbnormalProcessDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAbnormalProcessDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAbnormalProcessDetail require credential")
@@ -4851,6 +4928,7 @@ func (c *Client) DescribeAbnormalProcessEventTendencyWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeAbnormalProcessEventTendencyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAbnormalProcessEventTendency")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAbnormalProcessEventTendency require credential")
@@ -4912,6 +4990,7 @@ func (c *Client) DescribeAbnormalProcessEventsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAbnormalProcessEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAbnormalProcessEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAbnormalProcessEvents require credential")
@@ -4971,6 +5050,7 @@ func (c *Client) DescribeAbnormalProcessLevelSummaryWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeAbnormalProcessLevelSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAbnormalProcessLevelSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAbnormalProcessLevelSummary require credential")
@@ -5034,6 +5114,7 @@ func (c *Client) DescribeAbnormalProcessRuleDetailWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAbnormalProcessRuleDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAbnormalProcessRuleDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAbnormalProcessRuleDetail require credential")
@@ -5095,6 +5176,7 @@ func (c *Client) DescribeAbnormalProcessRulesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAbnormalProcessRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAbnormalProcessRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAbnormalProcessRules require credential")
@@ -5160,6 +5242,7 @@ func (c *Client) DescribeAccessControlDetailWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAccessControlDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAccessControlDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessControlDetail require credential")
@@ -5221,6 +5304,7 @@ func (c *Client) DescribeAccessControlEventsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAccessControlEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAccessControlEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessControlEvents require credential")
@@ -5282,6 +5366,7 @@ func (c *Client) DescribeAccessControlEventsExportWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAccessControlEventsExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAccessControlEventsExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessControlEventsExport require credential")
@@ -5345,6 +5430,7 @@ func (c *Client) DescribeAccessControlRuleDetailWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeAccessControlRuleDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAccessControlRuleDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessControlRuleDetail require credential")
@@ -5406,6 +5492,7 @@ func (c *Client) DescribeAccessControlRulesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAccessControlRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAccessControlRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessControlRules require credential")
@@ -5467,6 +5554,7 @@ func (c *Client) DescribeAffectedClusterCountWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAffectedClusterCountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAffectedClusterCount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAffectedClusterCount require credential")
@@ -5528,6 +5616,7 @@ func (c *Client) DescribeAffectedNodeListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAffectedNodeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAffectedNodeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAffectedNodeList require credential")
@@ -5589,6 +5678,7 @@ func (c *Client) DescribeAffectedWorkloadListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAffectedWorkloadListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAffectedWorkloadList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAffectedWorkloadList require credential")
@@ -5658,6 +5748,7 @@ func (c *Client) DescribeAgentDaemonSetCmdWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAgentDaemonSetCmdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAgentDaemonSetCmd")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAgentDaemonSetCmd require credential")
@@ -5727,6 +5818,7 @@ func (c *Client) DescribeAgentInstallCommandWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAgentInstallCommandRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAgentInstallCommand")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAgentInstallCommand require credential")
@@ -5782,6 +5874,7 @@ func (c *Client) DescribeAssetAppServiceListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAssetAppServiceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetAppServiceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetAppServiceList require credential")
@@ -5833,6 +5926,7 @@ func (c *Client) DescribeAssetClusterListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAssetClusterListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetClusterList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetClusterList require credential")
@@ -5888,6 +5982,7 @@ func (c *Client) DescribeAssetComponentListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetComponentListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetComponentList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetComponentList require credential")
@@ -5943,6 +6038,7 @@ func (c *Client) DescribeAssetContainerDetailWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAssetContainerDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetContainerDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetContainerDetail require credential")
@@ -5998,6 +6094,7 @@ func (c *Client) DescribeAssetContainerListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetContainerListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetContainerList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetContainerList require credential")
@@ -6053,6 +6150,7 @@ func (c *Client) DescribeAssetDBServiceListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetDBServiceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetDBServiceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetDBServiceList require credential")
@@ -6108,6 +6206,7 @@ func (c *Client) DescribeAssetHostDetailWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAssetHostDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetHostDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetHostDetail require credential")
@@ -6163,6 +6262,7 @@ func (c *Client) DescribeAssetHostListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAssetHostListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetHostList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetHostList require credential")
@@ -6224,6 +6324,7 @@ func (c *Client) DescribeAssetImageBindRuleInfoWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeAssetImageBindRuleInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageBindRuleInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageBindRuleInfo require credential")
@@ -6281,6 +6382,7 @@ func (c *Client) DescribeAssetImageDetailWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAssetImageDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageDetail require credential")
@@ -6336,6 +6438,7 @@ func (c *Client) DescribeAssetImageHostListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetImageHostListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageHostList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageHostList require credential")
@@ -6391,6 +6494,7 @@ func (c *Client) DescribeAssetImageListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAssetImageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageList require credential")
@@ -6446,6 +6550,7 @@ func (c *Client) DescribeAssetImageRegistryAssetStatusWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeAssetImageRegistryAssetStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryAssetStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryAssetStatus require credential")
@@ -6497,6 +6602,7 @@ func (c *Client) DescribeAssetImageRegistryDetailWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeAssetImageRegistryDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryDetail require credential")
@@ -6550,6 +6656,7 @@ func (c *Client) DescribeAssetImageRegistryListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeAssetImageRegistryListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryList require credential")
@@ -6601,6 +6708,7 @@ func (c *Client) DescribeAssetImageRegistryListExportWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeAssetImageRegistryListExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryListExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryListExport require credential")
@@ -6666,6 +6774,7 @@ func (c *Client) DescribeAssetImageRegistryRegistryDetailWithContext(ctx context
     if request == nil {
         request = NewDescribeAssetImageRegistryRegistryDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryRegistryDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryRegistryDetail require credential")
@@ -6717,6 +6826,7 @@ func (c *Client) DescribeAssetImageRegistryRegistryListWithContext(ctx context.C
     if request == nil {
         request = NewDescribeAssetImageRegistryRegistryListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryRegistryList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryRegistryList require credential")
@@ -6774,6 +6884,7 @@ func (c *Client) DescribeAssetImageRegistryRiskInfoListWithContext(ctx context.C
     if request == nil {
         request = NewDescribeAssetImageRegistryRiskInfoListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryRiskInfoList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryRiskInfoList require credential")
@@ -6825,6 +6936,7 @@ func (c *Client) DescribeAssetImageRegistryRiskListExportWithContext(ctx context
     if request == nil {
         request = NewDescribeAssetImageRegistryRiskListExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryRiskListExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryRiskListExport require credential")
@@ -6878,6 +6990,7 @@ func (c *Client) DescribeAssetImageRegistryScanStatusOneKeyWithContext(ctx conte
     if request == nil {
         request = NewDescribeAssetImageRegistryScanStatusOneKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryScanStatusOneKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryScanStatusOneKey require credential")
@@ -6929,6 +7042,7 @@ func (c *Client) DescribeAssetImageRegistrySummaryWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAssetImageRegistrySummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistrySummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistrySummary require credential")
@@ -6980,6 +7094,7 @@ func (c *Client) DescribeAssetImageRegistryVirusListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeAssetImageRegistryVirusListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryVirusList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryVirusList require credential")
@@ -7031,6 +7146,7 @@ func (c *Client) DescribeAssetImageRegistryVirusListExportWithContext(ctx contex
     if request == nil {
         request = NewDescribeAssetImageRegistryVirusListExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryVirusListExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryVirusListExport require credential")
@@ -7084,6 +7200,7 @@ func (c *Client) DescribeAssetImageRegistryVulListWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAssetImageRegistryVulListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryVulList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryVulList require credential")
@@ -7135,6 +7252,7 @@ func (c *Client) DescribeAssetImageRegistryVulListExportWithContext(ctx context.
     if request == nil {
         request = NewDescribeAssetImageRegistryVulListExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRegistryVulListExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRegistryVulListExport require credential")
@@ -7192,6 +7310,7 @@ func (c *Client) DescribeAssetImageRiskListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetImageRiskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRiskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRiskList require credential")
@@ -7247,6 +7366,7 @@ func (c *Client) DescribeAssetImageRiskListExportWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeAssetImageRiskListExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageRiskListExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageRiskListExport require credential")
@@ -7300,6 +7420,7 @@ func (c *Client) DescribeAssetImageScanSettingWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAssetImageScanSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageScanSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageScanSetting require credential")
@@ -7357,6 +7478,7 @@ func (c *Client) DescribeAssetImageScanStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAssetImageScanStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageScanStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageScanStatus require credential")
@@ -7412,6 +7534,7 @@ func (c *Client) DescribeAssetImageScanTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetImageScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageScanTask require credential")
@@ -7467,6 +7590,7 @@ func (c *Client) DescribeAssetImageSimpleListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAssetImageSimpleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageSimpleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageSimpleList require credential")
@@ -7524,6 +7648,7 @@ func (c *Client) DescribeAssetImageVirusListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAssetImageVirusListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageVirusList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageVirusList require credential")
@@ -7579,6 +7704,7 @@ func (c *Client) DescribeAssetImageVirusListExportWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAssetImageVirusListExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageVirusListExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageVirusListExport require credential")
@@ -7636,6 +7762,7 @@ func (c *Client) DescribeAssetImageVulListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAssetImageVulListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageVulList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageVulList require credential")
@@ -7691,6 +7818,7 @@ func (c *Client) DescribeAssetImageVulListExportWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeAssetImageVulListExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetImageVulListExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetImageVulListExport require credential")
@@ -7746,6 +7874,7 @@ func (c *Client) DescribeAssetPortListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAssetPortListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetPortList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetPortList require credential")
@@ -7801,6 +7930,7 @@ func (c *Client) DescribeAssetProcessListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAssetProcessListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetProcessList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetProcessList require credential")
@@ -7856,6 +7986,7 @@ func (c *Client) DescribeAssetSummaryWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAssetSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetSummary require credential")
@@ -7907,6 +8038,7 @@ func (c *Client) DescribeAssetSuperNodeListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetSuperNodeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetSuperNodeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetSuperNodeList require credential")
@@ -7966,6 +8098,7 @@ func (c *Client) DescribeAssetSyncLastTimeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAssetSyncLastTimeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetSyncLastTime")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetSyncLastTime require credential")
@@ -8021,6 +8154,7 @@ func (c *Client) DescribeAssetWebServiceListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAssetWebServiceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAssetWebServiceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetWebServiceList require credential")
@@ -8086,6 +8220,7 @@ func (c *Client) DescribeAutoAuthorizedRuleHostWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeAutoAuthorizedRuleHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeAutoAuthorizedRuleHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoAuthorizedRuleHost require credential")
@@ -8147,6 +8282,7 @@ func (c *Client) DescribeCheckItemListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCheckItemListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeCheckItemList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCheckItemList require credential")
@@ -8208,6 +8344,7 @@ func (c *Client) DescribeClusterDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeClusterDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeClusterDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterDetail require credential")
@@ -8267,6 +8404,7 @@ func (c *Client) DescribeClusterNodesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeClusterNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeClusterNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterNodes require credential")
@@ -8328,6 +8466,7 @@ func (c *Client) DescribeClusterSummaryWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeClusterSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeClusterSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterSummary require credential")
@@ -8389,6 +8528,7 @@ func (c *Client) DescribeComplianceAssetDetailInfoWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeComplianceAssetDetailInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeComplianceAssetDetailInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComplianceAssetDetailInfo require credential")
@@ -8448,6 +8588,7 @@ func (c *Client) DescribeComplianceAssetListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeComplianceAssetListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeComplianceAssetList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComplianceAssetList require credential")
@@ -8509,6 +8650,7 @@ func (c *Client) DescribeComplianceAssetPolicyItemListWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeComplianceAssetPolicyItemListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeComplianceAssetPolicyItemList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComplianceAssetPolicyItemList require credential")
@@ -8566,6 +8708,7 @@ func (c *Client) DescribeCompliancePeriodTaskListWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeCompliancePeriodTaskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeCompliancePeriodTaskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCompliancePeriodTaskList require credential")
@@ -8625,6 +8768,7 @@ func (c *Client) DescribeCompliancePolicyItemAffectedAssetListWithContext(ctx co
     if request == nil {
         request = NewDescribeCompliancePolicyItemAffectedAssetListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeCompliancePolicyItemAffectedAssetList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCompliancePolicyItemAffectedAssetList require credential")
@@ -8684,6 +8828,7 @@ func (c *Client) DescribeCompliancePolicyItemAffectedSummaryWithContext(ctx cont
     if request == nil {
         request = NewDescribeCompliancePolicyItemAffectedSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeCompliancePolicyItemAffectedSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCompliancePolicyItemAffectedSummary require credential")
@@ -8743,6 +8888,7 @@ func (c *Client) DescribeComplianceScanFailedAssetListWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeComplianceScanFailedAssetListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeComplianceScanFailedAssetList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComplianceScanFailedAssetList require credential")
@@ -8802,6 +8948,7 @@ func (c *Client) DescribeComplianceTaskAssetSummaryWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeComplianceTaskAssetSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeComplianceTaskAssetSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComplianceTaskAssetSummary require credential")
@@ -8863,6 +9010,7 @@ func (c *Client) DescribeComplianceTaskPolicyItemSummaryListWithContext(ctx cont
     if request == nil {
         request = NewDescribeComplianceTaskPolicyItemSummaryListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeComplianceTaskPolicyItemSummaryList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComplianceTaskPolicyItemSummaryList require credential")
@@ -8922,6 +9070,7 @@ func (c *Client) DescribeComplianceWhitelistItemListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeComplianceWhitelistItemListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeComplianceWhitelistItemList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComplianceWhitelistItemList require credential")
@@ -8975,6 +9124,7 @@ func (c *Client) DescribeContainerAssetSummaryWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeContainerAssetSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeContainerAssetSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeContainerAssetSummary require credential")
@@ -9026,6 +9176,7 @@ func (c *Client) DescribeContainerSecEventSummaryWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeContainerSecEventSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeContainerSecEventSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeContainerSecEventSummary require credential")
@@ -9079,6 +9230,7 @@ func (c *Client) DescribeESAggregationsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeESAggregationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeESAggregations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeESAggregations require credential")
@@ -9132,6 +9284,7 @@ func (c *Client) DescribeESHitsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeESHitsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeESHits")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeESHits require credential")
@@ -9197,6 +9350,7 @@ func (c *Client) DescribeEmergencyVulListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeEmergencyVulListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeEmergencyVulList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEmergencyVulList require credential")
@@ -9252,6 +9406,7 @@ func (c *Client) DescribeEscapeEventDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeEscapeEventDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeEscapeEventDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEscapeEventDetail require credential")
@@ -9305,6 +9460,7 @@ func (c *Client) DescribeEscapeEventInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeEscapeEventInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeEscapeEventInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEscapeEventInfo require credential")
@@ -9370,6 +9526,7 @@ func (c *Client) DescribeEscapeEventTendencyWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeEscapeEventTendencyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeEscapeEventTendency")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEscapeEventTendency require credential")
@@ -9429,6 +9586,7 @@ func (c *Client) DescribeEscapeEventTypeSummaryWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeEscapeEventTypeSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeEscapeEventTypeSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEscapeEventTypeSummary require credential")
@@ -9480,6 +9638,7 @@ func (c *Client) DescribeEscapeRuleInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeEscapeRuleInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeEscapeRuleInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEscapeRuleInfo require credential")
@@ -9531,6 +9690,7 @@ func (c *Client) DescribeEscapeSafeStateWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeEscapeSafeStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeEscapeSafeState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEscapeSafeState require credential")
@@ -9596,6 +9756,7 @@ func (c *Client) DescribeEscapeWhiteListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeEscapeWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeEscapeWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEscapeWhiteList require credential")
@@ -9649,6 +9810,7 @@ func (c *Client) DescribeEventEscapeImageListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeEventEscapeImageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeEventEscapeImageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEventEscapeImageList require credential")
@@ -9700,6 +9862,7 @@ func (c *Client) DescribeExportJobDownloadURLWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeExportJobDownloadURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeExportJobDownloadURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExportJobDownloadURL require credential")
@@ -9751,6 +9914,7 @@ func (c *Client) DescribeExportJobManageListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeExportJobManageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeExportJobManageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExportJobManageList require credential")
@@ -9802,6 +9966,7 @@ func (c *Client) DescribeExportJobResultWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeExportJobResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeExportJobResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExportJobResult require credential")
@@ -9853,6 +10018,7 @@ func (c *Client) DescribeImageAuthorizedInfoWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeImageAuthorizedInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageAuthorizedInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageAuthorizedInfo require credential")
@@ -9916,6 +10082,7 @@ func (c *Client) DescribeImageAutoAuthorizedLogListWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeImageAutoAuthorizedLogListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageAutoAuthorizedLogList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageAutoAuthorizedLogList require credential")
@@ -9975,6 +10142,7 @@ func (c *Client) DescribeImageAutoAuthorizedRuleWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeImageAutoAuthorizedRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageAutoAuthorizedRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageAutoAuthorizedRule require credential")
@@ -10038,6 +10206,7 @@ func (c *Client) DescribeImageAutoAuthorizedTaskListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeImageAutoAuthorizedTaskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageAutoAuthorizedTaskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageAutoAuthorizedTaskList require credential")
@@ -10105,6 +10274,7 @@ func (c *Client) DescribeImageComponentListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeImageComponentListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageComponentList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageComponentList require credential")
@@ -10172,6 +10342,7 @@ func (c *Client) DescribeImageRegistryNamespaceListWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeImageRegistryNamespaceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageRegistryNamespaceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageRegistryNamespaceList require credential")
@@ -10223,6 +10394,7 @@ func (c *Client) DescribeImageRegistryTimingScanTaskWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeImageRegistryTimingScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageRegistryTimingScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageRegistryTimingScanTask require credential")
@@ -10274,6 +10446,7 @@ func (c *Client) DescribeImageRiskSummaryWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeImageRiskSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageRiskSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageRiskSummary require credential")
@@ -10335,6 +10508,7 @@ func (c *Client) DescribeImageRiskTendencyWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeImageRiskTendencyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageRiskTendency")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageRiskTendency require credential")
@@ -10388,6 +10562,7 @@ func (c *Client) DescribeImageSimpleListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeImageSimpleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageSimpleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageSimpleList require credential")
@@ -10441,6 +10616,7 @@ func (c *Client) DescribeIndexListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeIndexListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeIndexList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIndexList require credential")
@@ -10492,6 +10668,7 @@ func (c *Client) DescribeInspectionReportWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeInspectionReportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeInspectionReport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInspectionReport require credential")
@@ -10545,6 +10722,7 @@ func (c *Client) DescribeK8sApiAbnormalEventInfoWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeK8sApiAbnormalEventInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeK8sApiAbnormalEventInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeK8sApiAbnormalEventInfo require credential")
@@ -10596,6 +10774,7 @@ func (c *Client) DescribeK8sApiAbnormalEventListWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeK8sApiAbnormalEventListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeK8sApiAbnormalEventList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeK8sApiAbnormalEventList require credential")
@@ -10647,6 +10826,7 @@ func (c *Client) DescribeK8sApiAbnormalRuleInfoWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeK8sApiAbnormalRuleInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeK8sApiAbnormalRuleInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeK8sApiAbnormalRuleInfo require credential")
@@ -10698,6 +10878,7 @@ func (c *Client) DescribeK8sApiAbnormalRuleListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeK8sApiAbnormalRuleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeK8sApiAbnormalRuleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeK8sApiAbnormalRuleList require credential")
@@ -10749,6 +10930,7 @@ func (c *Client) DescribeK8sApiAbnormalRuleScopeListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeK8sApiAbnormalRuleScopeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeK8sApiAbnormalRuleScopeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeK8sApiAbnormalRuleScopeList require credential")
@@ -10800,6 +10982,7 @@ func (c *Client) DescribeK8sApiAbnormalSummaryWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeK8sApiAbnormalSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeK8sApiAbnormalSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeK8sApiAbnormalSummary require credential")
@@ -10851,6 +11034,7 @@ func (c *Client) DescribeK8sApiAbnormalTendencyWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeK8sApiAbnormalTendencyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeK8sApiAbnormalTendency")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeK8sApiAbnormalTendency require credential")
@@ -10904,6 +11088,7 @@ func (c *Client) DescribeLogStorageStatisticWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeLogStorageStatisticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeLogStorageStatistic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogStorageStatistic require credential")
@@ -10965,6 +11150,7 @@ func (c *Client) DescribeNetworkFirewallAuditRecordWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeNetworkFirewallAuditRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNetworkFirewallAuditRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkFirewallAuditRecord require credential")
@@ -11026,6 +11212,7 @@ func (c *Client) DescribeNetworkFirewallClusterListWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeNetworkFirewallClusterListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNetworkFirewallClusterList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkFirewallClusterList require credential")
@@ -11087,6 +11274,7 @@ func (c *Client) DescribeNetworkFirewallClusterRefreshStatusWithContext(ctx cont
     if request == nil {
         request = NewDescribeNetworkFirewallClusterRefreshStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNetworkFirewallClusterRefreshStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkFirewallClusterRefreshStatus require credential")
@@ -11148,6 +11336,7 @@ func (c *Client) DescribeNetworkFirewallNamespaceLabelListWithContext(ctx contex
     if request == nil {
         request = NewDescribeNetworkFirewallNamespaceLabelListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNetworkFirewallNamespaceLabelList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkFirewallNamespaceLabelList require credential")
@@ -11209,6 +11398,7 @@ func (c *Client) DescribeNetworkFirewallNamespaceListWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeNetworkFirewallNamespaceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNetworkFirewallNamespaceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkFirewallNamespaceList require credential")
@@ -11270,6 +11460,7 @@ func (c *Client) DescribeNetworkFirewallPodLabelsListWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeNetworkFirewallPodLabelsListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNetworkFirewallPodLabelsList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkFirewallPodLabelsList require credential")
@@ -11331,6 +11522,7 @@ func (c *Client) DescribeNetworkFirewallPolicyDetailWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeNetworkFirewallPolicyDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNetworkFirewallPolicyDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkFirewallPolicyDetail require credential")
@@ -11392,6 +11584,7 @@ func (c *Client) DescribeNetworkFirewallPolicyDiscoverWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeNetworkFirewallPolicyDiscoverRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNetworkFirewallPolicyDiscover")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkFirewallPolicyDiscover require credential")
@@ -11453,6 +11646,7 @@ func (c *Client) DescribeNetworkFirewallPolicyListWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeNetworkFirewallPolicyListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNetworkFirewallPolicyList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkFirewallPolicyList require credential")
@@ -11514,6 +11708,7 @@ func (c *Client) DescribeNetworkFirewallPolicyStatusWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeNetworkFirewallPolicyStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNetworkFirewallPolicyStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkFirewallPolicyStatus require credential")
@@ -11575,6 +11770,7 @@ func (c *Client) DescribeNetworkFirewallPolicyYamlDetailWithContext(ctx context.
     if request == nil {
         request = NewDescribeNetworkFirewallPolicyYamlDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNetworkFirewallPolicyYamlDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkFirewallPolicyYamlDetail require credential")
@@ -11636,6 +11832,7 @@ func (c *Client) DescribeNewestVulWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeNewestVulRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeNewestVul")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNewestVul require credential")
@@ -11687,6 +11884,7 @@ func (c *Client) DescribePostPayDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribePostPayDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribePostPayDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePostPayDetail require credential")
@@ -11742,6 +11940,7 @@ func (c *Client) DescribeProVersionInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeProVersionInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeProVersionInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProVersionInfo require credential")
@@ -11793,6 +11992,7 @@ func (c *Client) DescribePromotionActivityWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePromotionActivityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribePromotionActivity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePromotionActivity require credential")
@@ -11844,6 +12044,7 @@ func (c *Client) DescribePublicKeyWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribePublicKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribePublicKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublicKey require credential")
@@ -11899,6 +12100,7 @@ func (c *Client) DescribePurchaseStateInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePurchaseStateInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribePurchaseStateInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePurchaseStateInfo require credential")
@@ -11962,6 +12164,7 @@ func (c *Client) DescribeRaspRuleVulsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeRaspRuleVulsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRaspRuleVuls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRaspRuleVuls require credential")
@@ -12025,6 +12228,7 @@ func (c *Client) DescribeRaspRulesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeRaspRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRaspRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRaspRules require credential")
@@ -12086,6 +12290,7 @@ func (c *Client) DescribeRefreshTaskWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRefreshTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRefreshTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRefreshTask require credential")
@@ -12149,6 +12354,7 @@ func (c *Client) DescribeReverseShellDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeReverseShellDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeReverseShellDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReverseShellDetail require credential")
@@ -12204,6 +12410,7 @@ func (c *Client) DescribeReverseShellEventsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeReverseShellEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeReverseShellEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReverseShellEvents require credential")
@@ -12265,6 +12472,7 @@ func (c *Client) DescribeReverseShellEventsExportWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeReverseShellEventsExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeReverseShellEventsExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReverseShellEventsExport require credential")
@@ -12328,6 +12536,7 @@ func (c *Client) DescribeReverseShellWhiteListDetailWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeReverseShellWhiteListDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeReverseShellWhiteListDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReverseShellWhiteListDetail require credential")
@@ -12387,6 +12596,7 @@ func (c *Client) DescribeReverseShellWhiteListsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeReverseShellWhiteListsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeReverseShellWhiteLists")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReverseShellWhiteLists require credential")
@@ -12456,6 +12666,7 @@ func (c *Client) DescribeRiskDnsEventDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRiskDnsEventDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRiskDnsEventDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRiskDnsEventDetail require credential")
@@ -12523,6 +12734,7 @@ func (c *Client) DescribeRiskDnsListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRiskDnsListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRiskDnsList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRiskDnsList require credential")
@@ -12584,6 +12796,7 @@ func (c *Client) DescribeRiskListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeRiskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRiskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRiskList require credential")
@@ -12647,6 +12860,7 @@ func (c *Client) DescribeRiskSyscallDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRiskSyscallDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRiskSyscallDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRiskSyscallDetail require credential")
@@ -12710,6 +12924,7 @@ func (c *Client) DescribeRiskSyscallEventsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRiskSyscallEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRiskSyscallEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRiskSyscallEvents require credential")
@@ -12771,6 +12986,7 @@ func (c *Client) DescribeRiskSyscallEventsExportWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeRiskSyscallEventsExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRiskSyscallEventsExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRiskSyscallEventsExport require credential")
@@ -12832,6 +13048,7 @@ func (c *Client) DescribeRiskSyscallNamesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeRiskSyscallNamesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRiskSyscallNames")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRiskSyscallNames require credential")
@@ -12895,6 +13112,7 @@ func (c *Client) DescribeRiskSyscallWhiteListDetailWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeRiskSyscallWhiteListDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRiskSyscallWhiteListDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRiskSyscallWhiteListDetail require credential")
@@ -12954,6 +13172,7 @@ func (c *Client) DescribeRiskSyscallWhiteListsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeRiskSyscallWhiteListsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeRiskSyscallWhiteLists")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRiskSyscallWhiteLists require credential")
@@ -13015,6 +13234,7 @@ func (c *Client) DescribeScanIgnoreVulListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeScanIgnoreVulListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeScanIgnoreVulList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScanIgnoreVulList require credential")
@@ -13068,6 +13288,7 @@ func (c *Client) DescribeSearchExportListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSearchExportListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSearchExportList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSearchExportList require credential")
@@ -13121,6 +13342,7 @@ func (c *Client) DescribeSearchLogsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeSearchLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSearchLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSearchLogs require credential")
@@ -13174,6 +13396,7 @@ func (c *Client) DescribeSearchTemplatesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSearchTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSearchTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSearchTemplates require credential")
@@ -13237,6 +13460,7 @@ func (c *Client) DescribeSecEventsTendencyWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSecEventsTendencyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSecEventsTendency")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecEventsTendency require credential")
@@ -13288,6 +13512,7 @@ func (c *Client) DescribeSecLogAlertMsgWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSecLogAlertMsgRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSecLogAlertMsg")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecLogAlertMsg require credential")
@@ -13339,6 +13564,7 @@ func (c *Client) DescribeSecLogCleanSettingInfoWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeSecLogCleanSettingInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSecLogCleanSettingInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecLogCleanSettingInfo require credential")
@@ -13390,6 +13616,7 @@ func (c *Client) DescribeSecLogDeliveryClsOptionsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeSecLogDeliveryClsOptionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSecLogDeliveryClsOptions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecLogDeliveryClsOptions require credential")
@@ -13441,6 +13668,7 @@ func (c *Client) DescribeSecLogDeliveryClsSettingWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeSecLogDeliveryClsSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSecLogDeliveryClsSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecLogDeliveryClsSetting require credential")
@@ -13492,6 +13720,7 @@ func (c *Client) DescribeSecLogDeliveryKafkaOptionsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeSecLogDeliveryKafkaOptionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSecLogDeliveryKafkaOptions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecLogDeliveryKafkaOptions require credential")
@@ -13543,6 +13772,7 @@ func (c *Client) DescribeSecLogDeliveryKafkaSettingWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeSecLogDeliveryKafkaSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSecLogDeliveryKafkaSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecLogDeliveryKafkaSetting require credential")
@@ -13594,6 +13824,7 @@ func (c *Client) DescribeSecLogJoinObjectListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeSecLogJoinObjectListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSecLogJoinObjectList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecLogJoinObjectList require credential")
@@ -13645,6 +13876,7 @@ func (c *Client) DescribeSecLogJoinTypeListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeSecLogJoinTypeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSecLogJoinTypeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecLogJoinTypeList require credential")
@@ -13696,6 +13928,7 @@ func (c *Client) DescribeSecLogKafkaUINWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSecLogKafkaUINRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSecLogKafkaUIN")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecLogKafkaUIN require credential")
@@ -13747,6 +13980,7 @@ func (c *Client) DescribeSecLogVasInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeSecLogVasInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSecLogVasInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecLogVasInfo require credential")
@@ -13798,6 +14032,7 @@ func (c *Client) DescribeSuperNodePodListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSuperNodePodListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSuperNodePodList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSuperNodePodList require credential")
@@ -13861,6 +14096,7 @@ func (c *Client) DescribeSupportDefenceVulWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSupportDefenceVulRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSupportDefenceVul")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSupportDefenceVul require credential")
@@ -13928,6 +14164,7 @@ func (c *Client) DescribeSystemVulListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeSystemVulListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeSystemVulList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSystemVulList require credential")
@@ -13989,6 +14226,7 @@ func (c *Client) DescribeTaskResultSummaryWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeTaskResultSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeTaskResultSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskResultSummary require credential")
@@ -14040,6 +14278,7 @@ func (c *Client) DescribeTcssSummaryWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTcssSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeTcssSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTcssSummary require credential")
@@ -14107,6 +14346,7 @@ func (c *Client) DescribeUnauthorizedCoresTendencyWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeUnauthorizedCoresTendencyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeUnauthorizedCoresTendency")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnauthorizedCoresTendency require credential")
@@ -14174,6 +14414,7 @@ func (c *Client) DescribeUnfinishRefreshTaskWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeUnfinishRefreshTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeUnfinishRefreshTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnfinishRefreshTask require credential")
@@ -14235,6 +14476,7 @@ func (c *Client) DescribeUserClusterWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeUserClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeUserCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserCluster require credential")
@@ -14294,6 +14536,7 @@ func (c *Client) DescribeUserPodListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeUserPodListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeUserPodList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserPodList require credential")
@@ -14345,6 +14588,7 @@ func (c *Client) DescribeValueAddedSrvInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeValueAddedSrvInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeValueAddedSrvInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeValueAddedSrvInfo require credential")
@@ -14396,6 +14640,7 @@ func (c *Client) DescribeVirusAutoIsolateSampleDetailWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeVirusAutoIsolateSampleDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusAutoIsolateSampleDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusAutoIsolateSampleDetail require credential")
@@ -14447,6 +14692,7 @@ func (c *Client) DescribeVirusAutoIsolateSampleDownloadURLWithContext(ctx contex
     if request == nil {
         request = NewDescribeVirusAutoIsolateSampleDownloadURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusAutoIsolateSampleDownloadURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusAutoIsolateSampleDownloadURL require credential")
@@ -14498,6 +14744,7 @@ func (c *Client) DescribeVirusAutoIsolateSampleListWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeVirusAutoIsolateSampleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusAutoIsolateSampleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusAutoIsolateSampleList require credential")
@@ -14549,6 +14796,7 @@ func (c *Client) DescribeVirusAutoIsolateSettingWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeVirusAutoIsolateSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusAutoIsolateSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusAutoIsolateSetting require credential")
@@ -14604,6 +14852,7 @@ func (c *Client) DescribeVirusDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeVirusDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusDetail require credential")
@@ -14657,6 +14906,7 @@ func (c *Client) DescribeVirusEventTendencyWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeVirusEventTendencyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusEventTendency")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusEventTendency require credential")
@@ -14714,6 +14964,7 @@ func (c *Client) DescribeVirusListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeVirusListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusList require credential")
@@ -14765,6 +15016,7 @@ func (c *Client) DescribeVirusManualScanEstimateTimeoutWithContext(ctx context.C
     if request == nil {
         request = NewDescribeVirusManualScanEstimateTimeoutRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusManualScanEstimateTimeout")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusManualScanEstimateTimeout require credential")
@@ -14818,6 +15070,7 @@ func (c *Client) DescribeVirusMonitorSettingWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeVirusMonitorSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusMonitorSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusMonitorSetting require credential")
@@ -14873,6 +15126,7 @@ func (c *Client) DescribeVirusSampleDownloadUrlWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeVirusSampleDownloadUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusSampleDownloadUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusSampleDownloadUrl require credential")
@@ -14926,6 +15180,7 @@ func (c *Client) DescribeVirusScanSettingWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeVirusScanSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusScanSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusScanSetting require credential")
@@ -14979,6 +15234,7 @@ func (c *Client) DescribeVirusScanTaskStatusWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeVirusScanTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusScanTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusScanTaskStatus require credential")
@@ -15028,6 +15284,7 @@ func (c *Client) DescribeVirusScanTimeoutSettingWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeVirusScanTimeoutSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusScanTimeoutSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusScanTimeoutSetting require credential")
@@ -15083,6 +15340,7 @@ func (c *Client) DescribeVirusSummaryWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeVirusSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusSummary require credential")
@@ -15140,6 +15398,7 @@ func (c *Client) DescribeVirusTaskListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeVirusTaskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusTaskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirusTaskList require credential")
@@ -15205,6 +15464,7 @@ func (c *Client) DescribeVulContainerListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeVulContainerListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulContainerList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulContainerList require credential")
@@ -15270,6 +15530,7 @@ func (c *Client) DescribeVulDefenceEventWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeVulDefenceEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulDefenceEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulDefenceEvent require credential")
@@ -15337,6 +15598,7 @@ func (c *Client) DescribeVulDefenceEventDetailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeVulDefenceEventDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulDefenceEventDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulDefenceEventDetail require credential")
@@ -15404,6 +15666,7 @@ func (c *Client) DescribeVulDefenceEventTendencyWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeVulDefenceEventTendencyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulDefenceEventTendency")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulDefenceEventTendency require credential")
@@ -15471,6 +15734,7 @@ func (c *Client) DescribeVulDefenceHostWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeVulDefenceHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulDefenceHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulDefenceHost require credential")
@@ -15538,6 +15802,7 @@ func (c *Client) DescribeVulDefencePluginWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeVulDefencePluginRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulDefencePlugin")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulDefencePlugin require credential")
@@ -15605,6 +15870,7 @@ func (c *Client) DescribeVulDefenceSettingWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeVulDefenceSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulDefenceSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulDefenceSetting require credential")
@@ -15670,6 +15936,7 @@ func (c *Client) DescribeVulDetailWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeVulDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulDetail require credential")
@@ -15733,6 +16000,7 @@ func (c *Client) DescribeVulIgnoreLocalImageListWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeVulIgnoreLocalImageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulIgnoreLocalImageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulIgnoreLocalImageList require credential")
@@ -15796,6 +16064,7 @@ func (c *Client) DescribeVulIgnoreRegistryImageListWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeVulIgnoreRegistryImageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulIgnoreRegistryImageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulIgnoreRegistryImageList require credential")
@@ -15859,6 +16128,7 @@ func (c *Client) DescribeVulImageListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeVulImageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulImageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulImageList require credential")
@@ -15920,6 +16190,7 @@ func (c *Client) DescribeVulImageSummaryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeVulImageSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulImageSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulImageSummary require credential")
@@ -15981,6 +16252,7 @@ func (c *Client) DescribeVulLevelImageSummaryWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeVulLevelImageSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulLevelImageSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulLevelImageSummary require credential")
@@ -16042,6 +16314,7 @@ func (c *Client) DescribeVulLevelSummaryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeVulLevelSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulLevelSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulLevelSummary require credential")
@@ -16105,6 +16378,7 @@ func (c *Client) DescribeVulRegistryImageListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeVulRegistryImageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulRegistryImageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulRegistryImageList require credential")
@@ -16166,6 +16440,7 @@ func (c *Client) DescribeVulScanAuthorizedImageSummaryWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeVulScanAuthorizedImageSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulScanAuthorizedImageSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulScanAuthorizedImageSummary require credential")
@@ -16231,6 +16506,7 @@ func (c *Client) DescribeVulScanInfoWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeVulScanInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulScanInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulScanInfo require credential")
@@ -16298,6 +16574,7 @@ func (c *Client) DescribeVulScanLocalImageListWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeVulScanLocalImageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulScanLocalImageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulScanLocalImageList require credential")
@@ -16361,6 +16638,7 @@ func (c *Client) DescribeVulSummaryWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeVulSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulSummary require credential")
@@ -16424,6 +16702,7 @@ func (c *Client) DescribeVulTendencyWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeVulTendencyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulTendency")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulTendency require credential")
@@ -16483,6 +16762,7 @@ func (c *Client) DescribeVulTopRankingWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeVulTopRankingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVulTopRanking")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulTopRanking require credential")
@@ -16538,6 +16818,7 @@ func (c *Client) DescribeWarningRulesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeWarningRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeWarningRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWarningRules require credential")
@@ -16603,6 +16884,7 @@ func (c *Client) DescribeWebVulListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeWebVulListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeWebVulList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWebVulList require credential")
@@ -16656,6 +16938,7 @@ func (c *Client) ExportVirusListWithContext(ctx context.Context, request *Export
     if request == nil {
         request = NewExportVirusListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ExportVirusList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportVirusList require credential")
@@ -16717,6 +17000,7 @@ func (c *Client) InitializeUserComplianceEnvironmentWithContext(ctx context.Cont
     if request == nil {
         request = NewInitializeUserComplianceEnvironmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "InitializeUserComplianceEnvironment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InitializeUserComplianceEnvironment require credential")
@@ -16778,6 +17062,7 @@ func (c *Client) ModifyAbnormalProcessRuleStatusWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyAbnormalProcessRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyAbnormalProcessRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAbnormalProcessRuleStatus require credential")
@@ -16839,6 +17124,7 @@ func (c *Client) ModifyAbnormalProcessStatusWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyAbnormalProcessStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyAbnormalProcessStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAbnormalProcessStatus require credential")
@@ -16900,6 +17186,7 @@ func (c *Client) ModifyAccessControlRuleStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyAccessControlRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyAccessControlRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccessControlRuleStatus require credential")
@@ -16961,6 +17248,7 @@ func (c *Client) ModifyAccessControlStatusWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyAccessControlStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyAccessControlStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccessControlStatus require credential")
@@ -17018,6 +17306,7 @@ func (c *Client) ModifyAssetWithContext(ctx context.Context, request *ModifyAsse
     if request == nil {
         request = NewModifyAssetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyAsset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAsset require credential")
@@ -17069,6 +17358,7 @@ func (c *Client) ModifyAssetImageRegistryScanStopWithContext(ctx context.Context
     if request == nil {
         request = NewModifyAssetImageRegistryScanStopRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyAssetImageRegistryScanStop")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAssetImageRegistryScanStop require credential")
@@ -17122,6 +17412,7 @@ func (c *Client) ModifyAssetImageRegistryScanStopOneKeyWithContext(ctx context.C
     if request == nil {
         request = NewModifyAssetImageRegistryScanStopOneKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyAssetImageRegistryScanStopOneKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAssetImageRegistryScanStopOneKey require credential")
@@ -17183,6 +17474,7 @@ func (c *Client) ModifyAssetImageScanStopWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyAssetImageScanStopRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyAssetImageScanStop")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAssetImageScanStop require credential")
@@ -17242,6 +17534,7 @@ func (c *Client) ModifyCompliancePeriodTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyCompliancePeriodTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyCompliancePeriodTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCompliancePeriodTask require credential")
@@ -17301,6 +17594,7 @@ func (c *Client) ModifyContainerNetStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyContainerNetStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyContainerNetStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyContainerNetStatus require credential")
@@ -17356,6 +17650,7 @@ func (c *Client) ModifyEscapeEventStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyEscapeEventStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyEscapeEventStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEscapeEventStatus require credential")
@@ -17413,6 +17708,7 @@ func (c *Client) ModifyEscapeRuleWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyEscapeRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyEscapeRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEscapeRule require credential")
@@ -17480,6 +17776,7 @@ func (c *Client) ModifyEscapeWhiteListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyEscapeWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyEscapeWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEscapeWhiteList require credential")
@@ -17549,6 +17846,7 @@ func (c *Client) ModifyImageAuthorizedWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyImageAuthorizedRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyImageAuthorized")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyImageAuthorized require credential")
@@ -17602,6 +17900,7 @@ func (c *Client) ModifyK8sApiAbnormalEventStatusWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyK8sApiAbnormalEventStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyK8sApiAbnormalEventStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyK8sApiAbnormalEventStatus require credential")
@@ -17653,6 +17952,7 @@ func (c *Client) ModifyK8sApiAbnormalRuleInfoWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyK8sApiAbnormalRuleInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyK8sApiAbnormalRuleInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyK8sApiAbnormalRuleInfo require credential")
@@ -17704,6 +18004,7 @@ func (c *Client) ModifyK8sApiAbnormalRuleStatusWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyK8sApiAbnormalRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyK8sApiAbnormalRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyK8sApiAbnormalRuleStatus require credential")
@@ -17767,6 +18068,7 @@ func (c *Client) ModifyRaspRulesWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyRaspRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyRaspRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRaspRules require credential")
@@ -17828,6 +18130,7 @@ func (c *Client) ModifyReverseShellStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyReverseShellStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyReverseShellStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyReverseShellStatus require credential")
@@ -17899,6 +18202,7 @@ func (c *Client) ModifyRiskDnsEventStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyRiskDnsEventStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyRiskDnsEventStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRiskDnsEventStatus require credential")
@@ -17960,6 +18264,7 @@ func (c *Client) ModifyRiskSyscallStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyRiskSyscallStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyRiskSyscallStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRiskSyscallStatus require credential")
@@ -18011,6 +18316,7 @@ func (c *Client) ModifySecLogCleanSettingInfoWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifySecLogCleanSettingInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifySecLogCleanSettingInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecLogCleanSettingInfo require credential")
@@ -18062,6 +18368,7 @@ func (c *Client) ModifySecLogDeliveryClsSettingWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifySecLogDeliveryClsSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifySecLogDeliveryClsSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecLogDeliveryClsSetting require credential")
@@ -18113,6 +18420,7 @@ func (c *Client) ModifySecLogDeliveryKafkaSettingWithContext(ctx context.Context
     if request == nil {
         request = NewModifySecLogDeliveryKafkaSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifySecLogDeliveryKafkaSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecLogDeliveryKafkaSetting require credential")
@@ -18164,6 +18472,7 @@ func (c *Client) ModifySecLogJoinObjectsWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifySecLogJoinObjectsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifySecLogJoinObjects")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecLogJoinObjects require credential")
@@ -18215,6 +18524,7 @@ func (c *Client) ModifySecLogJoinStateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifySecLogJoinStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifySecLogJoinState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecLogJoinState require credential")
@@ -18266,6 +18576,7 @@ func (c *Client) ModifySecLogKafkaUINWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifySecLogKafkaUINRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifySecLogKafkaUIN")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecLogKafkaUIN require credential")
@@ -18317,6 +18628,7 @@ func (c *Client) ModifyVirusAutoIsolateExampleSwitchWithContext(ctx context.Cont
     if request == nil {
         request = NewModifyVirusAutoIsolateExampleSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyVirusAutoIsolateExampleSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVirusAutoIsolateExampleSwitch require credential")
@@ -18368,6 +18680,7 @@ func (c *Client) ModifyVirusAutoIsolateSettingWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyVirusAutoIsolateSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyVirusAutoIsolateSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVirusAutoIsolateSetting require credential")
@@ -18429,6 +18742,7 @@ func (c *Client) ModifyVirusFileStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyVirusFileStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyVirusFileStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVirusFileStatus require credential")
@@ -18482,6 +18796,7 @@ func (c *Client) ModifyVirusMonitorSettingWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyVirusMonitorSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyVirusMonitorSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVirusMonitorSetting require credential")
@@ -18537,6 +18852,7 @@ func (c *Client) ModifyVirusScanSettingWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyVirusScanSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyVirusScanSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVirusScanSetting require credential")
@@ -18590,6 +18906,7 @@ func (c *Client) ModifyVirusScanTimeoutSettingWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyVirusScanTimeoutSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyVirusScanTimeoutSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVirusScanTimeoutSetting require credential")
@@ -18659,6 +18976,7 @@ func (c *Client) ModifyVulDefenceEventStatusWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyVulDefenceEventStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyVulDefenceEventStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVulDefenceEventStatus require credential")
@@ -18726,6 +19044,7 @@ func (c *Client) ModifyVulDefenceSettingWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyVulDefenceSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyVulDefenceSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVulDefenceSetting require credential")
@@ -18785,6 +19104,7 @@ func (c *Client) OpenTcssTrialWithContext(ctx context.Context, request *OpenTcss
     if request == nil {
         request = NewOpenTcssTrialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "OpenTcssTrial")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenTcssTrial require credential")
@@ -18850,6 +19170,7 @@ func (c *Client) RemoveAssetImageRegistryRegistryDetailWithContext(ctx context.C
     if request == nil {
         request = NewRemoveAssetImageRegistryRegistryDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "RemoveAssetImageRegistryRegistryDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveAssetImageRegistryRegistryDetail require credential")
@@ -18905,6 +19226,7 @@ func (c *Client) RenewImageAuthorizeStateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewRenewImageAuthorizeStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "RenewImageAuthorizeState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewImageAuthorizeState require credential")
@@ -18956,6 +19278,7 @@ func (c *Client) ResetSecLogTopicConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewResetSecLogTopicConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ResetSecLogTopicConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetSecLogTopicConfig require credential")
@@ -19017,6 +19340,7 @@ func (c *Client) ScanComplianceAssetsWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewScanComplianceAssetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ScanComplianceAssets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScanComplianceAssets require credential")
@@ -19078,6 +19402,7 @@ func (c *Client) ScanComplianceAssetsByPolicyItemWithContext(ctx context.Context
     if request == nil {
         request = NewScanComplianceAssetsByPolicyItemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ScanComplianceAssetsByPolicyItem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScanComplianceAssetsByPolicyItem require credential")
@@ -19139,6 +19464,7 @@ func (c *Client) ScanCompliancePolicyItemsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewScanCompliancePolicyItemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ScanCompliancePolicyItems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScanCompliancePolicyItems require credential")
@@ -19200,6 +19526,7 @@ func (c *Client) ScanComplianceScanFailedAssetsWithContext(ctx context.Context, 
     if request == nil {
         request = NewScanComplianceScanFailedAssetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ScanComplianceScanFailedAssets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScanComplianceScanFailedAssets require credential")
@@ -19261,6 +19588,7 @@ func (c *Client) SetCheckModeWithContext(ctx context.Context, request *SetCheckM
     if request == nil {
         request = NewSetCheckModeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "SetCheckMode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetCheckMode require credential")
@@ -19320,6 +19648,7 @@ func (c *Client) StopVirusScanTaskWithContext(ctx context.Context, request *Stop
     if request == nil {
         request = NewStopVirusScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "StopVirusScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopVirusScanTask require credential")
@@ -19369,6 +19698,7 @@ func (c *Client) StopVulScanTaskWithContext(ctx context.Context, request *StopVu
     if request == nil {
         request = NewStopVulScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "StopVulScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopVulScanTask require credential")
@@ -19438,6 +19768,7 @@ func (c *Client) SwitchImageAutoAuthorizedRuleWithContext(ctx context.Context, r
     if request == nil {
         request = NewSwitchImageAutoAuthorizedRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "SwitchImageAutoAuthorizedRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SwitchImageAutoAuthorizedRule require credential")
@@ -19493,6 +19824,7 @@ func (c *Client) SyncAssetImageRegistryAssetWithContext(ctx context.Context, req
     if request == nil {
         request = NewSyncAssetImageRegistryAssetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "SyncAssetImageRegistryAsset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncAssetImageRegistryAsset require credential")
@@ -19554,6 +19886,7 @@ func (c *Client) UpdateAndPublishNetworkFirewallPolicyDetailWithContext(ctx cont
     if request == nil {
         request = NewUpdateAndPublishNetworkFirewallPolicyDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "UpdateAndPublishNetworkFirewallPolicyDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAndPublishNetworkFirewallPolicyDetail require credential")
@@ -19615,6 +19948,7 @@ func (c *Client) UpdateAndPublishNetworkFirewallPolicyYamlDetailWithContext(ctx 
     if request == nil {
         request = NewUpdateAndPublishNetworkFirewallPolicyYamlDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "UpdateAndPublishNetworkFirewallPolicyYamlDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAndPublishNetworkFirewallPolicyYamlDetail require credential")
@@ -19680,6 +20014,7 @@ func (c *Client) UpdateAssetImageRegistryRegistryDetailWithContext(ctx context.C
     if request == nil {
         request = NewUpdateAssetImageRegistryRegistryDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "UpdateAssetImageRegistryRegistryDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAssetImageRegistryRegistryDetail require credential")
@@ -19731,6 +20066,7 @@ func (c *Client) UpdateImageRegistryTimingScanTaskWithContext(ctx context.Contex
     if request == nil {
         request = NewUpdateImageRegistryTimingScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "UpdateImageRegistryTimingScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateImageRegistryTimingScanTask require credential")
@@ -19792,6 +20128,7 @@ func (c *Client) UpdateNetworkFirewallPolicyDetailWithContext(ctx context.Contex
     if request == nil {
         request = NewUpdateNetworkFirewallPolicyDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "UpdateNetworkFirewallPolicyDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateNetworkFirewallPolicyDetail require credential")
@@ -19853,6 +20190,7 @@ func (c *Client) UpdateNetworkFirewallPolicyYamlDetailWithContext(ctx context.Co
     if request == nil {
         request = NewUpdateNetworkFirewallPolicyYamlDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "UpdateNetworkFirewallPolicyYamlDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateNetworkFirewallPolicyYamlDetail require credential")

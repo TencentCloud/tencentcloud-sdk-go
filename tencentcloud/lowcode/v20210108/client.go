@@ -82,6 +82,7 @@ func (c *Client) CreateKnowledgeSetWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateKnowledgeSetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "CreateKnowledgeSet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateKnowledgeSet require credential")
@@ -133,6 +134,7 @@ func (c *Client) DeleteKnowledgeDocumentSetWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteKnowledgeDocumentSetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "DeleteKnowledgeDocumentSet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteKnowledgeDocumentSet require credential")
@@ -182,6 +184,7 @@ func (c *Client) DeleteKnowledgeSetWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteKnowledgeSetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "DeleteKnowledgeSet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteKnowledgeSet require credential")
@@ -243,6 +246,7 @@ func (c *Client) DescribeDataSourceListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDataSourceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "DescribeDataSourceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDataSourceList require credential")
@@ -292,6 +296,7 @@ func (c *Client) DescribeKnowledgeDocumentSetDetailWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeKnowledgeDocumentSetDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "DescribeKnowledgeDocumentSetDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKnowledgeDocumentSetDetail require credential")
@@ -341,6 +346,7 @@ func (c *Client) DescribeKnowledgeDocumentSetListWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeKnowledgeDocumentSetListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "DescribeKnowledgeDocumentSetList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKnowledgeDocumentSetList require credential")
@@ -390,6 +396,7 @@ func (c *Client) DescribeKnowledgeSetListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeKnowledgeSetListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "DescribeKnowledgeSetList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKnowledgeSetList require credential")
@@ -439,6 +446,7 @@ func (c *Client) SearchDocListWithContext(ctx context.Context, request *SearchDo
     if request == nil {
         request = NewSearchDocListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "SearchDocList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchDocList require credential")
@@ -488,6 +496,7 @@ func (c *Client) UpdateKnowledgeSetWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateKnowledgeSetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "UpdateKnowledgeSet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateKnowledgeSet require credential")
@@ -537,6 +546,7 @@ func (c *Client) UploadKnowledgeDocumentSetWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUploadKnowledgeDocumentSetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "UploadKnowledgeDocumentSet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadKnowledgeDocumentSet require credential")

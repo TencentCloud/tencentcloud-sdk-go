@@ -94,6 +94,7 @@ func (c *Client) CreateIncrementalMigrationStrategyWithContext(ctx context.Conte
     if request == nil {
         request = NewCreateIncrementalMigrationStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateIncrementalMigrationStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIncrementalMigrationStrategy require credential")
@@ -171,6 +172,7 @@ func (c *Client) CreateStorageWithContext(ctx context.Context, request *CreateSt
     if request == nil {
         request = NewCreateStorageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateStorage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStorage require credential")
@@ -228,6 +230,7 @@ func (c *Client) CreateStorageCredentialsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateStorageCredentialsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateStorageCredentials")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStorageCredentials require credential")
@@ -287,6 +290,7 @@ func (c *Client) DeleteIncrementalMigrationStrategyWithContext(ctx context.Conte
     if request == nil {
         request = NewDeleteIncrementalMigrationStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DeleteIncrementalMigrationStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIncrementalMigrationStrategy require credential")
@@ -338,6 +342,7 @@ func (c *Client) DescribeIncrementalMigrationStrategyInfosWithContext(ctx contex
     if request == nil {
         request = NewDescribeIncrementalMigrationStrategyInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeIncrementalMigrationStrategyInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIncrementalMigrationStrategyInfos require credential")
@@ -405,6 +410,7 @@ func (c *Client) DescribeStorageWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeStorageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeStorage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStorage require credential")
@@ -464,6 +470,7 @@ func (c *Client) ModifyIncrementalMigrationStrategyWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyIncrementalMigrationStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ModifyIncrementalMigrationStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyIncrementalMigrationStrategy require credential")

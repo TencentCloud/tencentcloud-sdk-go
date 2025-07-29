@@ -86,6 +86,7 @@ func (c *Client) CreateBotWithContext(ctx context.Context, request *CreateBotReq
     if request == nil {
         request = NewCreateBotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbp", APIVersion, "CreateBot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBot require credential")
@@ -145,6 +146,7 @@ func (c *Client) ResetWithContext(ctx context.Context, request *ResetRequest) (r
     if request == nil {
         request = NewResetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbp", APIVersion, "Reset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Reset require credential")
@@ -206,6 +208,7 @@ func (c *Client) TextProcessWithContext(ctx context.Context, request *TextProces
     if request == nil {
         request = NewTextProcessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbp", APIVersion, "TextProcess")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextProcess require credential")
@@ -267,6 +270,7 @@ func (c *Client) TextResetWithContext(ctx context.Context, request *TextResetReq
     if request == nil {
         request = NewTextResetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbp", APIVersion, "TextReset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextReset require credential")

@@ -96,6 +96,7 @@ func (c *Client) AddFairPlayPemWithContext(ctx context.Context, request *AddFair
     if request == nil {
         request = NewAddFairPlayPemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "drm", APIVersion, "AddFairPlayPem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddFairPlayPem require credential")
@@ -151,6 +152,7 @@ func (c *Client) CreateEncryptKeysWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateEncryptKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "drm", APIVersion, "CreateEncryptKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEncryptKeys require credential")
@@ -210,6 +212,7 @@ func (c *Client) CreateLicenseWithContext(ctx context.Context, request *CreateLi
     if request == nil {
         request = NewCreateLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "drm", APIVersion, "CreateLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLicense require credential")
@@ -273,6 +276,7 @@ func (c *Client) DeleteFairPlayPemWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteFairPlayPemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "drm", APIVersion, "DeleteFairPlayPem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFairPlayPem require credential")
@@ -328,6 +332,7 @@ func (c *Client) DescribeAllKeysWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeAllKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "drm", APIVersion, "DescribeAllKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAllKeys require credential")
@@ -383,6 +388,7 @@ func (c *Client) DescribeDRMLicenseWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDRMLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "drm", APIVersion, "DescribeDRMLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDRMLicense require credential")
@@ -438,6 +444,7 @@ func (c *Client) DescribeFairPlayPemWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeFairPlayPemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "drm", APIVersion, "DescribeFairPlayPem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFairPlayPem require credential")
@@ -497,6 +504,7 @@ func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeK
     if request == nil {
         request = NewDescribeKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "drm", APIVersion, "DescribeKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKeys require credential")
@@ -552,6 +560,7 @@ func (c *Client) GenerateTDRMKeyWithContext(ctx context.Context, request *Genera
     if request == nil {
         request = NewGenerateTDRMKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "drm", APIVersion, "GenerateTDRMKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GenerateTDRMKey require credential")
@@ -615,6 +624,7 @@ func (c *Client) ModifyFairPlayPemWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyFairPlayPemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "drm", APIVersion, "ModifyFairPlayPem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFairPlayPem require credential")
@@ -674,6 +684,7 @@ func (c *Client) StartEncryptionWithContext(ctx context.Context, request *StartE
     if request == nil {
         request = NewStartEncryptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "drm", APIVersion, "StartEncryption")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartEncryption require credential")

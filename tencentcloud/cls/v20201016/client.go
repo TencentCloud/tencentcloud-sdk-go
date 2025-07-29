@@ -84,6 +84,7 @@ func (c *Client) AddMachineGroupInfoWithContext(ctx context.Context, request *Ad
     if request == nil {
         request = NewAddMachineGroupInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "AddMachineGroupInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddMachineGroupInfo require credential")
@@ -153,6 +154,7 @@ func (c *Client) ApplyConfigToMachineGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewApplyConfigToMachineGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ApplyConfigToMachineGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyConfigToMachineGroup require credential")
@@ -218,6 +220,7 @@ func (c *Client) CheckFunctionWithContext(ctx context.Context, request *CheckFun
     if request == nil {
         request = NewCheckFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CheckFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckFunction require credential")
@@ -277,6 +280,7 @@ func (c *Client) CheckRechargeKafkaServerWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCheckRechargeKafkaServerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CheckRechargeKafkaServer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckRechargeKafkaServer require credential")
@@ -344,6 +348,7 @@ func (c *Client) CloseKafkaConsumerWithContext(ctx context.Context, request *Clo
     if request == nil {
         request = NewCloseKafkaConsumerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CloseKafkaConsumer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseKafkaConsumer require credential")
@@ -415,6 +420,7 @@ func (c *Client) CreateAlarmWithContext(ctx context.Context, request *CreateAlar
     if request == nil {
         request = NewCreateAlarmRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateAlarm")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAlarm require credential")
@@ -508,6 +514,7 @@ func (c *Client) CreateAlarmNoticeWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAlarmNoticeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateAlarmNotice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAlarmNotice require credential")
@@ -573,6 +580,7 @@ func (c *Client) CreateAlarmShieldWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAlarmShieldRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateAlarmShield")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAlarmShield require credential")
@@ -644,6 +652,7 @@ func (c *Client) CreateCloudProductLogCollectionWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateCloudProductLogCollectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateCloudProductLogCollection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudProductLogCollection require credential")
@@ -719,6 +728,7 @@ func (c *Client) CreateConfigWithContext(ctx context.Context, request *CreateCon
     if request == nil {
         request = NewCreateConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConfig require credential")
@@ -788,6 +798,7 @@ func (c *Client) CreateConfigExtraWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateConfigExtraRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateConfigExtra")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConfigExtra require credential")
@@ -841,6 +852,7 @@ func (c *Client) CreateConsoleSharingWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateConsoleSharingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateConsoleSharing")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConsoleSharing require credential")
@@ -910,6 +922,7 @@ func (c *Client) CreateConsumerWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateConsumerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateConsumer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConsumer require credential")
@@ -981,6 +994,7 @@ func (c *Client) CreateCosRechargeWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCosRechargeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateCosRecharge")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCosRecharge require credential")
@@ -1054,6 +1068,7 @@ func (c *Client) CreateDashboardSubscribeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateDashboardSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateDashboardSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDashboardSubscribe require credential")
@@ -1129,6 +1144,7 @@ func (c *Client) CreateDataTransformWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateDataTransformRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateDataTransform")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDataTransform require credential")
@@ -1178,6 +1194,7 @@ func (c *Client) CreateDeliverCloudFunctionWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateDeliverCloudFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateDeliverCloudFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDeliverCloudFunction require credential")
@@ -1247,6 +1264,7 @@ func (c *Client) CreateExportWithContext(ctx context.Context, request *CreateExp
     if request == nil {
         request = NewCreateExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateExport require credential")
@@ -1328,6 +1346,7 @@ func (c *Client) CreateIndexWithContext(ctx context.Context, request *CreateInde
     if request == nil {
         request = NewCreateIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIndex require credential")
@@ -1397,6 +1416,7 @@ func (c *Client) CreateKafkaRechargeWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateKafkaRechargeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateKafkaRecharge")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateKafkaRecharge require credential")
@@ -1470,6 +1490,7 @@ func (c *Client) CreateLogsetWithContext(ctx context.Context, request *CreateLog
     if request == nil {
         request = NewCreateLogsetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateLogset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLogset require credential")
@@ -1549,6 +1570,7 @@ func (c *Client) CreateMachineGroupWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateMachineGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateMachineGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMachineGroup require credential")
@@ -1614,6 +1636,7 @@ func (c *Client) CreateNoticeContentWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateNoticeContentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateNoticeContent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNoticeContent require credential")
@@ -1687,6 +1710,7 @@ func (c *Client) CreateScheduledSqlWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateScheduledSqlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateScheduledSql")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateScheduledSql require credential")
@@ -1762,6 +1786,7 @@ func (c *Client) CreateShipperWithContext(ctx context.Context, request *CreateSh
     if request == nil {
         request = NewCreateShipperRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateShipper")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateShipper require credential")
@@ -1839,6 +1864,7 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTopic require credential")
@@ -1904,6 +1930,7 @@ func (c *Client) CreateWebCallbackWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateWebCallbackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateWebCallback")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWebCallback require credential")
@@ -1967,6 +1994,7 @@ func (c *Client) DeleteAlarmWithContext(ctx context.Context, request *DeleteAlar
     if request == nil {
         request = NewDeleteAlarmRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteAlarm")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAlarm require credential")
@@ -2034,6 +2062,7 @@ func (c *Client) DeleteAlarmNoticeWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteAlarmNoticeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteAlarmNotice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAlarmNotice require credential")
@@ -2099,6 +2128,7 @@ func (c *Client) DeleteAlarmShieldWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteAlarmShieldRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteAlarmShield")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAlarmShield require credential")
@@ -2166,6 +2196,7 @@ func (c *Client) DeleteCloudProductLogCollectionWithContext(ctx context.Context,
     if request == nil {
         request = NewDeleteCloudProductLogCollectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteCloudProductLogCollection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudProductLogCollection require credential")
@@ -2237,6 +2268,7 @@ func (c *Client) DeleteConfigWithContext(ctx context.Context, request *DeleteCon
     if request == nil {
         request = NewDeleteConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConfig require credential")
@@ -2302,6 +2334,7 @@ func (c *Client) DeleteConfigExtraWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteConfigExtraRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteConfigExtra")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConfigExtra require credential")
@@ -2371,6 +2404,7 @@ func (c *Client) DeleteConfigFromMachineGroupWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteConfigFromMachineGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteConfigFromMachineGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConfigFromMachineGroup require credential")
@@ -2424,6 +2458,7 @@ func (c *Client) DeleteConsoleSharingWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteConsoleSharingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteConsoleSharing")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConsoleSharing require credential")
@@ -2489,6 +2524,7 @@ func (c *Client) DeleteConsumerWithContext(ctx context.Context, request *DeleteC
     if request == nil {
         request = NewDeleteConsumerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteConsumer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConsumer require credential")
@@ -2560,6 +2596,7 @@ func (c *Client) DeleteCosRechargeWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteCosRechargeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteCosRecharge")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCosRecharge require credential")
@@ -2625,6 +2662,7 @@ func (c *Client) DeleteDashboardSubscribeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteDashboardSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteDashboardSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDashboardSubscribe require credential")
@@ -2696,6 +2734,7 @@ func (c *Client) DeleteDataTransformWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteDataTransformRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteDataTransform")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDataTransform require credential")
@@ -2761,6 +2800,7 @@ func (c *Client) DeleteExportWithContext(ctx context.Context, request *DeleteExp
     if request == nil {
         request = NewDeleteExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteExport require credential")
@@ -2832,6 +2872,7 @@ func (c *Client) DeleteIndexWithContext(ctx context.Context, request *DeleteInde
     if request == nil {
         request = NewDeleteIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIndex require credential")
@@ -2897,6 +2938,7 @@ func (c *Client) DeleteKafkaRechargeWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteKafkaRechargeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteKafkaRecharge")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteKafkaRecharge require credential")
@@ -2966,6 +3008,7 @@ func (c *Client) DeleteLogsetWithContext(ctx context.Context, request *DeleteLog
     if request == nil {
         request = NewDeleteLogsetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteLogset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLogset require credential")
@@ -3035,6 +3078,7 @@ func (c *Client) DeleteMachineGroupWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteMachineGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteMachineGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMachineGroup require credential")
@@ -3084,6 +3128,7 @@ func (c *Client) DeleteMachineGroupInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteMachineGroupInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteMachineGroupInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMachineGroupInfo require credential")
@@ -3151,6 +3196,7 @@ func (c *Client) DeleteNoticeContentWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteNoticeContentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteNoticeContent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNoticeContent require credential")
@@ -3224,6 +3270,7 @@ func (c *Client) DeleteScheduledSqlWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteScheduledSqlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteScheduledSql")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteScheduledSql require credential")
@@ -3295,6 +3342,7 @@ func (c *Client) DeleteShipperWithContext(ctx context.Context, request *DeleteSh
     if request == nil {
         request = NewDeleteShipperRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteShipper")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteShipper require credential")
@@ -3374,6 +3422,7 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopi
     if request == nil {
         request = NewDeleteTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTopic require credential")
@@ -3441,6 +3490,7 @@ func (c *Client) DeleteWebCallbackWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteWebCallbackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteWebCallback")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteWebCallback require credential")
@@ -3506,6 +3556,7 @@ func (c *Client) DescribeAlarmNoticesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAlarmNoticesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeAlarmNotices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlarmNotices require credential")
@@ -3585,6 +3636,7 @@ func (c *Client) DescribeAlarmShieldsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAlarmShieldsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeAlarmShields")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlarmShields require credential")
@@ -3644,6 +3696,7 @@ func (c *Client) DescribeAlarmsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeAlarmsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeAlarms")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlarms require credential")
@@ -3713,6 +3766,7 @@ func (c *Client) DescribeAlertRecordHistoryWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAlertRecordHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeAlertRecordHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlertRecordHistory require credential")
@@ -3762,6 +3816,7 @@ func (c *Client) DescribeCloudProductLogTasksWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeCloudProductLogTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeCloudProductLogTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudProductLogTasks require credential")
@@ -3829,6 +3884,7 @@ func (c *Client) DescribeConfigExtrasWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeConfigExtrasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeConfigExtras")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigExtras require credential")
@@ -3900,6 +3956,7 @@ func (c *Client) DescribeConfigMachineGroupsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeConfigMachineGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeConfigMachineGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigMachineGroups require credential")
@@ -3971,6 +4028,7 @@ func (c *Client) DescribeConfigsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigs require credential")
@@ -4022,6 +4080,7 @@ func (c *Client) DescribeConsoleSharingListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeConsoleSharingListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeConsoleSharingList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConsoleSharingList require credential")
@@ -4089,6 +4148,7 @@ func (c *Client) DescribeConsumerWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeConsumerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeConsumer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConsumer require credential")
@@ -4160,6 +4220,7 @@ func (c *Client) DescribeCosRechargesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCosRechargesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeCosRecharges")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCosRecharges require credential")
@@ -4231,6 +4292,7 @@ func (c *Client) DescribeDashboardSubscribesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDashboardSubscribesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeDashboardSubscribes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDashboardSubscribes require credential")
@@ -4302,6 +4364,7 @@ func (c *Client) DescribeDashboardsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDashboardsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeDashboards")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDashboards require credential")
@@ -4371,6 +4434,7 @@ func (c *Client) DescribeDataTransformInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDataTransformInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeDataTransformInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDataTransformInfo require credential")
@@ -4442,6 +4506,7 @@ func (c *Client) DescribeExportsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeExportsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeExports")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExports require credential")
@@ -4513,6 +4578,7 @@ func (c *Client) DescribeIndexWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIndex require credential")
@@ -4582,6 +4648,7 @@ func (c *Client) DescribeKafkaConsumerWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeKafkaConsumerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeKafkaConsumer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKafkaConsumer require credential")
@@ -4653,6 +4720,7 @@ func (c *Client) DescribeKafkaRechargesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeKafkaRechargesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeKafkaRecharges")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKafkaRecharges require credential")
@@ -4738,6 +4806,7 @@ func (c *Client) DescribeLogContextWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeLogContextRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeLogContext")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogContext require credential")
@@ -4825,6 +4894,7 @@ func (c *Client) DescribeLogHistogramWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeLogHistogramRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeLogHistogram")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogHistogram require credential")
@@ -4896,6 +4966,7 @@ func (c *Client) DescribeLogsetsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeLogsetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeLogsets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogsets require credential")
@@ -4965,6 +5036,7 @@ func (c *Client) DescribeMachineGroupConfigsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeMachineGroupConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeMachineGroupConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMachineGroupConfigs require credential")
@@ -5034,6 +5106,7 @@ func (c *Client) DescribeMachineGroupsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeMachineGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeMachineGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMachineGroups require credential")
@@ -5105,6 +5178,7 @@ func (c *Client) DescribeMachinesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeMachinesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeMachines")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMachines require credential")
@@ -5170,6 +5244,7 @@ func (c *Client) DescribeNoticeContentsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeNoticeContentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeNoticeContents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNoticeContents require credential")
@@ -5239,6 +5314,7 @@ func (c *Client) DescribePartitionsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePartitionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribePartitions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePartitions require credential")
@@ -5310,6 +5386,7 @@ func (c *Client) DescribeScheduledSqlInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeScheduledSqlInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeScheduledSqlInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScheduledSqlInfo require credential")
@@ -5381,6 +5458,7 @@ func (c *Client) DescribeShipperTasksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeShipperTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeShipperTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeShipperTasks require credential")
@@ -5454,6 +5532,7 @@ func (c *Client) DescribeShippersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeShippersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeShippers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeShippers require credential")
@@ -5533,6 +5612,7 @@ func (c *Client) DescribeTopicsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeTopicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeTopics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopics require credential")
@@ -5598,6 +5678,7 @@ func (c *Client) DescribeWebCallbacksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeWebCallbacksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeWebCallbacks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWebCallbacks require credential")
@@ -5687,6 +5768,7 @@ func (c *Client) GetAlarmLogWithContext(ctx context.Context, request *GetAlarmLo
     if request == nil {
         request = NewGetAlarmLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "GetAlarmLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAlarmLog require credential")
@@ -5760,6 +5842,7 @@ func (c *Client) MergePartitionWithContext(ctx context.Context, request *MergePa
     if request == nil {
         request = NewMergePartitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "MergePartition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MergePartition require credential")
@@ -5835,6 +5918,7 @@ func (c *Client) ModifyAlarmWithContext(ctx context.Context, request *ModifyAlar
     if request == nil {
         request = NewModifyAlarmRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyAlarm")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAlarm require credential")
@@ -5906,6 +5990,7 @@ func (c *Client) ModifyAlarmNoticeWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAlarmNoticeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyAlarmNotice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAlarmNotice require credential")
@@ -5971,6 +6056,7 @@ func (c *Client) ModifyAlarmShieldWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAlarmShieldRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyAlarmShield")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAlarmShield require credential")
@@ -6038,6 +6124,7 @@ func (c *Client) ModifyCloudProductLogCollectionWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyCloudProductLogCollectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyCloudProductLogCollection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCloudProductLogCollection require credential")
@@ -6113,6 +6200,7 @@ func (c *Client) ModifyConfigWithContext(ctx context.Context, request *ModifyCon
     if request == nil {
         request = NewModifyConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConfig require credential")
@@ -6182,6 +6270,7 @@ func (c *Client) ModifyConfigExtraWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyConfigExtraRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyConfigExtra")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConfigExtra require credential")
@@ -6235,6 +6324,7 @@ func (c *Client) ModifyConsoleSharingWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyConsoleSharingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyConsoleSharing")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConsoleSharing require credential")
@@ -6302,6 +6392,7 @@ func (c *Client) ModifyConsumerWithContext(ctx context.Context, request *ModifyC
     if request == nil {
         request = NewModifyConsumerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyConsumer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConsumer require credential")
@@ -6373,6 +6464,7 @@ func (c *Client) ModifyCosRechargeWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyCosRechargeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyCosRecharge")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCosRecharge require credential")
@@ -6446,6 +6538,7 @@ func (c *Client) ModifyDashboardSubscribeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyDashboardSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyDashboardSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDashboardSubscribe require credential")
@@ -6521,6 +6614,7 @@ func (c *Client) ModifyDataTransformWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyDataTransformRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyDataTransform")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDataTransform require credential")
@@ -6600,6 +6694,7 @@ func (c *Client) ModifyIndexWithContext(ctx context.Context, request *ModifyInde
     if request == nil {
         request = NewModifyIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyIndex require credential")
@@ -6671,6 +6766,7 @@ func (c *Client) ModifyKafkaConsumerWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyKafkaConsumerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyKafkaConsumer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyKafkaConsumer require credential")
@@ -6734,6 +6830,7 @@ func (c *Client) ModifyKafkaRechargeWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyKafkaRechargeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyKafkaRecharge")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyKafkaRecharge require credential")
@@ -6807,6 +6904,7 @@ func (c *Client) ModifyLogsetWithContext(ctx context.Context, request *ModifyLog
     if request == nil {
         request = NewModifyLogsetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyLogset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLogset require credential")
@@ -6888,6 +6986,7 @@ func (c *Client) ModifyMachineGroupWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyMachineGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyMachineGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMachineGroup require credential")
@@ -6959,6 +7058,7 @@ func (c *Client) ModifyNoticeContentWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyNoticeContentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyNoticeContent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNoticeContent require credential")
@@ -7034,6 +7134,7 @@ func (c *Client) ModifyScheduledSqlWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyScheduledSqlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyScheduledSql")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyScheduledSql require credential")
@@ -7103,6 +7204,7 @@ func (c *Client) ModifyShipperWithContext(ctx context.Context, request *ModifySh
     if request == nil {
         request = NewModifyShipperRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyShipper")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyShipper require credential")
@@ -7184,6 +7286,7 @@ func (c *Client) ModifyTopicWithContext(ctx context.Context, request *ModifyTopi
     if request == nil {
         request = NewModifyTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTopic require credential")
@@ -7257,6 +7360,7 @@ func (c *Client) ModifyWebCallbackWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyWebCallbackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyWebCallback")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWebCallback require credential")
@@ -7330,6 +7434,7 @@ func (c *Client) OpenKafkaConsumerWithContext(ctx context.Context, request *Open
     if request == nil {
         request = NewOpenKafkaConsumerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "OpenKafkaConsumer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenKafkaConsumer require credential")
@@ -7397,6 +7502,7 @@ func (c *Client) PreviewKafkaRechargeWithContext(ctx context.Context, request *P
     if request == nil {
         request = NewPreviewKafkaRechargeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "PreviewKafkaRecharge")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PreviewKafkaRecharge require credential")
@@ -7466,6 +7572,7 @@ func (c *Client) QueryMetricWithContext(ctx context.Context, request *QueryMetri
     if request == nil {
         request = NewQueryMetricRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "QueryMetric")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMetric require credential")
@@ -7523,6 +7630,7 @@ func (c *Client) QueryRangeMetricWithContext(ctx context.Context, request *Query
     if request == nil {
         request = NewQueryRangeMetricRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "QueryRangeMetric")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryRangeMetric require credential")
@@ -7598,6 +7706,7 @@ func (c *Client) RetryShipperTaskWithContext(ctx context.Context, request *Retry
     if request == nil {
         request = NewRetryShipperTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "RetryShipperTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RetryShipperTask require credential")
@@ -7681,6 +7790,7 @@ func (c *Client) SearchCosRechargeInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSearchCosRechargeInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "SearchCosRechargeInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchCosRechargeInfo require credential")
@@ -7752,6 +7862,7 @@ func (c *Client) SearchDashboardSubscribeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewSearchDashboardSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "SearchDashboardSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchDashboardSubscribe require credential")
@@ -7857,6 +7968,7 @@ func (c *Client) SearchLogWithContext(ctx context.Context, request *SearchLogReq
     if request == nil {
         request = NewSearchLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "SearchLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchLog require credential")
@@ -7936,6 +8048,7 @@ func (c *Client) SplitPartitionWithContext(ctx context.Context, request *SplitPa
     if request == nil {
         request = NewSplitPartitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "SplitPartition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SplitPartition require credential")
@@ -8595,6 +8708,7 @@ func (c *Client) UploadLogWithContext(ctx context.Context, request *UploadLogReq
     if request == nil {
         request = NewUploadLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "UploadLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadLog require credential")

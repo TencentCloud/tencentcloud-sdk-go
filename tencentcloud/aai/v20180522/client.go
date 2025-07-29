@@ -108,6 +108,7 @@ func (c *Client) ChatWithContext(ctx context.Context, request *ChatRequest) (res
     if request == nil {
         request = NewChatRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aai", APIVersion, "Chat")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Chat require credential")
@@ -211,6 +212,7 @@ func (c *Client) SentenceRecognitionWithContext(ctx context.Context, request *Se
     if request == nil {
         request = NewSentenceRecognitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aai", APIVersion, "SentenceRecognition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SentenceRecognition require credential")
@@ -300,6 +302,7 @@ func (c *Client) SimultaneousInterpretingWithContext(ctx context.Context, reques
     if request == nil {
         request = NewSimultaneousInterpretingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aai", APIVersion, "SimultaneousInterpreting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SimultaneousInterpreting require credential")
@@ -367,6 +370,7 @@ func (c *Client) TextToVoiceWithContext(ctx context.Context, request *TextToVoic
     if request == nil {
         request = NewTextToVoiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aai", APIVersion, "TextToVoice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextToVoice require credential")

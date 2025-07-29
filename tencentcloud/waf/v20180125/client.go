@@ -88,6 +88,7 @@ func (c *Client) AddAntiFakeUrlWithContext(ctx context.Context, request *AddAnti
     if request == nil {
         request = NewAddAntiFakeUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "AddAntiFakeUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddAntiFakeUrl require credential")
@@ -145,6 +146,7 @@ func (c *Client) AddAntiInfoLeakRulesWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAddAntiInfoLeakRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "AddAntiInfoLeakRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddAntiInfoLeakRules require credential")
@@ -220,6 +222,7 @@ func (c *Client) AddAreaBanAreasWithContext(ctx context.Context, request *AddAre
     if request == nil {
         request = NewAddAreaBanAreasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "AddAreaBanAreas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddAreaBanAreas require credential")
@@ -309,6 +312,7 @@ func (c *Client) AddAttackWhiteRuleWithContext(ctx context.Context, request *Add
     if request == nil {
         request = NewAddAttackWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "AddAttackWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddAttackWhiteRule require credential")
@@ -368,6 +372,7 @@ func (c *Client) AddCustomRuleWithContext(ctx context.Context, request *AddCusto
     if request == nil {
         request = NewAddCustomRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "AddCustomRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddCustomRule require credential")
@@ -429,6 +434,7 @@ func (c *Client) AddCustomWhiteRuleWithContext(ctx context.Context, request *Add
     if request == nil {
         request = NewAddCustomWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "AddCustomWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddCustomWhiteRule require credential")
@@ -488,6 +494,7 @@ func (c *Client) AddDomainWhiteRuleWithContext(ctx context.Context, request *Add
     if request == nil {
         request = NewAddDomainWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "AddDomainWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddDomainWhiteRule require credential")
@@ -585,6 +592,7 @@ func (c *Client) AddSpartaProtectionWithContext(ctx context.Context, request *Ad
     if request == nil {
         request = NewAddSpartaProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "AddSpartaProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddSpartaProtection require credential")
@@ -682,6 +690,7 @@ func (c *Client) BatchOperateUserSignatureRulesWithContext(ctx context.Context, 
     if request == nil {
         request = NewBatchOperateUserSignatureRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "BatchOperateUserSignatureRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchOperateUserSignatureRules require credential")
@@ -769,6 +778,7 @@ func (c *Client) CreateAccessExportWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateAccessExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreateAccessExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAccessExport require credential")
@@ -846,6 +856,7 @@ func (c *Client) CreateAreaBanRuleWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAreaBanRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreateAreaBanRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAreaBanRule require credential")
@@ -935,6 +946,7 @@ func (c *Client) CreateDealsWithContext(ctx context.Context, request *CreateDeal
     if request == nil {
         request = NewCreateDealsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreateDeals")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDeals require credential")
@@ -1010,6 +1022,7 @@ func (c *Client) CreateHostWithContext(ctx context.Context, request *CreateHostR
     if request == nil {
         request = NewCreateHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreateHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateHost require credential")
@@ -1069,6 +1082,7 @@ func (c *Client) CreateIpAccessControlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateIpAccessControlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreateIpAccessControl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIpAccessControl require credential")
@@ -1152,6 +1166,7 @@ func (c *Client) CreatePostCKafkaFlowWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreatePostCKafkaFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreatePostCKafkaFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePostCKafkaFlow require credential")
@@ -1235,6 +1250,7 @@ func (c *Client) CreatePostCLSFlowWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreatePostCLSFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreatePostCLSFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePostCLSFlow require credential")
@@ -1322,6 +1338,7 @@ func (c *Client) DeleteAccessExportWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteAccessExportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteAccessExport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAccessExport require credential")
@@ -1375,6 +1392,7 @@ func (c *Client) DeleteAntiFakeUrlWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteAntiFakeUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteAntiFakeUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAntiFakeUrl require credential")
@@ -1426,6 +1444,7 @@ func (c *Client) DeleteAntiInfoLeakRuleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteAntiInfoLeakRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteAntiInfoLeakRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAntiInfoLeakRule require credential")
@@ -1481,6 +1500,7 @@ func (c *Client) DeleteAttackDownloadRecordWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteAttackDownloadRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteAttackDownloadRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAttackDownloadRecord require credential")
@@ -1568,6 +1588,7 @@ func (c *Client) DeleteAttackWhiteRuleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteAttackWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteAttackWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAttackWhiteRule require credential")
@@ -1617,6 +1638,7 @@ func (c *Client) DeleteBotSceneUCBRuleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteBotSceneUCBRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteBotSceneUCBRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBotSceneUCBRule require credential")
@@ -1670,6 +1692,7 @@ func (c *Client) DeleteCCRuleWithContext(ctx context.Context, request *DeleteCCR
     if request == nil {
         request = NewDeleteCCRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteCCRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCCRule require credential")
@@ -1721,6 +1744,7 @@ func (c *Client) DeleteCustomRuleWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteCustomRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteCustomRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomRule require credential")
@@ -1774,6 +1798,7 @@ func (c *Client) DeleteCustomWhiteRuleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteCustomWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteCustomWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomWhiteRule require credential")
@@ -1831,6 +1856,7 @@ func (c *Client) DeleteDomainWhiteRulesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteDomainWhiteRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteDomainWhiteRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDomainWhiteRules require credential")
@@ -1904,6 +1930,7 @@ func (c *Client) DeleteHostWithContext(ctx context.Context, request *DeleteHostR
     if request == nil {
         request = NewDeleteHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteHost require credential")
@@ -1961,6 +1988,7 @@ func (c *Client) DeleteIpAccessControlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteIpAccessControlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteIpAccessControl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIpAccessControl require credential")
@@ -2022,6 +2050,7 @@ func (c *Client) DeleteIpAccessControlV2WithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteIpAccessControlV2Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteIpAccessControlV2")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIpAccessControlV2 require credential")
@@ -2077,6 +2106,7 @@ func (c *Client) DeleteSessionWithContext(ctx context.Context, request *DeleteSe
     if request == nil {
         request = NewDeleteSessionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteSession")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSession require credential")
@@ -2132,6 +2162,7 @@ func (c *Client) DeleteSpartaProtectionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteSpartaProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteSpartaProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSpartaProtection require credential")
@@ -2219,6 +2250,7 @@ func (c *Client) DescribeAccessExportsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAccessExportsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAccessExports")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessExports require credential")
@@ -2306,6 +2338,7 @@ func (c *Client) DescribeAccessFastAnalysisWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAccessFastAnalysisRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAccessFastAnalysis")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessFastAnalysis require credential")
@@ -2403,6 +2436,7 @@ func (c *Client) DescribeAccessHistogramWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAccessHistogramRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAccessHistogram")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessHistogram require credential")
@@ -2490,6 +2524,7 @@ func (c *Client) DescribeAccessIndexWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAccessIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAccessIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessIndex require credential")
@@ -2541,6 +2576,7 @@ func (c *Client) DescribeAntiFakeRulesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAntiFakeRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAntiFakeRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAntiFakeRules require credential")
@@ -2592,6 +2628,7 @@ func (c *Client) DescribeAntiInfoLeakageRulesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAntiInfoLeakageRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAntiInfoLeakageRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAntiInfoLeakageRules require credential")
@@ -2641,6 +2678,7 @@ func (c *Client) DescribeApiDetailWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeApiDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeApiDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiDetail require credential")
@@ -2692,6 +2730,7 @@ func (c *Client) DescribeApiListVersionTwoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeApiListVersionTwoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeApiListVersionTwo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiListVersionTwo require credential")
@@ -2743,6 +2782,7 @@ func (c *Client) DescribeAreaBanAreasWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAreaBanAreasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAreaBanAreas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAreaBanAreas require credential")
@@ -2794,6 +2834,7 @@ func (c *Client) DescribeAreaBanRuleWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAreaBanRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAreaBanRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAreaBanRule require credential")
@@ -2843,6 +2884,7 @@ func (c *Client) DescribeAreaBanSupportAreasWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAreaBanSupportAreasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAreaBanSupportAreas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAreaBanSupportAreas require credential")
@@ -2930,6 +2972,7 @@ func (c *Client) DescribeAttackOverviewWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAttackOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAttackOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAttackOverview require credential")
@@ -2987,6 +3030,7 @@ func (c *Client) DescribeAttackTypeWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAttackTypeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAttackType")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAttackType require credential")
@@ -3076,6 +3120,7 @@ func (c *Client) DescribeAttackWhiteRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAttackWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAttackWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAttackWhiteRule require credential")
@@ -3127,6 +3172,7 @@ func (c *Client) DescribeAutoDenyIPWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAutoDenyIPRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAutoDenyIP")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoDenyIP require credential")
@@ -3182,6 +3228,7 @@ func (c *Client) DescribeBatchIpAccessControlWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeBatchIpAccessControlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeBatchIpAccessControl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBatchIpAccessControl require credential")
@@ -3239,6 +3286,7 @@ func (c *Client) DescribeBotSceneListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBotSceneListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeBotSceneList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBotSceneList require credential")
@@ -3292,6 +3340,7 @@ func (c *Client) DescribeBotSceneOverviewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeBotSceneOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeBotSceneOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBotSceneOverview require credential")
@@ -3351,6 +3400,7 @@ func (c *Client) DescribeBotSceneUCBRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeBotSceneUCBRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeBotSceneUCBRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBotSceneUCBRule require credential")
@@ -3402,6 +3452,7 @@ func (c *Client) DescribeCCAutoStatusWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCCAutoStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeCCAutoStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCAutoStatus require credential")
@@ -3451,6 +3502,7 @@ func (c *Client) DescribeCCRuleWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeCCRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeCCRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCRule require credential")
@@ -3502,6 +3554,7 @@ func (c *Client) DescribeCCRuleListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCCRuleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeCCRuleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCRuleList require credential")
@@ -3571,6 +3624,7 @@ func (c *Client) DescribeCertificateVerifyResultWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeCertificateVerifyResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeCertificateVerifyResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCertificateVerifyResult require credential")
@@ -3658,6 +3712,7 @@ func (c *Client) DescribeCiphersDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCiphersDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeCiphersDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCiphersDetail require credential")
@@ -3713,6 +3768,7 @@ func (c *Client) DescribeCustomRuleListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCustomRuleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeCustomRuleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomRuleList require credential")
@@ -3768,6 +3824,7 @@ func (c *Client) DescribeCustomWhiteRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeCustomWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeCustomWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomWhiteRule require credential")
@@ -3855,6 +3912,7 @@ func (c *Client) DescribeDomainCountInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDomainCountInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeDomainCountInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainCountInfo require credential")
@@ -3942,6 +4000,7 @@ func (c *Client) DescribeDomainDetailsClbWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDomainDetailsClbRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeDomainDetailsClb")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainDetailsClb require credential")
@@ -4031,6 +4090,7 @@ func (c *Client) DescribeDomainDetailsSaasWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDomainDetailsSaasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeDomainDetailsSaas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainDetailsSaas require credential")
@@ -4086,6 +4146,7 @@ func (c *Client) DescribeDomainRulesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDomainRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeDomainRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainRules require credential")
@@ -4147,6 +4208,7 @@ func (c *Client) DescribeDomainVerifyResultWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDomainVerifyResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeDomainVerifyResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainVerifyResult require credential")
@@ -4200,6 +4262,7 @@ func (c *Client) DescribeDomainWhiteRulesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDomainWhiteRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeDomainWhiteRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainWhiteRules require credential")
@@ -4287,6 +4350,7 @@ func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomains require credential")
@@ -4374,6 +4438,7 @@ func (c *Client) DescribeFindDomainListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeFindDomainListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeFindDomainList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFindDomainList require credential")
@@ -4435,6 +4500,7 @@ func (c *Client) DescribeFlowTrendWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeFlowTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeFlowTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlowTrend require credential")
@@ -4492,6 +4558,7 @@ func (c *Client) DescribeHistogramWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeHistogramRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeHistogram")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHistogram require credential")
@@ -4565,6 +4632,7 @@ func (c *Client) DescribeHostWithContext(ctx context.Context, request *DescribeH
     if request == nil {
         request = NewDescribeHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHost require credential")
@@ -4638,6 +4706,7 @@ func (c *Client) DescribeHostLimitWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeHostLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeHostLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostLimit require credential")
@@ -4711,6 +4780,7 @@ func (c *Client) DescribeHostsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeHostsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeHosts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHosts require credential")
@@ -4798,6 +4868,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -4853,6 +4924,7 @@ func (c *Client) DescribeIpAccessControlWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeIpAccessControlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeIpAccessControl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIpAccessControl require credential")
@@ -4906,6 +4978,7 @@ func (c *Client) DescribeIpHitItemsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeIpHitItemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeIpHitItems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIpHitItems require credential")
@@ -4959,6 +5032,7 @@ func (c *Client) DescribeModuleStatusWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeModuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeModuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModuleStatus require credential")
@@ -5012,6 +5086,7 @@ func (c *Client) DescribeObjectsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeObjectsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeObjects")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeObjects require credential")
@@ -5099,6 +5174,7 @@ func (c *Client) DescribePeakPointsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePeakPointsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribePeakPoints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePeakPoints require credential")
@@ -5186,6 +5262,7 @@ func (c *Client) DescribePeakValueWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribePeakValueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribePeakValue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePeakValue require credential")
@@ -5237,6 +5314,7 @@ func (c *Client) DescribePolicyStatusWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribePolicyStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribePolicyStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePolicyStatus require credential")
@@ -5286,6 +5364,7 @@ func (c *Client) DescribePortsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribePortsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribePorts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePorts require credential")
@@ -5369,6 +5448,7 @@ func (c *Client) DescribePostCKafkaFlowsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribePostCKafkaFlowsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribePostCKafkaFlows")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePostCKafkaFlows require credential")
@@ -5452,6 +5532,7 @@ func (c *Client) DescribePostCLSFlowsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribePostCLSFlowsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribePostCLSFlows")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePostCLSFlows require credential")
@@ -5535,6 +5616,7 @@ func (c *Client) DescribeProtectionModesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeProtectionModesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeProtectionModes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProtectionModes require credential")
@@ -5588,6 +5670,7 @@ func (c *Client) DescribeRuleLimitWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeRuleLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeRuleLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRuleLimit require credential")
@@ -5637,6 +5720,7 @@ func (c *Client) DescribeScanIpWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeScanIpRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeScanIp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScanIp require credential")
@@ -5688,6 +5772,7 @@ func (c *Client) DescribeSessionWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSessionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeSession")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSession require credential")
@@ -5737,6 +5822,7 @@ func (c *Client) DescribeSpartaProtectionInfoWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeSpartaProtectionInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeSpartaProtectionInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSpartaProtectionInfo require credential")
@@ -5822,6 +5908,7 @@ func (c *Client) DescribeTlsVersionWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTlsVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeTlsVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTlsVersion require credential")
@@ -5875,6 +5962,7 @@ func (c *Client) DescribeTopAttackDomainWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeTopAttackDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeTopAttackDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopAttackDomain require credential")
@@ -5928,6 +6016,7 @@ func (c *Client) DescribeUserCdcClbWafRegionsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeUserCdcClbWafRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeUserCdcClbWafRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserCdcClbWafRegions require credential")
@@ -6005,6 +6094,7 @@ func (c *Client) DescribeUserClbWafRegionsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeUserClbWafRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeUserClbWafRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserClbWafRegions require credential")
@@ -6092,6 +6182,7 @@ func (c *Client) DescribeUserDomainInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeUserDomainInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeUserDomainInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserDomainInfo require credential")
@@ -6155,6 +6246,7 @@ func (c *Client) DescribeUserLevelWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUserLevelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeUserLevel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserLevel require credential")
@@ -6218,6 +6310,7 @@ func (c *Client) DescribeUserSignatureClassWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeUserSignatureClassRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeUserSignatureClass")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserSignatureClass require credential")
@@ -6305,6 +6398,7 @@ func (c *Client) DescribeUserSignatureRuleWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeUserSignatureRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeUserSignatureRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserSignatureRule require credential")
@@ -6392,6 +6486,7 @@ func (c *Client) DescribeUserSignatureRuleV2WithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeUserSignatureRuleV2Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeUserSignatureRuleV2")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserSignatureRuleV2 require credential")
@@ -6479,6 +6574,7 @@ func (c *Client) DescribeVipInfoWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeVipInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeVipInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVipInfo require credential")
@@ -6530,6 +6626,7 @@ func (c *Client) DescribeWafAutoDenyRulesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeWafAutoDenyRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeWafAutoDenyRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWafAutoDenyRules require credential")
@@ -6589,6 +6686,7 @@ func (c *Client) DescribeWafAutoDenyStatusWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeWafAutoDenyStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeWafAutoDenyStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWafAutoDenyStatus require credential")
@@ -6642,6 +6740,7 @@ func (c *Client) DescribeWafThreatenIntelligenceWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeWafThreatenIntelligenceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeWafThreatenIntelligence")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWafThreatenIntelligence require credential")
@@ -6717,6 +6816,7 @@ func (c *Client) DescribeWebshellStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeWebshellStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeWebshellStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWebshellStatus require credential")
@@ -6800,6 +6900,7 @@ func (c *Client) DestroyPostCKafkaFlowWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDestroyPostCKafkaFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DestroyPostCKafkaFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyPostCKafkaFlow require credential")
@@ -6883,6 +6984,7 @@ func (c *Client) DestroyPostCLSFlowWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDestroyPostCLSFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DestroyPostCLSFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyPostCLSFlow require credential")
@@ -6932,6 +7034,7 @@ func (c *Client) FreshAntiFakeUrlWithContext(ctx context.Context, request *Fresh
     if request == nil {
         request = NewFreshAntiFakeUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "FreshAntiFakeUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FreshAntiFakeUrl require credential")
@@ -7021,6 +7124,7 @@ func (c *Client) GenerateDealsAndPayNewWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGenerateDealsAndPayNewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "GenerateDealsAndPayNew")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GenerateDealsAndPayNew require credential")
@@ -7076,6 +7180,7 @@ func (c *Client) GetAttackDownloadRecordsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewGetAttackDownloadRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "GetAttackDownloadRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAttackDownloadRecords require credential")
@@ -7141,6 +7246,7 @@ func (c *Client) GetAttackHistogramWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetAttackHistogramRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "GetAttackHistogram")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAttackHistogram require credential")
@@ -7206,6 +7312,7 @@ func (c *Client) GetAttackTotalCountWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetAttackTotalCountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "GetAttackTotalCount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAttackTotalCount require credential")
@@ -7271,6 +7378,7 @@ func (c *Client) GetInstanceQpsLimitWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetInstanceQpsLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "GetInstanceQpsLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetInstanceQpsLimit require credential")
@@ -7336,6 +7444,7 @@ func (c *Client) ImportIpAccessControlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewImportIpAccessControlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ImportIpAccessControl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportIpAccessControl require credential")
@@ -7385,6 +7494,7 @@ func (c *Client) ModifyAntiFakeUrlWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAntiFakeUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyAntiFakeUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAntiFakeUrl require credential")
@@ -7438,6 +7548,7 @@ func (c *Client) ModifyAntiFakeUrlStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyAntiFakeUrlStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyAntiFakeUrlStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAntiFakeUrlStatus require credential")
@@ -7487,6 +7598,7 @@ func (c *Client) ModifyAntiInfoLeakRuleStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyAntiInfoLeakRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyAntiInfoLeakRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAntiInfoLeakRuleStatus require credential")
@@ -7536,6 +7648,7 @@ func (c *Client) ModifyAntiInfoLeakRulesWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyAntiInfoLeakRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyAntiInfoLeakRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAntiInfoLeakRules require credential")
@@ -7585,6 +7698,7 @@ func (c *Client) ModifyApiAnalyzeStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyApiAnalyzeStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyApiAnalyzeStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApiAnalyzeStatus require credential")
@@ -7634,6 +7748,7 @@ func (c *Client) ModifyApiSecEventChangeWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyApiSecEventChangeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyApiSecEventChange")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApiSecEventChange require credential")
@@ -7709,6 +7824,7 @@ func (c *Client) ModifyAreaBanAreasWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyAreaBanAreasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyAreaBanAreas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAreaBanAreas require credential")
@@ -7786,6 +7902,7 @@ func (c *Client) ModifyAreaBanRuleWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAreaBanRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyAreaBanRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAreaBanRule require credential")
@@ -7835,6 +7952,7 @@ func (c *Client) ModifyAreaBanStatusWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyAreaBanStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyAreaBanStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAreaBanStatus require credential")
@@ -7924,6 +8042,7 @@ func (c *Client) ModifyAttackWhiteRuleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyAttackWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyAttackWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAttackWhiteRule require credential")
@@ -7979,6 +8098,7 @@ func (c *Client) ModifyBotSceneStatusWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyBotSceneStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyBotSceneStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBotSceneStatus require credential")
@@ -8030,6 +8150,7 @@ func (c *Client) ModifyBotSceneUCBRuleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyBotSceneUCBRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyBotSceneUCBRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBotSceneUCBRule require credential")
@@ -8083,6 +8204,7 @@ func (c *Client) ModifyBotStatusWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyBotStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyBotStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBotStatus require credential")
@@ -8164,6 +8286,7 @@ func (c *Client) ModifyCustomRuleWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyCustomRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyCustomRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomRule require credential")
@@ -8217,6 +8340,7 @@ func (c *Client) ModifyCustomRuleStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyCustomRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyCustomRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomRuleStatus require credential")
@@ -8272,6 +8396,7 @@ func (c *Client) ModifyCustomWhiteRuleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyCustomWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyCustomWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomWhiteRule require credential")
@@ -8325,6 +8450,7 @@ func (c *Client) ModifyCustomWhiteRuleStatusWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyCustomWhiteRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyCustomWhiteRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomWhiteRuleStatus require credential")
@@ -8414,6 +8540,7 @@ func (c *Client) ModifyDomainIpv6StatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyDomainIpv6StatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyDomainIpv6Status")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDomainIpv6Status require credential")
@@ -8499,6 +8626,7 @@ func (c *Client) ModifyDomainPostActionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyDomainPostActionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyDomainPostAction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDomainPostAction require credential")
@@ -8556,6 +8684,7 @@ func (c *Client) ModifyDomainWhiteRuleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyDomainWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyDomainWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDomainWhiteRule require credential")
@@ -8645,6 +8774,7 @@ func (c *Client) ModifyDomainsCLSStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyDomainsCLSStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyDomainsCLSStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDomainsCLSStatus require credential")
@@ -8734,6 +8864,7 @@ func (c *Client) ModifyGenerateDealsWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyGenerateDealsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyGenerateDeals")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyGenerateDeals require credential")
@@ -8809,6 +8940,7 @@ func (c *Client) ModifyHostWithContext(ctx context.Context, request *ModifyHostR
     if request == nil {
         request = NewModifyHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyHost require credential")
@@ -8882,6 +9014,7 @@ func (c *Client) ModifyHostFlowModeWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyHostFlowModeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyHostFlowMode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyHostFlowMode require credential")
@@ -8957,6 +9090,7 @@ func (c *Client) ModifyHostModeWithContext(ctx context.Context, request *ModifyH
     if request == nil {
         request = NewModifyHostModeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyHostMode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyHostMode require credential")
@@ -9034,6 +9168,7 @@ func (c *Client) ModifyHostStatusWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyHostStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyHostStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyHostStatus require credential")
@@ -9107,6 +9242,7 @@ func (c *Client) ModifyInstanceAttackLogPostWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyInstanceAttackLogPostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyInstanceAttackLogPost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceAttackLogPost require credential")
@@ -9194,6 +9330,7 @@ func (c *Client) ModifyInstanceElasticModeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyInstanceElasticModeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyInstanceElasticMode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceElasticMode require credential")
@@ -9253,6 +9390,7 @@ func (c *Client) ModifyInstanceNameWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyInstanceNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyInstanceName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceName require credential")
@@ -9312,6 +9450,7 @@ func (c *Client) ModifyInstanceQpsLimitWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyInstanceQpsLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyInstanceQpsLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceQpsLimit require credential")
@@ -9399,6 +9538,7 @@ func (c *Client) ModifyInstanceRenewFlagWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyInstanceRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyInstanceRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceRenewFlag require credential")
@@ -9458,6 +9598,7 @@ func (c *Client) ModifyIpAccessControlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyIpAccessControlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyIpAccessControl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyIpAccessControl require credential")
@@ -9507,6 +9648,7 @@ func (c *Client) ModifyModuleStatusWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyModuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyModuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModuleStatus require credential")
@@ -9564,6 +9706,7 @@ func (c *Client) ModifyObjectWithContext(ctx context.Context, request *ModifyObj
     if request == nil {
         request = NewModifyObjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyObject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyObject require credential")
@@ -9619,6 +9762,7 @@ func (c *Client) ModifyProtectionStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyProtectionStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyProtectionStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyProtectionStatus require credential")
@@ -9708,6 +9852,7 @@ func (c *Client) ModifySpartaProtectionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifySpartaProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifySpartaProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySpartaProtection require credential")
@@ -9787,6 +9932,7 @@ func (c *Client) ModifySpartaProtectionModeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifySpartaProtectionModeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifySpartaProtectionMode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySpartaProtectionMode require credential")
@@ -9850,6 +9996,7 @@ func (c *Client) ModifyUserLevelWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyUserLevelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyUserLevel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserLevel require credential")
@@ -9913,6 +10060,7 @@ func (c *Client) ModifyUserSignatureClassWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyUserSignatureClassRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyUserSignatureClass")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserSignatureClass require credential")
@@ -9978,6 +10126,7 @@ func (c *Client) ModifyUserSignatureRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyUserSignatureRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyUserSignatureRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserSignatureRule require credential")
@@ -10043,6 +10192,7 @@ func (c *Client) ModifyUserSignatureRuleV2WithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyUserSignatureRuleV2Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyUserSignatureRuleV2")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserSignatureRuleV2 require credential")
@@ -10092,6 +10242,7 @@ func (c *Client) ModifyWafAutoDenyRulesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyWafAutoDenyRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyWafAutoDenyRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWafAutoDenyRules require credential")
@@ -10153,6 +10304,7 @@ func (c *Client) ModifyWafThreatenIntelligenceWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyWafThreatenIntelligenceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyWafThreatenIntelligence")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWafThreatenIntelligence require credential")
@@ -10228,6 +10380,7 @@ func (c *Client) ModifyWebshellStatusWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyWebshellStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyWebshellStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWebshellStatus require credential")
@@ -10283,6 +10436,7 @@ func (c *Client) PostAttackDownloadTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewPostAttackDownloadTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "PostAttackDownloadTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PostAttackDownloadTask require credential")
@@ -10338,6 +10492,7 @@ func (c *Client) RefreshAccessCheckResultWithContext(ctx context.Context, reques
     if request == nil {
         request = NewRefreshAccessCheckResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "RefreshAccessCheckResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RefreshAccessCheckResult require credential")
@@ -10435,6 +10590,7 @@ func (c *Client) SearchAccessLogWithContext(ctx context.Context, request *Search
     if request == nil {
         request = NewSearchAccessLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "SearchAccessLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchAccessLog require credential")
@@ -10500,6 +10656,7 @@ func (c *Client) SearchAttackLogWithContext(ctx context.Context, request *Search
     if request == nil {
         request = NewSearchAttackLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "SearchAttackLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchAttackLog require credential")
@@ -10561,6 +10718,7 @@ func (c *Client) SwitchDomainRulesWithContext(ctx context.Context, request *Swit
     if request == nil {
         request = NewSwitchDomainRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "SwitchDomainRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SwitchDomainRules require credential")
@@ -10616,6 +10774,7 @@ func (c *Client) SwitchElasticModeWithContext(ctx context.Context, request *Swit
     if request == nil {
         request = NewSwitchElasticModeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "SwitchElasticMode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SwitchElasticMode require credential")
@@ -10671,6 +10830,7 @@ func (c *Client) UpdateProtectionModesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewUpdateProtectionModesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "UpdateProtectionModes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateProtectionModes require credential")
@@ -10724,6 +10884,7 @@ func (c *Client) UpsertCCAutoStatusWithContext(ctx context.Context, request *Ups
     if request == nil {
         request = NewUpsertCCAutoStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "UpsertCCAutoStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpsertCCAutoStatus require credential")
@@ -10777,6 +10938,7 @@ func (c *Client) UpsertCCRuleWithContext(ctx context.Context, request *UpsertCCR
     if request == nil {
         request = NewUpsertCCRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "UpsertCCRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpsertCCRule require credential")
@@ -10836,6 +10998,7 @@ func (c *Client) UpsertIpAccessControlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewUpsertIpAccessControlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "UpsertIpAccessControl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpsertIpAccessControl require credential")
@@ -10887,6 +11050,7 @@ func (c *Client) UpsertSessionWithContext(ctx context.Context, request *UpsertSe
     if request == nil {
         request = NewUpsertSessionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "UpsertSession")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpsertSession require credential")

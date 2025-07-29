@@ -106,6 +106,7 @@ func (c *Client) CreateDomainWithContext(ctx context.Context, request *CreateDom
     if request == nil {
         request = NewCreateDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sslpod", APIVersion, "CreateDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDomain require credential")
@@ -157,6 +158,7 @@ func (c *Client) DeleteDomainWithContext(ctx context.Context, request *DeleteDom
     if request == nil {
         request = NewDeleteDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sslpod", APIVersion, "DeleteDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDomain require credential")
@@ -208,6 +210,7 @@ func (c *Client) DescribeDashboardWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeDashboardRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sslpod", APIVersion, "DescribeDashboard")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDashboard require credential")
@@ -259,6 +262,7 @@ func (c *Client) DescribeDomainCertsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDomainCertsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sslpod", APIVersion, "DescribeDomainCerts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainCerts require credential")
@@ -308,6 +312,7 @@ func (c *Client) DescribeDomainTagsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDomainTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sslpod", APIVersion, "DescribeDomainTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainTags require credential")
@@ -361,6 +366,7 @@ func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sslpod", APIVersion, "DescribeDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomains require credential")
@@ -410,6 +416,7 @@ func (c *Client) DescribeNoticeInfoWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeNoticeInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sslpod", APIVersion, "DescribeNoticeInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNoticeInfo require credential")
@@ -465,6 +472,7 @@ func (c *Client) ModifyDomainTagsWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyDomainTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sslpod", APIVersion, "ModifyDomainTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDomainTags require credential")
@@ -518,6 +526,7 @@ func (c *Client) RefreshDomainWithContext(ctx context.Context, request *RefreshD
     if request == nil {
         request = NewRefreshDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sslpod", APIVersion, "RefreshDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RefreshDomain require credential")
@@ -571,6 +580,7 @@ func (c *Client) ResolveDomainWithContext(ctx context.Context, request *ResolveD
     if request == nil {
         request = NewResolveDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sslpod", APIVersion, "ResolveDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResolveDomain require credential")

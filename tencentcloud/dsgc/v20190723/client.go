@@ -92,6 +92,7 @@ func (c *Client) AuthorizeDSPAMetaResourcesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewAuthorizeDSPAMetaResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "AuthorizeDSPAMetaResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AuthorizeDSPAMetaResources require credential")
@@ -149,6 +150,7 @@ func (c *Client) BindDSPAResourceCosBucketsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewBindDSPAResourceCosBucketsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "BindDSPAResourceCosBuckets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindDSPAResourceCosBuckets require credential")
@@ -208,6 +210,7 @@ func (c *Client) BindDSPAResourceDatabasesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewBindDSPAResourceDatabasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "BindDSPAResourceDatabases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindDSPAResourceDatabases require credential")
@@ -269,6 +272,7 @@ func (c *Client) CopyDSPATemplateWithContext(ctx context.Context, request *CopyD
     if request == nil {
         request = NewCopyDSPATemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CopyDSPATemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CopyDSPATemplate require credential")
@@ -330,6 +334,7 @@ func (c *Client) CreateAssetSortingReportRetryTaskWithContext(ctx context.Contex
     if request == nil {
         request = NewCreateAssetSortingReportRetryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateAssetSortingReportRetryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAssetSortingReportRetryTask require credential")
@@ -391,6 +396,7 @@ func (c *Client) CreateAssetSortingReportTaskWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateAssetSortingReportTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateAssetSortingReportTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAssetSortingReportTask require credential")
@@ -452,6 +458,7 @@ func (c *Client) CreateDSPAAssessmentRiskLevelWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateDSPAAssessmentRiskLevelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPAAssessmentRiskLevel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPAAssessmentRiskLevel require credential")
@@ -513,6 +520,7 @@ func (c *Client) CreateDSPAAssessmentRiskTemplateWithContext(ctx context.Context
     if request == nil {
         request = NewCreateDSPAAssessmentRiskTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPAAssessmentRiskTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPAAssessmentRiskTemplate require credential")
@@ -576,6 +584,7 @@ func (c *Client) CreateDSPAAssessmentTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateDSPAAssessmentTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPAAssessmentTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPAAssessmentTask require credential")
@@ -643,6 +652,7 @@ func (c *Client) CreateDSPACOSDiscoveryTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateDSPACOSDiscoveryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPACOSDiscoveryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPACOSDiscoveryTask require credential")
@@ -706,6 +716,7 @@ func (c *Client) CreateDSPACategoryWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateDSPACategoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPACategory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPACategory require credential")
@@ -759,6 +770,7 @@ func (c *Client) CreateDSPACategoryRelationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateDSPACategoryRelationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPACategoryRelation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPACategoryRelation require credential")
@@ -824,6 +836,7 @@ func (c *Client) CreateDSPAComplianceGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateDSPAComplianceGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPAComplianceGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPAComplianceGroup require credential")
@@ -877,6 +890,7 @@ func (c *Client) CreateDSPAComplianceRulesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateDSPAComplianceRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPAComplianceRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPAComplianceRules require credential")
@@ -928,6 +942,7 @@ func (c *Client) CreateDSPACosMetaResourcesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateDSPACosMetaResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPACosMetaResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPACosMetaResources require credential")
@@ -985,6 +1000,7 @@ func (c *Client) CreateDSPADbMetaResourcesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateDSPADbMetaResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPADbMetaResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPADbMetaResources require credential")
@@ -1050,6 +1066,7 @@ func (c *Client) CreateDSPADiscoveryRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateDSPADiscoveryRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPADiscoveryRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPADiscoveryRule require credential")
@@ -1115,6 +1132,7 @@ func (c *Client) CreateDSPADiscoveryTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateDSPADiscoveryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPADiscoveryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPADiscoveryTask require credential")
@@ -1178,6 +1196,7 @@ func (c *Client) CreateDSPALevelGroupWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateDSPALevelGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPALevelGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPALevelGroup require credential")
@@ -1231,6 +1250,7 @@ func (c *Client) CreateDSPAMetaResourcesWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateDSPAMetaResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPAMetaResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPAMetaResources require credential")
@@ -1284,6 +1304,7 @@ func (c *Client) CreateDSPASelfBuildMetaResourceWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateDSPASelfBuildMetaResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateDSPASelfBuildMetaResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDSPASelfBuildMetaResource require credential")
@@ -1345,6 +1366,7 @@ func (c *Client) CreateIdentifyRuleAnotherNameWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateIdentifyRuleAnotherNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "CreateIdentifyRuleAnotherName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIdentifyRuleAnotherName require credential")
@@ -1406,6 +1428,7 @@ func (c *Client) DecribeSuggestRiskLevelMatrixWithContext(ctx context.Context, r
     if request == nil {
         request = NewDecribeSuggestRiskLevelMatrixRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DecribeSuggestRiskLevelMatrix")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DecribeSuggestRiskLevelMatrix require credential")
@@ -1471,6 +1494,7 @@ func (c *Client) DeleteCosMetaResourceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteCosMetaResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DeleteCosMetaResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCosMetaResource require credential")
@@ -1534,6 +1558,7 @@ func (c *Client) DeleteDSPAAssessmentTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteDSPAAssessmentTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DeleteDSPAAssessmentTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDSPAAssessmentTask require credential")
@@ -1613,6 +1638,7 @@ func (c *Client) DeleteDSPACOSDiscoveryTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteDSPACOSDiscoveryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DeleteDSPACOSDiscoveryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDSPACOSDiscoveryTask require credential")
@@ -1674,6 +1700,7 @@ func (c *Client) DeleteDSPACOSDiscoveryTaskResultWithContext(ctx context.Context
     if request == nil {
         request = NewDeleteDSPACOSDiscoveryTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DeleteDSPACOSDiscoveryTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDSPACOSDiscoveryTaskResult require credential")
@@ -1753,6 +1780,7 @@ func (c *Client) DeleteDSPADiscoveryTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteDSPADiscoveryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DeleteDSPADiscoveryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDSPADiscoveryTask require credential")
@@ -1814,6 +1842,7 @@ func (c *Client) DeleteDSPADiscoveryTaskResultWithContext(ctx context.Context, r
     if request == nil {
         request = NewDeleteDSPADiscoveryTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DeleteDSPADiscoveryTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDSPADiscoveryTaskResult require credential")
@@ -1865,6 +1894,7 @@ func (c *Client) DeleteDSPAMetaResourceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteDSPAMetaResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DeleteDSPAMetaResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDSPAMetaResource require credential")
@@ -1914,6 +1944,7 @@ func (c *Client) DescribeAssetDetailDataExportResultWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeAssetDetailDataExportResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeAssetDetailDataExportResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetDetailDataExportResult require credential")
@@ -1963,6 +1994,7 @@ func (c *Client) DescribeAssetOverviewWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAssetOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeAssetOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetOverview require credential")
@@ -2012,6 +2044,7 @@ func (c *Client) DescribeBindDBListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeBindDBListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeBindDBList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBindDBList require credential")
@@ -2061,6 +2094,7 @@ func (c *Client) DescribeCOSAssetSensitiveDistributionWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeCOSAssetSensitiveDistributionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeCOSAssetSensitiveDistribution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCOSAssetSensitiveDistribution require credential")
@@ -2110,6 +2144,7 @@ func (c *Client) DescribeDSPAAssessmentHighRiskTop10OverviewWithContext(ctx cont
     if request == nil {
         request = NewDescribeDSPAAssessmentHighRiskTop10OverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentHighRiskTop10Overview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentHighRiskTop10Overview require credential")
@@ -2159,6 +2194,7 @@ func (c *Client) DescribeDSPAAssessmentLatestRiskDetailInfoWithContext(ctx conte
     if request == nil {
         request = NewDescribeDSPAAssessmentLatestRiskDetailInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentLatestRiskDetailInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentLatestRiskDetailInfo require credential")
@@ -2208,6 +2244,7 @@ func (c *Client) DescribeDSPAAssessmentLatestRiskListWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeDSPAAssessmentLatestRiskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentLatestRiskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentLatestRiskList require credential")
@@ -2257,6 +2294,7 @@ func (c *Client) DescribeDSPAAssessmentNewDiscoveredRiskOverviewWithContext(ctx 
     if request == nil {
         request = NewDescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentNewDiscoveredRiskOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentNewDiscoveredRiskOverview require credential")
@@ -2306,6 +2344,7 @@ func (c *Client) DescribeDSPAAssessmentPendingRiskOverviewWithContext(ctx contex
     if request == nil {
         request = NewDescribeDSPAAssessmentPendingRiskOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentPendingRiskOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentPendingRiskOverview require credential")
@@ -2355,6 +2394,7 @@ func (c *Client) DescribeDSPAAssessmentProcessingRiskOverviewWithContext(ctx con
     if request == nil {
         request = NewDescribeDSPAAssessmentProcessingRiskOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentProcessingRiskOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentProcessingRiskOverview require credential")
@@ -2404,6 +2444,7 @@ func (c *Client) DescribeDSPAAssessmentRiskAmountOverviewWithContext(ctx context
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskAmountOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskAmountOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskAmountOverview require credential")
@@ -2453,6 +2494,7 @@ func (c *Client) DescribeDSPAAssessmentRiskDatasourceTop5WithContext(ctx context
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskDatasourceTop5Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskDatasourceTop5")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskDatasourceTop5 require credential")
@@ -2502,6 +2544,7 @@ func (c *Client) DescribeDSPAAssessmentRiskDealedOverviewWithContext(ctx context
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskDealedOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskDealedOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskDealedOverview require credential")
@@ -2551,6 +2594,7 @@ func (c *Client) DescribeDSPAAssessmentRiskDealedTrendWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskDealedTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskDealedTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskDealedTrend require credential")
@@ -2600,6 +2644,7 @@ func (c *Client) DescribeDSPAAssessmentRiskDistributionOverviewWithContext(ctx c
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskDistributionOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskDistributionOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskDistributionOverview require credential")
@@ -2649,6 +2694,7 @@ func (c *Client) DescribeDSPAAssessmentRiskItemTop5WithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskItemTop5Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskItemTop5")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskItemTop5 require credential")
@@ -2698,6 +2744,7 @@ func (c *Client) DescribeDSPAAssessmentRiskLevelDetailWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskLevelDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskLevelDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskLevelDetail require credential")
@@ -2747,6 +2794,7 @@ func (c *Client) DescribeDSPAAssessmentRiskLevelListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskLevelListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskLevelList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskLevelList require credential")
@@ -2796,6 +2844,7 @@ func (c *Client) DescribeDSPAAssessmentRiskLevelTrendWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskLevelTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskLevelTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskLevelTrend require credential")
@@ -2845,6 +2894,7 @@ func (c *Client) DescribeDSPAAssessmentRiskOverviewWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskOverview require credential")
@@ -2894,6 +2944,7 @@ func (c *Client) DescribeDSPAAssessmentRiskProcessHistoryWithContext(ctx context
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskProcessHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskProcessHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskProcessHistory require credential")
@@ -2957,6 +3008,7 @@ func (c *Client) DescribeDSPAAssessmentRiskSideDistributedWithContext(ctx contex
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskSideDistributedRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskSideDistributed")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskSideDistributed require credential")
@@ -3020,6 +3072,7 @@ func (c *Client) DescribeDSPAAssessmentRiskSideListWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskSideListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskSideList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskSideList require credential")
@@ -3083,6 +3136,7 @@ func (c *Client) DescribeDSPAAssessmentRiskTemplateDetailWithContext(ctx context
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskTemplateDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskTemplateDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskTemplateDetail require credential")
@@ -3146,6 +3200,7 @@ func (c *Client) DescribeDSPAAssessmentRiskTemplateVulnerableListWithContext(ctx
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskTemplateVulnerableListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRiskTemplateVulnerableList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRiskTemplateVulnerableList require credential")
@@ -3209,6 +3264,7 @@ func (c *Client) DescribeDSPAAssessmentRisksWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDSPAAssessmentRisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentRisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentRisks require credential")
@@ -3272,6 +3328,7 @@ func (c *Client) DescribeDSPAAssessmentTasksWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDSPAAssessmentTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentTasks require credential")
@@ -3335,6 +3392,7 @@ func (c *Client) DescribeDSPAAssessmentTemplateControlItemsWithContext(ctx conte
     if request == nil {
         request = NewDescribeDSPAAssessmentTemplateControlItemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentTemplateControlItems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentTemplateControlItems require credential")
@@ -3398,6 +3456,7 @@ func (c *Client) DescribeDSPAAssessmentTemplatesWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeDSPAAssessmentTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAAssessmentTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAAssessmentTemplates require credential")
@@ -3457,6 +3516,7 @@ func (c *Client) DescribeDSPACOSDataAssetBucketsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeDSPACOSDataAssetBucketsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACOSDataAssetBuckets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACOSDataAssetBuckets require credential")
@@ -3516,6 +3576,7 @@ func (c *Client) DescribeDSPACOSDataAssetByComplianceIdWithContext(ctx context.C
     if request == nil {
         request = NewDescribeDSPACOSDataAssetByComplianceIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACOSDataAssetByComplianceId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACOSDataAssetByComplianceId require credential")
@@ -3575,6 +3636,7 @@ func (c *Client) DescribeDSPACOSDataAssetDetailWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeDSPACOSDataAssetDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACOSDataAssetDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACOSDataAssetDetail require credential")
@@ -3636,6 +3698,7 @@ func (c *Client) DescribeDSPACOSDiscoveryTaskDetailWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeDSPACOSDiscoveryTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACOSDiscoveryTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACOSDiscoveryTaskDetail require credential")
@@ -3695,6 +3758,7 @@ func (c *Client) DescribeDSPACOSDiscoveryTaskFilesWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeDSPACOSDiscoveryTaskFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACOSDiscoveryTaskFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACOSDiscoveryTaskFiles require credential")
@@ -3766,6 +3830,7 @@ func (c *Client) DescribeDSPACOSDiscoveryTaskResultWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeDSPACOSDiscoveryTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACOSDiscoveryTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACOSDiscoveryTaskResult require credential")
@@ -3827,6 +3892,7 @@ func (c *Client) DescribeDSPACOSDiscoveryTasksWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeDSPACOSDiscoveryTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACOSDiscoveryTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACOSDiscoveryTasks require credential")
@@ -3894,6 +3960,7 @@ func (c *Client) DescribeDSPACOSTaskResultDetailWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeDSPACOSTaskResultDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACOSTaskResultDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACOSTaskResultDetail require credential")
@@ -3955,6 +4022,7 @@ func (c *Client) DescribeDSPACategoriesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDSPACategoriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACategories")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACategories require credential")
@@ -4004,6 +4072,7 @@ func (c *Client) DescribeDSPACategoryRuleStatisticWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeDSPACategoryRuleStatisticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACategoryRuleStatistic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACategoryRuleStatistic require credential")
@@ -4053,6 +4122,7 @@ func (c *Client) DescribeDSPACategoryRulesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDSPACategoryRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACategoryRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACategoryRules require credential")
@@ -4102,6 +4172,7 @@ func (c *Client) DescribeDSPACategoryTreeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDSPACategoryTreeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACategoryTree")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACategoryTree require credential")
@@ -4151,6 +4222,7 @@ func (c *Client) DescribeDSPACategoryTreeWithRulesWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeDSPACategoryTreeWithRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPACategoryTreeWithRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPACategoryTreeWithRules require credential")
@@ -4200,6 +4272,7 @@ func (c *Client) DescribeDSPAComplianceGroupDetailWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeDSPAComplianceGroupDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAComplianceGroupDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAComplianceGroupDetail require credential")
@@ -4261,6 +4334,7 @@ func (c *Client) DescribeDSPAComplianceGroupsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeDSPAComplianceGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAComplianceGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAComplianceGroups require credential")
@@ -4310,6 +4384,7 @@ func (c *Client) DescribeDSPAComplianceUpdateNotificationWithContext(ctx context
     if request == nil {
         request = NewDescribeDSPAComplianceUpdateNotificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAComplianceUpdateNotification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAComplianceUpdateNotification require credential")
@@ -4371,6 +4446,7 @@ func (c *Client) DescribeDSPADataSourceDbInfoWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeDSPADataSourceDbInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPADataSourceDbInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPADataSourceDbInfo require credential")
@@ -4436,6 +4512,7 @@ func (c *Client) DescribeDSPADiscoveryRulesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDSPADiscoveryRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPADiscoveryRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPADiscoveryRules require credential")
@@ -4493,6 +4570,7 @@ func (c *Client) DescribeDSPADiscoveryServiceStatusWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeDSPADiscoveryServiceStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPADiscoveryServiceStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPADiscoveryServiceStatus require credential")
@@ -4554,6 +4632,7 @@ func (c *Client) DescribeDSPADiscoveryTaskDetailWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeDSPADiscoveryTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPADiscoveryTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPADiscoveryTaskDetail require credential")
@@ -4617,6 +4696,7 @@ func (c *Client) DescribeDSPADiscoveryTaskResultWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeDSPADiscoveryTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPADiscoveryTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPADiscoveryTaskResult require credential")
@@ -4684,6 +4764,7 @@ func (c *Client) DescribeDSPADiscoveryTaskResultDetailWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeDSPADiscoveryTaskResultDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPADiscoveryTaskResultDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPADiscoveryTaskResultDetail require credential")
@@ -4745,6 +4826,7 @@ func (c *Client) DescribeDSPADiscoveryTaskTablesWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeDSPADiscoveryTaskTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPADiscoveryTaskTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPADiscoveryTaskTables require credential")
@@ -4806,6 +4888,7 @@ func (c *Client) DescribeDSPADiscoveryTasksWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDSPADiscoveryTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPADiscoveryTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPADiscoveryTasks require credential")
@@ -4867,6 +4950,7 @@ func (c *Client) DescribeDSPAESDataAssetByComplianceIdWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeDSPAESDataAssetByComplianceIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAESDataAssetByComplianceId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAESDataAssetByComplianceId require credential")
@@ -4928,6 +5012,7 @@ func (c *Client) DescribeDSPAESDataAssetDetailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeDSPAESDataAssetDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAESDataAssetDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAESDataAssetDetail require credential")
@@ -4989,6 +5074,7 @@ func (c *Client) DescribeDSPAESDataSampleWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDSPAESDataSampleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAESDataSample")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAESDataSample require credential")
@@ -5056,6 +5142,7 @@ func (c *Client) DescribeDSPAESDiscoveryTaskResultDetailWithContext(ctx context.
     if request == nil {
         request = NewDescribeDSPAESDiscoveryTaskResultDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPAESDiscoveryTaskResultDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPAESDiscoveryTaskResultDetail require credential")
@@ -5115,6 +5202,7 @@ func (c *Client) DescribeDSPALevelDetailWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDSPALevelDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPALevelDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPALevelDetail require credential")
@@ -5174,6 +5262,7 @@ func (c *Client) DescribeDSPALevelGroupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDSPALevelGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPALevelGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPALevelGroups require credential")
@@ -5233,6 +5322,7 @@ func (c *Client) DescribeDSPARDBDataAssetByComplianceIdWithContext(ctx context.C
     if request == nil {
         request = NewDescribeDSPARDBDataAssetByComplianceIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPARDBDataAssetByComplianceId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPARDBDataAssetByComplianceId require credential")
@@ -5292,6 +5382,7 @@ func (c *Client) DescribeDSPARDBDataAssetDetailWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeDSPARDBDataAssetDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPARDBDataAssetDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPARDBDataAssetDetail require credential")
@@ -5345,6 +5436,7 @@ func (c *Client) DescribeDSPASupportedMetasWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDSPASupportedMetasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPASupportedMetas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPASupportedMetas require credential")
@@ -5406,6 +5498,7 @@ func (c *Client) DescribeDSPATaskResultDataSampleWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeDSPATaskResultDataSampleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeDSPATaskResultDataSample")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDSPATaskResultDataSample require credential")
@@ -5467,6 +5560,7 @@ func (c *Client) DescribeESAssetSensitiveDistributionWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeESAssetSensitiveDistributionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeESAssetSensitiveDistribution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeESAssetSensitiveDistribution require credential")
@@ -5528,6 +5622,7 @@ func (c *Client) DescribeExportTaskResultWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeExportTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeExportTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExportTaskResult require credential")
@@ -5589,6 +5684,7 @@ func (c *Client) DescribeMongoAssetSensitiveDistributionWithContext(ctx context.
     if request == nil {
         request = NewDescribeMongoAssetSensitiveDistributionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeMongoAssetSensitiveDistribution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMongoAssetSensitiveDistribution require credential")
@@ -5650,6 +5746,7 @@ func (c *Client) DescribeRDBAssetSensitiveDistributionWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeRDBAssetSensitiveDistributionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeRDBAssetSensitiveDistribution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRDBAssetSensitiveDistribution require credential")
@@ -5711,6 +5808,7 @@ func (c *Client) DescribeReportTaskDownloadUrlWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeReportTaskDownloadUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeReportTaskDownloadUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReportTaskDownloadUrl require credential")
@@ -5772,6 +5870,7 @@ func (c *Client) DescribeReportTasksWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeReportTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeReportTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReportTasks require credential")
@@ -5833,6 +5932,7 @@ func (c *Client) DescribeSensitiveCOSDataDistributionWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeSensitiveCOSDataDistributionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeSensitiveCOSDataDistribution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSensitiveCOSDataDistribution require credential")
@@ -5894,6 +5994,7 @@ func (c *Client) DescribeSensitiveRDBDataDistributionWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeSensitiveRDBDataDistributionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DescribeSensitiveRDBDataDistribution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSensitiveRDBDataDistribution require credential")
@@ -5947,6 +6048,7 @@ func (c *Client) DisableDSPAMetaResourceAuthWithContext(ctx context.Context, req
     if request == nil {
         request = NewDisableDSPAMetaResourceAuthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "DisableDSPAMetaResourceAuth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableDSPAMetaResourceAuth require credential")
@@ -6016,6 +6118,7 @@ func (c *Client) EnableDSPADiscoveryRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewEnableDSPADiscoveryRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "EnableDSPADiscoveryRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableDSPADiscoveryRule require credential")
@@ -6071,6 +6174,7 @@ func (c *Client) EnableTrialVersionWithContext(ctx context.Context, request *Ena
     if request == nil {
         request = NewEnableTrialVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "EnableTrialVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableTrialVersion require credential")
@@ -6120,6 +6224,7 @@ func (c *Client) ExportAssetDetailDataWithContext(ctx context.Context, request *
     if request == nil {
         request = NewExportAssetDetailDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ExportAssetDetailData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportAssetDetailData require credential")
@@ -6171,6 +6276,7 @@ func (c *Client) GetResourceConnectionStatusWithContext(ctx context.Context, req
     if request == nil {
         request = NewGetResourceConnectionStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "GetResourceConnectionStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetResourceConnectionStatus require credential")
@@ -6226,6 +6332,7 @@ func (c *Client) GetTrialVersionWithContext(ctx context.Context, request *GetTri
     if request == nil {
         request = NewGetTrialVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "GetTrialVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTrialVersion require credential")
@@ -6283,6 +6390,7 @@ func (c *Client) GetUserQuotaInfoWithContext(ctx context.Context, request *GetUs
     if request == nil {
         request = NewGetUserQuotaInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "GetUserQuotaInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetUserQuotaInfo require credential")
@@ -6340,6 +6448,7 @@ func (c *Client) ListDSPAClustersWithContext(ctx context.Context, request *ListD
     if request == nil {
         request = NewListDSPAClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ListDSPAClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListDSPAClusters require credential")
@@ -6403,6 +6512,7 @@ func (c *Client) ListDSPACosMetaResourcesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewListDSPACosMetaResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ListDSPACosMetaResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListDSPACosMetaResources require credential")
@@ -6466,6 +6576,7 @@ func (c *Client) ListDSPAMetaResourcesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewListDSPAMetaResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ListDSPAMetaResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListDSPAMetaResources require credential")
@@ -6529,6 +6640,7 @@ func (c *Client) ModifyDSPAAssessmentRiskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyDSPAAssessmentRiskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPAAssessmentRisk")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPAAssessmentRisk require credential")
@@ -6578,6 +6690,7 @@ func (c *Client) ModifyDSPAAssessmentRiskLatestWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyDSPAAssessmentRiskLatestRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPAAssessmentRiskLatest")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPAAssessmentRiskLatest require credential")
@@ -6627,6 +6740,7 @@ func (c *Client) ModifyDSPAAssessmentRiskLevelWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyDSPAAssessmentRiskLevelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPAAssessmentRiskLevel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPAAssessmentRiskLevel require credential")
@@ -6676,6 +6790,7 @@ func (c *Client) ModifyDSPAAssessmentRiskTemplateWithContext(ctx context.Context
     if request == nil {
         request = NewModifyDSPAAssessmentRiskTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPAAssessmentRiskTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPAAssessmentRiskTemplate require credential")
@@ -6759,6 +6874,7 @@ func (c *Client) ModifyDSPACOSDiscoveryTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyDSPACOSDiscoveryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPACOSDiscoveryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPACOSDiscoveryTask require credential")
@@ -6820,6 +6936,7 @@ func (c *Client) ModifyDSPACOSTaskResultWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyDSPACOSTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPACOSTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPACOSTaskResult require credential")
@@ -6885,6 +7002,7 @@ func (c *Client) ModifyDSPACategoryWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyDSPACategoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPACategory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPACategory require credential")
@@ -6940,6 +7058,7 @@ func (c *Client) ModifyDSPACategoryRelationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyDSPACategoryRelationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPACategoryRelation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPACategoryRelation require credential")
@@ -6991,6 +7110,7 @@ func (c *Client) ModifyDSPAClusterInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyDSPAClusterInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPAClusterInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPAClusterInfo require credential")
@@ -7056,6 +7176,7 @@ func (c *Client) ModifyDSPAComplianceGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyDSPAComplianceGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPAComplianceGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPAComplianceGroup require credential")
@@ -7125,6 +7246,7 @@ func (c *Client) ModifyDSPADiscoveryRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyDSPADiscoveryRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPADiscoveryRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPADiscoveryRule require credential")
@@ -7208,6 +7330,7 @@ func (c *Client) ModifyDSPADiscoveryTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyDSPADiscoveryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPADiscoveryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPADiscoveryTask require credential")
@@ -7269,6 +7392,7 @@ func (c *Client) ModifyDSPAESTaskResultWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyDSPAESTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPAESTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPAESTaskResult require credential")
@@ -7332,6 +7456,7 @@ func (c *Client) ModifyDSPATaskResultWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyDSPATaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "ModifyDSPATaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDSPATaskResult require credential")
@@ -7389,6 +7514,7 @@ func (c *Client) QueryDSPAMetaResourceDbListWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryDSPAMetaResourceDbListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "QueryDSPAMetaResourceDbList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryDSPAMetaResourceDbList require credential")
@@ -7446,6 +7572,7 @@ func (c *Client) QueryResourceDbBindStatusWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryResourceDbBindStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "QueryResourceDbBindStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryResourceDbBindStatus require credential")
@@ -7509,6 +7636,7 @@ func (c *Client) RestartDSPAAssessmentTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewRestartDSPAAssessmentTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "RestartDSPAAssessmentTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartDSPAAssessmentTask require credential")
@@ -7590,6 +7718,7 @@ func (c *Client) StartDSPADiscoveryTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewStartDSPADiscoveryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "StartDSPADiscoveryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartDSPADiscoveryTask require credential")
@@ -7657,6 +7786,7 @@ func (c *Client) StopDSPADiscoveryTaskWithContext(ctx context.Context, request *
     if request == nil {
         request = NewStopDSPADiscoveryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "StopDSPADiscoveryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopDSPADiscoveryTask require credential")
@@ -7724,6 +7854,7 @@ func (c *Client) UpdateDSPASelfBuildResourceWithContext(ctx context.Context, req
     if request == nil {
         request = NewUpdateDSPASelfBuildResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "UpdateDSPASelfBuildResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDSPASelfBuildResource require credential")
@@ -7785,6 +7916,7 @@ func (c *Client) VerifyDSPACOSRuleWithContext(ctx context.Context, request *Veri
     if request == nil {
         request = NewVerifyDSPACOSRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "VerifyDSPACOSRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyDSPACOSRule require credential")
@@ -7846,6 +7978,7 @@ func (c *Client) VerifyDSPADiscoveryRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewVerifyDSPADiscoveryRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dsgc", APIVersion, "VerifyDSPADiscoveryRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyDSPADiscoveryRule require credential")

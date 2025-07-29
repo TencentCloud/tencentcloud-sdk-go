@@ -76,6 +76,7 @@ func (c *Client) AbortCronJobsWithContext(ctx context.Context, request *AbortCro
     if request == nil {
         request = NewAbortCronJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "AbortCronJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AbortCronJobs require credential")
@@ -145,6 +146,7 @@ func (c *Client) AbortJobWithContext(ctx context.Context, request *AbortJobReque
     if request == nil {
         request = NewAbortJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "AbortJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AbortJob require credential")
@@ -204,6 +206,7 @@ func (c *Client) AdjustJobSpeedWithContext(ctx context.Context, request *AdjustJ
     if request == nil {
         request = NewAdjustJobSpeedRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "AdjustJobSpeed")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AdjustJobSpeed require credential")
@@ -253,6 +256,7 @@ func (c *Client) CopyScenarioWithContext(ctx context.Context, request *CopyScena
     if request == nil {
         request = NewCopyScenarioRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "CopyScenario")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CopyScenario require credential")
@@ -302,6 +306,7 @@ func (c *Client) CreateAlertChannelWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateAlertChannelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "CreateAlertChannel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAlertChannel require credential")
@@ -353,6 +358,7 @@ func (c *Client) CreateCronJobWithContext(ctx context.Context, request *CreateCr
     if request == nil {
         request = NewCreateCronJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "CreateCronJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCronJob require credential")
@@ -412,6 +418,7 @@ func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateEnvironmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "CreateEnvironment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEnvironment require credential")
@@ -461,6 +468,7 @@ func (c *Client) CreateFileWithContext(ctx context.Context, request *CreateFileR
     if request == nil {
         request = NewCreateFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "CreateFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFile require credential")
@@ -528,6 +536,7 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "CreateProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProject require credential")
@@ -585,6 +594,7 @@ func (c *Client) CreateScenarioWithContext(ctx context.Context, request *CreateS
     if request == nil {
         request = NewCreateScenarioRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "CreateScenario")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateScenario require credential")
@@ -642,6 +652,7 @@ func (c *Client) DeleteAlertChannelWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteAlertChannelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DeleteAlertChannel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAlertChannel require credential")
@@ -699,6 +710,7 @@ func (c *Client) DeleteCronJobsWithContext(ctx context.Context, request *DeleteC
     if request == nil {
         request = NewDeleteCronJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DeleteCronJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCronJobs require credential")
@@ -758,6 +770,7 @@ func (c *Client) DeleteEnvironmentsWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteEnvironmentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DeleteEnvironments")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEnvironments require credential")
@@ -817,6 +830,7 @@ func (c *Client) DeleteFilesWithContext(ctx context.Context, request *DeleteFile
     if request == nil {
         request = NewDeleteFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DeleteFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFiles require credential")
@@ -884,6 +898,7 @@ func (c *Client) DeleteJobsWithContext(ctx context.Context, request *DeleteJobsR
     if request == nil {
         request = NewDeleteJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DeleteJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteJobs require credential")
@@ -951,6 +966,7 @@ func (c *Client) DeleteProjectsWithContext(ctx context.Context, request *DeleteP
     if request == nil {
         request = NewDeleteProjectsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DeleteProjects")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteProjects require credential")
@@ -1016,6 +1032,7 @@ func (c *Client) DeleteScenariosWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteScenariosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DeleteScenarios")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteScenarios require credential")
@@ -1065,6 +1082,7 @@ func (c *Client) DescribeAlertChannelsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAlertChannelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeAlertChannels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlertChannels require credential")
@@ -1114,6 +1132,7 @@ func (c *Client) DescribeAlertRecordsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAlertRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeAlertRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlertRecords require credential")
@@ -1163,6 +1182,7 @@ func (c *Client) DescribeAvailableMetricsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAvailableMetricsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeAvailableMetrics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAvailableMetrics require credential")
@@ -1222,6 +1242,7 @@ func (c *Client) DescribeCheckSummaryWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCheckSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeCheckSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCheckSummary require credential")
@@ -1271,6 +1292,7 @@ func (c *Client) DescribeCronJobsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCronJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeCronJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCronJobs require credential")
@@ -1332,6 +1354,7 @@ func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeEnvironments")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvironments require credential")
@@ -1391,6 +1414,7 @@ func (c *Client) DescribeErrorSummaryWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeErrorSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeErrorSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeErrorSummary require credential")
@@ -1450,6 +1474,7 @@ func (c *Client) DescribeFilesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFiles require credential")
@@ -1513,6 +1538,7 @@ func (c *Client) DescribeJobsWithContext(ctx context.Context, request *DescribeJ
     if request == nil {
         request = NewDescribeJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJobs require credential")
@@ -1572,6 +1598,7 @@ func (c *Client) DescribeLabelValuesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeLabelValuesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeLabelValues")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLabelValues require credential")
@@ -1629,6 +1656,7 @@ func (c *Client) DescribeMetricLabelWithValuesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeMetricLabelWithValuesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeMetricLabelWithValues")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMetricLabelWithValues require credential")
@@ -1688,6 +1716,7 @@ func (c *Client) DescribeNormalLogsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeNormalLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeNormalLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNormalLogs require credential")
@@ -1763,6 +1792,7 @@ func (c *Client) DescribeProjectsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProjectsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeProjects")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProjects require credential")
@@ -1824,6 +1854,7 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRegions require credential")
@@ -1879,6 +1910,7 @@ func (c *Client) DescribeRequestSummaryWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRequestSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeRequestSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRequestSummary require credential")
@@ -1938,6 +1970,7 @@ func (c *Client) DescribeSampleBatchQueryWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSampleBatchQueryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeSampleBatchQuery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSampleBatchQuery require credential")
@@ -1995,6 +2028,7 @@ func (c *Client) DescribeSampleLogsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeSampleLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeSampleLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSampleLogs require credential")
@@ -2052,6 +2086,7 @@ func (c *Client) DescribeSampleMatrixBatchQueryWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeSampleMatrixBatchQueryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeSampleMatrixBatchQuery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSampleMatrixBatchQuery require credential")
@@ -2107,6 +2142,7 @@ func (c *Client) DescribeSampleMatrixQueryWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSampleMatrixQueryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeSampleMatrixQuery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSampleMatrixQuery require credential")
@@ -2166,6 +2202,7 @@ func (c *Client) DescribeSampleQueryWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeSampleQueryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeSampleQuery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSampleQuery require credential")
@@ -2225,6 +2262,7 @@ func (c *Client) DescribeScenarioWithJobsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeScenarioWithJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeScenarioWithJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScenarioWithJobs require credential")
@@ -2284,6 +2322,7 @@ func (c *Client) DescribeScenariosWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeScenariosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "DescribeScenarios")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScenarios require credential")
@@ -2343,6 +2382,7 @@ func (c *Client) GenerateTmpKeyWithContext(ctx context.Context, request *Generat
     if request == nil {
         request = NewGenerateTmpKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "GenerateTmpKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GenerateTmpKey require credential")
@@ -2402,6 +2442,7 @@ func (c *Client) RestartCronJobsWithContext(ctx context.Context, request *Restar
     if request == nil {
         request = NewRestartCronJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "RestartCronJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartCronJobs require credential")
@@ -2473,6 +2514,7 @@ func (c *Client) StartJobWithContext(ctx context.Context, request *StartJobReque
     if request == nil {
         request = NewStartJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "StartJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartJob require credential")
@@ -2524,6 +2566,7 @@ func (c *Client) UpdateCronJobWithContext(ctx context.Context, request *UpdateCr
     if request == nil {
         request = NewUpdateCronJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "UpdateCronJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCronJob require credential")
@@ -2583,6 +2626,7 @@ func (c *Client) UpdateEnvironmentWithContext(ctx context.Context, request *Upda
     if request == nil {
         request = NewUpdateEnvironmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "UpdateEnvironment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateEnvironment require credential")
@@ -2634,6 +2678,7 @@ func (c *Client) UpdateFileScenarioRelationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateFileScenarioRelationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "UpdateFileScenarioRelation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateFileScenarioRelation require credential")
@@ -2699,6 +2744,7 @@ func (c *Client) UpdateJobWithContext(ctx context.Context, request *UpdateJobReq
     if request == nil {
         request = NewUpdateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "UpdateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateJob require credential")
@@ -2768,6 +2814,7 @@ func (c *Client) UpdateProjectWithContext(ctx context.Context, request *UpdatePr
     if request == nil {
         request = NewUpdateProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "UpdateProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateProject require credential")
@@ -2833,6 +2880,7 @@ func (c *Client) UpdateScenarioWithContext(ctx context.Context, request *UpdateS
     if request == nil {
         request = NewUpdateScenarioRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "pts", APIVersion, "UpdateScenario")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateScenario require credential")

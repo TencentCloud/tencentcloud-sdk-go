@@ -88,6 +88,7 @@ func (c *Client) DescribeCaptchaAppIdInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCaptchaAppIdInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaAppIdInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaAppIdInfo require credential")
@@ -143,6 +144,7 @@ func (c *Client) DescribeCaptchaDataWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCaptchaDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaData require credential")
@@ -198,6 +200,7 @@ func (c *Client) DescribeCaptchaDataSumWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCaptchaDataSumRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaDataSum")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaDataSum require credential")
@@ -253,6 +256,7 @@ func (c *Client) DescribeCaptchaMiniDataWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeCaptchaMiniDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaMiniData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaMiniData require credential")
@@ -308,6 +312,7 @@ func (c *Client) DescribeCaptchaMiniDataSumWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCaptchaMiniDataSumRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaMiniDataSum")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaMiniDataSum require credential")
@@ -363,6 +368,7 @@ func (c *Client) DescribeCaptchaMiniOperDataWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCaptchaMiniOperDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaMiniOperData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaMiniOperData require credential")
@@ -418,6 +424,7 @@ func (c *Client) DescribeCaptchaMiniResultWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCaptchaMiniResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaMiniResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaMiniResult require credential")
@@ -473,6 +480,7 @@ func (c *Client) DescribeCaptchaMiniRiskResultWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeCaptchaMiniRiskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaMiniRiskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaMiniRiskResult require credential")
@@ -528,6 +536,7 @@ func (c *Client) DescribeCaptchaOperDataWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeCaptchaOperDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaOperData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaOperData require credential")
@@ -583,6 +592,7 @@ func (c *Client) DescribeCaptchaRceResultWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCaptchaRceResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaRceResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaRceResult require credential")
@@ -638,6 +648,7 @@ func (c *Client) DescribeCaptchaResultWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCaptchaResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaResult require credential")
@@ -693,6 +704,7 @@ func (c *Client) DescribeCaptchaTicketDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCaptchaTicketDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaTicketData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaTicketData require credential")
@@ -748,6 +760,7 @@ func (c *Client) DescribeCaptchaUserAllAppIdWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCaptchaUserAllAppIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "DescribeCaptchaUserAllAppId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaptchaUserAllAppId require credential")
@@ -803,6 +816,7 @@ func (c *Client) GetRequestStatisticsWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetRequestStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "GetRequestStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRequestStatistics require credential")
@@ -858,6 +872,7 @@ func (c *Client) GetTicketStatisticsWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetTicketStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "GetTicketStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTicketStatistics require credential")
@@ -913,6 +928,7 @@ func (c *Client) GetTotalRequestStatisticsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewGetTotalRequestStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "GetTotalRequestStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTotalRequestStatistics require credential")
@@ -968,6 +984,7 @@ func (c *Client) GetTotalTicketStatisticsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewGetTotalTicketStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "GetTotalTicketStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTotalTicketStatistics require credential")
@@ -1023,6 +1040,7 @@ func (c *Client) UpdateCaptchaAppIdInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateCaptchaAppIdInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "captcha", APIVersion, "UpdateCaptchaAppIdInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCaptchaAppIdInfo require credential")

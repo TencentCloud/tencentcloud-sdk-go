@@ -76,6 +76,7 @@ func (c *Client) CreateNameListWithContext(ctx context.Context, request *CreateN
     if request == nil {
         request = NewCreateNameListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "CreateNameList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNameList require credential")
@@ -119,6 +120,7 @@ func (c *Client) DeleteNameListWithContext(ctx context.Context, request *DeleteN
     if request == nil {
         request = NewDeleteNameListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "DeleteNameList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNameList require credential")
@@ -162,6 +164,7 @@ func (c *Client) DeleteNameListDataWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteNameListDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "DeleteNameListData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNameListData require credential")
@@ -205,6 +208,7 @@ func (c *Client) DescribeNameListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeNameListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "DescribeNameList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNameList require credential")
@@ -248,6 +252,7 @@ func (c *Client) DescribeNameListDataListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeNameListDataListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "DescribeNameListDataList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNameListDataList require credential")
@@ -291,6 +296,7 @@ func (c *Client) DescribeNameListDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeNameListDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "DescribeNameListDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNameListDetail require credential")
@@ -334,6 +340,7 @@ func (c *Client) DescribeUserUsageCntWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeUserUsageCntRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "DescribeUserUsageCnt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserUsageCnt require credential")
@@ -377,6 +384,7 @@ func (c *Client) ImportNameListDataWithContext(ctx context.Context, request *Imp
     if request == nil {
         request = NewImportNameListDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "ImportNameListData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportNameListData require credential")
@@ -420,6 +428,7 @@ func (c *Client) ManageMarketingRiskWithContext(ctx context.Context, request *Ma
     if request == nil {
         request = NewManageMarketingRiskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "ManageMarketingRisk")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ManageMarketingRisk require credential")
@@ -463,6 +472,7 @@ func (c *Client) ModifyNameListWithContext(ctx context.Context, request *ModifyN
     if request == nil {
         request = NewModifyNameListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "ModifyNameList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNameList require credential")
@@ -506,6 +516,7 @@ func (c *Client) ModifyNameListDataWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyNameListDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "ModifyNameListData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNameListData require credential")

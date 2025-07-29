@@ -116,6 +116,7 @@ func (c *Client) AssociateDDoSEipAddressWithContext(ctx context.Context, request
     if request == nil {
         request = NewAssociateDDoSEipAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "AssociateDDoSEipAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateDDoSEipAddress require credential")
@@ -199,6 +200,7 @@ func (c *Client) AssociateDDoSEipLoadBalancerWithContext(ctx context.Context, re
     if request == nil {
         request = NewAssociateDDoSEipLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "AssociateDDoSEipLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateDDoSEipLoadBalancer require credential")
@@ -252,6 +254,7 @@ func (c *Client) CreateBlackWhiteIpListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateBlackWhiteIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateBlackWhiteIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBlackWhiteIpList require credential")
@@ -305,6 +308,7 @@ func (c *Client) CreateBoundIPWithContext(ctx context.Context, request *CreateBo
     if request == nil {
         request = NewCreateBoundIPRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateBoundIP")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBoundIP require credential")
@@ -386,6 +390,7 @@ func (c *Client) CreateCCPrecisionPolicyWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateCCPrecisionPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateCCPrecisionPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCCPrecisionPolicy require credential")
@@ -467,6 +472,7 @@ func (c *Client) CreateCCReqLimitPolicyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateCCReqLimitPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateCCReqLimitPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCCReqLimitPolicy require credential")
@@ -520,6 +526,7 @@ func (c *Client) CreateCcBlackWhiteIpListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateCcBlackWhiteIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateCcBlackWhiteIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCcBlackWhiteIpList require credential")
@@ -571,6 +578,7 @@ func (c *Client) CreateCcGeoIPBlockConfigWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateCcGeoIPBlockConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateCcGeoIPBlockConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCcGeoIPBlockConfig require credential")
@@ -622,6 +630,7 @@ func (c *Client) CreateDDoSAIWithContext(ctx context.Context, request *CreateDDo
     if request == nil {
         request = NewCreateDDoSAIRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateDDoSAI")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDDoSAI require credential")
@@ -677,6 +686,7 @@ func (c *Client) CreateDDoSBlackWhiteIpListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateDDoSBlackWhiteIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateDDoSBlackWhiteIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDDoSBlackWhiteIpList require credential")
@@ -760,6 +770,7 @@ func (c *Client) CreateDDoSConnectLimitWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateDDoSConnectLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateDDoSConnectLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDDoSConnectLimit require credential")
@@ -813,6 +824,7 @@ func (c *Client) CreateDDoSGeoIPBlockConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateDDoSGeoIPBlockConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateDDoSGeoIPBlockConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDDoSGeoIPBlockConfig require credential")
@@ -866,6 +878,7 @@ func (c *Client) CreateDDoSSpeedLimitConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateDDoSSpeedLimitConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateDDoSSpeedLimitConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDDoSSpeedLimitConfig require credential")
@@ -915,6 +928,7 @@ func (c *Client) CreateDefaultAlarmThresholdWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateDefaultAlarmThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateDefaultAlarmThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDefaultAlarmThreshold require credential")
@@ -964,6 +978,7 @@ func (c *Client) CreateIPAlarmThresholdConfigWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateIPAlarmThresholdConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateIPAlarmThresholdConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIPAlarmThresholdConfig require credential")
@@ -1025,6 +1040,7 @@ func (c *Client) CreateL7RuleCertsWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateL7RuleCertsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateL7RuleCerts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL7RuleCerts require credential")
@@ -1076,6 +1092,7 @@ func (c *Client) CreateNewL7RulesWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateNewL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateNewL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNewL7Rules require credential")
@@ -1131,6 +1148,7 @@ func (c *Client) CreatePacketFilterConfigWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreatePacketFilterConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreatePacketFilterConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePacketFilterConfig require credential")
@@ -1214,6 +1232,7 @@ func (c *Client) CreatePortAclConfigWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreatePortAclConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreatePortAclConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePortAclConfig require credential")
@@ -1297,6 +1316,7 @@ func (c *Client) CreatePortAclConfigListWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreatePortAclConfigListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreatePortAclConfigList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePortAclConfigList require credential")
@@ -1350,6 +1370,7 @@ func (c *Client) CreateProtocolBlockConfigWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateProtocolBlockConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateProtocolBlockConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProtocolBlockConfig require credential")
@@ -1417,6 +1438,7 @@ func (c *Client) CreateSchedulingDomainWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateSchedulingDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateSchedulingDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSchedulingDomain require credential")
@@ -1472,6 +1494,7 @@ func (c *Client) CreateWaterPrintConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateWaterPrintConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateWaterPrintConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWaterPrintConfig require credential")
@@ -1527,6 +1550,7 @@ func (c *Client) CreateWaterPrintKeyWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateWaterPrintKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateWaterPrintKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWaterPrintKey require credential")
@@ -1608,6 +1632,7 @@ func (c *Client) DeleteCCLevelPolicyWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteCCLevelPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeleteCCLevelPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCCLevelPolicy require credential")
@@ -1689,6 +1714,7 @@ func (c *Client) DeleteCCPrecisionPolicyWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteCCPrecisionPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeleteCCPrecisionPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCCPrecisionPolicy require credential")
@@ -1770,6 +1796,7 @@ func (c *Client) DeleteCCRequestLimitPolicyWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteCCRequestLimitPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeleteCCRequestLimitPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCCRequestLimitPolicy require credential")
@@ -1851,6 +1878,7 @@ func (c *Client) DeleteCCThresholdPolicyWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteCCThresholdPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeleteCCThresholdPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCCThresholdPolicy require credential")
@@ -1906,6 +1934,7 @@ func (c *Client) DeleteCcBlackWhiteIpListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteCcBlackWhiteIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeleteCcBlackWhiteIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCcBlackWhiteIpList require credential")
@@ -1959,6 +1988,7 @@ func (c *Client) DeleteCcGeoIPBlockConfigWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteCcGeoIPBlockConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeleteCcGeoIPBlockConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCcGeoIPBlockConfig require credential")
@@ -2010,6 +2040,7 @@ func (c *Client) DeleteDDoSBlackWhiteIpListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteDDoSBlackWhiteIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeleteDDoSBlackWhiteIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDDoSBlackWhiteIpList require credential")
@@ -2059,6 +2090,7 @@ func (c *Client) DeleteDDoSGeoIPBlockConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteDDoSGeoIPBlockConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeleteDDoSGeoIPBlockConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDDoSGeoIPBlockConfig require credential")
@@ -2110,6 +2142,7 @@ func (c *Client) DeleteDDoSSpeedLimitConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteDDoSSpeedLimitConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeleteDDoSSpeedLimitConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDDoSSpeedLimitConfig require credential")
@@ -2161,6 +2194,7 @@ func (c *Client) DeletePacketFilterConfigWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeletePacketFilterConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeletePacketFilterConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePacketFilterConfig require credential")
@@ -2244,6 +2278,7 @@ func (c *Client) DeletePortAclConfigWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeletePortAclConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeletePortAclConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePortAclConfig require credential")
@@ -2295,6 +2330,7 @@ func (c *Client) DeleteWaterPrintConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteWaterPrintConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeleteWaterPrintConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteWaterPrintConfig require credential")
@@ -2348,6 +2384,7 @@ func (c *Client) DeleteWaterPrintKeyWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteWaterPrintKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DeleteWaterPrintKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteWaterPrintKey require credential")
@@ -2397,6 +2434,7 @@ func (c *Client) DescribeBGPIPL7RulesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBGPIPL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeBGPIPL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBGPIPL7Rules require credential")
@@ -2446,6 +2484,7 @@ func (c *Client) DescribeBasicDeviceStatusWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeBasicDeviceStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeBasicDeviceStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBasicDeviceStatus require credential")
@@ -2495,6 +2534,7 @@ func (c *Client) DescribeBgpBizTrendWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeBgpBizTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeBgpBizTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBgpBizTrend require credential")
@@ -2562,6 +2602,7 @@ func (c *Client) DescribeBizHttpStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeBizHttpStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeBizHttpStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBizHttpStatus require credential")
@@ -2629,6 +2670,7 @@ func (c *Client) DescribeBizMonitorTrendWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeBizMonitorTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeBizMonitorTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBizMonitorTrend require credential")
@@ -2696,6 +2738,7 @@ func (c *Client) DescribeBizTrendWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeBizTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeBizTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBizTrend require credential")
@@ -2777,6 +2820,7 @@ func (c *Client) DescribeCCLevelListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCCLevelListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeCCLevelList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCLevelList require credential")
@@ -2858,6 +2902,7 @@ func (c *Client) DescribeCCLevelPolicyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCCLevelPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeCCLevelPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCLevelPolicy require credential")
@@ -2939,6 +2984,7 @@ func (c *Client) DescribeCCPrecisionPlyListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCCPrecisionPlyListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeCCPrecisionPlyList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCPrecisionPlyList require credential")
@@ -3020,6 +3066,7 @@ func (c *Client) DescribeCCReqLimitPolicyListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeCCReqLimitPolicyListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeCCReqLimitPolicyList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCReqLimitPolicyList require credential")
@@ -3101,6 +3148,7 @@ func (c *Client) DescribeCCThresholdListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeCCThresholdListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeCCThresholdList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCThresholdList require credential")
@@ -3182,6 +3230,7 @@ func (c *Client) DescribeCCTrendWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeCCTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeCCTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCTrend require credential")
@@ -3235,6 +3284,7 @@ func (c *Client) DescribeCcBlackWhiteIpListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCcBlackWhiteIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeCcBlackWhiteIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCcBlackWhiteIpList require credential")
@@ -3288,6 +3338,7 @@ func (c *Client) DescribeCcGeoIPBlockConfigListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeCcGeoIPBlockConfigListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeCcGeoIPBlockConfigList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCcGeoIPBlockConfigList require credential")
@@ -3369,6 +3420,7 @@ func (c *Client) DescribeDDoSBlackWhiteIpListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeDDoSBlackWhiteIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeDDoSBlackWhiteIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSBlackWhiteIpList require credential")
@@ -3452,6 +3504,7 @@ func (c *Client) DescribeDDoSConnectLimitListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeDDoSConnectLimitListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeDDoSConnectLimitList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSConnectLimitList require credential")
@@ -3535,6 +3588,7 @@ func (c *Client) DescribeDDoSTrendWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeDDoSTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeDDoSTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSTrend require credential")
@@ -3618,6 +3672,7 @@ func (c *Client) DescribeDefaultAlarmThresholdWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeDefaultAlarmThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeDefaultAlarmThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDefaultAlarmThreshold require credential")
@@ -3701,6 +3756,7 @@ func (c *Client) DescribeIpBlockListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeIpBlockListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeIpBlockList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIpBlockList require credential")
@@ -3764,6 +3820,7 @@ func (c *Client) DescribeL7RulesBySSLCertIdWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeL7RulesBySSLCertIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeL7RulesBySSLCertId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL7RulesBySSLCertId require credential")
@@ -3813,6 +3870,7 @@ func (c *Client) DescribeListBGPIPInstancesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeListBGPIPInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListBGPIPInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListBGPIPInstances require credential")
@@ -3862,6 +3920,7 @@ func (c *Client) DescribeListBGPInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeListBGPInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListBGPInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListBGPInstances require credential")
@@ -3911,6 +3970,7 @@ func (c *Client) DescribeListBlackWhiteIpListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeListBlackWhiteIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListBlackWhiteIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListBlackWhiteIpList require credential")
@@ -3960,6 +4020,7 @@ func (c *Client) DescribeListDDoSAIWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeListDDoSAIRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListDDoSAI")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListDDoSAI require credential")
@@ -4009,6 +4070,7 @@ func (c *Client) DescribeListDDoSGeoIPBlockConfigWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeListDDoSGeoIPBlockConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListDDoSGeoIPBlockConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListDDoSGeoIPBlockConfig require credential")
@@ -4058,6 +4120,7 @@ func (c *Client) DescribeListDDoSSpeedLimitConfigWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeListDDoSSpeedLimitConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListDDoSSpeedLimitConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListDDoSSpeedLimitConfig require credential")
@@ -4107,6 +4170,7 @@ func (c *Client) DescribeListIPAlarmConfigWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeListIPAlarmConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListIPAlarmConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListIPAlarmConfig require credential")
@@ -4156,6 +4220,7 @@ func (c *Client) DescribeListListenerWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeListListenerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListListener")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListListener require credential")
@@ -4205,6 +4270,7 @@ func (c *Client) DescribeListPacketFilterConfigWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeListPacketFilterConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListPacketFilterConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListPacketFilterConfig require credential")
@@ -4288,6 +4354,7 @@ func (c *Client) DescribeListPortAclListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeListPortAclListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListPortAclList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListPortAclList require credential")
@@ -4371,6 +4438,7 @@ func (c *Client) DescribeListProtocolBlockConfigWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeListProtocolBlockConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListProtocolBlockConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListProtocolBlockConfig require credential")
@@ -4454,6 +4522,7 @@ func (c *Client) DescribeListSchedulingDomainWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeListSchedulingDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListSchedulingDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListSchedulingDomain require credential")
@@ -4537,6 +4606,7 @@ func (c *Client) DescribeListWaterPrintConfigWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeListWaterPrintConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListWaterPrintConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListWaterPrintConfig require credential")
@@ -4586,6 +4656,7 @@ func (c *Client) DescribeNewL7RulesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeNewL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeNewL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNewL7Rules require credential")
@@ -4635,6 +4706,7 @@ func (c *Client) DescribeNewL7RulesErrHealthWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeNewL7RulesErrHealthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeNewL7RulesErrHealth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNewL7RulesErrHealth require credential")
@@ -4718,6 +4790,7 @@ func (c *Client) DescribeOverviewAttackTrendWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeOverviewAttackTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeOverviewAttackTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOverviewAttackTrend require credential")
@@ -4801,6 +4874,7 @@ func (c *Client) DescribeOverviewCCTrendWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeOverviewCCTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeOverviewCCTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOverviewCCTrend require credential")
@@ -4884,6 +4958,7 @@ func (c *Client) DescribeOverviewDDoSEventListWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeOverviewDDoSEventListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeOverviewDDoSEventList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOverviewDDoSEventList require credential")
@@ -4967,6 +5042,7 @@ func (c *Client) DescribeOverviewDDoSTrendWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeOverviewDDoSTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeOverviewDDoSTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOverviewDDoSTrend require credential")
@@ -5050,6 +5126,7 @@ func (c *Client) DescribeOverviewIndexWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeOverviewIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeOverviewIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOverviewIndex require credential")
@@ -5133,6 +5210,7 @@ func (c *Client) DescribePendingRiskInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribePendingRiskInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribePendingRiskInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePendingRiskInfo require credential")
@@ -5216,6 +5294,7 @@ func (c *Client) DisassociateDDoSEipAddressWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDisassociateDDoSEipAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DisassociateDDoSEipAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateDDoSEipAddress require credential")
@@ -5297,6 +5376,7 @@ func (c *Client) ModifyCCLevelPolicyWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyCCLevelPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyCCLevelPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCLevelPolicy require credential")
@@ -5378,6 +5458,7 @@ func (c *Client) ModifyCCPrecisionPolicyWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyCCPrecisionPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyCCPrecisionPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCPrecisionPolicy require credential")
@@ -5459,6 +5540,7 @@ func (c *Client) ModifyCCReqLimitPolicyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyCCReqLimitPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyCCReqLimitPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCReqLimitPolicy require credential")
@@ -5540,6 +5622,7 @@ func (c *Client) ModifyCCThresholdPolicyWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyCCThresholdPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyCCThresholdPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCThresholdPolicy require credential")
@@ -5593,6 +5676,7 @@ func (c *Client) ModifyCcBlackWhiteIpListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyCcBlackWhiteIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyCcBlackWhiteIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCcBlackWhiteIpList require credential")
@@ -5646,6 +5730,7 @@ func (c *Client) ModifyDDoSBlackWhiteIpListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyDDoSBlackWhiteIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyDDoSBlackWhiteIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSBlackWhiteIpList require credential")
@@ -5695,6 +5780,7 @@ func (c *Client) ModifyDDoSGeoIPBlockConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyDDoSGeoIPBlockConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyDDoSGeoIPBlockConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSGeoIPBlockConfig require credential")
@@ -5744,6 +5830,7 @@ func (c *Client) ModifyDDoSLevelWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyDDoSLevelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyDDoSLevel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSLevel require credential")
@@ -5793,6 +5880,7 @@ func (c *Client) ModifyDDoSSpeedLimitConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyDDoSSpeedLimitConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyDDoSSpeedLimitConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSSpeedLimitConfig require credential")
@@ -5842,6 +5930,7 @@ func (c *Client) ModifyDDoSThresholdWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyDDoSThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyDDoSThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSThreshold require credential")
@@ -5891,6 +5980,7 @@ func (c *Client) ModifyDomainUsrNameWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyDomainUsrNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyDomainUsrName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDomainUsrName require credential")
@@ -5942,6 +6032,7 @@ func (c *Client) ModifyNewDomainRulesWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyNewDomainRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyNewDomainRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNewDomainRules require credential")
@@ -5993,6 +6084,7 @@ func (c *Client) ModifyPacketFilterConfigWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyPacketFilterConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyPacketFilterConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPacketFilterConfig require credential")
@@ -6076,6 +6168,7 @@ func (c *Client) ModifyPortAclConfigWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyPortAclConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "ModifyPortAclConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPortAclConfig require credential")
@@ -6131,6 +6224,7 @@ func (c *Client) SwitchWaterPrintConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewSwitchWaterPrintConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "SwitchWaterPrintConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SwitchWaterPrintConfig require credential")

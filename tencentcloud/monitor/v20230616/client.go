@@ -84,6 +84,7 @@ func (c *Client) DescribeAlarmNotifyHistoriesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAlarmNotifyHistoriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeAlarmNotifyHistories")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlarmNotifyHistories require credential")

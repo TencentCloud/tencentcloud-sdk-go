@@ -94,6 +94,7 @@ func (c *Client) BindSecurityTemplateToEntityWithContext(ctx context.Context, re
     if request == nil {
         request = NewBindSecurityTemplateToEntityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "BindSecurityTemplateToEntity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindSecurityTemplateToEntity require credential")
@@ -145,6 +146,7 @@ func (c *Client) BindSharedCNAMEWithContext(ctx context.Context, request *BindSh
     if request == nil {
         request = NewBindSharedCNAMERequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "BindSharedCNAME")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindSharedCNAME require credential")
@@ -208,6 +210,7 @@ func (c *Client) BindZoneToPlanWithContext(ctx context.Context, request *BindZon
     if request == nil {
         request = NewBindZoneToPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "BindZoneToPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindZoneToPlan require credential")
@@ -263,6 +266,7 @@ func (c *Client) CheckCnameStatusWithContext(ctx context.Context, request *Check
     if request == nil {
         request = NewCheckCnameStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CheckCnameStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckCnameStatus require credential")
@@ -320,6 +324,7 @@ func (c *Client) ConfirmOriginACLUpdateWithContext(ctx context.Context, request 
     if request == nil {
         request = NewConfirmOriginACLUpdateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ConfirmOriginACLUpdate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ConfirmOriginACLUpdate require credential")
@@ -475,6 +480,7 @@ func (c *Client) CreateAccelerationDomainWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAccelerationDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateAccelerationDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAccelerationDomain require credential")
@@ -580,6 +586,7 @@ func (c *Client) CreateAliasDomainWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAliasDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateAliasDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAliasDomain require credential")
@@ -653,6 +660,7 @@ func (c *Client) CreateApplicationProxyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateApplicationProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateApplicationProxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApplicationProxy require credential")
@@ -734,6 +742,7 @@ func (c *Client) CreateApplicationProxyRuleWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateApplicationProxyRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateApplicationProxyRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApplicationProxyRule require credential")
@@ -785,6 +794,7 @@ func (c *Client) CreateCLSIndexWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateCLSIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateCLSIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCLSIndex require credential")
@@ -912,6 +922,7 @@ func (c *Client) CreateConfigGroupVersionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateConfigGroupVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateConfigGroupVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConfigGroupVersion require credential")
@@ -1039,6 +1050,7 @@ func (c *Client) CreateContentIdentifierWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateContentIdentifierRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateContentIdentifier")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateContentIdentifier require credential")
@@ -1090,6 +1102,7 @@ func (c *Client) CreateCustomizeErrorPageWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateCustomizeErrorPageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateCustomizeErrorPage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomizeErrorPage require credential")
@@ -1141,6 +1154,7 @@ func (c *Client) CreateDnsRecordWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateDnsRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateDnsRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDnsRecord require credential")
@@ -1212,6 +1226,7 @@ func (c *Client) CreateFunctionWithContext(ctx context.Context, request *CreateF
     if request == nil {
         request = NewCreateFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFunction require credential")
@@ -1277,6 +1292,7 @@ func (c *Client) CreateFunctionRuleWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateFunctionRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateFunctionRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFunctionRule require credential")
@@ -1348,6 +1364,7 @@ func (c *Client) CreateL4ProxyWithContext(ctx context.Context, request *CreateL4
     if request == nil {
         request = NewCreateL4ProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateL4Proxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL4Proxy require credential")
@@ -1409,6 +1426,7 @@ func (c *Client) CreateL4ProxyRulesWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateL4ProxyRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateL4ProxyRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL4ProxyRules require credential")
@@ -1640,6 +1658,7 @@ func (c *Client) CreateL7AccRulesWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateL7AccRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateL7AccRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL7AccRules require credential")
@@ -1697,6 +1716,7 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLoadBalancer require credential")
@@ -1754,6 +1774,7 @@ func (c *Client) CreateMultiPathGatewayWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateMultiPathGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateMultiPathGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMultiPathGateway require credential")
@@ -1811,6 +1832,7 @@ func (c *Client) CreateMultiPathGatewayLineWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateMultiPathGatewayLineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateMultiPathGatewayLine")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMultiPathGatewayLine require credential")
@@ -1868,6 +1890,7 @@ func (c *Client) CreateMultiPathGatewaySecretKeyWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateMultiPathGatewaySecretKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateMultiPathGatewaySecretKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMultiPathGatewaySecretKey require credential")
@@ -1947,6 +1970,7 @@ func (c *Client) CreateOriginGroupWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateOriginGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateOriginGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOriginGroup require credential")
@@ -2010,6 +2034,7 @@ func (c *Client) CreatePlanWithContext(ctx context.Context, request *CreatePlanR
     if request == nil {
         request = NewCreatePlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreatePlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePlan require credential")
@@ -2069,6 +2094,7 @@ func (c *Client) CreatePlanForZoneWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreatePlanForZoneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreatePlanForZone")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePlanForZone require credential")
@@ -2144,6 +2170,7 @@ func (c *Client) CreatePrefetchTaskWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreatePrefetchTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreatePrefetchTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrefetchTask require credential")
@@ -2229,6 +2256,7 @@ func (c *Client) CreatePurgeTaskWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreatePurgeTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreatePurgeTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePurgeTask require credential")
@@ -2324,6 +2352,7 @@ func (c *Client) CreateRealtimeLogDeliveryTaskWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateRealtimeLogDeliveryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateRealtimeLogDeliveryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRealtimeLogDeliveryTask require credential")
@@ -2559,6 +2588,7 @@ func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleR
     if request == nil {
         request = NewCreateRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRule require credential")
@@ -2612,6 +2642,7 @@ func (c *Client) CreateSecurityIPGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateSecurityIPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateSecurityIPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSecurityIPGroup require credential")
@@ -2669,6 +2700,7 @@ func (c *Client) CreateSharedCNAMEWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateSharedCNAMERequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateSharedCNAME")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSharedCNAME require credential")
@@ -2722,6 +2754,7 @@ func (c *Client) CreateWebSecurityTemplateWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateWebSecurityTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateWebSecurityTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWebSecurityTemplate require credential")
@@ -2853,6 +2886,7 @@ func (c *Client) CreateZoneWithContext(ctx context.Context, request *CreateZoneR
     if request == nil {
         request = NewCreateZoneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateZone")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateZone require credential")
@@ -2918,6 +2952,7 @@ func (c *Client) DeleteAccelerationDomainsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteAccelerationDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteAccelerationDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAccelerationDomains require credential")
@@ -2977,6 +3012,7 @@ func (c *Client) DeleteAliasDomainWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteAliasDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteAliasDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAliasDomain require credential")
@@ -3034,6 +3070,7 @@ func (c *Client) DeleteApplicationProxyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteApplicationProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteApplicationProxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteApplicationProxy require credential")
@@ -3087,6 +3124,7 @@ func (c *Client) DeleteApplicationProxyRuleWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteApplicationProxyRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteApplicationProxyRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteApplicationProxyRule require credential")
@@ -3140,6 +3178,7 @@ func (c *Client) DeleteContentIdentifierWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteContentIdentifierRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteContentIdentifier")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteContentIdentifier require credential")
@@ -3191,6 +3230,7 @@ func (c *Client) DeleteCustomErrorPageWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteCustomErrorPageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteCustomErrorPage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomErrorPage require credential")
@@ -3242,6 +3282,7 @@ func (c *Client) DeleteDnsRecordsWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteDnsRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteDnsRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDnsRecords require credential")
@@ -3301,6 +3342,7 @@ func (c *Client) DeleteFunctionWithContext(ctx context.Context, request *DeleteF
     if request == nil {
         request = NewDeleteFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFunction require credential")
@@ -3358,6 +3400,7 @@ func (c *Client) DeleteFunctionRulesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteFunctionRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteFunctionRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFunctionRules require credential")
@@ -3411,6 +3454,7 @@ func (c *Client) DeleteL4ProxyWithContext(ctx context.Context, request *DeleteL4
     if request == nil {
         request = NewDeleteL4ProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteL4Proxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteL4Proxy require credential")
@@ -3464,6 +3508,7 @@ func (c *Client) DeleteL4ProxyRulesWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteL4ProxyRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteL4ProxyRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteL4ProxyRules require credential")
@@ -3547,6 +3592,7 @@ func (c *Client) DeleteL7AccRulesWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteL7AccRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteL7AccRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteL7AccRules require credential")
@@ -3602,6 +3648,7 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLoadBalancer require credential")
@@ -3659,6 +3706,7 @@ func (c *Client) DeleteMultiPathGatewayWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteMultiPathGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteMultiPathGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMultiPathGateway require credential")
@@ -3716,6 +3764,7 @@ func (c *Client) DeleteMultiPathGatewayLineWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteMultiPathGatewayLineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteMultiPathGatewayLine")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMultiPathGatewayLine require credential")
@@ -3779,6 +3828,7 @@ func (c *Client) DeleteOriginGroupWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteOriginGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteOriginGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteOriginGroup require credential")
@@ -3828,6 +3878,7 @@ func (c *Client) DeleteRealtimeLogDeliveryTaskWithContext(ctx context.Context, r
     if request == nil {
         request = NewDeleteRealtimeLogDeliveryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteRealtimeLogDeliveryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRealtimeLogDeliveryTask require credential")
@@ -3915,6 +3966,7 @@ func (c *Client) DeleteRulesWithContext(ctx context.Context, request *DeleteRule
     if request == nil {
         request = NewDeleteRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRules require credential")
@@ -3970,6 +4022,7 @@ func (c *Client) DeleteSecurityIPGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteSecurityIPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteSecurityIPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSecurityIPGroup require credential")
@@ -4019,6 +4072,7 @@ func (c *Client) DeleteSharedCNAMEWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteSharedCNAMERequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteSharedCNAME")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSharedCNAME require credential")
@@ -4072,6 +4126,7 @@ func (c *Client) DeleteWebSecurityTemplateWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteWebSecurityTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteWebSecurityTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteWebSecurityTemplate require credential")
@@ -4135,6 +4190,7 @@ func (c *Client) DeleteZoneWithContext(ctx context.Context, request *DeleteZoneR
     if request == nil {
         request = NewDeleteZoneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteZone")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteZone require credential")
@@ -4218,6 +4274,7 @@ func (c *Client) DeployConfigGroupVersionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeployConfigGroupVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeployConfigGroupVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeployConfigGroupVersion require credential")
@@ -4283,6 +4340,7 @@ func (c *Client) DescribeAccelerationDomainsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAccelerationDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeAccelerationDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccelerationDomains require credential")
@@ -4344,6 +4402,7 @@ func (c *Client) DescribeAliasDomainsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAliasDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeAliasDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAliasDomains require credential")
@@ -4401,6 +4460,7 @@ func (c *Client) DescribeApplicationProxiesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeApplicationProxiesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeApplicationProxies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApplicationProxies require credential")
@@ -4450,6 +4510,7 @@ func (c *Client) DescribeAvailablePlansWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAvailablePlansRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeAvailablePlans")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAvailablePlans require credential")
@@ -4507,6 +4568,7 @@ func (c *Client) DescribeBillingDataWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeBillingDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeBillingData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBillingData require credential")
@@ -4556,6 +4618,7 @@ func (c *Client) DescribeConfigGroupVersionDetailWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeConfigGroupVersionDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeConfigGroupVersionDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigGroupVersionDetail require credential")
@@ -4605,6 +4668,7 @@ func (c *Client) DescribeConfigGroupVersionsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeConfigGroupVersionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeConfigGroupVersions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigGroupVersions require credential")
@@ -4654,6 +4718,7 @@ func (c *Client) DescribeContentIdentifiersWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeContentIdentifiersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeContentIdentifiers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeContentIdentifiers require credential")
@@ -4707,6 +4772,7 @@ func (c *Client) DescribeContentQuotaWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeContentQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeContentQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeContentQuota require credential")
@@ -4756,6 +4822,7 @@ func (c *Client) DescribeCustomErrorPagesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCustomErrorPagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeCustomErrorPages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomErrorPages require credential")
@@ -4817,6 +4884,7 @@ func (c *Client) DescribeDDoSAttackDataWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDDoSAttackDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeDDoSAttackData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSAttackData require credential")
@@ -4878,6 +4946,7 @@ func (c *Client) DescribeDDoSAttackEventWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDDoSAttackEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeDDoSAttackEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSAttackEvent require credential")
@@ -4935,6 +5004,7 @@ func (c *Client) DescribeDDoSAttackTopDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDDoSAttackTopDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeDDoSAttackTopData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSAttackTopData require credential")
@@ -4996,6 +5066,7 @@ func (c *Client) DescribeDDoSProtectionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDDoSProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeDDoSProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSProtection require credential")
@@ -5061,6 +5132,7 @@ func (c *Client) DescribeDefaultCertificatesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDefaultCertificatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeDefaultCertificates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDefaultCertificates require credential")
@@ -5110,6 +5182,7 @@ func (c *Client) DescribeDeployHistoryWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDeployHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeDeployHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeployHistory require credential")
@@ -5159,6 +5232,7 @@ func (c *Client) DescribeDnsRecordsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDnsRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeDnsRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDnsRecords require credential")
@@ -5208,6 +5282,7 @@ func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeEnvironments")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvironments require credential")
@@ -5265,6 +5340,7 @@ func (c *Client) DescribeFunctionRulesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFunctionRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeFunctionRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFunctionRules require credential")
@@ -5324,6 +5400,7 @@ func (c *Client) DescribeFunctionRuntimeEnvironmentWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeFunctionRuntimeEnvironmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeFunctionRuntimeEnvironment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFunctionRuntimeEnvironment require credential")
@@ -5389,6 +5466,7 @@ func (c *Client) DescribeFunctionsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeFunctionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeFunctions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFunctions require credential")
@@ -5450,6 +5528,7 @@ func (c *Client) DescribeHostsSettingWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeHostsSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeHostsSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostsSetting require credential")
@@ -5499,6 +5578,7 @@ func (c *Client) DescribeIPRegionWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeIPRegionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeIPRegion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIPRegion require credential")
@@ -5556,6 +5636,7 @@ func (c *Client) DescribeIdentificationsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeIdentificationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeIdentifications")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIdentifications require credential")
@@ -5611,6 +5692,7 @@ func (c *Client) DescribeL4ProxyWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeL4ProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeL4Proxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL4Proxy require credential")
@@ -5666,6 +5748,7 @@ func (c *Client) DescribeL4ProxyRulesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeL4ProxyRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeL4ProxyRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL4ProxyRules require credential")
@@ -5719,6 +5802,7 @@ func (c *Client) DescribeL7AccRulesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeL7AccRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeL7AccRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL7AccRules require credential")
@@ -5782,6 +5866,7 @@ func (c *Client) DescribeL7AccSettingWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeL7AccSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeL7AccSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL7AccSetting require credential")
@@ -5831,6 +5916,7 @@ func (c *Client) DescribeLoadBalancerListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeLoadBalancerListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeLoadBalancerList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoadBalancerList require credential")
@@ -5888,6 +5974,7 @@ func (c *Client) DescribeMultiPathGatewayWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeMultiPathGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeMultiPathGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMultiPathGateway require credential")
@@ -5945,6 +6032,7 @@ func (c *Client) DescribeMultiPathGatewayLineWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeMultiPathGatewayLineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeMultiPathGatewayLine")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMultiPathGatewayLine require credential")
@@ -6002,6 +6090,7 @@ func (c *Client) DescribeMultiPathGatewayRegionsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeMultiPathGatewayRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeMultiPathGatewayRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMultiPathGatewayRegions require credential")
@@ -6059,6 +6148,7 @@ func (c *Client) DescribeMultiPathGatewaySecretKeyWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeMultiPathGatewaySecretKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeMultiPathGatewaySecretKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMultiPathGatewaySecretKey require credential")
@@ -6116,6 +6206,7 @@ func (c *Client) DescribeMultiPathGatewaysWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeMultiPathGatewaysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeMultiPathGateways")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMultiPathGateways require credential")
@@ -6173,6 +6264,7 @@ func (c *Client) DescribeOriginACLWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeOriginACLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeOriginACL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOriginACL require credential")
@@ -6226,6 +6318,7 @@ func (c *Client) DescribeOriginGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeOriginGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeOriginGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOriginGroup require credential")
@@ -6279,6 +6372,7 @@ func (c *Client) DescribeOriginGroupHealthStatusWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeOriginGroupHealthStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeOriginGroupHealthStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOriginGroupHealthStatus require credential")
@@ -6344,6 +6438,7 @@ func (c *Client) DescribeOriginProtectionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeOriginProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeOriginProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOriginProtection require credential")
@@ -6407,6 +6502,7 @@ func (c *Client) DescribeOverviewL7DataWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeOverviewL7DataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeOverviewL7Data")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOverviewL7Data require credential")
@@ -6458,6 +6554,7 @@ func (c *Client) DescribePlansWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribePlansRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribePlans")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePlans require credential")
@@ -6513,6 +6610,7 @@ func (c *Client) DescribePrefetchTasksWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribePrefetchTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribePrefetchTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrefetchTasks require credential")
@@ -6566,6 +6664,7 @@ func (c *Client) DescribePurgeTasksWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePurgeTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribePurgeTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePurgeTasks require credential")
@@ -6615,6 +6714,7 @@ func (c *Client) DescribeRealtimeLogDeliveryTasksWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeRealtimeLogDeliveryTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeRealtimeLogDeliveryTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRealtimeLogDeliveryTasks require credential")
@@ -6672,6 +6772,7 @@ func (c *Client) DescribeRulesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRules require credential")
@@ -6725,6 +6826,7 @@ func (c *Client) DescribeRulesSettingWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeRulesSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeRulesSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRulesSetting require credential")
@@ -6778,6 +6880,7 @@ func (c *Client) DescribeSecurityIPGroupWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSecurityIPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeSecurityIPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityIPGroup require credential")
@@ -6843,6 +6946,7 @@ func (c *Client) DescribeSecurityIPGroupInfoWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeSecurityIPGroupInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeSecurityIPGroupInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityIPGroupInfo require credential")
@@ -6900,6 +7004,7 @@ func (c *Client) DescribeSecurityPolicyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSecurityPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeSecurityPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityPolicy require credential")
@@ -6955,6 +7060,7 @@ func (c *Client) DescribeSecurityTemplateBindingsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeSecurityTemplateBindingsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeSecurityTemplateBindings")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityTemplateBindings require credential")
@@ -7016,6 +7122,7 @@ func (c *Client) DescribeTimingL4DataWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTimingL4DataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeTimingL4Data")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTimingL4Data require credential")
@@ -7083,6 +7190,7 @@ func (c *Client) DescribeTimingL7AnalysisDataWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeTimingL7AnalysisDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeTimingL7AnalysisData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTimingL7AnalysisData require credential")
@@ -7138,6 +7246,7 @@ func (c *Client) DescribeTimingL7CacheDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeTimingL7CacheDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeTimingL7CacheData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTimingL7CacheData require credential")
@@ -7207,6 +7316,7 @@ func (c *Client) DescribeTopL7AnalysisDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeTopL7AnalysisDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeTopL7AnalysisData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopL7AnalysisData require credential")
@@ -7262,6 +7372,7 @@ func (c *Client) DescribeTopL7CacheDataWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTopL7CacheDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeTopL7CacheData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopL7CacheData require credential")
@@ -7317,6 +7428,7 @@ func (c *Client) DescribeWebSecurityTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeWebSecurityTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeWebSecurityTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWebSecurityTemplate require credential")
@@ -7372,6 +7484,7 @@ func (c *Client) DescribeWebSecurityTemplatesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeWebSecurityTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeWebSecurityTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWebSecurityTemplates require credential")
@@ -7427,6 +7540,7 @@ func (c *Client) DescribeZoneConfigImportResultWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeZoneConfigImportResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeZoneConfigImportResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeZoneConfigImportResult require credential")
@@ -7490,6 +7604,7 @@ func (c *Client) DescribeZoneSettingWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeZoneSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeZoneSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeZoneSetting require credential")
@@ -7547,6 +7662,7 @@ func (c *Client) DescribeZonesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeZonesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeZones")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeZones require credential")
@@ -7626,6 +7742,7 @@ func (c *Client) DestroyPlanWithContext(ctx context.Context, request *DestroyPla
     if request == nil {
         request = NewDestroyPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DestroyPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyPlan require credential")
@@ -7681,6 +7798,7 @@ func (c *Client) DisableOriginACLWithContext(ctx context.Context, request *Disab
     if request == nil {
         request = NewDisableOriginACLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DisableOriginACL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableOriginACL require credential")
@@ -7730,6 +7848,7 @@ func (c *Client) DownloadL4LogsWithContext(ctx context.Context, request *Downloa
     if request == nil {
         request = NewDownloadL4LogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DownloadL4Logs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadL4Logs require credential")
@@ -7783,6 +7902,7 @@ func (c *Client) DownloadL7LogsWithContext(ctx context.Context, request *Downloa
     if request == nil {
         request = NewDownloadL7LogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DownloadL7Logs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadL7Logs require credential")
@@ -7864,6 +7984,7 @@ func (c *Client) EnableOriginACLWithContext(ctx context.Context, request *Enable
     if request == nil {
         request = NewEnableOriginACLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "EnableOriginACL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableOriginACL require credential")
@@ -7929,6 +8050,7 @@ func (c *Client) ExportZoneConfigWithContext(ctx context.Context, request *Expor
     if request == nil {
         request = NewExportZoneConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ExportZoneConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportZoneConfig require credential")
@@ -7992,6 +8114,7 @@ func (c *Client) HandleFunctionRuntimeEnvironmentWithContext(ctx context.Context
     if request == nil {
         request = NewHandleFunctionRuntimeEnvironmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "HandleFunctionRuntimeEnvironment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("HandleFunctionRuntimeEnvironment require credential")
@@ -8045,6 +8168,7 @@ func (c *Client) IdentifyZoneWithContext(ctx context.Context, request *IdentifyZ
     if request == nil {
         request = NewIdentifyZoneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "IdentifyZone")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IdentifyZone require credential")
@@ -8098,6 +8222,7 @@ func (c *Client) ImportZoneConfigWithContext(ctx context.Context, request *Impor
     if request == nil {
         request = NewImportZoneConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ImportZoneConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportZoneConfig require credential")
@@ -8161,6 +8286,7 @@ func (c *Client) IncreasePlanQuotaWithContext(ctx context.Context, request *Incr
     if request == nil {
         request = NewIncreasePlanQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "IncreasePlanQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IncreasePlanQuota require credential")
@@ -8264,6 +8390,7 @@ func (c *Client) ModifyAccelerationDomainWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyAccelerationDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyAccelerationDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccelerationDomain require credential")
@@ -8345,6 +8472,7 @@ func (c *Client) ModifyAccelerationDomainStatusesWithContext(ctx context.Context
     if request == nil {
         request = NewModifyAccelerationDomainStatusesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyAccelerationDomainStatuses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccelerationDomainStatuses require credential")
@@ -8404,6 +8532,7 @@ func (c *Client) ModifyAliasDomainWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAliasDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyAliasDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAliasDomain require credential")
@@ -8461,6 +8590,7 @@ func (c *Client) ModifyAliasDomainStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyAliasDomainStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyAliasDomainStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAliasDomainStatus require credential")
@@ -8524,6 +8654,7 @@ func (c *Client) ModifyApplicationProxyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyApplicationProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyApplicationProxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApplicationProxy require credential")
@@ -8587,6 +8718,7 @@ func (c *Client) ModifyApplicationProxyRuleWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyApplicationProxyRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyApplicationProxyRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApplicationProxyRule require credential")
@@ -8646,6 +8778,7 @@ func (c *Client) ModifyApplicationProxyRuleStatusWithContext(ctx context.Context
     if request == nil {
         request = NewModifyApplicationProxyRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyApplicationProxyRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApplicationProxyRuleStatus require credential")
@@ -8707,6 +8840,7 @@ func (c *Client) ModifyApplicationProxyStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyApplicationProxyStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyApplicationProxyStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApplicationProxyStatus require credential")
@@ -8768,6 +8902,7 @@ func (c *Client) ModifyContentIdentifierWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyContentIdentifierRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyContentIdentifier")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyContentIdentifier require credential")
@@ -8817,6 +8952,7 @@ func (c *Client) ModifyCustomErrorPageWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyCustomErrorPageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyCustomErrorPage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomErrorPage require credential")
@@ -8870,6 +9006,7 @@ func (c *Client) ModifyDDoSProtectionWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyDDoSProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyDDoSProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSProtection require credential")
@@ -8923,6 +9060,7 @@ func (c *Client) ModifyDnsRecordsWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyDnsRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyDnsRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDnsRecords require credential")
@@ -8976,6 +9114,7 @@ func (c *Client) ModifyDnsRecordsStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyDnsRecordsStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyDnsRecordsStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDnsRecordsStatus require credential")
@@ -9041,6 +9180,7 @@ func (c *Client) ModifyFunctionWithContext(ctx context.Context, request *ModifyF
     if request == nil {
         request = NewModifyFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFunction require credential")
@@ -9104,6 +9244,7 @@ func (c *Client) ModifyFunctionRuleWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyFunctionRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyFunctionRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFunctionRule require credential")
@@ -9161,6 +9302,7 @@ func (c *Client) ModifyFunctionRulePriorityWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyFunctionRulePriorityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyFunctionRulePriority")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFunctionRulePriority require credential")
@@ -9336,6 +9478,7 @@ func (c *Client) ModifyHostsCertificateWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyHostsCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyHostsCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyHostsCertificate require credential")
@@ -9399,6 +9542,7 @@ func (c *Client) ModifyL4ProxyWithContext(ctx context.Context, request *ModifyL4
     if request == nil {
         request = NewModifyL4ProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyL4Proxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL4Proxy require credential")
@@ -9456,6 +9600,7 @@ func (c *Client) ModifyL4ProxyRulesWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyL4ProxyRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyL4ProxyRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL4ProxyRules require credential")
@@ -9511,6 +9656,7 @@ func (c *Client) ModifyL4ProxyRulesStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyL4ProxyRulesStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyL4ProxyRulesStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL4ProxyRulesStatus require credential")
@@ -9570,6 +9716,7 @@ func (c *Client) ModifyL4ProxyStatusWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyL4ProxyStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyL4ProxyStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL4ProxyStatus require credential")
@@ -9799,6 +9946,7 @@ func (c *Client) ModifyL7AccRuleWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyL7AccRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyL7AccRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL7AccRule require credential")
@@ -9850,6 +9998,7 @@ func (c *Client) ModifyL7AccRulePriorityWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyL7AccRulePriorityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyL7AccRulePriority")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL7AccRulePriority require credential")
@@ -10037,6 +10186,7 @@ func (c *Client) ModifyL7AccSettingWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyL7AccSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyL7AccSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL7AccSetting require credential")
@@ -10088,6 +10238,7 @@ func (c *Client) ModifyLoadBalancerWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLoadBalancer require credential")
@@ -10145,6 +10296,7 @@ func (c *Client) ModifyMultiPathGatewayWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyMultiPathGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyMultiPathGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMultiPathGateway require credential")
@@ -10202,6 +10354,7 @@ func (c *Client) ModifyMultiPathGatewayLineWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyMultiPathGatewayLineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyMultiPathGatewayLine")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMultiPathGatewayLine require credential")
@@ -10259,6 +10412,7 @@ func (c *Client) ModifyMultiPathGatewaySecretKeyWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyMultiPathGatewaySecretKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyMultiPathGatewaySecretKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMultiPathGatewaySecretKey require credential")
@@ -10320,6 +10474,7 @@ func (c *Client) ModifyOriginACLWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyOriginACLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyOriginACL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyOriginACL require credential")
@@ -10397,6 +10552,7 @@ func (c *Client) ModifyOriginGroupWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyOriginGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyOriginGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyOriginGroup require credential")
@@ -10450,6 +10606,7 @@ func (c *Client) ModifyPlanWithContext(ctx context.Context, request *ModifyPlanR
     if request == nil {
         request = NewModifyPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPlan require credential")
@@ -10509,6 +10666,7 @@ func (c *Client) ModifyRealtimeLogDeliveryTaskWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyRealtimeLogDeliveryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyRealtimeLogDeliveryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRealtimeLogDeliveryTask require credential")
@@ -10742,6 +10900,7 @@ func (c *Client) ModifyRuleWithContext(ctx context.Context, request *ModifyRuleR
     if request == nil {
         request = NewModifyRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRule require credential")
@@ -10799,6 +10958,7 @@ func (c *Client) ModifySecurityIPGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifySecurityIPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifySecurityIPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecurityIPGroup require credential")
@@ -10868,6 +11028,7 @@ func (c *Client) ModifySecurityPolicyWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifySecurityPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifySecurityPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecurityPolicy require credential")
@@ -10917,6 +11078,7 @@ func (c *Client) ModifyWebSecurityTemplateWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyWebSecurityTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyWebSecurityTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWebSecurityTemplate require credential")
@@ -11036,6 +11198,7 @@ func (c *Client) ModifyZoneWithContext(ctx context.Context, request *ModifyZoneR
     if request == nil {
         request = NewModifyZoneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyZone")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyZone require credential")
@@ -11223,6 +11386,7 @@ func (c *Client) ModifyZoneSettingWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyZoneSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyZoneSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyZoneSetting require credential")
@@ -11294,6 +11458,7 @@ func (c *Client) ModifyZoneStatusWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyZoneStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyZoneStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyZoneStatus require credential")
@@ -11351,6 +11516,7 @@ func (c *Client) RefreshMultiPathGatewaySecretKeyWithContext(ctx context.Context
     if request == nil {
         request = NewRefreshMultiPathGatewaySecretKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "RefreshMultiPathGatewaySecretKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RefreshMultiPathGatewaySecretKey require credential")
@@ -11414,6 +11580,7 @@ func (c *Client) RenewPlanWithContext(ctx context.Context, request *RenewPlanReq
     if request == nil {
         request = NewRenewPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "RenewPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewPlan require credential")
@@ -11491,6 +11658,7 @@ func (c *Client) UpgradePlanWithContext(ctx context.Context, request *UpgradePla
     if request == nil {
         request = NewUpgradePlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "UpgradePlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradePlan require credential")
@@ -11552,6 +11720,7 @@ func (c *Client) VerifyOwnershipWithContext(ctx context.Context, request *Verify
     if request == nil {
         request = NewVerifyOwnershipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "VerifyOwnership")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyOwnership require credential")

@@ -84,6 +84,7 @@ func (c *Client) CreateAppScanTaskWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAppScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "CreateAppScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAppScanTask require credential")
@@ -135,6 +136,7 @@ func (c *Client) CreateAppScanTaskRepeatWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateAppScanTaskRepeatRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "CreateAppScanTaskRepeat")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAppScanTaskRepeat require credential")
@@ -186,6 +188,7 @@ func (c *Client) CreateFlySecMiniAppProfessionalScanTaskWithContext(ctx context.
     if request == nil {
         request = NewCreateFlySecMiniAppProfessionalScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "CreateFlySecMiniAppProfessionalScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlySecMiniAppProfessionalScanTask require credential")
@@ -237,6 +240,7 @@ func (c *Client) CreateFlySecMiniAppScanTaskWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateFlySecMiniAppScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "CreateFlySecMiniAppScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlySecMiniAppScanTask require credential")
@@ -288,6 +292,7 @@ func (c *Client) CreateFlySecMiniAppScanTaskRepeatWithContext(ctx context.Contex
     if request == nil {
         request = NewCreateFlySecMiniAppScanTaskRepeatRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "CreateFlySecMiniAppScanTaskRepeat")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlySecMiniAppScanTaskRepeat require credential")
@@ -339,6 +344,7 @@ func (c *Client) DescribeBasicDiagnosisResourceUsageInfoWithContext(ctx context.
     if request == nil {
         request = NewDescribeBasicDiagnosisResourceUsageInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "DescribeBasicDiagnosisResourceUsageInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBasicDiagnosisResourceUsageInfo require credential")
@@ -390,6 +396,7 @@ func (c *Client) DescribeFlySecMiniAppReportUrlWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeFlySecMiniAppReportUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "DescribeFlySecMiniAppReportUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlySecMiniAppReportUrl require credential")
@@ -441,6 +448,7 @@ func (c *Client) DescribeFlySecMiniAppScanReportListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeFlySecMiniAppScanReportListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "DescribeFlySecMiniAppScanReportList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlySecMiniAppScanReportList require credential")
@@ -492,6 +500,7 @@ func (c *Client) DescribeFlySecMiniAppScanTaskListWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeFlySecMiniAppScanTaskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "DescribeFlySecMiniAppScanTaskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlySecMiniAppScanTaskList require credential")
@@ -543,6 +552,7 @@ func (c *Client) DescribeFlySecMiniAppScanTaskParamWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeFlySecMiniAppScanTaskParamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "DescribeFlySecMiniAppScanTaskParam")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlySecMiniAppScanTaskParam require credential")
@@ -594,6 +604,7 @@ func (c *Client) DescribeFlySecMiniAppScanTaskStatusWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeFlySecMiniAppScanTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "DescribeFlySecMiniAppScanTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlySecMiniAppScanTaskStatus require credential")
@@ -645,6 +656,7 @@ func (c *Client) DescribeResourceUsageInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeResourceUsageInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "DescribeResourceUsageInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceUsageInfo require credential")
@@ -694,6 +706,7 @@ func (c *Client) DescribeScanTaskListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeScanTaskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "DescribeScanTaskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScanTaskList require credential")
@@ -743,6 +756,7 @@ func (c *Client) DescribeScanTaskReportUrlWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeScanTaskReportUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "DescribeScanTaskReportUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScanTaskReportUrl require credential")
@@ -792,6 +806,7 @@ func (c *Client) DescribeScanTaskStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeScanTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mmps", APIVersion, "DescribeScanTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScanTaskStatus require credential")

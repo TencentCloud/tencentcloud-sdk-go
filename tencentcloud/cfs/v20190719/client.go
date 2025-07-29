@@ -104,6 +104,7 @@ func (c *Client) BindAutoSnapshotPolicyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBindAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "BindAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindAutoSnapshotPolicy require credential")
@@ -175,6 +176,7 @@ func (c *Client) CreateAccessCertWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateAccessCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateAccessCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAccessCert require credential")
@@ -272,6 +274,7 @@ func (c *Client) CreateAutoSnapshotPolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAutoSnapshotPolicy require credential")
@@ -435,6 +438,7 @@ func (c *Client) CreateCfsFileSystemWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateCfsFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateCfsFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCfsFileSystem require credential")
@@ -500,6 +504,7 @@ func (c *Client) CreateCfsPGroupWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateCfsPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateCfsPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCfsPGroup require credential")
@@ -581,6 +586,7 @@ func (c *Client) CreateCfsRuleWithContext(ctx context.Context, request *CreateCf
     if request == nil {
         request = NewCreateCfsRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateCfsRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCfsRule require credential")
@@ -678,6 +684,7 @@ func (c *Client) CreateCfsSnapshotWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCfsSnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateCfsSnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCfsSnapshot require credential")
@@ -733,6 +740,7 @@ func (c *Client) CreateMigrationTaskWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateMigrationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateMigrationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMigrationTask require credential")
@@ -800,6 +808,7 @@ func (c *Client) DeleteAutoSnapshotPolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAutoSnapshotPolicy require credential")
@@ -873,6 +882,7 @@ func (c *Client) DeleteCfsFileSystemWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteCfsFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteCfsFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCfsFileSystem require credential")
@@ -940,6 +950,7 @@ func (c *Client) DeleteCfsPGroupWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteCfsPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteCfsPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCfsPGroup require credential")
@@ -1021,6 +1032,7 @@ func (c *Client) DeleteCfsRuleWithContext(ctx context.Context, request *DeleteCf
     if request == nil {
         request = NewDeleteCfsRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteCfsRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCfsRule require credential")
@@ -1086,6 +1098,7 @@ func (c *Client) DeleteCfsSnapshotWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteCfsSnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteCfsSnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCfsSnapshot require credential")
@@ -1149,6 +1162,7 @@ func (c *Client) DeleteMigrationTaskWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteMigrationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteMigrationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMigrationTask require credential")
@@ -1222,6 +1236,7 @@ func (c *Client) DeleteMountTargetWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteMountTargetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteMountTarget")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMountTarget require credential")
@@ -1271,6 +1286,7 @@ func (c *Client) DeleteUserQuotaWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteUserQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteUserQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUserQuota require credential")
@@ -1334,6 +1350,7 @@ func (c *Client) DescribeAutoSnapshotPoliciesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAutoSnapshotPoliciesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeAutoSnapshotPolicies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoSnapshotPolicies require credential")
@@ -1393,6 +1410,7 @@ func (c *Client) DescribeAvailableZoneInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAvailableZoneInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeAvailableZoneInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAvailableZoneInfo require credential")
@@ -1452,6 +1470,7 @@ func (c *Client) DescribeBucketListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeBucketListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeBucketList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBucketList require credential")
@@ -1515,6 +1534,7 @@ func (c *Client) DescribeCfsFileSystemClientsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeCfsFileSystemClientsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsFileSystemClients")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsFileSystemClients require credential")
@@ -1588,6 +1608,7 @@ func (c *Client) DescribeCfsFileSystemsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCfsFileSystemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsFileSystems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsFileSystems require credential")
@@ -1641,6 +1662,7 @@ func (c *Client) DescribeCfsPGroupsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCfsPGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsPGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsPGroups require credential")
@@ -1698,6 +1720,7 @@ func (c *Client) DescribeCfsRulesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCfsRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsRules require credential")
@@ -1755,6 +1778,7 @@ func (c *Client) DescribeCfsServiceStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCfsServiceStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsServiceStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsServiceStatus require credential")
@@ -1810,6 +1834,7 @@ func (c *Client) DescribeCfsSnapshotOverviewWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCfsSnapshotOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsSnapshotOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsSnapshotOverview require credential")
@@ -1871,6 +1896,7 @@ func (c *Client) DescribeCfsSnapshotsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCfsSnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsSnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsSnapshots require credential")
@@ -1936,6 +1962,7 @@ func (c *Client) DescribeMigrationTasksWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeMigrationTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeMigrationTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigrationTasks require credential")
@@ -2003,6 +2030,7 @@ func (c *Client) DescribeMountTargetsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMountTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeMountTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMountTargets require credential")
@@ -2066,6 +2094,7 @@ func (c *Client) DescribeSnapshotOperationLogsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeSnapshotOperationLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeSnapshotOperationLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSnapshotOperationLogs require credential")
@@ -2119,6 +2148,7 @@ func (c *Client) DescribeUserQuotaWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUserQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeUserQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserQuota require credential")
@@ -2178,6 +2208,7 @@ func (c *Client) ModifyFileSystemAutoScaleUpRuleWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyFileSystemAutoScaleUpRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "ModifyFileSystemAutoScaleUpRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFileSystemAutoScaleUpRule require credential")
@@ -2251,6 +2282,7 @@ func (c *Client) ScaleUpFileSystemWithContext(ctx context.Context, request *Scal
     if request == nil {
         request = NewScaleUpFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "ScaleUpFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleUpFileSystem require credential")
@@ -2322,6 +2354,7 @@ func (c *Client) SetUserQuotaWithContext(ctx context.Context, request *SetUserQu
     if request == nil {
         request = NewSetUserQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "SetUserQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetUserQuota require credential")
@@ -2379,6 +2412,7 @@ func (c *Client) SignUpCfsServiceWithContext(ctx context.Context, request *SignU
     if request == nil {
         request = NewSignUpCfsServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "SignUpCfsService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SignUpCfsService require credential")
@@ -2428,6 +2462,7 @@ func (c *Client) StopMigrationTaskWithContext(ctx context.Context, request *Stop
     if request == nil {
         request = NewStopMigrationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "StopMigrationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopMigrationTask require credential")
@@ -2495,6 +2530,7 @@ func (c *Client) UnbindAutoSnapshotPolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUnbindAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UnbindAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindAutoSnapshotPolicy require credential")
@@ -2574,6 +2610,7 @@ func (c *Client) UpdateAutoSnapshotPolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUpdateAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAutoSnapshotPolicy require credential")
@@ -2647,6 +2684,7 @@ func (c *Client) UpdateCfsFileSystemNameWithContext(ctx context.Context, request
     if request == nil {
         request = NewUpdateCfsFileSystemNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsFileSystemName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsFileSystemName require credential")
@@ -2728,6 +2766,7 @@ func (c *Client) UpdateCfsFileSystemPGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewUpdateCfsFileSystemPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsFileSystemPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsFileSystemPGroup require credential")
@@ -2801,6 +2840,7 @@ func (c *Client) UpdateCfsFileSystemSizeLimitWithContext(ctx context.Context, re
     if request == nil {
         request = NewUpdateCfsFileSystemSizeLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsFileSystemSizeLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsFileSystemSizeLimit require credential")
@@ -2876,6 +2916,7 @@ func (c *Client) UpdateCfsPGroupWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateCfsPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsPGroup require credential")
@@ -2959,6 +3000,7 @@ func (c *Client) UpdateCfsRuleWithContext(ctx context.Context, request *UpdateCf
     if request == nil {
         request = NewUpdateCfsRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsRule require credential")
@@ -3028,6 +3070,7 @@ func (c *Client) UpdateCfsSnapshotAttributeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateCfsSnapshotAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsSnapshotAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsSnapshotAttribute require credential")
@@ -3087,6 +3130,7 @@ func (c *Client) UpdateFileSystemBandwidthLimitWithContext(ctx context.Context, 
     if request == nil {
         request = NewUpdateFileSystemBandwidthLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateFileSystemBandwidthLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateFileSystemBandwidthLimit require credential")

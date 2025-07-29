@@ -122,6 +122,7 @@ func (c *Client) CreateEditingTaskWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateEditingTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ie", APIVersion, "CreateEditingTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEditingTask require credential")
@@ -207,6 +208,7 @@ func (c *Client) CreateMediaProcessTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateMediaProcessTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ie", APIVersion, "CreateMediaProcessTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMediaProcessTask require credential")
@@ -280,6 +282,7 @@ func (c *Client) CreateMediaQualityRestorationTaskWithContext(ctx context.Contex
     if request == nil {
         request = NewCreateMediaQualityRestorationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ie", APIVersion, "CreateMediaQualityRestorationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMediaQualityRestorationTask require credential")
@@ -351,6 +354,7 @@ func (c *Client) CreateQualityControlTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateQualityControlTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ie", APIVersion, "CreateQualityControlTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateQualityControlTask require credential")
@@ -408,6 +412,7 @@ func (c *Client) DescribeEditingTaskResultWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeEditingTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ie", APIVersion, "DescribeEditingTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEditingTaskResult require credential")
@@ -457,6 +462,7 @@ func (c *Client) DescribeMediaProcessTaskResultWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeMediaProcessTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ie", APIVersion, "DescribeMediaProcessTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMediaProcessTaskResult require credential")
@@ -538,6 +544,7 @@ func (c *Client) DescribeMediaQualityRestorationTaskRusultWithContext(ctx contex
     if request == nil {
         request = NewDescribeMediaQualityRestorationTaskRusultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ie", APIVersion, "DescribeMediaQualityRestorationTaskRusult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMediaQualityRestorationTaskRusult require credential")
@@ -611,6 +618,7 @@ func (c *Client) DescribeQualityControlTaskResultWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeQualityControlTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ie", APIVersion, "DescribeQualityControlTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeQualityControlTaskResult require credential")
@@ -668,6 +676,7 @@ func (c *Client) StopMediaProcessTaskWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewStopMediaProcessTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ie", APIVersion, "StopMediaProcessTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopMediaProcessTask require credential")
@@ -733,6 +742,7 @@ func (c *Client) StopMediaQualityRestorationTaskWithContext(ctx context.Context,
     if request == nil {
         request = NewStopMediaQualityRestorationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ie", APIVersion, "StopMediaQualityRestorationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopMediaQualityRestorationTask require credential")

@@ -120,6 +120,7 @@ func (c *Client) CreateProbeTasksWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateProbeTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "CreateProbeTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProbeTasks require credential")
@@ -189,6 +190,7 @@ func (c *Client) DeleteProbeTaskWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteProbeTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "DeleteProbeTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteProbeTask require credential")
@@ -252,6 +254,7 @@ func (c *Client) DescribeDetailedSingleProbeDataWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeDetailedSingleProbeDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "DescribeDetailedSingleProbeData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDetailedSingleProbeData require credential")
@@ -315,6 +318,7 @@ func (c *Client) DescribeInstantTasksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeInstantTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "DescribeInstantTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstantTasks require credential")
@@ -368,6 +372,7 @@ func (c *Client) DescribeNodeGroupsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeNodeGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "DescribeNodeGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNodeGroups require credential")
@@ -421,6 +426,7 @@ func (c *Client) DescribeNodesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "DescribeNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNodes require credential")
@@ -476,6 +482,7 @@ func (c *Client) DescribeProbeMetricDataWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeProbeMetricDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "DescribeProbeMetricData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProbeMetricData require credential")
@@ -527,6 +534,7 @@ func (c *Client) DescribeProbeMetricTagValuesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeProbeMetricTagValuesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "DescribeProbeMetricTagValues")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProbeMetricTagValues require credential")
@@ -578,6 +586,7 @@ func (c *Client) DescribeProbeNodesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeProbeNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "DescribeProbeNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProbeNodes require credential")
@@ -641,6 +650,7 @@ func (c *Client) DescribeProbeTasksWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeProbeTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "DescribeProbeTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProbeTasks require credential")
@@ -712,6 +722,7 @@ func (c *Client) ResumeProbeTaskWithContext(ctx context.Context, request *Resume
     if request == nil {
         request = NewResumeProbeTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "ResumeProbeTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResumeProbeTask require credential")
@@ -779,6 +790,7 @@ func (c *Client) SuspendProbeTaskWithContext(ctx context.Context, request *Suspe
     if request == nil {
         request = NewSuspendProbeTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "SuspendProbeTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SuspendProbeTask require credential")
@@ -846,6 +858,7 @@ func (c *Client) UpdateProbeTaskAttributesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewUpdateProbeTaskAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "UpdateProbeTaskAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateProbeTaskAttributes require credential")
@@ -919,6 +932,7 @@ func (c *Client) UpdateProbeTaskConfigurationListWithContext(ctx context.Context
     if request == nil {
         request = NewUpdateProbeTaskConfigurationListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cat", APIVersion, "UpdateProbeTaskConfigurationList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateProbeTaskConfigurationList require credential")

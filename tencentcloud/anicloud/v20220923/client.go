@@ -76,6 +76,7 @@ func (c *Client) CheckAppidExistWithContext(ctx context.Context, request *CheckA
     if request == nil {
         request = NewCheckAppidExistRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "anicloud", APIVersion, "CheckAppidExist")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckAppidExist require credential")
@@ -125,6 +126,7 @@ func (c *Client) QueryResourceWithContext(ctx context.Context, request *QueryRes
     if request == nil {
         request = NewQueryResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "anicloud", APIVersion, "QueryResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryResource require credential")
@@ -174,6 +176,7 @@ func (c *Client) QueryResourceInfoWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryResourceInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "anicloud", APIVersion, "QueryResourceInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryResourceInfo require credential")

@@ -110,6 +110,7 @@ func (c *Client) AddMetricScaleStrategyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewAddMetricScaleStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "AddMetricScaleStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddMetricScaleStrategy require credential")
@@ -203,6 +204,7 @@ func (c *Client) AddNodeResourceConfigWithContext(ctx context.Context, request *
     if request == nil {
         request = NewAddNodeResourceConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "AddNodeResourceConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddNodeResourceConfig require credential")
@@ -270,6 +272,7 @@ func (c *Client) AddUsersForUserManagerWithContext(ctx context.Context, request 
     if request == nil {
         request = NewAddUsersForUserManagerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "AddUsersForUserManager")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddUsersForUserManager require credential")
@@ -321,6 +324,7 @@ func (c *Client) AttachDisksWithContext(ctx context.Context, request *AttachDisk
     if request == nil {
         request = NewAttachDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "AttachDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AttachDisks require credential")
@@ -374,6 +378,7 @@ func (c *Client) ConvertPreToPostClusterWithContext(ctx context.Context, request
     if request == nil {
         request = NewConvertPreToPostClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ConvertPreToPostCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ConvertPreToPostCluster require credential")
@@ -575,6 +580,7 @@ func (c *Client) CreateCloudInstanceWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateCloudInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "CreateCloudInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudInstance require credential")
@@ -682,6 +688,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "CreateCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCluster require credential")
@@ -789,6 +796,7 @@ func (c *Client) CreateGroupsSTDWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateGroupsSTDRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "CreateGroupsSTD")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateGroupsSTD require credential")
@@ -992,6 +1000,7 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     if request == nil {
         request = NewCreateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "CreateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInstance require credential")
@@ -1085,6 +1094,7 @@ func (c *Client) CreateSLInstanceWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateSLInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "CreateSLInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSLInstance require credential")
@@ -1140,6 +1150,7 @@ func (c *Client) DeleteAutoScaleStrategyWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteAutoScaleStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DeleteAutoScaleStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAutoScaleStrategy require credential")
@@ -1195,6 +1206,7 @@ func (c *Client) DeleteGroupsSTDWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteGroupsSTDRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DeleteGroupsSTD")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGroupsSTD require credential")
@@ -1248,6 +1260,7 @@ func (c *Client) DeleteNodeResourceConfigWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteNodeResourceConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DeleteNodeResourceConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNodeResourceConfig require credential")
@@ -1303,6 +1316,7 @@ func (c *Client) DeleteUserManagerUserListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteUserManagerUserListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DeleteUserManagerUserList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUserManagerUserList require credential")
@@ -1364,6 +1378,7 @@ func (c *Client) DeployYarnConfWithContext(ctx context.Context, request *DeployY
     if request == nil {
         request = NewDeployYarnConfRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DeployYarnConf")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeployYarnConf require credential")
@@ -1419,6 +1434,7 @@ func (c *Client) DescribeAutoScaleGroupGlobalConfWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeAutoScaleGroupGlobalConfRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeAutoScaleGroupGlobalConf")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoScaleGroupGlobalConf require credential")
@@ -1472,6 +1488,7 @@ func (c *Client) DescribeAutoScaleRecordsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAutoScaleRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeAutoScaleRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoScaleRecords require credential")
@@ -1529,6 +1546,7 @@ func (c *Client) DescribeAutoScaleStrategiesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAutoScaleStrategiesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeAutoScaleStrategies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoScaleStrategies require credential")
@@ -1592,6 +1610,7 @@ func (c *Client) DescribeClusterFlowStatusDetailWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeClusterFlowStatusDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeClusterFlowStatusDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterFlowStatusDetail require credential")
@@ -1695,6 +1714,7 @@ func (c *Client) DescribeClusterNodesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeClusterNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeClusterNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterNodes require credential")
@@ -1748,6 +1768,7 @@ func (c *Client) DescribeCvmQuotaWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCvmQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeCvmQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCvmQuota require credential")
@@ -1799,6 +1820,7 @@ func (c *Client) DescribeDAGInfoWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDAGInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeDAGInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDAGInfo require credential")
@@ -1852,6 +1874,7 @@ func (c *Client) DescribeEmrApplicationStaticsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeEmrApplicationStaticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeEmrApplicationStatics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEmrApplicationStatics require credential")
@@ -1905,6 +1928,7 @@ func (c *Client) DescribeEmrOverviewMetricsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeEmrOverviewMetricsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeEmrOverviewMetrics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEmrOverviewMetrics require credential")
@@ -1964,6 +1988,7 @@ func (c *Client) DescribeGlobalConfigWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeGlobalConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeGlobalConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGlobalConfig require credential")
@@ -2023,6 +2048,7 @@ func (c *Client) DescribeGroupsSTDWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeGroupsSTDRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeGroupsSTD")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupsSTD require credential")
@@ -2078,6 +2104,7 @@ func (c *Client) DescribeHBaseTableOverviewWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeHBaseTableOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeHBaseTableOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHBaseTableOverview require credential")
@@ -2133,6 +2160,7 @@ func (c *Client) DescribeHDFSStorageInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeHDFSStorageInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeHDFSStorageInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHDFSStorageInfo require credential")
@@ -2188,6 +2216,7 @@ func (c *Client) DescribeHiveQueriesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeHiveQueriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeHiveQueries")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHiveQueries require credential")
@@ -2237,6 +2266,7 @@ func (c *Client) DescribeImpalaQueriesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeImpalaQueriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeImpalaQueries")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImpalaQueries require credential")
@@ -2288,6 +2318,7 @@ func (c *Client) DescribeInsightListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeInsightListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeInsightList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInsightList require credential")
@@ -2339,6 +2370,7 @@ func (c *Client) DescribeInspectionTaskResultWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeInspectionTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeInspectionTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInspectionTaskResult require credential")
@@ -2436,6 +2468,7 @@ func (c *Client) DescribeInstanceRenewNodesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstanceRenewNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeInstanceRenewNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceRenewNodes require credential")
@@ -2545,6 +2578,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -2650,6 +2684,7 @@ func (c *Client) DescribeInstancesListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInstancesListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeInstancesList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstancesList require credential")
@@ -2703,6 +2738,7 @@ func (c *Client) DescribeJobFlowWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeJobFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeJobFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJobFlow require credential")
@@ -2754,6 +2790,7 @@ func (c *Client) DescribeKyuubiQueryInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeKyuubiQueryInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeKyuubiQueryInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKyuubiQueryInfo require credential")
@@ -2805,6 +2842,7 @@ func (c *Client) DescribeNodeDataDisksWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeNodeDataDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeNodeDataDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNodeDataDisks require credential")
@@ -2876,6 +2914,7 @@ func (c *Client) DescribeNodeResourceConfigFastWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeNodeResourceConfigFastRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeNodeResourceConfigFast")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNodeResourceConfigFast require credential")
@@ -3025,6 +3064,7 @@ func (c *Client) DescribeNodeSpecWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeNodeSpecRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeNodeSpec")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNodeSpec require credential")
@@ -3084,6 +3124,7 @@ func (c *Client) DescribeResourceScheduleWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeResourceScheduleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeResourceSchedule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceSchedule require credential")
@@ -3143,6 +3184,7 @@ func (c *Client) DescribeResourceScheduleDiffDetailWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeResourceScheduleDiffDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeResourceScheduleDiffDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceScheduleDiffDetail require credential")
@@ -3218,6 +3260,7 @@ func (c *Client) DescribeSLInstanceWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeSLInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeSLInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSLInstance require credential")
@@ -3403,6 +3446,7 @@ func (c *Client) DescribeSLInstanceListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSLInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeSLInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSLInstanceList require credential")
@@ -3588,6 +3632,7 @@ func (c *Client) DescribeServiceConfGroupInfosWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeServiceConfGroupInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeServiceConfGroupInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceConfGroupInfos require credential")
@@ -3685,6 +3730,7 @@ func (c *Client) DescribeServiceNodeInfosWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeServiceNodeInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeServiceNodeInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceNodeInfos require credential")
@@ -3736,6 +3782,7 @@ func (c *Client) DescribeSparkApplicationsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSparkApplicationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeSparkApplications")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSparkApplications require credential")
@@ -3787,6 +3834,7 @@ func (c *Client) DescribeSparkQueriesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeSparkQueriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeSparkQueries")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSparkQueries require credential")
@@ -3838,6 +3886,7 @@ func (c *Client) DescribeStarRocksQueryInfoWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeStarRocksQueryInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeStarRocksQueryInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStarRocksQueryInfo require credential")
@@ -3889,6 +3938,7 @@ func (c *Client) DescribeTrinoQueryInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTrinoQueryInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeTrinoQueryInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrinoQueryInfo require credential")
@@ -3950,6 +4000,7 @@ func (c *Client) DescribeUsersForUserManagerWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeUsersForUserManagerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeUsersForUserManager")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUsersForUserManager require credential")
@@ -4003,6 +4054,7 @@ func (c *Client) DescribeYarnApplicationsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeYarnApplicationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeYarnApplications")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeYarnApplications require credential")
@@ -4058,6 +4110,7 @@ func (c *Client) DescribeYarnQueueWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeYarnQueueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeYarnQueue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeYarnQueue require credential")
@@ -4107,6 +4160,7 @@ func (c *Client) DescribeYarnScheduleHistoryWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeYarnScheduleHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeYarnScheduleHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeYarnScheduleHistory require credential")
@@ -4210,6 +4264,7 @@ func (c *Client) InquirePriceRenewEmrWithContext(ctx context.Context, request *I
     if request == nil {
         request = NewInquirePriceRenewEmrRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "InquirePriceRenewEmr")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquirePriceRenewEmr require credential")
@@ -4345,6 +4400,7 @@ func (c *Client) InquiryPriceCreateInstanceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewInquiryPriceCreateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "InquiryPriceCreateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceCreateInstance require credential")
@@ -4450,6 +4506,7 @@ func (c *Client) InquiryPriceRenewInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewInquiryPriceRenewInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "InquiryPriceRenewInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceRenewInstance require credential")
@@ -4563,6 +4620,7 @@ func (c *Client) InquiryPriceScaleOutInstanceWithContext(ctx context.Context, re
     if request == nil {
         request = NewInquiryPriceScaleOutInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "InquiryPriceScaleOutInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceScaleOutInstance require credential")
@@ -4668,6 +4726,7 @@ func (c *Client) InquiryPriceUpdateInstanceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewInquiryPriceUpdateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "InquiryPriceUpdateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceUpdateInstance require credential")
@@ -4725,6 +4784,7 @@ func (c *Client) ModifyAutoRenewFlagWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyAutoRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyAutoRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAutoRenewFlag require credential")
@@ -4796,6 +4856,7 @@ func (c *Client) ModifyAutoScaleStrategyWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyAutoScaleStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyAutoScaleStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAutoScaleStrategy require credential")
@@ -4855,6 +4916,7 @@ func (c *Client) ModifyGlobalConfigWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyGlobalConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyGlobalConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyGlobalConfig require credential")
@@ -4904,6 +4966,7 @@ func (c *Client) ModifyInspectionSettingsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyInspectionSettingsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyInspectionSettings")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInspectionSettings require credential")
@@ -4963,6 +5026,7 @@ func (c *Client) ModifyInstanceBasicWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyInstanceBasicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyInstanceBasic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceBasic require credential")
@@ -5026,6 +5090,7 @@ func (c *Client) ModifyPodNumWithContext(ctx context.Context, request *ModifyPod
     if request == nil {
         request = NewModifyPodNumRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyPodNum")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPodNum require credential")
@@ -5127,6 +5192,7 @@ func (c *Client) ModifyResourceWithContext(ctx context.Context, request *ModifyR
     if request == nil {
         request = NewModifyResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResource require credential")
@@ -5196,6 +5262,7 @@ func (c *Client) ModifyResourcePoolsWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyResourcePoolsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyResourcePools")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResourcePools require credential")
@@ -5265,6 +5332,7 @@ func (c *Client) ModifyResourceScheduleConfigWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyResourceScheduleConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyResourceScheduleConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResourceScheduleConfig require credential")
@@ -5320,6 +5388,7 @@ func (c *Client) ModifyResourceSchedulerWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyResourceSchedulerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyResourceScheduler")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResourceScheduler require credential")
@@ -5375,6 +5444,7 @@ func (c *Client) ModifyResourcesTagsWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyResourcesTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyResourcesTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResourcesTags require credential")
@@ -5462,6 +5532,7 @@ func (c *Client) ModifySLInstanceWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifySLInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifySLInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySLInstance require credential")
@@ -5521,6 +5592,7 @@ func (c *Client) ModifySLInstanceBasicWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifySLInstanceBasicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifySLInstanceBasic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySLInstanceBasic require credential")
@@ -5580,6 +5652,7 @@ func (c *Client) ModifyUserGroupWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyUserGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyUserGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserGroup require credential")
@@ -5637,6 +5710,7 @@ func (c *Client) ModifyUserManagerPwdWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyUserManagerPwdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyUserManagerPwd")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserManagerPwd require credential")
@@ -5694,6 +5768,7 @@ func (c *Client) ModifyUsersOfGroupSTDWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyUsersOfGroupSTDRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyUsersOfGroupSTD")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUsersOfGroupSTD require credential")
@@ -5757,6 +5832,7 @@ func (c *Client) ModifyYarnDeployWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyYarnDeployRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyYarnDeploy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyYarnDeploy require credential")
@@ -5812,6 +5888,7 @@ func (c *Client) ModifyYarnQueueV2WithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyYarnQueueV2Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyYarnQueueV2")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyYarnQueueV2 require credential")
@@ -5873,6 +5950,7 @@ func (c *Client) ResetYarnConfigWithContext(ctx context.Context, request *ResetY
     if request == nil {
         request = NewResetYarnConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ResetYarnConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetYarnConfig require credential")
@@ -5926,6 +6004,7 @@ func (c *Client) ResizeDataDisksWithContext(ctx context.Context, request *Resize
     if request == nil {
         request = NewResizeDataDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ResizeDataDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResizeDataDisks require credential")
@@ -6057,6 +6136,7 @@ func (c *Client) RunJobFlowWithContext(ctx context.Context, request *RunJobFlowR
     if request == nil {
         request = NewRunJobFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "RunJobFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunJobFlow require credential")
@@ -6126,6 +6206,7 @@ func (c *Client) ScaleOutClusterWithContext(ctx context.Context, request *ScaleO
     if request == nil {
         request = NewScaleOutClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ScaleOutCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleOutCluster require credential")
@@ -6293,6 +6374,7 @@ func (c *Client) ScaleOutInstanceWithContext(ctx context.Context, request *Scale
     if request == nil {
         request = NewScaleOutInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ScaleOutInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleOutInstance require credential")
@@ -6350,6 +6432,7 @@ func (c *Client) SetNodeResourceConfigDefaultWithContext(ctx context.Context, re
     if request == nil {
         request = NewSetNodeResourceConfigDefaultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "SetNodeResourceConfigDefault")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetNodeResourceConfigDefault require credential")
@@ -6415,6 +6498,7 @@ func (c *Client) StartStopServiceOrMonitorWithContext(ctx context.Context, reque
     if request == nil {
         request = NewStartStopServiceOrMonitorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "StartStopServiceOrMonitor")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartStopServiceOrMonitor require credential")
@@ -6592,6 +6676,7 @@ func (c *Client) SyncPodStateWithContext(ctx context.Context, request *SyncPodSt
     if request == nil {
         request = NewSyncPodStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "SyncPodState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncPodState require credential")
@@ -6649,6 +6734,7 @@ func (c *Client) TerminateClusterNodesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewTerminateClusterNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "TerminateClusterNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateClusterNodes require credential")
@@ -6724,6 +6810,7 @@ func (c *Client) TerminateInstanceWithContext(ctx context.Context, request *Term
     if request == nil {
         request = NewTerminateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "TerminateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateInstance require credential")
@@ -6801,6 +6888,7 @@ func (c *Client) TerminateSLInstanceWithContext(ctx context.Context, request *Te
     if request == nil {
         request = NewTerminateSLInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "TerminateSLInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateSLInstance require credential")
@@ -6906,6 +6994,7 @@ func (c *Client) TerminateTasksWithContext(ctx context.Context, request *Termina
     if request == nil {
         request = NewTerminateTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "TerminateTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateTasks require credential")

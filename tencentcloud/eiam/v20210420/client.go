@@ -98,6 +98,7 @@ func (c *Client) AddAccountToAccountGroupWithContext(ctx context.Context, reques
     if request == nil {
         request = NewAddAccountToAccountGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "AddAccountToAccountGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddAccountToAccountGroup require credential")
@@ -151,6 +152,7 @@ func (c *Client) AddUserToUserGroupWithContext(ctx context.Context, request *Add
     if request == nil {
         request = NewAddUserToUserGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "AddUserToUserGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddUserToUserGroup require credential")
@@ -206,6 +208,7 @@ func (c *Client) CreateAccountGroupWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateAccountGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "CreateAccountGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAccountGroup require credential")
@@ -263,6 +266,7 @@ func (c *Client) CreateAppAccountWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateAppAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "CreateAppAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAppAccount require credential")
@@ -328,6 +332,7 @@ func (c *Client) CreateOrgNodeWithContext(ctx context.Context, request *CreateOr
     if request == nil {
         request = NewCreateOrgNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "CreateOrgNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrgNode require credential")
@@ -403,6 +408,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     if request == nil {
         request = NewCreateUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "CreateUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUser require credential")
@@ -456,6 +462,7 @@ func (c *Client) CreateUserGroupWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateUserGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "CreateUserGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserGroup require credential")
@@ -515,6 +522,7 @@ func (c *Client) DeleteAccountGroupWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteAccountGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DeleteAccountGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAccountGroup require credential")
@@ -574,6 +582,7 @@ func (c *Client) DeleteAppAccountWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteAppAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DeleteAppAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAppAccount require credential")
@@ -639,6 +648,7 @@ func (c *Client) DeleteOrgNodeWithContext(ctx context.Context, request *DeleteOr
     if request == nil {
         request = NewDeleteOrgNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DeleteOrgNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteOrgNode require credential")
@@ -696,6 +706,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserR
     if request == nil {
         request = NewDeleteUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DeleteUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUser require credential")
@@ -753,6 +764,7 @@ func (c *Client) DeleteUserGroupWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteUserGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DeleteUserGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUserGroup require credential")
@@ -808,6 +820,7 @@ func (c *Client) DeleteUsersWithContext(ctx context.Context, request *DeleteUser
     if request == nil {
         request = NewDeleteUsersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DeleteUsers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUsers require credential")
@@ -861,6 +874,7 @@ func (c *Client) DescribeAccountGroupWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAccountGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DescribeAccountGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccountGroup require credential")
@@ -918,6 +932,7 @@ func (c *Client) DescribeAppAccountWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAppAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DescribeAppAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAppAccount require credential")
@@ -971,6 +986,7 @@ func (c *Client) DescribeApplicationWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DescribeApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApplication require credential")
@@ -1028,6 +1044,7 @@ func (c *Client) DescribeOrgNodeWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeOrgNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DescribeOrgNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOrgNode require credential")
@@ -1085,6 +1102,7 @@ func (c *Client) DescribeOrgResourcesAuthorizationWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeOrgResourcesAuthorizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DescribeOrgResourcesAuthorization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOrgResourcesAuthorization require credential")
@@ -1138,6 +1156,7 @@ func (c *Client) DescribePublicKeyWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribePublicKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DescribePublicKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublicKey require credential")
@@ -1193,6 +1212,7 @@ func (c *Client) DescribeUserGroupWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUserGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DescribeUserGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserGroup require credential")
@@ -1250,6 +1270,7 @@ func (c *Client) DescribeUserGroupResourcesAuthorizationWithContext(ctx context.
     if request == nil {
         request = NewDescribeUserGroupResourcesAuthorizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DescribeUserGroupResourcesAuthorization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserGroupResourcesAuthorization require credential")
@@ -1309,6 +1330,7 @@ func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeUserInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DescribeUserInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserInfo require credential")
@@ -1366,6 +1388,7 @@ func (c *Client) DescribeUserResourcesAuthorizationWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeUserResourcesAuthorizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DescribeUserResourcesAuthorization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserResourcesAuthorization require credential")
@@ -1423,6 +1446,7 @@ func (c *Client) DescribeUserThirdPartyAccountInfoWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeUserThirdPartyAccountInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "DescribeUserThirdPartyAccountInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserThirdPartyAccountInfo require credential")
@@ -1478,6 +1502,7 @@ func (c *Client) ListAccountInAccountGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewListAccountInAccountGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ListAccountInAccountGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAccountInAccountGroup require credential")
@@ -1539,6 +1564,7 @@ func (c *Client) ListApplicationAuthorizationsWithContext(ctx context.Context, r
     if request == nil {
         request = NewListApplicationAuthorizationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ListApplicationAuthorizations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListApplicationAuthorizations require credential")
@@ -1598,6 +1624,7 @@ func (c *Client) ListApplicationsWithContext(ctx context.Context, request *ListA
     if request == nil {
         request = NewListApplicationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ListApplications")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListApplications require credential")
@@ -1653,6 +1680,7 @@ func (c *Client) ListAuthorizedApplicationsToOrgNodeWithContext(ctx context.Cont
     if request == nil {
         request = NewListAuthorizedApplicationsToOrgNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ListAuthorizedApplicationsToOrgNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAuthorizedApplicationsToOrgNode require credential")
@@ -1714,6 +1742,7 @@ func (c *Client) ListAuthorizedApplicationsToUserWithContext(ctx context.Context
     if request == nil {
         request = NewListAuthorizedApplicationsToUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ListAuthorizedApplicationsToUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAuthorizedApplicationsToUser require credential")
@@ -1771,6 +1800,7 @@ func (c *Client) ListAuthorizedApplicationsToUserGroupWithContext(ctx context.Co
     if request == nil {
         request = NewListAuthorizedApplicationsToUserGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ListAuthorizedApplicationsToUserGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAuthorizedApplicationsToUserGroup require credential")
@@ -1824,6 +1854,7 @@ func (c *Client) ListUserGroupsWithContext(ctx context.Context, request *ListUse
     if request == nil {
         request = NewListUserGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ListUserGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListUserGroups require credential")
@@ -1881,6 +1912,7 @@ func (c *Client) ListUserGroupsOfUserWithContext(ctx context.Context, request *L
     if request == nil {
         request = NewListUserGroupsOfUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ListUserGroupsOfUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListUserGroupsOfUser require credential")
@@ -1940,6 +1972,7 @@ func (c *Client) ListUsersWithContext(ctx context.Context, request *ListUsersReq
     if request == nil {
         request = NewListUsersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ListUsers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListUsers require credential")
@@ -1999,6 +2032,7 @@ func (c *Client) ListUsersInOrgNodeWithContext(ctx context.Context, request *Lis
     if request == nil {
         request = NewListUsersInOrgNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ListUsersInOrgNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListUsersInOrgNode require credential")
@@ -2058,6 +2092,7 @@ func (c *Client) ListUsersInUserGroupWithContext(ctx context.Context, request *L
     if request == nil {
         request = NewListUsersInUserGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ListUsersInUserGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListUsersInUserGroup require credential")
@@ -2117,6 +2152,7 @@ func (c *Client) ModifyAccountGroupWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyAccountGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ModifyAccountGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccountGroup require credential")
@@ -2174,6 +2210,7 @@ func (c *Client) ModifyAppAccountWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyAppAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ModifyAppAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAppAccount require credential")
@@ -2231,6 +2268,7 @@ func (c *Client) ModifyApplicationWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ModifyApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApplication require credential")
@@ -2328,6 +2366,7 @@ func (c *Client) ModifyUserInfoWithContext(ctx context.Context, request *ModifyU
     if request == nil {
         request = NewModifyUserInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "ModifyUserInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserInfo require credential")
@@ -2389,6 +2428,7 @@ func (c *Client) RemoveAccountFromAccountGroupWithContext(ctx context.Context, r
     if request == nil {
         request = NewRemoveAccountFromAccountGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "RemoveAccountFromAccountGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveAccountFromAccountGroup require credential")
@@ -2450,6 +2490,7 @@ func (c *Client) RemoveUserFromUserGroupWithContext(ctx context.Context, request
     if request == nil {
         request = NewRemoveUserFromUserGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "RemoveUserFromUserGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveUserFromUserGroup require credential")
@@ -2513,6 +2554,7 @@ func (c *Client) UpdateOrgNodeWithContext(ctx context.Context, request *UpdateOr
     if request == nil {
         request = NewUpdateOrgNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eiam", APIVersion, "UpdateOrgNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateOrgNode require credential")

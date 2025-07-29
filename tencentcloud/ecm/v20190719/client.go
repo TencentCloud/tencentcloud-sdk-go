@@ -130,6 +130,7 @@ func (c *Client) AllocateAddressesWithContext(ctx context.Context, request *Allo
     if request == nil {
         request = NewAllocateAddressesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "AllocateAddresses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AllocateAddresses require credential")
@@ -203,6 +204,7 @@ func (c *Client) AllocateIpv6AddressesBandwidthWithContext(ctx context.Context, 
     if request == nil {
         request = NewAllocateIpv6AddressesBandwidthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "AllocateIpv6AddressesBandwidth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AllocateIpv6AddressesBandwidth require credential")
@@ -282,6 +284,7 @@ func (c *Client) AssignIpv6AddressesWithContext(ctx context.Context, request *As
     if request == nil {
         request = NewAssignIpv6AddressesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "AssignIpv6Addresses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssignIpv6Addresses require credential")
@@ -349,6 +352,7 @@ func (c *Client) AssignIpv6CidrBlockWithContext(ctx context.Context, request *As
     if request == nil {
         request = NewAssignIpv6CidrBlockRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "AssignIpv6CidrBlock")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssignIpv6CidrBlock require credential")
@@ -422,6 +426,7 @@ func (c *Client) AssignIpv6CidrBlocksWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAssignIpv6CidrBlocksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "AssignIpv6CidrBlocks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssignIpv6CidrBlocks require credential")
@@ -493,6 +498,7 @@ func (c *Client) AssignIpv6SubnetCidrBlockWithContext(ctx context.Context, reque
     if request == nil {
         request = NewAssignIpv6SubnetCidrBlockRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "AssignIpv6SubnetCidrBlock")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssignIpv6SubnetCidrBlock require credential")
@@ -566,6 +572,7 @@ func (c *Client) AssignPrivateIpAddressesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewAssignPrivateIpAddressesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "AssignPrivateIpAddresses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssignPrivateIpAddresses require credential")
@@ -681,6 +688,7 @@ func (c *Client) AssociateAddressWithContext(ctx context.Context, request *Assoc
     if request == nil {
         request = NewAssociateAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "AssociateAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateAddress require credential")
@@ -744,6 +752,7 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "AssociateSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateSecurityGroups require credential")
@@ -843,6 +852,7 @@ func (c *Client) AttachDisksWithContext(ctx context.Context, request *AttachDisk
     if request == nil {
         request = NewAttachDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "AttachDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AttachDisks require credential")
@@ -930,6 +940,7 @@ func (c *Client) AttachNetworkInterfaceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewAttachNetworkInterfaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "AttachNetworkInterface")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AttachNetworkInterface require credential")
@@ -1005,6 +1016,7 @@ func (c *Client) BatchDeregisterTargetsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBatchDeregisterTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "BatchDeregisterTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchDeregisterTargets require credential")
@@ -1066,6 +1078,7 @@ func (c *Client) BatchModifyTargetWeightWithContext(ctx context.Context, request
     if request == nil {
         request = NewBatchModifyTargetWeightRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "BatchModifyTargetWeight")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchModifyTargetWeight require credential")
@@ -1139,6 +1152,7 @@ func (c *Client) BatchRegisterTargetsWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBatchRegisterTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "BatchRegisterTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchRegisterTargets require credential")
@@ -1236,6 +1250,7 @@ func (c *Client) CreateDisksWithContext(ctx context.Context, request *CreateDisk
     if request == nil {
         request = NewCreateDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDisks require credential")
@@ -1303,6 +1318,7 @@ func (c *Client) CreateHaVipWithContext(ctx context.Context, request *CreateHaVi
     if request == nil {
         request = NewCreateHaVipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateHaVip")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateHaVip require credential")
@@ -1378,6 +1394,7 @@ func (c *Client) CreateImageWithContext(ctx context.Context, request *CreateImag
     if request == nil {
         request = NewCreateImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateImage require credential")
@@ -1433,6 +1450,7 @@ func (c *Client) CreateKeyPairWithContext(ctx context.Context, request *CreateKe
     if request == nil {
         request = NewCreateKeyPairRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateKeyPair")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateKeyPair require credential")
@@ -1496,6 +1514,7 @@ func (c *Client) CreateListenerWithContext(ctx context.Context, request *CreateL
     if request == nil {
         request = NewCreateListenerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateListener")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateListener require credential")
@@ -1587,6 +1606,7 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLoadBalancer require credential")
@@ -1678,6 +1698,7 @@ func (c *Client) CreateModuleWithContext(ctx context.Context, request *CreateMod
     if request == nil {
         request = NewCreateModuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateModule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateModule require credential")
@@ -1757,6 +1778,7 @@ func (c *Client) CreateNetworkInterfaceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateNetworkInterfaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateNetworkInterface")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNetworkInterface require credential")
@@ -1826,6 +1848,7 @@ func (c *Client) CreateRouteTableWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateRouteTableRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateRouteTable")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRouteTable require credential")
@@ -1901,6 +1924,7 @@ func (c *Client) CreateRoutesWithContext(ctx context.Context, request *CreateRou
     if request == nil {
         request = NewCreateRoutesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateRoutes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRoutes require credential")
@@ -1964,6 +1988,7 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateSecurityGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateSecurityGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSecurityGroup require credential")
@@ -2091,6 +2116,7 @@ func (c *Client) CreateSecurityGroupPoliciesWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateSecurityGroupPoliciesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateSecurityGroupPolicies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSecurityGroupPolicies require credential")
@@ -2164,6 +2190,7 @@ func (c *Client) CreateSubnetWithContext(ctx context.Context, request *CreateSub
     if request == nil {
         request = NewCreateSubnetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateSubnet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSubnet require credential")
@@ -2231,6 +2258,7 @@ func (c *Client) CreateVpcWithContext(ctx context.Context, request *CreateVpcReq
     if request == nil {
         request = NewCreateVpcRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "CreateVpc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVpc require credential")
@@ -2292,6 +2320,7 @@ func (c *Client) DeleteHaVipWithContext(ctx context.Context, request *DeleteHaVi
     if request == nil {
         request = NewDeleteHaVipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteHaVip")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteHaVip require credential")
@@ -2353,6 +2382,7 @@ func (c *Client) DeleteImageWithContext(ctx context.Context, request *DeleteImag
     if request == nil {
         request = NewDeleteImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteImage require credential")
@@ -2414,6 +2444,7 @@ func (c *Client) DeleteListenerWithContext(ctx context.Context, request *DeleteL
     if request == nil {
         request = NewDeleteListenerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteListener")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteListener require credential")
@@ -2487,6 +2518,7 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLoadBalancer require credential")
@@ -2544,6 +2576,7 @@ func (c *Client) DeleteLoadBalancerListenersWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteLoadBalancerListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteLoadBalancerListeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLoadBalancerListeners require credential")
@@ -2605,6 +2638,7 @@ func (c *Client) DeleteModuleWithContext(ctx context.Context, request *DeleteMod
     if request == nil {
         request = NewDeleteModuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteModule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteModule require credential")
@@ -2674,6 +2708,7 @@ func (c *Client) DeleteNetworkInterfaceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteNetworkInterfaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteNetworkInterface")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNetworkInterface require credential")
@@ -2733,6 +2768,7 @@ func (c *Client) DeleteRouteTableWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteRouteTableRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteRouteTable")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRouteTable require credential")
@@ -2786,6 +2822,7 @@ func (c *Client) DeleteRoutesWithContext(ctx context.Context, request *DeleteRou
     if request == nil {
         request = NewDeleteRoutesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteRoutes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRoutes require credential")
@@ -2853,6 +2890,7 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteSecurityGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteSecurityGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSecurityGroup require credential")
@@ -2912,6 +2950,7 @@ func (c *Client) DeleteSecurityGroupPoliciesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteSecurityGroupPoliciesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteSecurityGroupPolicies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSecurityGroupPolicies require credential")
@@ -2995,6 +3034,7 @@ func (c *Client) DeleteSnapshotsWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteSnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteSnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSnapshots require credential")
@@ -3064,6 +3104,7 @@ func (c *Client) DeleteSubnetWithContext(ctx context.Context, request *DeleteSub
     if request == nil {
         request = NewDeleteSubnetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteSubnet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSubnet require credential")
@@ -3127,6 +3168,7 @@ func (c *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteVpcReq
     if request == nil {
         request = NewDeleteVpcRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DeleteVpc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteVpc require credential")
@@ -3186,6 +3228,7 @@ func (c *Client) DescribeAddressQuotaWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAddressQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeAddressQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAddressQuota require credential")
@@ -3251,6 +3294,7 @@ func (c *Client) DescribeAddressesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAddressesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeAddresses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAddresses require credential")
@@ -3306,6 +3350,7 @@ func (c *Client) DescribeBaseOverviewWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBaseOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeBaseOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBaseOverview require credential")
@@ -3363,6 +3408,7 @@ func (c *Client) DescribeConfigWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfig require credential")
@@ -3420,6 +3466,7 @@ func (c *Client) DescribeCustomImageTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeCustomImageTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeCustomImageTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomImageTask require credential")
@@ -3477,6 +3524,7 @@ func (c *Client) DescribeDefaultSubnetWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDefaultSubnetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeDefaultSubnet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDefaultSubnet require credential")
@@ -3552,6 +3600,7 @@ func (c *Client) DescribeDisksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDisks require credential")
@@ -3615,6 +3664,7 @@ func (c *Client) DescribeHaVipsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeHaVipsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeHaVips")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHaVips require credential")
@@ -3680,6 +3730,7 @@ func (c *Client) DescribeImageWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImage require credential")
@@ -3729,6 +3780,7 @@ func (c *Client) DescribeImportImageOsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeImportImageOsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeImportImageOs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImportImageOs require credential")
@@ -3784,6 +3836,7 @@ func (c *Client) DescribeInstanceTypeConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstanceTypeConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeInstanceTypeConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceTypeConfig require credential")
@@ -3845,6 +3898,7 @@ func (c *Client) DescribeInstanceVncUrlWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceVncUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeInstanceVncUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceVncUrl require credential")
@@ -3914,6 +3968,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -3971,6 +4026,7 @@ func (c *Client) DescribeInstancesDeniedActionsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeInstancesDeniedActionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeInstancesDeniedActions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstancesDeniedActions require credential")
@@ -4032,6 +4088,7 @@ func (c *Client) DescribeListenersWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeListeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListeners require credential")
@@ -4087,6 +4144,7 @@ func (c *Client) DescribeLoadBalanceTaskStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeLoadBalanceTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeLoadBalanceTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoadBalanceTaskStatus require credential")
@@ -4154,6 +4212,7 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLoadBalancersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeLoadBalancers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoadBalancers require credential")
@@ -4217,6 +4276,7 @@ func (c *Client) DescribeModuleWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeModuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeModule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModule require credential")
@@ -4276,6 +4336,7 @@ func (c *Client) DescribeModuleDetailWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeModuleDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeModuleDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModuleDetail require credential")
@@ -4343,6 +4404,7 @@ func (c *Client) DescribeMonthPeakNetworkWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeMonthPeakNetworkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeMonthPeakNetwork")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMonthPeakNetwork require credential")
@@ -4414,6 +4476,7 @@ func (c *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeNetworkInterfacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeNetworkInterfaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetworkInterfaces require credential")
@@ -4469,6 +4532,7 @@ func (c *Client) DescribeNodeWithContext(ctx context.Context, request *DescribeN
     if request == nil {
         request = NewDescribeNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNode require credential")
@@ -4536,6 +4600,7 @@ func (c *Client) DescribePackingQuotaGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePackingQuotaGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribePackingQuotaGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePackingQuotaGroup require credential")
@@ -4593,6 +4658,7 @@ func (c *Client) DescribePeakBaseOverviewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribePeakBaseOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribePeakBaseOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePeakBaseOverview require credential")
@@ -4654,6 +4720,7 @@ func (c *Client) DescribePeakNetworkOverviewWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribePeakNetworkOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribePeakNetworkOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePeakNetworkOverview require credential")
@@ -4717,6 +4784,7 @@ func (c *Client) DescribePriceRunInstanceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribePriceRunInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribePriceRunInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePriceRunInstance require credential")
@@ -4786,6 +4854,7 @@ func (c *Client) DescribeRegionIpv6AddressesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeRegionIpv6AddressesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeRegionIpv6Addresses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRegionIpv6Addresses require credential")
@@ -4843,6 +4912,7 @@ func (c *Client) DescribeRouteConflictsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRouteConflictsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeRouteConflicts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRouteConflicts require credential")
@@ -4910,6 +4980,7 @@ func (c *Client) DescribeRouteTablesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRouteTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeRouteTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRouteTables require credential")
@@ -4969,6 +5040,7 @@ func (c *Client) DescribeSecurityGroupAssociationStatisticsWithContext(ctx conte
     if request == nil {
         request = NewDescribeSecurityGroupAssociationStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeSecurityGroupAssociationStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityGroupAssociationStatistics require credential")
@@ -5024,6 +5096,7 @@ func (c *Client) DescribeSecurityGroupLimitsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeSecurityGroupLimitsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeSecurityGroupLimits")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityGroupLimits require credential")
@@ -5083,6 +5156,7 @@ func (c *Client) DescribeSecurityGroupPoliciesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeSecurityGroupPoliciesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeSecurityGroupPolicies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityGroupPolicies require credential")
@@ -5146,6 +5220,7 @@ func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityGroups require credential")
@@ -5221,6 +5296,7 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeSnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSnapshots require credential")
@@ -5292,6 +5368,7 @@ func (c *Client) DescribeSubnetsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSubnetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeSubnets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSubnets require credential")
@@ -5355,6 +5432,7 @@ func (c *Client) DescribeTargetHealthWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTargetHealthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeTargetHealth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTargetHealth require credential")
@@ -5414,6 +5492,7 @@ func (c *Client) DescribeTargetsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTargets require credential")
@@ -5477,6 +5556,7 @@ func (c *Client) DescribeTaskResultWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskResult require credential")
@@ -5530,6 +5610,7 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskStatus require credential")
@@ -5599,6 +5680,7 @@ func (c *Client) DescribeVpcsWithContext(ctx context.Context, request *DescribeV
     if request == nil {
         request = NewDescribeVpcsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DescribeVpcs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVpcs require credential")
@@ -5692,6 +5774,7 @@ func (c *Client) DetachDisksWithContext(ctx context.Context, request *DetachDisk
     if request == nil {
         request = NewDetachDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DetachDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetachDisks require credential")
@@ -5759,6 +5842,7 @@ func (c *Client) DetachNetworkInterfaceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDetachNetworkInterfaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DetachNetworkInterface")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetachNetworkInterface require credential")
@@ -5822,6 +5906,7 @@ func (c *Client) DisableRoutesWithContext(ctx context.Context, request *DisableR
     if request == nil {
         request = NewDisableRoutesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DisableRoutes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableRoutes require credential")
@@ -5911,6 +5996,7 @@ func (c *Client) DisassociateAddressWithContext(ctx context.Context, request *Di
     if request == nil {
         request = NewDisassociateAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DisassociateAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateAddress require credential")
@@ -5968,6 +6054,7 @@ func (c *Client) DisassociateInstancesKeyPairsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDisassociateInstancesKeyPairsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DisassociateInstancesKeyPairs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateInstancesKeyPairs require credential")
@@ -6023,6 +6110,7 @@ func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "DisassociateSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateSecurityGroups require credential")
@@ -6098,6 +6186,7 @@ func (c *Client) EnableRoutesWithContext(ctx context.Context, request *EnableRou
     if request == nil {
         request = NewEnableRoutesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "EnableRoutes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableRoutes require credential")
@@ -6165,6 +6254,7 @@ func (c *Client) ImportCustomImageWithContext(ctx context.Context, request *Impo
     if request == nil {
         request = NewImportCustomImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ImportCustomImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportCustomImage require credential")
@@ -6232,6 +6322,7 @@ func (c *Client) ImportImageWithContext(ctx context.Context, request *ImportImag
     if request == nil {
         request = NewImportImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ImportImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportImage require credential")
@@ -6295,6 +6386,7 @@ func (c *Client) MigrateNetworkInterfaceWithContext(ctx context.Context, request
     if request == nil {
         request = NewMigrateNetworkInterfaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "MigrateNetworkInterface")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MigrateNetworkInterface require credential")
@@ -6366,6 +6458,7 @@ func (c *Client) MigratePrivateIpAddressWithContext(ctx context.Context, request
     if request == nil {
         request = NewMigratePrivateIpAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "MigratePrivateIpAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MigratePrivateIpAddress require credential")
@@ -6439,6 +6532,7 @@ func (c *Client) ModifyAddressAttributeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyAddressAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyAddressAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAddressAttribute require credential")
@@ -6508,6 +6602,7 @@ func (c *Client) ModifyAddressesBandwidthWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyAddressesBandwidthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyAddressesBandwidth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAddressesBandwidth require credential")
@@ -6567,6 +6662,7 @@ func (c *Client) ModifyDefaultSubnetWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyDefaultSubnetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyDefaultSubnet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDefaultSubnet require credential")
@@ -6624,6 +6720,7 @@ func (c *Client) ModifyHaVipAttributeWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyHaVipAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyHaVipAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyHaVipAttribute require credential")
@@ -6687,6 +6784,7 @@ func (c *Client) ModifyImageAttributeWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyImageAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyImageAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyImageAttribute require credential")
@@ -6752,6 +6850,7 @@ func (c *Client) ModifyInstancesAttributeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyInstancesAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyInstancesAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstancesAttribute require credential")
@@ -6813,6 +6912,7 @@ func (c *Client) ModifyIpv6AddressesAttributeWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyIpv6AddressesAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyIpv6AddressesAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyIpv6AddressesAttribute require credential")
@@ -6880,6 +6980,7 @@ func (c *Client) ModifyIpv6AddressesBandwidthWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyIpv6AddressesBandwidthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyIpv6AddressesBandwidth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyIpv6AddressesBandwidth require credential")
@@ -6941,6 +7042,7 @@ func (c *Client) ModifyListenerWithContext(ctx context.Context, request *ModifyL
     if request == nil {
         request = NewModifyListenerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyListener")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyListener require credential")
@@ -7008,6 +7110,7 @@ func (c *Client) ModifyLoadBalancerAttributesWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyLoadBalancerAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyLoadBalancerAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLoadBalancerAttributes require credential")
@@ -7079,6 +7182,7 @@ func (c *Client) ModifyModuleConfigWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyModuleConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyModuleConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModuleConfig require credential")
@@ -7134,6 +7238,7 @@ func (c *Client) ModifyModuleDisableWanIpWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyModuleDisableWanIpRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyModuleDisableWanIp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModuleDisableWanIp require credential")
@@ -7199,6 +7304,7 @@ func (c *Client) ModifyModuleImageWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyModuleImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyModuleImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModuleImage require credential")
@@ -7256,6 +7362,7 @@ func (c *Client) ModifyModuleIpDirectWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyModuleIpDirectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyModuleIpDirect")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModuleIpDirect require credential")
@@ -7315,6 +7422,7 @@ func (c *Client) ModifyModuleNameWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyModuleNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyModuleName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModuleName require credential")
@@ -7382,6 +7490,7 @@ func (c *Client) ModifyModuleNetworkWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyModuleNetworkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyModuleNetwork")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModuleNetwork require credential")
@@ -7445,6 +7554,7 @@ func (c *Client) ModifyModuleSecurityGroupsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyModuleSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyModuleSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModuleSecurityGroups require credential")
@@ -7502,6 +7612,7 @@ func (c *Client) ModifyPrivateIpAddressesAttributeWithContext(ctx context.Contex
     if request == nil {
         request = NewModifyPrivateIpAddressesAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyPrivateIpAddressesAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPrivateIpAddressesAttribute require credential")
@@ -7557,6 +7668,7 @@ func (c *Client) ModifyRouteTableAttributeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyRouteTableAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyRouteTableAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRouteTableAttribute require credential")
@@ -7618,6 +7730,7 @@ func (c *Client) ModifySecurityGroupAttributeWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifySecurityGroupAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifySecurityGroupAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecurityGroupAttribute require credential")
@@ -7677,6 +7790,7 @@ func (c *Client) ModifySecurityGroupPoliciesWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifySecurityGroupPoliciesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifySecurityGroupPolicies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecurityGroupPolicies require credential")
@@ -7746,6 +7860,7 @@ func (c *Client) ModifySubnetAttributeWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifySubnetAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifySubnetAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySubnetAttribute require credential")
@@ -7805,6 +7920,7 @@ func (c *Client) ModifyTargetPortWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyTargetPortRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyTargetPort")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTargetPort require credential")
@@ -7868,6 +7984,7 @@ func (c *Client) ModifyTargetWeightWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyTargetWeightRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyTargetWeight")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTargetWeight require credential")
@@ -7933,6 +8050,7 @@ func (c *Client) ModifyVpcAttributeWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyVpcAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ModifyVpcAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVpcAttribute require credential")
@@ -7984,6 +8102,7 @@ func (c *Client) QueryVpcTaskResultWithContext(ctx context.Context, request *Que
     if request == nil {
         request = NewQueryVpcTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "QueryVpcTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryVpcTaskResult require credential")
@@ -8053,6 +8172,7 @@ func (c *Client) RebootInstancesWithContext(ctx context.Context, request *Reboot
     if request == nil {
         request = NewRebootInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "RebootInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RebootInstances require credential")
@@ -8130,6 +8250,7 @@ func (c *Client) ReleaseAddressesWithContext(ctx context.Context, request *Relea
     if request == nil {
         request = NewReleaseAddressesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ReleaseAddresses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReleaseAddresses require credential")
@@ -8191,6 +8312,7 @@ func (c *Client) ReleaseIpv6AddressesWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewReleaseIpv6AddressesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ReleaseIpv6Addresses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReleaseIpv6Addresses require credential")
@@ -8262,6 +8384,7 @@ func (c *Client) ReleaseIpv6AddressesBandwidthWithContext(ctx context.Context, r
     if request == nil {
         request = NewReleaseIpv6AddressesBandwidthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ReleaseIpv6AddressesBandwidth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReleaseIpv6AddressesBandwidth require credential")
@@ -8333,6 +8456,7 @@ func (c *Client) RemovePrivateIpAddressesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewRemovePrivateIpAddressesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "RemovePrivateIpAddresses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemovePrivateIpAddresses require credential")
@@ -8396,6 +8520,7 @@ func (c *Client) ReplaceRouteTableAssociationWithContext(ctx context.Context, re
     if request == nil {
         request = NewReplaceRouteTableAssociationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ReplaceRouteTableAssociation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReplaceRouteTableAssociation require credential")
@@ -8465,6 +8590,7 @@ func (c *Client) ReplaceRoutesWithContext(ctx context.Context, request *ReplaceR
     if request == nil {
         request = NewReplaceRoutesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ReplaceRoutes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReplaceRoutes require credential")
@@ -8526,6 +8652,7 @@ func (c *Client) ReplaceSecurityGroupPolicyWithContext(ctx context.Context, requ
     if request == nil {
         request = NewReplaceSecurityGroupPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ReplaceSecurityGroupPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReplaceSecurityGroupPolicy require credential")
@@ -8597,6 +8724,7 @@ func (c *Client) ResetInstancesWithContext(ctx context.Context, request *ResetIn
     if request == nil {
         request = NewResetInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ResetInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetInstances require credential")
@@ -8664,6 +8792,7 @@ func (c *Client) ResetInstancesMaxBandwidthWithContext(ctx context.Context, requ
     if request == nil {
         request = NewResetInstancesMaxBandwidthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ResetInstancesMaxBandwidth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetInstancesMaxBandwidth require credential")
@@ -8731,6 +8860,7 @@ func (c *Client) ResetInstancesPasswordWithContext(ctx context.Context, request 
     if request == nil {
         request = NewResetInstancesPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ResetInstancesPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetInstancesPassword require credential")
@@ -8792,6 +8922,7 @@ func (c *Client) ResetRoutesWithContext(ctx context.Context, request *ResetRoute
     if request == nil {
         request = NewResetRoutesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "ResetRoutes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetRoutes require credential")
@@ -8959,6 +9090,7 @@ func (c *Client) RunInstancesWithContext(ctx context.Context, request *RunInstan
     if request == nil {
         request = NewRunInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "RunInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunInstances require credential")
@@ -9028,6 +9160,7 @@ func (c *Client) SetLoadBalancerSecurityGroupsWithContext(ctx context.Context, r
     if request == nil {
         request = NewSetLoadBalancerSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "SetLoadBalancerSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetLoadBalancerSecurityGroups require credential")
@@ -9099,6 +9232,7 @@ func (c *Client) SetSecurityGroupForLoadbalancersWithContext(ctx context.Context
     if request == nil {
         request = NewSetSecurityGroupForLoadbalancersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "SetSecurityGroupForLoadbalancers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetSecurityGroupForLoadbalancers require credential")
@@ -9164,6 +9298,7 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, request *StartIn
     if request == nil {
         request = NewStartInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "StartInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartInstances require credential")
@@ -9237,6 +9372,7 @@ func (c *Client) StopInstancesWithContext(ctx context.Context, request *StopInst
     if request == nil {
         request = NewStopInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "StopInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopInstances require credential")
@@ -9328,6 +9464,7 @@ func (c *Client) TerminateDisksWithContext(ctx context.Context, request *Termina
     if request == nil {
         request = NewTerminateDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "TerminateDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateDisks require credential")
@@ -9393,6 +9530,7 @@ func (c *Client) TerminateInstancesWithContext(ctx context.Context, request *Ter
     if request == nil {
         request = NewTerminateInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "TerminateInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateInstances require credential")
@@ -9454,6 +9592,7 @@ func (c *Client) UnassignIpv6SubnetCidrBlockWithContext(ctx context.Context, req
     if request == nil {
         request = NewUnassignIpv6SubnetCidrBlockRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecm", APIVersion, "UnassignIpv6SubnetCidrBlock")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnassignIpv6SubnetCidrBlock require credential")

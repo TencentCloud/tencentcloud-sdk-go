@@ -102,6 +102,7 @@ func (c *Client) CreateCodeRepositoryWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateCodeRepositoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateCodeRepository")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCodeRepository require credential")
@@ -185,6 +186,7 @@ func (c *Client) CreateNotebookInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateNotebookInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateNotebookInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNotebookInstance require credential")
@@ -244,6 +246,7 @@ func (c *Client) CreateNotebookLifecycleScriptWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateNotebookLifecycleScriptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateNotebookLifecycleScript")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNotebookLifecycleScript require credential")
@@ -303,6 +306,7 @@ func (c *Client) CreatePresignedNotebookInstanceUrlWithContext(ctx context.Conte
     if request == nil {
         request = NewCreatePresignedNotebookInstanceUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreatePresignedNotebookInstanceUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePresignedNotebookInstanceUrl require credential")
@@ -386,6 +390,7 @@ func (c *Client) CreateTrainingJobWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTrainingJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateTrainingJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTrainingJob require credential")
@@ -449,6 +454,7 @@ func (c *Client) DeleteCodeRepositoryWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteCodeRepositoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteCodeRepository")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCodeRepository require credential")
@@ -506,6 +512,7 @@ func (c *Client) DeleteNotebookInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteNotebookInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteNotebookInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNotebookInstance require credential")
@@ -565,6 +572,7 @@ func (c *Client) DeleteNotebookLifecycleScriptWithContext(ctx context.Context, r
     if request == nil {
         request = NewDeleteNotebookLifecycleScriptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteNotebookLifecycleScript")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNotebookLifecycleScript require credential")
@@ -626,6 +634,7 @@ func (c *Client) DescribeCodeRepositoriesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCodeRepositoriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeCodeRepositories")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCodeRepositories require credential")
@@ -689,6 +698,7 @@ func (c *Client) DescribeCodeRepositoryWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCodeRepositoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeCodeRepository")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCodeRepository require credential")
@@ -750,6 +760,7 @@ func (c *Client) DescribeNotebookInstanceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeNotebookInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeNotebookInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNotebookInstance require credential")
@@ -807,6 +818,7 @@ func (c *Client) DescribeNotebookInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeNotebookInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeNotebookInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNotebookInstances require credential")
@@ -862,6 +874,7 @@ func (c *Client) DescribeNotebookLifecycleScriptWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeNotebookLifecycleScriptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeNotebookLifecycleScript")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNotebookLifecycleScript require credential")
@@ -917,6 +930,7 @@ func (c *Client) DescribeNotebookLifecycleScriptsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeNotebookLifecycleScriptsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeNotebookLifecycleScripts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNotebookLifecycleScripts require credential")
@@ -966,6 +980,7 @@ func (c *Client) DescribeNotebookSummaryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeNotebookSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeNotebookSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNotebookSummary require credential")
@@ -1021,6 +1036,7 @@ func (c *Client) DescribeTrainingJobWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTrainingJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeTrainingJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrainingJob require credential")
@@ -1076,6 +1092,7 @@ func (c *Client) DescribeTrainingJobsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTrainingJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeTrainingJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrainingJobs require credential")
@@ -1131,6 +1148,7 @@ func (c *Client) StartNotebookInstanceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewStartNotebookInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "StartNotebookInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartNotebookInstance require credential")
@@ -1188,6 +1206,7 @@ func (c *Client) StopNotebookInstanceWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewStopNotebookInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "StopNotebookInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopNotebookInstance require credential")
@@ -1241,6 +1260,7 @@ func (c *Client) StopTrainingJobWithContext(ctx context.Context, request *StopTr
     if request == nil {
         request = NewStopTrainingJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "StopTrainingJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopTrainingJob require credential")
@@ -1304,6 +1324,7 @@ func (c *Client) UpdateCodeRepositoryWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateCodeRepositoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "UpdateCodeRepository")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCodeRepository require credential")
@@ -1379,6 +1400,7 @@ func (c *Client) UpdateNotebookInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateNotebookInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "UpdateNotebookInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateNotebookInstance require credential")

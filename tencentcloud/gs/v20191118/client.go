@@ -92,6 +92,7 @@ func (c *Client) BackUpAndroidInstanceToStorageWithContext(ctx context.Context, 
     if request == nil {
         request = NewBackUpAndroidInstanceToStorageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "BackUpAndroidInstanceToStorage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BackUpAndroidInstanceToStorage require credential")
@@ -151,6 +152,7 @@ func (c *Client) CleanAndroidInstancesAppDataWithContext(ctx context.Context, re
     if request == nil {
         request = NewCleanAndroidInstancesAppDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CleanAndroidInstancesAppData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CleanAndroidInstancesAppData require credential")
@@ -206,6 +208,7 @@ func (c *Client) ConnectAndroidInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewConnectAndroidInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ConnectAndroidInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ConnectAndroidInstance require credential")
@@ -281,6 +284,7 @@ func (c *Client) CopyAndroidInstanceWithContext(ctx context.Context, request *Co
     if request == nil {
         request = NewCopyAndroidInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CopyAndroidInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CopyAndroidInstance require credential")
@@ -336,6 +340,7 @@ func (c *Client) CreateAndroidAppWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateAndroidAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAndroidApp require credential")
@@ -397,6 +402,7 @@ func (c *Client) CreateAndroidAppVersionWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateAndroidAppVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidAppVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAndroidAppVersion require credential")
@@ -452,6 +458,7 @@ func (c *Client) CreateAndroidInstanceADBWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAndroidInstanceADBRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidInstanceADB")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAndroidInstanceADB require credential")
@@ -513,6 +520,7 @@ func (c *Client) CreateAndroidInstanceImageWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateAndroidInstanceImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidInstanceImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAndroidInstanceImage require credential")
@@ -574,6 +582,7 @@ func (c *Client) CreateAndroidInstanceLabelWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateAndroidInstanceLabelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidInstanceLabel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAndroidInstanceLabel require credential")
@@ -625,6 +634,7 @@ func (c *Client) CreateAndroidInstanceSSHWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAndroidInstanceSSHRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidInstanceSSH")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAndroidInstanceSSH require credential")
@@ -676,6 +686,7 @@ func (c *Client) CreateAndroidInstanceWebShellWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateAndroidInstanceWebShellRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidInstanceWebShell")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAndroidInstanceWebShell require credential")
@@ -727,6 +738,7 @@ func (c *Client) CreateAndroidInstancesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAndroidInstances require credential")
@@ -788,6 +800,7 @@ func (c *Client) CreateAndroidInstancesAccessTokenWithContext(ctx context.Contex
     if request == nil {
         request = NewCreateAndroidInstancesAccessTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidInstancesAccessToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAndroidInstancesAccessToken require credential")
@@ -849,6 +862,7 @@ func (c *Client) CreateAndroidInstancesScreenshotWithContext(ctx context.Context
     if request == nil {
         request = NewCreateAndroidInstancesScreenshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidInstancesScreenshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAndroidInstancesScreenshot require credential")
@@ -916,6 +930,7 @@ func (c *Client) CreateCosCredentialWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateCosCredentialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateCosCredential")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCosCredential require credential")
@@ -993,6 +1008,7 @@ func (c *Client) CreateSessionWithContext(ctx context.Context, request *CreateSe
     if request == nil {
         request = NewCreateSessionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateSession")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSession require credential")
@@ -1046,6 +1062,7 @@ func (c *Client) DeleteAndroidAppWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteAndroidAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DeleteAndroidApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAndroidApp require credential")
@@ -1101,6 +1118,7 @@ func (c *Client) DeleteAndroidAppVersionWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteAndroidAppVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DeleteAndroidAppVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAndroidAppVersion require credential")
@@ -1160,6 +1178,7 @@ func (c *Client) DeleteAndroidInstanceBackupFilesWithContext(ctx context.Context
     if request == nil {
         request = NewDeleteAndroidInstanceBackupFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DeleteAndroidInstanceBackupFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAndroidInstanceBackupFiles require credential")
@@ -1221,6 +1240,7 @@ func (c *Client) DeleteAndroidInstanceImagesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteAndroidInstanceImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DeleteAndroidInstanceImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAndroidInstanceImages require credential")
@@ -1282,6 +1302,7 @@ func (c *Client) DeleteAndroidInstanceLabelWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteAndroidInstanceLabelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DeleteAndroidInstanceLabel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAndroidInstanceLabel require credential")
@@ -1331,6 +1352,7 @@ func (c *Client) DescribeAndroidAppsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAndroidAppsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DescribeAndroidApps")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAndroidApps require credential")
@@ -1392,6 +1414,7 @@ func (c *Client) DescribeAndroidInstanceAppsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAndroidInstanceAppsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DescribeAndroidInstanceApps")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAndroidInstanceApps require credential")
@@ -1453,6 +1476,7 @@ func (c *Client) DescribeAndroidInstanceImagesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAndroidInstanceImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DescribeAndroidInstanceImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAndroidInstanceImages require credential")
@@ -1514,6 +1538,7 @@ func (c *Client) DescribeAndroidInstanceLabelsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAndroidInstanceLabelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DescribeAndroidInstanceLabels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAndroidInstanceLabels require credential")
@@ -1575,6 +1600,7 @@ func (c *Client) DescribeAndroidInstanceTasksStatusWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeAndroidInstanceTasksStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DescribeAndroidInstanceTasksStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAndroidInstanceTasksStatus require credential")
@@ -1636,6 +1662,7 @@ func (c *Client) DescribeAndroidInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DescribeAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAndroidInstances require credential")
@@ -1691,6 +1718,7 @@ func (c *Client) DescribeAndroidInstancesAppBlacklistWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeAndroidInstancesAppBlacklistRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DescribeAndroidInstancesAppBlacklist")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAndroidInstancesAppBlacklist require credential")
@@ -1752,6 +1780,7 @@ func (c *Client) DescribeAndroidInstancesByAppsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeAndroidInstancesByAppsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DescribeAndroidInstancesByApps")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAndroidInstancesByApps require credential")
@@ -1805,6 +1834,7 @@ func (c *Client) DescribeInstancesCountWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstancesCountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DescribeInstancesCount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstancesCount require credential")
@@ -1858,6 +1888,7 @@ func (c *Client) DestroyAndroidInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDestroyAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DestroyAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyAndroidInstances require credential")
@@ -1911,6 +1942,7 @@ func (c *Client) DisableAndroidInstancesAppWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDisableAndroidInstancesAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DisableAndroidInstancesApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableAndroidInstancesApp require credential")
@@ -1970,6 +2002,7 @@ func (c *Client) DistributeFileToAndroidInstancesWithContext(ctx context.Context
     if request == nil {
         request = NewDistributeFileToAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DistributeFileToAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DistributeFileToAndroidInstances require credential")
@@ -2029,6 +2062,7 @@ func (c *Client) DistributePhotoToAndroidInstancesWithContext(ctx context.Contex
     if request == nil {
         request = NewDistributePhotoToAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DistributePhotoToAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DistributePhotoToAndroidInstances require credential")
@@ -2088,6 +2122,7 @@ func (c *Client) EnableAndroidInstancesAppWithContext(ctx context.Context, reque
     if request == nil {
         request = NewEnableAndroidInstancesAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "EnableAndroidInstancesApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableAndroidInstancesApp require credential")
@@ -2147,6 +2182,7 @@ func (c *Client) ExecuteCommandOnAndroidInstancesWithContext(ctx context.Context
     if request == nil {
         request = NewExecuteCommandOnAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ExecuteCommandOnAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExecuteCommandOnAndroidInstances require credential")
@@ -2206,6 +2242,7 @@ func (c *Client) FetchAndroidInstancesLogsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewFetchAndroidInstancesLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "FetchAndroidInstancesLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FetchAndroidInstancesLogs require credential")
@@ -2267,6 +2304,7 @@ func (c *Client) ImportAndroidInstanceImageWithContext(ctx context.Context, requ
     if request == nil {
         request = NewImportAndroidInstanceImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ImportAndroidInstanceImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportAndroidInstanceImage require credential")
@@ -2328,6 +2366,7 @@ func (c *Client) InstallAndroidInstancesAppWithContext(ctx context.Context, requ
     if request == nil {
         request = NewInstallAndroidInstancesAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "InstallAndroidInstancesApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InstallAndroidInstancesApp require credential")
@@ -2389,6 +2428,7 @@ func (c *Client) InstallAndroidInstancesAppWithURLWithContext(ctx context.Contex
     if request == nil {
         request = NewInstallAndroidInstancesAppWithURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "InstallAndroidInstancesAppWithURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InstallAndroidInstancesAppWithURL require credential")
@@ -2444,6 +2484,7 @@ func (c *Client) ModifyAndroidAppWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyAndroidAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ModifyAndroidApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAndroidApp require credential")
@@ -2501,6 +2542,7 @@ func (c *Client) ModifyAndroidAppVersionWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyAndroidAppVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ModifyAndroidAppVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAndroidAppVersion require credential")
@@ -2558,6 +2600,7 @@ func (c *Client) ModifyAndroidInstanceInformationWithContext(ctx context.Context
     if request == nil {
         request = NewModifyAndroidInstanceInformationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ModifyAndroidInstanceInformation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAndroidInstanceInformation require credential")
@@ -2615,6 +2658,7 @@ func (c *Client) ModifyAndroidInstanceResolutionWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyAndroidInstanceResolutionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ModifyAndroidInstanceResolution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAndroidInstanceResolution require credential")
@@ -2670,6 +2714,7 @@ func (c *Client) ModifyAndroidInstancesAppBlacklistWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyAndroidInstancesAppBlacklistRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ModifyAndroidInstancesAppBlacklist")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAndroidInstancesAppBlacklist require credential")
@@ -2721,6 +2766,7 @@ func (c *Client) ModifyAndroidInstancesInformationWithContext(ctx context.Contex
     if request == nil {
         request = NewModifyAndroidInstancesInformationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ModifyAndroidInstancesInformation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAndroidInstancesInformation require credential")
@@ -2772,6 +2818,7 @@ func (c *Client) ModifyAndroidInstancesLabelsWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyAndroidInstancesLabelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ModifyAndroidInstancesLabels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAndroidInstancesLabels require credential")
@@ -2823,6 +2870,7 @@ func (c *Client) ModifyAndroidInstancesPropertiesWithContext(ctx context.Context
     if request == nil {
         request = NewModifyAndroidInstancesPropertiesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ModifyAndroidInstancesProperties")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAndroidInstancesProperties require credential")
@@ -2874,6 +2922,7 @@ func (c *Client) ModifyAndroidInstancesResolutionWithContext(ctx context.Context
     if request == nil {
         request = NewModifyAndroidInstancesResolutionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ModifyAndroidInstancesResolution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAndroidInstancesResolution require credential")
@@ -2925,6 +2974,7 @@ func (c *Client) ModifyAndroidInstancesResourcesWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyAndroidInstancesResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ModifyAndroidInstancesResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAndroidInstancesResources require credential")
@@ -2976,6 +3026,7 @@ func (c *Client) ModifyAndroidInstancesUserIdWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyAndroidInstancesUserIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ModifyAndroidInstancesUserId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAndroidInstancesUserId require credential")
@@ -3047,6 +3098,7 @@ func (c *Client) RebootAndroidInstanceHostsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewRebootAndroidInstanceHostsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "RebootAndroidInstanceHosts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RebootAndroidInstanceHosts require credential")
@@ -3108,6 +3160,7 @@ func (c *Client) RebootAndroidInstancesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRebootAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "RebootAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RebootAndroidInstances require credential")
@@ -3169,6 +3222,7 @@ func (c *Client) RenewAndroidInstancesAccessTokenWithContext(ctx context.Context
     if request == nil {
         request = NewRenewAndroidInstancesAccessTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "RenewAndroidInstancesAccessToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewAndroidInstancesAccessToken require credential")
@@ -3230,6 +3284,7 @@ func (c *Client) ResetAndroidInstancesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewResetAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "ResetAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetAndroidInstances require credential")
@@ -3291,6 +3346,7 @@ func (c *Client) RestartAndroidInstancesAppWithContext(ctx context.Context, requ
     if request == nil {
         request = NewRestartAndroidInstancesAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "RestartAndroidInstancesApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartAndroidInstancesApp require credential")
@@ -3350,6 +3406,7 @@ func (c *Client) RestoreAndroidInstanceFromStorageWithContext(ctx context.Contex
     if request == nil {
         request = NewRestoreAndroidInstanceFromStorageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "RestoreAndroidInstanceFromStorage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestoreAndroidInstanceFromStorage require credential")
@@ -3413,6 +3470,7 @@ func (c *Client) SaveGameArchiveWithContext(ctx context.Context, request *SaveGa
     if request == nil {
         request = NewSaveGameArchiveRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "SaveGameArchive")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SaveGameArchive require credential")
@@ -3476,6 +3534,7 @@ func (c *Client) SetAndroidInstancesBGAppKeepAliveWithContext(ctx context.Contex
     if request == nil {
         request = NewSetAndroidInstancesBGAppKeepAliveRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "SetAndroidInstancesBGAppKeepAlive")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetAndroidInstancesBGAppKeepAlive require credential")
@@ -3539,6 +3598,7 @@ func (c *Client) SetAndroidInstancesFGAppKeepAliveWithContext(ctx context.Contex
     if request == nil {
         request = NewSetAndroidInstancesFGAppKeepAliveRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "SetAndroidInstancesFGAppKeepAlive")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetAndroidInstancesFGAppKeepAlive require credential")
@@ -3600,6 +3660,7 @@ func (c *Client) StartAndroidInstancesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewStartAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "StartAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartAndroidInstances require credential")
@@ -3661,6 +3722,7 @@ func (c *Client) StartAndroidInstancesAppWithContext(ctx context.Context, reques
     if request == nil {
         request = NewStartAndroidInstancesAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "StartAndroidInstancesApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartAndroidInstancesApp require credential")
@@ -3722,6 +3784,7 @@ func (c *Client) StartPublishStreamWithContext(ctx context.Context, request *Sta
     if request == nil {
         request = NewStartPublishStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "StartPublishStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartPublishStream require credential")
@@ -3783,6 +3846,7 @@ func (c *Client) StartPublishStreamToCSSWithContext(ctx context.Context, request
     if request == nil {
         request = NewStartPublishStreamToCSSRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "StartPublishStreamToCSS")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartPublishStreamToCSS require credential")
@@ -3844,6 +3908,7 @@ func (c *Client) StopAndroidInstancesWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewStopAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "StopAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopAndroidInstances require credential")
@@ -3905,6 +3970,7 @@ func (c *Client) StopAndroidInstancesAppWithContext(ctx context.Context, request
     if request == nil {
         request = NewStopAndroidInstancesAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "StopAndroidInstancesApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopAndroidInstancesApp require credential")
@@ -3962,6 +4028,7 @@ func (c *Client) StopGameWithContext(ctx context.Context, request *StopGameReque
     if request == nil {
         request = NewStopGameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "StopGame")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopGame require credential")
@@ -4023,6 +4090,7 @@ func (c *Client) StopPublishStreamWithContext(ctx context.Context, request *Stop
     if request == nil {
         request = NewStopPublishStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "StopPublishStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopPublishStream require credential")
@@ -4086,6 +4154,7 @@ func (c *Client) SwitchGameArchiveWithContext(ctx context.Context, request *Swit
     if request == nil {
         request = NewSwitchGameArchiveRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "SwitchGameArchive")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SwitchGameArchive require credential")
@@ -4149,6 +4218,7 @@ func (c *Client) SyncAndroidInstanceImageWithContext(ctx context.Context, reques
     if request == nil {
         request = NewSyncAndroidInstanceImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "SyncAndroidInstanceImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncAndroidInstanceImage require credential")
@@ -4208,6 +4278,7 @@ func (c *Client) SyncExecuteCommandOnAndroidInstancesWithContext(ctx context.Con
     if request == nil {
         request = NewSyncExecuteCommandOnAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "SyncExecuteCommandOnAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncExecuteCommandOnAndroidInstances require credential")
@@ -4271,6 +4342,7 @@ func (c *Client) TrylockWorkerWithContext(ctx context.Context, request *TrylockW
     if request == nil {
         request = NewTrylockWorkerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "TrylockWorker")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TrylockWorker require credential")
@@ -4332,6 +4404,7 @@ func (c *Client) UninstallAndroidInstancesAppWithContext(ctx context.Context, re
     if request == nil {
         request = NewUninstallAndroidInstancesAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "UninstallAndroidInstancesApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UninstallAndroidInstancesApp require credential")
@@ -4391,6 +4464,7 @@ func (c *Client) UploadFileToAndroidInstancesWithContext(ctx context.Context, re
     if request == nil {
         request = NewUploadFileToAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "UploadFileToAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadFileToAndroidInstances require credential")
@@ -4450,6 +4524,7 @@ func (c *Client) UploadFilesToAndroidInstancesWithContext(ctx context.Context, r
     if request == nil {
         request = NewUploadFilesToAndroidInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "UploadFilesToAndroidInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadFilesToAndroidInstances require credential")

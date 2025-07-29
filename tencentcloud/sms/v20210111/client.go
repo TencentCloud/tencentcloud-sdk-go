@@ -142,6 +142,7 @@ func (c *Client) AddSmsSignWithContext(ctx context.Context, request *AddSmsSignR
     if request == nil {
         request = NewAddSmsSignRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "AddSmsSign")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddSmsSign require credential")
@@ -251,6 +252,7 @@ func (c *Client) AddSmsTemplateWithContext(ctx context.Context, request *AddSmsT
     if request == nil {
         request = NewAddSmsTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "AddSmsTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddSmsTemplate require credential")
@@ -350,6 +352,7 @@ func (c *Client) CallbackStatusStatisticsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCallbackStatusStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "CallbackStatusStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CallbackStatusStatistics require credential")
@@ -435,6 +438,7 @@ func (c *Client) DeleteSmsSignWithContext(ctx context.Context, request *DeleteSm
     if request == nil {
         request = NewDeleteSmsSignRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "DeleteSmsSign")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSmsSign require credential")
@@ -520,6 +524,7 @@ func (c *Client) DeleteSmsTemplateWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteSmsTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "DeleteSmsTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSmsTemplate require credential")
@@ -579,6 +584,7 @@ func (c *Client) DescribePhoneNumberInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribePhoneNumberInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "DescribePhoneNumberInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePhoneNumberInfo require credential")
@@ -664,6 +670,7 @@ func (c *Client) DescribeSmsSignListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeSmsSignListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "DescribeSmsSignList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSmsSignList require credential")
@@ -761,6 +768,7 @@ func (c *Client) DescribeSmsTemplateListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSmsTemplateListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "DescribeSmsTemplateList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSmsTemplateList require credential")
@@ -872,6 +880,7 @@ func (c *Client) ModifySmsSignWithContext(ctx context.Context, request *ModifySm
     if request == nil {
         request = NewModifySmsSignRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "ModifySmsSign")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySmsSign require credential")
@@ -973,6 +982,7 @@ func (c *Client) ModifySmsTemplateWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifySmsTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "ModifySmsTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySmsTemplate require credential")
@@ -1066,6 +1076,7 @@ func (c *Client) PullSmsReplyStatusWithContext(ctx context.Context, request *Pul
     if request == nil {
         request = NewPullSmsReplyStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "PullSmsReplyStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PullSmsReplyStatus require credential")
@@ -1161,6 +1172,7 @@ func (c *Client) PullSmsReplyStatusByPhoneNumberWithContext(ctx context.Context,
     if request == nil {
         request = NewPullSmsReplyStatusByPhoneNumberRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "PullSmsReplyStatusByPhoneNumber")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PullSmsReplyStatusByPhoneNumber require credential")
@@ -1252,6 +1264,7 @@ func (c *Client) PullSmsSendStatusWithContext(ctx context.Context, request *Pull
     if request == nil {
         request = NewPullSmsSendStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "PullSmsSendStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PullSmsSendStatus require credential")
@@ -1353,6 +1366,7 @@ func (c *Client) PullSmsSendStatusByPhoneNumberWithContext(ctx context.Context, 
     if request == nil {
         request = NewPullSmsSendStatusByPhoneNumberRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "PullSmsSendStatusByPhoneNumber")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PullSmsSendStatusByPhoneNumber require credential")
@@ -1408,6 +1422,7 @@ func (c *Client) ReportConversionWithContext(ctx context.Context, request *Repor
     if request == nil {
         request = NewReportConversionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "ReportConversion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportConversion require credential")
@@ -1555,6 +1570,7 @@ func (c *Client) SendSmsWithContext(ctx context.Context, request *SendSmsRequest
     if request == nil {
         request = NewSendSmsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "SendSms")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendSms require credential")
@@ -1656,6 +1672,7 @@ func (c *Client) SendStatusStatisticsWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewSendStatusStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "SendStatusStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendStatusStatistics require credential")
@@ -1757,6 +1774,7 @@ func (c *Client) SmsPackagesStatisticsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSmsPackagesStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "SmsPackagesStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SmsPackagesStatistics require credential")

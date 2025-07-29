@@ -82,6 +82,7 @@ func (c *Client) ChangeMigratingTopicToNextStageWithContext(ctx context.Context,
     if request == nil {
         request = NewChangeMigratingTopicToNextStageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ChangeMigratingTopicToNextStage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChangeMigratingTopicToNextStage require credential")
@@ -137,6 +138,7 @@ func (c *Client) CreateConsumerGroupWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateConsumerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "CreateConsumerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConsumerGroup require credential")
@@ -186,6 +188,7 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     if request == nil {
         request = NewCreateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "CreateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInstance require credential")
@@ -235,6 +238,7 @@ func (c *Client) CreateMQTTInsPublicEndpointWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateMQTTInsPublicEndpointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "CreateMQTTInsPublicEndpoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMQTTInsPublicEndpoint require credential")
@@ -284,6 +288,7 @@ func (c *Client) CreateMQTTInstanceWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateMQTTInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "CreateMQTTInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMQTTInstance require credential")
@@ -343,6 +348,7 @@ func (c *Client) CreateMQTTTopicWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateMQTTTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "CreateMQTTTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMQTTTopic require credential")
@@ -402,6 +408,7 @@ func (c *Client) CreateMQTTUserWithContext(ctx context.Context, request *CreateM
     if request == nil {
         request = NewCreateMQTTUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "CreateMQTTUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMQTTUser require credential")
@@ -461,6 +468,7 @@ func (c *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleR
     if request == nil {
         request = NewCreateRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "CreateRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRole require credential")
@@ -520,6 +528,7 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "CreateTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTopic require credential")
@@ -571,6 +580,7 @@ func (c *Client) DeleteConsumerGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteConsumerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DeleteConsumerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConsumerGroup require credential")
@@ -624,6 +634,7 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
     if request == nil {
         request = NewDeleteInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DeleteInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteInstance require credential")
@@ -677,6 +688,7 @@ func (c *Client) DeleteMQTTInsPublicEndpointWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteMQTTInsPublicEndpointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DeleteMQTTInsPublicEndpoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMQTTInsPublicEndpoint require credential")
@@ -730,6 +742,7 @@ func (c *Client) DeleteMQTTInstanceWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteMQTTInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DeleteMQTTInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMQTTInstance require credential")
@@ -781,6 +794,7 @@ func (c *Client) DeleteMQTTTopicWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteMQTTTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DeleteMQTTTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMQTTTopic require credential")
@@ -834,6 +848,7 @@ func (c *Client) DeleteMQTTUserWithContext(ctx context.Context, request *DeleteM
     if request == nil {
         request = NewDeleteMQTTUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DeleteMQTTUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMQTTUser require credential")
@@ -887,6 +902,7 @@ func (c *Client) DeleteRoleWithContext(ctx context.Context, request *DeleteRoleR
     if request == nil {
         request = NewDeleteRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DeleteRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRole require credential")
@@ -940,6 +956,7 @@ func (c *Client) DeleteSmoothMigrationTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteSmoothMigrationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DeleteSmoothMigrationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSmoothMigrationTask require credential")
@@ -991,6 +1008,7 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopi
     if request == nil {
         request = NewDeleteTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DeleteTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTopic require credential")
@@ -1040,6 +1058,7 @@ func (c *Client) DescribeConsumerClientWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeConsumerClientRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeConsumerClient")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConsumerClient require credential")
@@ -1089,6 +1108,7 @@ func (c *Client) DescribeConsumerClientListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeConsumerClientListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeConsumerClientList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConsumerClientList require credential")
@@ -1140,6 +1160,7 @@ func (c *Client) DescribeConsumerGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeConsumerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeConsumerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConsumerGroup require credential")
@@ -1221,6 +1242,7 @@ func (c *Client) DescribeConsumerGroupListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeConsumerGroupListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeConsumerGroupList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConsumerGroupList require credential")
@@ -1270,6 +1292,7 @@ func (c *Client) DescribeConsumerLagWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeConsumerLagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeConsumerLag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConsumerLag require credential")
@@ -1359,6 +1382,7 @@ func (c *Client) DescribeFusionInstanceListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeFusionInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeFusionInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFusionInstanceList require credential")
@@ -1408,6 +1432,7 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstance require credential")
@@ -1501,6 +1526,7 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceList require credential")
@@ -1550,6 +1576,7 @@ func (c *Client) DescribeMQTTClientWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeMQTTClientRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTClient")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTClient require credential")
@@ -1599,6 +1626,7 @@ func (c *Client) DescribeMQTTInsPublicEndpointsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeMQTTInsPublicEndpointsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTInsPublicEndpoints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTInsPublicEndpoints require credential")
@@ -1648,6 +1676,7 @@ func (c *Client) DescribeMQTTInsVPCEndpointsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeMQTTInsVPCEndpointsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTInsVPCEndpoints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTInsVPCEndpoints require credential")
@@ -1697,6 +1726,7 @@ func (c *Client) DescribeMQTTInstanceWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMQTTInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTInstance require credential")
@@ -1746,6 +1776,7 @@ func (c *Client) DescribeMQTTInstanceCertWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeMQTTInstanceCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTInstanceCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTInstanceCert require credential")
@@ -1819,6 +1850,7 @@ func (c *Client) DescribeMQTTInstanceListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeMQTTInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTInstanceList require credential")
@@ -1870,6 +1902,7 @@ func (c *Client) DescribeMQTTMessageWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeMQTTMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTMessage require credential")
@@ -1919,6 +1952,7 @@ func (c *Client) DescribeMQTTMessageListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeMQTTMessageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTMessageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTMessageList require credential")
@@ -1968,6 +2002,7 @@ func (c *Client) DescribeMQTTProductSKUListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeMQTTProductSKUListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTProductSKUList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTProductSKUList require credential")
@@ -2019,6 +2054,7 @@ func (c *Client) DescribeMQTTTopicWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeMQTTTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTTopic require credential")
@@ -2080,6 +2116,7 @@ func (c *Client) DescribeMQTTTopicListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeMQTTTopicListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTTopicList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTTopicList require credential")
@@ -2137,6 +2174,7 @@ func (c *Client) DescribeMQTTUserListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMQTTUserListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMQTTUserList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMQTTUserList require credential")
@@ -2188,6 +2226,7 @@ func (c *Client) DescribeMessageWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMessage require credential")
@@ -2237,6 +2276,7 @@ func (c *Client) DescribeMessageListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeMessageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMessageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMessageList require credential")
@@ -2288,6 +2328,7 @@ func (c *Client) DescribeMessageTraceWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMessageTraceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMessageTrace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMessageTrace require credential")
@@ -2339,6 +2380,7 @@ func (c *Client) DescribeMigratingGroupStatsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeMigratingGroupStatsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMigratingGroupStats")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigratingGroupStats require credential")
@@ -2432,6 +2474,7 @@ func (c *Client) DescribeMigratingTopicListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeMigratingTopicListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMigratingTopicList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigratingTopicList require credential")
@@ -2487,6 +2530,7 @@ func (c *Client) DescribeMigratingTopicStatsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeMigratingTopicStatsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMigratingTopicStats")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigratingTopicStats require credential")
@@ -2558,6 +2602,7 @@ func (c *Client) DescribeMigrationTaskListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeMigrationTaskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeMigrationTaskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigrationTaskList require credential")
@@ -2613,6 +2658,7 @@ func (c *Client) DescribeProductSKUsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeProductSKUsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeProductSKUs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProductSKUs require credential")
@@ -2692,6 +2738,7 @@ func (c *Client) DescribeRoleListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeRoleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeRoleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRoleList require credential")
@@ -2795,6 +2842,7 @@ func (c *Client) DescribeSmoothMigrationTaskListWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeSmoothMigrationTaskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeSmoothMigrationTaskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSmoothMigrationTaskList require credential")
@@ -2898,6 +2946,7 @@ func (c *Client) DescribeSourceClusterGroupListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeSourceClusterGroupListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeSourceClusterGroupList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSourceClusterGroupList require credential")
@@ -2969,6 +3018,7 @@ func (c *Client) DescribeTopicWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopic require credential")
@@ -3042,6 +3092,7 @@ func (c *Client) DescribeTopicListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeTopicListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeTopicList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopicList require credential")
@@ -3111,6 +3162,7 @@ func (c *Client) DescribeTopicListByGroupWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeTopicListByGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeTopicListByGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopicListByGroup require credential")
@@ -3160,6 +3212,7 @@ func (c *Client) DoHealthCheckOnMigratingTopicWithContext(ctx context.Context, r
     if request == nil {
         request = NewDoHealthCheckOnMigratingTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DoHealthCheckOnMigratingTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DoHealthCheckOnMigratingTopic require credential")
@@ -3209,6 +3262,7 @@ func (c *Client) ImportSourceClusterConsumerGroupsWithContext(ctx context.Contex
     if request == nil {
         request = NewImportSourceClusterConsumerGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ImportSourceClusterConsumerGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportSourceClusterConsumerGroups require credential")
@@ -3258,6 +3312,7 @@ func (c *Client) ImportSourceClusterTopicsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewImportSourceClusterTopicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ImportSourceClusterTopics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportSourceClusterTopics require credential")
@@ -3307,6 +3362,7 @@ func (c *Client) ModifyConsumerGroupWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyConsumerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ModifyConsumerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConsumerGroup require credential")
@@ -3362,6 +3418,7 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     if request == nil {
         request = NewModifyInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ModifyInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstance require credential")
@@ -3415,6 +3472,7 @@ func (c *Client) ModifyInstanceEndpointWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyInstanceEndpointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ModifyInstanceEndpoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceEndpoint require credential")
@@ -3468,6 +3526,7 @@ func (c *Client) ModifyMQTTInsPublicEndpointWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyMQTTInsPublicEndpointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ModifyMQTTInsPublicEndpoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMQTTInsPublicEndpoint require credential")
@@ -3521,6 +3580,7 @@ func (c *Client) ModifyMQTTInstanceWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyMQTTInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ModifyMQTTInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMQTTInstance require credential")
@@ -3578,6 +3638,7 @@ func (c *Client) ModifyMQTTInstanceCertBindingWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyMQTTInstanceCertBindingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ModifyMQTTInstanceCertBinding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMQTTInstanceCertBinding require credential")
@@ -3627,6 +3688,7 @@ func (c *Client) ModifyMQTTTopicWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyMQTTTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ModifyMQTTTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMQTTTopic require credential")
@@ -3676,6 +3738,7 @@ func (c *Client) ModifyMQTTUserWithContext(ctx context.Context, request *ModifyM
     if request == nil {
         request = NewModifyMQTTUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ModifyMQTTUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMQTTUser require credential")
@@ -3729,6 +3792,7 @@ func (c *Client) ModifyRoleWithContext(ctx context.Context, request *ModifyRoleR
     if request == nil {
         request = NewModifyRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ModifyRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRole require credential")
@@ -3778,6 +3842,7 @@ func (c *Client) ModifyTopicWithContext(ctx context.Context, request *ModifyTopi
     if request == nil {
         request = NewModifyTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ModifyTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTopic require credential")
@@ -3827,6 +3892,7 @@ func (c *Client) RemoveMigratingTopicWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewRemoveMigratingTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "RemoveMigratingTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveMigratingTopic require credential")
@@ -3876,6 +3942,7 @@ func (c *Client) ResendDeadLetterMessageWithContext(ctx context.Context, request
     if request == nil {
         request = NewResendDeadLetterMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ResendDeadLetterMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResendDeadLetterMessage require credential")
@@ -3925,6 +3992,7 @@ func (c *Client) ResetConsumerGroupOffsetWithContext(ctx context.Context, reques
     if request == nil {
         request = NewResetConsumerGroupOffsetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "ResetConsumerGroupOffset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetConsumerGroupOffset require credential")
@@ -3974,6 +4042,7 @@ func (c *Client) RollbackMigratingTopicStageWithContext(ctx context.Context, req
     if request == nil {
         request = NewRollbackMigratingTopicStageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "RollbackMigratingTopicStage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RollbackMigratingTopicStage require credential")

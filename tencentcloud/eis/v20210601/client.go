@@ -104,6 +104,7 @@ func (c *Client) GetRuntimeMCWithContext(ctx context.Context, request *GetRuntim
     if request == nil {
         request = NewGetRuntimeMCRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eis", APIVersion, "GetRuntimeMC")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRuntimeMC require credential")
@@ -175,6 +176,7 @@ func (c *Client) GetRuntimeResourceMonitorMetricMCWithContext(ctx context.Contex
     if request == nil {
         request = NewGetRuntimeResourceMonitorMetricMCRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eis", APIVersion, "GetRuntimeResourceMonitorMetricMC")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRuntimeResourceMonitorMetricMC require credential")
@@ -238,6 +240,7 @@ func (c *Client) ListDeployableRuntimesMCWithContext(ctx context.Context, reques
     if request == nil {
         request = NewListDeployableRuntimesMCRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eis", APIVersion, "ListDeployableRuntimesMC")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListDeployableRuntimesMC require credential")
@@ -303,6 +306,7 @@ func (c *Client) ListRuntimeDeployedInstancesMCWithContext(ctx context.Context, 
     if request == nil {
         request = NewListRuntimeDeployedInstancesMCRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eis", APIVersion, "ListRuntimeDeployedInstancesMC")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListRuntimeDeployedInstancesMC require credential")
@@ -370,6 +374,7 @@ func (c *Client) ListRuntimesMCWithContext(ctx context.Context, request *ListRun
     if request == nil {
         request = NewListRuntimesMCRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eis", APIVersion, "ListRuntimesMC")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListRuntimesMC require credential")

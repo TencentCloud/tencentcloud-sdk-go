@@ -148,6 +148,7 @@ func (c *Client) BeautifyPicWithContext(ctx context.Context, request *BeautifyPi
     if request == nil {
         request = NewBeautifyPicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "fmu", APIVersion, "BeautifyPic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BeautifyPic require credential")
@@ -231,6 +232,7 @@ func (c *Client) CreateModelWithContext(ctx context.Context, request *CreateMode
     if request == nil {
         request = NewCreateModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "fmu", APIVersion, "CreateModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateModel require credential")
@@ -290,6 +292,7 @@ func (c *Client) DeleteModelWithContext(ctx context.Context, request *DeleteMode
     if request == nil {
         request = NewDeleteModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "fmu", APIVersion, "DeleteModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteModel require credential")
@@ -347,6 +350,7 @@ func (c *Client) GetModelListWithContext(ctx context.Context, request *GetModelL
     if request == nil {
         request = NewGetModelListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "fmu", APIVersion, "GetModelList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetModelList require credential")
@@ -430,6 +434,7 @@ func (c *Client) StyleImageWithContext(ctx context.Context, request *StyleImageR
     if request == nil {
         request = NewStyleImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "fmu", APIVersion, "StyleImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StyleImage require credential")
@@ -515,6 +520,7 @@ func (c *Client) StyleImageProWithContext(ctx context.Context, request *StyleIma
     if request == nil {
         request = NewStyleImageProRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "fmu", APIVersion, "StyleImagePro")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StyleImagePro require credential")
@@ -666,6 +672,7 @@ func (c *Client) TryLipstickPicWithContext(ctx context.Context, request *TryLips
     if request == nil {
         request = NewTryLipstickPicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "fmu", APIVersion, "TryLipstickPic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TryLipstickPic require credential")

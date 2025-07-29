@@ -86,6 +86,7 @@ func (c *Client) DescribeAppWithContext(ctx context.Context, request *DescribeAp
     if request == nil {
         request = NewDescribeAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ic", APIVersion, "DescribeApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApp require credential")
@@ -139,6 +140,7 @@ func (c *Client) DescribeCardWithContext(ctx context.Context, request *DescribeC
     if request == nil {
         request = NewDescribeCardRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ic", APIVersion, "DescribeCard")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCard require credential")
@@ -188,6 +190,7 @@ func (c *Client) DescribeCardsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeCardsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ic", APIVersion, "DescribeCards")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCards require credential")
@@ -243,6 +246,7 @@ func (c *Client) DescribeSmsWithContext(ctx context.Context, request *DescribeSm
     if request == nil {
         request = NewDescribeSmsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ic", APIVersion, "DescribeSms")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSms require credential")
@@ -298,6 +302,7 @@ func (c *Client) ModifyUserCardRemarkWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyUserCardRemarkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ic", APIVersion, "ModifyUserCardRemark")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserCardRemark require credential")
@@ -353,6 +358,7 @@ func (c *Client) PayForExtendDataWithContext(ctx context.Context, request *PayFo
     if request == nil {
         request = NewPayForExtendDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ic", APIVersion, "PayForExtendData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PayForExtendData require credential")
@@ -428,6 +434,7 @@ func (c *Client) RenewCardsWithContext(ctx context.Context, request *RenewCardsR
     if request == nil {
         request = NewRenewCardsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ic", APIVersion, "RenewCards")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewCards require credential")
@@ -481,6 +488,7 @@ func (c *Client) SendMultiSmsWithContext(ctx context.Context, request *SendMulti
     if request == nil {
         request = NewSendMultiSmsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ic", APIVersion, "SendMultiSms")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendMultiSms require credential")
@@ -534,6 +542,7 @@ func (c *Client) SendSmsWithContext(ctx context.Context, request *SendSmsRequest
     if request == nil {
         request = NewSendSmsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ic", APIVersion, "SendSms")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendSms require credential")

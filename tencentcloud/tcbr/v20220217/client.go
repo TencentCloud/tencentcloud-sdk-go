@@ -90,6 +90,7 @@ func (c *Client) CreateCloudRunEnvWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCloudRunEnvRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "CreateCloudRunEnv")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudRunEnv require credential")
@@ -143,6 +144,7 @@ func (c *Client) CreateCloudRunServerWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateCloudRunServerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "CreateCloudRunServer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudRunServer require credential")
@@ -198,6 +200,7 @@ func (c *Client) DescribeCloudRunEnvsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCloudRunEnvsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DescribeCloudRunEnvs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudRunEnvs require credential")
@@ -247,6 +250,7 @@ func (c *Client) DescribeCloudRunServerDetailWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeCloudRunServerDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DescribeCloudRunServerDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudRunServerDetail require credential")
@@ -296,6 +300,7 @@ func (c *Client) DescribeCloudRunServersWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeCloudRunServersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DescribeCloudRunServers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudRunServers require credential")
@@ -349,6 +354,7 @@ func (c *Client) DescribeEnvBaseInfoWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeEnvBaseInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DescribeEnvBaseInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvBaseInfo require credential")
@@ -400,6 +406,7 @@ func (c *Client) DescribeServerManageTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeServerManageTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DescribeServerManageTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServerManageTask require credential")
@@ -451,6 +458,7 @@ func (c *Client) OperateServerManageWithContext(ctx context.Context, request *Op
     if request == nil {
         request = NewOperateServerManageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "OperateServerManage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OperateServerManage require credential")
@@ -504,6 +512,7 @@ func (c *Client) ReleaseGrayWithContext(ctx context.Context, request *ReleaseGra
     if request == nil {
         request = NewReleaseGrayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "ReleaseGray")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReleaseGray require credential")
@@ -553,6 +562,7 @@ func (c *Client) UpdateCloudRunServerWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateCloudRunServerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "UpdateCloudRunServer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCloudRunServer require credential")

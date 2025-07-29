@@ -76,6 +76,7 @@ func (c *Client) CreateCallBackWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateCallBackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "npp", APIVersion, "CreateCallBack")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCallBack require credential")
@@ -119,6 +120,7 @@ func (c *Client) DelVirtualNumWithContext(ctx context.Context, request *DelVirtu
     if request == nil {
         request = NewDelVirtualNumRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "npp", APIVersion, "DelVirtualNum")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DelVirtualNum require credential")
@@ -162,6 +164,7 @@ func (c *Client) DeleteCallBackWithContext(ctx context.Context, request *DeleteC
     if request == nil {
         request = NewDeleteCallBackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "npp", APIVersion, "DeleteCallBack")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCallBack require credential")
@@ -205,6 +208,7 @@ func (c *Client) DescribeCallBackCdrWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCallBackCdrRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "npp", APIVersion, "DescribeCallBackCdr")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCallBackCdr require credential")
@@ -248,6 +252,7 @@ func (c *Client) DescribeCallBackStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCallBackStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "npp", APIVersion, "DescribeCallBackStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCallBackStatus require credential")
@@ -291,6 +296,7 @@ func (c *Client) DescribeCallerDisplayListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCallerDisplayListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "npp", APIVersion, "DescribeCallerDisplayList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCallerDisplayList require credential")
@@ -334,6 +340,7 @@ func (c *Client) Get400CdrWithContext(ctx context.Context, request *Get400CdrReq
     if request == nil {
         request = NewGet400CdrRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "npp", APIVersion, "Get400Cdr")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Get400Cdr require credential")
@@ -377,6 +384,7 @@ func (c *Client) GetVirtualNumWithContext(ctx context.Context, request *GetVirtu
     if request == nil {
         request = NewGetVirtualNumRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "npp", APIVersion, "GetVirtualNum")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetVirtualNum require credential")

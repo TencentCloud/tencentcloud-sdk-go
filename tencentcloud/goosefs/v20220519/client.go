@@ -76,6 +76,7 @@ func (c *Client) AddCrossVpcSubnetSupportForClientNodeWithContext(ctx context.Co
     if request == nil {
         request = NewAddCrossVpcSubnetSupportForClientNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "AddCrossVpcSubnetSupportForClientNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddCrossVpcSubnetSupportForClientNode require credential")
@@ -119,6 +120,7 @@ func (c *Client) AttachFileSystemBucketWithContext(ctx context.Context, request 
     if request == nil {
         request = NewAttachFileSystemBucketRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "AttachFileSystemBucket")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AttachFileSystemBucket require credential")
@@ -162,6 +164,7 @@ func (c *Client) BatchAddClientNodesWithContext(ctx context.Context, request *Ba
     if request == nil {
         request = NewBatchAddClientNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "BatchAddClientNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchAddClientNodes require credential")
@@ -205,6 +208,7 @@ func (c *Client) BatchDeleteClientNodesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBatchDeleteClientNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "BatchDeleteClientNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchDeleteClientNodes require credential")
@@ -248,6 +252,7 @@ func (c *Client) BuildClientNodeMountCommandWithContext(ctx context.Context, req
     if request == nil {
         request = NewBuildClientNodeMountCommandRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "BuildClientNodeMountCommand")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BuildClientNodeMountCommand require credential")
@@ -291,6 +296,7 @@ func (c *Client) CreateDataRepositoryTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateDataRepositoryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "CreateDataRepositoryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDataRepositoryTask require credential")
@@ -334,6 +340,7 @@ func (c *Client) CreateFileSystemWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "CreateFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFileSystem require credential")
@@ -377,6 +384,7 @@ func (c *Client) CreateFilesetWithContext(ctx context.Context, request *CreateFi
     if request == nil {
         request = NewCreateFilesetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "CreateFileset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFileset require credential")
@@ -420,6 +428,7 @@ func (c *Client) DeleteCrossVpcSubnetSupportForClientNodeWithContext(ctx context
     if request == nil {
         request = NewDeleteCrossVpcSubnetSupportForClientNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DeleteCrossVpcSubnetSupportForClientNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCrossVpcSubnetSupportForClientNode require credential")
@@ -463,6 +472,7 @@ func (c *Client) DeleteFileSystemWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DeleteFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFileSystem require credential")
@@ -506,6 +516,7 @@ func (c *Client) DeleteFilesetWithContext(ctx context.Context, request *DeleteFi
     if request == nil {
         request = NewDeleteFilesetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DeleteFileset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFileset require credential")
@@ -549,6 +560,7 @@ func (c *Client) DescribeClientNodesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeClientNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeClientNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClientNodes require credential")
@@ -592,6 +604,7 @@ func (c *Client) DescribeClusterClientTokenWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeClusterClientTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeClusterClientToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterClientToken require credential")
@@ -635,6 +648,7 @@ func (c *Client) DescribeClusterRoleTokenWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterRoleTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeClusterRoleToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterRoleToken require credential")
@@ -686,6 +700,7 @@ func (c *Client) DescribeClusterRolesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeClusterRolesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeClusterRoles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterRoles require credential")
@@ -729,6 +744,7 @@ func (c *Client) DescribeDataRepositoryTaskStatusWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeDataRepositoryTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeDataRepositoryTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDataRepositoryTaskStatus require credential")
@@ -772,6 +788,7 @@ func (c *Client) DescribeFileSystemBucketsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeFileSystemBucketsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeFileSystemBuckets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFileSystemBuckets require credential")
@@ -815,6 +832,7 @@ func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeFileSystemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeFileSystems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFileSystems require credential")
@@ -858,6 +876,7 @@ func (c *Client) DescribeFilesetGeneralConfigWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeFilesetGeneralConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeFilesetGeneralConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFilesetGeneralConfig require credential")
@@ -901,6 +920,7 @@ func (c *Client) DescribeFilesetsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeFilesetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeFilesets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFilesets require credential")
@@ -944,6 +964,7 @@ func (c *Client) DetachFileSystemBucketWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDetachFileSystemBucketRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DetachFileSystemBucket")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetachFileSystemBucket require credential")
@@ -987,6 +1008,7 @@ func (c *Client) ExpandCapacityWithContext(ctx context.Context, request *ExpandC
     if request == nil {
         request = NewExpandCapacityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "ExpandCapacity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExpandCapacity require credential")
@@ -1030,6 +1052,7 @@ func (c *Client) ModifyDataRepositoryBandwidthWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyDataRepositoryBandwidthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "ModifyDataRepositoryBandwidth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDataRepositoryBandwidth require credential")
@@ -1073,6 +1096,7 @@ func (c *Client) QueryCrossVpcSubnetSupportForClientNodeWithContext(ctx context.
     if request == nil {
         request = NewQueryCrossVpcSubnetSupportForClientNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "QueryCrossVpcSubnetSupportForClientNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCrossVpcSubnetSupportForClientNode require credential")
@@ -1116,6 +1140,7 @@ func (c *Client) QueryDataRepositoryBandwidthWithContext(ctx context.Context, re
     if request == nil {
         request = NewQueryDataRepositoryBandwidthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "QueryDataRepositoryBandwidth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryDataRepositoryBandwidth require credential")
@@ -1159,6 +1184,7 @@ func (c *Client) UpdateFilesetWithContext(ctx context.Context, request *UpdateFi
     if request == nil {
         request = NewUpdateFilesetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "UpdateFileset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateFileset require credential")
@@ -1202,6 +1228,7 @@ func (c *Client) UpdateFilesetGeneralConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateFilesetGeneralConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "UpdateFilesetGeneralConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateFilesetGeneralConfig require credential")

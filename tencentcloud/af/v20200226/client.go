@@ -184,6 +184,7 @@ func (c *Client) DescribeAntiFraudWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAntiFraudRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "af", APIVersion, "DescribeAntiFraud")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAntiFraud require credential")
@@ -319,6 +320,7 @@ func (c *Client) GetAntiFraudWithContext(ctx context.Context, request *GetAntiFr
     if request == nil {
         request = NewGetAntiFraudRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "af", APIVersion, "GetAntiFraud")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAntiFraud require credential")
@@ -412,6 +414,7 @@ func (c *Client) QueryAntiFraudWithContext(ctx context.Context, request *QueryAn
     if request == nil {
         request = NewQueryAntiFraudRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "af", APIVersion, "QueryAntiFraud")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryAntiFraud require credential")

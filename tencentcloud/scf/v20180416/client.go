@@ -150,6 +150,7 @@ func (c *Client) CopyFunctionWithContext(ctx context.Context, request *CopyFunct
     if request == nil {
         request = NewCopyFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "CopyFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CopyFunction require credential")
@@ -233,6 +234,7 @@ func (c *Client) CreateAliasWithContext(ctx context.Context, request *CreateAlia
     if request == nil {
         request = NewCreateAliasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "CreateAlias")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAlias require credential")
@@ -288,6 +290,7 @@ func (c *Client) CreateCustomDomainWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCustomDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "CreateCustomDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomDomain require credential")
@@ -653,6 +656,7 @@ func (c *Client) CreateFunctionWithContext(ctx context.Context, request *CreateF
     if request == nil {
         request = NewCreateFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "CreateFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFunction require credential")
@@ -730,6 +734,7 @@ func (c *Client) CreateNamespaceWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateNamespaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "CreateNamespace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNamespace require credential")
@@ -887,6 +892,7 @@ func (c *Client) CreateTriggerWithContext(ctx context.Context, request *CreateTr
     if request == nil {
         request = NewCreateTriggerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "CreateTrigger")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTrigger require credential")
@@ -948,6 +954,7 @@ func (c *Client) DeleteAliasWithContext(ctx context.Context, request *DeleteAlia
     if request == nil {
         request = NewDeleteAliasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "DeleteAlias")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAlias require credential")
@@ -1009,6 +1016,7 @@ func (c *Client) DeleteCustomDomainWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteCustomDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "DeleteCustomDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomDomain require credential")
@@ -1102,6 +1110,7 @@ func (c *Client) DeleteFunctionWithContext(ctx context.Context, request *DeleteF
     if request == nil {
         request = NewDeleteFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "DeleteFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFunction require credential")
@@ -1195,6 +1204,7 @@ func (c *Client) DeleteFunctionVersionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteFunctionVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "DeleteFunctionVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFunctionVersion require credential")
@@ -1256,6 +1266,7 @@ func (c *Client) DeleteLayerVersionWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteLayerVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "DeleteLayerVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLayerVersion require credential")
@@ -1323,6 +1334,7 @@ func (c *Client) DeleteNamespaceWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteNamespaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "DeleteNamespace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNamespace require credential")
@@ -1390,6 +1402,7 @@ func (c *Client) DeleteProvisionedConcurrencyConfigWithContext(ctx context.Conte
     if request == nil {
         request = NewDeleteProvisionedConcurrencyConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "DeleteProvisionedConcurrencyConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteProvisionedConcurrencyConfig require credential")
@@ -1449,6 +1462,7 @@ func (c *Client) DeleteReservedConcurrencyConfigWithContext(ctx context.Context,
     if request == nil {
         request = NewDeleteReservedConcurrencyConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "DeleteReservedConcurrencyConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteReservedConcurrencyConfig require credential")
@@ -1552,6 +1566,7 @@ func (c *Client) DeleteTriggerWithContext(ctx context.Context, request *DeleteTr
     if request == nil {
         request = NewDeleteTriggerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "DeleteTrigger")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTrigger require credential")
@@ -1605,6 +1620,7 @@ func (c *Client) GetAccountWithContext(ctx context.Context, request *GetAccountR
     if request == nil {
         request = NewGetAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAccount require credential")
@@ -1674,6 +1690,7 @@ func (c *Client) GetAliasWithContext(ctx context.Context, request *GetAliasReque
     if request == nil {
         request = NewGetAliasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetAlias")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAlias require credential")
@@ -1729,6 +1746,7 @@ func (c *Client) GetAsyncEventStatusWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetAsyncEventStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetAsyncEventStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAsyncEventStatus require credential")
@@ -1778,6 +1796,7 @@ func (c *Client) GetCustomDomainWithContext(ctx context.Context, request *GetCus
     if request == nil {
         request = NewGetCustomDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetCustomDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetCustomDomain require credential")
@@ -1863,6 +1882,7 @@ func (c *Client) GetFunctionWithContext(ctx context.Context, request *GetFunctio
     if request == nil {
         request = NewGetFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFunction require credential")
@@ -1944,6 +1964,7 @@ func (c *Client) GetFunctionAddressWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetFunctionAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetFunctionAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFunctionAddress require credential")
@@ -2023,6 +2044,7 @@ func (c *Client) GetFunctionEventInvokeConfigWithContext(ctx context.Context, re
     if request == nil {
         request = NewGetFunctionEventInvokeConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetFunctionEventInvokeConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFunctionEventInvokeConfig require credential")
@@ -2128,6 +2150,7 @@ func (c *Client) GetFunctionLogsWithContext(ctx context.Context, request *GetFun
     if request == nil {
         request = NewGetFunctionLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetFunctionLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFunctionLogs require credential")
@@ -2183,6 +2206,7 @@ func (c *Client) GetLayerVersionWithContext(ctx context.Context, request *GetLay
     if request == nil {
         request = NewGetLayerVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetLayerVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetLayerVersion require credential")
@@ -2252,6 +2276,7 @@ func (c *Client) GetProvisionedConcurrencyConfigWithContext(ctx context.Context,
     if request == nil {
         request = NewGetProvisionedConcurrencyConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetProvisionedConcurrencyConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetProvisionedConcurrencyConfig require credential")
@@ -2333,6 +2358,7 @@ func (c *Client) GetRequestStatusWithContext(ctx context.Context, request *GetRe
     if request == nil {
         request = NewGetRequestStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetRequestStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRequestStatus require credential")
@@ -2396,6 +2422,7 @@ func (c *Client) GetReservedConcurrencyConfigWithContext(ctx context.Context, re
     if request == nil {
         request = NewGetReservedConcurrencyConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "GetReservedConcurrencyConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetReservedConcurrencyConfig require credential")
@@ -2465,6 +2492,7 @@ func (c *Client) InvokeWithContext(ctx context.Context, request *InvokeRequest) 
     if request == nil {
         request = NewInvokeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "Invoke")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Invoke require credential")
@@ -2546,6 +2574,7 @@ func (c *Client) InvokeFunctionWithContext(ctx context.Context, request *InvokeF
     if request == nil {
         request = NewInvokeFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "InvokeFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InvokeFunction require credential")
@@ -2607,6 +2636,7 @@ func (c *Client) ListAliasesWithContext(ctx context.Context, request *ListAliase
     if request == nil {
         request = NewListAliasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "ListAliases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAliases require credential")
@@ -2672,6 +2702,7 @@ func (c *Client) ListAsyncEventsWithContext(ctx context.Context, request *ListAs
     if request == nil {
         request = NewListAsyncEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "ListAsyncEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAsyncEvents require credential")
@@ -2737,6 +2768,7 @@ func (c *Client) ListCustomDomainsWithContext(ctx context.Context, request *List
     if request == nil {
         request = NewListCustomDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "ListCustomDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListCustomDomains require credential")
@@ -2812,6 +2844,7 @@ func (c *Client) ListFunctionsWithContext(ctx context.Context, request *ListFunc
     if request == nil {
         request = NewListFunctionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "ListFunctions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListFunctions require credential")
@@ -2871,6 +2904,7 @@ func (c *Client) ListLayerVersionsWithContext(ctx context.Context, request *List
     if request == nil {
         request = NewListLayerVersionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "ListLayerVersions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListLayerVersions require credential")
@@ -2930,6 +2964,7 @@ func (c *Client) ListLayersWithContext(ctx context.Context, request *ListLayersR
     if request == nil {
         request = NewListLayersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "ListLayers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListLayers require credential")
@@ -2985,6 +3020,7 @@ func (c *Client) ListNamespacesWithContext(ctx context.Context, request *ListNam
     if request == nil {
         request = NewListNamespacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "ListNamespaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListNamespaces require credential")
@@ -3040,6 +3076,7 @@ func (c *Client) ListTriggersWithContext(ctx context.Context, request *ListTrigg
     if request == nil {
         request = NewListTriggersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "ListTriggers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListTriggers require credential")
@@ -3105,6 +3142,7 @@ func (c *Client) ListVersionByFunctionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewListVersionByFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "ListVersionByFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListVersionByFunction require credential")
@@ -3198,6 +3236,7 @@ func (c *Client) PublishLayerVersionWithContext(ctx context.Context, request *Pu
     if request == nil {
         request = NewPublishLayerVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "PublishLayerVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PublishLayerVersion require credential")
@@ -3279,6 +3318,7 @@ func (c *Client) PublishVersionWithContext(ctx context.Context, request *Publish
     if request == nil {
         request = NewPublishVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "PublishVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PublishVersion require credential")
@@ -3398,6 +3438,7 @@ func (c *Client) PutProvisionedConcurrencyConfigWithContext(ctx context.Context,
     if request == nil {
         request = NewPutProvisionedConcurrencyConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "PutProvisionedConcurrencyConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PutProvisionedConcurrencyConfig require credential")
@@ -3479,6 +3520,7 @@ func (c *Client) PutReservedConcurrencyConfigWithContext(ctx context.Context, re
     if request == nil {
         request = NewPutReservedConcurrencyConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "PutReservedConcurrencyConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PutReservedConcurrencyConfig require credential")
@@ -3550,6 +3592,7 @@ func (c *Client) PutTotalConcurrencyConfigWithContext(ctx context.Context, reque
     if request == nil {
         request = NewPutTotalConcurrencyConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "PutTotalConcurrencyConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PutTotalConcurrencyConfig require credential")
@@ -3607,6 +3650,7 @@ func (c *Client) TerminateAsyncEventWithContext(ctx context.Context, request *Te
     if request == nil {
         request = NewTerminateAsyncEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "TerminateAsyncEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateAsyncEvent require credential")
@@ -3690,6 +3734,7 @@ func (c *Client) UpdateAliasWithContext(ctx context.Context, request *UpdateAlia
     if request == nil {
         request = NewUpdateAliasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "UpdateAlias")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAlias require credential")
@@ -3739,6 +3784,7 @@ func (c *Client) UpdateCustomDomainWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateCustomDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "UpdateCustomDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCustomDomain require credential")
@@ -3882,6 +3928,7 @@ func (c *Client) UpdateFunctionCodeWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateFunctionCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "UpdateFunctionCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateFunctionCode require credential")
@@ -4155,6 +4202,7 @@ func (c *Client) UpdateFunctionConfigurationWithContext(ctx context.Context, req
     if request == nil {
         request = NewUpdateFunctionConfigurationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "UpdateFunctionConfiguration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateFunctionConfiguration require credential")
@@ -4242,6 +4290,7 @@ func (c *Client) UpdateFunctionEventInvokeConfigWithContext(ctx context.Context,
     if request == nil {
         request = NewUpdateFunctionEventInvokeConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "UpdateFunctionEventInvokeConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateFunctionEventInvokeConfig require credential")
@@ -4293,6 +4342,7 @@ func (c *Client) UpdateNamespaceWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateNamespaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "UpdateNamespace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateNamespace require credential")
@@ -4440,6 +4490,7 @@ func (c *Client) UpdateTriggerWithContext(ctx context.Context, request *UpdateTr
     if request == nil {
         request = NewUpdateTriggerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "UpdateTrigger")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateTrigger require credential")
@@ -4529,6 +4580,7 @@ func (c *Client) UpdateTriggerStatusWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUpdateTriggerStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "scf", APIVersion, "UpdateTriggerStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateTriggerStatus require credential")

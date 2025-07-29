@@ -116,6 +116,7 @@ func (c *Client) CheckVcodeWithContext(ctx context.Context, request *CheckVcodeR
     if request == nil {
         request = NewCheckVcodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "CheckVcode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckVcode require credential")
@@ -193,6 +194,7 @@ func (c *Client) CreateContractByUploadWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateContractByUploadRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "CreateContractByUpload")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateContractByUpload require credential")
@@ -278,6 +280,7 @@ func (c *Client) CreateEnterpriseAccountWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateEnterpriseAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "CreateEnterpriseAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEnterpriseAccount require credential")
@@ -353,6 +356,7 @@ func (c *Client) CreatePersonalAccountWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreatePersonalAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "CreatePersonalAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePersonalAccount require credential")
@@ -434,6 +438,7 @@ func (c *Client) CreateSealWithContext(ctx context.Context, request *CreateSealR
     if request == nil {
         request = NewCreateSealRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "CreateSeal")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSeal require credential")
@@ -495,6 +500,7 @@ func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAc
     if request == nil {
         request = NewDeleteAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "DeleteAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAccount require credential")
@@ -564,6 +570,7 @@ func (c *Client) DeleteSealWithContext(ctx context.Context, request *DeleteSealR
     if request == nil {
         request = NewDeleteSealRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "DeleteSeal")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSeal require credential")
@@ -623,6 +630,7 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "DescribeTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskStatus require credential")
@@ -684,6 +692,7 @@ func (c *Client) DownloadContractWithContext(ctx context.Context, request *Downl
     if request == nil {
         request = NewDownloadContractRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "DownloadContract")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadContract require credential")
@@ -759,6 +768,7 @@ func (c *Client) SendVcodeWithContext(ctx context.Context, request *SendVcodeReq
     if request == nil {
         request = NewSendVcodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "SendVcode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendVcode require credential")
@@ -858,6 +868,7 @@ func (c *Client) SignContractByCoordinateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewSignContractByCoordinateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "SignContractByCoordinate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SignContractByCoordinate require credential")
@@ -957,6 +968,7 @@ func (c *Client) SignContractByKeywordWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSignContractByKeywordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ds", APIVersion, "SignContractByKeyword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SignContractByKeyword require credential")

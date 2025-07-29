@@ -94,6 +94,7 @@ func (c *Client) AddTeamMemberWithContext(ctx context.Context, request *AddTeamM
     if request == nil {
         request = NewAddTeamMemberRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "AddTeamMember")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddTeamMember require credential")
@@ -155,6 +156,7 @@ func (c *Client) CopyProjectWithContext(ctx context.Context, request *CopyProjec
     if request == nil {
         request = NewCopyProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "CopyProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CopyProject require credential")
@@ -220,6 +222,7 @@ func (c *Client) CreateClassWithContext(ctx context.Context, request *CreateClas
     if request == nil {
         request = NewCreateClassRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "CreateClass")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClass require credential")
@@ -295,6 +298,7 @@ func (c *Client) CreateLinkWithContext(ctx context.Context, request *CreateLinkR
     if request == nil {
         request = NewCreateLinkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "CreateLink")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLink require credential")
@@ -406,6 +410,7 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "CreateProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProject require credential")
@@ -469,6 +474,7 @@ func (c *Client) CreateTeamWithContext(ctx context.Context, request *CreateTeamR
     if request == nil {
         request = NewCreateTeamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "CreateTeam")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTeam require credential")
@@ -522,6 +528,7 @@ func (c *Client) CreateVideoEncodingPresetWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateVideoEncodingPresetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "CreateVideoEncodingPreset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVideoEncodingPreset require credential")
@@ -591,6 +598,7 @@ func (c *Client) DeleteClassWithContext(ctx context.Context, request *DeleteClas
     if request == nil {
         request = NewDeleteClassRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DeleteClass")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClass require credential")
@@ -644,6 +652,7 @@ func (c *Client) DeleteLoginStatusWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteLoginStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DeleteLoginStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLoginStatus require credential")
@@ -703,6 +712,7 @@ func (c *Client) DeleteMaterialWithContext(ctx context.Context, request *DeleteM
     if request == nil {
         request = NewDeleteMaterialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DeleteMaterial")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMaterial require credential")
@@ -766,6 +776,7 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DeleteProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteProject require credential")
@@ -833,6 +844,7 @@ func (c *Client) DeleteTeamWithContext(ctx context.Context, request *DeleteTeamR
     if request == nil {
         request = NewDeleteTeamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DeleteTeam")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTeam require credential")
@@ -890,6 +902,7 @@ func (c *Client) DeleteTeamMembersWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteTeamMembersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DeleteTeamMembers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTeamMembers require credential")
@@ -943,6 +956,7 @@ func (c *Client) DeleteVideoEncodingPresetWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteVideoEncodingPresetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DeleteVideoEncodingPreset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteVideoEncodingPreset require credential")
@@ -1018,6 +1032,7 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeAccountsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeAccounts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccounts require credential")
@@ -1077,6 +1092,7 @@ func (c *Client) DescribeClassWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeClassRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeClass")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClass require credential")
@@ -1138,6 +1154,7 @@ func (c *Client) DescribeJoinTeamsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeJoinTeamsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeJoinTeams")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJoinTeams require credential")
@@ -1193,6 +1210,7 @@ func (c *Client) DescribeLoginStatusWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeLoginStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeLoginStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoginStatus require credential")
@@ -1254,6 +1272,7 @@ func (c *Client) DescribeMaterialsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeMaterialsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeMaterials")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMaterials require credential")
@@ -1321,6 +1340,7 @@ func (c *Client) DescribePlatformsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribePlatformsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribePlatforms")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePlatforms require credential")
@@ -1394,6 +1414,7 @@ func (c *Client) DescribeProjectsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProjectsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeProjects")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProjects require credential")
@@ -1455,6 +1476,7 @@ func (c *Client) DescribeResourceAuthorizationWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeResourceAuthorizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeResourceAuthorization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceAuthorization require credential")
@@ -1510,6 +1532,7 @@ func (c *Client) DescribeSharedSpaceWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeSharedSpaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeSharedSpace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSharedSpace require credential")
@@ -1577,6 +1600,7 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskDetail require credential")
@@ -1634,6 +1658,7 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTasks require credential")
@@ -1701,6 +1726,7 @@ func (c *Client) DescribeTeamMembersWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTeamMembersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeTeamMembers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTeamMembers require credential")
@@ -1764,6 +1790,7 @@ func (c *Client) DescribeTeamsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTeamsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeTeams")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTeams require credential")
@@ -1821,6 +1848,7 @@ func (c *Client) DescribeVideoEncodingPresetsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeVideoEncodingPresetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DescribeVideoEncodingPresets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoEncodingPresets require credential")
@@ -1906,6 +1934,7 @@ func (c *Client) ExportVideoByEditorTrackDataWithContext(ctx context.Context, re
     if request == nil {
         request = NewExportVideoByEditorTrackDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ExportVideoByEditorTrackData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportVideoByEditorTrackData require credential")
@@ -1995,6 +2024,7 @@ func (c *Client) ExportVideoByTemplateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewExportVideoByTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ExportVideoByTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportVideoByTemplate require credential")
@@ -2060,6 +2090,7 @@ func (c *Client) ExportVideoByVideoSegmentationDataWithContext(ctx context.Conte
     if request == nil {
         request = NewExportVideoByVideoSegmentationDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ExportVideoByVideoSegmentationData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportVideoByVideoSegmentationData require credential")
@@ -2147,6 +2178,7 @@ func (c *Client) ExportVideoEditProjectWithContext(ctx context.Context, request 
     if request == nil {
         request = NewExportVideoEditProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ExportVideoEditProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportVideoEditProject require credential")
@@ -2212,6 +2244,7 @@ func (c *Client) FlattenListMediaWithContext(ctx context.Context, request *Flatt
     if request == nil {
         request = NewFlattenListMediaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "FlattenListMedia")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FlattenListMedia require credential")
@@ -2279,6 +2312,7 @@ func (c *Client) GenerateVideoSegmentationSchemeByAiWithContext(ctx context.Cont
     if request == nil {
         request = NewGenerateVideoSegmentationSchemeByAiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "GenerateVideoSegmentationSchemeByAi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GenerateVideoSegmentationSchemeByAi require credential")
@@ -2340,6 +2374,7 @@ func (c *Client) GrantResourceAuthorizationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewGrantResourceAuthorizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "GrantResourceAuthorization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GrantResourceAuthorization require credential")
@@ -2477,6 +2512,7 @@ func (c *Client) HandleMediaCastProjectWithContext(ctx context.Context, request 
     if request == nil {
         request = NewHandleMediaCastProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "HandleMediaCastProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("HandleMediaCastProject require credential")
@@ -2628,6 +2664,7 @@ func (c *Client) HandleStreamConnectProjectWithContext(ctx context.Context, requ
     if request == nil {
         request = NewHandleStreamConnectProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "HandleStreamConnectProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("HandleStreamConnectProject require credential")
@@ -2713,6 +2750,7 @@ func (c *Client) ImportMaterialWithContext(ctx context.Context, request *ImportM
     if request == nil {
         request = NewImportMaterialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ImportMaterial")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportMaterial require credential")
@@ -2794,6 +2832,7 @@ func (c *Client) ImportMediaToProjectWithContext(ctx context.Context, request *I
     if request == nil {
         request = NewImportMediaToProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ImportMediaToProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportMediaToProject require credential")
@@ -2863,6 +2902,7 @@ func (c *Client) ListMediaWithContext(ctx context.Context, request *ListMediaReq
     if request == nil {
         request = NewListMediaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ListMedia")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListMedia require credential")
@@ -2926,6 +2966,7 @@ func (c *Client) ModifyMaterialWithContext(ctx context.Context, request *ModifyM
     if request == nil {
         request = NewModifyMaterialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ModifyMaterial")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMaterial require credential")
@@ -2995,6 +3036,7 @@ func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyPr
     if request == nil {
         request = NewModifyProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ModifyProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyProject require credential")
@@ -3060,6 +3102,7 @@ func (c *Client) ModifyTeamWithContext(ctx context.Context, request *ModifyTeamR
     if request == nil {
         request = NewModifyTeamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ModifyTeam")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTeam require credential")
@@ -3125,6 +3168,7 @@ func (c *Client) ModifyTeamMemberWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyTeamMemberRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ModifyTeamMember")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTeamMember require credential")
@@ -3174,6 +3218,7 @@ func (c *Client) ModifyVideoEncodingPresetWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyVideoEncodingPresetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ModifyVideoEncodingPreset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVideoEncodingPreset require credential")
@@ -3249,6 +3294,7 @@ func (c *Client) MoveClassWithContext(ctx context.Context, request *MoveClassReq
     if request == nil {
         request = NewMoveClassRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "MoveClass")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MoveClass require credential")
@@ -3330,6 +3376,7 @@ func (c *Client) MoveResourceWithContext(ctx context.Context, request *MoveResou
     if request == nil {
         request = NewMoveResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "MoveResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MoveResource require credential")
@@ -3387,6 +3434,7 @@ func (c *Client) ParseEventWithContext(ctx context.Context, request *ParseEventR
     if request == nil {
         request = NewParseEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ParseEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ParseEvent require credential")
@@ -3444,6 +3492,7 @@ func (c *Client) RevokeResourceAuthorizationWithContext(ctx context.Context, req
     if request == nil {
         request = NewRevokeResourceAuthorizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "RevokeResourceAuthorization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RevokeResourceAuthorization require credential")
@@ -3511,6 +3560,7 @@ func (c *Client) SearchMaterialWithContext(ctx context.Context, request *SearchM
     if request == nil {
         request = NewSearchMaterialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "SearchMaterial")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchMaterial require credential")

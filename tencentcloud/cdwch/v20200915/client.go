@@ -82,6 +82,7 @@ func (c *Client) ActionAlterCkUserWithContext(ctx context.Context, request *Acti
     if request == nil {
         request = NewActionAlterCkUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "ActionAlterCkUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ActionAlterCkUser require credential")
@@ -131,6 +132,7 @@ func (c *Client) CreateBackUpScheduleWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateBackUpScheduleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "CreateBackUpSchedule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBackUpSchedule require credential")
@@ -180,6 +182,7 @@ func (c *Client) CreateInstanceNewWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateInstanceNewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "CreateInstanceNew")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInstanceNew require credential")
@@ -229,6 +232,7 @@ func (c *Client) DeleteBackUpDataWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteBackUpDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DeleteBackUpData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBackUpData require credential")
@@ -278,6 +282,7 @@ func (c *Client) DescribeBackUpJobWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeBackUpJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeBackUpJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBackUpJob require credential")
@@ -327,6 +332,7 @@ func (c *Client) DescribeBackUpJobDetailWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeBackUpJobDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeBackUpJobDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBackUpJobDetail require credential")
@@ -386,6 +392,7 @@ func (c *Client) DescribeBackUpScheduleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeBackUpScheduleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeBackUpSchedule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBackUpSchedule require credential")
@@ -445,6 +452,7 @@ func (c *Client) DescribeBackUpTablesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBackUpTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeBackUpTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBackUpTables require credential")
@@ -494,6 +502,7 @@ func (c *Client) DescribeCNInstancesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCNInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeCNInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCNInstances require credential")
@@ -547,6 +556,7 @@ func (c *Client) DescribeCkSqlApisWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCkSqlApisRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeCkSqlApis")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCkSqlApis require credential")
@@ -600,6 +610,7 @@ func (c *Client) DescribeClusterConfigsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeClusterConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeClusterConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterConfigs require credential")
@@ -653,6 +664,7 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstance require credential")
@@ -706,6 +718,7 @@ func (c *Client) DescribeInstanceClustersWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeInstanceClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeInstanceClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceClusters require credential")
@@ -759,6 +772,7 @@ func (c *Client) DescribeInstanceKeyValConfigsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeInstanceKeyValConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeInstanceKeyValConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceKeyValConfigs require credential")
@@ -816,6 +830,7 @@ func (c *Client) DescribeInstanceNodesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInstanceNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeInstanceNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceNodes require credential")
@@ -873,6 +888,7 @@ func (c *Client) DescribeInstanceShardsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceShardsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeInstanceShards")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceShards require credential")
@@ -930,6 +946,7 @@ func (c *Client) DescribeInstanceStateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInstanceStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeInstanceState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceState require credential")
@@ -987,6 +1004,7 @@ func (c *Client) DescribeInstancesNewWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeInstancesNewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeInstancesNew")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstancesNew require credential")
@@ -1044,6 +1062,7 @@ func (c *Client) DescribeSpecWithContext(ctx context.Context, request *DescribeS
     if request == nil {
         request = NewDescribeSpecRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeSpec")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSpec require credential")
@@ -1101,6 +1120,7 @@ func (c *Client) DestroyInstanceWithContext(ctx context.Context, request *Destro
     if request == nil {
         request = NewDestroyInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DestroyInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyInstance require credential")
@@ -1158,6 +1178,7 @@ func (c *Client) ModifyClusterConfigsWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyClusterConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "ModifyClusterConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterConfigs require credential")
@@ -1215,6 +1236,7 @@ func (c *Client) ModifyInstanceKeyValConfigsWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyInstanceKeyValConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "ModifyInstanceKeyValConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceKeyValConfigs require credential")
@@ -1264,6 +1286,7 @@ func (c *Client) ModifyUserNewPrivilegeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyUserNewPrivilegeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "ModifyUserNewPrivilege")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserNewPrivilege require credential")
@@ -1313,6 +1336,7 @@ func (c *Client) OpenBackUpWithContext(ctx context.Context, request *OpenBackUpR
     if request == nil {
         request = NewOpenBackUpRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "OpenBackUp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenBackUp require credential")
@@ -1362,6 +1386,7 @@ func (c *Client) RecoverBackUpJobWithContext(ctx context.Context, request *Recov
     if request == nil {
         request = NewRecoverBackUpJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "RecoverBackUpJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecoverBackUpJob require credential")
@@ -1411,6 +1436,7 @@ func (c *Client) ResizeDiskWithContext(ctx context.Context, request *ResizeDiskR
     if request == nil {
         request = NewResizeDiskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "ResizeDisk")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResizeDisk require credential")
@@ -1460,6 +1486,7 @@ func (c *Client) ScaleCNOutUpInstanceWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewScaleCNOutUpInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "ScaleCNOutUpInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleCNOutUpInstance require credential")
@@ -1509,6 +1536,7 @@ func (c *Client) ScaleOutInstanceWithContext(ctx context.Context, request *Scale
     if request == nil {
         request = NewScaleOutInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "ScaleOutInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleOutInstance require credential")
@@ -1558,6 +1586,7 @@ func (c *Client) ScaleUpInstanceWithContext(ctx context.Context, request *ScaleU
     if request == nil {
         request = NewScaleUpInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "ScaleUpInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleUpInstance require credential")

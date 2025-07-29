@@ -90,6 +90,7 @@ func (c *Client) RecommendContentWithContext(ctx context.Context, request *Recom
     if request == nil {
         request = NewRecommendContentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "irp", APIVersion, "RecommendContent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecommendContent require credential")
@@ -147,6 +148,7 @@ func (c *Client) ReportActionWithContext(ctx context.Context, request *ReportAct
     if request == nil {
         request = NewReportActionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "irp", APIVersion, "ReportAction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportAction require credential")
@@ -204,6 +206,7 @@ func (c *Client) ReportMaterialWithContext(ctx context.Context, request *ReportM
     if request == nil {
         request = NewReportMaterialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "irp", APIVersion, "ReportMaterial")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportMaterial require credential")
@@ -261,6 +264,7 @@ func (c *Client) ReportPortraitWithContext(ctx context.Context, request *ReportP
     if request == nil {
         request = NewReportPortraitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "irp", APIVersion, "ReportPortrait")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportPortrait require credential")

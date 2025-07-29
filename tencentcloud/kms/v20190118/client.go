@@ -98,6 +98,7 @@ func (c *Client) ArchiveKeyWithContext(ctx context.Context, request *ArchiveKeyR
     if request == nil {
         request = NewArchiveKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "ArchiveKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ArchiveKey require credential")
@@ -161,6 +162,7 @@ func (c *Client) AsymmetricRsaDecryptWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAsymmetricRsaDecryptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "AsymmetricRsaDecrypt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AsymmetricRsaDecrypt require credential")
@@ -226,6 +228,7 @@ func (c *Client) AsymmetricSm2DecryptWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAsymmetricSm2DecryptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "AsymmetricSm2Decrypt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AsymmetricSm2Decrypt require credential")
@@ -287,6 +290,7 @@ func (c *Client) BindCloudResourceWithContext(ctx context.Context, request *Bind
     if request == nil {
         request = NewBindCloudResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "BindCloudResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindCloudResource require credential")
@@ -350,6 +354,7 @@ func (c *Client) CancelDataKeyDeletionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCancelDataKeyDeletionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "CancelDataKeyDeletion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelDataKeyDeletion require credential")
@@ -413,6 +418,7 @@ func (c *Client) CancelKeyArchiveWithContext(ctx context.Context, request *Cance
     if request == nil {
         request = NewCancelKeyArchiveRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "CancelKeyArchive")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelKeyArchive require credential")
@@ -472,6 +478,7 @@ func (c *Client) CancelKeyDeletionWithContext(ctx context.Context, request *Canc
     if request == nil {
         request = NewCancelKeyDeletionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "CancelKeyDeletion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelKeyDeletion require credential")
@@ -547,6 +554,7 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyReq
     if request == nil {
         request = NewCreateKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "CreateKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateKey require credential")
@@ -612,6 +620,7 @@ func (c *Client) CreateWhiteBoxKeyWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateWhiteBoxKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "CreateWhiteBoxKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWhiteBoxKey require credential")
@@ -673,6 +682,7 @@ func (c *Client) DecryptWithContext(ctx context.Context, request *DecryptRequest
     if request == nil {
         request = NewDecryptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "Decrypt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Decrypt require credential")
@@ -736,6 +746,7 @@ func (c *Client) DeleteImportedKeyMaterialWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteImportedKeyMaterialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DeleteImportedKeyMaterial")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteImportedKeyMaterial require credential")
@@ -795,6 +806,7 @@ func (c *Client) DeleteWhiteBoxKeyWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteWhiteBoxKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DeleteWhiteBoxKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteWhiteBoxKey require credential")
@@ -848,6 +860,7 @@ func (c *Client) DescribeDataKeyWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDataKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DescribeDataKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDataKey require credential")
@@ -907,6 +920,7 @@ func (c *Client) DescribeDataKeysWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeDataKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DescribeDataKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDataKeys require credential")
@@ -964,6 +978,7 @@ func (c *Client) DescribeKeyWithContext(ctx context.Context, request *DescribeKe
     if request == nil {
         request = NewDescribeKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DescribeKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKey require credential")
@@ -1023,6 +1038,7 @@ func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeK
     if request == nil {
         request = NewDescribeKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DescribeKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKeys require credential")
@@ -1080,6 +1096,7 @@ func (c *Client) DescribeWhiteBoxDecryptKeyWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeWhiteBoxDecryptKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DescribeWhiteBoxDecryptKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWhiteBoxDecryptKey require credential")
@@ -1137,6 +1154,7 @@ func (c *Client) DescribeWhiteBoxDeviceFingerprintsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeWhiteBoxDeviceFingerprintsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DescribeWhiteBoxDeviceFingerprints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWhiteBoxDeviceFingerprints require credential")
@@ -1194,6 +1212,7 @@ func (c *Client) DescribeWhiteBoxKeyWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeWhiteBoxKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DescribeWhiteBoxKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWhiteBoxKey require credential")
@@ -1249,6 +1268,7 @@ func (c *Client) DescribeWhiteBoxKeyDetailsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeWhiteBoxKeyDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DescribeWhiteBoxKeyDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWhiteBoxKeyDetails require credential")
@@ -1302,6 +1322,7 @@ func (c *Client) DescribeWhiteBoxServiceStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeWhiteBoxServiceStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DescribeWhiteBoxServiceStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWhiteBoxServiceStatus require credential")
@@ -1357,6 +1378,7 @@ func (c *Client) DisableDataKeyWithContext(ctx context.Context, request *Disable
     if request == nil {
         request = NewDisableDataKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DisableDataKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableDataKey require credential")
@@ -1416,6 +1438,7 @@ func (c *Client) DisableDataKeysWithContext(ctx context.Context, request *Disabl
     if request == nil {
         request = NewDisableDataKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DisableDataKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableDataKeys require credential")
@@ -1479,6 +1502,7 @@ func (c *Client) DisableKeyWithContext(ctx context.Context, request *DisableKeyR
     if request == nil {
         request = NewDisableKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DisableKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableKey require credential")
@@ -1536,6 +1560,7 @@ func (c *Client) DisableKeyRotationWithContext(ctx context.Context, request *Dis
     if request == nil {
         request = NewDisableKeyRotationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DisableKeyRotation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableKeyRotation require credential")
@@ -1601,6 +1626,7 @@ func (c *Client) DisableKeysWithContext(ctx context.Context, request *DisableKey
     if request == nil {
         request = NewDisableKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DisableKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableKeys require credential")
@@ -1658,6 +1684,7 @@ func (c *Client) DisableWhiteBoxKeyWithContext(ctx context.Context, request *Dis
     if request == nil {
         request = NewDisableWhiteBoxKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DisableWhiteBoxKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableWhiteBoxKey require credential")
@@ -1719,6 +1746,7 @@ func (c *Client) DisableWhiteBoxKeysWithContext(ctx context.Context, request *Di
     if request == nil {
         request = NewDisableWhiteBoxKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "DisableWhiteBoxKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableWhiteBoxKeys require credential")
@@ -1776,6 +1804,7 @@ func (c *Client) EnableDataKeyWithContext(ctx context.Context, request *EnableDa
     if request == nil {
         request = NewEnableDataKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "EnableDataKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableDataKey require credential")
@@ -1841,6 +1870,7 @@ func (c *Client) EnableDataKeysWithContext(ctx context.Context, request *EnableD
     if request == nil {
         request = NewEnableDataKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "EnableDataKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableDataKeys require credential")
@@ -1902,6 +1932,7 @@ func (c *Client) EnableKeyWithContext(ctx context.Context, request *EnableKeyReq
     if request == nil {
         request = NewEnableKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "EnableKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableKey require credential")
@@ -1967,6 +1998,7 @@ func (c *Client) EnableKeyRotationWithContext(ctx context.Context, request *Enab
     if request == nil {
         request = NewEnableKeyRotationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "EnableKeyRotation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableKeyRotation require credential")
@@ -2030,6 +2062,7 @@ func (c *Client) EnableKeysWithContext(ctx context.Context, request *EnableKeysR
     if request == nil {
         request = NewEnableKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "EnableKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableKeys require credential")
@@ -2087,6 +2120,7 @@ func (c *Client) EnableWhiteBoxKeyWithContext(ctx context.Context, request *Enab
     if request == nil {
         request = NewEnableWhiteBoxKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "EnableWhiteBoxKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableWhiteBoxKey require credential")
@@ -2148,6 +2182,7 @@ func (c *Client) EnableWhiteBoxKeysWithContext(ctx context.Context, request *Ena
     if request == nil {
         request = NewEnableWhiteBoxKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "EnableWhiteBoxKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableWhiteBoxKeys require credential")
@@ -2211,6 +2246,7 @@ func (c *Client) EncryptWithContext(ctx context.Context, request *EncryptRequest
     if request == nil {
         request = NewEncryptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "Encrypt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Encrypt require credential")
@@ -2272,6 +2308,7 @@ func (c *Client) EncryptByWhiteBoxWithContext(ctx context.Context, request *Encr
     if request == nil {
         request = NewEncryptByWhiteBoxRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "EncryptByWhiteBox")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EncryptByWhiteBox require credential")
@@ -2349,6 +2386,7 @@ func (c *Client) GenerateDataKeyWithContext(ctx context.Context, request *Genera
     if request == nil {
         request = NewGenerateDataKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "GenerateDataKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GenerateDataKey require credential")
@@ -2402,6 +2440,7 @@ func (c *Client) GenerateRandomWithContext(ctx context.Context, request *Generat
     if request == nil {
         request = NewGenerateRandomRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "GenerateRandom")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GenerateRandom require credential")
@@ -2457,6 +2496,7 @@ func (c *Client) GetDataKeyCiphertextBlobWithContext(ctx context.Context, reques
     if request == nil {
         request = NewGetDataKeyCiphertextBlobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "GetDataKeyCiphertextBlob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDataKeyCiphertextBlob require credential")
@@ -2530,6 +2570,7 @@ func (c *Client) GetDataKeyPlaintextWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetDataKeyPlaintextRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "GetDataKeyPlaintext")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDataKeyPlaintext require credential")
@@ -2587,6 +2628,7 @@ func (c *Client) GetKeyRotationStatusWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetKeyRotationStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "GetKeyRotationStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetKeyRotationStatus require credential")
@@ -2646,6 +2688,7 @@ func (c *Client) GetParametersForImportWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGetParametersForImportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "GetParametersForImport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetParametersForImport require credential")
@@ -2705,6 +2748,7 @@ func (c *Client) GetPublicKeyWithContext(ctx context.Context, request *GetPublic
     if request == nil {
         request = NewGetPublicKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "GetPublicKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetPublicKey require credential")
@@ -2754,6 +2798,7 @@ func (c *Client) GetRegionsWithContext(ctx context.Context, request *GetRegionsR
     if request == nil {
         request = NewGetRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "GetRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRegions require credential")
@@ -2807,6 +2852,7 @@ func (c *Client) GetServiceStatusWithContext(ctx context.Context, request *GetSe
     if request == nil {
         request = NewGetServiceStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "GetServiceStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetServiceStatus require credential")
@@ -2888,6 +2934,7 @@ func (c *Client) ImportDataKeyWithContext(ctx context.Context, request *ImportDa
     if request == nil {
         request = NewImportDataKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "ImportDataKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportDataKey require credential")
@@ -2959,6 +3006,7 @@ func (c *Client) ImportKeyMaterialWithContext(ctx context.Context, request *Impo
     if request == nil {
         request = NewImportKeyMaterialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "ImportKeyMaterial")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportKeyMaterial require credential")
@@ -3010,6 +3058,7 @@ func (c *Client) ListAlgorithmsWithContext(ctx context.Context, request *ListAlg
     if request == nil {
         request = NewListAlgorithmsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "ListAlgorithms")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAlgorithms require credential")
@@ -3071,6 +3120,7 @@ func (c *Client) ListDataKeyDetailWithContext(ctx context.Context, request *List
     if request == nil {
         request = NewListDataKeyDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "ListDataKeyDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListDataKeyDetail require credential")
@@ -3126,6 +3176,7 @@ func (c *Client) ListDataKeysWithContext(ctx context.Context, request *ListDataK
     if request == nil {
         request = NewListDataKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "ListDataKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListDataKeys require credential")
@@ -3181,6 +3232,7 @@ func (c *Client) ListKeyDetailWithContext(ctx context.Context, request *ListKeyD
     if request == nil {
         request = NewListKeyDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "ListKeyDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListKeyDetail require credential")
@@ -3236,6 +3288,7 @@ func (c *Client) ListKeysWithContext(ctx context.Context, request *ListKeysReque
     if request == nil {
         request = NewListKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "ListKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListKeys require credential")
@@ -3297,6 +3350,7 @@ func (c *Client) OverwriteWhiteBoxDeviceFingerprintsWithContext(ctx context.Cont
     if request == nil {
         request = NewOverwriteWhiteBoxDeviceFingerprintsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "OverwriteWhiteBoxDeviceFingerprints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OverwriteWhiteBoxDeviceFingerprints require credential")
@@ -3358,6 +3412,7 @@ func (c *Client) PostQuantumCryptoDecryptWithContext(ctx context.Context, reques
     if request == nil {
         request = NewPostQuantumCryptoDecryptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "PostQuantumCryptoDecrypt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PostQuantumCryptoDecrypt require credential")
@@ -3421,6 +3476,7 @@ func (c *Client) PostQuantumCryptoEncryptWithContext(ctx context.Context, reques
     if request == nil {
         request = NewPostQuantumCryptoEncryptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "PostQuantumCryptoEncrypt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PostQuantumCryptoEncrypt require credential")
@@ -3482,6 +3538,7 @@ func (c *Client) PostQuantumCryptoSignWithContext(ctx context.Context, request *
     if request == nil {
         request = NewPostQuantumCryptoSignRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "PostQuantumCryptoSign")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PostQuantumCryptoSign require credential")
@@ -3541,6 +3598,7 @@ func (c *Client) PostQuantumCryptoVerifyWithContext(ctx context.Context, request
     if request == nil {
         request = NewPostQuantumCryptoVerifyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "PostQuantumCryptoVerify")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PostQuantumCryptoVerify require credential")
@@ -3602,6 +3660,7 @@ func (c *Client) ReEncryptWithContext(ctx context.Context, request *ReEncryptReq
     if request == nil {
         request = NewReEncryptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "ReEncrypt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReEncrypt require credential")
@@ -3659,6 +3718,7 @@ func (c *Client) ScheduleDataKeyDeletionWithContext(ctx context.Context, request
     if request == nil {
         request = NewScheduleDataKeyDeletionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "ScheduleDataKeyDeletion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScheduleDataKeyDeletion require credential")
@@ -3724,6 +3784,7 @@ func (c *Client) ScheduleKeyDeletionWithContext(ctx context.Context, request *Sc
     if request == nil {
         request = NewScheduleKeyDeletionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "ScheduleKeyDeletion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScheduleKeyDeletion require credential")
@@ -3789,6 +3850,7 @@ func (c *Client) SignByAsymmetricKeyWithContext(ctx context.Context, request *Si
     if request == nil {
         request = NewSignByAsymmetricKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "SignByAsymmetricKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SignByAsymmetricKey require credential")
@@ -3850,6 +3912,7 @@ func (c *Client) UnbindCloudResourceWithContext(ctx context.Context, request *Un
     if request == nil {
         request = NewUnbindCloudResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "UnbindCloudResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindCloudResource require credential")
@@ -3913,6 +3976,7 @@ func (c *Client) UpdateAliasWithContext(ctx context.Context, request *UpdateAlia
     if request == nil {
         request = NewUpdateAliasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "UpdateAlias")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAlias require credential")
@@ -3968,6 +4032,7 @@ func (c *Client) UpdateDataKeyDescriptionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUpdateDataKeyDescriptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "UpdateDataKeyDescription")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDataKeyDescription require credential")
@@ -4023,6 +4088,7 @@ func (c *Client) UpdateDataKeyNameWithContext(ctx context.Context, request *Upda
     if request == nil {
         request = NewUpdateDataKeyNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "UpdateDataKeyName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDataKeyName require credential")
@@ -4082,6 +4148,7 @@ func (c *Client) UpdateKeyDescriptionWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateKeyDescriptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "UpdateKeyDescription")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateKeyDescription require credential")
@@ -4141,6 +4208,7 @@ func (c *Client) VerifyByAsymmetricKeyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewVerifyByAsymmetricKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "VerifyByAsymmetricKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyByAsymmetricKey require credential")

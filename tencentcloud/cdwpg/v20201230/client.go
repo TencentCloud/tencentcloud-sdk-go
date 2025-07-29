@@ -76,6 +76,7 @@ func (c *Client) CreateInstanceByApiWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateInstanceByApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "CreateInstanceByApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInstanceByApi require credential")
@@ -125,6 +126,7 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeAccountsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeAccounts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccounts require credential")
@@ -174,6 +176,7 @@ func (c *Client) DescribeDBConfigHistoryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDBConfigHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeDBConfigHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBConfigHistory require credential")
@@ -223,6 +226,7 @@ func (c *Client) DescribeDBParamsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeDBParamsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeDBParams")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBParams require credential")
@@ -272,6 +276,7 @@ func (c *Client) DescribeErrorLogWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeErrorLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeErrorLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeErrorLog require credential")
@@ -321,6 +326,7 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstance require credential")
@@ -370,6 +376,7 @@ func (c *Client) DescribeInstanceInfoWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeInstanceInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeInstanceInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceInfo require credential")
@@ -419,6 +426,7 @@ func (c *Client) DescribeInstanceNodesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInstanceNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeInstanceNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceNodes require credential")
@@ -468,6 +476,7 @@ func (c *Client) DescribeInstanceOperationsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstanceOperationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeInstanceOperations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceOperations require credential")
@@ -517,6 +526,7 @@ func (c *Client) DescribeInstanceStateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInstanceStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeInstanceState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceState require credential")
@@ -566,6 +576,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -615,6 +626,7 @@ func (c *Client) DescribeSimpleInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSimpleInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeSimpleInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSimpleInstances require credential")
@@ -664,6 +676,7 @@ func (c *Client) DescribeSlowLogWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSlowLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeSlowLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSlowLog require credential")
@@ -713,6 +726,7 @@ func (c *Client) DescribeUpgradeListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeUpgradeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeUpgradeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUpgradeList require credential")
@@ -762,6 +776,7 @@ func (c *Client) DescribeUserHbaConfigWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeUserHbaConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DescribeUserHbaConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserHbaConfig require credential")
@@ -811,6 +826,7 @@ func (c *Client) DestroyInstanceByApiWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDestroyInstanceByApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "DestroyInstanceByApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyInstanceByApi require credential")
@@ -860,6 +876,7 @@ func (c *Client) ModifyDBParametersWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyDBParametersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "ModifyDBParameters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDBParameters require credential")
@@ -909,6 +926,7 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     if request == nil {
         request = NewModifyInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "ModifyInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstance require credential")
@@ -958,6 +976,7 @@ func (c *Client) ModifyUserHbaWithContext(ctx context.Context, request *ModifyUs
     if request == nil {
         request = NewModifyUserHbaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "ModifyUserHba")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserHba require credential")
@@ -1007,6 +1026,7 @@ func (c *Client) ResetAccountPasswordWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewResetAccountPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "ResetAccountPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetAccountPassword require credential")
@@ -1056,6 +1076,7 @@ func (c *Client) RestartInstanceWithContext(ctx context.Context, request *Restar
     if request == nil {
         request = NewRestartInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "RestartInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartInstance require credential")
@@ -1105,6 +1126,7 @@ func (c *Client) ScaleOutInstanceWithContext(ctx context.Context, request *Scale
     if request == nil {
         request = NewScaleOutInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "ScaleOutInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleOutInstance require credential")
@@ -1154,6 +1176,7 @@ func (c *Client) ScaleUpInstanceWithContext(ctx context.Context, request *ScaleU
     if request == nil {
         request = NewScaleUpInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "ScaleUpInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleUpInstance require credential")
@@ -1203,6 +1226,7 @@ func (c *Client) UpgradeInstanceWithContext(ctx context.Context, request *Upgrad
     if request == nil {
         request = NewUpgradeInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdwpg", APIVersion, "UpgradeInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradeInstance require credential")

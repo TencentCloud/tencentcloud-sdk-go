@@ -88,6 +88,7 @@ func (c *Client) AcceptTccVpcEndPointConnectWithContext(ctx context.Context, req
     if request == nil {
         request = NewAcceptTccVpcEndPointConnectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tccatalog", APIVersion, "AcceptTccVpcEndPointConnect")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AcceptTccVpcEndPointConnect require credential")
@@ -143,6 +144,7 @@ func (c *Client) BindTccVpcEndPointServiceWhiteListWithContext(ctx context.Conte
     if request == nil {
         request = NewBindTccVpcEndPointServiceWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tccatalog", APIVersion, "BindTccVpcEndPointServiceWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindTccVpcEndPointServiceWhiteList require credential")
@@ -196,6 +198,7 @@ func (c *Client) DescribeTccCatalogWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTccCatalogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tccatalog", APIVersion, "DescribeTccCatalog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTccCatalog require credential")
@@ -249,6 +252,7 @@ func (c *Client) DescribeTccCatalogsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTccCatalogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tccatalog", APIVersion, "DescribeTccCatalogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTccCatalogs require credential")

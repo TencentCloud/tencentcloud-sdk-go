@@ -88,6 +88,7 @@ func (c *Client) CreateFlowServiceWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateFlowServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asw", APIVersion, "CreateFlowService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowService require credential")
@@ -145,6 +146,7 @@ func (c *Client) DescribeExecutionWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeExecutionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asw", APIVersion, "DescribeExecution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExecution require credential")
@@ -200,6 +202,7 @@ func (c *Client) DescribeExecutionHistoryWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeExecutionHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asw", APIVersion, "DescribeExecutionHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExecutionHistory require credential")
@@ -253,6 +256,7 @@ func (c *Client) DescribeExecutionsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeExecutionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asw", APIVersion, "DescribeExecutions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExecutions require credential")
@@ -310,6 +314,7 @@ func (c *Client) DescribeFlowServiceDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeFlowServiceDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asw", APIVersion, "DescribeFlowServiceDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlowServiceDetail require credential")
@@ -365,6 +370,7 @@ func (c *Client) DescribeFlowServicesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFlowServicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asw", APIVersion, "DescribeFlowServices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlowServices require credential")
@@ -420,6 +426,7 @@ func (c *Client) ModifyFlowServiceWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyFlowServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asw", APIVersion, "ModifyFlowService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFlowService require credential")
@@ -475,6 +482,7 @@ func (c *Client) StartExecutionWithContext(ctx context.Context, request *StartEx
     if request == nil {
         request = NewStartExecutionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asw", APIVersion, "StartExecution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartExecution require credential")
@@ -526,6 +534,7 @@ func (c *Client) StopExecutionWithContext(ctx context.Context, request *StopExec
     if request == nil {
         request = NewStopExecutionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asw", APIVersion, "StopExecution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopExecution require credential")

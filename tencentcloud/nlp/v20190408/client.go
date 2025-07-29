@@ -132,6 +132,7 @@ func (c *Client) AnalyzeSentimentWithContext(ctx context.Context, request *Analy
     if request == nil {
         request = NewAnalyzeSentimentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "nlp", APIVersion, "AnalyzeSentiment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AnalyzeSentiment require credential")
@@ -229,6 +230,7 @@ func (c *Client) ClassifyContentWithContext(ctx context.Context, request *Classi
     if request == nil {
         request = NewClassifyContentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "nlp", APIVersion, "ClassifyContent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ClassifyContent require credential")
@@ -320,6 +322,7 @@ func (c *Client) ComposeCoupletWithContext(ctx context.Context, request *Compose
     if request == nil {
         request = NewComposeCoupletRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "nlp", APIVersion, "ComposeCouplet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ComposeCouplet require credential")
@@ -421,6 +424,7 @@ func (c *Client) EvaluateSentenceSimilarityWithContext(ctx context.Context, requ
     if request == nil {
         request = NewEvaluateSentenceSimilarityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "nlp", APIVersion, "EvaluateSentenceSimilarity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EvaluateSentenceSimilarity require credential")
@@ -520,6 +524,7 @@ func (c *Client) ParseWordsWithContext(ctx context.Context, request *ParseWordsR
     if request == nil {
         request = NewParseWordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "nlp", APIVersion, "ParseWords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ParseWords require credential")
@@ -621,6 +626,7 @@ func (c *Client) SentenceCorrectionWithContext(ctx context.Context, request *Sen
     if request == nil {
         request = NewSentenceCorrectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "nlp", APIVersion, "SentenceCorrection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SentenceCorrection require credential")

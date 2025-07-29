@@ -90,6 +90,7 @@ func (c *Client) BindEnvGatewayWithContext(ctx context.Context, request *BindEnv
     if request == nil {
         request = NewBindEnvGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "BindEnvGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindEnvGateway require credential")
@@ -145,6 +146,7 @@ func (c *Client) CheckTcbServiceWithContext(ctx context.Context, request *CheckT
     if request == nil {
         request = NewCheckTcbServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CheckTcbService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckTcbService require credential")
@@ -198,6 +200,7 @@ func (c *Client) CommonServiceAPIWithContext(ctx context.Context, request *Commo
     if request == nil {
         request = NewCommonServiceAPIRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CommonServiceAPI")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CommonServiceAPI require credential")
@@ -261,6 +264,7 @@ func (c *Client) CreateAndDeployCloudBaseProjectWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateAndDeployCloudBaseProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateAndDeployCloudBaseProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAndDeployCloudBaseProject require credential")
@@ -322,6 +326,7 @@ func (c *Client) CreateAuthDomainWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateAuthDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateAuthDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAuthDomain require credential")
@@ -377,6 +382,7 @@ func (c *Client) CreateCloudBaseRunResourceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateCloudBaseRunResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateCloudBaseRunResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudBaseRunResource require credential")
@@ -438,6 +444,7 @@ func (c *Client) CreateCloudBaseRunServerVersionWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateCloudBaseRunServerVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateCloudBaseRunServerVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudBaseRunServerVersion require credential")
@@ -501,6 +508,7 @@ func (c *Client) CreateHostingDomainWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateHostingDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateHostingDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateHostingDomain require credential")
@@ -562,6 +570,7 @@ func (c *Client) CreatePostpayPackageWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreatePostpayPackageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreatePostpayPackage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePostpayPackage require credential")
@@ -627,6 +636,7 @@ func (c *Client) CreateStandaloneGatewayWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateStandaloneGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateStandaloneGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStandaloneGateway require credential")
@@ -680,6 +690,7 @@ func (c *Client) CreateStaticStoreWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateStaticStoreRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateStaticStore")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStaticStore require credential")
@@ -747,6 +758,7 @@ func (c *Client) CreateWxCloudBaseRunEnvWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateWxCloudBaseRunEnvRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateWxCloudBaseRunEnv")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWxCloudBaseRunEnv require credential")
@@ -816,6 +828,7 @@ func (c *Client) CreateWxCloudBaseRunServerDBClusterWithContext(ctx context.Cont
     if request == nil {
         request = NewCreateWxCloudBaseRunServerDBClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateWxCloudBaseRunServerDBCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWxCloudBaseRunServerDBCluster require credential")
@@ -869,6 +882,7 @@ func (c *Client) DeleteCloudBaseProjectLatestVersionWithContext(ctx context.Cont
     if request == nil {
         request = NewDeleteCloudBaseProjectLatestVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteCloudBaseProjectLatestVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudBaseProjectLatestVersion require credential")
@@ -926,6 +940,7 @@ func (c *Client) DeleteCloudBaseRunServerVersionWithContext(ctx context.Context,
     if request == nil {
         request = NewDeleteCloudBaseRunServerVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteCloudBaseRunServerVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudBaseRunServerVersion require credential")
@@ -981,6 +996,7 @@ func (c *Client) DeleteEndUserWithContext(ctx context.Context, request *DeleteEn
     if request == nil {
         request = NewDeleteEndUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteEndUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEndUser require credential")
@@ -1040,6 +1056,7 @@ func (c *Client) DeleteGatewayVersionWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteGatewayVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteGatewayVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGatewayVersion require credential")
@@ -1099,6 +1116,7 @@ func (c *Client) DeleteWxGatewayRouteWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteWxGatewayRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteWxGatewayRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteWxGatewayRoute require credential")
@@ -1154,6 +1172,7 @@ func (c *Client) DescribeActivityRecordWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeActivityRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeActivityRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeActivityRecord require credential")
@@ -1207,6 +1226,7 @@ func (c *Client) DescribeAuthDomainsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAuthDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeAuthDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuthDomains require credential")
@@ -1264,6 +1284,7 @@ func (c *Client) DescribeBaasPackageListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeBaasPackageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeBaasPackageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBaasPackageList require credential")
@@ -1321,6 +1342,7 @@ func (c *Client) DescribeBillingInfoWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeBillingInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeBillingInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBillingInfo require credential")
@@ -1382,6 +1404,7 @@ func (c *Client) DescribeCbrServerVersionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCbrServerVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCbrServerVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCbrServerVersion require credential")
@@ -1437,6 +1460,7 @@ func (c *Client) DescribeCloudBaseBuildServiceWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeCloudBaseBuildServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseBuildService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseBuildService require credential")
@@ -1492,6 +1516,7 @@ func (c *Client) DescribeCloudBaseProjectLatestVersionListWithContext(ctx contex
     if request == nil {
         request = NewDescribeCloudBaseProjectLatestVersionListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseProjectLatestVersionList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseProjectLatestVersionList require credential")
@@ -1541,6 +1566,7 @@ func (c *Client) DescribeCloudBaseProjectVersionListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeCloudBaseProjectVersionListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseProjectVersionList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseProjectVersionList require credential")
@@ -1592,6 +1618,7 @@ func (c *Client) DescribeCloudBaseRunAllVpcsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCloudBaseRunAllVpcsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunAllVpcs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunAllVpcs require credential")
@@ -1647,6 +1674,7 @@ func (c *Client) DescribeCloudBaseRunConfForGateWayWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeCloudBaseRunConfForGateWayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunConfForGateWay")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunConfForGateWay require credential")
@@ -1704,6 +1732,7 @@ func (c *Client) DescribeCloudBaseRunOneClickTaskExternalWithContext(ctx context
     if request == nil {
         request = NewDescribeCloudBaseRunOneClickTaskExternalRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunOneClickTaskExternal")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunOneClickTaskExternal require credential")
@@ -1757,6 +1786,7 @@ func (c *Client) DescribeCloudBaseRunOperationTypesWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeCloudBaseRunOperationTypesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunOperationTypes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunOperationTypes require credential")
@@ -1816,6 +1846,7 @@ func (c *Client) DescribeCloudBaseRunPodListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCloudBaseRunPodListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunPodList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunPodList require credential")
@@ -1869,6 +1900,7 @@ func (c *Client) DescribeCloudBaseRunResourceWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeCloudBaseRunResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunResource require credential")
@@ -1920,6 +1952,7 @@ func (c *Client) DescribeCloudBaseRunResourceForExtendWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeCloudBaseRunResourceForExtendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunResourceForExtend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunResourceForExtend require credential")
@@ -1975,6 +2008,7 @@ func (c *Client) DescribeCloudBaseRunServerWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCloudBaseRunServerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunServer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunServer require credential")
@@ -2030,6 +2064,7 @@ func (c *Client) DescribeCloudBaseRunServerDomainNameWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeCloudBaseRunServerDomainNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunServerDomainName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunServerDomainName require credential")
@@ -2091,6 +2126,7 @@ func (c *Client) DescribeCloudBaseRunServerVersionWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeCloudBaseRunServerVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunServerVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunServerVersion require credential")
@@ -2148,6 +2184,7 @@ func (c *Client) DescribeCloudBaseRunVersionWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCloudBaseRunVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunVersion require credential")
@@ -2203,6 +2240,7 @@ func (c *Client) DescribeCloudBaseRunVersionRsByConditionWithContext(ctx context
     if request == nil {
         request = NewDescribeCloudBaseRunVersionRsByConditionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunVersionRsByCondition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunVersionRsByCondition require credential")
@@ -2258,6 +2296,7 @@ func (c *Client) DescribeCloudBaseRunVersionSnapshotWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeCloudBaseRunVersionSnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunVersionSnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudBaseRunVersionSnapshot require credential")
@@ -2319,6 +2358,7 @@ func (c *Client) DescribeCurveDataWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCurveDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCurveData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCurveData require credential")
@@ -2374,6 +2414,7 @@ func (c *Client) DescribeDatabaseACLWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDatabaseACLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeDatabaseACL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDatabaseACL require credential")
@@ -2431,6 +2472,7 @@ func (c *Client) DescribeDownloadFileWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDownloadFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeDownloadFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDownloadFile require credential")
@@ -2496,6 +2538,7 @@ func (c *Client) DescribeEndUserLoginStatisticWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeEndUserLoginStatisticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEndUserLoginStatistic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEndUserLoginStatistic require credential")
@@ -2561,6 +2604,7 @@ func (c *Client) DescribeEndUserStatisticWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeEndUserStatisticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEndUserStatistic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEndUserStatistic require credential")
@@ -2614,6 +2658,7 @@ func (c *Client) DescribeEndUsersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeEndUsersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEndUsers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEndUsers require credential")
@@ -2679,6 +2724,7 @@ func (c *Client) DescribeEnvDealRegionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeEnvDealRegionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEnvDealRegion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvDealRegion require credential")
@@ -2736,6 +2782,7 @@ func (c *Client) DescribeEnvFreeQuotaWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeEnvFreeQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEnvFreeQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvFreeQuota require credential")
@@ -2791,6 +2838,7 @@ func (c *Client) DescribeEnvLimitWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeEnvLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEnvLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvLimit require credential")
@@ -2846,6 +2894,7 @@ func (c *Client) DescribeEnvPostpaidDeductWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeEnvPostpaidDeductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEnvPostpaidDeduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvPostpaidDeduct require credential")
@@ -2909,6 +2958,7 @@ func (c *Client) DescribeEnvsWithContext(ctx context.Context, request *DescribeE
     if request == nil {
         request = NewDescribeEnvsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEnvs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvs require credential")
@@ -2960,6 +3010,7 @@ func (c *Client) DescribeExtensionUploadInfoWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeExtensionUploadInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeExtensionUploadInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExtensionUploadInfo require credential")
@@ -3017,6 +3068,7 @@ func (c *Client) DescribeExtraPkgBillingInfoWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeExtraPkgBillingInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeExtraPkgBillingInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExtraPkgBillingInfo require credential")
@@ -3078,6 +3130,7 @@ func (c *Client) DescribeGatewayCurveDataWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeGatewayCurveDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeGatewayCurveData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGatewayCurveData require credential")
@@ -3139,6 +3192,7 @@ func (c *Client) DescribeGatewayVersionsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeGatewayVersionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeGatewayVersions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGatewayVersions require credential")
@@ -3200,6 +3254,7 @@ func (c *Client) DescribeGraphDataWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeGraphDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeGraphData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGraphData require credential")
@@ -3263,6 +3318,7 @@ func (c *Client) DescribeHostingDomainTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeHostingDomainTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeHostingDomainTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostingDomainTask require credential")
@@ -3318,6 +3374,7 @@ func (c *Client) DescribePostpayFreeQuotasWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePostpayFreeQuotasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribePostpayFreeQuotas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePostpayFreeQuotas require credential")
@@ -3385,6 +3442,7 @@ func (c *Client) DescribePostpayPackageFreeQuotasWithContext(ctx context.Context
     if request == nil {
         request = NewDescribePostpayPackageFreeQuotasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribePostpayPackageFreeQuotas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePostpayPackageFreeQuotas require credential")
@@ -3446,6 +3504,7 @@ func (c *Client) DescribeQuotaDataWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeQuotaDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeQuotaData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeQuotaData require credential")
@@ -3513,6 +3572,7 @@ func (c *Client) DescribeSmsQuotasWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSmsQuotasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeSmsQuotas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSmsQuotas require credential")
@@ -3568,6 +3628,7 @@ func (c *Client) DescribeSpecialCostItemsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSpecialCostItemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeSpecialCostItems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSpecialCostItems require credential")
@@ -3631,6 +3692,7 @@ func (c *Client) DescribeStandaloneGatewayWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeStandaloneGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeStandaloneGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStandaloneGateway require credential")
@@ -3692,6 +3754,7 @@ func (c *Client) DescribeStandaloneGatewayPackageWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeStandaloneGatewayPackageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeStandaloneGatewayPackage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStandaloneGatewayPackage require credential")
@@ -3747,6 +3810,7 @@ func (c *Client) DescribeUserActivityInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUserActivityInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeUserActivityInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserActivityInfo require credential")
@@ -3814,6 +3878,7 @@ func (c *Client) DescribeWxCloudBaseRunEnvsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeWxCloudBaseRunEnvsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeWxCloudBaseRunEnvs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWxCloudBaseRunEnvs require credential")
@@ -3879,6 +3944,7 @@ func (c *Client) DescribeWxCloudBaseRunSubNetsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeWxCloudBaseRunSubNetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeWxCloudBaseRunSubNets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWxCloudBaseRunSubNets require credential")
@@ -3932,6 +3998,7 @@ func (c *Client) DescribeWxGatewayRoutesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeWxGatewayRoutesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeWxGatewayRoutes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWxGatewayRoutes require credential")
@@ -3983,6 +4050,7 @@ func (c *Client) DescribeWxGatewaysWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeWxGatewaysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeWxGateways")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWxGateways require credential")
@@ -4046,6 +4114,7 @@ func (c *Client) DestroyEnvWithContext(ctx context.Context, request *DestroyEnvR
     if request == nil {
         request = NewDestroyEnvRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DestroyEnv")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyEnv require credential")
@@ -4105,6 +4174,7 @@ func (c *Client) DestroyStandaloneGatewayWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDestroyStandaloneGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DestroyStandaloneGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyStandaloneGateway require credential")
@@ -4156,6 +4226,7 @@ func (c *Client) DestroyStaticStoreWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDestroyStaticStoreRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DestroyStaticStore")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyStaticStore require credential")
@@ -4207,6 +4278,7 @@ func (c *Client) EditAuthConfigWithContext(ctx context.Context, request *EditAut
     if request == nil {
         request = NewEditAuthConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "EditAuthConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EditAuthConfig require credential")
@@ -4272,6 +4344,7 @@ func (c *Client) EstablishCloudBaseRunServerWithContext(ctx context.Context, req
     if request == nil {
         request = NewEstablishCloudBaseRunServerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "EstablishCloudBaseRunServer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EstablishCloudBaseRunServer require credential")
@@ -4333,6 +4406,7 @@ func (c *Client) EstablishWxGatewayRouteWithContext(ctx context.Context, request
     if request == nil {
         request = NewEstablishWxGatewayRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "EstablishWxGatewayRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EstablishWxGatewayRoute require credential")
@@ -4388,6 +4462,7 @@ func (c *Client) FreezeCloudBaseRunServersWithContext(ctx context.Context, reque
     if request == nil {
         request = NewFreezeCloudBaseRunServersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "FreezeCloudBaseRunServers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FreezeCloudBaseRunServers require credential")
@@ -4441,6 +4516,7 @@ func (c *Client) ModifyCloudBaseRunServerFlowConfWithContext(ctx context.Context
     if request == nil {
         request = NewModifyCloudBaseRunServerFlowConfRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyCloudBaseRunServerFlowConf")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCloudBaseRunServerFlowConf require credential")
@@ -4496,6 +4572,7 @@ func (c *Client) ModifyCloudBaseRunServerVersionWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyCloudBaseRunServerVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyCloudBaseRunServerVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCloudBaseRunServerVersion require credential")
@@ -4561,6 +4638,7 @@ func (c *Client) ModifyClsTopicWithContext(ctx context.Context, request *ModifyC
     if request == nil {
         request = NewModifyClsTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyClsTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClsTopic require credential")
@@ -4618,6 +4696,7 @@ func (c *Client) ModifyDatabaseACLWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyDatabaseACLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyDatabaseACL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDatabaseACL require credential")
@@ -4673,6 +4752,7 @@ func (c *Client) ModifyEndUserWithContext(ctx context.Context, request *ModifyEn
     if request == nil {
         request = NewModifyEndUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyEndUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEndUser require credential")
@@ -4730,6 +4810,7 @@ func (c *Client) ModifyEnvWithContext(ctx context.Context, request *ModifyEnvReq
     if request == nil {
         request = NewModifyEnvRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyEnv")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEnv require credential")
@@ -4785,6 +4866,7 @@ func (c *Client) ModifyGatewayVersionTrafficWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyGatewayVersionTrafficRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyGatewayVersionTraffic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyGatewayVersionTraffic require credential")
@@ -4844,6 +4926,7 @@ func (c *Client) ReinstateEnvWithContext(ctx context.Context, request *Reinstate
     if request == nil {
         request = NewReinstateEnvRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ReinstateEnv")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReinstateEnv require credential")
@@ -4901,6 +4984,7 @@ func (c *Client) ReplaceActivityRecordWithContext(ctx context.Context, request *
     if request == nil {
         request = NewReplaceActivityRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ReplaceActivityRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReplaceActivityRecord require credential")
@@ -4954,6 +5038,7 @@ func (c *Client) RollUpdateCloudBaseRunServerVersionWithContext(ctx context.Cont
     if request == nil {
         request = NewRollUpdateCloudBaseRunServerVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "RollUpdateCloudBaseRunServerVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RollUpdateCloudBaseRunServerVersion require credential")
@@ -5009,6 +5094,7 @@ func (c *Client) SearchClsLogWithContext(ctx context.Context, request *SearchCls
     if request == nil {
         request = NewSearchClsLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "SearchClsLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchClsLog require credential")
@@ -5072,6 +5158,7 @@ func (c *Client) TurnOffStandaloneGatewayWithContext(ctx context.Context, reques
     if request == nil {
         request = NewTurnOffStandaloneGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "TurnOffStandaloneGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TurnOffStandaloneGateway require credential")
@@ -5133,6 +5220,7 @@ func (c *Client) TurnOnStandaloneGatewayWithContext(ctx context.Context, request
     if request == nil {
         request = NewTurnOnStandaloneGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "TurnOnStandaloneGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TurnOnStandaloneGateway require credential")
@@ -5190,6 +5278,7 @@ func (c *Client) UnfreezeCloudBaseRunServersWithContext(ctx context.Context, req
     if request == nil {
         request = NewUnfreezeCloudBaseRunServersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "UnfreezeCloudBaseRunServers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnfreezeCloudBaseRunServers require credential")

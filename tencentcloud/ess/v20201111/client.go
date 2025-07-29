@@ -152,6 +152,7 @@ func (c *Client) ArchiveDynamicFlowWithContext(ctx context.Context, request *Arc
     if request == nil {
         request = NewArchiveDynamicFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ArchiveDynamicFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ArchiveDynamicFlow require credential")
@@ -217,6 +218,7 @@ func (c *Client) BindEmployeeUserIdWithClientOpenIdWithContext(ctx context.Conte
     if request == nil {
         request = NewBindEmployeeUserIdWithClientOpenIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "BindEmployeeUserIdWithClientOpenId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindEmployeeUserIdWithClientOpenId require credential")
@@ -350,6 +352,7 @@ func (c *Client) CancelFlowWithContext(ctx context.Context, request *CancelFlowR
     if request == nil {
         request = NewCancelFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CancelFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelFlow require credential")
@@ -427,6 +430,7 @@ func (c *Client) CancelMultiFlowSignQRCodeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCancelMultiFlowSignQRCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CancelMultiFlowSignQRCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelMultiFlowSignQRCode require credential")
@@ -498,6 +502,7 @@ func (c *Client) CancelUserAutoSignEnableUrlWithContext(ctx context.Context, req
     if request == nil {
         request = NewCancelUserAutoSignEnableUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CancelUserAutoSignEnableUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelUserAutoSignEnableUrl require credential")
@@ -633,6 +638,7 @@ func (c *Client) CreateBatchCancelFlowUrlWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateBatchCancelFlowUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateBatchCancelFlowUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBatchCancelFlowUrl require credential")
@@ -724,6 +730,7 @@ func (c *Client) CreateBatchInformationExtractionTaskWithContext(ctx context.Con
     if request == nil {
         request = NewCreateBatchInformationExtractionTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateBatchInformationExtractionTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBatchInformationExtractionTask require credential")
@@ -841,6 +848,7 @@ func (c *Client) CreateBatchInitOrganizationUrlWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateBatchInitOrganizationUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateBatchInitOrganizationUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBatchInitOrganizationUrl require credential")
@@ -918,6 +926,7 @@ func (c *Client) CreateBatchOrganizationAuthorizationUrlWithContext(ctx context.
     if request == nil {
         request = NewCreateBatchOrganizationAuthorizationUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateBatchOrganizationAuthorizationUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBatchOrganizationAuthorizationUrl require credential")
@@ -1077,6 +1086,7 @@ func (c *Client) CreateBatchOrganizationRegistrationTasksWithContext(ctx context
     if request == nil {
         request = NewCreateBatchOrganizationRegistrationTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateBatchOrganizationRegistrationTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBatchOrganizationRegistrationTasks require credential")
@@ -1162,6 +1172,7 @@ func (c *Client) CreateBatchQuickSignUrlWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateBatchQuickSignUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateBatchQuickSignUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBatchQuickSignUrl require credential")
@@ -1259,6 +1270,7 @@ func (c *Client) CreateBatchSignUrlWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateBatchSignUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateBatchSignUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBatchSignUrl require credential")
@@ -1336,6 +1348,7 @@ func (c *Client) CreateContractDiffTaskWebUrlWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateContractDiffTaskWebUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateContractDiffTaskWebUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateContractDiffTaskWebUrl require credential")
@@ -1427,6 +1440,7 @@ func (c *Client) CreateConvertTaskApiWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateConvertTaskApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateConvertTaskApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConvertTaskApi require credential")
@@ -1736,6 +1750,7 @@ func (c *Client) CreateDocumentWithContext(ctx context.Context, request *CreateD
     if request == nil {
         request = NewCreateDocumentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateDocument")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDocument require credential")
@@ -1865,6 +1880,7 @@ func (c *Client) CreateDynamicFlowApproverWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateDynamicFlowApproverRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateDynamicFlowApprover")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDynamicFlowApprover require credential")
@@ -1990,6 +2006,7 @@ func (c *Client) CreateEmbedWebUrlWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateEmbedWebUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateEmbedWebUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEmbedWebUrl require credential")
@@ -2061,6 +2078,7 @@ func (c *Client) CreateEmployeeChangeUrlWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateEmployeeChangeUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateEmployeeChangeUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEmployeeChangeUrl require credential")
@@ -2162,6 +2180,7 @@ func (c *Client) CreateEmployeeQualificationSealQrCodeWithContext(ctx context.Co
     if request == nil {
         request = NewCreateEmployeeQualificationSealQrCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateEmployeeQualificationSealQrCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEmployeeQualificationSealQrCode require credential")
@@ -2227,6 +2246,7 @@ func (c *Client) CreateExtendedServiceAuthInfosWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateExtendedServiceAuthInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateExtendedServiceAuthInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateExtendedServiceAuthInfos require credential")
@@ -2300,6 +2320,7 @@ func (c *Client) CreateFileCounterSignWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateFileCounterSignRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFileCounterSign")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFileCounterSign require credential")
@@ -2651,6 +2672,7 @@ func (c *Client) CreateFlowWithContext(ctx context.Context, request *CreateFlowR
     if request == nil {
         request = NewCreateFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlow require credential")
@@ -3008,6 +3030,7 @@ func (c *Client) CreateFlowApproversWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateFlowApproversRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowApprovers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowApprovers require credential")
@@ -3113,6 +3136,7 @@ func (c *Client) CreateFlowBlockchainEvidenceUrlWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateFlowBlockchainEvidenceUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowBlockchainEvidenceUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowBlockchainEvidenceUrl require credential")
@@ -3622,6 +3646,7 @@ func (c *Client) CreateFlowByFilesWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateFlowByFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowByFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowByFiles require credential")
@@ -3729,6 +3754,7 @@ func (c *Client) CreateFlowEvidenceReportWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateFlowEvidenceReportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowEvidenceReport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowEvidenceReport require credential")
@@ -3816,6 +3842,7 @@ func (c *Client) CreateFlowForwardsWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateFlowForwardsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowForwards")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowForwards require credential")
@@ -4203,6 +4230,7 @@ func (c *Client) CreateFlowGroupByFilesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateFlowGroupByFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowGroupByFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowGroupByFiles require credential")
@@ -4588,6 +4616,7 @@ func (c *Client) CreateFlowGroupByTemplatesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateFlowGroupByTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowGroupByTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowGroupByTemplates require credential")
@@ -4705,6 +4734,7 @@ func (c *Client) CreateFlowGroupSignReviewWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateFlowGroupSignReviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowGroupSignReview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowGroupSignReview require credential")
@@ -4808,6 +4838,7 @@ func (c *Client) CreateFlowRemindsWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateFlowRemindsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowReminds")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowReminds require credential")
@@ -5049,6 +5080,7 @@ func (c *Client) CreateFlowSignReviewWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateFlowSignReviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowSignReview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowSignReview require credential")
@@ -5148,6 +5180,7 @@ func (c *Client) CreateFlowSignUrlWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateFlowSignUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowSignUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlowSignUrl require credential")
@@ -5213,6 +5246,7 @@ func (c *Client) CreateIntegrationDepartmentWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateIntegrationDepartmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateIntegrationDepartment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIntegrationDepartment require credential")
@@ -5438,6 +5472,7 @@ func (c *Client) CreateIntegrationEmployeesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateIntegrationEmployeesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateIntegrationEmployees")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIntegrationEmployees require credential")
@@ -5541,6 +5576,7 @@ func (c *Client) CreateIntegrationRoleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateIntegrationRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateIntegrationRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIntegrationRole require credential")
@@ -5632,6 +5668,7 @@ func (c *Client) CreateIntegrationSubOrganizationActiveRecordWithContext(ctx con
     if request == nil {
         request = NewCreateIntegrationSubOrganizationActiveRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateIntegrationSubOrganizationActiveRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIntegrationSubOrganizationActiveRecord require credential")
@@ -5697,6 +5734,7 @@ func (c *Client) CreateIntegrationUserRolesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateIntegrationUserRolesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateIntegrationUserRoles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIntegrationUserRoles require credential")
@@ -5800,6 +5838,7 @@ func (c *Client) CreateLegalSealQrCodeWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateLegalSealQrCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateLegalSealQrCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLegalSealQrCode require credential")
@@ -6067,6 +6106,7 @@ func (c *Client) CreateMiniAppPrepareFlowWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateMiniAppPrepareFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateMiniAppPrepareFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMiniAppPrepareFlow require credential")
@@ -6152,6 +6192,7 @@ func (c *Client) CreateModifyAdminAuthorizationUrlWithContext(ctx context.Contex
     if request == nil {
         request = NewCreateModifyAdminAuthorizationUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateModifyAdminAuthorizationUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateModifyAdminAuthorizationUrl require credential")
@@ -6323,6 +6364,7 @@ func (c *Client) CreateMultiFlowSignQRCodeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateMultiFlowSignQRCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateMultiFlowSignQRCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMultiFlowSignQRCode require credential")
@@ -6398,6 +6440,7 @@ func (c *Client) CreateOrganizationAuthFileWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateOrganizationAuthFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateOrganizationAuthFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrganizationAuthFile require credential")
@@ -6519,6 +6562,7 @@ func (c *Client) CreateOrganizationAuthUrlWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateOrganizationAuthUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateOrganizationAuthUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrganizationAuthUrl require credential")
@@ -6624,6 +6668,7 @@ func (c *Client) CreateOrganizationBatchSignUrlWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateOrganizationBatchSignUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateOrganizationBatchSignUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrganizationBatchSignUrl require credential")
@@ -6679,6 +6724,7 @@ func (c *Client) CreateOrganizationGroupInvitationLinkWithContext(ctx context.Co
     if request == nil {
         request = NewCreateOrganizationGroupInvitationLinkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateOrganizationGroupInvitationLink")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrganizationGroupInvitationLink require credential")
@@ -6816,6 +6862,7 @@ func (c *Client) CreateOrganizationInfoChangeUrlWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateOrganizationInfoChangeUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateOrganizationInfoChangeUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrganizationInfoChangeUrl require credential")
@@ -6919,6 +6966,7 @@ func (c *Client) CreatePartnerAutoSignAuthUrlWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreatePartnerAutoSignAuthUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreatePartnerAutoSignAuthUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePartnerAutoSignAuthUrl require credential")
@@ -7012,6 +7060,7 @@ func (c *Client) CreatePersonAuthCertificateImageWithContext(ctx context.Context
     if request == nil {
         request = NewCreatePersonAuthCertificateImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreatePersonAuthCertificateImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePersonAuthCertificateImage require credential")
@@ -7223,6 +7272,7 @@ func (c *Client) CreatePrepareFlowWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreatePrepareFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreatePrepareFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrepareFlow require credential")
@@ -7552,6 +7602,7 @@ func (c *Client) CreatePrepareFlowGroupWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreatePrepareFlowGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreatePrepareFlowGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrepareFlowGroup require credential")
@@ -7615,6 +7666,7 @@ func (c *Client) CreatePreparedPersonalEsignWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreatePreparedPersonalEsignRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreatePreparedPersonalEsign")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePreparedPersonalEsign require credential")
@@ -7858,6 +7910,7 @@ func (c *Client) CreateReleaseFlowWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateReleaseFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateReleaseFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateReleaseFlow require credential")
@@ -8023,6 +8076,7 @@ func (c *Client) CreateSchemeUrlWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateSchemeUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateSchemeUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSchemeUrl require credential")
@@ -8126,6 +8180,7 @@ func (c *Client) CreateSealWithContext(ctx context.Context, request *CreateSealR
     if request == nil {
         request = NewCreateSealRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateSeal")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSeal require credential")
@@ -8193,6 +8248,7 @@ func (c *Client) CreateSealPolicyWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateSealPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateSealPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSealPolicy require credential")
@@ -8278,6 +8334,7 @@ func (c *Client) CreateUserAutoSignEnableUrlWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateUserAutoSignEnableUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateUserAutoSignEnableUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserAutoSignEnableUrl require credential")
@@ -8369,6 +8426,7 @@ func (c *Client) CreateUserAutoSignSealUrlWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateUserAutoSignSealUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateUserAutoSignSealUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserAutoSignSealUrl require credential")
@@ -8430,6 +8488,7 @@ func (c *Client) CreateUserMobileChangeUrlWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateUserMobileChangeUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateUserMobileChangeUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserMobileChangeUrl require credential")
@@ -8495,6 +8554,7 @@ func (c *Client) CreateUserNameChangeUrlWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateUserNameChangeUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateUserNameChangeUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserNameChangeUrl require credential")
@@ -8560,6 +8620,7 @@ func (c *Client) CreateUserVerifyUrlWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateUserVerifyUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateUserVerifyUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserVerifyUrl require credential")
@@ -8619,6 +8680,7 @@ func (c *Client) CreateWebThemeConfigWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateWebThemeConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateWebThemeConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWebThemeConfig require credential")
@@ -8684,6 +8746,7 @@ func (c *Client) DeleteExtendedServiceAuthInfosWithContext(ctx context.Context, 
     if request == nil {
         request = NewDeleteExtendedServiceAuthInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DeleteExtendedServiceAuthInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteExtendedServiceAuthInfos require credential")
@@ -8743,6 +8806,7 @@ func (c *Client) DeleteIntegrationDepartmentWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteIntegrationDepartmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DeleteIntegrationDepartment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIntegrationDepartment require credential")
@@ -8866,6 +8930,7 @@ func (c *Client) DeleteIntegrationEmployeesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteIntegrationEmployeesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DeleteIntegrationEmployees")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIntegrationEmployees require credential")
@@ -8931,6 +8996,7 @@ func (c *Client) DeleteIntegrationRoleUsersWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteIntegrationRoleUsersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DeleteIntegrationRoleUsers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIntegrationRoleUsers require credential")
@@ -9026,6 +9092,7 @@ func (c *Client) DeleteOrganizationAuthorizationsWithContext(ctx context.Context
     if request == nil {
         request = NewDeleteOrganizationAuthorizationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DeleteOrganizationAuthorizations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteOrganizationAuthorizations require credential")
@@ -9087,6 +9154,7 @@ func (c *Client) DeleteSealPoliciesWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteSealPoliciesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DeleteSealPolicies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSealPolicies require credential")
@@ -9158,6 +9226,7 @@ func (c *Client) DescribeBatchOrganizationRegistrationTasksWithContext(ctx conte
     if request == nil {
         request = NewDescribeBatchOrganizationRegistrationTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeBatchOrganizationRegistrationTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBatchOrganizationRegistrationTasks require credential")
@@ -9245,6 +9314,7 @@ func (c *Client) DescribeBatchOrganizationRegistrationUrlsWithContext(ctx contex
     if request == nil {
         request = NewDescribeBatchOrganizationRegistrationUrlsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeBatchOrganizationRegistrationUrls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBatchOrganizationRegistrationUrls require credential")
@@ -9298,6 +9368,7 @@ func (c *Client) DescribeBillUsageWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeBillUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeBillUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBillUsage require credential")
@@ -9355,6 +9426,7 @@ func (c *Client) DescribeBillUsageDetailWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeBillUsageDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeBillUsageDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBillUsageDetail require credential")
@@ -9418,6 +9490,7 @@ func (c *Client) DescribeCancelFlowsTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeCancelFlowsTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeCancelFlowsTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCancelFlowsTask require credential")
@@ -9489,6 +9562,7 @@ func (c *Client) DescribeContractDiffTaskWebUrlWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeContractDiffTaskWebUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeContractDiffTaskWebUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeContractDiffTaskWebUrl require credential")
@@ -9562,6 +9636,7 @@ func (c *Client) DescribeExtendedServiceAuthDetailWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeExtendedServiceAuthDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeExtendedServiceAuthDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExtendedServiceAuthDetail require credential")
@@ -9703,6 +9778,7 @@ func (c *Client) DescribeExtendedServiceAuthInfosWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeExtendedServiceAuthInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeExtendedServiceAuthInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExtendedServiceAuthInfos require credential")
@@ -9776,6 +9852,7 @@ func (c *Client) DescribeFileCounterSignResultWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeFileCounterSignResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeFileCounterSignResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFileCounterSignResult require credential")
@@ -9927,6 +10004,7 @@ func (c *Client) DescribeFileUrlsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeFileUrlsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeFileUrls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFileUrls require credential")
@@ -10052,6 +10130,7 @@ func (c *Client) DescribeFlowBriefsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeFlowBriefsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeFlowBriefs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlowBriefs require credential")
@@ -10205,6 +10284,7 @@ func (c *Client) DescribeFlowComponentsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeFlowComponentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeFlowComponents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlowComponents require credential")
@@ -10310,6 +10390,7 @@ func (c *Client) DescribeFlowEvidenceReportWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeFlowEvidenceReportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeFlowEvidenceReport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlowEvidenceReport require credential")
@@ -10385,6 +10466,7 @@ func (c *Client) DescribeFlowInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeFlowInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeFlowInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlowInfo require credential")
@@ -10548,6 +10630,7 @@ func (c *Client) DescribeFlowTemplatesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFlowTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeFlowTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlowTemplates require credential")
@@ -10611,6 +10694,7 @@ func (c *Client) DescribeInformationExtractionTaskWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeInformationExtractionTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeInformationExtractionTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInformationExtractionTask require credential")
@@ -10666,6 +10750,7 @@ func (c *Client) DescribeIntegrationDepartmentsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeIntegrationDepartmentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeIntegrationDepartments")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIntegrationDepartments require credential")
@@ -10753,6 +10838,7 @@ func (c *Client) DescribeIntegrationEmployeesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeIntegrationEmployeesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeIntegrationEmployees")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIntegrationEmployees require credential")
@@ -10826,6 +10912,7 @@ func (c *Client) DescribeIntegrationRolesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeIntegrationRolesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeIntegrationRoles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIntegrationRoles require credential")
@@ -10881,6 +10968,7 @@ func (c *Client) DescribeOrganizationAuthStatusWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeOrganizationAuthStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeOrganizationAuthStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOrganizationAuthStatus require credential")
@@ -10944,6 +11032,7 @@ func (c *Client) DescribeOrganizationGroupOrganizationsWithContext(ctx context.C
     if request == nil {
         request = NewDescribeOrganizationGroupOrganizationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeOrganizationGroupOrganizations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOrganizationGroupOrganizations require credential")
@@ -11033,6 +11122,7 @@ func (c *Client) DescribeOrganizationSealsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeOrganizationSealsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeOrganizationSeals")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOrganizationSeals require credential")
@@ -11082,6 +11172,7 @@ func (c *Client) DescribeOrganizationVerifyStatusWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeOrganizationVerifyStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeOrganizationVerifyStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOrganizationVerifyStatus require credential")
@@ -11135,6 +11226,7 @@ func (c *Client) DescribePersonCertificateWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePersonCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribePersonCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePersonCertificate require credential")
@@ -11216,6 +11308,7 @@ func (c *Client) DescribeSignFaceVideoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeSignFaceVideoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeSignFaceVideo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSignFaceVideo require credential")
@@ -11309,6 +11402,7 @@ func (c *Client) DescribeThirdPartyAuthCodeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeThirdPartyAuthCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeThirdPartyAuthCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeThirdPartyAuthCode require credential")
@@ -11396,6 +11490,7 @@ func (c *Client) DescribeUserAutoSignStatusWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeUserAutoSignStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeUserAutoSignStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserAutoSignStatus require credential")
@@ -11477,6 +11572,7 @@ func (c *Client) DescribeUserFlowTypeWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeUserFlowTypeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeUserFlowType")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserFlowType require credential")
@@ -11574,6 +11670,7 @@ func (c *Client) DescribeUserVerifyStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUserVerifyStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeUserVerifyStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserVerifyStatus require credential")
@@ -11671,6 +11768,7 @@ func (c *Client) DisableUserAutoSignWithContext(ctx context.Context, request *Di
     if request == nil {
         request = NewDisableUserAutoSignRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DisableUserAutoSign")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableUserAutoSign require credential")
@@ -11754,6 +11852,7 @@ func (c *Client) GetTaskResultApiWithContext(ctx context.Context, request *GetTa
     if request == nil {
         request = NewGetTaskResultApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "GetTaskResultApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTaskResultApi require credential")
@@ -11823,6 +11922,7 @@ func (c *Client) ModifyApplicationCallbackInfoWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyApplicationCallbackInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ModifyApplicationCallbackInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApplicationCallbackInfo require credential")
@@ -11922,6 +12022,7 @@ func (c *Client) ModifyExtendedServiceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyExtendedServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ModifyExtendedService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyExtendedService require credential")
@@ -12063,6 +12164,7 @@ func (c *Client) ModifyFlowDeadlineWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyFlowDeadlineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ModifyFlowDeadline")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFlowDeadline require credential")
@@ -12122,6 +12224,7 @@ func (c *Client) ModifyIntegrationDepartmentWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyIntegrationDepartmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ModifyIntegrationDepartment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyIntegrationDepartment require credential")
@@ -12225,6 +12328,7 @@ func (c *Client) ModifyIntegrationRoleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyIntegrationRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ModifyIntegrationRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyIntegrationRole require credential")
@@ -12312,6 +12416,7 @@ func (c *Client) ModifyPartnerAutoSignAuthUrlWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyPartnerAutoSignAuthUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ModifyPartnerAutoSignAuthUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPartnerAutoSignAuthUrl require credential")
@@ -12367,6 +12472,7 @@ func (c *Client) OperateSealsWithContext(ctx context.Context, request *OperateSe
     if request == nil {
         request = NewOperateSealsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "OperateSeals")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OperateSeals require credential")
@@ -12496,6 +12602,7 @@ func (c *Client) OperateTemplateWithContext(ctx context.Context, request *Operat
     if request == nil {
         request = NewOperateTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "OperateTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OperateTemplate require credential")
@@ -12579,6 +12686,7 @@ func (c *Client) RenewAutoSignLicenseWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewRenewAutoSignLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "RenewAutoSignLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewAutoSignLicense require credential")
@@ -12752,6 +12860,7 @@ func (c *Client) StartFlowWithContext(ctx context.Context, request *StartFlowReq
     if request == nil {
         request = NewStartFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "StartFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartFlow require credential")
@@ -12819,6 +12928,7 @@ func (c *Client) UnbindEmployeeUserIdWithClientOpenIdWithContext(ctx context.Con
     if request == nil {
         request = NewUnbindEmployeeUserIdWithClientOpenIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "UnbindEmployeeUserIdWithClientOpenId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindEmployeeUserIdWithClientOpenId require credential")
@@ -13002,6 +13112,7 @@ func (c *Client) UpdateIntegrationEmployeesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateIntegrationEmployeesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "UpdateIntegrationEmployees")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateIntegrationEmployees require credential")
@@ -13127,6 +13238,7 @@ func (c *Client) UploadFilesWithContext(ctx context.Context, request *UploadFile
     if request == nil {
         request = NewUploadFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "UploadFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadFiles require credential")
@@ -13176,6 +13288,7 @@ func (c *Client) VerifyDigitFileWithContext(ctx context.Context, request *Verify
     if request == nil {
         request = NewVerifyDigitFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "VerifyDigitFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyDigitFile require credential")
@@ -13251,6 +13364,7 @@ func (c *Client) VerifyPdfWithContext(ctx context.Context, request *VerifyPdfReq
     if request == nil {
         request = NewVerifyPdfRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "VerifyPdf")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyPdf require credential")

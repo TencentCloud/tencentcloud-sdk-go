@@ -90,6 +90,7 @@ func (c *Client) CreateMonitorsWithContext(ctx context.Context, request *CreateM
     if request == nil {
         request = NewCreateMonitorsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "CreateMonitors")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMonitors require credential")
@@ -143,6 +144,7 @@ func (c *Client) CreateSitesWithContext(ctx context.Context, request *CreateSite
     if request == nil {
         request = NewCreateSitesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "CreateSites")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSites require credential")
@@ -198,6 +200,7 @@ func (c *Client) CreateSitesScansWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateSitesScansRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "CreateSitesScans")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSitesScans require credential")
@@ -255,6 +258,7 @@ func (c *Client) CreateVulsMisinformationWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateVulsMisinformationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "CreateVulsMisinformation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVulsMisinformation require credential")
@@ -306,6 +310,7 @@ func (c *Client) CreateVulsReportWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateVulsReportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "CreateVulsReport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVulsReport require credential")
@@ -359,6 +364,7 @@ func (c *Client) DeleteMonitorsWithContext(ctx context.Context, request *DeleteM
     if request == nil {
         request = NewDeleteMonitorsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "DeleteMonitors")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMonitors require credential")
@@ -412,6 +418,7 @@ func (c *Client) DeleteSitesWithContext(ctx context.Context, request *DeleteSite
     if request == nil {
         request = NewDeleteSitesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "DeleteSites")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSites require credential")
@@ -461,6 +468,7 @@ func (c *Client) DescribeConfigWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "DescribeConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfig require credential")
@@ -514,6 +522,7 @@ func (c *Client) DescribeMonitorsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeMonitorsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "DescribeMonitors")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMonitors require credential")
@@ -563,6 +572,7 @@ func (c *Client) DescribeSiteQuotaWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSiteQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "DescribeSiteQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSiteQuota require credential")
@@ -616,6 +626,7 @@ func (c *Client) DescribeSitesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeSitesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "DescribeSites")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSites require credential")
@@ -669,6 +680,7 @@ func (c *Client) DescribeSitesVerificationWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSitesVerificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "DescribeSitesVerification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSitesVerification require credential")
@@ -724,6 +736,7 @@ func (c *Client) DescribeVulsWithContext(ctx context.Context, request *DescribeV
     if request == nil {
         request = NewDescribeVulsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "DescribeVuls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVuls require credential")
@@ -773,6 +786,7 @@ func (c *Client) DescribeVulsNumberWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeVulsNumberRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "DescribeVulsNumber")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulsNumber require credential")
@@ -822,6 +836,7 @@ func (c *Client) DescribeVulsNumberTimelineWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeVulsNumberTimelineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "DescribeVulsNumberTimeline")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulsNumberTimeline require credential")
@@ -871,6 +886,7 @@ func (c *Client) ModifyConfigAttributeWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyConfigAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "ModifyConfigAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConfigAttribute require credential")
@@ -926,6 +942,7 @@ func (c *Client) ModifyMonitorAttributeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyMonitorAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "ModifyMonitorAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMonitorAttribute require credential")
@@ -979,6 +996,7 @@ func (c *Client) ModifySiteAttributeWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifySiteAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "ModifySiteAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySiteAttribute require credential")
@@ -1032,6 +1050,7 @@ func (c *Client) VerifySitesWithContext(ctx context.Context, request *VerifySite
     if request == nil {
         request = NewVerifySitesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cws", APIVersion, "VerifySites")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifySites require credential")

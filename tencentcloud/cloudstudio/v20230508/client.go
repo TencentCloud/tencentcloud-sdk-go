@@ -88,6 +88,7 @@ func (c *Client) CreateWorkspaceWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateWorkspaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudstudio", APIVersion, "CreateWorkspace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWorkspace require credential")
@@ -137,6 +138,7 @@ func (c *Client) CreateWorkspaceTokenWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateWorkspaceTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudstudio", APIVersion, "CreateWorkspaceToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWorkspaceToken require credential")
@@ -186,6 +188,7 @@ func (c *Client) DescribeConfigWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudstudio", APIVersion, "DescribeConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfig require credential")
@@ -235,6 +238,7 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudstudio", APIVersion, "DescribeImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImages require credential")
@@ -284,6 +288,7 @@ func (c *Client) DescribeWorkspacesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeWorkspacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudstudio", APIVersion, "DescribeWorkspaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWorkspaces require credential")
@@ -337,6 +342,7 @@ func (c *Client) ModifyWorkspaceWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyWorkspaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudstudio", APIVersion, "ModifyWorkspace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWorkspace require credential")
@@ -390,6 +396,7 @@ func (c *Client) RemoveWorkspaceWithContext(ctx context.Context, request *Remove
     if request == nil {
         request = NewRemoveWorkspaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudstudio", APIVersion, "RemoveWorkspace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveWorkspace require credential")
@@ -439,6 +446,7 @@ func (c *Client) RunWorkspaceWithContext(ctx context.Context, request *RunWorksp
     if request == nil {
         request = NewRunWorkspaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudstudio", APIVersion, "RunWorkspace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunWorkspace require credential")
@@ -488,6 +496,7 @@ func (c *Client) StopWorkspaceWithContext(ctx context.Context, request *StopWork
     if request == nil {
         request = NewStopWorkspaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudstudio", APIVersion, "StopWorkspace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopWorkspace require credential")

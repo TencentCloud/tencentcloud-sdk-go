@@ -92,6 +92,7 @@ func (c *Client) ConfirmVideoTranslateJobWithContext(ctx context.Context, reques
     if request == nil {
         request = NewConfirmVideoTranslateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vtc", APIVersion, "ConfirmVideoTranslateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ConfirmVideoTranslateJob require credential")
@@ -165,6 +166,7 @@ func (c *Client) DescribeVideoTranslateJobWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeVideoTranslateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vtc", APIVersion, "DescribeVideoTranslateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoTranslateJob require credential")
@@ -454,6 +456,7 @@ func (c *Client) SubmitVideoTranslateJobWithContext(ctx context.Context, request
     if request == nil {
         request = NewSubmitVideoTranslateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vtc", APIVersion, "SubmitVideoTranslateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitVideoTranslateJob require credential")

@@ -94,6 +94,7 @@ func (c *Client) ActivateHardwareWithContext(ctx context.Context, request *Activ
     if request == nil {
         request = NewActivateHardwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "ActivateHardware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ActivateHardware require credential")
@@ -153,6 +154,7 @@ func (c *Client) AddDeviceWithContext(ctx context.Context, request *AddDeviceReq
     if request == nil {
         request = NewAddDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "AddDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddDevice require credential")
@@ -206,6 +208,7 @@ func (c *Client) AddGroupWithContext(ctx context.Context, request *AddGroupReque
     if request == nil {
         request = NewAddGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "AddGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddGroup require credential")
@@ -263,6 +266,7 @@ func (c *Client) AddHardwareWithContext(ctx context.Context, request *AddHardwar
     if request == nil {
         request = NewAddHardwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "AddHardware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddHardware require credential")
@@ -320,6 +324,7 @@ func (c *Client) AddL3ConnWithContext(ctx context.Context, request *AddL3ConnReq
     if request == nil {
         request = NewAddL3ConnRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "AddL3Conn")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddL3Conn require credential")
@@ -369,6 +374,7 @@ func (c *Client) CreateEncryptedKeyWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateEncryptedKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "CreateEncryptedKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEncryptedKey require credential")
@@ -422,6 +428,7 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "DeleteDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDevice require credential")
@@ -475,6 +482,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGrou
     if request == nil {
         request = NewDeleteGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "DeleteGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGroup require credential")
@@ -528,6 +536,7 @@ func (c *Client) DeleteL3ConnWithContext(ctx context.Context, request *DeleteL3C
     if request == nil {
         request = NewDeleteL3ConnRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "DeleteL3Conn")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteL3Conn require credential")
@@ -579,6 +588,7 @@ func (c *Client) DownloadActiveDeviceCountWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDownloadActiveDeviceCountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "DownloadActiveDeviceCount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadActiveDeviceCount require credential")
@@ -630,6 +640,7 @@ func (c *Client) GetActiveDeviceCountWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetActiveDeviceCountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetActiveDeviceCount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetActiveDeviceCount require credential")
@@ -683,6 +694,7 @@ func (c *Client) GetDeviceWithContext(ctx context.Context, request *GetDeviceReq
     if request == nil {
         request = NewGetDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDevice require credential")
@@ -736,6 +748,7 @@ func (c *Client) GetDevicePayModeWithContext(ctx context.Context, request *GetDe
     if request == nil {
         request = NewGetDevicePayModeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetDevicePayMode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDevicePayMode require credential")
@@ -789,6 +802,7 @@ func (c *Client) GetDevicesWithContext(ctx context.Context, request *GetDevicesR
     if request == nil {
         request = NewGetDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDevices require credential")
@@ -842,6 +856,7 @@ func (c *Client) GetFlowAlarmInfoWithContext(ctx context.Context, request *GetFl
     if request == nil {
         request = NewGetFlowAlarmInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetFlowAlarmInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFlowAlarmInfo require credential")
@@ -895,6 +910,7 @@ func (c *Client) GetFlowPackagesWithContext(ctx context.Context, request *GetFlo
     if request == nil {
         request = NewGetFlowPackagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetFlowPackages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFlowPackages require credential")
@@ -952,6 +968,7 @@ func (c *Client) GetFlowStatisticWithContext(ctx context.Context, request *GetFl
     if request == nil {
         request = NewGetFlowStatisticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetFlowStatistic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFlowStatistic require credential")
@@ -1009,6 +1026,7 @@ func (c *Client) GetFlowStatisticByGroupWithContext(ctx context.Context, request
     if request == nil {
         request = NewGetFlowStatisticByGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetFlowStatisticByGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFlowStatisticByGroup require credential")
@@ -1066,6 +1084,7 @@ func (c *Client) GetFlowStatisticByRegionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewGetFlowStatisticByRegionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetFlowStatisticByRegion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFlowStatisticByRegion require credential")
@@ -1119,6 +1138,7 @@ func (c *Client) GetGroupDetailWithContext(ctx context.Context, request *GetGrou
     if request == nil {
         request = NewGetGroupDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetGroupDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetGroupDetail require credential")
@@ -1172,6 +1192,7 @@ func (c *Client) GetGroupListWithContext(ctx context.Context, request *GetGroupL
     if request == nil {
         request = NewGetGroupListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetGroupList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetGroupList require credential")
@@ -1227,6 +1248,7 @@ func (c *Client) GetHardwareListWithContext(ctx context.Context, request *GetHar
     if request == nil {
         request = NewGetHardwareListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetHardwareList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetHardwareList require credential")
@@ -1280,6 +1302,7 @@ func (c *Client) GetL3ConnListWithContext(ctx context.Context, request *GetL3Con
     if request == nil {
         request = NewGetL3ConnListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetL3ConnList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetL3ConnList require credential")
@@ -1333,6 +1356,7 @@ func (c *Client) GetMultiFlowStatisticWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetMultiFlowStatisticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetMultiFlowStatistic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetMultiFlowStatistic require credential")
@@ -1388,6 +1412,7 @@ func (c *Client) GetNetMonitorWithContext(ctx context.Context, request *GetNetMo
     if request == nil {
         request = NewGetNetMonitorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetNetMonitor")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetNetMonitor require credential")
@@ -1437,6 +1462,7 @@ func (c *Client) GetPublicKeyWithContext(ctx context.Context, request *GetPublic
     if request == nil {
         request = NewGetPublicKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetPublicKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetPublicKey require credential")
@@ -1496,6 +1522,7 @@ func (c *Client) GetStatisticDataWithContext(ctx context.Context, request *GetSt
     if request == nil {
         request = NewGetStatisticDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetStatisticData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetStatisticData require credential")
@@ -1551,6 +1578,7 @@ func (c *Client) GetVendorHardwareWithContext(ctx context.Context, request *GetV
     if request == nil {
         request = NewGetVendorHardwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetVendorHardware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetVendorHardware require credential")
@@ -1604,6 +1632,7 @@ func (c *Client) GroupAddDeviceWithContext(ctx context.Context, request *GroupAd
     if request == nil {
         request = NewGroupAddDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GroupAddDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GroupAddDevice require credential")
@@ -1657,6 +1686,7 @@ func (c *Client) GroupDeleteDeviceWithContext(ctx context.Context, request *Grou
     if request == nil {
         request = NewGroupDeleteDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GroupDeleteDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GroupDeleteDevice require credential")
@@ -1720,6 +1750,7 @@ func (c *Client) ModifyPackageRenewFlagWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyPackageRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "ModifyPackageRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPackageRenewFlag require credential")
@@ -1791,6 +1822,7 @@ func (c *Client) OrderFlowPackageWithContext(ctx context.Context, request *Order
     if request == nil {
         request = NewOrderFlowPackageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "OrderFlowPackage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OrderFlowPackage require credential")
@@ -1860,6 +1892,7 @@ func (c *Client) OrderPerLicenseWithContext(ctx context.Context, request *OrderP
     if request == nil {
         request = NewOrderPerLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "OrderPerLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OrderPerLicense require credential")
@@ -1915,6 +1948,7 @@ func (c *Client) SetNotifyUrlWithContext(ctx context.Context, request *SetNotify
     if request == nil {
         request = NewSetNotifyUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "SetNotifyUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetNotifyUrl require credential")
@@ -1970,6 +2004,7 @@ func (c *Client) UpdateDeviceWithContext(ctx context.Context, request *UpdateDev
     if request == nil {
         request = NewUpdateDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "UpdateDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDevice require credential")
@@ -2023,6 +2058,7 @@ func (c *Client) UpdateGroupWithContext(ctx context.Context, request *UpdateGrou
     if request == nil {
         request = NewUpdateGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "UpdateGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateGroup require credential")
@@ -2080,6 +2116,7 @@ func (c *Client) UpdateHardwareWithContext(ctx context.Context, request *UpdateH
     if request == nil {
         request = NewUpdateHardwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "UpdateHardware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateHardware require credential")
@@ -2133,6 +2170,7 @@ func (c *Client) UpdateL3CidrWithContext(ctx context.Context, request *UpdateL3C
     if request == nil {
         request = NewUpdateL3CidrRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "UpdateL3Cidr")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateL3Cidr require credential")
@@ -2186,6 +2224,7 @@ func (c *Client) UpdateL3ConnWithContext(ctx context.Context, request *UpdateL3C
     if request == nil {
         request = NewUpdateL3ConnRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "UpdateL3Conn")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateL3Conn require credential")
@@ -2239,6 +2278,7 @@ func (c *Client) UpdateL3SwitchWithContext(ctx context.Context, request *UpdateL
     if request == nil {
         request = NewUpdateL3SwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "UpdateL3Switch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateL3Switch require credential")

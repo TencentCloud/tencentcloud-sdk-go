@@ -98,6 +98,7 @@ func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateEnvironmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "CreateEnvironment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEnvironment require credential")
@@ -163,6 +164,7 @@ func (c *Client) CreateVolumeWithContext(ctx context.Context, request *CreateVol
     if request == nil {
         request = NewCreateVolumeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "CreateVolume")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVolume require credential")
@@ -228,6 +230,7 @@ func (c *Client) DeleteEnvironmentWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteEnvironmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DeleteEnvironment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEnvironment require credential")
@@ -293,6 +296,7 @@ func (c *Client) DeleteVolumeWithContext(ctx context.Context, request *DeleteVol
     if request == nil {
         request = NewDeleteVolumeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DeleteVolume")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteVolume require credential")
@@ -358,6 +362,7 @@ func (c *Client) DeleteVolumeDataWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteVolumeDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DeleteVolumeData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteVolumeData require credential")
@@ -415,6 +420,7 @@ func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeEnvironments")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvironments require credential")
@@ -476,6 +482,7 @@ func (c *Client) DescribeRunGroupsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeRunGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeRunGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRunGroups require credential")
@@ -537,6 +544,7 @@ func (c *Client) DescribeRunsWithContext(ctx context.Context, request *DescribeR
     if request == nil {
         request = NewDescribeRunsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeRuns")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRuns require credential")
@@ -598,6 +606,7 @@ func (c *Client) DescribeTablesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTables require credential")
@@ -661,6 +670,7 @@ func (c *Client) DescribeTablesRowsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTablesRowsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeTablesRows")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTablesRows require credential")
@@ -724,6 +734,7 @@ func (c *Client) DescribeVolumesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeVolumesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeVolumes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVolumes require credential")
@@ -787,6 +798,7 @@ func (c *Client) GetRunCallsWithContext(ctx context.Context, request *GetRunCall
     if request == nil {
         request = NewGetRunCallsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "GetRunCalls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRunCalls require credential")
@@ -854,6 +866,7 @@ func (c *Client) GetRunMetadataFileWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetRunMetadataFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "GetRunMetadataFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRunMetadataFile require credential")
@@ -917,6 +930,7 @@ func (c *Client) GetRunStatusWithContext(ctx context.Context, request *GetRunSta
     if request == nil {
         request = NewGetRunStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "GetRunStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRunStatus require credential")
@@ -1008,6 +1022,7 @@ func (c *Client) ImportTableFileWithContext(ctx context.Context, request *Import
     if request == nil {
         request = NewImportTableFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "ImportTableFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportTableFile require credential")
@@ -1073,6 +1088,7 @@ func (c *Client) ModifyVolumeWithContext(ctx context.Context, request *ModifyVol
     if request == nil {
         request = NewModifyVolumeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "ModifyVolume")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVolume require credential")
@@ -1146,6 +1162,7 @@ func (c *Client) RetryRunsWithContext(ctx context.Context, request *RetryRunsReq
     if request == nil {
         request = NewRetryRunsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "RetryRuns")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RetryRuns require credential")
@@ -1237,6 +1254,7 @@ func (c *Client) RunApplicationWithContext(ctx context.Context, request *RunAppl
     if request == nil {
         request = NewRunApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "RunApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunApplication require credential")
@@ -1330,6 +1348,7 @@ func (c *Client) RunWorkflowWithContext(ctx context.Context, request *RunWorkflo
     if request == nil {
         request = NewRunWorkflowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "RunWorkflow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunWorkflow require credential")
@@ -1393,6 +1412,7 @@ func (c *Client) TerminateRunGroupWithContext(ctx context.Context, request *Term
     if request == nil {
         request = NewTerminateRunGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "TerminateRunGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateRunGroup require credential")

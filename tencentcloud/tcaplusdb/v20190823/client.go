@@ -92,6 +92,7 @@ func (c *Client) ClearTablesWithContext(ctx context.Context, request *ClearTable
     if request == nil {
         request = NewClearTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ClearTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ClearTables require credential")
@@ -149,6 +150,7 @@ func (c *Client) CompareIdlFilesWithContext(ctx context.Context, request *Compar
     if request == nil {
         request = NewCompareIdlFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "CompareIdlFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CompareIdlFiles require credential")
@@ -206,6 +208,7 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, request *CreateBac
     if request == nil {
         request = NewCreateBackupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "CreateBackup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBackup require credential")
@@ -271,6 +274,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "CreateCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCluster require credential")
@@ -336,6 +340,7 @@ func (c *Client) CreateSnapshotsWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateSnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "CreateSnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSnapshots require credential")
@@ -397,6 +402,7 @@ func (c *Client) CreateTableGroupWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateTableGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "CreateTableGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTableGroup require credential")
@@ -462,6 +468,7 @@ func (c *Client) CreateTablesWithContext(ctx context.Context, request *CreateTab
     if request == nil {
         request = NewCreateTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "CreateTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTables require credential")
@@ -521,6 +528,7 @@ func (c *Client) DeleteBackupRecordsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteBackupRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DeleteBackupRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBackupRecords require credential")
@@ -576,6 +584,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DeleteCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCluster require credential")
@@ -637,6 +646,7 @@ func (c *Client) DeleteIdlFilesWithContext(ctx context.Context, request *DeleteI
     if request == nil {
         request = NewDeleteIdlFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DeleteIdlFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIdlFiles require credential")
@@ -702,6 +712,7 @@ func (c *Client) DeleteSnapshotsWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteSnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DeleteSnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSnapshots require credential")
@@ -761,6 +772,7 @@ func (c *Client) DeleteTableDataFlowWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteTableDataFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DeleteTableDataFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTableDataFlow require credential")
@@ -816,6 +828,7 @@ func (c *Client) DeleteTableGroupWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteTableGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DeleteTableGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTableGroup require credential")
@@ -875,6 +888,7 @@ func (c *Client) DeleteTableIndexWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteTableIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DeleteTableIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTableIndex require credential")
@@ -934,6 +948,7 @@ func (c *Client) DeleteTablesWithContext(ctx context.Context, request *DeleteTab
     if request == nil {
         request = NewDeleteTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DeleteTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTables require credential")
@@ -993,6 +1008,7 @@ func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeApplicationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeApplications")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApplications require credential")
@@ -1068,6 +1084,7 @@ func (c *Client) DescribeBackupRecordsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeBackupRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeBackupRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBackupRecords require credential")
@@ -1125,6 +1142,7 @@ func (c *Client) DescribeClusterTagsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeClusterTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeClusterTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterTags require credential")
@@ -1180,6 +1198,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusters require credential")
@@ -1235,6 +1254,7 @@ func (c *Client) DescribeIdlFileInfosWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeIdlFileInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeIdlFileInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIdlFileInfos require credential")
@@ -1292,6 +1312,7 @@ func (c *Client) DescribeMachineWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeMachineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeMachine")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMachine require credential")
@@ -1341,6 +1362,7 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRegions require credential")
@@ -1406,6 +1428,7 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeSnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSnapshots require credential")
@@ -1463,6 +1486,7 @@ func (c *Client) DescribeTableGroupTagsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTableGroupTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeTableGroupTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTableGroupTags require credential")
@@ -1522,6 +1546,7 @@ func (c *Client) DescribeTableGroupsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTableGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeTableGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTableGroups require credential")
@@ -1579,6 +1604,7 @@ func (c *Client) DescribeTableTagsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeTableTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeTableTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTableTags require credential")
@@ -1638,6 +1664,7 @@ func (c *Client) DescribeTablesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTables require credential")
@@ -1695,6 +1722,7 @@ func (c *Client) DescribeTablesInRecycleWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeTablesInRecycleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeTablesInRecycle")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTablesInRecycle require credential")
@@ -1746,6 +1774,7 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTasks require credential")
@@ -1795,6 +1824,7 @@ func (c *Client) DescribeUinInWhitelistWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeUinInWhitelistRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DescribeUinInWhitelist")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUinInWhitelist require credential")
@@ -1852,6 +1882,7 @@ func (c *Client) DisableRestProxyWithContext(ctx context.Context, request *Disab
     if request == nil {
         request = NewDisableRestProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "DisableRestProxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableRestProxy require credential")
@@ -1927,6 +1958,7 @@ func (c *Client) EnableRestProxyWithContext(ctx context.Context, request *Enable
     if request == nil {
         request = NewEnableRestProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "EnableRestProxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableRestProxy require credential")
@@ -1994,6 +2026,7 @@ func (c *Client) ImportSnapshotsWithContext(ctx context.Context, request *Import
     if request == nil {
         request = NewImportSnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ImportSnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportSnapshots require credential")
@@ -2059,6 +2092,7 @@ func (c *Client) MergeTablesDataWithContext(ctx context.Context, request *MergeT
     if request == nil {
         request = NewMergeTablesDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "MergeTablesData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MergeTablesData require credential")
@@ -2124,6 +2158,7 @@ func (c *Client) ModifyCensorshipWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyCensorshipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifyCensorship")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCensorship require credential")
@@ -2183,6 +2218,7 @@ func (c *Client) ModifyClusterMachineWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyClusterMachineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifyClusterMachine")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterMachine require credential")
@@ -2244,6 +2280,7 @@ func (c *Client) ModifyClusterNameWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyClusterNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifyClusterName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterName require credential")
@@ -2309,6 +2346,7 @@ func (c *Client) ModifyClusterPasswordWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyClusterPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifyClusterPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterPassword require credential")
@@ -2368,6 +2406,7 @@ func (c *Client) ModifyClusterTagsWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyClusterTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifyClusterTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterTags require credential")
@@ -2433,6 +2472,7 @@ func (c *Client) ModifySnapshotsWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifySnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifySnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySnapshots require credential")
@@ -2490,6 +2530,7 @@ func (c *Client) ModifyTableGroupNameWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyTableGroupNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifyTableGroupName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTableGroupName require credential")
@@ -2549,6 +2590,7 @@ func (c *Client) ModifyTableGroupTagsWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyTableGroupTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifyTableGroupTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTableGroupTags require credential")
@@ -2608,6 +2650,7 @@ func (c *Client) ModifyTableMemosWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyTableMemosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifyTableMemos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTableMemos require credential")
@@ -2669,6 +2712,7 @@ func (c *Client) ModifyTableQuotasWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyTableQuotasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifyTableQuotas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTableQuotas require credential")
@@ -2730,6 +2774,7 @@ func (c *Client) ModifyTableTagsWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyTableTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifyTableTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTableTags require credential")
@@ -2791,6 +2836,7 @@ func (c *Client) ModifyTablesWithContext(ctx context.Context, request *ModifyTab
     if request == nil {
         request = NewModifyTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "ModifyTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTables require credential")
@@ -2850,6 +2896,7 @@ func (c *Client) RecoverRecycleTablesWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewRecoverRecycleTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "RecoverRecycleTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecoverRecycleTables require credential")
@@ -2919,6 +2966,7 @@ func (c *Client) RollbackTablesWithContext(ctx context.Context, request *Rollbac
     if request == nil {
         request = NewRollbackTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "RollbackTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RollbackTables require credential")
@@ -2982,6 +3030,7 @@ func (c *Client) SetBackupExpireRuleWithContext(ctx context.Context, request *Se
     if request == nil {
         request = NewSetBackupExpireRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "SetBackupExpireRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetBackupExpireRule require credential")
@@ -3045,6 +3094,7 @@ func (c *Client) SetTableDataFlowWithContext(ctx context.Context, request *SetTa
     if request == nil {
         request = NewSetTableDataFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "SetTableDataFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetTableDataFlow require credential")
@@ -3106,6 +3156,7 @@ func (c *Client) SetTableIndexWithContext(ctx context.Context, request *SetTable
     if request == nil {
         request = NewSetTableIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "SetTableIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetTableIndex require credential")
@@ -3169,6 +3220,7 @@ func (c *Client) UpdateApplyWithContext(ctx context.Context, request *UpdateAppl
     if request == nil {
         request = NewUpdateApplyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "UpdateApply")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateApply require credential")
@@ -3226,6 +3278,7 @@ func (c *Client) VerifyIdlFilesWithContext(ctx context.Context, request *VerifyI
     if request == nil {
         request = NewVerifyIdlFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcaplusdb", APIVersion, "VerifyIdlFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyIdlFiles require credential")

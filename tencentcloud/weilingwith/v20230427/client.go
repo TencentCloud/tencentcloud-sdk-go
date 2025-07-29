@@ -98,6 +98,7 @@ func (c *Client) AddAlarmProcessRecordWithContext(ctx context.Context, request *
     if request == nil {
         request = NewAddAlarmProcessRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "AddAlarmProcessRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddAlarmProcessRecord require credential")
@@ -159,6 +160,7 @@ func (c *Client) BatchCreateDeviceWithContext(ctx context.Context, request *Batc
     if request == nil {
         request = NewBatchCreateDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "BatchCreateDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchCreateDevice require credential")
@@ -208,6 +210,7 @@ func (c *Client) BatchDeleteDeviceWithContext(ctx context.Context, request *Batc
     if request == nil {
         request = NewBatchDeleteDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "BatchDeleteDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchDeleteDevice require credential")
@@ -267,6 +270,7 @@ func (c *Client) BatchKillAlarmWithContext(ctx context.Context, request *BatchKi
     if request == nil {
         request = NewBatchKillAlarmRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "BatchKillAlarm")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchKillAlarm require credential")
@@ -320,6 +324,7 @@ func (c *Client) BatchReportAppMessageWithContext(ctx context.Context, request *
     if request == nil {
         request = NewBatchReportAppMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "BatchReportAppMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchReportAppMessage require credential")
@@ -391,6 +396,7 @@ func (c *Client) ChangeAlarmStatusWithContext(ctx context.Context, request *Chan
     if request == nil {
         request = NewChangeAlarmStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "ChangeAlarmStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChangeAlarmStatus require credential")
@@ -444,6 +450,7 @@ func (c *Client) ControlCameraPTZWithContext(ctx context.Context, request *Contr
     if request == nil {
         request = NewControlCameraPTZRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "ControlCameraPTZ")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ControlCameraPTZ require credential")
@@ -505,6 +512,7 @@ func (c *Client) ControlDeviceWithContext(ctx context.Context, request *ControlD
     if request == nil {
         request = NewControlDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "ControlDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ControlDevice require credential")
@@ -566,6 +574,7 @@ func (c *Client) CreateApplicationTokenWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateApplicationTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "CreateApplicationToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApplicationToken require credential")
@@ -627,6 +636,7 @@ func (c *Client) DeleteDeviceGroupWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteDeviceGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DeleteDeviceGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDeviceGroup require credential")
@@ -680,6 +690,7 @@ func (c *Client) DescribeActionListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeActionListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeActionList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeActionList require credential")
@@ -733,6 +744,7 @@ func (c *Client) DescribeAdministrationByTagWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAdministrationByTagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeAdministrationByTag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAdministrationByTag require credential")
@@ -786,6 +798,7 @@ func (c *Client) DescribeAlarmLevelListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAlarmLevelListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeAlarmLevelList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlarmLevelList require credential")
@@ -843,6 +856,7 @@ func (c *Client) DescribeAlarmListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAlarmListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeAlarmList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlarmList require credential")
@@ -902,6 +916,7 @@ func (c *Client) DescribeAlarmStatusListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAlarmStatusListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeAlarmStatusList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlarmStatusList require credential")
@@ -955,6 +970,7 @@ func (c *Client) DescribeAlarmTypeListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAlarmTypeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeAlarmTypeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlarmTypeList require credential")
@@ -1016,6 +1032,7 @@ func (c *Client) DescribeApplicationListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeApplicationListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeApplicationList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApplicationList require credential")
@@ -1077,6 +1094,7 @@ func (c *Client) DescribeBuildingListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBuildingListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeBuildingList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBuildingList require credential")
@@ -1130,6 +1148,7 @@ func (c *Client) DescribeBuildingModelWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeBuildingModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeBuildingModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBuildingModel require credential")
@@ -1183,6 +1202,7 @@ func (c *Client) DescribeBuildingProfileWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeBuildingProfileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeBuildingProfile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBuildingProfile require credential")
@@ -1236,6 +1256,7 @@ func (c *Client) DescribeCameraExtendInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCameraExtendInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeCameraExtendInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCameraExtendInfo require credential")
@@ -1297,6 +1318,7 @@ func (c *Client) DescribeCityWorkspaceListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCityWorkspaceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeCityWorkspaceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCityWorkspaceList require credential")
@@ -1350,6 +1372,7 @@ func (c *Client) DescribeDeviceGroupListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDeviceGroupListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeDeviceGroupList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceGroupList require credential")
@@ -1415,6 +1438,7 @@ func (c *Client) DescribeDeviceListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDeviceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeDeviceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceList require credential")
@@ -1474,6 +1498,7 @@ func (c *Client) DescribeDeviceShadowListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDeviceShadowListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeDeviceShadowList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceShadowList require credential")
@@ -1533,6 +1558,7 @@ func (c *Client) DescribeDeviceStatusListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDeviceStatusListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeDeviceStatusList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceStatusList require credential")
@@ -1584,6 +1610,7 @@ func (c *Client) DescribeDeviceStatusStatWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDeviceStatusStatRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeDeviceStatusStat")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceStatusStat require credential")
@@ -1637,6 +1664,7 @@ func (c *Client) DescribeDeviceTagListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDeviceTagListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeDeviceTagList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceTagList require credential")
@@ -1690,6 +1718,7 @@ func (c *Client) DescribeDeviceTypeListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDeviceTypeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeDeviceTypeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceTypeList require credential")
@@ -1743,6 +1772,7 @@ func (c *Client) DescribeEdgeApplicationTokenWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeEdgeApplicationTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeEdgeApplicationToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEdgeApplicationToken require credential")
@@ -1796,6 +1826,7 @@ func (c *Client) DescribeElementProfilePageWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeElementProfilePageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeElementProfilePage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeElementProfilePage require credential")
@@ -1849,6 +1880,7 @@ func (c *Client) DescribeElementProfileTreeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeElementProfileTreeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeElementProfileTree")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeElementProfileTree require credential")
@@ -1902,6 +1934,7 @@ func (c *Client) DescribeEventListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeEventListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeEventList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEventList require credential")
@@ -1959,6 +1992,7 @@ func (c *Client) DescribeFileDownloadURLWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeFileDownloadURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeFileDownloadURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFileDownloadURL require credential")
@@ -2016,6 +2050,7 @@ func (c *Client) DescribeFileUploadURLWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFileUploadURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeFileUploadURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFileUploadURL require credential")
@@ -2069,6 +2104,7 @@ func (c *Client) DescribeInterfaceListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInterfaceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeInterfaceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInterfaceList require credential")
@@ -2122,6 +2158,7 @@ func (c *Client) DescribeLinkRuleListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeLinkRuleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeLinkRuleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLinkRuleList require credential")
@@ -2177,6 +2214,7 @@ func (c *Client) DescribeModelListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeModelListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeModelList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelList require credential")
@@ -2234,6 +2272,7 @@ func (c *Client) DescribeProductListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeProductListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeProductList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProductList require credential")
@@ -2287,6 +2326,7 @@ func (c *Client) DescribePropertyListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribePropertyListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribePropertyList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePropertyList require credential")
@@ -2342,6 +2382,7 @@ func (c *Client) DescribeRuleDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeRuleDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeRuleDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRuleDetail require credential")
@@ -2395,6 +2436,7 @@ func (c *Client) DescribeSceneListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSceneListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeSceneList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSceneList require credential")
@@ -2448,6 +2490,7 @@ func (c *Client) DescribeSpaceDeviceIdListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSpaceDeviceIdListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeSpaceDeviceIdList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSpaceDeviceIdList require credential")
@@ -2501,6 +2544,7 @@ func (c *Client) DescribeSpaceDeviceRelationListWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeSpaceDeviceRelationListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeSpaceDeviceRelationList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSpaceDeviceRelationList require credential")
@@ -2554,6 +2598,7 @@ func (c *Client) DescribeSpaceInfoByDeviceIdWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeSpaceInfoByDeviceIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeSpaceInfoByDeviceId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSpaceInfoByDeviceId require credential")
@@ -2607,6 +2652,7 @@ func (c *Client) DescribeSpaceRelationByDeviceIdWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeSpaceRelationByDeviceIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeSpaceRelationByDeviceId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSpaceRelationByDeviceId require credential")
@@ -2660,6 +2706,7 @@ func (c *Client) DescribeSpaceTypeListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeSpaceTypeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeSpaceTypeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSpaceTypeList require credential")
@@ -2713,6 +2760,7 @@ func (c *Client) DescribeTenantBuildingCountAndAreaWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeTenantBuildingCountAndAreaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeTenantBuildingCountAndArea")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTenantBuildingCountAndArea require credential")
@@ -2764,6 +2812,7 @@ func (c *Client) DescribeTenantDepartmentListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeTenantDepartmentListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeTenantDepartmentList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTenantDepartmentList require credential")
@@ -2819,6 +2868,7 @@ func (c *Client) DescribeTenantUserListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTenantUserListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeTenantUserList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTenantUserList require credential")
@@ -2874,6 +2924,7 @@ func (c *Client) DescribeVideoCloudRecordWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeVideoCloudRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeVideoCloudRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoCloudRecord require credential")
@@ -2951,6 +3002,7 @@ func (c *Client) DescribeVideoLiveStreamWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeVideoLiveStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeVideoLiveStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoLiveStream require credential")
@@ -3034,6 +3086,7 @@ func (c *Client) DescribeVideoRecordStreamWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeVideoRecordStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeVideoRecordStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoRecordStream require credential")
@@ -3087,6 +3140,7 @@ func (c *Client) DescribeWorkSpaceBuildingCountAndAreaWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeWorkSpaceBuildingCountAndAreaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeWorkSpaceBuildingCountAndArea")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWorkSpaceBuildingCountAndArea require credential")
@@ -3142,6 +3196,7 @@ func (c *Client) DescribeWorkspaceListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeWorkspaceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeWorkspaceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWorkspaceList require credential")
@@ -3195,6 +3250,7 @@ func (c *Client) DescribeWorkspaceUserListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeWorkspaceUserListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeWorkspaceUserList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWorkspaceUserList require credential")
@@ -3244,6 +3300,7 @@ func (c *Client) ModifyDeviceFieldWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyDeviceFieldRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "ModifyDeviceField")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDeviceField require credential")
@@ -3293,6 +3350,7 @@ func (c *Client) ModifyDeviceGroupWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyDeviceGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "ModifyDeviceGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDeviceGroup require credential")
@@ -3350,6 +3408,7 @@ func (c *Client) ModifyDeviceNameWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyDeviceNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "ModifyDeviceName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDeviceName require credential")
@@ -3399,6 +3458,7 @@ func (c *Client) ModifyDeviceTagWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyDeviceTagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "ModifyDeviceTag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDeviceTag require credential")
@@ -3452,6 +3512,7 @@ func (c *Client) ReportAppMessageWithContext(ctx context.Context, request *Repor
     if request == nil {
         request = NewReportAppMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "ReportAppMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportAppMessage require credential")
@@ -3505,6 +3566,7 @@ func (c *Client) SaveDeviceGroupWithContext(ctx context.Context, request *SaveDe
     if request == nil {
         request = NewSaveDeviceGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "SaveDeviceGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SaveDeviceGroup require credential")
@@ -3566,6 +3628,7 @@ func (c *Client) StopVideoStreamingWithContext(ctx context.Context, request *Sto
     if request == nil {
         request = NewStopVideoStreamingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "StopVideoStreaming")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopVideoStreaming require credential")
@@ -3623,6 +3686,7 @@ func (c *Client) UpdateWorkspaceParkAttributesWithContext(ctx context.Context, r
     if request == nil {
         request = NewUpdateWorkspaceParkAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "UpdateWorkspaceParkAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateWorkspaceParkAttributes require credential")

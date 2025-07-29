@@ -98,6 +98,7 @@ func (c *Client) ApplyChainMakerBatchUserCertWithContext(ctx context.Context, re
     if request == nil {
         request = NewApplyChainMakerBatchUserCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "ApplyChainMakerBatchUserCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyChainMakerBatchUserCert require credential")
@@ -189,6 +190,7 @@ func (c *Client) ApplyUserCertWithContext(ctx context.Context, request *ApplyUse
     if request == nil {
         request = NewApplyUserCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "ApplyUserCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyUserCert require credential")
@@ -242,6 +244,7 @@ func (c *Client) DescribeFabricBlockWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeFabricBlockRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "DescribeFabricBlock")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFabricBlock require credential")
@@ -295,6 +298,7 @@ func (c *Client) DescribeFabricTransactionWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeFabricTransactionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "DescribeFabricTransaction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFabricTransaction require credential")
@@ -384,6 +388,7 @@ func (c *Client) DownloadUserCertWithContext(ctx context.Context, request *Downl
     if request == nil {
         request = NewDownloadUserCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "DownloadUserCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadUserCert require credential")
@@ -457,6 +462,7 @@ func (c *Client) GetBlockListWithContext(ctx context.Context, request *GetBlockL
     if request == nil {
         request = NewGetBlockListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "GetBlockList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetBlockList require credential")
@@ -540,6 +546,7 @@ func (c *Client) GetBlockTransactionListForUserWithContext(ctx context.Context, 
     if request == nil {
         request = NewGetBlockTransactionListForUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "GetBlockTransactionListForUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetBlockTransactionListForUser require credential")
@@ -607,6 +614,7 @@ func (c *Client) GetClusterSummaryWithContext(ctx context.Context, request *GetC
     if request == nil {
         request = NewGetClusterSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "GetClusterSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetClusterSummary require credential")
@@ -686,6 +694,7 @@ func (c *Client) GetInvokeTxWithContext(ctx context.Context, request *GetInvokeT
     if request == nil {
         request = NewGetInvokeTxRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "GetInvokeTx")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetInvokeTx require credential")
@@ -759,6 +768,7 @@ func (c *Client) GetLatestTransactionListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewGetLatestTransactionListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "GetLatestTransactionList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetLatestTransactionList require credential")
@@ -836,6 +846,7 @@ func (c *Client) GetTransactionDetailForUserWithContext(ctx context.Context, req
     if request == nil {
         request = NewGetTransactionDetailForUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "GetTransactionDetailForUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTransactionDetailForUser require credential")
@@ -935,6 +946,7 @@ func (c *Client) InvokeWithContext(ctx context.Context, request *InvokeRequest) 
     if request == nil {
         request = NewInvokeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "Invoke")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Invoke require credential")
@@ -1066,6 +1078,7 @@ func (c *Client) InvokeChainMakerContractWithContext(ctx context.Context, reques
     if request == nil {
         request = NewInvokeChainMakerContractRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "InvokeChainMakerContract")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InvokeChainMakerContract require credential")
@@ -1133,6 +1146,7 @@ func (c *Client) InvokeChainMakerDemoContractWithContext(ctx context.Context, re
     if request == nil {
         request = NewInvokeChainMakerDemoContractRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "InvokeChainMakerDemoContract")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InvokeChainMakerDemoContract require credential")
@@ -1188,6 +1202,7 @@ func (c *Client) InvokeFabricChaincodeWithContext(ctx context.Context, request *
     if request == nil {
         request = NewInvokeFabricChaincodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "InvokeFabricChaincode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InvokeFabricChaincode require credential")
@@ -1283,6 +1298,7 @@ func (c *Client) QueryWithContext(ctx context.Context, request *QueryRequest) (r
     if request == nil {
         request = NewQueryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "Query")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Query require credential")
@@ -1418,6 +1434,7 @@ func (c *Client) QueryChainMakerBlockTransactionWithContext(ctx context.Context,
     if request == nil {
         request = NewQueryChainMakerBlockTransactionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "QueryChainMakerBlockTransaction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryChainMakerBlockTransaction require credential")
@@ -1549,6 +1566,7 @@ func (c *Client) QueryChainMakerContractWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryChainMakerContractRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "QueryChainMakerContract")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryChainMakerContract require credential")
@@ -1614,6 +1632,7 @@ func (c *Client) QueryChainMakerDemoBlockTransactionWithContext(ctx context.Cont
     if request == nil {
         request = NewQueryChainMakerDemoBlockTransactionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "QueryChainMakerDemoBlockTransaction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryChainMakerDemoBlockTransaction require credential")
@@ -1679,6 +1698,7 @@ func (c *Client) QueryChainMakerDemoContractWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryChainMakerDemoContractRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "QueryChainMakerDemoContract")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryChainMakerDemoContract require credential")
@@ -1744,6 +1764,7 @@ func (c *Client) QueryChainMakerDemoTransactionWithContext(ctx context.Context, 
     if request == nil {
         request = NewQueryChainMakerDemoTransactionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "QueryChainMakerDemoTransaction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryChainMakerDemoTransaction require credential")
@@ -1875,6 +1896,7 @@ func (c *Client) QueryChainMakerTransactionWithContext(ctx context.Context, requ
     if request == nil {
         request = NewQueryChainMakerTransactionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "QueryChainMakerTransaction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryChainMakerTransaction require credential")
@@ -1930,6 +1952,7 @@ func (c *Client) QueryFabricChaincodeWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryFabricChaincodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "QueryFabricChaincode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFabricChaincode require credential")
@@ -1983,6 +2006,7 @@ func (c *Client) SrvInvokeWithContext(ctx context.Context, request *SrvInvokeReq
     if request == nil {
         request = NewSrvInvokeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbaas", APIVersion, "SrvInvoke")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SrvInvoke require credential")

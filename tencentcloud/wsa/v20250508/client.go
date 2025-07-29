@@ -88,6 +88,7 @@ func (c *Client) SearchProWithContext(ctx context.Context, request *SearchProReq
     if request == nil {
         request = NewSearchProRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wsa", APIVersion, "SearchPro")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchPro require credential")

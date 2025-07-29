@@ -86,6 +86,7 @@ func (c *Client) VerifyLicenseWithContext(ctx context.Context, request *VerifyLi
     if request == nil {
         request = NewVerifyLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudapp", APIVersion, "VerifyLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyLicense require credential")

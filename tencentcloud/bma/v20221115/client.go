@@ -118,6 +118,7 @@ func (c *Client) CreateBPBrandWithContext(ctx context.Context, request *CreateBP
     if request == nil {
         request = NewCreateBPBrandRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateBPBrand")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBPBrand require credential")
@@ -229,6 +230,7 @@ func (c *Client) CreateBPFakeAPPWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateBPFakeAPPRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateBPFakeAPP")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBPFakeAPP require credential")
@@ -340,6 +342,7 @@ func (c *Client) CreateBPFakeAPPListWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateBPFakeAPPListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateBPFakeAPPList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBPFakeAPPList require credential")
@@ -451,6 +454,7 @@ func (c *Client) CreateBPFakeURLWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateBPFakeURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateBPFakeURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBPFakeURL require credential")
@@ -562,6 +566,7 @@ func (c *Client) CreateBPFakeURLsWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateBPFakeURLsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateBPFakeURLs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBPFakeURLs require credential")
@@ -673,6 +678,7 @@ func (c *Client) CreateBPWhiteListWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateBPWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateBPWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBPWhiteList require credential")
@@ -784,6 +790,7 @@ func (c *Client) DeleteBPWhiteListWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteBPWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DeleteBPWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBPWhiteList require credential")
@@ -869,6 +876,7 @@ func (c *Client) DescribeBPBrandsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeBPBrandsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeBPBrands")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBPBrands require credential")
@@ -980,6 +988,7 @@ func (c *Client) DescribeBPFakeAPPListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeBPFakeAPPListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeBPFakeAPPList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBPFakeAPPList require credential")
@@ -1091,6 +1100,7 @@ func (c *Client) DescribeBPFakeURLsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeBPFakeURLsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeBPFakeURLs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBPFakeURLs require credential")
@@ -1202,6 +1212,7 @@ func (c *Client) DescribeBPWhiteListsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBPWhiteListsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeBPWhiteLists")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBPWhiteLists require credential")

@@ -120,6 +120,7 @@ func (c *Client) CreateCustomerWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateCustomerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "CreateCustomer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomer require credential")
@@ -207,6 +208,7 @@ func (c *Client) CreateJobRecordWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateJobRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "CreateJobRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateJobRecord require credential")
@@ -294,6 +296,7 @@ func (c *Client) DescribeAppsWithContext(ctx context.Context, request *DescribeA
     if request == nil {
         request = NewDescribeAppsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeApps")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApps require credential")
@@ -381,6 +384,7 @@ func (c *Client) DescribeAssetsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeAssetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeAssets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssets require credential")
@@ -468,6 +472,7 @@ func (c *Client) DescribeConfigsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigs require credential")
@@ -555,6 +560,7 @@ func (c *Client) DescribeCustomersWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCustomersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeCustomers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomers require credential")
@@ -642,6 +648,7 @@ func (c *Client) DescribeDarkWebsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeDarkWebsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeDarkWebs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDarkWebs require credential")
@@ -729,6 +736,7 @@ func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomains require credential")
@@ -816,6 +824,7 @@ func (c *Client) DescribeEnterprisesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeEnterprisesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeEnterprises")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnterprises require credential")
@@ -903,6 +912,7 @@ func (c *Client) DescribeFakeAppsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeFakeAppsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeFakeApps")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFakeApps require credential")
@@ -990,6 +1000,7 @@ func (c *Client) DescribeFakeMiniProgramsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeFakeMiniProgramsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeFakeMiniPrograms")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFakeMiniPrograms require credential")
@@ -1077,6 +1088,7 @@ func (c *Client) DescribeFakeWebsitesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFakeWebsitesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeFakeWebsites")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFakeWebsites require credential")
@@ -1164,6 +1176,7 @@ func (c *Client) DescribeFakeWechatOfficialsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeFakeWechatOfficialsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeFakeWechatOfficials")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFakeWechatOfficials require credential")
@@ -1251,6 +1264,7 @@ func (c *Client) DescribeGithubsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeGithubsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeGithubs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGithubs require credential")
@@ -1338,6 +1352,7 @@ func (c *Client) DescribeHttpsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeHttpsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeHttps")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHttps require credential")
@@ -1425,6 +1440,7 @@ func (c *Client) DescribeJobRecordDetailsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeJobRecordDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeJobRecordDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJobRecordDetails require credential")
@@ -1512,6 +1528,7 @@ func (c *Client) DescribeJobRecordsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeJobRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeJobRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJobRecords require credential")
@@ -1599,6 +1616,7 @@ func (c *Client) DescribeLeakageCodesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeLeakageCodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeLeakageCodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLeakageCodes require credential")
@@ -1686,6 +1704,7 @@ func (c *Client) DescribeLeakageDatasWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeLeakageDatasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeLeakageDatas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLeakageDatas require credential")
@@ -1773,6 +1792,7 @@ func (c *Client) DescribeLeakageEmailsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLeakageEmailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeLeakageEmails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLeakageEmails require credential")
@@ -1860,6 +1880,7 @@ func (c *Client) DescribeManagesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeManagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeManages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeManages require credential")
@@ -1947,6 +1968,7 @@ func (c *Client) DescribeNetDisksWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeNetDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeNetDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNetDisks require credential")
@@ -2034,6 +2056,7 @@ func (c *Client) DescribePortsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribePortsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribePorts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePorts require credential")
@@ -2121,6 +2144,7 @@ func (c *Client) DescribeSensitiveInfosWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSensitiveInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeSensitiveInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSensitiveInfos require credential")
@@ -2208,6 +2232,7 @@ func (c *Client) DescribeSubDomainsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeSubDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeSubDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSubDomains require credential")
@@ -2295,6 +2320,7 @@ func (c *Client) DescribeSuspiciousAssetsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSuspiciousAssetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeSuspiciousAssets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSuspiciousAssets require credential")
@@ -2382,6 +2408,7 @@ func (c *Client) DescribeVulsWithContext(ctx context.Context, request *DescribeV
     if request == nil {
         request = NewDescribeVulsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeVuls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVuls require credential")
@@ -2469,6 +2496,7 @@ func (c *Client) DescribeWeakPasswordsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeWeakPasswordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeWeakPasswords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWeakPasswords require credential")
@@ -2556,6 +2584,7 @@ func (c *Client) DescribeWechatAppletsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeWechatAppletsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeWechatApplets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWechatApplets require credential")
@@ -2643,6 +2672,7 @@ func (c *Client) DescribeWechatOfficialAccountsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeWechatOfficialAccountsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeWechatOfficialAccounts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWechatOfficialAccounts require credential")
@@ -2730,6 +2760,7 @@ func (c *Client) ModifyCustomerWithContext(ctx context.Context, request *ModifyC
     if request == nil {
         request = NewModifyCustomerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "ModifyCustomer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomer require credential")
@@ -2817,6 +2848,7 @@ func (c *Client) ModifyLabelWithContext(ctx context.Context, request *ModifyLabe
     if request == nil {
         request = NewModifyLabelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "ModifyLabel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLabel require credential")
@@ -2904,6 +2936,7 @@ func (c *Client) StopJobRecordWithContext(ctx context.Context, request *StopJobR
     if request == nil {
         request = NewStopJobRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "StopJobRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopJobRecord require credential")

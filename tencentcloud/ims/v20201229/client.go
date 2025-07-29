@@ -232,6 +232,7 @@ func (c *Client) CreateImageModerationAsyncTaskWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateImageModerationAsyncTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ims", APIVersion, "CreateImageModerationAsyncTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateImageModerationAsyncTask require credential")
@@ -539,6 +540,7 @@ func (c *Client) ImageModerationWithContext(ctx context.Context, request *ImageM
     if request == nil {
         request = NewImageModerationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ims", APIVersion, "ImageModeration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageModeration require credential")

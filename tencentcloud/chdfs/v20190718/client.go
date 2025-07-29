@@ -110,6 +110,7 @@ func (c *Client) CreateAccessGroupWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAccessGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "CreateAccessGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAccessGroup require credential")
@@ -189,6 +190,7 @@ func (c *Client) CreateAccessRulesWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAccessRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "CreateAccessRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAccessRules require credential")
@@ -268,6 +270,7 @@ func (c *Client) CreateFileSystemWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "CreateFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFileSystem require credential")
@@ -347,6 +350,7 @@ func (c *Client) CreateLifeCycleRulesWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateLifeCycleRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "CreateLifeCycleRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLifeCycleRules require credential")
@@ -434,6 +438,7 @@ func (c *Client) CreateMountPointWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateMountPointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "CreateMountPoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMountPoint require credential")
@@ -513,6 +518,7 @@ func (c *Client) CreateRestoreTasksWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateRestoreTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "CreateRestoreTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRestoreTasks require credential")
@@ -586,6 +592,7 @@ func (c *Client) DeleteAccessGroupWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteAccessGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DeleteAccessGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAccessGroup require credential")
@@ -655,6 +662,7 @@ func (c *Client) DeleteAccessRulesWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteAccessRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DeleteAccessRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAccessRules require credential")
@@ -730,6 +738,7 @@ func (c *Client) DeleteFileSystemWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DeleteFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFileSystem require credential")
@@ -799,6 +808,7 @@ func (c *Client) DeleteLifeCycleRulesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteLifeCycleRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DeleteLifeCycleRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLifeCycleRules require credential")
@@ -870,6 +880,7 @@ func (c *Client) DeleteMountPointWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteMountPointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DeleteMountPoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMountPoint require credential")
@@ -937,6 +948,7 @@ func (c *Client) DescribeAccessGroupsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAccessGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DescribeAccessGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessGroups require credential")
@@ -1008,6 +1020,7 @@ func (c *Client) DescribeAccessRulesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAccessRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DescribeAccessRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessRules require credential")
@@ -1081,6 +1094,7 @@ func (c *Client) DescribeFileSystemWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DescribeFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFileSystem require credential")
@@ -1148,6 +1162,7 @@ func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeFileSystemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DescribeFileSystems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFileSystems require credential")
@@ -1221,6 +1236,7 @@ func (c *Client) DescribeLifeCycleRulesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeLifeCycleRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DescribeLifeCycleRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLifeCycleRules require credential")
@@ -1292,6 +1308,7 @@ func (c *Client) DescribeMountPointWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeMountPointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DescribeMountPoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMountPoint require credential")
@@ -1369,6 +1386,7 @@ func (c *Client) DescribeMountPointsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeMountPointsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DescribeMountPoints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMountPoints require credential")
@@ -1442,6 +1460,7 @@ func (c *Client) DescribeResourceTagsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeResourceTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DescribeResourceTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceTags require credential")
@@ -1515,6 +1534,7 @@ func (c *Client) DescribeRestoreTasksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeRestoreTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DescribeRestoreTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRestoreTasks require credential")
@@ -1590,6 +1610,7 @@ func (c *Client) ModifyAccessGroupWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAccessGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "ModifyAccessGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccessGroup require credential")
@@ -1661,6 +1682,7 @@ func (c *Client) ModifyAccessRulesWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAccessRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "ModifyAccessRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccessRules require credential")
@@ -1742,6 +1764,7 @@ func (c *Client) ModifyFileSystemWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "ModifyFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFileSystem require credential")
@@ -1813,6 +1836,7 @@ func (c *Client) ModifyLifeCycleRulesWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyLifeCycleRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "ModifyLifeCycleRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLifeCycleRules require credential")
@@ -1890,6 +1914,7 @@ func (c *Client) ModifyMountPointWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyMountPointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "ModifyMountPoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMountPoint require credential")
@@ -1967,6 +1992,7 @@ func (c *Client) ModifyResourceTagsWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyResourceTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "ModifyResourceTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResourceTags require credential")

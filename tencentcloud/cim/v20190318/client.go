@@ -86,6 +86,7 @@ func (c *Client) DescribeSdkAppidWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeSdkAppidRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cim", APIVersion, "DescribeSdkAppid")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSdkAppid require credential")

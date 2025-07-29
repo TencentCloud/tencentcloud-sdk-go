@@ -76,6 +76,7 @@ func (c *Client) AuthorizedTransferWithContext(ctx context.Context, request *Aut
     if request == nil {
         request = NewAuthorizedTransferRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "AuthorizedTransfer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AuthorizedTransfer require credential")
@@ -129,6 +130,7 @@ func (c *Client) CreateChainBatchWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateChainBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateChainBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateChainBatch require credential")
@@ -182,6 +184,7 @@ func (c *Client) CreateCodeBatchWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateCodeBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateCodeBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCodeBatch require credential")
@@ -235,6 +238,7 @@ func (c *Client) CreateCodePackWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateCodePackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateCodePack")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCodePack require credential")
@@ -288,6 +292,7 @@ func (c *Client) CreateCorporationOrderWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateCorporationOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateCorporationOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCorporationOrder require credential")
@@ -341,6 +346,7 @@ func (c *Client) CreateCustomPackWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateCustomPackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateCustomPack")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomPack require credential")
@@ -394,6 +400,7 @@ func (c *Client) CreateCustomRuleWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateCustomRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateCustomRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomRule require credential")
@@ -449,6 +456,7 @@ func (c *Client) CreateMerchantWithContext(ctx context.Context, request *CreateM
     if request == nil {
         request = NewCreateMerchantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateMerchant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMerchant require credential")
@@ -504,6 +512,7 @@ func (c *Client) CreateProductWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProduct require credential")
@@ -557,6 +566,7 @@ func (c *Client) CreateTraceChainWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateTraceChainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateTraceChain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTraceChain require credential")
@@ -610,6 +620,7 @@ func (c *Client) CreateTraceCodesWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateTraceCodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateTraceCodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTraceCodes require credential")
@@ -663,6 +674,7 @@ func (c *Client) CreateTraceCodesAsyncWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateTraceCodesAsyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateTraceCodesAsync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTraceCodesAsync require credential")
@@ -716,6 +728,7 @@ func (c *Client) CreateTraceDataWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateTraceDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "CreateTraceData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTraceData require credential")
@@ -769,6 +782,7 @@ func (c *Client) DeleteCodeBatchWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteCodeBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DeleteCodeBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCodeBatch require credential")
@@ -822,6 +836,7 @@ func (c *Client) DeleteMerchantWithContext(ctx context.Context, request *DeleteM
     if request == nil {
         request = NewDeleteMerchantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DeleteMerchant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMerchant require credential")
@@ -875,6 +890,7 @@ func (c *Client) DeleteProductWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DeleteProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteProduct require credential")
@@ -924,6 +940,7 @@ func (c *Client) DeleteTraceDataWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteTraceDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DeleteTraceData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTraceData require credential")
@@ -977,6 +994,7 @@ func (c *Client) DescribeAgentCorpsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAgentCorpsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeAgentCorps")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAgentCorps require credential")
@@ -1032,6 +1050,7 @@ func (c *Client) DescribeCodeBatchByIdWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCodeBatchByIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeCodeBatchById")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCodeBatchById require credential")
@@ -1087,6 +1106,7 @@ func (c *Client) DescribeCodeBatchesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCodeBatchesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeCodeBatches")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCodeBatches require credential")
@@ -1150,6 +1170,7 @@ func (c *Client) DescribeCodeBatchsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCodeBatchsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeCodeBatchs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCodeBatchs require credential")
@@ -1201,6 +1222,7 @@ func (c *Client) DescribeCodePackStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCodePackStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeCodePackStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCodePackStatus require credential")
@@ -1252,6 +1274,7 @@ func (c *Client) DescribeCodePackUrlWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCodePackUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeCodePackUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCodePackUrl require credential")
@@ -1305,6 +1328,7 @@ func (c *Client) DescribeCodePacksWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCodePacksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeCodePacks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCodePacks require credential")
@@ -1358,6 +1382,7 @@ func (c *Client) DescribeCodesByPackWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCodesByPackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeCodesByPack")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCodesByPack require credential")
@@ -1411,6 +1436,7 @@ func (c *Client) DescribeCorpQuotasWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCorpQuotasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeCorpQuotas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCorpQuotas require credential")
@@ -1466,6 +1492,7 @@ func (c *Client) DescribeCustomRuleByIdWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCustomRuleByIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeCustomRuleById")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomRuleById require credential")
@@ -1521,6 +1548,7 @@ func (c *Client) DescribeCustomRulesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCustomRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeCustomRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomRules require credential")
@@ -1574,6 +1602,7 @@ func (c *Client) DescribeJobFileUrlWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeJobFileUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeJobFileUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJobFileUrl require credential")
@@ -1627,6 +1656,7 @@ func (c *Client) DescribeMerchantByIdWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMerchantByIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeMerchantById")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMerchantById require credential")
@@ -1686,6 +1716,7 @@ func (c *Client) DescribeMerchantsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeMerchantsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeMerchants")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMerchants require credential")
@@ -1745,6 +1776,7 @@ func (c *Client) DescribePlanQRCodeScanRecordsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribePlanQRCodeScanRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribePlanQRCodeScanRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePlanQRCodeScanRecords require credential")
@@ -1804,6 +1836,7 @@ func (c *Client) DescribePlanQRCodesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribePlanQRCodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribePlanQRCodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePlanQRCodes require credential")
@@ -1857,6 +1890,7 @@ func (c *Client) DescribeProductByIdWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeProductByIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeProductById")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProductById require credential")
@@ -1914,6 +1948,7 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProductsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeProducts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProducts require credential")
@@ -1967,6 +2002,7 @@ func (c *Client) DescribeRawScanLogsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRawScanLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeRawScanLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRawScanLogs require credential")
@@ -2020,6 +2056,7 @@ func (c *Client) DescribeScanLogsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeScanLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeScanLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScanLogs require credential")
@@ -2077,6 +2114,7 @@ func (c *Client) DescribeScanStatsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeScanStatsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeScanStats")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScanStats require credential")
@@ -2134,6 +2172,7 @@ func (c *Client) DescribeTmpTokenWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTmpTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeTmpToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTmpToken require credential")
@@ -2187,6 +2226,7 @@ func (c *Client) DescribeTraceCodeByIdWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTraceCodeByIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeTraceCodeById")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTraceCodeById require credential")
@@ -2240,6 +2280,7 @@ func (c *Client) DescribeTraceCodesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTraceCodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeTraceCodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTraceCodes require credential")
@@ -2293,6 +2334,7 @@ func (c *Client) DescribeTraceDataByIdWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTraceDataByIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeTraceDataById")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTraceDataById require credential")
@@ -2346,6 +2388,7 @@ func (c *Client) DescribeTraceDataListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTraceDataListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeTraceDataList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTraceDataList require credential")
@@ -2399,6 +2442,7 @@ func (c *Client) EffectFeedbackWithContext(ctx context.Context, request *EffectF
     if request == nil {
         request = NewEffectFeedbackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "EffectFeedback")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EffectFeedback require credential")
@@ -2452,6 +2496,7 @@ func (c *Client) ModifyCodeBatchWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyCodeBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "ModifyCodeBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCodeBatch require credential")
@@ -2505,6 +2550,7 @@ func (c *Client) ModifyCustomRuleWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyCustomRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "ModifyCustomRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomRule require credential")
@@ -2558,6 +2604,7 @@ func (c *Client) ModifyCustomRuleStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyCustomRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "ModifyCustomRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomRuleStatus require credential")
@@ -2611,6 +2658,7 @@ func (c *Client) ModifyMerchantWithContext(ctx context.Context, request *ModifyM
     if request == nil {
         request = NewModifyMerchantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "ModifyMerchant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMerchant require credential")
@@ -2664,6 +2712,7 @@ func (c *Client) ModifyProductWithContext(ctx context.Context, request *ModifyPr
     if request == nil {
         request = NewModifyProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "ModifyProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyProduct require credential")
@@ -2717,6 +2766,7 @@ func (c *Client) ModifyTraceCodeWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyTraceCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "ModifyTraceCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTraceCode require credential")
@@ -2774,6 +2824,7 @@ func (c *Client) ModifyTraceCodeUnlinkWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyTraceCodeUnlinkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "ModifyTraceCodeUnlink")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTraceCodeUnlink require credential")
@@ -2827,6 +2878,7 @@ func (c *Client) ModifyTraceDataWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyTraceDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "ModifyTraceData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTraceData require credential")
@@ -2880,6 +2932,7 @@ func (c *Client) ModifyTraceDataRanksWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyTraceDataRanksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "ModifyTraceDataRanks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTraceDataRanks require credential")
@@ -2933,6 +2986,7 @@ func (c *Client) ReportBatchCallbackStatusWithContext(ctx context.Context, reque
     if request == nil {
         request = NewReportBatchCallbackStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "ReportBatchCallbackStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportBatchCallbackStatus require credential")

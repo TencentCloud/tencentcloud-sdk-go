@@ -88,6 +88,7 @@ func (c *Client) BatchDeleteStreamLinkFlowWithContext(ctx context.Context, reque
     if request == nil {
         request = NewBatchDeleteStreamLinkFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "BatchDeleteStreamLinkFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchDeleteStreamLinkFlow require credential")
@@ -153,6 +154,7 @@ func (c *Client) BatchProcessMediaWithContext(ctx context.Context, request *Batc
     if request == nil {
         request = NewBatchProcessMediaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "BatchProcessMedia")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchProcessMedia require credential")
@@ -208,6 +210,7 @@ func (c *Client) BatchStartStreamLinkFlowWithContext(ctx context.Context, reques
     if request == nil {
         request = NewBatchStartStreamLinkFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "BatchStartStreamLinkFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchStartStreamLinkFlow require credential")
@@ -261,6 +264,7 @@ func (c *Client) BatchStopStreamLinkFlowWithContext(ctx context.Context, request
     if request == nil {
         request = NewBatchStopStreamLinkFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "BatchStopStreamLinkFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchStopStreamLinkFlow require credential")
@@ -330,6 +334,7 @@ func (c *Client) CreateAIAnalysisTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAIAnalysisTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateAIAnalysisTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAIAnalysisTemplate require credential")
@@ -411,6 +416,7 @@ func (c *Client) CreateAIRecognitionTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateAIRecognitionTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateAIRecognitionTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAIRecognitionTemplate require credential")
@@ -496,6 +502,7 @@ func (c *Client) CreateAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     if request == nil {
         request = NewCreateAdaptiveDynamicStreamingTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateAdaptiveDynamicStreamingTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAdaptiveDynamicStreamingTemplate require credential")
@@ -565,6 +572,7 @@ func (c *Client) CreateAnimatedGraphicsTemplateWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateAnimatedGraphicsTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateAnimatedGraphicsTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAnimatedGraphicsTemplate require credential")
@@ -624,6 +632,7 @@ func (c *Client) CreateAsrHotwordsWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAsrHotwordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateAsrHotwords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAsrHotwords require credential")
@@ -691,6 +700,7 @@ func (c *Client) CreateContentReviewTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateContentReviewTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateContentReviewTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateContentReviewTemplate require credential")
@@ -762,6 +772,7 @@ func (c *Client) CreateImageSpriteTemplateWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateImageSpriteTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateImageSpriteTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateImageSpriteTemplate require credential")
@@ -817,6 +828,7 @@ func (c *Client) CreateLiveRecordTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateLiveRecordTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateLiveRecordTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLiveRecordTemplate require credential")
@@ -890,6 +902,7 @@ func (c *Client) CreateMediaEvaluationWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateMediaEvaluationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateMediaEvaluation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMediaEvaluation require credential")
@@ -947,6 +960,7 @@ func (c *Client) CreatePersonSampleWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreatePersonSampleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreatePersonSample")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePersonSample require credential")
@@ -1006,6 +1020,7 @@ func (c *Client) CreateQualityControlTemplateWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateQualityControlTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateQualityControlTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateQualityControlTemplate require credential")
@@ -1075,6 +1090,7 @@ func (c *Client) CreateSampleSnapshotTemplateWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateSampleSnapshotTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateSampleSnapshotTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSampleSnapshotTemplate require credential")
@@ -1186,6 +1202,7 @@ func (c *Client) CreateScheduleWithContext(ctx context.Context, request *CreateS
     if request == nil {
         request = NewCreateScheduleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateSchedule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSchedule require credential")
@@ -1253,6 +1270,7 @@ func (c *Client) CreateSmartSubtitleTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateSmartSubtitleTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateSmartSubtitleTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSmartSubtitleTemplate require credential")
@@ -1318,6 +1336,7 @@ func (c *Client) CreateSnapshotByTimeOffsetTemplateWithContext(ctx context.Conte
     if request == nil {
         request = NewCreateSnapshotByTimeOffsetTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateSnapshotByTimeOffsetTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSnapshotByTimeOffsetTemplate require credential")
@@ -1377,6 +1396,7 @@ func (c *Client) CreateStreamLinkEventWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateStreamLinkEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateStreamLinkEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStreamLinkEvent require credential")
@@ -1438,6 +1458,7 @@ func (c *Client) CreateStreamLinkFlowWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateStreamLinkFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateStreamLinkFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStreamLinkFlow require credential")
@@ -1501,6 +1522,7 @@ func (c *Client) CreateStreamLinkInputWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateStreamLinkInputRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateStreamLinkInput")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStreamLinkInput require credential")
@@ -1562,6 +1584,7 @@ func (c *Client) CreateStreamLinkOutputInfoWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateStreamLinkOutputInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateStreamLinkOutputInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStreamLinkOutputInfo require credential")
@@ -1619,6 +1642,7 @@ func (c *Client) CreateStreamLinkSecurityGroupWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateStreamLinkSecurityGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateStreamLinkSecurityGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStreamLinkSecurityGroup require credential")
@@ -1706,6 +1730,7 @@ func (c *Client) CreateTranscodeTemplateWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateTranscodeTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateTranscodeTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTranscodeTemplate require credential")
@@ -1761,6 +1786,7 @@ func (c *Client) CreateVideoDatabaseEntryTaskWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateVideoDatabaseEntryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateVideoDatabaseEntryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVideoDatabaseEntryTask require credential")
@@ -1812,6 +1838,7 @@ func (c *Client) CreateVideoSearchTaskWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateVideoSearchTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateVideoSearchTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVideoSearchTask require credential")
@@ -1901,6 +1928,7 @@ func (c *Client) CreateWatermarkTemplateWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateWatermarkTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateWatermarkTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWatermarkTemplate require credential")
@@ -1954,6 +1982,7 @@ func (c *Client) CreateWordSamplesWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateWordSamplesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateWordSamples")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWordSamples require credential")
@@ -2059,6 +2088,7 @@ func (c *Client) CreateWorkflowWithContext(ctx context.Context, request *CreateW
     if request == nil {
         request = NewCreateWorkflowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateWorkflow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWorkflow require credential")
@@ -2122,6 +2152,7 @@ func (c *Client) DeleteAIAnalysisTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteAIAnalysisTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteAIAnalysisTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAIAnalysisTemplate require credential")
@@ -2179,6 +2210,7 @@ func (c *Client) DeleteAIRecognitionTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteAIRecognitionTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteAIRecognitionTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAIRecognitionTemplate require credential")
@@ -2234,6 +2266,7 @@ func (c *Client) DeleteAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     if request == nil {
         request = NewDeleteAdaptiveDynamicStreamingTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteAdaptiveDynamicStreamingTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAdaptiveDynamicStreamingTemplate require credential")
@@ -2287,6 +2320,7 @@ func (c *Client) DeleteAnimatedGraphicsTemplateWithContext(ctx context.Context, 
     if request == nil {
         request = NewDeleteAnimatedGraphicsTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteAnimatedGraphicsTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAnimatedGraphicsTemplate require credential")
@@ -2342,6 +2376,7 @@ func (c *Client) DeleteAsrHotwordsWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteAsrHotwordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteAsrHotwords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAsrHotwords require credential")
@@ -2397,6 +2432,7 @@ func (c *Client) DeleteContentReviewTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteContentReviewTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteContentReviewTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteContentReviewTemplate require credential")
@@ -2450,6 +2486,7 @@ func (c *Client) DeleteImageSpriteTemplateWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteImageSpriteTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteImageSpriteTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteImageSpriteTemplate require credential")
@@ -2505,6 +2542,7 @@ func (c *Client) DeleteLiveRecordTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteLiveRecordTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteLiveRecordTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLiveRecordTemplate require credential")
@@ -2558,6 +2596,7 @@ func (c *Client) DeletePersonSampleWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeletePersonSampleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeletePersonSample")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePersonSample require credential")
@@ -2611,6 +2650,7 @@ func (c *Client) DeleteQualityControlTemplateWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteQualityControlTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteQualityControlTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteQualityControlTemplate require credential")
@@ -2664,6 +2704,7 @@ func (c *Client) DeleteSampleSnapshotTemplateWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteSampleSnapshotTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteSampleSnapshotTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSampleSnapshotTemplate require credential")
@@ -2719,6 +2760,7 @@ func (c *Client) DeleteScheduleWithContext(ctx context.Context, request *DeleteS
     if request == nil {
         request = NewDeleteScheduleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteSchedule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSchedule require credential")
@@ -2776,6 +2818,7 @@ func (c *Client) DeleteSmartSubtitleTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteSmartSubtitleTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteSmartSubtitleTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSmartSubtitleTemplate require credential")
@@ -2829,6 +2872,7 @@ func (c *Client) DeleteSnapshotByTimeOffsetTemplateWithContext(ctx context.Conte
     if request == nil {
         request = NewDeleteSnapshotByTimeOffsetTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteSnapshotByTimeOffsetTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSnapshotByTimeOffsetTemplate require credential")
@@ -2880,6 +2924,7 @@ func (c *Client) DeleteStreamLinkEventWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteStreamLinkEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamLinkEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteStreamLinkEvent require credential")
@@ -2931,6 +2976,7 @@ func (c *Client) DeleteStreamLinkFlowWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteStreamLinkFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamLinkFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteStreamLinkFlow require credential")
@@ -2988,6 +3034,7 @@ func (c *Client) DeleteStreamLinkOutputWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteStreamLinkOutputRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamLinkOutput")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteStreamLinkOutput require credential")
@@ -3045,6 +3092,7 @@ func (c *Client) DeleteStreamLinkSecurityGroupWithContext(ctx context.Context, r
     if request == nil {
         request = NewDeleteStreamLinkSecurityGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamLinkSecurityGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteStreamLinkSecurityGroup require credential")
@@ -3104,6 +3152,7 @@ func (c *Client) DeleteTranscodeTemplateWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteTranscodeTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteTranscodeTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTranscodeTemplate require credential")
@@ -3159,6 +3208,7 @@ func (c *Client) DeleteWatermarkTemplateWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteWatermarkTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteWatermarkTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteWatermarkTemplate require credential")
@@ -3210,6 +3260,7 @@ func (c *Client) DeleteWordSamplesWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteWordSamplesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteWordSamples")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteWordSamples require credential")
@@ -3265,6 +3316,7 @@ func (c *Client) DeleteWorkflowWithContext(ctx context.Context, request *DeleteW
     if request == nil {
         request = NewDeleteWorkflowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteWorkflow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteWorkflow require credential")
@@ -3324,6 +3376,7 @@ func (c *Client) DescribeAIAnalysisTemplatesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAIAnalysisTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAIAnalysisTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAIAnalysisTemplates require credential")
@@ -3383,6 +3436,7 @@ func (c *Client) DescribeAIRecognitionTemplatesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeAIRecognitionTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAIRecognitionTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAIRecognitionTemplates require credential")
@@ -3442,6 +3496,7 @@ func (c *Client) DescribeAdaptiveDynamicStreamingTemplatesWithContext(ctx contex
     if request == nil {
         request = NewDescribeAdaptiveDynamicStreamingTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAdaptiveDynamicStreamingTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAdaptiveDynamicStreamingTemplates require credential")
@@ -3497,6 +3552,7 @@ func (c *Client) DescribeAnimatedGraphicsTemplatesWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAnimatedGraphicsTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAnimatedGraphicsTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAnimatedGraphicsTemplates require credential")
@@ -3550,6 +3606,7 @@ func (c *Client) DescribeAsrHotwordsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAsrHotwordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAsrHotwords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAsrHotwords require credential")
@@ -3599,6 +3656,7 @@ func (c *Client) DescribeAsrHotwordsListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAsrHotwordsListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAsrHotwordsList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAsrHotwordsList require credential")
@@ -3656,6 +3714,7 @@ func (c *Client) DescribeBatchTaskDetailWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeBatchTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeBatchTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBatchTaskDetail require credential")
@@ -3715,6 +3774,7 @@ func (c *Client) DescribeContentReviewTemplatesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeContentReviewTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeContentReviewTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeContentReviewTemplates require credential")
@@ -3764,6 +3824,7 @@ func (c *Client) DescribeGroupAttachFlowsByIdWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeGroupAttachFlowsByIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeGroupAttachFlowsById")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupAttachFlowsById require credential")
@@ -3819,6 +3880,7 @@ func (c *Client) DescribeImageSpriteTemplatesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeImageSpriteTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeImageSpriteTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageSpriteTemplates require credential")
@@ -3876,6 +3938,7 @@ func (c *Client) DescribeImageTaskDetailWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeImageTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeImageTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageTaskDetail require credential")
@@ -3931,6 +3994,7 @@ func (c *Client) DescribeLiveRecordTemplatesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeLiveRecordTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeLiveRecordTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLiveRecordTemplates require credential")
@@ -3986,6 +4050,7 @@ func (c *Client) DescribeMediaMetaDataWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeMediaMetaDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeMediaMetaData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMediaMetaData require credential")
@@ -4039,6 +4104,7 @@ func (c *Client) DescribePersonSamplesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribePersonSamplesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribePersonSamples")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePersonSamples require credential")
@@ -4096,6 +4162,7 @@ func (c *Client) DescribeQualityControlTemplatesWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeQualityControlTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeQualityControlTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeQualityControlTemplates require credential")
@@ -4151,6 +4218,7 @@ func (c *Client) DescribeSampleSnapshotTemplatesWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeSampleSnapshotTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeSampleSnapshotTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSampleSnapshotTemplates require credential")
@@ -4210,6 +4278,7 @@ func (c *Client) DescribeSchedulesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSchedulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeSchedules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSchedules require credential")
@@ -4269,6 +4338,7 @@ func (c *Client) DescribeSmartSubtitleTemplatesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeSmartSubtitleTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeSmartSubtitleTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSmartSubtitleTemplates require credential")
@@ -4324,6 +4394,7 @@ func (c *Client) DescribeSnapshotByTimeOffsetTemplatesWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeSnapshotByTimeOffsetTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeSnapshotByTimeOffsetTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSnapshotByTimeOffsetTemplates require credential")
@@ -4373,6 +4444,7 @@ func (c *Client) DescribeStreamLinkActivateStateWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeStreamLinkActivateStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkActivateState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkActivateState require credential")
@@ -4428,6 +4500,7 @@ func (c *Client) DescribeStreamLinkEventWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeStreamLinkEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkEvent require credential")
@@ -4483,6 +4556,7 @@ func (c *Client) DescribeStreamLinkEventAttachedFlowsWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeStreamLinkEventAttachedFlowsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkEventAttachedFlows")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkEventAttachedFlows require credential")
@@ -4538,6 +4612,7 @@ func (c *Client) DescribeStreamLinkEventsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeStreamLinkEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkEvents require credential")
@@ -4589,6 +4664,7 @@ func (c *Client) DescribeStreamLinkFlowWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeStreamLinkFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkFlow require credential")
@@ -4656,6 +4732,7 @@ func (c *Client) DescribeStreamLinkFlowLogsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeStreamLinkFlowLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkFlowLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkFlowLogs require credential")
@@ -4721,6 +4798,7 @@ func (c *Client) DescribeStreamLinkFlowMediaStatisticsWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeStreamLinkFlowMediaStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkFlowMediaStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkFlowMediaStatistics require credential")
@@ -4774,6 +4852,7 @@ func (c *Client) DescribeStreamLinkFlowRealtimeStatusWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeStreamLinkFlowRealtimeStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkFlowRealtimeStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkFlowRealtimeStatus require credential")
@@ -4839,6 +4918,7 @@ func (c *Client) DescribeStreamLinkFlowSRTStatisticsWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeStreamLinkFlowSRTStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkFlowSRTStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkFlowSRTStatistics require credential")
@@ -4904,6 +4984,7 @@ func (c *Client) DescribeStreamLinkFlowStatisticsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeStreamLinkFlowStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkFlowStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkFlowStatistics require credential")
@@ -4959,6 +5040,7 @@ func (c *Client) DescribeStreamLinkFlowsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeStreamLinkFlowsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkFlows")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkFlows require credential")
@@ -5008,6 +5090,7 @@ func (c *Client) DescribeStreamLinkRegionsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeStreamLinkRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkRegions require credential")
@@ -5057,6 +5140,7 @@ func (c *Client) DescribeStreamLinkSecurityGroupsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeStreamLinkSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamLinkSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamLinkSecurityGroups require credential")
@@ -5114,6 +5198,7 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskDetail require credential")
@@ -5177,6 +5262,7 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTasks require credential")
@@ -5244,6 +5330,7 @@ func (c *Client) DescribeTranscodeTemplatesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeTranscodeTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeTranscodeTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTranscodeTemplates require credential")
@@ -5295,6 +5382,7 @@ func (c *Client) DescribeVideoDatabaseEntryTaskDetailWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeVideoDatabaseEntryTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeVideoDatabaseEntryTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoDatabaseEntryTaskDetail require credential")
@@ -5346,6 +5434,7 @@ func (c *Client) DescribeVideoSearchTaskDetailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeVideoSearchTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeVideoSearchTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoSearchTaskDetail require credential")
@@ -5405,6 +5494,7 @@ func (c *Client) DescribeWatermarkTemplatesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeWatermarkTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeWatermarkTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWatermarkTemplates require credential")
@@ -5458,6 +5548,7 @@ func (c *Client) DescribeWordSamplesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeWordSamplesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeWordSamples")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWordSamples require credential")
@@ -5511,6 +5602,7 @@ func (c *Client) DescribeWorkflowsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeWorkflowsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeWorkflows")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWorkflows require credential")
@@ -5584,6 +5676,7 @@ func (c *Client) DisableScheduleWithContext(ctx context.Context, request *Disabl
     if request == nil {
         request = NewDisableScheduleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DisableSchedule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableSchedule require credential")
@@ -5647,6 +5740,7 @@ func (c *Client) DisableWorkflowWithContext(ctx context.Context, request *Disabl
     if request == nil {
         request = NewDisableWorkflowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DisableWorkflow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableWorkflow require credential")
@@ -5696,6 +5790,7 @@ func (c *Client) DisassociateSecurityGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDisassociateSecurityGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DisassociateSecurityGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateSecurityGroup require credential")
@@ -5799,6 +5894,7 @@ func (c *Client) EditMediaWithContext(ctx context.Context, request *EditMediaReq
     if request == nil {
         request = NewEditMediaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "EditMedia")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EditMedia require credential")
@@ -5874,6 +5970,7 @@ func (c *Client) EnableScheduleWithContext(ctx context.Context, request *EnableS
     if request == nil {
         request = NewEnableScheduleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "EnableSchedule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableSchedule require credential")
@@ -5937,6 +6034,7 @@ func (c *Client) EnableWorkflowWithContext(ctx context.Context, request *EnableW
     if request == nil {
         request = NewEnableWorkflowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "EnableWorkflow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableWorkflow require credential")
@@ -5996,6 +6094,7 @@ func (c *Client) ExecuteFunctionWithContext(ctx context.Context, request *Execut
     if request == nil {
         request = NewExecuteFunctionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ExecuteFunction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExecuteFunction require credential")
@@ -6055,6 +6154,7 @@ func (c *Client) ManageTaskWithContext(ctx context.Context, request *ManageTaskR
     if request == nil {
         request = NewManageTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ManageTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ManageTask require credential")
@@ -6130,6 +6230,7 @@ func (c *Client) ModifyAIAnalysisTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyAIAnalysisTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyAIAnalysisTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAIAnalysisTemplate require credential")
@@ -6209,6 +6310,7 @@ func (c *Client) ModifyAIRecognitionTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyAIRecognitionTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyAIRecognitionTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAIRecognitionTemplate require credential")
@@ -6306,6 +6408,7 @@ func (c *Client) ModifyAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     if request == nil {
         request = NewModifyAdaptiveDynamicStreamingTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyAdaptiveDynamicStreamingTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAdaptiveDynamicStreamingTemplate require credential")
@@ -6375,6 +6478,7 @@ func (c *Client) ModifyAnimatedGraphicsTemplateWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyAnimatedGraphicsTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyAnimatedGraphicsTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAnimatedGraphicsTemplate require credential")
@@ -6430,6 +6534,7 @@ func (c *Client) ModifyAsrHotwordsWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAsrHotwordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyAsrHotwords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAsrHotwords require credential")
@@ -6495,6 +6600,7 @@ func (c *Client) ModifyContentReviewTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyContentReviewTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyContentReviewTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyContentReviewTemplate require credential")
@@ -6564,6 +6670,7 @@ func (c *Client) ModifyImageSpriteTemplateWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyImageSpriteTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyImageSpriteTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyImageSpriteTemplate require credential")
@@ -6619,6 +6726,7 @@ func (c *Client) ModifyLiveRecordTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyLiveRecordTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyLiveRecordTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLiveRecordTemplate require credential")
@@ -6680,6 +6788,7 @@ func (c *Client) ModifyPersonSampleWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyPersonSampleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyPersonSample")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPersonSample require credential")
@@ -6739,6 +6848,7 @@ func (c *Client) ModifyQualityControlTemplateWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyQualityControlTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyQualityControlTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyQualityControlTemplate require credential")
@@ -6810,6 +6920,7 @@ func (c *Client) ModifySampleSnapshotTemplateWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifySampleSnapshotTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifySampleSnapshotTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySampleSnapshotTemplate require credential")
@@ -6871,6 +6982,7 @@ func (c *Client) ModifyScheduleWithContext(ctx context.Context, request *ModifyS
     if request == nil {
         request = NewModifyScheduleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifySchedule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySchedule require credential")
@@ -6946,6 +7058,7 @@ func (c *Client) ModifySmartSubtitleTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifySmartSubtitleTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifySmartSubtitleTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySmartSubtitleTemplate require credential")
@@ -7011,6 +7124,7 @@ func (c *Client) ModifySnapshotByTimeOffsetTemplateWithContext(ctx context.Conte
     if request == nil {
         request = NewModifySnapshotByTimeOffsetTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifySnapshotByTimeOffsetTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySnapshotByTimeOffsetTemplate require credential")
@@ -7066,6 +7180,7 @@ func (c *Client) ModifyStreamLinkEventWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyStreamLinkEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyStreamLinkEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyStreamLinkEvent require credential")
@@ -7121,6 +7236,7 @@ func (c *Client) ModifyStreamLinkFlowWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyStreamLinkFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyStreamLinkFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyStreamLinkFlow require credential")
@@ -7180,6 +7296,7 @@ func (c *Client) ModifyStreamLinkInputWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyStreamLinkInputRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyStreamLinkInput")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyStreamLinkInput require credential")
@@ -7243,6 +7360,7 @@ func (c *Client) ModifyStreamLinkOutputInfoWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyStreamLinkOutputInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyStreamLinkOutputInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyStreamLinkOutputInfo require credential")
@@ -7302,6 +7420,7 @@ func (c *Client) ModifyStreamLinkSecurityGroupWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyStreamLinkSecurityGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyStreamLinkSecurityGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyStreamLinkSecurityGroup require credential")
@@ -7391,6 +7510,7 @@ func (c *Client) ModifyTranscodeTemplateWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyTranscodeTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyTranscodeTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTranscodeTemplate require credential")
@@ -7472,6 +7592,7 @@ func (c *Client) ModifyWatermarkTemplateWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyWatermarkTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyWatermarkTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWatermarkTemplate require credential")
@@ -7527,6 +7648,7 @@ func (c *Client) ModifyWordSampleWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyWordSampleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyWordSample")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWordSample require credential")
@@ -7582,6 +7704,7 @@ func (c *Client) ParseLiveStreamProcessNotificationWithContext(ctx context.Conte
     if request == nil {
         request = NewParseLiveStreamProcessNotificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ParseLiveStreamProcessNotification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ParseLiveStreamProcessNotification require credential")
@@ -7641,6 +7764,7 @@ func (c *Client) ParseNotificationWithContext(ctx context.Context, request *Pars
     if request == nil {
         request = NewParseNotificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ParseNotification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ParseNotification require credential")
@@ -7712,6 +7836,7 @@ func (c *Client) ProcessImageWithContext(ctx context.Context, request *ProcessIm
     if request == nil {
         request = NewProcessImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ProcessImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ProcessImage require credential")
@@ -7805,6 +7930,7 @@ func (c *Client) ProcessLiveStreamWithContext(ctx context.Context, request *Proc
     if request == nil {
         request = NewProcessLiveStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ProcessLiveStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ProcessLiveStream require credential")
@@ -7910,6 +8036,7 @@ func (c *Client) ProcessMediaWithContext(ctx context.Context, request *ProcessMe
     if request == nil {
         request = NewProcessMediaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ProcessMedia")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ProcessMedia require credential")
@@ -7963,6 +8090,7 @@ func (c *Client) RecognizeMediaForZhiXueWithContext(ctx context.Context, request
     if request == nil {
         request = NewRecognizeMediaForZhiXueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "RecognizeMediaForZhiXue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecognizeMediaForZhiXue require credential")
@@ -8018,6 +8146,7 @@ func (c *Client) ResetWorkflowWithContext(ctx context.Context, request *ResetWor
     if request == nil {
         request = NewResetWorkflowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ResetWorkflow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetWorkflow require credential")
@@ -8073,6 +8202,7 @@ func (c *Client) StartStreamLinkFlowWithContext(ctx context.Context, request *St
     if request == nil {
         request = NewStartStreamLinkFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "StartStreamLinkFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartStreamLinkFlow require credential")
@@ -8126,6 +8256,7 @@ func (c *Client) StopStreamLinkFlowWithContext(ctx context.Context, request *Sto
     if request == nil {
         request = NewStopStreamLinkFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "StopStreamLinkFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopStreamLinkFlow require credential")
@@ -8179,6 +8310,7 @@ func (c *Client) WithdrawsWatermarkWithContext(ctx context.Context, request *Wit
     if request == nil {
         request = NewWithdrawsWatermarkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "WithdrawsWatermark")
     
     if c.GetCredential() == nil {
         return nil, errors.New("WithdrawsWatermark require credential")

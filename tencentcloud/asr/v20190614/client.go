@@ -88,6 +88,7 @@ func (c *Client) CloseAsyncRecognitionTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCloseAsyncRecognitionTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "CloseAsyncRecognitionTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseAsyncRecognitionTask require credential")
@@ -179,6 +180,7 @@ func (c *Client) CreateAsrKeyWordLibWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateAsrKeyWordLibRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "CreateAsrKeyWordLib")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAsrKeyWordLib require credential")
@@ -290,6 +292,7 @@ func (c *Client) CreateAsrVocabWithContext(ctx context.Context, request *CreateA
     if request == nil {
         request = NewCreateAsrVocabRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "CreateAsrVocab")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAsrVocab require credential")
@@ -377,6 +380,7 @@ func (c *Client) CreateAsyncRecognitionTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateAsyncRecognitionTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "CreateAsyncRecognitionTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAsyncRecognitionTask require credential")
@@ -450,6 +454,7 @@ func (c *Client) CreateCustomizationWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateCustomizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "CreateCustomization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomization require credential")
@@ -565,6 +570,7 @@ func (c *Client) CreateRecTaskWithContext(ctx context.Context, request *CreateRe
     if request == nil {
         request = NewCreateRecTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "CreateRecTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRecTask require credential")
@@ -628,6 +634,7 @@ func (c *Client) DeleteAsrKeyWordLibWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteAsrKeyWordLibRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "DeleteAsrKeyWordLib")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAsrKeyWordLib require credential")
@@ -699,6 +706,7 @@ func (c *Client) DeleteAsrVocabWithContext(ctx context.Context, request *DeleteA
     if request == nil {
         request = NewDeleteAsrVocabRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "DeleteAsrVocab")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAsrVocab require credential")
@@ -768,6 +776,7 @@ func (c *Client) DeleteCustomizationWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteCustomizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "DeleteCustomization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomization require credential")
@@ -821,6 +830,7 @@ func (c *Client) DescribeAsyncRecognitionTasksWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAsyncRecognitionTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "DescribeAsyncRecognitionTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAsyncRecognitionTasks require credential")
@@ -912,6 +922,7 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "DescribeTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskStatus require credential")
@@ -973,6 +984,7 @@ func (c *Client) DownloadAsrVocabWithContext(ctx context.Context, request *Downl
     if request == nil {
         request = NewDownloadAsrVocabRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "DownloadAsrVocab")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadAsrVocab require credential")
@@ -1038,6 +1050,7 @@ func (c *Client) DownloadCustomizationWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDownloadCustomizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "DownloadCustomization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadCustomization require credential")
@@ -1101,6 +1114,7 @@ func (c *Client) GetAsrKeyWordLibListWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetAsrKeyWordLibListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "GetAsrKeyWordLibList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAsrKeyWordLibList require credential")
@@ -1158,6 +1172,7 @@ func (c *Client) GetAsrVocabWithContext(ctx context.Context, request *GetAsrVoca
     if request == nil {
         request = NewGetAsrVocabRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "GetAsrVocab")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAsrVocab require credential")
@@ -1225,6 +1240,7 @@ func (c *Client) GetAsrVocabListWithContext(ctx context.Context, request *GetAsr
     if request == nil {
         request = NewGetAsrVocabListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "GetAsrVocabList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAsrVocabList require credential")
@@ -1280,6 +1296,7 @@ func (c *Client) GetCustomizationListWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetCustomizationListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "GetCustomizationList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetCustomizationList require credential")
@@ -1337,6 +1354,7 @@ func (c *Client) GetModelInfoWithContext(ctx context.Context, request *GetModelI
     if request == nil {
         request = NewGetModelInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "GetModelInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetModelInfo require credential")
@@ -1392,6 +1410,7 @@ func (c *Client) GetUsageByDateWithContext(ctx context.Context, request *GetUsag
     if request == nil {
         request = NewGetUsageByDateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "GetUsageByDate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetUsageByDate require credential")
@@ -1459,6 +1478,7 @@ func (c *Client) ModifyCustomizationWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyCustomizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "ModifyCustomization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomization require credential")
@@ -1524,6 +1544,7 @@ func (c *Client) ModifyCustomizationStateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyCustomizationStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "ModifyCustomizationState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomizationState require credential")
@@ -1657,6 +1678,7 @@ func (c *Client) SentenceRecognitionWithContext(ctx context.Context, request *Se
     if request == nil {
         request = NewSentenceRecognitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "SentenceRecognition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SentenceRecognition require credential")
@@ -1720,6 +1742,7 @@ func (c *Client) SetVocabStateWithContext(ctx context.Context, request *SetVocab
     if request == nil {
         request = NewSetVocabStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "SetVocabState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetVocabState require credential")
@@ -1787,6 +1810,7 @@ func (c *Client) UpdateAsrKeyWordLibWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUpdateAsrKeyWordLibRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "UpdateAsrKeyWordLib")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAsrKeyWordLib require credential")
@@ -1860,6 +1884,7 @@ func (c *Client) UpdateAsrVocabWithContext(ctx context.Context, request *UpdateA
     if request == nil {
         request = NewUpdateAsrVocabRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "UpdateAsrVocab")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAsrVocab require credential")
@@ -1923,6 +1948,7 @@ func (c *Client) VoicePrintCompareWithContext(ctx context.Context, request *Voic
     if request == nil {
         request = NewVoicePrintCompareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "VoicePrintCompare")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VoicePrintCompare require credential")
@@ -1974,6 +2000,7 @@ func (c *Client) VoicePrintCountWithContext(ctx context.Context, request *VoiceP
     if request == nil {
         request = NewVoicePrintCountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "VoicePrintCount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VoicePrintCount require credential")
@@ -2043,6 +2070,7 @@ func (c *Client) VoicePrintDeleteWithContext(ctx context.Context, request *Voice
     if request == nil {
         request = NewVoicePrintDeleteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "VoicePrintDelete")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VoicePrintDelete require credential")
@@ -2144,6 +2172,7 @@ func (c *Client) VoicePrintEnrollWithContext(ctx context.Context, request *Voice
     if request == nil {
         request = NewVoicePrintEnrollRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "VoicePrintEnroll")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VoicePrintEnroll require credential")
@@ -2219,6 +2248,7 @@ func (c *Client) VoicePrintGroupVerifyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewVoicePrintGroupVerifyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "VoicePrintGroupVerify")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VoicePrintGroupVerify require credential")
@@ -2294,6 +2324,7 @@ func (c *Client) VoicePrintUpdateWithContext(ctx context.Context, request *Voice
     if request == nil {
         request = NewVoicePrintUpdateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "VoicePrintUpdate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VoicePrintUpdate require credential")
@@ -2373,6 +2404,7 @@ func (c *Client) VoicePrintVerifyWithContext(ctx context.Context, request *Voice
     if request == nil {
         request = NewVoicePrintVerifyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "VoicePrintVerify")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VoicePrintVerify require credential")

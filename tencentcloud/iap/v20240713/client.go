@@ -94,6 +94,7 @@ func (c *Client) CreateIAPUserOIDCConfigWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateIAPUserOIDCConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iap", APIVersion, "CreateIAPUserOIDCConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIAPUserOIDCConfig require credential")
@@ -145,6 +146,7 @@ func (c *Client) DescribeIAPLoginSessionDurationWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeIAPLoginSessionDurationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iap", APIVersion, "DescribeIAPLoginSessionDuration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIAPLoginSessionDuration require credential")
@@ -194,6 +196,7 @@ func (c *Client) DescribeIAPUserOIDCConfigWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeIAPUserOIDCConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iap", APIVersion, "DescribeIAPUserOIDCConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIAPUserOIDCConfig require credential")
@@ -243,6 +246,7 @@ func (c *Client) DisableIAPUserSSOWithContext(ctx context.Context, request *Disa
     if request == nil {
         request = NewDisableIAPUserSSORequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iap", APIVersion, "DisableIAPUserSSO")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableIAPUserSSO require credential")
@@ -292,6 +296,7 @@ func (c *Client) ModifyIAPLoginSessionDurationWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyIAPLoginSessionDurationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iap", APIVersion, "ModifyIAPLoginSessionDuration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyIAPLoginSessionDuration require credential")
@@ -355,6 +360,7 @@ func (c *Client) UpdateIAPUserOIDCConfigWithContext(ctx context.Context, request
     if request == nil {
         request = NewUpdateIAPUserOIDCConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iap", APIVersion, "UpdateIAPUserOIDCConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateIAPUserOIDCConfig require credential")

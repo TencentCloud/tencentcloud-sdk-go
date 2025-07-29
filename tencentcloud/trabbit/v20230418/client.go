@@ -120,6 +120,7 @@ func (c *Client) CreateRabbitMQServerlessBindingWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateRabbitMQServerlessBindingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "CreateRabbitMQServerlessBinding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRabbitMQServerlessBinding require credential")
@@ -207,6 +208,7 @@ func (c *Client) CreateRabbitMQServerlessExchangeWithContext(ctx context.Context
     if request == nil {
         request = NewCreateRabbitMQServerlessExchangeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "CreateRabbitMQServerlessExchange")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRabbitMQServerlessExchange require credential")
@@ -294,6 +296,7 @@ func (c *Client) CreateRabbitMQServerlessQueueWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateRabbitMQServerlessQueueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "CreateRabbitMQServerlessQueue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRabbitMQServerlessQueue require credential")
@@ -381,6 +384,7 @@ func (c *Client) CreateRabbitMQServerlessUserWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateRabbitMQServerlessUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "CreateRabbitMQServerlessUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRabbitMQServerlessUser require credential")
@@ -468,6 +472,7 @@ func (c *Client) CreateRabbitMQServerlessVirtualHostWithContext(ctx context.Cont
     if request == nil {
         request = NewCreateRabbitMQServerlessVirtualHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "CreateRabbitMQServerlessVirtualHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRabbitMQServerlessVirtualHost require credential")
@@ -555,6 +560,7 @@ func (c *Client) DeleteRabbitMQServerlessBindingWithContext(ctx context.Context,
     if request == nil {
         request = NewDeleteRabbitMQServerlessBindingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DeleteRabbitMQServerlessBinding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRabbitMQServerlessBinding require credential")
@@ -642,6 +648,7 @@ func (c *Client) DeleteRabbitMQServerlessExchangeWithContext(ctx context.Context
     if request == nil {
         request = NewDeleteRabbitMQServerlessExchangeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DeleteRabbitMQServerlessExchange")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRabbitMQServerlessExchange require credential")
@@ -729,6 +736,7 @@ func (c *Client) DeleteRabbitMQServerlessPermissionWithContext(ctx context.Conte
     if request == nil {
         request = NewDeleteRabbitMQServerlessPermissionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DeleteRabbitMQServerlessPermission")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRabbitMQServerlessPermission require credential")
@@ -816,6 +824,7 @@ func (c *Client) DeleteRabbitMQServerlessQueueWithContext(ctx context.Context, r
     if request == nil {
         request = NewDeleteRabbitMQServerlessQueueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DeleteRabbitMQServerlessQueue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRabbitMQServerlessQueue require credential")
@@ -903,6 +912,7 @@ func (c *Client) DeleteRabbitMQServerlessUserWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteRabbitMQServerlessUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DeleteRabbitMQServerlessUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRabbitMQServerlessUser require credential")
@@ -990,6 +1000,7 @@ func (c *Client) DeleteRabbitMQServerlessVirtualHostWithContext(ctx context.Cont
     if request == nil {
         request = NewDeleteRabbitMQServerlessVirtualHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DeleteRabbitMQServerlessVirtualHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRabbitMQServerlessVirtualHost require credential")
@@ -1077,6 +1088,7 @@ func (c *Client) DescribeRabbitMQServerlessBindingsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeRabbitMQServerlessBindingsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DescribeRabbitMQServerlessBindings")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQServerlessBindings require credential")
@@ -1164,6 +1176,7 @@ func (c *Client) DescribeRabbitMQServerlessConnectionWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeRabbitMQServerlessConnectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DescribeRabbitMQServerlessConnection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQServerlessConnection require credential")
@@ -1251,6 +1264,7 @@ func (c *Client) DescribeRabbitMQServerlessConsumersWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeRabbitMQServerlessConsumersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DescribeRabbitMQServerlessConsumers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQServerlessConsumers require credential")
@@ -1338,6 +1352,7 @@ func (c *Client) DescribeRabbitMQServerlessExchangeDetailWithContext(ctx context
     if request == nil {
         request = NewDescribeRabbitMQServerlessExchangeDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DescribeRabbitMQServerlessExchangeDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQServerlessExchangeDetail require credential")
@@ -1425,6 +1440,7 @@ func (c *Client) DescribeRabbitMQServerlessExchangesWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeRabbitMQServerlessExchangesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DescribeRabbitMQServerlessExchanges")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQServerlessExchanges require credential")
@@ -1512,6 +1528,7 @@ func (c *Client) DescribeRabbitMQServerlessInstanceWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeRabbitMQServerlessInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DescribeRabbitMQServerlessInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQServerlessInstance require credential")
@@ -1599,6 +1616,7 @@ func (c *Client) DescribeRabbitMQServerlessPermissionWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeRabbitMQServerlessPermissionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DescribeRabbitMQServerlessPermission")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQServerlessPermission require credential")
@@ -1686,6 +1704,7 @@ func (c *Client) DescribeRabbitMQServerlessQueueDetailWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeRabbitMQServerlessQueueDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DescribeRabbitMQServerlessQueueDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQServerlessQueueDetail require credential")
@@ -1773,6 +1792,7 @@ func (c *Client) DescribeRabbitMQServerlessQueuesWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeRabbitMQServerlessQueuesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DescribeRabbitMQServerlessQueues")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQServerlessQueues require credential")
@@ -1860,6 +1880,7 @@ func (c *Client) DescribeRabbitMQServerlessUserWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeRabbitMQServerlessUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DescribeRabbitMQServerlessUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQServerlessUser require credential")
@@ -1947,6 +1968,7 @@ func (c *Client) DescribeRabbitMQServerlessVirtualHostWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeRabbitMQServerlessVirtualHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "DescribeRabbitMQServerlessVirtualHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQServerlessVirtualHost require credential")
@@ -2008,6 +2030,7 @@ func (c *Client) ListRabbitMQServerlessInstancesWithContext(ctx context.Context,
     if request == nil {
         request = NewListRabbitMQServerlessInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "ListRabbitMQServerlessInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListRabbitMQServerlessInstances require credential")
@@ -2095,6 +2118,7 @@ func (c *Client) ModifyRabbitMQServerlessExchangeWithContext(ctx context.Context
     if request == nil {
         request = NewModifyRabbitMQServerlessExchangeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "ModifyRabbitMQServerlessExchange")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRabbitMQServerlessExchange require credential")
@@ -2182,6 +2206,7 @@ func (c *Client) ModifyRabbitMQServerlessInstanceWithContext(ctx context.Context
     if request == nil {
         request = NewModifyRabbitMQServerlessInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "ModifyRabbitMQServerlessInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRabbitMQServerlessInstance require credential")
@@ -2269,6 +2294,7 @@ func (c *Client) ModifyRabbitMQServerlessPermissionWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyRabbitMQServerlessPermissionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "ModifyRabbitMQServerlessPermission")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRabbitMQServerlessPermission require credential")
@@ -2356,6 +2382,7 @@ func (c *Client) ModifyRabbitMQServerlessQueueWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyRabbitMQServerlessQueueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "ModifyRabbitMQServerlessQueue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRabbitMQServerlessQueue require credential")
@@ -2443,6 +2470,7 @@ func (c *Client) ModifyRabbitMQServerlessUserWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyRabbitMQServerlessUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "ModifyRabbitMQServerlessUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRabbitMQServerlessUser require credential")
@@ -2530,6 +2558,7 @@ func (c *Client) ModifyRabbitMQServerlessVirtualHostWithContext(ctx context.Cont
     if request == nil {
         request = NewModifyRabbitMQServerlessVirtualHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trabbit", APIVersion, "ModifyRabbitMQServerlessVirtualHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRabbitMQServerlessVirtualHost require credential")

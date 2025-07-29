@@ -94,6 +94,7 @@ func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDBInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "DescribeDBInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBInstances require credential")
@@ -153,6 +154,7 @@ func (c *Client) DescribeHostListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeHostListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "DescribeHostList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostList require credential")
@@ -210,6 +212,7 @@ func (c *Client) DescribeInstanceDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "DescribeInstanceDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceDetail require credential")
@@ -267,6 +270,7 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "DescribeInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceList require credential")
@@ -322,6 +326,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -379,6 +384,7 @@ func (c *Client) ModifyInstanceNameWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyInstanceNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "ModifyInstanceName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceName require credential")

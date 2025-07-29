@@ -88,6 +88,7 @@ func (c *Client) CreateSessionWithContext(ctx context.Context, request *CreateSe
     if request == nil {
         request = NewCreateSessionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bizlive", APIVersion, "CreateSession")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSession require credential")
@@ -143,6 +144,7 @@ func (c *Client) DescribeStreamPlayInfoListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeStreamPlayInfoListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bizlive", APIVersion, "DescribeStreamPlayInfoList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamPlayInfoList require credential")
@@ -192,6 +194,7 @@ func (c *Client) DescribeWorkersWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeWorkersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bizlive", APIVersion, "DescribeWorkers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWorkers require credential")
@@ -263,6 +266,7 @@ func (c *Client) ForbidLiveStreamWithContext(ctx context.Context, request *Forbi
     if request == nil {
         request = NewForbidLiveStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bizlive", APIVersion, "ForbidLiveStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ForbidLiveStream require credential")
@@ -320,6 +324,7 @@ func (c *Client) RegisterIMWithContext(ctx context.Context, request *RegisterIMR
     if request == nil {
         request = NewRegisterIMRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bizlive", APIVersion, "RegisterIM")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterIM require credential")
@@ -371,6 +376,7 @@ func (c *Client) StopGameWithContext(ctx context.Context, request *StopGameReque
     if request == nil {
         request = NewStopGameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bizlive", APIVersion, "StopGame")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopGame require credential")

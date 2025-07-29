@@ -86,6 +86,7 @@ func (c *Client) CreateWeappQRUrlWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateWeappQRUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ba", APIVersion, "CreateWeappQRUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWeappQRUrl require credential")
@@ -139,6 +140,7 @@ func (c *Client) DescribeGetAuthInfoWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeGetAuthInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ba", APIVersion, "DescribeGetAuthInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGetAuthInfo require credential")
@@ -192,6 +194,7 @@ func (c *Client) SyncIcpOrderWebInfoWithContext(ctx context.Context, request *Sy
     if request == nil {
         request = NewSyncIcpOrderWebInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ba", APIVersion, "SyncIcpOrderWebInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncIcpOrderWebInfo require credential")
