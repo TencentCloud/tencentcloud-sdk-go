@@ -21204,6 +21204,85 @@ type ProcessMediaByMPS struct {
 }
 
 // Predefined struct for user
+type ProcessMediaByMPSRequestParams struct {
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
+	// 视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
+	// 填写说明：
+	// 1. 目前仅需要配置 MPS “发起媒体处理”接口中的 AiAnalysisTask 参数，其他参数无需填写，若包含其它参数，系统将自动忽略；
+	// 2. 当前仅支持通过此方式发起智能擦除任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数。
+	MPSProcessMediaParams *string `json:"MPSProcessMediaParams,omitnil,omitempty" name:"MPSProcessMediaParams"`
+}
+
+type ProcessMediaByMPSRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
+	// 视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
+	// 填写说明：
+	// 1. 目前仅需要配置 MPS “发起媒体处理”接口中的 AiAnalysisTask 参数，其他参数无需填写，若包含其它参数，系统将自动忽略；
+	// 2. 当前仅支持通过此方式发起智能擦除任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数。
+	MPSProcessMediaParams *string `json:"MPSProcessMediaParams,omitnil,omitempty" name:"MPSProcessMediaParams"`
+}
+
+func (r *ProcessMediaByMPSRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ProcessMediaByMPSRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileId")
+	delete(f, "SubAppId")
+	delete(f, "MPSProcessMediaParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaByMPSRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ProcessMediaByMPSResponseParams struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ProcessMediaByMPSResponse struct {
+	*tchttp.BaseResponse
+	Response *ProcessMediaByMPSResponseParams `json:"Response"`
+}
+
+func (r *ProcessMediaByMPSResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ProcessMediaByMPSResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ProcessMediaByProcedureRequestParams struct {
 	// 媒体文件 ID。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`

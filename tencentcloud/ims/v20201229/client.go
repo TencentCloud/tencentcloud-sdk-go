@@ -309,7 +309,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //
 // - 文件格式支持：
 //
-//     - **静态图**：BMP、ICO、JPEG、JNG、PNG、TIFF、RAW、SVG、GIF、WEBP、HEIC
+//     - **静态图**：BMP、ICO、JPEG、JNG、PNG、TIFF、RAW、SVG、GIF、WEBP、HEIC、AVIF
 //
 //     - **动态图**：GIF、WEBP、HEIC（默认最多抽取5帧图像，每隔5帧进行一次采样）
 //
@@ -447,7 +447,7 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
 //
 // - 文件格式支持：
 //
-//     - **静态图**：BMP、ICO、JPEG、JNG、PNG、TIFF、RAW、SVG、GIF、WEBP、HEIC
+//     - **静态图**：BMP、ICO、JPEG、JNG、PNG、TIFF、RAW、SVG、GIF、WEBP、HEIC、AVIF
 //
 //     - **动态图**：GIF、WEBP、HEIC（默认最多抽取5帧图像，每隔5帧进行一次采样）
 //

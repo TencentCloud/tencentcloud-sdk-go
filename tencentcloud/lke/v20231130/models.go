@@ -11117,10 +11117,10 @@ type SaveDocRequestParams struct {
 	// 值为1时，WebUrl 字段不能为空，否则不生效。
 	ReferUrlType *uint64 `json:"ReferUrlType,omitnil,omitempty" name:"ReferUrlType"`
 
-	// 有效开始时间，unix时间戳
+	// 有效开始时间，unix秒级时间戳
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
-	// 有效结束时间，unix时间戳，0代表永久有效
+	// 有效结束时间，unix秒级时间戳，0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
 
 	// 是否引用链接
@@ -11185,10 +11185,10 @@ type SaveDocRequest struct {
 	// 值为1时，WebUrl 字段不能为空，否则不生效。
 	ReferUrlType *uint64 `json:"ReferUrlType,omitnil,omitempty" name:"ReferUrlType"`
 
-	// 有效开始时间，unix时间戳
+	// 有效开始时间，unix秒级时间戳
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
-	// 有效结束时间，unix时间戳，0代表永久有效
+	// 有效结束时间，unix秒级时间戳，0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
 
 	// 是否引用链接

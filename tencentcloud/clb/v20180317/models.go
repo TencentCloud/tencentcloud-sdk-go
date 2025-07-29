@@ -241,6 +241,9 @@ type AssociationItem struct {
 
 	// 关联目标组的权重， 该参数只有v2新版目标组生效。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 高级路由规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 // Predefined struct for user
@@ -1645,6 +1648,9 @@ type CreateLoadBalancerRequestParams struct {
 
 	// 七层访问日志主题ID
 	AccessLogTopicId *string `json:"AccessLogTopicId,omitnil,omitempty" name:"AccessLogTopicId"`
+
+	// 是否开启七层高级路由
+	AdvancedRoute *bool `json:"AdvancedRoute,omitnil,omitempty" name:"AdvancedRoute"`
 }
 
 type CreateLoadBalancerRequest struct {
@@ -1745,6 +1751,9 @@ type CreateLoadBalancerRequest struct {
 
 	// 七层访问日志主题ID
 	AccessLogTopicId *string `json:"AccessLogTopicId,omitnil,omitempty" name:"AccessLogTopicId"`
+
+	// 是否开启七层高级路由
+	AdvancedRoute *bool `json:"AdvancedRoute,omitnil,omitempty" name:"AdvancedRoute"`
 }
 
 func (r *CreateLoadBalancerRequest) ToJsonString() string {
@@ -1789,6 +1798,7 @@ func (r *CreateLoadBalancerRequest) FromJsonString(s string) error {
 	delete(f, "LBChargePrepaid")
 	delete(f, "LBChargeType")
 	delete(f, "AccessLogTopicId")
+	delete(f, "AdvancedRoute")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadBalancerRequest has unknown keys!", "")
 	}
@@ -9014,6 +9024,9 @@ type RuleHealth struct {
 	// 转发规则的Url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 高级路由规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 本规则上绑定的后端服务的健康检查状态
 	Targets []*TargetHealth `json:"Targets,omitnil,omitempty" name:"Targets"`

@@ -10969,6 +10969,102 @@ func (c *Client) ProcessMediaWithContext(ctx context.Context, request *ProcessMe
     return
 }
 
+func NewProcessMediaByMPSRequest() (request *ProcessMediaByMPSRequest) {
+    request = &ProcessMediaByMPSRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ProcessMediaByMPS")
+    
+    
+    return
+}
+
+func NewProcessMediaByMPSResponse() (response *ProcessMediaByMPSResponse) {
+    response = &ProcessMediaByMPSResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ProcessMediaByMPS
+// 使用媒体处理服务（MPS）的媒体处理能力，对点播中的视频发起媒体处理，任务发起时需将 MPS 相关参数以 JSON 格式填入 MPSProcessMediaParams 参数中。具体任务参数配置请参考[媒体处理 ProcessMedia 接口](https://cloud.tencent.com/document/api/862/37578)。
+//
+// 当前支持的 MPS 功能：
+//
+// 1. [智能擦除](https://cloud.tencent.com/document/product/862/101530)：能够对视频画面中的 Logo、字幕、人脸和车牌等元素进行模糊、马赛克或无痕化处理，从而便于内容的传播和分享。该任务产生的新视频将生成新的 FileId 存储在点播平台的子应用中。
+//
+// 
+//
+// > 以该种方式发起的视频处理任务：
+//
+// > 1. 任务状态及结果的查询仍在点播平台中完成，使用 [DescribeTaskDetail](https://cloud.tencent.com/document/product/266/33431) 或 [DescribeTasks](https://cloud.tencent.com/document/product/266/33430) 查询任务。
+//
+// > 2. 相关功能的用量及账单将在 MPS 平台给出，因此在使用该功能前，首先需要开通 MPS 服务。
+//
+// > 3. 该功能目前仍在内测中，如需测试体验，您可以联系我们获得支持。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ProcessMediaByMPS(request *ProcessMediaByMPSRequest) (response *ProcessMediaByMPSResponse, err error) {
+    return c.ProcessMediaByMPSWithContext(context.Background(), request)
+}
+
+// ProcessMediaByMPS
+// 使用媒体处理服务（MPS）的媒体处理能力，对点播中的视频发起媒体处理，任务发起时需将 MPS 相关参数以 JSON 格式填入 MPSProcessMediaParams 参数中。具体任务参数配置请参考[媒体处理 ProcessMedia 接口](https://cloud.tencent.com/document/api/862/37578)。
+//
+// 当前支持的 MPS 功能：
+//
+// 1. [智能擦除](https://cloud.tencent.com/document/product/862/101530)：能够对视频画面中的 Logo、字幕、人脸和车牌等元素进行模糊、马赛克或无痕化处理，从而便于内容的传播和分享。该任务产生的新视频将生成新的 FileId 存储在点播平台的子应用中。
+//
+// 
+//
+// > 以该种方式发起的视频处理任务：
+//
+// > 1. 任务状态及结果的查询仍在点播平台中完成，使用 [DescribeTaskDetail](https://cloud.tencent.com/document/product/266/33431) 或 [DescribeTasks](https://cloud.tencent.com/document/product/266/33430) 查询任务。
+//
+// > 2. 相关功能的用量及账单将在 MPS 平台给出，因此在使用该功能前，首先需要开通 MPS 服务。
+//
+// > 3. 该功能目前仍在内测中，如需测试体验，您可以联系我们获得支持。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ProcessMediaByMPSWithContext(ctx context.Context, request *ProcessMediaByMPSRequest) (response *ProcessMediaByMPSResponse, err error) {
+    if request == nil {
+        request = NewProcessMediaByMPSRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ProcessMediaByMPS")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ProcessMediaByMPS require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewProcessMediaByMPSResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewProcessMediaByProcedureRequest() (request *ProcessMediaByProcedureRequest) {
     request = &ProcessMediaByProcedureRequest{
         BaseRequest: &tchttp.BaseRequest{},

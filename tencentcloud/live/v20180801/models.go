@@ -4113,8 +4113,7 @@ type CreateLiveTimeShiftTemplateRequestParams struct {
 	// 仅支持中文、英文、数字、_、-。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 时移时长。
-	// 单位：s。
+	// 时移时长。单位：s。取值范围：86400 259200 604800 1296000 2592000。
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 描述信息。
@@ -4151,8 +4150,7 @@ type CreateLiveTimeShiftTemplateRequest struct {
 	// 仅支持中文、英文、数字、_、-。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 时移时长。
-	// 单位：s。
+	// 时移时长。单位：s。取值范围：86400 259200 604800 1296000 2592000。
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 描述信息。

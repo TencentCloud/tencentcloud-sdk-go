@@ -4226,6 +4226,9 @@ type CreateInput struct {
 
 	// 输入节点的地区
 	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
+
+	// 冷热备相关
+	FailOverOption *FailOverOption `json:"FailOverOption,omitnil,omitempty" name:"FailOverOption"`
 }
 
 type CreateInputHLSPullSettings struct {
@@ -4726,6 +4729,9 @@ type CreateQualityControlTemplateRequestParams struct {
 	// 录制文件格式。可选值：
 	// <li>PNG: PNG图片</li>
 	RecordFormat *string `json:"RecordFormat,omitnil,omitempty" name:"RecordFormat"`
+
+	// 媒体质检抽检策略。
+	Strategy *QualityControlStrategy `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 }
 
 type CreateQualityControlTemplateRequest struct {
@@ -4743,6 +4749,9 @@ type CreateQualityControlTemplateRequest struct {
 	// 录制文件格式。可选值：
 	// <li>PNG: PNG图片</li>
 	RecordFormat *string `json:"RecordFormat,omitnil,omitempty" name:"RecordFormat"`
+
+	// 媒体质检抽检策略。
+	Strategy *QualityControlStrategy `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 }
 
 func (r *CreateQualityControlTemplateRequest) ToJsonString() string {
@@ -4761,6 +4770,7 @@ func (r *CreateQualityControlTemplateRequest) FromJsonString(s string) error {
 	delete(f, "QualityControlItemSet")
 	delete(f, "Comment")
 	delete(f, "RecordFormat")
+	delete(f, "Strategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQualityControlTemplateRequest has unknown keys!", "")
 	}
@@ -9335,7 +9345,6 @@ type DescribeQualityControlTemplatesResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 媒体质检模板详情列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityControlTemplateSet []*QualityControlTemplate `json:"QualityControlTemplateSet,omitnil,omitempty" name:"QualityControlTemplateSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12379,6 +12388,11 @@ type FaceEnhanceConfig struct {
 	// 默认：0.0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Intensity *float64 `json:"Intensity,omitnil,omitempty" name:"Intensity"`
+}
+
+type FailOverOption struct {
+	// 热备
+	FailOverType *string `json:"FailOverType,omitnil,omitempty" name:"FailOverType"`
 }
 
 type FlowAudio struct {
@@ -15429,6 +15443,9 @@ type ModifyInput struct {
 
 	// 输入节点的地区
 	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
+
+	// 冷热备相关
+	FailOverOption *FailOverOption `json:"FailOverOption,omitnil,omitempty" name:"FailOverOption"`
 }
 
 // Predefined struct for user
@@ -15679,6 +15696,9 @@ type ModifyQualityControlTemplateRequestParams struct {
 	// 录制文件格式。可选值：
 	// <li>PNG: PNG图片</li>
 	RecordFormat *string `json:"RecordFormat,omitnil,omitempty" name:"RecordFormat"`
+
+	// 媒体质检抽检策略。
+	Strategy *QualityControlStrategy `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 }
 
 type ModifyQualityControlTemplateRequest struct {
@@ -15699,6 +15719,9 @@ type ModifyQualityControlTemplateRequest struct {
 	// 录制文件格式。可选值：
 	// <li>PNG: PNG图片</li>
 	RecordFormat *string `json:"RecordFormat,omitnil,omitempty" name:"RecordFormat"`
+
+	// 媒体质检抽检策略。
+	Strategy *QualityControlStrategy `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 }
 
 func (r *ModifyQualityControlTemplateRequest) ToJsonString() string {
@@ -15718,6 +15741,7 @@ func (r *ModifyQualityControlTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Comment")
 	delete(f, "QualityControlItemSet")
 	delete(f, "RecordFormat")
+	delete(f, "Strategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQualityControlTemplateRequest has unknown keys!", "")
 	}

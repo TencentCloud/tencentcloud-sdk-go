@@ -5850,6 +5850,9 @@ type MLIDPassportOCRResponseParams struct {
 	// -9109 告警能力未开通
 	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
 
+	// 输入图片中的卡证数量（仅请求曼谷地域[ap-bangkok]返回）
+	CardCount *int64 `json:"CardCount,omitnil,omitempty" name:"CardCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -9446,6 +9449,9 @@ type RecognizeThaiIDCardOCRResponseParams struct {
 	// Deprecated: AdvancedInfo is deprecated.
 	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
 
+	// 卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）
+	CardCount *int64 `json:"CardCount,omitnil,omitempty" name:"CardCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -10884,6 +10890,9 @@ type TaxPayment struct {
 	// 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
 	// 示例值：纳税人识别号
 	Content []*OtherInvoiceItem `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 表格。
+	TableItems []*OtherInvoiceList `json:"TableItems,omitnil,omitempty" name:"TableItems"`
 }
 
 // Predefined struct for user
