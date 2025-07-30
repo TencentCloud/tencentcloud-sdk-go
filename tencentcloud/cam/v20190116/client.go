@@ -1207,6 +1207,72 @@ func (c *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateSubAccountLoginIpPolicyRequest() (request *CreateSubAccountLoginIpPolicyRequest) {
+    request = &CreateSubAccountLoginIpPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cam", APIVersion, "CreateSubAccountLoginIpPolicy")
+    
+    
+    return
+}
+
+func NewCreateSubAccountLoginIpPolicyResponse() (response *CreateSubAccountLoginIpPolicyResponse) {
+    response = &CreateSubAccountLoginIpPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSubAccountLoginIpPolicy
+// 增加子账号登录IP策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASSISTAPPROVERFULL = "FailedOperation.AssistApproverFull"
+//  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
+//  INVALIDPARAMETER_ASSITAPPROVERTYPEERROR = "InvalidParameter.AssitApproverTypeError"
+//  INVALIDPARAMETER_EFFECTERROR = "InvalidParameter.EffectError"
+//  INVALIDPARAMETER_IPILLEGAL = "InvalidParameter.IPIllegal"
+//  INVALIDPARAMETER_IPRANGEOVERLAPPING = "InvalidParameter.IPRangeOverlapping"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SUBUSERPHONENOTEXSIT = "InvalidParameter.SubUserPhoneNotExsit"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+func (c *Client) CreateSubAccountLoginIpPolicy(request *CreateSubAccountLoginIpPolicyRequest) (response *CreateSubAccountLoginIpPolicyResponse, err error) {
+    return c.CreateSubAccountLoginIpPolicyWithContext(context.Background(), request)
+}
+
+// CreateSubAccountLoginIpPolicy
+// 增加子账号登录IP策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASSISTAPPROVERFULL = "FailedOperation.AssistApproverFull"
+//  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
+//  INVALIDPARAMETER_ASSITAPPROVERTYPEERROR = "InvalidParameter.AssitApproverTypeError"
+//  INVALIDPARAMETER_EFFECTERROR = "InvalidParameter.EffectError"
+//  INVALIDPARAMETER_IPILLEGAL = "InvalidParameter.IPIllegal"
+//  INVALIDPARAMETER_IPRANGEOVERLAPPING = "InvalidParameter.IPRangeOverlapping"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SUBUSERPHONENOTEXSIT = "InvalidParameter.SubUserPhoneNotExsit"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+func (c *Client) CreateSubAccountLoginIpPolicyWithContext(ctx context.Context, request *CreateSubAccountLoginIpPolicyRequest) (response *CreateSubAccountLoginIpPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateSubAccountLoginIpPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cam", APIVersion, "CreateSubAccountLoginIpPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSubAccountLoginIpPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSubAccountLoginIpPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserOIDCConfigRequest() (request *CreateUserOIDCConfigRequest) {
     request = &CreateUserOIDCConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

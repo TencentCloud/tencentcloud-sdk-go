@@ -9461,6 +9461,78 @@ func (c *Client) DescribeSuccessorOpsTaskInfosWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeSuccessorTaskInfoListRequest() (request *DescribeSuccessorTaskInfoListRequest) {
+    request = &DescribeSuccessorTaskInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeSuccessorTaskInfoList")
+    
+    
+    return
+}
+
+func NewDescribeSuccessorTaskInfoListResponse() (response *DescribeSuccessorTaskInfoListResponse) {
+    response = &DescribeSuccessorTaskInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSuccessorTaskInfoList
+// 获取下游任务信息批量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALCALLCLOUDAPIERROR = "InternalError.InternalCallCloudApiError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSuccessorTaskInfoList(request *DescribeSuccessorTaskInfoListRequest) (response *DescribeSuccessorTaskInfoListResponse, err error) {
+    return c.DescribeSuccessorTaskInfoListWithContext(context.Background(), request)
+}
+
+// DescribeSuccessorTaskInfoList
+// 获取下游任务信息批量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALCALLCLOUDAPIERROR = "InternalError.InternalCallCloudApiError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSuccessorTaskInfoListWithContext(ctx context.Context, request *DescribeSuccessorTaskInfoListRequest) (response *DescribeSuccessorTaskInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSuccessorTaskInfoListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "DescribeSuccessorTaskInfoList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSuccessorTaskInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSuccessorTaskInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTableBasicInfoRequest() (request *DescribeTableBasicInfoRequest) {
     request = &DescribeTableBasicInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

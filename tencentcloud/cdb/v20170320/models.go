@@ -1162,9 +1162,11 @@ type BinlogInfo struct {
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
 	// 下载地址
+	// 说明：此下载地址和参数 InternetUrl 的下载地址一样。
 	IntranetUrl *string `json:"IntranetUrl,omitnil,omitempty" name:"IntranetUrl"`
 
 	// 下载地址
+	// 说明：此下载地址和参数 IntranetUrl 的下载地址一样。
 	InternetUrl *string `json:"InternetUrl,omitnil,omitempty" name:"InternetUrl"`
 
 	// 日志具体类型，可能的值有：binlog - 二进制日志
@@ -1189,6 +1191,8 @@ type BinlogInfo struct {
 	CosStorageType *int64 `json:"CosStorageType,omitnil,omitempty" name:"CosStorageType"`
 
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	//
+	// Deprecated: InstanceId is deprecated.
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -6365,26 +6369,26 @@ func (r *DescribeBackupSummariesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupsRequestParams struct {
-	// 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 偏移量，最小值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值为20，最小值为1，最大值为100。
+	// 分页大小，默认值为20，最小值为1，最大值为1000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeBackupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 偏移量，最小值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值为20，最小值为1，最大值为100。
+	// 分页大小，默认值为20，最小值为1，最大值为1000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -6523,7 +6527,7 @@ type DescribeBinlogsRequestParams struct {
 	// 偏移量，最小值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值为20，最小值为1，最大值为100。
+	// 分页大小，默认值为20，最小值为1，最大值为1000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// binlog最早开始时间，时间格式：2016-03-17 02:10:37
@@ -6545,7 +6549,7 @@ type DescribeBinlogsRequest struct {
 	// 偏移量，最小值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值为20，最小值为1，最大值为100。
+	// 分页大小，默认值为20，最小值为1，最大值为1000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// binlog最早开始时间，时间格式：2016-03-17 02:10:37
@@ -8637,16 +8641,16 @@ func (r *DescribeDeviceMonitorInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeErrorLogDataRequestParams struct {
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间戳。例如 1585142640 。
+	// 开始时间戳。例如1585142640，秒级。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳。例如 1585142640 。
+	// 结束时间戳。例如1585142640，秒级。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 要匹配的关键字列表，最多支持15个关键字。
+	// 要匹配的关键字列表，最多支持15个关键字，支持模糊匹配。
 	KeyWords []*string `json:"KeyWords,omitnil,omitempty" name:"KeyWords"`
 
 	// 分页的返回数量，默认为100，最大为400。
@@ -8662,16 +8666,16 @@ type DescribeErrorLogDataRequestParams struct {
 type DescribeErrorLogDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间戳。例如 1585142640 。
+	// 开始时间戳。例如1585142640，秒级。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳。例如 1585142640 。
+	// 结束时间戳。例如1585142640，秒级。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 要匹配的关键字列表，最多支持15个关键字。
+	// 要匹配的关键字列表，最多支持15个关键字，支持模糊匹配。
 	KeyWords []*string `json:"KeyWords,omitnil,omitempty" name:"KeyWords"`
 
 	// 分页的返回数量，默认为100，最大为400。
@@ -9262,14 +9266,14 @@ func (r *DescribeLocalBinlogConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeParamTemplateInfoRequestParams struct {
-	// 参数模板 ID。
+	// 参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type DescribeParamTemplateInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模板 ID。
+	// 参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -9300,7 +9304,7 @@ type DescribeParamTemplateInfoResponseParams struct {
 	// 参数模板名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 参数模板对应实例版本
+	// 参数模板对应实例版本，可取值：5.5、5.6、5.7、8.0。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
 	// 参数模板中的参数数量
@@ -9340,32 +9344,32 @@ func (r *DescribeParamTemplateInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeParamTemplatesRequestParams struct {
-	// 引擎版本，缺省则查询所有
+	// 引擎版本，缺省则查询所有。可取值为：5.5、5.6、5.7、8.0。
 	EngineVersions []*string `json:"EngineVersions,omitnil,omitempty" name:"EngineVersions"`
 
-	// 引擎类型，缺省则查询所有
+	// 引擎类型，缺省则查询所有。可取值为：InnoDB、RocksDB，不区分大小写。
 	EngineTypes []*string `json:"EngineTypes,omitnil,omitempty" name:"EngineTypes"`
 
-	// 模板名称，缺省则查询所有
+	// 模板名称，缺省则查询所有。支持模糊匹配。
 	TemplateNames []*string `json:"TemplateNames,omitnil,omitempty" name:"TemplateNames"`
 
-	// 模板id，缺省则查询所有
+	// 模板 ID，缺省则查询所有。
 	TemplateIds []*int64 `json:"TemplateIds,omitnil,omitempty" name:"TemplateIds"`
 }
 
 type DescribeParamTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 引擎版本，缺省则查询所有
+	// 引擎版本，缺省则查询所有。可取值为：5.5、5.6、5.7、8.0。
 	EngineVersions []*string `json:"EngineVersions,omitnil,omitempty" name:"EngineVersions"`
 
-	// 引擎类型，缺省则查询所有
+	// 引擎类型，缺省则查询所有。可取值为：InnoDB、RocksDB，不区分大小写。
 	EngineTypes []*string `json:"EngineTypes,omitnil,omitempty" name:"EngineTypes"`
 
-	// 模板名称，缺省则查询所有
+	// 模板名称，缺省则查询所有。支持模糊匹配。
 	TemplateNames []*string `json:"TemplateNames,omitnil,omitempty" name:"TemplateNames"`
 
-	// 模板id，缺省则查询所有
+	// 模板 ID，缺省则查询所有。
 	TemplateIds []*int64 `json:"TemplateIds,omitnil,omitempty" name:"TemplateIds"`
 }
 
@@ -10061,7 +10065,7 @@ func (r *DescribeSSLStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowLogDataRequestParams struct {
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 开始时间戳。例如 1585142640。
@@ -10081,16 +10085,21 @@ type DescribeSlowLogDataRequestParams struct {
 	// 访问的 数据库 列表。
 	DataBases []*string `json:"DataBases,omitnil,omitempty" name:"DataBases"`
 
-	// 排序字段。当前支持：Timestamp,QueryTime,LockTime,RowsExamined,RowsSent 。
+	// 排序字段，当前支持字段及含义如下，默认值为 Timestamp。
+	// 1. Timestamp：SQL 的执行时间
+	// 2. QueryTime：SQL 的执行时长（秒）
+	// 3. LockTime：锁时长（秒）
+	// 4. RowsExamined：扫描行数
+	// 5. RowsSent：结果集行数
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 升序还是降序排列。当前支持：ASC,DESC 。
+	// 升序还是降序排列。当前支持值为 ASC - 升序，DESC - 降序 ，默认值为 ASC。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 偏移量，默认为0，最大为9999。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 一次性返回的记录数量，默认为100，最大为400。
+	// 一次性返回的记录数量，默认为100，最大为800。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 仅在实例为主实例或者灾备实例时生效，可选值：slave，代表拉取从机的日志。
@@ -10103,7 +10112,7 @@ type DescribeSlowLogDataRequestParams struct {
 type DescribeSlowLogDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 开始时间戳。例如 1585142640。
@@ -10123,16 +10132,21 @@ type DescribeSlowLogDataRequest struct {
 	// 访问的 数据库 列表。
 	DataBases []*string `json:"DataBases,omitnil,omitempty" name:"DataBases"`
 
-	// 排序字段。当前支持：Timestamp,QueryTime,LockTime,RowsExamined,RowsSent 。
+	// 排序字段，当前支持字段及含义如下，默认值为 Timestamp。
+	// 1. Timestamp：SQL 的执行时间
+	// 2. QueryTime：SQL 的执行时长（秒）
+	// 3. LockTime：锁时长（秒）
+	// 4. RowsExamined：扫描行数
+	// 5. RowsSent：结果集行数
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 升序还是降序排列。当前支持：ASC,DESC 。
+	// 升序还是降序排列。当前支持值为 ASC - 升序，DESC - 降序 ，默认值为 ASC。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 偏移量，默认为0，最大为9999。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 一次性返回的记录数量，默认为100，最大为400。
+	// 一次性返回的记录数量，默认为100，最大为800。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 仅在实例为主实例或者灾备实例时生效，可选值：slave，代表拉取从机的日志。
@@ -10208,7 +10222,7 @@ type DescribeSlowLogsRequestParams struct {
 	// 偏移量，默认值为0，最小值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值为20，最小值为1，最大值为100。
+	// 分页大小，默认值为20，最小值为1，最大值为1000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -10221,7 +10235,7 @@ type DescribeSlowLogsRequest struct {
 	// 偏移量，默认值为0，最小值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值为20，最小值为1，最大值为100。
+	// 分页大小，默认值为20，最小值为1，最大值为1000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -15023,7 +15037,7 @@ type ParamRecord struct {
 }
 
 type ParamTemplateInfo struct {
-	// 参数模板ID
+	// 参数模板 ID
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 参数模板名称
@@ -15032,13 +15046,13 @@ type ParamTemplateInfo struct {
 	// 参数模板描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 实例引擎版本
+	// 实例引擎版本，值为：5.5、5.6、5.7、8.0。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 参数模板类型
+	// 参数模板类型，值为：HIGH_STABILITY、HIGH_PERFORMANCE。
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
-	// 参数模板引擎
+	// 参数模板引擎，值为：InnoDB、RocksDB。
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 }
 

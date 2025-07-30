@@ -4356,7 +4356,7 @@ type CreateLiveTranscodeTemplateRequestParams struct {
 
 	// 关键帧间隔，单位：秒。
 	// 默认原始的间隔
-	// 范围2-6
+	// 范围1-6
 	Gop *int64 `json:"Gop,omitnil,omitempty" name:"Gop"`
 
 	// 旋转角度，默认0。
@@ -4464,7 +4464,7 @@ type CreateLiveTranscodeTemplateRequest struct {
 
 	// 关键帧间隔，单位：秒。
 	// 默认原始的间隔
-	// 范围2-6
+	// 范围1-6
 	Gop *int64 `json:"Gop,omitnil,omitempty" name:"Gop"`
 
 	// 旋转角度，默认0。

@@ -16371,9 +16371,6 @@ type DescribeReportTaskListRequestParams struct {
 	// 每页条数
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 租户id
-	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
-
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
@@ -16410,9 +16407,6 @@ type DescribeReportTaskListRequest struct {
 
 	// 每页条数
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-
-	// 租户id
-	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -16456,7 +16450,6 @@ func (r *DescribeReportTaskListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "PageNum")
 	delete(f, "PageSize")
-	delete(f, "TenantId")
 	delete(f, "ProjectId")
 	delete(f, "TaskId")
 	delete(f, "InstanceId")
@@ -18857,6 +18850,70 @@ func (r *DescribeSuccessorOpsTaskInfosResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSuccessorOpsTaskInfosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSuccessorTaskInfoListRequestParams struct {
+	// 任务id集合
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type DescribeSuccessorTaskInfoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id集合
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeSuccessorTaskInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSuccessorTaskInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSuccessorTaskInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSuccessorTaskInfoListResponseParams struct {
+	// 出参
+	Data []*SuccessorTaskInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSuccessorTaskInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSuccessorTaskInfoListResponseParams `json:"Response"`
+}
+
+func (r *DescribeSuccessorTaskInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSuccessorTaskInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -37104,6 +37161,50 @@ type SubscribeWebHook struct {
 	// 群机器人webhook地址，配置方式参考https://cloud.tencent.com/document/product/1254/70736
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HookAddress *string `json:"HookAddress,omitnil,omitempty" name:"HookAddress"`
+}
+
+type SuccessorTaskInfo struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 所属工作流id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务名
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 层级，0表示当前任务
+	Layer *int64 `json:"Layer,omitnil,omitempty" name:"Layer"`
+
+	// 任务状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务类型，-1表示跨流任务
+	TaskTypeId *int64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 责任人
+	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 所属工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 周期单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleUnit *string `json:"CycleUnit,omitnil,omitempty" name:"CycleUnit"`
+
+	// 调度计划
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleDesc *string `json:"ScheduleDesc,omitnil,omitempty" name:"ScheduleDesc"`
+
+	// 任务类型描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeDesc *string `json:"TaskTypeDesc,omitnil,omitempty" name:"TaskTypeDesc"`
 }
 
 // Predefined struct for user

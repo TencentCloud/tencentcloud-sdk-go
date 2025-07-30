@@ -1045,16 +1045,16 @@ type Certificates struct {
 	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
-	// 证书生效时间。
+	// 证书生效时间。时区为GMT+8:00
 	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
-	// 证书过期时间。
+	// 证书过期时间。时区为GMT+8:00
 	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
 	// 证书有效期，单位（月）。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
-	// 创建时间。
+	// 创建时间。时区为GMT+8:00
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// 证书 ID。
@@ -1138,10 +1138,10 @@ type Certificates struct {
 	// 是否即将过期， 证书即将到期的30天内为即将过期
 	IsExpiring *bool `json:"IsExpiring,omitnil,omitempty" name:"IsExpiring"`
 
-	// DV证书添加验证截止时间
+	// DV证书添加验证截止时间，时区为GMT+8:00
 	DVAuthDeadline *string `json:"DVAuthDeadline,omitnil,omitempty" name:"DVAuthDeadline"`
 
-	// 域名验证通过时间
+	// 域名验证通过时间，时区为GMT+8:00
 	ValidationPassedTime *string `json:"ValidationPassedTime,omitnil,omitempty" name:"ValidationPassedTime"`
 
 	// 证书关联的多域名
@@ -1165,7 +1165,7 @@ type Certificates struct {
 	// 支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
 	SupportDownloadType *SupportDownloadType `json:"SupportDownloadType,omitnil,omitempty" name:"SupportDownloadType"`
 
-	// 证书吊销完成时间
+	// 证书吊销完成时间，时区为GMT+8:00
 	CertRevokedTime *string `json:"CertRevokedTime,omitnil,omitempty" name:"CertRevokedTime"`
 
 	// 托管资源类型列表
@@ -2968,6 +2968,9 @@ type DeployRecordDetail struct {
 
 	// 原证书加密算法
 	OldAlgorithm *string `json:"OldAlgorithm,omitnil,omitempty" name:"OldAlgorithm"`
+
+	// 实例状态，不同云产品状态不一样
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 }
 
 type DeployRecordInfo struct {
@@ -3862,11 +3865,11 @@ type DescribeCertificateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
-	// 证书生效时间。
+	// 证书生效时间。时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
-	// 证书失效时间。
+	// 证书失效时间。时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
@@ -3874,7 +3877,7 @@ type DescribeCertificateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
-	// 申请时间。
+	// 申请时间。时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
@@ -3950,7 +3953,7 @@ type DescribeCertificateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CACommonNames []*string `json:"CACommonNames,omitnil,omitempty" name:"CACommonNames"`
 
-	// CA证书所有的到期时间。仅证书类型CertificateType为CA有效
+	// CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CAEndTimes []*string `json:"CAEndTimes,omitnil,omitempty" name:"CAEndTimes"`
 
@@ -4286,7 +4289,7 @@ type DescribeDeployedResourcesRequestParams struct {
 	// 证书ID
 	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
-	// 资源类型:clb,cdn,live,waf,antiddos,teo
+	// 资源类型:clb,cdn,live,vod,waf,antiddos,teo
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -4296,7 +4299,7 @@ type DescribeDeployedResourcesRequest struct {
 	// 证书ID
 	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
-	// 资源类型:clb,cdn,live,waf,antiddos,teo
+	// 资源类型:clb,cdn,live,vod,waf,antiddos,teo
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -5030,7 +5033,7 @@ type DescribeHostDeployRecordDetailResponseParams struct {
 	// 部署中总数
 	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil,omitempty" name:"RunningTotalCount"`
 
-	// 带部署总数
+	// 待部署总数
 	PendingTotalCount *int64 `json:"PendingTotalCount,omitnil,omitempty" name:"PendingTotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

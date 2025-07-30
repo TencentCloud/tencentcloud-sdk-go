@@ -1992,7 +1992,7 @@ type CreateTargetGroupRequestParams struct {
 	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 目标组后端转发协议。v2新版目标组该项必填。目前支持tcp、udp。
+	// 目标组后端转发协议。v2新版目标组该项必填。目前支持TCP、UDP、HTTP、HTTPS、GRPC。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 标签。
@@ -2006,13 +2006,13 @@ type CreateTargetGroupRequestParams struct {
 	// v1 目标组类型不支持设置 Weight 参数。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 全监听目标组标识，为true表示是全监听目标组，false表示不是全监听目标组。
+	// 全监听目标组标识，true表示是全监听目标组，false表示不是全监听目标组。仅V2新版类型目标组支持该参数。
 	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。
 	KeepaliveEnable *bool `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
-	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。仅V2新版且后端转发协议为HTTP/HTTPS/GRPC目标组支持该参数。
 	SessionExpireTime *uint64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 }
 
@@ -2034,7 +2034,7 @@ type CreateTargetGroupRequest struct {
 	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 目标组后端转发协议。v2新版目标组该项必填。目前支持tcp、udp。
+	// 目标组后端转发协议。v2新版目标组该项必填。目前支持TCP、UDP、HTTP、HTTPS、GRPC。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 标签。
@@ -2048,13 +2048,13 @@ type CreateTargetGroupRequest struct {
 	// v1 目标组类型不支持设置 Weight 参数。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 全监听目标组标识，为true表示是全监听目标组，false表示不是全监听目标组。
+	// 全监听目标组标识，true表示是全监听目标组，false表示不是全监听目标组。仅V2新版类型目标组支持该参数。
 	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。
 	KeepaliveEnable *bool `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
-	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。仅V2新版且后端转发协议为HTTP/HTTPS/GRPC目标组支持该参数。
 	SessionExpireTime *uint64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 }
 
@@ -9722,12 +9722,11 @@ type TargetGroupInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociatedRule []*AssociationItem `json:"AssociatedRule,omitnil,omitempty" name:"AssociatedRule"`
 
-	// 后端转发协议类型，支持类型TCP， UDP。仅V2新版目标组支持返回该参数。
-	// 
+	// 目标组后端转发协议, 仅v2新版目标组返回有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), gwlb(全局负载均衡目标组)。
+	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组)。默认为v1旧版目标组。
 	TargetGroupType *string `json:"TargetGroupType,omitnil,omitempty" name:"TargetGroupType"`
 
 	// 目标组已关联的规则数。
@@ -9740,10 +9739,17 @@ type TargetGroupInfo struct {
 	Tag []*TagInfo `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 是否全监听目标组
+	// 是否全监听目标组。
 	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
+
+	// 是否开启长连接,  仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。
+	KeepaliveEnable *bool `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
+
+	// 会话保持时间，仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。
+	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 }
 
 type TargetGroupInstance struct {

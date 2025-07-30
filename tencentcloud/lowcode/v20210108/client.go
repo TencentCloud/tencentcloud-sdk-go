@@ -45,6 +45,62 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCheckDeployAppRequest() (request *CheckDeployAppRequest) {
+    request = &CheckDeployAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lowcode", APIVersion, "CheckDeployApp")
+    
+    
+    return
+}
+
+func NewCheckDeployAppResponse() (response *CheckDeployAppResponse) {
+    response = &CheckDeployAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckDeployApp
+// 检查应用发布状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CheckDeployApp(request *CheckDeployAppRequest) (response *CheckDeployAppResponse, err error) {
+    return c.CheckDeployAppWithContext(context.Background(), request)
+}
+
+// CheckDeployApp
+// 检查应用发布状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CheckDeployAppWithContext(ctx context.Context, request *CheckDeployAppRequest) (response *CheckDeployAppResponse, err error) {
+    if request == nil {
+        request = NewCheckDeployAppRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "CheckDeployApp")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckDeployApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckDeployAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateKnowledgeSetRequest() (request *CreateKnowledgeSetRequest) {
     request = &CreateKnowledgeSetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -91,6 +147,58 @@ func (c *Client) CreateKnowledgeSetWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreateKnowledgeSetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAppBindWxAppRequest() (request *DeleteAppBindWxAppRequest) {
+    request = &DeleteAppBindWxAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lowcode", APIVersion, "DeleteAppBindWxApp")
+    
+    
+    return
+}
+
+func NewDeleteAppBindWxAppResponse() (response *DeleteAppBindWxAppResponse) {
+    response = &DeleteAppBindWxAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAppBindWxApp
+// 删除应用绑定小程序
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteAppBindWxApp(request *DeleteAppBindWxAppRequest) (response *DeleteAppBindWxAppResponse, err error) {
+    return c.DeleteAppBindWxAppWithContext(context.Background(), request)
+}
+
+// DeleteAppBindWxApp
+// 删除应用绑定小程序
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteAppBindWxAppWithContext(ctx context.Context, request *DeleteAppBindWxAppRequest) (response *DeleteAppBindWxAppResponse, err error) {
+    if request == nil {
+        request = NewDeleteAppBindWxAppRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "DeleteAppBindWxApp")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAppBindWxApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAppBindWxAppResponse()
     err = c.Send(request, response)
     return
 }
@@ -193,6 +301,62 @@ func (c *Client) DeleteKnowledgeSetWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteKnowledgeSetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeployAppRequest() (request *DeployAppRequest) {
+    request = &DeployAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lowcode", APIVersion, "DeployApp")
+    
+    
+    return
+}
+
+func NewDeployAppResponse() (response *DeployAppResponse) {
+    response = &DeployAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeployApp
+// 发布应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeployApp(request *DeployAppRequest) (response *DeployAppResponse, err error) {
+    return c.DeployAppWithContext(context.Background(), request)
+}
+
+// DeployApp
+// 发布应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeployAppWithContext(ctx context.Context, request *DeployAppRequest) (response *DeployAppResponse, err error) {
+    if request == nil {
+        request = NewDeployAppRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "DeployApp")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeployApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeployAppResponse()
     err = c.Send(request, response)
     return
 }
@@ -405,6 +569,56 @@ func (c *Client) DescribeKnowledgeSetListWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeKnowledgeSetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPutWxAppIdToWeAppRequest() (request *PutWxAppIdToWeAppRequest) {
+    request = &PutWxAppIdToWeAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lowcode", APIVersion, "PutWxAppIdToWeApp")
+    
+    
+    return
+}
+
+func NewPutWxAppIdToWeAppResponse() (response *PutWxAppIdToWeAppResponse) {
+    response = &PutWxAppIdToWeAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PutWxAppIdToWeApp
+// 接口提供应用绑定微信ID功能。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) PutWxAppIdToWeApp(request *PutWxAppIdToWeAppRequest) (response *PutWxAppIdToWeAppResponse, err error) {
+    return c.PutWxAppIdToWeAppWithContext(context.Background(), request)
+}
+
+// PutWxAppIdToWeApp
+// 接口提供应用绑定微信ID功能。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) PutWxAppIdToWeAppWithContext(ctx context.Context, request *PutWxAppIdToWeAppRequest) (response *PutWxAppIdToWeAppResponse, err error) {
+    if request == nil {
+        request = NewPutWxAppIdToWeAppRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "PutWxAppIdToWeApp")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PutWxAppIdToWeApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPutWxAppIdToWeAppResponse()
     err = c.Send(request, response)
     return
 }
