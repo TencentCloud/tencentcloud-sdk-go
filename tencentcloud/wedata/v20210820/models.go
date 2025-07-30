@@ -15499,6 +15499,9 @@ func (r *DescribeProjectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProjectUsersRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
 	// 分页号
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
@@ -15518,6 +15521,9 @@ type DescribeProjectUsersRequestParams struct {
 type DescribeProjectUsersRequest struct {
 	*tchttp.BaseRequest
 	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
 	// 分页号
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
@@ -15546,6 +15552,7 @@ func (r *DescribeProjectUsersRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ProjectId")
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
 	delete(f, "Filters")
