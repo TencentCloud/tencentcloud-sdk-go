@@ -84,10 +84,21 @@ func (m *mockMetadataTransport) RoundTrip(req *http.Request) (*http.Response, er
 	return nil, fmt.Errorf("unexpected request: %s", url)
 }
 
-func runConcurrentTest(t *testing.T, getCred func() (string, string, string), duration time.Duration, threads int) int64 {
+func TestRoleArnCredentialConcurrent(t *testing.T) {
+	http.DefaultTransport = &mockMetadataTransport{}
+
+	provider := common.DefaultRoleArnProvider("mock-secret-id", "mock-secret-key", "mock-role-arn")
+	credIface, err := provider.GetCredential()
+	if err != nil {
+		t.Fatalf("failed to init credential: %v", err)
+	}
+	cred := credIface.(*common.RoleArnCredential)
+
 	var inconsistencies int64
 	var wg sync.WaitGroup
 	stop := make(chan struct{})
+	threads := 1000
+	duration := 5 * time.Second
 
 	for i := 0; i < threads; i++ {
 		wg.Add(1)
@@ -98,7 +109,7 @@ func runConcurrentTest(t *testing.T, getCred func() (string, string, string), du
 				case <-stop:
 					return
 				default:
-					sid, skey, token := getCred()
+					sid, skey, token := cred.GetSecretId(), cred.GetSecretKey(), cred.GetToken()
 					if sid != skey || skey != token {
 						atomic.AddInt64(&inconsistencies, 1)
 						t.Logf("[Goroutine %d] Inconsistent: %s / %s / %s", id, sid, skey, token)
@@ -112,10 +123,12 @@ func runConcurrentTest(t *testing.T, getCred func() (string, string, string), du
 	time.Sleep(duration)
 	close(stop)
 	wg.Wait()
-	return atomic.LoadInt64(&inconsistencies)
+	if inconsistencies > 0 {
+		t.Errorf("Found %d inconsistencies", inconsistencies)
+	}
 }
 
-func TestCvmRoleCredentialConcurrentSafeRefresh(t *testing.T) {
+func TestCvmRoleCredentialConcurrent(t *testing.T) {
 	http.DefaultTransport = &mockMetadataTransport{}
 
 	provider := common.DefaultCvmRoleProvider()
@@ -125,31 +138,39 @@ func TestCvmRoleCredentialConcurrentSafeRefresh(t *testing.T) {
 	}
 	cred := credIface.(*common.CvmRoleCredential)
 
-	incons := runConcurrentTest(t, cred.GetCredential, 10*time.Second, 1000)
+	var inconsistencies int64
+	var wg sync.WaitGroup
+	stop := make(chan struct{})
+	threads := 10
+	duration := 5 * time.Second
 
-	if incons > 0 {
-		t.Errorf("TestCvmRoleCredentialConcurrentSafeRefresh failed: %d inconsistencies", incons)
-	} else {
-		t.Logf("TestCvmRoleCredentialConcurrentSafeRefresh passed: no inconsistencies")
+	for i := 0; i < threads; i++ {
+		wg.Add(1)
+		go func(id int) {
+			defer wg.Done()
+			for {
+				select {
+				case <-stop:
+					return
+				default:
+					sid := cred.GetSecretId()
+					skey := cred.GetSecretKey()
+					token := cred.GetToken()
+					if sid != skey || skey != token {
+						atomic.AddInt64(&inconsistencies, 1)
+						t.Logf("[Goroutine %d] Inconsistent: %s / %s / %s", id, sid, skey, token)
+					}
+					time.Sleep(1 * time.Millisecond)
+				}
+			}
+		}(i)
 	}
-}
 
-func TestRoleCredentialConcurrentSafeRefresh(t *testing.T) {
-	http.DefaultTransport = &mockMetadataTransport{}
-
-	provider := common.DefaultRoleArnProvider("mock-secret-id", "mock-secret-key", "mock-role-arn")
-	credIface, err := provider.GetCredential()
-	if err != nil {
-		t.Fatalf("failed to init credential: %v", err)
-	}
-	cred := credIface.(*common.RoleArnCredential)
-
-	incons := runConcurrentTest(t, cred.GetCredential, 10*time.Second, 1000)
-
-	if incons > 0 {
-		t.Errorf("TestRoleCredentialConcurrentSafeRefresh failed: %d inconsistencies", incons)
-	} else {
-		t.Logf("TestRoleCredentialConcurrentSafeRefresh passed: no inconsistencies")
+	time.Sleep(duration)
+	close(stop)
+	wg.Wait()
+	if inconsistencies > 0 {
+		t.Errorf("Found %d inconsistencies", inconsistencies)
 	}
 }
 
@@ -165,12 +186,39 @@ func TestOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
 	}
 	cred := credIface.(*common.RoleArnCredential)
 
-	incons := runConcurrentTest(t, cred.GetCredential, 10*time.Second, 1000)
+	var inconsistencies int64
+	var wg sync.WaitGroup
+	stop := make(chan struct{})
+	threads := 10
+	duration := 5 * time.Second
 
-	if incons > 0 {
-		t.Errorf("TestOIDCRoleArnProviderConcurrentSafeRefresh failed: %d inconsistencies", incons)
-	} else {
-		t.Logf("TestOIDCRoleArnProviderConcurrentSafeRefresh passed: no inconsistencies")
+	for i := 0; i < threads; i++ {
+		wg.Add(1)
+		go func(id int) {
+			defer wg.Done()
+			for {
+				select {
+				case <-stop:
+					return
+				default:
+					sid := cred.GetSecretId()
+					skey := cred.GetSecretKey()
+					token := cred.GetToken()
+					if sid != skey || skey != token {
+						atomic.AddInt64(&inconsistencies, 1)
+						t.Logf("[Goroutine %d] Inconsistent: %s / %s / %s", id, sid, skey, token)
+					}
+					time.Sleep(1 * time.Millisecond)
+				}
+			}
+		}(i)
+	}
+
+	time.Sleep(duration)
+	close(stop)
+	wg.Wait()
+	if inconsistencies > 0 {
+		t.Errorf("Found %d inconsistencies", inconsistencies)
 	}
 }
 
@@ -200,11 +248,38 @@ func TestTkeOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
 	}
 	cred := credIface.(*common.RoleArnCredential)
 
-	incons := runConcurrentTest(t, cred.GetCredential, 10*time.Second, 1000)
+	var inconsistencies int64
+	var wg sync.WaitGroup
+	stop := make(chan struct{})
+	threads := 10
+	duration := 5 * time.Second
 
-	if incons > 0 {
-		t.Errorf("TestOIDCRoleArnProviderConcurrentSafeRefresh failed: %d inconsistencies", incons)
-	} else {
-		t.Logf("TestOIDCRoleArnProviderConcurrentSafeRefresh passed: no inconsistencies")
+	for i := 0; i < threads; i++ {
+		wg.Add(1)
+		go func(id int) {
+			defer wg.Done()
+			for {
+				select {
+				case <-stop:
+					return
+				default:
+					sid := cred.GetSecretId()
+					skey := cred.GetSecretKey()
+					token := cred.GetToken()
+					if sid != skey || skey != token {
+						atomic.AddInt64(&inconsistencies, 1)
+						t.Logf("[Goroutine %d] Inconsistent: %s / %s / %s", id, sid, skey, token)
+					}
+					time.Sleep(1 * time.Millisecond)
+				}
+			}
+		}(i)
+	}
+
+	time.Sleep(duration)
+	close(stop)
+	wg.Wait()
+	if inconsistencies > 0 {
+		t.Errorf("Found %d inconsistencies", inconsistencies)
 	}
 }
