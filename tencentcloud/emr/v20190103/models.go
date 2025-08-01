@@ -3701,7 +3701,7 @@ type DescribeHBaseTableOverviewRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 分页查询编号偏移量，从0开始	
+	// 页码，第一页:0，第二页:1
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页查询时的分页大小，最小1，最大100
@@ -3723,7 +3723,7 @@ type DescribeHBaseTableOverviewRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 分页查询编号偏移量，从0开始	
+	// 页码，第一页:0，第二页:1
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页查询时的分页大小，最小1，最大100

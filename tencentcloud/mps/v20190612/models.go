@@ -20269,19 +20269,27 @@ type TextWatermarkTemplateInputForUpdate struct {
 }
 
 type TimeSpotCheck struct {
-	// 抽检策略的每次循环检测的时长。取值范围（单位s）：
+	// 每次循环检测的时长。取值范围（单位s）：
 	// 
 	// - 最小值：10
 	// - 最大值：86400
 	CheckDuration *uint64 `json:"CheckDuration,omitnil,omitempty" name:"CheckDuration"`
 
-	// 抽检测略的检测间隔，表示在一次检测结束后，等待多长时间后，再次检测。
+	// 抽检间隔，表示在一次检测结束后，等待多长时间后，再次检测。取值范围（单位 s）：
+	// - 最小值：10
+	// - 最大值：3600
 	CheckInterval *uint64 `json:"CheckInterval,omitnil,omitempty" name:"CheckInterval"`
 
-	// 片头跳过时长。
+	// 片头跳过时长。取值范围（单位 s）：
+	// - 最小值：1
+	// - 最大值：1800
 	SkipDuration *uint64 `json:"SkipDuration,omitnil,omitempty" name:"SkipDuration"`
 
-	// 循环次数，该字段为空或 0 时，默认循环直至视频结束。
+	// 循环次数。取值范围:
+	// - 最小值：0
+	// - 最大值：1000
+	// 
+	// 取值为 0 或为空时，表示循环至视频结束。
 	CirclesNumber *uint64 `json:"CirclesNumber,omitnil,omitempty" name:"CirclesNumber"`
 }
 

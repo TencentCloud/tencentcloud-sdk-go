@@ -2652,10 +2652,10 @@ func (r *DescribeCfsSnapshotOverviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfsSnapshotsRequestParams struct {
-	// 文件系统ID
+	// 文件系统 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 快照ID
+	// 快照 ID
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
 	// 分页起始位置，默认为0
@@ -2669,26 +2669,25 @@ type DescribeCfsSnapshotsRequestParams struct {
 	// <br>SnapshotName - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。
 	// <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 	// <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
-	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-	// (creating：创建中 | available：运行中| deleting: 删除中 | rollbacking_new：由快照创建新文件系统中| create-failed 创建失败）
+	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。状态分类：creating：创建中 | available：运行中 | deleting：删除中 | rollbacking_new：由快照创建新文件系统中 | create-failed：创建失败。
 	// <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
-	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key 使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 按创建时间排序取值
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序 升序或者降序
+	// 排序；升序或者降序
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type DescribeCfsSnapshotsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统ID
+	// 文件系统 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 快照ID
+	// 快照 ID
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
 	// 分页起始位置，默认为0
@@ -2702,16 +2701,15 @@ type DescribeCfsSnapshotsRequest struct {
 	// <br>SnapshotName - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。
 	// <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 	// <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
-	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-	// (creating：创建中 | available：运行中| deleting: 删除中 | rollbacking_new：由快照创建新文件系统中| create-failed 创建失败）
+	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。状态分类：creating：创建中 | available：运行中 | deleting：删除中 | rollbacking_new：由快照创建新文件系统中 | create-failed：创建失败。
 	// <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
-	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key 使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 按创建时间排序取值
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序 升序或者降序
+	// 排序；升序或者降序
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
@@ -4241,7 +4239,7 @@ type SnapshotInfo struct {
 	// 快照ID
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 快照状态，createing-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
+	// 快照状态，creating-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域名称
@@ -4271,11 +4269,11 @@ type SnapshotInfo struct {
 	// 快照标签
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 快照类型, general为通用系列快照，turbo为Turbo系列快照
+	// 快照类型，general为通用系列快照，turbo为Turbo系列快照
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotType *string `json:"SnapshotType,omitnil,omitempty" name:"SnapshotType"`
 
-	// 实际快照时间，反应快照对应文件系统某个时刻的数据。
+	// 实际快照时间，反映快照对应文件系统某个时刻的数据。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotTime *string `json:"SnapshotTime,omitnil,omitempty" name:"SnapshotTime"`
 }

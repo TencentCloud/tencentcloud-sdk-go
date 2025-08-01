@@ -305,13 +305,14 @@ type ControlAIConversationRequestParams struct {
 	// 任务唯一标识
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 控制命令，目前支持命令如下：
-	// 
-	// - ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+	// 控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 服务端发送播报文本命令，当Command为ServerPushText时必填
 	ServerPushText *ServerPushText `json:"ServerPushText,omitnil,omitempty" name:"ServerPushText"`
+
+	// 服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+	InvokeLLM *InvokeLLM `json:"InvokeLLM,omitnil,omitempty" name:"InvokeLLM"`
 }
 
 type ControlAIConversationRequest struct {
@@ -320,13 +321,14 @@ type ControlAIConversationRequest struct {
 	// 任务唯一标识
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 控制命令，目前支持命令如下：
-	// 
-	// - ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+	// 控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 服务端发送播报文本命令，当Command为ServerPushText时必填
 	ServerPushText *ServerPushText `json:"ServerPushText,omitnil,omitempty" name:"ServerPushText"`
+
+	// 服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+	InvokeLLM *InvokeLLM `json:"InvokeLLM,omitnil,omitempty" name:"InvokeLLM"`
 }
 
 func (r *ControlAIConversationRequest) ToJsonString() string {
@@ -344,6 +346,7 @@ func (r *ControlAIConversationRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "Command")
 	delete(f, "ServerPushText")
+	delete(f, "InvokeLLM")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlAIConversationRequest has unknown keys!", "")
 	}
@@ -3989,6 +3992,14 @@ type EventMessage struct {
 
 	// 事件的第二个参数，如视频分辨率高
 	ParamTwo *int64 `json:"ParamTwo,omitnil,omitempty" name:"ParamTwo"`
+}
+
+type InvokeLLM struct {
+	// 请求LLM的内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 是否允许该文本打断机器人说话
+	Interrupt *bool `json:"Interrupt,omitnil,omitempty" name:"Interrupt"`
 }
 
 type LayoutParams struct {

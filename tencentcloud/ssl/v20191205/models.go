@@ -3468,18 +3468,18 @@ type DescribeCertificateDetailResponseParams struct {
 	// 漏洞扫描状态。
 	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
-	// 证书生效时间。
+	// 证书生效时间。时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
-	// 证书失效时间。
+	// 证书失效时间。时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
 	// 证书有效期：单位（月）。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
-	// 证书申请时间。
+	// 证书申请时间。时区为GMT+8:00
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// CA订单 ID。

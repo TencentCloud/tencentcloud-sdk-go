@@ -6969,6 +6969,9 @@ type Service struct {
 	// 用于监控查询的Source
 	// 枚举值，部分情况下与CreateSource不同，通过该字段兼容
 	MonitorSource *string `json:"MonitorSource,omitnil,omitempty" name:"MonitorSource"`
+
+	// 服务创建者的子账号名称
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 }
 
 type ServiceCallInfo struct {

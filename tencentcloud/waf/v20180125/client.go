@@ -1095,6 +1095,96 @@ func (c *Client) CreateIpAccessControlWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateOwaspWhiteRuleRequest() (request *CreateOwaspWhiteRuleRequest) {
+    request = &CreateOwaspWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "CreateOwaspWhiteRule")
+    
+    
+    return
+}
+
+func NewCreateOwaspWhiteRuleResponse() (response *CreateOwaspWhiteRuleResponse) {
+    response = &CreateOwaspWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOwaspWhiteRule
+// 添加规则引擎白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDREQUEST = "InvalidParameterValue.InvalidRequest"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateOwaspWhiteRule(request *CreateOwaspWhiteRuleRequest) (response *CreateOwaspWhiteRuleResponse, err error) {
+    return c.CreateOwaspWhiteRuleWithContext(context.Background(), request)
+}
+
+// CreateOwaspWhiteRule
+// 添加规则引擎白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDREQUEST = "InvalidParameterValue.InvalidRequest"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateOwaspWhiteRuleWithContext(ctx context.Context, request *CreateOwaspWhiteRuleRequest) (response *CreateOwaspWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateOwaspWhiteRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreateOwaspWhiteRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOwaspWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOwaspWhiteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePostCKafkaFlowRequest() (request *CreatePostCKafkaFlowRequest) {
     request = &CreatePostCKafkaFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2059,6 +2149,94 @@ func (c *Client) DeleteIpAccessControlV2WithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteIpAccessControlV2Response()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteOwaspWhiteRuleRequest() (request *DeleteOwaspWhiteRuleRequest) {
+    request = &DeleteOwaspWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteOwaspWhiteRule")
+    
+    
+    return
+}
+
+func NewDeleteOwaspWhiteRuleResponse() (response *DeleteOwaspWhiteRuleResponse) {
+    response = &DeleteOwaspWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteOwaspWhiteRule
+// 删除用户规则引擎白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteOwaspWhiteRule(request *DeleteOwaspWhiteRuleRequest) (response *DeleteOwaspWhiteRuleResponse, err error) {
+    return c.DeleteOwaspWhiteRuleWithContext(context.Background(), request)
+}
+
+// DeleteOwaspWhiteRule
+// 删除用户规则引擎白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteOwaspWhiteRuleWithContext(ctx context.Context, request *DeleteOwaspWhiteRuleRequest) (response *DeleteOwaspWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteOwaspWhiteRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteOwaspWhiteRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOwaspWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOwaspWhiteRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -5095,6 +5273,96 @@ func (c *Client) DescribeObjectsWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeObjectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOwaspWhiteRulesRequest() (request *DescribeOwaspWhiteRulesRequest) {
+    request = &DescribeOwaspWhiteRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeOwaspWhiteRules")
+    
+    
+    return
+}
+
+func NewDescribeOwaspWhiteRulesResponse() (response *DescribeOwaspWhiteRulesResponse) {
+    response = &DescribeOwaspWhiteRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOwaspWhiteRules
+// 获取规则引擎白名单列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOwaspWhiteRules(request *DescribeOwaspWhiteRulesRequest) (response *DescribeOwaspWhiteRulesResponse, err error) {
+    return c.DescribeOwaspWhiteRulesWithContext(context.Background(), request)
+}
+
+// DescribeOwaspWhiteRules
+// 获取规则引擎白名单列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOwaspWhiteRulesWithContext(ctx context.Context, request *DescribeOwaspWhiteRulesRequest) (response *DescribeOwaspWhiteRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeOwaspWhiteRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeOwaspWhiteRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOwaspWhiteRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOwaspWhiteRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -9715,6 +9983,96 @@ func (c *Client) ModifyObjectWithContext(ctx context.Context, request *ModifyObj
     request.SetContext(ctx)
     
     response = NewModifyObjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOwaspWhiteRuleRequest() (request *ModifyOwaspWhiteRuleRequest) {
+    request = &ModifyOwaspWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyOwaspWhiteRule")
+    
+    
+    return
+}
+
+func NewModifyOwaspWhiteRuleResponse() (response *ModifyOwaspWhiteRuleResponse) {
+    response = &ModifyOwaspWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOwaspWhiteRule
+// 编辑规则引擎白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDREQUEST = "InvalidParameterValue.InvalidRequest"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyOwaspWhiteRule(request *ModifyOwaspWhiteRuleRequest) (response *ModifyOwaspWhiteRuleResponse, err error) {
+    return c.ModifyOwaspWhiteRuleWithContext(context.Background(), request)
+}
+
+// ModifyOwaspWhiteRule
+// 编辑规则引擎白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDREQUEST = "InvalidParameterValue.InvalidRequest"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyOwaspWhiteRuleWithContext(ctx context.Context, request *ModifyOwaspWhiteRuleRequest) (response *ModifyOwaspWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyOwaspWhiteRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyOwaspWhiteRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOwaspWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOwaspWhiteRuleResponse()
     err = c.Send(request, response)
     return
 }

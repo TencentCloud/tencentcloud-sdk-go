@@ -651,6 +651,98 @@ func (c *Client) CreateBatchCancelFlowUrlWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateBatchContractReviewTaskRequest() (request *CreateBatchContractReviewTaskRequest) {
+    request = &CreateBatchContractReviewTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateBatchContractReviewTask")
+    
+    
+    return
+}
+
+func NewCreateBatchContractReviewTaskResponse() (response *CreateBatchContractReviewTaskResponse) {
+    response = &CreateBatchContractReviewTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBatchContractReviewTask
+// 此接口（CreateBatchContractReviewTask）用来通过上传后的PDF资源编号来批量创建合同智能审查任务。
+//
+// 
+//
+// 适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+//
+// 
+//
+// 注: 
+//
+// 1. PDF格式限制大小为10M以下
+//
+// 2. 仅支持5个PDF文件批量发起
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) CreateBatchContractReviewTask(request *CreateBatchContractReviewTaskRequest) (response *CreateBatchContractReviewTaskResponse, err error) {
+    return c.CreateBatchContractReviewTaskWithContext(context.Background(), request)
+}
+
+// CreateBatchContractReviewTask
+// 此接口（CreateBatchContractReviewTask）用来通过上传后的PDF资源编号来批量创建合同智能审查任务。
+//
+// 
+//
+// 适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+//
+// 
+//
+// 注: 
+//
+// 1. PDF格式限制大小为10M以下
+//
+// 2. 仅支持5个PDF文件批量发起
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) CreateBatchContractReviewTaskWithContext(ctx context.Context, request *CreateBatchContractReviewTaskRequest) (response *CreateBatchContractReviewTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchContractReviewTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateBatchContractReviewTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchContractReviewTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchContractReviewTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchInformationExtractionTaskRequest() (request *CreateBatchInformationExtractionTaskRequest) {
     request = &CreateBatchInformationExtractionTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8587,7 +8679,7 @@ func NewCreateUserVerifyUrlResponse() (response *CreateUserVerifyUrlResponse) {
 }
 
 // CreateUserVerifyUrl
-// 生成个人用户实名认证链接，个人用户点击此链接进入实名流程（若用户已完成实名认证，则直接进入成功页面）。
+// 生成个人用户实名认证链接，个人用户点击此链接进入实名流程（若用户已完成实名认证，则直接进入成功页面）。用户点击此接口生成的链接完成实名认证后，其数据将通过[企业引导个人实名认证后回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E4%BA%8C-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%B8%AA%E4%BA%BA%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%90%8E%E5%9B%9E%E8%B0%83)返回
 //
 // 
 //
@@ -8604,7 +8696,7 @@ func (c *Client) CreateUserVerifyUrl(request *CreateUserVerifyUrlRequest) (respo
 }
 
 // CreateUserVerifyUrl
-// 生成个人用户实名认证链接，个人用户点击此链接进入实名流程（若用户已完成实名认证，则直接进入成功页面）。
+// 生成个人用户实名认证链接，个人用户点击此链接进入实名流程（若用户已完成实名认证，则直接进入成功页面）。用户点击此接口生成的链接完成实名认证后，其数据将通过[企业引导个人实名认证后回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E4%BA%8C-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%B8%AA%E4%BA%BA%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%90%8E%E5%9B%9E%E8%B0%83)返回
 //
 // 
 //
@@ -9571,6 +9663,70 @@ func (c *Client) DescribeContractDiffTaskWebUrlWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeContractDiffTaskWebUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeContractReviewTaskRequest() (request *DescribeContractReviewTaskRequest) {
+    request = &DescribeContractReviewTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeContractReviewTask")
+    
+    
+    return
+}
+
+func NewDescribeContractReviewTaskResponse() (response *DescribeContractReviewTaskResponse) {
+    response = &DescribeContractReviewTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeContractReviewTask
+// 本接口（DescribeContractReviewTask）用于获取合同审查任务详情，包括任务的状态和识别出的风险信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) DescribeContractReviewTask(request *DescribeContractReviewTaskRequest) (response *DescribeContractReviewTaskResponse, err error) {
+    return c.DescribeContractReviewTaskWithContext(context.Background(), request)
+}
+
+// DescribeContractReviewTask
+// 本接口（DescribeContractReviewTask）用于获取合同审查任务详情，包括任务的状态和识别出的风险信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) DescribeContractReviewTaskWithContext(ctx context.Context, request *DescribeContractReviewTaskRequest) (response *DescribeContractReviewTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeContractReviewTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeContractReviewTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContractReviewTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeContractReviewTaskResponse()
     err = c.Send(request, response)
     return
 }

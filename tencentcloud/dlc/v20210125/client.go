@@ -457,6 +457,66 @@ func (c *Client) AssignMangedTablePropertiesWithContext(ctx context.Context, req
     return
 }
 
+func NewAssociateDatasourceHouseRequest() (request *AssociateDatasourceHouseRequest) {
+    request = &AssociateDatasourceHouseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "AssociateDatasourceHouse")
+    
+    
+    return
+}
+
+func NewAssociateDatasourceHouseResponse() (response *AssociateDatasourceHouseResponse) {
+    response = &AssociateDatasourceHouseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssociateDatasourceHouse
+// 绑定数据源和队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDNETWORKCONNECTIONTYPE = "FailedOperation.InvalidNetworkConnectionType"
+//  FAILEDOPERATION_NETWORKCONNECTIONEXIST = "FailedOperation.NetworkConnectionExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VPCCIDRFORMATERROR = "InvalidParameter.VpcCidrFormatError"
+//  INVALIDPARAMETER_VPCCIDROVERLAP = "InvalidParameter.VpcCidrOverlap"
+//  UNAUTHORIZEDOPERATION_YUNTIUSERUNSUPPORT = "UnauthorizedOperation.YuntiUserUnSupport"
+func (c *Client) AssociateDatasourceHouse(request *AssociateDatasourceHouseRequest) (response *AssociateDatasourceHouseResponse, err error) {
+    return c.AssociateDatasourceHouseWithContext(context.Background(), request)
+}
+
+// AssociateDatasourceHouse
+// 绑定数据源和队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDNETWORKCONNECTIONTYPE = "FailedOperation.InvalidNetworkConnectionType"
+//  FAILEDOPERATION_NETWORKCONNECTIONEXIST = "FailedOperation.NetworkConnectionExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VPCCIDRFORMATERROR = "InvalidParameter.VpcCidrFormatError"
+//  INVALIDPARAMETER_VPCCIDROVERLAP = "InvalidParameter.VpcCidrOverlap"
+//  UNAUTHORIZEDOPERATION_YUNTIUSERUNSUPPORT = "UnauthorizedOperation.YuntiUserUnSupport"
+func (c *Client) AssociateDatasourceHouseWithContext(ctx context.Context, request *AssociateDatasourceHouseRequest) (response *AssociateDatasourceHouseResponse, err error) {
+    if request == nil {
+        request = NewAssociateDatasourceHouseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "AssociateDatasourceHouse")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateDatasourceHouse require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssociateDatasourceHouseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAttachUserPolicyRequest() (request *AttachUserPolicyRequest) {
     request = &AttachUserPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2627,6 +2687,68 @@ func (c *Client) CreateSparkSubmitTaskWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateStandardEngineResourceGroupRequest() (request *CreateStandardEngineResourceGroupRequest) {
+    request = &CreateStandardEngineResourceGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateStandardEngineResourceGroup")
+    
+    
+    return
+}
+
+func NewCreateStandardEngineResourceGroupResponse() (response *CreateStandardEngineResourceGroupResponse) {
+    response = &CreateStandardEngineResourceGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateStandardEngineResourceGroup
+// 创建标准引擎资源组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) CreateStandardEngineResourceGroup(request *CreateStandardEngineResourceGroupRequest) (response *CreateStandardEngineResourceGroupResponse, err error) {
+    return c.CreateStandardEngineResourceGroupWithContext(context.Background(), request)
+}
+
+// CreateStandardEngineResourceGroup
+// 创建标准引擎资源组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) CreateStandardEngineResourceGroupWithContext(ctx context.Context, request *CreateStandardEngineResourceGroupRequest) (response *CreateStandardEngineResourceGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateStandardEngineResourceGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateStandardEngineResourceGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStandardEngineResourceGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateStandardEngineResourceGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateStoreLocationRequest() (request *CreateStoreLocationRequest) {
     request = &CreateStoreLocationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3133,6 +3255,66 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     return
 }
 
+func NewCreateUserVpcConnectionRequest() (request *CreateUserVpcConnectionRequest) {
+    request = &CreateUserVpcConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateUserVpcConnection")
+    
+    
+    return
+}
+
+func NewCreateUserVpcConnectionResponse() (response *CreateUserVpcConnectionResponse) {
+    response = &CreateUserVpcConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserVpcConnection
+// 创建用户vpc连接到指定引擎网络
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEUSERVPCCONNECTIONNAME = "InvalidParameter.DuplicateUserVpcConnectionName"
+//  INVALIDPARAMETER_INVALIDWHITELISTKEY = "InvalidParameter.InvalidWhiteListKey"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateUserVpcConnection(request *CreateUserVpcConnectionRequest) (response *CreateUserVpcConnectionResponse, err error) {
+    return c.CreateUserVpcConnectionWithContext(context.Background(), request)
+}
+
+// CreateUserVpcConnection
+// 创建用户vpc连接到指定引擎网络
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEUSERVPCCONNECTIONNAME = "InvalidParameter.DuplicateUserVpcConnectionName"
+//  INVALIDPARAMETER_INVALIDWHITELISTKEY = "InvalidParameter.InvalidWhiteListKey"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateUserVpcConnectionWithContext(ctx context.Context, request *CreateUserVpcConnectionRequest) (response *CreateUserVpcConnectionResponse, err error) {
+    if request == nil {
+        request = NewCreateUserVpcConnectionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateUserVpcConnection")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserVpcConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserVpcConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWorkGroupRequest() (request *CreateWorkGroupRequest) {
     request = &CreateWorkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3357,6 +3539,62 @@ func (c *Client) DeleteDataEngineWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteNativeSparkSessionRequest() (request *DeleteNativeSparkSessionRequest) {
+    request = &DeleteNativeSparkSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteNativeSparkSession")
+    
+    
+    return
+}
+
+func NewDeleteNativeSparkSessionResponse() (response *DeleteNativeSparkSessionResponse) {
+    response = &DeleteNativeSparkSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteNativeSparkSession
+// 根据spark session名称销毁eg spark session
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
+func (c *Client) DeleteNativeSparkSession(request *DeleteNativeSparkSessionRequest) (response *DeleteNativeSparkSessionResponse, err error) {
+    return c.DeleteNativeSparkSessionWithContext(context.Background(), request)
+}
+
+// DeleteNativeSparkSession
+// 根据spark session名称销毁eg spark session
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
+func (c *Client) DeleteNativeSparkSessionWithContext(ctx context.Context, request *DeleteNativeSparkSessionRequest) (response *DeleteNativeSparkSessionResponse, err error) {
+    if request == nil {
+        request = NewDeleteNativeSparkSessionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteNativeSparkSession")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNativeSparkSession require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNativeSparkSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNotebookSessionRequest() (request *DeleteNotebookSessionRequest) {
     request = &DeleteNotebookSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3525,6 +3763,66 @@ func (c *Client) DeleteSparkAppWithContext(ctx context.Context, request *DeleteS
     request.SetContext(ctx)
     
     response = NewDeleteSparkAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteStandardEngineResourceGroupRequest() (request *DeleteStandardEngineResourceGroupRequest) {
+    request = &DeleteStandardEngineResourceGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteStandardEngineResourceGroup")
+    
+    
+    return
+}
+
+func NewDeleteStandardEngineResourceGroupResponse() (response *DeleteStandardEngineResourceGroupResponse) {
+    response = &DeleteStandardEngineResourceGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteStandardEngineResourceGroup
+// 删除标准引擎资源组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) DeleteStandardEngineResourceGroup(request *DeleteStandardEngineResourceGroupRequest) (response *DeleteStandardEngineResourceGroupResponse, err error) {
+    return c.DeleteStandardEngineResourceGroupWithContext(context.Background(), request)
+}
+
+// DeleteStandardEngineResourceGroup
+// 删除标准引擎资源组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) DeleteStandardEngineResourceGroupWithContext(ctx context.Context, request *DeleteStandardEngineResourceGroupRequest) (response *DeleteStandardEngineResourceGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteStandardEngineResourceGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteStandardEngineResourceGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStandardEngineResourceGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteStandardEngineResourceGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -3703,6 +4001,74 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserR
     request.SetContext(ctx)
     
     response = NewDeleteUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUserVpcConnectionRequest() (request *DeleteUserVpcConnectionRequest) {
+    request = &DeleteUserVpcConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteUserVpcConnection")
+    
+    
+    return
+}
+
+func NewDeleteUserVpcConnectionResponse() (response *DeleteUserVpcConnectionResponse) {
+    response = &DeleteUserVpcConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUserVpcConnection
+// 删除用户vpc到引擎网络的连接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  RESOURCESSOLDOUT_UNAUTHORIZEDREVOKEPOLICY = "ResourcesSoldOut.UnauthorizedRevokePolicy"
+//  UNAUTHORIZEDOPERATION_DELETEUSER = "UnauthorizedOperation.DeleteUser"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) DeleteUserVpcConnection(request *DeleteUserVpcConnectionRequest) (response *DeleteUserVpcConnectionResponse, err error) {
+    return c.DeleteUserVpcConnectionWithContext(context.Background(), request)
+}
+
+// DeleteUserVpcConnection
+// 删除用户vpc到引擎网络的连接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  RESOURCESSOLDOUT_UNAUTHORIZEDREVOKEPOLICY = "ResourcesSoldOut.UnauthorizedRevokePolicy"
+//  UNAUTHORIZEDOPERATION_DELETEUSER = "UnauthorizedOperation.DeleteUser"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) DeleteUserVpcConnectionWithContext(ctx context.Context, request *DeleteUserVpcConnectionRequest) (response *DeleteUserVpcConnectionResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserVpcConnectionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteUserVpcConnection")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserVpcConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserVpcConnectionResponse()
     err = c.Send(request, response)
     return
 }
@@ -4509,6 +4875,84 @@ func (c *Client) DescribeDataEnginePythonSparkImagesWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeDataEngineSessionParametersRequest() (request *DescribeDataEngineSessionParametersRequest) {
+    request = &DescribeDataEngineSessionParametersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDataEngineSessionParameters")
+    
+    
+    return
+}
+
+func NewDescribeDataEngineSessionParametersResponse() (response *DescribeDataEngineSessionParametersResponse) {
+    response = &DescribeDataEngineSessionParametersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataEngineSessionParameters
+// 本接口（DescribeDataEngineSessionParameters）用于获取指定小版本下的Session配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IMAGEENGINETYPENOTMATCH = "InvalidParameter.ImageEngineTypeNotMatch"
+//  INVALIDPARAMETER_IMAGEISPUBLICNOTMATCH = "InvalidParameter.ImageIsPublicNotMatch"
+//  INVALIDPARAMETER_IMAGEPARAMETERNOTFOUND = "InvalidParameter.ImageParameterNotFound"
+//  INVALIDPARAMETER_IMAGEPARAMETERSUBMITMETHODNOTMATCH = "InvalidParameter.ImageParameterSubmitMethodNotMatch"
+//  INVALIDPARAMETER_IMAGEPARAMETERTYPENOTMATCH = "InvalidParameter.ImageParameterTypeNotMatch"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+func (c *Client) DescribeDataEngineSessionParameters(request *DescribeDataEngineSessionParametersRequest) (response *DescribeDataEngineSessionParametersResponse, err error) {
+    return c.DescribeDataEngineSessionParametersWithContext(context.Background(), request)
+}
+
+// DescribeDataEngineSessionParameters
+// 本接口（DescribeDataEngineSessionParameters）用于获取指定小版本下的Session配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IMAGEENGINETYPENOTMATCH = "InvalidParameter.ImageEngineTypeNotMatch"
+//  INVALIDPARAMETER_IMAGEISPUBLICNOTMATCH = "InvalidParameter.ImageIsPublicNotMatch"
+//  INVALIDPARAMETER_IMAGEPARAMETERNOTFOUND = "InvalidParameter.ImageParameterNotFound"
+//  INVALIDPARAMETER_IMAGEPARAMETERSUBMITMETHODNOTMATCH = "InvalidParameter.ImageParameterSubmitMethodNotMatch"
+//  INVALIDPARAMETER_IMAGEPARAMETERTYPENOTMATCH = "InvalidParameter.ImageParameterTypeNotMatch"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+func (c *Client) DescribeDataEngineSessionParametersWithContext(ctx context.Context, request *DescribeDataEngineSessionParametersRequest) (response *DescribeDataEngineSessionParametersResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataEngineSessionParametersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeDataEngineSessionParameters")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataEngineSessionParameters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataEngineSessionParametersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataEnginesRequest() (request *DescribeDataEnginesRequest) {
     request = &DescribeDataEnginesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4739,6 +5183,118 @@ func (c *Client) DescribeDatasourceConnectionWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeDatasourceConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEngineNetworksRequest() (request *DescribeEngineNetworksRequest) {
+    request = &DescribeEngineNetworksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeEngineNetworks")
+    
+    
+    return
+}
+
+func NewDescribeEngineNetworksResponse() (response *DescribeEngineNetworksResponse) {
+    response = &DescribeEngineNetworksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEngineNetworks
+// 查询引擎网络信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEngineNetworks(request *DescribeEngineNetworksRequest) (response *DescribeEngineNetworksResponse, err error) {
+    return c.DescribeEngineNetworksWithContext(context.Background(), request)
+}
+
+// DescribeEngineNetworks
+// 查询引擎网络信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEngineNetworksWithContext(ctx context.Context, request *DescribeEngineNetworksRequest) (response *DescribeEngineNetworksResponse, err error) {
+    if request == nil {
+        request = NewDescribeEngineNetworksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeEngineNetworks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEngineNetworks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEngineNetworksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEngineNodeSpecRequest() (request *DescribeEngineNodeSpecRequest) {
+    request = &DescribeEngineNodeSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeEngineNodeSpec")
+    
+    
+    return
+}
+
+func NewDescribeEngineNodeSpecResponse() (response *DescribeEngineNodeSpecResponse) {
+    response = &DescribeEngineNodeSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEngineNodeSpec
+// 查询引擎可用的节点规格
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEngineNodeSpec(request *DescribeEngineNodeSpecRequest) (response *DescribeEngineNodeSpecResponse, err error) {
+    return c.DescribeEngineNodeSpecWithContext(context.Background(), request)
+}
+
+// DescribeEngineNodeSpec
+// 查询引擎可用的节点规格
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEngineNodeSpecWithContext(ctx context.Context, request *DescribeEngineNodeSpecRequest) (response *DescribeEngineNodeSpecResponse, err error) {
+    if request == nil {
+        request = NewDescribeEngineNodeSpecRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeEngineNodeSpec")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEngineNodeSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEngineNodeSpecResponse()
     err = c.Send(request, response)
     return
 }
@@ -5041,6 +5597,114 @@ func (c *Client) DescribeLakeFsTaskResultWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeLakeFsTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNativeSparkSessionsRequest() (request *DescribeNativeSparkSessionsRequest) {
+    request = &DescribeNativeSparkSessionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeNativeSparkSessions")
+    
+    
+    return
+}
+
+func NewDescribeNativeSparkSessionsResponse() (response *DescribeNativeSparkSessionsResponse) {
+    response = &DescribeNativeSparkSessionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNativeSparkSessions
+// 根据资源组获取spark session列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeNativeSparkSessions(request *DescribeNativeSparkSessionsRequest) (response *DescribeNativeSparkSessionsResponse, err error) {
+    return c.DescribeNativeSparkSessionsWithContext(context.Background(), request)
+}
+
+// DescribeNativeSparkSessions
+// 根据资源组获取spark session列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeNativeSparkSessionsWithContext(ctx context.Context, request *DescribeNativeSparkSessionsRequest) (response *DescribeNativeSparkSessionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNativeSparkSessionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeNativeSparkSessions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNativeSparkSessions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNativeSparkSessionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNetworkConnectionsRequest() (request *DescribeNetworkConnectionsRequest) {
+    request = &DescribeNetworkConnectionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeNetworkConnections")
+    
+    
+    return
+}
+
+func NewDescribeNetworkConnectionsResponse() (response *DescribeNetworkConnectionsResponse) {
+    response = &DescribeNetworkConnectionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNetworkConnections
+// 查询网络配置列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNetworkConnections(request *DescribeNetworkConnectionsRequest) (response *DescribeNetworkConnectionsResponse, err error) {
+    return c.DescribeNetworkConnectionsWithContext(context.Background(), request)
+}
+
+// DescribeNetworkConnections
+// 查询网络配置列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNetworkConnectionsWithContext(ctx context.Context, request *DescribeNetworkConnectionsRequest) (response *DescribeNetworkConnectionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNetworkConnectionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeNetworkConnections")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNetworkConnections require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNetworkConnectionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -5599,6 +6263,64 @@ func (c *Client) DescribeScriptsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeSessionImageVersionRequest() (request *DescribeSessionImageVersionRequest) {
+    request = &DescribeSessionImageVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeSessionImageVersion")
+    
+    
+    return
+}
+
+func NewDescribeSessionImageVersionResponse() (response *DescribeSessionImageVersionResponse) {
+    response = &DescribeSessionImageVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSessionImageVersion
+// 获取指定大版本下所有小版本的所有内置镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDCONFIGVALUEREGEXPNOTMATCH = "InvalidParameter.InvalidConfigValueRegexpNotMatch"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+func (c *Client) DescribeSessionImageVersion(request *DescribeSessionImageVersionRequest) (response *DescribeSessionImageVersionResponse, err error) {
+    return c.DescribeSessionImageVersionWithContext(context.Background(), request)
+}
+
+// DescribeSessionImageVersion
+// 获取指定大版本下所有小版本的所有内置镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDCONFIGVALUEREGEXPNOTMATCH = "InvalidParameter.InvalidConfigValueRegexpNotMatch"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+func (c *Client) DescribeSessionImageVersionWithContext(ctx context.Context, request *DescribeSessionImageVersionRequest) (response *DescribeSessionImageVersionResponse, err error) {
+    if request == nil {
+        request = NewDescribeSessionImageVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeSessionImageVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSessionImageVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSessionImageVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSparkAppJobRequest() (request *DescribeSparkAppJobRequest) {
     request = &DescribeSparkAppJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5983,6 +6705,118 @@ func (c *Client) DescribeSparkSessionBatchSqlLogWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeSparkSessionBatchSqlLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStandardEngineResourceGroupConfigInfoRequest() (request *DescribeStandardEngineResourceGroupConfigInfoRequest) {
+    request = &DescribeStandardEngineResourceGroupConfigInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeStandardEngineResourceGroupConfigInfo")
+    
+    
+    return
+}
+
+func NewDescribeStandardEngineResourceGroupConfigInfoResponse() (response *DescribeStandardEngineResourceGroupConfigInfoResponse) {
+    response = &DescribeStandardEngineResourceGroupConfigInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStandardEngineResourceGroupConfigInfo
+// 查询标准引擎资源组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeStandardEngineResourceGroupConfigInfo(request *DescribeStandardEngineResourceGroupConfigInfoRequest) (response *DescribeStandardEngineResourceGroupConfigInfoResponse, err error) {
+    return c.DescribeStandardEngineResourceGroupConfigInfoWithContext(context.Background(), request)
+}
+
+// DescribeStandardEngineResourceGroupConfigInfo
+// 查询标准引擎资源组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeStandardEngineResourceGroupConfigInfoWithContext(ctx context.Context, request *DescribeStandardEngineResourceGroupConfigInfoRequest) (response *DescribeStandardEngineResourceGroupConfigInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeStandardEngineResourceGroupConfigInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeStandardEngineResourceGroupConfigInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStandardEngineResourceGroupConfigInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStandardEngineResourceGroupConfigInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStandardEngineResourceGroupsRequest() (request *DescribeStandardEngineResourceGroupsRequest) {
+    request = &DescribeStandardEngineResourceGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeStandardEngineResourceGroups")
+    
+    
+    return
+}
+
+func NewDescribeStandardEngineResourceGroupsResponse() (response *DescribeStandardEngineResourceGroupsResponse) {
+    response = &DescribeStandardEngineResourceGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStandardEngineResourceGroups
+// 查询标准引擎资源组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeStandardEngineResourceGroups(request *DescribeStandardEngineResourceGroupsRequest) (response *DescribeStandardEngineResourceGroupsResponse, err error) {
+    return c.DescribeStandardEngineResourceGroupsWithContext(context.Background(), request)
+}
+
+// DescribeStandardEngineResourceGroups
+// 查询标准引擎资源组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeStandardEngineResourceGroupsWithContext(ctx context.Context, request *DescribeStandardEngineResourceGroupsRequest) (response *DescribeStandardEngineResourceGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStandardEngineResourceGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeStandardEngineResourceGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStandardEngineResourceGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStandardEngineResourceGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -7275,6 +8109,60 @@ func (c *Client) DescribeUserTypeWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeUserVpcConnectionRequest() (request *DescribeUserVpcConnectionRequest) {
+    request = &DescribeUserVpcConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeUserVpcConnection")
+    
+    
+    return
+}
+
+func NewDescribeUserVpcConnectionResponse() (response *DescribeUserVpcConnectionResponse) {
+    response = &DescribeUserVpcConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserVpcConnection
+// 查询用户vpc到引擎网络的连接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeUserVpcConnection(request *DescribeUserVpcConnectionRequest) (response *DescribeUserVpcConnectionResponse, err error) {
+    return c.DescribeUserVpcConnectionWithContext(context.Background(), request)
+}
+
+// DescribeUserVpcConnection
+// 查询用户vpc到引擎网络的连接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeUserVpcConnectionWithContext(ctx context.Context, request *DescribeUserVpcConnectionRequest) (response *DescribeUserVpcConnectionResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserVpcConnectionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeUserVpcConnection")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserVpcConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserVpcConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
     request = &DescribeUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8019,6 +8907,68 @@ func (c *Client) GrantDLCCatalogAccessWithContext(ctx context.Context, request *
     return
 }
 
+func NewLaunchStandardEngineResourceGroupsRequest() (request *LaunchStandardEngineResourceGroupsRequest) {
+    request = &LaunchStandardEngineResourceGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "LaunchStandardEngineResourceGroups")
+    
+    
+    return
+}
+
+func NewLaunchStandardEngineResourceGroupsResponse() (response *LaunchStandardEngineResourceGroupsResponse) {
+    response = &LaunchStandardEngineResourceGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// LaunchStandardEngineResourceGroups
+// 启动标准引擎资源组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) LaunchStandardEngineResourceGroups(request *LaunchStandardEngineResourceGroupsRequest) (response *LaunchStandardEngineResourceGroupsResponse, err error) {
+    return c.LaunchStandardEngineResourceGroupsWithContext(context.Background(), request)
+}
+
+// LaunchStandardEngineResourceGroups
+// 启动标准引擎资源组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) LaunchStandardEngineResourceGroupsWithContext(ctx context.Context, request *LaunchStandardEngineResourceGroupsRequest) (response *LaunchStandardEngineResourceGroupsResponse, err error) {
+    if request == nil {
+        request = NewLaunchStandardEngineResourceGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "LaunchStandardEngineResourceGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LaunchStandardEngineResourceGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewLaunchStandardEngineResourceGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTaskJobLogDetailRequest() (request *ListTaskJobLogDetailRequest) {
     request = &ListTaskJobLogDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8715,6 +9665,68 @@ func (c *Client) ModifyWorkGroupWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPauseStandardEngineResourceGroupsRequest() (request *PauseStandardEngineResourceGroupsRequest) {
+    request = &PauseStandardEngineResourceGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "PauseStandardEngineResourceGroups")
+    
+    
+    return
+}
+
+func NewPauseStandardEngineResourceGroupsResponse() (response *PauseStandardEngineResourceGroupsResponse) {
+    response = &PauseStandardEngineResourceGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PauseStandardEngineResourceGroups
+// 暂停标准引擎session
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) PauseStandardEngineResourceGroups(request *PauseStandardEngineResourceGroupsRequest) (response *PauseStandardEngineResourceGroupsResponse, err error) {
+    return c.PauseStandardEngineResourceGroupsWithContext(context.Background(), request)
+}
+
+// PauseStandardEngineResourceGroups
+// 暂停标准引擎session
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) PauseStandardEngineResourceGroupsWithContext(ctx context.Context, request *PauseStandardEngineResourceGroupsRequest) (response *PauseStandardEngineResourceGroupsResponse, err error) {
+    if request == nil {
+        request = NewPauseStandardEngineResourceGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "PauseStandardEngineResourceGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PauseStandardEngineResourceGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPauseStandardEngineResourceGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -9561,6 +10573,64 @@ func (c *Client) UnbindWorkGroupsFromUserWithContext(ctx context.Context, reques
     return
 }
 
+func NewUnboundDatasourceHouseRequest() (request *UnboundDatasourceHouseRequest) {
+    request = &UnboundDatasourceHouseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "UnboundDatasourceHouse")
+    
+    
+    return
+}
+
+func NewUnboundDatasourceHouseResponse() (response *UnboundDatasourceHouseResponse) {
+    response = &UnboundDatasourceHouseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnboundDatasourceHouse
+// 解绑数据源与队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONCODE_NETWORKCONNECTIONINUSED = "FailedOperation.FailedOperationCode_NetworkConnectionInUsed"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_EKSRESOURCENOTFOUND = "ResourceNotFound.EksResourceNotFound"
+//  RESOURCENOTFOUND_NETWORKCONNECTIONNOTFOUND = "ResourceNotFound.NetworkConnectionNotFound"
+func (c *Client) UnboundDatasourceHouse(request *UnboundDatasourceHouseRequest) (response *UnboundDatasourceHouseResponse, err error) {
+    return c.UnboundDatasourceHouseWithContext(context.Background(), request)
+}
+
+// UnboundDatasourceHouse
+// 解绑数据源与队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONCODE_NETWORKCONNECTIONINUSED = "FailedOperation.FailedOperationCode_NetworkConnectionInUsed"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_EKSRESOURCENOTFOUND = "ResourceNotFound.EksResourceNotFound"
+//  RESOURCENOTFOUND_NETWORKCONNECTIONNOTFOUND = "ResourceNotFound.NetworkConnectionNotFound"
+func (c *Client) UnboundDatasourceHouseWithContext(ctx context.Context, request *UnboundDatasourceHouseRequest) (response *UnboundDatasourceHouseResponse, err error) {
+    if request == nil {
+        request = NewUnboundDatasourceHouseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "UnboundDatasourceHouse")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnboundDatasourceHouse require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnboundDatasourceHouseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnlockMetaDataRequest() (request *UnlockMetaDataRequest) {
     request = &UnlockMetaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9789,6 +10859,130 @@ func (c *Client) UpdateDataEngineConfigWithContext(ctx context.Context, request 
     return
 }
 
+func NewUpdateEngineResourceGroupNetworkConfigInfoRequest() (request *UpdateEngineResourceGroupNetworkConfigInfoRequest) {
+    request = &UpdateEngineResourceGroupNetworkConfigInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "UpdateEngineResourceGroupNetworkConfigInfo")
+    
+    
+    return
+}
+
+func NewUpdateEngineResourceGroupNetworkConfigInfoResponse() (response *UpdateEngineResourceGroupNetworkConfigInfoResponse) {
+    response = &UpdateEngineResourceGroupNetworkConfigInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateEngineResourceGroupNetworkConfigInfo
+// 更新标准引擎资源组网络配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) UpdateEngineResourceGroupNetworkConfigInfo(request *UpdateEngineResourceGroupNetworkConfigInfoRequest) (response *UpdateEngineResourceGroupNetworkConfigInfoResponse, err error) {
+    return c.UpdateEngineResourceGroupNetworkConfigInfoWithContext(context.Background(), request)
+}
+
+// UpdateEngineResourceGroupNetworkConfigInfo
+// 更新标准引擎资源组网络配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) UpdateEngineResourceGroupNetworkConfigInfoWithContext(ctx context.Context, request *UpdateEngineResourceGroupNetworkConfigInfoRequest) (response *UpdateEngineResourceGroupNetworkConfigInfoResponse, err error) {
+    if request == nil {
+        request = NewUpdateEngineResourceGroupNetworkConfigInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "UpdateEngineResourceGroupNetworkConfigInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateEngineResourceGroupNetworkConfigInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateEngineResourceGroupNetworkConfigInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateNetworkConnectionRequest() (request *UpdateNetworkConnectionRequest) {
+    request = &UpdateNetworkConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "UpdateNetworkConnection")
+    
+    
+    return
+}
+
+func NewUpdateNetworkConnectionResponse() (response *UpdateNetworkConnectionResponse) {
+    response = &UpdateNetworkConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateNetworkConnection
+// 更新网络配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) UpdateNetworkConnection(request *UpdateNetworkConnectionRequest) (response *UpdateNetworkConnectionResponse, err error) {
+    return c.UpdateNetworkConnectionWithContext(context.Background(), request)
+}
+
+// UpdateNetworkConnection
+// 更新网络配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) UpdateNetworkConnectionWithContext(ctx context.Context, request *UpdateNetworkConnectionRequest) (response *UpdateNetworkConnectionResponse, err error) {
+    if request == nil {
+        request = NewUpdateNetworkConnectionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "UpdateNetworkConnection")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateNetworkConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateNetworkConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateRowFilterRequest() (request *UpdateRowFilterRequest) {
     request = &UpdateRowFilterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9813,17 +11007,12 @@ func NewUpdateRowFilterResponse() (response *UpdateRowFilterResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_NOPERMISSIONTOUSETHEDATAENGINE = "FailedOperation.NoPermissionToUseTheDataEngine"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
-//  INVALIDPARAMETER_DATAENGINEEXECTYPENOTMATCH = "InvalidParameter.DataEngineExecTypeNotMatch"
-//  INVALIDPARAMETER_DATAENGINEPAYMODETYPENOTMATCH = "InvalidParameter.DataEnginePayModeTypeNotMatch"
-//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
-//  RESOURCENOTFOUND_DATAENGINECONFIGINSTANCENOTFOUND = "ResourceNotFound.DataEngineConfigInstanceNotFound"
-//  RESOURCENOTFOUND_DATAENGINECONFIGINSTANCENOTUNIQUE = "ResourceNotFound.DataEngineConfigInstanceNotUnique"
-//  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
-//  RESOURCENOTFOUND_DATAENGINENOTMULTIVERSION = "ResourceNotFound.DataEngineNotMultiVersion"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
 func (c *Client) UpdateRowFilter(request *UpdateRowFilterRequest) (response *UpdateRowFilterResponse, err error) {
     return c.UpdateRowFilterWithContext(context.Background(), request)
 }
@@ -9833,17 +11022,12 @@ func (c *Client) UpdateRowFilter(request *UpdateRowFilterRequest) (response *Upd
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_NOPERMISSIONTOUSETHEDATAENGINE = "FailedOperation.NoPermissionToUseTheDataEngine"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
-//  INVALIDPARAMETER_DATAENGINEEXECTYPENOTMATCH = "InvalidParameter.DataEngineExecTypeNotMatch"
-//  INVALIDPARAMETER_DATAENGINEPAYMODETYPENOTMATCH = "InvalidParameter.DataEnginePayModeTypeNotMatch"
-//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
-//  RESOURCENOTFOUND_DATAENGINECONFIGINSTANCENOTFOUND = "ResourceNotFound.DataEngineConfigInstanceNotFound"
-//  RESOURCENOTFOUND_DATAENGINECONFIGINSTANCENOTUNIQUE = "ResourceNotFound.DataEngineConfigInstanceNotUnique"
-//  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
-//  RESOURCENOTFOUND_DATAENGINENOTMULTIVERSION = "ResourceNotFound.DataEngineNotMultiVersion"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
 func (c *Client) UpdateRowFilterWithContext(ctx context.Context, request *UpdateRowFilterRequest) (response *UpdateRowFilterResponse, err error) {
     if request == nil {
         request = NewUpdateRowFilterRequest()
@@ -9857,6 +11041,192 @@ func (c *Client) UpdateRowFilterWithContext(ctx context.Context, request *Update
     request.SetContext(ctx)
     
     response = NewUpdateRowFilterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateStandardEngineResourceGroupBaseInfoRequest() (request *UpdateStandardEngineResourceGroupBaseInfoRequest) {
+    request = &UpdateStandardEngineResourceGroupBaseInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "UpdateStandardEngineResourceGroupBaseInfo")
+    
+    
+    return
+}
+
+func NewUpdateStandardEngineResourceGroupBaseInfoResponse() (response *UpdateStandardEngineResourceGroupBaseInfoResponse) {
+    response = &UpdateStandardEngineResourceGroupBaseInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateStandardEngineResourceGroupBaseInfo
+// 更新标准引擎资源组基础信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) UpdateStandardEngineResourceGroupBaseInfo(request *UpdateStandardEngineResourceGroupBaseInfoRequest) (response *UpdateStandardEngineResourceGroupBaseInfoResponse, err error) {
+    return c.UpdateStandardEngineResourceGroupBaseInfoWithContext(context.Background(), request)
+}
+
+// UpdateStandardEngineResourceGroupBaseInfo
+// 更新标准引擎资源组基础信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) UpdateStandardEngineResourceGroupBaseInfoWithContext(ctx context.Context, request *UpdateStandardEngineResourceGroupBaseInfoRequest) (response *UpdateStandardEngineResourceGroupBaseInfoResponse, err error) {
+    if request == nil {
+        request = NewUpdateStandardEngineResourceGroupBaseInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "UpdateStandardEngineResourceGroupBaseInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateStandardEngineResourceGroupBaseInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateStandardEngineResourceGroupBaseInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateStandardEngineResourceGroupConfigInfoRequest() (request *UpdateStandardEngineResourceGroupConfigInfoRequest) {
+    request = &UpdateStandardEngineResourceGroupConfigInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "UpdateStandardEngineResourceGroupConfigInfo")
+    
+    
+    return
+}
+
+func NewUpdateStandardEngineResourceGroupConfigInfoResponse() (response *UpdateStandardEngineResourceGroupConfigInfoResponse) {
+    response = &UpdateStandardEngineResourceGroupConfigInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateStandardEngineResourceGroupConfigInfo
+// 更新标准引擎资源组基础信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) UpdateStandardEngineResourceGroupConfigInfo(request *UpdateStandardEngineResourceGroupConfigInfoRequest) (response *UpdateStandardEngineResourceGroupConfigInfoResponse, err error) {
+    return c.UpdateStandardEngineResourceGroupConfigInfoWithContext(context.Background(), request)
+}
+
+// UpdateStandardEngineResourceGroupConfigInfo
+// 更新标准引擎资源组基础信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) UpdateStandardEngineResourceGroupConfigInfoWithContext(ctx context.Context, request *UpdateStandardEngineResourceGroupConfigInfoRequest) (response *UpdateStandardEngineResourceGroupConfigInfoResponse, err error) {
+    if request == nil {
+        request = NewUpdateStandardEngineResourceGroupConfigInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "UpdateStandardEngineResourceGroupConfigInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateStandardEngineResourceGroupConfigInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateStandardEngineResourceGroupConfigInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateStandardEngineResourceGroupResourceInfoRequest() (request *UpdateStandardEngineResourceGroupResourceInfoRequest) {
+    request = &UpdateStandardEngineResourceGroupResourceInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "UpdateStandardEngineResourceGroupResourceInfo")
+    
+    
+    return
+}
+
+func NewUpdateStandardEngineResourceGroupResourceInfoResponse() (response *UpdateStandardEngineResourceGroupResourceInfoResponse) {
+    response = &UpdateStandardEngineResourceGroupResourceInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateStandardEngineResourceGroupResourceInfo
+// 更新标准引擎资源组基础信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) UpdateStandardEngineResourceGroupResourceInfo(request *UpdateStandardEngineResourceGroupResourceInfoRequest) (response *UpdateStandardEngineResourceGroupResourceInfoResponse, err error) {
+    return c.UpdateStandardEngineResourceGroupResourceInfoWithContext(context.Background(), request)
+}
+
+// UpdateStandardEngineResourceGroupResourceInfo
+// 更新标准引擎资源组基础信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) UpdateStandardEngineResourceGroupResourceInfoWithContext(ctx context.Context, request *UpdateStandardEngineResourceGroupResourceInfoRequest) (response *UpdateStandardEngineResourceGroupResourceInfoResponse, err error) {
+    if request == nil {
+        request = NewUpdateStandardEngineResourceGroupResourceInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "UpdateStandardEngineResourceGroupResourceInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateStandardEngineResourceGroupResourceInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateStandardEngineResourceGroupResourceInfoResponse()
     err = c.Send(request, response)
     return
 }

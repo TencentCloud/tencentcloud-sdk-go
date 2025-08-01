@@ -1447,6 +1447,125 @@ func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateBatchContractReviewTaskRequestParams struct {
+	// 执行合同审查任务的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+	// 
+	// 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 合同审查的审查立场方。
+	// 
+	// 审查立场方如下：
+	// <ul>
+	//     <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+	//     <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+	//     <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+	// </ul>
+	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。
+	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
+	// [点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)
+	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type CreateBatchContractReviewTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行合同审查任务的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+	// 
+	// 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 合同审查的审查立场方。
+	// 
+	// 审查立场方如下：
+	// <ul>
+	//     <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+	//     <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+	//     <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+	// </ul>
+	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。
+	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
+	// [点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)
+	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *CreateBatchContractReviewTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchContractReviewTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ResourceIds")
+	delete(f, "PolicyType")
+	delete(f, "Role")
+	delete(f, "ChecklistId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchContractReviewTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchContractReviewTaskResponseParams struct {
+	// 合同审查的任务ID列表，每个任务ID为32位字符串。
+	// 建议开发者保存此任务ID，后续[查询合同审查任务取详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask/)需要此任务ID。
+	// 
+	// 注意：`返回的索引和ResourceIds数组一致`
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchContractReviewTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchContractReviewTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchContractReviewTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchContractReviewTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateBatchInformationExtractionTaskRequestParams struct {
 	// 执行合同智能提取的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -10525,6 +10644,122 @@ func (r *DescribeContractDiffTaskWebUrlResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeContractReviewTaskRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查任务ID，该参数通过调用接口[批量创建合同审查任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask)获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type DescribeContractReviewTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查任务ID，该参数通过调用接口[批量创建合同审查任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask)获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *DescribeContractReviewTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContractReviewTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractReviewTaskResponseParams struct {
+	// 用于审查任务的审查清单ID。
+	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// 合同审查任务创建时间。
+	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
+
+	// 合同审查任务完成时间。
+	FinishedOn *int64 `json:"FinishedOn,omitnil,omitempty" name:"FinishedOn"`
+
+	// 合同审查的审查立场方。
+	// 
+	// 审查立场方如下：
+	// <ul>
+	//     <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+	//     <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+	//     <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+	// </ul>
+	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 合同审查的PDF文件资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 合同审查识别出的PDF文件风险信息，如果是空数组表示无风险。
+	// 
+	// 注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
+	Risks []*OutputRisk `json:"Risks,omitnil,omitempty" name:"Risks"`
+
+	// 合同审查中的角色信息。
+	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 合同审查任务状态。
+	// 状态如下：
+	// <ul>
+	//     <li>**1** - 合同审查任务创建成功</li>   
+	//     <li>**2** - 合同审查任务排队中</li>  
+	//     <li>**3** - 合同审查任务执行中</li>   
+	//     <li>**4** - 合同审查任务执行成功</li>
+	//     <li>**4** - 合同审查任务执行失败</li>
+	// </ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 合同审查任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeContractReviewTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeContractReviewTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeContractReviewTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExtendedServiceAuthDetailRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -15202,6 +15437,38 @@ type OrganizationInfo struct {
 	ProxyIp *string `json:"ProxyIp,omitnil,omitempty" name:"ProxyIp"`
 }
 
+type OutputRisk struct {
+	// 合同审查风险结果ID
+	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
+
+	// 风险名称
+	RiskName *string `json:"RiskName,omitnil,omitempty" name:"RiskName"`
+
+	// 风险描述
+	RiskDescription *string `json:"RiskDescription,omitnil,omitempty" name:"RiskDescription"`
+
+	// 风险等级。
+	// 
+	// 等级描述如下：
+	// <ul>
+	//     <li>**HIGH** - 高风险</li> 
+	//     <li>**NORMAL** - 风险</li>   
+	// </ul>
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 风险建议
+	RiskAdvice *string `json:"RiskAdvice,omitnil,omitempty" name:"RiskAdvice"`
+
+	// 风险评估
+	RiskPresentation []*string `json:"RiskPresentation,omitnil,omitempty" name:"RiskPresentation"`
+
+	// PDF风险原文内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 审查依据
+	RiskBasis *string `json:"RiskBasis,omitnil,omitempty" name:"RiskBasis"`
+}
+
 type PdfVerifyResult struct {
 	// 验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
 	VerifyResult *int64 `json:"VerifyResult,omitnil,omitempty" name:"VerifyResult"`
@@ -15663,6 +15930,18 @@ type ReviewerInfo struct {
 
 	// 手机号
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+}
+
+type RiskIdentificationRoleInfo struct {
+	// 风险识别角色的名称。用于唯一标识和区分不同的风险识别角色。
+	// 
+	// 注意：`最大长度应不超过200个字符`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 风险识别角色的详细说明。
+	// 
+	// 注意： `最大长度应不超过500个字符`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type SealInfo struct {
