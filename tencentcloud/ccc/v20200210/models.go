@@ -1197,6 +1197,15 @@ type CreateAICallRequestParams struct {
 	// 2.  dify-inputs-user 为dify的user值
 	// 3.  dify-inputs-conversation_id 为dify的conversation_id值
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// 模型topP
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+	VadLevel *uint64 `json:"VadLevel,omitnil,omitempty" name:"VadLevel"`
+
+	// 衔接语
+	ToneWord *ToneWordInfo `json:"ToneWord,omitnil,omitempty" name:"ToneWord"`
 }
 
 type CreateAICallRequest struct {
@@ -1458,6 +1467,15 @@ type CreateAICallRequest struct {
 	// 2.  dify-inputs-user 为dify的user值
 	// 3.  dify-inputs-conversation_id 为dify的conversation_id值
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// 模型topP
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+	VadLevel *uint64 `json:"VadLevel,omitnil,omitempty" name:"VadLevel"`
+
+	// 衔接语
+	ToneWord *ToneWordInfo `json:"ToneWord,omitnil,omitempty" name:"ToneWord"`
 }
 
 func (r *CreateAICallRequest) ToJsonString() string {
@@ -1501,6 +1519,9 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "ExtractConfig")
 	delete(f, "Temperature")
 	delete(f, "Variables")
+	delete(f, "TopP")
+	delete(f, "VadLevel")
+	delete(f, "ToneWord")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAICallRequest has unknown keys!", "")
 	}
@@ -6950,7 +6971,7 @@ type ServerPushText struct {
 	// 注意：DropMode为1时，允许缓存多个消息，如果后续出现了打断，缓存的消息会被清空
 	DropMode *uint64 `json:"DropMode,omitnil,omitempty" name:"DropMode"`
 
-	// ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。**目前仅支持传入0，如果需要传入1，请提工单联系我们添加权限。**
+	// ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。
 	// 注意：在接收到Priority=1的消息后，后续其他任何消息都会被忽略（包括Priority=1的消息），直到Priority=1的消息处理结束。该字段可与Interrupt、DropMode字段配合使用。
 	// 例子：
 	// - Priority=1、Interrupt=true，会打断现有交互，立刻播报，播报过程中不会被打断
@@ -6988,6 +7009,9 @@ type SkillGroupInfoItem struct {
 
 	// 技能组内线号码
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 是否同振
+	RingAll *bool `json:"RingAll,omitnil,omitempty" name:"RingAll"`
 }
 
 type SkillGroupItem struct {
@@ -7428,6 +7452,14 @@ type TimeRange struct {
 
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type ToneWordInfo struct {
+	// 首句超时时间，单位秒
+	FirstSentenceTimeout *float64 `json:"FirstSentenceTimeout,omitnil,omitempty" name:"FirstSentenceTimeout"`
+
+	// 承接语气词
+	ZHToneWords *ZHToneWordsInfo `json:"ZHToneWords,omitnil,omitempty" name:"ZHToneWords"`
 }
 
 // Predefined struct for user
@@ -7971,4 +8003,15 @@ type Variable struct {
 
 	// 变量值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type ZHToneWordsInfo struct {
+	// 中性词列表
+	Neutral []*string `json:"Neutral,omitnil,omitempty" name:"Neutral"`
+
+	// 正面词列表
+	Positive []*string `json:"Positive,omitnil,omitempty" name:"Positive"`
+
+	// 负面词列表
+	Negative []*string `json:"Negative,omitnil,omitempty" name:"Negative"`
 }

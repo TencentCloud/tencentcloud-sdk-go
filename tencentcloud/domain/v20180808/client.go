@@ -104,6 +104,7 @@ func (c *Client) BatchModifyDomainInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewBatchModifyDomainInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "BatchModifyDomainInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchModifyDomainInfo require credential")
@@ -175,6 +176,7 @@ func (c *Client) BidDetailPageWithContext(ctx context.Context, request *BidDetai
     if request == nil {
         request = NewBidDetailPageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "BidDetailPage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BidDetailPage require credential")
@@ -232,6 +234,7 @@ func (c *Client) BidPreDomainsWithContext(ctx context.Context, request *BidPreDo
     if request == nil {
         request = NewBidPreDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "BidPreDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BidPreDomains require credential")
@@ -291,6 +294,7 @@ func (c *Client) BiddingPreReleaseWithContext(ctx context.Context, request *Bidd
     if request == nil {
         request = NewBiddingPreReleaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "BiddingPreRelease")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BiddingPreRelease require credential")
@@ -342,6 +346,7 @@ func (c *Client) CheckBatchStatusWithContext(ctx context.Context, request *Check
     if request == nil {
         request = NewCheckBatchStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "CheckBatchStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckBatchStatus require credential")
@@ -401,6 +406,7 @@ func (c *Client) CheckDomainWithContext(ctx context.Context, request *CheckDomai
     if request == nil {
         request = NewCheckDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "CheckDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckDomain require credential")
@@ -486,6 +492,7 @@ func (c *Client) CreateCustomDnsHostWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateCustomDnsHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "CreateCustomDnsHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomDnsHost require credential")
@@ -569,6 +576,7 @@ func (c *Client) CreateDomainBatchWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateDomainBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "CreateDomainBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDomainBatch require credential")
@@ -618,6 +626,7 @@ func (c *Client) CreateDomainRedemptionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateDomainRedemptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "CreateDomainRedemption")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDomainRedemption require credential")
@@ -677,6 +686,7 @@ func (c *Client) CreatePhoneEmailWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreatePhoneEmailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "CreatePhoneEmail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePhoneEmail require credential")
@@ -818,6 +828,7 @@ func (c *Client) CreateTemplateWithContext(ctx context.Context, request *CreateT
     if request == nil {
         request = NewCreateTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "CreateTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTemplate require credential")
@@ -875,6 +886,7 @@ func (c *Client) DeleteBiddingWithContext(ctx context.Context, request *DeleteBi
     if request == nil {
         request = NewDeleteBiddingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DeleteBidding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBidding require credential")
@@ -950,6 +962,7 @@ func (c *Client) DeleteCustomDnsHostWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteCustomDnsHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DeleteCustomDnsHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomDnsHost require credential")
@@ -1007,6 +1020,7 @@ func (c *Client) DeletePhoneEmailWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeletePhoneEmailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DeletePhoneEmail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePhoneEmail require credential")
@@ -1064,6 +1078,7 @@ func (c *Client) DeleteReservedPreDomainInfoWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteReservedPreDomainInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DeleteReservedPreDomainInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteReservedPreDomainInfo require credential")
@@ -1125,6 +1140,7 @@ func (c *Client) DeleteTemplateWithContext(ctx context.Context, request *DeleteT
     if request == nil {
         request = NewDeleteTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DeleteTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTemplate require credential")
@@ -1186,6 +1202,7 @@ func (c *Client) DescribeAuctionListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAuctionListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeAuctionList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuctionList require credential")
@@ -1239,6 +1256,7 @@ func (c *Client) DescribeBatchOperationLogDetailsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeBatchOperationLogDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeBatchOperationLogDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBatchOperationLogDetails require credential")
@@ -1292,6 +1310,7 @@ func (c *Client) DescribeBatchOperationLogsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeBatchOperationLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeBatchOperationLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBatchOperationLogs require credential")
@@ -1349,6 +1368,7 @@ func (c *Client) DescribeBiddingAppointDetailWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeBiddingAppointDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeBiddingAppointDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBiddingAppointDetail require credential")
@@ -1406,6 +1426,7 @@ func (c *Client) DescribeBiddingAppointListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeBiddingAppointListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeBiddingAppointList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBiddingAppointList require credential")
@@ -1463,6 +1484,7 @@ func (c *Client) DescribeBiddingDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeBiddingDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeBiddingDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBiddingDetail require credential")
@@ -1520,6 +1542,7 @@ func (c *Client) DescribeBiddingListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeBiddingListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeBiddingList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBiddingList require credential")
@@ -1577,6 +1600,7 @@ func (c *Client) DescribeBiddingSuccessfulDetailWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeBiddingSuccessfulDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeBiddingSuccessfulDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBiddingSuccessfulDetail require credential")
@@ -1634,6 +1658,7 @@ func (c *Client) DescribeBiddingSuccessfulListWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeBiddingSuccessfulListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeBiddingSuccessfulList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBiddingSuccessfulList require credential")
@@ -1695,6 +1720,7 @@ func (c *Client) DescribeCustomDnsHostSetWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCustomDnsHostSetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeCustomDnsHostSet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomDnsHostSet require credential")
@@ -1754,6 +1780,7 @@ func (c *Client) DescribeDomainBaseInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDomainBaseInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeDomainBaseInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainBaseInfo require credential")
@@ -1807,6 +1834,7 @@ func (c *Client) DescribeDomainNameListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDomainNameListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeDomainNameList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainNameList require credential")
@@ -1862,6 +1890,7 @@ func (c *Client) DescribeDomainPriceListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDomainPriceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeDomainPriceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainPriceList require credential")
@@ -1919,6 +1948,7 @@ func (c *Client) DescribeDomainSimpleInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDomainSimpleInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeDomainSimpleInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainSimpleInfo require credential")
@@ -1976,6 +2006,7 @@ func (c *Client) DescribePayWaitDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribePayWaitDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribePayWaitDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePayWaitDetail require credential")
@@ -2027,6 +2058,7 @@ func (c *Client) DescribePhoneEmailListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribePhoneEmailListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribePhoneEmailList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePhoneEmailList require credential")
@@ -2078,6 +2110,7 @@ func (c *Client) DescribePreAuctionListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribePreAuctionListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribePreAuctionList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePreAuctionList require credential")
@@ -2131,6 +2164,7 @@ func (c *Client) DescribePreDomainListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribePreDomainListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribePreDomainList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePreDomainList require credential")
@@ -2180,6 +2214,7 @@ func (c *Client) DescribePreReleaseListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribePreReleaseListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribePreReleaseList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePreReleaseList require credential")
@@ -2233,6 +2268,7 @@ func (c *Client) DescribeReservedBidInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeReservedBidInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeReservedBidInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReservedBidInfo require credential")
@@ -2286,6 +2322,7 @@ func (c *Client) DescribeReservedPreDomainInfoWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeReservedPreDomainInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeReservedPreDomainInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReservedPreDomainInfo require credential")
@@ -2351,6 +2388,7 @@ func (c *Client) DescribeTemplateWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTemplate require credential")
@@ -2412,6 +2450,7 @@ func (c *Client) DescribeTemplateListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTemplateListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeTemplateList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTemplateList require credential")
@@ -2473,6 +2512,7 @@ func (c *Client) DescribeTldListWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeTldListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeTldList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTldList require credential")
@@ -2524,6 +2564,7 @@ func (c *Client) DescribeUnPreDomainDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeUnPreDomainDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "DescribeUnPreDomainDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnPreDomainDetail require credential")
@@ -2603,6 +2644,7 @@ func (c *Client) ModifyCustomDnsHostWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyCustomDnsHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "ModifyCustomDnsHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomDnsHost require credential")
@@ -2680,6 +2722,7 @@ func (c *Client) ModifyDomainDNSBatchWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyDomainDNSBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "ModifyDomainDNSBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDomainDNSBatch require credential")
@@ -2743,6 +2786,7 @@ func (c *Client) ModifyDomainOwnerBatchWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyDomainOwnerBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "ModifyDomainOwnerBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDomainOwnerBatch require credential")
@@ -2812,6 +2856,7 @@ func (c *Client) ModifyIntlCustomDnsHostWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyIntlCustomDnsHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "ModifyIntlCustomDnsHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyIntlCustomDnsHost require credential")
@@ -2919,6 +2964,7 @@ func (c *Client) ModifyTemplateWithContext(ctx context.Context, request *ModifyT
     if request == nil {
         request = NewModifyTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "ModifyTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTemplate require credential")
@@ -2988,6 +3034,7 @@ func (c *Client) RenewDomainBatchWithContext(ctx context.Context, request *Renew
     if request == nil {
         request = NewRenewDomainBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "RenewDomainBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewDomainBatch require credential")
@@ -3041,6 +3088,7 @@ func (c *Client) ReservedPreDomainsWithContext(ctx context.Context, request *Res
     if request == nil {
         request = NewReservedPreDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "ReservedPreDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReservedPreDomains require credential")
@@ -3110,6 +3158,7 @@ func (c *Client) SendPhoneEmailCodeWithContext(ctx context.Context, request *Sen
     if request == nil {
         request = NewSendPhoneEmailCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "SendPhoneEmailCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendPhoneEmailCode require credential")
@@ -3183,6 +3232,7 @@ func (c *Client) SetDomainAutoRenewWithContext(ctx context.Context, request *Set
     if request == nil {
         request = NewSetDomainAutoRenewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "SetDomainAutoRenew")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetDomainAutoRenew require credential")
@@ -3254,6 +3304,7 @@ func (c *Client) SyncCustomDnsHostWithContext(ctx context.Context, request *Sync
     if request == nil {
         request = NewSyncCustomDnsHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "SyncCustomDnsHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncCustomDnsHost require credential")
@@ -3331,6 +3382,7 @@ func (c *Client) TransferInDomainBatchWithContext(ctx context.Context, request *
     if request == nil {
         request = NewTransferInDomainBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "TransferInDomainBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TransferInDomainBatch require credential")
@@ -3394,6 +3446,7 @@ func (c *Client) TransferProhibitionBatchWithContext(ctx context.Context, reques
     if request == nil {
         request = NewTransferProhibitionBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "TransferProhibitionBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TransferProhibitionBatch require credential")
@@ -3457,6 +3510,7 @@ func (c *Client) UpdateProhibitionBatchWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateProhibitionBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "UpdateProhibitionBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateProhibitionBatch require credential")
@@ -3530,6 +3584,7 @@ func (c *Client) UploadImageWithContext(ctx context.Context, request *UploadImag
     if request == nil {
         request = NewUploadImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "UploadImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadImage require credential")

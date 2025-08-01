@@ -96,6 +96,7 @@ func (c *Client) CreateMeshWithContext(ctx context.Context, request *CreateMeshR
     if request == nil {
         request = NewCreateMeshRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "CreateMesh")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMesh require credential")
@@ -157,6 +158,7 @@ func (c *Client) DeleteMeshWithContext(ctx context.Context, request *DeleteMeshR
     if request == nil {
         request = NewDeleteMeshRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "DeleteMesh")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMesh require credential")
@@ -212,6 +214,7 @@ func (c *Client) DescribeAccessLogConfigWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAccessLogConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "DescribeAccessLogConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessLogConfig require credential")
@@ -269,6 +272,7 @@ func (c *Client) DescribeMeshWithContext(ctx context.Context, request *DescribeM
     if request == nil {
         request = NewDescribeMeshRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "DescribeMesh")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMesh require credential")
@@ -324,6 +328,7 @@ func (c *Client) DescribeMeshListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeMeshListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "DescribeMeshList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMeshList require credential")
@@ -385,6 +390,7 @@ func (c *Client) LinkClusterListWithContext(ctx context.Context, request *LinkCl
     if request == nil {
         request = NewLinkClusterListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "LinkClusterList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("LinkClusterList require credential")
@@ -448,6 +454,7 @@ func (c *Client) LinkPrometheusWithContext(ctx context.Context, request *LinkPro
     if request == nil {
         request = NewLinkPrometheusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "LinkPrometheus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("LinkPrometheus require credential")
@@ -507,6 +514,7 @@ func (c *Client) ModifyAccessLogConfigWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyAccessLogConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "ModifyAccessLogConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccessLogConfig require credential")
@@ -566,6 +574,7 @@ func (c *Client) ModifyMeshWithContext(ctx context.Context, request *ModifyMeshR
     if request == nil {
         request = NewModifyMeshRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "ModifyMesh")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMesh require credential")
@@ -625,6 +634,7 @@ func (c *Client) ModifyTracingConfigWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyTracingConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "ModifyTracingConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTracingConfig require credential")
@@ -684,6 +694,7 @@ func (c *Client) UnlinkClusterWithContext(ctx context.Context, request *UnlinkCl
     if request == nil {
         request = NewUnlinkClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "UnlinkCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnlinkCluster require credential")
@@ -745,6 +756,7 @@ func (c *Client) UnlinkPrometheusWithContext(ctx context.Context, request *Unlin
     if request == nil {
         request = NewUnlinkPrometheusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tcm", APIVersion, "UnlinkPrometheus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnlinkPrometheus require credential")

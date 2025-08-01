@@ -76,6 +76,7 @@ func (c *Client) DescribeDbauditInstanceTypeWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDbauditInstanceTypeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cds", APIVersion, "DescribeDbauditInstanceType")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDbauditInstanceType require credential")
@@ -119,6 +120,7 @@ func (c *Client) DescribeDbauditInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDbauditInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cds", APIVersion, "DescribeDbauditInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDbauditInstances require credential")
@@ -162,6 +164,7 @@ func (c *Client) DescribeDbauditUsedRegionsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDbauditUsedRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cds", APIVersion, "DescribeDbauditUsedRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDbauditUsedRegions require credential")
@@ -205,6 +208,7 @@ func (c *Client) InquiryPriceDbauditInstanceWithContext(ctx context.Context, req
     if request == nil {
         request = NewInquiryPriceDbauditInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cds", APIVersion, "InquiryPriceDbauditInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceDbauditInstance require credential")
@@ -258,6 +262,7 @@ func (c *Client) ModifyDbauditInstancesRenewFlagWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyDbauditInstancesRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cds", APIVersion, "ModifyDbauditInstancesRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDbauditInstancesRenewFlag require credential")

@@ -112,6 +112,7 @@ func (c *Client) CreatePrefetchTaskWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreatePrefetchTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreatePrefetchTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrefetchTask require credential")
@@ -193,6 +194,7 @@ func (c *Client) CreatePurgeTaskWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreatePurgeTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreatePurgeTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePurgeTask require credential")
@@ -250,6 +252,7 @@ func (c *Client) DescribePrefetchTasksWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribePrefetchTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribePrefetchTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrefetchTasks require credential")
@@ -303,6 +306,7 @@ func (c *Client) DescribePurgeTasksWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePurgeTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribePurgeTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePurgeTasks require credential")
@@ -356,6 +360,7 @@ func (c *Client) DescribeZonesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeZonesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeZones")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeZones require credential")

@@ -96,6 +96,7 @@ func (c *Client) ApplyConcurrentWithContext(ctx context.Context, request *ApplyC
     if request == nil {
         request = NewApplyConcurrentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "car", APIVersion, "ApplyConcurrent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyConcurrent require credential")
@@ -171,6 +172,7 @@ func (c *Client) CreateSessionWithContext(ctx context.Context, request *CreateSe
     if request == nil {
         request = NewCreateSessionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "car", APIVersion, "CreateSession")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSession require credential")
@@ -228,6 +230,7 @@ func (c *Client) DestroySessionWithContext(ctx context.Context, request *Destroy
     if request == nil {
         request = NewDestroySessionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "car", APIVersion, "DestroySession")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroySession require credential")
@@ -287,6 +290,7 @@ func (c *Client) StartPublishStreamWithContext(ctx context.Context, request *Sta
     if request == nil {
         request = NewStartPublishStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "car", APIVersion, "StartPublishStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartPublishStream require credential")
@@ -346,6 +350,7 @@ func (c *Client) StartPublishStreamWithURLWithContext(ctx context.Context, reque
     if request == nil {
         request = NewStartPublishStreamWithURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "car", APIVersion, "StartPublishStreamWithURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartPublishStreamWithURL require credential")
@@ -405,6 +410,7 @@ func (c *Client) StopPublishStreamWithContext(ctx context.Context, request *Stop
     if request == nil {
         request = NewStopPublishStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "car", APIVersion, "StopPublishStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopPublishStream require credential")

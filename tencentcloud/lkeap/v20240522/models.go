@@ -420,24 +420,18 @@ type CreateReconstructDocumentFlowConfig struct {
 	// 4：返回全文MD + 每一页的MD，
 	// 默认值为0
 	ResultType *string `json:"ResultType,omitnil,omitempty" name:"ResultType"`
+
+	// 是否忽略失败页，返回已成功的页数据。默认为true。
+	IgnoreFailedPage *bool `json:"IgnoreFailedPage,omitnil,omitempty" name:"IgnoreFailedPage"`
 }
 
 // Predefined struct for user
 type CreateReconstructDocumentFlowRequestParams struct {
-	// 文件类型。
-	// 
-	// **支持的文件类型：**
-	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`
-	// 
-	// **支持的文件大小：**
-	//  - `PDF` 最大300M
-	//  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
-	//  - `TXT`、`MD` 最大10M
-	//  - 其他 最大20M
+	// 文件类型。**支持的文件类型：**- `WPS、PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`**支持的文件大小：** - `PDF` 最大300M - `WPS`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M - `TXT`、`MD` 最大10M - 其他 最大20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 文件的 URL 地址。
-	// 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
+	// 说明：文件的 URL 地址。
+	// 备注：文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
 	// 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
@@ -448,35 +442,30 @@ type CreateReconstructDocumentFlowRequestParams struct {
 	// 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
 
-	// 文档的起始页码。
-	// 当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+	// 说明：文档的起始页码。
+	// 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+	// 默认值：无
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 文档的结束页码。
-	// 当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+	// 说明：文档的结束页码。
+	// 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+	// 默认值：无
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
-	// 创建文档解析任务配置信息。
+	// 说明：创建文档解析任务配置信息。
+	// 备注：可设置结果的返回格式
+	// 默认值：无
 	Config *CreateReconstructDocumentFlowConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type CreateReconstructDocumentFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件类型。
-	// 
-	// **支持的文件类型：**
-	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`
-	// 
-	// **支持的文件大小：**
-	//  - `PDF` 最大300M
-	//  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
-	//  - `TXT`、`MD` 最大10M
-	//  - 其他 最大20M
+	// 文件类型。**支持的文件类型：**- `WPS、PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`**支持的文件大小：** - `PDF` 最大300M - `WPS`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M - `TXT`、`MD` 最大10M - 其他 最大20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 文件的 URL 地址。
-	// 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
+	// 说明：文件的 URL 地址。
+	// 备注：文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
 	// 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
@@ -487,15 +476,19 @@ type CreateReconstructDocumentFlowRequest struct {
 	// 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
 
-	// 文档的起始页码。
-	// 当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+	// 说明：文档的起始页码。
+	// 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+	// 默认值：无
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 文档的结束页码。
-	// 当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+	// 说明：文档的结束页码。
+	// 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+	// 默认值：无
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
-	// 创建文档解析任务配置信息。
+	// 说明：创建文档解析任务配置信息。
+	// 备注：可设置结果的返回格式
+	// 默认值：无
 	Config *CreateReconstructDocumentFlowConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
@@ -574,20 +567,14 @@ type CreateSplitDocumentFlowConfig struct {
 
 	// 最大分片长度
 	MaxChunkSize *int64 `json:"MaxChunkSize,omitnil,omitempty" name:"MaxChunkSize"`
+
+	// 是否忽略返回失败页码
+	IgnoreFailedPage *bool `json:"IgnoreFailedPage,omitnil,omitempty" name:"IgnoreFailedPage"`
 }
 
 // Predefined struct for user
 type CreateSplitDocumentFlowRequestParams struct {
-	// 文件类型。
-	// 
-	// **支持的文件类型：**
-	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`
-	// 
-	// **支持的文件大小：**
-	//  - `PDF` 最大300M
-	//  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
-	//  - `TXT`、`MD` 最大10M
-	//  - 其他 最大20M
+	// 文件类型。**支持的文件类型：**- `WPS`、`PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`**支持的文件大小：** - `PDF` 最大300M - `WPS`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M - `TXT`、`MD` 最大10M - 其他 最大20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 文件的 URL 地址。
@@ -622,16 +609,7 @@ type CreateSplitDocumentFlowRequestParams struct {
 type CreateSplitDocumentFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件类型。
-	// 
-	// **支持的文件类型：**
-	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`
-	// 
-	// **支持的文件大小：**
-	//  - `PDF` 最大300M
-	//  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
-	//  - `TXT`、`MD` 最大10M
-	//  - 其他 最大20M
+	// 文件类型。**支持的文件类型：**- `WPS`、`PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`**支持的文件大小：** - `PDF` 最大300M - `WPS`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M - `TXT`、`MD` 最大10M - 其他 最大20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 文件的 URL 地址。
@@ -1092,6 +1070,12 @@ type DocumentUsage struct {
 
 	// mllm消耗的token数
 	MllmTokens *int64 `json:"MllmTokens,omitnil,omitempty" name:"MllmTokens"`
+
+	// 解析成功页数
+	SuccessPageNum *int64 `json:"SuccessPageNum,omitnil,omitempty" name:"SuccessPageNum"`
+
+	// 解析失败页数
+	FailPageNum *int64 `json:"FailPageNum,omitnil,omitempty" name:"FailPageNum"`
 }
 
 type EmbeddingObject struct {
@@ -1229,14 +1213,16 @@ func (r *GetEmbeddingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetReconstructDocumentResultRequestParams struct {
-	// 解析任务ID
+	// 说明：解析任务ID
+	// 备注：仅支持单个任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type GetReconstructDocumentResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 解析任务ID
+	// 说明：解析任务ID
+	// 备注：仅支持单个任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -1274,6 +1260,9 @@ type GetReconstructDocumentResultResponseParams struct {
 
 	// 文档解析失败的页码
 	FailedPages []*ReconstructDocumentFailedPage `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
+
+	// 文档拆分任务的用量	
+	Usage *DocumentUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1982,72 +1971,77 @@ type ReconstructDocumentSSEConfig struct {
 
 	// 自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num>
 	PageFormat *string `json:"PageFormat,omitnil,omitempty" name:"PageFormat"`
+
+	// 是否忽略失败页，返回已成功的页数据
+	IgnoreFailedPage *bool `json:"IgnoreFailedPage,omitnil,omitempty" name:"IgnoreFailedPage"`
 }
 
 // Predefined struct for user
 type ReconstructDocumentSSERequestParams struct {
-	// 文件类型。
-	// **支持的文件类型**：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
-	// **支持的文件大小**：
-	// - PDF、DOC、DOCX、PPT、PPTX 支持100M
-	// - MD、TXT、XLS、XLSX、CSV 支持10M
-	// - 其他支持20M
+	// 支持解析的文件类型。**支持的文件类型**：WPS、PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2**支持的文件大小**：- WPS、PDF、DOC、DOCX、PPT、PPTX 支持100M- MD、TXT、XLS、XLSX、CSV 支持10M- 其他支持20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 文件的 URL 地址。
-	// 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
+	// 文件的 URL 地址。文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 	// 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
+	// 
+	// 默认值：无
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 文件的 Base64 值。
-	// 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
-	// 支持的图片像素：单边介于20-10000px之间。
-	// 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
+	// 说明：文件的 Base64 值。
+	// 备注：支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
+	// 支持的图片像素：单边介于20-10000px之间。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
+	// 
+	// 默认值：无
 	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
 
-	// 文档的起始页码。
-	// 当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+	// 说明：文档的起始页码。
+	// 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+	// 默认值：无
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 文档的结束页码。
-	// 当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+	// 说明：文档的结束页码。
+	// 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+	// 默认值：无
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
-	// 文档解析配置信息	
+	// 说明：文档解析配置信息	
+	// 备注：可设置返回markdown结果的格式
+	// 默认值：无
 	Config *ReconstructDocumentSSEConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type ReconstructDocumentSSERequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件类型。
-	// **支持的文件类型**：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
-	// **支持的文件大小**：
-	// - PDF、DOC、DOCX、PPT、PPTX 支持100M
-	// - MD、TXT、XLS、XLSX、CSV 支持10M
-	// - 其他支持20M
+	// 支持解析的文件类型。**支持的文件类型**：WPS、PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2**支持的文件大小**：- WPS、PDF、DOC、DOCX、PPT、PPTX 支持100M- MD、TXT、XLS、XLSX、CSV 支持10M- 其他支持20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 文件的 URL 地址。
-	// 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
+	// 文件的 URL 地址。文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 	// 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
+	// 
+	// 默认值：无
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 文件的 Base64 值。
-	// 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
-	// 支持的图片像素：单边介于20-10000px之间。
-	// 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
+	// 说明：文件的 Base64 值。
+	// 备注：支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
+	// 支持的图片像素：单边介于20-10000px之间。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
+	// 
+	// 默认值：无
 	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
 
-	// 文档的起始页码。
-	// 当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+	// 说明：文档的起始页码。
+	// 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+	// 默认值：无
 	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 文档的结束页码。
-	// 当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+	// 说明：文档的结束页码。
+	// 备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+	// 默认值：无
 	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 
-	// 文档解析配置信息	
+	// 说明：文档解析配置信息	
+	// 备注：可设置返回markdown结果的格式
+	// 默认值：无
 	Config *ReconstructDocumentSSEConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
@@ -2080,7 +2074,7 @@ type ReconstructDocumentSSEResponseParams struct {
 	// 任务ID。本次请求的唯一标识
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 响应类型。1：返回进度信息，2：返回解析结果
+	// 响应类型。1：返回进度信息， 2：返回解析结果
 	ResponseType *string `json:"ResponseType,omitnil,omitempty" name:"ResponseType"`
 
 	// 进度。0~100
@@ -2089,13 +2083,17 @@ type ReconstructDocumentSSEResponseParams struct {
 	// 进度信息。
 	ProgressMessage *string `json:"ProgressMessage,omitnil,omitempty" name:"ProgressMessage"`
 
-	// 文档解析结果的临时下载地址。
-	// 文件类型为zip压缩包，下载链接有效期30分钟。
-	// 压缩包内包含*.md、*.json以及images文件夹。
+	// 文档解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟。压缩包内包含*.md、*.json以及images文件夹。
 	DocumentRecognizeResultUrl *string `json:"DocumentRecognizeResultUrl,omitnil,omitempty" name:"DocumentRecognizeResultUrl"`
 
 	// 文档解析失败的页码。
 	FailedPages []*ReconstructDocumentFailedPage `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
+
+	// 文档解析失败页数
+	FailPageNum *int64 `json:"FailPageNum,omitnil,omitempty" name:"FailPageNum"`
+
+	// 文档解析成功页数
+	SuccessPageNum *int64 `json:"SuccessPageNum,omitnil,omitempty" name:"SuccessPageNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

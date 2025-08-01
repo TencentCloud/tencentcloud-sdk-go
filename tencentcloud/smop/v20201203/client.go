@@ -84,6 +84,7 @@ func (c *Client) SubmitTaskEventWithContext(ctx context.Context, request *Submit
     if request == nil {
         request = NewSubmitTaskEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smop", APIVersion, "SubmitTaskEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitTaskEvent require credential")

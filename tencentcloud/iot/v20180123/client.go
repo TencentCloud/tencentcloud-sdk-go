@@ -104,6 +104,7 @@ func (c *Client) ActivateRuleWithContext(ctx context.Context, request *ActivateR
     if request == nil {
         request = NewActivateRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "ActivateRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ActivateRule require credential")
@@ -169,6 +170,7 @@ func (c *Client) AddDeviceWithContext(ctx context.Context, request *AddDeviceReq
     if request == nil {
         request = NewAddDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AddDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddDevice require credential")
@@ -240,6 +242,7 @@ func (c *Client) AddProductWithContext(ctx context.Context, request *AddProductR
     if request == nil {
         request = NewAddProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AddProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddProduct require credential")
@@ -305,6 +308,7 @@ func (c *Client) AddRuleWithContext(ctx context.Context, request *AddRuleRequest
     if request == nil {
         request = NewAddRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AddRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddRule require credential")
@@ -366,6 +370,7 @@ func (c *Client) AddTopicWithContext(ctx context.Context, request *AddTopicReque
     if request == nil {
         request = NewAddTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AddTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddTopic require credential")
@@ -423,6 +428,7 @@ func (c *Client) AppAddUserWithContext(ctx context.Context, request *AppAddUserR
     if request == nil {
         request = NewAppAddUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppAddUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppAddUser require credential")
@@ -480,6 +486,7 @@ func (c *Client) AppDeleteDeviceWithContext(ctx context.Context, request *AppDel
     if request == nil {
         request = NewAppDeleteDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppDeleteDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppDeleteDevice require credential")
@@ -535,6 +542,7 @@ func (c *Client) AppGetDeviceWithContext(ctx context.Context, request *AppGetDev
     if request == nil {
         request = NewAppGetDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppGetDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppGetDevice require credential")
@@ -594,6 +602,7 @@ func (c *Client) AppGetDeviceDataWithContext(ctx context.Context, request *AppGe
     if request == nil {
         request = NewAppGetDeviceDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppGetDeviceData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppGetDeviceData require credential")
@@ -655,6 +664,7 @@ func (c *Client) AppGetDeviceStatusesWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAppGetDeviceStatusesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppGetDeviceStatuses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppGetDeviceStatuses require credential")
@@ -706,6 +716,7 @@ func (c *Client) AppGetDevicesWithContext(ctx context.Context, request *AppGetDe
     if request == nil {
         request = NewAppGetDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppGetDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppGetDevices require credential")
@@ -763,6 +774,7 @@ func (c *Client) AppGetTokenWithContext(ctx context.Context, request *AppGetToke
     if request == nil {
         request = NewAppGetTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppGetToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppGetToken require credential")
@@ -820,6 +832,7 @@ func (c *Client) AppGetUserWithContext(ctx context.Context, request *AppGetUserR
     if request == nil {
         request = NewAppGetUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppGetUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppGetUser require credential")
@@ -869,6 +882,7 @@ func (c *Client) AppIssueDeviceControlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewAppIssueDeviceControlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppIssueDeviceControl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppIssueDeviceControl require credential")
@@ -922,6 +936,7 @@ func (c *Client) AppResetPasswordWithContext(ctx context.Context, request *AppRe
     if request == nil {
         request = NewAppResetPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppResetPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppResetPassword require credential")
@@ -985,6 +1000,7 @@ func (c *Client) AppSecureAddDeviceWithContext(ctx context.Context, request *App
     if request == nil {
         request = NewAppSecureAddDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppSecureAddDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppSecureAddDevice require credential")
@@ -1044,6 +1060,7 @@ func (c *Client) AppUpdateDeviceWithContext(ctx context.Context, request *AppUpd
     if request == nil {
         request = NewAppUpdateDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppUpdateDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppUpdateDevice require credential")
@@ -1097,6 +1114,7 @@ func (c *Client) AppUpdateUserWithContext(ctx context.Context, request *AppUpdat
     if request == nil {
         request = NewAppUpdateUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AppUpdateUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AppUpdateUser require credential")
@@ -1148,6 +1166,7 @@ func (c *Client) AssociateSubDeviceToGatewayProductWithContext(ctx context.Conte
     if request == nil {
         request = NewAssociateSubDeviceToGatewayProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "AssociateSubDeviceToGatewayProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateSubDeviceToGatewayProduct require credential")
@@ -1211,6 +1230,7 @@ func (c *Client) DeactivateRuleWithContext(ctx context.Context, request *Deactiv
     if request == nil {
         request = NewDeactivateRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "DeactivateRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeactivateRule require credential")
@@ -1272,6 +1292,7 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "DeleteDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDevice require credential")
@@ -1337,6 +1358,7 @@ func (c *Client) DeleteProductWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "DeleteProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteProduct require credential")
@@ -1396,6 +1418,7 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleR
     if request == nil {
         request = NewDeleteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "DeleteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRule require credential")
@@ -1453,6 +1476,7 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopi
     if request == nil {
         request = NewDeleteTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "DeleteTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTopic require credential")
@@ -1510,6 +1534,7 @@ func (c *Client) GetDataHistoryWithContext(ctx context.Context, request *GetData
     if request == nil {
         request = NewGetDataHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetDataHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDataHistory require credential")
@@ -1569,6 +1594,7 @@ func (c *Client) GetDebugLogWithContext(ctx context.Context, request *GetDebugLo
     if request == nil {
         request = NewGetDebugLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetDebugLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDebugLog require credential")
@@ -1622,6 +1648,7 @@ func (c *Client) GetDeviceWithContext(ctx context.Context, request *GetDeviceReq
     if request == nil {
         request = NewGetDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDevice require credential")
@@ -1679,6 +1706,7 @@ func (c *Client) GetDeviceDataWithContext(ctx context.Context, request *GetDevic
     if request == nil {
         request = NewGetDeviceDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetDeviceData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDeviceData require credential")
@@ -1738,6 +1766,7 @@ func (c *Client) GetDeviceLogWithContext(ctx context.Context, request *GetDevice
     if request == nil {
         request = NewGetDeviceLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetDeviceLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDeviceLog require credential")
@@ -1795,6 +1824,7 @@ func (c *Client) GetDeviceSignaturesWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetDeviceSignaturesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetDeviceSignatures")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDeviceSignatures require credential")
@@ -1854,6 +1884,7 @@ func (c *Client) GetDeviceStatisticsWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetDeviceStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetDeviceStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDeviceStatistics require credential")
@@ -1909,6 +1940,7 @@ func (c *Client) GetDeviceStatusesWithContext(ctx context.Context, request *GetD
     if request == nil {
         request = NewGetDeviceStatusesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetDeviceStatuses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDeviceStatuses require credential")
@@ -1962,6 +1994,7 @@ func (c *Client) GetDevicesWithContext(ctx context.Context, request *GetDevicesR
     if request == nil {
         request = NewGetDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDevices require credential")
@@ -2017,6 +2050,7 @@ func (c *Client) GetProductWithContext(ctx context.Context, request *GetProductR
     if request == nil {
         request = NewGetProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetProduct require credential")
@@ -2068,6 +2102,7 @@ func (c *Client) GetProductsWithContext(ctx context.Context, request *GetProduct
     if request == nil {
         request = NewGetProductsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetProducts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetProducts require credential")
@@ -2121,6 +2156,7 @@ func (c *Client) GetRuleWithContext(ctx context.Context, request *GetRuleRequest
     if request == nil {
         request = NewGetRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRule require credential")
@@ -2172,6 +2208,7 @@ func (c *Client) GetRulesWithContext(ctx context.Context, request *GetRulesReque
     if request == nil {
         request = NewGetRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRules require credential")
@@ -2225,6 +2262,7 @@ func (c *Client) GetTopicWithContext(ctx context.Context, request *GetTopicReque
     if request == nil {
         request = NewGetTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTopic require credential")
@@ -2276,6 +2314,7 @@ func (c *Client) GetTopicsWithContext(ctx context.Context, request *GetTopicsReq
     if request == nil {
         request = NewGetTopicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "GetTopics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTopics require credential")
@@ -2335,6 +2374,7 @@ func (c *Client) IssueDeviceControlWithContext(ctx context.Context, request *Iss
     if request == nil {
         request = NewIssueDeviceControlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "IssueDeviceControl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IssueDeviceControl require credential")
@@ -2398,6 +2438,7 @@ func (c *Client) PublishMsgWithContext(ctx context.Context, request *PublishMsgR
     if request == nil {
         request = NewPublishMsgRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "PublishMsg")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PublishMsg require credential")
@@ -2461,6 +2502,7 @@ func (c *Client) ResetDeviceWithContext(ctx context.Context, request *ResetDevic
     if request == nil {
         request = NewResetDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "ResetDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetDevice require credential")
@@ -2520,6 +2562,7 @@ func (c *Client) UnassociateSubDeviceFromGatewayProductWithContext(ctx context.C
     if request == nil {
         request = NewUnassociateSubDeviceFromGatewayProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "UnassociateSubDeviceFromGatewayProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnassociateSubDeviceFromGatewayProduct require credential")
@@ -2581,6 +2624,7 @@ func (c *Client) UpdateProductWithContext(ctx context.Context, request *UpdatePr
     if request == nil {
         request = NewUpdateProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "UpdateProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateProduct require credential")
@@ -2648,6 +2692,7 @@ func (c *Client) UpdateRuleWithContext(ctx context.Context, request *UpdateRuleR
     if request == nil {
         request = NewUpdateRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iot", APIVersion, "UpdateRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateRule require credential")

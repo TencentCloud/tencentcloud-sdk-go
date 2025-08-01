@@ -137,6 +137,7 @@ func NewCreateImageModerationAsyncTaskResponse() (response *CreateImageModeratio
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_IMAGEDOWNLOADERROR = "ResourceUnavailable.ImageDownloadError"
+//  RESOURCEUNAVAILABLE_INQUEUEERROR = "ResourceUnavailable.InQueueError"
 //  RESOURCEUNAVAILABLE_INVALIDIMAGECONTENT = "ResourceUnavailable.InvalidImageContent"
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -220,6 +221,7 @@ func (c *Client) CreateImageModerationAsyncTask(request *CreateImageModerationAs
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_IMAGEDOWNLOADERROR = "ResourceUnavailable.ImageDownloadError"
+//  RESOURCEUNAVAILABLE_INQUEUEERROR = "ResourceUnavailable.InQueueError"
 //  RESOURCEUNAVAILABLE_INVALIDIMAGECONTENT = "ResourceUnavailable.InvalidImageContent"
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -230,6 +232,7 @@ func (c *Client) CreateImageModerationAsyncTaskWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateImageModerationAsyncTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ims", APIVersion, "CreateImageModerationAsyncTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateImageModerationAsyncTask require credential")
@@ -306,7 +309,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //
 // - 文件格式支持：
 //
-//     - **静态图**：BMP、ICO、JPEG、JNG、PNG、TIFF、RAW、SVG、GIF、WEBP、HEIC
+//     - **静态图**：BMP、ICO、JPEG、JNG、PNG、TIFF、RAW、SVG、GIF、WEBP、HEIC、AVIF
 //
 //     - **动态图**：GIF、WEBP、HEIC（默认最多抽取5帧图像，每隔5帧进行一次采样）
 //
@@ -444,7 +447,7 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
 //
 // - 文件格式支持：
 //
-//     - **静态图**：BMP、ICO、JPEG、JNG、PNG、TIFF、RAW、SVG、GIF、WEBP、HEIC
+//     - **静态图**：BMP、ICO、JPEG、JNG、PNG、TIFF、RAW、SVG、GIF、WEBP、HEIC、AVIF
 //
 //     - **动态图**：GIF、WEBP、HEIC（默认最多抽取5帧图像，每隔5帧进行一次采样）
 //
@@ -537,6 +540,7 @@ func (c *Client) ImageModerationWithContext(ctx context.Context, request *ImageM
     if request == nil {
         request = NewImageModerationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ims", APIVersion, "ImageModeration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageModeration require credential")

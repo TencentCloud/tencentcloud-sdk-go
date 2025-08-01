@@ -106,6 +106,7 @@ func (c *Client) CreateLibraryWithContext(ctx context.Context, request *CreateLi
     if request == nil {
         request = NewCreateLibraryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "CreateLibrary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLibrary require credential")
@@ -193,6 +194,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     if request == nil {
         request = NewCreateUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "CreateUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUser require credential")
@@ -252,6 +254,7 @@ func (c *Client) CreateUserLifecycleWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateUserLifecycleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "CreateUserLifecycle")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserLifecycle require credential")
@@ -307,6 +310,7 @@ func (c *Client) DeleteLibraryWithContext(ctx context.Context, request *DeleteLi
     if request == nil {
         request = NewDeleteLibraryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "DeleteLibrary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLibrary require credential")
@@ -362,6 +366,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserR
     if request == nil {
         request = NewDeleteUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "DeleteUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUser require credential")
@@ -413,6 +418,7 @@ func (c *Client) DescribeLibrariesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeLibrariesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "DescribeLibraries")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLibraries require credential")
@@ -464,6 +470,7 @@ func (c *Client) DescribeLibrarySecretWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLibrarySecretRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "DescribeLibrarySecret")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLibrarySecret require credential")
@@ -515,6 +522,7 @@ func (c *Client) DescribeOfficialInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeOfficialInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "DescribeOfficialInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOfficialInstances require credential")
@@ -564,6 +572,7 @@ func (c *Client) DescribeOfficialOverviewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeOfficialOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "DescribeOfficialOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOfficialOverview require credential")
@@ -615,6 +624,7 @@ func (c *Client) DescribeTrafficPackagesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeTrafficPackagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "DescribeTrafficPackages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrafficPackages require credential")
@@ -670,6 +680,7 @@ func (c *Client) DescribeUserLifecycleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeUserLifecycleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "DescribeUserLifecycle")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserLifecycle require credential")
@@ -723,6 +734,7 @@ func (c *Client) ModifyLibraryWithContext(ctx context.Context, request *ModifyLi
     if request == nil {
         request = NewModifyLibraryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "ModifyLibrary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLibrary require credential")
@@ -814,6 +826,7 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     if request == nil {
         request = NewModifyUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "ModifyUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUser require credential")
@@ -877,6 +890,7 @@ func (c *Client) SendSmsCodeWithContext(ctx context.Context, request *SendSmsCod
     if request == nil {
         request = NewSendSmsCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "SendSmsCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendSmsCode require credential")
@@ -938,6 +952,7 @@ func (c *Client) VerifySmsCodeWithContext(ctx context.Context, request *VerifySm
     if request == nil {
         request = NewVerifySmsCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "smh", APIVersion, "VerifySmsCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifySmsCode require credential")

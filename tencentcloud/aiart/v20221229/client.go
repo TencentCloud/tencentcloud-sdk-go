@@ -144,6 +144,7 @@ func (c *Client) ChangeClothesWithContext(ctx context.Context, request *ChangeCl
     if request == nil {
         request = NewChangeClothesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "ChangeClothes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChangeClothes require credential")
@@ -251,6 +252,7 @@ func (c *Client) GenerateAvatarWithContext(ctx context.Context, request *Generat
     if request == nil {
         request = NewGenerateAvatarRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "GenerateAvatar")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GenerateAvatar require credential")
@@ -358,6 +360,7 @@ func (c *Client) ImageInpaintingRemovalWithContext(ctx context.Context, request 
     if request == nil {
         request = NewImageInpaintingRemovalRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "ImageInpaintingRemoval")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageInpaintingRemoval require credential")
@@ -465,6 +468,7 @@ func (c *Client) ImageOutpaintingWithContext(ctx context.Context, request *Image
     if request == nil {
         request = NewImageOutpaintingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "ImageOutpainting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageOutpainting require credential")
@@ -572,6 +576,7 @@ func (c *Client) ImageToImageWithContext(ctx context.Context, request *ImageToIm
     if request == nil {
         request = NewImageToImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "ImageToImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageToImage require credential")
@@ -647,6 +652,7 @@ func (c *Client) QueryDrawPortraitJobWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryDrawPortraitJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "QueryDrawPortraitJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryDrawPortraitJob require credential")
@@ -716,6 +722,7 @@ func (c *Client) QueryGlamPicJobWithContext(ctx context.Context, request *QueryG
     if request == nil {
         request = NewQueryGlamPicJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "QueryGlamPicJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryGlamPicJob require credential")
@@ -785,6 +792,7 @@ func (c *Client) QueryMemeJobWithContext(ctx context.Context, request *QueryMeme
     if request == nil {
         request = NewQueryMemeJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "QueryMemeJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMemeJob require credential")
@@ -854,6 +862,7 @@ func (c *Client) QueryTextToImageProJobWithContext(ctx context.Context, request 
     if request == nil {
         request = NewQueryTextToImageProJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "QueryTextToImageProJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryTextToImageProJob require credential")
@@ -931,6 +940,7 @@ func (c *Client) QueryTrainPortraitModelJobWithContext(ctx context.Context, requ
     if request == nil {
         request = NewQueryTrainPortraitModelJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "QueryTrainPortraitModelJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryTrainPortraitModelJob require credential")
@@ -984,6 +994,7 @@ func (c *Client) RefineImageWithContext(ctx context.Context, request *RefineImag
     if request == nil {
         request = NewRefineImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "RefineImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RefineImage require credential")
@@ -1095,6 +1106,7 @@ func (c *Client) ReplaceBackgroundWithContext(ctx context.Context, request *Repl
     if request == nil {
         request = NewReplaceBackgroundRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "ReplaceBackground")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReplaceBackground require credential")
@@ -1202,6 +1214,7 @@ func (c *Client) SketchToImageWithContext(ctx context.Context, request *SketchTo
     if request == nil {
         request = NewSketchToImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "SketchToImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SketchToImage require credential")
@@ -1283,6 +1296,7 @@ func (c *Client) SubmitDrawPortraitJobWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSubmitDrawPortraitJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "SubmitDrawPortraitJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitDrawPortraitJob require credential")
@@ -1352,6 +1366,7 @@ func (c *Client) SubmitGlamPicJobWithContext(ctx context.Context, request *Submi
     if request == nil {
         request = NewSubmitGlamPicJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "SubmitGlamPicJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitGlamPicJob require credential")
@@ -1425,6 +1440,7 @@ func (c *Client) SubmitMemeJobWithContext(ctx context.Context, request *SubmitMe
     if request == nil {
         request = NewSubmitMemeJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "SubmitMemeJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitMemeJob require credential")
@@ -1540,6 +1556,7 @@ func (c *Client) SubmitTextToImageProJobWithContext(ctx context.Context, request
     if request == nil {
         request = NewSubmitTextToImageProJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "SubmitTextToImageProJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitTextToImageProJob require credential")
@@ -1619,6 +1636,7 @@ func (c *Client) SubmitTrainPortraitModelJobWithContext(ctx context.Context, req
     if request == nil {
         request = NewSubmitTrainPortraitModelJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "SubmitTrainPortraitModelJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitTrainPortraitModelJob require credential")
@@ -1627,119 +1645,6 @@ func (c *Client) SubmitTrainPortraitModelJobWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewSubmitTrainPortraitModelJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewTextToImageRequest() (request *TextToImageRequest) {
-    request = &TextToImageRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("aiart", APIVersion, "TextToImage")
-    
-    
-    return
-}
-
-func NewTextToImageResponse() (response *TextToImageResponse) {
-    response = &TextToImageResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// TextToImage
-// **本接口已迁移至腾讯混元大模型-文生图轻量版，即将停止此处维护，可切换至 [文生图轻量版 API](https://cloud.tencent.com/document/product/1729/108738) 继续使用。**
-//
-// 
-//
-// 智能文生图接口基于文生图（标准版）模型，将根据输入的文本描述，智能生成与之相关的结果图。
-//
-// 
-//
-// 智能文生图默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
-//  FAILEDOPERATION_GENERATEIMAGEFAILED = "FailedOperation.GenerateImageFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
-//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
-//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
-//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
-//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
-//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
-//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
-//  INVALIDPARAMETERVALUE_TEXTLENGTHEXCEED = "InvalidParameterValue.TextLengthExceed"
-//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
-//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
-//  OPERATIONDENIED_TEXTILLEGALDETECTED = "OperationDenied.TextIllegalDetected"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) TextToImage(request *TextToImageRequest) (response *TextToImageResponse, err error) {
-    return c.TextToImageWithContext(context.Background(), request)
-}
-
-// TextToImage
-// **本接口已迁移至腾讯混元大模型-文生图轻量版，即将停止此处维护，可切换至 [文生图轻量版 API](https://cloud.tencent.com/document/product/1729/108738) 继续使用。**
-//
-// 
-//
-// 智能文生图接口基于文生图（标准版）模型，将根据输入的文本描述，智能生成与之相关的结果图。
-//
-// 
-//
-// 智能文生图默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
-//  FAILEDOPERATION_GENERATEIMAGEFAILED = "FailedOperation.GenerateImageFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
-//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
-//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
-//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
-//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
-//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
-//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
-//  INVALIDPARAMETERVALUE_TEXTLENGTHEXCEED = "InvalidParameterValue.TextLengthExceed"
-//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
-//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
-//  OPERATIONDENIED_TEXTILLEGALDETECTED = "OperationDenied.TextIllegalDetected"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) TextToImageWithContext(ctx context.Context, request *TextToImageRequest) (response *TextToImageResponse, err error) {
-    if request == nil {
-        request = NewTextToImageRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("TextToImage require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewTextToImageResponse()
     err = c.Send(request, response)
     return
 }
@@ -1835,6 +1740,7 @@ func (c *Client) TextToImageLiteWithContext(ctx context.Context, request *TextTo
     if request == nil {
         request = NewTextToImageLiteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "TextToImageLite")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextToImageLite require credential")
@@ -1938,6 +1844,7 @@ func (c *Client) TextToImageRapidWithContext(ctx context.Context, request *TextT
     if request == nil {
         request = NewTextToImageRapidRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "TextToImageRapid")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextToImageRapid require credential")
@@ -2023,6 +1930,7 @@ func (c *Client) UploadTrainPortraitImagesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewUploadTrainPortraitImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "UploadTrainPortraitImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadTrainPortraitImages require credential")

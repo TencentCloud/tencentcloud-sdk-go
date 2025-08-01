@@ -134,6 +134,7 @@ func (c *Client) CreateAgeDetectTaskWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateAgeDetectTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "CreateAgeDetectTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAgeDetectTask require credential")
@@ -203,6 +204,7 @@ func (c *Client) CreateAppWithContext(ctx context.Context, request *CreateAppReq
     if request == nil {
         request = NewCreateAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "CreateApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApp require credential")
@@ -256,6 +258,7 @@ func (c *Client) CreateCustomizationWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateCustomizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "CreateCustomization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomization require credential")
@@ -305,6 +308,7 @@ func (c *Client) CreateScanUserWithContext(ctx context.Context, request *CreateS
     if request == nil {
         request = NewCreateScanUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "CreateScanUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateScanUser require credential")
@@ -356,6 +360,7 @@ func (c *Client) DeleteCustomizationWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteCustomizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DeleteCustomization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomization require credential")
@@ -421,6 +426,7 @@ func (c *Client) DeleteRoomMemberWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteRoomMemberRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DeleteRoomMember")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRoomMember require credential")
@@ -486,6 +492,7 @@ func (c *Client) DeleteScanUserWithContext(ctx context.Context, request *DeleteS
     if request == nil {
         request = NewDeleteScanUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DeleteScanUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteScanUser require credential")
@@ -547,6 +554,7 @@ func (c *Client) DescribeAgeDetectTaskWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAgeDetectTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeAgeDetectTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAgeDetectTask require credential")
@@ -616,6 +624,7 @@ func (c *Client) DescribeAppStatisticsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAppStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeAppStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAppStatistics require credential")
@@ -673,6 +682,7 @@ func (c *Client) DescribeApplicationDataWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeApplicationDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeApplicationData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApplicationData require credential")
@@ -734,6 +744,7 @@ func (c *Client) DescribeApplicationListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeApplicationListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeApplicationList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApplicationList require credential")
@@ -783,6 +794,7 @@ func (c *Client) DescribeRealtimeScanConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRealtimeScanConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeRealtimeScanConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRealtimeScanConfig require credential")
@@ -846,6 +858,7 @@ func (c *Client) DescribeRecordInfoWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeRecordInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeRecordInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRecordInfo require credential")
@@ -901,6 +914,7 @@ func (c *Client) DescribeRoomInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeRoomInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeRoomInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRoomInfo require credential")
@@ -972,6 +986,7 @@ func (c *Client) DescribeScanResultListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeScanResultListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeScanResultList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScanResultList require credential")
@@ -1037,6 +1052,7 @@ func (c *Client) DescribeTaskInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTaskInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeTaskInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskInfo require credential")
@@ -1124,6 +1140,7 @@ func (c *Client) DescribeUserInAndOutTimeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUserInAndOutTimeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeUserInAndOutTime")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserInAndOutTime require credential")
@@ -1177,6 +1194,7 @@ func (c *Client) GetCustomizationListWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetCustomizationListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "GetCustomizationList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetCustomizationList require credential")
@@ -1244,6 +1262,7 @@ func (c *Client) ModifyAppStatusWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyAppStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "ModifyAppStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAppStatus require credential")
@@ -1299,6 +1318,7 @@ func (c *Client) ModifyCustomizationWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyCustomizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "ModifyCustomization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomization require credential")
@@ -1352,6 +1372,7 @@ func (c *Client) ModifyCustomizationStateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyCustomizationStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "ModifyCustomizationState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomizationState require credential")
@@ -1423,6 +1444,7 @@ func (c *Client) ModifyRecordInfoWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyRecordInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "ModifyRecordInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRecordInfo require credential")
@@ -1482,6 +1504,7 @@ func (c *Client) ModifyUserMicStatusWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyUserMicStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "ModifyUserMicStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserMicStatus require credential")
@@ -2091,6 +2114,7 @@ func (c *Client) ScanVoiceWithContext(ctx context.Context, request *ScanVoiceReq
     if request == nil {
         request = NewScanVoiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "ScanVoice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScanVoice require credential")
@@ -2166,6 +2190,7 @@ func (c *Client) StartRecordWithContext(ctx context.Context, request *StartRecor
     if request == nil {
         request = NewStartRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "StartRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartRecord require credential")
@@ -2229,6 +2254,7 @@ func (c *Client) StopRecordWithContext(ctx context.Context, request *StopRecordR
     if request == nil {
         request = NewStopRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "StopRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopRecord require credential")
@@ -2278,6 +2304,7 @@ func (c *Client) UpdateScanRoomsWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateScanRoomsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "UpdateScanRooms")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateScanRooms require credential")
@@ -2331,6 +2358,7 @@ func (c *Client) UpdateScanUsersWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateScanUsersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "UpdateScanUsers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateScanUsers require credential")

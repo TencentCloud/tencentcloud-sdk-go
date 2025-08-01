@@ -82,6 +82,7 @@ func (c *Client) BindEipAclsWithContext(ctx context.Context, request *BindEipAcl
     if request == nil {
         request = NewBindEipAclsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "BindEipAcls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindEipAcls require credential")
@@ -135,6 +136,7 @@ func (c *Client) BindHostedWithContext(ctx context.Context, request *BindHostedR
     if request == nil {
         request = NewBindHostedRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "BindHosted")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindHosted require credential")
@@ -184,6 +186,7 @@ func (c *Client) BindRsWithContext(ctx context.Context, request *BindRsRequest) 
     if request == nil {
         request = NewBindRsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "BindRs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindRs require credential")
@@ -233,6 +236,7 @@ func (c *Client) BindVpcIpWithContext(ctx context.Context, request *BindVpcIpReq
     if request == nil {
         request = NewBindVpcIpRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "BindVpcIp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindVpcIp require credential")
@@ -284,6 +288,7 @@ func (c *Client) CreateEipWithContext(ctx context.Context, request *CreateEipReq
     if request == nil {
         request = NewCreateEipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "CreateEip")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEip require credential")
@@ -335,6 +340,7 @@ func (c *Client) CreateEipAclWithContext(ctx context.Context, request *CreateEip
     if request == nil {
         request = NewCreateEipAclRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "CreateEipAcl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEipAcl require credential")
@@ -388,6 +394,7 @@ func (c *Client) DeleteEipWithContext(ctx context.Context, request *DeleteEipReq
     if request == nil {
         request = NewDeleteEipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "DeleteEip")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEip require credential")
@@ -439,6 +446,7 @@ func (c *Client) DeleteEipAclWithContext(ctx context.Context, request *DeleteEip
     if request == nil {
         request = NewDeleteEipAclRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "DeleteEipAcl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEipAcl require credential")
@@ -490,6 +498,7 @@ func (c *Client) DescribeEipAclsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeEipAclsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "DescribeEipAcls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEipAcls require credential")
@@ -539,6 +548,7 @@ func (c *Client) DescribeEipQuotaWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeEipQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "DescribeEipQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEipQuota require credential")
@@ -588,6 +598,7 @@ func (c *Client) DescribeEipTaskWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeEipTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "DescribeEipTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEipTask require credential")
@@ -637,6 +648,7 @@ func (c *Client) DescribeEipsWithContext(ctx context.Context, request *DescribeE
     if request == nil {
         request = NewDescribeEipsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "DescribeEips")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEips require credential")
@@ -688,6 +700,7 @@ func (c *Client) ModifyEipAclWithContext(ctx context.Context, request *ModifyEip
     if request == nil {
         request = NewModifyEipAclRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "ModifyEipAcl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEipAcl require credential")
@@ -739,6 +752,7 @@ func (c *Client) ModifyEipChargeWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyEipChargeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "ModifyEipCharge")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEipCharge require credential")
@@ -790,6 +804,7 @@ func (c *Client) ModifyEipNameWithContext(ctx context.Context, request *ModifyEi
     if request == nil {
         request = NewModifyEipNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "ModifyEipName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEipName require credential")
@@ -843,6 +858,7 @@ func (c *Client) UnbindEipAclsWithContext(ctx context.Context, request *UnbindEi
     if request == nil {
         request = NewUnbindEipAclsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "UnbindEipAcls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindEipAcls require credential")
@@ -896,6 +912,7 @@ func (c *Client) UnbindHostedWithContext(ctx context.Context, request *UnbindHos
     if request == nil {
         request = NewUnbindHostedRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "UnbindHosted")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindHosted require credential")
@@ -945,6 +962,7 @@ func (c *Client) UnbindRsWithContext(ctx context.Context, request *UnbindRsReque
     if request == nil {
         request = NewUnbindRsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "UnbindRs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindRs require credential")
@@ -996,6 +1014,7 @@ func (c *Client) UnbindRsListWithContext(ctx context.Context, request *UnbindRsL
     if request == nil {
         request = NewUnbindRsListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "UnbindRsList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindRsList require credential")
@@ -1045,6 +1064,7 @@ func (c *Client) UnbindVpcIpWithContext(ctx context.Context, request *UnbindVpcI
     if request == nil {
         request = NewUnbindVpcIpRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmeip", APIVersion, "UnbindVpcIp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindVpcIp require credential")

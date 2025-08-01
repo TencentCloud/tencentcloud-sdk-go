@@ -88,6 +88,7 @@ func (c *Client) DescribeStrategiesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeStrategiesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "advisor", APIVersion, "DescribeStrategies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStrategies require credential")
@@ -149,6 +150,7 @@ func (c *Client) DescribeTaskStrategyRisksWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeTaskStrategyRisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "advisor", APIVersion, "DescribeTaskStrategyRisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskStrategyRisks require credential")

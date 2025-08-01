@@ -136,6 +136,7 @@ func (c *Client) CreateApiImportUserJobWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateApiImportUserJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "CreateApiImportUserJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApiImportUserJob require credential")
@@ -239,6 +240,7 @@ func (c *Client) CreateFileExportUserJobWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateFileExportUserJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "CreateFileExportUserJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFileExportUserJob require credential")
@@ -358,6 +360,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     if request == nil {
         request = NewCreateUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "CreateUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUser require credential")
@@ -491,6 +494,7 @@ func (c *Client) CreateUserGroupWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateUserGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "CreateUserGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserGroup require credential")
@@ -626,6 +630,7 @@ func (c *Client) CreateUserStoreWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateUserStoreRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "CreateUserStore")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserStore require credential")
@@ -757,6 +762,7 @@ func (c *Client) DeleteUserGroupsWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteUserGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "DeleteUserGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUserGroups require credential")
@@ -892,6 +898,7 @@ func (c *Client) DeleteUserStoreWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteUserStoreRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "DeleteUserStore")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUserStore require credential")
@@ -991,6 +998,7 @@ func (c *Client) DeleteUsersWithContext(ctx context.Context, request *DeleteUser
     if request == nil {
         request = NewDeleteUsersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "DeleteUsers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUsers require credential")
@@ -1096,6 +1104,7 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, request *DescribeU
     if request == nil {
         request = NewDescribeUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "DescribeUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUser require credential")
@@ -1195,6 +1204,7 @@ func (c *Client) DescribeUserByIdWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeUserByIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "DescribeUserById")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserById require credential")
@@ -1302,6 +1312,7 @@ func (c *Client) LinkAccountWithContext(ctx context.Context, request *LinkAccoun
     if request == nil {
         request = NewLinkAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "LinkAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("LinkAccount require credential")
@@ -1405,6 +1416,7 @@ func (c *Client) ListJobsWithContext(ctx context.Context, request *ListJobsReque
     if request == nil {
         request = NewListJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "ListJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListJobs require credential")
@@ -1504,6 +1516,7 @@ func (c *Client) ListLogMessageByConditionWithContext(ctx context.Context, reque
     if request == nil {
         request = NewListLogMessageByConditionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "ListLogMessageByCondition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListLogMessageByCondition require credential")
@@ -1603,6 +1616,7 @@ func (c *Client) ListUserWithContext(ctx context.Context, request *ListUserReque
     if request == nil {
         request = NewListUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "ListUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListUser require credential")
@@ -1702,6 +1716,7 @@ func (c *Client) ListUserByPropertyWithContext(ctx context.Context, request *Lis
     if request == nil {
         request = NewListUserByPropertyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "ListUserByProperty")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListUserByProperty require credential")
@@ -1833,6 +1848,7 @@ func (c *Client) ListUserGroupsWithContext(ctx context.Context, request *ListUse
     if request == nil {
         request = NewListUserGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "ListUserGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListUserGroups require credential")
@@ -1964,6 +1980,7 @@ func (c *Client) ListUserStoreWithContext(ctx context.Context, request *ListUser
     if request == nil {
         request = NewListUserStoreRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "ListUserStore")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListUserStore require credential")
@@ -2067,6 +2084,7 @@ func (c *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPas
     if request == nil {
         request = NewResetPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "ResetPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetPassword require credential")
@@ -2172,6 +2190,7 @@ func (c *Client) SetPasswordWithContext(ctx context.Context, request *SetPasswor
     if request == nil {
         request = NewSetPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "SetPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetPassword require credential")
@@ -2285,6 +2304,7 @@ func (c *Client) UpdateUserWithContext(ctx context.Context, request *UpdateUserR
     if request == nil {
         request = NewUpdateUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "UpdateUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateUser require credential")
@@ -2420,6 +2440,7 @@ func (c *Client) UpdateUserGroupWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateUserGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "UpdateUserGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateUserGroup require credential")
@@ -2525,6 +2546,7 @@ func (c *Client) UpdateUserStatusWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateUserStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "UpdateUserStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateUserStatus require credential")
@@ -2660,6 +2682,7 @@ func (c *Client) UpdateUserStoreWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateUserStoreRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ciam", APIVersion, "UpdateUserStore")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateUserStore require credential")

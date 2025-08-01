@@ -122,6 +122,7 @@ func (c *Client) CheckAnimateImageJobWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCheckAnimateImageJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "CheckAnimateImageJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckAnimateImageJob require credential")
@@ -203,6 +204,7 @@ func (c *Client) DescribeImageAnimateJobWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeImageAnimateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeImageAnimateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageAnimateJob require credential")
@@ -264,6 +266,7 @@ func (c *Client) DescribePortraitSingJobWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribePortraitSingJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribePortraitSingJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePortraitSingJob require credential")
@@ -345,6 +348,7 @@ func (c *Client) DescribeTemplateToVideoJobWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeTemplateToVideoJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeTemplateToVideoJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTemplateToVideoJob require credential")
@@ -406,6 +410,7 @@ func (c *Client) DescribeVideoStylizationJobWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeVideoStylizationJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeVideoStylizationJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoStylizationJob require credential")
@@ -501,6 +506,7 @@ func (c *Client) SubmitImageAnimateJobWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSubmitImageAnimateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitImageAnimateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitImageAnimateJob require credential")
@@ -588,6 +594,7 @@ func (c *Client) SubmitPortraitSingJobWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSubmitPortraitSingJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitPortraitSingJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitPortraitSingJob require credential")
@@ -671,6 +678,7 @@ func (c *Client) SubmitTemplateToVideoJobWithContext(ctx context.Context, reques
     if request == nil {
         request = NewSubmitTemplateToVideoJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitTemplateToVideoJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitTemplateToVideoJob require credential")
@@ -746,6 +754,7 @@ func (c *Client) SubmitVideoStylizationJobWithContext(ctx context.Context, reque
     if request == nil {
         request = NewSubmitVideoStylizationJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitVideoStylizationJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitVideoStylizationJob require credential")

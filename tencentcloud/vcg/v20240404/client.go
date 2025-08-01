@@ -96,6 +96,7 @@ func (c *Client) DescribeVideoStylizationJobWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeVideoStylizationJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcg", APIVersion, "DescribeVideoStylizationJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoStylizationJob require credential")
@@ -169,6 +170,7 @@ func (c *Client) SubmitVideoStylizationJobWithContext(ctx context.Context, reque
     if request == nil {
         request = NewSubmitVideoStylizationJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcg", APIVersion, "SubmitVideoStylizationJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitVideoStylizationJob require credential")

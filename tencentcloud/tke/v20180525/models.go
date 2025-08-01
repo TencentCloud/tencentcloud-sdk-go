@@ -3349,6 +3349,9 @@ type CreateImageCacheRequestParams struct {
 	// 自定义制作镜像缓存过程中容器实例的宿主机上的 DNS。如：
 	// "nameserver 4.4.4.4\nnameserver 8.8.8.8"
 	ResolveConfig *string `json:"ResolveConfig,omitnil,omitempty" name:"ResolveConfig"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateImageCacheRequest struct {
@@ -3397,6 +3400,9 @@ type CreateImageCacheRequest struct {
 	// 自定义制作镜像缓存过程中容器实例的宿主机上的 DNS。如：
 	// "nameserver 4.4.4.4\nnameserver 8.8.8.8"
 	ResolveConfig *string `json:"ResolveConfig,omitnil,omitempty" name:"ResolveConfig"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateImageCacheRequest) ToJsonString() string {
@@ -3425,6 +3431,7 @@ func (r *CreateImageCacheRequest) FromJsonString(s string) error {
 	delete(f, "RegistrySkipVerifyList")
 	delete(f, "RegistryHttpEndPointList")
 	delete(f, "ResolveConfig")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageCacheRequest has unknown keys!", "")
 	}
@@ -15064,6 +15071,15 @@ type ImageCache struct {
 	// UpdateFailed：更新失败
 	// 只有状态为Ready时，才能正常使用镜像缓存
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 镜像缓存保留时间天数，过期将会自动清理，默认为0，永不过期。
+	RetentionDays *uint64 `json:"RetentionDays,omitnil,omitempty" name:"RetentionDays"`
+
+	// 镜像拉取凭证
+	ImageRegistryCredentials []*ImageRegistryCredential `json:"ImageRegistryCredentials,omitnil,omitempty" name:"ImageRegistryCredentials"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ImageCacheEvent struct {
@@ -15369,11 +15385,11 @@ type InstanceAdvancedSettings struct {
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
 	// 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
-	// 注意，注意，多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
+	// 注意：多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountTarget *string `json:"MountTarget,omitnil,omitempty" name:"MountTarget"`
 
-	// dockerd --graph 指定值, 默认为 /var/lib/docker
+	// dockerd --graph 指定值。若未指定此参数，将使用内置默认路径 /var/lib/docker 作为存储根目录。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DockerGraphPath *string `json:"DockerGraphPath,omitnil,omitempty" name:"DockerGraphPath"`
 
@@ -19726,11 +19742,11 @@ type SuperNodeResource struct {
 }
 
 type Switch struct {
-	// 集群ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
 	// 审计开关的详细信息
 	Audit *SwitchInfo `json:"Audit,omitnil,omitempty" name:"Audit"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 事件开关的详细信息
 	Event *SwitchInfo `json:"Event,omitnil,omitempty" name:"Event"`
@@ -19746,20 +19762,26 @@ type SwitchInfo struct {
 	// 开启标识符 true代表开启
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
+	// 获取日志状态失败时，返回错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
 	// CLS日志集ID
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// 日志主题状态，opened表示已开启，opening开启中，closed表示已关闭，closing 表示关闭中
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// CLS日志主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 当前log-agent版本
-	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+	// CLS日志主题所属region
+	TopicRegion *string `json:"TopicRegion,omitnil,omitempty" name:"TopicRegion"`
 
 	// 是否可升级
 	UpgradeAble *bool `json:"UpgradeAble,omitnil,omitempty" name:"UpgradeAble"`
 
-	// CLS日志主题所属region
-	TopicRegion *string `json:"TopicRegion,omitnil,omitempty" name:"TopicRegion"`
+	// 当前log-agent版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
 // Predefined struct for user
@@ -20705,6 +20727,9 @@ type UpdateImageCacheRequestParams struct {
 
 	// 安全组Id
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type UpdateImageCacheRequest struct {
@@ -20730,6 +20755,9 @@ type UpdateImageCacheRequest struct {
 
 	// 安全组Id
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *UpdateImageCacheRequest) ToJsonString() string {
@@ -20751,6 +20779,7 @@ func (r *UpdateImageCacheRequest) FromJsonString(s string) error {
 	delete(f, "ImageCacheSize")
 	delete(f, "RetentionDays")
 	delete(f, "SecurityGroupIds")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateImageCacheRequest has unknown keys!", "")
 	}

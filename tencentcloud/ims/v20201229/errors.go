@@ -101,6 +101,9 @@ const (
 	// 图片文件下载失败。
 	RESOURCEUNAVAILABLE_IMAGEDOWNLOADERROR = "ResourceUnavailable.ImageDownloadError"
 
+	// 入队列失败
+	RESOURCEUNAVAILABLE_INQUEUEERROR = "ResourceUnavailable.InQueueError"
+
 	// 图片资源错误。
 	RESOURCEUNAVAILABLE_INVALIDIMAGECONTENT = "ResourceUnavailable.InvalidImageContent"
 

@@ -90,6 +90,7 @@ func (c *Client) DescribeEventStatisticsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeEventStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tchd", APIVersion, "DescribeEventStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEventStatistics require credential")
@@ -151,6 +152,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tchd", APIVersion, "DescribeEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEvents require credential")

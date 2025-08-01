@@ -128,6 +128,7 @@ func (c *Client) BindAutoScalerResourceStrategyToGroupsWithContext(ctx context.C
     if request == nil {
         request = NewBindAutoScalerResourceStrategyToGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "BindAutoScalerResourceStrategyToGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindAutoScalerResourceStrategyToGroups require credential")
@@ -219,6 +220,7 @@ func (c *Client) CloseWafProtectionWithContext(ctx context.Context, request *Clo
     if request == nil {
         request = NewCloseWafProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CloseWafProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseWafProtection require credential")
@@ -304,6 +306,7 @@ func (c *Client) CreateAutoScalerResourceStrategyWithContext(ctx context.Context
     if request == nil {
         request = NewCreateAutoScalerResourceStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateAutoScalerResourceStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAutoScalerResourceStrategy require credential")
@@ -399,6 +402,7 @@ func (c *Client) CreateCloudNativeAPIGatewayWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateCloudNativeAPIGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateCloudNativeAPIGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudNativeAPIGateway require credential")
@@ -492,6 +496,7 @@ func (c *Client) CreateCloudNativeAPIGatewayCanaryRuleWithContext(ctx context.Co
     if request == nil {
         request = NewCreateCloudNativeAPIGatewayCanaryRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateCloudNativeAPIGatewayCanaryRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudNativeAPIGatewayCanaryRule require credential")
@@ -587,6 +592,7 @@ func (c *Client) CreateCloudNativeAPIGatewayCertificateWithContext(ctx context.C
     if request == nil {
         request = NewCreateCloudNativeAPIGatewayCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateCloudNativeAPIGatewayCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudNativeAPIGatewayCertificate require credential")
@@ -644,6 +650,7 @@ func (c *Client) CreateCloudNativeAPIGatewayPublicNetworkWithContext(ctx context
     if request == nil {
         request = NewCreateCloudNativeAPIGatewayPublicNetworkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateCloudNativeAPIGatewayPublicNetwork")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudNativeAPIGatewayPublicNetwork require credential")
@@ -735,6 +742,7 @@ func (c *Client) CreateCloudNativeAPIGatewayRouteWithContext(ctx context.Context
     if request == nil {
         request = NewCreateCloudNativeAPIGatewayRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateCloudNativeAPIGatewayRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudNativeAPIGatewayRoute require credential")
@@ -826,6 +834,7 @@ func (c *Client) CreateCloudNativeAPIGatewayRouteRateLimitWithContext(ctx contex
     if request == nil {
         request = NewCreateCloudNativeAPIGatewayRouteRateLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateCloudNativeAPIGatewayRouteRateLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudNativeAPIGatewayRouteRateLimit require credential")
@@ -917,6 +926,7 @@ func (c *Client) CreateCloudNativeAPIGatewayServiceWithContext(ctx context.Conte
     if request == nil {
         request = NewCreateCloudNativeAPIGatewayServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateCloudNativeAPIGatewayService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudNativeAPIGatewayService require credential")
@@ -1010,6 +1020,7 @@ func (c *Client) CreateCloudNativeAPIGatewayServiceRateLimitWithContext(ctx cont
     if request == nil {
         request = NewCreateCloudNativeAPIGatewayServiceRateLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateCloudNativeAPIGatewayServiceRateLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudNativeAPIGatewayServiceRateLimit require credential")
@@ -1071,6 +1082,7 @@ func (c *Client) CreateConfigFileWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateConfigFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateConfigFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConfigFile require credential")
@@ -1138,6 +1150,7 @@ func (c *Client) CreateConfigFileGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateConfigFileGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateConfigFileGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConfigFileGroup require credential")
@@ -1215,6 +1228,7 @@ func (c *Client) CreateEngineWithContext(ctx context.Context, request *CreateEng
     if request == nil {
         request = NewCreateEngineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateEngine")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEngine require credential")
@@ -1274,6 +1288,7 @@ func (c *Client) CreateGovernanceAliasWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateGovernanceAliasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateGovernanceAlias")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateGovernanceAlias require credential")
@@ -1333,6 +1348,7 @@ func (c *Client) CreateGovernanceInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateGovernanceInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateGovernanceInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateGovernanceInstances require credential")
@@ -1392,6 +1408,7 @@ func (c *Client) CreateGovernanceNamespacesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateGovernanceNamespacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateGovernanceNamespaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateGovernanceNamespaces require credential")
@@ -1451,6 +1468,7 @@ func (c *Client) CreateGovernanceServicesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateGovernanceServicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateGovernanceServices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateGovernanceServices require credential")
@@ -1508,6 +1526,7 @@ func (c *Client) CreateNativeGatewayServerGroupWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateNativeGatewayServerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateNativeGatewayServerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNativeGatewayServerGroup require credential")
@@ -1567,6 +1586,7 @@ func (c *Client) CreateNativeGatewayServiceSourceWithContext(ctx context.Context
     if request == nil {
         request = NewCreateNativeGatewayServiceSourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateNativeGatewayServiceSource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNativeGatewayServiceSource require credential")
@@ -1624,6 +1644,7 @@ func (c *Client) CreateOrUpdateConfigFileAndReleaseWithContext(ctx context.Conte
     if request == nil {
         request = NewCreateOrUpdateConfigFileAndReleaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateOrUpdateConfigFileAndRelease")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrUpdateConfigFileAndRelease require credential")
@@ -1719,6 +1740,7 @@ func (c *Client) CreateWafDomainsWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateWafDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateWafDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWafDomains require credential")
@@ -1794,6 +1816,7 @@ func (c *Client) DeleteAutoScalerResourceStrategyWithContext(ctx context.Context
     if request == nil {
         request = NewDeleteAutoScalerResourceStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteAutoScalerResourceStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAutoScalerResourceStrategy require credential")
@@ -1873,6 +1896,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteCloudNativeAPIGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteCloudNativeAPIGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudNativeAPIGateway require credential")
@@ -1964,6 +1988,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayCanaryRuleWithContext(ctx context.Co
     if request == nil {
         request = NewDeleteCloudNativeAPIGatewayCanaryRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteCloudNativeAPIGatewayCanaryRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudNativeAPIGatewayCanaryRule require credential")
@@ -2055,6 +2080,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayCertificateWithContext(ctx context.C
     if request == nil {
         request = NewDeleteCloudNativeAPIGatewayCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteCloudNativeAPIGatewayCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudNativeAPIGatewayCertificate require credential")
@@ -2108,6 +2134,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayPublicNetworkWithContext(ctx context
     if request == nil {
         request = NewDeleteCloudNativeAPIGatewayPublicNetworkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteCloudNativeAPIGatewayPublicNetwork")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudNativeAPIGatewayPublicNetwork require credential")
@@ -2199,6 +2226,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayRouteWithContext(ctx context.Context
     if request == nil {
         request = NewDeleteCloudNativeAPIGatewayRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteCloudNativeAPIGatewayRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudNativeAPIGatewayRoute require credential")
@@ -2290,6 +2318,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayRouteRateLimitWithContext(ctx contex
     if request == nil {
         request = NewDeleteCloudNativeAPIGatewayRouteRateLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteCloudNativeAPIGatewayRouteRateLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudNativeAPIGatewayRouteRateLimit require credential")
@@ -2381,6 +2410,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayServiceWithContext(ctx context.Conte
     if request == nil {
         request = NewDeleteCloudNativeAPIGatewayServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteCloudNativeAPIGatewayService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudNativeAPIGatewayService require credential")
@@ -2472,6 +2502,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayServiceRateLimitWithContext(ctx cont
     if request == nil {
         request = NewDeleteCloudNativeAPIGatewayServiceRateLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteCloudNativeAPIGatewayServiceRateLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudNativeAPIGatewayServiceRateLimit require credential")
@@ -2533,6 +2564,7 @@ func (c *Client) DeleteConfigFileGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteConfigFileGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteConfigFileGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConfigFileGroup require credential")
@@ -2594,6 +2626,7 @@ func (c *Client) DeleteConfigFileReleasesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteConfigFileReleasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteConfigFileReleases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConfigFileReleases require credential")
@@ -2653,6 +2686,7 @@ func (c *Client) DeleteConfigFilesWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteConfigFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteConfigFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConfigFiles require credential")
@@ -2714,6 +2748,7 @@ func (c *Client) DeleteEngineWithContext(ctx context.Context, request *DeleteEng
     if request == nil {
         request = NewDeleteEngineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteEngine")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEngine require credential")
@@ -2773,6 +2808,7 @@ func (c *Client) DeleteGovernanceAliasesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteGovernanceAliasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteGovernanceAliases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGovernanceAliases require credential")
@@ -2830,6 +2866,7 @@ func (c *Client) DeleteGovernanceInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteGovernanceInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteGovernanceInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGovernanceInstances require credential")
@@ -2887,6 +2924,7 @@ func (c *Client) DeleteGovernanceInstancesByHostWithContext(ctx context.Context,
     if request == nil {
         request = NewDeleteGovernanceInstancesByHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteGovernanceInstancesByHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGovernanceInstancesByHost require credential")
@@ -2946,6 +2984,7 @@ func (c *Client) DeleteGovernanceNamespacesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteGovernanceNamespacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteGovernanceNamespaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGovernanceNamespaces require credential")
@@ -3007,6 +3046,7 @@ func (c *Client) DeleteGovernanceServicesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteGovernanceServicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteGovernanceServices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGovernanceServices require credential")
@@ -3068,6 +3108,7 @@ func (c *Client) DeleteNativeGatewayServerGroupWithContext(ctx context.Context, 
     if request == nil {
         request = NewDeleteNativeGatewayServerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteNativeGatewayServerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNativeGatewayServerGroup require credential")
@@ -3133,6 +3174,7 @@ func (c *Client) DeleteNativeGatewayServiceSourceWithContext(ctx context.Context
     if request == nil {
         request = NewDeleteNativeGatewayServiceSourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteNativeGatewayServiceSource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNativeGatewayServiceSource require credential")
@@ -3224,6 +3266,7 @@ func (c *Client) DeleteWafDomainsWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteWafDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteWafDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteWafDomains require credential")
@@ -3277,6 +3320,7 @@ func (c *Client) DescribeAllConfigFileTemplatesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeAllConfigFileTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeAllConfigFileTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAllConfigFileTemplates require credential")
@@ -3360,6 +3404,7 @@ func (c *Client) DescribeAutoScalerResourceStrategiesWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeAutoScalerResourceStrategiesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeAutoScalerResourceStrategies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoScalerResourceStrategies require credential")
@@ -3459,6 +3504,7 @@ func (c *Client) DescribeAutoScalerResourceStrategyBindingGroupsWithContext(ctx 
     if request == nil {
         request = NewDescribeAutoScalerResourceStrategyBindingGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeAutoScalerResourceStrategyBindingGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoScalerResourceStrategyBindingGroups require credential")
@@ -3536,6 +3582,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGateway require credential")
@@ -3627,6 +3674,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayCanaryRulesWithContext(ctx context
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayCanaryRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayCanaryRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayCanaryRules require credential")
@@ -3718,6 +3766,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayCertificateDetailsWithContext(ctx 
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayCertificateDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayCertificateDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayCertificateDetails require credential")
@@ -3809,6 +3858,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayCertificatesWithContext(ctx contex
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayCertificatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayCertificates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayCertificates require credential")
@@ -3884,6 +3934,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayConfigWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayConfig require credential")
@@ -3935,6 +3986,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayInfoByIpWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayInfoByIpRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayInfoByIp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayInfoByIp require credential")
@@ -3996,6 +4048,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayNodesWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayNodes require credential")
@@ -4055,6 +4108,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayPortsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayPortsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayPorts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayPorts require credential")
@@ -4146,6 +4200,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayRouteRateLimitWithContext(ctx cont
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayRouteRateLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayRouteRateLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayRouteRateLimit require credential")
@@ -4237,6 +4292,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayRoutesWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayRoutesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayRoutes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayRoutes require credential")
@@ -4328,6 +4384,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayServiceRateLimitWithContext(ctx co
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayServiceRateLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayServiceRateLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayServiceRateLimit require credential")
@@ -4421,6 +4478,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayServicesWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayServicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayServices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayServices require credential")
@@ -4429,6 +4487,100 @@ func (c *Client) DescribeCloudNativeAPIGatewayServicesWithContext(ctx context.Co
     request.SetContext(ctx)
     
     response = NewDescribeCloudNativeAPIGatewayServicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudNativeAPIGatewayServicesLightRequest() (request *DescribeCloudNativeAPIGatewayServicesLightRequest) {
+    request = &DescribeCloudNativeAPIGatewayServicesLightRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeCloudNativeAPIGatewayServicesLight")
+    
+    
+    return
+}
+
+func NewDescribeCloudNativeAPIGatewayServicesLightResponse() (response *DescribeCloudNativeAPIGatewayServicesLightResponse) {
+    response = &DescribeCloudNativeAPIGatewayServicesLightResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudNativeAPIGatewayServicesLight
+// 轻量查询云原生网关服务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_ROLE = "FailedOperation.Role"
+//  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+//  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeCloudNativeAPIGatewayServicesLight(request *DescribeCloudNativeAPIGatewayServicesLightRequest) (response *DescribeCloudNativeAPIGatewayServicesLightResponse, err error) {
+    return c.DescribeCloudNativeAPIGatewayServicesLightWithContext(context.Background(), request)
+}
+
+// DescribeCloudNativeAPIGatewayServicesLight
+// 轻量查询云原生网关服务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_ROLE = "FailedOperation.Role"
+//  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+//  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeCloudNativeAPIGatewayServicesLightWithContext(ctx context.Context, request *DescribeCloudNativeAPIGatewayServicesLightRequest) (response *DescribeCloudNativeAPIGatewayServicesLightResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudNativeAPIGatewayServicesLightRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayServicesLight")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudNativeAPIGatewayServicesLight require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudNativeAPIGatewayServicesLightResponse()
     err = c.Send(request, response)
     return
 }
@@ -4512,6 +4664,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayUpstreamWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewayUpstreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGatewayUpstream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGatewayUpstream require credential")
@@ -4601,6 +4754,7 @@ func (c *Client) DescribeCloudNativeAPIGatewaysWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewaysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCloudNativeAPIGateways")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudNativeAPIGateways require credential")
@@ -4660,6 +4814,7 @@ func (c *Client) DescribeConfigFileWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeConfigFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeConfigFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigFile require credential")
@@ -4721,6 +4876,7 @@ func (c *Client) DescribeConfigFileGroupsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeConfigFileGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeConfigFileGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigFileGroups require credential")
@@ -4778,6 +4934,7 @@ func (c *Client) DescribeConfigFileReleaseWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeConfigFileReleaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeConfigFileRelease")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigFileRelease require credential")
@@ -4837,6 +4994,7 @@ func (c *Client) DescribeConfigFileReleaseHistoriesWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeConfigFileReleaseHistoriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeConfigFileReleaseHistories")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigFileReleaseHistories require credential")
@@ -4896,6 +5054,7 @@ func (c *Client) DescribeConfigFileReleaseVersionsWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeConfigFileReleaseVersionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeConfigFileReleaseVersions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigFileReleaseVersions require credential")
@@ -4955,6 +5114,7 @@ func (c *Client) DescribeConfigFileReleasesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeConfigFileReleasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeConfigFileReleases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigFileReleases require credential")
@@ -5014,6 +5174,7 @@ func (c *Client) DescribeConfigFilesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeConfigFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeConfigFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigFiles require credential")
@@ -5073,6 +5234,7 @@ func (c *Client) DescribeConfigFilesByGroupWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeConfigFilesByGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeConfigFilesByGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigFilesByGroup require credential")
@@ -5132,6 +5294,7 @@ func (c *Client) DescribeGovernanceAliasesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeGovernanceAliasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeGovernanceAliases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGovernanceAliases require credential")
@@ -5191,6 +5354,7 @@ func (c *Client) DescribeGovernanceInstancesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeGovernanceInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeGovernanceInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGovernanceInstances require credential")
@@ -5250,6 +5414,7 @@ func (c *Client) DescribeGovernanceNamespacesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeGovernanceNamespacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeGovernanceNamespaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGovernanceNamespaces require credential")
@@ -5309,6 +5474,7 @@ func (c *Client) DescribeGovernanceServiceContractVersionsWithContext(ctx contex
     if request == nil {
         request = NewDescribeGovernanceServiceContractVersionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeGovernanceServiceContractVersions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGovernanceServiceContractVersions require credential")
@@ -5368,6 +5534,7 @@ func (c *Client) DescribeGovernanceServiceContractsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeGovernanceServiceContractsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeGovernanceServiceContracts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGovernanceServiceContracts require credential")
@@ -5425,6 +5592,7 @@ func (c *Client) DescribeGovernanceServicesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeGovernanceServicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeGovernanceServices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGovernanceServices require credential")
@@ -5480,6 +5648,7 @@ func (c *Client) DescribeInstanceTagInfosWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeInstanceTagInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeInstanceTagInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceTagInfos require credential")
@@ -5537,6 +5706,7 @@ func (c *Client) DescribeNacosReplicasWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeNacosReplicasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeNacosReplicas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNacosReplicas require credential")
@@ -5592,6 +5762,7 @@ func (c *Client) DescribeNacosServerInterfacesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeNacosServerInterfacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeNacosServerInterfaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNacosServerInterfaces require credential")
@@ -5645,6 +5816,7 @@ func (c *Client) DescribeNativeGatewayServerGroupsWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeNativeGatewayServerGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeNativeGatewayServerGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNativeGatewayServerGroups require credential")
@@ -5700,6 +5872,7 @@ func (c *Client) DescribeNativeGatewayServiceSourcesWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeNativeGatewayServiceSourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeNativeGatewayServiceSources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNativeGatewayServiceSources require credential")
@@ -5791,6 +5964,7 @@ func (c *Client) DescribeOneCloudNativeAPIGatewayServiceWithContext(ctx context.
     if request == nil {
         request = NewDescribeOneCloudNativeAPIGatewayServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeOneCloudNativeAPIGatewayService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOneCloudNativeAPIGatewayService require credential")
@@ -5844,6 +6018,7 @@ func (c *Client) DescribePublicAddressConfigWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribePublicAddressConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribePublicAddressConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublicAddressConfig require credential")
@@ -5919,6 +6094,7 @@ func (c *Client) DescribePublicNetworkWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribePublicNetworkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribePublicNetwork")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublicNetwork require credential")
@@ -5976,6 +6152,7 @@ func (c *Client) DescribeSREInstanceAccessAddressWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeSREInstanceAccessAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeSREInstanceAccessAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSREInstanceAccessAddress require credential")
@@ -6047,6 +6224,7 @@ func (c *Client) DescribeSREInstancesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeSREInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeSREInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSREInstances require credential")
@@ -6098,6 +6276,7 @@ func (c *Client) DescribeUpstreamHealthCheckConfigWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeUpstreamHealthCheckConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeUpstreamHealthCheckConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUpstreamHealthCheckConfig require credential")
@@ -6189,6 +6368,7 @@ func (c *Client) DescribeWafDomainsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeWafDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeWafDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWafDomains require credential")
@@ -6280,6 +6460,7 @@ func (c *Client) DescribeWafProtectionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeWafProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeWafProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWafProtection require credential")
@@ -6339,6 +6520,7 @@ func (c *Client) DescribeZookeeperReplicasWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeZookeeperReplicasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeZookeeperReplicas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeZookeeperReplicas require credential")
@@ -6396,6 +6578,7 @@ func (c *Client) DescribeZookeeperServerInterfacesWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeZookeeperServerInterfacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeZookeeperServerInterfaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeZookeeperServerInterfaces require credential")
@@ -6475,6 +6658,7 @@ func (c *Client) ModifyAutoScalerResourceStrategyWithContext(ctx context.Context
     if request == nil {
         request = NewModifyAutoScalerResourceStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyAutoScalerResourceStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAutoScalerResourceStrategy require credential")
@@ -6550,6 +6734,7 @@ func (c *Client) ModifyCloudNativeAPIGatewayWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyCloudNativeAPIGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyCloudNativeAPIGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCloudNativeAPIGateway require credential")
@@ -6643,6 +6828,7 @@ func (c *Client) ModifyCloudNativeAPIGatewayCanaryRuleWithContext(ctx context.Co
     if request == nil {
         request = NewModifyCloudNativeAPIGatewayCanaryRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyCloudNativeAPIGatewayCanaryRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCloudNativeAPIGatewayCanaryRule require credential")
@@ -6738,6 +6924,7 @@ func (c *Client) ModifyCloudNativeAPIGatewayCertificateWithContext(ctx context.C
     if request == nil {
         request = NewModifyCloudNativeAPIGatewayCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyCloudNativeAPIGatewayCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCloudNativeAPIGatewayCertificate require credential")
@@ -6831,6 +7018,7 @@ func (c *Client) ModifyCloudNativeAPIGatewayRouteWithContext(ctx context.Context
     if request == nil {
         request = NewModifyCloudNativeAPIGatewayRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyCloudNativeAPIGatewayRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCloudNativeAPIGatewayRoute require credential")
@@ -6922,6 +7110,7 @@ func (c *Client) ModifyCloudNativeAPIGatewayRouteRateLimitWithContext(ctx contex
     if request == nil {
         request = NewModifyCloudNativeAPIGatewayRouteRateLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyCloudNativeAPIGatewayRouteRateLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCloudNativeAPIGatewayRouteRateLimit require credential")
@@ -7013,6 +7202,7 @@ func (c *Client) ModifyCloudNativeAPIGatewayServiceWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyCloudNativeAPIGatewayServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyCloudNativeAPIGatewayService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCloudNativeAPIGatewayService require credential")
@@ -7104,6 +7294,7 @@ func (c *Client) ModifyCloudNativeAPIGatewayServiceRateLimitWithContext(ctx cont
     if request == nil {
         request = NewModifyCloudNativeAPIGatewayServiceRateLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyCloudNativeAPIGatewayServiceRateLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCloudNativeAPIGatewayServiceRateLimit require credential")
@@ -7163,6 +7354,7 @@ func (c *Client) ModifyConfigFileGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyConfigFileGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyConfigFileGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConfigFileGroup require credential")
@@ -7222,6 +7414,7 @@ func (c *Client) ModifyConfigFilesWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyConfigFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyConfigFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConfigFiles require credential")
@@ -7293,6 +7486,7 @@ func (c *Client) ModifyConsoleNetworkWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyConsoleNetworkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyConsoleNetwork")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConsoleNetwork require credential")
@@ -7352,6 +7546,7 @@ func (c *Client) ModifyGovernanceAliasWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyGovernanceAliasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyGovernanceAlias")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyGovernanceAlias require credential")
@@ -7409,6 +7604,7 @@ func (c *Client) ModifyGovernanceInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyGovernanceInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyGovernanceInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyGovernanceInstances require credential")
@@ -7466,6 +7662,7 @@ func (c *Client) ModifyGovernanceNamespacesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyGovernanceNamespacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyGovernanceNamespaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyGovernanceNamespaces require credential")
@@ -7523,6 +7720,7 @@ func (c *Client) ModifyGovernanceServicesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyGovernanceServicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyGovernanceServices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyGovernanceServices require credential")
@@ -7598,6 +7796,7 @@ func (c *Client) ModifyNativeGatewayServerGroupWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyNativeGatewayServerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyNativeGatewayServerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNativeGatewayServerGroup require credential")
@@ -7657,6 +7856,7 @@ func (c *Client) ModifyNativeGatewayServiceSourceWithContext(ctx context.Context
     if request == nil {
         request = NewModifyNativeGatewayServiceSourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyNativeGatewayServiceSource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNativeGatewayServiceSource require credential")
@@ -7728,6 +7928,7 @@ func (c *Client) ModifyNetworkAccessStrategyWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyNetworkAccessStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyNetworkAccessStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNetworkAccessStrategy require credential")
@@ -7799,6 +8000,7 @@ func (c *Client) ModifyNetworkBasicInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyNetworkBasicInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyNetworkBasicInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNetworkBasicInfo require credential")
@@ -7870,6 +8072,7 @@ func (c *Client) ModifyUpstreamNodeStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyUpstreamNodeStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyUpstreamNodeStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUpstreamNodeStatus require credential")
@@ -7963,6 +8166,7 @@ func (c *Client) OpenWafProtectionWithContext(ctx context.Context, request *Open
     if request == nil {
         request = NewOpenWafProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "OpenWafProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenWafProtection require credential")
@@ -8020,6 +8224,7 @@ func (c *Client) PublishConfigFilesWithContext(ctx context.Context, request *Pub
     if request == nil {
         request = NewPublishConfigFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "PublishConfigFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PublishConfigFiles require credential")
@@ -8077,6 +8282,7 @@ func (c *Client) RestartSREInstanceWithContext(ctx context.Context, request *Res
     if request == nil {
         request = NewRestartSREInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "RestartSREInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartSREInstance require credential")
@@ -8138,6 +8344,7 @@ func (c *Client) RollbackConfigFileReleasesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewRollbackConfigFileReleasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "RollbackConfigFileReleases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RollbackConfigFileReleases require credential")
@@ -8235,6 +8442,7 @@ func (c *Client) UnbindAutoScalerResourceStrategyFromGroupsWithContext(ctx conte
     if request == nil {
         request = NewUnbindAutoScalerResourceStrategyFromGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "UnbindAutoScalerResourceStrategyFromGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindAutoScalerResourceStrategyFromGroups require credential")
@@ -8328,6 +8536,7 @@ func (c *Client) UpdateCloudNativeAPIGatewayCertificateInfoWithContext(ctx conte
     if request == nil {
         request = NewUpdateCloudNativeAPIGatewayCertificateInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "UpdateCloudNativeAPIGatewayCertificateInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCloudNativeAPIGatewayCertificateInfo require credential")
@@ -8397,6 +8606,7 @@ func (c *Client) UpdateCloudNativeAPIGatewaySpecWithContext(ctx context.Context,
     if request == nil {
         request = NewUpdateCloudNativeAPIGatewaySpecRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "UpdateCloudNativeAPIGatewaySpec")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCloudNativeAPIGatewaySpec require credential")
@@ -8454,6 +8664,7 @@ func (c *Client) UpdateEngineInternetAccessWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateEngineInternetAccessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "UpdateEngineInternetAccess")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateEngineInternetAccess require credential")
@@ -8505,6 +8716,7 @@ func (c *Client) UpdateUpstreamHealthCheckConfigWithContext(ctx context.Context,
     if request == nil {
         request = NewUpdateUpstreamHealthCheckConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "UpdateUpstreamHealthCheckConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateUpstreamHealthCheckConfig require credential")
@@ -8556,6 +8768,7 @@ func (c *Client) UpdateUpstreamTargetsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewUpdateUpstreamTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "UpdateUpstreamTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateUpstreamTargets require credential")

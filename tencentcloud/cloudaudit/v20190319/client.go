@@ -106,6 +106,7 @@ func (c *Client) CreateAuditTrackWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateAuditTrackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "CreateAuditTrack")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAuditTrack require credential")
@@ -179,6 +180,7 @@ func (c *Client) CreateEventsAuditTrackWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateEventsAuditTrackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "CreateEventsAuditTrack")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEventsAuditTrack require credential")
@@ -236,6 +238,7 @@ func (c *Client) DeleteAuditTrackWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteAuditTrackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "DeleteAuditTrack")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAuditTrack require credential")
@@ -287,6 +290,7 @@ func (c *Client) DescribeAuditWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeAuditRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "DescribeAudit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAudit require credential")
@@ -344,6 +348,7 @@ func (c *Client) DescribeAuditTrackWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAuditTrackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "DescribeAuditTrack")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuditTrack require credential")
@@ -399,6 +404,7 @@ func (c *Client) DescribeAuditTracksWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAuditTracksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "DescribeAuditTracks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuditTracks require credential")
@@ -460,6 +466,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "DescribeEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEvents require credential")
@@ -509,6 +516,7 @@ func (c *Client) GetAttributeKeyWithContext(ctx context.Context, request *GetAtt
     if request == nil {
         request = NewGetAttributeKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "GetAttributeKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAttributeKey require credential")
@@ -558,6 +566,7 @@ func (c *Client) InquireAuditCreditWithContext(ctx context.Context, request *Inq
     if request == nil {
         request = NewInquireAuditCreditRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "InquireAuditCredit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquireAuditCredit require credential")
@@ -607,6 +616,7 @@ func (c *Client) ListAuditsWithContext(ctx context.Context, request *ListAuditsR
     if request == nil {
         request = NewListAuditsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "ListAudits")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAudits require credential")
@@ -656,6 +666,7 @@ func (c *Client) ListCmqEnableRegionWithContext(ctx context.Context, request *Li
     if request == nil {
         request = NewListCmqEnableRegionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "ListCmqEnableRegion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListCmqEnableRegion require credential")
@@ -705,6 +716,7 @@ func (c *Client) ListCosEnableRegionWithContext(ctx context.Context, request *Li
     if request == nil {
         request = NewListCosEnableRegionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "ListCosEnableRegion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListCosEnableRegion require credential")
@@ -758,6 +770,7 @@ func (c *Client) ListKeyAliasByRegionWithContext(ctx context.Context, request *L
     if request == nil {
         request = NewListKeyAliasByRegionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "ListKeyAliasByRegion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListKeyAliasByRegion require credential")
@@ -817,6 +830,7 @@ func (c *Client) LookUpEventsWithContext(ctx context.Context, request *LookUpEve
     if request == nil {
         request = NewLookUpEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "LookUpEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("LookUpEvents require credential")
@@ -892,6 +906,7 @@ func (c *Client) ModifyAuditTrackWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyAuditTrackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "ModifyAuditTrack")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAuditTrack require credential")
@@ -967,6 +982,7 @@ func (c *Client) ModifyEventsAuditTrackWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyEventsAuditTrackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "ModifyEventsAuditTrack")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEventsAuditTrack require credential")
@@ -1018,6 +1034,7 @@ func (c *Client) StartLoggingWithContext(ctx context.Context, request *StartLogg
     if request == nil {
         request = NewStartLoggingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "StartLogging")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartLogging require credential")
@@ -1069,6 +1086,7 @@ func (c *Client) StopLoggingWithContext(ctx context.Context, request *StopLoggin
     if request == nil {
         request = NewStopLoggingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "StopLogging")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopLogging require credential")
@@ -1154,6 +1172,7 @@ func (c *Client) UpdateAuditWithContext(ctx context.Context, request *UpdateAudi
     if request == nil {
         request = NewUpdateAuditRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudaudit", APIVersion, "UpdateAudit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAudit require credential")

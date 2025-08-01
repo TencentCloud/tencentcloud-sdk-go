@@ -76,6 +76,7 @@ func (c *Client) DescribeDrawResourceListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDrawResourceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tourism", APIVersion, "DescribeDrawResourceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDrawResourceList require credential")

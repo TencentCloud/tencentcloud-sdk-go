@@ -76,6 +76,7 @@ func (c *Client) DescribeComponentAlertObjectWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeComponentAlertObjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsw", APIVersion, "DescribeComponentAlertObject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComponentAlertObject require credential")
@@ -119,6 +120,7 @@ func (c *Client) DescribeServiceAlertObjectWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeServiceAlertObjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsw", APIVersion, "DescribeServiceAlertObject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceAlertObject require credential")
@@ -162,6 +164,7 @@ func (c *Client) DescribeTokenWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsw", APIVersion, "DescribeToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeToken require credential")

@@ -112,6 +112,7 @@ func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskR
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "CancelTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelTask require credential")
@@ -285,6 +286,7 @@ func (c *Client) CreateAudioModerationTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateAudioModerationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "CreateAudioModerationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAudioModerationTask require credential")
@@ -382,6 +384,7 @@ func (c *Client) CreateBizConfigWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateBizConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "CreateBizConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBizConfig require credential")
@@ -435,6 +438,7 @@ func (c *Client) DescribeAmsListWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeAmsListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "DescribeAmsList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAmsList require credential")
@@ -490,6 +494,7 @@ func (c *Client) DescribeAudioStatWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAudioStatRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "DescribeAudioStat")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAudioStat require credential")
@@ -571,6 +576,7 @@ func (c *Client) DescribeBizConfigWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeBizConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "DescribeBizConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBizConfig require credential")
@@ -652,6 +658,7 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "DescribeTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskDetail require credential")

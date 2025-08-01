@@ -76,6 +76,7 @@ func (c *Client) DescribeAgentShellWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAgentShellRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsw", APIVersion, "DescribeAgentShell")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAgentShell require credential")

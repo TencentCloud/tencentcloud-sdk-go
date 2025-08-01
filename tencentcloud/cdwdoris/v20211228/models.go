@@ -6490,6 +6490,9 @@ type UserInfo struct {
 
 	// ranger group id列表
 	CamRangerGroupIds []*int64 `json:"CamRangerGroupIds,omitnil,omitempty" name:"CamRangerGroupIds"`
+
+	// 0: 灵活场景 1: 固定场景
+	ComputeGroupType *int64 `json:"ComputeGroupType,omitnil,omitempty" name:"ComputeGroupType"`
 }
 
 type UserWorkloadGroup struct {

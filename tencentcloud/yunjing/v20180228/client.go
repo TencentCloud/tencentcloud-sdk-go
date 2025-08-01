@@ -88,6 +88,7 @@ func (c *Client) AddLoginWhiteListWithContext(ctx context.Context, request *AddL
     if request == nil {
         request = NewAddLoginWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "AddLoginWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddLoginWhiteList require credential")
@@ -143,6 +144,7 @@ func (c *Client) AddMachineTagWithContext(ctx context.Context, request *AddMachi
     if request == nil {
         request = NewAddMachineTagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "AddMachineTag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddMachineTag require credential")
@@ -206,6 +208,7 @@ func (c *Client) CloseProVersionWithContext(ctx context.Context, request *CloseP
     if request == nil {
         request = NewCloseProVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "CloseProVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseProVersion require credential")
@@ -265,6 +268,7 @@ func (c *Client) CreateBaselineStrategyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateBaselineStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "CreateBaselineStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBaselineStrategy require credential")
@@ -322,6 +326,7 @@ func (c *Client) CreateOpenPortTaskWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateOpenPortTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "CreateOpenPortTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOpenPortTask require credential")
@@ -383,6 +388,7 @@ func (c *Client) CreateProcessTaskWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateProcessTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "CreateProcessTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProcessTask require credential")
@@ -440,6 +446,7 @@ func (c *Client) CreateUsualLoginPlacesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateUsualLoginPlacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "CreateUsualLoginPlaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUsualLoginPlaces require credential")
@@ -499,6 +506,7 @@ func (c *Client) DeleteAttackLogsWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteAttackLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteAttackLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAttackLogs require credential")
@@ -562,6 +570,7 @@ func (c *Client) DeleteBashEventsWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteBashEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteBashEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBashEvents require credential")
@@ -629,6 +638,7 @@ func (c *Client) DeleteBashRulesWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteBashRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteBashRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBashRules require credential")
@@ -684,6 +694,7 @@ func (c *Client) DeleteBruteAttacksWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteBruteAttacksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteBruteAttacks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBruteAttacks require credential")
@@ -739,6 +750,7 @@ func (c *Client) DeleteLoginWhiteListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteLoginWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteLoginWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLoginWhiteList require credential")
@@ -798,6 +810,7 @@ func (c *Client) DeleteMachineWithContext(ctx context.Context, request *DeleteMa
     if request == nil {
         request = NewDeleteMachineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteMachine")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMachine require credential")
@@ -853,6 +866,7 @@ func (c *Client) DeleteMachineTagWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteMachineTagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteMachineTag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMachineTag require credential")
@@ -904,6 +918,7 @@ func (c *Client) DeleteMaliciousRequestsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteMaliciousRequestsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteMaliciousRequests")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMaliciousRequests require credential")
@@ -959,6 +974,7 @@ func (c *Client) DeleteMalwaresWithContext(ctx context.Context, request *DeleteM
     if request == nil {
         request = NewDeleteMalwaresRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteMalwares")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMalwares require credential")
@@ -1014,6 +1030,7 @@ func (c *Client) DeleteNonlocalLoginPlacesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteNonlocalLoginPlacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteNonlocalLoginPlaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNonlocalLoginPlaces require credential")
@@ -1073,6 +1090,7 @@ func (c *Client) DeletePrivilegeEventsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeletePrivilegeEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeletePrivilegeEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrivilegeEvents require credential")
@@ -1140,6 +1158,7 @@ func (c *Client) DeletePrivilegeRulesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeletePrivilegeRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeletePrivilegeRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrivilegeRules require credential")
@@ -1201,6 +1220,7 @@ func (c *Client) DeleteReverseShellEventsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteReverseShellEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteReverseShellEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteReverseShellEvents require credential")
@@ -1270,6 +1290,7 @@ func (c *Client) DeleteReverseShellRulesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteReverseShellRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteReverseShellRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteReverseShellRules require credential")
@@ -1325,6 +1346,7 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, request *DeleteTagsR
     if request == nil {
         request = NewDeleteTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTags require credential")
@@ -1380,6 +1402,7 @@ func (c *Client) DeleteUsualLoginPlacesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteUsualLoginPlacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DeleteUsualLoginPlaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUsualLoginPlaces require credential")
@@ -1437,6 +1460,7 @@ func (c *Client) DescribeAccountStatisticsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAccountStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeAccountStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccountStatistics require credential")
@@ -1492,6 +1516,7 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeAccountsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeAccounts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccounts require credential")
@@ -1547,6 +1572,7 @@ func (c *Client) DescribeAgentVulsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAgentVulsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeAgentVuls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAgentVuls require credential")
@@ -1596,6 +1622,7 @@ func (c *Client) DescribeAlarmAttributeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAlarmAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeAlarmAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlarmAttribute require credential")
@@ -1653,6 +1680,7 @@ func (c *Client) DescribeAttackLogInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAttackLogInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeAttackLogInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAttackLogInfo require credential")
@@ -1708,6 +1736,7 @@ func (c *Client) DescribeAttackLogsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAttackLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeAttackLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAttackLogs require credential")
@@ -1769,6 +1798,7 @@ func (c *Client) DescribeBashEventsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeBashEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeBashEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBashEvents require credential")
@@ -1830,6 +1860,7 @@ func (c *Client) DescribeBashRulesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeBashRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeBashRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBashRules require credential")
@@ -1885,6 +1916,7 @@ func (c *Client) DescribeBruteAttacksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBruteAttacksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeBruteAttacks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBruteAttacks require credential")
@@ -1944,6 +1976,7 @@ func (c *Client) DescribeComponentInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeComponentInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeComponentInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComponentInfo require credential")
@@ -2001,6 +2034,7 @@ func (c *Client) DescribeComponentStatisticsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeComponentStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeComponentStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComponentStatistics require credential")
@@ -2056,6 +2090,7 @@ func (c *Client) DescribeComponentsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeComponentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeComponents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComponents require credential")
@@ -2113,6 +2148,7 @@ func (c *Client) DescribeHistoryAccountsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeHistoryAccountsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeHistoryAccounts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHistoryAccounts require credential")
@@ -2168,6 +2204,7 @@ func (c *Client) DescribeImpactedHostsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeImpactedHostsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeImpactedHosts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImpactedHosts require credential")
@@ -2223,6 +2260,7 @@ func (c *Client) DescribeLoginWhiteListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeLoginWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeLoginWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoginWhiteList require credential")
@@ -2280,6 +2318,7 @@ func (c *Client) DescribeMachineInfoWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeMachineInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeMachineInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMachineInfo require credential")
@@ -2337,6 +2376,7 @@ func (c *Client) DescribeMachinesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeMachinesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeMachines")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMachines require credential")
@@ -2388,6 +2428,7 @@ func (c *Client) DescribeMaliciousRequestsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeMaliciousRequestsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeMaliciousRequests")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMaliciousRequests require credential")
@@ -2443,6 +2484,7 @@ func (c *Client) DescribeMalwaresWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeMalwaresRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeMalwares")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMalwares require credential")
@@ -2498,6 +2540,7 @@ func (c *Client) DescribeNonlocalLoginPlacesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeNonlocalLoginPlacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeNonlocalLoginPlaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNonlocalLoginPlaces require credential")
@@ -2551,6 +2594,7 @@ func (c *Client) DescribeOpenPortStatisticsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeOpenPortStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeOpenPortStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOpenPortStatistics require credential")
@@ -2608,6 +2652,7 @@ func (c *Client) DescribeOpenPortTaskStatusWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeOpenPortTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeOpenPortTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOpenPortTaskStatus require credential")
@@ -2663,6 +2708,7 @@ func (c *Client) DescribeOpenPortsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeOpenPortsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeOpenPorts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOpenPorts require credential")
@@ -2716,6 +2762,7 @@ func (c *Client) DescribeOverviewStatisticsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeOverviewStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeOverviewStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOverviewStatistics require credential")
@@ -2777,6 +2824,7 @@ func (c *Client) DescribePrivilegeEventsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribePrivilegeEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribePrivilegeEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrivilegeEvents require credential")
@@ -2838,6 +2886,7 @@ func (c *Client) DescribePrivilegeRulesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribePrivilegeRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribePrivilegeRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrivilegeRules require credential")
@@ -2887,6 +2936,7 @@ func (c *Client) DescribeProVersionInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeProVersionInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeProVersionInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProVersionInfo require credential")
@@ -2944,6 +2994,7 @@ func (c *Client) DescribeProcessStatisticsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeProcessStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeProcessStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProcessStatistics require credential")
@@ -3005,6 +3056,7 @@ func (c *Client) DescribeProcessTaskStatusWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeProcessTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeProcessTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProcessTaskStatus require credential")
@@ -3062,6 +3114,7 @@ func (c *Client) DescribeProcessesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeProcessesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeProcesses")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProcesses require credential")
@@ -3123,6 +3176,7 @@ func (c *Client) DescribeReverseShellEventsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeReverseShellEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeReverseShellEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReverseShellEvents require credential")
@@ -3190,6 +3244,7 @@ func (c *Client) DescribeReverseShellRulesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeReverseShellRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeReverseShellRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReverseShellRules require credential")
@@ -3243,6 +3298,7 @@ func (c *Client) DescribeSecurityDynamicsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSecurityDynamicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeSecurityDynamics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityDynamics require credential")
@@ -3298,6 +3354,7 @@ func (c *Client) DescribeSecurityTrendsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSecurityTrendsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeSecurityTrends")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityTrends require credential")
@@ -3353,6 +3410,7 @@ func (c *Client) DescribeTagMachinesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTagMachinesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeTagMachines")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTagMachines require credential")
@@ -3410,6 +3468,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, request *DescribeT
     if request == nil {
         request = NewDescribeTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTags require credential")
@@ -3467,6 +3526,7 @@ func (c *Client) DescribeUsualLoginPlacesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUsualLoginPlacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeUsualLoginPlaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUsualLoginPlaces require credential")
@@ -3524,6 +3584,7 @@ func (c *Client) DescribeVulInfoWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeVulInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeVulInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulInfo require credential")
@@ -3579,6 +3640,7 @@ func (c *Client) DescribeVulScanResultWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeVulScanResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeVulScanResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulScanResult require credential")
@@ -3632,6 +3694,7 @@ func (c *Client) DescribeVulsWithContext(ctx context.Context, request *DescribeV
     if request == nil {
         request = NewDescribeVulsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeVuls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVuls require credential")
@@ -3685,6 +3748,7 @@ func (c *Client) DescribeWeeklyReportBruteAttacksWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeWeeklyReportBruteAttacksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeWeeklyReportBruteAttacks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWeeklyReportBruteAttacks require credential")
@@ -3736,6 +3800,7 @@ func (c *Client) DescribeWeeklyReportInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeWeeklyReportInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeWeeklyReportInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWeeklyReportInfo require credential")
@@ -3789,6 +3854,7 @@ func (c *Client) DescribeWeeklyReportMalwaresWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeWeeklyReportMalwaresRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeWeeklyReportMalwares")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWeeklyReportMalwares require credential")
@@ -3842,6 +3908,7 @@ func (c *Client) DescribeWeeklyReportNonlocalLoginPlacesWithContext(ctx context.
     if request == nil {
         request = NewDescribeWeeklyReportNonlocalLoginPlacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeWeeklyReportNonlocalLoginPlaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWeeklyReportNonlocalLoginPlaces require credential")
@@ -3895,6 +3962,7 @@ func (c *Client) DescribeWeeklyReportVulsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeWeeklyReportVulsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeWeeklyReportVuls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWeeklyReportVuls require credential")
@@ -3946,6 +4014,7 @@ func (c *Client) DescribeWeeklyReportsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeWeeklyReportsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "DescribeWeeklyReports")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWeeklyReports require credential")
@@ -4011,6 +4080,7 @@ func (c *Client) EditBashRuleWithContext(ctx context.Context, request *EditBashR
     if request == nil {
         request = NewEditBashRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "EditBashRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EditBashRule require credential")
@@ -4080,6 +4150,7 @@ func (c *Client) EditPrivilegeRuleWithContext(ctx context.Context, request *Edit
     if request == nil {
         request = NewEditPrivilegeRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "EditPrivilegeRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EditPrivilegeRule require credential")
@@ -4153,6 +4224,7 @@ func (c *Client) EditReverseShellRuleWithContext(ctx context.Context, request *E
     if request == nil {
         request = NewEditReverseShellRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "EditReverseShellRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EditReverseShellRule require credential")
@@ -4212,6 +4284,7 @@ func (c *Client) EditTagsWithContext(ctx context.Context, request *EditTagsReque
     if request == nil {
         request = NewEditTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "EditTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EditTags require credential")
@@ -4263,6 +4336,7 @@ func (c *Client) ExportAttackLogsWithContext(ctx context.Context, request *Expor
     if request == nil {
         request = NewExportAttackLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ExportAttackLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportAttackLogs require credential")
@@ -4314,6 +4388,7 @@ func (c *Client) ExportBashEventsWithContext(ctx context.Context, request *Expor
     if request == nil {
         request = NewExportBashEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ExportBashEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportBashEvents require credential")
@@ -4365,6 +4440,7 @@ func (c *Client) ExportBruteAttacksWithContext(ctx context.Context, request *Exp
     if request == nil {
         request = NewExportBruteAttacksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ExportBruteAttacks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportBruteAttacks require credential")
@@ -4416,6 +4492,7 @@ func (c *Client) ExportMaliciousRequestsWithContext(ctx context.Context, request
     if request == nil {
         request = NewExportMaliciousRequestsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ExportMaliciousRequests")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportMaliciousRequests require credential")
@@ -4467,6 +4544,7 @@ func (c *Client) ExportMalwaresWithContext(ctx context.Context, request *ExportM
     if request == nil {
         request = NewExportMalwaresRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ExportMalwares")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportMalwares require credential")
@@ -4518,6 +4596,7 @@ func (c *Client) ExportNonlocalLoginPlacesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewExportNonlocalLoginPlacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ExportNonlocalLoginPlaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportNonlocalLoginPlaces require credential")
@@ -4569,6 +4648,7 @@ func (c *Client) ExportPrivilegeEventsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewExportPrivilegeEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ExportPrivilegeEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportPrivilegeEvents require credential")
@@ -4628,6 +4708,7 @@ func (c *Client) ExportReverseShellEventsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewExportReverseShellEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ExportReverseShellEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportReverseShellEvents require credential")
@@ -4685,6 +4766,7 @@ func (c *Client) IgnoreImpactedHostsWithContext(ctx context.Context, request *Ig
     if request == nil {
         request = NewIgnoreImpactedHostsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "IgnoreImpactedHosts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IgnoreImpactedHosts require credential")
@@ -4738,6 +4820,7 @@ func (c *Client) InquiryPriceOpenProVersionPrepaidWithContext(ctx context.Contex
     if request == nil {
         request = NewInquiryPriceOpenProVersionPrepaidRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "InquiryPriceOpenProVersionPrepaid")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceOpenProVersionPrepaid require credential")
@@ -4793,6 +4876,7 @@ func (c *Client) MisAlarmNonlocalLoginPlacesWithContext(ctx context.Context, req
     if request == nil {
         request = NewMisAlarmNonlocalLoginPlacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "MisAlarmNonlocalLoginPlaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MisAlarmNonlocalLoginPlaces require credential")
@@ -4848,6 +4932,7 @@ func (c *Client) ModifyAlarmAttributeWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyAlarmAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ModifyAlarmAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAlarmAttribute require credential")
@@ -4897,6 +4982,7 @@ func (c *Client) ModifyAutoOpenProVersionConfigWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyAutoOpenProVersionConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ModifyAutoOpenProVersionConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAutoOpenProVersionConfig require credential")
@@ -4952,6 +5038,7 @@ func (c *Client) ModifyLoginWhiteListWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyLoginWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ModifyLoginWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLoginWhiteList require credential")
@@ -5005,6 +5092,7 @@ func (c *Client) ModifyProVersionRenewFlagWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyProVersionRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "ModifyProVersionRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyProVersionRenewFlag require credential")
@@ -5066,6 +5154,7 @@ func (c *Client) OpenProVersionWithContext(ctx context.Context, request *OpenPro
     if request == nil {
         request = NewOpenProVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "OpenProVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenProVersion require credential")
@@ -5119,6 +5208,7 @@ func (c *Client) OpenProVersionPrepaidWithContext(ctx context.Context, request *
     if request == nil {
         request = NewOpenProVersionPrepaidRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "OpenProVersionPrepaid")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenProVersionPrepaid require credential")
@@ -5176,6 +5266,7 @@ func (c *Client) RecoverMalwaresWithContext(ctx context.Context, request *Recove
     if request == nil {
         request = NewRecoverMalwaresRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "RecoverMalwares")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecoverMalwares require credential")
@@ -5231,6 +5322,7 @@ func (c *Client) RenewProVersionWithContext(ctx context.Context, request *RenewP
     if request == nil {
         request = NewRenewProVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "RenewProVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewProVersion require credential")
@@ -5292,6 +5384,7 @@ func (c *Client) RescanImpactedHostWithContext(ctx context.Context, request *Res
     if request == nil {
         request = NewRescanImpactedHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "RescanImpactedHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RescanImpactedHost require credential")
@@ -5351,6 +5444,7 @@ func (c *Client) SeparateMalwaresWithContext(ctx context.Context, request *Separ
     if request == nil {
         request = NewSeparateMalwaresRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "SeparateMalwares")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SeparateMalwares require credential")
@@ -5410,6 +5504,7 @@ func (c *Client) SetBashEventsStatusWithContext(ctx context.Context, request *Se
     if request == nil {
         request = NewSetBashEventsStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "SetBashEventsStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetBashEventsStatus require credential")
@@ -5477,6 +5572,7 @@ func (c *Client) SwitchBashRulesWithContext(ctx context.Context, request *Switch
     if request == nil {
         request = NewSwitchBashRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "SwitchBashRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SwitchBashRules require credential")
@@ -5528,6 +5624,7 @@ func (c *Client) TrustMaliciousRequestWithContext(ctx context.Context, request *
     if request == nil {
         request = NewTrustMaliciousRequestRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "TrustMaliciousRequest")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TrustMaliciousRequest require credential")
@@ -5585,6 +5682,7 @@ func (c *Client) TrustMalwaresWithContext(ctx context.Context, request *TrustMal
     if request == nil {
         request = NewTrustMalwaresRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "TrustMalwares")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TrustMalwares require credential")
@@ -5638,6 +5736,7 @@ func (c *Client) UntrustMaliciousRequestWithContext(ctx context.Context, request
     if request == nil {
         request = NewUntrustMaliciousRequestRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "UntrustMaliciousRequest")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UntrustMaliciousRequest require credential")
@@ -5693,6 +5792,7 @@ func (c *Client) UntrustMalwaresWithContext(ctx context.Context, request *Untrus
     if request == nil {
         request = NewUntrustMalwaresRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunjing", APIVersion, "UntrustMalwares")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UntrustMalwares require credential")

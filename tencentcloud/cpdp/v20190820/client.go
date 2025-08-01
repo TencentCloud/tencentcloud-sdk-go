@@ -76,6 +76,7 @@ func (c *Client) AddContractWithContext(ctx context.Context, request *AddContrac
     if request == nil {
         request = NewAddContractRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "AddContract")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddContract require credential")
@@ -125,6 +126,7 @@ func (c *Client) AddFlexFundingAccountWithContext(ctx context.Context, request *
     if request == nil {
         request = NewAddFlexFundingAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "AddFlexFundingAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddFlexFundingAccount require credential")
@@ -174,6 +176,7 @@ func (c *Client) AddFlexIdInfoWithContext(ctx context.Context, request *AddFlexI
     if request == nil {
         request = NewAddFlexIdInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "AddFlexIdInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddFlexIdInfo require credential")
@@ -223,6 +226,7 @@ func (c *Client) AddFlexPhoneNoWithContext(ctx context.Context, request *AddFlex
     if request == nil {
         request = NewAddFlexPhoneNoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "AddFlexPhoneNo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddFlexPhoneNo require credential")
@@ -272,6 +276,7 @@ func (c *Client) AddMerchantWithContext(ctx context.Context, request *AddMerchan
     if request == nil {
         request = NewAddMerchantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "AddMerchant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddMerchant require credential")
@@ -321,6 +326,7 @@ func (c *Client) AddShopWithContext(ctx context.Context, request *AddShopRequest
     if request == nil {
         request = NewAddShopRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "AddShop")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddShop require credential")
@@ -374,6 +380,7 @@ func (c *Client) ApplyApplicationMaterialWithContext(ctx context.Context, reques
     if request == nil {
         request = NewApplyApplicationMaterialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyApplicationMaterial")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyApplicationMaterial require credential")
@@ -423,6 +430,7 @@ func (c *Client) ApplyFlexPaymentWithContext(ctx context.Context, request *Apply
     if request == nil {
         request = NewApplyFlexPaymentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyFlexPayment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyFlexPayment require credential")
@@ -472,6 +480,7 @@ func (c *Client) ApplyFlexSettlementWithContext(ctx context.Context, request *Ap
     if request == nil {
         request = NewApplyFlexSettlementRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyFlexSettlement")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyFlexSettlement require credential")
@@ -521,6 +530,7 @@ func (c *Client) ApplyFlexWechatPreAuthWithContext(ctx context.Context, request 
     if request == nil {
         request = NewApplyFlexWechatPreAuthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyFlexWechatPreAuth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyFlexWechatPreAuth require credential")
@@ -570,6 +580,7 @@ func (c *Client) ApplyOpenBankOrderDetailReceiptWithContext(ctx context.Context,
     if request == nil {
         request = NewApplyOpenBankOrderDetailReceiptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyOpenBankOrderDetailReceipt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyOpenBankOrderDetailReceipt require credential")
@@ -619,6 +630,7 @@ func (c *Client) ApplyOpenBankSettleOrderWithContext(ctx context.Context, reques
     if request == nil {
         request = NewApplyOpenBankSettleOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyOpenBankSettleOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyOpenBankSettleOrder require credential")
@@ -668,6 +680,7 @@ func (c *Client) ApplyOpenBankSubMerchantSignOnlineWithContext(ctx context.Conte
     if request == nil {
         request = NewApplyOpenBankSubMerchantSignOnlineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyOpenBankSubMerchantSignOnline")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyOpenBankSubMerchantSignOnline require credential")
@@ -721,6 +734,7 @@ func (c *Client) ApplyOutwardOrderWithContext(ctx context.Context, request *Appl
     if request == nil {
         request = NewApplyOutwardOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyOutwardOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyOutwardOrder require credential")
@@ -774,6 +788,7 @@ func (c *Client) ApplyPayerInfoWithContext(ctx context.Context, request *ApplyPa
     if request == nil {
         request = NewApplyPayerInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyPayerInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyPayerInfo require credential")
@@ -833,6 +848,7 @@ func (c *Client) ApplyReWithdrawalWithContext(ctx context.Context, request *Appl
     if request == nil {
         request = NewApplyReWithdrawalRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyReWithdrawal")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyReWithdrawal require credential")
@@ -892,6 +908,7 @@ func (c *Client) ApplyReconciliationFileWithContext(ctx context.Context, request
     if request == nil {
         request = NewApplyReconciliationFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyReconciliationFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyReconciliationFile require credential")
@@ -945,6 +962,7 @@ func (c *Client) ApplyTradeWithContext(ctx context.Context, request *ApplyTradeR
     if request == nil {
         request = NewApplyTradeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyTrade")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyTrade require credential")
@@ -1002,6 +1020,7 @@ func (c *Client) ApplyWithdrawalWithContext(ctx context.Context, request *ApplyW
     if request == nil {
         request = NewApplyWithdrawalRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ApplyWithdrawal")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyWithdrawal require credential")
@@ -1059,6 +1078,7 @@ func (c *Client) BindAccountWithContext(ctx context.Context, request *BindAccoun
     if request == nil {
         request = NewBindAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "BindAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindAccount require credential")
@@ -1116,6 +1136,7 @@ func (c *Client) BindAcctWithContext(ctx context.Context, request *BindAcctReque
     if request == nil {
         request = NewBindAcctRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "BindAcct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindAcct require credential")
@@ -1165,6 +1186,7 @@ func (c *Client) BindOpenBankExternalSubMerchantBankAccountWithContext(ctx conte
     if request == nil {
         request = NewBindOpenBankExternalSubMerchantBankAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "BindOpenBankExternalSubMerchantBankAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindOpenBankExternalSubMerchantBankAccount require credential")
@@ -1214,6 +1236,7 @@ func (c *Client) BindOpenBankProfitSharePayeeWithContext(ctx context.Context, re
     if request == nil {
         request = NewBindOpenBankProfitSharePayeeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "BindOpenBankProfitSharePayee")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindOpenBankProfitSharePayee require credential")
@@ -1279,6 +1302,7 @@ func (c *Client) BindRelateAccReUnionPayWithContext(ctx context.Context, request
     if request == nil {
         request = NewBindRelateAccReUnionPayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "BindRelateAccReUnionPay")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindRelateAccReUnionPay require credential")
@@ -1356,6 +1380,7 @@ func (c *Client) BindRelateAcctSmallAmountWithContext(ctx context.Context, reque
     if request == nil {
         request = NewBindRelateAcctSmallAmountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "BindRelateAcctSmallAmount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindRelateAcctSmallAmount require credential")
@@ -1437,6 +1462,7 @@ func (c *Client) BindRelateAcctUnionPayWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBindRelateAcctUnionPayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "BindRelateAcctUnionPay")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindRelateAcctUnionPay require credential")
@@ -1494,6 +1520,7 @@ func (c *Client) CheckAcctWithContext(ctx context.Context, request *CheckAcctReq
     if request == nil {
         request = NewCheckAcctRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CheckAcct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckAcct require credential")
@@ -1559,6 +1586,7 @@ func (c *Client) CheckAmountWithContext(ctx context.Context, request *CheckAmoun
     if request == nil {
         request = NewCheckAmountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CheckAmount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckAmount require credential")
@@ -1692,6 +1720,7 @@ func (c *Client) CloseCloudOrderWithContext(ctx context.Context, request *CloseC
     if request == nil {
         request = NewCloseCloudOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CloseCloudOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseCloudOrder require credential")
@@ -1741,6 +1770,7 @@ func (c *Client) CloseOpenBankPaymentOrderWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCloseOpenBankPaymentOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CloseOpenBankPaymentOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseOpenBankPaymentOrder require credential")
@@ -1802,6 +1832,7 @@ func (c *Client) CloseOrderWithContext(ctx context.Context, request *CloseOrderR
     if request == nil {
         request = NewCloseOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CloseOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseOrder require credential")
@@ -1855,6 +1886,7 @@ func (c *Client) ConfirmOrderWithContext(ctx context.Context, request *ConfirmOr
     if request == nil {
         request = NewConfirmOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ConfirmOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ConfirmOrder require credential")
@@ -1944,6 +1976,7 @@ func (c *Client) ContractOrderWithContext(ctx context.Context, request *Contract
     if request == nil {
         request = NewContractOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ContractOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ContractOrder require credential")
@@ -2003,6 +2036,7 @@ func (c *Client) CreateAcctWithContext(ctx context.Context, request *CreateAcctR
     if request == nil {
         request = NewCreateAcctRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateAcct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAcct require credential")
@@ -2062,6 +2096,7 @@ func (c *Client) CreateAgentTaxPaymentInfosWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateAgentTaxPaymentInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateAgentTaxPaymentInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAgentTaxPaymentInfos require credential")
@@ -2119,6 +2154,7 @@ func (c *Client) CreateAnchorWithContext(ctx context.Context, request *CreateAnc
     if request == nil {
         request = NewCreateAnchorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateAnchor")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAnchor require credential")
@@ -2176,6 +2212,7 @@ func (c *Client) CreateBatchPaymentWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateBatchPaymentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateBatchPayment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBatchPayment require credential")
@@ -2309,6 +2346,7 @@ func (c *Client) CreateCloudSubMerchantWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateCloudSubMerchantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateCloudSubMerchant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudSubMerchant require credential")
@@ -2380,6 +2418,7 @@ func (c *Client) CreateCustAcctIdWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateCustAcctIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateCustAcctId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustAcctId require credential")
@@ -2447,6 +2486,7 @@ func (c *Client) CreateExternalAnchorWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateExternalAnchorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateExternalAnchor")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateExternalAnchor require credential")
@@ -2496,6 +2536,7 @@ func (c *Client) CreateFlexPayeeWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateFlexPayeeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateFlexPayee")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFlexPayee require credential")
@@ -2575,6 +2616,7 @@ func (c *Client) CreateInvoiceWithContext(ctx context.Context, request *CreateIn
     if request == nil {
         request = NewCreateInvoiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateInvoice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInvoice require credential")
@@ -2624,6 +2666,7 @@ func (c *Client) CreateInvoiceV2WithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateInvoiceV2Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateInvoiceV2")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInvoiceV2 require credential")
@@ -2687,6 +2730,7 @@ func (c *Client) CreateMerchantWithContext(ctx context.Context, request *CreateM
     if request == nil {
         request = NewCreateMerchantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateMerchant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMerchant require credential")
@@ -2750,6 +2794,7 @@ func (c *Client) CreateOpenBankAggregatedSubMerchantRegistrationWithContext(ctx 
     if request == nil {
         request = NewCreateOpenBankAggregatedSubMerchantRegistrationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateOpenBankAggregatedSubMerchantRegistration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOpenBankAggregatedSubMerchantRegistration require credential")
@@ -2813,6 +2858,7 @@ func (c *Client) CreateOpenBankExternalSubMerchantAccountBookWithContext(ctx con
     if request == nil {
         request = NewCreateOpenBankExternalSubMerchantAccountBookRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateOpenBankExternalSubMerchantAccountBook")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOpenBankExternalSubMerchantAccountBook require credential")
@@ -2862,6 +2908,7 @@ func (c *Client) CreateOpenBankExternalSubMerchantRegistrationWithContext(ctx co
     if request == nil {
         request = NewCreateOpenBankExternalSubMerchantRegistrationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateOpenBankExternalSubMerchantRegistration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOpenBankExternalSubMerchantRegistration require credential")
@@ -2911,6 +2958,7 @@ func (c *Client) CreateOpenBankGlobalPaymentOrderWithContext(ctx context.Context
     if request == nil {
         request = NewCreateOpenBankGlobalPaymentOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateOpenBankGlobalPaymentOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOpenBankGlobalPaymentOrder require credential")
@@ -2960,6 +3008,7 @@ func (c *Client) CreateOpenBankMerchantWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateOpenBankMerchantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateOpenBankMerchant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOpenBankMerchant require credential")
@@ -3009,6 +3058,7 @@ func (c *Client) CreateOpenBankPaymentOrderWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateOpenBankPaymentOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateOpenBankPaymentOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOpenBankPaymentOrder require credential")
@@ -3058,6 +3108,7 @@ func (c *Client) CreateOpenBankRechargeOrderWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateOpenBankRechargeOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateOpenBankRechargeOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOpenBankRechargeOrder require credential")
@@ -3107,6 +3158,7 @@ func (c *Client) CreateOpenBankSubMerchantRateConfigureWithContext(ctx context.C
     if request == nil {
         request = NewCreateOpenBankSubMerchantRateConfigureRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateOpenBankSubMerchantRateConfigure")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOpenBankSubMerchantRateConfigure require credential")
@@ -3156,6 +3208,7 @@ func (c *Client) CreateOpenBankUnifiedOrderWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateOpenBankUnifiedOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateOpenBankUnifiedOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOpenBankUnifiedOrder require credential")
@@ -3205,6 +3258,7 @@ func (c *Client) CreateOpenBankVerificationOrderWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateOpenBankVerificationOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateOpenBankVerificationOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOpenBankVerificationOrder require credential")
@@ -3262,6 +3316,7 @@ func (c *Client) CreateOrderWithContext(ctx context.Context, request *CreateOrde
     if request == nil {
         request = NewCreateOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrder require credential")
@@ -3323,6 +3378,7 @@ func (c *Client) CreatePayMerchantWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreatePayMerchantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreatePayMerchant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePayMerchant require credential")
@@ -3384,6 +3440,7 @@ func (c *Client) CreatePayRollPreOrderWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreatePayRollPreOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreatePayRollPreOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePayRollPreOrder require credential")
@@ -3445,6 +3502,7 @@ func (c *Client) CreatePayRollPreOrderWithAuthWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreatePayRollPreOrderWithAuthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreatePayRollPreOrderWithAuth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePayRollPreOrderWithAuth require credential")
@@ -3506,6 +3564,7 @@ func (c *Client) CreatePayRollTokenWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreatePayRollTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreatePayRollToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePayRollToken require credential")
@@ -3583,6 +3642,7 @@ func (c *Client) CreateRedInvoiceWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateRedInvoiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateRedInvoice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRedInvoice require credential")
@@ -3632,6 +3692,7 @@ func (c *Client) CreateRedInvoiceV2WithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateRedInvoiceV2Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateRedInvoiceV2")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRedInvoiceV2 require credential")
@@ -3681,6 +3742,7 @@ func (c *Client) CreateSinglePaymentWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateSinglePaymentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateSinglePayment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSinglePayment require credential")
@@ -3754,6 +3816,7 @@ func (c *Client) CreateTransferBatchWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateTransferBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "CreateTransferBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTransferBatch require credential")
@@ -3827,6 +3890,7 @@ func (c *Client) DeduceQuotaWithContext(ctx context.Context, request *DeduceQuot
     if request == nil {
         request = NewDeduceQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DeduceQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeduceQuota require credential")
@@ -3886,6 +3950,7 @@ func (c *Client) DeleteAgentTaxPaymentInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteAgentTaxPaymentInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DeleteAgentTaxPaymentInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAgentTaxPaymentInfo require credential")
@@ -3945,6 +4010,7 @@ func (c *Client) DeleteAgentTaxPaymentInfosWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteAgentTaxPaymentInfosRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DeleteAgentTaxPaymentInfos")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAgentTaxPaymentInfos require credential")
@@ -4004,6 +4070,7 @@ func (c *Client) DescribeChargeDetailWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeChargeDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DescribeChargeDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeChargeDetail require credential")
@@ -4055,6 +4122,7 @@ func (c *Client) DescribeOrderStatusWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeOrderStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DescribeOrderStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOrderStatus require credential")
@@ -4106,6 +4174,7 @@ func (c *Client) DistributeAccreditQueryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDistributeAccreditQueryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DistributeAccreditQuery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DistributeAccreditQuery require credential")
@@ -4157,6 +4226,7 @@ func (c *Client) DistributeAccreditTlinxWithContext(ctx context.Context, request
     if request == nil {
         request = NewDistributeAccreditTlinxRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DistributeAccreditTlinx")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DistributeAccreditTlinx require credential")
@@ -4208,6 +4278,7 @@ func (c *Client) DistributeAddReceiverWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDistributeAddReceiverRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DistributeAddReceiver")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DistributeAddReceiver require credential")
@@ -4259,6 +4330,7 @@ func (c *Client) DistributeApplyWithContext(ctx context.Context, request *Distri
     if request == nil {
         request = NewDistributeApplyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DistributeApply")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DistributeApply require credential")
@@ -4310,6 +4382,7 @@ func (c *Client) DistributeCancelWithContext(ctx context.Context, request *Distr
     if request == nil {
         request = NewDistributeCancelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DistributeCancel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DistributeCancel require credential")
@@ -4361,6 +4434,7 @@ func (c *Client) DistributeQueryWithContext(ctx context.Context, request *Distri
     if request == nil {
         request = NewDistributeQueryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DistributeQuery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DistributeQuery require credential")
@@ -4412,6 +4486,7 @@ func (c *Client) DistributeQueryReceiverWithContext(ctx context.Context, request
     if request == nil {
         request = NewDistributeQueryReceiverRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DistributeQueryReceiver")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DistributeQueryReceiver require credential")
@@ -4463,6 +4538,7 @@ func (c *Client) DistributeRemoveReceiverWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDistributeRemoveReceiverRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DistributeRemoveReceiver")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DistributeRemoveReceiver require credential")
@@ -4524,6 +4600,7 @@ func (c *Client) DownloadBillWithContext(ctx context.Context, request *DownloadB
     if request == nil {
         request = NewDownloadBillRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DownloadBill")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadBill require credential")
@@ -4585,6 +4662,7 @@ func (c *Client) DownloadOrgFileWithContext(ctx context.Context, request *Downlo
     if request == nil {
         request = NewDownloadOrgFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DownloadOrgFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadOrgFile require credential")
@@ -4638,6 +4716,7 @@ func (c *Client) DownloadReconciliationUrlWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDownloadReconciliationUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "DownloadReconciliationUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadReconciliationUrl require credential")
@@ -4691,6 +4770,7 @@ func (c *Client) ExecuteMemberTransactionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewExecuteMemberTransactionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ExecuteMemberTransaction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExecuteMemberTransaction require credential")
@@ -4744,6 +4824,7 @@ func (c *Client) FreezeFlexBalanceWithContext(ctx context.Context, request *Free
     if request == nil {
         request = NewFreezeFlexBalanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "FreezeFlexBalance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FreezeFlexBalance require credential")
@@ -4801,6 +4882,7 @@ func (c *Client) GetBillDownloadUrlWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetBillDownloadUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "GetBillDownloadUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetBillDownloadUrl require credential")
@@ -4858,6 +4940,7 @@ func (c *Client) GetDistributeBillDownloadUrlWithContext(ctx context.Context, re
     if request == nil {
         request = NewGetDistributeBillDownloadUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "GetDistributeBillDownloadUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDistributeBillDownloadUrl require credential")
@@ -4919,6 +5002,7 @@ func (c *Client) GetPayRollAuthWithContext(ctx context.Context, request *GetPayR
     if request == nil {
         request = NewGetPayRollAuthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "GetPayRollAuth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetPayRollAuth require credential")
@@ -4980,6 +5064,7 @@ func (c *Client) GetPayRollAuthListWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetPayRollAuthListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "GetPayRollAuthList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetPayRollAuthList require credential")
@@ -5041,6 +5126,7 @@ func (c *Client) GetPayRollAuthResultWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetPayRollAuthResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "GetPayRollAuthResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetPayRollAuthResult require credential")
@@ -5124,6 +5210,7 @@ func (c *Client) MigrateOrderRefundWithContext(ctx context.Context, request *Mig
     if request == nil {
         request = NewMigrateOrderRefundRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "MigrateOrderRefund")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MigrateOrderRefund require credential")
@@ -5203,6 +5290,7 @@ func (c *Client) MigrateOrderRefundQueryWithContext(ctx context.Context, request
     if request == nil {
         request = NewMigrateOrderRefundQueryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "MigrateOrderRefundQuery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MigrateOrderRefundQuery require credential")
@@ -5262,6 +5350,7 @@ func (c *Client) ModifyAgentTaxPaymentInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyAgentTaxPaymentInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ModifyAgentTaxPaymentInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAgentTaxPaymentInfo require credential")
@@ -5321,6 +5410,7 @@ func (c *Client) ModifyBindedAccountWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyBindedAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ModifyBindedAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBindedAccount require credential")
@@ -5370,6 +5460,7 @@ func (c *Client) ModifyFlexFundingAccountWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyFlexFundingAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ModifyFlexFundingAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFlexFundingAccount require credential")
@@ -5419,6 +5510,7 @@ func (c *Client) ModifyFlexPayeeAccountRightStatusWithContext(ctx context.Contex
     if request == nil {
         request = NewModifyFlexPayeeAccountRightStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ModifyFlexPayeeAccountRightStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFlexPayeeAccountRightStatus require credential")
@@ -5472,6 +5564,7 @@ func (c *Client) ModifyMerchantWithContext(ctx context.Context, request *ModifyM
     if request == nil {
         request = NewModifyMerchantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ModifyMerchant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMerchant require credential")
@@ -5537,6 +5630,7 @@ func (c *Client) ModifyMntMbrBindRelateAcctBankCodeWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyMntMbrBindRelateAcctBankCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ModifyMntMbrBindRelateAcctBankCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMntMbrBindRelateAcctBankCode require credential")
@@ -5598,6 +5692,7 @@ func (c *Client) QueryAcctBindingWithContext(ctx context.Context, request *Query
     if request == nil {
         request = NewQueryAcctBindingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryAcctBinding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryAcctBinding require credential")
@@ -5659,6 +5754,7 @@ func (c *Client) QueryAcctInfoWithContext(ctx context.Context, request *QueryAcc
     if request == nil {
         request = NewQueryAcctInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryAcctInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryAcctInfo require credential")
@@ -5718,6 +5814,7 @@ func (c *Client) QueryAcctInfoListWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryAcctInfoListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryAcctInfoList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryAcctInfoList require credential")
@@ -5779,6 +5876,7 @@ func (c *Client) QueryAgentStatementsWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryAgentStatementsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryAgentStatements")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryAgentStatements require credential")
@@ -5838,6 +5936,7 @@ func (c *Client) QueryAgentTaxPaymentBatchWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryAgentTaxPaymentBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryAgentTaxPaymentBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryAgentTaxPaymentBatch require credential")
@@ -5895,6 +5994,7 @@ func (c *Client) QueryAnchorContractInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryAnchorContractInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryAnchorContractInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryAnchorContractInfo require credential")
@@ -5948,6 +6048,7 @@ func (c *Client) QueryApplicationMaterialWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryApplicationMaterialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryApplicationMaterial")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryApplicationMaterial require credential")
@@ -6001,6 +6102,7 @@ func (c *Client) QueryAssignmentWithContext(ctx context.Context, request *QueryA
     if request == nil {
         request = NewQueryAssignmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryAssignment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryAssignment require credential")
@@ -6060,6 +6162,7 @@ func (c *Client) QueryBalanceWithContext(ctx context.Context, request *QueryBala
     if request == nil {
         request = NewQueryBalanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryBalance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryBalance require credential")
@@ -6125,6 +6228,7 @@ func (c *Client) QueryBankClearWithContext(ctx context.Context, request *QueryBa
     if request == nil {
         request = NewQueryBankClearRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryBankClear")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryBankClear require credential")
@@ -6190,6 +6294,7 @@ func (c *Client) QueryBankTransactionDetailsWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryBankTransactionDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryBankTransactionDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryBankTransactionDetails require credential")
@@ -6255,6 +6360,7 @@ func (c *Client) QueryBankWithdrawCashDetailsWithContext(ctx context.Context, re
     if request == nil {
         request = NewQueryBankWithdrawCashDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryBankWithdrawCashDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryBankWithdrawCashDetails require credential")
@@ -6320,6 +6426,7 @@ func (c *Client) QueryBatchPaymentResultWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryBatchPaymentResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryBatchPaymentResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryBatchPaymentResult require credential")
@@ -6385,6 +6492,7 @@ func (c *Client) QueryBillDownloadURLWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryBillDownloadURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryBillDownloadURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryBillDownloadURL require credential")
@@ -6450,6 +6558,7 @@ func (c *Client) QueryCityCodeWithContext(ctx context.Context, request *QueryCit
     if request == nil {
         request = NewQueryCityCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryCityCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCityCode require credential")
@@ -6583,6 +6692,7 @@ func (c *Client) QueryCloudChannelDataWithContext(ctx context.Context, request *
     if request == nil {
         request = NewQueryCloudChannelDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryCloudChannelData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCloudChannelData require credential")
@@ -6716,6 +6826,7 @@ func (c *Client) QueryCloudOrderWithContext(ctx context.Context, request *QueryC
     if request == nil {
         request = NewQueryCloudOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryCloudOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCloudOrder require credential")
@@ -6849,6 +6960,7 @@ func (c *Client) QueryCloudRefundOrderWithContext(ctx context.Context, request *
     if request == nil {
         request = NewQueryCloudRefundOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryCloudRefundOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCloudRefundOrder require credential")
@@ -6914,6 +7026,7 @@ func (c *Client) QueryCommonTransferRechargeWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryCommonTransferRechargeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryCommonTransferRecharge")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCommonTransferRecharge require credential")
@@ -6963,6 +7076,7 @@ func (c *Client) QueryCompanyTitleWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryCompanyTitleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryCompanyTitle")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCompanyTitle require credential")
@@ -7082,6 +7196,7 @@ func (c *Client) QueryContractWithContext(ctx context.Context, request *QueryCon
     if request == nil {
         request = NewQueryContractRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryContract")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryContract require credential")
@@ -7201,6 +7316,7 @@ func (c *Client) QueryContractPayFeeWithContext(ctx context.Context, request *Qu
     if request == nil {
         request = NewQueryContractPayFeeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryContractPayFee")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryContractPayFee require credential")
@@ -7320,6 +7436,7 @@ func (c *Client) QueryContractPayWayListWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryContractPayWayListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryContractPayWayList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryContractPayWayList require credential")
@@ -7439,6 +7556,7 @@ func (c *Client) QueryContractRelateShopWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryContractRelateShopRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryContractRelateShop")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryContractRelateShop require credential")
@@ -7504,6 +7622,7 @@ func (c *Client) QueryCustAcctIdBalanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewQueryCustAcctIdBalanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryCustAcctIdBalance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCustAcctIdBalance require credential")
@@ -7559,6 +7678,7 @@ func (c *Client) QueryDownloadBillURLWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryDownloadBillURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryDownloadBillURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryDownloadBillURL require credential")
@@ -7614,6 +7734,7 @@ func (c *Client) QueryExceedingInfoWithContext(ctx context.Context, request *Que
     if request == nil {
         request = NewQueryExceedingInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryExceedingInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryExceedingInfo require credential")
@@ -7667,6 +7788,7 @@ func (c *Client) QueryExchangeRateWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryExchangeRateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryExchangeRate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryExchangeRate require credential")
@@ -7716,6 +7838,7 @@ func (c *Client) QueryFinancialDataUrlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewQueryFinancialDataUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFinancialDataUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFinancialDataUrl require credential")
@@ -7765,6 +7888,7 @@ func (c *Client) QueryFlexAmountBeforeTaxWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryFlexAmountBeforeTaxRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexAmountBeforeTax")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexAmountBeforeTax require credential")
@@ -7814,6 +7938,7 @@ func (c *Client) QueryFlexBillDownloadUrlWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryFlexBillDownloadUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexBillDownloadUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexBillDownloadUrl require credential")
@@ -7863,6 +7988,7 @@ func (c *Client) QueryFlexFreezeOrderListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryFlexFreezeOrderListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexFreezeOrderList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexFreezeOrderList require credential")
@@ -7912,6 +8038,7 @@ func (c *Client) QueryFlexOrderSummaryListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryFlexOrderSummaryListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexOrderSummaryList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexOrderSummaryList require credential")
@@ -7961,6 +8088,7 @@ func (c *Client) QueryFlexPayeeAccountBalanceWithContext(ctx context.Context, re
     if request == nil {
         request = NewQueryFlexPayeeAccountBalanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexPayeeAccountBalance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexPayeeAccountBalance require credential")
@@ -8010,6 +8138,7 @@ func (c *Client) QueryFlexPayeeAccountInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryFlexPayeeAccountInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexPayeeAccountInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexPayeeAccountInfo require credential")
@@ -8059,6 +8188,7 @@ func (c *Client) QueryFlexPayeeAccountListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryFlexPayeeAccountListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexPayeeAccountList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexPayeeAccountList require credential")
@@ -8108,6 +8238,7 @@ func (c *Client) QueryFlexPayeeInfoWithContext(ctx context.Context, request *Que
     if request == nil {
         request = NewQueryFlexPayeeInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexPayeeInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexPayeeInfo require credential")
@@ -8157,6 +8288,7 @@ func (c *Client) QueryFlexPaymentOrderListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryFlexPaymentOrderListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexPaymentOrderList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexPaymentOrderList require credential")
@@ -8206,6 +8338,7 @@ func (c *Client) QueryFlexPaymentOrderStatusWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryFlexPaymentOrderStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexPaymentOrderStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexPaymentOrderStatus require credential")
@@ -8255,6 +8388,7 @@ func (c *Client) QueryFlexPlatformAccountBalanceWithContext(ctx context.Context,
     if request == nil {
         request = NewQueryFlexPlatformAccountBalanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexPlatformAccountBalance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexPlatformAccountBalance require credential")
@@ -8304,6 +8438,7 @@ func (c *Client) QueryFlexServiceProviderAccountBalanceWithContext(ctx context.C
     if request == nil {
         request = NewQueryFlexServiceProviderAccountBalanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexServiceProviderAccountBalance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexServiceProviderAccountBalance require credential")
@@ -8353,6 +8488,7 @@ func (c *Client) QueryFlexSettlementOrderListWithContext(ctx context.Context, re
     if request == nil {
         request = NewQueryFlexSettlementOrderListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexSettlementOrderList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexSettlementOrderList require credential")
@@ -8402,6 +8538,7 @@ func (c *Client) QueryFlexWechatAuthResultWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryFlexWechatAuthResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFlexWechatAuthResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFlexWechatAuthResult require credential")
@@ -8451,6 +8588,7 @@ func (c *Client) QueryFundsTransactionDetailsWithContext(ctx context.Context, re
     if request == nil {
         request = NewQueryFundsTransactionDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryFundsTransactionDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFundsTransactionDetails require credential")
@@ -8530,6 +8668,7 @@ func (c *Client) QueryInvoiceWithContext(ctx context.Context, request *QueryInvo
     if request == nil {
         request = NewQueryInvoiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryInvoice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryInvoice require credential")
@@ -8579,6 +8718,7 @@ func (c *Client) QueryInvoiceV2WithContext(ctx context.Context, request *QueryIn
     if request == nil {
         request = NewQueryInvoiceV2Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryInvoiceV2")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryInvoiceV2 require credential")
@@ -8628,6 +8768,7 @@ func (c *Client) QueryMaliciousRegistrationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewQueryMaliciousRegistrationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryMaliciousRegistration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMaliciousRegistration require credential")
@@ -8697,6 +8838,7 @@ func (c *Client) QueryMemberBindWithContext(ctx context.Context, request *QueryM
     if request == nil {
         request = NewQueryMemberBindRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryMemberBind")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMemberBind require credential")
@@ -8762,6 +8904,7 @@ func (c *Client) QueryMemberTransactionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewQueryMemberTransactionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryMemberTransaction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMemberTransaction require credential")
@@ -8827,6 +8970,7 @@ func (c *Client) QueryMemberTransactionDetailsWithContext(ctx context.Context, r
     if request == nil {
         request = NewQueryMemberTransactionDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryMemberTransactionDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMemberTransactionDetails require credential")
@@ -8882,6 +9026,7 @@ func (c *Client) QueryMerchantWithContext(ctx context.Context, request *QueryMer
     if request == nil {
         request = NewQueryMerchantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryMerchant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMerchant require credential")
@@ -8935,6 +9080,7 @@ func (c *Client) QueryMerchantBalanceWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryMerchantBalanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryMerchantBalance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMerchantBalance require credential")
@@ -8988,6 +9134,7 @@ func (c *Client) QueryMerchantClassificationWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryMerchantClassificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryMerchantClassification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMerchantClassification require credential")
@@ -9053,6 +9200,7 @@ func (c *Client) QueryMerchantInfoForManagementWithContext(ctx context.Context, 
     if request == nil {
         request = NewQueryMerchantInfoForManagementRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryMerchantInfoForManagement")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMerchantInfoForManagement require credential")
@@ -9108,6 +9256,7 @@ func (c *Client) QueryMerchantOrderWithContext(ctx context.Context, request *Que
     if request == nil {
         request = NewQueryMerchantOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryMerchantOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMerchantOrder require credential")
@@ -9163,6 +9312,7 @@ func (c *Client) QueryMerchantPayWayListWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryMerchantPayWayListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryMerchantPayWayList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMerchantPayWayList require credential")
@@ -9212,6 +9362,7 @@ func (c *Client) QueryOpenBankBankAccountBalanceWithContext(ctx context.Context,
     if request == nil {
         request = NewQueryOpenBankBankAccountBalanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankBankAccountBalance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankBankAccountBalance require credential")
@@ -9261,6 +9412,7 @@ func (c *Client) QueryOpenBankBankBranchListWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryOpenBankBankBranchListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankBankBranchList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankBankBranchList require credential")
@@ -9310,6 +9462,7 @@ func (c *Client) QueryOpenBankBillDataPageWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryOpenBankBillDataPageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankBillDataPage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankBillDataPage require credential")
@@ -9359,6 +9512,7 @@ func (c *Client) QueryOpenBankBindExternalSubMerchantBankAccountWithContext(ctx 
     if request == nil {
         request = NewQueryOpenBankBindExternalSubMerchantBankAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankBindExternalSubMerchantBankAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankBindExternalSubMerchantBankAccount require credential")
@@ -9408,6 +9562,7 @@ func (c *Client) QueryOpenBankDailyReceiptDownloadUrlWithContext(ctx context.Con
     if request == nil {
         request = NewQueryOpenBankDailyReceiptDownloadUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankDailyReceiptDownloadUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankDailyReceiptDownloadUrl require credential")
@@ -9457,6 +9612,7 @@ func (c *Client) QueryOpenBankDownLoadUrlWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryOpenBankDownLoadUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankDownLoadUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankDownLoadUrl require credential")
@@ -9506,6 +9662,7 @@ func (c *Client) QueryOpenBankExternalSubAccountBookBalanceWithContext(ctx conte
     if request == nil {
         request = NewQueryOpenBankExternalSubAccountBookBalanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankExternalSubAccountBookBalance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankExternalSubAccountBookBalance require credential")
@@ -9555,6 +9712,7 @@ func (c *Client) QueryOpenBankExternalSubMerchantBankAccountWithContext(ctx cont
     if request == nil {
         request = NewQueryOpenBankExternalSubMerchantBankAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankExternalSubMerchantBankAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankExternalSubMerchantBankAccount require credential")
@@ -9604,6 +9762,7 @@ func (c *Client) QueryOpenBankExternalSubMerchantRegistrationWithContext(ctx con
     if request == nil {
         request = NewQueryOpenBankExternalSubMerchantRegistrationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankExternalSubMerchantRegistration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankExternalSubMerchantRegistration require credential")
@@ -9653,6 +9812,7 @@ func (c *Client) QueryOpenBankOrderDetailReceiptInfoWithContext(ctx context.Cont
     if request == nil {
         request = NewQueryOpenBankOrderDetailReceiptInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankOrderDetailReceiptInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankOrderDetailReceiptInfo require credential")
@@ -9702,6 +9862,7 @@ func (c *Client) QueryOpenBankPaymentOrderWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryOpenBankPaymentOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankPaymentOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankPaymentOrder require credential")
@@ -9751,6 +9912,7 @@ func (c *Client) QueryOpenBankProfitSharePayeeWithContext(ctx context.Context, r
     if request == nil {
         request = NewQueryOpenBankProfitSharePayeeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankProfitSharePayee")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankProfitSharePayee require credential")
@@ -9800,6 +9962,7 @@ func (c *Client) QueryOpenBankRefundOrderWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryOpenBankRefundOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankRefundOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankRefundOrder require credential")
@@ -9849,6 +10012,7 @@ func (c *Client) QueryOpenBankSettleOrderWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryOpenBankSettleOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankSettleOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankSettleOrder require credential")
@@ -9898,6 +10062,7 @@ func (c *Client) QueryOpenBankSubMerchantCredentialWithContext(ctx context.Conte
     if request == nil {
         request = NewQueryOpenBankSubMerchantCredentialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankSubMerchantCredential")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankSubMerchantCredential require credential")
@@ -9947,6 +10112,7 @@ func (c *Client) QueryOpenBankSubMerchantRateConfigureWithContext(ctx context.Co
     if request == nil {
         request = NewQueryOpenBankSubMerchantRateConfigureRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankSubMerchantRateConfigure")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankSubMerchantRateConfigure require credential")
@@ -9996,6 +10162,7 @@ func (c *Client) QueryOpenBankSubMerchantSignOnlineWithContext(ctx context.Conte
     if request == nil {
         request = NewQueryOpenBankSubMerchantSignOnlineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankSubMerchantSignOnline")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankSubMerchantSignOnline require credential")
@@ -10045,6 +10212,7 @@ func (c *Client) QueryOpenBankSupportBankListWithContext(ctx context.Context, re
     if request == nil {
         request = NewQueryOpenBankSupportBankListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankSupportBankList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankSupportBankList require credential")
@@ -10094,6 +10262,7 @@ func (c *Client) QueryOpenBankUnbindExternalSubMerchantBankAccountWithContext(ct
     if request == nil {
         request = NewQueryOpenBankUnbindExternalSubMerchantBankAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankUnbindExternalSubMerchantBankAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankUnbindExternalSubMerchantBankAccount require credential")
@@ -10143,6 +10312,7 @@ func (c *Client) QueryOpenBankVerificationOrderWithContext(ctx context.Context, 
     if request == nil {
         request = NewQueryOpenBankVerificationOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOpenBankVerificationOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOpenBankVerificationOrder require credential")
@@ -10204,6 +10374,7 @@ func (c *Client) QueryOrderWithContext(ctx context.Context, request *QueryOrderR
     if request == nil {
         request = NewQueryOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOrder require credential")
@@ -10265,6 +10436,7 @@ func (c *Client) QueryOrderStatusWithContext(ctx context.Context, request *Query
     if request == nil {
         request = NewQueryOrderStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOrderStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOrderStatus require credential")
@@ -10318,6 +10490,7 @@ func (c *Client) QueryOutwardOrderWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryOutwardOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryOutwardOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryOutwardOrder require credential")
@@ -10371,6 +10544,7 @@ func (c *Client) QueryPayerInfoWithContext(ctx context.Context, request *QueryPa
     if request == nil {
         request = NewQueryPayerInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryPayerInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryPayerInfo require credential")
@@ -10436,6 +10610,7 @@ func (c *Client) QueryReconciliationDocumentWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryReconciliationDocumentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryReconciliationDocument")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryReconciliationDocument require credential")
@@ -10501,6 +10676,7 @@ func (c *Client) QueryReconciliationFileApplyInfoWithContext(ctx context.Context
     if request == nil {
         request = NewQueryReconciliationFileApplyInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryReconciliationFileApplyInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryReconciliationFileApplyInfo require credential")
@@ -10560,6 +10736,7 @@ func (c *Client) QueryRefundWithContext(ctx context.Context, request *QueryRefun
     if request == nil {
         request = NewQueryRefundRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryRefund")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryRefund require credential")
@@ -10619,6 +10796,7 @@ func (c *Client) QueryShopOpenIdWithContext(ctx context.Context, request *QueryS
     if request == nil {
         request = NewQueryShopOpenIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryShopOpenId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryShopOpenId require credential")
@@ -10678,6 +10856,7 @@ func (c *Client) QuerySinglePaymentResultWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQuerySinglePaymentResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QuerySinglePaymentResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QuerySinglePaymentResult require credential")
@@ -10743,6 +10922,7 @@ func (c *Client) QuerySingleTransactionStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewQuerySingleTransactionStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QuerySingleTransactionStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QuerySingleTransactionStatus require credential")
@@ -10808,6 +10988,7 @@ func (c *Client) QuerySmallAmountTransferWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQuerySmallAmountTransferRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QuerySmallAmountTransfer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QuerySmallAmountTransfer require credential")
@@ -10861,6 +11042,7 @@ func (c *Client) QueryTradeWithContext(ctx context.Context, request *QueryTradeR
     if request == nil {
         request = NewQueryTradeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryTrade")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryTrade require credential")
@@ -10934,6 +11116,7 @@ func (c *Client) QueryTransferBatchWithContext(ctx context.Context, request *Que
     if request == nil {
         request = NewQueryTransferBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryTransferBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryTransferBatch require credential")
@@ -11007,6 +11190,7 @@ func (c *Client) QueryTransferDetailWithContext(ctx context.Context, request *Qu
     if request == nil {
         request = NewQueryTransferDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryTransferDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryTransferDetail require credential")
@@ -11080,6 +11264,7 @@ func (c *Client) QueryTransferResultWithContext(ctx context.Context, request *Qu
     if request == nil {
         request = NewQueryTransferResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "QueryTransferResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryTransferResult require credential")
@@ -11131,6 +11316,7 @@ func (c *Client) RechargeByThirdPayWithContext(ctx context.Context, request *Rec
     if request == nil {
         request = NewRechargeByThirdPayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RechargeByThirdPay")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RechargeByThirdPay require credential")
@@ -11196,6 +11382,7 @@ func (c *Client) RechargeMemberThirdPayWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRechargeMemberThirdPayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RechargeMemberThirdPay")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RechargeMemberThirdPay require credential")
@@ -11287,6 +11474,7 @@ func (c *Client) RefundWithContext(ctx context.Context, request *RefundRequest) 
     if request == nil {
         request = NewRefundRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "Refund")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Refund require credential")
@@ -11420,6 +11608,7 @@ func (c *Client) RefundCloudOrderWithContext(ctx context.Context, request *Refun
     if request == nil {
         request = NewRefundCloudOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RefundCloudOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RefundCloudOrder require credential")
@@ -11473,6 +11662,7 @@ func (c *Client) RefundMemberTransactionWithContext(ctx context.Context, request
     if request == nil {
         request = NewRefundMemberTransactionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RefundMemberTransaction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RefundMemberTransaction require credential")
@@ -11526,6 +11716,7 @@ func (c *Client) RefundOpenBankOrderWithContext(ctx context.Context, request *Re
     if request == nil {
         request = NewRefundOpenBankOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RefundOpenBankOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RefundOpenBankOrder require credential")
@@ -11581,6 +11772,7 @@ func (c *Client) RefundOrderWithContext(ctx context.Context, request *RefundOrde
     if request == nil {
         request = NewRefundOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RefundOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RefundOrder require credential")
@@ -11636,6 +11828,7 @@ func (c *Client) RefundTlinxOrderWithContext(ctx context.Context, request *Refun
     if request == nil {
         request = NewRefundTlinxOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RefundTlinxOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RefundTlinxOrder require credential")
@@ -11695,6 +11888,7 @@ func (c *Client) RegisterBehaviorWithContext(ctx context.Context, request *Regis
     if request == nil {
         request = NewRegisterBehaviorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RegisterBehavior")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterBehavior require credential")
@@ -11752,6 +11946,7 @@ func (c *Client) RegisterBillWithContext(ctx context.Context, request *RegisterB
     if request == nil {
         request = NewRegisterBillRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RegisterBill")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterBill require credential")
@@ -11817,6 +12012,7 @@ func (c *Client) RegisterBillSupportWithdrawWithContext(ctx context.Context, req
     if request == nil {
         request = NewRegisterBillSupportWithdrawRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RegisterBillSupportWithdraw")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterBillSupportWithdraw require credential")
@@ -11882,6 +12078,7 @@ func (c *Client) ReviseMbrPropertyWithContext(ctx context.Context, request *Revi
     if request == nil {
         request = NewReviseMbrPropertyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ReviseMbrProperty")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReviseMbrProperty require credential")
@@ -11947,6 +12144,7 @@ func (c *Client) RevokeMemberRechargeThirdPayWithContext(ctx context.Context, re
     if request == nil {
         request = NewRevokeMemberRechargeThirdPayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RevokeMemberRechargeThirdPay")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RevokeMemberRechargeThirdPay require credential")
@@ -11998,6 +12196,7 @@ func (c *Client) RevokeRechargeByThirdPayWithContext(ctx context.Context, reques
     if request == nil {
         request = NewRevokeRechargeByThirdPayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "RevokeRechargeByThirdPay")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RevokeRechargeByThirdPay require credential")
@@ -12105,6 +12304,7 @@ func (c *Client) SyncContractDataWithContext(ctx context.Context, request *SyncC
     if request == nil {
         request = NewSyncContractDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "SyncContractData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncContractData require credential")
@@ -12220,6 +12420,7 @@ func (c *Client) TerminateContractWithContext(ctx context.Context, request *Term
     if request == nil {
         request = NewTerminateContractRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "TerminateContract")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateContract require credential")
@@ -12335,6 +12536,7 @@ func (c *Client) TransferSinglePayWithContext(ctx context.Context, request *Tran
     if request == nil {
         request = NewTransferSinglePayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "TransferSinglePay")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TransferSinglePay require credential")
@@ -12394,6 +12596,7 @@ func (c *Client) UnBindAcctWithContext(ctx context.Context, request *UnBindAcctR
     if request == nil {
         request = NewUnBindAcctRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UnBindAcct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnBindAcct require credential")
@@ -12453,6 +12656,7 @@ func (c *Client) UnbindOpenBankExternalSubMerchantBankAccountWithContext(ctx con
     if request == nil {
         request = NewUnbindOpenBankExternalSubMerchantBankAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UnbindOpenBankExternalSubMerchantBankAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindOpenBankExternalSubMerchantBankAccount require credential")
@@ -12518,6 +12722,7 @@ func (c *Client) UnbindRelateAcctWithContext(ctx context.Context, request *Unbin
     if request == nil {
         request = NewUnbindRelateAcctRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UnbindRelateAcct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindRelateAcct require credential")
@@ -12653,6 +12858,7 @@ func (c *Client) UnifiedCloudOrderWithContext(ctx context.Context, request *Unif
     if request == nil {
         request = NewUnifiedCloudOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UnifiedCloudOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnifiedCloudOrder require credential")
@@ -12726,6 +12932,7 @@ func (c *Client) UnifiedOrderWithContext(ctx context.Context, request *UnifiedOr
     if request == nil {
         request = NewUnifiedOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UnifiedOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnifiedOrder require credential")
@@ -12799,6 +13006,7 @@ func (c *Client) UnifiedTlinxOrderWithContext(ctx context.Context, request *Unif
     if request == nil {
         request = NewUnifiedTlinxOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UnifiedTlinxOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnifiedTlinxOrder require credential")
@@ -12872,6 +13080,7 @@ func (c *Client) UploadExternalAnchorInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUploadExternalAnchorInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UploadExternalAnchorInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadExternalAnchorInfo require credential")
@@ -12927,6 +13136,7 @@ func (c *Client) UploadFileWithContext(ctx context.Context, request *UploadFileR
     if request == nil {
         request = NewUploadFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UploadFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadFile require credential")
@@ -12982,6 +13192,7 @@ func (c *Client) UploadOpenBankSubMerchantCredentialWithContext(ctx context.Cont
     if request == nil {
         request = NewUploadOpenBankSubMerchantCredentialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UploadOpenBankSubMerchantCredential")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadOpenBankSubMerchantCredential require credential")
@@ -13037,6 +13248,7 @@ func (c *Client) UploadOrgFileWithContext(ctx context.Context, request *UploadOr
     if request == nil {
         request = NewUploadOrgFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UploadOrgFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadOrgFile require credential")
@@ -13094,6 +13306,7 @@ func (c *Client) UploadTaxListWithContext(ctx context.Context, request *UploadTa
     if request == nil {
         request = NewUploadTaxListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UploadTaxList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadTaxList require credential")
@@ -13153,6 +13366,7 @@ func (c *Client) UploadTaxPaymentWithContext(ctx context.Context, request *Uploa
     if request == nil {
         request = NewUploadTaxPaymentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "UploadTaxPayment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadTaxPayment require credential")
@@ -13202,6 +13416,7 @@ func (c *Client) VerifyOpenBankAccountWithContext(ctx context.Context, request *
     if request == nil {
         request = NewVerifyOpenBankAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "VerifyOpenBankAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyOpenBankAccount require credential")
@@ -13251,6 +13466,7 @@ func (c *Client) ViewContractWithContext(ctx context.Context, request *ViewContr
     if request == nil {
         request = NewViewContractRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ViewContract")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ViewContract require credential")
@@ -13300,6 +13516,7 @@ func (c *Client) ViewMerchantWithContext(ctx context.Context, request *ViewMerch
     if request == nil {
         request = NewViewMerchantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ViewMerchant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ViewMerchant require credential")
@@ -13349,6 +13566,7 @@ func (c *Client) ViewShopWithContext(ctx context.Context, request *ViewShopReque
     if request == nil {
         request = NewViewShopRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "ViewShop")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ViewShop require credential")
@@ -13414,6 +13632,7 @@ func (c *Client) WithdrawCashMembershipWithContext(ctx context.Context, request 
     if request == nil {
         request = NewWithdrawCashMembershipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cpdp", APIVersion, "WithdrawCashMembership")
     
     if c.GetCredential() == nil {
         return nil, errors.New("WithdrawCashMembership require credential")

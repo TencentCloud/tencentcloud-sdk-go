@@ -2029,7 +2029,7 @@ type CreateDSPADiscoveryTaskRequestParams struct {
 	// 用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，选择多个数据库，之间通过逗号分隔，若不选，则默认选择全部数据库
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 合规组ID列表，最多支持添加5个
+	// 此参数必选。合规组ID列表，最多支持添加5个
 	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil,omitempty" name:"ComplianceGroupIds"`
 
 	// 任务定时启动时间，格式如：2006-01-02 15:04:05
@@ -2092,7 +2092,7 @@ type CreateDSPADiscoveryTaskRequest struct {
 	// 用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，选择多个数据库，之间通过逗号分隔，若不选，则默认选择全部数据库
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 合规组ID列表，最多支持添加5个
+	// 此参数必选。合规组ID列表，最多支持添加5个
 	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil,omitempty" name:"ComplianceGroupIds"`
 
 	// 任务定时启动时间，格式如：2006-01-02 15:04:05

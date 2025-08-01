@@ -1653,7 +1653,7 @@ type SubmitGlamPicJobRequestParams struct {
 	TemplateUrl *string `json:"TemplateUrl,omitnil,omitempty" name:"TemplateUrl"`
 
 	// 用户图 URL 列表，以及模板图中需要替换成用户的人脸框信息。
-	// 一张美照中可包含1 ~ 5个用户形象。每个用户需上传1 ~ 6张照片，如果图中存在多个人脸将取最大人脸。
+	// 一张美照中可包含1 ~ 5个用户形象。每个用户需上传1 ~ 6张照片，仅支持单人照。
 	// 模板图中的人脸数量需要大于等于用户个数。如果不传每个用户在模板图中的人脸框位置，默认按照模板图人脸框从大到小的顺序进行替换。如需自定义顺序，需要依次上传每个用户在模板图中的人脸框位置。
 	// 图片限制：每张图片转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。建议使用单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的用户图。
 	FaceInfos []*FaceInfo `json:"FaceInfos,omitnil,omitempty" name:"FaceInfos"`
@@ -1697,7 +1697,7 @@ type SubmitGlamPicJobRequest struct {
 	TemplateUrl *string `json:"TemplateUrl,omitnil,omitempty" name:"TemplateUrl"`
 
 	// 用户图 URL 列表，以及模板图中需要替换成用户的人脸框信息。
-	// 一张美照中可包含1 ~ 5个用户形象。每个用户需上传1 ~ 6张照片，如果图中存在多个人脸将取最大人脸。
+	// 一张美照中可包含1 ~ 5个用户形象。每个用户需上传1 ~ 6张照片，仅支持单人照。
 	// 模板图中的人脸数量需要大于等于用户个数。如果不传每个用户在模板图中的人脸框位置，默认按照模板图人脸框从大到小的顺序进行替换。如需自定义顺序，需要依次上传每个用户在模板图中的人脸框位置。
 	// 图片限制：每张图片转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。建议使用单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的用户图。
 	FaceInfos []*FaceInfo `json:"FaceInfos,omitnil,omitempty" name:"FaceInfos"`
@@ -2434,131 +2434,6 @@ func (r *TextToImageRapidResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TextToImageRapidResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type TextToImageRequestParams struct {
-	// 文本描述。
-	// 算法将根据输入的文本智能生成与之相关的图像。建议详细描述画面主体、细节、场景等，文本描述越丰富，生成效果越精美。
-	// 不能为空，推荐使用中文。最多可传256个 utf-8 字符。
-	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
-
-	// 反向文本描述。
-	// 用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
-	// 推荐使用中文。最多可传256个 utf-8 字符。
-	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
-
-	// 绘画风格。
-	// 请在 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249) 中选择期望的风格，传入风格编号。
-	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
-	Styles []*string `json:"Styles,omitnil,omitempty" name:"Styles"`
-
-	// 生成图结果的配置，包括输出图片分辨率和尺寸等。
-	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9），不传默认使用768:768。
-	ResultConfig *ResultConfig `json:"ResultConfig,omitnil,omitempty" name:"ResultConfig"`
-
-	// 为生成结果图添加标识的开关，默认为1。
-	// 1：添加标识。
-	// 0：不添加标识。
-	// 其他数值：默认按1处理。
-	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
-	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
-
-	// 标识内容设置。
-	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
-	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
-
-	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
-	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
-}
-
-type TextToImageRequest struct {
-	*tchttp.BaseRequest
-	
-	// 文本描述。
-	// 算法将根据输入的文本智能生成与之相关的图像。建议详细描述画面主体、细节、场景等，文本描述越丰富，生成效果越精美。
-	// 不能为空，推荐使用中文。最多可传256个 utf-8 字符。
-	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
-
-	// 反向文本描述。
-	// 用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
-	// 推荐使用中文。最多可传256个 utf-8 字符。
-	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
-
-	// 绘画风格。
-	// 请在 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249) 中选择期望的风格，传入风格编号。
-	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
-	Styles []*string `json:"Styles,omitnil,omitempty" name:"Styles"`
-
-	// 生成图结果的配置，包括输出图片分辨率和尺寸等。
-	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9），不传默认使用768:768。
-	ResultConfig *ResultConfig `json:"ResultConfig,omitnil,omitempty" name:"ResultConfig"`
-
-	// 为生成结果图添加标识的开关，默认为1。
-	// 1：添加标识。
-	// 0：不添加标识。
-	// 其他数值：默认按1处理。
-	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
-	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
-
-	// 标识内容设置。
-	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
-	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
-
-	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
-	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
-}
-
-func (r *TextToImageRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *TextToImageRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Prompt")
-	delete(f, "NegativePrompt")
-	delete(f, "Styles")
-	delete(f, "ResultConfig")
-	delete(f, "LogoAdd")
-	delete(f, "LogoParam")
-	delete(f, "RspImgType")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToImageRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type TextToImageResponseParams struct {
-	// 根据入参 RspImgType 填入不同，返回不同的内容。
-	// 如果传入 base64 则返回生成图 Base64 编码。
-	// 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
-	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type TextToImageResponse struct {
-	*tchttp.BaseResponse
-	Response *TextToImageResponseParams `json:"Response"`
-}
-
-func (r *TextToImageResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *TextToImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

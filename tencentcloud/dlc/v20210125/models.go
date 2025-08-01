@@ -751,6 +751,95 @@ func (r *AssignMangedTablePropertiesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AssociateDatasourceHouseRequestParams struct {
+	// 网络配置名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
+
+	// 数据源类型
+	DatasourceConnectionType *string `json:"DatasourceConnectionType,omitnil,omitempty" name:"DatasourceConnectionType"`
+
+	// 数据源网络配置
+	DatasourceConnectionConfig *DatasourceConnectionConfig `json:"DatasourceConnectionConfig,omitnil,omitempty" name:"DatasourceConnectionConfig"`
+
+	// 引擎名称，只允许绑定一个引擎
+	DataEngineNames []*string `json:"DataEngineNames,omitnil,omitempty" name:"DataEngineNames"`
+
+	// 网络类型，2-跨源型，4-增强型
+	NetworkConnectionType *int64 `json:"NetworkConnectionType,omitnil,omitempty" name:"NetworkConnectionType"`
+
+	// 网络配置描述
+	NetworkConnectionDesc *string `json:"NetworkConnectionDesc,omitnil,omitempty" name:"NetworkConnectionDesc"`
+}
+
+type AssociateDatasourceHouseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络配置名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
+
+	// 数据源类型
+	DatasourceConnectionType *string `json:"DatasourceConnectionType,omitnil,omitempty" name:"DatasourceConnectionType"`
+
+	// 数据源网络配置
+	DatasourceConnectionConfig *DatasourceConnectionConfig `json:"DatasourceConnectionConfig,omitnil,omitempty" name:"DatasourceConnectionConfig"`
+
+	// 引擎名称，只允许绑定一个引擎
+	DataEngineNames []*string `json:"DataEngineNames,omitnil,omitempty" name:"DataEngineNames"`
+
+	// 网络类型，2-跨源型，4-增强型
+	NetworkConnectionType *int64 `json:"NetworkConnectionType,omitnil,omitempty" name:"NetworkConnectionType"`
+
+	// 网络配置描述
+	NetworkConnectionDesc *string `json:"NetworkConnectionDesc,omitnil,omitempty" name:"NetworkConnectionDesc"`
+}
+
+func (r *AssociateDatasourceHouseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateDatasourceHouseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatasourceConnectionName")
+	delete(f, "DatasourceConnectionType")
+	delete(f, "DatasourceConnectionConfig")
+	delete(f, "DataEngineNames")
+	delete(f, "NetworkConnectionType")
+	delete(f, "NetworkConnectionDesc")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateDatasourceHouseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssociateDatasourceHouseResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AssociateDatasourceHouseResponse struct {
+	*tchttp.BaseResponse
+	Response *AssociateDatasourceHouseResponseParams `json:"Response"`
+}
+
+func (r *AssociateDatasourceHouseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateDatasourceHouseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AttachUserPolicyRequestParams struct {
 	// 用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -3686,6 +3775,239 @@ func (r *CreateSparkSubmitTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateStandardEngineResourceGroupRequestParams struct {
+	// 标准引擎资源组名称
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+
+	// 标准引擎名称
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+	AutoLaunch *int64 `json:"AutoLaunch,omitnil,omitempty" name:"AutoLaunch"`
+
+	// 自动挂起资源组。0-自动挂起，1-不自动挂起
+	AutoPause *int64 `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
+
+	// driver的cu规格：
+	// 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+	DriverCuSpec *string `json:"DriverCuSpec,omitnil,omitempty" name:"DriverCuSpec"`
+
+	// executor的cu规格：
+	// 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+	ExecutorCuSpec *string `json:"ExecutorCuSpec,omitnil,omitempty" name:"ExecutorCuSpec"`
+
+	// executor最小数量，
+	MinExecutorNums *int64 `json:"MinExecutorNums,omitnil,omitempty" name:"MinExecutorNums"`
+
+	// executor最大数量
+	MaxExecutorNums *int64 `json:"MaxExecutorNums,omitnil,omitempty" name:"MaxExecutorNums"`
+
+	// 创建资源组后是否直接拉起，0-拉起，1-不拉起
+	IsLaunchNow *int64 `json:"IsLaunchNow,omitnil,omitempty" name:"IsLaunchNow"`
+
+	// 自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+	AutoPauseTime *int64 `json:"AutoPauseTime,omitnil,omitempty" name:"AutoPauseTime"`
+
+	// 资源组静态参数，需要重启资源组生效
+	StaticConfigPairs []*EngineResourceGroupConfigPair `json:"StaticConfigPairs,omitnil,omitempty" name:"StaticConfigPairs"`
+
+	// 资源组动态参数，下一个任务生效。
+	DynamicConfigPairs []*EngineResourceGroupConfigPair `json:"DynamicConfigPairs,omitnil,omitempty" name:"DynamicConfigPairs"`
+
+	// 任务并发数，默人是5个
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil,omitempty" name:"MaxConcurrency"`
+
+	// 网络配置名称
+	NetworkConfigNames []*string `json:"NetworkConfigNames,omitnil,omitempty" name:"NetworkConfigNames"`
+
+	// 自定义镜像域名
+	PublicDomain *string `json:"PublicDomain,omitnil,omitempty" name:"PublicDomain"`
+
+	// 自定义镜像实例id
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// AI类型资源组的框架类型，machine-learning，python，spark-ml，不填默认为machine-learning
+	FrameType *string `json:"FrameType,omitnil,omitempty" name:"FrameType"`
+
+	// 镜像类型，bulit-in：内置，custom：自定义，不填默认为bulit-in
+	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// 镜像id
+	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
+
+	// AI资源组有效，资源组可用资源上限，该值需要小于引擎资源上限
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 资源组场景
+	ResourceGroupScene *string `json:"ResourceGroupScene,omitnil,omitempty" name:"ResourceGroupScene"`
+
+	// 自定义镜像所在地域
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
+
+	// python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+	PythonCuSpec *string `json:"PythonCuSpec,omitnil,omitempty" name:"PythonCuSpec"`
+
+	// 仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
+	SparkSpecMode *string `json:"SparkSpecMode,omitnil,omitempty" name:"SparkSpecMode"`
+
+	// 仅SQL资源组资源上限，仅用于快速模块
+	SparkSize *int64 `json:"SparkSize,omitnil,omitempty" name:"SparkSize"`
+}
+
+type CreateStandardEngineResourceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 标准引擎资源组名称
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+
+	// 标准引擎名称
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+	AutoLaunch *int64 `json:"AutoLaunch,omitnil,omitempty" name:"AutoLaunch"`
+
+	// 自动挂起资源组。0-自动挂起，1-不自动挂起
+	AutoPause *int64 `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
+
+	// driver的cu规格：
+	// 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+	DriverCuSpec *string `json:"DriverCuSpec,omitnil,omitempty" name:"DriverCuSpec"`
+
+	// executor的cu规格：
+	// 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+	ExecutorCuSpec *string `json:"ExecutorCuSpec,omitnil,omitempty" name:"ExecutorCuSpec"`
+
+	// executor最小数量，
+	MinExecutorNums *int64 `json:"MinExecutorNums,omitnil,omitempty" name:"MinExecutorNums"`
+
+	// executor最大数量
+	MaxExecutorNums *int64 `json:"MaxExecutorNums,omitnil,omitempty" name:"MaxExecutorNums"`
+
+	// 创建资源组后是否直接拉起，0-拉起，1-不拉起
+	IsLaunchNow *int64 `json:"IsLaunchNow,omitnil,omitempty" name:"IsLaunchNow"`
+
+	// 自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+	AutoPauseTime *int64 `json:"AutoPauseTime,omitnil,omitempty" name:"AutoPauseTime"`
+
+	// 资源组静态参数，需要重启资源组生效
+	StaticConfigPairs []*EngineResourceGroupConfigPair `json:"StaticConfigPairs,omitnil,omitempty" name:"StaticConfigPairs"`
+
+	// 资源组动态参数，下一个任务生效。
+	DynamicConfigPairs []*EngineResourceGroupConfigPair `json:"DynamicConfigPairs,omitnil,omitempty" name:"DynamicConfigPairs"`
+
+	// 任务并发数，默人是5个
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil,omitempty" name:"MaxConcurrency"`
+
+	// 网络配置名称
+	NetworkConfigNames []*string `json:"NetworkConfigNames,omitnil,omitempty" name:"NetworkConfigNames"`
+
+	// 自定义镜像域名
+	PublicDomain *string `json:"PublicDomain,omitnil,omitempty" name:"PublicDomain"`
+
+	// 自定义镜像实例id
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// AI类型资源组的框架类型，machine-learning，python，spark-ml，不填默认为machine-learning
+	FrameType *string `json:"FrameType,omitnil,omitempty" name:"FrameType"`
+
+	// 镜像类型，bulit-in：内置，custom：自定义，不填默认为bulit-in
+	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// 镜像id
+	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
+
+	// AI资源组有效，资源组可用资源上限，该值需要小于引擎资源上限
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 资源组场景
+	ResourceGroupScene *string `json:"ResourceGroupScene,omitnil,omitempty" name:"ResourceGroupScene"`
+
+	// 自定义镜像所在地域
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
+
+	// python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+	PythonCuSpec *string `json:"PythonCuSpec,omitnil,omitempty" name:"PythonCuSpec"`
+
+	// 仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
+	SparkSpecMode *string `json:"SparkSpecMode,omitnil,omitempty" name:"SparkSpecMode"`
+
+	// 仅SQL资源组资源上限，仅用于快速模块
+	SparkSize *int64 `json:"SparkSize,omitnil,omitempty" name:"SparkSize"`
+}
+
+func (r *CreateStandardEngineResourceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStandardEngineResourceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineResourceGroupName")
+	delete(f, "DataEngineName")
+	delete(f, "AutoLaunch")
+	delete(f, "AutoPause")
+	delete(f, "DriverCuSpec")
+	delete(f, "ExecutorCuSpec")
+	delete(f, "MinExecutorNums")
+	delete(f, "MaxExecutorNums")
+	delete(f, "IsLaunchNow")
+	delete(f, "AutoPauseTime")
+	delete(f, "StaticConfigPairs")
+	delete(f, "DynamicConfigPairs")
+	delete(f, "MaxConcurrency")
+	delete(f, "NetworkConfigNames")
+	delete(f, "PublicDomain")
+	delete(f, "RegistryId")
+	delete(f, "FrameType")
+	delete(f, "ImageType")
+	delete(f, "ImageName")
+	delete(f, "ImageVersion")
+	delete(f, "Size")
+	delete(f, "ResourceGroupScene")
+	delete(f, "RegionName")
+	delete(f, "PythonCuSpec")
+	delete(f, "SparkSpecMode")
+	delete(f, "SparkSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStandardEngineResourceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStandardEngineResourceGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateStandardEngineResourceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateStandardEngineResourceGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateStandardEngineResourceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStandardEngineResourceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateStoreLocationRequestParams struct {
 	// 计算结果存储cos路径，如：cosn://bucketname/
 	StoreLocation *string `json:"StoreLocation,omitnil,omitempty" name:"StoreLocation"`
@@ -4154,6 +4476,88 @@ func (r *CreateUserResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateUserVpcConnectionRequestParams struct {
+	// 用户vpcid
+	UserVpcId *string `json:"UserVpcId,omitnil,omitempty" name:"UserVpcId"`
+
+	// 用户子网
+	UserSubnetId *string `json:"UserSubnetId,omitnil,omitempty" name:"UserSubnetId"`
+
+	// 用户终端节点名称
+	UserVpcEndpointName *string `json:"UserVpcEndpointName,omitnil,omitempty" name:"UserVpcEndpointName"`
+
+	// 引擎网络ID
+	EngineNetworkId *string `json:"EngineNetworkId,omitnil,omitempty" name:"EngineNetworkId"`
+
+	// 手动指定vip，不填自动分配子网下的一个ip
+	UserVpcEndpointVip *string `json:"UserVpcEndpointVip,omitnil,omitempty" name:"UserVpcEndpointVip"`
+}
+
+type CreateUserVpcConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户vpcid
+	UserVpcId *string `json:"UserVpcId,omitnil,omitempty" name:"UserVpcId"`
+
+	// 用户子网
+	UserSubnetId *string `json:"UserSubnetId,omitnil,omitempty" name:"UserSubnetId"`
+
+	// 用户终端节点名称
+	UserVpcEndpointName *string `json:"UserVpcEndpointName,omitnil,omitempty" name:"UserVpcEndpointName"`
+
+	// 引擎网络ID
+	EngineNetworkId *string `json:"EngineNetworkId,omitnil,omitempty" name:"EngineNetworkId"`
+
+	// 手动指定vip，不填自动分配子网下的一个ip
+	UserVpcEndpointVip *string `json:"UserVpcEndpointVip,omitnil,omitempty" name:"UserVpcEndpointVip"`
+}
+
+func (r *CreateUserVpcConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserVpcConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserVpcId")
+	delete(f, "UserSubnetId")
+	delete(f, "UserVpcEndpointName")
+	delete(f, "EngineNetworkId")
+	delete(f, "UserVpcEndpointVip")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserVpcConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserVpcConnectionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUserVpcConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserVpcConnectionResponseParams `json:"Response"`
+}
+
+func (r *CreateUserVpcConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserVpcConnectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateWorkGroupRequestParams struct {
 	// 工作组名称
 	WorkGroupName *string `json:"WorkGroupName,omitnil,omitempty" name:"WorkGroupName"`
@@ -4532,6 +4936,58 @@ type DataEngineConfigPair struct {
 
 	// 配置值
 	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
+}
+
+type DataEngineImageSessionParameter struct {
+	// 配置id
+	ParameterId *string `json:"ParameterId,omitnil,omitempty" name:"ParameterId"`
+
+	// 小版本镜像ID
+	ChildImageVersionId *string `json:"ChildImageVersionId,omitnil,omitempty" name:"ChildImageVersionId"`
+
+	// 集群类型：SparkSQL/PrestoSQL/SparkBatch
+	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// 参数key
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// Key描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyDescription *string `json:"KeyDescription,omitnil,omitempty" name:"KeyDescription"`
+
+	// value类型
+	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+
+	// value长度限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueLengthLimit *string `json:"ValueLengthLimit,omitnil,omitempty" name:"ValueLengthLimit"`
+
+	// value正则限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueRegexpLimit *string `json:"ValueRegexpLimit,omitnil,omitempty" name:"ValueRegexpLimit"`
+
+	// value默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueDefault *string `json:"ValueDefault,omitnil,omitempty" name:"ValueDefault"`
+
+	// 是否为公共版本：1：公共；2：私有
+	IsPublic *uint64 `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
+
+	// 配置类型：1：session配置（默认）；2：common配置；3：cluster配置
+	ParameterType *uint64 `json:"ParameterType,omitnil,omitempty" name:"ParameterType"`
+
+	// 提交方式：User(用户)、BackGround（后台）
+	SubmitMethod *string `json:"SubmitMethod,omitnil,omitempty" name:"SubmitMethod"`
+
+	// 操作者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 插入时间
+	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type DataEngineImageVersion struct {
@@ -5205,6 +5661,74 @@ func (r *DeleteDataEngineResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteNativeSparkSessionRequestParams struct {
+	// 引擎id
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 资源组id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// spark session名称
+	EngineSessionName *string `json:"EngineSessionName,omitnil,omitempty" name:"EngineSessionName"`
+}
+
+type DeleteNativeSparkSessionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎id
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 资源组id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// spark session名称
+	EngineSessionName *string `json:"EngineSessionName,omitnil,omitempty" name:"EngineSessionName"`
+}
+
+func (r *DeleteNativeSparkSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNativeSparkSessionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineId")
+	delete(f, "ResourceGroupId")
+	delete(f, "EngineSessionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNativeSparkSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNativeSparkSessionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteNativeSparkSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNativeSparkSessionResponseParams `json:"Response"`
+}
+
+func (r *DeleteNativeSparkSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNativeSparkSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteNotebookSessionRequestParams struct {
 	// Session唯一标识
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
@@ -5370,6 +5894,60 @@ func (r *DeleteSparkAppResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteStandardEngineResourceGroupRequestParams struct {
+	// 标准引擎资源组名称
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+}
+
+type DeleteStandardEngineResourceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 标准引擎资源组名称
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+}
+
+func (r *DeleteStandardEngineResourceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStandardEngineResourceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineResourceGroupName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStandardEngineResourceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStandardEngineResourceGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteStandardEngineResourceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStandardEngineResourceGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteStandardEngineResourceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStandardEngineResourceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteTableRequestParams struct {
 	// 表基本信息
 	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitnil,omitempty" name:"TableBaseInfo"`
@@ -5525,6 +6103,67 @@ func (r *DeleteUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserVpcConnectionRequestParams struct {
+	// 引擎网络ID
+	EngineNetworkId *string `json:"EngineNetworkId,omitnil,omitempty" name:"EngineNetworkId"`
+
+	// 终端节点ID
+	UserVpcEndpointId *string `json:"UserVpcEndpointId,omitnil,omitempty" name:"UserVpcEndpointId"`
+}
+
+type DeleteUserVpcConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎网络ID
+	EngineNetworkId *string `json:"EngineNetworkId,omitnil,omitempty" name:"EngineNetworkId"`
+
+	// 终端节点ID
+	UserVpcEndpointId *string `json:"UserVpcEndpointId,omitnil,omitempty" name:"UserVpcEndpointId"`
+}
+
+func (r *DeleteUserVpcConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserVpcConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineNetworkId")
+	delete(f, "UserVpcEndpointId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserVpcConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserVpcConnectionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteUserVpcConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteUserVpcConnectionResponseParams `json:"Response"`
+}
+
+func (r *DeleteUserVpcConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserVpcConnectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6711,6 +7350,70 @@ func (r *DescribeDataEngineResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataEngineSessionParametersRequestParams struct {
+	// 引擎id
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 引擎名称，当指定引擎名称后优先使用名称获取配置
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+}
+
+type DescribeDataEngineSessionParametersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎id
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 引擎名称，当指定引擎名称后优先使用名称获取配置
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+}
+
+func (r *DescribeDataEngineSessionParametersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEngineSessionParametersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineId")
+	delete(f, "DataEngineName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEngineSessionParametersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEngineSessionParametersResponseParams struct {
+	// 集群Session配置列表
+	DataEngineParameters []*DataEngineImageSessionParameter `json:"DataEngineParameters,omitnil,omitempty" name:"DataEngineParameters"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataEngineSessionParametersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataEngineSessionParametersResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataEngineSessionParametersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEngineSessionParametersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataEnginesRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -7164,6 +7867,156 @@ func (r *DescribeDatasourceConnectionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEngineNetworksRequestParams struct {
+	// 排序字段
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 升序，降序
+	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 过滤条件可选，engine-network-id--引擎网络ID，engine-network-state--引擎网络状态
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 数据条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeEngineNetworksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 排序字段
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 升序，降序
+	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 过滤条件可选，engine-network-id--引擎网络ID，engine-network-state--引擎网络状态
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 数据条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeEngineNetworksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEngineNetworksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEngineNetworksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEngineNetworksResponseParams struct {
+	// 引擎网络信息
+	EngineNetworkInfos []*EngineNetworkInfo `json:"EngineNetworkInfos,omitnil,omitempty" name:"EngineNetworkInfos"`
+
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEngineNetworksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEngineNetworksResponseParams `json:"Response"`
+}
+
+func (r *DescribeEngineNetworksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEngineNetworksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEngineNodeSpecRequestParams struct {
+	// 引擎名称
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+}
+
+type DescribeEngineNodeSpecRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎名称
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+}
+
+func (r *DescribeEngineNodeSpecRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEngineNodeSpecRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEngineNodeSpecRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEngineNodeSpecResponseParams struct {
+	// driver可用的规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DriverSpec []*SpecInfo `json:"DriverSpec,omitnil,omitempty" name:"DriverSpec"`
+
+	// executor可用的规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorSpec []*SpecInfo `json:"ExecutorSpec,omitnil,omitempty" name:"ExecutorSpec"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEngineNodeSpecResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEngineNodeSpecResponseParams `json:"Response"`
+}
+
+func (r *DescribeEngineNodeSpecResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEngineNodeSpecResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEngineUsageInfoRequestParams struct {
 	// 数据引擎ID
 	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
@@ -7437,6 +8290,165 @@ func (r *DescribeLakeFsTaskResultResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLakeFsTaskResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNativeSparkSessionsRequestParams struct {
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 资源组ID
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+}
+
+type DescribeNativeSparkSessionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 资源组ID
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+}
+
+func (r *DescribeNativeSparkSessionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNativeSparkSessionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineId")
+	delete(f, "ResourceGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNativeSparkSessionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNativeSparkSessionsResponseParams struct {
+	// spark session列表
+	SparkSessionsList []*SparkSessionInfo `json:"SparkSessionsList,omitnil,omitempty" name:"SparkSessionsList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNativeSparkSessionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNativeSparkSessionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeNativeSparkSessionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNativeSparkSessionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNetworkConnectionsRequestParams struct {
+	// 网络配置类型
+	NetworkConnectionType *int64 `json:"NetworkConnectionType,omitnil,omitempty" name:"NetworkConnectionType"`
+
+	// 计算引擎名称
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 数据源vpcid
+	DatasourceConnectionVpcId *string `json:"DatasourceConnectionVpcId,omitnil,omitempty" name:"DatasourceConnectionVpcId"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 网络配置名称
+	NetworkConnectionName *string `json:"NetworkConnectionName,omitnil,omitempty" name:"NetworkConnectionName"`
+}
+
+type DescribeNetworkConnectionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络配置类型
+	NetworkConnectionType *int64 `json:"NetworkConnectionType,omitnil,omitempty" name:"NetworkConnectionType"`
+
+	// 计算引擎名称
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 数据源vpcid
+	DatasourceConnectionVpcId *string `json:"DatasourceConnectionVpcId,omitnil,omitempty" name:"DatasourceConnectionVpcId"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 网络配置名称
+	NetworkConnectionName *string `json:"NetworkConnectionName,omitnil,omitempty" name:"NetworkConnectionName"`
+}
+
+func (r *DescribeNetworkConnectionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNetworkConnectionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NetworkConnectionType")
+	delete(f, "DataEngineName")
+	delete(f, "DatasourceConnectionVpcId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "NetworkConnectionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNetworkConnectionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNetworkConnectionsResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 网络配置列表
+	NetworkConnectionSet []*NetworkConnection `json:"NetworkConnectionSet,omitnil,omitempty" name:"NetworkConnectionSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNetworkConnectionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNetworkConnectionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeNetworkConnectionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNetworkConnectionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8155,6 +9167,71 @@ func (r *DescribeScriptsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSessionImageVersionRequestParams struct {
+	// 引擎Id
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 框架类型：machine-learning、python、spark-ml
+	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
+}
+
+type DescribeSessionImageVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎Id
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 框架类型：machine-learning、python、spark-ml
+	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
+}
+
+func (r *DescribeSessionImageVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSessionImageVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineId")
+	delete(f, "FrameworkType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSessionImageVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSessionImageVersionResponseParams struct {
+	// 扩展镜像列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineSessionImages []*EngineSessionImage `json:"EngineSessionImages,omitnil,omitempty" name:"EngineSessionImages"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSessionImageVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSessionImageVersionResponseParams `json:"Response"`
+}
+
+func (r *DescribeSessionImageVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSessionImageVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSparkAppJobRequestParams struct {
 	// spark作业Id，与JobName同时存在时，JobName无效，JobId与JobName至少存在一个
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -8625,6 +9702,182 @@ func (r *DescribeSparkSessionBatchSqlLogResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSparkSessionBatchSqlLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStandardEngineResourceGroupConfigInfoRequestParams struct {
+	// 排序字段
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 升序，降序
+	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 过滤条件可选，engine-resource-group-id--引擎资源组ID，engine-id---引擎ID
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 数据条数，默认10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeStandardEngineResourceGroupConfigInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 排序字段
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 升序，降序
+	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 过滤条件可选，engine-resource-group-id--引擎资源组ID，engine-id---引擎ID
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 数据条数，默认10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeStandardEngineResourceGroupConfigInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStandardEngineResourceGroupConfigInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStandardEngineResourceGroupConfigInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStandardEngineResourceGroupConfigInfoResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 标准引擎资源组，配置相关信息
+	StandardEngineResourceGroupConfigInfos []*StandardEngineResourceGroupConfigInfo `json:"StandardEngineResourceGroupConfigInfos,omitnil,omitempty" name:"StandardEngineResourceGroupConfigInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStandardEngineResourceGroupConfigInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStandardEngineResourceGroupConfigInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeStandardEngineResourceGroupConfigInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStandardEngineResourceGroupConfigInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStandardEngineResourceGroupsRequestParams struct {
+	// 排序字段
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 升序，降序
+	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 过滤条件可选，app-id--用户appID，engine-resource-group-id--引擎资源组ID，data-engine-name--引擎名称，engine-resource-group-name---引擎资源组名称（模糊查询），engine-resource-group-state---引擎资源组状态engine-resource-group-name-unique --引擎资源组名称（完全匹配）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 数据条数，默认10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeStandardEngineResourceGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 排序字段
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 升序，降序
+	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 过滤条件可选，app-id--用户appID，engine-resource-group-id--引擎资源组ID，data-engine-name--引擎名称，engine-resource-group-name---引擎资源组名称（模糊查询），engine-resource-group-state---引擎资源组状态engine-resource-group-name-unique --引擎资源组名称（完全匹配）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 数据条数，默认10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeStandardEngineResourceGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStandardEngineResourceGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStandardEngineResourceGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStandardEngineResourceGroupsResponseParams struct {
+	// 标准引擎资源组信息
+	UserEngineResourceGroupInfos []*StandardEngineResourceGroupInfo `json:"UserEngineResourceGroupInfos,omitnil,omitempty" name:"UserEngineResourceGroupInfos"`
+
+	// 资源组总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStandardEngineResourceGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStandardEngineResourceGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStandardEngineResourceGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStandardEngineResourceGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10227,6 +11480,63 @@ func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUserRegisterTimeRequestParams struct {
+
+}
+
+type DescribeUserRegisterTimeRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeUserRegisterTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserRegisterTimeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRegisterTimeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserRegisterTimeResponseParams struct {
+	// 用户注册时间
+	RegisterTime *int64 `json:"RegisterTime,omitnil,omitempty" name:"RegisterTime"`
+
+	// 是否时老用户
+	IsOldUser *bool `json:"IsOldUser,omitnil,omitempty" name:"IsOldUser"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserRegisterTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserRegisterTimeResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserRegisterTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserRegisterTimeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserRolesRequestParams struct {
 	// 列举的数量限制
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -10375,6 +11685,71 @@ func (r *DescribeUserTypeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserVpcConnectionRequestParams struct {
+	// 引擎网络ID
+	EngineNetworkId *string `json:"EngineNetworkId,omitnil,omitempty" name:"EngineNetworkId"`
+
+	// 引擎ID集合
+	DataEngineIds []*string `json:"DataEngineIds,omitnil,omitempty" name:"DataEngineIds"`
+}
+
+type DescribeUserVpcConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎网络ID
+	EngineNetworkId *string `json:"EngineNetworkId,omitnil,omitempty" name:"EngineNetworkId"`
+
+	// 引擎ID集合
+	DataEngineIds []*string `json:"DataEngineIds,omitnil,omitempty" name:"DataEngineIds"`
+}
+
+func (r *DescribeUserVpcConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserVpcConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineNetworkId")
+	delete(f, "DataEngineIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserVpcConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserVpcConnectionResponseParams struct {
+	// 用户vpc连接信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserVpcConnectionInfos []*UserVpcConnectionInfo `json:"UserVpcConnectionInfos,omitnil,omitempty" name:"UserVpcConnectionInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserVpcConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserVpcConnectionResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserVpcConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserVpcConnectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11253,6 +12628,73 @@ type ElasticsearchInfo struct {
 	ServiceInfo []*IpPortPair `json:"ServiceInfo,omitnil,omitempty" name:"ServiceInfo"`
 }
 
+type EngineNetworkInfo struct {
+	// 引擎网络名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineNetworkName *string `json:"EngineNetworkName,omitnil,omitempty" name:"EngineNetworkName"`
+
+	// 引擎网络状态，0--初始化，2--可用，-1--已删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineNetworkState *int64 `json:"EngineNetworkState,omitnil,omitempty" name:"EngineNetworkState"`
+
+	// 引擎网络cidr
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineNetworkCidr *string `json:"EngineNetworkCidr,omitnil,omitempty" name:"EngineNetworkCidr"`
+
+	// 引擎网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineNetworkId *string `json:"EngineNetworkId,omitnil,omitempty" name:"EngineNetworkId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 私有连接个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateLinkNumber *int64 `json:"PrivateLinkNumber,omitnil,omitempty" name:"PrivateLinkNumber"`
+
+	// 计算引擎个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineNumber *int64 `json:"EngineNumber,omitnil,omitempty" name:"EngineNumber"`
+
+	// 网关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GateWayInfo []*GatewayInfo `json:"GateWayInfo,omitnil,omitempty" name:"GateWayInfo"`
+}
+
+type EngineResourceGroupConfigPair struct {
+	// 配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigItem *string `json:"ConfigItem,omitnil,omitempty" name:"ConfigItem"`
+
+	// 配置项的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
+}
+
+type EngineSessionImage struct {
+	// Spark镜像唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkImageId *string `json:"SparkImageId,omitnil,omitempty" name:"SparkImageId"`
+
+	// Spark镜像版本名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkImageVersion *string `json:"SparkImageVersion,omitnil,omitempty" name:"SparkImageVersion"`
+
+	// 小版本镜像类型.1:TensorFlow、2:Pytorch、3:SK-learn
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkImageType *int64 `json:"SparkImageType,omitnil,omitempty" name:"SparkImageType"`
+
+	// 镜像地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkImageTag *string `json:"SparkImageTag,omitnil,omitempty" name:"SparkImageTag"`
+}
+
 type Execution struct {
 	// 自动生成SQL语句。
 	SQL *string `json:"SQL,omitnil,omitempty" name:"SQL"`
@@ -11278,6 +12720,32 @@ type Filter struct {
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type GatewayInfo struct {
+	// 网关ID，
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 网关名称，全局唯一
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
+
+	// 网关的规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中 5挂起中 6启动中 7隔离中 8隔离 9续费中 10变配中 11冲正中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 计费模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 // Predefined struct for user
@@ -11672,6 +13140,64 @@ type LakeFsInfo struct {
 
 	// 托管桶状态，当前取值为：creating、bind、readOnly、isolate
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
+type LaunchStandardEngineResourceGroupsRequestParams struct {
+	// 标准引擎资源组名称
+	EngineResourceGroupNames []*string `json:"EngineResourceGroupNames,omitnil,omitempty" name:"EngineResourceGroupNames"`
+}
+
+type LaunchStandardEngineResourceGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 标准引擎资源组名称
+	EngineResourceGroupNames []*string `json:"EngineResourceGroupNames,omitnil,omitempty" name:"EngineResourceGroupNames"`
+}
+
+func (r *LaunchStandardEngineResourceGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LaunchStandardEngineResourceGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineResourceGroupNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LaunchStandardEngineResourceGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type LaunchStandardEngineResourceGroupsResponseParams struct {
+	// 批量操作资源组时，操作失败的资源组相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateEngineResourceGroupFailMessages []*OperateEngineResourceGroupFailMessage `json:"OperateEngineResourceGroupFailMessages,omitnil,omitempty" name:"OperateEngineResourceGroupFailMessages"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type LaunchStandardEngineResourceGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *LaunchStandardEngineResourceGroupsResponseParams `json:"Response"`
+}
+
+func (r *LaunchStandardEngineResourceGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LaunchStandardEngineResourceGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -13008,6 +14534,14 @@ type OpendThirdAccessUserInfo struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
+type OperateEngineResourceGroupFailMessage struct {
+	// 引擎资源组名称
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+
+	// 操作失败的提示信息
+	FailMessage *string `json:"FailMessage,omitnil,omitempty" name:"FailMessage"`
+}
+
 type OptimizerEngineInfo struct {
 	// 引擎资源名称
 	HouseName *string `json:"HouseName,omitnil,omitempty" name:"HouseName"`
@@ -13044,6 +14578,17 @@ type OtherDatasourceConnection struct {
 	Location *DatasourceConnectionLocation `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
+type Param struct {
+	// 参数key，例如：
+	ConfigItem *string `json:"ConfigItem,omitnil,omitempty" name:"ConfigItem"`
+
+	// 参数值
+	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
+
+	// 下发操作，支持：ADD、DELETE、MODIFY
+	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
+}
+
 type Partition struct {
 	// 分区列名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -13063,6 +14608,64 @@ type Partition struct {
 
 	// 创建时间
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+// Predefined struct for user
+type PauseStandardEngineResourceGroupsRequestParams struct {
+	// 标准引擎资源组名称
+	EngineResourceGroupNames []*string `json:"EngineResourceGroupNames,omitnil,omitempty" name:"EngineResourceGroupNames"`
+}
+
+type PauseStandardEngineResourceGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 标准引擎资源组名称
+	EngineResourceGroupNames []*string `json:"EngineResourceGroupNames,omitnil,omitempty" name:"EngineResourceGroupNames"`
+}
+
+func (r *PauseStandardEngineResourceGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseStandardEngineResourceGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineResourceGroupNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PauseStandardEngineResourceGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PauseStandardEngineResourceGroupsResponseParams struct {
+	// 批量操作资源组时，操作失败的资源组相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateEngineResourceGroupFailMessages []*OperateEngineResourceGroupFailMessage `json:"OperateEngineResourceGroupFailMessages,omitnil,omitempty" name:"OperateEngineResourceGroupFailMessages"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PauseStandardEngineResourceGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *PauseStandardEngineResourceGroupsResponseParams `json:"Response"`
+}
+
+func (r *PauseStandardEngineResourceGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseStandardEngineResourceGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Policy struct {
@@ -14145,6 +15748,210 @@ type SparkSessionBatchLogOperate struct {
 	Supplement []*KVPair `json:"Supplement,omitnil,omitempty" name:"Supplement"`
 }
 
+type SparkSessionInfo struct {
+	// spark session id
+	SparkSessionId *string `json:"SparkSessionId,omitnil,omitempty" name:"SparkSessionId"`
+
+	// spark session名称
+	SparkSessionName *string `json:"SparkSessionName,omitnil,omitempty" name:"SparkSessionName"`
+
+	// 资源组id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// engine session id
+	EngineSessionId *string `json:"EngineSessionId,omitnil,omitempty" name:"EngineSessionId"`
+
+	// engine session   
+	// name
+	EngineSessionName *string `json:"EngineSessionName,omitnil,omitempty" name:"EngineSessionName"`
+
+	// 自动销毁时间
+	IdleTimeoutMin *int64 `json:"IdleTimeoutMin,omitnil,omitempty" name:"IdleTimeoutMin"`
+
+	// driver规格
+	DriverSpec *string `json:"DriverSpec,omitnil,omitempty" name:"DriverSpec"`
+
+	// executor规格
+	ExecutorSpec *string `json:"ExecutorSpec,omitnil,omitempty" name:"ExecutorSpec"`
+
+	// executor最小数量
+	ExecutorNumMin *int64 `json:"ExecutorNumMin,omitnil,omitempty" name:"ExecutorNumMin"`
+
+	// executor最大数量
+	ExecutorNumMax *int64 `json:"ExecutorNumMax,omitnil,omitempty" name:"ExecutorNumMax"`
+
+	// 总规格最小
+	TotalSpecMin *int64 `json:"TotalSpecMin,omitnil,omitempty" name:"TotalSpecMin"`
+
+	// 总规格最大
+	TotalSpecMax *int64 `json:"TotalSpecMax,omitnil,omitempty" name:"TotalSpecMax"`
+}
+
+type SpecInfo struct {
+	// 规格名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 当前规格的cu数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cu *int64 `json:"Cu,omitnil,omitempty" name:"Cu"`
+
+	// 当前规格的cpu数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 当前规格的内存数，单位G
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+}
+
+type StandardEngineResourceGroupConfigInfo struct {
+	// 引擎资源组 ID
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 资源组静态参数，需要重启资源组生效
+	StaticConfigPairs []*EngineResourceGroupConfigPair `json:"StaticConfigPairs,omitnil,omitempty" name:"StaticConfigPairs"`
+
+	// 资源组动态参数，下一个任务生效。
+	DynamicConfigPairs []*EngineResourceGroupConfigPair `json:"DynamicConfigPairs,omitnil,omitempty" name:"DynamicConfigPairs"`
+
+	// 创建时间
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type StandardEngineResourceGroupInfo struct {
+	// 标准引擎资源组ID
+	EngineResourceGroupId *string `json:"EngineResourceGroupId,omitnil,omitempty" name:"EngineResourceGroupId"`
+
+	// 标准引擎资源组名称，支持1-50个英文、汉字、数字、连接线-或下划线_
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+
+	// 创建者
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 资源组 状态，-1--删除、0--启动中、2--运行、3--暂停、4--暂停中、7--切换引擎中、8--配置修改中。9--资源组重启中，10--因为变配导致资源组启动、11--因为隔离导致资源组挂起、12- 资源配置下发中、 13-接入点隔离导致资源组挂起中
+	ResourceGroupState *int64 `json:"ResourceGroupState,omitnil,omitempty" name:"ResourceGroupState"`
+
+	// 自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+	AutoLaunch *int64 `json:"AutoLaunch,omitnil,omitempty" name:"AutoLaunch"`
+
+	// 自动挂起资源组。0-自动挂起，1-不自动挂起
+	AutoPause *int64 `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
+
+	// 自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+	AutoPauseTime *int64 `json:"AutoPauseTime,omitnil,omitempty" name:"AutoPauseTime"`
+
+	// driver的cu规格：
+	// 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+	DriverCuSpec *string `json:"DriverCuSpec,omitnil,omitempty" name:"DriverCuSpec"`
+
+	// executor的cu规格：
+	// 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+	ExecutorCuSpec *string `json:"ExecutorCuSpec,omitnil,omitempty" name:"ExecutorCuSpec"`
+
+	// 任务并发数
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil,omitempty" name:"MaxConcurrency"`
+
+	// executor最小数量，
+	MinExecutorNums *int64 `json:"MinExecutorNums,omitnil,omitempty" name:"MinExecutorNums"`
+
+	// executor最大数量，
+	MaxExecutorNums *int64 `json:"MaxExecutorNums,omitnil,omitempty" name:"MaxExecutorNums"`
+
+	// 创建时间戳
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间戳
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 是否待重启，作为有资源参数，静态参数修改未重启生效的标识；0-- 不需要重启、1--因为资源参数待重启、2--因静态参数重启、3--因资源和静态参数而待重启、4--因网络配置而待重启、5--因网络配置和资源配置而待重启、6--因网络配置和静态参数而待重启、7--因网络配置，资源参数和静态参数而待重启、
+	NeedRestart *int64 `json:"NeedRestart,omitnil,omitempty" name:"NeedRestart"`
+
+	// 绑定的引擎名称
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 绑定的引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 绑定的引擎状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineState *int64 `json:"DataEngineState,omitnil,omitempty" name:"DataEngineState"`
+
+	// 接入点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessPointId *string `json:"AccessPointId,omitnil,omitempty" name:"AccessPointId"`
+
+	// 接入点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessPointName *string `json:"AccessPointName,omitnil,omitempty" name:"AccessPointName"`
+
+	// 接入点状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessPointState *int64 `json:"AccessPointState,omitnil,omitempty" name:"AccessPointState"`
+
+	// 资源组类型，console/ default
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupType *string `json:"ResourceGroupType,omitnil,omitempty" name:"ResourceGroupType"`
+
+	// 引擎网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineNetworkId *string `json:"EngineNetworkId,omitnil,omitempty" name:"EngineNetworkId"`
+
+	// 网络配置名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkConfigNames []*string `json:"NetworkConfigNames,omitnil,omitempty" name:"NetworkConfigNames"`
+
+	// AI类型资源组的框架类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameType *string `json:"FrameType,omitnil,omitempty" name:"FrameType"`
+
+	// AI类型资源组的镜像类型，内置：bulit-in，自定义：custom
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
+
+	// 镜像名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// 镜像id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
+
+	// AI资源组的可用资源上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 是否是默认资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 资源组场景
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupScene *string `json:"ResourceGroupScene,omitnil,omitempty" name:"ResourceGroupScene"`
+
+	// python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PythonCuSpec *string `json:"PythonCuSpec,omitnil,omitempty" name:"PythonCuSpec"`
+
+	// Spark类型资源组资源配置模式，fast：快速模式，custom：自定义模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkSpecMode *string `json:"SparkSpecMode,omitnil,omitempty" name:"SparkSpecMode"`
+
+	// Spark类型资源组资源上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkSize *int64 `json:"SparkSize,omitnil,omitempty" name:"SparkSize"`
+
+	// Spark类型资源组资源最小值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkMinSize *int64 `json:"SparkMinSize,omitnil,omitempty" name:"SparkMinSize"`
+}
+
 type StatementInformation struct {
 	// SQL任务唯一ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -14944,6 +16751,60 @@ func (r *UnbindWorkGroupsFromUserResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UnboundDatasourceHouseRequestParams struct {
+	// 网络配置名称
+	NetworkConnectionName *string `json:"NetworkConnectionName,omitnil,omitempty" name:"NetworkConnectionName"`
+}
+
+type UnboundDatasourceHouseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络配置名称
+	NetworkConnectionName *string `json:"NetworkConnectionName,omitnil,omitempty" name:"NetworkConnectionName"`
+}
+
+func (r *UnboundDatasourceHouseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnboundDatasourceHouseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NetworkConnectionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnboundDatasourceHouseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnboundDatasourceHouseResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UnboundDatasourceHouseResponse struct {
+	*tchttp.BaseResponse
+	Response *UnboundDatasourceHouseResponseParams `json:"Response"`
+}
+
+func (r *UnboundDatasourceHouseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnboundDatasourceHouseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UnlockMetaDataRequestParams struct {
 	// 锁ID
 	LockId *int64 `json:"LockId,omitnil,omitempty" name:"LockId"`
@@ -15002,6 +16863,14 @@ func (r *UnlockMetaDataResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UnlockMetaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateConfContext struct {
+	// 参数类型，可选：StaticConfigType，DynamicConfigType
+	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
+
+	// 参数的配置数组
+	Params []*Param `json:"Params,omitnil,omitempty" name:"Params"`
 }
 
 // Predefined struct for user
@@ -15232,6 +17101,135 @@ func (r *UpdateDataEngineResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateEngineResourceGroupNetworkConfigInfoRequestParams struct {
+	// 引擎资源组ID
+	EngineResourceGroupId *string `json:"EngineResourceGroupId,omitnil,omitempty" name:"EngineResourceGroupId"`
+
+	// 是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+	IsEffectiveNow *int64 `json:"IsEffectiveNow,omitnil,omitempty" name:"IsEffectiveNow"`
+
+	// 资源组绑定的网络配置名称集合
+	NetworkConfigNames []*string `json:"NetworkConfigNames,omitnil,omitempty" name:"NetworkConfigNames"`
+}
+
+type UpdateEngineResourceGroupNetworkConfigInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎资源组ID
+	EngineResourceGroupId *string `json:"EngineResourceGroupId,omitnil,omitempty" name:"EngineResourceGroupId"`
+
+	// 是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+	IsEffectiveNow *int64 `json:"IsEffectiveNow,omitnil,omitempty" name:"IsEffectiveNow"`
+
+	// 资源组绑定的网络配置名称集合
+	NetworkConfigNames []*string `json:"NetworkConfigNames,omitnil,omitempty" name:"NetworkConfigNames"`
+}
+
+func (r *UpdateEngineResourceGroupNetworkConfigInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateEngineResourceGroupNetworkConfigInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineResourceGroupId")
+	delete(f, "IsEffectiveNow")
+	delete(f, "NetworkConfigNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateEngineResourceGroupNetworkConfigInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateEngineResourceGroupNetworkConfigInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateEngineResourceGroupNetworkConfigInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateEngineResourceGroupNetworkConfigInfoResponseParams `json:"Response"`
+}
+
+func (r *UpdateEngineResourceGroupNetworkConfigInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateEngineResourceGroupNetworkConfigInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateNetworkConnectionRequestParams struct {
+	// 网络配置描述
+	NetworkConnectionDesc *string `json:"NetworkConnectionDesc,omitnil,omitempty" name:"NetworkConnectionDesc"`
+
+	// 网络配置名称
+	NetworkConnectionName *string `json:"NetworkConnectionName,omitnil,omitempty" name:"NetworkConnectionName"`
+}
+
+type UpdateNetworkConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络配置描述
+	NetworkConnectionDesc *string `json:"NetworkConnectionDesc,omitnil,omitempty" name:"NetworkConnectionDesc"`
+
+	// 网络配置名称
+	NetworkConnectionName *string `json:"NetworkConnectionName,omitnil,omitempty" name:"NetworkConnectionName"`
+}
+
+func (r *UpdateNetworkConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateNetworkConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NetworkConnectionDesc")
+	delete(f, "NetworkConnectionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateNetworkConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateNetworkConnectionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateNetworkConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateNetworkConnectionResponseParams `json:"Response"`
+}
+
+func (r *UpdateNetworkConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateNetworkConnectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateRowFilterRequestParams struct {
 	// 行过滤策略的id，此值可以通过DescribeUserInfo或者DescribeWorkGroupInfo接口获取
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
@@ -15289,6 +17287,326 @@ func (r *UpdateRowFilterResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateRowFilterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateStandardEngineResourceGroupBaseInfoRequestParams struct {
+	// 引擎资源组名称
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+
+	// 自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+	AutoLaunch *int64 `json:"AutoLaunch,omitnil,omitempty" name:"AutoLaunch"`
+
+	// 自动挂起资源组。0-自动挂起，1-不自动挂起
+	AutoPause *int64 `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
+
+	// 自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+	AutoPauseTime *int64 `json:"AutoPauseTime,omitnil,omitempty" name:"AutoPauseTime"`
+
+	// 任务并发数
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil,omitempty" name:"MaxConcurrency"`
+}
+
+type UpdateStandardEngineResourceGroupBaseInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎资源组名称
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+
+	// 自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+	AutoLaunch *int64 `json:"AutoLaunch,omitnil,omitempty" name:"AutoLaunch"`
+
+	// 自动挂起资源组。0-自动挂起，1-不自动挂起
+	AutoPause *int64 `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
+
+	// 自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+	AutoPauseTime *int64 `json:"AutoPauseTime,omitnil,omitempty" name:"AutoPauseTime"`
+
+	// 任务并发数
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil,omitempty" name:"MaxConcurrency"`
+}
+
+func (r *UpdateStandardEngineResourceGroupBaseInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateStandardEngineResourceGroupBaseInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineResourceGroupName")
+	delete(f, "AutoLaunch")
+	delete(f, "AutoPause")
+	delete(f, "AutoPauseTime")
+	delete(f, "MaxConcurrency")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateStandardEngineResourceGroupBaseInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateStandardEngineResourceGroupBaseInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateStandardEngineResourceGroupBaseInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateStandardEngineResourceGroupBaseInfoResponseParams `json:"Response"`
+}
+
+func (r *UpdateStandardEngineResourceGroupBaseInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateStandardEngineResourceGroupBaseInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateStandardEngineResourceGroupConfigInfoRequestParams struct {
+	// 引擎资源组名称
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+
+	// 需要更新的配置
+	UpdateConfContext []*UpdateConfContext `json:"UpdateConfContext,omitnil,omitempty" name:"UpdateConfContext"`
+
+	// 是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+	IsEffectiveNow *int64 `json:"IsEffectiveNow,omitnil,omitempty" name:"IsEffectiveNow"`
+}
+
+type UpdateStandardEngineResourceGroupConfigInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎资源组名称
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+
+	// 需要更新的配置
+	UpdateConfContext []*UpdateConfContext `json:"UpdateConfContext,omitnil,omitempty" name:"UpdateConfContext"`
+
+	// 是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+	IsEffectiveNow *int64 `json:"IsEffectiveNow,omitnil,omitempty" name:"IsEffectiveNow"`
+}
+
+func (r *UpdateStandardEngineResourceGroupConfigInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateStandardEngineResourceGroupConfigInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineResourceGroupName")
+	delete(f, "UpdateConfContext")
+	delete(f, "IsEffectiveNow")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateStandardEngineResourceGroupConfigInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateStandardEngineResourceGroupConfigInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateStandardEngineResourceGroupConfigInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateStandardEngineResourceGroupConfigInfoResponseParams `json:"Response"`
+}
+
+func (r *UpdateStandardEngineResourceGroupConfigInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateStandardEngineResourceGroupConfigInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateStandardEngineResourceGroupResourceInfoRequestParams struct {
+	// 引擎资源组名称
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+
+	// driver的cu规格：
+	// 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+	DriverCuSpec *string `json:"DriverCuSpec,omitnil,omitempty" name:"DriverCuSpec"`
+
+	// executor的cu规格：
+	// 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+	ExecutorCuSpec *string `json:"ExecutorCuSpec,omitnil,omitempty" name:"ExecutorCuSpec"`
+
+	// executor最小数量，
+	MinExecutorNums *int64 `json:"MinExecutorNums,omitnil,omitempty" name:"MinExecutorNums"`
+
+	// executor最大数量
+	MaxExecutorNums *int64 `json:"MaxExecutorNums,omitnil,omitempty" name:"MaxExecutorNums"`
+
+	// 是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+	IsEffectiveNow *int64 `json:"IsEffectiveNow,omitnil,omitempty" name:"IsEffectiveNow"`
+
+	// AI资源组资源上限
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 镜像类型，内置镜像：built-in，自定义镜像：custom
+	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// 镜像版本，镜像id
+	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
+
+	// 框架类型
+	FrameType *string `json:"FrameType,omitnil,omitempty" name:"FrameType"`
+
+	// 自定义镜像域名
+	PublicDomain *string `json:"PublicDomain,omitnil,omitempty" name:"PublicDomain"`
+
+	// 自定义镜像实例id
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 自定义镜像所属地域
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
+
+	// python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+	PythonCuSpec *string `json:"PythonCuSpec,omitnil,omitempty" name:"PythonCuSpec"`
+
+	// 仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
+	SparkSpecMode *string `json:"SparkSpecMode,omitnil,omitempty" name:"SparkSpecMode"`
+
+	// 仅SQL资源组资源上限，仅用于快速模式
+	SparkSize *int64 `json:"SparkSize,omitnil,omitempty" name:"SparkSize"`
+}
+
+type UpdateStandardEngineResourceGroupResourceInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎资源组名称
+	EngineResourceGroupName *string `json:"EngineResourceGroupName,omitnil,omitempty" name:"EngineResourceGroupName"`
+
+	// driver的cu规格：
+	// 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+	DriverCuSpec *string `json:"DriverCuSpec,omitnil,omitempty" name:"DriverCuSpec"`
+
+	// executor的cu规格：
+	// 当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+	ExecutorCuSpec *string `json:"ExecutorCuSpec,omitnil,omitempty" name:"ExecutorCuSpec"`
+
+	// executor最小数量，
+	MinExecutorNums *int64 `json:"MinExecutorNums,omitnil,omitempty" name:"MinExecutorNums"`
+
+	// executor最大数量
+	MaxExecutorNums *int64 `json:"MaxExecutorNums,omitnil,omitempty" name:"MaxExecutorNums"`
+
+	// 是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+	IsEffectiveNow *int64 `json:"IsEffectiveNow,omitnil,omitempty" name:"IsEffectiveNow"`
+
+	// AI资源组资源上限
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 镜像类型，内置镜像：built-in，自定义镜像：custom
+	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// 镜像版本，镜像id
+	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
+
+	// 框架类型
+	FrameType *string `json:"FrameType,omitnil,omitempty" name:"FrameType"`
+
+	// 自定义镜像域名
+	PublicDomain *string `json:"PublicDomain,omitnil,omitempty" name:"PublicDomain"`
+
+	// 自定义镜像实例id
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 自定义镜像所属地域
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
+
+	// python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+	PythonCuSpec *string `json:"PythonCuSpec,omitnil,omitempty" name:"PythonCuSpec"`
+
+	// 仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
+	SparkSpecMode *string `json:"SparkSpecMode,omitnil,omitempty" name:"SparkSpecMode"`
+
+	// 仅SQL资源组资源上限，仅用于快速模式
+	SparkSize *int64 `json:"SparkSize,omitnil,omitempty" name:"SparkSize"`
+}
+
+func (r *UpdateStandardEngineResourceGroupResourceInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateStandardEngineResourceGroupResourceInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineResourceGroupName")
+	delete(f, "DriverCuSpec")
+	delete(f, "ExecutorCuSpec")
+	delete(f, "MinExecutorNums")
+	delete(f, "MaxExecutorNums")
+	delete(f, "IsEffectiveNow")
+	delete(f, "Size")
+	delete(f, "ImageType")
+	delete(f, "ImageName")
+	delete(f, "ImageVersion")
+	delete(f, "FrameType")
+	delete(f, "PublicDomain")
+	delete(f, "RegistryId")
+	delete(f, "RegionName")
+	delete(f, "PythonCuSpec")
+	delete(f, "SparkSpecMode")
+	delete(f, "SparkSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateStandardEngineResourceGroupResourceInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateStandardEngineResourceGroupResourceInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateStandardEngineResourceGroupResourceInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateStandardEngineResourceGroupResourceInfoResponseParams `json:"Response"`
+}
+
+func (r *UpdateStandardEngineResourceGroupResourceInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateStandardEngineResourceGroupResourceInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15547,6 +17865,28 @@ type UserRole struct {
 
 	// 是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
 	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+}
+
+type UserVpcConnectionInfo struct {
+	// 引擎网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineNetworkId *string `json:"EngineNetworkId,omitnil,omitempty" name:"EngineNetworkId"`
+
+	// 用户vpcid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserVpcId *string `json:"UserVpcId,omitnil,omitempty" name:"UserVpcId"`
+
+	// 用户终端节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserVpcEndpointId *string `json:"UserVpcEndpointId,omitnil,omitempty" name:"UserVpcEndpointId"`
+
+	// 用户终端节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserVpcEndpointName *string `json:"UserVpcEndpointName,omitnil,omitempty" name:"UserVpcEndpointName"`
+
+	// 接入点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessConnectionInfos []*string `json:"AccessConnectionInfos,omitnil,omitempty" name:"AccessConnectionInfos"`
 }
 
 type Users struct {

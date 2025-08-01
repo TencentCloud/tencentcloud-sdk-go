@@ -76,6 +76,7 @@ func (c *Client) DataManipulationWithContext(ctx context.Context, request *DataM
     if request == nil {
         request = NewDataManipulationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunsou", APIVersion, "DataManipulation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DataManipulation require credential")
@@ -119,6 +120,7 @@ func (c *Client) DataSearchWithContext(ctx context.Context, request *DataSearchR
     if request == nil {
         request = NewDataSearchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "yunsou", APIVersion, "DataSearch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DataSearch require credential")

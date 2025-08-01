@@ -2069,6 +2069,9 @@ type CreateAccessKeyCheckTaskRequestParams struct {
 
 	// 账号uin列表
 	SubUinList []*string `json:"SubUinList,omitnil,omitempty" name:"SubUinList"`
+
+	// 风险规则id列表
+	RiskRuleIDList []*int64 `json:"RiskRuleIDList,omitnil,omitempty" name:"RiskRuleIDList"`
 }
 
 type CreateAccessKeyCheckTaskRequest struct {
@@ -2085,6 +2088,9 @@ type CreateAccessKeyCheckTaskRequest struct {
 
 	// 账号uin列表
 	SubUinList []*string `json:"SubUinList,omitnil,omitempty" name:"SubUinList"`
+
+	// 风险规则id列表
+	RiskRuleIDList []*int64 `json:"RiskRuleIDList,omitnil,omitempty" name:"RiskRuleIDList"`
 }
 
 func (r *CreateAccessKeyCheckTaskRequest) ToJsonString() string {
@@ -2103,6 +2109,7 @@ func (r *CreateAccessKeyCheckTaskRequest) FromJsonString(s string) error {
 	delete(f, "RiskIDList")
 	delete(f, "AccessKeyList")
 	delete(f, "SubUinList")
+	delete(f, "RiskRuleIDList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccessKeyCheckTaskRequest has unknown keys!", "")
 	}
@@ -2705,7 +2712,7 @@ func (r *DeleteDomainAndIpResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRiskScanTaskRequestParams struct {
-	// 任务id 列表
+	// 任务id 和目标AppID列表
 	TaskIdList []*TaskIdListKey `json:"TaskIdList,omitnil,omitempty" name:"TaskIdList"`
 
 	// 集团账号的成员id
@@ -2715,7 +2722,7 @@ type DeleteRiskScanTaskRequestParams struct {
 type DeleteRiskScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务id 列表
+	// 任务id 和目标AppID列表
 	TaskIdList []*TaskIdListKey `json:"TaskIdList,omitnil,omitempty" name:"TaskIdList"`
 
 	// 集团账号的成员id
@@ -10252,6 +10259,9 @@ type TaskCenterWeakPwdRiskInputParam struct {
 type TaskIdListKey struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// APP ID
+	TargetAppId *string `json:"TargetAppId,omitnil,omitempty" name:"TargetAppId"`
 }
 
 type TaskLogInfo struct {

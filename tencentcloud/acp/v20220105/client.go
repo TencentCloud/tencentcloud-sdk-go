@@ -82,6 +82,7 @@ func (c *Client) CreateAppScanTaskWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAppScanTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "acp", APIVersion, "CreateAppScanTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAppScanTask require credential")
@@ -131,6 +132,7 @@ func (c *Client) CreateAppScanTaskRepeatWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateAppScanTaskRepeatRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "acp", APIVersion, "CreateAppScanTaskRepeat")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAppScanTaskRepeat require credential")
@@ -182,6 +184,7 @@ func (c *Client) DescribeChannelTaskReportUrlWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeChannelTaskReportUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "acp", APIVersion, "DescribeChannelTaskReportUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeChannelTaskReportUrl require credential")
@@ -231,6 +234,7 @@ func (c *Client) DescribeFileTicketWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeFileTicketRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "acp", APIVersion, "DescribeFileTicket")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFileTicket require credential")
@@ -280,6 +284,7 @@ func (c *Client) DescribeResourceUsageInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeResourceUsageInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "acp", APIVersion, "DescribeResourceUsageInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceUsageInfo require credential")
@@ -329,6 +334,7 @@ func (c *Client) DescribeScanTaskListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeScanTaskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "acp", APIVersion, "DescribeScanTaskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScanTaskList require credential")
@@ -380,6 +386,7 @@ func (c *Client) DescribeScanTaskReportUrlWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeScanTaskReportUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "acp", APIVersion, "DescribeScanTaskReportUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScanTaskReportUrl require credential")
@@ -431,6 +438,7 @@ func (c *Client) DescribeScanTaskStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeScanTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "acp", APIVersion, "DescribeScanTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScanTaskStatus require credential")

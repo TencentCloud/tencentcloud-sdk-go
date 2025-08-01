@@ -112,6 +112,7 @@ func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskR
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vm", APIVersion, "CancelTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelTask require credential")
@@ -395,6 +396,7 @@ func (c *Client) CreateVideoModerationTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateVideoModerationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vm", APIVersion, "CreateVideoModerationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVideoModerationTask require credential")
@@ -476,6 +478,7 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vm", APIVersion, "DescribeTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskDetail require credential")
@@ -559,6 +562,7 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vm", APIVersion, "DescribeTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTasks require credential")

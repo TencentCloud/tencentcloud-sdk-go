@@ -90,6 +90,7 @@ func (c *Client) DeleteCertWithContext(ctx context.Context, request *DeleteCertR
     if request == nil {
         request = NewDeleteCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wss", APIVersion, "DeleteCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCert require credential")
@@ -145,6 +146,7 @@ func (c *Client) DescribeCertListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCertListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wss", APIVersion, "DescribeCertList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCertList require credential")
@@ -206,6 +208,7 @@ func (c *Client) UploadCertWithContext(ctx context.Context, request *UploadCertR
     if request == nil {
         request = NewUploadCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wss", APIVersion, "UploadCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadCert require credential")

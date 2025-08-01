@@ -76,6 +76,7 @@ func (c *Client) DescribeStatusWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "habo", APIVersion, "DescribeStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStatus require credential")
@@ -119,6 +120,7 @@ func (c *Client) StartAnalyseWithContext(ctx context.Context, request *StartAnal
     if request == nil {
         request = NewStartAnalyseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "habo", APIVersion, "StartAnalyse")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartAnalyse require credential")

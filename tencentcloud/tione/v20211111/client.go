@@ -106,6 +106,7 @@ func (c *Client) ChatCompletionWithContext(ctx context.Context, request *ChatCom
     if request == nil {
         request = NewChatCompletionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ChatCompletion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChatCompletion require credential")
@@ -211,6 +212,7 @@ func (c *Client) CreateDatasetWithContext(ctx context.Context, request *CreateDa
     if request == nil {
         request = NewCreateDatasetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateDataset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDataset require credential")
@@ -306,6 +308,7 @@ func (c *Client) CreateModelServiceWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateModelServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateModelService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateModelService require credential")
@@ -365,6 +368,7 @@ func (c *Client) CreateModelServiceAuthTokenWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateModelServiceAuthTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateModelServiceAuthToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateModelServiceAuthToken require credential")
@@ -528,6 +532,7 @@ func (c *Client) CreateNotebookWithContext(ctx context.Context, request *CreateN
     if request == nil {
         request = NewCreateNotebookRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateNotebook")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNotebook require credential")
@@ -597,6 +602,7 @@ func (c *Client) CreatePresignedNotebookUrlWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreatePresignedNotebookUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreatePresignedNotebookUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePresignedNotebookUrl require credential")
@@ -676,6 +682,7 @@ func (c *Client) CreateTrainingModelWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateTrainingModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateTrainingModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTrainingModel require credential")
@@ -835,6 +842,7 @@ func (c *Client) CreateTrainingTaskWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateTrainingTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateTrainingTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTrainingTask require credential")
@@ -938,6 +946,7 @@ func (c *Client) DeleteDatasetWithContext(ctx context.Context, request *DeleteDa
     if request == nil {
         request = NewDeleteDatasetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteDataset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDataset require credential")
@@ -1029,6 +1038,7 @@ func (c *Client) DeleteModelServiceWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteModelServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteModelService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteModelService require credential")
@@ -1092,6 +1102,7 @@ func (c *Client) DeleteModelServiceAuthTokenWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteModelServiceAuthTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteModelServiceAuthToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteModelServiceAuthToken require credential")
@@ -1183,6 +1194,7 @@ func (c *Client) DeleteModelServiceGroupWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteModelServiceGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteModelServiceGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteModelServiceGroup require credential")
@@ -1260,6 +1272,7 @@ func (c *Client) DeleteNotebookWithContext(ctx context.Context, request *DeleteN
     if request == nil {
         request = NewDeleteNotebookRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteNotebook")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNotebook require credential")
@@ -1329,6 +1342,7 @@ func (c *Client) DeleteTrainingModelWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteTrainingModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteTrainingModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTrainingModel require credential")
@@ -1396,6 +1410,7 @@ func (c *Client) DeleteTrainingModelVersionWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteTrainingModelVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteTrainingModelVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTrainingModelVersion require credential")
@@ -1453,6 +1468,7 @@ func (c *Client) DeleteTrainingTaskWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteTrainingTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteTrainingTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTrainingTask require credential")
@@ -1536,6 +1552,7 @@ func (c *Client) DescribeBillingResourceGroupWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeBillingResourceGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeBillingResourceGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBillingResourceGroup require credential")
@@ -1615,6 +1632,7 @@ func (c *Client) DescribeBillingResourceGroupsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeBillingResourceGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeBillingResourceGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBillingResourceGroups require credential")
@@ -1676,6 +1694,7 @@ func (c *Client) DescribeBillingResourceInstanceRunningJobsWithContext(ctx conte
     if request == nil {
         request = NewDescribeBillingResourceInstanceRunningJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeBillingResourceInstanceRunningJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBillingResourceInstanceRunningJobs require credential")
@@ -1737,6 +1756,7 @@ func (c *Client) DescribeBillingSpecsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBillingSpecsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeBillingSpecs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBillingSpecs require credential")
@@ -1792,6 +1812,7 @@ func (c *Client) DescribeBillingSpecsPriceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeBillingSpecsPriceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeBillingSpecsPrice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBillingSpecsPrice require credential")
@@ -1853,6 +1874,7 @@ func (c *Client) DescribeBuildInImagesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeBuildInImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeBuildInImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBuildInImages require credential")
@@ -1954,6 +1976,7 @@ func (c *Client) DescribeDatasetsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeDatasetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeDatasets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDatasets require credential")
@@ -2005,6 +2028,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEvents require credential")
@@ -2092,6 +2116,7 @@ func (c *Client) DescribeInferTemplatesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInferTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeInferTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInferTemplates require credential")
@@ -2145,6 +2170,7 @@ func (c *Client) DescribeLogsWithContext(ctx context.Context, request *DescribeL
     if request == nil {
         request = NewDescribeLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogs require credential")
@@ -2212,6 +2238,7 @@ func (c *Client) DescribeModelAccelerateTaskWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeModelAccelerateTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeModelAccelerateTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelAccelerateTask require credential")
@@ -2285,6 +2312,7 @@ func (c *Client) DescribeModelAccelerateVersionsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeModelAccelerateVersionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeModelAccelerateVersions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelAccelerateVersions require credential")
@@ -2392,6 +2420,7 @@ func (c *Client) DescribeModelServiceWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeModelServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeModelService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelService require credential")
@@ -2491,6 +2520,7 @@ func (c *Client) DescribeModelServiceCallInfoWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeModelServiceCallInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeModelServiceCallInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelServiceCallInfo require credential")
@@ -2574,6 +2604,7 @@ func (c *Client) DescribeModelServiceGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeModelServiceGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeModelServiceGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelServiceGroup require credential")
@@ -2671,6 +2702,7 @@ func (c *Client) DescribeModelServiceGroupsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeModelServiceGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeModelServiceGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelServiceGroups require credential")
@@ -2762,6 +2794,7 @@ func (c *Client) DescribeModelServiceHotUpdatedWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeModelServiceHotUpdatedRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeModelServiceHotUpdated")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelServiceHotUpdated require credential")
@@ -2831,6 +2864,7 @@ func (c *Client) DescribeNotebookWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeNotebookRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeNotebook")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNotebook require credential")
@@ -2898,6 +2932,7 @@ func (c *Client) DescribeNotebooksWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeNotebooksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeNotebooks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNotebooks require credential")
@@ -2953,6 +2988,7 @@ func (c *Client) DescribePlatformImagesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribePlatformImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribePlatformImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePlatformImages require credential")
@@ -3020,6 +3056,7 @@ func (c *Client) DescribeTrainingModelVersionWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeTrainingModelVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeTrainingModelVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrainingModelVersion require credential")
@@ -3091,6 +3128,7 @@ func (c *Client) DescribeTrainingModelVersionsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeTrainingModelVersionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeTrainingModelVersions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrainingModelVersions require credential")
@@ -3148,6 +3186,7 @@ func (c *Client) DescribeTrainingTaskWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTrainingTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeTrainingTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrainingTask require credential")
@@ -3209,6 +3248,7 @@ func (c *Client) DescribeTrainingTaskPodsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeTrainingTaskPodsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeTrainingTaskPods")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrainingTaskPods require credential")
@@ -3276,6 +3316,7 @@ func (c *Client) DescribeTrainingTasksWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTrainingTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeTrainingTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrainingTasks require credential")
@@ -3377,6 +3418,7 @@ func (c *Client) ModifyModelServiceWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyModelServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ModifyModelService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModelService require credential")
@@ -3440,6 +3482,7 @@ func (c *Client) ModifyModelServiceAuthTokenWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyModelServiceAuthTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ModifyModelServiceAuthToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModelServiceAuthToken require credential")
@@ -3503,6 +3546,7 @@ func (c *Client) ModifyModelServiceAuthorizationWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyModelServiceAuthorizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ModifyModelServiceAuthorization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModelServiceAuthorization require credential")
@@ -3560,6 +3604,7 @@ func (c *Client) ModifyNotebookTagsWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyNotebookTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ModifyNotebookTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNotebookTags require credential")
@@ -3617,6 +3662,7 @@ func (c *Client) PushTrainingMetricsWithContext(ctx context.Context, request *Pu
     if request == nil {
         request = NewPushTrainingMetricsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "PushTrainingMetrics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PushTrainingMetrics require credential")
@@ -3746,6 +3792,7 @@ func (c *Client) StartNotebookWithContext(ctx context.Context, request *StartNot
     if request == nil {
         request = NewStartNotebookRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "StartNotebook")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartNotebook require credential")
@@ -3851,6 +3898,7 @@ func (c *Client) StartTrainingTaskWithContext(ctx context.Context, request *Star
     if request == nil {
         request = NewStartTrainingTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "StartTrainingTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartTrainingTask require credential")
@@ -3912,6 +3960,7 @@ func (c *Client) StopModelAccelerateTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewStopModelAccelerateTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "StopModelAccelerateTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopModelAccelerateTask require credential")
@@ -3983,6 +4032,7 @@ func (c *Client) StopNotebookWithContext(ctx context.Context, request *StopNoteb
     if request == nil {
         request = NewStopNotebookRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "StopNotebook")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopNotebook require credential")
@@ -4046,6 +4096,7 @@ func (c *Client) StopTrainingTaskWithContext(ctx context.Context, request *StopT
     if request == nil {
         request = NewStopTrainingTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "StopTrainingTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopTrainingTask require credential")

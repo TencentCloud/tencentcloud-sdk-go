@@ -149,6 +149,9 @@ const (
 	// 云盘退还数量已达上限，不能再退还。
 	RESOURCEINSUFFICIENT_OVERREFUNDQUOTA = "ResourceInsufficient.OverRefundQuota"
 
+	// 云硬盘升级服务繁忙，请稍后重试。
+	RESOURCEINSUFFICIENT_UPGRADESERVICEBUSY = "ResourceInsufficient.UpgradeServiceBusy"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 

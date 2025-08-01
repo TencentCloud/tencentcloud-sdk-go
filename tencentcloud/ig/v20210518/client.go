@@ -86,6 +86,7 @@ func (c *Client) DescribeIgOrderListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeIgOrderListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ig", APIVersion, "DescribeIgOrderList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIgOrderList require credential")

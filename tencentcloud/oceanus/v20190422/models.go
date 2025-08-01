@@ -3050,7 +3050,7 @@ func (r *DescribeSystemResourcesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTreeJobsRequestParams struct {
-	// 筛选条件字段
+	// 筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 工作空间 Serialid
@@ -3060,7 +3060,7 @@ type DescribeTreeJobsRequestParams struct {
 type DescribeTreeJobsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 筛选条件字段
+	// 筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 工作空间 Serialid
@@ -3153,6 +3153,14 @@ type DescribeTreeJobsRsp struct {
 	// 请求ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+
+	// attach-000
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageAttach *string `json:"PageAttach,omitnil,omitempty" name:"PageAttach"`
+
+	// bool
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasMore *bool `json:"HasMore,omitnil,omitempty" name:"HasMore"`
 }
 
 // Predefined struct for user

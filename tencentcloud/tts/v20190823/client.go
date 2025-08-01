@@ -226,6 +226,7 @@ func (c *Client) CreateTtsTaskWithContext(ctx context.Context, request *CreateTt
     if request == nil {
         request = NewCreateTtsTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tts", APIVersion, "CreateTtsTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTtsTask require credential")
@@ -363,6 +364,7 @@ func (c *Client) DescribeTtsTaskStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTtsTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tts", APIVersion, "DescribeTtsTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTtsTaskStatus require credential")
@@ -405,9 +407,11 @@ func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
 //
 // 精品音色和标准音色：默认20并发
 //
-// 大模型音色：默认10并发
+// 大模型音色：默认20并发
 //
 // 超自然大模型音色：暂不支持
+//
+// 一句话复刻音色：默认10并发
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
@@ -462,9 +466,11 @@ func (c *Client) TextToVoice(request *TextToVoiceRequest) (response *TextToVoice
 //
 // 精品音色和标准音色：默认20并发
 //
-// 大模型音色：默认10并发
+// 大模型音色：默认20并发
 //
 // 超自然大模型音色：暂不支持
+//
+// 一句话复刻音色：默认10并发
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
@@ -508,6 +514,7 @@ func (c *Client) TextToVoiceWithContext(ctx context.Context, request *TextToVoic
     if request == nil {
         request = NewTextToVoiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tts", APIVersion, "TextToVoice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextToVoice require credential")

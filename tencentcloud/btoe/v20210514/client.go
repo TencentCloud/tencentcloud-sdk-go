@@ -112,6 +112,7 @@ func (c *Client) CreateAudioDepositWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateAudioDepositRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "CreateAudioDeposit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAudioDeposit require credential")
@@ -195,6 +196,7 @@ func (c *Client) CreateDataDepositWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateDataDepositRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "CreateDataDeposit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDataDeposit require credential")
@@ -282,6 +284,7 @@ func (c *Client) CreateDocDepositWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateDocDepositRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "CreateDocDeposit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDocDeposit require credential")
@@ -353,6 +356,7 @@ func (c *Client) CreateHashDepositWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateHashDepositRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "CreateHashDeposit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateHashDeposit require credential")
@@ -422,6 +426,7 @@ func (c *Client) CreateHashDepositNoCertWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateHashDepositNoCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "CreateHashDepositNoCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateHashDepositNoCert require credential")
@@ -491,6 +496,7 @@ func (c *Client) CreateHashDepositNoSealWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateHashDepositNoSealRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "CreateHashDepositNoSeal")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateHashDepositNoSeal require credential")
@@ -578,6 +584,7 @@ func (c *Client) CreateImageDepositWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateImageDepositRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "CreateImageDeposit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateImageDeposit require credential")
@@ -663,6 +670,7 @@ func (c *Client) CreateVideoDepositWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateVideoDepositRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "CreateVideoDeposit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVideoDeposit require credential")
@@ -732,6 +740,7 @@ func (c *Client) GetDepositCertWithContext(ctx context.Context, request *GetDepo
     if request == nil {
         request = NewGetDepositCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "GetDepositCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDepositCert require credential")
@@ -829,6 +838,7 @@ func (c *Client) GetDepositFileWithContext(ctx context.Context, request *GetDepo
     if request == nil {
         request = NewGetDepositFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "GetDepositFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDepositFile require credential")
@@ -906,6 +916,7 @@ func (c *Client) GetDepositInfoWithContext(ctx context.Context, request *GetDepo
     if request == nil {
         request = NewGetDepositInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "GetDepositInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDepositInfo require credential")
@@ -967,6 +978,7 @@ func (c *Client) VerifyEvidenceBlockChainTxHashWithContext(ctx context.Context, 
     if request == nil {
         request = NewVerifyEvidenceBlockChainTxHashRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "VerifyEvidenceBlockChainTxHash")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyEvidenceBlockChainTxHash require credential")
@@ -1028,6 +1040,7 @@ func (c *Client) VerifyEvidenceHashWithContext(ctx context.Context, request *Ver
     if request == nil {
         request = NewVerifyEvidenceHashRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "btoe", APIVersion, "VerifyEvidenceHash")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyEvidenceHash require credential")

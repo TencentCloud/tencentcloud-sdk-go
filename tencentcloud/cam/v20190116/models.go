@@ -1382,6 +1382,88 @@ func (r *CreateServiceLinkedRoleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSubAccountLoginIpPolicyRequestParams struct {
+	// IP策略集合
+	IpPolicies []*IpPolicy `json:"IpPolicies,omitnil,omitempty" name:"IpPolicies"`
+
+	// 审批人类型，目前支持的类型有：SubAccountLoginLimitApproval（子账号登录限制审批）
+	ApproverType *string `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
+
+	// 被添加为协助审批人的账号ID数组
+	ApproverUin []*uint64 `json:"ApproverUin,omitnil,omitempty" name:"ApproverUin"`
+
+	// 是否禁用策略：0：不禁用，1：禁用
+	DisablePolicy *uint64 `json:"DisablePolicy,omitnil,omitempty" name:"DisablePolicy"`
+
+	// 策略类型：1：更新IP策略，2：设置异地登录校验校验规则
+	PolicyType *uint64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+}
+
+type CreateSubAccountLoginIpPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// IP策略集合
+	IpPolicies []*IpPolicy `json:"IpPolicies,omitnil,omitempty" name:"IpPolicies"`
+
+	// 审批人类型，目前支持的类型有：SubAccountLoginLimitApproval（子账号登录限制审批）
+	ApproverType *string `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
+
+	// 被添加为协助审批人的账号ID数组
+	ApproverUin []*uint64 `json:"ApproverUin,omitnil,omitempty" name:"ApproverUin"`
+
+	// 是否禁用策略：0：不禁用，1：禁用
+	DisablePolicy *uint64 `json:"DisablePolicy,omitnil,omitempty" name:"DisablePolicy"`
+
+	// 策略类型：1：更新IP策略，2：设置异地登录校验校验规则
+	PolicyType *uint64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+}
+
+func (r *CreateSubAccountLoginIpPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubAccountLoginIpPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IpPolicies")
+	delete(f, "ApproverType")
+	delete(f, "ApproverUin")
+	delete(f, "DisablePolicy")
+	delete(f, "PolicyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubAccountLoginIpPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubAccountLoginIpPolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSubAccountLoginIpPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSubAccountLoginIpPolicyResponseParams `json:"Response"`
+}
+
+func (r *CreateSubAccountLoginIpPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubAccountLoginIpPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateUserOIDCConfigRequestParams struct {
 	// 身份提供商URL。OpenID Connect身份提供商标识。
 	// 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
@@ -3986,6 +4068,14 @@ type GroupMemberInfo struct {
 	// 昵称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type IpPolicy struct {
+	// IP段
+	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
+
+	// 策略效力，Allow或Deny
+	Effect *string `json:"Effect,omitnil,omitempty" name:"Effect"`
 }
 
 // Predefined struct for user

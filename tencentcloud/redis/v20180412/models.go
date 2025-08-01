@@ -5725,7 +5725,9 @@ type DescribeTaskListRequestParams struct {
 	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 项目 ID。登录 [Redis 控制台](https://console.cloud.tencent.com/redis)，在右上角的账号信息下拉菜单中，选择**项目管理**，即可获取对应的项目 ID。
+	// 该字段已废弃, 请忽略, 项目 ID
+	//
+	// Deprecated: ProjectIds is deprecated.
 	ProjectIds []*int64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
 	// 任务类型。
@@ -5756,7 +5758,7 @@ type DescribeTaskListRequestParams struct {
 	// - FLOW_MODIFYINSTANCEPARAMS："034"，修改实例参数。
 	// - FLOW_MODIFYINSTANCEPASSWORDFREE："035"，设置免密。
 	// - FLOW_SWITCHINSTANCEVIP："036"，实例VIP切换。
-	// - FLOW_MODIFYINSTANCEACCOUNT："037"，实例帐号变更。
+	// - FLOW_MODIFYINSTANCEACCOUNT："037"，实例账号变更。
 	// - FLOW_MODIFYINSTANCEBANDWIDTH："038"，实例带宽变更。
 	// - FLOW_ENABLEINSTANCE_REPLICATE："039"，开启副本只读。
 	// - FLOW_DISABLEINSTANCE_REPLICATE："040"，关闭副本只读。
@@ -5777,7 +5779,7 @@ type DescribeTaskListRequestParams struct {
 	// - FLOW_CODE_CHANGE_INSTANCE_ROLE： "057"，更改复制组实例角色。
 	// - FLOW_MIGRATE_NODE："058"，迁移节点。
 	// - FLOW_SWITCH_NODE："059"，切换节点。
-	// - FLOW_UPGRADE_SMALL_VERSION："060"，升级 Redi s版本。
+	// - FLOW_UPGRADE_SMALL_VERSION："060"，升级 Redis版本。
 	// - FLOW_UPGRADE_PROXY_VERSION："061"，升级 Proxy 版本。
 	// - FLOW_MODIFY_INSTANCE_NETWORK： "062"，实例修改网络。
 	// - FLOW_MIGRATE_PROXY_NODE："063"，迁移proxy节点。
@@ -5827,7 +5829,7 @@ type DescribeTaskListRequest struct {
 	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 项目 ID。登录 [Redis 控制台](https://console.cloud.tencent.com/redis)，在右上角的账号信息下拉菜单中，选择**项目管理**，即可获取对应的项目 ID。
+	// 该字段已废弃, 请忽略, 项目 ID
 	ProjectIds []*int64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
 	// 任务类型。
@@ -5858,7 +5860,7 @@ type DescribeTaskListRequest struct {
 	// - FLOW_MODIFYINSTANCEPARAMS："034"，修改实例参数。
 	// - FLOW_MODIFYINSTANCEPASSWORDFREE："035"，设置免密。
 	// - FLOW_SWITCHINSTANCEVIP："036"，实例VIP切换。
-	// - FLOW_MODIFYINSTANCEACCOUNT："037"，实例帐号变更。
+	// - FLOW_MODIFYINSTANCEACCOUNT："037"，实例账号变更。
 	// - FLOW_MODIFYINSTANCEBANDWIDTH："038"，实例带宽变更。
 	// - FLOW_ENABLEINSTANCE_REPLICATE："039"，开启副本只读。
 	// - FLOW_DISABLEINSTANCE_REPLICATE："040"，关闭副本只读。
@@ -5879,7 +5881,7 @@ type DescribeTaskListRequest struct {
 	// - FLOW_CODE_CHANGE_INSTANCE_ROLE： "057"，更改复制组实例角色。
 	// - FLOW_MIGRATE_NODE："058"，迁移节点。
 	// - FLOW_SWITCH_NODE："059"，切换节点。
-	// - FLOW_UPGRADE_SMALL_VERSION："060"，升级 Redi s版本。
+	// - FLOW_UPGRADE_SMALL_VERSION："060"，升级 Redis版本。
 	// - FLOW_UPGRADE_PROXY_VERSION："061"，升级 Proxy 版本。
 	// - FLOW_MODIFY_INSTANCE_NETWORK： "062"，实例修改网络。
 	// - FLOW_MIGRATE_PROXY_NODE："063"，迁移proxy节点。
@@ -7891,6 +7893,7 @@ type ModifyDBInstanceSecurityGroupsRequestParams struct {
 	// 更换为新的安全组 ID 列表，即一个或者多个安全组 ID 组成的数组。
 	// - 若实例第一次配置安全组，请使用接口[AssociateSecurityGroups](https://cloud.tencent.com/document/product/239/41260)先绑定安全组。
 	// - 更换安全组，请在[控制台安全组](https://console.cloud.tencent.com/vpc/security-group)页面获取安全组 ID。
+	//   **注意：**该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
@@ -7906,6 +7909,7 @@ type ModifyDBInstanceSecurityGroupsRequest struct {
 	// 更换为新的安全组 ID 列表，即一个或者多个安全组 ID 组成的数组。
 	// - 若实例第一次配置安全组，请使用接口[AssociateSecurityGroups](https://cloud.tencent.com/document/product/239/41260)先绑定安全组。
 	// - 更换安全组，请在[控制台安全组](https://console.cloud.tencent.com/vpc/security-group)页面获取安全组 ID。
+	//   **注意：**该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
@@ -10282,6 +10286,9 @@ type SwitchProxyRequestParams struct {
 
 	// 实例 ProxyID，请通过接口[DescribeInstanceNodeInfo](https://cloud.tencent.com/document/product/239/48603)的返回参数**Proxy**中的**NodeId**获取。  
 	ProxyID *string `json:"ProxyID,omitnil,omitempty" name:"ProxyID"`
+
+	// 实例 ProxyID列表，请通过接口[DescribeInstanceNodeInfo](https://cloud.tencent.com/document/product/239/48603)的返回参数**Proxy**中的**NodeId**获取。
+	ProxyIDList []*string `json:"ProxyIDList,omitnil,omitempty" name:"ProxyIDList"`
 }
 
 type SwitchProxyRequest struct {
@@ -10292,6 +10299,9 @@ type SwitchProxyRequest struct {
 
 	// 实例 ProxyID，请通过接口[DescribeInstanceNodeInfo](https://cloud.tencent.com/document/product/239/48603)的返回参数**Proxy**中的**NodeId**获取。  
 	ProxyID *string `json:"ProxyID,omitnil,omitempty" name:"ProxyID"`
+
+	// 实例 ProxyID列表，请通过接口[DescribeInstanceNodeInfo](https://cloud.tencent.com/document/product/239/48603)的返回参数**Proxy**中的**NodeId**获取。
+	ProxyIDList []*string `json:"ProxyIDList,omitnil,omitempty" name:"ProxyIDList"`
 }
 
 func (r *SwitchProxyRequest) ToJsonString() string {
@@ -10308,6 +10318,7 @@ func (r *SwitchProxyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "ProxyID")
+	delete(f, "ProxyIDList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchProxyRequest has unknown keys!", "")
 	}
@@ -10316,6 +10327,9 @@ func (r *SwitchProxyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SwitchProxyResponseParams struct {
+	// 任务ID。
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

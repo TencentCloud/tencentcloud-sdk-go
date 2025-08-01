@@ -126,6 +126,7 @@ func (c *Client) AssessQualityWithContext(ctx context.Context, request *AssessQu
     if request == nil {
         request = NewAssessQualityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "AssessQuality")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssessQuality require credential")
@@ -339,6 +340,7 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGrou
     if request == nil {
         request = NewCreateGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "CreateGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateGroup require credential")
@@ -476,6 +478,7 @@ func (c *Client) CreateImageWithContext(ctx context.Context, request *CreateImag
     if request == nil {
         request = NewCreateImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "CreateImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateImage require credential")
@@ -569,6 +572,7 @@ func (c *Client) CropImageWithContext(ctx context.Context, request *CropImageReq
     if request == nil {
         request = NewCropImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "CropImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CropImage require credential")
@@ -664,6 +668,7 @@ func (c *Client) DeleteImagesWithContext(ctx context.Context, request *DeleteIma
     if request == nil {
         request = NewDeleteImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DeleteImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteImages require credential")
@@ -741,6 +746,7 @@ func (c *Client) DescribeGroupsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DescribeGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroups require credential")
@@ -830,6 +836,7 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DescribeImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImages require credential")
@@ -949,6 +956,7 @@ func (c *Client) DetectChefDressWithContext(ctx context.Context, request *Detect
     if request == nil {
         request = NewDetectChefDressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DetectChefDress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectChefDress require credential")
@@ -1038,6 +1046,7 @@ func (c *Client) DetectDisgustWithContext(ctx context.Context, request *DetectDi
     if request == nil {
         request = NewDetectDisgustRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DetectDisgust")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectDisgust require credential")
@@ -1123,6 +1132,7 @@ func (c *Client) DetectEnvelopeWithContext(ctx context.Context, request *DetectE
     if request == nil {
         request = NewDetectEnvelopeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DetectEnvelope")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectEnvelope require credential")
@@ -1290,6 +1300,7 @@ func (c *Client) DetectLabelWithContext(ctx context.Context, request *DetectLabe
     if request == nil {
         request = NewDetectLabelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DetectLabel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectLabel require credential")
@@ -1385,6 +1396,7 @@ func (c *Client) DetectLabelProWithContext(ctx context.Context, request *DetectL
     if request == nil {
         request = NewDetectLabelProRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DetectLabelPro")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectLabelPro require credential")
@@ -1468,6 +1480,7 @@ func (c *Client) DetectMisbehaviorWithContext(ctx context.Context, request *Dete
     if request == nil {
         request = NewDetectMisbehaviorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DetectMisbehavior")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectMisbehavior require credential")
@@ -1559,6 +1572,7 @@ func (c *Client) DetectPetWithContext(ctx context.Context, request *DetectPetReq
     if request == nil {
         request = NewDetectPetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DetectPet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectPet require credential")
@@ -1644,6 +1658,7 @@ func (c *Client) DetectProductWithContext(ctx context.Context, request *DetectPr
     if request == nil {
         request = NewDetectProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DetectProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectProduct require credential")
@@ -1771,6 +1786,7 @@ func (c *Client) DetectSecurityWithContext(ctx context.Context, request *DetectS
     if request == nil {
         request = NewDetectSecurityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "DetectSecurity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectSecurity require credential")
@@ -1872,6 +1888,7 @@ func (c *Client) EnhanceImageWithContext(ctx context.Context, request *EnhanceIm
     if request == nil {
         request = NewEnhanceImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "EnhanceImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnhanceImage require credential")
@@ -1967,6 +1984,7 @@ func (c *Client) RecognizeCarWithContext(ctx context.Context, request *Recognize
     if request == nil {
         request = NewRecognizeCarRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "RecognizeCar")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecognizeCar require credential")
@@ -2064,6 +2082,7 @@ func (c *Client) RecognizeCarProWithContext(ctx context.Context, request *Recogn
     if request == nil {
         request = NewRecognizeCarProRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "RecognizeCarPro")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecognizeCarPro require credential")
@@ -2189,6 +2208,7 @@ func (c *Client) SearchImageWithContext(ctx context.Context, request *SearchImag
     if request == nil {
         request = NewSearchImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "SearchImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchImage require credential")
@@ -2296,6 +2316,7 @@ func (c *Client) UpdateImageWithContext(ctx context.Context, request *UpdateImag
     if request == nil {
         request = NewUpdateImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tiia", APIVersion, "UpdateImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateImage require credential")

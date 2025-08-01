@@ -134,6 +134,7 @@ func (c *Client) CloneClusterToPointInTimeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCloneClusterToPointInTimeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "CloneClusterToPointInTime")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloneClusterToPointInTime require credential")
@@ -245,6 +246,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "CreateCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCluster require credential")
@@ -328,6 +330,7 @@ func (c *Client) CreateClusterInstancesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "CreateClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterInstances require credential")
@@ -387,6 +390,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "DeleteCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCluster require credential")
@@ -454,6 +458,7 @@ func (c *Client) DeleteClusterInstancesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "DeleteClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterInstances require credential")
@@ -517,6 +522,7 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeAccountsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "DescribeAccounts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccounts require credential")
@@ -578,6 +584,7 @@ func (c *Client) DescribeClusterBackupsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeClusterBackupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "DescribeClusterBackups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterBackups require credential")
@@ -639,6 +646,7 @@ func (c *Client) DescribeClusterEndpointsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterEndpointsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "DescribeClusterEndpoints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterEndpoints require credential")
@@ -698,6 +706,7 @@ func (c *Client) DescribeClusterInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "DescribeClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterInstances require credential")
@@ -773,6 +782,7 @@ func (c *Client) DescribeClusterRecoveryTimeRangeWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeClusterRecoveryTimeRangeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "DescribeClusterRecoveryTimeRange")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterRecoveryTimeRange require credential")
@@ -834,6 +844,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "DescribeClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusters require credential")
@@ -895,6 +906,7 @@ func (c *Client) DescribeResourcesByDealNameWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeResourcesByDealNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "DescribeResourcesByDealName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourcesByDealName require credential")
@@ -970,6 +982,7 @@ func (c *Client) IsolateClusterWithContext(ctx context.Context, request *Isolate
     if request == nil {
         request = NewIsolateClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "IsolateCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IsolateCluster require credential")
@@ -1049,6 +1062,7 @@ func (c *Client) IsolateClusterInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewIsolateClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "IsolateClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IsolateClusterInstances require credential")
@@ -1116,6 +1130,7 @@ func (c *Client) ModifyAccountDescriptionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyAccountDescriptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "ModifyAccountDescription")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccountDescription require credential")
@@ -1183,6 +1198,7 @@ func (c *Client) ModifyClusterEndpointWanStatusWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyClusterEndpointWanStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "ModifyClusterEndpointWanStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterEndpointWanStatus require credential")
@@ -1266,6 +1282,7 @@ func (c *Client) ModifyClusterInstancesSpecWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyClusterInstancesSpecRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "ModifyClusterInstancesSpec")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterInstancesSpec require credential")
@@ -1331,6 +1348,7 @@ func (c *Client) ModifyClusterNameWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyClusterNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "ModifyClusterName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterName require credential")
@@ -1396,6 +1414,7 @@ func (c *Client) ModifyClustersAutoRenewFlagWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyClustersAutoRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "ModifyClustersAutoRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClustersAutoRenewFlag require credential")
@@ -1465,6 +1484,7 @@ func (c *Client) RecoverClusterWithContext(ctx context.Context, request *Recover
     if request == nil {
         request = NewRecoverClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "RecoverCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecoverCluster require credential")
@@ -1546,6 +1566,7 @@ func (c *Client) RecoverClusterInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewRecoverClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "RecoverClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecoverClusterInstances require credential")
@@ -1613,6 +1634,7 @@ func (c *Client) RenewClusterWithContext(ctx context.Context, request *RenewClus
     if request == nil {
         request = NewRenewClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "RenewCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewCluster require credential")
@@ -1680,6 +1702,7 @@ func (c *Client) ResetAccountPasswordWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewResetAccountPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "ResetAccountPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetAccountPassword require credential")
@@ -1747,6 +1770,7 @@ func (c *Client) RestartClusterInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewRestartClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "RestartClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartClusterInstances require credential")
@@ -1818,6 +1842,7 @@ func (c *Client) TransformClusterPayModeWithContext(ctx context.Context, request
     if request == nil {
         request = NewTransformClusterPayModeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdcpg", APIVersion, "TransformClusterPayMode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TransformClusterPayMode require credential")

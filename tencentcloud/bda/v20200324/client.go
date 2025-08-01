@@ -142,6 +142,7 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGrou
     if request == nil {
         request = NewCreateGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "CreateGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateGroup require credential")
@@ -269,6 +270,7 @@ func (c *Client) CreatePersonWithContext(ctx context.Context, request *CreatePer
     if request == nil {
         request = NewCreatePersonRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "CreatePerson")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePerson require credential")
@@ -338,6 +340,7 @@ func (c *Client) CreateSegmentationTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateSegmentationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "CreateSegmentationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSegmentationTask require credential")
@@ -451,6 +454,7 @@ func (c *Client) CreateTraceWithContext(ctx context.Context, request *CreateTrac
     if request == nil {
         request = NewCreateTraceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "CreateTrace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTrace require credential")
@@ -524,6 +528,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGrou
     if request == nil {
         request = NewDeleteGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "DeleteGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGroup require credential")
@@ -593,6 +598,7 @@ func (c *Client) DeletePersonWithContext(ctx context.Context, request *DeletePer
     if request == nil {
         request = NewDeletePersonRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "DeletePerson")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePerson require credential")
@@ -654,6 +660,7 @@ func (c *Client) DescribeSegmentationTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSegmentationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "DescribeSegmentationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSegmentationTask require credential")
@@ -741,6 +748,7 @@ func (c *Client) DetectBodyWithContext(ctx context.Context, request *DetectBodyR
     if request == nil {
         request = NewDetectBodyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "DetectBody")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectBody require credential")
@@ -830,6 +838,7 @@ func (c *Client) DetectBodyJointsWithContext(ctx context.Context, request *Detec
     if request == nil {
         request = NewDetectBodyJointsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "DetectBodyJoints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectBodyJoints require credential")
@@ -899,6 +908,7 @@ func (c *Client) GetGroupListWithContext(ctx context.Context, request *GetGroupL
     if request == nil {
         request = NewGetGroupListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "GetGroupList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetGroupList require credential")
@@ -972,6 +982,7 @@ func (c *Client) GetPersonListWithContext(ctx context.Context, request *GetPerso
     if request == nil {
         request = NewGetPersonListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "GetPersonList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetPersonList require credential")
@@ -1039,6 +1050,7 @@ func (c *Client) GetSummaryInfoWithContext(ctx context.Context, request *GetSumm
     if request == nil {
         request = NewGetSummaryInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "GetSummaryInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetSummaryInfo require credential")
@@ -1114,6 +1126,7 @@ func (c *Client) ModifyGroupWithContext(ctx context.Context, request *ModifyGrou
     if request == nil {
         request = NewModifyGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "ModifyGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyGroup require credential")
@@ -1185,6 +1198,7 @@ func (c *Client) ModifyPersonInfoWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyPersonInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "ModifyPersonInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPersonInfo require credential")
@@ -1302,6 +1316,7 @@ func (c *Client) SearchTraceWithContext(ctx context.Context, request *SearchTrac
     if request == nil {
         request = NewSearchTraceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "SearchTrace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchTrace require credential")
@@ -1395,6 +1410,7 @@ func (c *Client) SegmentCustomizedPortraitPicWithContext(ctx context.Context, re
     if request == nil {
         request = NewSegmentCustomizedPortraitPicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "SegmentCustomizedPortraitPic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SegmentCustomizedPortraitPic require credential")
@@ -1490,6 +1506,7 @@ func (c *Client) SegmentPortraitPicWithContext(ctx context.Context, request *Seg
     if request == nil {
         request = NewSegmentPortraitPicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "SegmentPortraitPic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SegmentPortraitPic require credential")
@@ -1545,6 +1562,7 @@ func (c *Client) TerminateSegmentationTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewTerminateSegmentationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bda", APIVersion, "TerminateSegmentationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateSegmentationTask require credential")

@@ -84,6 +84,7 @@ func (c *Client) TongChuanDisplayWithContext(ctx context.Context, request *TongC
     if request == nil {
         request = NewTongChuanDisplayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsi", APIVersion, "TongChuanDisplay")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TongChuanDisplay require credential")
@@ -191,6 +192,7 @@ func (c *Client) TongChuanRecognizeWithContext(ctx context.Context, request *Ton
     if request == nil {
         request = NewTongChuanRecognizeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsi", APIVersion, "TongChuanRecognize")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TongChuanRecognize require credential")
@@ -290,6 +292,7 @@ func (c *Client) TongChuanSyncWithContext(ctx context.Context, request *TongChua
     if request == nil {
         request = NewTongChuanSyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsi", APIVersion, "TongChuanSync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TongChuanSync require credential")

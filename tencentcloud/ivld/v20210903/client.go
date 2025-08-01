@@ -126,6 +126,7 @@ func (c *Client) AddCustomPersonImageWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAddCustomPersonImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "AddCustomPersonImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddCustomPersonImage require credential")
@@ -207,6 +208,7 @@ func (c *Client) CreateCustomCategoryWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateCustomCategoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "CreateCustomCategory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomCategory require credential")
@@ -312,6 +314,7 @@ func (c *Client) CreateCustomGroupWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCustomGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "CreateCustomGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomGroup require credential")
@@ -429,6 +432,7 @@ func (c *Client) CreateCustomPersonWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCustomPersonRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "CreateCustomPerson")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomPerson require credential")
@@ -492,6 +496,7 @@ func (c *Client) CreateDefaultCategoriesWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateDefaultCategoriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "CreateDefaultCategories")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDefaultCategories require credential")
@@ -593,6 +598,7 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
     if request == nil {
         request = NewCreateTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "CreateTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTask require credential")
@@ -782,6 +788,7 @@ func (c *Client) CreateVideoSummaryTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateVideoSummaryTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "CreateVideoSummaryTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVideoSummaryTask require credential")
@@ -849,6 +856,7 @@ func (c *Client) DeleteCustomCategoryWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteCustomCategoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DeleteCustomCategory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomCategory require credential")
@@ -912,6 +920,7 @@ func (c *Client) DeleteCustomPersonWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteCustomPersonRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DeleteCustomPerson")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomPerson require credential")
@@ -981,6 +990,7 @@ func (c *Client) DeleteCustomPersonImageWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteCustomPersonImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DeleteCustomPersonImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomPersonImage require credential")
@@ -1062,6 +1072,7 @@ func (c *Client) DeleteMediaWithContext(ctx context.Context, request *DeleteMedi
     if request == nil {
         request = NewDeleteMediaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DeleteMedia")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMedia require credential")
@@ -1141,6 +1152,7 @@ func (c *Client) DeleteTaskWithContext(ctx context.Context, request *DeleteTaskR
     if request == nil {
         request = NewDeleteTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DeleteTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTask require credential")
@@ -1200,6 +1212,7 @@ func (c *Client) DescribeCustomCategoriesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCustomCategoriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DescribeCustomCategories")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomCategories require credential")
@@ -1265,6 +1278,7 @@ func (c *Client) DescribeCustomGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCustomGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DescribeCustomGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomGroup require credential")
@@ -1328,6 +1342,7 @@ func (c *Client) DescribeCustomPersonDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCustomPersonDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DescribeCustomPersonDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomPersonDetail require credential")
@@ -1405,6 +1420,7 @@ func (c *Client) DescribeCustomPersonsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCustomPersonsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DescribeCustomPersons")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomPersons require credential")
@@ -1484,6 +1500,7 @@ func (c *Client) DescribeMediaWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeMediaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DescribeMedia")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMedia require credential")
@@ -1589,6 +1606,7 @@ func (c *Client) DescribeMediasWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeMediasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DescribeMedias")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMedias require credential")
@@ -1660,6 +1678,7 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
     if request == nil {
         request = NewDescribeTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DescribeTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTask require credential")
@@ -1727,6 +1746,7 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DescribeTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskDetail require credential")
@@ -1810,6 +1830,7 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DescribeTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTasks require credential")
@@ -1885,6 +1906,7 @@ func (c *Client) DescribeUsageAmountWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeUsageAmountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DescribeUsageAmount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUsageAmount require credential")
@@ -1960,6 +1982,7 @@ func (c *Client) DescribeVideoSummaryDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeVideoSummaryDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "DescribeVideoSummaryDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoSummaryDetail require credential")
@@ -2213,6 +2236,7 @@ func (c *Client) ImportMediaWithContext(ctx context.Context, request *ImportMedi
     if request == nil {
         request = NewImportMediaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "ImportMedia")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportMedia require credential")
@@ -2424,6 +2448,7 @@ func (c *Client) ModifyCallbackWithContext(ctx context.Context, request *ModifyC
     if request == nil {
         request = NewModifyCallbackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "ModifyCallback")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCallback require credential")
@@ -2487,6 +2512,7 @@ func (c *Client) QueryCallbackWithContext(ctx context.Context, request *QueryCal
     if request == nil {
         request = NewQueryCallbackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "QueryCallback")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCallback require credential")
@@ -2576,6 +2602,7 @@ func (c *Client) UpdateCustomCategoryWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateCustomCategoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "UpdateCustomCategory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCustomCategory require credential")
@@ -2645,6 +2672,7 @@ func (c *Client) UpdateCustomPersonWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateCustomPersonRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ivld", APIVersion, "UpdateCustomPerson")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCustomPerson require credential")

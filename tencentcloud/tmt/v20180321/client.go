@@ -102,6 +102,7 @@ func (c *Client) FileTranslateWithContext(ctx context.Context, request *FileTran
     if request == nil {
         request = NewFileTranslateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tmt", APIVersion, "FileTranslate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FileTranslate require credential")
@@ -165,6 +166,7 @@ func (c *Client) GetFileTranslateWithContext(ctx context.Context, request *GetFi
     if request == nil {
         request = NewGetFileTranslateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tmt", APIVersion, "GetFileTranslate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFileTranslate require credential")
@@ -254,6 +256,7 @@ func (c *Client) ImageTranslateWithContext(ctx context.Context, request *ImageTr
     if request == nil {
         request = NewImageTranslateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tmt", APIVersion, "ImageTranslate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageTranslate require credential")
@@ -359,6 +362,7 @@ func (c *Client) ImageTranslateLLMWithContext(ctx context.Context, request *Imag
     if request == nil {
         request = NewImageTranslateLLMRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tmt", APIVersion, "ImageTranslateLLM")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageTranslateLLM require credential")
@@ -458,6 +462,7 @@ func (c *Client) LanguageDetectWithContext(ctx context.Context, request *Languag
     if request == nil {
         request = NewLanguageDetectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tmt", APIVersion, "LanguageDetect")
     
     if c.GetCredential() == nil {
         return nil, errors.New("LanguageDetect require credential")
@@ -563,6 +568,7 @@ func (c *Client) SpeechTranslateWithContext(ctx context.Context, request *Speech
     if request == nil {
         request = NewSpeechTranslateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tmt", APIVersion, "SpeechTranslate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SpeechTranslate require credential")
@@ -664,6 +670,7 @@ func (c *Client) TextTranslateWithContext(ctx context.Context, request *TextTran
     if request == nil {
         request = NewTextTranslateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tmt", APIVersion, "TextTranslate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextTranslate require credential")
@@ -761,6 +768,7 @@ func (c *Client) TextTranslateBatchWithContext(ctx context.Context, request *Tex
     if request == nil {
         request = NewTextTranslateBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tmt", APIVersion, "TextTranslateBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextTranslateBatch require credential")

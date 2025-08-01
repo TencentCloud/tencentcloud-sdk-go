@@ -148,6 +148,9 @@ type AddClusterSlaveZoneRequestParams struct {
 
 	// binlog同步方式。默认值：async。可选值：sync、semisync、async
 	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
+
+	// 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 type AddClusterSlaveZoneRequest struct {
@@ -161,6 +164,9 @@ type AddClusterSlaveZoneRequest struct {
 
 	// binlog同步方式。默认值：async。可选值：sync、semisync、async
 	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
+
+	// 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 func (r *AddClusterSlaveZoneRequest) ToJsonString() string {
@@ -178,6 +184,7 @@ func (r *AddClusterSlaveZoneRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "SlaveZone")
 	delete(f, "BinlogSyncWay")
+	delete(f, "SemiSyncTimeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddClusterSlaveZoneRequest has unknown keys!", "")
 	}
@@ -11972,6 +11979,9 @@ type ModifyClusterSlaveZoneRequestParams struct {
 
 	// binlog同步方式。默认值：async。可选值：sync、semisync、async
 	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
+
+	// 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 type ModifyClusterSlaveZoneRequest struct {
@@ -11988,6 +11998,9 @@ type ModifyClusterSlaveZoneRequest struct {
 
 	// binlog同步方式。默认值：async。可选值：sync、semisync、async
 	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
+
+	// 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 func (r *ModifyClusterSlaveZoneRequest) ToJsonString() string {
@@ -12006,6 +12019,7 @@ func (r *ModifyClusterSlaveZoneRequest) FromJsonString(s string) error {
 	delete(f, "OldSlaveZone")
 	delete(f, "NewSlaveZone")
 	delete(f, "BinlogSyncWay")
+	delete(f, "SemiSyncTimeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterSlaveZoneRequest has unknown keys!", "")
 	}
@@ -14943,6 +14957,114 @@ func (r *RenewClustersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ReplayInstanceAuditLogRequestParams struct {
+	// 源集群id
+	SourceClusterId *string `json:"SourceClusterId,omitnil,omitempty" name:"SourceClusterId"`
+
+	// 源实例id
+	SourceInstanceId *string `json:"SourceInstanceId,omitnil,omitempty" name:"SourceInstanceId"`
+
+	// 目标集群id
+	// 目标集群必须为原始集群三天内克隆出的集群。
+	TargetClusterId *string `json:"TargetClusterId,omitnil,omitempty" name:"TargetClusterId"`
+
+	// 目标实例id
+	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
+
+	// 用户名.需要host为%的用户名
+	TargetUserName *string `json:"TargetUserName,omitnil,omitempty" name:"TargetUserName"`
+
+	// 密码
+	TargetPassword *string `json:"TargetPassword,omitnil,omitempty" name:"TargetPassword"`
+
+	// 开始时间。时间格式为：yyyy-DD-mm hh:mm:ss
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间。时间格式为：yyyy-DD-mm hh:mm:ss
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type ReplayInstanceAuditLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 源集群id
+	SourceClusterId *string `json:"SourceClusterId,omitnil,omitempty" name:"SourceClusterId"`
+
+	// 源实例id
+	SourceInstanceId *string `json:"SourceInstanceId,omitnil,omitempty" name:"SourceInstanceId"`
+
+	// 目标集群id
+	// 目标集群必须为原始集群三天内克隆出的集群。
+	TargetClusterId *string `json:"TargetClusterId,omitnil,omitempty" name:"TargetClusterId"`
+
+	// 目标实例id
+	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
+
+	// 用户名.需要host为%的用户名
+	TargetUserName *string `json:"TargetUserName,omitnil,omitempty" name:"TargetUserName"`
+
+	// 密码
+	TargetPassword *string `json:"TargetPassword,omitnil,omitempty" name:"TargetPassword"`
+
+	// 开始时间。时间格式为：yyyy-DD-mm hh:mm:ss
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间。时间格式为：yyyy-DD-mm hh:mm:ss
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *ReplayInstanceAuditLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplayInstanceAuditLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SourceClusterId")
+	delete(f, "SourceInstanceId")
+	delete(f, "TargetClusterId")
+	delete(f, "TargetInstanceId")
+	delete(f, "TargetUserName")
+	delete(f, "TargetPassword")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplayInstanceAuditLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReplayInstanceAuditLogResponseParams struct {
+	// 任务id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReplayInstanceAuditLogResponse struct {
+	*tchttp.BaseResponse
+	Response *ReplayInstanceAuditLogResponseParams `json:"Response"`
+}
+
+func (r *ReplayInstanceAuditLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplayInstanceAuditLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResetAccountPasswordRequestParams struct {
 	// 数据库账号名
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
@@ -16161,6 +16283,9 @@ type SlaveZoneAttrItem struct {
 
 	// binlog同步方式
 	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
+
+	// 半同步超时时间，单位ms
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 type SlaveZoneStockInfo struct {

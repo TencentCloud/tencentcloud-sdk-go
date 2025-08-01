@@ -2861,6 +2861,119 @@ func (r *CreateIpAccessControlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateOwaspWhiteRuleRequestParams struct {
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 规则匹配策略列表
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 加白的规则ID列表
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 加白的类型，0:按照特定规则ID加白, 1:按照规则类型加白
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 规则状态，0：关闭、1：开启，默认为开启
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type CreateOwaspWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 规则匹配策略列表
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 加白的规则ID列表
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 加白的类型，0:按照特定规则ID加白, 1:按照规则类型加白
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 规则状态，0：关闭、1：开启，默认为开启
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *CreateOwaspWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOwaspWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Domain")
+	delete(f, "Strategies")
+	delete(f, "Ids")
+	delete(f, "Type")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "ExpireTime")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOwaspWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOwaspWhiteRuleResponseParams struct {
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOwaspWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOwaspWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateOwaspWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOwaspWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePostCKafkaFlowRequestParams struct {
 	// 投递的CKafka所在区域
 	CKafkaRegion *string `json:"CKafkaRegion,omitnil,omitempty" name:"CKafkaRegion"`
@@ -3981,6 +4094,67 @@ func (r *DeleteIpAccessControlV2Response) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteIpAccessControlV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOwaspWhiteRuleRequestParams struct {
+	// 规则白名单ID列表
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type DeleteOwaspWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则白名单ID列表
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *DeleteOwaspWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOwaspWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOwaspWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOwaspWhiteRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteOwaspWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOwaspWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteOwaspWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOwaspWhiteRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8184,6 +8358,101 @@ func (r *DescribeObjectsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeObjectsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOwaspWhiteRulesRequestParams struct {
+	// 需要查询的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 分页分页，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页容量，默认为10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序的字段，支持CreateTime：新建时间、UpdateTime：修改时间
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序方式，支持asc、desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 筛选条件，支持RuleId：加白规则ID、 Name：规则名称、RuleType：加白的规则类型、Status：规则开关状态、ValidStatus：规则生效状态、TimerType：生效方式、ID：具体的加白id，根据RuleType来判断是规则id还是类型id
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeOwaspWhiteRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要查询的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 分页分页，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页容量，默认为10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序的字段，支持CreateTime：新建时间、UpdateTime：修改时间
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序方式，支持asc、desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 筛选条件，支持RuleId：加白规则ID、 Name：规则名称、RuleType：加白的规则类型、Status：规则开关状态、ValidStatus：规则生效状态、TimerType：生效方式、ID：具体的加白id，根据RuleType来判断是规则id还是类型id
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeOwaspWhiteRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOwaspWhiteRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "By")
+	delete(f, "Order")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOwaspWhiteRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOwaspWhiteRulesResponseParams struct {
+	// 规则总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 规则白名单列表
+	List []*OwaspWhiteRule `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOwaspWhiteRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOwaspWhiteRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeOwaspWhiteRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOwaspWhiteRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14939,6 +15208,123 @@ func (r *ModifyObjectResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyOwaspWhiteRuleRequestParams struct {
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 规则匹配策略列表
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 加白的规则ID列表
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 加白的类型，0:按照特定规则ID加白, 1:按照规则类型加白
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 规则状态，0：关闭、1：开启，默认为开启
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyOwaspWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 规则匹配策略列表
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 加白的规则ID列表
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 加白的类型，0:按照特定规则ID加白, 1:按照规则类型加白
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 规则状态，0：关闭、1：开启，默认为开启
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyOwaspWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOwaspWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "Name")
+	delete(f, "Domain")
+	delete(f, "Strategies")
+	delete(f, "Ids")
+	delete(f, "Type")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "ExpireTime")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOwaspWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOwaspWhiteRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyOwaspWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyOwaspWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyOwaspWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOwaspWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyProtectionStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -15981,6 +16367,44 @@ type NetworkConfig struct {
 	// 0：解绑
 	// 1：绑定
 	VipStatus *uint64 `json:"VipStatus,omitnil,omitempty" name:"VipStatus"`
+}
+
+type OwaspWhiteRule struct {
+	// 白名单的规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 加白的规则ID列表
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 白名单规则的状态，0：关闭、1：开启
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 加白的类型，0:按照特定规则ID加白、1:按照规则类型加白
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 规则匹配策略列表
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 定时任务类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 周期任务粒度
+	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+
+	// 当前是否有效
+	ValidStatus *bool `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 }
 
 type ParamCompareList struct {

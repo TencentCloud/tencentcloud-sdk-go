@@ -82,6 +82,7 @@ func (c *Client) AttachCamRoleWithContext(ctx context.Context, request *AttachCa
     if request == nil {
         request = NewAttachCamRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "AttachCamRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AttachCamRole require credential")
@@ -141,6 +142,7 @@ func (c *Client) BindPsaTagWithContext(ctx context.Context, request *BindPsaTagR
     if request == nil {
         request = NewBindPsaTagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "BindPsaTag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindPsaTag require credential")
@@ -204,6 +206,7 @@ func (c *Client) BuyDevicesWithContext(ctx context.Context, request *BuyDevicesR
     if request == nil {
         request = NewBuyDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "BuyDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BuyDevices require credential")
@@ -267,6 +270,7 @@ func (c *Client) CreateCustomImageWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCustomImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "CreateCustomImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCustomImage require credential")
@@ -322,6 +326,7 @@ func (c *Client) CreatePsaRegulationWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreatePsaRegulationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "CreatePsaRegulation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePsaRegulation require credential")
@@ -375,6 +380,7 @@ func (c *Client) CreateSpotDeviceWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateSpotDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "CreateSpotDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSpotDevice require credential")
@@ -432,6 +438,7 @@ func (c *Client) CreateUserCmdWithContext(ctx context.Context, request *CreateUs
     if request == nil {
         request = NewCreateUserCmdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "CreateUserCmd")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserCmd require credential")
@@ -489,6 +496,7 @@ func (c *Client) DeleteCustomImagesWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteCustomImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DeleteCustomImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomImages require credential")
@@ -542,6 +550,7 @@ func (c *Client) DeletePsaRegulationWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeletePsaRegulationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DeletePsaRegulation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePsaRegulation require credential")
@@ -595,6 +604,7 @@ func (c *Client) DeleteUserCmdsWithContext(ctx context.Context, request *DeleteU
     if request == nil {
         request = NewDeleteUserCmdsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DeleteUserCmds")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUserCmds require credential")
@@ -648,6 +658,7 @@ func (c *Client) DescribeCustomImageProcessWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCustomImageProcessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeCustomImageProcess")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomImageProcess require credential")
@@ -705,6 +716,7 @@ func (c *Client) DescribeCustomImagesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCustomImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeCustomImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomImages require credential")
@@ -762,6 +774,7 @@ func (c *Client) DescribeDeviceClassWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDeviceClassRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeDeviceClass")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceClass require credential")
@@ -813,6 +826,7 @@ func (c *Client) DescribeDeviceClassPartitionWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeDeviceClassPartitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeDeviceClassPartition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceClassPartition require credential")
@@ -866,6 +880,7 @@ func (c *Client) DescribeDeviceHardwareInfoWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDeviceHardwareInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeDeviceHardwareInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceHardwareInfo require credential")
@@ -917,6 +932,7 @@ func (c *Client) DescribeDeviceInventoryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDeviceInventoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeDeviceInventory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceInventory require credential")
@@ -970,6 +986,7 @@ func (c *Client) DescribeDeviceOperationLogWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDeviceOperationLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeDeviceOperationLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceOperationLog require credential")
@@ -1023,6 +1040,7 @@ func (c *Client) DescribeDevicePartitionWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDevicePartitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeDevicePartition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDevicePartition require credential")
@@ -1072,6 +1090,7 @@ func (c *Client) DescribeDevicePositionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDevicePositionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeDevicePosition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDevicePosition require credential")
@@ -1125,6 +1144,7 @@ func (c *Client) DescribeDevicePriceInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDevicePriceInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeDevicePriceInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDevicePriceInfo require credential")
@@ -1178,6 +1198,7 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDevices require credential")
@@ -1231,6 +1252,7 @@ func (c *Client) DescribeHardwareSpecificationWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeHardwareSpecificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeHardwareSpecification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHardwareSpecification require credential")
@@ -1286,6 +1308,7 @@ func (c *Client) DescribeHostedDeviceOutBandInfoWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeHostedDeviceOutBandInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeHostedDeviceOutBandInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostedDeviceOutBandInfo require credential")
@@ -1339,6 +1362,7 @@ func (c *Client) DescribeOperationResultWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeOperationResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeOperationResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOperationResult require credential")
@@ -1390,6 +1414,7 @@ func (c *Client) DescribeOsInfoWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeOsInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeOsInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOsInfo require credential")
@@ -1443,6 +1468,7 @@ func (c *Client) DescribePsaRegulationsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribePsaRegulationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribePsaRegulations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePsaRegulations require credential")
@@ -1496,6 +1522,7 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRegions require credential")
@@ -1549,6 +1576,7 @@ func (c *Client) DescribeRepairTaskConstantWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRepairTaskConstantRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeRepairTaskConstant")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRepairTaskConstant require credential")
@@ -1634,6 +1662,7 @@ func (c *Client) DescribeTaskInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTaskInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeTaskInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskInfo require credential")
@@ -1687,6 +1716,7 @@ func (c *Client) DescribeTaskOperationLogWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeTaskOperationLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeTaskOperationLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskOperationLog require credential")
@@ -1740,6 +1770,7 @@ func (c *Client) DescribeUserCmdTaskInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeUserCmdTaskInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeUserCmdTaskInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserCmdTaskInfo require credential")
@@ -1793,6 +1824,7 @@ func (c *Client) DescribeUserCmdTasksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeUserCmdTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeUserCmdTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserCmdTasks require credential")
@@ -1848,6 +1880,7 @@ func (c *Client) DescribeUserCmdsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeUserCmdsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DescribeUserCmds")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserCmds require credential")
@@ -1897,6 +1930,7 @@ func (c *Client) DetachCamRoleWithContext(ctx context.Context, request *DetachCa
     if request == nil {
         request = NewDetachCamRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "DetachCamRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetachCamRole require credential")
@@ -1950,6 +1984,7 @@ func (c *Client) ModifyCustomImageAttributeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyCustomImageAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "ModifyCustomImageAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomImageAttribute require credential")
@@ -2003,6 +2038,7 @@ func (c *Client) ModifyDeviceAliasesWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyDeviceAliasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "ModifyDeviceAliases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDeviceAliases require credential")
@@ -2056,6 +2092,7 @@ func (c *Client) ModifyDeviceAutoRenewFlagWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyDeviceAutoRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "ModifyDeviceAutoRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDeviceAutoRenewFlag require credential")
@@ -2117,6 +2154,7 @@ func (c *Client) ModifyLanIpWithContext(ctx context.Context, request *ModifyLanI
     if request == nil {
         request = NewModifyLanIpRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "ModifyLanIp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLanIp require credential")
@@ -2172,6 +2210,7 @@ func (c *Client) ModifyPayModePre2PostWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyPayModePre2PostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "ModifyPayModePre2Post")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPayModePre2Post require credential")
@@ -2225,6 +2264,7 @@ func (c *Client) ModifyPsaRegulationWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyPsaRegulationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "ModifyPsaRegulation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPsaRegulation require credential")
@@ -2282,6 +2322,7 @@ func (c *Client) ModifyUserCmdWithContext(ctx context.Context, request *ModifyUs
     if request == nil {
         request = NewModifyUserCmdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "ModifyUserCmd")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserCmd require credential")
@@ -2335,6 +2376,7 @@ func (c *Client) OfflineDevicesWithContext(ctx context.Context, request *Offline
     if request == nil {
         request = NewOfflineDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "OfflineDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OfflineDevices require credential")
@@ -2388,6 +2430,7 @@ func (c *Client) RebootDevicesWithContext(ctx context.Context, request *RebootDe
     if request == nil {
         request = NewRebootDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "RebootDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RebootDevices require credential")
@@ -2439,6 +2482,7 @@ func (c *Client) RecoverDevicesWithContext(ctx context.Context, request *Recover
     if request == nil {
         request = NewRecoverDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "RecoverDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecoverDevices require credential")
@@ -2494,6 +2538,7 @@ func (c *Client) ReloadDeviceOsWithContext(ctx context.Context, request *ReloadD
     if request == nil {
         request = NewReloadDeviceOsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "ReloadDeviceOs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReloadDeviceOs require credential")
@@ -2635,6 +2680,7 @@ func (c *Client) RepairTaskControlWithContext(ctx context.Context, request *Repa
     if request == nil {
         request = NewRepairTaskControlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "RepairTaskControl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RepairTaskControl require credential")
@@ -2690,6 +2736,7 @@ func (c *Client) ResetDevicePasswordWithContext(ctx context.Context, request *Re
     if request == nil {
         request = NewResetDevicePasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "ResetDevicePassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetDevicePassword require credential")
@@ -2741,6 +2788,7 @@ func (c *Client) ReturnDevicesWithContext(ctx context.Context, request *ReturnDe
     if request == nil {
         request = NewReturnDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "ReturnDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReturnDevices require credential")
@@ -2794,6 +2842,7 @@ func (c *Client) RunUserCmdWithContext(ctx context.Context, request *RunUserCmdR
     if request == nil {
         request = NewRunUserCmdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "RunUserCmd")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunUserCmd require credential")
@@ -2849,6 +2898,7 @@ func (c *Client) SetOutBandVpnAuthPasswordWithContext(ctx context.Context, reque
     if request == nil {
         request = NewSetOutBandVpnAuthPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "SetOutBandVpnAuthPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetOutBandVpnAuthPassword require credential")
@@ -2902,6 +2952,7 @@ func (c *Client) ShutdownDevicesWithContext(ctx context.Context, request *Shutdo
     if request == nil {
         request = NewShutdownDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "ShutdownDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ShutdownDevices require credential")
@@ -2955,6 +3006,7 @@ func (c *Client) StartDevicesWithContext(ctx context.Context, request *StartDevi
     if request == nil {
         request = NewStartDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "StartDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartDevices require credential")
@@ -3008,6 +3060,7 @@ func (c *Client) UnbindPsaTagWithContext(ctx context.Context, request *UnbindPsa
     if request == nil {
         request = NewUnbindPsaTagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bm", APIVersion, "UnbindPsaTag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindPsaTag require credential")

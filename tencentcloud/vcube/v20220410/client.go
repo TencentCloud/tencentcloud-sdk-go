@@ -82,6 +82,7 @@ func (c *Client) CreateActivityLicenseWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateActivityLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "CreateActivityLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateActivityLicense require credential")
@@ -145,6 +146,7 @@ func (c *Client) CreateApplicationAndBindLicenseWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateApplicationAndBindLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "CreateApplicationAndBindLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApplicationAndBindLicense require credential")
@@ -208,6 +210,7 @@ func (c *Client) CreateApplicationAndVideoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateApplicationAndVideoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "CreateApplicationAndVideo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApplicationAndVideo require credential")
@@ -257,6 +260,7 @@ func (c *Client) CreateApplicationAndWebPlayerLicenseWithContext(ctx context.Con
     if request == nil {
         request = NewCreateApplicationAndWebPlayerLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "CreateApplicationAndWebPlayerLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApplicationAndWebPlayerLicense require credential")
@@ -318,6 +322,7 @@ func (c *Client) CreateLicenseWithContext(ctx context.Context, request *CreateLi
     if request == nil {
         request = NewCreateLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "CreateLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLicense require credential")
@@ -383,6 +388,7 @@ func (c *Client) CreateTestXMagicWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateTestXMagicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "CreateTestXMagic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTestXMagic require credential")
@@ -446,6 +452,7 @@ func (c *Client) CreateTrialApplicationAndLicenseWithContext(ctx context.Context
     if request == nil {
         request = NewCreateTrialApplicationAndLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "CreateTrialApplicationAndLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTrialApplicationAndLicense require credential")
@@ -507,6 +514,7 @@ func (c *Client) CreateTrialLicenseWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateTrialLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "CreateTrialLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTrialLicense require credential")
@@ -568,6 +576,7 @@ func (c *Client) CreateXMagicWithContext(ctx context.Context, request *CreateXMa
     if request == nil {
         request = NewCreateXMagicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "CreateXMagic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateXMagic require credential")
@@ -621,6 +630,7 @@ func (c *Client) DescribeFeatureListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeFeatureListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeFeatureList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFeatureList require credential")
@@ -674,6 +684,7 @@ func (c *Client) DescribeLicenseListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeLicenseListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeLicenseList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLicenseList require credential")
@@ -727,6 +738,7 @@ func (c *Client) DescribeNewsWithContext(ctx context.Context, request *DescribeN
     if request == nil {
         request = NewDescribeNewsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeNews")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNews require credential")
@@ -780,6 +792,7 @@ func (c *Client) DescribeSTSWithContext(ctx context.Context, request *DescribeST
     if request == nil {
         request = NewDescribeSTSRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeSTS")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSTS require credential")
@@ -833,6 +846,7 @@ func (c *Client) DescribeTrialFeatureWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTrialFeatureRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeTrialFeature")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrialFeature require credential")
@@ -886,6 +900,7 @@ func (c *Client) DescribeUserConfigWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeUserConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeUserConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserConfig require credential")
@@ -945,6 +960,7 @@ func (c *Client) DescribeVcubeApplicationAndLicenseWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeVcubeApplicationAndLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeVcubeApplicationAndLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVcubeApplicationAndLicense require credential")
@@ -1004,6 +1020,7 @@ func (c *Client) DescribeVcubeApplicationAndPlayListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeVcubeApplicationAndPlayListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeVcubeApplicationAndPlayList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVcubeApplicationAndPlayList require credential")
@@ -1063,6 +1080,7 @@ func (c *Client) DescribeVcubeApplicationAndXMagicListWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeVcubeApplicationAndXMagicListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeVcubeApplicationAndXMagicList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVcubeApplicationAndXMagicList require credential")
@@ -1122,6 +1140,7 @@ func (c *Client) DescribeVcubeResourcesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeVcubeResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeVcubeResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVcubeResources require credential")
@@ -1181,6 +1200,7 @@ func (c *Client) DescribeVcubeResourcesListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeVcubeResourcesListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeVcubeResourcesList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVcubeResourcesList require credential")
@@ -1250,6 +1270,7 @@ func (c *Client) DescribeXMagicResourceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeXMagicResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeXMagicResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeXMagicResource require credential")
@@ -1319,6 +1340,7 @@ func (c *Client) DescribeXMagicResourceListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeXMagicResourceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DescribeXMagicResourceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeXMagicResourceList require credential")
@@ -1382,6 +1404,7 @@ func (c *Client) ModifyApplicationWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "ModifyApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApplication require credential")
@@ -1445,6 +1468,7 @@ func (c *Client) ModifyFormalApplicationWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyFormalApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "ModifyFormalApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFormalApplication require credential")
@@ -1506,6 +1530,7 @@ func (c *Client) ModifyLicenseWithContext(ctx context.Context, request *ModifyLi
     if request == nil {
         request = NewModifyLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "ModifyLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLicense require credential")
@@ -1567,6 +1592,7 @@ func (c *Client) ModifyPresetApplicationWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyPresetApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "ModifyPresetApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPresetApplication require credential")
@@ -1628,6 +1654,7 @@ func (c *Client) ModifyTrialLicenseWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyTrialLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "ModifyTrialLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTrialLicense require credential")
@@ -1713,6 +1740,7 @@ func (c *Client) ModifyXMagicWithContext(ctx context.Context, request *ModifyXMa
     if request == nil {
         request = NewModifyXMagicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "ModifyXMagic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyXMagic require credential")
@@ -1774,6 +1802,7 @@ func (c *Client) RenewLicenseWithContext(ctx context.Context, request *RenewLice
     if request == nil {
         request = NewRenewLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "RenewLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewLicense require credential")
@@ -1823,6 +1852,7 @@ func (c *Client) RenewTestXMagicWithContext(ctx context.Context, request *RenewT
     if request == nil {
         request = NewRenewTestXMagicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "RenewTestXMagic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewTestXMagic require credential")
@@ -1872,6 +1902,7 @@ func (c *Client) RenewVideoWithContext(ctx context.Context, request *RenewVideoR
     if request == nil {
         request = NewRenewVideoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "RenewVideo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewVideo require credential")
@@ -1939,6 +1970,7 @@ func (c *Client) UpdateTestXMagicWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateTestXMagicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "UpdateTestXMagic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateTestXMagic require credential")
@@ -2000,6 +2032,7 @@ func (c *Client) UpdateTrialLicenseWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateTrialLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "UpdateTrialLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateTrialLicense require credential")
@@ -2069,6 +2102,7 @@ func (c *Client) UpdateXMagicWithContext(ctx context.Context, request *UpdateXMa
     if request == nil {
         request = NewUpdateXMagicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "UpdateXMagic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateXMagic require credential")

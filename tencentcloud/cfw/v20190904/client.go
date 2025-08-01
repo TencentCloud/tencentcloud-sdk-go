@@ -116,6 +116,7 @@ func (c *Client) AddAclRuleWithContext(ctx context.Context, request *AddAclRuleR
     if request == nil {
         request = NewAddAclRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "AddAclRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddAclRule require credential")
@@ -177,6 +178,7 @@ func (c *Client) AddEnterpriseSecurityGroupRulesWithContext(ctx context.Context,
     if request == nil {
         request = NewAddEnterpriseSecurityGroupRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "AddEnterpriseSecurityGroupRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddEnterpriseSecurityGroupRules require credential")
@@ -260,6 +262,7 @@ func (c *Client) AddNatAcRuleWithContext(ctx context.Context, request *AddNatAcR
     if request == nil {
         request = NewAddNatAcRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "AddNatAcRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddNatAcRule require credential")
@@ -343,6 +346,7 @@ func (c *Client) AddVpcAcRuleWithContext(ctx context.Context, request *AddVpcAcR
     if request == nil {
         request = NewAddVpcAcRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "AddVpcAcRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddVpcAcRule require credential")
@@ -396,6 +400,7 @@ func (c *Client) CreateAcRulesWithContext(ctx context.Context, request *CreateAc
     if request == nil {
         request = NewCreateAcRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateAcRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAcRules require credential")
@@ -451,6 +456,7 @@ func (c *Client) CreateAddressTemplateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateAddressTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateAddressTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAddressTemplate require credential")
@@ -506,6 +512,7 @@ func (c *Client) CreateAlertCenterIsolateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAlertCenterIsolateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateAlertCenterIsolate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAlertCenterIsolate require credential")
@@ -561,6 +568,7 @@ func (c *Client) CreateAlertCenterOmitWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateAlertCenterOmitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateAlertCenterOmit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAlertCenterOmit require credential")
@@ -616,6 +624,7 @@ func (c *Client) CreateAlertCenterRuleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateAlertCenterRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateAlertCenterRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAlertCenterRule require credential")
@@ -671,6 +680,7 @@ func (c *Client) CreateBlockIgnoreRuleListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateBlockIgnoreRuleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateBlockIgnoreRuleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBlockIgnoreRuleList require credential")
@@ -726,6 +736,7 @@ func (c *Client) CreateBlockIgnoreRuleNewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateBlockIgnoreRuleNewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateBlockIgnoreRuleNew")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBlockIgnoreRuleNew require credential")
@@ -779,6 +790,7 @@ func (c *Client) CreateChooseVpcsWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateChooseVpcsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateChooseVpcs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateChooseVpcs require credential")
@@ -834,6 +846,7 @@ func (c *Client) CreateDatabaseWhiteListRulesWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateDatabaseWhiteListRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateDatabaseWhiteListRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDatabaseWhiteListRules require credential")
@@ -897,6 +910,7 @@ func (c *Client) CreateIdsWhiteRuleWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateIdsWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateIdsWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIdsWhiteRule require credential")
@@ -980,6 +994,7 @@ func (c *Client) CreateNatFwInstanceWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateNatFwInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateNatFwInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNatFwInstance require credential")
@@ -1063,6 +1078,7 @@ func (c *Client) CreateNatFwInstanceWithDomainWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateNatFwInstanceWithDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateNatFwInstanceWithDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNatFwInstanceWithDomain require credential")
@@ -1124,6 +1140,7 @@ func (c *Client) CreateSecurityGroupRulesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateSecurityGroupRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateSecurityGroupRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSecurityGroupRules require credential")
@@ -1207,6 +1224,7 @@ func (c *Client) CreateVpcFwGroupWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateVpcFwGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateVpcFwGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVpcFwGroup require credential")
@@ -1260,6 +1278,7 @@ func (c *Client) DeleteAcRuleWithContext(ctx context.Context, request *DeleteAcR
     if request == nil {
         request = NewDeleteAcRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteAcRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAcRule require credential")
@@ -1315,6 +1334,7 @@ func (c *Client) DeleteAddressTemplateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteAddressTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteAddressTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAddressTemplate require credential")
@@ -1370,6 +1390,7 @@ func (c *Client) DeleteAllAccessControlRuleWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteAllAccessControlRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteAllAccessControlRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAllAccessControlRule require credential")
@@ -1425,6 +1446,7 @@ func (c *Client) DeleteBlockIgnoreRuleListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteBlockIgnoreRuleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteBlockIgnoreRuleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBlockIgnoreRuleList require credential")
@@ -1480,6 +1502,7 @@ func (c *Client) DeleteBlockIgnoreRuleNewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteBlockIgnoreRuleNewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteBlockIgnoreRuleNew")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBlockIgnoreRuleNew require credential")
@@ -1543,6 +1566,7 @@ func (c *Client) DeleteIdsWhiteRuleWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteIdsWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteIdsWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIdsWhiteRule require credential")
@@ -1626,6 +1650,7 @@ func (c *Client) DeleteNatFwInstanceWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteNatFwInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteNatFwInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNatFwInstance require credential")
@@ -1679,6 +1704,7 @@ func (c *Client) DeleteRemoteAccessDomainWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteRemoteAccessDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteRemoteAccessDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRemoteAccessDomain require credential")
@@ -1762,6 +1788,7 @@ func (c *Client) DeleteResourceGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteResourceGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteResourceGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteResourceGroup require credential")
@@ -1815,6 +1842,7 @@ func (c *Client) DeleteSecurityGroupRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteSecurityGroupRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteSecurityGroupRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSecurityGroupRule require credential")
@@ -1898,6 +1926,7 @@ func (c *Client) DeleteVpcFwGroupWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteVpcFwGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteVpcFwGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteVpcFwGroup require credential")
@@ -1953,6 +1982,7 @@ func (c *Client) DescribeAcListsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeAcListsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeAcLists")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAcLists require credential")
@@ -2008,6 +2038,7 @@ func (c *Client) DescribeAclRuleWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeAclRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeAclRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAclRule require credential")
@@ -2059,6 +2090,7 @@ func (c *Client) DescribeAddressTemplateListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAddressTemplateListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeAddressTemplateList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAddressTemplateList require credential")
@@ -2142,6 +2174,7 @@ func (c *Client) DescribeAssetSyncWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAssetSyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeAssetSync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetSync require credential")
@@ -2197,6 +2230,7 @@ func (c *Client) DescribeAssociatedInstanceListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeAssociatedInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeAssociatedInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssociatedInstanceList require credential")
@@ -2280,6 +2314,7 @@ func (c *Client) DescribeBlockByIpTimesListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeBlockByIpTimesListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeBlockByIpTimesList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBlockByIpTimesList require credential")
@@ -2333,6 +2368,7 @@ func (c *Client) DescribeBlockIgnoreListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeBlockIgnoreListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeBlockIgnoreList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBlockIgnoreList require credential")
@@ -2416,6 +2452,7 @@ func (c *Client) DescribeBlockStaticListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeBlockStaticListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeBlockStaticList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBlockStaticList require credential")
@@ -2499,6 +2536,7 @@ func (c *Client) DescribeCfwEipsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeCfwEipsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCfwEips")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfwEips require credential")
@@ -2582,6 +2620,7 @@ func (c *Client) DescribeCfwInsStatusWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCfwInsStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCfwInsStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfwInsStatus require credential")
@@ -2639,6 +2678,7 @@ func (c *Client) DescribeDefenseSwitchWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDefenseSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeDefenseSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDefenseSwitch require credential")
@@ -2722,6 +2762,7 @@ func (c *Client) DescribeEnterpriseSGRuleProgressWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeEnterpriseSGRuleProgressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeEnterpriseSGRuleProgress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnterpriseSGRuleProgress require credential")
@@ -2805,6 +2846,7 @@ func (c *Client) DescribeEnterpriseSecurityGroupRuleWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeEnterpriseSecurityGroupRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeEnterpriseSecurityGroupRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnterpriseSecurityGroupRule require credential")
@@ -2888,6 +2930,7 @@ func (c *Client) DescribeEnterpriseSecurityGroupRuleListWithContext(ctx context.
     if request == nil {
         request = NewDescribeEnterpriseSecurityGroupRuleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeEnterpriseSecurityGroupRuleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnterpriseSecurityGroupRuleList require credential")
@@ -2971,6 +3014,7 @@ func (c *Client) DescribeFwEdgeIpsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeFwEdgeIpsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeFwEdgeIps")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFwEdgeIps require credential")
@@ -3054,6 +3098,7 @@ func (c *Client) DescribeFwGroupInstanceInfoWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeFwGroupInstanceInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeFwGroupInstanceInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFwGroupInstanceInfo require credential")
@@ -3137,6 +3182,7 @@ func (c *Client) DescribeFwSyncStatusWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFwSyncStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeFwSyncStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFwSyncStatus require credential")
@@ -3220,6 +3266,7 @@ func (c *Client) DescribeGuideScanInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeGuideScanInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeGuideScanInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGuideScanInfo require credential")
@@ -3271,6 +3318,7 @@ func (c *Client) DescribeIPStatusListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeIPStatusListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeIPStatusList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIPStatusList require credential")
@@ -3334,6 +3382,7 @@ func (c *Client) DescribeIdsWhiteRuleWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeIdsWhiteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeIdsWhiteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIdsWhiteRule require credential")
@@ -3389,6 +3438,7 @@ func (c *Client) DescribeLogStorageStatisticWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeLogStorageStatisticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeLogStorageStatistic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogStorageStatistic require credential")
@@ -3450,6 +3500,7 @@ func (c *Client) DescribeLogsWithContext(ctx context.Context, request *DescribeL
     if request == nil {
         request = NewDescribeLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogs require credential")
@@ -3505,6 +3556,7 @@ func (c *Client) DescribeNatAcRuleWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeNatAcRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNatAcRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNatAcRule require credential")
@@ -3560,6 +3612,7 @@ func (c *Client) DescribeNatFwDnatRuleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeNatFwDnatRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNatFwDnatRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNatFwDnatRule require credential")
@@ -3643,6 +3696,7 @@ func (c *Client) DescribeNatFwInfoCountWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeNatFwInfoCountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNatFwInfoCount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNatFwInfoCount require credential")
@@ -3726,6 +3780,7 @@ func (c *Client) DescribeNatFwInstanceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeNatFwInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNatFwInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNatFwInstance require credential")
@@ -3809,6 +3864,7 @@ func (c *Client) DescribeNatFwInstanceWithRegionWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeNatFwInstanceWithRegionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNatFwInstanceWithRegion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNatFwInstanceWithRegion require credential")
@@ -3892,6 +3948,7 @@ func (c *Client) DescribeNatFwInstancesInfoWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeNatFwInstancesInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNatFwInstancesInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNatFwInstancesInfo require credential")
@@ -3975,6 +4032,7 @@ func (c *Client) DescribeNatFwVpcDnsLstWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeNatFwVpcDnsLstRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNatFwVpcDnsLst")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNatFwVpcDnsLst require credential")
@@ -4058,6 +4116,7 @@ func (c *Client) DescribeResourceGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeResourceGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeResourceGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceGroup require credential")
@@ -4141,6 +4200,7 @@ func (c *Client) DescribeResourceGroupNewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeResourceGroupNewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeResourceGroupNew")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceGroupNew require credential")
@@ -4196,6 +4256,7 @@ func (c *Client) DescribeRuleOverviewWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeRuleOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeRuleOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRuleOverview require credential")
@@ -4251,6 +4312,7 @@ func (c *Client) DescribeSecurityGroupListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSecurityGroupListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeSecurityGroupList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityGroupList require credential")
@@ -4302,6 +4364,7 @@ func (c *Client) DescribeSourceAssetWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeSourceAssetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeSourceAsset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSourceAsset require credential")
@@ -4353,6 +4416,7 @@ func (c *Client) DescribeSwitchListsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeSwitchListsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeSwitchLists")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSwitchLists require credential")
@@ -4436,6 +4500,7 @@ func (c *Client) DescribeTLogInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTLogInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeTLogInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTLogInfo require credential")
@@ -4519,6 +4584,7 @@ func (c *Client) DescribeTLogIpListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTLogIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeTLogIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTLogIpList require credential")
@@ -4574,6 +4640,7 @@ func (c *Client) DescribeTableStatusWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTableStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeTableStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTableStatus require credential")
@@ -4657,6 +4724,7 @@ func (c *Client) DescribeUnHandleEventTabListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeUnHandleEventTabListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeUnHandleEventTabList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnHandleEventTabList require credential")
@@ -4712,6 +4780,7 @@ func (c *Client) DescribeVpcAcRuleWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeVpcAcRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeVpcAcRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVpcAcRule require credential")
@@ -4795,6 +4864,7 @@ func (c *Client) DescribeVpcFwGroupSwitchWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeVpcFwGroupSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeVpcFwGroupSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVpcFwGroupSwitch require credential")
@@ -4878,6 +4948,7 @@ func (c *Client) ExpandCfwVerticalWithContext(ctx context.Context, request *Expa
     if request == nil {
         request = NewExpandCfwVerticalRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ExpandCfwVertical")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExpandCfwVertical require credential")
@@ -4933,6 +5004,7 @@ func (c *Client) ModifyAcRuleWithContext(ctx context.Context, request *ModifyAcR
     if request == nil {
         request = NewModifyAcRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyAcRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAcRule require credential")
@@ -4990,6 +5062,7 @@ func (c *Client) ModifyAclRuleWithContext(ctx context.Context, request *ModifyAc
     if request == nil {
         request = NewModifyAclRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyAclRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAclRule require credential")
@@ -5045,6 +5118,7 @@ func (c *Client) ModifyAddressTemplateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyAddressTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyAddressTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAddressTemplate require credential")
@@ -5098,6 +5172,7 @@ func (c *Client) ModifyAllPublicIPSwitchStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyAllPublicIPSwitchStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyAllPublicIPSwitchStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAllPublicIPSwitchStatus require credential")
@@ -5153,6 +5228,7 @@ func (c *Client) ModifyAllRuleStatusWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyAllRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyAllRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAllRuleStatus require credential")
@@ -5206,6 +5282,7 @@ func (c *Client) ModifyAssetScanWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyAssetScanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyAssetScan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAssetScan require credential")
@@ -5289,6 +5366,7 @@ func (c *Client) ModifyAssetSyncWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyAssetSyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyAssetSync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAssetSync require credential")
@@ -5356,6 +5434,7 @@ func (c *Client) ModifyBlockIgnoreListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyBlockIgnoreListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyBlockIgnoreList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBlockIgnoreList require credential")
@@ -5411,6 +5490,7 @@ func (c *Client) ModifyBlockIgnoreRuleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyBlockIgnoreRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyBlockIgnoreRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBlockIgnoreRule require credential")
@@ -5466,6 +5546,7 @@ func (c *Client) ModifyBlockIgnoreRuleNewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyBlockIgnoreRuleNewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyBlockIgnoreRuleNew")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBlockIgnoreRuleNew require credential")
@@ -5549,6 +5630,7 @@ func (c *Client) ModifyBlockTopWithContext(ctx context.Context, request *ModifyB
     if request == nil {
         request = NewModifyBlockTopRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyBlockTop")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBlockTop require credential")
@@ -5608,6 +5690,7 @@ func (c *Client) ModifyEWRuleStatusWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyEWRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyEWRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEWRuleStatus require credential")
@@ -5671,6 +5754,7 @@ func (c *Client) ModifyEdgeIpSwitchWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyEdgeIpSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyEdgeIpSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEdgeIpSwitch require credential")
@@ -5726,6 +5810,7 @@ func (c *Client) ModifyEnterpriseSecurityDispatchStatusWithContext(ctx context.C
     if request == nil {
         request = NewModifyEnterpriseSecurityDispatchStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyEnterpriseSecurityDispatchStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEnterpriseSecurityDispatchStatus require credential")
@@ -5785,6 +5870,7 @@ func (c *Client) ModifyEnterpriseSecurityGroupRuleWithContext(ctx context.Contex
     if request == nil {
         request = NewModifyEnterpriseSecurityGroupRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyEnterpriseSecurityGroupRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEnterpriseSecurityGroupRule require credential")
@@ -5868,6 +5954,7 @@ func (c *Client) ModifyFwGroupSwitchWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyFwGroupSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyFwGroupSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFwGroupSwitch require credential")
@@ -5925,6 +6012,7 @@ func (c *Client) ModifyNatAcRuleWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyNatAcRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyNatAcRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNatAcRule require credential")
@@ -6008,6 +6096,7 @@ func (c *Client) ModifyNatFwReSelectWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyNatFwReSelectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyNatFwReSelect")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNatFwReSelect require credential")
@@ -6091,6 +6180,7 @@ func (c *Client) ModifyNatFwSwitchWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyNatFwSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyNatFwSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNatFwSwitch require credential")
@@ -6164,6 +6254,7 @@ func (c *Client) ModifyNatFwVpcDnsSwitchWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyNatFwVpcDnsSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyNatFwVpcDnsSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNatFwVpcDnsSwitch require credential")
@@ -6247,6 +6338,7 @@ func (c *Client) ModifyNatInstanceWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyNatInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyNatInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNatInstance require credential")
@@ -6330,6 +6422,7 @@ func (c *Client) ModifyNatSequenceRulesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyNatSequenceRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyNatSequenceRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNatSequenceRules require credential")
@@ -6413,6 +6506,7 @@ func (c *Client) ModifyResourceGroupWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyResourceGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyResourceGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResourceGroup require credential")
@@ -6468,6 +6562,7 @@ func (c *Client) ModifyRunSyncAssetWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyRunSyncAssetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyRunSyncAsset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRunSyncAsset require credential")
@@ -6523,6 +6618,7 @@ func (c *Client) ModifySecurityGroupItemRuleStatusWithContext(ctx context.Contex
     if request == nil {
         request = NewModifySecurityGroupItemRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifySecurityGroupItemRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecurityGroupItemRuleStatus require credential")
@@ -6580,6 +6676,7 @@ func (c *Client) ModifySecurityGroupRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifySecurityGroupRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifySecurityGroupRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecurityGroupRule require credential")
@@ -6633,6 +6730,7 @@ func (c *Client) ModifySecurityGroupSequenceRulesWithContext(ctx context.Context
     if request == nil {
         request = NewModifySecurityGroupSequenceRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifySecurityGroupSequenceRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySecurityGroupSequenceRules require credential")
@@ -6716,6 +6814,7 @@ func (c *Client) ModifySequenceAclRulesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifySequenceAclRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifySequenceAclRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySequenceAclRules require credential")
@@ -6771,6 +6870,7 @@ func (c *Client) ModifySequenceRulesWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifySequenceRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifySequenceRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySequenceRules require credential")
@@ -6854,6 +6954,7 @@ func (c *Client) ModifyStorageSettingWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyStorageSettingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyStorageSetting")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyStorageSetting require credential")
@@ -6909,6 +7010,7 @@ func (c *Client) ModifyTableStatusWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyTableStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyTableStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTableStatus require credential")
@@ -6966,6 +7068,7 @@ func (c *Client) ModifyVpcAcRuleWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyVpcAcRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyVpcAcRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVpcAcRule require credential")
@@ -7049,6 +7152,7 @@ func (c *Client) ModifyVpcFwGroupWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyVpcFwGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyVpcFwGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVpcFwGroup require credential")
@@ -7132,6 +7236,7 @@ func (c *Client) ModifyVpcFwSequenceRulesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyVpcFwSequenceRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyVpcFwSequenceRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVpcFwSequenceRules require credential")
@@ -7215,6 +7320,7 @@ func (c *Client) RemoveAcRuleWithContext(ctx context.Context, request *RemoveAcR
     if request == nil {
         request = NewRemoveAcRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "RemoveAcRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveAcRule require credential")
@@ -7298,6 +7404,7 @@ func (c *Client) RemoveAclRuleWithContext(ctx context.Context, request *RemoveAc
     if request == nil {
         request = NewRemoveAclRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "RemoveAclRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveAclRule require credential")
@@ -7381,6 +7488,7 @@ func (c *Client) RemoveEnterpriseSecurityGroupRuleWithContext(ctx context.Contex
     if request == nil {
         request = NewRemoveEnterpriseSecurityGroupRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "RemoveEnterpriseSecurityGroupRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveEnterpriseSecurityGroupRule require credential")
@@ -7464,6 +7572,7 @@ func (c *Client) RemoveNatAcRuleWithContext(ctx context.Context, request *Remove
     if request == nil {
         request = NewRemoveNatAcRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "RemoveNatAcRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveNatAcRule require credential")
@@ -7547,6 +7656,7 @@ func (c *Client) RemoveVpcAcRuleWithContext(ctx context.Context, request *Remove
     if request == nil {
         request = NewRemoveVpcAcRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "RemoveVpcAcRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveVpcAcRule require credential")
@@ -7652,6 +7762,7 @@ func (c *Client) SearchLogWithContext(ctx context.Context, request *SearchLogReq
     if request == nil {
         request = NewSearchLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "SearchLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchLog require credential")
@@ -7735,6 +7846,7 @@ func (c *Client) SetNatFwDnatRuleWithContext(ctx context.Context, request *SetNa
     if request == nil {
         request = NewSetNatFwDnatRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "SetNatFwDnatRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetNatFwDnatRule require credential")
@@ -7818,6 +7930,7 @@ func (c *Client) SetNatFwEipWithContext(ctx context.Context, request *SetNatFwEi
     if request == nil {
         request = NewSetNatFwEipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "SetNatFwEip")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetNatFwEip require credential")
@@ -7901,6 +8014,7 @@ func (c *Client) StopSecurityGroupRuleDispatchWithContext(ctx context.Context, r
     if request == nil {
         request = NewStopSecurityGroupRuleDispatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "StopSecurityGroupRuleDispatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopSecurityGroupRuleDispatch require credential")
@@ -7984,6 +8098,7 @@ func (c *Client) SyncFwOperateWithContext(ctx context.Context, request *SyncFwOp
     if request == nil {
         request = NewSyncFwOperateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "SyncFwOperate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncFwOperate require credential")

@@ -76,6 +76,7 @@ func (c *Client) CreateBasicDDoSAlarmThresholdWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateBasicDDoSAlarmThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateBasicDDoSAlarmThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBasicDDoSAlarmThreshold require credential")
@@ -129,6 +130,7 @@ func (c *Client) CreateBoundIPWithContext(ctx context.Context, request *CreateBo
     if request == nil {
         request = NewCreateBoundIPRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateBoundIP")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBoundIP require credential")
@@ -182,6 +184,7 @@ func (c *Client) CreateCCFrequencyRulesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateCCFrequencyRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateCCFrequencyRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCCFrequencyRules require credential")
@@ -247,6 +250,7 @@ func (c *Client) CreateCCSelfDefinePolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateCCSelfDefinePolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateCCSelfDefinePolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCCSelfDefinePolicy require credential")
@@ -296,6 +300,7 @@ func (c *Client) CreateDDoSPolicyWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateDDoSPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateDDoSPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDDoSPolicy require credential")
@@ -345,6 +350,7 @@ func (c *Client) CreateDDoSPolicyCaseWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateDDoSPolicyCaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateDDoSPolicyCase")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDDoSPolicyCase require credential")
@@ -394,6 +400,7 @@ func (c *Client) CreateInstanceNameWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateInstanceNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateInstanceName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInstanceName require credential")
@@ -443,6 +450,7 @@ func (c *Client) CreateL4HealthConfigWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateL4HealthConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateL4HealthConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL4HealthConfig require credential")
@@ -492,6 +500,7 @@ func (c *Client) CreateL4RulesWithContext(ctx context.Context, request *CreateL4
     if request == nil {
         request = NewCreateL4RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateL4Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL4Rules require credential")
@@ -541,6 +550,7 @@ func (c *Client) CreateL7CCRuleWithContext(ctx context.Context, request *CreateL
     if request == nil {
         request = NewCreateL7CCRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateL7CCRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL7CCRule require credential")
@@ -590,6 +600,7 @@ func (c *Client) CreateL7HealthConfigWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateL7HealthConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateL7HealthConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL7HealthConfig require credential")
@@ -639,6 +650,7 @@ func (c *Client) CreateL7RuleCertWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateL7RuleCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateL7RuleCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL7RuleCert require credential")
@@ -688,6 +700,7 @@ func (c *Client) CreateL7RulesWithContext(ctx context.Context, request *CreateL7
     if request == nil {
         request = NewCreateL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL7Rules require credential")
@@ -755,6 +768,7 @@ func (c *Client) CreateL7RulesUploadWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateL7RulesUploadRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateL7RulesUpload")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL7RulesUpload require credential")
@@ -822,6 +836,7 @@ func (c *Client) CreateNetReturnWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateNetReturnRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateNetReturn")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNetReturn require credential")
@@ -889,6 +904,7 @@ func (c *Client) CreateNewL4RulesWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateNewL4RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateNewL4Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNewL4Rules require credential")
@@ -938,6 +954,7 @@ func (c *Client) CreateNewL7RulesWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateNewL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateNewL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNewL7Rules require credential")
@@ -987,6 +1004,7 @@ func (c *Client) CreateNewL7RulesUploadWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateNewL7RulesUploadRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateNewL7RulesUpload")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNewL7RulesUpload require credential")
@@ -1038,6 +1056,7 @@ func (c *Client) CreateUnblockIpWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateUnblockIpRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "CreateUnblockIp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUnblockIp require credential")
@@ -1089,6 +1108,7 @@ func (c *Client) DeleteCCFrequencyRulesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteCCFrequencyRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DeleteCCFrequencyRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCCFrequencyRules require credential")
@@ -1154,6 +1174,7 @@ func (c *Client) DeleteCCSelfDefinePolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteCCSelfDefinePolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DeleteCCSelfDefinePolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCCSelfDefinePolicy require credential")
@@ -1203,6 +1224,7 @@ func (c *Client) DeleteDDoSPolicyWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteDDoSPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DeleteDDoSPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDDoSPolicy require credential")
@@ -1252,6 +1274,7 @@ func (c *Client) DeleteDDoSPolicyCaseWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteDDoSPolicyCaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DeleteDDoSPolicyCase")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDDoSPolicyCase require credential")
@@ -1301,6 +1324,7 @@ func (c *Client) DeleteL4RulesWithContext(ctx context.Context, request *DeleteL4
     if request == nil {
         request = NewDeleteL4RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DeleteL4Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteL4Rules require credential")
@@ -1350,6 +1374,7 @@ func (c *Client) DeleteL7RulesWithContext(ctx context.Context, request *DeleteL7
     if request == nil {
         request = NewDeleteL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DeleteL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteL7Rules require credential")
@@ -1399,6 +1424,7 @@ func (c *Client) DeleteNewL4RulesWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteNewL4RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DeleteNewL4Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNewL4Rules require credential")
@@ -1448,6 +1474,7 @@ func (c *Client) DeleteNewL7RulesWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteNewL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DeleteNewL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNewL7Rules require credential")
@@ -1497,6 +1524,7 @@ func (c *Client) DescribeActionLogWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeActionLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeActionLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeActionLog require credential")
@@ -1546,6 +1574,7 @@ func (c *Client) DescribeBGPIPL7RuleMaxCntWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeBGPIPL7RuleMaxCntRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeBGPIPL7RuleMaxCnt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBGPIPL7RuleMaxCnt require credential")
@@ -1595,6 +1624,7 @@ func (c *Client) DescribeBaradDataWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeBaradDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeBaradData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBaradData require credential")
@@ -1662,6 +1692,7 @@ func (c *Client) DescribeBasicCCThresholdWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeBasicCCThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeBasicCCThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBasicCCThreshold require credential")
@@ -1711,6 +1742,7 @@ func (c *Client) DescribeBasicDeviceThresholdWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeBasicDeviceThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeBasicDeviceThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBasicDeviceThreshold require credential")
@@ -1778,6 +1810,7 @@ func (c *Client) DescribeBizHttpStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeBizHttpStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeBizHttpStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBizHttpStatus require credential")
@@ -1845,6 +1878,7 @@ func (c *Client) DescribeBizTrendWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeBizTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeBizTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBizTrend require credential")
@@ -1912,6 +1946,7 @@ func (c *Client) DescribeCCAlarmThresholdWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCCAlarmThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeCCAlarmThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCAlarmThreshold require credential")
@@ -1979,6 +2014,7 @@ func (c *Client) DescribeCCEvListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCCEvListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeCCEvList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCEvList require credential")
@@ -2046,6 +2082,7 @@ func (c *Client) DescribeCCFrequencyRulesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCCFrequencyRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeCCFrequencyRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCFrequencyRules require credential")
@@ -2113,6 +2150,7 @@ func (c *Client) DescribeCCIpAllowDenyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCCIpAllowDenyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeCCIpAllowDeny")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCIpAllowDeny require credential")
@@ -2178,6 +2216,7 @@ func (c *Client) DescribeCCSelfDefinePolicyWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCCSelfDefinePolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeCCSelfDefinePolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCSelfDefinePolicy require credential")
@@ -2243,6 +2282,7 @@ func (c *Client) DescribeCCTrendWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeCCTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeCCTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCTrend require credential")
@@ -2308,6 +2348,7 @@ func (c *Client) DescribeCCUrlAllowWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCCUrlAllowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeCCUrlAllow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCCUrlAllow require credential")
@@ -2373,6 +2414,7 @@ func (c *Client) DescribeDDoSAlarmThresholdWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDDoSAlarmThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSAlarmThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSAlarmThreshold require credential")
@@ -2434,6 +2476,7 @@ func (c *Client) DescribeDDoSAttackIPRegionMapWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeDDoSAttackIPRegionMapRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSAttackIPRegionMap")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSAttackIPRegionMap require credential")
@@ -2501,6 +2544,7 @@ func (c *Client) DescribeDDoSAttackSourceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDDoSAttackSourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSAttackSource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSAttackSource require credential")
@@ -2568,6 +2612,7 @@ func (c *Client) DescribeDDoSCountWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeDDoSCountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSCount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSCount require credential")
@@ -2635,6 +2680,7 @@ func (c *Client) DescribeDDoSDefendStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDDoSDefendStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSDefendStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSDefendStatus require credential")
@@ -2702,6 +2748,7 @@ func (c *Client) DescribeDDoSEvInfoWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDDoSEvInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSEvInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSEvInfo require credential")
@@ -2769,6 +2816,7 @@ func (c *Client) DescribeDDoSEvListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDDoSEvListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSEvList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSEvList require credential")
@@ -2836,6 +2884,7 @@ func (c *Client) DescribeDDoSIpLogWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeDDoSIpLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSIpLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSIpLog require credential")
@@ -2903,6 +2952,7 @@ func (c *Client) DescribeDDoSNetCountWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDDoSNetCountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSNetCount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSNetCount require credential")
@@ -2970,6 +3020,7 @@ func (c *Client) DescribeDDoSNetEvInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDDoSNetEvInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSNetEvInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSNetEvInfo require credential")
@@ -3037,6 +3088,7 @@ func (c *Client) DescribeDDoSNetEvListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDDoSNetEvListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSNetEvList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSNetEvList require credential")
@@ -3104,6 +3156,7 @@ func (c *Client) DescribeDDoSNetIpLogWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDDoSNetIpLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSNetIpLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSNetIpLog require credential")
@@ -3171,6 +3224,7 @@ func (c *Client) DescribeDDoSNetTrendWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDDoSNetTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSNetTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSNetTrend require credential")
@@ -3238,6 +3292,7 @@ func (c *Client) DescribeDDoSPolicyWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDDoSPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSPolicy require credential")
@@ -3305,6 +3360,7 @@ func (c *Client) DescribeDDoSTrendWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeDDoSTrendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSTrend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSTrend require credential")
@@ -3372,6 +3428,7 @@ func (c *Client) DescribeDDoSUsedStatisWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDDoSUsedStatisRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeDDoSUsedStatis")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDDoSUsedStatis require credential")
@@ -3439,6 +3496,7 @@ func (c *Client) DescribeIPProductInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeIPProductInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeIPProductInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIPProductInfo require credential")
@@ -3506,6 +3564,7 @@ func (c *Client) DescribeInsurePacksWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeInsurePacksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeInsurePacks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInsurePacks require credential")
@@ -3573,6 +3632,7 @@ func (c *Client) DescribeIpBlockListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeIpBlockListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeIpBlockList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIpBlockList require credential")
@@ -3640,6 +3700,7 @@ func (c *Client) DescribeIpUnBlockListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeIpUnBlockListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeIpUnBlockList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIpUnBlockList require credential")
@@ -3707,6 +3768,7 @@ func (c *Client) DescribeL4HealthConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeL4HealthConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeL4HealthConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL4HealthConfig require credential")
@@ -3774,6 +3836,7 @@ func (c *Client) DescribeL4RulesErrHealthWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeL4RulesErrHealthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeL4RulesErrHealth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL4RulesErrHealth require credential")
@@ -3841,6 +3904,7 @@ func (c *Client) DescribeL7HealthConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeL7HealthConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeL7HealthConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL7HealthConfig require credential")
@@ -3908,6 +3972,7 @@ func (c *Client) DescribeNewL4RulesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeNewL4RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeNewL4Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNewL4Rules require credential")
@@ -3975,6 +4040,7 @@ func (c *Client) DescribeNewL4RulesErrHealthWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeNewL4RulesErrHealthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeNewL4RulesErrHealth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNewL4RulesErrHealth require credential")
@@ -4042,6 +4108,7 @@ func (c *Client) DescribeNewL7RulesErrHealthWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeNewL7RulesErrHealthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeNewL7RulesErrHealth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNewL7RulesErrHealth require credential")
@@ -4109,6 +4176,7 @@ func (c *Client) DescribePackIndexWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribePackIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribePackIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePackIndex require credential")
@@ -4176,6 +4244,7 @@ func (c *Client) DescribePcapWithContext(ctx context.Context, request *DescribeP
     if request == nil {
         request = NewDescribePcapRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribePcap")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePcap require credential")
@@ -4243,6 +4312,7 @@ func (c *Client) DescribePolicyCaseWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePolicyCaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribePolicyCase")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePolicyCase require credential")
@@ -4310,6 +4380,7 @@ func (c *Client) DescribeResIpListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeResIpListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeResIpList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResIpList require credential")
@@ -4377,6 +4448,7 @@ func (c *Client) DescribeResourceListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeResourceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeResourceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceList require credential")
@@ -4444,6 +4516,7 @@ func (c *Client) DescribeRuleSetsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeRuleSetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeRuleSets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRuleSets require credential")
@@ -4511,6 +4584,7 @@ func (c *Client) DescribeSchedulingDomainListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeSchedulingDomainListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeSchedulingDomainList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSchedulingDomainList require credential")
@@ -4578,6 +4652,7 @@ func (c *Client) DescribeSecIndexWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeSecIndexRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeSecIndex")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecIndex require credential")
@@ -4645,6 +4720,7 @@ func (c *Client) DescribeSourceIpSegmentWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSourceIpSegmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeSourceIpSegment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSourceIpSegment require credential")
@@ -4694,6 +4770,7 @@ func (c *Client) DescribeTransmitStatisWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTransmitStatisRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeTransmitStatis")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTransmitStatis require credential")
@@ -4743,6 +4820,7 @@ func (c *Client) DescribeUnBlockStatisWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeUnBlockStatisRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribeUnBlockStatis")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnBlockStatis require credential")
@@ -4792,6 +4870,7 @@ func (c *Client) DescribleL4RulesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribleL4RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribleL4Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribleL4Rules require credential")
@@ -4841,6 +4920,7 @@ func (c *Client) DescribleL7RulesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribleL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribleL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribleL7Rules require credential")
@@ -4890,6 +4970,7 @@ func (c *Client) DescribleNewL7RulesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribleNewL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribleNewL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribleNewL7Rules require credential")
@@ -4939,6 +5020,7 @@ func (c *Client) DescribleRegionCountWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribleRegionCountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "DescribleRegionCount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribleRegionCount require credential")
@@ -4988,6 +5070,7 @@ func (c *Client) ModifyCCAlarmThresholdWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyCCAlarmThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyCCAlarmThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCAlarmThreshold require credential")
@@ -5037,6 +5120,7 @@ func (c *Client) ModifyCCFrequencyRulesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyCCFrequencyRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyCCFrequencyRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCFrequencyRules require credential")
@@ -5086,6 +5170,7 @@ func (c *Client) ModifyCCFrequencyRulesStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyCCFrequencyRulesStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyCCFrequencyRulesStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCFrequencyRulesStatus require credential")
@@ -5135,6 +5220,7 @@ func (c *Client) ModifyCCHostProtectionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyCCHostProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyCCHostProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCHostProtection require credential")
@@ -5184,6 +5270,7 @@ func (c *Client) ModifyCCIpAllowDenyWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyCCIpAllowDenyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyCCIpAllowDeny")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCIpAllowDeny require credential")
@@ -5233,6 +5320,7 @@ func (c *Client) ModifyCCLevelWithContext(ctx context.Context, request *ModifyCC
     if request == nil {
         request = NewModifyCCLevelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyCCLevel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCLevel require credential")
@@ -5298,6 +5386,7 @@ func (c *Client) ModifyCCPolicySwitchWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyCCPolicySwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyCCPolicySwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCPolicySwitch require credential")
@@ -5363,6 +5452,7 @@ func (c *Client) ModifyCCSelfDefinePolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyCCSelfDefinePolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyCCSelfDefinePolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCSelfDefinePolicy require credential")
@@ -5412,6 +5502,7 @@ func (c *Client) ModifyCCThresholdWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyCCThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyCCThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCThreshold require credential")
@@ -5461,6 +5552,7 @@ func (c *Client) ModifyCCUrlAllowWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyCCUrlAllowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyCCUrlAllow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCCUrlAllow require credential")
@@ -5510,6 +5602,7 @@ func (c *Client) ModifyDDoSAIStatusWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyDDoSAIStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyDDoSAIStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSAIStatus require credential")
@@ -5559,6 +5652,7 @@ func (c *Client) ModifyDDoSAlarmThresholdWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyDDoSAlarmThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyDDoSAlarmThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSAlarmThreshold require credential")
@@ -5608,6 +5702,7 @@ func (c *Client) ModifyDDoSDefendStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyDDoSDefendStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyDDoSDefendStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSDefendStatus require credential")
@@ -5657,6 +5752,7 @@ func (c *Client) ModifyDDoSLevelWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyDDoSLevelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyDDoSLevel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSLevel require credential")
@@ -5706,6 +5802,7 @@ func (c *Client) ModifyDDoSPolicyWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyDDoSPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyDDoSPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSPolicy require credential")
@@ -5755,6 +5852,7 @@ func (c *Client) ModifyDDoSPolicyCaseWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyDDoSPolicyCaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyDDoSPolicyCase")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSPolicyCase require credential")
@@ -5804,6 +5902,7 @@ func (c *Client) ModifyDDoSPolicyNameWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyDDoSPolicyNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyDDoSPolicyName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSPolicyName require credential")
@@ -5853,6 +5952,7 @@ func (c *Client) ModifyDDoSSwitchWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyDDoSSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyDDoSSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSSwitch require credential")
@@ -5902,6 +6002,7 @@ func (c *Client) ModifyDDoSThresholdWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyDDoSThresholdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyDDoSThreshold")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSThreshold require credential")
@@ -5951,6 +6052,7 @@ func (c *Client) ModifyDDoSWaterKeyWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyDDoSWaterKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyDDoSWaterKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDDoSWaterKey require credential")
@@ -6000,6 +6102,7 @@ func (c *Client) ModifyElasticLimitWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyElasticLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyElasticLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyElasticLimit require credential")
@@ -6049,6 +6152,7 @@ func (c *Client) ModifyL4HealthWithContext(ctx context.Context, request *ModifyL
     if request == nil {
         request = NewModifyL4HealthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyL4Health")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL4Health require credential")
@@ -6098,6 +6202,7 @@ func (c *Client) ModifyL4KeepTimeWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyL4KeepTimeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyL4KeepTime")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL4KeepTime require credential")
@@ -6147,6 +6252,7 @@ func (c *Client) ModifyL4RulesWithContext(ctx context.Context, request *ModifyL4
     if request == nil {
         request = NewModifyL4RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyL4Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL4Rules require credential")
@@ -6198,6 +6304,7 @@ func (c *Client) ModifyL7RulesWithContext(ctx context.Context, request *ModifyL7
     if request == nil {
         request = NewModifyL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL7Rules require credential")
@@ -6249,6 +6356,7 @@ func (c *Client) ModifyNetReturnSwitchWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyNetReturnSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyNetReturnSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNetReturnSwitch require credential")
@@ -6298,6 +6406,7 @@ func (c *Client) ModifyNewDomainRulesWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyNewDomainRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyNewDomainRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNewDomainRules require credential")
@@ -6347,6 +6456,7 @@ func (c *Client) ModifyNewL4RuleWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyNewL4RuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyNewL4Rule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNewL4Rule require credential")
@@ -6396,6 +6506,7 @@ func (c *Client) ModifyResBindDDoSPolicyWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyResBindDDoSPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyResBindDDoSPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResBindDDoSPolicy require credential")
@@ -6463,6 +6574,7 @@ func (c *Client) ModifyResourceRenewFlagWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyResourceRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dayu", APIVersion, "ModifyResourceRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResourceRenewFlag require credential")

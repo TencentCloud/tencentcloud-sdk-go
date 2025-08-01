@@ -88,6 +88,7 @@ func (c *Client) CreateDLPFileDetectionTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateDLPFileDetectionTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "CreateDLPFileDetectionTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDLPFileDetectionTask require credential")
@@ -151,6 +152,7 @@ func (c *Client) CreateDeviceTaskWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateDeviceTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "CreateDeviceTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDeviceTask require credential")
@@ -220,6 +222,7 @@ func (c *Client) CreateDeviceVirtualGroupWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateDeviceVirtualGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "CreateDeviceVirtualGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDeviceVirtualGroup require credential")
@@ -279,6 +282,7 @@ func (c *Client) CreatePrivilegeCodeWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreatePrivilegeCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "CreatePrivilegeCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrivilegeCode require credential")
@@ -338,6 +342,7 @@ func (c *Client) DescribeAccountGroupsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAccountGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeAccountGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccountGroups require credential")
@@ -393,6 +398,7 @@ func (c *Client) DescribeDLPFileDetectResultWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDLPFileDetectResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDLPFileDetectResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDLPFileDetectResult require credential")
@@ -454,6 +460,7 @@ func (c *Client) DescribeDeviceHardwareInfoListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeDeviceHardwareInfoListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDeviceHardwareInfoList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceHardwareInfoList require credential")
@@ -515,6 +522,7 @@ func (c *Client) DescribeDeviceInfoWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDeviceInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDeviceInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceInfo require credential")
@@ -578,6 +586,7 @@ func (c *Client) DescribeDeviceVirtualGroupsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDeviceVirtualGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDeviceVirtualGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceVirtualGroups require credential")
@@ -639,6 +648,7 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDevices require credential")
@@ -690,6 +700,7 @@ func (c *Client) DescribeLocalAccountsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLocalAccountsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeLocalAccounts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLocalAccounts require credential")
@@ -749,6 +760,7 @@ func (c *Client) DescribeRootAccountGroupWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeRootAccountGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeRootAccountGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRootAccountGroup require credential")
@@ -800,6 +812,7 @@ func (c *Client) DescribeSoftCensusListByDeviceWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeSoftCensusListByDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeSoftCensusListByDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSoftCensusListByDevice require credential")
@@ -851,6 +864,7 @@ func (c *Client) DescribeSoftwareInformationWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeSoftwareInformationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeSoftwareInformation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSoftwareInformation require credential")
@@ -914,6 +928,7 @@ func (c *Client) DescribeVirtualDevicesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeVirtualDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeVirtualDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVirtualDevices require credential")
@@ -983,6 +998,7 @@ func (c *Client) ModifyVirtualDeviceGroupsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyVirtualDeviceGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "ModifyVirtualDeviceGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVirtualDeviceGroups require credential")

@@ -134,6 +134,7 @@ func (c *Client) CreateDisclosedCredentialWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateDisclosedCredentialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "CreateDisclosedCredential")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDisclosedCredential require credential")
@@ -259,6 +260,7 @@ func (c *Client) CreatePresentationWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreatePresentationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "CreatePresentation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePresentation require credential")
@@ -358,6 +360,7 @@ func (c *Client) CreateTDidByHostWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateTDidByHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "CreateTDidByHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTDidByHost require credential")
@@ -433,6 +436,7 @@ func (c *Client) CreateTDidByPubKeyWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateTDidByPubKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "CreateTDidByPubKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTDidByPubKey require credential")
@@ -540,6 +544,7 @@ func (c *Client) DeactivateTDidWithContext(ctx context.Context, request *Deactiv
     if request == nil {
         request = NewDeactivateTDidRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "DeactivateTDid")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeactivateTDid require credential")
@@ -613,6 +618,7 @@ func (c *Client) GetAppSummaryWithContext(ctx context.Context, request *GetAppSu
     if request == nil {
         request = NewGetAppSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "GetAppSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAppSummary require credential")
@@ -690,6 +696,7 @@ func (c *Client) GetCredentialStateWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetCredentialStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "GetCredentialState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetCredentialState require credential")
@@ -763,6 +770,7 @@ func (c *Client) GetOverSummaryWithContext(ctx context.Context, request *GetOver
     if request == nil {
         request = NewGetOverSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "GetOverSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetOverSummary require credential")
@@ -852,6 +860,7 @@ func (c *Client) GetTDidByObjectIdWithContext(ctx context.Context, request *GetT
     if request == nil {
         request = NewGetTDidByObjectIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "GetTDidByObjectId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTDidByObjectId require credential")
@@ -933,6 +942,7 @@ func (c *Client) GetTDidDocumentWithContext(ctx context.Context, request *GetTDi
     if request == nil {
         request = NewGetTDidDocumentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "GetTDidDocument")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTDidDocument require credential")
@@ -1014,6 +1024,7 @@ func (c *Client) GetTDidPubKeyWithContext(ctx context.Context, request *GetTDidP
     if request == nil {
         request = NewGetTDidPubKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "GetTDidPubKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTDidPubKey require credential")
@@ -1131,6 +1142,7 @@ func (c *Client) IssueCredentialWithContext(ctx context.Context, request *IssueC
     if request == nil {
         request = NewIssueCredentialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "IssueCredential")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IssueCredential require credential")
@@ -1214,6 +1226,7 @@ func (c *Client) QueryAuthorityInfoWithContext(ctx context.Context, request *Que
     if request == nil {
         request = NewQueryAuthorityInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "QueryAuthorityInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryAuthorityInfo require credential")
@@ -1293,6 +1306,7 @@ func (c *Client) QueryCPTWithContext(ctx context.Context, request *QueryCPTReque
     if request == nil {
         request = NewQueryCPTRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "QueryCPT")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCPT require credential")
@@ -1380,6 +1394,7 @@ func (c *Client) SetTDidAttributeWithContext(ctx context.Context, request *SetTD
     if request == nil {
         request = NewSetTDidAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "SetTDidAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetTDidAttribute require credential")
@@ -1515,6 +1530,7 @@ func (c *Client) UpdateCredentialStateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewUpdateCredentialStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "UpdateCredentialState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCredentialState require credential")
@@ -1622,6 +1638,7 @@ func (c *Client) VerifyCredentialsWithContext(ctx context.Context, request *Veri
     if request == nil {
         request = NewVerifyCredentialsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "VerifyCredentials")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyCredentials require credential")
@@ -1729,6 +1746,7 @@ func (c *Client) VerifyPresentationWithContext(ctx context.Context, request *Ver
     if request == nil {
         request = NewVerifyPresentationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdid", APIVersion, "VerifyPresentation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyPresentation require credential")

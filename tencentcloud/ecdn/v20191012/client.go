@@ -124,6 +124,7 @@ func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecdn", APIVersion, "DescribeDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomains require credential")
@@ -217,6 +218,7 @@ func (c *Client) DescribeDomainsConfigWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDomainsConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecdn", APIVersion, "DescribeDomainsConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainsConfig require credential")
@@ -298,6 +300,7 @@ func (c *Client) DescribeEcdnDomainLogsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeEcdnDomainLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecdn", APIVersion, "DescribeEcdnDomainLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEcdnDomainLogs require credential")
@@ -415,6 +418,7 @@ func (c *Client) DescribeEcdnDomainStatisticsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeEcdnDomainStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecdn", APIVersion, "DescribeEcdnDomainStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEcdnDomainStatistics require credential")
@@ -566,6 +570,7 @@ func (c *Client) DescribeEcdnStatisticsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeEcdnStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecdn", APIVersion, "DescribeEcdnStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEcdnStatistics require credential")
@@ -653,6 +658,7 @@ func (c *Client) DescribeIpStatusWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeIpStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecdn", APIVersion, "DescribeIpStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIpStatus require credential")
@@ -661,182 +667,6 @@ func (c *Client) DescribeIpStatusWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeIpStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribePurgeTasksRequest() (request *DescribePurgeTasksRequest) {
-    request = &DescribePurgeTasksRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ecdn", APIVersion, "DescribePurgeTasks")
-    
-    
-    return
-}
-
-func NewDescribePurgeTasksResponse() (response *DescribePurgeTasksResponse) {
-    response = &DescribePurgeTasksResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribePurgeTasks
-// ECDN即将下线，如需要动态加速请使用EdgeOne
-//
-// 
-//
-// DescribePurgeTasks 用于查询刷新任务提交历史记录及执行进度。
-//
-// 
-//
-// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/37873"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
-//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
-//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
-//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
-//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
-//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
-//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
-//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
-func (c *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (response *DescribePurgeTasksResponse, err error) {
-    return c.DescribePurgeTasksWithContext(context.Background(), request)
-}
-
-// DescribePurgeTasks
-// ECDN即将下线，如需要动态加速请使用EdgeOne
-//
-// 
-//
-// DescribePurgeTasks 用于查询刷新任务提交历史记录及执行进度。
-//
-// 
-//
-// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/37873"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
-//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
-//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
-//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
-//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
-//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
-//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
-//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
-func (c *Client) DescribePurgeTasksWithContext(ctx context.Context, request *DescribePurgeTasksRequest) (response *DescribePurgeTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribePurgeTasksRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribePurgeTasks require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribePurgeTasksResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewPurgeUrlsCacheRequest() (request *PurgeUrlsCacheRequest) {
-    request = &PurgeUrlsCacheRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ecdn", APIVersion, "PurgeUrlsCache")
-    
-    
-    return
-}
-
-func NewPurgeUrlsCacheResponse() (response *PurgeUrlsCacheResponse) {
-    response = &PurgeUrlsCacheResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// PurgeUrlsCache
-// ECDN即将下线，如需要动态加速请使用EdgeOne
-//
-// 
-//
-// PurgeUrlsCache 用于批量刷新Url，一次提交将返回一个刷新任务id。
-//
-// 
-//
-// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/37870"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
-//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
-//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
-//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
-//  INVALIDPARAMETER_ECDNDOMAININVALIDSTATUS = "InvalidParameter.EcdnDomainInvalidStatus"
-//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
-//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
-//  INVALIDPARAMETER_ECDNPURGEWILDCARDNOTALLOWED = "InvalidParameter.EcdnPurgeWildcardNotAllowed"
-//  INVALIDPARAMETER_ECDNURLEXCEEDLENGTH = "InvalidParameter.EcdnUrlExceedLength"
-//  LIMITEXCEEDED_ECDNPURGEURLEXCEEDBATCHLIMIT = "LimitExceeded.EcdnPurgeUrlExceedBatchLimit"
-//  LIMITEXCEEDED_ECDNPURGEURLEXCEEDDAYLIMIT = "LimitExceeded.EcdnPurgeUrlExceedDayLimit"
-//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
-//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
-//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
-//  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
-//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
-//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
-func (c *Client) PurgeUrlsCache(request *PurgeUrlsCacheRequest) (response *PurgeUrlsCacheResponse, err error) {
-    return c.PurgeUrlsCacheWithContext(context.Background(), request)
-}
-
-// PurgeUrlsCache
-// ECDN即将下线，如需要动态加速请使用EdgeOne
-//
-// 
-//
-// PurgeUrlsCache 用于批量刷新Url，一次提交将返回一个刷新任务id。
-//
-// 
-//
-// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/37870"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
-//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
-//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
-//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
-//  INVALIDPARAMETER_ECDNDOMAININVALIDSTATUS = "InvalidParameter.EcdnDomainInvalidStatus"
-//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
-//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
-//  INVALIDPARAMETER_ECDNPURGEWILDCARDNOTALLOWED = "InvalidParameter.EcdnPurgeWildcardNotAllowed"
-//  INVALIDPARAMETER_ECDNURLEXCEEDLENGTH = "InvalidParameter.EcdnUrlExceedLength"
-//  LIMITEXCEEDED_ECDNPURGEURLEXCEEDBATCHLIMIT = "LimitExceeded.EcdnPurgeUrlExceedBatchLimit"
-//  LIMITEXCEEDED_ECDNPURGEURLEXCEEDDAYLIMIT = "LimitExceeded.EcdnPurgeUrlExceedDayLimit"
-//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
-//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
-//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
-//  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
-//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
-//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
-func (c *Client) PurgeUrlsCacheWithContext(ctx context.Context, request *PurgeUrlsCacheRequest) (response *PurgeUrlsCacheResponse, err error) {
-    if request == nil {
-        request = NewPurgeUrlsCacheRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("PurgeUrlsCache require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewPurgeUrlsCacheResponse()
     err = c.Send(request, response)
     return
 }

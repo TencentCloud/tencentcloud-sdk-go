@@ -112,6 +112,7 @@ func (c *Client) ApplyEmbedIntervalWithContext(ctx context.Context, request *App
     if request == nil {
         request = NewApplyEmbedIntervalRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ApplyEmbedInterval")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyEmbedInterval require credential")
@@ -191,6 +192,7 @@ func (c *Client) CreateDatasourceWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateDatasourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateDatasource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDatasource require credential")
@@ -266,6 +268,7 @@ func (c *Client) CreateDatasourceCloudWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateDatasourceCloudRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateDatasourceCloud")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDatasourceCloud require credential")
@@ -347,6 +350,7 @@ func (c *Client) CreateEmbedTokenWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateEmbedTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateEmbedToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEmbedToken require credential")
@@ -424,6 +428,7 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProject require credential")
@@ -479,6 +484,7 @@ func (c *Client) CreateUserRoleWithContext(ctx context.Context, request *CreateU
     if request == nil {
         request = NewCreateUserRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateUserRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserRole require credential")
@@ -534,6 +540,7 @@ func (c *Client) CreateUserRoleProjectWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateUserRoleProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateUserRoleProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserRoleProject require credential")
@@ -613,6 +620,7 @@ func (c *Client) DeleteDatasourceWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteDatasourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DeleteDatasource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDatasource require credential")
@@ -662,6 +670,7 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DeleteProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteProject require credential")
@@ -717,6 +726,7 @@ func (c *Client) DeleteUserRoleWithContext(ctx context.Context, request *DeleteU
     if request == nil {
         request = NewDeleteUserRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DeleteUserRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUserRole require credential")
@@ -768,6 +778,7 @@ func (c *Client) DeleteUserRoleProjectWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteUserRoleProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DeleteUserRoleProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUserRoleProject require credential")
@@ -851,6 +862,7 @@ func (c *Client) DescribeDatasourceListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDatasourceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeDatasourceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDatasourceList require credential")
@@ -918,6 +930,7 @@ func (c *Client) DescribePageWidgetListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribePageWidgetListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribePageWidgetList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePageWidgetList require credential")
@@ -973,6 +986,7 @@ func (c *Client) DescribeProjectInfoWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeProjectInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeProjectInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProjectInfo require credential")
@@ -1030,6 +1044,7 @@ func (c *Client) DescribeProjectListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeProjectListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeProjectList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProjectList require credential")
@@ -1081,6 +1096,7 @@ func (c *Client) DescribeUserProjectListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeUserProjectListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeUserProjectList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserProjectList require credential")
@@ -1140,6 +1156,7 @@ func (c *Client) DescribeUserRoleListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeUserRoleListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeUserRoleList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserRoleList require credential")
@@ -1199,6 +1216,7 @@ func (c *Client) DescribeUserRoleProjectListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeUserRoleProjectListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeUserRoleProjectList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserRoleProjectList require credential")
@@ -1266,6 +1284,7 @@ func (c *Client) ExportScreenPageWithContext(ctx context.Context, request *Expor
     if request == nil {
         request = NewExportScreenPageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ExportScreenPage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportScreenPage require credential")
@@ -1345,6 +1364,7 @@ func (c *Client) ModifyDatasourceWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyDatasourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyDatasource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDatasource require credential")
@@ -1420,6 +1440,7 @@ func (c *Client) ModifyDatasourceCloudWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyDatasourceCloudRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyDatasourceCloud")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDatasourceCloud require credential")
@@ -1471,6 +1492,7 @@ func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyPr
     if request == nil {
         request = NewModifyProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyProject require credential")
@@ -1524,6 +1546,7 @@ func (c *Client) ModifyUserRoleWithContext(ctx context.Context, request *ModifyU
     if request == nil {
         request = NewModifyUserRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyUserRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserRole require credential")
@@ -1577,6 +1600,7 @@ func (c *Client) ModifyUserRoleProjectWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyUserRoleProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyUserRoleProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserRoleProject require credential")

@@ -469,6 +469,9 @@ type GetDocumentParseResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedPages []*int64 `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
 
+	// 消耗页数
+	Usage *PageUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -578,6 +581,11 @@ type OutputMessage struct {
 
 	// 推理内容	
 	ReasoningContent *string `json:"ReasoningContent,omitnil,omitempty" name:"ReasoningContent"`
+}
+
+type PageUsage struct {
+	// 消耗总页数
+	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
 }
 
 type ParseDocument struct {
@@ -720,6 +728,9 @@ type ParseDocumentResponseParams struct {
 
 	// 失败页码。
 	FailedPages []*int64 `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
+
+	// 消耗页数
+	Usage *PageUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

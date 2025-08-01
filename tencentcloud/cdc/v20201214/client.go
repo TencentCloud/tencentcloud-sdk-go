@@ -88,6 +88,7 @@ func (c *Client) CreateDedicatedClusterWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateDedicatedClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "CreateDedicatedCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDedicatedCluster require credential")
@@ -143,6 +144,7 @@ func (c *Client) CreateDedicatedClusterImageCacheWithContext(ctx context.Context
     if request == nil {
         request = NewCreateDedicatedClusterImageCacheRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "CreateDedicatedClusterImageCache")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDedicatedClusterImageCache require credential")
@@ -204,6 +206,7 @@ func (c *Client) CreateDedicatedClusterOrderWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateDedicatedClusterOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "CreateDedicatedClusterOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDedicatedClusterOrder require credential")
@@ -255,6 +258,7 @@ func (c *Client) CreateSiteWithContext(ctx context.Context, request *CreateSiteR
     if request == nil {
         request = NewCreateSiteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "CreateSite")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSite require credential")
@@ -310,6 +314,7 @@ func (c *Client) DeleteDedicatedClusterImageCacheWithContext(ctx context.Context
     if request == nil {
         request = NewDeleteDedicatedClusterImageCacheRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DeleteDedicatedClusterImageCache")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDedicatedClusterImageCache require credential")
@@ -361,6 +366,7 @@ func (c *Client) DeleteDedicatedClustersWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteDedicatedClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DeleteDedicatedClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDedicatedClusters require credential")
@@ -414,6 +420,7 @@ func (c *Client) DeleteSitesWithContext(ctx context.Context, request *DeleteSite
     if request == nil {
         request = NewDeleteSitesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DeleteSites")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSites require credential")
@@ -467,6 +474,7 @@ func (c *Client) DescribeDedicatedClusterCbsStatisticsWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeDedicatedClusterCbsStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeDedicatedClusterCbsStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDedicatedClusterCbsStatistics require credential")
@@ -518,6 +526,7 @@ func (c *Client) DescribeDedicatedClusterCosCapacityWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeDedicatedClusterCosCapacityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeDedicatedClusterCosCapacity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDedicatedClusterCosCapacity require credential")
@@ -571,6 +580,7 @@ func (c *Client) DescribeDedicatedClusterHostStatisticsWithContext(ctx context.C
     if request == nil {
         request = NewDescribeDedicatedClusterHostStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeDedicatedClusterHostStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDedicatedClusterHostStatistics require credential")
@@ -624,6 +634,7 @@ func (c *Client) DescribeDedicatedClusterHostsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeDedicatedClusterHostsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeDedicatedClusterHosts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDedicatedClusterHosts require credential")
@@ -675,6 +686,7 @@ func (c *Client) DescribeDedicatedClusterInstanceTypesWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeDedicatedClusterInstanceTypesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeDedicatedClusterInstanceTypes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDedicatedClusterInstanceTypes require credential")
@@ -726,6 +738,7 @@ func (c *Client) DescribeDedicatedClusterOrdersWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeDedicatedClusterOrdersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeDedicatedClusterOrders")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDedicatedClusterOrders require credential")
@@ -777,6 +790,7 @@ func (c *Client) DescribeDedicatedClusterOverviewWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeDedicatedClusterOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeDedicatedClusterOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDedicatedClusterOverview require credential")
@@ -828,6 +842,7 @@ func (c *Client) DescribeDedicatedClusterTypesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeDedicatedClusterTypesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeDedicatedClusterTypes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDedicatedClusterTypes require credential")
@@ -881,6 +896,7 @@ func (c *Client) DescribeDedicatedClustersWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDedicatedClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeDedicatedClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDedicatedClusters require credential")
@@ -934,6 +950,7 @@ func (c *Client) DescribeDedicatedSupportedZonesWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeDedicatedSupportedZonesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeDedicatedSupportedZones")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDedicatedSupportedZones require credential")
@@ -987,6 +1004,7 @@ func (c *Client) DescribeSitesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeSitesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeSites")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSites require credential")
@@ -1036,6 +1054,7 @@ func (c *Client) DescribeSitesDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeSitesDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeSitesDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSitesDetail require credential")
@@ -1099,6 +1118,7 @@ func (c *Client) ModifyDedicatedClusterInfoWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyDedicatedClusterInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "ModifyDedicatedClusterInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDedicatedClusterInfo require credential")
@@ -1148,6 +1168,7 @@ func (c *Client) ModifyOrderStatusWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyOrderStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "ModifyOrderStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyOrderStatus require credential")
@@ -1197,6 +1218,7 @@ func (c *Client) ModifySiteDeviceInfoWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifySiteDeviceInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "ModifySiteDeviceInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySiteDeviceInfo require credential")
@@ -1248,6 +1270,7 @@ func (c *Client) ModifySiteInfoWithContext(ctx context.Context, request *ModifyS
     if request == nil {
         request = NewModifySiteInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "ModifySiteInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySiteInfo require credential")

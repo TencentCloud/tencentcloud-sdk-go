@@ -100,6 +100,7 @@ func (c *Client) BatchApplyAccountBaselinesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewBatchApplyAccountBaselinesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "controlcenter", APIVersion, "BatchApplyAccountBaselines")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchApplyAccountBaselines require credential")
@@ -153,6 +154,7 @@ func (c *Client) GetAccountFactoryBaselineWithContext(ctx context.Context, reque
     if request == nil {
         request = NewGetAccountFactoryBaselineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "controlcenter", APIVersion, "GetAccountFactoryBaseline")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAccountFactoryBaseline require credential")
@@ -204,6 +206,7 @@ func (c *Client) ListAccountFactoryBaselineItemsWithContext(ctx context.Context,
     if request == nil {
         request = NewListAccountFactoryBaselineItemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "controlcenter", APIVersion, "ListAccountFactoryBaselineItems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAccountFactoryBaselineItems require credential")
@@ -257,6 +260,7 @@ func (c *Client) ListDeployStepTasksWithContext(ctx context.Context, request *Li
     if request == nil {
         request = NewListDeployStepTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "controlcenter", APIVersion, "ListDeployStepTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListDeployStepTasks require credential")
@@ -316,6 +320,7 @@ func (c *Client) UpdateAccountFactoryBaselineWithContext(ctx context.Context, re
     if request == nil {
         request = NewUpdateAccountFactoryBaselineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "controlcenter", APIVersion, "UpdateAccountFactoryBaseline")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAccountFactoryBaseline require credential")

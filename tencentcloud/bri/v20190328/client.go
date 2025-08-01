@@ -180,6 +180,7 @@ func (c *Client) DescribeBRIWithContext(ctx context.Context, request *DescribeBR
     if request == nil {
         request = NewDescribeBRIRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bri", APIVersion, "DescribeBRI")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBRI require credential")

@@ -100,6 +100,7 @@ func (c *Client) BankCard2EVerificationWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBankCard2EVerificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "BankCard2EVerification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BankCard2EVerification require credential")
@@ -167,6 +168,7 @@ func (c *Client) BankCard4EVerificationWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBankCard4EVerificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "BankCard4EVerification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BankCard4EVerification require credential")
@@ -234,6 +236,7 @@ func (c *Client) BankCardVerificationWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBankCardVerificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "BankCardVerification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BankCardVerification require credential")
@@ -301,6 +304,7 @@ func (c *Client) CheckBankCardInformationWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCheckBankCardInformationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "CheckBankCardInformation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckBankCardInformation require credential")
@@ -364,6 +368,7 @@ func (c *Client) CheckEidTokenStatusWithContext(ctx context.Context, request *Ch
     if request == nil {
         request = NewCheckEidTokenStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "CheckEidTokenStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckEidTokenStatus require credential")
@@ -475,6 +480,7 @@ func (c *Client) CheckIdCardInformationWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCheckIdCardInformationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "CheckIdCardInformation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckIdCardInformation require credential")
@@ -540,6 +546,7 @@ func (c *Client) CheckIdNameDateWithContext(ctx context.Context, request *CheckI
     if request == nil {
         request = NewCheckIdNameDateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "CheckIdNameDate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckIdNameDate require credential")
@@ -605,6 +612,7 @@ func (c *Client) CheckPhoneAndNameWithContext(ctx context.Context, request *Chec
     if request == nil {
         request = NewCheckPhoneAndNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "CheckPhoneAndName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckPhoneAndName require credential")
@@ -680,6 +688,7 @@ func (c *Client) DetectAIFakeFacesWithContext(ctx context.Context, request *Dete
     if request == nil {
         request = NewDetectAIFakeFacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "DetectAIFakeFaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectAIFakeFaces require credential")
@@ -751,6 +760,7 @@ func (c *Client) DetectAuthWithContext(ctx context.Context, request *DetectAuthR
     if request == nil {
         request = NewDetectAuthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "DetectAuth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectAuth require credential")
@@ -820,6 +830,7 @@ func (c *Client) EncryptedPhoneVerificationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewEncryptedPhoneVerificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "EncryptedPhoneVerification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EncryptedPhoneVerification require credential")
@@ -883,6 +894,7 @@ func (c *Client) GetActionSequenceWithContext(ctx context.Context, request *GetA
     if request == nil {
         request = NewGetActionSequenceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetActionSequence")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetActionSequence require credential")
@@ -950,6 +962,7 @@ func (c *Client) GetDetectInfoWithContext(ctx context.Context, request *GetDetec
     if request == nil {
         request = NewGetDetectInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetDetectInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDetectInfo require credential")
@@ -1021,6 +1034,7 @@ func (c *Client) GetDetectInfoEnhancedWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetDetectInfoEnhancedRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetDetectInfoEnhanced")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDetectInfoEnhanced require credential")
@@ -1090,6 +1104,7 @@ func (c *Client) GetEidResultWithContext(ctx context.Context, request *GetEidRes
     if request == nil {
         request = NewGetEidResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetEidResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetEidResult require credential")
@@ -1159,6 +1174,7 @@ func (c *Client) GetEidTokenWithContext(ctx context.Context, request *GetEidToke
     if request == nil {
         request = NewGetEidTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetEidToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetEidToken require credential")
@@ -1218,6 +1234,7 @@ func (c *Client) GetFaceIdResultWithContext(ctx context.Context, request *GetFac
     if request == nil {
         request = NewGetFaceIdResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetFaceIdResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFaceIdResult require credential")
@@ -1277,6 +1294,7 @@ func (c *Client) GetFaceIdRiskInfoWithContext(ctx context.Context, request *GetF
     if request == nil {
         request = NewGetFaceIdRiskInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetFaceIdRiskInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFaceIdRiskInfo require credential")
@@ -1336,6 +1354,7 @@ func (c *Client) GetFaceIdTokenWithContext(ctx context.Context, request *GetFace
     if request == nil {
         request = NewGetFaceIdTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetFaceIdToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFaceIdToken require credential")
@@ -1395,6 +1414,7 @@ func (c *Client) GetFaceidRiskInfoTokenWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGetFaceidRiskInfoTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetFaceidRiskInfoToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFaceidRiskInfoToken require credential")
@@ -1460,6 +1480,7 @@ func (c *Client) GetLiveCodeWithContext(ctx context.Context, request *GetLiveCod
     if request == nil {
         request = NewGetLiveCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetLiveCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetLiveCode require credential")
@@ -1513,6 +1534,7 @@ func (c *Client) GetWeChatBillDetailsWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetWeChatBillDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetWeChatBillDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetWeChatBillDetails require credential")
@@ -1596,6 +1618,7 @@ func (c *Client) IdCardOCRVerificationWithContext(ctx context.Context, request *
     if request == nil {
         request = NewIdCardOCRVerificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "IdCardOCRVerification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IdCardOCRVerification require credential")
@@ -1665,6 +1688,7 @@ func (c *Client) IdCardVerificationWithContext(ctx context.Context, request *IdC
     if request == nil {
         request = NewIdCardVerificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "IdCardVerification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IdCardVerification require credential")
@@ -1768,6 +1792,7 @@ func (c *Client) ImageRecognitionWithContext(ctx context.Context, request *Image
     if request == nil {
         request = NewImageRecognitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "ImageRecognition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageRecognition require credential")
@@ -1871,6 +1896,7 @@ func (c *Client) ImageRecognitionV2WithContext(ctx context.Context, request *Ima
     if request == nil {
         request = NewImageRecognitionV2Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "ImageRecognitionV2")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageRecognitionV2 require credential")
@@ -2004,6 +2030,7 @@ func (c *Client) LivenessWithContext(ctx context.Context, request *LivenessReque
     if request == nil {
         request = NewLivenessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "Liveness")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Liveness require credential")
@@ -2159,6 +2186,7 @@ func (c *Client) LivenessCompareWithContext(ctx context.Context, request *Livene
     if request == nil {
         request = NewLivenessCompareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "LivenessCompare")
     
     if c.GetCredential() == nil {
         return nil, errors.New("LivenessCompare require credential")
@@ -2318,6 +2346,7 @@ func (c *Client) LivenessRecognitionWithContext(ctx context.Context, request *Li
     if request == nil {
         request = NewLivenessRecognitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "LivenessRecognition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("LivenessRecognition require credential")
@@ -2383,6 +2412,7 @@ func (c *Client) MinorsVerificationWithContext(ctx context.Context, request *Min
     if request == nil {
         request = NewMinorsVerificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "MinorsVerification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MinorsVerification require credential")
@@ -2454,6 +2484,7 @@ func (c *Client) MobileNetworkTimeVerificationWithContext(ctx context.Context, r
     if request == nil {
         request = NewMobileNetworkTimeVerificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "MobileNetworkTimeVerification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MobileNetworkTimeVerification require credential")
@@ -2521,6 +2552,7 @@ func (c *Client) MobileStatusWithContext(ctx context.Context, request *MobileSta
     if request == nil {
         request = NewMobileStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "MobileStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MobileStatus require credential")
@@ -2576,6 +2608,7 @@ func (c *Client) ParseNfcDataWithContext(ctx context.Context, request *ParseNfcD
     if request == nil {
         request = NewParseNfcDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "ParseNfcData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ParseNfcData require credential")
@@ -2643,6 +2676,7 @@ func (c *Client) PhoneVerificationWithContext(ctx context.Context, request *Phon
     if request == nil {
         request = NewPhoneVerificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "PhoneVerification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PhoneVerification require credential")
@@ -2710,6 +2744,7 @@ func (c *Client) PhoneVerificationCMCCWithContext(ctx context.Context, request *
     if request == nil {
         request = NewPhoneVerificationCMCCRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "PhoneVerificationCMCC")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PhoneVerificationCMCC require credential")
@@ -2777,6 +2812,7 @@ func (c *Client) PhoneVerificationCTCCWithContext(ctx context.Context, request *
     if request == nil {
         request = NewPhoneVerificationCTCCRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "PhoneVerificationCTCC")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PhoneVerificationCTCC require credential")
@@ -2844,6 +2880,7 @@ func (c *Client) PhoneVerificationCUCCWithContext(ctx context.Context, request *
     if request == nil {
         request = NewPhoneVerificationCUCCRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "PhoneVerificationCUCC")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PhoneVerificationCUCC require credential")

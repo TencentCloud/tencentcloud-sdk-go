@@ -92,6 +92,7 @@ func (c *Client) DescribeGoodsRecommendWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeGoodsRecommendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "irp", APIVersion, "DescribeGoodsRecommend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGoodsRecommend require credential")
@@ -151,6 +152,7 @@ func (c *Client) FeedRecommendWithContext(ctx context.Context, request *FeedReco
     if request == nil {
         request = NewFeedRecommendRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "irp", APIVersion, "FeedRecommend")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FeedRecommend require credential")
@@ -210,6 +212,7 @@ func (c *Client) ReportFeedBehaviorWithContext(ctx context.Context, request *Rep
     if request == nil {
         request = NewReportFeedBehaviorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "irp", APIVersion, "ReportFeedBehavior")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportFeedBehavior require credential")
@@ -269,6 +272,7 @@ func (c *Client) ReportFeedItemWithContext(ctx context.Context, request *ReportF
     if request == nil {
         request = NewReportFeedItemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "irp", APIVersion, "ReportFeedItem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportFeedItem require credential")
@@ -328,6 +332,7 @@ func (c *Client) ReportFeedUserWithContext(ctx context.Context, request *ReportF
     if request == nil {
         request = NewReportFeedUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "irp", APIVersion, "ReportFeedUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportFeedUser require credential")
@@ -387,6 +392,7 @@ func (c *Client) ReportGoodsBehaviorWithContext(ctx context.Context, request *Re
     if request == nil {
         request = NewReportGoodsBehaviorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "irp", APIVersion, "ReportGoodsBehavior")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportGoodsBehavior require credential")
@@ -444,6 +450,7 @@ func (c *Client) ReportGoodsInfoWithContext(ctx context.Context, request *Report
     if request == nil {
         request = NewReportGoodsInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "irp", APIVersion, "ReportGoodsInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportGoodsInfo require credential")

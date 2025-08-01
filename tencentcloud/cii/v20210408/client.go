@@ -90,6 +90,7 @@ func (c *Client) AddSubStructureTasksWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAddSubStructureTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "AddSubStructureTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddSubStructureTasks require credential")
@@ -151,6 +152,7 @@ func (c *Client) CreateAutoClassifyStructureTaskWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateAutoClassifyStructureTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "CreateAutoClassifyStructureTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAutoClassifyStructureTask require credential")
@@ -214,6 +216,7 @@ func (c *Client) CreateStructureTaskWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateStructureTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "CreateStructureTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStructureTask require credential")
@@ -275,6 +278,7 @@ func (c *Client) CreateUnderwriteTaskByIdWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateUnderwriteTaskByIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "CreateUnderwriteTaskById")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUnderwriteTaskById require credential")
@@ -332,6 +336,7 @@ func (c *Client) DescribeMachineUnderwriteWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeMachineUnderwriteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "DescribeMachineUnderwrite")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMachineUnderwrite require credential")
@@ -397,6 +402,7 @@ func (c *Client) DescribeQualityScoreWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeQualityScoreRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "DescribeQualityScore")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeQualityScore require credential")
@@ -458,6 +464,7 @@ func (c *Client) DescribeReportClassifyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeReportClassifyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "DescribeReportClassify")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReportClassify require credential")
@@ -511,6 +518,7 @@ func (c *Client) DescribeStructCompareDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeStructCompareDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "DescribeStructCompareData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStructCompareData require credential")
@@ -564,6 +572,7 @@ func (c *Client) DescribeStructureDifferenceWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeStructureDifferenceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "DescribeStructureDifference")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStructureDifference require credential")
@@ -629,6 +638,7 @@ func (c *Client) DescribeStructureResultWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeStructureResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "DescribeStructureResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStructureResult require credential")
@@ -692,6 +702,7 @@ func (c *Client) DescribeStructureTaskResultWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeStructureTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "DescribeStructureTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStructureTaskResult require credential")
@@ -751,6 +762,7 @@ func (c *Client) DescribeUnderwriteTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeUnderwriteTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "DescribeUnderwriteTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnderwriteTask require credential")
@@ -812,6 +824,7 @@ func (c *Client) UploadMedicalFileWithContext(ctx context.Context, request *Uplo
     if request == nil {
         request = NewUploadMedicalFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "UploadMedicalFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadMedicalFile require credential")

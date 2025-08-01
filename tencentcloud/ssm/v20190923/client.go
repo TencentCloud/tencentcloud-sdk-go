@@ -134,6 +134,7 @@ func (c *Client) CreateProductSecretWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateProductSecretRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "CreateProductSecret")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProductSecret require credential")
@@ -215,6 +216,7 @@ func (c *Client) CreateSSHKeyPairSecretWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateSSHKeyPairSecretRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "CreateSSHKeyPairSecret")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSSHKeyPairSecret require credential")
@@ -280,6 +282,7 @@ func (c *Client) CreateSecretWithContext(ctx context.Context, request *CreateSec
     if request == nil {
         request = NewCreateSecretRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "CreateSecret")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSecret require credential")
@@ -341,6 +344,7 @@ func (c *Client) DeleteSecretWithContext(ctx context.Context, request *DeleteSec
     if request == nil {
         request = NewDeleteSecretRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "DeleteSecret")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSecret require credential")
@@ -406,6 +410,7 @@ func (c *Client) DeleteSecretVersionWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteSecretVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "DeleteSecretVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSecretVersion require credential")
@@ -511,6 +516,7 @@ func (c *Client) DescribeAsyncRequestInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAsyncRequestInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "DescribeAsyncRequestInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAsyncRequestInfo require credential")
@@ -620,6 +626,7 @@ func (c *Client) DescribeRotationDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRotationDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "DescribeRotationDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRotationDetail require credential")
@@ -729,6 +736,7 @@ func (c *Client) DescribeRotationHistoryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeRotationHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "DescribeRotationHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRotationHistory require credential")
@@ -790,6 +798,7 @@ func (c *Client) DescribeSecretWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeSecretRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "DescribeSecret")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecret require credential")
@@ -895,6 +904,7 @@ func (c *Client) DescribeSupportedProductsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSupportedProductsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "DescribeSupportedProducts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSupportedProducts require credential")
@@ -956,6 +966,7 @@ func (c *Client) DisableSecretWithContext(ctx context.Context, request *DisableS
     if request == nil {
         request = NewDisableSecretRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "DisableSecret")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableSecret require credential")
@@ -1017,6 +1028,7 @@ func (c *Client) EnableSecretWithContext(ctx context.Context, request *EnableSec
     if request == nil {
         request = NewEnableSecretRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "EnableSecret")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableSecret require credential")
@@ -1068,6 +1080,7 @@ func (c *Client) GetRegionsWithContext(ctx context.Context, request *GetRegionsR
     if request == nil {
         request = NewGetRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "GetRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetRegions require credential")
@@ -1147,6 +1160,7 @@ func (c *Client) GetSSHKeyPairValueWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetSSHKeyPairValueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "GetSSHKeyPairValue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetSSHKeyPairValue require credential")
@@ -1222,6 +1236,7 @@ func (c *Client) GetSecretValueWithContext(ctx context.Context, request *GetSecr
     if request == nil {
         request = NewGetSecretValueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "GetSecretValue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetSecretValue require credential")
@@ -1273,6 +1288,7 @@ func (c *Client) GetServiceStatusWithContext(ctx context.Context, request *GetSe
     if request == nil {
         request = NewGetServiceStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "GetServiceStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetServiceStatus require credential")
@@ -1332,6 +1348,7 @@ func (c *Client) ListSecretVersionIdsWithContext(ctx context.Context, request *L
     if request == nil {
         request = NewListSecretVersionIdsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "ListSecretVersionIds")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListSecretVersionIds require credential")
@@ -1389,6 +1406,7 @@ func (c *Client) ListSecretsWithContext(ctx context.Context, request *ListSecret
     if request == nil {
         request = NewListSecretsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "ListSecrets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListSecrets require credential")
@@ -1460,6 +1478,7 @@ func (c *Client) PutSecretValueWithContext(ctx context.Context, request *PutSecr
     if request == nil {
         request = NewPutSecretValueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "PutSecretValue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PutSecretValue require credential")
@@ -1519,6 +1538,7 @@ func (c *Client) RestoreSecretWithContext(ctx context.Context, request *RestoreS
     if request == nil {
         request = NewRestoreSecretRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "RestoreSecret")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestoreSecret require credential")
@@ -1634,6 +1654,7 @@ func (c *Client) RotateProductSecretWithContext(ctx context.Context, request *Ro
     if request == nil {
         request = NewRotateProductSecretRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "RotateProductSecret")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RotateProductSecret require credential")
@@ -1691,6 +1712,7 @@ func (c *Client) UpdateDescriptionWithContext(ctx context.Context, request *Upda
     if request == nil {
         request = NewUpdateDescriptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "UpdateDescription")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDescription require credential")
@@ -1810,6 +1832,7 @@ func (c *Client) UpdateRotationStatusWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateRotationStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "UpdateRotationStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateRotationStatus require credential")
@@ -1877,6 +1900,7 @@ func (c *Client) UpdateSecretWithContext(ctx context.Context, request *UpdateSec
     if request == nil {
         request = NewUpdateSecretRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "UpdateSecret")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateSecret require credential")

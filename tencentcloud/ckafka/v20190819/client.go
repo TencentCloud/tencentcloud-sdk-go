@@ -90,6 +90,7 @@ func (c *Client) AuthorizeTokenWithContext(ctx context.Context, request *Authori
     if request == nil {
         request = NewAuthorizeTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "AuthorizeToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AuthorizeToken require credential")
@@ -143,6 +144,7 @@ func (c *Client) BatchCreateAclWithContext(ctx context.Context, request *BatchCr
     if request == nil {
         request = NewBatchCreateAclRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "BatchCreateAcl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchCreateAcl require credential")
@@ -202,6 +204,7 @@ func (c *Client) BatchModifyGroupOffsetsWithContext(ctx context.Context, request
     if request == nil {
         request = NewBatchModifyGroupOffsetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "BatchModifyGroupOffsets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchModifyGroupOffsets require credential")
@@ -265,6 +268,7 @@ func (c *Client) BatchModifyTopicAttributesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewBatchModifyTopicAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "BatchModifyTopicAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchModifyTopicAttributes require credential")
@@ -322,6 +326,7 @@ func (c *Client) CancelAuthorizationTokenWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCancelAuthorizationTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CancelAuthorizationToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelAuthorizationToken require credential")
@@ -379,6 +384,7 @@ func (c *Client) CheckCdcClusterWithContext(ctx context.Context, request *CheckC
     if request == nil {
         request = NewCheckCdcClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CheckCdcCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckCdcCluster require credential")
@@ -454,6 +460,7 @@ func (c *Client) CreateAclWithContext(ctx context.Context, request *CreateAclReq
     if request == nil {
         request = NewCreateAclRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateAcl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAcl require credential")
@@ -531,6 +538,7 @@ func (c *Client) CreateAclRuleWithContext(ctx context.Context, request *CreateAc
     if request == nil {
         request = NewCreateAclRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateAclRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAclRule require credential")
@@ -608,6 +616,7 @@ func (c *Client) CreateCdcClusterWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateCdcClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateCdcCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCdcCluster require credential")
@@ -671,6 +680,7 @@ func (c *Client) CreateConnectResourceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateConnectResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateConnectResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConnectResource require credential")
@@ -732,6 +742,7 @@ func (c *Client) CreateConsumerWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateConsumerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateConsumer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConsumer require credential")
@@ -797,6 +808,7 @@ func (c *Client) CreateDatahubTaskWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateDatahubTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateDatahubTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDatahubTask require credential")
@@ -876,6 +888,7 @@ func (c *Client) CreateDatahubTopicWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateDatahubTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateDatahubTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDatahubTopic require credential")
@@ -953,6 +966,7 @@ func (c *Client) CreateInstancePreWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateInstancePreRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateInstancePre")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInstancePre require credential")
@@ -1030,6 +1044,7 @@ func (c *Client) CreatePartitionWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreatePartitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreatePartition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePartition require credential")
@@ -1107,6 +1122,7 @@ func (c *Client) CreatePostPaidInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreatePostPaidInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreatePostPaidInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePostPaidInstance require credential")
@@ -1174,6 +1190,7 @@ func (c *Client) CreatePrometheusWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreatePrometheusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreatePrometheus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrometheus require credential")
@@ -1257,6 +1274,7 @@ func (c *Client) CreateRouteWithContext(ctx context.Context, request *CreateRout
     if request == nil {
         request = NewCreateRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRoute require credential")
@@ -1314,6 +1332,7 @@ func (c *Client) CreateTokenWithContext(ctx context.Context, request *CreateToke
     if request == nil {
         request = NewCreateTokenRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateToken")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateToken require credential")
@@ -1395,6 +1414,7 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTopic require credential")
@@ -1470,6 +1490,7 @@ func (c *Client) CreateTopicIpWhiteListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateTopicIpWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateTopicIpWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTopicIpWhiteList require credential")
@@ -1545,6 +1566,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     if request == nil {
         request = NewCreateUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUser require credential")
@@ -1620,6 +1642,7 @@ func (c *Client) DeleteAclWithContext(ctx context.Context, request *DeleteAclReq
     if request == nil {
         request = NewDeleteAclRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteAcl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAcl require credential")
@@ -1697,6 +1720,7 @@ func (c *Client) DeleteAclRuleWithContext(ctx context.Context, request *DeleteAc
     if request == nil {
         request = NewDeleteAclRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteAclRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAclRule require credential")
@@ -1760,6 +1784,7 @@ func (c *Client) DeleteConnectResourceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteConnectResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteConnectResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConnectResource require credential")
@@ -1819,6 +1844,7 @@ func (c *Client) DeleteDatahubTaskWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteDatahubTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteDatahubTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDatahubTask require credential")
@@ -1898,6 +1924,7 @@ func (c *Client) DeleteDatahubTopicWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteDatahubTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteDatahubTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDatahubTopic require credential")
@@ -1971,6 +1998,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGrou
     if request == nil {
         request = NewDeleteGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGroup require credential")
@@ -2046,6 +2074,7 @@ func (c *Client) DeleteInstancePostWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteInstancePostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteInstancePost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteInstancePost require credential")
@@ -2097,6 +2126,7 @@ func (c *Client) DeleteInstancePreWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteInstancePreRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteInstancePre")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteInstancePre require credential")
@@ -2176,6 +2206,7 @@ func (c *Client) DeleteRouteWithContext(ctx context.Context, request *DeleteRout
     if request == nil {
         request = NewDeleteRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRoute require credential")
@@ -2233,6 +2264,7 @@ func (c *Client) DeleteRouteTriggerTimeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteRouteTriggerTimeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteRouteTriggerTime")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRouteTriggerTime require credential")
@@ -2314,6 +2346,7 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopi
     if request == nil {
         request = NewDeleteTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTopic require credential")
@@ -2389,6 +2422,7 @@ func (c *Client) DeleteTopicIpWhiteListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteTopicIpWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteTopicIpWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTopicIpWhiteList require credential")
@@ -2464,6 +2498,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserR
     if request == nil {
         request = NewDeleteUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUser require credential")
@@ -2539,6 +2574,7 @@ func (c *Client) DescribeACLWithContext(ctx context.Context, request *DescribeAC
     if request == nil {
         request = NewDescribeACLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeACL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeACL require credential")
@@ -2614,6 +2650,7 @@ func (c *Client) DescribeAclRuleWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeAclRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeAclRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAclRule require credential")
@@ -2687,6 +2724,7 @@ func (c *Client) DescribeAppInfoWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeAppInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeAppInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAppInfo require credential")
@@ -2764,6 +2802,7 @@ func (c *Client) DescribeCkafkaZoneWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCkafkaZoneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeCkafkaZone")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCkafkaZone require credential")
@@ -2827,6 +2866,7 @@ func (c *Client) DescribeConnectResourceWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeConnectResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeConnectResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConnectResource require credential")
@@ -2890,6 +2930,7 @@ func (c *Client) DescribeConnectResourcesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeConnectResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeConnectResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConnectResources require credential")
@@ -2965,6 +3006,7 @@ func (c *Client) DescribeConsumerGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeConsumerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeConsumerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConsumerGroup require credential")
@@ -3026,6 +3068,7 @@ func (c *Client) DescribeCvmInfoWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeCvmInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeCvmInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCvmInfo require credential")
@@ -3101,6 +3144,7 @@ func (c *Client) DescribeDatahubGroupOffsetsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDatahubGroupOffsetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeDatahubGroupOffsets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDatahubGroupOffsets require credential")
@@ -3158,6 +3202,7 @@ func (c *Client) DescribeDatahubTaskWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDatahubTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeDatahubTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDatahubTask require credential")
@@ -3219,6 +3264,7 @@ func (c *Client) DescribeDatahubTasksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDatahubTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeDatahubTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDatahubTasks require credential")
@@ -3296,6 +3342,7 @@ func (c *Client) DescribeDatahubTopicWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDatahubTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeDatahubTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDatahubTopic require credential")
@@ -3373,6 +3420,7 @@ func (c *Client) DescribeDatahubTopicsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDatahubTopicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeDatahubTopics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDatahubTopics require credential")
@@ -3448,6 +3496,7 @@ func (c *Client) DescribeGroupWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroup require credential")
@@ -3523,6 +3572,7 @@ func (c *Client) DescribeGroupInfoWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeGroupInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeGroupInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupInfo require credential")
@@ -3598,6 +3648,7 @@ func (c *Client) DescribeGroupOffsetsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeGroupOffsetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeGroupOffsets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupOffsets require credential")
@@ -3677,6 +3728,7 @@ func (c *Client) DescribeInstanceAttributesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstanceAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeInstanceAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceAttributes require credential")
@@ -3746,6 +3798,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -3823,6 +3876,7 @@ func (c *Client) DescribeInstancesDetailWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInstancesDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeInstancesDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstancesDetail require credential")
@@ -3890,6 +3944,7 @@ func (c *Client) DescribePrometheusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePrometheusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribePrometheus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheus require credential")
@@ -3965,6 +4020,7 @@ func (c *Client) DescribeRegionWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeRegionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeRegion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRegion require credential")
@@ -4044,6 +4100,7 @@ func (c *Client) DescribeRouteWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRoute require credential")
@@ -4103,6 +4160,7 @@ func (c *Client) DescribeSecurityGroupRoutesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeSecurityGroupRoutesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeSecurityGroupRoutes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityGroupRoutes require credential")
@@ -4178,6 +4236,7 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskStatus require credential")
@@ -4259,6 +4318,7 @@ func (c *Client) DescribeTopicWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopic require credential")
@@ -4336,6 +4396,7 @@ func (c *Client) DescribeTopicAttributesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeTopicAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeTopicAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopicAttributes require credential")
@@ -4405,6 +4466,7 @@ func (c *Client) DescribeTopicDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTopicDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeTopicDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopicDetail require credential")
@@ -4466,6 +4528,7 @@ func (c *Client) DescribeTopicFlowRankingWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeTopicFlowRankingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeTopicFlowRanking")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopicFlowRanking require credential")
@@ -4525,6 +4588,7 @@ func (c *Client) DescribeTopicProduceConnectionWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeTopicProduceConnectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeTopicProduceConnection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopicProduceConnection require credential")
@@ -4610,6 +4674,7 @@ func (c *Client) DescribeTopicSubscribeGroupWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeTopicSubscribeGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeTopicSubscribeGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopicSubscribeGroup require credential")
@@ -4669,6 +4734,7 @@ func (c *Client) DescribeTopicSyncReplicaWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeTopicSyncReplicaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeTopicSyncReplica")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopicSyncReplica require credential")
@@ -4736,6 +4802,7 @@ func (c *Client) DescribeTypeInstancesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTypeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeTypeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTypeInstances require credential")
@@ -4811,6 +4878,7 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, request *DescribeU
     if request == nil {
         request = NewDescribeUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUser require credential")
@@ -4860,6 +4928,7 @@ func (c *Client) FetchDatahubMessageByOffsetWithContext(ctx context.Context, req
     if request == nil {
         request = NewFetchDatahubMessageByOffsetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "FetchDatahubMessageByOffset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FetchDatahubMessageByOffset require credential")
@@ -4911,6 +4980,7 @@ func (c *Client) FetchLatestDatahubMessageListWithContext(ctx context.Context, r
     if request == nil {
         request = NewFetchLatestDatahubMessageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "FetchLatestDatahubMessageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FetchLatestDatahubMessageList require credential")
@@ -4960,6 +5030,7 @@ func (c *Client) FetchMessageByOffsetWithContext(ctx context.Context, request *F
     if request == nil {
         request = NewFetchMessageByOffsetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "FetchMessageByOffset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FetchMessageByOffset require credential")
@@ -5011,6 +5082,7 @@ func (c *Client) FetchMessageListByOffsetWithContext(ctx context.Context, reques
     if request == nil {
         request = NewFetchMessageListByOffsetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "FetchMessageListByOffset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FetchMessageListByOffset require credential")
@@ -5062,6 +5134,7 @@ func (c *Client) FetchMessageListByTimestampWithContext(ctx context.Context, req
     if request == nil {
         request = NewFetchMessageListByTimestampRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "FetchMessageListByTimestamp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FetchMessageListByTimestamp require credential")
@@ -5121,6 +5194,7 @@ func (c *Client) InquireCkafkaPriceWithContext(ctx context.Context, request *Inq
     if request == nil {
         request = NewInquireCkafkaPriceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "InquireCkafkaPrice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquireCkafkaPrice require credential")
@@ -5180,6 +5254,7 @@ func (c *Client) InstanceScalingDownWithContext(ctx context.Context, request *In
     if request == nil {
         request = NewInstanceScalingDownRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "InstanceScalingDown")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InstanceScalingDown require credential")
@@ -5237,6 +5312,7 @@ func (c *Client) ModifyAclRuleWithContext(ctx context.Context, request *ModifyAc
     if request == nil {
         request = NewModifyAclRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyAclRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAclRule require credential")
@@ -5300,6 +5376,7 @@ func (c *Client) ModifyConnectResourceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyConnectResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyConnectResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConnectResource require credential")
@@ -5361,6 +5438,7 @@ func (c *Client) ModifyDatahubTaskWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyDatahubTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyDatahubTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDatahubTask require credential")
@@ -5436,6 +5514,7 @@ func (c *Client) ModifyDatahubTopicWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyDatahubTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyDatahubTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDatahubTopic require credential")
@@ -5511,6 +5590,7 @@ func (c *Client) ModifyGroupOffsetsWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyGroupOffsetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyGroupOffsets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyGroupOffsets require credential")
@@ -5588,6 +5668,7 @@ func (c *Client) ModifyInstanceAttributesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyInstanceAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyInstanceAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceAttributes require credential")
@@ -5661,6 +5742,7 @@ func (c *Client) ModifyInstancePreWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyInstancePreRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyInstancePre")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstancePre require credential")
@@ -5736,6 +5818,7 @@ func (c *Client) ModifyPasswordWithContext(ctx context.Context, request *ModifyP
     if request == nil {
         request = NewModifyPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPassword require credential")
@@ -5811,6 +5894,7 @@ func (c *Client) ModifyRoutineMaintenanceTaskWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyRoutineMaintenanceTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyRoutineMaintenanceTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRoutineMaintenanceTask require credential")
@@ -5886,6 +5970,7 @@ func (c *Client) ModifyTopicAttributesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyTopicAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyTopicAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTopicAttributes require credential")
@@ -5943,6 +6028,7 @@ func (c *Client) RenewCkafkaInstanceWithContext(ctx context.Context, request *Re
     if request == nil {
         request = NewRenewCkafkaInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "RenewCkafkaInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewCkafkaInstance require credential")
@@ -6010,6 +6096,7 @@ func (c *Client) SendMessageWithContext(ctx context.Context, request *SendMessag
     if request == nil {
         request = NewSendMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "SendMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendMessage require credential")

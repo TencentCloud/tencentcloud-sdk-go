@@ -42,7 +42,7 @@ type AndroidApp struct {
 	// 应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
 	AppMode *string `json:"AppMode,omitnil,omitempty" name:"AppMode"`
 
-	// 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、NORMAL 默认状态
+	// 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态
 	UpdateState *string `json:"UpdateState,omitnil,omitempty" name:"UpdateState"`
 
 	// 安卓应用包名
@@ -61,9 +61,7 @@ type AndroidAppVersionInfo struct {
 	// 安卓应用版本
 	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
 
-	// 安卓应用版本创建状态（NORMAL：无、UPLOADING：上传中、
-	// CREATING： 创建中、
-	// CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
+	// 安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 安卓应用版本创建时间
@@ -86,6 +84,15 @@ type AndroidAppVersionInfo struct {
 
 	// 应用版本号（Version Name）
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// 应用包 MD5
+	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
+
+	// 应用包文件大小（字节）
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 安卓应用包名
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 }
 
 type AndroidInstance struct {
@@ -1357,21 +1364,27 @@ func (r *CreateAndroidInstancesScreenshotResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type CreateCosCredentialRequestParams struct {
-	// Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+	// Cos 密钥类型，取值： Mobile 云手游、PC 云端游、AndroidApp 云手机应用管理、AndroidAppFile 云手机文件管理、AndroidAppBackup 云手机备份还原
 	CosType *string `json:"CosType,omitnil,omitempty" name:"CosType"`
 
-	// 云手机 Cos 数据
+	// 云手机应用管理 Cos 数据
 	AndroidAppCosInfo *AndroidAppCosInfo `json:"AndroidAppCosInfo,omitnil,omitempty" name:"AndroidAppCosInfo"`
+
+	// 云手机文件管理 Cos 数据
+	AndroidAppFileCosInfo *FileCosInfo `json:"AndroidAppFileCosInfo,omitnil,omitempty" name:"AndroidAppFileCosInfo"`
 }
 
 type CreateCosCredentialRequest struct {
 	*tchttp.BaseRequest
 	
-	// Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+	// Cos 密钥类型，取值： Mobile 云手游、PC 云端游、AndroidApp 云手机应用管理、AndroidAppFile 云手机文件管理、AndroidAppBackup 云手机备份还原
 	CosType *string `json:"CosType,omitnil,omitempty" name:"CosType"`
 
-	// 云手机 Cos 数据
+	// 云手机应用管理 Cos 数据
 	AndroidAppCosInfo *AndroidAppCosInfo `json:"AndroidAppCosInfo,omitnil,omitempty" name:"AndroidAppCosInfo"`
+
+	// 云手机文件管理 Cos 数据
+	AndroidAppFileCosInfo *FileCosInfo `json:"AndroidAppFileCosInfo,omitnil,omitempty" name:"AndroidAppFileCosInfo"`
 }
 
 func (r *CreateCosCredentialRequest) ToJsonString() string {
@@ -1388,6 +1401,7 @@ func (r *CreateCosCredentialRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CosType")
 	delete(f, "AndroidAppCosInfo")
+	delete(f, "AndroidAppFileCosInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCosCredentialRequest has unknown keys!", "")
 	}
@@ -2269,6 +2283,9 @@ type DescribeAndroidInstanceTasksStatusRequestParams struct {
 
 	// 限制量，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 时间范围限制，以天数为单位
+	RecentDays *int64 `json:"RecentDays,omitnil,omitempty" name:"RecentDays"`
 }
 
 type DescribeAndroidInstanceTasksStatusRequest struct {
@@ -2285,6 +2302,9 @@ type DescribeAndroidInstanceTasksStatusRequest struct {
 
 	// 限制量，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 时间范围限制，以天数为单位
+	RecentDays *int64 `json:"RecentDays,omitnil,omitempty" name:"RecentDays"`
 }
 
 func (r *DescribeAndroidInstanceTasksStatusRequest) ToJsonString() string {
@@ -2303,6 +2323,7 @@ func (r *DescribeAndroidInstanceTasksStatusRequest) FromJsonString(s string) err
 	delete(f, "Filter")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "RecentDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAndroidInstanceTasksStatusRequest has unknown keys!", "")
 	}
@@ -3147,6 +3168,11 @@ func (r *FetchAndroidInstancesLogsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *FetchAndroidInstancesLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type FileCosInfo struct {
+	// 文件 Id
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 type Filter struct {

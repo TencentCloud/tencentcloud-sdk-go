@@ -90,6 +90,7 @@ func (c *Client) ActivateServiceWithContext(ctx context.Context, request *Activa
     if request == nil {
         request = NewActivateServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "ActivateService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ActivateService require credential")
@@ -185,6 +186,7 @@ func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCo
     if request == nil {
         request = NewChatCompletionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "ChatCompletions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChatCompletions require credential")
@@ -276,6 +278,7 @@ func (c *Client) ChatTranslationsWithContext(ctx context.Context, request *ChatT
     if request == nil {
         request = NewChatTranslationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "ChatTranslations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChatTranslations require credential")
@@ -363,6 +366,7 @@ func (c *Client) CreateThreadWithContext(ctx context.Context, request *CreateThr
     if request == nil {
         request = NewCreateThreadRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "CreateThread")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateThread require credential")
@@ -430,6 +434,7 @@ func (c *Client) FilesDeletionsWithContext(ctx context.Context, request *FilesDe
     if request == nil {
         request = NewFilesDeletionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "FilesDeletions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FilesDeletions require credential")
@@ -497,6 +502,7 @@ func (c *Client) FilesListWithContext(ctx context.Context, request *FilesListReq
     if request == nil {
         request = NewFilesListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "FilesList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FilesList require credential")
@@ -568,6 +574,7 @@ func (c *Client) FilesUploadsWithContext(ctx context.Context, request *FilesUplo
     if request == nil {
         request = NewFilesUploadsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "FilesUploads")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FilesUploads require credential")
@@ -621,6 +628,7 @@ func (c *Client) GetEmbeddingWithContext(ctx context.Context, request *GetEmbedd
     if request == nil {
         request = NewGetEmbeddingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "GetEmbedding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetEmbedding require credential")
@@ -708,6 +716,7 @@ func (c *Client) GetThreadWithContext(ctx context.Context, request *GetThreadReq
     if request == nil {
         request = NewGetThreadRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "GetThread")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetThread require credential")
@@ -795,6 +804,7 @@ func (c *Client) GetThreadMessageWithContext(ctx context.Context, request *GetTh
     if request == nil {
         request = NewGetThreadMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "GetThreadMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetThreadMessage require credential")
@@ -882,6 +892,7 @@ func (c *Client) GetThreadMessageListWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetThreadMessageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "GetThreadMessageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetThreadMessageList require credential")
@@ -931,6 +942,7 @@ func (c *Client) GetTokenCountWithContext(ctx context.Context, request *GetToken
     if request == nil {
         request = NewGetTokenCountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "GetTokenCount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTokenCount require credential")
@@ -1026,6 +1038,7 @@ func (c *Client) GroupChatCompletionsWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGroupChatCompletionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "GroupChatCompletions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GroupChatCompletions require credential")
@@ -1121,6 +1134,7 @@ func (c *Client) ImageQuestionWithContext(ctx context.Context, request *ImageQue
     if request == nil {
         request = NewImageQuestionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "ImageQuestion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageQuestion require credential")
@@ -1184,6 +1198,7 @@ func (c *Client) QueryHunyuanImageChatJobWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryHunyuanImageChatJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "QueryHunyuanImageChatJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryHunyuanImageChatJob require credential")
@@ -1247,6 +1262,7 @@ func (c *Client) QueryHunyuanImageJobWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryHunyuanImageJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "QueryHunyuanImageJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryHunyuanImageJob require credential")
@@ -1255,57 +1271,6 @@ func (c *Client) QueryHunyuanImageJobWithContext(ctx context.Context, request *Q
     request.SetContext(ctx)
     
     response = NewQueryHunyuanImageJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewQueryHunyuanTo3DJobRequest() (request *QueryHunyuanTo3DJobRequest) {
-    request = &QueryHunyuanTo3DJobRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("hunyuan", APIVersion, "QueryHunyuanTo3DJob")
-    
-    
-    return
-}
-
-func NewQueryHunyuanTo3DJobResponse() (response *QueryHunyuanTo3DJobResponse) {
-    response = &QueryHunyuanTo3DJobResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// QueryHunyuanTo3DJob
-// 查询混元生3D任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-func (c *Client) QueryHunyuanTo3DJob(request *QueryHunyuanTo3DJobRequest) (response *QueryHunyuanTo3DJobResponse, err error) {
-    return c.QueryHunyuanTo3DJobWithContext(context.Background(), request)
-}
-
-// QueryHunyuanTo3DJob
-// 查询混元生3D任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-func (c *Client) QueryHunyuanTo3DJobWithContext(ctx context.Context, request *QueryHunyuanTo3DJobRequest) (response *QueryHunyuanTo3DJobResponse, err error) {
-    if request == nil {
-        request = NewQueryHunyuanTo3DJobRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("QueryHunyuanTo3DJob require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewQueryHunyuanTo3DJobResponse()
     err = c.Send(request, response)
     return
 }
@@ -1385,6 +1350,7 @@ func (c *Client) RunThreadWithContext(ctx context.Context, request *RunThreadReq
     if request == nil {
         request = NewRunThreadRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "RunThread")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunThread require credential")
@@ -1436,6 +1402,7 @@ func (c *Client) SetPayModeWithContext(ctx context.Context, request *SetPayModeR
     if request == nil {
         request = NewSetPayModeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "SetPayMode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetPayMode require credential")
@@ -1517,6 +1484,7 @@ func (c *Client) SubmitHunyuanImageChatJobWithContext(ctx context.Context, reque
     if request == nil {
         request = NewSubmitHunyuanImageChatJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "SubmitHunyuanImageChatJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitHunyuanImageChatJob require credential")
@@ -1582,6 +1550,7 @@ func (c *Client) SubmitHunyuanImageJobWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSubmitHunyuanImageJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "SubmitHunyuanImageJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitHunyuanImageJob require credential")
@@ -1590,85 +1559,6 @@ func (c *Client) SubmitHunyuanImageJobWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewSubmitHunyuanImageJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewSubmitHunyuanTo3DJobRequest() (request *SubmitHunyuanTo3DJobRequest) {
-    request = &SubmitHunyuanTo3DJobRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("hunyuan", APIVersion, "SubmitHunyuanTo3DJob")
-    
-    
-    return
-}
-
-func NewSubmitHunyuanTo3DJobResponse() (response *SubmitHunyuanTo3DJobResponse) {
-    response = &SubmitHunyuanTo3DJobResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// SubmitHunyuanTo3DJob
-// 提交混元生3D任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGESIZE = "InvalidParameterValue.InvalidImageSize"
-//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
-//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_CHARGERESOURCEEXHAUST = "ResourceInsufficient.ChargeResourceExhaust"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-func (c *Client) SubmitHunyuanTo3DJob(request *SubmitHunyuanTo3DJobRequest) (response *SubmitHunyuanTo3DJobResponse, err error) {
-    return c.SubmitHunyuanTo3DJobWithContext(context.Background(), request)
-}
-
-// SubmitHunyuanTo3DJob
-// 提交混元生3D任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGESIZE = "InvalidParameterValue.InvalidImageSize"
-//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
-//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_CHARGERESOURCEEXHAUST = "ResourceInsufficient.ChargeResourceExhaust"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-func (c *Client) SubmitHunyuanTo3DJobWithContext(ctx context.Context, request *SubmitHunyuanTo3DJobRequest) (response *SubmitHunyuanTo3DJobResponse, err error) {
-    if request == nil {
-        request = NewSubmitHunyuanTo3DJobRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("SubmitHunyuanTo3DJob require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewSubmitHunyuanTo3DJobResponse()
     err = c.Send(request, response)
     return
 }
@@ -1720,6 +1610,7 @@ func (c *Client) TextToImageLiteWithContext(ctx context.Context, request *TextTo
     if request == nil {
         request = NewTextToImageLiteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "TextToImageLite")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextToImageLite require credential")

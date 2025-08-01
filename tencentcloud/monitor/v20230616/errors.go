@@ -17,18 +17,9 @@ package v20230616
 const (
 	// 此产品的特有错误码
 
-	// 未开通。
-	FAILEDOPERATION_ERRNOTOPEN = "FailedOperation.ErrNotOpen"
-
-	// 欠费。
-	FAILEDOPERATION_ERROWED = "FailedOperation.ErrOwed"
-
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
-	// 参数取值错误。
-	INVALIDPARAMETERVALUE = "InvalidParameterValue"
-
-	// 操作不支持。
-	UNSUPPORTEDOPERATION = "UnsupportedOperation"
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
 )

@@ -132,6 +132,7 @@ func (c *Client) ApplyCertificateWithContext(ctx context.Context, request *Apply
     if request == nil {
         request = NewApplyCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "ApplyCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyCertificate require credential")
@@ -185,6 +186,7 @@ func (c *Client) CancelAuditCertificateWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCancelAuditCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CancelAuditCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelAuditCertificate require credential")
@@ -248,6 +250,7 @@ func (c *Client) CancelCertificateOrderWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCancelCertificateOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CancelCertificateOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelCertificateOrder require credential")
@@ -325,6 +328,7 @@ func (c *Client) CertificateInfoSubmitWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCertificateInfoSubmitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CertificateInfoSubmit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CertificateInfoSubmit require credential")
@@ -400,6 +404,7 @@ func (c *Client) CertificateOrderSubmitWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCertificateOrderSubmitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CertificateOrderSubmit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CertificateOrderSubmit require credential")
@@ -453,6 +458,7 @@ func (c *Client) CheckCertificateChainWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCheckCertificateChainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CheckCertificateChain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckCertificateChain require credential")
@@ -510,6 +516,7 @@ func (c *Client) CheckCertificateDomainVerificationWithContext(ctx context.Conte
     if request == nil {
         request = NewCheckCertificateDomainVerificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CheckCertificateDomainVerification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckCertificateDomainVerification require credential")
@@ -567,6 +574,7 @@ func (c *Client) CheckCertificateExistWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCheckCertificateExistRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CheckCertificateExist")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckCertificateExist require credential")
@@ -634,6 +642,7 @@ func (c *Client) CommitCertificateInformationWithContext(ctx context.Context, re
     if request == nil {
         request = NewCommitCertificateInformationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CommitCertificateInformation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CommitCertificateInformation require credential")
@@ -689,6 +698,7 @@ func (c *Client) CompleteCertificateWithContext(ctx context.Context, request *Co
     if request == nil {
         request = NewCompleteCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CompleteCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CompleteCertificate require credential")
@@ -752,6 +762,7 @@ func (c *Client) CreateCertificateWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CreateCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCertificate require credential")
@@ -803,6 +814,7 @@ func (c *Client) CreateCertificateBindResourceSyncTaskWithContext(ctx context.Co
     if request == nil {
         request = NewCreateCertificateBindResourceSyncTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CreateCertificateBindResourceSyncTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCertificateBindResourceSyncTask require credential")
@@ -870,6 +882,7 @@ func (c *Client) CreateCertificateByPackageWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateCertificateByPackageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CreateCertificateByPackage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCertificateByPackage require credential")
@@ -957,6 +970,7 @@ func (c *Client) DeleteCertificateWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DeleteCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCertificate require credential")
@@ -1014,6 +1028,7 @@ func (c *Client) DeleteCertificatesWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteCertificatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DeleteCertificates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCertificates require credential")
@@ -1073,6 +1088,7 @@ func (c *Client) DeleteManagerWithContext(ctx context.Context, request *DeleteMa
     if request == nil {
         request = NewDeleteManagerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DeleteManager")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteManager require credential")
@@ -1182,6 +1198,7 @@ func (c *Client) DeployCertificateInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeployCertificateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DeployCertificateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeployCertificateInstance require credential")
@@ -1251,6 +1268,7 @@ func (c *Client) DeployCertificateRecordRetryWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeployCertificateRecordRetryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DeployCertificateRecordRetry")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeployCertificateRecordRetry require credential")
@@ -1326,6 +1344,7 @@ func (c *Client) DeployCertificateRecordRollbackWithContext(ctx context.Context,
     if request == nil {
         request = NewDeployCertificateRecordRollbackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DeployCertificateRecordRollback")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeployCertificateRecordRollback require credential")
@@ -1411,6 +1430,7 @@ func (c *Client) DescribeCertificateWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCertificate require credential")
@@ -1464,6 +1484,7 @@ func (c *Client) DescribeCertificateBindResourceTaskDetailWithContext(ctx contex
     if request == nil {
         request = NewDescribeCertificateBindResourceTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeCertificateBindResourceTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCertificateBindResourceTaskDetail require credential")
@@ -1515,6 +1536,7 @@ func (c *Client) DescribeCertificateBindResourceTaskResultWithContext(ctx contex
     if request == nil {
         request = NewDescribeCertificateBindResourceTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeCertificateBindResourceTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCertificateBindResourceTaskResult require credential")
@@ -1586,6 +1608,7 @@ func (c *Client) DescribeCertificateDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCertificateDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeCertificateDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCertificateDetail require credential")
@@ -1645,6 +1668,7 @@ func (c *Client) DescribeCertificateOperateLogsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeCertificateOperateLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeCertificateOperateLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCertificateOperateLogs require credential")
@@ -1736,6 +1760,7 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCertificatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeCertificates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCertificates require credential")
@@ -1789,6 +1814,7 @@ func (c *Client) DescribeCompaniesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCompaniesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeCompanies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCompanies require credential")
@@ -1838,6 +1864,7 @@ func (c *Client) DescribeDeleteCertificatesTaskResultWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeDeleteCertificatesTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeDeleteCertificatesTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeleteCertificatesTaskResult require credential")
@@ -1905,6 +1932,7 @@ func (c *Client) DescribeDeployedResourcesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDeployedResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeDeployedResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeployedResources require credential")
@@ -1964,6 +1992,7 @@ func (c *Client) DescribeDownloadCertificateUrlWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeDownloadCertificateUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeDownloadCertificateUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDownloadCertificateUrl require credential")
@@ -2035,6 +2064,7 @@ func (c *Client) DescribeHostApiGatewayInstanceListWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeHostApiGatewayInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostApiGatewayInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostApiGatewayInstanceList require credential")
@@ -2106,6 +2136,7 @@ func (c *Client) DescribeHostCdnInstanceListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeHostCdnInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostCdnInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostCdnInstanceList require credential")
@@ -2179,6 +2210,7 @@ func (c *Client) DescribeHostClbInstanceListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeHostClbInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostClbInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostClbInstanceList require credential")
@@ -2252,6 +2284,7 @@ func (c *Client) DescribeHostCosInstanceListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeHostCosInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostCosInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostCosInstanceList require credential")
@@ -2323,6 +2356,7 @@ func (c *Client) DescribeHostDdosInstanceListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeHostDdosInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostDdosInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostDdosInstanceList require credential")
@@ -2390,6 +2424,7 @@ func (c *Client) DescribeHostDeployRecordWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeHostDeployRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostDeployRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostDeployRecord require credential")
@@ -2457,6 +2492,7 @@ func (c *Client) DescribeHostDeployRecordDetailWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeHostDeployRecordDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostDeployRecordDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostDeployRecordDetail require credential")
@@ -2528,6 +2564,7 @@ func (c *Client) DescribeHostLighthouseInstanceListWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeHostLighthouseInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostLighthouseInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostLighthouseInstanceList require credential")
@@ -2599,6 +2636,7 @@ func (c *Client) DescribeHostLiveInstanceListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeHostLiveInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostLiveInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostLiveInstanceList require credential")
@@ -2668,6 +2706,7 @@ func (c *Client) DescribeHostTeoInstanceListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeHostTeoInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostTeoInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostTeoInstanceList require credential")
@@ -2741,6 +2780,7 @@ func (c *Client) DescribeHostTkeInstanceListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeHostTkeInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostTkeInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostTkeInstanceList require credential")
@@ -2806,6 +2846,7 @@ func (c *Client) DescribeHostUpdateRecordWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeHostUpdateRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostUpdateRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostUpdateRecord require credential")
@@ -2871,6 +2912,7 @@ func (c *Client) DescribeHostUpdateRecordDetailWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeHostUpdateRecordDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostUpdateRecordDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostUpdateRecordDetail require credential")
@@ -2936,6 +2978,7 @@ func (c *Client) DescribeHostUploadUpdateRecordWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeHostUploadUpdateRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostUploadUpdateRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostUploadUpdateRecord require credential")
@@ -2991,6 +3034,7 @@ func (c *Client) DescribeHostUploadUpdateRecordDetailWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeHostUploadUpdateRecordDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostUploadUpdateRecordDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostUploadUpdateRecordDetail require credential")
@@ -3062,6 +3106,7 @@ func (c *Client) DescribeHostVodInstanceListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeHostVodInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostVodInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostVodInstanceList require credential")
@@ -3133,6 +3178,7 @@ func (c *Client) DescribeHostWafInstanceListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeHostWafInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeHostWafInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHostWafInstanceList require credential")
@@ -3188,6 +3234,7 @@ func (c *Client) DescribeManagerDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeManagerDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeManagerDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeManagerDetail require credential")
@@ -3241,6 +3288,7 @@ func (c *Client) DescribeManagersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeManagersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeManagers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeManagers require credential")
@@ -3292,6 +3340,7 @@ func (c *Client) DescribePackagesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribePackagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribePackages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePackages require credential")
@@ -3373,6 +3422,7 @@ func (c *Client) DownloadCertificateWithContext(ctx context.Context, request *Do
     if request == nil {
         request = NewDownloadCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DownloadCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadCertificate require credential")
@@ -3434,6 +3484,7 @@ func (c *Client) ModifyCertificateAliasWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyCertificateAliasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "ModifyCertificateAlias")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCertificateAlias require credential")
@@ -3493,6 +3544,7 @@ func (c *Client) ModifyCertificateProjectWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyCertificateProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "ModifyCertificateProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCertificateProject require credential")
@@ -3552,6 +3604,7 @@ func (c *Client) ModifyCertificateResubmitWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyCertificateResubmitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "ModifyCertificateResubmit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCertificateResubmit require credential")
@@ -3605,6 +3658,7 @@ func (c *Client) ModifyCertificatesExpiringNotificationSwitchWithContext(ctx con
     if request == nil {
         request = NewModifyCertificatesExpiringNotificationSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "ModifyCertificatesExpiringNotificationSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCertificatesExpiringNotificationSwitch require credential")
@@ -3692,6 +3746,7 @@ func (c *Client) ReplaceCertificateWithContext(ctx context.Context, request *Rep
     if request == nil {
         request = NewReplaceCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "ReplaceCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReplaceCertificate require credential")
@@ -3761,6 +3816,7 @@ func (c *Client) RevokeCertificateWithContext(ctx context.Context, request *Revo
     if request == nil {
         request = NewRevokeCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "RevokeCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RevokeCertificate require credential")
@@ -3818,6 +3874,7 @@ func (c *Client) SubmitAuditManagerWithContext(ctx context.Context, request *Sub
     if request == nil {
         request = NewSubmitAuditManagerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "SubmitAuditManager")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitAuditManager require credential")
@@ -3881,6 +3938,7 @@ func (c *Client) SubmitCertificateInformationWithContext(ctx context.Context, re
     if request == nil {
         request = NewSubmitCertificateInformationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "SubmitCertificateInformation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitCertificateInformation require credential")
@@ -3974,6 +4032,7 @@ func (c *Client) UpdateCertificateInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewUpdateCertificateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "UpdateCertificateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCertificateInstance require credential")
@@ -4043,6 +4102,7 @@ func (c *Client) UpdateCertificateRecordRetryWithContext(ctx context.Context, re
     if request == nil {
         request = NewUpdateCertificateRecordRetryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "UpdateCertificateRecordRetry")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCertificateRecordRetry require credential")
@@ -4116,6 +4176,7 @@ func (c *Client) UpdateCertificateRecordRollbackWithContext(ctx context.Context,
     if request == nil {
         request = NewUpdateCertificateRecordRollbackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "UpdateCertificateRecordRollback")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCertificateRecordRollback require credential")
@@ -4223,6 +4284,7 @@ func (c *Client) UploadCertificateWithContext(ctx context.Context, request *Uplo
     if request == nil {
         request = NewUploadCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "UploadCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadCertificate require credential")
@@ -4296,6 +4358,7 @@ func (c *Client) UploadConfirmLetterWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUploadConfirmLetterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "UploadConfirmLetter")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadConfirmLetter require credential")
@@ -4377,6 +4440,7 @@ func (c *Client) UploadRevokeLetterWithContext(ctx context.Context, request *Upl
     if request == nil {
         request = NewUploadRevokeLetterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "UploadRevokeLetter")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadRevokeLetter require credential")
@@ -4472,6 +4536,7 @@ func (c *Client) UploadUpdateCertificateInstanceWithContext(ctx context.Context,
     if request == nil {
         request = NewUploadUpdateCertificateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "UploadUpdateCertificateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadUpdateCertificateInstance require credential")
@@ -4541,6 +4606,7 @@ func (c *Client) UploadUpdateCertificateRecordRetryWithContext(ctx context.Conte
     if request == nil {
         request = NewUploadUpdateCertificateRecordRetryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "UploadUpdateCertificateRecordRetry")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadUpdateCertificateRecordRetry require credential")
@@ -4614,6 +4680,7 @@ func (c *Client) UploadUpdateCertificateRecordRollbackWithContext(ctx context.Co
     if request == nil {
         request = NewUploadUpdateCertificateRecordRollbackRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "UploadUpdateCertificateRecordRollback")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadUpdateCertificateRecordRollback require credential")
@@ -4669,6 +4736,7 @@ func (c *Client) VerifyManagerWithContext(ctx context.Context, request *VerifyMa
     if request == nil {
         request = NewVerifyManagerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "VerifyManager")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyManager require credential")

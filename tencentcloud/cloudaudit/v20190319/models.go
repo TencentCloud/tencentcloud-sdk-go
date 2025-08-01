@@ -89,6 +89,9 @@ type CreateAuditTrackRequestParams struct {
 
 	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
 	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitnil,omitempty" name:"TrackForAllMembers"`
+
+	// 任务ID
+	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 }
 
 type CreateAuditTrackRequest struct {
@@ -114,6 +117,9 @@ type CreateAuditTrackRequest struct {
 
 	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
 	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitnil,omitempty" name:"TrackForAllMembers"`
+
+	// 任务ID
+	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 }
 
 func (r *CreateAuditTrackRequest) ToJsonString() string {
@@ -135,6 +141,7 @@ func (r *CreateAuditTrackRequest) FromJsonString(s string) error {
 	delete(f, "ResourceType")
 	delete(f, "EventNames")
 	delete(f, "TrackForAllMembers")
+	delete(f, "ExportId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditTrackRequest has unknown keys!", "")
 	}

@@ -536,6 +536,7 @@ func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCo
     if request == nil {
         request = NewChatCompletionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "ChatCompletions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChatCompletions require credential")
@@ -593,6 +594,7 @@ func (c *Client) CreateAttributeLabelWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateAttributeLabelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "CreateAttributeLabel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAttributeLabel require credential")
@@ -642,6 +644,7 @@ func (c *Client) CreateKnowledgeBaseWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateKnowledgeBaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "CreateKnowledgeBase")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateKnowledgeBase require credential")
@@ -691,6 +694,7 @@ func (c *Client) CreateQAWithContext(ctx context.Context, request *CreateQAReque
     if request == nil {
         request = NewCreateQARequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "CreateQA")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateQA require credential")
@@ -772,6 +776,7 @@ func (c *Client) CreateReconstructDocumentFlowWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateReconstructDocumentFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "CreateReconstructDocumentFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateReconstructDocumentFlow require credential")
@@ -827,6 +832,7 @@ func (c *Client) CreateSplitDocumentFlowWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateSplitDocumentFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "CreateSplitDocumentFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSplitDocumentFlow require credential")
@@ -882,6 +888,7 @@ func (c *Client) DeleteAttributeLabelsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteAttributeLabelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "DeleteAttributeLabels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAttributeLabels require credential")
@@ -937,6 +944,7 @@ func (c *Client) DeleteDocsWithContext(ctx context.Context, request *DeleteDocsR
     if request == nil {
         request = NewDeleteDocsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "DeleteDocs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDocs require credential")
@@ -992,6 +1000,7 @@ func (c *Client) DeleteKnowledgeBaseWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteKnowledgeBaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "DeleteKnowledgeBase")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteKnowledgeBase require credential")
@@ -1047,6 +1056,7 @@ func (c *Client) DeleteQAsWithContext(ctx context.Context, request *DeleteQAsReq
     if request == nil {
         request = NewDeleteQAsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "DeleteQAs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteQAs require credential")
@@ -1102,6 +1112,7 @@ func (c *Client) DescribeDocWithContext(ctx context.Context, request *DescribeDo
     if request == nil {
         request = NewDescribeDocRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "DescribeDoc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDoc require credential")
@@ -1157,6 +1168,7 @@ func (c *Client) GetCharacterUsageWithContext(ctx context.Context, request *GetC
     if request == nil {
         request = NewGetCharacterUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "GetCharacterUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetCharacterUsage require credential")
@@ -1210,6 +1222,7 @@ func (c *Client) GetEmbeddingWithContext(ctx context.Context, request *GetEmbedd
     if request == nil {
         request = NewGetEmbeddingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "GetEmbedding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetEmbedding require credential")
@@ -1269,6 +1282,7 @@ func (c *Client) GetReconstructDocumentResultWithContext(ctx context.Context, re
     if request == nil {
         request = NewGetReconstructDocumentResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "GetReconstructDocumentResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetReconstructDocumentResult require credential")
@@ -1322,6 +1336,7 @@ func (c *Client) GetSplitDocumentResultWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGetSplitDocumentResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "GetSplitDocumentResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetSplitDocumentResult require credential")
@@ -1375,6 +1390,7 @@ func (c *Client) ImportQAsWithContext(ctx context.Context, request *ImportQAsReq
     if request == nil {
         request = NewImportQAsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "ImportQAs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportQAs require credential")
@@ -1428,6 +1444,7 @@ func (c *Client) ListAttributeLabelsWithContext(ctx context.Context, request *Li
     if request == nil {
         request = NewListAttributeLabelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "ListAttributeLabels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAttributeLabels require credential")
@@ -1481,6 +1498,7 @@ func (c *Client) ListDocsWithContext(ctx context.Context, request *ListDocsReque
     if request == nil {
         request = NewListDocsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "ListDocs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListDocs require credential")
@@ -1530,6 +1548,7 @@ func (c *Client) ListQAsWithContext(ctx context.Context, request *ListQAsRequest
     if request == nil {
         request = NewListQAsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "ListQAs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListQAs require credential")
@@ -1579,6 +1598,7 @@ func (c *Client) ModifyAttributeLabelWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyAttributeLabelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "ModifyAttributeLabel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAttributeLabel require credential")
@@ -1628,6 +1648,7 @@ func (c *Client) ModifyQAWithContext(ctx context.Context, request *ModifyQAReque
     if request == nil {
         request = NewModifyQARequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "ModifyQA")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyQA require credential")
@@ -1681,6 +1702,7 @@ func (c *Client) QueryRewriteWithContext(ctx context.Context, request *QueryRewr
     if request == nil {
         request = NewQueryRewriteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "QueryRewrite")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryRewrite require credential")
@@ -1713,8 +1735,15 @@ func NewReconstructDocumentSSEResponse() (response *ReconstructDocumentSSERespon
 // ReconstructDocumentSSE
 // 准实时文档解析接口，使用HTTP SSE 协议通信。
 //
+// 支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+//
+// 输入：pdf、ppt、docx、doc、jpg等
+//
+// 输出：正常阅读顺序的md文件、识别结果的json（可选）等
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_NONSUPPORTPARSE = "FailedOperation.NonsupportParse"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  FAILEDOPERATION_UPLOADRESULTFILEFAILED = "FailedOperation.UploadResultFileFailed"
@@ -1732,8 +1761,15 @@ func (c *Client) ReconstructDocumentSSE(request *ReconstructDocumentSSERequest) 
 // ReconstructDocumentSSE
 // 准实时文档解析接口，使用HTTP SSE 协议通信。
 //
+// 支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+//
+// 输入：pdf、ppt、docx、doc、jpg等
+//
+// 输出：正常阅读顺序的md文件、识别结果的json（可选）等
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_NONSUPPORTPARSE = "FailedOperation.NonsupportParse"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  FAILEDOPERATION_UPLOADRESULTFILEFAILED = "FailedOperation.UploadResultFileFailed"
@@ -1748,6 +1784,7 @@ func (c *Client) ReconstructDocumentSSEWithContext(ctx context.Context, request 
     if request == nil {
         request = NewReconstructDocumentSSERequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "ReconstructDocumentSSE")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReconstructDocumentSSE require credential")
@@ -1784,6 +1821,7 @@ func NewRetrieveKnowledgeResponse() (response *RetrieveKnowledgeResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NONSUPPORTPARSE = "FailedOperation.NonsupportParse"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  FAILEDOPERATION_UPLOADRESULTFILEFAILED = "FailedOperation.UploadResultFileFailed"
@@ -1803,6 +1841,7 @@ func (c *Client) RetrieveKnowledge(request *RetrieveKnowledgeRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NONSUPPORTPARSE = "FailedOperation.NonsupportParse"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  FAILEDOPERATION_UPLOADRESULTFILEFAILED = "FailedOperation.UploadResultFileFailed"
@@ -1817,6 +1856,7 @@ func (c *Client) RetrieveKnowledgeWithContext(ctx context.Context, request *Retr
     if request == nil {
         request = NewRetrieveKnowledgeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "RetrieveKnowledge")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RetrieveKnowledge require credential")
@@ -1866,6 +1906,7 @@ func (c *Client) RunRerankWithContext(ctx context.Context, request *RunRerankReq
     if request == nil {
         request = NewRunRerankRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "RunRerank")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunRerank require credential")
@@ -1919,6 +1960,7 @@ func (c *Client) UploadDocWithContext(ctx context.Context, request *UploadDocReq
     if request == nil {
         request = NewUploadDocRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "UploadDoc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadDoc require credential")

@@ -62,6 +62,9 @@ const (
 	// 获取用户费用状态失败。
 	INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
 
+	// 超时。
+	INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
@@ -101,6 +104,9 @@ const (
 	// 自动扩容策略不存在
 	INVALIDPARAMETERVALUE_AUTOPOLICYNOTFOUND = "InvalidParameterValue.AutoPolicyNotFound"
 
+	// 参数值错误: 绑定归档规则前需绑定沉降规则
+	INVALIDPARAMETERVALUE_BINDINFREQUENTACCESSFIRST = "InvalidParameterValue.BindInfrequentaccessFirst"
+
 	// 无效的文件系统路径
 	INVALIDPARAMETERVALUE_CFSPATH = "InvalidParameterValue.CfsPath"
 
@@ -134,6 +140,21 @@ const (
 	// 用于保证请求幂等性的字符串错误。
 	INVALIDPARAMETERVALUE_INVALIDCLIENTTOKEN = "InvalidParameterValue.InvalidClientToken"
 
+	// 参数值错误：数据流动ID无效
+	INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
+
+	// 无效的数据流动名称
+	INVALIDPARAMETERVALUE_INVALIDDATAFLOWNAME = "InvalidParameterValue.InvalidDataFlowName"
+
+	// 参数值错误：数据流动源信息无效,请检查密钥及路径
+	INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCEINFO = "InvalidParameterValue.InvalidDataFlowSourceInfo"
+
+	// 参数值错误：数据流动源存储类型无效
+	INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCESTORAGETYPE = "InvalidParameterValue.InvalidDataFlowSourceStorageType"
+
+	// 参数值错误：数据流动目标路径无效
+	INVALIDPARAMETERVALUE_INVALIDDATAFLOWTARGETPATH = "InvalidParameterValue.InvalidDataFlowTargetPath"
+
 	// 快照跨地域复制参数不支持该地域
 	INVALIDPARAMETERVALUE_INVALIDDESTINATIONREGIONS = "InvalidParameterValue.InvalidDestinationRegions"
 
@@ -151,6 +172,12 @@ const (
 
 	// 无效的文件系统状态。
 	INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+
+	// 参数值错误：生命周期任务类型无效
+	INVALIDPARAMETERVALUE_INVALIDLIFECYCLEDATATASKTYPE = "InvalidParameterValue.InvalidLifecycleDataTaskType"
+
+	// 生命周期任务id 无效
+	INVALIDPARAMETERVALUE_INVALIDLIFECYCLETASKID = "InvalidParameterValue.InvalidLifecycleTaskId"
 
 	// MetaType 值无效
 	INVALIDPARAMETERVALUE_INVALIDMETATYPE = "InvalidParameterValue.InvalidMetaType"
@@ -278,6 +305,9 @@ const (
 	// SUBNETID和UNSUBNETID不能同时为空。
 	INVALIDPARAMETERVALUE_MISSINGSUBNETIDORUNSUBNETID = "InvalidParameterValue.MissingSubnetidOrUnsubnetid"
 
+	// 参数错误，缺少taskid 或者region 至少输入一个
+	INVALIDPARAMETERVALUE_MISSINGTASKIDORREGION = "InvalidParameterValue.MissingTaskIdOrRegion"
+
 	// VPC相关参数缺失。
 	INVALIDPARAMETERVALUE_MISSINGVPCPARAMETER = "InvalidParameterValue.MissingVpcParameter"
 
@@ -295,6 +325,9 @@ const (
 
 	// 权限组名称长度超过限制（不能超过64字节）。
 	INVALIDPARAMETERVALUE_PGROUPNAMELIMITEXCEEDED = "InvalidParameterValue.PgroupNameLimitExceeded"
+
+	// 生命周期规则 类型错误
+	INVALIDPARAMETERVALUE_POLICYRULESTORAGETYPEINVALID = "InvalidParameterValue.PolicyRuleStorageTypeInvalid"
 
 	// 目录配额设置的目录嵌套
 	INVALIDPARAMETERVALUE_PROJECTQUOTASDIRNESTED = "InvalidParameterValue.ProjectQuotasDirNested"
@@ -323,6 +356,9 @@ const (
 	// 快照策略名称超过64位限制
 	INVALIDPARAMETERVALUE_SNAPSHOTPOLICYNAMELIMITEXCEEDED = "InvalidParameterValue.SnapshotPolicyNameLimitExceeded"
 
+	// 生命周期规则存储类型错误
+	INVALIDPARAMETERVALUE_STORAGETYPEINVALID = "InvalidParameterValue.StorageTypeInvalid"
+
 	// 参数值错误: 标签键个数超过上限（6个）。
 	INVALIDPARAMETERVALUE_TAGKEYFILTERLIMITEXCEEDED = "InvalidParameterValue.TagKeyFilterLimitExceeded"
 
@@ -341,6 +377,9 @@ const (
 	// 该地域无法提供服务。
 	INVALIDPARAMETERVALUE_UNAVAILABLEZONE = "InvalidParameterValue.UnavailableZone"
 
+	// 生命周期数据任务数超限
+	INVALIDPARAMETERVALUE_WAITINGTASKLIMITEXCEEDED = "InvalidParameterValue.WaitingTaskLimitExceeded"
+
 	// ZoneId和Region不匹配。
 	INVALIDPARAMETERVALUE_ZONEIDREGIONNOTMATCH = "InvalidParameterValue.ZoneIdRegionNotMatch"
 
@@ -353,11 +392,23 @@ const (
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
+	// 资源不足：数据流动数超限
+	RESOURCEINSUFFICIENT_DATAFLOWLIMITEXCEEDED = "ResourceInsufficient.DataFlowLimitExceeded"
+
 	// 文件系统数量达到上限。
 	RESOURCEINSUFFICIENT_FILESYSTEMLIMITEXCEEDED = "ResourceInsufficient.FileSystemLimitExceeded"
 
 	// 权限组数量达到上限。
 	RESOURCEINSUFFICIENT_PGROUPNUMBERLIMITEXCEEDED = "ResourceInsufficient.PgroupNumberLimitExceeded"
+
+	// 策略绑定文件系统数量超过限制。
+	RESOURCEINSUFFICIENT_POLICYFSLIMITEXCEEDED = "ResourceInsufficient.PolicyFsLimitExceeded"
+
+	// 策略绑定路径数量超过限制。
+	RESOURCEINSUFFICIENT_POLICYFSPATHLIMITEXCEEDED = "ResourceInsufficient.PolicyFsPathLimitExceeded"
+
+	// 该用户的生命周期策略个数达到最大限制。
+	RESOURCEINSUFFICIENT_POLICYLIMITEXCEEDED = "ResourceInsufficient.PolicyLimitExceeded"
 
 	// 区域资源售罄。
 	RESOURCEINSUFFICIENT_REGIONSOLDOUT = "ResourceInsufficient.RegionSoldOut"
@@ -412,6 +463,9 @@ const (
 
 	// 该可用区不支持基础网络。
 	UNSUPPORTEDOPERATION_BASICNETINTERFACENOTSUPPORTED = "UnsupportedOperation.BasicNetInterfaceNotSupported"
+
+	// 该数据流动不支持删除，关联该数据流动的数据管理任务正在执行中，请等待执行完成或终止执行。
+	UNSUPPORTEDOPERATION_INVALIDLIFECYCLEDATATASKSTATUS = "UnsupportedOperation.InvalidLifecycleDataTaskStatus"
 
 	// appid不在kms白名单(kms目前是白名单开启状态)。
 	UNSUPPORTEDOPERATION_MISSINGKMSACCESSPERMISSION = "UnsupportedOperation.MissingKmsAccessPermission"

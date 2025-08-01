@@ -84,6 +84,7 @@ func (c *Client) AcceptOrganizationInvitationWithContext(ctx context.Context, re
     if request == nil {
         request = NewAcceptOrganizationInvitationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "AcceptOrganizationInvitation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AcceptOrganizationInvitation require credential")
@@ -141,6 +142,7 @@ func (c *Client) AddOrganizationNodeWithContext(ctx context.Context, request *Ad
     if request == nil {
         request = NewAddOrganizationNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "AddOrganizationNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddOrganizationNode require credential")
@@ -190,6 +192,7 @@ func (c *Client) CancelOrganizationInvitationWithContext(ctx context.Context, re
     if request == nil {
         request = NewCancelOrganizationInvitationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "CancelOrganizationInvitation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelOrganizationInvitation require credential")
@@ -243,6 +246,7 @@ func (c *Client) CreateOrganizationWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateOrganizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "CreateOrganization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrganization require credential")
@@ -296,6 +300,7 @@ func (c *Client) DeleteOrganizationWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteOrganizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "DeleteOrganization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteOrganization require credential")
@@ -349,6 +354,7 @@ func (c *Client) DeleteOrganizationMemberFromNodeWithContext(ctx context.Context
     if request == nil {
         request = NewDeleteOrganizationMemberFromNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "DeleteOrganizationMemberFromNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteOrganizationMemberFromNode require credential")
@@ -400,6 +406,7 @@ func (c *Client) DeleteOrganizationMembersWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteOrganizationMembersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "DeleteOrganizationMembers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteOrganizationMembers require credential")
@@ -451,6 +458,7 @@ func (c *Client) DeleteOrganizationNodesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteOrganizationNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "DeleteOrganizationNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteOrganizationNodes require credential")
@@ -500,6 +508,7 @@ func (c *Client) DenyOrganizationInvitationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDenyOrganizationInvitationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "DenyOrganizationInvitation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DenyOrganizationInvitation require credential")
@@ -551,6 +560,7 @@ func (c *Client) GetOrganizationWithContext(ctx context.Context, request *GetOrg
     if request == nil {
         request = NewGetOrganizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "GetOrganization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetOrganization require credential")
@@ -602,6 +612,7 @@ func (c *Client) GetOrganizationMemberWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetOrganizationMemberRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "GetOrganizationMember")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetOrganizationMember require credential")
@@ -651,6 +662,7 @@ func (c *Client) ListOrganizationInvitationsWithContext(ctx context.Context, req
     if request == nil {
         request = NewListOrganizationInvitationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "ListOrganizationInvitations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListOrganizationInvitations require credential")
@@ -702,6 +714,7 @@ func (c *Client) ListOrganizationMembersWithContext(ctx context.Context, request
     if request == nil {
         request = NewListOrganizationMembersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "ListOrganizationMembers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListOrganizationMembers require credential")
@@ -753,6 +766,7 @@ func (c *Client) ListOrganizationNodeMembersWithContext(ctx context.Context, req
     if request == nil {
         request = NewListOrganizationNodeMembersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "ListOrganizationNodeMembers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListOrganizationNodeMembers require credential")
@@ -802,6 +816,7 @@ func (c *Client) ListOrganizationNodesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewListOrganizationNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "ListOrganizationNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListOrganizationNodes require credential")
@@ -855,6 +870,7 @@ func (c *Client) MoveOrganizationMembersToNodeWithContext(ctx context.Context, r
     if request == nil {
         request = NewMoveOrganizationMembersToNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "MoveOrganizationMembersToNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MoveOrganizationMembersToNode require credential")
@@ -906,6 +922,7 @@ func (c *Client) QuitOrganizationWithContext(ctx context.Context, request *QuitO
     if request == nil {
         request = NewQuitOrganizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "QuitOrganization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QuitOrganization require credential")
@@ -969,6 +986,7 @@ func (c *Client) SendOrganizationInvitationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewSendOrganizationInvitationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "SendOrganizationInvitation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendOrganizationInvitation require credential")
@@ -1022,6 +1040,7 @@ func (c *Client) UpdateOrganizationMemberWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUpdateOrganizationMemberRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "UpdateOrganizationMember")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateOrganizationMember require credential")
@@ -1077,6 +1096,7 @@ func (c *Client) UpdateOrganizationNodeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateOrganizationNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "UpdateOrganizationNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateOrganizationNode require credential")

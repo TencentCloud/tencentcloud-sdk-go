@@ -92,6 +92,7 @@ func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCo
     if request == nil {
         request = NewChatCompletionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ChatCompletions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChatCompletions require credential")
@@ -154,6 +155,7 @@ func (c *Client) ChunkDocumentWithContext(ctx context.Context, request *ChunkDoc
     if request == nil {
         request = NewChunkDocumentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ChunkDocument")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChunkDocument require credential")
@@ -211,6 +213,7 @@ func (c *Client) ChunkDocumentAsyncWithContext(ctx context.Context, request *Chu
     if request == nil {
         request = NewChunkDocumentAsyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ChunkDocumentAsync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChunkDocumentAsync require credential")
@@ -262,6 +265,7 @@ func (c *Client) GetDocumentChunkResultWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGetDocumentChunkResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "GetDocumentChunkResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDocumentChunkResult require credential")
@@ -315,6 +319,7 @@ func (c *Client) GetDocumentParseResultWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGetDocumentParseResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "GetDocumentParseResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetDocumentParseResult require credential")
@@ -384,6 +389,7 @@ func (c *Client) GetTextEmbeddingWithContext(ctx context.Context, request *GetTe
     if request == nil {
         request = NewGetTextEmbeddingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "GetTextEmbedding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTextEmbedding require credential")
@@ -443,6 +449,7 @@ func (c *Client) ParseDocumentWithContext(ctx context.Context, request *ParseDoc
     if request == nil {
         request = NewParseDocumentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ParseDocument")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ParseDocument require credential")
@@ -501,6 +508,7 @@ func (c *Client) ParseDocumentAsyncWithContext(ctx context.Context, request *Par
     if request == nil {
         request = NewParseDocumentAsyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ParseDocumentAsync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ParseDocumentAsync require credential")
@@ -568,6 +576,7 @@ func (c *Client) RunRerankWithContext(ctx context.Context, request *RunRerankReq
     if request == nil {
         request = NewRunRerankRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "RunRerank")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunRerank require credential")

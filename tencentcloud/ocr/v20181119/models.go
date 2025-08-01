@@ -2908,6 +2908,10 @@ type ExtractDocMultiRequestParams struct {
 
 	// 模版的单个属性配置
 	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
+
+	// cn时，添加的key为中文  
+	// en时，添加的key为英语
+	OutputLanguage *string `json:"OutputLanguage,omitnil,omitempty" name:"OutputLanguage"`
 }
 
 type ExtractDocMultiRequest struct {
@@ -2961,6 +2965,10 @@ type ExtractDocMultiRequest struct {
 
 	// 模版的单个属性配置
 	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
+
+	// cn时，添加的key为中文  
+	// en时，添加的key为英语
+	OutputLanguage *string `json:"OutputLanguage,omitnil,omitempty" name:"OutputLanguage"`
 }
 
 func (r *ExtractDocMultiRequest) ToJsonString() string {
@@ -2985,6 +2993,7 @@ func (r *ExtractDocMultiRequest) FromJsonString(s string) error {
 	delete(f, "EnableCoord")
 	delete(f, "OutputParentKey")
 	delete(f, "ConfigAdvanced")
+	delete(f, "OutputLanguage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExtractDocMultiRequest has unknown keys!", "")
 	}
@@ -4283,16 +4292,10 @@ type HKIDCardOCRRequestParams struct {
 	// Deprecated: DetectFake is deprecated.
 	DetectFake *bool `json:"DetectFake,omitnil,omitempty" name:"DetectFake"`
 
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
@@ -4305,16 +4308,10 @@ type HKIDCardOCRRequest struct {
 	// 是否鉴伪。
 	DetectFake *bool `json:"DetectFake,omitnil,omitempty" name:"DetectFake"`
 
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
@@ -4384,13 +4381,16 @@ type HKIDCardOCRResponseParams struct {
 	// Deprecated: FakeDetectResult is deprecated.
 	FakeDetectResult *int64 `json:"FakeDetectResult,omitnil,omitempty" name:"FakeDetectResult"`
 
-	// 人像照片Base64后的结果
+	// Base64编码的证件左侧人像大图
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadImage *string `json:"HeadImage,omitnil,omitempty" name:"HeadImage"`
 
-	// 多重告警码，当身份证是翻拍、复印件时返回对应告警码。
-	// -9102：证照复印件告警
-	// -9103：证照翻拍告警
+	// Base64编码的证件右侧人像小图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SmallHeadImage *string `json:"SmallHeadImage,omitnil,omitempty" name:"SmallHeadImage"`
+
+	// 该字段已废弃， 将固定返回空数组，不建议使用。
+	// This field is deprecated and will always return an empty array. Usage is not recommended.
 	//
 	// Deprecated: WarningCode is deprecated.
 	WarningCode []*int64 `json:"WarningCode,omitnil,omitempty" name:"WarningCode"`
@@ -4404,6 +4404,9 @@ type HKIDCardOCRResponseParams struct {
 	// -9108 证件模糊告警
 	// -9109 告警能力未开通
 	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
+
+	// 证件透明视窗内的文本信息
+	WindowEmbeddedText *string `json:"WindowEmbeddedText,omitnil,omitempty" name:"WindowEmbeddedText"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5604,22 +5607,16 @@ type LineInfo struct {
 
 // Predefined struct for user
 type MLIDCardOCRRequestParams struct {
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	BackImageBase64 *string `json:"BackImageBase64,omitnil,omitempty" name:"BackImageBase64"`
 
-	// 图片的 Url 地址。( 中国地区之外不支持这个字段 )
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片的 Url 地址。( 中国地区之外不支持这个字段 )支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	BackImageUrl *string `json:"BackImageUrl,omitnil,omitempty" name:"BackImageUrl"`
 
 	// 是否返回图片，默认false
@@ -5629,22 +5626,16 @@ type MLIDCardOCRRequestParams struct {
 type MLIDCardOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	BackImageBase64 *string `json:"BackImageBase64,omitnil,omitempty" name:"BackImageBase64"`
 
-	// 图片的 Url 地址。( 中国地区之外不支持这个字段 )
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片的 Url 地址。( 中国地区之外不支持这个字段 )支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	BackImageUrl *string `json:"BackImageUrl,omitnil,omitempty" name:"BackImageUrl"`
 
 	// 是否返回图片，默认false
@@ -5688,11 +5679,7 @@ type MLIDCardOCRResponseParams struct {
 	// 性别
 	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
 
-	// 告警码
-	// -9103	证照翻拍告警
-	// -9102	证照复印件告警
-	// -9106       证件遮挡告警
-	// -9107       模糊图片告警
+	// 该字段已废弃， 将固定返回空数组，不建议使用。
 	//
 	// Deprecated: Warn is deprecated.
 	Warn []*int64 `json:"Warn,omitnil,omitempty" name:"Warn"`
@@ -5700,13 +5687,9 @@ type MLIDCardOCRResponseParams struct {
 	// 证件图片
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 此字段为扩展字段。
-	// 返回字段识别结果的置信度，格式如下
-	// {
-	//   字段名:{
-	//     Confidence:0.9999
-	//   }
-	// }
+	// 该字段已废弃， 将固定返回"1"，不建议使用。
+	//
+	// Deprecated: AdvancedInfo is deprecated.
 	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
 
 	// 证件类型
@@ -5757,26 +5740,26 @@ func (r *MLIDCardOCRResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MLIDPassportOCRRequestParams struct {
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
 	// 是否返回图片，默认false
 	RetImage *bool `json:"RetImage,omitnil,omitempty" name:"RetImage"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
 type MLIDPassportOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
 	// 是否返回图片，默认false
 	RetImage *bool `json:"RetImage,omitnil,omitempty" name:"RetImage"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
@@ -5824,24 +5807,17 @@ type MLIDPassportOCRResponseParams struct {
 	// 国家地区代码（机读码区的解析结果）
 	Nationality *string `json:"Nationality,omitnil,omitempty" name:"Nationality"`
 
-	// 告警码：
-	// -9103	证照翻拍告警
-	// -9102	证照复印件告警（包括黑白复印件、彩色复印件）
-	// -9106       证件遮挡告警
+	// 该字段已废弃， 将固定返回空数组，不建议使用。
+	//
+	// Deprecated: Warn is deprecated.
 	Warn []*int64 `json:"Warn,omitnil,omitempty" name:"Warn"`
 
 	// 证件中的人像图片base64
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 扩展字段:
-	// {
-	//     ID:{
-	//         Confidence:0.9999
-	//     },
-	//     Name:{
-	//         Confidence:0.9996
-	//     }
-	// }
+	// 该字段已废弃， 将固定返回"1"，不建议使用。
+	//
+	// Deprecated: AdvancedInfo is deprecated.
 	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
 
 	// 最下方第一行 MRZ Code 序列
@@ -5873,6 +5849,9 @@ type MLIDPassportOCRResponseParams struct {
 	// -9108 证件模糊告警
 	// -9109 告警能力未开通
 	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
+
+	// 输入图片中的卡证数量（仅请求曼谷地域[ap-bangkok]返回）
+	CardCount *int64 `json:"CardCount,omitnil,omitempty" name:"CardCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -9072,10 +9051,10 @@ func (r *RecognizeStoreNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RecognizeTableAccurateOCRRequestParams struct {
-	// 图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片支持的像素范围：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// 图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片支持的像素范围：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片支持的像素范围：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片支持的像素范围：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF有效，默认值为1。
@@ -9085,10 +9064,10 @@ type RecognizeTableAccurateOCRRequestParams struct {
 type RecognizeTableAccurateOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片支持的像素范围：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// 图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片支持的像素范围：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片支持的像素范围：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片支持的像素范围：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF有效，默认值为1。
@@ -9150,6 +9129,98 @@ func (r *RecognizeTableAccurateOCRResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeTableAccurateOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeTableMultiOCRRequestParams struct {
+	// 图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。 
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。 
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 文档的起始页码。  当传入文件是PDF型时，用来指定识别的起始页码，识别的页码包含当前值。
+	PdfStartPageNumber *int64 `json:"PdfStartPageNumber,omitnil,omitempty" name:"PdfStartPageNumber"`
+
+	// 文档的结束页码。 当传入文件是PDF类型时，用来指定识别的结束页码，识别的页码包含当前值。单次调用最多支持识别3页内容，即PdfEndPageNumber-PdfStartPageNumber需要不大于3。
+	PdfEndPageNumber *int64 `json:"PdfEndPageNumber,omitnil,omitempty" name:"PdfEndPageNumber"`
+
+	// 配置选项，支持配置输出数据格式。
+	// 
+	// * **Mdbase64** 返回 base64 编码的 markdown 格式文本。
+	// * **Excelbase64** 返回 base64 编码的 excel 文件。
+	DataFormat *string `json:"DataFormat,omitnil,omitempty" name:"DataFormat"`
+}
+
+type RecognizeTableMultiOCRRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。 
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。 
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 文档的起始页码。  当传入文件是PDF型时，用来指定识别的起始页码，识别的页码包含当前值。
+	PdfStartPageNumber *int64 `json:"PdfStartPageNumber,omitnil,omitempty" name:"PdfStartPageNumber"`
+
+	// 文档的结束页码。 当传入文件是PDF类型时，用来指定识别的结束页码，识别的页码包含当前值。单次调用最多支持识别3页内容，即PdfEndPageNumber-PdfStartPageNumber需要不大于3。
+	PdfEndPageNumber *int64 `json:"PdfEndPageNumber,omitnil,omitempty" name:"PdfEndPageNumber"`
+
+	// 配置选项，支持配置输出数据格式。
+	// 
+	// * **Mdbase64** 返回 base64 编码的 markdown 格式文本。
+	// * **Excelbase64** 返回 base64 编码的 excel 文件。
+	DataFormat *string `json:"DataFormat,omitnil,omitempty" name:"DataFormat"`
+}
+
+func (r *RecognizeTableMultiOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeTableMultiOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "PdfStartPageNumber")
+	delete(f, "PdfEndPageNumber")
+	delete(f, "DataFormat")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeTableMultiOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeTableMultiOCRResponseParams struct {
+	// Base64 编码后的 Excel 数据或 Markdown 数据。  注意：此字段可能返回空，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataBase64 *string `json:"DataBase64,omitnil,omitempty" name:"DataBase64"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RecognizeTableMultiOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizeTableMultiOCRResponseParams `json:"Response"`
+}
+
+func (r *RecognizeTableMultiOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeTableMultiOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9373,16 +9444,13 @@ type RecognizeThaiIDCardOCRResponseParams struct {
 	// -9109 告警能力未开通
 	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
 
-	// 字段置信度：
-	// {
-	//     "ID": {
-	//         "Confidence": 0.9999
-	//     },
-	//     "ThaiName": {
-	//         "Confidence": 0.9996
-	//     }
-	// }
+	// 该字段已废弃， 将固定返回"1"，不建议使用。 
+	//
+	// Deprecated: AdvancedInfo is deprecated.
 	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
+
+	// 卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）
+	CardCount *int64 `json:"CardCount,omitnil,omitempty" name:"CardCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10822,6 +10890,9 @@ type TaxPayment struct {
 	// 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
 	// 示例值：纳税人识别号
 	Content []*OtherInvoiceItem `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 表格。
+	TableItems []*OtherInvoiceList `json:"TableItems,omitnil,omitempty" name:"TableItems"`
 }
 
 // Predefined struct for user

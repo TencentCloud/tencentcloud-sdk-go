@@ -100,6 +100,7 @@ func (c *Client) AcknowledgeMessageWithContext(ctx context.Context, request *Ack
     if request == nil {
         request = NewAcknowledgeMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "AcknowledgeMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AcknowledgeMessage require credential")
@@ -153,6 +154,7 @@ func (c *Client) ClearCmqQueueWithContext(ctx context.Context, request *ClearCmq
     if request == nil {
         request = NewClearCmqQueueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ClearCmqQueue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ClearCmqQueue require credential")
@@ -202,6 +204,7 @@ func (c *Client) ClearCmqSubscriptionFilterTagsWithContext(ctx context.Context, 
     if request == nil {
         request = NewClearCmqSubscriptionFilterTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ClearCmqSubscriptionFilterTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ClearCmqSubscriptionFilterTags require credential")
@@ -269,6 +272,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCluster require credential")
@@ -342,6 +346,7 @@ func (c *Client) CreateCmqQueueWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateCmqQueueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateCmqQueue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCmqQueue require credential")
@@ -403,6 +408,7 @@ func (c *Client) CreateCmqSubscribeWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCmqSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateCmqSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCmqSubscribe require credential")
@@ -476,6 +482,7 @@ func (c *Client) CreateCmqTopicWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateCmqTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateCmqTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCmqTopic require credential")
@@ -563,6 +570,7 @@ func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateEnvironmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateEnvironment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEnvironment require credential")
@@ -636,6 +644,7 @@ func (c *Client) CreateEnvironmentRoleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateEnvironmentRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateEnvironmentRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEnvironmentRole require credential")
@@ -695,6 +704,7 @@ func (c *Client) CreateProClusterWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateProClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateProCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProCluster require credential")
@@ -748,6 +758,7 @@ func (c *Client) CreateRabbitMQBindingWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateRabbitMQBindingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRabbitMQBinding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRabbitMQBinding require credential")
@@ -801,6 +812,7 @@ func (c *Client) CreateRabbitMQUserWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateRabbitMQUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRabbitMQUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRabbitMQUser require credential")
@@ -854,6 +866,7 @@ func (c *Client) CreateRabbitMQVipInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateRabbitMQVipInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRabbitMQVipInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRabbitMQVipInstance require credential")
@@ -907,6 +920,7 @@ func (c *Client) CreateRabbitMQVirtualHostWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateRabbitMQVirtualHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRabbitMQVirtualHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRabbitMQVirtualHost require credential")
@@ -978,6 +992,7 @@ func (c *Client) CreateRocketMQClusterWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateRocketMQClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRocketMQCluster require credential")
@@ -1047,6 +1062,7 @@ func (c *Client) CreateRocketMQEnvironmentRoleWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateRocketMQEnvironmentRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQEnvironmentRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRocketMQEnvironmentRole require credential")
@@ -1108,6 +1124,7 @@ func (c *Client) CreateRocketMQGroupWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateRocketMQGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRocketMQGroup require credential")
@@ -1179,6 +1196,7 @@ func (c *Client) CreateRocketMQNamespaceWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateRocketMQNamespaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQNamespace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRocketMQNamespace require credential")
@@ -1250,6 +1268,7 @@ func (c *Client) CreateRocketMQRoleWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateRocketMQRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRocketMQRole require credential")
@@ -1321,6 +1340,7 @@ func (c *Client) CreateRocketMQTopicWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateRocketMQTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRocketMQTopic require credential")
@@ -1370,6 +1390,7 @@ func (c *Client) CreateRocketMQVipInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateRocketMQVipInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQVipInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRocketMQVipInstance require credential")
@@ -1443,6 +1464,7 @@ func (c *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleR
     if request == nil {
         request = NewCreateRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRole require credential")
@@ -1526,6 +1548,7 @@ func (c *Client) CreateSubscriptionWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateSubscriptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateSubscription")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSubscription require credential")
@@ -1617,6 +1640,7 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTopic require credential")
@@ -1682,6 +1706,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCluster require credential")
@@ -1739,6 +1764,7 @@ func (c *Client) DeleteCmqQueueWithContext(ctx context.Context, request *DeleteC
     if request == nil {
         request = NewDeleteCmqQueueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteCmqQueue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCmqQueue require credential")
@@ -1798,6 +1824,7 @@ func (c *Client) DeleteCmqSubscribeWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteCmqSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteCmqSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCmqSubscribe require credential")
@@ -1853,6 +1880,7 @@ func (c *Client) DeleteCmqTopicWithContext(ctx context.Context, request *DeleteC
     if request == nil {
         request = NewDeleteCmqTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteCmqTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCmqTopic require credential")
@@ -1914,6 +1942,7 @@ func (c *Client) DeleteEnvironmentRolesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteEnvironmentRolesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteEnvironmentRoles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEnvironmentRoles require credential")
@@ -1989,6 +2018,7 @@ func (c *Client) DeleteEnvironmentsWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteEnvironmentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteEnvironments")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEnvironments require credential")
@@ -2044,6 +2074,7 @@ func (c *Client) DeleteProClusterWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteProClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteProCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteProCluster require credential")
@@ -2097,6 +2128,7 @@ func (c *Client) DeleteRabbitMQBindingWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteRabbitMQBindingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRabbitMQBinding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRabbitMQBinding require credential")
@@ -2148,6 +2180,7 @@ func (c *Client) DeleteRabbitMQPermissionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteRabbitMQPermissionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRabbitMQPermission")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRabbitMQPermission require credential")
@@ -2201,6 +2234,7 @@ func (c *Client) DeleteRabbitMQUserWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteRabbitMQUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRabbitMQUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRabbitMQUser require credential")
@@ -2256,6 +2290,7 @@ func (c *Client) DeleteRabbitMQVipInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteRabbitMQVipInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRabbitMQVipInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRabbitMQVipInstance require credential")
@@ -2309,6 +2344,7 @@ func (c *Client) DeleteRabbitMQVirtualHostWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteRabbitMQVirtualHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRabbitMQVirtualHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRabbitMQVirtualHost require credential")
@@ -2368,6 +2404,7 @@ func (c *Client) DeleteRocketMQClusterWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteRocketMQClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRocketMQCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRocketMQCluster require credential")
@@ -2429,6 +2466,7 @@ func (c *Client) DeleteRocketMQEnvironmentRolesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDeleteRocketMQEnvironmentRolesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRocketMQEnvironmentRoles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRocketMQEnvironmentRoles require credential")
@@ -2490,6 +2528,7 @@ func (c *Client) DeleteRocketMQGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteRocketMQGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRocketMQGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRocketMQGroup require credential")
@@ -2547,6 +2586,7 @@ func (c *Client) DeleteRocketMQNamespaceWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteRocketMQNamespaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRocketMQNamespace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRocketMQNamespace require credential")
@@ -2610,6 +2650,7 @@ func (c *Client) DeleteRocketMQRolesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteRocketMQRolesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRocketMQRoles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRocketMQRoles require credential")
@@ -2667,6 +2708,7 @@ func (c *Client) DeleteRocketMQTopicWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteRocketMQTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRocketMQTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRocketMQTopic require credential")
@@ -2718,6 +2760,7 @@ func (c *Client) DeleteRocketMQVipInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteRocketMQVipInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRocketMQVipInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRocketMQVipInstance require credential")
@@ -2781,6 +2824,7 @@ func (c *Client) DeleteRolesWithContext(ctx context.Context, request *DeleteRole
     if request == nil {
         request = NewDeleteRolesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteRoles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRoles require credential")
@@ -2854,6 +2898,7 @@ func (c *Client) DeleteSubscriptionsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteSubscriptionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteSubscriptions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSubscriptions require credential")
@@ -2925,6 +2970,7 @@ func (c *Client) DeleteTopicsWithContext(ctx context.Context, request *DeleteTop
     if request == nil {
         request = NewDeleteTopicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DeleteTopics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTopics require credential")
@@ -2990,6 +3036,7 @@ func (c *Client) DescribeAMQPClustersWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAMQPClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeAMQPClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAMQPClusters require credential")
@@ -3047,6 +3094,7 @@ func (c *Client) DescribeAllTenantsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAllTenantsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeAllTenants")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAllTenants require credential")
@@ -3108,6 +3156,7 @@ func (c *Client) DescribeBindClustersWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBindClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeBindClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBindClusters require credential")
@@ -3169,6 +3218,7 @@ func (c *Client) DescribeBindVpcsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeBindVpcsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeBindVpcs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBindVpcs require credential")
@@ -3218,6 +3268,7 @@ func (c *Client) DescribeClusterDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeClusterDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeClusterDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterDetail require credential")
@@ -3271,6 +3322,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusters require credential")
@@ -3322,6 +3374,7 @@ func (c *Client) DescribeCmqQueueDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCmqQueueDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeCmqQueueDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCmqQueueDetail require credential")
@@ -3373,6 +3426,7 @@ func (c *Client) DescribeCmqQueuesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCmqQueuesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeCmqQueues")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCmqQueues require credential")
@@ -3424,6 +3478,7 @@ func (c *Client) DescribeCmqSubscriptionDetailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeCmqSubscriptionDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeCmqSubscriptionDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCmqSubscriptionDetail require credential")
@@ -3481,6 +3536,7 @@ func (c *Client) DescribeCmqTopicDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCmqTopicDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeCmqTopicDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCmqTopicDetail require credential")
@@ -3532,6 +3588,7 @@ func (c *Client) DescribeCmqTopicsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCmqTopicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeCmqTopics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCmqTopics require credential")
@@ -3597,6 +3654,7 @@ func (c *Client) DescribeEnvironmentAttributesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeEnvironmentAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeEnvironmentAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvironmentAttributes require credential")
@@ -3658,6 +3716,7 @@ func (c *Client) DescribeEnvironmentRolesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeEnvironmentRolesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeEnvironmentRoles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvironmentRoles require credential")
@@ -3715,6 +3774,7 @@ func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeEnvironments")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnvironments require credential")
@@ -3766,6 +3826,7 @@ func (c *Client) DescribeMqMsgTraceWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeMqMsgTraceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeMqMsgTrace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMqMsgTrace require credential")
@@ -3829,6 +3890,7 @@ func (c *Client) DescribeMsgWithContext(ctx context.Context, request *DescribeMs
     if request == nil {
         request = NewDescribeMsgRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeMsg")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMsg require credential")
@@ -3888,6 +3950,7 @@ func (c *Client) DescribeMsgTraceWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeMsgTraceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeMsgTrace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMsgTrace require credential")
@@ -3939,6 +4002,7 @@ func (c *Client) DescribeNamespaceBundlesOptWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeNamespaceBundlesOptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeNamespaceBundlesOpt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNamespaceBundlesOpt require credential")
@@ -3988,6 +4052,7 @@ func (c *Client) DescribeNodeHealthOptWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeNodeHealthOptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeNodeHealthOpt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNodeHealthOpt require credential")
@@ -4041,6 +4106,7 @@ func (c *Client) DescribePublisherSummaryWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribePublisherSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribePublisherSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublisherSummary require credential")
@@ -4094,6 +4160,7 @@ func (c *Client) DescribePublishersWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePublishersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribePublishers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublishers require credential")
@@ -4155,6 +4222,7 @@ func (c *Client) DescribePulsarProInstanceDetailWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribePulsarProInstanceDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribePulsarProInstanceDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePulsarProInstanceDetail require credential")
@@ -4208,6 +4276,7 @@ func (c *Client) DescribePulsarProInstancesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribePulsarProInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribePulsarProInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePulsarProInstances require credential")
@@ -4261,6 +4330,7 @@ func (c *Client) DescribeRabbitMQBindingsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeRabbitMQBindingsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRabbitMQBindings")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQBindings require credential")
@@ -4314,6 +4384,7 @@ func (c *Client) DescribeRabbitMQExchangesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRabbitMQExchangesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRabbitMQExchanges")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQExchanges require credential")
@@ -4365,6 +4436,7 @@ func (c *Client) DescribeRabbitMQNodeListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeRabbitMQNodeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRabbitMQNodeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQNodeList require credential")
@@ -4418,6 +4490,7 @@ func (c *Client) DescribeRabbitMQPermissionWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRabbitMQPermissionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRabbitMQPermission")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQPermission require credential")
@@ -4471,6 +4544,7 @@ func (c *Client) DescribeRabbitMQQueueDetailWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeRabbitMQQueueDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRabbitMQQueueDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQQueueDetail require credential")
@@ -4526,6 +4600,7 @@ func (c *Client) DescribeRabbitMQQueuesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRabbitMQQueuesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRabbitMQQueues")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQQueues require credential")
@@ -4581,6 +4656,7 @@ func (c *Client) DescribeRabbitMQUserWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeRabbitMQUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRabbitMQUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQUser require credential")
@@ -4638,6 +4714,7 @@ func (c *Client) DescribeRabbitMQVipInstanceWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeRabbitMQVipInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRabbitMQVipInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQVipInstance require credential")
@@ -4695,6 +4772,7 @@ func (c *Client) DescribeRabbitMQVipInstancesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeRabbitMQVipInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRabbitMQVipInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQVipInstances require credential")
@@ -4750,6 +4828,7 @@ func (c *Client) DescribeRabbitMQVirtualHostWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeRabbitMQVirtualHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRabbitMQVirtualHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRabbitMQVirtualHost require credential")
@@ -4807,6 +4886,7 @@ func (c *Client) DescribeRocketMQClusterWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeRocketMQClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQCluster require credential")
@@ -4862,6 +4942,7 @@ func (c *Client) DescribeRocketMQClustersWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeRocketMQClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQClusters require credential")
@@ -4917,6 +4998,7 @@ func (c *Client) DescribeRocketMQConsumeStatsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeRocketMQConsumeStatsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQConsumeStats")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQConsumeStats require credential")
@@ -4972,6 +5054,7 @@ func (c *Client) DescribeRocketMQConsumerConnectionDetailWithContext(ctx context
     if request == nil {
         request = NewDescribeRocketMQConsumerConnectionDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQConsumerConnectionDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQConsumerConnectionDetail require credential")
@@ -5031,6 +5114,7 @@ func (c *Client) DescribeRocketMQConsumerConnectionsWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeRocketMQConsumerConnectionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQConsumerConnections")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQConsumerConnections require credential")
@@ -5092,6 +5176,7 @@ func (c *Client) DescribeRocketMQEnvironmentRolesWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeRocketMQEnvironmentRolesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQEnvironmentRoles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQEnvironmentRoles require credential")
@@ -5153,6 +5238,7 @@ func (c *Client) DescribeRocketMQGroupsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRocketMQGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQGroups require credential")
@@ -5214,6 +5300,7 @@ func (c *Client) DescribeRocketMQMigratingTopicListWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeRocketMQMigratingTopicListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQMigratingTopicList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQMigratingTopicList require credential")
@@ -5265,6 +5352,7 @@ func (c *Client) DescribeRocketMQMsgWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRocketMQMsgRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQMsg")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQMsg require credential")
@@ -5316,6 +5404,7 @@ func (c *Client) DescribeRocketMQMsgTraceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeRocketMQMsgTraceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQMsgTrace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQMsgTrace require credential")
@@ -5377,6 +5466,7 @@ func (c *Client) DescribeRocketMQNamespacesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRocketMQNamespacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQNamespaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQNamespaces require credential")
@@ -5438,6 +5528,7 @@ func (c *Client) DescribeRocketMQPublicAccessMonitorDataWithContext(ctx context.
     if request == nil {
         request = NewDescribeRocketMQPublicAccessMonitorDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQPublicAccessMonitorData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQPublicAccessMonitorData require credential")
@@ -5499,6 +5590,7 @@ func (c *Client) DescribeRocketMQPublicAccessPointWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeRocketMQPublicAccessPointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQPublicAccessPoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQPublicAccessPoint require credential")
@@ -5558,6 +5650,7 @@ func (c *Client) DescribeRocketMQRolesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeRocketMQRolesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQRoles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQRoles require credential")
@@ -5607,6 +5700,7 @@ func (c *Client) DescribeRocketMQSmoothMigrationTaskWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeRocketMQSmoothMigrationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQSmoothMigrationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQSmoothMigrationTask require credential")
@@ -5664,6 +5758,7 @@ func (c *Client) DescribeRocketMQSmoothMigrationTaskListWithContext(ctx context.
     if request == nil {
         request = NewDescribeRocketMQSmoothMigrationTaskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQSmoothMigrationTaskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQSmoothMigrationTaskList require credential")
@@ -5721,6 +5816,7 @@ func (c *Client) DescribeRocketMQSourceClusterGroupListWithContext(ctx context.C
     if request == nil {
         request = NewDescribeRocketMQSourceClusterGroupListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQSourceClusterGroupList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQSourceClusterGroupList require credential")
@@ -5778,6 +5874,7 @@ func (c *Client) DescribeRocketMQSourceClusterTopicListWithContext(ctx context.C
     if request == nil {
         request = NewDescribeRocketMQSourceClusterTopicListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQSourceClusterTopicList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQSourceClusterTopicList require credential")
@@ -5831,6 +5928,7 @@ func (c *Client) DescribeRocketMQSubscriptionsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeRocketMQSubscriptionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQSubscriptions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQSubscriptions require credential")
@@ -5880,6 +5978,7 @@ func (c *Client) DescribeRocketMQTopUsagesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRocketMQTopUsagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQTopUsages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQTopUsages require credential")
@@ -5933,6 +6032,7 @@ func (c *Client) DescribeRocketMQTopicMsgsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRocketMQTopicMsgsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQTopicMsgs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQTopicMsgs require credential")
@@ -5986,6 +6086,7 @@ func (c *Client) DescribeRocketMQTopicStatsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRocketMQTopicStatsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQTopicStats")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQTopicStats require credential")
@@ -6049,6 +6150,7 @@ func (c *Client) DescribeRocketMQTopicsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRocketMQTopicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQTopics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQTopics require credential")
@@ -6106,6 +6208,7 @@ func (c *Client) DescribeRocketMQTopicsByGroupWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeRocketMQTopicsByGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQTopicsByGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQTopicsByGroup require credential")
@@ -6167,6 +6270,7 @@ func (c *Client) DescribeRocketMQVipInstanceDetailWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeRocketMQVipInstanceDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQVipInstanceDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQVipInstanceDetail require credential")
@@ -6228,6 +6332,7 @@ func (c *Client) DescribeRocketMQVipInstancesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeRocketMQVipInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQVipInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRocketMQVipInstances require credential")
@@ -6287,6 +6392,7 @@ func (c *Client) DescribeRolesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeRolesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRoles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRoles require credential")
@@ -6354,6 +6460,7 @@ func (c *Client) DescribeSubscriptionsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeSubscriptionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeSubscriptions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSubscriptions require credential")
@@ -6419,6 +6526,7 @@ func (c *Client) DescribeTopicMsgsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeTopicMsgsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeTopicMsgs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopicMsgs require credential")
@@ -6484,6 +6592,7 @@ func (c *Client) DescribeTopicsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeTopicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeTopics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopics require credential")
@@ -6537,6 +6646,7 @@ func (c *Client) ExportRocketMQMessageDetailWithContext(ctx context.Context, req
     if request == nil {
         request = NewExportRocketMQMessageDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ExportRocketMQMessageDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportRocketMQMessageDetail require credential")
@@ -6602,6 +6712,7 @@ func (c *Client) GetTopicListWithContext(ctx context.Context, request *GetTopicL
     if request == nil {
         request = NewGetTopicListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "GetTopicList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTopicList require credential")
@@ -6667,6 +6778,7 @@ func (c *Client) ImportRocketMQConsumerGroupsWithContext(ctx context.Context, re
     if request == nil {
         request = NewImportRocketMQConsumerGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ImportRocketMQConsumerGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportRocketMQConsumerGroups require credential")
@@ -6732,6 +6844,7 @@ func (c *Client) ImportRocketMQTopicsWithContext(ctx context.Context, request *I
     if request == nil {
         request = NewImportRocketMQTopicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ImportRocketMQTopics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportRocketMQTopics require credential")
@@ -6793,6 +6906,7 @@ func (c *Client) ModifyClusterWithContext(ctx context.Context, request *ModifyCl
     if request == nil {
         request = NewModifyClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCluster require credential")
@@ -6854,6 +6968,7 @@ func (c *Client) ModifyCmqQueueAttributeWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyCmqQueueAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyCmqQueueAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCmqQueueAttribute require credential")
@@ -6903,6 +7018,7 @@ func (c *Client) ModifyCmqSubscriptionAttributeWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyCmqSubscriptionAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyCmqSubscriptionAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCmqSubscriptionAttribute require credential")
@@ -6954,6 +7070,7 @@ func (c *Client) ModifyCmqTopicAttributeWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyCmqTopicAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyCmqTopicAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCmqTopicAttribute require credential")
@@ -7035,6 +7152,7 @@ func (c *Client) ModifyEnvironmentAttributesWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyEnvironmentAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyEnvironmentAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEnvironmentAttributes require credential")
@@ -7098,6 +7216,7 @@ func (c *Client) ModifyEnvironmentRoleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyEnvironmentRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyEnvironmentRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyEnvironmentRole require credential")
@@ -7155,6 +7274,7 @@ func (c *Client) ModifyPublicNetworkSecurityPolicyWithContext(ctx context.Contex
     if request == nil {
         request = NewModifyPublicNetworkSecurityPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyPublicNetworkSecurityPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPublicNetworkSecurityPolicy require credential")
@@ -7208,6 +7328,7 @@ func (c *Client) ModifyRabbitMQPermissionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyRabbitMQPermissionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRabbitMQPermission")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRabbitMQPermission require credential")
@@ -7261,6 +7382,7 @@ func (c *Client) ModifyRabbitMQUserWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyRabbitMQUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRabbitMQUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRabbitMQUser require credential")
@@ -7314,6 +7436,7 @@ func (c *Client) ModifyRabbitMQVipInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyRabbitMQVipInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRabbitMQVipInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRabbitMQVipInstance require credential")
@@ -7367,6 +7490,7 @@ func (c *Client) ModifyRabbitMQVirtualHostWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyRabbitMQVirtualHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRabbitMQVirtualHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRabbitMQVirtualHost require credential")
@@ -7432,6 +7556,7 @@ func (c *Client) ModifyRocketMQClusterWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyRocketMQClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRocketMQCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRocketMQCluster require credential")
@@ -7493,6 +7618,7 @@ func (c *Client) ModifyRocketMQEnvironmentRoleWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyRocketMQEnvironmentRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRocketMQEnvironmentRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRocketMQEnvironmentRole require credential")
@@ -7550,6 +7676,7 @@ func (c *Client) ModifyRocketMQGroupWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyRocketMQGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRocketMQGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRocketMQGroup require credential")
@@ -7599,6 +7726,7 @@ func (c *Client) ModifyRocketMQInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyRocketMQInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRocketMQInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRocketMQInstance require credential")
@@ -7656,6 +7784,7 @@ func (c *Client) ModifyRocketMQInstanceSpecWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyRocketMQInstanceSpecRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRocketMQInstanceSpec")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRocketMQInstanceSpec require credential")
@@ -7723,6 +7852,7 @@ func (c *Client) ModifyRocketMQNamespaceWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyRocketMQNamespaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRocketMQNamespace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRocketMQNamespace require credential")
@@ -7786,6 +7916,7 @@ func (c *Client) ModifyRocketMQRoleWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyRocketMQRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRocketMQRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRocketMQRole require credential")
@@ -7845,6 +7976,7 @@ func (c *Client) ModifyRocketMQTopicWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyRocketMQTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRocketMQTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRocketMQTopic require credential")
@@ -7908,6 +8040,7 @@ func (c *Client) ModifyRoleWithContext(ctx context.Context, request *ModifyRoleR
     if request == nil {
         request = NewModifyRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRole require credential")
@@ -7977,6 +8110,7 @@ func (c *Client) ModifyTopicWithContext(ctx context.Context, request *ModifyTopi
     if request == nil {
         request = NewModifyTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ModifyTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTopic require credential")
@@ -8028,6 +8162,7 @@ func (c *Client) PublishCmqMsgWithContext(ctx context.Context, request *PublishC
     if request == nil {
         request = NewPublishCmqMsgRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "PublishCmqMsg")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PublishCmqMsg require credential")
@@ -8173,6 +8308,7 @@ func (c *Client) ReceiveMessageWithContext(ctx context.Context, request *Receive
     if request == nil {
         request = NewReceiveMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ReceiveMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReceiveMessage require credential")
@@ -8242,6 +8378,7 @@ func (c *Client) ResetMsgSubOffsetByTimestampWithContext(ctx context.Context, re
     if request == nil {
         request = NewResetMsgSubOffsetByTimestampRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ResetMsgSubOffsetByTimestamp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetMsgSubOffsetByTimestamp require credential")
@@ -8299,6 +8436,7 @@ func (c *Client) ResetRocketMQConsumerOffSetWithContext(ctx context.Context, req
     if request == nil {
         request = NewResetRocketMQConsumerOffSetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ResetRocketMQConsumerOffSet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetRocketMQConsumerOffSet require credential")
@@ -8350,6 +8488,7 @@ func (c *Client) RetryRocketMQDlqMessageWithContext(ctx context.Context, request
     if request == nil {
         request = NewRetryRocketMQDlqMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "RetryRocketMQDlqMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RetryRocketMQDlqMessage require credential")
@@ -8401,6 +8540,7 @@ func (c *Client) RewindCmqQueueWithContext(ctx context.Context, request *RewindC
     if request == nil {
         request = NewRewindCmqQueueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "RewindCmqQueue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RewindCmqQueue require credential")
@@ -8478,6 +8618,7 @@ func (c *Client) SendBatchMessagesWithContext(ctx context.Context, request *Send
     if request == nil {
         request = NewSendBatchMessagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "SendBatchMessages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendBatchMessages require credential")
@@ -8531,6 +8672,7 @@ func (c *Client) SendCmqMsgWithContext(ctx context.Context, request *SendCmqMsgR
     if request == nil {
         request = NewSendCmqMsgRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "SendCmqMsg")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendCmqMsg require credential")
@@ -8604,6 +8746,7 @@ func (c *Client) SendMessagesWithContext(ctx context.Context, request *SendMessa
     if request == nil {
         request = NewSendMessagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "SendMessages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendMessages require credential")
@@ -8677,6 +8820,7 @@ func (c *Client) SendMsgWithContext(ctx context.Context, request *SendMsgRequest
     if request == nil {
         request = NewSendMsgRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "SendMsg")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendMsg require credential")
@@ -8732,6 +8876,7 @@ func (c *Client) SendRocketMQMessageWithContext(ctx context.Context, request *Se
     if request == nil {
         request = NewSendRocketMQMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "SendRocketMQMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendRocketMQMessage require credential")
@@ -8785,6 +8930,7 @@ func (c *Client) SetRocketMQPublicAccessPointWithContext(ctx context.Context, re
     if request == nil {
         request = NewSetRocketMQPublicAccessPointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "SetRocketMQPublicAccessPoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetRocketMQPublicAccessPoint require credential")
@@ -8834,6 +8980,7 @@ func (c *Client) UnbindCmqDeadLetterWithContext(ctx context.Context, request *Un
     if request == nil {
         request = NewUnbindCmqDeadLetterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "UnbindCmqDeadLetter")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindCmqDeadLetter require credential")
@@ -8885,6 +9032,7 @@ func (c *Client) VerifyRocketMQConsumeWithContext(ctx context.Context, request *
     if request == nil {
         request = NewVerifyRocketMQConsumeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "VerifyRocketMQConsume")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyRocketMQConsume require credential")

@@ -148,6 +148,7 @@ func (c *Client) CompleteMigrateJobWithContext(ctx context.Context, request *Com
     if request == nil {
         request = NewCompleteMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CompleteMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CompleteMigrateJob require credential")
@@ -235,6 +236,7 @@ func (c *Client) ConfigureSubscribeJobWithContext(ctx context.Context, request *
     if request == nil {
         request = NewConfigureSubscribeJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ConfigureSubscribeJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ConfigureSubscribeJob require credential")
@@ -292,6 +294,7 @@ func (c *Client) ConfigureSyncJobWithContext(ctx context.Context, request *Confi
     if request == nil {
         request = NewConfigureSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ConfigureSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ConfigureSyncJob require credential")
@@ -349,6 +352,7 @@ func (c *Client) ContinueMigrateJobWithContext(ctx context.Context, request *Con
     if request == nil {
         request = NewContinueMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ContinueMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ContinueMigrateJob require credential")
@@ -412,6 +416,7 @@ func (c *Client) ContinueSyncJobWithContext(ctx context.Context, request *Contin
     if request == nil {
         request = NewContinueSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ContinueSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ContinueSyncJob require credential")
@@ -471,6 +476,7 @@ func (c *Client) CreateCheckSyncJobWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCheckSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateCheckSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCheckSyncJob require credential")
@@ -556,6 +562,7 @@ func (c *Client) CreateCompareTaskWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCompareTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateCompareTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCompareTask require credential")
@@ -639,6 +646,7 @@ func (c *Client) CreateConsumerGroupWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateConsumerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateConsumerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConsumerGroup require credential")
@@ -766,6 +774,7 @@ func (c *Client) CreateMigrateCheckJobWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateMigrateCheckJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateMigrateCheckJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMigrateCheckJob require credential")
@@ -853,6 +862,7 @@ func (c *Client) CreateMigrationServiceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateMigrationServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateMigrationService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMigrationService require credential")
@@ -940,6 +950,7 @@ func (c *Client) CreateModifyCheckSyncJobWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateModifyCheckSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateModifyCheckSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateModifyCheckSyncJob require credential")
@@ -1025,6 +1036,7 @@ func (c *Client) CreateSubscribeWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSubscribe require credential")
@@ -1108,6 +1120,7 @@ func (c *Client) CreateSubscribeCheckJobWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateSubscribeCheckJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateSubscribeCheckJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSubscribeCheckJob require credential")
@@ -1179,6 +1192,7 @@ func (c *Client) CreateSyncJobWithContext(ctx context.Context, request *CreateSy
     if request == nil {
         request = NewCreateSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSyncJob require credential")
@@ -1264,6 +1278,7 @@ func (c *Client) DeleteCompareTaskWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteCompareTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DeleteCompareTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCompareTask require credential")
@@ -1347,6 +1362,7 @@ func (c *Client) DeleteConsumerGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteConsumerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DeleteConsumerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConsumerGroup require credential")
@@ -1400,6 +1416,7 @@ func (c *Client) DescribeCheckSyncJobResultWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCheckSyncJobResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeCheckSyncJobResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCheckSyncJobResult require credential")
@@ -1483,6 +1500,7 @@ func (c *Client) DescribeCompareReportWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCompareReportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeCompareReport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCompareReport require credential")
@@ -1568,6 +1586,7 @@ func (c *Client) DescribeCompareTasksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCompareTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeCompareTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCompareTasks require credential")
@@ -1651,6 +1670,7 @@ func (c *Client) DescribeConsumerGroupsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeConsumerGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeConsumerGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConsumerGroups require credential")
@@ -1758,6 +1778,7 @@ func (c *Client) DescribeMigrateDBInstancesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeMigrateDBInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeMigrateDBInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigrateDBInstances require credential")
@@ -1849,6 +1870,7 @@ func (c *Client) DescribeMigrationCheckJobWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeMigrationCheckJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeMigrationCheckJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigrationCheckJob require credential")
@@ -1934,6 +1956,7 @@ func (c *Client) DescribeMigrationDetailWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeMigrationDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeMigrationDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigrationDetail require credential")
@@ -2021,6 +2044,7 @@ func (c *Client) DescribeMigrationJobsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeMigrationJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeMigrationJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigrationJobs require credential")
@@ -2070,6 +2094,7 @@ func (c *Client) DescribeModifyCheckSyncJobResultWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeModifyCheckSyncJobResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeModifyCheckSyncJobResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModifyCheckSyncJobResult require credential")
@@ -2169,6 +2194,7 @@ func (c *Client) DescribeOffsetByTimeWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeOffsetByTimeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeOffsetByTime")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOffsetByTime require credential")
@@ -2252,6 +2278,7 @@ func (c *Client) DescribeSubscribeCheckJobWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSubscribeCheckJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeSubscribeCheckJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSubscribeCheckJob require credential")
@@ -2335,6 +2362,7 @@ func (c *Client) DescribeSubscribeDetailWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSubscribeDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeSubscribeDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSubscribeDetail require credential")
@@ -2414,6 +2442,7 @@ func (c *Client) DescribeSubscribeJobsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeSubscribeJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeSubscribeJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSubscribeJobs require credential")
@@ -2497,6 +2526,7 @@ func (c *Client) DescribeSubscribeReturnableWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeSubscribeReturnableRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeSubscribeReturnable")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSubscribeReturnable require credential")
@@ -2560,6 +2590,7 @@ func (c *Client) DescribeSyncJobsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeSyncJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeSyncJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSyncJobs require credential")
@@ -2643,6 +2674,7 @@ func (c *Client) DestroyIsolatedSubscribeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDestroyIsolatedSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DestroyIsolatedSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyIsolatedSubscribe require credential")
@@ -2726,6 +2758,7 @@ func (c *Client) DestroyMigrateJobWithContext(ctx context.Context, request *Dest
     if request == nil {
         request = NewDestroyMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DestroyMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyMigrateJob require credential")
@@ -2777,6 +2810,7 @@ func (c *Client) DestroySyncJobWithContext(ctx context.Context, request *Destroy
     if request == nil {
         request = NewDestroySyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DestroySyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroySyncJob require credential")
@@ -2862,6 +2896,7 @@ func (c *Client) IsolateMigrateJobWithContext(ctx context.Context, request *Isol
     if request == nil {
         request = NewIsolateMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "IsolateMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IsolateMigrateJob require credential")
@@ -2945,6 +2980,7 @@ func (c *Client) IsolateSubscribeWithContext(ctx context.Context, request *Isola
     if request == nil {
         request = NewIsolateSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "IsolateSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IsolateSubscribe require credential")
@@ -3002,6 +3038,7 @@ func (c *Client) IsolateSyncJobWithContext(ctx context.Context, request *Isolate
     if request == nil {
         request = NewIsolateSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "IsolateSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IsolateSyncJob require credential")
@@ -3087,6 +3124,7 @@ func (c *Client) ModifyCompareTaskWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyCompareTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifyCompareTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCompareTask require credential")
@@ -3170,6 +3208,7 @@ func (c *Client) ModifyCompareTaskNameWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyCompareTaskNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifyCompareTaskName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCompareTaskName require credential")
@@ -3253,6 +3292,7 @@ func (c *Client) ModifyConsumerGroupDescriptionWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyConsumerGroupDescriptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifyConsumerGroupDescription")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConsumerGroupDescription require credential")
@@ -3336,6 +3376,7 @@ func (c *Client) ModifyConsumerGroupPasswordWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyConsumerGroupPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifyConsumerGroupPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConsumerGroupPassword require credential")
@@ -3417,6 +3458,7 @@ func (c *Client) ModifyMigrateJobSpecWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyMigrateJobSpecRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifyMigrateJobSpec")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMigrateJobSpec require credential")
@@ -3502,6 +3544,7 @@ func (c *Client) ModifyMigrateNameWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyMigrateNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifyMigrateName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMigrateName require credential")
@@ -3587,6 +3630,7 @@ func (c *Client) ModifyMigrateRateLimitWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyMigrateRateLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifyMigrateRateLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMigrateRateLimit require credential")
@@ -3652,6 +3696,7 @@ func (c *Client) ModifyMigrateRuntimeAttributeWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyMigrateRuntimeAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifyMigrateRuntimeAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMigrateRuntimeAttribute require credential")
@@ -3747,6 +3792,7 @@ func (c *Client) ModifyMigrationJobWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyMigrationJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifyMigrationJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMigrationJob require credential")
@@ -3830,6 +3876,7 @@ func (c *Client) ModifySubscribeAutoRenewFlagWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifySubscribeAutoRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifySubscribeAutoRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySubscribeAutoRenewFlag require credential")
@@ -3913,6 +3960,7 @@ func (c *Client) ModifySubscribeNameWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifySubscribeNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifySubscribeName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySubscribeName require credential")
@@ -3996,6 +4044,7 @@ func (c *Client) ModifySubscribeObjectsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifySubscribeObjectsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifySubscribeObjects")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySubscribeObjects require credential")
@@ -4051,6 +4100,7 @@ func (c *Client) ModifySyncJobConfigWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifySyncJobConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifySyncJobConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySyncJobConfig require credential")
@@ -4100,6 +4150,7 @@ func (c *Client) ModifySyncRateLimitWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifySyncRateLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifySyncRateLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySyncRateLimit require credential")
@@ -4157,6 +4208,7 @@ func (c *Client) PauseMigrateJobWithContext(ctx context.Context, request *PauseM
     if request == nil {
         request = NewPauseMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "PauseMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PauseMigrateJob require credential")
@@ -4220,6 +4272,7 @@ func (c *Client) PauseSyncJobWithContext(ctx context.Context, request *PauseSync
     if request == nil {
         request = NewPauseSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "PauseSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PauseSyncJob require credential")
@@ -4271,6 +4324,7 @@ func (c *Client) RecoverMigrateJobWithContext(ctx context.Context, request *Reco
     if request == nil {
         request = NewRecoverMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "RecoverMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecoverMigrateJob require credential")
@@ -4356,6 +4410,7 @@ func (c *Client) RecoverSyncJobWithContext(ctx context.Context, request *Recover
     if request == nil {
         request = NewRecoverSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "RecoverSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecoverSyncJob require credential")
@@ -4439,6 +4494,7 @@ func (c *Client) ResetConsumerGroupOffsetWithContext(ctx context.Context, reques
     if request == nil {
         request = NewResetConsumerGroupOffsetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ResetConsumerGroupOffset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetConsumerGroupOffset require credential")
@@ -4526,6 +4582,7 @@ func (c *Client) ResetSubscribeWithContext(ctx context.Context, request *ResetSu
     if request == nil {
         request = NewResetSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ResetSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetSubscribe require credential")
@@ -4581,6 +4638,7 @@ func (c *Client) ResizeSyncJobWithContext(ctx context.Context, request *ResizeSy
     if request == nil {
         request = NewResizeSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ResizeSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResizeSyncJob require credential")
@@ -4674,6 +4732,7 @@ func (c *Client) ResumeMigrateJobWithContext(ctx context.Context, request *Resum
     if request == nil {
         request = NewResumeMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ResumeMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResumeMigrateJob require credential")
@@ -4757,6 +4816,7 @@ func (c *Client) ResumeSubscribeWithContext(ctx context.Context, request *Resume
     if request == nil {
         request = NewResumeSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ResumeSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResumeSubscribe require credential")
@@ -4806,6 +4866,7 @@ func (c *Client) ResumeSyncJobWithContext(ctx context.Context, request *ResumeSy
     if request == nil {
         request = NewResumeSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ResumeSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResumeSyncJob require credential")
@@ -4859,6 +4920,7 @@ func (c *Client) SkipCheckItemWithContext(ctx context.Context, request *SkipChec
     if request == nil {
         request = NewSkipCheckItemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "SkipCheckItem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SkipCheckItem require credential")
@@ -4930,6 +4992,7 @@ func (c *Client) SkipSyncCheckItemWithContext(ctx context.Context, request *Skip
     if request == nil {
         request = NewSkipSyncCheckItemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "SkipSyncCheckItem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SkipSyncCheckItem require credential")
@@ -5013,6 +5076,7 @@ func (c *Client) StartCompareWithContext(ctx context.Context, request *StartComp
     if request == nil {
         request = NewStartCompareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "StartCompare")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartCompare require credential")
@@ -5126,6 +5190,7 @@ func (c *Client) StartMigrateJobWithContext(ctx context.Context, request *StartM
     if request == nil {
         request = NewStartMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "StartMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartMigrateJob require credential")
@@ -5177,6 +5242,7 @@ func (c *Client) StartModifySyncJobWithContext(ctx context.Context, request *Sta
     if request == nil {
         request = NewStartModifySyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "StartModifySyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartModifySyncJob require credential")
@@ -5260,6 +5326,7 @@ func (c *Client) StartSubscribeWithContext(ctx context.Context, request *StartSu
     if request == nil {
         request = NewStartSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "StartSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartSubscribe require credential")
@@ -5315,6 +5382,7 @@ func (c *Client) StartSyncJobWithContext(ctx context.Context, request *StartSync
     if request == nil {
         request = NewStartSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "StartSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartSyncJob require credential")
@@ -5398,6 +5466,7 @@ func (c *Client) StopCompareWithContext(ctx context.Context, request *StopCompar
     if request == nil {
         request = NewStopCompareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "StopCompare")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopCompare require credential")
@@ -5503,6 +5572,7 @@ func (c *Client) StopMigrateJobWithContext(ctx context.Context, request *StopMig
     if request == nil {
         request = NewStopMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "StopMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopMigrateJob require credential")
@@ -5554,6 +5624,7 @@ func (c *Client) StopSyncJobWithContext(ctx context.Context, request *StopSyncJo
     if request == nil {
         request = NewStopSyncJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "StopSyncJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopSyncJob require credential")

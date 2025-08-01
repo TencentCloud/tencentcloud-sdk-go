@@ -84,6 +84,7 @@ func (c *Client) ActivateCaCertificateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewActivateCaCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ActivateCaCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ActivateCaCertificate require credential")
@@ -135,6 +136,7 @@ func (c *Client) ActivateDeviceCertificateWithContext(ctx context.Context, reque
     if request == nil {
         request = NewActivateDeviceCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ActivateDeviceCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ActivateDeviceCertificate require credential")
@@ -186,6 +188,7 @@ func (c *Client) ApplyRegistrationCodeWithContext(ctx context.Context, request *
     if request == nil {
         request = NewApplyRegistrationCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ApplyRegistrationCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyRegistrationCode require credential")
@@ -241,6 +244,7 @@ func (c *Client) CreateAuthorizationPolicyWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateAuthorizationPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "CreateAuthorizationPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAuthorizationPolicy require credential")
@@ -296,6 +300,7 @@ func (c *Client) CreateHttpAuthenticatorWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateHttpAuthenticatorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "CreateHttpAuthenticator")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateHttpAuthenticator require credential")
@@ -351,6 +356,7 @@ func (c *Client) CreateInsPublicEndpointWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateInsPublicEndpointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "CreateInsPublicEndpoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInsPublicEndpoint require credential")
@@ -408,6 +414,7 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     if request == nil {
         request = NewCreateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "CreateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInstance require credential")
@@ -463,6 +470,7 @@ func (c *Client) CreateJWKSAuthenticatorWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateJWKSAuthenticatorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "CreateJWKSAuthenticator")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateJWKSAuthenticator require credential")
@@ -520,6 +528,7 @@ func (c *Client) CreateJWTAuthenticatorWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateJWTAuthenticatorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "CreateJWTAuthenticator")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateJWTAuthenticator require credential")
@@ -579,6 +588,7 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "CreateTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTopic require credential")
@@ -638,6 +648,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     if request == nil {
         request = NewCreateUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "CreateUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUser require credential")
@@ -689,6 +700,7 @@ func (c *Client) DeactivateCaCertificateWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeactivateCaCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeactivateCaCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeactivateCaCertificate require credential")
@@ -740,6 +752,7 @@ func (c *Client) DeactivateDeviceCertificateWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeactivateDeviceCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeactivateDeviceCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeactivateDeviceCertificate require credential")
@@ -795,6 +808,7 @@ func (c *Client) DeleteAuthenticatorWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteAuthenticatorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeleteAuthenticator")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAuthenticator require credential")
@@ -848,6 +862,7 @@ func (c *Client) DeleteAuthorizationPolicyWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteAuthorizationPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeleteAuthorizationPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAuthorizationPolicy require credential")
@@ -903,6 +918,7 @@ func (c *Client) DeleteCaCertificateWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteCaCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeleteCaCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCaCertificate require credential")
@@ -954,6 +970,7 @@ func (c *Client) DeleteDeviceCertificateWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteDeviceCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeleteDeviceCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDeviceCertificate require credential")
@@ -1005,6 +1022,7 @@ func (c *Client) DeleteInsPublicEndpointWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteInsPublicEndpointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeleteInsPublicEndpoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteInsPublicEndpoint require credential")
@@ -1058,6 +1076,7 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
     if request == nil {
         request = NewDeleteInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeleteInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteInstance require credential")
@@ -1109,6 +1128,7 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopi
     if request == nil {
         request = NewDeleteTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeleteTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTopic require credential")
@@ -1164,6 +1184,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserR
     if request == nil {
         request = NewDeleteUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeleteUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUser require credential")
@@ -1213,6 +1234,7 @@ func (c *Client) DescribeAuthenticatorWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAuthenticatorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeAuthenticator")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuthenticator require credential")
@@ -1262,6 +1284,7 @@ func (c *Client) DescribeAuthorizationPoliciesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAuthorizationPoliciesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeAuthorizationPolicies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuthorizationPolicies require credential")
@@ -1311,6 +1334,7 @@ func (c *Client) DescribeCaCertificateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCaCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeCaCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaCertificate require credential")
@@ -1360,6 +1384,7 @@ func (c *Client) DescribeCaCertificatesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCaCertificatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeCaCertificates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCaCertificates require credential")
@@ -1409,6 +1434,7 @@ func (c *Client) DescribeClientListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeClientListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeClientList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClientList require credential")
@@ -1458,6 +1484,7 @@ func (c *Client) DescribeDeviceCertificateWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDeviceCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeDeviceCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceCertificate require credential")
@@ -1507,6 +1534,7 @@ func (c *Client) DescribeDeviceCertificatesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDeviceCertificatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeDeviceCertificates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceCertificates require credential")
@@ -1556,6 +1584,7 @@ func (c *Client) DescribeInsPublicEndpointsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInsPublicEndpointsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeInsPublicEndpoints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInsPublicEndpoints require credential")
@@ -1605,6 +1634,7 @@ func (c *Client) DescribeInsVPCEndpointsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInsVPCEndpointsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeInsVPCEndpoints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInsVPCEndpoints require credential")
@@ -1654,6 +1684,7 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstance require credential")
@@ -1723,6 +1754,7 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceList require credential")
@@ -1774,6 +1806,7 @@ func (c *Client) DescribeMessageByTopicWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeMessageByTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeMessageByTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMessageByTopic require credential")
@@ -1825,6 +1858,7 @@ func (c *Client) DescribeMessageDetailsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeMessageDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeMessageDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMessageDetails require credential")
@@ -1874,6 +1908,7 @@ func (c *Client) DescribeMessageListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeMessageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeMessageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMessageList require credential")
@@ -1923,6 +1958,7 @@ func (c *Client) DescribeProductSKUListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeProductSKUListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeProductSKUList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProductSKUList require credential")
@@ -1974,6 +2010,7 @@ func (c *Client) DescribeSharedSubscriptionLagWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeSharedSubscriptionLagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeSharedSubscriptionLag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSharedSubscriptionLag require credential")
@@ -2025,6 +2062,7 @@ func (c *Client) DescribeTopicWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopic require credential")
@@ -2086,6 +2124,7 @@ func (c *Client) DescribeTopicListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeTopicListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeTopicList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopicList require credential")
@@ -2143,6 +2182,7 @@ func (c *Client) DescribeUserListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeUserListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeUserList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserList require credential")
@@ -2196,6 +2236,7 @@ func (c *Client) ModifyAuthorizationPolicyWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyAuthorizationPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyAuthorizationPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAuthorizationPolicy require credential")
@@ -2245,6 +2286,7 @@ func (c *Client) ModifyHttpAuthenticatorWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyHttpAuthenticatorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyHttpAuthenticator")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyHttpAuthenticator require credential")
@@ -2294,6 +2336,7 @@ func (c *Client) ModifyInsPublicEndpointWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyInsPublicEndpointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyInsPublicEndpoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInsPublicEndpoint require credential")
@@ -2351,6 +2394,7 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     if request == nil {
         request = NewModifyInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstance require credential")
@@ -2412,6 +2456,7 @@ func (c *Client) ModifyInstanceCertBindingWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyInstanceCertBindingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyInstanceCertBinding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceCertBinding require credential")
@@ -2461,6 +2506,7 @@ func (c *Client) ModifyJWKSAuthenticatorWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyJWKSAuthenticatorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyJWKSAuthenticator")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyJWKSAuthenticator require credential")
@@ -2512,6 +2558,7 @@ func (c *Client) ModifyJWTAuthenticatorWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyJWTAuthenticatorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyJWTAuthenticator")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyJWTAuthenticator require credential")
@@ -2561,6 +2608,7 @@ func (c *Client) ModifyTopicWithContext(ctx context.Context, request *ModifyTopi
     if request == nil {
         request = NewModifyTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTopic require credential")
@@ -2610,6 +2658,7 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     if request == nil {
         request = NewModifyUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUser require credential")
@@ -2659,6 +2708,7 @@ func (c *Client) PublishMessageWithContext(ctx context.Context, request *Publish
     if request == nil {
         request = NewPublishMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "PublishMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PublishMessage require credential")
@@ -2716,6 +2766,7 @@ func (c *Client) RegisterCaCertificateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewRegisterCaCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "RegisterCaCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterCaCertificate require credential")
@@ -2769,6 +2820,7 @@ func (c *Client) RegisterDeviceCertificateWithContext(ctx context.Context, reque
     if request == nil {
         request = NewRegisterDeviceCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "RegisterDeviceCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterDeviceCertificate require credential")
@@ -2822,6 +2874,7 @@ func (c *Client) RevokedDeviceCertificateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewRevokedDeviceCertificateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "RevokedDeviceCertificate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RevokedDeviceCertificate require credential")
@@ -2875,6 +2928,7 @@ func (c *Client) UpdateAuthorizationPolicyPriorityWithContext(ctx context.Contex
     if request == nil {
         request = NewUpdateAuthorizationPolicyPriorityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "UpdateAuthorizationPolicyPriority")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAuthorizationPolicyPriority require credential")

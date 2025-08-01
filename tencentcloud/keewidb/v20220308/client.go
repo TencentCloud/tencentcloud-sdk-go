@@ -90,6 +90,7 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "AssociateSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateSecurityGroups require credential")
@@ -145,6 +146,7 @@ func (c *Client) ChangeInstanceMasterWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewChangeInstanceMasterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "ChangeInstanceMaster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChangeInstanceMaster require credential")
@@ -202,6 +204,7 @@ func (c *Client) CleanUpInstanceWithContext(ctx context.Context, request *CleanU
     if request == nil {
         request = NewCleanUpInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "CleanUpInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CleanUpInstance require credential")
@@ -265,6 +268,7 @@ func (c *Client) ClearInstanceWithContext(ctx context.Context, request *ClearIns
     if request == nil {
         request = NewClearInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "ClearInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ClearInstance require credential")
@@ -328,6 +332,7 @@ func (c *Client) CreateBackupManuallyWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateBackupManuallyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "CreateBackupManually")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBackupManually require credential")
@@ -395,6 +400,7 @@ func (c *Client) CreateInstancesWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "CreateInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInstances require credential")
@@ -452,6 +458,7 @@ func (c *Client) DescribeAutoBackupConfigWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAutoBackupConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeAutoBackupConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoBackupConfig require credential")
@@ -507,6 +514,7 @@ func (c *Client) DescribeConnectionConfigWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeConnectionConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeConnectionConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConnectionConfig require credential")
@@ -580,6 +588,7 @@ func (c *Client) DescribeDBSecurityGroupsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDBSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeDBSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBSecurityGroups require credential")
@@ -639,6 +648,7 @@ func (c *Client) DescribeInstanceBackupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInstanceBackupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeInstanceBackups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceBackups require credential")
@@ -696,6 +706,7 @@ func (c *Client) DescribeInstanceBinlogsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInstanceBinlogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeInstanceBinlogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceBinlogs require credential")
@@ -747,6 +758,7 @@ func (c *Client) DescribeInstanceDealDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstanceDealDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeInstanceDealDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceDealDetail require credential")
@@ -802,6 +814,7 @@ func (c *Client) DescribeInstanceNodeInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeInstanceNodeInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeInstanceNodeInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceNodeInfo require credential")
@@ -859,6 +872,7 @@ func (c *Client) DescribeInstanceParamRecordsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeInstanceParamRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeInstanceParamRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceParamRecords require credential")
@@ -924,6 +938,7 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceParamsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeInstanceParams")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceParams require credential")
@@ -977,6 +992,7 @@ func (c *Client) DescribeInstanceReplicasWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeInstanceReplicasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeInstanceReplicas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceReplicas require credential")
@@ -1040,6 +1056,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -1093,6 +1110,7 @@ func (c *Client) DescribeMaintenanceWindowWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeMaintenanceWindowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeMaintenanceWindow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMaintenanceWindow require credential")
@@ -1150,6 +1168,7 @@ func (c *Client) DescribeProductInfoWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeProductInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeProductInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProductInfo require credential")
@@ -1209,6 +1228,7 @@ func (c *Client) DescribeProjectSecurityGroupsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeProjectSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProjectSecurityGroups require credential")
@@ -1270,6 +1290,7 @@ func (c *Client) DescribeProxySlowLogWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeProxySlowLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeProxySlowLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProxySlowLog require credential")
@@ -1323,6 +1344,7 @@ func (c *Client) DescribeTaskInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTaskInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeTaskInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskInfo require credential")
@@ -1380,6 +1402,7 @@ func (c *Client) DescribeTaskListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTaskListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeTaskList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskList require credential")
@@ -1439,6 +1462,7 @@ func (c *Client) DescribeTendisSlowLogWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTendisSlowLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeTendisSlowLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTendisSlowLog require credential")
@@ -1502,6 +1526,7 @@ func (c *Client) DestroyPostpaidInstanceWithContext(ctx context.Context, request
     if request == nil {
         request = NewDestroyPostpaidInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DestroyPostpaidInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyPostpaidInstance require credential")
@@ -1567,6 +1592,7 @@ func (c *Client) DestroyPrepaidInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDestroyPrepaidInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DestroyPrepaidInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyPrepaidInstance require credential")
@@ -1624,6 +1650,7 @@ func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DisassociateSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateSecurityGroups require credential")
@@ -1687,6 +1714,7 @@ func (c *Client) ModifyAutoBackupConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyAutoBackupConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "ModifyAutoBackupConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAutoBackupConfig require credential")
@@ -1742,6 +1770,7 @@ func (c *Client) ModifyConnectionConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyConnectionConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "ModifyConnectionConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyConnectionConfig require credential")
@@ -1809,6 +1838,7 @@ func (c *Client) ModifyDBInstanceSecurityGroupsWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "ModifyDBInstanceSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDBInstanceSecurityGroups require credential")
@@ -1864,6 +1894,7 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     if request == nil {
         request = NewModifyInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "ModifyInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstance require credential")
@@ -1933,6 +1964,7 @@ func (c *Client) ModifyInstanceParamsWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyInstanceParamsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "ModifyInstanceParams")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceParams require credential")
@@ -1986,6 +2018,7 @@ func (c *Client) ModifyMaintenanceWindowWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyMaintenanceWindowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "ModifyMaintenanceWindow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMaintenanceWindow require credential")
@@ -2049,6 +2082,7 @@ func (c *Client) ModifyNetworkConfigWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyNetworkConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "ModifyNetworkConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNetworkConfig require credential")
@@ -2112,6 +2146,7 @@ func (c *Client) RenewInstanceWithContext(ctx context.Context, request *RenewIns
     if request == nil {
         request = NewRenewInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "RenewInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewInstance require credential")
@@ -2173,6 +2208,7 @@ func (c *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPas
     if request == nil {
         request = NewResetPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "ResetPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetPassword require credential")
@@ -2236,6 +2272,7 @@ func (c *Client) StartUpInstanceWithContext(ctx context.Context, request *StartU
     if request == nil {
         request = NewStartUpInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "StartUpInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartUpInstance require credential")
@@ -2299,6 +2336,7 @@ func (c *Client) UpgradeInstanceWithContext(ctx context.Context, request *Upgrad
     if request == nil {
         request = NewUpgradeInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "UpgradeInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradeInstance require credential")

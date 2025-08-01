@@ -76,6 +76,7 @@ func (c *Client) ConfirmCommonServiceWorkOrderWithContext(ctx context.Context, r
     if request == nil {
         request = NewConfirmCommonServiceWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "ConfirmCommonServiceWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ConfirmCommonServiceWorkOrder require credential")
@@ -119,6 +120,7 @@ func (c *Client) CreateCommonServiceWorkOrderWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateCommonServiceWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreateCommonServiceWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCommonServiceWorkOrder require credential")
@@ -162,6 +164,7 @@ func (c *Client) CreateModelEvaluationWorkOrderWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateModelEvaluationWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreateModelEvaluationWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateModelEvaluationWorkOrder require credential")
@@ -205,6 +208,7 @@ func (c *Client) CreateMovingWorkOrderWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateMovingWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreateMovingWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMovingWorkOrder require credential")
@@ -248,6 +252,7 @@ func (c *Client) CreateNetDeviceModelWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateNetDeviceModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreateNetDeviceModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNetDeviceModel require credential")
@@ -291,6 +296,7 @@ func (c *Client) CreatePersonnelVisitWorkOrderWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreatePersonnelVisitWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreatePersonnelVisitWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePersonnelVisitWorkOrder require credential")
@@ -334,6 +340,7 @@ func (c *Client) CreatePowerOffWorkOrderWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreatePowerOffWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreatePowerOffWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePowerOffWorkOrder require credential")
@@ -377,6 +384,7 @@ func (c *Client) CreatePowerOnWorkOrderWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreatePowerOnWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreatePowerOnWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePowerOnWorkOrder require credential")
@@ -420,6 +428,7 @@ func (c *Client) CreateQuitWorkOrderWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateQuitWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreateQuitWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateQuitWorkOrder require credential")
@@ -463,6 +472,7 @@ func (c *Client) CreateRackOffWorkOrderWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateRackOffWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreateRackOffWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRackOffWorkOrder require credential")
@@ -506,6 +516,7 @@ func (c *Client) CreateRackOnWorkOrderWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateRackOnWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreateRackOnWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRackOnWorkOrder require credential")
@@ -549,6 +560,7 @@ func (c *Client) CreateReceivingWorkOrderWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateReceivingWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreateReceivingWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateReceivingWorkOrder require credential")
@@ -592,6 +604,7 @@ func (c *Client) CreateServerModelWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateServerModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreateServerModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateServerModel require credential")
@@ -635,6 +648,7 @@ func (c *Client) CreateSpeciallyQuitWorkOrderWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateSpeciallyQuitWorkOrderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "CreateSpeciallyQuitWorkOrder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSpeciallyQuitWorkOrder require credential")
@@ -678,6 +692,7 @@ func (c *Client) DescribeAvailableModelListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAvailableModelListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeAvailableModelList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAvailableModelList require credential")
@@ -721,6 +736,7 @@ func (c *Client) DescribeCampusListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCampusListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeCampusList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCampusList require credential")
@@ -764,6 +780,7 @@ func (c *Client) DescribeCommonServiceWorkOrderDetailWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeCommonServiceWorkOrderDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeCommonServiceWorkOrderDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCommonServiceWorkOrderDetail require credential")
@@ -807,6 +824,7 @@ func (c *Client) DescribeCustomerInfoWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCustomerInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeCustomerInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomerInfo require credential")
@@ -850,6 +868,7 @@ func (c *Client) DescribeDeviceListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDeviceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeDeviceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceList require credential")
@@ -893,6 +912,7 @@ func (c *Client) DescribeDeviceWorkOrderDetailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeDeviceWorkOrderDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeDeviceWorkOrderDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceWorkOrderDetail require credential")
@@ -936,6 +956,7 @@ func (c *Client) DescribeIdcUnitAssetDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeIdcUnitAssetDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeIdcUnitAssetDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIdcUnitAssetDetail require credential")
@@ -979,6 +1000,7 @@ func (c *Client) DescribeIdcUnitDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeIdcUnitDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeIdcUnitDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIdcUnitDetail require credential")
@@ -1022,6 +1044,7 @@ func (c *Client) DescribeIdcsWithContext(ctx context.Context, request *DescribeI
     if request == nil {
         request = NewDescribeIdcsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeIdcs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIdcs require credential")
@@ -1065,6 +1088,7 @@ func (c *Client) DescribeModelWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModel require credential")
@@ -1108,6 +1132,7 @@ func (c *Client) DescribeModelEvaluationWorkOrderDetailWithContext(ctx context.C
     if request == nil {
         request = NewDescribeModelEvaluationWorkOrderDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeModelEvaluationWorkOrderDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelEvaluationWorkOrderDetail require credential")
@@ -1151,6 +1176,7 @@ func (c *Client) DescribeModelTemplateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeModelTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeModelTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelTemplate require credential")
@@ -1194,6 +1220,7 @@ func (c *Client) DescribeModelVersionListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeModelVersionListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeModelVersionList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelVersionList require credential")
@@ -1237,6 +1264,7 @@ func (c *Client) DescribePersonnelVisitWorkOrderDetailWithContext(ctx context.Co
     if request == nil {
         request = NewDescribePersonnelVisitWorkOrderDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribePersonnelVisitWorkOrderDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePersonnelVisitWorkOrderDetail require credential")
@@ -1280,6 +1308,7 @@ func (c *Client) DescribePositionStatusSummaryWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribePositionStatusSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribePositionStatusSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePositionStatusSummary require credential")
@@ -1323,6 +1352,7 @@ func (c *Client) DescribePositionsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribePositionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribePositions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePositions require credential")
@@ -1366,6 +1396,7 @@ func (c *Client) DescribeRacksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeRacksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeRacks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRacks require credential")
@@ -1409,6 +1440,7 @@ func (c *Client) DescribeRacksDistributionWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRacksDistributionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeRacksDistribution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRacksDistribution require credential")
@@ -1452,6 +1484,7 @@ func (c *Client) DescribeResourceUsageWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeResourceUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeResourceUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceUsage require credential")
@@ -1495,6 +1528,7 @@ func (c *Client) DescribeWorkOrderListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeWorkOrderListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeWorkOrderList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWorkOrderList require credential")
@@ -1538,6 +1572,7 @@ func (c *Client) DescribeWorkOrderStatisticsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeWorkOrderStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeWorkOrderStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWorkOrderStatistics require credential")
@@ -1581,6 +1616,7 @@ func (c *Client) DescribeWorkOrderTypesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeWorkOrderTypesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeWorkOrderTypes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWorkOrderTypes require credential")
@@ -1634,6 +1670,7 @@ func (c *Client) ExportCustomerWorkOrderDetailWithContext(ctx context.Context, r
     if request == nil {
         request = NewExportCustomerWorkOrderDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "ExportCustomerWorkOrderDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportCustomerWorkOrderDetail require credential")
@@ -1687,6 +1724,7 @@ func (c *Client) ModifyWorkOrderTypeCollectFlagWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyWorkOrderTypeCollectFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "ModifyWorkOrderTypeCollectFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWorkOrderTypeCollectFlag require credential")

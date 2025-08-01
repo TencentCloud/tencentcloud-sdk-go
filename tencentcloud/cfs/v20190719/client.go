@@ -45,6 +45,66 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewApplyPathLifecyclePolicyRequest() (request *ApplyPathLifecyclePolicyRequest) {
+    request = &ApplyPathLifecyclePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "ApplyPathLifecyclePolicy")
+    
+    
+    return
+}
+
+func NewApplyPathLifecyclePolicyResponse() (response *ApplyPathLifecyclePolicyResponse) {
+    response = &ApplyPathLifecyclePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ApplyPathLifecyclePolicy
+// 配置生命周期策略关联到的目录列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_BINDINFREQUENTACCESSFIRST = "InvalidParameterValue.BindInfrequentaccessFirst"
+//  INVALIDPARAMETERVALUE_INVALIDPOLICYFSPATH = "InvalidParameterValue.InvalidPolicyFsPath"
+//  RESOURCEINSUFFICIENT_POLICYFSLIMITEXCEEDED = "ResourceInsufficient.PolicyFsLimitExceeded"
+//  RESOURCEINSUFFICIENT_POLICYFSPATHLIMITEXCEEDED = "ResourceInsufficient.PolicyFsPathLimitExceeded"
+//  RESOURCEINSUFFICIENT_POLICYLIMITEXCEEDED = "ResourceInsufficient.PolicyLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ApplyPathLifecyclePolicy(request *ApplyPathLifecyclePolicyRequest) (response *ApplyPathLifecyclePolicyResponse, err error) {
+    return c.ApplyPathLifecyclePolicyWithContext(context.Background(), request)
+}
+
+// ApplyPathLifecyclePolicy
+// 配置生命周期策略关联到的目录列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_BINDINFREQUENTACCESSFIRST = "InvalidParameterValue.BindInfrequentaccessFirst"
+//  INVALIDPARAMETERVALUE_INVALIDPOLICYFSPATH = "InvalidParameterValue.InvalidPolicyFsPath"
+//  RESOURCEINSUFFICIENT_POLICYFSLIMITEXCEEDED = "ResourceInsufficient.PolicyFsLimitExceeded"
+//  RESOURCEINSUFFICIENT_POLICYFSPATHLIMITEXCEEDED = "ResourceInsufficient.PolicyFsPathLimitExceeded"
+//  RESOURCEINSUFFICIENT_POLICYLIMITEXCEEDED = "ResourceInsufficient.PolicyLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ApplyPathLifecyclePolicyWithContext(ctx context.Context, request *ApplyPathLifecyclePolicyRequest) (response *ApplyPathLifecyclePolicyResponse, err error) {
+    if request == nil {
+        request = NewApplyPathLifecyclePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "ApplyPathLifecyclePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyPathLifecyclePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyPathLifecyclePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindAutoSnapshotPolicyRequest() (request *BindAutoSnapshotPolicyRequest) {
     request = &BindAutoSnapshotPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -104,6 +164,7 @@ func (c *Client) BindAutoSnapshotPolicyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBindAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "BindAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindAutoSnapshotPolicy require credential")
@@ -175,6 +236,7 @@ func (c *Client) CreateAccessCertWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateAccessCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateAccessCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAccessCert require credential")
@@ -272,6 +334,7 @@ func (c *Client) CreateAutoSnapshotPolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAutoSnapshotPolicy require credential")
@@ -435,6 +498,7 @@ func (c *Client) CreateCfsFileSystemWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateCfsFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateCfsFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCfsFileSystem require credential")
@@ -500,6 +564,7 @@ func (c *Client) CreateCfsPGroupWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateCfsPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateCfsPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCfsPGroup require credential")
@@ -581,6 +646,7 @@ func (c *Client) CreateCfsRuleWithContext(ctx context.Context, request *CreateCf
     if request == nil {
         request = NewCreateCfsRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateCfsRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCfsRule require credential")
@@ -678,6 +744,7 @@ func (c *Client) CreateCfsSnapshotWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCfsSnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateCfsSnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCfsSnapshot require credential")
@@ -686,6 +753,260 @@ func (c *Client) CreateCfsSnapshotWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateCfsSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDataFlowRequest() (request *CreateDataFlowRequest) {
+    request = &CreateDataFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "CreateDataFlow")
+    
+    
+    return
+}
+
+func NewCreateDataFlowResponse() (response *CreateDataFlowResponse) {
+    response = &CreateDataFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDataFlow
+// 创建数据流动接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWNAME = "InvalidParameterValue.InvalidDataFlowName"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCEINFO = "InvalidParameterValue.InvalidDataFlowSourceInfo"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCESTORAGETYPE = "InvalidParameterValue.InvalidDataFlowSourceStorageType"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWTARGETPATH = "InvalidParameterValue.InvalidDataFlowTargetPath"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDLIFECYCLEDATATASKTYPE = "InvalidParameterValue.InvalidLifecycleDataTaskType"
+//  RESOURCEINSUFFICIENT_DATAFLOWLIMITEXCEEDED = "ResourceInsufficient.DataFlowLimitExceeded"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+func (c *Client) CreateDataFlow(request *CreateDataFlowRequest) (response *CreateDataFlowResponse, err error) {
+    return c.CreateDataFlowWithContext(context.Background(), request)
+}
+
+// CreateDataFlow
+// 创建数据流动接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWNAME = "InvalidParameterValue.InvalidDataFlowName"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCEINFO = "InvalidParameterValue.InvalidDataFlowSourceInfo"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCESTORAGETYPE = "InvalidParameterValue.InvalidDataFlowSourceStorageType"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWTARGETPATH = "InvalidParameterValue.InvalidDataFlowTargetPath"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDLIFECYCLEDATATASKTYPE = "InvalidParameterValue.InvalidLifecycleDataTaskType"
+//  RESOURCEINSUFFICIENT_DATAFLOWLIMITEXCEEDED = "ResourceInsufficient.DataFlowLimitExceeded"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+func (c *Client) CreateDataFlowWithContext(ctx context.Context, request *CreateDataFlowRequest) (response *CreateDataFlowResponse, err error) {
+    if request == nil {
+        request = NewCreateDataFlowRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateDataFlow")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDataFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDataFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLifecycleDataTaskRequest() (request *CreateLifecycleDataTaskRequest) {
+    request = &CreateLifecycleDataTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "CreateLifecycleDataTask")
+    
+    
+    return
+}
+
+func NewCreateLifecycleDataTaskResponse() (response *CreateLifecycleDataTaskResponse) {
+    response = &CreateLifecycleDataTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLifecycleDataTask
+// 支持主动沉降/预热接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCESTORAGETYPE = "InvalidParameterValue.InvalidDataFlowSourceStorageType"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWTARGETPATH = "InvalidParameterValue.InvalidDataFlowTargetPath"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  INVALIDPARAMETERVALUE_INVALIDLIFECYCLEDATATASKTYPE = "InvalidParameterValue.InvalidLifecycleDataTaskType"
+//  INVALIDPARAMETERVALUE_WAITINGTASKLIMITEXCEEDED = "InvalidParameterValue.WaitingTaskLimitExceeded"
+func (c *Client) CreateLifecycleDataTask(request *CreateLifecycleDataTaskRequest) (response *CreateLifecycleDataTaskResponse, err error) {
+    return c.CreateLifecycleDataTaskWithContext(context.Background(), request)
+}
+
+// CreateLifecycleDataTask
+// 支持主动沉降/预热接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCESTORAGETYPE = "InvalidParameterValue.InvalidDataFlowSourceStorageType"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWTARGETPATH = "InvalidParameterValue.InvalidDataFlowTargetPath"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  INVALIDPARAMETERVALUE_INVALIDLIFECYCLEDATATASKTYPE = "InvalidParameterValue.InvalidLifecycleDataTaskType"
+//  INVALIDPARAMETERVALUE_WAITINGTASKLIMITEXCEEDED = "InvalidParameterValue.WaitingTaskLimitExceeded"
+func (c *Client) CreateLifecycleDataTaskWithContext(ctx context.Context, request *CreateLifecycleDataTaskRequest) (response *CreateLifecycleDataTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateLifecycleDataTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateLifecycleDataTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLifecycleDataTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLifecycleDataTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLifecyclePolicyRequest() (request *CreateLifecyclePolicyRequest) {
+    request = &CreateLifecyclePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "CreateLifecyclePolicy")
+    
+    
+    return
+}
+
+func NewCreateLifecyclePolicyResponse() (response *CreateLifecyclePolicyResponse) {
+    response = &CreateLifecyclePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLifecyclePolicy
+// 创建文件存储生命周期策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINSUFFICIENT_POLICYLIMITEXCEEDED = "ResourceInsufficient.PolicyLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateLifecyclePolicy(request *CreateLifecyclePolicyRequest) (response *CreateLifecyclePolicyResponse, err error) {
+    return c.CreateLifecyclePolicyWithContext(context.Background(), request)
+}
+
+// CreateLifecyclePolicy
+// 创建文件存储生命周期策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINSUFFICIENT_POLICYLIMITEXCEEDED = "ResourceInsufficient.PolicyLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateLifecyclePolicyWithContext(ctx context.Context, request *CreateLifecyclePolicyRequest) (response *CreateLifecyclePolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateLifecyclePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateLifecyclePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLifecyclePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLifecyclePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLifecyclePolicyDownloadTaskRequest() (request *CreateLifecyclePolicyDownloadTaskRequest) {
+    request = &CreateLifecyclePolicyDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "CreateLifecyclePolicyDownloadTask")
+    
+    
+    return
+}
+
+func NewCreateLifecyclePolicyDownloadTaskResponse() (response *CreateLifecyclePolicyDownloadTaskResponse) {
+    response = &CreateLifecyclePolicyDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLifecyclePolicyDownloadTask
+// 下载生命周期任务中文件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINSUFFICIENT_POLICYLIMITEXCEEDED = "ResourceInsufficient.PolicyLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateLifecyclePolicyDownloadTask(request *CreateLifecyclePolicyDownloadTaskRequest) (response *CreateLifecyclePolicyDownloadTaskResponse, err error) {
+    return c.CreateLifecyclePolicyDownloadTaskWithContext(context.Background(), request)
+}
+
+// CreateLifecyclePolicyDownloadTask
+// 下载生命周期任务中文件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINSUFFICIENT_POLICYLIMITEXCEEDED = "ResourceInsufficient.PolicyLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateLifecyclePolicyDownloadTaskWithContext(ctx context.Context, request *CreateLifecyclePolicyDownloadTaskRequest) (response *CreateLifecyclePolicyDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateLifecyclePolicyDownloadTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateLifecyclePolicyDownloadTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLifecyclePolicyDownloadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLifecyclePolicyDownloadTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -733,6 +1054,7 @@ func (c *Client) CreateMigrationTaskWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateMigrationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateMigrationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMigrationTask require credential")
@@ -800,6 +1122,7 @@ func (c *Client) DeleteAutoSnapshotPolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAutoSnapshotPolicy require credential")
@@ -873,6 +1196,7 @@ func (c *Client) DeleteCfsFileSystemWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteCfsFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteCfsFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCfsFileSystem require credential")
@@ -940,6 +1264,7 @@ func (c *Client) DeleteCfsPGroupWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteCfsPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteCfsPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCfsPGroup require credential")
@@ -1021,6 +1346,7 @@ func (c *Client) DeleteCfsRuleWithContext(ctx context.Context, request *DeleteCf
     if request == nil {
         request = NewDeleteCfsRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteCfsRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCfsRule require credential")
@@ -1086,6 +1412,7 @@ func (c *Client) DeleteCfsSnapshotWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteCfsSnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteCfsSnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCfsSnapshot require credential")
@@ -1094,6 +1421,122 @@ func (c *Client) DeleteCfsSnapshotWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteCfsSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDataFlowRequest() (request *DeleteDataFlowRequest) {
+    request = &DeleteDataFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DeleteDataFlow")
+    
+    
+    return
+}
+
+func NewDeleteDataFlowResponse() (response *DeleteDataFlowResponse) {
+    response = &DeleteDataFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDataFlow
+// 删除数据流动
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  INVALIDPARAMETERVALUE_MISSINGFILESYSTEMID = "InvalidParameterValue.MissingFileSystemId"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDLIFECYCLEDATATASKSTATUS = "UnsupportedOperation.InvalidLifecycleDataTaskStatus"
+func (c *Client) DeleteDataFlow(request *DeleteDataFlowRequest) (response *DeleteDataFlowResponse, err error) {
+    return c.DeleteDataFlowWithContext(context.Background(), request)
+}
+
+// DeleteDataFlow
+// 删除数据流动
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  INVALIDPARAMETERVALUE_MISSINGFILESYSTEMID = "InvalidParameterValue.MissingFileSystemId"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDLIFECYCLEDATATASKSTATUS = "UnsupportedOperation.InvalidLifecycleDataTaskStatus"
+func (c *Client) DeleteDataFlowWithContext(ctx context.Context, request *DeleteDataFlowRequest) (response *DeleteDataFlowResponse, err error) {
+    if request == nil {
+        request = NewDeleteDataFlowRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteDataFlow")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDataFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDataFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLifecyclePolicyRequest() (request *DeleteLifecyclePolicyRequest) {
+    request = &DeleteLifecyclePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DeleteLifecyclePolicy")
+    
+    
+    return
+}
+
+func NewDeleteLifecyclePolicyResponse() (response *DeleteLifecyclePolicyResponse) {
+    response = &DeleteLifecyclePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLifecyclePolicy
+// 删除生命周期管理策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  INVALIDPARAMETERVALUE_MISSINGFILESYSTEMID = "InvalidParameterValue.MissingFileSystemId"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDLIFECYCLEDATATASKSTATUS = "UnsupportedOperation.InvalidLifecycleDataTaskStatus"
+func (c *Client) DeleteLifecyclePolicy(request *DeleteLifecyclePolicyRequest) (response *DeleteLifecyclePolicyResponse, err error) {
+    return c.DeleteLifecyclePolicyWithContext(context.Background(), request)
+}
+
+// DeleteLifecyclePolicy
+// 删除生命周期管理策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  INVALIDPARAMETERVALUE_MISSINGFILESYSTEMID = "InvalidParameterValue.MissingFileSystemId"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDLIFECYCLEDATATASKSTATUS = "UnsupportedOperation.InvalidLifecycleDataTaskStatus"
+func (c *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, request *DeleteLifecyclePolicyRequest) (response *DeleteLifecyclePolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteLifecyclePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteLifecyclePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLifecyclePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLifecyclePolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -1149,6 +1592,7 @@ func (c *Client) DeleteMigrationTaskWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteMigrationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteMigrationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMigrationTask require credential")
@@ -1222,6 +1666,7 @@ func (c *Client) DeleteMountTargetWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteMountTargetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteMountTarget")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMountTarget require credential")
@@ -1271,6 +1716,7 @@ func (c *Client) DeleteUserQuotaWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteUserQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteUserQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUserQuota require credential")
@@ -1334,6 +1780,7 @@ func (c *Client) DescribeAutoSnapshotPoliciesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAutoSnapshotPoliciesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeAutoSnapshotPolicies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoSnapshotPolicies require credential")
@@ -1393,6 +1840,7 @@ func (c *Client) DescribeAvailableZoneInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAvailableZoneInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeAvailableZoneInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAvailableZoneInfo require credential")
@@ -1452,6 +1900,7 @@ func (c *Client) DescribeBucketListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeBucketListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeBucketList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBucketList require credential")
@@ -1515,6 +1964,7 @@ func (c *Client) DescribeCfsFileSystemClientsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeCfsFileSystemClientsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsFileSystemClients")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsFileSystemClients require credential")
@@ -1588,6 +2038,7 @@ func (c *Client) DescribeCfsFileSystemsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCfsFileSystemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsFileSystems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsFileSystems require credential")
@@ -1641,6 +2092,7 @@ func (c *Client) DescribeCfsPGroupsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCfsPGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsPGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsPGroups require credential")
@@ -1698,6 +2150,7 @@ func (c *Client) DescribeCfsRulesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCfsRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsRules require credential")
@@ -1755,6 +2208,7 @@ func (c *Client) DescribeCfsServiceStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCfsServiceStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsServiceStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsServiceStatus require credential")
@@ -1810,6 +2264,7 @@ func (c *Client) DescribeCfsSnapshotOverviewWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCfsSnapshotOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsSnapshotOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsSnapshotOverview require credential")
@@ -1871,6 +2326,7 @@ func (c *Client) DescribeCfsSnapshotsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCfsSnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeCfsSnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCfsSnapshots require credential")
@@ -1879,6 +2335,162 @@ func (c *Client) DescribeCfsSnapshotsWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeCfsSnapshotsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataFlowRequest() (request *DescribeDataFlowRequest) {
+    request = &DescribeDataFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DescribeDataFlow")
+    
+    
+    return
+}
+
+func NewDescribeDataFlowResponse() (response *DescribeDataFlowResponse) {
+    response = &DescribeDataFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataFlow
+// 查询数据流动信息接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWNAME = "InvalidParameterValue.InvalidDataFlowName"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+func (c *Client) DescribeDataFlow(request *DescribeDataFlowRequest) (response *DescribeDataFlowResponse, err error) {
+    return c.DescribeDataFlowWithContext(context.Background(), request)
+}
+
+// DescribeDataFlow
+// 查询数据流动信息接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWNAME = "InvalidParameterValue.InvalidDataFlowName"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+func (c *Client) DescribeDataFlowWithContext(ctx context.Context, request *DescribeDataFlowRequest) (response *DescribeDataFlowResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataFlowRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeDataFlow")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLifecycleDataTaskRequest() (request *DescribeLifecycleDataTaskRequest) {
+    request = &DescribeLifecycleDataTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DescribeLifecycleDataTask")
+    
+    
+    return
+}
+
+func NewDescribeLifecycleDataTaskResponse() (response *DescribeLifecycleDataTaskResponse) {
+    response = &DescribeLifecycleDataTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLifecycleDataTask
+// 查询生命周期任务的接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MISSINGTASKIDORREGION = "InvalidParameterValue.MissingTaskIdOrRegion"
+func (c *Client) DescribeLifecycleDataTask(request *DescribeLifecycleDataTaskRequest) (response *DescribeLifecycleDataTaskResponse, err error) {
+    return c.DescribeLifecycleDataTaskWithContext(context.Background(), request)
+}
+
+// DescribeLifecycleDataTask
+// 查询生命周期任务的接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MISSINGTASKIDORREGION = "InvalidParameterValue.MissingTaskIdOrRegion"
+func (c *Client) DescribeLifecycleDataTaskWithContext(ctx context.Context, request *DescribeLifecycleDataTaskRequest) (response *DescribeLifecycleDataTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeLifecycleDataTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeLifecycleDataTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLifecycleDataTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLifecycleDataTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLifecyclePoliciesRequest() (request *DescribeLifecyclePoliciesRequest) {
+    request = &DescribeLifecyclePoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DescribeLifecyclePolicies")
+    
+    
+    return
+}
+
+func NewDescribeLifecyclePoliciesResponse() (response *DescribeLifecyclePoliciesResponse) {
+    response = &DescribeLifecyclePoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLifecyclePolicies
+// 查询生命周期管理策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MISSINGTASKIDORREGION = "InvalidParameterValue.MissingTaskIdOrRegion"
+func (c *Client) DescribeLifecyclePolicies(request *DescribeLifecyclePoliciesRequest) (response *DescribeLifecyclePoliciesResponse, err error) {
+    return c.DescribeLifecyclePoliciesWithContext(context.Background(), request)
+}
+
+// DescribeLifecyclePolicies
+// 查询生命周期管理策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MISSINGTASKIDORREGION = "InvalidParameterValue.MissingTaskIdOrRegion"
+func (c *Client) DescribeLifecyclePoliciesWithContext(ctx context.Context, request *DescribeLifecyclePoliciesRequest) (response *DescribeLifecyclePoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLifecyclePoliciesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeLifecyclePolicies")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLifecyclePolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLifecyclePoliciesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1908,13 +2520,7 @@ func NewDescribeMigrationTasksResponse() (response *DescribeMigrationTasksRespon
 // 此接口需提交工单，开启白名单之后才能使用。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
-//  RESOURCENOTFOUND_SNAPSHOTNOTFOUND = "ResourceNotFound.SnapshotNotFound"
-//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
-//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+//  INVALIDPARAMETERVALUE_MISSINGTASKIDORREGION = "InvalidParameterValue.MissingTaskIdOrRegion"
 func (c *Client) DescribeMigrationTasks(request *DescribeMigrationTasksRequest) (response *DescribeMigrationTasksResponse, err error) {
     return c.DescribeMigrationTasksWithContext(context.Background(), request)
 }
@@ -1925,17 +2531,12 @@ func (c *Client) DescribeMigrationTasks(request *DescribeMigrationTasksRequest) 
 // 此接口需提交工单，开启白名单之后才能使用。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
-//  RESOURCENOTFOUND_SNAPSHOTNOTFOUND = "ResourceNotFound.SnapshotNotFound"
-//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
-//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+//  INVALIDPARAMETERVALUE_MISSINGTASKIDORREGION = "InvalidParameterValue.MissingTaskIdOrRegion"
 func (c *Client) DescribeMigrationTasksWithContext(ctx context.Context, request *DescribeMigrationTasksRequest) (response *DescribeMigrationTasksResponse, err error) {
     if request == nil {
         request = NewDescribeMigrationTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeMigrationTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigrationTasks require credential")
@@ -2003,6 +2604,7 @@ func (c *Client) DescribeMountTargetsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMountTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeMountTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMountTargets require credential")
@@ -2066,6 +2668,7 @@ func (c *Client) DescribeSnapshotOperationLogsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeSnapshotOperationLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeSnapshotOperationLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSnapshotOperationLogs require credential")
@@ -2119,6 +2722,7 @@ func (c *Client) DescribeUserQuotaWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUserQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeUserQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserQuota require credential")
@@ -2127,6 +2731,60 @@ func (c *Client) DescribeUserQuotaWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeUserQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDataFlowRequest() (request *ModifyDataFlowRequest) {
+    request = &ModifyDataFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "ModifyDataFlow")
+    
+    
+    return
+}
+
+func NewModifyDataFlowResponse() (response *ModifyDataFlowResponse) {
+    response = &ModifyDataFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDataFlow
+// 修改数据流动相关参数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWNAME = "InvalidParameterValue.InvalidDataFlowName"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCEINFO = "InvalidParameterValue.InvalidDataFlowSourceInfo"
+func (c *Client) ModifyDataFlow(request *ModifyDataFlowRequest) (response *ModifyDataFlowResponse, err error) {
+    return c.ModifyDataFlowWithContext(context.Background(), request)
+}
+
+// ModifyDataFlow
+// 修改数据流动相关参数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWNAME = "InvalidParameterValue.InvalidDataFlowName"
+//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCEINFO = "InvalidParameterValue.InvalidDataFlowSourceInfo"
+func (c *Client) ModifyDataFlowWithContext(ctx context.Context, request *ModifyDataFlowRequest) (response *ModifyDataFlowResponse, err error) {
+    if request == nil {
+        request = NewModifyDataFlowRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "ModifyDataFlow")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDataFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDataFlowResponse()
     err = c.Send(request, response)
     return
 }
@@ -2178,6 +2836,7 @@ func (c *Client) ModifyFileSystemAutoScaleUpRuleWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyFileSystemAutoScaleUpRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "ModifyFileSystemAutoScaleUpRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFileSystemAutoScaleUpRule require credential")
@@ -2186,6 +2845,62 @@ func (c *Client) ModifyFileSystemAutoScaleUpRuleWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewModifyFileSystemAutoScaleUpRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLifecyclePolicyRequest() (request *ModifyLifecyclePolicyRequest) {
+    request = &ModifyLifecyclePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "ModifyLifecyclePolicy")
+    
+    
+    return
+}
+
+func NewModifyLifecyclePolicyResponse() (response *ModifyLifecyclePolicyResponse) {
+    response = &ModifyLifecyclePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLifecyclePolicy
+// 更新文件存储生命周期策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CFSPATH = "InvalidParameterValue.CfsPath"
+//  INVALIDPARAMETERVALUE_POLICYRULESTORAGETYPEINVALID = "InvalidParameterValue.PolicyRuleStorageTypeInvalid"
+//  INVALIDPARAMETERVALUE_STORAGETYPEINVALID = "InvalidParameterValue.StorageTypeInvalid"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyLifecyclePolicy(request *ModifyLifecyclePolicyRequest) (response *ModifyLifecyclePolicyResponse, err error) {
+    return c.ModifyLifecyclePolicyWithContext(context.Background(), request)
+}
+
+// ModifyLifecyclePolicy
+// 更新文件存储生命周期策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CFSPATH = "InvalidParameterValue.CfsPath"
+//  INVALIDPARAMETERVALUE_POLICYRULESTORAGETYPEINVALID = "InvalidParameterValue.PolicyRuleStorageTypeInvalid"
+//  INVALIDPARAMETERVALUE_STORAGETYPEINVALID = "InvalidParameterValue.StorageTypeInvalid"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyLifecyclePolicyWithContext(ctx context.Context, request *ModifyLifecyclePolicyRequest) (response *ModifyLifecyclePolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyLifecyclePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "ModifyLifecyclePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLifecyclePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLifecyclePolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -2251,6 +2966,7 @@ func (c *Client) ScaleUpFileSystemWithContext(ctx context.Context, request *Scal
     if request == nil {
         request = NewScaleUpFileSystemRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "ScaleUpFileSystem")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleUpFileSystem require credential")
@@ -2322,6 +3038,7 @@ func (c *Client) SetUserQuotaWithContext(ctx context.Context, request *SetUserQu
     if request == nil {
         request = NewSetUserQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "SetUserQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetUserQuota require credential")
@@ -2379,6 +3096,7 @@ func (c *Client) SignUpCfsServiceWithContext(ctx context.Context, request *SignU
     if request == nil {
         request = NewSignUpCfsServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "SignUpCfsService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SignUpCfsService require credential")
@@ -2387,6 +3105,56 @@ func (c *Client) SignUpCfsServiceWithContext(ctx context.Context, request *SignU
     request.SetContext(ctx)
     
     response = NewSignUpCfsServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopLifecycleDataTaskRequest() (request *StopLifecycleDataTaskRequest) {
+    request = &StopLifecycleDataTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "StopLifecycleDataTask")
+    
+    
+    return
+}
+
+func NewStopLifecycleDataTaskResponse() (response *StopLifecycleDataTaskResponse) {
+    response = &StopLifecycleDataTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopLifecycleDataTask
+// 终止生命周期任务的接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDLIFECYCLETASKID = "InvalidParameterValue.InvalidLifecycleTaskId"
+func (c *Client) StopLifecycleDataTask(request *StopLifecycleDataTaskRequest) (response *StopLifecycleDataTaskResponse, err error) {
+    return c.StopLifecycleDataTaskWithContext(context.Background(), request)
+}
+
+// StopLifecycleDataTask
+// 终止生命周期任务的接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDLIFECYCLETASKID = "InvalidParameterValue.InvalidLifecycleTaskId"
+func (c *Client) StopLifecycleDataTaskWithContext(ctx context.Context, request *StopLifecycleDataTaskRequest) (response *StopLifecycleDataTaskResponse, err error) {
+    if request == nil {
+        request = NewStopLifecycleDataTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "StopLifecycleDataTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopLifecycleDataTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopLifecycleDataTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -2428,6 +3196,7 @@ func (c *Client) StopMigrationTaskWithContext(ctx context.Context, request *Stop
     if request == nil {
         request = NewStopMigrationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "StopMigrationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopMigrationTask require credential")
@@ -2495,6 +3264,7 @@ func (c *Client) UnbindAutoSnapshotPolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUnbindAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UnbindAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindAutoSnapshotPolicy require credential")
@@ -2574,6 +3344,7 @@ func (c *Client) UpdateAutoSnapshotPolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUpdateAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAutoSnapshotPolicy require credential")
@@ -2647,6 +3418,7 @@ func (c *Client) UpdateCfsFileSystemNameWithContext(ctx context.Context, request
     if request == nil {
         request = NewUpdateCfsFileSystemNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsFileSystemName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsFileSystemName require credential")
@@ -2728,6 +3500,7 @@ func (c *Client) UpdateCfsFileSystemPGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewUpdateCfsFileSystemPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsFileSystemPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsFileSystemPGroup require credential")
@@ -2801,6 +3574,7 @@ func (c *Client) UpdateCfsFileSystemSizeLimitWithContext(ctx context.Context, re
     if request == nil {
         request = NewUpdateCfsFileSystemSizeLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsFileSystemSizeLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsFileSystemSizeLimit require credential")
@@ -2876,6 +3650,7 @@ func (c *Client) UpdateCfsPGroupWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateCfsPGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsPGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsPGroup require credential")
@@ -2959,6 +3734,7 @@ func (c *Client) UpdateCfsRuleWithContext(ctx context.Context, request *UpdateCf
     if request == nil {
         request = NewUpdateCfsRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsRule require credential")
@@ -3028,6 +3804,7 @@ func (c *Client) UpdateCfsSnapshotAttributeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateCfsSnapshotAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateCfsSnapshotAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCfsSnapshotAttribute require credential")
@@ -3087,6 +3864,7 @@ func (c *Client) UpdateFileSystemBandwidthLimitWithContext(ctx context.Context, 
     if request == nil {
         request = NewUpdateFileSystemBandwidthLimitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "UpdateFileSystemBandwidthLimit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateFileSystemBandwidthLimit require credential")

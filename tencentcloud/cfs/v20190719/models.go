@@ -20,6 +20,71 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+// Predefined struct for user
+type ApplyPathLifecyclePolicyRequestParams struct {
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+
+	// 生命周期管理策略关联目录的绝对路径列表
+	Paths []*PathInfo `json:"Paths,omitnil,omitempty" name:"Paths"`
+}
+
+type ApplyPathLifecyclePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+
+	// 生命周期管理策略关联目录的绝对路径列表
+	Paths []*PathInfo `json:"Paths,omitnil,omitempty" name:"Paths"`
+}
+
+func (r *ApplyPathLifecyclePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyPathLifecyclePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LifecyclePolicyID")
+	delete(f, "Paths")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyPathLifecyclePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ApplyPathLifecyclePolicyResponseParams struct {
+	// 有规则冲突时返回的已有冲突规则信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckResults []*CheckResult `json:"CheckResults,omitnil,omitempty" name:"CheckResults"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ApplyPathLifecyclePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ApplyPathLifecyclePolicyResponseParams `json:"Response"`
+}
+
+func (r *ApplyPathLifecyclePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyPathLifecyclePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AutoScaleUpRule struct {
 	// 自动扩容策略开启，关闭
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
@@ -207,6 +272,23 @@ type BucketInfo struct {
 	// 桶所在地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+type CheckResult struct {
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 目录绝对路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 生命周期管理策略关联的管理规则列表
+	LifecycleRules []*LifecycleRule `json:"LifecycleRules,omitnil,omitempty" name:"LifecycleRules"`
+
+	// 目标路径
+	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 }
 
 // Predefined struct for user
@@ -836,6 +918,325 @@ func (r *CreateCfsSnapshotResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDataFlowRequestParams struct {
+	// 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 源端数据类型；包含S3_COS，S3_L5 
+	SourceStorageType *string `json:"SourceStorageType,omitnil,omitempty" name:"SourceStorageType"`
+
+	// 源端存储地址
+	SourceStorageAddress *string `json:"SourceStorageAddress,omitnil,omitempty" name:"SourceStorageAddress"`
+
+	// 源端路径
+	SourcePath *string `json:"SourcePath,omitnil,omitempty" name:"SourcePath"`
+
+	// 文件系统内目标路径
+	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
+
+	// 密钥 ID
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// 密钥 key
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
+	DataFlowName *string `json:"DataFlowName,omitnil,omitempty" name:"DataFlowName"`
+}
+
+type CreateDataFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 源端数据类型；包含S3_COS，S3_L5 
+	SourceStorageType *string `json:"SourceStorageType,omitnil,omitempty" name:"SourceStorageType"`
+
+	// 源端存储地址
+	SourceStorageAddress *string `json:"SourceStorageAddress,omitnil,omitempty" name:"SourceStorageAddress"`
+
+	// 源端路径
+	SourcePath *string `json:"SourcePath,omitnil,omitempty" name:"SourcePath"`
+
+	// 文件系统内目标路径
+	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
+
+	// 密钥 ID
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// 密钥 key
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
+	DataFlowName *string `json:"DataFlowName,omitnil,omitempty" name:"DataFlowName"`
+}
+
+func (r *CreateDataFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "SourceStorageType")
+	delete(f, "SourceStorageAddress")
+	delete(f, "SourcePath")
+	delete(f, "TargetPath")
+	delete(f, "SecretId")
+	delete(f, "SecretKey")
+	delete(f, "DataFlowName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDataFlowResponseParams struct {
+	// 数据流动管理 ID
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDataFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDataFlowResponseParams `json:"Response"`
+}
+
+func (r *CreateDataFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLifecycleDataTaskRequestParams struct {
+	// 文件系统唯一 ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 需要沉降的路径或文件，仅支持传入1个路径，不允许为空。
+	TaskPath *string `json:"TaskPath,omitnil,omitempty" name:"TaskPath"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 数据流动 ID ，该接口可以通过 DescribeDataFlow 查询
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+}
+
+type CreateLifecycleDataTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统唯一 ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 需要沉降的路径或文件，仅支持传入1个路径，不允许为空。
+	TaskPath *string `json:"TaskPath,omitnil,omitempty" name:"TaskPath"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 数据流动 ID ，该接口可以通过 DescribeDataFlow 查询
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+}
+
+func (r *CreateLifecycleDataTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLifecycleDataTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "Type")
+	delete(f, "TaskPath")
+	delete(f, "TaskName")
+	delete(f, "DataFlowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLifecycleDataTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLifecycleDataTaskResponseParams struct {
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLifecycleDataTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLifecycleDataTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateLifecycleDataTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLifecycleDataTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLifecyclePolicyDownloadTaskRequestParams struct {
+	// 任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 下载文件的类型，包含 FileSuccessList，FileTotalList，FileFailedList
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type CreateLifecyclePolicyDownloadTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 下载文件的类型，包含 FileSuccessList，FileTotalList，FileFailedList
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *CreateLifecyclePolicyDownloadTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLifecyclePolicyDownloadTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLifecyclePolicyDownloadTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLifecyclePolicyDownloadTaskResponseParams struct {
+	// 下载路径
+	DownloadAddress *string `json:"DownloadAddress,omitnil,omitempty" name:"DownloadAddress"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLifecyclePolicyDownloadTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLifecyclePolicyDownloadTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateLifecyclePolicyDownloadTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLifecyclePolicyDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLifecyclePolicyRequestParams struct {
+	// 生命周期管理策略名称，中文/英文/数字/下划线/中划线的组合，不超过64个字符
+	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitnil,omitempty" name:"LifecyclePolicyName"`
+
+	// 生命周期管理策略关联的管理规则列表
+	LifecycleRules []*LifecycleRule `json:"LifecycleRules,omitnil,omitempty" name:"LifecycleRules"`
+}
+
+type CreateLifecyclePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 生命周期管理策略名称，中文/英文/数字/下划线/中划线的组合，不超过64个字符
+	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitnil,omitempty" name:"LifecyclePolicyName"`
+
+	// 生命周期管理策略关联的管理规则列表
+	LifecycleRules []*LifecycleRule `json:"LifecycleRules,omitnil,omitempty" name:"LifecycleRules"`
+}
+
+func (r *CreateLifecyclePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLifecyclePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LifecyclePolicyName")
+	delete(f, "LifecycleRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLifecyclePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLifecyclePolicyResponseParams struct {
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLifecyclePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLifecyclePolicyResponseParams `json:"Response"`
+}
+
+func (r *CreateLifecyclePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLifecyclePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateMigrationTaskRequestParams struct {
 	// 迁移任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
@@ -995,6 +1396,38 @@ func (r *CreateMigrationTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateMigrationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DataFlowInfo struct {
+	// 数据流动管理 ID
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 数据流动名称
+	DataFlowName *string `json:"DataFlowName,omitnil,omitempty" name:"DataFlowName"`
+
+	// 源端数据类型
+	SourceStorageType *string `json:"SourceStorageType,omitnil,omitempty" name:"SourceStorageType"`
+
+	// 源端存储地址
+	SourceStorageAddress *string `json:"SourceStorageAddress,omitnil,omitempty" name:"SourceStorageAddress"`
+
+	// 源端路径
+	SourcePath *string `json:"SourcePath,omitnil,omitempty" name:"SourcePath"`
+
+	// 目录路径
+	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
+
+	// available：已生效
+	// pending：配置中
+	// unavailable：失效
+	// deleting：删除中
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间
+	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
+
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 // Predefined struct for user
@@ -1298,6 +1731,121 @@ func (r *DeleteCfsSnapshotResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCfsSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDataFlowRequestParams struct {
+	// 数据流动管理 ID
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+type DeleteDataFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据流动管理 ID
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+func (r *DeleteDataFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataFlowId")
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDataFlowResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDataFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDataFlowResponseParams `json:"Response"`
+}
+
+func (r *DeleteDataFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLifecyclePolicyRequestParams struct {
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+}
+
+type DeleteLifecyclePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+}
+
+func (r *DeleteLifecyclePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLifecyclePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LifecyclePolicyID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLifecyclePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLifecyclePolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLifecyclePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLifecyclePolicyResponseParams `json:"Response"`
+}
+
+func (r *DeleteLifecyclePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLifecyclePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2104,10 +2652,10 @@ func (r *DescribeCfsSnapshotOverviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfsSnapshotsRequestParams struct {
-	// 文件系统ID
+	// 文件系统 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 快照ID
+	// 快照 ID
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
 	// 分页起始位置，默认为0
@@ -2121,26 +2669,25 @@ type DescribeCfsSnapshotsRequestParams struct {
 	// <br>SnapshotName - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。
 	// <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 	// <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
-	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-	// (creating：创建中 | available：运行中| deleting: 删除中 | rollbacking_new：由快照创建新文件系统中| create-failed 创建失败）
+	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。状态分类：creating：创建中 | available：运行中 | deleting：删除中 | rollbacking_new：由快照创建新文件系统中 | create-failed：创建失败。
 	// <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
-	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key 使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 按创建时间排序取值
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序 升序或者降序
+	// 排序；升序或者降序
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type DescribeCfsSnapshotsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统ID
+	// 文件系统 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 快照ID
+	// 快照 ID
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
 	// 分页起始位置，默认为0
@@ -2154,16 +2701,15 @@ type DescribeCfsSnapshotsRequest struct {
 	// <br>SnapshotName - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。
 	// <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 	// <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
-	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-	// (creating：创建中 | available：运行中| deleting: 删除中 | rollbacking_new：由快照创建新文件系统中| create-failed 创建失败）
+	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。状态分类：creating：创建中 | available：运行中 | deleting：删除中 | rollbacking_new：由快照创建新文件系统中 | create-failed：创建失败。
 	// <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
-	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key 使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 按创建时间排序取值
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序 升序或者降序
+	// 排序；升序或者降序
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
@@ -2220,6 +2766,283 @@ func (r *DescribeCfsSnapshotsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfsSnapshotsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataFlowRequestParams struct {
+	// 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 数据流动 ID ，由创建数据流动返回
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 每次查询返回值个数，默认20；最大100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 文件系统版本；版本号：v1.5，v3.0，v3.1，v4.0
+	CfsVersion *string `json:"CfsVersion,omitnil,omitempty" name:"CfsVersion"`
+}
+
+type DescribeDataFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 数据流动 ID ，由创建数据流动返回
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 每次查询返回值个数，默认20；最大100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 文件系统版本；版本号：v1.5，v3.0，v3.1，v4.0
+	CfsVersion *string `json:"CfsVersion,omitnil,omitempty" name:"CfsVersion"`
+}
+
+func (r *DescribeDataFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "DataFlowId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "CfsVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataFlowResponseParams struct {
+	// 查询总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 无
+	DataFlows []*DataFlowInfo `json:"DataFlows,omitnil,omitempty" name:"DataFlows"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataFlowResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLifecycleDataTaskRequestParams struct {
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 	任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// Offset 分页码	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// Limit 页面大小	
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，TaskName，FileSystemId，Type
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeLifecycleDataTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 	任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// Offset 分页码	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// Limit 页面大小	
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，TaskName，FileSystemId，Type
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeLifecycleDataTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLifecycleDataTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "TaskId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLifecycleDataTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLifecycleDataTaskResponseParams struct {
+	// 任务数组
+	LifecycleDataTask []*LifecycleDataTaskInfo `json:"LifecycleDataTask,omitnil,omitempty" name:"LifecycleDataTask"`
+
+	// 查询结果总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLifecycleDataTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLifecycleDataTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeLifecycleDataTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLifecycleDataTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLifecyclePoliciesRequestParams struct {
+	// 生命周期管理策略名称
+	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitnil,omitempty" name:"LifecyclePolicyName"`
+
+	// 每个分页包含的生命周期管理策略个数
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 列表的分页页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+}
+
+type DescribeLifecyclePoliciesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 生命周期管理策略名称
+	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitnil,omitempty" name:"LifecyclePolicyName"`
+
+	// 每个分页包含的生命周期管理策略个数
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 列表的分页页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+}
+
+func (r *DescribeLifecyclePoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLifecyclePoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LifecyclePolicyName")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "FileSystemId")
+	delete(f, "LifecyclePolicyID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLifecyclePoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLifecyclePoliciesResponseParams struct {
+	// 列表的分页页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每个分页包含的生命周期管理策略个数
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 生命周期管理策略总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 生命周期管理策略列表
+	LifecyclePolicies []*LifecyclePolicy `json:"LifecyclePolicies,omitnil,omitempty" name:"LifecyclePolicies"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLifecyclePoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLifecyclePoliciesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLifecyclePoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLifecyclePoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2516,6 +3339,14 @@ func (r *DescribeUserQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ExstraPerformanceInfo struct {
+	// fixed: 最终值固定
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 额外购买的CFS性能值，单位MB/s。
+	Performance *int64 `json:"Performance,omitnil,omitempty" name:"Performance"`
+}
+
 type FileSystemByPolicy struct {
 	// 文件系统名称
 	CreationToken *string `json:"CreationToken,omitnil,omitempty" name:"CreationToken"`
@@ -2646,6 +3477,14 @@ type FileSystemInfo struct {
 
 	// 文件系统版本
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 额外性能信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExstraPerformanceInfo []*ExstraPerformanceInfo `json:"ExstraPerformanceInfo,omitnil,omitempty" name:"ExstraPerformanceInfo"`
+
+	// basic：标准版元数据类型
+	// enhanced：增项版元数据类型
+	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
 }
 
 type Filter struct {
@@ -2654,6 +3493,111 @@ type Filter struct {
 
 	// 名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type LifecycleDataTaskInfo struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务状态.
+	// init：未执行
+	// running：执行中，finished：已完成
+	// ,failed：失败
+	// ,stopping：停止中,stopped：已停止
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// 任务创建时间
+	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
+
+	// 任务结束时间
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 文件总数
+	FileTotalCount *uint64 `json:"FileTotalCount,omitnil,omitempty" name:"FileTotalCount"`
+
+	// 处理成功文件数量
+	FileSuccessedCount *uint64 `json:"FileSuccessedCount,omitnil,omitempty" name:"FileSuccessedCount"`
+
+	// 当前已经失败的文件数
+	FileFailedCount *uint64 `json:"FileFailedCount,omitnil,omitempty" name:"FileFailedCount"`
+
+	// 文件容量，单位Byte
+	// 
+	FileTotalSize *uint64 `json:"FileTotalSize,omitnil,omitempty" name:"FileTotalSize"`
+
+	// 已处理完成的文件容量，单位Byte
+	// 
+	FileSuccessedSize *uint64 `json:"FileSuccessedSize,omitnil,omitempty" name:"FileSuccessedSize"`
+
+	// 已处理失败文件容量，单位Byte
+	FileFailedSize *uint64 `json:"FileFailedSize,omitnil,omitempty" name:"FileFailedSize"`
+
+	// 总文件列表
+	FileTotalList *string `json:"FileTotalList,omitnil,omitempty" name:"FileTotalList"`
+
+	// 成功的文件列表
+	FileSuccessedList *string `json:"FileSuccessedList,omitnil,omitempty" name:"FileSuccessedList"`
+
+	// 失败文件的列表
+	FileFailedList *string `json:"FileFailedList,omitnil,omitempty" name:"FileFailedList"`
+
+	// FileSystemId
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务路径
+	TaskPath *string `json:"TaskPath,omitnil,omitempty" name:"TaskPath"`
+
+	// 任务类型,archive:表示沉降任务，restore：表示拉取任务
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据流动Id
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+}
+
+type LifecyclePolicy struct {
+	// 生命周期管理策略创建的时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+
+	// 生命周期管理策略名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitnil,omitempty" name:"LifecyclePolicyName"`
+
+	// 生命周期管理策略关联的管理规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifecycleRules []*LifecycleRule `json:"LifecycleRules,omitnil,omitempty" name:"LifecycleRules"`
+
+	// 生命周期管理策略关联目录的绝对路径列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Paths []*PathInfo `json:"Paths,omitnil,omitempty" name:"Paths"`
+}
+
+type LifecycleRule struct {
+	// 数据转储后的存储类型
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 数据转储文件类型
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 数据转储行为
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 数据转储触发时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 数据转储文件最大规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileMaxSize *string `json:"FileMaxSize,omitnil,omitempty" name:"FileMaxSize"`
+
+	// 数据转储文件最小规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileMinSize *string `json:"FileMinSize,omitnil,omitempty" name:"FileMinSize"`
 }
 
 type MigrationTaskInfo struct {
@@ -2734,6 +3678,91 @@ type MigrationTaskInfo struct {
 
 	// 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+// Predefined struct for user
+type ModifyDataFlowRequestParams struct {
+	// 数据流动管理 ID ，通过查询数据流动接口获取
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
+	DataFlowName *string `json:"DataFlowName,omitnil,omitempty" name:"DataFlowName"`
+
+	// 密钥 ID
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// 密钥 key
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+}
+
+type ModifyDataFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据流动管理 ID ，通过查询数据流动接口获取
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
+	DataFlowName *string `json:"DataFlowName,omitnil,omitempty" name:"DataFlowName"`
+
+	// 密钥 ID
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// 密钥 key
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+}
+
+func (r *ModifyDataFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataFlowId")
+	delete(f, "FileSystemId")
+	delete(f, "DataFlowName")
+	delete(f, "SecretId")
+	delete(f, "SecretKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDataFlowResponseParams struct {
+	// 数据流动管理 ID
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDataFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDataFlowResponseParams `json:"Response"`
+}
+
+func (r *ModifyDataFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2823,6 +3852,77 @@ func (r *ModifyFileSystemAutoScaleUpRuleResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyLifecyclePolicyRequestParams struct {
+	// 生命周期管理策略名称，中文/英文/数字/下划线/中划线的组合，不超过64个字符
+	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitnil,omitempty" name:"LifecyclePolicyName"`
+
+	// 生命周期管理策略关联的管理规则列表
+	LifecycleRules []*LifecycleRule `json:"LifecycleRules,omitnil,omitempty" name:"LifecycleRules"`
+
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+}
+
+type ModifyLifecyclePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 生命周期管理策略名称，中文/英文/数字/下划线/中划线的组合，不超过64个字符
+	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitnil,omitempty" name:"LifecyclePolicyName"`
+
+	// 生命周期管理策略关联的管理规则列表
+	LifecycleRules []*LifecycleRule `json:"LifecycleRules,omitnil,omitempty" name:"LifecycleRules"`
+
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+}
+
+func (r *ModifyLifecyclePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLifecyclePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LifecyclePolicyName")
+	delete(f, "LifecycleRules")
+	delete(f, "LifecyclePolicyID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLifecyclePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLifecyclePolicyResponseParams struct {
+	// 生命周期管理策略ID
+	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLifecyclePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLifecyclePolicyResponseParams `json:"Response"`
+}
+
+func (r *ModifyLifecyclePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLifecyclePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MountInfo struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
@@ -2906,6 +4006,14 @@ type PGroupRuleInfo struct {
 
 	// 规则优先级，1-100。 其中 1 为最高，100为最低
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type PathInfo struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 目录绝对路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
 // Predefined struct for user
@@ -3131,7 +4239,7 @@ type SnapshotInfo struct {
 	// 快照ID
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 快照状态，createing-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
+	// 快照状态，creating-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域名称
@@ -3161,11 +4269,11 @@ type SnapshotInfo struct {
 	// 快照标签
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 快照类型, general为通用系列快照，turbo为Turbo系列快照
+	// 快照类型，general为通用系列快照，turbo为Turbo系列快照
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotType *string `json:"SnapshotType,omitnil,omitempty" name:"SnapshotType"`
 
-	// 实际快照时间，反应快照对应文件系统某个时刻的数据。
+	// 实际快照时间，反映快照对应文件系统某个时刻的数据。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotTime *string `json:"SnapshotTime,omitnil,omitempty" name:"SnapshotTime"`
 }
@@ -3204,6 +4312,60 @@ type SnapshotStatistics struct {
 
 	// 快照总容量，单位是MiB
 	SnapshotSize *uint64 `json:"SnapshotSize,omitnil,omitempty" name:"SnapshotSize"`
+}
+
+// Predefined struct for user
+type StopLifecycleDataTaskRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type StopLifecycleDataTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *StopLifecycleDataTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopLifecycleDataTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopLifecycleDataTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopLifecycleDataTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopLifecycleDataTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *StopLifecycleDataTaskResponseParams `json:"Response"`
+}
+
+func (r *StopLifecycleDataTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopLifecycleDataTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

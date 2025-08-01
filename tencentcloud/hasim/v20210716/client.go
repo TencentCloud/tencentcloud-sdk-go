@@ -98,6 +98,7 @@ func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleR
     if request == nil {
         request = NewCreateRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "CreateRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRule require credential")
@@ -165,6 +166,7 @@ func (c *Client) CreateTacticWithContext(ctx context.Context, request *CreateTac
     if request == nil {
         request = NewCreateTacticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "CreateTactic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTactic require credential")
@@ -230,6 +232,7 @@ func (c *Client) CreateTagWithContext(ctx context.Context, request *CreateTagReq
     if request == nil {
         request = NewCreateTagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "CreateTag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTag require credential")
@@ -299,6 +302,7 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleR
     if request == nil {
         request = NewDeleteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "DeleteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRule require credential")
@@ -368,6 +372,7 @@ func (c *Client) DeleteTacticWithContext(ctx context.Context, request *DeleteTac
     if request == nil {
         request = NewDeleteTacticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "DeleteTactic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTactic require credential")
@@ -433,6 +438,7 @@ func (c *Client) DeleteTagWithContext(ctx context.Context, request *DeleteTagReq
     if request == nil {
         request = NewDeleteTagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "DeleteTag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTag require credential")
@@ -502,6 +508,7 @@ func (c *Client) DescribeLinkWithContext(ctx context.Context, request *DescribeL
     if request == nil {
         request = NewDescribeLinkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "DescribeLink")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLink require credential")
@@ -569,6 +576,7 @@ func (c *Client) DescribeLinksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeLinksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "DescribeLinks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLinks require credential")
@@ -618,6 +626,7 @@ func (c *Client) DescribeOrdersWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeOrdersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "DescribeOrders")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOrders require credential")
@@ -687,6 +696,7 @@ func (c *Client) DescribeRuleWithContext(ctx context.Context, request *DescribeR
     if request == nil {
         request = NewDescribeRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "DescribeRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRule require credential")
@@ -756,6 +766,7 @@ func (c *Client) DescribeRulesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "DescribeRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRules require credential")
@@ -825,6 +836,7 @@ func (c *Client) DescribeTacticWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeTacticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "DescribeTactic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTactic require credential")
@@ -892,6 +904,7 @@ func (c *Client) DescribeTacticsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeTacticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "DescribeTactics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTactics require credential")
@@ -957,6 +970,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, request *DescribeT
     if request == nil {
         request = NewDescribeTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "DescribeTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTags require credential")
@@ -1024,6 +1038,7 @@ func (c *Client) ModifyLinkAdvancedLogWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyLinkAdvancedLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "ModifyLinkAdvancedLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLinkAdvancedLog require credential")
@@ -1091,6 +1106,7 @@ func (c *Client) ModifyLinkTacticWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyLinkTacticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "ModifyLinkTactic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLinkTactic require credential")
@@ -1158,6 +1174,7 @@ func (c *Client) ModifyLinkTeleWithContext(ctx context.Context, request *ModifyL
     if request == nil {
         request = NewModifyLinkTeleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "ModifyLinkTele")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLinkTele require credential")
@@ -1223,6 +1240,7 @@ func (c *Client) ModifyRuleWithContext(ctx context.Context, request *ModifyRuleR
     if request == nil {
         request = NewModifyRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "ModifyRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRule require credential")
@@ -1288,6 +1306,7 @@ func (c *Client) ModifyRuleStatusWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyRuleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "ModifyRuleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRuleStatus require credential")
@@ -1355,6 +1374,7 @@ func (c *Client) ModifyTacticWithContext(ctx context.Context, request *ModifyTac
     if request == nil {
         request = NewModifyTacticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "ModifyTactic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTactic require credential")
@@ -1420,6 +1440,7 @@ func (c *Client) ModifyTagWithContext(ctx context.Context, request *ModifyTagReq
     if request == nil {
         request = NewModifyTagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "ModifyTag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTag require credential")
@@ -1487,6 +1508,7 @@ func (c *Client) RenewLinkInfoWithContext(ctx context.Context, request *RenewLin
     if request == nil {
         request = NewRenewLinkInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hasim", APIVersion, "RenewLinkInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewLinkInfo require credential")

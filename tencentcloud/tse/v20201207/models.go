@@ -5591,6 +5591,84 @@ func (r *DescribeCloudNativeAPIGatewayServiceRateLimitResponse) FromJsonString(s
 }
 
 // Predefined struct for user
+type DescribeCloudNativeAPIGatewayServicesLightRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 列表数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 列表 offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件，多个过滤条件之间是与的关系，支持 id、name、upstreamType
+	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeCloudNativeAPIGatewayServicesLightRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 列表数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 列表 offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件，多个过滤条件之间是与的关系，支持 id、name、upstreamType
+	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayServicesLightRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayServicesLightRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayServicesLightRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayServicesLightResponseParams struct {
+	// 无
+	Result *GatewayServices `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudNativeAPIGatewayServicesLightResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudNativeAPIGatewayServicesLightResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayServicesLightResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayServicesLightResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudNativeAPIGatewayServicesRequestParams struct {
 	// 网关ID
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
@@ -8606,6 +8684,14 @@ type GatewayInstanceSchemeAndPorts struct {
 	PortList []*uint64 `json:"PortList,omitnil,omitempty" name:"PortList"`
 }
 
+type GatewayServices struct {
+	// 服务列表
+	ServiceList []*KongServiceLightPreview `json:"ServiceList,omitnil,omitempty" name:"ServiceList"`
+
+	// 结果总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
 type GovernanceAlias struct {
 	// 服务别名
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
@@ -9272,6 +9358,36 @@ type KongServiceDetail struct {
 
 	// 创建时间
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+}
+
+type KongServiceLightPreview struct {
+	// 服务ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 服务名字
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 后端配置
+	UpstreamInfo *KongUpstreamInfo `json:"UpstreamInfo,omitnil,omitempty" name:"UpstreamInfo"`
+
+	// 后端类型
+	UpstreamType *string `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 请求路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 后端协议
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 重试次数
+	Retries *uint64 `json:"Retries,omitnil,omitempty" name:"Retries"`
+
+	// 后端延时，单位ms
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 type KongServicePreview struct {

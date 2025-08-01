@@ -95,7 +95,7 @@ const (
 	// 调用 kube-api-server 失败。
 	FAILEDOPERATION_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "FailedOperation.ContainergroupKuberneteApiInvokeError"
 
-	// 连接 kube-api-sever 失败。
+	// 连接 kube-api-server 失败。
 	FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 
 	// 调用 kube-api-server 失败。
@@ -911,7 +911,7 @@ const (
 	// 数据集名非法。
 	INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
 
-	// 已经绑定灰度规则，无法删除。
+	// 该泳道已关联全链路灰度发布规则,请先从规则中移除后删除
 	INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = "InvalidParameterValue.LaneInfoAlreadyUsed"
 
 	// 存在同名的泳道。
@@ -1145,7 +1145,7 @@ const (
 	// 部署组在更新中 请稍后再执行该操作。
 	RESOURCEINUSE_GROUPINOPERATION = "ResourceInUse.GroupInOperation"
 
-	// 实例已经存在。
+	// 集群内有云主机,不允许删除集群。
 	RESOURCEINUSE_INSTANCEEXISTS = "ResourceInUse.InstanceExists"
 
 	// 机器实例已经被使用。
@@ -1250,7 +1250,7 @@ const (
 	// 缺少License。。
 	UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 
-	// 用户无权限访问该接口。。
+	// 用户无权限访问该接口。
 	UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 
 	// 批量操作数量超过限制:%s。
