@@ -2,6 +2,7 @@ package common
 
 import (
 	"log"
+	"sync"
 	"time"
 )
 
@@ -14,9 +15,13 @@ type CvmRoleCredential struct {
 	tmpSecretKey string
 	token        string
 	source       *CvmRoleProvider
+	mu           sync.Mutex
 }
 
 func (c *CvmRoleCredential) GetSecretId() string {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+
 	if c.needRefresh() {
 		c.refresh()
 	}
@@ -24,6 +29,9 @@ func (c *CvmRoleCredential) GetSecretId() string {
 }
 
 func (c *CvmRoleCredential) GetToken() string {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+
 	if c.needRefresh() {
 		c.refresh()
 	}
@@ -31,6 +39,9 @@ func (c *CvmRoleCredential) GetToken() string {
 }
 
 func (c *CvmRoleCredential) GetSecretKey() string {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+
 	if c.needRefresh() {
 		c.refresh()
 	}
@@ -38,6 +49,9 @@ func (c *CvmRoleCredential) GetSecretKey() string {
 }
 
 func (c *CvmRoleCredential) GetCredential() (string, string, string) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+
 	if c.needRefresh() {
 		c.refresh()
 	}
@@ -57,5 +71,12 @@ func (c *CvmRoleCredential) refresh() {
 		log.Println(err)
 		return
 	}
-	*c = *newCre.(*CvmRoleCredential)
+
+	newCred := newCre.(*CvmRoleCredential)
+	c.roleName = newCred.roleName
+	c.expiredTime = newCred.expiredTime
+	c.tmpSecretId = newCred.tmpSecretId
+	c.tmpSecretKey = newCred.tmpSecretKey
+	c.token = newCred.token
+	c.source = newCred.source
 }
