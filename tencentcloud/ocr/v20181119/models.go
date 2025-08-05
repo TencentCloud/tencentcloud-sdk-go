@@ -4193,6 +4193,9 @@ type GetOCRResultResponseParams struct {
 	// ocr结果
 	OCRResult *OCRResult `json:"OCRResult,omitnil,omitempty" name:"OCRResult"`
 
+	// requestid 信息
+	RequestIdInfos []*RequestIdInfo `json:"RequestIdInfos,omitnil,omitempty" name:"RequestIdInfos"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4390,7 +4393,6 @@ type HKIDCardOCRResponseParams struct {
 	SmallHeadImage *string `json:"SmallHeadImage,omitnil,omitempty" name:"SmallHeadImage"`
 
 	// 该字段已废弃， 将固定返回空数组，不建议使用。
-	// This field is deprecated and will always return an empty array. Usage is not recommended.
 	//
 	// Deprecated: WarningCode is deprecated.
 	WarningCode []*int64 `json:"WarningCode,omitnil,omitempty" name:"WarningCode"`
@@ -9755,6 +9757,17 @@ type ReflectDetailInfo struct {
 	// RecognitionField 识别字段位置
 	// Others 其他位置
 	Position *string `json:"Position,omitnil,omitempty" name:"Position"`
+}
+
+type RequestIdInfo struct {
+	// 请求 api 的 requestid
+	ApiRequestId *string `json:"ApiRequestId,omitnil,omitempty" name:"ApiRequestId"`
+
+	// 请求 api 的错误码
+	ApiErrorCode *string `json:"ApiErrorCode,omitnil,omitempty" name:"ApiErrorCode"`
+
+	// 告警码
+	WarnCodes []*int64 `json:"WarnCodes,omitnil,omitempty" name:"WarnCodes"`
 }
 
 // Predefined struct for user

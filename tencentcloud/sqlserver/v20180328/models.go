@@ -5402,7 +5402,7 @@ type DescribeDBInstancesRequestParams struct {
 	// 实例版本代号列表，格式如：2008R2，2012SP3等
 	VersionSet []*string `json:"VersionSet,omitnil,omitempty" name:"VersionSet"`
 
-	// 实例可用区，格式如：ap-guangzhou-2
+	// 实例可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 实例标签列表
@@ -5469,7 +5469,7 @@ type DescribeDBInstancesRequest struct {
 	// 实例版本代号列表，格式如：2008R2，2012SP3等
 	VersionSet []*string `json:"VersionSet,omitnil,omitempty" name:"VersionSet"`
 
-	// 实例可用区，格式如：ap-guangzhou-2
+	// 实例可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 实例标签列表
@@ -7453,7 +7453,7 @@ func (r *DescribeOrdersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProductConfigRequestParams struct {
-	// 可用区英文ID，形如ap-guangzhou-1
+	// 可用区英文 ID
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
@@ -7463,7 +7463,7 @@ type DescribeProductConfigRequestParams struct {
 type DescribeProductConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区英文ID，形如ap-guangzhou-1
+	// 可用区英文 ID
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
@@ -14405,10 +14405,10 @@ type ZoneInfo struct {
 }
 
 type ZoneStatus struct {
-	// 规格地域
+	// 规格可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 规格可用区
+	// 规格地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 规格在该可用区的售卖状态 1-正常 2-关闭售卖但是可以升级 3-完全关闭售卖

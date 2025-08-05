@@ -8561,6 +8561,122 @@ func (c *Client) DescribeLanesWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeLicensesRequest() (request *DescribeLicensesRequest) {
+    request = &DescribeLicensesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeLicenses")
+    
+    
+    return
+}
+
+func NewDescribeLicensesResponse() (response *DescribeLicensesResponse) {
+    response = &DescribeLicensesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLicenses
+// 查询许可列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+func (c *Client) DescribeLicenses(request *DescribeLicensesRequest) (response *DescribeLicensesResponse, err error) {
+    return c.DescribeLicensesWithContext(context.Background(), request)
+}
+
+// DescribeLicenses
+// 查询许可列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+func (c *Client) DescribeLicensesWithContext(ctx context.Context, request *DescribeLicensesRequest) (response *DescribeLicensesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLicensesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeLicenses")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLicenses require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLicensesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLogCapacityRequest() (request *DescribeLogCapacityRequest) {
+    request = &DescribeLogCapacityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeLogCapacity")
+    
+    
+    return
+}
+
+func NewDescribeLogCapacityResponse() (response *DescribeLogCapacityResponse) {
+    response = &DescribeLogCapacityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLogCapacity
+// 获取用户日志使用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) DescribeLogCapacity(request *DescribeLogCapacityRequest) (response *DescribeLogCapacityResponse, err error) {
+    return c.DescribeLogCapacityWithContext(context.Background(), request)
+}
+
+// DescribeLogCapacity
+// 获取用户日志使用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) DescribeLogCapacityWithContext(ctx context.Context, request *DescribeLogCapacityRequest) (response *DescribeLogCapacityResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogCapacityRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeLogCapacity")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogCapacity require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogCapacityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMicroserviceRequest() (request *DescribeMicroserviceRequest) {
     request = &DescribeMicroserviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9667,6 +9783,74 @@ func (c *Client) DescribeRepositoryWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceConfigRequest() (request *DescribeResourceConfigRequest) {
+    request = &DescribeResourceConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeResourceConfig")
+    
+    
+    return
+}
+
+func NewDescribeResourceConfigResponse() (response *DescribeResourceConfigResponse) {
+    response = &DescribeResourceConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourceConfig
+// 无
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeResourceConfig(request *DescribeResourceConfigRequest) (response *DescribeResourceConfigResponse, err error) {
+    return c.DescribeResourceConfigWithContext(context.Background(), request)
+}
+
+// DescribeResourceConfig
+// 无
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeResourceConfigWithContext(ctx context.Context, request *DescribeResourceConfigRequest) (response *DescribeResourceConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeResourceConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceConfigResponse()
     err = c.Send(request, response)
     return
 }

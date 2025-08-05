@@ -3131,9 +3131,10 @@ func NewTerminateDBInstancesResponse() (response *TerminateDBInstancesResponse) 
 }
 
 // TerminateDBInstances
-// 本接口（TerminateDBInstances）可将包年包月实例退还隔离。
+// 本接口（TerminateDBInstances）用于退还包年包月计费实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELETIONPROTECTIONENABLED = "FailedOperation.DeletionProtectionEnabled"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3147,9 +3148,10 @@ func (c *Client) TerminateDBInstances(request *TerminateDBInstancesRequest) (res
 }
 
 // TerminateDBInstances
-// 本接口（TerminateDBInstances）可将包年包月实例退还隔离。
+// 本接口（TerminateDBInstances）用于退还包年包月计费实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELETIONPROTECTIONENABLED = "FailedOperation.DeletionProtectionEnabled"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
 //  INVALIDPARAMETER = "InvalidParameter"

@@ -4757,14 +4757,14 @@ func (r *DeleteCosRechargeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDashboardSubscribeRequestParams struct {
-	// 仪表盘订阅记录id。
+	// 仪表盘订阅记录id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DeleteDashboardSubscribeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 仪表盘订阅记录id。
+	// 仪表盘订阅记录id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
@@ -6495,7 +6495,11 @@ func (r *DescribeCosRechargesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDashboardSubscribesRequestParams struct {
-	// <br><li/> dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否<br><br><li/> 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	// dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否
+	// 
+	// - 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
@@ -6508,7 +6512,11 @@ type DescribeDashboardSubscribesRequestParams struct {
 type DescribeDashboardSubscribesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <br><li/> dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否<br><br><li/> 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	// dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否
+	// 
+	// - 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
@@ -10616,13 +10624,13 @@ func (r *ModifyCosRechargeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDashboardSubscribeRequestParams struct {
-	// 仪表盘订阅id。
+	// 仪表盘订阅id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 仪表盘id。
+	// 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
 	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
 
-	// 仪表盘订阅名称。
+	// 仪表盘订阅名称。最大支持128个字符，且不支持'|'字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。
@@ -10635,13 +10643,13 @@ type ModifyDashboardSubscribeRequestParams struct {
 type ModifyDashboardSubscribeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 仪表盘订阅id。
+	// 仪表盘订阅id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 仪表盘id。
+	// 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
 	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
 
-	// 仪表盘订阅名称。
+	// 仪表盘订阅名称。最大支持128个字符，且不支持'|'字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。
@@ -12861,32 +12869,32 @@ func (r *SearchCosRechargeInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchDashboardSubscribeRequestParams struct {
-	// 仪表盘id。
+	// 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
 	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
 
 	// 仪表盘订阅数据。
 	SubscribeData *DashboardSubscribeData `json:"SubscribeData,omitnil,omitempty" name:"SubscribeData"`
 
-	// 仪表盘订阅Id。
+	// 仪表盘订阅Id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 仪表盘订阅名称。
+	// 仪表盘订阅名称。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Name。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type SearchDashboardSubscribeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 仪表盘id。
+	// 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
 	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
 
 	// 仪表盘订阅数据。
 	SubscribeData *DashboardSubscribeData `json:"SubscribeData,omitnil,omitempty" name:"SubscribeData"`
 
-	// 仪表盘订阅Id。
+	// 仪表盘订阅Id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 仪表盘订阅名称。
+	// 仪表盘订阅名称。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Name。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 

@@ -1234,7 +1234,7 @@ func (r *CreateReplicationInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRepositoryPersonalRequestParams struct {
-	// 仓库名称
+	// 仓库名称，格式为 {Namespace}/{lmageName}。
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
 
 	// 是否公共,1:公共,0:私有
@@ -1247,7 +1247,7 @@ type CreateRepositoryPersonalRequestParams struct {
 type CreateRepositoryPersonalRequest struct {
 	*tchttp.BaseRequest
 	
-	// 仓库名称
+	// 仓库名称，格式为 {Namespace}/{lmageName}。
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
 
 	// 是否公共,1:公共,0:私有

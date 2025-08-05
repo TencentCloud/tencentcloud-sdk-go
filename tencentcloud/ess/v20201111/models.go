@@ -1571,7 +1571,9 @@ type CreateBatchInformationExtractionTaskRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+	// 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。
+	// 
+	//  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 代理企业和员工的信息。
@@ -1597,7 +1599,9 @@ type CreateBatchInformationExtractionTaskRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+	// 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。
+	// 
+	//  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 代理企业和员工的信息。
@@ -10732,7 +10736,7 @@ type DescribeContractReviewTaskResponseParams struct {
 	//     <li>**2** - 合同审查任务排队中</li>  
 	//     <li>**3** - 合同审查任务执行中</li>   
 	//     <li>**4** - 合同审查任务执行成功</li>
-	//     <li>**4** - 合同审查任务执行失败</li>
+	//     <li>**5** - 合同审查任务执行失败</li>
 	// </ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 

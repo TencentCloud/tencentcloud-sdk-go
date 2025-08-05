@@ -789,6 +789,44 @@ type BaseClusterInfo struct {
 	CdwUserName *string `json:"CdwUserName,omitnil,omitempty" name:"CdwUserName"`
 }
 
+type BaseProject struct {
+	// 项目标识，英文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 项目显示名称，可以为中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 项目的所在租户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 项目状态：0：禁用，1：启用，-3:禁用中，2：启用中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 项目类型，SIMPLE：简单模式 STANDARD：标准模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+}
+
 type BaseRole struct {
 	// 角色id
 	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
@@ -3806,12 +3844,15 @@ type CreateAndDDLSupport struct {
 
 // Predefined struct for user
 type CreateBaseProjectRequestParams struct {
-
+	// 项目信息
+	Project *BaseProject `json:"Project,omitnil,omitempty" name:"Project"`
 }
 
 type CreateBaseProjectRequest struct {
 	*tchttp.BaseRequest
 	
+	// 项目信息
+	Project *BaseProject `json:"Project,omitnil,omitempty" name:"Project"`
 }
 
 func (r *CreateBaseProjectRequest) ToJsonString() string {
@@ -3826,7 +3867,7 @@ func (r *CreateBaseProjectRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Project")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBaseProjectRequest has unknown keys!", "")
 	}
@@ -6767,6 +6808,9 @@ type DataSourceInfo struct {
 	//  数据源环境信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceEnvInfos []*DataSourceEnvInfo `json:"DataSourceEnvInfos,omitnil,omitempty" name:"DataSourceEnvInfos"`
+
+	// 禁止数据探查
+	ForbidProbe *bool `json:"ForbidProbe,omitnil,omitempty" name:"ForbidProbe"`
 }
 
 type DataSourceInfoPage struct {
@@ -10290,7 +10334,7 @@ type DescribeDataSourceInfoListRequestParams struct {
 	// 排序配置
 	OrderFields *OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
-	// 数据源类型，必选（如MYSQL、DLC等）
+	// 数据源类型，MYSQL,TENCENT_MYSQL,TDSQL_MYSQL,HIVE,KAFKA,POSTGRE,CDW,ORACLE,SQLSERVER,FTP,HDFS,ICEBERG,HBASE,TDSQL,TDSQLC,SPARK,VIRTUAL,TBASE,DB2,DM,TDENGINE,GAUSSDB,GBASE,IMPALA,ES,TENCENT_ES,S3_DATAINSIGHT,GREENPLUM,PHOENIX,SAP_HANA,SFTP,OCEANBASE,CLICKHOUSE,TCHOUSE_C,KUDU,VERTICA,REDIS,COS,S3,DLC,DORIS,CKAFKA,TDMQ_PULSAR,MONGODB,TENCENT_MONGODB,FTP_FILE,HDFS_FILE,DTS_KAFKA,REST_API,FILE,TIDB,SYBASE,TCHOUSE_X,TDSQL_POSTGRE,TCHOUSE_P,TCHOUSE_D,STARROCKS,EMR_STARROCKS,TBDS_STARROCKS,TRINO,KYUUBI,GDB,INFLUXDB,BIG_QUERY,BLOB,FILESYSTEM,SHAREPOINT,KINGBASEES,HUDI等
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数据源名称过滤
@@ -10315,7 +10359,7 @@ type DescribeDataSourceInfoListRequest struct {
 	// 排序配置
 	OrderFields *OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
-	// 数据源类型，必选（如MYSQL、DLC等）
+	// 数据源类型，MYSQL,TENCENT_MYSQL,TDSQL_MYSQL,HIVE,KAFKA,POSTGRE,CDW,ORACLE,SQLSERVER,FTP,HDFS,ICEBERG,HBASE,TDSQL,TDSQLC,SPARK,VIRTUAL,TBASE,DB2,DM,TDENGINE,GAUSSDB,GBASE,IMPALA,ES,TENCENT_ES,S3_DATAINSIGHT,GREENPLUM,PHOENIX,SAP_HANA,SFTP,OCEANBASE,CLICKHOUSE,TCHOUSE_C,KUDU,VERTICA,REDIS,COS,S3,DLC,DORIS,CKAFKA,TDMQ_PULSAR,MONGODB,TENCENT_MONGODB,FTP_FILE,HDFS_FILE,DTS_KAFKA,REST_API,FILE,TIDB,SYBASE,TCHOUSE_X,TDSQL_POSTGRE,TCHOUSE_P,TCHOUSE_D,STARROCKS,EMR_STARROCKS,TBDS_STARROCKS,TRINO,KYUUBI,GDB,INFLUXDB,BIG_QUERY,BLOB,FILESYSTEM,SHAREPOINT,KINGBASEES,HUDI等
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数据源名称过滤
@@ -29287,6 +29331,12 @@ type ModifyProjectRequestParams struct {
 	// 目标修改的项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
+	// 项目显示名称，可以为中文名,需要租户范围内唯一
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// 备注
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
 	// true/false则修改，不带该参数不修改。
 	TaskSubmitApproval *bool `json:"TaskSubmitApproval,omitnil,omitempty" name:"TaskSubmitApproval"`
 
@@ -29307,6 +29357,9 @@ type ModifyProjectRequestParams struct {
 
 	// 项目负责人
 	ProjectOwner []*string `json:"ProjectOwner,omitnil,omitempty" name:"ProjectOwner"`
+
+	// 更新类型
+	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 }
 
 type ModifyProjectRequest struct {
@@ -29315,6 +29368,12 @@ type ModifyProjectRequest struct {
 	// 目标修改的项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
+	// 项目显示名称，可以为中文名,需要租户范围内唯一
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// 备注
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
 	// true/false则修改，不带该参数不修改。
 	TaskSubmitApproval *bool `json:"TaskSubmitApproval,omitnil,omitempty" name:"TaskSubmitApproval"`
 
@@ -29335,6 +29394,9 @@ type ModifyProjectRequest struct {
 
 	// 项目负责人
 	ProjectOwner []*string `json:"ProjectOwner,omitnil,omitempty" name:"ProjectOwner"`
+
+	// 更新类型
+	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 }
 
 func (r *ModifyProjectRequest) ToJsonString() string {
@@ -29350,6 +29412,8 @@ func (r *ModifyProjectRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ProjectId")
+	delete(f, "DisplayName")
+	delete(f, "Description")
 	delete(f, "TaskSubmitApproval")
 	delete(f, "ResourcePoolInfo")
 	delete(f, "ProjectManagers")
@@ -29357,6 +29421,7 @@ func (r *ModifyProjectRequest) FromJsonString(s string) error {
 	delete(f, "ExtraOptions")
 	delete(f, "Model")
 	delete(f, "ProjectOwner")
+	delete(f, "ModifyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProjectRequest has unknown keys!", "")
 	}
@@ -30835,7 +30900,7 @@ type ModifyTaskScriptRequestParams struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 必填，脚本内容 base64编码
+	// 存在脚本的任务必填（shell任务、Hive任务、python任务等），脚本内容 base64编码
 	ScriptContent *string `json:"ScriptContent,omitnil,omitempty" name:"ScriptContent"`
 
 	// 集成任务脚本配置
@@ -30851,7 +30916,7 @@ type ModifyTaskScriptRequest struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 必填，脚本内容 base64编码
+	// 存在脚本的任务必填（shell任务、Hive任务、python任务等），脚本内容 base64编码
 	ScriptContent *string `json:"ScriptContent,omitnil,omitempty" name:"ScriptContent"`
 
 	// 集成任务脚本配置

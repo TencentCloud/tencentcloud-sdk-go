@@ -4854,6 +4854,14 @@ type DocSegment struct {
 	PageInfos []*uint64 `json:"PageInfos,omitnil,omitempty" name:"PageInfos"`
 }
 
+type DuplicateFileHandle struct {
+	// 重复文档判断方式，1：按文档内容，即cos_hash字段判断是否重复
+	CheckType *uint64 `json:"CheckType,omitnil,omitempty" name:"CheckType"`
+
+	// 重复文档处理方式，1：返回报错，2：跳过，返回重复的文档业务ID
+	HandleType *uint64 `json:"HandleType,omitnil,omitempty" name:"HandleType"`
+}
+
 // Predefined struct for user
 type ExportAttributeLabelRequestParams struct {
 	// 应用ID
@@ -11134,6 +11142,9 @@ type SaveDocRequestParams struct {
 
 	// 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
 	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
+
+	// 重复文档处理方式，按顺序匹配第一个满足条件的方式处理
+	DuplicateFileHandles []*DuplicateFileHandle `json:"DuplicateFileHandles,omitnil,omitempty" name:"DuplicateFileHandles"`
 }
 
 type SaveDocRequest struct {
@@ -11202,6 +11213,9 @@ type SaveDocRequest struct {
 
 	// 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
 	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
+
+	// 重复文档处理方式，按顺序匹配第一个满足条件的方式处理
+	DuplicateFileHandles []*DuplicateFileHandle `json:"DuplicateFileHandles,omitnil,omitempty" name:"DuplicateFileHandles"`
 }
 
 func (r *SaveDocRequest) ToJsonString() string {
@@ -11234,6 +11248,7 @@ func (r *SaveDocRequest) FromJsonString(s string) error {
 	delete(f, "Opt")
 	delete(f, "CateBizId")
 	delete(f, "IsDownload")
+	delete(f, "DuplicateFileHandles")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveDocRequest has unknown keys!", "")
 	}
@@ -11253,6 +11268,9 @@ type SaveDocResponseParams struct {
 
 	// 错误链接文本
 	ErrorLinkText *string `json:"ErrorLinkText,omitnil,omitempty" name:"ErrorLinkText"`
+
+	// 重复类型，0：未重复，其他取值请参考入参DuplicateFileHandle结构体的CheckType字段
+	DuplicateFileCheckType *uint64 `json:"DuplicateFileCheckType,omitnil,omitempty" name:"DuplicateFileCheckType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

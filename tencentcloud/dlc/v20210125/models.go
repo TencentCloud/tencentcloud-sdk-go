@@ -5242,6 +5242,9 @@ type DataEngineInfo struct {
 	// 1:AI引擎，0:非AI引擎
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAIEngine *int64 `json:"IsAIEngine,omitnil,omitempty" name:"IsAIEngine"`
+
+	// 引擎资源弹性伸缩策略
+	ScheduleElasticityConf *ScheduleElasticityConf `json:"ScheduleElasticityConf,omitnil,omitempty" name:"ScheduleElasticityConf"`
 }
 
 type DataEngineScaleInfo struct {
@@ -7453,6 +7456,9 @@ type DescribeDataEnginesRequestParams struct {
 
 	// 引擎类型，支持：SparkSQL、SparkBatch、PrestoSQL、Kyuubi
 	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil,omitempty" name:"EngineTypeDetail"`
+
+	// 默认 false, 为 true 时仅列出具有洞察 listener 的引擎
+	ListHasListener *bool `json:"ListHasListener,omitnil,omitempty" name:"ListHasListener"`
 }
 
 type DescribeDataEnginesRequest struct {
@@ -7496,6 +7502,9 @@ type DescribeDataEnginesRequest struct {
 
 	// 引擎类型，支持：SparkSQL、SparkBatch、PrestoSQL、Kyuubi
 	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil,omitempty" name:"EngineTypeDetail"`
+
+	// 默认 false, 为 true 时仅列出具有洞察 listener 的引擎
+	ListHasListener *bool `json:"ListHasListener,omitnil,omitempty" name:"ListHasListener"`
 }
 
 func (r *DescribeDataEnginesRequest) ToJsonString() string {
@@ -7523,6 +7532,7 @@ func (r *DescribeDataEnginesRequest) FromJsonString(s string) error {
 	delete(f, "DatasourceConnectionNameSet")
 	delete(f, "EngineGeneration")
 	delete(f, "EngineTypeDetail")
+	delete(f, "ListHasListener")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEnginesRequest has unknown keys!", "")
 	}
@@ -8058,6 +8068,9 @@ type DescribeEngineUsageInfoResponseParams struct {
 
 	// 剩余集群规格
 	Available *int64 `json:"Available,omitnil,omitempty" name:"Available"`
+
+	// 剩余集群规格百分比
+	AvailPercent *int64 `json:"AvailPercent,omitnil,omitempty" name:"AvailPercent"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -12598,6 +12611,23 @@ func (r *DropDMSTableResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ElasticPlan struct {
+	// 最小集群数
+	MinElasticClusters *int64 `json:"MinElasticClusters,omitnil,omitempty" name:"MinElasticClusters"`
+
+	// 最大集群数
+	MaxElasticClusters *int64 `json:"MaxElasticClusters,omitnil,omitempty" name:"MaxElasticClusters"`
+
+	// 最大排队时间
+	TolerableQueueTime *int64 `json:"TolerableQueueTime,omitnil,omitempty" name:"TolerableQueueTime"`
+
+	// 开始时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
 type ElasticsearchInfo struct {
 	// 数据源ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13202,9 +13232,6 @@ func (r *LaunchStandardEngineResourceGroupsResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type ListTaskJobLogDetailRequestParams struct {
-	// 列表返回的Id
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
 	// 开始运行时间，unix时间戳（毫秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
@@ -13217,6 +13244,9 @@ type ListTaskJobLogDetailRequestParams struct {
 	// 下一次分页参数，第一次传空
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
+	// 列表返回的Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 最近1000条日志是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
 	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
 
@@ -13225,14 +13255,17 @@ type ListTaskJobLogDetailRequestParams struct {
 
 	// SparkSQL任务唯一ID
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+
+	// 引擎id
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 资源组id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 }
 
 type ListTaskJobLogDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 列表返回的Id
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
 	// 开始运行时间，unix时间戳（毫秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
@@ -13245,6 +13278,9 @@ type ListTaskJobLogDetailRequest struct {
 	// 下一次分页参数，第一次传空
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
+	// 列表返回的Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 最近1000条日志是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
 	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
 
@@ -13253,6 +13289,12 @@ type ListTaskJobLogDetailRequest struct {
 
 	// SparkSQL任务唯一ID
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+
+	// 引擎id
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 资源组id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 }
 
 func (r *ListTaskJobLogDetailRequest) ToJsonString() string {
@@ -13267,14 +13309,16 @@ func (r *ListTaskJobLogDetailRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "TaskId")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "Limit")
 	delete(f, "Context")
+	delete(f, "TaskId")
 	delete(f, "Asc")
 	delete(f, "Filters")
 	delete(f, "BatchId")
+	delete(f, "DataEngineId")
+	delete(f, "ResourceGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTaskJobLogDetailRequest has unknown keys!", "")
 	}
@@ -15439,6 +15483,23 @@ type SQLTask struct {
 	Config []*KVPair `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
+type ScheduleElasticityConf struct {
+	// 是否开启弹性伸缩：true/false
+	ScheduledElasticityEnabled *bool `json:"ScheduledElasticityEnabled,omitnil,omitempty" name:"ScheduledElasticityEnabled"`
+
+	// 调度类型：ONCE（一次性调度），DAILY（每日调度），WEEKLY（每周调度），MONTHLY（每月调度）
+	ScheduleType *string `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
+
+	// 调度日期：WEEKLY传：1~7； MONTHLY传:1~31；其它类型不传
+	ScheduleDays []*int64 `json:"ScheduleDays,omitnil,omitempty" name:"ScheduleDays"`
+
+	// 调度时区
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 弹性伸缩计划
+	ElasticPlans []*ElasticPlan `json:"ElasticPlans,omitnil,omitempty" name:"ElasticPlans"`
+}
+
 type Script struct {
 	// 脚本Id，长度36字节。
 	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
@@ -15950,6 +16011,18 @@ type StandardEngineResourceGroupInfo struct {
 	// Spark类型资源组资源最小值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparkMinSize *int64 `json:"SparkMinSize,omitnil,omitempty" name:"SparkMinSize"`
+
+	// 自定义镜像容器镜像服务domain 名称
+	PublicDomain *string `json:"PublicDomain,omitnil,omitempty" name:"PublicDomain"`
+
+	// 自定义镜像容器镜像服务tcr实例id
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 容器镜像服务tcr所在地域
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
+
+	// 资源组启动耗时
+	LaunchTime *string `json:"LaunchTime,omitnil,omitempty" name:"LaunchTime"`
 }
 
 type StatementInformation struct {
@@ -16994,6 +17067,9 @@ type UpdateDataEngineRequestParams struct {
 
 	// Spark批作业集群Session资源配置模板
 	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil,omitempty" name:"SessionResourceTemplate"`
+
+	// 引擎资源弹性伸缩策略
+	ScheduleElasticityConf *ScheduleElasticityConf `json:"ScheduleElasticityConf,omitnil,omitempty" name:"ScheduleElasticityConf"`
 }
 
 type UpdateDataEngineRequest struct {
@@ -17043,6 +17119,9 @@ type UpdateDataEngineRequest struct {
 
 	// Spark批作业集群Session资源配置模板
 	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil,omitempty" name:"SessionResourceTemplate"`
+
+	// 引擎资源弹性伸缩策略
+	ScheduleElasticityConf *ScheduleElasticityConf `json:"ScheduleElasticityConf,omitnil,omitempty" name:"ScheduleElasticityConf"`
 }
 
 func (r *UpdateDataEngineRequest) ToJsonString() string {
@@ -17072,6 +17151,7 @@ func (r *UpdateDataEngineRequest) FromJsonString(s string) error {
 	delete(f, "ElasticSwitch")
 	delete(f, "ElasticLimit")
 	delete(f, "SessionResourceTemplate")
+	delete(f, "ScheduleElasticityConf")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDataEngineRequest has unknown keys!", "")
 	}

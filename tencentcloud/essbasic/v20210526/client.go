@@ -1155,8 +1155,6 @@ func NewChannelCreateDynamicFlowApproverResponse() (response *ChannelCreateDynam
 //
 // <ul>
 //
-// <li>此接口需要保证：渠道企业已开启：模块化计费能力，</li>
-//
 // <li>此接口需要保证：渠道应用已开启：动态签署人2.0能力</li>
 //
 // <li>此接口需要保证：合同发起时指定开启了动态合同</li>
@@ -1190,8 +1188,6 @@ func (c *Client) ChannelCreateDynamicFlowApprover(request *ChannelCreateDynamicF
 // **注**: 
 //
 // <ul>
-//
-// <li>此接口需要保证：渠道企业已开启：模块化计费能力，</li>
 //
 // <li>此接口需要保证：渠道应用已开启：动态签署人2.0能力</li>
 //

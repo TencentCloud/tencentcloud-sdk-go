@@ -981,9 +981,12 @@ func NewCreateCloudStorageAIServiceTaskResponse() (response *CreateCloudStorageA
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
 //  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 func (c *Client) CreateCloudStorageAIServiceTask(request *CreateCloudStorageAIServiceTaskRequest) (response *CreateCloudStorageAIServiceTaskResponse, err error) {
     return c.CreateCloudStorageAIServiceTaskWithContext(context.Background(), request)
 }
@@ -995,9 +998,12 @@ func (c *Client) CreateCloudStorageAIServiceTask(request *CreateCloudStorageAISe
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
 //  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 func (c *Client) CreateCloudStorageAIServiceTaskWithContext(ctx context.Context, request *CreateCloudStorageAIServiceTaskRequest) (response *CreateCloudStorageAIServiceTaskResponse, err error) {
     if request == nil {
         request = NewCreateCloudStorageAIServiceTaskRequest()
@@ -1183,9 +1189,12 @@ func NewCreateExternalSourceAIServiceTaskResponse() (response *CreateExternalSou
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
 //  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 func (c *Client) CreateExternalSourceAIServiceTask(request *CreateExternalSourceAIServiceTaskRequest) (response *CreateExternalSourceAIServiceTaskResponse, err error) {
     return c.CreateExternalSourceAIServiceTaskWithContext(context.Background(), request)
 }
@@ -1197,9 +1206,12 @@ func (c *Client) CreateExternalSourceAIServiceTask(request *CreateExternalSource
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
 //  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 func (c *Client) CreateExternalSourceAIServiceTaskWithContext(ctx context.Context, request *CreateExternalSourceAIServiceTaskRequest) (response *CreateExternalSourceAIServiceTaskResponse, err error) {
     if request == nil {
         request = NewCreateExternalSourceAIServiceTaskRequest()
@@ -1894,9 +1906,12 @@ func NewCreateTWeSeeRecognitionTaskResponse() (response *CreateTWeSeeRecognition
 // 创建 TWeSee 语义理解任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTWeSeeRecognitionTask(request *CreateTWeSeeRecognitionTaskRequest) (response *CreateTWeSeeRecognitionTaskResponse, err error) {
     return c.CreateTWeSeeRecognitionTaskWithContext(context.Background(), request)
@@ -1906,9 +1921,12 @@ func (c *Client) CreateTWeSeeRecognitionTask(request *CreateTWeSeeRecognitionTas
 // 创建 TWeSee 语义理解任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTWeSeeRecognitionTaskWithContext(ctx context.Context, request *CreateTWeSeeRecognitionTaskRequest) (response *CreateTWeSeeRecognitionTaskResponse, err error) {
     if request == nil {
@@ -7755,9 +7773,12 @@ func NewInvokeCloudStorageAIServiceTaskResponse() (response *InvokeCloudStorageA
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
 //  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 func (c *Client) InvokeCloudStorageAIServiceTask(request *InvokeCloudStorageAIServiceTaskRequest) (response *InvokeCloudStorageAIServiceTaskResponse, err error) {
     return c.InvokeCloudStorageAIServiceTaskWithContext(context.Background(), request)
 }
@@ -7769,9 +7790,12 @@ func (c *Client) InvokeCloudStorageAIServiceTask(request *InvokeCloudStorageAISe
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
 //  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 func (c *Client) InvokeCloudStorageAIServiceTaskWithContext(ctx context.Context, request *InvokeCloudStorageAIServiceTaskRequest) (response *InvokeCloudStorageAIServiceTaskResponse, err error) {
     if request == nil {
         request = NewInvokeCloudStorageAIServiceTaskRequest()
@@ -7815,9 +7839,12 @@ func NewInvokeExternalSourceAIServiceTaskResponse() (response *InvokeExternalSou
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
 //  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 func (c *Client) InvokeExternalSourceAIServiceTask(request *InvokeExternalSourceAIServiceTaskRequest) (response *InvokeExternalSourceAIServiceTaskResponse, err error) {
     return c.InvokeExternalSourceAIServiceTaskWithContext(context.Background(), request)
 }
@@ -7829,9 +7856,12 @@ func (c *Client) InvokeExternalSourceAIServiceTask(request *InvokeExternalSource
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = "FailedOperation.CloudStorageAIServiceTaskAlreadyExists"
 //  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 func (c *Client) InvokeExternalSourceAIServiceTaskWithContext(ctx context.Context, request *InvokeExternalSourceAIServiceTaskRequest) (response *InvokeExternalSourceAIServiceTaskResponse, err error) {
     if request == nil {
         request = NewInvokeExternalSourceAIServiceTaskRequest()
@@ -7872,9 +7902,12 @@ func NewInvokeTWeSeeRecognitionTaskResponse() (response *InvokeTWeSeeRecognition
 // 同步执行 TWeSee 语义理解任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) InvokeTWeSeeRecognitionTask(request *InvokeTWeSeeRecognitionTaskRequest) (response *InvokeTWeSeeRecognitionTaskResponse, err error) {
     return c.InvokeTWeSeeRecognitionTaskWithContext(context.Background(), request)
@@ -7884,9 +7917,12 @@ func (c *Client) InvokeTWeSeeRecognitionTask(request *InvokeTWeSeeRecognitionTas
 // 同步执行 TWeSee 语义理解任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) InvokeTWeSeeRecognitionTaskWithContext(ctx context.Context, request *InvokeTWeSeeRecognitionTaskRequest) (response *InvokeTWeSeeRecognitionTaskResponse, err error) {
     if request == nil {
@@ -7928,9 +7964,12 @@ func NewInvokeVideosKeywordsAnalyzerResponse() (response *InvokeVideosKeywordsAn
 // 获取某个时间段的视频内容关键字
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) InvokeVideosKeywordsAnalyzer(request *InvokeVideosKeywordsAnalyzerRequest) (response *InvokeVideosKeywordsAnalyzerResponse, err error) {
     return c.InvokeVideosKeywordsAnalyzerWithContext(context.Background(), request)
@@ -7940,9 +7979,12 @@ func (c *Client) InvokeVideosKeywordsAnalyzer(request *InvokeVideosKeywordsAnaly
 // 获取某个时间段的视频内容关键字
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) InvokeVideosKeywordsAnalyzerWithContext(ctx context.Context, request *InvokeVideosKeywordsAnalyzerRequest) (response *InvokeVideosKeywordsAnalyzerResponse, err error) {
     if request == nil {
@@ -10254,6 +10296,7 @@ func NewTransferCloudStorageResponse() (response *TransferCloudStorageResponse) 
 // 转移云存服务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TARGETDEVICEHASENABLEDWESEECONFIG = "FailedOperation.TargetDeviceHasEnabledWeSeeConfig"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -10265,6 +10308,7 @@ func (c *Client) TransferCloudStorage(request *TransferCloudStorageRequest) (res
 // 转移云存服务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TARGETDEVICEHASENABLEDWESEECONFIG = "FailedOperation.TargetDeviceHasEnabledWeSeeConfig"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"

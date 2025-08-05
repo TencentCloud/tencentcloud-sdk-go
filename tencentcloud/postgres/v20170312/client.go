@@ -1693,7 +1693,7 @@ func NewDeleteDBInstanceNetworkAccessResponse() (response *DeleteDBInstanceNetwo
 }
 
 // DeleteDBInstanceNetworkAccess
-// 可对实例进行网络的删除操作。
+// 可对实例进行网络的删除操作（实例内至少保留一个网络）。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1719,7 +1719,7 @@ func (c *Client) DeleteDBInstanceNetworkAccess(request *DeleteDBInstanceNetworkA
 }
 
 // DeleteDBInstanceNetworkAccess
-// 可对实例进行网络的删除操作。
+// 可对实例进行网络的删除操作（实例内至少保留一个网络）。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1965,7 +1965,7 @@ func NewDeleteReadOnlyGroupNetworkAccessResponse() (response *DeleteReadOnlyGrou
 }
 
 // DeleteReadOnlyGroupNetworkAccess
-// 可对RO组进行网络的删除操作。
+// 可对RO组进行网络的删除操作（网络数量至少保留1个）。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1987,7 +1987,7 @@ func (c *Client) DeleteReadOnlyGroupNetworkAccess(request *DeleteReadOnlyGroupNe
 }
 
 // DeleteReadOnlyGroupNetworkAccess
-// 可对RO组进行网络的删除操作。
+// 可对RO组进行网络的删除操作（网络数量至少保留1个）。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

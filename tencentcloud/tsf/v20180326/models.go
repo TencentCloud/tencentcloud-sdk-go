@@ -1824,6 +1824,26 @@ type ContainGroupResult struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
+type ContainerAdditionalResourceRequirement struct {
+	// CPU 核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *string `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存 MiB 数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mem *string `json:"Mem,omitnil,omitempty" name:"Mem"`
+}
+
+type ContainerAdditionalResourceRequirementMap struct {
+	// Mesh 应用部署时需要的额外资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	M *ContainerAdditionalResourceRequirement `json:"M,omitnil,omitempty" name:"M"`
+
+	// 普通应用部署时需要的额外资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	N *ContainerAdditionalResourceRequirement `json:"N,omitnil,omitempty" name:"N"`
+}
+
 type ContainerEvent struct {
 	// 第一次出现的时间，以 ms 为单位的时间戳
 	FirstTimestamp *int64 `json:"FirstTimestamp,omitnil,omitempty" name:"FirstTimestamp"`
@@ -2201,6 +2221,12 @@ type ContainerGroupOther struct {
 	IsNotEqualServiceConfig *bool `json:"IsNotEqualServiceConfig,omitnil,omitempty" name:"IsNotEqualServiceConfig"`
 }
 
+type ContainerGroupResourceConfig struct {
+	// 不同类型的应用的容器部署组，部署时的额外资源要求
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdditionalResourceRequirement *ContainerAdditionalResourceRequirementMap `json:"AdditionalResourceRequirement,omitnil,omitempty" name:"AdditionalResourceRequirement"`
+}
+
 type ContainerGroupServiceGovernanceConfig struct {
 	// 是否开启服务治理
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2327,6 +2353,20 @@ type ContainerInfo struct {
 	// 容器名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
+}
+
+type ContainerInstanceResourceConfig struct {
+	// 实例导入方式，可多个，公有云为 ["R"]，独立版的取值有 "M" 脚本模式、"S" SSH 模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImportMode []*string `json:"ImportMode,omitnil,omitempty" name:"ImportMode"`
+
+	// SSH 模式时，前端应该限制用户填这个数量的 master 主机信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterNumLimit *int64 `json:"MasterNumLimit,omitnil,omitempty" name:"MasterNumLimit"`
+
+	// SSH 模式时，前端应该限制用户填的最高数量的 node 主机信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeNumLimitPerSetup *int64 `json:"NodeNumLimitPerSetup,omitnil,omitempty" name:"NodeNumLimitPerSetup"`
 }
 
 // Predefined struct for user
@@ -12710,6 +12750,128 @@ func (r *DescribeLanesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLicensesRequestParams struct {
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeLicensesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeLicensesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicensesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLicensesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLicensesResponseParams struct {
+	// 许可标签列表分页信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *TsfPageLicenseTag `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLicensesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLicensesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLicensesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicensesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogCapacityRequestParams struct {
+
+}
+
+type DescribeLogCapacityRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLogCapacityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogCapacityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogCapacityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogCapacityResponseParams struct {
+	// 使用日志容量大小
+	UsedSpace *float64 `json:"UsedSpace,omitnil,omitempty" name:"UsedSpace"`
+
+	// 日志总容量大小
+	Capacity *float64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLogCapacityResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogCapacityResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogCapacityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogCapacityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMicroserviceRequestParams struct {
 	// 微服务ID
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
@@ -14239,6 +14401,146 @@ func (r *DescribeRepositoryResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceConfigCluster struct {
+	// 返回给前端的控制信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Container *DescribeResourceConfigClusterContainer `json:"Container,omitnil,omitempty" name:"Container"`
+}
+
+type DescribeResourceConfigClusterContainer struct {
+	// 是否需要子网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NeedSubnetWhenCreatingCluster *bool `json:"NeedSubnetWhenCreatingCluster,omitnil,omitempty" name:"NeedSubnetWhenCreatingCluster"`
+}
+
+type DescribeResourceConfigLicense struct {
+	// 功能
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Function []*DescribeResourceConfigLicenseFunction `json:"Function,omitnil,omitempty" name:"Function"`
+
+	// 资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource []*DescribeResourceConfigLicenseResource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// utc时间 单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// utc时间 单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Countdown *uint64 `json:"Countdown,omitnil,omitempty" name:"Countdown"`
+
+	// 规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
+}
+
+type DescribeResourceConfigLicenseFunction struct {
+	// name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// enable
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
+type DescribeResourceConfigLicenseResource struct {
+	// Name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Quota
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quota *uint64 `json:"Quota,omitnil,omitempty" name:"Quota"`
+}
+
+// Predefined struct for user
+type DescribeResourceConfigRequestParams struct {
+
+}
+
+type DescribeResourceConfigRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeResourceConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceConfigResponseParams struct {
+	// 配置详情
+	Result *DescribeResourceConfigResultV2 `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourceConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourceConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourceConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceConfigResultV2 struct {
+	// STS参数配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sts *DescribeResourceConfigSts `json:"Sts,omitnil,omitempty" name:"Sts"`
+
+	// 许可信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	License *DescribeResourceConfigLicense `json:"License,omitnil,omitempty" name:"License"`
+
+	// 部署组相关的参数配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Group *GroupResourceConfig `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// 实例相关的参数配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instance *InstanceResourceConfig `json:"Instance,omitnil,omitempty" name:"Instance"`
+
+	// Cluster相关配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cluster *DescribeResourceConfigCluster `json:"Cluster,omitnil,omitempty" name:"Cluster"`
+
+	// 程序包相关配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Package *PackageConfig `json:"Package,omitnil,omitempty" name:"Package"`
+}
+
+type DescribeResourceConfigSts struct {
+	// uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 }
 
 // Predefined struct for user
@@ -17167,6 +17469,12 @@ type GroupRelease struct {
 	FileConfigReleaseList []*FileConfigRelease `json:"FileConfigReleaseList,omitnil,omitempty" name:"FileConfigReleaseList"`
 }
 
+type GroupResourceConfig struct {
+	// 容器部署组相关的参数配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Container *ContainerGroupResourceConfig `json:"Container,omitnil,omitempty" name:"Container"`
+}
+
 type GroupUnitApiDailyUseStatistics struct {
 	// 命名空间ID
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
@@ -17672,6 +17980,16 @@ type InstanceEnrichedInfoPage struct {
 	Content []*InstanceEnrichedInfo `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
+type InstanceResourceConfig struct {
+	// 容器实例相关的参数配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Container *ContainerInstanceResourceConfig `json:"Container,omitnil,omitempty" name:"Container"`
+
+	// 虚拟机实例相关的参数配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vm *VmInstanceResourceConfig `json:"Vm,omitnil,omitempty" name:"Vm"`
+}
+
 type InvocationIndicator struct {
 	// 总请求数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -17984,6 +18302,16 @@ type LaneRules struct {
 
 	// 泳道规则列表
 	Content []*LaneRule `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type LicenseTag struct {
+	// 许可ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseId *string `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type LifeCycleHook struct {
@@ -19634,6 +19962,12 @@ type OverviewBasicResourceUsage struct {
 
 	// 已注册实例数
 	ConsulInstanceCount *int64 `json:"ConsulInstanceCount,omitnil,omitempty" name:"ConsulInstanceCount"`
+}
+
+type PackageConfig struct {
+	// 程序包存储空间大小，单位字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpaceSize *uint64 `json:"SpaceSize,omitnil,omitempty" name:"SpaceSize"`
 }
 
 type PagedProgram struct {
@@ -22514,6 +22848,16 @@ type TsfPageInstance struct {
 	Content []*Instance `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
+type TsfPageLicenseTag struct {
+	// 记录总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 记录实体列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*LicenseTag `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
 type TsfPageMicroservice struct {
 	// 微服务总数目
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -23759,6 +24103,12 @@ type VmGroupSimple struct {
 
 	// 部署组备注
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+}
+
+type VmInstanceResourceConfig struct {
+	// 实例导入方式，可多个，公有云为 ["R", "M"]，独立版的取值仅有 "M" 脚本模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImportMode []*string `json:"ImportMode,omitnil,omitempty" name:"ImportMode"`
 }
 
 type VolumeInfo struct {
