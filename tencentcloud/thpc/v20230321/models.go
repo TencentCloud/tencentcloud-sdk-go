@@ -348,6 +348,31 @@ func (r *AddQueueResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Application struct {
+	// 待执行脚本命令。
+	Commands []*CommandItem `json:"Commands,omitnil,omitempty" name:"Commands"`
+
+	// 存储目录挂载配置。
+	StorageMounts []*StorageMount `json:"StorageMounts,omitnil,omitempty" name:"StorageMounts"`
+
+	// 用户自定义环境变量。
+	EnvVars []*EnvVar `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+
+	// 容器配置信息。
+	Docker *Docker `json:"Docker,omitnil,omitempty" name:"Docker"`
+
+	// 无
+	OutputRedirect *OutputRedirect `json:"OutputRedirect,omitnil,omitempty" name:"OutputRedirect"`
+
+	// 表示所选训练框架，支持可选参数
+	//  
+	// - PyTorch：表示提交PyTorch训练作业
+	// - Custom：表示用户自定义作业
+	// 
+	// 默认参数为：Custom
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+}
+
 // Predefined struct for user
 type AttachNodesRequestParams struct {
 	// 集群id
@@ -560,6 +585,11 @@ type ClusterOverview struct {
 
 	// 集群类型
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+}
+
+type CommandItem struct {
+	// 脚本命令
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 }
 
 type ComputeNode struct {
@@ -1145,6 +1175,60 @@ func (r *DeleteClusterStorageOptionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteJobRequestParams struct {
+	// 作业任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DeleteJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 作业任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DeleteJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteJobResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteJobResponseParams `json:"Response"`
+}
+
+func (r *DeleteJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteNodesRequestParams struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -1616,6 +1700,201 @@ func (r *DescribeInitNodeScriptsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeJobSubmitInfoRequestParams struct {
+	// 作业ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeJobSubmitInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 作业ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeJobSubmitInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobSubmitInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobSubmitInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobSubmitInfoResponseParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 队列名称
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// 作业信息
+	Job *Job `json:"Job,omitnil,omitempty" name:"Job"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobSubmitInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobSubmitInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobSubmitInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobSubmitInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobsOverviewRequestParams struct {
+
+}
+
+type DescribeJobsOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeJobsOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobsOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobsOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobsOverviewResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobsOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobsOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobsOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobsOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobsRequestParams struct {
+	// 作业任务ID列表
+	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
+
+	// 过滤列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。 关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeJobsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 作业任务ID列表
+	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
+
+	// 过滤列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。 关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobsResponseParams struct {
+	// 作业任务概览列表
+	JobSet []*JobView `json:"JobSet,omitnil,omitempty" name:"JobSet"`
+
+	// 符合条件的作业任务数量。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobsResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNodesRequestParams struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -1946,6 +2225,14 @@ func (r *DetachNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Docker struct {
+	// 容器镜像地址
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 容器运行参数
+	RunArgs []*string `json:"RunArgs,omitnil,omitempty" name:"RunArgs"`
+}
+
 type EnhancedService struct {
 	// 开启云安全服务。若不指定该参数，则默认开启云安全服务。
 	SecurityService *RunSecurityServiceEnabled `json:"SecurityService,omitnil,omitempty" name:"SecurityService"`
@@ -1955,6 +2242,14 @@ type EnhancedService struct {
 
 	// 开启云自动化助手服务（TencentCloud Automation Tools，TAT）。若不指定该参数，默认开启云自动化助手服务。
 	AutomationService *RunAutomationServiceEnabled `json:"AutomationService,omitnil,omitempty" name:"AutomationService"`
+}
+
+type EnvVar struct {
+	// ENV
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// test
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type ExpansionNodeConfig struct {
@@ -2090,6 +2385,56 @@ type InternetAccessible struct {
 	// 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见购买网络带宽。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
+}
+
+type Job struct {
+	// 任务配置信息。
+	Tasks []*Task `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 作业名称。
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
+	// 作业描述。
+	JobDescription *string `json:"JobDescription,omitnil,omitempty" name:"JobDescription"`
+
+	// 作业优先级，数值越大，优先级越高，数值范围1～100。
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 描述任务的依赖关系，DAG有向无环图。
+	TaskDependencies []*TaskDependence `json:"TaskDependencies,omitnil,omitempty" name:"TaskDependencies"`
+}
+
+type JobView struct {
+	// 作业ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 作业名称
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
+	// 作业描述
+	JobDescription *string `json:"JobDescription,omitnil,omitempty" name:"JobDescription"`
+
+	// 作业优先级
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 作业状态，包括CREATED, QUEING, STARTNG, RUNING, TERMINATING, TERMINATED, SUCCESS, 
+	// FAILED
+	JobState *string `json:"JobState,omitnil,omitempty" name:"JobState"`
+
+	// 作业所属集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 作业所属队列名称
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// 完成作业任务所需资源
+	OccupyResources *string `json:"OccupyResources,omitnil,omitempty" name:"OccupyResources"`
+
+	// 作业任务创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 作业任务结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type LoginNode struct {
@@ -2421,6 +2766,14 @@ type NodeScript struct {
 
 	// 脚本执行超时时间（包含拉取脚本的时间）。单位秒，默认值：30。取值范围：10～1200。
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+}
+
+type OutputRedirect struct {
+	// 输出driver类型
+	Driver *string `json:"Driver,omitnil,omitempty" name:"Driver"`
+
+	// 重定向配置参数
+	Options []*string `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 type Placement struct {
@@ -2844,6 +3197,17 @@ type SpaceVirtualPrivateCloud struct {
 	Ipv6AddressCount *uint64 `json:"Ipv6AddressCount,omitnil,omitempty" name:"Ipv6AddressCount"`
 }
 
+type StorageMount struct {
+	// 挂载源
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 目标挂载位置
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// 挂载的存储类型，目前仅支持：local
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+}
+
 type StorageOption struct {
 	// 集群挂载CFS文件系统选项。
 	CFSOptions []*CFSOption `json:"CFSOptions,omitnil,omitempty" name:"CFSOptions"`
@@ -2864,6 +3228,57 @@ type StorageOptionOverview struct {
 
 	// GooseFSx存储选项概览信息列表。
 	GooseFSxOptions []*GooseFSxOptionOverview `json:"GooseFSxOptions,omitnil,omitempty" name:"GooseFSxOptions"`
+}
+
+// Predefined struct for user
+type SubmitJobRequestParams struct {
+
+}
+
+type SubmitJobRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *SubmitJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitJobResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SystemDisk struct {
@@ -2895,6 +3310,82 @@ type TagSpecification struct {
 
 	// 标签对列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type Task struct {
+	// 作业任务的应用环境配置信息。
+	Application *Application `json:"Application,omitnil,omitempty" name:"Application"`
+
+	// 作业任务名称。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 作业任务所需的节点数/副本数。
+	TaskInstanceNum *uint64 `json:"TaskInstanceNum,omitnil,omitempty" name:"TaskInstanceNum"`
+
+	// 任务超时时间(单位：秒)。
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+}
+
+type TaskDependence struct {
+	// 依赖关系的起点任务名称。
+	StartTask *string `json:"StartTask,omitnil,omitempty" name:"StartTask"`
+
+	// 依赖关系的终点任务名称。
+	EndTask *string `json:"EndTask,omitnil,omitempty" name:"EndTask"`
+}
+
+// Predefined struct for user
+type TerminateJobRequestParams struct {
+	// 作业任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type TerminateJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 作业任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *TerminateJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateJobResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TerminateJobResponse struct {
+	*tchttp.BaseResponse
+	Response *TerminateJobResponseParams `json:"Response"`
+}
+
+func (r *TerminateJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -20,6 +20,36 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AutoScaleDiskInfo struct {
+	// 节点类型 hotData,warmData
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 0:百分比扩容;1:绝对值扩容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleType *uint64 `json:"ScaleType,omitnil,omitempty" name:"ScaleType"`
+
+	// 触发阈值,单位%,例如80%
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Threshold *uint64 `json:"Threshold,omitnil,omitempty" name:"Threshold"`
+
+	// 触发持续时间,单位分钟,例如60
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 每次扩容比例,单位%,例如20%
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PercentSize *uint64 `json:"PercentSize,omitnil,omitempty" name:"PercentSize"`
+
+	// 绝对值扩容,单位GB,例如100GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixSize *uint64 `json:"FixSize,omitnil,omitempty" name:"FixSize"`
+
+	// 扩容上限,单位GB,例如500GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
+}
+
 type BackingIndexMetaField struct {
 	// 后备索引名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -666,6 +696,12 @@ type CreateInstanceRequestParams struct {
 
 	// 置放群组开启异步任务的可维护时间段
 	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
+
+	// 自动扩盘参数列表
+	AutoScaleDiskInfoList []*AutoScaleDiskInfo `json:"AutoScaleDiskInfoList,omitnil,omitempty" name:"AutoScaleDiskInfoList"`
+
+	// 是否开启kibana公网访问，不传默认开启
+	EnableKibanaPublicAccess *string `json:"EnableKibanaPublicAccess,omitnil,omitempty" name:"EnableKibanaPublicAccess"`
 }
 
 type CreateInstanceRequest struct {
@@ -798,6 +834,12 @@ type CreateInstanceRequest struct {
 
 	// 置放群组开启异步任务的可维护时间段
 	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
+
+	// 自动扩盘参数列表
+	AutoScaleDiskInfoList []*AutoScaleDiskInfo `json:"AutoScaleDiskInfoList,omitnil,omitempty" name:"AutoScaleDiskInfoList"`
+
+	// 是否开启kibana公网访问，不传默认开启
+	EnableKibanaPublicAccess *string `json:"EnableKibanaPublicAccess,omitnil,omitempty" name:"EnableKibanaPublicAccess"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -852,6 +894,8 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ReadWriteMode")
 	delete(f, "EnableScheduleRecoverGroup")
 	delete(f, "EnableScheduleOperationDuration")
+	delete(f, "AutoScaleDiskInfoList")
+	delete(f, "EnableKibanaPublicAccess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -5394,6 +5438,9 @@ type Operation struct {
 	// 操作者Uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
+
+	// 自动扩容标识：0-非自动，1-自动
+	AutoScaleTag *uint64 `json:"AutoScaleTag,omitnil,omitempty" name:"AutoScaleTag"`
 }
 
 type OperationDetail struct {
@@ -6921,6 +6968,12 @@ type UpdateInstanceRequestParams struct {
 
 	// 开启集群保护：OPEN-开启，CLOSE-关闭
 	EnableDestroyProtection *string `json:"EnableDestroyProtection,omitnil,omitempty" name:"EnableDestroyProtection"`
+
+	// 自动扩盘参数
+	AutoScaleDiskInfoList []*AutoScaleDiskInfo `json:"AutoScaleDiskInfoList,omitnil,omitempty" name:"AutoScaleDiskInfoList"`
+
+	// 自动扩盘删除参数
+	AutoScaleDiskDeleteNodeTypeList []*string `json:"AutoScaleDiskDeleteNodeTypeList,omitnil,omitempty" name:"AutoScaleDiskDeleteNodeTypeList"`
 }
 
 type UpdateInstanceRequest struct {
@@ -7077,6 +7130,12 @@ type UpdateInstanceRequest struct {
 
 	// 开启集群保护：OPEN-开启，CLOSE-关闭
 	EnableDestroyProtection *string `json:"EnableDestroyProtection,omitnil,omitempty" name:"EnableDestroyProtection"`
+
+	// 自动扩盘参数
+	AutoScaleDiskInfoList []*AutoScaleDiskInfo `json:"AutoScaleDiskInfoList,omitnil,omitempty" name:"AutoScaleDiskInfoList"`
+
+	// 自动扩盘删除参数
+	AutoScaleDiskDeleteNodeTypeList []*string `json:"AutoScaleDiskDeleteNodeTypeList,omitnil,omitempty" name:"AutoScaleDiskDeleteNodeTypeList"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -7135,6 +7194,8 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EnableScheduleRecoverGroup")
 	delete(f, "EnableScheduleOperationDuration")
 	delete(f, "EnableDestroyProtection")
+	delete(f, "AutoScaleDiskInfoList")
+	delete(f, "AutoScaleDiskDeleteNodeTypeList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}

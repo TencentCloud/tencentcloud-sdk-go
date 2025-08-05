@@ -143,6 +143,13 @@ type ConsumeGroupItem struct {
 	// 4.x的完整命名空间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullNamespaceV4 *string `json:"FullNamespaceV4,omitnil,omitempty" name:"FullNamespaceV4"`
+
+	// 订阅的主题个数
+	SubscribeTopicNum *int64 `json:"SubscribeTopicNum,omitnil,omitempty" name:"SubscribeTopicNum"`
+
+	// 1753153590
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type ConsumerClient struct {
@@ -1778,6 +1785,16 @@ type DescribeConsumerGroupListRequestParams struct {
 
 	// 查询指定主题下的消费组
 	FromTopic *string `json:"FromTopic,omitnil,omitempty" name:"FromTopic"`
+
+	// 按照指定字段排序，枚举值如下：
+	// - subscribeNum：订阅 Topic 个数
+	SortedBy *string `json:"SortedBy,omitnil,omitempty" name:"SortedBy"`
+
+	// 按升序或降序排列，枚举值如下：
+	// 
+	// - asc：升序
+	// - desc：降序
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 }
 
 type DescribeConsumerGroupListRequest struct {
@@ -1797,6 +1814,16 @@ type DescribeConsumerGroupListRequest struct {
 
 	// 查询指定主题下的消费组
 	FromTopic *string `json:"FromTopic,omitnil,omitempty" name:"FromTopic"`
+
+	// 按照指定字段排序，枚举值如下：
+	// - subscribeNum：订阅 Topic 个数
+	SortedBy *string `json:"SortedBy,omitnil,omitempty" name:"SortedBy"`
+
+	// 按升序或降序排列，枚举值如下：
+	// 
+	// - asc：升序
+	// - desc：降序
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 }
 
 func (r *DescribeConsumerGroupListRequest) ToJsonString() string {
@@ -1816,6 +1843,8 @@ func (r *DescribeConsumerGroupListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "FromTopic")
+	delete(f, "SortedBy")
+	delete(f, "SortOrder")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerGroupListRequest has unknown keys!", "")
 	}

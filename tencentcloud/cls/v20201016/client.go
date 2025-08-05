@@ -1302,6 +1302,7 @@ func NewCreateIndexResponse() (response *CreateIndexResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDINDEXRULEFORSEARCHLOW = "FailedOperation.InValidIndexRuleForSearchLow"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1327,6 +1328,7 @@ func (c *Client) CreateIndex(request *CreateIndexRequest) (response *CreateIndex
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDINDEXRULEFORSEARCHLOW = "FailedOperation.InValidIndexRuleForSearchLow"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2837,6 +2839,7 @@ func NewDeleteIndexResponse() (response *DeleteIndexResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_INDEXOPERATING = "LimitExceeded.IndexOperating"
@@ -2857,6 +2860,7 @@ func (c *Client) DeleteIndex(request *DeleteIndexRequest) (response *DeleteIndex
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_INDEXOPERATING = "LimitExceeded.IndexOperating"
@@ -2976,6 +2980,7 @@ func NewDeleteLogsetResponse() (response *DeleteLogsetResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LOGSETNOTEMPTY = "FailedOperation.LogsetNotEmpty"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2995,6 +3000,7 @@ func (c *Client) DeleteLogset(request *DeleteLogsetRequest) (response *DeleteLog
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LOGSETNOTEMPTY = "FailedOperation.LogsetNotEmpty"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -4543,6 +4549,7 @@ func NewDescribeIndexResponse() (response *DescribeIndexResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4563,6 +4570,7 @@ func (c *Client) DescribeIndex(request *DescribeIndexRequest) (response *Describ
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -6868,6 +6876,7 @@ func NewModifyLogsetResponse() (response *ModifyLogsetResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PERIODMODIFYFORBIDDEN = "FailedOperation.PeriodModifyForbidden"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_LOGSETCONFLICT = "InvalidParameter.LogsetConflict"
@@ -6889,6 +6898,7 @@ func (c *Client) ModifyLogset(request *ModifyLogsetRequest) (response *ModifyLog
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PERIODMODIFYFORBIDDEN = "FailedOperation.PeriodModifyForbidden"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_LOGSETCONFLICT = "InvalidParameter.LogsetConflict"

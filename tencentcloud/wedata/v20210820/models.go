@@ -5895,6 +5895,9 @@ type CreateTaskNewRequestParams struct {
 	// 26离线同步，30Python，31PySpark，32DLC，33Impala，34Hive SQL，35Shell，36Spark SQL，39Spark，40CDW PG，92MapReduce
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
+	// （必填参数）指定脚本内容，base64编码
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
 	// 扩展属性
 	TaskExt []*TaskExtInfo `json:"TaskExt,omitnil,omitempty" name:"TaskExt"`
 
@@ -5912,9 +5915,6 @@ type CreateTaskNewRequestParams struct {
 
 	// 工作流目录ID
 	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
-
-	// （必填参数）指定脚本内容，base64编码
-	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 代码模板ID
 	CodeTemplateId *string `json:"CodeTemplateId,omitnil,omitempty" name:"CodeTemplateId"`
@@ -5935,6 +5935,9 @@ type CreateTaskNewRequest struct {
 	// 26离线同步，30Python，31PySpark，32DLC，33Impala，34Hive SQL，35Shell，36Spark SQL，39Spark，40CDW PG，92MapReduce
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
+	// （必填参数）指定脚本内容，base64编码
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
 	// 扩展属性
 	TaskExt []*TaskExtInfo `json:"TaskExt,omitnil,omitempty" name:"TaskExt"`
 
@@ -5952,9 +5955,6 @@ type CreateTaskNewRequest struct {
 
 	// 工作流目录ID
 	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
-
-	// （必填参数）指定脚本内容，base64编码
-	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 代码模板ID
 	CodeTemplateId *string `json:"CodeTemplateId,omitnil,omitempty" name:"CodeTemplateId"`
@@ -5976,13 +5976,13 @@ func (r *CreateTaskNewRequest) FromJsonString(s string) error {
 	delete(f, "WorkflowId")
 	delete(f, "TaskName")
 	delete(f, "TaskType")
+	delete(f, "Content")
 	delete(f, "TaskExt")
 	delete(f, "ProductName")
 	delete(f, "InstanceInitStrategy")
 	delete(f, "LeftCoordinate")
 	delete(f, "TopCoordinate")
 	delete(f, "TaskFolderId")
-	delete(f, "Content")
 	delete(f, "CodeTemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskNewRequest has unknown keys!", "")

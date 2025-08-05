@@ -2502,12 +2502,14 @@ func NewDescribeDiskConfigsResponse() (response *DescribeDiskConfigsResponse) {
 // 本接口（DescribeDiskConfigs）用于查询云硬盘配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEDISKCONFIGQUOTAFAILED = "FailedOperation.DescribeDiskConfigQuotaFailed"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
 //  INVALIDPARAMETERVALUE_ZONEINVALID = "InvalidParameterValue.ZoneInvalid"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_SYSTEMBUSY = "UnsupportedOperation.SystemBusy"
 func (c *Client) DescribeDiskConfigs(request *DescribeDiskConfigsRequest) (response *DescribeDiskConfigsResponse, err error) {
     return c.DescribeDiskConfigsWithContext(context.Background(), request)
 }
@@ -2516,12 +2518,14 @@ func (c *Client) DescribeDiskConfigs(request *DescribeDiskConfigsRequest) (respo
 // 本接口（DescribeDiskConfigs）用于查询云硬盘配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEDISKCONFIGQUOTAFAILED = "FailedOperation.DescribeDiskConfigQuotaFailed"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
 //  INVALIDPARAMETERVALUE_ZONEINVALID = "InvalidParameterValue.ZoneInvalid"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_SYSTEMBUSY = "UnsupportedOperation.SystemBusy"
 func (c *Client) DescribeDiskConfigsWithContext(ctx context.Context, request *DescribeDiskConfigsRequest) (response *DescribeDiskConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeDiskConfigsRequest()

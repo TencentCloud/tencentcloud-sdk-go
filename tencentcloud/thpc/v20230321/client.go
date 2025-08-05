@@ -599,6 +599,64 @@ func (c *Client) DeleteClusterStorageOptionWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteJobRequest() (request *DeleteJobRequest) {
+    request = &DeleteJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DeleteJob")
+    
+    
+    return
+}
+
+func NewDeleteJobResponse() (response *DeleteJobResponse) {
+    response = &DeleteJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteJob
+// 本接口 (DeleteJob) 用于删除一个作业任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_JOBNOTFOUND = "InvalidParameterValue.JobNotFound"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  UNSUPPORTEDOPERATION_JOBSTATENOTSUPPORT = "UnsupportedOperation.JobStateNotSupport"
+func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobResponse, err error) {
+    return c.DeleteJobWithContext(context.Background(), request)
+}
+
+// DeleteJob
+// 本接口 (DeleteJob) 用于删除一个作业任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_JOBNOTFOUND = "InvalidParameterValue.JobNotFound"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  UNSUPPORTEDOPERATION_JOBSTATENOTSUPPORT = "UnsupportedOperation.JobStateNotSupport"
+func (c *Client) DeleteJobWithContext(ctx context.Context, request *DeleteJobRequest) (response *DeleteJobResponse, err error) {
+    if request == nil {
+        request = NewDeleteJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DeleteJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNodesRequest() (request *DeleteNodesRequest) {
     request = &DeleteNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1021,6 +1079,164 @@ func (c *Client) DescribeInitNodeScriptsWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeInitNodeScriptsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJobSubmitInfoRequest() (request *DescribeJobSubmitInfoRequest) {
+    request = &DescribeJobSubmitInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeJobSubmitInfo")
+    
+    
+    return
+}
+
+func NewDescribeJobSubmitInfoResponse() (response *DescribeJobSubmitInfoResponse) {
+    response = &DescribeJobSubmitInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobSubmitInfo
+// 本接口用于查询作业的提交信息。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_JOBSUBMITINFO = "ResourceNotFound.JobSubmitInfo"
+func (c *Client) DescribeJobSubmitInfo(request *DescribeJobSubmitInfoRequest) (response *DescribeJobSubmitInfoResponse, err error) {
+    return c.DescribeJobSubmitInfoWithContext(context.Background(), request)
+}
+
+// DescribeJobSubmitInfo
+// 本接口用于查询作业的提交信息。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_JOBSUBMITINFO = "ResourceNotFound.JobSubmitInfo"
+func (c *Client) DescribeJobSubmitInfoWithContext(ctx context.Context, request *DescribeJobSubmitInfoRequest) (response *DescribeJobSubmitInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobSubmitInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeJobSubmitInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobSubmitInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobSubmitInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJobsRequest() (request *DescribeJobsRequest) {
+    request = &DescribeJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeJobs")
+    
+    
+    return
+}
+
+func NewDescribeJobsResponse() (response *DescribeJobsResponse) {
+    response = &DescribeJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobs
+// 本接口 (DescribeJobs) 用于查询作业任务列表信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+func (c *Client) DescribeJobs(request *DescribeJobsRequest) (response *DescribeJobsResponse, err error) {
+    return c.DescribeJobsWithContext(context.Background(), request)
+}
+
+// DescribeJobs
+// 本接口 (DescribeJobs) 用于查询作业任务列表信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+func (c *Client) DescribeJobsWithContext(ctx context.Context, request *DescribeJobsRequest) (response *DescribeJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeJobs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJobsOverviewRequest() (request *DescribeJobsOverviewRequest) {
+    request = &DescribeJobsOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeJobsOverview")
+    
+    
+    return
+}
+
+func NewDescribeJobsOverviewResponse() (response *DescribeJobsOverviewResponse) {
+    response = &DescribeJobsOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobsOverview
+// 本接口 (DescribeJobs) 用于查询作业任务列表信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) DescribeJobsOverview(request *DescribeJobsOverviewRequest) (response *DescribeJobsOverviewResponse, err error) {
+    return c.DescribeJobsOverviewWithContext(context.Background(), request)
+}
+
+// DescribeJobsOverview
+// 本接口 (DescribeJobs) 用于查询作业任务列表信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) DescribeJobsOverviewWithContext(ctx context.Context, request *DescribeJobsOverviewRequest) (response *DescribeJobsOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobsOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeJobsOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobsOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobsOverviewResponse()
     err = c.Send(request, response)
     return
 }
@@ -1521,6 +1737,126 @@ func (c *Client) SetAutoScalingConfigurationWithContext(ctx context.Context, req
     return
 }
 
+func NewSubmitJobRequest() (request *SubmitJobRequest) {
+    request = &SubmitJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "SubmitJob")
+    
+    
+    return
+}
+
+func NewSubmitJobResponse() (response *SubmitJobResponse) {
+    response = &SubmitJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitJob
+// 本接口 (SubmitJob) 用于提交一个作业任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_JOBDESCRIPTIONTOOLONG = "InvalidParameterValue.JobDescriptionTooLong"
+//  INVALIDPARAMETERVALUE_JOBNAMETOOLONG = "InvalidParameterValue.JobNameTooLong"
+//  INVALIDPARAMETERVALUE_TASKDEPENDENCIESUNFEASIBLE = "InvalidParameterValue.TaskDependenciesUnfeasible"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  LIMITEXCEEDED_TASKINSTANCENUMLIMIT = "LimitExceeded.TaskInstanceNumLimit"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) SubmitJob(request *SubmitJobRequest) (response *SubmitJobResponse, err error) {
+    return c.SubmitJobWithContext(context.Background(), request)
+}
+
+// SubmitJob
+// 本接口 (SubmitJob) 用于提交一个作业任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_JOBDESCRIPTIONTOOLONG = "InvalidParameterValue.JobDescriptionTooLong"
+//  INVALIDPARAMETERVALUE_JOBNAMETOOLONG = "InvalidParameterValue.JobNameTooLong"
+//  INVALIDPARAMETERVALUE_TASKDEPENDENCIESUNFEASIBLE = "InvalidParameterValue.TaskDependenciesUnfeasible"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  LIMITEXCEEDED_TASKINSTANCENUMLIMIT = "LimitExceeded.TaskInstanceNumLimit"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) SubmitJobWithContext(ctx context.Context, request *SubmitJobRequest) (response *SubmitJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "SubmitJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateJobRequest() (request *TerminateJobRequest) {
+    request = &TerminateJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "TerminateJob")
+    
+    
+    return
+}
+
+func NewTerminateJobResponse() (response *TerminateJobResponse) {
+    response = &TerminateJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TerminateJob
+// 本接口 (TerminateJob) 用于终止一个作业任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_JOBNOTFOUND = "InvalidParameterValue.JobNotFound"
+//  UNSUPPORTEDOPERATION_JOBSTATENOTSUPPORT = "UnsupportedOperation.JobStateNotSupport"
+func (c *Client) TerminateJob(request *TerminateJobRequest) (response *TerminateJobResponse, err error) {
+    return c.TerminateJobWithContext(context.Background(), request)
+}
+
+// TerminateJob
+// 本接口 (TerminateJob) 用于终止一个作业任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_JOBNOTFOUND = "InvalidParameterValue.JobNotFound"
+//  UNSUPPORTEDOPERATION_JOBSTATENOTSUPPORT = "UnsupportedOperation.JobStateNotSupport"
+func (c *Client) TerminateJobWithContext(ctx context.Context, request *TerminateJobRequest) (response *TerminateJobResponse, err error) {
+    if request == nil {
+        request = NewTerminateJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "TerminateJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTerminateWorkspacesRequest() (request *TerminateWorkspacesRequest) {
     request = &TerminateWorkspacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1544,19 +1880,9 @@ func NewTerminateWorkspacesResponse() (response *TerminateWorkspacesResponse) {
 // 本接口 (TerminateWorkspaces) 用于主动退还工作空间。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
-//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
-//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
-//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
-//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
-//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
-//  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
-//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
-//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
-//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
-//  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
+//  INVALIDPARAMETERVALUE_JOBNOTFOUND = "InvalidParameterValue.JobNotFound"
+//  UNSUPPORTEDOPERATION_JOBSTATENOTSUPPORT = "UnsupportedOperation.JobStateNotSupport"
 func (c *Client) TerminateWorkspaces(request *TerminateWorkspacesRequest) (response *TerminateWorkspacesResponse, err error) {
     return c.TerminateWorkspacesWithContext(context.Background(), request)
 }
@@ -1565,19 +1891,9 @@ func (c *Client) TerminateWorkspaces(request *TerminateWorkspacesRequest) (respo
 // 本接口 (TerminateWorkspaces) 用于主动退还工作空间。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
-//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
-//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
-//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
-//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
-//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
-//  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
-//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
-//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
-//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
-//  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
+//  INVALIDPARAMETERVALUE_JOBNOTFOUND = "InvalidParameterValue.JobNotFound"
+//  UNSUPPORTEDOPERATION_JOBSTATENOTSUPPORT = "UnsupportedOperation.JobStateNotSupport"
 func (c *Client) TerminateWorkspacesWithContext(ctx context.Context, request *TerminateWorkspacesRequest) (response *TerminateWorkspacesResponse, err error) {
     if request == nil {
         request = NewTerminateWorkspacesRequest()

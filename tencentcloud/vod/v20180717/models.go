@@ -11007,8 +11007,9 @@ type DescribeLicenseUsageDataRequestParams struct {
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// License 类型，默认为 DRM 。目前支持的 License 类型包括：
-	// <li> DRM: DRM 加密播放 License</li>
+	// License 类型，默认为 CommercialDRMLicense 。目前支持的 License 类型包括：
+	// <li> CommercialDRMLicense: 商业级 DRM License</li>
+	// <li> JITEncryptionDRMLicense: 即时加密 DRM License</li>
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -11024,8 +11025,9 @@ type DescribeLicenseUsageDataRequest struct {
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// License 类型，默认为 DRM 。目前支持的 License 类型包括：
-	// <li> DRM: DRM 加密播放 License</li>
+	// License 类型，默认为 CommercialDRMLicense 。目前支持的 License 类型包括：
+	// <li> CommercialDRMLicense: 商业级 DRM License</li>
+	// <li> JITEncryptionDRMLicense: 即时加密 DRM License</li>
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -11303,6 +11305,7 @@ type DescribeMediaProcessUsageDataRequestParams struct {
 	// <li>VoiceTranslation: 语音翻译</li>
 	// <li>JITTranscoding: 即时转码</li>
 	// <li>VideoSnapshot: 视频截图</li>
+	// <li>JITEncryption: 即时加密</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -11342,6 +11345,7 @@ type DescribeMediaProcessUsageDataRequest struct {
 	// <li>VoiceTranslation: 语音翻译</li>
 	// <li>JITTranscoding: 即时转码</li>
 	// <li>VideoSnapshot: 视频截图</li>
+	// <li>JITEncryption: 即时加密</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -25717,6 +25721,7 @@ type TaskStatData struct {
 	// <li>VoiceTranslation: 语音翻译</li>
 	// <li>JITTranscoding: 即时转码</li>
 	// <li>VideoSnapshot: 视频截图</li>
+	// <li>JITEncryption: 即时加密</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务数统计数据概览，用量单位为秒。

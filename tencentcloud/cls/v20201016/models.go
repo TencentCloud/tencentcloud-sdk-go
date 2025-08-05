@@ -2884,7 +2884,8 @@ func (r *CreateExportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateIndexRequestParams struct {
-	// 日志主题ID
+	// 日志主题Id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 索引规则
@@ -2908,7 +2909,8 @@ type CreateIndexRequestParams struct {
 type CreateIndexRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题ID
+	// 日志主题Id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 索引规则
@@ -3105,7 +3107,9 @@ func (r *CreateKafkaRechargeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLogsetRequestParams struct {
-	// 日志集名字，不能重名
+	// 日志集名字。
+	// 
+	// - 最大支持255个字符。不支持`|`字符。
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
@@ -3118,7 +3122,9 @@ type CreateLogsetRequestParams struct {
 type CreateLogsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志集名字，不能重名
+	// 日志集名字。
+	// 
+	// - 最大支持255个字符。不支持`|`字符。
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
@@ -4919,14 +4925,16 @@ func (r *DeleteExportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteIndexRequestParams struct {
-	// 日志主题ID
+	// 日志主题Id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type DeleteIndexRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题ID
+	// 日志主题Id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
@@ -5034,14 +5042,14 @@ func (r *DeleteKafkaRechargeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLogsetRequestParams struct {
-	// 日志集ID
+	// 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
 type DeleteLogsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志集ID
+	// 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
@@ -6932,14 +6940,16 @@ func (r *DescribeExportsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIndexRequestParams struct {
-	// 日志主题ID
+	// 日志主题Id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type DescribeIndexRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题ID
+	// 日志主题Id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
@@ -6964,17 +6974,18 @@ func (r *DescribeIndexRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIndexResponseParams struct {
-	// 日志主题ID
+	// 日志主题Id
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 是否生效
+	// 索引状态。true：开启状态，false：关闭状态
+	// 开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。[费用详情](https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9)
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 索引配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rule *RuleInfo `json:"Rule,omitnil,omitempty" name:"Rule"`
 
-	// 索引修改时间，初始值为索引创建时间。
+	// 索引修改时间，初始值为索引创建时间。格式 `YYYY-MM-DD HH:MM:SS`
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
@@ -7393,11 +7404,12 @@ type DescribeLogsetsRequestParams struct {
 	// - 按照【日志集名称】进行过滤。
 	// - 类型：String
 	// - 必选：否
-	// 
+	// - 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集名称。
 	// logsetId
 	// - 按照【日志集ID】进行过滤。
 	// - 类型：String
 	// - 必选：否
+	// - 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 	// 
 	// tagKey
 	// - 按照【标签键】进行过滤。
@@ -7426,11 +7438,12 @@ type DescribeLogsetsRequest struct {
 	// - 按照【日志集名称】进行过滤。
 	// - 类型：String
 	// - 必选：否
-	// 
+	// - 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集名称。
 	// logsetId
 	// - 按照【日志集ID】进行过滤。
 	// - 类型：String
 	// - 必选：否
+	// - 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 	// 
 	// tagKey
 	// - 按照【标签键】进行过滤。
@@ -9209,7 +9222,7 @@ type LogsetInfo struct {
 	// 日志集名称
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
-	// 创建时间
+	// 创建时间。格式 `YYYY-MM-DD HH:MM:SS`
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 云产品标识，日志集由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
@@ -11096,10 +11109,10 @@ func (r *ModifyKafkaRechargeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLogsetRequestParams struct {
-	// 日志集ID
+	// 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志集名称
+	// 日志集名字。- 最大支持255个字符。不支持`|`字符。
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
@@ -11109,10 +11122,10 @@ type ModifyLogsetRequestParams struct {
 type ModifyLogsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志集ID
+	// 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志集名称
+	// 日志集名字。- 最大支持255个字符。不支持`|`字符。
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。

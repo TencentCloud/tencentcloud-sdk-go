@@ -620,6 +620,9 @@ const (
 	// 不支持多可用区变配。
 	UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
 
+	// UIN注册地为美加墨或者服务地域在美国，协议签署不是Agree
+	UNSUPPORTEDOPERATION_NOTAGREEMENT = "UnsupportedOperation.NotAgreement"
+
 	// 用户同步日志的配置passLogstashId为空，不支持该操作。
 	UNSUPPORTEDOPERATION_PASSLOGSTASHID = "UnsupportedOperation.PassLogstashId"
 

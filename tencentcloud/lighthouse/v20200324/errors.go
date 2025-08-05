@@ -59,6 +59,9 @@ const (
 	// 查询套餐失败。
 	FAILEDOPERATION_DESCRIBEBUNDLESFAILED = "FailedOperation.DescribeBundlesFailed"
 
+	// 查询云硬盘配额失败。
+	FAILEDOPERATION_DESCRIBEDISKCONFIGQUOTAFAILED = "FailedOperation.DescribeDiskConfigQuotaFailed"
+
 	// 查询云硬盘是否可以退还操作失败。
 	FAILEDOPERATION_DESCRIBEDISKSRETURNABLEERROR = "FailedOperation.DescribeDisksReturnableError"
 

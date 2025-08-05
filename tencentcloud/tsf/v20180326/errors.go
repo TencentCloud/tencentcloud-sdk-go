@@ -1208,13 +1208,13 @@ const (
 	// 无法获取机器信息。
 	RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 
-	// [%s]模块未提供该接口[%s]。。
+	// [%s]模块未提供该接口[%s]。
 	RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
 
 	// 无法找到License服务器。
 	RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
 
-	// 目标微服务已离线[%s]。。
+	// 目标微服务已离线[%s]。
 	RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 
 	// 无法获取命名空间。
@@ -1241,7 +1241,7 @@ const (
 	// 当前主账号未创建TSF_QCSRole或未对子账号授予预设策略QcloudCamSubaccountsAuthorizeRoleFullAccess。请参考产品文档主账号协作者使用说明。。
 	UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
 
-	// License未激活。。
+	// License未激活。
 	UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
 
 	// 您所购买的服务不支持该操作。
@@ -1259,6 +1259,6 @@ const (
 	// 操作不支持。
 	UNSUPPORTEDOPERATION_TASKNOTSUPPORTED = "UnsupportedOperation.TaskNotSupported"
 
-	// 不支持的ACTION。。
+	// 不支持的ACTION。
 	UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 )

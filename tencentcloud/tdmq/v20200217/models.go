@@ -14520,6 +14520,23 @@ type RocketMQClusterInfo struct {
 
 	// 是否已冻结
 	IsFrozen *bool `json:"IsFrozen,omitnil,omitempty" name:"IsFrozen"`
+
+	// 是否开启自动创建主题
+	AutoCreateTopicEnabled *bool `json:"AutoCreateTopicEnabled,omitnil,omitempty" name:"AutoCreateTopicEnabled"`
+
+	// 是否开启集群Admin能力
+	AdminFeatureEnabled *bool `json:"AdminFeatureEnabled,omitnil,omitempty" name:"AdminFeatureEnabled"`
+
+	// Admin AK
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminAccessKey *string `json:"AdminAccessKey,omitnil,omitempty" name:"AdminAccessKey"`
+
+	// Admin SK
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminSecretKey *string `json:"AdminSecretKey,omitnil,omitempty" name:"AdminSecretKey"`
+
+	// 是否开启删除保护
+	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
 }
 
 type RocketMQClusterRecentStats struct {
@@ -14592,9 +14609,13 @@ type RocketMQGroup struct {
 	ConsumerNum *uint64 `json:"ConsumerNum,omitnil,omitempty" name:"ConsumerNum"`
 
 	// 消费TPS
+	//
+	// Deprecated: TPS is deprecated.
 	TPS *uint64 `json:"TPS,omitnil,omitempty" name:"TPS"`
 
 	// 总堆积数量
+	//
+	// Deprecated: TotalAccumulative is deprecated.
 	TotalAccumulative *int64 `json:"TotalAccumulative,omitnil,omitempty" name:"TotalAccumulative"`
 
 	// 0表示集群消费模式，1表示广播消费模式，-1表示未知
@@ -14642,6 +14663,9 @@ type RocketMQGroup struct {
 	// 命名空间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 订阅的主题个数
+	SubscribeTopicNum *int64 `json:"SubscribeTopicNum,omitnil,omitempty" name:"SubscribeTopicNum"`
 }
 
 type RocketMQGroupConfig struct {

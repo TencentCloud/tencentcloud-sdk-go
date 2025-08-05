@@ -56,7 +56,7 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
-	// 该设备未开启永久授权
+	// 设备不存在或当前状态为不可用。
 	OPERATIONDENIED_DEVICENOTFOUND = "OperationDenied.DeviceNotFound"
 
 	// SN已存在
