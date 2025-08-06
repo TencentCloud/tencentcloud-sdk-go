@@ -5335,6 +5335,12 @@ type DescribeDBInstancesAttributeResponseParams struct {
 	// 是否开启磁盘加密，1-开启，0-未开启
 	IsDiskEncryptFlag *int64 `json:"IsDiskEncryptFlag,omitnil,omitempty" name:"IsDiskEncryptFlag"`
 
+	// 是否安全限制部分功能，0-没有限制，1-有限制。限制的功能有：修改可用区、迁移变配、DTS数据迁移等
+	IsSafetyLimited *uint64 `json:"IsSafetyLimited,omitnil,omitempty" name:"IsSafetyLimited"`
+
+	// 是否支持创建SA权限账号，0-不支持，1-支持
+	IsSupportSA *uint64 `json:"IsSupportSA,omitnil,omitempty" name:"IsSupportSA"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

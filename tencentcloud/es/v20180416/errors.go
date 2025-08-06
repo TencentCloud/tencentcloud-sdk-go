@@ -620,7 +620,7 @@ const (
 	// 不支持多可用区变配。
 	UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
 
-	// UIN注册地为美加墨或者服务地域在美国，协议签署不是Agree
+	// 抱歉，您需要前往ES控制台购买页完成确认认证，我们才能为您提供所选的腾讯云服务。如果对于确认流程有任何疑问，可以联系我们：https://www.tencentcloud.com/zh/contact-us。
 	UNSUPPORTEDOPERATION_NOTAGREEMENT = "UnsupportedOperation.NotAgreement"
 
 	// 用户同步日志的配置passLogstashId为空，不支持该操作。

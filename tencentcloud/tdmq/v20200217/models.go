@@ -8088,7 +8088,7 @@ type DescribeRocketMQGroupsRequestParams struct {
 	// 按消费组名称查询消费组，支持模糊查询
 	FilterGroup *string `json:"FilterGroup,omitnil,omitempty" name:"FilterGroup"`
 
-	// 按照指定字段排序，可选值为tps，accumulative
+	// 按照指定字段排序，可选值为 subscribeNum: 订阅 Topic 个数
 	SortedBy *string `json:"SortedBy,omitnil,omitempty" name:"SortedBy"`
 
 	// 按升序或降序排列，可选值为asc，desc
@@ -8122,7 +8122,7 @@ type DescribeRocketMQGroupsRequest struct {
 	// 按消费组名称查询消费组，支持模糊查询
 	FilterGroup *string `json:"FilterGroup,omitnil,omitempty" name:"FilterGroup"`
 
-	// 按照指定字段排序，可选值为tps，accumulative
+	// 按照指定字段排序，可选值为 subscribeNum: 订阅 Topic 个数
 	SortedBy *string `json:"SortedBy,omitnil,omitempty" name:"SortedBy"`
 
 	// 按升序或降序排列，可选值为asc，desc
@@ -14152,6 +14152,9 @@ type ResetRocketMQConsumerOffSetRequestParams struct {
 
 	// 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
 	ResetTimestamp *uint64 `json:"ResetTimestamp,omitnil,omitempty" name:"ResetTimestamp"`
+
+	// 重置的是否是retry topic
+	RetryFlag *bool `json:"RetryFlag,omitnil,omitempty" name:"RetryFlag"`
 }
 
 type ResetRocketMQConsumerOffSetRequest struct {
@@ -14174,6 +14177,9 @@ type ResetRocketMQConsumerOffSetRequest struct {
 
 	// 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
 	ResetTimestamp *uint64 `json:"ResetTimestamp,omitnil,omitempty" name:"ResetTimestamp"`
+
+	// 重置的是否是retry topic
+	RetryFlag *bool `json:"RetryFlag,omitnil,omitempty" name:"RetryFlag"`
 }
 
 func (r *ResetRocketMQConsumerOffSetRequest) ToJsonString() string {
@@ -14194,6 +14200,7 @@ func (r *ResetRocketMQConsumerOffSetRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "Topic")
 	delete(f, "ResetTimestamp")
+	delete(f, "RetryFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetRocketMQConsumerOffSetRequest has unknown keys!", "")
 	}

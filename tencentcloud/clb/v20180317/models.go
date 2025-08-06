@@ -1339,7 +1339,7 @@ type CreateListenerRequestParams struct {
 	// 会话保持时间，单位：秒。可选值：30~3600，默认为0，默认不开启。此参数仅适用于TCP/UDP监听器。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
-	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）
+	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）
 	// 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
@@ -1425,7 +1425,7 @@ type CreateListenerRequest struct {
 	// 会话保持时间，单位：秒。可选值：30~3600，默认为0，默认不开启。此参数仅适用于TCP/UDP监听器。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
-	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）
+	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）
 	// 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 

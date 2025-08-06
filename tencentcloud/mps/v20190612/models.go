@@ -13260,12 +13260,17 @@ type LiveStreamAiAnalysisResultInfo struct {
 type LiveStreamAiAnalysisResultItem struct {
 	// 结果的类型，取值范围：
 	// <li>SegmentRecognition：拆条。</li>
+	// <li>Highlight ：集锦。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 拆条结果，当 Type 为
 	// SegmentRecognition 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentResultSet []*SegmentRecognitionItem `json:"SegmentResultSet,omitnil,omitempty" name:"SegmentResultSet"`
+
+	// 集锦结果，当Type 为 Highlight 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighlightResultSet []*MediaAiAnalysisHighlightItem `json:"HighlightResultSet,omitnil,omitempty" name:"HighlightResultSet"`
 }
 
 type LiveStreamAiQualityControlResultInfo struct {

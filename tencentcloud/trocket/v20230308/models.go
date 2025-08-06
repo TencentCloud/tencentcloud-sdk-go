@@ -301,14 +301,14 @@ type CreateInstanceRequestParams struct {
 	// 商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
 	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
 
+	// 集群绑定的VPC信息
+	VpcList []*VpcInfo `json:"VpcList,omitnil,omitempty" name:"VpcList"`
+
 	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 标签列表
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
-
-	// 集群绑定的VPC信息，必填
-	VpcList []*VpcInfo `json:"VpcList,omitnil,omitempty" name:"VpcList"`
 
 	// 是否开启公网，默认值为false表示不开启
 	EnablePublic *bool `json:"EnablePublic,omitnil,omitempty" name:"EnablePublic"`
@@ -368,14 +368,14 @@ type CreateInstanceRequest struct {
 	// 商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
 	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
 
+	// 集群绑定的VPC信息
+	VpcList []*VpcInfo `json:"VpcList,omitnil,omitempty" name:"VpcList"`
+
 	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 标签列表
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
-
-	// 集群绑定的VPC信息，必填
-	VpcList []*VpcInfo `json:"VpcList,omitnil,omitempty" name:"VpcList"`
 
 	// 是否开启公网，默认值为false表示不开启
 	EnablePublic *bool `json:"EnablePublic,omitnil,omitempty" name:"EnablePublic"`
@@ -430,9 +430,9 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceType")
 	delete(f, "Name")
 	delete(f, "SkuCode")
+	delete(f, "VpcList")
 	delete(f, "Remark")
 	delete(f, "TagList")
-	delete(f, "VpcList")
 	delete(f, "EnablePublic")
 	delete(f, "BillingFlow")
 	delete(f, "Bandwidth")
