@@ -3361,7 +3361,7 @@ func NewDescribeDSPAAssessmentTemplateControlItemsResponse() (response *Describe
 }
 
 // DescribeDSPAAssessmentTemplateControlItems
-// 获取DSPA评估模版关联的评估控制项列表
+// 获取DSPA评估模板关联的评估控制项列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3377,7 +3377,7 @@ func (c *Client) DescribeDSPAAssessmentTemplateControlItems(request *DescribeDSP
 }
 
 // DescribeDSPAAssessmentTemplateControlItems
-// 获取DSPA评估模版关联的评估控制项列表
+// 获取DSPA评估模板关联的评估控制项列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

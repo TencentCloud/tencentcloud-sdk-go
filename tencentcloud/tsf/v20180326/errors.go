@@ -122,7 +122,7 @@ const (
 	// 网关通用异常:%s。
 	FAILEDOPERATION_GATEWAYCOMMONERROR = "FailedOperation.GatewayCommonError"
 
-	// 远端访问错误: %s。
+	// 远端访问错误。
 	FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
 
 	// 命名空间下存在部署组。
@@ -224,7 +224,7 @@ const (
 	// 操作失败。
 	FAILEDOPERATION_TASKOPERATIONFAILED = "FailedOperation.TaskOperationFailed"
 
-	// 禁止操作。
+	// 操作不允许。
 	FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
 
 	// 任务下发异常。
@@ -377,7 +377,7 @@ const (
 	// 容器应用SQL错误。
 	INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 
-	// 容器平台集群不可用，当前状态 %s。
+	// 容器平台集群不可用，当前状态。有 Idling、Notinit等。
 	INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"
 
 	// 命令下放失败。
@@ -392,7 +392,7 @@ const (
 	// 数据查询失败。
 	INTERNALERROR_CVMCAEMASTERQUERYERROR = "InternalError.CvmCaeMasterQueryError"
 
-	// TSF暂时不能响应请求。。
+	// TSF暂时不能响应请求。
 	INTERNALERROR_DISPATCHCOMMONERROR = "InternalError.DispatchCommonError"
 
 	// 网关通用异常:%s。
@@ -467,7 +467,7 @@ const (
 	// TSF服务管理通用异常。
 	INTERNALERROR_TSFMSERROR = "InternalError.TsfMsError"
 
-	// [%s]模块未处理异常。
+	// 模块未处理异常。
 	INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 
 	// 参数错误。
@@ -476,7 +476,7 @@ const (
 	// 删除应用失败。
 	INVALIDPARAMETER_APPLICATIONDELETEFAILED = "InvalidParameter.ApplicationDeleteFailed"
 
-	// [%s]模块接口[%s]请求不正确（400 BAD REQUEST）。
+	// 示例：serviceId模块接口action请求不正确（400 BAD REQUEST）。
 	INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 
 	// 配置模板名称不符合规范。
@@ -593,7 +593,7 @@ const (
 	// TSF应用性能管理调用链搜索请求参数错误。
 	INVALIDPARAMETER_TSFAPMTRACESEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmTraceSearchRequestParamError"
 
-	// TSF监控统计请求参数[%s]非法。
+	// TSF监控统计请求参数非法。
 	INVALIDPARAMETER_TSFMONITORREQUESTPARAMILLEGAL = "InvalidParameter.TsfMonitorRequestParamIllegal"
 
 	// 仓库批量删除包数量超过单次允许上限。
@@ -767,7 +767,7 @@ const (
 	// 镜像仓库名与应用名不匹配。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPREPONAMEINVALID = "InvalidParameterValue.ContainergroupReponameInvalid"
 
-	// agent 容器资源值非法 , %s。
+	// 示例：agent 容器资源值非法 , cpu。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEAGENTVALUEINVALID = "InvalidParameterValue.ContainergroupResourceAgentValueInvalid"
 
 	// 容器端口不允许重复映射。
@@ -902,7 +902,7 @@ const (
 	// 重装系统，无效的镜像id。
 	INVALIDPARAMETERVALUE_INSTANCEINVALIDIMAGE = "InvalidParameterValue.InstanceInvalidImage"
 
-	// 参数 %s 取值错误。
+	// 示例：参数 Region 取值错误。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
 
 	// 参数格式异常。
@@ -1007,7 +1007,7 @@ const (
 	// 文件配置项已经发布，不允许删除。
 	INVALIDPARAMETERVALUE_RELEASEDFILECONFIGCANNOTBEDELETED = "InvalidParameterValue.ReleasedFileConfigCanNotBeDeleted"
 
-	// 无权限操作资源%s。
+	// 无权限操作资源[%s]。
 	INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 
 	// ResourceType 不支持。
@@ -1115,7 +1115,7 @@ const (
 	// 命名空间名称未填写。
 	MISSINGPARAMETER_NAMESPACENAMEREQUIRED = "MissingParameter.NamespaceNameRequired"
 
-	// [%s]参数缺失。
+	// [%s]缺失。
 	MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
 
 	// 未填写服务Id。
@@ -1214,7 +1214,7 @@ const (
 	// 无法找到License服务器。
 	RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
 
-	// 目标微服务已离线[%s]。
+	// 目标微服务已离线。
 	RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 
 	// 命名空间不存在,或相应权限不足。
@@ -1232,7 +1232,7 @@ const (
 	// TKE 中不存在该集群。
 	RESOURCENOTFOUND_TKECLUSTERNOTEXISTS = "ResourceNotFound.TkeClusterNotExists"
 
-	// 访问 CAM 系统出错，%s。
+	// 示例：访问 CAM 系统出错，[报错信息]。
 	UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
 
 	// 协作者身份未授权，需要主账号授予协作者权限，参考 TSF 官网文档[子账号获取访问授权](https://cloud.tencent.com/document/product/649/55570)。

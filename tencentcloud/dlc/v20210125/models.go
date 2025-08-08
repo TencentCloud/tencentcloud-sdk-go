@@ -16642,6 +16642,9 @@ type TaskResponseInfo struct {
 
 	// spark引擎资源组名称
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 任务执行耗时
+	JobTimeSum *int64 `json:"JobTimeSum,omitnil,omitempty" name:"JobTimeSum"`
 }
 
 type TaskResultInfo struct {

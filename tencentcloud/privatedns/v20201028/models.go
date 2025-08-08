@@ -416,7 +416,7 @@ func (r *CreatePrivateZoneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePrivateZoneResponseParams struct {
-	// 私有域ID, zone-12345678
+	// 私有域ID, zone-12sa5ce78
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 私有域名
@@ -1099,7 +1099,7 @@ func (r *DescribePrivateZoneListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePrivateZoneRecordListRequestParams struct {
-	// 私有域ID: zone-xxxxxx
+	// 私有域ID: zone-12c5a6e8
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 过滤参数（支持使用Value、RecordType过滤）
@@ -1115,7 +1115,7 @@ type DescribePrivateZoneRecordListRequestParams struct {
 type DescribePrivateZoneRecordListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 私有域ID: zone-xxxxxx
+	// 私有域ID: zone-12c5a6e8
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 过滤参数（支持使用Value、RecordType过滤）
@@ -1757,7 +1757,7 @@ func (r *ModifyPrivateZoneVpcRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyPrivateZoneVpcResponseParams struct {
-	// 私有域ID, zone-12345ds6
+	// 私有域ID, zone-12e45ds6
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 解析域关联的VPC列表

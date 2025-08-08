@@ -4419,6 +4419,9 @@ type DescribeTopicListRequestParams struct {
 
 	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 按照消费组查询订阅的主题
+	FromGroup *string `json:"FromGroup,omitnil,omitempty" name:"FromGroup"`
 }
 
 type DescribeTopicListRequest struct {
@@ -4435,6 +4438,9 @@ type DescribeTopicListRequest struct {
 
 	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 按照消费组查询订阅的主题
+	FromGroup *string `json:"FromGroup,omitnil,omitempty" name:"FromGroup"`
 }
 
 func (r *DescribeTopicListRequest) ToJsonString() string {
@@ -4453,6 +4459,7 @@ func (r *DescribeTopicListRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "FromGroup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicListRequest has unknown keys!", "")
 	}
