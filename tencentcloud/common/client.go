@@ -579,6 +579,7 @@ func (c *Client) GetRegion() string {
 }
 
 func (c *Client) Init(region string) *Client {
+	const defaultIdleConnTimeout = 30 * time.Second
 
 	if DefaultHttpClient == nil {
 		// try not to modify http.DefaultTransport if possible
@@ -587,7 +588,11 @@ func (c *Client) Init(region string) *Client {
 		if _, ok := transport.(*http.Transport); ok {
 			// http.Transport.Clone is only available after go1.12
 			if cloneMethod, hasClone := reflect.TypeOf(transport).MethodByName("Clone"); hasClone {
-				transport = cloneMethod.Func.Call([]reflect.Value{reflect.ValueOf(transport)})[0].Interface().(http.RoundTripper)
+				cloned := cloneMethod.Func.Call([]reflect.Value{reflect.ValueOf(transport)})[0].Interface().(http.RoundTripper)
+				if clonedTransport, ok := cloned.(*http.Transport); ok {
+					clonedTransport.IdleConnTimeout = defaultIdleConnTimeout
+					transport = clonedTransport
+				}
 			}
 		}
 
