@@ -628,6 +628,8 @@ type CheckRechargeKafkaServerRequestParams struct {
 
 	// 腾讯云CKafka实例ID。
 	// KafkaType为0时，KafkaInstance必填
+	// 
+	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址。
@@ -649,6 +651,8 @@ type CheckRechargeKafkaServerRequest struct {
 
 	// 腾讯云CKafka实例ID。
 	// KafkaType为0时，KafkaInstance必填
+	// 
+	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址。
@@ -687,7 +691,20 @@ func (r *CheckRechargeKafkaServerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckRechargeKafkaServerResponseParams struct {
-	// Kafka集群可访问状态，0：可正常访问 ...
+	// Kafka集群可访问状态。
+	// 
+	// - 0：可正常访问 
+	// - -1：broker 连接失败
+	// - -2：sasl 鉴权失败
+	// - -3：ckafka 角色未授权
+	// - -4：topic 列表不存在
+	// - -5：topic 内暂无数据
+	// - -6：用户没有 ckafka 权限
+	// - -7：消费组已经存在
+	// - -8：kafka 实例不存在或已销毁
+	// - -9：Broker 列表为空
+	// - -10：Broker 地址格式不正确
+	// - -11：Broker 端口非整型
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1135,7 +1152,12 @@ type ContainerStdoutInfo struct {
 }
 
 type ContainerWorkLoadInfo struct {
-	// 工作负载的类型
+	// 工作负载的类型，支持
+	// - deployment
+	// - statefulset
+	// - daemonset
+	// - job
+	// - cronjob
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
 	// 工作负载的名称
@@ -4981,20 +5003,28 @@ func (r *DeleteIndexResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteKafkaRechargeRequestParams struct {
-	// Kafka导入配置ID
+	// Kafka导入配置Id。
+	// 
+	// - 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
+	// - 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 导入CLS目标topic ID
+	// 导入CLS目标日志主题Id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type DeleteKafkaRechargeRequest struct {
 	*tchttp.BaseRequest
 	
-	// Kafka导入配置ID
+	// Kafka导入配置Id。
+	// 
+	// - 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
+	// - 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 导入CLS目标topic ID
+	// 导入CLS目标日志主题Id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
@@ -8536,13 +8566,18 @@ type EscalateNoticeInfo struct {
 }
 
 type EventLog struct {
-	// 事件通道，支持Application，Security，Setup，System，ALL
+	// 事件通道，支持
+	// - Application 应用日志
+	// - Security 安全日志
+	// - Setup 启动日志
+	// - System 系统日志
+	// - ALL 所有日志
 	EventChannel *string `json:"EventChannel,omitnil,omitempty" name:"EventChannel"`
 
 	// 时间类型，1:用户自定义，2:当前时间
 	TimeType *uint64 `json:"TimeType,omitnil,omitempty" name:"TimeType"`
 
-	// 时间，用户选择自定义时间类型时，需要指定时间
+	// 时间，用户选择自定义时间类型时，需要指定时间，单位秒
 	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 事件ID过滤列表
@@ -9053,10 +9088,10 @@ type KafkaRechargeInfo struct {
 	// 导入数据位置，-2:最早（默认），-1：最晚
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 创建时间
+	// 创建时间。格式`YYYY-MM-DD HH:MM:SS`
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// 更新时间。格式`YYYY-MM-DD HH:MM:SS`
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 日志导入规则
@@ -9994,22 +10029,24 @@ func (r *ModifyCloudProductLogCollectionResponse) FromJsonString(s string) error
 // Predefined struct for user
 type ModifyConfigExtraRequestParams struct {
 	// 采集配置扩展信息id
+	// - 通过[获取特殊采集配置](https://cloud.tencent.com/document/api/614/71164)获取采集配置扩展信息id。
 	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
 
 	// 采集配置规程名称，最长63个字符，只能包含小写字符、数字及分隔符（“-”），且必须以小写字符开头，数字或小写字符结尾
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 节点文件配置信息
+	// 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息，详细参考https://cloud.tencent.com/document/api/614/56471#HostFileInfo
 	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 采集配置标记。
 	// - 目前只支持label_k8s，用于标记自建k8s集群使用的采集配置
 	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
-	// 容器标准输出信息
+	// 自建k8s-容器标准输出信息，包括容器、命名空间等，详细参考https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo
 	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 采集的日志类型，默认为minimalist_log。支持以下类型：
@@ -10040,22 +10077,29 @@ type ModifyConfigExtraRequestParams struct {
 	// ](https://cloud.tencent.com/document/product/614/61310)
 	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
-	// 类型：container_stdout、container_file、host_file
+	// 容器场景，日志采集输入类型，支持以下三种类型
+	// - container_stdout 标准输出
+	// - container_file 容器文件
+	// - host_file 主机节点文件
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 机器组ID
+	// - 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 自建采集配置标
 	ConfigFlag *string `json:"ConfigFlag,omitnil,omitempty" name:"ConfigFlag"`
 
 	// 日志集ID
+	// - 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志集name
+	// 日志集名称
+	// - 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集名称。
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
-	// 日志主题name
+	// 日志主题名称
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题名称。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
@@ -10070,22 +10114,24 @@ type ModifyConfigExtraRequest struct {
 	*tchttp.BaseRequest
 	
 	// 采集配置扩展信息id
+	// - 通过[获取特殊采集配置](https://cloud.tencent.com/document/api/614/71164)获取采集配置扩展信息id。
 	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
 
 	// 采集配置规程名称，最长63个字符，只能包含小写字符、数字及分隔符（“-”），且必须以小写字符开头，数字或小写字符结尾
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 节点文件配置信息
+	// 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息，详细参考https://cloud.tencent.com/document/api/614/56471#HostFileInfo
 	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 采集配置标记。
 	// - 目前只支持label_k8s，用于标记自建k8s集群使用的采集配置
 	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
-	// 容器标准输出信息
+	// 自建k8s-容器标准输出信息，包括容器、命名空间等，详细参考https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo
 	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 采集的日志类型，默认为minimalist_log。支持以下类型：
@@ -10114,22 +10160,29 @@ type ModifyConfigExtraRequest struct {
 	// ](https://cloud.tencent.com/document/product/614/61310)
 	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
-	// 类型：container_stdout、container_file、host_file
+	// 容器场景，日志采集输入类型，支持以下三种类型
+	// - container_stdout 标准输出
+	// - container_file 容器文件
+	// - host_file 主机节点文件
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 机器组ID
+	// - 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 自建采集配置标
 	ConfigFlag *string `json:"ConfigFlag,omitnil,omitempty" name:"ConfigFlag"`
 
 	// 日志集ID
+	// - 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志集name
+	// 日志集名称
+	// - 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集名称。
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
-	// 日志主题name
+	// 日志主题名称
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题名称。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
@@ -12251,6 +12304,7 @@ type PreviewKafkaRechargeRequestParams struct {
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
+	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址。
@@ -12265,7 +12319,9 @@ type PreviewKafkaRechargeRequestParams struct {
 	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 用户Kafka消费组
+	// 用户Kafka消费组。
+	// 
+	// - 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
 	// 日志导入规则
@@ -12289,6 +12345,7 @@ type PreviewKafkaRechargeRequest struct {
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
+	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
 	// 服务地址。
@@ -12303,7 +12360,9 @@ type PreviewKafkaRechargeRequest struct {
 	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 用户Kafka消费组
+	// 用户Kafka消费组。
+	// 
+	// - 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
 	// 日志导入规则
@@ -13548,7 +13607,8 @@ type TopicInfo struct {
 
 // Predefined struct for user
 type UploadLogRequestParams struct {
-	// 主题id
+	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 该参数已废弃，请勿使用
@@ -13556,20 +13616,25 @@ type UploadLogRequestParams struct {
 	// Deprecated: HashKey is deprecated.
 	HashKey *string `json:"HashKey,omitnil,omitempty" name:"HashKey"`
 
-	// 压缩方法
+	// 压缩方法，目前支持
+	// - lz4
+	// - zstd
 	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
 }
 
 type UploadLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题id
+	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 该参数已废弃，请勿使用
 	HashKey *string `json:"HashKey,omitnil,omitempty" name:"HashKey"`
 
-	// 压缩方法
+	// 压缩方法，目前支持
+	// - lz4
+	// - zstd
 	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
 }
 

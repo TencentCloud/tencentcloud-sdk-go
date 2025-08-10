@@ -239,7 +239,7 @@ const (
 	// 任务更新异常。
 	FAILEDOPERATION_TASKUPDATEERROR = "FailedOperation.TaskUpdateError"
 
-	// TKE 集群创建失败，%s。
+	// 示例：TKE 集群创建失败，插入数据库失败。
 	FAILEDOPERATION_TKECLUSTERCREATEFAILED = "FailedOperation.TkeClusterCreateFailed"
 
 	// TKE 集群删除失败。
@@ -440,7 +440,7 @@ const (
 	// 任务内部异常。
 	INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
 
-	// 调用 TKE 接口失败，%s。
+	// 示例：调用 TKE 接口失败，[报错信息]。
 	INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
 
 	// TSF应用性能管理业务日志配置与应用关联处理错误。
@@ -638,7 +638,7 @@ const (
 	// 集群命名已存在，请更换其他名称。
 	INVALIDPARAMETERVALUE_CLUSTERNAMEEXIST = "InvalidParameterValue.ClusterNameExist"
 
-	// 本环境集群名称禁止以 %s 开头
+	// 示例：本环境集群名称禁止以 11 开头
 	INVALIDPARAMETERVALUE_CLUSTERNAMEPREFIXILLEGALERROR = "InvalidParameterValue.ClusterNamePrefixIllegalError"
 
 	// 集群命名不能为空。
@@ -689,7 +689,7 @@ const (
 	// 配置格式不符合YAML要求。
 	INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
 
-	// 配置项值内容大小（%s）超过限制。
+	// 配置项值内容大小[当前值]超过限制。
 	INVALIDPARAMETERVALUE_CONFIGVALUETOOLONG = "InvalidParameterValue.ConfigValueTooLong"
 
 	// 配置项版本描述不合规。
@@ -1007,7 +1007,7 @@ const (
 	// 文件配置项已经发布，不允许删除。
 	INVALIDPARAMETERVALUE_RELEASEDFILECONFIGCANNOTBEDELETED = "InvalidParameterValue.ReleasedFileConfigCanNotBeDeleted"
 
-	// 无权限操作资源[%s]。
+	// 无权限操作资源[资源ID]。
 	INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 
 	// ResourceType 不支持。
@@ -1115,7 +1115,7 @@ const (
 	// 命名空间名称未填写。
 	MISSINGPARAMETER_NAMESPACENAMEREQUIRED = "MissingParameter.NamespaceNameRequired"
 
-	// [%s]缺失。
+	// [入参]缺失。
 	MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
 
 	// 未填写服务Id。
@@ -1130,7 +1130,7 @@ const (
 	// 此应用下存在资源，无法执行删除操作。
 	RESOURCEINUSE_APPLICATIONCANNOTDELETE = "ResourceInUse.ApplicationCannotDelete"
 
-	// 资源仍在使用中 无法删除。
+	// 资源仍在使用中无法删除。
 	RESOURCEINUSE_CVMCAEMASTERCANNOTDELETE = "ResourceInUse.CvmcaeMasterCannotDelete"
 
 	// 默认命名空间不能被删除。
