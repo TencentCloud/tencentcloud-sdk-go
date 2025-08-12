@@ -33,7 +33,6 @@ func main() {
 		if cloneMethod, hasClone := reflect.TypeOf(transport).MethodByName("Clone"); hasClone {
 			cloned := cloneMethod.Func.Call([]reflect.Value{reflect.ValueOf(transport)})[0].Interface().(http.RoundTripper)
 			if clonedTransport, ok := cloned.(*http.Transport); ok {
-				// 如果需要修改Transport的配置，可以在这里进行修改
 				// 例如修改HTTP连接在空闲状态下的最大keep-alive时间
 				clonedTransport.IdleConnTimeout = 30 * time.Second
 				transport = clonedTransport
