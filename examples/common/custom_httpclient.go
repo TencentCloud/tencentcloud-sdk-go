@@ -23,6 +23,11 @@ func main() {
 	cpf.HttpProfile.ReqMethod = "POST"
 
 	// 如果需要自定义http客户端，可以在这里设置
+
+	// 直接修改默认 HttpClient 的配置
+	// common.DefaultHttpClient.Timeout = 30 * time.Second
+
+	// 或者使用自定义的 Transport
 	transport := http.DefaultTransport
 	if _, ok := transport.(*http.Transport); ok {
 		// go1.12版本之后支持 http.Transport.Clone
@@ -33,15 +38,16 @@ func main() {
 		if cloneMethod, hasClone := reflect.TypeOf(transport).MethodByName("Clone"); hasClone {
 			cloned := cloneMethod.Func.Call([]reflect.Value{reflect.ValueOf(transport)})[0].Interface().(http.RoundTripper)
 			if clonedTransport, ok := cloned.(*http.Transport); ok {
-				// 如果需要修改Transport的配置，可以在这里进行修改
-				// 例如修改HTTP连接在空闲状态下的最大keep-alive时间
+				// 例如修改 HTTP 连接在空闲状态下的最大 keep-alive 时间
 				clonedTransport.IdleConnTimeout = 30 * time.Second
 				transport = clonedTransport
 			}
 		}
 	}
 
+	// 修改 SDK 默认使用的 HttpClient
 	common.DefaultHttpClient = &http.Client{Transport: transport}
+
 	client := common.NewCommonClient(credential, regions.Guangzhou, cpf).WithLogger(log.Default())
 	request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
 	body := map[string]interface{}{}
