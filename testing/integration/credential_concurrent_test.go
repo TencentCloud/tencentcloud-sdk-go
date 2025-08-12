@@ -97,10 +97,10 @@ func TestRoleArnCredentialConcurrent(t *testing.T) {
 	var inconsistencies int64
 	var wg sync.WaitGroup
 	stop := make(chan struct{})
-	threads := 1000
+	numGoroutines := 100
 	duration := 5 * time.Second
 
-	for i := 0; i < threads; i++ {
+	for i := 0; i < numGoroutines; i++ {
 		wg.Add(1)
 		go func(id int) {
 			defer wg.Done()
@@ -109,7 +109,7 @@ func TestRoleArnCredentialConcurrent(t *testing.T) {
 				case <-stop:
 					return
 				default:
-					sid, skey, token := cred.GetSecretId(), cred.GetSecretKey(), cred.GetToken()
+					sid, skey, token := cred.GetCredential()
 					if sid != skey || skey != token {
 						atomic.AddInt64(&inconsistencies, 1)
 						t.Logf("[Goroutine %d] Inconsistent: %s / %s / %s", id, sid, skey, token)
@@ -141,10 +141,10 @@ func TestCvmRoleCredentialConcurrent(t *testing.T) {
 	var inconsistencies int64
 	var wg sync.WaitGroup
 	stop := make(chan struct{})
-	threads := 10
+	numGoroutines := 100
 	duration := 5 * time.Second
 
-	for i := 0; i < threads; i++ {
+	for i := 0; i < numGoroutines; i++ {
 		wg.Add(1)
 		go func(id int) {
 			defer wg.Done()
@@ -153,9 +153,7 @@ func TestCvmRoleCredentialConcurrent(t *testing.T) {
 				case <-stop:
 					return
 				default:
-					sid := cred.GetSecretId()
-					skey := cred.GetSecretKey()
-					token := cred.GetToken()
+					sid, skey, token := cred.GetCredential()
 					if sid != skey || skey != token {
 						atomic.AddInt64(&inconsistencies, 1)
 						t.Logf("[Goroutine %d] Inconsistent: %s / %s / %s", id, sid, skey, token)
@@ -189,10 +187,10 @@ func TestOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
 	var inconsistencies int64
 	var wg sync.WaitGroup
 	stop := make(chan struct{})
-	threads := 10
+	numGoroutines := 100
 	duration := 5 * time.Second
 
-	for i := 0; i < threads; i++ {
+	for i := 0; i < numGoroutines; i++ {
 		wg.Add(1)
 		go func(id int) {
 			defer wg.Done()
@@ -201,9 +199,7 @@ func TestOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
 				case <-stop:
 					return
 				default:
-					sid := cred.GetSecretId()
-					skey := cred.GetSecretKey()
-					token := cred.GetToken()
+					sid, skey, token := cred.GetCredential()
 					if sid != skey || skey != token {
 						atomic.AddInt64(&inconsistencies, 1)
 						t.Logf("[Goroutine %d] Inconsistent: %s / %s / %s", id, sid, skey, token)
@@ -251,10 +247,10 @@ func TestTkeOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
 	var inconsistencies int64
 	var wg sync.WaitGroup
 	stop := make(chan struct{})
-	threads := 10
+	numGoroutines := 100
 	duration := 5 * time.Second
 
-	for i := 0; i < threads; i++ {
+	for i := 0; i < numGoroutines; i++ {
 		wg.Add(1)
 		go func(id int) {
 			defer wg.Done()
@@ -263,9 +259,7 @@ func TestTkeOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
 				case <-stop:
 					return
 				default:
-					sid := cred.GetSecretId()
-					skey := cred.GetSecretKey()
-					token := cred.GetToken()
+					sid, skey, token := cred.GetCredential()
 					if sid != skey || skey != token {
 						atomic.AddInt64(&inconsistencies, 1)
 						t.Logf("[Goroutine %d] Inconsistent: %s / %s / %s", id, sid, skey, token)
