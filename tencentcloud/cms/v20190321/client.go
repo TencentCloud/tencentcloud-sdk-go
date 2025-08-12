@@ -110,6 +110,7 @@ func (c *Client) CreateKeywordsSamplesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateKeywordsSamplesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cms", APIVersion, "CreateKeywordsSamples")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateKeywordsSamples require credential")
@@ -187,6 +188,7 @@ func (c *Client) DeleteLibSamplesWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteLibSamplesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cms", APIVersion, "DeleteLibSamples")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLibSamples require credential")
@@ -264,6 +266,7 @@ func (c *Client) DescribeKeywordsLibsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeKeywordsLibsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cms", APIVersion, "DescribeKeywordsLibs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKeywordsLibs require credential")
@@ -341,6 +344,7 @@ func (c *Client) DescribeLibSamplesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeLibSamplesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cms", APIVersion, "DescribeLibSamples")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLibSamples require credential")
@@ -432,6 +436,7 @@ func (c *Client) ImageModerationWithContext(ctx context.Context, request *ImageM
     if request == nil {
         request = NewImageModerationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cms", APIVersion, "ImageModeration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageModeration require credential")
@@ -495,6 +500,7 @@ func (c *Client) TextModerationWithContext(ctx context.Context, request *TextMod
     if request == nil {
         request = NewTextModerationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cms", APIVersion, "TextModeration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextModeration require credential")

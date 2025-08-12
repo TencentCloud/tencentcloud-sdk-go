@@ -140,6 +140,7 @@ func (c *Client) CorrectMultiImageWithContext(ctx context.Context, request *Corr
     if request == nil {
         request = NewCorrectMultiImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecc", APIVersion, "CorrectMultiImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CorrectMultiImage require credential")
@@ -239,6 +240,7 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
     if request == nil {
         request = NewDescribeTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecc", APIVersion, "DescribeTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTask require credential")
@@ -296,6 +298,7 @@ func (c *Client) ECCWithContext(ctx context.Context, request *ECCRequest) (respo
     if request == nil {
         request = NewECCRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecc", APIVersion, "ECC")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ECC require credential")
@@ -403,6 +406,7 @@ func (c *Client) EHOCRWithContext(ctx context.Context, request *EHOCRRequest) (r
     if request == nil {
         request = NewEHOCRRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ecc", APIVersion, "EHOCR")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EHOCR require credential")

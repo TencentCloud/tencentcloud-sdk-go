@@ -86,6 +86,7 @@ func (c *Client) CancelVRSTaskWithContext(ctx context.Context, request *CancelVR
     if request == nil {
         request = NewCancelVRSTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vrs", APIVersion, "CancelVRSTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelVRSTask require credential")
@@ -157,6 +158,7 @@ func (c *Client) CreateVRSTaskWithContext(ctx context.Context, request *CreateVR
     if request == nil {
         request = NewCreateVRSTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vrs", APIVersion, "CreateVRSTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVRSTask require credential")
@@ -222,6 +224,7 @@ func (c *Client) DescribeVRSTaskStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeVRSTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vrs", APIVersion, "DescribeVRSTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVRSTaskStatus require credential")
@@ -293,6 +296,7 @@ func (c *Client) DetectEnvAndSoundQualityWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDetectEnvAndSoundQualityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vrs", APIVersion, "DetectEnvAndSoundQuality")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetectEnvAndSoundQuality require credential")
@@ -348,6 +352,7 @@ func (c *Client) DownloadVRSModelWithContext(ctx context.Context, request *Downl
     if request == nil {
         request = NewDownloadVRSModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vrs", APIVersion, "DownloadVRSModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadVRSModel require credential")
@@ -415,6 +420,7 @@ func (c *Client) GetTrainingTextWithContext(ctx context.Context, request *GetTra
     if request == nil {
         request = NewGetTrainingTextRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vrs", APIVersion, "GetTrainingText")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTrainingText require credential")
@@ -470,6 +476,7 @@ func (c *Client) GetVRSVoiceTypeInfoWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetVRSVoiceTypeInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vrs", APIVersion, "GetVRSVoiceTypeInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetVRSVoiceTypeInfo require credential")
@@ -521,6 +528,7 @@ func (c *Client) GetVRSVoiceTypesWithContext(ctx context.Context, request *GetVR
     if request == nil {
         request = NewGetVRSVoiceTypesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vrs", APIVersion, "GetVRSVoiceTypes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetVRSVoiceTypes require credential")

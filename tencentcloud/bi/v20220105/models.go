@@ -254,6 +254,12 @@ type CreateDatasourceCloudRequestParams struct {
 
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 数据库schema
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 数据库版本
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 type CreateDatasourceCloudRequest struct {
@@ -318,6 +324,12 @@ type CreateDatasourceCloudRequest struct {
 
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 数据库schema
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 数据库版本
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 func (r *CreateDatasourceCloudRequest) ToJsonString() string {
@@ -352,6 +364,8 @@ func (r *CreateDatasourceCloudRequest) FromJsonString(s string) error {
 	delete(f, "DataOriginProjectId")
 	delete(f, "DataOriginDatasourceId")
 	delete(f, "ClusterId")
+	delete(f, "Schema")
+	delete(f, "DbVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatasourceCloudRequest has unknown keys!", "")
 	}
@@ -463,6 +477,12 @@ type CreateDatasourceRequestParams struct {
 
 	// 地域
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 数据库schema
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 数据库版本
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 type CreateDatasourceRequest struct {
@@ -533,6 +553,12 @@ type CreateDatasourceRequest struct {
 
 	// 地域
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 数据库schema
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 数据库版本
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 func (r *CreateDatasourceRequest) ToJsonString() string {
@@ -569,6 +595,8 @@ func (r *CreateDatasourceRequest) FromJsonString(s string) error {
 	delete(f, "OperationAuthLimit")
 	delete(f, "UseVPC")
 	delete(f, "RegionId")
+	delete(f, "Schema")
+	delete(f, "DbVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatasourceRequest has unknown keys!", "")
 	}
@@ -1303,6 +1331,14 @@ type DatasourceInfo struct {
 	// 所属人名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
+
+	// 数据库schema
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 数据库版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 type DatasourceInfoData struct {
@@ -2647,6 +2683,12 @@ type ModifyDatasourceCloudRequestParams struct {
 
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 数据库schema
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 数据库版本
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 type ModifyDatasourceCloudRequest struct {
@@ -2714,6 +2756,12 @@ type ModifyDatasourceCloudRequest struct {
 
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 数据库schema
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 数据库版本
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 func (r *ModifyDatasourceCloudRequest) ToJsonString() string {
@@ -2749,6 +2797,8 @@ func (r *ModifyDatasourceCloudRequest) FromJsonString(s string) error {
 	delete(f, "DataOriginProjectId")
 	delete(f, "DataOriginDatasourceId")
 	delete(f, "ClusterId")
+	delete(f, "Schema")
+	delete(f, "DbVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatasourceCloudRequest has unknown keys!", "")
 	}
@@ -2761,7 +2811,7 @@ type ModifyDatasourceCloudResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 成功无
+	// 无
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -2860,6 +2910,12 @@ type ModifyDatasourceRequestParams struct {
 
 	// 地域
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 数据库schema
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 数据库版本
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 type ModifyDatasourceRequest struct {
@@ -2930,6 +2986,12 @@ type ModifyDatasourceRequest struct {
 
 	// 地域
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 数据库schema
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 数据库版本
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 func (r *ModifyDatasourceRequest) ToJsonString() string {
@@ -2966,6 +3028,8 @@ func (r *ModifyDatasourceRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "UseVPC")
 	delete(f, "RegionId")
+	delete(f, "Schema")
+	delete(f, "DbVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatasourceRequest has unknown keys!", "")
 	}

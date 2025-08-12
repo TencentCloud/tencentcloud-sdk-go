@@ -98,6 +98,7 @@ func (c *Client) DescribeQueueDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeQueueDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cmq", APIVersion, "DescribeQueueDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeQueueDetail require credential")
@@ -165,6 +166,7 @@ func (c *Client) DescribeTopicDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTopicDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cmq", APIVersion, "DescribeTopicDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopicDetail require credential")

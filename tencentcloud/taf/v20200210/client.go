@@ -76,6 +76,7 @@ func (c *Client) ManagePortraitRiskWithContext(ctx context.Context, request *Man
     if request == nil {
         request = NewManagePortraitRiskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "taf", APIVersion, "ManagePortraitRisk")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ManagePortraitRisk require credential")

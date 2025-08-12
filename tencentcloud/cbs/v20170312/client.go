@@ -116,6 +116,7 @@ func (c *Client) ApplyDiskBackupWithContext(ctx context.Context, request *ApplyD
     if request == nil {
         request = NewApplyDiskBackupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ApplyDiskBackup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyDiskBackup require credential")
@@ -217,6 +218,7 @@ func (c *Client) ApplySnapshotWithContext(ctx context.Context, request *ApplySna
     if request == nil {
         request = NewApplySnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ApplySnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplySnapshot require credential")
@@ -284,6 +286,7 @@ func (c *Client) ApplySnapshotGroupWithContext(ctx context.Context, request *App
     if request == nil {
         request = NewApplySnapshotGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ApplySnapshotGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplySnapshotGroup require credential")
@@ -383,6 +386,7 @@ func (c *Client) AttachDisksWithContext(ctx context.Context, request *AttachDisk
     if request == nil {
         request = NewAttachDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "AttachDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AttachDisks require credential")
@@ -462,6 +466,7 @@ func (c *Client) BindAutoSnapshotPolicyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBindAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "BindAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindAutoSnapshotPolicy require credential")
@@ -539,6 +544,7 @@ func (c *Client) CopySnapshotCrossRegionsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCopySnapshotCrossRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "CopySnapshotCrossRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CopySnapshotCrossRegions require credential")
@@ -608,6 +614,7 @@ func (c *Client) CreateAutoSnapshotPolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "CreateAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAutoSnapshotPolicy require credential")
@@ -675,6 +682,7 @@ func (c *Client) CreateDiskBackupWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateDiskBackupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "CreateDiskBackup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDiskBackup require credential")
@@ -776,6 +784,7 @@ func (c *Client) CreateDisksWithContext(ctx context.Context, request *CreateDisk
     if request == nil {
         request = NewCreateDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "CreateDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDisks require credential")
@@ -891,6 +900,7 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateS
     if request == nil {
         request = NewCreateSnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "CreateSnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSnapshot require credential")
@@ -976,6 +986,7 @@ func (c *Client) CreateSnapshotGroupWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateSnapshotGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "CreateSnapshotGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSnapshotGroup require credential")
@@ -1043,6 +1054,7 @@ func (c *Client) DeleteAutoSnapshotPoliciesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteAutoSnapshotPoliciesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DeleteAutoSnapshotPolicies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAutoSnapshotPolicies require credential")
@@ -1098,6 +1110,7 @@ func (c *Client) DeleteDiskBackupsWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteDiskBackupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DeleteDiskBackups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDiskBackups require credential")
@@ -1163,6 +1176,7 @@ func (c *Client) DeleteSnapshotGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteSnapshotGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DeleteSnapshotGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSnapshotGroup require credential")
@@ -1242,6 +1256,7 @@ func (c *Client) DeleteSnapshotsWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteSnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DeleteSnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSnapshots require credential")
@@ -1309,6 +1324,7 @@ func (c *Client) DescribeAutoSnapshotPoliciesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAutoSnapshotPoliciesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeAutoSnapshotPolicies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoSnapshotPolicies require credential")
@@ -1364,6 +1380,7 @@ func (c *Client) DescribeDiskAssociatedAutoSnapshotPolicyWithContext(ctx context
     if request == nil {
         request = NewDescribeDiskAssociatedAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeDiskAssociatedAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDiskAssociatedAutoSnapshotPolicy require credential")
@@ -1427,6 +1444,7 @@ func (c *Client) DescribeDiskBackupsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDiskBackupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeDiskBackups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDiskBackups require credential")
@@ -1480,6 +1498,7 @@ func (c *Client) DescribeDiskConfigQuotaWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDiskConfigQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeDiskConfigQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDiskConfigQuota require credential")
@@ -1545,6 +1564,7 @@ func (c *Client) DescribeDiskStoragePoolWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDiskStoragePoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeDiskStoragePool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDiskStoragePool require credential")
@@ -1612,6 +1632,7 @@ func (c *Client) DescribeDisksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDisks require credential")
@@ -1675,6 +1696,7 @@ func (c *Client) DescribeInstancesDiskNumWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeInstancesDiskNumRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeInstancesDiskNum")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstancesDiskNum require credential")
@@ -1734,6 +1756,7 @@ func (c *Client) DescribeSnapshotGroupsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSnapshotGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeSnapshotGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSnapshotGroups require credential")
@@ -1785,6 +1808,7 @@ func (c *Client) DescribeSnapshotOverviewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSnapshotOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeSnapshotOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSnapshotOverview require credential")
@@ -1838,6 +1862,7 @@ func (c *Client) DescribeSnapshotSharePermissionWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeSnapshotSharePermissionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeSnapshotSharePermission")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSnapshotSharePermission require credential")
@@ -1905,6 +1930,7 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeSnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSnapshots require credential")
@@ -2004,6 +2030,7 @@ func (c *Client) DetachDisksWithContext(ctx context.Context, request *DetachDisk
     if request == nil {
         request = NewDetachDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DetachDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetachDisks require credential")
@@ -2063,6 +2090,7 @@ func (c *Client) GetSnapOverviewWithContext(ctx context.Context, request *GetSna
     if request == nil {
         request = NewGetSnapOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "GetSnapOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetSnapOverview require credential")
@@ -2130,6 +2158,7 @@ func (c *Client) InitializeDisksWithContext(ctx context.Context, request *Initia
     if request == nil {
         request = NewInitializeDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "InitializeDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InitializeDisks require credential")
@@ -2185,6 +2214,7 @@ func (c *Client) InquirePriceModifyDiskBackupQuotaWithContext(ctx context.Contex
     if request == nil {
         request = NewInquirePriceModifyDiskBackupQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "InquirePriceModifyDiskBackupQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquirePriceModifyDiskBackupQuota require credential")
@@ -2242,6 +2272,7 @@ func (c *Client) InquirePriceModifyDiskExtraPerformanceWithContext(ctx context.C
     if request == nil {
         request = NewInquirePriceModifyDiskExtraPerformanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "InquirePriceModifyDiskExtraPerformance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquirePriceModifyDiskExtraPerformance require credential")
@@ -2301,6 +2332,7 @@ func (c *Client) InquiryPriceCreateDisksWithContext(ctx context.Context, request
     if request == nil {
         request = NewInquiryPriceCreateDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "InquiryPriceCreateDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceCreateDisks require credential")
@@ -2380,6 +2412,7 @@ func (c *Client) InquiryPriceRenewDisksWithContext(ctx context.Context, request 
     if request == nil {
         request = NewInquiryPriceRenewDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "InquiryPriceRenewDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceRenewDisks require credential")
@@ -2439,6 +2472,7 @@ func (c *Client) InquiryPriceResizeDiskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewInquiryPriceResizeDiskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "InquiryPriceResizeDisk")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceResizeDisk require credential")
@@ -2508,6 +2542,7 @@ func (c *Client) ModifyAutoSnapshotPolicyAttributeWithContext(ctx context.Contex
     if request == nil {
         request = NewModifyAutoSnapshotPolicyAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ModifyAutoSnapshotPolicyAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAutoSnapshotPolicyAttribute require credential")
@@ -2558,6 +2593,7 @@ func NewModifyDiskAttributesResponse() (response *ModifyDiskAttributesResponse) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE_DISKMIGRATING = "ResourceInUse.DiskMigrating"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_UPGRADESERVICEBUSY = "ResourceInsufficient.UpgradeServiceBusy"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  TRADEDEALCONFLICT = "TradeDealConflict"
@@ -2584,6 +2620,7 @@ func (c *Client) ModifyDiskAttributes(request *ModifyDiskAttributesRequest) (res
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE_DISKMIGRATING = "ResourceInUse.DiskMigrating"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_UPGRADESERVICEBUSY = "ResourceInsufficient.UpgradeServiceBusy"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  TRADEDEALCONFLICT = "TradeDealConflict"
@@ -2591,6 +2628,7 @@ func (c *Client) ModifyDiskAttributesWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyDiskAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ModifyDiskAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDiskAttributes require credential")
@@ -2654,6 +2692,7 @@ func (c *Client) ModifyDiskBackupQuotaWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyDiskBackupQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ModifyDiskBackupQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDiskBackupQuota require credential")
@@ -2725,6 +2764,7 @@ func (c *Client) ModifyDiskExtraPerformanceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyDiskExtraPerformanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ModifyDiskExtraPerformance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDiskExtraPerformance require credential")
@@ -2806,6 +2846,7 @@ func (c *Client) ModifyDisksChargeTypeWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyDisksChargeTypeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ModifyDisksChargeType")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDisksChargeType require credential")
@@ -2865,6 +2906,7 @@ func (c *Client) ModifyDisksRenewFlagWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyDisksRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ModifyDisksRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDisksRenewFlag require credential")
@@ -2936,6 +2978,7 @@ func (c *Client) ModifySnapshotAttributeWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifySnapshotAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ModifySnapshotAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySnapshotAttribute require credential")
@@ -3017,6 +3060,7 @@ func (c *Client) ModifySnapshotsSharePermissionWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifySnapshotsSharePermissionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ModifySnapshotsSharePermission")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySnapshotsSharePermission require credential")
@@ -3104,6 +3148,7 @@ func (c *Client) RenewDiskWithContext(ctx context.Context, request *RenewDiskReq
     if request == nil {
         request = NewRenewDiskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "RenewDisk")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewDisk require credential")
@@ -3197,6 +3242,7 @@ func (c *Client) ResizeDiskWithContext(ctx context.Context, request *ResizeDiskR
     if request == nil {
         request = NewResizeDiskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ResizeDisk")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResizeDisk require credential")
@@ -3288,6 +3334,7 @@ func (c *Client) TerminateDisksWithContext(ctx context.Context, request *Termina
     if request == nil {
         request = NewTerminateDisksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "TerminateDisks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateDisks require credential")
@@ -3357,6 +3404,7 @@ func (c *Client) UnbindAutoSnapshotPolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUnbindAutoSnapshotPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "UnbindAutoSnapshotPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindAutoSnapshotPolicy require credential")

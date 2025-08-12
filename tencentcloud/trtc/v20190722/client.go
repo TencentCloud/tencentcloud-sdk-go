@@ -84,6 +84,7 @@ func (c *Client) ControlAIConversationWithContext(ctx context.Context, request *
     if request == nil {
         request = NewControlAIConversationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "ControlAIConversation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ControlAIConversation require credential")
@@ -183,6 +184,7 @@ func (c *Client) CreateBasicModerationWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateBasicModerationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "CreateBasicModeration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBasicModeration require credential")
@@ -191,6 +193,122 @@ func (c *Client) CreateBasicModerationWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewCreateBasicModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCloudModerationRequest() (request *CreateCloudModerationRequest) {
+    request = &CreateCloudModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "CreateCloudModeration")
+    
+    
+    return
+}
+
+func NewCreateCloudModerationResponse() (response *CreateCloudModerationResponse) {
+    response = &CreateCloudModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudModeration
+// 接口说明：
+//
+// 启动云端审核功能，完成房间内的音视频切片，视频截帧，或者录制音频流，送审到指定的审核商，完成审核。
+//
+// 
+//
+// 您可以通过此接口实现如下目标：
+//
+// * 指定审核参数（ModerationParams）来指定审核需要的详细参数。
+//
+// * 指定存储参数（ModerationStorageParams）将命中的审核文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
+//  MISSINGPARAMETER_BUCKET = "MissingParameter.Bucket"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
+//  MISSINGPARAMETER_SLICEPARAMS = "MissingParameter.SliceParams"
+//  MISSINGPARAMETER_SLICESTORAGEPARAMS = "MissingParameter.SliceStorageParams"
+//  MISSINGPARAMETER_SLICETYPE = "MissingParameter.SliceType"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudModeration(request *CreateCloudModerationRequest) (response *CreateCloudModerationResponse, err error) {
+    return c.CreateCloudModerationWithContext(context.Background(), request)
+}
+
+// CreateCloudModeration
+// 接口说明：
+//
+// 启动云端审核功能，完成房间内的音视频切片，视频截帧，或者录制音频流，送审到指定的审核商，完成审核。
+//
+// 
+//
+// 您可以通过此接口实现如下目标：
+//
+// * 指定审核参数（ModerationParams）来指定审核需要的详细参数。
+//
+// * 指定存储参数（ModerationStorageParams）将命中的审核文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
+//  MISSINGPARAMETER_BUCKET = "MissingParameter.Bucket"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
+//  MISSINGPARAMETER_SLICEPARAMS = "MissingParameter.SliceParams"
+//  MISSINGPARAMETER_SLICESTORAGEPARAMS = "MissingParameter.SliceStorageParams"
+//  MISSINGPARAMETER_SLICETYPE = "MissingParameter.SliceType"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudModerationWithContext(ctx context.Context, request *CreateCloudModerationRequest) (response *CreateCloudModerationResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudModerationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "CreateCloudModeration")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudModerationResponse()
     err = c.Send(request, response)
     return
 }
@@ -326,6 +444,7 @@ func (c *Client) CreateCloudRecordingWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateCloudRecordingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "CreateCloudRecording")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudRecording require credential")
@@ -334,6 +453,122 @@ func (c *Client) CreateCloudRecordingWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCreateCloudRecordingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCloudSliceTaskRequest() (request *CreateCloudSliceTaskRequest) {
+    request = &CreateCloudSliceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "CreateCloudSliceTask")
+    
+    
+    return
+}
+
+func NewCreateCloudSliceTaskResponse() (response *CreateCloudSliceTaskResponse) {
+    response = &CreateCloudSliceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudSliceTask
+// 接口说明：
+//
+// 启动云端切片功能，完成房间内的音视频切片，并上传到指定的云存储。
+//
+// 
+//
+// 您可以通过此接口实现如下目标：
+//
+// * 指定切片参数（SliceParams）来指定需要切片的主播的黑名单或者白名单。
+//
+// * 指定存储参数（SliceStorageParams）来指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
+//  MISSINGPARAMETER_BUCKET = "MissingParameter.Bucket"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
+//  MISSINGPARAMETER_SLICEPARAMS = "MissingParameter.SliceParams"
+//  MISSINGPARAMETER_SLICESTORAGEPARAMS = "MissingParameter.SliceStorageParams"
+//  MISSINGPARAMETER_SLICETYPE = "MissingParameter.SliceType"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudSliceTask(request *CreateCloudSliceTaskRequest) (response *CreateCloudSliceTaskResponse, err error) {
+    return c.CreateCloudSliceTaskWithContext(context.Background(), request)
+}
+
+// CreateCloudSliceTask
+// 接口说明：
+//
+// 启动云端切片功能，完成房间内的音视频切片，并上传到指定的云存储。
+//
+// 
+//
+// 您可以通过此接口实现如下目标：
+//
+// * 指定切片参数（SliceParams）来指定需要切片的主播的黑名单或者白名单。
+//
+// * 指定存储参数（SliceStorageParams）来指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
+//  MISSINGPARAMETER_BUCKET = "MissingParameter.Bucket"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
+//  MISSINGPARAMETER_SLICEPARAMS = "MissingParameter.SliceParams"
+//  MISSINGPARAMETER_SLICESTORAGEPARAMS = "MissingParameter.SliceStorageParams"
+//  MISSINGPARAMETER_SLICETYPE = "MissingParameter.SliceType"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudSliceTaskWithContext(ctx context.Context, request *CreateCloudSliceTaskRequest) (response *CreateCloudSliceTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudSliceTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "CreateCloudSliceTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudSliceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudSliceTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -387,6 +622,7 @@ func (c *Client) CreatePictureWithContext(ctx context.Context, request *CreatePi
     if request == nil {
         request = NewCreatePictureRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "CreatePicture")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePicture require credential")
@@ -460,6 +696,7 @@ func (c *Client) DeleteBasicModerationWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteBasicModerationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DeleteBasicModeration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBasicModeration require credential")
@@ -468,6 +705,80 @@ func (c *Client) DeleteBasicModerationWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDeleteBasicModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudModerationRequest() (request *DeleteCloudModerationRequest) {
+    request = &DeleteCloudModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DeleteCloudModeration")
+    
+    
+    return
+}
+
+func NewDeleteCloudModerationResponse() (response *DeleteCloudModerationResponse) {
+    response = &DeleteCloudModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudModeration
+// 成功开启云端审核任务后，可以使用此接口来停止送审。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudModeration(request *DeleteCloudModerationRequest) (response *DeleteCloudModerationResponse, err error) {
+    return c.DeleteCloudModerationWithContext(context.Background(), request)
+}
+
+// DeleteCloudModeration
+// 成功开启云端审核任务后，可以使用此接口来停止送审。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudModerationWithContext(ctx context.Context, request *DeleteCloudModerationRequest) (response *DeleteCloudModerationResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudModerationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DeleteCloudModeration")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudModerationResponse()
     err = c.Send(request, response)
     return
 }
@@ -533,6 +844,7 @@ func (c *Client) DeleteCloudRecordingWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteCloudRecordingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DeleteCloudRecording")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCloudRecording require credential")
@@ -541,6 +853,80 @@ func (c *Client) DeleteCloudRecordingWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteCloudRecordingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudSliceTaskRequest() (request *DeleteCloudSliceTaskRequest) {
+    request = &DeleteCloudSliceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DeleteCloudSliceTask")
+    
+    
+    return
+}
+
+func NewDeleteCloudSliceTaskResponse() (response *DeleteCloudSliceTaskResponse) {
+    response = &DeleteCloudSliceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudSliceTask
+// 成功开启切片任务后，可以使用此接口来停止任务。停止切片成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudSliceTask(request *DeleteCloudSliceTaskRequest) (response *DeleteCloudSliceTaskResponse, err error) {
+    return c.DeleteCloudSliceTaskWithContext(context.Background(), request)
+}
+
+// DeleteCloudSliceTask
+// 成功开启切片任务后，可以使用此接口来停止任务。停止切片成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudSliceTaskWithContext(ctx context.Context, request *DeleteCloudSliceTaskRequest) (response *DeleteCloudSliceTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudSliceTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DeleteCloudSliceTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudSliceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudSliceTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -594,6 +980,7 @@ func (c *Client) DeletePictureWithContext(ctx context.Context, request *DeletePi
     if request == nil {
         request = NewDeletePictureRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DeletePicture")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePicture require credential")
@@ -645,6 +1032,7 @@ func (c *Client) DeleteVoicePrintWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteVoicePrintRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DeleteVoicePrint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteVoicePrint require credential")
@@ -696,6 +1084,7 @@ func (c *Client) DescribeAIConversationWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAIConversationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeAIConversation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAIConversation require credential")
@@ -747,6 +1136,7 @@ func (c *Client) DescribeAITranscriptionWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAITranscriptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeAITranscription")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAITranscription require credential")
@@ -862,6 +1252,7 @@ func (c *Client) DescribeCallDetailInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCallDetailInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeCallDetailInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCallDetailInfo require credential")
@@ -870,6 +1261,82 @@ func (c *Client) DescribeCallDetailInfoWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeCallDetailInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudModerationRequest() (request *DescribeCloudModerationRequest) {
+    request = &DescribeCloudModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeCloudModeration")
+    
+    
+    return
+}
+
+func NewDescribeCloudModerationResponse() (response *DescribeCloudModerationResponse) {
+    response = &DescribeCloudModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudModeration
+// 成功开启审核任务后，可以使用此接口来查询审核任务状态和订阅的黑白名单信息。仅在任务进行时有效，任务退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudModeration(request *DescribeCloudModerationRequest) (response *DescribeCloudModerationResponse, err error) {
+    return c.DescribeCloudModerationWithContext(context.Background(), request)
+}
+
+// DescribeCloudModeration
+// 成功开启审核任务后，可以使用此接口来查询审核任务状态和订阅的黑白名单信息。仅在任务进行时有效，任务退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudModerationWithContext(ctx context.Context, request *DescribeCloudModerationRequest) (response *DescribeCloudModerationResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudModerationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeCloudModeration")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudModerationResponse()
     err = c.Send(request, response)
     return
 }
@@ -941,6 +1408,7 @@ func (c *Client) DescribeCloudRecordingWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCloudRecordingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeCloudRecording")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudRecording require credential")
@@ -949,6 +1417,82 @@ func (c *Client) DescribeCloudRecordingWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeCloudRecordingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudSliceTaskRequest() (request *DescribeCloudSliceTaskRequest) {
+    request = &DescribeCloudSliceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeCloudSliceTask")
+    
+    
+    return
+}
+
+func NewDescribeCloudSliceTaskResponse() (response *DescribeCloudSliceTaskResponse) {
+    response = &DescribeCloudSliceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudSliceTask
+// 成功开启切片后，可以使用此接口来查询切片任务状态。仅在任务进行时有效，任务退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudSliceTask(request *DescribeCloudSliceTaskRequest) (response *DescribeCloudSliceTaskResponse, err error) {
+    return c.DescribeCloudSliceTaskWithContext(context.Background(), request)
+}
+
+// DescribeCloudSliceTask
+// 成功开启切片后，可以使用此接口来查询切片任务状态。仅在任务进行时有效，任务退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudSliceTaskWithContext(ctx context.Context, request *DescribeCloudSliceTaskRequest) (response *DescribeCloudSliceTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudSliceTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeCloudSliceTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudSliceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudSliceTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -1012,6 +1556,7 @@ func (c *Client) DescribeMixTranscodingUsageWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeMixTranscodingUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeMixTranscodingUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMixTranscodingUsage require credential")
@@ -1071,6 +1616,7 @@ func (c *Client) DescribePictureWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribePictureRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribePicture")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePicture require credential")
@@ -1150,6 +1696,7 @@ func (c *Client) DescribeRecordStatisticWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeRecordStatisticRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeRecordStatistic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRecordStatistic require credential")
@@ -1221,6 +1768,7 @@ func (c *Client) DescribeRecordingUsageWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRecordingUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeRecordingUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRecordingUsage require credential")
@@ -1292,6 +1840,7 @@ func (c *Client) DescribeRelayUsageWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeRelayUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeRelayUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRelayUsage require credential")
@@ -1405,6 +1954,7 @@ func (c *Client) DescribeRoomInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeRoomInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeRoomInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRoomInfo require credential")
@@ -1480,6 +2030,7 @@ func (c *Client) DescribeScaleInfoWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeScaleInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeScaleInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScaleInfo require credential")
@@ -1537,6 +2088,7 @@ func (c *Client) DescribeStreamIngestWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeStreamIngestRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeStreamIngest")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamIngest require credential")
@@ -1626,6 +2178,7 @@ func (c *Client) DescribeTRTCMarketQualityDataWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeTRTCMarketQualityDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCMarketQualityData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTRTCMarketQualityData require credential")
@@ -1707,6 +2260,7 @@ func (c *Client) DescribeTRTCMarketQualityMetricDataWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeTRTCMarketQualityMetricDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCMarketQualityMetricData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTRTCMarketQualityMetricData require credential")
@@ -1784,6 +2338,7 @@ func (c *Client) DescribeTRTCMarketScaleDataWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeTRTCMarketScaleDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCMarketScaleData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTRTCMarketScaleData require credential")
@@ -1861,6 +2416,7 @@ func (c *Client) DescribeTRTCMarketScaleMetricDataWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeTRTCMarketScaleMetricDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCMarketScaleMetricData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTRTCMarketScaleMetricData require credential")
@@ -1930,6 +2486,7 @@ func (c *Client) DescribeTRTCRealTimeQualityDataWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeTRTCRealTimeQualityDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCRealTimeQualityData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTRTCRealTimeQualityData require credential")
@@ -1999,6 +2556,7 @@ func (c *Client) DescribeTRTCRealTimeQualityMetricDataWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeTRTCRealTimeQualityMetricDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCRealTimeQualityMetricData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTRTCRealTimeQualityMetricData require credential")
@@ -2068,6 +2626,7 @@ func (c *Client) DescribeTRTCRealTimeScaleDataWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeTRTCRealTimeScaleDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCRealTimeScaleData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTRTCRealTimeScaleData require credential")
@@ -2145,6 +2704,7 @@ func (c *Client) DescribeTRTCRealTimeScaleMetricDataWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeTRTCRealTimeScaleMetricDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCRealTimeScaleMetricData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTRTCRealTimeScaleMetricData require credential")
@@ -2216,6 +2776,7 @@ func (c *Client) DescribeTrtcMcuTranscodeTimeWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeTrtcMcuTranscodeTimeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTrtcMcuTranscodeTime")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrtcMcuTranscodeTime require credential")
@@ -2287,6 +2848,7 @@ func (c *Client) DescribeTrtcRoomUsageWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTrtcRoomUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTrtcRoomUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrtcRoomUsage require credential")
@@ -2358,6 +2920,7 @@ func (c *Client) DescribeTrtcUsageWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeTrtcUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTrtcUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrtcUsage require credential")
@@ -2445,6 +3008,7 @@ func (c *Client) DescribeUnusualEventWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeUnusualEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeUnusualEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnusualEvent require credential")
@@ -2532,6 +3096,7 @@ func (c *Client) DescribeUserEventWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUserEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeUserEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserEvent require credential")
@@ -2645,6 +3210,7 @@ func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeUserInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeUserInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserInfo require credential")
@@ -2696,6 +3262,7 @@ func (c *Client) DescribeVoicePrintWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeVoicePrintRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeVoicePrint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVoicePrint require credential")
@@ -2747,6 +3314,7 @@ func (c *Client) DescribeWebRecordWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeWebRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeWebRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWebRecord require credential")
@@ -2814,6 +3382,7 @@ func (c *Client) DismissRoomWithContext(ctx context.Context, request *DismissRoo
     if request == nil {
         request = NewDismissRoomRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DismissRoom")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DismissRoom require credential")
@@ -2879,6 +3448,7 @@ func (c *Client) DismissRoomByStrRoomIdWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDismissRoomByStrRoomIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DismissRoomByStrRoomId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DismissRoomByStrRoomId require credential")
@@ -2887,6 +3457,80 @@ func (c *Client) DismissRoomByStrRoomIdWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDismissRoomByStrRoomIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCloudModerationRequest() (request *ModifyCloudModerationRequest) {
+    request = &ModifyCloudModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "ModifyCloudModeration")
+    
+    
+    return
+}
+
+func NewModifyCloudModerationResponse() (response *ModifyCloudModerationResponse) {
+    response = &ModifyCloudModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCloudModeration
+// 成功开启云端审核任务后，可以使用此接口来更新订阅黑白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyCloudModeration(request *ModifyCloudModerationRequest) (response *ModifyCloudModerationResponse, err error) {
+    return c.ModifyCloudModerationWithContext(context.Background(), request)
+}
+
+// ModifyCloudModeration
+// 成功开启云端审核任务后，可以使用此接口来更新订阅黑白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyCloudModerationWithContext(ctx context.Context, request *ModifyCloudModerationRequest) (response *ModifyCloudModerationResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudModerationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "ModifyCloudModeration")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloudModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCloudModerationResponse()
     err = c.Send(request, response)
     return
 }
@@ -2952,6 +3596,7 @@ func (c *Client) ModifyCloudRecordingWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyCloudRecordingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "ModifyCloudRecording")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCloudRecording require credential")
@@ -2960,6 +3605,80 @@ func (c *Client) ModifyCloudRecordingWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyCloudRecordingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCloudSliceTaskRequest() (request *ModifyCloudSliceTaskRequest) {
+    request = &ModifyCloudSliceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "ModifyCloudSliceTask")
+    
+    
+    return
+}
+
+func NewModifyCloudSliceTaskResponse() (response *ModifyCloudSliceTaskResponse) {
+    response = &ModifyCloudSliceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCloudSliceTask
+// 成功开启切片任务后，可以使用此接口来更新任务。用于更新指定订阅流白名单或者黑名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyCloudSliceTask(request *ModifyCloudSliceTaskRequest) (response *ModifyCloudSliceTaskResponse, err error) {
+    return c.ModifyCloudSliceTaskWithContext(context.Background(), request)
+}
+
+// ModifyCloudSliceTask
+// 成功开启切片任务后，可以使用此接口来更新任务。用于更新指定订阅流白名单或者黑名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyCloudSliceTaskWithContext(ctx context.Context, request *ModifyCloudSliceTaskRequest) (response *ModifyCloudSliceTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudSliceTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "ModifyCloudSliceTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloudSliceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCloudSliceTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -3013,6 +3732,7 @@ func (c *Client) ModifyPictureWithContext(ctx context.Context, request *ModifyPi
     if request == nil {
         request = NewModifyPictureRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "ModifyPicture")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPicture require credential")
@@ -3072,6 +3792,7 @@ func (c *Client) RegisterVoicePrintWithContext(ctx context.Context, request *Reg
     if request == nil {
         request = NewRegisterVoicePrintRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "RegisterVoicePrint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterVoicePrint require credential")
@@ -3143,6 +3864,7 @@ func (c *Client) RemoveUserWithContext(ctx context.Context, request *RemoveUserR
     if request == nil {
         request = NewRemoveUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "RemoveUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveUser require credential")
@@ -3212,6 +3934,7 @@ func (c *Client) RemoveUserByStrRoomIdWithContext(ctx context.Context, request *
     if request == nil {
         request = NewRemoveUserByStrRoomIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "RemoveUserByStrRoomId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveUserByStrRoomId require credential")
@@ -3277,6 +4000,7 @@ func (c *Client) StartAIConversationWithContext(ctx context.Context, request *St
     if request == nil {
         request = NewStartAIConversationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StartAIConversation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartAIConversation require credential")
@@ -3374,6 +4098,7 @@ func (c *Client) StartAITranscriptionWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewStartAITranscriptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StartAITranscription")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartAITranscription require credential")
@@ -3579,6 +4304,7 @@ func (c *Client) StartMCUMixTranscodeWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewStartMCUMixTranscodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StartMCUMixTranscode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartMCUMixTranscode require credential")
@@ -3776,6 +4502,7 @@ func (c *Client) StartMCUMixTranscodeByStrRoomIdWithContext(ctx context.Context,
     if request == nil {
         request = NewStartMCUMixTranscodeByStrRoomIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StartMCUMixTranscodeByStrRoomId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartMCUMixTranscodeByStrRoomId require credential")
@@ -3875,6 +4602,7 @@ func (c *Client) StartPublishCdnStreamWithContext(ctx context.Context, request *
     if request == nil {
         request = NewStartPublishCdnStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StartPublishCdnStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartPublishCdnStream require credential")
@@ -3958,6 +4686,7 @@ func (c *Client) StartStreamIngestWithContext(ctx context.Context, request *Star
     if request == nil {
         request = NewStartStreamIngestRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StartStreamIngest")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartStreamIngest require credential")
@@ -4019,6 +4748,7 @@ func (c *Client) StartWebRecordWithContext(ctx context.Context, request *StartWe
     if request == nil {
         request = NewStartWebRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StartWebRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartWebRecord require credential")
@@ -4070,6 +4800,7 @@ func (c *Client) StopAIConversationWithContext(ctx context.Context, request *Sto
     if request == nil {
         request = NewStopAIConversationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StopAIConversation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopAIConversation require credential")
@@ -4121,6 +4852,7 @@ func (c *Client) StopAITranscriptionWithContext(ctx context.Context, request *St
     if request == nil {
         request = NewStopAITranscriptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StopAITranscription")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopAITranscription require credential")
@@ -4194,6 +4926,7 @@ func (c *Client) StopMCUMixTranscodeWithContext(ctx context.Context, request *St
     if request == nil {
         request = NewStopMCUMixTranscodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StopMCUMixTranscode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopMCUMixTranscode require credential")
@@ -4269,6 +5002,7 @@ func (c *Client) StopMCUMixTranscodeByStrRoomIdWithContext(ctx context.Context, 
     if request == nil {
         request = NewStopMCUMixTranscodeByStrRoomIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StopMCUMixTranscodeByStrRoomId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopMCUMixTranscodeByStrRoomId require credential")
@@ -4338,6 +5072,7 @@ func (c *Client) StopPublishCdnStreamWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewStopPublishCdnStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StopPublishCdnStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopPublishCdnStream require credential")
@@ -4393,6 +5128,7 @@ func (c *Client) StopStreamIngestWithContext(ctx context.Context, request *StopS
     if request == nil {
         request = NewStopStreamIngestRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StopStreamIngest")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopStreamIngest require credential")
@@ -4444,6 +5180,7 @@ func (c *Client) StopWebRecordWithContext(ctx context.Context, request *StopWebR
     if request == nil {
         request = NewStopWebRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "StopWebRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopWebRecord require credential")
@@ -4493,6 +5230,7 @@ func (c *Client) UpdateAIConversationWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateAIConversationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "UpdateAIConversation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAIConversation require credential")
@@ -4572,6 +5310,7 @@ func (c *Client) UpdatePublishCdnStreamWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdatePublishCdnStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "UpdatePublishCdnStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdatePublishCdnStream require credential")
@@ -4631,6 +5370,7 @@ func (c *Client) UpdateStreamIngestWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateStreamIngestRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "UpdateStreamIngest")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateStreamIngest require credential")
@@ -4690,6 +5430,7 @@ func (c *Client) UpdateVoicePrintWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateVoicePrintRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "UpdateVoicePrint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateVoicePrint require credential")

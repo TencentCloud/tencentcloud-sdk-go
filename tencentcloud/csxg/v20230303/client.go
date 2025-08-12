@@ -114,6 +114,7 @@ func (c *Client) Create5GInstanceWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreate5GInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "csxg", APIVersion, "Create5GInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Create5GInstance require credential")
@@ -195,6 +196,7 @@ func (c *Client) Delete5GInstanceWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDelete5GInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "csxg", APIVersion, "Delete5GInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Delete5GInstance require credential")
@@ -276,6 +278,7 @@ func (c *Client) Describe5GAPNsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribe5GAPNsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "csxg", APIVersion, "Describe5GAPNs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Describe5GAPNs require credential")
@@ -351,6 +354,7 @@ func (c *Client) Describe5GInstancesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribe5GInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "csxg", APIVersion, "Describe5GInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Describe5GInstances require credential")
@@ -434,6 +438,7 @@ func (c *Client) Modify5GInstanceAttributeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModify5GInstanceAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "csxg", APIVersion, "Modify5GInstanceAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Modify5GInstanceAttribute require credential")

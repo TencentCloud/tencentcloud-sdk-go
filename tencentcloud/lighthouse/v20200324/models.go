@@ -575,6 +575,9 @@ type Bundle struct {
 	// "NORMAL": 普通套餐
 	// "CAREFREE": 无忧套餐
 	BundleDisplayLabel *string `json:"BundleDisplayLabel,omitnil,omitempty" name:"BundleDisplayLabel"`
+
+	// 流量是否无上限。
+	TrafficUnlimited *bool `json:"TrafficUnlimited,omitnil,omitempty" name:"TrafficUnlimited"`
 }
 
 // Predefined struct for user

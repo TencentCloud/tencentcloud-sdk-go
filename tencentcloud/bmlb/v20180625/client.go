@@ -90,6 +90,7 @@ func (c *Client) BindL4BackendsWithContext(ctx context.Context, request *BindL4B
     if request == nil {
         request = NewBindL4BackendsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "BindL4Backends")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindL4Backends require credential")
@@ -147,6 +148,7 @@ func (c *Client) BindL7BackendsWithContext(ctx context.Context, request *BindL7B
     if request == nil {
         request = NewBindL7BackendsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "BindL7Backends")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindL7Backends require credential")
@@ -204,6 +206,7 @@ func (c *Client) BindTrafficMirrorListenersWithContext(ctx context.Context, requ
     if request == nil {
         request = NewBindTrafficMirrorListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "BindTrafficMirrorListeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindTrafficMirrorListeners require credential")
@@ -261,6 +264,7 @@ func (c *Client) BindTrafficMirrorReceiversWithContext(ctx context.Context, requ
     if request == nil {
         request = NewBindTrafficMirrorReceiversRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "BindTrafficMirrorReceivers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindTrafficMirrorReceivers require credential")
@@ -318,6 +322,7 @@ func (c *Client) CreateL4ListenersWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateL4ListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "CreateL4Listeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL4Listeners require credential")
@@ -375,6 +380,7 @@ func (c *Client) CreateL7ListenersWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateL7ListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "CreateL7Listeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL7Listeners require credential")
@@ -432,6 +438,7 @@ func (c *Client) CreateL7RulesWithContext(ctx context.Context, request *CreateL7
     if request == nil {
         request = NewCreateL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "CreateL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateL7Rules require credential")
@@ -489,6 +496,7 @@ func (c *Client) CreateLoadBalancersWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateLoadBalancersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "CreateLoadBalancers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLoadBalancers require credential")
@@ -546,6 +554,7 @@ func (c *Client) CreateTrafficMirrorWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateTrafficMirrorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "CreateTrafficMirror")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTrafficMirror require credential")
@@ -603,6 +612,7 @@ func (c *Client) DeleteL7DomainsWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteL7DomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DeleteL7Domains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteL7Domains require credential")
@@ -660,6 +670,7 @@ func (c *Client) DeleteL7RulesWithContext(ctx context.Context, request *DeleteL7
     if request == nil {
         request = NewDeleteL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DeleteL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteL7Rules require credential")
@@ -717,6 +728,7 @@ func (c *Client) DeleteListenersWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DeleteListeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteListeners require credential")
@@ -774,6 +786,7 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DeleteLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLoadBalancer require credential")
@@ -831,6 +844,7 @@ func (c *Client) DeleteTrafficMirrorWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteTrafficMirrorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DeleteTrafficMirror")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTrafficMirror require credential")
@@ -888,6 +902,7 @@ func (c *Client) DescribeCertDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCertDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeCertDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCertDetail require credential")
@@ -945,6 +960,7 @@ func (c *Client) DescribeDevicesBindInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDevicesBindInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeDevicesBindInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDevicesBindInfo require credential")
@@ -1002,6 +1018,7 @@ func (c *Client) DescribeL4BackendsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeL4BackendsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeL4Backends")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL4Backends require credential")
@@ -1059,6 +1076,7 @@ func (c *Client) DescribeL4ListenerInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeL4ListenerInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeL4ListenerInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL4ListenerInfo require credential")
@@ -1116,6 +1134,7 @@ func (c *Client) DescribeL4ListenersWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeL4ListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeL4Listeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL4Listeners require credential")
@@ -1173,6 +1192,7 @@ func (c *Client) DescribeL7BackendsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeL7BackendsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeL7Backends")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL7Backends require credential")
@@ -1230,6 +1250,7 @@ func (c *Client) DescribeL7ListenerInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeL7ListenerInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeL7ListenerInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL7ListenerInfo require credential")
@@ -1287,6 +1308,7 @@ func (c *Client) DescribeL7ListenersWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeL7ListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeL7Listeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL7Listeners require credential")
@@ -1344,6 +1366,7 @@ func (c *Client) DescribeL7ListenersExWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeL7ListenersExRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeL7ListenersEx")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL7ListenersEx require credential")
@@ -1401,6 +1424,7 @@ func (c *Client) DescribeL7RulesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeL7RulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeL7Rules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeL7Rules require credential")
@@ -1458,6 +1482,7 @@ func (c *Client) DescribeLoadBalancerPortInfoWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeLoadBalancerPortInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeLoadBalancerPortInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoadBalancerPortInfo require credential")
@@ -1515,6 +1540,7 @@ func (c *Client) DescribeLoadBalancerTaskResultWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeLoadBalancerTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeLoadBalancerTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoadBalancerTaskResult require credential")
@@ -1572,6 +1598,7 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLoadBalancersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeLoadBalancers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoadBalancers require credential")
@@ -1629,6 +1656,7 @@ func (c *Client) DescribeTrafficMirrorListenersWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeTrafficMirrorListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeTrafficMirrorListeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrafficMirrorListeners require credential")
@@ -1686,6 +1714,7 @@ func (c *Client) DescribeTrafficMirrorReceiverHealthStatusWithContext(ctx contex
     if request == nil {
         request = NewDescribeTrafficMirrorReceiverHealthStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeTrafficMirrorReceiverHealthStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrafficMirrorReceiverHealthStatus require credential")
@@ -1743,6 +1772,7 @@ func (c *Client) DescribeTrafficMirrorReceiversWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeTrafficMirrorReceiversRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeTrafficMirrorReceivers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrafficMirrorReceivers require credential")
@@ -1800,6 +1830,7 @@ func (c *Client) DescribeTrafficMirrorsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTrafficMirrorsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "DescribeTrafficMirrors")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTrafficMirrors require credential")
@@ -1857,6 +1888,7 @@ func (c *Client) ModifyL4BackendPortWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyL4BackendPortRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "ModifyL4BackendPort")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL4BackendPort require credential")
@@ -1914,6 +1946,7 @@ func (c *Client) ModifyL4BackendProbePortWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyL4BackendProbePortRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "ModifyL4BackendProbePort")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL4BackendProbePort require credential")
@@ -1971,6 +2004,7 @@ func (c *Client) ModifyL4BackendWeightWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyL4BackendWeightRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "ModifyL4BackendWeight")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL4BackendWeight require credential")
@@ -2028,6 +2062,7 @@ func (c *Client) ModifyL4ListenerWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyL4ListenerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "ModifyL4Listener")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL4Listener require credential")
@@ -2085,6 +2120,7 @@ func (c *Client) ModifyL7BackendPortWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyL7BackendPortRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "ModifyL7BackendPort")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL7BackendPort require credential")
@@ -2142,6 +2178,7 @@ func (c *Client) ModifyL7BackendWeightWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyL7BackendWeightRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "ModifyL7BackendWeight")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL7BackendWeight require credential")
@@ -2199,6 +2236,7 @@ func (c *Client) ModifyL7ListenerWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyL7ListenerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "ModifyL7Listener")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL7Listener require credential")
@@ -2256,6 +2294,7 @@ func (c *Client) ModifyL7LocationsWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyL7LocationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "ModifyL7Locations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyL7Locations require credential")
@@ -2313,6 +2352,7 @@ func (c *Client) ModifyLoadBalancerWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "ModifyLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLoadBalancer require credential")
@@ -2370,6 +2410,7 @@ func (c *Client) ModifyLoadBalancerChargeModeWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyLoadBalancerChargeModeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "ModifyLoadBalancerChargeMode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLoadBalancerChargeMode require credential")
@@ -2427,6 +2468,7 @@ func (c *Client) ReplaceCertWithContext(ctx context.Context, request *ReplaceCer
     if request == nil {
         request = NewReplaceCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "ReplaceCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReplaceCert require credential")
@@ -2484,6 +2526,7 @@ func (c *Client) SetTrafficMirrorAliasWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSetTrafficMirrorAliasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "SetTrafficMirrorAlias")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetTrafficMirrorAlias require credential")
@@ -2541,6 +2584,7 @@ func (c *Client) SetTrafficMirrorHealthSwitchWithContext(ctx context.Context, re
     if request == nil {
         request = NewSetTrafficMirrorHealthSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "SetTrafficMirrorHealthSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetTrafficMirrorHealthSwitch require credential")
@@ -2598,6 +2642,7 @@ func (c *Client) UnbindL4BackendsWithContext(ctx context.Context, request *Unbin
     if request == nil {
         request = NewUnbindL4BackendsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "UnbindL4Backends")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindL4Backends require credential")
@@ -2655,6 +2700,7 @@ func (c *Client) UnbindL7BackendsWithContext(ctx context.Context, request *Unbin
     if request == nil {
         request = NewUnbindL7BackendsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "UnbindL7Backends")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindL7Backends require credential")
@@ -2712,6 +2758,7 @@ func (c *Client) UnbindTrafficMirrorListenersWithContext(ctx context.Context, re
     if request == nil {
         request = NewUnbindTrafficMirrorListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "UnbindTrafficMirrorListeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindTrafficMirrorListeners require credential")
@@ -2769,6 +2816,7 @@ func (c *Client) UnbindTrafficMirrorReceiversWithContext(ctx context.Context, re
     if request == nil {
         request = NewUnbindTrafficMirrorReceiversRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "UnbindTrafficMirrorReceivers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindTrafficMirrorReceivers require credential")
@@ -2826,6 +2874,7 @@ func (c *Client) UploadCertWithContext(ctx context.Context, request *UploadCertR
     if request == nil {
         request = NewUploadCertRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bmlb", APIVersion, "UploadCert")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadCert require credential")

@@ -132,6 +132,7 @@ func (c *Client) CreateAddressPoolWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAddressPoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "CreateAddressPool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAddressPool require credential")
@@ -174,6 +175,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ACCESSTYPEINVALID = "InvalidParameter.AccessTypeInvalid"
+//  INVALIDPARAMETER_GLOBALACCESSDOMAINCONFLICT = "InvalidParameter.GlobalAccessDomainConflict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -199,6 +201,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ACCESSTYPEINVALID = "InvalidParameter.AccessTypeInvalid"
+//  INVALIDPARAMETER_GLOBALACCESSDOMAINCONFLICT = "InvalidParameter.GlobalAccessDomainConflict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -213,6 +216,7 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     if request == nil {
         request = NewCreateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "CreateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInstance require credential")
@@ -282,6 +286,7 @@ func (c *Client) CreateMonitorWithContext(ctx context.Context, request *CreateMo
     if request == nil {
         request = NewCreateMonitorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "CreateMonitor")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMonitor require credential")
@@ -411,6 +416,7 @@ func (c *Client) CreateStrategyWithContext(ctx context.Context, request *CreateS
     if request == nil {
         request = NewCreateStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "CreateStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStrategy require credential")
@@ -486,6 +492,7 @@ func (c *Client) DeleteAddressPoolWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteAddressPoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DeleteAddressPool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAddressPool require credential")
@@ -557,6 +564,7 @@ func (c *Client) DeleteMonitorWithContext(ctx context.Context, request *DeleteMo
     if request == nil {
         request = NewDeleteMonitorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DeleteMonitor")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMonitor require credential")
@@ -634,6 +642,7 @@ func (c *Client) DeleteStrategyWithContext(ctx context.Context, request *DeleteS
     if request == nil {
         request = NewDeleteStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DeleteStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteStrategy require credential")
@@ -695,6 +704,7 @@ func (c *Client) DescribeAddressLocationWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAddressLocationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeAddressLocation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAddressLocation require credential")
@@ -762,6 +772,7 @@ func (c *Client) DescribeAddressPoolDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAddressPoolDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeAddressPoolDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAddressPoolDetail require credential")
@@ -829,6 +840,7 @@ func (c *Client) DescribeAddressPoolListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAddressPoolListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeAddressPoolList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAddressPoolList require credential")
@@ -894,6 +906,7 @@ func (c *Client) DescribeDetectPackageDetailWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDetectPackageDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeDetectPackageDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDetectPackageDetail require credential")
@@ -959,6 +972,7 @@ func (c *Client) DescribeDetectTaskPackageListWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeDetectTaskPackageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeDetectTaskPackageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDetectTaskPackageList require credential")
@@ -1024,6 +1038,7 @@ func (c *Client) DescribeDetectorsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeDetectorsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeDetectors")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDetectors require credential")
@@ -1089,6 +1104,7 @@ func (c *Client) DescribeDnsLineListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDnsLineListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeDnsLineList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDnsLineList require credential")
@@ -1156,6 +1172,7 @@ func (c *Client) DescribeInstanceDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeInstanceDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceDetail require credential")
@@ -1227,6 +1244,7 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceList require credential")
@@ -1292,6 +1310,7 @@ func (c *Client) DescribeInstancePackageListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeInstancePackageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeInstancePackageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstancePackageList require credential")
@@ -1357,6 +1376,7 @@ func (c *Client) DescribeMonitorDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeMonitorDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeMonitorDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMonitorDetail require credential")
@@ -1420,6 +1440,7 @@ func (c *Client) DescribeMonitorsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeMonitorsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeMonitors")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMonitors require credential")
@@ -1485,6 +1506,7 @@ func (c *Client) DescribeQuotasWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeQuotasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeQuotas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeQuotas require credential")
@@ -1552,6 +1574,7 @@ func (c *Client) DescribeStrategyDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeStrategyDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeStrategyDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStrategyDetail require credential")
@@ -1627,6 +1650,7 @@ func (c *Client) DescribeStrategyListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeStrategyListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "DescribeStrategyList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStrategyList require credential")
@@ -1724,6 +1748,7 @@ func (c *Client) ModifyAddressPoolWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAddressPoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "ModifyAddressPool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAddressPool require credential")
@@ -1801,6 +1826,7 @@ func (c *Client) ModifyInstanceConfigWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyInstanceConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "ModifyInstanceConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceConfig require credential")
@@ -1876,6 +1902,7 @@ func (c *Client) ModifyMonitorWithContext(ctx context.Context, request *ModifyMo
     if request == nil {
         request = NewModifyMonitorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "ModifyMonitor")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMonitor require credential")
@@ -2003,6 +2030,7 @@ func (c *Client) ModifyStrategyWithContext(ctx context.Context, request *ModifyS
     if request == nil {
         request = NewModifyStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "ModifyStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyStrategy require credential")

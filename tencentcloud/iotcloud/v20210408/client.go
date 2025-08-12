@@ -88,6 +88,7 @@ func (c *Client) BatchUpdateFirmwareWithContext(ctx context.Context, request *Ba
     if request == nil {
         request = NewBatchUpdateFirmwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "BatchUpdateFirmware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchUpdateFirmware require credential")
@@ -155,6 +156,7 @@ func (c *Client) BindDevicesWithContext(ctx context.Context, request *BindDevice
     if request == nil {
         request = NewBindDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "BindDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindDevices require credential")
@@ -208,6 +210,7 @@ func (c *Client) CancelDeviceFirmwareTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCancelDeviceFirmwareTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "CancelDeviceFirmwareTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelDeviceFirmwareTask require credential")
@@ -287,6 +290,7 @@ func (c *Client) CreateDeviceWithContext(ctx context.Context, request *CreateDev
     if request == nil {
         request = NewCreateDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "CreateDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDevice require credential")
@@ -346,6 +350,7 @@ func (c *Client) CreateMultiDevicesTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateMultiDevicesTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "CreateMultiDevicesTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMultiDevicesTask require credential")
@@ -405,6 +410,7 @@ func (c *Client) CreatePrivateCAWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreatePrivateCARequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "CreatePrivateCA")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrivateCA require credential")
@@ -472,6 +478,7 @@ func (c *Client) CreateProductWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "CreateProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProduct require credential")
@@ -523,6 +530,7 @@ func (c *Client) CreateTaskFileUrlWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTaskFileUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "CreateTaskFileUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTaskFileUrl require credential")
@@ -582,6 +590,7 @@ func (c *Client) CreateTopicPolicyWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTopicPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "CreateTopicPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTopicPolicy require credential")
@@ -649,6 +658,7 @@ func (c *Client) CreateTopicRuleWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateTopicRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "CreateTopicRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTopicRule require credential")
@@ -712,6 +722,7 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DeleteDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDevice require credential")
@@ -773,6 +784,7 @@ func (c *Client) DeleteDeviceResourceWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteDeviceResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DeleteDeviceResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDeviceResource require credential")
@@ -826,6 +838,7 @@ func (c *Client) DeleteDeviceShadowWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteDeviceShadowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DeleteDeviceShadow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDeviceShadow require credential")
@@ -879,6 +892,7 @@ func (c *Client) DeletePrivateCAWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeletePrivateCARequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DeletePrivateCA")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrivateCA require credential")
@@ -944,6 +958,7 @@ func (c *Client) DeleteProductWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DeleteProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteProduct require credential")
@@ -993,6 +1008,7 @@ func (c *Client) DeleteProductPrivateCAWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteProductPrivateCARequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DeleteProductPrivateCA")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteProductPrivateCA require credential")
@@ -1046,6 +1062,7 @@ func (c *Client) DeleteTopicRuleWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteTopicRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DeleteTopicRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTopicRule require credential")
@@ -1103,6 +1120,7 @@ func (c *Client) DescribeDeviceWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDevice require credential")
@@ -1162,6 +1180,7 @@ func (c *Client) DescribeDeviceClientKeyWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDeviceClientKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeDeviceClientKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceClientKey require credential")
@@ -1217,6 +1236,7 @@ func (c *Client) DescribeDeviceResourceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDeviceResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeDeviceResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceResource require credential")
@@ -1272,6 +1292,7 @@ func (c *Client) DescribeDeviceResourcesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDeviceResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeDeviceResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceResources require credential")
@@ -1329,6 +1350,7 @@ func (c *Client) DescribeDeviceShadowWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDeviceShadowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeDeviceShadow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceShadow require credential")
@@ -1384,6 +1406,7 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDevices require credential")
@@ -1435,6 +1458,7 @@ func (c *Client) DescribeFirmwareWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeFirmwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeFirmware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmware require credential")
@@ -1484,6 +1508,7 @@ func (c *Client) DescribeFirmwareTaskWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFirmwareTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeFirmwareTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmwareTask require credential")
@@ -1533,6 +1558,7 @@ func (c *Client) DescribeFirmwareTaskDevicesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeFirmwareTaskDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeFirmwareTaskDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmwareTaskDevices require credential")
@@ -1582,6 +1608,7 @@ func (c *Client) DescribeFirmwareTaskDistributionWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeFirmwareTaskDistributionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeFirmwareTaskDistribution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmwareTaskDistribution require credential")
@@ -1631,6 +1658,7 @@ func (c *Client) DescribeFirmwareTaskStatisticsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeFirmwareTaskStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeFirmwareTaskStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmwareTaskStatistics require credential")
@@ -1680,6 +1708,7 @@ func (c *Client) DescribeFirmwareTasksWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFirmwareTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeFirmwareTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmwareTasks require credential")
@@ -1735,6 +1764,7 @@ func (c *Client) DescribeGatewayBindDevicesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeGatewayBindDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeGatewayBindDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGatewayBindDevices require credential")
@@ -1786,6 +1816,7 @@ func (c *Client) DescribePrivateCAWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribePrivateCARequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribePrivateCA")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrivateCA require credential")
@@ -1835,6 +1866,7 @@ func (c *Client) DescribePrivateCABindedProductsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribePrivateCABindedProductsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribePrivateCABindedProducts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrivateCABindedProducts require credential")
@@ -1884,6 +1916,7 @@ func (c *Client) DescribePrivateCAsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePrivateCAsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribePrivateCAs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrivateCAs require credential")
@@ -1939,6 +1972,7 @@ func (c *Client) DescribeProductWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProduct require credential")
@@ -1994,6 +2028,7 @@ func (c *Client) DescribeProductCAWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeProductCARequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeProductCA")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProductCA require credential")
@@ -2049,6 +2084,7 @@ func (c *Client) DescribeProductResourceWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeProductResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeProductResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProductResource require credential")
@@ -2106,6 +2142,7 @@ func (c *Client) DescribeProductResourcesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeProductResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeProductResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProductResources require credential")
@@ -2161,6 +2198,7 @@ func (c *Client) DescribeProductTaskWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeProductTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeProductTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProductTask require credential")
@@ -2212,6 +2250,7 @@ func (c *Client) DescribeProductTasksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeProductTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeProductTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProductTasks require credential")
@@ -2265,6 +2304,7 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProductsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeProducts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProducts require credential")
@@ -2316,6 +2356,7 @@ func (c *Client) DescribePushResourceTaskStatisticsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribePushResourceTaskStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribePushResourceTaskStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePushResourceTaskStatistics require credential")
@@ -2367,6 +2408,7 @@ func (c *Client) DescribeResourceTasksWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeResourceTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DescribeResourceTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceTasks require credential")
@@ -2428,6 +2470,7 @@ func (c *Client) DisableTopicRuleWithContext(ctx context.Context, request *Disab
     if request == nil {
         request = NewDisableTopicRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DisableTopicRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableTopicRule require credential")
@@ -2491,6 +2534,7 @@ func (c *Client) DownloadDeviceResourceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDownloadDeviceResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "DownloadDeviceResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DownloadDeviceResource require credential")
@@ -2542,6 +2586,7 @@ func (c *Client) EditFirmwareWithContext(ctx context.Context, request *EditFirmw
     if request == nil {
         request = NewEditFirmwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "EditFirmware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EditFirmware require credential")
@@ -2621,6 +2666,7 @@ func (c *Client) EnableTopicRuleWithContext(ctx context.Context, request *Enable
     if request == nil {
         request = NewEnableTopicRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "EnableTopicRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableTopicRule require credential")
@@ -2674,6 +2720,7 @@ func (c *Client) GetAllVersionWithContext(ctx context.Context, request *GetAllVe
     if request == nil {
         request = NewGetAllVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "GetAllVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAllVersion require credential")
@@ -2725,6 +2772,7 @@ func (c *Client) GetCOSURLWithContext(ctx context.Context, request *GetCOSURLReq
     if request == nil {
         request = NewGetCOSURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "GetCOSURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetCOSURL require credential")
@@ -2778,6 +2826,7 @@ func (c *Client) GetUserResourceInfoWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetUserResourceInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "GetUserResourceInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetUserResourceInfo require credential")
@@ -2831,6 +2880,7 @@ func (c *Client) ListFirmwaresWithContext(ctx context.Context, request *ListFirm
     if request == nil {
         request = NewListFirmwaresRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "ListFirmwares")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListFirmwares require credential")
@@ -2882,6 +2932,7 @@ func (c *Client) ListLogWithContext(ctx context.Context, request *ListLogRequest
     if request == nil {
         request = NewListLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "ListLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListLog require credential")
@@ -2933,6 +2984,7 @@ func (c *Client) ListLogPayloadWithContext(ctx context.Context, request *ListLog
     if request == nil {
         request = NewListLogPayloadRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "ListLogPayload")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListLogPayload require credential")
@@ -2984,6 +3036,7 @@ func (c *Client) ListSDKLogWithContext(ctx context.Context, request *ListSDKLogR
     if request == nil {
         request = NewListSDKLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "ListSDKLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListSDKLog require credential")
@@ -3043,6 +3096,7 @@ func (c *Client) ListTopicRulesWithContext(ctx context.Context, request *ListTop
     if request == nil {
         request = NewListTopicRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "ListTopicRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListTopicRules require credential")
@@ -3098,6 +3152,7 @@ func (c *Client) PublishBroadcastMessageWithContext(ctx context.Context, request
     if request == nil {
         request = NewPublishBroadcastMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "PublishBroadcastMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PublishBroadcastMessage require credential")
@@ -3173,6 +3228,7 @@ func (c *Client) PublishMessageWithContext(ctx context.Context, request *Publish
     if request == nil {
         request = NewPublishMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "PublishMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PublishMessage require credential")
@@ -3234,6 +3290,7 @@ func (c *Client) PublishRRPCMessageWithContext(ctx context.Context, request *Pub
     if request == nil {
         request = NewPublishRRPCMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "PublishRRPCMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PublishRRPCMessage require credential")
@@ -3315,6 +3372,7 @@ func (c *Client) ReplaceTopicRuleWithContext(ctx context.Context, request *Repla
     if request == nil {
         request = NewReplaceTopicRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "ReplaceTopicRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReplaceTopicRule require credential")
@@ -3370,6 +3428,7 @@ func (c *Client) ResetDeviceStateWithContext(ctx context.Context, request *Reset
     if request == nil {
         request = NewResetDeviceStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "ResetDeviceState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetDeviceState require credential")
@@ -3425,6 +3484,7 @@ func (c *Client) RetryDeviceFirmwareTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewRetryDeviceFirmwareTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "RetryDeviceFirmwareTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RetryDeviceFirmwareTask require credential")
@@ -3480,6 +3540,7 @@ func (c *Client) SetProductsForbiddenStatusWithContext(ctx context.Context, requ
     if request == nil {
         request = NewSetProductsForbiddenStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "SetProductsForbiddenStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetProductsForbiddenStatus require credential")
@@ -3535,6 +3596,7 @@ func (c *Client) UnbindDevicesWithContext(ctx context.Context, request *UnbindDe
     if request == nil {
         request = NewUnbindDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UnbindDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindDevices require credential")
@@ -3592,6 +3654,7 @@ func (c *Client) UpdateDeviceAvailableStateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateDeviceAvailableStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UpdateDeviceAvailableState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDeviceAvailableState require credential")
@@ -3647,6 +3710,7 @@ func (c *Client) UpdateDeviceLogLevelWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateDeviceLogLevelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UpdateDeviceLogLevel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDeviceLogLevel require credential")
@@ -3704,6 +3768,7 @@ func (c *Client) UpdateDevicePSKWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateDevicePSKRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UpdateDevicePSK")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDevicePSK require credential")
@@ -3771,6 +3836,7 @@ func (c *Client) UpdateDeviceShadowWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateDeviceShadowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UpdateDeviceShadow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDeviceShadow require credential")
@@ -3832,6 +3898,7 @@ func (c *Client) UpdateDevicesEnableStateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUpdateDevicesEnableStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UpdateDevicesEnableState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDevicesEnableState require credential")
@@ -3893,6 +3960,7 @@ func (c *Client) UpdateOtaTaskStatusWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUpdateOtaTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UpdateOtaTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateOtaTaskStatus require credential")
@@ -3948,6 +4016,7 @@ func (c *Client) UpdatePrivateCAWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdatePrivateCARequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UpdatePrivateCA")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdatePrivateCA require credential")
@@ -4003,6 +4072,7 @@ func (c *Client) UpdateProductDynamicRegisterWithContext(ctx context.Context, re
     if request == nil {
         request = NewUpdateProductDynamicRegisterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UpdateProductDynamicRegister")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateProductDynamicRegister require credential")
@@ -4054,6 +4124,7 @@ func (c *Client) UpdateProductPrivateCAWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateProductPrivateCARequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UpdateProductPrivateCA")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateProductPrivateCA require credential")
@@ -4109,6 +4180,7 @@ func (c *Client) UpdateTopicPolicyWithContext(ctx context.Context, request *Upda
     if request == nil {
         request = NewUpdateTopicPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UpdateTopicPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateTopicPolicy require credential")
@@ -4166,6 +4238,7 @@ func (c *Client) UploadFirmwareWithContext(ctx context.Context, request *UploadF
     if request == nil {
         request = NewUploadFirmwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotcloud", APIVersion, "UploadFirmware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadFirmware require credential")

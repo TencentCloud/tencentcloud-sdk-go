@@ -88,6 +88,7 @@ func (c *Client) CreateVerifyReportWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateVerifyReportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ca", APIVersion, "CreateVerifyReport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVerifyReport require credential")
@@ -141,6 +142,7 @@ func (c *Client) DescribeVerifyReportWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeVerifyReportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ca", APIVersion, "DescribeVerifyReport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVerifyReport require credential")
@@ -192,6 +194,7 @@ func (c *Client) UploadFileWithContext(ctx context.Context, request *UploadFileR
     if request == nil {
         request = NewUploadFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ca", APIVersion, "UploadFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadFile require credential")

@@ -92,6 +92,7 @@ func (c *Client) CreateApplicationWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "CreateApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApplication require credential")
@@ -145,6 +146,7 @@ func (c *Client) CreateMuskPromptWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateMuskPromptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "CreateMuskPrompt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMuskPrompt require credential")
@@ -208,6 +210,7 @@ func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeApplicationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DescribeApplications")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApplications require credential")
@@ -261,6 +264,7 @@ func (c *Client) DescribeInstanceNetworkStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeInstanceNetworkStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DescribeInstanceNetworkStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceNetworkStatus require credential")
@@ -320,6 +324,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -373,6 +378,7 @@ func (c *Client) DescribeMuskPromptsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeMuskPromptsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DescribeMuskPrompts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMuskPrompts require credential")
@@ -424,6 +430,7 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DescribeRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRegions require credential")
@@ -479,6 +486,7 @@ func (c *Client) DescribeScenesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeScenesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DescribeScenes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeScenes require credential")
@@ -530,6 +538,7 @@ func (c *Client) DescribeServiceLoginSettingsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeServiceLoginSettingsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DescribeServiceLoginSettings")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceLoginSettings require credential")
@@ -611,6 +620,7 @@ func (c *Client) InquirePriceRunInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewInquirePriceRunInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "InquirePriceRunInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquirePriceRunInstances require credential")
@@ -670,6 +680,7 @@ func (c *Client) ResetInstancesPasswordWithContext(ctx context.Context, request 
     if request == nil {
         request = NewResetInstancesPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "ResetInstancesPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetInstancesPassword require credential")
@@ -729,6 +740,7 @@ func (c *Client) ResizeInstanceDiskWithContext(ctx context.Context, request *Res
     if request == nil {
         request = NewResizeInstanceDiskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "ResizeInstanceDisk")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResizeInstanceDisk require credential")
@@ -820,6 +832,7 @@ func (c *Client) RunInstancesWithContext(ctx context.Context, request *RunInstan
     if request == nil {
         request = NewRunInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "RunInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunInstances require credential")
@@ -895,6 +908,7 @@ func (c *Client) StartInstanceWithContext(ctx context.Context, request *StartIns
     if request == nil {
         request = NewStartInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "StartInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartInstance require credential")
@@ -968,6 +982,7 @@ func (c *Client) StopInstanceWithContext(ctx context.Context, request *StopInsta
     if request == nil {
         request = NewStopInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "StopInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopInstance require credential")
@@ -1033,6 +1048,7 @@ func (c *Client) TerminateInstancesWithContext(ctx context.Context, request *Ter
     if request == nil {
         request = NewTerminateInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "TerminateInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateInstances require credential")

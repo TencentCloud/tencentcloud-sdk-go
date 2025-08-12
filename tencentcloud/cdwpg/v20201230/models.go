@@ -156,6 +156,8 @@ type CreateInstanceByApiRequestParams struct {
 	Resources []*ResourceSpecNew `json:"Resources,omitnil,omitempty" name:"Resources"`
 
 	// 废弃，用TagItems
+	//
+	// Deprecated: Tags is deprecated.
 	Tags *Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 版本

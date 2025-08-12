@@ -131,7 +131,7 @@ type AddAITaskRequestParams struct {
 	// AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
-	// AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
+	// AI 结果回调地址
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
@@ -153,7 +153,7 @@ type AddAITaskRequest struct {
 	// AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
-	// AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
+	// AI 结果回调地址
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
@@ -187,7 +187,6 @@ func (r *AddAITaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddAITaskResponseParams struct {
 	// AI任务信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *AITaskInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7251,7 +7250,7 @@ type UpdateAITaskRequestParams struct {
 	// 通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
 	ChannelList []*string `json:"ChannelList,omitnil,omitempty" name:"ChannelList"`
 
-	// AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
+	// AI 结果回调地址
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
@@ -7276,7 +7275,7 @@ type UpdateAITaskRequest struct {
 	// 通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
 	ChannelList []*string `json:"ChannelList,omitnil,omitempty" name:"ChannelList"`
 
-	// AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
+	// AI 结果回调地址
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
@@ -7314,7 +7313,6 @@ func (r *UpdateAITaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateAITaskResponseParams struct {
 	// AI任务信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *AITaskInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

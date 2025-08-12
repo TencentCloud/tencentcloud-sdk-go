@@ -88,6 +88,7 @@ func (c *Client) DescribeHSMBySubnetIdWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeHSMBySubnetIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "DescribeHSMBySubnetId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHSMBySubnetId require credential")
@@ -143,6 +144,7 @@ func (c *Client) DescribeHSMByVpcIdWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeHSMByVpcIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "DescribeHSMByVpcId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHSMByVpcId require credential")
@@ -198,6 +200,7 @@ func (c *Client) DescribeSubnetWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeSubnetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "DescribeSubnet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSubnet require credential")
@@ -251,6 +254,7 @@ func (c *Client) DescribeSupportedHsmWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeSupportedHsmRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "DescribeSupportedHsm")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSupportedHsm require credential")
@@ -306,6 +310,7 @@ func (c *Client) DescribeUsgWithContext(ctx context.Context, request *DescribeUs
     if request == nil {
         request = NewDescribeUsgRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "DescribeUsg")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUsg require credential")
@@ -361,6 +366,7 @@ func (c *Client) DescribeUsgRuleWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeUsgRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "DescribeUsgRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUsgRule require credential")
@@ -416,6 +422,7 @@ func (c *Client) DescribeVpcWithContext(ctx context.Context, request *DescribeVp
     if request == nil {
         request = NewDescribeVpcRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "DescribeVpc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVpc require credential")
@@ -471,6 +478,7 @@ func (c *Client) DescribeVsmAttributesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeVsmAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "DescribeVsmAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVsmAttributes require credential")
@@ -526,6 +534,7 @@ func (c *Client) DescribeVsmsWithContext(ctx context.Context, request *DescribeV
     if request == nil {
         request = NewDescribeVsmsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "DescribeVsms")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVsms require credential")
@@ -579,6 +588,7 @@ func (c *Client) GetAlarmEventWithContext(ctx context.Context, request *GetAlarm
     if request == nil {
         request = NewGetAlarmEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "GetAlarmEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAlarmEvent require credential")
@@ -634,6 +644,7 @@ func (c *Client) GetVsmMonitorInfoWithContext(ctx context.Context, request *GetV
     if request == nil {
         request = NewGetVsmMonitorInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "GetVsmMonitorInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetVsmMonitorInfo require credential")
@@ -689,6 +700,7 @@ func (c *Client) InquiryPriceBuyVsmWithContext(ctx context.Context, request *Inq
     if request == nil {
         request = NewInquiryPriceBuyVsmRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "InquiryPriceBuyVsm")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceBuyVsm require credential")
@@ -742,6 +754,7 @@ func (c *Client) ModifyAlarmEventWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyAlarmEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "ModifyAlarmEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAlarmEvent require credential")
@@ -797,6 +810,7 @@ func (c *Client) ModifyVsmAttributesWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyVsmAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cloudhsm", APIVersion, "ModifyVsmAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVsmAttributes require credential")

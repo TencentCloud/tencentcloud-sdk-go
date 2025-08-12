@@ -108,6 +108,7 @@ func (c *Client) AddUserContactWithContext(ctx context.Context, request *AddUser
     if request == nil {
         request = NewAddUserContactRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "AddUserContact")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddUserContact require credential")
@@ -181,6 +182,7 @@ func (c *Client) CancelDBAutonomyActionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCancelDBAutonomyActionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CancelDBAutonomyAction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelDBAutonomyAction require credential")
@@ -254,6 +256,7 @@ func (c *Client) CancelDBAutonomyEventWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCancelDBAutonomyEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CancelDBAutonomyEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelDBAutonomyEvent require credential")
@@ -327,6 +330,7 @@ func (c *Client) CancelKillTaskWithContext(ctx context.Context, request *CancelK
     if request == nil {
         request = NewCancelKillTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CancelKillTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelKillTask require credential")
@@ -400,6 +404,7 @@ func (c *Client) CancelRedisBigKeyAnalysisTasksWithContext(ctx context.Context, 
     if request == nil {
         request = NewCancelRedisBigKeyAnalysisTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CancelRedisBigKeyAnalysisTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelRedisBigKeyAnalysisTasks require credential")
@@ -471,6 +476,7 @@ func (c *Client) CloseAuditServiceWithContext(ctx context.Context, request *Clos
     if request == nil {
         request = NewCloseAuditServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CloseAuditService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseAuditService require credential")
@@ -548,6 +554,7 @@ func (c *Client) CreateAuditLogFileWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateAuditLogFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateAuditLogFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAuditLogFile require credential")
@@ -621,6 +628,7 @@ func (c *Client) CreateDBDiagReportTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateDBDiagReportTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateDBDiagReportTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDBDiagReportTask require credential")
@@ -694,6 +702,7 @@ func (c *Client) CreateDBDiagReportUrlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateDBDiagReportUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateDBDiagReportUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDBDiagReportUrl require credential")
@@ -765,6 +774,7 @@ func (c *Client) CreateKillTaskWithContext(ctx context.Context, request *CreateK
     if request == nil {
         request = NewCreateKillTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateKillTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateKillTask require credential")
@@ -838,6 +848,7 @@ func (c *Client) CreateMailProfileWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateMailProfileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateMailProfile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMailProfile require credential")
@@ -913,6 +924,7 @@ func (c *Client) CreateProxySessionKillTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateProxySessionKillTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateProxySessionKillTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProxySessionKillTask require credential")
@@ -974,6 +986,7 @@ func (c *Client) CreateRedisBigKeyAnalysisTaskWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateRedisBigKeyAnalysisTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateRedisBigKeyAnalysisTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRedisBigKeyAnalysisTask require credential")
@@ -1049,6 +1062,7 @@ func (c *Client) CreateSchedulerMailProfileWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateSchedulerMailProfileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateSchedulerMailProfile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSchedulerMailProfile require credential")
@@ -1122,6 +1136,7 @@ func (c *Client) CreateSecurityAuditLogExportTaskWithContext(ctx context.Context
     if request == nil {
         request = NewCreateSecurityAuditLogExportTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateSecurityAuditLogExportTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSecurityAuditLogExportTask require credential")
@@ -1195,6 +1210,7 @@ func (c *Client) CreateSqlFilterWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateSqlFilterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateSqlFilter")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSqlFilter require credential")
@@ -1268,6 +1284,7 @@ func (c *Client) CreateUserAutonomyProfileWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateUserAutonomyProfileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateUserAutonomyProfile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUserAutonomyProfile require credential")
@@ -1341,6 +1358,7 @@ func (c *Client) DeleteAuditLogFileWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteAuditLogFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DeleteAuditLogFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAuditLogFile require credential")
@@ -1416,6 +1434,7 @@ func (c *Client) DeleteDBDiagReportTasksWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteDBDiagReportTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DeleteDBDiagReportTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDBDiagReportTasks require credential")
@@ -1489,6 +1508,7 @@ func (c *Client) DeleteRedisBigKeyAnalysisTasksWithContext(ctx context.Context, 
     if request == nil {
         request = NewDeleteRedisBigKeyAnalysisTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DeleteRedisBigKeyAnalysisTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRedisBigKeyAnalysisTasks require credential")
@@ -1562,6 +1582,7 @@ func (c *Client) DeleteSecurityAuditLogExportTasksWithContext(ctx context.Contex
     if request == nil {
         request = NewDeleteSecurityAuditLogExportTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DeleteSecurityAuditLogExportTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSecurityAuditLogExportTasks require credential")
@@ -1635,6 +1656,7 @@ func (c *Client) DeleteSqlFiltersWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteSqlFiltersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DeleteSqlFilters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteSqlFilters require credential")
@@ -1700,6 +1722,7 @@ func (c *Client) DescribeAlarmTemplateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAlarmTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeAlarmTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlarmTemplate require credential")
@@ -1773,6 +1796,7 @@ func (c *Client) DescribeAllUserContactWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAllUserContactRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeAllUserContact")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAllUserContact require credential")
@@ -1846,6 +1870,7 @@ func (c *Client) DescribeAllUserGroupWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAllUserGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeAllUserGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAllUserGroup require credential")
@@ -1921,6 +1946,7 @@ func (c *Client) DescribeAuditInstanceListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAuditInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeAuditInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuditInstanceList require credential")
@@ -1996,6 +2022,7 @@ func (c *Client) DescribeAuditLogFilesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAuditLogFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeAuditLogFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuditLogFiles require credential")
@@ -2069,6 +2096,7 @@ func (c *Client) DescribeDBAutonomyActionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDBAutonomyActionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBAutonomyAction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBAutonomyAction require credential")
@@ -2142,6 +2170,7 @@ func (c *Client) DescribeDBAutonomyActionsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDBAutonomyActionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBAutonomyActions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBAutonomyActions require credential")
@@ -2215,6 +2244,7 @@ func (c *Client) DescribeDBAutonomyEventsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDBAutonomyEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBAutonomyEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBAutonomyEvents require credential")
@@ -2288,6 +2318,7 @@ func (c *Client) DescribeDBDiagEventWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDBDiagEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBDiagEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBDiagEvent require credential")
@@ -2361,6 +2392,7 @@ func (c *Client) DescribeDBDiagEventsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDBDiagEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBDiagEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBDiagEvents require credential")
@@ -2434,6 +2466,7 @@ func (c *Client) DescribeDBDiagHistoryWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDBDiagHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBDiagHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBDiagHistory require credential")
@@ -2505,6 +2538,7 @@ func (c *Client) DescribeDBDiagReportContentWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDBDiagReportContentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBDiagReportContent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBDiagReportContent require credential")
@@ -2578,6 +2612,7 @@ func (c *Client) DescribeDBDiagReportTasksWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDBDiagReportTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBDiagReportTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBDiagReportTasks require credential")
@@ -2653,6 +2688,7 @@ func (c *Client) DescribeDBPerfTimeSeriesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDBPerfTimeSeriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBPerfTimeSeries")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBPerfTimeSeries require credential")
@@ -2728,6 +2764,7 @@ func (c *Client) DescribeDBSpaceStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDBSpaceStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBSpaceStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBSpaceStatus require credential")
@@ -2803,6 +2840,7 @@ func (c *Client) DescribeDiagDBInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDiagDBInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDiagDBInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDiagDBInstances require credential")
@@ -2878,6 +2916,7 @@ func (c *Client) DescribeHealthScoreWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeHealthScoreRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeHealthScore")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeHealthScore require credential")
@@ -2953,6 +2992,7 @@ func (c *Client) DescribeIndexRecommendAggregationSlowLogsWithContext(ctx contex
     if request == nil {
         request = NewDescribeIndexRecommendAggregationSlowLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeIndexRecommendAggregationSlowLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIndexRecommendAggregationSlowLogs require credential")
@@ -3028,6 +3068,7 @@ func (c *Client) DescribeIndexRecommendInfoWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeIndexRecommendInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeIndexRecommendInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIndexRecommendInfo require credential")
@@ -3101,6 +3142,7 @@ func (c *Client) DescribeMailProfileWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeMailProfileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeMailProfile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMailProfile require credential")
@@ -3174,6 +3216,7 @@ func (c *Client) DescribeMySqlProcessListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeMySqlProcessListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeMySqlProcessList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMySqlProcessList require credential")
@@ -3247,6 +3290,7 @@ func (c *Client) DescribeNoPrimaryKeyTablesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeNoPrimaryKeyTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeNoPrimaryKeyTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNoPrimaryKeyTables require credential")
@@ -3322,6 +3366,7 @@ func (c *Client) DescribeProxyProcessStatisticsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeProxyProcessStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeProxyProcessStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProxyProcessStatistics require credential")
@@ -3407,6 +3452,7 @@ func (c *Client) DescribeProxySessionKillTasksWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeProxySessionKillTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeProxySessionKillTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProxySessionKillTasks require credential")
@@ -3480,6 +3526,7 @@ func (c *Client) DescribeRedisBigKeyAnalysisTasksWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeRedisBigKeyAnalysisTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeRedisBigKeyAnalysisTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRedisBigKeyAnalysisTasks require credential")
@@ -3553,6 +3600,7 @@ func (c *Client) DescribeRedisCmdPerfTimeSeriesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeRedisCmdPerfTimeSeriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeRedisCmdPerfTimeSeries")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRedisCmdPerfTimeSeries require credential")
@@ -3626,6 +3674,7 @@ func (c *Client) DescribeRedisCommandCostStatisticsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeRedisCommandCostStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeRedisCommandCostStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRedisCommandCostStatistics require credential")
@@ -3699,6 +3748,7 @@ func (c *Client) DescribeRedisCommandOverviewWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeRedisCommandOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeRedisCommandOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRedisCommandOverview require credential")
@@ -3772,6 +3822,7 @@ func (c *Client) DescribeRedisProcessListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeRedisProcessListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeRedisProcessList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRedisProcessList require credential")
@@ -3847,6 +3898,7 @@ func (c *Client) DescribeRedisSlowLogTopSqlsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeRedisSlowLogTopSqlsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeRedisSlowLogTopSqls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRedisSlowLogTopSqls require credential")
@@ -3920,6 +3972,7 @@ func (c *Client) DescribeRedisTopBigKeysWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeRedisTopBigKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeRedisTopBigKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRedisTopBigKeys require credential")
@@ -3993,6 +4046,7 @@ func (c *Client) DescribeRedisTopHotKeysWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeRedisTopHotKeysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeRedisTopHotKeys")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRedisTopHotKeys require credential")
@@ -4066,6 +4120,7 @@ func (c *Client) DescribeRedisTopKeyPrefixListWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeRedisTopKeyPrefixListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeRedisTopKeyPrefixList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRedisTopKeyPrefixList require credential")
@@ -4139,6 +4194,7 @@ func (c *Client) DescribeSecurityAuditLogDownloadUrlsWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeSecurityAuditLogDownloadUrlsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeSecurityAuditLogDownloadUrls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityAuditLogDownloadUrls require credential")
@@ -4212,6 +4268,7 @@ func (c *Client) DescribeSecurityAuditLogExportTasksWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeSecurityAuditLogExportTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeSecurityAuditLogExportTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityAuditLogExportTasks require credential")
@@ -4287,6 +4344,7 @@ func (c *Client) DescribeSlowLogQueryTimeStatsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeSlowLogQueryTimeStatsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeSlowLogQueryTimeStats")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSlowLogQueryTimeStats require credential")
@@ -4362,6 +4420,7 @@ func (c *Client) DescribeSlowLogTimeSeriesStatsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeSlowLogTimeSeriesStatsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeSlowLogTimeSeriesStats")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSlowLogTimeSeriesStats require credential")
@@ -4437,6 +4496,7 @@ func (c *Client) DescribeSlowLogTopSqlsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSlowLogTopSqlsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeSlowLogTopSqls")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSlowLogTopSqls require credential")
@@ -4512,6 +4572,7 @@ func (c *Client) DescribeSlowLogUserHostStatsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeSlowLogUserHostStatsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeSlowLogUserHostStats")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSlowLogUserHostStats require credential")
@@ -4587,6 +4648,7 @@ func (c *Client) DescribeSlowLogsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeSlowLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeSlowLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSlowLogs require credential")
@@ -4660,6 +4722,7 @@ func (c *Client) DescribeSqlFiltersWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeSqlFiltersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeSqlFilters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSqlFilters require credential")
@@ -4733,6 +4796,7 @@ func (c *Client) DescribeSqlTemplateWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeSqlTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeSqlTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSqlTemplate require credential")
@@ -4806,6 +4870,7 @@ func (c *Client) DescribeTopSpaceSchemaTimeSeriesWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeTopSpaceSchemaTimeSeriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeTopSpaceSchemaTimeSeries")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopSpaceSchemaTimeSeries require credential")
@@ -4879,6 +4944,7 @@ func (c *Client) DescribeTopSpaceSchemasWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeTopSpaceSchemasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeTopSpaceSchemas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopSpaceSchemas require credential")
@@ -4952,6 +5018,7 @@ func (c *Client) DescribeTopSpaceTableTimeSeriesWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeTopSpaceTableTimeSeriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeTopSpaceTableTimeSeries")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopSpaceTableTimeSeries require credential")
@@ -5025,6 +5092,7 @@ func (c *Client) DescribeTopSpaceTablesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTopSpaceTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeTopSpaceTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTopSpaceTables require credential")
@@ -5098,6 +5166,7 @@ func (c *Client) DescribeUserAutonomyProfileWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeUserAutonomyProfileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeUserAutonomyProfile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserAutonomyProfile require credential")
@@ -5171,6 +5240,7 @@ func (c *Client) DescribeUserSqlAdviceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeUserSqlAdviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeUserSqlAdvice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserSqlAdvice require credential")
@@ -5246,6 +5316,7 @@ func (c *Client) KillMySqlThreadsWithContext(ctx context.Context, request *KillM
     if request == nil {
         request = NewKillMySqlThreadsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "KillMySqlThreads")
     
     if c.GetCredential() == nil {
         return nil, errors.New("KillMySqlThreads require credential")
@@ -5315,6 +5386,7 @@ func (c *Client) ModifyAlarmPolicyWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAlarmPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "ModifyAlarmPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAlarmPolicy require credential")
@@ -5386,6 +5458,7 @@ func (c *Client) ModifyAuditServiceWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyAuditServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "ModifyAuditService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAuditService require credential")
@@ -5459,6 +5532,7 @@ func (c *Client) ModifyDiagDBInstanceConfWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyDiagDBInstanceConfRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "ModifyDiagDBInstanceConf")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDiagDBInstanceConf require credential")
@@ -5532,6 +5606,7 @@ func (c *Client) ModifySqlFiltersWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifySqlFiltersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "ModifySqlFilters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySqlFilters require credential")
@@ -5605,6 +5680,7 @@ func (c *Client) ModifyUserAutonomyProfileWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyUserAutonomyProfileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "ModifyUserAutonomyProfile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUserAutonomyProfile require credential")
@@ -5680,6 +5756,7 @@ func (c *Client) OpenAuditServiceWithContext(ctx context.Context, request *OpenA
     if request == nil {
         request = NewOpenAuditServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "OpenAuditService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenAuditService require credential")
@@ -5755,6 +5832,7 @@ func (c *Client) UpdateAgentSwitchWithContext(ctx context.Context, request *Upda
     if request == nil {
         request = NewUpdateAgentSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "UpdateAgentSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAgentSwitch require credential")
@@ -5830,6 +5908,7 @@ func (c *Client) UpdateMonitorSwitchWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUpdateMonitorSwitchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "UpdateMonitorSwitch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateMonitorSwitch require credential")
@@ -5903,6 +5982,7 @@ func (c *Client) VerifyUserAccountWithContext(ctx context.Context, request *Veri
     if request == nil {
         request = NewVerifyUserAccountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "VerifyUserAccount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("VerifyUserAccount require credential")

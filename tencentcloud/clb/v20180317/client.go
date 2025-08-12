@@ -92,6 +92,7 @@ func (c *Client) AddCustomizedConfigWithContext(ctx context.Context, request *Ad
     if request == nil {
         request = NewAddCustomizedConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "AddCustomizedConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddCustomizedConfig require credential")
@@ -155,6 +156,7 @@ func (c *Client) AssociateCustomizedConfigWithContext(ctx context.Context, reque
     if request == nil {
         request = NewAssociateCustomizedConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "AssociateCustomizedConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateCustomizedConfig require credential")
@@ -236,6 +238,7 @@ func (c *Client) AssociateTargetGroupsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewAssociateTargetGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "AssociateTargetGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateTargetGroups require credential")
@@ -319,6 +322,7 @@ func (c *Client) AutoRewriteWithContext(ctx context.Context, request *AutoRewrit
     if request == nil {
         request = NewAutoRewriteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "AutoRewrite")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AutoRewrite require credential")
@@ -400,6 +404,7 @@ func (c *Client) BatchDeregisterTargetsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBatchDeregisterTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "BatchDeregisterTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchDeregisterTargets require credential")
@@ -463,6 +468,7 @@ func (c *Client) BatchModifyTargetTagWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBatchModifyTargetTagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "BatchModifyTargetTag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchModifyTargetTag require credential")
@@ -524,6 +530,7 @@ func (c *Client) BatchModifyTargetWeightWithContext(ctx context.Context, request
     if request == nil {
         request = NewBatchModifyTargetWeightRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "BatchModifyTargetWeight")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchModifyTargetWeight require credential")
@@ -603,6 +610,7 @@ func (c *Client) BatchRegisterTargetsWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBatchRegisterTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "BatchRegisterTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchRegisterTargets require credential")
@@ -772,6 +780,7 @@ func (c *Client) CloneLoadBalancerWithContext(ctx context.Context, request *Clon
     if request == nil {
         request = NewCloneLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CloneLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloneLoadBalancer require credential")
@@ -837,6 +846,7 @@ func (c *Client) CreateClsLogSetWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateClsLogSetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateClsLogSet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClsLogSet require credential")
@@ -912,6 +922,7 @@ func (c *Client) CreateListenerWithContext(ctx context.Context, request *CreateL
     if request == nil {
         request = NewCreateListenerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateListener")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateListener require credential")
@@ -993,6 +1004,7 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLoadBalancer require credential")
@@ -1064,6 +1076,7 @@ func (c *Client) CreateLoadBalancerSnatIpsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateLoadBalancerSnatIpsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateLoadBalancerSnatIps")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLoadBalancerSnatIps require credential")
@@ -1137,6 +1150,7 @@ func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleR
     if request == nil {
         request = NewCreateRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRule require credential")
@@ -1198,6 +1212,7 @@ func (c *Client) CreateTargetGroupWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTargetGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateTargetGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTargetGroup require credential")
@@ -1269,6 +1284,7 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateTopic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTopic require credential")
@@ -1338,6 +1354,7 @@ func (c *Client) DeleteCustomizedConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteCustomizedConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteCustomizedConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCustomizedConfig require credential")
@@ -1403,6 +1420,7 @@ func (c *Client) DeleteListenerWithContext(ctx context.Context, request *DeleteL
     if request == nil {
         request = NewDeleteListenerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteListener")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteListener require credential")
@@ -1474,6 +1492,7 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLoadBalancer require credential")
@@ -1543,6 +1562,7 @@ func (c *Client) DeleteLoadBalancerListenersWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteLoadBalancerListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteLoadBalancerListeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLoadBalancerListeners require credential")
@@ -1610,6 +1630,7 @@ func (c *Client) DeleteLoadBalancerSnatIpsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteLoadBalancerSnatIpsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteLoadBalancerSnatIps")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLoadBalancerSnatIps require credential")
@@ -1685,6 +1706,7 @@ func (c *Client) DeleteRewriteWithContext(ctx context.Context, request *DeleteRe
     if request == nil {
         request = NewDeleteRewriteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteRewrite")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRewrite require credential")
@@ -1752,6 +1774,7 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleR
     if request == nil {
         request = NewDeleteRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRule require credential")
@@ -1809,6 +1832,7 @@ func (c *Client) DeleteTargetGroupsWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteTargetGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteTargetGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTargetGroups require credential")
@@ -1922,6 +1946,7 @@ func (c *Client) DeregisterFunctionTargetsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeregisterFunctionTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeregisterFunctionTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeregisterFunctionTargets require credential")
@@ -1985,6 +2010,7 @@ func (c *Client) DeregisterTargetGroupInstancesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDeregisterTargetGroupInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeregisterTargetGroupInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeregisterTargetGroupInstances require credential")
@@ -2054,6 +2080,7 @@ func (c *Client) DeregisterTargetsWithContext(ctx context.Context, request *Dere
     if request == nil {
         request = NewDeregisterTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeregisterTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeregisterTargets require credential")
@@ -2119,6 +2146,7 @@ func (c *Client) DeregisterTargetsFromClassicalLBWithContext(ctx context.Context
     if request == nil {
         request = NewDeregisterTargetsFromClassicalLBRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeregisterTargetsFromClassicalLB")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeregisterTargetsFromClassicalLB require credential")
@@ -2180,6 +2208,7 @@ func (c *Client) DescribeBlockIPListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeBlockIPListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeBlockIPList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBlockIPList require credential")
@@ -2233,6 +2262,7 @@ func (c *Client) DescribeBlockIPTaskWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeBlockIPTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeBlockIPTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBlockIPTask require credential")
@@ -2298,6 +2328,7 @@ func (c *Client) DescribeClassicalLBByInstanceIdWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeClassicalLBByInstanceIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeClassicalLBByInstanceId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClassicalLBByInstanceId require credential")
@@ -2363,6 +2394,7 @@ func (c *Client) DescribeClassicalLBHealthStatusWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeClassicalLBHealthStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeClassicalLBHealthStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClassicalLBHealthStatus require credential")
@@ -2430,6 +2462,7 @@ func (c *Client) DescribeClassicalLBListenersWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeClassicalLBListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeClassicalLBListeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClassicalLBListeners require credential")
@@ -2495,6 +2528,7 @@ func (c *Client) DescribeClassicalLBTargetsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeClassicalLBTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeClassicalLBTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClassicalLBTargets require credential")
@@ -2550,6 +2584,7 @@ func (c *Client) DescribeClsLogSetWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeClsLogSetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeClsLogSet")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClsLogSet require credential")
@@ -2615,6 +2650,7 @@ func (c *Client) DescribeClusterResourcesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeClusterResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterResources require credential")
@@ -2680,6 +2716,7 @@ func (c *Client) DescribeCrossTargetsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCrossTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeCrossTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCrossTargets require credential")
@@ -2743,6 +2780,7 @@ func (c *Client) DescribeCustomizedConfigAssociateListWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeCustomizedConfigAssociateListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeCustomizedConfigAssociateList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomizedConfigAssociateList require credential")
@@ -2830,6 +2868,7 @@ func (c *Client) DescribeCustomizedConfigListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeCustomizedConfigListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeCustomizedConfigList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCustomizedConfigList require credential")
@@ -2895,6 +2934,7 @@ func (c *Client) DescribeExclusiveClustersWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeExclusiveClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeExclusiveClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExclusiveClusters require credential")
@@ -2968,6 +3008,7 @@ func (c *Client) DescribeIdleLoadBalancersWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeIdleLoadBalancersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeIdleLoadBalancers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIdleLoadBalancers require credential")
@@ -3035,6 +3076,7 @@ func (c *Client) DescribeLBListenersWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeLBListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeLBListeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLBListeners require credential")
@@ -3102,6 +3144,7 @@ func (c *Client) DescribeLBOperateProtectWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeLBOperateProtectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeLBOperateProtect")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLBOperateProtect require credential")
@@ -3169,6 +3212,7 @@ func (c *Client) DescribeListenersWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeListenersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeListeners")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeListeners require credential")
@@ -3230,6 +3274,7 @@ func (c *Client) DescribeLoadBalancerListByCertIdWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeLoadBalancerListByCertIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeLoadBalancerListByCertId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoadBalancerListByCertId require credential")
@@ -3289,6 +3334,7 @@ func (c *Client) DescribeLoadBalancerOverviewWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeLoadBalancerOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeLoadBalancerOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoadBalancerOverview require credential")
@@ -3346,6 +3392,7 @@ func (c *Client) DescribeLoadBalancerTrafficWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeLoadBalancerTrafficRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeLoadBalancerTraffic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoadBalancerTraffic require credential")
@@ -3415,6 +3462,7 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLoadBalancersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeLoadBalancers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoadBalancers require credential")
@@ -3480,6 +3528,7 @@ func (c *Client) DescribeLoadBalancersDetailWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeLoadBalancersDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeLoadBalancersDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLoadBalancersDetail require credential")
@@ -3533,6 +3582,7 @@ func (c *Client) DescribeQuotaWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeQuota require credential")
@@ -3598,6 +3648,7 @@ func (c *Client) DescribeResourcesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResources require credential")
@@ -3667,6 +3718,7 @@ func (c *Client) DescribeRewriteWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRewriteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeRewrite")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRewrite require credential")
@@ -3724,6 +3776,7 @@ func (c *Client) DescribeTargetGroupInstancesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeTargetGroupInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeTargetGroupInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTargetGroupInstances require credential")
@@ -3781,6 +3834,7 @@ func (c *Client) DescribeTargetGroupListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeTargetGroupListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeTargetGroupList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTargetGroupList require credential")
@@ -3838,6 +3892,7 @@ func (c *Client) DescribeTargetGroupsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTargetGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeTargetGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTargetGroups require credential")
@@ -3903,6 +3958,7 @@ func (c *Client) DescribeTargetHealthWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTargetHealthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeTargetHealth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTargetHealth require credential")
@@ -3968,6 +4024,7 @@ func (c *Client) DescribeTargetsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTargets require credential")
@@ -4023,6 +4080,7 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskStatus require credential")
@@ -4086,6 +4144,7 @@ func (c *Client) DisassociateCustomizedConfigWithContext(ctx context.Context, re
     if request == nil {
         request = NewDisassociateCustomizedConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DisassociateCustomizedConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateCustomizedConfig require credential")
@@ -4153,6 +4212,7 @@ func (c *Client) DisassociateTargetGroupsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDisassociateTargetGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DisassociateTargetGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateTargetGroups require credential")
@@ -4210,6 +4270,7 @@ func (c *Client) InquiryPriceCreateLoadBalancerWithContext(ctx context.Context, 
     if request == nil {
         request = NewInquiryPriceCreateLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "InquiryPriceCreateLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceCreateLoadBalancer require credential")
@@ -4267,6 +4328,7 @@ func (c *Client) InquiryPriceModifyLoadBalancerWithContext(ctx context.Context, 
     if request == nil {
         request = NewInquiryPriceModifyLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "InquiryPriceModifyLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceModifyLoadBalancer require credential")
@@ -4324,6 +4386,7 @@ func (c *Client) InquiryPriceRefundLoadBalancerWithContext(ctx context.Context, 
     if request == nil {
         request = NewInquiryPriceRefundLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "InquiryPriceRefundLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceRefundLoadBalancer require credential")
@@ -4381,6 +4444,7 @@ func (c *Client) InquiryPriceRenewLoadBalancerWithContext(ctx context.Context, r
     if request == nil {
         request = NewInquiryPriceRenewLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "InquiryPriceRenewLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquiryPriceRenewLoadBalancer require credential")
@@ -4464,6 +4528,7 @@ func (c *Client) ManualRewriteWithContext(ctx context.Context, request *ManualRe
     if request == nil {
         request = NewManualRewriteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ManualRewrite")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ManualRewrite require credential")
@@ -4529,6 +4594,7 @@ func (c *Client) MigrateClassicalLoadBalancersWithContext(ctx context.Context, r
     if request == nil {
         request = NewMigrateClassicalLoadBalancersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "MigrateClassicalLoadBalancers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MigrateClassicalLoadBalancers require credential")
@@ -4596,6 +4662,7 @@ func (c *Client) ModifyBlockIPListWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyBlockIPListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyBlockIPList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBlockIPList require credential")
@@ -4655,6 +4722,7 @@ func (c *Client) ModifyCustomizedConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyCustomizedConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyCustomizedConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCustomizedConfig require credential")
@@ -4722,6 +4790,7 @@ func (c *Client) ModifyDomainWithContext(ctx context.Context, request *ModifyDom
     if request == nil {
         request = NewModifyDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDomain require credential")
@@ -4793,6 +4862,7 @@ func (c *Client) ModifyDomainAttributesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyDomainAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyDomainAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDomainAttributes require credential")
@@ -4868,6 +4938,7 @@ func (c *Client) ModifyFunctionTargetsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyFunctionTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyFunctionTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFunctionTargets require credential")
@@ -4937,6 +5008,7 @@ func (c *Client) ModifyListenerWithContext(ctx context.Context, request *ModifyL
     if request == nil {
         request = NewModifyListenerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyListener")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyListener require credential")
@@ -5020,6 +5092,7 @@ func (c *Client) ModifyLoadBalancerAttributesWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyLoadBalancerAttributesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyLoadBalancerAttributes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLoadBalancerAttributes require credential")
@@ -5089,6 +5162,7 @@ func (c *Client) ModifyLoadBalancerMixIpTargetWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyLoadBalancerMixIpTargetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyLoadBalancerMixIpTarget")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLoadBalancerMixIpTarget require credential")
@@ -5168,6 +5242,7 @@ func (c *Client) ModifyLoadBalancerSlaWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyLoadBalancerSlaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyLoadBalancerSla")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLoadBalancerSla require credential")
@@ -5233,6 +5308,7 @@ func (c *Client) ModifyLoadBalancersProjectWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyLoadBalancersProjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyLoadBalancersProject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLoadBalancersProject require credential")
@@ -5302,6 +5378,7 @@ func (c *Client) ModifyRuleWithContext(ctx context.Context, request *ModifyRuleR
     if request == nil {
         request = NewModifyRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyRule require credential")
@@ -5359,6 +5436,7 @@ func (c *Client) ModifyTargetGroupAttributeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyTargetGroupAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyTargetGroupAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTargetGroupAttribute require credential")
@@ -5424,6 +5502,7 @@ func (c *Client) ModifyTargetGroupInstancesPortWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyTargetGroupInstancesPortRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyTargetGroupInstancesPort")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTargetGroupInstancesPort require credential")
@@ -5487,6 +5566,7 @@ func (c *Client) ModifyTargetGroupInstancesWeightWithContext(ctx context.Context
     if request == nil {
         request = NewModifyTargetGroupInstancesWeightRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyTargetGroupInstancesWeight")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTargetGroupInstancesWeight require credential")
@@ -5556,6 +5636,7 @@ func (c *Client) ModifyTargetPortWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyTargetPortRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyTargetPort")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTargetPort require credential")
@@ -5625,6 +5706,7 @@ func (c *Client) ModifyTargetWeightWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyTargetWeightRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyTargetWeight")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTargetWeight require credential")
@@ -5748,6 +5830,7 @@ func (c *Client) RegisterFunctionTargetsWithContext(ctx context.Context, request
     if request == nil {
         request = NewRegisterFunctionTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "RegisterFunctionTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterFunctionTargets require credential")
@@ -5813,6 +5896,7 @@ func (c *Client) RegisterTargetGroupInstancesWithContext(ctx context.Context, re
     if request == nil {
         request = NewRegisterTargetGroupInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "RegisterTargetGroupInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterTargetGroupInstances require credential")
@@ -5888,6 +5972,7 @@ func (c *Client) RegisterTargetsWithContext(ctx context.Context, request *Regist
     if request == nil {
         request = NewRegisterTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "RegisterTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterTargets require credential")
@@ -5953,6 +6038,7 @@ func (c *Client) RegisterTargetsWithClassicalLBWithContext(ctx context.Context, 
     if request == nil {
         request = NewRegisterTargetsWithClassicalLBRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "RegisterTargetsWithClassicalLB")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterTargetsWithClassicalLB require credential")
@@ -6024,6 +6110,7 @@ func (c *Client) ReplaceCertForLoadBalancersWithContext(ctx context.Context, req
     if request == nil {
         request = NewReplaceCertForLoadBalancersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ReplaceCertForLoadBalancers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReplaceCertForLoadBalancers require credential")
@@ -6093,6 +6180,7 @@ func (c *Client) SetCustomizedConfigForLoadBalancerWithContext(ctx context.Conte
     if request == nil {
         request = NewSetCustomizedConfigForLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "SetCustomizedConfigForLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetCustomizedConfigForLoadBalancer require credential")
@@ -6160,6 +6248,7 @@ func (c *Client) SetLoadBalancerClsLogWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSetLoadBalancerClsLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "SetLoadBalancerClsLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetLoadBalancerClsLog require credential")
@@ -6233,6 +6322,7 @@ func (c *Client) SetLoadBalancerSecurityGroupsWithContext(ctx context.Context, r
     if request == nil {
         request = NewSetLoadBalancerSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "SetLoadBalancerSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetLoadBalancerSecurityGroups require credential")
@@ -6308,6 +6398,7 @@ func (c *Client) SetLoadBalancerStartStatusWithContext(ctx context.Context, requ
     if request == nil {
         request = NewSetLoadBalancerStartStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "SetLoadBalancerStartStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetLoadBalancerStartStatus require credential")
@@ -6373,6 +6464,7 @@ func (c *Client) SetSecurityGroupForLoadbalancersWithContext(ctx context.Context
     if request == nil {
         request = NewSetSecurityGroupForLoadbalancersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "SetSecurityGroupForLoadbalancers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetSecurityGroupForLoadbalancers require credential")

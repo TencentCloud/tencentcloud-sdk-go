@@ -92,6 +92,7 @@ func (c *Client) CreateStructureTaskWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateStructureTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "CreateStructureTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateStructureTask require credential")
@@ -145,6 +146,7 @@ func (c *Client) DescribeStructCompareDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeStructCompareDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "DescribeStructCompareData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStructCompareData require credential")
@@ -204,6 +206,7 @@ func (c *Client) DescribeStructureTaskResultWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeStructureTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cii", APIVersion, "DescribeStructureTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStructureTaskResult require credential")

@@ -110,6 +110,7 @@ func (c *Client) EvaluationWithContext(ctx context.Context, request *EvaluationR
     if request == nil {
         request = NewEvaluationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "hcm", APIVersion, "Evaluation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("Evaluation require credential")

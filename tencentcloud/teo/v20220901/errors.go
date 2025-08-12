@@ -98,6 +98,12 @@ const (
 	// 操作失败。
 	FAILEDOPERATION_MODIFYFAILED = "FailedOperation.ModifyFailed"
 
+	// 该产品即将下架，操作被拒绝。
+	FAILEDOPERATION_PRODUCTDISCONTINUED = "FailedOperation.ProductDiscontinued"
+
+	// 没有开通本产品，请开通后再尝试。
+	FAILEDOPERATION_PRODUCTNOTACTIVATED = "FailedOperation.ProductNotActivated"
+
 	// 实时日志认证失败
 	FAILEDOPERATION_REALTIMELOGAUTHFAILURE = "FailedOperation.RealtimeLogAuthFailure"
 
@@ -106,6 +112,9 @@ const (
 
 	// 该站点下函数规则操作冲突。
 	FAILEDOPERATION_RULEOPERATIONCONFLICT = "FailedOperation.RuleOperationConflict"
+
+	// 该站点下的模板数量超过最大数量限制。
+	FAILEDOPERATION_TEMPLATEOVERLIMIT = "FailedOperation.TemplateOverLimit"
 
 	// 未知的配置组类型。
 	FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = "FailedOperation.UnknownConfigGroupType"
@@ -148,6 +157,9 @@ const (
 
 	// 未知错误。
 	INTERNALERROR_UNKNOWERROR = "InternalError.UnknowError"
+
+	// 无效的过滤器
+	INVALIDFILTER = "InvalidFilter"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
@@ -307,6 +319,9 @@ const (
 
 	// 函数名称和本账号下其他函数冲突。
 	INVALIDPARAMETER_FUNCTIONNAMECONFLICT = "InvalidParameter.FunctionNameConflict"
+
+	// GroupBy参数超过数量限制。
+	INVALIDPARAMETER_GROUPBYLIMITEXCEEDED = "InvalidParameter.GroupByLimitExceeded"
 
 	// 开启 Grpc 协议支持需要同时开启 HTTP/2 协议支持。
 	INVALIDPARAMETER_GRPCREQUIREHTTP2 = "InvalidParameter.GrpcRequireHttp2"
@@ -884,6 +899,12 @@ const (
 	// 请输入合法的共享 CNAME 前缀，最大支持50个字符。
 	INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = "InvalidParameterValue.SharedCNAMEPrefixNotMatch"
 
+	// 输入模板中包含不是自定义模板类型的模板。
+	INVALIDPARAMETERVALUE_TEMPLATENOTCUSTOM = "InvalidParameterValue.TemplateNotCustom"
+
+	// 模板中包含不存在的模板，请检查模板 id 是否正确。
+	INVALIDPARAMETERVALUE_TEMPLATENOTFOUND = "InvalidParameterValue.TemplateNotFound"
+
 	// 暂不支持当前域名后缀接入，如您需要使用请联系我们。
 	INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = "InvalidParameterValue.TopLevelDomainNotSupport"
 
@@ -904,6 +925,12 @@ const (
 
 	// 站点不支持以子域名接入，请以二级域名作为站点接入。
 	INVALIDPARAMETERVALUE_ZONENAMENOTSUPPORTSUBDOMAIN = "InvalidParameterValue.ZoneNameNotSupportSubDomain"
+
+	// 没有对应的站点，请确保站点信息填写正确。
+	INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+
+	// 站点已停用，请检查当前站点状态。
+	INVALIDPARAMETERVALUE_ZONEPAUSED = "InvalidParameterValue.ZonePaused"
 
 	// 该同名站点标识已被占用，请重新输入。
 	INVALIDPARAMETERVALUE_ZONESAMEASNAME = "InvalidParameterValue.ZoneSameAsName"
@@ -1147,6 +1174,9 @@ const (
 
 	// 当前有互相排斥的请求操作并行发起，请稍后重试。
 	OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = "OperationDenied.ResourceLockedTemporary"
+
+	// 高级防护资源售卖火爆，已售罄，正在加紧补货中，当前无法开启高级防护，请您耐心等待。
+	OPERATIONDENIED_SECURITYLACKOFRESOURCES = "OperationDenied.SecurityLackOfResources"
 
 	// 绑定在共享 CNAME 中的域名不允许变更 中国大陆网络优化（国际加速）访问，如果您需要单独变更，请先将域名从共享 CNAME 中解绑。
 	OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDACCELERATEMAINLAND = "OperationDenied.SharedCNAMEUnsupportedAccelerateMainland"

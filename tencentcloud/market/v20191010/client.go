@@ -76,6 +76,7 @@ func (c *Client) FlowProductRemindWithContext(ctx context.Context, request *Flow
     if request == nil {
         request = NewFlowProductRemindRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "market", APIVersion, "FlowProductRemind")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FlowProductRemind require credential")
@@ -133,6 +134,7 @@ func (c *Client) GetUsagePlanUsageAmountWithContext(ctx context.Context, request
     if request == nil {
         request = NewGetUsagePlanUsageAmountRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "market", APIVersion, "GetUsagePlanUsageAmount")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetUsagePlanUsageAmount require credential")

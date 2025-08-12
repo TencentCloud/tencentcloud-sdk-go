@@ -1133,6 +1133,9 @@ type ServerBaseInfo struct {
 
 	// 流量类型，目前只有 FLOW
 	TrafficType *string `json:"TrafficType,omitnil,omitempty" name:"TrafficType"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type ServerManageTaskInfo struct {

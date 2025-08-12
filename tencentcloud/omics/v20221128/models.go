@@ -98,6 +98,9 @@ type ClusterOption struct {
 
 	// 系统节点池实例数量。
 	SystemNodeCount *uint64 `json:"SystemNodeCount,omitnil,omitempty" name:"SystemNodeCount"`
+
+	// 纳管环境自动升配
+	AutoUpgradeClusterLevel *bool `json:"AutoUpgradeClusterLevel,omitnil,omitempty" name:"AutoUpgradeClusterLevel"`
 }
 
 type CosFileInfo struct {

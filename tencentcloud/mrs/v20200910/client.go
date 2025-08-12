@@ -76,6 +76,7 @@ func (c *Client) DrugInstructionObjectWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDrugInstructionObjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mrs", APIVersion, "DrugInstructionObject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DrugInstructionObject require credential")
@@ -127,6 +128,7 @@ func (c *Client) ImageMaskWithContext(ctx context.Context, request *ImageMaskReq
     if request == nil {
         request = NewImageMaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mrs", APIVersion, "ImageMask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageMask require credential")
@@ -180,6 +182,7 @@ func (c *Client) ImageMaskAsyncWithContext(ctx context.Context, request *ImageMa
     if request == nil {
         request = NewImageMaskAsyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mrs", APIVersion, "ImageMaskAsync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageMaskAsync require credential")
@@ -237,6 +240,7 @@ func (c *Client) ImageMaskAsyncGetResultWithContext(ctx context.Context, request
     if request == nil {
         request = NewImageMaskAsyncGetResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mrs", APIVersion, "ImageMaskAsyncGetResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageMaskAsyncGetResult require credential")
@@ -330,6 +334,7 @@ func (c *Client) ImageToClassWithContext(ctx context.Context, request *ImageToCl
     if request == nil {
         request = NewImageToClassRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mrs", APIVersion, "ImageToClass")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageToClass require credential")
@@ -425,6 +430,7 @@ func (c *Client) ImageToObjectWithContext(ctx context.Context, request *ImageToO
     if request == nil {
         request = NewImageToObjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mrs", APIVersion, "ImageToObject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImageToObject require credential")
@@ -524,6 +530,7 @@ func (c *Client) TextToClassWithContext(ctx context.Context, request *TextToClas
     if request == nil {
         request = NewTextToClassRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mrs", APIVersion, "TextToClass")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextToClass require credential")
@@ -625,6 +632,7 @@ func (c *Client) TextToObjectWithContext(ctx context.Context, request *TextToObj
     if request == nil {
         request = NewTextToObjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mrs", APIVersion, "TextToObject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextToObject require credential")
@@ -680,6 +688,7 @@ func (c *Client) TurnPDFToObjectWithContext(ctx context.Context, request *TurnPD
     if request == nil {
         request = NewTurnPDFToObjectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mrs", APIVersion, "TurnPDFToObject")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TurnPDFToObject require credential")
@@ -731,6 +740,7 @@ func (c *Client) TurnPDFToObjectAsyncWithContext(ctx context.Context, request *T
     if request == nil {
         request = NewTurnPDFToObjectAsyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mrs", APIVersion, "TurnPDFToObjectAsync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TurnPDFToObjectAsync require credential")
@@ -784,6 +794,7 @@ func (c *Client) TurnPDFToObjectAsyncGetResultWithContext(ctx context.Context, r
     if request == nil {
         request = NewTurnPDFToObjectAsyncGetResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "mrs", APIVersion, "TurnPDFToObjectAsyncGetResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TurnPDFToObjectAsyncGetResult require credential")

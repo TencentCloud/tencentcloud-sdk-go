@@ -116,6 +116,7 @@ func (c *Client) AcquireClusterAdminRoleWithContext(ctx context.Context, request
     if request == nil {
         request = NewAcquireClusterAdminRoleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "AcquireClusterAdminRole")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AcquireClusterAdminRole require credential")
@@ -189,6 +190,7 @@ func (c *Client) AddClusterCIDRWithContext(ctx context.Context, request *AddClus
     if request == nil {
         request = NewAddClusterCIDRRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "AddClusterCIDR")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddClusterCIDR require credential")
@@ -278,6 +280,7 @@ func (c *Client) AddExistedInstancesWithContext(ctx context.Context, request *Ad
     if request == nil {
         request = NewAddExistedInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "AddExistedInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddExistedInstances require credential")
@@ -331,6 +334,7 @@ func (c *Client) AddNodeToNodePoolWithContext(ctx context.Context, request *AddN
     if request == nil {
         request = NewAddNodeToNodePoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "AddNodeToNodePool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddNodeToNodePool require credential")
@@ -402,6 +406,7 @@ func (c *Client) AddVpcCniSubnetsWithContext(ctx context.Context, request *AddVp
     if request == nil {
         request = NewAddVpcCniSubnetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "AddVpcCniSubnets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddVpcCniSubnets require credential")
@@ -473,6 +478,7 @@ func (c *Client) CancelClusterReleaseWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCancelClusterReleaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CancelClusterRelease")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelClusterRelease require credential")
@@ -570,6 +576,7 @@ func (c *Client) CheckEdgeClusterCIDRWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCheckEdgeClusterCIDRRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CheckEdgeClusterCIDR")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckEdgeClusterCIDR require credential")
@@ -643,6 +650,7 @@ func (c *Client) CheckInstancesUpgradeAbleWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCheckInstancesUpgradeAbleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CheckInstancesUpgradeAble")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckInstancesUpgradeAble require credential")
@@ -700,6 +708,7 @@ func (c *Client) CreateBackupStorageLocationWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateBackupStorageLocationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateBackupStorageLocation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBackupStorageLocation require credential")
@@ -811,6 +820,7 @@ func (c *Client) CreateCLSLogConfigWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCLSLogConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateCLSLogConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCLSLogConfig require credential")
@@ -986,6 +996,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCluster require credential")
@@ -1075,6 +1086,7 @@ func (c *Client) CreateClusterEndpointWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateClusterEndpointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateClusterEndpoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterEndpoint require credential")
@@ -1160,6 +1172,7 @@ func (c *Client) CreateClusterEndpointVipWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateClusterEndpointVipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateClusterEndpointVip")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterEndpointVip require credential")
@@ -1289,6 +1302,7 @@ func (c *Client) CreateClusterInstancesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterInstances require credential")
@@ -1364,6 +1378,7 @@ func (c *Client) CreateClusterNodePoolWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateClusterNodePoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateClusterNodePool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterNodePool require credential")
@@ -1437,6 +1452,7 @@ func (c *Client) CreateClusterReleaseWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateClusterReleaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateClusterRelease")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterRelease require credential")
@@ -1514,6 +1530,7 @@ func (c *Client) CreateClusterRouteWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateClusterRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateClusterRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterRoute require credential")
@@ -1593,6 +1610,7 @@ func (c *Client) CreateClusterRouteTableWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateClusterRouteTableRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateClusterRouteTable")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterRouteTable require credential")
@@ -1654,6 +1672,7 @@ func (c *Client) CreateClusterVirtualNodeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateClusterVirtualNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateClusterVirtualNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterVirtualNode require credential")
@@ -1719,6 +1738,7 @@ func (c *Client) CreateClusterVirtualNodePoolWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateClusterVirtualNodePoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateClusterVirtualNodePool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterVirtualNodePool require credential")
@@ -1790,6 +1810,7 @@ func (c *Client) CreateECMInstancesWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateECMInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateECMInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateECMInstances require credential")
@@ -1861,6 +1882,7 @@ func (c *Client) CreateEKSClusterWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateEKSClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateEKSCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEKSCluster require credential")
@@ -1922,6 +1944,7 @@ func (c *Client) CreateEKSContainerInstancesWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateEKSContainerInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateEKSContainerInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEKSContainerInstances require credential")
@@ -1993,6 +2016,7 @@ func (c *Client) CreateEdgeCVMInstancesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateEdgeCVMInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateEdgeCVMInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEdgeCVMInstances require credential")
@@ -2044,6 +2068,7 @@ func (c *Client) CreateEdgeLogConfigWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateEdgeLogConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateEdgeLogConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEdgeLogConfig require credential")
@@ -2117,6 +2142,7 @@ func (c *Client) CreateEksLogConfigWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateEksLogConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateEksLogConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEksLogConfig require credential")
@@ -2168,6 +2194,7 @@ func (c *Client) CreateImageCacheWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateImageCacheRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateImageCache")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateImageCache require credential")
@@ -2237,6 +2264,7 @@ func (c *Client) CreatePrometheusAlertPolicyWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreatePrometheusAlertPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreatePrometheusAlertPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrometheusAlertPolicy require credential")
@@ -2296,6 +2324,7 @@ func (c *Client) CreatePrometheusAlertRuleWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreatePrometheusAlertRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreatePrometheusAlertRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrometheusAlertRule require credential")
@@ -2363,6 +2392,7 @@ func (c *Client) CreatePrometheusClusterAgentWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreatePrometheusClusterAgentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreatePrometheusClusterAgent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrometheusClusterAgent require credential")
@@ -2432,6 +2462,7 @@ func (c *Client) CreatePrometheusConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreatePrometheusConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreatePrometheusConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrometheusConfig require credential")
@@ -2499,6 +2530,7 @@ func (c *Client) CreatePrometheusDashboardWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreatePrometheusDashboardRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreatePrometheusDashboard")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrometheusDashboard require credential")
@@ -2550,6 +2582,7 @@ func (c *Client) CreatePrometheusGlobalNotificationWithContext(ctx context.Conte
     if request == nil {
         request = NewCreatePrometheusGlobalNotificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreatePrometheusGlobalNotification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrometheusGlobalNotification require credential")
@@ -2617,6 +2650,7 @@ func (c *Client) CreatePrometheusRecordRuleYamlWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreatePrometheusRecordRuleYamlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreatePrometheusRecordRuleYaml")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrometheusRecordRuleYaml require credential")
@@ -2672,6 +2706,7 @@ func (c *Client) CreatePrometheusTempWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreatePrometheusTempRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreatePrometheusTemp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrometheusTemp require credential")
@@ -2725,6 +2760,7 @@ func (c *Client) CreatePrometheusTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreatePrometheusTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreatePrometheusTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePrometheusTemplate require credential")
@@ -2786,6 +2822,7 @@ func (c *Client) CreateReservedInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateReservedInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateReservedInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateReservedInstances require credential")
@@ -2855,6 +2892,7 @@ func (c *Client) CreateTKEEdgeClusterWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateTKEEdgeClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateTKEEdgeCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTKEEdgeCluster require credential")
@@ -2924,6 +2962,7 @@ func (c *Client) DeleteAddonWithContext(ctx context.Context, request *DeleteAddo
     if request == nil {
         request = NewDeleteAddonRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteAddon")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAddon require credential")
@@ -2979,6 +3018,7 @@ func (c *Client) DeleteBackupStorageLocationWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteBackupStorageLocationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteBackupStorageLocation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBackupStorageLocation require credential")
@@ -3072,6 +3112,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCluster require credential")
@@ -3157,6 +3198,7 @@ func (c *Client) DeleteClusterAsGroupsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteClusterAsGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteClusterAsGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterAsGroups require credential")
@@ -3248,6 +3290,7 @@ func (c *Client) DeleteClusterEndpointWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteClusterEndpointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteClusterEndpoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterEndpoint require credential")
@@ -3333,6 +3376,7 @@ func (c *Client) DeleteClusterEndpointVipWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteClusterEndpointVipRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteClusterEndpointVip")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterEndpointVip require credential")
@@ -3412,6 +3456,7 @@ func (c *Client) DeleteClusterInstancesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterInstances require credential")
@@ -3473,6 +3518,7 @@ func (c *Client) DeleteClusterNodePoolWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteClusterNodePoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteClusterNodePool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterNodePool require credential")
@@ -3536,6 +3582,7 @@ func (c *Client) DeleteClusterRouteWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteClusterRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteClusterRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterRoute require credential")
@@ -3595,6 +3642,7 @@ func (c *Client) DeleteClusterRouteTableWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteClusterRouteTableRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteClusterRouteTable")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterRouteTable require credential")
@@ -3650,6 +3698,7 @@ func (c *Client) DeleteClusterVirtualNodeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteClusterVirtualNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteClusterVirtualNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterVirtualNode require credential")
@@ -3707,6 +3756,7 @@ func (c *Client) DeleteClusterVirtualNodePoolWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteClusterVirtualNodePoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteClusterVirtualNodePool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterVirtualNodePool require credential")
@@ -3778,6 +3828,7 @@ func (c *Client) DeleteECMInstancesWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteECMInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteECMInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteECMInstances require credential")
@@ -3849,6 +3900,7 @@ func (c *Client) DeleteEKSClusterWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteEKSClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteEKSCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEKSCluster require credential")
@@ -3914,6 +3966,7 @@ func (c *Client) DeleteEKSContainerInstancesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteEKSContainerInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteEKSContainerInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEKSContainerInstances require credential")
@@ -3985,6 +4038,7 @@ func (c *Client) DeleteEdgeCVMInstancesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteEdgeCVMInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteEdgeCVMInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEdgeCVMInstances require credential")
@@ -4056,6 +4110,7 @@ func (c *Client) DeleteEdgeClusterInstancesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteEdgeClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteEdgeClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteEdgeClusterInstances require credential")
@@ -4109,6 +4164,7 @@ func (c *Client) DeleteImageCachesWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteImageCachesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteImageCaches")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteImageCaches require credential")
@@ -4168,6 +4224,7 @@ func (c *Client) DeleteLogConfigsWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteLogConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteLogConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLogConfigs require credential")
@@ -4225,6 +4282,7 @@ func (c *Client) DeletePrometheusAlertPolicyWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeletePrometheusAlertPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeletePrometheusAlertPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrometheusAlertPolicy require credential")
@@ -4282,6 +4340,7 @@ func (c *Client) DeletePrometheusAlertRuleWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeletePrometheusAlertRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeletePrometheusAlertRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrometheusAlertRule require credential")
@@ -4353,6 +4412,7 @@ func (c *Client) DeletePrometheusClusterAgentWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeletePrometheusClusterAgentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeletePrometheusClusterAgent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrometheusClusterAgent require credential")
@@ -4416,6 +4476,7 @@ func (c *Client) DeletePrometheusConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeletePrometheusConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeletePrometheusConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrometheusConfig require credential")
@@ -4473,6 +4534,7 @@ func (c *Client) DeletePrometheusRecordRuleYamlWithContext(ctx context.Context, 
     if request == nil {
         request = NewDeletePrometheusRecordRuleYamlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeletePrometheusRecordRuleYaml")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrometheusRecordRuleYaml require credential")
@@ -4536,6 +4598,7 @@ func (c *Client) DeletePrometheusTempWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeletePrometheusTempRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeletePrometheusTemp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrometheusTemp require credential")
@@ -4605,6 +4668,7 @@ func (c *Client) DeletePrometheusTempSyncWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeletePrometheusTempSyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeletePrometheusTempSync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrometheusTempSync require credential")
@@ -4664,6 +4728,7 @@ func (c *Client) DeletePrometheusTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeletePrometheusTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeletePrometheusTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrometheusTemplate require credential")
@@ -4731,6 +4796,7 @@ func (c *Client) DeletePrometheusTemplateSyncWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeletePrometheusTemplateSyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeletePrometheusTemplateSync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePrometheusTemplateSync require credential")
@@ -4788,6 +4854,7 @@ func (c *Client) DeleteReservedInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteReservedInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteReservedInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteReservedInstances require credential")
@@ -4857,6 +4924,7 @@ func (c *Client) DeleteTKEEdgeClusterWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteTKEEdgeClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteTKEEdgeCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTKEEdgeCluster require credential")
@@ -4926,6 +4994,7 @@ func (c *Client) DescribeAddonWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeAddonRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeAddon")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAddon require credential")
@@ -4975,6 +5044,7 @@ func (c *Client) DescribeAddonValuesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAddonValuesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeAddonValues")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAddonValues require credential")
@@ -5038,6 +5108,7 @@ func (c *Client) DescribeAvailableClusterVersionWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeAvailableClusterVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeAvailableClusterVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAvailableClusterVersion require credential")
@@ -5105,6 +5176,7 @@ func (c *Client) DescribeAvailableTKEEdgeVersionWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeAvailableTKEEdgeVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeAvailableTKEEdgeVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAvailableTKEEdgeVersion require credential")
@@ -5160,6 +5232,7 @@ func (c *Client) DescribeBackupStorageLocationsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeBackupStorageLocationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeBackupStorageLocations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBackupStorageLocations require credential")
@@ -5209,6 +5282,7 @@ func (c *Client) DescribeBatchModifyTagsStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeBatchModifyTagsStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeBatchModifyTagsStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBatchModifyTagsStatus require credential")
@@ -5284,6 +5358,7 @@ func (c *Client) DescribeClusterAsGroupOptionWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeClusterAsGroupOptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterAsGroupOption")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterAsGroupOption require credential")
@@ -5363,6 +5438,7 @@ func (c *Client) DescribeClusterAsGroupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeClusterAsGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterAsGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterAsGroups require credential")
@@ -5420,6 +5496,7 @@ func (c *Client) DescribeClusterAuthenticationOptionsWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeClusterAuthenticationOptionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterAuthenticationOptions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterAuthenticationOptions require credential")
@@ -5487,6 +5564,7 @@ func (c *Client) DescribeClusterCommonNamesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeClusterCommonNamesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterCommonNames")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterCommonNames require credential")
@@ -5544,6 +5622,7 @@ func (c *Client) DescribeClusterControllersWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeClusterControllersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterControllers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterControllers require credential")
@@ -5639,6 +5718,7 @@ func (c *Client) DescribeClusterEndpointStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeClusterEndpointStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterEndpointStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterEndpointStatus require credential")
@@ -5730,6 +5810,7 @@ func (c *Client) DescribeClusterEndpointVipStatusWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeClusterEndpointVipStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterEndpointVipStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterEndpointVipStatus require credential")
@@ -5803,6 +5884,7 @@ func (c *Client) DescribeClusterEndpointsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterEndpointsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterEndpoints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterEndpoints require credential")
@@ -5862,6 +5944,7 @@ func (c *Client) DescribeClusterExtraArgsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterExtraArgsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterExtraArgs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterExtraArgs require credential")
@@ -5919,6 +6002,7 @@ func (c *Client) DescribeClusterInspectionResultsOverviewWithContext(ctx context
     if request == nil {
         request = NewDescribeClusterInspectionResultsOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterInspectionResultsOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterInspectionResultsOverview require credential")
@@ -5990,6 +6074,7 @@ func (c *Client) DescribeClusterInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterInstances require credential")
@@ -6083,6 +6168,7 @@ func (c *Client) DescribeClusterKubeconfigWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeClusterKubeconfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterKubeconfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterKubeconfig require credential")
@@ -6138,6 +6224,7 @@ func (c *Client) DescribeClusterLevelAttributeWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeClusterLevelAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterLevelAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterLevelAttribute require credential")
@@ -6193,6 +6280,7 @@ func (c *Client) DescribeClusterLevelChangeRecordsWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeClusterLevelChangeRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterLevelChangeRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterLevelChangeRecords require credential")
@@ -6252,6 +6340,7 @@ func (c *Client) DescribeClusterNodePoolDetailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeClusterNodePoolDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterNodePoolDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterNodePoolDetail require credential")
@@ -6311,6 +6400,7 @@ func (c *Client) DescribeClusterNodePoolsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterNodePoolsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterNodePools")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterNodePools require credential")
@@ -6386,6 +6476,7 @@ func (c *Client) DescribeClusterPendingReleasesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeClusterPendingReleasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterPendingReleases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterPendingReleases require credential")
@@ -6461,6 +6552,7 @@ func (c *Client) DescribeClusterReleaseDetailsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeClusterReleaseDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterReleaseDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterReleaseDetails require credential")
@@ -6534,6 +6626,7 @@ func (c *Client) DescribeClusterReleaseHistoryWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeClusterReleaseHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterReleaseHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterReleaseHistory require credential")
@@ -6609,6 +6702,7 @@ func (c *Client) DescribeClusterReleasesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeClusterReleasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterReleases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterReleases require credential")
@@ -6658,6 +6752,7 @@ func (c *Client) DescribeClusterRouteTablesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeClusterRouteTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterRouteTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterRouteTables require credential")
@@ -6713,6 +6808,7 @@ func (c *Client) DescribeClusterRoutesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeClusterRoutesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterRoutes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterRoutes require credential")
@@ -6824,6 +6920,7 @@ func (c *Client) DescribeClusterSecurityWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeClusterSecurityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterSecurity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterSecurity require credential")
@@ -6905,6 +7002,7 @@ func (c *Client) DescribeClusterStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeClusterStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterStatus require credential")
@@ -6964,6 +7062,7 @@ func (c *Client) DescribeClusterVirtualNodeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeClusterVirtualNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterVirtualNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterVirtualNode require credential")
@@ -7021,6 +7120,7 @@ func (c *Client) DescribeClusterVirtualNodePoolsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeClusterVirtualNodePoolsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterVirtualNodePools")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterVirtualNodePools require credential")
@@ -7098,6 +7198,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusters require credential")
@@ -7169,6 +7270,7 @@ func (c *Client) DescribeECMInstancesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeECMInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeECMInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeECMInstances require credential")
@@ -7242,6 +7344,7 @@ func (c *Client) DescribeEKSClusterCredentialWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeEKSClusterCredentialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEKSClusterCredential")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEKSClusterCredential require credential")
@@ -7315,6 +7418,7 @@ func (c *Client) DescribeEKSClustersWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeEKSClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEKSClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEKSClusters require credential")
@@ -7378,6 +7482,7 @@ func (c *Client) DescribeEKSContainerInstanceEventWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeEKSContainerInstanceEventRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEKSContainerInstanceEvent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEKSContainerInstanceEvent require credential")
@@ -7439,6 +7544,7 @@ func (c *Client) DescribeEKSContainerInstanceRegionsWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeEKSContainerInstanceRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEKSContainerInstanceRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEKSContainerInstanceRegions require credential")
@@ -7496,6 +7602,7 @@ func (c *Client) DescribeEKSContainerInstancesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeEKSContainerInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEKSContainerInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEKSContainerInstances require credential")
@@ -7547,6 +7654,7 @@ func (c *Client) DescribeEdgeAvailableExtraArgsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeEdgeAvailableExtraArgsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEdgeAvailableExtraArgs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEdgeAvailableExtraArgs require credential")
@@ -7618,6 +7726,7 @@ func (c *Client) DescribeEdgeCVMInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeEdgeCVMInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEdgeCVMInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEdgeCVMInstances require credential")
@@ -7679,6 +7788,7 @@ func (c *Client) DescribeEdgeClusterExtraArgsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeEdgeClusterExtraArgsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEdgeClusterExtraArgs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEdgeClusterExtraArgs require credential")
@@ -7750,6 +7860,7 @@ func (c *Client) DescribeEdgeClusterInstancesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeEdgeClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEdgeClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEdgeClusterInstances require credential")
@@ -7803,6 +7914,7 @@ func (c *Client) DescribeEdgeClusterUpgradeInfoWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeEdgeClusterUpgradeInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEdgeClusterUpgradeInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEdgeClusterUpgradeInfo require credential")
@@ -7864,6 +7976,7 @@ func (c *Client) DescribeEdgeLogSwitchesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeEdgeLogSwitchesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEdgeLogSwitches")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEdgeLogSwitches require credential")
@@ -7925,6 +8038,7 @@ func (c *Client) DescribeEksContainerInstanceLogWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeEksContainerInstanceLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEksContainerInstanceLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEksContainerInstanceLog require credential")
@@ -7978,6 +8092,7 @@ func (c *Client) DescribeEnableVpcCniProgressWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeEnableVpcCniProgressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEnableVpcCniProgress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnableVpcCniProgress require credential")
@@ -8027,6 +8142,7 @@ func (c *Client) DescribeEncryptionStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeEncryptionStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeEncryptionStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEncryptionStatus require credential")
@@ -8144,6 +8260,7 @@ func (c *Client) DescribeExistedInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeExistedInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeExistedInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExistedInstances require credential")
@@ -8205,6 +8322,7 @@ func (c *Client) DescribeExternalNodeSupportConfigWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeExternalNodeSupportConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeExternalNodeSupportConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExternalNodeSupportConfig require credential")
@@ -8260,6 +8378,7 @@ func (c *Client) DescribeIPAMDWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeIPAMDRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeIPAMD")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIPAMD require credential")
@@ -8311,6 +8430,7 @@ func (c *Client) DescribeImageCachesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeImageCachesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeImageCaches")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageCaches require credential")
@@ -8396,6 +8516,7 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImages require credential")
@@ -8455,6 +8576,7 @@ func (c *Client) DescribeLogConfigsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeLogConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeLogConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogConfigs require credential")
@@ -8522,6 +8644,7 @@ func (c *Client) DescribeLogSwitchesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeLogSwitchesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeLogSwitches")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogSwitches require credential")
@@ -8589,6 +8712,7 @@ func (c *Client) DescribeMasterComponentWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeMasterComponentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeMasterComponent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMasterComponent require credential")
@@ -8648,6 +8772,7 @@ func (c *Client) DescribeOSImagesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeOSImagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeOSImages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOSImages require credential")
@@ -8699,6 +8824,7 @@ func (c *Client) DescribeOpenPolicyListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeOpenPolicyListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeOpenPolicyList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOpenPolicyList require credential")
@@ -8752,6 +8878,7 @@ func (c *Client) DescribePodChargeInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribePodChargeInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePodChargeInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePodChargeInfo require credential")
@@ -8805,6 +8932,7 @@ func (c *Client) DescribePodDeductionRateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribePodDeductionRateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePodDeductionRate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePodDeductionRate require credential")
@@ -8858,6 +8986,7 @@ func (c *Client) DescribePodsBySpecWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePodsBySpecRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePodsBySpec")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePodsBySpec require credential")
@@ -8911,6 +9040,7 @@ func (c *Client) DescribePostNodeResourcesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePostNodeResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePostNodeResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePostNodeResources require credential")
@@ -8968,6 +9098,7 @@ func (c *Client) DescribePrometheusAgentInstancesWithContext(ctx context.Context
     if request == nil {
         request = NewDescribePrometheusAgentInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusAgentInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusAgentInstances require credential")
@@ -9025,6 +9156,7 @@ func (c *Client) DescribePrometheusAgentsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribePrometheusAgentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusAgents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusAgents require credential")
@@ -9094,6 +9226,7 @@ func (c *Client) DescribePrometheusAlertHistoryWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribePrometheusAlertHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusAlertHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusAlertHistory require credential")
@@ -9167,6 +9300,7 @@ func (c *Client) DescribePrometheusAlertPolicyWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribePrometheusAlertPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusAlertPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusAlertPolicy require credential")
@@ -9238,6 +9372,7 @@ func (c *Client) DescribePrometheusAlertRuleWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribePrometheusAlertRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusAlertRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusAlertRule require credential")
@@ -9301,6 +9436,7 @@ func (c *Client) DescribePrometheusClusterAgentsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribePrometheusClusterAgentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusClusterAgents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusClusterAgents require credential")
@@ -9374,6 +9510,7 @@ func (c *Client) DescribePrometheusConfigWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribePrometheusConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusConfig require credential")
@@ -9441,6 +9578,7 @@ func (c *Client) DescribePrometheusGlobalConfigWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribePrometheusGlobalConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusGlobalConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusGlobalConfig require credential")
@@ -9504,6 +9642,7 @@ func (c *Client) DescribePrometheusGlobalNotificationWithContext(ctx context.Con
     if request == nil {
         request = NewDescribePrometheusGlobalNotificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusGlobalNotification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusGlobalNotification require credential")
@@ -9575,6 +9714,7 @@ func (c *Client) DescribePrometheusInstanceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribePrometheusInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusInstance require credential")
@@ -9638,6 +9778,7 @@ func (c *Client) DescribePrometheusInstanceInitStatusWithContext(ctx context.Con
     if request == nil {
         request = NewDescribePrometheusInstanceInitStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusInstanceInitStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusInstanceInitStatus require credential")
@@ -9697,6 +9838,7 @@ func (c *Client) DescribePrometheusInstancesOverviewWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribePrometheusInstancesOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusInstancesOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusInstancesOverview require credential")
@@ -9756,6 +9898,7 @@ func (c *Client) DescribePrometheusOverviewsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribePrometheusOverviewsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusOverviews")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusOverviews require credential")
@@ -9827,6 +9970,7 @@ func (c *Client) DescribePrometheusRecordRulesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribePrometheusRecordRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusRecordRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusRecordRules require credential")
@@ -9894,6 +10038,7 @@ func (c *Client) DescribePrometheusTargetsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePrometheusTargetsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusTargets")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusTargets require credential")
@@ -9951,6 +10096,7 @@ func (c *Client) DescribePrometheusTempWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribePrometheusTempRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusTemp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusTemp require credential")
@@ -10010,6 +10156,7 @@ func (c *Client) DescribePrometheusTempSyncWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribePrometheusTempSyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusTempSync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusTempSync require credential")
@@ -10067,6 +10214,7 @@ func (c *Client) DescribePrometheusTemplateSyncWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribePrometheusTemplateSyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusTemplateSync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusTemplateSync require credential")
@@ -10124,6 +10272,7 @@ func (c *Client) DescribePrometheusTemplatesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribePrometheusTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribePrometheusTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrometheusTemplates require credential")
@@ -10183,6 +10332,7 @@ func (c *Client) DescribeRIUtilizationDetailWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeRIUtilizationDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeRIUtilizationDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRIUtilizationDetail require credential")
@@ -10266,6 +10416,7 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRegions require credential")
@@ -10323,6 +10474,7 @@ func (c *Client) DescribeReservedInstanceUtilizationRateWithContext(ctx context.
     if request == nil {
         request = NewDescribeReservedInstanceUtilizationRateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeReservedInstanceUtilizationRate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReservedInstanceUtilizationRate require credential")
@@ -10384,6 +10536,7 @@ func (c *Client) DescribeReservedInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeReservedInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeReservedInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReservedInstances require credential")
@@ -10445,6 +10598,7 @@ func (c *Client) DescribeResourceUsageWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeResourceUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeResourceUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceUsage require credential")
@@ -10510,6 +10664,7 @@ func (c *Client) DescribeRouteTableConflictsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeRouteTableConflictsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeRouteTableConflicts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRouteTableConflicts require credential")
@@ -10575,6 +10730,7 @@ func (c *Client) DescribeSupportedRuntimeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSupportedRuntimeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeSupportedRuntime")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSupportedRuntime require credential")
@@ -10644,6 +10800,7 @@ func (c *Client) DescribeTKEEdgeClusterCredentialWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeTKEEdgeClusterCredentialRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeTKEEdgeClusterCredential")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTKEEdgeClusterCredential require credential")
@@ -10713,6 +10870,7 @@ func (c *Client) DescribeTKEEdgeClusterStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeTKEEdgeClusterStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeTKEEdgeClusterStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTKEEdgeClusterStatus require credential")
@@ -10784,6 +10942,7 @@ func (c *Client) DescribeTKEEdgeClustersWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeTKEEdgeClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeTKEEdgeClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTKEEdgeClusters require credential")
@@ -10853,6 +11012,7 @@ func (c *Client) DescribeTKEEdgeExternalKubeconfigWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeTKEEdgeExternalKubeconfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeTKEEdgeExternalKubeconfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTKEEdgeExternalKubeconfig require credential")
@@ -10922,6 +11082,7 @@ func (c *Client) DescribeTKEEdgeScriptWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTKEEdgeScriptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeTKEEdgeScript")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTKEEdgeScript require credential")
@@ -11009,6 +11170,7 @@ func (c *Client) DescribeVersionsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeVersionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeVersions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVersions require credential")
@@ -11082,6 +11244,7 @@ func (c *Client) DescribeVpcCniPodLimitsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeVpcCniPodLimitsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeVpcCniPodLimits")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVpcCniPodLimits require credential")
@@ -11137,6 +11300,7 @@ func (c *Client) DisableClusterAuditWithContext(ctx context.Context, request *Di
     if request == nil {
         request = NewDisableClusterAuditRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DisableClusterAudit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableClusterAudit require credential")
@@ -11190,6 +11354,7 @@ func (c *Client) DisableClusterDeletionProtectionWithContext(ctx context.Context
     if request == nil {
         request = NewDisableClusterDeletionProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DisableClusterDeletionProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableClusterDeletionProtection require credential")
@@ -11243,6 +11408,7 @@ func (c *Client) DisableEncryptionProtectionWithContext(ctx context.Context, req
     if request == nil {
         request = NewDisableEncryptionProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DisableEncryptionProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableEncryptionProtection require credential")
@@ -11318,6 +11484,7 @@ func (c *Client) DisableEventPersistenceWithContext(ctx context.Context, request
     if request == nil {
         request = NewDisableEventPersistenceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DisableEventPersistence")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableEventPersistence require credential")
@@ -11379,6 +11546,7 @@ func (c *Client) DisableVpcCniNetworkTypeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDisableVpcCniNetworkTypeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DisableVpcCniNetworkType")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableVpcCniNetworkType require credential")
@@ -11432,6 +11600,7 @@ func (c *Client) DrainClusterVirtualNodeWithContext(ctx context.Context, request
     if request == nil {
         request = NewDrainClusterVirtualNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DrainClusterVirtualNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DrainClusterVirtualNode require credential")
@@ -11511,6 +11680,7 @@ func (c *Client) EnableClusterAuditWithContext(ctx context.Context, request *Ena
     if request == nil {
         request = NewEnableClusterAuditRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "EnableClusterAudit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableClusterAudit require credential")
@@ -11564,6 +11734,7 @@ func (c *Client) EnableClusterDeletionProtectionWithContext(ctx context.Context,
     if request == nil {
         request = NewEnableClusterDeletionProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "EnableClusterDeletionProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableClusterDeletionProtection require credential")
@@ -11619,6 +11790,7 @@ func (c *Client) EnableEncryptionProtectionWithContext(ctx context.Context, requ
     if request == nil {
         request = NewEnableEncryptionProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "EnableEncryptionProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableEncryptionProtection require credential")
@@ -11716,6 +11888,7 @@ func (c *Client) EnableEventPersistenceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewEnableEventPersistenceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "EnableEventPersistence")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableEventPersistence require credential")
@@ -11773,6 +11946,7 @@ func (c *Client) EnableVpcCniNetworkTypeWithContext(ctx context.Context, request
     if request == nil {
         request = NewEnableVpcCniNetworkTypeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "EnableVpcCniNetworkType")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableVpcCniNetworkType require credential")
@@ -11846,6 +12020,7 @@ func (c *Client) ForwardTKEEdgeApplicationRequestV3WithContext(ctx context.Conte
     if request == nil {
         request = NewForwardTKEEdgeApplicationRequestV3Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ForwardTKEEdgeApplicationRequestV3")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ForwardTKEEdgeApplicationRequestV3 require credential")
@@ -11897,6 +12072,7 @@ func (c *Client) GetClusterLevelPriceWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetClusterLevelPriceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "GetClusterLevelPrice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetClusterLevelPrice require credential")
@@ -11950,6 +12126,7 @@ func (c *Client) GetMostSuitableImageCacheWithContext(ctx context.Context, reque
     if request == nil {
         request = NewGetMostSuitableImageCacheRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "GetMostSuitableImageCache")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetMostSuitableImageCache require credential")
@@ -12001,6 +12178,7 @@ func (c *Client) GetTkeAppChartListWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetTkeAppChartListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "GetTkeAppChartList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetTkeAppChartList require credential")
@@ -12054,6 +12232,7 @@ func (c *Client) GetUpgradeInstanceProgressWithContext(ctx context.Context, requ
     if request == nil {
         request = NewGetUpgradeInstanceProgressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "GetUpgradeInstanceProgress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetUpgradeInstanceProgress require credential")
@@ -12107,6 +12286,7 @@ func (c *Client) InstallAddonWithContext(ctx context.Context, request *InstallAd
     if request == nil {
         request = NewInstallAddonRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "InstallAddon")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InstallAddon require credential")
@@ -12162,6 +12342,7 @@ func (c *Client) InstallEdgeLogAgentWithContext(ctx context.Context, request *In
     if request == nil {
         request = NewInstallEdgeLogAgentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "InstallEdgeLogAgent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InstallEdgeLogAgent require credential")
@@ -12219,6 +12400,7 @@ func (c *Client) InstallLogAgentWithContext(ctx context.Context, request *Instal
     if request == nil {
         request = NewInstallLogAgentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "InstallLogAgent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InstallLogAgent require credential")
@@ -12274,6 +12456,7 @@ func (c *Client) ListClusterInspectionResultsWithContext(ctx context.Context, re
     if request == nil {
         request = NewListClusterInspectionResultsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ListClusterInspectionResults")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListClusterInspectionResults require credential")
@@ -12329,6 +12512,7 @@ func (c *Client) ListClusterInspectionResultsItemsWithContext(ctx context.Contex
     if request == nil {
         request = NewListClusterInspectionResultsItemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ListClusterInspectionResultsItems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListClusterInspectionResultsItems require credential")
@@ -12422,6 +12606,7 @@ func (c *Client) ModifyClusterAsGroupAttributeWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyClusterAsGroupAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterAsGroupAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterAsGroupAttribute require credential")
@@ -12507,6 +12692,7 @@ func (c *Client) ModifyClusterAsGroupOptionAttributeWithContext(ctx context.Cont
     if request == nil {
         request = NewModifyClusterAsGroupOptionAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterAsGroupOptionAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterAsGroupOptionAttribute require credential")
@@ -12590,6 +12776,7 @@ func (c *Client) ModifyClusterAttributeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyClusterAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterAttribute require credential")
@@ -12649,6 +12836,7 @@ func (c *Client) ModifyClusterAuthenticationOptionsWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyClusterAuthenticationOptionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterAuthenticationOptions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterAuthenticationOptions require credential")
@@ -12740,6 +12928,7 @@ func (c *Client) ModifyClusterEndpointSPWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyClusterEndpointSPRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterEndpointSP")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterEndpointSP require credential")
@@ -12813,6 +13002,7 @@ func (c *Client) ModifyClusterImageWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyClusterImageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterImage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterImage require credential")
@@ -12878,6 +13068,7 @@ func (c *Client) ModifyClusterNodePoolWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyClusterNodePoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterNodePool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterNodePool require credential")
@@ -12943,6 +13134,7 @@ func (c *Client) ModifyClusterRuntimeConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyClusterRuntimeConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterRuntimeConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterRuntimeConfig require credential")
@@ -13002,6 +13194,7 @@ func (c *Client) ModifyClusterTagsWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyClusterTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterTags require credential")
@@ -13059,6 +13252,7 @@ func (c *Client) ModifyClusterVirtualNodePoolWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyClusterVirtualNodePoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterVirtualNodePool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterVirtualNodePool require credential")
@@ -13116,6 +13310,7 @@ func (c *Client) ModifyMasterComponentWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyMasterComponentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyMasterComponent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMasterComponent require credential")
@@ -13189,6 +13384,7 @@ func (c *Client) ModifyNodePoolDesiredCapacityAboutAsgWithContext(ctx context.Co
     if request == nil {
         request = NewModifyNodePoolDesiredCapacityAboutAsgRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyNodePoolDesiredCapacityAboutAsg")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNodePoolDesiredCapacityAboutAsg require credential")
@@ -13260,6 +13456,7 @@ func (c *Client) ModifyNodePoolInstanceTypesWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyNodePoolInstanceTypesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyNodePoolInstanceTypes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNodePoolInstanceTypes require credential")
@@ -13331,6 +13528,7 @@ func (c *Client) ModifyOpenPolicyListWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyOpenPolicyListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyOpenPolicyList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyOpenPolicyList require credential")
@@ -13396,6 +13594,7 @@ func (c *Client) ModifyPrometheusAgentExternalLabelsWithContext(ctx context.Cont
     if request == nil {
         request = NewModifyPrometheusAgentExternalLabelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyPrometheusAgentExternalLabels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPrometheusAgentExternalLabels require credential")
@@ -13463,6 +13662,7 @@ func (c *Client) ModifyPrometheusAlertPolicyWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyPrometheusAlertPolicyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyPrometheusAlertPolicy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPrometheusAlertPolicy require credential")
@@ -13526,6 +13726,7 @@ func (c *Client) ModifyPrometheusAlertRuleWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyPrometheusAlertRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyPrometheusAlertRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPrometheusAlertRule require credential")
@@ -13593,6 +13794,7 @@ func (c *Client) ModifyPrometheusConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyPrometheusConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyPrometheusConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPrometheusConfig require credential")
@@ -13652,6 +13854,7 @@ func (c *Client) ModifyPrometheusGlobalNotificationWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyPrometheusGlobalNotificationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyPrometheusGlobalNotification")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPrometheusGlobalNotification require credential")
@@ -13717,6 +13920,7 @@ func (c *Client) ModifyPrometheusRecordRuleYamlWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyPrometheusRecordRuleYamlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyPrometheusRecordRuleYaml")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPrometheusRecordRuleYaml require credential")
@@ -13776,6 +13980,7 @@ func (c *Client) ModifyPrometheusTempWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyPrometheusTempRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyPrometheusTemp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPrometheusTemp require credential")
@@ -13835,6 +14040,7 @@ func (c *Client) ModifyPrometheusTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyPrometheusTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyPrometheusTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPrometheusTemplate require credential")
@@ -13890,6 +14096,7 @@ func (c *Client) ModifyReservedInstanceScopeWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyReservedInstanceScopeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyReservedInstanceScope")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyReservedInstanceScope require credential")
@@ -13945,6 +14152,7 @@ func (c *Client) RemoveNodeFromNodePoolWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRemoveNodeFromNodePoolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "RemoveNodeFromNodePool")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveNodeFromNodePool require credential")
@@ -14006,6 +14214,7 @@ func (c *Client) RenewReservedInstancesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRenewReservedInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "RenewReservedInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewReservedInstances require credential")
@@ -14061,6 +14270,7 @@ func (c *Client) RestartEKSContainerInstancesWithContext(ctx context.Context, re
     if request == nil {
         request = NewRestartEKSContainerInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "RestartEKSContainerInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartEKSContainerInstances require credential")
@@ -14132,6 +14342,7 @@ func (c *Client) RollbackClusterReleaseWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRollbackClusterReleaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "RollbackClusterRelease")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RollbackClusterRelease require credential")
@@ -14189,6 +14400,7 @@ func (c *Client) RunPrometheusInstanceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewRunPrometheusInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "RunPrometheusInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunPrometheusInstance require credential")
@@ -14240,6 +14452,7 @@ func (c *Client) ScaleInClusterMasterWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewScaleInClusterMasterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ScaleInClusterMaster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleInClusterMaster require credential")
@@ -14299,6 +14512,7 @@ func (c *Client) ScaleOutClusterMasterWithContext(ctx context.Context, request *
     if request == nil {
         request = NewScaleOutClusterMasterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ScaleOutClusterMaster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleOutClusterMaster require credential")
@@ -14372,6 +14586,7 @@ func (c *Client) SetNodePoolNodeProtectionWithContext(ctx context.Context, reque
     if request == nil {
         request = NewSetNodePoolNodeProtectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "SetNodePoolNodeProtection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetNodePoolNodeProtection require credential")
@@ -14443,6 +14658,7 @@ func (c *Client) SyncPrometheusTempWithContext(ctx context.Context, request *Syn
     if request == nil {
         request = NewSyncPrometheusTempRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "SyncPrometheusTemp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncPrometheusTemp require credential")
@@ -14512,6 +14728,7 @@ func (c *Client) SyncPrometheusTemplateWithContext(ctx context.Context, request 
     if request == nil {
         request = NewSyncPrometheusTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "SyncPrometheusTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncPrometheusTemplate require credential")
@@ -14585,6 +14802,7 @@ func (c *Client) UninstallClusterReleaseWithContext(ctx context.Context, request
     if request == nil {
         request = NewUninstallClusterReleaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UninstallClusterRelease")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UninstallClusterRelease require credential")
@@ -14638,6 +14856,7 @@ func (c *Client) UninstallEdgeLogAgentWithContext(ctx context.Context, request *
     if request == nil {
         request = NewUninstallEdgeLogAgentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UninstallEdgeLogAgent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UninstallEdgeLogAgent require credential")
@@ -14699,6 +14918,7 @@ func (c *Client) UninstallLogAgentWithContext(ctx context.Context, request *Unin
     if request == nil {
         request = NewUninstallLogAgentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UninstallLogAgent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UninstallLogAgent require credential")
@@ -14760,6 +14980,7 @@ func (c *Client) UpdateAddonWithContext(ctx context.Context, request *UpdateAddo
     if request == nil {
         request = NewUpdateAddonRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UpdateAddon")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAddon require credential")
@@ -14819,6 +15040,7 @@ func (c *Client) UpdateClusterKubeconfigWithContext(ctx context.Context, request
     if request == nil {
         request = NewUpdateClusterKubeconfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UpdateClusterKubeconfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateClusterKubeconfig require credential")
@@ -14886,6 +15108,7 @@ func (c *Client) UpdateClusterVersionWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateClusterVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UpdateClusterVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateClusterVersion require credential")
@@ -14959,6 +15182,7 @@ func (c *Client) UpdateEKSClusterWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateEKSClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UpdateEKSCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateEKSCluster require credential")
@@ -15012,6 +15236,7 @@ func (c *Client) UpdateEKSContainerInstanceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateEKSContainerInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UpdateEKSContainerInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateEKSContainerInstance require credential")
@@ -15079,6 +15304,7 @@ func (c *Client) UpdateEdgeClusterVersionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUpdateEdgeClusterVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UpdateEdgeClusterVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateEdgeClusterVersion require credential")
@@ -15130,6 +15356,7 @@ func (c *Client) UpdateImageCacheWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateImageCacheRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UpdateImageCache")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateImageCache require credential")
@@ -15201,6 +15428,7 @@ func (c *Client) UpdateTKEEdgeClusterWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateTKEEdgeClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UpdateTKEEdgeCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateTKEEdgeCluster require credential")
@@ -15270,6 +15498,7 @@ func (c *Client) UpgradeClusterInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewUpgradeClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UpgradeClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradeClusterInstances require credential")
@@ -15345,6 +15574,7 @@ func (c *Client) UpgradeClusterReleaseWithContext(ctx context.Context, request *
     if request == nil {
         request = NewUpgradeClusterReleaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "UpgradeClusterRelease")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradeClusterRelease require credential")

@@ -250,6 +250,7 @@ func (c *Client) InitOralProcessWithContext(ctx context.Context, request *InitOr
     if request == nil {
         request = NewInitOralProcessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "soe", APIVersion, "InitOralProcess")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InitOralProcess require credential")
@@ -439,6 +440,7 @@ func (c *Client) KeywordEvaluateWithContext(ctx context.Context, request *Keywor
     if request == nil {
         request = NewKeywordEvaluateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "soe", APIVersion, "KeywordEvaluate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("KeywordEvaluate require credential")
@@ -686,6 +688,7 @@ func (c *Client) TransmitOralProcessWithContext(ctx context.Context, request *Tr
     if request == nil {
         request = NewTransmitOralProcessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "soe", APIVersion, "TransmitOralProcess")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TransmitOralProcess require credential")
@@ -959,6 +962,7 @@ func (c *Client) TransmitOralProcessWithInitWithContext(ctx context.Context, req
     if request == nil {
         request = NewTransmitOralProcessWithInitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "soe", APIVersion, "TransmitOralProcessWithInit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TransmitOralProcessWithInit require credential")

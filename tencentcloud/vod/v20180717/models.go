@@ -5226,6 +5226,11 @@ type CreateProcedureTemplateRequestParams struct {
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
+	AiRecognitionTaskSet []*AiRecognitionTaskInput `json:"AiRecognitionTaskSet,omitnil,omitempty" name:"AiRecognitionTaskSet"`
+
+	// 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
+	//
+	// Deprecated: AiRecognitionTask is deprecated.
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
 	// 音视频审核类型任务参数。
@@ -5255,6 +5260,9 @@ type CreateProcedureTemplateRequest struct {
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
+	AiRecognitionTaskSet []*AiRecognitionTaskInput `json:"AiRecognitionTaskSet,omitnil,omitempty" name:"AiRecognitionTaskSet"`
+
+	// 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
 	// 音视频审核类型任务参数。
@@ -5279,6 +5287,7 @@ func (r *CreateProcedureTemplateRequest) FromJsonString(s string) error {
 	delete(f, "MediaProcessTask")
 	delete(f, "AiContentReviewTask")
 	delete(f, "AiAnalysisTask")
+	delete(f, "AiRecognitionTaskSet")
 	delete(f, "AiRecognitionTask")
 	delete(f, "ReviewAudioVideoTask")
 	if len(f) > 0 {
@@ -12774,7 +12783,7 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskDetailResponseParams struct {
-	// 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务。</li>
+	// 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务。</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -12880,6 +12889,9 @@ type DescribeTaskDetailResponseParams struct {
 	// 复杂自适应码流任务信息，仅当 TaskType 为 ComplexAdaptiveDynamicStreaming，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplexAdaptiveDynamicStreamingTask *ComplexAdaptiveDynamicStreamingTask `json:"ComplexAdaptiveDynamicStreamingTask,omitnil,omitempty" name:"ComplexAdaptiveDynamicStreamingTask"`
+
+	// MPS 视频处理任务信息，仅当 TaskType 为 ProcessMediaByMPS，该字段有值。
+	ProcessMediaByMPSTask *ProcessMediaByMPS `json:"ProcessMediaByMPSTask,omitnil,omitempty" name:"ProcessMediaByMPSTask"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -14910,11 +14922,14 @@ type HandleCurrentPlaylistRequestParams struct {
 	// 轮播播单唯一标识。
 	RoundPlayId *string `json:"RoundPlayId,omitnil,omitempty" name:"RoundPlayId"`
 
-	// 操作类型，取值有：<li>Insert：向当前播放列表插入播放节目。</li> <li>InsertTemporary：向当前播放列表临时插入播放节目。只能插入到当前正在播放的节目后面，临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的播放节目。不能删除正在播放的节目。</li>
+	// 操作类型，取值有：<li>Insert：向当前播放列表插入节目。插入的节目在后续轮播过程仍然有效。</li> <li>InsertTemporary：向当前播放列表临时插入节目。临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的节目。不能删除正在播放的节目。</li>
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 播单节目 ID。当 Operation 为 Insert 时必填，表示插入的节目列表位于该播放节目之后。插入的位置必须在当前正在播放的节目之后。
+	// 播单节目 ID。 <li>当 Operation 为 Insert 时，该字段必填，表示插入的节目列表位于该节目之后。</li> <li>当 Operation 为 InsertTemporary 时，该字段选填，不填时表示插入节目到最近的一个插入点上。当该字段填写时，如果同时填写 SegmentIndex，表示节目被插入到 ItemId 对应节目的第 SegmentIndex 分片后面，否则插入到该节目之后。</li> <li>当 Operation 为 Delete 时，该字段必填，表示删除该节目。不能删除正在播放的节目。</li>
 	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
+
+	// M3U8 文件分片的索引号。M3U8 文件第一个分片的 SegmentIndex 为0。当 Operation 为 InsertTemporary 且 ItemId 有值时该参数有效。
+	SegmentIndex *int64 `json:"SegmentIndex,omitnil,omitempty" name:"SegmentIndex"`
 
 	// 节目列表。当 Operation 为 Insert、InsertTemporary、Delete 时必填，表示要操作的节目列表。列表长度最大为10。
 	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitnil,omitempty" name:"RoundPlaylist"`
@@ -14929,11 +14944,14 @@ type HandleCurrentPlaylistRequest struct {
 	// 轮播播单唯一标识。
 	RoundPlayId *string `json:"RoundPlayId,omitnil,omitempty" name:"RoundPlayId"`
 
-	// 操作类型，取值有：<li>Insert：向当前播放列表插入播放节目。</li> <li>InsertTemporary：向当前播放列表临时插入播放节目。只能插入到当前正在播放的节目后面，临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的播放节目。不能删除正在播放的节目。</li>
+	// 操作类型，取值有：<li>Insert：向当前播放列表插入节目。插入的节目在后续轮播过程仍然有效。</li> <li>InsertTemporary：向当前播放列表临时插入节目。临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的节目。不能删除正在播放的节目。</li>
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 播单节目 ID。当 Operation 为 Insert 时必填，表示插入的节目列表位于该播放节目之后。插入的位置必须在当前正在播放的节目之后。
+	// 播单节目 ID。 <li>当 Operation 为 Insert 时，该字段必填，表示插入的节目列表位于该节目之后。</li> <li>当 Operation 为 InsertTemporary 时，该字段选填，不填时表示插入节目到最近的一个插入点上。当该字段填写时，如果同时填写 SegmentIndex，表示节目被插入到 ItemId 对应节目的第 SegmentIndex 分片后面，否则插入到该节目之后。</li> <li>当 Operation 为 Delete 时，该字段必填，表示删除该节目。不能删除正在播放的节目。</li>
 	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
+
+	// M3U8 文件分片的索引号。M3U8 文件第一个分片的 SegmentIndex 为0。当 Operation 为 InsertTemporary 且 ItemId 有值时该参数有效。
+	SegmentIndex *int64 `json:"SegmentIndex,omitnil,omitempty" name:"SegmentIndex"`
 
 	// 节目列表。当 Operation 为 Insert、InsertTemporary、Delete 时必填，表示要操作的节目列表。列表长度最大为10。
 	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitnil,omitempty" name:"RoundPlaylist"`
@@ -14955,6 +14973,7 @@ func (r *HandleCurrentPlaylistRequest) FromJsonString(s string) error {
 	delete(f, "RoundPlayId")
 	delete(f, "Operation")
 	delete(f, "ItemId")
+	delete(f, "SegmentIndex")
 	delete(f, "RoundPlaylist")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "HandleCurrentPlaylistRequest has unknown keys!", "")
@@ -15695,6 +15714,49 @@ type LowLightEnhanceInfo struct {
 	// <li>normal：正常低光照增强；</li>
 	// 默认值：normal。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type MPSOutputFile struct {
+	// 文件类型。用于标识 MPS 视频处理任务执行结果中的特定返回文件。
+	// 取值：<li>AiAnalysis.DeLogo.Video: 智能擦除任务中产生的擦除后视频文件；</li><li>AiAnalysis.DeLogo.OriginSubtitle: 智能擦除任务中基于画面提取的字幕文件；</li><li>AiAnalysis.DeLogo.TranslateSubtitle: 智能擦除任务中基于画面提取的字幕翻译文件。</li>
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 存储形式。用于表示该结果文件的存储形式，取值有：<li> Permanent：永久存储；</li><li> Temporary：临时存储。</li>
+	StorageMode *string `json:"StorageMode,omitnil,omitempty" name:"StorageMode"`
+
+	// 媒体文件 ID。当 Type 为 Permanent 时有效，表示该结果文件以视频媒资形式存储在点播平台中，字段值为视频媒资的 FileId。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 结果文件的可下载 Url。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 过期时间。当 StorageMode 为 Temporary 时有效，表示 Url 的过期时间，单位为秒。
+	ExpiredTime *uint64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+}
+
+type MPSSubTaskResult struct {
+	// 任务类型。MPS 的 WorkflowTask 结构中的具体子任务类型。取值：<li>AiAnalysis.DeLogo：智能擦除任务。</li>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务状态。有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码。返回0时成功，其他值为失败。
+	ErrCode *string `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// MPS 视频处理任务输入。该字段对应 MPS 任务返回中的 Input 结果，以 JSON 格式返回。
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// MPS 视频处理任务输出。
+	Output *MPSTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
+type MPSTaskOutput struct {
+	// 任务返回结果中的文件类型结果。如智能擦除中，擦除后的视频文件将被存入媒资，并在此字段中给出 FileId；基于画面提取的字幕文件 Url 将在此字段中给出。
+	OutputFiles []*MPSOutputFile `json:"OutputFiles,omitnil,omitempty" name:"OutputFiles"`
 }
 
 // Predefined struct for user
@@ -21023,7 +21085,12 @@ type ProcedureTemplate struct {
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
+	AiRecognitionTaskSet []*AiRecognitionTaskInput `json:"AiRecognitionTaskSet,omitnil,omitempty" name:"AiRecognitionTaskSet"`
+
+	// 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: AiRecognitionTask is deprecated.
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
 	// 微信小程序发布任务参数。
@@ -21116,6 +21183,102 @@ func (r *ProcessImageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ProcessImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ProcessMediaByMPS struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息。源异常时返回对应异常 Message，否则请使用各个具体任务的 Message。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// MPS 视频处理任务。
+	SubTaskSet []*MPSSubTaskResult `json:"SubTaskSet,omitnil,omitempty" name:"SubTaskSet"`
+}
+
+// Predefined struct for user
+type ProcessMediaByMPSRequestParams struct {
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
+	// 视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
+	// 填写说明：
+	// 1. 目前仅需要配置 MPS “发起媒体处理”接口中的 AiAnalysisTask 参数，其他参数无需填写，若包含其它参数，系统将自动忽略；
+	// 2. 当前仅支持通过此方式发起智能擦除任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数。
+	MPSProcessMediaParams *string `json:"MPSProcessMediaParams,omitnil,omitempty" name:"MPSProcessMediaParams"`
+}
+
+type ProcessMediaByMPSRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
+	// 视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
+	// 填写说明：
+	// 1. 目前仅需要配置 MPS “发起媒体处理”接口中的 AiAnalysisTask 参数，其他参数无需填写，若包含其它参数，系统将自动忽略；
+	// 2. 当前仅支持通过此方式发起智能擦除任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数。
+	MPSProcessMediaParams *string `json:"MPSProcessMediaParams,omitnil,omitempty" name:"MPSProcessMediaParams"`
+}
+
+func (r *ProcessMediaByMPSRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ProcessMediaByMPSRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileId")
+	delete(f, "SubAppId")
+	delete(f, "MPSProcessMediaParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaByMPSRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ProcessMediaByMPSResponseParams struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ProcessMediaByMPSResponse struct {
+	*tchttp.BaseResponse
+	Response *ProcessMediaByMPSResponseParams `json:"Response"`
+}
+
+func (r *ProcessMediaByMPSResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ProcessMediaByMPSResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -23290,6 +23453,11 @@ type ResetProcedureTemplateRequestParams struct {
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
+	AiRecognitionTaskSet []*AiRecognitionTaskInput `json:"AiRecognitionTaskSet,omitnil,omitempty" name:"AiRecognitionTaskSet"`
+
+	// 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
+	//
+	// Deprecated: AiRecognitionTask is deprecated.
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
 	// 音视频审核类型任务参数。
@@ -23319,6 +23487,9 @@ type ResetProcedureTemplateRequest struct {
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
+	AiRecognitionTaskSet []*AiRecognitionTaskInput `json:"AiRecognitionTaskSet,omitnil,omitempty" name:"AiRecognitionTaskSet"`
+
+	// 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
 	// 音视频审核类型任务参数。
@@ -23343,6 +23514,7 @@ func (r *ResetProcedureTemplateRequest) FromJsonString(s string) error {
 	delete(f, "MediaProcessTask")
 	delete(f, "AiContentReviewTask")
 	delete(f, "AiAnalysisTask")
+	delete(f, "AiRecognitionTaskSet")
 	delete(f, "AiRecognitionTask")
 	delete(f, "ReviewAudioVideoTask")
 	if len(f) > 0 {

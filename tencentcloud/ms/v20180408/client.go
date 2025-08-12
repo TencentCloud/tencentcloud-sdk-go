@@ -96,6 +96,7 @@ func (c *Client) CancelEncryptTaskWithContext(ctx context.Context, request *Canc
     if request == nil {
         request = NewCancelEncryptTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "CancelEncryptTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelEncryptTask require credential")
@@ -157,6 +158,7 @@ func (c *Client) CreateBindInstanceWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateBindInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "CreateBindInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBindInstance require credential")
@@ -214,6 +216,7 @@ func (c *Client) CreateCosSecKeyInstanceWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateCosSecKeyInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "CreateCosSecKeyInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCosSecKeyInstance require credential")
@@ -313,6 +316,7 @@ func (c *Client) CreateEncryptInstanceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateEncryptInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "CreateEncryptInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateEncryptInstance require credential")
@@ -384,6 +388,7 @@ func (c *Client) CreateOrderInstanceWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateOrderInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "CreateOrderInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateOrderInstance require credential")
@@ -455,6 +460,7 @@ func (c *Client) CreateResourceInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateResourceInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "CreateResourceInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateResourceInstances require credential")
@@ -524,6 +530,7 @@ func (c *Client) CreateShieldInstanceWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateShieldInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "CreateShieldInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateShieldInstance require credential")
@@ -585,6 +592,7 @@ func (c *Client) CreateShieldPlanInstanceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateShieldPlanInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "CreateShieldPlanInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateShieldPlanInstance require credential")
@@ -644,6 +652,7 @@ func (c *Client) DeleteShieldInstancesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteShieldInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DeleteShieldInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteShieldInstances require credential")
@@ -709,6 +718,7 @@ func (c *Client) DescribeApkDetectionResultWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeApkDetectionResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DescribeApkDetectionResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApkDetectionResult require credential")
@@ -770,6 +780,7 @@ func (c *Client) DescribeEncryptInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeEncryptInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DescribeEncryptInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEncryptInstances require credential")
@@ -831,6 +842,7 @@ func (c *Client) DescribeEncryptPlanWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeEncryptPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DescribeEncryptPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEncryptPlan require credential")
@@ -904,6 +916,7 @@ func (c *Client) DescribeOrderInstancesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeOrderInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DescribeOrderInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOrderInstances require credential")
@@ -971,6 +984,7 @@ func (c *Client) DescribeResourceInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeResourceInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DescribeResourceInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceInstances require credential")
@@ -1042,6 +1056,7 @@ func (c *Client) DescribeShieldInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeShieldInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DescribeShieldInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeShieldInstances require credential")
@@ -1101,6 +1116,7 @@ func (c *Client) DescribeShieldPlanInstanceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeShieldPlanInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DescribeShieldPlanInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeShieldPlanInstance require credential")
@@ -1160,6 +1176,7 @@ func (c *Client) DescribeShieldResultWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeShieldResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DescribeShieldResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeShieldResult require credential")
@@ -1221,6 +1238,7 @@ func (c *Client) DescribeUrlDetectionResultWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeUrlDetectionResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DescribeUrlDetectionResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUrlDetectionResult require credential")
@@ -1282,6 +1300,7 @@ func (c *Client) DescribeUserBaseInfoInstanceWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeUserBaseInfoInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DescribeUserBaseInfoInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserBaseInfoInstance require credential")
@@ -1337,6 +1356,7 @@ func (c *Client) DestroyResourceInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDestroyResourceInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "DestroyResourceInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyResourceInstances require credential")
@@ -1388,6 +1408,7 @@ func (c *Client) RequestLocalTaskWithContext(ctx context.Context, request *Reque
     if request == nil {
         request = NewRequestLocalTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "RequestLocalTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RequestLocalTask require credential")
@@ -1437,6 +1458,7 @@ func (c *Client) UpdateClientStateWithContext(ctx context.Context, request *Upda
     if request == nil {
         request = NewUpdateClientStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "UpdateClientState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateClientState require credential")
@@ -1486,6 +1508,7 @@ func (c *Client) UpdateLocalTaskResultWithContext(ctx context.Context, request *
     if request == nil {
         request = NewUpdateLocalTaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ms", APIVersion, "UpdateLocalTaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateLocalTaskResult require credential")

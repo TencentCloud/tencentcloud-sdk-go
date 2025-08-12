@@ -76,6 +76,7 @@ func (c *Client) GetIndustryV1HomeMembersWithContext(ctx context.Context, reques
     if request == nil {
         request = NewGetIndustryV1HomeMembersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "icr", APIVersion, "GetIndustryV1HomeMembers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetIndustryV1HomeMembers require credential")

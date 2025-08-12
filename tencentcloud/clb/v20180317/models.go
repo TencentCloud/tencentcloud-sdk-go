@@ -241,6 +241,9 @@ type AssociationItem struct {
 
 	// 关联目标组的权重， 该参数只有v2新版目标组生效。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 高级路由规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 // Predefined struct for user
@@ -1356,7 +1359,7 @@ type CreateListenerRequestParams struct {
 	// 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
 	EndPort *uint64 `json:"EndPort,omitnil,omitempty" name:"EndPort"`
 
-	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+	// 解绑后端目标时，是否发RST给两端（客户端和服务器），此参数仅适用于TCP监听器。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitnil,omitempty" name:"DeregisterTargetRst"`
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：
@@ -1442,7 +1445,7 @@ type CreateListenerRequest struct {
 	// 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
 	EndPort *uint64 `json:"EndPort,omitnil,omitempty" name:"EndPort"`
 
-	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+	// 解绑后端目标时，是否发RST给两端（客户端和服务器），此参数仅适用于TCP监听器。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitnil,omitempty" name:"DeregisterTargetRst"`
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：
@@ -1628,7 +1631,7 @@ type CreateLoadBalancerRequestParams struct {
 	// EIP 的唯一 ID，可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。形如：eip-qhx8udkc，仅适用于内网负载均衡绑定EIP。
 	EipAddressId *string `json:"EipAddressId,omitnil,omitempty" name:"EipAddressId"`
 
-	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。IPv6 CLB安全组默认放通，不需要传此参数。
 	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitnil,omitempty" name:"LoadBalancerPassToTarget"`
 
 	// 创建域名化负载均衡。
@@ -1645,6 +1648,9 @@ type CreateLoadBalancerRequestParams struct {
 
 	// 七层访问日志主题ID
 	AccessLogTopicId *string `json:"AccessLogTopicId,omitnil,omitempty" name:"AccessLogTopicId"`
+
+	// 是否开启七层高级路由
+	AdvancedRoute *bool `json:"AdvancedRoute,omitnil,omitempty" name:"AdvancedRoute"`
 }
 
 type CreateLoadBalancerRequest struct {
@@ -1728,7 +1734,7 @@ type CreateLoadBalancerRequest struct {
 	// EIP 的唯一 ID，可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。形如：eip-qhx8udkc，仅适用于内网负载均衡绑定EIP。
 	EipAddressId *string `json:"EipAddressId,omitnil,omitempty" name:"EipAddressId"`
 
-	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。IPv6 CLB安全组默认放通，不需要传此参数。
 	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitnil,omitempty" name:"LoadBalancerPassToTarget"`
 
 	// 创建域名化负载均衡。
@@ -1745,6 +1751,9 @@ type CreateLoadBalancerRequest struct {
 
 	// 七层访问日志主题ID
 	AccessLogTopicId *string `json:"AccessLogTopicId,omitnil,omitempty" name:"AccessLogTopicId"`
+
+	// 是否开启七层高级路由
+	AdvancedRoute *bool `json:"AdvancedRoute,omitnil,omitempty" name:"AdvancedRoute"`
 }
 
 func (r *CreateLoadBalancerRequest) ToJsonString() string {
@@ -1789,6 +1798,7 @@ func (r *CreateLoadBalancerRequest) FromJsonString(s string) error {
 	delete(f, "LBChargePrepaid")
 	delete(f, "LBChargeType")
 	delete(f, "AccessLogTopicId")
+	delete(f, "AdvancedRoute")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadBalancerRequest has unknown keys!", "")
 	}
@@ -1982,7 +1992,7 @@ type CreateTargetGroupRequestParams struct {
 	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 目标组后端转发协议。v2新版目标组该项必填。目前支持tcp、udp。
+	// 目标组后端转发协议。v2新版目标组该项必填。目前支持TCP、UDP、HTTP、HTTPS、GRPC。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 标签。
@@ -1996,13 +2006,13 @@ type CreateTargetGroupRequestParams struct {
 	// v1 目标组类型不支持设置 Weight 参数。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 全监听目标组标识，为true表示是全监听目标组，false表示不是全监听目标组。
+	// 全监听目标组标识，true表示是全监听目标组，false表示不是全监听目标组。仅V2新版类型目标组支持该参数。
 	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。
 	KeepaliveEnable *bool `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
-	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。仅V2新版且后端转发协议为HTTP/HTTPS/GRPC目标组支持该参数。
 	SessionExpireTime *uint64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 }
 
@@ -2024,7 +2034,7 @@ type CreateTargetGroupRequest struct {
 	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 目标组后端转发协议。v2新版目标组该项必填。目前支持tcp、udp。
+	// 目标组后端转发协议。v2新版目标组该项必填。目前支持TCP、UDP、HTTP、HTTPS、GRPC。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 标签。
@@ -2038,13 +2048,13 @@ type CreateTargetGroupRequest struct {
 	// v1 目标组类型不支持设置 Weight 参数。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 全监听目标组标识，为true表示是全监听目标组，false表示不是全监听目标组。
+	// 全监听目标组标识，true表示是全监听目标组，false表示不是全监听目标组。仅V2新版类型目标组支持该参数。
 	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。
 	KeepaliveEnable *bool `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
-	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。仅V2新版且后端转发协议为HTTP/HTTPS/GRPC目标组支持该参数。
 	SessionExpireTime *uint64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 }
 
@@ -9015,6 +9025,9 @@ type RuleHealth struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
+	// 高级路由规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
 	// 本规则上绑定的后端服务的健康检查状态
 	Targets []*TargetHealth `json:"Targets,omitnil,omitempty" name:"Targets"`
 }
@@ -9709,12 +9722,11 @@ type TargetGroupInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociatedRule []*AssociationItem `json:"AssociatedRule,omitnil,omitempty" name:"AssociatedRule"`
 
-	// 后端转发协议类型，支持类型TCP， UDP。仅V2新版目标组支持返回该参数。
-	// 
+	// 目标组后端转发协议, 仅v2新版目标组返回有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), gwlb(全局负载均衡目标组)。
+	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组)。默认为v1旧版目标组。
 	TargetGroupType *string `json:"TargetGroupType,omitnil,omitempty" name:"TargetGroupType"`
 
 	// 目标组已关联的规则数。
@@ -9727,10 +9739,17 @@ type TargetGroupInfo struct {
 	Tag []*TagInfo `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 是否全监听目标组
+	// 是否全监听目标组。
 	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
+
+	// 是否开启长连接,  仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。
+	KeepaliveEnable *bool `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
+
+	// 会话保持时间，仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。
+	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 }
 
 type TargetGroupInstance struct {

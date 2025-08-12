@@ -146,6 +146,9 @@ const (
 	// 参数值错误：AI 识别 Definition。
 	INVALIDPARAMETERVALUE_AIRECOGNITIONTASKDEFINITION = "InvalidParameterValue.AiRecognitionTaskDefinition"
 
+	// 没有开通点播业务。
+	INVALIDPARAMETERVALUE_APPID = "InvalidParameterValue.AppId"
+
 	// Area 参数错误。
 	INVALIDPARAMETERVALUE_AREA = "InvalidParameterValue.Area"
 

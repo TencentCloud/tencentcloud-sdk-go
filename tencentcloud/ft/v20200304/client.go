@@ -102,6 +102,7 @@ func (c *Client) CancelFaceMorphJobWithContext(ctx context.Context, request *Can
     if request == nil {
         request = NewCancelFaceMorphJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ft", APIVersion, "CancelFaceMorphJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelFaceMorphJob require credential")
@@ -211,6 +212,7 @@ func (c *Client) ChangeAgePicWithContext(ctx context.Context, request *ChangeAge
     if request == nil {
         request = NewChangeAgePicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ft", APIVersion, "ChangeAgePic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChangeAgePic require credential")
@@ -312,6 +314,7 @@ func (c *Client) FaceCartoonPicWithContext(ctx context.Context, request *FaceCar
     if request == nil {
         request = NewFaceCartoonPicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ft", APIVersion, "FaceCartoonPic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FaceCartoonPic require credential")
@@ -401,6 +404,7 @@ func (c *Client) MorphFaceWithContext(ctx context.Context, request *MorphFaceReq
     if request == nil {
         request = NewMorphFaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ft", APIVersion, "MorphFace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MorphFace require credential")
@@ -472,6 +476,7 @@ func (c *Client) QueryFaceMorphJobWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryFaceMorphJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ft", APIVersion, "QueryFaceMorphJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFaceMorphJob require credential")
@@ -575,6 +580,7 @@ func (c *Client) SwapGenderPicWithContext(ctx context.Context, request *SwapGend
     if request == nil {
         request = NewSwapGenderPicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ft", APIVersion, "SwapGenderPic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SwapGenderPic require credential")

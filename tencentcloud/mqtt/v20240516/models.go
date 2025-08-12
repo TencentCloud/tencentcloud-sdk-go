@@ -2696,6 +2696,15 @@ type DescribeInstanceResponseParams struct {
 	// 单条自动订阅规则TopicFilter数限制
 	MaxTopicFilterPerAutoSubscriptionPolicy *int64 `json:"MaxTopicFilterPerAutoSubscriptionPolicy,omitnil,omitempty" name:"MaxTopicFilterPerAutoSubscriptionPolicy"`
 
+	// 是否使用默认的服务端证书
+	UseDefaultServerCert *bool `json:"UseDefaultServerCert,omitnil,omitempty" name:"UseDefaultServerCert"`
+
+	// 服务端CA最大数量
+	TrustedCaLimit *int64 `json:"TrustedCaLimit,omitnil,omitempty" name:"TrustedCaLimit"`
+
+	// 服务端证书最大数量
+	ServerCertLimit *int64 `json:"ServerCertLimit,omitnil,omitempty" name:"ServerCertLimit"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3526,6 +3535,9 @@ type MQTTClientSubscription struct {
 
 	// 投递未确认数量
 	Inflight *int64 `json:"Inflight,omitnil,omitempty" name:"Inflight"`
+
+	// 用户属性
+	UserProperties []*SubscriptionUserProperty `json:"UserProperties,omitnil,omitempty" name:"UserProperties"`
 }
 
 type MQTTEndpointItem struct {
@@ -4204,6 +4216,14 @@ type ModifyInstanceRequestParams struct {
 
 	// 授权策略开关
 	AuthorizationPolicy *bool `json:"AuthorizationPolicy,omitnil,omitempty" name:"AuthorizationPolicy"`
+
+	// 是否使用默认的服务端证书
+	UseDefaultServerCert *bool `json:"UseDefaultServerCert,omitnil,omitempty" name:"UseDefaultServerCert"`
+
+	// TLS：单向认证
+	// mTLS；双向认证
+	// BYOC：一机一证
+	X509Mode *string `json:"X509Mode,omitnil,omitempty" name:"X509Mode"`
 }
 
 type ModifyInstanceRequest struct {
@@ -4232,6 +4252,14 @@ type ModifyInstanceRequest struct {
 
 	// 授权策略开关
 	AuthorizationPolicy *bool `json:"AuthorizationPolicy,omitnil,omitempty" name:"AuthorizationPolicy"`
+
+	// 是否使用默认的服务端证书
+	UseDefaultServerCert *bool `json:"UseDefaultServerCert,omitnil,omitempty" name:"UseDefaultServerCert"`
+
+	// TLS：单向认证
+	// mTLS；双向认证
+	// BYOC：一机一证
+	X509Mode *string `json:"X509Mode,omitnil,omitempty" name:"X509Mode"`
 }
 
 func (r *ModifyInstanceRequest) ToJsonString() string {
@@ -4253,6 +4281,8 @@ func (r *ModifyInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DeviceCertificateProvisionType")
 	delete(f, "AutomaticActivation")
 	delete(f, "AuthorizationPolicy")
+	delete(f, "UseDefaultServerCert")
+	delete(f, "X509Mode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceRequest has unknown keys!", "")
 	}
@@ -5041,6 +5071,14 @@ func (r *RevokedDeviceCertificateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RevokedDeviceCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubscriptionUserProperty struct {
+	// 订阅的UserProperty键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 订阅的UserProperty值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type Tag struct {

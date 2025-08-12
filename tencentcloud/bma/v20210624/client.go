@@ -118,6 +118,7 @@ func (c *Client) CreateBPFakeURLWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateBPFakeURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateBPFakeURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBPFakeURL require credential")
@@ -203,6 +204,7 @@ func (c *Client) CreateBPFalseTicketWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateBPFalseTicketRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateBPFalseTicket")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBPFalseTicket require credential")
@@ -288,6 +290,7 @@ func (c *Client) CreateBPOfflineAttachmentWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateBPOfflineAttachmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateBPOfflineAttachment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBPOfflineAttachment require credential")
@@ -373,6 +376,7 @@ func (c *Client) CreateBPOfflineTicketWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateBPOfflineTicketRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateBPOfflineTicket")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBPOfflineTicket require credential")
@@ -458,6 +462,7 @@ func (c *Client) CreateBPProtectURLsWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateBPProtectURLsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateBPProtectURLs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBPProtectURLs require credential")
@@ -543,6 +548,7 @@ func (c *Client) CreateCRBlockWithContext(ctx context.Context, request *CreateCR
     if request == nil {
         request = NewCreateCRBlockRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateCRBlock")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCRBlock require credential")
@@ -628,6 +634,7 @@ func (c *Client) CreateCRCompanyVerifyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateCRCompanyVerifyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateCRCompanyVerify")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCRCompanyVerify require credential")
@@ -713,6 +720,7 @@ func (c *Client) CreateCRDesktopCodeWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateCRDesktopCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateCRDesktopCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCRDesktopCode require credential")
@@ -798,6 +806,7 @@ func (c *Client) CreateCRRightWithContext(ctx context.Context, request *CreateCR
     if request == nil {
         request = NewCreateCRRightRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateCRRight")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCRRight require credential")
@@ -883,6 +892,7 @@ func (c *Client) CreateCRRightFileWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCRRightFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateCRRightFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCRRightFile require credential")
@@ -968,6 +978,7 @@ func (c *Client) CreateCRTortWithContext(ctx context.Context, request *CreateCRT
     if request == nil {
         request = NewCreateCRTortRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateCRTort")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCRTort require credential")
@@ -1053,6 +1064,7 @@ func (c *Client) CreateCRUserVerifyWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCRUserVerifyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateCRUserVerify")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCRUserVerify require credential")
@@ -1138,6 +1150,7 @@ func (c *Client) CreateCRWorkWithContext(ctx context.Context, request *CreateCRW
     if request == nil {
         request = NewCreateCRWorkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "CreateCRWork")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCRWork require credential")
@@ -1223,6 +1236,7 @@ func (c *Client) DescribeBPCompanyInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeBPCompanyInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeBPCompanyInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBPCompanyInfo require credential")
@@ -1272,6 +1286,7 @@ func (c *Client) DescribeBPFakeURLsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeBPFakeURLsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeBPFakeURLs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBPFakeURLs require credential")
@@ -1357,6 +1372,7 @@ func (c *Client) DescribeBPProtectURLsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeBPProtectURLsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeBPProtectURLs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBPProtectURLs require credential")
@@ -1442,6 +1458,7 @@ func (c *Client) DescribeBPReportFakeURLsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeBPReportFakeURLsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeBPReportFakeURLs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBPReportFakeURLs require credential")
@@ -1527,6 +1544,7 @@ func (c *Client) DescribeCRMonitorDetailWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeCRMonitorDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeCRMonitorDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCRMonitorDetail require credential")
@@ -1612,6 +1630,7 @@ func (c *Client) DescribeCRMonitorsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCRMonitorsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeCRMonitors")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCRMonitors require credential")
@@ -1697,6 +1716,7 @@ func (c *Client) DescribeCRObtainDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCRObtainDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeCRObtainDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCRObtainDetail require credential")
@@ -1782,6 +1802,7 @@ func (c *Client) DescribeCRWorkInfoWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCRWorkInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "DescribeCRWorkInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCRWorkInfo require credential")
@@ -1867,6 +1888,7 @@ func (c *Client) ModifyBPOfflineAttachmentWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyBPOfflineAttachmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "ModifyBPOfflineAttachment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBPOfflineAttachment require credential")
@@ -1952,6 +1974,7 @@ func (c *Client) ModifyCRBlockStatusWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyCRBlockStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "ModifyCRBlockStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCRBlockStatus require credential")
@@ -2037,6 +2060,7 @@ func (c *Client) ModifyCRMonitorWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyCRMonitorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "ModifyCRMonitor")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCRMonitor require credential")
@@ -2122,6 +2146,7 @@ func (c *Client) ModifyCRObtainStatusWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyCRObtainStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "ModifyCRObtainStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCRObtainStatus require credential")
@@ -2207,6 +2232,7 @@ func (c *Client) ModifyCRRightStatusWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyCRRightStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "ModifyCRRightStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCRRightStatus require credential")
@@ -2292,6 +2318,7 @@ func (c *Client) ModifyCRWhiteListWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyCRWhiteListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "ModifyCRWhiteList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCRWhiteList require credential")
@@ -2377,6 +2404,7 @@ func (c *Client) UpdateCRWorkWithContext(ctx context.Context, request *UpdateCRW
     if request == nil {
         request = NewUpdateCRWorkRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bma", APIVersion, "UpdateCRWork")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateCRWork require credential")

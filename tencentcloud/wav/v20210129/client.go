@@ -76,6 +76,7 @@ func (c *Client) CreateChannelCodeWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateChannelCodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "CreateChannelCode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateChannelCode require credential")
@@ -139,6 +140,7 @@ func (c *Client) CreateCorpTagWithContext(ctx context.Context, request *CreateCo
     if request == nil {
         request = NewCreateCorpTagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "CreateCorpTag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCorpTag require credential")
@@ -210,6 +212,7 @@ func (c *Client) CreateLeadWithContext(ctx context.Context, request *CreateLeadR
     if request == nil {
         request = NewCreateLeadRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "CreateLead")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLead require credential")
@@ -265,6 +268,7 @@ func (c *Client) QueryActivityJoinListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewQueryActivityJoinListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryActivityJoinList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryActivityJoinList require credential")
@@ -320,6 +324,7 @@ func (c *Client) QueryActivityListWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryActivityListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryActivityList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryActivityList require credential")
@@ -373,6 +378,7 @@ func (c *Client) QueryActivityLiveCodeListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryActivityLiveCodeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryActivityLiveCodeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryActivityLiveCodeList require credential")
@@ -440,6 +446,7 @@ func (c *Client) QueryArrivalListWithContext(ctx context.Context, request *Query
     if request == nil {
         request = NewQueryArrivalListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryArrivalList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryArrivalList require credential")
@@ -493,6 +500,7 @@ func (c *Client) QueryChannelCodeListWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryChannelCodeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryChannelCodeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryChannelCodeList require credential")
@@ -546,6 +554,7 @@ func (c *Client) QueryChatArchivingListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewQueryChatArchivingListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryChatArchivingList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryChatArchivingList require credential")
@@ -607,6 +616,7 @@ func (c *Client) QueryClueInfoListWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryClueInfoListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryClueInfoList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryClueInfoList require credential")
@@ -662,6 +672,7 @@ func (c *Client) QueryCrmStatisticsWithContext(ctx context.Context, request *Que
     if request == nil {
         request = NewQueryCrmStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryCrmStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCrmStatistics require credential")
@@ -717,6 +728,7 @@ func (c *Client) QueryCustomerEventDetailStatisticsWithContext(ctx context.Conte
     if request == nil {
         request = NewQueryCustomerEventDetailStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryCustomerEventDetailStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCustomerEventDetailStatistics require credential")
@@ -784,6 +796,7 @@ func (c *Client) QueryCustomerProfileListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryCustomerProfileListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryCustomerProfileList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryCustomerProfileList require credential")
@@ -843,6 +856,7 @@ func (c *Client) QueryDealerInfoListWithContext(ctx context.Context, request *Qu
     if request == nil {
         request = NewQueryDealerInfoListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryDealerInfoList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryDealerInfoList require credential")
@@ -912,6 +926,7 @@ func (c *Client) QueryExternalContactDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewQueryExternalContactDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryExternalContactDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryExternalContactDetail require credential")
@@ -977,6 +992,7 @@ func (c *Client) QueryExternalContactDetailByDateWithContext(ctx context.Context
     if request == nil {
         request = NewQueryExternalContactDetailByDateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryExternalContactDetailByDate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryExternalContactDetailByDate require credential")
@@ -1034,6 +1050,7 @@ func (c *Client) QueryExternalContactListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryExternalContactListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryExternalContactList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryExternalContactList require credential")
@@ -1101,6 +1118,7 @@ func (c *Client) QueryExternalUserEventListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewQueryExternalUserEventListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryExternalUserEventList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryExternalUserEventList require credential")
@@ -1158,6 +1176,7 @@ func (c *Client) QueryExternalUserMappingInfoWithContext(ctx context.Context, re
     if request == nil {
         request = NewQueryExternalUserMappingInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryExternalUserMappingInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryExternalUserMappingInfo require credential")
@@ -1225,6 +1244,7 @@ func (c *Client) QueryFollowListWithContext(ctx context.Context, request *QueryF
     if request == nil {
         request = NewQueryFollowListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryFollowList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryFollowList require credential")
@@ -1280,6 +1300,7 @@ func (c *Client) QueryLicenseInfoWithContext(ctx context.Context, request *Query
     if request == nil {
         request = NewQueryLicenseInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryLicenseInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryLicenseInfo require credential")
@@ -1347,6 +1368,7 @@ func (c *Client) QueryMaterialListWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryMaterialListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryMaterialList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMaterialList require credential")
@@ -1410,6 +1432,7 @@ func (c *Client) QueryMiniAppCodeListWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryMiniAppCodeListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryMiniAppCodeList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryMiniAppCodeList require credential")
@@ -1465,6 +1488,7 @@ func (c *Client) QueryStaffEventDetailStatisticsWithContext(ctx context.Context,
     if request == nil {
         request = NewQueryStaffEventDetailStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryStaffEventDetailStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryStaffEventDetailStatistics require credential")
@@ -1528,6 +1552,7 @@ func (c *Client) QueryUserInfoListWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryUserInfoListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryUserInfoList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryUserInfoList require credential")
@@ -1587,6 +1612,7 @@ func (c *Client) QueryVehicleInfoListWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryVehicleInfoListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "wav", APIVersion, "QueryVehicleInfoList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryVehicleInfoList require credential")

@@ -114,6 +114,7 @@ func (c *Client) AddAITaskWithContext(ctx context.Context, request *AddAITaskReq
     if request == nil {
         request = NewAddAITaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "AddAITask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddAITask require credential")
@@ -173,6 +174,7 @@ func (c *Client) AddOrganizationWithContext(ctx context.Context, request *AddOrg
     if request == nil {
         request = NewAddOrganizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "AddOrganization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddOrganization require credential")
@@ -240,6 +242,7 @@ func (c *Client) AddRecordBackupPlanWithContext(ctx context.Context, request *Ad
     if request == nil {
         request = NewAddRecordBackupPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "AddRecordBackupPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddRecordBackupPlan require credential")
@@ -319,6 +322,7 @@ func (c *Client) AddRecordBackupTemplateWithContext(ctx context.Context, request
     if request == nil {
         request = NewAddRecordBackupTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "AddRecordBackupTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddRecordBackupTemplate require credential")
@@ -424,6 +428,7 @@ func (c *Client) AddRecordPlanWithContext(ctx context.Context, request *AddRecor
     if request == nil {
         request = NewAddRecordPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "AddRecordPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddRecordPlan require credential")
@@ -511,6 +516,7 @@ func (c *Client) AddRecordRetrieveTaskWithContext(ctx context.Context, request *
     if request == nil {
         request = NewAddRecordRetrieveTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "AddRecordRetrieveTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddRecordRetrieveTask require credential")
@@ -580,6 +586,7 @@ func (c *Client) AddRecordTemplateWithContext(ctx context.Context, request *AddR
     if request == nil {
         request = NewAddRecordTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "AddRecordTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddRecordTemplate require credential")
@@ -639,6 +646,7 @@ func (c *Client) AddStreamAuthWithContext(ctx context.Context, request *AddStrea
     if request == nil {
         request = NewAddStreamAuthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "AddStreamAuth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddStreamAuth require credential")
@@ -718,6 +726,7 @@ func (c *Client) AddUserDeviceWithContext(ctx context.Context, request *AddUserD
     if request == nil {
         request = NewAddUserDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "AddUserDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddUserDevice require credential")
@@ -797,6 +806,7 @@ func (c *Client) BatchDeleteVideoDownloadTaskWithContext(ctx context.Context, re
     if request == nil {
         request = NewBatchDeleteVideoDownloadTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "BatchDeleteVideoDownloadTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchDeleteVideoDownloadTask require credential")
@@ -854,6 +864,7 @@ func (c *Client) BatchOperateDeviceWithContext(ctx context.Context, request *Bat
     if request == nil {
         request = NewBatchOperateDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "BatchOperateDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchOperateDevice require credential")
@@ -911,6 +922,7 @@ func (c *Client) CallISAPIWithContext(ctx context.Context, request *CallISAPIReq
     if request == nil {
         request = NewCallISAPIRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "CallISAPI")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CallISAPI require credential")
@@ -982,6 +994,7 @@ func (c *Client) ControlDevicePTZWithContext(ctx context.Context, request *Contr
     if request == nil {
         request = NewControlDevicePTZRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ControlDevicePTZ")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ControlDevicePTZ require credential")
@@ -1049,6 +1062,7 @@ func (c *Client) ControlDevicePresetWithContext(ctx context.Context, request *Co
     if request == nil {
         request = NewControlDevicePresetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ControlDevicePreset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ControlDevicePreset require credential")
@@ -1116,6 +1130,7 @@ func (c *Client) ControlDeviceSnapshotWithContext(ctx context.Context, request *
     if request == nil {
         request = NewControlDeviceSnapshotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ControlDeviceSnapshot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ControlDeviceSnapshot require credential")
@@ -1185,6 +1200,7 @@ func (c *Client) ControlDeviceStreamWithContext(ctx context.Context, request *Co
     if request == nil {
         request = NewControlDeviceStreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ControlDeviceStream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ControlDeviceStream require credential")
@@ -1258,6 +1274,7 @@ func (c *Client) ControlRecordWithContext(ctx context.Context, request *ControlR
     if request == nil {
         request = NewControlRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ControlRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ControlRecord require credential")
@@ -1333,6 +1350,7 @@ func (c *Client) ControlRecordTimelineWithContext(ctx context.Context, request *
     if request == nil {
         request = NewControlRecordTimelineRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ControlRecordTimeline")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ControlRecordTimeline require credential")
@@ -1408,6 +1426,7 @@ func (c *Client) CreateVideoDownloadTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateVideoDownloadTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "CreateVideoDownloadTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateVideoDownloadTask require credential")
@@ -1461,6 +1480,7 @@ func (c *Client) DeleteAITaskWithContext(ctx context.Context, request *DeleteAIT
     if request == nil {
         request = NewDeleteAITaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteAITask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAITask require credential")
@@ -1514,6 +1534,7 @@ func (c *Client) DeleteDomainWithContext(ctx context.Context, request *DeleteDom
     if request == nil {
         request = NewDeleteDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDomain require credential")
@@ -1567,6 +1588,7 @@ func (c *Client) DeleteGatewayWithContext(ctx context.Context, request *DeleteGa
     if request == nil {
         request = NewDeleteGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGateway require credential")
@@ -1622,6 +1644,7 @@ func (c *Client) DeleteOrganizationWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteOrganizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteOrganization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteOrganization require credential")
@@ -1675,6 +1698,7 @@ func (c *Client) DeleteRecordBackupPlanWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteRecordBackupPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteRecordBackupPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRecordBackupPlan require credential")
@@ -1730,6 +1754,7 @@ func (c *Client) DeleteRecordBackupTemplateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteRecordBackupTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteRecordBackupTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRecordBackupTemplate require credential")
@@ -1785,6 +1810,7 @@ func (c *Client) DeleteRecordPlanWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteRecordPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteRecordPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRecordPlan require credential")
@@ -1842,6 +1868,7 @@ func (c *Client) DeleteRecordRetrieveTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteRecordRetrieveTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteRecordRetrieveTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRecordRetrieveTask require credential")
@@ -1899,6 +1926,7 @@ func (c *Client) DeleteRecordTemplateWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteRecordTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteRecordTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRecordTemplate require credential")
@@ -1956,6 +1984,7 @@ func (c *Client) DeleteTaskWithContext(ctx context.Context, request *DeleteTaskR
     if request == nil {
         request = NewDeleteTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTask require credential")
@@ -2013,6 +2042,7 @@ func (c *Client) DeleteUserDeviceWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteUserDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteUserDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUserDevice require credential")
@@ -2064,6 +2094,7 @@ func (c *Client) DescribeAITaskWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeAITaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeAITask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAITask require credential")
@@ -2129,6 +2160,7 @@ func (c *Client) DescribeAITaskResultWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAITaskResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeAITaskResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAITaskResult require credential")
@@ -2184,6 +2216,7 @@ func (c *Client) DescribeCNAMEWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeCNAMERequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeCNAME")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCNAME require credential")
@@ -2237,6 +2270,7 @@ func (c *Client) DescribeDeviceChannelWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDeviceChannelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeDeviceChannel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceChannel require credential")
@@ -2300,6 +2334,7 @@ func (c *Client) DescribeDevicePresetWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDevicePresetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeDevicePreset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDevicePreset require credential")
@@ -2349,6 +2384,7 @@ func (c *Client) DescribeDeviceRegionWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDeviceRegionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeDeviceRegion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceRegion require credential")
@@ -2398,6 +2434,7 @@ func (c *Client) DescribeDomainWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomain require credential")
@@ -2447,6 +2484,7 @@ func (c *Client) DescribeDomainRegionWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDomainRegionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeDomainRegion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainRegion require credential")
@@ -2504,6 +2542,7 @@ func (c *Client) DescribeGBDeviceAddrWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeGBDeviceAddrRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeGBDeviceAddr")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGBDeviceAddr require credential")
@@ -2559,6 +2598,7 @@ func (c *Client) DescribeGatewayWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGateway require credential")
@@ -2614,6 +2654,7 @@ func (c *Client) DescribeGatewayMonitorWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeGatewayMonitorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeGatewayMonitor")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGatewayMonitor require credential")
@@ -2663,6 +2704,7 @@ func (c *Client) DescribeGatewayProtocolWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeGatewayProtocolRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeGatewayProtocol")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGatewayProtocol require credential")
@@ -2718,6 +2760,7 @@ func (c *Client) DescribeGatewayVersionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeGatewayVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeGatewayVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGatewayVersion require credential")
@@ -2767,6 +2810,7 @@ func (c *Client) DescribeOrganizationWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeOrganizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeOrganization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOrganization require credential")
@@ -2820,6 +2864,7 @@ func (c *Client) DescribeRecordBackupPlanWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeRecordBackupPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeRecordBackupPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRecordBackupPlan require credential")
@@ -2873,6 +2918,7 @@ func (c *Client) DescribeRecordBackupTemplateWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeRecordBackupTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeRecordBackupTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRecordBackupTemplate require credential")
@@ -2942,6 +2988,7 @@ func (c *Client) DescribeRecordFileWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeRecordFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeRecordFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRecordFile require credential")
@@ -2997,6 +3044,7 @@ func (c *Client) DescribeRecordPlanWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeRecordPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeRecordPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRecordPlan require credential")
@@ -3066,6 +3114,7 @@ func (c *Client) DescribeRecordPlaybackUrlWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRecordPlaybackUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeRecordPlaybackUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRecordPlaybackUrl require credential")
@@ -3121,6 +3170,7 @@ func (c *Client) DescribeRecordRetrieveTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRecordRetrieveTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeRecordRetrieveTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRecordRetrieveTask require credential")
@@ -3188,6 +3238,7 @@ func (c *Client) DescribeRecordSliceWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRecordSliceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeRecordSlice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRecordSlice require credential")
@@ -3243,6 +3294,7 @@ func (c *Client) DescribeRecordTemplateWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRecordTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeRecordTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRecordTemplate require credential")
@@ -3292,6 +3344,7 @@ func (c *Client) DescribeStreamAuthWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeStreamAuthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeStreamAuth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStreamAuth require credential")
@@ -3351,6 +3404,7 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
     if request == nil {
         request = NewDescribeTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTask require credential")
@@ -3406,6 +3460,7 @@ func (c *Client) DescribeUserDeviceWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeUserDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeUserDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUserDevice require credential")
@@ -3463,6 +3518,7 @@ func (c *Client) DescribeVideoBitRateWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeVideoBitRateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeVideoBitRate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoBitRate require credential")
@@ -3542,6 +3598,7 @@ func (c *Client) DescribeVideoDownloadUrlWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeVideoDownloadUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeVideoDownloadUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVideoDownloadUrl require credential")
@@ -3593,6 +3650,7 @@ func (c *Client) ListAITasksWithContext(ctx context.Context, request *ListAITask
     if request == nil {
         request = NewListAITasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListAITasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAITasks require credential")
@@ -3650,6 +3708,7 @@ func (c *Client) ListDeviceSnapshotsWithContext(ctx context.Context, request *Li
     if request == nil {
         request = NewListDeviceSnapshotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListDeviceSnapshots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListDeviceSnapshots require credential")
@@ -3715,6 +3774,7 @@ func (c *Client) ListDevicesWithContext(ctx context.Context, request *ListDevice
     if request == nil {
         request = NewListDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListDevices require credential")
@@ -3770,6 +3830,7 @@ func (c *Client) ListGatewayDevicesWithContext(ctx context.Context, request *Lis
     if request == nil {
         request = NewListGatewayDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListGatewayDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListGatewayDevices require credential")
@@ -3825,6 +3886,7 @@ func (c *Client) ListGatewaysWithContext(ctx context.Context, request *ListGatew
     if request == nil {
         request = NewListGatewaysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListGateways")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListGateways require credential")
@@ -3886,6 +3948,7 @@ func (c *Client) ListOrganizationChannelNumbersWithContext(ctx context.Context, 
     if request == nil {
         request = NewListOrganizationChannelNumbersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListOrganizationChannelNumbers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListOrganizationChannelNumbers require credential")
@@ -3953,6 +4016,7 @@ func (c *Client) ListOrganizationChannelsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewListOrganizationChannelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListOrganizationChannels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListOrganizationChannels require credential")
@@ -4010,6 +4074,7 @@ func (c *Client) ListRecordBackupPlanDevicesWithContext(ctx context.Context, req
     if request == nil {
         request = NewListRecordBackupPlanDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListRecordBackupPlanDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListRecordBackupPlanDevices require credential")
@@ -4059,6 +4124,7 @@ func (c *Client) ListRecordBackupPlansWithContext(ctx context.Context, request *
     if request == nil {
         request = NewListRecordBackupPlansRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListRecordBackupPlans")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListRecordBackupPlans require credential")
@@ -4108,6 +4174,7 @@ func (c *Client) ListRecordBackupTemplatesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewListRecordBackupTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListRecordBackupTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListRecordBackupTemplates require credential")
@@ -4157,6 +4224,7 @@ func (c *Client) ListRecordPlanChannelsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewListRecordPlanChannelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListRecordPlanChannels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListRecordPlanChannels require credential")
@@ -4222,6 +4290,7 @@ func (c *Client) ListRecordPlanDevicesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewListRecordPlanDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListRecordPlanDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListRecordPlanDevices require credential")
@@ -4271,6 +4340,7 @@ func (c *Client) ListRecordPlansWithContext(ctx context.Context, request *ListRe
     if request == nil {
         request = NewListRecordPlansRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListRecordPlans")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListRecordPlans require credential")
@@ -4320,6 +4390,7 @@ func (c *Client) ListRecordRetrieveTasksWithContext(ctx context.Context, request
     if request == nil {
         request = NewListRecordRetrieveTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListRecordRetrieveTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListRecordRetrieveTasks require credential")
@@ -4369,6 +4440,7 @@ func (c *Client) ListRecordTemplatesWithContext(ctx context.Context, request *Li
     if request == nil {
         request = NewListRecordTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListRecordTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListRecordTemplates require credential")
@@ -4432,6 +4504,7 @@ func (c *Client) ListSubTasksWithContext(ctx context.Context, request *ListSubTa
     if request == nil {
         request = NewListSubTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListSubTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListSubTasks require credential")
@@ -4495,6 +4568,7 @@ func (c *Client) ListTasksWithContext(ctx context.Context, request *ListTasksReq
     if request == nil {
         request = NewListTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListTasks require credential")
@@ -4558,6 +4632,7 @@ func (c *Client) ListVideoDownloadTaskWithContext(ctx context.Context, request *
     if request == nil {
         request = NewListVideoDownloadTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListVideoDownloadTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListVideoDownloadTask require credential")
@@ -4625,6 +4700,7 @@ func (c *Client) PlayRecordWithContext(ctx context.Context, request *PlayRecordR
     if request == nil {
         request = NewPlayRecordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "PlayRecord")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PlayRecord require credential")
@@ -4684,6 +4760,7 @@ func (c *Client) QueryForbidPlayChannelListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewQueryForbidPlayChannelListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "QueryForbidPlayChannelList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryForbidPlayChannelList require credential")
@@ -4747,6 +4824,7 @@ func (c *Client) RefreshDeviceChannelWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewRefreshDeviceChannelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "RefreshDeviceChannel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RefreshDeviceChannel require credential")
@@ -4818,6 +4896,7 @@ func (c *Client) SetForbidPlayChannelsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSetForbidPlayChannelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "SetForbidPlayChannels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetForbidPlayChannels require credential")
@@ -4901,6 +4980,7 @@ func (c *Client) UpdateAITaskWithContext(ctx context.Context, request *UpdateAIT
     if request == nil {
         request = NewUpdateAITaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpdateAITask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAITask require credential")
@@ -4960,6 +5040,7 @@ func (c *Client) UpdateAITaskStatusWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateAITaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpdateAITaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAITaskStatus require credential")
@@ -5013,6 +5094,7 @@ func (c *Client) UpdateDeviceOrganizationWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUpdateDeviceOrganizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpdateDeviceOrganization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDeviceOrganization require credential")
@@ -5070,6 +5152,7 @@ func (c *Client) UpdateDeviceStatusWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateDeviceStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpdateDeviceStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateDeviceStatus require credential")
@@ -5127,6 +5210,7 @@ func (c *Client) UpdateGatewayWithContext(ctx context.Context, request *UpdateGa
     if request == nil {
         request = NewUpdateGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpdateGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateGateway require credential")
@@ -5184,6 +5268,7 @@ func (c *Client) UpdateOrganizationWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateOrganizationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpdateOrganization")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateOrganization require credential")
@@ -5249,6 +5334,7 @@ func (c *Client) UpdateRecordBackupPlanWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateRecordBackupPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpdateRecordBackupPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateRecordBackupPlan require credential")
@@ -5316,6 +5402,7 @@ func (c *Client) UpdateRecordBackupTemplateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateRecordBackupTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpdateRecordBackupTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateRecordBackupTemplate require credential")
@@ -5435,6 +5522,7 @@ func (c *Client) UpdateRecordPlanWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateRecordPlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpdateRecordPlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateRecordPlan require credential")
@@ -5510,6 +5598,7 @@ func (c *Client) UpdateRecordTemplateWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateRecordTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpdateRecordTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateRecordTemplate require credential")
@@ -5579,6 +5668,7 @@ func (c *Client) UpdateUserDeviceWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateUserDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpdateUserDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateUserDevice require credential")
@@ -5632,6 +5722,7 @@ func (c *Client) UpgradeGatewayWithContext(ctx context.Context, request *Upgrade
     if request == nil {
         request = NewUpgradeGatewayRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "UpgradeGateway")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradeGateway require credential")

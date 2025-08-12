@@ -80,6 +80,7 @@ func (c *Client) QueryHunyuanTo3DJobWithContext(ctx context.Context, request *Qu
     if request == nil {
         request = NewQueryHunyuanTo3DJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ai3d", APIVersion, "QueryHunyuanTo3DJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryHunyuanTo3DJob require credential")
@@ -127,6 +128,7 @@ func (c *Client) SubmitHunyuanTo3DJobWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewSubmitHunyuanTo3DJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ai3d", APIVersion, "SubmitHunyuanTo3DJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SubmitHunyuanTo3DJob require credential")

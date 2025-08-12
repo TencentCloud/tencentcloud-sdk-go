@@ -166,6 +166,7 @@ func (c *Client) TextModerationWithContext(ctx context.Context, request *TextMod
     if request == nil {
         request = NewTextModerationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tms", APIVersion, "TextModeration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextModeration require credential")

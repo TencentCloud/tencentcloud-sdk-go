@@ -277,10 +277,12 @@ func (r *AnalyzeFaceResponse) FromJsonString(s string) error {
 }
 
 type AttributeItem struct {
-	// 属性值
+	// 属性值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// Type识别概率值,[0,1],代表判断正确的概率。
+	// Type识别概率值。
+	// - 取值范围：[0,1]。
+	// - 代表判断正确的概率。
 	Probability *float64 `json:"Probability,omitnil,omitempty" name:"Probability"`
 }
 
@@ -1262,22 +1264,23 @@ type DenseFaceShape struct {
 // Predefined struct for user
 type DetectFaceAttributesRequestParams struct {
 	// 最多处理的人脸数目。 
-	// 默认值为1（仅检测图片中面积最大的那张人脸），最大值为120。 
-	// 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
+	// - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为120。 
+	// - 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitnil,omitempty" name:"MaxFaceNum"`
 
-	// 图片 base64 数据，base64 编码后大小不可超过5M。 
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// 图片 base64 数据。
+	// - base64 编码后大小不可超过5M。 
+	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url 。 
-	// 对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
-	// Url、Image必须提供一个，如果都提供，只使用 Url。 
-	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// - 对应图片 base64 编码后大小不可超过5M。
+	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+	// - Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// - 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// - 非腾讯云存储的Url速度和稳定性可能受一定影响。 
+	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 是否返回年龄、性别、情绪等属性。 
@@ -1289,7 +1292,11 @@ type DetectFaceAttributesRequestParams struct {
 	// 最多返回面积最大的 5 张人脸属性信息，超过 5 张人脸（第 6 张及以后的人脸）的 AttributesInfo 不具备参考意义。
 	FaceAttributesType *string `json:"FaceAttributesType,omitnil,omitempty" name:"FaceAttributesType"`
 
-	// 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+	// 是否开启图片旋转识别支持。
+	// - 0为不开启，1为开启。
+	// - 默认为0。
+	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
 
 	// 人脸识别服务所用的算法模型版本。本接口仅支持“3.0”输入
@@ -1300,22 +1307,23 @@ type DetectFaceAttributesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 最多处理的人脸数目。 
-	// 默认值为1（仅检测图片中面积最大的那张人脸），最大值为120。 
-	// 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
+	// - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为120。 
+	// - 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitnil,omitempty" name:"MaxFaceNum"`
 
-	// 图片 base64 数据，base64 编码后大小不可超过5M。 
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// 图片 base64 数据。
+	// - base64 编码后大小不可超过5M。 
+	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 图片的 Url 。 
-	// 对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
-	// Url、Image必须提供一个，如果都提供，只使用 Url。 
-	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// - 对应图片 base64 编码后大小不可超过5M。
+	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+	// - Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// - 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// - 非腾讯云存储的Url速度和稳定性可能受一定影响。 
+	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 是否返回年龄、性别、情绪等属性。 
@@ -1327,7 +1335,11 @@ type DetectFaceAttributesRequest struct {
 	// 最多返回面积最大的 5 张人脸属性信息，超过 5 张人脸（第 6 张及以后的人脸）的 AttributesInfo 不具备参考意义。
 	FaceAttributesType *string `json:"FaceAttributesType,omitnil,omitempty" name:"FaceAttributesType"`
 
-	// 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+	// 是否开启图片旋转识别支持。
+	// - 0为不开启，1为开启。
+	// - 默认为0。
+	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
 
 	// 人脸识别服务所用的算法模型版本。本接口仅支持“3.0”输入
@@ -1652,33 +1664,33 @@ func (r *DetectLiveFaceResponse) FromJsonString(s string) error {
 
 type Eye struct {
 	// 识别是否佩戴眼镜。
-	// AttributeItem对应的Type为 —— 0：无眼镜，1：普通眼镜，2：墨镜
+	// - AttributeItem对应的Type为 —— 0：无眼镜，1：普通眼镜，2：墨镜。
 	Glass *AttributeItem `json:"Glass,omitnil,omitempty" name:"Glass"`
 
 	// 识别眼睛的睁开、闭合状态。
-	// AttributeItem对应的Type为 —— 0：睁开，1：闭眼
+	// - AttributeItem对应的Type为 —— 0：睁开，1：闭眼。
 	EyeOpen *AttributeItem `json:"EyeOpen,omitnil,omitempty" name:"EyeOpen"`
 
 	// 识别是否双眼皮。
-	// AttributeItem对应的Type为 —— 0：无，1：有。
+	// - AttributeItem对应的Type为 —— 0：无，1：有。
 	EyelidType *AttributeItem `json:"EyelidType,omitnil,omitempty" name:"EyelidType"`
 
 	// 眼睛大小。
-	// AttributeItem对应的Type为 —— 0：小眼睛，1：普通眼睛，2：大眼睛。
+	// - AttributeItem对应的Type为 —— 0：小眼睛，1：普通眼睛，2：大眼睛。
 	EyeSize *AttributeItem `json:"EyeSize,omitnil,omitempty" name:"EyeSize"`
 }
 
 type Eyebrow struct {
 	// 眉毛浓密。
-	// AttributeItem对应的Type为 —— 0：淡眉，1：浓眉。
+	// - AttributeItem对应的Type为 —— 0：淡眉，1：浓眉。
 	EyebrowDensity *AttributeItem `json:"EyebrowDensity,omitnil,omitempty" name:"EyebrowDensity"`
 
 	// 眉毛弯曲。
-	// AttributeItem对应的Type为 —— 0：不弯，1：弯眉。
+	// - AttributeItem对应的Type为  —— 0：不弯，1：弯眉。
 	EyebrowCurve *AttributeItem `json:"EyebrowCurve,omitnil,omitempty" name:"EyebrowCurve"`
 
 	// 眉毛长短。
-	// AttributeItem对应的Type为 —— 0：短眉毛，1：长眉毛。
+	// - AttributeItem对应的Type为 —— 0：短眉毛，1：长眉毛。
 	EyebrowLength *AttributeItem `json:"EyebrowLength,omitnil,omitempty" name:"EyebrowLength"`
 }
 
@@ -1728,75 +1740,85 @@ type FaceAttributesInfo struct {
 }
 
 type FaceDetailAttributesInfo struct {
-	// 年龄 [0,65]，其中65代表“65岁及以上”。 
-	// FaceAttributesType 不含Age 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 年龄。
+	// - 取值范围：[0,65]，其中65代表“65岁及以上”。 
+	// - FaceAttributesType 不含Age 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Age *int64 `json:"Age,omitnil,omitempty" name:"Age"`
 
-	// 美丑打分[0,100]。 
-	// FaceAttributesType 不含 Beauty 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 美丑打分。
+	// - 取值范围：[0,100]。 
+	// - FaceAttributesType不含 Beauty或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Beauty *int64 `json:"Beauty,omitnil,omitempty" name:"Beauty"`
 
 	// 情绪，可识别自然、高兴、惊讶、生气、悲伤、厌恶、害怕。 
-	// AttributeItem对应的Type为 —— 0：自然，1：高兴，2：惊讶，3：生气，4：悲伤，5：厌恶，6：害怕
-	// FaceAttributesType 不含Emotion 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// - AttributeItem对应的Type为 —— 0：自然，1：高兴，2：惊讶，3：生气，4：悲伤，5：厌恶，6：害怕。
+	// - FaceAttributesType 不含Emotion 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Emotion *AttributeItem `json:"Emotion,omitnil,omitempty" name:"Emotion"`
 
-	// 眼睛相关信息，可识别是否戴眼镜、是否闭眼、是否双眼皮和眼睛大小。 
-	// FaceAttributesType 不含Eye 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 眼睛相关信息。
+	// - 可识别是否戴眼镜、是否闭眼、是否双眼皮和眼睛大小。
+	// - FaceAttributesType 不含Eye 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Eye *Eye `json:"Eye,omitnil,omitempty" name:"Eye"`
 
-	// 眉毛相关信息，可识别眉毛浓密、弯曲、长短信息。 
-	// FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 眉毛相关信息。
+	// - 可识别眉毛浓密、弯曲、长短信息。
+	// - FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Eyebrow *Eyebrow `json:"Eyebrow,omitnil,omitempty" name:"Eyebrow"`
 
 	// 性别信息。 
-	// AttributeItem对应的Type为 —— 	0：男性，1：女性。
-	// FaceAttributesType 不含Gender 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// - AttributeItem对应的Type为 —— 0：男性，1：女性。
+	// - FaceAttributesType 不含Gender 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Gender *AttributeItem `json:"Gender,omitnil,omitempty" name:"Gender"`
 
-	// 头发信息，包含头发长度、有无刘海、头发颜色。 
-	// FaceAttributesType 不含Hair 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 头发信息。
+	// - 包含头发长度、有无刘海、头发颜色。 
+	// - FaceAttributesType 不含Hair 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Hair *Hair `json:"Hair,omitnil,omitempty" name:"Hair"`
 
-	// 帽子信息，可识别是否佩戴帽子、帽子款式、帽子颜色。 
-	// FaceAttributesType 不含Hat 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 帽子信息。
+	// 
+	// - 可识别是否佩戴帽子、帽子款式、帽子颜色。
+	// - FaceAttributesType 不含Hat 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Hat *Hat `json:"Hat,omitnil,omitempty" name:"Hat"`
 
-	// 姿态信息，包含人脸的上下偏移、左右偏移、平面旋转信息。 
-	// FaceAttributesType 不含Headpose 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 姿态信息。
+	// - 包含人脸的上下偏移、左右偏移、平面旋转信息。 
+	// - FaceAttributesType 不含Headpose 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	HeadPose *HeadPose `json:"HeadPose,omitnil,omitempty" name:"HeadPose"`
 
 	// 口罩佩戴信息。 
-	// AttributeItem对应的Type为 —— 0: 无口罩， 1: 有口罩不遮脸，2: 有口罩遮下巴，3: 有口罩遮嘴，4: 正确佩戴口罩。
-	// FaceAttributesType 不含Mask 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// - AttributeItem对应的Type为 —— 0: 无口罩， 1: 有口罩不遮脸，2: 有口罩遮下巴，3: 有口罩遮嘴，4: 正确佩戴口罩。
+	// - FaceAttributesType 不含Mask 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Mask *AttributeItem `json:"Mask,omitnil,omitempty" name:"Mask"`
 
-	// 嘴巴信息，可识别是否张嘴、嘴唇厚度。 
-	// FaceAttributesType 不含 Mouth 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 嘴巴信息。
+	// - 可识别是否张嘴、嘴唇厚度。
+	// - FaceAttributesType 不含 Mouth 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Mouth *Mouth `json:"Mouth,omitnil,omitempty" name:"Mouth"`
 
 	// 胡子信息。
-	// AttributeItem对应的Type为 —— 0：无胡子，1：有胡子。 
-	// FaceAttributesType 不含 Moustache 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// - AttributeItem对应的Type为 —— 0：无胡子，1：有胡子。 
+	// - FaceAttributesType 不含 Moustache 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Moustache *AttributeItem `json:"Moustache,omitnil,omitempty" name:"Moustache"`
 
 	// 鼻子信息。 
-	// AttributeItem对应的Type为 —— 0：朝天鼻，1：鹰钩鼻，2：普通，3：圆鼻头
-	// FaceAttributesType 不含 Nose 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// - AttributeItem对应的Type为 —— 0：朝天鼻，1：鹰钩鼻，2：普通，3：圆鼻头。
+	// - FaceAttributesType 不含 Nose 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Nose *AttributeItem `json:"Nose,omitnil,omitempty" name:"Nose"`
 
 	// 脸型信息。 
-	// AttributeItem对应的Type为 —— 0：方脸，1：三角脸，2：鹅蛋脸，3：心形脸，4：圆脸。
-	// FaceAttributesType 不含 Shape 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// - AttributeItem对应的Type为 —— 0：方脸，1：三角脸，2：鹅蛋脸，3：心形脸，4：圆脸。
+	// - FaceAttributesType 不含 Shape 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Shape *AttributeItem `json:"Shape,omitnil,omitempty" name:"Shape"`
 
 	// 肤色信息。 
-	// AttributeItem对应的Type为 —— 0：黄色皮肤，1：棕色皮肤，2：黑色皮肤，3：白色皮肤。
-	// FaceAttributesType 不含 Skin 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// - AttributeItem对应的Type为 ——  0：黄色皮肤，1：棕色皮肤，2：黑色皮肤，3：白色皮肤。
+	// - FaceAttributesType 不含 Skin 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Skin *AttributeItem `json:"Skin,omitnil,omitempty" name:"Skin"`
 
-	// 微笑程度，[0,100]。 
-	// FaceAttributesType 不含 Smile 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 微笑程度。
+	// - 取值范围：[0,100]。 
+	// - FaceAttributesType 不含 Smile 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Smile *int64 `json:"Smile,omitnil,omitempty" name:"Smile"`
 }
 
@@ -2574,36 +2596,39 @@ type GroupInfo struct {
 
 type Hair struct {
 	// 头发长度信息。
-	// AttributeItem对应的Type为 —— 0：光头，1：短发，2：中发，3：长发，4：绑发。
+	// - AttributeItem对应的Type为 —— 0：光头，1：短发，2：中发，3：长发，4：绑发。
 	Length *AttributeItem `json:"Length,omitnil,omitempty" name:"Length"`
 
 	// 刘海信息。
-	// AttributeItem对应的Type为 —— 0：无刘海，1：有刘海。
+	// - AttributeItem对应的Type为 —— 0：无刘海，1：有刘海。
 	Bang *AttributeItem `json:"Bang,omitnil,omitempty" name:"Bang"`
 
 	// 头发颜色信息。
-	// AttributeItem对应的Type为 —— 0：黑色，1：金色，2：棕色，3：灰白色。
+	// - AttributeItem对应的Type为 —— 0：黑色，1：金色，2：棕色，3：灰白色。
 	Color *AttributeItem `json:"Color,omitnil,omitempty" name:"Color"`
 }
 
 type Hat struct {
 	// 帽子佩戴状态信息。
-	// AttributeItem对应的Type为 —— 0：不戴帽子，1：普通帽子，2：头盔，3：保安帽。
+	// - AttributeItem对应的Type为 —— 0：不戴帽子，1：普通帽子，2：头盔，3：保安帽。
 	Style *AttributeItem `json:"Style,omitnil,omitempty" name:"Style"`
 
 	// 帽子颜色。
-	// AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄色系，3：蓝色系，4：黑色系，5：灰白色系，6：混色系。
+	// - AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄色系，3：蓝色系，4：黑色系，5：灰白色系，6：混色系。
 	Color *AttributeItem `json:"Color,omitnil,omitempty" name:"Color"`
 }
 
 type HeadPose struct {
-	// 上下偏移[-30,30]。
+	// 上下偏移。
+	// - 取值范围：[-30,30]。
 	Pitch *int64 `json:"Pitch,omitnil,omitempty" name:"Pitch"`
 
-	// 左右偏移[-30,30]。
+	// 左右偏移。
+	// - 取值范围：[-30,30]。
 	Yaw *int64 `json:"Yaw,omitnil,omitempty" name:"Yaw"`
 
-	// 平面旋转[-180,180]。
+	// 平面旋转。
+	// - 取值范围：[-180,180]。
 	Roll *int64 `json:"Roll,omitnil,omitempty" name:"Roll"`
 }
 
@@ -2819,8 +2844,9 @@ func (r *ModifyPersonGroupInfoResponse) FromJsonString(s string) error {
 }
 
 type Mouth struct {
-	// 是否张嘴信息。
-	// AttributeItem对应的Type为 —— 0：不张嘴，1：张嘴。
+	// 是否张嘴信息。 
+	// 
+	// - AttributeItem对应的Type为 —— 0：不张嘴，1：张嘴。
 	MouthOpen *AttributeItem `json:"MouthOpen,omitnil,omitempty" name:"MouthOpen"`
 }
 

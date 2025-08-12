@@ -86,6 +86,7 @@ func (c *Client) AddClusterStorageOptionWithContext(ctx context.Context, request
     if request == nil {
         request = NewAddClusterStorageOptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "AddClusterStorageOption")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddClusterStorageOption require credential")
@@ -163,6 +164,7 @@ func (c *Client) AddNodesWithContext(ctx context.Context, request *AddNodesReque
     if request == nil {
         request = NewAddNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "AddNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddNodes require credential")
@@ -250,6 +252,7 @@ func (c *Client) AddQueueWithContext(ctx context.Context, request *AddQueueReque
     if request == nil {
         request = NewAddQueueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "AddQueue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddQueue require credential")
@@ -329,6 +332,7 @@ func (c *Client) AttachNodesWithContext(ctx context.Context, request *AttachNode
     if request == nil {
         request = NewAttachNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "AttachNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AttachNodes require credential")
@@ -406,6 +410,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "CreateCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCluster require credential")
@@ -475,6 +480,7 @@ func (c *Client) CreateWorkspacesWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateWorkspacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "CreateWorkspaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWorkspaces require credential")
@@ -528,6 +534,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DeleteCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCluster require credential")
@@ -579,6 +586,7 @@ func (c *Client) DeleteClusterStorageOptionWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteClusterStorageOptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DeleteClusterStorageOption")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterStorageOption require credential")
@@ -638,6 +646,7 @@ func (c *Client) DeleteNodesWithContext(ctx context.Context, request *DeleteNode
     if request == nil {
         request = NewDeleteNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DeleteNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNodes require credential")
@@ -741,6 +750,7 @@ func (c *Client) DeleteQueueWithContext(ctx context.Context, request *DeleteQueu
     if request == nil {
         request = NewDeleteQueueRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DeleteQueue")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteQueue require credential")
@@ -796,6 +806,7 @@ func (c *Client) DescribeAutoScalingConfigurationWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeAutoScalingConfigurationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeAutoScalingConfiguration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAutoScalingConfiguration require credential")
@@ -847,6 +858,7 @@ func (c *Client) DescribeClusterActivitiesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeClusterActivitiesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeClusterActivities")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterActivities require credential")
@@ -900,6 +912,7 @@ func (c *Client) DescribeClusterStorageOptionWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeClusterStorageOptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeClusterStorageOption")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterStorageOption require credential")
@@ -949,6 +962,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusters require credential")
@@ -998,6 +1012,7 @@ func (c *Client) DescribeInitNodeScriptsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInitNodeScriptsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeInitNodeScripts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInitNodeScripts require credential")
@@ -1075,6 +1090,7 @@ func (c *Client) DescribeNodesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeNodes require credential")
@@ -1150,6 +1166,7 @@ func (c *Client) DescribeQueuesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeQueuesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeQueues")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeQueues require credential")
@@ -1203,6 +1220,7 @@ func (c *Client) DescribeWorkspacesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeWorkspacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeWorkspaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWorkspaces require credential")
@@ -1256,6 +1274,7 @@ func (c *Client) DetachNodesWithContext(ctx context.Context, request *DetachNode
     if request == nil {
         request = NewDetachNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DetachNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetachNodes require credential")
@@ -1305,6 +1324,7 @@ func (c *Client) ModifyInitNodeScriptsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyInitNodeScriptsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "ModifyInitNodeScripts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInitNodeScripts require credential")
@@ -1354,6 +1374,7 @@ func (c *Client) ModifyWorkspacesAttributeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyWorkspacesAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "ModifyWorkspacesAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWorkspacesAttribute require credential")
@@ -1413,6 +1434,7 @@ func (c *Client) ModifyWorkspacesRenewFlagWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyWorkspacesRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "ModifyWorkspacesRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWorkspacesRenewFlag require credential")
@@ -1486,6 +1508,7 @@ func (c *Client) SetAutoScalingConfigurationWithContext(ctx context.Context, req
     if request == nil {
         request = NewSetAutoScalingConfigurationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "SetAutoScalingConfiguration")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetAutoScalingConfiguration require credential")
@@ -1559,6 +1582,7 @@ func (c *Client) TerminateWorkspacesWithContext(ctx context.Context, request *Te
     if request == nil {
         request = NewTerminateWorkspacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "TerminateWorkspaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateWorkspaces require credential")

@@ -102,6 +102,7 @@ func (c *Client) ActivateSubscribeWithContext(ctx context.Context, request *Acti
     if request == nil {
         request = NewActivateSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ActivateSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ActivateSubscribe require credential")
@@ -183,6 +184,7 @@ func (c *Client) CompleteMigrateJobWithContext(ctx context.Context, request *Com
     if request == nil {
         request = NewCompleteMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CompleteMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CompleteMigrateJob require credential")
@@ -288,6 +290,7 @@ func (c *Client) CreateMigrateCheckJobWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateMigrateCheckJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateMigrateCheckJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMigrateCheckJob require credential")
@@ -383,6 +386,7 @@ func (c *Client) CreateMigrateJobWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMigrateJob require credential")
@@ -442,6 +446,7 @@ func (c *Client) CreateSubscribeWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "CreateSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateSubscribe require credential")
@@ -525,6 +530,7 @@ func (c *Client) DeleteMigrateJobWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DeleteMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMigrateJob require credential")
@@ -586,6 +592,7 @@ func (c *Client) DescribeAsyncRequestInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAsyncRequestInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeAsyncRequestInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAsyncRequestInfo require credential")
@@ -653,6 +660,7 @@ func (c *Client) DescribeMigrateCheckJobWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeMigrateCheckJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeMigrateCheckJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigrateCheckJob require credential")
@@ -734,6 +742,7 @@ func (c *Client) DescribeMigrateJobsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeMigrateJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeMigrateJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMigrateJobs require credential")
@@ -797,6 +806,7 @@ func (c *Client) DescribeSubscribeConfWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeSubscribeConfRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeSubscribeConf")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSubscribeConf require credential")
@@ -856,6 +866,7 @@ func (c *Client) DescribeSubscribesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeSubscribesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeSubscribes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSubscribes require credential")
@@ -919,6 +930,7 @@ func (c *Client) IsolateSubscribeWithContext(ctx context.Context, request *Isola
     if request == nil {
         request = NewIsolateSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "IsolateSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IsolateSubscribe require credential")
@@ -998,6 +1010,7 @@ func (c *Client) ModifyMigrateJobWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifyMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMigrateJob require credential")
@@ -1051,6 +1064,7 @@ func (c *Client) ModifySubscribeAutoRenewFlagWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifySubscribeAutoRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifySubscribeAutoRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySubscribeAutoRenewFlag require credential")
@@ -1110,6 +1124,7 @@ func (c *Client) ModifySubscribeConsumeTimeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifySubscribeConsumeTimeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifySubscribeConsumeTime")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySubscribeConsumeTime require credential")
@@ -1165,6 +1180,7 @@ func (c *Client) ModifySubscribeNameWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifySubscribeNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifySubscribeName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySubscribeName require credential")
@@ -1228,6 +1244,7 @@ func (c *Client) ModifySubscribeObjectsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifySubscribeObjectsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifySubscribeObjects")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySubscribeObjects require credential")
@@ -1283,6 +1300,7 @@ func (c *Client) ModifySubscribeVipVportWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifySubscribeVipVportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ModifySubscribeVipVport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySubscribeVipVport require credential")
@@ -1342,6 +1360,7 @@ func (c *Client) OfflineIsolatedSubscribeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewOfflineIsolatedSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "OfflineIsolatedSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OfflineIsolatedSubscribe require credential")
@@ -1399,6 +1418,7 @@ func (c *Client) ResetSubscribeWithContext(ctx context.Context, request *ResetSu
     if request == nil {
         request = NewResetSubscribeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ResetSubscribe")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetSubscribe require credential")
@@ -1486,6 +1506,7 @@ func (c *Client) StartMigrateJobWithContext(ctx context.Context, request *StartM
     if request == nil {
         request = NewStartMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "StartMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartMigrateJob require credential")
@@ -1557,6 +1578,7 @@ func (c *Client) StopMigrateJobWithContext(ctx context.Context, request *StopMig
     if request == nil {
         request = NewStopMigrateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "StopMigrateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopMigrateJob require credential")

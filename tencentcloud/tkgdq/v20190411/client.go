@@ -102,6 +102,7 @@ func (c *Client) DescribeEntityWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeEntityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tkgdq", APIVersion, "DescribeEntity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEntity require credential")
@@ -171,6 +172,7 @@ func (c *Client) DescribeRelationWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeRelationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tkgdq", APIVersion, "DescribeRelation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRelation require credential")
@@ -240,6 +242,7 @@ func (c *Client) DescribeTripleWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeTripleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tkgdq", APIVersion, "DescribeTriple")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTriple require credential")

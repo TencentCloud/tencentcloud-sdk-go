@@ -4870,6 +4870,12 @@ type HorizontalPodAutoscaler struct {
 	// "concurrency-util":单个实例请求数量值。范围{1,100000}
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HpaMetrics []*Option `json:"HpaMetrics,omitnil,omitempty" name:"HpaMetrics"`
+
+	// 扩容观察期，单位秒
+	ScaleUpStabilizationWindowSeconds *int64 `json:"ScaleUpStabilizationWindowSeconds,omitnil,omitempty" name:"ScaleUpStabilizationWindowSeconds"`
+
+	// 缩容观察期，单位秒
+	ScaleDownStabilizationWindowSeconds *int64 `json:"ScaleDownStabilizationWindowSeconds,omitnil,omitempty" name:"ScaleDownStabilizationWindowSeconds"`
 }
 
 type HostPath struct {
@@ -5749,6 +5755,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// sidecar配置
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
+
+	// 资源组 id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -5872,6 +5881,9 @@ type ModifyModelServiceRequest struct {
 
 	// sidecar配置
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
+
+	// 资源组 id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -5918,6 +5930,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "HealthProbe")
 	delete(f, "RollingUpdate")
 	delete(f, "Sidecar")
+	delete(f, "ResourceGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -6956,6 +6969,9 @@ type Service struct {
 	// 用于监控查询的Source
 	// 枚举值，部分情况下与CreateSource不同，通过该字段兼容
 	MonitorSource *string `json:"MonitorSource,omitnil,omitempty" name:"MonitorSource"`
+
+	// 服务创建者的子账号名称
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 }
 
 type ServiceCallInfo struct {

@@ -88,6 +88,7 @@ func (c *Client) DescribeKBComponentWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeKBComponentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bsca", APIVersion, "DescribeKBComponent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKBComponent require credential")
@@ -147,6 +148,7 @@ func (c *Client) DescribeKBComponentVersionListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeKBComponentVersionListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bsca", APIVersion, "DescribeKBComponentVersionList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKBComponentVersionList require credential")
@@ -204,6 +206,7 @@ func (c *Client) DescribeKBComponentVulnerabilityWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeKBComponentVulnerabilityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bsca", APIVersion, "DescribeKBComponentVulnerability")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKBComponentVulnerability require credential")
@@ -263,6 +266,7 @@ func (c *Client) DescribeKBLicenseWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeKBLicenseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bsca", APIVersion, "DescribeKBLicense")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKBLicense require credential")
@@ -320,6 +324,7 @@ func (c *Client) DescribeKBVulnerabilityWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeKBVulnerabilityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bsca", APIVersion, "DescribeKBVulnerability")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKBVulnerability require credential")
@@ -377,6 +382,7 @@ func (c *Client) MatchKBPURLListWithContext(ctx context.Context, request *MatchK
     if request == nil {
         request = NewMatchKBPURLListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bsca", APIVersion, "MatchKBPURLList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("MatchKBPURLList require credential")
@@ -434,6 +440,7 @@ func (c *Client) SearchKBComponentWithContext(ctx context.Context, request *Sear
     if request == nil {
         request = NewSearchKBComponentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bsca", APIVersion, "SearchKBComponent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchKBComponent require credential")

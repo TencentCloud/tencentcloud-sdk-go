@@ -104,6 +104,7 @@ func (c *Client) ActivateInstanceWithContext(ctx context.Context, request *Activ
     if request == nil {
         request = NewActivateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ActivateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ActivateInstance require credential")
@@ -165,6 +166,7 @@ func (c *Client) AddClusterSlaveZoneWithContext(ctx context.Context, request *Ad
     if request == nil {
         request = NewAddClusterSlaveZoneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "AddClusterSlaveZone")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddClusterSlaveZone require credential")
@@ -256,6 +258,7 @@ func (c *Client) AddInstancesWithContext(ctx context.Context, request *AddInstan
     if request == nil {
         request = NewAddInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "AddInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddInstances require credential")
@@ -317,6 +320,7 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "AssociateSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateSecurityGroups require credential")
@@ -382,6 +386,7 @@ func (c *Client) BindClusterResourcePackagesWithContext(ctx context.Context, req
     if request == nil {
         request = NewBindClusterResourcePackagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "BindClusterResourcePackages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindClusterResourcePackages require credential")
@@ -433,6 +438,7 @@ func (c *Client) CloseAuditServiceWithContext(ctx context.Context, request *Clos
     if request == nil {
         request = NewCloseAuditServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CloseAuditService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseAuditService require credential")
@@ -492,6 +498,7 @@ func (c *Client) CloseClusterPasswordComplexityWithContext(ctx context.Context, 
     if request == nil {
         request = NewCloseClusterPasswordComplexityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CloseClusterPasswordComplexity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseClusterPasswordComplexity require credential")
@@ -557,6 +564,7 @@ func (c *Client) CloseProxyWithContext(ctx context.Context, request *CloseProxyR
     if request == nil {
         request = NewCloseProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CloseProxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseProxy require credential")
@@ -622,6 +630,7 @@ func (c *Client) CloseProxyEndPointWithContext(ctx context.Context, request *Clo
     if request == nil {
         request = NewCloseProxyEndPointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CloseProxyEndPoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseProxyEndPoint require credential")
@@ -695,6 +704,7 @@ func (c *Client) CloseSSLWithContext(ctx context.Context, request *CloseSSLReque
     if request == nil {
         request = NewCloseSSLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CloseSSL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseSSL require credential")
@@ -764,6 +774,7 @@ func (c *Client) CloseWanWithContext(ctx context.Context, request *CloseWanReque
     if request == nil {
         request = NewCloseWanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CloseWan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CloseWan require credential")
@@ -825,6 +836,7 @@ func (c *Client) CopyClusterPasswordComplexityWithContext(ctx context.Context, r
     if request == nil {
         request = NewCopyClusterPasswordComplexityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CopyClusterPasswordComplexity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CopyClusterPasswordComplexity require credential")
@@ -946,6 +958,7 @@ func (c *Client) CreateAccountsWithContext(ctx context.Context, request *CreateA
     if request == nil {
         request = NewCreateAccountsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateAccounts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAccounts require credential")
@@ -1005,6 +1018,7 @@ func (c *Client) CreateAuditLogFileWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateAuditLogFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateAuditLogFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAuditLogFile require credential")
@@ -1056,6 +1070,7 @@ func (c *Client) CreateAuditRuleTemplateWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateAuditRuleTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateAuditRuleTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAuditRuleTemplate require credential")
@@ -1119,6 +1134,7 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, request *CreateBac
     if request == nil {
         request = NewCreateBackupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateBackup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBackup require credential")
@@ -1172,6 +1188,7 @@ func (c *Client) CreateCLSDeliveryWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCLSDeliveryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateCLSDelivery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCLSDelivery require credential")
@@ -1227,6 +1244,7 @@ func (c *Client) CreateClusterDatabaseWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateClusterDatabaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateClusterDatabase")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusterDatabase require credential")
@@ -1324,6 +1342,7 @@ func (c *Client) CreateClustersWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateClusters require credential")
@@ -1381,6 +1400,7 @@ func (c *Client) CreateParamTemplateWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateParamTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateParamTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateParamTemplate require credential")
@@ -1446,6 +1466,7 @@ func (c *Client) CreateProxyWithContext(ctx context.Context, request *CreateProx
     if request == nil {
         request = NewCreateProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateProxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProxy require credential")
@@ -1515,6 +1536,7 @@ func (c *Client) CreateProxyEndPointWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateProxyEndPointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateProxyEndPoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProxyEndPoint require credential")
@@ -1574,6 +1596,7 @@ func (c *Client) CreateResourcePackageWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateResourcePackageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateResourcePackage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateResourcePackage require credential")
@@ -1647,6 +1670,7 @@ func (c *Client) DeleteAccountsWithContext(ctx context.Context, request *DeleteA
     if request == nil {
         request = NewDeleteAccountsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DeleteAccounts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAccounts require credential")
@@ -1720,6 +1744,7 @@ func (c *Client) DeleteAuditLogFileWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteAuditLogFileRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DeleteAuditLogFile")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAuditLogFile require credential")
@@ -1769,6 +1794,7 @@ func (c *Client) DeleteAuditRuleTemplatesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteAuditRuleTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DeleteAuditRuleTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAuditRuleTemplates require credential")
@@ -1832,6 +1858,7 @@ func (c *Client) DeleteBackupWithContext(ctx context.Context, request *DeleteBac
     if request == nil {
         request = NewDeleteBackupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DeleteBackup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteBackup require credential")
@@ -1881,6 +1908,7 @@ func (c *Client) DeleteCLSDeliveryWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteCLSDeliveryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DeleteCLSDelivery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCLSDelivery require credential")
@@ -1938,6 +1966,7 @@ func (c *Client) DeleteClusterDatabaseWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteClusterDatabaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DeleteClusterDatabase")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteClusterDatabase require credential")
@@ -1989,6 +2018,7 @@ func (c *Client) DeleteParamTemplateWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteParamTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DeleteParamTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteParamTemplate require credential")
@@ -2108,6 +2138,7 @@ func (c *Client) DescribeAccountAllGrantPrivilegesWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAccountAllGrantPrivilegesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeAccountAllGrantPrivileges")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccountAllGrantPrivileges require credential")
@@ -2227,6 +2258,7 @@ func (c *Client) DescribeAccountPrivilegesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAccountPrivilegesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeAccountPrivileges")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccountPrivileges require credential")
@@ -2292,6 +2324,7 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeAccountsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeAccounts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccounts require credential")
@@ -2341,6 +2374,7 @@ func (c *Client) DescribeAuditInstanceListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAuditInstanceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeAuditInstanceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuditInstanceList require credential")
@@ -2390,6 +2424,7 @@ func (c *Client) DescribeAuditLogFilesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAuditLogFilesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeAuditLogFiles")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuditLogFiles require credential")
@@ -2445,6 +2480,7 @@ func (c *Client) DescribeAuditLogsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAuditLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeAuditLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuditLogs require credential")
@@ -2500,6 +2536,7 @@ func (c *Client) DescribeAuditRuleTemplatesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAuditRuleTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeAuditRuleTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuditRuleTemplates require credential")
@@ -2551,6 +2588,7 @@ func (c *Client) DescribeAuditRuleWithInstanceIdsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeAuditRuleWithInstanceIdsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeAuditRuleWithInstanceIds")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuditRuleWithInstanceIds require credential")
@@ -2614,6 +2652,7 @@ func (c *Client) DescribeBackupConfigWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBackupConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeBackupConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBackupConfig require credential")
@@ -2687,6 +2726,7 @@ func (c *Client) DescribeBackupDownloadRestrictionWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeBackupDownloadRestrictionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeBackupDownloadRestriction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBackupDownloadRestriction require credential")
@@ -2742,6 +2782,7 @@ func (c *Client) DescribeBackupDownloadUrlWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeBackupDownloadUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeBackupDownloadUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBackupDownloadUrl require credential")
@@ -2815,6 +2856,7 @@ func (c *Client) DescribeBackupDownloadUserRestrictionWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeBackupDownloadUserRestrictionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeBackupDownloadUserRestriction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBackupDownloadUserRestriction require credential")
@@ -2882,6 +2924,7 @@ func (c *Client) DescribeBackupListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeBackupListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeBackupList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBackupList require credential")
@@ -2931,6 +2974,7 @@ func (c *Client) DescribeBinlogConfigWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBinlogConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeBinlogConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBinlogConfig require credential")
@@ -2988,6 +3032,7 @@ func (c *Client) DescribeBinlogDownloadUrlWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeBinlogDownloadUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeBinlogDownloadUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBinlogDownloadUrl require credential")
@@ -3049,6 +3094,7 @@ func (c *Client) DescribeBinlogSaveDaysWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeBinlogSaveDaysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeBinlogSaveDays")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBinlogSaveDays require credential")
@@ -3102,6 +3148,7 @@ func (c *Client) DescribeBinlogsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeBinlogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeBinlogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBinlogs require credential")
@@ -3171,6 +3218,7 @@ func (c *Client) DescribeChangedParamsAfterUpgradeWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeChangedParamsAfterUpgradeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeChangedParamsAfterUpgrade")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeChangedParamsAfterUpgrade require credential")
@@ -3286,6 +3334,7 @@ func (c *Client) DescribeClusterDatabaseTablesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeClusterDatabaseTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterDatabaseTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterDatabaseTables require credential")
@@ -3401,6 +3450,7 @@ func (c *Client) DescribeClusterDatabasesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterDatabasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterDatabases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterDatabases require credential")
@@ -3478,6 +3528,7 @@ func (c *Client) DescribeClusterDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeClusterDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterDetail require credential")
@@ -3539,6 +3590,7 @@ func (c *Client) DescribeClusterDetailDatabasesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeClusterDetailDatabasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterDetailDatabases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterDetailDatabases require credential")
@@ -3600,6 +3652,7 @@ func (c *Client) DescribeClusterInstanceGroupsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeClusterInstanceGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterInstanceGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterInstanceGroups require credential")
@@ -3661,6 +3714,7 @@ func (c *Client) DescribeClusterInstanceGrpsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeClusterInstanceGrpsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterInstanceGrps")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterInstanceGrps require credential")
@@ -3722,6 +3776,7 @@ func (c *Client) DescribeClusterParamLogsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterParamLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterParamLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterParamLogs require credential")
@@ -3791,6 +3846,7 @@ func (c *Client) DescribeClusterParamsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeClusterParamsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterParams")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterParams require credential")
@@ -3856,6 +3912,7 @@ func (c *Client) DescribeClusterPasswordComplexityWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeClusterPasswordComplexityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterPasswordComplexity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterPasswordComplexity require credential")
@@ -3927,6 +3984,7 @@ func (c *Client) DescribeClusterReadOnlyWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeClusterReadOnlyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterReadOnly")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterReadOnly require credential")
@@ -3998,6 +4056,7 @@ func (c *Client) DescribeClusterTransparentEncryptInfoWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeClusterTransparentEncryptInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterTransparentEncryptInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterTransparentEncryptInfo require credential")
@@ -4065,6 +4124,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusters require credential")
@@ -4122,6 +4182,7 @@ func (c *Client) DescribeDBSecurityGroupsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDBSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeDBSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBSecurityGroups require credential")
@@ -4181,6 +4242,7 @@ func (c *Client) DescribeFlowWithContext(ctx context.Context, request *DescribeF
     if request == nil {
         request = NewDescribeFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlow require credential")
@@ -4238,6 +4300,7 @@ func (c *Client) DescribeInstanceCLSLogDeliveryWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeInstanceCLSLogDeliveryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeInstanceCLSLogDelivery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceCLSLogDelivery require credential")
@@ -4307,6 +4370,7 @@ func (c *Client) DescribeInstanceDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeInstanceDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceDetail require credential")
@@ -4370,6 +4434,7 @@ func (c *Client) DescribeInstanceErrorLogsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeInstanceErrorLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeInstanceErrorLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceErrorLogs require credential")
@@ -4433,6 +4498,7 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceParamsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeInstanceParams")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceParams require credential")
@@ -4490,6 +4556,7 @@ func (c *Client) DescribeInstanceSlowQueriesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeInstanceSlowQueriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeInstanceSlowQueries")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceSlowQueries require credential")
@@ -4549,6 +4616,7 @@ func (c *Client) DescribeInstanceSpecsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInstanceSpecsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeInstanceSpecs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceSpecs require credential")
@@ -4622,6 +4690,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -4683,6 +4752,7 @@ func (c *Client) DescribeInstancesWithinSameClusterWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeInstancesWithinSameClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeInstancesWithinSameCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstancesWithinSameCluster require credential")
@@ -4748,6 +4818,7 @@ func (c *Client) DescribeIsolatedInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeIsolatedInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeIsolatedInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIsolatedInstances require credential")
@@ -4809,6 +4880,7 @@ func (c *Client) DescribeMaintainPeriodWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeMaintainPeriodRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeMaintainPeriod")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMaintainPeriod require credential")
@@ -4862,6 +4934,7 @@ func (c *Client) DescribeParamTemplateDetailWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeParamTemplateDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeParamTemplateDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeParamTemplateDetail require credential")
@@ -4913,6 +4986,7 @@ func (c *Client) DescribeParamTemplatesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeParamTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeParamTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeParamTemplates require credential")
@@ -4968,6 +5042,7 @@ func (c *Client) DescribeProjectSecurityGroupsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeProjectSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProjectSecurityGroups require credential")
@@ -5033,6 +5108,7 @@ func (c *Client) DescribeProxiesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeProxiesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeProxies")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProxies require credential")
@@ -5086,6 +5162,7 @@ func (c *Client) DescribeProxyNodesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeProxyNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeProxyNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProxyNodes require credential")
@@ -5137,6 +5214,7 @@ func (c *Client) DescribeProxySpecsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeProxySpecsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeProxySpecs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProxySpecs require credential")
@@ -5192,6 +5270,7 @@ func (c *Client) DescribeResourcePackageDetailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeResourcePackageDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeResourcePackageDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourcePackageDetail require credential")
@@ -5251,6 +5330,7 @@ func (c *Client) DescribeResourcePackageListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeResourcePackageListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeResourcePackageList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourcePackageList require credential")
@@ -5306,6 +5386,7 @@ func (c *Client) DescribeResourcePackageSaleSpecWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeResourcePackageSaleSpecRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeResourcePackageSaleSpec")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourcePackageSaleSpec require credential")
@@ -5369,6 +5450,7 @@ func (c *Client) DescribeResourcesByDealNameWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeResourcesByDealNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeResourcesByDealName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourcesByDealName require credential")
@@ -5434,6 +5516,7 @@ func (c *Client) DescribeRollbackTimeRangeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRollbackTimeRangeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeRollbackTimeRange")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRollbackTimeRange require credential")
@@ -5507,6 +5590,7 @@ func (c *Client) DescribeSSLStatusWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSSLStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeSSLStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSSLStatus require credential")
@@ -5566,6 +5650,7 @@ func (c *Client) DescribeServerlessInstanceSpecsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeServerlessInstanceSpecsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeServerlessInstanceSpecs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServerlessInstanceSpecs require credential")
@@ -5625,6 +5710,7 @@ func (c *Client) DescribeServerlessStrategyWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeServerlessStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeServerlessStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServerlessStrategy require credential")
@@ -5678,6 +5764,7 @@ func (c *Client) DescribeSlaveZonesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeSlaveZonesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeSlaveZones")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSlaveZones require credential")
@@ -5741,6 +5828,7 @@ func (c *Client) DescribeSupportProxyVersionWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeSupportProxyVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeSupportProxyVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSupportProxyVersion require credential")
@@ -5798,6 +5886,7 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTasks require credential")
@@ -5853,6 +5942,7 @@ func (c *Client) DescribeZonesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeZonesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeZones")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeZones require credential")
@@ -5912,6 +6002,7 @@ func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DisassociateSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateSecurityGroups require credential")
@@ -5965,6 +6056,7 @@ func (c *Client) ExportInstanceErrorLogsWithContext(ctx context.Context, request
     if request == nil {
         request = NewExportInstanceErrorLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ExportInstanceErrorLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportInstanceErrorLogs require credential")
@@ -6018,6 +6110,7 @@ func (c *Client) ExportInstanceSlowQueriesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewExportInstanceSlowQueriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ExportInstanceSlowQueries")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportInstanceSlowQueries require credential")
@@ -6081,6 +6174,7 @@ func (c *Client) ExportResourcePackageDeductDetailsWithContext(ctx context.Conte
     if request == nil {
         request = NewExportResourcePackageDeductDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ExportResourcePackageDeductDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExportResourcePackageDeductDetails require credential")
@@ -6202,6 +6296,7 @@ func (c *Client) GrantAccountPrivilegesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGrantAccountPrivilegesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "GrantAccountPrivileges")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GrantAccountPrivileges require credential")
@@ -6259,6 +6354,7 @@ func (c *Client) InquirePriceCreateWithContext(ctx context.Context, request *Inq
     if request == nil {
         request = NewInquirePriceCreateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "InquirePriceCreate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquirePriceCreate require credential")
@@ -6316,6 +6412,7 @@ func (c *Client) InquirePriceModifyWithContext(ctx context.Context, request *Inq
     if request == nil {
         request = NewInquirePriceModifyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "InquirePriceModify")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquirePriceModify require credential")
@@ -6381,6 +6478,7 @@ func (c *Client) InquirePriceRenewWithContext(ctx context.Context, request *Inqu
     if request == nil {
         request = NewInquirePriceRenewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "InquirePriceRenew")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquirePriceRenew require credential")
@@ -6454,6 +6552,7 @@ func (c *Client) IsolateClusterWithContext(ctx context.Context, request *Isolate
     if request == nil {
         request = NewIsolateClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "IsolateCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IsolateCluster require credential")
@@ -6527,6 +6626,7 @@ func (c *Client) IsolateInstanceWithContext(ctx context.Context, request *Isolat
     if request == nil {
         request = NewIsolateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "IsolateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IsolateInstance require credential")
@@ -6592,6 +6692,7 @@ func (c *Client) ModifyAccountDescriptionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyAccountDescriptionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyAccountDescription")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccountDescription require credential")
@@ -6709,6 +6810,7 @@ func (c *Client) ModifyAccountHostWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAccountHostRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyAccountHost")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccountHost require credential")
@@ -6830,6 +6932,7 @@ func (c *Client) ModifyAccountParamsWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyAccountParamsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyAccountParams")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccountParams require credential")
@@ -6949,6 +7052,7 @@ func (c *Client) ModifyAccountPrivilegesWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyAccountPrivilegesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyAccountPrivileges")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAccountPrivileges require credential")
@@ -7002,6 +7106,7 @@ func (c *Client) ModifyAuditRuleTemplatesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyAuditRuleTemplatesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyAuditRuleTemplates")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAuditRuleTemplates require credential")
@@ -7059,6 +7164,7 @@ func (c *Client) ModifyAuditServiceWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyAuditServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyAuditService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAuditService require credential")
@@ -7122,6 +7228,7 @@ func (c *Client) ModifyBackupConfigWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyBackupConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyBackupConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBackupConfig require credential")
@@ -7195,6 +7302,7 @@ func (c *Client) ModifyBackupDownloadRestrictionWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyBackupDownloadRestrictionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyBackupDownloadRestriction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBackupDownloadRestriction require credential")
@@ -7268,6 +7376,7 @@ func (c *Client) ModifyBackupDownloadUserRestrictionWithContext(ctx context.Cont
     if request == nil {
         request = NewModifyBackupDownloadUserRestrictionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyBackupDownloadUserRestriction")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBackupDownloadUserRestriction require credential")
@@ -7321,6 +7430,7 @@ func (c *Client) ModifyBackupNameWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyBackupNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyBackupName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBackupName require credential")
@@ -7372,6 +7482,7 @@ func (c *Client) ModifyBinlogConfigWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyBinlogConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyBinlogConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBinlogConfig require credential")
@@ -7427,6 +7538,7 @@ func (c *Client) ModifyBinlogSaveDaysWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyBinlogSaveDaysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyBinlogSaveDays")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyBinlogSaveDays require credential")
@@ -7482,6 +7594,7 @@ func (c *Client) ModifyClusterDatabaseWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyClusterDatabaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyClusterDatabase")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterDatabase require credential")
@@ -7543,6 +7656,7 @@ func (c *Client) ModifyClusterNameWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyClusterNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyClusterName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterName require credential")
@@ -7614,6 +7728,7 @@ func (c *Client) ModifyClusterParamWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyClusterParamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyClusterParam")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterParam require credential")
@@ -7677,6 +7792,7 @@ func (c *Client) ModifyClusterPasswordComplexityWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyClusterPasswordComplexityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyClusterPasswordComplexity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterPasswordComplexity require credential")
@@ -7750,6 +7866,7 @@ func (c *Client) ModifyClusterReadOnlyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyClusterReadOnlyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyClusterReadOnly")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterReadOnly require credential")
@@ -7809,6 +7926,7 @@ func (c *Client) ModifyClusterSlaveZoneWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyClusterSlaveZoneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyClusterSlaveZone")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterSlaveZone require credential")
@@ -7884,6 +8002,7 @@ func (c *Client) ModifyClusterStorageWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyClusterStorageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyClusterStorage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyClusterStorage require credential")
@@ -7943,6 +8062,7 @@ func (c *Client) ModifyDBInstanceSecurityGroupsWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyDBInstanceSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDBInstanceSecurityGroups require credential")
@@ -8006,6 +8126,7 @@ func (c *Client) ModifyInstanceNameWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyInstanceNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyInstanceName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceName require credential")
@@ -8069,6 +8190,7 @@ func (c *Client) ModifyInstanceParamWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyInstanceParamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyInstanceParam")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceParam require credential")
@@ -8122,6 +8244,7 @@ func (c *Client) ModifyInstanceUpgradeLimitDaysWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyInstanceUpgradeLimitDaysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyInstanceUpgradeLimitDays")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceUpgradeLimitDays require credential")
@@ -8179,6 +8302,7 @@ func (c *Client) ModifyMaintainPeriodConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyMaintainPeriodConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyMaintainPeriodConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMaintainPeriodConfig require credential")
@@ -8234,6 +8358,7 @@ func (c *Client) ModifyParamTemplateWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyParamTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyParamTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyParamTemplate require credential")
@@ -8289,6 +8414,7 @@ func (c *Client) ModifyProxyDescWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyProxyDescRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyProxyDesc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyProxyDesc require credential")
@@ -8356,6 +8482,7 @@ func (c *Client) ModifyProxyRwSplitWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyProxyRwSplitRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyProxyRwSplit")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyProxyRwSplit require credential")
@@ -8421,6 +8548,7 @@ func (c *Client) ModifyResourcePackageClustersWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyResourcePackageClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyResourcePackageClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResourcePackageClusters require credential")
@@ -8486,6 +8614,7 @@ func (c *Client) ModifyResourcePackageNameWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyResourcePackageNameRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyResourcePackageName")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResourcePackageName require credential")
@@ -8549,6 +8678,7 @@ func (c *Client) ModifyResourcePackagesDeductionPriorityWithContext(ctx context.
     if request == nil {
         request = NewModifyResourcePackagesDeductionPriorityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyResourcePackagesDeductionPriority")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyResourcePackagesDeductionPriority require credential")
@@ -8622,6 +8752,7 @@ func (c *Client) ModifyServerlessStrategyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyServerlessStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyServerlessStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyServerlessStrategy require credential")
@@ -8685,6 +8816,7 @@ func (c *Client) ModifyVipVportWithContext(ctx context.Context, request *ModifyV
     if request == nil {
         request = NewModifyVipVportRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyVipVport")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyVipVport require credential")
@@ -8750,6 +8882,7 @@ func (c *Client) OfflineClusterWithContext(ctx context.Context, request *Offline
     if request == nil {
         request = NewOfflineClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "OfflineCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OfflineCluster require credential")
@@ -8819,6 +8952,7 @@ func (c *Client) OfflineInstanceWithContext(ctx context.Context, request *Offlin
     if request == nil {
         request = NewOfflineInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "OfflineInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OfflineInstance require credential")
@@ -8876,6 +9010,7 @@ func (c *Client) OpenAuditServiceWithContext(ctx context.Context, request *OpenA
     if request == nil {
         request = NewOpenAuditServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "OpenAuditService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenAuditService require credential")
@@ -8941,6 +9076,7 @@ func (c *Client) OpenClusterPasswordComplexityWithContext(ctx context.Context, r
     if request == nil {
         request = NewOpenClusterPasswordComplexityRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "OpenClusterPasswordComplexity")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenClusterPasswordComplexity require credential")
@@ -9002,6 +9138,7 @@ func (c *Client) OpenClusterReadOnlyInstanceGroupAccessWithContext(ctx context.C
     if request == nil {
         request = NewOpenClusterReadOnlyInstanceGroupAccessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "OpenClusterReadOnlyInstanceGroupAccess")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenClusterReadOnlyInstanceGroupAccess require credential")
@@ -9063,6 +9200,7 @@ func (c *Client) OpenClusterTransparentEncryptWithContext(ctx context.Context, r
     if request == nil {
         request = NewOpenClusterTransparentEncryptRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "OpenClusterTransparentEncrypt")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenClusterTransparentEncrypt require credential")
@@ -9122,6 +9260,7 @@ func (c *Client) OpenReadOnlyInstanceExclusiveAccessWithContext(ctx context.Cont
     if request == nil {
         request = NewOpenReadOnlyInstanceExclusiveAccessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "OpenReadOnlyInstanceExclusiveAccess")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenReadOnlyInstanceExclusiveAccess require credential")
@@ -9195,6 +9334,7 @@ func (c *Client) OpenSSLWithContext(ctx context.Context, request *OpenSSLRequest
     if request == nil {
         request = NewOpenSSLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "OpenSSL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenSSL require credential")
@@ -9264,6 +9404,7 @@ func (c *Client) OpenWanWithContext(ctx context.Context, request *OpenWanRequest
     if request == nil {
         request = NewOpenWanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "OpenWan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OpenWan require credential")
@@ -9327,6 +9468,7 @@ func (c *Client) PauseServerlessWithContext(ctx context.Context, request *PauseS
     if request == nil {
         request = NewPauseServerlessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "PauseServerless")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PauseServerless require credential")
@@ -9382,6 +9524,7 @@ func (c *Client) RefundResourcePackageWithContext(ctx context.Context, request *
     if request == nil {
         request = NewRefundResourcePackageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "RefundResourcePackage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RefundResourcePackage require credential")
@@ -9437,6 +9580,7 @@ func (c *Client) ReloadBalanceProxyNodeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewReloadBalanceProxyNodeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ReloadBalanceProxyNode")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReloadBalanceProxyNode require credential")
@@ -9496,6 +9640,7 @@ func (c *Client) RemoveClusterSlaveZoneWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRemoveClusterSlaveZoneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "RemoveClusterSlaveZone")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveClusterSlaveZone require credential")
@@ -9569,6 +9714,7 @@ func (c *Client) RenewClustersWithContext(ctx context.Context, request *RenewClu
     if request == nil {
         request = NewRenewClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "RenewClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RenewClusters require credential")
@@ -9577,6 +9723,70 @@ func (c *Client) RenewClustersWithContext(ctx context.Context, request *RenewClu
     request.SetContext(ctx)
     
     response = NewRenewClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReplayInstanceAuditLogRequest() (request *ReplayInstanceAuditLogRequest) {
+    request = &ReplayInstanceAuditLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ReplayInstanceAuditLog")
+    
+    
+    return
+}
+
+func NewReplayInstanceAuditLogResponse() (response *ReplayInstanceAuditLogResponse) {
+    response = &ReplayInstanceAuditLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReplayInstanceAuditLog
+// 回放实例审计日志
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_AUDITLOGCLOSEDERROR = "OperationDenied.AuditLogClosedError"
+//  OPERATIONDENIED_FEATURENOTSUPPORTERROR = "OperationDenied.FeatureNotSupportError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  OPERATIONDENIED_ISNOTROLLBACKCLUSTERERROR = "OperationDenied.IsNotRollbackClusterError"
+//  OPERATIONDENIED_LIMITDAYFORAUDITREPLAYERROR = "OperationDenied.LimitDayForAuditReplayError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ReplayInstanceAuditLog(request *ReplayInstanceAuditLogRequest) (response *ReplayInstanceAuditLogResponse, err error) {
+    return c.ReplayInstanceAuditLogWithContext(context.Background(), request)
+}
+
+// ReplayInstanceAuditLog
+// 回放实例审计日志
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_AUDITLOGCLOSEDERROR = "OperationDenied.AuditLogClosedError"
+//  OPERATIONDENIED_FEATURENOTSUPPORTERROR = "OperationDenied.FeatureNotSupportError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  OPERATIONDENIED_ISNOTROLLBACKCLUSTERERROR = "OperationDenied.IsNotRollbackClusterError"
+//  OPERATIONDENIED_LIMITDAYFORAUDITREPLAYERROR = "OperationDenied.LimitDayForAuditReplayError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ReplayInstanceAuditLogWithContext(ctx context.Context, request *ReplayInstanceAuditLogRequest) (response *ReplayInstanceAuditLogResponse, err error) {
+    if request == nil {
+        request = NewReplayInstanceAuditLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ReplayInstanceAuditLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplayInstanceAuditLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReplayInstanceAuditLogResponse()
     err = c.Send(request, response)
     return
 }
@@ -9648,6 +9858,7 @@ func (c *Client) ResetAccountPasswordWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewResetAccountPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ResetAccountPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetAccountPassword require credential")
@@ -9767,6 +9978,7 @@ func (c *Client) RestartInstanceWithContext(ctx context.Context, request *Restar
     if request == nil {
         request = NewRestartInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "RestartInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RestartInstance require credential")
@@ -9836,6 +10048,7 @@ func (c *Client) ResumeServerlessWithContext(ctx context.Context, request *Resum
     if request == nil {
         request = NewResumeServerlessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ResumeServerless")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResumeServerless require credential")
@@ -9955,6 +10168,7 @@ func (c *Client) RevokeAccountPrivilegesWithContext(ctx context.Context, request
     if request == nil {
         request = NewRevokeAccountPrivilegesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "RevokeAccountPrivileges")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RevokeAccountPrivileges require credential")
@@ -10020,6 +10234,7 @@ func (c *Client) RollBackClusterWithContext(ctx context.Context, request *RollBa
     if request == nil {
         request = NewRollBackClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "RollBackCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RollBackCluster require credential")
@@ -10117,6 +10332,7 @@ func (c *Client) RollbackToNewClusterWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewRollbackToNewClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "RollbackToNewCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RollbackToNewCluster require credential")
@@ -10172,6 +10388,7 @@ func (c *Client) SearchClusterDatabasesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewSearchClusterDatabasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "SearchClusterDatabases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchClusterDatabases require credential")
@@ -10227,6 +10444,7 @@ func (c *Client) SearchClusterTablesWithContext(ctx context.Context, request *Se
     if request == nil {
         request = NewSearchClusterTablesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "SearchClusterTables")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchClusterTables require credential")
@@ -10306,6 +10524,7 @@ func (c *Client) SetRenewFlagWithContext(ctx context.Context, request *SetRenewF
     if request == nil {
         request = NewSetRenewFlagRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "SetRenewFlag")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetRenewFlag require credential")
@@ -10355,6 +10574,7 @@ func (c *Client) StartCLSDeliveryWithContext(ctx context.Context, request *Start
     if request == nil {
         request = NewStartCLSDeliveryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "StartCLSDelivery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartCLSDelivery require credential")
@@ -10406,6 +10626,7 @@ func (c *Client) StopCLSDeliveryWithContext(ctx context.Context, request *StopCL
     if request == nil {
         request = NewStopCLSDeliveryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "StopCLSDelivery")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopCLSDelivery require credential")
@@ -10467,6 +10688,7 @@ func (c *Client) SwitchClusterVpcWithContext(ctx context.Context, request *Switc
     if request == nil {
         request = NewSwitchClusterVpcRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "SwitchClusterVpc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SwitchClusterVpc require credential")
@@ -10524,6 +10746,7 @@ func (c *Client) SwitchClusterZoneWithContext(ctx context.Context, request *Swit
     if request == nil {
         request = NewSwitchClusterZoneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "SwitchClusterZone")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SwitchClusterZone require credential")
@@ -10587,6 +10810,7 @@ func (c *Client) SwitchProxyVpcWithContext(ctx context.Context, request *SwitchP
     if request == nil {
         request = NewSwitchProxyVpcRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "SwitchProxyVpc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SwitchProxyVpc require credential")
@@ -10648,6 +10872,7 @@ func (c *Client) UnbindClusterResourcePackagesWithContext(ctx context.Context, r
     if request == nil {
         request = NewUnbindClusterResourcePackagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "UnbindClusterResourcePackages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindClusterResourcePackages require credential")
@@ -10767,6 +10992,7 @@ func (c *Client) UpgradeClusterVersionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewUpgradeClusterVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "UpgradeClusterVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradeClusterVersion require credential")
@@ -10842,6 +11068,7 @@ func (c *Client) UpgradeInstanceWithContext(ctx context.Context, request *Upgrad
     if request == nil {
         request = NewUpgradeInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "UpgradeInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradeInstance require credential")
@@ -10915,6 +11142,7 @@ func (c *Client) UpgradeProxyWithContext(ctx context.Context, request *UpgradePr
     if request == nil {
         request = NewUpgradeProxyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "UpgradeProxy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradeProxy require credential")
@@ -10972,6 +11200,7 @@ func (c *Client) UpgradeProxyVersionWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUpgradeProxyVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "UpgradeProxyVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpgradeProxyVersion require credential")

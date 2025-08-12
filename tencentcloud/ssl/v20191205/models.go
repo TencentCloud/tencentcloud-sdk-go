@@ -600,6 +600,9 @@ type CertificateInfoSubmitRequestParams struct {
 
 	// 只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
 	CaType *string `json:"CaType,omitnil,omitempty" name:"CaType"`
+
+	// 签名算法
+	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
 }
 
 type CertificateInfoSubmitRequest struct {
@@ -745,6 +748,9 @@ type CertificateInfoSubmitRequest struct {
 
 	// 只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
 	CaType *string `json:"CaType,omitnil,omitempty" name:"CaType"`
+
+	// 签名算法
+	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
 }
 
 func (r *CertificateInfoSubmitRequest) ToJsonString() string {
@@ -799,6 +805,7 @@ func (r *CertificateInfoSubmitRequest) FromJsonString(s string) error {
 	delete(f, "TechTitle")
 	delete(f, "Type")
 	delete(f, "CaType")
+	delete(f, "SignAlgo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CertificateInfoSubmitRequest has unknown keys!", "")
 	}
@@ -1038,16 +1045,16 @@ type Certificates struct {
 	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
-	// 证书生效时间。
+	// 证书生效时间。时区为GMT+8:00
 	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
-	// 证书过期时间。
+	// 证书过期时间。时区为GMT+8:00
 	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
 	// 证书有效期，单位（月）。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
-	// 创建时间。
+	// 创建时间。时区为GMT+8:00
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// 证书 ID。
@@ -1131,10 +1138,10 @@ type Certificates struct {
 	// 是否即将过期， 证书即将到期的30天内为即将过期
 	IsExpiring *bool `json:"IsExpiring,omitnil,omitempty" name:"IsExpiring"`
 
-	// DV证书添加验证截止时间
+	// DV证书添加验证截止时间，时区为GMT+8:00
 	DVAuthDeadline *string `json:"DVAuthDeadline,omitnil,omitempty" name:"DVAuthDeadline"`
 
-	// 域名验证通过时间
+	// 域名验证通过时间，时区为GMT+8:00
 	ValidationPassedTime *string `json:"ValidationPassedTime,omitnil,omitempty" name:"ValidationPassedTime"`
 
 	// 证书关联的多域名
@@ -1158,7 +1165,7 @@ type Certificates struct {
 	// 支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
 	SupportDownloadType *SupportDownloadType `json:"SupportDownloadType,omitnil,omitempty" name:"SupportDownloadType"`
 
-	// 证书吊销完成时间
+	// 证书吊销完成时间，时区为GMT+8:00
 	CertRevokedTime *string `json:"CertRevokedTime,omitnil,omitempty" name:"CertRevokedTime"`
 
 	// 托管资源类型列表
@@ -2884,6 +2891,9 @@ type DeployRecord struct {
 
 	// 托管资源创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 待部署总数
+	PendingTotalCount *int64 `json:"PendingTotalCount,omitnil,omitempty" name:"PendingTotalCount"`
 }
 
 type DeployRecordDetail struct {
@@ -2952,6 +2962,15 @@ type DeployRecordDetail struct {
 
 	// 部署CLB监听器的Url
 	Url []*string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 当前部署证书加密算法
+	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
+
+	// 原证书加密算法
+	OldAlgorithm *string `json:"OldAlgorithm,omitnil,omitempty" name:"OldAlgorithm"`
+
+	// 实例状态，不同云产品状态不一样
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 }
 
 type DeployRecordInfo struct {
@@ -3449,18 +3468,18 @@ type DescribeCertificateDetailResponseParams struct {
 	// 漏洞扫描状态。
 	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
-	// 证书生效时间。
+	// 证书生效时间。时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
-	// 证书失效时间。
+	// 证书失效时间。时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
 	// 证书有效期：单位（月）。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
-	// 证书申请时间。
+	// 证书申请时间。时区为GMT+8:00
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// CA订单 ID。
@@ -3846,11 +3865,11 @@ type DescribeCertificateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
-	// 证书生效时间。
+	// 证书生效时间。时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
-	// 证书失效时间。
+	// 证书失效时间。时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
@@ -3858,7 +3877,7 @@ type DescribeCertificateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
-	// 申请时间。
+	// 申请时间。时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
@@ -3934,7 +3953,7 @@ type DescribeCertificateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CACommonNames []*string `json:"CACommonNames,omitnil,omitempty" name:"CACommonNames"`
 
-	// CA证书所有的到期时间。仅证书类型CertificateType为CA有效
+	// CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CAEndTimes []*string `json:"CAEndTimes,omitnil,omitempty" name:"CAEndTimes"`
 
@@ -4270,7 +4289,7 @@ type DescribeDeployedResourcesRequestParams struct {
 	// 证书ID
 	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
-	// 资源类型:clb,cdn,live,waf,antiddos,teo
+	// 资源类型:clb,cdn,live,vod,waf,antiddos,teo
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -4280,7 +4299,7 @@ type DescribeDeployedResourcesRequest struct {
 	// 证书ID
 	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
-	// 资源类型:clb,cdn,live,waf,antiddos,teo
+	// 资源类型:clb,cdn,live,vod,waf,antiddos,teo
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -5014,6 +5033,9 @@ type DescribeHostDeployRecordDetailResponseParams struct {
 	// 部署中总数
 	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil,omitempty" name:"RunningTotalCount"`
 
+	// 待部署总数
+	PendingTotalCount *int64 `json:"PendingTotalCount,omitnil,omitempty" name:"PendingTotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -5569,6 +5591,9 @@ type DescribeHostUpdateRecordDetailResponseParams struct {
 
 	// 部署中总数,如果取不到返回0
 	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil,omitempty" name:"RunningTotalCount"`
+
+	// 待部署总数
+	PendingTotalCount *int64 `json:"PendingTotalCount,omitnil,omitempty" name:"PendingTotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7059,7 +7084,7 @@ type ReplaceCertificateRequestParams struct {
 	// 验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
 	ValidType *string `json:"ValidType,omitnil,omitempty" name:"ValidType"`
 
-	// 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
+	// 类型，默认 original。可选项：original = 原证书 CSR，upload = 手动上传，online = 在线生成。
 	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
 	// CSR 内容，手动上传的时候需要。
@@ -7077,6 +7102,9 @@ type ReplaceCertificateRequestParams struct {
 
 	// CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
 	CertCSRKeyParameter *string `json:"CertCSRKeyParameter,omitnil,omitempty" name:"CertCSRKeyParameter"`
+
+	// 签名算法
+	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
 }
 
 type ReplaceCertificateRequest struct {
@@ -7088,7 +7116,7 @@ type ReplaceCertificateRequest struct {
 	// 验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
 	ValidType *string `json:"ValidType,omitnil,omitempty" name:"ValidType"`
 
-	// 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
+	// 类型，默认 original。可选项：original = 原证书 CSR，upload = 手动上传，online = 在线生成。
 	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
 	// CSR 内容，手动上传的时候需要。
@@ -7106,6 +7134,9 @@ type ReplaceCertificateRequest struct {
 
 	// CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
 	CertCSRKeyParameter *string `json:"CertCSRKeyParameter,omitnil,omitempty" name:"CertCSRKeyParameter"`
+
+	// 签名算法
+	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
 }
 
 func (r *ReplaceCertificateRequest) ToJsonString() string {
@@ -7128,6 +7159,7 @@ func (r *ReplaceCertificateRequest) FromJsonString(s string) error {
 	delete(f, "Reason")
 	delete(f, "CertCSREncryptAlgo")
 	delete(f, "CertCSRKeyParameter")
+	delete(f, "SignAlgo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceCertificateRequest has unknown keys!", "")
 	}
@@ -7848,6 +7880,9 @@ type TeoInstanceDetail struct {
 	// failed：申请失败；
 	// issued：绑定失败。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 证书加密算法
+	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
 }
 
 type TeoInstanceList struct {
@@ -8292,6 +8327,12 @@ type UpdateRecordDetail struct {
 
 	// 监听器Url(clb专属)
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 新证书加密算法
+	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
+
+	// 旧证书加密算法
+	OldAlgorithm *string `json:"OldAlgorithm,omitnil,omitempty" name:"OldAlgorithm"`
 }
 
 type UpdateRecordDetails struct {
@@ -8400,6 +8441,9 @@ type UploadCertificateRequestParams struct {
 
 	// 相同的证书是否允许重复上传； true：允许上传相同指纹的证书；  false：不允许上传相同指纹的证书； 默认值：true
 	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
+
+	// 私钥密码
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
 }
 
 type UploadCertificateRequest struct {
@@ -8428,6 +8472,9 @@ type UploadCertificateRequest struct {
 
 	// 相同的证书是否允许重复上传； true：允许上传相同指纹的证书；  false：不允许上传相同指纹的证书； 默认值：true
 	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
+
+	// 私钥密码
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
 }
 
 func (r *UploadCertificateRequest) ToJsonString() string {
@@ -8450,6 +8497,7 @@ func (r *UploadCertificateRequest) FromJsonString(s string) error {
 	delete(f, "CertificateUse")
 	delete(f, "Tags")
 	delete(f, "Repeatable")
+	delete(f, "KeyPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadCertificateRequest has unknown keys!", "")
 	}
@@ -8461,7 +8509,7 @@ type UploadCertificateResponseParams struct {
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 重复证书的ID
+	// 当入参Repeatable为false的时候 返回的重复证书的ID，注意当用户上传相同的证书超过5000张的时候，当前接口会无视入参Repeatable，直接返回重复证书的ID。
 	RepeatCertId *string `json:"RepeatCertId,omitnil,omitempty" name:"RepeatCertId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

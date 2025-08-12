@@ -90,6 +90,7 @@ func (c *Client) DescribeEisConnectorConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeEisConnectorConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eis", APIVersion, "DescribeEisConnectorConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEisConnectorConfig require credential")
@@ -147,6 +148,7 @@ func (c *Client) ListEisConnectorOperationsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewListEisConnectorOperationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eis", APIVersion, "ListEisConnectorOperations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListEisConnectorOperations require credential")
@@ -200,6 +202,7 @@ func (c *Client) ListEisConnectorsWithContext(ctx context.Context, request *List
     if request == nil {
         request = NewListEisConnectorsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "eis", APIVersion, "ListEisConnectors")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListEisConnectors require credential")

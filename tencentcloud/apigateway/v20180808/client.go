@@ -124,6 +124,7 @@ func (c *Client) AttachPluginWithContext(ctx context.Context, request *AttachPlu
     if request == nil {
         request = NewAttachPluginRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "AttachPlugin")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AttachPlugin require credential")
@@ -197,6 +198,7 @@ func (c *Client) BindApiAppWithContext(ctx context.Context, request *BindApiAppR
     if request == nil {
         request = NewBindApiAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "BindApiApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindApiApp require credential")
@@ -272,6 +274,7 @@ func (c *Client) BindEnvironmentWithContext(ctx context.Context, request *BindEn
     if request == nil {
         request = NewBindEnvironmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "BindEnvironment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindEnvironment require credential")
@@ -333,6 +336,7 @@ func (c *Client) BindIPStrategyWithContext(ctx context.Context, request *BindIPS
     if request == nil {
         request = NewBindIPStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "BindIPStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindIPStrategy require credential")
@@ -402,6 +406,7 @@ func (c *Client) BindSecretIdsWithContext(ctx context.Context, request *BindSecr
     if request == nil {
         request = NewBindSecretIdsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "BindSecretIds")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindSecretIds require credential")
@@ -521,6 +526,7 @@ func (c *Client) BindSubDomainWithContext(ctx context.Context, request *BindSubD
     if request == nil {
         request = NewBindSubDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "BindSubDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindSubDomain require credential")
@@ -584,6 +590,7 @@ func (c *Client) BuildAPIDocWithContext(ctx context.Context, request *BuildAPIDo
     if request == nil {
         request = NewBuildAPIDocRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "BuildAPIDoc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BuildAPIDoc require credential")
@@ -679,6 +686,7 @@ func (c *Client) CreateAPIDocWithContext(ctx context.Context, request *CreateAPI
     if request == nil {
         request = NewCreateAPIDocRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "CreateAPIDoc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAPIDoc require credential")
@@ -832,6 +840,7 @@ func (c *Client) CreateApiWithContext(ctx context.Context, request *CreateApiReq
     if request == nil {
         request = NewCreateApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "CreateApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApi require credential")
@@ -895,6 +904,7 @@ func (c *Client) CreateApiAppWithContext(ctx context.Context, request *CreateApi
     if request == nil {
         request = NewCreateApiAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "CreateApiApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApiApp require credential")
@@ -956,6 +966,7 @@ func (c *Client) CreateApiKeyWithContext(ctx context.Context, request *CreateApi
     if request == nil {
         request = NewCreateApiKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "CreateApiKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApiKey require credential")
@@ -1017,6 +1028,7 @@ func (c *Client) CreateExclusiveInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateExclusiveInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "CreateExclusiveInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateExclusiveInstances require credential")
@@ -1074,6 +1086,7 @@ func (c *Client) CreateIPStrategyWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateIPStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "CreateIPStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateIPStrategy require credential")
@@ -1181,6 +1194,7 @@ func (c *Client) CreatePluginWithContext(ctx context.Context, request *CreatePlu
     if request == nil {
         request = NewCreatePluginRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "CreatePlugin")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePlugin require credential")
@@ -1288,6 +1302,7 @@ func (c *Client) CreateServiceWithContext(ctx context.Context, request *CreateSe
     if request == nil {
         request = NewCreateServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "CreateService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateService require credential")
@@ -1375,6 +1390,7 @@ func (c *Client) CreateUpstreamWithContext(ctx context.Context, request *CreateU
     if request == nil {
         request = NewCreateUpstreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "CreateUpstream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUpstream require credential")
@@ -1436,6 +1452,7 @@ func (c *Client) CreateUsagePlanWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateUsagePlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "CreateUsagePlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUsagePlan require credential")
@@ -1519,6 +1536,7 @@ func (c *Client) DeleteAPIDocWithContext(ctx context.Context, request *DeleteAPI
     if request == nil {
         request = NewDeleteAPIDocRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DeleteAPIDoc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteAPIDoc require credential")
@@ -1616,6 +1634,7 @@ func (c *Client) DeleteApiWithContext(ctx context.Context, request *DeleteApiReq
     if request == nil {
         request = NewDeleteApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DeleteApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteApi require credential")
@@ -1687,6 +1706,7 @@ func (c *Client) DeleteApiAppWithContext(ctx context.Context, request *DeleteApi
     if request == nil {
         request = NewDeleteApiAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DeleteApiApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteApiApp require credential")
@@ -1742,6 +1762,7 @@ func (c *Client) DeleteApiKeyWithContext(ctx context.Context, request *DeleteApi
     if request == nil {
         request = NewDeleteApiKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DeleteApiKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteApiKey require credential")
@@ -1791,6 +1812,7 @@ func (c *Client) DeleteIPStrategyWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteIPStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DeleteIPStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteIPStrategy require credential")
@@ -1854,6 +1876,7 @@ func (c *Client) DeletePluginWithContext(ctx context.Context, request *DeletePlu
     if request == nil {
         request = NewDeletePluginRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DeletePlugin")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePlugin require credential")
@@ -1929,6 +1952,7 @@ func (c *Client) DeleteServiceWithContext(ctx context.Context, request *DeleteSe
     if request == nil {
         request = NewDeleteServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DeleteService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteService require credential")
@@ -1990,6 +2014,7 @@ func (c *Client) DeleteServiceSubDomainMappingWithContext(ctx context.Context, r
     if request == nil {
         request = NewDeleteServiceSubDomainMappingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DeleteServiceSubDomainMapping")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteServiceSubDomainMapping require credential")
@@ -2059,6 +2084,7 @@ func (c *Client) DeleteUpstreamWithContext(ctx context.Context, request *DeleteU
     if request == nil {
         request = NewDeleteUpstreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DeleteUpstream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUpstream require credential")
@@ -2112,6 +2138,7 @@ func (c *Client) DeleteUsagePlanWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteUsagePlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DeleteUsagePlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUsagePlan require credential")
@@ -2177,6 +2204,7 @@ func (c *Client) DemoteServiceUsagePlanWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDemoteServiceUsagePlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DemoteServiceUsagePlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DemoteServiceUsagePlan require credential")
@@ -2232,6 +2260,7 @@ func (c *Client) DescribeAPIDocDetailWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAPIDocDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeAPIDocDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAPIDocDetail require credential")
@@ -2303,6 +2332,7 @@ func (c *Client) DescribeAPIDocsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeAPIDocsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeAPIDocs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAPIDocs require credential")
@@ -2362,6 +2392,7 @@ func (c *Client) DescribeAllPluginApisWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAllPluginApisRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeAllPluginApis")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAllPluginApis require credential")
@@ -2433,6 +2464,7 @@ func (c *Client) DescribeApiWithContext(ctx context.Context, request *DescribeAp
     if request == nil {
         request = NewDescribeApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApi require credential")
@@ -2486,6 +2518,7 @@ func (c *Client) DescribeApiAppWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeApiAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApiApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiApp require credential")
@@ -2541,6 +2574,7 @@ func (c *Client) DescribeApiAppBindApisStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeApiAppBindApisStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApiAppBindApisStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiAppBindApisStatus require credential")
@@ -2600,6 +2634,7 @@ func (c *Client) DescribeApiAppsStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeApiAppsStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApiAppsStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiAppsStatus require credential")
@@ -2651,6 +2686,7 @@ func (c *Client) DescribeApiBindApiAppsStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeApiBindApiAppsStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApiBindApiAppsStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiBindApiAppsStatus require credential")
@@ -2706,6 +2742,7 @@ func (c *Client) DescribeApiEnvironmentStrategyWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeApiEnvironmentStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApiEnvironmentStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiEnvironmentStrategy require credential")
@@ -2771,6 +2808,7 @@ func (c *Client) DescribeApiForApiAppWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeApiForApiAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApiForApiApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiForApiApp require credential")
@@ -2826,6 +2864,7 @@ func (c *Client) DescribeApiKeyWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeApiKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApiKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiKey require credential")
@@ -2885,6 +2924,7 @@ func (c *Client) DescribeApiKeysStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeApiKeysStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApiKeysStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiKeysStatus require credential")
@@ -2942,6 +2982,7 @@ func (c *Client) DescribeApiUsagePlanWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeApiUsagePlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApiUsagePlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiUsagePlan require credential")
@@ -3005,6 +3046,7 @@ func (c *Client) DescribeApisStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeApisStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApisStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApisStatus require credential")
@@ -3072,6 +3114,7 @@ func (c *Client) DescribeExclusiveInstanceDetailWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeExclusiveInstanceDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeExclusiveInstanceDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExclusiveInstanceDetail require credential")
@@ -3139,6 +3182,7 @@ func (c *Client) DescribeExclusiveInstanceRegionsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeExclusiveInstanceRegionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeExclusiveInstanceRegions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExclusiveInstanceRegions require credential")
@@ -3212,6 +3256,7 @@ func (c *Client) DescribeExclusiveInstancesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeExclusiveInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeExclusiveInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExclusiveInstances require credential")
@@ -3283,6 +3328,7 @@ func (c *Client) DescribeExclusiveInstancesStatusWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeExclusiveInstancesStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeExclusiveInstancesStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeExclusiveInstancesStatus require credential")
@@ -3338,6 +3384,7 @@ func (c *Client) DescribeIPStrategyWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeIPStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeIPStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIPStrategy require credential")
@@ -3389,6 +3436,7 @@ func (c *Client) DescribeIPStrategyApisStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeIPStrategyApisStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeIPStrategyApisStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIPStrategyApisStatus require credential")
@@ -3442,6 +3490,7 @@ func (c *Client) DescribeIPStrategysStatusWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeIPStrategysStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeIPStrategysStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeIPStrategysStatus require credential")
@@ -3495,6 +3544,7 @@ func (c *Client) DescribeInstancesNetworkConfigWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeInstancesNetworkConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeInstancesNetworkConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstancesNetworkConfig require credential")
@@ -3552,6 +3602,7 @@ func (c *Client) DescribeLogSearchWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeLogSearchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeLogSearch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLogSearch require credential")
@@ -3607,6 +3658,7 @@ func (c *Client) DescribePluginWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribePluginRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribePlugin")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePlugin require credential")
@@ -3664,6 +3716,7 @@ func (c *Client) DescribePluginApisWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePluginApisRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribePluginApis")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePluginApis require credential")
@@ -3727,6 +3780,7 @@ func (c *Client) DescribePluginsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribePluginsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribePlugins")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePlugins require credential")
@@ -3786,6 +3840,7 @@ func (c *Client) DescribePluginsByApiWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribePluginsByApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribePluginsByApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePluginsByApi require credential")
@@ -3863,6 +3918,7 @@ func (c *Client) DescribeServiceWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeService require credential")
@@ -3914,6 +3970,7 @@ func (c *Client) DescribeServiceEnvironmentListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeServiceEnvironmentListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeServiceEnvironmentList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceEnvironmentList require credential")
@@ -3971,6 +4028,7 @@ func (c *Client) DescribeServiceEnvironmentReleaseHistoryWithContext(ctx context
     if request == nil {
         request = NewDescribeServiceEnvironmentReleaseHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeServiceEnvironmentReleaseHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceEnvironmentReleaseHistory require credential")
@@ -4022,6 +4080,7 @@ func (c *Client) DescribeServiceEnvironmentStrategyWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeServiceEnvironmentStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeServiceEnvironmentStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceEnvironmentStrategy require credential")
@@ -4073,6 +4132,7 @@ func (c *Client) DescribeServiceForApiAppWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeServiceForApiAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeServiceForApiApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceForApiApp require credential")
@@ -4130,6 +4190,7 @@ func (c *Client) DescribeServiceReleaseVersionWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeServiceReleaseVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeServiceReleaseVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceReleaseVersion require credential")
@@ -4189,6 +4250,7 @@ func (c *Client) DescribeServiceSubDomainMappingsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeServiceSubDomainMappingsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeServiceSubDomainMappings")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceSubDomainMappings require credential")
@@ -4250,6 +4312,7 @@ func (c *Client) DescribeServiceSubDomainsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeServiceSubDomainsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeServiceSubDomains")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceSubDomains require credential")
@@ -4307,6 +4370,7 @@ func (c *Client) DescribeServiceUsagePlanWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeServiceUsagePlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeServiceUsagePlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServiceUsagePlan require credential")
@@ -4402,6 +4466,7 @@ func (c *Client) DescribeServicesStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeServicesStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeServicesStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeServicesStatus require credential")
@@ -4469,6 +4534,7 @@ func (c *Client) DescribeUpstreamBindApisWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUpstreamBindApisRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeUpstreamBindApis")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUpstreamBindApis require credential")
@@ -4544,6 +4610,7 @@ func (c *Client) DescribeUpstreamsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUpstreamsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeUpstreams")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUpstreams require credential")
@@ -4595,6 +4662,7 @@ func (c *Client) DescribeUsagePlanWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUsagePlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeUsagePlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUsagePlan require credential")
@@ -4650,6 +4718,7 @@ func (c *Client) DescribeUsagePlanEnvironmentsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeUsagePlanEnvironmentsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeUsagePlanEnvironments")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUsagePlanEnvironments require credential")
@@ -4705,6 +4774,7 @@ func (c *Client) DescribeUsagePlanSecretIdsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeUsagePlanSecretIdsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeUsagePlanSecretIds")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUsagePlanSecretIds require credential")
@@ -4756,6 +4826,7 @@ func (c *Client) DescribeUsagePlansStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUsagePlansStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeUsagePlansStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUsagePlansStatus require credential")
@@ -4823,6 +4894,7 @@ func (c *Client) DetachPluginWithContext(ctx context.Context, request *DetachPlu
     if request == nil {
         request = NewDetachPluginRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DetachPlugin")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DetachPlugin require credential")
@@ -4878,6 +4950,7 @@ func (c *Client) DisableApiKeyWithContext(ctx context.Context, request *DisableA
     if request == nil {
         request = NewDisableApiKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DisableApiKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableApiKey require credential")
@@ -4931,6 +5004,7 @@ func (c *Client) EnableApiKeyWithContext(ctx context.Context, request *EnableApi
     if request == nil {
         request = NewEnableApiKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "EnableApiKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableApiKey require credential")
@@ -5006,6 +5080,7 @@ func (c *Client) ImportOpenApiWithContext(ctx context.Context, request *ImportOp
     if request == nil {
         request = NewImportOpenApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ImportOpenApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportOpenApi require credential")
@@ -5067,6 +5142,7 @@ func (c *Client) ModifyAPIDocWithContext(ctx context.Context, request *ModifyAPI
     if request == nil {
         request = NewModifyAPIDocRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyAPIDoc")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyAPIDoc require credential")
@@ -5218,6 +5294,7 @@ func (c *Client) ModifyApiWithContext(ctx context.Context, request *ModifyApiReq
     if request == nil {
         request = NewModifyApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApi require credential")
@@ -5291,6 +5368,7 @@ func (c *Client) ModifyApiAppWithContext(ctx context.Context, request *ModifyApi
     if request == nil {
         request = NewModifyApiAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyApiApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApiApp require credential")
@@ -5350,6 +5428,7 @@ func (c *Client) ModifyApiEnvironmentStrategyWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyApiEnvironmentStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyApiEnvironmentStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApiEnvironmentStrategy require credential")
@@ -5407,6 +5486,7 @@ func (c *Client) ModifyApiIncrementWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyApiIncrementRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyApiIncrement")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApiIncrement require credential")
@@ -5486,6 +5566,7 @@ func (c *Client) ModifyExclusiveInstanceWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyExclusiveInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyExclusiveInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyExclusiveInstance require credential")
@@ -5537,6 +5618,7 @@ func (c *Client) ModifyIPStrategyWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyIPStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyIPStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyIPStrategy require credential")
@@ -5652,6 +5734,7 @@ func (c *Client) ModifyPluginWithContext(ctx context.Context, request *ModifyPlu
     if request == nil {
         request = NewModifyPluginRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyPlugin")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPlugin require credential")
@@ -5717,6 +5800,7 @@ func (c *Client) ModifyServiceWithContext(ctx context.Context, request *ModifySe
     if request == nil {
         request = NewModifyServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyService require credential")
@@ -5774,6 +5858,7 @@ func (c *Client) ModifyServiceEnvironmentStrategyWithContext(ctx context.Context
     if request == nil {
         request = NewModifyServiceEnvironmentStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyServiceEnvironmentStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyServiceEnvironmentStrategy require credential")
@@ -5849,6 +5934,7 @@ func (c *Client) ModifySubDomainWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifySubDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifySubDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifySubDomain require credential")
@@ -5928,6 +6014,7 @@ func (c *Client) ModifyUpstreamWithContext(ctx context.Context, request *ModifyU
     if request == nil {
         request = NewModifyUpstreamRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyUpstream")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUpstream require credential")
@@ -5981,6 +6068,7 @@ func (c *Client) ModifyUsagePlanWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyUsagePlanRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ModifyUsagePlan")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUsagePlan require credential")
@@ -6056,6 +6144,7 @@ func (c *Client) ReleaseServiceWithContext(ctx context.Context, request *Release
     if request == nil {
         request = NewReleaseServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ReleaseService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReleaseService require credential")
@@ -6109,6 +6198,7 @@ func (c *Client) ResetAPIDocPasswordWithContext(ctx context.Context, request *Re
     if request == nil {
         request = NewResetAPIDocPasswordRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "ResetAPIDocPassword")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetAPIDocPassword require credential")
@@ -6172,6 +6262,7 @@ func (c *Client) UnBindEnvironmentWithContext(ctx context.Context, request *UnBi
     if request == nil {
         request = NewUnBindEnvironmentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "UnBindEnvironment")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnBindEnvironment require credential")
@@ -6221,6 +6312,7 @@ func (c *Client) UnBindIPStrategyWithContext(ctx context.Context, request *UnBin
     if request == nil {
         request = NewUnBindIPStrategyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "UnBindIPStrategy")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnBindIPStrategy require credential")
@@ -6276,6 +6368,7 @@ func (c *Client) UnBindSecretIdsWithContext(ctx context.Context, request *UnBind
     if request == nil {
         request = NewUnBindSecretIdsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "UnBindSecretIds")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnBindSecretIds require credential")
@@ -6347,6 +6440,7 @@ func (c *Client) UnBindSubDomainWithContext(ctx context.Context, request *UnBind
     if request == nil {
         request = NewUnBindSubDomainRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "UnBindSubDomain")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnBindSubDomain require credential")
@@ -6418,6 +6512,7 @@ func (c *Client) UnReleaseServiceWithContext(ctx context.Context, request *UnRel
     if request == nil {
         request = NewUnReleaseServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "UnReleaseService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnReleaseService require credential")
@@ -6487,6 +6582,7 @@ func (c *Client) UnbindApiAppWithContext(ctx context.Context, request *UnbindApi
     if request == nil {
         request = NewUnbindApiAppRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "UnbindApiApp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindApiApp require credential")
@@ -6560,6 +6656,7 @@ func (c *Client) UpdateApiAppKeyWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateApiAppKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "UpdateApiAppKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateApiAppKey require credential")
@@ -6615,6 +6712,7 @@ func (c *Client) UpdateApiKeyWithContext(ctx context.Context, request *UpdateApi
     if request == nil {
         request = NewUpdateApiKeyRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "UpdateApiKey")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateApiKey require credential")
@@ -6676,6 +6774,7 @@ func (c *Client) UpdateServiceWithContext(ctx context.Context, request *UpdateSe
     if request == nil {
         request = NewUpdateServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "UpdateService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateService require credential")

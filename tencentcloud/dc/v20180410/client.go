@@ -92,6 +92,7 @@ func (c *Client) AcceptDirectConnectTunnelWithContext(ctx context.Context, reque
     if request == nil {
         request = NewAcceptDirectConnectTunnelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "AcceptDirectConnectTunnel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AcceptDirectConnectTunnel require credential")
@@ -141,6 +142,7 @@ func (c *Client) ApplyInternetAddressWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewApplyInternetAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "ApplyInternetAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyInternetAddress require credential")
@@ -200,6 +202,7 @@ func (c *Client) CreateCloudAttachServiceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateCloudAttachServiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "CreateCloudAttachService")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudAttachService require credential")
@@ -271,6 +274,7 @@ func (c *Client) CreateDirectConnectWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateDirectConnectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "CreateDirectConnect")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDirectConnect require credential")
@@ -350,6 +354,7 @@ func (c *Client) CreateDirectConnectTunnelWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateDirectConnectTunnelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "CreateDirectConnectTunnel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDirectConnectTunnel require credential")
@@ -415,6 +420,7 @@ func (c *Client) DeleteDirectConnectWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteDirectConnectRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "DeleteDirectConnect")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDirectConnect require credential")
@@ -474,6 +480,7 @@ func (c *Client) DeleteDirectConnectTunnelWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteDirectConnectTunnelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "DeleteDirectConnectTunnel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDirectConnectTunnel require credential")
@@ -537,6 +544,7 @@ func (c *Client) DescribeAccessPointsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAccessPointsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "DescribeAccessPoints")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAccessPoints require credential")
@@ -590,6 +598,7 @@ func (c *Client) DescribeDirectConnectTunnelExtraWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeDirectConnectTunnelExtraRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "DescribeDirectConnectTunnelExtra")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDirectConnectTunnelExtra require credential")
@@ -647,6 +656,7 @@ func (c *Client) DescribeDirectConnectTunnelsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeDirectConnectTunnelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "DescribeDirectConnectTunnels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDirectConnectTunnels require credential")
@@ -706,6 +716,7 @@ func (c *Client) DescribeDirectConnectsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDirectConnectsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "DescribeDirectConnects")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDirectConnects require credential")
@@ -765,6 +776,7 @@ func (c *Client) DescribeInternetAddressWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInternetAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "DescribeInternetAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInternetAddress require credential")
@@ -824,6 +836,7 @@ func (c *Client) DescribeInternetAddressQuotaWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeInternetAddressQuotaRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "DescribeInternetAddressQuota")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInternetAddressQuota require credential")
@@ -883,6 +896,7 @@ func (c *Client) DescribeInternetAddressStatisticsWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeInternetAddressStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "DescribeInternetAddressStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInternetAddressStatistics require credential")
@@ -938,6 +952,7 @@ func (c *Client) DescribePublicDirectConnectTunnelRoutesWithContext(ctx context.
     if request == nil {
         request = NewDescribePublicDirectConnectTunnelRoutesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "DescribePublicDirectConnectTunnelRoutes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublicDirectConnectTunnelRoutes require credential")
@@ -993,6 +1008,7 @@ func (c *Client) DisableInternetAddressWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDisableInternetAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "DisableInternetAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableInternetAddress require credential")
@@ -1048,6 +1064,7 @@ func (c *Client) EnableInternetAddressWithContext(ctx context.Context, request *
     if request == nil {
         request = NewEnableInternetAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "EnableInternetAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableInternetAddress require credential")
@@ -1111,6 +1128,7 @@ func (c *Client) ModifyDirectConnectAttributeWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyDirectConnectAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "ModifyDirectConnectAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDirectConnectAttribute require credential")
@@ -1170,6 +1188,7 @@ func (c *Client) ModifyDirectConnectTunnelAttributeWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyDirectConnectTunnelAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "ModifyDirectConnectTunnelAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDirectConnectTunnelAttribute require credential")
@@ -1237,6 +1256,7 @@ func (c *Client) ModifyDirectConnectTunnelExtraWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyDirectConnectTunnelExtraRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "ModifyDirectConnectTunnelExtra")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDirectConnectTunnelExtra require credential")
@@ -1294,6 +1314,7 @@ func (c *Client) RejectDirectConnectTunnelWithContext(ctx context.Context, reque
     if request == nil {
         request = NewRejectDirectConnectTunnelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "RejectDirectConnectTunnel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RejectDirectConnectTunnel require credential")
@@ -1351,6 +1372,7 @@ func (c *Client) ReleaseInternetAddressWithContext(ctx context.Context, request 
     if request == nil {
         request = NewReleaseInternetAddressRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "dc", APIVersion, "ReleaseInternetAddress")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReleaseInternetAddress require credential")

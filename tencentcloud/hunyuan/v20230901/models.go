@@ -768,19 +768,6 @@ type ErrorMsg struct {
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 }
 
-type File3D struct {
-	// 3D文件的格式。取值范围：GIF, OBJ
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 文件的Url（有效期24小时）
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-}
-
-type File3Ds struct {
-	// 3D文件列表
-	File3D []*File3D `json:"File3D,omitnil,omitempty" name:"File3D"`
-}
-
 type FileObject struct {
 	// 文件标识符，可在各个API中引用。
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
@@ -1813,11 +1800,26 @@ type Multimedia struct {
 	// 1. type 为 image 时，地址为图片的预览地址；其他类型时，地址为封面图地址。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
+	// 如果Url为图片地址，标识图片宽度。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 如果Url为图片地址，标识图片高度。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+
 	// 多媒体详情地址。
 	// 说明：
 	// 1. 仅 type 为 image 时，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
+
+	// 缩略图地址。
+	ThumbURL *string `json:"ThumbURL,omitnil,omitempty" name:"ThumbURL"`
+
+	// 缩略图宽度
+	ThumbWidth *int64 `json:"ThumbWidth,omitnil,omitempty" name:"ThumbWidth"`
+
+	// 缩略图高度
+	ThumbHeight *int64 `json:"ThumbHeight,omitnil,omitempty" name:"ThumbHeight"`
 
 	// 名称。
 	// 说明：
@@ -1840,6 +1842,15 @@ type Multimedia struct {
 	// 1. 仅 type 为 music 时，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *SongExt `json:"Ext,omitnil,omitempty" name:"Ext"`
+
+	// 发布时间。
+	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
+
+	// 站点名称
+	SiteName *string `json:"SiteName,omitnil,omitempty" name:"SiteName"`
+
+	// 站点图标
+	SiteIcon *string `json:"SiteIcon,omitnil,omitempty" name:"SiteIcon"`
 }
 
 type Processes struct {
@@ -2009,72 +2020,6 @@ func (r *QueryHunyuanImageJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryHunyuanImageJobResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type QueryHunyuanTo3DJobRequestParams struct {
-	// 任务ID
-	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
-}
-
-type QueryHunyuanTo3DJobRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务ID
-	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
-}
-
-func (r *QueryHunyuanTo3DJobRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *QueryHunyuanTo3DJobRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "JobId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryHunyuanTo3DJobRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type QueryHunyuanTo3DJobResponseParams struct {
-	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 生成的3D文件数组
-	ResultFile3Ds []*File3Ds `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
-
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
-
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type QueryHunyuanTo3DJobResponse struct {
-	*tchttp.BaseResponse
-	Response *QueryHunyuanTo3DJobResponseParams `json:"Response"`
-}
-
-func (r *QueryHunyuanTo3DJobResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *QueryHunyuanTo3DJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2642,96 +2587,6 @@ func (r *SubmitHunyuanImageJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitHunyuanImageJobResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type SubmitHunyuanTo3DJobRequestParams struct {
-	// 3D内容的描述，中文正向提示词。最多支持200个 utf-8 字符，ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
-
-	// 输入图 Base64 数据。
-	// 大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
-	// 格式：jpg，png，jpeg，webp。
-	// ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 输入图Url。
-	// 大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
-	// 格式：jpg，png，jpeg，webp。
-	// ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 生成数量。默认1，当前限制只能为1。
-	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
-}
-
-type SubmitHunyuanTo3DJobRequest struct {
-	*tchttp.BaseRequest
-	
-	// 3D内容的描述，中文正向提示词。最多支持200个 utf-8 字符，ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
-
-	// 输入图 Base64 数据。
-	// 大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
-	// 格式：jpg，png，jpeg，webp。
-	// ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 输入图Url。
-	// 大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
-	// 格式：jpg，png，jpeg，webp。
-	// ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 生成数量。默认1，当前限制只能为1。
-	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
-}
-
-func (r *SubmitHunyuanTo3DJobRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *SubmitHunyuanTo3DJobRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Prompt")
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "Num")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuanTo3DJobRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type SubmitHunyuanTo3DJobResponseParams struct {
-	// 任务id（有效期24小时）
-	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type SubmitHunyuanTo3DJobResponse struct {
-	*tchttp.BaseResponse
-	Response *SubmitHunyuanTo3DJobResponseParams `json:"Response"`
-}
-
-func (r *SubmitHunyuanTo3DJobResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *SubmitHunyuanTo3DJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

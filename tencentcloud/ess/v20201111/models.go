@@ -1447,6 +1447,227 @@ func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateBatchContractReviewTaskRequestParams struct {
+	// 执行合同审查任务的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+	// 
+	// 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 合同审查的审查立场方。
+	// 
+	// 审查立场方如下：
+	// <ul>
+	//     <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+	//     <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+	//     <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+	// </ul>
+	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。
+	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
+	// [点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)
+	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type CreateBatchContractReviewTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行合同审查任务的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+	// 
+	// 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 合同审查的审查立场方。
+	// 
+	// 审查立场方如下：
+	// <ul>
+	//     <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+	//     <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+	//     <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+	// </ul>
+	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。
+	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
+	// [点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)
+	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *CreateBatchContractReviewTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchContractReviewTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ResourceIds")
+	delete(f, "PolicyType")
+	delete(f, "Role")
+	delete(f, "ChecklistId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchContractReviewTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchContractReviewTaskResponseParams struct {
+	// 合同审查的任务ID列表，每个任务ID为32位字符串。
+	// 建议开发者保存此任务ID，后续[查询合同审查任务取详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask/)需要此任务ID。
+	// 
+	// 注意：`返回的索引和ResourceIds数组一致`
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchContractReviewTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchContractReviewTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchContractReviewTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchContractReviewTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchInformationExtractionTaskRequestParams struct {
+	// 执行合同智能提取的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 用户配置的合同智能提取字段模板ID，会基于此模板批量创建合同智能提取任务，为32位字符串。
+	// [点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/99008608577532423ea437c7fdbedca1.png)
+	// 
+	// 注:  `此配置优先级最高，设置了模板ID后Fields配置就会无效`
+	FieldTemplateId *string `json:"FieldTemplateId,omitnil,omitempty" name:"FieldTemplateId"`
+
+	// 用于合同智能提取的字段信息。
+	// 
+	// 注意：`字段模板优先级最高，如果设置了FieldTemplateId值，此配置就无效`
+	Fields []*ExtractionField `json:"Fields,omitnil,omitempty" name:"Fields"`
+}
+
+type CreateBatchInformationExtractionTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行合同智能提取的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 用户配置的合同智能提取字段模板ID，会基于此模板批量创建合同智能提取任务，为32位字符串。
+	// [点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/99008608577532423ea437c7fdbedca1.png)
+	// 
+	// 注:  `此配置优先级最高，设置了模板ID后Fields配置就会无效`
+	FieldTemplateId *string `json:"FieldTemplateId,omitnil,omitempty" name:"FieldTemplateId"`
+
+	// 用于合同智能提取的字段信息。
+	// 
+	// 注意：`字段模板优先级最高，如果设置了FieldTemplateId值，此配置就无效`
+	Fields []*ExtractionField `json:"Fields,omitnil,omitempty" name:"Fields"`
+}
+
+func (r *CreateBatchInformationExtractionTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchInformationExtractionTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ResourceIds")
+	delete(f, "Agent")
+	delete(f, "FieldTemplateId")
+	delete(f, "Fields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchInformationExtractionTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchInformationExtractionTaskResponseParams struct {
+	// 合同智能提取的任务ID列表，每个任务ID为32位字符串。
+	// 建议开发者保存此任务ID，后续查询合同智能提取详情需要此任务ID。
+	// 
+	// 注意：`返回的索引和ResourceIds数组一致`
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchInformationExtractionTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchInformationExtractionTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchInformationExtractionTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchInformationExtractionTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateBatchInitOrganizationUrlRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -5790,6 +6011,213 @@ func (r *CreateLegalSealQrCodeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateMiniAppPrepareFlowRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 支持填入集团子公司经办人 userId 代发合同。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 资源类型，取值有：
+	// <ul><li> **1**：模板</li>
+	// <li> **2**：文件 </li></ul>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源id，与ResourceType相对应，取值范围：
+	// <ul>
+	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
+	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
+	// </ul>
+	// 注意：需要同时设置 ResourceType 参数指定资源类型
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
+	// 
+	// 该名称还将用于合同签署完成后文件下载的默认文件名称。
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息。
+	Approvers []*MiniAppCreateApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
+
+	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 
+	// **注：暂不支持通过NotifyType参数控制抄送人通知方式**
+	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
+
+	// 合同流程的签署顺序类型：
+	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
+	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
+	// 
+	// **注：仅在文件发起模式下设置有效，模板发起以模板配置为准**
+	Unordered *bool `json:"Unordered,omitnil,omitempty" name:"Unordered"`
+
+	// 合同发起后经过多少天截止（1-30天可选），默认7天
+	DeadlineAfterStartDays *int64 `json:"DeadlineAfterStartDays,omitnil,omitempty" name:"DeadlineAfterStartDays"`
+
+	// 用户自定义合同类型Id  该id为电子签企业内的合同类型id， 可以在控制台-合同-自定义合同类型处获取
+	UserFlowTypeId *string `json:"UserFlowTypeId,omitnil,omitempty" name:"UserFlowTypeId"`
+
+	// 发起合同个性化参数
+	// 用于满足小程序合同创建的个性化要求
+	// 具体定制化内容详见数据接口说明
+	FlowOption *MiniAppCreateFlowOption `json:"FlowOption,omitnil,omitempty" name:"FlowOption"`
+
+	// 发起合同小程序页面个性化参数 
+	// 用于满足小程序合同创建页面的个性化要求 具体定制化内容详见数据接口说明
+	PageOption *MiniAppCreateFlowPageOption `json:"PageOption,omitnil,omitempty" name:"PageOption"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000 长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+}
+
+type CreateMiniAppPrepareFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 支持填入集团子公司经办人 userId 代发合同。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 资源类型，取值有：
+	// <ul><li> **1**：模板</li>
+	// <li> **2**：文件 </li></ul>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源id，与ResourceType相对应，取值范围：
+	// <ul>
+	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
+	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
+	// </ul>
+	// 注意：需要同时设置 ResourceType 参数指定资源类型
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
+	// 
+	// 该名称还将用于合同签署完成后文件下载的默认文件名称。
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息。
+	Approvers []*MiniAppCreateApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
+
+	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 
+	// **注：暂不支持通过NotifyType参数控制抄送人通知方式**
+	CcInfos []*CcInfo `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
+
+	// 合同流程的签署顺序类型：
+	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
+	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
+	// 
+	// **注：仅在文件发起模式下设置有效，模板发起以模板配置为准**
+	Unordered *bool `json:"Unordered,omitnil,omitempty" name:"Unordered"`
+
+	// 合同发起后经过多少天截止（1-30天可选），默认7天
+	DeadlineAfterStartDays *int64 `json:"DeadlineAfterStartDays,omitnil,omitempty" name:"DeadlineAfterStartDays"`
+
+	// 用户自定义合同类型Id  该id为电子签企业内的合同类型id， 可以在控制台-合同-自定义合同类型处获取
+	UserFlowTypeId *string `json:"UserFlowTypeId,omitnil,omitempty" name:"UserFlowTypeId"`
+
+	// 发起合同个性化参数
+	// 用于满足小程序合同创建的个性化要求
+	// 具体定制化内容详见数据接口说明
+	FlowOption *MiniAppCreateFlowOption `json:"FlowOption,omitnil,omitempty" name:"FlowOption"`
+
+	// 发起合同小程序页面个性化参数 
+	// 用于满足小程序合同创建页面的个性化要求 具体定制化内容详见数据接口说明
+	PageOption *MiniAppCreateFlowPageOption `json:"PageOption,omitnil,omitempty" name:"PageOption"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000 长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+}
+
+func (r *CreateMiniAppPrepareFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMiniAppPrepareFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ResourceType")
+	delete(f, "ResourceId")
+	delete(f, "FlowName")
+	delete(f, "Agent")
+	delete(f, "Approvers")
+	delete(f, "CcInfos")
+	delete(f, "Unordered")
+	delete(f, "DeadlineAfterStartDays")
+	delete(f, "UserFlowTypeId")
+	delete(f, "FlowOption")
+	delete(f, "PageOption")
+	delete(f, "UserData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMiniAppPrepareFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMiniAppPrepareFlowResponseParams struct {
+	// H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+	LongUrl *string `json:"LongUrl,omitnil,omitempty" name:"LongUrl"`
+
+	// H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+	ShortUrl *string `json:"ShortUrl,omitnil,omitempty" name:"ShortUrl"`
+
+	// APP或小程序跳转电子签小程序链接, 一般用于客户小程序或者APP跳转过来, 打开后进入腾讯电子签小程序
+	MiniAppPath *string `json:"MiniAppPath,omitnil,omitempty" name:"MiniAppPath"`
+
+	// 创建的合同id（还未实际发起，也未扣费），每次调用会生成新的id，用户可以记录此字段对应后续在小程序发起的合同，若在小程序上未成功发起，则此字段无效。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 跳转至电子签小程序的二维码链接
+	QrcodeUrl *string `json:"QrcodeUrl,omitnil,omitempty" name:"QrcodeUrl"`
+
+	// 直接跳转至电子签小程序的二维码链接，无需通过中转页。需要自行将其转换为二维码，使用微信扫码后可直接进入。
+	WeixinQrcodeUrl *string `json:"WeixinQrcodeUrl,omitnil,omitempty" name:"WeixinQrcodeUrl"`
+
+	// 链接过期时间，精确到秒，若在此过期时间前未使用，则链接失效。
+	ExpiredOn *int64 `json:"ExpiredOn,omitnil,omitempty" name:"ExpiredOn"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMiniAppPrepareFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMiniAppPrepareFlowResponseParams `json:"Response"`
+}
+
+func (r *CreateMiniAppPrepareFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMiniAppPrepareFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateModifyAdminAuthorizationUrlRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -6254,6 +6682,18 @@ type CreateOrganizationAuthUrlRequestParams struct {
 	// 
 	// 在. 企业引导企业实名认证后回调中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_staffs" target="_blank">回调通知</a>模块。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 组织机构对公打款账号，账户名跟企业名称一致。
+	// 
+	// p.s.
+	// 只有认证方式是授权书+对公打款时才生效。
+	BankAccountNumber *string `json:"BankAccountNumber,omitnil,omitempty" name:"BankAccountNumber"`
+
+	// 对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+	// 
+	// 
+	// p.s. 仅在对公打款不为空时有效
+	BankAccountNumberSame *bool `json:"BankAccountNumberSame,omitnil,omitempty" name:"BankAccountNumberSame"`
 }
 
 type CreateOrganizationAuthUrlRequest struct {
@@ -6369,6 +6809,18 @@ type CreateOrganizationAuthUrlRequest struct {
 	// 
 	// 在. 企业引导企业实名认证后回调中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_staffs" target="_blank">回调通知</a>模块。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 组织机构对公打款账号，账户名跟企业名称一致。
+	// 
+	// p.s.
+	// 只有认证方式是授权书+对公打款时才生效。
+	BankAccountNumber *string `json:"BankAccountNumber,omitnil,omitempty" name:"BankAccountNumber"`
+
+	// 对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+	// 
+	// 
+	// p.s. 仅在对公打款不为空时有效
+	BankAccountNumberSame *bool `json:"BankAccountNumberSame,omitnil,omitempty" name:"BankAccountNumberSame"`
 }
 
 func (r *CreateOrganizationAuthUrlRequest) ToJsonString() string {
@@ -6405,6 +6857,8 @@ func (r *CreateOrganizationAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "Initialization")
 	delete(f, "PowerOfAttorneys")
 	delete(f, "UserData")
+	delete(f, "BankAccountNumber")
+	delete(f, "BankAccountNumberSame")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationAuthUrlRequest has unknown keys!", "")
 	}
@@ -10190,6 +10644,122 @@ func (r *DescribeContractDiffTaskWebUrlResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeContractReviewTaskRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查任务ID，该参数通过调用接口[批量创建合同审查任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask)获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type DescribeContractReviewTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查任务ID，该参数通过调用接口[批量创建合同审查任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask)获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *DescribeContractReviewTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContractReviewTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractReviewTaskResponseParams struct {
+	// 用于审查任务的审查清单ID。
+	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// 合同审查任务创建时间。
+	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
+
+	// 合同审查任务完成时间。
+	FinishedOn *int64 `json:"FinishedOn,omitnil,omitempty" name:"FinishedOn"`
+
+	// 合同审查的审查立场方。
+	// 
+	// 审查立场方如下：
+	// <ul>
+	//     <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+	//     <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+	//     <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+	// </ul>
+	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 合同审查的PDF文件资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 合同审查识别出的PDF文件风险信息，如果是空数组表示无风险。
+	// 
+	// 注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
+	Risks []*OutputRisk `json:"Risks,omitnil,omitempty" name:"Risks"`
+
+	// 合同审查中的角色信息。
+	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 合同审查任务状态。
+	// 状态如下：
+	// <ul>
+	//     <li>**1** - 合同审查任务创建成功</li>   
+	//     <li>**2** - 合同审查任务排队中</li>  
+	//     <li>**3** - 合同审查任务执行中</li>   
+	//     <li>**4** - 合同审查任务执行成功</li>
+	//     <li>**4** - 合同审查任务执行失败</li>
+	// </ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 合同审查任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeContractReviewTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeContractReviewTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeContractReviewTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExtendedServiceAuthDetailRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -11153,6 +11723,97 @@ func (r *DescribeFlowTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeFlowTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInformationExtractionTaskRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 合同智能提取任务ID，该参数通过调用接口[批量创建合同智能提取任务接口](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask)获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeInformationExtractionTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 合同智能提取任务ID，该参数通过调用接口[批量创建合同智能提取任务接口](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask)获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeInformationExtractionTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInformationExtractionTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Agent")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInformationExtractionTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInformationExtractionTaskResponseParams struct {
+	// 信息提取任务结果
+	Fields []*ExtractionField `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 合同智能提取任务状态。
+	// 状态如下：
+	// <ul>
+	//     <li>**0** - 任务创建成功（还未执行）</li> 
+	//     <li>**1** - 排队中（等待执行）</li>   
+	//     <li>**2** - 提取中（正在执行）</li>  
+	//     <li>**3** - 提取成功</li>   
+	//     <li>**4** - 提取失败</li>
+	// </ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 合同智能提取结果下载，文件格式为`xlsx`。
+	// 
+	// 注意：`链接有效期为5分钟，过期后可重新获取`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInformationExtractionTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInformationExtractionTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeInformationExtractionTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInformationExtractionTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12652,6 +13313,32 @@ type ExtendScene struct {
 	GenerateTypeLogo *string `json:"GenerateTypeLogo,omitnil,omitempty" name:"GenerateTypeLogo"`
 }
 
+type ExtractionField struct {
+	// 用于合同智能提取的字段名称。
+	// 
+	// 注意: `长度不能超过30个字符`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 指定合同智能提取的字段类型，目前仅支持`TEXT`、`DATE`、`NUMBER`、`OPTION`类型。
+	// 
+	// 类型支持如下：
+	// 1、TEXT（文本）
+	// 2、DATE（日期）
+	// 3、NUMBER（数字）
+	// 4、OPTION（选项值）
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 用于描述字段信息。
+	// 
+	// 注意：
+	// 1、`如果Type值为OPTION时，需要在字段描述中填写选项值，用,分隔`
+	// 2、描述字段不能超过100个字符
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 提取出合同中的字段信息。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
 type FailedCreateRoleData struct {
 	// 用户userId
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -13674,6 +14361,71 @@ type IntentionQuestionResult struct {
 	AsrResult []*string `json:"AsrResult,omitnil,omitempty" name:"AsrResult"`
 }
 
+type MiniAppCreateApproverInfo struct {
+	// 在指定签署方时，可以选择企业B端或个人C端等不同的参与者类型，可选类型如下：
+	// 
+	// <ul><li> <b>0</b> :企业B端。</li>
+	// <li> <b>1</b> :个人C端。</li>
+	// <li> <b>3</b> :企业B端静默（自动）签署，无需签署人参与，自动签署可以参考<a href="https://qian.tencent.com/developers/company/autosign_guide" target="_blank" rel="noopener noreferrer">自动签署使用说明</a>文档。</li>
+	// <li> <b>7</b> :个人C端自动签署，适用于个人自动签场景。注: <b>个人自动签场景为白名单功能，使用前请联系对接的客户经理沟通。</b> </li></ul>
+	ApproverType *int64 `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
+
+	// 组织机构名称。
+	// 请确认该名称与企业营业执照中注册的名称一致。
+	// 如果名称中包含英文括号()，请使用中文括号（）代替。
+	// 
+	// 注: `当approverType=0(企业签署方) 或 approverType=3(企业静默签署)时，必须指定`
+	// 
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// 签署方经办人的姓名。
+	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+	// 
+	// 在未指定签署人电子签UserId情况下，为必填参数
+	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
+
+	// 签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。 此手机号用于通知和用户的实名认证等环境，请确认手机号所有方为此合同签署方。
+	// 
+	// 注：`在未指定签署人电子签UserId情况下，为必填参数`
+	ApproverMobile *string `json:"ApproverMobile,omitnil,omitempty" name:"ApproverMobile"`
+
+	// 证件类型，支持以下类型
+	// <ul><li><b>ID_CARD</b>: 居民身份证 (默认值)</li>
+	// <li><b>HONGKONG_AND_MACAO</b> : 港澳居民来往内地通行证</li>
+	// <li><b>HONGKONG_MACAO_AND_TAIWAN</b> : 港澳台居民居住证(格式同居民身份证)</li></ul>
+	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
+
+	// 证件号码，应符合以下规则
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
+
+	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+	// 
+	// <b>模板发起合同时，该参数为必填项，可以通过[查询模板信息接口](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFlowTemplates)获得。</b>
+	// <b>文件发起合同时，该参数无需传值。</b>
+	// 
+	// 如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
+}
+
+type MiniAppCreateFlowOption struct {
+	// 到期提醒日（linux时间戳） 精确到天
+	RemindedOn *int64 `json:"RemindedOn,omitnil,omitempty" name:"RemindedOn"`
+
+	// 是否需要发起前进行审批
+	NeedCreateReview *bool `json:"NeedCreateReview,omitnil,omitempty" name:"NeedCreateReview"`
+
+	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
+}
+
+type MiniAppCreateFlowPageOption struct {
+	// 发起后隐藏签署码
+	HideSignCodeAfterStart *bool `json:"HideSignCodeAfterStart,omitnil,omitempty" name:"HideSignCodeAfterStart"`
+}
+
 // Predefined struct for user
 type ModifyApplicationCallbackInfoRequestParams struct {
 	// 执行本接口操作的员工信息。
@@ -14685,6 +15437,38 @@ type OrganizationInfo struct {
 	ProxyIp *string `json:"ProxyIp,omitnil,omitempty" name:"ProxyIp"`
 }
 
+type OutputRisk struct {
+	// 合同审查风险结果ID
+	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
+
+	// 风险名称
+	RiskName *string `json:"RiskName,omitnil,omitempty" name:"RiskName"`
+
+	// 风险描述
+	RiskDescription *string `json:"RiskDescription,omitnil,omitempty" name:"RiskDescription"`
+
+	// 风险等级。
+	// 
+	// 等级描述如下：
+	// <ul>
+	//     <li>**HIGH** - 高风险</li> 
+	//     <li>**NORMAL** - 风险</li>   
+	// </ul>
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 风险建议
+	RiskAdvice *string `json:"RiskAdvice,omitnil,omitempty" name:"RiskAdvice"`
+
+	// 风险评估
+	RiskPresentation []*string `json:"RiskPresentation,omitnil,omitempty" name:"RiskPresentation"`
+
+	// PDF风险原文内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 审查依据
+	RiskBasis *string `json:"RiskBasis,omitnil,omitempty" name:"RiskBasis"`
+}
+
 type PdfVerifyResult struct {
 	// 验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
 	VerifyResult *int64 `json:"VerifyResult,omitnil,omitempty" name:"VerifyResult"`
@@ -15146,6 +15930,18 @@ type ReviewerInfo struct {
 
 	// 手机号
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+}
+
+type RiskIdentificationRoleInfo struct {
+	// 风险识别角色的名称。用于唯一标识和区分不同的风险识别角色。
+	// 
+	// 注意：`最大长度应不超过200个字符`
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 风险识别角色的详细说明。
+	// 
+	// 注意： `最大长度应不超过500个字符`
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type SealInfo struct {

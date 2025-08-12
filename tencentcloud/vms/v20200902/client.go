@@ -128,6 +128,7 @@ func (c *Client) SendCodeVoiceWithContext(ctx context.Context, request *SendCode
     if request == nil {
         request = NewSendCodeVoiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vms", APIVersion, "SendCodeVoice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendCodeVoice require credential")
@@ -223,6 +224,7 @@ func (c *Client) SendTtsVoiceWithContext(ctx context.Context, request *SendTtsVo
     if request == nil {
         request = NewSendTtsVoiceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vms", APIVersion, "SendTtsVoice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SendTtsVoice require credential")

@@ -84,6 +84,7 @@ func (c *Client) CheckSavepointWithContext(ctx context.Context, request *CheckSa
     if request == nil {
         request = NewCheckSavepointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CheckSavepoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckSavepoint require credential")
@@ -153,6 +154,7 @@ func (c *Client) CopyJobsWithContext(ctx context.Context, request *CopyJobsReque
     if request == nil {
         request = NewCopyJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CopyJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CopyJobs require credential")
@@ -208,6 +210,7 @@ func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFol
     if request == nil {
         request = NewCreateFolderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CreateFolder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFolder require credential")
@@ -299,6 +302,7 @@ func (c *Client) CreateJobWithContext(ctx context.Context, request *CreateJobReq
     if request == nil {
         request = NewCreateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CreateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateJob require credential")
@@ -398,6 +402,7 @@ func (c *Client) CreateJobConfigWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateJobConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CreateJobConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateJobConfig require credential")
@@ -471,6 +476,7 @@ func (c *Client) CreateResourceWithContext(ctx context.Context, request *CreateR
     if request == nil {
         request = NewCreateResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CreateResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateResource require credential")
@@ -536,6 +542,7 @@ func (c *Client) CreateResourceConfigWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateResourceConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CreateResourceConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateResourceConfig require credential")
@@ -599,6 +606,7 @@ func (c *Client) CreateWorkSpaceWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateWorkSpaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CreateWorkSpace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateWorkSpace require credential")
@@ -656,6 +664,7 @@ func (c *Client) DeleteFoldersWithContext(ctx context.Context, request *DeleteFo
     if request == nil {
         request = NewDeleteFoldersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DeleteFolders")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFolders require credential")
@@ -721,6 +730,7 @@ func (c *Client) DeleteJobConfigsWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteJobConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DeleteJobConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteJobConfigs require credential")
@@ -794,6 +804,7 @@ func (c *Client) DeleteJobsWithContext(ctx context.Context, request *DeleteJobsR
     if request == nil {
         request = NewDeleteJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DeleteJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteJobs require credential")
@@ -867,6 +878,7 @@ func (c *Client) DeleteResourceConfigsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteResourceConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DeleteResourceConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteResourceConfigs require credential")
@@ -934,6 +946,7 @@ func (c *Client) DeleteResourcesWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DeleteResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteResources require credential")
@@ -989,6 +1002,7 @@ func (c *Client) DeleteTableConfigWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteTableConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DeleteTableConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTableConfig require credential")
@@ -1050,6 +1064,7 @@ func (c *Client) DeleteWorkSpaceWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteWorkSpaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DeleteWorkSpace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteWorkSpace require credential")
@@ -1117,6 +1132,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusters require credential")
@@ -1184,6 +1200,7 @@ func (c *Client) DescribeFolderWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeFolderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeFolder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFolder require credential")
@@ -1253,6 +1270,7 @@ func (c *Client) DescribeJobConfigsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeJobConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeJobConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJobConfigs require credential")
@@ -1320,6 +1338,7 @@ func (c *Client) DescribeJobEventsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeJobEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeJobEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJobEvents require credential")
@@ -1387,6 +1406,7 @@ func (c *Client) DescribeJobRuntimeInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeJobRuntimeInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeJobRuntimeInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJobRuntimeInfo require credential")
@@ -1442,6 +1462,7 @@ func (c *Client) DescribeJobSavepointWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeJobSavepointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeJobSavepoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJobSavepoint require credential")
@@ -1513,6 +1534,7 @@ func (c *Client) DescribeJobSubmissionLogWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeJobSubmissionLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeJobSubmissionLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJobSubmissionLog require credential")
@@ -1580,6 +1602,7 @@ func (c *Client) DescribeJobsWithContext(ctx context.Context, request *DescribeJ
     if request == nil {
         request = NewDescribeJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJobs require credential")
@@ -1653,6 +1676,7 @@ func (c *Client) DescribeResourceConfigsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeResourceConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeResourceConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceConfigs require credential")
@@ -1716,6 +1740,7 @@ func (c *Client) DescribeResourceRelatedJobsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeResourceRelatedJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeResourceRelatedJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceRelatedJobs require credential")
@@ -1783,6 +1808,7 @@ func (c *Client) DescribeResourcesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResources require credential")
@@ -1848,6 +1874,7 @@ func (c *Client) DescribeSystemResourcesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSystemResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeSystemResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSystemResources require credential")
@@ -1903,6 +1930,7 @@ func (c *Client) DescribeTreeJobsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTreeJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeTreeJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTreeJobs require credential")
@@ -1964,6 +1992,7 @@ func (c *Client) DescribeTreeResourcesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTreeResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeTreeResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTreeResources require credential")
@@ -2021,6 +2050,7 @@ func (c *Client) DescribeWorkSpacesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeWorkSpacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeWorkSpaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeWorkSpaces require credential")
@@ -2070,6 +2100,7 @@ func (c *Client) FetchSqlGatewayStatementResultWithContext(ctx context.Context, 
     if request == nil {
         request = NewFetchSqlGatewayStatementResultRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "FetchSqlGatewayStatementResult")
     
     if c.GetCredential() == nil {
         return nil, errors.New("FetchSqlGatewayStatementResult require credential")
@@ -2123,6 +2154,7 @@ func (c *Client) GetMetaTableWithContext(ctx context.Context, request *GetMetaTa
     if request == nil {
         request = NewGetMetaTableRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "GetMetaTable")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetMetaTable require credential")
@@ -2178,6 +2210,7 @@ func (c *Client) ModifyFolderWithContext(ctx context.Context, request *ModifyFol
     if request == nil {
         request = NewModifyFolderRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "ModifyFolder")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyFolder require credential")
@@ -2275,6 +2308,7 @@ func (c *Client) ModifyJobWithContext(ctx context.Context, request *ModifyJobReq
     if request == nil {
         request = NewModifyJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "ModifyJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyJob require credential")
@@ -2338,6 +2372,7 @@ func (c *Client) ModifyWorkSpaceWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyWorkSpaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "ModifyWorkSpace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyWorkSpace require credential")
@@ -2439,6 +2474,7 @@ func (c *Client) RunJobsWithContext(ctx context.Context, request *RunJobsRequest
     if request == nil {
         request = NewRunJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "RunJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunJobs require credential")
@@ -2488,6 +2524,7 @@ func (c *Client) RunSqlGatewayStatementWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRunSqlGatewayStatementRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "RunSqlGatewayStatement")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RunSqlGatewayStatement require credential")
@@ -2565,6 +2602,7 @@ func (c *Client) StopJobsWithContext(ctx context.Context, request *StopJobsReque
     if request == nil {
         request = NewStopJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "StopJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopJobs require credential")
@@ -2620,6 +2658,7 @@ func (c *Client) TriggerJobSavepointWithContext(ctx context.Context, request *Tr
     if request == nil {
         request = NewTriggerJobSavepointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "TriggerJobSavepoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TriggerJobSavepoint require credential")

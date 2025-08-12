@@ -47,9 +47,6 @@ const (
 	// 缓存配置不合法 。
 	INVALIDPARAMETER_ECDNCONFIGINVALIDCACHE = "InvalidParameter.EcdnConfigInvalidCache"
 
-	// 域名状态不合法。
-	INVALIDPARAMETER_ECDNDOMAININVALIDSTATUS = "InvalidParameter.EcdnDomainInvalidStatus"
-
 	// 内部接口错误，请联系腾讯云工程师进一步排查。
 	INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
 
@@ -59,29 +56,17 @@ const (
 	// 参数错误，请参考文档中示例参数填充。
 	INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
 
-	// 刷新不支持泛域名。
-	INVALIDPARAMETER_ECDNPURGEWILDCARDNOTALLOWED = "InvalidParameter.EcdnPurgeWildcardNotAllowed"
-
 	// 日期不合法，请参考文档中日期示例。
 	INVALIDPARAMETER_ECDNSTATINVALIDDATE = "InvalidParameter.EcdnStatInvalidDate"
 
 	// 统计类型不合法，请参考文档中统计分析示例。
 	INVALIDPARAMETER_ECDNSTATINVALIDMETRIC = "InvalidParameter.EcdnStatInvalidMetric"
 
-	// URL 超过限制长度。
-	INVALIDPARAMETER_ECDNURLEXCEEDLENGTH = "InvalidParameter.EcdnUrlExceedLength"
-
 	// 参数错误。
 	INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 
 	// 域名操作过于频繁。
 	LIMITEXCEEDED_ECDNDOMAINOPTOOOFTEN = "LimitExceeded.EcdnDomainOpTooOften"
-
-	// 刷新的Url数量超过单次限制。
-	LIMITEXCEEDED_ECDNPURGEURLEXCEEDBATCHLIMIT = "LimitExceeded.EcdnPurgeUrlExceedBatchLimit"
-
-	// 刷新的Url数量超过每日限额。
-	LIMITEXCEEDED_ECDNPURGEURLEXCEEDDAYLIMIT = "LimitExceeded.EcdnPurgeUrlExceedDayLimit"
 
 	// 账号下无此域名，请确认后重试。
 	RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
@@ -131,17 +116,11 @@ const (
 	// ECDN子账号加速域名未授权。
 	UNAUTHORIZEDOPERATION_ECDNHOSTUNAUTHORIZED = "UnauthorizedOperation.EcdnHostUnauthorized"
 
-	// 请前往CDN控制台进行操作 。
-	UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
-
 	// 子账号没有授权域名权限，请授权后重试。
 	UNAUTHORIZEDOPERATION_ECDNNODOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnNoDomainUnauthorized"
 
 	// 子账号项目未授权。
 	UNAUTHORIZEDOPERATION_ECDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.EcdnProjectUnauthorized"
-
-	// 加速服务已停服，请重启加速服务后重试。
-	UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 
 	// 非内测白名单用户，无该功能使用权限。
 	UNAUTHORIZEDOPERATION_ECDNUSERNOWHITELIST = "UnauthorizedOperation.EcdnUserNoWhitelist"

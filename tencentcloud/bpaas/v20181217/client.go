@@ -90,6 +90,7 @@ func (c *Client) GetBpaasApproveDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetBpaasApproveDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bpaas", APIVersion, "GetBpaasApproveDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetBpaasApproveDetail require credential")
@@ -149,6 +150,7 @@ func (c *Client) OutApproveBpaasApplicationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewOutApproveBpaasApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "bpaas", APIVersion, "OutApproveBpaasApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OutApproveBpaasApplication require credential")

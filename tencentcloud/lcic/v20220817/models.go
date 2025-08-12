@@ -1955,14 +1955,14 @@ func (r *DeleteUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteWhiteBoardSnapshotRequestParams struct {
-	// 房间ID
+	// 课堂ID
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 type DeleteWhiteBoardSnapshotRequest struct {
 	*tchttp.BaseRequest
 	
-	// 房间ID
+	// 课堂ID
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
@@ -4059,14 +4059,14 @@ type DocumentInfo struct {
 
 // Predefined struct for user
 type EndRoomRequestParams struct {
-	// 房间ID。
+	// 课堂ID
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 type EndRoomRequest struct {
 	*tchttp.BaseRequest
 	
-	// 房间ID。
+	// 课堂ID
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
@@ -4164,7 +4164,7 @@ type ForbidSendMsgRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 房间ID。
+	// 课堂ID
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 需要禁言的用户账号，最多支持500个账号
@@ -4180,7 +4180,7 @@ type ForbidSendMsgRequest struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 房间ID。
+	// 课堂ID
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 需要禁言的用户账号，最多支持500个账号
@@ -6409,14 +6409,14 @@ func (r *StartRecordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartRoomRequestParams struct {
-	// 房间ID。
+	// 课堂ID
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 type StartRoomRequest struct {
 	*tchttp.BaseRequest
 	
-	// 房间ID。
+	// 课堂ID
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
@@ -6466,7 +6466,7 @@ type StopRecordRequestParams struct {
 	// 学校ID
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 房间ID
+	// 课堂ID
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 任务ID
@@ -6479,7 +6479,7 @@ type StopRecordRequest struct {
 	// 学校ID
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 房间ID
+	// 课堂ID
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 任务ID

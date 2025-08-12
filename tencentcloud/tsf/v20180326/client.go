@@ -112,6 +112,7 @@ func (c *Client) AddClusterInstancesWithContext(ctx context.Context, request *Ad
     if request == nil {
         request = NewAddClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "AddClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddClusterInstances require credential")
@@ -175,6 +176,7 @@ func (c *Client) AddInstancesWithContext(ctx context.Context, request *AddInstan
     if request == nil {
         request = NewAddInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "AddInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AddInstances require credential")
@@ -238,6 +240,7 @@ func (c *Client) AssociateBusinessLogConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewAssociateBusinessLogConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "AssociateBusinessLogConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateBusinessLogConfig require credential")
@@ -291,6 +294,7 @@ func (c *Client) AssociateConfigWithGroupWithContext(ctx context.Context, reques
     if request == nil {
         request = NewAssociateConfigWithGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "AssociateConfigWithGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateConfigWithGroup require credential")
@@ -344,6 +348,7 @@ func (c *Client) BindApiGroupWithContext(ctx context.Context, request *BindApiGr
     if request == nil {
         request = NewBindApiGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "BindApiGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindApiGroup require credential")
@@ -399,6 +404,7 @@ func (c *Client) BindPluginWithContext(ctx context.Context, request *BindPluginR
     if request == nil {
         request = NewBindPluginRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "BindPlugin")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindPlugin require credential")
@@ -450,6 +456,7 @@ func (c *Client) ChangeApiUsableStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewChangeApiUsableStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ChangeApiUsableStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ChangeApiUsableStatus require credential")
@@ -525,6 +532,7 @@ func (c *Client) ContinueRunFailedTaskBatchWithContext(ctx context.Context, requ
     if request == nil {
         request = NewContinueRunFailedTaskBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ContinueRunFailedTaskBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ContinueRunFailedTaskBatch require credential")
@@ -574,6 +582,7 @@ func (c *Client) CreateAllGatewayApiAsyncWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAllGatewayApiAsyncRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateAllGatewayApiAsync")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAllGatewayApiAsync require credential")
@@ -631,6 +640,7 @@ func (c *Client) CreateApiGroupWithContext(ctx context.Context, request *CreateA
     if request == nil {
         request = NewCreateApiGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateApiGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApiGroup require credential")
@@ -686,6 +696,7 @@ func (c *Client) CreateApiRateLimitRuleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateApiRateLimitRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateApiRateLimitRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApiRateLimitRule require credential")
@@ -741,6 +752,7 @@ func (c *Client) CreateApiRateLimitRuleWithDetailRespWithContext(ctx context.Con
     if request == nil {
         request = NewCreateApiRateLimitRuleWithDetailRespRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateApiRateLimitRuleWithDetailResp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApiRateLimitRuleWithDetailResp require credential")
@@ -830,6 +842,7 @@ func (c *Client) CreateApplicationWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateApplication require credential")
@@ -925,6 +938,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCluster require credential")
@@ -1004,6 +1018,7 @@ func (c *Client) CreateConfigWithContext(ctx context.Context, request *CreateCon
     if request == nil {
         request = NewCreateConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConfig require credential")
@@ -1079,6 +1094,7 @@ func (c *Client) CreateConfigTemplateWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateConfigTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateConfigTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConfigTemplate require credential")
@@ -1154,6 +1170,7 @@ func (c *Client) CreateConfigTemplateWithDetailRespWithContext(ctx context.Conte
     if request == nil {
         request = NewCreateConfigTemplateWithDetailRespRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateConfigTemplateWithDetailResp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConfigTemplateWithDetailResp require credential")
@@ -1233,6 +1250,7 @@ func (c *Client) CreateConfigWithDetailRespWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateConfigWithDetailRespRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateConfigWithDetailResp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateConfigWithDetailResp require credential")
@@ -1324,6 +1342,7 @@ func (c *Client) CreateContainGroupWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateContainGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateContainGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateContainGroup require credential")
@@ -1405,6 +1424,7 @@ func (c *Client) CreateFileConfigWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateFileConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateFileConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFileConfig require credential")
@@ -1478,6 +1498,7 @@ func (c *Client) CreateFileConfigWithDetailRespWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateFileConfigWithDetailRespRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateFileConfigWithDetailResp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateFileConfigWithDetailResp require credential")
@@ -1535,6 +1556,7 @@ func (c *Client) CreateGatewayApiWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateGatewayApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateGatewayApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateGatewayApi require credential")
@@ -1608,6 +1630,7 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGrou
     if request == nil {
         request = NewCreateGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateGroup require credential")
@@ -1753,6 +1776,7 @@ func (c *Client) CreateLaneWithContext(ctx context.Context, request *CreateLaneR
     if request == nil {
         request = NewCreateLaneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateLane")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLane require credential")
@@ -1900,6 +1924,7 @@ func (c *Client) CreateLaneRuleWithContext(ctx context.Context, request *CreateL
     if request == nil {
         request = NewCreateLaneRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateLaneRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateLaneRule require credential")
@@ -1955,6 +1980,7 @@ func (c *Client) CreateMicroserviceWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateMicroserviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateMicroservice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMicroservice require credential")
@@ -2006,6 +2032,7 @@ func (c *Client) CreateMicroserviceWithDetailRespWithContext(ctx context.Context
     if request == nil {
         request = NewCreateMicroserviceWithDetailRespRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateMicroserviceWithDetailResp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateMicroserviceWithDetailResp require credential")
@@ -2079,6 +2106,7 @@ func (c *Client) CreateNamespaceWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateNamespaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateNamespace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateNamespace require credential")
@@ -2132,6 +2160,7 @@ func (c *Client) CreatePathRewritesWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreatePathRewritesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreatePathRewrites")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePathRewrites require credential")
@@ -2185,6 +2214,7 @@ func (c *Client) CreatePathRewritesWithDetailRespWithContext(ctx context.Context
     if request == nil {
         request = NewCreatePathRewritesWithDetailRespRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreatePathRewritesWithDetailResp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePathRewritesWithDetailResp require credential")
@@ -2236,6 +2266,7 @@ func (c *Client) CreateProgramWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProgramRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateProgram")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProgram require credential")
@@ -2293,6 +2324,7 @@ func (c *Client) CreatePublicConfigWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreatePublicConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreatePublicConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePublicConfig require credential")
@@ -2350,6 +2382,7 @@ func (c *Client) CreatePublicConfigWithDetailRespWithContext(ctx context.Context
     if request == nil {
         request = NewCreatePublicConfigWithDetailRespRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreatePublicConfigWithDetailResp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreatePublicConfigWithDetailResp require credential")
@@ -2405,6 +2438,7 @@ func (c *Client) CreateRepositoryWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateRepositoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateRepository")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateRepository require credential")
@@ -2482,6 +2516,7 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
     if request == nil {
         request = NewCreateTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTask require credential")
@@ -2553,6 +2588,7 @@ func (c *Client) CreateTaskFlowWithContext(ctx context.Context, request *CreateT
     if request == nil {
         request = NewCreateTaskFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateTaskFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTaskFlow require credential")
@@ -2606,6 +2642,7 @@ func (c *Client) CreateUnitNamespacesWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateUnitNamespacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateUnitNamespaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUnitNamespaces require credential")
@@ -2659,6 +2696,7 @@ func (c *Client) CreateUnitRuleWithContext(ctx context.Context, request *CreateU
     if request == nil {
         request = NewCreateUnitRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateUnitRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUnitRule require credential")
@@ -2712,6 +2750,7 @@ func (c *Client) CreateUnitRuleWithDetailRespWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateUnitRuleWithDetailRespRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "CreateUnitRuleWithDetailResp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateUnitRuleWithDetailResp require credential")
@@ -2761,6 +2800,7 @@ func (c *Client) DeleteApiGroupWithContext(ctx context.Context, request *DeleteA
     if request == nil {
         request = NewDeleteApiGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteApiGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteApiGroup require credential")
@@ -2816,6 +2856,7 @@ func (c *Client) DeleteApiRateLimitRuleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteApiRateLimitRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteApiRateLimitRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteApiRateLimitRule require credential")
@@ -2881,6 +2922,7 @@ func (c *Client) DeleteApplicationWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteApplication require credential")
@@ -2964,6 +3006,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteCluster require credential")
@@ -3019,6 +3062,7 @@ func (c *Client) DeleteConfigWithContext(ctx context.Context, request *DeleteCon
     if request == nil {
         request = NewDeleteConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConfig require credential")
@@ -3090,6 +3134,7 @@ func (c *Client) DeleteConfigTemplateWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteConfigTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteConfigTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteConfigTemplate require credential")
@@ -3167,6 +3212,7 @@ func (c *Client) DeleteContainerGroupWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteContainerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteContainerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteContainerGroup require credential")
@@ -3218,6 +3264,7 @@ func (c *Client) DeleteFileConfigWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteFileConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteFileConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFileConfig require credential")
@@ -3267,6 +3314,7 @@ func (c *Client) DeleteGatewayApiWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteGatewayApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteGatewayApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGatewayApi require credential")
@@ -3322,6 +3370,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGrou
     if request == nil {
         request = NewDeleteGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGroup require credential")
@@ -3375,6 +3424,7 @@ func (c *Client) DeleteImageTagsWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteImageTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteImageTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteImageTags require credential")
@@ -3512,6 +3562,7 @@ func (c *Client) DeleteLaneWithContext(ctx context.Context, request *DeleteLaneR
     if request == nil {
         request = NewDeleteLaneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteLane")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLane require credential")
@@ -3649,6 +3700,7 @@ func (c *Client) DeleteLaneRuleWithContext(ctx context.Context, request *DeleteL
     if request == nil {
         request = NewDeleteLaneRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteLaneRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteLaneRule require credential")
@@ -3704,6 +3756,7 @@ func (c *Client) DeleteMicroserviceWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteMicroserviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteMicroservice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteMicroservice require credential")
@@ -3855,6 +3908,7 @@ func (c *Client) DeleteNamespaceWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteNamespaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteNamespace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteNamespace require credential")
@@ -3906,6 +3960,7 @@ func (c *Client) DeletePathRewritesWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeletePathRewritesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeletePathRewrites")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePathRewrites require credential")
@@ -3969,6 +4024,7 @@ func (c *Client) DeletePkgsWithContext(ctx context.Context, request *DeletePkgsR
     if request == nil {
         request = NewDeletePkgsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeletePkgs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePkgs require credential")
@@ -4022,6 +4078,7 @@ func (c *Client) DeletePublicConfigWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeletePublicConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeletePublicConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeletePublicConfig require credential")
@@ -4079,6 +4136,7 @@ func (c *Client) DeleteRepositoryWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteRepositoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteRepository")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteRepository require credential")
@@ -4144,6 +4202,7 @@ func (c *Client) DeleteServerlessGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteServerlessGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteServerlessGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteServerlessGroup require credential")
@@ -4209,6 +4268,7 @@ func (c *Client) DeleteTaskWithContext(ctx context.Context, request *DeleteTaskR
     if request == nil {
         request = NewDeleteTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTask require credential")
@@ -4262,6 +4322,7 @@ func (c *Client) DeleteUnitNamespacesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteUnitNamespacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteUnitNamespaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUnitNamespaces require credential")
@@ -4315,6 +4376,7 @@ func (c *Client) DeleteUnitRuleWithContext(ctx context.Context, request *DeleteU
     if request == nil {
         request = NewDeleteUnitRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeleteUnitRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteUnitRule require credential")
@@ -4450,6 +4512,7 @@ func (c *Client) DeployContainerApplicationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeployContainerApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeployContainerApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeployContainerApplication require credential")
@@ -4585,6 +4648,7 @@ func (c *Client) DeployContainerGroupWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeployContainerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeployContainerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeployContainerGroup require credential")
@@ -4664,6 +4728,7 @@ func (c *Client) DeployGroupWithContext(ctx context.Context, request *DeployGrou
     if request == nil {
         request = NewDeployGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DeployGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeployGroup require credential")
@@ -4721,6 +4786,7 @@ func (c *Client) DescribeApiDetailWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeApiDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeApiDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiDetail require credential")
@@ -4774,6 +4840,7 @@ func (c *Client) DescribeApiGroupWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeApiGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeApiGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiGroup require credential")
@@ -4829,6 +4896,7 @@ func (c *Client) DescribeApiGroupsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeApiGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeApiGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiGroups require credential")
@@ -4880,6 +4948,7 @@ func (c *Client) DescribeApiRateLimitRulesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeApiRateLimitRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeApiRateLimitRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiRateLimitRules require credential")
@@ -4937,6 +5006,7 @@ func (c *Client) DescribeApiUseDetailWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeApiUseDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeApiUseDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiUseDetail require credential")
@@ -4994,6 +5064,7 @@ func (c *Client) DescribeApiVersionsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeApiVersionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeApiVersions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApiVersions require credential")
@@ -5059,6 +5130,7 @@ func (c *Client) DescribeApplicationWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApplication require credential")
@@ -5140,6 +5212,7 @@ func (c *Client) DescribeApplicationAttributeWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeApplicationAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeApplicationAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApplicationAttribute require credential")
@@ -5211,6 +5284,7 @@ func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeApplicationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeApplications")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeApplications require credential")
@@ -5276,6 +5350,7 @@ func (c *Client) DescribeBasicResourceUsageWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeBasicResourceUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeBasicResourceUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBasicResourceUsage require credential")
@@ -5335,6 +5410,7 @@ func (c *Client) DescribeBusinessLogConfigWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeBusinessLogConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeBusinessLogConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBusinessLogConfig require credential")
@@ -5400,6 +5476,7 @@ func (c *Client) DescribeBusinessLogConfigsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeBusinessLogConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeBusinessLogConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBusinessLogConfigs require credential")
@@ -5487,6 +5564,7 @@ func (c *Client) DescribeClusterInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeClusterInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusterInstances require credential")
@@ -5558,6 +5636,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeClusters require credential")
@@ -5611,6 +5690,7 @@ func (c *Client) DescribeConfigWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfig require credential")
@@ -5660,6 +5740,7 @@ func (c *Client) DescribeConfigReleaseLogsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeConfigReleaseLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeConfigReleaseLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigReleaseLogs require credential")
@@ -5723,6 +5804,7 @@ func (c *Client) DescribeConfigReleasesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeConfigReleasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeConfigReleases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigReleases require credential")
@@ -5780,6 +5862,7 @@ func (c *Client) DescribeConfigSummaryWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeConfigSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeConfigSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigSummary require credential")
@@ -5853,6 +5936,7 @@ func (c *Client) DescribeConfigTemplateWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeConfigTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeConfigTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigTemplate require credential")
@@ -5920,6 +6004,7 @@ func (c *Client) DescribeConfigsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigs require credential")
@@ -6005,6 +6090,7 @@ func (c *Client) DescribeContainerEventsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeContainerEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeContainerEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeContainerEvents require credential")
@@ -6084,6 +6170,7 @@ func (c *Client) DescribeContainerGroupAttributeWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeContainerGroupAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeContainerGroupAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeContainerGroupAttribute require credential")
@@ -6159,6 +6246,7 @@ func (c *Client) DescribeContainerGroupDeployInfoWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeContainerGroupDeployInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeContainerGroupDeployInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeContainerGroupDeployInfo require credential")
@@ -6236,6 +6324,7 @@ func (c *Client) DescribeContainerGroupDetailWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeContainerGroupDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeContainerGroupDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeContainerGroupDetail require credential")
@@ -6299,6 +6388,7 @@ func (c *Client) DescribeContainerGroupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeContainerGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeContainerGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeContainerGroups require credential")
@@ -6348,6 +6438,7 @@ func (c *Client) DescribeCreateGatewayApiStatusWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeCreateGatewayApiStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeCreateGatewayApiStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCreateGatewayApiStatus require credential")
@@ -6399,6 +6490,7 @@ func (c *Client) DescribeDeliveryConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDeliveryConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeDeliveryConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeliveryConfig require credential")
@@ -6448,6 +6540,7 @@ func (c *Client) DescribeDeliveryConfigByGroupIdWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeDeliveryConfigByGroupIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeDeliveryConfigByGroupId")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeliveryConfigByGroupId require credential")
@@ -6503,6 +6596,7 @@ func (c *Client) DescribeDeliveryConfigsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDeliveryConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeDeliveryConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeliveryConfigs require credential")
@@ -6560,6 +6654,7 @@ func (c *Client) DescribeDownloadInfoWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDownloadInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeDownloadInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDownloadInfo require credential")
@@ -6613,6 +6708,7 @@ func (c *Client) DescribeEnabledUnitRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeEnabledUnitRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeEnabledUnitRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEnabledUnitRule require credential")
@@ -6666,6 +6762,7 @@ func (c *Client) DescribeFileConfigReleasesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeFileConfigReleasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeFileConfigReleases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFileConfigReleases require credential")
@@ -6717,6 +6814,7 @@ func (c *Client) DescribeFileConfigsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeFileConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeFileConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFileConfigs require credential")
@@ -6782,6 +6880,7 @@ func (c *Client) DescribeFlowLastBatchStateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeFlowLastBatchStateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeFlowLastBatchState")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFlowLastBatchState require credential")
@@ -6837,6 +6936,7 @@ func (c *Client) DescribeGatewayAllGroupApisWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeGatewayAllGroupApisRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGatewayAllGroupApis")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGatewayAllGroupApis require credential")
@@ -6894,6 +6994,7 @@ func (c *Client) DescribeGatewayApisWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeGatewayApisRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGatewayApis")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGatewayApis require credential")
@@ -6955,6 +7056,7 @@ func (c *Client) DescribeGatewayMonitorOverviewWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeGatewayMonitorOverviewRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGatewayMonitorOverview")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGatewayMonitorOverview require credential")
@@ -7030,6 +7132,7 @@ func (c *Client) DescribeGroupWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroup require credential")
@@ -7101,6 +7204,7 @@ func (c *Client) DescribeGroupAttributeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeGroupAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGroupAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupAttribute require credential")
@@ -7154,6 +7258,7 @@ func (c *Client) DescribeGroupBindedGatewaysWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeGroupBindedGatewaysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGroupBindedGateways")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupBindedGateways require credential")
@@ -7209,6 +7314,7 @@ func (c *Client) DescribeGroupBusinessLogConfigsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeGroupBusinessLogConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGroupBusinessLogConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupBusinessLogConfigs require credential")
@@ -7264,6 +7370,7 @@ func (c *Client) DescribeGroupGatewaysWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeGroupGatewaysRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGroupGateways")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupGateways require credential")
@@ -7341,6 +7448,7 @@ func (c *Client) DescribeGroupInstancesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeGroupInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGroupInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupInstances require credential")
@@ -7396,6 +7504,7 @@ func (c *Client) DescribeGroupReleaseWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeGroupReleaseRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGroupRelease")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupRelease require credential")
@@ -7449,6 +7558,7 @@ func (c *Client) DescribeGroupUseDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeGroupUseDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGroupUseDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupUseDetail require credential")
@@ -7522,6 +7632,7 @@ func (c *Client) DescribeGroupsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroups require credential")
@@ -7595,6 +7706,7 @@ func (c *Client) DescribeGroupsWithPluginWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeGroupsWithPluginRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeGroupsWithPlugin")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGroupsWithPlugin require credential")
@@ -7654,6 +7766,7 @@ func (c *Client) DescribeImageRepositoryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeImageRepositoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeImageRepository")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageRepository require credential")
@@ -7727,6 +7840,7 @@ func (c *Client) DescribeImageTagsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeImageTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeImageTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeImageTags require credential")
@@ -7794,6 +7908,7 @@ func (c *Client) DescribeInovcationIndicatorsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeInovcationIndicatorsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeInovcationIndicators")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInovcationIndicators require credential")
@@ -7851,6 +7966,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -7908,6 +8024,7 @@ func (c *Client) DescribeInvocationMetricDataCurveWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeInvocationMetricDataCurveRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeInvocationMetricDataCurve")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInvocationMetricDataCurve require credential")
@@ -7957,6 +8074,7 @@ func (c *Client) DescribeInvocationMetricDataDimensionWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeInvocationMetricDataDimensionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeInvocationMetricDataDimension")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInvocationMetricDataDimension require credential")
@@ -8010,6 +8128,7 @@ func (c *Client) DescribeInvocationMetricDataPointWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeInvocationMetricDataPointRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeInvocationMetricDataPoint")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInvocationMetricDataPoint require credential")
@@ -8067,6 +8186,7 @@ func (c *Client) DescribeInvocationMetricScatterPlotWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeInvocationMetricScatterPlotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeInvocationMetricScatterPlot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInvocationMetricScatterPlot require credential")
@@ -8134,6 +8254,7 @@ func (c *Client) DescribeJvmMonitorWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeJvmMonitorRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeJvmMonitor")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJvmMonitor require credential")
@@ -8285,6 +8406,7 @@ func (c *Client) DescribeLaneRulesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeLaneRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeLaneRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLaneRules require credential")
@@ -8426,6 +8548,7 @@ func (c *Client) DescribeLanesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeLanesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeLanes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLanes require credential")
@@ -8495,6 +8618,7 @@ func (c *Client) DescribeMicroserviceWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMicroserviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeMicroservice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMicroservice require credential")
@@ -8566,6 +8690,7 @@ func (c *Client) DescribeMicroservicesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeMicroservicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeMicroservices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMicroservices require credential")
@@ -8629,6 +8754,7 @@ func (c *Client) DescribeMicroservicesByGroupIdsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeMicroservicesByGroupIdsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeMicroservicesByGroupIds")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMicroservicesByGroupIds require credential")
@@ -8688,6 +8814,7 @@ func (c *Client) DescribeMsApiListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeMsApiListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeMsApiList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMsApiList require credential")
@@ -8745,6 +8872,7 @@ func (c *Client) DescribeOverviewInvocationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeOverviewInvocationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeOverviewInvocation")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeOverviewInvocation require credential")
@@ -8796,6 +8924,7 @@ func (c *Client) DescribePathRewriteWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribePathRewriteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribePathRewrite")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePathRewrite require credential")
@@ -8849,6 +8978,7 @@ func (c *Client) DescribePathRewritesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribePathRewritesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribePathRewrites")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePathRewrites require credential")
@@ -8904,6 +9034,7 @@ func (c *Client) DescribePkgsWithContext(ctx context.Context, request *DescribeP
     if request == nil {
         request = NewDescribePkgsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribePkgs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePkgs require credential")
@@ -8959,6 +9090,7 @@ func (c *Client) DescribePluginInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribePluginInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribePluginInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePluginInstances require credential")
@@ -9036,6 +9168,7 @@ func (c *Client) DescribePodInstancesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribePodInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribePodInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePodInstances require credential")
@@ -9085,6 +9218,7 @@ func (c *Client) DescribeProgramsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProgramsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribePrograms")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePrograms require credential")
@@ -9138,6 +9272,7 @@ func (c *Client) DescribePublicConfigWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribePublicConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribePublicConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublicConfig require credential")
@@ -9191,6 +9326,7 @@ func (c *Client) DescribePublicConfigReleaseLogsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribePublicConfigReleaseLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribePublicConfigReleaseLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublicConfigReleaseLogs require credential")
@@ -9250,6 +9386,7 @@ func (c *Client) DescribePublicConfigReleasesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribePublicConfigReleasesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribePublicConfigReleases")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublicConfigReleases require credential")
@@ -9301,6 +9438,7 @@ func (c *Client) DescribePublicConfigSummaryWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribePublicConfigSummaryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribePublicConfigSummary")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublicConfigSummary require credential")
@@ -9352,6 +9490,7 @@ func (c *Client) DescribePublicConfigsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribePublicConfigsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribePublicConfigs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePublicConfigs require credential")
@@ -9409,6 +9548,7 @@ func (c *Client) DescribeReleasedConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeReleasedConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeReleasedConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeReleasedConfig require credential")
@@ -9462,6 +9602,7 @@ func (c *Client) DescribeRepositoriesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeRepositoriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeRepositories")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRepositories require credential")
@@ -9517,6 +9658,7 @@ func (c *Client) DescribeRepositoryWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeRepositoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeRepository")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeRepository require credential")
@@ -9576,6 +9718,7 @@ func (c *Client) DescribeResourceTaskStatusWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeResourceTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeResourceTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeResourceTaskStatus require credential")
@@ -9637,6 +9780,7 @@ func (c *Client) DescribeSimpleApplicationsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeSimpleApplicationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeSimpleApplications")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSimpleApplications require credential")
@@ -9694,6 +9838,7 @@ func (c *Client) DescribeSimpleClustersWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSimpleClustersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeSimpleClusters")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSimpleClusters require credential")
@@ -9757,6 +9902,7 @@ func (c *Client) DescribeSimpleGroupsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeSimpleGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeSimpleGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSimpleGroups require credential")
@@ -9822,6 +9968,7 @@ func (c *Client) DescribeSimpleNamespacesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSimpleNamespacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeSimpleNamespaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSimpleNamespaces require credential")
@@ -9899,6 +10046,7 @@ func (c *Client) DescribeStatisticsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStatistics require credential")
@@ -9968,6 +10116,7 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskDetail require credential")
@@ -10029,6 +10178,7 @@ func (c *Client) DescribeTaskLastStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTaskLastStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeTaskLastStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskLastStatus require credential")
@@ -10094,6 +10244,7 @@ func (c *Client) DescribeTaskRecordsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTaskRecordsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeTaskRecords")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskRecords require credential")
@@ -10149,6 +10300,7 @@ func (c *Client) DescribeUnitApiUseDetailWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUnitApiUseDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeUnitApiUseDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnitApiUseDetail require credential")
@@ -10202,6 +10354,7 @@ func (c *Client) DescribeUnitNamespacesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeUnitNamespacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeUnitNamespaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnitNamespaces require credential")
@@ -10255,6 +10408,7 @@ func (c *Client) DescribeUnitRuleWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeUnitRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeUnitRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnitRule require credential")
@@ -10308,6 +10462,7 @@ func (c *Client) DescribeUnitRulesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUnitRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeUnitRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnitRules require credential")
@@ -10361,6 +10516,7 @@ func (c *Client) DescribeUnitRulesV2WithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeUnitRulesV2Request()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeUnitRulesV2")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUnitRulesV2 require credential")
@@ -10426,6 +10582,7 @@ func (c *Client) DescribeUploadInfoWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeUploadInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeUploadInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUploadInfo require credential")
@@ -10479,6 +10636,7 @@ func (c *Client) DescribeUsableUnitNamespacesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeUsableUnitNamespacesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeUsableUnitNamespaces")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeUsableUnitNamespaces require credential")
@@ -10618,6 +10776,7 @@ func (c *Client) DisableLaneRuleWithContext(ctx context.Context, request *Disabl
     if request == nil {
         request = NewDisableLaneRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DisableLaneRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableLaneRule require credential")
@@ -10681,6 +10840,7 @@ func (c *Client) DisableTaskWithContext(ctx context.Context, request *DisableTas
     if request == nil {
         request = NewDisableTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DisableTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableTask require credential")
@@ -10744,6 +10904,7 @@ func (c *Client) DisableTaskFlowWithContext(ctx context.Context, request *Disabl
     if request == nil {
         request = NewDisableTaskFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DisableTaskFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableTaskFlow require credential")
@@ -10795,6 +10956,7 @@ func (c *Client) DisableUnitRouteWithContext(ctx context.Context, request *Disab
     if request == nil {
         request = NewDisableUnitRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DisableUnitRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableUnitRoute require credential")
@@ -10848,6 +11010,7 @@ func (c *Client) DisableUnitRuleWithContext(ctx context.Context, request *Disabl
     if request == nil {
         request = NewDisableUnitRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DisableUnitRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisableUnitRule require credential")
@@ -10897,6 +11060,7 @@ func (c *Client) DisassociateBusinessLogConfigWithContext(ctx context.Context, r
     if request == nil {
         request = NewDisassociateBusinessLogConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DisassociateBusinessLogConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateBusinessLogConfig require credential")
@@ -10948,6 +11112,7 @@ func (c *Client) DisassociateKafkaConfigWithContext(ctx context.Context, request
     if request == nil {
         request = NewDisassociateKafkaConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DisassociateKafkaConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateKafkaConfig require credential")
@@ -10997,6 +11162,7 @@ func (c *Client) DraftApiGroupWithContext(ctx context.Context, request *DraftApi
     if request == nil {
         request = NewDraftApiGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DraftApiGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DraftApiGroup require credential")
@@ -11148,6 +11314,7 @@ func (c *Client) EnableLaneRuleWithContext(ctx context.Context, request *EnableL
     if request == nil {
         request = NewEnableLaneRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "EnableLaneRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableLaneRule require credential")
@@ -11215,6 +11382,7 @@ func (c *Client) EnableTaskWithContext(ctx context.Context, request *EnableTaskR
     if request == nil {
         request = NewEnableTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "EnableTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableTask require credential")
@@ -11280,6 +11448,7 @@ func (c *Client) EnableTaskFlowWithContext(ctx context.Context, request *EnableT
     if request == nil {
         request = NewEnableTaskFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "EnableTaskFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableTaskFlow require credential")
@@ -11333,6 +11502,7 @@ func (c *Client) EnableUnitRouteWithContext(ctx context.Context, request *Enable
     if request == nil {
         request = NewEnableUnitRouteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "EnableUnitRoute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableUnitRoute require credential")
@@ -11386,6 +11556,7 @@ func (c *Client) EnableUnitRuleWithContext(ctx context.Context, request *EnableU
     if request == nil {
         request = NewEnableUnitRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "EnableUnitRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EnableUnitRule require credential")
@@ -11455,6 +11626,7 @@ func (c *Client) ExecuteTaskWithContext(ctx context.Context, request *ExecuteTas
     if request == nil {
         request = NewExecuteTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ExecuteTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExecuteTask require credential")
@@ -11524,6 +11696,7 @@ func (c *Client) ExecuteTaskFlowWithContext(ctx context.Context, request *Execut
     if request == nil {
         request = NewExecuteTaskFlowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ExecuteTaskFlow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExecuteTaskFlow require credential")
@@ -11583,6 +11756,7 @@ func (c *Client) ExpandGroupWithContext(ctx context.Context, request *ExpandGrou
     if request == nil {
         request = NewExpandGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ExpandGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ExpandGroup require credential")
@@ -11638,6 +11812,7 @@ func (c *Client) ModifyApplicationWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyApplication require credential")
@@ -11691,6 +11866,7 @@ func (c *Client) ModifyClusterWithContext(ctx context.Context, request *ModifyCl
     if request == nil {
         request = NewModifyClusterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyCluster")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyCluster require credential")
@@ -11744,6 +11920,7 @@ func (c *Client) ModifyContainerGroupWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyContainerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyContainerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyContainerGroup require credential")
@@ -11809,6 +11986,7 @@ func (c *Client) ModifyContainerReplicasWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyContainerReplicasRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyContainerReplicas")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyContainerReplicas require credential")
@@ -11858,6 +12036,7 @@ func (c *Client) ModifyGroupWithContext(ctx context.Context, request *ModifyGrou
     if request == nil {
         request = NewModifyGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyGroup require credential")
@@ -11997,6 +12176,7 @@ func (c *Client) ModifyLaneWithContext(ctx context.Context, request *ModifyLaneR
     if request == nil {
         request = NewModifyLaneRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyLane")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLane require credential")
@@ -12140,6 +12320,7 @@ func (c *Client) ModifyLaneRuleWithContext(ctx context.Context, request *ModifyL
     if request == nil {
         request = NewModifyLaneRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyLaneRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyLaneRule require credential")
@@ -12189,6 +12370,7 @@ func (c *Client) ModifyMicroserviceWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyMicroserviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyMicroservice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMicroservice require credential")
@@ -12240,6 +12422,7 @@ func (c *Client) ModifyNamespaceWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyNamespaceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyNamespace")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyNamespace require credential")
@@ -12291,6 +12474,7 @@ func (c *Client) ModifyPathRewriteWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyPathRewriteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyPathRewrite")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyPathRewrite require credential")
@@ -12344,6 +12528,7 @@ func (c *Client) ModifyProgramWithContext(ctx context.Context, request *ModifyPr
     if request == nil {
         request = NewModifyProgramRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyProgram")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyProgram require credential")
@@ -12413,6 +12598,7 @@ func (c *Client) ModifyTaskWithContext(ctx context.Context, request *ModifyTaskR
     if request == nil {
         request = NewModifyTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTask require credential")
@@ -12472,6 +12658,7 @@ func (c *Client) ModifyUploadInfoWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyUploadInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ModifyUploadInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyUploadInfo require credential")
@@ -12537,6 +12724,7 @@ func (c *Client) OperateApplicationTcrBindingWithContext(ctx context.Context, re
     if request == nil {
         request = NewOperateApplicationTcrBindingRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "OperateApplicationTcrBinding")
     
     if c.GetCredential() == nil {
         return nil, errors.New("OperateApplicationTcrBinding require credential")
@@ -12594,6 +12782,7 @@ func (c *Client) ReassociateBusinessLogConfigWithContext(ctx context.Context, re
     if request == nil {
         request = NewReassociateBusinessLogConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ReassociateBusinessLogConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReassociateBusinessLogConfig require credential")
@@ -12669,6 +12858,7 @@ func (c *Client) RedoTaskWithContext(ctx context.Context, request *RedoTaskReque
     if request == nil {
         request = NewRedoTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "RedoTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RedoTask require credential")
@@ -12736,6 +12926,7 @@ func (c *Client) RedoTaskBatchWithContext(ctx context.Context, request *RedoTask
     if request == nil {
         request = NewRedoTaskBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "RedoTaskBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RedoTaskBatch require credential")
@@ -12805,6 +12996,7 @@ func (c *Client) RedoTaskExecuteWithContext(ctx context.Context, request *RedoTa
     if request == nil {
         request = NewRedoTaskExecuteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "RedoTaskExecute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RedoTaskExecute require credential")
@@ -12874,6 +13066,7 @@ func (c *Client) RedoTaskFlowBatchWithContext(ctx context.Context, request *Redo
     if request == nil {
         request = NewRedoTaskFlowBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "RedoTaskFlowBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RedoTaskFlowBatch require credential")
@@ -12927,6 +13120,7 @@ func (c *Client) ReleaseApiGroupWithContext(ctx context.Context, request *Releas
     if request == nil {
         request = NewReleaseApiGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ReleaseApiGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReleaseApiGroup require credential")
@@ -13002,6 +13196,7 @@ func (c *Client) ReleaseConfigWithContext(ctx context.Context, request *ReleaseC
     if request == nil {
         request = NewReleaseConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ReleaseConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReleaseConfig require credential")
@@ -13077,6 +13272,7 @@ func (c *Client) ReleaseConfigWithDetailRespWithContext(ctx context.Context, req
     if request == nil {
         request = NewReleaseConfigWithDetailRespRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ReleaseConfigWithDetailResp")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReleaseConfigWithDetailResp require credential")
@@ -13138,6 +13334,7 @@ func (c *Client) ReleaseFileConfigWithContext(ctx context.Context, request *Rele
     if request == nil {
         request = NewReleaseFileConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ReleaseFileConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReleaseFileConfig require credential")
@@ -13203,6 +13400,7 @@ func (c *Client) ReleasePublicConfigWithContext(ctx context.Context, request *Re
     if request == nil {
         request = NewReleasePublicConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ReleasePublicConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReleasePublicConfig require credential")
@@ -13264,6 +13462,7 @@ func (c *Client) RemoveInstancesWithContext(ctx context.Context, request *Remove
     if request == nil {
         request = NewRemoveInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "RemoveInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RemoveInstances require credential")
@@ -13321,6 +13520,7 @@ func (c *Client) RevocationConfigWithContext(ctx context.Context, request *Revoc
     if request == nil {
         request = NewRevocationConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "RevocationConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RevocationConfig require credential")
@@ -13372,6 +13572,7 @@ func (c *Client) RevocationPublicConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRevocationPublicConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "RevocationPublicConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RevocationPublicConfig require credential")
@@ -13425,6 +13626,7 @@ func (c *Client) RevokeFileConfigWithContext(ctx context.Context, request *Revok
     if request == nil {
         request = NewRevokeFileConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "RevokeFileConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RevokeFileConfig require credential")
@@ -13482,6 +13684,7 @@ func (c *Client) RollbackConfigWithContext(ctx context.Context, request *Rollbac
     if request == nil {
         request = NewRollbackConfigRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "RollbackConfig")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RollbackConfig require credential")
@@ -13545,6 +13748,7 @@ func (c *Client) SearchBusinessLogWithContext(ctx context.Context, request *Sear
     if request == nil {
         request = NewSearchBusinessLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "SearchBusinessLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchBusinessLog require credential")
@@ -13602,6 +13806,7 @@ func (c *Client) SearchStdoutLogWithContext(ctx context.Context, request *Search
     if request == nil {
         request = NewSearchStdoutLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "SearchStdoutLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchStdoutLog require credential")
@@ -13651,6 +13856,7 @@ func (c *Client) ShrinkGroupWithContext(ctx context.Context, request *ShrinkGrou
     if request == nil {
         request = NewShrinkGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ShrinkGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ShrinkGroup require credential")
@@ -13712,6 +13918,7 @@ func (c *Client) ShrinkInstancesWithContext(ctx context.Context, request *Shrink
     if request == nil {
         request = NewShrinkInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ShrinkInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ShrinkInstances require credential")
@@ -13779,6 +13986,7 @@ func (c *Client) StartContainerGroupWithContext(ctx context.Context, request *St
     if request == nil {
         request = NewStartContainerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "StartContainerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartContainerGroup require credential")
@@ -13834,6 +14042,7 @@ func (c *Client) StartGroupWithContext(ctx context.Context, request *StartGroupR
     if request == nil {
         request = NewStartGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "StartGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StartGroup require credential")
@@ -13895,6 +14104,7 @@ func (c *Client) StopContainerGroupWithContext(ctx context.Context, request *Sto
     if request == nil {
         request = NewStopContainerGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "StopContainerGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopContainerGroup require credential")
@@ -13954,6 +14164,7 @@ func (c *Client) StopGroupWithContext(ctx context.Context, request *StopGroupReq
     if request == nil {
         request = NewStopGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "StopGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopGroup require credential")
@@ -14025,6 +14236,7 @@ func (c *Client) StopTaskBatchWithContext(ctx context.Context, request *StopTask
     if request == nil {
         request = NewStopTaskBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "StopTaskBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopTaskBatch require credential")
@@ -14098,6 +14310,7 @@ func (c *Client) StopTaskExecuteWithContext(ctx context.Context, request *StopTa
     if request == nil {
         request = NewStopTaskExecuteRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "StopTaskExecute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("StopTaskExecute require credential")
@@ -14165,6 +14378,7 @@ func (c *Client) TerminateTaskFlowBatchWithContext(ctx context.Context, request 
     if request == nil {
         request = NewTerminateTaskFlowBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "TerminateTaskFlowBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TerminateTaskFlowBatch require credential")
@@ -14214,6 +14428,7 @@ func (c *Client) UnbindApiGroupWithContext(ctx context.Context, request *UnbindA
     if request == nil {
         request = NewUnbindApiGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "UnbindApiGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UnbindApiGroup require credential")
@@ -14265,6 +14480,7 @@ func (c *Client) UpdateApiGroupWithContext(ctx context.Context, request *UpdateA
     if request == nil {
         request = NewUpdateApiGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "UpdateApiGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateApiGroup require credential")
@@ -14320,6 +14536,7 @@ func (c *Client) UpdateApiRateLimitRuleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateApiRateLimitRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "UpdateApiRateLimitRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateApiRateLimitRule require credential")
@@ -14377,6 +14594,7 @@ func (c *Client) UpdateApiRateLimitRulesWithContext(ctx context.Context, request
     if request == nil {
         request = NewUpdateApiRateLimitRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "UpdateApiRateLimitRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateApiRateLimitRules require credential")
@@ -14430,6 +14648,7 @@ func (c *Client) UpdateApiTimeoutsWithContext(ctx context.Context, request *Upda
     if request == nil {
         request = NewUpdateApiTimeoutsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "UpdateApiTimeouts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateApiTimeouts require credential")
@@ -14499,6 +14718,7 @@ func (c *Client) UpdateConfigTemplateWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateConfigTemplateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "UpdateConfigTemplate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateConfigTemplate require credential")
@@ -14550,6 +14770,7 @@ func (c *Client) UpdateGatewayApiWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateGatewayApiRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "UpdateGatewayApi")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateGatewayApi require credential")
@@ -14603,6 +14824,7 @@ func (c *Client) UpdateHealthCheckSettingsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewUpdateHealthCheckSettingsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "UpdateHealthCheckSettings")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateHealthCheckSettings require credential")
@@ -14656,6 +14878,7 @@ func (c *Client) UpdateRepositoryWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateRepositoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "UpdateRepository")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateRepository require credential")
@@ -14709,6 +14932,7 @@ func (c *Client) UpdateUnitRuleWithContext(ctx context.Context, request *UpdateU
     if request == nil {
         request = NewUpdateUnitRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "UpdateUnitRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateUnitRule require credential")

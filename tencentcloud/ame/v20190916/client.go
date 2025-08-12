@@ -90,6 +90,7 @@ func (c *Client) BatchDescribeKTVMusicDetailsWithContext(ctx context.Context, re
     if request == nil {
         request = NewBatchDescribeKTVMusicDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "BatchDescribeKTVMusicDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchDescribeKTVMusicDetails require credential")
@@ -151,6 +152,7 @@ func (c *Client) CreateKTVRobotWithContext(ctx context.Context, request *CreateK
     if request == nil {
         request = NewCreateKTVRobotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "CreateKTVRobot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateKTVRobot require credential")
@@ -220,6 +222,7 @@ func (c *Client) DescribeAuthInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeAuthInfoRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeAuthInfo")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAuthInfo require credential")
@@ -279,6 +282,7 @@ func (c *Client) DescribeCloudMusicWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCloudMusicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeCloudMusic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudMusic require credential")
@@ -358,6 +362,7 @@ func (c *Client) DescribeCloudMusicPurchasedWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCloudMusicPurchasedRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeCloudMusicPurchased")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudMusicPurchased require credential")
@@ -411,6 +416,7 @@ func (c *Client) DescribeItemByIdWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeItemByIdRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeItemById")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeItemById require credential")
@@ -470,6 +476,7 @@ func (c *Client) DescribeItemsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeItemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeItems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeItems require credential")
@@ -527,6 +534,7 @@ func (c *Client) DescribeKTVMusicDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeKTVMusicDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeKTVMusicDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKTVMusicDetail require credential")
@@ -584,6 +592,7 @@ func (c *Client) DescribeKTVMusicTagsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeKTVMusicTagsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeKTVMusicTags")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKTVMusicTags require credential")
@@ -651,6 +660,7 @@ func (c *Client) DescribeKTVPlaylistDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeKTVPlaylistDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeKTVPlaylistDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKTVPlaylistDetail require credential")
@@ -720,6 +730,7 @@ func (c *Client) DescribeKTVPlaylistsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeKTVPlaylistsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeKTVPlaylists")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKTVPlaylists require credential")
@@ -781,6 +792,7 @@ func (c *Client) DescribeKTVRobotsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeKTVRobotsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeKTVRobots")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKTVRobots require credential")
@@ -834,6 +846,7 @@ func (c *Client) DescribeKTVSingerCategoriesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeKTVSingerCategoriesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeKTVSingerCategories")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKTVSingerCategories require credential")
@@ -895,6 +908,7 @@ func (c *Client) DescribeKTVSingerMusicsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeKTVSingerMusicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeKTVSingerMusics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKTVSingerMusics require credential")
@@ -948,6 +962,7 @@ func (c *Client) DescribeKTVSingersWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeKTVSingersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeKTVSingers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKTVSingers require credential")
@@ -997,6 +1012,7 @@ func (c *Client) DescribeKTVSuggestionsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeKTVSuggestionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeKTVSuggestions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKTVSuggestions require credential")
@@ -1052,6 +1068,7 @@ func (c *Client) DescribeKTVTopListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeKTVTopListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeKTVTopList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeKTVTopList require credential")
@@ -1105,6 +1122,7 @@ func (c *Client) DescribeLyricWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeLyricRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeLyric")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLyric require credential")
@@ -1164,6 +1182,7 @@ func (c *Client) DescribeMusicWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeMusicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeMusic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMusic require credential")
@@ -1227,6 +1246,7 @@ func (c *Client) DescribeMusicSaleStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeMusicSaleStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeMusicSaleStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMusicSaleStatus require credential")
@@ -1288,6 +1308,7 @@ func (c *Client) DescribePackageItemsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribePackageItemsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribePackageItems")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePackageItems require credential")
@@ -1349,6 +1370,7 @@ func (c *Client) DescribePackagesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribePackagesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribePackages")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePackages require credential")
@@ -1416,6 +1438,7 @@ func (c *Client) DescribePkgOfflineMusicWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribePkgOfflineMusicRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribePkgOfflineMusic")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribePkgOfflineMusic require credential")
@@ -1475,6 +1498,7 @@ func (c *Client) DescribeStationsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeStationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DescribeStations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeStations require credential")
@@ -1536,6 +1560,7 @@ func (c *Client) DestroyKTVRobotWithContext(ctx context.Context, request *Destro
     if request == nil {
         request = NewDestroyKTVRobotRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "DestroyKTVRobot")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyKTVRobot require credential")
@@ -1603,6 +1628,7 @@ func (c *Client) ModifyMusicOnShelvesWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyMusicOnShelvesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "ModifyMusicOnShelves")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyMusicOnShelves require credential")
@@ -1670,6 +1696,7 @@ func (c *Client) PutMusicOnTheShelvesWithContext(ctx context.Context, request *P
     if request == nil {
         request = NewPutMusicOnTheShelvesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "PutMusicOnTheShelves")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PutMusicOnTheShelves require credential")
@@ -1723,6 +1750,7 @@ func (c *Client) ReportDataWithContext(ctx context.Context, request *ReportDataR
     if request == nil {
         request = NewReportDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "ReportData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportData require credential")
@@ -1778,6 +1806,7 @@ func (c *Client) SearchKTVMusicsWithContext(ctx context.Context, request *Search
     if request == nil {
         request = NewSearchKTVMusicsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "SearchKTVMusics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SearchKTVMusics require credential")
@@ -1839,6 +1868,7 @@ func (c *Client) SyncKTVRobotCommandWithContext(ctx context.Context, request *Sy
     if request == nil {
         request = NewSyncKTVRobotCommandRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "SyncKTVRobotCommand")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SyncKTVRobotCommand require credential")
@@ -1906,6 +1936,7 @@ func (c *Client) TakeMusicOffShelvesWithContext(ctx context.Context, request *Ta
     if request == nil {
         request = NewTakeMusicOffShelvesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ame", APIVersion, "TakeMusicOffShelves")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TakeMusicOffShelves require credential")

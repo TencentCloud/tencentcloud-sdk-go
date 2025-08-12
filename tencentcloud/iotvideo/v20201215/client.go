@@ -86,6 +86,7 @@ func (c *Client) ApplyAIModelWithContext(ctx context.Context, request *ApplyAIMo
     if request == nil {
         request = NewApplyAIModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ApplyAIModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ApplyAIModel require credential")
@@ -141,6 +142,7 @@ func (c *Client) BatchUpdateFirmwareWithContext(ctx context.Context, request *Ba
     if request == nil {
         request = NewBatchUpdateFirmwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "BatchUpdateFirmware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BatchUpdateFirmware require credential")
@@ -194,6 +196,7 @@ func (c *Client) BindCloudStorageUserWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBindCloudStorageUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "BindCloudStorageUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("BindCloudStorageUser require credential")
@@ -247,6 +250,7 @@ func (c *Client) CancelAIModelApplicationWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCancelAIModelApplicationRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "CancelAIModelApplication")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelAIModelApplication require credential")
@@ -300,6 +304,7 @@ func (c *Client) CancelDeviceFirmwareTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCancelDeviceFirmwareTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "CancelDeviceFirmwareTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelDeviceFirmwareTask require credential")
@@ -353,6 +358,7 @@ func (c *Client) CheckForwardAuthWithContext(ctx context.Context, request *Check
     if request == nil {
         request = NewCheckForwardAuthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "CheckForwardAuth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CheckForwardAuth require credential")
@@ -406,6 +412,7 @@ func (c *Client) ControlDeviceDataWithContext(ctx context.Context, request *Cont
     if request == nil {
         request = NewControlDeviceDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ControlDeviceData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ControlDeviceData require credential")
@@ -459,6 +466,7 @@ func (c *Client) CreateAIDetectionWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAIDetectionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "CreateAIDetection")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAIDetection require credential")
@@ -512,6 +520,7 @@ func (c *Client) CreateBatchWithContext(ctx context.Context, request *CreateBatc
     if request == nil {
         request = NewCreateBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "CreateBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateBatch require credential")
@@ -565,6 +574,7 @@ func (c *Client) CreateCOSCredentialsWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateCOSCredentialsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "CreateCOSCredentials")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCOSCredentials require credential")
@@ -618,6 +628,7 @@ func (c *Client) CreateCloudStorageWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCloudStorageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "CreateCloudStorage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateCloudStorage require credential")
@@ -671,6 +682,7 @@ func (c *Client) CreateDataForwardWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateDataForwardRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "CreateDataForward")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateDataForward require credential")
@@ -724,6 +736,7 @@ func (c *Client) CreateForwardRuleWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateForwardRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "CreateForwardRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateForwardRule require credential")
@@ -779,6 +792,7 @@ func (c *Client) CreateProductWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "CreateProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateProduct require credential")
@@ -830,6 +844,7 @@ func (c *Client) CreateTaskFileUrlWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTaskFileUrlRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "CreateTaskFileUrl")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTaskFileUrl require credential")
@@ -883,6 +898,7 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DeleteDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteDevice require credential")
@@ -936,6 +952,7 @@ func (c *Client) DeleteFirmwareWithContext(ctx context.Context, request *DeleteF
     if request == nil {
         request = NewDeleteFirmwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DeleteFirmware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteFirmware require credential")
@@ -989,6 +1006,7 @@ func (c *Client) DeleteForwardRuleWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteForwardRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DeleteForwardRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteForwardRule require credential")
@@ -1042,6 +1060,7 @@ func (c *Client) DeleteProductWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DeleteProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteProduct require credential")
@@ -1095,6 +1114,7 @@ func (c *Client) DescribeAIModelApplicationsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAIModelApplicationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeAIModelApplications")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAIModelApplications require credential")
@@ -1148,6 +1168,7 @@ func (c *Client) DescribeAIModelChannelWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAIModelChannelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeAIModelChannel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAIModelChannel require credential")
@@ -1201,6 +1222,7 @@ func (c *Client) DescribeAIModelUsageWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAIModelUsageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeAIModelUsage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAIModelUsage require credential")
@@ -1254,6 +1276,7 @@ func (c *Client) DescribeAIModelsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeAIModelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeAIModels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAIModels require credential")
@@ -1307,6 +1330,7 @@ func (c *Client) DescribeBalanceWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeBalanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeBalance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBalance require credential")
@@ -1360,6 +1384,7 @@ func (c *Client) DescribeBalanceTransactionsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeBalanceTransactionsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeBalanceTransactions")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBalanceTransactions require credential")
@@ -1413,6 +1438,7 @@ func (c *Client) DescribeBatchWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeBatchRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeBatch")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBatch require credential")
@@ -1466,6 +1492,7 @@ func (c *Client) DescribeBatchsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeBatchsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeBatchs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeBatchs require credential")
@@ -1519,6 +1546,7 @@ func (c *Client) DescribeCategoryWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCategoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeCategory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCategory require credential")
@@ -1570,6 +1598,7 @@ func (c *Client) DescribeCloudStorageWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCloudStorageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeCloudStorage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudStorage require credential")
@@ -1623,6 +1652,7 @@ func (c *Client) DescribeCloudStorageDateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCloudStorageDateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeCloudStorageDate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudStorageDate require credential")
@@ -1676,6 +1706,7 @@ func (c *Client) DescribeCloudStorageEventsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCloudStorageEventsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeCloudStorageEvents")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudStorageEvents require credential")
@@ -1729,6 +1760,7 @@ func (c *Client) DescribeCloudStorageThumbnailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeCloudStorageThumbnailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeCloudStorageThumbnail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudStorageThumbnail require credential")
@@ -1782,6 +1814,7 @@ func (c *Client) DescribeCloudStorageTimeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCloudStorageTimeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeCloudStorageTime")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudStorageTime require credential")
@@ -1835,6 +1868,7 @@ func (c *Client) DescribeCloudStorageUsersWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCloudStorageUsersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeCloudStorageUsers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCloudStorageUsers require credential")
@@ -1888,6 +1922,7 @@ func (c *Client) DescribeDataForwardListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDataForwardListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeDataForwardList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDataForwardList require credential")
@@ -1943,6 +1978,7 @@ func (c *Client) DescribeDeviceWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDevice require credential")
@@ -1996,6 +2032,7 @@ func (c *Client) DescribeDeviceActionHistoryWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDeviceActionHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeDeviceActionHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceActionHistory require credential")
@@ -2049,6 +2086,7 @@ func (c *Client) DescribeDeviceCommLogWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDeviceCommLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeDeviceCommLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceCommLog require credential")
@@ -2102,6 +2140,7 @@ func (c *Client) DescribeDeviceDataWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDeviceDataRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeDeviceData")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceData require credential")
@@ -2155,6 +2194,7 @@ func (c *Client) DescribeDeviceDataHistoryWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDeviceDataHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeDeviceDataHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceDataHistory require credential")
@@ -2208,6 +2248,7 @@ func (c *Client) DescribeDeviceEventHistoryWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDeviceEventHistoryRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeDeviceEventHistory")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceEventHistory require credential")
@@ -2261,6 +2302,7 @@ func (c *Client) DescribeDeviceStatusLogWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDeviceStatusLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeDeviceStatusLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDeviceStatusLog require credential")
@@ -2314,6 +2356,7 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDevices require credential")
@@ -2363,6 +2406,7 @@ func (c *Client) DescribeFirmwareWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeFirmwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeFirmware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmware require credential")
@@ -2412,6 +2456,7 @@ func (c *Client) DescribeFirmwareTaskWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFirmwareTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeFirmwareTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmwareTask require credential")
@@ -2465,6 +2510,7 @@ func (c *Client) DescribeFirmwareTaskDevicesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeFirmwareTaskDevicesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeFirmwareTaskDevices")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmwareTaskDevices require credential")
@@ -2518,6 +2564,7 @@ func (c *Client) DescribeFirmwareTaskDistributionWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeFirmwareTaskDistributionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeFirmwareTaskDistribution")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmwareTaskDistribution require credential")
@@ -2571,6 +2618,7 @@ func (c *Client) DescribeFirmwareTaskStatisticsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeFirmwareTaskStatisticsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeFirmwareTaskStatistics")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmwareTaskStatistics require credential")
@@ -2624,6 +2672,7 @@ func (c *Client) DescribeFirmwareTasksWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFirmwareTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeFirmwareTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeFirmwareTasks require credential")
@@ -2677,6 +2726,7 @@ func (c *Client) DescribeForwardRuleWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeForwardRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeForwardRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeForwardRule require credential")
@@ -2730,6 +2780,7 @@ func (c *Client) DescribeModelDefinitionWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeModelDefinitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeModelDefinition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModelDefinition require credential")
@@ -2783,6 +2834,7 @@ func (c *Client) DescribeProductWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProduct require credential")
@@ -2836,6 +2888,7 @@ func (c *Client) DescribeProductDynamicRegisterWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeProductDynamicRegisterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeProductDynamicRegister")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProductDynamicRegister require credential")
@@ -2889,6 +2942,7 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProductsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeProducts")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeProducts require credential")
@@ -2942,6 +2996,7 @@ func (c *Client) DescribeSDKLogWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeSDKLogRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "DescribeSDKLog")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSDKLog require credential")
@@ -2991,6 +3046,7 @@ func (c *Client) EditFirmwareWithContext(ctx context.Context, request *EditFirmw
     if request == nil {
         request = NewEditFirmwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "EditFirmware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("EditFirmware require credential")
@@ -3044,6 +3100,7 @@ func (c *Client) GenerateSignedVideoURLWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGenerateSignedVideoURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "GenerateSignedVideoURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GenerateSignedVideoURL require credential")
@@ -3097,6 +3154,7 @@ func (c *Client) GetAllFirmwareVersionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetAllFirmwareVersionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "GetAllFirmwareVersion")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetAllFirmwareVersion require credential")
@@ -3148,6 +3206,7 @@ func (c *Client) GetFirmwareURLWithContext(ctx context.Context, request *GetFirm
     if request == nil {
         request = NewGetFirmwareURLRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "GetFirmwareURL")
     
     if c.GetCredential() == nil {
         return nil, errors.New("GetFirmwareURL require credential")
@@ -3201,6 +3260,7 @@ func (c *Client) ImportModelDefinitionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewImportModelDefinitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ImportModelDefinition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ImportModelDefinition require credential")
@@ -3254,6 +3314,7 @@ func (c *Client) InheritCloudStorageUserWithContext(ctx context.Context, request
     if request == nil {
         request = NewInheritCloudStorageUserRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "InheritCloudStorageUser")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InheritCloudStorageUser require credential")
@@ -3309,6 +3370,7 @@ func (c *Client) ListFirmwaresWithContext(ctx context.Context, request *ListFirm
     if request == nil {
         request = NewListFirmwaresRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ListFirmwares")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListFirmwares require credential")
@@ -3362,6 +3424,7 @@ func (c *Client) ModifyDataForwardWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyDataForwardRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ModifyDataForward")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDataForward require credential")
@@ -3415,6 +3478,7 @@ func (c *Client) ModifyDataForwardStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyDataForwardStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ModifyDataForwardStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDataForwardStatus require credential")
@@ -3468,6 +3532,7 @@ func (c *Client) ModifyDeviceWithContext(ctx context.Context, request *ModifyDev
     if request == nil {
         request = NewModifyDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ModifyDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDevice require credential")
@@ -3521,6 +3586,7 @@ func (c *Client) ModifyDeviceLogLevelWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyDeviceLogLevelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ModifyDeviceLogLevel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDeviceLogLevel require credential")
@@ -3574,6 +3640,7 @@ func (c *Client) ModifyForwardRuleWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyForwardRuleRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ModifyForwardRule")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyForwardRule require credential")
@@ -3627,6 +3694,7 @@ func (c *Client) ModifyModelDefinitionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyModelDefinitionRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ModifyModelDefinition")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyModelDefinition require credential")
@@ -3680,6 +3748,7 @@ func (c *Client) ModifyProductWithContext(ctx context.Context, request *ModifyPr
     if request == nil {
         request = NewModifyProductRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ModifyProduct")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyProduct require credential")
@@ -3733,6 +3802,7 @@ func (c *Client) ModifyProductDynamicRegisterWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyProductDynamicRegisterRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ModifyProductDynamicRegister")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyProductDynamicRegister require credential")
@@ -3786,6 +3856,7 @@ func (c *Client) PublishMessageWithContext(ctx context.Context, request *Publish
     if request == nil {
         request = NewPublishMessageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "PublishMessage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PublishMessage require credential")
@@ -3839,6 +3910,7 @@ func (c *Client) ReportAliveDeviceWithContext(ctx context.Context, request *Repo
     if request == nil {
         request = NewReportAliveDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ReportAliveDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ReportAliveDevice require credential")
@@ -3892,6 +3964,7 @@ func (c *Client) ResetCloudStorageWithContext(ctx context.Context, request *Rese
     if request == nil {
         request = NewResetCloudStorageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "ResetCloudStorage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ResetCloudStorage require credential")
@@ -3949,6 +4022,7 @@ func (c *Client) RetryDeviceFirmwareTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewRetryDeviceFirmwareTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "RetryDeviceFirmwareTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RetryDeviceFirmwareTask require credential")
@@ -4002,6 +4076,7 @@ func (c *Client) SetForwardAuthWithContext(ctx context.Context, request *SetForw
     if request == nil {
         request = NewSetForwardAuthRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "SetForwardAuth")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SetForwardAuth require credential")
@@ -4055,6 +4130,7 @@ func (c *Client) TransferCloudStorageWithContext(ctx context.Context, request *T
     if request == nil {
         request = NewTransferCloudStorageRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "TransferCloudStorage")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TransferCloudStorage require credential")
@@ -4108,6 +4184,7 @@ func (c *Client) UpdateAIModelChannelWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateAIModelChannelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "UpdateAIModelChannel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UpdateAIModelChannel require credential")
@@ -4161,6 +4238,7 @@ func (c *Client) UploadFirmwareWithContext(ctx context.Context, request *UploadF
     if request == nil {
         request = NewUploadFirmwareRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "UploadFirmware")
     
     if c.GetCredential() == nil {
         return nil, errors.New("UploadFirmware require credential")
@@ -4214,6 +4292,7 @@ func (c *Client) WakeUpDeviceWithContext(ctx context.Context, request *WakeUpDev
     if request == nil {
         request = NewWakeUpDeviceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "iotvideo", APIVersion, "WakeUpDevice")
     
     if c.GetCredential() == nil {
         return nil, errors.New("WakeUpDevice require credential")

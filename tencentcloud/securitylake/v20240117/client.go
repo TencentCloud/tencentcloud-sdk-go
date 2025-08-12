@@ -120,6 +120,7 @@ func (c *Client) DescribeSecurityAlarmTableListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeSecurityAlarmTableListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "securitylake", APIVersion, "DescribeSecurityAlarmTableList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSecurityAlarmTableList require credential")

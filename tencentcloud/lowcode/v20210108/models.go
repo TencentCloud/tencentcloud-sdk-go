@@ -21,6 +21,77 @@ import (
 )
 
 // Predefined struct for user
+type CheckDeployAppRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 应用id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 构建 Id
+	BuildId *string `json:"BuildId,omitnil,omitempty" name:"BuildId"`
+}
+
+type CheckDeployAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 应用id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 构建 Id
+	BuildId *string `json:"BuildId,omitnil,omitempty" name:"BuildId"`
+}
+
+func (r *CheckDeployAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckDeployAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Id")
+	delete(f, "BuildId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckDeployAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckDeployAppResponseParams struct {
+	// 状态：success、building、reviewFail、releaseSuccess、underReview
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckDeployAppResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckDeployAppResponseParams `json:"Response"`
+}
+
+func (r *CheckDeployAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckDeployAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateKnowledgeSetRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -279,6 +350,60 @@ type DataSourceQueryOption struct {
 }
 
 // Predefined struct for user
+type DeleteAppBindWxAppRequestParams struct {
+	// 应用id
+	WeappId *string `json:"WeappId,omitnil,omitempty" name:"WeappId"`
+}
+
+type DeleteAppBindWxAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用id
+	WeappId *string `json:"WeappId,omitnil,omitempty" name:"WeappId"`
+}
+
+func (r *DeleteAppBindWxAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAppBindWxAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WeappId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAppBindWxAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAppBindWxAppResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAppBindWxAppResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAppBindWxAppResponseParams `json:"Response"`
+}
+
+func (r *DeleteAppBindWxAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAppBindWxAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteKnowledgeDocumentSetRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -412,6 +537,98 @@ func (r *DeleteKnowledgeSetResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteKnowledgeSetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployAppRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 应用id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 发布体验preview/正式upload
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 构建类型：mp、pc、web、adminPortal
+	BuildType *string `json:"BuildType,omitnil,omitempty" name:"BuildType"`
+
+	// 子包数组
+	SubAppIds []*string `json:"SubAppIds,omitnil,omitempty" name:"SubAppIds"`
+}
+
+type DeployAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 应用id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 发布体验preview/正式upload
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 构建类型：mp、pc、web、adminPortal
+	BuildType *string `json:"BuildType,omitnil,omitempty" name:"BuildType"`
+
+	// 子包数组
+	SubAppIds []*string `json:"SubAppIds,omitnil,omitempty" name:"SubAppIds"`
+}
+
+func (r *DeployAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Id")
+	delete(f, "Mode")
+	delete(f, "BuildType")
+	delete(f, "SubAppIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployAppResponseParams struct {
+	// 构建id
+	BuildId *string `json:"BuildId,omitnil,omitempty" name:"BuildId"`
+
+	// 发布错误code
+	DeployErrCode *uint64 `json:"DeployErrCode,omitnil,omitempty" name:"DeployErrCode"`
+
+	// 发布错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployErrMsg *string `json:"DeployErrMsg,omitnil,omitempty" name:"DeployErrMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeployAppResponse struct {
+	*tchttp.BaseResponse
+	Response *DeployAppResponseParams `json:"Response"`
+}
+
+func (r *DeployAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployAppResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -996,6 +1213,67 @@ type PageQuery struct {
 
 	// 使用创建 CollectionView 指定的 Filter 索引的字段设置查询过滤表达式。
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+// Predefined struct for user
+type PutWxAppIdToWeAppRequestParams struct {
+	// 应用ID
+	WeAppId *string `json:"WeAppId,omitnil,omitempty" name:"WeAppId"`
+
+	// 微信AppId
+	WxAppId *string `json:"WxAppId,omitnil,omitempty" name:"WxAppId"`
+}
+
+type PutWxAppIdToWeAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	WeAppId *string `json:"WeAppId,omitnil,omitempty" name:"WeAppId"`
+
+	// 微信AppId
+	WxAppId *string `json:"WxAppId,omitnil,omitempty" name:"WxAppId"`
+}
+
+func (r *PutWxAppIdToWeAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutWxAppIdToWeAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WeAppId")
+	delete(f, "WxAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutWxAppIdToWeAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PutWxAppIdToWeAppResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PutWxAppIdToWeAppResponse struct {
+	*tchttp.BaseResponse
+	Response *PutWxAppIdToWeAppResponseParams `json:"Response"`
+}
+
+func (r *PutWxAppIdToWeAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutWxAppIdToWeAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QureyKnowledgeDocumentSet struct {

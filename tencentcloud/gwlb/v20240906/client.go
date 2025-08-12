@@ -98,6 +98,7 @@ func (c *Client) AssociateTargetGroupsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewAssociateTargetGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "AssociateTargetGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateTargetGroups require credential")
@@ -157,6 +158,7 @@ func (c *Client) CreateGatewayLoadBalancerWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateGatewayLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "CreateGatewayLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateGatewayLoadBalancer require credential")
@@ -218,6 +220,7 @@ func (c *Client) CreateTargetGroupWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTargetGroupRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "CreateTargetGroup")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateTargetGroup require credential")
@@ -271,6 +274,7 @@ func (c *Client) DeleteGatewayLoadBalancerWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteGatewayLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "DeleteGatewayLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteGatewayLoadBalancer require credential")
@@ -328,6 +332,7 @@ func (c *Client) DeleteTargetGroupsWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteTargetGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "DeleteTargetGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteTargetGroups require credential")
@@ -387,6 +392,7 @@ func (c *Client) DeregisterTargetGroupInstancesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDeregisterTargetGroupInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "DeregisterTargetGroupInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeregisterTargetGroupInstances require credential")
@@ -440,6 +446,7 @@ func (c *Client) DescribeGatewayLoadBalancersWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeGatewayLoadBalancersRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "DescribeGatewayLoadBalancers")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeGatewayLoadBalancers require credential")
@@ -493,6 +500,7 @@ func (c *Client) DescribeTargetGroupInstanceStatusWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeTargetGroupInstanceStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "DescribeTargetGroupInstanceStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTargetGroupInstanceStatus require credential")
@@ -552,6 +560,7 @@ func (c *Client) DescribeTargetGroupInstancesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeTargetGroupInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "DescribeTargetGroupInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTargetGroupInstances require credential")
@@ -611,6 +620,7 @@ func (c *Client) DescribeTargetGroupListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeTargetGroupListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "DescribeTargetGroupList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTargetGroupList require credential")
@@ -668,6 +678,7 @@ func (c *Client) DescribeTargetGroupsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTargetGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "DescribeTargetGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTargetGroups require credential")
@@ -723,6 +734,7 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "DescribeTaskStatus")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskStatus require credential")
@@ -786,6 +798,7 @@ func (c *Client) DisassociateTargetGroupsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDisassociateTargetGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "DisassociateTargetGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateTargetGroups require credential")
@@ -845,6 +858,7 @@ func (c *Client) InquirePriceCreateGatewayLoadBalancerWithContext(ctx context.Co
     if request == nil {
         request = NewInquirePriceCreateGatewayLoadBalancerRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "InquirePriceCreateGatewayLoadBalancer")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InquirePriceCreateGatewayLoadBalancer require credential")
@@ -898,6 +912,7 @@ func (c *Client) ModifyGatewayLoadBalancerAttributeWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyGatewayLoadBalancerAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "ModifyGatewayLoadBalancerAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyGatewayLoadBalancerAttribute require credential")
@@ -955,6 +970,7 @@ func (c *Client) ModifyTargetGroupAttributeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyTargetGroupAttributeRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "ModifyTargetGroupAttribute")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTargetGroupAttribute require credential")
@@ -1014,6 +1030,7 @@ func (c *Client) ModifyTargetGroupInstancesWeightWithContext(ctx context.Context
     if request == nil {
         request = NewModifyTargetGroupInstancesWeightRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "ModifyTargetGroupInstancesWeight")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyTargetGroupInstancesWeight require credential")
@@ -1075,6 +1092,7 @@ func (c *Client) RegisterTargetGroupInstancesWithContext(ctx context.Context, re
     if request == nil {
         request = NewRegisterTargetGroupInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "RegisterTargetGroupInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RegisterTargetGroupInstances require credential")

@@ -6525,6 +6525,18 @@ type DiagHistoryEventItem struct {
 
 	// 地域。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群名称。
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// vip地址。
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// vip端口。
+	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 }
 
 type EventInfo struct {

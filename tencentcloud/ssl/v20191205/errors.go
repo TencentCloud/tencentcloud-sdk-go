@@ -338,7 +338,7 @@ const (
 	// 邮箱格式有误，请您重新输入
 	INVALIDPARAMETERVALUE_CERTIFICATEEMAILPARSEINVALID = "InvalidParameterValue.CertificateEmailParseInvalid"
 
-	// 中间根证书不一致
+	// 中间证书不一致
 	INVALIDPARAMETERVALUE_INTERMEDIATECERTNOTSAME = "InvalidParameterValue.IntermediateCertNotSame"
 
 	// 单位时间内接口请求频率达到限制。

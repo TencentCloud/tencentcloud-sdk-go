@@ -94,6 +94,7 @@ func (c *Client) TextProcessWithContext(ctx context.Context, request *TextProces
     if request == nil {
         request = NewTextProcessRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbp", APIVersion, "TextProcess")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextProcess require credential")
@@ -155,6 +156,7 @@ func (c *Client) TextResetWithContext(ctx context.Context, request *TextResetReq
     if request == nil {
         request = NewTextResetRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tbp", APIVersion, "TextReset")
     
     if c.GetCredential() == nil {
         return nil, errors.New("TextReset require credential")

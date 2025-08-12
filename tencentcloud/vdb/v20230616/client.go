@@ -90,6 +90,7 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "AssociateSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("AssociateSecurityGroups require credential")
@@ -145,6 +146,7 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     if request == nil {
         request = NewCreateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "CreateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateInstance require credential")
@@ -202,6 +204,7 @@ func (c *Client) DescribeDBSecurityGroupsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDBSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "DescribeDBSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDBSecurityGroups require credential")
@@ -259,6 +262,7 @@ func (c *Client) DescribeInstanceMaintenanceWindowWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeInstanceMaintenanceWindowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "DescribeInstanceMaintenanceWindow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceMaintenanceWindow require credential")
@@ -310,6 +314,7 @@ func (c *Client) DescribeInstanceNodesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInstanceNodesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "DescribeInstanceNodes")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstanceNodes require credential")
@@ -361,6 +366,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "DescribeInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeInstances require credential")
@@ -412,6 +418,7 @@ func (c *Client) DestroyInstancesWithContext(ctx context.Context, request *Destr
     if request == nil {
         request = NewDestroyInstancesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "DestroyInstances")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DestroyInstances require credential")
@@ -469,6 +476,7 @@ func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "DisassociateSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DisassociateSecurityGroups require credential")
@@ -526,6 +534,7 @@ func (c *Client) IsolateInstanceWithContext(ctx context.Context, request *Isolat
     if request == nil {
         request = NewIsolateInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "IsolateInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("IsolateInstance require credential")
@@ -591,6 +600,7 @@ func (c *Client) ModifyDBInstanceSecurityGroupsWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "ModifyDBInstanceSecurityGroups")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyDBInstanceSecurityGroups require credential")
@@ -656,6 +666,7 @@ func (c *Client) ModifyInstanceMaintenanceWindowWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyInstanceMaintenanceWindowRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "ModifyInstanceMaintenanceWindow")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ModifyInstanceMaintenanceWindow require credential")
@@ -721,6 +732,7 @@ func (c *Client) RecoverInstanceWithContext(ctx context.Context, request *Recove
     if request == nil {
         request = NewRecoverInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "RecoverInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("RecoverInstance require credential")
@@ -786,6 +798,7 @@ func (c *Client) ScaleOutInstanceWithContext(ctx context.Context, request *Scale
     if request == nil {
         request = NewScaleOutInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "ScaleOutInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleOutInstance require credential")
@@ -851,6 +864,7 @@ func (c *Client) ScaleUpInstanceWithContext(ctx context.Context, request *ScaleU
     if request == nil {
         request = NewScaleUpInstanceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "ScaleUpInstance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ScaleUpInstance require credential")

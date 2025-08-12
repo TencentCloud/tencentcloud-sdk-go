@@ -94,6 +94,7 @@ func (c *Client) CreateJobWithContext(ctx context.Context, request *CreateJobReq
     if request == nil {
         request = NewCreateJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tia", APIVersion, "CreateJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateJob require credential")
@@ -183,6 +184,7 @@ func (c *Client) CreateModelWithContext(ctx context.Context, request *CreateMode
     if request == nil {
         request = NewCreateModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tia", APIVersion, "CreateModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateModel require credential")
@@ -236,6 +238,7 @@ func (c *Client) DeleteJobWithContext(ctx context.Context, request *DeleteJobReq
     if request == nil {
         request = NewDeleteJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tia", APIVersion, "DeleteJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteJob require credential")
@@ -303,6 +306,7 @@ func (c *Client) DeleteModelWithContext(ctx context.Context, request *DeleteMode
     if request == nil {
         request = NewDeleteModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tia", APIVersion, "DeleteModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DeleteModel require credential")
@@ -364,6 +368,7 @@ func (c *Client) DescribeJobWithContext(ctx context.Context, request *DescribeJo
     if request == nil {
         request = NewDescribeJobRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tia", APIVersion, "DescribeJob")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeJob require credential")
@@ -427,6 +432,7 @@ func (c *Client) DescribeModelWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeModelRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tia", APIVersion, "DescribeModel")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeModel require credential")
@@ -484,6 +490,7 @@ func (c *Client) InstallAgentWithContext(ctx context.Context, request *InstallAg
     if request == nil {
         request = NewInstallAgentRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tia", APIVersion, "InstallAgent")
     
     if c.GetCredential() == nil {
         return nil, errors.New("InstallAgent require credential")
@@ -543,6 +550,7 @@ func (c *Client) ListJobsWithContext(ctx context.Context, request *ListJobsReque
     if request == nil {
         request = NewListJobsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tia", APIVersion, "ListJobs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListJobs require credential")
@@ -614,6 +622,7 @@ func (c *Client) ListModelsWithContext(ctx context.Context, request *ListModelsR
     if request == nil {
         request = NewListModelsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tia", APIVersion, "ListModels")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListModels require credential")
@@ -675,6 +684,7 @@ func (c *Client) QueryLogsWithContext(ctx context.Context, request *QueryLogsReq
     if request == nil {
         request = NewQueryLogsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "tia", APIVersion, "QueryLogs")
     
     if c.GetCredential() == nil {
         return nil, errors.New("QueryLogs require credential")

@@ -112,6 +112,7 @@ func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskR
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "CancelTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CancelTask require credential")
@@ -265,6 +266,7 @@ func (c *Client) CreateAudioModerationSyncTaskWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateAudioModerationSyncTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "CreateAudioModerationSyncTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAudioModerationSyncTask require credential")
@@ -512,6 +514,7 @@ func (c *Client) CreateAudioModerationTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateAudioModerationTaskRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "CreateAudioModerationTask")
     
     if c.GetCredential() == nil {
         return nil, errors.New("CreateAudioModerationTask require credential")
@@ -593,6 +596,7 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "DescribeTaskDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTaskDetail require credential")
@@ -672,6 +676,7 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ams", APIVersion, "DescribeTasks")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeTasks require credential")

@@ -88,6 +88,7 @@ func (c *Client) DescribeAggregateDiscoveredResourceWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeAggregateDiscoveredResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "DescribeAggregateDiscoveredResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAggregateDiscoveredResource require credential")
@@ -139,6 +140,7 @@ func (c *Client) DescribeDiscoveredResourceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDiscoveredResourceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "DescribeDiscoveredResource")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDiscoveredResource require credential")
@@ -190,6 +192,7 @@ func (c *Client) ListAggregateConfigRulesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewListAggregateConfigRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "ListAggregateConfigRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAggregateConfigRules require credential")
@@ -243,6 +246,7 @@ func (c *Client) ListAggregateDiscoveredResourcesWithContext(ctx context.Context
     if request == nil {
         request = NewListAggregateDiscoveredResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "ListAggregateDiscoveredResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListAggregateDiscoveredResources require credential")
@@ -292,6 +296,7 @@ func (c *Client) ListConfigRulesWithContext(ctx context.Context, request *ListCo
     if request == nil {
         request = NewListConfigRulesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "ListConfigRules")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListConfigRules require credential")
@@ -341,6 +346,7 @@ func (c *Client) ListDiscoveredResourcesWithContext(ctx context.Context, request
     if request == nil {
         request = NewListDiscoveredResourcesRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "ListDiscoveredResources")
     
     if c.GetCredential() == nil {
         return nil, errors.New("ListDiscoveredResources require credential")
@@ -396,6 +402,7 @@ func (c *Client) PutEvaluationsWithContext(ctx context.Context, request *PutEval
     if request == nil {
         request = NewPutEvaluationsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "PutEvaluations")
     
     if c.GetCredential() == nil {
         return nil, errors.New("PutEvaluations require credential")

@@ -76,6 +76,7 @@ func (c *Client) DescribeAlarmStatWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAlarmStatRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeAlarmStat")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAlarmStat require credential")
@@ -127,6 +128,7 @@ func (c *Client) DescribeAssetDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAssetDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeAssetDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetDetail require credential")
@@ -178,6 +180,7 @@ func (c *Client) DescribeAssetDetailListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAssetDetailListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeAssetDetailList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetDetailList require credential")
@@ -231,6 +234,7 @@ func (c *Client) DescribeAssetListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAssetListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeAssetList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeAssetList require credential")
@@ -286,6 +290,7 @@ func (c *Client) DescribeCheckConfigAssetListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeCheckConfigAssetListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeCheckConfigAssetList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCheckConfigAssetList require credential")
@@ -343,6 +348,7 @@ func (c *Client) DescribeCheckConfigDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCheckConfigDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeCheckConfigDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeCheckConfigDetail require credential")
@@ -398,6 +404,7 @@ func (c *Client) DescribeComplianceAssetListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeComplianceAssetListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeComplianceAssetList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComplianceAssetList require credential")
@@ -455,6 +462,7 @@ func (c *Client) DescribeComplianceDetailWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeComplianceDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeComplianceDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComplianceDetail require credential")
@@ -512,6 +520,7 @@ func (c *Client) DescribeComplianceListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeComplianceListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeComplianceList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeComplianceList require credential")
@@ -565,6 +574,7 @@ func (c *Client) DescribeConfigListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeConfigListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeConfigList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeConfigList require credential")
@@ -618,6 +628,7 @@ func (c *Client) DescribeDomainListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDomainListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeDomainList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeDomainList require credential")
@@ -667,6 +678,7 @@ func (c *Client) DescribeEventDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeEventDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeEventDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeEventDetail require credential")
@@ -718,6 +730,7 @@ func (c *Client) DescribeLeakDetectionListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeLeakDetectionListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeLeakDetectionList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeLeakDetectionList require credential")
@@ -769,6 +782,7 @@ func (c *Client) DescribeMappingResultsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeMappingResultsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeMappingResults")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeMappingResults require credential")
@@ -820,6 +834,7 @@ func (c *Client) DescribeSocAlertDetailsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSocAlertDetailsRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeSocAlertDetails")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSocAlertDetails require credential")
@@ -869,6 +884,7 @@ func (c *Client) DescribeSocAlertListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeSocAlertListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeSocAlertList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSocAlertList require credential")
@@ -922,6 +938,7 @@ func (c *Client) DescribeSocCheckItemListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSocCheckItemListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeSocCheckItemList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSocCheckItemList require credential")
@@ -975,6 +992,7 @@ func (c *Client) DescribeSocCheckResultListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeSocCheckResultListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeSocCheckResultList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSocCheckResultList require credential")
@@ -1064,6 +1082,7 @@ func (c *Client) DescribeSocCspmComplianceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSocCspmComplianceRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeSocCspmCompliance")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeSocCspmCompliance require credential")
@@ -1113,6 +1132,7 @@ func (c *Client) DescribeVulDetailWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeVulDetailRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeVulDetail")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulDetail require credential")
@@ -1166,6 +1186,7 @@ func (c *Client) DescribeVulListWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeVulListRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "DescribeVulList")
     
     if c.GetCredential() == nil {
         return nil, errors.New("DescribeVulList require credential")
@@ -1215,6 +1236,7 @@ func (c *Client) SaDivulgeScanRuleMutateWithContext(ctx context.Context, request
     if request == nil {
         request = NewSaDivulgeScanRuleMutateRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "SaDivulgeScanRuleMutate")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SaDivulgeScanRuleMutate require credential")
@@ -1264,6 +1286,7 @@ func (c *Client) SaEventPubWithContext(ctx context.Context, request *SaEventPubR
     if request == nil {
         request = NewSaEventPubRequest()
     }
+    c.InitBaseRequest(&request.BaseRequest, "ssa", APIVersion, "SaEventPub")
     
     if c.GetCredential() == nil {
         return nil, errors.New("SaEventPub require credential")
