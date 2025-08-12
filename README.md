@@ -634,6 +634,8 @@ func main() {
 - 如果请求包都很小，不需要通过 POST 发送大请求包，可以将 SDK 默认 HTTP 方法改为 GET ；
 - 启用 `ClientProfile.UnsafeRetryOnConnectionFailure`, 在连接关闭时自动重试，请确保请求具备幂等性（如只读接口），避免因重试导致非预期的行为；
 
+如果要修改 SDK 的 HTTP 客户端相关参数，例如空闲 HTTP 长连接的 keep-alive 时间，可以参考[示例](examples/common/custom_httpclient.go)
+
 # 支持产品列表
 
 参见[产品列表文档](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/products.md)
