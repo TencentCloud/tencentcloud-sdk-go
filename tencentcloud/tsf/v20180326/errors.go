@@ -68,6 +68,12 @@ const (
 	// 配置项查询失败。
 	FAILEDOPERATION_CONFIGQUERYFAILED = "FailedOperation.ConfigQueryFailed"
 
+	// 配置项发布日志新增失败。
+	FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = "FailedOperation.ConfigReleaseLogCreateFailed"
+
+	// 配置项发布日志查询失败。
+	FAILEDOPERATION_CONFIGRELEASELOGQUERYFAILED = "FailedOperation.ConfigReleaseLogQueryFailed"
+
 	// 配置项发布信息查询失败。
 	FAILEDOPERATION_CONFIGRELEASEQUERYFAILED = "FailedOperation.ConfigReleaseQueryFailed"
 
@@ -119,11 +125,14 @@ const (
 	// 寻找独占配置中心相关指标异常
 	FAILEDOPERATION_FINDMETRICSEXCLUSIVEERROR = "FailedOperation.FindMetricsExclusiveError"
 
-	// 网关通用异常:%s。
+	// 网关通用异常[网关异常]。
 	FAILEDOPERATION_GATEWAYCOMMONERROR = "FailedOperation.GatewayCommonError"
 
 	// 远端访问错误。
 	FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
+
+	// 分组通用错误。
+	FAILEDOPERATION_GROUPCOMMONERROR = "FailedOperation.GroupCommonError"
 
 	// 命名空间下存在部署组。
 	FAILEDOPERATION_GROUPEXISTS = "FailedOperation.GroupExists"
@@ -175,6 +184,9 @@ const (
 
 	// 全链路灰度规则启用失败。
 	FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
+
+	// 该灰度规则生效中,请关闭后删除
+	FAILEDOPERATION_LANERULEENABLEDRULEDELETEFAILED = "FailedOperation.LaneRuleEnabledRuleDeleteFailed"
 
 	// 用户全链路灰度规则最大100条。
 	FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
@@ -377,7 +389,7 @@ const (
 	// 容器应用SQL错误。
 	INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 
-	// 容器平台集群不可用，当前状态。有 Idling、Notinit等。
+	// 示例：容器平台集群不可用，当前状态 Notinit。
 	INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"
 
 	// 命令下放失败。
@@ -395,10 +407,10 @@ const (
 	// TSF暂时不能响应请求。
 	INTERNALERROR_DISPATCHCOMMONERROR = "InternalError.DispatchCommonError"
 
-	// 网关通用异常:%s。
+	// 网关通用异常[网关资源]。
 	INTERNALERROR_GATEWAYCOMMONERROR = "InternalError.GatewayCommonError"
 
-	// 数据一致性异常:%s。
+	// 数据一致性异常[网关资源]。
 	INTERNALERROR_GATEWAYCONSISTENCYERROR = "InternalError.GatewayConsistencyError"
 
 	// 配置中心访问异常。
@@ -440,7 +452,7 @@ const (
 	// 任务内部异常。
 	INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
 
-	// 示例：调用 TKE 接口失败，[报错信息]。
+	// 示例：调用 TKE 接口失败，具体报错信息。
 	INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
 
 	// TSF应用性能管理业务日志配置与应用关联处理错误。
@@ -827,6 +839,9 @@ const (
 	// 文件配置项固定字段不可变更。
 	INVALIDPARAMETERVALUE_FILECONFIGFIXEDFIELDUNCHANGEABLE = "InvalidParameterValue.FileConfigFixedFieldUnchangeable"
 
+	// 文件配置项和部署组所属应用不一致。
+	INVALIDPARAMETERVALUE_FILECONFIGGROUPAPPLICATIONIDNOTMATCH = "InvalidParameterValue.FileConfigGroupApplicationIdNotMatch"
+
 	// 文件配置项名称不合规。
 	INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = "InvalidParameterValue.FileConfigNameInvalid"
 
@@ -845,10 +860,10 @@ const (
 	// 文件配置项版本不合规。
 	INVALIDPARAMETERVALUE_FILECONFIGVERSIONINVALID = "InvalidParameterValue.FileConfigVersionInvalid"
 
-	// 请求参数异常:%s。
+	// 请求参数异常[参数]。
 	INVALIDPARAMETERVALUE_GATEWAYPARAMETERERROR = "InvalidParameterValue.GatewayParameterError"
 
-	// 无效请求参数:%s。
+	// 无效请求参数[参数异常]。
 	INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 
 	// 全局命名空间已经存在，只能创建一个全局命名空间。
@@ -983,6 +998,12 @@ const (
 	// 全链路灰度规则总标签值不能超过200个字符。
 	INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
 
+	// 无法获取上一次的配置项。
+	INVALIDPARAMETERVALUE_LASTCONFIGNOTEXISTS = "InvalidParameterValue.LastConfigNotExists"
+
+	// [参数]不合法。
+	INVALIDPARAMETERVALUE_MSPARAMETERINVALID = "InvalidParameterValue.MsParameterInvalid"
+
 	// 集群已关联该命名空间。
 	INVALIDPARAMETERVALUE_NAMESPACEALREADYBINDCLUSTER = "InvalidParameterValue.NamespaceAlreadyBindCluster"
 
@@ -1085,7 +1106,7 @@ const (
 	// 文件配置项文件内容未填写。
 	MISSINGPARAMETER_FILECONFIGFILEVALUEREQUIRED = "MissingParameter.FileConfigFileValueRequired"
 
-	// 缺少请求参数:%s。
+	// 缺少请求参数[网关参数异常]。
 	MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 
 	// 分组所属应用不能为空。
@@ -1121,7 +1142,7 @@ const (
 	// 未填写服务Id。
 	MISSINGPARAMETER_SERVICEIDREQUIRED = "MissingParameter.ServiceIdRequired"
 
-	// 未指定%s。
+	// 示例：未指定language。
 	MISSINGPARAMETER_SYSTEMPARAMETERREQUIRED = "MissingParameter.SystemParameterRequired"
 
 	// 缺少必填参数。
@@ -1232,7 +1253,7 @@ const (
 	// TKE 中不存在该集群。
 	RESOURCENOTFOUND_TKECLUSTERNOTEXISTS = "ResourceNotFound.TkeClusterNotExists"
 
-	// 示例：访问 CAM 系统出错，[报错信息]。
+	// 示例：访问 CAM 系统出错，具体报错信息。
 	UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
 
 	// 协作者身份未授权，需要主账号授予协作者权限，参考 TSF 官网文档[子账号获取访问授权](https://cloud.tencent.com/document/product/649/55570)。
@@ -1253,7 +1274,7 @@ const (
 	// 用户无权限访问该接口。
 	UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 
-	// 批量操作数量超过限制:%s。
+	// 批量操作数量超过限制[长度]。
 	UNSUPPORTEDOPERATION_GATEWAYTOOMANYREQUESTPARAMETER = "UnsupportedOperation.GatewayTooManyRequestParameter"
 
 	// 操作不支持。

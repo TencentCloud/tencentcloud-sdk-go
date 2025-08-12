@@ -2283,6 +2283,12 @@ type CreateEngineRequestParams struct {
 
 	// ZK引擎实例，可用区分布约束，STRICT:强约束，PERMISSIVE: 弱约束
 	AffinityConstraint *string `json:"AffinityConstraint,omitnil,omitempty" name:"AffinityConstraint"`
+
+	// 指定zone id列表
+	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// 地域特殊标签，用于区分相同地域，不通的业务属性
+	EngineRegionTag *string `json:"EngineRegionTag,omitnil,omitempty" name:"EngineRegionTag"`
 }
 
 type CreateEngineRequest struct {
@@ -2411,6 +2417,12 @@ type CreateEngineRequest struct {
 
 	// ZK引擎实例，可用区分布约束，STRICT:强约束，PERMISSIVE: 弱约束
 	AffinityConstraint *string `json:"AffinityConstraint,omitnil,omitempty" name:"AffinityConstraint"`
+
+	// 指定zone id列表
+	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// 地域特殊标签，用于区分相同地域，不通的业务属性
+	EngineRegionTag *string `json:"EngineRegionTag,omitnil,omitempty" name:"EngineRegionTag"`
 }
 
 func (r *CreateEngineRequest) ToJsonString() string {
@@ -2445,6 +2457,8 @@ func (r *CreateEngineRequest) FromJsonString(s string) error {
 	delete(f, "StorageCapacity")
 	delete(f, "StorageOption")
 	delete(f, "AffinityConstraint")
+	delete(f, "ZoneIds")
+	delete(f, "EngineRegionTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEngineRequest has unknown keys!", "")
 	}

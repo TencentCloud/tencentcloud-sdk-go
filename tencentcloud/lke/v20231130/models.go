@@ -1332,6 +1332,9 @@ type CreateAttributeLabelResponseParams struct {
 	// 标签ID
 	AttrBizId *string `json:"AttrBizId,omitnil,omitempty" name:"AttrBizId"`
 
+	// 标签值ID与名称
+	Labels []*AttributeLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6737,75 +6740,6 @@ type Label struct {
 }
 
 // Predefined struct for user
-type ListAppCategoryRequestParams struct {
-
-}
-
-type ListAppCategoryRequest struct {
-	*tchttp.BaseRequest
-	
-}
-
-func (r *ListAppCategoryRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ListAppCategoryRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAppCategoryRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ListAppCategoryResponseParams struct {
-	// 应用类型列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*ListAppCategoryRspOption `json:"List,omitnil,omitempty" name:"List"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ListAppCategoryResponse struct {
-	*tchttp.BaseResponse
-	Response *ListAppCategoryResponseParams `json:"Response"`
-}
-
-func (r *ListAppCategoryResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ListAppCategoryResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ListAppCategoryRspOption struct {
-	// 类型名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
-
-	// 类型值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-
-	// 类型log
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
-}
-
-// Predefined struct for user
 type ListAppKnowledgeDetailRequestParams struct {
 	// 页码
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
@@ -9270,6 +9204,9 @@ func (r *ModifyAttributeLabelRequest) FromJsonString(s string) error {
 type ModifyAttributeLabelResponseParams struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 标签ID与名称
+	Labels []*AttributeLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

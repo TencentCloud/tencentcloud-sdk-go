@@ -618,6 +618,7 @@ func NewCreateCloudProductLogCollectionResponse() (response *CreateCloudProductL
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDPRODUCTINVOCATIONERROR = "FailedOperation.CloudProductInvocationError"
 //  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -638,6 +639,7 @@ func (c *Client) CreateCloudProductLogCollection(request *CreateCloudProductLogC
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDPRODUCTINVOCATIONERROR = "FailedOperation.CloudProductInvocationError"
 //  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1181,6 +1183,11 @@ func NewCreateDeliverCloudFunctionResponse() (response *CreateDeliverCloudFuncti
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDeliverCloudFunction(request *CreateDeliverCloudFunctionRequest) (response *CreateDeliverCloudFunctionResponse, err error) {
     return c.CreateDeliverCloudFunctionWithContext(context.Background(), request)
 }
@@ -1190,6 +1197,11 @@ func (c *Client) CreateDeliverCloudFunction(request *CreateDeliverCloudFunctionR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDeliverCloudFunctionWithContext(ctx context.Context, request *CreateDeliverCloudFunctionRequest) (response *CreateDeliverCloudFunctionResponse, err error) {
     if request == nil {
         request = NewCreateDeliverCloudFunctionRequest()
@@ -1227,7 +1239,7 @@ func NewCreateExportResponse() (response *CreateExportResponse) {
 }
 
 // CreateExport
-// 本接口仅创建下载任务，任务返回的下载地址，请用户调用DescribeExports查看任务列表。其中有下载地址CosPath参数。参考文档https://cloud.tencent.com/document/product/614/56449
+// 本接口仅创建下载任务。任务返回的下载地址，请用户调用[DescribeExports](https://cloud.tencent.com/document/product/614/56449)查看任务列表，其中有下载地址CosPath参数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1246,7 +1258,7 @@ func (c *Client) CreateExport(request *CreateExportRequest) (response *CreateExp
 }
 
 // CreateExport
-// 本接口仅创建下载任务，任务返回的下载地址，请用户调用DescribeExports查看任务列表。其中有下载地址CosPath参数。参考文档https://cloud.tencent.com/document/product/614/56449
+// 本接口仅创建下载任务。任务返回的下载地址，请用户调用[DescribeExports](https://cloud.tencent.com/document/product/614/56449)查看任务列表，其中有下载地址CosPath参数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2097,7 +2109,7 @@ func NewDeleteAlarmShieldResponse() (response *DeleteAlarmShieldResponse) {
 }
 
 // DeleteAlarmShield
-// 该接口用于删除告警屏蔽规则。
+// 该接口用于删除告警屏蔽规则。当告警屏蔽规则在生效中或者是在失效中，无法被删除
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2114,7 +2126,7 @@ func (c *Client) DeleteAlarmShield(request *DeleteAlarmShieldRequest) (response 
 }
 
 // DeleteAlarmShield
-// 该接口用于删除告警屏蔽规则。
+// 该接口用于删除告警屏蔽规则。当告警屏蔽规则在生效中或者是在失效中，无法被删除
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2168,6 +2180,7 @@ func NewDeleteCloudProductLogCollectionResponse() (response *DeleteCloudProductL
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDPRODUCTINVOCATIONERROR = "FailedOperation.CloudProductInvocationError"
 //  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2186,6 +2199,7 @@ func (c *Client) DeleteCloudProductLogCollection(request *DeleteCloudProductLogC
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDPRODUCTINVOCATIONERROR = "FailedOperation.CloudProductInvocationError"
 //  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2493,7 +2507,7 @@ func NewDeleteConsumerResponse() (response *DeleteConsumerResponse) {
 }
 
 // DeleteConsumer
-// 本接口用于删除投递配置
+// 删除投递Ckafka任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2510,7 +2524,7 @@ func (c *Client) DeleteConsumer(request *DeleteConsumerRequest) (response *Delet
 }
 
 // DeleteConsumer
-// 本接口用于删除投递配置
+// 删除投递Ckafka任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4624,6 +4638,7 @@ func NewDescribeKafkaConsumerResponse() (response *DescribeKafkaConsumerResponse
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4643,6 +4658,7 @@ func (c *Client) DescribeKafkaConsumer(request *DescribeKafkaConsumerRequest) (r
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -6740,6 +6756,7 @@ func NewModifyKafkaConsumerResponse() (response *ModifyKafkaConsumerResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -6760,6 +6777,7 @@ func (c *Client) ModifyKafkaConsumer(request *ModifyKafkaConsumerRequest) (respo
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

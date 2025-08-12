@@ -4843,6 +4843,9 @@ type InstanceInfo struct {
 	// 开启集群保护：OPEN-开启，CLOSE-关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableDestroyProtection *string `json:"EnableDestroyProtection,omitnil,omitempty" name:"EnableDestroyProtection"`
+
+	// kibana内网访问地址
+	ShowKibanaIpPort *string `json:"ShowKibanaIpPort,omitnil,omitempty" name:"ShowKibanaIpPort"`
 }
 
 type InstanceLog struct {
@@ -5773,6 +5776,9 @@ type RestartNodesRequestParams struct {
 
 	// 置放群组异步任务时间段
 	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
+
+	// 事件id列表
+	EventTypeIds []*string `json:"EventTypeIds,omitnil,omitempty" name:"EventTypeIds"`
 }
 
 type RestartNodesRequest struct {
@@ -5807,6 +5813,9 @@ type RestartNodesRequest struct {
 
 	// 置放群组异步任务时间段
 	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
+
+	// 事件id列表
+	EventTypeIds []*string `json:"EventTypeIds,omitnil,omitempty" name:"EventTypeIds"`
 }
 
 func (r *RestartNodesRequest) ToJsonString() string {
@@ -5831,6 +5840,7 @@ func (r *RestartNodesRequest) FromJsonString(s string) error {
 	delete(f, "ShardAllocationBytes")
 	delete(f, "EnableScheduleRecoverGroup")
 	delete(f, "EnableScheduleOperationDuration")
+	delete(f, "EventTypeIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartNodesRequest has unknown keys!", "")
 	}

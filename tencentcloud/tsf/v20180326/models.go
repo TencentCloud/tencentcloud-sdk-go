@@ -2371,14 +2371,14 @@ type ContainerInstanceResourceConfig struct {
 
 // Predefined struct for user
 type ContinueRunFailedTaskBatchRequestParams struct {
-	// 批次ID。
+	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入执行记录页，第一列即为任务批次ID，在[任务执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=task)页能查看所有任务批次ID。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 }
 
 type ContinueRunFailedTaskBatchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 批次ID。
+	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入执行记录页，第一列即为任务批次ID，在[任务执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=task)页能查看所有任务批次ID。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 }
 
@@ -3147,56 +3147,60 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConfigRequestParams struct {
-	// 配置项名称
+	// 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项值
+	// 配置项值。
 	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
 
-	// 应用ID
+	// 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项值类型
+	// 配置项值类型，固定值。
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
-	// Base64编码的配置项
+	// Base64编码的配置项。
+	// - true：开启
+	// - false：关闭
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
 type CreateConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项名称
+	// 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项值
+	// 配置项值。
 	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
 
-	// 应用ID
+	// 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项值类型
+	// 配置项值类型，固定值。
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
-	// Base64编码的配置项
+	// Base64编码的配置项。
+	// - true：开启
+	// - false：关闭
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -3228,7 +3232,9 @@ func (r *CreateConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConfigResponseParams struct {
-	// true：创建成功；false：创建失败
+	// 创建结果。
+	// - true：创建成功
+	// - false：创建失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3253,38 +3259,46 @@ func (r *CreateConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConfigTemplateRequestParams struct {
-	// 配置模板名称
+	// 配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
 	ConfigTemplateName *string `json:"ConfigTemplateName,omitnil,omitempty" name:"ConfigTemplateName"`
 
-	// 配置模板对应的微服务框架
+	// 配置模板对应的微服务框架。
+	// - Ribbon：Ribbon类型配置模板
+	// - Hystrix：Hystrix类型配置模板
+	// - Zuul：Zuul类型配置模板
+	// - customize：自定义类型配置模板
 	ConfigTemplateType *string `json:"ConfigTemplateType,omitnil,omitempty" name:"ConfigTemplateType"`
 
-	// 配置模板数据
+	// 配置模板数据。
 	ConfigTemplateValue *string `json:"ConfigTemplateValue,omitnil,omitempty" name:"ConfigTemplateValue"`
 
-	// 配置模板描述
+	// 配置模板描述，最多支持200个字符。
 	ConfigTemplateDesc *string `json:"ConfigTemplateDesc,omitnil,omitempty" name:"ConfigTemplateDesc"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
 type CreateConfigTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置模板名称
+	// 配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
 	ConfigTemplateName *string `json:"ConfigTemplateName,omitnil,omitempty" name:"ConfigTemplateName"`
 
-	// 配置模板对应的微服务框架
+	// 配置模板对应的微服务框架。
+	// - Ribbon：Ribbon类型配置模板
+	// - Hystrix：Hystrix类型配置模板
+	// - Zuul：Zuul类型配置模板
+	// - customize：自定义类型配置模板
 	ConfigTemplateType *string `json:"ConfigTemplateType,omitnil,omitempty" name:"ConfigTemplateType"`
 
-	// 配置模板数据
+	// 配置模板数据。
 	ConfigTemplateValue *string `json:"ConfigTemplateValue,omitnil,omitempty" name:"ConfigTemplateValue"`
 
-	// 配置模板描述
+	// 配置模板描述，最多支持200个字符。
 	ConfigTemplateDesc *string `json:"ConfigTemplateDesc,omitnil,omitempty" name:"ConfigTemplateDesc"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -3313,7 +3327,9 @@ func (r *CreateConfigTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConfigTemplateResponseParams struct {
-	// true：创建成功；false：创建失败
+	// 创建结果。
+	// - true：创建成功
+	// - false：创建失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3338,38 +3354,38 @@ func (r *CreateConfigTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConfigTemplateWithDetailRespRequestParams struct {
-	// 配置模板名称
+	// 配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
 	ConfigTemplateName *string `json:"ConfigTemplateName,omitnil,omitempty" name:"ConfigTemplateName"`
 
-	// 配置模板对应的微服务框架
+	// 配置模板对应的微服务框架。- Ribbon：Ribbon类型配置模板- Hystrix：Hystrix类型配置模板- Zuul：Zuul类型配置模板- customize：自定义类型配置模板。
 	ConfigTemplateType *string `json:"ConfigTemplateType,omitnil,omitempty" name:"ConfigTemplateType"`
 
-	// 配置模板数据
+	// 配置模板数据。
 	ConfigTemplateValue *string `json:"ConfigTemplateValue,omitnil,omitempty" name:"ConfigTemplateValue"`
 
-	// 配置模板描述
+	// 配置模板描述，最多支持200个字符。
 	ConfigTemplateDesc *string `json:"ConfigTemplateDesc,omitnil,omitempty" name:"ConfigTemplateDesc"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
 type CreateConfigTemplateWithDetailRespRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置模板名称
+	// 配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
 	ConfigTemplateName *string `json:"ConfigTemplateName,omitnil,omitempty" name:"ConfigTemplateName"`
 
-	// 配置模板对应的微服务框架
+	// 配置模板对应的微服务框架。- Ribbon：Ribbon类型配置模板- Hystrix：Hystrix类型配置模板- Zuul：Zuul类型配置模板- customize：自定义类型配置模板。
 	ConfigTemplateType *string `json:"ConfigTemplateType,omitnil,omitempty" name:"ConfigTemplateType"`
 
-	// 配置模板数据
+	// 配置模板数据。
 	ConfigTemplateValue *string `json:"ConfigTemplateValue,omitnil,omitempty" name:"ConfigTemplateValue"`
 
-	// 配置模板描述
+	// 配置模板描述，最多支持200个字符。
 	ConfigTemplateDesc *string `json:"ConfigTemplateDesc,omitnil,omitempty" name:"ConfigTemplateDesc"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -3398,7 +3414,7 @@ func (r *CreateConfigTemplateWithDetailRespRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type CreateConfigTemplateWithDetailRespResponseParams struct {
-	// 创建成功，返回 ID
+	// 创建成功，返回配置模板ID。
 	Result *ConfigTemplate `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3423,56 +3439,60 @@ func (r *CreateConfigTemplateWithDetailRespResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type CreateConfigWithDetailRespRequestParams struct {
-	// 配置项名称
+	// 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项值
+	// 配置项值。
 	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
 
-	// 应用ID
+	// 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项值类型
+	// 配置项值类型，固定值。
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
-	// Base64编码的配置项
+	// Base64编码的配置项。
+	// - true：开启
+	// - false：关闭
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
 type CreateConfigWithDetailRespRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项名称
+	// 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项值
+	// 配置项值。
 	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
 
-	// 应用ID
+	// 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项值类型
+	// 配置项值类型，固定值。
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
-	// Base64编码的配置项
+	// Base64编码的配置项。
+	// - true：开启
+	// - false：关闭
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -3504,7 +3524,7 @@ func (r *CreateConfigWithDetailRespRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConfigWithDetailRespResponseParams struct {
-	// 配置项
+	// 配置项。
 	Result *Config `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3751,74 +3771,78 @@ func (r *CreateContainGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileConfigRequestParams struct {
-	// 配置项名称
+	// 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项文件名
+	// 配置项文件名，最多支持60个字符，只能包含英文、数字、"-"（英文）、"_"（英文）、"."（英文）。
 	ConfigFileName *string `json:"ConfigFileName,omitnil,omitempty" name:"ConfigFileName"`
 
 	// 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）
 	ConfigFileValue *string `json:"ConfigFileValue,omitnil,omitempty" name:"ConfigFileValue"`
 
-	// 配置项关联应用ID
+	// 配置项关联应用ID，该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 发布路径
+	// 发布路径。
 	ConfigFilePath *string `json:"ConfigFilePath,omitnil,omitempty" name:"ConfigFilePath"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+	// 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持。
 	ConfigFileCode *string `json:"ConfigFileCode,omitnil,omitempty" name:"ConfigFileCode"`
 
-	// 后置命令
+	// 后置命令。
 	ConfigPostCmd *string `json:"ConfigPostCmd,omitnil,omitempty" name:"ConfigPostCmd"`
 
-	// Base64编码的配置项
+	// Base64编码的配置项。
+	// - true：开启
+	// - false：关闭
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
 type CreateFileConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项名称
+	// 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项文件名
+	// 配置项文件名，最多支持60个字符，只能包含英文、数字、"-"（英文）、"_"（英文）、"."（英文）。
 	ConfigFileName *string `json:"ConfigFileName,omitnil,omitempty" name:"ConfigFileName"`
 
 	// 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）
 	ConfigFileValue *string `json:"ConfigFileValue,omitnil,omitempty" name:"ConfigFileValue"`
 
-	// 配置项关联应用ID
+	// 配置项关联应用ID，该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 发布路径
+	// 发布路径。
 	ConfigFilePath *string `json:"ConfigFilePath,omitnil,omitempty" name:"ConfigFilePath"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+	// 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持。
 	ConfigFileCode *string `json:"ConfigFileCode,omitnil,omitempty" name:"ConfigFileCode"`
 
-	// 后置命令
+	// 后置命令。
 	ConfigPostCmd *string `json:"ConfigPostCmd,omitnil,omitempty" name:"ConfigPostCmd"`
 
-	// Base64编码的配置项
+	// Base64编码的配置项。
+	// - true：开启
+	// - false：关闭
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -3853,7 +3877,9 @@ func (r *CreateFileConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileConfigResponseParams struct {
-	// true：创建成功；false：创建失败
+	// 创建结果。
+	// - true：创建成功
+	// - false：创建失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3878,74 +3904,74 @@ func (r *CreateFileConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileConfigWithDetailRespRequestParams struct {
-	// 配置项名称
+	// 配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项文件名
+	// 配置项文件名，不超过60个字符，只能包含英文、数字、"-"（英文）、"_"（英文）、"."（英文）。
 	ConfigFileName *string `json:"ConfigFileName,omitnil,omitempty" name:"ConfigFileName"`
 
-	// 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）
+	// 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）。
 	ConfigFileValue *string `json:"ConfigFileValue,omitnil,omitempty" name:"ConfigFileValue"`
 
-	// 配置项关联应用ID
+	// 配置项关联应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 发布路径
+	// 发布路径。
 	ConfigFilePath *string `json:"ConfigFilePath,omitnil,omitempty" name:"ConfigFilePath"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+	// 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持。
 	ConfigFileCode *string `json:"ConfigFileCode,omitnil,omitempty" name:"ConfigFileCode"`
 
-	// 后置命令
+	// 后置命令。
 	ConfigPostCmd *string `json:"ConfigPostCmd,omitnil,omitempty" name:"ConfigPostCmd"`
 
 	// Base64编码的配置项
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
 type CreateFileConfigWithDetailRespRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项名称
+	// 配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项文件名
+	// 配置项文件名，不超过60个字符，只能包含英文、数字、"-"（英文）、"_"（英文）、"."（英文）。
 	ConfigFileName *string `json:"ConfigFileName,omitnil,omitempty" name:"ConfigFileName"`
 
-	// 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）
+	// 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）。
 	ConfigFileValue *string `json:"ConfigFileValue,omitnil,omitempty" name:"ConfigFileValue"`
 
-	// 配置项关联应用ID
+	// 配置项关联应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 发布路径
+	// 发布路径。
 	ConfigFilePath *string `json:"ConfigFilePath,omitnil,omitempty" name:"ConfigFilePath"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+	// 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持。
 	ConfigFileCode *string `json:"ConfigFileCode,omitnil,omitempty" name:"ConfigFileCode"`
 
-	// 后置命令
+	// 后置命令。
 	ConfigPostCmd *string `json:"ConfigPostCmd,omitnil,omitempty" name:"ConfigPostCmd"`
 
 	// Base64编码的配置项
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -3980,7 +4006,7 @@ func (r *CreateFileConfigWithDetailRespRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileConfigWithDetailRespResponseParams struct {
-	// 文件配置项
+	// 文件配置项。
 	Result *FileConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4182,32 +4208,32 @@ func (r *CreateGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLaneRequestParams struct {
-	// 泳道名称
+	// 泳道配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
 	LaneName *string `json:"LaneName,omitnil,omitempty" name:"LaneName"`
 
-	// 泳道备注
+	// 泳道配置备注，最多支持200个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 泳道部署组信息
+	// 泳道部署组信息。
 	LaneGroupList []*LaneGroup `json:"LaneGroupList,omitnil,omitempty" name:"LaneGroupList"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
 type CreateLaneRequest struct {
 	*tchttp.BaseRequest
 	
-	// 泳道名称
+	// 泳道配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
 	LaneName *string `json:"LaneName,omitnil,omitempty" name:"LaneName"`
 
-	// 泳道备注
+	// 泳道配置备注，最多支持200个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 泳道部署组信息
+	// 泳道部署组信息。
 	LaneGroupList []*LaneGroup `json:"LaneGroupList,omitnil,omitempty" name:"LaneGroupList"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -4235,7 +4261,7 @@ func (r *CreateLaneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLaneResponseParams struct {
-	// 泳道ID
+	// 泳道配置ID。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4260,44 +4286,48 @@ func (r *CreateLaneResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLaneRuleRequestParams struct {
-	// 泳道规则名称
+	// 灰度发布规则名称，最多支持60个字符，支持中英文字符。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 泳道规则备注
+	// 灰度发布规则备注，最多支持200个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 泳道规则标签列表
+	// 灰度发布规则标签列表。
 	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitnil,omitempty" name:"RuleTagList"`
 
-	// 泳道规则标签关系
+	// 灰度发布规则标签关系。
+	// - RELEATION_AND：与
+	// - RELEATION_OR：或
 	RuleTagRelationship *string `json:"RuleTagRelationship,omitnil,omitempty" name:"RuleTagRelationship"`
 
-	// 泳道Id
+	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
 	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
 type CreateLaneRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 泳道规则名称
+	// 灰度发布规则名称，最多支持60个字符，支持中英文字符。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 泳道规则备注
+	// 灰度发布规则备注，最多支持200个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 泳道规则标签列表
+	// 灰度发布规则标签列表。
 	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitnil,omitempty" name:"RuleTagList"`
 
-	// 泳道规则标签关系
+	// 灰度发布规则标签关系。
+	// - RELEATION_AND：与
+	// - RELEATION_OR：或
 	RuleTagRelationship *string `json:"RuleTagRelationship,omitnil,omitempty" name:"RuleTagRelationship"`
 
-	// 泳道Id
+	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
 	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -4327,7 +4357,7 @@ func (r *CreateLaneRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLaneRuleResponseParams struct {
-	// 泳道规则Id
+	// 灰度发布规则ID。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4352,26 +4382,26 @@ func (r *CreateLaneRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMicroserviceRequestParams struct {
-	// 命名空间ID
+	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 微服务名称
+	// 微服务名称。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceName *string `json:"MicroserviceName,omitnil,omitempty" name:"MicroserviceName"`
 
-	// 微服务描述信息
+	// 微服务备注信息，最多支持200个字符。
 	MicroserviceDesc *string `json:"MicroserviceDesc,omitnil,omitempty" name:"MicroserviceDesc"`
 }
 
 type CreateMicroserviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 命名空间ID
+	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 微服务名称
+	// 微服务名称。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceName *string `json:"MicroserviceName,omitnil,omitempty" name:"MicroserviceName"`
 
-	// 微服务描述信息
+	// 微服务备注信息，最多支持200个字符。
 	MicroserviceDesc *string `json:"MicroserviceDesc,omitnil,omitempty" name:"MicroserviceDesc"`
 }
 
@@ -4398,7 +4428,7 @@ func (r *CreateMicroserviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMicroserviceResponseParams struct {
-	// 新增微服务是否成功。
+	// 新增结果。
 	// true：操作成功。
 	// false：操作失败。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
@@ -4425,26 +4455,26 @@ func (r *CreateMicroserviceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMicroserviceWithDetailRespRequestParams struct {
-	// 命名空间ID
+	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 微服务名称
+	// 微服务名称，最多支持128个字符。
 	MicroserviceName *string `json:"MicroserviceName,omitnil,omitempty" name:"MicroserviceName"`
 
-	// 微服务描述信息
+	// 微服务描述信息，最多支持200个字符。
 	MicroserviceDesc *string `json:"MicroserviceDesc,omitnil,omitempty" name:"MicroserviceDesc"`
 }
 
 type CreateMicroserviceWithDetailRespRequest struct {
 	*tchttp.BaseRequest
 	
-	// 命名空间ID
+	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 微服务名称
+	// 微服务名称，最多支持128个字符。
 	MicroserviceName *string `json:"MicroserviceName,omitnil,omitempty" name:"MicroserviceName"`
 
-	// 微服务描述信息
+	// 微服务描述信息，最多支持200个字符。
 	MicroserviceDesc *string `json:"MicroserviceDesc,omitnil,omitempty" name:"MicroserviceDesc"`
 }
 
@@ -4471,7 +4501,7 @@ func (r *CreateMicroserviceWithDetailRespRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateMicroserviceWithDetailRespResponseParams struct {
-	// 微服务ID
+	// 微服务ID。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4794,50 +4824,54 @@ func (r *CreateProgramResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePublicConfigRequestParams struct {
-	// 配置项名称
+	// 配置名称，最长60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项值，总是接收yaml格式的内容
+	// 配置项值，总是接收yaml格式的内容。
 	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项类型
+	// 配置项类型，固定值。
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
-	// Base64编码的配置项
+	// Base64编码的配置项。
+	// - true：开启
+	// - false：关闭
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
 type CreatePublicConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项名称
+	// 配置名称，最长60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项值，总是接收yaml格式的内容
+	// 配置项值，总是接收yaml格式的内容。
 	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项类型
+	// 配置项类型，固定值。
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
-	// Base64编码的配置项
+	// Base64编码的配置项。
+	// - true：开启
+	// - false：关闭
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -4868,7 +4902,9 @@ func (r *CreatePublicConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePublicConfigResponseParams struct {
-	// true：创建成功；false：创建失败
+	// 创建结果。
+	// - true：创建成功
+	// - false：创建失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4893,50 +4929,54 @@ func (r *CreatePublicConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePublicConfigWithDetailRespRequestParams struct {
-	// 配置项名称
+	// 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置项版本，最多支持60个字符，只能包含小写字母、数字及分隔符("-",".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项值，总是接收yaml格式的内容
+	// 配置项值，总是接收yaml格式的内容。
 	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项类型
+	// 配置项类型，固定值。
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
-	// Base64编码的配置项
+	// Base64编码的配置项。
+	// - true：开启
+	// - false：关闭
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
 type CreatePublicConfigWithDetailRespRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项名称
+	// 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本
+	// 配置项版本，最多支持60个字符，只能包含小写字母、数字及分隔符("-",".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 
-	// 配置项值，总是接收yaml格式的内容
+	// 配置项值，总是接收yaml格式的内容。
 	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
 
-	// 配置项版本描述
+	// 配置项版本描述，最多支持200个字符。
 	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitnil,omitempty" name:"ConfigVersionDesc"`
 
-	// 配置项类型
+	// 配置项类型，固定值。
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
-	// Base64编码的配置项
+	// Base64编码的配置项。
+	// - true：开启
+	// - false：关闭
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitnil,omitempty" name:"EncodeWithBase64"`
 
-	// 无
+	// 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -4967,7 +5007,7 @@ func (r *CreatePublicConfigWithDetailRespRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreatePublicConfigWithDetailRespResponseParams struct {
-	// 公共配置项 ID
+	// 公共配置项ID。
 	Result *Config `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4998,10 +5038,10 @@ type CreateRepositoryRequestParams struct {
 	// 仓库类型（默认仓库：default，私有仓库：private）
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 仓库所在桶名称
+	// 仓库所在桶名称，[存储桶概述和创建](https://cloud.tencent.com/document/product/436/13312)
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
-	// 仓库所在桶地域
+	// 仓库所在桶地域，[存储桶概述和创建](https://cloud.tencent.com/document/product/436/13312)
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
 	// 目录
@@ -5020,10 +5060,10 @@ type CreateRepositoryRequest struct {
 	// 仓库类型（默认仓库：default，私有仓库：private）
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 仓库所在桶名称
+	// 仓库所在桶名称，[存储桶概述和创建](https://cloud.tencent.com/document/product/436/13312)
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
-	// 仓库所在桶地域
+	// 仓库所在桶地域，[存储桶概述和创建](https://cloud.tencent.com/document/product/436/13312)
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
 	// 目录
@@ -5175,16 +5215,16 @@ type CreateTaskRequestParams struct {
 	// 任务内容，长度限制65536个字节
 	TaskContent *string `json:"TaskContent,omitnil,omitempty" name:"TaskContent"`
 
-	// 执行类型，unicast/broadcast
+	// 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
 	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
 
-	// 任务类型,java
+	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务超时时间， 时间单位 ms
+	// 任务超时时间，取值大于0，单位：毫秒（ms）
 	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
 
-	// 部署组ID
+	// 部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 触发规则
@@ -5196,7 +5236,7 @@ type CreateTaskRequestParams struct {
 	// 重试间隔， 0 <= RetryInterval <= 600000， 时间单位 ms
 	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
-	// 分片数量
+	// 分片数量，仅当任务执行方式为分片执行时需要设置该值，取值范围2~1000
 	ShardCount *int64 `json:"ShardCount,omitnil,omitempty" name:"ShardCount"`
 
 	// 分片参数
@@ -5214,7 +5254,7 @@ type CreateTaskRequestParams struct {
 	// 任务参数，长度限制10000个字符
 	TaskArgument *string `json:"TaskArgument,omitnil,omitempty" name:"TaskArgument"`
 
-	// 无
+	// 数据集列表
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -5227,16 +5267,16 @@ type CreateTaskRequest struct {
 	// 任务内容，长度限制65536个字节
 	TaskContent *string `json:"TaskContent,omitnil,omitempty" name:"TaskContent"`
 
-	// 执行类型，unicast/broadcast
+	// 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
 	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
 
-	// 任务类型,java
+	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务超时时间， 时间单位 ms
+	// 任务超时时间，取值大于0，单位：毫秒（ms）
 	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
 
-	// 部署组ID
+	// 部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 触发规则
@@ -5248,7 +5288,7 @@ type CreateTaskRequest struct {
 	// 重试间隔， 0 <= RetryInterval <= 600000， 时间单位 ms
 	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
-	// 分片数量
+	// 分片数量，仅当任务执行方式为分片执行时需要设置该值，取值范围2~1000
 	ShardCount *int64 `json:"ShardCount,omitnil,omitempty" name:"ShardCount"`
 
 	// 分片参数
@@ -5266,7 +5306,7 @@ type CreateTaskRequest struct {
 	// 任务参数，长度限制10000个字符
 	TaskArgument *string `json:"TaskArgument,omitnil,omitempty" name:"TaskArgument"`
 
-	// 无
+	// 数据集列表
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -5833,14 +5873,14 @@ func (r *DeleteClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteConfigRequestParams struct {
-	// 配置项ID
+	// 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 type DeleteConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项ID
+	// 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
@@ -5865,7 +5905,9 @@ func (r *DeleteConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteConfigResponseParams struct {
-	// true：删除成功；false：删除失败
+	// 删除结果。
+	// - true：删除成功
+	// - false：删除失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5890,14 +5932,14 @@ func (r *DeleteConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteConfigTemplateRequestParams struct {
-	// 无
+	// 配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
 	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil,omitempty" name:"ConfigTemplateId"`
 }
 
 type DeleteConfigTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 无
+	// 配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
 	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil,omitempty" name:"ConfigTemplateId"`
 }
 
@@ -6006,14 +6048,14 @@ func (r *DeleteContainerGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteFileConfigRequestParams struct {
-	// 文件配置项ID
+	// 文件配置项ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=file)-详情页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的文件配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 type DeleteFileConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件配置项ID
+	// 文件配置项ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=file)-详情页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的文件配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
@@ -6038,7 +6080,9 @@ func (r *DeleteFileConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteFileConfigResponseParams struct {
-	// 删除结果
+	// 删除结果。
+	// - true：成功
+	// - false：失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6260,14 +6304,14 @@ func (r *DeleteImageTagsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLaneRequestParams struct {
-	// 泳道Idl
+	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
 	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
 }
 
 type DeleteLaneRequest struct {
 	*tchttp.BaseRequest
 	
-	// 泳道Idl
+	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
 	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
 }
 
@@ -6292,7 +6336,9 @@ func (r *DeleteLaneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLaneResponseParams struct {
-	// 删除成功: true / 删除失败: false
+	// 删除结果。
+	// - true：删除成功
+	// - false：删除失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6317,14 +6363,14 @@ func (r *DeleteLaneResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLaneRuleRequestParams struct {
-	// 泳道规则Id
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的泳道规则。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type DeleteLaneRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 泳道规则Id
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的泳道规则。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
@@ -6349,7 +6395,9 @@ func (r *DeleteLaneRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLaneRuleResponseParams struct {
-	// 操作状态
+	// 删除结果。
+	// - true：成功
+	// - false：失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6374,14 +6422,14 @@ func (r *DeleteLaneRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMicroserviceRequestParams struct {
-	// 微服务ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 }
 
 type DeleteMicroserviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 微服务ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 }
 
@@ -6406,9 +6454,9 @@ func (r *DeleteMicroserviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMicroserviceResponseParams struct {
-	// 删除微服务是否成功。
-	// true：操作成功。
-	// false：操作失败。
+	// 删除结果。
+	// - true：操作成功
+	// - false：操作失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6556,32 +6604,32 @@ func (r *DeletePathRewritesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeletePkgsRequestParams struct {
-	// 应用ID
+	// 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 需要删除的程序包ID列表
+	// 软件包ID所形成的列表，软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	PkgIds []*string `json:"PkgIds,omitnil,omitempty" name:"PkgIds"`
 
-	// 程序包仓库类型
+	// 程序包仓库类型（允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库）
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 程序包仓库id
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 }
 
 type DeletePkgsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 需要删除的程序包ID列表
+	// 软件包ID所形成的列表，软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	PkgIds []*string `json:"PkgIds,omitnil,omitempty" name:"PkgIds"`
 
-	// 程序包仓库类型
+	// 程序包仓库类型（允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库）
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 程序包仓库id
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 }
 
@@ -6631,14 +6679,14 @@ func (r *DeletePkgsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeletePublicConfigRequestParams struct {
-	// 配置项ID
+	// 配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 type DeletePublicConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项ID
+	// 配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
@@ -6663,7 +6711,9 @@ func (r *DeletePublicConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeletePublicConfigResponseParams struct {
-	// true：删除成功；false：删除失败
+	// 删除结果。
+	// - true：删除成功
+	// - false：删除失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6688,14 +6738,14 @@ func (r *DeletePublicConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRepositoryRequestParams struct {
-	// 仓库ID
+	// 删除对应仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 }
 
 type DeleteRepositoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 仓库ID
+	// 删除对应仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 }
 
@@ -6802,14 +6852,14 @@ func (r *DeleteServerlessGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTaskRequestParams struct {
-	// 任务ID
+	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DeleteTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
+	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -6834,7 +6884,7 @@ func (r *DeleteTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTaskResponseParams struct {
-	// 删除成功or失败
+	// true：删除成功，false：删除失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8041,38 +8091,52 @@ func (r *DeployGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApiDetailRequestParams struct {
-	// 微服务id
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 请求路径
+	// 请求路径。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 请求方法
+	// 请求方法。
+	// - GET
+	// - POST
+	// - PUT
+	// - DELETE
+	// - HEAD
+	// - PATCH
+	// - OPTIONS
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 包版本
+	// 应用包版本号。
 	PkgVersion *string `json:"PkgVersion,omitnil,omitempty" name:"PkgVersion"`
 
-	// 应用ID
+	// 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
 type DescribeApiDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 微服务id
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 请求路径
+	// 请求路径。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 请求方法
+	// 请求方法。
+	// - GET
+	// - POST
+	// - PUT
+	// - DELETE
+	// - HEAD
+	// - PATCH
+	// - OPTIONS
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 包版本
+	// 应用包版本号。
 	PkgVersion *string `json:"PkgVersion,omitnil,omitempty" name:"PkgVersion"`
 
-	// 应用ID
+	// 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
@@ -8101,7 +8165,7 @@ func (r *DescribeApiDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApiDetailResponseParams struct {
-	// API 详情
+	// API详情。
 	Result *ApiDetailResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8431,26 +8495,40 @@ func (r *DescribeApiUseDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApiVersionsRequestParams struct {
-	// 微服务ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// API 请求路径
+	// API请求路径。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 请求方法
+	// API请求方法。
+	// - GET
+	// - POST
+	// - PUT
+	// - DELETE
+	// - HEAD
+	// - PATCH
+	// - OPTIONS
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 }
 
 type DescribeApiVersionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 微服务ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// API 请求路径
+	// API请求路径。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 请求方法
+	// API请求方法。
+	// - GET
+	// - POST
+	// - PUT
+	// - DELETE
+	// - HEAD
+	// - PATCH
+	// - OPTIONS
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 }
 
@@ -8477,7 +8555,7 @@ func (r *DescribeApiVersionsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApiVersionsResponseParams struct {
-	// API版本列表
+	// API版本列表。
 	Result []*ApiVersionArray `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9127,44 +9205,44 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigReleaseLogsRequestParams struct {
-	// 部署组ID，不传入时查询全量
+	// 部署组ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数，默认为20
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 命名空间ID，不传入时查询全量
+	// 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 集群ID，不传入时查询全量
+	// 集群ID，不传入时查询全量。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 应用ID，不传入时查询全量
+	// 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
 type DescribeConfigReleaseLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID，不传入时查询全量
+	// 部署组ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数，默认为20
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 命名空间ID，不传入时查询全量
+	// 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 集群ID，不传入时查询全量
+	// 集群ID，不传入时查询全量。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 应用ID，不传入时查询全量
+	// 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
@@ -9194,7 +9272,7 @@ func (r *DescribeConfigReleaseLogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigReleaseLogsResponseParams struct {
-	// 分页的配置项发布历史列表
+	// 分页的配置项发布历史列表。
 	Result *TsfPageConfigReleaseLog `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9219,56 +9297,56 @@ func (r *DescribeConfigReleaseLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigReleasesRequestParams struct {
-	// 配置项名称，不传入时查询全量
+	// 配置项名称，不传入时查询全量。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 部署组ID，不传入时查询全量
+	// 部署组ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 命名空间ID，不传入时查询全量
+	// 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 集群ID，不传入时查询全量
+	// 集群ID，不传入时查询全量。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 每页条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 配置ID，不传入时查询全量
+	// 配置ID，不传入时查询全量。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 应用ID，不传入时查询全量
+	// 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
 type DescribeConfigReleasesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项名称，不传入时查询全量
+	// 配置项名称，不传入时查询全量。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 部署组ID，不传入时查询全量
+	// 部署组ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 命名空间ID，不传入时查询全量
+	// 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 集群ID，不传入时查询全量
+	// 集群ID，不传入时查询全量。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 每页条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 配置ID，不传入时查询全量
+	// 配置ID，不传入时查询全量。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 应用ID，不传入时查询全量
+	// 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
@@ -9300,7 +9378,7 @@ func (r *DescribeConfigReleasesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigReleasesResponseParams struct {
-	// 分页的配置发布信息
+	// 分页的配置发布信息。
 	Result *TsfPageConfigRelease `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9325,14 +9403,14 @@ func (r *DescribeConfigReleasesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigRequestParams struct {
-	// 配置项ID
+	// 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 type DescribeConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项ID
+	// 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
@@ -9357,7 +9435,7 @@ func (r *DescribeConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigResponseParams struct {
-	// 配置项
+	// 配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *Config `json:"Result,omitnil,omitempty" name:"Result"`
 
@@ -9383,62 +9461,70 @@ func (r *DescribeConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigSummaryRequestParams struct {
-	// 应用ID，不传入时查询全量
+	// 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 查询关键字，模糊查询：应用名称，配置项名称，不传入时查询全量
+	// 查询关键字，模糊查询：应用名称，配置项名称，不传入时查询全量。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数，默认为20
+	// 返回数量，默认为20，最大值为50。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 按时间排序：creation_time；按名称排序：config_name
+	// 排序字段。
+	// - creation_time：按时间排序
+	// - config_name：按名称排序
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 升序传 0，降序传 1
+	// 排序顺序。
+	// - 0：升序
+	// - 1：降序
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 无
+	// TAG标签资源值。
 	ConfigTagList []*string `json:"ConfigTagList,omitnil,omitempty" name:"ConfigTagList"`
 
-	// 无
+	// 忽略传参，业务预留字段。
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
 
-	// 无
+	// 配置ID列表。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigIdList []*string `json:"ConfigIdList,omitnil,omitempty" name:"ConfigIdList"`
 }
 
 type DescribeConfigSummaryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID，不传入时查询全量
+	// 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 查询关键字，模糊查询：应用名称，配置项名称，不传入时查询全量
+	// 查询关键字，模糊查询：应用名称，配置项名称，不传入时查询全量。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数，默认为20
+	// 返回数量，默认为20，最大值为50。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 按时间排序：creation_time；按名称排序：config_name
+	// 排序字段。
+	// - creation_time：按时间排序
+	// - config_name：按名称排序
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 升序传 0，降序传 1
+	// 排序顺序。
+	// - 0：升序
+	// - 1：降序
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 无
+	// TAG标签资源值。
 	ConfigTagList []*string `json:"ConfigTagList,omitnil,omitempty" name:"ConfigTagList"`
 
-	// 无
+	// 忽略传参，业务预留字段。
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
 
-	// 无
+	// 配置ID列表。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigIdList []*string `json:"ConfigIdList,omitnil,omitempty" name:"ConfigIdList"`
 }
 
@@ -9471,7 +9557,7 @@ func (r *DescribeConfigSummaryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigSummaryResponseParams struct {
-	// 配置项分页对象
+	// 配置项分页对象。
 	Result *TsfPageConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9496,14 +9582,14 @@ func (r *DescribeConfigSummaryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigTemplateRequestParams struct {
-	// 配置模板Id
+	// 配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
 	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil,omitempty" name:"ConfigTemplateId"`
 }
 
 type DescribeConfigTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置模板Id
+	// 配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
 	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil,omitempty" name:"ConfigTemplateId"`
 }
 
@@ -9528,7 +9614,7 @@ func (r *DescribeConfigTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigTemplateResponseParams struct {
-	// 导入结果
+	// 导入结果。
 	Result *ConfigTemplate `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9553,50 +9639,50 @@ func (r *DescribeConfigTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigsRequestParams struct {
-	// 应用ID，不传入时查询全量
+	// 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 配置项ID，不传入时查询全量，高优先级
+	// 配置ID，不传入时查询全量，高优先级。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 配置项ID列表，不传入时查询全量，低优先级
+	// 配置ID列表，不传入时查询全量，低优先级。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigIdList []*string `json:"ConfigIdList,omitnil,omitempty" name:"ConfigIdList"`
 
-	// 配置项名称，精确查询，不传入时查询全量
+	// 配置项名称，精确查询，不传入时查询全量。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本，精确查询，不传入时查询全量
+	// 配置项版本，精确查询，不传入时查询全量。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 }
 
 type DescribeConfigsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID，不传入时查询全量
+	// 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 配置项ID，不传入时查询全量，高优先级
+	// 配置ID，不传入时查询全量，高优先级。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 配置项ID列表，不传入时查询全量，低优先级
+	// 配置ID列表，不传入时查询全量，低优先级。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigIdList []*string `json:"ConfigIdList,omitnil,omitempty" name:"ConfigIdList"`
 
-	// 配置项名称，精确查询，不传入时查询全量
+	// 配置项名称，精确查询，不传入时查询全量。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本，精确查询，不传入时查询全量
+	// 配置项版本，精确查询，不传入时查询全量。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 }
 
@@ -9627,7 +9713,7 @@ func (r *DescribeConfigsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigsResponseParams struct {
-	// 分页后的配置项列表
+	// 分页后的配置项列表。
 	Result *TsfPageConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10042,20 +10128,20 @@ func (r *DescribeContainerGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCreateGatewayApiStatusRequestParams struct {
-	// 所属分组ID
+	// 网关分组ID。该参数可以通过调用 [DescribeApiGroups](https://cloud.tencent.com/document/product/649/50636) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app?tab=middleware&subTab=app)-网关应用详情-Java网关实例-实例详情-分组管理页查看；也可以调用[CreateApiGroup](https://cloud.tencent.com/document/product/649/50641)创建新的网关分组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 微服务ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 }
 
 type DescribeCreateGatewayApiStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 所属分组ID
+	// 网关分组ID。该参数可以通过调用 [DescribeApiGroups](https://cloud.tencent.com/document/product/649/50636) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app?tab=middleware&subTab=app)-网关应用详情-Java网关实例-实例详情-分组管理页查看；也可以调用[CreateApiGroup](https://cloud.tencent.com/document/product/649/50641)创建新的网关分组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 微服务ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 }
 
@@ -10081,7 +10167,9 @@ func (r *DescribeCreateGatewayApiStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCreateGatewayApiStatusResponseParams struct {
-	// 是否已完成导入任务
+	// 导入任务状态执行结果。
+	// - true：已完成
+	// - false：未完成
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10305,32 +10393,32 @@ func (r *DescribeDeliveryConfigsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDownloadInfoRequestParams struct {
-	// 应用ID
+	// 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 程序包ID
+	// 软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
-	// 程序包仓库ID
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 
-	// 程序包仓库类型
+	// 程序包仓库类型（允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库）
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 }
 
 type DescribeDownloadInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 程序包ID
+	// 软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
-	// 程序包仓库ID
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 
-	// 程序包仓库类型
+	// 程序包仓库类型（允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库）
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 }
 
@@ -10440,56 +10528,56 @@ func (r *DescribeEnabledUnitRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileConfigReleasesRequestParams struct {
-	// 配置项ID
+	// 配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 配置项名称
+	// 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”,“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 命名空间ID
+	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 集群ID
+	// 集群ID。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 应用ID
+	// 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeFileConfigReleasesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项ID
+	// 配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 配置项名称
+	// 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”,“_”），且不能以分隔符开头或结尾。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 命名空间ID
+	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 集群ID
+	// 集群ID。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 应用ID
+	// 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -10521,7 +10609,7 @@ func (r *DescribeFileConfigReleasesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileConfigReleasesResponseParams struct {
-	// 配置项发布信息列表
+	// 配置项发布信息列表。
 	Result *TsfPageFileConfigRelease `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10546,50 +10634,50 @@ func (r *DescribeFileConfigReleasesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileConfigsRequestParams struct {
-	// 配置项ID
+	// 配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 配置项ID列表
+	// 配置项ID列表。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
 	ConfigIdList []*string `json:"ConfigIdList,omitnil,omitempty" name:"ConfigIdList"`
 
-	// 配置项名称
+	// 配置项名称。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 应用ID
+	// 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 配置项版本
+	// 配置项版本。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 }
 
 type DescribeFileConfigsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项ID
+	// 配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 配置项ID列表
+	// 配置项ID列表。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
 	ConfigIdList []*string `json:"ConfigIdList,omitnil,omitempty" name:"ConfigIdList"`
 
-	// 配置项名称
+	// 配置项名称。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 应用ID
+	// 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 配置项版本
+	// 配置项版本。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 }
 
@@ -10620,7 +10708,7 @@ func (r *DescribeFileConfigsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileConfigsResponseParams struct {
-	// 文件配置项列表
+	// 文件配置项列表。
 	Result *TsfPageFileConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10645,14 +10733,14 @@ func (r *DescribeFileConfigsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowLastBatchStateRequestParams struct {
-	// 工作流 ID
+	// 工作流 ID。前往[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)，在工作流列表第一列和工作流详情页查看工作流ID。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 type DescribeFlowLastBatchStateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作流 ID
+	// 工作流 ID。前往[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)，在工作流列表第一列和工作流详情页查看工作流ID。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
@@ -11277,14 +11365,14 @@ func (r *DescribeGroupInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupReleaseRequestParams struct {
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DescribeGroupReleaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
@@ -11309,7 +11397,7 @@ func (r *DescribeGroupReleaseRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupReleaseResponseParams struct {
-	// 部署组发布的相关信息
+	// 部署组发布的相关信息。
 	Result *GroupRelease `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12581,38 +12669,38 @@ func (r *DescribeJvmMonitorResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLaneRulesRequestParams struct {
-	// 每页展示的条数
+	// 返回数量，默认为20，最大值为500。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 翻页偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 搜索关键词
+	// 搜索关键词。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 泳道规则ID（用于精确搜索）
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 无
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleIdList []*string `json:"RuleIdList,omitnil,omitempty" name:"RuleIdList"`
 }
 
 type DescribeLaneRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页展示的条数
+	// 返回数量，默认为20，最大值为500。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 翻页偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 搜索关键词
+	// 搜索关键词。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 泳道规则ID（用于精确搜索）
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 无
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleIdList []*string `json:"RuleIdList,omitnil,omitempty" name:"RuleIdList"`
 }
 
@@ -12641,7 +12729,7 @@ func (r *DescribeLaneRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLaneRulesResponseParams struct {
-	// 泳道规则列表
+	// 灰度发布规则列表。
 	Result *LaneRules `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12666,38 +12754,38 @@ func (r *DescribeLaneRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLanesRequestParams struct {
-	// 每页展示的条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 翻页偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 搜索关键字
+	// 搜索关键字。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 无
+	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
 	LaneIdList []*string `json:"LaneIdList,omitnil,omitempty" name:"LaneIdList"`
 
-	// 无
+	// 忽略传参，业务预留字段。
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
 }
 
 type DescribeLanesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页展示的条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 翻页偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 搜索关键字
+	// 搜索关键字。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 无
+	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
 	LaneIdList []*string `json:"LaneIdList,omitnil,omitempty" name:"LaneIdList"`
 
-	// 无
+	// 忽略传参，业务预留字段。
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
 }
 
@@ -12726,7 +12814,7 @@ func (r *DescribeLanesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLanesResponseParams struct {
-	// 泳道列表
+	// 泳道配置列表。
 	Result *LaneInfos `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12873,38 +12961,50 @@ func (r *DescribeLogCapacityResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMicroserviceRequestParams struct {
-	// 微服务ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页个数
+	// 返回数量，默认为20，最大值为50。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 可选，根据部署组ID进行过滤
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。filter name 取值有：id（实例id）、name（实例名）、lan-ip（内网ip）、node-ip（所在节点ip）
+	// 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。
+	// 参考：[{"Name":"LanIp","Values":["172.16.16.139"]}]
+	// filter name 取值范围：
+	// - id：实例ID
+	// - name：实例名
+	// - lan-ip：内网IP
+	// - node-ip：所在节点IP
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeMicroserviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 微服务ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页个数
+	// 返回数量，默认为20，最大值为50。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 可选，根据部署组ID进行过滤
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。filter name 取值有：id（实例id）、name（实例名）、lan-ip（内网ip）、node-ip（所在节点ip）
+	// 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。
+	// 参考：[{"Name":"LanIp","Values":["172.16.16.139"]}]
+	// filter name 取值范围：
+	// - id：实例ID
+	// - name：实例名
+	// - lan-ip：内网IP
+	// - node-ip：所在节点IP
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -12933,7 +13033,7 @@ func (r *DescribeMicroserviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMicroserviceResponseParams struct {
-	// 微服务详情实例列表
+	// 微服务详情实例列表。
 	Result *TsfPageMsInstance `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12958,14 +13058,14 @@ func (r *DescribeMicroserviceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMicroservicesByGroupIdsRequestParams struct {
-	// 部署组ID列表
+	// 部署组ID列表。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 
 type DescribeMicroservicesByGroupIdsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID列表
+	// 部署组ID列表。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 
@@ -12990,7 +13090,7 @@ func (r *DescribeMicroservicesByGroupIdsRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeMicroservicesByGroupIdsResponseParams struct {
-	// 微服务信息分页列表
+	// 微服务信息分页列表。
 	Result *TsfPageMicroservice `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13015,68 +13115,82 @@ func (r *DescribeMicroservicesByGroupIdsResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeMicroservicesRequestParams struct {
-	// 命名空间ID
+	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 搜索字段
+	// 搜索字段。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 排序字段
+	// 排序字段。
+	// - create_time：创建时间
+	// 默认为创建时间，暂不支持其他值。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序类型
+	// 排序类型。
+	// - 1：倒序
+	// 默认为倒序，暂不支持其他值。
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页个数
+	// 返回数量，默认为20，最大值为50。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 状态过滤，online、offline、single_online
+	// 状态。
+	// - online：在线
+	// - offline：离线
+	// - single_online：单点在线
 	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// IdList
+	// 微服务ID列表。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceIdList []*string `json:"MicroserviceIdList,omitnil,omitempty" name:"MicroserviceIdList"`
 
-	// 搜索的服务名列表
+	// 微服务名称列表。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceNameList []*string `json:"MicroserviceNameList,omitnil,omitempty" name:"MicroserviceNameList"`
 
-	// 注册中心实例id
+	// 注册中心实例ID。业务预留参数，忽略传参。
 	ConfigCenterInstanceId *string `json:"ConfigCenterInstanceId,omitnil,omitempty" name:"ConfigCenterInstanceId"`
 }
 
 type DescribeMicroservicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 命名空间ID
+	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 搜索字段
+	// 搜索字段。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 排序字段
+	// 排序字段。
+	// - create_time：创建时间
+	// 默认为创建时间，暂不支持其他值。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序类型
+	// 排序类型。
+	// - 1：倒序
+	// 默认为倒序，暂不支持其他值。
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页个数
+	// 返回数量，默认为20，最大值为50。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 状态过滤，online、offline、single_online
+	// 状态。
+	// - online：在线
+	// - offline：离线
+	// - single_online：单点在线
 	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// IdList
+	// 微服务ID列表。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceIdList []*string `json:"MicroserviceIdList,omitnil,omitempty" name:"MicroserviceIdList"`
 
-	// 搜索的服务名列表
+	// 微服务名称列表。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceNameList []*string `json:"MicroserviceNameList,omitnil,omitempty" name:"MicroserviceNameList"`
 
-	// 注册中心实例id
+	// 注册中心实例ID。业务预留参数，忽略传参。
 	ConfigCenterInstanceId *string `json:"ConfigCenterInstanceId,omitnil,omitempty" name:"ConfigCenterInstanceId"`
 }
 
@@ -13110,7 +13224,7 @@ func (r *DescribeMicroservicesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMicroservicesResponseParams struct {
-	// 微服务分页列表信息
+	// 微服务分页列表信息。
 	Result *TsfPageMicroservice `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13135,32 +13249,32 @@ func (r *DescribeMicroservicesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMsApiListRequestParams struct {
-	// 微服务ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 搜索关键字
+	// 搜索关键字。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 每页的数量
+	// 返回数量，默认为20，最大值为50。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 翻页偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeMsApiListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 微服务ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 搜索关键字
+	// 搜索关键字。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 每页的数量
+	// 返回数量，默认为20，最大值为50。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 翻页偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -13188,7 +13302,7 @@ func (r *DescribeMsApiListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMsApiListResponseParams struct {
-	// 相应结果
+	// 微服务API列表。
 	Result *TsfApiListResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13433,28 +13547,28 @@ func (r *DescribePathRewritesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePkgsRequestParams struct {
-	// 应用ID（只传入应用ID，返回该应用下所有软件包信息）
+	// 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 查询关键字（支持根据包ID，包名，包版本号搜索）
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 排序关键字（默认为"UploadTime"：上传时间）
+	// 排序关键字（默认值"UploadTime"），允许值："UploadTime"上传时间, "name"程序包名, "size"应用大小, "id"程序包ID
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 升序：0/降序：1（默认降序）
 	OrderType *uint64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 查询起始偏移
+	// 查询起始偏移，大于等于0，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量限制
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 程序包仓库类型
+	// 程序包仓库类型，允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 程序包仓库id
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 
 	// 程序包类型数组支持（fatjar jar war tar.gz zip）
@@ -13464,28 +13578,28 @@ type DescribePkgsRequestParams struct {
 type DescribePkgsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID（只传入应用ID，返回该应用下所有软件包信息）
+	// 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 查询关键字（支持根据包ID，包名，包版本号搜索）
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 排序关键字（默认为"UploadTime"：上传时间）
+	// 排序关键字（默认值"UploadTime"），允许值："UploadTime"上传时间, "name"程序包名, "size"应用大小, "id"程序包ID
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 升序：0/降序：1（默认降序）
 	OrderType *uint64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 查询起始偏移
+	// 查询起始偏移，大于等于0，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回数量限制
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 程序包仓库类型
+	// 程序包仓库类型，允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 程序包仓库id
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 
 	// 程序包类型数组支持（fatjar jar war tar.gz zip）
@@ -13801,26 +13915,26 @@ func (r *DescribeProgramsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicConfigReleaseLogsRequestParams struct {
-	// 命名空间ID，不传入时查询全量
+	// 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数，默认为20
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribePublicConfigReleaseLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 命名空间ID，不传入时查询全量
+	// 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数，默认为20
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -13847,7 +13961,7 @@ func (r *DescribePublicConfigReleaseLogsRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribePublicConfigReleaseLogsResponseParams struct {
-	// 分页后的公共配置项发布历史列表
+	// 分页后的公共配置项发布历史列表。
 	Result *TsfPageConfigReleaseLog `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13872,38 +13986,38 @@ func (r *DescribePublicConfigReleaseLogsResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribePublicConfigReleasesRequestParams struct {
-	// 配置项名称，不传入时查询全量
+	// 配置名称，不传入时查询全量。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 命名空间ID，不传入时查询全量
+	// 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 每页条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 配置项ID，不传入时查询全量
+	// 配置项ID，不传入时查询全量。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 type DescribePublicConfigReleasesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项名称，不传入时查询全量
+	// 配置名称，不传入时查询全量。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 命名空间ID，不传入时查询全量
+	// 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 每页条数
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 配置项ID，不传入时查询全量
+	// 配置项ID，不传入时查询全量。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
@@ -13932,7 +14046,7 @@ func (r *DescribePublicConfigReleasesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicConfigReleasesResponseParams struct {
-	// 公共配置发布信息
+	// 公共配置发布信息。
 	Result *TsfPageConfigRelease `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13957,14 +14071,14 @@ func (r *DescribePublicConfigReleasesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicConfigRequestParams struct {
-	// 需要查询的配置项ID
+	// 需要查询的配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 type DescribePublicConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询的配置项ID
+	// 需要查询的配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
@@ -13989,7 +14103,7 @@ func (r *DescribePublicConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicConfigResponseParams struct {
-	// 全局配置
+	// 全局配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *Config `json:"Result,omitnil,omitempty" name:"Result"`
 
@@ -14015,56 +14129,64 @@ func (r *DescribePublicConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicConfigSummaryRequestParams struct {
-	// 查询关键字，模糊查询：配置项名称，不传入时查询全量
+	// 查询关键字，模糊查询：配置项名称，不传入时查询全量。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数，默认为20
+	// 返回数量，默认为20，最大值为50。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 按时间排序：creation_time；按名称排序：config_name
+	// 排序字段。
+	// - creation_time：按时间排序
+	// - config_name：按名称排序
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 升序传 0，降序传 1
+	// 排序顺序。
+	// - 0：升序
+	// - 1：降序
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 无
+	// TAG标签资源值。
 	ConfigTagList []*string `json:"ConfigTagList,omitnil,omitempty" name:"ConfigTagList"`
 
-	// 无
+	// 忽略传参，业务预留字段。
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
 
-	// 无
+	// 配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigIdList []*string `json:"ConfigIdList,omitnil,omitempty" name:"ConfigIdList"`
 }
 
 type DescribePublicConfigSummaryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询关键字，模糊查询：配置项名称，不传入时查询全量
+	// 查询关键字，模糊查询：配置项名称，不传入时查询全量。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数，默认为20
+	// 返回数量，默认为20，最大值为50。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 按时间排序：creation_time；按名称排序：config_name
+	// 排序字段。
+	// - creation_time：按时间排序
+	// - config_name：按名称排序
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 升序传 0，降序传 1
+	// 排序顺序。
+	// - 0：升序
+	// - 1：降序
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 无
+	// TAG标签资源值。
 	ConfigTagList []*string `json:"ConfigTagList,omitnil,omitempty" name:"ConfigTagList"`
 
-	// 无
+	// 忽略传参，业务预留字段。
 	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitnil,omitempty" name:"DisableProgramAuthCheck"`
 
-	// 无
+	// 配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigIdList []*string `json:"ConfigIdList,omitnil,omitempty" name:"ConfigIdList"`
 }
 
@@ -14096,7 +14218,7 @@ func (r *DescribePublicConfigSummaryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicConfigSummaryResponseParams struct {
-	// 分页的全局配置统计信息列表
+	// 分页的全局配置统计信息列表。
 	Result *TsfPageConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14121,44 +14243,44 @@ func (r *DescribePublicConfigSummaryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicConfigsRequestParams struct {
-	// 配置项ID，不传入时查询全量，高优先级
+	// 配置ID。不传入时查询全量，高优先级。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数，默认为20
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 配置项ID列表，不传入时查询全量，低优先级
+	// 配置ID列表，不传入时查询全量，低优先级。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigIdList []*string `json:"ConfigIdList,omitnil,omitempty" name:"ConfigIdList"`
 
-	// 配置项名称，精确查询，不传入时查询全量
+	// 配置项名称，精确查询，不传入时查询全量。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本，精确查询，不传入时查询全量
+	// 配置项版本，精确查询，不传入时查询全量。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 }
 
 type DescribePublicConfigsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项ID，不传入时查询全量，高优先级
+	// 配置ID。不传入时查询全量，高优先级。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数，默认为20
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 配置项ID列表，不传入时查询全量，低优先级
+	// 配置ID列表，不传入时查询全量，低优先级。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigIdList []*string `json:"ConfigIdList,omitnil,omitempty" name:"ConfigIdList"`
 
-	// 配置项名称，精确查询，不传入时查询全量
+	// 配置项名称，精确查询，不传入时查询全量。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置项版本，精确查询，不传入时查询全量
+	// 配置项版本，精确查询，不传入时查询全量。
 	ConfigVersion *string `json:"ConfigVersion,omitnil,omitempty" name:"ConfigVersion"`
 }
 
@@ -14188,7 +14310,7 @@ func (r *DescribePublicConfigsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicConfigsResponseParams struct {
-	// 分页后的全局配置项列表
+	// 分页后的全局配置项列表。
 	Result *TsfPageConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14213,14 +14335,14 @@ func (r *DescribePublicConfigsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReleasedConfigRequestParams struct {
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DescribeReleasedConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
@@ -14245,7 +14367,7 @@ func (r *DescribeReleasedConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReleasedConfigResponseParams struct {
-	// 已发布的配置内容
+	// 已发布的配置内容。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14273,13 +14395,13 @@ type DescribeRepositoriesRequestParams struct {
 	// 查询关键字（按照仓库名称搜索）
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 查询起始偏移
+	// 查询起始偏移，大于等于0，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量限制
+	// 返回数量限制，大于0，默认为不分页
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 仓库类型（默认仓库：default，私有仓库：private）
+	// 仓库类型（默认仓库：default，私有仓库：private，公共仓库：public-demo）
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 }
 
@@ -14289,13 +14411,13 @@ type DescribeRepositoriesRequest struct {
 	// 查询关键字（按照仓库名称搜索）
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 查询起始偏移
+	// 查询起始偏移，大于等于0，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量限制
+	// 返回数量限制，大于0，默认为不分页
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 仓库类型（默认仓库：default，私有仓库：private）
+	// 仓库类型（默认仓库：default，私有仓库：private，公共仓库：public-demo）
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 }
 
@@ -14348,14 +14470,14 @@ func (r *DescribeRepositoriesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRepositoryRequestParams struct {
-	// 仓库ID
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 }
 
 type DescribeRepositoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 仓库ID
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 }
 
@@ -15209,20 +15331,20 @@ func (r *DescribeStatisticsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskDetailRequestParams struct {
-	// 任务ID
+	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务历史ID
+	// 任务历史ID。查询任务列表 [DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136) 返回值字段 TaskLogId
 	TaskLogId *string `json:"TaskLogId,omitnil,omitempty" name:"TaskLogId"`
 }
 
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
+	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务历史ID
+	// 任务历史ID。查询任务列表 [DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136) 返回值字段 TaskLogId
 	TaskLogId *string `json:"TaskLogId,omitnil,omitempty" name:"TaskLogId"`
 }
 
@@ -15273,14 +15395,14 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskLastStatusRequestParams struct {
-	// 任务ID
+	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeTaskLastStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
+	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -15330,56 +15452,56 @@ func (r *DescribeTaskLastStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskRecordsRequestParams struct {
-	// 翻页偏移量。
+	// 翻页偏移量。默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 翻页查询单页数量。
+	// 翻页查询单页数量。默认值为 20，最大值为 1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 模糊查询关键字，支持任务ID和任务名称。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 任务启用状态。enabled/disabled
+	// 任务启用状态。一共2种状态可选，ENABLED：启用，DISABLED：停用
 	TaskState *string `json:"TaskState,omitnil,omitempty" name:"TaskState"`
 
-	// 分组ID。
+	// 部署组ID。前往应用管理 - 应用部署，部署组列表页面获取部署组ID。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 任务类型。
+	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务触发类型，UNICAST、BROADCAST。
+	// 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
 	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
 
-	// 无
+	// 任务ID列表。
 	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DescribeTaskRecordsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 翻页偏移量。
+	// 翻页偏移量。默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 翻页查询单页数量。
+	// 翻页查询单页数量。默认值为 20，最大值为 1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 模糊查询关键字，支持任务ID和任务名称。
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 任务启用状态。enabled/disabled
+	// 任务启用状态。一共2种状态可选，ENABLED：启用，DISABLED：停用
 	TaskState *string `json:"TaskState,omitnil,omitempty" name:"TaskState"`
 
-	// 分组ID。
+	// 部署组ID。前往应用管理 - 应用部署，部署组列表页面获取部署组ID。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 任务类型。
+	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务触发类型，UNICAST、BROADCAST。
+	// 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
 	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
 
-	// 无
+	// 任务ID列表。
 	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
@@ -15854,7 +15976,7 @@ func (r *DescribeUnitRulesV2Response) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUploadInfoRequestParams struct {
-	// 应用ID
+	// 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 程序包名
@@ -15869,17 +15991,17 @@ type DescribeUploadInfoRequestParams struct {
 	// 程序包介绍
 	PkgDesc *string `json:"PkgDesc,omitnil,omitempty" name:"PkgDesc"`
 
-	// 程序包仓库类型
+	// 仓库类型（默认仓库：default，私有仓库：private，公共仓库：public-demo）
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 程序包仓库id
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 }
 
 type DescribeUploadInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 程序包名
@@ -15894,10 +16016,10 @@ type DescribeUploadInfoRequest struct {
 	// 程序包介绍
 	PkgDesc *string `json:"PkgDesc,omitnil,omitempty" name:"PkgDesc"`
 
-	// 程序包仓库类型
+	// 仓库类型（默认仓库：default，私有仓库：private，公共仓库：public-demo）
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 程序包仓库id
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 }
 
@@ -16024,14 +16146,14 @@ func (r *DescribeUsableUnitNamespacesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableLaneRuleRequestParams struct {
-	// 泳道规则ID
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type DisableLaneRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 泳道规则ID
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
@@ -16056,7 +16178,9 @@ func (r *DisableLaneRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableLaneRuleResponseParams struct {
-	// 操作状态。成功：true，失败：false
+	// 操作状态。
+	// - true：成功
+	// - false：失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16081,14 +16205,14 @@ func (r *DisableLaneRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableTaskFlowRequestParams struct {
-	// 工作流 ID
+	// 工作流 ID。前往工作流管理，在工作流列表第一列和工作流详情页查看工作流ID。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 type DisableTaskFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作流 ID
+	// 工作流 ID。前往工作流管理，在工作流列表第一列和工作流详情页查看工作流ID。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
@@ -16138,14 +16262,14 @@ func (r *DisableTaskFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableTaskRequestParams struct {
-	// 任务ID
+	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列或是任务基本信息页查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DisableTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
+	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列或是任务基本信息页查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -16170,7 +16294,7 @@ func (r *DisableTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableTaskResponseParams struct {
-	// 操作成功 or 失败
+	// true：操作成功，false：操作失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16508,14 +16632,14 @@ type EmptyDirOption struct {
 
 // Predefined struct for user
 type EnableLaneRuleRequestParams struct {
-	// 泳道规则ID
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type EnableLaneRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 泳道规则ID
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
@@ -16540,7 +16664,9 @@ func (r *EnableLaneRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableLaneRuleResponseParams struct {
-	// 操作状态。成功：true，失败：false
+	// 操作状态。
+	// - true：成功
+	// - false：失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16565,14 +16691,14 @@ func (r *EnableLaneRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableTaskFlowRequestParams struct {
-	// 工作流 ID
+	// 工作流 ID。前往工作流管理，在工作流列表第一列和工作流详情页查看工作流ID。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 type EnableTaskFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作流 ID
+	// 工作流 ID。前往工作流管理，在工作流列表第一列和工作流详情页查看工作流ID。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
@@ -16622,14 +16748,14 @@ func (r *EnableTaskFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableTaskRequestParams struct {
-	// 启用任务
+	// 任务ID。在任务管理列表页面和任务基本信息页可以查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type EnableTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 启用任务
+	// 任务ID。在任务管理列表页面和任务基本信息页可以查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -16654,7 +16780,7 @@ func (r *EnableTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableTaskResponseParams struct {
-	// 操作成功or失败
+	// true：操作成功，false：操作失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16825,14 +16951,14 @@ type ExclusiveInstance struct {
 
 // Predefined struct for user
 type ExecuteTaskFlowRequestParams struct {
-	// 工作流 ID
+	// 工作流 ID。前往工作流管理，在工作流列表第一列和工作流详情页查看工作流ID。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 type ExecuteTaskFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作流 ID
+	// 工作流 ID。前往工作流管理，在工作流列表第一列和工作流详情页查看工作流ID。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
@@ -16857,7 +16983,7 @@ func (r *ExecuteTaskFlowRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExecuteTaskFlowResponseParams struct {
-	// 工作流批次ID
+	// 操作成功返回工作流批次ID，操作失败返回空字符串。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16882,14 +17008,14 @@ func (r *ExecuteTaskFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExecuteTaskRequestParams struct {
-	// 任务 ID
+	// 任务ID。在任务管理列表页面第一列或是任务基本信息页查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type ExecuteTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务 ID
+	// 任务ID。在任务管理列表页面第一列或是任务基本信息页查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -16914,7 +17040,7 @@ func (r *ExecuteTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExecuteTaskResponseParams struct {
-	// 成功/失败
+	// 操作成功返回任务批次ID，操作失败返回空字符串。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17093,7 +17219,7 @@ type FileConfigRelease struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseDesc *string `json:"ReleaseDesc,omitnil,omitempty" name:"ReleaseDesc"`
 
-	// 发布时间
+	// 发布时间。格式为 YYYY-MM-DD hh:mm:ss。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseTime *string `json:"ReleaseTime,omitnil,omitempty" name:"ReleaseTime"`
 
@@ -18896,26 +19022,26 @@ func (r *ModifyGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLaneRequestParams struct {
-	// 泳道ID
+	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
 	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
 
-	// 泳道名称
+	// 泳道配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
 	LaneName *string `json:"LaneName,omitnil,omitempty" name:"LaneName"`
 
-	// 备注
+	// 备注，最多支持200个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type ModifyLaneRequest struct {
 	*tchttp.BaseRequest
 	
-	// 泳道ID
+	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
 	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
 
-	// 泳道名称
+	// 泳道配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
 	LaneName *string `json:"LaneName,omitnil,omitempty" name:"LaneName"`
 
-	// 备注
+	// 备注，最多支持200个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -18942,7 +19068,9 @@ func (r *ModifyLaneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLaneResponseParams struct {
-	// 更新成功: true / 更新失败: false
+	// 更新结果。
+	// - true：更新成功
+	// - false：更新失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18967,50 +19095,54 @@ func (r *ModifyLaneResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLaneRuleRequestParams struct {
-	// 泳道规则ID
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 泳道规则名称
+	// 灰度发布规则名称，最多支持60个字符，支持中英文字符。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 泳道规则备注
+	// 灰度发布规则备注，最多支持200个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 泳道规则标签列表
+	// 灰度发布规则标签列表。
 	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitnil,omitempty" name:"RuleTagList"`
 
-	// 泳道规则标签关系
+	// 灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或
 	RuleTagRelationship *string `json:"RuleTagRelationship,omitnil,omitempty" name:"RuleTagRelationship"`
 
-	// 泳道ID
+	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
 	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
 
-	// 开启状态
+	// 开启状态。
+	// - true：开启
+	// - false：关闭
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
 type ModifyLaneRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 泳道规则ID
+	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 泳道规则名称
+	// 灰度发布规则名称，最多支持60个字符，支持中英文字符。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 泳道规则备注
+	// 灰度发布规则备注，最多支持200个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 泳道规则标签列表
+	// 灰度发布规则标签列表。
 	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitnil,omitempty" name:"RuleTagList"`
 
-	// 泳道规则标签关系
+	// 灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或
 	RuleTagRelationship *string `json:"RuleTagRelationship,omitnil,omitempty" name:"RuleTagRelationship"`
 
-	// 泳道ID
+	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
 	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
 
-	// 开启状态
+	// 开启状态。
+	// - true：开启
+	// - false：关闭
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
@@ -19041,7 +19173,9 @@ func (r *ModifyLaneRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLaneRuleResponseParams struct {
-	// 操作状态。成功：true，失败：false
+	// 修改结果。
+	// - true：成功
+	// - false：失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19066,20 +19200,20 @@ func (r *ModifyLaneRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMicroserviceRequestParams struct {
-	// 微服务 ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 微服务备注信息
+	// 微服务备注信息，最多支持200个字符。
 	MicroserviceDesc *string `json:"MicroserviceDesc,omitnil,omitempty" name:"MicroserviceDesc"`
 }
 
 type ModifyMicroserviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 微服务 ID
+	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 微服务备注信息
+	// 微服务备注信息，最多支持200个字符。
 	MicroserviceDesc *string `json:"MicroserviceDesc,omitnil,omitempty" name:"MicroserviceDesc"`
 }
 
@@ -19105,9 +19239,9 @@ func (r *ModifyMicroserviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMicroserviceResponseParams struct {
-	// 修改微服务详情是否成功。
-	// true：操作成功。
-	// false：操作失败。
+	// 修改结果。
+	// - true：修改成功
+	// - false：修改失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19380,31 +19514,31 @@ func (r *ModifyProgramResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTaskRequestParams struct {
-	// 任务ID
+	// 任务ID。在任务管理列表页面第一列查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务名称
+	// 任务名称，长度限制为64字符。在任务管理列表页面第一列或是任务基本信息页查看任务名称。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务类型
+	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务内容
+	// 任务内容，长度限制为 65536 字节
 	TaskContent *string `json:"TaskContent,omitnil,omitempty" name:"TaskContent"`
 
-	// 任务执行类型
+	// 任务执行方式，枚举值。unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
 	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
 
 	// 触发规则
 	TaskRule *TaskRule `json:"TaskRule,omitnil,omitempty" name:"TaskRule"`
 
-	// 超时时间，单位 ms
+	// 超时时间，取值大于0，单位：毫秒（ms）
 	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
 
-	// 分组ID
+	// 部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 分片数量
+	// 分片数量，取值范围2~1000
 	ShardCount *int64 `json:"ShardCount,omitnil,omitempty" name:"ShardCount"`
 
 	// 分片参数
@@ -19416,50 +19550,50 @@ type ModifyTaskRequestParams struct {
 	// 判断任务成功的操作符 GT/GTE
 	SuccessOperator *string `json:"SuccessOperator,omitnil,omitempty" name:"SuccessOperator"`
 
-	// 判断任务成功率的阈值
+	// 判断任务成功率的阈值，取值范围：1-100，单位：百分比（%）
 	SuccessRatio *int64 `json:"SuccessRatio,omitnil,omitempty" name:"SuccessRatio"`
 
-	// 重试次数
+	// 重试次数，取值范围 0 - 10，单位：次
 	RetryCount *uint64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
 
-	// 重试间隔
+	// 重试间隔，取值范围 0-600，单位：秒（s）
 	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
 	// 任务参数，长度限制10000个字符
 	TaskArgument *string `json:"TaskArgument,omitnil,omitempty" name:"TaskArgument"`
 
-	// 无
+	// 数据集列表。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
 type ModifyTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
+	// 任务ID。在任务管理列表页面第一列查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务名称
+	// 任务名称，长度限制为64字符。在任务管理列表页面第一列或是任务基本信息页查看任务名称。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务类型
+	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务内容
+	// 任务内容，长度限制为 65536 字节
 	TaskContent *string `json:"TaskContent,omitnil,omitempty" name:"TaskContent"`
 
-	// 任务执行类型
+	// 任务执行方式，枚举值。unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
 	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
 
 	// 触发规则
 	TaskRule *TaskRule `json:"TaskRule,omitnil,omitempty" name:"TaskRule"`
 
-	// 超时时间，单位 ms
+	// 超时时间，取值大于0，单位：毫秒（ms）
 	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
 
-	// 分组ID
+	// 部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 分片数量
+	// 分片数量，取值范围2~1000
 	ShardCount *int64 `json:"ShardCount,omitnil,omitempty" name:"ShardCount"`
 
 	// 分片参数
@@ -19471,19 +19605,19 @@ type ModifyTaskRequest struct {
 	// 判断任务成功的操作符 GT/GTE
 	SuccessOperator *string `json:"SuccessOperator,omitnil,omitempty" name:"SuccessOperator"`
 
-	// 判断任务成功率的阈值
+	// 判断任务成功率的阈值，取值范围：1-100，单位：百分比（%）
 	SuccessRatio *int64 `json:"SuccessRatio,omitnil,omitempty" name:"SuccessRatio"`
 
-	// 重试次数
+	// 重试次数，取值范围 0 - 10，单位：次
 	RetryCount *uint64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
 
-	// 重试间隔
+	// 重试间隔，取值范围 0-600，单位：秒（s）
 	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
 	// 任务参数，长度限制10000个字符
 	TaskArgument *string `json:"TaskArgument,omitnil,omitempty" name:"TaskArgument"`
 
-	// 无
+	// 数据集列表。
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -19524,7 +19658,7 @@ func (r *ModifyTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTaskResponseParams struct {
-	// 更新是否成功
+	// 更新是否成功。true：操作成功、false：操作失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19549,10 +19683,10 @@ func (r *ModifyTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUploadInfoRequestParams struct {
-	// 应用ID
+	// 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 调用DescribeUploadInfo接口时返回的软件包ID
+	// 软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
 	// COS返回上传结果（默认为0：成功，其他值表示失败）
@@ -19567,17 +19701,17 @@ type ModifyUploadInfoRequestParams struct {
 	// 程序包仓库类型
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 程序包仓库id
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 }
 
 type ModifyUploadInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 调用DescribeUploadInfo接口时返回的软件包ID
+	// 软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
 	// COS返回上传结果（默认为0：成功，其他值表示失败）
@@ -19592,7 +19726,7 @@ type ModifyUploadInfoRequest struct {
 	// 程序包仓库类型
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 程序包仓库id
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 }
 
@@ -20260,20 +20394,20 @@ func (r *ReassociateBusinessLogConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RedoTaskBatchRequestParams struct {
-	// 任务ID
+	// 任务ID。在任务管理列表页面可以查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 批次ID
+	// 任务批次ID。在任务管理页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 }
 
 type RedoTaskBatchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
+	// 任务ID。在任务管理列表页面可以查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 批次ID
+	// 任务批次ID。在任务管理页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 }
 
@@ -20299,7 +20433,7 @@ func (r *RedoTaskBatchRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RedoTaskBatchResponseParams struct {
-	// 批次ID
+	// 批次流水ID
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20324,26 +20458,26 @@ func (r *RedoTaskBatchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RedoTaskExecuteRequestParams struct {
-	// 任务批次ID
+	// 任务批次ID。在任务管理页面第一列点击任务ID进入任务详情，进入执行记录列表页，第一列内容即为任务批次ID。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 
-	// 任务执行ID
+	// 任务执行ID。在任务管理页面第一列点击任务ID进入任务详情，进入执行记录页，点击批次ID进入执行详情列表页，第一列即为任务执行ID。
 	ExecuteId *string `json:"ExecuteId,omitnil,omitempty" name:"ExecuteId"`
 
-	// 任务ID
+	// 任务ID。在任务管理列表页面可以查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type RedoTaskExecuteRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务批次ID
+	// 任务批次ID。在任务管理页面第一列点击任务ID进入任务详情，进入执行记录列表页，第一列内容即为任务批次ID。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 
-	// 任务执行ID
+	// 任务执行ID。在任务管理页面第一列点击任务ID进入任务详情，进入执行记录页，点击批次ID进入执行详情列表页，第一列即为任务执行ID。
 	ExecuteId *string `json:"ExecuteId,omitnil,omitempty" name:"ExecuteId"`
 
-	// 任务ID
+	// 任务ID。在任务管理列表页面可以查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -20370,7 +20504,7 @@ func (r *RedoTaskExecuteRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RedoTaskExecuteResponseParams struct {
-	// 成功失败
+	// 成功返回执行批次流水ID。失败返回空字符串。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20395,14 +20529,14 @@ func (r *RedoTaskExecuteResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RedoTaskFlowBatchRequestParams struct {
-	// 工作流批次 ID
+	// 工作流批次 ID。在工作流管理页面，点击第一列的工作流ID进入工作流执行记录列表页面，第一列的内容即为工作流批次ID。
 	FlowBatchId *string `json:"FlowBatchId,omitnil,omitempty" name:"FlowBatchId"`
 }
 
 type RedoTaskFlowBatchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作流批次 ID
+	// 工作流批次 ID。在工作流管理页面，点击第一列的工作流ID进入工作流执行记录列表页面，第一列的内容即为工作流批次ID。
 	FlowBatchId *string `json:"FlowBatchId,omitnil,omitempty" name:"FlowBatchId"`
 }
 
@@ -20427,7 +20561,7 @@ func (r *RedoTaskFlowBatchRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RedoTaskFlowBatchResponseParams struct {
-	// 工作流批次历史 ID
+	// 工作流批次历史 ID。操作失败时不返回该字段，返回错误码。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20452,14 +20586,14 @@ func (r *RedoTaskFlowBatchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RedoTaskRequestParams struct {
-	// 任务ID
+	// 任务ID。在任务管理列表页面第一列查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type RedoTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
+	// 任务ID。在任务管理列表页面第一列查看任务ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -20484,7 +20618,7 @@ func (r *RedoTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RedoTaskResponseParams struct {
-	// 操作成功or失败
+	// 操作成功任务批次ID。操作失败返回空字符串。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20566,26 +20700,26 @@ func (r *ReleaseApiGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleaseConfigRequestParams struct {
-	// 配置ID
+	// 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 发布描述
+	// 发布描述，最多支持200个字符。
 	ReleaseDesc *string `json:"ReleaseDesc,omitnil,omitempty" name:"ReleaseDesc"`
 }
 
 type ReleaseConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置ID
+	// 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 发布描述
+	// 发布描述，最多支持200个字符。
 	ReleaseDesc *string `json:"ReleaseDesc,omitnil,omitempty" name:"ReleaseDesc"`
 }
 
@@ -20612,7 +20746,9 @@ func (r *ReleaseConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleaseConfigResponseParams struct {
-	// true：发布成功；false：发布失败
+	// 发布结果。
+	// - true：发布成功
+	// - false：发布失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20637,26 +20773,26 @@ func (r *ReleaseConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleaseConfigWithDetailRespRequestParams struct {
-	// 配置ID
+	// 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 发布描述
+	// 发布描述，最多支持200个字符。
 	ReleaseDesc *string `json:"ReleaseDesc,omitnil,omitempty" name:"ReleaseDesc"`
 }
 
 type ReleaseConfigWithDetailRespRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置ID
+	// 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 发布描述
+	// 发布描述，最多支持200个字符。
 	ReleaseDesc *string `json:"ReleaseDesc,omitnil,omitempty" name:"ReleaseDesc"`
 }
 
@@ -20683,7 +20819,7 @@ func (r *ReleaseConfigWithDetailRespRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleaseConfigWithDetailRespResponseParams struct {
-	// 配置项发布 ID
+	// 配置项发布ID。
 	Result *ConfigRelease `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20708,26 +20844,26 @@ func (r *ReleaseConfigWithDetailRespResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleaseFileConfigRequestParams struct {
-	// 配置ID
+	// 配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 发布描述
+	// 发布描述，最多支持200个字符。
 	ReleaseDesc *string `json:"ReleaseDesc,omitnil,omitempty" name:"ReleaseDesc"`
 }
 
 type ReleaseFileConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置ID
+	// 配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 部署组ID
+	// 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 发布描述
+	// 发布描述，最多支持200个字符。
 	ReleaseDesc *string `json:"ReleaseDesc,omitnil,omitempty" name:"ReleaseDesc"`
 }
 
@@ -20754,7 +20890,9 @@ func (r *ReleaseFileConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleaseFileConfigResponseParams struct {
-	// 发布结果，成功：true，失败：false。
+	// 发布结果。
+	// - true：成功
+	// - false：失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20779,26 +20917,26 @@ func (r *ReleaseFileConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleasePublicConfigRequestParams struct {
-	// 配置ID
+	// 配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 命名空间ID
+	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 发布描述
+	// 发布描述，最多支持200个字符。
 	ReleaseDesc *string `json:"ReleaseDesc,omitnil,omitempty" name:"ReleaseDesc"`
 }
 
 type ReleasePublicConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置ID
+	// 配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 命名空间ID
+	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 发布描述
+	// 发布描述，最多支持200个字符。
 	ReleaseDesc *string `json:"ReleaseDesc,omitnil,omitempty" name:"ReleaseDesc"`
 }
 
@@ -20825,7 +20963,9 @@ func (r *ReleasePublicConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleasePublicConfigResponseParams struct {
-	// true：发布成功；false：发布失败
+	// 发布结果。
+	// - true：发布成功
+	// - false：发布失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21008,14 +21148,14 @@ type ResourceTaskStatusResult struct {
 
 // Predefined struct for user
 type RevocationConfigRequestParams struct {
-	// 配置项发布ID
+	// 配置项发布ID。该参数可以通过调用 [DescribeConfigReleases](https://cloud.tencent.com/document/product/649/38342) 的返回值中的 ConfigReleaseId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-发布情况页查看。
 	ConfigReleaseId *string `json:"ConfigReleaseId,omitnil,omitempty" name:"ConfigReleaseId"`
 }
 
 type RevocationConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项发布ID
+	// 配置项发布ID。该参数可以通过调用 [DescribeConfigReleases](https://cloud.tencent.com/document/product/649/38342) 的返回值中的 ConfigReleaseId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-发布情况页查看。
 	ConfigReleaseId *string `json:"ConfigReleaseId,omitnil,omitempty" name:"ConfigReleaseId"`
 }
 
@@ -21040,7 +21180,9 @@ func (r *RevocationConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RevocationConfigResponseParams struct {
-	// true：回滚成功；false：回滚失败
+	// 撤回结果。
+	// - true：成功
+	// - false：失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21122,14 +21264,14 @@ func (r *RevocationPublicConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RevokeFileConfigRequestParams struct {
-	// 配置项发布ID
+	// 按照【配置项发布ID】进行撤回。可通过调用[DescribeFileConfigReleases](https://cloud.tencent.com/document/product/649/85855)查询已发布的文件配置列表或登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=file)-查看发布信息-发布情况进行查看；也可以调用[ReleaseFileConfig](https://cloud.tencent.com/document/product/649/58592)发布文件配置。
 	ConfigReleaseId *string `json:"ConfigReleaseId,omitnil,omitempty" name:"ConfigReleaseId"`
 }
 
 type RevokeFileConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项发布ID
+	// 按照【配置项发布ID】进行撤回。可通过调用[DescribeFileConfigReleases](https://cloud.tencent.com/document/product/649/85855)查询已发布的文件配置列表或登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=file)-查看发布信息-发布情况进行查看；也可以调用[ReleaseFileConfig](https://cloud.tencent.com/document/product/649/58592)发布文件配置。
 	ConfigReleaseId *string `json:"ConfigReleaseId,omitnil,omitempty" name:"ConfigReleaseId"`
 }
 
@@ -21179,20 +21321,20 @@ func (r *RevokeFileConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RollbackConfigRequestParams struct {
-	// 配置项发布历史ID
+	// 配置项发布历史ID。该参数可以通过调用 [DescribeConfigReleaseLogs](https://cloud.tencent.com/document/product/649/38343) 的返回值中的 ConfigReleaseLogId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-发布情况页查看。
 	ConfigReleaseLogId *string `json:"ConfigReleaseLogId,omitnil,omitempty" name:"ConfigReleaseLogId"`
 
-	// 回滚描述
+	// 回滚描述，最多支持200个字符。
 	ReleaseDesc *string `json:"ReleaseDesc,omitnil,omitempty" name:"ReleaseDesc"`
 }
 
 type RollbackConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置项发布历史ID
+	// 配置项发布历史ID。该参数可以通过调用 [DescribeConfigReleaseLogs](https://cloud.tencent.com/document/product/649/38343) 的返回值中的 ConfigReleaseLogId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-发布情况页查看。
 	ConfigReleaseLogId *string `json:"ConfigReleaseLogId,omitnil,omitempty" name:"ConfigReleaseLogId"`
 
-	// 回滚描述
+	// 回滚描述，最多支持200个字符。
 	ReleaseDesc *string `json:"ReleaseDesc,omitnil,omitempty" name:"ReleaseDesc"`
 }
 
@@ -21218,7 +21360,9 @@ func (r *RollbackConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RollbackConfigResponseParams struct {
-	// true：回滚成功；false：回滚失败
+	// 回滚结果。
+	// - true：回滚成功
+	// - false：回滚失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21864,20 +22008,20 @@ func (r *ShrinkGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ShrinkInstancesRequestParams struct {
-	// 部署组ID
+	// 部署组ID，可通过调用[获取虚拟机部署组列表](https://cloud.tencent.com/document/api/649/36065)接口时出参中的Result.Content.GroupId，或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-aaaaaaaa&tab=publish&subTab=group)选择对应应用进入应用部署页面查看，同时也是调用[创建部署组](https://cloud.tencent.com/document/api/649/36074)接口返回的Result值
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 下线机器实例ID列表
+	// 实例ID列表，实例ID可通过调用[查询虚拟机部署组云主机列表](https://cloud.tencent.com/document/product/649/36066)接口时出参中的Result.Content.InstanceId，或登录[控制台](https://console.cloud.tencent.com/tsf/resource-detail?rid=1&id=cluster-aaaaaaaa)选择对应的虚拟机集群查看云主机信息，同时也是[集群添加云主机](https://cloud.tencent.com/document/product/649/41225?ls=doc-search!current)接口的的返回值Result中的节点列表
 	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 }
 
 type ShrinkInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID
+	// 部署组ID，可通过调用[获取虚拟机部署组列表](https://cloud.tencent.com/document/api/649/36065)接口时出参中的Result.Content.GroupId，或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-aaaaaaaa&tab=publish&subTab=group)选择对应应用进入应用部署页面查看，同时也是调用[创建部署组](https://cloud.tencent.com/document/api/649/36074)接口返回的Result值
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 下线机器实例ID列表
+	// 实例ID列表，实例ID可通过调用[查询虚拟机部署组云主机列表](https://cloud.tencent.com/document/product/649/36066)接口时出参中的Result.Content.InstanceId，或登录[控制台](https://console.cloud.tencent.com/tsf/resource-detail?rid=1&id=cluster-aaaaaaaa)选择对应的虚拟机集群查看云主机信息，同时也是[集群添加云主机](https://cloud.tencent.com/document/product/649/41225?ls=doc-search!current)接口的的返回值Result中的节点列表
 	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 }
 
@@ -22408,19 +22552,19 @@ type Tag struct {
 }
 
 type TaskFlowEdge struct {
-	// 节点 ID
+	// 节点 ID，节点类型为任务时为任务ID，节点类型为逻辑节点"且"时为 AND，为逻辑节点"或"时为 OR，节点类型为头节点时为字符串"head"
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
-	// 子节点 ID
+	// 子节点 ID，节点类型为任务时为任务ID，节点类型为逻辑节点"且"时为 AND，为逻辑节点"或"时为 OR
 	ChildNodeId *string `json:"ChildNodeId,omitnil,omitempty" name:"ChildNodeId"`
 
 	// 是否核心任务,Y/N
 	CoreNode *string `json:"CoreNode,omitnil,omitempty" name:"CoreNode"`
 
-	// 边类型
+	// 边类型，上下游任务依赖触发关系。一共2个值，Y：成功触发，N：失败触发
 	EdgeType *string `json:"EdgeType,omitnil,omitempty" name:"EdgeType"`
 
-	// 任务节点类型
+	// 任务节点类型，一共有4种类型，AND：逻辑节点且，OR：逻辑节点或，TASK：任务节点，START：头节点
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
 	// X轴坐标位置
@@ -22429,19 +22573,19 @@ type TaskFlowEdge struct {
 	// Y轴坐标位置
 	PositionY *string `json:"PositionY,omitnil,omitempty" name:"PositionY"`
 
-	// 图 ID
+	// 图 ID，新建工作流时自动生成，不需要填写，查看工作流图时后端返回
 	GraphId *string `json:"GraphId,omitnil,omitempty" name:"GraphId"`
 
-	// 工作流 ID
+	// 工作流 ID，新建工作流时自动生成，不需要填写，查看工作流图时后端返回
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 节点名称
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 任务ID
+	// 任务ID，新建工作流时不需要填写，查看工作流图时后端返回
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务历史ID
+	// 任务历史ID，新建工作流时不需要填写，查看工作流图时后端返回
 	TaskLogId *string `json:"TaskLogId,omitnil,omitempty" name:"TaskLogId"`
 }
 
@@ -22479,7 +22623,7 @@ type TaskRecord struct {
 	// 任务类型
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 执行类型
+	// 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
 	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
 
 	// 任务内容，长度限制65535字节
@@ -22488,19 +22632,19 @@ type TaskRecord struct {
 	// 分组ID
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 超时时间
+	// 超时时间，单位：毫秒。
 	TimeOut *int64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
 
 	// 重试次数
 	RetryCount *int64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
 
-	// 重试间隔
+	// 重试间隔，单位：毫秒。
 	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
 	// 触发规则
 	TaskRule *TaskRule `json:"TaskRule,omitnil,omitempty" name:"TaskRule"`
 
-	// 是否启用任务,ENABLED/DISABLED
+	// 任务启用状态。一共2种状态可选，ENABLED：启用，DISABLED：停用
 	TaskState *string `json:"TaskState,omitnil,omitempty" name:"TaskState"`
 
 	// 任务ID
@@ -22527,7 +22671,7 @@ type TaskRecord struct {
 	// 任务历史ID
 	TaskLogId *string `json:"TaskLogId,omitnil,omitempty" name:"TaskLogId"`
 
-	// 触发类型
+	// 触发类型，一共3种类型，WorkFlow：工作流触发，Cron：定时触发，FixRate：周期触发
 	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
 	// 任务参数，长度限制10000个字符
@@ -22543,7 +22687,7 @@ type TaskRecordPage struct {
 }
 
 type TaskRule struct {
-	// 触发规则类型, Cron/Repeat
+	// 触发规则类型，枚举值。一共3个值，Cron：定时触发，Repeat：周期触发，WorkFlow：工作流触发
 	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
 	// Cron类型规则，cron表达式。
@@ -22573,14 +22717,14 @@ type TcrRepoInfo struct {
 
 // Predefined struct for user
 type TerminateTaskFlowBatchRequestParams struct {
-	// 工作流批次 ID
+	// 工作流批次 ID，在[工作流执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=taskflow)列表页第一列获取。
 	FlowBatchId *string `json:"FlowBatchId,omitnil,omitempty" name:"FlowBatchId"`
 }
 
 type TerminateTaskFlowBatchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作流批次 ID
+	// 工作流批次 ID，在[工作流执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=taskflow)列表页第一列获取。
 	FlowBatchId *string `json:"FlowBatchId,omitnil,omitempty" name:"FlowBatchId"`
 }
 
@@ -22605,7 +22749,7 @@ func (r *TerminateTaskFlowBatchRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TerminateTaskFlowBatchResponseParams struct {
-	// 是否停止成功
+	// 是否停止成功，true：停止成功，false：停止失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22663,7 +22807,9 @@ type TsfApiListResponse struct {
 }
 
 type TsfConfigCenter struct {
-	// 配置中心类型
+	// 配置中心类型。
+	// - SHARE：共享型
+	// - EXCLUSIVE：独占型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
@@ -23459,38 +23605,46 @@ func (r *UpdateApiTimeoutsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateConfigTemplateRequestParams struct {
-	// 配置模板id
+	// 配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
 	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil,omitempty" name:"ConfigTemplateId"`
 
-	// 配置模板名称
+	// 配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
 	ConfigTemplateName *string `json:"ConfigTemplateName,omitnil,omitempty" name:"ConfigTemplateName"`
 
-	// 配置模板对应的微服务框架
+	// 配置模板对应的微服务框架。
+	// - Ribbon：Ribbon类型配置模板
+	// - Hystrix：Hystrix类型配置模板
+	// - Zuul：Zuul类型配置模板
+	// - customize：自定义类型配置模板
 	ConfigTemplateType *string `json:"ConfigTemplateType,omitnil,omitempty" name:"ConfigTemplateType"`
 
-	// 配置模板数据
+	// 配置模板数据。
 	ConfigTemplateValue *string `json:"ConfigTemplateValue,omitnil,omitempty" name:"ConfigTemplateValue"`
 
-	// 配置模板描述
+	// 配置模板描述，最多支持200个字符。
 	ConfigTemplateDesc *string `json:"ConfigTemplateDesc,omitnil,omitempty" name:"ConfigTemplateDesc"`
 }
 
 type UpdateConfigTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 配置模板id
+	// 配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
 	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil,omitempty" name:"ConfigTemplateId"`
 
-	// 配置模板名称
+	// 配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
 	ConfigTemplateName *string `json:"ConfigTemplateName,omitnil,omitempty" name:"ConfigTemplateName"`
 
-	// 配置模板对应的微服务框架
+	// 配置模板对应的微服务框架。
+	// - Ribbon：Ribbon类型配置模板
+	// - Hystrix：Hystrix类型配置模板
+	// - Zuul：Zuul类型配置模板
+	// - customize：自定义类型配置模板
 	ConfigTemplateType *string `json:"ConfigTemplateType,omitnil,omitempty" name:"ConfigTemplateType"`
 
-	// 配置模板数据
+	// 配置模板数据。
 	ConfigTemplateValue *string `json:"ConfigTemplateValue,omitnil,omitempty" name:"ConfigTemplateValue"`
 
-	// 配置模板描述
+	// 配置模板描述，最多支持200个字符。
 	ConfigTemplateDesc *string `json:"ConfigTemplateDesc,omitnil,omitempty" name:"ConfigTemplateDesc"`
 }
 
@@ -23519,7 +23673,9 @@ func (r *UpdateConfigTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateConfigTemplateResponseParams struct {
-	// 更新成功: true / 更新失败: false
+	// 更新结果。
+	// - true：成功
+	// - false：失败
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23709,7 +23865,7 @@ func (r *UpdateHealthCheckSettingsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateRepositoryRequestParams struct {
-	// 仓库ID
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 
 	// 仓库描述
@@ -23719,7 +23875,7 @@ type UpdateRepositoryRequestParams struct {
 type UpdateRepositoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 仓库ID
+	// 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 
 	// 仓库描述

@@ -32,6 +32,9 @@ const (
 	// 桶内无相应前缀文件，请使用正确的桶、文件前缀和压缩方式。
 	FAILEDOPERATION_BUCKETNOFILE = "FailedOperation.BucketNoFile"
 
+	// 调用云产品接口异常
+	FAILEDOPERATION_CLOUDPRODUCTINVOCATIONERROR = "FailedOperation.CloudProductInvocationError"
+
 	// 文件解压缩失败，请选择正确的压缩方式。
 	FAILEDOPERATION_DECOMPRESSFILE = "FailedOperation.DecompressFile"
 

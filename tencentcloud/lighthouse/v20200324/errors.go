@@ -65,6 +65,9 @@ const (
 	// 查询云硬盘是否可以退还操作失败。
 	FAILEDOPERATION_DESCRIBEDISKSRETURNABLEERROR = "FailedOperation.DescribeDisksReturnableError"
 
+	// 查询CVM镜像列表失败。
+	FAILEDOPERATION_DESCRIBEIMAGESFAILED = "FailedOperation.DescribeImagesFailed"
+
 	// 查询实例状态错误。
 	FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 
@@ -91,6 +94,9 @@ const (
 
 	// 对防火墙规则的操作失败。
 	FAILEDOPERATION_FIREWALLRULESOPERATIONFAILED = "FailedOperation.FirewallRulesOperationFailed"
+
+	// 操作镜像失败。
+	FAILEDOPERATION_IMAGEOPERATIONFAILED = "FailedOperation.ImageOperationFailed"
 
 	// 对密钥对的导入操作失败。
 	FAILEDOPERATION_IMPORTKEYPAIRFAILED = "FailedOperation.ImportKeyPairFailed"
@@ -380,6 +386,9 @@ const (
 	// 云硬盘类型非法。
 	INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
 
+	// 镜像ID格式非法。
+	INVALIDPARAMETERVALUE_INVALIDIMAGEIDMALFORMED = "InvalidParameterValue.InvalidImageIdMalformed"
+
 	// 参数值非法，IP 地址格式非法。
 	INVALIDPARAMETERVALUE_INVALIDIPFORMAT = "InvalidParameterValue.InvalidIpFormat"
 
@@ -569,6 +578,9 @@ const (
 	// 磁盘备份点正在使用中，不支持此操作。
 	RESOURCEINUSE_DISKBACKUPINUSE = "ResourceInUse.DiskBackupInUse"
 
+	// 镜像在使用中，不支持此操作。
+	RESOURCEINUSE_IMAGEINUSE = "ResourceInUse.ImageInUse"
+
 	// 密钥对正在使用中。
 	RESOURCEINUSE_KEYPAIRINUSE = "ResourceInUse.KeyPairInUse"
 
@@ -613,6 +625,9 @@ const (
 
 	// 防火墙模板规则不存在。
 	RESOURCENOTFOUND_FIREWALLTEMPLATERULENOTFOUND = "ResourceNotFound.FirewallTemplateRuleNotFound"
+
+	// 镜像ID不存在。
+	RESOURCENOTFOUND_IMAGEIDNOTFOUND = "ResourceNotFound.ImageIdNotFound"
 
 	// 实例镜像不存在。
 	RESOURCENOTFOUND_INSTANCEBLUEPRINTNOTFOUND = "ResourceNotFound.InstanceBlueprintNotFound"
@@ -719,6 +734,9 @@ const (
 	// 将磁盘备份点回滚到其他盘，不支持该操作。
 	UNSUPPORTEDOPERATION_APPLYDISKBACKUPTOANOTHERDISK = "UnsupportedOperation.ApplyDiskBackupToAnotherDisk"
 
+	// 获取角色授权失败，请授予 Lighthouse 相关角色后进行重试。
+	UNSUPPORTEDOPERATION_ASSUMEROLEFAILED = "UnsupportedOperation.AssumeRoleFailed"
+
 	// 没有实例不支持关联到云联网。
 	UNSUPPORTEDOPERATION_ATTACHCCNCONDITIONUNSATISFIED = "UnsupportedOperation.AttachCcnConditionUnsatisfied"
 
@@ -769,6 +787,15 @@ const (
 
 	// 指定的防火墙版本号和当前版本不一致。
 	UNSUPPORTEDOPERATION_FIREWALLVERSIONMISMATCH = "UnsupportedOperation.FirewallVersionMismatch"
+
+	// 镜像已经被共享。不支持此操作。
+	UNSUPPORTEDOPERATION_IMAGEALREADYSHARED = "UnsupportedOperation.ImageAlreadyShared"
+
+	// 镜像整在被资源进行操作，镜像被占用，不支持此操作。请稍后再试。
+	UNSUPPORTEDOPERATION_IMAGEOCCUPIED = "UnsupportedOperation.ImageOccupied"
+
+	// 镜像不支持共享。
+	UNSUPPORTEDOPERATION_IMAGEUNABLETOSHARE = "UnsupportedOperation.ImageUnableToShare"
 
 	// 实例展示区域不支持该操作。
 	UNSUPPORTEDOPERATION_INSTANCEDISPLAYAREANOTSUPPORTOPERATION = "UnsupportedOperation.InstanceDisplayAreaNotSupportOperation"

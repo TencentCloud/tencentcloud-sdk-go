@@ -101,6 +101,7 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ERRTEXTTIMEOUT = "InternalError.ErrTextTimeOut"
+//  INTERNALERROR_QUERYREQLIMITED = "InternalError.QueryReqLimited"
 //  INVALIDPARAMETER_ERRACTION = "InvalidParameter.ErrAction"
 //  INVALIDPARAMETER_ERRTEXTCONTENTLEN = "InvalidParameter.ErrTextContentLen"
 //  INVALIDPARAMETER_ERRTEXTCONTENTTYPE = "InvalidParameter.ErrTextContentType"
@@ -152,6 +153,7 @@ func (c *Client) TextModeration(request *TextModerationRequest) (response *TextM
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ERRTEXTTIMEOUT = "InternalError.ErrTextTimeOut"
+//  INTERNALERROR_QUERYREQLIMITED = "InternalError.QueryReqLimited"
 //  INVALIDPARAMETER_ERRACTION = "InvalidParameter.ErrAction"
 //  INVALIDPARAMETER_ERRTEXTCONTENTLEN = "InvalidParameter.ErrTextContentLen"
 //  INVALIDPARAMETER_ERRTEXTCONTENTTYPE = "InvalidParameter.ErrTextContentType"

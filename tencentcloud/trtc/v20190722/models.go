@@ -149,6 +149,11 @@ type AudioEncodeParams struct {
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
+type AudioFormat struct {
+	// 生成的音频格式，默认pcm，目前支持的格式列表：[pcm]。
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
 type AudioParams struct {
 	// 音频采样率枚举值:(注意1 代表48000HZ, 2 代表44100HZ, 3 代表16000HZ)
 	// 1：48000Hz（默认）;
@@ -6945,6 +6950,173 @@ type TencentVod struct {
 	UserDefineRecordId *string `json:"UserDefineRecordId,omitnil,omitempty" name:"UserDefineRecordId"`
 }
 
+// Predefined struct for user
+type TextToSpeechRequestParams struct {
+	// 需要转语音的文字内容，长度范围：[1, 255]
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本转语音的声音配置
+	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 文本转语音的输出音频的格式
+	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+}
+
+type TextToSpeechRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要转语音的文字内容，长度范围：[1, 255]
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本转语音的声音配置
+	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 文本转语音的输出音频的格式
+	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+}
+
+func (r *TextToSpeechRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "Voice")
+	delete(f, "SdkAppId")
+	delete(f, "AudioFormat")
+	delete(f, "APIKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextToSpeechResponseParams struct {
+	// Base64编码的音频数据
+	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TextToSpeechResponse struct {
+	*tchttp.BaseResponse
+	Response *TextToSpeechResponseParams `json:"Response"`
+}
+
+func (r *TextToSpeechResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextToSpeechSSERequestParams struct {
+	// 需要转语音的文字内容，长度范围：[1, 255]
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本转语音的声音配置
+	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 文本转语音的输出音频的格式
+	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+}
+
+type TextToSpeechSSERequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要转语音的文字内容，长度范围：[1, 255]
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本转语音的声音配置
+	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 文本转语音的输出音频的格式
+	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+}
+
+func (r *TextToSpeechSSERequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechSSERequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "Voice")
+	delete(f, "SdkAppId")
+	delete(f, "AudioFormat")
+	delete(f, "APIKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechSSERequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextToSpeechSSEResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TextToSpeechSSEResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *TextToSpeechSSEResponseParams `json:"Response"`
+}
+
+func (r *TextToSpeechSSEResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechSSEResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TimeValue struct {
 	// 时间，unix时间戳（1590065877s)
 	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
@@ -7481,6 +7653,96 @@ type VideoParams struct {
 
 	// 视频关键帧时间间隔，单位秒，默认值10秒。
 	Gop *uint64 `json:"Gop,omitnil,omitempty" name:"Gop"`
+}
+
+type Voice struct {
+	// TTS的声音的ID
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+}
+
+// Predefined struct for user
+type VoiceCloneRequestParams struct {
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+
+	// 声音克隆的名字
+	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
+
+	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
+	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
+
+	// 声音克隆的参考文本，为参考音频对应的文字。
+	PromptText *string `json:"PromptText,omitnil,omitempty" name:"PromptText"`
+}
+
+type VoiceCloneRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+
+	// 声音克隆的名字
+	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
+
+	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
+	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
+
+	// 声音克隆的参考文本，为参考音频对应的文字。
+	PromptText *string `json:"PromptText,omitnil,omitempty" name:"PromptText"`
+}
+
+func (r *VoiceCloneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoiceCloneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "APIKey")
+	delete(f, "VoiceName")
+	delete(f, "PromptAudio")
+	delete(f, "PromptText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoiceCloneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoiceCloneResponseParams struct {
+	// 克隆出的音色ID，可以用此id进行语音合成
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VoiceCloneResponse struct {
+	*tchttp.BaseResponse
+	Response *VoiceCloneResponseParams `json:"Response"`
+}
+
+func (r *VoiceCloneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoiceCloneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VoicePrint struct {

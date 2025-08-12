@@ -3263,56 +3263,6 @@ func (c *Client) ListAppWithContext(ctx context.Context, request *ListAppRequest
     return
 }
 
-func NewListAppCategoryRequest() (request *ListAppCategoryRequest) {
-    request = &ListAppCategoryRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "ListAppCategory")
-    
-    
-    return
-}
-
-func NewListAppCategoryResponse() (response *ListAppCategoryResponse) {
-    response = &ListAppCategoryResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ListAppCategory
-// 应用类型列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ListAppCategory(request *ListAppCategoryRequest) (response *ListAppCategoryResponse, err error) {
-    return c.ListAppCategoryWithContext(context.Background(), request)
-}
-
-// ListAppCategory
-// 应用类型列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ListAppCategoryWithContext(ctx context.Context, request *ListAppCategoryRequest) (response *ListAppCategoryResponse, err error) {
-    if request == nil {
-        request = NewListAppCategoryRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "lke", APIVersion, "ListAppCategory")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ListAppCategory require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewListAppCategoryResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewListAppKnowledgeDetailRequest() (request *ListAppKnowledgeDetailRequest) {
     request = &ListAppKnowledgeDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

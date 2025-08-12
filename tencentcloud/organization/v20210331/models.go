@@ -4635,19 +4635,19 @@ func (r *DescribePolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourceToShareMemberRequestParams struct {
-	// 地域
+	// 共享地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 偏移量
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数
+	// 限制数目。取值范围：1~50。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键字，支持业务资源ID搜索
+	// 搜索关键字，支持业务资源ID搜索。
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 资源类型
+	// 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 业务资源ID。最大50个
@@ -4657,19 +4657,19 @@ type DescribeResourceToShareMemberRequestParams struct {
 type DescribeResourceToShareMemberRequest struct {
 	*tchttp.BaseRequest
 	
-	// 地域
+	// 共享地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 偏移量
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数
+	// 限制数目。取值范围：1~50。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键字，支持业务资源ID搜索
+	// 搜索关键字，支持业务资源ID搜索。
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 资源类型
+	// 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 业务资源ID。最大50个
@@ -9424,26 +9424,25 @@ type ShareResource struct {
 }
 
 type ShareResourceToMember struct {
-	// 资源ID
+	// 共享单元资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源类型
+	// 资源类型。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 共享单元ID
+	// 共享单元ID。
 	UnitId *string `json:"UnitId,omitnil,omitempty" name:"UnitId"`
 
-	// 共享单元名
+	// 共享单元名称。
 	UnitName *string `json:"UnitName,omitnil,omitempty" name:"UnitName"`
 
-	// 创建时间
+	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 业务资源ID
+	// 业务资源ID。
 	ProductResourceId *string `json:"ProductResourceId,omitnil,omitempty" name:"ProductResourceId"`
 
-	// 共享管理员uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 共享账号Uin。
 	ShareManagerUin *int64 `json:"ShareManagerUin,omitnil,omitempty" name:"ShareManagerUin"`
 }
 

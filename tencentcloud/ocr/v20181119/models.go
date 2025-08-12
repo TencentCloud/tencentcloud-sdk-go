@@ -1237,6 +1237,11 @@ type CardWarnInfo struct {
 
 	// 模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5
 	BlurScore *float64 `json:"BlurScore,omitnil,omitempty" name:"BlurScore"`
+
+	// 是否电子身份证
+	// 0：否
+	// 1：是电子身份证
+	ElectronCheck *int64 `json:"ElectronCheck,omitnil,omitempty" name:"ElectronCheck"`
 }
 
 type CellContent struct {
@@ -9600,6 +9605,9 @@ type RecognizeValidIDCardOCRRequestParams struct {
 
 	// 默认值为false，打开返回证件是否模糊。
 	EnableQualityCheck *bool `json:"EnableQualityCheck,omitnil,omitempty" name:"EnableQualityCheck"`
+
+	// 默认值为false，打开返回是否存在电子身份证判断。
+	EnableElectronCheck *bool `json:"EnableElectronCheck,omitnil,omitempty" name:"EnableElectronCheck"`
 }
 
 type RecognizeValidIDCardOCRRequest struct {
@@ -9653,6 +9661,9 @@ type RecognizeValidIDCardOCRRequest struct {
 
 	// 默认值为false，打开返回证件是否模糊。
 	EnableQualityCheck *bool `json:"EnableQualityCheck,omitnil,omitempty" name:"EnableQualityCheck"`
+
+	// 默认值为false，打开返回是否存在电子身份证判断。
+	EnableElectronCheck *bool `json:"EnableElectronCheck,omitnil,omitempty" name:"EnableElectronCheck"`
 }
 
 func (r *RecognizeValidIDCardOCRRequest) ToJsonString() string {
@@ -9679,6 +9690,7 @@ func (r *RecognizeValidIDCardOCRRequest) FromJsonString(s string) error {
 	delete(f, "EnablePSCheck")
 	delete(f, "EnableWordCheck")
 	delete(f, "EnableQualityCheck")
+	delete(f, "EnableElectronCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeValidIDCardOCRRequest has unknown keys!", "")
 	}

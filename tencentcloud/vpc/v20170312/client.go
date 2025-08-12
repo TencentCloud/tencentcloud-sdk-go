@@ -1447,7 +1447,7 @@ func NewAssociateHaVipInstanceResponse() (response *AssociateHaVipInstanceRespon
 }
 
 // AssociateHaVipInstance
-// 本接口（AssociateHaVipInstance）用于HAVIP绑定子机或网卡（限制HaVip的飘移范围）。
+// 本接口（AssociateHaVipInstance）用于HAVIP绑定子机或网卡（限制HaVip的漂移范围）。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1463,7 +1463,7 @@ func (c *Client) AssociateHaVipInstance(request *AssociateHaVipInstanceRequest) 
 }
 
 // AssociateHaVipInstance
-// 本接口（AssociateHaVipInstance）用于HAVIP绑定子机或网卡（限制HaVip的飘移范围）。
+// 本接口（AssociateHaVipInstance）用于HAVIP绑定子机或网卡（限制HaVip的漂移范围）。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

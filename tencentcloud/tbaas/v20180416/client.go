@@ -984,6 +984,7 @@ func NewInvokeChainMakerContractResponse() (response *InvokeChainMakerContractRe
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEINVOKEFAILED = "FailedOperation.ChainMakerChaincodeInvokeFailed"
 //  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
 //  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
 //  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
@@ -1034,6 +1035,7 @@ func (c *Client) InvokeChainMakerContract(request *InvokeChainMakerContractReque
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEINVOKEFAILED = "FailedOperation.ChainMakerChaincodeInvokeFailed"
 //  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
 //  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
 //  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
@@ -1472,6 +1474,7 @@ func NewQueryChainMakerContractResponse() (response *QueryChainMakerContractResp
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEQUERYFAILED = "FailedOperation.ChainMakerChaincodeQueryFailed"
 //  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
 //  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
 //  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
@@ -1522,6 +1525,7 @@ func (c *Client) QueryChainMakerContract(request *QueryChainMakerContractRequest
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEQUERYFAILED = "FailedOperation.ChainMakerChaincodeQueryFailed"
 //  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
 //  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
 //  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"

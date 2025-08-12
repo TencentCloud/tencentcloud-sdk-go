@@ -1797,10 +1797,10 @@ type CreateInstancePreRequestParams struct {
 	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 私有网络Id，必填
+	// 私有网络Id
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网id，必填
+	// 子网id
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
@@ -1867,10 +1867,10 @@ type CreateInstancePreRequest struct {
 	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 私有网络Id，必填
+	// 私有网络Id
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网id，必填
+	// 子网id
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
@@ -2077,11 +2077,11 @@ func (r *CreatePartitionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePostPaidInstanceRequestParams struct {
+	// 私有网络Id  创建的实例默认接入点所在的 vpc 对应 vpcId
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
 	// ckafka集群实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
-
-	// 私有网络Id  创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网id。创建实例默认接入点所在的子网对应的子网 id
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
@@ -2141,11 +2141,11 @@ type CreatePostPaidInstanceRequestParams struct {
 type CreatePostPaidInstanceRequest struct {
 	*tchttp.BaseRequest
 	
+	// 私有网络Id  创建的实例默认接入点所在的 vpc 对应 vpcId
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
 	// ckafka集群实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
-
-	// 私有网络Id  创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网id。创建实例默认接入点所在的子网对应的子网 id
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
@@ -2214,8 +2214,8 @@ func (r *CreatePostPaidInstanceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "InstanceName")
 	delete(f, "VpcId")
+	delete(f, "InstanceName")
 	delete(f, "SubnetId")
 	delete(f, "InstanceType")
 	delete(f, "MsgRetentionTime")
@@ -7118,7 +7118,7 @@ type FetchDatahubMessageByOffsetRequestParams struct {
 	// 分区id
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 位点信息，必填
+	// 位点信息
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -7131,7 +7131,7 @@ type FetchDatahubMessageByOffsetRequest struct {
 	// 分区id
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 位点信息，必填
+	// 位点信息
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -7270,7 +7270,7 @@ type FetchMessageByOffsetRequestParams struct {
 	// 分区id
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 位点信息，必填
+	// 位点信息
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -7286,7 +7286,7 @@ type FetchMessageByOffsetRequest struct {
 	// 分区id
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 位点信息，必填
+	// 位点信息
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 

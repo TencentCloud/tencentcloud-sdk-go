@@ -7117,11 +7117,7 @@ type DescribeBillBandwidthAndFluxListRequestParams struct {
 	// 直播播放域名，若不填，表示总体数据。
 	PlayDomains []*string `json:"PlayDomains,omitnil,omitempty" name:"PlayDomains"`
 
-	// 可选值：
-	// Mainland：查询国内数据，
-	// Oversea：则查询国外数据，
-	// 默认：查询国内+国外的数据。
-	// 注：LEB（快直播）只支持国内+国外数据查询。
+	// 可选值：Mainland：查询国内数据，Oversea：则查询国外数据，默认：查询国内+国外的数据。
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitnil,omitempty" name:"MainlandOrOversea"`
 
 	// 数据粒度，支持如下粒度：
@@ -7164,11 +7160,7 @@ type DescribeBillBandwidthAndFluxListRequest struct {
 	// 直播播放域名，若不填，表示总体数据。
 	PlayDomains []*string `json:"PlayDomains,omitnil,omitempty" name:"PlayDomains"`
 
-	// 可选值：
-	// Mainland：查询国内数据，
-	// Oversea：则查询国外数据，
-	// 默认：查询国内+国外的数据。
-	// 注：LEB（快直播）只支持国内+国外数据查询。
+	// 可选值：Mainland：查询国内数据，Oversea：则查询国外数据，默认：查询国内+国外的数据。
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitnil,omitempty" name:"MainlandOrOversea"`
 
 	// 数据粒度，支持如下粒度：

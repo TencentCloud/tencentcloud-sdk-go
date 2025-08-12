@@ -2927,6 +2927,9 @@ type ComplexAdaptiveDynamicStreamingTaskAudioInput struct {
 	// <li>YES：设置为默认音频；</li>
 	// <li>NO：不设置为默认音频（默认值）。</li>
 	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
+
+	// 音轨序号，表示选择音频源中的第几个音轨，从0开始计数。默认值为0，表示选择最靠前的音轨。
+	AudioTrackIdx *uint64 `json:"AudioTrackIdx,omitnil,omitempty" name:"AudioTrackIdx"`
 }
 
 type ComplexAdaptiveDynamicStreamingTaskInput struct {

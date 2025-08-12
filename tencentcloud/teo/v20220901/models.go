@@ -3563,6 +3563,9 @@ type CreateOriginGroupRequestParams struct {
 	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
+	// 源站记录信息，此参数必填。
+	Records []*OriginRecord `json:"Records,omitnil,omitempty" name:"Records"`
+
 	// 源站组名称，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -3570,9 +3573,6 @@ type CreateOriginGroupRequestParams struct {
 	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡、HTTP 专用型负载均衡引用；</li>
 	// <li>HTTP： HTTP 专用型源站组，支持添加 IP/域名、对象存储源站作为源站，无法被四层代理引用，仅支持被添加加速域名、规则引擎-修改源站、HTTP 专用型负载均衡引用。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 源站记录信息，此参数必填。
-	Records []*OriginRecord `json:"Records,omitnil,omitempty" name:"Records"`
 
 	// 回源 Host Header，仅 Type = HTTP 时传入生效，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
 	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
@@ -3584,6 +3584,9 @@ type CreateOriginGroupRequest struct {
 	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
+	// 源站记录信息，此参数必填。
+	Records []*OriginRecord `json:"Records,omitnil,omitempty" name:"Records"`
+
 	// 源站组名称，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -3591,9 +3594,6 @@ type CreateOriginGroupRequest struct {
 	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡、HTTP 专用型负载均衡引用；</li>
 	// <li>HTTP： HTTP 专用型源站组，支持添加 IP/域名、对象存储源站作为源站，无法被四层代理引用，仅支持被添加加速域名、规则引擎-修改源站、HTTP 专用型负载均衡引用。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 源站记录信息，此参数必填。
-	Records []*OriginRecord `json:"Records,omitnil,omitempty" name:"Records"`
 
 	// 回源 Host Header，仅 Type = HTTP 时传入生效，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
 	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
@@ -3612,9 +3612,9 @@ func (r *CreateOriginGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ZoneId")
+	delete(f, "Records")
 	delete(f, "Name")
 	delete(f, "Type")
-	delete(f, "Records")
 	delete(f, "HostHeader")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOriginGroupRequest has unknown keys!", "")
@@ -18985,7 +18985,7 @@ type OriginRecord struct {
 	// 源站记录ID。
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 源站权重，取值为0-100, 不填表示不设置权重，由系统自由调度，填0表示权重为0, 流量将不会调度到此源站。
+	// 【源站权重】：用于控制流量分配优先级的参数，取值范围：0-100（整数）：<li>空值：不设置权重，系统按默认策略调度；</li><li>0 值：明确设置权重为0，流量将不会分配到该源站，注意事项：必须确保至少有一个源站的权重值大于0；</li><li>正常值：数值越大分配流量越多 ；</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 

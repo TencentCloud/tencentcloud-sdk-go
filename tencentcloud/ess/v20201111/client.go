@@ -12839,6 +12839,10 @@ func NewRenewAutoSignLicenseResponse() (response *RenewAutoSignLicenseResponse) 
 }
 
 // RenewAutoSignLicense
+// 已经不再使用
+//
+// 
+//
 // 给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
 //
 // 
@@ -12865,6 +12869,10 @@ func (c *Client) RenewAutoSignLicense(request *RenewAutoSignLicenseRequest) (res
 }
 
 // RenewAutoSignLicense
+// 已经不再使用
+//
+// 
+//
 // 给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
 //
 // 
