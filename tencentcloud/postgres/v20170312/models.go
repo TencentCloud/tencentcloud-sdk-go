@@ -1901,112 +1901,6 @@ func (r *CreateReadOnlyGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type CreateServerlessDBInstanceRequestParams struct {
-	// 可用区ID。公测阶段仅支持ap-shanghai-2、ap-beijing-1,ap-guangzhou-2.
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
-	// DB实例名称，同一个账号下该值必须唯一。
-	DBInstanceName *string `json:"DBInstanceName,omitnil,omitempty" name:"DBInstanceName"`
-
-	// PostgreSQL内核版本，目前只支持：10.4。
-	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
-
-	// PostgreSQL数据库字符集，目前支持UTF8。
-	DBCharset *string `json:"DBCharset,omitnil,omitempty" name:"DBCharset"`
-
-	// 项目ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 私有网络ID。
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// 私有网络子网ID。
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
-
-	// 实例需要绑定的标签数组信息
-	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
-}
-
-type CreateServerlessDBInstanceRequest struct {
-	*tchttp.BaseRequest
-	
-	// 可用区ID。公测阶段仅支持ap-shanghai-2、ap-beijing-1,ap-guangzhou-2.
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
-	// DB实例名称，同一个账号下该值必须唯一。
-	DBInstanceName *string `json:"DBInstanceName,omitnil,omitempty" name:"DBInstanceName"`
-
-	// PostgreSQL内核版本，目前只支持：10.4。
-	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
-
-	// PostgreSQL数据库字符集，目前支持UTF8。
-	DBCharset *string `json:"DBCharset,omitnil,omitempty" name:"DBCharset"`
-
-	// 项目ID。
-	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 私有网络ID。
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// 私有网络子网ID。
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
-
-	// 实例需要绑定的标签数组信息
-	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
-}
-
-func (r *CreateServerlessDBInstanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateServerlessDBInstanceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Zone")
-	delete(f, "DBInstanceName")
-	delete(f, "DBVersion")
-	delete(f, "DBCharset")
-	delete(f, "ProjectId")
-	delete(f, "VpcId")
-	delete(f, "SubnetId")
-	delete(f, "TagList")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServerlessDBInstanceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateServerlessDBInstanceResponseParams struct {
-	// 实例ID，该ID全局唯一，如：postgres-xxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateServerlessDBInstanceResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateServerlessDBInstanceResponseParams `json:"Response"`
-}
-
-func (r *CreateServerlessDBInstanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateServerlessDBInstanceResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DBBackup struct {
 	// 备份文件唯一标识
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -3347,14 +3241,14 @@ type DescribeBackupSummariesRequestParams struct {
 
 	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 	// db-instance-id：按照实例ID过滤，类型为string。
-	// db-instance-name：按照实例名过滤，类型为string。
+	// db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 	// db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段，支持TotalBackupSize,LogBackupSize,ManualBaseBackupSize,AutoBaseBackupSize。
+	// 排序字段，支持TotalBackupSize - 备份总大小、LogBackupSize - 备份日志的大小、ManualBaseBackupSize - 手动备份数据大小、AutoBaseBackupSize - 自动备份数据大小。当不传入该参数时，默认不进行排序。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，包括升序：asc，降序：desc。
+	// 排序方式，包括升序：asc，降序：desc。默认值：asc。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -3369,14 +3263,14 @@ type DescribeBackupSummariesRequest struct {
 
 	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 	// db-instance-id：按照实例ID过滤，类型为string。
-	// db-instance-name：按照实例名过滤，类型为string。
+	// db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 	// db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段，支持TotalBackupSize,LogBackupSize,ManualBaseBackupSize,AutoBaseBackupSize。
+	// 排序字段，支持TotalBackupSize - 备份总大小、LogBackupSize - 备份日志的大小、ManualBaseBackupSize - 手动备份数据大小、AutoBaseBackupSize - 自动备份数据大小。当不传入该参数时，默认不进行排序。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，包括升序：asc，降序：desc。
+	// 排序方式，包括升序：asc，降序：desc。默认值：asc。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -4324,115 +4218,6 @@ func (r *DescribeDBInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDBSlowlogsRequestParams struct {
-	// 实例ID，形如postgres-lnp6j617
-	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
-
-	// 查询起始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 查询结束时间，形如2018-06-10 17:06:38
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 数据库名字
-	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
-
-	// 按照何种指标排序，取值为sum_calls或者sum_cost_time。sum_calls-总调用次数；sum_cost_time-总的花费时间
-	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
-
-	// 排序规则。desc-降序；asc-升序
-	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
-
-	// 分页返回结果，每页最大返回数量，取值为1-100，默认20
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 分页返回结果，返回结果的第几页，从0开始计数
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-}
-
-type DescribeDBSlowlogsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例ID，形如postgres-lnp6j617
-	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
-
-	// 查询起始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 查询结束时间，形如2018-06-10 17:06:38
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 数据库名字
-	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
-
-	// 按照何种指标排序，取值为sum_calls或者sum_cost_time。sum_calls-总调用次数；sum_cost_time-总的花费时间
-	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
-
-	// 排序规则。desc-降序；asc-升序
-	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
-
-	// 分页返回结果，每页最大返回数量，取值为1-100，默认20
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 分页返回结果，返回结果的第几页，从0开始计数
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-}
-
-func (r *DescribeDBSlowlogsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDBSlowlogsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DBInstanceId")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "DatabaseName")
-	delete(f, "OrderBy")
-	delete(f, "OrderByType")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBSlowlogsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDBSlowlogsResponseParams struct {
-	// 本次返回多少条数据
-	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 慢查询日志详情
-	Detail *SlowlogDetail `json:"Detail,omitnil,omitempty" name:"Detail"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeDBSlowlogsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeDBSlowlogsResponseParams `json:"Response"`
-}
-
-func (r *DescribeDBSlowlogsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDBSlowlogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5624,106 +5409,6 @@ func (r *DescribeRegionsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRegionsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeServerlessDBInstancesRequestParams struct {
-	// 查询条件。按照一个或者多个过滤条件进行查询，目前支持的过滤条件类型（name字段指定）有： 
-	// 
-	// - db-instance-id：按照实例ID过滤，类型为string
-	// - db-instance-name：按照实例名过滤，类型为string
-	// - db-tag-key：按照实例的tag过滤，类型为string
-	// 
-	// value字段指定该类型过滤条件下具体要过滤的实例ID/实例名/实例tag-key。
-	Filter []*Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
-
-	// 查询个数
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 排序指标，目前支持实例创建时间CreateTime
-	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
-
-	// 排序方式，包括升序、降序
-	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
-}
-
-type DescribeServerlessDBInstancesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 查询条件。按照一个或者多个过滤条件进行查询，目前支持的过滤条件类型（name字段指定）有： 
-	// 
-	// - db-instance-id：按照实例ID过滤，类型为string
-	// - db-instance-name：按照实例名过滤，类型为string
-	// - db-tag-key：按照实例的tag过滤，类型为string
-	// 
-	// value字段指定该类型过滤条件下具体要过滤的实例ID/实例名/实例tag-key。
-	Filter []*Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
-
-	// 查询个数
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 排序指标，目前支持实例创建时间CreateTime
-	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
-
-	// 排序方式，包括升序、降序
-	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
-}
-
-func (r *DescribeServerlessDBInstancesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeServerlessDBInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Filter")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "OrderBy")
-	delete(f, "OrderByType")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessDBInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeServerlessDBInstancesResponseParams struct {
-	// 查询结果数
-	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 查询结果
-	DBInstanceSet []*ServerlessDBInstance `json:"DBInstanceSet,omitnil,omitempty" name:"DBInstanceSet"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeServerlessDBInstancesResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeServerlessDBInstancesResponseParams `json:"Response"`
-}
-
-func (r *DescribeServerlessDBInstancesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeServerlessDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8531,53 +8216,6 @@ type NetworkAccess struct {
 	VpcStatus *int64 `json:"VpcStatus,omitnil,omitempty" name:"VpcStatus"`
 }
 
-type NormalQueryItem struct {
-	// 用户名
-	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
-
-	// 调用次数
-	Calls *int64 `json:"Calls,omitnil,omitempty" name:"Calls"`
-
-	// 粒度点
-	CallsGrids []*int64 `json:"CallsGrids,omitnil,omitempty" name:"CallsGrids"`
-
-	// 花费总时间
-	CostTime *float64 `json:"CostTime,omitnil,omitempty" name:"CostTime"`
-
-	// 影响的行数
-	Rows *int64 `json:"Rows,omitnil,omitempty" name:"Rows"`
-
-	// 花费最小时间
-	MinCostTime *float64 `json:"MinCostTime,omitnil,omitempty" name:"MinCostTime"`
-
-	// 花费最大时间
-	MaxCostTime *float64 `json:"MaxCostTime,omitnil,omitempty" name:"MaxCostTime"`
-
-	// 最早一条慢SQL时间
-	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
-
-	// 最晚一条慢SQL时间
-	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
-
-	// 读共享内存块数
-	SharedReadBlks *int64 `json:"SharedReadBlks,omitnil,omitempty" name:"SharedReadBlks"`
-
-	// 写共享内存块数
-	SharedWriteBlks *int64 `json:"SharedWriteBlks,omitnil,omitempty" name:"SharedWriteBlks"`
-
-	// 读io总耗时
-	ReadCostTime *int64 `json:"ReadCostTime,omitnil,omitempty" name:"ReadCostTime"`
-
-	// 写io总耗时
-	WriteCostTime *int64 `json:"WriteCostTime,omitnil,omitempty" name:"WriteCostTime"`
-
-	// 数据库名字
-	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
-
-	// 脱敏后的慢SQL
-	NormalQuery *string `json:"NormalQuery,omitnil,omitempty" name:"NormalQuery"`
-}
-
 // Predefined struct for user
 type OpenDBExtranetAccessRequestParams struct {
 	// 实例ID，形如postgres-hez4fh0v。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。
@@ -9359,87 +8997,6 @@ type SecurityGroup struct {
 	SecurityGroupDescription *string `json:"SecurityGroupDescription,omitnil,omitempty" name:"SecurityGroupDescription"`
 }
 
-type ServerlessDBAccount struct {
-	// 用户名
-	DBUser *string `json:"DBUser,omitnil,omitempty" name:"DBUser"`
-
-	// 密码
-	DBPassword *string `json:"DBPassword,omitnil,omitempty" name:"DBPassword"`
-
-	// 连接数限制
-	DBConnLimit *int64 `json:"DBConnLimit,omitnil,omitempty" name:"DBConnLimit"`
-}
-
-type ServerlessDBInstance struct {
-	// 实例id，唯一标识符
-	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
-
-	// 实例名称
-	DBInstanceName *string `json:"DBInstanceName,omitnil,omitempty" name:"DBInstanceName"`
-
-	// 实例状态
-	DBInstanceStatus *string `json:"DBInstanceStatus,omitnil,omitempty" name:"DBInstanceStatus"`
-
-	// 地域
-	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
-
-	// 可用区
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
-	// 项目id
-	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 私有网络Id
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// 子网id
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
-
-	// 字符集
-	DBCharset *string `json:"DBCharset,omitnil,omitempty" name:"DBCharset"`
-
-	// 数据库版本
-	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
-
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
-
-	// 实例网络信息
-	DBInstanceNetInfo []*ServerlessDBInstanceNetInfo `json:"DBInstanceNetInfo,omitnil,omitempty" name:"DBInstanceNetInfo"`
-
-	// 实例账户信息
-	DBAccountSet []*ServerlessDBAccount `json:"DBAccountSet,omitnil,omitempty" name:"DBAccountSet"`
-
-	// 实例下的db信息
-	DBDatabaseList []*string `json:"DBDatabaseList,omitnil,omitempty" name:"DBDatabaseList"`
-
-	// 实例绑定的标签数组
-	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
-
-	// 数据库内核版本
-	DBKernelVersion *string `json:"DBKernelVersion,omitnil,omitempty" name:"DBKernelVersion"`
-
-	// 数据库主要版本
-	DBMajorVersion *string `json:"DBMajorVersion,omitnil,omitempty" name:"DBMajorVersion"`
-}
-
-type ServerlessDBInstanceNetInfo struct {
-	// 地址
-	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
-
-	// ip地址
-	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
-
-	// 端口号
-	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
-
-	// 状态
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 网络类型
-	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
-}
-
 // Predefined struct for user
 type SetAutoRenewFlagRequestParams struct {
 	// 实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。仅支持预付费（包年包月）的实例。支持同时操作多个实例。
@@ -9502,17 +9059,6 @@ func (r *SetAutoRenewFlagResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SetAutoRenewFlagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type SlowlogDetail struct {
-	// 花费总时间
-	TotalTime *float64 `json:"TotalTime,omitnil,omitempty" name:"TotalTime"`
-
-	// 调用总次数
-	TotalCalls *int64 `json:"TotalCalls,omitnil,omitempty" name:"TotalCalls"`
-
-	// 脱敏后的慢SQL列表
-	NormalQueries []*NormalQueryItem `json:"NormalQueries,omitnil,omitempty" name:"NormalQueries"`
 }
 
 type SpecInfo struct {

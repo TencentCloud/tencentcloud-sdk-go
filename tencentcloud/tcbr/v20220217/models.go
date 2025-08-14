@@ -735,6 +735,9 @@ type DiffConfigItem struct {
 
 	// 配置内网访问时网络信息
 	VpcConf *VpcConf `json:"VpcConf,omitnil,omitempty" name:"VpcConf"`
+
+	// 存储配置信息
+	VolumesConf []*VolumeConf `json:"VolumesConf,omitnil,omitempty" name:"VolumesConf"`
 }
 
 type EnvBaseInfo struct {
@@ -1167,6 +1170,9 @@ type ServerBaseConfig struct {
 
 	// Vpc 配置参数
 	VpcConf *VpcConf `json:"VpcConf,omitnil,omitempty" name:"VpcConf"`
+
+	// 存储配置信息
+	VolumesConf []*VolumeConf `json:"VolumesConf,omitnil,omitempty" name:"VolumesConf"`
 }
 
 type ServerBaseInfo struct {
@@ -1444,6 +1450,26 @@ type VersionFlowInfo struct {
 
 	// 权重
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type VolumeConf struct {
+	// 存储类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 对象存储桶名称
+	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
+
+	// 存储连接地址
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 存储连接用户密码
+	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
+
+	// 存储挂载目的目录
+	DstPath *string `json:"DstPath,omitnil,omitempty" name:"DstPath"`
+
+	// 存储挂载源目录
+	SrcPath *string `json:"SrcPath,omitnil,omitempty" name:"SrcPath"`
 }
 
 type VpcConf struct {

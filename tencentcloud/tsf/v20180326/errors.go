@@ -140,6 +140,9 @@ const (
 	// 部署组查询失败。
 	FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
 
+	// 部署组查询失败。
+	FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
+
 	// 镜像仓库已关联至部署组，请移除后重试
 	FAILEDOPERATION_IMAGEVALIDATEISUSED = "FailedOperation.ImageValidateIsUsed"
 
@@ -148,6 +151,9 @@ const (
 
 	// tcr仓库绑定失败。
 	FAILEDOPERATION_IMAGEREPOTCRBINDERROR = "FailedOperation.ImagerepoTcrBindError"
+
+	// TSF节点管理通用错误信息。
+	FAILEDOPERATION_INSTANCECOMMONERROR = "FailedOperation.InstanceCommonError"
 
 	// 机器实例删除失败。
 	FAILEDOPERATION_INSTANCEDELETEFAILED = "FailedOperation.InstanceDeleteFailed"
@@ -1048,6 +1054,9 @@ const (
 
 	// TSF应用性能管理业务日志搜索解析时间格式错误。
 	INVALIDPARAMETERVALUE_TSFAPMBUSILOGSEARCHPARSERSPDATEFORMATERROR = "InvalidParameterValue.TsfApmBusiLogSearchParseRspDateFormatError"
+
+	// 数据卷名称校验失败。
+	INVALIDPARAMETERVALUE_VOLUMENAMEVALIDERROR = "InvalidParameterValue.VolumeNameValidError"
 
 	// 仅有停止状态下的部署组才可以不启动。
 	INVALIDPARAMETERVALUE_WRONGDONTSTARTVALUE = "InvalidParameterValue.WrongDontStartValue"

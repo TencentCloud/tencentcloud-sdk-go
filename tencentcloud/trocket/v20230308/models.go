@@ -4027,6 +4027,94 @@ func (r *DescribeMigrationTaskListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeProducerListRequestParams struct {
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询结果限制数量，默认20。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询起始位置，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeProducerListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询结果限制数量，默认20。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询起始位置，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeProducerListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProducerListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Topic")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProducerListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProducerListResponseParams struct {
+	// 查询总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 生产者信息列表
+	ProducerList []*ProducerInfo `json:"ProducerList,omitnil,omitempty" name:"ProducerList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProducerListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProducerListResponseParams `json:"Response"`
+}
+
+func (r *DescribeProducerListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProducerListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProductSKUsRequestParams struct {
 
 }
@@ -6332,6 +6420,48 @@ type PriceTag struct {
 	// 计费项对应的步长数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Step *int64 `json:"Step,omitnil,omitempty" name:"Step"`
+}
+
+type ProducerInfo struct {
+	// 客户端ID	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 客户端IP	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
+
+	// 客户端语言 
+	// - JAVA((byte) 0)
+	// - CPP((byte) 1) 
+	// - DOTNET((byte) 2) 
+	// - PYTHON((byte) 3)
+	// - DELPHI((byte) 4)
+	// - ERLANG((byte) 5)
+	// - RUBY((byte) 6)
+	// - OTHER((byte) 7)
+	// - HTTP((byte) 8)
+	// - GO((byte) 9)
+	// - PHP((byte) 10)
+	// - OMS((byte) 11)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// 客户端版本	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 最后生产时间，**Unix时间戳（秒）**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTimestamp *uint64 `json:"LastUpdateTimestamp,omitnil,omitempty" name:"LastUpdateTimestamp"`
+
+	// 生产者客户端协议类型，枚举如下：
+	// 
+	// - grpc：GRpc协议
+	// - remoting：Remoting协议
+	// - http：HTTP协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelProtocol *string `json:"ChannelProtocol,omitnil,omitempty" name:"ChannelProtocol"`
 }
 
 type ProductSKU struct {

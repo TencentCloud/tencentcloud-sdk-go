@@ -12771,6 +12771,12 @@ type HighlightSegmentItem struct {
 
 	// 直播切片对应直播结束时间点，采用 ISO 日期格式。	
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 集锦标题。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 集锦概要。
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
 }
 
 type ImageAreaBoxInfo struct {
@@ -13896,6 +13902,14 @@ type MediaAiAnalysisHighlightItem struct {
 
 	// 智能精彩集锦子片段列表。
 	SegmentSet []*HighlightSegmentItem `json:"SegmentSet,omitnil,omitempty" name:"SegmentSet"`
+
+	// 智能精彩集锦地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighlightUrl *string `json:"HighlightUrl,omitnil,omitempty" name:"HighlightUrl"`
+
+	// 智能精彩集锦封面地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CovImgUrl *string `json:"CovImgUrl,omitnil,omitempty" name:"CovImgUrl"`
 }
 
 type MediaAiAnalysisTagItem struct {

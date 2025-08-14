@@ -5218,6 +5218,7 @@ func NewTextToSpeechResponse() (response *TextToSpeechResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
     return c.TextToSpeechWithContext(context.Background(), request)
@@ -5229,6 +5230,7 @@ func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpe
 // 可能返回的错误码:
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeechWithContext(ctx context.Context, request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
     if request == nil {
@@ -5270,6 +5272,7 @@ func NewTextToSpeechSSEResponse() (response *TextToSpeechSSEResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeechSSE(request *TextToSpeechSSERequest) (response *TextToSpeechSSEResponse, err error) {
     return c.TextToSpeechSSEWithContext(context.Background(), request)
@@ -5281,6 +5284,7 @@ func (c *Client) TextToSpeechSSE(request *TextToSpeechSSERequest) (response *Tex
 // 可能返回的错误码:
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeechSSEWithContext(ctx context.Context, request *TextToSpeechSSERequest) (response *TextToSpeechSSEResponse, err error) {
     if request == nil {
@@ -5574,6 +5578,7 @@ func NewVoiceCloneResponse() (response *VoiceCloneResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_AUDIOPROMPT = "InvalidParameter.AudioPrompt"
 //  INVALIDPARAMETER_VOICENAME = "InvalidParameter.VoiceName"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) VoiceClone(request *VoiceCloneRequest) (response *VoiceCloneResponse, err error) {
     return c.VoiceCloneWithContext(context.Background(), request)
@@ -5585,6 +5590,7 @@ func (c *Client) VoiceClone(request *VoiceCloneRequest) (response *VoiceCloneRes
 // 可能返回的错误码:
 //  INVALIDPARAMETER_AUDIOPROMPT = "InvalidParameter.AudioPrompt"
 //  INVALIDPARAMETER_VOICENAME = "InvalidParameter.VoiceName"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) VoiceCloneWithContext(ctx context.Context, request *VoiceCloneRequest) (response *VoiceCloneResponse, err error) {
     if request == nil {

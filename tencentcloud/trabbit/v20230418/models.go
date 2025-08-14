@@ -146,6 +146,9 @@ type CreateRabbitMQServerlessExchangeRequestParams struct {
 
 	// 替代 exchange, 如果消息无法发送到当前 exchange, 就会发送到该替代 exchange
 	AlternateExchange *string `json:"AlternateExchange,omitnil,omitempty" name:"AlternateExchange"`
+
+	// 延迟类型的exchange背后对应的exchange类型, 支持 "fanout","direct","topic","headers"
+	DelayedExchangeType *string `json:"DelayedExchangeType,omitnil,omitempty" name:"DelayedExchangeType"`
 }
 
 type CreateRabbitMQServerlessExchangeRequest struct {
@@ -177,6 +180,9 @@ type CreateRabbitMQServerlessExchangeRequest struct {
 
 	// 替代 exchange, 如果消息无法发送到当前 exchange, 就会发送到该替代 exchange
 	AlternateExchange *string `json:"AlternateExchange,omitnil,omitempty" name:"AlternateExchange"`
+
+	// 延迟类型的exchange背后对应的exchange类型, 支持 "fanout","direct","topic","headers"
+	DelayedExchangeType *string `json:"DelayedExchangeType,omitnil,omitempty" name:"DelayedExchangeType"`
 }
 
 func (r *CreateRabbitMQServerlessExchangeRequest) ToJsonString() string {
@@ -200,6 +206,7 @@ func (r *CreateRabbitMQServerlessExchangeRequest) FromJsonString(s string) error
 	delete(f, "AutoDelete")
 	delete(f, "Internal")
 	delete(f, "AlternateExchange")
+	delete(f, "DelayedExchangeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQServerlessExchangeRequest has unknown keys!", "")
 	}
@@ -2891,6 +2898,12 @@ type RabbitMQClusterInfo struct {
 
 	// 消息保留时间，单位小时
 	MessageRetainTime *uint64 `json:"MessageRetainTime,omitnil,omitempty" name:"MessageRetainTime"`
+
+	// 发送消息流量比例
+	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
+
+	// 消息轨迹保留时间，单位小时
+	TraceTime *uint64 `json:"TraceTime,omitnil,omitempty" name:"TraceTime"`
 }
 
 type RabbitMQClusterSpecInfo struct {
@@ -3096,6 +3109,9 @@ type RabbitMQServerlessAccessInfo struct {
 
 	// 公网状态
 	PublicDataStreamStatus *string `json:"PublicDataStreamStatus,omitnil,omitempty" name:"PublicDataStreamStatus"`
+
+	// 公网CLB实例ID
+	PublicClbId *string `json:"PublicClbId,omitnil,omitempty" name:"PublicClbId"`
 }
 
 type RabbitMQServerlessEndpoint struct {

@@ -140,6 +140,9 @@ const (
 	// 实例配置错误。
 	RESOURCEUNAVAILABLE_INSTANCECONFERROR = "ResourceUnavailable.InstanceConfError"
 
+	// 实例已经被回收了。
+	RESOURCEUNAVAILABLE_INSTANCEDELETED = "ResourceUnavailable.InstanceDeleted"
+
 	// 实例已经被其它流程锁定。
 	RESOURCEUNAVAILABLE_INSTANCELOCKEDERROR = "ResourceUnavailable.InstanceLockedError"
 

@@ -904,6 +904,9 @@ type ClusterAdvancedSettings struct {
 	// 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
 	ContainerRuntime *string `json:"ContainerRuntime,omitnil,omitempty" name:"ContainerRuntime"`
 
+	// 是否启用 DataPlaneV2（cilium替代kube-proxy） 
+	DataPlaneV2 *bool `json:"DataPlaneV2,omitnil,omitempty" name:"DataPlaneV2"`
+
 	// 是否启用集群删除保护
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 
@@ -934,7 +937,7 @@ type ClusterAdvancedSettings struct {
 	// 2. 系统镜像必须是: Tencent Linux 2.4；
 	KubeProxyMode *string `json:"KubeProxyMode,omitnil,omitempty" name:"KubeProxyMode"`
 
-	// 集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
+	// 集群网络类型。包括GR（全局路由）和VPC-CNI两种模式，默认为GR。
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）

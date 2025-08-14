@@ -3631,6 +3631,10 @@ type CompareResult struct {
 	// 检测不通过行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerRows *uint64 `json:"TriggerRows,omitnil,omitempty" name:"TriggerRows"`
+
+	// 比较关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComputeExpression *string `json:"ComputeExpression,omitnil,omitempty" name:"ComputeExpression"`
 }
 
 type CompareResultItem struct {
@@ -34568,6 +34572,50 @@ type RuleExecResult struct {
 	// 触发条件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerCondition *string `json:"TriggerCondition,omitnil,omitempty" name:"TriggerCondition"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupName *string `json:"RuleGroupName,omitnil,omitempty" name:"RuleGroupName"`
+
+	// 数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 模式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupExist *int64 `json:"RuleGroupExist,omitnil,omitempty" name:"RuleGroupExist"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceType *int64 `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
+
+	// 数据表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupTableId *uint64 `json:"RuleGroupTableId,omitnil,omitempty" name:"RuleGroupTableId"`
+
+	// 监控方式 1.未配置, 2.关联生产调度, 3.离线周期检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorType *int64 `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 执行结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
 
 type RuleExecResultDetail struct {

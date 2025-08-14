@@ -6047,7 +6047,7 @@ func NewModifyAlarmShieldResponse() (response *ModifyAlarmShieldResponse) {
 }
 
 // ModifyAlarmShield
-// 该接口用于修改告警屏蔽规则。
+// 该接口用于修改告警屏蔽规则。当告警屏蔽规则为失效中时，无法对其进行修改
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6064,7 +6064,7 @@ func (c *Client) ModifyAlarmShield(request *ModifyAlarmShieldRequest) (response 
 }
 
 // ModifyAlarmShield
-// 该接口用于修改告警屏蔽规则。
+// 该接口用于修改告警屏蔽规则。当告警屏蔽规则为失效中时，无法对其进行修改
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

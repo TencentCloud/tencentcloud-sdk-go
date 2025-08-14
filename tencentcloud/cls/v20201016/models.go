@@ -22,7 +22,8 @@ import (
 
 // Predefined struct for user
 type AddMachineGroupInfoRequestParams struct {
-	// 机器组ID
+	// 机器组Id
+	// - 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 机器组类型
@@ -33,7 +34,8 @@ type AddMachineGroupInfoRequestParams struct {
 type AddMachineGroupInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器组ID
+	// 机器组Id
+	// - 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 机器组类型
@@ -133,7 +135,7 @@ type AlarmInfo struct {
 	// 监控任务运行时间点。
 	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
-	// 单触发条件。与MultiConditions参数互斥。
+	// 是否触发告警的单触发条件。与MultiConditions参数互斥。
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
@@ -151,10 +153,10 @@ type AlarmInfo struct {
 	// 告警策略ID。
 	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
-	// 创建时间。
+	// 创建时间。格式： YYYY-MM-DD HH:MM:SS
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最近更新时间。
+	// 最近更新时间。格式： YYYY-MM-DD HH:MM:SS
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 自定义通知模板
@@ -226,10 +228,10 @@ type AlarmNotice struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmNoticeDeliverConfig *AlarmNoticeDeliverConfig `json:"AlarmNoticeDeliverConfig,omitnil,omitempty" name:"AlarmNoticeDeliverConfig"`
 
-	// 创建时间。
+	// 创建时间。格式： YYYY-MM-DD HH:MM:SS
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最近更新时间。
+	// 最近更新时间。格式： YYYY-MM-DD HH:MM:SS
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
@@ -282,7 +284,7 @@ type AlarmShieldInfo struct {
 }
 
 type AlarmTarget struct {
-	// 日志主题ID。
+	// 日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 查询语句。
@@ -297,7 +299,7 @@ type AlarmTarget struct {
 	// 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
 	EndTimeOffset *int64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 
-	// 日志集ID。
+	// 日志集ID。通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志集ID
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 检索语法规则，默认值为0。
@@ -374,19 +376,19 @@ type AlertHistoryRecord struct {
 	// 持续周期，持续满足触发条件TriggerCount个周期后，再进行告警
 	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
-	// 告警通知发送频率，单位为分钟
+	// 告警通知发送频率，单位为分钟(min)
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
 	// 通知渠道组
 	Notices []*AlertHistoryNotice `json:"Notices,omitnil,omitempty" name:"Notices"`
 
-	// 告警持续时间，单位为分钟
+	// 告警持续时间，单位为分钟(min)
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 告警状态，0代表未恢复，1代表已恢复，2代表已失效
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 告警发生时间，毫秒级Unix时间戳
+	// 告警发生时间，毫秒级Unix时间戳(ms)
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 告警分组触发时对应的分组信息
@@ -404,7 +406,7 @@ type AnalysisDimensional struct {
 	// 分析名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分析类型：query，field ，original
+	// 分析类型：query(自定义检索分析)，field(字段TOP5及占比统计) ，original(相关原始日志)
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 分析内容
@@ -1324,7 +1326,7 @@ type CosRechargeInfo struct {
 
 // Predefined struct for user
 type CreateAlarmNoticeRequestParams struct {
-	// 通知渠道组名称。
+	// 通知渠道组名称。最大支持255个字节。 不支持 '|'。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持50个标签键值对，并且不能有重复的键值对。
@@ -1370,7 +1372,7 @@ type CreateAlarmNoticeRequestParams struct {
 type CreateAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通知渠道组名称。
+	// 通知渠道组名称。最大支持255个字节。 不支持 '|'。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持50个标签键值对，并且不能有重复的键值对。
@@ -1468,7 +1470,7 @@ func (r *CreateAlarmNoticeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlarmRequestParams struct {
-	// 告警策略名称
+	// 告警策略名称。最大支持255个字节。 不支持 '|'。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 监控对象列表。
@@ -1483,10 +1485,10 @@ type CreateAlarmRequestParams struct {
 	// 告警重复的周期，单位是分钟。取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知模板列表。
+	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
-	// 触发条件
+	// 告警发送通知的触发条件
 	//  注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
@@ -1550,7 +1552,7 @@ type CreateAlarmRequestParams struct {
 type CreateAlarmRequest struct {
 	*tchttp.BaseRequest
 	
-	// 告警策略名称
+	// 告警策略名称。最大支持255个字节。 不支持 '|'。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 监控对象列表。
@@ -1565,10 +1567,10 @@ type CreateAlarmRequest struct {
 	// 告警重复的周期，单位是分钟。取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知模板列表。
+	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
-	// 触发条件
+	// 告警发送通知的触发条件
 	//  注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
@@ -1691,13 +1693,13 @@ func (r *CreateAlarmResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlarmShieldRequestParams struct {
-	// 通知渠道组id。
+	// 通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取通知渠道组id
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
-	// 屏蔽开始时间（秒级时间戳）。
+	// 屏蔽规则开始时间，秒级(s)时间戳。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 屏蔽结束时间（秒级时间戳）。
+	// 屏蔽规则结束时间，秒级(s)时间戳。结束时间需要大于当前时间
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
@@ -1713,13 +1715,13 @@ type CreateAlarmShieldRequestParams struct {
 type CreateAlarmShieldRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通知渠道组id。
+	// 通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取通知渠道组id
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
-	// 屏蔽开始时间（秒级时间戳）。
+	// 屏蔽规则开始时间，秒级(s)时间戳。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 屏蔽结束时间（秒级时间戳）。
+	// 屏蔽规则结束时间，秒级(s)时间戳。结束时间需要大于当前时间
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
@@ -3343,7 +3345,10 @@ func (r *CreateLogsetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMachineGroupRequestParams struct {
-	// 机器组名字，不能重复
+	// 机器组名字。
+	// 输入限制：
+	// - 最大支持255个字符，不能为空字符串
+	// - 不能包含字符'|'
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 创建机器组类型。取值如下：
@@ -3358,15 +3363,19 @@ type CreateMachineGroupRequestParams struct {
 	AutoUpdate *bool `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
 
 	// 升级开始时间，建议业务低峰期升级LogListener
+	// 时间格式：HH:mm:ss
 	UpdateStartTime *string `json:"UpdateStartTime,omitnil,omitempty" name:"UpdateStartTime"`
 
 	// 升级结束时间，建议业务低峰期升级LogListener
+	// 时间格式：HH:mm:ss
 	UpdateEndTime *string `json:"UpdateEndTime,omitnil,omitempty" name:"UpdateEndTime"`
 
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费。默认false
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
 	// 机器组中机器离线清理时间。单位：天
+	// 
+	// - 大于0时生效。
 	DelayCleanupTime *int64 `json:"DelayCleanupTime,omitnil,omitempty" name:"DelayCleanupTime"`
 
 	// 机器组元数据信息列表
@@ -3381,7 +3390,10 @@ type CreateMachineGroupRequestParams struct {
 type CreateMachineGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器组名字，不能重复
+	// 机器组名字。
+	// 输入限制：
+	// - 最大支持255个字符，不能为空字符串
+	// - 不能包含字符'|'
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 创建机器组类型。取值如下：
@@ -3396,15 +3408,19 @@ type CreateMachineGroupRequest struct {
 	AutoUpdate *bool `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
 
 	// 升级开始时间，建议业务低峰期升级LogListener
+	// 时间格式：HH:mm:ss
 	UpdateStartTime *string `json:"UpdateStartTime,omitnil,omitempty" name:"UpdateStartTime"`
 
 	// 升级结束时间，建议业务低峰期升级LogListener
+	// 时间格式：HH:mm:ss
 	UpdateEndTime *string `json:"UpdateEndTime,omitnil,omitempty" name:"UpdateEndTime"`
 
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费。默认false
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
 	// 机器组中机器离线清理时间。单位：天
+	// 
+	// - 大于0时生效。
 	DelayCleanupTime *int64 `json:"DelayCleanupTime,omitnil,omitempty" name:"DelayCleanupTime"`
 
 	// 机器组元数据信息列表
@@ -3471,7 +3487,7 @@ func (r *CreateMachineGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNoticeContentRequestParams struct {
-	// 模板名称。
+	// 模板名称。最大支持255个字节
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 模板内容语言。0：中文1：英文
@@ -3484,7 +3500,7 @@ type CreateNoticeContentRequestParams struct {
 type CreateNoticeContentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板名称。
+	// 模板名称。最大支持255个字节
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 模板内容语言。0：中文1：英文
@@ -4030,7 +4046,7 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateWebCallbackRequestParams struct {
-	// 通知内容名称。
+	// 通知内容名称。最大支持255个字节
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 渠道类型。
@@ -4046,14 +4062,14 @@ type CreateWebCallbackRequestParams struct {
 	// 当Type为Http时，必填。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 秘钥。
+	// 秘钥。最大支持1024个字节
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
 type CreateWebCallbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通知内容名称。
+	// 通知内容名称。最大支持255个字节
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 渠道类型。
@@ -4069,7 +4085,7 @@ type CreateWebCallbackRequest struct {
 	// 当Type为Http时，必填。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 秘钥。
+	// 秘钥。最大支持1024个字节
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
@@ -4323,14 +4339,14 @@ type DataTransformTaskInfo struct {
 
 // Predefined struct for user
 type DeleteAlarmNoticeRequestParams struct {
-	// 通知渠道组ID
+	// 通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 }
 
 type DeleteAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通知渠道组ID
+	// 通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 }
 
@@ -5416,14 +5432,14 @@ func (r *DeleteMachineGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteNoticeContentRequestParams struct {
-	// 通知内容模板ID
+	// 通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
 	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
 }
 
 type DeleteNoticeContentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通知内容模板ID
+	// 通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
 	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
 }
 
@@ -5643,14 +5659,14 @@ func (r *DeleteTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteWebCallbackRequestParams struct {
-	// 告警渠道回调配置ID。
+	// 告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
 	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
 }
 
 type DeleteWebCallbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 告警渠道回调配置ID。
+	// 告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
 	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
 }
 
@@ -5707,7 +5723,7 @@ type DeliverConfig struct {
 	// https://cloud.tencent.com/document/product/614/18940
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 日志主题ID。
+	// 日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 投递数据范围。
@@ -5723,18 +5739,22 @@ type DescribeAlarmNoticesRequestParams struct {
 	// <li> name
 	// 按照【通知渠道组名称】进行过滤。
 	// 类型：String
+	// 示例："Filters":[{"Key":"name","Values":["test-notice"]}]
 	// 必选：否</li>
 	// <li> alarmNoticeId
 	// 按照【通知渠道组ID】进行过滤。
 	// 类型：String
+	// 示例："Filters": [{Key: "alarmNoticeId", Values: ["notice-5281f1d2-6275-4e56-9ec3-a1eb19d8bc2f"]}]
 	// 必选：否</li>
 	// <li> uid
 	// 按照【接收用户ID】进行过滤。
 	// 类型：String
+	// 示例："Filters": [{Key: "uid", Values: ["1137546"]}]
 	// 必选：否</li>
 	// <li> groupId
 	// 按照【接收用户组ID】进行过滤。
 	// 类型：String
+	// 示例："Filters": [{Key: "groupId", Values: ["344098"]}]
 	// 必选：否</li>
 	// 
 	// <li> deliverFlag
@@ -5742,7 +5762,7 @@ type DescribeAlarmNoticesRequestParams struct {
 	// 类型：String
 	// 必选：否
 	// 可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
-	// 
+	// 示例："Filters":[{"Key":"deliverFlag","Values":["2"]}]
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -5759,18 +5779,22 @@ type DescribeAlarmNoticesRequest struct {
 	// <li> name
 	// 按照【通知渠道组名称】进行过滤。
 	// 类型：String
+	// 示例："Filters":[{"Key":"name","Values":["test-notice"]}]
 	// 必选：否</li>
 	// <li> alarmNoticeId
 	// 按照【通知渠道组ID】进行过滤。
 	// 类型：String
+	// 示例："Filters": [{Key: "alarmNoticeId", Values: ["notice-5281f1d2-6275-4e56-9ec3-a1eb19d8bc2f"]}]
 	// 必选：否</li>
 	// <li> uid
 	// 按照【接收用户ID】进行过滤。
 	// 类型：String
+	// 示例："Filters": [{Key: "uid", Values: ["1137546"]}]
 	// 必选：否</li>
 	// <li> groupId
 	// 按照【接收用户组ID】进行过滤。
 	// 类型：String
+	// 示例："Filters": [{Key: "groupId", Values: ["344098"]}]
 	// 必选：否</li>
 	// 
 	// <li> deliverFlag
@@ -5778,7 +5802,7 @@ type DescribeAlarmNoticesRequest struct {
 	// 类型：String
 	// 必选：否
 	// 可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
-	// 
+	// 示例："Filters":[{"Key":"deliverFlag","Values":["2"]}]
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -5929,22 +5953,26 @@ type DescribeAlarmsRequestParams struct {
 	// - 按照【告警策略名称】进行过滤。
 	// - 类型：String
 	// - 必选：否
+	// - 示例：test-alarm
 	// 
 	// alarmId
 	// - 按照【告警策略ID】进行过滤。
 	// - 类型：String
 	// - 必选：否
+	// - 示例：alarm-b60cf034-c3d6-4b01-xxxx-4e877ebb4751
 	// 
 	// topicId
 	// - 按照【监控对象的日志主题ID】进行过滤。
 	// - 类型：String
 	// - 必选：否
+	// - 示例：6766f83d-659e-xxxx-a8f7-9104a1012743
 	// 
 	// enable
 	// - 按照【启用状态】进行过滤。
 	// - 类型：String
 	// - 备注：enable参数值范围: 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False。 其它值将返回参数错误信息.
 	// - 必选：否
+	// - 示例：true
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -5963,22 +5991,26 @@ type DescribeAlarmsRequest struct {
 	// - 按照【告警策略名称】进行过滤。
 	// - 类型：String
 	// - 必选：否
+	// - 示例：test-alarm
 	// 
 	// alarmId
 	// - 按照【告警策略ID】进行过滤。
 	// - 类型：String
 	// - 必选：否
+	// - 示例：alarm-b60cf034-c3d6-4b01-xxxx-4e877ebb4751
 	// 
 	// topicId
 	// - 按照【监控对象的日志主题ID】进行过滤。
 	// - 类型：String
 	// - 必选：否
+	// - 示例：6766f83d-659e-xxxx-a8f7-9104a1012743
 	// 
 	// enable
 	// - 按照【启用状态】进行过滤。
 	// - 类型：String
 	// - 备注：enable参数值范围: 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False。 其它值将返回参数错误信息.
 	// - 必选：否
+	// - 示例：true
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -6041,10 +6073,10 @@ func (r *DescribeAlarmsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAlertRecordHistoryRequestParams struct {
-	// 查询时间范围启始时间，毫秒级unix时间戳
+	// 查询时间范围启始时间，毫秒级unix时间戳(ms)
 	From *uint64 `json:"From,omitnil,omitempty" name:"From"`
 
-	// 查询时间范围结束时间，毫秒级unix时间戳
+	// 查询时间范围结束时间，毫秒级unix时间戳(ms)
 	To *uint64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 分页的偏移量，默认值为0。
@@ -6065,10 +6097,10 @@ type DescribeAlertRecordHistoryRequestParams struct {
 type DescribeAlertRecordHistoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询时间范围启始时间，毫秒级unix时间戳
+	// 查询时间范围启始时间，毫秒级unix时间戳(ms)
 	From *uint64 `json:"From,omitnil,omitempty" name:"From"`
 
-	// 查询时间范围结束时间，毫秒级unix时间戳
+	// 查询时间范围结束时间，毫秒级unix时间戳(ms)
 	To *uint64 `json:"To,omitnil,omitempty" name:"To"`
 
 	// 分页的偏移量，默认值为0。
@@ -8674,7 +8706,7 @@ type DescribeWebCallbacksRequestParams struct {
 	// 按照【告警渠道回调配置渠道类型】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 
+	// 枚举值：WeCom，DingTalk，Lark，Http
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -8702,7 +8734,7 @@ type DescribeWebCallbacksRequest struct {
 	// 按照【告警渠道回调配置渠道类型】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 
+	// 枚举值：WeCom，DingTalk，Lark，Http
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -9778,7 +9810,7 @@ type MetricLabel struct {
 
 // Predefined struct for user
 type ModifyAlarmNoticeRequestParams struct {
-	// 通知渠道组ID。
+	// 通知渠道组ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知渠道组ID
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持10个标签键值对，并且不能有重复的键值对。
@@ -9832,7 +9864,7 @@ type ModifyAlarmNoticeRequestParams struct {
 type ModifyAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通知渠道组ID。
+	// 通知渠道组ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知渠道组ID
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持10个标签键值对，并且不能有重复的键值对。
@@ -9936,16 +9968,16 @@ func (r *ModifyAlarmNoticeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAlarmRequestParams struct {
-	// 告警策略ID。
+	// 告警策略ID。-通过[获取告警策略列表](https://cloud.tencent.com/document/product/614/56461)获取告警策略ID
 	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
-	// 告警策略名称
+	// 告警策略名称。最大支持255个字节，不支持 '|'。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 监控任务运行时间点。
 	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
-	// 触发条件。
+	// 告警信息发送的触发条件。
 	// 
 	// 注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
@@ -9971,7 +10003,7 @@ type ModifyAlarmRequestParams struct {
 	// 告警重复的周期。单位是分钟。取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知模板列表。
+	// 关联的告警通知渠道列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取告警通知渠道列表
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 监控对象列表。
@@ -10017,16 +10049,16 @@ type ModifyAlarmRequestParams struct {
 type ModifyAlarmRequest struct {
 	*tchttp.BaseRequest
 	
-	// 告警策略ID。
+	// 告警策略ID。-通过[获取告警策略列表](https://cloud.tencent.com/document/product/614/56461)获取告警策略ID
 	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
-	// 告警策略名称
+	// 告警策略名称。最大支持255个字节，不支持 '|'。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 监控任务运行时间点。
 	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
-	// 触发条件。
+	// 告警信息发送的触发条件。
 	// 
 	// 注意:  
 	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
@@ -10052,7 +10084,7 @@ type ModifyAlarmRequest struct {
 	// 告警重复的周期。单位是分钟。取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知模板列表。
+	// 关联的告警通知渠道列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取告警通知渠道列表
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 监控对象列表。
@@ -10155,16 +10187,16 @@ func (r *ModifyAlarmResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAlarmShieldRequestParams struct {
-	// 屏蔽规则ID。
+	// 屏蔽规则ID。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取屏蔽规则ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 通知渠道组id。
+	// 通知渠道组id。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取通知渠道组id
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
-	// 屏蔽开始时间（秒级时间戳）。
+	// 屏蔽开始时间，秒级(s)时间戳。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 屏蔽结束时间（秒级时间戳）。
+	// 屏蔽结束时间，秒级(s)时间戳。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
@@ -10177,22 +10209,23 @@ type ModifyAlarmShieldRequestParams struct {
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
+	// 枚举：0（未生效），1（生效中），2（已失效）
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ModifyAlarmShieldRequest struct {
 	*tchttp.BaseRequest
 	
-	// 屏蔽规则ID。
+	// 屏蔽规则ID。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取屏蔽规则ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 通知渠道组id。
+	// 通知渠道组id。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取通知渠道组id
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
-	// 屏蔽开始时间（秒级时间戳）。
+	// 屏蔽开始时间，秒级(s)时间戳。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 屏蔽结束时间（秒级时间戳）。
+	// 屏蔽结束时间，秒级(s)时间戳。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
@@ -10205,6 +10238,7 @@ type ModifyAlarmShieldRequest struct {
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
+	// 枚举：0（未生效），1（生效中），2（已失效）
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -11731,7 +11765,7 @@ func (r *ModifyMachineGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNoticeContentRequestParams struct {
-	// 通知内容模板ID。
+	// 通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
 	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
 
 	// 通知内容模板名称。
@@ -11749,7 +11783,7 @@ type ModifyNoticeContentRequestParams struct {
 type ModifyNoticeContentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通知内容模板ID。
+	// 通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
 	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
 
 	// 通知内容模板名称。
@@ -11834,7 +11868,7 @@ type ModifyScheduledSqlRequestParams struct {
 	// 执行延迟(秒)，0~120秒，默认60秒
 	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
-	// 源topicId的地域信息,支持地域见(https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+	// 源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
 	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
 	// 任务名称，0~255字符
@@ -11871,7 +11905,7 @@ type ModifyScheduledSqlRequest struct {
 	// 执行延迟(秒)，0~120秒，默认60秒
 	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
-	// 源topicId的地域信息,支持地域见(https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+	// 源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
 	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
 	// 任务名称，0~255字符
@@ -12272,10 +12306,10 @@ func (r *ModifyTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyWebCallbackRequestParams struct {
-	// 告警渠道回调配置ID。
+	// 告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
 	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
 
-	// 告警渠道回调配置名称。
+	// 告警渠道回调配置名称。最大支持255个字节
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 渠道类型
@@ -12293,17 +12327,17 @@ type ModifyWebCallbackRequestParams struct {
 	// 注意：当Type为Http时，必填。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 秘钥信息。
+	// 秘钥信息。最大支持1024个字节
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
 type ModifyWebCallbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 告警渠道回调配置ID。
+	// 告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
 	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
 
-	// 告警渠道回调配置名称。
+	// 告警渠道回调配置名称。最大支持255个字节
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 渠道类型
@@ -12321,7 +12355,7 @@ type ModifyWebCallbackRequest struct {
 	// 注意：当Type为Http时，必填。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 秘钥信息。
+	// 秘钥信息。最大支持1024个字节
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
@@ -12383,7 +12417,7 @@ type MonitorTime struct {
 	// 当type为`Period`,`Fixed`时，time字段生效。
 	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// 执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field, Hours field,Day of month field,Month field,Day of week field， 不支持秒级别。
+	// 执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field(分钟), Hours field(小时),Day of month field(日期),Month field(月份),Day of week field(星期)， 不支持秒级别。
 	// 当type为`Cron`时，CronExpression字段生效。
 	CronExpression *string `json:"CronExpression,omitnil,omitempty" name:"CronExpression"`
 }
@@ -12460,10 +12494,10 @@ type NoticeContentTemplate struct {
 	// 创建/修改者子账号。
 	SubUin *uint64 `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 
-	// 创建时间 秒级时间戳。
+	// 创建时间 秒级(s)时间戳。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间 秒级时间戳。
+	// 更新时间 秒级(s)时间戳。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
@@ -12486,7 +12520,7 @@ type NoticeReceiver struct {
 	// - Phone - 电话
 	ReceiverChannels []*string `json:"ReceiverChannels,omitnil,omitempty" name:"ReceiverChannels"`
 
-	// 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
+	// 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。-通过[获取通知内容模板](https://cloud.tencent.com/document/product/614/111714)获取通知内容模板ID
 	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
 
 	// 允许接收信息的开始时间。格式：`15:04:05`。必填
@@ -14135,17 +14169,17 @@ type ValueInfo struct {
 
 type WebCallback struct {
 	// 回调的类型。可选值：
-	// - Http
-	// - WeCom
-	// - DingTalk
-	// - Lark
+	// - Http(自定义接口回调)
+	// - WeCom(企业微信)
+	// - DingTalk(钉钉)
+	// - Lark(飞书)
 	CallbackType *string `json:"CallbackType,omitnil,omitempty" name:"CallbackType"`
 
 	// 回调地址，最大支持1024个字节。
 	// 也可使用WebCallbackId引用集成配置中的URL，此时该字段请填写为空字符串。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 集成配置ID。
+	// 集成配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/product/614/115229)获取集成配置ID
 	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
 
 	// 回调方法。可选值：
@@ -14214,9 +14248,9 @@ type WebCallbackInfo struct {
 	// 子账号。
 	SubUin *uint64 `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 
-	// 创建时间。秒级时间戳
+	// 创建时间。秒(s)级时间戳
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间。秒级时间戳
+	// 更新时间。秒(s)级时间戳
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
