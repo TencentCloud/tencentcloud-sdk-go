@@ -78,6 +78,9 @@ type Agent struct {
 
 	// Agent类型; 0: 未指定类型; 1: 知识库检索Agent
 	AgentType *uint64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
+
+	// 0 自由转交，1 计划与执行
+	AgentMode *int64 `json:"AgentMode,omitnil,omitempty" name:"AgentMode"`
 }
 
 type AgentDebugInfo struct {
@@ -88,6 +91,9 @@ type AgentDebugInfo struct {
 	// 工具、大模型的输出信息，json
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 模型名
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 }
 
 type AgentInput struct {
@@ -188,6 +194,9 @@ type AgentMCPServerInfo struct {
 
 	// sse服务超时时间，单位秒
 	SseReadTimeout *int64 `json:"SseReadTimeout,omitnil,omitempty" name:"SseReadTimeout"`
+
+	// mcp server query信息
+	Query []*AgentPluginQuery `json:"Query,omitnil,omitempty" name:"Query"`
 }
 
 type AgentModelInfo struct {
@@ -217,6 +226,9 @@ type AgentModelInfo struct {
 
 	// 单次会话最大推理轮数
 	MaxReasoningRound *uint64 `json:"MaxReasoningRound,omitnil,omitempty" name:"MaxReasoningRound"`
+
+	// 模型参数
+	ModelParams *ModelParams `json:"ModelParams,omitnil,omitempty" name:"ModelParams"`
 }
 
 type AgentPluginHeader struct {
@@ -251,6 +263,32 @@ type AgentPluginInfo struct {
 
 	// 知识库问答插件配置
 	KnowledgeQa *AgentKnowledgeQAPlugin `json:"KnowledgeQa,omitnil,omitempty" name:"KnowledgeQa"`
+
+	// 是否使用一键授权
+	EnableRoleAuth *bool `json:"EnableRoleAuth,omitnil,omitempty" name:"EnableRoleAuth"`
+
+	// 应用配置的插件query信息
+	Query []*AgentPluginQuery `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// MCP类型
+	McpType *uint64 `json:"McpType,omitnil,omitempty" name:"McpType"`
+}
+
+type AgentPluginQuery struct {
+	// 参数名称
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// 参数值
+	ParamValue *string `json:"ParamValue,omitnil,omitempty" name:"ParamValue"`
+
+	// query参数配置是否隐藏不可见，true-隐藏不可见，false-可见
+	GlobalHidden *bool `json:"GlobalHidden,omitnil,omitempty" name:"GlobalHidden"`
+
+	// 参数是否可以为空
+	IsRequired *bool `json:"IsRequired,omitnil,omitempty" name:"IsRequired"`
+
+	// 输入的值
+	Input *AgentInput `json:"Input,omitnil,omitempty" name:"Input"`
 }
 
 type AgentProcedure struct {
@@ -320,7 +358,7 @@ type AgentProcedureDebugging struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisplayContent *string `json:"DisplayContent,omitnil,omitempty" name:"DisplayContent"`
 
-	// 展示类型
+	// 1：搜索引擎参考来源；2：知识库参考来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisplayType *uint64 `json:"DisplayType,omitnil,omitempty" name:"DisplayType"`
 
@@ -385,6 +423,14 @@ type AgentReference struct {
 	// 标题
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 知识库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
+
+	// 知识库标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
 }
 
 type AgentThought struct {
@@ -473,6 +519,12 @@ type AgentToolInfo struct {
 	// NON_STREAMING: 非流式  STREAMIN: 流式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallingMethod *string `json:"CallingMethod,omitnil,omitempty" name:"CallingMethod"`
+
+	// query信息
+	Query []*AgentPluginQuery `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 工具计费状态 0-不计费 1-可用 2-不可用（欠费、无资源等）
+	FinanceStatus *int64 `json:"FinanceStatus,omitnil,omitempty" name:"FinanceStatus"`
 }
 
 type AgentToolReqParam struct {
@@ -622,6 +674,9 @@ type AppInfo struct {
 	// 思考模型别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThoughtModelAliasName *string `json:"ThoughtModelAliasName,omitnil,omitempty" name:"ThoughtModelAliasName"`
+
+	// 权限位信息
+	PermissionIds []*string `json:"PermissionIds,omitnil,omitempty" name:"PermissionIds"`
 }
 
 type AppModel struct {
@@ -668,6 +723,10 @@ type AppModel struct {
 	// 模型资源状态 1：资源可用；2：资源已用尽
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceStatus *uint64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
+
+	// 模型参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelParams *ModelParams `json:"ModelParams,omitnil,omitempty" name:"ModelParams"`
 }
 
 type AttrLabel struct {
@@ -1194,6 +1253,9 @@ type CreateAppRequestParams struct {
 
 	// 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// 智能体类型 dialogue 对话式智能体，wechat 公众号智能体
+	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 }
 
 type CreateAppRequest struct {
@@ -1207,6 +1269,9 @@ type CreateAppRequest struct {
 
 	// 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// 智能体类型 dialogue 对话式智能体，wechat 公众号智能体
+	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 }
 
 func (r *CreateAppRequest) ToJsonString() string {
@@ -1224,6 +1289,7 @@ func (r *CreateAppRequest) FromJsonString(s string) error {
 	delete(f, "AppType")
 	delete(f, "BaseConfig")
 	delete(f, "Pattern")
+	delete(f, "AgentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAppRequest has unknown keys!", "")
 	}
@@ -1808,7 +1874,12 @@ type CreateSharedKnowledgeRequestParams struct {
 	KnowledgeDescription *string `json:"KnowledgeDescription,omitnil,omitempty" name:"KnowledgeDescription"`
 
 	// Embedding模型，字符数量上限128
+	//
+	// Deprecated: EmbeddingModel is deprecated.
 	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
+
+	// 共享知识库类型，0普通，1公众号
+	KnowledgeType *int64 `json:"KnowledgeType,omitnil,omitempty" name:"KnowledgeType"`
 }
 
 type CreateSharedKnowledgeRequest struct {
@@ -1822,6 +1893,9 @@ type CreateSharedKnowledgeRequest struct {
 
 	// Embedding模型，字符数量上限128
 	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
+
+	// 共享知识库类型，0普通，1公众号
+	KnowledgeType *int64 `json:"KnowledgeType,omitnil,omitempty" name:"KnowledgeType"`
 }
 
 func (r *CreateSharedKnowledgeRequest) ToJsonString() string {
@@ -1839,6 +1913,7 @@ func (r *CreateSharedKnowledgeRequest) FromJsonString(s string) error {
 	delete(f, "KnowledgeName")
 	delete(f, "KnowledgeDescription")
 	delete(f, "EmbeddingModel")
+	delete(f, "KnowledgeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSharedKnowledgeRequest has unknown keys!", "")
 	}
@@ -1889,6 +1964,9 @@ type CreateVarRequestParams struct {
 
 	// 自定义变量文件默认名称
 	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
+
+	// 参数类型
+	VarModuleType *uint64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 type CreateVarRequest struct {
@@ -1911,6 +1989,9 @@ type CreateVarRequest struct {
 
 	// 自定义变量文件默认名称
 	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
+
+	// 参数类型
+	VarModuleType *uint64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 func (r *CreateVarRequest) ToJsonString() string {
@@ -1931,6 +2012,7 @@ func (r *CreateVarRequest) FromJsonString(s string) error {
 	delete(f, "VarType")
 	delete(f, "VarDefaultValue")
 	delete(f, "VarDefaultFileName")
+	delete(f, "VarModuleType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVarRequest has unknown keys!", "")
 	}
@@ -2654,6 +2736,9 @@ type DeleteVarRequestParams struct {
 
 	// 变量ID
 	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
+
+	// 参数类型
+	VarModuleType *uint64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 type DeleteVarRequest struct {
@@ -2664,6 +2749,9 @@ type DeleteVarRequest struct {
 
 	// 变量ID
 	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
+
+	// 参数类型
+	VarModuleType *uint64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 func (r *DeleteVarRequest) ToJsonString() string {
@@ -2680,6 +2768,7 @@ func (r *DeleteVarRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AppBizId")
 	delete(f, "VarId")
+	delete(f, "VarModuleType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVarRequest has unknown keys!", "")
 	}
@@ -3030,6 +3119,9 @@ type DescribeCallStatsGraphRequestParams struct {
 
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type DescribeCallStatsGraphRequest struct {
@@ -3064,6 +3156,9 @@ type DescribeCallStatsGraphRequest struct {
 
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 func (r *DescribeCallStatsGraphRequest) ToJsonString() string {
@@ -3088,6 +3183,7 @@ func (r *DescribeCallStatsGraphRequest) FromJsonString(s string) error {
 	delete(f, "AppBizIds")
 	delete(f, "SubScenes")
 	delete(f, "AppType")
+	delete(f, "SpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallStatsGraphRequest has unknown keys!", "")
 	}
@@ -3145,6 +3241,9 @@ type DescribeConcurrencyUsageGraphRequestParams struct {
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type DescribeConcurrencyUsageGraphRequest struct {
@@ -3173,6 +3272,9 @@ type DescribeConcurrencyUsageGraphRequest struct {
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 func (r *DescribeConcurrencyUsageGraphRequest) ToJsonString() string {
@@ -3195,6 +3297,7 @@ func (r *DescribeConcurrencyUsageGraphRequest) FromJsonString(s string) error {
 	delete(f, "LoginSubAccountUin")
 	delete(f, "SubBizType")
 	delete(f, "AppBizIds")
+	delete(f, "SpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConcurrencyUsageGraphRequest has unknown keys!", "")
 	}
@@ -3245,6 +3348,9 @@ type DescribeConcurrencyUsageRequestParams struct {
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type DescribeConcurrencyUsageRequest struct {
@@ -3261,6 +3367,9 @@ type DescribeConcurrencyUsageRequest struct {
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 func (r *DescribeConcurrencyUsageRequest) ToJsonString() string {
@@ -3279,6 +3388,7 @@ func (r *DescribeConcurrencyUsageRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "AppBizIds")
+	delete(f, "SpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConcurrencyUsageRequest has unknown keys!", "")
 	}
@@ -3436,6 +3546,14 @@ type DescribeDocResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
 
+	// 自定义切分规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
+
+	// 文档更新频率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3460,6 +3578,9 @@ func (r *DescribeDocResponse) FromJsonString(s string) error {
 type DescribeKnowledgeUsagePieGraphRequestParams struct {
 	// 应用ID数组
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 空间列表
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type DescribeKnowledgeUsagePieGraphRequest struct {
@@ -3467,6 +3588,9 @@ type DescribeKnowledgeUsagePieGraphRequest struct {
 	
 	// 应用ID数组
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 空间列表
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 func (r *DescribeKnowledgeUsagePieGraphRequest) ToJsonString() string {
@@ -3482,6 +3606,7 @@ func (r *DescribeKnowledgeUsagePieGraphRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "AppBizIds")
+	delete(f, "SpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKnowledgeUsagePieGraphRequest has unknown keys!", "")
 	}
@@ -4083,6 +4208,9 @@ type DescribeSearchStatsGraphRequestParams struct {
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type DescribeSearchStatsGraphRequest struct {
@@ -4111,6 +4239,9 @@ type DescribeSearchStatsGraphRequest struct {
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 func (r *DescribeSearchStatsGraphRequest) ToJsonString() string {
@@ -4133,6 +4264,7 @@ func (r *DescribeSearchStatsGraphRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "AppBizIds")
+	delete(f, "SpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSearchStatsGraphRequest has unknown keys!", "")
 	}
@@ -4264,7 +4396,7 @@ func (r *DescribeSharedKnowledgeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSharedKnowledgeResponseParams struct {
-	// 知识库列表
+	// 知识库详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info *KnowledgeDetailInfo `json:"Info,omitnil,omitempty" name:"Info"`
 
@@ -4415,6 +4547,9 @@ type DescribeTokenUsageGraphRequestParams struct {
 
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// 筛选子场景
+	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
 }
 
 type DescribeTokenUsageGraphRequest struct {
@@ -4440,6 +4575,9 @@ type DescribeTokenUsageGraphRequest struct {
 
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// 筛选子场景
+	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
 }
 
 func (r *DescribeTokenUsageGraphRequest) ToJsonString() string {
@@ -4461,6 +4599,7 @@ func (r *DescribeTokenUsageGraphRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "AppBizIds")
 	delete(f, "AppType")
+	delete(f, "SubScenes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenUsageGraphRequest has unknown keys!", "")
 	}
@@ -4529,6 +4668,9 @@ type DescribeTokenUsageRequestParams struct {
 
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type DescribeTokenUsageRequest struct {
@@ -4563,6 +4705,9 @@ type DescribeTokenUsageRequest struct {
 
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 func (r *DescribeTokenUsageRequest) ToJsonString() string {
@@ -4587,6 +4732,7 @@ func (r *DescribeTokenUsageRequest) FromJsonString(s string) error {
 	delete(f, "AppBizIds")
 	delete(f, "SubScenes")
 	delete(f, "AppType")
+	delete(f, "SpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenUsageRequest has unknown keys!", "")
 	}
@@ -5887,6 +6033,9 @@ type GetVarListRequestParams struct {
 
 	// 是否需要内部变量(默认false)
 	NeedInternalVar *bool `json:"NeedInternalVar,omitnil,omitempty" name:"NeedInternalVar"`
+
+	// 变量类型
+	VarModuleType *int64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 type GetVarListRequest struct {
@@ -5912,6 +6061,9 @@ type GetVarListRequest struct {
 
 	// 是否需要内部变量(默认false)
 	NeedInternalVar *bool `json:"NeedInternalVar,omitnil,omitempty" name:"NeedInternalVar"`
+
+	// 变量类型
+	VarModuleType *int64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 func (r *GetVarListRequest) ToJsonString() string {
@@ -5933,6 +6085,7 @@ func (r *GetVarListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "VarType")
 	delete(f, "NeedInternalVar")
+	delete(f, "VarModuleType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVarListRequest has unknown keys!", "")
 	}
@@ -6412,6 +6565,16 @@ func (r *IsTransferIntentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type KnowledgeAdvancedConfig struct {
+	// 重排序模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RerankModel *string `json:"RerankModel,omitnil,omitempty" name:"RerankModel"`
+
+	// 召回数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RerankRecallNum *int64 `json:"RerankRecallNum,omitnil,omitempty" name:"RerankRecallNum"`
+}
+
 type KnowledgeBaseInfo struct {
 	// 共享知识库业务ID
 	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
@@ -6434,6 +6597,20 @@ type KnowledgeBaseInfo struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 共享知识库类型，0普通，1公众号
+	KnowledgeType *int64 `json:"KnowledgeType,omitnil,omitempty" name:"KnowledgeType"`
+
+	// 拥有者id
+	OwnerStaffId *string `json:"OwnerStaffId,omitnil,omitempty" name:"OwnerStaffId"`
+
+	// 知识库文档数量,当前仅支持公众号知识库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocTotal *int64 `json:"DocTotal,omitnil,omitempty" name:"DocTotal"`
+
+	// 知识库处理中状态标记，1：向量embedding变更中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessingFlags []*int64 `json:"ProcessingFlags,omitnil,omitempty" name:"ProcessingFlags"`
 }
 
 type KnowledgeCapacityPieGraphDetail struct {
@@ -6490,6 +6667,33 @@ type KnowledgeDetailInfo struct {
 	// 用户信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *UserBaseInfo `json:"User,omitnil,omitempty" name:"User"`
+
+	// 权限位信息
+	PermissionIds []*string `json:"PermissionIds,omitnil,omitempty" name:"PermissionIds"`
+}
+
+type KnowledgeModelConfig struct {
+	// 向量模型，该字段只有共享知识库有，应用知识库没有
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
+
+	// 问答对生成模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QaExtractModel *string `json:"QaExtractModel,omitnil,omitempty" name:"QaExtractModel"`
+
+	// schema生成模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaModel *string `json:"SchemaModel,omitnil,omitempty" name:"SchemaModel"`
+}
+
+type KnowledgeQaAgent struct {
+	// 协同方式，1：自由转交，2：工作流编排，3：Plan-and-Execute
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentCollaboration *uint64 `json:"AgentCollaboration,omitnil,omitempty" name:"AgentCollaboration"`
+
+	// 应用配置agent关联的工作流
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Workflow *KnowledgeQaWorkflowInfo `json:"Workflow,omitnil,omitempty" name:"Workflow"`
 }
 
 type KnowledgeQaConfig struct {
@@ -6566,6 +6770,7 @@ type KnowledgeQaConfig struct {
 	AiCall *AICallConfig `json:"AiCall,omitnil,omitempty" name:"AiCall"`
 
 	// 共享知识库关联配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShareKnowledgeBases []*ShareKnowledgeBase `json:"ShareKnowledgeBases,omitnil,omitempty" name:"ShareKnowledgeBases"`
 
 	// 背景图相关信息
@@ -6575,6 +6780,24 @@ type KnowledgeQaConfig struct {
 	// 开场问题
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpeningQuestions []*string `json:"OpeningQuestions,omitnil,omitempty" name:"OpeningQuestions"`
+
+	// 长期记忆开关
+	LongMemoryOpen *bool `json:"LongMemoryOpen,omitnil,omitempty" name:"LongMemoryOpen"`
+
+	// 长期记忆时效
+	LongMemoryDay *uint64 `json:"LongMemoryDay,omitnil,omitempty" name:"LongMemoryDay"`
+
+	// agent配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Agent *KnowledgeQaAgent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 知识库模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeModelConfig *KnowledgeModelConfig `json:"KnowledgeModelConfig,omitnil,omitempty" name:"KnowledgeModelConfig"`
+
+	// 知识库高级设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeAdvancedConfig *KnowledgeAdvancedConfig `json:"KnowledgeAdvancedConfig,omitnil,omitempty" name:"KnowledgeAdvancedConfig"`
 }
 
 type KnowledgeQaOutput struct {
@@ -6692,6 +6915,23 @@ type KnowledgeQaSingleWorkflow struct {
 	AsyncWorkflow *bool `json:"AsyncWorkflow,omitnil,omitempty" name:"AsyncWorkflow"`
 }
 
+type KnowledgeQaWorkflowInfo struct {
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 工作流描述
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// 工作流状态，发布状态(UNPUBLISHED: 待发布 PUBLISHING: 发布中 PUBLISHED: 已发布 FAIL:发布失败)
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 工作流是否启用
+	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
+}
+
 type KnowledgeSummary struct {
 	// 1是问答 2是文档片段
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6712,11 +6952,18 @@ type KnowledgeUpdateInfo struct {
 
 	// Embedding模型
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: EmbeddingModel is deprecated.
 	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
 
 	// 问答提取模型
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: QaExtractModel is deprecated.
 	QaExtractModel *string `json:"QaExtractModel,omitnil,omitempty" name:"QaExtractModel"`
+
+	// 拥有者id
+	OwnerStaffId *string `json:"OwnerStaffId,omitnil,omitempty" name:"OwnerStaffId"`
 }
 
 type KnowledgeWorkflow struct {
@@ -6749,6 +6996,9 @@ type ListAppKnowledgeDetailRequestParams struct {
 
 	// 应用ID列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 空间列表
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type ListAppKnowledgeDetailRequest struct {
@@ -6762,6 +7012,9 @@ type ListAppKnowledgeDetailRequest struct {
 
 	// 应用ID列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 空间列表
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 func (r *ListAppKnowledgeDetailRequest) ToJsonString() string {
@@ -6779,6 +7032,7 @@ func (r *ListAppKnowledgeDetailRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
 	delete(f, "AppBizIds")
+	delete(f, "SpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAppKnowledgeDetailRequest has unknown keys!", "")
 	}
@@ -6829,6 +7083,12 @@ type ListAppRequestParams struct {
 
 	// 登录用户子账号(集成商模式必填)	
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 智能体类型 dialogue：对话智能体，wechat：公众号智能体
+	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
+
+	// 应用状态 1:未上线 2：运行中
+	AppStatus *string `json:"AppStatus,omitnil,omitempty" name:"AppStatus"`
 }
 
 type ListAppRequest struct {
@@ -6848,6 +7108,12 @@ type ListAppRequest struct {
 
 	// 登录用户子账号(集成商模式必填)	
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 智能体类型 dialogue：对话智能体，wechat：公众号智能体
+	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
+
+	// 应用状态 1:未上线 2：运行中
+	AppStatus *string `json:"AppStatus,omitnil,omitempty" name:"AppStatus"`
 }
 
 func (r *ListAppRequest) ToJsonString() string {
@@ -6867,6 +7133,8 @@ func (r *ListAppRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "Keyword")
 	delete(f, "LoginSubAccountUin")
+	delete(f, "AgentType")
+	delete(f, "AppStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAppRequest has unknown keys!", "")
 	}
@@ -6878,7 +7146,7 @@ type ListAppResponseParams struct {
 	// 数量
 	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 标签列表
+	// 应用列表
 	List []*AppInfo `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7336,7 +7604,7 @@ type ListModelRequestParams struct {
 	// 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 
-	// 模型类别 generate：生成模型，thought：思考模型
+	// 模型类别 generate：生成模型，thought：思考模型,embedding模型，rerank：rerank模型
 	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
 
 	// 登录用户主账号(集成商模式必填)	
@@ -7355,7 +7623,7 @@ type ListModelRequest struct {
 	// 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 
-	// 模型类别 generate：生成模型，thought：思考模型
+	// 模型类别 generate：生成模型，thought：思考模型,embedding模型，rerank：rerank模型
 	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
 
 	// 登录用户主账号(集成商模式必填)	
@@ -8414,10 +8682,10 @@ type ListSelectDocRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文档名称
+	// 文档名称。可通过文档名称检索支持生成问答的文档，不支持xlsx、xls、csv格式
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文档状态： 7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期
+	// 文档状态筛选。文档状态对应码为7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期。其中仅状态为10 待发布、12 已发布的文档支持生成问答
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -8427,10 +8695,10 @@ type ListSelectDocRequest struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文档名称
+	// 文档名称。可通过文档名称检索支持生成问答的文档，不支持xlsx、xls、csv格式
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文档状态： 7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期
+	// 文档状态筛选。文档状态对应码为7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期。其中仅状态为10 待发布、12 已发布的文档支持生成问答
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -8490,6 +8758,9 @@ type ListSharedKnowledgeRequestParams struct {
 
 	// 搜索关键字
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 共享知识库类型，0普通，1公众号
+	KnowledgeTypes []*int64 `json:"KnowledgeTypes,omitnil,omitempty" name:"KnowledgeTypes"`
 }
 
 type ListSharedKnowledgeRequest struct {
@@ -8503,6 +8774,9 @@ type ListSharedKnowledgeRequest struct {
 
 	// 搜索关键字
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 共享知识库类型，0普通，1公众号
+	KnowledgeTypes []*int64 `json:"KnowledgeTypes,omitnil,omitempty" name:"KnowledgeTypes"`
 }
 
 func (r *ListSharedKnowledgeRequest) ToJsonString() string {
@@ -8520,6 +8794,7 @@ func (r *ListSharedKnowledgeRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
 	delete(f, "Keyword")
+	delete(f, "KnowledgeTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSharedKnowledgeRequest has unknown keys!", "")
 	}
@@ -8692,6 +8967,9 @@ type ListUsageCallDetailRequestParams struct {
 
 	// 账单明细对应的自定义tag
 	BillingTag *string `json:"BillingTag,omitnil,omitempty" name:"BillingTag"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type ListUsageCallDetailRequest struct {
@@ -8729,6 +9007,9 @@ type ListUsageCallDetailRequest struct {
 
 	// 账单明细对应的自定义tag
 	BillingTag *string `json:"BillingTag,omitnil,omitempty" name:"BillingTag"`
+
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 func (r *ListUsageCallDetailRequest) ToJsonString() string {
@@ -8754,6 +9035,7 @@ func (r *ListUsageCallDetailRequest) FromJsonString(s string) error {
 	delete(f, "SubScenes")
 	delete(f, "AppType")
 	delete(f, "BillingTag")
+	delete(f, "SpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUsageCallDetailRequest has unknown keys!", "")
 	}
@@ -8950,6 +9232,23 @@ type ModelInfo struct {
 
 	// 专属并发数
 	Concurrency *uint64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
+
+	// 模型标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelTags []*string `json:"ModelTags,omitnil,omitempty" name:"ModelTags"`
+
+	// 模型超参定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelParams []*ModelParameter `json:"ModelParams,omitnil,omitempty" name:"ModelParams"`
+
+	// 提供商名称
+	ProviderName *string `json:"ProviderName,omitnil,omitempty" name:"ProviderName"`
+
+	// 提供商别名
+	ProviderAliasName *string `json:"ProviderAliasName,omitnil,omitempty" name:"ProviderAliasName"`
+
+	// 提供商类型 Self:提供商，Custom：自定义模型提供商，Third：第三方模型提供商
+	ProviderType *string `json:"ProviderType,omitnil,omitempty" name:"ProviderType"`
 }
 
 type ModelParameter struct {
@@ -8964,6 +9263,39 @@ type ModelParameter struct {
 	// 最大值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Max *float64 `json:"Max,omitnil,omitempty" name:"Max"`
+
+	// 超参名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type ModelParams struct {
+	// 温度
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
+
+	// Top_P
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// 随机种子
+	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
+
+	// 存在惩罚
+	PresencePenalty *float64 `json:"PresencePenalty,omitnil,omitempty" name:"PresencePenalty"`
+
+	// 频率惩罚
+	FrequencyPenalty *float64 `json:"FrequencyPenalty,omitnil,omitempty" name:"FrequencyPenalty"`
+
+	// 重复惩罚
+	RepetitionPenalty *float64 `json:"RepetitionPenalty,omitnil,omitempty" name:"RepetitionPenalty"`
+
+	// 最大输出长度
+	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
+
+	// 停止序列
+	StopSequences []*string `json:"StopSequences,omitnil,omitempty" name:"StopSequences"`
+
+	// 输出格式
+	ReplyFormat *string `json:"ReplyFormat,omitnil,omitempty" name:"ReplyFormat"`
 }
 
 // Predefined struct for user
@@ -9412,6 +9744,15 @@ type ModifyDocRequestParams struct {
 
 	// 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
 	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
+
+	// 需要修改的内容类型  0  无效 1 更新文档cos信息 2 更新文档引用信息 3 更新文档刷新频率 4 腾讯文档刷新
+	ModifyTypes []*uint64 `json:"ModifyTypes,omitnil,omitempty" name:"ModifyTypes"`
+
+	// 文档更新频率
+	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
+
+	// 自定义切分规则
+	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
 }
 
 type ModifyDocRequest struct {
@@ -9456,6 +9797,15 @@ type ModifyDocRequest struct {
 
 	// 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
 	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
+
+	// 需要修改的内容类型  0  无效 1 更新文档cos信息 2 更新文档引用信息 3 更新文档刷新频率 4 腾讯文档刷新
+	ModifyTypes []*uint64 `json:"ModifyTypes,omitnil,omitempty" name:"ModifyTypes"`
+
+	// 文档更新频率
+	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
+
+	// 自定义切分规则
+	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
 }
 
 func (r *ModifyDocRequest) ToJsonString() string {
@@ -9483,6 +9833,9 @@ func (r *ModifyDocRequest) FromJsonString(s string) error {
 	delete(f, "ExpireEnd")
 	delete(f, "CateBizId")
 	delete(f, "IsDownload")
+	delete(f, "ModifyTypes")
+	delete(f, "UpdatePeriodInfo")
+	delete(f, "SplitRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDocRequest has unknown keys!", "")
 	}
@@ -10021,6 +10374,9 @@ type MsgRecordReference struct {
 
 	// 问答业务id
 	QaBizId *string `json:"QaBizId,omitnil,omitempty" name:"QaBizId"`
+
+	// 文档索引id
+	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
 type NodeRunBase struct {
@@ -10176,6 +10532,14 @@ type Option struct {
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 }
 
+type OptionCardIndex struct {
+	// 唯一标识
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 选项卡索引
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+}
+
 type PluginToolReqParam struct {
 	// 参数名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -10229,6 +10593,12 @@ type Procedure struct {
 	// 计费资源状态，1：可用，2：不可用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceStatus *uint64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
+
+	// 输入消耗 token 数
+	InputCount *uint64 `json:"InputCount,omitnil,omitempty" name:"InputCount"`
+
+	// 输出消耗 token 数
+	OutputCount *uint64 `json:"OutputCount,omitnil,omitempty" name:"OutputCount"`
 }
 
 type ProcedureDebugging struct {
@@ -10261,6 +10631,7 @@ type ProcedureDebugging struct {
 	Agent *AgentDebugInfo `json:"Agent,omitnil,omitempty" name:"Agent"`
 
 	// 自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomVariables []*string `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
 }
 
@@ -11082,6 +11453,96 @@ type SaveDocRequestParams struct {
 
 	// 重复文档处理方式，按顺序匹配第一个满足条件的方式处理
 	DuplicateFileHandles []*DuplicateFileHandle `json:"DuplicateFileHandles,omitnil,omitempty" name:"DuplicateFileHandles"`
+
+	// 自定义切分规则
+	// 
+	// 请求参数为一个 **JSON Object**，具体格式可参见接口示例值。包含以下主要字段：
+	// 
+	// | 字段名             | 类型      | 说明                                   |
+	// |--------------------|--------|----------------------------------------|
+	// | `xlsx_splitter`    | Object   | **Excel（xlsx）文件切分策略配置**，仅当处理 Excel 文件时有效 |
+	// | `common_splitter`  | Object  | **通用文件（如 txt、pdf 等）切分策略配置**，按页或按标签切分 |
+	// | `table_style`      | String | 表格内容的输出格式，如 HTML 或 Markdown |
+	// 
+	// ---
+	// 
+	// ## `xlsx_splitter`（Excel 切分策略）
+	// 
+	// 用于配置 **表格文件的切分方式**。
+	// **类型：Object**
+	// 
+	// ```json
+	// "xlsx_splitter": {
+	//   "header_interval": [1, 2],
+	//   "content_start": 10,
+	//   "split_row": 2
+	// }
+	// ```
+	// 
+	// ### 字段说明：
+	// 
+	// | 字段名            | 类型   | 说明                                                                 |
+	// |-------------------|--------|----------------------------------------------------------------------|
+	// | `header_interval` | Array\<Number\>  | 表头所在的行区间，格式为 `[起始行, 结束行]`，**行号从 1 开始计数**。例如 `[1, 2]` 表示第 1~2 行为表头。 |
+	// | `content_start`   | Number  | **表格内容的起始行号（从 1 开始）**。 |
+	// | `split_row`       | Number   | **切分行数**。                   |
+	// 
+	// ---
+	// ## `common_splitter`（通用文件切分策略）
+	// 
+	// 用于配置 **非 Excel 文件（如 TXT、PDF、DOCX 等）的切分方式**，支持两种策略：**按页切分（page）** 或 **按标识符切分（tag）**。
+	// 
+	// **类型：Object**
+	// 
+	// ```json
+	// "common_splitter": {
+	//   "splitter": "page",
+	//   "page_splitter": {
+	//     "chunk_length": 1000,
+	//     "chunk_overlap_length": 100
+	//   }
+	// }
+	// ```
+	// 
+	// ### 字段说明：
+	// 
+	// | 字段名            | 类型     | 说明                                                                 |
+	// |-------------------|--------|---------------------------------------------------|
+	// | `splitter`        | String  | 切分策略类型，可选值为：`"page"`（按页切分） 或 `"tag"`（按标识符切分）。 |
+	// | `page_splitter`   | Object   | **按页切分的配置**。                                         |
+	// | `page_splitter.chunk_length`   | 1000    | **切片最大长度**。              |
+	// | `page_splitter.chunk_overlap_length`  | 100    | **切片重叠长度**。  |
+	// | `tag_splitter`             | Object          | **自定义切分配置**。             |
+	// | `tag_splitter.tag`         | Array\<String\>    | **切分标识符**。                             |
+	// | `tag_splitter.chunk_length`| Number       | **切片最大长度**。                                                               |
+	// | `tag_splitter.chunk_overlap_length` | Number    | **切块重叠长度**。                                                  |
+	// 
+	// 🔹 **补充说明：**
+	// 
+	// - `splitter` 字段的值可以是：
+	//   - `"page"`：只使用按页切分逻辑，此时只需要关心 `page_splitter` 相关字段。
+	//   - `"tag"`：只使用按标识符（如分号、换行等）切分逻辑，此时关注 `tag_splitter`。
+	// ---
+	// 
+	// ##  `table_style`（表格输出样式）
+	// 
+	// 用于指定 **表格类内容（比如从 Excel 或 CSV 中提取的表格）最终以何种格式返回**，方便前端展示或后续处理。
+	// 
+	// **类型：String**
+	// 
+	// ```json
+	// "table_style": "md"
+	// ```
+	// 
+	// ### 字段说明：
+	// 
+	// | 字段名       | 类型   | 说明                                                                 |
+	// |--------------|--------|----------------------------------------------------------------------|
+	// | `table_style` | String | 指定表格内容的输出格式。可用值：<br>• `"html"`：以 HTML 表格形式返回，适合网页展示。<br>• `"md"`：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。|
+	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
+
+	// 文档更新频率
+	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
 }
 
 type SaveDocRequest struct {
@@ -11153,6 +11614,96 @@ type SaveDocRequest struct {
 
 	// 重复文档处理方式，按顺序匹配第一个满足条件的方式处理
 	DuplicateFileHandles []*DuplicateFileHandle `json:"DuplicateFileHandles,omitnil,omitempty" name:"DuplicateFileHandles"`
+
+	// 自定义切分规则
+	// 
+	// 请求参数为一个 **JSON Object**，具体格式可参见接口示例值。包含以下主要字段：
+	// 
+	// | 字段名             | 类型      | 说明                                   |
+	// |--------------------|--------|----------------------------------------|
+	// | `xlsx_splitter`    | Object   | **Excel（xlsx）文件切分策略配置**，仅当处理 Excel 文件时有效 |
+	// | `common_splitter`  | Object  | **通用文件（如 txt、pdf 等）切分策略配置**，按页或按标签切分 |
+	// | `table_style`      | String | 表格内容的输出格式，如 HTML 或 Markdown |
+	// 
+	// ---
+	// 
+	// ## `xlsx_splitter`（Excel 切分策略）
+	// 
+	// 用于配置 **表格文件的切分方式**。
+	// **类型：Object**
+	// 
+	// ```json
+	// "xlsx_splitter": {
+	//   "header_interval": [1, 2],
+	//   "content_start": 10,
+	//   "split_row": 2
+	// }
+	// ```
+	// 
+	// ### 字段说明：
+	// 
+	// | 字段名            | 类型   | 说明                                                                 |
+	// |-------------------|--------|----------------------------------------------------------------------|
+	// | `header_interval` | Array\<Number\>  | 表头所在的行区间，格式为 `[起始行, 结束行]`，**行号从 1 开始计数**。例如 `[1, 2]` 表示第 1~2 行为表头。 |
+	// | `content_start`   | Number  | **表格内容的起始行号（从 1 开始）**。 |
+	// | `split_row`       | Number   | **切分行数**。                   |
+	// 
+	// ---
+	// ## `common_splitter`（通用文件切分策略）
+	// 
+	// 用于配置 **非 Excel 文件（如 TXT、PDF、DOCX 等）的切分方式**，支持两种策略：**按页切分（page）** 或 **按标识符切分（tag）**。
+	// 
+	// **类型：Object**
+	// 
+	// ```json
+	// "common_splitter": {
+	//   "splitter": "page",
+	//   "page_splitter": {
+	//     "chunk_length": 1000,
+	//     "chunk_overlap_length": 100
+	//   }
+	// }
+	// ```
+	// 
+	// ### 字段说明：
+	// 
+	// | 字段名            | 类型     | 说明                                                                 |
+	// |-------------------|--------|---------------------------------------------------|
+	// | `splitter`        | String  | 切分策略类型，可选值为：`"page"`（按页切分） 或 `"tag"`（按标识符切分）。 |
+	// | `page_splitter`   | Object   | **按页切分的配置**。                                         |
+	// | `page_splitter.chunk_length`   | 1000    | **切片最大长度**。              |
+	// | `page_splitter.chunk_overlap_length`  | 100    | **切片重叠长度**。  |
+	// | `tag_splitter`             | Object          | **自定义切分配置**。             |
+	// | `tag_splitter.tag`         | Array\<String\>    | **切分标识符**。                             |
+	// | `tag_splitter.chunk_length`| Number       | **切片最大长度**。                                                               |
+	// | `tag_splitter.chunk_overlap_length` | Number    | **切块重叠长度**。                                                  |
+	// 
+	// 🔹 **补充说明：**
+	// 
+	// - `splitter` 字段的值可以是：
+	//   - `"page"`：只使用按页切分逻辑，此时只需要关心 `page_splitter` 相关字段。
+	//   - `"tag"`：只使用按标识符（如分号、换行等）切分逻辑，此时关注 `tag_splitter`。
+	// ---
+	// 
+	// ##  `table_style`（表格输出样式）
+	// 
+	// 用于指定 **表格类内容（比如从 Excel 或 CSV 中提取的表格）最终以何种格式返回**，方便前端展示或后续处理。
+	// 
+	// **类型：String**
+	// 
+	// ```json
+	// "table_style": "md"
+	// ```
+	// 
+	// ### 字段说明：
+	// 
+	// | 字段名       | 类型   | 说明                                                                 |
+	// |--------------|--------|----------------------------------------------------------------------|
+	// | `table_style` | String | 指定表格内容的输出格式。可用值：<br>• `"html"`：以 HTML 表格形式返回，适合网页展示。<br>• `"md"`：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。|
+	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
+
+	// 文档更新频率
+	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
 }
 
 func (r *SaveDocRequest) ToJsonString() string {
@@ -11186,6 +11737,8 @@ func (r *SaveDocRequest) FromJsonString(s string) error {
 	delete(f, "CateBizId")
 	delete(f, "IsDownload")
 	delete(f, "DuplicateFileHandles")
+	delete(f, "SplitRule")
+	delete(f, "UpdatePeriodInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveDocRequest has unknown keys!", "")
 	}
@@ -11244,17 +11797,51 @@ type SearchStrategy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyType *uint64 `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
-	// Excel检索增强开关
+	// Excel检索增强开关, false关闭，true打开
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableEnhancement *bool `json:"TableEnhancement,omitnil,omitempty" name:"TableEnhancement"`
+
+	// 向量模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
+
+	// 结果重排序开关， on打开，off关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RerankModelSwitch *string `json:"RerankModelSwitch,omitnil,omitempty" name:"RerankModelSwitch"`
+
+	// 结果重排序模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RerankModel *string `json:"RerankModel,omitnil,omitempty" name:"RerankModel"`
 }
 
 type ShareKnowledgeBase struct {
 	// 共享知识库ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
 
 	// 检索范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SearchRange *SearchRange `json:"SearchRange,omitnil,omitempty" name:"SearchRange"`
+
+	// 知识库模型设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeModelConfig *KnowledgeModelConfig `json:"KnowledgeModelConfig,omitnil,omitempty" name:"KnowledgeModelConfig"`
+
+	// 检索策略配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchStrategy *SearchStrategy `json:"SearchStrategy,omitnil,omitempty" name:"SearchStrategy"`
+
+	// 检索配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Search []*KnowledgeQaSearch `json:"Search,omitnil,omitempty" name:"Search"`
+
+	// // 问答-回复灵活度 1：已采纳答案直接回复 2：已采纳润色后回复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplyFlexibility *int64 `json:"ReplyFlexibility,omitnil,omitempty" name:"ReplyFlexibility"`
+
+	// 共享知识库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
 }
 
 type SimilarQuestion struct {
@@ -11491,6 +12078,9 @@ type TaskFLowVar struct {
 
 	// 自定义变量文件默认名称
 	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
+
+	// 变量类型
+	VarModuleType *uint64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 type TaskFlowInfo struct {
@@ -11615,6 +12205,12 @@ type UnsatisfiedReply struct {
 	Reasons []*string `json:"Reasons,omitnil,omitempty" name:"Reasons"`
 }
 
+type UpdatePeriodInfo struct {
+	// 文档更新频率类型：0不更新 -H 小时粒度,当前仅支持24(1天)，72(3天)，168(7天) 仅source=2 腾讯文档类型有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatePeriodH *uint64 `json:"UpdatePeriodH,omitnil,omitempty" name:"UpdatePeriodH"`
+}
+
 // Predefined struct for user
 type UpdateSharedKnowledgeRequestParams struct {
 	// 共享知识库业务ID
@@ -11701,6 +12297,9 @@ type UpdateVarRequestParams struct {
 
 	// 自定义变量文件默认名称
 	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
+
+	// 变量类型
+	VarModuleType *uint64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 type UpdateVarRequest struct {
@@ -11726,6 +12325,9 @@ type UpdateVarRequest struct {
 
 	// 自定义变量文件默认名称
 	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
+
+	// 变量类型
+	VarModuleType *uint64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 func (r *UpdateVarRequest) ToJsonString() string {
@@ -11747,6 +12349,7 @@ func (r *UpdateVarRequest) FromJsonString(s string) error {
 	delete(f, "VarType")
 	delete(f, "VarDefaultValue")
 	delete(f, "VarDefaultFileName")
+	delete(f, "VarModuleType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateVarRequest has unknown keys!", "")
 	}
@@ -12043,6 +12646,12 @@ type WorkFlowSummary struct {
 	// 工作流发布时间，unix时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowReleaseTime *string `json:"WorkflowReleaseTime,omitnil,omitempty" name:"WorkflowReleaseTime"`
+
+	// 中间消息
+	PendingMessages []*string `json:"PendingMessages,omitnil,omitempty" name:"PendingMessages"`
+
+	// 选项卡索引
+	OptionCardIndex *OptionCardIndex `json:"OptionCardIndex,omitnil,omitempty" name:"OptionCardIndex"`
 }
 
 type WorkflowInfo struct {
@@ -12138,6 +12747,9 @@ type WorkflowRunDetail struct {
 
 	// 名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 工作流输出
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 运行状态。0: 排队中；1: 运行中；2: 运行成功；3: 运行失败； 4: 已取消
 	State *uint64 `json:"State,omitnil,omitempty" name:"State"`

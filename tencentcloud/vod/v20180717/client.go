@@ -1483,6 +1483,88 @@ func (c *Client) CreateJustInTimeTranscodeTemplateWithContext(ctx context.Contex
     return
 }
 
+func NewCreateMPSTemplateRequest() (request *CreateMPSTemplateRequest) {
+    request = &CreateMPSTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateMPSTemplate")
+    
+    
+    return
+}
+
+func NewCreateMPSTemplateResponse() (response *CreateMPSTemplateResponse) {
+    response = &CreateMPSTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMPSTemplate
+// 该接口用于创建自定义模板，模板用于 ProcessMediaByMPS 接口的部分功能。
+//
+// 创建模板时，需要将 MPS 相关参数以 JSON 格式填入 MPSCreateTemplateParams 参数中。关于具体的任务参数配置方法，请参考 MPS 任务模板相关文档说明。
+//
+// 当前支持创建自定义模板的 MPS 功能：
+//
+// 1. [音视频增强](https://cloud.tencent.com/document/product/862/118703)。
+//
+// 
+//
+// > 以该种方式创建的任务模板：
+//
+// > 1. 模板的管理仍在点播平台中完成。
+//
+// > 2. 该功能目前仍在内测中，如需测试体验，您可以联系我们获得支持。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateMPSTemplate(request *CreateMPSTemplateRequest) (response *CreateMPSTemplateResponse, err error) {
+    return c.CreateMPSTemplateWithContext(context.Background(), request)
+}
+
+// CreateMPSTemplate
+// 该接口用于创建自定义模板，模板用于 ProcessMediaByMPS 接口的部分功能。
+//
+// 创建模板时，需要将 MPS 相关参数以 JSON 格式填入 MPSCreateTemplateParams 参数中。关于具体的任务参数配置方法，请参考 MPS 任务模板相关文档说明。
+//
+// 当前支持创建自定义模板的 MPS 功能：
+//
+// 1. [音视频增强](https://cloud.tencent.com/document/product/862/118703)。
+//
+// 
+//
+// > 以该种方式创建的任务模板：
+//
+// > 1. 模板的管理仍在点播平台中完成。
+//
+// > 2. 该功能目前仍在内测中，如需测试体验，您可以联系我们获得支持。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateMPSTemplateWithContext(ctx context.Context, request *CreateMPSTemplateRequest) (response *CreateMPSTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateMPSTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateMPSTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMPSTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMPSTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePersonSampleRequest() (request *CreatePersonSampleRequest) {
     request = &CreatePersonSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3239,6 +3321,62 @@ func (c *Client) DeleteJustInTimeTranscodeTemplateWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewDeleteJustInTimeTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMPSTemplateRequest() (request *DeleteMPSTemplateRequest) {
+    request = &DeleteMPSTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteMPSTemplate")
+    
+    
+    return
+}
+
+func NewDeleteMPSTemplateResponse() (response *DeleteMPSTemplateResponse) {
+    response = &DeleteMPSTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMPSTemplate
+// 删除用户自定义 MPS 任务模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteMPSTemplate(request *DeleteMPSTemplateRequest) (response *DeleteMPSTemplateResponse, err error) {
+    return c.DeleteMPSTemplateWithContext(context.Background(), request)
+}
+
+// DeleteMPSTemplate
+// 删除用户自定义 MPS 任务模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteMPSTemplateWithContext(ctx context.Context, request *DeleteMPSTemplateRequest) (response *DeleteMPSTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteMPSTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DeleteMPSTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMPSTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMPSTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -6061,6 +6199,64 @@ func (c *Client) DescribeLicenseUsageDataWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeLicenseUsageDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMPSTemplatesRequest() (request *DescribeMPSTemplatesRequest) {
+    request = &DescribeMPSTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeMPSTemplates")
+    
+    
+    return
+}
+
+func NewDescribeMPSTemplatesResponse() (response *DescribeMPSTemplatesResponse) {
+    response = &DescribeMPSTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMPSTemplates
+// 获取用户自定义媒体处理服务（MPS）任务模板。
+//
+// 查询模板列表时，需要将 MPS 相关参数以 JSON 格式填入 MPSDescribeTemplateParams 参数中。关于具体的任务参数配置方法，请参考 MPS 任务模板相关文档说明。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeMPSTemplates(request *DescribeMPSTemplatesRequest) (response *DescribeMPSTemplatesResponse, err error) {
+    return c.DescribeMPSTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeMPSTemplates
+// 获取用户自定义媒体处理服务（MPS）任务模板。
+//
+// 查询模板列表时，需要将 MPS 相关参数以 JSON 格式填入 MPSDescribeTemplateParams 参数中。关于具体的任务参数配置方法，请参考 MPS 任务模板相关文档说明。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeMPSTemplatesWithContext(ctx context.Context, request *DescribeMPSTemplatesRequest) (response *DescribeMPSTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMPSTemplatesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeMPSTemplates")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMPSTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMPSTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -9493,6 +9689,64 @@ func (c *Client) ModifyJustInTimeTranscodeTemplateWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewModifyJustInTimeTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMPSTemplateRequest() (request *ModifyMPSTemplateRequest) {
+    request = &ModifyMPSTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyMPSTemplate")
+    
+    
+    return
+}
+
+func NewModifyMPSTemplateResponse() (response *ModifyMPSTemplateResponse) {
+    response = &ModifyMPSTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMPSTemplate
+// 修改用户自定义 MPS 任务模板。
+//
+// 修改模板时，需要将 MPS 相关参数以 JSON 格式填入 MPSModifyTemplateParams 参数中。关于具体的任务参数配置方法，请参考 MPS 任务模板相关文档说明。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifyMPSTemplate(request *ModifyMPSTemplateRequest) (response *ModifyMPSTemplateResponse, err error) {
+    return c.ModifyMPSTemplateWithContext(context.Background(), request)
+}
+
+// ModifyMPSTemplate
+// 修改用户自定义 MPS 任务模板。
+//
+// 修改模板时，需要将 MPS 相关参数以 JSON 格式填入 MPSModifyTemplateParams 参数中。关于具体的任务参数配置方法，请参考 MPS 任务模板相关文档说明。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifyMPSTemplateWithContext(ctx context.Context, request *ModifyMPSTemplateRequest) (response *ModifyMPSTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyMPSTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ModifyMPSTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMPSTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMPSTemplateResponse()
     err = c.Send(request, response)
     return
 }

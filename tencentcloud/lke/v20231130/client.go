@@ -3983,7 +3983,7 @@ func NewListSelectDocResponse() (response *ListSelectDocResponse) {
 }
 
 // ListSelectDoc
-// 获取账户信息
+// 文档生成问答时，可通过该接口获得当前支持生成问答的文档列表，当前不支持xlsx、xls、csv格式的文档生成问答，且文档需处于待发布或已发布状态才可生成问答。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3992,7 +3992,7 @@ func (c *Client) ListSelectDoc(request *ListSelectDocRequest) (response *ListSel
 }
 
 // ListSelectDoc
-// 获取账户信息
+// 文档生成问答时，可通过该接口获得当前支持生成问答的文档列表，当前不支持xlsx、xls、csv格式的文档生成问答，且文档需处于待发布或已发布状态才可生成问答。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

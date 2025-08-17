@@ -8615,6 +8615,9 @@ type CreateSealRequestParams struct {
 	// <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
 	// </ul>
 	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil,omitempty" name:"TaxIdentifyCode"`
+
+	// 印章描述内容
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 }
 
 type CreateSealRequest struct {
@@ -8694,6 +8697,9 @@ type CreateSealRequest struct {
 	// <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
 	// </ul>
 	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil,omitempty" name:"TaxIdentifyCode"`
+
+	// 印章描述内容
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 }
 
 func (r *CreateSealRequest) ToJsonString() string {
@@ -8725,6 +8731,7 @@ func (r *CreateSealRequest) FromJsonString(s string) error {
 	delete(f, "SealStyle")
 	delete(f, "SealSize")
 	delete(f, "TaxIdentifyCode")
+	delete(f, "SealDescription")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealRequest has unknown keys!", "")
 	}
@@ -15136,6 +15143,21 @@ type OccupiedSeal struct {
 
 	// 印章扩展数据信息
 	ExtendScene *ExtendScene `json:"ExtendScene,omitnil,omitempty" name:"ExtendScene"`
+
+	// 印章的真实宽度，单位毫米
+	RealWidth *int64 `json:"RealWidth,omitnil,omitempty" name:"RealWidth"`
+
+	// 印章的真实高度，单位毫米
+	RealHeight *int64 `json:"RealHeight,omitnil,omitempty" name:"RealHeight"`
+
+	// 自定义子类型印章
+	SubSealType *string `json:"SubSealType,omitnil,omitempty" name:"SubSealType"`
+
+	// 自定义子类型印章名称
+	SubSealName *string `json:"SubSealName,omitnil,omitempty" name:"SubSealName"`
+
+	// 印章描述
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 }
 
 // Predefined struct for user
@@ -15370,6 +15392,9 @@ type OrganizationAuthUrl struct {
 
 	// 企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationAuthorizationUrl)。
 	SubTaskId *string `json:"SubTaskId,omitnil,omitempty" name:"SubTaskId"`
+
+	// 企业批量注册 传递过来的企业名称，方便客户定位企业
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 }
 
 type OrganizationCommonInfo struct {

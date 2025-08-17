@@ -2383,6 +2383,9 @@ type ModifyRabbitMQServerlessInstanceRequestParams struct {
 
 	// 是否开启trace
 	TraceFlag *bool `json:"TraceFlag,omitnil,omitempty" name:"TraceFlag"`
+
+	// 限流生产消费比例
+	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
 }
 
 type ModifyRabbitMQServerlessInstanceRequest struct {
@@ -2399,6 +2402,9 @@ type ModifyRabbitMQServerlessInstanceRequest struct {
 
 	// 是否开启trace
 	TraceFlag *bool `json:"TraceFlag,omitnil,omitempty" name:"TraceFlag"`
+
+	// 限流生产消费比例
+	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
 }
 
 func (r *ModifyRabbitMQServerlessInstanceRequest) ToJsonString() string {
@@ -2417,6 +2423,7 @@ func (r *ModifyRabbitMQServerlessInstanceRequest) FromJsonString(s string) error
 	delete(f, "ClusterName")
 	delete(f, "Remark")
 	delete(f, "TraceFlag")
+	delete(f, "SendReceiveRatio")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRabbitMQServerlessInstanceRequest has unknown keys!", "")
 	}

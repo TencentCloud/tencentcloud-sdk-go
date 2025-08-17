@@ -1953,6 +1953,7 @@ type CreateConfigExtraRequestParams struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志源类型。支持 container_stdout：容器标准输出；container_file：容器文件路径；host_file：节点文件路径。
@@ -1973,21 +1974,28 @@ type CreateConfigExtraRequestParams struct {
 	ConfigFlag *string `json:"ConfigFlag,omitnil,omitempty" name:"ConfigFlag"`
 
 	// 日志集id
+	// - 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志集name
+	// 日志集名称
+	// - 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集名称。
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志主题名称
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题名称。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 节点文件路径类型配置。
+	// 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+	// 
+	// - 详细参考 [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 信息。
 	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 容器文件路径类型配置。
 	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
-	// 容器标准输出类型配置。
+	// 自建k8s-容器标准输出信息，包括容器、命名空间等。
+	// 
+	// - 详细参考 [ContainerStdoutInfo](https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 信息。
 	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 日志格式化方式，用于容器采集场景。
@@ -2008,13 +2016,17 @@ type CreateConfigExtraRequestParams struct {
 	// ](https://cloud.tencent.com/document/product/614/61310)
 	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
-	// 绑定的机器组id
+	// 绑定的机器组ID
+	// - 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
+	// - GroupId 与 GroupIds 选择其一即可，不可同时为空。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 绑定的机器组id列表
+	// 绑定的机器组ID列表
+	// - 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id信息。
+	// - GroupId 与 GroupIds 选择其一即可，不可同时为空。
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 采集相关配置信息。详情见CollectInfo复杂类型配置。
+	// 采集相关配置信息。详细参考 [CollectInfo](https://cloud.tencent.com/document/api/614/56471#CollectInfo) 信息。
 	CollectInfos []*CollectInfo `json:"CollectInfos,omitnil,omitempty" name:"CollectInfos"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
@@ -2032,6 +2044,7 @@ type CreateConfigExtraRequest struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志源类型。支持 container_stdout：容器标准输出；container_file：容器文件路径；host_file：节点文件路径。
@@ -2052,21 +2065,28 @@ type CreateConfigExtraRequest struct {
 	ConfigFlag *string `json:"ConfigFlag,omitnil,omitempty" name:"ConfigFlag"`
 
 	// 日志集id
+	// - 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志集name
+	// 日志集名称
+	// - 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集名称。
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志主题名称
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题名称。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 节点文件路径类型配置。
+	// 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+	// 
+	// - 详细参考 [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 信息。
 	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 容器文件路径类型配置。
 	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
-	// 容器标准输出类型配置。
+	// 自建k8s-容器标准输出信息，包括容器、命名空间等。
+	// 
+	// - 详细参考 [ContainerStdoutInfo](https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 信息。
 	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 日志格式化方式，用于容器采集场景。
@@ -2085,13 +2105,17 @@ type CreateConfigExtraRequest struct {
 	// ](https://cloud.tencent.com/document/product/614/61310)
 	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
-	// 绑定的机器组id
+	// 绑定的机器组ID
+	// - 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
+	// - GroupId 与 GroupIds 选择其一即可，不可同时为空。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 绑定的机器组id列表
+	// 绑定的机器组ID列表
+	// - 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id信息。
+	// - GroupId 与 GroupIds 选择其一即可，不可同时为空。
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 采集相关配置信息。详情见CollectInfo复杂类型配置。
+	// 采集相关配置信息。详细参考 [CollectInfo](https://cloud.tencent.com/document/api/614/56471#CollectInfo) 信息。
 	CollectInfos []*CollectInfo `json:"CollectInfos,omitnil,omitempty" name:"CollectInfos"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
@@ -4191,28 +4215,37 @@ type DashboardInfo struct {
 }
 
 type DashboardNoticeMode struct {
-	// 仪表盘通知方式。<br>
-	// <li/>Uin：腾讯云用户<br>
-	// <li/>Group：腾讯云用户组<br>
-	// <li/>Email：自定义Email<br>
-	// <li/>WeCom: 企业微信回调<br>
-	// <li/>DingTalk：钉钉<br>
-	// <li/>Lark：飞书
+	// 仪表盘通知方式。
+	// 
+	// - Uin：腾讯云用户
+	// - Group：腾讯云用户组
+	// - WeCom：企业微信回调
+	// - Email：自定义邮件
+	// - DingTalk：钉钉
+	// - Lark：飞书
 	ReceiverType *string `json:"ReceiverType,omitnil,omitempty" name:"ReceiverType"`
 
 	// 知方式对应的值。
-	// <br> <li/> 当ReceiverType不是 WeCom 时，Values必填。
+	// - 当ReceiverType为：`WeCom`、`DingTalk`、`Lark` 时，Values必须为空，且Url字段必填。
+	// - 当ReceiverType为：`Uin`、`Group`、`Email` 时，Values必填，且Url字段必须为空。
+	// - 当ReceiverType为：`Uin ` 时，Values为用户id，通过 [拉取子用户](https://cloud.tencent.com/document/product/598/34587) 获取子用户 UID 。
+	// - 当ReceiverType为：`Group` 时，Values为用户组id，通过 [查询用户组列表](https://cloud.tencent.com/document/product/598/34589) 获取用户组 ID 。
+	// - 当ReceiverType为：`Email` 时，Values为用户邮箱信息。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
 	// 仪表盘通知渠道。
-	// <br><li/> 支持：["Email","Sms","WeChat","Phone"]。
-	// <br><li/> 当ReceiverType是 Email 或 WeCom 时，ReceiverChannels不能赋值。
+	// 
+	// -  支持：["Email","Sms","WeChat","Phone"]。
+	// -  当ReceiverType为 `Email` 或 `WeCom` 时，ReceiverChannels无效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiverChannels []*string `json:"ReceiverChannels,omitnil,omitempty" name:"ReceiverChannels"`
 
-	// 回调Url。
-	// <br><li/> 当ReceiverType是 WeCom 时，Url必填。
-	// <br><li/> 当ReceiverType不是 WeCom 时，Url不能填写。
+	// 订阅方式	- 回调地址。
+	// - 当ReceiverType为：`WeCom`、`DingTalk`、`Lark` 时，Url字段必填为各渠道的回调地址。
+	//     - 为：`WeCom` 时，Url为 企业微信回调地址。
+	//     - 为：`DingTalk` 时，Url为 钉钉机器人Webhook地址。
+	//     - 为：`Lark` 时，Url为 飞书机器人Webhook地址。
+	// - 当ReceiverType为：`Uin`、`Group`、`Email` 时，Url字段必须为空。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
@@ -4239,6 +4272,41 @@ type DashboardSubscribeData struct {
 
 	// 自定义跳转链接。
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
+}
+
+type DashboardSubscribeInfo struct {
+	// 仪表盘订阅id。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 仪表盘订阅名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 仪表盘id。
+	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
+
+	// 仪表盘订阅时间。
+	Cron *string `json:"Cron,omitnil,omitempty" name:"Cron"`
+
+	// 仪表盘订阅数据。
+	SubscribeData *DashboardSubscribeData `json:"SubscribeData,omitnil,omitempty" name:"SubscribeData"`
+
+	// 仪表盘订阅记录创建时间。格式：`YYYY-MM-DD HH:MM:SS`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 仪表盘订阅记录更新时间。格式：`YYYY-MM-DD HH:MM:SS`
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 仪表盘订阅记录最后一次发送成功时间。格式：`YYYY-MM-DD HH:MM:SS`
+	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
+
+	// 腾讯云主账号Id。
+	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 腾讯云主账号下的子账号Id。
+	SubUin *uint64 `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// 仪表盘订阅记录最后一次发送的状态。success：全部发送成功，fail：未发送， partialSuccess：部分发送成功。
+	LastStatus *string `json:"LastStatus,omitnil,omitempty" name:"LastStatus"`
 }
 
 type DashboardTemplateVariable struct {
@@ -4904,7 +4972,7 @@ func (r *DeleteConsumerResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCosRechargeRequestParams struct {
 	// COS导入配置Id。
-	// - 通过[获取投递任务列表](https://cloud.tencent.com/document/api/614/58745)获取COS导入配置Id。
+	// - 通过 [获取cos导入配置](https://cloud.tencent.com/document/product/614/88099) 获取COS导入配置Id。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 日志主题Id。
@@ -4916,7 +4984,7 @@ type DeleteCosRechargeRequest struct {
 	*tchttp.BaseRequest
 	
 	// COS导入配置Id。
-	// - 通过[获取投递任务列表](https://cloud.tencent.com/document/api/614/58745)获取COS导入配置Id。
+	// - 通过 [获取cos导入配置](https://cloud.tencent.com/document/product/614/88099) 获取COS导入配置Id。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 日志主题Id。
@@ -5718,9 +5786,8 @@ type DeliverConfig struct {
 	//  ap-guangzhou  广州地域；
 	// ap-nanjing 南京地域。
 	// 
-	// 详细信息请查看官网：
+	// 详细信息请查看官网[地域和访问域名](https://cloud.tencent.com/document/product/614/18940)
 	// 
-	// https://cloud.tencent.com/document/product/614/18940
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
@@ -5864,7 +5931,7 @@ func (r *DescribeAlarmNoticesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAlarmShieldsRequestParams struct {
-	// 通知渠道组id。
+	// 通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组id
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// - taskId:按照【规则id】进行过滤。类型：String  必选：否
@@ -5882,7 +5949,7 @@ type DescribeAlarmShieldsRequestParams struct {
 type DescribeAlarmShieldsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通知渠道组id。
+	// 通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组id
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// - taskId:按照【规则id】进行过滤。类型：String  必选：否
@@ -6768,6 +6835,7 @@ type DescribeDashboardSubscribesRequestParams struct {
 	// dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否
 	// 
 	// - 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+	// - 入参示例：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -6785,6 +6853,7 @@ type DescribeDashboardSubscribesRequest struct {
 	// dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否
 	// 
 	// - 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+	// - 入参示例：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -6819,6 +6888,12 @@ func (r *DescribeDashboardSubscribesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDashboardSubscribesResponseParams struct {
+	// 仪表盘订阅列表
+	DashboardSubscribeInfos []*DashboardSubscribeInfo `json:"DashboardSubscribeInfos,omitnil,omitempty" name:"DashboardSubscribeInfos"`
+
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6848,18 +6923,45 @@ type DescribeDashboardsRequestParams struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// - dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
+	//     - 示例值：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 	// - dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
-	// - dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。 [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)，例如：ap-guangzhou
+	//     - 示例值：业务大盘
+	// - dashboardRegion 按照【仪表盘地域】进行过滤（兼容老的仪表盘），通过云API创建的仪表盘该属性，类型：String，必选：否。
+	//     - 参考  [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)
+	//     - 示例：ap-guangzhou
 	// - tagKey 按照【标签键】进行过滤，类型：String，必选：否。
-	// - tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
+	//     - 示例值：
+	//     ```
+	//     "Filters":[
+	//         {
+	//             "Key": "tagKey",
+	//             "Values": [
+	//                 "tag-key-test"
+	//             ]
+	//         }
+	//     ]
+	//     ```
+	// 
+	// - tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，
+	//     - 参考 [示例1](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B) 使用。
+	//     ```
+	//     "Filters": [
+	//         {
+	//             "Key": "tag:tag-key-test",
+	//             "Values": [
+	//                 "12"
+	//             ]
+	//         }
+	//     ]
+	//     ```
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 按照topicId和regionId过滤。
-	// 
 	// - topicId:日志主题Id。
 	//     -  通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	//     - 示例值：439a5304-08f9-484b-9c4d-46ff57133816
 	// - regionId
 	//     - 1:广州
 	//     - 4:上海
@@ -6896,18 +6998,45 @@ type DescribeDashboardsRequest struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// - dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
+	//     - 示例值：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 	// - dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
-	// - dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。 [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)，例如：ap-guangzhou
+	//     - 示例值：业务大盘
+	// - dashboardRegion 按照【仪表盘地域】进行过滤（兼容老的仪表盘），通过云API创建的仪表盘该属性，类型：String，必选：否。
+	//     - 参考  [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)
+	//     - 示例：ap-guangzhou
 	// - tagKey 按照【标签键】进行过滤，类型：String，必选：否。
-	// - tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
+	//     - 示例值：
+	//     ```
+	//     "Filters":[
+	//         {
+	//             "Key": "tagKey",
+	//             "Values": [
+	//                 "tag-key-test"
+	//             ]
+	//         }
+	//     ]
+	//     ```
+	// 
+	// - tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，
+	//     - 参考 [示例1](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B) 使用。
+	//     ```
+	//     "Filters": [
+	//         {
+	//             "Key": "tag:tag-key-test",
+	//             "Values": [
+	//                 "12"
+	//             ]
+	//         }
+	//     ]
+	//     ```
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 按照topicId和regionId过滤。
-	// 
 	// - topicId:日志主题Id。
 	//     -  通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	//     - 示例值：439a5304-08f9-484b-9c4d-46ff57133816
 	// - regionId
 	//     - 1:广州
 	//     - 4:上海
@@ -9810,7 +9939,7 @@ type MetricLabel struct {
 
 // Predefined struct for user
 type ModifyAlarmNoticeRequestParams struct {
-	// 通知渠道组ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知渠道组ID
+	// 通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持10个标签键值对，并且不能有重复的键值对。
@@ -9864,7 +9993,7 @@ type ModifyAlarmNoticeRequestParams struct {
 type ModifyAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通知渠道组ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知渠道组ID
+	// 通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持10个标签键值对，并且不能有重复的键值对。
@@ -10409,14 +10538,19 @@ type ModifyConfigExtraRequestParams struct {
 	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息，详细参考https://cloud.tencent.com/document/api/614/56471#HostFileInfo
+	// 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+	// 
+	// - 详情参考  [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 文档。
 	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 采集配置标记。
 	// - 目前只支持label_k8s，用于标记自建k8s集群使用的采集配置
+	// - 详情参考 [ ContainerFileInfo](https://cloud.tencent.com/document/api/614/56471#ContainerFileInfo) 文档
 	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
-	// 自建k8s-容器标准输出信息，包括容器、命名空间等，详细参考https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo
+	// 自建k8s-容器标准输出信息，包括容器、命名空间等，
+	// 
+	// - 详情参考 [ContainerStdoutInfo]( https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 文档
 	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 采集的日志类型，默认为minimalist_log。支持以下类型：
@@ -10436,7 +10570,7 @@ type ModifyConfigExtraRequestParams struct {
 	// Deprecated: LogFormat is deprecated.
 	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
-	// 提取规则，如果设置了ExtractRule，则必须设置LogType
+	// 提取规则，如果设置了ExtractRule，则必须设置LogType。
 	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
@@ -10494,14 +10628,19 @@ type ModifyConfigExtraRequest struct {
 	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息，详细参考https://cloud.tencent.com/document/api/614/56471#HostFileInfo
+	// 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+	// 
+	// - 详情参考  [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 文档。
 	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 采集配置标记。
 	// - 目前只支持label_k8s，用于标记自建k8s集群使用的采集配置
+	// - 详情参考 [ ContainerFileInfo](https://cloud.tencent.com/document/api/614/56471#ContainerFileInfo) 文档
 	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
-	// 自建k8s-容器标准输出信息，包括容器、命名空间等，详细参考https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo
+	// 自建k8s-容器标准输出信息，包括容器、命名空间等，
+	// 
+	// - 详情参考 [ContainerStdoutInfo]( https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 文档
 	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 采集的日志类型，默认为minimalist_log。支持以下类型：
@@ -10519,7 +10658,7 @@ type ModifyConfigExtraRequest struct {
 	// - stdout-containerd：用于containerd容器采集场景
 	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
-	// 提取规则，如果设置了ExtractRule，则必须设置LogType
+	// 提取规则，如果设置了ExtractRule，则必须设置LogType。
 	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
@@ -12189,7 +12328,7 @@ type ModifyTopicRequestParams struct {
 	PartitionCount *uint64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
 	// 取消切换存储任务的id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
 	CancelTopicAsyncTaskID *string `json:"CancelTopicAsyncTaskID,omitnil,omitempty" name:"CancelTopicAsyncTaskID"`
 }
 
@@ -12247,7 +12386,7 @@ type ModifyTopicRequest struct {
 	PartitionCount *uint64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
 	// 取消切换存储任务的id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
 	CancelTopicAsyncTaskID *string `json:"CancelTopicAsyncTaskID,omitnil,omitempty" name:"CancelTopicAsyncTaskID"`
 }
 

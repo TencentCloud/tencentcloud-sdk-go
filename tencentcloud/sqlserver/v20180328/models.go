@@ -803,7 +803,7 @@ type CreateBackupRequestParams struct {
 	// 需要备份库名的列表(多库备份才填写)
 	DBNames []*string `json:"DBNames,omitnil,omitempty" name:"DBNames"`
 
-	// 实例ID（必填），形如mssql-i1z41iwd
+	// 实例ID，形如mssql-i1z41iwd
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 备份名称，若不填则自动生成“实例ID_备份开始时间戳”
@@ -822,7 +822,7 @@ type CreateBackupRequest struct {
 	// 需要备份库名的列表(多库备份才填写)
 	DBNames []*string `json:"DBNames,omitnil,omitempty" name:"DBNames"`
 
-	// 实例ID（必填），形如mssql-i1z41iwd
+	// 实例ID，形如mssql-i1z41iwd
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 备份名称，若不填则自动生成“实例ID_备份开始时间戳”
@@ -4901,7 +4901,7 @@ type DescribeCrossBackupStatisticalRequestParams struct {
 	// 跨地域备份目标地域
 	CrossRegion *string `json:"CrossRegion,omitnil,omitempty" name:"CrossRegion"`
 
-	// 排序字段，默认default-按照备份空间降序排序，data-按照数据备份排序，log-按照日志备份培训
+	// 排序字段，默认default-按照备份空间降序排序，data-按照数据备份排序，log-按照日志备份
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 排序规则（desc-降序，asc-升序），默认desc
@@ -4929,7 +4929,7 @@ type DescribeCrossBackupStatisticalRequest struct {
 	// 跨地域备份目标地域
 	CrossRegion *string `json:"CrossRegion,omitnil,omitempty" name:"CrossRegion"`
 
-	// 排序字段，默认default-按照备份空间降序排序，data-按照数据备份排序，log-按照日志备份培训
+	// 排序字段，默认default-按照备份空间降序排序，data-按照数据备份排序，log-按照日志备份
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 排序规则（desc-降序，asc-升序），默认desc
@@ -10204,7 +10204,7 @@ type ModifyBackupStrategyRequestParams struct {
 	// BackupType取值为daily时，表示备份间隔天数。当前取值只能为1
 	BackupDay *uint64 `json:"BackupDay,omitnil,omitempty" name:"BackupDay"`
 
-	// 备份模式（必填），master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
+	// 备份模式，master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
 	BackupModel *string `json:"BackupModel,omitnil,omitempty" name:"BackupModel"`
 
 	// BackupType取值为weekly时，表示每周的星期N做备份。（如果数据备份保留时间<7天，则取值[1,2,3,4,5,6,7]。如果数据备份保留时间>=7天，则备份周期取值至少是一周的任意2天）
@@ -10244,7 +10244,7 @@ type ModifyBackupStrategyRequest struct {
 	// BackupType取值为daily时，表示备份间隔天数。当前取值只能为1
 	BackupDay *uint64 `json:"BackupDay,omitnil,omitempty" name:"BackupDay"`
 
-	// 备份模式（必填），master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
+	// 备份模式，master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
 	BackupModel *string `json:"BackupModel,omitnil,omitempty" name:"BackupModel"`
 
 	// BackupType取值为weekly时，表示每周的星期N做备份。（如果数据备份保留时间<7天，则取值[1,2,3,4,5,6,7]。如果数据备份保留时间>=7天，则备份周期取值至少是一周的任意2天）

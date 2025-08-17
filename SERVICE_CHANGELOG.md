@@ -1,10 +1,10 @@
-# Release v1.1.11
+# Release v1.1.12
 
-## 负载均衡(clb) 版本：2018-03-17
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 134 次发布
+### 第 132 次发布
 
-发布时间：2025-08-15 01:24:35
+发布时间：2025-08-18 01:26:01
 
 本次发布包含了以下内容：
 
@@ -12,33 +12,22 @@
 
 修改接口：
 
-* [CreateTargetGroup](https://cloud.tencent.com/document/api/214/40559)
+* [DescribeDashboardSubscribes](https://cloud.tencent.com/document/api/614/105779)
 
-	* 新增入参：HealthCheck, ScheduleAlgorithm
-
-* [ModifyTargetGroupAttribute](https://cloud.tencent.com/document/api/214/40552)
-
-	* 新增入参：ScheduleAlgorithm, HealthCheck
+	* 新增出参：DashboardSubscribeInfos, TotalCount
 
 
 新增数据结构：
 
-* [TargetGroupHealthCheck](https://cloud.tencent.com/document/api/214/30694#TargetGroupHealthCheck)
-
-修改数据结构：
-
-* [TargetGroupInfo](https://cloud.tencent.com/document/api/214/30694#TargetGroupInfo)
-
-	* 新增成员：ScheduleAlgorithm, HealthCheck
+* [DashboardSubscribeInfo](https://cloud.tencent.com/document/api/614/56471#DashboardSubscribeInfo)
 
 
 
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-## 实时互动-教育版(lcic) 版本：2022-08-17
+### 第 241 次发布
 
-### 第 75 次发布
-
-发布时间：2025-08-15 02:01:54
+发布时间：2025-08-18 01:46:40
 
 本次发布包含了以下内容：
 
@@ -46,158 +35,258 @@
 
 修改接口：
 
-* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+* [CreateSeal](https://cloud.tencent.com/document/api/1323/94136)
 
-	* 新增入参：Guests
-
-* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
-
-	* 新增出参：Guests
+	* 新增入参：SealDescription
 
 
 修改数据结构：
 
-* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+* [OccupiedSeal](https://cloud.tencent.com/document/api/1323/70369#OccupiedSeal)
 
-	* 新增成员：Guests
+	* 新增成员：RealWidth, RealHeight, SubSealType, SubSealName, SealDescription
+
+* [OrganizationAuthUrl](https://cloud.tencent.com/document/api/1323/70369#OrganizationAuthUrl)
+
+	* 新增成员：OrganizationName
 
 
 
 
-## 媒体处理(mps) 版本：2019-06-12
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 138 次发布
+### 第 230 次发布
 
-发布时间：2025-08-15 02:10:40
+发布时间：2025-08-18 01:48:00
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [CreateSealByImage](https://cloud.tencent.com/document/api/1420/73067)
+
+	* 新增入参：SealDescription
+
+
 修改数据结构：
 
-* [HighlightSegmentItem](https://cloud.tencent.com/document/api/862/37615#HighlightSegmentItem)
+* [OccupiedSeal](https://cloud.tencent.com/document/api/1420/61525#OccupiedSeal)
 
-	* 新增成员：Title, Summary
+	* 新增成员：RealWidth, RealHeight, SealDescription
 
-* [MediaAiAnalysisHighlightItem](https://cloud.tencent.com/document/api/862/37615#MediaAiAnalysisHighlightItem)
 
-	* 新增成员：HighlightUrl, CovImgUrl
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 腾讯云智能体开发平台(lke) 版本：2023-11-30
+
+### 第 59 次发布
+
+发布时间：2025-08-18 02:04:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApp](https://cloud.tencent.com/document/api/1759/105074)
+
+	* 新增入参：AgentType
+
+* [CreateSharedKnowledge](https://cloud.tencent.com/document/api/1759/119409)
+
+	* 新增入参：KnowledgeType
+
+* [CreateVar](https://cloud.tencent.com/document/api/1759/116688)
+
+	* 新增入参：VarModuleType
+
+* [DeleteVar](https://cloud.tencent.com/document/api/1759/119875)
+
+	* 新增入参：VarModuleType
+
+* [DescribeCallStatsGraph](https://cloud.tencent.com/document/api/1759/111069)
+
+	* 新增入参：SpaceId
+
+* [DescribeConcurrencyUsage](https://cloud.tencent.com/document/api/1759/111068)
+
+	* 新增入参：SpaceId
+
+* [DescribeConcurrencyUsageGraph](https://cloud.tencent.com/document/api/1759/111067)
+
+	* 新增入参：SpaceId
+
+* [DescribeDoc](https://cloud.tencent.com/document/api/1759/105071)
+
+	* 新增出参：SplitRule, UpdatePeriodInfo
+
+* [DescribeKnowledgeUsagePieGraph](https://cloud.tencent.com/document/api/1759/111065)
+
+	* 新增入参：SpaceId
+
+* [DescribeSearchStatsGraph](https://cloud.tencent.com/document/api/1759/111064)
+
+	* 新增入参：SpaceId
+
+* [DescribeTokenUsage](https://cloud.tencent.com/document/api/1759/111063)
+
+	* 新增入参：SpaceId
+
+* [DescribeTokenUsageGraph](https://cloud.tencent.com/document/api/1759/111062)
+
+	* 新增入参：SubScenes
+
+* [GetVarList](https://cloud.tencent.com/document/api/1759/116687)
+
+	* 新增入参：VarModuleType
+
+* [ListApp](https://cloud.tencent.com/document/api/1759/105066)
+
+	* 新增入参：AgentType, AppStatus
+
+* [ListAppKnowledgeDetail](https://cloud.tencent.com/document/api/1759/113596)
+
+	* 新增入参：SpaceId
+
+* [ListSharedKnowledge](https://cloud.tencent.com/document/api/1759/119405)
+
+	* 新增入参：KnowledgeTypes
+
+* [ListUsageCallDetail](https://cloud.tencent.com/document/api/1759/113595)
+
+	* 新增入参：SpaceId
+
+* [ModifyDoc](https://cloud.tencent.com/document/api/1759/105058)
+
+	* 新增入参：ModifyTypes, UpdatePeriodInfo, SplitRule
+
+* [SaveDoc](https://cloud.tencent.com/document/api/1759/105054)
+
+	* 新增入参：SplitRule, UpdatePeriodInfo
+
+* [UpdateVar](https://cloud.tencent.com/document/api/1759/119874)
+
+	* 新增入参：VarModuleType
+
+
+新增数据结构：
+
+* [AgentPluginQuery](https://cloud.tencent.com/document/api/1759/105104#AgentPluginQuery)
+* [KnowledgeAdvancedConfig](https://cloud.tencent.com/document/api/1759/105104#KnowledgeAdvancedConfig)
+* [KnowledgeModelConfig](https://cloud.tencent.com/document/api/1759/105104#KnowledgeModelConfig)
+* [KnowledgeQaAgent](https://cloud.tencent.com/document/api/1759/105104#KnowledgeQaAgent)
+* [KnowledgeQaWorkflowInfo](https://cloud.tencent.com/document/api/1759/105104#KnowledgeQaWorkflowInfo)
+* [ModelParams](https://cloud.tencent.com/document/api/1759/105104#ModelParams)
+* [OptionCardIndex](https://cloud.tencent.com/document/api/1759/105104#OptionCardIndex)
+* [UpdatePeriodInfo](https://cloud.tencent.com/document/api/1759/105104#UpdatePeriodInfo)
+
+修改数据结构：
+
+* [Agent](https://cloud.tencent.com/document/api/1759/105104#Agent)
+
+	* 新增成员：AgentMode
+
+* [AgentDebugInfo](https://cloud.tencent.com/document/api/1759/105104#AgentDebugInfo)
+
+	* 新增成员：ModelName
+
+* [AgentMCPServerInfo](https://cloud.tencent.com/document/api/1759/105104#AgentMCPServerInfo)
+
+	* 新增成员：Query
+
+* [AgentModelInfo](https://cloud.tencent.com/document/api/1759/105104#AgentModelInfo)
+
+	* 新增成员：ModelParams
+
+* [AgentPluginInfo](https://cloud.tencent.com/document/api/1759/105104#AgentPluginInfo)
+
+	* 新增成员：EnableRoleAuth, Query, McpType
+
+* [AgentReference](https://cloud.tencent.com/document/api/1759/105104#AgentReference)
+
+	* 新增成员：KnowledgeName, KnowledgeBizId
+
+* [AgentToolInfo](https://cloud.tencent.com/document/api/1759/105104#AgentToolInfo)
+
+	* 新增成员：Query, FinanceStatus
+
+* [AppInfo](https://cloud.tencent.com/document/api/1759/105104#AppInfo)
+
+	* 新增成员：PermissionIds
+
+* [AppModel](https://cloud.tencent.com/document/api/1759/105104#AppModel)
+
+	* 新增成员：ModelParams
+
+* [KnowledgeBaseInfo](https://cloud.tencent.com/document/api/1759/105104#KnowledgeBaseInfo)
+
+	* 新增成员：KnowledgeType, OwnerStaffId, DocTotal, ProcessingFlags
+
+* [KnowledgeDetailInfo](https://cloud.tencent.com/document/api/1759/105104#KnowledgeDetailInfo)
+
+	* 新增成员：PermissionIds
+
+* [KnowledgeQaConfig](https://cloud.tencent.com/document/api/1759/105104#KnowledgeQaConfig)
+
+	* 新增成员：LongMemoryOpen, LongMemoryDay, Agent, KnowledgeModelConfig, KnowledgeAdvancedConfig
+
+* [KnowledgeUpdateInfo](https://cloud.tencent.com/document/api/1759/105104#KnowledgeUpdateInfo)
+
+	* 新增成员：OwnerStaffId
+
+* [ModelInfo](https://cloud.tencent.com/document/api/1759/105104#ModelInfo)
+
+	* 新增成员：ModelTags, ModelParams, ProviderName, ProviderAliasName, ProviderType
+
+* [ModelParameter](https://cloud.tencent.com/document/api/1759/105104#ModelParameter)
+
+	* 新增成员：Name
+
+* [MsgRecordReference](https://cloud.tencent.com/document/api/1759/105104#MsgRecordReference)
+
+	* 新增成员：Index
+
+	* <font color="#dd0000">**修改成员**：</font>Id, Url, Type, Name, DocId, KnowledgeName, KnowledgeBizId, DocBizId, QaBizId
+
+* [Procedure](https://cloud.tencent.com/document/api/1759/105104#Procedure)
+
+	* 新增成员：InputCount, OutputCount
+
+* [SearchStrategy](https://cloud.tencent.com/document/api/1759/105104#SearchStrategy)
+
+	* 新增成员：EmbeddingModel, RerankModelSwitch, RerankModel
+
+* [ShareKnowledgeBase](https://cloud.tencent.com/document/api/1759/105104#ShareKnowledgeBase)
+
+	* 新增成员：KnowledgeModelConfig, SearchStrategy, Search, ReplyFlexibility, KnowledgeName
+
+* [TaskFLowVar](https://cloud.tencent.com/document/api/1759/105104#TaskFLowVar)
+
+	* 新增成员：VarModuleType
+
+* [WorkFlowSummary](https://cloud.tencent.com/document/api/1759/105104#WorkFlowSummary)
+
+	* 新增成员：PendingMessages, OptionCardIndex
+
+* [WorkflowRunDetail](https://cloud.tencent.com/document/api/1759/105104#WorkflowRunDetail)
+
+	* 新增成员：Output
 
 
 
 
 ## 文字识别(ocr) 版本：2018-11-19
 
-### 第 209 次发布
+### 第 210 次发布
 
-发布时间：2025-08-14 15:33:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [GeneralAccurateOCR](https://cloud.tencent.com/document/api/866/34937)
-
-	* 新增入参：ConfigID
-
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 59 次发布
-
-发布时间：2025-08-14 21:32:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* CreateServerlessDBInstance
-* DescribeDBSlowlogs
-* DescribeServerlessDBInstances
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* NormalQueryItem
-* ServerlessDBAccount
-* ServerlessDBInstance
-* ServerlessDBInstanceNetInfo
-* SlowlogDetail
-
-
-
-## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
-
-### 第 21 次发布
-
-发布时间：2025-08-15 02:27:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [VolumeConf](https://cloud.tencent.com/document/api/1243/75713#VolumeConf)
-
-修改数据结构：
-
-* [DiffConfigItem](https://cloud.tencent.com/document/api/1243/75713#DiffConfigItem)
-
-	* 新增成员：VolumesConf
-
-* [ServerBaseConfig](https://cloud.tencent.com/document/api/1243/75713#ServerBaseConfig)
-
-	* 新增成员：VolumesConf
-
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 79 次发布
-
-发布时间：2025-08-15 02:28:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAssetHostDetail](https://cloud.tencent.com/document/api/1285/65508)
-
-	* 新增出参：AssetSyncTime
-
-* [DescribeClusterDetail](https://cloud.tencent.com/document/api/1285/65448)
-
-	* 新增出参：CheckFailReason
-
-
-修改数据结构：
-
-* [ClusterInfoItem](https://cloud.tencent.com/document/api/1285/65614#ClusterInfoItem)
-
-	* 新增成员：AccessedErrorReason
-
-
-
-
-## 容器服务(tke) 版本：2022-05-01
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 203 次发布
-
-发布时间：2025-08-15 02:38:07
+发布时间：2025-08-18 02:20:14
 
 本次发布包含了以下内容：
 
@@ -205,18 +294,18 @@
 
 修改数据结构：
 
-* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
+* [VatElectronicInfo](https://cloud.tencent.com/document/api/866/33527#VatElectronicInfo)
 
-	* 新增成员：DataPlaneV2
+	* 新增成员：InvoicePageIndex
 
 
 
 
 ## 消息队列 RabbitMQ Serverless 版(trabbit) 版本：2023-04-18
 
-### 第 4 次发布
+### 第 5 次发布
 
-发布时间：2025-08-15 02:40:37
+发布时间：2025-08-18 03:09:26
 
 本次发布包含了以下内容：
 
@@ -224,49 +313,18 @@
 
 修改接口：
 
-* [CreateRabbitMQServerlessExchange](https://cloud.tencent.com/document/api/1495/116149)
+* [ModifyRabbitMQServerlessInstance](https://cloud.tencent.com/document/api/1495/116152)
 
-	* 新增入参：DelayedExchangeType
+	* 新增入参：SendReceiveRatio
 
-
-修改数据结构：
-
-* [RabbitMQClusterInfo](https://cloud.tencent.com/document/api/1495/116155#RabbitMQClusterInfo)
-
-	* 新增成员：SendReceiveRatio, TraceTime
-
-* [RabbitMQServerlessAccessInfo](https://cloud.tencent.com/document/api/1495/116155#RabbitMQServerlessAccessInfo)
-
-	* 新增成员：PublicClbId
-
-
-
-
-## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
-
-### 第 45 次发布
-
-发布时间：2025-08-15 02:40:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeProducerList](https://cloud.tencent.com/document/api/1493/122548)
-
-新增数据结构：
-
-* [ProducerInfo](https://cloud.tencent.com/document/api/1493/96031#ProducerInfo)
 
 
 
 ## TSF-应用管理&Consul(tsf) 版本：2018-03-26
 
-### 第 130 次发布
+### 第 131 次发布
 
-发布时间：2025-08-15 02:44:27
+发布时间：2025-08-18 03:16:01
 
 本次发布包含了以下内容：
 
@@ -274,24 +332,28 @@
 
 修改接口：
 
-* [CreateNamespace](https://cloud.tencent.com/document/api/649/36098)
+* [CreateGroup](https://cloud.tencent.com/document/api/649/36074)
 
-	* 新增入参：CreateK8sNamespaceFlag
+	* 新增入参：K8sNamespaceName
 
+* [DeployContainerApplication](https://cloud.tencent.com/document/api/649/120669)
 
-新增数据结构：
+	* 新增入参：K8sNamespaceName, StaticIpEnabled, PodManagementPolicyType, Partition
 
-* [VolumeClaimTemplatesOption](https://cloud.tencent.com/document/api/649/36099#VolumeClaimTemplatesOption)
 
 修改数据结构：
 
-* [BusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfig)
+* [GatewayPlugin](https://cloud.tencent.com/document/api/649/36099#GatewayPlugin)
 
-	* 新增成员：FilebeatIgnoreOlder, FilebeatHarvesterLimit, FilebeatCloseInactive, FilebeatCleanInactive
+	* 新增成员：DeleteDisabled, DeleteDisabledReason
 
-* [VolumeInfo](https://cloud.tencent.com/document/api/649/36099#VolumeInfo)
+* [LaneInfo](https://cloud.tencent.com/document/api/649/36099#LaneInfo)
 
-	* 新增成员：VolumeClaimTemplateOption
+	* 新增成员：DeleteDisabled, DeleteDisabledReason
+
+* [SimpleGroup](https://cloud.tencent.com/document/api/649/36099#SimpleGroup)
+
+	* 新增成员：K8sNamespaceName
 
 
 
@@ -302,39 +364,9 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
-### 第 207 次发布
+### 第 208 次发布
 
-发布时间：2025-08-15 02:48:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ProcessMediaByMPS](https://cloud.tencent.com/document/api/266/121993)
-
-	* 新增入参：ExtInfo
-
-
-修改数据结构：
-
-* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
-
-	* 新增成员：ProcessMediaByMPSCompleteEvent
-
-* [MPSOutputFile](https://cloud.tencent.com/document/api/266/31773#MPSOutputFile)
-
-	* 新增成员：Definition
-
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 124 次发布
-
-发布时间：2025-08-14 21:41:01
+发布时间：2025-08-18 03:22:04
 
 本次发布包含了以下内容：
 
@@ -342,41 +374,14 @@
 
 新增接口：
 
-* [DeleteOwaspRuleStatus](https://cloud.tencent.com/document/api/627/122547)
-* [DescribeOwaspRuleTypes](https://cloud.tencent.com/document/api/627/122546)
-* [DescribeOwaspRules](https://cloud.tencent.com/document/api/627/122545)
-* [ModifyOwaspRuleStatus](https://cloud.tencent.com/document/api/627/122544)
-* [ModifyOwaspRuleTypeAction](https://cloud.tencent.com/document/api/627/122543)
-* [ModifyOwaspRuleTypeLevel](https://cloud.tencent.com/document/api/627/122542)
-* [ModifyOwaspRuleTypeStatus](https://cloud.tencent.com/document/api/627/122541)
+* [CreateMPSTemplate](https://cloud.tencent.com/document/api/266/122580)
+* [DeleteMPSTemplate](https://cloud.tencent.com/document/api/266/122579)
+* [DescribeMPSTemplates](https://cloud.tencent.com/document/api/266/122578)
+* [ModifyMPSTemplate](https://cloud.tencent.com/document/api/266/122577)
 
 新增数据结构：
 
-* [OwaspRule](https://cloud.tencent.com/document/api/627/53609#OwaspRule)
-* [OwaspRuleType](https://cloud.tencent.com/document/api/627/53609#OwaspRuleType)
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 168 次发布
-
-发布时间：2025-08-15 02:56:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CompareResult](https://cloud.tencent.com/document/api/1267/76336#CompareResult)
-
-	* 新增成员：ComputeExpression
-
-* [RuleExecResult](https://cloud.tencent.com/document/api/1267/76336#RuleExecResult)
-
-	* 新增成员：RuleGroupName, DatasourceId, DatasourceName, DatabaseName, SchemaName, TableName, RuleGroupExist, DatasourceType, RuleGroupTableId, MonitorType, FinishTime
-
+* [MPSTemplate](https://cloud.tencent.com/document/api/266/31773#MPSTemplate)
 
 
 

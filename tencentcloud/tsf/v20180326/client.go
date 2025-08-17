@@ -2786,6 +2786,7 @@ func NewDeleteApiGroupResponse() (response *DeleteApiGroupResponse) {
 // 删除Api分组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYGROUPBOUNDDELETEFAILED = "FailedOperation.GatewayGroupBoundDeleteFailed"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 func (c *Client) DeleteApiGroup(request *DeleteApiGroupRequest) (response *DeleteApiGroupResponse, err error) {
     return c.DeleteApiGroupWithContext(context.Background(), request)
@@ -2795,6 +2796,7 @@ func (c *Client) DeleteApiGroup(request *DeleteApiGroupRequest) (response *Delet
 // 删除Api分组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYGROUPBOUNDDELETEFAILED = "FailedOperation.GatewayGroupBoundDeleteFailed"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 func (c *Client) DeleteApiGroupWithContext(ctx context.Context, request *DeleteApiGroupRequest) (response *DeleteApiGroupResponse, err error) {
     if request == nil {
@@ -6137,10 +6139,9 @@ func NewDescribeContainerGroupAttributeResponse() (response *DescribeContainerGr
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
 //  FAILEDOPERATION_CDISTATUSFAILED = "FailedOperation.CdiStatusFailed"
 //  FAILEDOPERATION_CDISTATUSINVALID = "FailedOperation.CdiStatusInvalid"
-//  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
-//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETESCONNECTERROR = "InternalError.ContainergroupKubernetesConnectError"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
@@ -6161,10 +6162,9 @@ func (c *Client) DescribeContainerGroupAttribute(request *DescribeContainerGroup
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
 //  FAILEDOPERATION_CDISTATUSFAILED = "FailedOperation.CdiStatusFailed"
 //  FAILEDOPERATION_CDISTATUSINVALID = "FailedOperation.CdiStatusInvalid"
-//  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
-//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETESCONNECTERROR = "InternalError.ContainergroupKubernetesConnectError"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
@@ -6287,7 +6287,7 @@ func NewDescribeContainerGroupDetailResponse() (response *DescribeContainerGroup
 }
 
 // DescribeContainerGroupDetail
-// 容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
+// 容器部署组详情（已废弃，请使用  [DescribeContainerGroupDeployInfo](https://cloud.tencent.com/document/product/649/67221)）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
@@ -6311,7 +6311,7 @@ func (c *Client) DescribeContainerGroupDetail(request *DescribeContainerGroupDet
 }
 
 // DescribeContainerGroupDetail
-// 容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
+// 容器部署组详情（已废弃，请使用  [DescribeContainerGroupDeployInfo](https://cloud.tencent.com/document/product/649/67221)）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
@@ -10082,6 +10082,7 @@ func NewDescribeSimpleGroupsResponse() (response *DescribeSimpleGroupsResponse) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -10098,6 +10099,7 @@ func (c *Client) DescribeSimpleGroups(request *DescribeSimpleGroupsRequest) (res
 // 可能返回的错误码:
 //  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"

@@ -9302,6 +9302,9 @@ type CreateSealByImageRequestParams struct {
 	// <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
 	// </ul>
 	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil,omitempty" name:"TaxIdentifyCode"`
+
+	// 印章描述内容
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 }
 
 type CreateSealByImageRequest struct {
@@ -9363,6 +9366,9 @@ type CreateSealByImageRequest struct {
 	// <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
 	// </ul>
 	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil,omitempty" name:"TaxIdentifyCode"`
+
+	// 印章描述内容
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 }
 
 func (r *CreateSealByImageRequest) ToJsonString() string {
@@ -9387,6 +9393,7 @@ func (r *CreateSealByImageRequest) FromJsonString(s string) error {
 	delete(f, "SealStyle")
 	delete(f, "SealSize")
 	delete(f, "TaxIdentifyCode")
+	delete(f, "SealDescription")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealByImageRequest has unknown keys!", "")
 	}
@@ -12653,6 +12660,15 @@ type OccupiedSeal struct {
 
 	// 授权人列表
 	AuthorizedUsers []*AuthorizedUser `json:"AuthorizedUsers,omitnil,omitempty" name:"AuthorizedUsers"`
+
+	// 印章的真实宽度，单位毫米	
+	RealWidth *int64 `json:"RealWidth,omitnil,omitempty" name:"RealWidth"`
+
+	// 印章的真实高度，单位毫米	
+	RealHeight *int64 `json:"RealHeight,omitnil,omitempty" name:"RealHeight"`
+
+	// 印章描述
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 }
 
 // Predefined struct for user

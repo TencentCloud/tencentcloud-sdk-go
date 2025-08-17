@@ -12168,6 +12168,9 @@ type VatElectronicInfo struct {
 
 	// 是否有公司印章（0：没有，1：有）
 	CompanySealMark *int64 `json:"CompanySealMark,omitnil,omitempty" name:"CompanySealMark"`
+
+	// 全电类型的多页pdf票据中，支持输出票面页码：当前第几页，一共第几页。
+	InvoicePageIndex *string `json:"InvoicePageIndex,omitnil,omitempty" name:"InvoicePageIndex"`
 }
 
 type VatElectronicItemInfo struct {
