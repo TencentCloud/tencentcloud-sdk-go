@@ -4310,6 +4310,9 @@ type CreateLiveRecordTemplateRequestParams struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 录制类型，取值为video（音视频录制）、audio（纯音频录制）、auto（自动探测）。不填时默认值为video。
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 }
 
 type CreateLiveRecordTemplateRequest struct {
@@ -4326,6 +4329,9 @@ type CreateLiveRecordTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 录制类型，取值为video（音视频录制）、audio（纯音频录制）、auto（自动探测）。不填时默认值为video。
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 }
 
 func (r *CreateLiveRecordTemplateRequest) ToJsonString() string {
@@ -4344,6 +4350,7 @@ func (r *CreateLiveRecordTemplateRequest) FromJsonString(s string) error {
 	delete(f, "MP4Configure")
 	delete(f, "Name")
 	delete(f, "Comment")
+	delete(f, "RecordType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveRecordTemplateRequest has unknown keys!", "")
 	}
@@ -13199,6 +13206,9 @@ type LiveRecordTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 录制类型，取值为video（音视频录制）、audio（纯音频录制）、auto（自动探测）。
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 }
 
 type LiveScheduleLiveRecordTaskResult struct {
@@ -13677,7 +13687,7 @@ type LiveStreamTagRecognitionResult struct {
 
 type LiveStreamTaskNotifyConfig struct {
 	// 通知类型：
-	// "CMQ"：回调消息写入cmq队列； 
+	// TDMQ-CMQ：消息队列
 	// "URL"： 指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同[解析直播事件通知接口](https://cloud.tencent.com/document/product/862/39229) 的输出参数
 	// 
 	// <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
@@ -13686,16 +13696,16 @@ type LiveStreamTaskNotifyConfig struct {
 	// HTTP回调地址，NotifyType为URL时必填。
 	NotifyUrl *string `json:"NotifyUrl,omitnil,omitempty" name:"NotifyUrl"`
 
-	// CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
+	// 有 Queue 和 Topic 两种模型。
 	CmqModel *string `json:"CmqModel,omitnil,omitempty" name:"CmqModel"`
 
-	// CMQ 的园区，如 sh，bj 等。
+	// TDMQ-CMQ 的园区，如 sh，bj 等。
 	CmqRegion *string `json:"CmqRegion,omitnil,omitempty" name:"CmqRegion"`
 
-	// 当模型为 Queue 时有效，表示接收事件通知的 CMQ 的队列名。
+	// 当模型为 Queue 时有效，表示接收事件通知的 TDMQ-CMQ 的队列名。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
-	// 当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
+	// 当模型为 Topic 时有效，表示接收事件通知的 TDMQ-CMQ 的主题名。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 用于生成回调签名的 Key。
@@ -15483,6 +15493,9 @@ type ModifyLiveRecordTemplateRequestParams struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 录制类型，取值为video（音视频录制）、audio（纯音频录制）、auto（自动探测）。
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 }
 
 type ModifyLiveRecordTemplateRequest struct {
@@ -15502,6 +15515,9 @@ type ModifyLiveRecordTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 录制类型，取值为video（音视频录制）、audio（纯音频录制）、auto（自动探测）。
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 }
 
 func (r *ModifyLiveRecordTemplateRequest) ToJsonString() string {
@@ -15521,6 +15537,7 @@ func (r *ModifyLiveRecordTemplateRequest) FromJsonString(s string) error {
 	delete(f, "MP4Configure")
 	delete(f, "Name")
 	delete(f, "Comment")
+	delete(f, "RecordType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveRecordTemplateRequest has unknown keys!", "")
 	}

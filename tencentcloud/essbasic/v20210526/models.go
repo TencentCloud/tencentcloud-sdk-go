@@ -11322,6 +11322,13 @@ type EmbedUrlOption struct {
 	// 是否禁止编辑（展示）水印控件属性
 	// <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
 	ForbidEditWatermark *bool `json:"ForbidEditWatermark,omitnil,omitempty" name:"ForbidEditWatermark"`
+
+	// 印章描述
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
+
+	// 是否禁止编辑印章描述内容
+	// <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+	ForbidEditSealDescription *string `json:"ForbidEditSealDescription,omitnil,omitempty" name:"ForbidEditSealDescription"`
 }
 
 type ExtentServiceAuthInfo struct {
@@ -12965,6 +12972,12 @@ type OrganizationAuthUrl struct {
 
 	// 企业批量注册的错误信息，例如：企业三要素不通过
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 企业批量注册 传递过来的企业名称，方便客户定位企业	
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// 企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)。
+	SubTaskId *string `json:"SubTaskId,omitnil,omitempty" name:"SubTaskId"`
 }
 
 type OrganizationAuthorizationOptions struct {

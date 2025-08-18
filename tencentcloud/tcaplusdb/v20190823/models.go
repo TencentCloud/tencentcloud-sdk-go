@@ -34,7 +34,6 @@ type Application struct {
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 表格组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGroupName *string `json:"TableGroupName,omitnil,omitempty" name:"TableGroupName"`
 
 	// 表格名称
@@ -56,27 +55,21 @@ type Application struct {
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 腾讯云上table的唯一键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableInstanceId *string `json:"TableInstanceId,omitnil,omitempty" name:"TableInstanceId"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 审批人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecuteUser *string `json:"ExecuteUser,omitnil,omitempty" name:"ExecuteUser"`
 
 	// 执行状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecuteStatus *string `json:"ExecuteStatus,omitnil,omitempty" name:"ExecuteStatus"`
 
 	// 该申请单是否可以被当前用户审批
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanCensor *bool `json:"CanCensor,omitnil,omitempty" name:"CanCensor"`
 
 	// 该申请单是否可以被当前用户撤回
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanWithdrawal *bool `json:"CanWithdrawal,omitnil,omitempty" name:"CanWithdrawal"`
 }
 
@@ -88,15 +81,12 @@ type ApplyResult struct {
 	ApplicationType *int64 `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
 	// 处理状态 0-待审核 1-已经审核并提交任务 2-已驳回
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationStatus *int64 `json:"ApplicationStatus,omitnil,omitempty" name:"ApplicationStatus"`
 
 	// 已提交的任务Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
@@ -271,70 +261,54 @@ type ClusterInfo struct {
 	ApiAccessPort *int64 `json:"ApiAccessPort,omitnil,omitempty" name:"ApiAccessPort"`
 
 	// 如果PasswordStatus是unmodifiable说明有旧密码还未过期，此字段将显示旧密码过期的时间，否则为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldPasswordExpireTime *string `json:"OldPasswordExpireTime,omitnil,omitempty" name:"OldPasswordExpireTime"`
 
 	// TcaplusDB SDK连接参数，接入ipv6地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiAccessIpv6 *string `json:"ApiAccessIpv6,omitnil,omitempty" name:"ApiAccessIpv6"`
 
 	// 集群类型，0,1:共享集群; 2:独立集群
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 集群状态, 0：表示正常运行中，1：表示冻结隔离一般欠费进入此状态，2：表示待回收，一般用户主动触发删除进入这个状态，3：待释放，进入这个状态，表示可以释放此表占用的资源了，4：变更中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterStatus *int64 `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
 	// 读CU
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadCapacityUnit *int64 `json:"ReadCapacityUnit,omitnil,omitempty" name:"ReadCapacityUnit"`
 
 	// 写CU
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WriteCapacityUnit *int64 `json:"WriteCapacityUnit,omitnil,omitempty" name:"WriteCapacityUnit"`
 
 	// 磁盘容量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskVolume *int64 `json:"DiskVolume,omitnil,omitempty" name:"DiskVolume"`
 
 	// 独占server机器信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerList []*ServerDetailInfo `json:"ServerList,omitnil,omitempty" name:"ServerList"`
 
 	// 独占proxy机器信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyList []*ProxyDetailInfo `json:"ProxyList,omitnil,omitempty" name:"ProxyList"`
 
 	// 是否开启审核 0-不开启 1-开启
 	Censorship *int64 `json:"Censorship,omitnil,omitempty" name:"Censorship"`
 
 	// 审批人uin列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbaUins []*string `json:"DbaUins,omitnil,omitempty" name:"DbaUins"`
 
 	// 是否开启了数据订阅
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataFlowStatus *int64 `json:"DataFlowStatus,omitnil,omitempty" name:"DataFlowStatus"`
 
 	// 数据订阅的kafka信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaInfo *KafkaInfo `json:"KafkaInfo,omitnil,omitempty" name:"KafkaInfo"`
 
 	// 集群Txh备份文件多少天后过期删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TxhBackupExpireDay *uint64 `json:"TxhBackupExpireDay,omitnil,omitempty" name:"TxhBackupExpireDay"`
 
 	// 集群Ulog备份文件多少天后过期删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UlogBackupExpireDay *uint64 `json:"UlogBackupExpireDay,omitnil,omitempty" name:"UlogBackupExpireDay"`
 
 	// 集群Ulog备份文件过期策略是否为只读， 0： UlogBackupExpire是只读，不可修改， 1： UlogBackupExpire可以修改（当前业务存在Svrid第二段等于clusterid的机器）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsReadOnlyUlogBackupExpireDay *uint64 `json:"IsReadOnlyUlogBackupExpireDay,omitnil,omitempty" name:"IsReadOnlyUlogBackupExpireDay"`
 
 	// restproxy状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RestProxyStatus *int64 `json:"RestProxyStatus,omitnil,omitempty" name:"RestProxyStatus"`
 }
 
@@ -424,35 +398,27 @@ func (r *CompareIdlFilesResponse) FromJsonString(s string) error {
 
 type CompareTablesInfo struct {
 	// 源表格的集群id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcTableClusterId *string `json:"SrcTableClusterId,omitnil,omitempty" name:"SrcTableClusterId"`
 
 	// 源表格的表格组id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcTableGroupId *string `json:"SrcTableGroupId,omitnil,omitempty" name:"SrcTableGroupId"`
 
 	// 源表格的表名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcTableName *string `json:"SrcTableName,omitnil,omitempty" name:"SrcTableName"`
 
 	// 目标表格的集群id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstTableClusterId *string `json:"DstTableClusterId,omitnil,omitempty" name:"DstTableClusterId"`
 
 	// 目标表格的表格组id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstTableGroupId *string `json:"DstTableGroupId,omitnil,omitempty" name:"DstTableGroupId"`
 
 	// 目标表格的表名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstTableName *string `json:"DstTableName,omitnil,omitempty" name:"DstTableName"`
 
 	// 源表格的实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcTableInstanceId *string `json:"SrcTableInstanceId,omitnil,omitempty" name:"SrcTableInstanceId"`
 
 	// 目标表格的实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstTableInstanceId *string `json:"DstTableInstanceId,omitnil,omitempty" name:"DstTableInstanceId"`
 }
 
@@ -505,11 +471,9 @@ func (r *CreateBackupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBackupResponseParams struct {
 	// 创建的备份任务ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 
 	// 创建的备份申请ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationIds []*string `json:"ApplicationIds,omitnil,omitempty" name:"ApplicationIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -927,7 +891,6 @@ func (r *DeleteBackupRecordsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBackupRecordsResponseParams struct {
 	// TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1638,11 +1601,9 @@ func (r *DescribeClusterTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterTagsResponseParams struct {
 	// 集群标签信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rows []*TagsInfoOfCluster `json:"Rows,omitnil,omitempty" name:"Rows"`
 
 	// 返回结果个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2085,11 +2046,9 @@ func (r *DescribeTableGroupTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTableGroupTagsResponseParams struct {
 	// 表格组标签信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rows []*TagsInfoOfTableGroup `json:"Rows,omitnil,omitempty" name:"Rows"`
 
 	// 返回结果个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2759,37 +2718,29 @@ type IdlFileInfo struct {
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 文件ID，对于已上传的文件有意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *int64 `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 文件内容，对于本次新上传的文件有意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 }
 
 type IdlFileInfoWithoutContent struct {
 	// 文件名称，不包含扩展名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 数据描述语言（IDL）类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 文件扩展名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileExtType *string `json:"FileExtType,omitnil,omitempty" name:"FileExtType"`
 
 	// 文件大小（Bytes）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 文件ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *int64 `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
@@ -2870,11 +2821,9 @@ func (r *ImportSnapshotsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ImportSnapshotsResponseParams struct {
 	// TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// ApplicationId由 AppInstanceId-applicationId 组成，以区分不同集群的申请
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2899,27 +2848,21 @@ func (r *ImportSnapshotsResponse) FromJsonString(s string) error {
 
 type KafkaInfo struct {
 	// Kafka address
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// Kafka topic
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// kafka username
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// kafka password
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// ckafka实例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Instance *string `json:"Instance,omitnil,omitempty" name:"Instance"`
 
 	// 是否走VPC
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVpc *int64 `json:"IsVpc,omitnil,omitempty" name:"IsVpc"`
 }
 
@@ -2947,18 +2890,15 @@ type MachineInfo struct {
 
 type MergeTableResult struct {
 	// 任务Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 成功时此字段返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 
 	// 对比的表格信息
 	Table *CompareTablesInfo `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 申请单Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
@@ -3086,7 +3026,6 @@ type ModifyCensorshipResponseParams struct {
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 已加入审批人的uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uins []*string `json:"Uins,omitnil,omitempty" name:"Uins"`
 
 	// 集群是否开启审核 0-关闭 1-开启
@@ -3382,7 +3321,6 @@ func (r *ModifyClusterTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyClusterTagsResponseParams struct {
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3596,7 +3534,6 @@ func (r *ModifyTableGroupTagsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTableGroupTagsResponseParams struct {
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3910,75 +3847,57 @@ func (r *ModifyTablesResponse) FromJsonString(s string) error {
 
 type ParsedTableInfoNew struct {
 	// 表格描述语言类型：`PROTO`或`TDR`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableIdlType *string `json:"TableIdlType,omitnil,omitempty" name:"TableIdlType"`
 
 	// 表格实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableInstanceId *string `json:"TableInstanceId,omitnil,omitempty" name:"TableInstanceId"`
 
 	// 表格名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// 表格数据结构类型：`GENERIC`或`LIST`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
 
 	// 主键字段信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyFields *string `json:"KeyFields,omitnil,omitempty" name:"KeyFields"`
 
 	// 原主键字段信息，改表校验时有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldKeyFields *string `json:"OldKeyFields,omitnil,omitempty" name:"OldKeyFields"`
 
 	// 非主键字段信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueFields *string `json:"ValueFields,omitnil,omitempty" name:"ValueFields"`
 
 	// 原非主键字段信息，改表校验时有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldValueFields *string `json:"OldValueFields,omitnil,omitempty" name:"OldValueFields"`
 
 	// 所属表格组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGroupId *string `json:"TableGroupId,omitnil,omitempty" name:"TableGroupId"`
 
 	// 主键字段总大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SumKeyFieldSize *int64 `json:"SumKeyFieldSize,omitnil,omitempty" name:"SumKeyFieldSize"`
 
 	// 非主键字段总大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SumValueFieldSize *int64 `json:"SumValueFieldSize,omitnil,omitempty" name:"SumValueFieldSize"`
 
 	// 索引键集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexKeySet *string `json:"IndexKeySet,omitnil,omitempty" name:"IndexKeySet"`
 
 	// 分表因子集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardingKeySet *string `json:"ShardingKeySet,omitnil,omitempty" name:"ShardingKeySet"`
 
 	// TDR版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TdrVersion *int64 `json:"TdrVersion,omitnil,omitempty" name:"TdrVersion"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 
 	// LIST类型表格元素个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListElementNum *int64 `json:"ListElementNum,omitnil,omitempty" name:"ListElementNum"`
 
 	// SORTLIST类型表格排序字段个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SortFieldNum *int64 `json:"SortFieldNum,omitnil,omitempty" name:"SortFieldNum"`
 
 	// SORTLIST类型表格排序顺序
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SortRule *int64 `json:"SortRule,omitnil,omitempty" name:"SortRule"`
 }
 
@@ -4016,7 +3935,6 @@ type ProxyDetailInfo struct {
 	SlowProcessSpeed *int64 `json:"SlowProcessSpeed,omitnil,omitempty" name:"SlowProcessSpeed"`
 
 	// 版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
@@ -4283,7 +4201,6 @@ type ServerDetailInfo struct {
 	WriteNum *int64 `json:"WriteNum,omitnil,omitempty" name:"WriteNum"`
 
 	// 版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
@@ -4337,7 +4254,6 @@ func (r *SetBackupExpireRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SetBackupExpireRuleResponseParams struct {
 	// TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4527,47 +4443,36 @@ type SnapshotInfoNew struct {
 
 type SnapshotResult struct {
 	// 表格所属表格组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGroupId *string `json:"TableGroupId,omitnil,omitempty" name:"TableGroupId"`
 
 	// 表格名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// 任务ID，对于创建单任务的接口有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 
 	// 快照名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
 	// 快照的时间点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotTime *string `json:"SnapshotTime,omitnil,omitempty" name:"SnapshotTime"`
 
 	// 快照的过期时间点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotDeadTime *string `json:"SnapshotDeadTime,omitnil,omitempty" name:"SnapshotDeadTime"`
 
 	// 快照创建时间点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotCreateTime *string `json:"SnapshotCreateTime,omitnil,omitempty" name:"SnapshotCreateTime"`
 
 	// 快照大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotSize *uint64 `json:"SnapshotSize,omitnil,omitempty" name:"SnapshotSize"`
 
 	// 快照状态，0 生成中 1 正常 2 删除中 3 已失效 4 回档使用中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotStatus *uint64 `json:"SnapshotStatus,omitnil,omitempty" name:"SnapshotStatus"`
 
 	// 申请单ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
@@ -4631,220 +4536,168 @@ type TableGroupInfo struct {
 	TotalSize *uint64 `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
 
 	// 表格Txh备份文件多少天后过期删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TxhBackupExpireDay *uint64 `json:"TxhBackupExpireDay,omitnil,omitempty" name:"TxhBackupExpireDay"`
 
 	// 是否开启mysql负载均衡,0未开启 1开启中 2已开启
 	EnableMysql *uint64 `json:"EnableMysql,omitnil,omitempty" name:"EnableMysql"`
 
 	// mysql负载均衡vip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MysqlConnIp *string `json:"MysqlConnIp,omitnil,omitempty" name:"MysqlConnIp"`
 
 	// mysql负载均衡vport
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MysqlConnPort *uint64 `json:"MysqlConnPort,omitnil,omitempty" name:"MysqlConnPort"`
 }
 
 type TableInfoNew struct {
 	// 表格名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// 表格实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableInstanceId *string `json:"TableInstanceId,omitnil,omitempty" name:"TableInstanceId"`
 
 	// 表格数据结构类型，如：`GENERIC`或`LIST`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
 
 	// 表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableIdlType *string `json:"TableIdlType,omitnil,omitempty" name:"TableIdlType"`
 
 	// 表格所属集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 表格所属集群名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 表格所属表格组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGroupId *string `json:"TableGroupId,omitnil,omitempty" name:"TableGroupId"`
 
 	// 表格所属表格组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGroupName *string `json:"TableGroupName,omitnil,omitempty" name:"TableGroupName"`
 
 	// 表格主键字段结构json字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyStruct *string `json:"KeyStruct,omitnil,omitempty" name:"KeyStruct"`
 
 	// 表格非主键字段结构json字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueStruct *string `json:"ValueStruct,omitnil,omitempty" name:"ValueStruct"`
 
 	// 表格分表因子集合，对PROTO类型表格有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardingKeySet *string `json:"ShardingKeySet,omitnil,omitempty" name:"ShardingKeySet"`
 
 	// 表格索引键字段集合，对PROTO类型表格有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexStruct *string `json:"IndexStruct,omitnil,omitempty" name:"IndexStruct"`
 
 	// LIST类型表格元素个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListElementNum *uint64 `json:"ListElementNum,omitnil,omitempty" name:"ListElementNum"`
 
 	// 表格所关联IDL文件信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitnil,omitempty" name:"IdlFiles"`
 
 	// 表格预留容量（GB）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservedVolume *int64 `json:"ReservedVolume,omitnil,omitempty" name:"ReservedVolume"`
 
 	// 表格预留读CU
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservedReadQps *int64 `json:"ReservedReadQps,omitnil,omitempty" name:"ReservedReadQps"`
 
 	// 表格预留写CU
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservedWriteQps *int64 `json:"ReservedWriteQps,omitnil,omitempty" name:"ReservedWriteQps"`
 
 	// 表格实际数据量大小（MB）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableSize *int64 `json:"TableSize,omitnil,omitempty" name:"TableSize"`
 
 	// 表格状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 表格创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 表格最后一次修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
 	// 表格备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memo *string `json:"Memo,omitnil,omitempty" name:"Memo"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 
 	// TcaplusDB SDK数据访问接入ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiAccessId *string `json:"ApiAccessId,omitnil,omitempty" name:"ApiAccessId"`
 
 	// SORTLIST类型表格排序字段个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SortFieldNum *int64 `json:"SortFieldNum,omitnil,omitempty" name:"SortFieldNum"`
 
 	// SORTLIST类型表格排序顺序
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SortRule *int64 `json:"SortRule,omitnil,omitempty" name:"SortRule"`
 
 	// 表格分布式索引/缓写、kafka数据订阅信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbClusterInfoStruct *string `json:"DbClusterInfoStruct,omitnil,omitempty" name:"DbClusterInfoStruct"`
 
 	// 表格Txh备份文件多少天后过期删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TxhBackupExpireDay *uint64 `json:"TxhBackupExpireDay,omitnil,omitempty" name:"TxhBackupExpireDay"`
 
 	// 表格的缓写信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SyncTableInfo *SyncTableInfo `json:"SyncTableInfo,omitnil,omitempty" name:"SyncTableInfo"`
 }
 
 type TableResultNew struct {
 	// 表格实例ID，形如：tcaplus-3be64cbb
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableInstanceId *string `json:"TableInstanceId,omitnil,omitempty" name:"TableInstanceId"`
 
 	// 任务ID，对于创建单任务的接口有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 表格名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// 表格数据结构类型，如：`GENERIC`或`LIST`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
 
 	// 表数据描述语言（IDL）类型，如：`PROTO`或`TDR`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableIdlType *string `json:"TableIdlType,omitnil,omitempty" name:"TableIdlType"`
 
 	// 表格所属表格组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGroupId *string `json:"TableGroupId,omitnil,omitempty" name:"TableGroupId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 
 	// 任务ID列表，对于创建多任务的接口有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 
 	// 腾讯云申请审核单Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
 type TableRollbackResultNew struct {
 	// 表格实例ID，形如：tcaplus-3be64cbb
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableInstanceId *string `json:"TableInstanceId,omitnil,omitempty" name:"TableInstanceId"`
 
 	// 任务ID，对于创建单任务的接口有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 表格名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// 表格数据结构类型，如：`GENERIC`或`LIST`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
 
 	// 表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableIdlType *string `json:"TableIdlType,omitnil,omitempty" name:"TableIdlType"`
 
 	// 表格所属表格组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGroupId *string `json:"TableGroupId,omitnil,omitempty" name:"TableGroupId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 
 	// 任务ID列表，对于创建多任务的接口有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 
 	// 上传的key文件ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 校验成功Key数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccKeyNum *uint64 `json:"SuccKeyNum,omitnil,omitempty" name:"SuccKeyNum"`
 
 	// Key文件中包含总的Key数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalKeyNum *uint64 `json:"TotalKeyNum,omitnil,omitempty" name:"TotalKeyNum"`
 }
 
@@ -4853,61 +4706,48 @@ type TagInfoUnit struct {
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type TagsInfoOfCluster struct {
 	// 集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagInfoUnit `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type TagsInfoOfTable struct {
 	// 表格实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableInstanceId *string `json:"TableInstanceId,omitnil,omitempty" name:"TableInstanceId"`
 
 	// 表格名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// 表格组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGroupId *string `json:"TableGroupId,omitnil,omitempty" name:"TableGroupId"`
 
 	// 标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagInfoUnit `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type TagsInfoOfTableGroup struct {
 	// 集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 表格组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGroupId *string `json:"TableGroupId,omitnil,omitempty" name:"TableGroupId"`
 
 	// 标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagInfoUnit `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
@@ -4943,15 +4783,12 @@ type TaskInfoNew struct {
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 表格组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGroupId *string `json:"TableGroupId,omitnil,omitempty" name:"TableGroupId"`
 
 	// 表格组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGroupName *string `json:"TableGroupName,omitnil,omitempty" name:"TableGroupName"`
 
 	// 表名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 }
 
@@ -4990,7 +4827,6 @@ func (r *UpdateApplyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateApplyResponseParams struct {
 	// 已更新的申请单列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyResults []*ApplyResult `json:"ApplyResults,omitnil,omitempty" name:"ApplyResults"`
 
 	// 更新数量

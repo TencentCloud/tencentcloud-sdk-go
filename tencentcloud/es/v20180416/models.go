@@ -4211,6 +4211,14 @@ func (r *GetRequestTargetNodeTypesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GpuInfo struct {
+	// Gpu块数
+	GpuCount *int64 `json:"GpuCount,omitnil,omitempty" name:"GpuCount"`
+
+	// Gpu类型
+	GpuType *string `json:"GpuType,omitnil,omitempty" name:"GpuType"`
+}
+
 type IndexMetaField struct {
 	// 索引类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4846,6 +4854,9 @@ type InstanceInfo struct {
 
 	// kibana内网访问地址
 	ShowKibanaIpPort *string `json:"ShowKibanaIpPort,omitnil,omitempty" name:"ShowKibanaIpPort"`
+
+	// 是否为CDZLite可用区
+	IsCdzLite *bool `json:"IsCdzLite,omitnil,omitempty" name:"IsCdzLite"`
 }
 
 type InstanceLog struct {
@@ -5344,6 +5355,10 @@ type NodeInfo struct {
 	// /
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskEnhance *int64 `json:"DiskEnhance,omitnil,omitempty" name:"DiskEnhance"`
+
+	// 节点Gpu信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GpuInfo *GpuInfo `json:"GpuInfo,omitnil,omitempty" name:"GpuInfo"`
 }
 
 type NodeView struct {

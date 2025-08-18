@@ -13276,6 +13276,13 @@ type EmbedUrlOption struct {
 	// 是否禁止编辑（展示）水印控件属性
 	// <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
 	ForbidEditWatermark *bool `json:"ForbidEditWatermark,omitnil,omitempty" name:"ForbidEditWatermark"`
+
+	// 印章描述
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
+
+	// 是否禁止编辑印章描述内容
+	// <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+	ForbidEditSealDescription *string `json:"ForbidEditSealDescription,omitnil,omitempty" name:"ForbidEditSealDescription"`
 }
 
 type ExtendAuthInfo struct {

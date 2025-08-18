@@ -6605,6 +6605,68 @@ func (c *Client) DescribeTopicsWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewExecuteDisasterRecoveryRequest() (request *ExecuteDisasterRecoveryRequest) {
+    request = &ExecuteDisasterRecoveryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ExecuteDisasterRecovery")
+    
+    
+    return
+}
+
+func NewExecuteDisasterRecoveryResponse() (response *ExecuteDisasterRecoveryResponse) {
+    response = &ExecuteDisasterRecoveryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExecuteDisasterRecovery
+// 执行域名异地访问切换，域名的访问指向将切换至备份集群。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_DISASTERREPLICATELINK = "ResourceNotFound.DisasterReplicateLink"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ExecuteDisasterRecovery(request *ExecuteDisasterRecoveryRequest) (response *ExecuteDisasterRecoveryResponse, err error) {
+    return c.ExecuteDisasterRecoveryWithContext(context.Background(), request)
+}
+
+// ExecuteDisasterRecovery
+// 执行域名异地访问切换，域名的访问指向将切换至备份集群。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_DISASTERREPLICATELINK = "ResourceNotFound.DisasterReplicateLink"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ExecuteDisasterRecoveryWithContext(ctx context.Context, request *ExecuteDisasterRecoveryRequest) (response *ExecuteDisasterRecoveryResponse, err error) {
+    if request == nil {
+        request = NewExecuteDisasterRecoveryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "ExecuteDisasterRecovery")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExecuteDisasterRecovery require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExecuteDisasterRecoveryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportRocketMQMessageDetailRequest() (request *ExportRocketMQMessageDetailRequest) {
     request = &ExportRocketMQMessageDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

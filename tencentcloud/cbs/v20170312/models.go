@@ -3057,11 +3057,14 @@ type InquiryPriceResizeDiskRequestParams struct {
 	// 云硬盘扩容后的大小，单位为GiB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。与参数DiskIds互斥。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
 	// 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 云硬盘ID列表， 通过[DescribeDisks](/document/product/362/16315)接口查询。与参数DiskId互斥。
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 }
 
 type InquiryPriceResizeDiskRequest struct {
@@ -3070,11 +3073,14 @@ type InquiryPriceResizeDiskRequest struct {
 	// 云硬盘扩容后的大小，单位为GiB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。与参数DiskIds互斥。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
 	// 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 云硬盘ID列表， 通过[DescribeDisks](/document/product/362/16315)接口查询。与参数DiskId互斥。
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 }
 
 func (r *InquiryPriceResizeDiskRequest) ToJsonString() string {
@@ -3092,6 +3098,7 @@ func (r *InquiryPriceResizeDiskRequest) FromJsonString(s string) error {
 	delete(f, "DiskSize")
 	delete(f, "DiskId")
 	delete(f, "ProjectId")
+	delete(f, "DiskIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceResizeDiskRequest has unknown keys!", "")
 	}

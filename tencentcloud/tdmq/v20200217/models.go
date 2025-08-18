@@ -5407,7 +5407,10 @@ func (r *DescribeEnvironmentAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEnvironmentRolesRequestParams struct {
-	// 必填字段，环境（命名空间）名称。
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 环境（命名空间）名称。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 起始下标，不填默认为0。
@@ -5415,9 +5418,6 @@ type DescribeEnvironmentRolesRequestParams struct {
 
 	// 返回数量，不填则默认为10，最大值为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 必填字段，Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 角色名称
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
@@ -5432,7 +5432,10 @@ type DescribeEnvironmentRolesRequestParams struct {
 type DescribeEnvironmentRolesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 必填字段，环境（命名空间）名称。
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 环境（命名空间）名称。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 起始下标，不填默认为0。
@@ -5440,9 +5443,6 @@ type DescribeEnvironmentRolesRequest struct {
 
 	// 返回数量，不填则默认为10，最大值为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 必填字段，Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 角色名称
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
@@ -5466,10 +5466,10 @@ func (r *DescribeEnvironmentRolesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ClusterId")
 	delete(f, "EnvironmentId")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "ClusterId")
 	delete(f, "RoleName")
 	delete(f, "Filters")
 	if len(f) > 0 {
@@ -10530,6 +10530,57 @@ type ExchangeQuota struct {
 
 	// 已创建exchange数
 	UsedExchange *int64 `json:"UsedExchange,omitnil,omitempty" name:"UsedExchange"`
+}
+
+// Predefined struct for user
+type ExecuteDisasterRecoveryRequestParams struct {
+
+}
+
+type ExecuteDisasterRecoveryRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ExecuteDisasterRecoveryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExecuteDisasterRecoveryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExecuteDisasterRecoveryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExecuteDisasterRecoveryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExecuteDisasterRecoveryResponse struct {
+	*tchttp.BaseResponse
+	Response *ExecuteDisasterRecoveryResponseParams `json:"Response"`
+}
+
+func (r *ExecuteDisasterRecoveryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExecuteDisasterRecoveryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

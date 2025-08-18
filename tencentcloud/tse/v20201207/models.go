@@ -3679,6 +3679,9 @@ type DeleteCloudNativeAPIGatewayServiceRequestParams struct {
 
 	// 服务名字，服务ID
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 是否同步删除服务上绑定的路由
+	DeleteRoutes *bool `json:"DeleteRoutes,omitnil,omitempty" name:"DeleteRoutes"`
 }
 
 type DeleteCloudNativeAPIGatewayServiceRequest struct {
@@ -3689,6 +3692,9 @@ type DeleteCloudNativeAPIGatewayServiceRequest struct {
 
 	// 服务名字，服务ID
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 是否同步删除服务上绑定的路由
+	DeleteRoutes *bool `json:"DeleteRoutes,omitnil,omitempty" name:"DeleteRoutes"`
 }
 
 func (r *DeleteCloudNativeAPIGatewayServiceRequest) ToJsonString() string {
@@ -3705,6 +3711,7 @@ func (r *DeleteCloudNativeAPIGatewayServiceRequest) FromJsonString(s string) err
 	}
 	delete(f, "GatewayId")
 	delete(f, "Name")
+	delete(f, "DeleteRoutes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudNativeAPIGatewayServiceRequest has unknown keys!", "")
 	}

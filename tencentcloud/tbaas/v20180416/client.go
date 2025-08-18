@@ -1118,6 +1118,7 @@ func NewInvokeChainMakerDemoContractResponse() (response *InvokeChainMakerDemoCo
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEINVOKEFAILED = "FailedOperation.ChainMakerChaincodeInvokeFailed"
 //  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
 //  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
 //  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
@@ -1136,6 +1137,7 @@ func (c *Client) InvokeChainMakerDemoContract(request *InvokeChainMakerDemoContr
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEINVOKEFAILED = "FailedOperation.ChainMakerChaincodeInvokeFailed"
 //  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
 //  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
 //  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
@@ -1474,6 +1476,7 @@ func NewQueryChainMakerContractResponse() (response *QueryChainMakerContractResp
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEINVOKEFAILED = "FailedOperation.ChainMakerChaincodeInvokeFailed"
 //  FAILEDOPERATION_CHAINMAKERCHAINCODEQUERYFAILED = "FailedOperation.ChainMakerChaincodeQueryFailed"
 //  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
 //  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
@@ -1525,6 +1528,7 @@ func (c *Client) QueryChainMakerContract(request *QueryChainMakerContractRequest
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEINVOKEFAILED = "FailedOperation.ChainMakerChaincodeInvokeFailed"
 //  FAILEDOPERATION_CHAINMAKERCHAINCODEQUERYFAILED = "FailedOperation.ChainMakerChaincodeQueryFailed"
 //  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
 //  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
@@ -1674,6 +1678,8 @@ func NewQueryChainMakerDemoContractResponse() (response *QueryChainMakerDemoCont
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEINVOKEFAILED = "FailedOperation.ChainMakerChaincodeInvokeFailed"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEQUERYFAILED = "FailedOperation.ChainMakerChaincodeQueryFailed"
 //  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
 //  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
 //  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
@@ -1691,6 +1697,8 @@ func (c *Client) QueryChainMakerDemoContract(request *QueryChainMakerDemoContrac
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEINVOKEFAILED = "FailedOperation.ChainMakerChaincodeInvokeFailed"
+//  FAILEDOPERATION_CHAINMAKERCHAINCODEQUERYFAILED = "FailedOperation.ChainMakerChaincodeQueryFailed"
 //  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
 //  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
 //  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
