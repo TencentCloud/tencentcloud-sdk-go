@@ -383,6 +383,11 @@ type CompareFaceRequestParams struct {
 	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
 	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
+
+	// 若图片中包含多张人脸，指定选取策略，默认为0。
+	// - 0：选取其中置信度最高的人脸
+	// - 1：选取其中面积最大的人脸。
+	FaceMatchingStrategy *uint64 `json:"FaceMatchingStrategy,omitnil,omitempty" name:"FaceMatchingStrategy"`
 }
 
 type CompareFaceRequest struct {
@@ -447,6 +452,11 @@ type CompareFaceRequest struct {
 	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
 	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
+
+	// 若图片中包含多张人脸，指定选取策略，默认为0。
+	// - 0：选取其中置信度最高的人脸
+	// - 1：选取其中面积最大的人脸。
+	FaceMatchingStrategy *uint64 `json:"FaceMatchingStrategy,omitnil,omitempty" name:"FaceMatchingStrategy"`
 }
 
 func (r *CompareFaceRequest) ToJsonString() string {
@@ -468,6 +478,7 @@ func (r *CompareFaceRequest) FromJsonString(s string) error {
 	delete(f, "FaceModelVersion")
 	delete(f, "QualityControl")
 	delete(f, "NeedRotateDetection")
+	delete(f, "FaceMatchingStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CompareFaceRequest has unknown keys!", "")
 	}

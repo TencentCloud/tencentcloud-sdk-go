@@ -337,6 +337,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
 //  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
+//  UNSUPPORTEDOPERATION_NOTAGREEMENT = "UnsupportedOperation.NotAgreement"
 //  UNSUPPORTEDOPERATION_VPCINFONOTFOUND = "UnsupportedOperation.VPCInfoNotFound"
 func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
     return c.CreateInstanceWithContext(context.Background(), request)
@@ -389,6 +390,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 //  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
 //  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
+//  UNSUPPORTEDOPERATION_NOTAGREEMENT = "UnsupportedOperation.NotAgreement"
 //  UNSUPPORTEDOPERATION_VPCINFONOTFOUND = "UnsupportedOperation.VPCInfoNotFound"
 func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
     if request == nil {
@@ -528,6 +530,7 @@ func NewCreateLogstashInstanceResponse() (response *CreateLogstashInstanceRespon
 //  UNSUPPORTEDOPERATION_DISKUSE = "UnsupportedOperation.DiskUse"
 //  UNSUPPORTEDOPERATION_EDITLISTLENGTH = "UnsupportedOperation.EditListLength"
 //  UNSUPPORTEDOPERATION_MIGRATE = "UnsupportedOperation.Migrate"
+//  UNSUPPORTEDOPERATION_NOTAGREEMENT = "UnsupportedOperation.NotAgreement"
 //  UNSUPPORTEDOPERATION_PASSLOGSTASHID = "UnsupportedOperation.PassLogstashId"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
 //  UNSUPPORTEDOPERATION_PROTOCOL = "UnsupportedOperation.Protocol"
@@ -645,6 +648,7 @@ func (c *Client) CreateLogstashInstance(request *CreateLogstashInstanceRequest) 
 //  UNSUPPORTEDOPERATION_DISKUSE = "UnsupportedOperation.DiskUse"
 //  UNSUPPORTEDOPERATION_EDITLISTLENGTH = "UnsupportedOperation.EditListLength"
 //  UNSUPPORTEDOPERATION_MIGRATE = "UnsupportedOperation.Migrate"
+//  UNSUPPORTEDOPERATION_NOTAGREEMENT = "UnsupportedOperation.NotAgreement"
 //  UNSUPPORTEDOPERATION_PASSLOGSTASHID = "UnsupportedOperation.PassLogstashId"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
 //  UNSUPPORTEDOPERATION_PROTOCOL = "UnsupportedOperation.Protocol"

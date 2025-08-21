@@ -1155,8 +1155,6 @@ func NewChannelCreateDynamicFlowApproverResponse() (response *ChannelCreateDynam
 //
 // <ul>
 //
-// <li>此接口需要保证：渠道企业已开启：模块化计费能力，</li>
-//
 // <li>此接口需要保证：渠道应用已开启：动态签署人2.0能力</li>
 //
 // <li>此接口需要保证：合同发起时指定开启了动态合同</li>
@@ -1190,8 +1188,6 @@ func (c *Client) ChannelCreateDynamicFlowApprover(request *ChannelCreateDynamicF
 // **注**: 
 //
 // <ul>
-//
-// <li>此接口需要保证：渠道企业已开启：模块化计费能力，</li>
 //
 // <li>此接口需要保证：渠道应用已开启：动态签署人2.0能力</li>
 //
@@ -5403,6 +5399,10 @@ func NewChannelRenewAutoSignLicenseResponse() (response *ChannelRenewAutoSignLic
 }
 
 // ChannelRenewAutoSignLicense
+// 已经不再使用
+//
+// 
+//
 // 给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
 //
 // 
@@ -5428,6 +5428,10 @@ func (c *Client) ChannelRenewAutoSignLicense(request *ChannelRenewAutoSignLicens
 }
 
 // ChannelRenewAutoSignLicense
+// 已经不再使用
+//
+// 
+//
 // 给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
 //
 // 

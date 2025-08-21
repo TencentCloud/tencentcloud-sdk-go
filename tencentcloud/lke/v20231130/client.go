@@ -3263,56 +3263,6 @@ func (c *Client) ListAppWithContext(ctx context.Context, request *ListAppRequest
     return
 }
 
-func NewListAppCategoryRequest() (request *ListAppCategoryRequest) {
-    request = &ListAppCategoryRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "ListAppCategory")
-    
-    
-    return
-}
-
-func NewListAppCategoryResponse() (response *ListAppCategoryResponse) {
-    response = &ListAppCategoryResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ListAppCategory
-// 应用类型列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ListAppCategory(request *ListAppCategoryRequest) (response *ListAppCategoryResponse, err error) {
-    return c.ListAppCategoryWithContext(context.Background(), request)
-}
-
-// ListAppCategory
-// 应用类型列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ListAppCategoryWithContext(ctx context.Context, request *ListAppCategoryRequest) (response *ListAppCategoryResponse, err error) {
-    if request == nil {
-        request = NewListAppCategoryRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "lke", APIVersion, "ListAppCategory")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ListAppCategory require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewListAppCategoryResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewListAppKnowledgeDetailRequest() (request *ListAppKnowledgeDetailRequest) {
     request = &ListAppKnowledgeDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4033,7 +3983,7 @@ func NewListSelectDocResponse() (response *ListSelectDocResponse) {
 }
 
 // ListSelectDoc
-// 获取账户信息
+// 文档生成问答时，可通过该接口获得当前支持生成问答的文档列表，当前不支持xlsx、xls、csv格式的文档生成问答，且文档需处于待发布或已发布状态才可生成问答。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4042,7 +3992,7 @@ func (c *Client) ListSelectDoc(request *ListSelectDocRequest) (response *ListSel
 }
 
 // ListSelectDoc
-// 获取账户信息
+// 文档生成问答时，可通过该接口获得当前支持生成问答的文档列表，当前不支持xlsx、xls、csv格式的文档生成问答，且文档需处于待发布或已发布状态才可生成问答。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

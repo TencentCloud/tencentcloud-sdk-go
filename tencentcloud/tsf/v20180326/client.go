@@ -212,7 +212,7 @@ func NewAssociateBusinessLogConfigResponse() (response *AssociateBusinessLogConf
 // 关联日志配置项到应用
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_TSFAPMBUSILOGCFGAPPRELATIONMASTERERROR = "InternalError.TsfApmBusiLogCfgAppRelationMasterError"
 //  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
@@ -228,7 +228,7 @@ func (c *Client) AssociateBusinessLogConfig(request *AssociateBusinessLogConfigR
 // 关联日志配置项到应用
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_TSFAPMBUSILOGCFGAPPRELATIONMASTERERROR = "InternalError.TsfApmBusiLogCfgAppRelationMasterError"
 //  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
@@ -1457,7 +1457,7 @@ func NewCreateFileConfigWithDetailRespResponse() (response *CreateFileConfigWith
 }
 
 // CreateFileConfigWithDetailResp
-// 创建文件配置项，返回详细信息
+// 创建文件配置项，返回详细信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
@@ -1478,7 +1478,7 @@ func (c *Client) CreateFileConfigWithDetailResp(request *CreateFileConfigWithDet
 }
 
 // CreateFileConfigWithDetailResp
-// 创建文件配置项，返回详细信息
+// 创建文件配置项，返回详细信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
@@ -1663,7 +1663,7 @@ func NewCreateLaneResponse() (response *CreateLaneResponse) {
 }
 
 // CreateLane
-// 创建泳道
+// 创建泳道配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -1720,7 +1720,7 @@ func (c *Client) CreateLane(request *CreateLaneRequest) (response *CreateLaneRes
 }
 
 // CreateLane
-// 创建泳道
+// 创建泳道配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -1809,7 +1809,7 @@ func NewCreateLaneRuleResponse() (response *CreateLaneRuleResponse) {
 }
 
 // CreateLaneRule
-// 创建泳道规则
+// 创建灰度发布规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -1867,7 +1867,7 @@ func (c *Client) CreateLaneRule(request *CreateLaneRuleRequest) (response *Creat
 }
 
 // CreateLaneRule
-// 创建泳道规则
+// 创建灰度发布规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -2013,7 +2013,7 @@ func NewCreateMicroserviceWithDetailRespResponse() (response *CreateMicroservice
 }
 
 // CreateMicroserviceWithDetailResp
-// 新增微服务返回id
+// 新增微服务返回ID
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_SERVICENAMEREPEATED = "InvalidParameterValue.ServiceNameRepeated"
@@ -2023,7 +2023,7 @@ func (c *Client) CreateMicroserviceWithDetailResp(request *CreateMicroserviceWit
 }
 
 // CreateMicroserviceWithDetailResp
-// 新增微服务返回id
+// 新增微服务返回ID
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_SERVICENAMEREPEATED = "InvalidParameterValue.ServiceNameRepeated"
@@ -2357,7 +2357,7 @@ func NewCreatePublicConfigWithDetailRespResponse() (response *CreatePublicConfig
 }
 
 // CreatePublicConfigWithDetailResp
-// 创建公共配置项，并返回配置项详细信息
+// 创建公共配置项，并返回配置项详细信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
@@ -2370,7 +2370,7 @@ func (c *Client) CreatePublicConfigWithDetailResp(request *CreatePublicConfigWit
 }
 
 // CreatePublicConfigWithDetailResp
-// 创建公共配置项，并返回配置项详细信息
+// 创建公共配置项，并返回配置项详细信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
@@ -2786,6 +2786,7 @@ func NewDeleteApiGroupResponse() (response *DeleteApiGroupResponse) {
 // 删除Api分组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYGROUPBOUNDDELETEFAILED = "FailedOperation.GatewayGroupBoundDeleteFailed"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 func (c *Client) DeleteApiGroup(request *DeleteApiGroupRequest) (response *DeleteApiGroupResponse, err error) {
     return c.DeleteApiGroupWithContext(context.Background(), request)
@@ -2795,6 +2796,7 @@ func (c *Client) DeleteApiGroup(request *DeleteApiGroupRequest) (response *Delet
 // 删除Api分组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYGROUPBOUNDDELETEFAILED = "FailedOperation.GatewayGroupBoundDeleteFailed"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 func (c *Client) DeleteApiGroupWithContext(ctx context.Context, request *DeleteApiGroupRequest) (response *DeleteApiGroupResponse, err error) {
     if request == nil {
@@ -3457,7 +3459,7 @@ func NewDeleteLaneResponse() (response *DeleteLaneResponse) {
 }
 
 // DeleteLane
-// 删除泳道
+// 删除泳道配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -3510,7 +3512,7 @@ func (c *Client) DeleteLane(request *DeleteLaneRequest) (response *DeleteLaneRes
 }
 
 // DeleteLane
-// 删除泳道
+// 删除泳道配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -3595,13 +3597,14 @@ func NewDeleteLaneRuleResponse() (response *DeleteLaneRuleResponse) {
 }
 
 // DeleteLaneRule
-// 删除泳道规则
+// 删除灰度发布规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
 //  FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = "FailedOperation.LaneInfoGroupNotEmpty"
 //  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
 //  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
+//  FAILEDOPERATION_LANERULEENABLEDRULEDELETEFAILED = "FailedOperation.LaneRuleEnabledRuleDeleteFailed"
 //  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
 //  INVALIDPARAMETER_LANEINFOALREADYUSED = "InvalidParameter.LaneInfoAlreadyUsed"
 //  INVALIDPARAMETER_LANEINFONAMEALREADYUSED = "InvalidParameter.LaneInfoNameAlreadyUsed"
@@ -3648,13 +3651,14 @@ func (c *Client) DeleteLaneRule(request *DeleteLaneRuleRequest) (response *Delet
 }
 
 // DeleteLaneRule
-// 删除泳道规则
+// 删除灰度发布规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
 //  FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = "FailedOperation.LaneInfoGroupNotEmpty"
 //  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
 //  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
+//  FAILEDOPERATION_LANERULEENABLEDRULEDELETEFAILED = "FailedOperation.LaneRuleEnabledRuleDeleteFailed"
 //  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
 //  INVALIDPARAMETER_LANEINFOALREADYUSED = "InvalidParameter.LaneInfoAlreadyUsed"
 //  INVALIDPARAMETER_LANEINFONAMEALREADYUSED = "InvalidParameter.LaneInfoNameAlreadyUsed"
@@ -3800,6 +3804,7 @@ func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
 //  FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
 //  FAILEDOPERATION_GROUPEXISTS = "FailedOperation.GroupExists"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_INSTANCEQUERYFAILED = "FailedOperation.InstanceQueryFailed"
 //  FAILEDOPERATION_INSTANCERESETTIMEOUT = "FailedOperation.InstanceResetTimeout"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
@@ -3860,6 +3865,7 @@ func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *Del
 //  FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
 //  FAILEDOPERATION_GROUPEXISTS = "FailedOperation.GroupExists"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_INSTANCEQUERYFAILED = "FailedOperation.InstanceQueryFailed"
 //  FAILEDOPERATION_INSTANCERESETTIMEOUT = "FailedOperation.InstanceResetTimeout"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
@@ -4586,6 +4592,7 @@ func NewDeployContainerGroupResponse() (response *DeployContainerGroupResponse) 
 //  INVALIDPARAMETERVALUE_IMAGEREPOREPONAMENULL = "InvalidParameterValue.ImagerepoRepoNameNull"
 //  INVALIDPARAMETERVALUE_IMAGEREPOREPONAMEINVALID = "InvalidParameterValue.ImagerepoReponameInvalid"
 //  INVALIDPARAMETERVALUE_IMAGEREPOTAGNAMENULL = "InvalidParameterValue.ImagerepoTagnameNull"
+//  INVALIDPARAMETERVALUE_VOLUMENAMEVALIDERROR = "InvalidParameterValue.VolumeNameValidError"
 //  INVALIDPARAMETERVALUE_WRONGDONTSTARTVALUE = "InvalidParameterValue.WrongDontStartValue"
 //  MISSINGPARAMETER_SYSTEMPARAMETERREQUIRED = "MissingParameter.SystemParameterRequired"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
@@ -4638,6 +4645,7 @@ func (c *Client) DeployContainerGroup(request *DeployContainerGroupRequest) (res
 //  INVALIDPARAMETERVALUE_IMAGEREPOREPONAMENULL = "InvalidParameterValue.ImagerepoRepoNameNull"
 //  INVALIDPARAMETERVALUE_IMAGEREPOREPONAMEINVALID = "InvalidParameterValue.ImagerepoReponameInvalid"
 //  INVALIDPARAMETERVALUE_IMAGEREPOTAGNAMENULL = "InvalidParameterValue.ImagerepoTagnameNull"
+//  INVALIDPARAMETERVALUE_VOLUMENAMEVALIDERROR = "InvalidParameterValue.VolumeNameValidError"
 //  INVALIDPARAMETERVALUE_WRONGDONTSTARTVALUE = "InvalidParameterValue.WrongDontStartValue"
 //  MISSINGPARAMETER_SYSTEMPARAMETERREQUIRED = "MissingParameter.SystemParameterRequired"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
@@ -5039,7 +5047,7 @@ func NewDescribeApiVersionsResponse() (response *DescribeApiVersionsResponse) {
 }
 
 // DescribeApiVersions
-// 查询API 版本
+// 查询API版本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEINSERTFAILED = "FailedOperation.ServiceInsertFailed"
@@ -5052,7 +5060,7 @@ func (c *Client) DescribeApiVersions(request *DescribeApiVersionsRequest) (respo
 }
 
 // DescribeApiVersions
-// 查询API 版本
+// 查询API版本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEINSERTFAILED = "FailedOperation.ServiceInsertFailed"
@@ -5170,6 +5178,8 @@ func NewDescribeApplicationAttributeResponse() (response *DescribeApplicationAtt
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
+//  FAILEDOPERATION_INSTANCECOMMONERROR = "FailedOperation.InstanceCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
@@ -5195,6 +5205,8 @@ func (c *Client) DescribeApplicationAttribute(request *DescribeApplicationAttrib
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
+//  FAILEDOPERATION_INSTANCECOMMONERROR = "FailedOperation.InstanceCommonError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
@@ -5386,7 +5398,7 @@ func NewDescribeBusinessLogConfigResponse() (response *DescribeBusinessLogConfig
 // 查询业务日志配置项信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
@@ -5400,7 +5412,7 @@ func (c *Client) DescribeBusinessLogConfig(request *DescribeBusinessLogConfigReq
 // 查询业务日志配置项信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
@@ -5516,6 +5528,7 @@ func NewDescribeClusterInstancesResponse() (response *DescribeClusterInstancesRe
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_INSTANCEQUERYFAILED = "FailedOperation.InstanceQueryFailed"
 //  FAILEDOPERATION_INSTANCEUPDATEFAILED = "FailedOperation.InstanceUpdateFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
@@ -5544,6 +5557,7 @@ func (c *Client) DescribeClusterInstances(request *DescribeClusterInstancesReque
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_INSTANCEQUERYFAILED = "FailedOperation.InstanceQueryFailed"
 //  FAILEDOPERATION_INSTANCEUPDATEFAILED = "FailedOperation.InstanceUpdateFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
@@ -6046,8 +6060,6 @@ func NewDescribeContainerEventsResponse() (response *DescribeContainerEventsResp
 // - 当类型是 instance 时，GroupId是必填项
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "FailedOperation.ContainergroupKuberneteApiInvokeError"
-//  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESAPIINVOKEERROR = "FailedOperation.ContainergroupKubernetesApiInvokeError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
@@ -6073,8 +6085,6 @@ func (c *Client) DescribeContainerEvents(request *DescribeContainerEventsRequest
 // - 当类型是 instance 时，GroupId是必填项
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "FailedOperation.ContainergroupKuberneteApiInvokeError"
-//  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESAPIINVOKEERROR = "FailedOperation.ContainergroupKubernetesApiInvokeError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
@@ -6129,10 +6139,9 @@ func NewDescribeContainerGroupAttributeResponse() (response *DescribeContainerGr
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
 //  FAILEDOPERATION_CDISTATUSFAILED = "FailedOperation.CdiStatusFailed"
 //  FAILEDOPERATION_CDISTATUSINVALID = "FailedOperation.CdiStatusInvalid"
-//  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
-//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETESCONNECTERROR = "InternalError.ContainergroupKubernetesConnectError"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
@@ -6153,10 +6162,9 @@ func (c *Client) DescribeContainerGroupAttribute(request *DescribeContainerGroup
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
 //  FAILEDOPERATION_CDISTATUSFAILED = "FailedOperation.CdiStatusFailed"
 //  FAILEDOPERATION_CDISTATUSINVALID = "FailedOperation.CdiStatusInvalid"
-//  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
-//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETESCONNECTERROR = "InternalError.ContainergroupKubernetesConnectError"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
@@ -6279,12 +6287,13 @@ func NewDescribeContainerGroupDetailResponse() (response *DescribeContainerGroup
 }
 
 // DescribeContainerGroupDetail
-// 容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
+// 容器部署组详情（已废弃，请使用  [DescribeContainerGroupDeployInfo](https://cloud.tencent.com/document/product/649/67221)）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
@@ -6302,12 +6311,13 @@ func (c *Client) DescribeContainerGroupDetail(request *DescribeContainerGroupDet
 }
 
 // DescribeContainerGroupDetail
-// 容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
+// 容器部署组详情（已废弃，请使用  [DescribeContainerGroupDeployInfo](https://cloud.tencent.com/document/product/649/67221)）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
@@ -6631,7 +6641,7 @@ func NewDescribeDownloadInfoResponse() (response *DescribeDownloadInfoResponse) 
 // DescribeDownloadInfo
 // TSF上传的程序包存放在腾讯云对象存储（COS）中，通过该API可以获取从COS下载程序包需要的信息，包括包所在的桶、存储路径、鉴权信息等，之后使用COS API（或SDK）进行下载。
 //
-// COS相关文档请查阅：https://cloud.tencent.com/document/product/436
+// 请查阅[COS相关文档](https://cloud.tencent.com/document/product/436)
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -6644,7 +6654,7 @@ func (c *Client) DescribeDownloadInfo(request *DescribeDownloadInfoRequest) (res
 // DescribeDownloadInfo
 // TSF上传的程序包存放在腾讯云对象存储（COS）中，通过该API可以获取从COS下载程序包需要的信息，包括包所在的桶、存储路径、鉴权信息等，之后使用COS API（或SDK）进行下载。
 //
-// COS相关文档请查阅：https://cloud.tencent.com/document/product/436
+// 请查阅[COS相关文档](https://cloud.tencent.com/document/product/436)
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -7170,6 +7180,7 @@ func NewDescribeGroupAttributeResponse() (response *DescribeGroupAttributeRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_GROUPCOMMONERROR = "InternalError.GroupCommonError"
@@ -7190,6 +7201,7 @@ func (c *Client) DescribeGroupAttribute(request *DescribeGroupAttributeRequest) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_GROUPCOMMONERROR = "InternalError.GroupCommonError"
@@ -7408,6 +7420,7 @@ func NewDescribeGroupInstancesResponse() (response *DescribeGroupInstancesRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_CAMROLEREQUESTERROR = "InternalError.CamRoleRequestError"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
@@ -7431,6 +7444,7 @@ func (c *Client) DescribeGroupInstances(request *DescribeGroupInstancesRequest) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_CAMROLEREQUESTERROR = "InternalError.CamRoleRequestError"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
@@ -7597,6 +7611,7 @@ func NewDescribeGroupsResponse() (response *DescribeGroupsResponse) {
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_NAMESPACEQUERYFAILED = "FailedOperation.NamespaceQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -7618,6 +7633,7 @@ func (c *Client) DescribeGroups(request *DescribeGroupsRequest) (response *Descr
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_NAMESPACEQUERYFAILED = "FailedOperation.NamespaceQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -7671,6 +7687,7 @@ func NewDescribeGroupsWithPluginResponse() (response *DescribeGroupsWithPluginRe
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_NAMESPACEQUERYFAILED = "FailedOperation.NamespaceQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -7692,6 +7709,7 @@ func (c *Client) DescribeGroupsWithPlugin(request *DescribeGroupsWithPluginReque
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_NAMESPACEQUERYFAILED = "FailedOperation.NamespaceQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -7745,6 +7763,7 @@ func NewDescribeImageRepositoryResponse() (response *DescribeImageRepositoryResp
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 //  UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
@@ -7759,6 +7778,7 @@ func (c *Client) DescribeImageRepository(request *DescribeImageRepositoryRequest
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 //  UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
@@ -8287,7 +8307,7 @@ func NewDescribeLaneRulesResponse() (response *DescribeLaneRulesResponse) {
 }
 
 // DescribeLaneRules
-// 查询泳道规则列表
+// 查询灰度发布规则列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -8347,7 +8367,7 @@ func (c *Client) DescribeLaneRules(request *DescribeLaneRulesRequest) (response 
 }
 
 // DescribeLaneRules
-// 查询泳道规则列表
+// 查询灰度发布规则列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -8439,7 +8459,7 @@ func NewDescribeLanesResponse() (response *DescribeLanesResponse) {
 }
 
 // DescribeLanes
-// 查询泳道列表
+// 查询泳道配置列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -8494,7 +8514,7 @@ func (c *Client) DescribeLanes(request *DescribeLanesRequest) (response *Describ
 }
 
 // DescribeLanes
-// 查询泳道列表
+// 查询泳道配置列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -8557,6 +8577,122 @@ func (c *Client) DescribeLanesWithContext(ctx context.Context, request *Describe
     request.SetContext(ctx)
     
     response = NewDescribeLanesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLicensesRequest() (request *DescribeLicensesRequest) {
+    request = &DescribeLicensesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeLicenses")
+    
+    
+    return
+}
+
+func NewDescribeLicensesResponse() (response *DescribeLicensesResponse) {
+    response = &DescribeLicensesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLicenses
+// 查询许可列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+func (c *Client) DescribeLicenses(request *DescribeLicensesRequest) (response *DescribeLicensesResponse, err error) {
+    return c.DescribeLicensesWithContext(context.Background(), request)
+}
+
+// DescribeLicenses
+// 查询许可列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+func (c *Client) DescribeLicensesWithContext(ctx context.Context, request *DescribeLicensesRequest) (response *DescribeLicensesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLicensesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeLicenses")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLicenses require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLicensesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLogCapacityRequest() (request *DescribeLogCapacityRequest) {
+    request = &DescribeLogCapacityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeLogCapacity")
+    
+    
+    return
+}
+
+func NewDescribeLogCapacityResponse() (response *DescribeLogCapacityResponse) {
+    response = &DescribeLogCapacityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLogCapacity
+// 获取用户日志使用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) DescribeLogCapacity(request *DescribeLogCapacityRequest) (response *DescribeLogCapacityResponse, err error) {
+    return c.DescribeLogCapacityWithContext(context.Background(), request)
+}
+
+// DescribeLogCapacity
+// 获取用户日志使用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) DescribeLogCapacityWithContext(ctx context.Context, request *DescribeLogCapacityRequest) (response *DescribeLogCapacityResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogCapacityRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeLogCapacity")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogCapacity require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogCapacityResponse()
     err = c.Send(request, response)
     return
 }
@@ -8731,6 +8867,7 @@ func NewDescribeMicroservicesByGroupIdsResponse() (response *DescribeMicroservic
 //  INTERNALERROR_TSFMSERROR = "InternalError.TsfMsError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_MSPARAMETERINVALID = "InvalidParameterValue.MsParameterInvalid"
 //  MISSINGPARAMETER_NAMESPACEIDREQUIRED = "MissingParameter.NamespaceIdRequired"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
@@ -8747,6 +8884,7 @@ func (c *Client) DescribeMicroservicesByGroupIds(request *DescribeMicroservicesB
 //  INTERNALERROR_TSFMSERROR = "InternalError.TsfMsError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_MSPARAMETERINVALID = "InvalidParameterValue.MsParameterInvalid"
 //  MISSINGPARAMETER_NAMESPACEIDREQUIRED = "MissingParameter.NamespaceIdRequired"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
@@ -9129,6 +9267,7 @@ func NewDescribePodInstancesResponse() (response *DescribePodInstancesResponse) 
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_INSTANCEQUERYFAILED = "FailedOperation.InstanceQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
@@ -9152,6 +9291,7 @@ func (c *Client) DescribePodInstances(request *DescribePodInstancesRequest) (res
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_INSTANCEQUERYFAILED = "FailedOperation.InstanceQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
@@ -9308,9 +9448,8 @@ func NewDescribePublicConfigReleaseLogsResponse() (response *DescribePublicConfi
 // 查询公共配置发布历史
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
-//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  FAILEDOPERATION_CONFIGNAMESPACEQUERYFAILED = "FailedOperation.ConfigNamespaceQueryFailed"
+//  FAILEDOPERATION_CONFIGRELEASELOGQUERYFAILED = "FailedOperation.ConfigReleaseLogQueryFailed"
 func (c *Client) DescribePublicConfigReleaseLogs(request *DescribePublicConfigReleaseLogsRequest) (response *DescribePublicConfigReleaseLogsResponse, err error) {
     return c.DescribePublicConfigReleaseLogsWithContext(context.Background(), request)
 }
@@ -9319,9 +9458,8 @@ func (c *Client) DescribePublicConfigReleaseLogs(request *DescribePublicConfigRe
 // 查询公共配置发布历史
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
-//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  FAILEDOPERATION_CONFIGNAMESPACEQUERYFAILED = "FailedOperation.ConfigNamespaceQueryFailed"
+//  FAILEDOPERATION_CONFIGRELEASELOGQUERYFAILED = "FailedOperation.ConfigReleaseLogQueryFailed"
 func (c *Client) DescribePublicConfigReleaseLogsWithContext(ctx context.Context, request *DescribePublicConfigReleaseLogsRequest) (response *DescribePublicConfigReleaseLogsResponse, err error) {
     if request == nil {
         request = NewDescribePublicConfigReleaseLogsRequest()
@@ -9523,7 +9661,7 @@ func NewDescribeReleasedConfigResponse() (response *DescribeReleasedConfigRespon
 }
 
 // DescribeReleasedConfig
-// 查询group发布的配置
+// 查询部署组发布的配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
@@ -9536,7 +9674,7 @@ func (c *Client) DescribeReleasedConfig(request *DescribeReleasedConfigRequest) 
 }
 
 // DescribeReleasedConfig
-// 查询group发布的配置
+// 查询部署组发布的配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
@@ -9667,6 +9805,74 @@ func (c *Client) DescribeRepositoryWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceConfigRequest() (request *DescribeResourceConfigRequest) {
+    request = &DescribeResourceConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeResourceConfig")
+    
+    
+    return
+}
+
+func NewDescribeResourceConfigResponse() (response *DescribeResourceConfigResponse) {
+    response = &DescribeResourceConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourceConfig
+// 无
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeResourceConfig(request *DescribeResourceConfigRequest) (response *DescribeResourceConfigResponse, err error) {
+    return c.DescribeResourceConfigWithContext(context.Background(), request)
+}
+
+// DescribeResourceConfig
+// 无
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeResourceConfigWithContext(ctx context.Context, request *DescribeResourceConfigRequest) (response *DescribeResourceConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "DescribeResourceConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -9876,6 +10082,7 @@ func NewDescribeSimpleGroupsResponse() (response *DescribeSimpleGroupsResponse) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -9892,6 +10099,7 @@ func (c *Client) DescribeSimpleGroups(request *DescribeSimpleGroupsRequest) (res
 // 可能返回的错误码:
 //  FAILEDOPERATION_DISPATCHCOMMONERROR = "FailedOperation.DispatchCommonError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_GROUPQUERYFAILED = "FailedOperation.GroupQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -10551,7 +10759,7 @@ func NewDescribeUploadInfoResponse() (response *DescribeUploadInfoResponse) {
 // DescribeUploadInfo
 // TSF会将软件包上传到腾讯云对象存储（COS）。调用此接口获取上传信息，如目标地域，桶，包Id，存储路径，鉴权信息等，之后请使用COS API（或SDK）进行上传。
 //
-// COS相关文档请查阅：https://cloud.tencent.com/document/product/436
+// 请查阅[COS相关文档](https://cloud.tencent.com/document/product/436)
 //
 // 可能返回的错误码:
 //  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
@@ -10568,7 +10776,7 @@ func (c *Client) DescribeUploadInfo(request *DescribeUploadInfoRequest) (respons
 // DescribeUploadInfo
 // TSF会将软件包上传到腾讯云对象存储（COS）。调用此接口获取上传信息，如目标地域，桶，包Id，存储路径，鉴权信息等，之后请使用COS API（或SDK）进行上传。
 //
-// COS相关文档请查阅：https://cloud.tencent.com/document/product/436
+// 请查阅[COS相关文档](https://cloud.tencent.com/document/product/436)
 //
 // 可能返回的错误码:
 //  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
@@ -10669,7 +10877,7 @@ func NewDisableLaneRuleResponse() (response *DisableLaneRuleResponse) {
 }
 
 // DisableLaneRule
-// 禁用泳道规则
+// 禁用灰度发布规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -10723,7 +10931,7 @@ func (c *Client) DisableLaneRule(request *DisableLaneRuleRequest) (response *Dis
 }
 
 // DisableLaneRule
-// 禁用泳道规则
+// 禁用灰度发布规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -11195,7 +11403,7 @@ func NewEnableLaneRuleResponse() (response *EnableLaneRuleResponse) {
 }
 
 // EnableLaneRule
-// 启用泳道规则
+// 启用灰度发布规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -11255,7 +11463,7 @@ func (c *Client) EnableLaneRule(request *EnableLaneRuleRequest) (response *Enabl
 }
 
 // EnableLaneRule
-// 启用泳道规则
+// 启用灰度发布规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -12069,7 +12277,7 @@ func NewModifyLaneResponse() (response *ModifyLaneResponse) {
 }
 
 // ModifyLane
-// 更新泳道信息
+// 更新泳道配置信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -12123,7 +12331,7 @@ func (c *Client) ModifyLane(request *ModifyLaneRequest) (response *ModifyLaneRes
 }
 
 // ModifyLane
-// 更新泳道信息
+// 更新泳道配置信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -12209,7 +12417,7 @@ func NewModifyLaneRuleResponse() (response *ModifyLaneRuleResponse) {
 }
 
 // ModifyLaneRule
-// 更新泳道规则
+// 更新灰度发布规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -12265,7 +12473,7 @@ func (c *Client) ModifyLaneRule(request *ModifyLaneRuleRequest) (response *Modif
 }
 
 // ModifyLaneRule
-// 更新泳道规则
+// 更新灰度发布规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
@@ -13157,6 +13365,7 @@ func NewReleaseConfigResponse() (response *ReleaseConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
+//  FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = "FailedOperation.ConfigReleaseLogCreateFailed"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
@@ -13179,6 +13388,7 @@ func (c *Client) ReleaseConfig(request *ReleaseConfigRequest) (response *Release
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
+//  FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = "FailedOperation.ConfigReleaseLogCreateFailed"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
@@ -13229,10 +13439,11 @@ func NewReleaseConfigWithDetailRespResponse() (response *ReleaseConfigWithDetail
 }
 
 // ReleaseConfigWithDetailResp
-// 发布配置,并且返回配置 ID
+// 发布配置，并且返回配置ID。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
+//  FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = "FailedOperation.ConfigReleaseLogCreateFailed"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
@@ -13251,10 +13462,11 @@ func (c *Client) ReleaseConfigWithDetailResp(request *ReleaseConfigWithDetailRes
 }
 
 // ReleaseConfigWithDetailResp
-// 发布配置,并且返回配置 ID
+// 发布配置，并且返回配置ID。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
+//  FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = "FailedOperation.ConfigReleaseLogCreateFailed"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
@@ -13311,6 +13523,7 @@ func NewReleaseFileConfigResponse() (response *ReleaseFileConfigResponse) {
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETERVALUE_FILECONFIGALREADYRELEASED = "InvalidParameterValue.FileConfigAlreadyReleased"
+//  INVALIDPARAMETERVALUE_FILECONFIGGROUPAPPLICATIONIDNOTMATCH = "InvalidParameterValue.FileConfigGroupApplicationIdNotMatch"
 //  INVALIDPARAMETERVALUE_FILECONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.FileConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_FILECONFIGPATHEXISTS = "InvalidParameterValue.FileConfigPathExists"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
@@ -13326,6 +13539,7 @@ func (c *Client) ReleaseFileConfig(request *ReleaseFileConfigRequest) (response 
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETERVALUE_FILECONFIGALREADYRELEASED = "InvalidParameterValue.FileConfigAlreadyReleased"
+//  INVALIDPARAMETERVALUE_FILECONFIGGROUPAPPLICATIONIDNOTMATCH = "InvalidParameterValue.FileConfigGroupApplicationIdNotMatch"
 //  INVALIDPARAMETERVALUE_FILECONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.FileConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_FILECONFIGPATHEXISTS = "InvalidParameterValue.FileConfigPathExists"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
@@ -13662,10 +13876,12 @@ func NewRollbackConfigResponse() (response *RollbackConfigResponse) {
 // 回滚配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = "FailedOperation.ConfigReleaseLogCreateFailed"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETERVALUE_CONFIGALREADYRELEASED = "InvalidParameterValue.ConfigAlreadyReleased"
 //  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
+//  INVALIDPARAMETERVALUE_LASTCONFIGNOTEXISTS = "InvalidParameterValue.LastConfigNotExists"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 func (c *Client) RollbackConfig(request *RollbackConfigRequest) (response *RollbackConfigResponse, err error) {
     return c.RollbackConfigWithContext(context.Background(), request)
@@ -13675,10 +13891,12 @@ func (c *Client) RollbackConfig(request *RollbackConfigRequest) (response *Rollb
 // 回滚配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = "FailedOperation.ConfigReleaseLogCreateFailed"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETERVALUE_CONFIGALREADYRELEASED = "InvalidParameterValue.ConfigAlreadyReleased"
 //  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
+//  INVALIDPARAMETERVALUE_LASTCONFIGNOTEXISTS = "InvalidParameterValue.LastConfigNotExists"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 func (c *Client) RollbackConfigWithContext(ctx context.Context, request *RollbackConfigRequest) (response *RollbackConfigResponse, err error) {
     if request == nil {
@@ -13892,6 +14110,7 @@ func NewShrinkInstancesResponse() (response *ShrinkInstancesResponse) {
 // 虚拟机部署组下线实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GROUPCOMMONERROR = "FailedOperation.GroupCommonError"
 //  INTERNALERROR_CVMCAEMASTERDISPATCHERROR = "InternalError.CvmCaeMasterDispatchError"
 //  INTERNALERROR_CVMCAEMASTERNONALIVE = "InternalError.CvmCaeMasterNonAlive"
 //  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
@@ -13907,6 +14126,7 @@ func (c *Client) ShrinkInstances(request *ShrinkInstancesRequest) (response *Shr
 // 虚拟机部署组下线实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GROUPCOMMONERROR = "FailedOperation.GroupCommonError"
 //  INTERNALERROR_CVMCAEMASTERDISPATCHERROR = "InternalError.CvmCaeMasterDispatchError"
 //  INTERNALERROR_CVMCAEMASTERNONALIVE = "InternalError.CvmCaeMasterNonAlive"
 //  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"

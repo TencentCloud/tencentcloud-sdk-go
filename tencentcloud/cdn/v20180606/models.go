@@ -1154,6 +1154,8 @@ type CacheKey struct {
 	FullUrlCache *string `json:"FullUrlCache,omitnil,omitempty" name:"FullUrlCache"`
 
 	// 是否忽略大小写缓存
+	// on：开启
+	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreCase *string `json:"IgnoreCase,omitnil,omitempty" name:"IgnoreCase"`
 
@@ -5987,6 +5989,8 @@ type KeyRule struct {
 	FullUrlCache *string `json:"FullUrlCache,omitnil,omitempty" name:"FullUrlCache"`
 
 	// 是否忽略大小写缓存
+	// on：开启
+	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreCase *string `json:"IgnoreCase,omitnil,omitempty" name:"IgnoreCase"`
 

@@ -2362,6 +2362,9 @@ type ClusterInfoItem struct {
 	// 接入失败原因
 	AccessedSubStatus *string `json:"AccessedSubStatus,omitnil,omitempty" name:"AccessedSubStatus"`
 
+	// 接入/卸载失败原因
+	AccessedErrorReason *string `json:"AccessedErrorReason,omitnil,omitempty" name:"AccessedErrorReason"`
+
 	// 节点总数
 	NodeCount *uint64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
@@ -10004,6 +10007,9 @@ type DescribeAssetHostDetailResponseParams struct {
 	// 集群接入状态
 	ClusterAccessedStatus *string `json:"ClusterAccessedStatus,omitnil,omitempty" name:"ClusterAccessedStatus"`
 
+	// 资产同步时间
+	AssetSyncTime *string `json:"AssetSyncTime,omitnil,omitempty" name:"AssetSyncTime"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -13586,6 +13592,9 @@ type DescribeClusterDetailResponseParams struct {
 
 	// 所有者名称
 	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
+
+	// 检查失败原因
+	CheckFailReason *string `json:"CheckFailReason,omitnil,omitempty" name:"CheckFailReason"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

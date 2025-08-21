@@ -2615,6 +2615,70 @@ func (c *Client) DescribeMigrationTaskListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeProducerListRequest() (request *DescribeProducerListRequest) {
+    request = &DescribeProducerListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeProducerList")
+    
+    
+    return
+}
+
+func NewDescribeProducerListResponse() (response *DescribeProducerListResponse) {
+    response = &DescribeProducerListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProducerList
+// 查询主题关联的生产者列表信息，Filters支持以下筛选条件：
+//
+// - ClientIP，客户端IP
+//
+// - ClientID，客户端ID
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeProducerList(request *DescribeProducerListRequest) (response *DescribeProducerListResponse, err error) {
+    return c.DescribeProducerListWithContext(context.Background(), request)
+}
+
+// DescribeProducerList
+// 查询主题关联的生产者列表信息，Filters支持以下筛选条件：
+//
+// - ClientIP，客户端IP
+//
+// - ClientID，客户端ID
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeProducerListWithContext(ctx context.Context, request *DescribeProducerListRequest) (response *DescribeProducerListResponse, err error) {
+    if request == nil {
+        request = NewDescribeProducerListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeProducerList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProducerList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProducerListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductSKUsRequest() (request *DescribeProductSKUsRequest) {
     request = &DescribeProductSKUsRequest{
         BaseRequest: &tchttp.BaseRequest{},

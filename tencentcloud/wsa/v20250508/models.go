@@ -25,17 +25,26 @@ type SearchProRequestParams struct {
 	// 搜索词
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 返回结果类型，0-自然检索结果(默认)，1-垂类VR结果，2-混合结果（垂类VR结果+自然检索结果）
+	// 返回结果类型，0-自然检索结果(默认)，1-多模态VR结果，2-混合结果（多模态VR结果+自然检索结果）
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 指定域名站内搜索（用于过滤自然检索结果）  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+	// 指定域名站内搜索（用于过滤自然检索结果）
+	// 注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
 	Site *string `json:"Site,omitnil,omitempty" name:"Site"`
 
-	// 起始时间（用于过滤自然检索结果），精确到秒时间戳格式  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+	// 起始时间（用于过滤自然检索结果），精确到秒时间戳格式
+	// 注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
 	FromTime *int64 `json:"FromTime,omitnil,omitempty" name:"FromTime"`
 
-	// 结束时间（用于过滤自然检索结果），精确到秒时间戳格式  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+	// 结束时间（用于过滤自然检索结果），精确到秒时间戳格式
+	// 注意：mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
 	ToTime *int64 `json:"ToTime,omitnil,omitempty" name:"ToTime"`
+
+	// cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
+	Cnt *uint64 `json:"Cnt,omitnil,omitempty" name:"Cnt"`
+
+	// Industry=gov/news/acad，对应党政机关、新闻、学术，**仅限尊享版使用**
+	Industry *string `json:"Industry,omitnil,omitempty" name:"Industry"`
 }
 
 type SearchProRequest struct {
@@ -44,17 +53,26 @@ type SearchProRequest struct {
 	// 搜索词
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 返回结果类型，0-自然检索结果(默认)，1-垂类VR结果，2-混合结果（垂类VR结果+自然检索结果）
+	// 返回结果类型，0-自然检索结果(默认)，1-多模态VR结果，2-混合结果（多模态VR结果+自然检索结果）
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 指定域名站内搜索（用于过滤自然检索结果）  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+	// 指定域名站内搜索（用于过滤自然检索结果）
+	// 注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
 	Site *string `json:"Site,omitnil,omitempty" name:"Site"`
 
-	// 起始时间（用于过滤自然检索结果），精确到秒时间戳格式  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+	// 起始时间（用于过滤自然检索结果），精确到秒时间戳格式
+	// 注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
 	FromTime *int64 `json:"FromTime,omitnil,omitempty" name:"FromTime"`
 
-	// 结束时间（用于过滤自然检索结果），精确到秒时间戳格式  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+	// 结束时间（用于过滤自然检索结果），精确到秒时间戳格式
+	// 注意：mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
 	ToTime *int64 `json:"ToTime,omitnil,omitempty" name:"ToTime"`
+
+	// cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
+	Cnt *uint64 `json:"Cnt,omitnil,omitempty" name:"Cnt"`
+
+	// Industry=gov/news/acad，对应党政机关、新闻、学术，**仅限尊享版使用**
+	Industry *string `json:"Industry,omitnil,omitempty" name:"Industry"`
 }
 
 func (r *SearchProRequest) ToJsonString() string {
@@ -74,6 +92,8 @@ func (r *SearchProRequest) FromJsonString(s string) error {
 	delete(f, "Site")
 	delete(f, "FromTime")
 	delete(f, "ToTime")
+	delete(f, "Cnt")
+	delete(f, "Industry")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchProRequest has unknown keys!", "")
 	}
@@ -85,7 +105,16 @@ type SearchProResponseParams struct {
 	// 原始查询语
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 搜索结果页面
+	// 搜索结果页面详情，格式为json字符串。
+	// title：结果标题
+	// date：内容发布时间
+	// url：内容发布源url
+	// passage：标准摘要
+	// content：动态摘要 （尊享版字段）
+	// site：网站名称，部分不知名站点结果可能为空
+	// score：相关性得分，取值0～1，越靠近1表示越相关
+	// images：图片列表
+	// favicon：网站图标链接，部分不知名站点结果可能为空
 	Pages []*string `json:"Pages,omitnil,omitempty" name:"Pages"`
 
 	// 提示信息

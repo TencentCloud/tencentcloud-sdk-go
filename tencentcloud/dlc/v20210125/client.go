@@ -517,6 +517,74 @@ func (c *Client) AssociateDatasourceHouseWithContext(ctx context.Context, reques
     return
 }
 
+func NewAttachDataMaskPolicyRequest() (request *AttachDataMaskPolicyRequest) {
+    request = &AttachDataMaskPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "AttachDataMaskPolicy")
+    
+    
+    return
+}
+
+func NewAttachDataMaskPolicyResponse() (response *AttachDataMaskPolicyResponse) {
+    response = &AttachDataMaskPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AttachDataMaskPolicy
+// 绑定数据脱敏策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
+//  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
+//  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+func (c *Client) AttachDataMaskPolicy(request *AttachDataMaskPolicyRequest) (response *AttachDataMaskPolicyResponse, err error) {
+    return c.AttachDataMaskPolicyWithContext(context.Background(), request)
+}
+
+// AttachDataMaskPolicy
+// 绑定数据脱敏策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
+//  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
+//  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+func (c *Client) AttachDataMaskPolicyWithContext(ctx context.Context, request *AttachDataMaskPolicyRequest) (response *AttachDataMaskPolicyResponse, err error) {
+    if request == nil {
+        request = NewAttachDataMaskPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "AttachDataMaskPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachDataMaskPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAttachDataMaskPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAttachUserPolicyRequest() (request *AttachUserPolicyRequest) {
     request = &AttachUserPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1637,6 +1705,58 @@ func (c *Client) CreateDataEngineWithContext(ctx context.Context, request *Creat
     request.SetContext(ctx)
     
     response = NewCreateDataEngineResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDataMaskStrategyRequest() (request *CreateDataMaskStrategyRequest) {
+    request = &CreateDataMaskStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateDataMaskStrategy")
+    
+    
+    return
+}
+
+func NewCreateDataMaskStrategyResponse() (response *CreateDataMaskStrategyResponse) {
+    response = &CreateDataMaskStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDataMaskStrategy
+// 创建数据脱敏策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) CreateDataMaskStrategy(request *CreateDataMaskStrategyRequest) (response *CreateDataMaskStrategyResponse, err error) {
+    return c.CreateDataMaskStrategyWithContext(context.Background(), request)
+}
+
+// CreateDataMaskStrategy
+// 创建数据脱敏策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) CreateDataMaskStrategyWithContext(ctx context.Context, request *CreateDataMaskStrategyRequest) (response *CreateDataMaskStrategyResponse, err error) {
+    if request == nil {
+        request = NewCreateDataMaskStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateDataMaskStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDataMaskStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDataMaskStrategyResponse()
     err = c.Send(request, response)
     return
 }
@@ -3539,6 +3659,58 @@ func (c *Client) DeleteDataEngineWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteDataMaskStrategyRequest() (request *DeleteDataMaskStrategyRequest) {
+    request = &DeleteDataMaskStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteDataMaskStrategy")
+    
+    
+    return
+}
+
+func NewDeleteDataMaskStrategyResponse() (response *DeleteDataMaskStrategyResponse) {
+    response = &DeleteDataMaskStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDataMaskStrategy
+// 删除数据脱敏策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DeleteDataMaskStrategy(request *DeleteDataMaskStrategyRequest) (response *DeleteDataMaskStrategyResponse, err error) {
+    return c.DeleteDataMaskStrategyWithContext(context.Background(), request)
+}
+
+// DeleteDataMaskStrategy
+// 删除数据脱敏策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DeleteDataMaskStrategyWithContext(ctx context.Context, request *DeleteDataMaskStrategyRequest) (response *DeleteDataMaskStrategyResponse, err error) {
+    if request == nil {
+        request = NewDeleteDataMaskStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteDataMaskStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDataMaskStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDataMaskStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNativeSparkSessionRequest() (request *DeleteNativeSparkSessionRequest) {
     request = &DeleteNativeSparkSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5063,6 +5235,58 @@ func (c *Client) DescribeDataEnginesScaleDetailWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeDataEnginesScaleDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataMaskStrategiesRequest() (request *DescribeDataMaskStrategiesRequest) {
+    request = &DescribeDataMaskStrategiesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDataMaskStrategies")
+    
+    
+    return
+}
+
+func NewDescribeDataMaskStrategiesResponse() (response *DescribeDataMaskStrategiesResponse) {
+    response = &DescribeDataMaskStrategiesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataMaskStrategies
+// 查询数据脱敏列表接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeDataMaskStrategies(request *DescribeDataMaskStrategiesRequest) (response *DescribeDataMaskStrategiesResponse, err error) {
+    return c.DescribeDataMaskStrategiesWithContext(context.Background(), request)
+}
+
+// DescribeDataMaskStrategies
+// 查询数据脱敏列表接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeDataMaskStrategiesWithContext(ctx context.Context, request *DescribeDataMaskStrategiesRequest) (response *DescribeDataMaskStrategiesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataMaskStrategiesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeDataMaskStrategies")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataMaskStrategies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataMaskStrategiesResponse()
     err = c.Send(request, response)
     return
 }
@@ -7747,6 +7971,58 @@ func (c *Client) DescribeThirdPartyAccessUserWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeThirdPartyAccessUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUDFPolicyRequest() (request *DescribeUDFPolicyRequest) {
+    request = &DescribeUDFPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeUDFPolicy")
+    
+    
+    return
+}
+
+func NewDescribeUDFPolicyResponse() (response *DescribeUDFPolicyResponse) {
+    response = &DescribeUDFPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUDFPolicy
+// 获取UDF权限信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeUDFPolicy(request *DescribeUDFPolicyRequest) (response *DescribeUDFPolicyResponse, err error) {
+    return c.DescribeUDFPolicyWithContext(context.Background(), request)
+}
+
+// DescribeUDFPolicy
+// 获取UDF权限信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeUDFPolicyWithContext(ctx context.Context, request *DescribeUDFPolicyRequest) (response *DescribeUDFPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeUDFPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeUDFPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUDFPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUDFPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -10859,6 +11135,58 @@ func (c *Client) UpdateDataEngineConfigWithContext(ctx context.Context, request 
     return
 }
 
+func NewUpdateDataMaskStrategyRequest() (request *UpdateDataMaskStrategyRequest) {
+    request = &UpdateDataMaskStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "UpdateDataMaskStrategy")
+    
+    
+    return
+}
+
+func NewUpdateDataMaskStrategyResponse() (response *UpdateDataMaskStrategyResponse) {
+    response = &UpdateDataMaskStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateDataMaskStrategy
+// 更新数据脱敏策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) UpdateDataMaskStrategy(request *UpdateDataMaskStrategyRequest) (response *UpdateDataMaskStrategyResponse, err error) {
+    return c.UpdateDataMaskStrategyWithContext(context.Background(), request)
+}
+
+// UpdateDataMaskStrategy
+// 更新数据脱敏策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) UpdateDataMaskStrategyWithContext(ctx context.Context, request *UpdateDataMaskStrategyRequest) (response *UpdateDataMaskStrategyResponse, err error) {
+    if request == nil {
+        request = NewUpdateDataMaskStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "UpdateDataMaskStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDataMaskStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateDataMaskStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateEngineResourceGroupNetworkConfigInfoRequest() (request *UpdateEngineResourceGroupNetworkConfigInfoRequest) {
     request = &UpdateEngineResourceGroupNetworkConfigInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11227,6 +11555,60 @@ func (c *Client) UpdateStandardEngineResourceGroupResourceInfoWithContext(ctx co
     request.SetContext(ctx)
     
     response = NewUpdateStandardEngineResourceGroupResourceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateUDFPolicyRequest() (request *UpdateUDFPolicyRequest) {
+    request = &UpdateUDFPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "UpdateUDFPolicy")
+    
+    
+    return
+}
+
+func NewUpdateUDFPolicyResponse() (response *UpdateUDFPolicyResponse) {
+    response = &UpdateUDFPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateUDFPolicy
+// UDP权限修改
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_UPDATEPOLICYFAILED = "FailedOperation.UpdatePolicyFailed"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) UpdateUDFPolicy(request *UpdateUDFPolicyRequest) (response *UpdateUDFPolicyResponse, err error) {
+    return c.UpdateUDFPolicyWithContext(context.Background(), request)
+}
+
+// UpdateUDFPolicy
+// UDP权限修改
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_UPDATEPOLICYFAILED = "FailedOperation.UpdatePolicyFailed"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) UpdateUDFPolicyWithContext(ctx context.Context, request *UpdateUDFPolicyRequest) (response *UpdateUDFPolicyResponse, err error) {
+    if request == nil {
+        request = NewUpdateUDFPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "UpdateUDFPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateUDFPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateUDFPolicyResponse()
     err = c.Send(request, response)
     return
 }

@@ -1920,8 +1920,7 @@ type CallRecord struct {
 	// 1:API
 	EventType *int64 `json:"EventType,omitnil,omitempty" name:"EventType"`
 
-	// 用户类型
-	// CAMUser/root/AssumedRole
+	// 用户类型CAMUser/root/AssumedRole
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 
 	// 用户/角色名称
@@ -1960,6 +1959,9 @@ type CallRecord struct {
 
 	// 运营商
 	ISP *string `json:"ISP,omitnil,omitempty" name:"ISP"`
+
+	// 账号外vpc信息列表
+	VpcInfo []*SourceIPVpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
 }
 
 type CheckViewRiskItem struct {
@@ -4079,6 +4081,9 @@ type DescribeCallRecordRequestParams struct {
 	// 调用源IP的ID
 	SourceIPID *uint64 `json:"SourceIPID,omitnil,omitempty" name:"SourceIPID"`
 
+	// 访问账号uin
+	AccUin *string `json:"AccUin,omitnil,omitempty" name:"AccUin"`
+
 	// 过滤器
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4094,6 +4099,9 @@ type DescribeCallRecordRequest struct {
 
 	// 调用源IP的ID
 	SourceIPID *uint64 `json:"SourceIPID,omitnil,omitempty" name:"SourceIPID"`
+
+	// 访问账号uin
+	AccUin *string `json:"AccUin,omitnil,omitempty" name:"AccUin"`
 
 	// 过滤器
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
@@ -4114,6 +4122,7 @@ func (r *DescribeCallRecordRequest) FromJsonString(s string) error {
 	delete(f, "MemberId")
 	delete(f, "AccessKeyID")
 	delete(f, "SourceIPID")
+	delete(f, "AccUin")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallRecordRequest has unknown keys!", "")
@@ -4408,6 +4417,113 @@ func (r *DescribeClusterPodAssetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterPodAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConfigCheckRulesRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤内容
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序类型
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeConfigCheckRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤内容
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序类型
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeConfigCheckRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigCheckRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigCheckRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConfigCheckRulesResponseParams struct {
+	// 风险规则数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 风险规则列表
+	RuleList []*RiskRuleInfo `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+
+	// 云厂商类型选项
+	ProviderList []*AttributeOptionSet `json:"ProviderList,omitnil,omitempty" name:"ProviderList"`
+
+	// 风险等级类型选项
+	RiskLevelList []*AttributeOptionSet `json:"RiskLevelList,omitnil,omitempty" name:"RiskLevelList"`
+
+	// 处置分类选项
+	DispositionTypeList []*AttributeOptionSet `json:"DispositionTypeList,omitnil,omitempty" name:"DispositionTypeList"`
+
+	// 检查类型选项
+	CheckTypeList []*AttributeOptionSet `json:"CheckTypeList,omitnil,omitempty" name:"CheckTypeList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConfigCheckRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConfigCheckRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeConfigCheckRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigCheckRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8396,6 +8512,15 @@ type ExposesItem struct {
 
 	// 租户ID字符串
 	AppIdStr *string `json:"AppIdStr,omitnil,omitempty" name:"AppIdStr"`
+
+	// 记录ID
+	ExposureID *uint64 `json:"ExposureID,omitnil,omitempty" name:"ExposureID"`
+
+	// 端口开放数量
+	PortDetectCount *uint64 `json:"PortDetectCount,omitnil,omitempty" name:"PortDetectCount"`
+
+	// 端口开放结果
+	PortDetectResult *string `json:"PortDetectResult,omitnil,omitempty" name:"PortDetectResult"`
 }
 
 type Filter struct {
@@ -9559,6 +9684,35 @@ type RiskDetailItem struct {
 	CheckStatus *string `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 }
 
+type RiskRuleInfo struct {
+	// 风险检查项ID
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 云厂商名称
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// 实例类型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 风险名称
+	RiskTitle *string `json:"RiskTitle,omitnil,omitempty" name:"RiskTitle"`
+
+	// 检查类型
+	CheckType *string `json:"CheckType,omitnil,omitempty" name:"CheckType"`
+
+	// 风险等级
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 风险危害
+	RiskInfluence *string `json:"RiskInfluence,omitnil,omitempty" name:"RiskInfluence"`
+
+	// 风险修复指引报告链接
+	RiskFixAdvance *string `json:"RiskFixAdvance,omitnil,omitempty" name:"RiskFixAdvance"`
+
+	// 边界管控
+	DispositionType *string `json:"DispositionType,omitnil,omitempty" name:"DispositionType"`
+}
+
 type RiskRuleItem struct {
 	// 风险检查项ID
 	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
@@ -9979,6 +10133,20 @@ type SourceIPAsset struct {
 
 	// 运营商字段
 	ISP *string `json:"ISP,omitnil,omitempty" name:"ISP"`
+}
+
+type SourceIPVpcInfo struct {
+	// 账号名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// vpc所属appid
+	AppID *uint64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// vpc id
+	VpcID *string `json:"VpcID,omitnil,omitempty" name:"VpcID"`
+
+	// vpc 名称
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 }
 
 type StatisticalFilter struct {

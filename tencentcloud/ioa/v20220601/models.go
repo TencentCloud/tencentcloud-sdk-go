@@ -195,19 +195,19 @@ func (r *CreateDeviceTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDeviceVirtualGroupRequestParams struct {
-	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
-	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
-
 	// 必填，终端自定义分组名
 	DeviceVirtualGroupName *string `json:"DeviceVirtualGroupName,omitnil,omitempty" name:"DeviceVirtualGroupName"`
+
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
 	// 详情
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios ）(只支持32位)
+	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios ； 默认值0）(只支持32位)
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 必填，分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组）(只支持32位)
+	// 分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组； 默认值0）(只支持32位)
 	TimeType *int64 `json:"TimeType,omitnil,omitempty" name:"TimeType"`
 
 	// 选填，TimeType=3时的自动划分时间，其他情况为0（单位min）(只支持32位)
@@ -220,19 +220,19 @@ type CreateDeviceVirtualGroupRequestParams struct {
 type CreateDeviceVirtualGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
-	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
-
 	// 必填，终端自定义分组名
 	DeviceVirtualGroupName *string `json:"DeviceVirtualGroupName,omitnil,omitempty" name:"DeviceVirtualGroupName"`
+
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
 	// 详情
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios ）(只支持32位)
+	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios ； 默认值0）(只支持32位)
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 必填，分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组）(只支持32位)
+	// 分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组； 默认值0）(只支持32位)
 	TimeType *int64 `json:"TimeType,omitnil,omitempty" name:"TimeType"`
 
 	// 选填，TimeType=3时的自动划分时间，其他情况为0（单位min）(只支持32位)
@@ -254,8 +254,8 @@ func (r *CreateDeviceVirtualGroupRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DomainInstanceId")
 	delete(f, "DeviceVirtualGroupName")
+	delete(f, "DomainInstanceId")
 	delete(f, "Description")
 	delete(f, "OsType")
 	delete(f, "TimeType")
@@ -299,21 +299,27 @@ type CreateDeviceVirtualGroupRspData struct {
 
 // Predefined struct for user
 type CreatePrivilegeCodeRequestParams struct {
+	// 必填；设备唯一标识符;
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
-	// 必填；设备唯一标识符;
-	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios ）；默认值0
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
 type CreatePrivilegeCodeRequest struct {
 	*tchttp.BaseRequest
 	
+	// 必填；设备唯一标识符;
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
-	// 必填；设备唯一标识符;
-	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios ）；默认值0
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
 func (r *CreatePrivilegeCodeRequest) ToJsonString() string {
@@ -328,8 +334,9 @@ func (r *CreatePrivilegeCodeRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DomainInstanceId")
 	delete(f, "Mid")
+	delete(f, "DomainInstanceId")
+	delete(f, "OsType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivilegeCodeRequest has unknown keys!", "")
 	}
@@ -339,7 +346,6 @@ func (r *CreatePrivilegeCodeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePrivilegeCodeResponseParams struct {
 	// 业务响应数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CreatePrivilegeCodeRspData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -657,6 +663,9 @@ type DescribeDeviceHardwareInfoItem struct {
 
 	// 显示器品牌型号
 	Monitor *string `json:"Monitor,omitnil,omitempty" name:"Monitor"`
+
+	// 终端备注名
+	RemarkName *string `json:"RemarkName,omitnil,omitempty" name:"RemarkName"`
 }
 
 // Predefined struct for user
@@ -2025,38 +2034,38 @@ type ModifyVirtualDeviceGroupsReqItem struct {
 
 // Predefined struct for user
 type ModifyVirtualDeviceGroupsRequestParams struct {
+	// 必填，操作的设备列表数据
+	DeviceList []*ModifyVirtualDeviceGroupsReqItem `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
 	// 添加到的终端自定义分组id。和DeviceVirtualGroupIds互斥，必填其一，优先使用本参数
 	DeviceVirtualGroupId *int64 `json:"DeviceVirtualGroupId,omitnil,omitempty" name:"DeviceVirtualGroupId"`
 
-	// 必填，操作的设备列表数据
-	DeviceList []*ModifyVirtualDeviceGroupsReqItem `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
-
 	// 要添加的终端自定义分组id列表
 	DeviceVirtualGroupIds []*int64 `json:"DeviceVirtualGroupIds,omitnil,omitempty" name:"DeviceVirtualGroupIds"`
 
-	// 必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）
+	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
 type ModifyVirtualDeviceGroupsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 必填，操作的设备列表数据
+	DeviceList []*ModifyVirtualDeviceGroupsReqItem `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
 	// 添加到的终端自定义分组id。和DeviceVirtualGroupIds互斥，必填其一，优先使用本参数
 	DeviceVirtualGroupId *int64 `json:"DeviceVirtualGroupId,omitnil,omitempty" name:"DeviceVirtualGroupId"`
 
-	// 必填，操作的设备列表数据
-	DeviceList []*ModifyVirtualDeviceGroupsReqItem `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
-
 	// 要添加的终端自定义分组id列表
 	DeviceVirtualGroupIds []*int64 `json:"DeviceVirtualGroupIds,omitnil,omitempty" name:"DeviceVirtualGroupIds"`
 
-	// 必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）
+	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
@@ -2072,9 +2081,9 @@ func (r *ModifyVirtualDeviceGroupsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "DeviceList")
 	delete(f, "DomainInstanceId")
 	delete(f, "DeviceVirtualGroupId")
-	delete(f, "DeviceList")
 	delete(f, "DeviceVirtualGroupIds")
 	delete(f, "OsType")
 	if len(f) > 0 {

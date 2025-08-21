@@ -2153,6 +2153,68 @@ func (c *Client) DeleteIpAccessControlV2WithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteOwaspRuleStatusRequest() (request *DeleteOwaspRuleStatusRequest) {
+    request = &DeleteOwaspRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteOwaspRuleStatus")
+    
+    
+    return
+}
+
+func NewDeleteOwaspRuleStatusResponse() (response *DeleteOwaspRuleStatusResponse) {
+    response = &DeleteOwaspRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteOwaspRuleStatus
+// 解除门神规则的状态锁
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteOwaspRuleStatus(request *DeleteOwaspRuleStatusRequest) (response *DeleteOwaspRuleStatusResponse, err error) {
+    return c.DeleteOwaspRuleStatusWithContext(context.Background(), request)
+}
+
+// DeleteOwaspRuleStatus
+// 解除门神规则的状态锁
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteOwaspRuleStatusWithContext(ctx context.Context, request *DeleteOwaspRuleStatusRequest) (response *DeleteOwaspRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewDeleteOwaspRuleStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteOwaspRuleStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOwaspRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOwaspRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteOwaspWhiteRuleRequest() (request *DeleteOwaspWhiteRuleRequest) {
     request = &DeleteOwaspWhiteRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5273,6 +5335,148 @@ func (c *Client) DescribeObjectsWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeObjectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOwaspRuleTypesRequest() (request *DescribeOwaspRuleTypesRequest) {
+    request = &DescribeOwaspRuleTypesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeOwaspRuleTypes")
+    
+    
+    return
+}
+
+func NewDescribeOwaspRuleTypesResponse() (response *DescribeOwaspRuleTypesResponse) {
+    response = &DescribeOwaspRuleTypesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOwaspRuleTypes
+// 查询规则引擎的规则类型列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_INVALIDREQUEST = "InvalidParameterValue.InvalidRequest"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DescribeOwaspRuleTypes(request *DescribeOwaspRuleTypesRequest) (response *DescribeOwaspRuleTypesResponse, err error) {
+    return c.DescribeOwaspRuleTypesWithContext(context.Background(), request)
+}
+
+// DescribeOwaspRuleTypes
+// 查询规则引擎的规则类型列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_INVALIDREQUEST = "InvalidParameterValue.InvalidRequest"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DescribeOwaspRuleTypesWithContext(ctx context.Context, request *DescribeOwaspRuleTypesRequest) (response *DescribeOwaspRuleTypesResponse, err error) {
+    if request == nil {
+        request = NewDescribeOwaspRuleTypesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeOwaspRuleTypes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOwaspRuleTypes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOwaspRuleTypesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOwaspRulesRequest() (request *DescribeOwaspRulesRequest) {
+    request = &DescribeOwaspRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeOwaspRules")
+    
+    
+    return
+}
+
+func NewDescribeOwaspRulesResponse() (response *DescribeOwaspRulesResponse) {
+    response = &DescribeOwaspRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOwaspRules
+// 查询规则引擎的规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOwaspRules(request *DescribeOwaspRulesRequest) (response *DescribeOwaspRulesResponse, err error) {
+    return c.DescribeOwaspRulesWithContext(context.Background(), request)
+}
+
+// DescribeOwaspRules
+// 查询规则引擎的规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOwaspRulesWithContext(ctx context.Context, request *DescribeOwaspRulesRequest) (response *DescribeOwaspRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeOwaspRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeOwaspRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOwaspRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOwaspRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -9983,6 +10187,206 @@ func (c *Client) ModifyObjectWithContext(ctx context.Context, request *ModifyObj
     request.SetContext(ctx)
     
     response = NewModifyObjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOwaspRuleStatusRequest() (request *ModifyOwaspRuleStatusRequest) {
+    request = &ModifyOwaspRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyOwaspRuleStatus")
+    
+    
+    return
+}
+
+func NewModifyOwaspRuleStatusResponse() (response *ModifyOwaspRuleStatusResponse) {
+    response = &ModifyOwaspRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOwaspRuleStatus
+// 更新规则的开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+func (c *Client) ModifyOwaspRuleStatus(request *ModifyOwaspRuleStatusRequest) (response *ModifyOwaspRuleStatusResponse, err error) {
+    return c.ModifyOwaspRuleStatusWithContext(context.Background(), request)
+}
+
+// ModifyOwaspRuleStatus
+// 更新规则的开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+func (c *Client) ModifyOwaspRuleStatusWithContext(ctx context.Context, request *ModifyOwaspRuleStatusRequest) (response *ModifyOwaspRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyOwaspRuleStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyOwaspRuleStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOwaspRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOwaspRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOwaspRuleTypeActionRequest() (request *ModifyOwaspRuleTypeActionRequest) {
+    request = &ModifyOwaspRuleTypeActionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyOwaspRuleTypeAction")
+    
+    
+    return
+}
+
+func NewModifyOwaspRuleTypeActionResponse() (response *ModifyOwaspRuleTypeActionResponse) {
+    response = &ModifyOwaspRuleTypeActionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOwaspRuleTypeAction
+// 更新规则类型的防护模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+func (c *Client) ModifyOwaspRuleTypeAction(request *ModifyOwaspRuleTypeActionRequest) (response *ModifyOwaspRuleTypeActionResponse, err error) {
+    return c.ModifyOwaspRuleTypeActionWithContext(context.Background(), request)
+}
+
+// ModifyOwaspRuleTypeAction
+// 更新规则类型的防护模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+func (c *Client) ModifyOwaspRuleTypeActionWithContext(ctx context.Context, request *ModifyOwaspRuleTypeActionRequest) (response *ModifyOwaspRuleTypeActionResponse, err error) {
+    if request == nil {
+        request = NewModifyOwaspRuleTypeActionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyOwaspRuleTypeAction")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOwaspRuleTypeAction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOwaspRuleTypeActionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOwaspRuleTypeLevelRequest() (request *ModifyOwaspRuleTypeLevelRequest) {
+    request = &ModifyOwaspRuleTypeLevelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyOwaspRuleTypeLevel")
+    
+    
+    return
+}
+
+func NewModifyOwaspRuleTypeLevelResponse() (response *ModifyOwaspRuleTypeLevelResponse) {
+    response = &ModifyOwaspRuleTypeLevelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOwaspRuleTypeLevel
+// 更新规则类型的防护等级
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+func (c *Client) ModifyOwaspRuleTypeLevel(request *ModifyOwaspRuleTypeLevelRequest) (response *ModifyOwaspRuleTypeLevelResponse, err error) {
+    return c.ModifyOwaspRuleTypeLevelWithContext(context.Background(), request)
+}
+
+// ModifyOwaspRuleTypeLevel
+// 更新规则类型的防护等级
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+func (c *Client) ModifyOwaspRuleTypeLevelWithContext(ctx context.Context, request *ModifyOwaspRuleTypeLevelRequest) (response *ModifyOwaspRuleTypeLevelResponse, err error) {
+    if request == nil {
+        request = NewModifyOwaspRuleTypeLevelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyOwaspRuleTypeLevel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOwaspRuleTypeLevel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOwaspRuleTypeLevelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOwaspRuleTypeStatusRequest() (request *ModifyOwaspRuleTypeStatusRequest) {
+    request = &ModifyOwaspRuleTypeStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyOwaspRuleTypeStatus")
+    
+    
+    return
+}
+
+func NewModifyOwaspRuleTypeStatusResponse() (response *ModifyOwaspRuleTypeStatusResponse) {
+    response = &ModifyOwaspRuleTypeStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOwaspRuleTypeStatus
+// 更新规则类型的开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+func (c *Client) ModifyOwaspRuleTypeStatus(request *ModifyOwaspRuleTypeStatusRequest) (response *ModifyOwaspRuleTypeStatusResponse, err error) {
+    return c.ModifyOwaspRuleTypeStatusWithContext(context.Background(), request)
+}
+
+// ModifyOwaspRuleTypeStatus
+// 更新规则类型的开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+func (c *Client) ModifyOwaspRuleTypeStatusWithContext(ctx context.Context, request *ModifyOwaspRuleTypeStatusRequest) (response *ModifyOwaspRuleTypeStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyOwaspRuleTypeStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyOwaspRuleTypeStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOwaspRuleTypeStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOwaspRuleTypeStatusResponse()
     err = c.Send(request, response)
     return
 }

@@ -2502,12 +2502,14 @@ func NewDescribeDiskConfigsResponse() (response *DescribeDiskConfigsResponse) {
 // 本接口（DescribeDiskConfigs）用于查询云硬盘配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEDISKCONFIGQUOTAFAILED = "FailedOperation.DescribeDiskConfigQuotaFailed"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
 //  INVALIDPARAMETERVALUE_ZONEINVALID = "InvalidParameterValue.ZoneInvalid"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_SYSTEMBUSY = "UnsupportedOperation.SystemBusy"
 func (c *Client) DescribeDiskConfigs(request *DescribeDiskConfigsRequest) (response *DescribeDiskConfigsResponse, err error) {
     return c.DescribeDiskConfigsWithContext(context.Background(), request)
 }
@@ -2516,12 +2518,14 @@ func (c *Client) DescribeDiskConfigs(request *DescribeDiskConfigsRequest) (respo
 // 本接口（DescribeDiskConfigs）用于查询云硬盘配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEDISKCONFIGQUOTAFAILED = "FailedOperation.DescribeDiskConfigQuotaFailed"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
 //  INVALIDPARAMETERVALUE_ZONEINVALID = "InvalidParameterValue.ZoneInvalid"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_SYSTEMBUSY = "UnsupportedOperation.SystemBusy"
 func (c *Client) DescribeDiskConfigsWithContext(ctx context.Context, request *DescribeDiskConfigsRequest) (response *DescribeDiskConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeDiskConfigsRequest()
@@ -3563,6 +3567,80 @@ func (c *Client) DescribeGeneralResourceQuotasWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeGeneralResourceQuotasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImagesToShareRequest() (request *DescribeImagesToShareRequest) {
+    request = &DescribeImagesToShareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeImagesToShare")
+    
+    
+    return
+}
+
+func NewDescribeImagesToShareResponse() (response *DescribeImagesToShareResponse) {
+    response = &DescribeImagesToShareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImagesToShare
+// 本接口 (DescribeImagesToShare) 用于查询CVM的自定义镜像列表共享到轻量应用服务器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBEIMAGESFAILED = "FailedOperation.DescribeImagesFailed"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEIDMALFORMED = "InvalidParameterValue.InvalidImageIdMalformed"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_NEGATIVE = "InvalidParameterValue.Negative"
+//  INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_ASSUMEROLEFAILED = "UnsupportedOperation.AssumeRoleFailed"
+func (c *Client) DescribeImagesToShare(request *DescribeImagesToShareRequest) (response *DescribeImagesToShareResponse, err error) {
+    return c.DescribeImagesToShareWithContext(context.Background(), request)
+}
+
+// DescribeImagesToShare
+// 本接口 (DescribeImagesToShare) 用于查询CVM的自定义镜像列表共享到轻量应用服务器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBEIMAGESFAILED = "FailedOperation.DescribeImagesFailed"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEIDMALFORMED = "InvalidParameterValue.InvalidImageIdMalformed"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_NEGATIVE = "InvalidParameterValue.Negative"
+//  INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_ASSUMEROLEFAILED = "UnsupportedOperation.AssumeRoleFailed"
+func (c *Client) DescribeImagesToShareWithContext(ctx context.Context, request *DescribeImagesToShareRequest) (response *DescribeImagesToShareResponse, err error) {
+    if request == nil {
+        request = NewDescribeImagesToShareRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "DescribeImagesToShare")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImagesToShare require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImagesToShareResponse()
     err = c.Send(request, response)
     return
 }
@@ -6201,6 +6279,106 @@ func (c *Client) ModifyFirewallTemplateWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyFirewallTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyImageSharePermissionRequest() (request *ModifyImageSharePermissionRequest) {
+    request = &ModifyImageSharePermissionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ModifyImageSharePermission")
+    
+    
+    return
+}
+
+func NewModifyImageSharePermissionResponse() (response *ModifyImageSharePermissionResponse) {
+    response = &ModifyImageSharePermissionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyImageSharePermission
+// 本接口 (ModifyImageSharePermission) 用于共享和取消共享CVM自定义镜像到轻量应用服务器服务。
+//
+// CVM镜像共享到轻量应用服务器镜像需要满足如下条件：
+//
+// 1.已共享过的镜像不支持再次共享。
+//
+// 2.外部导入的镜像不支持共享。
+//
+// 3.整机镜像不支持共享。
+//
+// 4.镜像要支持Cloudinit才支持共享。
+//
+// 5.镜像的Platform和OsName要满足。
+//
+// 6.NORMAL状态的镜像才支持共享。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEOPERATIONFAILED = "FailedOperation.ImageOperationFailed"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEIDMALFORMED = "InvalidParameterValue.InvalidImageIdMalformed"
+//  RESOURCEINUSE_IMAGEINUSE = "ResourceInUse.ImageInUse"
+//  RESOURCENOTFOUND_IMAGEIDNOTFOUND = "ResourceNotFound.ImageIdNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_ASSUMEROLEFAILED = "UnsupportedOperation.AssumeRoleFailed"
+//  UNSUPPORTEDOPERATION_IMAGEALREADYSHARED = "UnsupportedOperation.ImageAlreadyShared"
+//  UNSUPPORTEDOPERATION_IMAGEOCCUPIED = "UnsupportedOperation.ImageOccupied"
+//  UNSUPPORTEDOPERATION_IMAGEUNABLETOSHARE = "UnsupportedOperation.ImageUnableToShare"
+func (c *Client) ModifyImageSharePermission(request *ModifyImageSharePermissionRequest) (response *ModifyImageSharePermissionResponse, err error) {
+    return c.ModifyImageSharePermissionWithContext(context.Background(), request)
+}
+
+// ModifyImageSharePermission
+// 本接口 (ModifyImageSharePermission) 用于共享和取消共享CVM自定义镜像到轻量应用服务器服务。
+//
+// CVM镜像共享到轻量应用服务器镜像需要满足如下条件：
+//
+// 1.已共享过的镜像不支持再次共享。
+//
+// 2.外部导入的镜像不支持共享。
+//
+// 3.整机镜像不支持共享。
+//
+// 4.镜像要支持Cloudinit才支持共享。
+//
+// 5.镜像的Platform和OsName要满足。
+//
+// 6.NORMAL状态的镜像才支持共享。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEOPERATIONFAILED = "FailedOperation.ImageOperationFailed"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEIDMALFORMED = "InvalidParameterValue.InvalidImageIdMalformed"
+//  RESOURCEINUSE_IMAGEINUSE = "ResourceInUse.ImageInUse"
+//  RESOURCENOTFOUND_IMAGEIDNOTFOUND = "ResourceNotFound.ImageIdNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_ASSUMEROLEFAILED = "UnsupportedOperation.AssumeRoleFailed"
+//  UNSUPPORTEDOPERATION_IMAGEALREADYSHARED = "UnsupportedOperation.ImageAlreadyShared"
+//  UNSUPPORTEDOPERATION_IMAGEOCCUPIED = "UnsupportedOperation.ImageOccupied"
+//  UNSUPPORTEDOPERATION_IMAGEUNABLETOSHARE = "UnsupportedOperation.ImageUnableToShare"
+func (c *Client) ModifyImageSharePermissionWithContext(ctx context.Context, request *ModifyImageSharePermissionRequest) (response *ModifyImageSharePermissionResponse, err error) {
+    if request == nil {
+        request = NewModifyImageSharePermissionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "ModifyImageSharePermission")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyImageSharePermission require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyImageSharePermissionResponse()
     err = c.Send(request, response)
     return
 }

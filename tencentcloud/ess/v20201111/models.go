@@ -1571,7 +1571,9 @@ type CreateBatchInformationExtractionTaskRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+	// 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。
+	// 
+	//  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 代理企业和员工的信息。
@@ -1597,7 +1599,9 @@ type CreateBatchInformationExtractionTaskRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+	// 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。
+	// 
+	//  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 代理企业和员工的信息。
@@ -8601,7 +8605,7 @@ type CreateSealRequestParams struct {
 	// <li>**ellipse**:椭圆印章</li></ul>
 	SealStyle *string `json:"SealStyle,omitnil,omitempty" name:"SealStyle"`
 
-	// 印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
+	// 印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
 	SealSize *string `json:"SealSize,omitnil,omitempty" name:"SealSize"`
 
 	// 企业税号
@@ -8611,6 +8615,9 @@ type CreateSealRequestParams struct {
 	// <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
 	// </ul>
 	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil,omitempty" name:"TaxIdentifyCode"`
+
+	// 印章描述内容
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 }
 
 type CreateSealRequest struct {
@@ -8680,7 +8687,7 @@ type CreateSealRequest struct {
 	// <li>**ellipse**:椭圆印章</li></ul>
 	SealStyle *string `json:"SealStyle,omitnil,omitempty" name:"SealStyle"`
 
-	// 印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
+	// 印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
 	SealSize *string `json:"SealSize,omitnil,omitempty" name:"SealSize"`
 
 	// 企业税号
@@ -8690,6 +8697,9 @@ type CreateSealRequest struct {
 	// <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
 	// </ul>
 	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil,omitempty" name:"TaxIdentifyCode"`
+
+	// 印章描述内容
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 }
 
 func (r *CreateSealRequest) ToJsonString() string {
@@ -8721,6 +8731,7 @@ func (r *CreateSealRequest) FromJsonString(s string) error {
 	delete(f, "SealStyle")
 	delete(f, "SealSize")
 	delete(f, "TaxIdentifyCode")
+	delete(f, "SealDescription")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealRequest has unknown keys!", "")
 	}
@@ -10732,7 +10743,7 @@ type DescribeContractReviewTaskResponseParams struct {
 	//     <li>**2** - 合同审查任务排队中</li>  
 	//     <li>**3** - 合同审查任务执行中</li>   
 	//     <li>**4** - 合同审查任务执行成功</li>
-	//     <li>**4** - 合同审查任务执行失败</li>
+	//     <li>**5** - 合同审查任务执行失败</li>
 	// </ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
@@ -13265,6 +13276,13 @@ type EmbedUrlOption struct {
 	// 是否禁止编辑（展示）水印控件属性
 	// <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
 	ForbidEditWatermark *bool `json:"ForbidEditWatermark,omitnil,omitempty" name:"ForbidEditWatermark"`
+
+	// 印章描述
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
+
+	// 是否禁止编辑印章描述内容
+	// <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+	ForbidEditSealDescription *string `json:"ForbidEditSealDescription,omitnil,omitempty" name:"ForbidEditSealDescription"`
 }
 
 type ExtendAuthInfo struct {
@@ -13972,7 +13990,7 @@ type FlowGroupInfo struct {
 	Approvers []*ApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 文件资源ID，通过多文件上传[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获得，为32位字符串。
-	// 建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
+	// 注：此字段定义为数组，但仅支持单个文件
 	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
 	// 合同模板ID，为32位字符串。
@@ -14323,6 +14341,9 @@ type Intention struct {
 	// 
 	// 注：`选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。`
 	IntentionActions []*IntentionAction `json:"IntentionActions,omitnil,omitempty" name:"IntentionActions"`
+
+	// 视频核身相关配置
+	RuleIdConfig *RuleIdConfig `json:"RuleIdConfig,omitnil,omitempty" name:"RuleIdConfig"`
 }
 
 type IntentionAction struct {
@@ -15129,6 +15150,21 @@ type OccupiedSeal struct {
 
 	// 印章扩展数据信息
 	ExtendScene *ExtendScene `json:"ExtendScene,omitnil,omitempty" name:"ExtendScene"`
+
+	// 印章的真实宽度，单位毫米
+	RealWidth *int64 `json:"RealWidth,omitnil,omitempty" name:"RealWidth"`
+
+	// 印章的真实高度，单位毫米
+	RealHeight *int64 `json:"RealHeight,omitnil,omitempty" name:"RealHeight"`
+
+	// 自定义子类型印章
+	SubSealType *string `json:"SubSealType,omitnil,omitempty" name:"SubSealType"`
+
+	// 自定义子类型印章名称
+	SubSealName *string `json:"SubSealName,omitnil,omitempty" name:"SubSealName"`
+
+	// 印章描述
+	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 }
 
 // Predefined struct for user
@@ -15363,6 +15399,9 @@ type OrganizationAuthUrl struct {
 
 	// 企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationAuthorizationUrl)。
 	SubTaskId *string `json:"SubTaskId,omitnil,omitempty" name:"SubTaskId"`
+
+	// 企业批量注册 传递过来的企业名称，方便客户定位企业
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 }
 
 type OrganizationCommonInfo struct {
@@ -15942,6 +15981,15 @@ type RiskIdentificationRoleInfo struct {
 	// 
 	// 注意： `最大长度应不超过500个字符`
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type RuleIdConfig struct {
+	// 意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0：
+	// 0-智能语速（根据播报文案的长度自动调整语音播报速度）
+	// 1-固定1倍速
+	// 2-固定1.2倍速
+	// 3-固定1.5倍速
+	Speed *uint64 `json:"Speed,omitnil,omitempty" name:"Speed"`
 }
 
 type SealInfo struct {

@@ -4353,7 +4353,7 @@ type DescribeDownloadCertificateUrlRequestParams struct {
 	// 证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 必填选项，下载的服务类型: nginx tomcat apache iis jks other root
+	// 下载的服务类型: nginx tomcat apache iis jks other root， 不传则默认下载nginx格式
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
@@ -4363,7 +4363,7 @@ type DescribeDownloadCertificateUrlRequest struct {
 	// 证书ID
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 必填选项，下载的服务类型: nginx tomcat apache iis jks other root
+	// 下载的服务类型: nginx tomcat apache iis jks other root， 不传则默认下载nginx格式
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
@@ -6130,6 +6130,18 @@ type DescribeManagerDetailResponseParams struct {
 
 	// 审核状态详细信息
 	StatusInfo []*ManagerStatusInfo `json:"StatusInfo,omitnil,omitempty" name:"StatusInfo"`
+
+	// 管理员证件类型，SFZ代表身份证，HZ代表护照
+	ManagerIdType *string `json:"ManagerIdType,omitnil,omitempty" name:"ManagerIdType"`
+
+	// 管理员证件号码
+	ManagerIdNumber *string `json:"ManagerIdNumber,omitnil,omitempty" name:"ManagerIdNumber"`
+
+	// 联系人证件类型，SFZ代表身份证，HZ代表护照
+	ContactIdType *string `json:"ContactIdType,omitnil,omitempty" name:"ContactIdType"`
+
+	// 联系人证件号码
+	ContactIdNumber *string `json:"ContactIdNumber,omitnil,omitempty" name:"ContactIdNumber"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

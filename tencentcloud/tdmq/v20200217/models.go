@@ -5407,7 +5407,10 @@ func (r *DescribeEnvironmentAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEnvironmentRolesRequestParams struct {
-	// 必填字段，环境（命名空间）名称。
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 环境（命名空间）名称。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 起始下标，不填默认为0。
@@ -5415,9 +5418,6 @@ type DescribeEnvironmentRolesRequestParams struct {
 
 	// 返回数量，不填则默认为10，最大值为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 必填字段，Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 角色名称
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
@@ -5432,7 +5432,10 @@ type DescribeEnvironmentRolesRequestParams struct {
 type DescribeEnvironmentRolesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 必填字段，环境（命名空间）名称。
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 环境（命名空间）名称。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 起始下标，不填默认为0。
@@ -5440,9 +5443,6 @@ type DescribeEnvironmentRolesRequest struct {
 
 	// 返回数量，不填则默认为10，最大值为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 必填字段，Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 角色名称
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
@@ -5466,10 +5466,10 @@ func (r *DescribeEnvironmentRolesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ClusterId")
 	delete(f, "EnvironmentId")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "ClusterId")
 	delete(f, "RoleName")
 	delete(f, "Filters")
 	if len(f) > 0 {
@@ -8088,7 +8088,7 @@ type DescribeRocketMQGroupsRequestParams struct {
 	// 按消费组名称查询消费组，支持模糊查询
 	FilterGroup *string `json:"FilterGroup,omitnil,omitempty" name:"FilterGroup"`
 
-	// 按照指定字段排序，可选值为tps，accumulative
+	// 按照指定字段排序，可选值为 subscribeNum: 订阅 Topic 个数
 	SortedBy *string `json:"SortedBy,omitnil,omitempty" name:"SortedBy"`
 
 	// 按升序或降序排列，可选值为asc，desc
@@ -8122,7 +8122,7 @@ type DescribeRocketMQGroupsRequest struct {
 	// 按消费组名称查询消费组，支持模糊查询
 	FilterGroup *string `json:"FilterGroup,omitnil,omitempty" name:"FilterGroup"`
 
-	// 按照指定字段排序，可选值为tps，accumulative
+	// 按照指定字段排序，可选值为 subscribeNum: 订阅 Topic 个数
 	SortedBy *string `json:"SortedBy,omitnil,omitempty" name:"SortedBy"`
 
 	// 按升序或降序排列，可选值为asc，desc
@@ -10530,6 +10530,57 @@ type ExchangeQuota struct {
 
 	// 已创建exchange数
 	UsedExchange *int64 `json:"UsedExchange,omitnil,omitempty" name:"UsedExchange"`
+}
+
+// Predefined struct for user
+type ExecuteDisasterRecoveryRequestParams struct {
+
+}
+
+type ExecuteDisasterRecoveryRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ExecuteDisasterRecoveryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExecuteDisasterRecoveryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExecuteDisasterRecoveryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExecuteDisasterRecoveryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExecuteDisasterRecoveryResponse struct {
+	*tchttp.BaseResponse
+	Response *ExecuteDisasterRecoveryResponseParams `json:"Response"`
+}
+
+func (r *ExecuteDisasterRecoveryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExecuteDisasterRecoveryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -14152,6 +14203,9 @@ type ResetRocketMQConsumerOffSetRequestParams struct {
 
 	// 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
 	ResetTimestamp *uint64 `json:"ResetTimestamp,omitnil,omitempty" name:"ResetTimestamp"`
+
+	// 重置的是否是retry topic
+	RetryFlag *bool `json:"RetryFlag,omitnil,omitempty" name:"RetryFlag"`
 }
 
 type ResetRocketMQConsumerOffSetRequest struct {
@@ -14174,6 +14228,9 @@ type ResetRocketMQConsumerOffSetRequest struct {
 
 	// 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
 	ResetTimestamp *uint64 `json:"ResetTimestamp,omitnil,omitempty" name:"ResetTimestamp"`
+
+	// 重置的是否是retry topic
+	RetryFlag *bool `json:"RetryFlag,omitnil,omitempty" name:"RetryFlag"`
 }
 
 func (r *ResetRocketMQConsumerOffSetRequest) ToJsonString() string {
@@ -14194,6 +14251,7 @@ func (r *ResetRocketMQConsumerOffSetRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "Topic")
 	delete(f, "ResetTimestamp")
+	delete(f, "RetryFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetRocketMQConsumerOffSetRequest has unknown keys!", "")
 	}
@@ -14520,6 +14578,23 @@ type RocketMQClusterInfo struct {
 
 	// 是否已冻结
 	IsFrozen *bool `json:"IsFrozen,omitnil,omitempty" name:"IsFrozen"`
+
+	// 是否开启自动创建主题
+	AutoCreateTopicEnabled *bool `json:"AutoCreateTopicEnabled,omitnil,omitempty" name:"AutoCreateTopicEnabled"`
+
+	// 是否开启集群Admin能力
+	AdminFeatureEnabled *bool `json:"AdminFeatureEnabled,omitnil,omitempty" name:"AdminFeatureEnabled"`
+
+	// Admin AK
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminAccessKey *string `json:"AdminAccessKey,omitnil,omitempty" name:"AdminAccessKey"`
+
+	// Admin SK
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminSecretKey *string `json:"AdminSecretKey,omitnil,omitempty" name:"AdminSecretKey"`
+
+	// 是否开启删除保护
+	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
 }
 
 type RocketMQClusterRecentStats struct {
@@ -14592,9 +14667,13 @@ type RocketMQGroup struct {
 	ConsumerNum *uint64 `json:"ConsumerNum,omitnil,omitempty" name:"ConsumerNum"`
 
 	// 消费TPS
+	//
+	// Deprecated: TPS is deprecated.
 	TPS *uint64 `json:"TPS,omitnil,omitempty" name:"TPS"`
 
 	// 总堆积数量
+	//
+	// Deprecated: TotalAccumulative is deprecated.
 	TotalAccumulative *int64 `json:"TotalAccumulative,omitnil,omitempty" name:"TotalAccumulative"`
 
 	// 0表示集群消费模式，1表示广播消费模式，-1表示未知
@@ -14642,6 +14721,9 @@ type RocketMQGroup struct {
 	// 命名空间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 订阅的主题个数
+	SubscribeTopicNum *int64 `json:"SubscribeTopicNum,omitnil,omitempty" name:"SubscribeTopicNum"`
 }
 
 type RocketMQGroupConfig struct {

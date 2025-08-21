@@ -1339,7 +1339,7 @@ type CreateListenerRequestParams struct {
 	// 会话保持时间，单位：秒。可选值：30~3600，默认为0，默认不开启。此参数仅适用于TCP/UDP监听器。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
-	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）
+	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）
 	// 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
@@ -1373,7 +1373,7 @@ type CreateListenerRequestParams struct {
 	// 监听器最大新增连接数，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。基础网络实例不支持该参数。
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。取值范围：共享型实例和独占型实例支持：300-900，性能容量型实例支持：300-1980。如需设置请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
+	// 空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。默认值：TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。如需设置超过取值范围的值请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
 	// TCP_SSL和QUIC是否支持PP
@@ -1425,7 +1425,7 @@ type CreateListenerRequest struct {
 	// 会话保持时间，单位：秒。可选值：30~3600，默认为0，默认不开启。此参数仅适用于TCP/UDP监听器。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
-	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）
+	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）
 	// 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
@@ -1459,7 +1459,7 @@ type CreateListenerRequest struct {
 	// 监听器最大新增连接数，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。基础网络实例不支持该参数。
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。取值范围：共享型实例和独占型实例支持：300-900，性能容量型实例支持：300-1980。如需设置请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
+	// 空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。默认值：TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。如需设置超过取值范围的值请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
 	// TCP_SSL和QUIC是否支持PP
@@ -1980,7 +1980,7 @@ type CreateTargetGroupRequestParams struct {
 	// 目标组名称，限定50个字符
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
-	// 目标组的vpcid属性，不填则使用默认vpc
+	// 目标组的vpcId属性，不填则使用默认vpc。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 目标组的默认端口， 后续添加服务器时可使用该默认端口。全监听目标组不支持此参数，非全监听目标组Port和TargetGroupInstances.N中的port二者必填其一。
@@ -1995,15 +1995,18 @@ type CreateTargetGroupRequestParams struct {
 	// 目标组后端转发协议。v2新版目标组该项必填。目前支持TCP、UDP、HTTP、HTTPS、GRPC。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
+	// 健康检查。
+	HealthCheck *TargetGroupHealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
+
+	// 调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
+	// <ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+	ScheduleAlgorithm *string `json:"ScheduleAlgorithm,omitnil,omitempty" name:"ScheduleAlgorithm"`
+
 	// 标签。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 后端服务默认权重。
-	// <ul>
-	//     <li>取值范围[0, 100]</li>
-	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
-	// </ul>
-	// v1 目标组类型不支持设置 Weight 参数。
+	// 后端服务默认权重, 其中：
+	// <ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1 目标组类型不支持设置 Weight 参数。</li></ul>
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 全监听目标组标识，true表示是全监听目标组，false表示不是全监听目标组。仅V2新版类型目标组支持该参数。
@@ -2022,7 +2025,7 @@ type CreateTargetGroupRequest struct {
 	// 目标组名称，限定50个字符
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
-	// 目标组的vpcid属性，不填则使用默认vpc
+	// 目标组的vpcId属性，不填则使用默认vpc。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 目标组的默认端口， 后续添加服务器时可使用该默认端口。全监听目标组不支持此参数，非全监听目标组Port和TargetGroupInstances.N中的port二者必填其一。
@@ -2037,15 +2040,18 @@ type CreateTargetGroupRequest struct {
 	// 目标组后端转发协议。v2新版目标组该项必填。目前支持TCP、UDP、HTTP、HTTPS、GRPC。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
+	// 健康检查。
+	HealthCheck *TargetGroupHealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
+
+	// 调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
+	// <ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+	ScheduleAlgorithm *string `json:"ScheduleAlgorithm,omitnil,omitempty" name:"ScheduleAlgorithm"`
+
 	// 标签。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 后端服务默认权重。
-	// <ul>
-	//     <li>取值范围[0, 100]</li>
-	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
-	// </ul>
-	// v1 目标组类型不支持设置 Weight 参数。
+	// 后端服务默认权重, 其中：
+	// <ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1 目标组类型不支持设置 Weight 参数。</li></ul>
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 全监听目标组标识，true表示是全监听目标组，false表示不是全监听目标组。仅V2新版类型目标组支持该参数。
@@ -2076,6 +2082,8 @@ func (r *CreateTargetGroupRequest) FromJsonString(s string) error {
 	delete(f, "TargetGroupInstances")
 	delete(f, "Type")
 	delete(f, "Protocol")
+	delete(f, "HealthCheck")
+	delete(f, "ScheduleAlgorithm")
 	delete(f, "Tags")
 	delete(f, "Weight")
 	delete(f, "FullListenSwitch")
@@ -7512,7 +7520,7 @@ type ModifyListenerRequestParams struct {
 	// 默认为 -1 表示不限速。
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~1980。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
+	// 空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。如需设置超过1980s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
 	// TCP_SSL和QUIC是否支持PP
@@ -7584,7 +7592,7 @@ type ModifyListenerRequest struct {
 	// 默认为 -1 表示不限速。
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~1980。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
+	// 空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。如需设置超过1980s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
 	// TCP_SSL和QUIC是否支持PP
@@ -8096,12 +8104,14 @@ type ModifyTargetGroupAttributeRequestParams struct {
 	// 目标组的新默认端口。全监听目标组不支持此参数。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 后端服务默认权重。
-	// <ul>
-	//     <li>取值范围[0, 100]</li>
-	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
-	// </ul>
-	// v1目标组类型不支持设置Weight参数。
+	// 调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
+	// <ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+	ScheduleAlgorithm *string `json:"ScheduleAlgorithm,omitnil,omitempty" name:"ScheduleAlgorithm"`
+
+	// 健康检查详情。
+	HealthCheck *TargetGroupHealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
+
+	// 后端服务默认权重, 其中：<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1目标组类型不支持设置Weight参数。</li> </ul>
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，true:关闭；false:开启， 默认关闭。
@@ -8123,12 +8133,14 @@ type ModifyTargetGroupAttributeRequest struct {
 	// 目标组的新默认端口。全监听目标组不支持此参数。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 后端服务默认权重。
-	// <ul>
-	//     <li>取值范围[0, 100]</li>
-	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
-	// </ul>
-	// v1目标组类型不支持设置Weight参数。
+	// 调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
+	// <ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+	ScheduleAlgorithm *string `json:"ScheduleAlgorithm,omitnil,omitempty" name:"ScheduleAlgorithm"`
+
+	// 健康检查详情。
+	HealthCheck *TargetGroupHealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
+
+	// 后端服务默认权重, 其中：<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1目标组类型不支持设置Weight参数。</li> </ul>
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，true:关闭；false:开启， 默认关闭。
@@ -8153,6 +8165,8 @@ func (r *ModifyTargetGroupAttributeRequest) FromJsonString(s string) error {
 	delete(f, "TargetGroupId")
 	delete(f, "TargetGroupName")
 	delete(f, "Port")
+	delete(f, "ScheduleAlgorithm")
+	delete(f, "HealthCheck")
 	delete(f, "Weight")
 	delete(f, "KeepaliveEnable")
 	delete(f, "SessionExpireTime")
@@ -9698,6 +9712,69 @@ type TargetGroupBackend struct {
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 
+type TargetGroupHealthCheck struct {
+	// 是否开启健康检查。
+	HealthSwitch *bool `json:"HealthSwitch,omitnil,omitempty" name:"HealthSwitch"`
+
+	// 健康检查方式， 其中仅V2新版目标组类型支持该参数， 支持取值 TCP | HTTP | HTTPS | PING | CUSTOM，其中:
+	// <ur><li>当目标组后端转发协议为TCP时， 健康检查方式支持 TCP/HTTP/CUSTOM， 默认为TCP。</li><li>当目标组后端转发协议为UDP时， 健康检查方式支持 PING/CUSTOM，默认为PING。</li><li>当目标组后端转发协议为HTTP时， 健康检查方式支持 HTTP/TCP， 默认为HTTP。</li><li>当目标组后端转发协议为HTTPS时， 健康检查方式支持 HTTPS/TCP， 默认为HTTPS。</li><li>当目标组后端转发协议为GRPC时， 健康检查方式支持GRPC/TCP， 默认为GRPC。</li></ur>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 自定义探测相关参数。健康检查端口，默认为后端服务的端口，除非您希望指定特定端口，否则建议留空。（仅适用于TCP/UDP目标组）。
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 健康检查超时时间。 默认为2秒。 可配置范围：2 - 30秒。
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 检测间隔时间。 默认为5秒。 可配置范围：2 - 300秒。
+	GapTime *int64 `json:"GapTime,omitnil,omitempty" name:"GapTime"`
+
+	// 检测健康阈值。 默认为3秒。 可配置范围：2 - 10次。
+	GoodLimit *int64 `json:"GoodLimit,omitnil,omitempty" name:"GoodLimit"`
+
+	// 检测不健康阈值。 默认为3秒。 可配置范围：2 - 10次。
+	BadLimit *int64 `json:"BadLimit,omitnil,omitempty" name:"BadLimit"`
+
+	// 目标组下的所有rs的探测包是否开启巨帧。默认开启。仅GWLB类型目标组支持该参数。
+	JumboFrame *bool `json:"JumboFrame,omitnil,omitempty" name:"JumboFrame"`
+
+	// 健康检查状态码（仅适用于HTTP/HTTPS目标组、TCP目标组的HTTP健康检查方式）。可选值：1~31，默认 31，其中：<url> <li>1 表示探测后返回值 1xx 代表健康。</li><li>2 表示返回 2xx 代表健康。</li><li>4 表示返回 3xx 代表健康。</li><li>8 表示返回 4xx 代表健康。</li><li>16 表示返回 5xx 代表健康。</li></url>若希望多种返回码都可代表健康，则将相应的值相加。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpCode *int64 `json:"HttpCode,omitnil,omitempty" name:"HttpCode"`
+
+	// 健康检查域名， 其中：<ur><li>仅适用于HTTP/HTTPS目标组和TCP目标组的HTTP健康检查方式。</li><li>针对HTTP/HTTPS目标组，当使用HTTP健康检查方式时，该参数为必填项。</li></ur>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpCheckDomain *string `json:"HttpCheckDomain,omitnil,omitempty" name:"HttpCheckDomain"`
+
+	// 健康检查路径（仅适用于HTTP/HTTPS转发规则、TCP监听器的HTTP健康检查方式）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpCheckPath *string `json:"HttpCheckPath,omitnil,omitempty" name:"HttpCheckPath"`
+
+	// 健康检查方法（仅适用于HTTP/HTTPS转发规则、TCP监听器的HTTP健康检查方式），默认值：HEAD，可选值HEAD或GET。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpCheckMethod *string `json:"HttpCheckMethod,omitnil,omitempty" name:"HttpCheckMethod"`
+
+	// 健康检查的输入格式，健康检查方式取CUSTOM时，必填此字段，可取值：HEX或TEXT，其中：<ur><li>TEXT：文本格式。</li><li>HEX：十六进制格式， SendContext和RecvContext的字符只能在0123456789ABCDEF中选取且长度必须是偶数位。</li><li>仅适用于TCP/UDP目标组。</li></ur>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContextType *string `json:"ContextType,omitnil,omitempty" name:"ContextType"`
+
+	// 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查发送的请求内容，只允许ASCII可见字符，最大长度限制500。（仅适用于TCP/UDP目标组）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SendContext *string `json:"SendContext,omitnil,omitempty" name:"SendContext"`
+
+	// 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查返回的结果，只允许ASCII可见字符，最大长度限制500。（仅适用于TCP/UDP目标组）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecvContext *string `json:"RecvContext,omitnil,omitempty" name:"RecvContext"`
+
+	// HTTP版本, 其中：<ur><li>健康检查协议CheckType的值取HTTP时，必传此字段。</li><li>支持配置选项：HTTP/1.0, HTTP/1.1。</li><li>仅适用于TCP目标组。</li></ur>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
+
+	// GRPC健康检查状态码（仅适用于后端转发协议为GRPC的目标组）。默认值为 12，可输入值为数值、多个数值、或者范围，例如 20 或 20,25 或 0-99。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtendedCode *string `json:"ExtendedCode,omitnil,omitempty" name:"ExtendedCode"`
+}
+
 type TargetGroupInfo struct {
 	// 目标组ID
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
@@ -9725,6 +9802,20 @@ type TargetGroupInfo struct {
 	// 目标组后端转发协议, 仅v2新版目标组返回有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 调度算法，仅后端转发协议为(HTTP、HTTPS、GRPC)的目标组返回有效值， 可选值：
+	// <ur>
+	// <li>WRR:按权重轮询。</li>
+	// <li>LEAST_CONN:最小连接数。</li>
+	// <li>IP_HASH:按IP哈希。</li>
+	// </ur>
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleAlgorithm *string `json:"ScheduleAlgorithm,omitnil,omitempty" name:"ScheduleAlgorithm"`
+
+	// 健康检查详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheck *TargetGroupHealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
 	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组)。默认为v1旧版目标组。
 	TargetGroupType *string `json:"TargetGroupType,omitnil,omitempty" name:"TargetGroupType"`

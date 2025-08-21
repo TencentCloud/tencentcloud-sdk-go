@@ -220,6 +220,12 @@ type CreateVolumeRequestParams struct {
 
 	// 缓存卷大小（GB），Turbo系列需要指定。
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
+
+	// 是否开启默认扩容，仅turbo类型文件存储支持
+	EnableAutoScaleUp *bool `json:"EnableAutoScaleUp,omitnil,omitempty" name:"EnableAutoScaleUp"`
+
+	// turbo文件系统元数据属性，basic：标准型元数据；enhanced：增强型元数据
+	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
 }
 
 type CreateVolumeRequest struct {
@@ -248,6 +254,12 @@ type CreateVolumeRequest struct {
 
 	// 缓存卷大小（GB），Turbo系列需要指定。
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
+
+	// 是否开启默认扩容，仅turbo类型文件存储支持
+	EnableAutoScaleUp *bool `json:"EnableAutoScaleUp,omitnil,omitempty" name:"EnableAutoScaleUp"`
+
+	// turbo文件系统元数据属性，basic：标准型元数据；enhanced：增强型元数据
+	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
 }
 
 func (r *CreateVolumeRequest) ToJsonString() string {
@@ -268,6 +280,8 @@ func (r *CreateVolumeRequest) FromJsonString(s string) error {
 	delete(f, "Spec")
 	delete(f, "Description")
 	delete(f, "Capacity")
+	delete(f, "EnableAutoScaleUp")
+	delete(f, "MetaType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVolumeRequest has unknown keys!", "")
 	}
@@ -2276,6 +2290,12 @@ type StorageOption struct {
 	// - turbo标准型起售40TiB，即40960GiB；扩容步长20TiB，即20480 GiB。
 	// - turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
+
+	// 是否开启默认扩容，仅turbo类型文件存储支持
+	EnableAutoScaleUp *bool `json:"EnableAutoScaleUp,omitnil,omitempty" name:"EnableAutoScaleUp"`
+
+	// turbo文件系统元数据属性，basic：标准型元数据；enhanced：增强型元数据
+	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
 }
 
 type Table struct {
@@ -2442,6 +2462,27 @@ type Volume struct {
 
 	// 状态。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// turbo自动扩容策略
+	AutoScaleUpRule *VolumeAutoScaleUpRule `json:"AutoScaleUpRule,omitnil,omitempty" name:"AutoScaleUpRule"`
+
+	// turbo元数据属性
+	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
+type VolumeAutoScaleUpRule struct {
+	// 自动扩容策略开启，关闭
+	// 示例值：open,close
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 集群用量占比，到达这个值后开始扩容,范围[10-90]
+	ScaleThreshold *int64 `json:"ScaleThreshold,omitnil,omitempty" name:"ScaleThreshold"`
+
+	// 扩容后使用量跟集群总量比例,范围[10-90]
+	TargetThreshold *int64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 }
 
 type VolumeInfo struct {

@@ -121,6 +121,9 @@ type CreateInstanceRequestParams struct {
 	// Deprecated: Project is deprecated.
 	Project *string `json:"Project,omitnil,omitempty" name:"Project"`
 
+	// 产品版本，0-标准版，1-容量增强版
+	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
 	// 实例类型。
 	// - base：免费测试版。
 	// - single：单机版。
@@ -254,6 +257,9 @@ type CreateInstanceRequest struct {
 	// 指定实例所属项目 ID。
 	Project *string `json:"Project,omitnil,omitempty" name:"Project"`
 
+	// 产品版本，0-标准版，1-容量增强版
+	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
 	// 实例类型。
 	// - base：免费测试版。
 	// - single：单机版。
@@ -346,6 +352,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Params")
 	delete(f, "ResourceTags")
 	delete(f, "Project")
+	delete(f, "ProductType")
 	delete(f, "InstanceType")
 	delete(f, "Mode")
 	delete(f, "GoodsNum")

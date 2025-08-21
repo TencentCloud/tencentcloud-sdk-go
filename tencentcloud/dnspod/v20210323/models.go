@@ -6424,7 +6424,7 @@ type ModifyDomainOwnerRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名需要转入的账号，支持Uin或者邮箱格式
+	// 域名需要转入的账号Uin
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
@@ -6437,7 +6437,7 @@ type ModifyDomainOwnerRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名需要转入的账号，支持Uin或者邮箱格式
+	// 域名需要转入的账号Uin
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
@@ -8849,4 +8849,7 @@ type WhoisInfo struct {
 	// dnssec
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Dnssec *string `json:"Dnssec,omitnil,omitempty" name:"Dnssec"`
+
+	// 腾讯注册商资质
+	RegistrarType *string `json:"RegistrarType,omitnil,omitempty" name:"RegistrarType"`
 }

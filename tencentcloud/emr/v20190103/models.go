@@ -4106,6 +4106,9 @@ type DescribeInsightListRequestParams struct {
 
 	// 查询类型,支持HIVE,SPARK,DLC_SPARK,SPARK_SQL,SCHEDULE,MAPREDUCE,TRINO等类型,默认查询全部
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 是否包含具体参数建议等信息
+	MustHasContext *bool `json:"MustHasContext,omitnil,omitempty" name:"MustHasContext"`
 }
 
 type DescribeInsightListRequest struct {
@@ -4128,6 +4131,9 @@ type DescribeInsightListRequest struct {
 
 	// 查询类型,支持HIVE,SPARK,DLC_SPARK,SPARK_SQL,SCHEDULE,MAPREDUCE,TRINO等类型,默认查询全部
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 是否包含具体参数建议等信息
+	MustHasContext *bool `json:"MustHasContext,omitnil,omitempty" name:"MustHasContext"`
 }
 
 func (r *DescribeInsightListRequest) ToJsonString() string {
@@ -4148,6 +4154,7 @@ func (r *DescribeInsightListRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "Page")
 	delete(f, "Type")
+	delete(f, "MustHasContext")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInsightListRequest has unknown keys!", "")
 	}

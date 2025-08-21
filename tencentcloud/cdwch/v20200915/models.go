@@ -457,15 +457,17 @@ type CreateInstanceNewRequestParams struct {
 	// 是否是ZK高可用
 	HAZk *bool `json:"HAZk,omitnil,omitempty" name:"HAZk"`
 
-	// ZK节点
-	// SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
+	// ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取
 	CommonSpec *NodeSpec `json:"CommonSpec,omitnil,omitempty" name:"CommonSpec"`
 
 	// 标签列表
 	TagItems []*Tag `json:"TagItems,omitnil,omitempty" name:"TagItems"`
 
-	// 副可用去信息
+	// 副可用区信息
 	SecondaryZoneInfo []*SecondaryZoneInfo `json:"SecondaryZoneInfo,omitnil,omitempty" name:"SecondaryZoneInfo"`
+
+	// default账号登陆实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符
+	CkDefaultUserPwd *string `json:"CkDefaultUserPwd,omitnil,omitempty" name:"CkDefaultUserPwd"`
 }
 
 type CreateInstanceNewRequest struct {
@@ -511,15 +513,17 @@ type CreateInstanceNewRequest struct {
 	// 是否是ZK高可用
 	HAZk *bool `json:"HAZk,omitnil,omitempty" name:"HAZk"`
 
-	// ZK节点
-	// SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
+	// ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取
 	CommonSpec *NodeSpec `json:"CommonSpec,omitnil,omitempty" name:"CommonSpec"`
 
 	// 标签列表
 	TagItems []*Tag `json:"TagItems,omitnil,omitempty" name:"TagItems"`
 
-	// 副可用去信息
+	// 副可用区信息
 	SecondaryZoneInfo []*SecondaryZoneInfo `json:"SecondaryZoneInfo,omitnil,omitempty" name:"SecondaryZoneInfo"`
+
+	// default账号登陆实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符
+	CkDefaultUserPwd *string `json:"CkDefaultUserPwd,omitnil,omitempty" name:"CkDefaultUserPwd"`
 }
 
 func (r *CreateInstanceNewRequest) ToJsonString() string {
@@ -550,6 +554,7 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 	delete(f, "CommonSpec")
 	delete(f, "TagItems")
 	delete(f, "SecondaryZoneInfo")
+	delete(f, "CkDefaultUserPwd")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceNewRequest has unknown keys!", "")
 	}

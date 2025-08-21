@@ -563,7 +563,9 @@ func NewDescribeAgentDealsByCacheResponse() (response *DescribeAgentDealsByCache
 }
 
 // DescribeAgentDealsByCache
-// 供代理商拉取缓存的全量预付费客户订单
+// 供代理商拉取全量预付费普通客户订单
+//
+// （对应控制台：客户订单-预付费-普通订单）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -575,7 +577,9 @@ func (c *Client) DescribeAgentDealsByCache(request *DescribeAgentDealsByCacheReq
 }
 
 // DescribeAgentDealsByCache
-// 供代理商拉取缓存的全量预付费客户订单
+// 供代理商拉取全量预付费普通客户订单
+//
+// （对应控制台：客户订单-预付费-普通订单）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

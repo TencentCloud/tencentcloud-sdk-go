@@ -3339,6 +3339,84 @@ func (r *DescribeUserQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DoDirectoryOperationRequestParams struct {
+	// 文件系统Id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// create：创建目录  check：确认目录是否存在
+	OpetationType *string `json:"OpetationType,omitnil,omitempty" name:"OpetationType"`
+
+	// 目录的绝对路径  默认递归创建（即如果目录中有子目录不存在，则先创建出对应子目录）
+	DirectoryPath *string `json:"DirectoryPath,omitnil,omitempty" name:"DirectoryPath"`
+
+	// 创建目录的权限，若不传，默认为0755  若Operation Type为check，此值无实际意义
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+}
+
+type DoDirectoryOperationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统Id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// create：创建目录  check：确认目录是否存在
+	OpetationType *string `json:"OpetationType,omitnil,omitempty" name:"OpetationType"`
+
+	// 目录的绝对路径  默认递归创建（即如果目录中有子目录不存在，则先创建出对应子目录）
+	DirectoryPath *string `json:"DirectoryPath,omitnil,omitempty" name:"DirectoryPath"`
+
+	// 创建目录的权限，若不传，默认为0755  若Operation Type为check，此值无实际意义
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+}
+
+func (r *DoDirectoryOperationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DoDirectoryOperationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "OpetationType")
+	delete(f, "DirectoryPath")
+	delete(f, "Mode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DoDirectoryOperationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DoDirectoryOperationResponseParams struct {
+	// 1:成功  0:失败  创建目录的操作，1表示创建成功，0表示创建失败。  确认目录是否存在的操作，1表示目录存在，0表示目录不存在。  说明：创建目录操作若目录已存在，也会返回创建成功。
+	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DoDirectoryOperationResponse struct {
+	*tchttp.BaseResponse
+	Response *DoDirectoryOperationResponseParams `json:"Response"`
+}
+
+func (r *DoDirectoryOperationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DoDirectoryOperationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ExstraPerformanceInfo struct {
 	// fixed: 最终值固定
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`

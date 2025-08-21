@@ -4159,6 +4159,64 @@ func (c *Client) DescribePolicyConfigWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeResourceToShareMemberRequest() (request *DescribeResourceToShareMemberRequest) {
+    request = &DescribeResourceToShareMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DescribeResourceToShareMember")
+    
+    
+    return
+}
+
+func NewDescribeResourceToShareMemberResponse() (response *DescribeResourceToShareMemberResponse) {
+    response = &DescribeResourceToShareMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourceToShareMember
+// 获取与我共享的资源列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeResourceToShareMember(request *DescribeResourceToShareMemberRequest) (response *DescribeResourceToShareMemberResponse, err error) {
+    return c.DescribeResourceToShareMemberWithContext(context.Background(), request)
+}
+
+// DescribeResourceToShareMember
+// 获取与我共享的资源列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeResourceToShareMemberWithContext(ctx context.Context, request *DescribeResourceToShareMemberRequest) (response *DescribeResourceToShareMemberResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceToShareMemberRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "DescribeResourceToShareMember")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceToShareMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceToShareMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeShareAreasRequest() (request *DescribeShareAreasRequest) {
     request = &DescribeShareAreasRequest{
         BaseRequest: &tchttp.BaseRequest{},

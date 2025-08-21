@@ -5193,6 +5193,116 @@ func (c *Client) StopWebRecordWithContext(ctx context.Context, request *StopWebR
     return
 }
 
+func NewTextToSpeechRequest() (request *TextToSpeechRequest) {
+    request = &TextToSpeechRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "TextToSpeech")
+    
+    
+    return
+}
+
+func NewTextToSpeechResponse() (response *TextToSpeechResponse) {
+    response = &TextToSpeechResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TextToSpeech
+// 语音合成接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
+//  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
+func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
+    return c.TextToSpeechWithContext(context.Background(), request)
+}
+
+// TextToSpeech
+// 语音合成接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
+//  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
+func (c *Client) TextToSpeechWithContext(ctx context.Context, request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
+    if request == nil {
+        request = NewTextToSpeechRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "TextToSpeech")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextToSpeech require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTextToSpeechResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTextToSpeechSSERequest() (request *TextToSpeechSSERequest) {
+    request = &TextToSpeechSSERequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "TextToSpeechSSE")
+    
+    
+    return
+}
+
+func NewTextToSpeechSSEResponse() (response *TextToSpeechSSEResponse) {
+    response = &TextToSpeechSSEResponse{} 
+    return
+
+}
+
+// TextToSpeechSSE
+// SSE流式文本转语音
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
+//  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
+func (c *Client) TextToSpeechSSE(request *TextToSpeechSSERequest) (response *TextToSpeechSSEResponse, err error) {
+    return c.TextToSpeechSSEWithContext(context.Background(), request)
+}
+
+// TextToSpeechSSE
+// SSE流式文本转语音
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
+//  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
+func (c *Client) TextToSpeechSSEWithContext(ctx context.Context, request *TextToSpeechSSERequest) (response *TextToSpeechSSEResponse, err error) {
+    if request == nil {
+        request = NewTextToSpeechSSERequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "TextToSpeechSSE")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextToSpeechSSE require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTextToSpeechSSEResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateAIConversationRequest() (request *UpdateAIConversationRequest) {
     request = &UpdateAIConversationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5439,6 +5549,62 @@ func (c *Client) UpdateVoicePrintWithContext(ctx context.Context, request *Updat
     request.SetContext(ctx)
     
     response = NewUpdateVoicePrintResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVoiceCloneRequest() (request *VoiceCloneRequest) {
+    request = &VoiceCloneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "VoiceClone")
+    
+    
+    return
+}
+
+func NewVoiceCloneResponse() (response *VoiceCloneResponse) {
+    response = &VoiceCloneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VoiceClone
+// 声音克隆
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_AUDIOPROMPT = "InvalidParameter.AudioPrompt"
+//  INVALIDPARAMETER_VOICENAME = "InvalidParameter.VoiceName"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
+func (c *Client) VoiceClone(request *VoiceCloneRequest) (response *VoiceCloneResponse, err error) {
+    return c.VoiceCloneWithContext(context.Background(), request)
+}
+
+// VoiceClone
+// 声音克隆
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_AUDIOPROMPT = "InvalidParameter.AudioPrompt"
+//  INVALIDPARAMETER_VOICENAME = "InvalidParameter.VoiceName"
+//  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
+func (c *Client) VoiceCloneWithContext(ctx context.Context, request *VoiceCloneRequest) (response *VoiceCloneResponse, err error) {
+    if request == nil {
+        request = NewVoiceCloneRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "VoiceClone")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VoiceClone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVoiceCloneResponse()
     err = c.Send(request, response)
     return
 }

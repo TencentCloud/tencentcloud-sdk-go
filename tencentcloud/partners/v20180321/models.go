@@ -668,10 +668,10 @@ type DescribeAgentAuditedClientsRequestParams struct {
 	// 客户备注
 	ClientRemark *string `json:"ClientRemark,omitnil,omitempty" name:"ClientRemark"`
 
-	// 偏移量
+	// 偏移量 请保持必传
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 请保持必传，最大2000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 可以为new(自拓)/assign(指派)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
@@ -711,10 +711,10 @@ type DescribeAgentAuditedClientsRequest struct {
 	// 客户备注
 	ClientRemark *string `json:"ClientRemark,omitnil,omitempty" name:"ClientRemark"`
 
-	// 偏移量
+	// 偏移量 请保持必传
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 请保持必传，最大2000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 可以为new(自拓)/assign(指派)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空

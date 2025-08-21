@@ -4354,6 +4354,7 @@ func NewModifyInstanceVportResponse() (response *ModifyInstanceVportResponse) {
 // 本接口（ModifyInstanceVport）用于修改实例VPORT
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
 //  FAILEDOPERATION_SGCHANGEVIP = "FailedOperation.SGChangeVip"
 //  FAILEDOPERATION_VPCADDSERVICEFAILED = "FailedOperation.VpcAddServiceFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
@@ -4373,6 +4374,7 @@ func (c *Client) ModifyInstanceVport(request *ModifyInstanceVportRequest) (respo
 // 本接口（ModifyInstanceVport）用于修改实例VPORT
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
 //  FAILEDOPERATION_SGCHANGEVIP = "FailedOperation.SGChangeVip"
 //  FAILEDOPERATION_VPCADDSERVICEFAILED = "FailedOperation.VpcAddServiceFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"

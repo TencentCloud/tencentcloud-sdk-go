@@ -56,8 +56,20 @@ const (
 	// 工作空间实例ID格式不符合规范。
 	INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 
+	// The length of job description should less than `%(max_size)s`.
+	INVALIDPARAMETERVALUE_JOBDESCRIPTIONTOOLONG = "InvalidParameterValue.JobDescriptionTooLong"
+
+	// The length of job name should less than `%(max_size)s`.
+	INVALIDPARAMETERVALUE_JOBNAMETOOLONG = "InvalidParameterValue.JobNameTooLong"
+
+	// Job `%(job_id)s` not found.
+	INVALIDPARAMETERVALUE_JOBNOTFOUND = "InvalidParameterValue.JobNotFound"
+
 	// 参数值数量超过限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+
+	// 参数值的格式不符合要求。
+	INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 
 	// 不支持该参数值。
 	INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
@@ -67,6 +79,9 @@ const (
 
 	// 工作空间实例查找失败
 	INVALIDPARAMETERVALUE_SPACEIDNOTFOUND = "InvalidParameterValue.SpaceIdNotFound"
+
+	// Task dependencies unfeasible, please check.
+	INVALIDPARAMETERVALUE_TASKDEPENDENCIESUNFEASIBLE = "InvalidParameterValue.TaskDependenciesUnfeasible"
 
 	// 参数值过大。
 	INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
@@ -88,6 +103,9 @@ const (
 
 	// 队列数量达到上限。
 	LIMITEXCEEDED_QUEUENUMLIMIT = "LimitExceeded.QueueNumLimit"
+
+	// Task instance number `%(max_count)s` limit reached.
+	LIMITEXCEEDED_TASKINSTANCENUMLIMIT = "LimitExceeded.TaskInstanceNumLimit"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
@@ -112,6 +130,9 @@ const (
 
 	// 无法找到镜像ID。
 	RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+
+	// 指定的Job提交信息不存在。
+	RESOURCENOTFOUND_JOBSUBMITINFO = "ResourceNotFound.JobSubmitInfo"
 
 	// 无法找到本地挂载路径。
 	RESOURCENOTFOUND_LOCALPATH = "ResourceNotFound.LocalPath"
@@ -142,6 +163,9 @@ const (
 
 	// 类型节点不支持当前操作。
 	UNSUPPORTEDOPERATION_INVALIDNODEROLE = "UnsupportedOperation.InvalidNodeRole"
+
+	// Job state `%(job_state)s` not support operation `%(operation)s`.
+	UNSUPPORTEDOPERATION_JOBSTATENOTSUPPORT = "UnsupportedOperation.JobStateNotSupport"
 
 	// 节点状态不支持此操作。
 	UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"

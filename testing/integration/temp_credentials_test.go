@@ -100,3 +100,29 @@ func TestTempCredentials(t *testing.T) {
 	testCredRequestFail(t, reqMethodList)
 	testCredRequestSuccess(t, reqMethodList)
 }
+
+func TestEmptyToken(t *testing.T) {
+	reqMethods := []string{"GET", "POST"}
+	signMethods := []string{common.SHA1, common.SHA256, "TC3-HMAC-SHA256"}
+
+	for _, signMethod := range signMethods {
+		for _, reqMethod := range reqMethods {
+			credential := common.NewTokenCredential(
+				os.Getenv("TENCENTCLOUD_SECRET_ID"),
+				os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+				"",
+			)
+			cpf := profile.NewClientProfile()
+			cpf.SignMethod = signMethod
+			cpf.HttpProfile.ReqMethod = reqMethod
+			client, _ := cvm.NewClient(credential, "ap-guangzhou", cpf)
+
+			request := cvm.NewDescribeInstancesRequest()
+			resp, err := client.DescribeInstances(request)
+			if err != nil {
+				t.Fatal(err)
+			}
+			t.Log(resp.ToJsonString())
+		}
+	}
+}

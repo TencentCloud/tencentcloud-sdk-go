@@ -7585,10 +7585,10 @@ func (r *DescribeAccountStatisticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccountStatisticsResponseParams struct {
-	// 帐号统计列表记录总数。
+	// 账号统计列表记录总数。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 帐号统计列表。
+	// 账号统计列表。
 	AccountStatistics []*AccountStatistics `json:"AccountStatistics,omitnil,omitempty" name:"AccountStatistics"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17437,10 +17437,10 @@ func (r *DescribeHistoryAccountsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHistoryAccountsResponseParams struct {
-	// 帐号变更历史列表记录总数。
+	// 账号变更历史列表记录总数。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 帐号变更历史数据数组。
+	// 账号变更历史数据数组。
 	HistoryAccounts []*HistoryAccount `json:"HistoryAccounts,omitnil,omitempty" name:"HistoryAccounts"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

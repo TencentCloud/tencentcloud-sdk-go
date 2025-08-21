@@ -683,7 +683,7 @@ func NewCreateBatchContractReviewTaskResponse() (response *CreateBatchContractRe
 //
 // 1. PDF格式限制大小为10M以下
 //
-// 2. 仅支持5个PDF文件批量发起
+// 2. 仅支持5份PDF文件批量发起（一份PDF对应一个审查任务）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -713,7 +713,7 @@ func (c *Client) CreateBatchContractReviewTask(request *CreateBatchContractRevie
 //
 // 1. PDF格式限制大小为10M以下
 //
-// 2. 仅支持5个PDF文件批量发起
+// 2. 仅支持5份PDF文件批量发起（一份PDF对应一个审查任务）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -775,7 +775,7 @@ func NewCreateBatchInformationExtractionTaskResponse() (response *CreateBatchInf
 //
 // 1. PDF格式限制大小为10M以下
 //
-// 2. 仅支持5个PDF文件批量发起
+// 2. 仅支持5个PDF文件批量发起（一份PDF对应一个合同提取任务）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -805,7 +805,7 @@ func (c *Client) CreateBatchInformationExtractionTask(request *CreateBatchInform
 //
 // 1. PDF格式限制大小为10M以下
 //
-// 2. 仅支持5个PDF文件批量发起
+// 2. 仅支持5个PDF文件批量发起（一份PDF对应一个合同提取任务）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1881,12 +1881,6 @@ func NewCreateDynamicFlowApproverResponse() (response *CreateDynamicFlowApprover
 //
 // 
 //
-// **功能开通**
-//
-// 动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
-//
-// 
-//
 // **使用条件**
 //
 // - 在发起合同时，必须将OpenDynamicSignFlow参数设置为true，以确保合同以动态签署方2.0的方式处理，否则默认处理为普通合同。
@@ -1927,12 +1921,6 @@ func (c *Client) CreateDynamicFlowApprover(request *CreateDynamicFlowApproverReq
 // 此接口（CreateDynamicFlowApprover）接口主要用于补充动态签署方2.0合同的签署方信息，包括但不限于名字、手机号和签署区域等信息。
 //
 // 
-//
-// 
-//
-// **功能开通**
-//
-// 动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
 //
 // 
 //
@@ -6237,7 +6225,7 @@ func NewCreateModifyAdminAuthorizationUrlResponse() (response *CreateModifyAdmin
 //
 // 注意:
 //
-// 1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到
+// 1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!企业认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到授权书是否审核失败的结果。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6264,7 +6252,7 @@ func (c *Client) CreateModifyAdminAuthorizationUrl(request *CreateModifyAdminAut
 //
 // 注意:
 //
-// 1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到
+// 1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!企业认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到授权书是否审核失败的结果。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7011,7 +6999,7 @@ func NewCreatePartnerAutoSignAuthUrlResponse() (response *CreatePartnerAutoSignA
 //
 // **该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权**
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/489aa0bf74941469b5e740f428f17c3a.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/4f89c8d5ccc1397db964257fd73dd5e1.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7047,7 +7035,7 @@ func (c *Client) CreatePartnerAutoSignAuthUrl(request *CreatePartnerAutoSignAuth
 //
 // **该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权**
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/489aa0bf74941469b5e740f428f17c3a.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/4f89c8d5ccc1397db964257fd73dd5e1.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11029,6 +11017,36 @@ func NewDescribeIntegrationRolesResponse() (response *DescribeIntegrationRolesRe
 // DescribeIntegrationRoles
 // 此接口（DescribeIntegrationRoles）用于分页查询企业角色列表，列表按照角色创建时间升序排列。
 //
+// 
+//
+// 角色分为系统默认角色与企业自定义角色，其中系统默认角色不可以禁用、删除、编辑权限项，只可往默认角色中添加成员。企业自定义角色为企业根据自身需要新增的角色，可根据企业具体情况设置各个角色的权限，例如新增财务岗、销售岗等角色。
+//
+// 
+//
+// 企业版的系统默认角色包含如下角色：
+//
+// 
+//
+// | 角色名称                     | 角色描述                                                                 |
+//
+// |------------------------------|--------------------------------------------------------------------------|
+//
+// | 超级管理员（电子签业务最高权限，e.g.法务/业务负责人） | 所有功能和数据管理权限，只能设置一位超管。                              |
+//
+// | IT信息管理员（IT系统负责人，e.g. CTO）        | 组织员工、计费模块、应用模块等权限能力。                                |
+//
+// | 企业合同管理员（企业法务负责人）             | 企业全部合同管理、可申请出证等权限能力。                                |
+//
+// | 企业模板管理员                  | 企业全部模板管理权限能力。                                              |
+//
+// | 企业印章管理员（企业行政负责人）             | 管理企业的所有电子印章，如添加印章、启用停用印章、印章授权等。          |
+//
+// | 用印审批岗（各部门的印章管理岗）             | 可对被授权的印章进行日常使用管理，如合同盖章用印的审核及登记。          |
+//
+// | 部门管理员（部门的合同+印章+模板管理）         | 部门级（含子部门）所有合同管理权限能力。                                |
+//
+// | 业务员（销售员、采购员）             | 发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力。      |
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -11049,6 +11067,36 @@ func (c *Client) DescribeIntegrationRoles(request *DescribeIntegrationRolesReque
 
 // DescribeIntegrationRoles
 // 此接口（DescribeIntegrationRoles）用于分页查询企业角色列表，列表按照角色创建时间升序排列。
+//
+// 
+//
+// 角色分为系统默认角色与企业自定义角色，其中系统默认角色不可以禁用、删除、编辑权限项，只可往默认角色中添加成员。企业自定义角色为企业根据自身需要新增的角色，可根据企业具体情况设置各个角色的权限，例如新增财务岗、销售岗等角色。
+//
+// 
+//
+// 企业版的系统默认角色包含如下角色：
+//
+// 
+//
+// | 角色名称                     | 角色描述                                                                 |
+//
+// |------------------------------|--------------------------------------------------------------------------|
+//
+// | 超级管理员（电子签业务最高权限，e.g.法务/业务负责人） | 所有功能和数据管理权限，只能设置一位超管。                              |
+//
+// | IT信息管理员（IT系统负责人，e.g. CTO）        | 组织员工、计费模块、应用模块等权限能力。                                |
+//
+// | 企业合同管理员（企业法务负责人）             | 企业全部合同管理、可申请出证等权限能力。                                |
+//
+// | 企业模板管理员                  | 企业全部模板管理权限能力。                                              |
+//
+// | 企业印章管理员（企业行政负责人）             | 管理企业的所有电子印章，如添加印章、启用停用印章、印章授权等。          |
+//
+// | 用印审批岗（各部门的印章管理岗）             | 可对被授权的印章进行日常使用管理，如合同盖章用印的审核及登记。          |
+//
+// | 部门管理员（部门的合同+印章+模板管理）         | 部门级（含子部门）所有合同管理权限能力。                                |
+//
+// | 业务员（销售员、采购员）             | 发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力。      |
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -12791,6 +12839,10 @@ func NewRenewAutoSignLicenseResponse() (response *RenewAutoSignLicenseResponse) 
 }
 
 // RenewAutoSignLicense
+// 已经不再使用
+//
+// 
+//
 // 给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
 //
 // 
@@ -12817,6 +12869,10 @@ func (c *Client) RenewAutoSignLicense(request *RenewAutoSignLicenseRequest) (res
 }
 
 // RenewAutoSignLicense
+// 已经不再使用
+//
+// 
+//
 // 给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
 //
 // 

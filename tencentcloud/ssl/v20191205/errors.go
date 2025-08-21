@@ -59,6 +59,9 @@ const (
 	// 温馨提示：证书链检测异常，请核对每段证书是否存在异常
 	FAILEDOPERATION_CERTIFICATECHAINERROR = "FailedOperation.CertificateChainError"
 
+	// CSR解析失败。
+	FAILEDOPERATION_CERTIFICATECSRPARSEFAILED = "FailedOperation.CertificateCsrParseFailed"
+
 	// 记录状态必须完结才可以执行该操作。
 	FAILEDOPERATION_CERTIFICATEDEPLOYDETAILROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployDetailRollbackStatusInvalid"
 
