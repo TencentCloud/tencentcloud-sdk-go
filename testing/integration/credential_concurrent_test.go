@@ -85,9 +85,13 @@ func (m *mockMetadataTransport) RoundTrip(req *http.Request) (*http.Response, er
 }
 
 func TestRoleArnCredentialConcurrent(t *testing.T) {
+	backup := http.DefaultTransport
+	t.Cleanup(func() {
+		http.DefaultTransport = backup
+	})
 	http.DefaultTransport = &mockMetadataTransport{}
 
-	provider := common.DefaultRoleArnProvider("mock-secret-id", "mock-secret-key", "mock-role-arn")
+	provider := common.DefaultRoleArnProvider("example#test#123456", "example#test#123456", "mock-role-arn")
 	credIface, err := provider.GetCredential()
 	if err != nil {
 		t.Fatalf("failed to init credential: %v", err)
@@ -129,6 +133,10 @@ func TestRoleArnCredentialConcurrent(t *testing.T) {
 }
 
 func TestCvmRoleCredentialConcurrent(t *testing.T) {
+	backup := http.DefaultTransport
+	t.Cleanup(func() {
+		http.DefaultTransport = backup
+	})
 	http.DefaultTransport = &mockMetadataTransport{}
 
 	provider := common.DefaultCvmRoleProvider()
@@ -173,6 +181,10 @@ func TestCvmRoleCredentialConcurrent(t *testing.T) {
 }
 
 func TestOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
+	backup := http.DefaultTransport
+	t.Cleanup(func() {
+		http.DefaultTransport = backup
+	})
 	http.DefaultTransport = &mockMetadataTransport{}
 
 	provider := common.NewOIDCRoleArnProvider("ap-guangzhou", "mock-provider-id",
@@ -232,6 +244,10 @@ func TestTkeOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
 	os.Setenv("TKE_WEB_IDENTITY_TOKEN_FILE", tmpFile.Name())
 	os.Setenv("TKE_ROLE_ARN", "mock-role-arn")
 
+	backup := http.DefaultTransport
+	t.Cleanup(func() {
+		http.DefaultTransport = backup
+	})
 	http.DefaultTransport = &mockMetadataTransport{}
 
 	provider, err := common.DefaultTkeOIDCRoleArnProvider()
