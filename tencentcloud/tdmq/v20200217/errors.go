@@ -335,6 +335,9 @@ const (
 	// 集群不存在。
 	RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 
+	// 链路不存在
+	RESOURCENOTFOUND_DISASTERREPLICATELINK = "ResourceNotFound.DisasterReplicateLink"
+
 	// 环境不存在。
 	RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 

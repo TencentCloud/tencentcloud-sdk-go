@@ -29,7 +29,7 @@ const (
 	// FailedOperation.FileDecodeFailed
 	FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
 
-	// FailedOperation.ImageDecodeFailed
+	// 图片解码失败
 	FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 
 	// 暂不支持解析该文件

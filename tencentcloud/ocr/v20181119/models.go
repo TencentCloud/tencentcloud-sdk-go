@@ -1237,6 +1237,11 @@ type CardWarnInfo struct {
 
 	// 模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5
 	BlurScore *float64 `json:"BlurScore,omitnil,omitempty" name:"BlurScore"`
+
+	// 是否电子身份证
+	// 0：否
+	// 1：是电子身份证
+	ElectronCheck *int64 `json:"ElectronCheck,omitnil,omitempty" name:"ElectronCheck"`
 }
 
 type CellContent struct {
@@ -2603,7 +2608,7 @@ type ExtractDocBasicRequestParams struct {
 	// RideHailingTransportLicense -- 网约车运输证
 	// WayBill -- 快递运单
 	// AccountOpeningPermit -- 银行开户许可证
-	// InvoiceEng -- 海外发票模版
+	// InvoiceEng -- 国际发票模板
 	// Coin --钱币识别模板
 	// OnboardingDocuments -- 入职材料识别
 	// PropertyOwnershipCertificate -- 房产证识别
@@ -2647,7 +2652,7 @@ type ExtractDocBasicRequest struct {
 	// RideHailingTransportLicense -- 网约车运输证
 	// WayBill -- 快递运单
 	// AccountOpeningPermit -- 银行开户许可证
-	// InvoiceEng -- 海外发票模版
+	// InvoiceEng -- 国际发票模板
 	// Coin --钱币识别模板
 	// OnboardingDocuments -- 入职材料识别
 	// PropertyOwnershipCertificate -- 房产证识别
@@ -2753,7 +2758,7 @@ type ExtractDocMultiProRequestParams struct {
 	// 是否开启父子key识别，默认是
 	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
 
-	// 模版的单个属性配置
+	// 模板的单个属性配置
 	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
 }
 
@@ -2792,7 +2797,7 @@ type ExtractDocMultiProRequest struct {
 	// 是否开启父子key识别，默认是
 	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
 
-	// 模版的单个属性配置
+	// 模板的单个属性配置
 	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
 }
 
@@ -2882,7 +2887,7 @@ type ExtractDocMultiRequestParams struct {
 
 	// 配置id支持：
 	// General -- 通用场景 
-	// InvoiceEng -- 国际invoice模版 
+	// InvoiceEng -- 国际invoice模板 
 	// WayBillEng --海运订单模板
 	// CustomsDeclaration -- 进出口报关单
 	// WeightNote -- 磅单
@@ -2892,12 +2897,12 @@ type ExtractDocMultiRequestParams struct {
 	// Statement -- 对账单识别模板
 	// BookingConfirmation -- 配舱通知书识别模板
 	// AirWayBill -- 航空运单识别模板
-	// Table -- 表格模版
+	// Table -- 表格模板
 	// SteelLabel -- 实物标签识别模板
 	// CarInsurance -- 车辆保险单识别模板
 	// MultiRealEstateCertificate -- 房产材料识别模板
 	// MultiRealEstateMaterial -- 房产证明识别模板
-	// HongKongUtilityBill -- 香港水电煤单识别模板
+	// HongKongUtilityBill -- 中国香港水电煤单识别模板
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
@@ -2906,7 +2911,7 @@ type ExtractDocMultiRequestParams struct {
 	// 是否开启父子key识别，默认是
 	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
 
-	// 模版的单个属性配置
+	// 模板的单个属性配置
 	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
 
 	// cn时，添加的key为中文  
@@ -2939,7 +2944,7 @@ type ExtractDocMultiRequest struct {
 
 	// 配置id支持：
 	// General -- 通用场景 
-	// InvoiceEng -- 国际invoice模版 
+	// InvoiceEng -- 国际invoice模板 
 	// WayBillEng --海运订单模板
 	// CustomsDeclaration -- 进出口报关单
 	// WeightNote -- 磅单
@@ -2949,12 +2954,12 @@ type ExtractDocMultiRequest struct {
 	// Statement -- 对账单识别模板
 	// BookingConfirmation -- 配舱通知书识别模板
 	// AirWayBill -- 航空运单识别模板
-	// Table -- 表格模版
+	// Table -- 表格模板
 	// SteelLabel -- 实物标签识别模板
 	// CarInsurance -- 车辆保险单识别模板
 	// MultiRealEstateCertificate -- 房产材料识别模板
 	// MultiRealEstateMaterial -- 房产证明识别模板
-	// HongKongUtilityBill -- 香港水电煤单识别模板
+	// HongKongUtilityBill -- 中国香港水电煤单识别模板
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
@@ -2963,7 +2968,7 @@ type ExtractDocMultiRequest struct {
 	// 是否开启父子key识别，默认是
 	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
 
-	// 模版的单个属性配置
+	// 模板的单个属性配置
 	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
 
 	// cn时，添加的key为中文  
@@ -3576,6 +3581,9 @@ type GeneralAccurateOCRRequestParams struct {
 
 	// 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
 	EnableDetectText *bool `json:"EnableDetectText,omitnil,omitempty" name:"EnableDetectText"`
+
+	// 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景 
+	ConfigID *string `json:"ConfigID,omitnil,omitempty" name:"ConfigID"`
 }
 
 type GeneralAccurateOCRRequest struct {
@@ -3601,6 +3609,9 @@ type GeneralAccurateOCRRequest struct {
 
 	// 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
 	EnableDetectText *bool `json:"EnableDetectText,omitnil,omitempty" name:"EnableDetectText"`
+
+	// 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景 
+	ConfigID *string `json:"ConfigID,omitnil,omitempty" name:"ConfigID"`
 }
 
 func (r *GeneralAccurateOCRRequest) ToJsonString() string {
@@ -3622,6 +3633,7 @@ func (r *GeneralAccurateOCRRequest) FromJsonString(s string) error {
 	delete(f, "IsPdf")
 	delete(f, "PdfPageNumber")
 	delete(f, "EnableDetectText")
+	delete(f, "ConfigID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralAccurateOCRRequest has unknown keys!", "")
 	}
@@ -4193,6 +4205,9 @@ type GetOCRResultResponseParams struct {
 	// ocr结果
 	OCRResult *OCRResult `json:"OCRResult,omitnil,omitempty" name:"OCRResult"`
 
+	// requestid 信息
+	RequestIdInfos []*RequestIdInfo `json:"RequestIdInfos,omitnil,omitempty" name:"RequestIdInfos"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4390,7 +4405,6 @@ type HKIDCardOCRResponseParams struct {
 	SmallHeadImage *string `json:"SmallHeadImage,omitnil,omitempty" name:"SmallHeadImage"`
 
 	// 该字段已废弃， 将固定返回空数组，不建议使用。
-	// This field is deprecated and will always return an empty array. Usage is not recommended.
 	//
 	// Deprecated: WarningCode is deprecated.
 	WarningCode []*int64 `json:"WarningCode,omitnil,omitempty" name:"WarningCode"`
@@ -4440,11 +4454,11 @@ type HandwritingEssayOCRRequestParams struct {
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
 	// 配置id支持：
-	// ArticleRecognize -- 手写作文模版
+	// ArticleRecognize -- 手写作文模板
 	// 默认：ArticleRecognize
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 模版的单个属性配置
+	// 模板的单个属性配置
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 }
 
@@ -4461,11 +4475,11 @@ type HandwritingEssayOCRRequest struct {
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
 	// 配置id支持：
-	// ArticleRecognize -- 手写作文模版
+	// ArticleRecognize -- 手写作文模板
 	// 默认：ArticleRecognize
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 模版的单个属性配置
+	// 模板的单个属性配置
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 }
 
@@ -9598,6 +9612,9 @@ type RecognizeValidIDCardOCRRequestParams struct {
 
 	// 默认值为false，打开返回证件是否模糊。
 	EnableQualityCheck *bool `json:"EnableQualityCheck,omitnil,omitempty" name:"EnableQualityCheck"`
+
+	// 默认值为false，打开返回是否存在电子身份证判断。
+	EnableElectronCheck *bool `json:"EnableElectronCheck,omitnil,omitempty" name:"EnableElectronCheck"`
 }
 
 type RecognizeValidIDCardOCRRequest struct {
@@ -9651,6 +9668,9 @@ type RecognizeValidIDCardOCRRequest struct {
 
 	// 默认值为false，打开返回证件是否模糊。
 	EnableQualityCheck *bool `json:"EnableQualityCheck,omitnil,omitempty" name:"EnableQualityCheck"`
+
+	// 默认值为false，打开返回是否存在电子身份证判断。
+	EnableElectronCheck *bool `json:"EnableElectronCheck,omitnil,omitempty" name:"EnableElectronCheck"`
 }
 
 func (r *RecognizeValidIDCardOCRRequest) ToJsonString() string {
@@ -9677,6 +9697,7 @@ func (r *RecognizeValidIDCardOCRRequest) FromJsonString(s string) error {
 	delete(f, "EnablePSCheck")
 	delete(f, "EnableWordCheck")
 	delete(f, "EnableQualityCheck")
+	delete(f, "EnableElectronCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeValidIDCardOCRRequest has unknown keys!", "")
 	}
@@ -9755,6 +9776,17 @@ type ReflectDetailInfo struct {
 	// RecognitionField 识别字段位置
 	// Others 其他位置
 	Position *string `json:"Position,omitnil,omitempty" name:"Position"`
+}
+
+type RequestIdInfo struct {
+	// 请求 api 的 requestid
+	ApiRequestId *string `json:"ApiRequestId,omitnil,omitempty" name:"ApiRequestId"`
+
+	// 请求 api 的错误码
+	ApiErrorCode *string `json:"ApiErrorCode,omitnil,omitempty" name:"ApiErrorCode"`
+
+	// 告警码
+	WarnCodes []*int64 `json:"WarnCodes,omitnil,omitempty" name:"WarnCodes"`
 }
 
 // Predefined struct for user
@@ -12136,6 +12168,9 @@ type VatElectronicInfo struct {
 
 	// 是否有公司印章（0：没有，1：有）
 	CompanySealMark *int64 `json:"CompanySealMark,omitnil,omitempty" name:"CompanySealMark"`
+
+	// 全电类型的多页pdf票据中，支持输出票面页码：当前第几页，一共第几页。
+	InvoicePageIndex *string `json:"InvoicePageIndex,omitnil,omitempty" name:"InvoicePageIndex"`
 }
 
 type VatElectronicItemInfo struct {

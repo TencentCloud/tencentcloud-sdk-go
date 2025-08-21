@@ -149,6 +149,11 @@ type AudioEncodeParams struct {
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
+type AudioFormat struct {
+	// 生成的音频格式，默认pcm，目前支持的格式列表：[pcm]。
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
 type AudioParams struct {
 	// 音频采样率枚举值:(注意1 代表48000HZ, 2 代表44100HZ, 3 代表16000HZ)
 	// 1：48000Hz（默认）;
@@ -1493,6 +1498,7 @@ type DescribeCallDetailInfoRequestParams struct {
 	// aCapEnergy：音频采集能量；
 	// aPlayEnergy：音频播放能量；
 	// rtt：SDK到云端的往返延时；单位: ms
+	// bigvRecFps: 云端送达帧率；
 	DataType []*string `json:"DataType,omitnil,omitempty" name:"DataType"`
 
 	// 当前页数，默认为0，
@@ -1543,6 +1549,7 @@ type DescribeCallDetailInfoRequest struct {
 	// aCapEnergy：音频采集能量；
 	// aPlayEnergy：音频播放能量；
 	// rtt：SDK到云端的往返延时；单位: ms
+	// bigvRecFps: 云端送达帧率；
 	DataType []*string `json:"DataType,omitnil,omitempty" name:"DataType"`
 
 	// 当前页数，默认为0，
@@ -5610,7 +5617,7 @@ type StartAIConversationRequestParams struct {
 	STTConfig *STTConfig `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
 
 	// LLM配置。需符合openai规范，为JSON字符串，示例如下：
-	// <pre> { <br> &emsp;  "LLMType": "大模型类型",  // String 必填，如："openai" <br> &emsp;  "Model": "您的模型名称", // String 必填，指定使用的模型<br>    "APIKey": "您的LLM API密钥", // String 必填 <br> &emsp;  "APIUrl": "https://api.xxx.com/chat/completions", // String 必填，LLM API访问的URL<br> &emsp;  "Streaming": true // Boolean 非必填，指定是否使用流式传输<br> &emsp;} </pre>
+	// <pre> { <br> &emsp;  "LLMType": "大模型类型",  // String 必填，如："openai" <br> &emsp;  "Model": "您的模型名称", // String 必填，指定使用的模型<br>    "APIKey": "您的LLM API密钥", // String 必填 <br> &emsp;  "APIUrl": "https://api.xxx.com/chat/completions", // String 必填，LLM API访问的URL<br> &emsp;  "History": 10, // Integer 选填，设置 LLM 的上下文轮次，默认值为0，最大值50<br> &emsp;  "HistoryMode": 1, // Integer 选填，1表示LLM上下文中的内容会和播放音频做同步，没有播放的音频对应的文本不会出现在上下文中。0表示不会做同步，默认值为0<br> &emsp;  "Streaming": true // Boolean 非必填，指定是否使用流式传输<br> &emsp;} </pre>
 	LLMConfig *string `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
 
 	// TTS配置，为JSON字符串，腾讯云TTS示例如下： <pre>{ <br> &emsp; "AppId": 您的应用ID, // Integer 必填<br> &emsp; "TTSType": "TTS类型", // String TTS类型, 固定为"tencent"<br> &emsp; "SecretId": "您的密钥ID", // String 必填<br> &emsp; "SecretKey":  "您的密钥Key", // String 必填<br> &emsp; "VoiceType": 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见<a href="https://cloud.tencent.com/document/product/1073/34112">语音合成计费概述</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823">语音合成音色列表</a>。<br> &emsp; "Speed": 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 <a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">语速转换</a><br> &emsp; "Volume": 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。<br> &emsp; "EmotionCategory":  "angry", // String 非必填 控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、sajiao(撒娇)、disgusted(厌恶)、amaze(震惊)、peaceful(平静)、exciting(兴奋)、aojiao(傲娇)、jieshuo(解说)。<br> &emsp; "EmotionIntensity":  150 // Integer 非必填 控制合成音频情感程度，取值范围为 [50,200]，默认为 100；只有 EmotionCategory 不为空时生效。<br> &emsp; }</pre>
@@ -5645,7 +5652,7 @@ type StartAIConversationRequest struct {
 	STTConfig *STTConfig `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
 
 	// LLM配置。需符合openai规范，为JSON字符串，示例如下：
-	// <pre> { <br> &emsp;  "LLMType": "大模型类型",  // String 必填，如："openai" <br> &emsp;  "Model": "您的模型名称", // String 必填，指定使用的模型<br>    "APIKey": "您的LLM API密钥", // String 必填 <br> &emsp;  "APIUrl": "https://api.xxx.com/chat/completions", // String 必填，LLM API访问的URL<br> &emsp;  "Streaming": true // Boolean 非必填，指定是否使用流式传输<br> &emsp;} </pre>
+	// <pre> { <br> &emsp;  "LLMType": "大模型类型",  // String 必填，如："openai" <br> &emsp;  "Model": "您的模型名称", // String 必填，指定使用的模型<br>    "APIKey": "您的LLM API密钥", // String 必填 <br> &emsp;  "APIUrl": "https://api.xxx.com/chat/completions", // String 必填，LLM API访问的URL<br> &emsp;  "History": 10, // Integer 选填，设置 LLM 的上下文轮次，默认值为0，最大值50<br> &emsp;  "HistoryMode": 1, // Integer 选填，1表示LLM上下文中的内容会和播放音频做同步，没有播放的音频对应的文本不会出现在上下文中。0表示不会做同步，默认值为0<br> &emsp;  "Streaming": true // Boolean 非必填，指定是否使用流式传输<br> &emsp;} </pre>
 	LLMConfig *string `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
 
 	// TTS配置，为JSON字符串，腾讯云TTS示例如下： <pre>{ <br> &emsp; "AppId": 您的应用ID, // Integer 必填<br> &emsp; "TTSType": "TTS类型", // String TTS类型, 固定为"tencent"<br> &emsp; "SecretId": "您的密钥ID", // String 必填<br> &emsp; "SecretKey":  "您的密钥Key", // String 必填<br> &emsp; "VoiceType": 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见<a href="https://cloud.tencent.com/document/product/1073/34112">语音合成计费概述</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823">语音合成音色列表</a>。<br> &emsp; "Speed": 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 <a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">语速转换</a><br> &emsp; "Volume": 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。<br> &emsp; "EmotionCategory":  "angry", // String 非必填 控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、sajiao(撒娇)、disgusted(厌恶)、amaze(震惊)、peaceful(平静)、exciting(兴奋)、aojiao(傲娇)、jieshuo(解说)。<br> &emsp; "EmotionIntensity":  150 // Integer 非必填 控制合成音频情感程度，取值范围为 [50,200]，默认为 100；只有 EmotionCategory 不为空时生效。<br> &emsp; }</pre>
@@ -6945,6 +6952,173 @@ type TencentVod struct {
 	UserDefineRecordId *string `json:"UserDefineRecordId,omitnil,omitempty" name:"UserDefineRecordId"`
 }
 
+// Predefined struct for user
+type TextToSpeechRequestParams struct {
+	// 需要转语音的文字内容，长度范围：[1, 255]
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本转语音的声音配置
+	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 文本转语音的输出音频的格式
+	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+}
+
+type TextToSpeechRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要转语音的文字内容，长度范围：[1, 255]
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本转语音的声音配置
+	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 文本转语音的输出音频的格式
+	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+}
+
+func (r *TextToSpeechRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "Voice")
+	delete(f, "SdkAppId")
+	delete(f, "AudioFormat")
+	delete(f, "APIKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextToSpeechResponseParams struct {
+	// Base64编码的音频数据
+	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TextToSpeechResponse struct {
+	*tchttp.BaseResponse
+	Response *TextToSpeechResponseParams `json:"Response"`
+}
+
+func (r *TextToSpeechResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextToSpeechSSERequestParams struct {
+	// 需要转语音的文字内容，长度范围：[1, 255]
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本转语音的声音配置
+	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 文本转语音的输出音频的格式
+	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+}
+
+type TextToSpeechSSERequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要转语音的文字内容，长度范围：[1, 255]
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本转语音的声音配置
+	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 文本转语音的输出音频的格式
+	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+}
+
+func (r *TextToSpeechSSERequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechSSERequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "Voice")
+	delete(f, "SdkAppId")
+	delete(f, "AudioFormat")
+	delete(f, "APIKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechSSERequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextToSpeechSSEResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TextToSpeechSSEResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *TextToSpeechSSEResponseParams `json:"Response"`
+}
+
+func (r *TextToSpeechSSEResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechSSEResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TimeValue struct {
 	// 时间，unix时间戳（1590065877s)
 	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
@@ -7481,6 +7655,96 @@ type VideoParams struct {
 
 	// 视频关键帧时间间隔，单位秒，默认值10秒。
 	Gop *uint64 `json:"Gop,omitnil,omitempty" name:"Gop"`
+}
+
+type Voice struct {
+	// TTS的声音的ID
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+}
+
+// Predefined struct for user
+type VoiceCloneRequestParams struct {
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+
+	// 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
+	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
+
+	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
+	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
+
+	// 声音克隆的参考文本，为参考音频对应的文字。
+	PromptText *string `json:"PromptText,omitnil,omitempty" name:"PromptText"`
+}
+
+type VoiceCloneRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+
+	// 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
+	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
+
+	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
+	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
+
+	// 声音克隆的参考文本，为参考音频对应的文字。
+	PromptText *string `json:"PromptText,omitnil,omitempty" name:"PromptText"`
+}
+
+func (r *VoiceCloneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoiceCloneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "APIKey")
+	delete(f, "VoiceName")
+	delete(f, "PromptAudio")
+	delete(f, "PromptText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoiceCloneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoiceCloneResponseParams struct {
+	// 克隆出的音色ID，可以用此id进行语音合成
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VoiceCloneResponse struct {
+	*tchttp.BaseResponse
+	Response *VoiceCloneResponseParams `json:"Response"`
+}
+
+func (r *VoiceCloneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoiceCloneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VoicePrint struct {

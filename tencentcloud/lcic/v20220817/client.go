@@ -1054,7 +1054,11 @@ func NewCreateRoomResponse() (response *CreateRoomResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_DISABLERECORD = "InvalidParameter.DisableRecord"
 //  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_LIVETYPE = "InvalidParameter.LiveType"
+//  INVALIDPARAMETER_MAXMICNUMBER = "InvalidParameter.MaxMicNumber"
+//  INVALIDPARAMETER_RECORDLAYOUT = "InvalidParameter.RecordLayout"
 //  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
@@ -1063,6 +1067,7 @@ func NewCreateRoomResponse() (response *CreateRoomResponse) {
 //  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
 func (c *Client) CreateRoom(request *CreateRoomRequest) (response *CreateRoomResponse, err error) {
     return c.CreateRoomWithContext(context.Background(), request)
 }
@@ -1077,7 +1082,11 @@ func (c *Client) CreateRoom(request *CreateRoomRequest) (response *CreateRoomRes
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_DISABLERECORD = "InvalidParameter.DisableRecord"
 //  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_LIVETYPE = "InvalidParameter.LiveType"
+//  INVALIDPARAMETER_MAXMICNUMBER = "InvalidParameter.MaxMicNumber"
+//  INVALIDPARAMETER_RECORDLAYOUT = "InvalidParameter.RecordLayout"
 //  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
@@ -1086,6 +1095,7 @@ func (c *Client) CreateRoom(request *CreateRoomRequest) (response *CreateRoomRes
 //  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
 func (c *Client) CreateRoomWithContext(ctx context.Context, request *CreateRoomRequest) (response *CreateRoomResponse, err error) {
     if request == nil {
         request = NewCreateRoomRequest()

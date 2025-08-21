@@ -3896,6 +3896,123 @@ func (r *DescribeGeneralResourceQuotasResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeImagesToShareRequestParams struct {
+	// CVM镜像 ID 列表。可通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回值中的ImageId获取。
+	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
+
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤器列表。
+	// <li>image-id</li>按照【CVM镜像ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// <li>image-name</li>按照【CVM镜像名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// <li>image-type</li>按照【CVM镜像类型】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 取值范围：
+	// PRIVATE_IMAGE: 私有镜像 (本账户创建的镜像)
+	// PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)
+	// SHARED_IMAGE: 共享镜像(其他账户共享给本账户的镜像) 。
+	// 
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+	// 参数不可以同时指定ImageIds和Filters。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeImagesToShareRequest struct {
+	*tchttp.BaseRequest
+	
+	// CVM镜像 ID 列表。可通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回值中的ImageId获取。
+	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
+
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤器列表。
+	// <li>image-id</li>按照【CVM镜像ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// <li>image-name</li>按照【CVM镜像名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// <li>image-type</li>按照【CVM镜像类型】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 取值范围：
+	// PRIVATE_IMAGE: 私有镜像 (本账户创建的镜像)
+	// PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)
+	// SHARED_IMAGE: 共享镜像(其他账户共享给本账户的镜像) 。
+	// 
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+	// 参数不可以同时指定ImageIds和Filters。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeImagesToShareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImagesToShareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImagesToShareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImagesToShareResponseParams struct {
+	// 符合条件的镜像数量。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// CVM镜像详细信息列表。
+	ImageSet []*Image `json:"ImageSet,omitnil,omitempty" name:"ImageSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeImagesToShareResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImagesToShareResponseParams `json:"Response"`
+}
+
+func (r *DescribeImagesToShareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImagesToShareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceVncUrlRequestParams struct {
 	// 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5787,6 +5904,61 @@ type GeneralResourceQuota struct {
 	ResourceQuotaTotal *int64 `json:"ResourceQuotaTotal,omitnil,omitempty" name:"ResourceQuotaTotal"`
 }
 
+type Image struct {
+	// CVM镜像 ID ，是Image的唯一标识。
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 镜像名称。
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// 镜像描述。
+	ImageDescription *string `json:"ImageDescription,omitnil,omitempty" name:"ImageDescription"`
+
+	// 镜像大小。单位GB。
+	ImageSize *int64 `json:"ImageSize,omitnil,omitempty" name:"ImageSize"`
+
+	// 镜像来源。
+	// <li>CREATE_IMAGE：自定义镜像</li>
+	// <li>EXTERNAL_IMPORT：外部导入镜像</li>
+	ImageSource *string `json:"ImageSource,omitnil,omitempty" name:"ImageSource"`
+
+	// 镜像分类
+	// <li>SystemImage：系统盘镜像</li>
+	// <li>InstanceImage：整机镜像</li>
+	ImageClass *string `json:"ImageClass,omitnil,omitempty" name:"ImageClass"`
+
+	// 镜像状态
+	// CREATING:创建中
+	// NORMAL:正常
+	// CREATEFAILED:创建失败
+	// USING:使用中
+	// SYNCING:同步中
+	// IMPORTING:导入中
+	// IMPORTFAILED:导入失败
+	ImageState *string `json:"ImageState,omitnil,omitempty" name:"ImageState"`
+
+	// 镜像是否支持Cloudinit。
+	IsSupportCloudinit *bool `json:"IsSupportCloudinit,omitnil,omitempty" name:"IsSupportCloudinit"`
+
+	// 镜像架构。
+	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
+
+	// 镜像操作系统。
+	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
+
+	// 镜像来源平台。
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 镜像创建时间。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 镜像是否可共享到轻量应用服务器。
+	IsShareable *bool `json:"IsShareable,omitnil,omitempty" name:"IsShareable"`
+
+	// 不可共享的原因。
+	UnshareableReason *string `json:"UnshareableReason,omitnil,omitempty" name:"UnshareableReason"`
+}
+
 // Predefined struct for user
 type ImportKeyPairRequestParams struct {
 	// 密钥对名称，可由数字，字母和下划线组成，长度不超过 25 个字符。
@@ -7272,6 +7444,71 @@ func (r *ModifyFirewallTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyFirewallTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyImageSharePermissionRequestParams struct {
+	// 镜像 ID。可通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回值中的ImageId获取。
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 共享属性，包括 SHARE，CANCEL。其中SHARE代表共享，CANCEL代表取消共享。
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
+}
+
+type ModifyImageSharePermissionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像 ID。可通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回值中的ImageId获取。
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 共享属性，包括 SHARE，CANCEL。其中SHARE代表共享，CANCEL代表取消共享。
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
+}
+
+func (r *ModifyImageSharePermissionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyImageSharePermissionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageId")
+	delete(f, "Permission")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyImageSharePermissionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyImageSharePermissionResponseParams struct {
+	// CVM自定义镜像共享到轻量应用服务器后的镜像ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyImageSharePermissionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyImageSharePermissionResponseParams `json:"Response"`
+}
+
+func (r *ModifyImageSharePermissionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyImageSharePermissionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

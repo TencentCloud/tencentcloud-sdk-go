@@ -3563,6 +3563,9 @@ type CreateOriginGroupRequestParams struct {
 	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
+	// 源站记录信息，此参数必填。
+	Records []*OriginRecord `json:"Records,omitnil,omitempty" name:"Records"`
+
 	// 源站组名称，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -3570,9 +3573,6 @@ type CreateOriginGroupRequestParams struct {
 	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡、HTTP 专用型负载均衡引用；</li>
 	// <li>HTTP： HTTP 专用型源站组，支持添加 IP/域名、对象存储源站作为源站，无法被四层代理引用，仅支持被添加加速域名、规则引擎-修改源站、HTTP 专用型负载均衡引用。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 源站记录信息，此参数必填。
-	Records []*OriginRecord `json:"Records,omitnil,omitempty" name:"Records"`
 
 	// 回源 Host Header，仅 Type = HTTP 时传入生效，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
 	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
@@ -3584,6 +3584,9 @@ type CreateOriginGroupRequest struct {
 	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
+	// 源站记录信息，此参数必填。
+	Records []*OriginRecord `json:"Records,omitnil,omitempty" name:"Records"`
+
 	// 源站组名称，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -3591,9 +3594,6 @@ type CreateOriginGroupRequest struct {
 	// <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡、HTTP 专用型负载均衡引用；</li>
 	// <li>HTTP： HTTP 专用型源站组，支持添加 IP/域名、对象存储源站作为源站，无法被四层代理引用，仅支持被添加加速域名、规则引擎-修改源站、HTTP 专用型负载均衡引用。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 源站记录信息，此参数必填。
-	Records []*OriginRecord `json:"Records,omitnil,omitempty" name:"Records"`
 
 	// 回源 Host Header，仅 Type = HTTP 时传入生效，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
 	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
@@ -3612,9 +3612,9 @@ func (r *CreateOriginGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ZoneId")
+	delete(f, "Records")
 	delete(f, "Name")
 	delete(f, "Type")
-	delete(f, "Records")
 	delete(f, "HostHeader")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOriginGroupRequest has unknown keys!", "")
@@ -4060,17 +4060,19 @@ type CreateRealtimeLogDeliveryTaskRequestParams struct {
 	// 实时日志投递任务类型，取值有：
 	// <li>cls: 推送到腾讯云 CLS；</li>
 	// <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
-	// <li>s3：推送到 AWS S3 兼容存储桶地址。</li>
+	// <li>s3：推送到 AWS S3 兼容存储桶地址；</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
-	// <li>七层域名：domain.example.com；</li>
-	// <li>四层代理实例：sid-2s69eb5wcms7。</li>
+	// 实时日志投递任务对应的实体列表。取值示例如下：
+	// <li>七层域名：domain.example.com</li>
+	// <li>四层代理实例：sid-2s69eb5wcms7</li>
+	// <li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li>
 	EntityList []*string `json:"EntityList,omitnil,omitempty" name:"EntityList"`
 
 	// 数据投递类型，取值有：
 	// <li>domain：站点加速日志；</li>
 	// <li>application：四层代理日志；</li>
+	// <li>function：边缘函数运行日志；</li>
 	// <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
 	// <li>web-attack：托管规则日志；</li>
 	// <li>web-rule：自定义规则日志；</li>
@@ -4082,7 +4084,10 @@ type CreateRealtimeLogDeliveryTaskRequestParams struct {
 	// <li>overseas：全球（不含中国大陆）。</li>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 投递的预设字段列表。
+	// 投递的预设字段列表。取值参考：
+	// <li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li>
+	// <li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li>
+	// <li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li>
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 
 	// 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。自定义字段名称不能重复，且最多不能超过 200 个字段。单个实时日志推送任务最多添加 5 个请求正文类型的自定义字段。目前仅站点加速日志（LogType=domain）支持添加自定义字段。
@@ -4121,17 +4126,19 @@ type CreateRealtimeLogDeliveryTaskRequest struct {
 	// 实时日志投递任务类型，取值有：
 	// <li>cls: 推送到腾讯云 CLS；</li>
 	// <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
-	// <li>s3：推送到 AWS S3 兼容存储桶地址。</li>
+	// <li>s3：推送到 AWS S3 兼容存储桶地址；</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
-	// <li>七层域名：domain.example.com；</li>
-	// <li>四层代理实例：sid-2s69eb5wcms7。</li>
+	// 实时日志投递任务对应的实体列表。取值示例如下：
+	// <li>七层域名：domain.example.com</li>
+	// <li>四层代理实例：sid-2s69eb5wcms7</li>
+	// <li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li>
 	EntityList []*string `json:"EntityList,omitnil,omitempty" name:"EntityList"`
 
 	// 数据投递类型，取值有：
 	// <li>domain：站点加速日志；</li>
 	// <li>application：四层代理日志；</li>
+	// <li>function：边缘函数运行日志；</li>
 	// <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
 	// <li>web-attack：托管规则日志；</li>
 	// <li>web-rule：自定义规则日志；</li>
@@ -4143,7 +4150,10 @@ type CreateRealtimeLogDeliveryTaskRequest struct {
 	// <li>overseas：全球（不含中国大陆）。</li>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 投递的预设字段列表。
+	// 投递的预设字段列表。取值参考：
+	// <li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li>
+	// <li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li>
+	// <li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li>
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 
 	// 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。自定义字段名称不能重复，且最多不能超过 200 个字段。单个实时日志推送任务最多添加 5 个请求正文类型的自定义字段。目前仅站点加速日志（LogType=domain）支持添加自定义字段。
@@ -11707,28 +11717,11 @@ type DescribeTimingL7AnalysisDataRequestParams struct {
 	// <li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 过滤条件，详细的过滤条件 Key 值如下：
-	// <li>country：按照国家/地区进行过滤，国家/地区遵循 <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> 规范。示例值：CN。</li>
-	// <li>province：按照省份进行过滤，此参数只支持服务区域为中国大陆。省份代码参考<a href="https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">境内省份映射表</a>，示例值：22。</li>
-	// <li>isp：按照运营商进行过滤，此参数只支持服务区域为中国大陆。对应的 Value 可选项如下：<br>   2：中国电信；<br>   26：中国联通；<br>   1046：中国移动；<br>   3947：中国铁通；<br>   38：教育网；<br>   43：长城宽带；<br>   0：其他运营商。</li>
-	// <li>domain：按照子域名进行过滤，示例值： www.example.com。</li>
-	// <li>url：按照 URL Path 进行过滤，示例值：/content 或 /content/test.jpg。若填写 url 参数，则最多可查询近 30 天的数据。</li>
-	// <li>referer：按照 Referer 请求头部进行过滤，示例值：http://www.example.com/。若填写 referer 参数，则最多可查询近 30 天的数据；</li>
-	// <li>resourceType：按照资源类型进行过滤，资源类型一般是文件后缀，示例值：.jpg。若填写 resourceType 参数，则最多可查询近 30 天的数据；</li>
-	// <li>protocol：按照 HTTP 协议版本进行过滤。对应的 Value 可选项如下：<br>   HTTP/1.0；<br>   HTTP/1.1；<br>   HTTP/2.0；<br>   HTTP/3；<br>   WebSocket。</li>
-	// <li>socket：按照 HTTP协议类型进行过滤。对应的 Value 可选项如下：<br>   HTTP：HTTP 协议；<br>   HTTPS：HTTPS 协议；<br>   QUIC：QUIC 协议。</li>
-	// <li>statusCode：按照边缘状态码进行过滤。若填写 statusCode 参数，则最多可查询近 30 天的数据。对应的 Value 可选项如下：<br>   1XX：1xx类型的状态码；<br>   2XX：2xx类型的状态码；<br>   3XX：3xx类型的状态码；<br>   4XX：4xx类型的状态码；<br>   5XX：5xx类型的状态码；<br>   在 [0,600) 范围内的整数。</li>
-	// <li>browserType：按照浏览器类型进行过滤。若填写 browserType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Firefox：Firefox浏览器；<br>   Chrome：Chrome浏览器；<br>   Safari：Safari浏览器；<br>   Other：其他浏览器类型；<br>   Empty：浏览器类型为空；<br>   Bot：搜索引擎爬虫；<br>   MicrosoftEdge：MicrosoftEdge浏览器；<br>   IE：IE浏览器；<br>   Opera：Opera浏览器；<br>   QQBrowser：QQ浏览器；<br>   LBBrowser：LB浏览器；<br>   MaxthonBrowser：Maxthon浏览器；<br>   SouGouBrowser：搜狗浏览器；<br>   BIDUBrowser：百度浏览器；<br>   TaoBrowser：淘浏览器；<br>   UBrowser：UC浏览器。</li>
-	// <li>deviceType：按照设备类型进行过滤。若填写 deviceType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TV：TV设备；<br>   Tablet：Tablet设备；<br>   Mobile：Mobile设备；<br>   Desktop：Desktop设备；<br>   Other：其他设备类型；<br>   Empty：设备类型为空。</li>
-	// <li>operatingSystemType：按照操作系统类型进行过滤。若填写 operatingSystemType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Linux：Linux操作系统；<br>   MacOS：MacOs操作系统；<br>   Android：Android操作系统；<br>   IOS：IOS操作系统；<br>   Windows：Windows操作系统；<br>   NetBSD：NetBSD；<br>   ChromiumOS：ChromiumOS；<br>   Bot：搜索引擎爬虫；<br>   Other：其他类型的操作系统；<br>   Empty：操作系统为空。</li>
-	// <li>tlsVersion：按照 TLS 版本进行过滤。若填写 tlsVersion 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TLS1.0；<br>   TLS1.1；<br>   TLS1.2；<br>   TLS1.3。</li>
-	// <li>ipVersion：按照 IP 版本进行过滤。对应 Value 的可选项如下：<br>   4：IPv4；<br>   6：IPv6。</li>
-	// <li>cacheType：按照缓存状态进行过滤。对应 Value 的可选项如下：<br>   hit：请求命中 EdgeOne 节点缓存，资源由节点缓存提供。资源部分命中缓存也会记录为 hit。<br>   miss：请求未命中 EdgeOne 节点缓存，资源由源站提供。<br>   dynamic：请求的资源无法缓存/未配置被节点缓存，资源由源站提供。<br>   other：无法被识别的缓存状态。边缘函数响应的请求会记录为 other。</li>
-	// <li>clientIp：按照客户端 IP 进行过滤。若填写 clientIp 参数，则最多可查询近 30 天的数据。</li>
-	// <li>userAgent：按照 User-Agent 请求头部进行过滤。若填写 userAgent 参数，则最多可查询近 30 天的数据。</li>
+	// 筛选数据时使用的过滤条件，取值参考 [指标分析筛选条件说明](https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945) 中针对 L7 访问流量、带宽、请求数的可用筛选项。
+	// 如需限定站点或内容标识符，请在 `ZoneIds.N` 参数中另行传入对应的值。
 	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
+	// 数据归属地区。该参数已废弃。请在 `Filters.country` 中按客户端地域过滤数据。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 }
 
@@ -11763,28 +11756,11 @@ type DescribeTimingL7AnalysisDataRequest struct {
 	// <li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 过滤条件，详细的过滤条件 Key 值如下：
-	// <li>country：按照国家/地区进行过滤，国家/地区遵循 <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> 规范。示例值：CN。</li>
-	// <li>province：按照省份进行过滤，此参数只支持服务区域为中国大陆。省份代码参考<a href="https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">境内省份映射表</a>，示例值：22。</li>
-	// <li>isp：按照运营商进行过滤，此参数只支持服务区域为中国大陆。对应的 Value 可选项如下：<br>   2：中国电信；<br>   26：中国联通；<br>   1046：中国移动；<br>   3947：中国铁通；<br>   38：教育网；<br>   43：长城宽带；<br>   0：其他运营商。</li>
-	// <li>domain：按照子域名进行过滤，示例值： www.example.com。</li>
-	// <li>url：按照 URL Path 进行过滤，示例值：/content 或 /content/test.jpg。若填写 url 参数，则最多可查询近 30 天的数据。</li>
-	// <li>referer：按照 Referer 请求头部进行过滤，示例值：http://www.example.com/。若填写 referer 参数，则最多可查询近 30 天的数据；</li>
-	// <li>resourceType：按照资源类型进行过滤，资源类型一般是文件后缀，示例值：.jpg。若填写 resourceType 参数，则最多可查询近 30 天的数据；</li>
-	// <li>protocol：按照 HTTP 协议版本进行过滤。对应的 Value 可选项如下：<br>   HTTP/1.0；<br>   HTTP/1.1；<br>   HTTP/2.0；<br>   HTTP/3；<br>   WebSocket。</li>
-	// <li>socket：按照 HTTP协议类型进行过滤。对应的 Value 可选项如下：<br>   HTTP：HTTP 协议；<br>   HTTPS：HTTPS 协议；<br>   QUIC：QUIC 协议。</li>
-	// <li>statusCode：按照边缘状态码进行过滤。若填写 statusCode 参数，则最多可查询近 30 天的数据。对应的 Value 可选项如下：<br>   1XX：1xx类型的状态码；<br>   2XX：2xx类型的状态码；<br>   3XX：3xx类型的状态码；<br>   4XX：4xx类型的状态码；<br>   5XX：5xx类型的状态码；<br>   在 [0,600) 范围内的整数。</li>
-	// <li>browserType：按照浏览器类型进行过滤。若填写 browserType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Firefox：Firefox浏览器；<br>   Chrome：Chrome浏览器；<br>   Safari：Safari浏览器；<br>   Other：其他浏览器类型；<br>   Empty：浏览器类型为空；<br>   Bot：搜索引擎爬虫；<br>   MicrosoftEdge：MicrosoftEdge浏览器；<br>   IE：IE浏览器；<br>   Opera：Opera浏览器；<br>   QQBrowser：QQ浏览器；<br>   LBBrowser：LB浏览器；<br>   MaxthonBrowser：Maxthon浏览器；<br>   SouGouBrowser：搜狗浏览器；<br>   BIDUBrowser：百度浏览器；<br>   TaoBrowser：淘浏览器；<br>   UBrowser：UC浏览器。</li>
-	// <li>deviceType：按照设备类型进行过滤。若填写 deviceType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TV：TV设备；<br>   Tablet：Tablet设备；<br>   Mobile：Mobile设备；<br>   Desktop：Desktop设备；<br>   Other：其他设备类型；<br>   Empty：设备类型为空。</li>
-	// <li>operatingSystemType：按照操作系统类型进行过滤。若填写 operatingSystemType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Linux：Linux操作系统；<br>   MacOS：MacOs操作系统；<br>   Android：Android操作系统；<br>   IOS：IOS操作系统；<br>   Windows：Windows操作系统；<br>   NetBSD：NetBSD；<br>   ChromiumOS：ChromiumOS；<br>   Bot：搜索引擎爬虫；<br>   Other：其他类型的操作系统；<br>   Empty：操作系统为空。</li>
-	// <li>tlsVersion：按照 TLS 版本进行过滤。若填写 tlsVersion 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TLS1.0；<br>   TLS1.1；<br>   TLS1.2；<br>   TLS1.3。</li>
-	// <li>ipVersion：按照 IP 版本进行过滤。对应 Value 的可选项如下：<br>   4：IPv4；<br>   6：IPv6。</li>
-	// <li>cacheType：按照缓存状态进行过滤。对应 Value 的可选项如下：<br>   hit：请求命中 EdgeOne 节点缓存，资源由节点缓存提供。资源部分命中缓存也会记录为 hit。<br>   miss：请求未命中 EdgeOne 节点缓存，资源由源站提供。<br>   dynamic：请求的资源无法缓存/未配置被节点缓存，资源由源站提供。<br>   other：无法被识别的缓存状态。边缘函数响应的请求会记录为 other。</li>
-	// <li>clientIp：按照客户端 IP 进行过滤。若填写 clientIp 参数，则最多可查询近 30 天的数据。</li>
-	// <li>userAgent：按照 User-Agent 请求头部进行过滤。若填写 userAgent 参数，则最多可查询近 30 天的数据。</li>
+	// 筛选数据时使用的过滤条件，取值参考 [指标分析筛选条件说明](https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945) 中针对 L7 访问流量、带宽、请求数的可用筛选项。
+	// 如需限定站点或内容标识符，请在 `ZoneIds.N` 参数中另行传入对应的值。
 	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
+	// 数据归属地区。该参数已废弃。请在 `Filters.country` 中按客户端地域过滤数据。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 }
 
@@ -12012,7 +11988,6 @@ type DescribeTopL7AnalysisDataRequestParams struct {
 	// <li> l7Flow_request_ua_browser：按浏览器类型维度统计 L7 访问请求数指标；</li>
 	// <li> l7Flow_request_ua_os：按操作系统类型维度统计 L7 访问请求数指标；</li>
 	// <li> l7Flow_request_ua：按 User-Agent 维度统计 L7 访问请求数指标。</li>
-	// 
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
@@ -12021,35 +11996,14 @@ type DescribeTopL7AnalysisDataRequestParams struct {
 	// 查询前多少个 top 数据，最大值为1000。不填默认为10，表示查询 top10 的数据。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，详细的过滤条件 Key 值如下：
-	// <li>country：按照国家/地区进行过滤，国家/地区遵循 <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> 规范。示例值：CN。</li>
-	// <li>province：按照省份进行过滤，此参数只支持服务区域为中国大陆。省份代码参考<a href="https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">境内省份映射表</a>，示例值：22。</li>
-	// <li>isp：按照运营商进行过滤，此参数只支持服务区域为中国大陆。对应的 Value 可选项如下：<br>   2：中国电信；<br>   26：中国联通；<br>   1046：中国移动；<br>   3947：中国铁通；<br>   38：教育网；<br>   43：长城宽带；<br>   0：其他运营商。</li>
-	// <li>domain：按照子域名进行过滤，示例值： www.example.com。</li>
-	// <li>url：按照 URL Path 进行过滤，示例值：/content 或 /content/test.jpg。若填写 url 参数，则最多可查询近 30 天的数据。</li>
-	// <li>referer：按照 Referer 请求头部进行过滤，示例值：http://www.example.com/。若填写 referer 参数，则最多可查询近 30 天的数据；</li>
-	// <li>resourceType：按照资源类型进行过滤，资源类型一般是文件后缀，示例值：.jpg。若填写 resourceType 参数，则最多可查询近 30 天的数据；</li>
-	// <li>protocol：按照 HTTP 协议版本进行过滤。对应的 Value 可选项如下：<br>   HTTP/1.0；<br>   HTTP/1.1；<br>   HTTP/2.0；<br>   HTTP/3；<br>   WebSocket。</li>
-	// <li>socket：按照 HTTP协议类型进行过滤。对应的 Value 可选项如下：<br>   HTTP：HTTP 协议；<br>   HTTPS：HTTPS 协议；<br>   QUIC：QUIC 协议。</li>
-	// <li>statusCode：按照边缘状态码进行过滤。若填写 statusCode 参数，则最多可查询近 30 天的数据。对应的 Value 可选项如下：<br>   1XX：1xx类型的状态码；<br>   2XX：2xx类型的状态码；<br>   3XX：3xx类型的状态码；<br>   4XX：4xx类型的状态码；<br>   5XX：5xx类型的状态码；<br>   在 [0,600) 范围内的整数。</li>
-	// <li>browserType：按照浏览器类型进行过滤。若填写 browserType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Firefox：Firefox浏览器；<br>   Chrome：Chrome浏览器；<br>   Safari：Safari浏览器；<br>   Other：其他浏览器类型；<br>   Empty：浏览器类型为空；<br>   Bot：搜索引擎爬虫；<br>   MicrosoftEdge：MicrosoftEdge浏览器；<br>   IE：IE浏览器；<br>   Opera：Opera浏览器；<br>   QQBrowser：QQ浏览器；<br>   LBBrowser：LB浏览器；<br>   MaxthonBrowser：Maxthon浏览器；<br>   SouGouBrowser：搜狗浏览器；<br>   BIDUBrowser：百度浏览器；<br>   TaoBrowser：淘浏览器；<br>   UBrowser：UC浏览器。</li>
-	// <li>deviceType：按照设备类型进行过滤。若填写 deviceType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TV：TV设备；<br>   Tablet：Tablet设备；<br>   Mobile：Mobile设备；<br>   Desktop：Desktop设备；<br>   Other：其他设备类型；<br>   Empty：设备类型为空。</li>
-	// <li>operatingSystemType：按照操作系统类型进行过滤。若填写 operatingSystemType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Linux：Linux操作系统；<br>   MacOS：MacOs操作系统；<br>   Android：Android操作系统；<br>   IOS：IOS操作系统；<br>   Windows：Windows操作系统；<br>   NetBSD：NetBSD；<br>   ChromiumOS：ChromiumOS；<br>   Bot：搜索引擎爬虫；<br>   Other：其他类型的操作系统；<br>   Empty：操作系统为空。</li>
-	// <li>tlsVersion：按照 TLS 版本进行过滤。若填写 tlsVersion 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TLS1.0；<br>   TLS1.1；<br>   TLS1.2；<br>   TLS1.3。</li>
-	// <li>ipVersion：按照 IP 版本进行过滤。对应 Value 的可选项如下：<br>   4：IPv4；<br>   6：IPv6。</li>
-	// <li>cacheType：按照缓存状态进行过滤。对应 Value 的可选项如下：<br>   hit：请求命中 EdgeOne 节点缓存，资源由节点缓存提供。资源部分命中缓存也会记录为 hit。<br>   miss：请求未命中 EdgeOne 节点缓存，资源由源站提供。<br>   dynamic：请求的资源无法缓存/未配置被节点缓存，资源由源站提供。<br>   other：无法被识别的缓存状态。边缘函数响应的请求会记录为 other。</li>
-	// <li>clientIp：按照客户端 IP 进行过滤。若填写 clientIp 参数，则最多可查询近 30 天的数据。</li>
-	// <li>userAgent：按照 User-Agent 请求头部进行过滤。若填写 userAgent 参数，则最多可查询近 30 天的数据。</li>
+	// 筛选数据时使用的过滤条件，取值参考 [指标分析筛选条件说明](https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945) 中针对 L7 访问流量、带宽、请求数的可用筛选项。
+	// 如需限定站点或内容标识符，请在 `ZoneIds.N` 参数中另行传入对应的值。
 	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询时间粒度，取值有：
-	// <li>min: 1分钟；</li>
-	// <li>5min: 5分钟；</li>
-	// <li>hour: 1小时；</li>
-	// <li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+	// 查询时间粒度，该参数无效，待废弃。
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
+	// 数据归属地区。该参数已废弃。请在 `Filters.country` 中按客户端地域过滤数据。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 }
 
@@ -12087,7 +12041,6 @@ type DescribeTopL7AnalysisDataRequest struct {
 	// <li> l7Flow_request_ua_browser：按浏览器类型维度统计 L7 访问请求数指标；</li>
 	// <li> l7Flow_request_ua_os：按操作系统类型维度统计 L7 访问请求数指标；</li>
 	// <li> l7Flow_request_ua：按 User-Agent 维度统计 L7 访问请求数指标。</li>
-	// 
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
@@ -12096,35 +12049,14 @@ type DescribeTopL7AnalysisDataRequest struct {
 	// 查询前多少个 top 数据，最大值为1000。不填默认为10，表示查询 top10 的数据。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，详细的过滤条件 Key 值如下：
-	// <li>country：按照国家/地区进行过滤，国家/地区遵循 <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> 规范。示例值：CN。</li>
-	// <li>province：按照省份进行过滤，此参数只支持服务区域为中国大陆。省份代码参考<a href="https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">境内省份映射表</a>，示例值：22。</li>
-	// <li>isp：按照运营商进行过滤，此参数只支持服务区域为中国大陆。对应的 Value 可选项如下：<br>   2：中国电信；<br>   26：中国联通；<br>   1046：中国移动；<br>   3947：中国铁通；<br>   38：教育网；<br>   43：长城宽带；<br>   0：其他运营商。</li>
-	// <li>domain：按照子域名进行过滤，示例值： www.example.com。</li>
-	// <li>url：按照 URL Path 进行过滤，示例值：/content 或 /content/test.jpg。若填写 url 参数，则最多可查询近 30 天的数据。</li>
-	// <li>referer：按照 Referer 请求头部进行过滤，示例值：http://www.example.com/。若填写 referer 参数，则最多可查询近 30 天的数据；</li>
-	// <li>resourceType：按照资源类型进行过滤，资源类型一般是文件后缀，示例值：.jpg。若填写 resourceType 参数，则最多可查询近 30 天的数据；</li>
-	// <li>protocol：按照 HTTP 协议版本进行过滤。对应的 Value 可选项如下：<br>   HTTP/1.0；<br>   HTTP/1.1；<br>   HTTP/2.0；<br>   HTTP/3；<br>   WebSocket。</li>
-	// <li>socket：按照 HTTP协议类型进行过滤。对应的 Value 可选项如下：<br>   HTTP：HTTP 协议；<br>   HTTPS：HTTPS 协议；<br>   QUIC：QUIC 协议。</li>
-	// <li>statusCode：按照边缘状态码进行过滤。若填写 statusCode 参数，则最多可查询近 30 天的数据。对应的 Value 可选项如下：<br>   1XX：1xx类型的状态码；<br>   2XX：2xx类型的状态码；<br>   3XX：3xx类型的状态码；<br>   4XX：4xx类型的状态码；<br>   5XX：5xx类型的状态码；<br>   在 [0,600) 范围内的整数。</li>
-	// <li>browserType：按照浏览器类型进行过滤。若填写 browserType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Firefox：Firefox浏览器；<br>   Chrome：Chrome浏览器；<br>   Safari：Safari浏览器；<br>   Other：其他浏览器类型；<br>   Empty：浏览器类型为空；<br>   Bot：搜索引擎爬虫；<br>   MicrosoftEdge：MicrosoftEdge浏览器；<br>   IE：IE浏览器；<br>   Opera：Opera浏览器；<br>   QQBrowser：QQ浏览器；<br>   LBBrowser：LB浏览器；<br>   MaxthonBrowser：Maxthon浏览器；<br>   SouGouBrowser：搜狗浏览器；<br>   BIDUBrowser：百度浏览器；<br>   TaoBrowser：淘浏览器；<br>   UBrowser：UC浏览器。</li>
-	// <li>deviceType：按照设备类型进行过滤。若填写 deviceType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TV：TV设备；<br>   Tablet：Tablet设备；<br>   Mobile：Mobile设备；<br>   Desktop：Desktop设备；<br>   Other：其他设备类型；<br>   Empty：设备类型为空。</li>
-	// <li>operatingSystemType：按照操作系统类型进行过滤。若填写 operatingSystemType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Linux：Linux操作系统；<br>   MacOS：MacOs操作系统；<br>   Android：Android操作系统；<br>   IOS：IOS操作系统；<br>   Windows：Windows操作系统；<br>   NetBSD：NetBSD；<br>   ChromiumOS：ChromiumOS；<br>   Bot：搜索引擎爬虫；<br>   Other：其他类型的操作系统；<br>   Empty：操作系统为空。</li>
-	// <li>tlsVersion：按照 TLS 版本进行过滤。若填写 tlsVersion 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TLS1.0；<br>   TLS1.1；<br>   TLS1.2；<br>   TLS1.3。</li>
-	// <li>ipVersion：按照 IP 版本进行过滤。对应 Value 的可选项如下：<br>   4：IPv4；<br>   6：IPv6。</li>
-	// <li>cacheType：按照缓存状态进行过滤。对应 Value 的可选项如下：<br>   hit：请求命中 EdgeOne 节点缓存，资源由节点缓存提供。资源部分命中缓存也会记录为 hit。<br>   miss：请求未命中 EdgeOne 节点缓存，资源由源站提供。<br>   dynamic：请求的资源无法缓存/未配置被节点缓存，资源由源站提供。<br>   other：无法被识别的缓存状态。边缘函数响应的请求会记录为 other。</li>
-	// <li>clientIp：按照客户端 IP 进行过滤。若填写 clientIp 参数，则最多可查询近 30 天的数据。</li>
-	// <li>userAgent：按照 User-Agent 请求头部进行过滤。若填写 userAgent 参数，则最多可查询近 30 天的数据。</li>
+	// 筛选数据时使用的过滤条件，取值参考 [指标分析筛选条件说明](https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945) 中针对 L7 访问流量、带宽、请求数的可用筛选项。
+	// 如需限定站点或内容标识符，请在 `ZoneIds.N` 参数中另行传入对应的值。
 	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询时间粒度，取值有：
-	// <li>min: 1分钟；</li>
-	// <li>5min: 5分钟；</li>
-	// <li>hour: 1小时；</li>
-	// <li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+	// 查询时间粒度，该参数无效，待废弃。
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
+	// 数据归属地区。该参数已废弃。请在 `Filters.country` 中按客户端地域过滤数据。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 }
 
@@ -13689,6 +13621,26 @@ type ForceRedirectHTTPSParameters struct {
 	RedirectStatusCode *int64 `json:"RedirectStatusCode,omitnil,omitempty" name:"RedirectStatusCode"`
 }
 
+type FrequentScanningProtection struct {
+	// 高频扫描防护规则是否开启。取值有：<li>on：开启，高频扫描防护规则生效；</li><li>off：关闭，高频扫描防护规则不生效。</li>	
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 高频扫描防护的处置动作。 当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>JSChallenge：JavaScript 挑战，响应 JavaScript 挑战页面。</li>
+	Action *SecurityAction `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 请求统计的匹配方式，当 Enabled 为 on 时，此字段必填。取值有：<li>http.request.xff_header_ip：客户端 IP（优先匹配 XFF 头部）；</li><li>http.request.ip：客户端 IP。</li> 
+	CountBy *string `json:"CountBy,omitnil,omitempty" name:"CountBy"`
+
+	// 此参数指定高频扫描防护的阈值，即在 CountingPeriod 所设置时间范围内命中「配置为拦截」的托管规则时的累计拦截次数，取值范围 1 ~ 4294967294，例如 100，当超过此统计值时，后续请求将触发 Action 所设置的处置动作。当 Enabled 为 on 时，此字段必填。
+	BlockThreshold *int64 `json:"BlockThreshold,omitnil,omitempty" name:"BlockThreshold"`
+
+	// 此参数指定高频扫描防护所统计的时间窗口，即命中「配置为拦截」的托管规则的请求的统计时间窗口，取值 5 ~ 1800，单位仅支持秒（s），例如 5s。 当 Enabled 为 on 时，此字段必填。
+	CountingPeriod *string `json:"CountingPeriod,omitnil,omitempty" name:"CountingPeriod"`
+
+	// 此参数指定高频扫描防护 Action 参数所设置处置动作的持续时长，取值范围 60 ~ 86400，单位仅支持秒（s），例如 60s。当 Enabled 为 on 时，此字段必填。
+	ActionDuration *string `json:"ActionDuration,omitnil,omitempty" name:"ActionDuration"`
+}
+
 type Function struct {
 	// 函数 ID。
 	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
@@ -14862,6 +14814,9 @@ type ManagedRules struct {
 
 	// 托管规则组的配置。如果此结构传空数组或 GroupId 未包含在列表内将按照默认方式处理。
 	ManagedRuleGroups []*ManagedRuleGroup `json:"ManagedRuleGroups,omitnil,omitempty" name:"ManagedRuleGroups"`
+
+	// 高频扫描防护配置选项，当某一访客的请求频繁命中「配置为拦截」的托管规则时，在一段时间内封禁该访客所有请求。
+	FrequentScanningProtection *FrequentScanningProtection `json:"FrequentScanningProtection,omitnil,omitempty" name:"FrequentScanningProtection"`
 }
 
 type MaxAge struct {
@@ -19030,7 +18985,7 @@ type OriginRecord struct {
 	// 源站记录ID。
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 源站权重，取值为0-100, 不填表示不设置权重，由系统自由调度，填0表示权重为0, 流量将不会调度到此源站。
+	// 【源站权重】：用于控制流量分配优先级的参数，取值范围：0-100（整数）：<li>空值：不设置权重，系统按默认策略调度；</li><li>0 值：明确设置权重为0，流量将不会分配到该源站，注意事项：必须确保至少有一个源站的权重值大于0；</li><li>正常值：数值越大分配流量越多 ；</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 

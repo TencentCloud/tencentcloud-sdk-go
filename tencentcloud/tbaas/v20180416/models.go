@@ -1380,10 +1380,10 @@ type InvokeChainMakerDemoContractRequestParams struct {
 	// 合约名称，可在合约管理中获取
 	ContractName *string `json:"ContractName,omitnil,omitempty" name:"ContractName"`
 
-	// 合约方法名
+	// 合约方法名，由合约代码定义，可以参考合约详情中的合约调用定义
 	FuncName *string `json:"FuncName,omitnil,omitempty" name:"FuncName"`
 
-	// 合约方法入参，json格式字符串，key/value都是string类型的map
+	// 合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义，可以参考合约详情中的合约调用定义
 	FuncParam *string `json:"FuncParam,omitnil,omitempty" name:"FuncParam"`
 
 	// 是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
@@ -1402,10 +1402,10 @@ type InvokeChainMakerDemoContractRequest struct {
 	// 合约名称，可在合约管理中获取
 	ContractName *string `json:"ContractName,omitnil,omitempty" name:"ContractName"`
 
-	// 合约方法名
+	// 合约方法名，由合约代码定义，可以参考合约详情中的合约调用定义
 	FuncName *string `json:"FuncName,omitnil,omitempty" name:"FuncName"`
 
-	// 合约方法入参，json格式字符串，key/value都是string类型的map
+	// 合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义，可以参考合约详情中的合约调用定义
 	FuncParam *string `json:"FuncParam,omitnil,omitempty" name:"FuncParam"`
 
 	// 是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
@@ -1786,10 +1786,10 @@ type QueryChainMakerContractRequestParams struct {
 	// 合约名称，可在合约管理中获取
 	ContractName *string `json:"ContractName,omitnil,omitempty" name:"ContractName"`
 
-	// 合约方法名
+	// 合约方法名，由合约代码定义
 	FuncName *string `json:"FuncName,omitnil,omitempty" name:"FuncName"`
 
-	// 合约方法入参，json格式字符串，key/value都是string类型的map
+	// 合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义
 	FuncParam *string `json:"FuncParam,omitnil,omitempty" name:"FuncParam"`
 }
 
@@ -1805,10 +1805,10 @@ type QueryChainMakerContractRequest struct {
 	// 合约名称，可在合约管理中获取
 	ContractName *string `json:"ContractName,omitnil,omitempty" name:"ContractName"`
 
-	// 合约方法名
+	// 合约方法名，由合约代码定义
 	FuncName *string `json:"FuncName,omitnil,omitempty" name:"FuncName"`
 
-	// 合约方法入参，json格式字符串，key/value都是string类型的map
+	// 合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义
 	FuncParam *string `json:"FuncParam,omitnil,omitempty" name:"FuncParam"`
 }
 
@@ -1951,10 +1951,10 @@ type QueryChainMakerDemoContractRequestParams struct {
 	// 合约名称，可在合约管理中获取
 	ContractName *string `json:"ContractName,omitnil,omitempty" name:"ContractName"`
 
-	// 合约方法名
+	// 合约方法名，由合约代码定义，可以参考合约详情中的合约调用定义
 	FuncName *string `json:"FuncName,omitnil,omitempty" name:"FuncName"`
 
-	// 合约方法入参，json格式字符串，key/value都是string类型的map
+	// 合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义，可以参考合约详情中的合约调用定义
 	FuncParam *string `json:"FuncParam,omitnil,omitempty" name:"FuncParam"`
 }
 
@@ -1970,10 +1970,10 @@ type QueryChainMakerDemoContractRequest struct {
 	// 合约名称，可在合约管理中获取
 	ContractName *string `json:"ContractName,omitnil,omitempty" name:"ContractName"`
 
-	// 合约方法名
+	// 合约方法名，由合约代码定义，可以参考合约详情中的合约调用定义
 	FuncName *string `json:"FuncName,omitnil,omitempty" name:"FuncName"`
 
-	// 合约方法入参，json格式字符串，key/value都是string类型的map
+	// 合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义，可以参考合约详情中的合约调用定义
 	FuncParam *string `json:"FuncParam,omitnil,omitempty" name:"FuncParam"`
 }
 

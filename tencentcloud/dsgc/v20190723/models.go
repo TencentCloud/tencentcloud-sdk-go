@@ -1537,7 +1537,7 @@ type CreateDSPAComplianceGroupRequestParams struct {
 	// 分级组ID，默认值为1，新增参数，可选
 	LevelGroupId *uint64 `json:"LevelGroupId,omitnil,omitempty" name:"LevelGroupId"`
 
-	// 1代表模版开启，0代表模版关闭
+	// 1代表模板开启，0代表模板关闭
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 该complianceId的开启状态将被关闭
@@ -1562,7 +1562,7 @@ type CreateDSPAComplianceGroupRequest struct {
 	// 分级组ID，默认值为1，新增参数，可选
 	LevelGroupId *uint64 `json:"LevelGroupId,omitnil,omitempty" name:"LevelGroupId"`
 
-	// 1代表模版开启，0代表模版关闭
+	// 1代表模板开启，0代表模板关闭
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 该complianceId的开启状态将被关闭
@@ -6809,7 +6809,7 @@ type DescribeDSPAComplianceGroupsRequestParams struct {
 	// 合规组类型可选值：0 默认合规组, 1 系统合规组, 2 自定义合规组
 	ComplianceGroupTypeList []*int64 `json:"ComplianceGroupTypeList,omitnil,omitempty" name:"ComplianceGroupTypeList"`
 
-	// 是否仅显示已开启模版
+	// 是否仅显示已开启模板
 	IsFilterCloseComplianceGroup *bool `json:"IsFilterCloseComplianceGroup,omitnil,omitempty" name:"IsFilterCloseComplianceGroup"`
 }
 
@@ -6834,7 +6834,7 @@ type DescribeDSPAComplianceGroupsRequest struct {
 	// 合规组类型可选值：0 默认合规组, 1 系统合规组, 2 自定义合规组
 	ComplianceGroupTypeList []*int64 `json:"ComplianceGroupTypeList,omitnil,omitempty" name:"ComplianceGroupTypeList"`
 
-	// 是否仅显示已开启模版
+	// 是否仅显示已开启模板
 	IsFilterCloseComplianceGroup *bool `json:"IsFilterCloseComplianceGroup,omitnil,omitempty" name:"IsFilterCloseComplianceGroup"`
 }
 
@@ -9704,10 +9704,10 @@ type DspaDiscoveryComplianceGroupInfo struct {
 	// 是否别名
 	IsAlias *bool `json:"IsAlias,omitnil,omitempty" name:"IsAlias"`
 
-	// 1代表模版开启，0代表模版关闭
+	// 1代表模板开启，0代表模板关闭
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 模版最后修改时间
+	// 模板最后修改时间
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
@@ -13056,7 +13056,7 @@ type ReportInfo struct {
 	// 进度百分比
 	ProgressPercent *uint64 `json:"ProgressPercent,omitnil,omitempty" name:"ProgressPercent"`
 
-	// 报告模版名称
+	// 报告模板名称
 	ReportTemplateName *string `json:"ReportTemplateName,omitnil,omitempty" name:"ReportTemplateName"`
 }
 

@@ -2782,6 +2782,9 @@ type CreateTWeSeeRecognitionTaskRequestParams struct {
 	// - `minutely`：分钟级（默认值）
 	// - `immediate`：立即
 	SummaryQOS *string `json:"SummaryQOS,omitnil,omitempty" name:"SummaryQOS"`
+
+	// 摘要输出配置
+	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
 }
 
 type CreateTWeSeeRecognitionTaskRequest struct {
@@ -2825,6 +2828,9 @@ type CreateTWeSeeRecognitionTaskRequest struct {
 	// - `minutely`：分钟级（默认值）
 	// - `immediate`：立即
 	SummaryQOS *string `json:"SummaryQOS,omitnil,omitempty" name:"SummaryQOS"`
+
+	// 摘要输出配置
+	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
 }
 
 func (r *CreateTWeSeeRecognitionTaskRequest) ToJsonString() string {
@@ -2850,6 +2856,7 @@ func (r *CreateTWeSeeRecognitionTaskRequest) FromJsonString(s string) error {
 	delete(f, "IsCustomDevice")
 	delete(f, "InputType")
 	delete(f, "SummaryQOS")
+	delete(f, "SummaryConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeSeeRecognitionTaskRequest has unknown keys!", "")
 	}
@@ -10788,6 +10795,9 @@ type InvokeTWeSeeRecognitionTaskRequestParams struct {
 	// - `minutely`：分钟级（默认值）
 	// - `immediate`：立即
 	SummaryQOS *string `json:"SummaryQOS,omitnil,omitempty" name:"SummaryQOS"`
+
+	// 摘要输出配置
+	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
 }
 
 type InvokeTWeSeeRecognitionTaskRequest struct {
@@ -10831,6 +10841,9 @@ type InvokeTWeSeeRecognitionTaskRequest struct {
 	// - `minutely`：分钟级（默认值）
 	// - `immediate`：立即
 	SummaryQOS *string `json:"SummaryQOS,omitnil,omitempty" name:"SummaryQOS"`
+
+	// 摘要输出配置
+	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
 }
 
 func (r *InvokeTWeSeeRecognitionTaskRequest) ToJsonString() string {
@@ -10856,6 +10869,7 @@ func (r *InvokeTWeSeeRecognitionTaskRequest) FromJsonString(s string) error {
 	delete(f, "IsCustomDevice")
 	delete(f, "InputType")
 	delete(f, "SummaryQOS")
+	delete(f, "SummaryConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeTWeSeeRecognitionTaskRequest has unknown keys!", "")
 	}
@@ -12560,6 +12574,9 @@ type ModifyTWeSeeConfigRequestParams struct {
 
 	// 配置参数，不传则不修改
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 视频摘要配置参数，不传则不修改
+	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
 }
 
 type ModifyTWeSeeConfigRequest struct {
@@ -12585,6 +12602,9 @@ type ModifyTWeSeeConfigRequest struct {
 
 	// 配置参数，不传则不修改
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 视频摘要配置参数，不传则不修改
+	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
 }
 
 func (r *ModifyTWeSeeConfigRequest) ToJsonString() string {
@@ -12606,6 +12626,7 @@ func (r *ModifyTWeSeeConfigRequest) FromJsonString(s string) error {
 	delete(f, "EnableSummary")
 	delete(f, "EnableSearch")
 	delete(f, "Config")
+	delete(f, "SummaryConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeSeeConfigRequest has unknown keys!", "")
 	}
@@ -14980,7 +15001,7 @@ type VideoLicenseEntity struct {
 }
 
 type VisionRecognitionResult struct {
-	// 任务状态（1：分析失败；2：下载/读取视频/图片失败；3：成功）
+	// 任务状态（1：分析失败；2：下载/读取视频/图片失败；3：成功；4：执行中）
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 识别到的目标类型。可能取值：
@@ -15000,6 +15021,53 @@ type VisionRecognitionResult struct {
 
 	// 摘要文本（次选语言）
 	AlternativeSummary *string `json:"AlternativeSummary,omitnil,omitempty" name:"AlternativeSummary"`
+
+	// 错误码，可能取值：
+	// 
+	// - `DownloadFailed`：下载视频/图片文件失败
+	// - `ReadFailed`：读取视频/图片文件失败
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+}
+
+type VisionSummaryConfig struct {
+	// 主输出语言
+	// 
+	// 支持列表如下：
+	// zh 中文
+	// en 英语
+	// ja 日语
+	// ko 韩文
+	// pt-BR 葡萄牙语（巴西）
+	// th 泰语
+	OutputLang *string `json:"OutputLang,omitnil,omitempty" name:"OutputLang"`
+
+	// 可选输出语言
+	// 
+	// 支持列表如下：
+	// zh 中文
+	// en 英语
+	// ja 日语
+	// ko 韩文
+	// pt-BR 葡萄牙语（巴西）
+	// th 泰语
+	AlternativeOutputLang *string `json:"AlternativeOutputLang,omitnil,omitempty" name:"AlternativeOutputLang"`
+
+	// 多摄像头布局定义。可能取值：
+	// 
+	// - 单摄（默认值）：`Single`
+	// 
+	// - 双摄（纵向排列）- 全部画面：`Vertical,Num=2,Index=0;1`
+	// - 双摄（纵向排列）- 画面1：`Vertical,Num=2,Index=0`
+	// - 双摄（纵向排列）- 画面2：`Vertical,Num=2,Index=1`
+	// 
+	// - 三摄（纵向排列）- 全部画面：`Vertical,Num=3,Index=0;1;2`
+	// - 三摄（纵向排列）- 画面1：`Vertical,Num=3,Index=0`
+	// - 三摄（纵向排列）- 画面2：`Vertical,Num=3,Index=1`
+	// - 三摄（纵向排列）- 画面3：`Vertical,Num=3,Index=2`
+	// - 三摄（纵向排列）- 画面1+2：`Vertical,Num=3,Index=0;1`
+	// - 三摄（纵向排列）- 画面1+3：`Vertical,Num=3,Index=0;2`
+	// - 三摄（纵向排列）- 画面2+3：`Vertical,Num=3,Index=1;2`
+	MultiCameraLayout *string `json:"MultiCameraLayout,omitnil,omitempty" name:"MultiCameraLayout"`
 }
 
 type WXDeviceInfo struct {

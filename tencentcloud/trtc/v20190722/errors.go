@@ -140,6 +140,9 @@ const (
 	// 音频编码参数错误。
 	INVALIDPARAMETER_AUDIOENCODEPARAMS = "InvalidParameter.AudioEncodeParams"
 
+	// 无效的参考音频
+	INVALIDPARAMETER_AUDIOPROMPT = "InvalidParameter.AudioPrompt"
+
 	// BackgroundImageUrl参数错误。
 	INVALIDPARAMETER_BACKGROUNDIMAGEURL = "InvalidParameter.BackgroundImageUrl"
 
@@ -245,6 +248,9 @@ const (
 	// TaskId 参数错误。
 	INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
 
+	// 无效的文本长度
+	INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
+
 	// Url解析参数失败。
 	INVALIDPARAMETER_URLPARAMSERROR = "InvalidParameter.UrlParamsError"
 
@@ -266,11 +272,20 @@ const (
 	// 视频分辨率参数错误。
 	INVALIDPARAMETER_VIDEORESOLUTION = "InvalidParameter.VideoResolution"
 
+	// 无效的VoiceId
+	INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+
+	// 无效的声音名字
+	INVALIDPARAMETER_VOICENAME = "InvalidParameter.VoiceName"
+
 	// RoomId值错误。
 	INVALIDPARAMETERVALUE_ROOMID = "InvalidParameterValue.RoomId"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
+
+	// 无效的APIKey
+	MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 
 	// 缺少AccessKey参数。
 	MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
@@ -394,4 +409,7 @@ const (
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
+
+	// 不允许使用，请联系技术人员
+	UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 )

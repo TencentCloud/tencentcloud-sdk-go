@@ -1843,6 +1843,9 @@ type DCDBInstanceInfo struct {
 
 	// 数据库引擎版本
 	DbVersionId *string `json:"DbVersionId,omitnil,omitempty" name:"DbVersionId"`
+
+	// 实例删除保护标签，1: 已开启删除保护，0: 未开启删除保护
+	ProtectedProperty *int64 `json:"ProtectedProperty,omitnil,omitempty" name:"ProtectedProperty"`
 }
 
 type DCDBShardInfo struct {
@@ -3313,6 +3316,9 @@ type DescribeDCDBInstanceDetailResponseParams struct {
 
 	// cpu类型，英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD	
 	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
+
+	// 实例删除保护标签，1: 已开启删除保护，0: 未开启删除保护
+	ProtectedProperty *int64 `json:"ProtectedProperty,omitnil,omitempty" name:"ProtectedProperty"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5618,6 +5624,9 @@ type KillSessionRequestParams struct {
 
 	// 分片序列ID，与ShardId设置一个
 	ShardSerialId *string `json:"ShardSerialId,omitnil,omitempty" name:"ShardSerialId"`
+
+	// 节点ID，可指定主节点或者备节点进行kill。可选参数，不传默认为主节点。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
 type KillSessionRequest struct {
@@ -5634,6 +5643,9 @@ type KillSessionRequest struct {
 
 	// 分片序列ID，与ShardId设置一个
 	ShardSerialId *string `json:"ShardSerialId,omitnil,omitempty" name:"ShardSerialId"`
+
+	// 节点ID，可指定主节点或者备节点进行kill。可选参数，不传默认为主节点。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
 func (r *KillSessionRequest) ToJsonString() string {
@@ -5652,6 +5664,7 @@ func (r *KillSessionRequest) FromJsonString(s string) error {
 	delete(f, "SessionId")
 	delete(f, "ShardId")
 	delete(f, "ShardSerialId")
+	delete(f, "NodeId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KillSessionRequest has unknown keys!", "")
 	}
@@ -6185,7 +6198,7 @@ type ModifyDBInstanceSecurityGroupsRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
+	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。<br>注意：该入参会全量替换存量已有安全组集合，并非增量更新。修改需传入全量的预期集合。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
@@ -6198,7 +6211,7 @@ type ModifyDBInstanceSecurityGroupsRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
+	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。<br>注意：该入参会全量替换存量已有安全组集合，并非增量更新。修改需传入全量的预期集合。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 

@@ -491,6 +491,7 @@ func NewCreateCloudInstanceResponse() (response *CreateCloudInstanceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDDISKTYPE = "UnsupportedOperation.UnsupportedDiskType"
 func (c *Client) CreateCloudInstance(request *CreateCloudInstanceRequest) (response *CreateCloudInstanceResponse, err error) {
     return c.CreateCloudInstanceWithContext(context.Background(), request)
 }
@@ -576,6 +577,7 @@ func (c *Client) CreateCloudInstance(request *CreateCloudInstanceRequest) (respo
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDDISKTYPE = "UnsupportedOperation.UnsupportedDiskType"
 func (c *Client) CreateCloudInstanceWithContext(ctx context.Context, request *CreateCloudInstanceRequest) (response *CreateCloudInstanceResponse, err error) {
     if request == nil {
         request = NewCreateCloudInstanceRequest()

@@ -3229,7 +3229,7 @@ func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
 }
 
 // DescribeDBInstances
-// 本接口(DescribeDBInstances)用于查询实例列表。
+// 本接口（DescribeDBInstances）用于查询实例列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -3248,7 +3248,7 @@ func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (respo
 }
 
 // DescribeDBInstances
-// 本接口(DescribeDBInstances)用于查询实例列表。
+// 本接口（DescribeDBInstances）用于查询实例列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -4735,7 +4735,7 @@ func NewDescribeProductConfigResponse() (response *DescribeProductConfigResponse
 }
 
 // DescribeProductConfig
-// 本接口 (DescribeProductConfig) 用于查询售卖规格配置。
+// 本接口（DescribeProductConfig）用于查询售卖规格配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -4751,7 +4751,7 @@ func (c *Client) DescribeProductConfig(request *DescribeProductConfigRequest) (r
 }
 
 // DescribeProductConfig
-// 本接口 (DescribeProductConfig) 用于查询售卖规格配置。
+// 本接口（DescribeProductConfig）用于查询售卖规格配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -5901,7 +5901,7 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
 }
 
 // DescribeZones
-// 本接口 (DescribeZones) 用于查询当前可售卖的可用区信息。
+// 本接口（DescribeZones）用于查询当前可售卖的可用区信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -5915,7 +5915,7 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
 }
 
 // DescribeZones
-// 本接口 (DescribeZones) 用于查询当前可售卖的可用区信息。
+// 本接口（DescribeZones）用于查询当前可售卖的可用区信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

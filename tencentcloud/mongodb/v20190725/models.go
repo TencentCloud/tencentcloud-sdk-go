@@ -38,7 +38,7 @@ type AssignProjectRequestParams struct {
 	// 实例 ID 列表，请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 项目ID，用户已创建项目的唯一ID,非自定义
+	// 项目ID，用户已创建项目的唯一ID。请在控制台账号中心的项目管理中复制项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -48,7 +48,7 @@ type AssignProjectRequest struct {
 	// 实例 ID 列表，请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 项目ID，用户已创建项目的唯一ID,非自定义
+	// 项目ID，用户已创建项目的唯一ID。请在控制台账号中心的项目管理中复制项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -74,7 +74,7 @@ func (r *AssignProjectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssignProjectResponseParams struct {
-	// 返回的异步任务ID列表
+	// 返回的异步任务ID列表。
 	FlowIds []*uint64 `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

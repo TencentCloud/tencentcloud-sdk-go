@@ -2425,6 +2425,7 @@ func NewCreateTaskNewResponse() (response *CreateTaskNewResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateTaskNew(request *CreateTaskNewRequest) (response *CreateTaskNewResponse, err error) {
@@ -2436,6 +2437,7 @@ func (c *Client) CreateTaskNew(request *CreateTaskNewRequest) (response *CreateT
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateTaskNewWithContext(ctx context.Context, request *CreateTaskNewRequest) (response *CreateTaskNewResponse, err error) {

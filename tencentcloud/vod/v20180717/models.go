@@ -2927,6 +2927,9 @@ type ComplexAdaptiveDynamicStreamingTaskAudioInput struct {
 	// <li>YES：设置为默认音频；</li>
 	// <li>NO：不设置为默认音频（默认值）。</li>
 	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
+
+	// 音轨序号，表示选择音频源中的第几个音轨，从0开始计数。默认值为0，表示选择最靠前的音轨。
+	AudioTrackIdx *uint64 `json:"AudioTrackIdx,omitnil,omitempty" name:"AudioTrackIdx"`
 }
 
 type ComplexAdaptiveDynamicStreamingTaskInput struct {
@@ -5094,6 +5097,87 @@ func (r *CreateJustInTimeTranscodeTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateJustInTimeTranscodeTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMPSTemplateRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要创建的 MPS 模板的类型。取值：
+	// <li>Transcode: 创建转码模板，目前仅支持创建增强模板。</li>
+	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
+
+	// MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。
+	// 目前仅支持通过此方式创建以下任务类型的模板：
+	// 1. 音视频增强：仅支持填写“[创建转码模板](https://cloud.tencent.com/document/product/862/37605)”接口中的 Container 、Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数。其中 EnhanceConfig 此处必填，且 Container 目前暂不支持 hls。
+	// 
+	// 目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。
+	MPSCreateTemplateParams *string `json:"MPSCreateTemplateParams,omitnil,omitempty" name:"MPSCreateTemplateParams"`
+}
+
+type CreateMPSTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要创建的 MPS 模板的类型。取值：
+	// <li>Transcode: 创建转码模板，目前仅支持创建增强模板。</li>
+	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
+
+	// MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。
+	// 目前仅支持通过此方式创建以下任务类型的模板：
+	// 1. 音视频增强：仅支持填写“[创建转码模板](https://cloud.tencent.com/document/product/862/37605)”接口中的 Container 、Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数。其中 EnhanceConfig 此处必填，且 Container 目前暂不支持 hls。
+	// 
+	// 目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。
+	MPSCreateTemplateParams *string `json:"MPSCreateTemplateParams,omitnil,omitempty" name:"MPSCreateTemplateParams"`
+}
+
+func (r *CreateMPSTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMPSTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "TemplateType")
+	delete(f, "MPSCreateTemplateParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMPSTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMPSTemplateResponseParams struct {
+	// MPS 任务模板唯一标识。该模板独立于直接在 MPS 服务中创建的模板。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMPSTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMPSTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateMPSTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMPSTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7632,6 +7716,76 @@ func (r *DeleteJustInTimeTranscodeTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteJustInTimeTranscodeTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMPSTemplateRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要删除的 MPS 模板的类型。取值：
+	// <li>Transcode: 删除转码模板。</li>
+	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
+
+	// MPS 任务模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type DeleteMPSTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要删除的 MPS 模板的类型。取值：
+	// <li>Transcode: 删除转码模板。</li>
+	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
+
+	// MPS 任务模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+func (r *DeleteMPSTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMPSTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "TemplateType")
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMPSTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMPSTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteMPSTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMPSTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteMPSTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMPSTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11007,8 +11161,9 @@ type DescribeLicenseUsageDataRequestParams struct {
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// License 类型，默认为 DRM 。目前支持的 License 类型包括：
-	// <li> DRM: DRM 加密播放 License</li>
+	// License 类型，默认为 CommercialDRMLicense 。目前支持的 License 类型包括：
+	// <li> CommercialDRMLicense: 商业级 DRM License</li>
+	// <li> JITEncryptionDRMLicense: 即时加密 DRM License</li>
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -11024,8 +11179,9 @@ type DescribeLicenseUsageDataRequest struct {
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// License 类型，默认为 DRM 。目前支持的 License 类型包括：
-	// <li> DRM: DRM 加密播放 License</li>
+	// License 类型，默认为 CommercialDRMLicense 。目前支持的 License 类型包括：
+	// <li> CommercialDRMLicense: 商业级 DRM License</li>
+	// <li> JITEncryptionDRMLicense: 即时加密 DRM License</li>
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -11076,6 +11232,84 @@ func (r *DescribeLicenseUsageDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLicenseUsageDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMPSTemplatesRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：
+	// <li>Transcode: 查询转码模板列表。</li>
+	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
+
+	// MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：
+	// 1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	MPSDescribeTemplateParams *string `json:"MPSDescribeTemplateParams,omitnil,omitempty" name:"MPSDescribeTemplateParams"`
+}
+
+type DescribeMPSTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：
+	// <li>Transcode: 查询转码模板列表。</li>
+	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
+
+	// MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：
+	// 1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	MPSDescribeTemplateParams *string `json:"MPSDescribeTemplateParams,omitnil,omitempty" name:"MPSDescribeTemplateParams"`
+}
+
+func (r *DescribeMPSTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMPSTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "TemplateType")
+	delete(f, "MPSDescribeTemplateParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMPSTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMPSTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// MPS 任务模板详情列表。
+	MPSTemplateSet []*MPSTemplate `json:"MPSTemplateSet,omitnil,omitempty" name:"MPSTemplateSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMPSTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMPSTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeMPSTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMPSTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11303,6 +11537,7 @@ type DescribeMediaProcessUsageDataRequestParams struct {
 	// <li>VoiceTranslation: 语音翻译</li>
 	// <li>JITTranscoding: 即时转码</li>
 	// <li>VideoSnapshot: 视频截图</li>
+	// <li>JITEncryption: 即时加密</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -11342,6 +11577,7 @@ type DescribeMediaProcessUsageDataRequest struct {
 	// <li>VoiceTranslation: 语音翻译</li>
 	// <li>JITTranscoding: 即时转码</li>
 	// <li>VideoSnapshot: 视频截图</li>
+	// <li>JITEncryption: 即时加密</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -14092,6 +14328,7 @@ type EventContent struct {
 	// <li>QualityEnhanceComplete：音画质重生任务完成；</li>
 	// <li>PersistenceComplete：剪辑固化完成；</li>
 	// <li>ComplexAdaptiveDynamicStreamingComplete：复杂自适应码流任务完成。</li>
+	// <li>ProcessMediaByMPSComplete：MPS视频处理完成。</li>
 	// <b>兼容 2017 版的事件类型：</b>
 	// <li>TranscodeComplete：视频转码完成；</li>
 	// <li>ConcatComplete：视频拼接完成；</li>
@@ -14207,6 +14444,9 @@ type EventContent struct {
 	// 自适应码流任务信息，仅当 EventType 为ComplexAdaptiveDynamicStreamingComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplexAdaptiveDynamicStreamingCompleteEvent *ComplexAdaptiveDynamicStreamingTask `json:"ComplexAdaptiveDynamicStreamingCompleteEvent,omitnil,omitempty" name:"ComplexAdaptiveDynamicStreamingCompleteEvent"`
+
+	// MPS 视频处理任务信息，仅当 EventType 为 ProcessMediaByMPSComplete 时有效。
+	ProcessMediaByMPSCompleteEvent *ProcessMediaByMPS `json:"ProcessMediaByMPSCompleteEvent,omitnil,omitempty" name:"ProcessMediaByMPSCompleteEvent"`
 }
 
 // Predefined struct for user
@@ -15718,7 +15958,7 @@ type LowLightEnhanceInfo struct {
 
 type MPSOutputFile struct {
 	// 文件类型。用于标识 MPS 视频处理任务执行结果中的特定返回文件。
-	// 取值：<li>AiAnalysis.DeLogo.Video: 智能擦除任务中产生的擦除后视频文件；</li><li>AiAnalysis.DeLogo.OriginSubtitle: 智能擦除任务中基于画面提取的字幕文件；</li><li>AiAnalysis.DeLogo.TranslateSubtitle: 智能擦除任务中基于画面提取的字幕翻译文件。</li>
+	// 取值：<li>AiAnalysis.DeLogo.Video: 智能擦除任务中产生的擦除后视频文件，默认以原文件类型存储；</li><li>AiAnalysis.DeLogo.OriginSubtitle: 智能擦除任务中基于画面提取的字幕文件；</li><li>AiAnalysis.DeLogo.TranslateSubtitle: 智能擦除任务中基于画面提取的字幕翻译文件。</li><li>MediaProcess.Transcode.Video: 音视频增强任务中增强后的音视频文件，默认以转码文件类型存储。</li>
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 存储形式。用于表示该结果文件的存储形式，取值有：<li> Permanent：永久存储；</li><li> Temporary：临时存储。</li>
@@ -15730,12 +15970,15 @@ type MPSOutputFile struct {
 	// 结果文件的可下载 Url。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
+	// 转码规格 ID。当 FileType 等于 MediaProcess.Transcode.Video时有效，取值为0表示原始文件。 
+	Definition *string `json:"Definition,omitnil,omitempty" name:"Definition"`
+
 	// 过期时间。当 StorageMode 为 Temporary 时有效，表示 Url 的过期时间，单位为秒。
 	ExpiredTime *uint64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 type MPSSubTaskResult struct {
-	// 任务类型。MPS 的 WorkflowTask 结构中的具体子任务类型。取值：<li>AiAnalysis.DeLogo：智能擦除任务。</li>
+	// 任务类型。MPS 的 WorkflowTask 结构中的具体子任务类型。取值：<li>AiAnalysis.DeLogo：智能擦除任务。</li><li>MediaProcess.Transcode：音视频增强任务。</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务状态。有 PROCESSING，SUCCESS 和 FAIL 三种。
@@ -15757,6 +16000,15 @@ type MPSSubTaskResult struct {
 type MPSTaskOutput struct {
 	// 任务返回结果中的文件类型结果。如智能擦除中，擦除后的视频文件将被存入媒资，并在此字段中给出 FileId；基于画面提取的字幕文件 Url 将在此字段中给出。
 	OutputFiles []*MPSOutputFile `json:"OutputFiles,omitnil,omitempty" name:"OutputFiles"`
+}
+
+type MPSTemplate struct {
+	// MPS 模板的类型。取值：
+	// <li>Transcode: 转码模板。</li>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// MPS 任务模板详情内容。
+	MPSTemplateInfo *string `json:"MPSTemplateInfo,omitnil,omitempty" name:"MPSTemplateInfo"`
 }
 
 // Predefined struct for user
@@ -18386,6 +18638,80 @@ func (r *ModifyJustInTimeTranscodeTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyJustInTimeTranscodeTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMPSTemplateRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要修改的 MPS 模板的类型。取值：
+	// <li>Transcode: 创建转码模板，目前仅支持修改增强参数。</li>
+	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
+
+	// MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。
+	//  目前仅支持通过此方式修改以下任务类型的模板：
+	// 1. 音视频增强：仅支持填写“[修改转码模板](https://cloud.tencent.com/document/api/862/37578)”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	MPSModifyTemplateParams *string `json:"MPSModifyTemplateParams,omitnil,omitempty" name:"MPSModifyTemplateParams"`
+}
+
+type ModifyMPSTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要修改的 MPS 模板的类型。取值：
+	// <li>Transcode: 创建转码模板，目前仅支持修改增强参数。</li>
+	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
+
+	// MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。
+	//  目前仅支持通过此方式修改以下任务类型的模板：
+	// 1. 音视频增强：仅支持填写“[修改转码模板](https://cloud.tencent.com/document/api/862/37578)”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	MPSModifyTemplateParams *string `json:"MPSModifyTemplateParams,omitnil,omitempty" name:"MPSModifyTemplateParams"`
+}
+
+func (r *ModifyMPSTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMPSTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "TemplateType")
+	delete(f, "MPSModifyTemplateParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMPSTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMPSTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMPSTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMPSTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyMPSTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMPSTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -21214,9 +21540,13 @@ type ProcessMediaByMPSRequestParams struct {
 	// 该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
 	// 视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
 	// 填写说明：
-	// 1. 目前仅需要配置 MPS “发起媒体处理”接口中的 AiAnalysisTask 参数，其他参数无需填写，若包含其它参数，系统将自动忽略；
-	// 2. 当前仅支持通过此方式发起智能擦除任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数。
+	// 1. 目前仅需要配置 MPS “发起媒体处理”接口中任务配置相关的参数，如 AiAnalysisTask 与 MediaProcessTask，其他参数无需填写。若包含其它参数，系统将自动忽略；
+	// 2. 当前仅支持通过此方式发起智能擦除及音视频增强任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数；
+	// 3. 音视频增强任务目前不支持使用预置模板发起，可通过 [CreateMPSTemplate](https://cloud.tencent.com/document/product/266/122580) 接口创建自定义模板。
 	MPSProcessMediaParams *string `json:"MPSProcessMediaParams,omitnil,omitempty" name:"MPSProcessMediaParams"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type ProcessMediaByMPSRequest struct {
@@ -21231,9 +21561,13 @@ type ProcessMediaByMPSRequest struct {
 	// 该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
 	// 视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
 	// 填写说明：
-	// 1. 目前仅需要配置 MPS “发起媒体处理”接口中的 AiAnalysisTask 参数，其他参数无需填写，若包含其它参数，系统将自动忽略；
-	// 2. 当前仅支持通过此方式发起智能擦除任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数。
+	// 1. 目前仅需要配置 MPS “发起媒体处理”接口中任务配置相关的参数，如 AiAnalysisTask 与 MediaProcessTask，其他参数无需填写。若包含其它参数，系统将自动忽略；
+	// 2. 当前仅支持通过此方式发起智能擦除及音视频增强任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数；
+	// 3. 音视频增强任务目前不支持使用预置模板发起，可通过 [CreateMPSTemplate](https://cloud.tencent.com/document/product/266/122580) 接口创建自定义模板。
 	MPSProcessMediaParams *string `json:"MPSProcessMediaParams,omitnil,omitempty" name:"MPSProcessMediaParams"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 func (r *ProcessMediaByMPSRequest) ToJsonString() string {
@@ -21251,6 +21585,7 @@ func (r *ProcessMediaByMPSRequest) FromJsonString(s string) error {
 	delete(f, "FileId")
 	delete(f, "SubAppId")
 	delete(f, "MPSProcessMediaParams")
+	delete(f, "ExtInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaByMPSRequest has unknown keys!", "")
 	}
@@ -25717,6 +26052,7 @@ type TaskStatData struct {
 	// <li>VoiceTranslation: 语音翻译</li>
 	// <li>JITTranscoding: 即时转码</li>
 	// <li>VideoSnapshot: 视频截图</li>
+	// <li>JITEncryption: 即时加密</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务数统计数据概览，用量单位为秒。

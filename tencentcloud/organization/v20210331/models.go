@@ -4634,6 +4634,103 @@ func (r *DescribePolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeResourceToShareMemberRequestParams struct {
+	// 共享地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数目。取值范围：1~50。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 搜索关键字，支持业务资源ID搜索。
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 业务资源ID。最大50个
+	ProductResourceIds []*string `json:"ProductResourceIds,omitnil,omitempty" name:"ProductResourceIds"`
+}
+
+type DescribeResourceToShareMemberRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数目。取值范围：1~50。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 搜索关键字，支持业务资源ID搜索。
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 业务资源ID。最大50个
+	ProductResourceIds []*string `json:"ProductResourceIds,omitnil,omitempty" name:"ProductResourceIds"`
+}
+
+func (r *DescribeResourceToShareMemberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceToShareMemberRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Area")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchKey")
+	delete(f, "Type")
+	delete(f, "ProductResourceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceToShareMemberRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceToShareMemberResponseParams struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ShareResourceToMember `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourceToShareMemberResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourceToShareMemberResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourceToShareMemberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceToShareMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeShareAreasRequestParams struct {
 	// 国际站：en，国内站：zh
 	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
@@ -9324,6 +9421,29 @@ type ShareResource struct {
 
 	// 产品资源ID。
 	ProductResourceId *string `json:"ProductResourceId,omitnil,omitempty" name:"ProductResourceId"`
+}
+
+type ShareResourceToMember struct {
+	// 共享单元资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 共享单元ID。
+	UnitId *string `json:"UnitId,omitnil,omitempty" name:"UnitId"`
+
+	// 共享单元名称。
+	UnitName *string `json:"UnitName,omitnil,omitempty" name:"UnitName"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 业务资源ID。
+	ProductResourceId *string `json:"ProductResourceId,omitnil,omitempty" name:"ProductResourceId"`
+
+	// 共享账号Uin。
+	ShareManagerUin *int64 `json:"ShareManagerUin,omitnil,omitempty" name:"ShareManagerUin"`
 }
 
 type ShareUnitMember struct {

@@ -1713,12 +1713,15 @@ func (r *AssociateDirectConnectGatewayNatGatewayResponse) FromJsonString(s strin
 
 // Predefined struct for user
 type AssociateHaVipInstanceRequestParams struct {
-
+	// HaVip绑定的子机或网卡。最多支持10个实例。
+	HaVipAssociationSet []*HaVipAssociation `json:"HaVipAssociationSet,omitnil,omitempty" name:"HaVipAssociationSet"`
 }
 
 type AssociateHaVipInstanceRequest struct {
 	*tchttp.BaseRequest
 	
+	// HaVip绑定的子机或网卡。最多支持10个实例。
+	HaVipAssociationSet []*HaVipAssociation `json:"HaVipAssociationSet,omitnil,omitempty" name:"HaVipAssociationSet"`
 }
 
 func (r *AssociateHaVipInstanceRequest) ToJsonString() string {
@@ -1733,7 +1736,7 @@ func (r *AssociateHaVipInstanceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "HaVipAssociationSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateHaVipInstanceRequest has unknown keys!", "")
 	}

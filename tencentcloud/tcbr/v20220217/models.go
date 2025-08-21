@@ -189,8 +189,11 @@ type CreateCloudRunServerRequestParams struct {
 	// 部署信息
 	DeployInfo *DeployParam `json:"DeployInfo,omitnil,omitempty" name:"DeployInfo"`
 
-	// 服务配置信息
+	// 服务配置信息(已废弃)
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil,omitempty" name:"ServerConfig"`
+
+	// 服务配置信息
+	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 type CreateCloudRunServerRequest struct {
@@ -205,8 +208,11 @@ type CreateCloudRunServerRequest struct {
 	// 部署信息
 	DeployInfo *DeployParam `json:"DeployInfo,omitnil,omitempty" name:"DeployInfo"`
 
-	// 服务配置信息
+	// 服务配置信息(已废弃)
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil,omitempty" name:"ServerConfig"`
+
+	// 服务配置信息
+	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 func (r *CreateCloudRunServerRequest) ToJsonString() string {
@@ -225,6 +231,7 @@ func (r *CreateCloudRunServerRequest) FromJsonString(s string) error {
 	delete(f, "ServerName")
 	delete(f, "DeployInfo")
 	delete(f, "ServerConfig")
+	delete(f, "Items")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudRunServerRequest has unknown keys!", "")
 	}
@@ -674,6 +681,65 @@ func (r *DescribeServerManageTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DiffConfigItem struct {
+	// 配置项 Key
+	// MinNum 最小副本数
+	// MaxNum 最大副本数
+	// PolicyDetails 扩缩容策略
+	// AccessTypes 访问类型
+	// TimerScale 定时扩缩容
+	// InternalAccess 内网访问
+	// OperationMode 运行模式 noScale | condScale | alwaysScale | custom ｜ manualScale
+	// SessionAffinity 会话亲和性 open | close
+	// CpuSpecs cpu 规格
+	// MemSpecs mem规格
+	// EnvParam 环境变量
+	// LogPath 日志采集路径
+	// Port 端口
+	// Dockerfile dockerfile 文件名
+	// BuildDir 目标目录
+	// Tag 服务标签
+	// LogType 日志类型 none | default | custom 
+	// LogSetId 日志集Id
+	// LogTopicId 日志主题ID
+	// LogParseType 日志解析类型 json ｜ line
+	// EntryPoint entrypoint 命令
+	// Cmd cmd命令
+	// VpcConf 网络信息
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 字符串类型配置项值
+	// InternalAccess、OperationMode、SessionAffinity、EnvParam、LogPath、Dockerfile、BuildDir、Tag、LogType、LogSetId、LogTopicId、LogParseType
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// int 类型配置项值
+	// MinNum、MaxNum、Port
+	IntValue *int64 `json:"IntValue,omitnil,omitempty" name:"IntValue"`
+
+	// bool 类型配置项值
+	BoolValue *bool `json:"BoolValue,omitnil,omitempty" name:"BoolValue"`
+
+	// 浮点型配置项值
+	// CpuSpecs、MemSpecs
+	FloatValue *float64 `json:"FloatValue,omitnil,omitempty" name:"FloatValue"`
+
+	// 字符串数组配置项值
+	// AccessTypes，EntryPoint，Cmd
+	ArrayValue []*string `json:"ArrayValue,omitnil,omitempty" name:"ArrayValue"`
+
+	// 扩缩容策略配置项值
+	PolicyDetails []*HpaPolicy `json:"PolicyDetails,omitnil,omitempty" name:"PolicyDetails"`
+
+	// 定时扩缩容配置项值
+	TimerScale []*TimerScale `json:"TimerScale,omitnil,omitempty" name:"TimerScale"`
+
+	// 配置内网访问时网络信息
+	VpcConf *VpcConf `json:"VpcConf,omitnil,omitempty" name:"VpcConf"`
+
+	// 存储配置信息
+	VolumesConf []*VolumeConf `json:"VolumesConf,omitnil,omitempty" name:"VolumesConf"`
+}
+
 type EnvBaseInfo struct {
 	// 环境Id
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -1104,6 +1170,9 @@ type ServerBaseConfig struct {
 
 	// Vpc 配置参数
 	VpcConf *VpcConf `json:"VpcConf,omitnil,omitempty" name:"VpcConf"`
+
+	// 存储配置信息
+	VolumesConf []*VolumeConf `json:"VolumesConf,omitnil,omitempty" name:"VolumesConf"`
 }
 
 type ServerBaseInfo struct {
@@ -1282,11 +1351,14 @@ type UpdateCloudRunServerRequestParams struct {
 	// 部署信息
 	DeployInfo *DeployParam `json:"DeployInfo,omitnil,omitempty" name:"DeployInfo"`
 
-	// 服务配置信息
+	// 服务配置信息(已废弃)
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil,omitempty" name:"ServerConfig"`
 
 	// 业务类型，默认tcr
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
+
+	// 服务配置信息
+	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 type UpdateCloudRunServerRequest struct {
@@ -1301,11 +1373,14 @@ type UpdateCloudRunServerRequest struct {
 	// 部署信息
 	DeployInfo *DeployParam `json:"DeployInfo,omitnil,omitempty" name:"DeployInfo"`
 
-	// 服务配置信息
+	// 服务配置信息(已废弃)
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil,omitempty" name:"ServerConfig"`
 
 	// 业务类型，默认tcr
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
+
+	// 服务配置信息
+	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 func (r *UpdateCloudRunServerRequest) ToJsonString() string {
@@ -1325,6 +1400,7 @@ func (r *UpdateCloudRunServerRequest) FromJsonString(s string) error {
 	delete(f, "DeployInfo")
 	delete(f, "ServerConfig")
 	delete(f, "Business")
+	delete(f, "Items")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCloudRunServerRequest has unknown keys!", "")
 	}
@@ -1374,6 +1450,26 @@ type VersionFlowInfo struct {
 
 	// 权重
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type VolumeConf struct {
+	// 存储类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 对象存储桶名称
+	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
+
+	// 存储连接地址
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 存储连接用户密码
+	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
+
+	// 存储挂载目的目录
+	DstPath *string `json:"DstPath,omitnil,omitempty" name:"DstPath"`
+
+	// 存储挂载源目录
+	SrcPath *string `json:"SrcPath,omitnil,omitempty" name:"SrcPath"`
 }
 
 type VpcConf struct {

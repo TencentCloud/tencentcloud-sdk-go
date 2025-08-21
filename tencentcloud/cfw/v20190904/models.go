@@ -1429,117 +1429,6 @@ func (r *CreateDatabaseWhiteListRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type CreateIdsWhiteRuleRequestParams struct {
-	// 入侵防御规则ID
-	IdsRuleId *string `json:"IdsRuleId,omitnil,omitempty" name:"IdsRuleId"`
-
-	// 白名单类型：
-	// src 针对源放通
-	// dst 针对目的放通
-	// srcdst 针对源和目的放通
-	WhiteRuleType *string `json:"WhiteRuleType,omitnil,omitempty" name:"WhiteRuleType"`
-
-	// 白名单生效防火墙范围：
-	// 1 边界防火墙
-	// 2 nat防火墙
-	// 4 vpc防火墙
-	// 7 = 1+2+4  所有防火墙
-	FwType *int64 `json:"FwType,omitnil,omitempty" name:"FwType"`
-
-	// 源IP
-	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
-
-	// 目的IP
-	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
-}
-
-type CreateIdsWhiteRuleRequest struct {
-	*tchttp.BaseRequest
-	
-	// 入侵防御规则ID
-	IdsRuleId *string `json:"IdsRuleId,omitnil,omitempty" name:"IdsRuleId"`
-
-	// 白名单类型：
-	// src 针对源放通
-	// dst 针对目的放通
-	// srcdst 针对源和目的放通
-	WhiteRuleType *string `json:"WhiteRuleType,omitnil,omitempty" name:"WhiteRuleType"`
-
-	// 白名单生效防火墙范围：
-	// 1 边界防火墙
-	// 2 nat防火墙
-	// 4 vpc防火墙
-	// 7 = 1+2+4  所有防火墙
-	FwType *int64 `json:"FwType,omitnil,omitempty" name:"FwType"`
-
-	// 源IP
-	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
-
-	// 目的IP
-	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
-}
-
-func (r *CreateIdsWhiteRuleRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateIdsWhiteRuleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "IdsRuleId")
-	delete(f, "WhiteRuleType")
-	delete(f, "FwType")
-	delete(f, "SrcIp")
-	delete(f, "DstIp")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIdsWhiteRuleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateIdsWhiteRuleResponseParams struct {
-	// 返回状态码：
-	// 0 成功
-	// 非0 失败
-	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
-
-	// 返回信息：
-	// success 成功
-	// 其他
-	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
-
-	// 返回状态码：
-	// 0  处置成功
-	// -1 通用错误，不用处理
-	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateIdsWhiteRuleResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateIdsWhiteRuleResponseParams `json:"Response"`
-}
-
-func (r *CreateIdsWhiteRuleResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateIdsWhiteRuleResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type CreateNatFwInstanceRequestParams struct {
 	// 防火墙实例名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2477,77 +2366,6 @@ func (r *DeleteBlockIgnoreRuleNewResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteBlockIgnoreRuleNewResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteIdsWhiteRuleRequestParams struct {
-	// 入侵防御白名单id
-	// 参考DescribeIdsWhiteRule接口返回的Id字段
-	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
-}
-
-type DeleteIdsWhiteRuleRequest struct {
-	*tchttp.BaseRequest
-	
-	// 入侵防御白名单id
-	// 参考DescribeIdsWhiteRule接口返回的Id字段
-	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
-}
-
-func (r *DeleteIdsWhiteRuleRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteIdsWhiteRuleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Id")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIdsWhiteRuleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteIdsWhiteRuleResponseParams struct {
-	// 返回状态码：
-	// 0 成功
-	// 非0 失败
-	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
-
-	// 返回信息：
-	// success 成功
-	// 其他
-	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
-
-	// 返回状态码：
-	// 0  处置成功
-	// -1 通用错误，不用处理
-	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteIdsWhiteRuleResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteIdsWhiteRuleResponseParams `json:"Response"`
-}
-
-func (r *DeleteIdsWhiteRuleResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteIdsWhiteRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4805,100 +4623,6 @@ func (r *DescribeIPStatusListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIPStatusListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeIdsWhiteRuleRequestParams struct {
-	// 每页条数
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移值
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤条件组合
-	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序所用到的字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-type DescribeIdsWhiteRuleRequest struct {
-	*tchttp.BaseRequest
-	
-	// 每页条数
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移值
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤条件组合
-	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序所用到的字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-func (r *DescribeIdsWhiteRuleRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeIdsWhiteRuleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
-	delete(f, "Order")
-	delete(f, "By")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIdsWhiteRuleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeIdsWhiteRuleResponseParams struct {
-	// 总条数
-	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
-
-	// 规则详情
-	Data []*IdsWhiteInfo `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 返回状态码 0 成功 非0不成功
-	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
-
-	// 返回信息  success 成功 其他 不成功
-	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeIdsWhiteRuleResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeIdsWhiteRuleResponseParams `json:"Response"`
-}
-
-func (r *DescribeIdsWhiteRuleResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeIdsWhiteRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7205,26 +6929,6 @@ type IPDefendStatus struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
-type IdsWhiteInfo struct {
-	// 白名单唯一ID
-	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
-
-	// 源IP
-	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
-
-	// 目的IP
-	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
-
-	// 规则类型
-	WhiteRuleType *string `json:"WhiteRuleType,omitnil,omitempty" name:"WhiteRuleType"`
-
-	// 白名单生效防火墙范围： 1 边界防火墙 2 nat防火墙 4 vpc防火墙 7 = 1+2+4 所有防火墙
-	FwType *int64 `json:"FwType,omitnil,omitempty" name:"FwType"`
-
-	// 入侵防御规则ID
-	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
-}
-
 type InstanceInfo struct {
 	// appid信息
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -7527,8 +7231,7 @@ type ModifyAddressTemplateRequestParams struct {
 	// Type为5，域名模板eg：www.qq.com,www.tencent.com
 	IpString *string `json:"IpString,omitnil,omitempty" name:"IpString"`
 
-	// 1 ip模板
-	// 5 域名模板
+	// 1 ip模板  5 域名模板
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 协议端口模板，协议类型，4:4层协议，7:7层协议。Type=6时必填。
@@ -7551,8 +7254,7 @@ type ModifyAddressTemplateRequest struct {
 	// Type为5，域名模板eg：www.qq.com,www.tencent.com
 	IpString *string `json:"IpString,omitnil,omitempty" name:"IpString"`
 
-	// 1 ip模板
-	// 5 域名模板
+	// 1 ip模板  5 域名模板
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 协议端口模板，协议类型，4:4层协议，7:7层协议。Type=6时必填。
@@ -7590,6 +7292,9 @@ type ModifyAddressTemplateResponseParams struct {
 
 	// 唯一Id
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 规则数上限配置
+	RuleLimitNum *int64 `json:"RuleLimitNum,omitnil,omitempty" name:"RuleLimitNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7735,6 +7440,9 @@ func (r *ModifyAllRuleStatusRequest) FromJsonString(s string) error {
 type ModifyAllRuleStatusResponseParams struct {
 	// 0: 修改成功, 其他: 修改失败
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 规则限制数量
+	RuleLimitNum *int64 `json:"RuleLimitNum,omitnil,omitempty" name:"RuleLimitNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

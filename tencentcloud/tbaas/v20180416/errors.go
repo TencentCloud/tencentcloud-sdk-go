@@ -68,6 +68,12 @@ const (
 	// CFCA云API错误。
 	FAILEDOPERATION_CAYUNAPICOMMON = "FailedOperation.CaYunApiCommon"
 
+	// 合约调用失败
+	FAILEDOPERATION_CHAINMAKERCHAINCODEINVOKEFAILED = "FailedOperation.ChainMakerChaincodeInvokeFailed"
+
+	// 合约查询失败
+	FAILEDOPERATION_CHAINMAKERCHAINCODEQUERYFAILED = "FailedOperation.ChainMakerChaincodeQueryFailed"
+
 	// Bcos不能编译已经部署的合约。
 	FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
 

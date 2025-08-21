@@ -135,6 +135,9 @@ type ApmField struct {
 
 	// 同比指标值，已弃用，不建议使用
 	CompareVal *string `json:"CompareVal,omitnil,omitempty" name:"CompareVal"`
+
+	// 指标中文名
+	NameCN *string `json:"NameCN,omitnil,omitempty" name:"NameCN"`
 }
 
 type ApmInstanceDetail struct {

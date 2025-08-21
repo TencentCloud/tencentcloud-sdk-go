@@ -1298,6 +1298,8 @@ type DescribeJobMonitorDataRequestParams struct {
 	// - MemUsage：内存利用率，单位：%
 	// - LanOuttraffic：内网出带宽，单位：Bytes/s
 	// - LanIntraffic：内网入带宽，单位：Bytes/s
+	// - MaxDiskUsage：所有磁盘中的使用率最高的磁盘使用率，单位：%
+	// - TargetDiskUsage：指定磁盘的使用率，单位：%；配合Dimensions参数使用
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 查询任务实例的起始时间；如果未传入查询起始时间或传入的时间小于任务实例的创建时间（任务实例创建时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），会自动将查询时间调整到任务实例的创建时间。传入时间格式只支持零时区格式。
@@ -1305,6 +1307,13 @@ type DescribeJobMonitorDataRequestParams struct {
 
 	// 查询任务实例的终止时间；如果未传入查询终止时间或传入的时间大于任务实例的终止时间（任务实例终止时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），并且任务实例已经结束，会自动将查询终止时间调整到任务实例的终止时间；如果任务实例未结束，会自动将查询终止时间调整到当前时间。传入时间格式只支持零时区格式。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 查询指标的扩展参数；当前只支持TargetDiskUsage;
+	// 
+	// - TargetDiskUsage
+	//     -支持的查询维度diskname, 维度值为磁盘挂载名，例如vdb；如果不传此参数，默认查询vdb磁盘的使用率。
+	//     样例：[{"Name":"diskname", "Value":"vdb"}]
+	Dimensions []*Dimension `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 }
 
 type DescribeJobMonitorDataRequest struct {
@@ -1325,6 +1334,8 @@ type DescribeJobMonitorDataRequest struct {
 	// - MemUsage：内存利用率，单位：%
 	// - LanOuttraffic：内网出带宽，单位：Bytes/s
 	// - LanIntraffic：内网入带宽，单位：Bytes/s
+	// - MaxDiskUsage：所有磁盘中的使用率最高的磁盘使用率，单位：%
+	// - TargetDiskUsage：指定磁盘的使用率，单位：%；配合Dimensions参数使用
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 查询任务实例的起始时间；如果未传入查询起始时间或传入的时间小于任务实例的创建时间（任务实例创建时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），会自动将查询时间调整到任务实例的创建时间。传入时间格式只支持零时区格式。
@@ -1332,6 +1343,13 @@ type DescribeJobMonitorDataRequest struct {
 
 	// 查询任务实例的终止时间；如果未传入查询终止时间或传入的时间大于任务实例的终止时间（任务实例终止时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），并且任务实例已经结束，会自动将查询终止时间调整到任务实例的终止时间；如果任务实例未结束，会自动将查询终止时间调整到当前时间。传入时间格式只支持零时区格式。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 查询指标的扩展参数；当前只支持TargetDiskUsage;
+	// 
+	// - TargetDiskUsage
+	//     -支持的查询维度diskname, 维度值为磁盘挂载名，例如vdb；如果不传此参数，默认查询vdb磁盘的使用率。
+	//     样例：[{"Name":"diskname", "Value":"vdb"}]
+	Dimensions []*Dimension `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 }
 
 func (r *DescribeJobMonitorDataRequest) ToJsonString() string {
@@ -1352,6 +1370,7 @@ func (r *DescribeJobMonitorDataRequest) FromJsonString(s string) error {
 	delete(f, "MetricName")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "Dimensions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobMonitorDataRequest has unknown keys!", "")
 	}
@@ -1485,14 +1504,14 @@ func (r *DescribeJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobSubmitInfoRequestParams struct {
-	// 作业ID
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type DescribeJobSubmitInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业ID
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
@@ -1892,7 +1911,7 @@ func (r *DescribeTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskTemplatesRequestParams struct {
-	// 任务模板ID列表，与Filters参数不能同时指定。
+	// 任务模板ID列表，与Filters参数不能同时指定。模版ID最大限制100.
 	TaskTemplateIds []*string `json:"TaskTemplateIds,omitnil,omitempty" name:"TaskTemplateIds"`
 
 	// 过滤条件
@@ -1906,14 +1925,14 @@ type DescribeTaskTemplatesRequestParams struct {
 	// 偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回数量; 可选范围[1-100]；默认值为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeTaskTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务模板ID列表，与Filters参数不能同时指定。
+	// 任务模板ID列表，与Filters参数不能同时指定。模版ID最大限制100.
 	TaskTemplateIds []*string `json:"TaskTemplateIds,omitnil,omitempty" name:"TaskTemplateIds"`
 
 	// 过滤条件
@@ -1927,7 +1946,7 @@ type DescribeTaskTemplatesRequest struct {
 	// 偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回数量; 可选范围[1-100]；默认值为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -2040,6 +2059,14 @@ func (r *DetachInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DetachInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Dimension struct {
+	// 查询指标的维度名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 查询指标的维度值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type Docker struct {
@@ -2320,45 +2347,34 @@ type InternetAccessible struct {
 	// 带宽包ID。可通过[ DescribeBandwidthPackages ](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
-	// 
-	// - BGP：常规 BGP 线路
-	// 
+	// 线路类型。各种线路类型及支持地区详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+	// <li>BGP：常规 BGP 线路</li>
 	// 已开通静态单线IP白名单的用户，可选值：
-	// 
-	//  - CMCC：中国移动
-	//  - CTCC：中国电信
-	//  - CUCC：中国联通
-	// 
+	// <li>CMCC：中国移动</li>
+	// <li>CTCC：中国电信</li>
+	// <li>CUCC：中国联通</li>
 	// 注意：仅部分地域支持静态单线IP。
-	// 示例值：BGP
 	InternetServiceProvider *string `json:"InternetServiceProvider,omitnil,omitempty" name:"InternetServiceProvider"`
 
 	// 公网 IP 类型。
 	// 
-	// - WanIP：普通公网IP。
-	// - HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。
-	// - AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。
-	// 
+	// <li> WanIP：普通公网IP。</li>
+	// <li> HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
+	// <li> AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li>
 	// 如需为资源分配公网IPv4地址，请指定公网IPv4地址类型。
-	// 
-	// 示例值：WanIP
 	// 
 	// 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
 	IPv4AddressType *string `json:"IPv4AddressType,omitnil,omitempty" name:"IPv4AddressType"`
 
 	// 弹性公网 IPv6 类型。
-	// - EIPv6：弹性公网 IPv6。
-	// - HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。
-	// 
+	// <li> EIPv6：弹性公网 IPv6。</li>
+	// <li> HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。</li>
 	// 如需为资源分配IPv6地址，请指定弹性公网IPv6类型。
-	// 示例值：EIPv6
 	// 
 	// 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
 	IPv6AddressType *string `json:"IPv6AddressType,omitnil,omitempty" name:"IPv6AddressType"`
 
 	// 高防包唯一ID，申请高防IP时，该字段必传。
-	// 示例值：bgp-12345678
 	AntiDDoSPackageId *string `json:"AntiDDoSPackageId,omitnil,omitempty" name:"AntiDDoSPackageId"`
 }
 

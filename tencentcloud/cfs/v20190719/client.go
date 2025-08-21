@@ -2735,6 +2735,60 @@ func (c *Client) DescribeUserQuotaWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDoDirectoryOperationRequest() (request *DoDirectoryOperationRequest) {
+    request = &DoDirectoryOperationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DoDirectoryOperation")
+    
+    
+    return
+}
+
+func NewDoDirectoryOperationResponse() (response *DoDirectoryOperationResponse) {
+    response = &DoDirectoryOperationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DoDirectoryOperation
+// 文件系统目录操作接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_QUOTAUSERTYPEERROR = "InvalidParameterValue.QuotaUserTypeError"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DoDirectoryOperation(request *DoDirectoryOperationRequest) (response *DoDirectoryOperationResponse, err error) {
+    return c.DoDirectoryOperationWithContext(context.Background(), request)
+}
+
+// DoDirectoryOperation
+// 文件系统目录操作接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_QUOTAUSERTYPEERROR = "InvalidParameterValue.QuotaUserTypeError"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DoDirectoryOperationWithContext(ctx context.Context, request *DoDirectoryOperationRequest) (response *DoDirectoryOperationResponse, err error) {
+    if request == nil {
+        request = NewDoDirectoryOperationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DoDirectoryOperation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DoDirectoryOperation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDoDirectoryOperationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDataFlowRequest() (request *ModifyDataFlowRequest) {
     request = &ModifyDataFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
