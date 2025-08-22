@@ -410,6 +410,9 @@ const (
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
+	// 不支持的操作
+	UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
+
 	// 不允许使用，请联系技术人员
 	UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 )

@@ -8915,7 +8915,7 @@ func NewSendRocketMQMessageResponse() (response *SendRocketMQMessageResponse) {
 }
 
 // SendRocketMQMessage
-// 发送RocketMQ消息
+// 发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8927,7 +8927,7 @@ func (c *Client) SendRocketMQMessage(request *SendRocketMQMessageRequest) (respo
 }
 
 // SendRocketMQMessage
-// 发送RocketMQ消息
+// 发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

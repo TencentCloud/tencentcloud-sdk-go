@@ -445,6 +445,9 @@ type CreateDirectConnectRequestParams struct {
 	// 报障联系电话。
 	FaultReportContactNumber *string `json:"FaultReportContactNumber,omitnil,omitempty" name:"FaultReportContactNumber"`
 
+	// 报障联系邮箱。
+	FaultReportContactEmail *string `json:"FaultReportContactEmail,omitnil,omitempty" name:"FaultReportContactEmail"`
+
 	// 物理专线申请者是否签署了用户使用协议。默认已签署。
 	SignLaw *bool `json:"SignLaw,omitnil,omitempty" name:"SignLaw"`
 
@@ -518,6 +521,9 @@ type CreateDirectConnectRequest struct {
 	// 报障联系电话。
 	FaultReportContactNumber *string `json:"FaultReportContactNumber,omitnil,omitempty" name:"FaultReportContactNumber"`
 
+	// 报障联系邮箱。
+	FaultReportContactEmail *string `json:"FaultReportContactEmail,omitnil,omitempty" name:"FaultReportContactEmail"`
+
 	// 物理专线申请者是否签署了用户使用协议。默认已签署。
 	SignLaw *bool `json:"SignLaw,omitnil,omitempty" name:"SignLaw"`
 
@@ -556,6 +562,7 @@ func (r *CreateDirectConnectRequest) FromJsonString(s string) error {
 	delete(f, "CustomerContactNumber")
 	delete(f, "FaultReportContactPerson")
 	delete(f, "FaultReportContactNumber")
+	delete(f, "FaultReportContactEmail")
 	delete(f, "SignLaw")
 	delete(f, "Tags")
 	delete(f, "IsMacSec")
@@ -2078,6 +2085,9 @@ type ModifyDirectConnectAttributeRequestParams struct {
 	// 报障联系电话。
 	FaultReportContactNumber *string `json:"FaultReportContactNumber,omitnil,omitempty" name:"FaultReportContactNumber"`
 
+	// 报障联系邮箱。
+	FaultReportContactEmail *string `json:"FaultReportContactEmail,omitnil,omitempty" name:"FaultReportContactEmail"`
+
 	// 物理专线申请者补签用户使用协议。
 	SignLaw *bool `json:"SignLaw,omitnil,omitempty" name:"SignLaw"`
 
@@ -2121,6 +2131,9 @@ type ModifyDirectConnectAttributeRequest struct {
 	// 报障联系电话。
 	FaultReportContactNumber *string `json:"FaultReportContactNumber,omitnil,omitempty" name:"FaultReportContactNumber"`
 
+	// 报障联系邮箱。
+	FaultReportContactEmail *string `json:"FaultReportContactEmail,omitnil,omitempty" name:"FaultReportContactEmail"`
+
 	// 物理专线申请者补签用户使用协议。
 	SignLaw *bool `json:"SignLaw,omitnil,omitempty" name:"SignLaw"`
 
@@ -2151,6 +2164,7 @@ func (r *ModifyDirectConnectAttributeRequest) FromJsonString(s string) error {
 	delete(f, "CustomerContactNumber")
 	delete(f, "FaultReportContactPerson")
 	delete(f, "FaultReportContactNumber")
+	delete(f, "FaultReportContactEmail")
 	delete(f, "SignLaw")
 	delete(f, "Bandwidth")
 	if len(f) > 0 {

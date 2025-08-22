@@ -626,6 +626,9 @@ const (
 	// 找不到Spark Shuffle存储路径，请到控制台->数据探索页面->存储配置中设置
 	RESOURCENOTFOUND_SHUFFLEDIRNOTFOUND = "ResourceNotFound.ShuffleDirNotFound"
 
+	// 任务资源不足，请调整driver或executor指定规格大小
+	RESOURCENOTFOUND_SPARKJOBINSUFFICIENTRESOURCES = "ResourceNotFound.SparkJobInsufficientResources"
+
 	// 表不存在，请重试，或者提交工单联系我们
 	RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
 

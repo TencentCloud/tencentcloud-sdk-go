@@ -24,7 +24,7 @@ type AKInfo struct {
 	// ak对应id
 	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// ak具体值
+	// ak具体值\n
 	// 临时密钥时返回临时密钥
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -10270,7 +10270,7 @@ type SubUserInfo struct {
 	// 危险行为告警
 	ActionRiskCount *int64 `json:"ActionRiskCount,omitnil,omitempty" name:"ActionRiskCount"`
 
-	// 是否接入云审计日志
+	// 是否接入操作审计日志
 	IsAccessCloudAudit *bool `json:"IsAccessCloudAudit,omitnil,omitempty" name:"IsAccessCloudAudit"`
 
 	// 是否配置风险的安全体检

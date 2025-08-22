@@ -2725,10 +2725,15 @@ type CreateDataTransformRequestParams struct {
 	// 任务类型. 1: 指定主题；2:动态创建。详情请参考[创建加工任务文档](https://cloud.tencent.com/document/product/614/63940)。
 	FuncType *int64 `json:"FuncType,omitnil,omitempty" name:"FuncType"`
 
-	// 源日志主题
+	// 日志主题ID
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
 	// 加工任务名称
+	// 名称限制
+	// - 不能为空字符串
+	// - 不能包含字符'|'
+	// - 最长 255 个字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
@@ -2743,13 +2748,16 @@ type CreateDataTransformRequestParams struct {
 	// 1：使用源日志主题中的随机数据，进行加工预览；2：使用用户自定义测试数据，进行加工预览；3：创建真实加工任务。
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 加工任务目的topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写。
+	// 加工任务目标topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写。
+	// 目标topic_id，通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// 别名限制 1.不能为空字符串，2. 不能包含字符'|'。
 	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
 	// 任务启动状态.   默认为1:开启,  2:关闭
 	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 用于预览加工结果的测试数据
+	// 目标日志主题ID通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	PreviewLogStatistics []*PreviewLogStatistic `json:"PreviewLogStatistics,omitnil,omitempty" name:"PreviewLogStatistics"`
 
 	// 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
@@ -2762,10 +2770,15 @@ type CreateDataTransformRequest struct {
 	// 任务类型. 1: 指定主题；2:动态创建。详情请参考[创建加工任务文档](https://cloud.tencent.com/document/product/614/63940)。
 	FuncType *int64 `json:"FuncType,omitnil,omitempty" name:"FuncType"`
 
-	// 源日志主题
+	// 日志主题ID
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
 	// 加工任务名称
+	// 名称限制
+	// - 不能为空字符串
+	// - 不能包含字符'|'
+	// - 最长 255 个字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
@@ -2780,13 +2793,16 @@ type CreateDataTransformRequest struct {
 	// 1：使用源日志主题中的随机数据，进行加工预览；2：使用用户自定义测试数据，进行加工预览；3：创建真实加工任务。
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 加工任务目的topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写。
+	// 加工任务目标topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写。
+	// 目标topic_id，通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// 别名限制 1.不能为空字符串，2. 不能包含字符'|'。
 	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
 	// 任务启动状态.   默认为1:开启,  2:关闭
 	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
 	// 用于预览加工结果的测试数据
+	// 目标日志主题ID通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	PreviewLogStatistics []*PreviewLogStatistic `json:"PreviewLogStatistics,omitnil,omitempty" name:"PreviewLogStatistics"`
 
 	// 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
@@ -4365,7 +4381,7 @@ type DataTransformTaskInfo struct {
 	// 任务启用状态，默认为1，正常开启,  2关闭
 	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
-	// 加工任务类型，1： DSL， 2：SQL
+	// 加工任务类型，1： DSL(使用自定义加工语言的加工任务)， 2：SQL(使用sql的加工任务)
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 源日志主题
@@ -4378,9 +4394,11 @@ type DataTransformTaskInfo struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最近修改时间
+	// 示例值：2025-06-18 16:55:54
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 最后启用时间，如果需要重建集群，修改该时间
+	// 示例值：2025-06-18 19:55:54
 	LastEnableTime *string `json:"LastEnableTime,omitnil,omitempty" name:"LastEnableTime"`
 
 	// 日志主题名称
@@ -7119,28 +7137,40 @@ type DescribeDataTransformInfoRequestParams struct {
 	// 按照【加工任务名称】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 示例：test-task
 	// 
 	// - taskId
 	// 按照【加工任务id】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 示例：a3622556-6402-4942-b4ff-5ae32ec29810
+	// 数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
 	// 
 	// - topicId
 	// 按照【源topicId】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 示例：756cec3e-a0a5-44c3-85a8-090870582000
+	// 日志主题ID
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// 
 	// - status
 	// 按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
 	// 类型：String
 	// 必选：否
+	// 示例：1
+	// 
 	// - hasServiceLog
 	// 按照【是否开启服务日志】进行过滤。 1：未开启，2：已开启
 	// 类型：String
 	// 必选：否
+	// 示例：1
+	// 
 	// - dstTopicType
 	// 按照【目标topic类型】进行过滤。  1：固定，2：动态
 	// 类型：String
 	// 必选：否
+	// 示例：1
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -7155,6 +7185,7 @@ type DescribeDataTransformInfoRequestParams struct {
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type为1， 此参数必填
+	// 数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -7165,28 +7196,40 @@ type DescribeDataTransformInfoRequest struct {
 	// 按照【加工任务名称】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 示例：test-task
 	// 
 	// - taskId
 	// 按照【加工任务id】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 示例：a3622556-6402-4942-b4ff-5ae32ec29810
+	// 数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
 	// 
 	// - topicId
 	// 按照【源topicId】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 示例：756cec3e-a0a5-44c3-85a8-090870582000
+	// 日志主题ID
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// 
 	// - status
 	// 按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
 	// 类型：String
 	// 必选：否
+	// 示例：1
+	// 
 	// - hasServiceLog
 	// 按照【是否开启服务日志】进行过滤。 1：未开启，2：已开启
 	// 类型：String
 	// 必选：否
+	// 示例：1
+	// 
 	// - dstTopicType
 	// 按照【目标topic类型】进行过滤。  1：固定，2：动态
 	// 类型：String
 	// 必选：否
+	// 示例：1
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -7201,6 +7244,7 @@ type DescribeDataTransformInfoRequest struct {
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Type为1， 此参数必填
+	// 数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -7564,16 +7608,18 @@ func (r *DescribeKafkaRechargesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogContextRequestParams struct {
-	// 要查询的日志主题ID
+	// 要查询的日志主题Id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志时间,  即SearchLog接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+	// 日志时间,  即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
 	BTime *string `json:"BTime,omitnil,omitempty" name:"BTime"`
 
-	// 日志包序号，即SearchLog接口返回信息中Results结构体中的PkgId。
+	// 日志包序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的PkgId。
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
-	// 日志包内一条日志的序号，即SearchLog接口返回信息中Results结构中的PkgLogId。
+	// 日志包内一条日志的序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构中的PkgLogId。
 	PkgLogId *int64 `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
 	// 前${PrevLogs}条日志，默认值10。
@@ -7604,16 +7650,18 @@ type DescribeLogContextRequestParams struct {
 type DescribeLogContextRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要查询的日志主题ID
+	// 要查询的日志主题Id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志时间,  即SearchLog接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+	// 日志时间,  即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
 	BTime *string `json:"BTime,omitnil,omitempty" name:"BTime"`
 
-	// 日志包序号，即SearchLog接口返回信息中Results结构体中的PkgId。
+	// 日志包序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的PkgId。
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
-	// 日志包内一条日志的序号，即SearchLog接口返回信息中Results结构中的PkgLogId。
+	// 日志包内一条日志的序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构中的PkgLogId。
 	PkgLogId *int64 `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
 	// 前${PrevLogs}条日志，默认值10。
@@ -11295,10 +11343,17 @@ func (r *ModifyDashboardSubscribeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDataTransformRequestParams struct {
-	// 加工任务id
+	// 数据加工任务ID
+	// - 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 加工任务名称
+	// - 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务名称。
+	// 
+	// 名称限制
+	// - 不能为空字符串
+	// - 不能包含字符'|'
+	// - 最长 255 个字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
@@ -11322,10 +11377,17 @@ type ModifyDataTransformRequestParams struct {
 type ModifyDataTransformRequest struct {
 	*tchttp.BaseRequest
 	
-	// 加工任务id
+	// 数据加工任务ID
+	// - 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 加工任务名称
+	// - 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务名称。
+	// 
+	// 名称限制
+	// - 不能为空字符串
+	// - 不能包含字符'|'
+	// - 最长 255 个字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
@@ -11394,10 +11456,12 @@ func (r *ModifyDataTransformResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyIndexRequestParams struct {
-	// 日志主题ID
+	// 日志主题Id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 默认不生效
+	// 索引状态。false：关闭索引， true：开启索引
+	// 开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。[费用详情](https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9)
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 索引规则
@@ -11418,10 +11482,12 @@ type ModifyIndexRequestParams struct {
 type ModifyIndexRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题ID
+	// 日志主题Id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 默认不生效
+	// 索引状态。false：关闭索引， true：开启索引
+	// 开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。[费用详情](https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9)
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 索引规则
@@ -14007,10 +14073,12 @@ type ShipperTaskInfo struct {
 
 // Predefined struct for user
 type SplitPartitionRequestParams struct {
-	// 日志主题ID
+	// 日志主题Id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 待分裂分区ID
+	// 待分裂分区Id
+	// - 通过[获取分区列表](https://cloud.tencent.com/document/product/614/56470)获取待分裂分区Id。
 	PartitionId *int64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
 
 	// 分区切分的哈希key的位置，只在Number=2时有意义
@@ -14023,10 +14091,12 @@ type SplitPartitionRequestParams struct {
 type SplitPartitionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题ID
+	// 日志主题Id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 待分裂分区ID
+	// 待分裂分区Id
+	// - 通过[获取分区列表](https://cloud.tencent.com/document/product/614/56470)获取待分裂分区Id。
 	PartitionId *int64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
 
 	// 分区切分的哈希key的位置，只在Number=2时有意义

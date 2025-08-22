@@ -3473,6 +3473,60 @@ func (c *Client) DescribeUserDeviceWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeUserDeviceListRequest() (request *DescribeUserDeviceListRequest) {
+    request = &DescribeUserDeviceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DescribeUserDeviceList")
+    
+    
+    return
+}
+
+func NewDescribeUserDeviceListResponse() (response *DescribeUserDeviceListResponse) {
+    response = &DescribeUserDeviceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserDeviceList
+// 用于批量查询设备详细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_DEICEIDQUANTITYEXCEEDEDLIMIT = "LimitExceeded.DeiceIdQuantityExceededLimit"
+func (c *Client) DescribeUserDeviceList(request *DescribeUserDeviceListRequest) (response *DescribeUserDeviceListResponse, err error) {
+    return c.DescribeUserDeviceListWithContext(context.Background(), request)
+}
+
+// DescribeUserDeviceList
+// 用于批量查询设备详细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_DEICEIDQUANTITYEXCEEDEDLIMIT = "LimitExceeded.DeiceIdQuantityExceededLimit"
+func (c *Client) DescribeUserDeviceListWithContext(ctx context.Context, request *DescribeUserDeviceListRequest) (response *DescribeUserDeviceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserDeviceListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeUserDeviceList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserDeviceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserDeviceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVideoBitRateRequest() (request *DescribeVideoBitRateRequest) {
     request = &DescribeVideoBitRateRequest{
         BaseRequest: &tchttp.BaseRequest{},

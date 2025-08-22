@@ -663,10 +663,10 @@ type CreateModelServiceRequestParams struct {
 	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 
-	// 30
+	// 服务的优雅退出时限。单位为秒，默认值为30，最小为1
 	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
 
-	// ["sleep","60"]
+	// 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 
 	// 是否启用 grpc 端口
@@ -680,6 +680,9 @@ type CreateModelServiceRequestParams struct {
 
 	// sidecar配置
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
+
+	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 }
 
 type CreateModelServiceRequest struct {
@@ -813,10 +816,10 @@ type CreateModelServiceRequest struct {
 	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 
-	// 30
+	// 服务的优雅退出时限。单位为秒，默认值为30，最小为1
 	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
 
-	// ["sleep","60"]
+	// 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 
 	// 是否启用 grpc 端口
@@ -830,6 +833,9 @@ type CreateModelServiceRequest struct {
 
 	// sidecar配置
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
+
+	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -885,6 +891,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "HealthProbe")
 	delete(f, "RollingUpdate")
 	delete(f, "Sidecar")
+	delete(f, "VolumeMounts")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -5738,10 +5745,10 @@ type ModifyModelServiceRequestParams struct {
 	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 
-	// 30
+	// 服务的优雅退出时限。单位为秒，默认值为30，最小为1
 	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
 
-	// ["sleep","60"]
+	// 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 
 	// 是否启动grpc端口
@@ -5758,6 +5765,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// 资源组 id
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -5864,10 +5874,10 @@ type ModifyModelServiceRequest struct {
 	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 
-	// 30
+	// 服务的优雅退出时限。单位为秒，默认值为30，最小为1
 	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
 
-	// ["sleep","60"]
+	// 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 
 	// 是否启动grpc端口
@@ -5884,6 +5894,9 @@ type ModifyModelServiceRequest struct {
 
 	// 资源组 id
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -5931,6 +5944,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "RollingUpdate")
 	delete(f, "Sidecar")
 	delete(f, "ResourceGroupId")
+	delete(f, "VolumeMounts")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -6442,6 +6456,18 @@ type Pod struct {
 
 	// 当前实例所在的节点 IP
 	NodeIP *string `json:"NodeIP,omitnil,omitempty" name:"NodeIP"`
+
+	// 当前实例所在节点id
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 当时实例所属资源组 id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 资源组名称
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 实例的资源占用信息
+	ResourceInfo *ResourceInfo `json:"ResourceInfo,omitnil,omitempty" name:"ResourceInfo"`
 }
 
 type PodInfo struct {
@@ -6534,7 +6560,11 @@ type ProbeAction struct {
 }
 
 type PublicDataSourceFS struct {
+	// 数据源id
+	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
+	// 相对数据源子路径
+	SubPath *string `json:"SubPath,omitnil,omitempty" name:"SubPath"`
 }
 
 // Predefined struct for user
@@ -6712,7 +6742,7 @@ type ResourceGroup struct {
 	// 总节点个数(所有节点)
 	TotalInstance *uint64 `json:"TotalInstance,omitnil,omitempty" name:"TotalInstance"`
 
-	// 资资源组已用的资源
+	// 资源组已用的资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedResource *GroupResource `json:"UsedResource,omitnil,omitempty" name:"UsedResource"`
 
@@ -6727,6 +6757,14 @@ type ResourceGroup struct {
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
+}
+
+type ResourceGroupInfo struct {
+	// 资源组 id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 资源组名称
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 type ResourceInfo struct {
@@ -6812,6 +6850,11 @@ type ScheduledAction struct {
 
 	// 要执行定时停止的时间，格式：“2022-01-26T19:46:22+08:00”
 	ScheduleStopTime *string `json:"ScheduleStopTime,omitnil,omitempty" name:"ScheduleStopTime"`
+}
+
+type SchedulingPolicy struct {
+	// 是否启用了跨资源组调度开关
+	CrossResourceGroupScheduling *bool `json:"CrossResourceGroupScheduling,omitnil,omitempty" name:"CrossResourceGroupScheduling"`
 }
 
 type SchemaInfo struct {
@@ -6972,6 +7015,12 @@ type Service struct {
 
 	// 服务创建者的子账号名称
 	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
+
+	// 服务的调度策略
+	SchedulingPolicy *SchedulingPolicy `json:"SchedulingPolicy,omitnil,omitempty" name:"SchedulingPolicy"`
+
+	// 外部的资源组信息，表示借调了哪些资源组的资源
+	ExternalResourceGroups []*ResourceGroupInfo `json:"ExternalResourceGroups,omitnil,omitempty" name:"ExternalResourceGroups"`
 }
 
 type ServiceCallInfo struct {
@@ -7320,6 +7369,12 @@ type ServiceInfo struct {
 
 	// 滚动更新配置
 	RollingUpdate *RollingUpdate `json:"RollingUpdate,omitnil,omitempty" name:"RollingUpdate"`
+
+	// 单副本下的实例数，仅在部署类型为DIST、ROLE时生效，默认1
+	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
+
+	// 批量数据盘挂载配置
+	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 }
 
 type ServiceLimit struct {
@@ -8125,6 +8180,10 @@ type VolumeMount struct {
 
 	// 挂载源类型，CFS、COS，默认为CFS
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil,omitempty" name:"VolumeSourceType"`
+
+	// 自定义容器内挂载路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
 }
 
 type WorkloadStatus struct {

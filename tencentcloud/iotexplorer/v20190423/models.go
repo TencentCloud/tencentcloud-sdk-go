@@ -2785,6 +2785,14 @@ type CreateTWeSeeRecognitionTaskRequestParams struct {
 
 	// 摘要输出配置
 	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
+
+	// 算法类型，可能取值：
+	// - `Summary`：视频/图片摘要
+	// - `ObjectDetect`：目标检测
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 目标检测配置
+	ObjectDetectConfig *VisionObjectDetectConfig `json:"ObjectDetectConfig,omitnil,omitempty" name:"ObjectDetectConfig"`
 }
 
 type CreateTWeSeeRecognitionTaskRequest struct {
@@ -2831,6 +2839,14 @@ type CreateTWeSeeRecognitionTaskRequest struct {
 
 	// 摘要输出配置
 	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
+
+	// 算法类型，可能取值：
+	// - `Summary`：视频/图片摘要
+	// - `ObjectDetect`：目标检测
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 目标检测配置
+	ObjectDetectConfig *VisionObjectDetectConfig `json:"ObjectDetectConfig,omitnil,omitempty" name:"ObjectDetectConfig"`
 }
 
 func (r *CreateTWeSeeRecognitionTaskRequest) ToJsonString() string {
@@ -2857,6 +2873,8 @@ func (r *CreateTWeSeeRecognitionTaskRequest) FromJsonString(s string) error {
 	delete(f, "InputType")
 	delete(f, "SummaryQOS")
 	delete(f, "SummaryConfig")
+	delete(f, "ServiceType")
+	delete(f, "ObjectDetectConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeSeeRecognitionTaskRequest has unknown keys!", "")
 	}
@@ -10798,6 +10816,14 @@ type InvokeTWeSeeRecognitionTaskRequestParams struct {
 
 	// 摘要输出配置
 	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
+
+	// 算法类型，可能取值：
+	// - `Summary`：视频/图片摘要
+	// - `ObjectDetect`：目标检测
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 目标检测配置
+	ObjectDetectConfig *VisionObjectDetectConfig `json:"ObjectDetectConfig,omitnil,omitempty" name:"ObjectDetectConfig"`
 }
 
 type InvokeTWeSeeRecognitionTaskRequest struct {
@@ -10844,6 +10870,14 @@ type InvokeTWeSeeRecognitionTaskRequest struct {
 
 	// 摘要输出配置
 	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
+
+	// 算法类型，可能取值：
+	// - `Summary`：视频/图片摘要
+	// - `ObjectDetect`：目标检测
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 目标检测配置
+	ObjectDetectConfig *VisionObjectDetectConfig `json:"ObjectDetectConfig,omitnil,omitempty" name:"ObjectDetectConfig"`
 }
 
 func (r *InvokeTWeSeeRecognitionTaskRequest) ToJsonString() string {
@@ -10870,6 +10904,8 @@ func (r *InvokeTWeSeeRecognitionTaskRequest) FromJsonString(s string) error {
 	delete(f, "InputType")
 	delete(f, "SummaryQOS")
 	delete(f, "SummaryConfig")
+	delete(f, "ServiceType")
+	delete(f, "ObjectDetectConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeTWeSeeRecognitionTaskRequest has unknown keys!", "")
 	}
@@ -14998,6 +15034,13 @@ type VideoLicenseEntity struct {
 
 	// 即将过期的激活码数量
 	ExpiresSoonCount *int64 `json:"ExpiresSoonCount,omitnil,omitempty" name:"ExpiresSoonCount"`
+}
+
+type VisionObjectDetectConfig struct {
+	// 检测类别，可选值：
+	// - `adult`：成年人
+	// - `child`：儿童
+	DetectTypes []*string `json:"DetectTypes,omitnil,omitempty" name:"DetectTypes"`
 }
 
 type VisionRecognitionResult struct {

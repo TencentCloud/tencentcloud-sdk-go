@@ -181,6 +181,97 @@ type BaseStateAction struct {
 	ShowRename *bool `json:"ShowRename,omitnil,omitempty" name:"ShowRename"`
 }
 
+// Predefined struct for user
+type ClearEmbedTokenRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 主账号id
+	UserCorpId *string `json:"UserCorpId,omitnil,omitempty" name:"UserCorpId"`
+
+	// panel , page
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// page id
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+}
+
+type ClearEmbedTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 主账号id
+	UserCorpId *string `json:"UserCorpId,omitnil,omitempty" name:"UserCorpId"`
+
+	// panel , page
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// page id
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+}
+
+func (r *ClearEmbedTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ClearEmbedTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "UserCorpId")
+	delete(f, "Scope")
+	delete(f, "PageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClearEmbedTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ClearEmbedTokenResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 额外消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 提示消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ClearEmbedTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *ClearEmbedTokenResponseParams `json:"Response"`
+}
+
+func (r *ClearEmbedTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ClearEmbedTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CorpUserListData struct {
 	// 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。

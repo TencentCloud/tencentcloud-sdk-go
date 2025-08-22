@@ -12624,10 +12624,7 @@ func (r *DescribeBanStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBanStatusResponseParams struct {
-	// 阻断开关状态:
-	//  0 -- 关闭 
-	//  1 -- 高级阻断
-	//  2 -- 基础阻断(只阻断情报库黑ip)
+	// (已废弃) 阻断开关状态: 0 -- 关闭  1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否弹窗提示信息 false: 关闭，true: 开启
@@ -12635,6 +12632,15 @@ type DescribeBanStatusResponseParams struct {
 
 	// 是否开启智能过白模式
 	OpenSmartMode *bool `json:"OpenSmartMode,omitnil,omitempty" name:"OpenSmartMode"`
+
+	// 是否开启情报IP阻断
+	BanBlackIp *bool `json:"BanBlackIp,omitnil,omitempty" name:"BanBlackIp"`
+
+	// 是否开启漏洞IP阻断
+	BanVulIp *bool `json:"BanVulIp,omitnil,omitempty" name:"BanVulIp"`
+
+	// 是否开启规则阻断
+	BanByRule *bool `json:"BanByRule,omitnil,omitempty" name:"BanByRule"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -36343,7 +36349,7 @@ type HostLoginList struct {
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
 	// 高危信息说明：
-	// ABROAD - 海外IP；
+	// ABROAD - 境外IP；
 	// XTI - 威胁情报
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
@@ -37017,7 +37023,7 @@ type LoginWhiteCombinedInfo struct {
 	// 服务器Uuid
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 登陆地
+	// 登录地
 	Locations *string `json:"Locations,omitnil,omitempty" name:"Locations"`
 }
 
@@ -42335,7 +42341,7 @@ type Place struct {
 	// 省份 ID。
 	ProvinceId *uint64 `json:"ProvinceId,omitnil,omitempty" name:"ProvinceId"`
 
-	// 国家ID，暂只支持国内：1。
+	// 国家ID，暂只支持境内：1。
 	CountryId *uint64 `json:"CountryId,omitnil,omitempty" name:"CountryId"`
 
 	// 位置名称

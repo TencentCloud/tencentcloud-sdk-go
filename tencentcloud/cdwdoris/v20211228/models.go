@@ -164,6 +164,9 @@ type BackUpJobDisplay struct {
 
 	// 快照保留策略
 	SnapshotRemainPolicy *SnapshotRemainPolicy `json:"SnapshotRemainPolicy,omitnil,omitempty" name:"SnapshotRemainPolicy"`
+
+	// 隔离次数
+	IsolationCount *int64 `json:"IsolationCount,omitnil,omitempty" name:"IsolationCount"`
 }
 
 type BackupCosInfo struct {
@@ -1151,6 +1154,9 @@ type DeleteBackUpDataRequestParams struct {
 
 	// 是否删除所有实例
 	IsDeleteAll *bool `json:"IsDeleteAll,omitnil,omitempty" name:"IsDeleteAll"`
+
+	// true代表恢复删除隔离中的job 默认false就是删除
+	IsRecover *bool `json:"IsRecover,omitnil,omitempty" name:"IsRecover"`
 }
 
 type DeleteBackUpDataRequest struct {
@@ -1164,6 +1170,9 @@ type DeleteBackUpDataRequest struct {
 
 	// 是否删除所有实例
 	IsDeleteAll *bool `json:"IsDeleteAll,omitnil,omitempty" name:"IsDeleteAll"`
+
+	// true代表恢复删除隔离中的job 默认false就是删除
+	IsRecover *bool `json:"IsRecover,omitnil,omitempty" name:"IsRecover"`
 }
 
 func (r *DeleteBackUpDataRequest) ToJsonString() string {
@@ -1181,6 +1190,7 @@ func (r *DeleteBackUpDataRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "BackUpJobId")
 	delete(f, "IsDeleteAll")
+	delete(f, "IsRecover")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBackUpDataRequest has unknown keys!", "")
 	}
@@ -1189,6 +1199,9 @@ func (r *DeleteBackUpDataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteBackUpDataResponseParams struct {
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

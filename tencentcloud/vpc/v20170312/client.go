@@ -21452,6 +21452,12 @@ func NewModifyCcnAttributeResponse() (response *ModifyCcnAttributeResponse) {
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_CCNROUTEOVERLAPFLAGDISABLENOTSUPPORTED = "UnsupportedOperation.CcnRouteOverlapFlagDisableNotSupported"
+//  UNSUPPORTEDOPERATION_ENABLEMULTICCNBANDWIDTH = "UnsupportedOperation.EnableMultiCcnBandwidth"
+//  UNSUPPORTEDOPERATION_EXISTCCNROUTEMATCHRULE = "UnsupportedOperation.ExistCcnRouteMatchRule"
+//  UNSUPPORTEDOPERATION_EXISTTRAFFICQOSPOLICY = "UnsupportedOperation.ExistTrafficQosPolicy"
+//  UNSUPPORTEDOPERATION_ONLYINTERREGIONLIMITSUPPORTEDCREATETRAFFICQOSPOLICY = "UnsupportedOperation.OnlyInterRegionLimitSupportedCreateTrafficQosPolicy"
+//  UNSUPPORTEDOPERATION_TRAFFICQOSPOLICYBANDWIDTH = "UnsupportedOperation.TrafficQosPolicyBandwidth"
+//  UNSUPPORTEDOPERATION_WHITELISTNOTADD = "UnsupportedOperation.WhiteListNotAdd"
 func (c *Client) ModifyCcnAttribute(request *ModifyCcnAttributeRequest) (response *ModifyCcnAttributeResponse, err error) {
     return c.ModifyCcnAttributeWithContext(context.Background(), request)
 }
@@ -21464,6 +21470,12 @@ func (c *Client) ModifyCcnAttribute(request *ModifyCcnAttributeRequest) (respons
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_CCNROUTEOVERLAPFLAGDISABLENOTSUPPORTED = "UnsupportedOperation.CcnRouteOverlapFlagDisableNotSupported"
+//  UNSUPPORTEDOPERATION_ENABLEMULTICCNBANDWIDTH = "UnsupportedOperation.EnableMultiCcnBandwidth"
+//  UNSUPPORTEDOPERATION_EXISTCCNROUTEMATCHRULE = "UnsupportedOperation.ExistCcnRouteMatchRule"
+//  UNSUPPORTEDOPERATION_EXISTTRAFFICQOSPOLICY = "UnsupportedOperation.ExistTrafficQosPolicy"
+//  UNSUPPORTEDOPERATION_ONLYINTERREGIONLIMITSUPPORTEDCREATETRAFFICQOSPOLICY = "UnsupportedOperation.OnlyInterRegionLimitSupportedCreateTrafficQosPolicy"
+//  UNSUPPORTEDOPERATION_TRAFFICQOSPOLICYBANDWIDTH = "UnsupportedOperation.TrafficQosPolicyBandwidth"
+//  UNSUPPORTEDOPERATION_WHITELISTNOTADD = "UnsupportedOperation.WhiteListNotAdd"
 func (c *Client) ModifyCcnAttributeWithContext(ctx context.Context, request *ModifyCcnAttributeRequest) (response *ModifyCcnAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCcnAttributeRequest()

@@ -4645,6 +4645,9 @@ func (r *CreateUserVpcConnectionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserVpcConnectionResponseParams struct {
+	// 终端节点IP
+	UserVpcEndpointId *string `json:"UserVpcEndpointId,omitnil,omitempty" name:"UserVpcEndpointId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -12079,6 +12082,9 @@ type DescribeUserVpcConnectionRequestParams struct {
 
 	// 引擎ID集合
 	DataEngineIds []*string `json:"DataEngineIds,omitnil,omitempty" name:"DataEngineIds"`
+
+	// 终端节点ID集合
+	UserVpcEndpointIds []*string `json:"UserVpcEndpointIds,omitnil,omitempty" name:"UserVpcEndpointIds"`
 }
 
 type DescribeUserVpcConnectionRequest struct {
@@ -12089,6 +12095,9 @@ type DescribeUserVpcConnectionRequest struct {
 
 	// 引擎ID集合
 	DataEngineIds []*string `json:"DataEngineIds,omitnil,omitempty" name:"DataEngineIds"`
+
+	// 终端节点ID集合
+	UserVpcEndpointIds []*string `json:"UserVpcEndpointIds,omitnil,omitempty" name:"UserVpcEndpointIds"`
 }
 
 func (r *DescribeUserVpcConnectionRequest) ToJsonString() string {
@@ -12105,6 +12114,7 @@ func (r *DescribeUserVpcConnectionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EngineNetworkId")
 	delete(f, "DataEngineIds")
+	delete(f, "UserVpcEndpointIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserVpcConnectionRequest has unknown keys!", "")
 	}

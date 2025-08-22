@@ -355,6 +355,60 @@ func (c *Client) DescribeAccountGroupsWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeAggrSoftCategorySoftListRequest() (request *DescribeAggrSoftCategorySoftListRequest) {
+    request = &DescribeAggrSoftCategorySoftListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeAggrSoftCategorySoftList")
+    
+    
+    return
+}
+
+func NewDescribeAggrSoftCategorySoftListResponse() (response *DescribeAggrSoftCategorySoftListResponse) {
+    response = &DescribeAggrSoftCategorySoftListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAggrSoftCategorySoftList
+// 聚合的分类软件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_DATABASEEXCEPTION = "InvalidParameter.DatabaseException"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) DescribeAggrSoftCategorySoftList(request *DescribeAggrSoftCategorySoftListRequest) (response *DescribeAggrSoftCategorySoftListResponse, err error) {
+    return c.DescribeAggrSoftCategorySoftListWithContext(context.Background(), request)
+}
+
+// DescribeAggrSoftCategorySoftList
+// 聚合的分类软件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_DATABASEEXCEPTION = "InvalidParameter.DatabaseException"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) DescribeAggrSoftCategorySoftListWithContext(ctx context.Context, request *DescribeAggrSoftCategorySoftListRequest) (response *DescribeAggrSoftCategorySoftListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAggrSoftCategorySoftListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeAggrSoftCategorySoftList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAggrSoftCategorySoftList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAggrSoftCategorySoftListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDLPFileDetectResultRequest() (request *DescribeDLPFileDetectResultRequest) {
     request = &DescribeDLPFileDetectResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -407,6 +461,68 @@ func (c *Client) DescribeDLPFileDetectResultWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeDLPFileDetectResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceChildGroupsRequest() (request *DescribeDeviceChildGroupsRequest) {
+    request = &DescribeDeviceChildGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDeviceChildGroups")
+    
+    
+    return
+}
+
+func NewDescribeDeviceChildGroupsResponse() (response *DescribeDeviceChildGroupsResponse) {
+    response = &DescribeDeviceChildGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceChildGroups
+// 查询设备组子分组详情，私有化调用path为：capi/Assets/Device/DescribeDeviceChildGroups
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeviceChildGroups(request *DescribeDeviceChildGroupsRequest) (response *DescribeDeviceChildGroupsResponse, err error) {
+    return c.DescribeDeviceChildGroupsWithContext(context.Background(), request)
+}
+
+// DescribeDeviceChildGroups
+// 查询设备组子分组详情，私有化调用path为：capi/Assets/Device/DescribeDeviceChildGroups
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeviceChildGroupsWithContext(ctx context.Context, request *DescribeDeviceChildGroupsRequest) (response *DescribeDeviceChildGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceChildGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDeviceChildGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceChildGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceChildGroupsResponse()
     err = c.Send(request, response)
     return
 }

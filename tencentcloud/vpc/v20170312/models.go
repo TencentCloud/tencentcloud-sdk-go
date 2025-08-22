@@ -25980,6 +25980,9 @@ type ModifyCcnAttributeRequestParams struct {
 
 	// 是否开启路由重叠功能。`False` 不开启，`True` 开启。
 	RouteOverlapFlag *bool `json:"RouteOverlapFlag,omitnil,omitempty" name:"RouteOverlapFlag"`
+
+	// 是否开启qos功能。`False` 不开启，`True` 开启。
+	TrafficMarkingPolicyFlag *bool `json:"TrafficMarkingPolicyFlag,omitnil,omitempty" name:"TrafficMarkingPolicyFlag"`
 }
 
 type ModifyCcnAttributeRequest struct {
@@ -25999,6 +26002,9 @@ type ModifyCcnAttributeRequest struct {
 
 	// 是否开启路由重叠功能。`False` 不开启，`True` 开启。
 	RouteOverlapFlag *bool `json:"RouteOverlapFlag,omitnil,omitempty" name:"RouteOverlapFlag"`
+
+	// 是否开启qos功能。`False` 不开启，`True` 开启。
+	TrafficMarkingPolicyFlag *bool `json:"TrafficMarkingPolicyFlag,omitnil,omitempty" name:"TrafficMarkingPolicyFlag"`
 }
 
 func (r *ModifyCcnAttributeRequest) ToJsonString() string {
@@ -26018,6 +26024,7 @@ func (r *ModifyCcnAttributeRequest) FromJsonString(s string) error {
 	delete(f, "CcnDescription")
 	delete(f, "RouteECMPFlag")
 	delete(f, "RouteOverlapFlag")
+	delete(f, "TrafficMarkingPolicyFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCcnAttributeRequest has unknown keys!", "")
 	}

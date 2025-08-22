@@ -18385,7 +18385,7 @@ type RecentPullInfo struct {
 type RecordParam struct {
 	// 录制间隔。
 	// 单位秒，默认：1800。
-	// 取值范围：30-7200。
+	// FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
 	// 此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
 	RecordInterval *int64 `json:"RecordInterval,omitnil,omitempty" name:"RecordInterval"`
 

@@ -20,17 +20,17 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
-	// FailedOperation.DownLoadError
-	FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-
 	// 引擎层内部错误；
 	FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
 
-	// FailedOperation.FileDecodeFailed
-	FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+	// 解析失败
+	FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
 
-	// 图片解码失败
-	FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+	// 文档解析超时
+	FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+
+	// 内部错误
+	FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 
 	// 暂不支持解析该文件
 	FAILEDOPERATION_NONSUPPORTPARSE = "FailedOperation.NonsupportParse"
@@ -40,9 +40,6 @@ const (
 
 	// 内部未知错误。
 	FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-
-	// FailedOperation.UnKnowFileTypeError
-	FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
 
 	// 服务未开通。
 	FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
@@ -55,6 +52,15 @@ const (
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 文件url链接不正确
+	INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+
+	// 无效的文件格式
+	INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+
+	// 无效的文件类型
+	INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
 
 	// 参数值错误。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"

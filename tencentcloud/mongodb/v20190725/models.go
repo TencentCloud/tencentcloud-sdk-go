@@ -99,10 +99,12 @@ func (r *AssignProjectResponse) FromJsonString(s string) error {
 
 type Auth struct {
 	// 当前账号具有的权限信息。<ul><li>0：无权限。</li><li>1：只读。</li><li>2：只写。</li><li>3：读写。</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mask *int64 `json:"Mask,omitnil,omitempty" name:"Mask"`
 
 	// 指具有当前账号权限的数据库名。
 	// <ul><li>* ：表示所有数据库。</li><li>db.name：表示特定name的数据库。</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
 }
 
@@ -5585,4 +5587,7 @@ type UserInfo struct {
 
 	// 备注信息。
 	UserDesc *string `json:"UserDesc,omitnil,omitempty" name:"UserDesc"`
+
+	// 控制台密码更新时间
+	ConsolePassUpdateTime *string `json:"ConsolePassUpdateTime,omitnil,omitempty" name:"ConsolePassUpdateTime"`
 }

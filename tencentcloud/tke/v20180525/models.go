@@ -1265,6 +1265,9 @@ type ClusterNetworkSettings struct {
 	// - 容器网络插件为CiliumOverlay。
 	// - 支持CDC的托管集群，且网络插件为VPC-CNI。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 是否启用了 DataPlaneV2（cilium替代kube-proxy）
+	DataPlaneV2 *bool `json:"DataPlaneV2,omitnil,omitempty" name:"DataPlaneV2"`
 }
 
 type ClusterProperty struct {

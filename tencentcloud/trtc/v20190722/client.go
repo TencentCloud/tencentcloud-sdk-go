@@ -2211,6 +2211,10 @@ func NewDescribeTRTCMarketQualityMetricDataResponse() (response *DescribeTRTCMar
 }
 
 // DescribeTRTCMarketQualityMetricData
+// 云监控monitor接口已下线，trtc同步下线接口
+//
+// 
+//
 // 查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
 //
 // joinSuccessRate：加入频道成功率。
@@ -2236,6 +2240,10 @@ func (c *Client) DescribeTRTCMarketQualityMetricData(request *DescribeTRTCMarket
 }
 
 // DescribeTRTCMarketQualityMetricData
+// 云监控monitor接口已下线，trtc同步下线接口
+//
+// 
+//
 // 查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
 //
 // joinSuccessRate：加入频道成功率。
@@ -2371,6 +2379,10 @@ func NewDescribeTRTCMarketScaleMetricDataResponse() (response *DescribeTRTCMarke
 }
 
 // DescribeTRTCMarketScaleMetricData
+// 云监控monitor接口已下线，trtc同步下线接口
+//
+// 
+//
 // 查询TRTC监控仪表盘-数据大盘规模指标（会返回通话人数，通话房间数，峰值同时在线人数，峰值同时在线频道数）
 //
 // userCount：通话人数，
@@ -2394,6 +2406,10 @@ func (c *Client) DescribeTRTCMarketScaleMetricData(request *DescribeTRTCMarketSc
 }
 
 // DescribeTRTCMarketScaleMetricData
+// 云监控monitor接口已下线，trtc同步下线接口
+//
+// 
+//
 // 查询TRTC监控仪表盘-数据大盘规模指标（会返回通话人数，通话房间数，峰值同时在线人数，峰值同时在线频道数）
 //
 // userCount：通话人数，
@@ -2519,6 +2535,10 @@ func NewDescribeTRTCRealTimeQualityMetricDataResponse() (response *DescribeTRTCR
 }
 
 // DescribeTRTCRealTimeQualityMetricData
+// 云监控monitor接口已下线，trtc同步下线接口
+//
+// 
+//
 // 查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
 //
 // -视频卡顿率
@@ -2538,6 +2558,10 @@ func (c *Client) DescribeTRTCRealTimeQualityMetricData(request *DescribeTRTCReal
 }
 
 // DescribeTRTCRealTimeQualityMetricData
+// 云监控monitor接口已下线，trtc同步下线接口
+//
+// 
+//
 // 查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
 //
 // -视频卡顿率
@@ -5219,6 +5243,7 @@ func NewTextToSpeechResponse() (response *TextToSpeechResponse) {
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
     return c.TextToSpeechWithContext(context.Background(), request)
@@ -5231,6 +5256,7 @@ func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpe
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeechWithContext(ctx context.Context, request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
     if request == nil {
@@ -5273,6 +5299,7 @@ func NewTextToSpeechSSEResponse() (response *TextToSpeechSSEResponse) {
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeechSSE(request *TextToSpeechSSERequest) (response *TextToSpeechSSEResponse, err error) {
     return c.TextToSpeechSSEWithContext(context.Background(), request)
@@ -5285,6 +5312,7 @@ func (c *Client) TextToSpeechSSE(request *TextToSpeechSSERequest) (response *Tex
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeechSSEWithContext(ctx context.Context, request *TextToSpeechSSERequest) (response *TextToSpeechSSEResponse, err error) {
     if request == nil {
@@ -5579,6 +5607,7 @@ func NewVoiceCloneResponse() (response *VoiceCloneResponse) {
 //  INVALIDPARAMETER_AUDIOPROMPT = "InvalidParameter.AudioPrompt"
 //  INVALIDPARAMETER_VOICENAME = "InvalidParameter.VoiceName"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) VoiceClone(request *VoiceCloneRequest) (response *VoiceCloneResponse, err error) {
     return c.VoiceCloneWithContext(context.Background(), request)
@@ -5591,6 +5620,7 @@ func (c *Client) VoiceClone(request *VoiceCloneRequest) (response *VoiceCloneRes
 //  INVALIDPARAMETER_AUDIOPROMPT = "InvalidParameter.AudioPrompt"
 //  INVALIDPARAMETER_VOICENAME = "InvalidParameter.VoiceName"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) VoiceCloneWithContext(ctx context.Context, request *VoiceCloneRequest) (response *VoiceCloneResponse, err error) {
     if request == nil {

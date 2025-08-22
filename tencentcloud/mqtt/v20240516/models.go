@@ -494,6 +494,97 @@ func (r *CreateAuthorizationPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDeviceIdentityRequestParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 1:ENABLED-可用（默认）
+	// 2:DISABLE-不可用
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 主要签名key，不传则由系统自动生成，需要base64编码。
+	PrimaryKey *string `json:"PrimaryKey,omitnil,omitempty" name:"PrimaryKey"`
+
+	// 次要签名key，不传则油系统自动生成，需要base64编码。
+	SecondaryKey *string `json:"SecondaryKey,omitnil,omitempty" name:"SecondaryKey"`
+
+	// 该设备id的传播属性设置
+	PropagatingProperties []*PropagatingProperty `json:"PropagatingProperties,omitnil,omitempty" name:"PropagatingProperties"`
+}
+
+type CreateDeviceIdentityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 1:ENABLED-可用（默认）
+	// 2:DISABLE-不可用
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 主要签名key，不传则由系统自动生成，需要base64编码。
+	PrimaryKey *string `json:"PrimaryKey,omitnil,omitempty" name:"PrimaryKey"`
+
+	// 次要签名key，不传则油系统自动生成，需要base64编码。
+	SecondaryKey *string `json:"SecondaryKey,omitnil,omitempty" name:"SecondaryKey"`
+
+	// 该设备id的传播属性设置
+	PropagatingProperties []*PropagatingProperty `json:"PropagatingProperties,omitnil,omitempty" name:"PropagatingProperties"`
+}
+
+func (r *CreateDeviceIdentityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceIdentityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DeviceId")
+	delete(f, "Status")
+	delete(f, "PrimaryKey")
+	delete(f, "SecondaryKey")
+	delete(f, "PropagatingProperties")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceIdentityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDeviceIdentityResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDeviceIdentityResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDeviceIdentityResponseParams `json:"Response"`
+}
+
+func (r *CreateDeviceIdentityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceIdentityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateHttpAuthenticatorRequestParams struct {
 	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1546,6 +1637,67 @@ func (r *DeleteDeviceCertificateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteDeviceIdentityRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+}
+
+type DeleteDeviceIdentityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+}
+
+func (r *DeleteDeviceIdentityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceIdentityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeviceIdentityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeviceIdentityResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDeviceIdentityResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDeviceIdentityResponseParams `json:"Response"`
+}
+
+func (r *DeleteDeviceIdentityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceIdentityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteInsPublicEndpointRequestParams struct {
 	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -2350,6 +2502,160 @@ func (r *DescribeDeviceCertificatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDeviceCertificatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceIdentitiesRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeDeviceIdentitiesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDeviceIdentitiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceIdentitiesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceIdentitiesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceIdentitiesResponseParams struct {
+	// 返回的设备标识列表
+	Data []*DeviceIdentityItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceIdentitiesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceIdentitiesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceIdentitiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceIdentitiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceIdentityRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+}
+
+type DescribeDeviceIdentityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+}
+
+func (r *DescribeDeviceIdentityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceIdentityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceIdentityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceIdentityResponseParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 1:ENABLED-可用
+	//  2:DISABLE-不可用
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 主要签名key
+	PrimaryKey *string `json:"PrimaryKey,omitnil,omitempty" name:"PrimaryKey"`
+
+	// 次要签名key
+	SecondaryKey *string `json:"SecondaryKey,omitnil,omitempty" name:"SecondaryKey"`
+
+	// 创建时间
+	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 该设备id的传播属性
+	PropagatingProperties []*PropagatingProperty `json:"PropagatingProperties,omitnil,omitempty" name:"PropagatingProperties"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceIdentityResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceIdentityResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceIdentityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceIdentityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3410,6 +3716,29 @@ type DeviceCertificateItem struct {
 	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
 }
 
+type DeviceIdentityItem struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 1:ENABLED-可用2:DISABLE-不可用
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 主要签名key，不传则由系统自动生成
+	PrimaryKey *string `json:"PrimaryKey,omitnil,omitempty" name:"PrimaryKey"`
+
+	// 次要签名key，不传则由系统自动生成
+	SecondaryKey *string `json:"SecondaryKey,omitnil,omitempty" name:"SecondaryKey"`
+
+	// 创建时间
+	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 传播属性列表
+	PropagatingProperties []*PropagatingProperty `json:"PropagatingProperties,omitnil,omitempty" name:"PropagatingProperties"`
+}
+
 type Filter struct {
 	// 过滤条件名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -3898,6 +4227,97 @@ func (r *ModifyAuthorizationPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAuthorizationPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeviceIdentityRequestParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 1:ENABLED-可用
+	// 2:DISABLE-不可用
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 主要签名key，需要Base64编码。
+	PrimaryKey *string `json:"PrimaryKey,omitnil,omitempty" name:"PrimaryKey"`
+
+	// 次要签名key，需要Base64编码。
+	SecondaryKey *string `json:"SecondaryKey,omitnil,omitempty" name:"SecondaryKey"`
+
+	// 该设备id的传播属性设置	
+	PropagatingProperties []*PropagatingProperty `json:"PropagatingProperties,omitnil,omitempty" name:"PropagatingProperties"`
+}
+
+type ModifyDeviceIdentityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 1:ENABLED-可用
+	// 2:DISABLE-不可用
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 主要签名key，需要Base64编码。
+	PrimaryKey *string `json:"PrimaryKey,omitnil,omitempty" name:"PrimaryKey"`
+
+	// 次要签名key，需要Base64编码。
+	SecondaryKey *string `json:"SecondaryKey,omitnil,omitempty" name:"SecondaryKey"`
+
+	// 该设备id的传播属性设置	
+	PropagatingProperties []*PropagatingProperty `json:"PropagatingProperties,omitnil,omitempty" name:"PropagatingProperties"`
+}
+
+func (r *ModifyDeviceIdentityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceIdentityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DeviceId")
+	delete(f, "Status")
+	delete(f, "PrimaryKey")
+	delete(f, "SecondaryKey")
+	delete(f, "PropagatingProperties")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeviceIdentityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeviceIdentityResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDeviceIdentityResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeviceIdentityResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeviceIdentityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceIdentityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4703,6 +5123,14 @@ type ProductSkuItem struct {
 
 	// 计费项信息
 	PriceTags []*PriceTag `json:"PriceTags,omitnil,omitempty" name:"PriceTags"`
+}
+
+type PropagatingProperty struct {
+	// 传播属性key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 传播属性value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type PublicAccessRule struct {

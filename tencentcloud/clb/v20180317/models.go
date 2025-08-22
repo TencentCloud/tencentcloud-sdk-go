@@ -6659,6 +6659,9 @@ type LoadBalancer struct {
 
 	// 已绑定的后端服务数量。
 	TargetCount *uint64 `json:"TargetCount,omitnil,omitempty" name:"TargetCount"`
+
+	// 负载均衡实例关联的Endpoint id。
+	AssociateEndpoint *string `json:"AssociateEndpoint,omitnil,omitempty" name:"AssociateEndpoint"`
 }
 
 type LoadBalancerDetail struct {
@@ -7693,6 +7696,9 @@ type ModifyLoadBalancerAttributesRequestParams struct {
 
 	// 将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换，修改后mycloud.com域名将失效。不填则不修改。
 	ModifyClassicDomain *bool `json:"ModifyClassicDomain,omitnil,omitempty" name:"ModifyClassicDomain"`
+
+	// 关联的终端节点Id，可通过[DescribeVpcEndPoint](https://cloud.tencent.com/document/product/215/54679)接口查询。传空字符串代表解除关联。
+	AssociateEndpoint *string `json:"AssociateEndpoint,omitnil,omitempty" name:"AssociateEndpoint"`
 }
 
 type ModifyLoadBalancerAttributesRequest struct {
@@ -7724,6 +7730,9 @@ type ModifyLoadBalancerAttributesRequest struct {
 
 	// 将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换，修改后mycloud.com域名将失效。不填则不修改。
 	ModifyClassicDomain *bool `json:"ModifyClassicDomain,omitnil,omitempty" name:"ModifyClassicDomain"`
+
+	// 关联的终端节点Id，可通过[DescribeVpcEndPoint](https://cloud.tencent.com/document/product/215/54679)接口查询。传空字符串代表解除关联。
+	AssociateEndpoint *string `json:"AssociateEndpoint,omitnil,omitempty" name:"AssociateEndpoint"`
 }
 
 func (r *ModifyLoadBalancerAttributesRequest) ToJsonString() string {
@@ -7746,6 +7755,7 @@ func (r *ModifyLoadBalancerAttributesRequest) FromJsonString(s string) error {
 	delete(f, "SnatPro")
 	delete(f, "DeleteProtect")
 	delete(f, "ModifyClassicDomain")
+	delete(f, "AssociateEndpoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancerAttributesRequest has unknown keys!", "")
 	}

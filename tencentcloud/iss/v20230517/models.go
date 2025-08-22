@@ -3050,6 +3050,11 @@ type DescribeDeviceData struct {
 	SilentFrameSwitch *int64 `json:"SilentFrameSwitch,omitnil,omitempty" name:"SilentFrameSwitch"`
 }
 
+type DescribeDeviceListData struct {
+	// 设备详情列表
+	List []*DescribeDeviceData `json:"List,omitnil,omitempty" name:"List"`
+}
+
 type DescribeDevicePresetData struct {
 	// 预置位索引    只支持1-10的索引
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
@@ -4548,6 +4553,63 @@ func (r *DescribeTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserDeviceListRequestParams struct {
+	// 设备Id列表
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+}
+
+type DescribeUserDeviceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备Id列表
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+}
+
+func (r *DescribeUserDeviceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserDeviceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserDeviceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserDeviceListResponseParams struct {
+	// 返回结果
+	Data *DescribeDeviceListData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserDeviceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserDeviceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserDeviceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserDeviceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

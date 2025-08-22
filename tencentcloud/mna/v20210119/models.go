@@ -2959,7 +2959,7 @@ type OrderPerLicenseRequestParams struct {
 	// 设备类型，0: SDK，1: CPE，作为用户创建或激活设备时传0，作为厂商创建待激活设备时传1
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 购买失败后是否回滚（删除）设备，默认true，如果设备绑定了生效中的流量包则不能回滚。
+	// 购买失败后是否回滚（删除）设备，默认false，如果设备绑定了生效中的流量包则不能回滚。
 	RollBack *bool `json:"RollBack,omitnil,omitempty" name:"RollBack"`
 
 	// 是否自动选择代金券，默认false。
@@ -2980,7 +2980,7 @@ type OrderPerLicenseRequest struct {
 	// 设备类型，0: SDK，1: CPE，作为用户创建或激活设备时传0，作为厂商创建待激活设备时传1
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 购买失败后是否回滚（删除）设备，默认true，如果设备绑定了生效中的流量包则不能回滚。
+	// 购买失败后是否回滚（删除）设备，默认false，如果设备绑定了生效中的流量包则不能回滚。
 	RollBack *bool `json:"RollBack,omitnil,omitempty" name:"RollBack"`
 
 	// 是否自动选择代金券，默认false。

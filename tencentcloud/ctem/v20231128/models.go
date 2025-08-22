@@ -674,6 +674,9 @@ type DescribeConfigsRequestParams struct {
 
 	// 是否显示被忽略的数据
 	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+
+	// 支持按照响应长度排序，例如：+ContentLength或-ContentLength，+是递增，-是递减
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 type DescribeConfigsRequest struct {
@@ -720,6 +723,9 @@ type DescribeConfigsRequest struct {
 
 	// 是否显示被忽略的数据
 	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+
+	// 支持按照响应长度排序，例如：+ContentLength或-ContentLength，+是递增，-是递减
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 func (r *DescribeConfigsRequest) ToJsonString() string {
@@ -748,6 +754,7 @@ func (r *DescribeConfigsRequest) FromJsonString(s string) error {
 	delete(f, "UpdateAtEnd")
 	delete(f, "Filters")
 	delete(f, "Ignored")
+	delete(f, "OrderBy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigsRequest has unknown keys!", "")
 	}
@@ -4380,6 +4387,9 @@ type DisplayDarkWeb struct {
 
 	// 公共字段
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
+
+	// 状态：unrepaired:未修复，repaired:已修复，ignore:已忽略
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type DisplayDomain struct {

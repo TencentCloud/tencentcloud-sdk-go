@@ -1025,6 +1025,9 @@ type Library struct {
 	// 媒体库绑定的 COS 存储桶所在的地域
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
+	// 该媒体库的业务 API 访问域名
+	AccessDomain *string `json:"AccessDomain,omitnil,omitempty" name:"AccessDomain"`
+
 	// 媒体库创建时间
 	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
 
@@ -1067,11 +1070,11 @@ type LibraryExtension struct {
 	// 是否开启历史版本。默认为 false。
 	EnableFileHistory *bool `json:"EnableFileHistory,omitnil,omitempty" name:"EnableFileHistory"`
 
-	// 当开启历史版本时，指定单个文件保留的历史版本的数量上限，不能超过 999，指定为 0 则不限制，默认为 0。当未开启历史版本时，该属性为 null。
+	// 当开启历史版本时，指定单个文件保留的历史版本的数量上限，取值范围为 1 到 999。当未开启历史版本时，该属性可能为 null。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileHistoryCount *uint64 `json:"FileHistoryCount,omitnil,omitempty" name:"FileHistoryCount"`
 
-	// 当开启历史版本时，指定历史版本保留的最长天数，不能超过 999，指定为 0 则不限制，默认为 0。当未开启历史版本时，该属性为 null。
+	// 当开启历史版本时，指定历史版本保留的最长天数，取值范围为 0 到 999，当指定为 0 时代表永久保留。当未开启历史版本时，该属性可能为 null。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileHistoryExpireDay *uint64 `json:"FileHistoryExpireDay,omitnil,omitempty" name:"FileHistoryExpireDay"`
 

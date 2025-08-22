@@ -18521,6 +18521,10 @@ type RawTranscodeParameter struct {
 	// 音视频增强配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
+	// 字幕参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubtitleTemplate *SubtitleTemplate `json:"SubtitleTemplate,omitnil,omitempty" name:"SubtitleTemplate"`
 }
 
 type RawWatermarkParameter struct {
@@ -19901,6 +19905,10 @@ type SubtitleTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamIndex *int64 `json:"StreamIndex,omitnil,omitempty" name:"StreamIndex"`
 
+	// 要压制到视频中的字幕文件的输入信息，目前仅支持存储在COS的字幕文件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubtitleFileInput *MediaInputInfo `json:"SubtitleFileInput,omitnil,omitempty" name:"SubtitleFileInput"`
+
 	// 字体类型，支持：
 	// <li>hei.ttf：黑体</li>
 	// <li>song.ttf：宋体</li>
@@ -19985,6 +19993,38 @@ type SubtitleTemplate struct {
 	// 默认值：0.8。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BoardAlpha *float64 `json:"BoardAlpha,omitnil,omitempty" name:"BoardAlpha"`
+
+	// 描边宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutlineWidth *float64 `json:"OutlineWidth,omitnil,omitempty" name:"OutlineWidth"`
+
+	// 描边颜色。6位16进制RGB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutlineColor *string `json:"OutlineColor,omitnil,omitempty" name:"OutlineColor"`
+
+	// 描边透明度。(0，1] 正浮点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutlineAlpha *float64 `json:"OutlineAlpha,omitnil,omitempty" name:"OutlineAlpha"`
+
+	// 阴影宽度。浮点数  [0, 1000]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShadowWidth *float64 `json:"ShadowWidth,omitnil,omitempty" name:"ShadowWidth"`
+
+	// 阴影颜色。6位16进制RGB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShadowColor *string `json:"ShadowColor,omitnil,omitempty" name:"ShadowColor"`
+
+	// 阴影透明度。(0，1] 正浮点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShadowAlpha *float64 `json:"ShadowAlpha,omitnil,omitempty" name:"ShadowAlpha"`
+
+	// 行间距。正整数  [0, 1000]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LineSpacing *int64 `json:"LineSpacing,omitnil,omitempty" name:"LineSpacing"`
+
+	// 对齐方式，，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Alignment *string `json:"Alignment,omitnil,omitempty" name:"Alignment"`
 }
 
 type SuperResolutionConfig struct {

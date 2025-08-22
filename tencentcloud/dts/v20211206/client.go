@@ -4595,6 +4595,64 @@ func (c *Client) ResetSubscribeWithContext(ctx context.Context, request *ResetSu
     return
 }
 
+func NewResetSyncJobRequest() (request *ResetSyncJobRequest) {
+    request = &ResetSyncJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "ResetSyncJob")
+    
+    
+    return
+}
+
+func NewResetSyncJobResponse() (response *ResetSyncJobResponse) {
+    response = &ResetSyncJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetSyncJob
+// 重置已经结束的同步任务，重置后可以重新配置启动任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+func (c *Client) ResetSyncJob(request *ResetSyncJobRequest) (response *ResetSyncJobResponse, err error) {
+    return c.ResetSyncJobWithContext(context.Background(), request)
+}
+
+// ResetSyncJob
+// 重置已经结束的同步任务，重置后可以重新配置启动任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+func (c *Client) ResetSyncJobWithContext(ctx context.Context, request *ResetSyncJobRequest) (response *ResetSyncJobResponse, err error) {
+    if request == nil {
+        request = NewResetSyncJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "ResetSyncJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetSyncJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetSyncJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResizeSyncJobRequest() (request *ResizeSyncJobRequest) {
     request = &ResizeSyncJobRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -9535,10 +9535,15 @@ type DescribeProxyCustomConfResponseParams struct {
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 代理配置
+	//
+	// Deprecated: CustomConf is deprecated.
 	CustomConf *CustomConfig `json:"CustomConf,omitnil,omitempty" name:"CustomConf"`
 
 	// 权重限制
 	WeightRule *Rule `json:"WeightRule,omitnil,omitempty" name:"WeightRule"`
+
+	// 代理配置
+	CustomConfInfo []*CustomConfig `json:"CustomConfInfo,omitnil,omitempty" name:"CustomConfInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -11542,7 +11547,7 @@ type InstanceRebootTime struct {
 }
 
 type InstanceRollbackRangeTime struct {
-	// 查询数据库错误码
+	// 查询数据库错误码。0 - 正常，1600001 - 内部错误，1600003 - 入参异常，1600009 - 实例不存在，1624001 - DB 访问异常。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 查询数据库错误信息
@@ -16526,14 +16531,14 @@ func (r *StopReplicationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopRollbackRequestParams struct {
-	// 撤销回档任务对应的实例Id。
+	// 撤销回档任务对应的实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type StopRollbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 撤销回档任务对应的实例Id。
+	// 撤销回档任务对应的实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -16558,7 +16563,7 @@ func (r *StopRollbackRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopRollbackResponseParams struct {
-	// 执行请求的异步任务ID
+	// 执行请求的异步任务 ID。
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

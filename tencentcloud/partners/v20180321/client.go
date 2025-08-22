@@ -679,7 +679,7 @@ func NewDescribeAgentPayDealsV2Response() (response *DescribeAgentPayDealsV2Resp
 }
 
 // DescribeAgentPayDealsV2
-// 可以查询代理商代付的预付费订单
+// 查询最近15天内的代理商代付订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -691,7 +691,7 @@ func (c *Client) DescribeAgentPayDealsV2(request *DescribeAgentPayDealsV2Request
 }
 
 // DescribeAgentPayDealsV2
-// 可以查询代理商代付的预付费订单
+// 查询最近15天内的代理商代付订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -791,7 +791,7 @@ func NewDescribeAgentSelfPayDealsV2Response() (response *DescribeAgentSelfPayDea
 }
 
 // DescribeAgentSelfPayDealsV2
-// 查询代理商名下指定代客的自付订单（预付费）
+// 查询代理商名下指定代客最近15天内的自付订单（预付费）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -803,7 +803,7 @@ func (c *Client) DescribeAgentSelfPayDealsV2(request *DescribeAgentSelfPayDealsV
 }
 
 // DescribeAgentSelfPayDealsV2
-// 查询代理商名下指定代客的自付订单（预付费）
+// 查询代理商名下指定代客最近15天内的自付订单（预付费）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

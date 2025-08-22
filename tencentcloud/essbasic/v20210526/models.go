@@ -11328,7 +11328,7 @@ type EmbedUrlOption struct {
 
 	// 是否禁止编辑印章描述内容
 	// <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
-	ForbidEditSealDescription *string `json:"ForbidEditSealDescription,omitnil,omitempty" name:"ForbidEditSealDescription"`
+	ForbidEditSealDescription *bool `json:"ForbidEditSealDescription,omitnil,omitempty" name:"ForbidEditSealDescription"`
 }
 
 type ExtentServiceAuthInfo struct {
@@ -14017,7 +14017,7 @@ type TemplateInfo struct {
 	// <li>2：停用，表示模板处于停用状态，禁止用户使用该模板。</li></ul>
 	Available *int64 `json:"Available,omitnil,omitempty" name:"Available"`
 
-	// 模版的用户合同类型
+	// 模板的用户合同类型
 	UserFlowType *UserFlowType `json:"UserFlowType,omitnil,omitempty" name:"UserFlowType"`
 }
 
@@ -14028,7 +14028,7 @@ type TemplateUserFlowType struct {
 	// 用户合同类型名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 每个合同类型绑定的模版数量	
+	// 每个合同类型绑定的模板数量	
 	TemplateNum *int64 `json:"TemplateNum,omitnil,omitempty" name:"TemplateNum"`
 
 	// 合同类型的具体描述
@@ -14058,10 +14058,7 @@ type UploadFilesRequestParams struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 
-	// 文件对应业务类型,可以选择的类型如下
-	// <ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
-	// <li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li></ul>
+	// 文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
 	// 上传文件内容数组，一次最多可上传20个文件。
@@ -14089,10 +14086,7 @@ type UploadFilesRequest struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 
-	// 文件对应业务类型,可以选择的类型如下
-	// <ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
-	// <li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li></ul>
+	// 文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
 	// 上传文件内容数组，一次最多可上传20个文件。

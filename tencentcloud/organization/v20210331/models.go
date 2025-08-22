@@ -4186,6 +4186,96 @@ func (r *DescribeOrganizationMemberPoliciesResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type DescribeOrganizationMembersAuthPolicyRequestParams struct {
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数目。取值范围：1~50。默认值：10。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 成员uin。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 集团管理员子账号uin。
+	OrgSubAccountUin *int64 `json:"OrgSubAccountUin,omitnil,omitempty" name:"OrgSubAccountUin"`
+
+	// 成员访问策略Id。
+	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+}
+
+type DescribeOrganizationMembersAuthPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数目。取值范围：1~50。默认值：10。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 成员uin。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 集团管理员子账号uin。
+	OrgSubAccountUin *int64 `json:"OrgSubAccountUin,omitnil,omitempty" name:"OrgSubAccountUin"`
+
+	// 成员访问策略Id。
+	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+}
+
+func (r *DescribeOrganizationMembersAuthPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationMembersAuthPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "MemberUin")
+	delete(f, "OrgSubAccountUin")
+	delete(f, "PolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationMembersAuthPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationMembersAuthPolicyResponseParams struct {
+	// 访问授权策略列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*OrgMembersAuthPolicy `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 总数目。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOrganizationMembersAuthPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrganizationMembersAuthPolicyResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrganizationMembersAuthPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationMembersAuthPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOrganizationMembersRequestParams struct {
 	// 偏移量。取值是limit的整数倍，默认值 : 0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -8466,6 +8556,56 @@ type OrgMemberPolicy struct {
 
 	// 更新时间。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type OrgMembersAuthPolicy struct {
+	// 身份Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
+
+	// 身份的角色名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityRoleName *string `json:"IdentityRoleName,omitnil,omitempty" name:"IdentityRoleName"`
+
+	// 身份的角色别名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityRoleAliasName *string `json:"IdentityRoleAliasName,omitnil,omitempty" name:"IdentityRoleAliasName"`
+
+	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 成员访问策略Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 成员访问策略名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
+
+	// 成员uin。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 成员名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberName *string `json:"MemberName,omitnil,omitempty" name:"MemberName"`
+
+	// 子账号uin或者用户组Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgSubAccountUin *int64 `json:"OrgSubAccountUin,omitnil,omitempty" name:"OrgSubAccountUin"`
+
+	// 子账号名称或者用户组名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgSubAccountName *string `json:"OrgSubAccountName,omitnil,omitempty" name:"OrgSubAccountName"`
+
+	// 绑定类型。1-子账号、2-用户组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindType *uint64 `json:"BindType,omitnil,omitempty" name:"BindType"`
+
+	// 成员信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Members []*MemberMainInfo `json:"Members,omitnil,omitempty" name:"Members"`
 }
 
 type OrgNode struct {

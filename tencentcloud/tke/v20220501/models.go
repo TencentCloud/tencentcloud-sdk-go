@@ -178,11 +178,17 @@ type CreateNativeNodePoolParam struct {
 	// 原生节点池数据盘列表
 	DataDisks []*DataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
 
+	// qgpu开关
+	QGPUEnable *bool `json:"QGPUEnable,omitnil,omitempty" name:"QGPUEnable"`
+
 	// 节点池ssh公钥id数组
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
 	// 节点池类型
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// 原生节点池安装节点自动化助手开关
+	AutomationService *bool `json:"AutomationService,omitnil,omitempty" name:"AutomationService"`
 }
 
 // Predefined struct for user
@@ -211,7 +217,7 @@ type CreateNodePoolRequestParams struct {
 	// 节点是否默认不可调度
 	Unschedulable *bool `json:"Unschedulable,omitnil,omitempty" name:"Unschedulable"`
 
-	// 原生节点池创建参数
+	// 原生节点池创建参数（Type字段设置为Native时需填写）
 	Native *CreateNativeNodePoolParam `json:"Native,omitnil,omitempty" name:"Native"`
 
 	// 节点 Annotation 列表
@@ -245,7 +251,7 @@ type CreateNodePoolRequest struct {
 	// 节点是否默认不可调度
 	Unschedulable *bool `json:"Unschedulable,omitnil,omitempty" name:"Unschedulable"`
 
-	// 原生节点池创建参数
+	// 原生节点池创建参数（Type字段设置为Native时需填写）
 	Native *CreateNativeNodePoolParam `json:"Native,omitnil,omitempty" name:"Native"`
 
 	// 节点 Annotation 列表

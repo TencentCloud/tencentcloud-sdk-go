@@ -6027,16 +6027,14 @@ func (r *DeleteConfigTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteContainerGroupRequestParams struct {
-	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或[登录控制台](https://console.cloud.tencent.com/tsf/app-group-docker-detail?rid=1&id=group-aedpen6v)
-	// 进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DeleteContainerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或[登录控制台](https://console.cloud.tencent.com/tsf/app-group-docker-detail?rid=1&id=group-aedpen6v)
-	// 进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 

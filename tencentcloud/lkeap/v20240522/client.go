@@ -107,6 +107,14 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 //     -  支持96K上下文长度，最大输入长度64k，最大输出16k（默认4k），最大思维链输出长度32k。
 //
+// - DeepSeek-V3.1（model 参数值为 deepseek-v3.1）
+//
+// 
+//
+//     - DeepSeek-V3.1 为685B 参数 MoE 模型，支持混合推理架构，有更高的思考效率和更强的 Agent 能力。目前尚处于限制性开放的试运行阶段，如需申请开通请联系售前客服或商务经理。
+//
+// 
+//
 // 
 //
 // 
@@ -292,8 +300,6 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
     return c.ChatCompletionsWithContext(context.Background(), request)
@@ -344,6 +350,14 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 //     -  支持96K上下文长度，最大输入长度64k，最大输出16k（默认4k），最大思维链输出长度32k。
 //
+// - DeepSeek-V3.1（model 参数值为 deepseek-v3.1）
+//
+// 
+//
+//     - DeepSeek-V3.1 为685B 参数 MoE 模型，支持混合推理架构，有更高的思考效率和更强的 Agent 能力。目前尚处于限制性开放的试运行阶段，如需申请开通请联系售前客服或商务经理。
+//
+// 
+//
 // 
 //
 // 
@@ -529,8 +543,6 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
     if request == nil {
@@ -574,8 +586,6 @@ func NewCreateAttributeLabelResponse() (response *CreateAttributeLabelResponse) 
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateAttributeLabel(request *CreateAttributeLabelRequest) (response *CreateAttributeLabelResponse, err error) {
     return c.CreateAttributeLabelWithContext(context.Background(), request)
@@ -587,8 +597,6 @@ func (c *Client) CreateAttributeLabel(request *CreateAttributeLabelRequest) (res
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateAttributeLabelWithContext(ctx context.Context, request *CreateAttributeLabelRequest) (response *CreateAttributeLabelResponse, err error) {
     if request == nil {
@@ -736,15 +744,13 @@ func NewCreateReconstructDocumentFlowResponse() (response *CreateReconstructDocu
 // 体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateReconstructDocumentFlow(request *CreateReconstructDocumentFlowRequest) (response *CreateReconstructDocumentFlowResponse, err error) {
@@ -761,15 +767,13 @@ func (c *Client) CreateReconstructDocumentFlow(request *CreateReconstructDocumen
 // 体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateReconstructDocumentFlowWithContext(ctx context.Context, request *CreateReconstructDocumentFlowRequest) (response *CreateReconstructDocumentFlowResponse, err error) {
@@ -814,7 +818,12 @@ func NewCreateSplitDocumentFlowResponse() (response *CreateSplitDocumentFlowResp
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateSplitDocumentFlow(request *CreateSplitDocumentFlowRequest) (response *CreateSplitDocumentFlowResponse, err error) {
     return c.CreateSplitDocumentFlowWithContext(context.Background(), request)
@@ -826,7 +835,12 @@ func (c *Client) CreateSplitDocumentFlow(request *CreateSplitDocumentFlowRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateSplitDocumentFlowWithContext(ctx context.Context, request *CreateSplitDocumentFlowRequest) (response *CreateSplitDocumentFlowResponse, err error) {
     if request == nil {
@@ -870,7 +884,12 @@ func NewDeleteAttributeLabelsResponse() (response *DeleteAttributeLabelsResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteAttributeLabels(request *DeleteAttributeLabelsRequest) (response *DeleteAttributeLabelsResponse, err error) {
     return c.DeleteAttributeLabelsWithContext(context.Background(), request)
@@ -882,7 +901,12 @@ func (c *Client) DeleteAttributeLabels(request *DeleteAttributeLabelsRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteAttributeLabelsWithContext(ctx context.Context, request *DeleteAttributeLabelsRequest) (response *DeleteAttributeLabelsResponse, err error) {
     if request == nil {
@@ -926,7 +950,12 @@ func NewDeleteDocsResponse() (response *DeleteDocsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteDocs(request *DeleteDocsRequest) (response *DeleteDocsResponse, err error) {
     return c.DeleteDocsWithContext(context.Background(), request)
@@ -938,7 +967,12 @@ func (c *Client) DeleteDocs(request *DeleteDocsRequest) (response *DeleteDocsRes
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteDocsWithContext(ctx context.Context, request *DeleteDocsRequest) (response *DeleteDocsResponse, err error) {
     if request == nil {
@@ -982,7 +1016,12 @@ func NewDeleteKnowledgeBaseResponse() (response *DeleteKnowledgeBaseResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteKnowledgeBase(request *DeleteKnowledgeBaseRequest) (response *DeleteKnowledgeBaseResponse, err error) {
     return c.DeleteKnowledgeBaseWithContext(context.Background(), request)
@@ -994,7 +1033,12 @@ func (c *Client) DeleteKnowledgeBase(request *DeleteKnowledgeBaseRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteKnowledgeBaseWithContext(ctx context.Context, request *DeleteKnowledgeBaseRequest) (response *DeleteKnowledgeBaseResponse, err error) {
     if request == nil {
@@ -1038,7 +1082,12 @@ func NewDeleteQAsResponse() (response *DeleteQAsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteQAs(request *DeleteQAsRequest) (response *DeleteQAsResponse, err error) {
     return c.DeleteQAsWithContext(context.Background(), request)
@@ -1050,7 +1099,12 @@ func (c *Client) DeleteQAs(request *DeleteQAsRequest) (response *DeleteQAsRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteQAsWithContext(ctx context.Context, request *DeleteQAsRequest) (response *DeleteQAsResponse, err error) {
     if request == nil {
@@ -1094,7 +1148,12 @@ func NewDescribeDocResponse() (response *DescribeDocResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DescribeDoc(request *DescribeDocRequest) (response *DescribeDocResponse, err error) {
     return c.DescribeDocWithContext(context.Background(), request)
@@ -1106,7 +1165,12 @@ func (c *Client) DescribeDoc(request *DescribeDocRequest) (response *DescribeDoc
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DescribeDocWithContext(ctx context.Context, request *DescribeDocRequest) (response *DescribeDocResponse, err error) {
     if request == nil {
@@ -1150,7 +1214,12 @@ func NewGetCharacterUsageResponse() (response *GetCharacterUsageResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) GetCharacterUsage(request *GetCharacterUsageRequest) (response *GetCharacterUsageResponse, err error) {
     return c.GetCharacterUsageWithContext(context.Background(), request)
@@ -1162,7 +1231,12 @@ func (c *Client) GetCharacterUsage(request *GetCharacterUsageRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) GetCharacterUsageWithContext(ctx context.Context, request *GetCharacterUsageRequest) (response *GetCharacterUsageResponse, err error) {
     if request == nil {
@@ -1258,10 +1332,14 @@ func NewGetReconstructDocumentResultResponse() (response *GetReconstructDocument
 // 本接口为异步接口的查询结果接口，用于获取文档解析处理结果。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GetReconstructDocumentResult(request *GetReconstructDocumentResultRequest) (response *GetReconstructDocumentResultResponse, err error) {
@@ -1272,10 +1350,14 @@ func (c *Client) GetReconstructDocumentResult(request *GetReconstructDocumentRes
 // 本接口为异步接口的查询结果接口，用于获取文档解析处理结果。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GetReconstructDocumentResultWithContext(ctx context.Context, request *GetReconstructDocumentResultRequest) (response *GetReconstructDocumentResultResponse, err error) {
@@ -1318,9 +1400,15 @@ func NewGetSplitDocumentResultResponse() (response *GetSplitDocumentResultRespon
 // 查询文档拆分任务结果
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GetSplitDocumentResult(request *GetSplitDocumentResultRequest) (response *GetSplitDocumentResultResponse, err error) {
     return c.GetSplitDocumentResultWithContext(context.Background(), request)
 }
@@ -1329,9 +1417,15 @@ func (c *Client) GetSplitDocumentResult(request *GetSplitDocumentResultRequest) 
 // 查询文档拆分任务结果
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GetSplitDocumentResultWithContext(ctx context.Context, request *GetSplitDocumentResultRequest) (response *GetSplitDocumentResultResponse, err error) {
     if request == nil {
         request = NewGetSplitDocumentResultRequest()
@@ -1372,9 +1466,15 @@ func NewImportQAsResponse() (response *ImportQAsResponse) {
 // 用于批量导入问答对，最多支持50,000条数据导入。通过此接口，可以将多个问答对一次性导入系统中，以便在后续的知识检索中使用。导入的问答对可以来自外部系统、文件或其他数据源。使用场景：当需要一次性导入大量的问答对时使用。例如，一个公司可能需要将其产品的常见问题解答从一个文档或外部系统批量导入到知识库中，以便用户可以通过知识检索系统进行查询。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ImportQAs(request *ImportQAsRequest) (response *ImportQAsResponse, err error) {
     return c.ImportQAsWithContext(context.Background(), request)
 }
@@ -1383,9 +1483,15 @@ func (c *Client) ImportQAs(request *ImportQAsRequest) (response *ImportQAsRespon
 // 用于批量导入问答对，最多支持50,000条数据导入。通过此接口，可以将多个问答对一次性导入系统中，以便在后续的知识检索中使用。导入的问答对可以来自外部系统、文件或其他数据源。使用场景：当需要一次性导入大量的问答对时使用。例如，一个公司可能需要将其产品的常见问题解答从一个文档或外部系统批量导入到知识库中，以便用户可以通过知识检索系统进行查询。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ImportQAsWithContext(ctx context.Context, request *ImportQAsRequest) (response *ImportQAsResponse, err error) {
     if request == nil {
         request = NewImportQAsRequest()
@@ -1426,9 +1532,15 @@ func NewListAttributeLabelsResponse() (response *ListAttributeLabelsResponse) {
 // 用于获取所有属性标签的列表。 使用场景：用于查看当前系统中所有已有的属性标签，方便进行管理和维护。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ListAttributeLabels(request *ListAttributeLabelsRequest) (response *ListAttributeLabelsResponse, err error) {
     return c.ListAttributeLabelsWithContext(context.Background(), request)
 }
@@ -1437,9 +1549,15 @@ func (c *Client) ListAttributeLabels(request *ListAttributeLabelsRequest) (respo
 // 用于获取所有属性标签的列表。 使用场景：用于查看当前系统中所有已有的属性标签，方便进行管理和维护。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ListAttributeLabelsWithContext(ctx context.Context, request *ListAttributeLabelsRequest) (response *ListAttributeLabelsResponse, err error) {
     if request == nil {
         request = NewListAttributeLabelsRequest()
@@ -1480,9 +1598,15 @@ func NewListDocsResponse() (response *ListDocsResponse) {
 // 用于获取所有文档的列表。 使用场景：用于查看当前系统中所有已有的文档，方便进行管理和维护。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ListDocs(request *ListDocsRequest) (response *ListDocsResponse, err error) {
     return c.ListDocsWithContext(context.Background(), request)
 }
@@ -1491,9 +1615,15 @@ func (c *Client) ListDocs(request *ListDocsRequest) (response *ListDocsResponse,
 // 用于获取所有文档的列表。 使用场景：用于查看当前系统中所有已有的文档，方便进行管理和维护。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ListDocsWithContext(ctx context.Context, request *ListDocsRequest) (response *ListDocsResponse, err error) {
     if request == nil {
         request = NewListDocsRequest()
@@ -1534,7 +1664,15 @@ func NewListQAsResponse() (response *ListQAsResponse) {
 // 用于获取所有问答对的列表。 使用场景：用于查看当前系统中所有已有的问答对，方便进行管理和维护。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ListQAs(request *ListQAsRequest) (response *ListQAsResponse, err error) {
     return c.ListQAsWithContext(context.Background(), request)
 }
@@ -1543,7 +1681,15 @@ func (c *Client) ListQAs(request *ListQAsRequest) (response *ListQAsResponse, er
 // 用于获取所有问答对的列表。 使用场景：用于查看当前系统中所有已有的问答对，方便进行管理和维护。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ListQAsWithContext(ctx context.Context, request *ListQAsRequest) (response *ListQAsResponse, err error) {
     if request == nil {
         request = NewListQAsRequest()
@@ -1584,7 +1730,15 @@ func NewModifyAttributeLabelResponse() (response *ModifyAttributeLabelResponse) 
 // 用于修改已有的属性标签。 使用场景：当需要更改属性标签的名称或描述时使用，比如将“售后”标签改为“售前”。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ModifyAttributeLabel(request *ModifyAttributeLabelRequest) (response *ModifyAttributeLabelResponse, err error) {
     return c.ModifyAttributeLabelWithContext(context.Background(), request)
 }
@@ -1593,7 +1747,15 @@ func (c *Client) ModifyAttributeLabel(request *ModifyAttributeLabelRequest) (res
 // 用于修改已有的属性标签。 使用场景：当需要更改属性标签的名称或描述时使用，比如将“售后”标签改为“售前”。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ModifyAttributeLabelWithContext(ctx context.Context, request *ModifyAttributeLabelRequest) (response *ModifyAttributeLabelResponse, err error) {
     if request == nil {
         request = NewModifyAttributeLabelRequest()
@@ -1634,7 +1796,15 @@ func NewModifyQAResponse() (response *ModifyQAResponse) {
 // 用于修改已有的问答对。 使用场景：当需要更新问答对的内容或答案时使用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ModifyQA(request *ModifyQARequest) (response *ModifyQAResponse, err error) {
     return c.ModifyQAWithContext(context.Background(), request)
 }
@@ -1643,7 +1813,15 @@ func (c *Client) ModifyQA(request *ModifyQARequest) (response *ModifyQAResponse,
 // 用于修改已有的问答对。 使用场景：当需要更新问答对的内容或答案时使用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
+//  FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ModifyQAWithContext(ctx context.Context, request *ModifyQARequest) (response *ModifyQAResponse, err error) {
     if request == nil {
         request = NewModifyQARequest()
@@ -1750,7 +1928,6 @@ func NewReconstructDocumentSSEResponse() (response *ReconstructDocumentSSERespon
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
@@ -1776,7 +1953,6 @@ func (c *Client) ReconstructDocumentSSE(request *ReconstructDocumentSSERequest) 
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
@@ -1828,7 +2004,6 @@ func NewRetrieveKnowledgeResponse() (response *RetrieveKnowledgeResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
@@ -1848,7 +2023,6 @@ func (c *Client) RetrieveKnowledge(request *RetrieveKnowledgeRequest) (response 
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"

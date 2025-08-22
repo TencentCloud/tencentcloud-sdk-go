@@ -425,6 +425,9 @@ const (
 	// 查询的通道数量不能超过3000个
 	LIMITEXCEEDED_CHANNELNUMEXCEEDED = "LimitExceeded.ChannelNumExceeded"
 
+	// 查询的设备数量不能超过200个
+	LIMITEXCEEDED_DEICEIDQUANTITYEXCEEDEDLIMIT = "LimitExceeded.DeiceIdQuantityExceededLimit"
+
 	// 查询的国标设备数量不能超过500个
 	LIMITEXCEEDED_GBDEVICENUMEXCEEDED = "LimitExceeded.GBDeviceNumExceeded"
 

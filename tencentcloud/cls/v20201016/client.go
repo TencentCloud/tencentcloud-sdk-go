@@ -6678,6 +6678,7 @@ func NewModifyIndexResponse() (response *ModifyIndexResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDINDEXRULEFORSEARCHLOW = "FailedOperation.InValidIndexRuleForSearchLow"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -6702,6 +6703,7 @@ func (c *Client) ModifyIndex(request *ModifyIndexRequest) (response *ModifyIndex
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDINDEXRULEFORSEARCHLOW = "FailedOperation.InValidIndexRuleForSearchLow"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

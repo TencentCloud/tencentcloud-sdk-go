@@ -733,6 +733,7 @@ func NewGetDevicePayModeResponse() (response *GetDevicePayModeResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DEVICENOTFOUND = "OperationDenied.DeviceNotFound"
 func (c *Client) GetDevicePayMode(request *GetDevicePayModeRequest) (response *GetDevicePayModeResponse, err error) {
     return c.GetDevicePayModeWithContext(context.Background(), request)
 }
@@ -744,6 +745,7 @@ func (c *Client) GetDevicePayMode(request *GetDevicePayModeRequest) (response *G
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DEVICENOTFOUND = "OperationDenied.DeviceNotFound"
 func (c *Client) GetDevicePayModeWithContext(ctx context.Context, request *GetDevicePayModeRequest) (response *GetDevicePayModeResponse, err error) {
     if request == nil {
         request = NewGetDevicePayModeRequest()

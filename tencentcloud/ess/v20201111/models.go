@@ -2662,6 +2662,96 @@ func (r *CreateContractDiffTaskWebUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateContractReviewWebUrlRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 需要审查的合同文件资源ID,可通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	// 
+	// 注:  `目前，每个文件限制在10M以下，文件仅支持pdf、doc、docx格式`
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+}
+
+type CreateContractReviewWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 需要审查的合同文件资源ID,可通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	// 
+	// 注:  `目前，每个文件限制在10M以下，文件仅支持pdf、doc、docx格式`
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+}
+
+func (r *CreateContractReviewWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateContractReviewWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ResourceId")
+	delete(f, "UserData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateContractReviewWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateContractReviewWebUrlResponseParams struct {
+	// 接口返回的合同审查任务ID，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/DescribeContractReviewWebUrl" target="_blank">获取合同审查结果web页面</a>查看审查任务的结果。
+	// 
+	// 注意： `当ResourceId参数不为空时才会返回此值。`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 合同审查嵌入式web页面链接。
+	// 
+	// 注意：`链接有效期为5分钟，且链接仅能使用一次。如果上传的合同文件为word时不能进行iframe方式嵌入到贵方系统的网页中，需要单独页面打开此链接显示`
+	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateContractReviewWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateContractReviewWebUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateContractReviewWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateContractReviewWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateConvertTaskApiRequestParams struct {
 	// 需要进行转换的资源文件类型
 	// 支持的文件类型如下：
@@ -10771,6 +10861,86 @@ func (r *DescribeContractReviewTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeContractReviewWebUrlRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查任务ID，该参数通过调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateContractReviewWebUrl" target="_blank">创建合同审查web页面</a>获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeContractReviewWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查任务ID，该参数通过调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateContractReviewWebUrl" target="_blank">创建合同审查web页面</a>获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeContractReviewWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContractReviewWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractReviewWebUrlResponseParams struct {
+	// 合同审查嵌入式web页面链接。
+	// 注意：`链接有效期为5分钟，且链接仅能使用一次。如果上传的合同文件为word时不能进行iframe方式嵌入到贵方系统的网页中，需要单独页面打开此链接显示`
+	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
+
+	// 合同审查任务状态。任务状态为`5`时没有WebUrl链接。
+	// 状态如下：
+	// <ul>
+	//     <li>**1** - 合同审查任务创建成功</li>   
+	//     <li>**2** - 合同审查任务排队中</li>  
+	//     <li>**3** - 合同审查任务执行中</li>   
+	//     <li>**4** - 合同审查任务执行成功</li>
+	//     <li>**5** - 合同审查任务执行失败</li>
+	// </ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeContractReviewWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeContractReviewWebUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeContractReviewWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExtendedServiceAuthDetailRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -13282,7 +13452,7 @@ type EmbedUrlOption struct {
 
 	// 是否禁止编辑印章描述内容
 	// <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
-	ForbidEditSealDescription *string `json:"ForbidEditSealDescription,omitnil,omitempty" name:"ForbidEditSealDescription"`
+	ForbidEditSealDescription *bool `json:"ForbidEditSealDescription,omitnil,omitempty" name:"ForbidEditSealDescription"`
 }
 
 type ExtendAuthInfo struct {
@@ -16623,10 +16793,7 @@ type UploadFile struct {
 
 // Predefined struct for user
 type UploadFilesRequestParams struct {
-	// 文件对应业务类型,可以选择的类型如下
-	// <ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
-	// <li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
-	// <li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
+	// 文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>   ["yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT"]
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
 	// 执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。
@@ -16675,10 +16842,7 @@ type UploadFilesRequestParams struct {
 type UploadFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件对应业务类型,可以选择的类型如下
-	// <ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
-	// <li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
-	// <li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
+	// 文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>   ["yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT"]
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
 	// 执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。

@@ -794,6 +794,9 @@ const (
 	// 示例：agent 容器资源值非法 , cpu。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEAGENTVALUEINVALID = "InvalidParameterValue.ContainergroupResourceAgentValueInvalid"
 
+	// service名称校验失败。
+	INVALIDPARAMETERVALUE_CONTAINERGROUPSERVICENAMEVALIDERROR = "InvalidParameterValue.ContainergroupServiceNameValidError"
+
 	// 容器端口不允许重复映射。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTSREPEAT = "InvalidParameterValue.ContainergroupTargetPortsRepeat"
 

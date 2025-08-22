@@ -3344,7 +3344,9 @@ type DoDirectoryOperationRequestParams struct {
 	// 文件系统Id
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// create：创建目录  check：确认目录是否存在
+	// create：创建目录，等同于mkdir。
+	// check：确认目录是否存在，等同于stat。
+	// move：对文件/目录进行重命名，等同于mv。
 	OpetationType *string `json:"OpetationType,omitnil,omitempty" name:"OpetationType"`
 
 	// 目录的绝对路径  默认递归创建（即如果目录中有子目录不存在，则先创建出对应子目录）
@@ -3352,6 +3354,9 @@ type DoDirectoryOperationRequestParams struct {
 
 	// 创建目录的权限，若不传，默认为0755  若Operation Type为check，此值无实际意义
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// mv操作的目标目录名称；如果是turbo文件系统必须以/cfs/开头
+	DestPath *string `json:"DestPath,omitnil,omitempty" name:"DestPath"`
 }
 
 type DoDirectoryOperationRequest struct {
@@ -3360,7 +3365,9 @@ type DoDirectoryOperationRequest struct {
 	// 文件系统Id
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// create：创建目录  check：确认目录是否存在
+	// create：创建目录，等同于mkdir。
+	// check：确认目录是否存在，等同于stat。
+	// move：对文件/目录进行重命名，等同于mv。
 	OpetationType *string `json:"OpetationType,omitnil,omitempty" name:"OpetationType"`
 
 	// 目录的绝对路径  默认递归创建（即如果目录中有子目录不存在，则先创建出对应子目录）
@@ -3368,6 +3375,9 @@ type DoDirectoryOperationRequest struct {
 
 	// 创建目录的权限，若不传，默认为0755  若Operation Type为check，此值无实际意义
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// mv操作的目标目录名称；如果是turbo文件系统必须以/cfs/开头
+	DestPath *string `json:"DestPath,omitnil,omitempty" name:"DestPath"`
 }
 
 func (r *DoDirectoryOperationRequest) ToJsonString() string {
@@ -3386,6 +3396,7 @@ func (r *DoDirectoryOperationRequest) FromJsonString(s string) error {
 	delete(f, "OpetationType")
 	delete(f, "DirectoryPath")
 	delete(f, "Mode")
+	delete(f, "DestPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DoDirectoryOperationRequest has unknown keys!", "")
 	}

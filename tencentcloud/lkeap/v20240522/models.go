@@ -1076,6 +1076,9 @@ type DocumentUsage struct {
 
 	// 解析失败页数
 	FailPageNum *int64 `json:"FailPageNum,omitnil,omitempty" name:"FailPageNum"`
+
+	// 文件大小，单位KB
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 }
 
 type EmbeddingObject struct {

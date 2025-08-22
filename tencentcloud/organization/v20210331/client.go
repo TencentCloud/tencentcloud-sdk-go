@@ -3919,6 +3919,60 @@ func (c *Client) DescribeOrganizationMembersWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeOrganizationMembersAuthPolicyRequest() (request *DescribeOrganizationMembersAuthPolicyRequest) {
+    request = &DescribeOrganizationMembersAuthPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DescribeOrganizationMembersAuthPolicy")
+    
+    
+    return
+}
+
+func NewDescribeOrganizationMembersAuthPolicyResponse() (response *DescribeOrganizationMembersAuthPolicyResponse) {
+    response = &DescribeOrganizationMembersAuthPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOrganizationMembersAuthPolicy
+// 查询组织成员访问策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DescribeOrganizationMembersAuthPolicy(request *DescribeOrganizationMembersAuthPolicyRequest) (response *DescribeOrganizationMembersAuthPolicyResponse, err error) {
+    return c.DescribeOrganizationMembersAuthPolicyWithContext(context.Background(), request)
+}
+
+// DescribeOrganizationMembersAuthPolicy
+// 查询组织成员访问策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DescribeOrganizationMembersAuthPolicyWithContext(ctx context.Context, request *DescribeOrganizationMembersAuthPolicyRequest) (response *DescribeOrganizationMembersAuthPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrganizationMembersAuthPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "DescribeOrganizationMembersAuthPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganizationMembersAuthPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOrganizationMembersAuthPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrganizationNodesRequest() (request *DescribeOrganizationNodesRequest) {
     request = &DescribeOrganizationNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

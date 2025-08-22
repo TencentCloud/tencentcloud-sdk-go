@@ -125,6 +125,86 @@ func (c *Client) ApplyEmbedIntervalWithContext(ctx context.Context, request *App
     return
 }
 
+func NewClearEmbedTokenRequest() (request *ClearEmbedTokenRequest) {
+    request = &ClearEmbedTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "ClearEmbedToken")
+    
+    
+    return
+}
+
+func NewClearEmbedTokenResponse() (response *ClearEmbedTokenResponse) {
+    response = &ClearEmbedTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ClearEmbedToken
+// 强鉴权token 清理，只有企业管理员才能调用该接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) ClearEmbedToken(request *ClearEmbedTokenRequest) (response *ClearEmbedTokenResponse, err error) {
+    return c.ClearEmbedTokenWithContext(context.Background(), request)
+}
+
+// ClearEmbedToken
+// 强鉴权token 清理，只有企业管理员才能调用该接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) ClearEmbedTokenWithContext(ctx context.Context, request *ClearEmbedTokenRequest) (response *ClearEmbedTokenResponse, err error) {
+    if request == nil {
+        request = NewClearEmbedTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ClearEmbedToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClearEmbedToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewClearEmbedTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDatasourceRequest() (request *CreateDatasourceRequest) {
     request = &CreateDatasourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -38,11 +38,17 @@ const (
 	// 参数错误：规则相关字段传参或者字段内容错误
 	INVALIDPARAMETER_AUTORULEPARAMETERERROR = "InvalidParameter.AutoRuleParameterError"
 
+	// 数据库错误
+	INVALIDPARAMETER_DATABASEEXCEPTION = "InvalidParameter.DatabaseException"
+
 	// 重复的终端自定义分组名称。
 	INVALIDPARAMETER_DUPLICATEDEVICEVIRTUALGROUPNAME = "InvalidParameter.DuplicateDeviceVirtualGroupName"
 
 	// 黑白名单选中有相同的终端设备
 	INVALIDPARAMETER_DUPLICATEIDINBLACKWHITELIST = "InvalidParameter.DuplicateIdInBlackWhiteList"
+
+	// 请求参数错误。
+	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
 	// 请求参数错误。
 	INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
