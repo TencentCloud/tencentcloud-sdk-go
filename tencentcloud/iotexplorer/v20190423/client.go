@@ -6025,6 +6025,62 @@ func (c *Client) DescribeTWeSeeConfigWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTWeSeeRecognitionTaskRequest() (request *DescribeTWeSeeRecognitionTaskRequest) {
+    request = &DescribeTWeSeeRecognitionTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeSeeRecognitionTask")
+    
+    
+    return
+}
+
+func NewDescribeTWeSeeRecognitionTaskResponse() (response *DescribeTWeSeeRecognitionTaskResponse) {
+    response = &DescribeTWeSeeRecognitionTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeSeeRecognitionTask
+// 查询 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASK = "ResourceNotFound.CloudStorageAIServiceTask"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTWeSeeRecognitionTask(request *DescribeTWeSeeRecognitionTaskRequest) (response *DescribeTWeSeeRecognitionTaskResponse, err error) {
+    return c.DescribeTWeSeeRecognitionTaskWithContext(context.Background(), request)
+}
+
+// DescribeTWeSeeRecognitionTask
+// 查询 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASK = "ResourceNotFound.CloudStorageAIServiceTask"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTWeSeeRecognitionTaskWithContext(ctx context.Context, request *DescribeTWeSeeRecognitionTaskRequest) (response *DescribeTWeSeeRecognitionTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeTWeSeeRecognitionTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeTWeSeeRecognitionTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeSeeRecognitionTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeSeeRecognitionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicPolicyRequest() (request *DescribeTopicPolicyRequest) {
     request = &DescribeTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

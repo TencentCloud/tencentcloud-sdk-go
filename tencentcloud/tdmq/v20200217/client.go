@@ -5479,6 +5479,58 @@ func (c *Client) DescribeRocketMQNamespacesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeRocketMQProducersRequest() (request *DescribeRocketMQProducersRequest) {
+    request = &DescribeRocketMQProducersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQProducers")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQProducersResponse() (response *DescribeRocketMQProducersResponse) {
+    response = &DescribeRocketMQProducersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQProducers
+// 查询 RocketMQ 指定主题下的生产者客户端列表。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_NAMSPACE = "ResourceNotFound.Namspace"
+func (c *Client) DescribeRocketMQProducers(request *DescribeRocketMQProducersRequest) (response *DescribeRocketMQProducersResponse, err error) {
+    return c.DescribeRocketMQProducersWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQProducers
+// 查询 RocketMQ 指定主题下的生产者客户端列表。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_NAMSPACE = "ResourceNotFound.Namspace"
+func (c *Client) DescribeRocketMQProducersWithContext(ctx context.Context, request *DescribeRocketMQProducersRequest) (response *DescribeRocketMQProducersResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQProducersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQProducers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQProducers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQProducersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQPublicAccessMonitorDataRequest() (request *DescribeRocketMQPublicAccessMonitorDataRequest) {
     request = &DescribeRocketMQPublicAccessMonitorDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5502,13 +5554,8 @@ func NewDescribeRocketMQPublicAccessMonitorDataResponse() (response *DescribeRoc
 // 从腾讯云可观测平台拉取公网指标监控数据，目前仅支持客户端到 LB 的入带宽和出宽带指标。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_NAMSPACE = "ResourceNotFound.Namspace"
 func (c *Client) DescribeRocketMQPublicAccessMonitorData(request *DescribeRocketMQPublicAccessMonitorDataRequest) (response *DescribeRocketMQPublicAccessMonitorDataResponse, err error) {
     return c.DescribeRocketMQPublicAccessMonitorDataWithContext(context.Background(), request)
 }
@@ -5517,13 +5564,8 @@ func (c *Client) DescribeRocketMQPublicAccessMonitorData(request *DescribeRocket
 // 从腾讯云可观测平台拉取公网指标监控数据，目前仅支持客户端到 LB 的入带宽和出宽带指标。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_NAMSPACE = "ResourceNotFound.Namspace"
 func (c *Client) DescribeRocketMQPublicAccessMonitorDataWithContext(ctx context.Context, request *DescribeRocketMQPublicAccessMonitorDataRequest) (response *DescribeRocketMQPublicAccessMonitorDataResponse, err error) {
     if request == nil {
         request = NewDescribeRocketMQPublicAccessMonitorDataRequest()
@@ -5564,13 +5606,8 @@ func NewDescribeRocketMQPublicAccessPointResponse() (response *DescribeRocketMQP
 // 接口用于查询RocketMQ实例的公网接入信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_NAMSPACE = "ResourceNotFound.Namspace"
 func (c *Client) DescribeRocketMQPublicAccessPoint(request *DescribeRocketMQPublicAccessPointRequest) (response *DescribeRocketMQPublicAccessPointResponse, err error) {
     return c.DescribeRocketMQPublicAccessPointWithContext(context.Background(), request)
 }
@@ -5579,13 +5616,8 @@ func (c *Client) DescribeRocketMQPublicAccessPoint(request *DescribeRocketMQPubl
 // 接口用于查询RocketMQ实例的公网接入信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_NAMSPACE = "ResourceNotFound.Namspace"
 func (c *Client) DescribeRocketMQPublicAccessPointWithContext(ctx context.Context, request *DescribeRocketMQPublicAccessPointRequest) (response *DescribeRocketMQPublicAccessPointResponse, err error) {
     if request == nil {
         request = NewDescribeRocketMQPublicAccessPointRequest()

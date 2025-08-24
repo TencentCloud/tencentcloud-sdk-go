@@ -763,6 +763,9 @@ type SubmitTemplateToVideoJobRequestParams struct {
 
 	// 视频输出分辨率，默认值：360p  - 枚举值：  720p  360p。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。
+	BGM *bool `json:"BGM,omitnil,omitempty" name:"BGM"`
 }
 
 type SubmitTemplateToVideoJobRequest struct {
@@ -790,6 +793,9 @@ type SubmitTemplateToVideoJobRequest struct {
 
 	// 视频输出分辨率，默认值：360p  - 枚举值：  720p  360p。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。
+	BGM *bool `json:"BGM,omitnil,omitempty" name:"BGM"`
 }
 
 func (r *SubmitTemplateToVideoJobRequest) ToJsonString() string {
@@ -809,6 +815,7 @@ func (r *SubmitTemplateToVideoJobRequest) FromJsonString(s string) error {
 	delete(f, "LogoAdd")
 	delete(f, "LogoParam")
 	delete(f, "Resolution")
+	delete(f, "BGM")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTemplateToVideoJobRequest has unknown keys!", "")
 	}

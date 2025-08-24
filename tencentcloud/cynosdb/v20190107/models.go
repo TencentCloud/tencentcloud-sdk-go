@@ -10617,9 +10617,11 @@ type LogicBackupConfigInfo struct {
 	LogicBackupTimeEnd *uint64 `json:"LogicBackupTimeEnd,omitnil,omitempty" name:"LogicBackupTimeEnd"`
 
 	// 自动逻辑备份保留时间
+	// 单位：秒
 	LogicReserveDuration *uint64 `json:"LogicReserveDuration,omitnil,omitempty" name:"LogicReserveDuration"`
 
 	// 是否开启跨地域逻辑备份
+	// 可选值：ON/OFF
 	LogicCrossRegionsEnable *string `json:"LogicCrossRegionsEnable,omitnil,omitempty" name:"LogicCrossRegionsEnable"`
 
 	// 逻辑备份所跨地域

@@ -8603,6 +8603,107 @@ func (r *DescribeRocketMQNamespacesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRocketMQProducersRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 主题名
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 分页offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤查询条件列表，支持以下过滤参数：
+	// 
+	// - ClientId：生产者客户端ID
+	// - ClientIp：生产者客户端IP
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeRocketMQProducersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 主题名
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 分页offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤查询条件列表，支持以下过滤参数：
+	// 
+	// - ClientId：生产者客户端ID
+	// - ClientIp：生产者客户端IP
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeRocketMQProducersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQProducersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NamespaceId")
+	delete(f, "Topic")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQProducersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQProducersResponseParams struct {
+	// 生产者客户端列表
+	Producers []*ProducerInfo `json:"Producers,omitnil,omitempty" name:"Producers"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRocketMQProducersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQProducersResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQProducersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQProducersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQPublicAccessMonitorDataRequestParams struct {
 	// 专享集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -13004,6 +13105,40 @@ type PartitionsTopic struct {
 	// topic类型描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicType *uint64 `json:"TopicType,omitnil,omitempty" name:"TopicType"`
+}
+
+type ProducerInfo struct {
+	// 客户端ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 客户端IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
+
+	// 客户端语言
+	// JAVA((byte) 0),
+	//     CPP((byte) 1),
+	//     DOTNET((byte) 2),
+	//     PYTHON((byte) 3),
+	//     DELPHI((byte) 4),
+	//     ERLANG((byte) 5),
+	//     RUBY((byte) 6),
+	//     OTHER((byte) 7),
+	//     HTTP((byte) 8),
+	//     GO((byte) 9),
+	//     PHP((byte) 10),
+	//     OMS((byte) 11);
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// 客户端版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 最后生产时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTimestamp *int64 `json:"LastUpdateTimestamp,omitnil,omitempty" name:"LastUpdateTimestamp"`
 }
 
 type ProducerLog struct {

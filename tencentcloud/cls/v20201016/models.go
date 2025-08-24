@@ -4364,7 +4364,8 @@ type DashboardTopicInfo struct {
 }
 
 type DataTransformResouceInfo struct {
-	// 目标主题id
+	// 日志主题ID
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 别名
@@ -4391,14 +4392,18 @@ type DataTransformTaskInfo struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 加工任务创建时间
+	// 示例值：2025-03-18 19:55:54
+	// 时间格式：yyyy-MM-dd HH:mm:ss
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最近修改时间
-	// 示例值：2025-06-18 16:55:54
+	// 示例值：2025-04-18 16:55:54
+	// 时间格式：yyyy-MM-dd HH:mm:ss
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 最后启用时间，如果需要重建集群，修改该时间
-	// 示例值：2025-06-18 19:55:54
+	// 示例值：2025-05-18 19:55:54
+	// 时间格式：yyyy-MM-dd HH:mm:ss
 	LastEnableTime *string `json:"LastEnableTime,omitnil,omitempty" name:"LastEnableTime"`
 
 	// 日志主题名称

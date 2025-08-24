@@ -359,6 +359,9 @@ const (
 	// 命名空间不存在。
 	RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 
+	// 命名空间不存在。
+	RESOURCENOTFOUND_NAMSPACE = "ResourceNotFound.Namspace"
+
 	// 角色不存在。
 	RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 
