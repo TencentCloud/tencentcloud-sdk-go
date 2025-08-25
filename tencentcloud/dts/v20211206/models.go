@@ -352,6 +352,12 @@ type ConfigureSubscribeJobRequestParams struct {
 	// mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。
 	// 其他业务暂没有可选参数。
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
+
+	// vpc id
+	ConsumerVpcId *string `json:"ConsumerVpcId,omitnil,omitempty" name:"ConsumerVpcId"`
+
+	// subnet id
+	ConsumerSubnetId *string `json:"ConsumerSubnetId,omitnil,omitempty" name:"ConsumerSubnetId"`
 }
 
 type ConfigureSubscribeJobRequest struct {
@@ -386,6 +392,12 @@ type ConfigureSubscribeJobRequest struct {
 	// mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。
 	// 其他业务暂没有可选参数。
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
+
+	// vpc id
+	ConsumerVpcId *string `json:"ConsumerVpcId,omitnil,omitempty" name:"ConsumerVpcId"`
+
+	// subnet id
+	ConsumerSubnetId *string `json:"ConsumerSubnetId,omitnil,omitempty" name:"ConsumerSubnetId"`
 }
 
 func (r *ConfigureSubscribeJobRequest) ToJsonString() string {
@@ -409,6 +421,8 @@ func (r *ConfigureSubscribeJobRequest) FromJsonString(s string) error {
 	delete(f, "Protocol")
 	delete(f, "PipelineInfo")
 	delete(f, "ExtraAttr")
+	delete(f, "ConsumerVpcId")
+	delete(f, "ConsumerSubnetId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConfigureSubscribeJobRequest has unknown keys!", "")
 	}
@@ -1239,6 +1253,9 @@ type CreateSubscribeRequestParams struct {
 
 	// 任务名，自定义
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 订阅实例规格，当前仅支持small、medium、large
+	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 }
 
 type CreateSubscribeRequest struct {
@@ -1264,6 +1281,9 @@ type CreateSubscribeRequest struct {
 
 	// 任务名，自定义
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 订阅实例规格，当前仅支持small、medium、large
+	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 }
 
 func (r *CreateSubscribeRequest) ToJsonString() string {
@@ -1285,6 +1305,7 @@ func (r *CreateSubscribeRequest) FromJsonString(s string) error {
 	delete(f, "Count")
 	delete(f, "Tags")
 	delete(f, "Name")
+	delete(f, "InstanceClass")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubscribeRequest has unknown keys!", "")
 	}
@@ -2996,6 +3017,18 @@ type DescribeSubscribeDetailResponseParams struct {
 	// mysql选填参数：ProcessXA-是否处理XA事务，为true处理，其他不处理。
 	// mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
+
+	// 数据订阅版本, 当前支持kafka和kafkaPro（专业版）
+	SubscribeVersion *string `json:"SubscribeVersion,omitnil,omitempty" name:"SubscribeVersion"`
+
+	// 消费端地址所在vpc
+	ConsumerVpcId *string `json:"ConsumerVpcId,omitnil,omitempty" name:"ConsumerVpcId"`
+
+	// 消费端地址所在子网
+	ConsumerSubnetId *string `json:"ConsumerSubnetId,omitnil,omitempty" name:"ConsumerSubnetId"`
+
+	// 订阅实例规格
+	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6913,7 +6946,7 @@ type SubscribeInfo struct {
 	// 数据库节点信息
 	Endpoints []*EndpointItem `json:"Endpoints,omitnil,omitempty" name:"Endpoints"`
 
-	// 数据订阅版本, 当前只支持 kafka 版本。
+	// 数据订阅版本, 当前支持kafka和kafkaPro（专业版）
 	SubscribeVersion *string `json:"SubscribeVersion,omitnil,omitempty" name:"SubscribeVersion"`
 
 	// 标签
@@ -6923,6 +6956,9 @@ type SubscribeInfo struct {
 	// 任务报错信息，如果有的话。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errors []*SubsErr `json:"Errors,omitnil,omitempty" name:"Errors"`
+
+	// 订阅实例规格
+	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 }
 
 type SubscribeKafkaConfig struct {

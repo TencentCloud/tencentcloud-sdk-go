@@ -4967,80 +4967,6 @@ func (c *Client) DescribeDimensionScoreWithContext(ctx context.Context, request 
     return
 }
 
-func NewDescribeDrInstancePageRequest() (request *DescribeDrInstancePageRequest) {
-    request = &DescribeDrInstancePageRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDrInstancePage")
-    
-    
-    return
-}
-
-func NewDescribeDrInstancePageResponse() (response *DescribeDrInstancePageResponse) {
-    response = &DescribeDrInstancePageResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDrInstancePage
-// 无效API，没有上线过的业务功能
-//
-// 
-//
-// 分页查询试运行实例列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeDrInstancePage(request *DescribeDrInstancePageRequest) (response *DescribeDrInstancePageResponse, err error) {
-    return c.DescribeDrInstancePageWithContext(context.Background(), request)
-}
-
-// DescribeDrInstancePage
-// 无效API，没有上线过的业务功能
-//
-// 
-//
-// 分页查询试运行实例列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeDrInstancePageWithContext(ctx context.Context, request *DescribeDrInstancePageRequest) (response *DescribeDrInstancePageResponse, err error) {
-    if request == nil {
-        request = NewDescribeDrInstancePageRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "DescribeDrInstancePage")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDrInstancePage require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDrInstancePageResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeDsFolderTreeRequest() (request *DescribeDsFolderTreeRequest) {
     request = &DescribeDsFolderTreeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5215,6 +5141,9 @@ func NewDescribeDsTaskVersionListResponse() (response *DescribeDsTaskVersionList
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDsTaskVersionList(request *DescribeDsTaskVersionListRequest) (response *DescribeDsTaskVersionListResponse, err error) {
     return c.DescribeDsTaskVersionListWithContext(context.Background(), request)
 }
@@ -5224,6 +5153,9 @@ func (c *Client) DescribeDsTaskVersionList(request *DescribeDsTaskVersionListReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDsTaskVersionListWithContext(ctx context.Context, request *DescribeDsTaskVersionListRequest) (response *DescribeDsTaskVersionListResponse, err error) {
     if request == nil {
         request = NewDescribeDsTaskVersionListRequest()
@@ -10223,72 +10155,6 @@ func (c *Client) DescribeTaskByCycleWithContext(ctx context.Context, request *De
     return
 }
 
-func NewDescribeTaskByCycleReportRequest() (request *DescribeTaskByCycleReportRequest) {
-    request = &DescribeTaskByCycleReportRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskByCycleReport")
-    
-    
-    return
-}
-
-func NewDescribeTaskByCycleReportResponse() (response *DescribeTaskByCycleReportResponse) {
-    response = &DescribeTaskByCycleReportResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTaskByCycleReport
-// 能够调通但该API已经没有使用了，看北京数据最后一次上报是23年10月，有接近一千万条数据历史无效数据。当前策略，云API示例修订然后已经分析出来的无效API走预下线流程。
-//
-// https://capi.woa.com/api/detail?product=wedata&env=api_formal&version=2021-08-20&action=DescribeTaskByCycleReport
-//
-// 这两天在分析API的时候 有较多运维大屏的原始API当前已经没有使用了，但API没有下线。预计需要专项去梳理这一系列待下线API。
-//
-// 
-//
-// 任务状态周期增长趋势
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTaskByCycleReport(request *DescribeTaskByCycleReportRequest) (response *DescribeTaskByCycleReportResponse, err error) {
-    return c.DescribeTaskByCycleReportWithContext(context.Background(), request)
-}
-
-// DescribeTaskByCycleReport
-// 能够调通但该API已经没有使用了，看北京数据最后一次上报是23年10月，有接近一千万条数据历史无效数据。当前策略，云API示例修订然后已经分析出来的无效API走预下线流程。
-//
-// https://capi.woa.com/api/detail?product=wedata&env=api_formal&version=2021-08-20&action=DescribeTaskByCycleReport
-//
-// 这两天在分析API的时候 有较多运维大屏的原始API当前已经没有使用了，但API没有下线。预计需要专项去梳理这一系列待下线API。
-//
-// 
-//
-// 任务状态周期增长趋势
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTaskByCycleReportWithContext(ctx context.Context, request *DescribeTaskByCycleReportRequest) (response *DescribeTaskByCycleReportResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskByCycleReportRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "DescribeTaskByCycleReport")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTaskByCycleReport require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTaskByCycleReportResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeTaskByStatusReportRequest() (request *DescribeTaskByStatusReportRequest) {
     request = &DescribeTaskByStatusReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10921,6 +10787,56 @@ func (c *Client) DescribeTenantProjectsWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeTenantProjectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTestRunningRecordRequest() (request *DescribeTestRunningRecordRequest) {
+    request = &DescribeTestRunningRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTestRunningRecord")
+    
+    
+    return
+}
+
+func NewDescribeTestRunningRecordResponse() (response *DescribeTestRunningRecordResponse) {
+    response = &DescribeTestRunningRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTestRunningRecord
+// 获取编排空间试运行历史
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTestRunningRecord(request *DescribeTestRunningRecordRequest) (response *DescribeTestRunningRecordResponse, err error) {
+    return c.DescribeTestRunningRecordWithContext(context.Background(), request)
+}
+
+// DescribeTestRunningRecord
+// 获取编排空间试运行历史
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTestRunningRecordWithContext(ctx context.Context, request *DescribeTestRunningRecordRequest) (response *DescribeTestRunningRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribeTestRunningRecordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "DescribeTestRunningRecord")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTestRunningRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTestRunningRecordResponse()
     err = c.Send(request, response)
     return
 }
@@ -14609,6 +14525,9 @@ func NewRenewWorkflowSchedulerInfoDsResponse() (response *RenewWorkflowScheduler
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RenewWorkflowSchedulerInfoDs(request *RenewWorkflowSchedulerInfoDsRequest) (response *RenewWorkflowSchedulerInfoDsResponse, err error) {
     return c.RenewWorkflowSchedulerInfoDsWithContext(context.Background(), request)
 }
@@ -14618,6 +14537,9 @@ func (c *Client) RenewWorkflowSchedulerInfoDs(request *RenewWorkflowSchedulerInf
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RenewWorkflowSchedulerInfoDsWithContext(ctx context.Context, request *RenewWorkflowSchedulerInfoDsRequest) (response *RenewWorkflowSchedulerInfoDsResponse, err error) {
     if request == nil {
         request = NewRenewWorkflowSchedulerInfoDsRequest()
@@ -16553,6 +16475,9 @@ func NewUploadResourceResponse() (response *UploadResourceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UploadResource(request *UploadResourceRequest) (response *UploadResourceResponse, err error) {
     return c.UploadResourceWithContext(context.Background(), request)
 }
@@ -16562,6 +16487,9 @@ func (c *Client) UploadResource(request *UploadResourceRequest) (response *Uploa
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UploadResourceWithContext(ctx context.Context, request *UploadResourceRequest) (response *UploadResourceResponse, err error) {
     if request == nil {
         request = NewUploadResourceRequest()

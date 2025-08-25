@@ -10841,7 +10841,7 @@ type DescribeContractReviewTaskResponseParams struct {
 	// 注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
 	Risks []*OutputRisk `json:"Risks,omitnil,omitempty" name:"Risks"`
 
-	// 合同审查中的角色信息。注意：注意：如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。
+	// 合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
 
@@ -10866,6 +10866,12 @@ type DescribeContractReviewTaskResponseParams struct {
 	// 
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 合同审查出的高风险项数量
+	HighRiskCount *int64 `json:"HighRiskCount,omitnil,omitempty" name:"HighRiskCount"`
+
+	// 合同审查出的风险总数
+	TotalRiskCount *int64 `json:"TotalRiskCount,omitnil,omitempty" name:"TotalRiskCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

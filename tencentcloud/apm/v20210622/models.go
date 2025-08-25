@@ -113,6 +113,12 @@ type ApmApplicationConfigView struct {
 
 	// 链路压缩开关（已废弃）
 	TraceSquash *bool `json:"TraceSquash,omitnil,omitempty" name:"TraceSquash"`
+
+	// 探针熔断内存阈值
+	DisableMemoryUsed *int64 `json:"DisableMemoryUsed,omitnil,omitempty" name:"DisableMemoryUsed"`
+
+	// 探针熔断CPU阈值
+	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
 }
 
 type ApmField struct {
