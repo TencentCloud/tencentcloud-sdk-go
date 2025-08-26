@@ -3730,7 +3730,7 @@ type Placement struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CageId *string `json:"CageId,omitnil,omitempty" name:"CageId"`
 
-	// 实例所属项目ID，可通过[DescribeProject](/document/api/651/78725)获取。不填默认为0，表示默认项目。
+	// 实例所属项目ID，可通过DescribeProject获取。不填默认为0，表示默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 实例所属项目名称，可通过[DescribeProject](/document/api/651/78725)获取。

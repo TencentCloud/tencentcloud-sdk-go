@@ -20686,7 +20686,7 @@ type Task struct {
 	// <li>originPullFailed：回源失败。</li>
 	FailType *string `json:"FailType,omitnil,omitempty" name:"FailType"`
 
-	// 刷新、预热失败描述。
+	// 清除缓存、预热缓存的失败原因描述。
 	FailMessage *string `json:"FailMessage,omitnil,omitempty" name:"FailMessage"`
 }
 

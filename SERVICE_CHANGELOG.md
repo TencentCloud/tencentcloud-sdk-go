@@ -1,86 +1,10 @@
-# Release v1.1.16
+# Release v1.1.17
 
-## 应用性能监控(apm) 版本：2021-06-22
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
 
-### 第 44 次发布
+### 第 80 次发布
 
-发布时间：2025-08-26 01:10:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ApmApplicationConfigView](https://cloud.tencent.com/document/api/1463/64927#ApmApplicationConfigView)
-
-	* 新增成员：DisableMemoryUsed, DisableCpuUsed
-
-
-
-
-## 数据传输服务(dts) 版本：2021-12-06
-
-### 第 44 次发布
-
-发布时间：2025-08-26 01:42:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ConfigureSubscribeJob](https://cloud.tencent.com/document/api/571/102952)
-
-	* 新增入参：ConsumerVpcId, ConsumerSubnetId
-
-* [CreateSubscribe](https://cloud.tencent.com/document/api/571/102950)
-
-	* 新增入参：InstanceClass
-
-* [DescribeSubscribeDetail](https://cloud.tencent.com/document/api/571/102944)
-
-	* 新增出参：SubscribeVersion, ConsumerVpcId, ConsumerSubnetId, InstanceClass
-
-
-修改数据结构：
-
-* [SubscribeInfo](https://cloud.tencent.com/document/api/571/82108#SubscribeInfo)
-
-	* 新增成员：InstanceClass
-
-
-
-
-## 数据传输服务(dts) 版本：2018-03-30
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 245 次发布
-
-发布时间：2025-08-26 01:47:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeContractReviewTask](https://cloud.tencent.com/document/api/1323/122151)
-
-	* 新增出参：HighRiskCount, TotalRiskCount
-
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 169 次发布
-
-发布时间：2025-08-25 10:47:55
+发布时间：2025-08-27 01:33:52
 
 本次发布包含了以下内容：
 
@@ -88,79 +12,78 @@
 
 新增接口：
 
-* [DescribeTestRunningRecord](https://cloud.tencent.com/document/api/1267/122750)
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeDrInstancePage
-* DescribeTaskByCycleReport
-
-修改接口：
-
-* [CommitIntegrationTask](https://cloud.tencent.com/document/api/1267/82526)
-
-	* 新增出参：DataDto
-
-* [DescribeDsTaskVersionList](https://cloud.tencent.com/document/api/1267/120168)
-
-	* 新增入参：IsOnlyProductVersion
-
-* [DescribeIntegrationTask](https://cloud.tencent.com/document/api/1267/82495)
-
-	* 新增入参：ExtConfig
-
-* [RenewWorkflowSchedulerInfoDs](https://cloud.tencent.com/document/api/1267/110374)
-
-	* 新增入参：MainCyclicConfig, SubordinateCyclicConfig
-
-* [RunRerunScheduleInstances](https://cloud.tencent.com/document/api/1267/100207)
-
-	* 新增入参：MapParamList, AppParam
-
+* [DescribeInstanceSSLAttributes](https://cloud.tencent.com/document/api/557/122774)
+* [DescribeProcessList](https://cloud.tencent.com/document/api/557/122773)
+* [ModifyInstanceProtectedProperty](https://cloud.tencent.com/document/api/557/122772)
+* [ModifyInstanceSSLAttributes](https://cloud.tencent.com/document/api/557/122771)
 
 新增数据结构：
 
-* [AlarmReceiverGroup](https://cloud.tencent.com/document/api/1267/76336#AlarmReceiverGroup)
-* [CommitTaskDataDto](https://cloud.tencent.com/document/api/1267/76336#CommitTaskDataDto)
-* [TestRunningRecord](https://cloud.tencent.com/document/api/1267/76336#TestRunningRecord)
-* [TestRunningSubRecord](https://cloud.tencent.com/document/api/1267/76336#TestRunningSubRecord)
-* [WorkspaceExt](https://cloud.tencent.com/document/api/1267/76336#WorkspaceExt)
+* [Filter](https://cloud.tencent.com/document/api/557/16142#Filter)
+* [Process](https://cloud.tencent.com/document/api/557/16142#Process)
 
-<font color="#dd0000">**删除数据结构**：</font>
 
-* DrInstanceOpsDto
-* DrInstanceOpsDtoPage
 
-修改数据结构：
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-* [DataSourceInfo](https://cloud.tencent.com/document/api/1267/76336#DataSourceInfo)
+### 第 113 次发布
 
-	* 新增成员：DatasourceType
+发布时间：2025-08-27 01:51:36
 
-* [DescribePendingSubmitTaskInfo](https://cloud.tencent.com/document/api/1267/76336#DescribePendingSubmitTaskInfo)
+本次发布包含了以下内容：
 
-	* 新增成员：TaskTypeId
+改善已有的文档。
 
-* [EngineTaskInfo](https://cloud.tencent.com/document/api/1267/76336#EngineTaskInfo)
+新增接口：
 
-	* 新增成员：VCoreSeconds, MemorySeconds, EmrUserName, QueryId, ApplicationId
+* [CreateTWeTalkProductConfig](https://cloud.tencent.com/document/api/1081/122778)
+* [DescribeTWeTalkProductConfig](https://cloud.tencent.com/document/api/1081/122777)
+* [GetTWeTalkProductConfigList](https://cloud.tencent.com/document/api/1081/122776)
+* [ModifyTWeTalkProductConfig](https://cloud.tencent.com/document/api/1081/122775)
 
-* [Project](https://cloud.tencent.com/document/api/1267/76336#Project)
+新增数据结构：
 
-	* 新增成员：WorkspaceExt
+* [TalkProductConfigInfo](https://cloud.tencent.com/document/api/1081/34988#TalkProductConfigInfo)
 
-* [TaskAlarmInfo](https://cloud.tencent.com/document/api/1267/76336#TaskAlarmInfo)
 
-	* 新增成员：AlarmReceiverGroups, AlarmReceiverGroupFlag
 
-* [TaskDsDTO](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTO)
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
-	* 新增成员：BundleId, BundleName
+### 第 75 次发布
 
-* [UploadResourceRequestInfo](https://cloud.tencent.com/document/api/1267/76336#UploadResourceRequestInfo)
+发布时间：2025-08-27 02:04:21
 
-	* 新增成员：RemotePath
+本次发布包含了以下内容：
 
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstanceSSLAttributes](https://cloud.tencent.com/document/api/237/122782)
+* [DescribeProcessList](https://cloud.tencent.com/document/api/237/122781)
+* [ModifyInstanceProtectedProperty](https://cloud.tencent.com/document/api/237/122779)
+* [ModifyInstanceSSLAttributes](https://cloud.tencent.com/document/api/237/122780)
+
+新增数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/237/16191#Filter)
+* [Process](https://cloud.tencent.com/document/api/237/16191#Process)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 125 次发布
+
+发布时间：2025-08-27 03:29:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyProtectionLevel](https://cloud.tencent.com/document/api/627/122783)
 
 
 

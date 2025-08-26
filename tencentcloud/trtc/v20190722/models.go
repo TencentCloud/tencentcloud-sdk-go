@@ -4549,7 +4549,7 @@ type ModerationParams struct {
 	// 第三方审核商送审需要配置信息
 	ModerationSupplierParam *ModerationSupplierParam `json:"ModerationSupplierParam,omitnil,omitempty" name:"ModerationSupplierParam"`
 
-	// 是否保存命中文件 0 默认不保存  1 保存命中文件
+	// 是否保存文件  0不保存文件 1保存所有文件 2仅保存命中文件
 	SaveModerationFile *uint64 `json:"SaveModerationFile,omitnil,omitempty" name:"SaveModerationFile"`
 
 	// 是否回调所有审核结果:

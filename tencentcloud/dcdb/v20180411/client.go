@@ -2679,6 +2679,66 @@ func (c *Client) DescribeFlowWithContext(ctx context.Context, request *DescribeF
     return
 }
 
+func NewDescribeInstanceSSLAttributesRequest() (request *DescribeInstanceSSLAttributesRequest) {
+    request = &DescribeInstanceSSLAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeInstanceSSLAttributes")
+    
+    
+    return
+}
+
+func NewDescribeInstanceSSLAttributesResponse() (response *DescribeInstanceSSLAttributesResponse) {
+    response = &DescribeInstanceSSLAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceSSLAttributes
+// 本接口（DescribeInstanceSSLAttributes）用于拉取实例SSL认证属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceSSLAttributes(request *DescribeInstanceSSLAttributesRequest) (response *DescribeInstanceSSLAttributesResponse, err error) {
+    return c.DescribeInstanceSSLAttributesWithContext(context.Background(), request)
+}
+
+// DescribeInstanceSSLAttributes
+// 本接口（DescribeInstanceSSLAttributes）用于拉取实例SSL认证属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceSSLAttributesWithContext(ctx context.Context, request *DescribeInstanceSSLAttributesRequest) (response *DescribeInstanceSSLAttributesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceSSLAttributesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dcdb", APIVersion, "DescribeInstanceSSLAttributes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceSSLAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceSSLAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogFileRetentionPeriodRequest() (request *DescribeLogFileRetentionPeriodRequest) {
     request = &DescribeLogFileRetentionPeriodRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2849,6 +2909,74 @@ func (c *Client) DescribeOrdersWithContext(ctx context.Context, request *Describ
     request.SetContext(ctx)
     
     response = NewDescribeOrdersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProcessListRequest() (request *DescribeProcessListRequest) {
+    request = &DescribeProcessListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeProcessList")
+    
+    
+    return
+}
+
+func NewDescribeProcessListResponse() (response *DescribeProcessListResponse) {
+    response = &DescribeProcessListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProcessList
+// 本接口 (DescribeProcessList) 用于查询当前正在运行的线程（连接/查询）信息。
+//
+// 
+//
+// - 可以根据客户端IP，DB，执行时间等信息来查询实例正在运行的线程信息。过滤信息详细请见过滤器Filter。
+//
+// - 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的线程信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeProcessList(request *DescribeProcessListRequest) (response *DescribeProcessListResponse, err error) {
+    return c.DescribeProcessListWithContext(context.Background(), request)
+}
+
+// DescribeProcessList
+// 本接口 (DescribeProcessList) 用于查询当前正在运行的线程（连接/查询）信息。
+//
+// 
+//
+// - 可以根据客户端IP，DB，执行时间等信息来查询实例正在运行的线程信息。过滤信息详细请见过滤器Filter。
+//
+// - 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的线程信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeProcessListWithContext(ctx context.Context, request *DescribeProcessListRequest) (response *DescribeProcessListResponse, err error) {
+    if request == nil {
+        request = NewDescribeProcessListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dcdb", APIVersion, "DescribeProcessList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProcessList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProcessListResponse()
     err = c.Send(request, response)
     return
 }
@@ -4483,6 +4611,126 @@ func (c *Client) ModifyInstanceNetworkWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyInstanceNetworkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceProtectedPropertyRequest() (request *ModifyInstanceProtectedPropertyRequest) {
+    request = &ModifyInstanceProtectedPropertyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "ModifyInstanceProtectedProperty")
+    
+    
+    return
+}
+
+func NewModifyInstanceProtectedPropertyResponse() (response *ModifyInstanceProtectedPropertyResponse) {
+    response = &ModifyInstanceProtectedPropertyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceProtectedProperty
+// 该接口用于修改实例的保护属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) ModifyInstanceProtectedProperty(request *ModifyInstanceProtectedPropertyRequest) (response *ModifyInstanceProtectedPropertyResponse, err error) {
+    return c.ModifyInstanceProtectedPropertyWithContext(context.Background(), request)
+}
+
+// ModifyInstanceProtectedProperty
+// 该接口用于修改实例的保护属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) ModifyInstanceProtectedPropertyWithContext(ctx context.Context, request *ModifyInstanceProtectedPropertyRequest) (response *ModifyInstanceProtectedPropertyResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceProtectedPropertyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dcdb", APIVersion, "ModifyInstanceProtectedProperty")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceProtectedProperty require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceProtectedPropertyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceSSLAttributesRequest() (request *ModifyInstanceSSLAttributesRequest) {
+    request = &ModifyInstanceSSLAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "ModifyInstanceSSLAttributes")
+    
+    
+    return
+}
+
+func NewModifyInstanceSSLAttributesResponse() (response *ModifyInstanceSSLAttributesResponse) {
+    response = &ModifyInstanceSSLAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceSSLAttributes
+// 本接口  （ModifyInstanceSSLAttributes）用于修改实例SSL认证功能属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  FAILEDOPERATION_SSLSTATUSABNORMAL = "FailedOperation.SslStatusAbnormal"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  RESOURCEUNAVAILABLE_SSLSTATUSABNORMAL = "ResourceUnavailable.SSLStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_SSLNOTSUPPORTED = "UnsupportedOperation.SSLNotSupported"
+func (c *Client) ModifyInstanceSSLAttributes(request *ModifyInstanceSSLAttributesRequest) (response *ModifyInstanceSSLAttributesResponse, err error) {
+    return c.ModifyInstanceSSLAttributesWithContext(context.Background(), request)
+}
+
+// ModifyInstanceSSLAttributes
+// 本接口  （ModifyInstanceSSLAttributes）用于修改实例SSL认证功能属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  FAILEDOPERATION_SSLSTATUSABNORMAL = "FailedOperation.SslStatusAbnormal"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  RESOURCEUNAVAILABLE_SSLSTATUSABNORMAL = "ResourceUnavailable.SSLStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_SSLNOTSUPPORTED = "UnsupportedOperation.SSLNotSupported"
+func (c *Client) ModifyInstanceSSLAttributesWithContext(ctx context.Context, request *ModifyInstanceSSLAttributesRequest) (response *ModifyInstanceSSLAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceSSLAttributesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dcdb", APIVersion, "ModifyInstanceSSLAttributes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceSSLAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceSSLAttributesResponse()
     err = c.Send(request, response)
     return
 }

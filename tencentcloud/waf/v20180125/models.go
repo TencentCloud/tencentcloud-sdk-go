@@ -15855,6 +15855,67 @@ func (r *ModifyOwaspWhiteRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyProtectionLevelRequestParams struct {
+	// 客户域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 防护等级,100,200,300
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
+}
+
+type ModifyProtectionLevelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 客户域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 防护等级,100,200,300
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
+}
+
+func (r *ModifyProtectionLevelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProtectionLevelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Level")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProtectionLevelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyProtectionLevelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyProtectionLevelResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyProtectionLevelResponseParams `json:"Response"`
+}
+
+func (r *ModifyProtectionLevelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProtectionLevelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyProtectionStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`

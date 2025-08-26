@@ -3776,6 +3776,63 @@ func (r *DescribeInstanceNodeInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceSSLAttributesRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeInstanceSSLAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceSSLAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceSSLAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceSSLAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceSSLAttributesResponseParams struct {
+	// 实例SSL认证功能当前状态。1-开启中；2-已开启；3-已关闭；4-关闭中
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceSSLAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceSSLAttributesResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceSSLAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceSSLAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLogFileRetentionPeriodRequestParams struct {
 	// 实例 ID，形如：tdsql-ow728lmc。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4022,6 +4079,173 @@ func (r *DescribePriceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePriceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProcessListRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点ID。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <li><strong>id</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>会话ID</strong>】进行过滤。会话ID例如：125700。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+	// 
+	// <li><strong>user</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>用户名</strong>】进行过滤。用户名例如：root。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+	// <li><strong>host</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>客户端Host</strong>】进行过滤。客户端Host例如：127.0.0.1:46295。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：前缀匹配，例如可以查询客户端IP不加端口：127.0.0.1。</p>
+	// <li><strong>state</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>线程状态</strong>】进行过滤。线程状态例如：Updating。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+	// <li><strong>db</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>数据库名称</strong>】进行过滤。数据库名称例如：mysql。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+	// <li><strong>command</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>命令类型</strong>】进行过滤。命令类型例如：Query。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+	// <li><strong>info</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>执行语句</strong>】进行过滤。执行语句例如：select id, name from demo.table1 where id > 10。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：前缀匹配，例如SQL较长，可以输入SQL前缀：select  id, name from demo.table1。</p>
+	// <li><strong>time</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>执行时间大于多少（秒）</strong>】进行过滤。例如：10，表示查询执行时间超过10秒的会话。</p>
+	//     <p style="padding-left: 30px;">类型：Integer</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：范围匹配，Values值只支持输入1个。</p>
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为50。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeProcessListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点ID。
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <li><strong>id</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>会话ID</strong>】进行过滤。会话ID例如：125700。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+	// 
+	// <li><strong>user</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>用户名</strong>】进行过滤。用户名例如：root。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+	// <li><strong>host</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>客户端Host</strong>】进行过滤。客户端Host例如：127.0.0.1:46295。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：前缀匹配，例如可以查询客户端IP不加端口：127.0.0.1。</p>
+	// <li><strong>state</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>线程状态</strong>】进行过滤。线程状态例如：Updating。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+	// <li><strong>db</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>数据库名称</strong>】进行过滤。数据库名称例如：mysql。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+	// <li><strong>command</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>命令类型</strong>】进行过滤。命令类型例如：Query。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+	// <li><strong>info</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>执行语句</strong>】进行过滤。执行语句例如：select id, name from demo.table1 where id > 10。</p>
+	//     <p style="padding-left: 30px;">类型：String</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：前缀匹配，例如SQL较长，可以输入SQL前缀：select  id, name from demo.table1。</p>
+	// <li><strong>time</strong></li>
+	//     <p style="padding-left: 30px;">按照【<strong>执行时间大于多少（秒）</strong>】进行过滤。例如：10，表示查询执行时间超过10秒的会话。</p>
+	//     <p style="padding-left: 30px;">类型：Integer</p>
+	//     <p style="padding-left: 30px;">必选：否</p>
+	//     <p style="padding-left: 30px;">匹配类型：范围匹配，Values值只支持输入1个。</p>
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为50。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeProcessListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProcessListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "NodeId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProcessListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProcessListResponseParams struct {
+	// 当前正在运行的线程（连接/查询）信息列表。
+	ProcessList []*Process `json:"ProcessList,omitnil,omitempty" name:"ProcessList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProcessListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProcessListResponseParams `json:"Response"`
+}
+
+func (r *DescribeProcessListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProcessListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4517,6 +4741,14 @@ func (r *DisassociateSecurityGroupsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DisassociateSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Filter struct {
+	// 需要过滤的字段。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 字段的过滤值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 // Predefined struct for user
@@ -5914,6 +6146,128 @@ func (r *ModifyInstanceNetworkResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyInstanceProtectedPropertyRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 0-允许删除，无销毁保护，1-禁止删除，有销毁保护
+	ProtectedProperty *int64 `json:"ProtectedProperty,omitnil,omitempty" name:"ProtectedProperty"`
+}
+
+type ModifyInstanceProtectedPropertyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 0-允许删除，无销毁保护，1-禁止删除，有销毁保护
+	ProtectedProperty *int64 `json:"ProtectedProperty,omitnil,omitempty" name:"ProtectedProperty"`
+}
+
+func (r *ModifyInstanceProtectedPropertyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceProtectedPropertyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ProtectedProperty")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceProtectedPropertyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceProtectedPropertyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceProtectedPropertyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceProtectedPropertyResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceProtectedPropertyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceProtectedPropertyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceSSLAttributesRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 是否开启实例的SSL认证。0-关闭；1-开启
+	SSLEnabled *int64 `json:"SSLEnabled,omitnil,omitempty" name:"SSLEnabled"`
+}
+
+type ModifyInstanceSSLAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 是否开启实例的SSL认证。0-关闭；1-开启
+	SSLEnabled *int64 `json:"SSLEnabled,omitnil,omitempty" name:"SSLEnabled"`
+}
+
+func (r *ModifyInstanceSSLAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceSSLAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SSLEnabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceSSLAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceSSLAttributesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceSSLAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceSSLAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceSSLAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceSSLAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyInstanceVipRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -6402,6 +6756,47 @@ type ProcedurePrivilege struct {
 
 	// 权限信息
 	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+}
+
+type Process struct {
+	// 线程ID​​：唯一标识当前连接/线程的整数。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 用户名​​：发起连接的 MySQL 用户。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 客户端地址​​：发起连接的客户端主机名及端口（格式：host:port）。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 当前数据库​​：线程正在使用的数据库名（未选择数据库时为 空串）。
+	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
+
+	// 命令类型​​：线程正在执行的命令类型。常见值：
+	// 
+	// - Sleep：空闲等待状态（等待新查询）。
+	// - Query：正在执行查询或 SQL 语句。
+	// - Binlog Dump：主服务器线程向从服务器发送二进制日志。
+	// - Connect：客户端正在连接。
+	// - Killed：线程被终止但未完全退出。
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 执行时间（秒）​​：线程在当前状态持续的秒数。
+	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 执行开始时间（秒）​​：线程在当前状态开始执行的时间。
+	ProcessStartTime *string `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
+
+	// ​​状态描述​​：线程当前的详细操作状态。常见值：
+	// 
+	// - Sending data：正在处理/发送数据。
+	// - Locked：等待表锁释放（例如 MyISAM 表级锁）。
+	// - Sorting result：排序查询结果。
+	// - Updating：更新表中数据。
+	// - 当为NULL返回空串：无明确状态（如 Sleep 时）。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 执行语句​​：正在执行的 SQL 语句（前 1024 字符）。
+	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
 }
 
 type RegionInfo struct {

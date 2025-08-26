@@ -89,6 +89,9 @@ const (
 	// 安全组规则下发失败。
 	FAILEDOPERATION_SETSVCLOCATIONFAILED = "FailedOperation.SetSvcLocationFailed"
 
+	// SSL状态异常。
+	FAILEDOPERATION_SSLSTATUSABNORMAL = "FailedOperation.SslStatusAbnormal"
+
 	// 标签键值校验或鉴权失败。
 	FAILEDOPERATION_TAGDRYRUNERROR = "FailedOperation.TagDryRunError"
 
@@ -386,6 +389,9 @@ const (
 	// 安全组校验失败。
 	RESOURCEUNAVAILABLE_SGCHECKFAIL = "ResourceUnavailable.SGCheckFail"
 
+	// SSL状态异常。
+	RESOURCEUNAVAILABLE_SSLSTATUSABNORMAL = "ResourceUnavailable.SSLStatusAbnormal"
+
 	// 没有权限操作该接口或资源。
 	UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 
@@ -397,4 +403,7 @@ const (
 
 	// Proxy软件版本太旧，请联系客服升级到新版本后再试。
 	UNSUPPORTEDOPERATION_OLDPROXYVERSION = "UnsupportedOperation.OldProxyVersion"
+
+	// 当前版本不支持SSL认证，请联系客服升级到新版本后再试。
+	UNSUPPORTEDOPERATION_SSLNOTSUPPORTED = "UnsupportedOperation.SSLNotSupported"
 )

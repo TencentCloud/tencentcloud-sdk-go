@@ -10481,6 +10481,66 @@ func (c *Client) ModifyOwaspWhiteRuleWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyProtectionLevelRequest() (request *ModifyProtectionLevelRequest) {
+    request = &ModifyProtectionLevelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyProtectionLevel")
+    
+    
+    return
+}
+
+func NewModifyProtectionLevelResponse() (response *ModifyProtectionLevelResponse) {
+    response = &ModifyProtectionLevelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyProtectionLevel
+// 更改防护等级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyProtectionLevel(request *ModifyProtectionLevelRequest) (response *ModifyProtectionLevelResponse, err error) {
+    return c.ModifyProtectionLevelWithContext(context.Background(), request)
+}
+
+// ModifyProtectionLevel
+// 更改防护等级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyProtectionLevelWithContext(ctx context.Context, request *ModifyProtectionLevelRequest) (response *ModifyProtectionLevelResponse, err error) {
+    if request == nil {
+        request = NewModifyProtectionLevelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyProtectionLevel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProtectionLevel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyProtectionLevelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyProtectionStatusRequest() (request *ModifyProtectionStatusRequest) {
     request = &ModifyProtectionStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
