@@ -8027,6 +8027,9 @@ type LogResObject struct {
 
 	// 日志内容信息
 	Results []*LogObject `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 日志聚合结果
+	AnalysisRecords []*string `json:"AnalysisRecords,omitnil,omitempty" name:"AnalysisRecords"`
 }
 
 type LogServiceInfo struct {

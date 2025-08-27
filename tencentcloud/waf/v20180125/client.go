@@ -959,6 +959,76 @@ func (c *Client) CreateDealsWithContext(ctx context.Context, request *CreateDeal
     return
 }
 
+func NewCreateExportRequest() (request *CreateExportRequest) {
+    request = &CreateExportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "CreateExport")
+    
+    
+    return
+}
+
+func NewCreateExportResponse() (response *CreateExportResponse) {
+    response = &CreateExportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateExport
+// 本接口仅创建下载任务，任务返回的下载地址，请用户调用DescribeExports查看任务列表。其中有下载地址CosPath参数。参考文档https://cloud.tencent.com/document/product/614/56449
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_EXPORT = "LimitExceeded.Export"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateExport(request *CreateExportRequest) (response *CreateExportResponse, err error) {
+    return c.CreateExportWithContext(context.Background(), request)
+}
+
+// CreateExport
+// 本接口仅创建下载任务，任务返回的下载地址，请用户调用DescribeExports查看任务列表。其中有下载地址CosPath参数。参考文档https://cloud.tencent.com/document/product/614/56449
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_EXPORT = "LimitExceeded.Export"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateExportWithContext(ctx context.Context, request *CreateExportRequest) (response *CreateExportResponse, err error) {
+    if request == nil {
+        request = NewCreateExportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreateExport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHostRequest() (request *CreateHostRequest) {
     request = &CreateHostRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1955,6 +2025,72 @@ func (c *Client) DeleteDomainWhiteRulesWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDeleteDomainWhiteRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteExportRequest() (request *DeleteExportRequest) {
+    request = &DeleteExportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteExport")
+    
+    
+    return
+}
+
+func NewDeleteExportResponse() (response *DeleteExportResponse) {
+    response = &DeleteExportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteExport
+// 本接口用于删除日志下载任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_EXPORTNOTEXIST = "ResourceNotFound.ExportNotExist"
+func (c *Client) DeleteExport(request *DeleteExportRequest) (response *DeleteExportResponse, err error) {
+    return c.DeleteExportWithContext(context.Background(), request)
+}
+
+// DeleteExport
+// 本接口用于删除日志下载任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_EXPORTNOTEXIST = "ResourceNotFound.ExportNotExist"
+func (c *Client) DeleteExportWithContext(ctx context.Context, request *DeleteExportRequest) (response *DeleteExportResponse, err error) {
+    if request == nil {
+        request = NewDeleteExportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteExport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteExport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteExportResponse()
     err = c.Send(request, response)
     return
 }
@@ -4603,6 +4739,78 @@ func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeExportsRequest() (request *DescribeExportsRequest) {
+    request = &DescribeExportsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeExports")
+    
+    
+    return
+}
+
+func NewDescribeExportsResponse() (response *DescribeExportsResponse) {
+    response = &DescribeExportsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExports
+// 本接口用于获取日志下载任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_EXPORTNOTEXIST = "ResourceNotFound.ExportNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeExports(request *DescribeExportsRequest) (response *DescribeExportsResponse, err error) {
+    return c.DescribeExportsWithContext(context.Background(), request)
+}
+
+// DescribeExports
+// 本接口用于获取日志下载任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_EXPORTNOTEXIST = "ResourceNotFound.ExportNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeExportsWithContext(ctx context.Context, request *DescribeExportsRequest) (response *DescribeExportsResponse, err error) {
+    if request == nil {
+        request = NewDescribeExportsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeExports")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExports require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExportsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFindDomainListRequest() (request *DescribeFindDomainListRequest) {
     request = &DescribeFindDomainListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5227,6 +5435,96 @@ func (c *Client) DescribeIpHitItemsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeIpHitItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLogHistogramRequest() (request *DescribeLogHistogramRequest) {
+    request = &DescribeLogHistogramRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeLogHistogram")
+    
+    
+    return
+}
+
+func NewDescribeLogHistogramResponse() (response *DescribeLogHistogramResponse) {
+    response = &DescribeLogHistogramResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLogHistogram
+// 本接口用于构建日志数量直方图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSRESOURCESNOTFOUND = "FailedOperation.CLSResourcesNotFound"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
+//  INTERNALERROR_SERVERBUSY = "InternalError.ServerBusy"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_NEWSYNTAXNOTSUPPORTED = "OperationDenied.NewSyntaxNotSupported"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeLogHistogram(request *DescribeLogHistogramRequest) (response *DescribeLogHistogramResponse, err error) {
+    return c.DescribeLogHistogramWithContext(context.Background(), request)
+}
+
+// DescribeLogHistogram
+// 本接口用于构建日志数量直方图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSRESOURCESNOTFOUND = "FailedOperation.CLSResourcesNotFound"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
+//  INTERNALERROR_SERVERBUSY = "InternalError.ServerBusy"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_NEWSYNTAXNOTSUPPORTED = "OperationDenied.NewSyntaxNotSupported"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeLogHistogramWithContext(ctx context.Context, request *DescribeLogHistogramRequest) (response *DescribeLogHistogramResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogHistogramRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeLogHistogram")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogHistogram require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogHistogramResponse()
     err = c.Send(request, response)
     return
 }
@@ -6447,6 +6745,86 @@ func (c *Client) DescribeTopAttackDomainWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeTopicsRequest() (request *DescribeTopicsRequest) {
+    request = &DescribeTopicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeTopics")
+    
+    
+    return
+}
+
+func NewDescribeTopicsResponse() (response *DescribeTopicsResponse) {
+    response = &DescribeTopicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTopics
+// 本接口用于获取日志主题列表，支持分页
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSRESOURCESNOTFOUND = "FailedOperation.CLSResourcesNotFound"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_ANALYSISSWITCHCLOSE = "OperationDenied.AnalysisSwitchClose"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopics(request *DescribeTopicsRequest) (response *DescribeTopicsResponse, err error) {
+    return c.DescribeTopicsWithContext(context.Background(), request)
+}
+
+// DescribeTopics
+// 本接口用于获取日志主题列表，支持分页
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSRESOURCESNOTFOUND = "FailedOperation.CLSResourcesNotFound"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_ANALYSISSWITCHCLOSE = "OperationDenied.AnalysisSwitchClose"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopicsWithContext(ctx context.Context, request *DescribeTopicsRequest) (response *DescribeTopicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeTopics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserCdcClbWafRegionsRequest() (request *DescribeUserCdcClbWafRegionsRequest) {
     request = &DescribeUserCdcClbWafRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6471,8 +6849,21 @@ func NewDescribeUserCdcClbWafRegionsResponse() (response *DescribeUserCdcClbWafR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSRESOURCESNOTFOUND = "FailedOperation.CLSResourcesNotFound"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_ANALYSISSWITCHCLOSE = "OperationDenied.AnalysisSwitchClose"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserCdcClbWafRegions(request *DescribeUserCdcClbWafRegionsRequest) (response *DescribeUserCdcClbWafRegionsResponse, err error) {
     return c.DescribeUserCdcClbWafRegionsWithContext(context.Background(), request)
 }
@@ -6482,8 +6873,21 @@ func (c *Client) DescribeUserCdcClbWafRegions(request *DescribeUserCdcClbWafRegi
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSRESOURCESNOTFOUND = "FailedOperation.CLSResourcesNotFound"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_ANALYSISSWITCHCLOSE = "OperationDenied.AnalysisSwitchClose"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserCdcClbWafRegionsWithContext(ctx context.Context, request *DescribeUserCdcClbWafRegionsRequest) (response *DescribeUserCdcClbWafRegionsResponse, err error) {
     if request == nil {
         request = NewDescribeUserCdcClbWafRegionsRequest()
@@ -11487,6 +11891,114 @@ func (c *Client) SearchAttackLogWithContext(ctx context.Context, request *Search
     request.SetContext(ctx)
     
     response = NewSearchAttackLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchLogRequest() (request *SearchLogRequest) {
+    request = &SearchLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "SearchLog")
+    
+    
+    return
+}
+
+func NewSearchLogResponse() (response *SearchLogResponse) {
+    response = &SearchLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SearchLog
+// 本接口用于检索分析日志，使用该接口时请注意如下事项：
+//
+// 1. 该接口除受默认接口请求频率限制外，针对单个日志主题，查询并发数不能超过15。
+//
+// 2. 检索语法建议使用CQL语法规则，请使用SyntaxRule参数，将值设置为1。
+//
+// 3. API返回数据包最大49MB，建议启用 gzip 压缩（HTTP Request Header Accept-Encoding:gzip）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSRESOURCESNOTFOUND = "FailedOperation.CLSResourcesNotFound"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
+//  INTERNALERROR_SERVERBUSY = "InternalError.ServerBusy"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"
+//  LIMITEXCEEDED_SEARCHRESOURCES = "LimitExceeded.SearchResources"
+//  LIMITEXCEEDED_SEARCHRESULTTOOLARGE = "LimitExceeded.SearchResultTooLarge"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_NEWSYNTAXNOTSUPPORTED = "OperationDenied.NewSyntaxNotSupported"
+//  OPERATIONDENIED_OPERATIONNOTSUPPORTINSEARCHLOW = "OperationDenied.OperationNotSupportInSearchLow"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) SearchLog(request *SearchLogRequest) (response *SearchLogResponse, err error) {
+    return c.SearchLogWithContext(context.Background(), request)
+}
+
+// SearchLog
+// 本接口用于检索分析日志，使用该接口时请注意如下事项：
+//
+// 1. 该接口除受默认接口请求频率限制外，针对单个日志主题，查询并发数不能超过15。
+//
+// 2. 检索语法建议使用CQL语法规则，请使用SyntaxRule参数，将值设置为1。
+//
+// 3. API返回数据包最大49MB，建议启用 gzip 压缩（HTTP Request Header Accept-Encoding:gzip）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSRESOURCESNOTFOUND = "FailedOperation.CLSResourcesNotFound"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
+//  INTERNALERROR_SERVERBUSY = "InternalError.ServerBusy"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"
+//  LIMITEXCEEDED_SEARCHRESOURCES = "LimitExceeded.SearchResources"
+//  LIMITEXCEEDED_SEARCHRESULTTOOLARGE = "LimitExceeded.SearchResultTooLarge"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_NEWSYNTAXNOTSUPPORTED = "OperationDenied.NewSyntaxNotSupported"
+//  OPERATIONDENIED_OPERATIONNOTSUPPORTINSEARCHLOW = "OperationDenied.OperationNotSupportInSearchLow"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) SearchLogWithContext(ctx context.Context, request *SearchLogRequest) (response *SearchLogResponse, err error) {
+    if request == nil {
+        request = NewSearchLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "SearchLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchLogResponse()
     err = c.Send(request, response)
     return
 }

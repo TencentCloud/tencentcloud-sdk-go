@@ -323,6 +323,17 @@ type Cluster struct {
 	// []
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Yarns []*HadoopYarnItem `json:"Yarns,omitnil,omitempty" name:"Yarns"`
+
+	// 0 单可用区 1多可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeploymentMode *int64 `json:"DeploymentMode,omitnil,omitempty" name:"DeploymentMode"`
+
+	// 备可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZones []*SlaveZone `json:"SlaveZones,omitnil,omitempty" name:"SlaveZones"`
+
+	// 集群的日志cos存储
+	LogCOSBucket *string `json:"LogCOSBucket,omitnil,omitempty" name:"LogCOSBucket"`
 }
 
 type ClusterGroupSetItem struct {
@@ -806,6 +817,9 @@ type CreateJobConfigRequestParams struct {
 
 	// checkpoint 超时时间
 	CheckpointTimeoutSecond *int64 `json:"CheckpointTimeoutSecond,omitnil,omitempty" name:"CheckpointTimeoutSecond"`
+
+	// checkpoint 间隔时间
+	CheckpointIntervalSecond *int64 `json:"CheckpointIntervalSecond,omitnil,omitempty" name:"CheckpointIntervalSecond"`
 }
 
 type CreateJobConfigRequest struct {
@@ -918,6 +932,9 @@ type CreateJobConfigRequest struct {
 
 	// checkpoint 超时时间
 	CheckpointTimeoutSecond *int64 `json:"CheckpointTimeoutSecond,omitnil,omitempty" name:"CheckpointTimeoutSecond"`
+
+	// checkpoint 间隔时间
+	CheckpointIntervalSecond *int64 `json:"CheckpointIntervalSecond,omitnil,omitempty" name:"CheckpointIntervalSecond"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -968,6 +985,7 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "UseOldSystemConnector")
 	delete(f, "ProgramArgsAfterGzip")
 	delete(f, "CheckpointTimeoutSecond")
+	delete(f, "CheckpointIntervalSecond")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
@@ -3781,6 +3799,9 @@ type JobConfig struct {
 
 	// checkpoint 超时时间
 	CheckpointTimeoutSecond *int64 `json:"CheckpointTimeoutSecond,omitnil,omitempty" name:"CheckpointTimeoutSecond"`
+
+	// checkpoint 间隔时间
+	CheckpointIntervalSecond *int64 `json:"CheckpointIntervalSecond,omitnil,omitempty" name:"CheckpointIntervalSecond"`
 }
 
 type JobEvent struct {
@@ -4996,6 +5017,20 @@ type SetatsDisk struct {
 	// 磁盘大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+type SlaveZone struct {
+	// vpc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type SlotSharingGroup struct {

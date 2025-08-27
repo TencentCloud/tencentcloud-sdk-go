@@ -105,6 +105,23 @@ type AgentInput struct {
 
 	// 自定义变量（API参数）
 	CustomVarId *string `json:"CustomVarId,omitnil,omitempty" name:"CustomVarId"`
+
+	// 环境变量参数
+	EnvVarId *string `json:"EnvVarId,omitnil,omitempty" name:"EnvVarId"`
+
+	// 应用变量参数
+	AppVarId *string `json:"AppVarId,omitnil,omitempty" name:"AppVarId"`
+
+	// 系统参数
+	SystemVariable *AgentInputSystemVariable `json:"SystemVariable,omitnil,omitempty" name:"SystemVariable"`
+}
+
+type AgentInputSystemVariable struct {
+	// 系统参数名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 对话历史轮数的配置；如果Input是系统变量中的“对话历史”时才使用；
+	DialogHistoryLimit *int64 `json:"DialogHistoryLimit,omitnil,omitempty" name:"DialogHistoryLimit"`
 }
 
 type AgentInputUserInputValue struct {
@@ -677,6 +694,10 @@ type AppInfo struct {
 
 	// 权限位信息
 	PermissionIds []*string `json:"PermissionIds,omitnil,omitempty" name:"PermissionIds"`
+
+	// 创建人昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 }
 
 type AppModel struct {
@@ -6828,6 +6849,10 @@ type KnowledgeQaOutput struct {
 	// 是否打开推荐问题开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UseRecommended *bool `json:"UseRecommended,omitnil,omitempty" name:"UseRecommended"`
+
+	// 推荐问模式，0.结合知识库&对话历史推荐问题Prompt(默认) 1.仅结合知识库输出推荐问的prompt
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecommendedPromptMode *uint64 `json:"RecommendedPromptMode,omitnil,omitempty" name:"RecommendedPromptMode"`
 }
 
 type KnowledgeQaPlugin struct {

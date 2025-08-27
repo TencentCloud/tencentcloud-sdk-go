@@ -1077,13 +1077,21 @@ type DocumentUsage struct {
 	// 解析失败页数
 	FailPageNum *int64 `json:"FailPageNum,omitnil,omitempty" name:"FailPageNum"`
 
-	// 文件大小，单位KB
+	// 文件大小，单位：字节
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 }
 
 type EmbeddingObject struct {
 	// 向量
 	Embedding []*float64 `json:"Embedding,omitnil,omitempty" name:"Embedding"`
+}
+
+type ErrorInfo struct {
+	// 错误码
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
 // Predefined struct for user
@@ -1267,6 +1275,9 @@ type GetReconstructDocumentResultResponseParams struct {
 	// 文档拆分任务的用量	
 	Usage *DocumentUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
+	// 文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息
+	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1350,6 +1361,9 @@ type GetSplitDocumentResultResponseParams struct {
 
 	// 文档拆分任务的用量
 	Usage *DocumentUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 文档拆分失败的错误信息，当拆分任务失败时返回该错误信息
+	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

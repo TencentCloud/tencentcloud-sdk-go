@@ -767,6 +767,9 @@ type EnvBaseInfo struct {
 
 	// 子网id
 	SubnetIds *string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
+
+	// 回收标志，为空则表示正常，recycle表示已回收
+	Recycle *string `json:"Recycle,omitnil,omitempty" name:"Recycle"`
 }
 
 type EnvInfo struct {

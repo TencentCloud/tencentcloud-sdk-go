@@ -19719,19 +19719,19 @@ type SubnetInfos struct {
 }
 
 type SuperNodeResource struct {
-	// 节点名称
+	// 节点名称，此字段在出参中有效。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 节点上的资源总数
+	// 节点上的资源总数，QuotaType为 exact 时，表示创建指定规格的精确配额数量。
 	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
 
-	// 节点上的总核数
+	// 节点上的总核数，QuotaType为 exact 时表示指定规格的核数。
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 节点上的总内存数
+	// 节点上的总内存数，QuotaType为 exact 时表示指定规格的内存，单位：Gi
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 节点上的总 GPU 卡数
+	// 节点上的总 GPU 卡数，QuotaType为 exact 时表示指定规格的GPU卡数。
 	Gpu *float64 `json:"Gpu,omitnil,omitempty" name:"Gpu"`
 
 	// 节点资源的配额类型，exact表示精确配额，fuzzy 表示模糊配额。
@@ -19743,7 +19743,7 @@ type SuperNodeResource struct {
 	// QuotaType为 exact 时，此字段有效，表示精确配额的资源类型。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 置放群组 ID
+	// 置放群组 ID，QuotaType为 exact 时有效，表示购买的精确配额需满足置放群组。可通过 [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/product/213/17810) 接口返回值中的DisasterRecoverGroupId获取。
 	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId,omitnil,omitempty" name:"DisasterRecoverGroupId"`
 }
 

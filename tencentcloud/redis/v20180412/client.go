@@ -6107,7 +6107,7 @@ func NewRemoveReplicationGroupResponse() (response *RemoveReplicationGroupRespon
 }
 
 // RemoveReplicationGroup
-// 删除复制组
+// 本接口（RemoveReplicationGroup）用于删除复制组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6124,7 +6124,7 @@ func (c *Client) RemoveReplicationGroup(request *RemoveReplicationGroupRequest) 
 }
 
 // RemoveReplicationGroup
-// 删除复制组
+// 本接口（RemoveReplicationGroup）用于删除复制组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

@@ -9606,14 +9606,14 @@ func (r *ReleaseWanAddressResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RemoveReplicationGroupRequestParams struct {
-	// 复制组ID
+	// 复制组ID。请登录 [Redis控制台的全球复制](https://console.cloud.tencent.com/redis/replication) 页面获取复制组 ID。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type RemoveReplicationGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 复制组ID
+	// 复制组ID。请登录 [Redis控制台的全球复制](https://console.cloud.tencent.com/redis/replication) 页面获取复制组 ID。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
