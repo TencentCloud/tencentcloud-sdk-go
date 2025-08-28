@@ -1466,6 +1466,91 @@ func (r *CreateKeyPairResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMcpServerRequestParams struct {
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server名称。最大长度：64
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Base64编码后的MCP Server启动命令。最大长度：2048
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// MCP Server备注。最大长度：2048
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// MCP Server环境变量。最大长度：10
+	Envs []*McpServerEnv `json:"Envs,omitnil,omitempty" name:"Envs"`
+}
+
+type CreateMcpServerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server名称。最大长度：64
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Base64编码后的MCP Server启动命令。最大长度：2048
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// MCP Server备注。最大长度：2048
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// MCP Server环境变量。最大长度：10
+	Envs []*McpServerEnv `json:"Envs,omitnil,omitempty" name:"Envs"`
+}
+
+func (r *CreateMcpServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMcpServerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Name")
+	delete(f, "Command")
+	delete(f, "Description")
+	delete(f, "Envs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMcpServerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMcpServerResponseParams struct {
+	// MCP Server ID。
+	McpServerId *string `json:"McpServerId,omitnil,omitempty" name:"McpServerId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMcpServerResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMcpServerResponseParams `json:"Response"`
+}
+
+func (r *CreateMcpServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMcpServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DataDiskPrice struct {
 	// 云硬盘ID。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
@@ -4585,6 +4670,93 @@ func (r *DescribeKeyPairsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMcpServersRequestParams struct {
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID列表。列表为空时此条件不生效。最大长度：10
+	McpServerIds []*string `json:"McpServerIds,omitnil,omitempty" name:"McpServerIds"`
+
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeMcpServersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID列表。列表为空时此条件不生效。最大长度：10
+	McpServerIds []*string `json:"McpServerIds,omitnil,omitempty" name:"McpServerIds"`
+
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeMcpServersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMcpServersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "McpServerIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMcpServersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMcpServersResponseParams struct {
+	// MCP Server列表。
+	McpServerSet []*McpServer `json:"McpServerSet,omitnil,omitempty" name:"McpServerSet"`
+
+	// 符合条件的MCP Server数量。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 实例 ID。	
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMcpServersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMcpServersResponseParams `json:"Response"`
+}
+
+func (r *DescribeMcpServersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMcpServersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeModifyInstanceBundlesRequestParams struct {
 	// 实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -6798,6 +6970,65 @@ type LoginSettings struct {
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 }
 
+type McpServer struct {
+	// MCP Server ID。
+	McpServerId *string `json:"McpServerId,omitnil,omitempty" name:"McpServerId"`
+
+	// MCP Server名称。最大长度：64
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// MCP Server类型。枚举值：PUBLIC_PACKAGE，公共包安装；AGENT_GENERATED，AI生成。
+	McpServerType *string `json:"McpServerType,omitnil,omitempty" name:"McpServerType"`
+
+	// MCP Server图标地址
+	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
+
+	// Base64编码后的MCP Server启动命令。最大长度：2048
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// MCP Server状态。枚举值如下：
+	// 
+	// PENDING：表示创建中
+	// LAUNCH_FAILED：表示创建失败
+	// RUNNING：表示运行中
+	// STOPPED：表示关闭
+	// STARTING：表示开启中
+	// STOPPING：表示关闭中
+	// RESTARTING：表示重启中
+	// REMOVING：表示删除中
+	// UNKNOWN：表示未知
+	// ENV_ERROR：表示环境错误
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// MCP Server访问地址。
+	ServerUrl *string `json:"ServerUrl,omitnil,omitempty" name:"ServerUrl"`
+
+	// MCP Server配置
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// MCP Server备注
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// MCP Server创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// MCP Server修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+
+	// MCP Server环境变量
+	EnvSet []*McpServerEnv `json:"EnvSet,omitnil,omitempty" name:"EnvSet"`
+}
+
+type McpServerEnv struct {
+	// MCP Server的环境变量键。最大长度：128
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// MCP Server的环境变量值。最大长度：1024。该字段可能存储密钥，出参时将固定返回“**********”，避免明文泄露。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 // Predefined struct for user
 type ModifyBlueprintAttributeRequestParams struct {
 	// 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
@@ -7721,6 +7952,95 @@ func (r *ModifyInstancesRenewFlagResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyMcpServerRequestParams struct {
+	// 实例ID。可以通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID。可以通过DescribeMcpServers接口返回值中的McpServerId获取。
+	McpServerId *string `json:"McpServerId,omitnil,omitempty" name:"McpServerId"`
+
+	// MCP Server名称。最大长度：64
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Base64编码后的MCP Server启动命令。最大长度：2048
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// MCP Server备注。最大长度：2048
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// MCP Server环境变量。最大长度：10。用于完整替换MCP Server的环境变量。当该字段为空时，系统将清除当前所有环境变量。若无需修改环境变量，请勿传递该字段。
+	Envs []*McpServerEnv `json:"Envs,omitnil,omitempty" name:"Envs"`
+}
+
+type ModifyMcpServerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。可以通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID。可以通过DescribeMcpServers接口返回值中的McpServerId获取。
+	McpServerId *string `json:"McpServerId,omitnil,omitempty" name:"McpServerId"`
+
+	// MCP Server名称。最大长度：64
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Base64编码后的MCP Server启动命令。最大长度：2048
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// MCP Server备注。最大长度：2048
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// MCP Server环境变量。最大长度：10。用于完整替换MCP Server的环境变量。当该字段为空时，系统将清除当前所有环境变量。若无需修改环境变量，请勿传递该字段。
+	Envs []*McpServerEnv `json:"Envs,omitnil,omitempty" name:"Envs"`
+}
+
+func (r *ModifyMcpServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMcpServerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "McpServerId")
+	delete(f, "Name")
+	delete(f, "Command")
+	delete(f, "Description")
+	delete(f, "Envs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMcpServerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMcpServerResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMcpServerResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMcpServerResponseParams `json:"Response"`
+}
+
+func (r *ModifyMcpServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMcpServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySnapshotAttributeRequestParams struct {
 	// 快照 ID, 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388">DescribeSnapshots</a> 查询。
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
@@ -7935,6 +8255,67 @@ func (r *RemoveDockerContainersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RemoveDockerContainersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveMcpServersRequestParams struct {
+	// 实例ID。可以通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+	McpServerIds []*string `json:"McpServerIds,omitnil,omitempty" name:"McpServerIds"`
+}
+
+type RemoveMcpServersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。可以通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+	McpServerIds []*string `json:"McpServerIds,omitnil,omitempty" name:"McpServerIds"`
+}
+
+func (r *RemoveMcpServersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveMcpServersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "McpServerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveMcpServersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveMcpServersResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RemoveMcpServersResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveMcpServersResponseParams `json:"Response"`
+}
+
+func (r *RemoveMcpServersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveMcpServersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8729,6 +9110,67 @@ func (r *RestartDockerContainersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RestartMcpServersRequestParams struct {
+	// 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+	McpServerIds []*string `json:"McpServerIds,omitnil,omitempty" name:"McpServerIds"`
+}
+
+type RestartMcpServersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+	McpServerIds []*string `json:"McpServerIds,omitnil,omitempty" name:"McpServerIds"`
+}
+
+func (r *RestartMcpServersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartMcpServersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "McpServerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartMcpServersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartMcpServersResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RestartMcpServersResponse struct {
+	*tchttp.BaseResponse
+	Response *RestartMcpServersResponseParams `json:"Response"`
+}
+
+func (r *RestartMcpServersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartMcpServersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RunDockerContainersRequestParams struct {
 	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -9073,6 +9515,67 @@ func (r *StartInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type StartMcpServersRequestParams struct {
+	// 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+	McpServerIds []*string `json:"McpServerIds,omitnil,omitempty" name:"McpServerIds"`
+}
+
+type StartMcpServersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+	McpServerIds []*string `json:"McpServerIds,omitnil,omitempty" name:"McpServerIds"`
+}
+
+func (r *StartMcpServersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartMcpServersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "McpServerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartMcpServersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartMcpServersResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartMcpServersResponse struct {
+	*tchttp.BaseResponse
+	Response *StartMcpServersResponseParams `json:"Response"`
+}
+
+func (r *StartMcpServersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartMcpServersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StopDockerContainersRequestParams struct {
 	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -9187,6 +9690,67 @@ func (r *StopInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopMcpServersRequestParams struct {
+	// 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+	McpServerIds []*string `json:"McpServerIds,omitnil,omitempty" name:"McpServerIds"`
+}
+
+type StopMcpServersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+	McpServerIds []*string `json:"McpServerIds,omitnil,omitempty" name:"McpServerIds"`
+}
+
+func (r *StopMcpServersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopMcpServersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "McpServerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopMcpServersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopMcpServersResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopMcpServersResponse struct {
+	*tchttp.BaseResponse
+	Response *StopMcpServersResponseParams `json:"Response"`
+}
+
+func (r *StopMcpServersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopMcpServersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -1523,7 +1523,7 @@ type ClusterV2 struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KuberneteNativeType *string `json:"KuberneteNativeType,omitnil,omitempty" name:"KuberneteNativeType"`
 
-	// native secret
+	// Kubernetes 密钥
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KuberneteNativeSecret *string `json:"KuberneteNativeSecret,omitnil,omitempty" name:"KuberneteNativeSecret"`
 
@@ -1876,7 +1876,7 @@ type ContainerEvent struct {
 	// 级别
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 资源类型
+	// Kubernetes 资源类型，典型取值有 Deployment、Pod、Service 等
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
 	// 资源名称
@@ -5845,7 +5845,7 @@ func (r *DeleteApplicationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteClusterRequestParams struct {
-	// 集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。仅在集群下无部署组、命名空间、云主机时可以删除。
+	// 集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 是否只解绑，不删除容器集群，默认不传则删除容器集群。
@@ -5855,7 +5855,7 @@ type DeleteClusterRequestParams struct {
 type DeleteClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。仅在集群下无部署组、命名空间、云主机时可以删除。
+	// 集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 是否只解绑，不删除容器集群，默认不传则删除容器集群。
@@ -9189,7 +9189,7 @@ type DescribeClustersRequestParams struct {
 	// 搜索词，可以搜索ID/名称/备注/标签
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 排序字段，例如创建时间
+	// 排序字段，目前仅支持使用“创建时间”
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 排序方式，0表示升序，1表示倒序
@@ -9214,7 +9214,7 @@ type DescribeClustersRequest struct {
 	// 搜索词，可以搜索ID/名称/备注/标签
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 排序字段，例如创建时间
+	// 排序字段，目前仅支持使用“创建时间”
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 排序方式，0表示升序，1表示倒序
@@ -9830,7 +9830,7 @@ type DescribeContainerEventsRequestParams struct {
 	// 分页个数，默认为20， 取值应为1~50
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// event的资源种类
@@ -9861,7 +9861,7 @@ type DescribeContainerEventsRequest struct {
 	// 分页个数，默认为20， 取值应为1~50
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// event的资源种类
@@ -9931,14 +9931,14 @@ func (r *DescribeContainerEventsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeContainerGroupAttributeRequestParams struct {
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DescribeContainerGroupAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
@@ -9988,14 +9988,14 @@ func (r *DescribeContainerGroupAttributeResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeContainerGroupDeployInfoRequestParams struct {
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DescribeContainerGroupDeployInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
@@ -11091,14 +11091,14 @@ func (r *DescribeGatewayMonitorOverviewResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeGroupAttributeRequestParams struct {
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DescribeGroupAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
@@ -13850,7 +13850,7 @@ func (r *DescribePluginInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePodInstancesRequestParams struct {
-	// 实例所属部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。部署组所在集群必须是活跃状态的。
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 偏移量，取值从0开始
@@ -13872,7 +13872,7 @@ type DescribePodInstancesRequestParams struct {
 type DescribePodInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例所属部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。部署组所在集群必须是活跃状态的。
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 偏移量，取值从0开始
@@ -17049,7 +17049,7 @@ type ExclusiveInstance struct {
 	// 配置中心类型[注册中心Registration、配置中心Configuration]
 	CenterType *string `json:"CenterType,omitnil,omitempty" name:"CenterType"`
 
-	// 实例id，通过北极星控制台获取
+	// 实例id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例类型，例如北极星Polaris
@@ -17058,10 +17058,10 @@ type ExclusiveInstance struct {
 	// 实例名称
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例地域id，通过北极星控制台获取
+	// 实例地域id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 实例命名空间ID，通过北极星控制台获取
+	// 实例命名空间ID，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
 	InstanceNamespaceId *string `json:"InstanceNamespaceId,omitnil,omitempty" name:"InstanceNamespaceId"`
 }
 
@@ -17658,13 +17658,27 @@ type GroupPod struct {
 	// 运行时长，单位秒
 	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
 
-	// 实例启动时的时间戳
+	// 实例启动时的时间戳，单位秒
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 服务实例状态，枚举值为Starting/Running/Stopping/Stopped/StopFailed/Abnormal/Unknown
+	// 服务实例状态，枚举值为：
+	// - `Starting`：启动中
+	// - `Running`：运行中
+	// - `Stopping`：停止中
+	// - `Stopped`: 已停止
+	// - `StopFailed`: 停止失败
+	// - `Abnormal`: 异常
+	// - `Unknown`: 未知
 	ServiceInstanceStatus *string `json:"ServiceInstanceStatus,omitnil,omitempty" name:"ServiceInstanceStatus"`
 
-	// 机器实例可使用状态，枚举值为Starting/Running/Stopping/Stopped/StopFailed/Abnormal/Unknown
+	// 机器实例可使用状态，枚举值为：
+	// - `Starting`：启动中
+	// - `Running`：运行中
+	// - `Stopping`：停止中
+	// - `Stopped`: 已停止
+	// - `StopFailed`: 停止失败
+	// - `Abnormal`: 异常
+	// - `Unknown`: 未知
 	InstanceAvailableStatus *string `json:"InstanceAvailableStatus,omitnil,omitempty" name:"InstanceAvailableStatus"`
 
 	// 机器实例状态
@@ -18185,7 +18199,16 @@ type InstanceEnrichedInfo struct {
 	// 机器所在VPC
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 机器运行状态 Pending Running Stopped Rebooting Starting Stopping Abnormal Unknown
+	// 机器运行状态，枚举值为：
+	// - `Pending`: 准备中
+	// -  `Running`: 运行中
+	// -  `Stopped`: 已停止
+	// -  `Rebooting`: 重启中
+	// -  `Starting`: 启动中
+	// -  `Stopping`: 停止中
+	// -  `Abnormal`: 异常
+	// -  `Unknown`: 未知
+	// -  `Offline`: 离线 
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
 	// 机器可用状态（表示机器上的Agent在线）
@@ -18708,7 +18731,7 @@ type Microservice struct {
 
 // Predefined struct for user
 type ModifyApplicationRequestParams struct {
-	// 应用ID
+	// 应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 应用名称
@@ -18736,7 +18759,7 @@ type ModifyApplicationRequestParams struct {
 type ModifyApplicationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 应用名称
@@ -18814,7 +18837,7 @@ func (r *ModifyApplicationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyClusterRequestParams struct {
-	// 集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。
+	// 集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 集群名称
@@ -18836,7 +18859,7 @@ type ModifyClusterRequestParams struct {
 type ModifyClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。
+	// 集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 集群名称
@@ -19073,7 +19096,7 @@ func (r *ModifyContainerReplicasResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyGroupRequestParams struct {
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 部署组名称
@@ -19089,7 +19112,7 @@ type ModifyGroupRequestParams struct {
 type ModifyGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
+	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 部署组名称
@@ -19397,7 +19420,7 @@ func (r *ModifyMicroserviceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNamespaceRequestParams struct {
-	// 命名空间ID，按照【命名空间ID】进行过滤，可通过调用DescribeNamespaces查询已创建的项目列表或登录控制台进行查看；也可以调用CreateNamespace创建新的项目。命名空间ID例如：namespace-6a79x94v。
+	// 命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 命名空间名称
@@ -19413,7 +19436,7 @@ type ModifyNamespaceRequestParams struct {
 type ModifyNamespaceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 命名空间ID，按照【命名空间ID】进行过滤，可通过调用DescribeNamespaces查询已创建的项目列表或登录控制台进行查看；也可以调用CreateNamespace创建新的项目。命名空间ID例如：namespace-6a79x94v。
+	// 命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 命名空间名称

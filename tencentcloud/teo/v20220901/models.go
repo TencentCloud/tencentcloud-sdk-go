@@ -1535,7 +1535,7 @@ type ClientAttester struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 认证方法。取值有：
-	// <li>TC-RCE: 使用全栈式风控引擎进行认证；</li>
+	// <li>TC-RCE: 使用风险识别 RCE 进行认证；</li>
 	// <li>TC-CAPTCHA: 使用天御验证码进行认证。</li>
 	AttesterSource *string `json:"AttesterSource,omitnil,omitempty" name:"AttesterSource"`
 
@@ -19722,8 +19722,8 @@ type Resource struct {
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
 	// 地域，取值有：
-	// <li>mainland：国内；</li>
-	// <li>overseas：海外。</li>
+	// <li>mainland：中国大陆境内；</li>
+	// <li>overseas：中国大陆境外。</li>
 	// <li>global：全球。</li>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 

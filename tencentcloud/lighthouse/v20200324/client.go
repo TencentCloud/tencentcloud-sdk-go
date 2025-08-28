@@ -1405,6 +1405,74 @@ func (c *Client) CreateKeyPairWithContext(ctx context.Context, request *CreateKe
     return
 }
 
+func NewCreateMcpServerRequest() (request *CreateMcpServerRequest) {
+    request = &CreateMcpServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "CreateMcpServer")
+    
+    
+    return
+}
+
+func NewCreateMcpServerResponse() (response *CreateMcpServerResponse) {
+    response = &CreateMcpServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMcpServer
+// 本接口（CreateMcpServer）用于创建MCP Server。
+//
+// - 本接口为异步接口，请求发送成功后会返回一个 McpServerId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MCPSERVERLIMITEXCEEDED = "InvalidParameterValue.McpServerLimitExceeded"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+func (c *Client) CreateMcpServer(request *CreateMcpServerRequest) (response *CreateMcpServerResponse, err error) {
+    return c.CreateMcpServerWithContext(context.Background(), request)
+}
+
+// CreateMcpServer
+// 本接口（CreateMcpServer）用于创建MCP Server。
+//
+// - 本接口为异步接口，请求发送成功后会返回一个 McpServerId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MCPSERVERLIMITEXCEEDED = "InvalidParameterValue.McpServerLimitExceeded"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+func (c *Client) CreateMcpServerWithContext(ctx context.Context, request *CreateMcpServerRequest) (response *CreateMcpServerResponse, err error) {
+    if request == nil {
+        request = NewCreateMcpServerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "CreateMcpServer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMcpServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMcpServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBlueprintsRequest() (request *DeleteBlueprintsRequest) {
     request = &DeleteBlueprintsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4213,6 +4281,76 @@ func (c *Client) DescribeKeyPairsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeMcpServersRequest() (request *DescribeMcpServersRequest) {
+    request = &DescribeMcpServersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeMcpServers")
+    
+    
+    return
+}
+
+func NewDescribeMcpServersResponse() (response *DescribeMcpServersResponse) {
+    response = &DescribeMcpServersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMcpServers
+// 本接口（DescribeMcpServers）用于查询MCP Server列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MCPSERVERLISTTOOLARGE = "InvalidParameterValue.McpServerListTooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERNOTFOUND = "ResourceNotFound.McpServerNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_SERVICEROLENOTEXIST = "UnsupportedOperation.ServiceRoleNotExist"
+func (c *Client) DescribeMcpServers(request *DescribeMcpServersRequest) (response *DescribeMcpServersResponse, err error) {
+    return c.DescribeMcpServersWithContext(context.Background(), request)
+}
+
+// DescribeMcpServers
+// 本接口（DescribeMcpServers）用于查询MCP Server列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MCPSERVERLISTTOOLARGE = "InvalidParameterValue.McpServerListTooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERNOTFOUND = "ResourceNotFound.McpServerNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_SERVICEROLENOTEXIST = "UnsupportedOperation.ServiceRoleNotExist"
+func (c *Client) DescribeMcpServersWithContext(ctx context.Context, request *DescribeMcpServersRequest) (response *DescribeMcpServersResponse, err error) {
+    if request == nil {
+        request = NewDescribeMcpServersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "DescribeMcpServers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMcpServers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMcpServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeModifyInstanceBundlesRequest() (request *DescribeModifyInstanceBundlesRequest) {
     request = &DescribeModifyInstanceBundlesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6661,6 +6799,80 @@ func (c *Client) ModifyInstancesRenewFlagWithContext(ctx context.Context, reques
     return
 }
 
+func NewModifyMcpServerRequest() (request *ModifyMcpServerRequest) {
+    request = &ModifyMcpServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ModifyMcpServer")
+    
+    
+    return
+}
+
+func NewModifyMcpServerResponse() (response *ModifyMcpServerResponse) {
+    response = &ModifyMcpServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMcpServer
+// 本接口（ModifyMcpServer）用于修改实例的MCP Server信息。
+//
+// - 本接口为异步接口，API返回时修改操作并未立即完成。MCP Server的修改结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MCPSERVEROPERATIONFAILED = "FailedOperation.McpServerOperationFailed"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETERVALUE_MCPSERVERENVINVALID = "InvalidParameterValue.McpServerEnvInvalid"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERNOTFOUND = "ResourceNotFound.McpServerNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) ModifyMcpServer(request *ModifyMcpServerRequest) (response *ModifyMcpServerResponse, err error) {
+    return c.ModifyMcpServerWithContext(context.Background(), request)
+}
+
+// ModifyMcpServer
+// 本接口（ModifyMcpServer）用于修改实例的MCP Server信息。
+//
+// - 本接口为异步接口，API返回时修改操作并未立即完成。MCP Server的修改结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MCPSERVEROPERATIONFAILED = "FailedOperation.McpServerOperationFailed"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETERVALUE_MCPSERVERENVINVALID = "InvalidParameterValue.McpServerEnvInvalid"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERNOTFOUND = "ResourceNotFound.McpServerNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) ModifyMcpServerWithContext(ctx context.Context, request *ModifyMcpServerRequest) (response *ModifyMcpServerResponse, err error) {
+    if request == nil {
+        request = NewModifyMcpServerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "ModifyMcpServer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMcpServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMcpServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySnapshotAttributeRequest() (request *ModifySnapshotAttributeRequest) {
     request = &ModifySnapshotAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6891,6 +7103,80 @@ func (c *Client) RemoveDockerContainersWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewRemoveDockerContainersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveMcpServersRequest() (request *RemoveMcpServersRequest) {
+    request = &RemoveMcpServersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "RemoveMcpServers")
+    
+    
+    return
+}
+
+func NewRemoveMcpServersResponse() (response *RemoveMcpServersResponse) {
+    response = &RemoveMcpServersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveMcpServers
+// 本接口（RemoveMcpServers）用于删除MCP Server。
+//
+// - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果，如无法查询到，代表删除成功。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERSPARTIALNOTFOUND = "ResourceNotFound.McpServersPartialNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_MCPSERVERLATESTOPERATIONUNFINISHED = "UnsupportedOperation.McpServerLatestOperationUnfinished"
+func (c *Client) RemoveMcpServers(request *RemoveMcpServersRequest) (response *RemoveMcpServersResponse, err error) {
+    return c.RemoveMcpServersWithContext(context.Background(), request)
+}
+
+// RemoveMcpServers
+// 本接口（RemoveMcpServers）用于删除MCP Server。
+//
+// - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果，如无法查询到，代表删除成功。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERSPARTIALNOTFOUND = "ResourceNotFound.McpServersPartialNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_MCPSERVERLATESTOPERATIONUNFINISHED = "UnsupportedOperation.McpServerLatestOperationUnfinished"
+func (c *Client) RemoveMcpServersWithContext(ctx context.Context, request *RemoveMcpServersRequest) (response *RemoveMcpServersResponse, err error) {
+    if request == nil {
+        request = NewRemoveMcpServersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "RemoveMcpServers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveMcpServers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveMcpServersResponse()
     err = c.Send(request, response)
     return
 }
@@ -7803,6 +8089,82 @@ func (c *Client) RestartDockerContainersWithContext(ctx context.Context, request
     return
 }
 
+func NewRestartMcpServersRequest() (request *RestartMcpServersRequest) {
+    request = &RestartMcpServersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "RestartMcpServers")
+    
+    
+    return
+}
+
+func NewRestartMcpServersResponse() (response *RestartMcpServersResponse) {
+    response = &RestartMcpServersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestartMcpServers
+// 本接口（RestartMcpServers）用于重启实例中的MCP Server。
+//
+// - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERSPARTIALNOTFOUND = "ResourceNotFound.McpServersPartialNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_MCPSERVERLATESTOPERATIONUNFINISHED = "UnsupportedOperation.McpServerLatestOperationUnfinished"
+func (c *Client) RestartMcpServers(request *RestartMcpServersRequest) (response *RestartMcpServersResponse, err error) {
+    return c.RestartMcpServersWithContext(context.Background(), request)
+}
+
+// RestartMcpServers
+// 本接口（RestartMcpServers）用于重启实例中的MCP Server。
+//
+// - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERSPARTIALNOTFOUND = "ResourceNotFound.McpServersPartialNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_MCPSERVERLATESTOPERATIONUNFINISHED = "UnsupportedOperation.McpServerLatestOperationUnfinished"
+func (c *Client) RestartMcpServersWithContext(ctx context.Context, request *RestartMcpServersRequest) (response *RestartMcpServersResponse, err error) {
+    if request == nil {
+        request = NewRestartMcpServersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "RestartMcpServers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartMcpServers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartMcpServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunDockerContainersRequest() (request *RunDockerContainersRequest) {
     request = &RunDockerContainersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8141,6 +8503,82 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, request *StartIn
     return
 }
 
+func NewStartMcpServersRequest() (request *StartMcpServersRequest) {
+    request = &StartMcpServersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "StartMcpServers")
+    
+    
+    return
+}
+
+func NewStartMcpServersResponse() (response *StartMcpServersResponse) {
+    response = &StartMcpServersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartMcpServers
+// 本接口（StartMcpServers）用于开启实例中的MCP Server。
+//
+// - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERSPARTIALNOTFOUND = "ResourceNotFound.McpServersPartialNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_MCPSERVERLATESTOPERATIONUNFINISHED = "UnsupportedOperation.McpServerLatestOperationUnfinished"
+func (c *Client) StartMcpServers(request *StartMcpServersRequest) (response *StartMcpServersResponse, err error) {
+    return c.StartMcpServersWithContext(context.Background(), request)
+}
+
+// StartMcpServers
+// 本接口（StartMcpServers）用于开启实例中的MCP Server。
+//
+// - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERSPARTIALNOTFOUND = "ResourceNotFound.McpServersPartialNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_MCPSERVERLATESTOPERATIONUNFINISHED = "UnsupportedOperation.McpServerLatestOperationUnfinished"
+func (c *Client) StartMcpServersWithContext(ctx context.Context, request *StartMcpServersRequest) (response *StartMcpServersResponse, err error) {
+    if request == nil {
+        request = NewStartMcpServersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "StartMcpServers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartMcpServers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartMcpServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopDockerContainersRequest() (request *StopDockerContainersRequest) {
     request = &StopDockerContainersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8305,6 +8743,82 @@ func (c *Client) StopInstancesWithContext(ctx context.Context, request *StopInst
     request.SetContext(ctx)
     
     response = NewStopInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopMcpServersRequest() (request *StopMcpServersRequest) {
+    request = &StopMcpServersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "StopMcpServers")
+    
+    
+    return
+}
+
+func NewStopMcpServersResponse() (response *StopMcpServersResponse) {
+    response = &StopMcpServersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopMcpServers
+// 本接口（StopMcpServers）用于关闭实例中的MCP Server。
+//
+// - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERSPARTIALNOTFOUND = "ResourceNotFound.McpServersPartialNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_MCPSERVERLATESTOPERATIONUNFINISHED = "UnsupportedOperation.McpServerLatestOperationUnfinished"
+func (c *Client) StopMcpServers(request *StopMcpServersRequest) (response *StopMcpServersResponse, err error) {
+    return c.StopMcpServersWithContext(context.Background(), request)
+}
+
+// StopMcpServers
+// 本接口（StopMcpServers）用于关闭实例中的MCP Server。
+//
+// - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+//
+// - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_MCPSERVERSPARTIALNOTFOUND = "ResourceNotFound.McpServersPartialNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_MCPSERVERLATESTOPERATIONUNFINISHED = "UnsupportedOperation.McpServerLatestOperationUnfinished"
+func (c *Client) StopMcpServersWithContext(ctx context.Context, request *StopMcpServersRequest) (response *StopMcpServersResponse, err error) {
+    if request == nil {
+        request = NewStopMcpServersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "StopMcpServers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopMcpServers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopMcpServersResponse()
     err = c.Send(request, response)
     return
 }

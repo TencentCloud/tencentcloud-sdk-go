@@ -508,7 +508,7 @@ type CreateDeviceIdentityRequestParams struct {
 	// 主要签名key，不传则由系统自动生成，需要base64编码。
 	PrimaryKey *string `json:"PrimaryKey,omitnil,omitempty" name:"PrimaryKey"`
 
-	// 次要签名key，不传则油系统自动生成，需要base64编码。
+	// 次要签名key，不传则由系统自动生成，需要base64编码。
 	SecondaryKey *string `json:"SecondaryKey,omitnil,omitempty" name:"SecondaryKey"`
 
 	// 该设备id的传播属性设置
@@ -531,7 +531,7 @@ type CreateDeviceIdentityRequest struct {
 	// 主要签名key，不传则由系统自动生成，需要base64编码。
 	PrimaryKey *string `json:"PrimaryKey,omitnil,omitempty" name:"PrimaryKey"`
 
-	// 次要签名key，不传则油系统自动生成，需要base64编码。
+	// 次要签名key，不传则由系统自动生成，需要base64编码。
 	SecondaryKey *string `json:"SecondaryKey,omitnil,omitempty" name:"SecondaryKey"`
 
 	// 该设备id的传播属性设置

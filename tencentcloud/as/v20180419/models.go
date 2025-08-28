@@ -3799,7 +3799,7 @@ type HostNameSettings struct {
 	// 云服务器的主机名。
 	// <li> 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li> 
 	// <li> 不支持 Windows 实例。</li> 
-	// <li> 其他类型（Linux 等）实例：字符长度为[2, 40]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。不允许为纯数字。</li> 
+	// <li> 其他类型（Linux 等）实例：字符长度为[2, 42]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。不允许为纯数字。</li> 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
@@ -3810,9 +3810,10 @@ type HostNameSettings struct {
 	HostNameStyle *string `json:"HostNameStyle,omitnil,omitempty" name:"HostNameStyle"`
 
 	// 云服务器的主机名后缀。
+	// HostNameSettings的该入参非必选，未选时不设置主机名后缀。
 	// <li> 点号（.）和短横线（-）不能作为 HostNameSuffix 的首尾字符，不能连续使用。</li> 
 	// <li> 不支持 Windows 实例。</li> 
-	// <li>其他类型（Linux 等）实例：字符长度为[1, 37]，且与 HostName 的长度和不能超过 39，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li> 
+	// <li>其他类型（Linux 等）实例：字符长度为[1, 39]，且与 HostName 的长度和不能超过 41，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li> 
 	// 假设后缀名称为 suffix，原主机名为 test.0，最终主机名为 test.0.suffix。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostNameSuffix *string `json:"HostNameSuffix,omitnil,omitempty" name:"HostNameSuffix"`
@@ -3924,11 +3925,20 @@ type InstanceMarketOptionsRequest struct {
 }
 
 type InstanceNameIndexSettings struct {
-	// 是否开启实例创建序号，默认不开启。取值范围：<li>TRUE：表示开启实例创建序号<li>FALSE：表示不开启实例创建序号
+	// 是否开启实例创建序号，默认不开启。取值范围：
+	// 
+	// **TRUE**：表示开启实例创建序号; **FALSE**：表示不开启实例创建序号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// 初始序号，取值范围为 [0, 99999999]。当序号递增后超出取值范围时，扩容活动会失败。<li>首次开启实例名称序号：默认值为 0。<li>非首次开启实例名称序号：若不指定该参数，沿用历史序号。下调初始序号可能会造成伸缩组内实例名称序号重复。
+	// 初始序号。
+	// 序号固定位数 IndexLength 为默认值0时，取值范围为 [0, 99999999]。
+	// 序号固定位数 IndexLength 为 [1, 8] 时，取值范围为为 [0, 固定位数的最大数字]。
+	// 当序号递增后超出取值范围时，扩容活动会失败。
+	// 
+	// 首次开启实例名称序号：默认值为 0。
+	// 非首次开启实例名称序号：若不指定该参数，沿用历史序号。
+	// 下调初始序号可能会造成伸缩组内实例名称序号重复。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginIndex *int64 `json:"BeginIndex,omitnil,omitempty" name:"BeginIndex"`
 }

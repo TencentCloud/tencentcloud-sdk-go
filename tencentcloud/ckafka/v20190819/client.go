@@ -1155,7 +1155,7 @@ func NewCreatePrometheusResponse() (response *CreatePrometheusResponse) {
 }
 
 // CreatePrometheus
-// 添加普罗米修斯监控1
+// 添加普罗米修斯监控
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1173,7 +1173,7 @@ func (c *Client) CreatePrometheus(request *CreatePrometheusRequest) (response *C
 }
 
 // CreatePrometheus
-// 添加普罗米修斯监控1
+// 添加普罗米修斯监控
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2031,7 +2031,7 @@ func NewDeleteInstancePostResponse() (response *DeleteInstancePostResponse) {
 }
 
 // DeleteInstancePost
-// 删除后付费实例
+// 删除后付费实例，通过调用API删除不会对连接器和任务进行关联预检查，直接进行实例销毁。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2053,7 +2053,7 @@ func (c *Client) DeleteInstancePost(request *DeleteInstancePostRequest) (respons
 }
 
 // DeleteInstancePost
-// 删除后付费实例
+// 删除后付费实例，通过调用API删除不会对连接器和任务进行关联预检查，直接进行实例销毁。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2107,7 +2107,7 @@ func NewDeleteInstancePreResponse() (response *DeleteInstancePreResponse) {
 }
 
 // DeleteInstancePre
-// 删除预付费实例，该接口会对实例执行隔离并删除的动作，执行成功后实例会被直接删除销毁
+// 删除预付费实例，该接口会对实例执行隔离并删除的动作，执行成功后实例会被直接删除销毁。通过调用API删除不会对连接器和任务进行关联预检查，直接进行实例销毁。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2117,7 +2117,7 @@ func (c *Client) DeleteInstancePre(request *DeleteInstancePreRequest) (response 
 }
 
 // DeleteInstancePre
-// 删除预付费实例，该接口会对实例执行隔离并删除的动作，执行成功后实例会被直接删除销毁
+// 删除预付费实例，该接口会对实例执行隔离并删除的动作，执行成功后实例会被直接删除销毁。通过调用API删除不会对连接器和任务进行关联预检查，直接进行实例销毁。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5701,7 +5701,7 @@ func NewModifyInstancePreResponse() (response *ModifyInstancePreResponse) {
 }
 
 // ModifyInstancePre
-// 预付费实例变配接口，调整磁盘，带宽
+// 预付费实例变配接口，调整磁盘，带宽,  分区
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5722,7 +5722,7 @@ func (c *Client) ModifyInstancePre(request *ModifyInstancePreRequest) (response 
 }
 
 // ModifyInstancePre
-// 预付费实例变配接口，调整磁盘，带宽
+// 预付费实例变配接口，调整磁盘，带宽,  分区
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

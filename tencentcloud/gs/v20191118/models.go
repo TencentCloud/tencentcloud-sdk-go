@@ -293,6 +293,9 @@ type AndroidInstanceUploadFile struct {
 
 	// 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
 	DestinationDirectory *string `json:"DestinationDirectory,omitnil,omitempty" name:"DestinationDirectory"`
+
+	// 目标文件名
+	DestinationFileName *string `json:"DestinationFileName,omitnil,omitempty" name:"DestinationFileName"`
 }
 
 // Predefined struct for user
@@ -2827,6 +2830,9 @@ type DistributeFileToAndroidInstancesRequestParams struct {
 
 	// 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
 	DestinationDirectory *string `json:"DestinationDirectory,omitnil,omitempty" name:"DestinationDirectory"`
+
+	// 目标文件名
+	DestinationFileName *string `json:"DestinationFileName,omitnil,omitempty" name:"DestinationFileName"`
 }
 
 type DistributeFileToAndroidInstancesRequest struct {
@@ -2840,6 +2846,9 @@ type DistributeFileToAndroidInstancesRequest struct {
 
 	// 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
 	DestinationDirectory *string `json:"DestinationDirectory,omitnil,omitempty" name:"DestinationDirectory"`
+
+	// 目标文件名
+	DestinationFileName *string `json:"DestinationFileName,omitnil,omitempty" name:"DestinationFileName"`
 }
 
 func (r *DistributeFileToAndroidInstancesRequest) ToJsonString() string {
@@ -2857,6 +2866,7 @@ func (r *DistributeFileToAndroidInstancesRequest) FromJsonString(s string) error
 	delete(f, "AndroidInstanceIds")
 	delete(f, "FileURL")
 	delete(f, "DestinationDirectory")
+	delete(f, "DestinationFileName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeFileToAndroidInstancesRequest has unknown keys!", "")
 	}
@@ -5740,6 +5750,9 @@ type UploadFileToAndroidInstancesRequestParams struct {
 
 	// 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
 	DestinationDirectory *string `json:"DestinationDirectory,omitnil,omitempty" name:"DestinationDirectory"`
+
+	// 目标文件名
+	DestinationFileName *string `json:"DestinationFileName,omitnil,omitempty" name:"DestinationFileName"`
 }
 
 type UploadFileToAndroidInstancesRequest struct {
@@ -5753,6 +5766,9 @@ type UploadFileToAndroidInstancesRequest struct {
 
 	// 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
 	DestinationDirectory *string `json:"DestinationDirectory,omitnil,omitempty" name:"DestinationDirectory"`
+
+	// 目标文件名
+	DestinationFileName *string `json:"DestinationFileName,omitnil,omitempty" name:"DestinationFileName"`
 }
 
 func (r *UploadFileToAndroidInstancesRequest) ToJsonString() string {
@@ -5770,6 +5786,7 @@ func (r *UploadFileToAndroidInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AndroidInstanceIds")
 	delete(f, "FileURL")
 	delete(f, "DestinationDirectory")
+	delete(f, "DestinationFileName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFileToAndroidInstancesRequest has unknown keys!", "")
 	}
