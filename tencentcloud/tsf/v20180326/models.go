@@ -1876,7 +1876,7 @@ type ContainerEvent struct {
 	// 级别
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// Kubernetes 资源类型，典型取值有 Deployment、Pod、Service 等
+	// Kubernetes 资源类型，典型取值有 Deployment(部署资源)、Pod(容器组)、Service(服务资源) 等
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
 	// 资源名称
@@ -3622,7 +3622,7 @@ type CreateContainGroupRequestParams struct {
 	// 部署组资源类型；DEF 表示默认资源类型
 	GroupResourceType *string `json:"GroupResourceType,omitnil,omitempty" name:"GroupResourceType"`
 
-	// 分组所属【子网ID】，可前往TKE侧集群[控制台](https://console.cloud.tencent.com/tke2/cluster/sub/list/basic/info/base?rid=1&clusterId=cls-2nhp3g1i)进行获取
+	// 分组所属【子网ID】，可前往私有网络[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1&unVpcId=vpc-6bs8ytjd)进行获取
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// agent 容器分配的 CPU 核数，对应 K8S 的 request
@@ -3698,7 +3698,7 @@ type CreateContainGroupRequest struct {
 	// 部署组资源类型；DEF 表示默认资源类型
 	GroupResourceType *string `json:"GroupResourceType,omitnil,omitempty" name:"GroupResourceType"`
 
-	// 分组所属【子网ID】，可前往TKE侧集群[控制台](https://console.cloud.tencent.com/tke2/cluster/sub/list/basic/info/base?rid=1&clusterId=cls-2nhp3g1i)进行获取
+	// 分组所属【子网ID】，可前往私有网络[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1&unVpcId=vpc-6bs8ytjd)进行获取
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// agent 容器分配的 CPU 核数，对应 K8S 的 request
@@ -9013,7 +9013,7 @@ type DescribeBusinessLogConfigsRequestParams struct {
 	// 单页请求配置数量，取值范围[1, 50]，默认值为10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 模糊匹配关键词
+	// 模糊匹配关键词，可搜索配置项ID或配置项名称
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
 	// 是否禁用数据集鉴权
@@ -9033,7 +9033,7 @@ type DescribeBusinessLogConfigsRequest struct {
 	// 单页请求配置数量，取值范围[1, 50]，默认值为10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 模糊匹配关键词
+	// 模糊匹配关键词，可搜索配置项ID或配置项名称
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
 	// 是否禁用数据集鉴权
@@ -9821,7 +9821,7 @@ type DescribeContainerEventsRequestParams struct {
 	// event 的资源类型, 仅支持 group
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd
+	// 部署组ID，按照【部署组ID】进行过滤，可通过调用[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的项目列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的项目。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 偏移量，取值从0开始
@@ -9852,7 +9852,7 @@ type DescribeContainerEventsRequest struct {
 	// event 的资源类型, 仅支持 group
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd
+	// 部署组ID，按照【部署组ID】进行过滤，可通过调用[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的项目列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的项目。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 偏移量，取值从0开始
@@ -10392,13 +10392,13 @@ func (r *DescribeDeliveryConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeliveryConfigsRequestParams struct {
-	// 关键字
+	// 搜索关键字，可搜索日志投递配置项ID或日志投递配置项名称
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移
+	// 偏移量，取值范围大于等于0，默认值为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 搜索条数
+	// 单页请求配置数量，取值范围[1, 50]，默认值为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 数据集ID列表
@@ -10413,13 +10413,13 @@ type DescribeDeliveryConfigsRequestParams struct {
 type DescribeDeliveryConfigsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关键字
+	// 搜索关键字，可搜索日志投递配置项ID或日志投递配置项名称
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移
+	// 偏移量，取值范围大于等于0，默认值为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 搜索条数
+	// 单页请求配置数量，取值范围[1, 50]，默认值为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 数据集ID列表
@@ -12213,7 +12213,12 @@ func (r *DescribeInovcationIndicatorsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// 过滤条件，name表示过滤字段，value表示过滤字段值。
+	// 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。
+	// 参考：[{"Name":"ip","Values":["172.16.16.139"]}]
+	// filter name 取值范围：
+	// - `id`：实例ID
+	// - ` name `：实例名
+	// - ` ip `：内网IP（可填wan_ip或lan_ip）
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
@@ -12226,7 +12231,12 @@ type DescribeInstancesRequestParams struct {
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件，name表示过滤字段，value表示过滤字段值。
+	// 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。
+	// 参考：[{"Name":"ip","Values":["172.16.16.139"]}]
+	// filter name 取值范围：
+	// - `id`：实例ID
+	// - ` name `：实例名
+	// - ` ip `：内网IP（可填wan_ip或lan_ip）
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
@@ -12389,10 +12399,10 @@ type DescribeInvocationMetricDataDimensionRequestParams struct {
 	// 结束时间，格式yyyy-MM-dd HH:mm:ss
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 开始index
+	// 开始index，取值范围大于等于0，默认值为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小
+	// 单页请求配置数量，取值范围[1, 50]，默认值为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 聚合维度。可选值 NamespaceId：命名空间ID，GroupId：部署组ID，InstanceId：实例ID，ApplicationId：应用ID，OperationMethod：执行方法，OperationName：执行名称，ServiceName：服务名，UpstreamNamespaceId：上游命名空间ID
@@ -12414,10 +12424,10 @@ type DescribeInvocationMetricDataDimensionRequest struct {
 	// 结束时间，格式yyyy-MM-dd HH:mm:ss
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 开始index
+	// 开始index，取值范围大于等于0，默认值为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小
+	// 单页请求配置数量，取值范围[1, 50]，默认值为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 聚合维度。可选值 NamespaceId：命名空间ID，GroupId：部署组ID，InstanceId：实例ID，ApplicationId：应用ID，OperationMethod：执行方法，OperationName：执行名称，ServiceName：服务名，UpstreamNamespaceId：上游命名空间ID

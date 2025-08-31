@@ -796,6 +796,9 @@ type BizLicenseOCRResponseParams struct {
 	// 非营业执照的营业类证件识别结果，将以结构化形式呈现。
 	BusinessCertificate []*BusinessCertificateInfo `json:"BusinessCertificate,omitnil,omitempty" name:"BusinessCertificate"`
 
+	// 重要提示字段
+	Important *string `json:"Important,omitnil,omitempty" name:"Important"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -7521,6 +7524,9 @@ type QuestionSplitOCRRequestParams struct {
 
 	// 是否只返回检测框，默认false
 	EnableOnlyDetectBorder *bool `json:"EnableOnlyDetectBorder,omitnil,omitempty" name:"EnableOnlyDetectBorder"`
+
+	// false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
+	UseNewModel *bool `json:"UseNewModel,omitnil,omitempty" name:"UseNewModel"`
 }
 
 type QuestionSplitOCRRequest struct {
@@ -7543,6 +7549,9 @@ type QuestionSplitOCRRequest struct {
 
 	// 是否只返回检测框，默认false
 	EnableOnlyDetectBorder *bool `json:"EnableOnlyDetectBorder,omitnil,omitempty" name:"EnableOnlyDetectBorder"`
+
+	// false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
+	UseNewModel *bool `json:"UseNewModel,omitnil,omitempty" name:"UseNewModel"`
 }
 
 func (r *QuestionSplitOCRRequest) ToJsonString() string {
@@ -7563,6 +7572,7 @@ func (r *QuestionSplitOCRRequest) FromJsonString(s string) error {
 	delete(f, "PdfPageNumber")
 	delete(f, "EnableImageCrop")
 	delete(f, "EnableOnlyDetectBorder")
+	delete(f, "UseNewModel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuestionSplitOCRRequest has unknown keys!", "")
 	}

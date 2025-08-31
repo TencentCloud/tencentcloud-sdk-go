@@ -2952,7 +2952,7 @@ func (r *OrderFlowPackageResponse) FromJsonString(s string) error {
 }
 
 type OrderInfo struct {
-	// 父帐号uin
+	// 父账号uin
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 项目id
