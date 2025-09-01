@@ -10419,6 +10419,12 @@ type InstanceSpec struct {
 
 	// 库存数量
 	StockCount *int64 `json:"StockCount,omitnil,omitempty" name:"StockCount"`
+
+	// 最大cpu
+	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
+
+	// 最小cpu
+	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
 }
 
 // Predefined struct for user

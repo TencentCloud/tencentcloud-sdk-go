@@ -443,6 +443,62 @@ func (c *Client) CreateEmbedTokenWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreatePermissionRanksRequest() (request *CreatePermissionRanksRequest) {
+    request = &CreatePermissionRanksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "CreatePermissionRanks")
+    
+    
+    return
+}
+
+func NewCreatePermissionRanksResponse() (response *CreatePermissionRanksResponse) {
+    response = &CreatePermissionRanksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePermissionRanks
+// 创建行列权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) CreatePermissionRanks(request *CreatePermissionRanksRequest) (response *CreatePermissionRanksResponse, err error) {
+    return c.CreatePermissionRanksWithContext(context.Background(), request)
+}
+
+// CreatePermissionRanks
+// 创建行列权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) CreatePermissionRanksWithContext(ctx context.Context, request *CreatePermissionRanksRequest) (response *CreatePermissionRanksResponse, err error) {
+    if request == nil {
+        request = NewCreatePermissionRanksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreatePermissionRanks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePermissionRanks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePermissionRanksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateProjectRequest() (request *CreateProjectRequest) {
     request = &CreateProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1019,6 +1075,194 @@ func (c *Client) DescribePageWidgetListWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribePageWidgetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePermissionRanksInfoRequest() (request *DescribePermissionRanksInfoRequest) {
+    request = &DescribePermissionRanksInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribePermissionRanksInfo")
+    
+    
+    return
+}
+
+func NewDescribePermissionRanksInfoResponse() (response *DescribePermissionRanksInfoResponse) {
+    response = &DescribePermissionRanksInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePermissionRanksInfo
+// 根据角色或标签查询行列权限配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribePermissionRanksInfo(request *DescribePermissionRanksInfoRequest) (response *DescribePermissionRanksInfoResponse, err error) {
+    return c.DescribePermissionRanksInfoWithContext(context.Background(), request)
+}
+
+// DescribePermissionRanksInfo
+// 根据角色或标签查询行列权限配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribePermissionRanksInfoWithContext(ctx context.Context, request *DescribePermissionRanksInfoRequest) (response *DescribePermissionRanksInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePermissionRanksInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribePermissionRanksInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePermissionRanksInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePermissionRanksInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePermissionRoleInfoRequest() (request *DescribePermissionRoleInfoRequest) {
+    request = &DescribePermissionRoleInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribePermissionRoleInfo")
+    
+    
+    return
+}
+
+func NewDescribePermissionRoleInfoResponse() (response *DescribePermissionRoleInfoResponse) {
+    response = &DescribePermissionRoleInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePermissionRoleInfo
+// 行列权限项目内角色列表接口1
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribePermissionRoleInfo(request *DescribePermissionRoleInfoRequest) (response *DescribePermissionRoleInfoResponse, err error) {
+    return c.DescribePermissionRoleInfoWithContext(context.Background(), request)
+}
+
+// DescribePermissionRoleInfo
+// 行列权限项目内角色列表接口1
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribePermissionRoleInfoWithContext(ctx context.Context, request *DescribePermissionRoleInfoRequest) (response *DescribePermissionRoleInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePermissionRoleInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribePermissionRoleInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePermissionRoleInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePermissionRoleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePermissionStatusInfoRequest() (request *DescribePermissionStatusInfoRequest) {
+    request = &DescribePermissionStatusInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribePermissionStatusInfo")
+    
+    
+    return
+}
+
+func NewDescribePermissionStatusInfoResponse() (response *DescribePermissionStatusInfoResponse) {
+    response = &DescribePermissionStatusInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePermissionStatusInfo
+// 查询行列权限初始状态1
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribePermissionStatusInfo(request *DescribePermissionStatusInfoRequest) (response *DescribePermissionStatusInfoResponse, err error) {
+    return c.DescribePermissionStatusInfoWithContext(context.Background(), request)
+}
+
+// DescribePermissionStatusInfo
+// 查询行列权限初始状态1
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribePermissionStatusInfoWithContext(ctx context.Context, request *DescribePermissionStatusInfoRequest) (response *DescribePermissionStatusInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePermissionStatusInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribePermissionStatusInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePermissionStatusInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePermissionStatusInfoResponse()
     err = c.Send(request, response)
     return
 }

@@ -12907,7 +12907,7 @@ type ModifyAlarmPolicyTasksRequestParams struct {
 	// 告警策略 ID
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 告警策略触发任务列表，空数据代表解绑
+	// 告警策略触发任务列表，空数据代表解绑示例值： { "Type": "AS", "TaskConfig": "{\"Region\":\"ap-guangzhou\",\"Group\":\"asg-0zhspjx\",\"Policy\":\"asp-ganig28\"}" }
 	TriggerTasks []*AlarmPolicyTriggerTask `json:"TriggerTasks,omitnil,omitempty" name:"TriggerTasks"`
 }
 
@@ -12920,7 +12920,7 @@ type ModifyAlarmPolicyTasksRequest struct {
 	// 告警策略 ID
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 告警策略触发任务列表，空数据代表解绑
+	// 告警策略触发任务列表，空数据代表解绑示例值： { "Type": "AS", "TaskConfig": "{\"Region\":\"ap-guangzhou\",\"Group\":\"asg-0zhspjx\",\"Policy\":\"asp-ganig28\"}" }
 	TriggerTasks []*AlarmPolicyTriggerTask `json:"TriggerTasks,omitnil,omitempty" name:"TriggerTasks"`
 }
 

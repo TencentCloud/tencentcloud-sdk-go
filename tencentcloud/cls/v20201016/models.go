@@ -4392,17 +4392,14 @@ type DataTransformTaskInfo struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 加工任务创建时间
-	// 示例值：2025-03-18 19:55:54
 	// 时间格式：yyyy-MM-dd HH:mm:ss
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最近修改时间
-	// 示例值：2025-04-18 16:55:54
 	// 时间格式：yyyy-MM-dd HH:mm:ss
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 最后启用时间，如果需要重建集群，修改该时间
-	// 示例值：2025-05-18 19:55:54
 	// 时间格式：yyyy-MM-dd HH:mm:ss
 	LastEnableTime *string `json:"LastEnableTime,omitnil,omitempty" name:"LastEnableTime"`
 
@@ -13086,7 +13083,8 @@ type PreviewLogStatistic struct {
 	// 行号。从0开始
 	LineNum *int64 `json:"LineNum,omitnil,omitempty" name:"LineNum"`
 
-	// 目标日志主题
+	// 目标日志主题ID
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
 
 	// 失败错误信息， 空字符串""表示正常

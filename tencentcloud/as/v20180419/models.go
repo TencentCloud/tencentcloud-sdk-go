@@ -1128,10 +1128,15 @@ type CreateLaunchConfigurationRequestParams struct {
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 云服务器主机名（HostName）的相关设置。
+	// 不支持windows实例设置主机名。 
+	// 新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。
+	// 会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。
 	HostNameSettings *HostNameSettings `json:"HostNameSettings,omitnil,omitempty" name:"HostNameSettings"`
 
 	// 云服务器实例名（InstanceName）的相关设置。
 	// 如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。
+	// 新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。
+	// 会校验实例名称(如果存在后缀则加上后缀)是否超过最大位数108。
 	InstanceNameSettings *InstanceNameSettings `json:"InstanceNameSettings,omitnil,omitempty" name:"InstanceNameSettings"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
@@ -1232,10 +1237,15 @@ type CreateLaunchConfigurationRequest struct {
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 云服务器主机名（HostName）的相关设置。
+	// 不支持windows实例设置主机名。 
+	// 新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。
+	// 会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。
 	HostNameSettings *HostNameSettings `json:"HostNameSettings,omitnil,omitempty" name:"HostNameSettings"`
 
 	// 云服务器实例名（InstanceName）的相关设置。
 	// 如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。
+	// 新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。
+	// 会校验实例名称(如果存在后缀则加上后缀)是否超过最大位数108。
 	InstanceNameSettings *InstanceNameSettings `json:"InstanceNameSettings,omitnil,omitempty" name:"InstanceNameSettings"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
@@ -3931,9 +3941,8 @@ type InstanceNameIndexSettings struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// 初始序号。
-	// 序号固定位数 IndexLength 为默认值0时，取值范围为 [0, 99999999]。
-	// 序号固定位数 IndexLength 为 [1, 8] 时，取值范围为为 [0, 固定位数的最大数字]。
+	// 初始序号。取值范围为 [0, 99999999]。
+	// 
 	// 当序号递增后超出取值范围时，扩容活动会失败。
 	// 
 	// 首次开启实例名称序号：默认值为 0。
@@ -4701,11 +4710,13 @@ type ModifyLaunchConfigurationAttributesRequestParams struct {
 	// 云服务器主机名（HostName）的相关设置。
 	// 不支持windows实例设置主机名。
 	// 新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。
+	// 会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。
 	HostNameSettings *HostNameSettings `json:"HostNameSettings,omitnil,omitempty" name:"HostNameSettings"`
 
 	// 云服务器（InstanceName）实例名的相关设置。 
 	// 如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。
 	// 新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。
+	// 会校验实例名(如果存在后缀则加上后缀)是否超过最大位数108。
 	InstanceNameSettings *InstanceNameSettings `json:"InstanceNameSettings,omitnil,omitempty" name:"InstanceNameSettings"`
 
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。
@@ -4810,11 +4821,13 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	// 云服务器主机名（HostName）的相关设置。
 	// 不支持windows实例设置主机名。
 	// 新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。
+	// 会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。
 	HostNameSettings *HostNameSettings `json:"HostNameSettings,omitnil,omitempty" name:"HostNameSettings"`
 
 	// 云服务器（InstanceName）实例名的相关设置。 
 	// 如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。
 	// 新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。
+	// 会校验实例名(如果存在后缀则加上后缀)是否超过最大位数108。
 	InstanceNameSettings *InstanceNameSettings `json:"InstanceNameSettings,omitnil,omitempty" name:"InstanceNameSettings"`
 
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。

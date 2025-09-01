@@ -967,6 +967,132 @@ func (r *CreateEmbedTokenResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePermissionRanksRequestParams struct {
+	// 页数
+	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 条数
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 角色类型
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// 所有页码
+	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// 规则信息
+	RulerInfo *string `json:"RulerInfo,omitnil,omitempty" name:"RulerInfo"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 状态
+	OpenStatus *string `json:"OpenStatus,omitnil,omitempty" name:"OpenStatus"`
+
+	// 项目id
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 行列权限配置
+	RowColumnConfigList []*RowColumnConfig `json:"RowColumnConfigList,omitnil,omitempty" name:"RowColumnConfigList"`
+}
+
+type CreatePermissionRanksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页数
+	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 条数
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 角色类型
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// 所有页码
+	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// 规则信息
+	RulerInfo *string `json:"RulerInfo,omitnil,omitempty" name:"RulerInfo"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 状态
+	OpenStatus *string `json:"OpenStatus,omitnil,omitempty" name:"OpenStatus"`
+
+	// 项目id
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 行列权限配置
+	RowColumnConfigList []*RowColumnConfig `json:"RowColumnConfigList,omitnil,omitempty" name:"RowColumnConfigList"`
+}
+
+func (r *CreatePermissionRanksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePermissionRanksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableId")
+	delete(f, "Mode")
+	delete(f, "RoleType")
+	delete(f, "RoleId")
+	delete(f, "RulerInfo")
+	delete(f, "Type")
+	delete(f, "OpenStatus")
+	delete(f, "ProjectId")
+	delete(f, "RowColumnConfigList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePermissionRanksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePermissionRanksResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 112
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePermissionRanksResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePermissionRanksResponseParams `json:"Response"`
+}
+
+func (r *CreatePermissionRanksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePermissionRanksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateProjectRequestParams struct {
 	// 项目名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -1935,6 +2061,286 @@ func (r *DescribePageWidgetListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePageWidgetListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePermissionRanksInfoRequestParams struct {
+	// 页数
+	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 条数
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 角色类型
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// 所有页码
+	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 项目id
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type DescribePermissionRanksInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页数
+	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 条数
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 角色类型
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// 所有页码
+	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 项目id
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribePermissionRanksInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePermissionRanksInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableId")
+	delete(f, "Mode")
+	delete(f, "RoleType")
+	delete(f, "RoleId")
+	delete(f, "Type")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePermissionRanksInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePermissionRanksInfoResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 112
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *RankInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePermissionRanksInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePermissionRanksInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribePermissionRanksInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePermissionRanksInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePermissionRoleInfoRequestParams struct {
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页数
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 所有页码
+	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
+}
+
+type DescribePermissionRoleInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页数
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 所有页码
+	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
+}
+
+func (r *DescribePermissionRoleInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePermissionRoleInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "AllPage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePermissionRoleInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePermissionRoleInfoResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*Role `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 112
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePermissionRoleInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePermissionRoleInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribePermissionRoleInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePermissionRoleInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePermissionStatusInfoRequestParams struct {
+	// 页数
+	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 1
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type DescribePermissionStatusInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页数
+	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 1
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribePermissionStatusInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePermissionStatusInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableId")
+	delete(f, "Type")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePermissionStatusInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePermissionStatusInfoResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 112
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *RowColumnStatus `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePermissionStatusInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePermissionStatusInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribePermissionStatusInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePermissionStatusInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3753,6 +4159,134 @@ type ProjectListData struct {
 	// 1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalPages *uint64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
+}
+
+type RankInfo struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// `
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulerInfo *string `json:"RulerInfo,omitnil,omitempty" name:"RulerInfo"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 行列权限配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowColumnConfigList []*RowColumnConfig `json:"RowColumnConfigList,omitnil,omitempty" name:"RowColumnConfigList"`
+}
+
+type Role struct {
+	// 角色ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 角色名称
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// 企业ID
+	CorpId *string `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// 角色类型
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// 范围
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedUser *string `json:"CreatedUser,omitnil,omitempty" name:"CreatedUser"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// 更新人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedUser *string `json:"UpdatedUser,omitnil,omitempty" name:"UpdatedUser"`
+
+	// 是否为全局角色（0 不是， 1 是）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScopeType *int64 `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
+
+	// 是否可被选
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanChoose *bool `json:"CanChoose,omitnil,omitempty" name:"CanChoose"`
+
+	// 角色key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModuleCollection *string `json:"ModuleCollection,omitnil,omitempty" name:"ModuleCollection"`
+}
+
+type RowColumnConfig struct {
+	// 行列权限规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulerInfo *string `json:"RulerInfo,omitnil,omitempty" name:"RulerInfo"`
+
+	// 标签值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValueList []*RowColumnTagValue `json:"TagValueList,omitnil,omitempty" name:"TagValueList"`
+}
+
+type RowColumnStatus struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenStatus *string `json:"OpenStatus,omitnil,omitempty" name:"OpenStatus"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+}
+
+type RowColumnTagValue struct {
+	// 标签id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 标签名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 标签值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type UserGroupDTO struct {
