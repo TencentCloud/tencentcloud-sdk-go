@@ -9771,6 +9771,9 @@ type DeleteOrganizationAuthorizationsRequestParams struct {
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
+	// 认证流Ids数组 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。 
+	AuthorizationIds []*string `json:"AuthorizationIds,omitnil,omitempty" name:"AuthorizationIds"`
+
 	// 认证人姓名，组织机构超管姓名。 在注册流程中，必须是超管本人进行操作。 
 	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
 
@@ -9788,6 +9791,9 @@ type DeleteOrganizationAuthorizationsRequest struct {
 	// <li>渠道应用标识:  Agent.AppId</li>
 	// </ul>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 认证流Ids数组 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。 
+	AuthorizationIds []*string `json:"AuthorizationIds,omitnil,omitempty" name:"AuthorizationIds"`
 
 	// 认证人姓名，组织机构超管姓名。 在注册流程中，必须是超管本人进行操作。 
 	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
@@ -9809,6 +9815,7 @@ func (r *DeleteOrganizationAuthorizationsRequest) FromJsonString(s string) error
 		return err
 	}
 	delete(f, "Agent")
+	delete(f, "AuthorizationIds")
 	delete(f, "AdminName")
 	delete(f, "AdminMobile")
 	if len(f) > 0 {

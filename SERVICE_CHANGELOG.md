@@ -1,37 +1,33 @@
-# Release v1.1.21
+# Release v1.1.22
 
-## 商业智能分析 BI(bi) 版本：2022-01-05
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 32 次发布
+### 第 233 次发布
 
-发布时间：2025-09-02 01:12:34
+发布时间：2025-09-03 01:24:11
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [CreatePermissionRanks](https://cloud.tencent.com/document/api/590/122913)
-* [DescribePermissionRanksInfo](https://cloud.tencent.com/document/api/590/122912)
-* [DescribePermissionRoleInfo](https://cloud.tencent.com/document/api/590/122911)
-* [DescribePermissionStatusInfo](https://cloud.tencent.com/document/api/590/122910)
+* [DeleteOrganizationAuthorizations](https://cloud.tencent.com/document/api/1420/111943)
 
-新增数据结构：
-
-* [RankInfo](https://cloud.tencent.com/document/api/590/73726#RankInfo)
-* [Role](https://cloud.tencent.com/document/api/590/73726#Role)
-* [RowColumnConfig](https://cloud.tencent.com/document/api/590/73726#RowColumnConfig)
-* [RowColumnStatus](https://cloud.tencent.com/document/api/590/73726#RowColumnStatus)
-* [RowColumnTagValue](https://cloud.tencent.com/document/api/590/73726#RowColumnTagValue)
+	* 新增入参：AuthorizationIds
 
 
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 140 次发布
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
 
-发布时间：2025-09-02 01:20:35
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 212 次发布
+
+发布时间：2025-09-03 01:42:54
 
 本次发布包含了以下内容：
 
@@ -39,9 +35,11 @@
 
 修改数据结构：
 
-* [InstanceSpec](https://cloud.tencent.com/document/api/1003/48097#InstanceSpec)
+* [Value](https://cloud.tencent.com/document/api/866/33527#Value)
 
-	* 新增成员：MaxCpu, MinCpu
+	* 新增成员：PageIndex
+
+	* <font color="#dd0000">**修改成员**：</font>AutoContent, Coord
 
 
 

@@ -2906,6 +2906,11 @@ type ExtractDocMultiRequestParams struct {
 	// MultiRealEstateCertificate -- 房产材料识别模板
 	// MultiRealEstateMaterial -- 房产证明识别模板
 	// HongKongUtilityBill -- 中国香港水电煤单识别模板
+	// OverseasCheques -- 海外支票
+	// RegistrationCertificate -- 备案证
+	// ​GridPhoto -- 电网系统照片
+	// ​SignaturePage -- 签署页
+	// 
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
@@ -2963,6 +2968,11 @@ type ExtractDocMultiRequest struct {
 	// MultiRealEstateCertificate -- 房产材料识别模板
 	// MultiRealEstateMaterial -- 房产证明识别模板
 	// HongKongUtilityBill -- 中国香港水电煤单识别模板
+	// OverseasCheques -- 海外支票
+	// RegistrationCertificate -- 备案证
+	// ​GridPhoto -- 电网系统照片
+	// ​SignaturePage -- 签署页
+	// 
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
@@ -12110,6 +12120,10 @@ type Value struct {
 	// 四点坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Coord *Polygon `json:"Coord,omitnil,omitempty" name:"Coord"`
+
+	// 页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageIndex *string `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 }
 
 type VatElectronicInfo struct {
