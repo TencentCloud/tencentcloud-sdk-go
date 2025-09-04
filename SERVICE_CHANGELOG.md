@@ -1,33 +1,10 @@
-# Release v1.1.22
+# Release v1.1.23
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 233 次发布
+### 第 133 次发布
 
-发布时间：2025-09-03 01:24:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DeleteOrganizationAuthorizations](https://cloud.tencent.com/document/api/1420/111943)
-
-	* 新增入参：AuthorizationIds
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 212 次发布
-
-发布时间：2025-09-03 01:42:54
+发布时间：2025-09-05 01:25:20
 
 本次发布包含了以下内容：
 
@@ -35,12 +12,26 @@
 
 修改数据结构：
 
-* [Value](https://cloud.tencent.com/document/api/866/33527#Value)
+* [DataTransformResouceInfo](https://cloud.tencent.com/document/api/614/56471#DataTransformResouceInfo)
 
-	* 新增成员：PageIndex
+	* <font color="#dd0000">**修改成员**：</font>Alias
 
-	* <font color="#dd0000">**修改成员**：</font>AutoContent, Coord
 
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 136 次发布
+
+发布时间：2025-09-05 01:36:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateTcIcebergTable](https://cloud.tencent.com/document/api/1342/122963)
 
 
 

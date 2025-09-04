@@ -5563,9 +5563,10 @@ type SliceParams struct {
 	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
 
 	// 音频切片时长，默认15s 示例值：15
+	// 取值范围15-60s
 	SliceAudio *uint64 `json:"SliceAudio,omitnil,omitempty" name:"SliceAudio"`
 
-	// 视频截帧间隔时长，默认5s， 示例值：5
+	// 视频截帧间隔时长，默认5s， 示例值：5 取值范围5-60s
 	SliceVideo *uint64 `json:"SliceVideo,omitnil,omitempty" name:"SliceVideo"`
 
 	// 指定订阅流白名单或者黑名单。

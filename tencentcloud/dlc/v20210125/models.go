@@ -4495,6 +4495,97 @@ func (r *CreateTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateTcIcebergTableRequestParams struct {
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitnil,omitempty" name:"TableBaseInfo"`
+
+	// 表字段信息
+	Columns []*TColumn `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// 为true时只获取sql而不执行
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// 表分区信息
+	Partitions []*TPartition `json:"Partitions,omitnil,omitempty" name:"Partitions"`
+
+	// 表属性信息
+	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
+type CreateTcIcebergTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitnil,omitempty" name:"TableBaseInfo"`
+
+	// 表字段信息
+	Columns []*TColumn `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// 为true时只获取sql而不执行
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// 表分区信息
+	Partitions []*TPartition `json:"Partitions,omitnil,omitempty" name:"Partitions"`
+
+	// 表属性信息
+	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
+func (r *CreateTcIcebergTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTcIcebergTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableBaseInfo")
+	delete(f, "Columns")
+	delete(f, "DryRun")
+	delete(f, "Partitions")
+	delete(f, "Properties")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTcIcebergTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTcIcebergTableResponseParams struct {
+	// amoro的SessionId
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 执行的sql
+	SQL *string `json:"SQL,omitnil,omitempty" name:"SQL"`
+
+	// 为true时只返回sql而不实际执行
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTcIcebergTableResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTcIcebergTableResponseParams `json:"Response"`
+}
+
+func (r *CreateTcIcebergTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTcIcebergTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateUserRequestParams struct {
 	// 需要授权的子用户uin，可以通过腾讯云控制台右上角 → “账号信息” → “账号ID进行查看”。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`

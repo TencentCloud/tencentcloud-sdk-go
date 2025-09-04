@@ -4369,6 +4369,7 @@ type DataTransformResouceInfo struct {
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 别名
+	// 限制：不能包含字符 |。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 }
 
