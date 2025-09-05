@@ -618,6 +618,40 @@ func main() {
 
 > 注入的 `ClientToken` 在 `100000/s` 并发量以下提供全局唯一性。
 
+### 反向代理
+
+若您需要使用nginx作为反向代理，请在自定义Header中设置好请求Host与目标地址，例如
+
+```go
+    cpf := profile.NewClientProfile()
+    cpf.HttpProfile.Scheme = "HTTP"
+    cpf.HttpProfile.Endpoint = "localhost:9090/your_path"
+    request := cvm.NewDescribeZonesRequest()
+    request.SetHeader(map[string]string{
+        "Host": "cvm.tencentcloudapi.com",
+        "X-Target": "https://cvm.tencentcloudapi.com/",
+    })
+```
+
+相应的nginx配置如下：
+
+```nginx
+server {
+    listen 9090;
+    server_name localhost;
+
+    location / {
+        proxy_pass $http_x_target;
+        proxy_buffering off;
+    }
+
+    # 自定义访问路径
+    location ^~/your_path/ {
+        proxy_pass $http_x_target;
+        proxy_buffering off;
+    }
+```
+
 ## 空数组和omitempty
 
 在 v1.0.738 以及之前的版本, SDK使用`omitempty`标签来序列化请求, 这会导致 nil 数组和 长度为0的空数组 都无法被序列化。
