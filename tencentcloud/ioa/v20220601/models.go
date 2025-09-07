@@ -69,6 +69,77 @@ type AggrCategorySoftDetailRow struct {
 	UpgradableDeviceNum *int64 `json:"UpgradableDeviceNum,omitnil,omitempty" name:"UpgradableDeviceNum"`
 }
 
+type AggrSoftDeviceRow struct {
+	// 终端名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 最近登录账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastLoginAccount *string `json:"LastLoginAccount,omitnil,omitempty" name:"LastLoginAccount"`
+
+	// 终端用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceUserName *string `json:"DeviceUserName,omitnil,omitempty" name:"DeviceUserName"`
+
+	// 软件版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 是否盗版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PiracyRisk *int64 `json:"PiracyRisk,omitnil,omitempty" name:"PiracyRisk"`
+
+	// 盗版原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PiracyReason *string `json:"PiracyReason,omitnil,omitempty" name:"PiracyReason"`
+
+	// 安装时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstallTime *string `json:"InstallTime,omitnil,omitempty" name:"InstallTime"`
+
+	// 用户目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserPath *string `json:"UserPath,omitnil,omitempty" name:"UserPath"`
+
+	// 所在分组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserGroup *string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
+
+	// IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
+
+	// MAC
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MAC *string `json:"MAC,omitnil,omitempty" name:"MAC"`
+
+	// 使用时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseTime *int64 `json:"UseTime,omitnil,omitempty" name:"UseTime"`
+
+	// 设备ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *int64 `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 软件全名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullSoftName *string `json:"FullSoftName,omitnil,omitempty" name:"FullSoftName"`
+
+	// 数据ID（唯一）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 该终端此款软件可升级到的目标版本号
+	NewVersion *string `json:"NewVersion,omitnil,omitempty" name:"NewVersion"`
+
+	// 该软件对应运营配置的可升级id
+	UpgradeSoftId *int64 `json:"UpgradeSoftId,omitnil,omitempty" name:"UpgradeSoftId"`
+
+	// 终端备注名
+	RemarkName *string `json:"RemarkName,omitnil,omitempty" name:"RemarkName"`
+}
+
 type ComplexRule struct {
 	// 简单规则表达式
 	SimpleRules []*SimpleRule `json:"SimpleRules,omitnil,omitempty" name:"SimpleRules"`
@@ -664,6 +735,204 @@ func (r *DescribeAggrSoftCategorySoftListResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAggrSoftDetailData struct {
+	// 软件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 平台
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 盗版风险
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PiracyRisk *int64 `json:"PiracyRisk,omitnil,omitempty" name:"PiracyRisk"`
+
+	// 厂商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Corp *string `json:"Corp,omitnil,omitempty" name:"Corp"`
+
+	// 已安装版本分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SoftVersionDist []*SoftVersionAndNum `json:"SoftVersionDist,omitnil,omitempty" name:"SoftVersionDist"`
+
+	// 盗版版本安装
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PiracyVersionDist []*SoftVersionAndNum `json:"PiracyVersionDist,omitnil,omitempty" name:"PiracyVersionDist"`
+
+	// 安装设备数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstalledDeviceNum *int64 `json:"InstalledDeviceNum,omitnil,omitempty" name:"InstalledDeviceNum"`
+
+	// 盗版安装设备数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PiracyInstalledDeviceNum *int64 `json:"PiracyInstalledDeviceNum,omitnil,omitempty" name:"PiracyInstalledDeviceNum"`
+
+	// 安装用户数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstalledUserNum *int64 `json:"InstalledUserNum,omitnil,omitempty" name:"InstalledUserNum"`
+
+	// 盗版安装用户数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PiracyInstalledUserNum *int64 `json:"PiracyInstalledUserNum,omitnil,omitempty" name:"PiracyInstalledUserNum"`
+
+	// 授权数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthNum *int64 `json:"AuthNum,omitnil,omitempty" name:"AuthNum"`
+
+	// 正版率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GenuineRate *float64 `json:"GenuineRate,omitnil,omitempty" name:"GenuineRate"`
+
+	// 有新版本可升级的设备数量
+	UpgradableDeviceNum *int64 `json:"UpgradableDeviceNum,omitnil,omitempty" name:"UpgradableDeviceNum"`
+
+	// 当前可升级的最新版本信息, 每一项均为json字符串
+	UpgradableVersions []*string `json:"UpgradableVersions,omitnil,omitempty" name:"UpgradableVersions"`
+}
+
+// Predefined struct for user
+type DescribeAggrSoftDetailRequestParams struct {
+	// 软件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 操作系统
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+}
+
+type DescribeAggrSoftDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 软件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 操作系统
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+}
+
+func (r *DescribeAggrSoftDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAggrSoftDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "OsType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAggrSoftDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAggrSoftDetailResponseParams struct {
+	// 数据
+	Data *DescribeAggrSoftDetailData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAggrSoftDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAggrSoftDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeAggrSoftDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAggrSoftDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAggrSoftDeviceListData struct {
+	// 分页公共对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AggrSoftDeviceList []*AggrSoftDeviceRow `json:"AggrSoftDeviceList,omitnil,omitempty" name:"AggrSoftDeviceList"`
+}
+
+// Predefined struct for user
+type DescribeAggrSoftDeviceListRequestParams struct {
+	// 软件名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 操作系统
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+}
+
+type DescribeAggrSoftDeviceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 软件名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 操作系统
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+}
+
+func (r *DescribeAggrSoftDeviceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAggrSoftDeviceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "OsType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAggrSoftDeviceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAggrSoftDeviceListResponseParams struct {
+	// 已安装终端列表
+	Data *DescribeAggrSoftDeviceListData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAggrSoftDeviceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAggrSoftDeviceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAggrSoftDeviceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAggrSoftDeviceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDLPFileDetectResultData struct {
 	// 提交任务时的文件md5
 	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
@@ -839,6 +1108,160 @@ func (r *DescribeDeviceChildGroupsResponse) FromJsonString(s string) error {
 type DescribeDeviceChildGroupsRspData struct {
 	// 返回的数组列表
 	Items []*DeviceGroupDetail `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type DescribeDeviceDetailListData struct {
+	// 账号名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 计算机名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComputerName *string `json:"ComputerName,omitnil,omitempty" name:"ComputerName"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户组IdPath
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupIdPath *string `json:"AccountGroupIdPath,omitnil,omitempty" name:"AccountGroupIdPath"`
+
+	// 用户组id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// 终端组名path
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupNamePath *string `json:"GroupNamePath,omitnil,omitempty" name:"GroupNamePath"`
+
+	// Ip地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 用户组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupName *string `json:"AccountGroupName,omitnil,omitempty" name:"AccountGroupName"`
+
+	// 终端组IdPath
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupIdPath *string `json:"GroupIdPath,omitnil,omitempty" name:"GroupIdPath"`
+
+	// 唯一标识Mid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
+	// IOA账号名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IoaUserName *string `json:"IoaUserName,omitnil,omitempty" name:"IoaUserName"`
+
+	// 所在分组Id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 所在分组Name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// Mac地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mac *string `json:"Mac,omitnil,omitempty" name:"Mac"`
+
+	// 软件版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 用户组名Path
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupNamePath *string `json:"AccountGroupNamePath,omitnil,omitempty" name:"AccountGroupNamePath"`
+
+	// 列表Id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DescribeDeviceDetailListPageData struct {
+	// 终端详情响应对象集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DescribeDeviceDetailListData `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 分页公共对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+// Predefined struct for user
+type DescribeDeviceDetailListRequestParams struct {
+	// 系统类型(只支持32位)
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 终端分组id(只支持32位)
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 过滤条件、分页参数
+	// <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+type DescribeDeviceDetailListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 系统类型(只支持32位)
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 终端分组id(只支持32位)
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 过滤条件、分页参数
+	// <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+func (r *DescribeDeviceDetailListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceDetailListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OsType")
+	delete(f, "GroupId")
+	delete(f, "Condition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceDetailListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceDetailListResponseParams struct {
+	// 业务响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeDeviceDetailListPageData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceDetailListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceDetailListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceDetailListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceDetailListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDeviceHardwareInfoItem struct {
@@ -2260,6 +2683,81 @@ type DeviceVirtualDeviceGroupsDetail struct {
 	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 }
 
+type ExportSoftwareDownloadUrlRspData struct {
+	// 下载的url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadURL *string `json:"DownloadURL,omitnil,omitempty" name:"DownloadURL"`
+
+	// 超过一定时间走异步任务
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+// Predefined struct for user
+type ExportSoftwareInformationListRequestParams struct {
+	// 终端唯一标识Mid
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
+	// 过滤条件、分页参数
+	// <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+type ExportSoftwareInformationListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 终端唯一标识Mid
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
+	// 过滤条件、分页参数
+	// <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+func (r *ExportSoftwareInformationListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportSoftwareInformationListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mid")
+	delete(f, "Condition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportSoftwareInformationListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportSoftwareInformationListResponseParams struct {
+	// 业务响应数据
+	Data *ExportSoftwareDownloadUrlRspData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExportSoftwareInformationListResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportSoftwareInformationListResponseParams `json:"Response"`
+}
+
+func (r *ExportSoftwareInformationListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportSoftwareInformationListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 	// 过滤字段
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
@@ -2461,6 +2959,16 @@ type SimpleRule struct {
 
 	// 表达式间逻辑关系
 	Relation *string `json:"Relation,omitnil,omitempty" name:"Relation"`
+}
+
+type SoftVersionAndNum struct {
+	// 软件版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 安装数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
 }
 
 type SoftwareInformationData struct {

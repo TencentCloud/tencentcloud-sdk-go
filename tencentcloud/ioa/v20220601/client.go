@@ -409,6 +409,114 @@ func (c *Client) DescribeAggrSoftCategorySoftListWithContext(ctx context.Context
     return
 }
 
+func NewDescribeAggrSoftDetailRequest() (request *DescribeAggrSoftDetailRequest) {
+    request = &DescribeAggrSoftDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeAggrSoftDetail")
+    
+    
+    return
+}
+
+func NewDescribeAggrSoftDetailResponse() (response *DescribeAggrSoftDetailResponse) {
+    response = &DescribeAggrSoftDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAggrSoftDetail
+// 聚合的软件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_DATABASEEXCEPTION = "InvalidParameter.DatabaseException"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) DescribeAggrSoftDetail(request *DescribeAggrSoftDetailRequest) (response *DescribeAggrSoftDetailResponse, err error) {
+    return c.DescribeAggrSoftDetailWithContext(context.Background(), request)
+}
+
+// DescribeAggrSoftDetail
+// 聚合的软件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_DATABASEEXCEPTION = "InvalidParameter.DatabaseException"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) DescribeAggrSoftDetailWithContext(ctx context.Context, request *DescribeAggrSoftDetailRequest) (response *DescribeAggrSoftDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAggrSoftDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeAggrSoftDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAggrSoftDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAggrSoftDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAggrSoftDeviceListRequest() (request *DescribeAggrSoftDeviceListRequest) {
+    request = &DescribeAggrSoftDeviceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeAggrSoftDeviceList")
+    
+    
+    return
+}
+
+func NewDescribeAggrSoftDeviceListResponse() (response *DescribeAggrSoftDeviceListResponse) {
+    response = &DescribeAggrSoftDeviceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAggrSoftDeviceList
+// 聚合软件的已安装终端列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_DATABASEEXCEPTION = "InvalidParameter.DatabaseException"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) DescribeAggrSoftDeviceList(request *DescribeAggrSoftDeviceListRequest) (response *DescribeAggrSoftDeviceListResponse, err error) {
+    return c.DescribeAggrSoftDeviceListWithContext(context.Background(), request)
+}
+
+// DescribeAggrSoftDeviceList
+// 聚合软件的已安装终端列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_DATABASEEXCEPTION = "InvalidParameter.DatabaseException"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) DescribeAggrSoftDeviceListWithContext(ctx context.Context, request *DescribeAggrSoftDeviceListRequest) (response *DescribeAggrSoftDeviceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAggrSoftDeviceListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeAggrSoftDeviceList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAggrSoftDeviceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAggrSoftDeviceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDLPFileDetectResultRequest() (request *DescribeDLPFileDetectResultRequest) {
     request = &DescribeDLPFileDetectResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -523,6 +631,58 @@ func (c *Client) DescribeDeviceChildGroupsWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeDeviceChildGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceDetailListRequest() (request *DescribeDeviceDetailListRequest) {
+    request = &DescribeDeviceDetailListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDeviceDetailList")
+    
+    
+    return
+}
+
+func NewDescribeDeviceDetailListResponse() (response *DescribeDeviceDetailListResponse) {
+    response = &DescribeDeviceDetailListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceDetailList
+// 基于软件查看终端详情列表,私有化调用path为：capi/Software/DescribeDeviceDetailList
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) DescribeDeviceDetailList(request *DescribeDeviceDetailListRequest) (response *DescribeDeviceDetailListResponse, err error) {
+    return c.DescribeDeviceDetailListWithContext(context.Background(), request)
+}
+
+// DescribeDeviceDetailList
+// 基于软件查看终端详情列表,私有化调用path为：capi/Software/DescribeDeviceDetailList
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) DescribeDeviceDetailListWithContext(ctx context.Context, request *DescribeDeviceDetailListRequest) (response *DescribeDeviceDetailListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceDetailListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDeviceDetailList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceDetailList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceDetailListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1053,6 +1213,56 @@ func (c *Client) DescribeVirtualDevicesWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeVirtualDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportSoftwareInformationListRequest() (request *ExportSoftwareInformationListRequest) {
+    request = &ExportSoftwareInformationListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "ExportSoftwareInformationList")
+    
+    
+    return
+}
+
+func NewExportSoftwareInformationListResponse() (response *ExportSoftwareInformationListResponse) {
+    response = &ExportSoftwareInformationListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportSoftwareInformationList
+// 导出基于指定终端查看软件信息详情列表查询,私有化调用path为：capi/Software/ExportSoftwareInformationList
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) ExportSoftwareInformationList(request *ExportSoftwareInformationListRequest) (response *ExportSoftwareInformationListResponse, err error) {
+    return c.ExportSoftwareInformationListWithContext(context.Background(), request)
+}
+
+// ExportSoftwareInformationList
+// 导出基于指定终端查看软件信息详情列表查询,私有化调用path为：capi/Software/ExportSoftwareInformationList
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) ExportSoftwareInformationListWithContext(ctx context.Context, request *ExportSoftwareInformationListRequest) (response *ExportSoftwareInformationListResponse, err error) {
+    if request == nil {
+        request = NewExportSoftwareInformationListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "ExportSoftwareInformationList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportSoftwareInformationList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportSoftwareInformationListResponse()
     err = c.Send(request, response)
     return
 }
