@@ -40,7 +40,7 @@ func main() {
 	cpf.HttpProfile.Scheme = "http"
 
 	// 3. 替换 1.2.3.4 为真实的 nginx 地址, /tc_api 可以自定义
-	nginx := "9.134.89.153/tc_api"
+	nginx := "1.2.3.4/tc_api"
 	cpf.HttpProfile.Endpoint = nginx
 
 	client, err := cvm.NewClient(credential, regions.Guangzhou, cpf)
