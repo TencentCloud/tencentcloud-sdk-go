@@ -542,7 +542,9 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     })
 ```
 
-## http 正向代理
+## http 代理
+
+### 正向代理
 [DescribeInstances示例](examples/cvm/v20170312/describe_instances.go)
 ```go
     // with authentication
@@ -551,7 +553,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     clientProfile.HttpProfile.Proxy = "http://127.0.0.1:1080"
 ```
 
-## nginx 反向代理
+### nginx 反向代理
 [nginx反向代理示例](examples/cvm/v20170312/nginx.go)
 
 ## 请求重试
