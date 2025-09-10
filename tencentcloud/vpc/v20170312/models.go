@@ -27491,6 +27491,9 @@ type ModifyNatGatewayAttributeRequestParams struct {
 
 	// NAT网关绑定的安全组列表，最终状态，空列表表示删除所有安全组，形如: `['sg-1n232323', 'sg-o4242424']`
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// NAT实例是否开启删除保护
+	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
 }
 
 type ModifyNatGatewayAttributeRequest struct {
@@ -27510,6 +27513,9 @@ type ModifyNatGatewayAttributeRequest struct {
 
 	// NAT网关绑定的安全组列表，最终状态，空列表表示删除所有安全组，形如: `['sg-1n232323', 'sg-o4242424']`
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// NAT实例是否开启删除保护
+	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
 }
 
 func (r *ModifyNatGatewayAttributeRequest) ToJsonString() string {
@@ -27529,6 +27535,7 @@ func (r *ModifyNatGatewayAttributeRequest) FromJsonString(s string) error {
 	delete(f, "InternetMaxBandwidthOut")
 	delete(f, "ModifySecurityGroup")
 	delete(f, "SecurityGroupIds")
+	delete(f, "DeletionProtectionEnabled")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNatGatewayAttributeRequest has unknown keys!", "")
 	}
@@ -30273,6 +30280,9 @@ type NatGateway struct {
 
 	// NAT实例归属的专属集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// NAT实例是否开启删除保护
+	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
 }
 
 type NatGatewayAddress struct {
@@ -30884,6 +30894,9 @@ type PrivateNatGateway struct {
 
 	// 跨域私网NAT关联的云联网ID	
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 私网NAT是否开启删除保护
+	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
 }
 
 type PrivateNatGatewayLimit struct {

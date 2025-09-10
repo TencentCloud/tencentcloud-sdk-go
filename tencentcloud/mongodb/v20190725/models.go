@@ -5284,6 +5284,67 @@ func (r *SetBackupRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type SetDBInstanceDeletionProtectionRequestParams struct {
+	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 实例销毁保护选项，取值范围：0-关闭销毁保护，1-开启销毁保护
+	EnableDeletionProtection *uint64 `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+}
+
+type SetDBInstanceDeletionProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 实例销毁保护选项，取值范围：0-关闭销毁保护，1-开启销毁保护
+	EnableDeletionProtection *uint64 `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+}
+
+func (r *SetDBInstanceDeletionProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetDBInstanceDeletionProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "EnableDeletionProtection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetDBInstanceDeletionProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetDBInstanceDeletionProtectionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetDBInstanceDeletionProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *SetDBInstanceDeletionProtectionResponseParams `json:"Response"`
+}
+
+func (r *SetDBInstanceDeletionProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetDBInstanceDeletionProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SetInstanceMaintenanceRequestParams struct {
 	// 指定实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

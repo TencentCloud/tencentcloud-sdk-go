@@ -282,6 +282,7 @@ type AgentPluginInfo struct {
 	KnowledgeQa *AgentKnowledgeQAPlugin `json:"KnowledgeQa,omitnil,omitempty" name:"KnowledgeQa"`
 
 	// 是否使用一键授权
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableRoleAuth *bool `json:"EnableRoleAuth,omitnil,omitempty" name:"EnableRoleAuth"`
 
 	// 应用配置的插件query信息
@@ -3724,6 +3725,9 @@ func (r *DescribeKnowledgeUsageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNodeRunRequestParams struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
 	// 节点运行实例ID
 	NodeRunId *string `json:"NodeRunId,omitnil,omitempty" name:"NodeRunId"`
 }
@@ -3731,6 +3735,9 @@ type DescribeNodeRunRequestParams struct {
 type DescribeNodeRunRequest struct {
 	*tchttp.BaseRequest
 	
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
 	// 节点运行实例ID
 	NodeRunId *string `json:"NodeRunId,omitnil,omitempty" name:"NodeRunId"`
 }
@@ -3747,6 +3754,7 @@ func (r *DescribeNodeRunRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "AppBizId")
 	delete(f, "NodeRunId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodeRunRequest has unknown keys!", "")
@@ -4896,6 +4904,9 @@ func (r *DescribeUnsatisfiedReplyContextResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeWorkflowRunRequestParams struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
 	// 工作流运行实例ID
 	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
 }
@@ -4903,6 +4914,9 @@ type DescribeWorkflowRunRequestParams struct {
 type DescribeWorkflowRunRequest struct {
 	*tchttp.BaseRequest
 	
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
 	// 工作流运行实例ID
 	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
 }
@@ -4919,6 +4933,7 @@ func (r *DescribeWorkflowRunRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "AppBizId")
 	delete(f, "WorkflowRunId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkflowRunRequest has unknown keys!", "")
@@ -6632,6 +6647,9 @@ type KnowledgeBaseInfo struct {
 	// 知识库处理中状态标记，1：向量embedding变更中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessingFlags []*int64 `json:"ProcessingFlags,omitnil,omitempty" name:"ProcessingFlags"`
+
+	// 知识库拥有者的名字
+	OwnerStaffName *string `json:"OwnerStaffName,omitnil,omitempty" name:"OwnerStaffName"`
 }
 
 type KnowledgeCapacityPieGraphDetail struct {
@@ -8496,7 +8514,7 @@ type ListReleaseItem struct {
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 发布状态
+	// 发布状态，1：待发布，2：发布中，3：发布成功，5：发布失败
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 发布状态描述
@@ -8630,7 +8648,7 @@ func (r *ListReleaseQAPreviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListReleaseRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -8643,7 +8661,7 @@ type ListReleaseRequestParams struct {
 type ListReleaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -11993,6 +12011,9 @@ func (r *StopDocParseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopWorkflowRunRequestParams struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
 	// 工作流运行实例ID
 	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
 }
@@ -12000,6 +12021,9 @@ type StopWorkflowRunRequestParams struct {
 type StopWorkflowRunRequest struct {
 	*tchttp.BaseRequest
 	
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
 	// 工作流运行实例ID
 	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
 }
@@ -12016,6 +12040,7 @@ func (r *StopWorkflowRunRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "AppBizId")
 	delete(f, "WorkflowRunId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopWorkflowRunRequest has unknown keys!", "")

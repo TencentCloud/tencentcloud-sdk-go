@@ -6698,6 +6698,9 @@ type DescribeFirmwareRequestParams struct {
 
 	// 固件版本号
 	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
+
+	// 固件模块
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 type DescribeFirmwareRequest struct {
@@ -6708,6 +6711,9 @@ type DescribeFirmwareRequest struct {
 
 	// 固件版本号
 	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
+
+	// 固件模块
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 func (r *DescribeFirmwareRequest) ToJsonString() string {
@@ -6724,6 +6730,7 @@ func (r *DescribeFirmwareRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProductID")
 	delete(f, "FirmwareVersion")
+	delete(f, "FwType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirmwareRequest has unknown keys!", "")
 	}
@@ -6856,6 +6863,30 @@ type DescribeFirmwareTaskResponseParams struct {
 
 	// 创建账号ID昵称
 	CreatorNickName *string `json:"CreatorNickName,omitnil,omitempty" name:"CreatorNickName"`
+
+	// 延迟时间
+	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 超时时间
+	TimeoutInterval *uint64 `json:"TimeoutInterval,omitnil,omitempty" name:"TimeoutInterval"`
+
+	// 静默升级or用户确认升级
+	UpgradeMethod *uint64 `json:"UpgradeMethod,omitnil,omitempty" name:"UpgradeMethod"`
+
+	// 最大重试次数
+	MaxRetryNum *uint64 `json:"MaxRetryNum,omitnil,omitempty" name:"MaxRetryNum"`
+
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 重试间隔时间单位min
+	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
+
+	// 是否覆盖任务
+	OverrideMode *uint64 `json:"OverrideMode,omitnil,omitempty" name:"OverrideMode"`
+
+	// 用户自定义消息
+	TaskUserDefine *string `json:"TaskUserDefine,omitnil,omitempty" name:"TaskUserDefine"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -9433,6 +9464,9 @@ type GetCOSURLRequestParams struct {
 
 	// 文件大小
 	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 模块类型or固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 type GetCOSURLRequest struct {
@@ -9446,6 +9480,9 @@ type GetCOSURLRequest struct {
 
 	// 文件大小
 	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 模块类型or固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 func (r *GetCOSURLRequest) ToJsonString() string {
@@ -9463,6 +9500,7 @@ func (r *GetCOSURLRequest) FromJsonString(s string) error {
 	delete(f, "ProductID")
 	delete(f, "FirmwareVersion")
 	delete(f, "FileSize")
+	delete(f, "FwType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCOSURLRequest has unknown keys!", "")
 	}
@@ -9508,6 +9546,9 @@ type GetDeviceListRequestParams struct {
 	// 设备固件版本号，若不带此参数会返回所有固件版本的设备。传"None-FirmwareVersion"查询无版本号的设备
 	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
 
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
 	// 需要过滤的设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
@@ -9532,6 +9573,9 @@ type GetDeviceListRequest struct {
 
 	// 设备固件版本号，若不带此参数会返回所有固件版本的设备。传"None-FirmwareVersion"查询无版本号的设备
 	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
+
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
 	// 需要过滤的设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
@@ -9559,6 +9603,7 @@ func (r *GetDeviceListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "FirmwareVersion")
+	delete(f, "FwType")
 	delete(f, "DeviceName")
 	delete(f, "ProjectId")
 	delete(f, "Filters")
@@ -10728,6 +10773,18 @@ type InvokeAISearchServiceRequestParams struct {
 	// 注：
 	// 符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 取值为1表示高级搜索，取值为2表示简单搜索，默认为1
+	SearchMode *int64 `json:"SearchMode,omitnil,omitempty" name:"SearchMode"`
+
+	// 最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5
+	VectorSearchRadius *float64 `json:"VectorSearchRadius,omitnil,omitempty" name:"VectorSearchRadius"`
+
+	// 指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100
+	VectorSearchTopK *int64 `json:"VectorSearchTopK,omitnil,omitempty" name:"VectorSearchTopK"`
 }
 
 type InvokeAISearchServiceRequest struct {
@@ -10772,6 +10829,18 @@ type InvokeAISearchServiceRequest struct {
 	// 注：
 	// 符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 取值为1表示高级搜索，取值为2表示简单搜索，默认为1
+	SearchMode *int64 `json:"SearchMode,omitnil,omitempty" name:"SearchMode"`
+
+	// 最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5
+	VectorSearchRadius *float64 `json:"VectorSearchRadius,omitnil,omitempty" name:"VectorSearchRadius"`
+
+	// 指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100
+	VectorSearchTopK *int64 `json:"VectorSearchTopK,omitnil,omitempty" name:"VectorSearchTopK"`
 }
 
 func (r *InvokeAISearchServiceRequest) ToJsonString() string {
@@ -10795,6 +10864,10 @@ func (r *InvokeAISearchServiceRequest) FromJsonString(s string) error {
 	delete(f, "StartTimeMs")
 	delete(f, "EndTimeMs")
 	delete(f, "TimeZone")
+	delete(f, "SearchMode")
+	delete(f, "Limit")
+	delete(f, "VectorSearchRadius")
+	delete(f, "VectorSearchTopK")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeAISearchServiceRequest has unknown keys!", "")
 	}
@@ -13636,6 +13709,9 @@ type PublishFirmwareUpdateMessageRequestParams struct {
 
 	// 设备名称。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 type PublishFirmwareUpdateMessageRequest struct {
@@ -13646,6 +13722,9 @@ type PublishFirmwareUpdateMessageRequest struct {
 
 	// 设备名称。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 func (r *PublishFirmwareUpdateMessageRequest) ToJsonString() string {
@@ -13662,6 +13741,7 @@ func (r *PublishFirmwareUpdateMessageRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProductID")
 	delete(f, "DeviceName")
+	delete(f, "FwType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishFirmwareUpdateMessageRequest has unknown keys!", "")
 	}

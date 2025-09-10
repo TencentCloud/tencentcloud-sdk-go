@@ -5052,6 +5052,150 @@ func (r *DescribeProtectedTelCdrResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSessionDetailRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 通话的 session id
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
+
+	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+	EndTimestamp *int64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
+}
+
+type DescribeSessionDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 通话的 session id
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
+
+	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+	EndTimestamp *int64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
+}
+
+func (r *DescribeSessionDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSessionDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SessionId")
+	delete(f, "StartTimestamp")
+	delete(f, "EndTimestamp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSessionDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSessionDetailResponseParams struct {
+	// 主叫号码
+	Caller *string `json:"Caller,omitnil,omitempty" name:"Caller"`
+
+	// 被叫号码
+	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
+
+	// 通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫
+	CallType *int64 `json:"CallType,omitnil,omitempty" name:"CallType"`
+
+	// 开始时间戳，Unix 秒级时间戳
+	StartTimeStamp *int64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
+
+	// 振铃时间戳，UNIX 秒级时间戳
+	RingTimestamp *int64 `json:"RingTimestamp,omitnil,omitempty" name:"RingTimestamp"`
+
+	// 接听时间戳，UNIX 秒级时间戳
+	AcceptTimestamp *int64 `json:"AcceptTimestamp,omitnil,omitempty" name:"AcceptTimestamp"`
+
+	// 结束时间戳，UNIX 秒级时间戳
+	EndedTimestamp *int64 `json:"EndedTimestamp,omitnil,omitempty" name:"EndedTimestamp"`
+
+	// 进入排队时间，Unix 秒级时间戳
+	QueuedTimestamp *int64 `json:"QueuedTimestamp,omitnil,omitempty" name:"QueuedTimestamp"`
+
+	// 座席账号
+	StaffUserId *string `json:"StaffUserId,omitnil,omitempty" name:"StaffUserId"`
+
+	// 参考 DescribeTelCdr 接口 EndStatus 字段
+	EndStatus *int64 `json:"EndStatus,omitnil,omitempty" name:"EndStatus"`
+
+	// 排队技能组 ID
+	QueuedSkillGroupId *int64 `json:"QueuedSkillGroupId,omitnil,omitempty" name:"QueuedSkillGroupId"`
+
+	// 排队技能组名称
+	QueuedSkillGroupName *string `json:"QueuedSkillGroupName,omitnil,omitempty" name:"QueuedSkillGroupName"`
+
+	// 录音链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+	RecordURL *string `json:"RecordURL,omitnil,omitempty" name:"RecordURL"`
+
+	// 录音转存第三方 COS 链接
+	CustomRecordURL *string `json:"CustomRecordURL,omitnil,omitempty" name:"CustomRecordURL"`
+
+	// 录音文本信息链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+	AsrURL *string `json:"AsrURL,omitnil,omitempty" name:"AsrURL"`
+
+	// 语音留言录音链接
+	VoicemailRecordURL []*string `json:"VoicemailRecordURL,omitnil,omitempty" name:"VoicemailRecordURL"`
+
+	// 语音留言录音文本信息链接，需在控制台购买离线语音识别套餐包并开启离线语音识别开关
+	VoicemailAsrURL []*string `json:"VoicemailAsrURL,omitnil,omitempty" name:"VoicemailAsrURL"`
+
+	// IVR 按键信息
+	IVRKeyPressed []*IVRKeyPressedElement `json:"IVRKeyPressed,omitnil,omitempty" name:"IVRKeyPressed"`
+
+	// 满意度按键信息
+	PostIVRKeyPressed []*IVRKeyPressedElement `json:"PostIVRKeyPressed,omitnil,omitempty" name:"PostIVRKeyPressed"`
+
+	// 挂机方 seat 座席 user 用户 system 系统
+	HungUpSide *string `json:"HungUpSide,omitnil,omitempty" name:"HungUpSide"`
+
+	// 客户自定义数据（User-to-User Interface）
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+
+	// 通话中的事件列表
+	Events []*SessionEvent `json:"Events,omitnil,omitempty" name:"Events"`
+
+	// 服务参与者列表
+	ServeParticipants []*ServeParticipant `json:"ServeParticipants,omitnil,omitempty" name:"ServeParticipants"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSessionDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSessionDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeSessionDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSessionDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSkillGroupInfoListRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -5238,6 +5382,98 @@ func (r *DescribeStaffInfoListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStaffInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStaffStatusHistoryRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 座席账号
+	StaffUserId *string `json:"StaffUserId,omitnil,omitempty" name:"StaffUserId"`
+
+	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
+
+	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于 7 天。
+	EndTimestamp *int64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
+
+	// 分页检索时使用的游标
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
+
+	// 分页尺寸
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeStaffStatusHistoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 座席账号
+	StaffUserId *string `json:"StaffUserId,omitnil,omitempty" name:"StaffUserId"`
+
+	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
+
+	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于 7 天。
+	EndTimestamp *int64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
+
+	// 分页检索时使用的游标
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
+
+	// 分页尺寸
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeStaffStatusHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStaffStatusHistoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StaffUserId")
+	delete(f, "StartTimestamp")
+	delete(f, "EndTimestamp")
+	delete(f, "Cursor")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStaffStatusHistoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStaffStatusHistoryResponseParams struct {
+	// 座席状态数据
+	Data []*StaffStatus `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStaffStatusHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStaffStatusHistoryResponseParams `json:"Response"`
+}
+
+func (r *DescribeStaffStatusHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStaffStatusHistoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5745,6 +5981,19 @@ type ErrStaffItem struct {
 
 	// 错误描述
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
+type EventStaffDetail struct {
+	// 座席数据
+	Staffs []*EventStaffElement `json:"Staffs,omitnil,omitempty" name:"Staffs"`
+}
+
+type EventStaffElement struct {
+	// 座席邮箱账号
+	Mail *string `json:"Mail,omitnil,omitempty" name:"Mail"`
+
+	// 座席工号
+	StaffNumber *string `json:"StaffNumber,omitnil,omitempty" name:"StaffNumber"`
 }
 
 type ExtensionInfo struct {
@@ -6995,6 +7244,17 @@ type ServerPushText struct {
 	AddHistory *bool `json:"AddHistory,omitnil,omitempty" name:"AddHistory"`
 }
 
+type SessionEvent struct {
+	// 事件时间戳，Unix 秒级时间戳
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 事件类型，目前支持 StaffHold StaffUnhold StaffMute StaffUnmute
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 座席相关事件详情
+	StaffEventDetail *EventStaffDetail `json:"StaffEventDetail,omitnil,omitempty" name:"StaffEventDetail"`
+}
+
 type SkillGroupInfoItem struct {
 	// 技能组ID
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
@@ -7103,6 +7363,20 @@ type StaffSkillGroupList struct {
 
 	// 座席在技能组中的优先级（1为最高，5最低，默认3）
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type StaffStatus struct {
+	// 查询使用的游标，分页场景使用
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
+
+	// 状态时间戳，Unix 秒级时间戳
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 座席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 状态关联的会话 Id
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 type StaffStatusExtra struct {

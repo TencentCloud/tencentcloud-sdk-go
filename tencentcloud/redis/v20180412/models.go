@@ -701,6 +701,9 @@ type ClearInstanceRequestParams struct {
 	// - 免密访问：无需配置。
 	// - 密码认证：必须配置。字符个数为[8,64]，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 type ClearInstanceRequest struct {
@@ -713,6 +716,9 @@ type ClearInstanceRequest struct {
 	// - 免密访问：无需配置。
 	// - 密码认证：必须配置。字符个数为[8,64]，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 func (r *ClearInstanceRequest) ToJsonString() string {
@@ -729,6 +735,7 @@ func (r *ClearInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Password")
+	delete(f, "EncryptPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClearInstanceRequest has unknown keys!", "")
 	}
@@ -826,6 +833,9 @@ type CloneInstancesRequestParams struct {
 	// 克隆指定恢复数据的时间。
 	// 仅支持已开通秒级备份的实例
 	CloneTime *string `json:"CloneTime,omitnil,omitempty" name:"CloneTime"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 type CloneInstancesRequest struct {
@@ -895,6 +905,9 @@ type CloneInstancesRequest struct {
 	// 克隆指定恢复数据的时间。
 	// 仅支持已开通秒级备份的实例
 	CloneTime *string `json:"CloneTime,omitnil,omitempty" name:"CloneTime"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 func (r *CloneInstancesRequest) ToJsonString() string {
@@ -929,6 +942,7 @@ func (r *CloneInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TemplateId")
 	delete(f, "AlarmPolicyList")
 	delete(f, "CloneTime")
+	delete(f, "EncryptPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloneInstancesRequest has unknown keys!", "")
 	}
@@ -1050,12 +1064,15 @@ type CreateInstanceAccountRequestParams struct {
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
 
 	// 账户读写权限，支持选择只读与读写权限。
-	// - r：只读
-	// - rw: 读写权限
+	// - r：只读。
+	// - rw: 读写。
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 
-	// 子账号描述信息，长度[0,64] 字节，支持中文。
+	// 账号备注描述信息，长度为[0,64] 字节，支持中文。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 type CreateInstanceAccountRequest struct {
@@ -1081,12 +1098,15 @@ type CreateInstanceAccountRequest struct {
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
 
 	// 账户读写权限，支持选择只读与读写权限。
-	// - r：只读
-	// - rw: 读写权限
+	// - r：只读。
+	// - rw: 读写。
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 
-	// 子账号描述信息，长度[0,64] 字节，支持中文。
+	// 账号备注描述信息，长度为[0,64] 字节，支持中文。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 func (r *CreateInstanceAccountRequest) ToJsonString() string {
@@ -1107,6 +1127,7 @@ func (r *CreateInstanceAccountRequest) FromJsonString(s string) error {
 	delete(f, "ReadonlyPolicy")
 	delete(f, "Privilege")
 	delete(f, "Remark")
+	delete(f, "EncryptPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceAccountRequest has unknown keys!", "")
 	}
@@ -1115,7 +1136,7 @@ func (r *CreateInstanceAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceAccountResponseParams struct {
-	// 任务ID
+	// 任务ID。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1252,6 +1273,9 @@ type CreateInstancesRequestParams struct {
 	// - 请登录[腾讯云可观测平台-告警管理-策略管理](https://console.cloud.tencent.com/monitor/alarm/policy)获取告警策略 ID。
 	// - 若不配置该参数，则绑定默认告警策略。默认告警策略具体信息，请登录[腾讯云可观测平台-告警管理-策略管理](https://console.cloud.tencent.com/monitor/alarm/policy)查看。
 	AlarmPolicyList []*string `json:"AlarmPolicyList,omitnil,omitempty" name:"AlarmPolicyList"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 type CreateInstancesRequest struct {
@@ -1369,6 +1393,9 @@ type CreateInstancesRequest struct {
 	// - 请登录[腾讯云可观测平台-告警管理-策略管理](https://console.cloud.tencent.com/monitor/alarm/policy)获取告警策略 ID。
 	// - 若不配置该参数，则绑定默认告警策略。默认告警策略具体信息，请登录[腾讯云可观测平台-告警管理-策略管理](https://console.cloud.tencent.com/monitor/alarm/policy)查看。
 	AlarmPolicyList []*string `json:"AlarmPolicyList,omitnil,omitempty" name:"AlarmPolicyList"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -1409,6 +1436,7 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ProductVersion")
 	delete(f, "RedisClusterId")
 	delete(f, "AlarmPolicyList")
+	delete(f, "EncryptPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
@@ -1445,14 +1473,13 @@ func (r *CreateInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateParamTemplateRequestParams struct {
-	// 参数模板名称。
+	// 参数模板名称。字符长度要求为[2,64]。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 参数模板描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 产品类型。
-	// - 2：Redis 2.8 内存版（标准架构）。
 	// - 6：Redis 4.0 内存版（标准架构）。
 	// - 7：Redis 4.0 内存版（集群架构）。
 	// - 8：Redis 5.0 内存版（标准架构）。
@@ -1473,14 +1500,13 @@ type CreateParamTemplateRequestParams struct {
 type CreateParamTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模板名称。
+	// 参数模板名称。字符长度要求为[2,64]。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 参数模板描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 产品类型。
-	// - 2：Redis 2.8 内存版（标准架构）。
 	// - 6：Redis 4.0 内存版（标准架构）。
 	// - 7：Redis 4.0 内存版（集群架构）。
 	// - 8：Redis 5.0 内存版（标准架构）。
@@ -3013,14 +3039,14 @@ func (r *DescribeInstanceEventsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceLogDeliveryRequestParams struct {
-	// 实例ID。
+	// 实例ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeInstanceLogDeliveryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -3707,26 +3733,26 @@ func (r *DescribeInstanceNodeInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceParamRecordsRequestParams struct {
-	// 实例Id
+	// 实例 ID 。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 分页大小
+	// 分页大小。默认为100，最大值为 200。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 偏移量，取Limit整数倍，默认值为0。计算公式：offset=limit*(页码-1)。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeInstanceParamRecordsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 实例 ID 。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 分页大小
+	// 分页大小。默认为100，最大值为 200。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 偏移量，取Limit整数倍，默认值为0。计算公式：offset=limit*(页码-1)。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -3850,14 +3876,14 @@ func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceSecurityGroupRequestParams struct {
-	// 实例 ID 列表，数组长度限制[0,100]。例如：["crs-f2ho5rsz\n"]
+	// 实例 ID 列表，数组长度限制[0,100]。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type DescribeInstanceSecurityGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 列表，数组长度限制[0,100]。例如：["crs-f2ho5rsz\n"]
+	// 实例 ID 列表，数组长度限制[0,100]。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -7049,7 +7075,7 @@ type InstanceSet struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户APPID。APPID是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 APPID。
+	// 用户AppId。AppId是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 AppId。
 	Appid *int64 `json:"Appid,omitnil,omitempty" name:"Appid"`
 
 	// 项目 ID。
@@ -7240,6 +7266,9 @@ type InstanceSet struct {
 
 	// 备份模式：- SecondLevelBackup   秒级备份- NormalLevelBackup    普通备份
 	BackupMode *string `json:"BackupMode,omitnil,omitempty" name:"BackupMode"`
+
+	// 删除保护开关，0关闭，1开启
+	DeleteProtectionSwitch *int64 `json:"DeleteProtectionSwitch,omitnil,omitempty" name:"DeleteProtectionSwitch"`
 }
 
 type InstanceSlowlogDetail struct {
@@ -7556,6 +7585,9 @@ type ModfiyInstancePasswordRequestParams struct {
 	// - 不能以"/"开头。
 	// - 至少包含小写字母a - z、大写字母A - Z、数字0 - 9、特殊字符 ()~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 type ModfiyInstancePasswordRequest struct {
@@ -7572,6 +7604,9 @@ type ModfiyInstancePasswordRequest struct {
 	// - 不能以"/"开头。
 	// - 至少包含小写字母a - z、大写字母A - Z、数字0 - 9、特殊字符 ()~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 func (r *ModfiyInstancePasswordRequest) ToJsonString() string {
@@ -7589,6 +7624,7 @@ func (r *ModfiyInstancePasswordRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "OldPassword")
 	delete(f, "Password")
+	delete(f, "EncryptPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModfiyInstancePasswordRequest has unknown keys!", "")
 	}
@@ -7816,11 +7852,13 @@ type ModifyConnectionConfigRequestParams struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 附加带宽，大于0，单位MB。
+	// **说明**：Bandwidth 和 ClientLimit 参数不能同时为空，您必须至少选择其中一个进行配置。
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 单分片的总连接数。
 	// - 未开启副本只读时，下限为10000，上限为40000。
 	// - 开启副本只读时，下限为10000，上限为10000×(只读副本数+3)。
+	// **说明**：Bandwidth 和 ClientLimit 参数不能同时为空，您必须至少选择其中一个进行配置。
 	ClientLimit *int64 `json:"ClientLimit,omitnil,omitempty" name:"ClientLimit"`
 }
 
@@ -7831,11 +7869,13 @@ type ModifyConnectionConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 附加带宽，大于0，单位MB。
+	// **说明**：Bandwidth 和 ClientLimit 参数不能同时为空，您必须至少选择其中一个进行配置。
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 单分片的总连接数。
 	// - 未开启副本只读时，下限为10000，上限为40000。
 	// - 开启副本只读时，下限为10000，上限为10000×(只读副本数+3)。
+	// **说明**：Bandwidth 和 ClientLimit 参数不能同时为空，您必须至少选择其中一个进行配置。
 	ClientLimit *int64 `json:"ClientLimit,omitnil,omitempty" name:"ClientLimit"`
 }
 
@@ -7964,30 +8004,35 @@ type ModifyInstanceAccountRequestParams struct {
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 子账号名称，如果要修改主账号，填 root。
+	// 指定需修改的账号。
+	// - root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。
+	// - 自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 子账号密码。
+	// 指定所修改账号访问的密码。
 	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
 
-	// 子账号描述信息
+	// 账号描述信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 账号读写路由策略。
-	// - master：表示主节点。
-	// - replication：表示从节点。
+	// 指定所修改账号读写请求路由的策略。
+	// - master：表示读写请求路由至主节点。
+	// - replication：表示读写请求路由至从节点。
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
 
-	// 子账号读写策略。
+	// 指定所修改账号的读写权限。
 	// - r：只读。
 	// - w：只写。
 	// - rw：读写。
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 
-	// 指定是否将主账号切换为免密账号。这里只适用于主账号，子账号不可免密。
-	// - true：将主账号切换为免密账号。
-	// - false：不切换。
+	// 指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。
+	// - true：默认账号（root）设置为免密账号。
+	// - false：默认账号（root）不设置为免密账号。
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
+
+	// 指定所修改的账号是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 type ModifyInstanceAccountRequest struct {
@@ -7996,30 +8041,35 @@ type ModifyInstanceAccountRequest struct {
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 子账号名称，如果要修改主账号，填 root。
+	// 指定需修改的账号。
+	// - root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。
+	// - 自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 子账号密码。
+	// 指定所修改账号访问的密码。
 	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
 
-	// 子账号描述信息
+	// 账号描述信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 账号读写路由策略。
-	// - master：表示主节点。
-	// - replication：表示从节点。
+	// 指定所修改账号读写请求路由的策略。
+	// - master：表示读写请求路由至主节点。
+	// - replication：表示读写请求路由至从节点。
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
 
-	// 子账号读写策略。
+	// 指定所修改账号的读写权限。
 	// - r：只读。
 	// - w：只写。
 	// - rw：读写。
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 
-	// 指定是否将主账号切换为免密账号。这里只适用于主账号，子账号不可免密。
-	// - true：将主账号切换为免密账号。
-	// - false：不切换。
+	// 指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。
+	// - true：默认账号（root）设置为免密账号。
+	// - false：默认账号（root）不设置为免密账号。
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
+
+	// 指定所修改的账号是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 func (r *ModifyInstanceAccountRequest) ToJsonString() string {
@@ -8041,6 +8091,7 @@ func (r *ModifyInstanceAccountRequest) FromJsonString(s string) error {
 	delete(f, "ReadonlyPolicy")
 	delete(f, "Privilege")
 	delete(f, "NoAuth")
+	delete(f, "EncryptPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceAccountRequest has unknown keys!", "")
 	}
@@ -8049,7 +8100,7 @@ func (r *ModifyInstanceAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceAccountResponseParams struct {
-	// 任务ID
+	// 任务ID。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8652,6 +8703,7 @@ type ModifyInstanceRequestParams struct {
 	// - rename：表示实例重命名。
 	// - modifyProject：修改实例所属项目。
 	// - modifyAutoRenew：修改实例续费标记。
+	// - modifyDeleteProtectionSwitch：修改实例删除保护。
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。每次请求的实例数量的上限为10。
@@ -8668,6 +8720,9 @@ type ModifyInstanceRequestParams struct {
 	// - 1：自动续费。
 	// - 2：明确不自动续费。
 	AutoRenews []*int64 `json:"AutoRenews,omitnil,omitempty" name:"AutoRenews"`
+
+	// 删除保护开关。- 0：默认状态，指关闭。- 1：开关打开。
+	DeleteProtectionSwitches []*int64 `json:"DeleteProtectionSwitches,omitnil,omitempty" name:"DeleteProtectionSwitches"`
 
 	// 目前在废弃中，存量用户还可以使用，建议新用户使用 InstanceIds。
 	//
@@ -8692,6 +8747,7 @@ type ModifyInstanceRequest struct {
 	// - rename：表示实例重命名。
 	// - modifyProject：修改实例所属项目。
 	// - modifyAutoRenew：修改实例续费标记。
+	// - modifyDeleteProtectionSwitch：修改实例删除保护。
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。每次请求的实例数量的上限为10。
@@ -8708,6 +8764,9 @@ type ModifyInstanceRequest struct {
 	// - 1：自动续费。
 	// - 2：明确不自动续费。
 	AutoRenews []*int64 `json:"AutoRenews,omitnil,omitempty" name:"AutoRenews"`
+
+	// 删除保护开关。- 0：默认状态，指关闭。- 1：开关打开。
+	DeleteProtectionSwitches []*int64 `json:"DeleteProtectionSwitches,omitnil,omitempty" name:"DeleteProtectionSwitches"`
 
 	// 目前在废弃中，存量用户还可以使用，建议新用户使用 InstanceIds。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -8736,6 +8795,7 @@ func (r *ModifyInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceNames")
 	delete(f, "ProjectId")
 	delete(f, "AutoRenews")
+	delete(f, "DeleteProtectionSwitches")
 	delete(f, "InstanceId")
 	delete(f, "InstanceName")
 	delete(f, "AutoRenew")
@@ -9833,6 +9893,9 @@ type ResetPasswordRequestParams struct {
 	// - false：切换为非免密码实例。
 	// - true：切换为免密码实例。默认 false。
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 type ResetPasswordRequest struct {
@@ -9848,6 +9911,9 @@ type ResetPasswordRequest struct {
 	// - false：切换为非免密码实例。
 	// - true：切换为免密码实例。默认 false。
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
+
+	// 是否加密密码
+	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 func (r *ResetPasswordRequest) ToJsonString() string {
@@ -9865,6 +9931,7 @@ func (r *ResetPasswordRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "Password")
 	delete(f, "NoAuth")
+	delete(f, "EncryptPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetPasswordRequest has unknown keys!", "")
 	}
@@ -9917,10 +9984,10 @@ type ResourceTag struct {
 
 // Predefined struct for user
 type RestoreInstanceRequestParams struct {
-	// 待操作的实例ID，可通过 DescribeInstances 接口返回值中的 InstanceId 获取。
+	// 待操作的实例ID，可通过 [DescribeInstances](https://cloud.tencent.com/document/product/239/20018) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份ID，可通过 GetRedisBackupList 接口返回值中的 backupId 获取
+	// 备份ID，可通过 [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) 接口返回的参数 RedisBackupSet 获取。
 	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
 	// 实例密码，恢复实例时，需要校验实例密码（免密实例不需要传密码）
@@ -9930,10 +9997,10 @@ type RestoreInstanceRequestParams struct {
 type RestoreInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待操作的实例ID，可通过 DescribeInstances 接口返回值中的 InstanceId 获取。
+	// 待操作的实例ID，可通过 [DescribeInstances](https://cloud.tencent.com/document/product/239/20018) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份ID，可通过 GetRedisBackupList 接口返回值中的 backupId 获取
+	// 备份ID，可通过 [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) 接口返回的参数 RedisBackupSet 获取。
 	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
 	// 实例密码，恢复实例时，需要校验实例密码（免密实例不需要传密码）

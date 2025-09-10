@@ -490,7 +490,7 @@ type CreateRecTaskRequestParams struct {
 	// **注意：电话通讯场景，请务必使用以下8k引擎**
 	// • 8k_zh：中文电话通讯；
 	// • 8k_en：英文电话通讯；
-	// • 8k_zh_large：中文电话场景专用大模型引擎。通过显著提升模型参数规模与语言建模能力，实现对电话音频中复杂场景（如口音干扰、背景噪声）的高精度识别，识别准确率较常规版本大幅提升。[点击这里](https://console.cloud.tencent.com/asr/demonstrate) 对比常规版本与普方大模型效果；
+	// • 8k_zh_large：中文电话场景专用大模型引擎【大模型版】。通过显著提升模型参数规模与语言建模能力，实现对电话音频中复杂场景（如口音干扰、背景噪声）的高精度识别，识别准确率较常规版本大幅提升。[点击这里](https://console.cloud.tencent.com/asr/demonstrate) 对比常规版本与普方大模型效果；
 	// 
 	// 注意：如您有电话通讯场景识别需求，但发现需求语种仅支持16k，可将8k音频传入下方16k引擎，亦能获取识别结果。但**16k引擎并非基于电话通讯数据训练，无法承诺此种调用方式的识别效果，需由您自行验证识别结果是否可用**
 	// 
@@ -590,6 +590,7 @@ type CreateRecTaskRequestParams struct {
 	// 0：自动分离（最多分离出20个人）；
 	// 1-10：指定人数分离；
 	// 默认值为 0
+	// 注:16k引擎不支持指定人数分离
 	SpeakerNumber *int64 `json:"SpeakerNumber,omitnil,omitempty" name:"SpeakerNumber"`
 
 	// 热词表id
@@ -711,7 +712,7 @@ type CreateRecTaskRequest struct {
 	// **注意：电话通讯场景，请务必使用以下8k引擎**
 	// • 8k_zh：中文电话通讯；
 	// • 8k_en：英文电话通讯；
-	// • 8k_zh_large：中文电话场景专用大模型引擎。通过显著提升模型参数规模与语言建模能力，实现对电话音频中复杂场景（如口音干扰、背景噪声）的高精度识别，识别准确率较常规版本大幅提升。[点击这里](https://console.cloud.tencent.com/asr/demonstrate) 对比常规版本与普方大模型效果；
+	// • 8k_zh_large：中文电话场景专用大模型引擎【大模型版】。通过显著提升模型参数规模与语言建模能力，实现对电话音频中复杂场景（如口音干扰、背景噪声）的高精度识别，识别准确率较常规版本大幅提升。[点击这里](https://console.cloud.tencent.com/asr/demonstrate) 对比常规版本与普方大模型效果；
 	// 
 	// 注意：如您有电话通讯场景识别需求，但发现需求语种仅支持16k，可将8k音频传入下方16k引擎，亦能获取识别结果。但**16k引擎并非基于电话通讯数据训练，无法承诺此种调用方式的识别效果，需由您自行验证识别结果是否可用**
 	// 
@@ -811,6 +812,7 @@ type CreateRecTaskRequest struct {
 	// 0：自动分离（最多分离出20个人）；
 	// 1-10：指定人数分离；
 	// 默认值为 0
+	// 注:16k引擎不支持指定人数分离
 	SpeakerNumber *int64 `json:"SpeakerNumber,omitnil,omitempty" name:"SpeakerNumber"`
 
 	// 热词表id

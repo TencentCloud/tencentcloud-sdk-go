@@ -296,6 +296,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHCREATEINSTANCE = "AuthFailure.UnAuthCreateInstance"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CDCQUOTAINSUFFICIENT = "FailedOperation.CdcQuotaInsufficient"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
@@ -349,6 +350,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHCREATEINSTANCE = "AuthFailure.UnAuthCreateInstance"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CDCQUOTAINSUFFICIENT = "FailedOperation.CdcQuotaInsufficient"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
@@ -3700,6 +3702,7 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
 // 以上参数组合只能传递一种，多传或少传均会导致请求失败
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CDCQUOTAINSUFFICIENT = "FailedOperation.CdcQuotaInsufficient"
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ESDICTIONARYINFOERROR = "FailedOperation.EsDictionaryInfoError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
@@ -3763,6 +3766,7 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
 //  UNSUPPORTEDOPERATION_CVMSTATUSSTOPPED = "UnsupportedOperation.CvmStatusStopped"
 //  UNSUPPORTEDOPERATION_HETEROSCALINGEXECUTING = "UnsupportedOperation.HeteroScalingExecuting"
 //  UNSUPPORTEDOPERATION_INDEXSETTINGSREQUIRESET = "UnsupportedOperation.IndexSettingsRequireSet"
+//  UNSUPPORTEDOPERATION_KERNELNOTSUPPORTGPU = "UnsupportedOperation.KernelNotSupportGpu"
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
@@ -3793,6 +3797,7 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
 // 以上参数组合只能传递一种，多传或少传均会导致请求失败
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CDCQUOTAINSUFFICIENT = "FailedOperation.CdcQuotaInsufficient"
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ESDICTIONARYINFOERROR = "FailedOperation.EsDictionaryInfoError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
@@ -3856,6 +3861,7 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
 //  UNSUPPORTEDOPERATION_CVMSTATUSSTOPPED = "UnsupportedOperation.CvmStatusStopped"
 //  UNSUPPORTEDOPERATION_HETEROSCALINGEXECUTING = "UnsupportedOperation.HeteroScalingExecuting"
 //  UNSUPPORTEDOPERATION_INDEXSETTINGSREQUIRESET = "UnsupportedOperation.IndexSettingsRequireSet"
+//  UNSUPPORTEDOPERATION_KERNELNOTSUPPORTGPU = "UnsupportedOperation.KernelNotSupportGpu"
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"

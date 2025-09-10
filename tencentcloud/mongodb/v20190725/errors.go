@@ -38,6 +38,9 @@ const (
 	// 实例锁定中不允许操作。
 	FAILEDOPERATION_OPERATIONNOTALLOWEDININSTANCELOCKING = "FailedOperation.OperationNotAllowedInInstanceLocking"
 
+	// 实例已开启透明加密，不允许物理备份。
+	FAILEDOPERATION_TRANSPARENTDATAENCRYPTIONALREADYOPEN = "FailedOperation.TransparentDataEncryptionAlreadyOpen"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

@@ -2841,6 +2841,62 @@ func (c *Client) DescribeProtectedTelCdrWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeSessionDetailRequest() (request *DescribeSessionDetailRequest) {
+    request = &DescribeSessionDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeSessionDetail")
+    
+    
+    return
+}
+
+func NewDescribeSessionDetailResponse() (response *DescribeSessionDetailResponse) {
+    response = &DescribeSessionDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSessionDetail
+// 获取通话详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeSessionDetail(request *DescribeSessionDetailRequest) (response *DescribeSessionDetailResponse, err error) {
+    return c.DescribeSessionDetailWithContext(context.Background(), request)
+}
+
+// DescribeSessionDetail
+// 获取通话详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeSessionDetailWithContext(ctx context.Context, request *DescribeSessionDetailRequest) (response *DescribeSessionDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeSessionDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ccc", APIVersion, "DescribeSessionDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSessionDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSessionDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSkillGroupInfoListRequest() (request *DescribeSkillGroupInfoListRequest) {
     request = &DescribeSkillGroupInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2951,6 +3007,58 @@ func (c *Client) DescribeStaffInfoListWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeStaffInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStaffStatusHistoryRequest() (request *DescribeStaffStatusHistoryRequest) {
+    request = &DescribeStaffStatusHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeStaffStatusHistory")
+    
+    
+    return
+}
+
+func NewDescribeStaffStatusHistoryResponse() (response *DescribeStaffStatusHistoryResponse) {
+    response = &DescribeStaffStatusHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStaffStatusHistory
+// 查询座席状态历史
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeStaffStatusHistory(request *DescribeStaffStatusHistoryRequest) (response *DescribeStaffStatusHistoryResponse, err error) {
+    return c.DescribeStaffStatusHistoryWithContext(context.Background(), request)
+}
+
+// DescribeStaffStatusHistory
+// 查询座席状态历史
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeStaffStatusHistoryWithContext(ctx context.Context, request *DescribeStaffStatusHistoryRequest) (response *DescribeStaffStatusHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeStaffStatusHistoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ccc", APIVersion, "DescribeStaffStatusHistory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStaffStatusHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStaffStatusHistoryResponse()
     err = c.Send(request, response)
     return
 }

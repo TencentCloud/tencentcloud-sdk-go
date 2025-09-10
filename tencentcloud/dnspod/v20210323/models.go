@@ -8686,6 +8686,9 @@ type UserInfo struct {
 
 	// 所属 DNS 服务器
 	FreeNs []*string `json:"FreeNs,omitnil,omitempty" name:"FreeNs"`
+
+	// 用户是否允许任何人转移域名到本账号
+	AllowTransferIn *bool `json:"AllowTransferIn,omitnil,omitempty" name:"AllowTransferIn"`
 }
 
 type VASStatisticItem struct {

@@ -479,6 +479,8 @@ func NewBusInvoiceOCRResponse() (response *BusInvoiceOCRResponse) {
 }
 
 // BusInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持识别公路汽车客票关键字段的识别，包括发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市、开票日期、乘车地点、检票口、客票类型、车型、座位号、车次等。
 //
 // 
@@ -501,6 +503,8 @@ func (c *Client) BusInvoiceOCR(request *BusInvoiceOCRRequest) (response *BusInvo
 }
 
 // BusInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持识别公路汽车客票关键字段的识别，包括发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市、开票日期、乘车地点、检票口、客票类型、车型、座位号、车次等。
 //
 // 
@@ -989,6 +993,8 @@ func NewDutyPaidProofOCRResponse() (response *DutyPaidProofOCRResponse) {
 }
 
 // DutyPaidProofOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持对完税证明的税号、纳税人识别号、纳税人名称、金额合计大写、金额合计小写、填发日期、税务机关、填票人等关键字段的识别。
 //
 // 
@@ -1011,6 +1017,8 @@ func (c *Client) DutyPaidProofOCR(request *DutyPaidProofOCRRequest) (response *D
 }
 
 // DutyPaidProofOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持对完税证明的税号、纳税人识别号、纳税人名称、金额合计大写、金额合计小写、填发日期、税务机关、填票人等关键字段的识别。
 //
 // 
@@ -1621,6 +1629,8 @@ func NewFinanBillOCRResponse() (response *FinanBillOCRResponse) {
 }
 
 // FinanBillOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持常见银行票据的自动分类和识别。整单识别包括支票（含现金支票、普通支票、转账支票），承兑汇票（含银行承兑汇票、商业承兑汇票）以及进账单等，适用于中国人民银行印发的 2010 版银行票据凭证版式（银发[2010]299 号）。
 //
 // 
@@ -1643,6 +1653,8 @@ func (c *Client) FinanBillOCR(request *FinanBillOCRRequest) (response *FinanBill
 }
 
 // FinanBillOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持常见银行票据的自动分类和识别。整单识别包括支票（含现金支票、普通支票、转账支票），承兑汇票（含银行承兑汇票、商业承兑汇票）以及进账单等，适用于中国人民银行印发的 2010 版银行票据凭证版式（银发[2010]299 号）。
 //
 // 
@@ -1697,6 +1709,8 @@ func NewFinanBillSliceOCRResponse() (response *FinanBillSliceOCRResponse) {
 }
 
 // FinanBillSliceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持常见银行票据的自动分类和识别。切片识别包括金融行业常见票据的重要切片字段识别，包括金额、账号、日期、凭证号码等。（金融票据切片：金融票据中待识别字段及其周围局部区域的裁剪图像。）
 //
 // 
@@ -1720,6 +1734,8 @@ func (c *Client) FinanBillSliceOCR(request *FinanBillSliceOCRRequest) (response 
 }
 
 // FinanBillSliceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持常见银行票据的自动分类和识别。切片识别包括金融行业常见票据的重要切片字段识别，包括金额、账号、日期、凭证号码等。（金融票据切片：金融票据中待识别字段及其周围局部区域的裁剪图像。）
 //
 // 
@@ -1775,6 +1791,8 @@ func NewFlightInvoiceOCRResponse() (response *FlightInvoiceOCRResponse) {
 }
 
 // FlightInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持机票行程单关键字段的识别，包括旅客姓名、有效身份证件号码、电子客票号码、验证码、填开单位、其他税费、燃油附加费、民航发展基金、保险费、销售单位代号、始发地、目的地、航班号、时间、日期、座位等级、承运人、发票消费类型、票价、合计金额、填开日期、国内国际标签、印刷序号、客票级别/类别、客票生效日期、有效期截止日期、免费行李等字段，支持航班信息多行明细输出。
 //
 // 
@@ -1797,6 +1815,8 @@ func (c *Client) FlightInvoiceOCR(request *FlightInvoiceOCRRequest) (response *F
 }
 
 // FlightInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持机票行程单关键字段的识别，包括旅客姓名、有效身份证件号码、电子客票号码、验证码、填开单位、其他税费、燃油附加费、民航发展基金、保险费、销售单位代号、始发地、目的地、航班号、时间、日期、座位等级、承运人、发票消费类型、票价、合计金额、填开日期、国内国际标签、印刷序号、客票级别/类别、客票生效日期、有效期截止日期、免费行李等字段，支持航班信息多行明细输出。
 //
 // 
@@ -3729,6 +3749,8 @@ func NewInstitutionOCRResponse() (response *InstitutionOCRResponse) {
 }
 
 // InstitutionOCR
+// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
+//
 // 本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
 //
 // 
@@ -3751,6 +3773,8 @@ func (c *Client) InstitutionOCR(request *InstitutionOCRRequest) (response *Insti
 }
 
 // InstitutionOCR
+// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
+//
 // 本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
 //
 // 
@@ -3885,6 +3909,8 @@ func NewInvoiceGeneralOCRResponse() (response *InvoiceGeneralOCRResponse) {
 }
 
 // InvoiceGeneralOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持对通用机打发票的发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章、发票名称、购买方地址、电话、销售方地址、电话、购买方开户行及账号、销售方开户行及账号、经办人取票用户、经办人支付信息、经办人商户号、经办人订单号、货物或应税劳务、服务名称、数量、单价、税率、税额、金额、单位、规格型号、合计税额、合计金额、备注、收款人、复核、开票人、密码区、行业分类等字段的识别。
 //
 // 
@@ -3907,6 +3933,8 @@ func (c *Client) InvoiceGeneralOCR(request *InvoiceGeneralOCRRequest) (response 
 }
 
 // InvoiceGeneralOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持对通用机打发票的发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章、发票名称、购买方地址、电话、销售方地址、电话、购买方开户行及账号、销售方开户行及账号、经办人取票用户、经办人支付信息、经办人商户号、经办人订单号、货物或应税劳务、服务名称、数量、单价、税率、税额、金额、单位、规格型号、合计税额、合计金额、备注、收款人、复核、开票人、密码区、行业分类等字段的识别。
 //
 // 
@@ -4429,6 +4457,8 @@ func NewOrgCodeCertOCRResponse() (response *OrgCodeCertOCRResponse) {
 }
 
 // OrgCodeCertOCR
+// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
+//
 // 本接口支持组织机构代码证关键字段的识别，包括代码、有效期、地址、机构名称等。
 //
 // 
@@ -4450,6 +4480,8 @@ func (c *Client) OrgCodeCertOCR(request *OrgCodeCertOCRRequest) (response *OrgCo
 }
 
 // OrgCodeCertOCR
+// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
+//
 // 本接口支持组织机构代码证关键字段的识别，包括代码、有效期、地址、机构名称等。
 //
 // 
@@ -4503,6 +4535,10 @@ func NewPassportOCRResponse() (response *PassportOCRResponse) {
 }
 
 // PassportOCR
+// <b>此接口为护照识别（中国大陆地区护照）的旧版本服务，不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/37657">护照识别（多国多地区护照）</a>。</b>
+//
+// 
+//
 // 本接口支持中国大陆地区护照个人资料页多个字段的检测与识别。已支持字段包括英文姓名、中文姓名、国家码、护照号、出生地、出生日期、国籍英文、性别英文、有效期、签发地点英文、签发日期、持证人签名、护照机读码（MRZ码）等。
 //
 // 
@@ -4526,6 +4562,10 @@ func (c *Client) PassportOCR(request *PassportOCRRequest) (response *PassportOCR
 }
 
 // PassportOCR
+// <b>此接口为护照识别（中国大陆地区护照）的旧版本服务，不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/37657">护照识别（多国多地区护照）</a>。</b>
+//
+// 
+//
 // 本接口支持中国大陆地区护照个人资料页多个字段的检测与识别。已支持字段包括英文姓名、中文姓名、国家码、护照号、出生地、出生日期、国籍英文、性别英文、有效期、签发地点英文、签发日期、持证人签名、护照机读码（MRZ码）等。
 //
 // 
@@ -4655,6 +4695,8 @@ func NewPropOwnerCertOCRResponse() (response *PropOwnerCertOCRResponse) {
 }
 
 // PropOwnerCertOCR
+// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
+//
 // 本接口支持房产证关键字段的识别，包括房地产权利人、共有情况、登记时间、规划用途、房屋性质、房屋坐落等。
 //
 // 目前接口对合肥、成都、佛山三个城市的房产证版式识别较好。
@@ -4682,6 +4724,8 @@ func (c *Client) PropOwnerCertOCR(request *PropOwnerCertOCRRequest) (response *P
 }
 
 // PropOwnerCertOCR
+// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
+//
 // 本接口支持房产证关键字段的识别，包括房地产权利人、共有情况、登记时间、规划用途、房屋性质、房屋坐落等。
 //
 // 目前接口对合肥、成都、佛山三个城市的房产证版式识别较好。
@@ -4979,6 +5023,8 @@ func NewQuotaInvoiceOCRResponse() (response *QuotaInvoiceOCRResponse) {
 }
 
 // QuotaInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持定额发票的发票号码、发票代码、金额(大小写)、发票消费类型、地区及是否有公司印章等关键字段的识别。
 //
 // 
@@ -5001,6 +5047,8 @@ func (c *Client) QuotaInvoiceOCR(request *QuotaInvoiceOCRRequest) (response *Quo
 }
 
 // QuotaInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持定额发票的发票号码、发票代码、金额(大小写)、发票消费类型、地区及是否有公司印章等关键字段的识别。
 //
 // 
@@ -5415,6 +5463,8 @@ func NewRecognizeForeignPermanentResidentIdCardResponse() (response *RecognizeFo
 }
 
 // RecognizeForeignPermanentResidentIdCard
+// <b>因技术原因，本接口将不再迭代升级。有效身份证件识别（鉴伪版）可支持此类证件的识别，并包含质量和PS告警，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/112345">有效身份证件识别（鉴伪版）</a>。</b>
+//
 // 外国人永久居留身份证识别
 //
 // 可能返回的错误码:
@@ -5433,6 +5483,8 @@ func (c *Client) RecognizeForeignPermanentResidentIdCard(request *RecognizeForei
 }
 
 // RecognizeForeignPermanentResidentIdCard
+// <b>因技术原因，本接口将不再迭代升级。有效身份证件识别（鉴伪版）可支持此类证件的识别，并包含质量和PS告警，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/112345">有效身份证件识别（鉴伪版）</a>。</b>
+//
 // 外国人永久居留身份证识别
 //
 // 可能返回的错误码:
@@ -6509,6 +6561,8 @@ func NewRecognizeGeneralTextImageWarnResponse() (response *RecognizeGeneralTextI
 }
 
 // RecognizeGeneralTextImageWarn
+// <b>因技术原因，本接口将不再迭代升级。通用卡证鉴伪可支持更多告警类型，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/115916">通用卡证鉴伪</a>。</b>
+//
 // 本接口支持多种类型证件有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能。可以应用于各种证件信息有效性校验场景，例如银行开户、用户注册等场景。
 //
 // 可能返回的错误码:
@@ -6527,6 +6581,8 @@ func (c *Client) RecognizeGeneralTextImageWarn(request *RecognizeGeneralTextImag
 }
 
 // RecognizeGeneralTextImageWarn
+// <b>因技术原因，本接口将不再迭代升级。通用卡证鉴伪可支持更多告警类型，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/115916">通用卡证鉴伪</a>。</b>
+//
 // 本接口支持多种类型证件有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能。可以应用于各种证件信息有效性校验场景，例如银行开户、用户注册等场景。
 //
 // 可能返回的错误码:
@@ -7707,6 +7763,8 @@ func NewShipInvoiceOCRResponse() (response *ShipInvoiceOCRResponse) {
 }
 
 // ShipInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持识别轮船票的发票代码、发票号码、日期、姓名、票价、始发地、目的地、姓名、时间、发票消费类型、省、市、币种字段。
 //
 // 
@@ -7729,6 +7787,8 @@ func (c *Client) ShipInvoiceOCR(request *ShipInvoiceOCRRequest) (response *ShipI
 }
 
 // ShipInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持识别轮船票的发票代码、发票号码、日期、姓名、票价、始发地、目的地、姓名、时间、发票消费类型、省、市、币种字段。
 //
 // 
@@ -8103,6 +8163,8 @@ func NewTollInvoiceOCRResponse() (response *TollInvoiceOCRResponse) {
 }
 
 // TollInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持过路过桥费发票关键字段的识别，包括发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志等。
 //
 // 
@@ -8125,6 +8187,8 @@ func (c *Client) TollInvoiceOCR(request *TollInvoiceOCRRequest) (response *TollI
 }
 
 // TollInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持过路过桥费发票关键字段的识别，包括发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志等。
 //
 // 
@@ -8433,6 +8497,8 @@ func NewVatRollInvoiceOCRResponse() (response *VatRollInvoiceOCRResponse) {
 }
 
 // VatRollInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持对增值税发票（卷票）关键字段的识别，包括的发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、单价、金额、数量、服务类型、品名、种类等。
 //
 // 
@@ -8455,6 +8521,8 @@ func (c *Client) VatRollInvoiceOCR(request *VatRollInvoiceOCRRequest) (response 
 }
 
 // VatRollInvoiceOCR
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
+//
 // 本接口支持对增值税发票（卷票）关键字段的识别，包括的发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、单价、金额、数量、服务类型、品名、种类等。
 //
 // 

@@ -1199,6 +1199,7 @@ func NewRunApplicationResponse() (response *RunApplicationResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_EMAILCOUNTLIMITEXCEEDED = "FailedOperation.EmailCountLimitExceeded"
 //  FAILEDOPERATION_VERSIONNOTRELEASED = "FailedOperation.VersionNotReleased"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1208,10 +1209,12 @@ func NewRunApplicationResponse() (response *RunApplicationResponse) {
 //  INVALIDPARAMETERVALUE_ENVIRONMENTNOTAVAILABLE = "InvalidParameterValue.EnvironmentNotAvailable"
 //  INVALIDPARAMETERVALUE_INVALIDBASE64ENCODE = "InvalidParameterValue.InvalidBase64Encode"
 //  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
+//  INVALIDPARAMETERVALUE_INVALIDEMAILFORMAT = "InvalidParameterValue.InvalidEmailFormat"
 //  INVALIDPARAMETERVALUE_INVALIDINPUTJSONFORMAT = "InvalidParameterValue.InvalidInputJsonFormat"
 //  INVALIDPARAMETERVALUE_INVALIDINPUTPLACEHOLDER = "InvalidParameterValue.InvalidInputPlaceholder"
 //  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
 //  INVALIDPARAMETERVALUE_INVALIDRUNOPTION = "InvalidParameterValue.InvalidRunOption"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEOUTMINUTES = "InvalidParameterValue.InvalidTimeoutMinutes"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATIONNOTEXIST = "ResourceNotFound.ApplicationNotExist"
@@ -1229,6 +1232,7 @@ func (c *Client) RunApplication(request *RunApplicationRequest) (response *RunAp
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_EMAILCOUNTLIMITEXCEEDED = "FailedOperation.EmailCountLimitExceeded"
 //  FAILEDOPERATION_VERSIONNOTRELEASED = "FailedOperation.VersionNotReleased"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1238,10 +1242,12 @@ func (c *Client) RunApplication(request *RunApplicationRequest) (response *RunAp
 //  INVALIDPARAMETERVALUE_ENVIRONMENTNOTAVAILABLE = "InvalidParameterValue.EnvironmentNotAvailable"
 //  INVALIDPARAMETERVALUE_INVALIDBASE64ENCODE = "InvalidParameterValue.InvalidBase64Encode"
 //  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
+//  INVALIDPARAMETERVALUE_INVALIDEMAILFORMAT = "InvalidParameterValue.InvalidEmailFormat"
 //  INVALIDPARAMETERVALUE_INVALIDINPUTJSONFORMAT = "InvalidParameterValue.InvalidInputJsonFormat"
 //  INVALIDPARAMETERVALUE_INVALIDINPUTPLACEHOLDER = "InvalidParameterValue.InvalidInputPlaceholder"
 //  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
 //  INVALIDPARAMETERVALUE_INVALIDRUNOPTION = "InvalidParameterValue.InvalidRunOption"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEOUTMINUTES = "InvalidParameterValue.InvalidTimeoutMinutes"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATIONNOTEXIST = "ResourceNotFound.ApplicationNotExist"

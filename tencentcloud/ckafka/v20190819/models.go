@@ -823,7 +823,7 @@ type ClusterInfo struct {
 }
 
 type Config struct {
-	// 消息保留时间
+	// 消息保留时间，单位ms。
 	Retention *int64 `json:"Retention,omitnil,omitempty" name:"Retention"`
 
 	// 最小同步复制数
@@ -835,7 +835,7 @@ type Config struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CleanUpPolicy *string `json:"CleanUpPolicy,omitnil,omitempty" name:"CleanUpPolicy"`
 
-	// Segment 分片滚动的时长
+	// Segment 分片滚动的时长，单位ms。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
@@ -843,19 +843,19 @@ type Config struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
-	// Segment 分片滚动的字节数
+	// Segment 分片滚动的字节数，单位bytes
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentBytes *int64 `json:"SegmentBytes,omitnil,omitempty" name:"SegmentBytes"`
 
-	// 最大消息字节数
+	// 最大消息字节数，单位bytes
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
 
-	// 消息保留文件大小
+	// 消息保留文件大小，单位Bytes
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 
-	// 消息保存的时间类型
+	// 消息保存的时间类型，CreateTime表示生产者创建这条消息的时间;LogAppendTime表示broker接收到消息的时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogMsgTimestampType *string `json:"LogMsgTimestampType,omitnil,omitempty" name:"LogMsgTimestampType"`
 }
@@ -1791,7 +1791,7 @@ type CreateInstancePreRequestParams struct {
 	// 可用区。当购买多可用区实例时，当前参数为主可用区。  [查看可用区](https://cloud.tencent.com/document/product/597/55246)
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 预付费购买时长，例如 "1m",就是一个月
+	// 预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
@@ -1861,7 +1861,7 @@ type CreateInstancePreRequest struct {
 	// 可用区。当购买多可用区实例时，当前参数为主可用区。  [查看可用区](https://cloud.tencent.com/document/product/597/55246)
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 预付费购买时长，例如 "1m",就是一个月
+	// 预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
@@ -2350,7 +2350,10 @@ type CreateRouteRequestParams struct {
 	// vpc子网id,当vipType为3时必填
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl,默认为0
+	// 访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0
+	// vipType=3,支持 0,1,3,4,5
+	// vipType=7,支持0,1,3
+	// vipType=1,支持1,3
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 是否需要权限管理,该字段已废弃
@@ -2381,7 +2384,10 @@ type CreateRouteRequest struct {
 	// vpc子网id,当vipType为3时必填
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl,默认为0
+	// 访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0
+	// vipType=3,支持 0,1,3,4,5
+	// vipType=7,支持0,1,3
+	// vipType=1,支持1,3
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 是否需要权限管理,该字段已废弃
@@ -2586,7 +2592,7 @@ func (r *CreateTopicIpWhiteListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicRequestParams struct {
-	// 实例Id
+	// 实例Id，可通过DescribeInstances接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 只能包含字母、数字、下划线、“-”、“.”
@@ -2607,22 +2613,22 @@ type CreateTopicRequestParams struct {
 	// 清理日志策略，日志清理模式，默认为"delete"。"delete"：日志按保存时间删除，"compact"：日志按 key 压缩，"compact, delete"：日志按 key 压缩且会按保存时间删除。
 	CleanUpPolicy *string `json:"CleanUpPolicy,omitnil,omitempty" name:"CleanUpPolicy"`
 
-	// 主题备注，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// 主题备注，是一个不超过 64 个字符的字符串，可以用字母和数字为首字符，剩余部分可以包含字母、数字和横划线(-)
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 默认为1
+	// 最小同步副本数，默认为1
 	MinInsyncReplicas *int64 `json:"MinInsyncReplicas,omitnil,omitempty" name:"MinInsyncReplicas"`
 
-	// 是否允许未同步的副本选为leader，false:不允许，true:允许，默认不允许
+	// 是否允许未同步的副本选为leader，0:不允许，1:允许，默认不允许
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
-	// 可选参数。消息保留时间，单位ms，当前最小值为60000ms
+	// 可选参数。消息保留时间，单位ms，当前最小值为60000。默认值为7200000ms（2小时），最大值为7776000000 ms（90天）。
 	RetentionMs *int64 `json:"RetentionMs,omitnil,omitempty" name:"RetentionMs"`
 
-	// Segment分片滚动的时长，单位ms，当前最小为3600000ms
+	// Segment分片滚动的时长，单位ms，最小值为86400000ms（1天）。
 	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
-	// 主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为12582912Byte（即12MB）
+	// 主题消息最大值，单位为 Byte，最小值1024Bytes(即1KB)，最大值为12582912Bytes（即12MB）
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
 
 	// 预设ACL规则, 1:打开  0:关闭，默认不打开
@@ -2631,7 +2637,7 @@ type CreateTopicRequestParams struct {
 	// 预设ACL规则的名称
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
-	// 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+	// 可选, 保留文件大小. 默认为-1,单位Byte, 当前最小值为1073741824。
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 
 	// 标签列表
@@ -2641,7 +2647,7 @@ type CreateTopicRequestParams struct {
 type CreateTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 实例Id，可通过DescribeInstances接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 只能包含字母、数字、下划线、“-”、“.”
@@ -2662,22 +2668,22 @@ type CreateTopicRequest struct {
 	// 清理日志策略，日志清理模式，默认为"delete"。"delete"：日志按保存时间删除，"compact"：日志按 key 压缩，"compact, delete"：日志按 key 压缩且会按保存时间删除。
 	CleanUpPolicy *string `json:"CleanUpPolicy,omitnil,omitempty" name:"CleanUpPolicy"`
 
-	// 主题备注，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// 主题备注，是一个不超过 64 个字符的字符串，可以用字母和数字为首字符，剩余部分可以包含字母、数字和横划线(-)
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 默认为1
+	// 最小同步副本数，默认为1
 	MinInsyncReplicas *int64 `json:"MinInsyncReplicas,omitnil,omitempty" name:"MinInsyncReplicas"`
 
-	// 是否允许未同步的副本选为leader，false:不允许，true:允许，默认不允许
+	// 是否允许未同步的副本选为leader，0:不允许，1:允许，默认不允许
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
-	// 可选参数。消息保留时间，单位ms，当前最小值为60000ms
+	// 可选参数。消息保留时间，单位ms，当前最小值为60000。默认值为7200000ms（2小时），最大值为7776000000 ms（90天）。
 	RetentionMs *int64 `json:"RetentionMs,omitnil,omitempty" name:"RetentionMs"`
 
-	// Segment分片滚动的时长，单位ms，当前最小为3600000ms
+	// Segment分片滚动的时长，单位ms，最小值为86400000ms（1天）。
 	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
-	// 主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为12582912Byte（即12MB）
+	// 主题消息最大值，单位为 Byte，最小值1024Bytes(即1KB)，最大值为12582912Bytes（即12MB）
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
 
 	// 预设ACL规则, 1:打开  0:关闭，默认不打开
@@ -2686,7 +2692,7 @@ type CreateTopicRequest struct {
 	// 预设ACL规则的名称
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
-	// 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+	// 可选, 保留文件大小. 默认为-1,单位Byte, 当前最小值为1073741824。
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 
 	// 标签列表
@@ -4434,7 +4440,7 @@ type DescribeConnectResourceResp struct {
 
 // Predefined struct for user
 type DescribeConnectResourceResponseParams struct {
-	// 连接源的Id
+	// 连接源数据信息
 	Result *DescribeConnectResourceResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4462,13 +4468,13 @@ type DescribeConnectResourcesRequestParams struct {
 	// 连接源类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 连接源名称的关键字查询
+	// 连接源名称的关键字查询,支持模糊匹配
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
 	// 分页偏移量，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100
+	// 返回数量，默认为20，最大值为1000 (超过1000,则限制为1000)
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 连接源的关键字查询, 根据地域查询本地域内连接管理列表中的连接(仅支持包含region输入的连接源)
@@ -4481,13 +4487,13 @@ type DescribeConnectResourcesRequest struct {
 	// 连接源类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 连接源名称的关键字查询
+	// 连接源名称的关键字查询,支持模糊匹配
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
 	// 分页偏移量，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100
+	// 返回数量，默认为20，最大值为1000 (超过1000,则限制为1000)
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 连接源的关键字查询, 根据地域查询本地域内连接管理列表中的连接(仅支持包含region输入的连接源)
@@ -4552,38 +4558,38 @@ func (r *DescribeConnectResourcesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerGroupRequestParams struct {
-	// ckafka集群实例Id
+	// ckafka集群实例Id,通过DescribeInstances接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 可选，用户需要查询的group名称。
+	// 用户需要查询的group名称。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 可选，用户需要查询的group中的对应的topic名称，如果指定了该参数，而group又未指定则忽略该参数。
+	// 用户需要查询的group中的对应的topic名称，如果指定了该参数，而group又未指定则忽略该参数。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 本次返回个数限制，最大支持50
+	// 返回消费组的限制数量，最大支持50
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移位置
+	// 消费组列表的起始偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeConsumerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// ckafka集群实例Id,通过DescribeInstances接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 可选，用户需要查询的group名称。
+	// 用户需要查询的group名称。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 可选，用户需要查询的group中的对应的topic名称，如果指定了该参数，而group又未指定则忽略该参数。
+	// 用户需要查询的group中的对应的topic名称，如果指定了该参数，而group又未指定则忽略该参数。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 本次返回个数限制，最大支持50
+	// 返回消费组的限制数量，最大支持50
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移位置
+	// 消费组列表的起始偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -4891,7 +4897,7 @@ func (r *DescribeDatahubTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatahubTasksRequestParams struct {
-	// 返回数量，默认为20，最大值为100
+	// 返回数量，默认为20，最大值为100 (超过100限制为100)
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量，默认为0
@@ -4916,7 +4922,7 @@ type DescribeDatahubTasksRequestParams struct {
 type DescribeDatahubTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 返回数量，默认为20，最大值为100
+	// 返回数量，默认为20，最大值为100 (超过100限制为100)
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量，默认为0
@@ -5195,20 +5201,20 @@ type DescribeGroup struct {
 
 // Predefined struct for user
 type DescribeGroupInfoRequestParams struct {
-	// ckafka集群实例Id
+	// ckafka集群实例Id,可通过DescribeInstances接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Kafka 消费分组列表
+	// Kafka 消费分组列表,可通过DescribeConsumerGroup接口获取
 	GroupList []*string `json:"GroupList,omitnil,omitempty" name:"GroupList"`
 }
 
 type DescribeGroupInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// ckafka集群实例Id,可通过DescribeInstances接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Kafka 消费分组列表
+	// Kafka 消费分组列表,可通过DescribeConsumerGroup接口获取
 	GroupList []*string `json:"GroupList,omitnil,omitempty" name:"GroupList"`
 }
 
@@ -5436,14 +5442,14 @@ func (r *DescribeGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceAttributesRequestParams struct {
-	// ckafka集群实例Id
+	// ckafka集群实例Id,可通过DescribeInstances接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeInstanceAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// ckafka集群实例Id,可通过DescribeInstances接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -6057,20 +6063,20 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicAttributesRequestParams struct {
-	// ckafka集群实例Id
+	// ckafka集群实例Id，可通过DescribeInstances接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名称，可通过DescribeTopic接口获取。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
 type DescribeTopicAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// ckafka集群实例Id，可通过DescribeInstances接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名称，可通过DescribeTopic接口获取。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
@@ -6121,7 +6127,7 @@ func (r *DescribeTopicAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicDetailRequestParams struct {
-	// ckafka集群实例Id
+	// ckafka集群实例Id，可通过DescribeInstances接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// （过滤条件）按照topicName过滤，支持模糊查询
@@ -6130,16 +6136,16 @@ type DescribeTopicDetailRequestParams struct {
 	// 偏移量，不填默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认 10，最大值20，取值要大于0
+	// 返回数量，不填则默认 20，取值要大于0
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// Acl预设策略名称
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
-	// 根据特定的属性排序(目前支持PartitionNum/CreateTime)
+	// 根据特定的属性排序(目前支持PartitionNum/CreateTime)，默认值为CreateTime。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 0-顺序、1-倒序
+	// 0-顺序、1-倒序，默认值为0。
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
 	// 目前支持 ReplicaNum （副本数）筛选
@@ -6149,7 +6155,7 @@ type DescribeTopicDetailRequestParams struct {
 type DescribeTopicDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// ckafka集群实例Id，可通过DescribeInstances接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// （过滤条件）按照topicName过滤，支持模糊查询
@@ -6158,16 +6164,16 @@ type DescribeTopicDetailRequest struct {
 	// 偏移量，不填默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认 10，最大值20，取值要大于0
+	// 返回数量，不填则默认 20，取值要大于0
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// Acl预设策略名称
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
-	// 根据特定的属性排序(目前支持PartitionNum/CreateTime)
+	// 根据特定的属性排序(目前支持PartitionNum/CreateTime)，默认值为CreateTime。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 0-顺序、1-倒序
+	// 0-顺序、1-倒序，默认值为0。
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
 	// 目前支持 ReplicaNum （副本数）筛选
@@ -6227,7 +6233,7 @@ func (r *DescribeTopicDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicFlowRankingRequestParams struct {
-	// ckafka集群实例Id
+	// ckafka集群实例Id，可通过DescribeInstances接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 排行类别，PRO：Topic生产流量；CON：Topic消费流量
@@ -6246,7 +6252,7 @@ type DescribeTopicFlowRankingRequestParams struct {
 type DescribeTopicFlowRankingRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// ckafka集群实例Id，可通过DescribeInstances接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 排行类别，PRO：Topic生产流量；CON：Topic消费流量
@@ -6312,20 +6318,20 @@ func (r *DescribeTopicFlowRankingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicProduceConnectionRequestParams struct {
-	// ckafka集群实例Id
+	// ckafka集群实例Id，可通过DescribeInstances接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名
+	// 主题名，可通过DescribeTopic接口获取。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
 type DescribeTopicProduceConnectionRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// ckafka集群实例Id，可通过DescribeInstances接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名
+	// 主题名，可通过DescribeTopic接口获取。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
@@ -6548,7 +6554,7 @@ type DescribeTopicSyncReplicaRequestParams struct {
 	// 偏移量，不填默认为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认10，最大值20。
+	// 返回数量，默认值为20，必须大于0。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 仅筛选未同步副本
@@ -6567,7 +6573,7 @@ type DescribeTopicSyncReplicaRequest struct {
 	// 偏移量，不填默认为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认10，最大值20。
+	// 返回数量，默认值为20，必须大于0。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 仅筛选未同步副本
@@ -8948,22 +8954,22 @@ func (r *ModifyDatahubTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyGroupOffsetsRequestParams struct {
-	// ckafka集群实例Id
+	// ckafka集群实例Id,可通过DescribeInstances接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费分组名称
+	// 消费分组名称,可通过DescribeConsumerGroup接口获取
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 重置offset的策略，入参含义 0. 对齐shift-by参数，代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset)，代表把offset移动到指定的offset位置
+	// 重置offset的策略,入参含义 0. 对齐shift-by参数,代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset),代表把offset移动到指定的offset位置
 	Strategy *int64 `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
-	// 需要重置的主题名列表， 不填表示全部
+	// 需要重置的主题名列表
 	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
 
 	// 当strategy为0时，必须包含该字段，可以大于零代表会把offset向后移动shift条，小于零则将offset向前回溯shift条数。正确重置后新的offset应该是(old_offset + shift)，需要注意的是如果新的offset小于partition的earliest则会设置为earliest，如果大于partition 的latest则会设置为latest
 	Shift *int64 `json:"Shift,omitnil,omitempty" name:"Shift"`
 
-	// 单位ms。当strategy为1时，必须包含该字段，其中-2表示重置offset到最开始的位置，-1表示重置到最新的位置(相当于清空)，其它值则代表指定的时间，会获取topic中指定时间的offset然后进行重置，需要注意的时，如果指定的时间不存在消息，则获取最末尾的offset。
+	// 单位ms。当strategy为1时，必须包含该字段，其中-2表示重置offset到最开始的位置，-1表示重置到最新的位置(相当于清空)，其它值则代表指定的时间，会获取topic中指定时间的offset然后进行重置，需要注意的是，如果指定的时间不存在消息，则获取最末尾的offset。
 	ShiftTimestamp *int64 `json:"ShiftTimestamp,omitnil,omitempty" name:"ShiftTimestamp"`
 
 	// 需要重新设置的offset位置。当strategy为2，必须包含该字段。
@@ -8976,22 +8982,22 @@ type ModifyGroupOffsetsRequestParams struct {
 type ModifyGroupOffsetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// ckafka集群实例Id,可通过DescribeInstances接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费分组名称
+	// 消费分组名称,可通过DescribeConsumerGroup接口获取
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 重置offset的策略，入参含义 0. 对齐shift-by参数，代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset)，代表把offset移动到指定的offset位置
+	// 重置offset的策略,入参含义 0. 对齐shift-by参数,代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset),代表把offset移动到指定的offset位置
 	Strategy *int64 `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
-	// 需要重置的主题名列表， 不填表示全部
+	// 需要重置的主题名列表
 	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
 
 	// 当strategy为0时，必须包含该字段，可以大于零代表会把offset向后移动shift条，小于零则将offset向前回溯shift条数。正确重置后新的offset应该是(old_offset + shift)，需要注意的是如果新的offset小于partition的earliest则会设置为earliest，如果大于partition 的latest则会设置为latest
 	Shift *int64 `json:"Shift,omitnil,omitempty" name:"Shift"`
 
-	// 单位ms。当strategy为1时，必须包含该字段，其中-2表示重置offset到最开始的位置，-1表示重置到最新的位置(相当于清空)，其它值则代表指定的时间，会获取topic中指定时间的offset然后进行重置，需要注意的时，如果指定的时间不存在消息，则获取最末尾的offset。
+	// 单位ms。当strategy为1时，必须包含该字段，其中-2表示重置offset到最开始的位置，-1表示重置到最新的位置(相当于清空)，其它值则代表指定的时间，会获取topic中指定时间的offset然后进行重置，需要注意的是，如果指定的时间不存在消息，则获取最末尾的offset。
 	ShiftTimestamp *int64 `json:"ShiftTimestamp,omitnil,omitempty" name:"ShiftTimestamp"`
 
 	// 需要重新设置的offset位置。当strategy为2，必须包含该字段。
@@ -9507,7 +9513,7 @@ type ModifyTopicAttributesRequestParams struct {
 	// 主题消息最大值，单位为 Byte，最大值为12582912Byte（即12MB）。
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
 
-	// Segment 分片滚动的时长，单位：ms，当前最小为300000ms。
+	// Segment 分片滚动的时长，单位：ms，当前最小值86400000ms。
 	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
 	// 消息删除策略，可以选择delete 或者compact
@@ -9565,7 +9571,7 @@ type ModifyTopicAttributesRequest struct {
 	// 主题消息最大值，单位为 Byte，最大值为12582912Byte（即12MB）。
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
 
-	// Segment 分片滚动的时长，单位：ms，当前最小为300000ms。
+	// Segment 分片滚动的时长，单位：ms，当前最小值86400000ms。
 	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
 	// 消息删除策略，可以选择delete 或者compact
@@ -10658,7 +10664,7 @@ type TopicAttributesResponse struct {
 	// 主题 ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 创建时间
+	// 创建时间的秒级时间戳
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 主题备注

@@ -182,6 +182,7 @@ func NewCreateBackupDBInstanceResponse() (response *CreateBackupDBInstanceRespon
 // 本接口（CreateBackupDBInstance）用于备份实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRANSPARENTDATAENCRYPTIONALREADYOPEN = "FailedOperation.TransparentDataEncryptionAlreadyOpen"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -197,6 +198,7 @@ func (c *Client) CreateBackupDBInstance(request *CreateBackupDBInstanceRequest) 
 // 本接口（CreateBackupDBInstance）用于备份实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRANSPARENTDATAENCRYPTIONALREADYOPEN = "FailedOperation.TransparentDataEncryptionAlreadyOpen"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -2250,6 +2252,7 @@ func NewIsolateDBInstanceResponse() (response *IsolateDBInstanceResponse) {
 // 本接口(IsolateDBInstance)用于隔离MongoDB云数据库按量计费实例。隔离后实例保留在回收站中，不能再写入数据。隔离一定时间后，实例会彻底删除，回收站保存时间请参考按量计费的服务条款。在隔离中的按量计费实例无法恢复，请谨慎操作。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELETIONPROTECTIONENABLED = "FailedOperation.DeletionProtectionEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -2266,6 +2269,7 @@ func (c *Client) IsolateDBInstance(request *IsolateDBInstanceRequest) (response 
 // 本接口(IsolateDBInstance)用于隔离MongoDB云数据库按量计费实例。隔离后实例保留在回收站中，不能再写入数据。隔离一定时间后，实例会彻底删除，回收站保存时间请参考按量计费的服务条款。在隔离中的按量计费实例无法恢复，请谨慎操作。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELETIONPROTECTIONENABLED = "FailedOperation.DeletionProtectionEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -3053,6 +3057,66 @@ func (c *Client) SetBackupRulesWithContext(ctx context.Context, request *SetBack
     request.SetContext(ctx)
     
     response = NewSetBackupRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetDBInstanceDeletionProtectionRequest() (request *SetDBInstanceDeletionProtectionRequest) {
+    request = &SetDBInstanceDeletionProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "SetDBInstanceDeletionProtection")
+    
+    
+    return
+}
+
+func NewSetDBInstanceDeletionProtectionResponse() (response *SetDBInstanceDeletionProtectionResponse) {
+    response = &SetDBInstanceDeletionProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetDBInstanceDeletionProtection
+// 本接口（SetDBInstanceDeletionProtection）用于设置实例销毁保护
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENDELETED = "InvalidParameterValue.InstanceHasBeenDeleted"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENISOLATED = "InvalidParameterValue.InstanceHasBeenIsolated"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) SetDBInstanceDeletionProtection(request *SetDBInstanceDeletionProtectionRequest) (response *SetDBInstanceDeletionProtectionResponse, err error) {
+    return c.SetDBInstanceDeletionProtectionWithContext(context.Background(), request)
+}
+
+// SetDBInstanceDeletionProtection
+// 本接口（SetDBInstanceDeletionProtection）用于设置实例销毁保护
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENDELETED = "InvalidParameterValue.InstanceHasBeenDeleted"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENISOLATED = "InvalidParameterValue.InstanceHasBeenIsolated"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) SetDBInstanceDeletionProtectionWithContext(ctx context.Context, request *SetDBInstanceDeletionProtectionRequest) (response *SetDBInstanceDeletionProtectionResponse, err error) {
+    if request == nil {
+        request = NewSetDBInstanceDeletionProtectionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "SetDBInstanceDeletionProtection")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetDBInstanceDeletionProtection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetDBInstanceDeletionProtectionResponse()
     err = c.Send(request, response)
     return
 }

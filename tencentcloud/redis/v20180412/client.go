@@ -5215,7 +5215,7 @@ func NewModifyInstanceAccountResponse() (response *ModifyInstanceAccountResponse
 }
 
 // ModifyInstanceAccount
-// 本接口（ModifyInstanceAccount）用于修改实例子账号。
+// 本接口（ModifyInstanceAccount）用于修改实例账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5231,7 +5231,7 @@ func (c *Client) ModifyInstanceAccount(request *ModifyInstanceAccountRequest) (r
 }
 
 // ModifyInstanceAccount
-// 本接口（ModifyInstanceAccount）用于修改实例子账号。
+// 本接口（ModifyInstanceAccount）用于修改实例账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

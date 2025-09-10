@@ -1955,6 +1955,62 @@ func (c *Client) DisableAndroidInstancesAppWithContext(ctx context.Context, requ
     return
 }
 
+func NewDisconnectAndroidInstanceRequest() (request *DisconnectAndroidInstanceRequest) {
+    request = &DisconnectAndroidInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DisconnectAndroidInstance")
+    
+    
+    return
+}
+
+func NewDisconnectAndroidInstanceResponse() (response *DisconnectAndroidInstanceResponse) {
+    response = &DisconnectAndroidInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisconnectAndroidInstance
+// 断开安卓实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+func (c *Client) DisconnectAndroidInstance(request *DisconnectAndroidInstanceRequest) (response *DisconnectAndroidInstanceResponse, err error) {
+    return c.DisconnectAndroidInstanceWithContext(context.Background(), request)
+}
+
+// DisconnectAndroidInstance
+// 断开安卓实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+func (c *Client) DisconnectAndroidInstanceWithContext(ctx context.Context, request *DisconnectAndroidInstanceRequest) (response *DisconnectAndroidInstanceResponse, err error) {
+    if request == nil {
+        request = NewDisconnectAndroidInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DisconnectAndroidInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisconnectAndroidInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisconnectAndroidInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDistributeFileToAndroidInstancesRequest() (request *DistributeFileToAndroidInstancesRequest) {
     request = &DistributeFileToAndroidInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

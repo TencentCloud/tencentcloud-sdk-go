@@ -3583,7 +3583,7 @@ type GeneralAccurateOCRRequestParams struct {
 	// 是否返回单字信息，默认关
 	IsWords *bool `json:"IsWords,omitnil,omitempty" name:"IsWords"`
 
-	// 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关
+	// 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。
 	EnableDetectSplit *bool `json:"EnableDetectSplit,omitnil,omitempty" name:"EnableDetectSplit"`
 
 	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
@@ -3595,7 +3595,7 @@ type GeneralAccurateOCRRequestParams struct {
 	// 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
 	EnableDetectText *bool `json:"EnableDetectText,omitnil,omitempty" name:"EnableDetectText"`
 
-	// 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景 
+	// 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景，注：仅ConfigID配置为OCR时支持
 	ConfigID *string `json:"ConfigID,omitnil,omitempty" name:"ConfigID"`
 }
 
@@ -3611,7 +3611,7 @@ type GeneralAccurateOCRRequest struct {
 	// 是否返回单字信息，默认关
 	IsWords *bool `json:"IsWords,omitnil,omitempty" name:"IsWords"`
 
-	// 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关
+	// 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。
 	EnableDetectSplit *bool `json:"EnableDetectSplit,omitnil,omitempty" name:"EnableDetectSplit"`
 
 	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
@@ -3623,7 +3623,7 @@ type GeneralAccurateOCRRequest struct {
 	// 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
 	EnableDetectText *bool `json:"EnableDetectText,omitnil,omitempty" name:"EnableDetectText"`
 
-	// 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景 
+	// 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景，注：仅ConfigID配置为OCR时支持
 	ConfigID *string `json:"ConfigID,omitnil,omitempty" name:"ConfigID"`
 }
 

@@ -310,6 +310,12 @@ type ClusterInfo struct {
 
 	// restproxy状态
 	RestProxyStatus *int64 `json:"RestProxyStatus,omitnil,omitempty" name:"RestProxyStatus"`
+
+	// 该集群shard总数
+	ShardTotalNum *int64 `json:"ShardTotalNum,omitnil,omitempty" name:"ShardTotalNum"`
+
+	// 已使用的shard总数
+	ShardUsedNum *int64 `json:"ShardUsedNum,omitnil,omitempty" name:"ShardUsedNum"`
 }
 
 // Predefined struct for user

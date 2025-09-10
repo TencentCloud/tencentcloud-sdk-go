@@ -6500,6 +6500,17 @@ type PodInfo struct {
 	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 }
 
+type PodSSHInfo struct {
+	// pod访问ip
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// pod ssh访问端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// ssh访问命令
+	LoginCommand *string `json:"LoginCommand,omitnil,omitempty" name:"LoginCommand"`
+}
+
 type PrivateLinkInfo struct {
 	// 私有连接所在的VPCID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6842,6 +6853,10 @@ type SSHConfig struct {
 	// 登录地址是否改变
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAddressChanged *bool `json:"IsAddressChanged,omitnil,omitempty" name:"IsAddressChanged"`
+
+	// POD访问信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodSSHInfo *PodSSHInfo `json:"PodSSHInfo,omitnil,omitempty" name:"PodSSHInfo"`
 }
 
 type ScheduledAction struct {

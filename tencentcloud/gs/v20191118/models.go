@@ -2821,6 +2821,60 @@ func (r *DisableAndroidInstancesAppResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DisconnectAndroidInstanceRequestParams struct {
+	// 实例ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+}
+
+type DisconnectAndroidInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+}
+
+func (r *DisconnectAndroidInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisconnectAndroidInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisconnectAndroidInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisconnectAndroidInstanceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisconnectAndroidInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DisconnectAndroidInstanceResponseParams `json:"Response"`
+}
+
+func (r *DisconnectAndroidInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisconnectAndroidInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DistributeFileToAndroidInstancesRequestParams struct {
 	// 安卓实例 ID 列表
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`

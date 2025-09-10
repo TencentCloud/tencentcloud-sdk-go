@@ -10398,12 +10398,57 @@ func (r *DescribeSubUserAccessPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTablePartitionsRequestParams struct {
+	// 数据目录名称
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
+	// 数据库名称
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// 数据表名称
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 查询偏移位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 当次查询的数量限制
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 模糊查询的分区名称
+	FuzzyPartition *string `json:"FuzzyPartition,omitnil,omitempty" name:"FuzzyPartition"`
+
+	// 排序信息
+	Sorts []*Sort `json:"Sorts,omitnil,omitempty" name:"Sorts"`
+
+	// 分页查询的游标信息
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
 }
 
 type DescribeTablePartitionsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 数据目录名称
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
+
+	// 数据库名称
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// 数据表名称
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 查询偏移位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 当次查询的数量限制
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 模糊查询的分区名称
+	FuzzyPartition *string `json:"FuzzyPartition,omitnil,omitempty" name:"FuzzyPartition"`
+
+	// 排序信息
+	Sorts []*Sort `json:"Sorts,omitnil,omitempty" name:"Sorts"`
+
+	// 分页查询的游标信息
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
 }
 
 func (r *DescribeTablePartitionsRequest) ToJsonString() string {
@@ -10418,7 +10463,14 @@ func (r *DescribeTablePartitionsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Catalog")
+	delete(f, "Database")
+	delete(f, "Table")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "FuzzyPartition")
+	delete(f, "Sorts")
+	delete(f, "Cursor")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablePartitionsRequest has unknown keys!", "")
 	}
@@ -10427,6 +10479,9 @@ func (r *DescribeTablePartitionsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTablePartitionsResponseParams struct {
+	// 分区信息值
+	MixedPartitions *MixedTablePartitions `json:"MixedPartitions,omitnil,omitempty" name:"MixedPartitions"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -13528,6 +13583,26 @@ type HiveInfo struct {
 	KerberosEnable *bool `json:"KerberosEnable,omitnil,omitempty" name:"KerberosEnable"`
 }
 
+type HiveTablePartition struct {
+	// 分区信息名称
+	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
+
+	// 分区记录数
+	Records *int64 `json:"Records,omitnil,omitempty" name:"Records"`
+
+	// 分区数据文件存储量
+	DataFileStorage *int64 `json:"DataFileStorage,omitnil,omitempty" name:"DataFileStorage"`
+
+	// 分区创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 分区schema更新时间
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// 最后一次分区更新的访问时间
+	LastAccessTime *string `json:"LastAccessTime,omitnil,omitempty" name:"LastAccessTime"`
+}
+
 type HouseEventsInfo struct {
 	// 事件时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13540,6 +13615,32 @@ type HouseEventsInfo struct {
 	// 集群信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterInfo []*string `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+}
+
+type IcebergTablePartition struct {
+	// 分区信息名称
+	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
+
+	// 分区记录数
+	Records *int64 `json:"Records,omitnil,omitempty" name:"Records"`
+
+	// 分区数据文件数量
+	DataFileSize *int64 `json:"DataFileSize,omitnil,omitempty" name:"DataFileSize"`
+
+	// 分区数据文件存储量
+	DataFileStorage *int64 `json:"DataFileStorage,omitnil,omitempty" name:"DataFileStorage"`
+
+	// 分区创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 分区更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 最后一次分区更新的快照ID
+	LastUpdateSnapshotId *string `json:"LastUpdateSnapshotId,omitnil,omitempty" name:"LastUpdateSnapshotId"`
+
+	// 分区的location
+	Location *LocationInfo `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
 type IpPortPair struct {
@@ -13895,6 +13996,14 @@ func (r *ListTaskJobLogNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LocationInfo struct {
+	// 桶名称
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// location路径
+	DataLocation *string `json:"DataLocation,omitnil,omitempty" name:"DataLocation"`
+}
+
 type LockComponentInfo struct {
 	// 数据库名称
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
@@ -14007,6 +14116,23 @@ func (r *LockMetaDataResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *LockMetaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MixedTablePartitions struct {
+	// 数据表格式
+	TableFormat *string `json:"TableFormat,omitnil,omitempty" name:"TableFormat"`
+
+	// 分区总数
+	TotalSize *int64 `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
+
+	// 分页查询的游标信息，在获取下一页信息时需要回传到服务端
+	NextCursor *string `json:"NextCursor,omitnil,omitempty" name:"NextCursor"`
+
+	// iceberg表分区信息
+	IcebergPartitions []*IcebergTablePartition `json:"IcebergPartitions,omitnil,omitempty" name:"IcebergPartitions"`
+
+	// hive表分区信息
+	HivePartitions []*HiveTablePartition `json:"HivePartitions,omitnil,omitempty" name:"HivePartitions"`
 }
 
 // Predefined struct for user
@@ -16096,6 +16222,14 @@ type SmartPolicyBaseInfo struct {
 
 	// 用户appid
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+type Sort struct {
+	// 排序字段
+	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
+
+	// 是否按照ASC排序，否则DESC排序
+	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
 }
 
 type SparkJobInfo struct {

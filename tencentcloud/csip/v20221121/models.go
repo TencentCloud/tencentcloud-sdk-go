@@ -24,8 +24,7 @@ type AKInfo struct {
 	// ak对应id
 	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// ak具体值\n
-	// 临时密钥时返回临时密钥
+	// ak具体值 临时密钥时返回临时密钥
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 所属账号
@@ -97,6 +96,15 @@ type AccessKeyAlarm struct {
 
 	// 泄漏证据
 	LeakEvidence []*string `json:"LeakEvidence,omitnil,omitempty" name:"LeakEvidence"`
+
+	// 是否支持编辑信任账号
+	IsSupportEditWhiteAccount *bool `json:"IsSupportEditWhiteAccount,omitnil,omitempty" name:"IsSupportEditWhiteAccount"`
+
+	// 告警证据
+	Evidence *string `json:"Evidence,omitnil,omitempty" name:"Evidence"`
+
+	// 告警规则标识
+	RuleKey *string `json:"RuleKey,omitnil,omitempty" name:"RuleKey"`
 }
 
 type AccessKeyAlarmCount struct {
@@ -180,6 +188,7 @@ type AccessKeyAsset struct {
 	// AK状态 
 	// 0:禁用
 	// 1:已启用
+	// 2:已删除(已在cam侧删除，安全中心仍然存留之前的记录)
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 0 表示已检测
@@ -254,6 +263,9 @@ type AccessKeyRisk struct {
 
 	// 所属appid
 	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// 对应风险的查询参数
+	QueryParam *string `json:"QueryParam,omitnil,omitempty" name:"QueryParam"`
 }
 
 type AccessKeyUser struct {
@@ -1962,6 +1974,9 @@ type CallRecord struct {
 
 	// 账号外vpc信息列表
 	VpcInfo []*SourceIPVpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
+
+	// 调用请求客户端列表
+	ReqClient []*string `json:"ReqClient,omitnil,omitempty" name:"ReqClient"`
 }
 
 type CheckViewRiskItem struct {

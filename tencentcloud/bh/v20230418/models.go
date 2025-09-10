@@ -855,6 +855,9 @@ type CheckLDAPConnectionRequestParams struct {
 
 	// 网络域id
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 用户名称映射属性
+	AttributeUserName *string `json:"AttributeUserName,omitnil,omitempty" name:"AttributeUserName"`
 }
 
 type CheckLDAPConnectionRequest struct {
@@ -886,6 +889,9 @@ type CheckLDAPConnectionRequest struct {
 
 	// 网络域id
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 用户名称映射属性
+	AttributeUserName *string `json:"AttributeUserName,omitnil,omitempty" name:"AttributeUserName"`
 }
 
 func (r *CheckLDAPConnectionRequest) ToJsonString() string {
@@ -909,6 +915,7 @@ func (r *CheckLDAPConnectionRequest) FromJsonString(s string) error {
 	delete(f, "AdminPassword")
 	delete(f, "IpBackup")
 	delete(f, "DomainId")
+	delete(f, "AttributeUserName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckLDAPConnectionRequest has unknown keys!", "")
 	}

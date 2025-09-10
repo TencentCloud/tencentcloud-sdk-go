@@ -1564,6 +1564,17 @@ type NFOption struct {
 	LaunchDir *string `json:"LaunchDir,omitnil,omitempty" name:"LaunchDir"`
 }
 
+type NotificationType struct {
+	// 腾讯健康组学平台站点信息。
+	StationMessage *bool `json:"StationMessage,omitnil,omitempty" name:"StationMessage"`
+
+	// 邮箱列表。
+	Email []*string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 当前用户邮箱。
+	CurrentUserEmail *bool `json:"CurrentUserEmail,omitnil,omitempty" name:"CurrentUserEmail"`
+}
+
 type ResourceIds struct {
 	// 私有网络ID。
 	VPCId *string `json:"VPCId,omitnil,omitempty" name:"VPCId"`
@@ -1799,6 +1810,18 @@ type RunApplicationRequestParams struct {
 
 	// 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
 	VolumeIds []*string `json:"VolumeIds,omitnil,omitempty" name:"VolumeIds"`
+
+	// 是否开启结果通知。
+	ResultNotification *bool `json:"ResultNotification,omitnil,omitempty" name:"ResultNotification"`
+
+	// 是否开启超时通知。
+	TimeoutNotification *bool `json:"TimeoutNotification,omitnil,omitempty" name:"TimeoutNotification"`
+
+	// 任务超时通知时间（单位：分钟），支持5到2880分钟。
+	TimeoutNotificationMinutes *uint64 `json:"TimeoutNotificationMinutes,omitnil,omitempty" name:"TimeoutNotificationMinutes"`
+
+	// 接受通知邮件地址列表。
+	EmailForNotification []*string `json:"EmailForNotification,omitnil,omitempty" name:"EmailForNotification"`
 }
 
 type RunApplicationRequest struct {
@@ -1853,6 +1876,18 @@ type RunApplicationRequest struct {
 
 	// 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
 	VolumeIds []*string `json:"VolumeIds,omitnil,omitempty" name:"VolumeIds"`
+
+	// 是否开启结果通知。
+	ResultNotification *bool `json:"ResultNotification,omitnil,omitempty" name:"ResultNotification"`
+
+	// 是否开启超时通知。
+	TimeoutNotification *bool `json:"TimeoutNotification,omitnil,omitempty" name:"TimeoutNotification"`
+
+	// 任务超时通知时间（单位：分钟），支持5到2880分钟。
+	TimeoutNotificationMinutes *uint64 `json:"TimeoutNotificationMinutes,omitnil,omitempty" name:"TimeoutNotificationMinutes"`
+
+	// 接受通知邮件地址列表。
+	EmailForNotification []*string `json:"EmailForNotification,omitnil,omitempty" name:"EmailForNotification"`
 }
 
 func (r *RunApplicationRequest) ToJsonString() string {
@@ -1883,6 +1918,10 @@ func (r *RunApplicationRequest) FromJsonString(s string) error {
 	delete(f, "WorkDir")
 	delete(f, "AccessMode")
 	delete(f, "VolumeIds")
+	delete(f, "ResultNotification")
+	delete(f, "TimeoutNotification")
+	delete(f, "TimeoutNotificationMinutes")
+	delete(f, "EmailForNotification")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunApplicationRequest has unknown keys!", "")
 	}
@@ -2003,8 +2042,8 @@ type RunGroup struct {
 	// 错误信息。
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
-	// 运行结果通知方式。
-	ResultNotify *string `json:"ResultNotify,omitnil,omitempty" name:"ResultNotify"`
+	// 任务批次通知。
+	Notification *RunGroupNotification `json:"Notification,omitnil,omitempty" name:"Notification"`
 
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
@@ -2017,6 +2056,30 @@ type RunGroup struct {
 
 	// 创建者ID。
 	CreatorId *string `json:"CreatorId,omitnil,omitempty" name:"CreatorId"`
+
+	// 运行结果通知方式。
+	ResultNotify *string `json:"ResultNotify,omitnil,omitempty" name:"ResultNotify"`
+}
+
+type RunGroupNotification struct {
+	// 结果通知。
+	ResultNotification *RunGroupResultNotification `json:"ResultNotification,omitnil,omitempty" name:"ResultNotification"`
+
+	// 超时通知。
+	TimeoutNotification *RunGroupTimeoutNotification `json:"TimeoutNotification,omitnil,omitempty" name:"TimeoutNotification"`
+}
+
+type RunGroupResultNotification struct {
+	// 通知类型。
+	NotificationType *NotificationType `json:"NotificationType,omitnil,omitempty" name:"NotificationType"`
+}
+
+type RunGroupTimeoutNotification struct {
+	// 任务批次超时时间，单位分钟。
+	TimeoutMinutes *uint64 `json:"TimeoutMinutes,omitnil,omitempty" name:"TimeoutMinutes"`
+
+	// 通知类型。
+	NotificationType *NotificationType `json:"NotificationType,omitnil,omitempty" name:"NotificationType"`
 }
 
 type RunMetadata struct {

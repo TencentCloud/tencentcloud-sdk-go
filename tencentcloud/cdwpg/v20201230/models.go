@@ -1133,6 +1133,12 @@ type DescribeSlowLogRequestParams struct {
 
 	// 过滤时间
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 执行用户
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// query 语句
+	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
 }
 
 type DescribeSlowLogRequest struct {
@@ -1164,6 +1170,12 @@ type DescribeSlowLogRequest struct {
 
 	// 过滤时间
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 执行用户
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// query 语句
+	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
 }
 
 func (r *DescribeSlowLogRequest) ToJsonString() string {
@@ -1187,6 +1199,8 @@ func (r *DescribeSlowLogRequest) FromJsonString(s string) error {
 	delete(f, "OrderBy")
 	delete(f, "OrderByType")
 	delete(f, "Duration")
+	delete(f, "UserName")
+	delete(f, "QueryString")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowLogRequest has unknown keys!", "")
 	}

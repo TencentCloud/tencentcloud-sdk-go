@@ -144,6 +144,9 @@ type ApmField struct {
 
 	// 指标中文名
 	NameCN *string `json:"NameCN,omitnil,omitempty" name:"NameCN"`
+
+	// 指标英文名
+	NameEN *string `json:"NameEN,omitnil,omitempty" name:"NameEN"`
 }
 
 type ApmInstanceDetail struct {

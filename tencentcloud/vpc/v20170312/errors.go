@@ -950,6 +950,9 @@ const (
 	// VPN通道状态为更新中/销毁中/创建中，不支持此操作。
 	UNSUPPORTEDOPERATION_DELETEVPNCONNINVALIDSTATE = "UnsupportedOperation.DeleteVpnConnInvalidState"
 
+	// NAT网关已开启删除保护，不允许删除
+	UNSUPPORTEDOPERATION_DELETIONPROTECTIONENABLED = "UnsupportedOperation.DeletionProtectionEnabled"
+
 	// 发货失败。
 	UNSUPPORTEDOPERATION_DELIVERYFAILED = "UnsupportedOperation.DeliveryFailed"
 

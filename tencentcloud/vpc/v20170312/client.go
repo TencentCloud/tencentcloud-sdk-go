@@ -8998,6 +8998,7 @@ func NewDeleteNatGatewayResponse() (response *DeleteNatGatewayResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_NATUSEDBYCFW = "ResourceInUse.NatUsedByCFW"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_DELETIONPROTECTIONENABLED = "UnsupportedOperation.DeletionProtectionEnabled"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (response *DeleteNatGatewayResponse, err error) {
     return c.DeleteNatGatewayWithContext(context.Background(), request)
@@ -9013,6 +9014,7 @@ func (c *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (response *D
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_NATUSEDBYCFW = "ResourceInUse.NatUsedByCFW"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_DELETIONPROTECTIONENABLED = "UnsupportedOperation.DeletionProtectionEnabled"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) DeleteNatGatewayWithContext(ctx context.Context, request *DeleteNatGatewayRequest) (response *DeleteNatGatewayResponse, err error) {
     if request == nil {
@@ -9505,6 +9507,7 @@ func NewDeletePrivateNatGatewayResponse() (response *DeletePrivateNatGatewayResp
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_DELETIONPROTECTIONENABLED = "UnsupportedOperation.DeletionProtectionEnabled"
 //  UNSUPPORTEDOPERATION_PRIVATENATGATEWAYASSOCIATIONEXISTS = "UnsupportedOperation.PrivateNatGatewayAssociationExists"
 func (c *Client) DeletePrivateNatGateway(request *DeletePrivateNatGatewayRequest) (response *DeletePrivateNatGatewayResponse, err error) {
     return c.DeletePrivateNatGatewayWithContext(context.Background(), request)
@@ -9521,6 +9524,7 @@ func (c *Client) DeletePrivateNatGateway(request *DeletePrivateNatGatewayRequest
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_DELETIONPROTECTIONENABLED = "UnsupportedOperation.DeletionProtectionEnabled"
 //  UNSUPPORTEDOPERATION_PRIVATENATGATEWAYASSOCIATIONEXISTS = "UnsupportedOperation.PrivateNatGatewayAssociationExists"
 func (c *Client) DeletePrivateNatGatewayWithContext(ctx context.Context, request *DeletePrivateNatGatewayRequest) (response *DeletePrivateNatGatewayResponse, err error) {
     if request == nil {

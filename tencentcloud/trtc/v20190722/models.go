@@ -5081,6 +5081,9 @@ type RecognizeConfig struct {
 
 	// 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
 	VadSilenceTime *uint64 `json:"VadSilenceTime,omitnil,omitempty" name:"VadSilenceTime"`
+
+	// vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+	VadLevel *uint64 `json:"VadLevel,omitnil,omitempty" name:"VadLevel"`
 }
 
 type RecordParams struct {
@@ -5744,6 +5747,9 @@ type StartAITranscriptionRequestParams struct {
 
 	// 语音识别配置。
 	RecognizeConfig *RecognizeConfig `json:"RecognizeConfig,omitnil,omitempty" name:"RecognizeConfig"`
+
+	// 翻译相关配置
+	TranslationConfig *TranslationConfig `json:"TranslationConfig,omitnil,omitempty" name:"TranslationConfig"`
 }
 
 type StartAITranscriptionRequest struct {
@@ -5768,6 +5774,9 @@ type StartAITranscriptionRequest struct {
 
 	// 语音识别配置。
 	RecognizeConfig *RecognizeConfig `json:"RecognizeConfig,omitnil,omitempty" name:"RecognizeConfig"`
+
+	// 翻译相关配置
+	TranslationConfig *TranslationConfig `json:"TranslationConfig,omitnil,omitempty" name:"TranslationConfig"`
 }
 
 func (r *StartAITranscriptionRequest) ToJsonString() string {
@@ -5788,6 +5797,7 @@ func (r *StartAITranscriptionRequest) FromJsonString(s string) error {
 	delete(f, "SessionId")
 	delete(f, "RoomIdType")
 	delete(f, "RecognizeConfig")
+	delete(f, "TranslationConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartAITranscriptionRequest has unknown keys!", "")
 	}
@@ -6926,6 +6936,11 @@ type TRTCDataResult struct {
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 }
 
+type TTSConfig struct {
+	// 音色ID
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+}
+
 type TencentVod struct {
 	// 媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 创建任务流模板 并为模板命名。
 	Procedure *string `json:"Procedure,omitnil,omitempty" name:"Procedure"`
@@ -7165,6 +7180,20 @@ type TranscriptionParams struct {
 
 	// 声纹配置
 	VoicePrint *VoicePrint `json:"VoicePrint,omitnil,omitempty" name:"VoicePrint"`
+
+	// 语义断句检测
+	TurnDetection *TurnDetection `json:"TurnDetection,omitnil,omitempty" name:"TurnDetection"`
+}
+
+type TranslationConfig struct {
+	// 翻译的目标语言，目标语种列表（ISO 639-1）
+	TargetLanguages []*string `json:"TargetLanguages,omitnil,omitempty" name:"TargetLanguages"`
+
+	//  1： 仅文字翻译，  2： 语音同传
+	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 语音同传配置，开启同传时，需要传递
+	TTSConfig *TTSConfig `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
 }
 
 type TrtcUsage struct {
