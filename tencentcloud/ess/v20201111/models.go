@@ -6435,6 +6435,8 @@ type CreateMultiFlowSignQRCodeRequestParams struct {
 
 	// 二维码的有效期限，默认为7天，最高设定不得超过90天。
 	// 一旦超过二维码的有效期限，该二维码将自动失效。
+	//
+	// Deprecated: QrEffectiveDay is deprecated.
 	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitnil,omitempty" name:"QrEffectiveDay"`
 
 	// 合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。
@@ -6476,6 +6478,12 @@ type CreateMultiFlowSignQRCodeRequestParams struct {
 	// 合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。
 	// 例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
 	FlowNameAppendScannerInfo *bool `json:"FlowNameAppendScannerInfo,omitnil,omitempty" name:"FlowNameAppendScannerInfo"`
+
+	// 签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName
+	QrCodeName *string `json:"QrCodeName,omitnil,omitempty" name:"QrCodeName"`
+
+	// 签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。
+	QrCodeExpiredOn *int64 `json:"QrCodeExpiredOn,omitnil,omitempty" name:"QrCodeExpiredOn"`
 }
 
 type CreateMultiFlowSignQRCodeRequest struct {
@@ -6536,6 +6544,12 @@ type CreateMultiFlowSignQRCodeRequest struct {
 	// 合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。
 	// 例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
 	FlowNameAppendScannerInfo *bool `json:"FlowNameAppendScannerInfo,omitnil,omitempty" name:"FlowNameAppendScannerInfo"`
+
+	// 签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName
+	QrCodeName *string `json:"QrCodeName,omitnil,omitempty" name:"QrCodeName"`
+
+	// 签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。
+	QrCodeExpiredOn *int64 `json:"QrCodeExpiredOn,omitnil,omitempty" name:"QrCodeExpiredOn"`
 }
 
 func (r *CreateMultiFlowSignQRCodeRequest) ToJsonString() string {
@@ -6564,6 +6578,8 @@ func (r *CreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error {
 	delete(f, "ApproverComponentLimitTypes")
 	delete(f, "ForbidPersonalMultipleSign")
 	delete(f, "FlowNameAppendScannerInfo")
+	delete(f, "QrCodeName")
+	delete(f, "QrCodeExpiredOn")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMultiFlowSignQRCodeRequest has unknown keys!", "")
 	}
@@ -14643,6 +14659,13 @@ type MiniAppCreateFlowOption struct {
 
 	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
+
+	// 小程序集成发起，是否禁止发起时修改合同内容
+	// <ul>
+	// <li>false：默认值，不禁止发起时修改合同内容</li>
+	// <li>true：禁止发起时修改合同内容</li>
+	// </ul>
+	ForbidEditFlow *bool `json:"ForbidEditFlow,omitnil,omitempty" name:"ForbidEditFlow"`
 }
 
 type MiniAppCreateFlowPageOption struct {

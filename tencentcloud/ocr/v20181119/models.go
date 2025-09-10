@@ -1504,6 +1504,78 @@ type CustomsPaymentReceipt struct {
 	CommonContent []*OtherInvoiceItem `json:"CommonContent,omitnil,omitempty" name:"CommonContent"`
 }
 
+// Predefined struct for user
+type DescribeExtractDocAgentJobRequestParams struct {
+	// 任务唯一ID。由服务端生成。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeExtractDocAgentJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务唯一ID。由服务端生成。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeExtractDocAgentJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtractDocAgentJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExtractDocAgentJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtractDocAgentJobResponseParams struct {
+	// 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
+
+	// 配置结构化文本信息。
+	StructuralList []*GroupInfo `json:"StructuralList,omitnil,omitempty" name:"StructuralList"`
+
+	// 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	JobStatus *string `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
+
+	// 思考过程
+	ThoughtContent *string `json:"ThoughtContent,omitnil,omitempty" name:"ThoughtContent"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExtractDocAgentJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExtractDocAgentJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeExtractDocAgentJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtractDocAgentJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DetailInformationOfAirTicketTupleList struct {
 	// 出发站（自）
 	DepartureStation *string `json:"DepartureStation,omitnil,omitempty" name:"DepartureStation"`
@@ -5515,6 +5587,17 @@ type ItemInfo struct {
 	// Value信息组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *Value `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type ItemNames struct {
+	// 自定义抽取功能需返回的字段名称。
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// 默认 0；0表示kv对  1表示 表格字段。
+	KeyType *int64 `json:"KeyType,omitnil,omitempty" name:"KeyType"`
+
+	// 抽取字段的描述内容。
+	KeyPrompt *string `json:"KeyPrompt,omitnil,omitempty" name:"KeyPrompt"`
 }
 
 type ItemPolygonInfo struct {
@@ -10748,6 +10831,105 @@ type StructuralItem struct {
 
 	// 字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
 	Row *int64 `json:"Row,omitnil,omitempty" name:"Row"`
+}
+
+// Predefined struct for user
+type SubmitExtractDocAgentJobRequestParams struct {
+	// 图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF、WORD、EXCEL格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF、WORD、EXCEL格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// 自定义抽取需要的字段名称、字段类型、字段提示词。
+	ItemNames []*ItemNames `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
+
+	// 是否需要返回坐标，默认false。
+	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
+
+	// 起始页
+	FileStartPageNumber *uint64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// 结束页
+	FileEndPageNumber *uint64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+}
+
+type SubmitExtractDocAgentJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF、WORD、EXCEL格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF、WORD、EXCEL格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// 自定义抽取需要的字段名称、字段类型、字段提示词。
+	ItemNames []*ItemNames `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
+
+	// 是否需要返回坐标，默认false。
+	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
+
+	// 起始页
+	FileStartPageNumber *uint64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// 结束页
+	FileEndPageNumber *uint64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+}
+
+func (r *SubmitExtractDocAgentJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitExtractDocAgentJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "PdfPageNumber")
+	delete(f, "ItemNames")
+	delete(f, "EnableCoord")
+	delete(f, "FileStartPageNumber")
+	delete(f, "FileEndPageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitExtractDocAgentJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitExtractDocAgentJobResponseParams struct {
+	// 任务唯一ID。由服务端生成。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitExtractDocAgentJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitExtractDocAgentJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitExtractDocAgentJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitExtractDocAgentJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TableCell struct {

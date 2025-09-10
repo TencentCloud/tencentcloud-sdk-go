@@ -2906,4 +2906,10 @@ type WebSearchOptions struct {
 
 	// 打开开关，会返回搜索状态
 	Processes *bool `json:"Processes,omitnil,omitempty" name:"Processes"`
+
+	// 是否开启图文混排
+	EnableImage *bool `json:"EnableImage,omitnil,omitempty" name:"EnableImage"`
+
+	// 是否开启音乐
+	EnableMusic *bool `json:"EnableMusic,omitnil,omitempty" name:"EnableMusic"`
 }

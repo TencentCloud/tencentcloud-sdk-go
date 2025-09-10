@@ -143,6 +143,9 @@ const (
 	// 域名添加失败，当前域名必须选择标签，请确认后重试。
 	INVALIDPARAMETER_CDNCONFIGTAGREQUIRED = "InvalidParameter.CdnConfigTagRequired"
 
+	// 域名已在Edgeone接入
+	INVALIDPARAMETER_CDNHOSTEXISTSINEDGEONE = "InvalidParameter.CdnHostExistsInEdgeOne"
+
 	// 域名拥有特殊配置，需人工处理。
 	INVALIDPARAMETER_CDNHOSTHASSPECIALCONFIG = "InvalidParameter.CdnHostHasSpecialConfig"
 

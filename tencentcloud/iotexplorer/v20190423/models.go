@@ -199,6 +199,168 @@ type BatchProductionInfo struct {
 }
 
 // Predefined struct for user
+type BatchUpdateFirmwareRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 固件新版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
+
+	// 固件原版本号
+	FirmwareOriVersion *string `json:"FirmwareOriVersion,omitnil,omitempty" name:"FirmwareOriVersion"`
+
+	// 升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式
+	UpgradeMethod *uint64 `json:"UpgradeMethod,omitnil,omitempty" name:"UpgradeMethod"`
+
+	// 设备列表文件名称，根据文件列表升级固件需要填写此参数
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 设备列表的文件md5值
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
+
+	// 设备列表的文件大小值
+	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 需要升级的设备名称列表
+	DeviceNames []*string `json:"DeviceNames,omitnil,omitempty" name:"DeviceNames"`
+
+	// 固件升级任务，默认超时时间。 最小取值120秒，最大为900秒
+	TimeoutInterval *uint64 `json:"TimeoutInterval,omitnil,omitempty" name:"TimeoutInterval"`
+
+	// 固件升级任务类型，默认静态升级值为空或1，动态升级值为7
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 任务延迟时间
+	DelayTime *int64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 是否覆盖，0不覆盖，1覆盖
+	OverrideMode *uint64 `json:"OverrideMode,omitnil,omitempty" name:"OverrideMode"`
+
+	// 失败重试次数
+	MaxRetryNum *uint64 `json:"MaxRetryNum,omitnil,omitempty" name:"MaxRetryNum"`
+
+	// 重试间隔min
+	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
+
+	// 固件模块
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 用户自定义信息
+	TaskUserDefine *string `json:"TaskUserDefine,omitnil,omitempty" name:"TaskUserDefine"`
+}
+
+type BatchUpdateFirmwareRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 固件新版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
+
+	// 固件原版本号
+	FirmwareOriVersion *string `json:"FirmwareOriVersion,omitnil,omitempty" name:"FirmwareOriVersion"`
+
+	// 升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式
+	UpgradeMethod *uint64 `json:"UpgradeMethod,omitnil,omitempty" name:"UpgradeMethod"`
+
+	// 设备列表文件名称，根据文件列表升级固件需要填写此参数
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 设备列表的文件md5值
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
+
+	// 设备列表的文件大小值
+	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 需要升级的设备名称列表
+	DeviceNames []*string `json:"DeviceNames,omitnil,omitempty" name:"DeviceNames"`
+
+	// 固件升级任务，默认超时时间。 最小取值120秒，最大为900秒
+	TimeoutInterval *uint64 `json:"TimeoutInterval,omitnil,omitempty" name:"TimeoutInterval"`
+
+	// 固件升级任务类型，默认静态升级值为空或1，动态升级值为7
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 任务延迟时间
+	DelayTime *int64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 是否覆盖，0不覆盖，1覆盖
+	OverrideMode *uint64 `json:"OverrideMode,omitnil,omitempty" name:"OverrideMode"`
+
+	// 失败重试次数
+	MaxRetryNum *uint64 `json:"MaxRetryNum,omitnil,omitempty" name:"MaxRetryNum"`
+
+	// 重试间隔min
+	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
+
+	// 固件模块
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 用户自定义信息
+	TaskUserDefine *string `json:"TaskUserDefine,omitnil,omitempty" name:"TaskUserDefine"`
+}
+
+func (r *BatchUpdateFirmwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchUpdateFirmwareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductID")
+	delete(f, "FirmwareVersion")
+	delete(f, "FirmwareOriVersion")
+	delete(f, "UpgradeMethod")
+	delete(f, "FileName")
+	delete(f, "FileMd5")
+	delete(f, "FileSize")
+	delete(f, "DeviceNames")
+	delete(f, "TimeoutInterval")
+	delete(f, "Type")
+	delete(f, "DelayTime")
+	delete(f, "OverrideMode")
+	delete(f, "MaxRetryNum")
+	delete(f, "RetryInterval")
+	delete(f, "FwType")
+	delete(f, "TaskUserDefine")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchUpdateFirmwareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchUpdateFirmwareResponseParams struct {
+	// 任务Id
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchUpdateFirmwareResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchUpdateFirmwareResponseParams `json:"Response"`
+}
+
+func (r *BatchUpdateFirmwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchUpdateFirmwareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BindCloudStorageUserRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -2321,6 +2483,81 @@ func (r *CreateLoRaGatewayResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateOtaModuleRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 模块类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 模块类型名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 类型描述
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type CreateOtaModuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 模块类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 模块类型名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 类型描述
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *CreateOtaModuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOtaModuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductID")
+	delete(f, "FwType")
+	delete(f, "Name")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOtaModuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOtaModuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOtaModuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOtaModuleResponseParams `json:"Response"`
+}
+
+func (r *CreateOtaModuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOtaModuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePositionFenceRequestParams struct {
 	// 位置空间Id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
@@ -3513,6 +3750,67 @@ func (r *DeleteLoRaGatewayResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteLoRaGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOtaModuleRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 模块类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+}
+
+type DeleteOtaModuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 模块类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+}
+
+func (r *DeleteOtaModuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOtaModuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductID")
+	delete(f, "FwType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOtaModuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOtaModuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteOtaModuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOtaModuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteOtaModuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOtaModuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6787,6 +7085,103 @@ func (r *DescribeFirmwareResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFirmwareTaskDevicesRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 固件版本
+	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
+
+	// 筛选条件
+	Filters []*SearchKeyword `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询的数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+}
+
+type DescribeFirmwareTaskDevicesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 固件版本
+	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
+
+	// 筛选条件
+	Filters []*SearchKeyword `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询的数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+}
+
+func (r *DescribeFirmwareTaskDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirmwareTaskDevicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductID")
+	delete(f, "FirmwareVersion")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "FwType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirmwareTaskDevicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFirmwareTaskDevicesResponseParams struct {
+	// 固件升级任务的设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 固件升级任务的设备列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Devices []*DeviceUpdateStatus `json:"Devices,omitnil,omitempty" name:"Devices"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFirmwareTaskDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFirmwareTaskDevicesResponseParams `json:"Response"`
+}
+
+func (r *DescribeFirmwareTaskDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirmwareTaskDevicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFirmwareTaskRequestParams struct {
 	// 产品ID
 	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
@@ -6905,6 +7300,103 @@ func (r *DescribeFirmwareTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeFirmwareTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFirmwareTasksRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
+
+	// 查询偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回查询结果条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 搜索过滤条件
+	Filters []*SearchKeyword `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+}
+
+type DescribeFirmwareTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
+
+	// 查询偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回查询结果条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 搜索过滤条件
+	Filters []*SearchKeyword `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+}
+
+func (r *DescribeFirmwareTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirmwareTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductID")
+	delete(f, "FirmwareVersion")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "FwType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirmwareTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFirmwareTasksResponseParams struct {
+	// 固件升级任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskInfos []*FirmwareTaskInfo `json:"TaskInfos,omitnil,omitempty" name:"TaskInfos"`
+
+	// 固件升级任务总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFirmwareTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFirmwareTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeFirmwareTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirmwareTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8653,6 +9145,44 @@ type DeviceSignatureInfo struct {
 	DeviceSignature *string `json:"DeviceSignature,omitnil,omitempty" name:"DeviceSignature"`
 }
 
+type DeviceUpdateStatus struct {
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 最后处理时间
+	LastProcessTime *uint64 `json:"LastProcessTime,omitnil,omitempty" name:"LastProcessTime"`
+
+	// 状态
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误消息
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// 返回码
+	Retcode *int64 `json:"Retcode,omitnil,omitempty" name:"Retcode"`
+
+	// 目标更新版本
+	DstVersion *string `json:"DstVersion,omitnil,omitempty" name:"DstVersion"`
+
+	// 下载中状态时的下载进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+
+	// 原版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriVersion *string `json:"OriVersion,omitnil,omitempty" name:"OriVersion"`
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 重试次数
+	RetryNum *uint64 `json:"RetryNum,omitnil,omitempty" name:"RetryNum"`
+}
+
 type DeviceUser struct {
 	// 用户ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -9087,6 +9617,39 @@ type FirmwareInfo struct {
 
 	// 固件用户自定义配置信息
 	UserDefined *string `json:"UserDefined,omitnil,omitempty" name:"UserDefined"`
+}
+
+type FirmwareTaskInfo struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 任务创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 创建者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorNickName *string `json:"CreatorNickName,omitnil,omitempty" name:"CreatorNickName"`
+
+	// 创建者ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserId *int64 `json:"CreateUserId,omitnil,omitempty" name:"CreateUserId"`
+
+	// 任务启动时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronTime *int64 `json:"CronTime,omitnil,omitempty" name:"CronTime"`
+
+	// 固件类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 // Predefined struct for user
@@ -11712,6 +12275,137 @@ func (r *ListFirmwaresResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListOtaModulesRequestParams struct {
+	// 获取的页数
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 分页的大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 搜索过滤条件
+	Filters []*SearchKeyword `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type ListOtaModulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 获取的页数
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 分页的大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 搜索过滤条件
+	Filters []*SearchKeyword `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *ListOtaModulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListOtaModulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListOtaModulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListOtaModulesResponseParams struct {
+	// 固件总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 固件列表
+	Modules []*OtaModuleInfo `json:"Modules,omitnil,omitempty" name:"Modules"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListOtaModulesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListOtaModulesResponseParams `json:"Response"`
+}
+
+func (r *ListOtaModulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListOtaModulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListProductOtaModulesRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+}
+
+type ListProductOtaModulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+}
+
+func (r *ListProductOtaModulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListProductOtaModulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListProductOtaModulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListProductOtaModulesResponseParams struct {
+	// 固件列表
+	Modules []*OtaModuleInfo `json:"Modules,omitnil,omitempty" name:"Modules"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListProductOtaModulesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListProductOtaModulesResponseParams `json:"Response"`
+}
+
+func (r *ListProductOtaModulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListProductOtaModulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListTopicPolicyRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -13275,6 +13969,29 @@ func (r *ModifyTopicRuleResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyTopicRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type OtaModuleInfo struct {
+	// 模块创建时间
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 模块名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 模块类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 是否系统内置升级包类型
+	IsBuildIn *bool `json:"IsBuildIn,omitnil,omitempty" name:"IsBuildIn"`
+
+	// 模块描述
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type PackageConsumeStat struct {
@@ -15396,6 +16113,81 @@ func (r *UpdateFirmwareResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateFirmwareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateOtaModuleRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 模块类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 模块类型名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模块类型描述
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type UpdateOtaModuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
+
+	// 模块类型
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 模块类型名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模块类型描述
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *UpdateOtaModuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOtaModuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductID")
+	delete(f, "FwType")
+	delete(f, "Name")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOtaModuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateOtaModuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateOtaModuleResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateOtaModuleResponseParams `json:"Response"`
+}
+
+func (r *UpdateOtaModuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOtaModuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

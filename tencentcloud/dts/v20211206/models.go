@@ -1018,10 +1018,10 @@ func (r *CreateMigrateCheckJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMigrationServiceRequestParams struct {
-	// 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
+	// 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitnil,omitempty" name:"SrcDatabaseType"`
 
-	// 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
+	// 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
 	DstDatabaseType *string `json:"DstDatabaseType,omitnil,omitempty" name:"DstDatabaseType"`
 
 	// 源实例地域，如：ap-guangzhou
@@ -1030,7 +1030,7 @@ type CreateMigrationServiceRequestParams struct {
 	// 目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。
 	DstRegion *string `json:"DstRegion,omitnil,omitempty" name:"DstRegion"`
 
-	// 实例规格，包括：small、medium、large、xlarge、2xlarge
+	// 实例规格，包括：small、medium、large、xlarge、2xlarge。当前未计费链路仅支持medium字段值。不同规格类型参考[计费概述](https://cloud.tencent.com/document/product/571/18736)
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 
 	// 购买数量，范围为[1,15]，默认为1
@@ -1046,10 +1046,10 @@ type CreateMigrationServiceRequestParams struct {
 type CreateMigrationServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
+	// 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitnil,omitempty" name:"SrcDatabaseType"`
 
-	// 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
+	// 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
 	DstDatabaseType *string `json:"DstDatabaseType,omitnil,omitempty" name:"DstDatabaseType"`
 
 	// 源实例地域，如：ap-guangzhou
@@ -1058,7 +1058,7 @@ type CreateMigrationServiceRequest struct {
 	// 目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。
 	DstRegion *string `json:"DstRegion,omitnil,omitempty" name:"DstRegion"`
 
-	// 实例规格，包括：small、medium、large、xlarge、2xlarge
+	// 实例规格，包括：small、medium、large、xlarge、2xlarge。当前未计费链路仅支持medium字段值。不同规格类型参考[计费概述](https://cloud.tencent.com/document/product/571/18736)
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 
 	// 购买数量，范围为[1,15]，默认为1
@@ -1482,7 +1482,7 @@ type DBEndpointInfo struct {
 	// 实例所在地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
+	// 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云服务器自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
@@ -1501,12 +1501,12 @@ type DBEndpointInfo struct {
 
 	// 此参数为数组类型，可以传多个键值对结构对象。
 	// MongoDB可定义如下的参数：
-	// 'AuthDatabase':'admin',
-	// 'AuthFlag': "1",
-	// 'AuthMechanism':"SCRAM-SHA-1",
-	// "fetchMethod":"oplog",
-	// "connectMode":"srv",
-	// "EncryptedConnProtocol":"mongo_atlas_ssl"；
+	// 'AuthDatabase':'admin',    //认证库
+	// 'AuthFlag': "1",       //实例是否需要认证，"0": 不用认证；"1":需要认证
+	// 'AuthMechanism':"SCRAM-SHA-1",    //实例认证方式
+	// "fetchMethod":"oplog",    //fetchMethod表示迁移方式，支持oplog、change_stream
+	// "connectMode":"srv",    //外网srv连接模式
+	// "EncryptedConnProtocol":"mongo_atlas_ssl"；    //加密连接方式
 	// 其中fetchMethod表示迁移方式，还可支持change_stream；EncryptedConnProtocol值为mongo_atlas_ssl表示使用atlas ssl连接方式。
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
 

@@ -644,6 +644,12 @@ type CBSInstance struct {
 
 	// 包销到期时间
 	UnderwriteExpiredTime *string `json:"UnderwriteExpiredTime,omitnil,omitempty" name:"UnderwriteExpiredTime"`
+
+	// 标签
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 云硬盘额外性能值，单位：MB/s
+	ThroughputPerformance *int64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 type CLBSetting struct {
@@ -1261,8 +1267,8 @@ type CreateCloudInstanceRequestParams struct {
 	// <li>52:表示EMR-TKE-V1.0.0</li>
 	ProductId *int64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 客户端token，唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，小于等于64个字符，例如 a9a90aa6----fae36063280
-	// 示例值：a9a90aa6----fae36063280
+	// 客户端token，唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，小于等于64个字符，例如 a9a90aa6fae36063280
+	// 示例值：a9a90aa6fae36063280
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
@@ -1283,7 +1289,7 @@ type CreateCloudInstanceRequestParams struct {
 	// 标签信息
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 登陆密码，LoginSettings中的Password字段
+	// 登录密码，LoginSettings中的Password字段
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
 
 	// 共享服务信息
@@ -1291,6 +1297,12 @@ type CreateCloudInstanceRequestParams struct {
 
 	// 可用区id
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 数据库版本
+	DefaultMetaVersion *string `json:"DefaultMetaVersion,omitnil,omitempty" name:"DefaultMetaVersion"`
+
+	// 是否开通审计
+	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
 }
 
 type CreateCloudInstanceRequest struct {
@@ -1324,8 +1336,8 @@ type CreateCloudInstanceRequest struct {
 	// <li>52:表示EMR-TKE-V1.0.0</li>
 	ProductId *int64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 客户端token，唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，小于等于64个字符，例如 a9a90aa6----fae36063280
-	// 示例值：a9a90aa6----fae36063280
+	// 客户端token，唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，小于等于64个字符，例如 a9a90aa6fae36063280
+	// 示例值：a9a90aa6fae36063280
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
@@ -1346,7 +1358,7 @@ type CreateCloudInstanceRequest struct {
 	// 标签信息
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 登陆密码，LoginSettings中的Password字段
+	// 登录密码，LoginSettings中的Password字段
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
 
 	// 共享服务信息
@@ -1354,6 +1366,12 @@ type CreateCloudInstanceRequest struct {
 
 	// 可用区id
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 数据库版本
+	DefaultMetaVersion *string `json:"DefaultMetaVersion,omitnil,omitempty" name:"DefaultMetaVersion"`
+
+	// 是否开通审计
+	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
 }
 
 func (r *CreateCloudInstanceRequest) ToJsonString() string {
@@ -1384,6 +1402,8 @@ func (r *CreateCloudInstanceRequest) FromJsonString(s string) error {
 	delete(f, "LoginSettings")
 	delete(f, "ExternalService")
 	delete(f, "ZoneId")
+	delete(f, "DefaultMetaVersion")
+	delete(f, "NeedCdbAudit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudInstanceRequest has unknown keys!", "")
 	}
@@ -1504,6 +1524,12 @@ type CreateClusterRequestParams struct {
 
 	// clb id
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// 数据库版本：mysql8/tdsql8/mysql5
+	DefaultMetaVersion *string `json:"DefaultMetaVersion,omitnil,omitempty" name:"DefaultMetaVersion"`
+
+	// 是否开通数据库审计
+	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
 }
 
 type CreateClusterRequest struct {
@@ -1596,6 +1622,12 @@ type CreateClusterRequest struct {
 
 	// clb id
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// 数据库版本：mysql8/tdsql8/mysql5
+	DefaultMetaVersion *string `json:"DefaultMetaVersion,omitnil,omitempty" name:"DefaultMetaVersion"`
+
+	// 是否开通数据库审计
+	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1633,6 +1665,8 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "CosBucket")
 	delete(f, "NodeMarks")
 	delete(f, "LoadBalancerId")
+	delete(f, "DefaultMetaVersion")
+	delete(f, "NeedCdbAudit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -1873,6 +1907,12 @@ type CreateInstanceRequestParams struct {
 
 	// CLB id
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// 数据库类型：mysql8/tdsql8
+	DefaultMetaVersion *string `json:"DefaultMetaVersion,omitnil,omitempty" name:"DefaultMetaVersion"`
+
+	// 是否开通审计：0:不开通,1:开通
+	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
 }
 
 type CreateInstanceRequest struct {
@@ -2021,6 +2061,12 @@ type CreateInstanceRequest struct {
 
 	// CLB id
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// 数据库类型：mysql8/tdsql8
+	DefaultMetaVersion *string `json:"DefaultMetaVersion,omitnil,omitempty" name:"DefaultMetaVersion"`
+
+	// 是否开通审计：0:不开通,1:开通
+	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -2070,6 +2116,8 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CosBucket")
 	delete(f, "NodeMarks")
 	delete(f, "LoadBalancerId")
+	delete(f, "DefaultMetaVersion")
+	delete(f, "NeedCdbAudit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -4755,6 +4803,10 @@ type DescribeNodeDataDisksRequestParams struct {
 
 	// 数据偏移值
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 场景值：
+	// ModifyDiskExtraPerformance ：调整数据盘额外性能
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 }
 
 type DescribeNodeDataDisksRequest struct {
@@ -4777,6 +4829,10 @@ type DescribeNodeDataDisksRequest struct {
 
 	// 数据偏移值
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 场景值：
+	// ModifyDiskExtraPerformance ：调整数据盘额外性能
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 }
 
 func (r *DescribeNodeDataDisksRequest) ToJsonString() string {
@@ -4797,6 +4853,7 @@ func (r *DescribeNodeDataDisksRequest) FromJsonString(s string) error {
 	delete(f, "InnerSearch")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Scene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodeDataDisksRequest has unknown keys!", "")
 	}
@@ -4814,6 +4871,9 @@ type DescribeNodeDataDisksResponseParams struct {
 
 	// 云盘最大容量
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
+
+	// 云硬盘最大额外性能值
+	MaxThroughputPerformance *int64 `json:"MaxThroughputPerformance,omitnil,omitempty" name:"MaxThroughputPerformance"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7352,6 +7412,12 @@ type InquiryPriceCreateInstanceRequestParams struct {
 
 	// 可用区的规格信息
 	MultiZoneSettings []*MultiZoneSetting `json:"MultiZoneSettings,omitnil,omitempty" name:"MultiZoneSettings"`
+
+	// 数据库版本
+	DefaultMetaVersion *string `json:"DefaultMetaVersion,omitnil,omitempty" name:"DefaultMetaVersion"`
+
+	// 0:不开通审计；1:开通审计
+	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
 }
 
 type InquiryPriceCreateInstanceRequest struct {
@@ -7419,6 +7485,12 @@ type InquiryPriceCreateInstanceRequest struct {
 
 	// 可用区的规格信息
 	MultiZoneSettings []*MultiZoneSetting `json:"MultiZoneSettings,omitnil,omitempty" name:"MultiZoneSettings"`
+
+	// 数据库版本
+	DefaultMetaVersion *string `json:"DefaultMetaVersion,omitnil,omitempty" name:"DefaultMetaVersion"`
+
+	// 0:不开通审计；1:开通审计
+	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
 }
 
 func (r *InquiryPriceCreateInstanceRequest) ToJsonString() string {
@@ -7450,6 +7522,8 @@ func (r *InquiryPriceCreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ExternalService")
 	delete(f, "VersionID")
 	delete(f, "MultiZoneSettings")
+	delete(f, "DefaultMetaVersion")
+	delete(f, "NeedCdbAudit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateInstanceRequest has unknown keys!", "")
 	}
@@ -8194,6 +8268,9 @@ type LoadAutoScaleStrategy struct {
 
 	// 优雅缩容等待时间
 	GraceDownTime *int64 `json:"GraceDownTime,omitnil,omitempty" name:"GraceDownTime"`
+
+	// 是否开启任务保护
+	GraceDownProtectFlag *bool `json:"GraceDownProtectFlag,omitnil,omitempty" name:"GraceDownProtectFlag"`
 
 	// 绑定标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12871,6 +12948,14 @@ type Tag struct {
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
+type TagInfo struct {
+	// 标签键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type Taint struct {
 	// Taint Key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -13217,6 +13302,9 @@ type TimeAutoScaleStrategy struct {
 
 	// 优雅缩容等待时间
 	GraceDownTime *int64 `json:"GraceDownTime,omitnil,omitempty" name:"GraceDownTime"`
+
+	// 是否开启任务保护
+	GraceDownProtectFlag *bool `json:"GraceDownProtectFlag,omitnil,omitempty" name:"GraceDownProtectFlag"`
 
 	// 绑定标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。

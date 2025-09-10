@@ -4335,6 +4335,18 @@ type DisplayAsset struct {
 
 	// 公共字段
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
+
+	// 端口数据
+	Ports *string `json:"Ports,omitnil,omitempty" name:"Ports"`
+
+	// 服务数据
+	Services *string `json:"Services,omitnil,omitempty" name:"Services"`
+
+	// 域名数据
+	Domains *string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 端口和服务最近更新时间
+	LastModify *string `json:"LastModify,omitnil,omitempty" name:"LastModify"`
 }
 
 type DisplayConfig struct {

@@ -8130,6 +8130,15 @@ type Price struct {
 type RebootInstancesRequestParams struct {
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 关机类型。
+	// 取值范围：
+	// - SOFT：表示软关机 
+	// - HARD：表示硬关机 
+	// - SOFT_FIRST：表示优先软关机，失败再执行硬关机  
+	// 
+	// 默认取值：SOFT_FIRST。
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
 }
 
 type RebootInstancesRequest struct {
@@ -8137,6 +8146,15 @@ type RebootInstancesRequest struct {
 	
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 关机类型。
+	// 取值范围：
+	// - SOFT：表示软关机 
+	// - HARD：表示硬关机 
+	// - SOFT_FIRST：表示优先软关机，失败再执行硬关机  
+	// 
+	// 默认取值：SOFT_FIRST。
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
 }
 
 func (r *RebootInstancesRequest) ToJsonString() string {
@@ -8152,6 +8170,7 @@ func (r *RebootInstancesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceIds")
+	delete(f, "StopType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RebootInstancesRequest has unknown keys!", "")
 	}
@@ -9643,6 +9662,16 @@ func (r *StopDockerContainersResponse) FromJsonString(s string) error {
 type StopInstancesRequestParams struct {
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 关机类型。
+	// 取值范围： 
+	// 
+	// - SOFT：表示软关机
+	// - HARD：表示硬关机 
+	// - SOFT_FIRST：表示优先软关机，失败再执行硬关机  
+	// 
+	// 默认取值：SOFT_FIRST
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
 }
 
 type StopInstancesRequest struct {
@@ -9650,6 +9679,16 @@ type StopInstancesRequest struct {
 	
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 关机类型。
+	// 取值范围： 
+	// 
+	// - SOFT：表示软关机
+	// - HARD：表示硬关机 
+	// - SOFT_FIRST：表示优先软关机，失败再执行硬关机  
+	// 
+	// 默认取值：SOFT_FIRST
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
 }
 
 func (r *StopInstancesRequest) ToJsonString() string {
@@ -9665,6 +9704,7 @@ func (r *StopInstancesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceIds")
+	delete(f, "StopType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopInstancesRequest has unknown keys!", "")
 	}

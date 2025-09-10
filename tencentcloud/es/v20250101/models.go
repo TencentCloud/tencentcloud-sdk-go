@@ -312,12 +312,20 @@ func (r *ChunkDocumentResponse) FromJsonString(s string) error {
 }
 
 type Document struct {
-	// 文件类型。
-	// 支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
-	// 支持的文件大小：
-	// - PDF、DOC、DOCX、PPT、PPTX 支持100M
-	// - MD、TXT、XLS、XLSX、CSV 支持10M
-	// - 其他支持20M
+	// 支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、
+	// XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、
+	// IM、PCX、PPM、TIFF、XBM、HEIF、JP2
+	// 
+	// 文档解析支持的文件大小：
+	// -PDF、DOC、DOCX、PPT、PPTX支持100M
+	// -MD、TXT、XLS、XLSX、CSV支特10M
+	// -其他支持20M
+	// 
+	// 文本切片支持的文件大小：
+	// -PDF最大300M
+	// -D0CX、D0C、PPT、PPTX最大200M
+	// -TXT、MD最大10M
+	// -其他最大20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，使用腾讯云COS 文件地址。
@@ -560,11 +568,17 @@ func (r *GetTextEmbeddingResponse) FromJsonString(s string) error {
 }
 
 type Message struct {
-	// 角色, ‘system', ‘user'，'assistant'或者'tool', 在message中, 除了system，其他必须是user与assistant交替(一问一答) 
+	// 角色，可选值包括 system、user、assistant、 tool。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 具体文本内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 当role为tool时传入，标识具体的函数调用
+	ToolCallId *string `json:"ToolCallId,omitnil,omitempty" name:"ToolCallId"`
+
+	// 模型生成的工具调用
+	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
 }
 
 type OnlineSearchOptions struct {
@@ -581,6 +595,9 @@ type OutputMessage struct {
 
 	// 推理内容	
 	ReasoningContent *string `json:"ReasoningContent,omitnil,omitempty" name:"ReasoningContent"`
+
+	// 模型生成的工具调用
+	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
 }
 
 type PageUsage struct {
@@ -589,12 +606,20 @@ type PageUsage struct {
 }
 
 type ParseDocument struct {
-	// 文件类型。
-	// 支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
-	// 支持的文件大小：
-	// - PDF、DOC、DOCX、PPT、PPTX 支持100M
-	// - MD、TXT、XLS、XLSX、CSV 支持10M
-	// - 其他支持20M
+	// 支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、
+	// XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、
+	// IM、PCX、PPM、TIFF、XBM、HEIF、JP2
+	// 
+	// 文档解析支持的文件大小：
+	// -PDF、DOC、DOCX、PPT、PPTX支持100M
+	// -MD、TXT、XLS、XLSX、CSV支特10M
+	// -其他支持20M
+	// 
+	// 文本切片支持的文件大小：
+	// -PDF最大300M
+	// -D0CX、D0C、PPT、PPTX最大200M
+	// -TXT、MD最大10M
+	// -其他最大20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，使用腾讯云COS 文件地址。
@@ -603,6 +628,7 @@ type ParseDocument struct {
 	// 文件的 base64 值，携带 MineType前缀信息。编码后的后的文件不超过 10M。
 	// 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过3秒。
 	// 支持的图片像素：单边介于20-10000px之间。
+	// 文件的 FileUrl、FileContent必须提供一个，如果都提供只使用 FileUrl。
 	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 
 	// 文档解析配置
@@ -863,6 +889,28 @@ type TokenUsage struct {
 
 	// 表示prompt_tokens和completion_tokens之和 
 	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+}
+
+type ToolCall struct {
+	// 工具调用id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 工具调用类型，当前只支持function
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 具体的function调用
+	Function *ToolCallFunction `json:"Function,omitnil,omitempty" name:"Function"`
+
+	// 索引值
+	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
+}
+
+type ToolCallFunction struct {
+	// function名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// function参数，一般为json字符串
+	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
 }
 
 type Usage struct {

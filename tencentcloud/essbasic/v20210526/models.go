@@ -3155,6 +3155,8 @@ type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	FlowEffectiveDay *int64 `json:"FlowEffectiveDay,omitnil,omitempty" name:"FlowEffectiveDay"`
 
 	// 二维码的有效期限，默认为7天，最高设定不得超过90天。 一旦超过二维码的有效期限，该二维码将自动失效。	
+	//
+	// Deprecated: QrEffectiveDay is deprecated.
 	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitnil,omitempty" name:"QrEffectiveDay"`
 
 	// 指定签署人信息。 在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。	
@@ -3185,6 +3187,12 @@ type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 
 	// 合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。 例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
 	FlowNameAppendScannerInfo *bool `json:"FlowNameAppendScannerInfo,omitnil,omitempty" name:"FlowNameAppendScannerInfo"`
+
+	// 签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName	
+	QrCodeName *string `json:"QrCodeName,omitnil,omitempty" name:"QrCodeName"`
+
+	// 签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。	
+	QrCodeExpiredOn *int64 `json:"QrCodeExpiredOn,omitnil,omitempty" name:"QrCodeExpiredOn"`
 }
 
 type ChannelCreateMultiFlowSignQRCodeRequest struct {
@@ -3238,6 +3246,12 @@ type ChannelCreateMultiFlowSignQRCodeRequest struct {
 
 	// 合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。 例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
 	FlowNameAppendScannerInfo *bool `json:"FlowNameAppendScannerInfo,omitnil,omitempty" name:"FlowNameAppendScannerInfo"`
+
+	// 签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName	
+	QrCodeName *string `json:"QrCodeName,omitnil,omitempty" name:"QrCodeName"`
+
+	// 签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。	
+	QrCodeExpiredOn *int64 `json:"QrCodeExpiredOn,omitnil,omitempty" name:"QrCodeExpiredOn"`
 }
 
 func (r *ChannelCreateMultiFlowSignQRCodeRequest) ToJsonString() string {
@@ -3265,6 +3279,8 @@ func (r *ChannelCreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error
 	delete(f, "Operator")
 	delete(f, "ForbidPersonalMultipleSign")
 	delete(f, "FlowNameAppendScannerInfo")
+	delete(f, "QrCodeName")
+	delete(f, "QrCodeExpiredOn")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateMultiFlowSignQRCodeRequest has unknown keys!", "")
 	}

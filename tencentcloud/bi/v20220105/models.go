@@ -22,7 +22,7 @@ import (
 
 // Predefined struct for user
 type ApplyEmbedIntervalRequestParams struct {
-	// 分享项目id，必选
+	// 分享项目id
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 分享页面id，嵌出看板时此为空值0，ChatBI嵌出时不传
@@ -46,7 +46,7 @@ type ApplyEmbedIntervalRequestParams struct {
 type ApplyEmbedIntervalRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分享项目id，必选
+	// 分享项目id
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 分享页面id，嵌出看板时此为空值0，ChatBI嵌出时不传
@@ -2145,7 +2145,7 @@ type DescribePermissionRanksInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 1
+	// 无
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *RankInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -2174,7 +2174,7 @@ type DescribePermissionRoleInfoRequestParams struct {
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 页数
+	// 页数 
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
 	// 条数
@@ -2190,7 +2190,7 @@ type DescribePermissionRoleInfoRequest struct {
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 页数
+	// 页数 
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
 	// 条数
@@ -2236,7 +2236,7 @@ type DescribePermissionRoleInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 112
+	// 112 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 

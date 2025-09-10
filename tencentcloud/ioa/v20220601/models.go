@@ -680,14 +680,20 @@ type DescribeAggrSoftCategorySoftListData struct {
 
 // Predefined struct for user
 type DescribeAggrSoftCategorySoftListRequestParams struct {
-	// os类别(只支持32位)
+	// 过滤条件、分页参数<li>Name - String - 过滤支持：是 - 操作符:eq,neq,like,ilike,nlike - 排序支持：是 - 按类别名称过滤或排序。</li><li>CorpName - String - 过滤支持：是 - 操作符:eq,neq,like,ilike,nlike - 排序支持：是 - 按CorpName过滤或排序。</li><li>Version - String - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按版本排序。</li><li>InstalledDeviceCount - int - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按安装设备数量排序。</li><li>GenuineRate - float - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按正版率排序。</li><li>AuthNum - int - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按授权数量排序。</li><li>CategoryNamePath - String - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按类别路径名排序。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 操作系统类型（0: win，1：linux，2: mac，4：android，5：ios 默认值0）
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
 type DescribeAggrSoftCategorySoftListRequest struct {
 	*tchttp.BaseRequest
 	
-	// os类别(只支持32位)
+	// 过滤条件、分页参数<li>Name - String - 过滤支持：是 - 操作符:eq,neq,like,ilike,nlike - 排序支持：是 - 按类别名称过滤或排序。</li><li>CorpName - String - 过滤支持：是 - 操作符:eq,neq,like,ilike,nlike - 排序支持：是 - 按CorpName过滤或排序。</li><li>Version - String - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按版本排序。</li><li>InstalledDeviceCount - int - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按安装设备数量排序。</li><li>GenuineRate - float - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按正版率排序。</li><li>AuthNum - int - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按授权数量排序。</li><li>CategoryNamePath - String - 过滤支持：否 - 操作符:eq,like - 排序支持：是 - 按类别路径名排序。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 操作系统类型（0: win，1：linux，2: mac，4：android，5：ios 默认值0）
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
@@ -703,6 +709,7 @@ func (r *DescribeAggrSoftCategorySoftListRequest) FromJsonString(s string) error
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Condition")
 	delete(f, "OsType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAggrSoftCategorySoftListRequest has unknown keys!", "")
@@ -871,20 +878,26 @@ type DescribeAggrSoftDeviceListData struct {
 
 // Predefined struct for user
 type DescribeAggrSoftDeviceListRequestParams struct {
+	// 过滤条件
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
 	// 软件名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 操作系统
+	// 0:win 2:mac
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
 type DescribeAggrSoftDeviceListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 过滤条件
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
 	// 软件名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 操作系统
+	// 0:win 2:mac
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
@@ -900,6 +913,7 @@ func (r *DescribeAggrSoftDeviceListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Condition")
 	delete(f, "Name")
 	delete(f, "OsType")
 	if len(f) > 0 {
@@ -2217,6 +2231,9 @@ type DescribeSoftwareInformationRequestParams struct {
 	// 过滤条件、分页参数
 	// <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 0:win 2:mac
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
 type DescribeSoftwareInformationRequest struct {
@@ -2228,6 +2245,9 @@ type DescribeSoftwareInformationRequest struct {
 	// 过滤条件、分页参数
 	// <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 0:win 2:mac
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
 func (r *DescribeSoftwareInformationRequest) ToJsonString() string {
@@ -2244,6 +2264,7 @@ func (r *DescribeSoftwareInformationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Mid")
 	delete(f, "Condition")
+	delete(f, "OsType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSoftwareInformationRequest has unknown keys!", "")
 	}
@@ -2700,6 +2721,9 @@ type ExportSoftwareInformationListRequestParams struct {
 	// 过滤条件、分页参数
 	// <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 系统类型0:win 2:mac
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
 type ExportSoftwareInformationListRequest struct {
@@ -2711,6 +2735,9 @@ type ExportSoftwareInformationListRequest struct {
 	// 过滤条件、分页参数
 	// <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 系统类型0:win 2:mac
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
 func (r *ExportSoftwareInformationListRequest) ToJsonString() string {
@@ -2727,6 +2754,7 @@ func (r *ExportSoftwareInformationListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Mid")
 	delete(f, "Condition")
+	delete(f, "OsType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportSoftwareInformationListRequest has unknown keys!", "")
 	}

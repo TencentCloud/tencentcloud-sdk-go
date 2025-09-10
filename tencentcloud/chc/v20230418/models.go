@@ -465,6 +465,9 @@ type CreatePersonnelVisitWorkOrderRequestParams struct {
 
 	// 到访说明
 	VisitRemark *string `json:"VisitRemark,omitnil,omitempty" name:"VisitRemark"`
+
+	// 到访人员车辆信息
+	CarSet []*PersonnelVisitCar `json:"CarSet,omitnil,omitempty" name:"CarSet"`
 }
 
 type CreatePersonnelVisitWorkOrderRequest struct {
@@ -490,6 +493,9 @@ type CreatePersonnelVisitWorkOrderRequest struct {
 
 	// 到访说明
 	VisitRemark *string `json:"VisitRemark,omitnil,omitempty" name:"VisitRemark"`
+
+	// 到访人员车辆信息
+	CarSet []*PersonnelVisitCar `json:"CarSet,omitnil,omitempty" name:"CarSet"`
 }
 
 func (r *CreatePersonnelVisitWorkOrderRequest) ToJsonString() string {
@@ -511,6 +517,7 @@ func (r *CreatePersonnelVisitWorkOrderRequest) FromJsonString(s string) error {
 	delete(f, "EnterEndTime")
 	delete(f, "VisitReason")
 	delete(f, "VisitRemark")
+	delete(f, "CarSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePersonnelVisitWorkOrderRequest has unknown keys!", "")
 	}
@@ -2306,6 +2313,9 @@ type DescribePersonnelVisitWorkOrderDetailResponseParams struct {
 	// 拒绝原因
 	RejectReason *string `json:"RejectReason,omitnil,omitempty" name:"RejectReason"`
 
+	// 到访人员车辆信息
+	CarSet []*PersonnelVisitCar `json:"CarSet,omitnil,omitempty" name:"CarSet"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3618,6 +3628,17 @@ type PersonnelVisitBaseInfo struct {
 	IdcUnitNameList []*string `json:"IdcUnitNameList,omitnil,omitempty" name:"IdcUnitNameList"`
 }
 
+type PersonnelVisitCar struct {
+	// 车牌号
+	CarNumber *string `json:"CarNumber,omitnil,omitempty" name:"CarNumber"`
+
+	// 驾驶人姓名
+	DriverName *string `json:"DriverName,omitnil,omitempty" name:"DriverName"`
+
+	// 驾驶人身份证号
+	DriverNumber *string `json:"DriverNumber,omitnil,omitempty" name:"DriverNumber"`
+}
+
 type Position struct {
 	// 机位ID
 	PositionId *uint64 `json:"PositionId,omitnil,omitempty" name:"PositionId"`
@@ -3904,6 +3925,9 @@ type WorkOrderData struct {
 
 	// 工单完成时间
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 工单关联的dcops单号
+	TicketId *string `json:"TicketId,omitnil,omitempty" name:"TicketId"`
 }
 
 type WorkOrderFamilyDetail struct {

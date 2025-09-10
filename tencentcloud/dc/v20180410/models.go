@@ -1723,6 +1723,12 @@ type DirectConnectTunnel struct {
 
 	// 是否共享通道
 	ShareOrNot *uint64 `json:"ShareOrNot,omitnil,omitempty" name:"ShareOrNot"`
+
+	// 接入点名称
+	AccessPointName *string `json:"AccessPointName,omitnil,omitempty" name:"AccessPointName"`
+
+	// 接入点ID
+	AccessPointId *string `json:"AccessPointId,omitnil,omitempty" name:"AccessPointId"`
 }
 
 type DirectConnectTunnelExtra struct {

@@ -45,6 +45,58 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewControlAIConversationRequest() (request *ControlAIConversationRequest) {
+    request = &ControlAIConversationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "ControlAIConversation")
+    
+    
+    return
+}
+
+func NewControlAIConversationResponse() (response *ControlAIConversationResponse) {
+    response = &ControlAIConversationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ControlAIConversation
+// 提供服务端控制机器人的功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) ControlAIConversation(request *ControlAIConversationRequest) (response *ControlAIConversationResponse, err error) {
+    return c.ControlAIConversationWithContext(context.Background(), request)
+}
+
+// ControlAIConversation
+// 提供服务端控制机器人的功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) ControlAIConversationWithContext(ctx context.Context, request *ControlAIConversationRequest) (response *ControlAIConversationResponse, err error) {
+    if request == nil {
+        request = NewControlAIConversationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "ControlAIConversation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlAIConversation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewControlAIConversationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAgeDetectTaskRequest() (request *CreateAgeDetectTaskRequest) {
     request = &CreateAgeDetectTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -501,6 +553,110 @@ func (c *Client) DeleteScanUserWithContext(ctx context.Context, request *DeleteS
     request.SetContext(ctx)
     
     response = NewDeleteScanUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVoicePrintRequest() (request *DeleteVoicePrintRequest) {
+    request = &DeleteVoicePrintRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "DeleteVoicePrint")
+    
+    
+    return
+}
+
+func NewDeleteVoicePrintResponse() (response *DeleteVoicePrintResponse) {
+    response = &DeleteVoicePrintResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVoicePrint
+// 传入声纹ID，删除之前注册的声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+func (c *Client) DeleteVoicePrint(request *DeleteVoicePrintRequest) (response *DeleteVoicePrintResponse, err error) {
+    return c.DeleteVoicePrintWithContext(context.Background(), request)
+}
+
+// DeleteVoicePrint
+// 传入声纹ID，删除之前注册的声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+func (c *Client) DeleteVoicePrintWithContext(ctx context.Context, request *DeleteVoicePrintRequest) (response *DeleteVoicePrintResponse, err error) {
+    if request == nil {
+        request = NewDeleteVoicePrintRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DeleteVoicePrint")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVoicePrint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVoicePrintResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIConversationRequest() (request *DescribeAIConversationRequest) {
+    request = &DescribeAIConversationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "DescribeAIConversation")
+    
+    
+    return
+}
+
+func NewDescribeAIConversationResponse() (response *DescribeAIConversationResponse) {
+    response = &DescribeAIConversationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIConversation
+// 查询AI对话任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) DescribeAIConversation(request *DescribeAIConversationRequest) (response *DescribeAIConversationResponse, err error) {
+    return c.DescribeAIConversationWithContext(context.Background(), request)
+}
+
+// DescribeAIConversation
+// 查询AI对话任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) DescribeAIConversationWithContext(ctx context.Context, request *DescribeAIConversationRequest) (response *DescribeAIConversationResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIConversationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeAIConversation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIConversation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIConversationResponse()
     err = c.Send(request, response)
     return
 }
@@ -1153,6 +1309,58 @@ func (c *Client) DescribeUserInAndOutTimeWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeVoicePrintRequest() (request *DescribeVoicePrintRequest) {
+    request = &DescribeVoicePrintRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "DescribeVoicePrint")
+    
+    
+    return
+}
+
+func NewDescribeVoicePrintResponse() (response *DescribeVoicePrintResponse) {
+    response = &DescribeVoicePrintResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVoicePrint
+// 查询先前注册的声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDVOICEPRINTIDLIST = "InvalidParameter.InvalidVoicePrintIdList"
+func (c *Client) DescribeVoicePrint(request *DescribeVoicePrintRequest) (response *DescribeVoicePrintResponse, err error) {
+    return c.DescribeVoicePrintWithContext(context.Background(), request)
+}
+
+// DescribeVoicePrint
+// 查询先前注册的声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDVOICEPRINTIDLIST = "InvalidParameter.InvalidVoicePrintIdList"
+func (c *Client) DescribeVoicePrintWithContext(ctx context.Context, request *DescribeVoicePrintRequest) (response *DescribeVoicePrintResponse, err error) {
+    if request == nil {
+        request = NewDescribeVoicePrintRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeVoicePrint")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVoicePrint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVoicePrintResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetCustomizationListRequest() (request *GetCustomizationListRequest) {
     request = &GetCustomizationListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1513,6 +1721,66 @@ func (c *Client) ModifyUserMicStatusWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyUserMicStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRegisterVoicePrintRequest() (request *RegisterVoicePrintRequest) {
+    request = &RegisterVoicePrintRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "RegisterVoicePrint")
+    
+    
+    return
+}
+
+func NewRegisterVoicePrintResponse() (response *RegisterVoicePrintResponse) {
+    response = &RegisterVoicePrintResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RegisterVoicePrint
+// 传入音频base64串，注册声纹信息，返回声纹ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+func (c *Client) RegisterVoicePrint(request *RegisterVoicePrintRequest) (response *RegisterVoicePrintResponse, err error) {
+    return c.RegisterVoicePrintWithContext(context.Background(), request)
+}
+
+// RegisterVoicePrint
+// 传入音频base64串，注册声纹信息，返回声纹ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+func (c *Client) RegisterVoicePrintWithContext(ctx context.Context, request *RegisterVoicePrintRequest) (response *RegisterVoicePrintResponse, err error) {
+    if request == nil {
+        request = NewRegisterVoicePrintRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "RegisterVoicePrint")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegisterVoicePrint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRegisterVoicePrintResponse()
     err = c.Send(request, response)
     return
 }
@@ -2127,6 +2395,72 @@ func (c *Client) ScanVoiceWithContext(ctx context.Context, request *ScanVoiceReq
     return
 }
 
+func NewStartAIConversationRequest() (request *StartAIConversationRequest) {
+    request = &StartAIConversationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "StartAIConversation")
+    
+    
+    return
+}
+
+func NewStartAIConversationResponse() (response *StartAIConversationResponse) {
+    response = &StartAIConversationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartAIConversation
+// 启动AI对话任务，AI通道机器人进入GME房间，与房间内指定的成员进行AI对话，适用于智能客服，AI口语教师等场景
+//
+// 
+//
+// GME AI对话功能内置语音转文本能力，同时提供通道服务，即客户可灵活指定第三方AI模型（LLM）服务和文本转音频（TTS)服务，更多[功能说明](https://cloud.tencent.com/document/product/647/108901)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"
+//  FAILEDOPERATION_NOTALLOWED = "FailedOperation.NotAllowed"
+//  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+func (c *Client) StartAIConversation(request *StartAIConversationRequest) (response *StartAIConversationResponse, err error) {
+    return c.StartAIConversationWithContext(context.Background(), request)
+}
+
+// StartAIConversation
+// 启动AI对话任务，AI通道机器人进入GME房间，与房间内指定的成员进行AI对话，适用于智能客服，AI口语教师等场景
+//
+// 
+//
+// GME AI对话功能内置语音转文本能力，同时提供通道服务，即客户可灵活指定第三方AI模型（LLM）服务和文本转音频（TTS)服务，更多[功能说明](https://cloud.tencent.com/document/product/647/108901)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"
+//  FAILEDOPERATION_NOTALLOWED = "FailedOperation.NotAllowed"
+//  FAILEDOPERATION_TASKEXIST = "FailedOperation.TaskExist"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+func (c *Client) StartAIConversationWithContext(ctx context.Context, request *StartAIConversationRequest) (response *StartAIConversationResponse, err error) {
+    if request == nil {
+        request = NewStartAIConversationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "StartAIConversation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartAIConversation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartAIConversationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartRecordRequest() (request *StartRecordRequest) {
     request = &StartRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2203,6 +2537,58 @@ func (c *Client) StartRecordWithContext(ctx context.Context, request *StartRecor
     return
 }
 
+func NewStopAIConversationRequest() (request *StopAIConversationRequest) {
+    request = &StopAIConversationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "StopAIConversation")
+    
+    
+    return
+}
+
+func NewStopAIConversationResponse() (response *StopAIConversationResponse) {
+    response = &StopAIConversationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopAIConversation
+// 停止AI对话任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) StopAIConversation(request *StopAIConversationRequest) (response *StopAIConversationResponse, err error) {
+    return c.StopAIConversationWithContext(context.Background(), request)
+}
+
+// StopAIConversation
+// 停止AI对话任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) StopAIConversationWithContext(ctx context.Context, request *StopAIConversationRequest) (response *StopAIConversationResponse, err error) {
+    if request == nil {
+        request = NewStopAIConversationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "StopAIConversation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopAIConversation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopAIConversationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopRecordRequest() (request *StopRecordRequest) {
     request = &StopRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2263,6 +2649,56 @@ func (c *Client) StopRecordWithContext(ctx context.Context, request *StopRecordR
     request.SetContext(ctx)
     
     response = NewStopRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAIConversationRequest() (request *UpdateAIConversationRequest) {
+    request = &UpdateAIConversationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "UpdateAIConversation")
+    
+    
+    return
+}
+
+func NewUpdateAIConversationResponse() (response *UpdateAIConversationResponse) {
+    response = &UpdateAIConversationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateAIConversation
+// 更新AIConversation参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+func (c *Client) UpdateAIConversation(request *UpdateAIConversationRequest) (response *UpdateAIConversationResponse, err error) {
+    return c.UpdateAIConversationWithContext(context.Background(), request)
+}
+
+// UpdateAIConversation
+// 更新AIConversation参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+func (c *Client) UpdateAIConversationWithContext(ctx context.Context, request *UpdateAIConversationRequest) (response *UpdateAIConversationResponse, err error) {
+    if request == nil {
+        request = NewUpdateAIConversationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "UpdateAIConversation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAIConversation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateAIConversationResponse()
     err = c.Send(request, response)
     return
 }
@@ -2367,6 +2803,66 @@ func (c *Client) UpdateScanUsersWithContext(ctx context.Context, request *Update
     request.SetContext(ctx)
     
     response = NewUpdateScanUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateVoicePrintRequest() (request *UpdateVoicePrintRequest) {
+    request = &UpdateVoicePrintRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "UpdateVoicePrint")
+    
+    
+    return
+}
+
+func NewUpdateVoicePrintResponse() (response *UpdateVoicePrintResponse) {
+    response = &UpdateVoicePrintResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateVoicePrint
+// 传入声纹ID以及对应音频信息，更新对应声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTUPDATEPARAMS = "MissingParameter.MissingVoicePrintUpdateParams"
+func (c *Client) UpdateVoicePrint(request *UpdateVoicePrintRequest) (response *UpdateVoicePrintResponse, err error) {
+    return c.UpdateVoicePrintWithContext(context.Background(), request)
+}
+
+// UpdateVoicePrint
+// 传入声纹ID以及对应音频信息，更新对应声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTUPDATEPARAMS = "MissingParameter.MissingVoicePrintUpdateParams"
+func (c *Client) UpdateVoicePrintWithContext(ctx context.Context, request *UpdateVoicePrintRequest) (response *UpdateVoicePrintResponse, err error) {
+    if request == nil {
+        request = NewUpdateVoicePrintRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "UpdateVoicePrint")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateVoicePrint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateVoicePrintResponse()
     err = c.Send(request, response)
     return
 }

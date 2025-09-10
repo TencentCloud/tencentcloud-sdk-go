@@ -1281,6 +1281,7 @@ func NewGetEmbeddingResponse() (response *GetEmbeddingResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) GetEmbedding(request *GetEmbeddingRequest) (response *GetEmbeddingResponse, err error) {
     return c.GetEmbeddingWithContext(context.Background(), request)
 }
@@ -1292,6 +1293,7 @@ func (c *Client) GetEmbedding(request *GetEmbeddingRequest) (response *GetEmbedd
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) GetEmbeddingWithContext(ctx context.Context, request *GetEmbeddingRequest) (response *GetEmbeddingResponse, err error) {
     if request == nil {
         request = NewGetEmbeddingRequest()

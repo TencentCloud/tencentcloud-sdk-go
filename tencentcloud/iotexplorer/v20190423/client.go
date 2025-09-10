@@ -99,6 +99,72 @@ func (c *Client) ActivateTWeCallLicenseWithContext(ctx context.Context, request 
     return
 }
 
+func NewBatchUpdateFirmwareRequest() (request *BatchUpdateFirmwareRequest) {
+    request = &BatchUpdateFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "BatchUpdateFirmware")
+    
+    
+    return
+}
+
+func NewBatchUpdateFirmwareResponse() (response *BatchUpdateFirmwareResponse) {
+    response = &BatchUpdateFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchUpdateFirmware
+// 本接口（BatchUpdateFirmware）用于批量更新设备固件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (response *BatchUpdateFirmwareResponse, err error) {
+    return c.BatchUpdateFirmwareWithContext(context.Background(), request)
+}
+
+// BatchUpdateFirmware
+// 本接口（BatchUpdateFirmware）用于批量更新设备固件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) BatchUpdateFirmwareWithContext(ctx context.Context, request *BatchUpdateFirmwareRequest) (response *BatchUpdateFirmwareResponse, err error) {
+    if request == nil {
+        request = NewBatchUpdateFirmwareRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "BatchUpdateFirmware")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchUpdateFirmware require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchUpdateFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindCloudStorageUserRequest() (request *BindCloudStorageUserRequest) {
     request = &BindCloudStorageUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1509,6 +1575,72 @@ func (c *Client) CreateLoRaGatewayWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateOtaModuleRequest() (request *CreateOtaModuleRequest) {
+    request = &CreateOtaModuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateOtaModule")
+    
+    
+    return
+}
+
+func NewCreateOtaModuleResponse() (response *CreateOtaModuleResponse) {
+    response = &CreateOtaModuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOtaModule
+// 本接口（CreateOtaModule）用于新建OTA模块
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER_FIRMWAREALREADYEXIST = "InvalidParameter.FirmwareAlreadyExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
+//  LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) CreateOtaModule(request *CreateOtaModuleRequest) (response *CreateOtaModuleResponse, err error) {
+    return c.CreateOtaModuleWithContext(context.Background(), request)
+}
+
+// CreateOtaModule
+// 本接口（CreateOtaModule）用于新建OTA模块
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER_FIRMWAREALREADYEXIST = "InvalidParameter.FirmwareAlreadyExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
+//  LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) CreateOtaModuleWithContext(ctx context.Context, request *CreateOtaModuleRequest) (response *CreateOtaModuleResponse, err error) {
+    if request == nil {
+        request = NewCreateOtaModuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateOtaModule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOtaModule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOtaModuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePositionFenceRequest() (request *CreatePositionFenceRequest) {
     request = &CreatePositionFenceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2517,6 +2649,72 @@ func (c *Client) DeleteLoRaGatewayWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteLoRaGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteOtaModuleRequest() (request *DeleteOtaModuleRequest) {
+    request = &DeleteOtaModuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteOtaModule")
+    
+    
+    return
+}
+
+func NewDeleteOtaModuleResponse() (response *DeleteOtaModuleResponse) {
+    response = &DeleteOtaModuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteOtaModule
+// 本接口（DeleteOtaModule）用于删除OTA模块
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER_FIRMWAREALREADYEXIST = "InvalidParameter.FirmwareAlreadyExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
+//  LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DeleteOtaModule(request *DeleteOtaModuleRequest) (response *DeleteOtaModuleResponse, err error) {
+    return c.DeleteOtaModuleWithContext(context.Background(), request)
+}
+
+// DeleteOtaModule
+// 本接口（DeleteOtaModule）用于删除OTA模块
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER_FIRMWAREALREADYEXIST = "InvalidParameter.FirmwareAlreadyExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
+//  LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DeleteOtaModuleWithContext(ctx context.Context, request *DeleteOtaModuleRequest) (response *DeleteOtaModuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteOtaModuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DeleteOtaModule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOtaModule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOtaModuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -5037,6 +5235,122 @@ func (c *Client) DescribeFirmwareTaskWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTaskDevicesRequest() (request *DescribeFirmwareTaskDevicesRequest) {
+    request = &DescribeFirmwareTaskDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFirmwareTaskDevices")
+    
+    
+    return
+}
+
+func NewDescribeFirmwareTaskDevicesResponse() (response *DescribeFirmwareTaskDevicesResponse) {
+    response = &DescribeFirmwareTaskDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFirmwareTaskDevices
+// 查询固件升级任务的设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFirmwareTaskDevices(request *DescribeFirmwareTaskDevicesRequest) (response *DescribeFirmwareTaskDevicesResponse, err error) {
+    return c.DescribeFirmwareTaskDevicesWithContext(context.Background(), request)
+}
+
+// DescribeFirmwareTaskDevices
+// 查询固件升级任务的设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFirmwareTaskDevicesWithContext(ctx context.Context, request *DescribeFirmwareTaskDevicesRequest) (response *DescribeFirmwareTaskDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskDevicesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeFirmwareTaskDevices")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTaskDevices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirmwareTaskDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTasksRequest() (request *DescribeFirmwareTasksRequest) {
+    request = &DescribeFirmwareTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFirmwareTasks")
+    
+    
+    return
+}
+
+func NewDescribeFirmwareTasksResponse() (response *DescribeFirmwareTasksResponse) {
+    response = &DescribeFirmwareTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFirmwareTasks
+// 搜索固件升级任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeFirmwareTasks(request *DescribeFirmwareTasksRequest) (response *DescribeFirmwareTasksResponse, err error) {
+    return c.DescribeFirmwareTasksWithContext(context.Background(), request)
+}
+
+// DescribeFirmwareTasks
+// 搜索固件升级任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeFirmwareTasksWithContext(ctx context.Context, request *DescribeFirmwareTasksRequest) (response *DescribeFirmwareTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeFirmwareTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirmwareTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -8391,6 +8705,134 @@ func (c *Client) ListFirmwaresWithContext(ctx context.Context, request *ListFirm
     return
 }
 
+func NewListOtaModulesRequest() (request *ListOtaModulesRequest) {
+    request = &ListOtaModulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ListOtaModules")
+    
+    
+    return
+}
+
+func NewListOtaModulesResponse() (response *ListOtaModulesResponse) {
+    response = &ListOtaModulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListOtaModules
+// 本接口（ListOtaModules）用于获取OTA模块列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) ListOtaModules(request *ListOtaModulesRequest) (response *ListOtaModulesResponse, err error) {
+    return c.ListOtaModulesWithContext(context.Background(), request)
+}
+
+// ListOtaModules
+// 本接口（ListOtaModules）用于获取OTA模块列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) ListOtaModulesWithContext(ctx context.Context, request *ListOtaModulesRequest) (response *ListOtaModulesResponse, err error) {
+    if request == nil {
+        request = NewListOtaModulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ListOtaModules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListOtaModules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListOtaModulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListProductOtaModulesRequest() (request *ListProductOtaModulesRequest) {
+    request = &ListProductOtaModulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ListProductOtaModules")
+    
+    
+    return
+}
+
+func NewListProductOtaModulesResponse() (response *ListProductOtaModulesResponse) {
+    response = &ListProductOtaModulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListProductOtaModules
+// 本接口（ListProductOtaModules）用于获取产品OTA模块列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) ListProductOtaModules(request *ListProductOtaModulesRequest) (response *ListProductOtaModulesResponse, err error) {
+    return c.ListProductOtaModulesWithContext(context.Background(), request)
+}
+
+// ListProductOtaModules
+// 本接口（ListProductOtaModules）用于获取产品OTA模块列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) ListProductOtaModulesWithContext(ctx context.Context, request *ListProductOtaModulesRequest) (response *ListProductOtaModulesResponse, err error) {
+    if request == nil {
+        request = NewListProductOtaModulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ListProductOtaModules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListProductOtaModules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListProductOtaModulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTopicPolicyRequest() (request *ListTopicPolicyRequest) {
     request = &ListTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11007,6 +11449,72 @@ func (c *Client) UpdateFirmwareWithContext(ctx context.Context, request *UpdateF
     request.SetContext(ctx)
     
     response = NewUpdateFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateOtaModuleRequest() (request *UpdateOtaModuleRequest) {
+    request = &UpdateOtaModuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "UpdateOtaModule")
+    
+    
+    return
+}
+
+func NewUpdateOtaModuleResponse() (response *UpdateOtaModuleResponse) {
+    response = &UpdateOtaModuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateOtaModule
+// 本接口（UpdateOtaModule）用于修改OTA模块
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER_FIRMWAREALREADYEXIST = "InvalidParameter.FirmwareAlreadyExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
+//  LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) UpdateOtaModule(request *UpdateOtaModuleRequest) (response *UpdateOtaModuleResponse, err error) {
+    return c.UpdateOtaModuleWithContext(context.Background(), request)
+}
+
+// UpdateOtaModule
+// 本接口（UpdateOtaModule）用于修改OTA模块
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER_FIRMWAREALREADYEXIST = "InvalidParameter.FirmwareAlreadyExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
+//  LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) UpdateOtaModuleWithContext(ctx context.Context, request *UpdateOtaModuleRequest) (response *UpdateOtaModuleResponse, err error) {
+    if request == nil {
+        request = NewUpdateOtaModuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "UpdateOtaModule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateOtaModule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateOtaModuleResponse()
     err = c.Send(request, response)
     return
 }

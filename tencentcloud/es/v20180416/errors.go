@@ -428,6 +428,12 @@ const (
 	// 超出一个用户可以拥有的最大资源限制。
 	LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
 
+	// 后端服务响应包大小超过配额限制
+	LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+
+	// 后端服务响应时间超过配额限制
+	LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
+
 	// 空间数超过配额。
 	LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
 

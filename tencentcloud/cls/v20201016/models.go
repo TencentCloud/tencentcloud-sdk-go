@@ -144,7 +144,7 @@ type AlarmInfo struct {
 	// 告警重复的周期。单位是min。取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知模板列表。
+	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 开启状态。
@@ -190,6 +190,9 @@ type AlarmInfo struct {
 	// 多触发条件。与
 	// Condition互斥。
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
+
+	// 云监控通知渠道相关信息，和AlarmNoticeIds互斥
+	MonitorNotice *MonitorNotice `json:"MonitorNotice,omitnil,omitempty" name:"MonitorNotice"`
 }
 
 type AlarmNotice struct {
@@ -400,6 +403,9 @@ type AlertHistoryRecord struct {
 	// 监控对象类型。
 	// 0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
+
+	// 通知渠道类型，0默认代表cls内部通知渠道，1代表云监控通知渠道
+	SendType *uint64 `json:"SendType,omitnil,omitempty" name:"SendType"`
 }
 
 type AnalysisDimensional struct {
@@ -1489,7 +1495,7 @@ type CreateAlarmRequestParams struct {
 	// 告警重复的周期，单位是分钟。取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表
+	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 告警发送通知的触发条件
@@ -1571,7 +1577,7 @@ type CreateAlarmRequest struct {
 	// 告警重复的周期，单位是分钟。取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表
+	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 告警发送通知的触发条件
@@ -10187,7 +10193,7 @@ type ModifyAlarmRequestParams struct {
 	// 告警重复的周期。单位是分钟。取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知渠道列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取告警通知渠道列表
+	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 监控对象列表。
@@ -10268,7 +10274,7 @@ type ModifyAlarmRequest struct {
 	// 告警重复的周期。单位是分钟。取值范围是0~1440。
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知渠道列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取告警通知渠道列表
+	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
 	// 监控对象列表。
@@ -12615,6 +12621,23 @@ func (r *ModifyWebCallbackResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyWebCallbackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MonitorNotice struct {
+	// 以数组的形式提供MonitorNoticeRule
+	Notices []*MonitorNoticeRule `json:"Notices,omitnil,omitempty" name:"Notices"`
+}
+
+type MonitorNoticeRule struct {
+	// 云监控通知模版ID
+	NoticeId *string `json:"NoticeId,omitnil,omitempty" name:"NoticeId"`
+
+	// 云监控内容模版ID，不传默认内容模版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentTmplId *string `json:"ContentTmplId,omitnil,omitempty" name:"ContentTmplId"`
+
+	// 告警级别,0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)
+	AlarmLevels []*uint64 `json:"AlarmLevels,omitnil,omitempty" name:"AlarmLevels"`
 }
 
 type MonitorTime struct {

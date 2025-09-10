@@ -1386,6 +1386,8 @@ func NewDescribeClusterSnapshotResponse() (response *DescribeClusterSnapshotResp
 // 获取快照备份列表
 //
 // 可能返回的错误码:
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 //  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
 func (c *Client) DescribeClusterSnapshot(request *DescribeClusterSnapshotRequest) (response *DescribeClusterSnapshotResponse, err error) {
     return c.DescribeClusterSnapshotWithContext(context.Background(), request)
@@ -1395,6 +1397,8 @@ func (c *Client) DescribeClusterSnapshot(request *DescribeClusterSnapshotRequest
 // 获取快照备份列表
 //
 // 可能返回的错误码:
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 //  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
 func (c *Client) DescribeClusterSnapshotWithContext(ctx context.Context, request *DescribeClusterSnapshotRequest) (response *DescribeClusterSnapshotResponse, err error) {
     if request == nil {
@@ -1639,6 +1643,8 @@ func NewDescribeInstanceLogsResponse() (response *DescribeInstanceLogsResponse) 
 //  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
 //  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (response *DescribeInstanceLogsResponse, err error) {
@@ -1660,6 +1666,8 @@ func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (res
 //  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
 //  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 func (c *Client) DescribeInstanceLogsWithContext(ctx context.Context, request *DescribeInstanceLogsRequest) (response *DescribeInstanceLogsResponse, err error) {
@@ -2021,6 +2029,8 @@ func NewDescribeLogstashInstancesResponse() (response *DescribeLogstashInstances
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 func (c *Client) DescribeLogstashInstances(request *DescribeLogstashInstancesRequest) (response *DescribeLogstashInstancesResponse, err error) {
     return c.DescribeLogstashInstancesWithContext(context.Background(), request)
 }
@@ -2032,6 +2042,8 @@ func (c *Client) DescribeLogstashInstances(request *DescribeLogstashInstancesReq
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_RESPONSEPACKAGEOVERSIZE = "LimitExceeded.ResponsePackageOversize"
+//  LIMITEXCEEDED_RESPONSETIMEOUT = "LimitExceeded.ResponseTimeout"
 func (c *Client) DescribeLogstashInstancesWithContext(ctx context.Context, request *DescribeLogstashInstancesRequest) (response *DescribeLogstashInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeLogstashInstancesRequest()

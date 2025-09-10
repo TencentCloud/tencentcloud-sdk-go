@@ -15615,8 +15615,7 @@ type ModifyCasterRequestParams struct {
 	// 导播台名称
 	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
 
-	// 导播台的描述
-	// 最大允许长度256
+	// 导播台的描述，最大允许长度256
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 录制模板id。
@@ -15690,8 +15689,7 @@ type ModifyCasterRequest struct {
 	// 导播台名称
 	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
 
-	// 导播台的描述
-	// 最大允许长度256
+	// 导播台的描述，最大允许长度256
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 录制模板id。

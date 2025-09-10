@@ -65,7 +65,7 @@ func NewSearchProResponse() (response *SearchProResponse) {
 }
 
 // SearchPro
-// 联网搜索API，以json形式向客户提供搜索结果数据，包含标题、摘要、内容来源url等信息
+// 联网搜索API，以JSON形式向客户提供搜索结果数据，包含标题、摘要、内容来源url等信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -77,7 +77,7 @@ func (c *Client) SearchPro(request *SearchProRequest) (response *SearchProRespon
 }
 
 // SearchPro
-// 联网搜索API，以json形式向客户提供搜索结果数据，包含标题、摘要、内容来源url等信息
+// 联网搜索API，以JSON形式向客户提供搜索结果数据，包含标题、摘要、内容来源url等信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
