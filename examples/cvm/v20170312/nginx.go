@@ -24,9 +24,9 @@ func main() {
 		    resolver 114.114.114.114;
 
 		    # 可以自定义请求路径
-		    location /tc_api/ {
+		    location /tc_api {
 		        # http_host 后必须以 / 结尾
-		        proxy_pass https://$http_host/;
+		        proxy_pass https://$http_host/$is_args$args;
 		    }
 		}
 	*/

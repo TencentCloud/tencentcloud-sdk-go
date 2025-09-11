@@ -102,7 +102,14 @@ func (c *Client) completeRequest(request tchttp.Request) {
 		if domain == "" {
 			domain = request.GetServiceDomain(request.GetService())
 		}
-		request.SetDomain(domain)
+		pathIdx := strings.IndexByte(domain, '/')
+		if pathIdx >= 0 {
+			request.SetDomain(domain[:pathIdx])
+			request.SetPath(domain[pathIdx:])
+		} else {
+			request.SetDomain(domain)
+			request.SetPath("/")
+		}
 	}
 
 	if request.GetHttpMethod() == "" {
