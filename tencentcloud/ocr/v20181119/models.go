@@ -10842,6 +10842,8 @@ type SubmitExtractDocAgentJobRequestParams struct {
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。
+	//
+	// Deprecated: PdfPageNumber is deprecated.
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
 	// 自定义抽取需要的字段名称、字段类型、字段提示词。

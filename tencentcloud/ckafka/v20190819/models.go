@@ -3437,7 +3437,7 @@ type DeleteGroupRequestParams struct {
 	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称，可通过DescribeConsumerGroup接口获取。
+	// 消费组名称，可通过[DescribeConsumerGroup](https://cloud.tencent.com/document/product/597/40841)接口获取。
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 }
 
@@ -3447,7 +3447,7 @@ type DeleteGroupRequest struct {
 	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称，可通过DescribeConsumerGroup接口获取。
+	// 消费组名称，可通过[DescribeConsumerGroup](https://cloud.tencent.com/document/product/597/40841)接口获取。
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 }
 
@@ -3615,7 +3615,7 @@ type DeleteRouteRequestParams struct {
 	// ckafka集群实例Id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 路由id,可通过DescribeRoute接口获取
+	// 路由id,可通过[DescribeRoute](https://cloud.tencent.com/document/product/597/45484)接口获取
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
 
 	// 调用方appId
@@ -3631,7 +3631,7 @@ type DeleteRouteRequest struct {
 	// ckafka集群实例Id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 路由id,可通过DescribeRoute接口获取
+	// 路由id,可通过[DescribeRoute](https://cloud.tencent.com/document/product/597/45484)接口获取
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
 
 	// 调用方appId
@@ -7963,7 +7963,7 @@ type InquiryPublicNetworkParam struct {
 	// 公网计费模式: BANDWIDTH_PREPAID(包年包月), BANDWIDTH_POSTPAID_BY_HOUR(带宽按小时计费)
 	PublicNetworkChargeType *string `json:"PublicNetworkChargeType,omitnil,omitempty" name:"PublicNetworkChargeType"`
 
-	// 公网带宽, 单位MB
+	// 公网带宽, 单位MB 取值需是0，或是3的倍数
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitnil,omitempty" name:"PublicNetworkMonthly"`
 }
 
@@ -8060,7 +8060,11 @@ type InstanceAttributesResponse struct {
 	// 售卖类型,0:标准版,1:专业版
 	Cvm *int64 `json:"Cvm,omitnil,omitempty" name:"Cvm"`
 
-	// 类型
+	// 实例类型  枚举列表: 
+	// profession  :专业版    
+	// standards2  :标准版
+	// premium   :高级版
+	// serverless  :serverless版
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。
@@ -8075,7 +8079,7 @@ type InstanceAttributesResponse struct {
 	// 公网带宽
 	PublicNetwork *int64 `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
-	// 时间
+	// 该字段已废弃,无实际含义
 	DeleteRouteTimestamp *string `json:"DeleteRouteTimestamp,omitnil,omitempty" name:"DeleteRouteTimestamp"`
 
 	// 剩余创建分区数
@@ -8087,10 +8091,16 @@ type InstanceAttributesResponse struct {
 	// 动态硬盘扩容策略
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitnil,omitempty" name:"DynamicDiskConfig"`
 
-	// 实例计费类型
+	// 实例计费类型  POSTPAID_BY_HOUR 按小时付费; PREPAID 包年包月
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 集群类型
+	// 集群类型  
+	// CLOUD_IDC IDC集群
+	// CLOUD_CVM_SHARE CVM共享集群
+	// CLOUD_CVM_YUNTI 云梯CVM集群
+	// CLOUD_CVM    CVM集群
+	// CLOUD_CDC CDC集群
+	// CLOUD_EKS_TSE EKS集群
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 免费分区数量
@@ -8099,7 +8109,7 @@ type InstanceAttributesResponse struct {
 	// 弹性带宽上浮值
 	ElasticFloatBandwidth *int64 `json:"ElasticFloatBandwidth,omitnil,omitempty" name:"ElasticFloatBandwidth"`
 
-	// ssl自定义证书id
+	// ssl自定义证书id  仅自定义证书实例集群返回
 	CustomCertId *string `json:"CustomCertId,omitnil,omitempty" name:"CustomCertId"`
 
 	// 集群topic默认 unclean.leader.election.enable配置: 1 开启 0 关闭
@@ -9787,7 +9797,7 @@ type MqttParam struct {
 	// 需要同步的MQTT Topic列表, CSV格式
 	Topics *string `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// MQTT clean-session
+	// 用于控制会话的持久性。cleanSession 为true时，连接时会创建一个全新的会话。 cleanSession = false时，连接时会恢复之前的会话。
 	CleanSession *bool `json:"CleanSession,omitnil,omitempty" name:"CleanSession"`
 
 	// MQTT instance-id
@@ -9963,7 +9973,7 @@ type MySQLParam struct {
 	// datetime 类型字段转换为时间戳的时区
 	DateTimeZone *string `json:"DateTimeZone,omitnil,omitempty" name:"DateTimeZone"`
 
-	// 自建
+	// 是否为自建集群
 	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
 }
 
@@ -10335,6 +10345,10 @@ type Route struct {
 	// 备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+
+	// 路由的状态。1: 创建中，2: 创建成功，3: 创建失败，4: 删除中，6: 删除失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type RouteDTO struct {
@@ -10453,7 +10467,7 @@ type SQLServerParam struct {
 }
 
 type SaleInfo struct {
-	// 手动设置的flag标志
+	// 手动设置的flag标志，true表示售罄，false表示可售。
 	Flag *bool `json:"Flag,omitnil,omitempty" name:"Flag"`
 
 	// ckafka版本号(1.1.1/2.4.2/0.10.2)
@@ -11088,7 +11102,7 @@ type ZoneInfo struct {
 	// 应用标识
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 标识
+	// 可用区是否售罄标识，true表示已售罄，false表示未售罄。
 	Flag *bool `json:"Flag,omitnil,omitempty" name:"Flag"`
 
 	// 可用区名称

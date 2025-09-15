@@ -238,6 +238,12 @@ type AdjustCdbProxyAddressRequestParams struct {
 
 	// 访问模式：nearby - 就近访问，balance - 均衡分配，默认就近访问。
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+
+	// 是否将libra节点当作普通RO节点
+	ApNodeAsRoNode *string `json:"ApNodeAsRoNode,omitnil,omitempty" name:"ApNodeAsRoNode"`
+
+	// libra节点故障，是否转发给其他节点
+	ApQueryToOtherNode *string `json:"ApQueryToOtherNode,omitnil,omitempty" name:"ApQueryToOtherNode"`
 }
 
 type AdjustCdbProxyAddressRequest struct {
@@ -287,6 +293,12 @@ type AdjustCdbProxyAddressRequest struct {
 
 	// 访问模式：nearby - 就近访问，balance - 均衡分配，默认就近访问。
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+
+	// 是否将libra节点当作普通RO节点
+	ApNodeAsRoNode *string `json:"ApNodeAsRoNode,omitnil,omitempty" name:"ApNodeAsRoNode"`
+
+	// libra节点故障，是否转发给其他节点
+	ApQueryToOtherNode *string `json:"ApQueryToOtherNode,omitnil,omitempty" name:"ApQueryToOtherNode"`
 }
 
 func (r *AdjustCdbProxyAddressRequest) ToJsonString() string {
@@ -315,6 +327,8 @@ func (r *AdjustCdbProxyAddressRequest) FromJsonString(s string) error {
 	delete(f, "ProxyAllocation")
 	delete(f, "AutoLoadBalance")
 	delete(f, "AccessMode")
+	delete(f, "ApNodeAsRoNode")
+	delete(f, "ApQueryToOtherNode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AdjustCdbProxyAddressRequest has unknown keys!", "")
 	}
@@ -15170,6 +15184,12 @@ type ProxyAddress struct {
 
 	// 是否开启自动负载均衡
 	AutoLoadBalance *bool `json:"AutoLoadBalance,omitnil,omitempty" name:"AutoLoadBalance"`
+
+	// 是否把libra当作ro节点
+	ApNodeAsRoNode *bool `json:"ApNodeAsRoNode,omitnil,omitempty" name:"ApNodeAsRoNode"`
+
+	// libra节点故障，是否转发给其他节点
+	ApQueryToOtherNode *bool `json:"ApQueryToOtherNode,omitnil,omitempty" name:"ApQueryToOtherNode"`
 }
 
 type ProxyAllocation struct {

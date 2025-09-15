@@ -4685,6 +4685,154 @@ func (c *Client) DescribeKafkaConsumerWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeKafkaConsumerGroupDetailRequest() (request *DescribeKafkaConsumerGroupDetailRequest) {
+    request = &DescribeKafkaConsumerGroupDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeKafkaConsumerGroupDetail")
+    
+    
+    return
+}
+
+func NewDescribeKafkaConsumerGroupDetailResponse() (response *DescribeKafkaConsumerGroupDetailResponse) {
+    response = &DescribeKafkaConsumerGroupDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKafkaConsumerGroupDetail
+// 获取Kafka协议消费组详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeKafkaConsumerGroupDetail(request *DescribeKafkaConsumerGroupDetailRequest) (response *DescribeKafkaConsumerGroupDetailResponse, err error) {
+    return c.DescribeKafkaConsumerGroupDetailWithContext(context.Background(), request)
+}
+
+// DescribeKafkaConsumerGroupDetail
+// 获取Kafka协议消费组详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeKafkaConsumerGroupDetailWithContext(ctx context.Context, request *DescribeKafkaConsumerGroupDetailRequest) (response *DescribeKafkaConsumerGroupDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeKafkaConsumerGroupDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeKafkaConsumerGroupDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKafkaConsumerGroupDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKafkaConsumerGroupDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKafkaConsumerGroupListRequest() (request *DescribeKafkaConsumerGroupListRequest) {
+    request = &DescribeKafkaConsumerGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeKafkaConsumerGroupList")
+    
+    
+    return
+}
+
+func NewDescribeKafkaConsumerGroupListResponse() (response *DescribeKafkaConsumerGroupListResponse) {
+    response = &DescribeKafkaConsumerGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKafkaConsumerGroupList
+// 获取Kafka协议消费组信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeKafkaConsumerGroupList(request *DescribeKafkaConsumerGroupListRequest) (response *DescribeKafkaConsumerGroupListResponse, err error) {
+    return c.DescribeKafkaConsumerGroupListWithContext(context.Background(), request)
+}
+
+// DescribeKafkaConsumerGroupList
+// 获取Kafka协议消费组信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeKafkaConsumerGroupListWithContext(ctx context.Context, request *DescribeKafkaConsumerGroupListRequest) (response *DescribeKafkaConsumerGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeKafkaConsumerGroupListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeKafkaConsumerGroupList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKafkaConsumerGroupList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKafkaConsumerGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKafkaRechargesRequest() (request *DescribeKafkaRechargesRequest) {
     request = &DescribeKafkaRechargesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6805,6 +6953,80 @@ func (c *Client) ModifyKafkaConsumerWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyKafkaConsumerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyKafkaConsumerGroupOffsetRequest() (request *ModifyKafkaConsumerGroupOffsetRequest) {
+    request = &ModifyKafkaConsumerGroupOffsetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyKafkaConsumerGroupOffset")
+    
+    
+    return
+}
+
+func NewModifyKafkaConsumerGroupOffsetResponse() (response *ModifyKafkaConsumerGroupOffsetResponse) {
+    response = &ModifyKafkaConsumerGroupOffsetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyKafkaConsumerGroupOffset
+// 修改Kafka协议消费组点位
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifyKafkaConsumerGroupOffset(request *ModifyKafkaConsumerGroupOffsetRequest) (response *ModifyKafkaConsumerGroupOffsetResponse, err error) {
+    return c.ModifyKafkaConsumerGroupOffsetWithContext(context.Background(), request)
+}
+
+// ModifyKafkaConsumerGroupOffset
+// 修改Kafka协议消费组点位
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifyKafkaConsumerGroupOffsetWithContext(ctx context.Context, request *ModifyKafkaConsumerGroupOffsetRequest) (response *ModifyKafkaConsumerGroupOffsetResponse, err error) {
+    if request == nil {
+        request = NewModifyKafkaConsumerGroupOffsetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyKafkaConsumerGroupOffset")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyKafkaConsumerGroupOffset require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyKafkaConsumerGroupOffsetResponse()
     err = c.Send(request, response)
     return
 }

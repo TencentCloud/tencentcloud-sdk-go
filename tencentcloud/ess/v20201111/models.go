@@ -240,6 +240,9 @@ type ApproverInfo struct {
 	// 进入签署流程的限制，目前支持以下选项：
 	// <ul><li> <b>空值（默认）</b> :无限制，可在任何场景进入签署流程。</li><li> <b>link</b> :选择此选项后，将无法通过控制台或电子签小程序列表进入填写或签署操作，仅可预览合同。填写或签署流程只能通过短信或发起方提供的专用链接进行。</li></ul>
 	SignEndpoints []*string `json:"SignEndpoints,omitnil,omitempty" name:"SignEndpoints"`
+
+	// 快速注册相关信息
+	RegisterInfo *RegisterInfo `json:"RegisterInfo,omitnil,omitempty" name:"RegisterInfo"`
 }
 
 type ApproverItem struct {
@@ -2925,10 +2928,7 @@ type CreateDocumentRequestParams struct {
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/a54a76a58c454593d06d8e9883ecc9b3.png)
 	FormFields []*FormField `json:"FormFields,omitnil,omitempty" name:"FormFields"`
 
-	// 是否为预览模式，取值如下：
-	// <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> 
-	// <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 以预览模式创建的合同仅供查看，因此参与方无法进行签署操作</font> </li></ul>
-	// 注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
+	// 是否为预览模式，取值如下：<ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 1.以预览模式创建的合同仅供查看，因此参与方无法进行签署操作;；2.以预览模式调用该接口返回的FlowId为临时Flowld，无法用于发起和拉取信息。</font> </li></ul>注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
 	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
 	// 预览模式下产生的预览链接类型 
@@ -2975,10 +2975,7 @@ type CreateDocumentRequest struct {
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/a54a76a58c454593d06d8e9883ecc9b3.png)
 	FormFields []*FormField `json:"FormFields,omitnil,omitempty" name:"FormFields"`
 
-	// 是否为预览模式，取值如下：
-	// <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> 
-	// <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 以预览模式创建的合同仅供查看，因此参与方无法进行签署操作</font> </li></ul>
-	// 注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
+	// 是否为预览模式，取值如下：<ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 1.以预览模式创建的合同仅供查看，因此参与方无法进行签署操作;；2.以预览模式调用该接口返回的FlowId为临时Flowld，无法用于发起和拉取信息。</font> </li></ul>注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
 	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
 	// 预览模式下产生的预览链接类型 
@@ -12008,7 +12005,7 @@ func (r *DescribeInformationExtractionTaskRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeInformationExtractionTaskResponseParams struct {
-	// 信息提取任务结果
+	// 合同信息提取字段信息
 	Fields []*ExtractionField `json:"Fields,omitnil,omitempty" name:"Fields"`
 
 	// 合同智能提取任务状态。
@@ -12026,6 +12023,9 @@ type DescribeInformationExtractionTaskResponseParams struct {
 	// 
 	// 注意：`链接有效期为5分钟，过期后可重新获取`
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 合同信息提取结果信息
+	Results []*ExtractionTaskResult `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -13574,6 +13574,39 @@ type ExtractionField struct {
 
 	// 提取出合同中的字段信息。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type ExtractionFieldResult struct {
+	// 字段ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 用于合同智能提取的字段名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 合同智能提取的字段类型，目前仅支持TEXT、DATE、NUMBER、OPTION类型。
+	// 
+	// 类型支持如下： 1、TEXT（文本） 2、DATE（日期） 3、NUMBER（数字） 4、OPTION（选项值）
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 提取出合同中的字段信息。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 是否需要语义提取，默认为false
+	RequiresSemanticExtraction *bool `json:"RequiresSemanticExtraction,omitnil,omitempty" name:"RequiresSemanticExtraction"`
+
+	// 提取出值在合同中的坐标位置信息
+	Positions []*PositionInfo `json:"Positions,omitnil,omitempty" name:"Positions"`
+}
+
+type ExtractionTaskResult struct {
+	// 用于合同信息提取的资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 用于合同信息提取的资源名称。
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// 根据当前合同提取出的字段信息
+	ExtractionFieldResults []*ExtractionFieldResult `json:"ExtractionFieldResults,omitnil,omitempty" name:"ExtractionFieldResults"`
 }
 
 type FailedCreateRoleData struct {
@@ -15978,6 +16011,9 @@ type RegisterInfo struct {
 
 	// <font color="red">字段不再使用</font>，社会统一信用代码
 	UnifiedSocialCreditCode *string `json:"UnifiedSocialCreditCode,omitnil,omitempty" name:"UnifiedSocialCreditCode"`
+
+	// 组织机构企业注册地址。 请确认该企业注册地址与企业营业执照中注册的地址一致。
+	OrganizationAddress *string `json:"OrganizationAddress,omitnil,omitempty" name:"OrganizationAddress"`
 
 	// 指定企业认证的授权方式 支持多选:
 	// 

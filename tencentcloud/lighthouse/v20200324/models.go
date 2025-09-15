@@ -4670,6 +4670,88 @@ func (r *DescribeKeyPairsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMcpServerTemplatesRequestParams struct {
+	// 过滤器列表。
+	// <li>name-description</li>按照MCP Server模板名称或描述进行过滤（支持模糊匹配）。
+	// 类型：String
+	// 必选：否
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeMcpServerTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤器列表。
+	// <li>name-description</li>按照MCP Server模板名称或描述进行过滤（支持模糊匹配）。
+	// 类型：String
+	// 必选：否
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeMcpServerTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMcpServerTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMcpServerTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMcpServerTemplatesResponseParams struct {
+	// MCP Server模板列表。
+	McpServerTemplateSet []*McpServerTemplate `json:"McpServerTemplateSet,omitnil,omitempty" name:"McpServerTemplateSet"`
+
+	// 符合条件的MCP Server模板数量。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMcpServerTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMcpServerTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeMcpServerTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMcpServerTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMcpServersRequestParams struct {
 	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5499,19 +5581,21 @@ func (r *DetachDisksResponse) FromJsonString(s string) error {
 type DetailPrice struct {
 	// 描述计费项目名称，目前取值
 	// <li>"DiskSpace"代表云硬盘空间收费项。</li>
-	// <li>"DiskBackupQuota"代表云硬盘备份点配额收费项。</li>
+	// <li>"DiskBackupQuota"代表数据盘备份点配额收费项。</li>
+	// <li>"Instance"代表实例收费项。</li>
+	// <li>"SystemDiskBackupQuota"代表系统盘备份点配额收费项。</li>
 	PriceName *string `json:"PriceName,omitnil,omitempty" name:"PriceName"`
 
-	// 云硬盘计费项维度单价。
+	// 计费项维度单价。
 	OriginUnitPrice *float64 `json:"OriginUnitPrice,omitnil,omitempty" name:"OriginUnitPrice"`
 
-	// 云硬盘计费项维度总价。
+	// 计费项维度总价。
 	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 云硬盘在计费项维度折扣。
+	// 计费项维度折扣。
 	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
 
-	// 云硬盘在计费项维度折后总价。
+	// 计费项维度折后总价。
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 }
 
@@ -5600,43 +5684,43 @@ type DiscountDetail struct {
 }
 
 type Disk struct {
-	// 磁盘ID
+	// 云硬盘ID。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 可用区
+	// 可用区。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 磁盘名称
+	// 云硬盘名称。
 	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
 
-	// 磁盘类型
+	// 云硬盘类型。
 	// 枚举值：
 	// <li> SYSTEM_DISK: 系统盘 </li>
 	// <li> DATA_DISK: 数据盘 </li>
 	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 
-	// 磁盘介质类型
+	// 云硬盘介质类型。
 	// 枚举值:
 	// <li> CLOUD_BASIC: 普通云硬盘 </li>
 	// <li> CLOUD_PREMIUM: 高性能云硬盘 </li>
 	// <li> CLOUD_SSD: SSD云硬盘 </li>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 磁盘付费类型
+	// 云硬盘付费类型。
 	// <li> PREPAID: 预付费 </li>
 	// <li> POSTPAID_BY_HOUR: 按小时后付费 </li>
 	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
 
-	// 磁盘大小, 单位GB
+	// 云硬盘大小, 单位GB。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 续费标识
+	// 续费标识。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 磁盘状态，取值范围：
+	// 云硬盘状态，取值范围：
 	// <li>PENDING：创建中。 </li>
 	// <li>UNATTACHED：待挂载。</li>
 	// <li>ATTACHING：挂载中。</li>
@@ -5649,19 +5733,19 @@ type Disk struct {
 	// <li> FREEZING：冻结中。</li>
 	DiskState *string `json:"DiskState,omitnil,omitempty" name:"DiskState"`
 
-	// 磁盘挂载状态
+	// 云硬盘挂载状态。
 	Attached *bool `json:"Attached,omitnil,omitempty" name:"Attached"`
 
-	// 是否随实例释放
+	// 是否随实例释放。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
 
-	// 上一次操作
+	// 上一次操作。
 	LatestOperation *string `json:"LatestOperation,omitnil,omitempty" name:"LatestOperation"`
 
-	// 上一次操作状态
+	// 上一次操作状态。
 	LatestOperationState *string `json:"LatestOperationState,omitnil,omitempty" name:"LatestOperationState"`
 
-	// 上一次请求ID
+	// 上一次请求ID。
 	LatestOperationRequestId *string `json:"LatestOperationRequestId,omitnil,omitempty" name:"LatestOperationRequestId"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
@@ -6726,6 +6810,9 @@ type InstancePrice struct {
 
 	// 价格货币单位。取值范围CNY:人民币。USD:美元。
 	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
+
+	// 计费项目明细。
+	DetailPrices []*DetailPrice `json:"DetailPrices,omitnil,omitempty" name:"DetailPrices"`
 }
 
 type InstancePriceDetail struct {
@@ -7029,6 +7116,37 @@ type McpServerEnv struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type McpServerTemplate struct {
+	// MCP Server名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Base64编码之后的MCP Server启动命令。
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// MCP Server图标地址
+	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
+
+	// MCP Server社区地址
+	CommunityUrl *string `json:"CommunityUrl,omitnil,omitempty" name:"CommunityUrl"`
+
+	// MCP Server关联的开发平台地址或开放平台地址
+	PlatformUrl *string `json:"PlatformUrl,omitnil,omitempty" name:"PlatformUrl"`
+
+	// MCP Server环境变量
+	EnvSet []*McpServerTemplateEnv `json:"EnvSet,omitnil,omitempty" name:"EnvSet"`
+}
+
+type McpServerTemplateEnv struct {
+	// MCP Server模板的环境变量键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// MCP Server模板的环境变量值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 // Predefined struct for user
 type ModifyBlueprintAttributeRequestParams struct {
 	// 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
@@ -7241,7 +7359,7 @@ type ModifyDisksBackupQuotaRequestParams struct {
 	// 云硬盘ID列表，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。列表最大长度为15。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须不小于已存在的备份点数量。
+	// 云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须大于等于已存在的备份点数量。
 	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitnil,omitempty" name:"DiskBackupQuota"`
 }
 
@@ -7251,7 +7369,7 @@ type ModifyDisksBackupQuotaRequest struct {
 	// 云硬盘ID列表，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。列表最大长度为15。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须不小于已存在的备份点数量。
+	// 云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须大于等于已存在的备份点数量。
 	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitnil,omitempty" name:"DiskBackupQuota"`
 }
 

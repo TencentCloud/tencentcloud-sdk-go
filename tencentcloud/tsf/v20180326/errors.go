@@ -1286,7 +1286,7 @@ const (
 	// 您所购买的服务不支持该操作。
 	UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 
-	// 缺少License。
+	// 缺少License，请参考购买指南购买TSF资源后重试。
 	UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 
 	// 用户无权限访问该接口。

@@ -4281,6 +4281,56 @@ func (c *Client) DescribeKeyPairsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeMcpServerTemplatesRequest() (request *DescribeMcpServerTemplatesRequest) {
+    request = &DescribeMcpServerTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeMcpServerTemplates")
+    
+    
+    return
+}
+
+func NewDescribeMcpServerTemplatesResponse() (response *DescribeMcpServerTemplatesResponse) {
+    response = &DescribeMcpServerTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMcpServerTemplates
+// 本接口（DescribeMcpServerTemplates）用于查询MCP Server模板列表。
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeMcpServerTemplates(request *DescribeMcpServerTemplatesRequest) (response *DescribeMcpServerTemplatesResponse, err error) {
+    return c.DescribeMcpServerTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeMcpServerTemplates
+// 本接口（DescribeMcpServerTemplates）用于查询MCP Server模板列表。
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeMcpServerTemplatesWithContext(ctx context.Context, request *DescribeMcpServerTemplatesRequest) (response *DescribeMcpServerTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMcpServerTemplatesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "DescribeMcpServerTemplates")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMcpServerTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMcpServerTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMcpServersRequest() (request *DescribeMcpServersRequest) {
     request = &DescribeMcpServersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5913,7 +5963,7 @@ func NewModifyDisksBackupQuotaResponse() (response *ModifyDisksBackupQuotaRespon
 // ModifyDisksBackupQuota
 // 本接口(ModifyDisksBackupQuota)用于调整云硬盘备份点配额。
 //
-// 该操作目前仅支持云硬盘类型为数据盘且状态是ATTACHED（已挂载）或 UNATTACHED（待挂载）的云硬盘。
+// 该操作目前仅支持状态是ATTACHED（已挂载）或 UNATTACHED（待挂载）的云硬盘。
 //
 // 支持批量操作。每次批量请求云硬盘数量上限为15个。
 //
@@ -5938,7 +5988,7 @@ func (c *Client) ModifyDisksBackupQuota(request *ModifyDisksBackupQuotaRequest) 
 // ModifyDisksBackupQuota
 // 本接口(ModifyDisksBackupQuota)用于调整云硬盘备份点配额。
 //
-// 该操作目前仅支持云硬盘类型为数据盘且状态是ATTACHED（已挂载）或 UNATTACHED（待挂载）的云硬盘。
+// 该操作目前仅支持状态是ATTACHED（已挂载）或 UNATTACHED（待挂载）的云硬盘。
 //
 // 支持批量操作。每次批量请求云硬盘数量上限为15个。
 //

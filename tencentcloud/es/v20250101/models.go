@@ -42,6 +42,15 @@ type ChatCompletionsRequestParams struct {
 
 	// 当 OnlineSearch 为 true 时，指定的搜索引擎，默认为 bing。
 	OnlineSearchOptions *OnlineSearchOptions `json:"OnlineSearchOptions,omitnil,omitempty" name:"OnlineSearchOptions"`
+
+	// 可调用的工具列表，当前支持模型：hunyuan-turbo, deepseek-v3。
+	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
+
+	// 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、deepseek-v3 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+	ToolChoice *string `json:"ToolChoice,omitnil,omitempty" name:"ToolChoice"`
+
+	// 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
+	CustomTool *Tool `json:"CustomTool,omitnil,omitempty" name:"CustomTool"`
 }
 
 type ChatCompletionsRequest struct {
@@ -67,6 +76,15 @@ type ChatCompletionsRequest struct {
 
 	// 当 OnlineSearch 为 true 时，指定的搜索引擎，默认为 bing。
 	OnlineSearchOptions *OnlineSearchOptions `json:"OnlineSearchOptions,omitnil,omitempty" name:"OnlineSearchOptions"`
+
+	// 可调用的工具列表，当前支持模型：hunyuan-turbo, deepseek-v3。
+	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
+
+	// 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、deepseek-v3 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+	ToolChoice *string `json:"ToolChoice,omitnil,omitempty" name:"ToolChoice"`
+
+	// 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
+	CustomTool *Tool `json:"CustomTool,omitnil,omitempty" name:"CustomTool"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -88,6 +106,9 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "Temperature")
 	delete(f, "OnlineSearch")
 	delete(f, "OnlineSearchOptions")
+	delete(f, "Tools")
+	delete(f, "ToolChoice")
+	delete(f, "CustomTool")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}
@@ -891,6 +912,14 @@ type TokenUsage struct {
 	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }
 
+type Tool struct {
+	// 工具类型，当前只支持function
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 具体要调用的function
+	Function *ToolFunction `json:"Function,omitnil,omitempty" name:"Function"`
+}
+
 type ToolCall struct {
 	// 工具调用id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -911,6 +940,17 @@ type ToolCallFunction struct {
 
 	// function参数，一般为json字符串
 	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
+}
+
+type ToolFunction struct {
+	// function名称，只能包含a-z，A-Z，0-9，_或-
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// function参数，一般为json字符串
+	Parameters *string `json:"Parameters,omitnil,omitempty" name:"Parameters"`
+
+	// function的简单描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type Usage struct {

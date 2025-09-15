@@ -237,6 +237,7 @@ import (
 	tcmv20210413 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcm/v20210413"
 	tcrv20190924 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcr/v20190924"
 	tcssv20201101 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcss/v20201101"
+	tdaiv20250717 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdai/v20250717"
 	tdcpgv20211118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdcpg/v20211118"
 	tdidv20210519 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdid/v20210519"
 	tdmqv20200217 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdmq/v20200217"
@@ -3114,6 +3115,19 @@ func TestTcssv20201101Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init tcss_v20201101 client: %v", err)
+    }
+}
+
+func TestTdaiv20250717Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := tdaiv20250717.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init tdai_v20250717 client: %v", err)
     }
 }
 

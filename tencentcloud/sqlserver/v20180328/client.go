@@ -7693,7 +7693,7 @@ func NewModifyDatabaseShrinkMDFResponse() (response *ModifyDatabaseShrinkMDFResp
 }
 
 // ModifyDatabaseShrinkMDF
-// 本接口(ModifyDatabaseShrinkDMF)用于收缩数据库mdf(Shrink mdf)。
+// 本接口（ModifyDatabaseShrinkMDF）用于收缩数据库 mdf（Shrink mdf）。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -7709,7 +7709,7 @@ func (c *Client) ModifyDatabaseShrinkMDF(request *ModifyDatabaseShrinkMDFRequest
 }
 
 // ModifyDatabaseShrinkMDF
-// 本接口(ModifyDatabaseShrinkDMF)用于收缩数据库mdf(Shrink mdf)。
+// 本接口（ModifyDatabaseShrinkMDF）用于收缩数据库 mdf（Shrink mdf）。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

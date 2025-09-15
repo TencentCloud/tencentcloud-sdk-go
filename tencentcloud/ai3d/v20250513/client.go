@@ -93,6 +93,54 @@ func (c *Client) QueryHunyuanTo3DJobWithContext(ctx context.Context, request *Qu
     return
 }
 
+func NewQueryHunyuanTo3DProJobRequest() (request *QueryHunyuanTo3DProJobRequest) {
+    request = &QueryHunyuanTo3DProJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ai3d", APIVersion, "QueryHunyuanTo3DProJob")
+    
+    
+    return
+}
+
+func NewQueryHunyuanTo3DProJobResponse() (response *QueryHunyuanTo3DProJobResponse) {
+    response = &QueryHunyuanTo3DProJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryHunyuanTo3DProJob
+// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) QueryHunyuanTo3DProJob(request *QueryHunyuanTo3DProJobRequest) (response *QueryHunyuanTo3DProJobResponse, err error) {
+    return c.QueryHunyuanTo3DProJobWithContext(context.Background(), request)
+}
+
+// QueryHunyuanTo3DProJob
+// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) QueryHunyuanTo3DProJobWithContext(ctx context.Context, request *QueryHunyuanTo3DProJobRequest) (response *QueryHunyuanTo3DProJobResponse, err error) {
+    if request == nil {
+        request = NewQueryHunyuanTo3DProJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ai3d", APIVersion, "QueryHunyuanTo3DProJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryHunyuanTo3DProJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryHunyuanTo3DProJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitHunyuanTo3DJobRequest() (request *SubmitHunyuanTo3DJobRequest) {
     request = &SubmitHunyuanTo3DJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -137,6 +185,54 @@ func (c *Client) SubmitHunyuanTo3DJobWithContext(ctx context.Context, request *S
     request.SetContext(ctx)
     
     response = NewSubmitHunyuanTo3DJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitHunyuanTo3DProJobRequest() (request *SubmitHunyuanTo3DProJobRequest) {
+    request = &SubmitHunyuanTo3DProJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ai3d", APIVersion, "SubmitHunyuanTo3DProJob")
+    
+    
+    return
+}
+
+func NewSubmitHunyuanTo3DProJobResponse() (response *SubmitHunyuanTo3DProJobResponse) {
+    response = &SubmitHunyuanTo3DProJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitHunyuanTo3DProJob
+// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) SubmitHunyuanTo3DProJob(request *SubmitHunyuanTo3DProJobRequest) (response *SubmitHunyuanTo3DProJobResponse, err error) {
+    return c.SubmitHunyuanTo3DProJobWithContext(context.Background(), request)
+}
+
+// SubmitHunyuanTo3DProJob
+// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) SubmitHunyuanTo3DProJobWithContext(ctx context.Context, request *SubmitHunyuanTo3DProJobRequest) (response *SubmitHunyuanTo3DProJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitHunyuanTo3DProJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ai3d", APIVersion, "SubmitHunyuanTo3DProJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitHunyuanTo3DProJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitHunyuanTo3DProJobResponse()
     err = c.Send(request, response)
     return
 }

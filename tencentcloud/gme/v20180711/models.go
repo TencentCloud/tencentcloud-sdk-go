@@ -596,8 +596,7 @@ type CreateScanUserRequestParams struct {
 	// (若UserId不填，则UserIdString必填；两者选其一；两者都填以UserIdString为准)
 	UserId *uint64 `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 需要新增送检的用户号。示例："1234"
-	// (若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+	// 需要新增送检的用户号，长度不超过1024字符。示例："1234"(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
 	UserIdString *string `json:"UserIdString,omitnil,omitempty" name:"UserIdString"`
 
 	// 当前用户送检过期时间，单位：秒。
@@ -616,8 +615,7 @@ type CreateScanUserRequest struct {
 	// (若UserId不填，则UserIdString必填；两者选其一；两者都填以UserIdString为准)
 	UserId *uint64 `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 需要新增送检的用户号。示例："1234"
-	// (若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+	// 需要新增送检的用户号，长度不超过1024字符。示例："1234"(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
 	UserIdString *string `json:"UserIdString,omitnil,omitempty" name:"UserIdString"`
 
 	// 当前用户送检过期时间，单位：秒。
@@ -859,8 +857,7 @@ type DeleteScanUserRequestParams struct {
 	// (若UserId不填，则UserIdString必填；两者选其一；两者都填以UserIdString为准)
 	UserId *uint64 `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 需要删除送检的用户号。示例："1234"
-	// (若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+	// 需要删除送检的用户号，长度不超过1024字符。示例："1234"(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
 	UserIdString *string `json:"UserIdString,omitnil,omitempty" name:"UserIdString"`
 }
 
@@ -874,8 +871,7 @@ type DeleteScanUserRequest struct {
 	// (若UserId不填，则UserIdString必填；两者选其一；两者都填以UserIdString为准)
 	UserId *uint64 `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 需要删除送检的用户号。示例："1234"
-	// (若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+	// 需要删除送检的用户号，长度不超过1024字符。示例："1234"(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
 	UserIdString *string `json:"UserIdString,omitnil,omitempty" name:"UserIdString"`
 }
 
@@ -3294,10 +3290,10 @@ type UpdateScanRoomsRequestParams struct {
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 需要送检的所有房间号。多个房间号之间用","分隔。示例："0001,0002,0003"
+	// 需要送检的所有房间号。多个房间号之间用","分隔，长度不超过1024字符。示例："0001,0002,0003"
 	RoomIdString *string `json:"RoomIdString,omitnil,omitempty" name:"RoomIdString"`
 
-	// 符合此正则表达式规则的房间号将被送检。示例：^6.*（表示所有以6开头的房间号将被送检）
+	// 符合此正则表达式规则的房间号将被送检，最大不能超过10个。示例：^6.*（表示所有以6开头的房间号将被送检）
 	RoomIdRegex []*string `json:"RoomIdRegex,omitnil,omitempty" name:"RoomIdRegex"`
 }
 
@@ -3307,10 +3303,10 @@ type UpdateScanRoomsRequest struct {
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 需要送检的所有房间号。多个房间号之间用","分隔。示例："0001,0002,0003"
+	// 需要送检的所有房间号。多个房间号之间用","分隔，长度不超过1024字符。示例："0001,0002,0003"
 	RoomIdString *string `json:"RoomIdString,omitnil,omitempty" name:"RoomIdString"`
 
-	// 符合此正则表达式规则的房间号将被送检。示例：^6.*（表示所有以6开头的房间号将被送检）
+	// 符合此正则表达式规则的房间号将被送检，最大不能超过10个。示例：^6.*（表示所有以6开头的房间号将被送检）
 	RoomIdRegex []*string `json:"RoomIdRegex,omitnil,omitempty" name:"RoomIdRegex"`
 }
 
@@ -3365,10 +3361,10 @@ type UpdateScanUsersRequestParams struct {
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 需要送检的所有用户号。多个用户号之间用","分隔。示例："0001,0002,0003"
+	// 需要送检的所有用户号。多个用户号之间用","分隔，长度不超过1024字符。示例："0001,0002,0003"
 	UserIdString *string `json:"UserIdString,omitnil,omitempty" name:"UserIdString"`
 
-	// 符合此正则表达式规则的用户号将被送检。示例：["^6.*"] 表示所有以6开头的用户号将被送检
+	// 符合此正则表达式规则的用户号将被送检，最大不能超过10个。示例：["^6.*"] 表示所有以6开头的用户号将被送检
 	UserIdRegex []*string `json:"UserIdRegex,omitnil,omitempty" name:"UserIdRegex"`
 }
 
@@ -3378,10 +3374,10 @@ type UpdateScanUsersRequest struct {
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 需要送检的所有用户号。多个用户号之间用","分隔。示例："0001,0002,0003"
+	// 需要送检的所有用户号。多个用户号之间用","分隔，长度不超过1024字符。示例："0001,0002,0003"
 	UserIdString *string `json:"UserIdString,omitnil,omitempty" name:"UserIdString"`
 
-	// 符合此正则表达式规则的用户号将被送检。示例：["^6.*"] 表示所有以6开头的用户号将被送检
+	// 符合此正则表达式规则的用户号将被送检，最大不能超过10个。示例：["^6.*"] 表示所有以6开头的用户号将被送检
 	UserIdRegex []*string `json:"UserIdRegex,omitnil,omitempty" name:"UserIdRegex"`
 }
 

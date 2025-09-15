@@ -26,6 +26,9 @@ const (
 	// 文档正在解析中不允许删除
 	FAILEDOPERATION_DOCPARSINGNOTDELETE = "FailedOperation.DocParsingNotDelete"
 
+	// 数据库资源到期或者超过套餐包限制。
+	FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+
 	// 低码用户不存在。
 	FAILEDOPERATION_LOWCODEUSERNOTEXIST = "FailedOperation.LowcodeUserNotExist"
 

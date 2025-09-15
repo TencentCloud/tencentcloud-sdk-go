@@ -361,6 +361,64 @@ func (c *Client) DeployAppWithContext(ctx context.Context, request *DeployAppReq
     return
 }
 
+func NewDescribeAppsRequest() (request *DescribeAppsRequest) {
+    request = &DescribeAppsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lowcode", APIVersion, "DescribeApps")
+    
+    
+    return
+}
+
+func NewDescribeAppsResponse() (response *DescribeAppsResponse) {
+    response = &DescribeAppsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApps
+// 分页获取当前用户的应用列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeApps(request *DescribeAppsRequest) (response *DescribeAppsResponse, err error) {
+    return c.DescribeAppsWithContext(context.Background(), request)
+}
+
+// DescribeApps
+// 分页获取当前用户的应用列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAppsWithContext(ctx context.Context, request *DescribeAppsRequest) (response *DescribeAppsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAppsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "DescribeApps")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApps require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAppsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataSourceListRequest() (request *DescribeDataSourceListRequest) {
     request = &DescribeDataSourceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -573,6 +631,116 @@ func (c *Client) DescribeKnowledgeSetListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeRelatedUsersRequest() (request *DescribeRelatedUsersRequest) {
+    request = &DescribeRelatedUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lowcode", APIVersion, "DescribeRelatedUsers")
+    
+    
+    return
+}
+
+func NewDescribeRelatedUsersResponse() (response *DescribeRelatedUsersResponse) {
+    response = &DescribeRelatedUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRelatedUsers
+// 获取角色关联的用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRelatedUsers(request *DescribeRelatedUsersRequest) (response *DescribeRelatedUsersResponse, err error) {
+    return c.DescribeRelatedUsersWithContext(context.Background(), request)
+}
+
+// DescribeRelatedUsers
+// 获取角色关联的用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRelatedUsersWithContext(ctx context.Context, request *DescribeRelatedUsersRequest) (response *DescribeRelatedUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeRelatedUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "DescribeRelatedUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRelatedUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRelatedUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceRoleListRequest() (request *DescribeResourceRoleListRequest) {
+    request = &DescribeResourceRoleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lowcode", APIVersion, "DescribeResourceRoleList")
+    
+    
+    return
+}
+
+func NewDescribeResourceRoleListResponse() (response *DescribeResourceRoleListResponse) {
+    response = &DescribeResourceRoleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourceRoleList
+// 查询资源关联的角色列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeResourceRoleList(request *DescribeResourceRoleListRequest) (response *DescribeResourceRoleListResponse, err error) {
+    return c.DescribeResourceRoleListWithContext(context.Background(), request)
+}
+
+// DescribeResourceRoleList
+// 查询资源关联的角色列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeResourceRoleListWithContext(ctx context.Context, request *DescribeResourceRoleListRequest) (response *DescribeResourceRoleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceRoleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lowcode", APIVersion, "DescribeResourceRoleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceRoleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceRoleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPutWxAppIdToWeAppRequest() (request *PutWxAppIdToWeAppRequest) {
     request = &PutWxAppIdToWeAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -596,7 +764,8 @@ func NewPutWxAppIdToWeAppResponse() (response *PutWxAppIdToWeAppResponse) {
 // 接口提供应用绑定微信ID功能。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) PutWxAppIdToWeApp(request *PutWxAppIdToWeAppRequest) (response *PutWxAppIdToWeAppResponse, err error) {
     return c.PutWxAppIdToWeAppWithContext(context.Background(), request)
 }
@@ -605,7 +774,8 @@ func (c *Client) PutWxAppIdToWeApp(request *PutWxAppIdToWeAppRequest) (response 
 // 接口提供应用绑定微信ID功能。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) PutWxAppIdToWeAppWithContext(ctx context.Context, request *PutWxAppIdToWeAppRequest) (response *PutWxAppIdToWeAppResponse, err error) {
     if request == nil {
         request = NewPutWxAppIdToWeAppRequest()
@@ -646,7 +816,8 @@ func NewSearchDocListResponse() (response *SearchDocListResponse) {
 // 知识库文档搜索接口
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) SearchDocList(request *SearchDocListRequest) (response *SearchDocListResponse, err error) {
     return c.SearchDocListWithContext(context.Background(), request)
 }
@@ -655,7 +826,8 @@ func (c *Client) SearchDocList(request *SearchDocListRequest) (response *SearchD
 // 知识库文档搜索接口
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) SearchDocListWithContext(ctx context.Context, request *SearchDocListRequest) (response *SearchDocListResponse, err error) {
     if request == nil {
         request = NewSearchDocListRequest()

@@ -405,7 +405,7 @@ func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
 //
 // 默认接口请求频率限制：
 //
-// 精品音色和标准音色：默认20并发
+// 精品音色：默认20并发
 //
 // 大模型音色：默认20并发
 //
@@ -464,7 +464,7 @@ func (c *Client) TextToVoice(request *TextToVoiceRequest) (response *TextToVoice
 //
 // 默认接口请求频率限制：
 //
-// 精品音色和标准音色：默认20并发
+// 精品音色：默认20并发
 //
 // 大模型音色：默认20并发
 //

@@ -4574,9 +4574,14 @@ type DescribeCloudStorageAIServiceRequestParams struct {
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 云存 AI 服务类型。可选值：
-	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 用户 ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 type DescribeCloudStorageAIServiceRequest struct {
@@ -4589,9 +4594,14 @@ type DescribeCloudStorageAIServiceRequest struct {
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 云存 AI 服务类型。可选值：
-	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 用户 ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 func (r *DescribeCloudStorageAIServiceRequest) ToJsonString() string {
@@ -4609,6 +4619,8 @@ func (r *DescribeCloudStorageAIServiceRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	delete(f, "ServiceType")
+	delete(f, "ChannelId")
+	delete(f, "UserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageAIServiceRequest has unknown keys!", "")
 	}

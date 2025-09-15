@@ -194,6 +194,9 @@ type CreateCloudRunServerRequestParams struct {
 
 	// 服务配置信息
 	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// vpc 信息
+	VpcInfo *CreateVpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
 }
 
 type CreateCloudRunServerRequest struct {
@@ -213,6 +216,9 @@ type CreateCloudRunServerRequest struct {
 
 	// 服务配置信息
 	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// vpc 信息
+	VpcInfo *CreateVpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
 }
 
 func (r *CreateCloudRunServerRequest) ToJsonString() string {
@@ -232,6 +238,7 @@ func (r *CreateCloudRunServerRequest) FromJsonString(s string) error {
 	delete(f, "DeployInfo")
 	delete(f, "ServerConfig")
 	delete(f, "Items")
+	delete(f, "VpcInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudRunServerRequest has unknown keys!", "")
 	}
@@ -261,6 +268,17 @@ func (r *CreateCloudRunServerResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateCloudRunServerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpcInfo struct {
+	// vpc id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 1 新建 2 指定
+	CreateType *int64 `json:"CreateType,omitnil,omitempty" name:"CreateType"`
+
+	// 子网ID列表
+	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 }
 
 type DatabasesInfo struct {
@@ -466,6 +484,9 @@ type DescribeCloudRunServersRequestParams struct {
 
 	// 服务类型：function | container
 	ServerType *string `json:"ServerType,omitnil,omitempty" name:"ServerType"`
+
+	// vpcId
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
 type DescribeCloudRunServersRequest struct {
@@ -487,6 +508,9 @@ type DescribeCloudRunServersRequest struct {
 
 	// 服务类型：function | container
 	ServerType *string `json:"ServerType,omitnil,omitempty" name:"ServerType"`
+
+	// vpcId
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
 func (r *DescribeCloudRunServersRequest) ToJsonString() string {
@@ -506,6 +530,7 @@ func (r *DescribeCloudRunServersRequest) FromJsonString(s string) error {
 	delete(f, "PageNum")
 	delete(f, "ServerName")
 	delete(f, "ServerType")
+	delete(f, "VpcId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudRunServersRequest has unknown keys!", "")
 	}

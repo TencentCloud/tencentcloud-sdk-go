@@ -20,6 +20,30 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AppJobInfo struct {
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 当前步骤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Step *int64 `json:"Step,omitnil,omitempty" name:"Step"`
+
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 任务总共步骤数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalStep *int64 `json:"TotalStep,omitnil,omitempty" name:"TotalStep"`
+
+	// 当前步骤详情
+	StepDesc *string `json:"StepDesc,omitnil,omitempty" name:"StepDesc"`
+
+	// 错误信息
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+}
+
 // Predefined struct for user
 type CheckDeployAppRequestParams struct {
 	// 环境ID
@@ -633,6 +657,117 @@ func (r *DeployAppResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAppsRequestParams struct {
+	// 分页每页个数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页Offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 搜索关键词
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 应用id
+	AppIds []*string `json:"AppIds,omitnil,omitempty" name:"AppIds"`
+
+	// 来源类型
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// 1-自定义应用；2-模型应用
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 应用是否收藏
+	Favorite *bool `json:"Favorite,omitnil,omitempty" name:"Favorite"`
+}
+
+type DescribeAppsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页每页个数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页Offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 搜索关键词
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 应用id
+	AppIds []*string `json:"AppIds,omitnil,omitempty" name:"AppIds"`
+
+	// 来源类型
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// 1-自定义应用；2-模型应用
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 应用是否收藏
+	Favorite *bool `json:"Favorite,omitnil,omitempty" name:"Favorite"`
+}
+
+func (r *DescribeAppsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "EnvId")
+	delete(f, "Keyword")
+	delete(f, "AppIds")
+	delete(f, "Channel")
+	delete(f, "Type")
+	delete(f, "Favorite")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppsResponseParams struct {
+	// 应用列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weapps []*Weapp `json:"Weapps,omitnil,omitempty" name:"Weapps"`
+
+	// 应用个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAppsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataSourceListRequestParams struct {
 	// 每页条数
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
@@ -1065,6 +1200,193 @@ func (r *DescribeKnowledgeSetListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRelatedUsersRequestParams struct {
+	// 角色id
+	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 页面含量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 环境类型
+	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
+}
+
+type DescribeRelatedUsersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 角色id
+	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 页面含量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 环境类型
+	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
+}
+
+func (r *DescribeRelatedUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRelatedUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoleId")
+	delete(f, "EnvId")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "EnvType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRelatedUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRelatedUsersResponseParams struct {
+	// 关联的用户列表
+	Data []*WedaUser `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRelatedUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRelatedUsersResponseParams `json:"Response"`
+}
+
+func (r *DescribeRelatedUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRelatedUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceRoleListRequestParams struct {
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 预览：pre；非预览：prod
+	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 子资源类型
+	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
+
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeResourceRoleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 预览：pre；非预览：prod
+	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 子资源类型
+	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
+
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeResourceRoleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceRoleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "ResourceType")
+	delete(f, "EnvType")
+	delete(f, "EnvId")
+	delete(f, "SubType")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceRoleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceRoleListResponseParams struct {
+	// 角色列表
+	Data *RoleListPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourceRoleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourceRoleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourceRoleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceRoleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DocumentQuery struct {
 	// 文件ids
 	DocumentSetId []*string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
@@ -1190,6 +1512,23 @@ type KnowledgeSplitterPreprocess struct {
 	// false：不追加。
 	// true：将全文的 keywords 追加到切分后的段落。
 	AppendKeywordsToChunk *bool `json:"AppendKeywordsToChunk,omitnil,omitempty" name:"AppendKeywordsToChunk"`
+}
+
+type OrgResp struct {
+	// 部门id
+	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
+
+	// 部门名称
+	OrgName *string `json:"OrgName,omitnil,omitempty" name:"OrgName"`
+
+	// 部门标识
+	OrgIdentity *string `json:"OrgIdentity,omitnil,omitempty" name:"OrgIdentity"`
+
+	// 部门层级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 主键字段
+	PrimaryColumn *string `json:"PrimaryColumn,omitnil,omitempty" name:"PrimaryColumn"`
 }
 
 type PageQuery struct {
@@ -1353,6 +1692,42 @@ type RelationField struct {
 
 	// 关联数据源名称
 	RelateDataSourceName *string `json:"RelateDataSourceName,omitnil,omitempty" name:"RelateDataSourceName"`
+}
+
+type RoleGroup struct {
+	// 权限组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 权限组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 权限组标识
+	GroupIdentity *string `json:"GroupIdentity,omitnil,omitempty" name:"GroupIdentity"`
+
+	// 权限组描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupDesc *string `json:"GroupDesc,omitnil,omitempty" name:"GroupDesc"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 角色数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleList []*WedaRole `json:"RoleList,omitnil,omitempty" name:"RoleList"`
+}
+
+type RoleListPage struct {
+	// 角色列表
+	RoleList []*WedaRole `json:"RoleList,omitnil,omitempty" name:"RoleList"`
+
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 }
 
 type SearchDocInfo struct {
@@ -1722,4 +2097,274 @@ type UploadKnowledgeDocumentSetRsp struct {
 
 	// Cos存储文件ID
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+}
+
+type Weapp struct {
+	// 应用id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 应用所属者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 标识
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 应用名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 环境信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 状态.
+	// 0:已经安装
+	// 3:安装中
+	// 4:安装失败
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 环境信息
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 环境地域
+	EnvRegion *string `json:"EnvRegion,omitnil,omitempty" name:"EnvRegion"`
+
+	// 资源包
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+
+	// 应用信息是否安装到cms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CmsProject *int64 `json:"CmsProject,omitnil,omitempty" name:"CmsProject"`
+
+	// 渠道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// 模板id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 是否计费应用
+	IsFree *bool `json:"IsFree,omitnil,omitempty" name:"IsFree"`
+
+	// 应用内容类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 应用类型，是否为B端应用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppType *int64 `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// 关联B端一样id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachAppId *string `json:"AttachAppId,omitnil,omitempty" name:"AttachAppId"`
+
+	// 应用类型，是否为企业应用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EType *int64 `json:"EType,omitnil,omitempty" name:"EType"`
+
+	// 企业应用数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EData *string `json:"EData,omitnil,omitempty" name:"EData"`
+
+	// 最新一次小程序构建id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastMpCiId *string `json:"LastMpCiId,omitnil,omitempty" name:"LastMpCiId"`
+
+	// 最新一次小程序状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastMpCiStatus *string `json:"LastMpCiStatus,omitnil,omitempty" name:"LastMpCiStatus"`
+
+	// 最新一次web构建id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastWebCiId *string `json:"LastWebCiId,omitnil,omitempty" name:"LastWebCiId"`
+
+	// 最新一次web状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastWebCiStatus *string `json:"LastWebCiStatus,omitnil,omitempty" name:"LastWebCiStatus"`
+
+	// 最新部署时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastDeployTime *string `json:"LastDeployTime,omitnil,omitempty" name:"LastDeployTime"`
+
+	// 安装任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobInfo *AppJobInfo `json:"JobInfo,omitnil,omitempty" name:"JobInfo"`
+
+	// 应用端
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 最新一次web构建模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastWebCiMode *int64 `json:"LastWebCiMode,omitnil,omitempty" name:"LastWebCiMode"`
+
+	// 最新一次小程序构建模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastMpCiMode *int64 `json:"LastMpCiMode,omitnil,omitempty" name:"LastMpCiMode"`
+
+	// 应用场景化入口类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// client_Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 图标地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
+
+	// 页面图标地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FaviconUrl *string `json:"FaviconUrl,omitnil,omitempty" name:"FaviconUrl"`
+
+	// 图标背景色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackgroundColor *string `json:"BackgroundColor,omitnil,omitempty" name:"BackgroundColor"`
+
+	// 应用是否收藏
+	Favorite *bool `json:"Favorite,omitnil,omitempty" name:"Favorite"`
+
+	// 发布平台：web、mp、pc、adminPortal、xPagePC、cloudAdmin
+	PublishPlatform *string `json:"PublishPlatform,omitnil,omitempty" name:"PublishPlatform"`
+}
+
+type WedaRole struct {
+	// 角色名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 角色标识
+	RoleIdentity *string `json:"RoleIdentity,omitnil,omitempty" name:"RoleIdentity"`
+
+	// 角色id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 父角色id
+	ParentRoleId *int64 `json:"ParentRoleId,omitnil,omitempty" name:"ParentRoleId"`
+
+	// 子角色id
+	ChildRoleId *int64 `json:"ChildRoleId,omitnil,omitempty" name:"ChildRoleId"`
+
+	// 环境标识
+	EnvIdentity *string `json:"EnvIdentity,omitnil,omitempty" name:"EnvIdentity"`
+
+	// 是否已发布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsReleased *bool `json:"IsReleased,omitnil,omitempty" name:"IsReleased"`
+}
+
+type WedaUser struct {
+	// 腾讯云主账号uin
+	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 名字
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 环境
+	Env *int64 `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 类型
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 昵称
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 邮箱
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
+
+	// 项目id
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 用户uuid
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 渠道，1:自建；2:企业微信导入
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 微信openid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
+
+	// 关联角色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelatedRoles []*WedaRole `json:"RelatedRoles,omitnil,omitempty" name:"RelatedRoles"`
+
+	// 企业微信userid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatUserId *string `json:"WechatUserId,omitnil,omitempty" name:"WechatUserId"`
+
+	// 内部用户类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalUserType *int64 `json:"InternalUserType,omitnil,omitempty" name:"InternalUserType"`
+
+	// 微搭用户id
+	UserId *int64 `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 所属部门名称
+	OrgName *string `json:"OrgName,omitnil,omitempty" name:"OrgName"`
+
+	// 用户schema
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserSchema *string `json:"UserSchema,omitnil,omitempty" name:"UserSchema"`
+
+	// 用户扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserExtend *string `json:"UserExtend,omitnil,omitempty" name:"UserExtend"`
+
+	// 用户是否授权License
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLicensed *bool `json:"IsLicensed,omitnil,omitempty" name:"IsLicensed"`
+
+	// 权限组数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelatedRoleGroups []*RoleGroup `json:"RelatedRoleGroups,omitnil,omitempty" name:"RelatedRoleGroups"`
+
+	// 兼岗部门
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Orgs []*OrgResp `json:"Orgs,omitnil,omitempty" name:"Orgs"`
+
+	// 主岗部门
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MainOrg []*OrgResp `json:"MainOrg,omitnil,omitempty" name:"MainOrg"`
+
+	// 直属上级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentUserId *int64 `json:"ParentUserId,omitnil,omitempty" name:"ParentUserId"`
+
+	// 主列字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrimaryColumn *string `json:"PrimaryColumn,omitnil,omitempty" name:"PrimaryColumn"`
+
+	// 用户头像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvatarUrl *string `json:"AvatarUrl,omitnil,omitempty" name:"AvatarUrl"`
+
+	// 最后登录时间
+	LastLoginTime *string `json:"LastLoginTime,omitnil,omitempty" name:"LastLoginTime"`
 }

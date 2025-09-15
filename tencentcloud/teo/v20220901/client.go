@@ -8827,6 +8827,58 @@ func (c *Client) DescribeTimingL7CacheDataWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeTimingL7OriginPullDataRequest() (request *DescribeTimingL7OriginPullDataRequest) {
+    request = &DescribeTimingL7OriginPullDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeTimingL7OriginPullData")
+    
+    
+    return
+}
+
+func NewDescribeTimingL7OriginPullDataResponse() (response *DescribeTimingL7OriginPullDataResponse) {
+    response = &DescribeTimingL7OriginPullDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTimingL7OriginPullData
+// 本接口用以查询七层域名业务的回源时序数据。
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
+//  OPERATIONDENIED_ORIGINPULLDATANOTSUPPORTED = "OperationDenied.OriginPullDataNotSupported"
+func (c *Client) DescribeTimingL7OriginPullData(request *DescribeTimingL7OriginPullDataRequest) (response *DescribeTimingL7OriginPullDataResponse, err error) {
+    return c.DescribeTimingL7OriginPullDataWithContext(context.Background(), request)
+}
+
+// DescribeTimingL7OriginPullData
+// 本接口用以查询七层域名业务的回源时序数据。
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
+//  OPERATIONDENIED_ORIGINPULLDATANOTSUPPORTED = "OperationDenied.OriginPullDataNotSupported"
+func (c *Client) DescribeTimingL7OriginPullDataWithContext(ctx context.Context, request *DescribeTimingL7OriginPullDataRequest) (response *DescribeTimingL7OriginPullDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTimingL7OriginPullDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeTimingL7OriginPullData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTimingL7OriginPullData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTimingL7OriginPullDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopL7AnalysisDataRequest() (request *DescribeTopL7AnalysisDataRequest) {
     request = &DescribeTopL7AnalysisDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

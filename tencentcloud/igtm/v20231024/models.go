@@ -2111,10 +2111,10 @@ type ModifyAddressPoolRequestParams struct {
 	// 流量策略: WEIGHT负载均衡，ALL解析全部
 	TrafficStrategy *string `json:"TrafficStrategy,omitnil,omitempty" name:"TrafficStrategy"`
 
-	// 监控器id
+	// 监控器id，当监控器已关联策略时，此字段必传
 	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
-	// 地址列表
+	// 地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。
 	AddressSet []*Address `json:"AddressSet,omitnil,omitempty" name:"AddressSet"`
 }
 
@@ -2130,10 +2130,10 @@ type ModifyAddressPoolRequest struct {
 	// 流量策略: WEIGHT负载均衡，ALL解析全部
 	TrafficStrategy *string `json:"TrafficStrategy,omitnil,omitempty" name:"TrafficStrategy"`
 
-	// 监控器id
+	// 监控器id，当监控器已关联策略时，此字段必传
 	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
-	// 地址列表
+	// 地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。
 	AddressSet []*Address `json:"AddressSet,omitnil,omitempty" name:"AddressSet"`
 }
 

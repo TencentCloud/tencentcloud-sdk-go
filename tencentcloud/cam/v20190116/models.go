@@ -5635,6 +5635,9 @@ type Receiver struct {
 
 	// 账号uin
 	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 国家代码
+	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 }
 
 // Predefined struct for user

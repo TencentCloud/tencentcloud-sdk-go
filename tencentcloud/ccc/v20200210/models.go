@@ -7537,8 +7537,6 @@ type TelCdrInfo struct {
 	// 
 	// 电话呼入&呼出	1	        ok	                        正常通话
 	// 
-	// 电话呼入&呼出	0	        error	                异常结束
-	// 
 	// 电话呼入	             102	        ivrGiveUp	        IVR 期间用户放弃
 	// 
 	// 电话呼入	             103	        waitingGiveUp	       排队时用户放弃
@@ -7549,22 +7547,18 @@ type TelCdrInfo struct {
 	// 
 	// 电话呼入              106	       notWorkTime	       非工作时间   
 	// 
-	// 电话呼入	            107	       ivrEnd	               IVR 后直接结束
+	// 电话呼入	            107	       ivrEnd	               IVR全自动结束(无人工介入)
 	// 
-	// 电话呼入	            100	      blackList 黑名单 
+	// 电话呼入	            100	      blackList 黑名单(系统侧)
 	// 
-	// 电话呼出               2	              unconnected	未接通
+	// 电话呼出             108	        restrictedCallee	全局外呼风险号码拦截(系统侧)
 	// 
-	// 电话呼出             108	        restrictedCallee	被叫因高风险受限
+	// 电话呼出             109	        tooManyRequest	    外呼频控拦截(系统侧)
 	// 
-	// 电话呼出             109	        tooManyRequest	    外呼超频限制
+	// 电话呼出             110	        restrictedArea	    外呼地域拦截(系统侧)
 	// 
-	// 电话呼出             110	        restrictedArea	    外呼区域限制
-	// 
-	// 电话呼出             111	        restrictedTime	外呼时间限制
+	// 电话呼出             111	        restrictedTime	外呼时段拦截(系统侧)
 	//                          
-	// 电话呼出             201            unknown	未知状态
-	// 
 	// 电话呼出             202            notAnswer	 被叫未接听
 	// 
 	// 电话呼出            203	    userReject	被叫拒接挂断
@@ -7583,8 +7577,31 @@ type TelCdrInfo struct {
 	// 
 	// 电话呼出	        210	           notInService	被叫不在服务区
 	// 
-	// 电话呼入&呼出	211    clientError    客户端错误
+	// 电话呼入&呼出	211    clientError    座席客户端错误
+	// 
 	// 电话呼出        212     carrierBlocked      运营商拦截
+	// 
+	// 电话呼出        213     callReminder      提示来电提醒
+	// 
+	// 电话呼出        215     numberInvalid      被叫号码无效
+	// 
+	// 电话呼出        216     callRestricted      提示呼叫受限
+	// 
+	// 电话呼出        217     calleeRestricted      被叫黑名单受限
+	// 
+	// 电话呼出        218     areaRestricted      被叫区域受限
+	// 
+	// 电话呼出        219     promptCallForwarding      提示呼叫转移
+	// 
+	// 电话呼出        220     callerCancelWhileRing      振铃中主叫取消
+	// 
+	// 电话呼出        221     callerCancelWithoutRing      未振铃被叫号码异常
+	// 
+	// 音频呼入        501     callConflict      VoIP 用户呼叫冲突终止
+	// 
+	// 音频呼入        502     clientTimeout      VoIP 用户客户端超时
+	// 
+	// 音频呼入        503     voipClientError      VoIP 用户客户端错误
 	EndStatus *int64 `json:"EndStatus,omitnil,omitempty" name:"EndStatus"`
 
 	// 技能组名称
@@ -7617,60 +7634,7 @@ type TelCdrInfo struct {
 	// 技能组ID
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
 
-	// EndStatus与EndStatusString一一对应，具体枚举如下：
-	// 
-	// **场景	         EndStatus	EndStatusString	状态说明**
-	// 
-	// 电话呼入&呼出	1	        ok	                        正常通话
-	// 
-	// 电话呼入&呼出	0	        error	                异常结束
-	// 
-	// 电话呼入	             102	        ivrGiveUp	        IVR 期间用户放弃
-	// 
-	// 电话呼入	             103	        waitingGiveUp	       排队时用户放弃
-	// 
-	// 电话呼入	             104	        ringingGiveUp	       振铃时用户放弃
-	// 
-	// 电话呼入	             105	        noSeatOnline	       无座席在线
-	// 
-	// 电话呼入              106	       notWorkTime	       非工作时间   
-	// 
-	// 电话呼入	            107	       ivrEnd	               IVR 后直接结束
-	// 
-	// 电话呼入	            100	      blackList 黑名单 
-	// 
-	// 电话呼出               2	              unconnected	未接通
-	// 
-	// 电话呼出             108	        restrictedCallee	被叫因高风险受限
-	// 
-	// 电话呼出             109	        tooManyRequest	    外呼超频限制
-	// 
-	// 电话呼出             110	        restrictedArea	    外呼区域限制
-	// 
-	// 电话呼出             111	        restrictedTime	外呼时间限制
-	//                          
-	// 电话呼出             201            unknown	未知状态
-	// 
-	// 电话呼出             202            notAnswer	 被叫未接听
-	// 
-	// 电话呼出            203	    userReject	被叫拒接挂断
-	// 
-	// 电话呼出	          204	    powerOff	被叫关机
-	// 
-	// 电话呼出           205            numberNotExist	被叫空号
-	// 
-	// 电话呼出	         206	           busy	被叫忙
-	// 
-	// 电话呼出   	        207	           outOfCredit	被叫欠费
-	// 
-	// 电话呼出	         208	           operatorError	运营商线路异常
-	// 
-	// 电话呼出         	209	           callerCancel	主叫取消
-	// 
-	// 电话呼出	        210	           notInService	被叫不在服务区
-	// 
-	// 电话呼入&呼出	211    clientError    客户端错误
-	// 电话呼出        212     carrierBlocked      运营商拦截
+	// 参考 EndStatus 字段
 	EndStatusString *string `json:"EndStatusString,omitnil,omitempty" name:"EndStatusString"`
 
 	// 会话开始时间戳，UNIX 秒级时间戳

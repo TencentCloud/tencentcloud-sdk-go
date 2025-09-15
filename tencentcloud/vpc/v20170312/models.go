@@ -5504,7 +5504,7 @@ type CreateNatGatewayRequestParams struct {
 	// NAT网关最大外网出带宽(单位：Mbps)，支持的参数值：20, 50, 100, 200, 500, 1000, 2000, 5000，默认: 100Mbps。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为5000Mbps。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// NAT网关并发连接数上限，支持参数值：1000000、3000000、10000000，默认值为100000。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为2000000。
+	// NAT网关并发连接数上限，支持参数值：1000000、3000000、10000000，默认值为1000000。 当NatProductVersion参数值为2即标准型时，此参数无需填写，默认为2000000。
 	MaxConcurrentConnection *uint64 `json:"MaxConcurrentConnection,omitnil,omitempty" name:"MaxConcurrentConnection"`
 
 	// 新建弹性公网IP个数，系统会按您的要求创建对应数量的弹性公网IP，其中AddressCount和PublicAddresses两个参数至少填写一个。
@@ -5535,6 +5535,9 @@ type CreateNatGatewayRequestParams struct {
 
 	// NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关，默认值是1。
 	NatProductVersion *uint64 `json:"NatProductVersion,omitnil,omitempty" name:"NatProductVersion"`
+
+	// NAT实例是否开启删除保护
+	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
 }
 
 type CreateNatGatewayRequest struct {
@@ -5549,7 +5552,7 @@ type CreateNatGatewayRequest struct {
 	// NAT网关最大外网出带宽(单位：Mbps)，支持的参数值：20, 50, 100, 200, 500, 1000, 2000, 5000，默认: 100Mbps。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为5000Mbps。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// NAT网关并发连接数上限，支持参数值：1000000、3000000、10000000，默认值为100000。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为2000000。
+	// NAT网关并发连接数上限，支持参数值：1000000、3000000、10000000，默认值为1000000。 当NatProductVersion参数值为2即标准型时，此参数无需填写，默认为2000000。
 	MaxConcurrentConnection *uint64 `json:"MaxConcurrentConnection,omitnil,omitempty" name:"MaxConcurrentConnection"`
 
 	// 新建弹性公网IP个数，系统会按您的要求创建对应数量的弹性公网IP，其中AddressCount和PublicAddresses两个参数至少填写一个。
@@ -5578,6 +5581,9 @@ type CreateNatGatewayRequest struct {
 
 	// NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关，默认值是1。
 	NatProductVersion *uint64 `json:"NatProductVersion,omitnil,omitempty" name:"NatProductVersion"`
+
+	// NAT实例是否开启删除保护
+	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
 }
 
 func (r *CreateNatGatewayRequest) ToJsonString() string {
@@ -5605,6 +5611,7 @@ func (r *CreateNatGatewayRequest) FromJsonString(s string) error {
 	delete(f, "PublicIpAddressesBandwidthOut")
 	delete(f, "PublicIpFromSameZone")
 	delete(f, "NatProductVersion")
+	delete(f, "DeletionProtectionEnabled")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNatGatewayRequest has unknown keys!", "")
 	}
@@ -6250,6 +6257,9 @@ type CreatePrivateNatGatewayRequestParams struct {
 
 	// 云联网类型私网NAT网关需要绑定的云联网实例ID。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 私网NAT实例是否开启删除保护
+	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
 }
 
 type CreatePrivateNatGatewayRequest struct {
@@ -6272,6 +6282,9 @@ type CreatePrivateNatGatewayRequest struct {
 
 	// 云联网类型私网NAT网关需要绑定的云联网实例ID。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 私网NAT实例是否开启删除保护
+	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
 }
 
 func (r *CreatePrivateNatGatewayRequest) ToJsonString() string {
@@ -6292,6 +6305,7 @@ func (r *CreatePrivateNatGatewayRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "VpcType")
 	delete(f, "CcnId")
+	delete(f, "DeletionProtectionEnabled")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateNatGatewayRequest has unknown keys!", "")
 	}
@@ -16300,11 +16314,7 @@ type DescribeNatGatewaysRequestParams struct {
 	// NAT网关统一 ID，形如：`nat-123xx454`。每次请求的实例上限为100。参数不支持同时指定NatGatewayIds和Filters。
 	NatGatewayIds []*string `json:"NatGatewayIds,omitnil,omitempty" name:"NatGatewayIds"`
 
-	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。
-	// <li>nat-gateway-id - String - （过滤条件）协议端口模板实例ID，形如：`nat-123xx454`。</li>
-	// <li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li>
-	// <li>nat-gateway-name - String - （过滤条件）协议端口模板实例ID，形如：`test_nat`。</li>
-	// <li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li>
+	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -16320,11 +16330,7 @@ type DescribeNatGatewaysRequest struct {
 	// NAT网关统一 ID，形如：`nat-123xx454`。每次请求的实例上限为100。参数不支持同时指定NatGatewayIds和Filters。
 	NatGatewayIds []*string `json:"NatGatewayIds,omitnil,omitempty" name:"NatGatewayIds"`
 
-	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。
-	// <li>nat-gateway-id - String - （过滤条件）协议端口模板实例ID，形如：`nat-123xx454`。</li>
-	// <li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li>
-	// <li>nat-gateway-name - String - （过滤条件）协议端口模板实例ID，形如：`test_nat`。</li>
-	// <li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li>
+	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -16363,6 +16369,9 @@ type DescribeNatGatewaysResponseParams struct {
 
 	// 符合条件的NAT网关对象个数。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 输出信息详细程度，DETAIL代表输出实例所有信息；COMPACT代表不输出NAT规则和自定义路由，输出实例基本信息、特性开关和EIP信息；SIMPLE代表仅输出实例基本信息和特性开关
+	VerboseLevel *string `json:"VerboseLevel,omitnil,omitempty" name:"VerboseLevel"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -17420,11 +17429,7 @@ type DescribePrivateNatGatewaysRequestParams struct {
 	// 私网网关唯一`ID`，形如：`intranat-0g3blj80`。
 	NatGatewayIds []*string `json:"NatGatewayIds,omitnil,omitempty" name:"NatGatewayIds"`
 
-	// 过滤条件。
-	// <li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li>
-	// <li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li>
-	// <li>VpcId - String - 私网网关所在`VpcId`。</li>
-	// <li>TagKey - Tag数组 - 私网网关标签键值对数组</li>
+	// 过滤条件。<li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li><li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li><li>VpcId - String - 私网网关所在`VpcId`。</li><li>TagKey - Tag数组 - 私网网关标签键值对数组</li><li>intranat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -17446,11 +17451,7 @@ type DescribePrivateNatGatewaysRequest struct {
 	// 私网网关唯一`ID`，形如：`intranat-0g3blj80`。
 	NatGatewayIds []*string `json:"NatGatewayIds,omitnil,omitempty" name:"NatGatewayIds"`
 
-	// 过滤条件。
-	// <li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li>
-	// <li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li>
-	// <li>VpcId - String - 私网网关所在`VpcId`。</li>
-	// <li>TagKey - Tag数组 - 私网网关标签键值对数组</li>
+	// 过滤条件。<li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li><li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li><li>VpcId - String - 私网网关所在`VpcId`。</li><li>TagKey - Tag数组 - 私网网关标签键值对数组</li><li>intranat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。

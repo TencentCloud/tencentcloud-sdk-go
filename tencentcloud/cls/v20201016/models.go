@@ -1173,6 +1173,28 @@ type ConsumerContent struct {
 	JsonType *int64 `json:"JsonType,omitnil,omitempty" name:"JsonType"`
 }
 
+type ConsumerGroup struct {
+	// 消费组名称
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// 状态。
+	// 
+	// - Empty：组内没有成员，但存在已提交的偏移量。所有消费者都离开但保留了偏移量
+	// - Dead：组内没有成员，且没有已提交的偏移量。组被删除或长时间无活动
+	// - Stable：组内成员正常消费，分区分配平衡。正常运行状态
+	// - PreparingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+	// - CompletingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 分区分配策略均衡算法名称。
+	// 
+	// - 常见均衡算法如下：
+	//     - range:按分区范围分配
+	//     - roundrobin:轮询式分配
+	//     - sticky:粘性分配（避免不必要的重平衡）
+	ProtocolName *string `json:"ProtocolName,omitnil,omitempty" name:"ProtocolName"`
+}
+
 type ContainerFileInfo struct {
 	// namespace可以多个，用分隔号分割,例如A,B
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
@@ -3328,7 +3350,11 @@ type CreateLogsetRequestParams struct {
 	// 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 日志集ID，格式为：用户自定义部分-用户appid，用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符，尾部需要使用-拼接用户appid
+	// 日志集ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
+	// 
+	// - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符。
+	// - 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
+	// - 如果指定该字段，需保证全地域唯一
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
@@ -3343,7 +3369,11 @@ type CreateLogsetRequest struct {
 	// 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 日志集ID，格式为：用户自定义部分-用户appid，用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符，尾部需要使用-拼接用户appid
+	// 日志集ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
+	// 
+	// - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符。
+	// - 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
+	// - 如果指定该字段，需保证全地域唯一
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
@@ -3970,9 +4000,10 @@ type CreateTopicRequestParams struct {
 	// 仅在StorageType为 hot 时生效。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
-	// 主题自定义ID，格式为：用户自定义部分-APPID。未填写该参数时将自动生成ID。
+	// 主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
 	// - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
-	// - APPID可在https://console.cloud.tencent.com/developer页面查询
+	// - 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
+	// - 如果指定该字段，需保证全地域唯一
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 免鉴权开关。 false：关闭； true：开启。默认为false。
@@ -4025,9 +4056,10 @@ type CreateTopicRequest struct {
 	// 仅在StorageType为 hot 时生效。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
-	// 主题自定义ID，格式为：用户自定义部分-APPID。未填写该参数时将自动生成ID。
+	// 主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
 	// - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
-	// - APPID可在https://console.cloud.tencent.com/developer页面查询
+	// - 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
+	// - 如果指定该字段，需保证全地域唯一
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 免鉴权开关。 false：关闭； true：开启。默认为false。
@@ -7470,6 +7502,186 @@ func (r *DescribeIndexResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeKafkaConsumerGroupDetailRequestParams struct {
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 消费组名称
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+type DescribeKafkaConsumerGroupDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 消费组名称
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+func (r *DescribeKafkaConsumerGroupDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaConsumerGroupDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Group")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKafkaConsumerGroupDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaConsumerGroupDetailResponseParams struct {
+	// 日志集id
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// 消费组名称
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// 消费组信息列表
+	PartitionInfos []*GroupPartitionInfo `json:"PartitionInfos,omitnil,omitempty" name:"PartitionInfos"`
+
+	// Empty：组内没有成员，但存在已提交的偏移量。所有消费者都离开但保留了偏移量
+	// Dead：组内没有成员，且没有已提交的偏移量。组被删除或长时间无活动
+	// Stable：组内成员正常消费，分区分配平衡。正常运行状态
+	// PreparingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+	// CompletingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKafkaConsumerGroupDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKafkaConsumerGroupDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeKafkaConsumerGroupDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaConsumerGroupDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaConsumerGroupListRequestParams struct {
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - group
+	// 按照【消费组名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 示例：消费组1
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeKafkaConsumerGroupListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - group
+	// 按照【消费组名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 示例：消费组1
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeKafkaConsumerGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaConsumerGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKafkaConsumerGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaConsumerGroupListResponseParams struct {
+	// 日志主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 日志集id
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// 总个数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 消费组信息列表
+	Groups []*ConsumerGroup `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKafkaConsumerGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKafkaConsumerGroupListResponseParams `json:"Response"`
+}
+
+func (r *DescribeKafkaConsumerGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaConsumerGroupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeKafkaConsumerRequestParams struct {
 	// 日志主题Id。
 	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
@@ -9394,6 +9606,17 @@ func (r *GetAlarmLogResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetAlarmLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type GroupPartitionInfo struct {
+	// 分区id
+	PartitionId *int64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
+
+	// 分区最新数据时间戳，单位：s
+	CommitTimestamp *int64 `json:"CommitTimestamp,omitnil,omitempty" name:"CommitTimestamp"`
+
+	// 消费者
+	Consumer *string `json:"Consumer,omitnil,omitempty" name:"Consumer"`
 }
 
 type GroupTriggerConditionInfo struct {
@@ -11560,6 +11783,60 @@ func (r *ModifyIndexResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyIndexResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyKafkaConsumerGroupOffsetRequestParams struct {
+
+}
+
+type ModifyKafkaConsumerGroupOffsetRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ModifyKafkaConsumerGroupOffsetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKafkaConsumerGroupOffsetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKafkaConsumerGroupOffsetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyKafkaConsumerGroupOffsetResponseParams struct {
+	// 状态码。0：成功，-1：失败
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyKafkaConsumerGroupOffsetResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyKafkaConsumerGroupOffsetResponseParams `json:"Response"`
+}
+
+func (r *ModifyKafkaConsumerGroupOffsetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKafkaConsumerGroupOffsetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

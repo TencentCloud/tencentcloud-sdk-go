@@ -1142,6 +1142,9 @@ const (
 	// 规则引擎使用中，无法删除。
 	OPERATIONDENIED_ORIGINGROUPRULEENGINEUSED = "OperationDenied.OriginGroupRuleEngineUsed"
 
+	// 当前主账号不具备回源数据查询接口权限，请联系售后服务。
+	OPERATIONDENIED_ORIGINPULLDATANOTSUPPORTED = "OperationDenied.OriginPullDataNotSupported"
+
 	// 归属权校验未通过，请先完成站点归属权校验。
 	OPERATIONDENIED_OWNERSHIPVERIFICATIONNOTPASSED = "OperationDenied.OwnershipVerificationNotPassed"
 

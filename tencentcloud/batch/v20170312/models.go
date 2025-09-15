@@ -3013,7 +3013,7 @@ type SystemDisk struct {
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 系统盘ID。
-	// 该参数目前仅用于`DescribeInstances`等查询类接口的返回参数，不可用于`RunInstances`等写接口的入参。
+	// 该参数目前仅用于 [DescribeInstances](https://cloud.tencent.com/document/product/213/15728) 等查询类接口的返回参数，不可用于 [RunInstances](https://cloud.tencent.com/document/product/213/15730) 等写接口的入参。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
 	// 系统盘大小，单位：GiB。默认值为 50
