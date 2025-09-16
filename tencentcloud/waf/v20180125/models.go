@@ -1571,6 +1571,14 @@ type AutoDenyDetail struct {
 	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 }
 
+type BatchDomainResult struct {
+	// 批量操作中失败的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 操作失败的原因
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
 type BatchIpAccessControlData struct {
 	// 总数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
@@ -2529,6 +2537,108 @@ func (r *CreateAreaBanRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAreaBanRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchIpAccessControlRequestParams struct {
+	// IP参数列表
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 42为黑名单，40为白名单
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 备注
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+}
+
+type CreateBatchIpAccessControlRequest struct {
+	*tchttp.BaseRequest
+	
+	// IP参数列表
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 42为黑名单，40为白名单
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 备注
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+}
+
+func (r *CreateBatchIpAccessControlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchIpAccessControlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IpList")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "ActionType")
+	delete(f, "GroupIds")
+	delete(f, "Domains")
+	delete(f, "Note")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchIpAccessControlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchIpAccessControlResponseParams struct {
+	// 添加失败的域名列表，如果非空则表示有域名添加失败，整个批量规则添加失败，否则则表示批量规则添加成功。
+	Failed []*BatchDomainResult `json:"Failed,omitnil,omitempty" name:"Failed"`
+
+	// 添加成功的批量规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchIpAccessControlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchIpAccessControlResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchIpAccessControlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchIpAccessControlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3641,6 +3751,60 @@ func (r *DeleteAttackWhiteRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAttackWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBatchIpAccessControlRequestParams struct {
+	// 规则ID列表，支持批量删除
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteBatchIpAccessControlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID列表，支持批量删除
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteBatchIpAccessControlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBatchIpAccessControlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBatchIpAccessControlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBatchIpAccessControlResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBatchIpAccessControlResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBatchIpAccessControlResponseParams `json:"Response"`
+}
+
+func (r *DeleteBatchIpAccessControlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBatchIpAccessControlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14034,6 +14198,112 @@ func (r *ModifyAttackWhiteRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAttackWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBatchIpAccessControlRequestParams struct {
+	// 编辑的批量规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// IP参数列表
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 42为黑名单，40为白名单
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 备注
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+}
+
+type ModifyBatchIpAccessControlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 编辑的批量规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// IP参数列表
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 42为黑名单，40为白名单
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 备注
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+}
+
+func (r *ModifyBatchIpAccessControlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBatchIpAccessControlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "IpList")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "ActionType")
+	delete(f, "GroupIds")
+	delete(f, "Domains")
+	delete(f, "Note")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBatchIpAccessControlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBatchIpAccessControlResponseParams struct {
+	// 编辑失败的域名列表，如果非空则表示有域名编辑失败，整个批量规则编辑失败，否则则表示批量规则编辑成功。
+	Failed []*BatchDomainResult `json:"Failed,omitnil,omitempty" name:"Failed"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBatchIpAccessControlResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBatchIpAccessControlResponseParams `json:"Response"`
+}
+
+func (r *ModifyBatchIpAccessControlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBatchIpAccessControlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

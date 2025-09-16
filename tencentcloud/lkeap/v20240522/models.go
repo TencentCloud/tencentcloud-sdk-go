@@ -81,6 +81,9 @@ type ChatCompletionsRequestParams struct {
 
 	// 是否启用联网搜索
 	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
+
+	// 思维链开关，本参数仅在deepseek v3.1时生效
+	Thinking *Thinking `json:"Thinking,omitnil,omitempty" name:"Thinking"`
 }
 
 type ChatCompletionsRequest struct {
@@ -107,6 +110,9 @@ type ChatCompletionsRequest struct {
 
 	// 是否启用联网搜索
 	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
+
+	// 思维链开关，本参数仅在deepseek v3.1时生效
+	Thinking *Thinking `json:"Thinking,omitnil,omitempty" name:"Thinking"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -127,6 +133,7 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "Temperature")
 	delete(f, "MaxTokens")
 	delete(f, "EnableSearch")
+	delete(f, "Thinking")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}
@@ -2401,6 +2408,14 @@ type SplitDocumentFailedPage struct {
 	// 失败页码	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+type Thinking struct {
+	// 控制开启思维链，默认disabled
+	// 
+	// enabled：开启思维链
+	// disabled：关闭思维链
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 // Predefined struct for user

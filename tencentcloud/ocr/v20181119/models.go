@@ -2953,7 +2953,7 @@ type ExtractDocMultiRequestParams struct {
 	ItemNames []*string `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
 
 	// true：仅输出自定义字段
-	// flase：输出默认字段+自定义字段
+	// false：输出默认字段+自定义字段
 	// 默认true
 	ItemNamesShowMode *bool `json:"ItemNamesShowMode,omitnil,omitempty" name:"ItemNamesShowMode"`
 
@@ -3015,7 +3015,7 @@ type ExtractDocMultiRequest struct {
 	ItemNames []*string `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
 
 	// true：仅输出自定义字段
-	// flase：输出默认字段+自定义字段
+	// false：输出默认字段+自定义字段
 	// 默认true
 	ItemNamesShowMode *bool `json:"ItemNamesShowMode,omitnil,omitempty" name:"ItemNamesShowMode"`
 

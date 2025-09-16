@@ -209,6 +209,30 @@ type CreateTargetGroupRequestParams struct {
 
 	// 标签。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 流量分发方式
+	// 
+	// - STATELESS：无状态
+	// - STATEFUL： 有状态
+	ForwardingMode *string `json:"ForwardingMode,omitnil,omitempty" name:"ForwardingMode"`
+
+	// TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。
+	TcpIdleConnectTimeout *int64 `json:"TcpIdleConnectTimeout,omitnil,omitempty" name:"TcpIdleConnectTimeout"`
+
+	// 其他协议连接空闲超时时间，可配置5s-180s，默认120s
+	OthersIdleConnectTimeout *int64 `json:"OthersIdleConnectTimeout,omitnil,omitempty" name:"OthersIdleConnectTimeout"`
+
+	// 重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。
+	RescheduleUnbindRs *bool `json:"RescheduleUnbindRs,omitnil,omitempty" name:"RescheduleUnbindRs"`
+
+	// 解绑RS后开启重调度的时间，可配置0s-3600s，默认0s
+	RescheduleUnbindRsStartTime *int64 `json:"RescheduleUnbindRsStartTime,omitnil,omitempty" name:"RescheduleUnbindRsStartTime"`
+
+	// 重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。
+	RescheduleUnhealthy *bool `json:"RescheduleUnhealthy,omitnil,omitempty" name:"RescheduleUnhealthy"`
+
+	// 后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s
+	RescheduleUnhealthyStartTime *int64 `json:"RescheduleUnhealthyStartTime,omitnil,omitempty" name:"RescheduleUnhealthyStartTime"`
 }
 
 type CreateTargetGroupRequest struct {
@@ -243,6 +267,30 @@ type CreateTargetGroupRequest struct {
 
 	// 标签。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 流量分发方式
+	// 
+	// - STATELESS：无状态
+	// - STATEFUL： 有状态
+	ForwardingMode *string `json:"ForwardingMode,omitnil,omitempty" name:"ForwardingMode"`
+
+	// TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。
+	TcpIdleConnectTimeout *int64 `json:"TcpIdleConnectTimeout,omitnil,omitempty" name:"TcpIdleConnectTimeout"`
+
+	// 其他协议连接空闲超时时间，可配置5s-180s，默认120s
+	OthersIdleConnectTimeout *int64 `json:"OthersIdleConnectTimeout,omitnil,omitempty" name:"OthersIdleConnectTimeout"`
+
+	// 重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。
+	RescheduleUnbindRs *bool `json:"RescheduleUnbindRs,omitnil,omitempty" name:"RescheduleUnbindRs"`
+
+	// 解绑RS后开启重调度的时间，可配置0s-3600s，默认0s
+	RescheduleUnbindRsStartTime *int64 `json:"RescheduleUnbindRsStartTime,omitnil,omitempty" name:"RescheduleUnbindRsStartTime"`
+
+	// 重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。
+	RescheduleUnhealthy *bool `json:"RescheduleUnhealthy,omitnil,omitempty" name:"RescheduleUnhealthy"`
+
+	// 后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s
+	RescheduleUnhealthyStartTime *int64 `json:"RescheduleUnhealthyStartTime,omitnil,omitempty" name:"RescheduleUnhealthyStartTime"`
 }
 
 func (r *CreateTargetGroupRequest) ToJsonString() string {
@@ -266,6 +314,13 @@ func (r *CreateTargetGroupRequest) FromJsonString(s string) error {
 	delete(f, "ScheduleAlgorithm")
 	delete(f, "AllDeadToAlive")
 	delete(f, "Tags")
+	delete(f, "ForwardingMode")
+	delete(f, "TcpIdleConnectTimeout")
+	delete(f, "OthersIdleConnectTimeout")
+	delete(f, "RescheduleUnbindRs")
+	delete(f, "RescheduleUnbindRsStartTime")
+	delete(f, "RescheduleUnhealthy")
+	delete(f, "RescheduleUnhealthyStartTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTargetGroupRequest has unknown keys!", "")
 	}
@@ -1215,6 +1270,24 @@ type ModifyTargetGroupAttributeRequestParams struct {
 
 	// 是否支持全死全活。
 	AllDeadToAlive *bool `json:"AllDeadToAlive,omitnil,omitempty" name:"AllDeadToAlive"`
+
+	// TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。
+	TcpIdleConnectTimeout *int64 `json:"TcpIdleConnectTimeout,omitnil,omitempty" name:"TcpIdleConnectTimeout"`
+
+	// 其他协议连接空闲超时时间，可配置5s-180s，默认120s
+	OthersIdleConnectTimeout *int64 `json:"OthersIdleConnectTimeout,omitnil,omitempty" name:"OthersIdleConnectTimeout"`
+
+	// 重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。
+	RescheduleUnbindRs *bool `json:"RescheduleUnbindRs,omitnil,omitempty" name:"RescheduleUnbindRs"`
+
+	// 解绑RS后开启重调度的时间，可配置0s-3600s，默认0s
+	RescheduleUnbindRsStartTime *int64 `json:"RescheduleUnbindRsStartTime,omitnil,omitempty" name:"RescheduleUnbindRsStartTime"`
+
+	// 重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。
+	RescheduleUnhealthy *bool `json:"RescheduleUnhealthy,omitnil,omitempty" name:"RescheduleUnhealthy"`
+
+	// 后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s
+	RescheduleUnhealthyStartTime *int64 `json:"RescheduleUnhealthyStartTime,omitnil,omitempty" name:"RescheduleUnhealthyStartTime"`
 }
 
 type ModifyTargetGroupAttributeRequest struct {
@@ -1231,6 +1304,24 @@ type ModifyTargetGroupAttributeRequest struct {
 
 	// 是否支持全死全活。
 	AllDeadToAlive *bool `json:"AllDeadToAlive,omitnil,omitempty" name:"AllDeadToAlive"`
+
+	// TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。
+	TcpIdleConnectTimeout *int64 `json:"TcpIdleConnectTimeout,omitnil,omitempty" name:"TcpIdleConnectTimeout"`
+
+	// 其他协议连接空闲超时时间，可配置5s-180s，默认120s
+	OthersIdleConnectTimeout *int64 `json:"OthersIdleConnectTimeout,omitnil,omitempty" name:"OthersIdleConnectTimeout"`
+
+	// 重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。
+	RescheduleUnbindRs *bool `json:"RescheduleUnbindRs,omitnil,omitempty" name:"RescheduleUnbindRs"`
+
+	// 解绑RS后开启重调度的时间，可配置0s-3600s，默认0s
+	RescheduleUnbindRsStartTime *int64 `json:"RescheduleUnbindRsStartTime,omitnil,omitempty" name:"RescheduleUnbindRsStartTime"`
+
+	// 重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。
+	RescheduleUnhealthy *bool `json:"RescheduleUnhealthy,omitnil,omitempty" name:"RescheduleUnhealthy"`
+
+	// 后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s
+	RescheduleUnhealthyStartTime *int64 `json:"RescheduleUnhealthyStartTime,omitnil,omitempty" name:"RescheduleUnhealthyStartTime"`
 }
 
 func (r *ModifyTargetGroupAttributeRequest) ToJsonString() string {
@@ -1249,6 +1340,12 @@ func (r *ModifyTargetGroupAttributeRequest) FromJsonString(s string) error {
 	delete(f, "TargetGroupName")
 	delete(f, "HealthCheck")
 	delete(f, "AllDeadToAlive")
+	delete(f, "TcpIdleConnectTimeout")
+	delete(f, "OthersIdleConnectTimeout")
+	delete(f, "RescheduleUnbindRs")
+	delete(f, "RescheduleUnbindRsStartTime")
+	delete(f, "RescheduleUnhealthy")
+	delete(f, "RescheduleUnhealthyStartTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTargetGroupAttributeRequest has unknown keys!", "")
 	}

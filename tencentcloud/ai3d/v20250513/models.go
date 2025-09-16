@@ -164,6 +164,72 @@ func (r *QueryHunyuanTo3DProJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type QueryHunyuanTo3DRapidJobRequestParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type QueryHunyuanTo3DRapidJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *QueryHunyuanTo3DRapidJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryHunyuanTo3DRapidJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryHunyuanTo3DRapidJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryHunyuanTo3DRapidJobResponseParams struct {
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 生成的3D文件数组。
+	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryHunyuanTo3DRapidJobResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryHunyuanTo3DRapidJobResponseParams `json:"Response"`
+}
+
+func (r *QueryHunyuanTo3DRapidJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryHunyuanTo3DRapidJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SubmitHunyuanTo3DJobRequestParams struct {
 	// 文生3D，3D内容的描述，中文正向提示词。
 	// 最多支持1024个 utf-8 字符。
@@ -429,6 +495,111 @@ func (r *SubmitHunyuanTo3DProJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitHunyuanTo3DProJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuanTo3DRapidJobRequestParams struct {
+	// 文生3D，3D内容的描述，中文正向提示词。
+	// 最多支持200个 utf-8 字符。
+	// 文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 输入图 Base64 数据。
+	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 格式：jpg，png，jpeg，webp。
+	// ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 输入图Url。
+	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 格式：jpg，png，jpeg，webp。
+	// ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 生成模型的格式，仅限制生成一种格式。
+	// 生成模型文件组默认返回obj格式。
+	// 可选值：OBJ，GLB，STL，USDZ，FBX，MP4。
+	ResultFormat *string `json:"ResultFormat,omitnil,omitempty" name:"ResultFormat"`
+
+	// 是否开启 PBR材质生成，默认 false。
+	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
+}
+
+type SubmitHunyuanTo3DRapidJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文生3D，3D内容的描述，中文正向提示词。
+	// 最多支持200个 utf-8 字符。
+	// 文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 输入图 Base64 数据。
+	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 格式：jpg，png，jpeg，webp。
+	// ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 输入图Url。
+	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 格式：jpg，png，jpeg，webp。
+	// ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 生成模型的格式，仅限制生成一种格式。
+	// 生成模型文件组默认返回obj格式。
+	// 可选值：OBJ，GLB，STL，USDZ，FBX，MP4。
+	ResultFormat *string `json:"ResultFormat,omitnil,omitempty" name:"ResultFormat"`
+
+	// 是否开启 PBR材质生成，默认 false。
+	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
+}
+
+func (r *SubmitHunyuanTo3DRapidJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuanTo3DRapidJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Prompt")
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "ResultFormat")
+	delete(f, "EnablePBR")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuanTo3DRapidJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuanTo3DRapidJobResponseParams struct {
+	// 任务ID（有效期24小时）
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitHunyuanTo3DRapidJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitHunyuanTo3DRapidJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitHunyuanTo3DRapidJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuanTo3DRapidJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

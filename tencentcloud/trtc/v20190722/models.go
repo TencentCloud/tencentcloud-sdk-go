@@ -5449,7 +5449,7 @@ type STTConfig struct {
 	// 热词表：该参数用于提升识别准确率。 单个热词限制："热词|权重"，单个热词不超过30个字符（最多10个汉字），权重[1-11]或者100，如：“腾讯云|5” 或 “ASR|11”； 热词表限制：多个热词用英文逗号分割，最多支持128个热词，如：“腾讯云|10,语音识别|5,ASR|11”；
 	HotWordList *string `json:"HotWordList,omitnil,omitempty" name:"HotWordList"`
 
-	// vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+	// vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 5]，默认为0，表示不开启远场人声抑制能力。推荐设置为2，有较好的远场人声抑制能力。嘈杂的办公室环境下可以设置为3，更为嘈杂的环境下可以使用4和5。注意较高的VadLevel可能会将单字当作噪声给过滤。
 	VadLevel *uint64 `json:"VadLevel,omitnil,omitempty" name:"VadLevel"`
 }
 

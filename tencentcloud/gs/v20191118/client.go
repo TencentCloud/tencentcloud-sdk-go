@@ -2011,6 +2011,60 @@ func (c *Client) DisconnectAndroidInstanceWithContext(ctx context.Context, reque
     return
 }
 
+func NewDistributeAndroidInstanceImageToHostsRequest() (request *DistributeAndroidInstanceImageToHostsRequest) {
+    request = &DistributeAndroidInstanceImageToHostsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DistributeAndroidInstanceImageToHosts")
+    
+    
+    return
+}
+
+func NewDistributeAndroidInstanceImageToHostsResponse() (response *DistributeAndroidInstanceImageToHostsResponse) {
+    response = &DistributeAndroidInstanceImageToHostsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DistributeAndroidInstanceImageToHosts
+// 分发安卓实例镜像至宿主机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DistributeAndroidInstanceImageToHosts(request *DistributeAndroidInstanceImageToHostsRequest) (response *DistributeAndroidInstanceImageToHostsResponse, err error) {
+    return c.DistributeAndroidInstanceImageToHostsWithContext(context.Background(), request)
+}
+
+// DistributeAndroidInstanceImageToHosts
+// 分发安卓实例镜像至宿主机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DistributeAndroidInstanceImageToHostsWithContext(ctx context.Context, request *DistributeAndroidInstanceImageToHostsRequest) (response *DistributeAndroidInstanceImageToHostsResponse, err error) {
+    if request == nil {
+        request = NewDistributeAndroidInstanceImageToHostsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DistributeAndroidInstanceImageToHosts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DistributeAndroidInstanceImageToHosts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDistributeAndroidInstanceImageToHostsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDistributeFileToAndroidInstancesRequest() (request *DistributeFileToAndroidInstancesRequest) {
     request = &DistributeFileToAndroidInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

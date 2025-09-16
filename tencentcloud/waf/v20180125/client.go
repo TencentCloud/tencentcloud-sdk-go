@@ -869,6 +869,66 @@ func (c *Client) CreateAreaBanRuleWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateBatchIpAccessControlRequest() (request *CreateBatchIpAccessControlRequest) {
+    request = &CreateBatchIpAccessControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "CreateBatchIpAccessControl")
+    
+    
+    return
+}
+
+func NewCreateBatchIpAccessControlResponse() (response *CreateBatchIpAccessControlResponse) {
+    response = &CreateBatchIpAccessControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBatchIpAccessControl
+// 批量IP黑白名单新增接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBatchIpAccessControl(request *CreateBatchIpAccessControlRequest) (response *CreateBatchIpAccessControlResponse, err error) {
+    return c.CreateBatchIpAccessControlWithContext(context.Background(), request)
+}
+
+// CreateBatchIpAccessControl
+// 批量IP黑白名单新增接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBatchIpAccessControlWithContext(ctx context.Context, request *CreateBatchIpAccessControlRequest) (response *CreateBatchIpAccessControlResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchIpAccessControlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreateBatchIpAccessControl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchIpAccessControl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchIpAccessControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDealsRequest() (request *CreateDealsRequest) {
     request = &CreateDealsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1757,6 +1817,64 @@ func (c *Client) DeleteAttackWhiteRuleWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDeleteAttackWhiteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBatchIpAccessControlRequest() (request *DeleteBatchIpAccessControlRequest) {
+    request = &DeleteBatchIpAccessControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteBatchIpAccessControl")
+    
+    
+    return
+}
+
+func NewDeleteBatchIpAccessControlResponse() (response *DeleteBatchIpAccessControlResponse) {
+    response = &DeleteBatchIpAccessControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBatchIpAccessControl
+// 批量黑白名单删除接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteBatchIpAccessControl(request *DeleteBatchIpAccessControlRequest) (response *DeleteBatchIpAccessControlResponse, err error) {
+    return c.DeleteBatchIpAccessControlWithContext(context.Background(), request)
+}
+
+// DeleteBatchIpAccessControl
+// 批量黑白名单删除接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteBatchIpAccessControlWithContext(ctx context.Context, request *DeleteBatchIpAccessControlRequest) (response *DeleteBatchIpAccessControlResponse, err error) {
+    if request == nil {
+        request = NewDeleteBatchIpAccessControlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteBatchIpAccessControl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBatchIpAccessControl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBatchIpAccessControlResponse()
     err = c.Send(request, response)
     return
 }
@@ -8927,6 +9045,66 @@ func (c *Client) ModifyAttackWhiteRuleWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyAttackWhiteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBatchIpAccessControlRequest() (request *ModifyBatchIpAccessControlRequest) {
+    request = &ModifyBatchIpAccessControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyBatchIpAccessControl")
+    
+    
+    return
+}
+
+func NewModifyBatchIpAccessControlResponse() (response *ModifyBatchIpAccessControlResponse) {
+    response = &ModifyBatchIpAccessControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBatchIpAccessControl
+// 批量IP黑白名单新增接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyBatchIpAccessControl(request *ModifyBatchIpAccessControlRequest) (response *ModifyBatchIpAccessControlResponse, err error) {
+    return c.ModifyBatchIpAccessControlWithContext(context.Background(), request)
+}
+
+// ModifyBatchIpAccessControl
+// 批量IP黑白名单新增接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyBatchIpAccessControlWithContext(ctx context.Context, request *ModifyBatchIpAccessControlRequest) (response *ModifyBatchIpAccessControlResponse, err error) {
+    if request == nil {
+        request = NewModifyBatchIpAccessControlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyBatchIpAccessControl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBatchIpAccessControl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBatchIpAccessControlResponse()
     err = c.Send(request, response)
     return
 }

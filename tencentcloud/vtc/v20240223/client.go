@@ -65,7 +65,7 @@ func NewConfirmVideoTranslateJobResponse() (response *ConfirmVideoTranslateJobRe
 }
 
 // ConfirmVideoTranslateJob
-// 确认视频翻译结果
+// 确认视频转译结果
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDIOPROCESSNOTFINISHED = "FailedOperation.AudioProcessNotFinished"
@@ -79,7 +79,7 @@ func (c *Client) ConfirmVideoTranslateJob(request *ConfirmVideoTranslateJobReque
 }
 
 // ConfirmVideoTranslateJob
-// 确认视频翻译结果
+// 确认视频转译结果
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUDIOPROCESSNOTFINISHED = "FailedOperation.AudioProcessNotFinished"

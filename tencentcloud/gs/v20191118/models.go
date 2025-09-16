@@ -195,6 +195,14 @@ type AndroidInstanceError struct {
 	Error *Error `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
+type AndroidInstanceHostTask struct {
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 宿主机序列号
+	HostSerialNumber *string `json:"HostSerialNumber,omitnil,omitempty" name:"HostSerialNumber"`
+}
+
 type AndroidInstanceImage struct {
 	// 镜像 ID
 	AndroidInstanceImageId *string `json:"AndroidInstanceImageId,omitnil,omitempty" name:"AndroidInstanceImageId"`
@@ -2871,6 +2879,70 @@ func (r *DisconnectAndroidInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DisconnectAndroidInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DistributeAndroidInstanceImageToHostsRequestParams struct {
+	// 宿主机序列号数组
+	HostSerialNumbers []*string `json:"HostSerialNumbers,omitnil,omitempty" name:"HostSerialNumbers"`
+
+	// 实例镜像 ID
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+}
+
+type DistributeAndroidInstanceImageToHostsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 宿主机序列号数组
+	HostSerialNumbers []*string `json:"HostSerialNumbers,omitnil,omitempty" name:"HostSerialNumbers"`
+
+	// 实例镜像 ID
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+}
+
+func (r *DistributeAndroidInstanceImageToHostsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAndroidInstanceImageToHostsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HostSerialNumbers")
+	delete(f, "ImageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeAndroidInstanceImageToHostsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DistributeAndroidInstanceImageToHostsResponseParams struct {
+	// 任务集合
+	TaskSet []*AndroidInstanceHostTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DistributeAndroidInstanceImageToHostsResponse struct {
+	*tchttp.BaseResponse
+	Response *DistributeAndroidInstanceImageToHostsResponseParams `json:"Response"`
+}
+
+func (r *DistributeAndroidInstanceImageToHostsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAndroidInstanceImageToHostsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
