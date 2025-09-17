@@ -3873,7 +3873,7 @@ func NewDescribeSecondLevelBackupInfoResponse() (response *DescribeSecondLevelBa
 }
 
 // DescribeSecondLevelBackupInfo
-// 查询实例秒级备份信息
+// 本接口（DescribeSecondLevelBackupInfo）用于查询实例秒级备份信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3886,7 +3886,7 @@ func (c *Client) DescribeSecondLevelBackupInfo(request *DescribeSecondLevelBacku
 }
 
 // DescribeSecondLevelBackupInfo
-// 查询实例秒级备份信息
+// 本接口（DescribeSecondLevelBackupInfo）用于查询实例秒级备份信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

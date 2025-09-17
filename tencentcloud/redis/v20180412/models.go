@@ -187,7 +187,9 @@ type ApplyParamsTemplateRequestParams struct {
 	// 实例 ID 列表，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 应用的参数模板ID，请通过接口[DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748)的返回参数 **TemplateId** 获取参数模板 ID。
+	// 应用的参数模板ID。
+	// - 请通过接口 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748) 的返回参数 **TemplateId** 获取参数模板 ID。
+	// - 仅当参数模板版本与目标实例的架构版本一致时，操作才能成功执行。版本不匹配将触发执行错误。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -197,7 +199,9 @@ type ApplyParamsTemplateRequest struct {
 	// 实例 ID 列表，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 应用的参数模板ID，请通过接口[DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748)的返回参数 **TemplateId** 获取参数模板 ID。
+	// 应用的参数模板ID。
+	// - 请通过接口 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748) 的返回参数 **TemplateId** 获取参数模板 ID。
+	// - 仅当参数模板版本与目标实例的架构版本一致时，操作才能成功执行。版本不匹配将触发执行错误。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -2923,10 +2927,14 @@ type DescribeInstanceEventsRequestParams struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 输出每页显示事件的数量，默认：10，最大100。
+	// 输出每页显示事件的数量。
+	// - 默认值：10。
+	// - 取值范围：[1,100]。
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。默认：1。
+	// 配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。
+	// - 默认值：1。
+	// - 取值范围：大于0 的正整数。
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
 	// 事件当前状态。
@@ -2959,10 +2967,14 @@ type DescribeInstanceEventsRequest struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 输出每页显示事件的数量，默认：10，最大100。
+	// 输出每页显示事件的数量。
+	// - 默认值：10。
+	// - 取值范围：[1,100]。
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。默认：1。
+	// 配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。
+	// - 默认值：1。
+	// - 取值范围：大于0 的正整数。
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
 	// 事件当前状态。
@@ -5405,14 +5417,14 @@ func (r *DescribeReplicationGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSSLStatusRequestParams struct {
-	// 实例 ID。
+	// 实例 ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeSSLStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例 ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -5480,20 +5492,24 @@ func (r *DescribeSSLStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecondLevelBackupInfoRequestParams struct {
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录Redis控制台在实例列表复制实例 ID。
+	// 指定实例 ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 秒级备份时间戳，7天内
+	// 秒级备份时间戳。
+	// - 设置范围：支持7天内任意秒级时间点。
+	// -  时间戳格式：Unix 时间戳。
 	BackupTimestamp *int64 `json:"BackupTimestamp,omitnil,omitempty" name:"BackupTimestamp"`
 }
 
 type DescribeSecondLevelBackupInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录Redis控制台在实例列表复制实例 ID。
+	// 指定实例 ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 秒级备份时间戳，7天内
+	// 秒级备份时间戳。
+	// - 设置范围：支持7天内任意秒级时间点。
+	// -  时间戳格式：Unix 时间戳。
 	BackupTimestamp *int64 `json:"BackupTimestamp,omitnil,omitempty" name:"BackupTimestamp"`
 }
 
@@ -5519,17 +5535,17 @@ func (r *DescribeSecondLevelBackupInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecondLevelBackupInfoResponseParams struct {
-	// 备份记录ID 
+	// 备份记录ID。
 	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
-	// 备份时间戳
+	// 备份时间戳。
 	BackupTimestamp *int64 `json:"BackupTimestamp,omitnil,omitempty" name:"BackupTimestamp"`
 
-	// 备份不存在的时间戳范围
+	// 备份不存在的时间戳范围。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MissingTimestamps []*SecondLevelBackupMissingTimestamps `json:"MissingTimestamps,omitnil,omitempty" name:"MissingTimestamps"`
 
-	// 实例开启秒级备份的时间戳
+	// 实例开启秒级备份的时间戳。
 	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

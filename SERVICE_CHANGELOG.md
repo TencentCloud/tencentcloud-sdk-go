@@ -1,27 +1,10 @@
-# Release v1.1.28
+# Release v1.1.29
 
-## 腾讯混元生3D(ai3d) 版本：2025-05-13
+## 腾讯云智能体开发平台(lke) 版本：2023-11-30
 
-### 第 3 次发布
+### 第 62 次发布
 
-发布时间：2025-09-17 01:07:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [QueryHunyuanTo3DRapidJob](https://cloud.tencent.com/document/api/1804/123464)
-* [SubmitHunyuanTo3DRapidJob](https://cloud.tencent.com/document/api/1804/123463)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 136 次发布
-
-发布时间：2025-09-17 01:22:54
+发布时间：2025-09-18 01:52:53
 
 本次发布包含了以下内容：
 
@@ -29,45 +12,29 @@
 
 修改接口：
 
-* [CreateTargetGroup](https://cloud.tencent.com/document/api/214/40559)
+* [ListUnsatisfiedReply](https://cloud.tencent.com/document/api/1759/105026)
 
-	* 新增入参：IpVersion
+	* 新增入参：Status
 
 
 修改数据结构：
 
-* [TargetGroupInfo](https://cloud.tencent.com/document/api/214/30694#TargetGroupInfo)
+* [RejectedQuestion](https://cloud.tencent.com/document/api/1759/105104#RejectedQuestion)
 
-	* 新增成员：IpVersion
+	* 新增成员：Operator
 
+* [UnsatisfiedReply](https://cloud.tencent.com/document/api/1759/105104#UnsatisfiedReply)
 
-
-
-## 云游戏(gs) 版本：2019-11-18
-
-### 第 55 次发布
-
-发布时间：2025-09-17 01:40:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DistributeAndroidInstanceImageToHosts](https://cloud.tencent.com/document/api/1162/123465)
-
-新增数据结构：
-
-* [AndroidInstanceHostTask](https://cloud.tencent.com/document/api/1162/40743#AndroidInstanceHostTask)
+	* 新增成员：Status, CreateTime, UpdateTime, Operator
 
 
 
-## 网关负载均衡(gwlb) 版本：2024-09-06
 
-### 第 5 次发布
+## 媒体处理(mps) 版本：2019-06-12
 
-发布时间：2025-09-17 01:40:40
+### 第 143 次发布
+
+发布时间：2025-09-18 02:03:11
 
 本次发布包含了以下内容：
 
@@ -75,59 +42,29 @@
 
 修改接口：
 
-* [CreateTargetGroup](https://cloud.tencent.com/document/api/1782/111697)
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/862/37614)
 
-	* 新增入参：ForwardingMode, TcpIdleConnectTimeout, OthersIdleConnectTimeout, RescheduleUnbindRs, RescheduleUnbindRsStartTime, RescheduleUnhealthy, RescheduleUnhealthyStartTime
-
-* [ModifyTargetGroupAttribute](https://cloud.tencent.com/document/api/1782/111689)
-
-	* 新增入参：TcpIdleConnectTimeout, OthersIdleConnectTimeout, RescheduleUnbindRs, RescheduleUnbindRsStartTime, RescheduleUnhealthy, RescheduleUnhealthyStartTime
-
-
-
-
-## 知识引擎原子能力(lkeap) 版本：2024-05-22
-
-### 第 17 次发布
-
-发布时间：2025-09-17 01:55:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ChatCompletions](https://cloud.tencent.com/document/api/1772/115963)
-
-	* 新增入参：Thinking
+	* 新增出参：ExtractBlindWatermarkTask
 
 
 新增数据结构：
 
-* [Thinking](https://cloud.tencent.com/document/api/1772/115364#Thinking)
+* [AiAnalysisTaskDubbingInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDubbingInput)
+* [AiAnalysisTaskDubbingOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDubbingOutput)
+* [AiAnalysisTaskDubbingResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDubbingResult)
+* [ExtractBlindWatermarkTask](https://cloud.tencent.com/document/api/862/37615#ExtractBlindWatermarkTask)
+* [ExtractBlindWatermarkTaskConfig](https://cloud.tencent.com/document/api/862/37615#ExtractBlindWatermarkTaskConfig)
 
+修改数据结构：
 
+* [AiAnalysisResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisResult)
 
-## Web 应用防火墙(waf) 版本：2018-01-25
+	* 新增成员：DubbingTask
 
-### 第 127 次发布
+* [AiAnalysisTaskDelLogoOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDelLogoOutput)
 
-发布时间：2025-09-17 03:22:07
+	* 新增成员：VoiceClonedVideo, VoiceClonedMarkFile
 
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateBatchIpAccessControl](https://cloud.tencent.com/document/api/627/123468)
-* [DeleteBatchIpAccessControl](https://cloud.tencent.com/document/api/627/123467)
-* [ModifyBatchIpAccessControl](https://cloud.tencent.com/document/api/627/123466)
-
-新增数据结构：
-
-* [BatchDomainResult](https://cloud.tencent.com/document/api/627/53609#BatchDomainResult)
 
 
 

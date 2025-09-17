@@ -16000,7 +16000,7 @@ type RecipientComponentInfo struct {
 }
 
 type RegisterInfo struct {
-	// <font color="red">字段不再使用</font>，法人姓名
+	// 法人姓名
 	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
 
 	// 社会统一信用代码
@@ -16009,7 +16009,7 @@ type RegisterInfo struct {
 	// Deprecated: Uscc is deprecated.
 	Uscc *string `json:"Uscc,omitnil,omitempty" name:"Uscc"`
 
-	// <font color="red">字段不再使用</font>，社会统一信用代码
+	// 社会统一信用代码
 	UnifiedSocialCreditCode *string `json:"UnifiedSocialCreditCode,omitnil,omitempty" name:"UnifiedSocialCreditCode"`
 
 	// 组织机构企业注册地址。 请确认该企业注册地址与企业营业执照中注册的地址一致。

@@ -447,6 +447,7 @@ type AiAnalysisResult struct {
 	// <li>Highlight：智能精彩集锦</li>
 	// <li>DeLogo：智能擦除</li>
 	// <li>Description：大模型摘要</li>
+	// <li>Dubbing：智能译制</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
@@ -488,6 +489,10 @@ type AiAnalysisResult struct {
 	// 视频内容分析横转竖任务的查询结果，当任务类型为 HorizontalToVertical 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HorizontalToVerticalTask *AiAnalysisTaskHorizontalToVerticalResult `json:"HorizontalToVerticalTask,omitnil,omitempty" name:"HorizontalToVerticalTask"`
+
+	// 视频内容分析译制任务的查询结果，当任务类型为 Dubbing 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DubbingTask *AiAnalysisTaskDubbingResult `json:"DubbingTask,omitnil,omitempty" name:"DubbingTask"`
 }
 
 type AiAnalysisTaskClassificationInput struct {
@@ -576,6 +581,14 @@ type AiAnalysisTaskDelLogoOutput struct {
 	// 擦除的字幕位置。**注意**：仅对字幕提取且开启返回字幕位置时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitlePos *SubtitlePosition `json:"SubtitlePos,omitnil,omitempty" name:"SubtitlePos"`
+
+	// 音色克隆后的视频文件地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceClonedVideo *string `json:"VoiceClonedVideo,omitnil,omitempty" name:"VoiceClonedVideo"`
+
+	// 音色克隆的标注文件地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceClonedMarkFile *string `json:"VoiceClonedMarkFile,omitnil,omitempty" name:"VoiceClonedMarkFile"`
 }
 
 type AiAnalysisTaskDelLogoResult struct {
@@ -622,6 +635,40 @@ type AiAnalysisTaskDescriptionResult struct {
 	// 智能描述任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskDescriptionOutput `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
+type AiAnalysisTaskDubbingInput struct {
+	// 视频译制模板 ID。
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type AiAnalysisTaskDubbingOutput struct {
+	// 译制视频路径。
+	VideoPath *string `json:"VideoPath,omitnil,omitempty" name:"VideoPath"`
+
+	// 标记文件路径
+	SpeakerPath *string `json:"SpeakerPath,omitnil,omitempty" name:"SpeakerPath"`
+
+	// 译制视频存储位置。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+}
+
+type AiAnalysisTaskDubbingResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 智能译制任务输入。
+	Input *AiAnalysisTaskDubbingInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 智能译制任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskDubbingOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }
 
 type AiAnalysisTaskFrameTagInput struct {
@@ -2735,9 +2782,8 @@ type BeautyFilterItemConfig struct {
 	// 类型名称。取值如下：
 	// 
 	// <li>Dongjing：东京</li>
-	// <li>QingJiaopian：轻胶片</li>
+	// <li>Qingjiaopian：轻胶片</li>
 	// <li>Meiwei：美味</li>
-	// 
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 能力配置开关，可选值：
@@ -2746,7 +2792,7 @@ type BeautyFilterItemConfig struct {
 	// 默认值：ON。
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
-	// 效果强度，值范围：[0, 100]。
+	// 效果强度，值范围：[-100, 100]。
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -10929,6 +10975,9 @@ type DescribeTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveStreamProcessTask *LiveStreamProcessTask `json:"LiveStreamProcessTask,omitnil,omitempty" name:"LiveStreamProcessTask"`
 
+	// 提取数字水印任务信息，仅当 TaskType 为 ExtractBlindWatermark，该字段有值。
+	ExtractBlindWatermarkTask *ExtractBlindWatermarkTask `json:"ExtractBlindWatermarkTask,omitnil,omitempty" name:"ExtractBlindWatermarkTask"`
+
 	// 任务的事件通知信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
@@ -12434,6 +12483,45 @@ type ExtractBlindWatermarkConfig struct {
 	// 默认值：ON。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type ExtractBlindWatermarkTask struct {
+	// 媒体处理任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务流状态，取值：
+	// <li>WAITING：等待中；</li>
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，0 表示成功，其他值表示失败。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 媒体处理的目标文件信息。
+	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li> <li>blind-ab：ab版权数字水印；</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 标记是否检测到水印，如果该参数为true， Result字段将返回水印提取结果，如果该参数为false，Result字段不会返回。
+	IsDetected *bool `json:"IsDetected,omitnil,omitempty" name:"IsDetected"`
+
+	// 提取出的数字水印内容，当没有检测到水印时该字段不会返回。
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 提取数字水印配置。
+	ExtractBlindWatermarkConfig *ExtractBlindWatermarkTaskConfig `json:"ExtractBlindWatermarkConfig,omitnil,omitempty" name:"ExtractBlindWatermarkConfig"`
+}
+
+type ExtractBlindWatermarkTaskConfig struct {
+	// 当提取数字水印类型为blind-abseq时有效，用于指定输入视频的切片时长，单位：毫秒。
+	// 如果不填默认切片时长为5秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentDuration *int64 `json:"SegmentDuration,omitnil,omitempty" name:"SegmentDuration"`
 }
 
 type FaceConfigureInfo struct {
