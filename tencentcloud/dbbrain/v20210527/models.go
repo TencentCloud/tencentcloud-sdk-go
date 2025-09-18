@@ -3591,6 +3591,84 @@ func (r *DescribeHealthScoreResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHealthScoreTimeSeriesRequestParams struct {
+	// 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+type DescribeHealthScoreTimeSeriesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+func (r *DescribeHealthScoreTimeSeriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHealthScoreTimeSeriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHealthScoreTimeSeriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHealthScoreTimeSeriesResponseParams struct {
+	// 健康得分趋势数据
+	Data *HealthScoreTimeSeriesData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHealthScoreTimeSeriesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHealthScoreTimeSeriesResponseParams `json:"Response"`
+}
+
+func (r *DescribeHealthScoreTimeSeriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHealthScoreTimeSeriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIndexRecommendAggregationSlowLogsRequestParams struct {
 	// 服务产品类型，支持值包括："mongodb" - 云数据库 。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
@@ -4888,6 +4966,91 @@ func (r *DescribeRedisTopBigKeysResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRedisTopBigKeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisTopCostCommandsRequestParams struct {
+	// 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 默认前20条
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeRedisTopCostCommandsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 默认前20条
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRedisTopCostCommandsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisTopCostCommandsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisTopCostCommandsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisTopCostCommandsResponseParams struct {
+	// 命令列表
+	TopCostCmdList []*RedisCostCmd `json:"TopCostCmdList,omitnil,omitempty" name:"TopCostCmdList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedisTopCostCommandsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisTopCostCommandsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisTopCostCommandsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisTopCostCommandsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6619,6 +6782,29 @@ type HealthScoreInfo struct {
 	HealthLevel *string `json:"HealthLevel,omitnil,omitempty" name:"HealthLevel"`
 }
 
+type HealthScoreTimeSeriesData struct {
+	// 平均得分
+	Avg *float64 `json:"Avg,omitnil,omitempty" name:"Avg"`
+
+	// 健康状态
+	// 1-health
+	// 2-warning
+	// 3-critical
+	HealthStatus *uint64 `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
+
+	// 指标名称
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// 得分序列
+	Series []*uint64 `json:"Series,omitnil,omitempty" name:"Series"`
+
+	// 时间序列，单位：毫秒数
+	Timestamp []*uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 单位
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+}
+
 type HealthStatus struct {
 	// 健康分数，满分100。
 	HealthScore *int64 `json:"HealthScore,omitnil,omitempty" name:"HealthScore"`
@@ -7714,6 +7900,14 @@ type RedisCmdInfo struct {
 
 	// 命令次数
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type RedisCostCmd struct {
+	// 命令
+	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
+
+	// 最大cost
+	MaxCost *uint64 `json:"MaxCost,omitnil,omitempty" name:"MaxCost"`
 }
 
 type RedisInstanceConf struct {

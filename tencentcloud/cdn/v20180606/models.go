@@ -68,6 +68,9 @@ type AddCLSTopicDomainsRequestParams struct {
 
 	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// 是否继承域名标签, 默认保留上一次更改的值
+	InheritDomainTags *bool `json:"InheritDomainTags,omitnil,omitempty" name:"InheritDomainTags"`
 }
 
 type AddCLSTopicDomainsRequest struct {
@@ -84,6 +87,9 @@ type AddCLSTopicDomainsRequest struct {
 
 	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// 是否继承域名标签, 默认保留上一次更改的值
+	InheritDomainTags *bool `json:"InheritDomainTags,omitnil,omitempty" name:"InheritDomainTags"`
 }
 
 func (r *AddCLSTopicDomainsRequest) ToJsonString() string {
@@ -102,6 +108,7 @@ func (r *AddCLSTopicDomainsRequest) FromJsonString(s string) error {
 	delete(f, "TopicId")
 	delete(f, "DomainAreaConfigs")
 	delete(f, "Channel")
+	delete(f, "InheritDomainTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCLSTopicDomainsRequest has unknown keys!", "")
 	}
@@ -1456,6 +1463,9 @@ type CreateClsLogTopicRequestParams struct {
 
 	// 域名区域信息
 	DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitnil,omitempty" name:"DomainAreaConfigs"`
+
+	// 是否继承域名标签，默认为false
+	InheritDomainTags *bool `json:"InheritDomainTags,omitnil,omitempty" name:"InheritDomainTags"`
 }
 
 type CreateClsLogTopicRequest struct {
@@ -1472,6 +1482,9 @@ type CreateClsLogTopicRequest struct {
 
 	// 域名区域信息
 	DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitnil,omitempty" name:"DomainAreaConfigs"`
+
+	// 是否继承域名标签，默认为false
+	InheritDomainTags *bool `json:"InheritDomainTags,omitnil,omitempty" name:"InheritDomainTags"`
 }
 
 func (r *CreateClsLogTopicRequest) ToJsonString() string {
@@ -1490,6 +1503,7 @@ func (r *CreateClsLogTopicRequest) FromJsonString(s string) error {
 	delete(f, "LogsetId")
 	delete(f, "Channel")
 	delete(f, "DomainAreaConfigs")
+	delete(f, "InheritDomainTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClsLogTopicRequest has unknown keys!", "")
 	}
@@ -3219,10 +3233,7 @@ type DescribeIpStatusRequestParams struct {
 	// 不填充情况下，默认返回边缘节点信息
 	Layer *string `json:"Layer,omitnil,omitempty" name:"Layer"`
 
-	// 查询区域：
-	// mainland: 国内节点
-	// overseas: 海外节点
-	// global: 全球节点
+	// 查询区域：mainland: 中国境内节点overseas: 海外节点global: 全球节点
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
 	// 是否以IP段的格式返回。
@@ -3247,10 +3258,7 @@ type DescribeIpStatusRequest struct {
 	// 不填充情况下，默认返回边缘节点信息
 	Layer *string `json:"Layer,omitnil,omitempty" name:"Layer"`
 
-	// 查询区域：
-	// mainland: 国内节点
-	// overseas: 海外节点
-	// global: 全球节点
+	// 查询区域：mainland: 中国境内节点overseas: 海外节点global: 全球节点
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
 	// 是否以IP段的格式返回。
@@ -5872,7 +5880,7 @@ type IpFilter struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// IP 黑白名单分路径配置，白名单功能。黑白名单 IP 总数不能超过 1000 个。
+	// IP 黑白名单分路径配置。黑白名单 IP 总数不能超过 1000 个。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterRules []*IpFilterPathRule `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 
@@ -6136,6 +6144,9 @@ type ListClsTopicDomainsResponseParams struct {
 
 	// 日志主题最近更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 是否继承域名标签
+	InheritDomainTags *bool `json:"InheritDomainTags,omitnil,omitempty" name:"InheritDomainTags"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6707,6 +6718,9 @@ type ManageClsTopicDomainsRequestParams struct {
 
 	// 域名区域配置，注意：如果此字段为空，则表示解绑对应主题下的所有域名
 	DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitnil,omitempty" name:"DomainAreaConfigs"`
+
+	// 是否继承域名标签
+	InheritDomainTags *bool `json:"InheritDomainTags,omitnil,omitempty" name:"InheritDomainTags"`
 }
 
 type ManageClsTopicDomainsRequest struct {
@@ -6723,6 +6737,9 @@ type ManageClsTopicDomainsRequest struct {
 
 	// 域名区域配置，注意：如果此字段为空，则表示解绑对应主题下的所有域名
 	DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitnil,omitempty" name:"DomainAreaConfigs"`
+
+	// 是否继承域名标签
+	InheritDomainTags *bool `json:"InheritDomainTags,omitnil,omitempty" name:"InheritDomainTags"`
 }
 
 func (r *ManageClsTopicDomainsRequest) ToJsonString() string {
@@ -6741,6 +6758,7 @@ func (r *ManageClsTopicDomainsRequest) FromJsonString(s string) error {
 	delete(f, "TopicId")
 	delete(f, "Channel")
 	delete(f, "DomainAreaConfigs")
+	delete(f, "InheritDomainTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ManageClsTopicDomainsRequest has unknown keys!", "")
 	}
@@ -7050,7 +7068,6 @@ type Origin struct {
 	// 以下备源源站类型尚未全量支持，需要申请试用：
 	// ipv6_domain: 源站列表为多个 IPv6 地址以及域名
 	// ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
-	// ipv6_domain: 源站列表为多个 IPv6 地址以及域名
 	// ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupOriginType *string `json:"BackupOriginType,omitnil,omitempty" name:"BackupOriginType"`

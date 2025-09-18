@@ -2929,6 +2929,80 @@ func (c *Client) DescribeHealthScoreWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeHealthScoreTimeSeriesRequest() (request *DescribeHealthScoreTimeSeriesRequest) {
+    request = &DescribeHealthScoreTimeSeriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeHealthScoreTimeSeries")
+    
+    
+    return
+}
+
+func NewDescribeHealthScoreTimeSeriesResponse() (response *DescribeHealthScoreTimeSeriesResponse) {
+    response = &DescribeHealthScoreTimeSeriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHealthScoreTimeSeries
+// 获取指定时间段内的健康得分趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeHealthScoreTimeSeries(request *DescribeHealthScoreTimeSeriesRequest) (response *DescribeHealthScoreTimeSeriesResponse, err error) {
+    return c.DescribeHealthScoreTimeSeriesWithContext(context.Background(), request)
+}
+
+// DescribeHealthScoreTimeSeries
+// 获取指定时间段内的健康得分趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeHealthScoreTimeSeriesWithContext(ctx context.Context, request *DescribeHealthScoreTimeSeriesRequest) (response *DescribeHealthScoreTimeSeriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeHealthScoreTimeSeriesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeHealthScoreTimeSeries")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHealthScoreTimeSeries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHealthScoreTimeSeriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIndexRecommendAggregationSlowLogsRequest() (request *DescribeIndexRecommendAggregationSlowLogsRequest) {
     request = &DescribeIndexRecommendAggregationSlowLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3981,6 +4055,80 @@ func (c *Client) DescribeRedisTopBigKeysWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeRedisTopBigKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRedisTopCostCommandsRequest() (request *DescribeRedisTopCostCommandsRequest) {
+    request = &DescribeRedisTopCostCommandsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeRedisTopCostCommands")
+    
+    
+    return
+}
+
+func NewDescribeRedisTopCostCommandsResponse() (response *DescribeRedisTopCostCommandsResponse) {
+    response = &DescribeRedisTopCostCommandsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedisTopCostCommands
+// 获取指定时间段内Redis 访问命令 cost top N
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisTopCostCommands(request *DescribeRedisTopCostCommandsRequest) (response *DescribeRedisTopCostCommandsResponse, err error) {
+    return c.DescribeRedisTopCostCommandsWithContext(context.Background(), request)
+}
+
+// DescribeRedisTopCostCommands
+// 获取指定时间段内Redis 访问命令 cost top N
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisTopCostCommandsWithContext(ctx context.Context, request *DescribeRedisTopCostCommandsRequest) (response *DescribeRedisTopCostCommandsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisTopCostCommandsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeRedisTopCostCommands")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisTopCostCommands require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisTopCostCommandsResponse()
     err = c.Send(request, response)
     return
 }

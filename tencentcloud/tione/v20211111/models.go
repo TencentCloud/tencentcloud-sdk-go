@@ -990,7 +990,7 @@ type CreateNotebookRequestParams struct {
 	// 标签配置
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 数据配置，只支持WEDATA_HDFS存储类型
+	// 数据存储挂载配置
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
 	// 镜像信息
@@ -1074,7 +1074,7 @@ type CreateNotebookRequest struct {
 	// 标签配置
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 数据配置，只支持WEDATA_HDFS存储类型
+	// 数据存储挂载配置
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
 	// 镜像信息

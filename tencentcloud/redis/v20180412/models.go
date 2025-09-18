@@ -641,14 +641,14 @@ func (r *ChangeReplicaToMasterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CleanUpInstanceRequestParams struct {
-	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+	// 实例 ID，请登录 [Redis 控制台回收站](https://console.cloud.tencent.com/redis/recycle)的实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type CleanUpInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+	// 实例 ID，请登录 [Redis 控制台回收站](https://console.cloud.tencent.com/redis/recycle)的实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -790,7 +790,7 @@ type CloneInstancesRequestParams struct {
 	// 购买实例时长。<ul><li>单位：月。</li><li>付费方式选择包年包月计费时，取值范围为[1,2,3,4,5,6,7,8,9,10,11,12,24,36,48,60]。</li><li>付费方式选择按量计费时，设置为1。</li></ul>
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 安全组ID。请登录控制台，在<b>安全组</b>页面获取安全组 ID 信息。
+	// 安全组ID。请通过 [DescribeInstanceSecurityGroup](https://cloud.tencent.com/document/product/239/34447) 接口获取实例的安全组 ID。
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitnil,omitempty" name:"SecurityGroupIdList"`
 
 	// 克隆实例使用的备份ID。请通过接口[DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011)获取备份ID。
@@ -862,7 +862,7 @@ type CloneInstancesRequest struct {
 	// 购买实例时长。<ul><li>单位：月。</li><li>付费方式选择包年包月计费时，取值范围为[1,2,3,4,5,6,7,8,9,10,11,12,24,36,48,60]。</li><li>付费方式选择按量计费时，设置为1。</li></ul>
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 安全组ID。请登录控制台，在<b>安全组</b>页面获取安全组 ID 信息。
+	// 安全组ID。请通过 [DescribeInstanceSecurityGroup](https://cloud.tencent.com/document/product/239/34447) 接口获取实例的安全组 ID。
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitnil,omitempty" name:"SecurityGroupIdList"`
 
 	// 克隆实例使用的备份ID。请通过接口[DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011)获取备份ID。
@@ -1626,6 +1626,9 @@ func (r *CreateReplicationGroupRequest) FromJsonString(s string) error {
 type CreateReplicationGroupResponseParams struct {
 	// 异步流程ID。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 复制组string型id
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4067,26 +4070,26 @@ func (r *DescribeInstanceSpecBandwidthResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceSupportFeatureRequestParams struct {
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
-	// 示例值：crs-asdasdas
+	// 指定实例 ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 功能特性名称
-	// - read-local-node-only 就近接入功能
-	// - multi-account 多账号功能
+	// 支持查询的功能特性如下所示。
+	// - read-local-node-only：就近接入。
+	// - multi-account：多账号管理。
+	// - auto-failback：故障恢复场景，主节点是否开启自动回切。
 	FeatureName *string `json:"FeatureName,omitnil,omitempty" name:"FeatureName"`
 }
 
 type DescribeInstanceSupportFeatureRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
-	// 示例值：crs-asdasdas
+	// 指定实例 ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 功能特性名称
-	// - read-local-node-only 就近接入功能
-	// - multi-account 多账号功能
+	// 支持查询的功能特性如下所示。
+	// - read-local-node-only：就近接入。
+	// - multi-account：多账号管理。
+	// - auto-failback：故障恢复场景，主节点是否开启自动回切。
 	FeatureName *string `json:"FeatureName,omitnil,omitempty" name:"FeatureName"`
 }
 
@@ -4985,13 +4988,13 @@ type DescribeProxySlowLogRequestParams struct {
 	// 慢查询的结束时间，查询时间最大跨度30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 慢查询阈值，单位：毫秒。
+	// 慢查询阈值。取值为大于0 的正整数。单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 每页输出的任务列表大小，默认为 20，最多输出100条。
+	// 每页输出的任务列表大小。默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，取Limit整数倍，计算公式：offset=limit*(页码-1)。
+	// 分页偏移量。默认为0。取值为 Limit 整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5007,13 +5010,13 @@ type DescribeProxySlowLogRequest struct {
 	// 慢查询的结束时间，查询时间最大跨度30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 慢查询阈值，单位：毫秒。
+	// 慢查询阈值。取值为大于0 的正整数。单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 每页输出的任务列表大小，默认为 20，最多输出100条。
+	// 每页输出的任务列表大小。默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，取Limit整数倍，计算公式：offset=limit*(页码-1)。
+	// 分页偏移量。默认为0。取值为 Limit 整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5336,7 +5339,7 @@ func (r *DescribeReplicationGroupInstanceResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeReplicationGroupRequestParams struct {
-	// 每页输出实例列表的大小，参数默认值20。
+	// 每页输出实例列表的大小。取值为大于0 的正整数，默认为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
@@ -5352,7 +5355,7 @@ type DescribeReplicationGroupRequestParams struct {
 type DescribeReplicationGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页输出实例列表的大小，参数默认值20。
+	// 每页输出实例列表的大小。取值为大于0 的正整数，默认为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
@@ -5579,13 +5582,13 @@ type DescribeSlowLogRequestParams struct {
 	// 预查询慢日志的结束时间，查询时间最大跨度30天
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 慢查询平均执行时间阈值，单位：毫秒。
+	// 慢查询平均执行时间阈值。取值为大于0 的正整数。单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 每个页面展示的慢查询条数，默认值为20，最大100。
+	// 每个页面展示的慢查询条数，默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 慢查询条数的偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
+	// 慢查询条数的偏移量。默认为0。取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 节点所属角色。
@@ -5606,13 +5609,13 @@ type DescribeSlowLogRequest struct {
 	// 预查询慢日志的结束时间，查询时间最大跨度30天
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 慢查询平均执行时间阈值，单位：毫秒。
+	// 慢查询平均执行时间阈值。取值为大于0 的正整数。单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 每个页面展示的慢查询条数，默认值为20，最大100。
+	// 每个页面展示的慢查询条数，默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 慢查询条数的偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
+	// 慢查询条数的偏移量。默认为0。取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 节点所属角色。
@@ -6025,13 +6028,13 @@ type DescribeTendisSlowLogRequestParams struct {
 	// 结束时间：2019-09-09 12:12:41，查询时间最大跨度30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 慢查询阈值（毫秒）
+	// 慢查询阈值，取值为大于0的正整数，单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 页面大小：默认20，最大100。
+	// 页面大小。默认为20，最小为1，最大为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
+	// 分页偏移量。默认为0，取值为 Limit 整数倍，计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -6047,13 +6050,13 @@ type DescribeTendisSlowLogRequest struct {
 	// 结束时间：2019-09-09 12:12:41，查询时间最大跨度30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 慢查询阈值（毫秒）
+	// 慢查询阈值，取值为大于0的正整数，单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitnil,omitempty" name:"MinQueryTime"`
 
-	// 页面大小：默认20，最大100。
+	// 页面大小。默认为20，最小为1，最大为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
+	// 分页偏移量。默认为0，取值为 Limit 整数倍，计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -6111,14 +6114,14 @@ func (r *DescribeTendisSlowLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DestroyPostpaidInstanceRequestParams struct {
-	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制按量计费的实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DestroyPostpaidInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制按量计费的实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -6355,8 +6358,7 @@ type EnableReplicaReadonlyRequestParams struct {
 
 	// 只读路由策略。
 	// - master：表示只读路由至主节点。
-	// - replication：表示只读路由至从节点。
-	// - 默认策略：表示写主节点，读从节点。
+	// - replication：表示只读路由至从节点。默认值为：replication。
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
 }
 
@@ -6368,8 +6370,7 @@ type EnableReplicaReadonlyRequest struct {
 
 	// 只读路由策略。
 	// - master：表示只读路由至主节点。
-	// - replication：表示只读路由至从节点。
-	// - 默认策略：表示写主节点，读从节点。
+	// - replication：表示只读路由至从节点。默认值为：replication。
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
 }
 
@@ -6683,20 +6684,24 @@ func (r *InquiryPriceCreateInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceRenewInstanceRequestParams struct {
-	// 包年包月实例的购买时长，单位：月。
+	// 包年包月实例的购买时长。
+	// - 单位：月。
+	// - 取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis)在实例列表复制包年包月实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type InquiryPriceRenewInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 包年包月实例的购买时长，单位：月。
+	// 包年包月实例的购买时长。
+	// - 单位：月。
+	// - 取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis)在实例列表复制包年包月实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -6765,7 +6770,9 @@ type InquiryPriceUpgradeInstanceRequestParams struct {
 	// 分片大小，单位：MB。
 	MemSize *uint64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
-	// 分片数量，Redis 2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
+	// 分片数量。
+	// - 实例为标准架构，RedisShardNum 默认为1。
+	// - Redis 2.8主从版、CKV主从版和 Redis 2.8单机版不需要填写。
 	RedisShardNum *uint64 `json:"RedisShardNum,omitnil,omitempty" name:"RedisShardNum"`
 
 	// 副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
@@ -6781,7 +6788,9 @@ type InquiryPriceUpgradeInstanceRequest struct {
 	// 分片大小，单位：MB。
 	MemSize *uint64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
-	// 分片数量，Redis 2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
+	// 分片数量。
+	// - 实例为标准架构，RedisShardNum 默认为1。
+	// - Redis 2.8主从版、CKV主从版和 Redis 2.8单机版不需要填写。
 	RedisShardNum *uint64 `json:"RedisShardNum,omitnil,omitempty" name:"RedisShardNum"`
 
 	// 副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
@@ -7074,6 +7083,12 @@ type InstanceProxySlowlogDetail struct {
 
 	// 执行时间。
 	ExecuteTime *string `json:"ExecuteTime,omitnil,omitempty" name:"ExecuteTime"`
+
+	// 收客户端请求时长(ms)
+	RecvClientEnd *int64 `json:"RecvClientEnd,omitnil,omitempty" name:"RecvClientEnd"`
+
+	// 发送客户端请求时长(ms)
+	SendClientEnd *int64 `json:"SendClientEnd,omitnil,omitempty" name:"SendClientEnd"`
 }
 
 type InstanceSecurityGroupDetail struct {
@@ -8725,7 +8740,7 @@ type ModifyInstanceRequestParams struct {
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。每次请求的实例数量的上限为10。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 实例的新名称。
+	// 实例的新名称。名称只支持长度为60个字符的中文、英文、数字、下划线_、分隔符-。
 	InstanceNames []*string `json:"InstanceNames,omitnil,omitempty" name:"InstanceNames"`
 
 	// 项目 ID，请登录[Redis控制台的项目管理](https://console.cloud.tencent.com/project)页面，在**项目名称**中复制项目 ID。
@@ -8769,7 +8784,7 @@ type ModifyInstanceRequest struct {
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。每次请求的实例数量的上限为10。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 实例的新名称。
+	// 实例的新名称。名称只支持长度为60个字符的中文、英文、数字、下划线_、分隔符-。
 	InstanceNames []*string `json:"InstanceNames,omitnil,omitempty" name:"InstanceNames"`
 
 	// 项目 ID，请登录[Redis控制台的项目管理](https://console.cloud.tencent.com/project)页面，在**项目名称**中复制项目 ID。
@@ -8852,6 +8867,7 @@ type ModifyMaintenanceWindowRequestParams struct {
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 维护时间窗结束时间，如：19:00。
+	// **说明：**维护时间窗时长，当前支持：30分钟、1小时、1.5小时、2小时、3小时。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -8865,6 +8881,7 @@ type ModifyMaintenanceWindowRequest struct {
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 维护时间窗结束时间，如：19:00。
+	// **说明：**维护时间窗时长，当前支持：30分钟、1小时、1.5小时、2小时、3小时。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -9902,15 +9919,20 @@ type ResetPasswordRequestParams struct {
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 重置的密码。若切换为免密实例时，可不配置该参数。其他情况必须配置。
+	// 重置的密码。若切换为免密实例时，可不配置该参数。
+	// - 长度8-32位, 推荐使用12位以上的密码。
+	// - 不能以"/"开头。
+	// - 至少包含小写字母a- z、大写字母A - Z、数字0 - 9、特殊字符 ()~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 是否切换免密实例。
-	// - false：切换为非免密码实例。
-	// - true：切换为免密码实例。默认 false。
+	// - false：切换为非免密码实例。默认 false。
+	// - true：切换为免密码实例。
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
 
-	// 是否加密密码
+	// 是否加密密码。
+	// - false：非加密密码。默认 false。
+	// - true：加密密码。
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
@@ -9920,15 +9942,20 @@ type ResetPasswordRequest struct {
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 重置的密码。若切换为免密实例时，可不配置该参数。其他情况必须配置。
+	// 重置的密码。若切换为免密实例时，可不配置该参数。
+	// - 长度8-32位, 推荐使用12位以上的密码。
+	// - 不能以"/"开头。
+	// - 至少包含小写字母a- z、大写字母A - Z、数字0 - 9、特殊字符 ()~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 是否切换免密实例。
-	// - false：切换为非免密码实例。
-	// - true：切换为免密码实例。默认 false。
+	// - false：切换为非免密码实例。默认 false。
+	// - true：切换为免密码实例。
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
 
-	// 是否加密密码
+	// 是否加密密码。
+	// - false：非加密密码。默认 false。
+	// - true：加密密码。
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
@@ -10160,14 +10187,14 @@ type SourceInfo struct {
 
 // Predefined struct for user
 type StartupInstanceRequestParams struct {
-	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在回收站复制需解隔离的实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type StartupInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在回收站复制需解隔离的实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -10772,10 +10799,10 @@ type UpgradeProxyVersionRequestParams struct {
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 当前 Proxy 版本。
+	// 当前 Proxy 版本。请通过 [DescribeInstances](https://cloud.tencent.com/document/product/239/20018) 接口获取实例当前 Proxy 版本。
 	CurrentProxyVersion *string `json:"CurrentProxyVersion,omitnil,omitempty" name:"CurrentProxyVersion"`
 
-	// 可升级的 Redis 版本。
+	// 可升级的 Redis 版本。请通过 [DescribeInstances](https://cloud.tencent.com/document/product/239/20018) 接口获取实例可升级的 Redis 版本。
 	UpgradeProxyVersion *string `json:"UpgradeProxyVersion,omitnil,omitempty" name:"UpgradeProxyVersion"`
 
 	// 指定是否立即升级。
@@ -10790,10 +10817,10 @@ type UpgradeProxyVersionRequest struct {
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 当前 Proxy 版本。
+	// 当前 Proxy 版本。请通过 [DescribeInstances](https://cloud.tencent.com/document/product/239/20018) 接口获取实例当前 Proxy 版本。
 	CurrentProxyVersion *string `json:"CurrentProxyVersion,omitnil,omitempty" name:"CurrentProxyVersion"`
 
-	// 可升级的 Redis 版本。
+	// 可升级的 Redis 版本。请通过 [DescribeInstances](https://cloud.tencent.com/document/product/239/20018) 接口获取实例可升级的 Redis 版本。
 	UpgradeProxyVersion *string `json:"UpgradeProxyVersion,omitnil,omitempty" name:"UpgradeProxyVersion"`
 
 	// 指定是否立即升级。
@@ -10933,22 +10960,24 @@ func (r *UpgradeSmallVersionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeVersionToMultiAvailabilityZonesRequestParams struct {
-	// 实例ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+	// 实例ID，请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 升级多可用区之后是否支持就近访问功能。
-	// <ul><li>true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。</li><li>false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。</li></ul>
+	// - true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。
+	// - false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。默认为 false。
 	UpgradeProxyAndRedisServer *bool `json:"UpgradeProxyAndRedisServer,omitnil,omitempty" name:"UpgradeProxyAndRedisServer"`
 }
 
 type UpgradeVersionToMultiAvailabilityZonesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+	// 实例ID，请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 升级多可用区之后是否支持就近访问功能。
-	// <ul><li>true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。</li><li>false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。</li></ul>
+	// - true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。
+	// - false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。默认为 false。
 	UpgradeProxyAndRedisServer *bool `json:"UpgradeProxyAndRedisServer,omitnil,omitempty" name:"UpgradeProxyAndRedisServer"`
 }
 

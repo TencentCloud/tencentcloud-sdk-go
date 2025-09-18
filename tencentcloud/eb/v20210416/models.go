@@ -517,6 +517,15 @@ type CreateTargetRequestParams struct {
 
 	// 事件规则ID
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 批量投递最长等待时间
+	BatchTimeout *int64 `json:"BatchTimeout,omitnil,omitempty" name:"BatchTimeout"`
+
+	// 批量投递最大事件条数
+	BatchEventCount *int64 `json:"BatchEventCount,omitnil,omitempty" name:"BatchEventCount"`
+
+	// 开启批量投递使能
+	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil,omitempty" name:"EnableBatchDelivery"`
 }
 
 type CreateTargetRequest struct {
@@ -542,6 +551,15 @@ type CreateTargetRequest struct {
 
 	// 事件规则ID
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 批量投递最长等待时间
+	BatchTimeout *int64 `json:"BatchTimeout,omitnil,omitempty" name:"BatchTimeout"`
+
+	// 批量投递最大事件条数
+	BatchEventCount *int64 `json:"BatchEventCount,omitnil,omitempty" name:"BatchEventCount"`
+
+	// 开启批量投递使能
+	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil,omitempty" name:"EnableBatchDelivery"`
 }
 
 func (r *CreateTargetRequest) ToJsonString() string {
@@ -560,6 +578,9 @@ func (r *CreateTargetRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "TargetDescription")
 	delete(f, "RuleId")
+	delete(f, "BatchTimeout")
+	delete(f, "BatchEventCount")
+	delete(f, "EnableBatchDelivery")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTargetRequest has unknown keys!", "")
 	}

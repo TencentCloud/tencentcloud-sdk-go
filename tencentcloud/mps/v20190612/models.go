@@ -13088,6 +13088,9 @@ type ImageProcessTaskOutput struct {
 	// 输出文件的存储位置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// 输出文件的URL。
+	SignedUrl *string `json:"SignedUrl,omitnil,omitempty" name:"SignedUrl"`
 }
 
 type ImageProcessTaskResult struct {
@@ -17894,6 +17897,16 @@ type ProcessImageRequestParams struct {
 	// 图片处理生成的文件输出的路径。如果不填表示与 InputInfo 中文件所在的目录一致。如果是目录，如`/image/201907/`，表示继承原文件名输出到该目录。
 	OutputDir *string `json:"OutputDir,omitnil,omitempty" name:"OutputDir"`
 
+	// 输出路径，可以为相对路径或者绝对路径。
+	// 若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+	// 相对路径示例：
+	// <li>文件名_{变量名}.{format}</li>
+	// <li>文件名.{format}</li>
+	// 绝对路径示例：
+	// <li>/自定义路径/文件名_{变量名}.{format}</li>
+	// 如果不填，则默认为相对路径：{inputName}.{format}。
+	OutputPath *string `json:"OutputPath,omitnil,omitempty" name:"OutputPath"`
+
 	// 图片处理参数。
 	ImageTask *ImageTaskInput `json:"ImageTask,omitnil,omitempty" name:"ImageTask"`
 }
@@ -17909,6 +17922,16 @@ type ProcessImageRequest struct {
 
 	// 图片处理生成的文件输出的路径。如果不填表示与 InputInfo 中文件所在的目录一致。如果是目录，如`/image/201907/`，表示继承原文件名输出到该目录。
 	OutputDir *string `json:"OutputDir,omitnil,omitempty" name:"OutputDir"`
+
+	// 输出路径，可以为相对路径或者绝对路径。
+	// 若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+	// 相对路径示例：
+	// <li>文件名_{变量名}.{format}</li>
+	// <li>文件名.{format}</li>
+	// 绝对路径示例：
+	// <li>/自定义路径/文件名_{变量名}.{format}</li>
+	// 如果不填，则默认为相对路径：{inputName}.{format}。
+	OutputPath *string `json:"OutputPath,omitnil,omitempty" name:"OutputPath"`
 
 	// 图片处理参数。
 	ImageTask *ImageTaskInput `json:"ImageTask,omitnil,omitempty" name:"ImageTask"`
@@ -17929,6 +17952,7 @@ func (r *ProcessImageRequest) FromJsonString(s string) error {
 	delete(f, "InputInfo")
 	delete(f, "OutputStorage")
 	delete(f, "OutputDir")
+	delete(f, "OutputPath")
 	delete(f, "ImageTask")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessImageRequest has unknown keys!", "")

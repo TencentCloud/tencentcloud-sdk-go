@@ -2327,6 +2327,9 @@ type InvocationTask struct {
 	// - USER：来源于用户调用。
 	// - INVOKER：来源于定时执行。
 	InvocationSource *string `json:"InvocationSource,omitnil,omitempty" name:"InvocationSource"`
+
+	// 执行的命令的名称。
+	CommandName *string `json:"CommandName,omitnil,omitempty" name:"CommandName"`
 }
 
 type InvocationTaskBasicInfo struct {

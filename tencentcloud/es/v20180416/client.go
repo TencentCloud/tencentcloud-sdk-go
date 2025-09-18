@@ -2667,6 +2667,74 @@ func (c *Client) DiagnoseInstanceWithContext(ctx context.Context, request *Diagn
     return
 }
 
+func NewExportIpTraceLogRequest() (request *ExportIpTraceLogRequest) {
+    request = &ExportIpTraceLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "ExportIpTraceLog")
+    
+    
+    return
+}
+
+func NewExportIpTraceLogResponse() (response *ExportIpTraceLogResponse) {
+    response = &ExportIpTraceLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportIpTraceLog
+// 查询IP溯源日志原始数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ABNORMALDATAFORMAT = "FailedOperation.AbnormalDataFormat"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDLOGTYPE = "InvalidParameter.InvalidLogType"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_INDEXINFONOTFOUND = "ResourceNotFound.IndexInfoNotFound"
+func (c *Client) ExportIpTraceLog(request *ExportIpTraceLogRequest) (response *ExportIpTraceLogResponse, err error) {
+    return c.ExportIpTraceLogWithContext(context.Background(), request)
+}
+
+// ExportIpTraceLog
+// 查询IP溯源日志原始数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ABNORMALDATAFORMAT = "FailedOperation.AbnormalDataFormat"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDLOGTYPE = "InvalidParameter.InvalidLogType"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_INDEXINFONOTFOUND = "ResourceNotFound.IndexInfoNotFound"
+func (c *Client) ExportIpTraceLogWithContext(ctx context.Context, request *ExportIpTraceLogRequest) (response *ExportIpTraceLogResponse, err error) {
+    if request == nil {
+        request = NewExportIpTraceLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ExportIpTraceLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportIpTraceLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportIpTraceLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDiagnoseSettingsRequest() (request *GetDiagnoseSettingsRequest) {
     request = &GetDiagnoseSettingsRequest{
         BaseRequest: &tchttp.BaseRequest{},

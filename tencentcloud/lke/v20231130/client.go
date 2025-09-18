@@ -153,13 +153,13 @@ func NewCreateAgentResponse() (response *CreateAgentResponse) {
 }
 
 // CreateAgent
-// 你创建一个Agent
+// 创建一个Agent
 func (c *Client) CreateAgent(request *CreateAgentRequest) (response *CreateAgentResponse, err error) {
     return c.CreateAgentWithContext(context.Background(), request)
 }
 
 // CreateAgent
-// 你创建一个Agent
+// 创建一个Agent
 func (c *Client) CreateAgentWithContext(ctx context.Context, request *CreateAgentRequest) (response *CreateAgentResponse, err error) {
     if request == nil {
         request = NewCreateAgentRequest()
@@ -3359,6 +3359,56 @@ func (c *Client) ListAttributeLabelWithContext(ctx context.Context, request *Lis
     request.SetContext(ctx)
     
     response = NewListAttributeLabelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListChannelRequest() (request *ListChannelRequest) {
+    request = &ListChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "ListChannel")
+    
+    
+    return
+}
+
+func NewListChannelResponse() (response *ListChannelResponse) {
+    response = &ListChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListChannel
+// 获取发布渠道列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListChannel(request *ListChannelRequest) (response *ListChannelResponse, err error) {
+    return c.ListChannelWithContext(context.Background(), request)
+}
+
+// ListChannel
+// 获取发布渠道列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListChannelWithContext(ctx context.Context, request *ListChannelRequest) (response *ListChannelResponse, err error) {
+    if request == nil {
+        request = NewListChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lke", APIVersion, "ListChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListChannelResponse()
     err = c.Send(request, response)
     return
 }

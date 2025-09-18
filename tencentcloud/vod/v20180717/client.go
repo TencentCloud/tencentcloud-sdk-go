@@ -12777,11 +12777,7 @@ func NewSimpleHlsClipResponse() (response *SimpleHlsClipResponse) {
 //
 // 
 //
-// 裁剪精度支持粗略裁剪和精确裁剪：
-//
-// - 粗略剪辑：基于输入 m3u8 文件进行裁剪，其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
-//
-// - 精确剪辑：按照 StartTimeOffset 和 EndTimeOffset 参数进行精确裁剪。使用精确裁剪需要开通[即时转码](/document/product/266/102174)的功能。
+// 该接口基于输入 m3u8 文件进行裁剪，其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
 //
 // 
 //
@@ -12847,11 +12843,7 @@ func (c *Client) SimpleHlsClip(request *SimpleHlsClipRequest) (response *SimpleH
 //
 // 
 //
-// 裁剪精度支持粗略裁剪和精确裁剪：
-//
-// - 粗略剪辑：基于输入 m3u8 文件进行裁剪，其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
-//
-// - 精确剪辑：按照 StartTimeOffset 和 EndTimeOffset 参数进行精确裁剪。使用精确裁剪需要开通[即时转码](/document/product/266/102174)的功能。
+// 该接口基于输入 m3u8 文件进行裁剪，其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
 //
 // 
 //

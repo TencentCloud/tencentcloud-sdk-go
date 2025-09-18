@@ -10103,6 +10103,9 @@ type DspaInstance struct {
 
 	// 已购买的实例数量
 	InsTotalQuota *int64 `json:"InsTotalQuota,omitnil,omitempty" name:"InsTotalQuota"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type DspaRDBDataAssetCount struct {
@@ -11024,6 +11027,9 @@ type ListDSPAClustersRequestParams struct {
 	// Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_wedata_dc（代表wedata实例）
 	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
+	// Tag键值过滤
+	TagFilter []*Tag `json:"TagFilter,omitnil,omitempty" name:"TagFilter"`
+
 	// 展示模式。
 	// 
 	// 目前只有两个值的处理逻辑：
@@ -11051,6 +11057,9 @@ type ListDSPAClustersRequest struct {
 	// Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_wedata_dc（代表wedata实例）
 	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
+	// Tag键值过滤
+	TagFilter []*Tag `json:"TagFilter,omitnil,omitempty" name:"TagFilter"`
+
 	// 展示模式。
 	// 
 	// 目前只有两个值的处理逻辑：
@@ -11076,6 +11085,7 @@ func (r *ListDSPAClustersRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
+	delete(f, "TagFilter")
 	delete(f, "ListMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDSPAClustersRequest has unknown keys!", "")
@@ -13540,6 +13550,17 @@ type SuggestRiskLevelMatrixItem struct {
 
 	// 分数
 	RiskScore *float64 `json:"RiskScore,omitnil,omitempty" name:"RiskScore"`
+}
+
+type Tag struct {
+	// 标签键
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+
+	// 标签所属类别
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
 type TemplateInfo struct {

@@ -1196,6 +1196,9 @@ type CreateRoomRequestParams struct {
 
 	// 字幕转写功能开关：0关闭，1开启，默认关闭
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
+
+	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+	RecordMerge *uint64 `json:"RecordMerge,omitnil,omitempty" name:"RecordMerge"`
 }
 
 type CreateRoomRequest struct {
@@ -1318,6 +1321,9 @@ type CreateRoomRequest struct {
 
 	// 字幕转写功能开关：0关闭，1开启，默认关闭
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
+
+	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+	RecordMerge *uint64 `json:"RecordMerge,omitnil,omitempty" name:"RecordMerge"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1365,6 +1371,7 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "RecordStream")
 	delete(f, "WhiteBoardSnapshotMode")
 	delete(f, "SubtitlesTranscription")
+	delete(f, "RecordMerge")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -3464,6 +3471,9 @@ type DescribeRoomResponseParams struct {
 	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
 	Guests []*string `json:"Guests,omitnil,omitempty" name:"Guests"`
 
+	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+	RecordMerge *uint64 `json:"RecordMerge,omitnil,omitempty" name:"RecordMerge"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -5246,6 +5256,12 @@ type ModifyRoomRequestParams struct {
 
 	// 字幕转写功能开关：0关闭，1开启，默认关闭
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
+
+	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+	Guests []*string `json:"Guests,omitnil,omitempty" name:"Guests"`
+
+	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+	RecordMerge *uint64 `json:"RecordMerge,omitnil,omitempty" name:"RecordMerge"`
 }
 
 type ModifyRoomRequest struct {
@@ -5353,6 +5369,12 @@ type ModifyRoomRequest struct {
 
 	// 字幕转写功能开关：0关闭，1开启，默认关闭
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
+
+	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+	Guests []*string `json:"Guests,omitnil,omitempty" name:"Guests"`
+
+	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+	RecordMerge *uint64 `json:"RecordMerge,omitnil,omitempty" name:"RecordMerge"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -5395,6 +5417,8 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "RecordLang")
 	delete(f, "WhiteBoardSnapshotMode")
 	delete(f, "SubtitlesTranscription")
+	delete(f, "Guests")
+	delete(f, "RecordMerge")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}
@@ -5721,6 +5745,9 @@ type RoomInfo struct {
 
 	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
 	Guests []*string `json:"Guests,omitnil,omitempty" name:"Guests"`
+
+	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+	RecordMerge *uint64 `json:"RecordMerge,omitnil,omitempty" name:"RecordMerge"`
 }
 
 type RoomItem struct {

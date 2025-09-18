@@ -52,7 +52,7 @@ type Agent struct {
 	// Agent名称，同一个应用内，Agent名称不能重复
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 插件图标url
+	// Agent图标url
 	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
 
 	// Agent指令；当该Agent被调用时，将作为“系统提示词”使用，描述Agent应执行的操作和响应方式
@@ -81,6 +81,29 @@ type Agent struct {
 
 	// 0 自由转交，1 计划与执行
 	AgentMode *int64 `json:"AgentMode,omitnil,omitempty" name:"AgentMode"`
+
+	// 高级设置
+	AdvancedConfig *AgentAdvancedConfig `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+}
+
+type AgentAdvancedConfig struct {
+	// 是否开启澄清询问
+	EnableClarification *bool `json:"EnableClarification,omitnil,omitempty" name:"EnableClarification"`
+
+	// 思考模式，0为效果优先，1为速度优先
+	ThinkingMode *int64 `json:"ThinkingMode,omitnil,omitempty" name:"ThinkingMode"`
+
+	// 最大推理轮数
+	MaxReasoningRound *uint64 `json:"MaxReasoningRound,omitnil,omitempty" name:"MaxReasoningRound"`
+
+	// 上下文轮数
+	HistoryLimit *uint64 `json:"HistoryLimit,omitnil,omitempty" name:"HistoryLimit"`
+
+	// 是否开启结构化输出
+	EnableStructuredOutput *bool `json:"EnableStructuredOutput,omitnil,omitempty" name:"EnableStructuredOutput"`
+
+	// 结构化输出配置
+	StructuredOutputConfig *StructuredOutputConfig `json:"StructuredOutputConfig,omitnil,omitempty" name:"StructuredOutputConfig"`
 }
 
 type AgentDebugInfo struct {
@@ -962,6 +985,36 @@ type CateInfo struct {
 	Children []*CateInfo `json:"Children,omitnil,omitempty" name:"Children"`
 }
 
+type ChannelListInfo struct {
+	// 渠道类型 10000 微信订阅号 10001 微信服务号 10002 企微应用
+	ChannelType *uint64 `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
+
+	// 渠道状态 1未发布 2运行中 3已下线
+	ChannelStatus *uint64 `json:"ChannelStatus,omitnil,omitempty" name:"ChannelStatus"`
+
+	// 渠道名称
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+
+	// 渠道id 数据库主键
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 备注
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 最后更新人
+	UpdatedUser *string `json:"UpdatedUser,omitnil,omitempty" name:"UpdatedUser"`
+
+	// 智能体应用可见范围，public-所有人可见 private-仅自己可见 share-通过分享可见
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	YuanQiInfo *YuanQi `json:"YuanQiInfo,omitnil,omitempty" name:"YuanQiInfo"`
+}
+
 // Predefined struct for user
 type CheckAttributeLabelExistRequestParams struct {
 	// 应用ID
@@ -1824,7 +1877,7 @@ type CreateReleaseRequestParams struct {
 	// 发布描述
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
-	// 渠道业务ID
+	// 渠道业务ID，从ListChannel接口的响应字段ChannelId获取
 	ChannelBizIds []*string `json:"ChannelBizIds,omitnil,omitempty" name:"ChannelBizIds"`
 }
 
@@ -1837,7 +1890,7 @@ type CreateReleaseRequest struct {
 	// 发布描述
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
-	// 渠道业务ID
+	// 渠道业务ID，从ListChannel接口的响应字段ChannelId获取
 	ChannelBizIds []*string `json:"ChannelBizIds,omitnil,omitempty" name:"ChannelBizIds"`
 }
 
@@ -7315,6 +7368,103 @@ func (r *ListAttributeLabelResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListChannelRequestParams struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 应用ID
+	//
+	// Deprecated: BotBizId is deprecated.
+	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 
+	ChannelType []*uint64 `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
+
+	// 渠道状态 1未发布 2运行中 3已下线
+	ChannelStatus []*uint64 `json:"ChannelStatus,omitnil,omitempty" name:"ChannelStatus"`
+}
+
+type ListChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 应用ID
+	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 
+	ChannelType []*uint64 `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
+
+	// 渠道状态 1未发布 2运行中 3已下线
+	ChannelStatus []*uint64 `json:"ChannelStatus,omitnil,omitempty" name:"ChannelStatus"`
+}
+
+func (r *ListChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppBizId")
+	delete(f, "BotBizId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "ChannelType")
+	delete(f, "ChannelStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListChannelResponseParams struct {
+	// 返回总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 渠道信息列表
+	ListChannel []*ChannelListInfo `json:"ListChannel,omitnil,omitempty" name:"ListChannel"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *ListChannelResponseParams `json:"Response"`
+}
+
+func (r *ListChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListDocCateRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
@@ -10590,6 +10740,29 @@ type OptionCardIndex struct {
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
+type ParameterConfig struct {
+	// 字段名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 字段描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 字段类型
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 是否必填
+	IsRequired *bool `json:"IsRequired,omitnil,omitempty" name:"IsRequired"`
+
+	// 子参数
+	SubParams []*ParameterConfig `json:"SubParams,omitnil,omitempty" name:"SubParams"`
+
+	// OneOf类型的参数
+	OneOf []*ParameterConfig `json:"OneOf,omitnil,omitempty" name:"OneOf"`
+
+	// AnyOf类型的参数
+	AnyOf []*ParameterConfig `json:"AnyOf,omitnil,omitempty" name:"AnyOf"`
+}
+
 type PluginToolReqParam struct {
 	// 参数名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -12091,6 +12264,11 @@ type StrValue struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type StructuredOutputConfig struct {
+	// 参数列表
+	StructuredOutputParams []*ParameterConfig `json:"StructuredOutputParams,omitnil,omitempty" name:"StructuredOutputParams"`
+}
+
 type SummaryConfig struct {
 	// 模型配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12896,4 +13074,9 @@ type WorkflowRunNodeInfo struct {
 	// 大模型输出信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatisticInfos []*StatisticInfo `json:"StatisticInfos,omitnil,omitempty" name:"StatisticInfos"`
+}
+
+type YuanQi struct {
+	// public-所有人可见
+	VisibleRange *string `json:"VisibleRange,omitnil,omitempty" name:"VisibleRange"`
 }

@@ -30,6 +30,9 @@ type AddCustomizedConfigRequestParams struct {
 
 	// 配置内容
 	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
+
+	// 标签
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type AddCustomizedConfigRequest struct {
@@ -43,6 +46,9 @@ type AddCustomizedConfigRequest struct {
 
 	// 配置内容
 	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
+
+	// 标签
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *AddCustomizedConfigRequest) ToJsonString() string {
@@ -60,6 +66,7 @@ func (r *AddCustomizedConfigRequest) FromJsonString(s string) error {
 	delete(f, "ConfigName")
 	delete(f, "ConfigType")
 	delete(f, "ConfigContent")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomizedConfigRequest has unknown keys!", "")
 	}

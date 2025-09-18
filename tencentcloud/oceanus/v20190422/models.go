@@ -32,6 +32,63 @@ type CCN struct {
 }
 
 // Predefined struct for user
+type CheckConnectorNameRequestParams struct {
+	// 资源名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type CheckConnectorNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *CheckConnectorNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckConnectorNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckConnectorNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckConnectorNameResponseParams struct {
+	// 是否存在
+	Exists *bool `json:"Exists,omitnil,omitempty" name:"Exists"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckConnectorNameResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckConnectorNameResponseParams `json:"Response"`
+}
+
+func (r *CheckConnectorNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckConnectorNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CheckSavepointRequestParams struct {
 	// 作业 id
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -492,6 +549,17 @@ type ClusterVersion struct {
 	SupportedFlink []*string `json:"SupportedFlink,omitnil,omitempty" name:"SupportedFlink"`
 }
 
+type Connectors struct {
+	// 连接方式
+	ConnectionMethod *string `json:"ConnectionMethod,omitnil,omitempty" name:"ConnectionMethod"`
+
+	// 连接器名称
+	Connector *string `json:"Connector,omitnil,omitempty" name:"Connector"`
+
+	// 是否已经被使用
+	Existed *bool `json:"Existed,omitnil,omitempty" name:"Existed"`
+}
+
 type CopyJobItem struct {
 	// 需要复制的作业serial id
 	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
@@ -627,6 +695,88 @@ func (r *CopyJobsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CopyJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConnectorRequestParams struct {
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 空间
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 资源版本
+	VersionId *int64 `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// 连接器名称
+	Connector *string `json:"Connector,omitnil,omitempty" name:"Connector"`
+
+	// 连接方式
+	ConnectionMethod *string `json:"ConnectionMethod,omitnil,omitempty" name:"ConnectionMethod"`
+}
+
+type CreateConnectorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 空间
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 资源版本
+	VersionId *int64 `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// 连接器名称
+	Connector *string `json:"Connector,omitnil,omitempty" name:"Connector"`
+
+	// 连接方式
+	ConnectionMethod *string `json:"ConnectionMethod,omitnil,omitempty" name:"ConnectionMethod"`
+}
+
+func (r *CreateConnectorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConnectorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "WorkSpaceId")
+	delete(f, "VersionId")
+	delete(f, "Connector")
+	delete(f, "ConnectionMethod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConnectorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConnectorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateConnectorResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateConnectorResponseParams `json:"Response"`
+}
+
+func (r *CreateConnectorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConnectorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4090,6 +4240,95 @@ type LogicalType struct {
 }
 
 // Predefined struct for user
+type ModifyConnectorRequestParams struct {
+	// 空间
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// connector ID
+	ConnectorResourceId *string `json:"ConnectorResourceId,omitnil,omitempty" name:"ConnectorResourceId"`
+
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源版本
+	VersionId *int64 `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// 连接器名称
+	Connector *string `json:"Connector,omitnil,omitempty" name:"Connector"`
+
+	// 连接方式
+	ConnectionMethod *string `json:"ConnectionMethod,omitnil,omitempty" name:"ConnectionMethod"`
+}
+
+type ModifyConnectorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// connector ID
+	ConnectorResourceId *string `json:"ConnectorResourceId,omitnil,omitempty" name:"ConnectorResourceId"`
+
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源版本
+	VersionId *int64 `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// 连接器名称
+	Connector *string `json:"Connector,omitnil,omitempty" name:"Connector"`
+
+	// 连接方式
+	ConnectionMethod *string `json:"ConnectionMethod,omitnil,omitempty" name:"ConnectionMethod"`
+}
+
+func (r *ModifyConnectorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConnectorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkSpaceId")
+	delete(f, "ConnectorResourceId")
+	delete(f, "ResourceId")
+	delete(f, "VersionId")
+	delete(f, "Connector")
+	delete(f, "ConnectionMethod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConnectorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConnectorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyConnectorResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyConnectorResponseParams `json:"Response"`
+}
+
+func (r *ModifyConnectorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConnectorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyFolderRequestParams struct {
 	// 文件夹ID（必填）
 	SourceFolderId *string `json:"SourceFolderId,omitnil,omitempty" name:"SourceFolderId"`
@@ -4384,6 +4623,77 @@ type Order struct {
 	// 订单的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderTime *string `json:"OrderTime,omitnil,omitempty" name:"OrderTime"`
+}
+
+// Predefined struct for user
+type ParseConnectorRequestParams struct {
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源版本
+	VersionId *int64 `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// 空间
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+}
+
+type ParseConnectorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源版本
+	VersionId *int64 `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// 空间
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+}
+
+func (r *ParseConnectorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ParseConnectorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "VersionId")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ParseConnectorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ParseConnectorResponseParams struct {
+	// 连接器
+	Connectors []*Connectors `json:"Connectors,omitnil,omitempty" name:"Connectors"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ParseConnectorResponse struct {
+	*tchttp.BaseResponse
+	Response *ParseConnectorResponseParams `json:"Response"`
+}
+
+func (r *ParseConnectorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ParseConnectorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Property struct {

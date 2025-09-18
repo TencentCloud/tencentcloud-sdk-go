@@ -45,6 +45,60 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCheckConnectorNameRequest() (request *CheckConnectorNameRequest) {
+    request = &CheckConnectorNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "CheckConnectorName")
+    
+    
+    return
+}
+
+func NewCheckConnectorNameResponse() (response *CheckConnectorNameResponse) {
+    response = &CheckConnectorNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckConnectorName
+// 查询资源名是否重复
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CheckConnectorName(request *CheckConnectorNameRequest) (response *CheckConnectorNameResponse, err error) {
+    return c.CheckConnectorNameWithContext(context.Background(), request)
+}
+
+// CheckConnectorName
+// 查询资源名是否重复
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CheckConnectorNameWithContext(ctx context.Context, request *CheckConnectorNameRequest) (response *CheckConnectorNameResponse, err error) {
+    if request == nil {
+        request = NewCheckConnectorNameRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CheckConnectorName")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckConnectorName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckConnectorNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckSavepointRequest() (request *CheckSavepointRequest) {
     request = &CheckSavepointRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -163,6 +217,56 @@ func (c *Client) CopyJobsWithContext(ctx context.Context, request *CopyJobsReque
     request.SetContext(ctx)
     
     response = NewCopyJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateConnectorRequest() (request *CreateConnectorRequest) {
+    request = &CreateConnectorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "CreateConnector")
+    
+    
+    return
+}
+
+func NewCreateConnectorResponse() (response *CreateConnectorResponse) {
+    response = &CreateConnectorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateConnector
+// 创建Connector
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_RESOURCECONNECTORDUPLICATENAME = "ResourceInUse.ResourceConnectorDuplicateName"
+func (c *Client) CreateConnector(request *CreateConnectorRequest) (response *CreateConnectorResponse, err error) {
+    return c.CreateConnectorWithContext(context.Background(), request)
+}
+
+// CreateConnector
+// 创建Connector
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_RESOURCECONNECTORDUPLICATENAME = "ResourceInUse.ResourceConnectorDuplicateName"
+func (c *Client) CreateConnectorWithContext(ctx context.Context, request *CreateConnectorRequest) (response *CreateConnectorResponse, err error) {
+    if request == nil {
+        request = NewCreateConnectorRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CreateConnector")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConnector require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConnectorResponse()
     err = c.Send(request, response)
     return
 }
@@ -2167,6 +2271,56 @@ func (c *Client) GetMetaTableWithContext(ctx context.Context, request *GetMetaTa
     return
 }
 
+func NewModifyConnectorRequest() (request *ModifyConnectorRequest) {
+    request = &ModifyConnectorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "ModifyConnector")
+    
+    
+    return
+}
+
+func NewModifyConnectorResponse() (response *ModifyConnectorResponse) {
+    response = &ModifyConnectorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyConnector
+// 修改Connector
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_RESOURCECONNECTORDUPLICATENAME = "ResourceInUse.ResourceConnectorDuplicateName"
+func (c *Client) ModifyConnector(request *ModifyConnectorRequest) (response *ModifyConnectorResponse, err error) {
+    return c.ModifyConnectorWithContext(context.Background(), request)
+}
+
+// ModifyConnector
+// 修改Connector
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_RESOURCECONNECTORDUPLICATENAME = "ResourceInUse.ResourceConnectorDuplicateName"
+func (c *Client) ModifyConnectorWithContext(ctx context.Context, request *ModifyConnectorRequest) (response *ModifyConnectorResponse, err error) {
+    if request == nil {
+        request = NewModifyConnectorRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "ModifyConnector")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConnector require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyConnectorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyFolderRequest() (request *ModifyFolderRequest) {
     request = &ModifyFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2381,6 +2535,56 @@ func (c *Client) ModifyWorkSpaceWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyWorkSpaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewParseConnectorRequest() (request *ParseConnectorRequest) {
+    request = &ParseConnectorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "ParseConnector")
+    
+    
+    return
+}
+
+func NewParseConnectorResponse() (response *ParseConnectorResponse) {
+    response = &ParseConnectorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ParseConnector
+// 解析用户上传connector
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_PARSECONNECTORCLUSTERNOTFOUND = "ResourceNotFound.ParseConnectorClusterNotFound"
+func (c *Client) ParseConnector(request *ParseConnectorRequest) (response *ParseConnectorResponse, err error) {
+    return c.ParseConnectorWithContext(context.Background(), request)
+}
+
+// ParseConnector
+// 解析用户上传connector
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_PARSECONNECTORCLUSTERNOTFOUND = "ResourceNotFound.ParseConnectorClusterNotFound"
+func (c *Client) ParseConnectorWithContext(ctx context.Context, request *ParseConnectorRequest) (response *ParseConnectorResponse, err error) {
+    if request == nil {
+        request = NewParseConnectorRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "ParseConnector")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ParseConnector require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewParseConnectorResponse()
     err = c.Send(request, response)
     return
 }
