@@ -219,6 +219,58 @@ func (c *Client) CreateAllocationUnitWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateBudgetRequest() (request *CreateBudgetRequest) {
+    request = &CreateBudgetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "CreateBudget")
+    
+    
+    return
+}
+
+func NewCreateBudgetResponse() (response *CreateBudgetResponse) {
+    response = &CreateBudgetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBudget
+// 创建预算信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) CreateBudget(request *CreateBudgetRequest) (response *CreateBudgetResponse, err error) {
+    return c.CreateBudgetWithContext(context.Background(), request)
+}
+
+// CreateBudget
+// 创建预算信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) CreateBudgetWithContext(ctx context.Context, request *CreateBudgetRequest) (response *CreateBudgetResponse, err error) {
+    if request == nil {
+        request = NewCreateBudgetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "billing", APIVersion, "CreateBudget")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBudget require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBudgetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGatherRuleRequest() (request *CreateGatherRuleRequest) {
     request = &CreateGatherRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -439,6 +491,62 @@ func (c *Client) DeleteAllocationUnitWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteAllocationUnitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBudgetRequest() (request *DeleteBudgetRequest) {
+    request = &DeleteBudgetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DeleteBudget")
+    
+    
+    return
+}
+
+func NewDeleteBudgetResponse() (response *DeleteBudgetResponse) {
+    response = &DeleteBudgetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBudget
+// 依据预算ID删除对应预算项目
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteBudget(request *DeleteBudgetRequest) (response *DeleteBudgetResponse, err error) {
+    return c.DeleteBudgetWithContext(context.Background(), request)
+}
+
+// DeleteBudget
+// 依据预算ID删除对应预算项目
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteBudgetWithContext(ctx context.Context, request *DeleteBudgetRequest) (response *DeleteBudgetResponse, err error) {
+    if request == nil {
+        request = NewDeleteBudgetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "billing", APIVersion, "DeleteBudget")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBudget require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBudgetResponse()
     err = c.Send(request, response)
     return
 }
@@ -2139,6 +2247,180 @@ func (c *Client) DescribeBillSummaryForOrganizationWithContext(ctx context.Conte
     return
 }
 
+func NewDescribeBudgetRequest() (request *DescribeBudgetRequest) {
+    request = &DescribeBudgetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBudget")
+    
+    
+    return
+}
+
+func NewDescribeBudgetResponse() (response *DescribeBudgetResponse) {
+    response = &DescribeBudgetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBudget
+// 获取预算详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBudget(request *DescribeBudgetRequest) (response *DescribeBudgetResponse, err error) {
+    return c.DescribeBudgetWithContext(context.Background(), request)
+}
+
+// DescribeBudget
+// 获取预算详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBudgetWithContext(ctx context.Context, request *DescribeBudgetRequest) (response *DescribeBudgetResponse, err error) {
+    if request == nil {
+        request = NewDescribeBudgetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "billing", APIVersion, "DescribeBudget")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBudget require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBudgetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBudgetOperationLogRequest() (request *DescribeBudgetOperationLogRequest) {
+    request = &DescribeBudgetOperationLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBudgetOperationLog")
+    
+    
+    return
+}
+
+func NewDescribeBudgetOperationLogResponse() (response *DescribeBudgetOperationLogResponse) {
+    response = &DescribeBudgetOperationLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBudgetOperationLog
+// 查询预算修改记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBudgetOperationLog(request *DescribeBudgetOperationLogRequest) (response *DescribeBudgetOperationLogResponse, err error) {
+    return c.DescribeBudgetOperationLogWithContext(context.Background(), request)
+}
+
+// DescribeBudgetOperationLog
+// 查询预算修改记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBudgetOperationLogWithContext(ctx context.Context, request *DescribeBudgetOperationLogRequest) (response *DescribeBudgetOperationLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeBudgetOperationLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "billing", APIVersion, "DescribeBudgetOperationLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBudgetOperationLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBudgetOperationLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBudgetRemindRecordListRequest() (request *DescribeBudgetRemindRecordListRequest) {
+    request = &DescribeBudgetRemindRecordListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBudgetRemindRecordList")
+    
+    
+    return
+}
+
+func NewDescribeBudgetRemindRecordListResponse() (response *DescribeBudgetRemindRecordListResponse) {
+    response = &DescribeBudgetRemindRecordListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBudgetRemindRecordList
+// 返回预算提醒记录，包括预算周期、检测时间、提醒时间、提醒类型、提醒内容
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBudgetRemindRecordList(request *DescribeBudgetRemindRecordListRequest) (response *DescribeBudgetRemindRecordListResponse, err error) {
+    return c.DescribeBudgetRemindRecordListWithContext(context.Background(), request)
+}
+
+// DescribeBudgetRemindRecordList
+// 返回预算提醒记录，包括预算周期、检测时间、提醒时间、提醒类型、提醒内容
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBudgetRemindRecordListWithContext(ctx context.Context, request *DescribeBudgetRemindRecordListRequest) (response *DescribeBudgetRemindRecordListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBudgetRemindRecordListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "billing", APIVersion, "DescribeBudgetRemindRecordList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBudgetRemindRecordList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBudgetRemindRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCostDetailRequest() (request *DescribeCostDetailRequest) {
     request = &DescribeCostDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3109,6 +3391,62 @@ func (c *Client) ModifyAllocationUnitWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyAllocationUnitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBudgetRequest() (request *ModifyBudgetRequest) {
+    request = &ModifyBudgetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "ModifyBudget")
+    
+    
+    return
+}
+
+func NewModifyBudgetResponse() (response *ModifyBudgetResponse) {
+    response = &ModifyBudgetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBudget
+// 更新预算信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBudget(request *ModifyBudgetRequest) (response *ModifyBudgetResponse, err error) {
+    return c.ModifyBudgetWithContext(context.Background(), request)
+}
+
+// ModifyBudget
+// 更新预算信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBudgetWithContext(ctx context.Context, request *ModifyBudgetRequest) (response *ModifyBudgetResponse, err error) {
+    if request == nil {
+        request = NewModifyBudgetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "billing", APIVersion, "ModifyBudget")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBudget require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBudgetResponse()
     err = c.Send(request, response)
     return
 }

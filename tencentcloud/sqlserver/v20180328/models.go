@@ -5341,6 +5341,10 @@ type DescribeDBInstancesAttributeResponseParams struct {
 	// 是否支持创建SA权限账号，0-不支持，1-支持
 	IsSupportSA *uint64 `json:"IsSupportSA,omitnil,omitempty" name:"IsSupportSA"`
 
+	// 慢SQL阈值，单位毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlowLogThreshold *int64 `json:"SlowLogThreshold,omitnil,omitempty" name:"SlowLogThreshold"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

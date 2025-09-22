@@ -1442,6 +1442,9 @@ type GetFlowStatisticByGroupRequestParams struct {
 
 	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 "-1"
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
 }
 
 type GetFlowStatisticByGroupRequest struct {
@@ -1467,6 +1470,9 @@ type GetFlowStatisticByGroupRequest struct {
 
 	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 "-1"
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
 }
 
 func (r *GetFlowStatisticByGroupRequest) ToJsonString() string {
@@ -1488,6 +1494,7 @@ func (r *GetFlowStatisticByGroupRequest) FromJsonString(s string) error {
 	delete(f, "TimeGranularity")
 	delete(f, "AccessRegion")
 	delete(f, "GatewayType")
+	delete(f, "MpApplicationId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFlowStatisticByGroupRequest has unknown keys!", "")
 	}

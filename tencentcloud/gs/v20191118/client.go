@@ -45,6 +45,66 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBackUpAndroidInstanceRequest() (request *BackUpAndroidInstanceRequest) {
+    request = &BackUpAndroidInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "BackUpAndroidInstance")
+    
+    
+    return
+}
+
+func NewBackUpAndroidInstanceResponse() (response *BackUpAndroidInstanceResponse) {
+    response = &BackUpAndroidInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BackUpAndroidInstance
+// 备份安卓实例。该接口需要联系我们开通内网存储才能使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BackUpAndroidInstance(request *BackUpAndroidInstanceRequest) (response *BackUpAndroidInstanceResponse, err error) {
+    return c.BackUpAndroidInstanceWithContext(context.Background(), request)
+}
+
+// BackUpAndroidInstance
+// 备份安卓实例。该接口需要联系我们开通内网存储才能使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BackUpAndroidInstanceWithContext(ctx context.Context, request *BackUpAndroidInstanceRequest) (response *BackUpAndroidInstanceResponse, err error) {
+    if request == nil {
+        request = NewBackUpAndroidInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "BackUpAndroidInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BackUpAndroidInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBackUpAndroidInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBackUpAndroidInstanceToStorageRequest() (request *BackUpAndroidInstanceToStorageRequest) {
     request = &BackUpAndroidInstanceToStorageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1191,6 +1251,66 @@ func (c *Client) DeleteAndroidInstanceBackupFilesWithContext(ctx context.Context
     return
 }
 
+func NewDeleteAndroidInstanceBackupsRequest() (request *DeleteAndroidInstanceBackupsRequest) {
+    request = &DeleteAndroidInstanceBackupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DeleteAndroidInstanceBackups")
+    
+    
+    return
+}
+
+func NewDeleteAndroidInstanceBackupsResponse() (response *DeleteAndroidInstanceBackupsResponse) {
+    response = &DeleteAndroidInstanceBackupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAndroidInstanceBackups
+// 批量删除安卓实例备份
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAndroidInstanceBackups(request *DeleteAndroidInstanceBackupsRequest) (response *DeleteAndroidInstanceBackupsResponse, err error) {
+    return c.DeleteAndroidInstanceBackupsWithContext(context.Background(), request)
+}
+
+// DeleteAndroidInstanceBackups
+// 批量删除安卓实例备份
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAndroidInstanceBackupsWithContext(ctx context.Context, request *DeleteAndroidInstanceBackupsRequest) (response *DeleteAndroidInstanceBackupsResponse, err error) {
+    if request == nil {
+        request = NewDeleteAndroidInstanceBackupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DeleteAndroidInstanceBackups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAndroidInstanceBackups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAndroidInstanceBackupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAndroidInstanceImagesRequest() (request *DeleteAndroidInstanceImagesRequest) {
     request = &DeleteAndroidInstanceImagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1423,6 +1543,66 @@ func (c *Client) DescribeAndroidInstanceAppsWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeAndroidInstanceAppsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAndroidInstanceBackupsRequest() (request *DescribeAndroidInstanceBackupsRequest) {
+    request = &DescribeAndroidInstanceBackupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DescribeAndroidInstanceBackups")
+    
+    
+    return
+}
+
+func NewDescribeAndroidInstanceBackupsResponse() (response *DescribeAndroidInstanceBackupsResponse) {
+    response = &DescribeAndroidInstanceBackupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAndroidInstanceBackups
+// 查询安卓实例备份列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAndroidInstanceBackups(request *DescribeAndroidInstanceBackupsRequest) (response *DescribeAndroidInstanceBackupsResponse, err error) {
+    return c.DescribeAndroidInstanceBackupsWithContext(context.Background(), request)
+}
+
+// DescribeAndroidInstanceBackups
+// 查询安卓实例备份列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAndroidInstanceBackupsWithContext(ctx context.Context, request *DescribeAndroidInstanceBackupsRequest) (response *DescribeAndroidInstanceBackupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAndroidInstanceBackupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DescribeAndroidInstanceBackups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAndroidInstanceBackups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAndroidInstanceBackupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3465,6 +3645,66 @@ func (c *Client) RestartAndroidInstancesAppWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewRestartAndroidInstancesAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRestoreAndroidInstanceRequest() (request *RestoreAndroidInstanceRequest) {
+    request = &RestoreAndroidInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "RestoreAndroidInstance")
+    
+    
+    return
+}
+
+func NewRestoreAndroidInstanceResponse() (response *RestoreAndroidInstanceResponse) {
+    response = &RestoreAndroidInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestoreAndroidInstance
+// 还原安卓实例。该接口需要联系我们开通内网存储才能使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RestoreAndroidInstance(request *RestoreAndroidInstanceRequest) (response *RestoreAndroidInstanceResponse, err error) {
+    return c.RestoreAndroidInstanceWithContext(context.Background(), request)
+}
+
+// RestoreAndroidInstance
+// 还原安卓实例。该接口需要联系我们开通内网存储才能使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RestoreAndroidInstanceWithContext(ctx context.Context, request *RestoreAndroidInstanceRequest) (response *RestoreAndroidInstanceResponse, err error) {
+    if request == nil {
+        request = NewRestoreAndroidInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "RestoreAndroidInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestoreAndroidInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestoreAndroidInstanceResponse()
     err = c.Send(request, response)
     return
 }

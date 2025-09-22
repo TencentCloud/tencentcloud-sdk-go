@@ -111,9 +111,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 //     - DeepSeek-V3.1 为685B 参数 MoE 模型，支持混合推理架构，有更高的思考效率和更强的 Agent 能力。
 //
-// 
-//
-// 
+//     -  支持128K上下文长度，最大输入长度96k，最大输出32k（默认4k），最大思维链输出长度32k。
 //
 // 
 //
@@ -356,9 +354,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 //     - DeepSeek-V3.1 为685B 参数 MoE 模型，支持混合推理架构，有更高的思考效率和更强的 Agent 能力。
 //
-// 
-//
-// 
+//     -  支持128K上下文长度，最大输入长度96k，最大输出32k（默认4k），最大思维链输出长度32k。
 //
 // 
 //

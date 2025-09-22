@@ -512,6 +512,9 @@ const (
 	// 指定的弹性网卡id非vrdma网卡
 	INVALIDPARAMETERVALUE_INVALIDNETWORKINTERFACEID = "InvalidParameterValue.InvalidNetworkInterfaceId"
 
+	// 参数MinCount的值必须小于InstanceCount
+	INVALIDPARAMETERVALUE_INVALIDPARAMETERMINCOUNT = "InvalidParameterValue.InvalidParameterMinCount"
+
 	// 参数值错误。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 
@@ -824,6 +827,9 @@ const (
 	// 安全组资源配额不足。
 	RESOURCEINSUFFICIENT_INSUFFICIENTGROUPQUOTA = "ResourceInsufficient.InsufficientGroupQuota"
 
+	// 库存不满足最小数量。
+	RESOURCEINSUFFICIENT_INSUFFICIENTOFFERINGMINIMUM = "ResourceInsufficient.InsufficientOfferingMinimum"
+
 	// 指定的实例类型库存不足。
 	RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
 
@@ -1064,9 +1070,6 @@ const (
 	// 用户无权限操作当前实例。
 	UNSUPPORTEDOPERATION_INVALIDINSTANCESOWNER = "UnsupportedOperation.InvalidInstancesOwner"
 
-	// 当前操作只支持国际版用户。
-	UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = "UnsupportedOperation.InvalidPermissionNonInternationalAccount"
-
 	// 指定的地域不支持加密盘。
 	UNSUPPORTEDOPERATION_INVALIDREGIONDISKENCRYPT = "UnsupportedOperation.InvalidRegionDiskEncrypt"
 
@@ -1090,6 +1093,12 @@ const (
 
 	// 从市场镜像创建的自定义镜像不支持导出。
 	UNSUPPORTEDOPERATION_MARKETIMAGEEXPORTUNSUPPORTED = "UnsupportedOperation.MarketImageExportUnsupported"
+
+	// 此计费方式不支持部分发货MinCount参数
+	UNSUPPORTEDOPERATION_MINCOUNTUNSUPPORTEDCHARGETYPE = "UnsupportedOperation.MinCountUnsupportedChargeType"
+
+	// 此区域暂不支持部分发货MinCount参数
+	UNSUPPORTEDOPERATION_MINCOUNTUNSUPPORTEDREGION = "UnsupportedOperation.MinCountUnsupportedRegion"
 
 	// 不支持修改系统盘的加密属性，例如使用非加密镜像重装加密系统盘。
 	UNSUPPORTEDOPERATION_MODIFYENCRYPTIONNOTSUPPORTED = "UnsupportedOperation.ModifyEncryptionNotSupported"
@@ -1144,12 +1153,6 @@ const (
 
 	// 不支持该地域
 	UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
-
-	// 当前用户暂不支持购买预留实例计费。
-	UNSUPPORTEDOPERATION_RESERVEDINSTANCEINVISIBLEFORUSER = "UnsupportedOperation.ReservedInstanceInvisibleForUser"
-
-	// 用户预留实例计费配额已达上限。
-	UNSUPPORTEDOPERATION_RESERVEDINSTANCEOUTOFQUATA = "UnsupportedOperation.ReservedInstanceOutofQuata"
 
 	// 共享镜像不支持导出。
 	UNSUPPORTEDOPERATION_SHAREDIMAGEEXPORTUNSUPPORTED = "UnsupportedOperation.SharedImageExportUnsupported"

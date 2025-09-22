@@ -2047,7 +2047,7 @@ func NewGeneralAccurateOCRResponse() (response *GeneralAccurateOCRResponse) {
 //
 //           <th style="width:150px"></th>
 //
-//           <th >【荐】通用印刷体识别（高精度版）</th>
+//           <th >【荐】通用文字识别（高精度版）</th>
 //
 //           <th style="width:300px"><a href="https://cloud.tencent.com/document/product/866/33526">【荐】通用印刷体识别</a></th>
 //
@@ -2179,7 +2179,7 @@ func (c *Client) GeneralAccurateOCR(request *GeneralAccurateOCRRequest) (respons
 //
 //           <th style="width:150px"></th>
 //
-//           <th >【荐】通用印刷体识别（高精度版）</th>
+//           <th >【荐】通用文字识别（高精度版）</th>
 //
 //           <th style="width:300px"><a href="https://cloud.tencent.com/document/product/866/33526">【荐】通用印刷体识别</a></th>
 //

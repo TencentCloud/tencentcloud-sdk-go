@@ -1902,6 +1902,368 @@ type BillZoneId struct {
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 }
 
+type BudgetConditionsForm struct {
+	// 产品
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Business []*string `json:"Business,omitnil,omitempty" name:"Business"`
+
+	// 计费模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode []*string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 子产品
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
+
+	// 组件编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentCodes []*string `json:"ComponentCodes,omitnil,omitempty" name:"ComponentCodes"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionIds []*string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
+
+	// 项目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// 交易类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
+
+	// 消耗类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumptionTypes []*string `json:"ConsumptionTypes,omitnil,omitempty" name:"ConsumptionTypes"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagsForm `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	//  末级分账单元
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayerUins []*string `json:"PayerUins,omitnil,omitempty" name:"PayerUins"`
+
+	// 主用户Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
+
+	//  末级分账单元唯一键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
+}
+
+type BudgetExtend struct {
+	// 预算名称
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// 预算额度
+	BudgetQuota *string `json:"BudgetQuota,omitnil,omitempty" name:"BudgetQuota"`
+
+	// DAY 天，MONTH 月度，QUARTER 季度 ，YEAR 年度
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// BILL  系统账单，CONSUMPTION  消耗账单
+	BillType *string `json:"BillType,omitnil,omitempty" name:"BillType"`
+
+	// COST 原价，REAL_COST 实际费用，CASH 现金，INCENTIVE 赠送金，VOUCHER 代金券，TRANSFER 分成金，TAX 税，AMOUNT_BEFORE_TAX 现金支付(税前)
+	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
+
+	// 有效期起始时间 2025-01-01
+	PeriodBegin *string `json:"PeriodBegin,omitnil,omitempty" name:"PeriodBegin"`
+
+	// 有效期结束时间  2025-12-01
+	PeriodEnd *string `json:"PeriodEnd,omitnil,omitempty" name:"PeriodEnd"`
+
+	// COST，USAGE，RI，SP
+	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
+
+	// FIX 固定值，CYCLE 不同值
+	PlanType *string `json:"PlanType,omitnil,omitempty" name:"PlanType"`
+
+	// 阈值提醒
+	WarnJson []*BudgetWarn `json:"WarnJson,omitnil,omitempty" name:"WarnJson"`
+
+	// 用户Uin
+	PayerUin *uint64 `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
+
+	// 波动提醒
+	WaveThresholdJson []*WaveThresholdForm `json:"WaveThresholdJson,omitnil,omitempty" name:"WaveThresholdJson"`
+
+	// 预算备注
+	BudgetNote *string `json:"BudgetNote,omitnil,omitempty" name:"BudgetNote"`
+
+	// 自定义发送对象信息
+	SendDetail *string `json:"SendDetail,omitnil,omitempty" name:"SendDetail"`
+
+	// 0:默认uin发送
+	DefaultMode *int64 `json:"DefaultMode,omitnil,omitempty" name:"DefaultMode"`
+
+	// CUS 自定义预算，ZERO_COST 零支出预算模板，BY_MONTH 按月费用预算模板
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
+
+	// (1, "未超支"),
+	// (2, "超支")
+	MoneyStatus *int64 `json:"MoneyStatus,omitnil,omitempty" name:"MoneyStatus"`
+
+	// 提醒次数
+	RemindTimes *int64 `json:"RemindTimes,omitnil,omitempty" name:"RemindTimes"`
+
+	// 创建预算时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新预算时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 预算关联Id
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// NO_FORECAST(没有设置预测),
+	//  FORECAST_NO_DATA(设置了预测,但是没有数据),
+	// FORECAST_HAS_DATA(设置了预测,且有预测数据)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasForecast *string `json:"HasForecast,omitnil,omitempty" name:"HasForecast"`
+
+	// 预测费用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForecastCost *string `json:"ForecastCost,omitnil,omitempty" name:"ForecastCost"`
+
+	// 预测进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForecastProgress *string `json:"ForecastProgress,omitnil,omitempty" name:"ForecastProgress"`
+
+	// 实际费用
+	RealCost *string `json:"RealCost,omitnil,omitempty" name:"RealCost"`
+
+	// 自定义发送
+	BudgetSendInfoForm []*BudgetSendInfoDto `json:"BudgetSendInfoForm,omitnil,omitempty" name:"BudgetSendInfoForm"`
+
+	// 当前周期
+	CurDateDesc *string `json:"CurDateDesc,omitnil,omitempty" name:"CurDateDesc"`
+
+	//  EXPIRED  已过期
+	// ACTIVE 生效中
+	// UNACTIVATED 已失效
+	// ACTIVATED 待生效
+	BudgetStatus *string `json:"BudgetStatus,omitnil,omitempty" name:"BudgetStatus"`
+
+	// 预算维度范围条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DimensionsRange *BudgetConditionsForm `json:"DimensionsRange,omitnil,omitempty" name:"DimensionsRange"`
+
+	// 预算进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetProgress *string `json:"BudgetProgress,omitnil,omitempty" name:"BudgetProgress"`
+
+	// 预算类型设置为计划预算时返回预算额度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetQuotaJson []*BudgetPlan `json:"BudgetQuotaJson,omitnil,omitempty" name:"BudgetQuotaJson"`
+}
+
+type BudgetInfoApiResponse struct {
+	// 预算项目id
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// 更新预算时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type BudgetInfoDiffEntity struct {
+	// 变更属性
+	Property *string `json:"Property,omitnil,omitempty" name:"Property"`
+
+	// 变更前内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Before *string `json:"Before,omitnil,omitempty" name:"Before"`
+
+	// 变更后内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	After *string `json:"After,omitnil,omitempty" name:"After"`
+}
+
+type BudgetOperationLogEntity struct {
+	// Uin
+	PayerUin *uint64 `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
+
+	// 主用户Uin
+	OwnerUin *uint64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 操作用户Uin
+	OperateUin *uint64 `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
+
+	// 日期
+	BillDay *uint64 `json:"BillDay,omitnil,omitempty" name:"BillDay"`
+
+	// 月份
+	BillMonth *string `json:"BillMonth,omitnil,omitempty" name:"BillMonth"`
+
+	// 修改类型：ADD(新增)、UPDATE(更新)
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 变更信息
+	DiffValue []*BudgetInfoDiffEntity `json:"DiffValue,omitnil,omitempty" name:"DiffValue"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 修改渠道：官网修改/API修改
+	OperationChannel *string `json:"OperationChannel,omitnil,omitempty" name:"OperationChannel"`
+
+	// 预算项目id
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+}
+
+type BudgetPlan struct {
+	// 前端页面日期显示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DateDesc *string `json:"DateDesc,omitnil,omitempty" name:"DateDesc"`
+
+	// 预算额度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quota *string `json:"Quota,omitnil,omitempty" name:"Quota"`
+}
+
+type BudgetRemindRecordList struct {
+	// 自动优化 COUNT SQL 如果遇到 jSqlParser 无法解析情况，设置该参数为 false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OptimizeCountSql *bool `json:"OptimizeCountSql,omitnil,omitempty" name:"OptimizeCountSql"`
+
+	// 分页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pages *uint64 `json:"Pages,omitnil,omitempty" name:"Pages"`
+
+	// 排序字段信息，允许前端传入的时候，注意 SQL 注入问题，可以使用 SqlInjectionUtils.check(...) 检查文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Orders []*OrderDto `json:"Orders,omitnil,omitempty" name:"Orders"`
+
+	// xml 自定义 count 查询的 statementId 也可以不用指定在分页 statementId 后面加上 _mpCount 例如分页 selectPageById 指定 count 的查询 statementId 设置为 selectPageById_mpCount 即可默认找到该 SQL 执行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CountId *string `json:"CountId,omitnil,omitempty" name:"CountId"`
+
+	// 分页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 单页分页条数限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxLimit *string `json:"MaxLimit,omitnil,omitempty" name:"MaxLimit"`
+
+	// 查询数据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Records []*BudgetRemindRecords `json:"Records,omitnil,omitempty" name:"Records"`
+
+	// 当前页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Current *uint64 `json:"Current,omitnil,omitempty" name:"Current"`
+
+	// 是否进行 count 查询，如果只想查询到列表不要查询总记录数，设置该参数为 false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchCount *bool `json:"SearchCount,omitnil,omitempty" name:"SearchCount"`
+}
+
+type BudgetRemindRecords struct {
+	// 预算周期
+	DateDesc *string `json:"DateDesc,omitnil,omitempty" name:"DateDesc"`
+
+	// 实际费用
+	RealCost *string `json:"RealCost,omitnil,omitempty" name:"RealCost"`
+
+	// 预算值额度
+	BudgetQuota *string `json:"BudgetQuota,omitnil,omitempty" name:"BudgetQuota"`
+
+	// 提醒类型。
+	// 枚举值:
+	// BUDGET 预算提醒,
+	// WAVE 波动提醒.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmType *string `json:"AlarmType,omitnil,omitempty" name:"AlarmType"`
+
+	// 消息内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageContent *string `json:"MessageContent,omitnil,omitempty" name:"MessageContent"`
+
+	// 发送时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SendTime *int64 `json:"SendTime,omitnil,omitempty" name:"SendTime"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type BudgetSendInfoDto struct {
+	// 通知周期,逗号隔开。
+	// 枚举值:
+	// 周一:1,
+	// 周二:2,
+	// 周天:7
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeekDays []*uint64 `json:"WeekDays,omitnil,omitempty" name:"WeekDays"`
+
+	// 接收类型。
+	// 枚举值:
+	// UIN 默认模式,
+	// USER 用户,
+	// GROUP 用户组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverType *string `json:"ReceiverType,omitnil,omitempty" name:"ReceiverType"`
+
+	// 发送接收窗口HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 预算配置id（预算名称）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetId *int64 `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// 接收渠道,逗号隔开;
+	// 枚举值:
+	// TITLE 标题，
+	// SITE 站内信,
+	// EMAIL 邮件,
+	// SMS 短信,
+	// WECHAT 微信,
+	// VOICE 语音,
+	// QYWX 企业微信;
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoticeWays []*string `json:"NoticeWays,omitnil,omitempty" name:"NoticeWays"`
+
+	// 发送开始窗口HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 用户id,用户组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverIds []*uint64 `json:"ReceiverIds,omitnil,omitempty" name:"ReceiverIds"`
+}
+
+type BudgetWarn struct {
+	// ACTUAL 实际金额，
+	// FORECAST 预测金额
+	WarnType *string `json:"WarnType,omitnil,omitempty" name:"WarnType"`
+
+	// PERCENTAGE 预算金额的百分比，ABS 固定值
+	CalType *string `json:"CalType,omitnil,omitempty" name:"CalType"`
+
+	// 阈值（大于等于0）
+	ThresholdValue *string `json:"ThresholdValue,omitnil,omitempty" name:"ThresholdValue"`
+}
+
 type BusinessSummaryInfo struct {
 	// 产品编码
 	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
@@ -2611,6 +2973,150 @@ func (r *CreateAllocationUnitResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateBudgetRequestParams struct {
+	// 预算名称
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// DAY 天，MONTH 月度，QUARTER 季度 ，YEAR 年度
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 有效期起始时间 2025-01-01(周期: 天) / 2025-01（周期: 月）
+	PeriodBegin *string `json:"PeriodBegin,omitnil,omitempty" name:"PeriodBegin"`
+
+	// 有效期结束时间  2025-12-01(周期：天)  / 2025-12（周期：月）
+	PeriodEnd *string `json:"PeriodEnd,omitnil,omitempty" name:"PeriodEnd"`
+
+	// FIX 固定预算，CYCLE 计划预算
+	PlanType *string `json:"PlanType,omitnil,omitempty" name:"PlanType"`
+
+	// 预算值额度
+	// 预算计划类型为FIX(固定预算)时传定值；
+	// 预算计划类型为CYCLE(计划预算)时传[{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}]；
+	BudgetQuota *string `json:"BudgetQuota,omitnil,omitempty" name:"BudgetQuota"`
+
+	// BILL  系统账单，CONSUMPTION  消耗账单
+	BillType *string `json:"BillType,omitnil,omitempty" name:"BillType"`
+
+	// COST 原价，REAL_COST 实际费用，CASH 现金，INCENTIVE 赠送金，VOUCHER 代金券，TRANSFER 分成金，TAX 税，AMOUNT_BEFORE_TAX 现金支付(税前)
+	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
+
+	// 阈值提醒
+	WarnJson []*BudgetWarn `json:"WarnJson,omitnil,omitempty" name:"WarnJson"`
+
+	// 预算备注
+	BudgetNote *string `json:"BudgetNote,omitnil,omitempty" name:"BudgetNote"`
+
+	// 预算维度范围条件
+	DimensionsRange *BudgetConditionsForm `json:"DimensionsRange,omitnil,omitempty" name:"DimensionsRange"`
+
+	// 波动提醒
+	WaveThresholdJson []*WaveThresholdForm `json:"WaveThresholdJson,omitnil,omitempty" name:"WaveThresholdJson"`
+}
+
+type CreateBudgetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 预算名称
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// DAY 天，MONTH 月度，QUARTER 季度 ，YEAR 年度
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 有效期起始时间 2025-01-01(周期: 天) / 2025-01（周期: 月）
+	PeriodBegin *string `json:"PeriodBegin,omitnil,omitempty" name:"PeriodBegin"`
+
+	// 有效期结束时间  2025-12-01(周期：天)  / 2025-12（周期：月）
+	PeriodEnd *string `json:"PeriodEnd,omitnil,omitempty" name:"PeriodEnd"`
+
+	// FIX 固定预算，CYCLE 计划预算
+	PlanType *string `json:"PlanType,omitnil,omitempty" name:"PlanType"`
+
+	// 预算值额度
+	// 预算计划类型为FIX(固定预算)时传定值；
+	// 预算计划类型为CYCLE(计划预算)时传[{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}]；
+	BudgetQuota *string `json:"BudgetQuota,omitnil,omitempty" name:"BudgetQuota"`
+
+	// BILL  系统账单，CONSUMPTION  消耗账单
+	BillType *string `json:"BillType,omitnil,omitempty" name:"BillType"`
+
+	// COST 原价，REAL_COST 实际费用，CASH 现金，INCENTIVE 赠送金，VOUCHER 代金券，TRANSFER 分成金，TAX 税，AMOUNT_BEFORE_TAX 现金支付(税前)
+	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
+
+	// 阈值提醒
+	WarnJson []*BudgetWarn `json:"WarnJson,omitnil,omitempty" name:"WarnJson"`
+
+	// 预算备注
+	BudgetNote *string `json:"BudgetNote,omitnil,omitempty" name:"BudgetNote"`
+
+	// 预算维度范围条件
+	DimensionsRange *BudgetConditionsForm `json:"DimensionsRange,omitnil,omitempty" name:"DimensionsRange"`
+
+	// 波动提醒
+	WaveThresholdJson []*WaveThresholdForm `json:"WaveThresholdJson,omitnil,omitempty" name:"WaveThresholdJson"`
+}
+
+func (r *CreateBudgetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBudgetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BudgetName")
+	delete(f, "CycleType")
+	delete(f, "PeriodBegin")
+	delete(f, "PeriodEnd")
+	delete(f, "PlanType")
+	delete(f, "BudgetQuota")
+	delete(f, "BillType")
+	delete(f, "FeeType")
+	delete(f, "WarnJson")
+	delete(f, "BudgetNote")
+	delete(f, "DimensionsRange")
+	delete(f, "WaveThresholdJson")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBudgetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBudgetResponseParams struct {
+	// 创建预算返回信息
+	Data *BudgetInfoApiResponse `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// create success
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 返回码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBudgetResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBudgetResponseParams `json:"Response"`
+}
+
+func (r *CreateBudgetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBudgetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateGatherRuleRequestParams struct {
 	// 规则所属分账单元ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -2679,6 +3185,42 @@ func (r *CreateGatherRuleResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateGatherRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DataForBudgetInfoPage struct {
+	// 分页
+	Pages *uint64 `json:"Pages,omitnil,omitempty" name:"Pages"`
+
+	// 分页大小
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 总量
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 查询数据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Records []*BudgetExtend `json:"Records,omitnil,omitempty" name:"Records"`
+
+	// 当前页
+	Current *uint64 `json:"Current,omitnil,omitempty" name:"Current"`
+}
+
+type DataForBudgetOperationLogPage struct {
+	// 分页
+	Pages *uint64 `json:"Pages,omitnil,omitempty" name:"Pages"`
+
+	// 分页大小
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 总量
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 查询数据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Records []*BudgetOperationLogEntity `json:"Records,omitnil,omitempty" name:"Records"`
+
+	// 当前页
+	Current *uint64 `json:"Current,omitnil,omitempty" name:"Current"`
 }
 
 type Deal struct {
@@ -2947,6 +3489,69 @@ func (r *DeleteAllocationUnitResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAllocationUnitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBudgetRequestParams struct {
+	// 预算项目id
+	BudgetIds []*string `json:"BudgetIds,omitnil,omitempty" name:"BudgetIds"`
+}
+
+type DeleteBudgetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 预算项目id
+	BudgetIds []*string `json:"BudgetIds,omitnil,omitempty" name:"BudgetIds"`
+}
+
+func (r *DeleteBudgetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBudgetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BudgetIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBudgetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBudgetResponseParams struct {
+	// 返回删除预算项目id
+	Data []*string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 信息提示
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 返回码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBudgetResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBudgetResponseParams `json:"Response"`
+}
+
+func (r *DeleteBudgetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBudgetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6644,6 +7249,260 @@ func (r *DescribeBillSummaryResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBudgetOperationLogRequestParams struct {
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 每页数目
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 预算项目id
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+}
+
+type DescribeBudgetOperationLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 每页数目
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 预算项目id
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+}
+
+func (r *DescribeBudgetOperationLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBudgetOperationLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "BudgetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBudgetOperationLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBudgetOperationLogResponseParams struct {
+	// 预算修改记录详情
+	Data *DataForBudgetOperationLogPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 信息提示
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 返回码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBudgetOperationLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBudgetOperationLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeBudgetOperationLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBudgetOperationLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBudgetRemindRecordListRequestParams struct {
+	// 页码，整型
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 每页数目，整型
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 预算基础信息关联id
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+}
+
+type DescribeBudgetRemindRecordListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码，整型
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 每页数目，整型
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 预算基础信息关联id
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+}
+
+func (r *DescribeBudgetRemindRecordListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBudgetRemindRecordListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "BudgetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBudgetRemindRecordListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBudgetRemindRecordListResponseParams struct {
+	// 预算配置属性
+	Data *BudgetRemindRecordList `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 错误信息提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 错误响应码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBudgetRemindRecordListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBudgetRemindRecordListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBudgetRemindRecordListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBudgetRemindRecordListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBudgetRequestParams struct {
+	// 页码，整型
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 每页数目，整型
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 预算项目id
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// 预算名称
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// EXPIRED失效，ACTIVE生效中， ACTIVATED待生效
+	BudgetStatus *string `json:"BudgetStatus,omitnil,omitempty" name:"BudgetStatus"`
+
+	// DAY天 MONTH月度 QUARTER季度 YEAR年度
+	CycleTypes []*string `json:"CycleTypes,omitnil,omitempty" name:"CycleTypes"`
+}
+
+type DescribeBudgetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码，整型
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 每页数目，整型
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 预算项目id
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// 预算名称
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// EXPIRED失效，ACTIVE生效中， ACTIVATED待生效
+	BudgetStatus *string `json:"BudgetStatus,omitnil,omitempty" name:"BudgetStatus"`
+
+	// DAY天 MONTH月度 QUARTER季度 YEAR年度
+	CycleTypes []*string `json:"CycleTypes,omitnil,omitempty" name:"CycleTypes"`
+}
+
+func (r *DescribeBudgetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBudgetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "BudgetId")
+	delete(f, "BudgetName")
+	delete(f, "BudgetStatus")
+	delete(f, "CycleTypes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBudgetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBudgetResponseParams struct {
+	// 预算项目详情
+	Data *DataForBudgetInfoPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 信息提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 返回码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBudgetResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBudgetResponseParams `json:"Response"`
+}
+
+func (r *DescribeBudgetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBudgetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCostDetailRequestParams struct {
 	// 数量，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -9057,6 +9916,158 @@ func (r *ModifyAllocationUnitResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyBudgetRequestParams struct {
+	// 预算项目id
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// 预算名称
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// DAY 天，MONTH 月度，QUARTER 季度 ，YEAR 年度
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 有效期起始时间 2025-01-01
+	PeriodBegin *string `json:"PeriodBegin,omitnil,omitempty" name:"PeriodBegin"`
+
+	// 有效期结束时间  2025-12-01
+	PeriodEnd *string `json:"PeriodEnd,omitnil,omitempty" name:"PeriodEnd"`
+
+	// FIX 固定值，CYCLE 不同值
+	PlanType *string `json:"PlanType,omitnil,omitempty" name:"PlanType"`
+
+	// 预算值额度 
+	// 预算计划类型固定预算时设为定值；
+	// 预算计划类型为CYCLE(计划预算)时传[{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}]；
+	BudgetQuota *string `json:"BudgetQuota,omitnil,omitempty" name:"BudgetQuota"`
+
+	// BILL  系统账单，CONSUMPTION  消耗账单
+	BillType *string `json:"BillType,omitnil,omitempty" name:"BillType"`
+
+	// COST 原价，REAL_COST 实际费用，CASH 现金，INCENTIVE 赠送金，VOUCHER 代金券，TRANSFER 分成金，TAX 税，AMOUNT_BEFORE_TAX 现金支付(税前)
+	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
+
+	// 阈值提醒
+	WarnJson []*BudgetWarn `json:"WarnJson,omitnil,omitempty" name:"WarnJson"`
+
+	// 预算备注
+	BudgetNote *string `json:"BudgetNote,omitnil,omitempty" name:"BudgetNote"`
+
+	// 预算维度范围条件
+	DimensionsRange *BudgetConditionsForm `json:"DimensionsRange,omitnil,omitempty" name:"DimensionsRange"`
+
+	// 波动提醒
+	WaveThresholdJson []*WaveThresholdForm `json:"WaveThresholdJson,omitnil,omitempty" name:"WaveThresholdJson"`
+}
+
+type ModifyBudgetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 预算项目id
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// 预算名称
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// DAY 天，MONTH 月度，QUARTER 季度 ，YEAR 年度
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 有效期起始时间 2025-01-01
+	PeriodBegin *string `json:"PeriodBegin,omitnil,omitempty" name:"PeriodBegin"`
+
+	// 有效期结束时间  2025-12-01
+	PeriodEnd *string `json:"PeriodEnd,omitnil,omitempty" name:"PeriodEnd"`
+
+	// FIX 固定值，CYCLE 不同值
+	PlanType *string `json:"PlanType,omitnil,omitempty" name:"PlanType"`
+
+	// 预算值额度 
+	// 预算计划类型固定预算时设为定值；
+	// 预算计划类型为CYCLE(计划预算)时传[{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}]；
+	BudgetQuota *string `json:"BudgetQuota,omitnil,omitempty" name:"BudgetQuota"`
+
+	// BILL  系统账单，CONSUMPTION  消耗账单
+	BillType *string `json:"BillType,omitnil,omitempty" name:"BillType"`
+
+	// COST 原价，REAL_COST 实际费用，CASH 现金，INCENTIVE 赠送金，VOUCHER 代金券，TRANSFER 分成金，TAX 税，AMOUNT_BEFORE_TAX 现金支付(税前)
+	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
+
+	// 阈值提醒
+	WarnJson []*BudgetWarn `json:"WarnJson,omitnil,omitempty" name:"WarnJson"`
+
+	// 预算备注
+	BudgetNote *string `json:"BudgetNote,omitnil,omitempty" name:"BudgetNote"`
+
+	// 预算维度范围条件
+	DimensionsRange *BudgetConditionsForm `json:"DimensionsRange,omitnil,omitempty" name:"DimensionsRange"`
+
+	// 波动提醒
+	WaveThresholdJson []*WaveThresholdForm `json:"WaveThresholdJson,omitnil,omitempty" name:"WaveThresholdJson"`
+}
+
+func (r *ModifyBudgetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBudgetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BudgetId")
+	delete(f, "BudgetName")
+	delete(f, "CycleType")
+	delete(f, "PeriodBegin")
+	delete(f, "PeriodEnd")
+	delete(f, "PlanType")
+	delete(f, "BudgetQuota")
+	delete(f, "BillType")
+	delete(f, "FeeType")
+	delete(f, "WarnJson")
+	delete(f, "BudgetNote")
+	delete(f, "DimensionsRange")
+	delete(f, "WaveThresholdJson")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBudgetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBudgetResponseParams struct {
+	// 更新预算返回信息
+	Data *BudgetInfoApiResponse `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// update success
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 返回码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBudgetResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBudgetResponseParams `json:"Response"`
+}
+
+func (r *ModifyBudgetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBudgetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyGatherRuleRequestParams struct {
 	// 所编辑归集规则ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -9122,6 +10133,16 @@ func (r *ModifyGatherRuleResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyGatherRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type OrderDto struct {
+	// 字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Column *string `json:"Column,omitnil,omitempty" name:"Column"`
+
+	// 是否升序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
 }
 
 // Predefined struct for user
@@ -9400,6 +10421,16 @@ type TagSummaryOverviewItem struct {
 	TotalCost *string `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 }
 
+type TagsForm struct {
+	// key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue []*string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
 type UsageDetails struct {
 	// 商品名
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
@@ -9494,4 +10525,24 @@ type VoucherInfos struct {
 
 	// 发券时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type WaveThresholdForm struct {
+	// ACTUAL 实际金额，FORECAST 预测金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarnType *string `json:"WarnType,omitnil,omitempty" name:"WarnType"`
+
+	// 波动阈值（大于等于0）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Threshold *string `json:"Threshold,omitnil,omitempty" name:"Threshold"`
+
+	// 告警类型：chain 环比，yoy 同比，fix 固定值
+	// （支持类型：日环比 chain day，日同比周维度 chain weekday，日同比月维度 yoy  day，日固定值 fix day，月环比 chain month，月固定值 fix month）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
+
+	// 告警维度：day 日，month 月，weekday 周
+	// （支持类型：日环比 chain day，日同比周维度 chain weekday，日同比月维度 yoy  day，日固定值 fix day，月环比 chain month，月固定值 fix month）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 }

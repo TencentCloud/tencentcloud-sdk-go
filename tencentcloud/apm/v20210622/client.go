@@ -287,6 +287,64 @@ func (c *Client) DescribeApmInstancesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeApmServiceMetricRequest() (request *DescribeApmServiceMetricRequest) {
+    request = &DescribeApmServiceMetricRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeApmServiceMetric")
+    
+    
+    return
+}
+
+func NewDescribeApmServiceMetricResponse() (response *DescribeApmServiceMetricResponse) {
+    response = &DescribeApmServiceMetricResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApmServiceMetric
+// 获取 APM 应用指标列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICENOTFOUND = "FailedOperation.ServiceNotFound"
+//  FAILEDOPERATION_SERVICENOTMATCHAPPIDERR = "FailedOperation.ServiceNotMatchAppIdErr"
+func (c *Client) DescribeApmServiceMetric(request *DescribeApmServiceMetricRequest) (response *DescribeApmServiceMetricResponse, err error) {
+    return c.DescribeApmServiceMetricWithContext(context.Background(), request)
+}
+
+// DescribeApmServiceMetric
+// 获取 APM 应用指标列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICENOTFOUND = "FailedOperation.ServiceNotFound"
+//  FAILEDOPERATION_SERVICENOTMATCHAPPIDERR = "FailedOperation.ServiceNotMatchAppIdErr"
+func (c *Client) DescribeApmServiceMetricWithContext(ctx context.Context, request *DescribeApmServiceMetricRequest) (response *DescribeApmServiceMetricResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmServiceMetricRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeApmServiceMetric")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApmServiceMetric require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApmServiceMetricResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGeneralApmApplicationConfigRequest() (request *DescribeGeneralApmApplicationConfigRequest) {
     request = &DescribeGeneralApmApplicationConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

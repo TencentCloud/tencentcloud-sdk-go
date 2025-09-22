@@ -767,10 +767,14 @@ type ControlAIConversationRequestParams struct {
 	// 控制命令，目前支持命令如下：
 	// 
 	// - ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+	// - InvokeLLM，服务端发送文本给大模型，触发对话
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 服务端发送播报文本命令，当Command为ServerPushText时必填
 	ServerPushText *ServerPushText `json:"ServerPushText,omitnil,omitempty" name:"ServerPushText"`
+
+	// 服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+	InvokeLLM *InvokeLLM `json:"InvokeLLM,omitnil,omitempty" name:"InvokeLLM"`
 }
 
 type ControlAIConversationRequest struct {
@@ -785,10 +789,14 @@ type ControlAIConversationRequest struct {
 	// 控制命令，目前支持命令如下：
 	// 
 	// - ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+	// - InvokeLLM，服务端发送文本给大模型，触发对话
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 服务端发送播报文本命令，当Command为ServerPushText时必填
 	ServerPushText *ServerPushText `json:"ServerPushText,omitnil,omitempty" name:"ServerPushText"`
+
+	// 服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+	InvokeLLM *InvokeLLM `json:"InvokeLLM,omitnil,omitempty" name:"InvokeLLM"`
 }
 
 func (r *ControlAIConversationRequest) ToJsonString() string {
@@ -807,6 +815,7 @@ func (r *ControlAIConversationRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "Command")
 	delete(f, "ServerPushText")
+	delete(f, "InvokeLLM")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlAIConversationRequest has unknown keys!", "")
 	}
@@ -1779,10 +1788,10 @@ type CreateAutoCalloutTaskRequestParams struct {
 	// 最大尝试次数，1-3 次
 	Tries *uint64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
-	// 自定义变量（仅高级版支持）
+	// 自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
 
-	// UUI
+	// 用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处
 	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
 
 	// 被叫属性
@@ -1828,10 +1837,10 @@ type CreateAutoCalloutTaskRequest struct {
 	// 最大尝试次数，1-3 次
 	Tries *uint64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
-	// 自定义变量（仅高级版支持）
+	// 自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
 
-	// UUI
+	// 用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处
 	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
 
 	// 被叫属性
@@ -2415,6 +2424,12 @@ type CreateOwnNumberApplyRequestParams struct {
 
 	// 送号前缀
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// 国内长途手机前缀码
+	MobileNddPrefix *string `json:"MobileNddPrefix,omitnil,omitempty" name:"MobileNddPrefix"`
+
+	// 同市固话去掉区号
+	LocalNumberTrimAC *bool `json:"LocalNumberTrimAC,omitnil,omitempty" name:"LocalNumberTrimAC"`
 }
 
 type CreateOwnNumberApplyRequest struct {
@@ -2431,6 +2446,12 @@ type CreateOwnNumberApplyRequest struct {
 
 	// 送号前缀
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// 国内长途手机前缀码
+	MobileNddPrefix *string `json:"MobileNddPrefix,omitnil,omitempty" name:"MobileNddPrefix"`
+
+	// 同市固话去掉区号
+	LocalNumberTrimAC *bool `json:"LocalNumberTrimAC,omitnil,omitempty" name:"LocalNumberTrimAC"`
 }
 
 func (r *CreateOwnNumberApplyRequest) ToJsonString() string {
@@ -2449,6 +2470,8 @@ func (r *CreateOwnNumberApplyRequest) FromJsonString(s string) error {
 	delete(f, "SipTrunkId")
 	delete(f, "DetailList")
 	delete(f, "Prefix")
+	delete(f, "MobileNddPrefix")
+	delete(f, "LocalNumberTrimAC")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOwnNumberApplyRequest has unknown keys!", "")
 	}
@@ -6267,6 +6290,14 @@ type Interface struct {
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 }
 
+type InvokeLLM struct {
+	// 请求LLM的内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 是否允许该文本打断机器人说话
+	Interrupt *bool `json:"Interrupt,omitnil,omitempty" name:"Interrupt"`
+}
+
 type Message struct {
 	// 消息类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -6442,6 +6473,12 @@ type ModifyOwnNumberApplyRequestParams struct {
 
 	// 送号前缀
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// 国内长途手机前缀码
+	MobileNddPrefix *string `json:"MobileNddPrefix,omitnil,omitempty" name:"MobileNddPrefix"`
+
+	// 同市固话去掉区号
+	LocalNumberTrimAC *bool `json:"LocalNumberTrimAC,omitnil,omitempty" name:"LocalNumberTrimAC"`
 }
 
 type ModifyOwnNumberApplyRequest struct {
@@ -6458,6 +6495,12 @@ type ModifyOwnNumberApplyRequest struct {
 
 	// 送号前缀
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// 国内长途手机前缀码
+	MobileNddPrefix *string `json:"MobileNddPrefix,omitnil,omitempty" name:"MobileNddPrefix"`
+
+	// 同市固话去掉区号
+	LocalNumberTrimAC *bool `json:"LocalNumberTrimAC,omitnil,omitempty" name:"LocalNumberTrimAC"`
 }
 
 func (r *ModifyOwnNumberApplyRequest) ToJsonString() string {
@@ -6476,6 +6519,8 @@ func (r *ModifyOwnNumberApplyRequest) FromJsonString(s string) error {
 	delete(f, "DetailList")
 	delete(f, "ApplyId")
 	delete(f, "Prefix")
+	delete(f, "MobileNddPrefix")
+	delete(f, "LocalNumberTrimAC")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOwnNumberApplyRequest has unknown keys!", "")
 	}
@@ -6722,6 +6767,9 @@ type OwnNumberApplyDetailItem struct {
 
 	// 呼出被叫格式，使用 {+E.164} 或 {E.164}, 
 	OutboundCalleeFormat *string `json:"OutboundCalleeFormat,omitnil,omitempty" name:"OutboundCalleeFormat"`
+
+	// 运营商号码
+	CarrierPhoneNumber *string `json:"CarrierPhoneNumber,omitnil,omitempty" name:"CarrierPhoneNumber"`
 }
 
 type PSTNSession struct {

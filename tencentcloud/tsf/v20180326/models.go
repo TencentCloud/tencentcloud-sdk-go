@@ -17948,7 +17948,6 @@ type ImageRepositoryResult struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 镜像服务器地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Server *string `json:"Server,omitnil,omitempty" name:"Server"`
 
 	// 列表信息

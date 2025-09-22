@@ -333,6 +333,20 @@ type ApmMetricRecord struct {
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type ApmServiceMetric struct {
+	// filed数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fields []*ApmField `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// tag数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 应用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceDetail *ServiceDetail `json:"ServiceDetail,omitnil,omitempty" name:"ServiceDetail"`
+}
+
 type ApmTag struct {
 	// 维度Key(列名，标签Key)
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -720,6 +734,161 @@ func (r *DescribeApmInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApmInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmServiceMetricRequestParams struct {
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 应用ID
+	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 排序
+	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 是否demo模式
+	Demo *bool `json:"Demo,omitnil,omitempty" name:"Demo"`
+
+	// 应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，比如："warning,error"
+	ServiceStatus *string `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
+
+	// 标签列表
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 页码
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeApmServiceMetricRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 应用ID
+	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 排序
+	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 是否demo模式
+	Demo *bool `json:"Demo,omitnil,omitempty" name:"Demo"`
+
+	// 应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，比如："warning,error"
+	ServiceStatus *string `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
+
+	// 标签列表
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 页码
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeApmServiceMetricRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmServiceMetricRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ServiceName")
+	delete(f, "ServiceID")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "OrderBy")
+	delete(f, "Demo")
+	delete(f, "ServiceStatus")
+	delete(f, "Tags")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmServiceMetricRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmServiceMetricResponseParams struct {
+	// 应用指标列表
+	ServiceMetricList []*ApmServiceMetric `json:"ServiceMetricList,omitnil,omitempty" name:"ServiceMetricList"`
+
+	// 符合筛选条件的应用数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 警示异常应用数
+	WarningErrorCount *int64 `json:"WarningErrorCount,omitnil,omitempty" name:"WarningErrorCount"`
+
+	// 应用总数
+	ApplicationCount *int64 `json:"ApplicationCount,omitnil,omitempty" name:"ApplicationCount"`
+
+	// 页码
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 异常应用数
+	ErrorCount *int64 `json:"ErrorCount,omitnil,omitempty" name:"ErrorCount"`
+
+	// 警示应用数
+	WarningCount *int64 `json:"WarningCount,omitnil,omitempty" name:"WarningCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApmServiceMetricResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApmServiceMetricResponseParams `json:"Response"`
+}
+
+func (r *DescribeApmServiceMetricResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmServiceMetricResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2053,6 +2222,43 @@ type QueryMetricItem struct {
 
 	// 同比，已弃用，不建议使用
 	Compare *string `json:"Compare,omitnil,omitempty" name:"Compare"`
+}
+
+type ServiceDetail struct {
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
+
+	// 业务系统ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// 用户appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// 主账号uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUIN *string `json:"CreateUIN,omitnil,omitempty" name:"CreateUIN"`
+
+	// 应用名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 应用描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceDescription *string `json:"ServiceDescription,omitnil,omitempty" name:"ServiceDescription"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 业务系统名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 }
 
 type Span struct {

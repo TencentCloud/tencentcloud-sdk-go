@@ -115,7 +115,7 @@ func NewQueryHunyuanTo3DProJobResponse() (response *QueryHunyuanTo3DProJobRespon
 // QueryHunyuanTo3DProJob
 // 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
 //
-// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+// 默认提供3个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) QueryHunyuanTo3DProJob(request *QueryHunyuanTo3DProJobRequest) (response *QueryHunyuanTo3DProJobResponse, err error) {
     return c.QueryHunyuanTo3DProJobWithContext(context.Background(), request)
 }
@@ -123,7 +123,7 @@ func (c *Client) QueryHunyuanTo3DProJob(request *QueryHunyuanTo3DProJobRequest) 
 // QueryHunyuanTo3DProJob
 // 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
 //
-// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+// 默认提供3个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) QueryHunyuanTo3DProJobWithContext(ctx context.Context, request *QueryHunyuanTo3DProJobRequest) (response *QueryHunyuanTo3DProJobResponse, err error) {
     if request == nil {
         request = NewQueryHunyuanTo3DProJobRequest()
@@ -163,7 +163,7 @@ func NewQueryHunyuanTo3DRapidJobResponse() (response *QueryHunyuanTo3DRapidJobRe
 // QueryHunyuanTo3DRapidJob
 // 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
 //
-// 默认提供3个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) QueryHunyuanTo3DRapidJob(request *QueryHunyuanTo3DRapidJobRequest) (response *QueryHunyuanTo3DRapidJobResponse, err error) {
     return c.QueryHunyuanTo3DRapidJobWithContext(context.Background(), request)
 }
@@ -171,7 +171,7 @@ func (c *Client) QueryHunyuanTo3DRapidJob(request *QueryHunyuanTo3DRapidJobReque
 // QueryHunyuanTo3DRapidJob
 // 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
 //
-// 默认提供3个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) QueryHunyuanTo3DRapidJobWithContext(ctx context.Context, request *QueryHunyuanTo3DRapidJobRequest) (response *QueryHunyuanTo3DRapidJobResponse, err error) {
     if request == nil {
         request = NewQueryHunyuanTo3DRapidJobRequest()
@@ -259,7 +259,7 @@ func NewSubmitHunyuanTo3DProJobResponse() (response *SubmitHunyuanTo3DProJobResp
 // SubmitHunyuanTo3DProJob
 // 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
 //
-// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+// 默认提供3个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) SubmitHunyuanTo3DProJob(request *SubmitHunyuanTo3DProJobRequest) (response *SubmitHunyuanTo3DProJobResponse, err error) {
     return c.SubmitHunyuanTo3DProJobWithContext(context.Background(), request)
 }
@@ -267,7 +267,7 @@ func (c *Client) SubmitHunyuanTo3DProJob(request *SubmitHunyuanTo3DProJobRequest
 // SubmitHunyuanTo3DProJob
 // 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
 //
-// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+// 默认提供3个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) SubmitHunyuanTo3DProJobWithContext(ctx context.Context, request *SubmitHunyuanTo3DProJobRequest) (response *SubmitHunyuanTo3DProJobResponse, err error) {
     if request == nil {
         request = NewSubmitHunyuanTo3DProJobRequest()
@@ -307,7 +307,7 @@ func NewSubmitHunyuanTo3DRapidJobResponse() (response *SubmitHunyuanTo3DRapidJob
 // SubmitHunyuanTo3DRapidJob
 // 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
 //
-// 默认提供3个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) SubmitHunyuanTo3DRapidJob(request *SubmitHunyuanTo3DRapidJobRequest) (response *SubmitHunyuanTo3DRapidJobResponse, err error) {
     return c.SubmitHunyuanTo3DRapidJobWithContext(context.Background(), request)
 }
@@ -315,7 +315,7 @@ func (c *Client) SubmitHunyuanTo3DRapidJob(request *SubmitHunyuanTo3DRapidJobReq
 // SubmitHunyuanTo3DRapidJob
 // 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
 //
-// 默认提供3个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) SubmitHunyuanTo3DRapidJobWithContext(ctx context.Context, request *SubmitHunyuanTo3DRapidJobRequest) (response *SubmitHunyuanTo3DRapidJobResponse, err error) {
     if request == nil {
         request = NewSubmitHunyuanTo3DRapidJobRequest()

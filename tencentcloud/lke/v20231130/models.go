@@ -7183,7 +7183,7 @@ type ListAppRequestParams struct {
 	// 智能体类型 dialogue：对话智能体，wechat：公众号智能体
 	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 
-	// 应用状态 1:未上线 2：运行中
+	// 应用状态 1:未上线   2：运行中
 	AppStatus *string `json:"AppStatus,omitnil,omitempty" name:"AppStatus"`
 }
 
@@ -7208,7 +7208,7 @@ type ListAppRequest struct {
 	// 智能体类型 dialogue：对话智能体，wechat：公众号智能体
 	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 
-	// 应用状态 1:未上线 2：运行中
+	// 应用状态 1:未上线   2：运行中
 	AppStatus *string `json:"AppStatus,omitnil,omitempty" name:"AppStatus"`
 }
 
@@ -9449,6 +9449,12 @@ type ModelInfo struct {
 
 	// 提供商类型 Self:提供商，Custom：自定义模型提供商，Third：第三方模型提供商
 	ProviderType *string `json:"ProviderType,omitnil,omitempty" name:"ProviderType"`
+
+	// 是否关闭模型超参
+	IsCloseModelParams *bool `json:"IsCloseModelParams,omitnil,omitempty" name:"IsCloseModelParams"`
+
+	// 是否支持深度思考
+	IsDeepThinking *bool `json:"IsDeepThinking,omitnil,omitempty" name:"IsDeepThinking"`
 }
 
 type ModelParameter struct {
@@ -13074,6 +13080,10 @@ type WorkflowRunNodeInfo struct {
 	// 大模型输出信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatisticInfos []*StatisticInfo `json:"StatisticInfos,omitnil,omitempty" name:"StatisticInfos"`
+
+	// 错误代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailCode *string `json:"FailCode,omitnil,omitempty" name:"FailCode"`
 }
 
 type YuanQi struct {
