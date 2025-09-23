@@ -10897,7 +10897,7 @@ type DescribeTemplatesRequestParams struct {
 	// 
 	// 设置为true之后， 返回参数PdfUrl，为模板PDF文件链接，有效期5分钟, 可以用于将PDF文件下载到本地
 	// 
-	// 注: `此功能需要开通功能白名单【第三方应用集成企业获取模版PDF下载链接】，使用前请联系对接的客户经理沟通。`
+	// 注: `此功能需要开通功能白名单【第三方应用集成企业获取模板PDF下载链接】，使用前请联系对接的客户经理沟通。`
 	WithPdfUrl *bool `json:"WithPdfUrl,omitnil,omitempty" name:"WithPdfUrl"`
 
 	// 操作者的信息
@@ -10985,7 +10985,7 @@ type DescribeTemplatesRequest struct {
 	// 
 	// 设置为true之后， 返回参数PdfUrl，为模板PDF文件链接，有效期5分钟, 可以用于将PDF文件下载到本地
 	// 
-	// 注: `此功能需要开通功能白名单【第三方应用集成企业获取模版PDF下载链接】，使用前请联系对接的客户经理沟通。`
+	// 注: `此功能需要开通功能白名单【第三方应用集成企业获取模板PDF下载链接】，使用前请联系对接的客户经理沟通。`
 	WithPdfUrl *bool `json:"WithPdfUrl,omitnil,omitempty" name:"WithPdfUrl"`
 
 	// 操作者的信息

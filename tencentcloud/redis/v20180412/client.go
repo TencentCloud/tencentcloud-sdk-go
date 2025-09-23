@@ -1853,7 +1853,7 @@ func NewDescribeInstanceAccountResponse() (response *DescribeInstanceAccountResp
 }
 
 // DescribeInstanceAccount
-// 本接口（DescribeInstanceAccount）用于查看实例子账号信息。
+// 本接口（DescribeInstanceAccount）用于查看实例账号信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1866,7 +1866,7 @@ func (c *Client) DescribeInstanceAccount(request *DescribeInstanceAccountRequest
 }
 
 // DescribeInstanceAccount
-// 本接口（DescribeInstanceAccount）用于查看实例子账号信息。
+// 本接口（DescribeInstanceAccount）用于查看实例账号信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5353,7 +5353,7 @@ func NewModifyInstanceBackupModeResponse() (response *ModifyInstanceBackupModeRe
 }
 
 // ModifyInstanceBackupMode
-// 修改实例的备份模式
+// 本接口（ModifyInstanceBackupMode）用于修改实例的备份模式。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5366,7 +5366,7 @@ func (c *Client) ModifyInstanceBackupMode(request *ModifyInstanceBackupModeReque
 }
 
 // ModifyInstanceBackupMode
-// 修改实例的备份模式
+// 本接口（ModifyInstanceBackupMode）用于修改实例的备份模式。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

@@ -725,6 +725,9 @@ const (
 	// 缺少多个参数错误
 	MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
 
+	// EIP实例开启了删除保护开关。
+	OPERATIONDENIED_ADDRESSDELETIONPROTECTIONENABLED = "OperationDenied.AddressDeletionProtectionEnabled"
+
 	// 指定公网IP处于隔离状态。
 	OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
 

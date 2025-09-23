@@ -4726,24 +4726,111 @@ type DisplayLeakageCode struct {
 	// 主键ID
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
+	// 公共字段
+	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
+
+	// 事件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 数据源
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+	RiskLevel *int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 仓库名称
+	HubName *string `json:"HubName,omitnil,omitempty" name:"HubName"`
+
 	// 链接
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 截图
+	Screenshot *string `json:"Screenshot,omitnil,omitempty" name:"Screenshot"`
+
+	// 建议
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// 关键词
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 处置状态：0-待处理 1-处理中 2-已处理
+	HandlingStatus *int64 `json:"HandlingStatus,omitnil,omitempty" name:"HandlingStatus"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type DisplayLeakageData struct {
 	// 主键ID
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
+	// 公共字段
+	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
+
+	// 事件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 数据源
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+	RiskLevel *int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
 	// 链接
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 截图
+	Screenshot *string `json:"Screenshot,omitnil,omitempty" name:"Screenshot"`
+
+	// 建议
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// 关键词
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 处置状态：0-待处理 1-处理中 2-已处理
+	HandlingStatus *int64 `json:"HandlingStatus,omitnil,omitempty" name:"HandlingStatus"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type DisplayLeakageEmail struct {
 	// 主键ID
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
+	// 公共字段
+	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
+
 	// 邮箱
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 用户名
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// 数据源
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+	RiskLevel *int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 建议
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// 关键词
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 处置状态：0-待处理 1-处理中 2-已处理
+	HandlingStatus *int64 `json:"HandlingStatus,omitnil,omitempty" name:"HandlingStatus"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type DisplayManage struct {

@@ -488,6 +488,9 @@ type Blueprint struct {
 
 	// 镜像是否已共享。
 	BlueprintShared *bool `json:"BlueprintShared,omitnil,omitempty" name:"BlueprintShared"`
+
+	// 镜像绑定的标签列表。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type BlueprintInstance struct {
@@ -712,6 +715,9 @@ type CreateBlueprintRequestParams struct {
 	// 默认取值：True
 	// 开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
 	ForcePowerOff *bool `json:"ForcePowerOff,omitnil,omitempty" name:"ForcePowerOff"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateBlueprintRequest struct {
@@ -733,6 +739,9 @@ type CreateBlueprintRequest struct {
 	// 默认取值：True
 	// 开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
 	ForcePowerOff *bool `json:"ForcePowerOff,omitnil,omitempty" name:"ForcePowerOff"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateBlueprintRequest) ToJsonString() string {
@@ -751,6 +760,7 @@ func (r *CreateBlueprintRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "InstanceId")
 	delete(f, "ForcePowerOff")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBlueprintRequest has unknown keys!", "")
 	}
@@ -789,6 +799,9 @@ type CreateDiskBackupRequestParams struct {
 
 	// 云硬盘备份点名称，最大长度为 90 。
 	DiskBackupName *string `json:"DiskBackupName,omitnil,omitempty" name:"DiskBackupName"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateDiskBackupRequest struct {
@@ -799,6 +812,9 @@ type CreateDiskBackupRequest struct {
 
 	// 云硬盘备份点名称，最大长度为 90 。
 	DiskBackupName *string `json:"DiskBackupName,omitnil,omitempty" name:"DiskBackupName"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateDiskBackupRequest) ToJsonString() string {
@@ -815,6 +831,7 @@ func (r *CreateDiskBackupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DiskId")
 	delete(f, "DiskBackupName")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDiskBackupRequest has unknown keys!", "")
 	}
@@ -874,6 +891,9 @@ type CreateDisksRequestParams struct {
 
 	// 自动挂载并初始化数据盘。
 	AutoMountConfiguration *AutoMountConfiguration `json:"AutoMountConfiguration,omitnil,omitempty" name:"AutoMountConfiguration"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateDisksRequest struct {
@@ -905,6 +925,9 @@ type CreateDisksRequest struct {
 
 	// 自动挂载并初始化数据盘。
 	AutoMountConfiguration *AutoMountConfiguration `json:"AutoMountConfiguration,omitnil,omitempty" name:"AutoMountConfiguration"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateDisksRequest) ToJsonString() string {
@@ -928,6 +951,7 @@ func (r *CreateDisksRequest) FromJsonString(s string) error {
 	delete(f, "DiskBackupQuota")
 	delete(f, "AutoVoucher")
 	delete(f, "AutoMountConfiguration")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisksRequest has unknown keys!", "")
 	}
@@ -1164,6 +1188,9 @@ type CreateInstanceSnapshotRequestParams struct {
 
 	// 快照名称，最长为 60 个字符。
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateInstanceSnapshotRequest struct {
@@ -1174,6 +1201,9 @@ type CreateInstanceSnapshotRequest struct {
 
 	// 快照名称，最长为 60 个字符。
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateInstanceSnapshotRequest) ToJsonString() string {
@@ -1190,6 +1220,7 @@ func (r *CreateInstanceSnapshotRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "SnapshotName")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceSnapshotRequest has unknown keys!", "")
 	}
@@ -1413,6 +1444,9 @@ func (r *CreateInstancesResponse) FromJsonString(s string) error {
 type CreateKeyPairRequestParams struct {
 	// 密钥对名称，可由数字，字母和下划线组成，长度不超过 25 个字符。
 	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateKeyPairRequest struct {
@@ -1420,6 +1454,9 @@ type CreateKeyPairRequest struct {
 	
 	// 密钥对名称，可由数字，字母和下划线组成，长度不超过 25 个字符。
 	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateKeyPairRequest) ToJsonString() string {
@@ -1435,6 +1472,7 @@ func (r *CreateKeyPairRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "KeyName")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKeyPairRequest has unknown keys!", "")
 	}
@@ -2150,7 +2188,12 @@ type DescribeBlueprintsRequestParams struct {
 	// 类型：String
 	// 必选：否
 	// 场景Id，可通过[查看使用场景列表](https://cloud.tencent.com/document/product/1207/83512)接口获取。
-	// 
+	// <li>tag-key</li>
+	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// <li>tag-value</li>
+	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// <li>tag:tag-key</li>
+	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds (可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取BlueprintId)和 Filters 。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -2191,7 +2234,12 @@ type DescribeBlueprintsRequest struct {
 	// 类型：String
 	// 必选：否
 	// 场景Id，可通过[查看使用场景列表](https://cloud.tencent.com/document/product/1207/83512)接口获取。
-	// 
+	// <li>tag-key</li>
+	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// <li>tag-value</li>
+	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// <li>tag:tag-key</li>
+	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds (可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取BlueprintId)和 Filters 。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -2561,7 +2609,12 @@ type DescribeDiskBackupsRequestParams struct {
 	// 取值：
 	// - SYSTEM_DISK - 系统盘
 	// - DATA_DISK - 数据盘
-	// 
+	// <li>tag-key</li>
+	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// <li>tag-value</li>
+	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// <li>tag:tag-key</li>
+	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -2595,7 +2648,12 @@ type DescribeDiskBackupsRequest struct {
 	// 取值：
 	// - SYSTEM_DISK - 系统盘
 	// - DATA_DISK - 数据盘
-	// 
+	// <li>tag-key</li>
+	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// <li>tag-value</li>
+	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// <li>tag:tag-key</li>
+	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -2882,6 +2940,12 @@ type DescribeDisksRequestParams struct {
 	// 类型：String
 	// 必选：否
 	// 取值：参考数据结构[Disk](https://cloud.tencent.com/document/api/1207/47576#Disk)中DiskState取值。
+	// tag-key
+	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// tag-value
+	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// tag:tag-key
+	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 DiskIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -2931,6 +2995,12 @@ type DescribeDisksRequest struct {
 	// 类型：String
 	// 必选：否
 	// 取值：参考数据结构[Disk](https://cloud.tencent.com/document/api/1207/47576#Disk)中DiskState取值。
+	// tag-key
+	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// tag-value
+	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// tag:tag-key
+	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 DiskIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -4592,6 +4662,12 @@ type DescribeKeyPairsRequestParams struct {
 	// <li>key-name</li>按照【密钥对名称】进行过滤（支持模糊匹配）。
 	// 类型：String
 	// 必选：否
+	// <li>tag-key</li>
+	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// <li>tag-value</li>
+	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// <li>tag:tag-key</li>
+	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 KeyIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -4615,6 +4691,12 @@ type DescribeKeyPairsRequest struct {
 	// <li>key-name</li>按照【密钥对名称】进行过滤（支持模糊匹配）。
 	// 类型：String
 	// 必选：否
+	// <li>tag-key</li>
+	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// <li>tag-value</li>
+	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// <li>tag:tag-key</li>
+	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 KeyIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -5278,12 +5360,10 @@ type DescribeSnapshotsRequestParams struct {
 	// 类型：String
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388">DescribeSnapshots</a> 接口返回值中的 SnapshotId 获取。
-	// 
 	// <li>disk-id</li>按照【磁盘 ID】进行过滤。
 	// 类型：String
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/66093">DescribeDisks</a> 接口返回值中的 DiskId 获取。
-	// 
 	// <li>snapshot-name</li>按照【快照名称】进行过滤。
 	// 类型：String
 	// 必选：否
@@ -5292,7 +5372,12 @@ type DescribeSnapshotsRequestParams struct {
 	// 类型：String
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
-	// 
+	// <li>tag-key</li>
+	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// <li>tag-value</li>
+	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// <li>tag:tag-key</li>
+	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 SnapshotIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -5316,12 +5401,10 @@ type DescribeSnapshotsRequest struct {
 	// 类型：String
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388">DescribeSnapshots</a> 接口返回值中的 SnapshotId 获取。
-	// 
 	// <li>disk-id</li>按照【磁盘 ID】进行过滤。
 	// 类型：String
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/66093">DescribeDisks</a> 接口返回值中的 DiskId 获取。
-	// 
 	// <li>snapshot-name</li>按照【快照名称】进行过滤。
 	// 类型：String
 	// 必选：否
@@ -5330,7 +5413,12 @@ type DescribeSnapshotsRequest struct {
 	// 类型：String
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
-	// 
+	// <li>tag-key</li>
+	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// <li>tag-value</li>
+	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// <li>tag:tag-key</li>
+	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 SnapshotIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -5768,6 +5856,9 @@ type Disk struct {
 
 	// 云硬盘的备份点配额数量。
 	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitnil,omitempty" name:"DiskBackupQuota"`
+
+	// 云硬盘绑定的标签列表。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type DiskBackup struct {
@@ -5808,6 +5899,9 @@ type DiskBackup struct {
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 	// 格式为： YYYY-MM-DDThh:mm:ssZ。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 云硬盘备份点绑定的标签列表。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type DiskBackupDeniedActions struct {
@@ -6222,6 +6316,9 @@ type ImportKeyPairRequestParams struct {
 
 	// 密钥对的公钥内容， OpenSSH RSA 格式。
 	PublicKey *string `json:"PublicKey,omitnil,omitempty" name:"PublicKey"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ImportKeyPairRequest struct {
@@ -6232,6 +6329,9 @@ type ImportKeyPairRequest struct {
 
 	// 密钥对的公钥内容， OpenSSH RSA 格式。
 	PublicKey *string `json:"PublicKey,omitnil,omitempty" name:"PublicKey"`
+
+	// 标签键和标签值。 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。 如果标签不存在会为您自动创建标签。 数组最多支持10个元素。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *ImportKeyPairRequest) ToJsonString() string {
@@ -6248,6 +6348,7 @@ func (r *ImportKeyPairRequest) FromJsonString(s string) error {
 	}
 	delete(f, "KeyName")
 	delete(f, "PublicKey")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportKeyPairRequest has unknown keys!", "")
 	}
@@ -7026,6 +7127,9 @@ type KeyPair struct {
 	// 密钥对私钥。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
+
+	// 密钥对绑定的标签列表。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type LoginConfiguration struct {
@@ -9495,6 +9599,9 @@ type Snapshot struct {
 
 	// 快照的创建时间。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 快照绑定的标签列表。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type SnapshotDeniedActions struct {

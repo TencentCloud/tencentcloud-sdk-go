@@ -2581,7 +2581,7 @@ type DescribeInstanceAccountRequestParams struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 分页大小。
+	// 分页大小。默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量。取Limit整数倍。计算公式：offset=limit*(页码-1)。
@@ -2594,7 +2594,7 @@ type DescribeInstanceAccountRequest struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 分页大小。
+	// 分页大小。默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量。取Limit整数倍。计算公式：offset=limit*(页码-1)。
@@ -8239,24 +8239,24 @@ func (r *ModifyInstanceAvailabilityZonesResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyInstanceBackupModeRequestParams struct {
-	// 实例的ID，长度在12-36之间。
+	// 实例的ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 备份模式：
-	// - SecondLevelBackup   秒级备份
-	// - NormalLevelBackup    普通备份
+	// - SecondLevelBackup   秒级备份。
+	// - NormalLevelBackup    普通备份。
 	BackupMode *string `json:"BackupMode,omitnil,omitempty" name:"BackupMode"`
 }
 
 type ModifyInstanceBackupModeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例的ID，长度在12-36之间。
+	// 实例的ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 备份模式：
-	// - SecondLevelBackup   秒级备份
-	// - NormalLevelBackup    普通备份
+	// - SecondLevelBackup   秒级备份。
+	// - NormalLevelBackup    普通备份。
 	BackupMode *string `json:"BackupMode,omitnil,omitempty" name:"BackupMode"`
 }
 
@@ -8282,7 +8282,7 @@ func (r *ModifyInstanceBackupModeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceBackupModeResponseParams struct {
-	// 任务ID
+	// 任务 ID。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8310,7 +8310,7 @@ type ModifyInstanceEventRequestParams struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 事件 ID。请通过 DescribeInstanceEvents 获取需修改的事件 ID。
+	// 事件 ID。请通过 [DescribeInstanceEvents](https://cloud.tencent.com/document/product/239/104779) 获取需修改的事件 ID。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 修改事件执行的计划开始时间。
@@ -8334,7 +8334,7 @@ type ModifyInstanceEventRequest struct {
 	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 事件 ID。请通过 DescribeInstanceEvents 获取需修改的事件 ID。
+	// 事件 ID。请通过 [DescribeInstanceEvents](https://cloud.tencent.com/document/product/239/104779) 获取需修改的事件 ID。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 修改事件执行的计划开始时间。

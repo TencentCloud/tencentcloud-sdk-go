@@ -6133,7 +6133,7 @@ type DescribeBillListRequestParams struct {
 	// all所有扣费类型;trade预付费支付;hour_h按量小时结;hour_d按量日结;hour_m按量月结;decompensate调账扣费;other第三方扣费;panshi 线下项目扣费;offline 线下产品扣费;
 	// 
 	// 当所选的交易类型为扣费recharge时： 
-	// online 在线充值;bank-enterprice 银企直连;offline 线下充值;transfer 分成充值
+	// online 在线充值;bank-enterprice 银企直联;offline 线下充值;transfer 分成充值
 	// 
 	// 当所选的交易类型为扣费cash时： 
 	// online 线上提现;offline 线下提现;panshi 赠送金清零
@@ -6181,7 +6181,7 @@ type DescribeBillListRequest struct {
 	// all所有扣费类型;trade预付费支付;hour_h按量小时结;hour_d按量日结;hour_m按量月结;decompensate调账扣费;other第三方扣费;panshi 线下项目扣费;offline 线下产品扣费;
 	// 
 	// 当所选的交易类型为扣费recharge时： 
-	// online 在线充值;bank-enterprice 银企直连;offline 线下充值;transfer 分成充值
+	// online 在线充值;bank-enterprice 银企直联;offline 线下充值;transfer 分成充值
 	// 
 	// 当所选的交易类型为扣费cash时： 
 	// online 线上提现;offline 线下提现;panshi 赠送金清零

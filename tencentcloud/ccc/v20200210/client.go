@@ -1635,6 +1635,60 @@ func (c *Client) DeleteStaffWithContext(ctx context.Context, request *DeleteStaf
     return
 }
 
+func NewDescribeAIAnalysisResultRequest() (request *DescribeAIAnalysisResultRequest) {
+    request = &DescribeAIAnalysisResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeAIAnalysisResult")
+    
+    
+    return
+}
+
+func NewDescribeAIAnalysisResultResponse() (response *DescribeAIAnalysisResultResponse) {
+    response = &DescribeAIAnalysisResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIAnalysisResult
+// 获取 AI 会话分析结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeAIAnalysisResult(request *DescribeAIAnalysisResultRequest) (response *DescribeAIAnalysisResultResponse, err error) {
+    return c.DescribeAIAnalysisResultWithContext(context.Background(), request)
+}
+
+// DescribeAIAnalysisResult
+// 获取 AI 会话分析结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeAIAnalysisResultWithContext(ctx context.Context, request *DescribeAIAnalysisResultRequest) (response *DescribeAIAnalysisResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIAnalysisResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ccc", APIVersion, "DescribeAIAnalysisResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIAnalysisResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIAnalysisResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAICallExtractResultRequest() (request *DescribeAICallExtractResultRequest) {
     request = &DescribeAICallExtractResultRequest{
         BaseRequest: &tchttp.BaseRequest{},

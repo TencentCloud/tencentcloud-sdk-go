@@ -1250,7 +1250,7 @@ type CreateBlockIgnoreRuleNewRequestParams struct {
 	// RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
-	// 是否覆盖重复数据，1覆盖，非1不覆盖，跳过重复数据
+	// 删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据
 	CoverDuplicate *int64 `json:"CoverDuplicate,omitnil,omitempty" name:"CoverDuplicate"`
 }
 
@@ -1263,7 +1263,7 @@ type CreateBlockIgnoreRuleNewRequest struct {
 	// RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
-	// 是否覆盖重复数据，1覆盖，非1不覆盖，跳过重复数据
+	// 删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据
 	CoverDuplicate *int64 `json:"CoverDuplicate,omitnil,omitempty" name:"CoverDuplicate"`
 }
 
@@ -2793,6 +2793,12 @@ type DescAcItem struct {
 
 	// 省份、城市简称
 	CityKey *string `json:"CityKey,omitnil,omitempty" name:"CityKey"`
+
+	// 规则创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 规则最近更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type DescNatDnatRule struct {
@@ -4698,6 +4704,15 @@ type DescribeLogStorageStatisticResponseParams struct {
 
 	// 后付费模式存储状态，0正常，1欠费停止写入
 	ArrearsStopWriting *int64 `json:"ArrearsStopWriting,omitnil,omitempty" name:"ArrearsStopWriting"`
+
+	// NDR流量日志存储量，单位B
+	NDRNetFlowSize *int64 `json:"NDRNetFlowSize,omitnil,omitempty" name:"NDRNetFlowSize"`
+
+	// NDR风险日志存储量，单位B
+	NDRRiskSize *int64 `json:"NDRRiskSize,omitnil,omitempty" name:"NDRRiskSize"`
+
+	// NDR日志存储天数
+	NDRStorageDay *int64 `json:"NDRStorageDay,omitnil,omitempty" name:"NDRStorageDay"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6707,6 +6722,12 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 
 	// 域名解析的IP统计
 	DnsParseCount *SgDnsParseCount `json:"DnsParseCount,omitnil,omitempty" name:"DnsParseCount"`
+
+	// 规则创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 规则最近更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 // Predefined struct for user
@@ -10927,6 +10948,12 @@ type StorageHistogram struct {
 	// 统计时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// NDR流量日志存储量，单位B
+	NDRNetflowSize *int64 `json:"NDRNetflowSize,omitnil,omitempty" name:"NDRNetflowSize"`
+
+	// NDR风险日志存储量，单位B
+	NDRRiskSize *int64 `json:"NDRRiskSize,omitnil,omitempty" name:"NDRRiskSize"`
 }
 
 type StorageHistogramShow struct {
@@ -11465,6 +11492,12 @@ type VpcRuleItem struct {
 
 	// 是否是无效规则，0 表示有效规则，1 表示无效规则，出参场景返回使用
 	Invalid *int64 `json:"Invalid,omitnil,omitempty" name:"Invalid"`
+
+	// 规则创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 规则最近更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type VpcZoneData struct {

@@ -6343,6 +6343,62 @@ func (c *Client) DescribeStudioProductWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeSubscribedTopicPolicyRequest() (request *DescribeSubscribedTopicPolicyRequest) {
+    request = &DescribeSubscribedTopicPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeSubscribedTopicPolicy")
+    
+    
+    return
+}
+
+func NewDescribeSubscribedTopicPolicyResponse() (response *DescribeSubscribedTopicPolicyResponse) {
+    response = &DescribeSubscribedTopicPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSubscribedTopicPolicy
+// 本接口（DescribeSubscribedTopicPolicy）用于获取设备已订阅Topic列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) DescribeSubscribedTopicPolicy(request *DescribeSubscribedTopicPolicyRequest) (response *DescribeSubscribedTopicPolicyResponse, err error) {
+    return c.DescribeSubscribedTopicPolicyWithContext(context.Background(), request)
+}
+
+// DescribeSubscribedTopicPolicy
+// 本接口（DescribeSubscribedTopicPolicy）用于获取设备已订阅Topic列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) DescribeSubscribedTopicPolicyWithContext(ctx context.Context, request *DescribeSubscribedTopicPolicyRequest) (response *DescribeSubscribedTopicPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubscribedTopicPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeSubscribedTopicPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubscribedTopicPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSubscribedTopicPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTWeSeeConfigRequest() (request *DescribeTWeSeeConfigRequest) {
     request = &DescribeTWeSeeConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6367,10 +6423,9 @@ func NewDescribeTWeSeeConfigResponse() (response *DescribeTWeSeeConfigResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
-//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeTWeSeeConfig(request *DescribeTWeSeeConfigRequest) (response *DescribeTWeSeeConfigResponse, err error) {
     return c.DescribeTWeSeeConfigWithContext(context.Background(), request)
 }
@@ -6380,10 +6435,9 @@ func (c *Client) DescribeTWeSeeConfig(request *DescribeTWeSeeConfigRequest) (res
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
-//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeTWeSeeConfigWithContext(ctx context.Context, request *DescribeTWeSeeConfigRequest) (response *DescribeTWeSeeConfigResponse, err error) {
     if request == nil {
         request = NewDescribeTWeSeeConfigRequest()
