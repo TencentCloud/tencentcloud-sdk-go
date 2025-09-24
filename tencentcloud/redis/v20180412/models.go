@@ -7220,6 +7220,8 @@ type InstanceSet struct {
 	CloseTime *string `json:"CloseTime,omitnil,omitempty" name:"CloseTime"`
 
 	// 从节点读取权重。
+	// - 0：表示关闭副本只读。
+	// - 100：表示开启副本只读。
 	SlaveReadWeight *int64 `json:"SlaveReadWeight,omitnil,omitempty" name:"SlaveReadWeight"`
 
 	// 实例关联的标签信息。

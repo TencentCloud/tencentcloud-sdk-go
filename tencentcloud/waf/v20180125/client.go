@@ -9713,7 +9713,7 @@ func NewModifyDomainWhiteRuleResponse() (response *ModifyDomainWhiteRuleResponse
 }
 
 // ModifyDomainWhiteRule
-// 更改某一条规则
+// 修改域名规则白名单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9726,7 +9726,7 @@ func (c *Client) ModifyDomainWhiteRule(request *ModifyDomainWhiteRuleRequest) (r
 }
 
 // ModifyDomainWhiteRule
-// 更改某一条规则
+// 修改域名规则白名单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

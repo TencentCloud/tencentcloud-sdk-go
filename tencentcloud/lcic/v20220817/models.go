@@ -1076,6 +1076,7 @@ func (r *CreateGroupWithSubGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRoomRequestParams struct {
 	// 课堂名称。
+	// 字符数不超过256
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 预定的课堂开始时间，unix时间戳（秒）。
@@ -1194,7 +1195,9 @@ type CreateRoomRequestParams struct {
 	// 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 
-	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	// 字幕转写功能开关。可以有以下取值：
+	// 0 不开启字幕转写功能（默认值）
+	// 1 自动转写模式：上课自动开启，下课自动停止
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
 	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
@@ -1205,6 +1208,7 @@ type CreateRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 课堂名称。
+	// 字符数不超过256
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 预定的课堂开始时间，unix时间戳（秒）。
@@ -1319,7 +1323,9 @@ type CreateRoomRequest struct {
 	// 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 
-	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	// 字幕转写功能开关。可以有以下取值：
+	// 0 不开启字幕转写功能（默认值）
+	// 1 自动转写模式：上课自动开启，下课自动停止
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
 	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
@@ -5153,6 +5159,7 @@ func (r *ModifyGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRoomRequestParams struct {
 	// 房间ID。
+	// 字符数不超过256
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 低代码互动课堂的SdkAppId
@@ -5254,7 +5261,9 @@ type ModifyRoomRequestParams struct {
 	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 
-	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	// 字幕转写功能开关。可以有以下取值：
+	// 0 不开启字幕转写功能（默认值）
+	// 1 自动转写模式：上课自动开启，下课自动停止
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
 	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
@@ -5268,6 +5277,7 @@ type ModifyRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间ID。
+	// 字符数不超过256
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 低代码互动课堂的SdkAppId
@@ -5367,7 +5377,9 @@ type ModifyRoomRequest struct {
 	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 
-	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	// 字幕转写功能开关。可以有以下取值：
+	// 0 不开启字幕转写功能（默认值）
+	// 1 自动转写模式：上课自动开启，下课自动停止
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
 	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
@@ -5644,6 +5656,7 @@ func (r *RegisterUserResponse) FromJsonString(s string) error {
 
 type RoomInfo struct {
 	// 房间名称。
+	// 字符数不超过256
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 预定的房间开始时间，unix时间戳。
@@ -5740,7 +5753,9 @@ type RoomInfo struct {
 	// 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 
-	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	// 字幕转写功能开关。可以有以下取值：
+	// 0 不开启字幕转写功能（默认值）
+	// 1 自动转写模式：上课自动开启，下课自动停止
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
 	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效

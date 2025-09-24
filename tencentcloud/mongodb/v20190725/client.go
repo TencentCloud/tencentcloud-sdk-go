@@ -2851,7 +2851,7 @@ func NewResetDBInstancePasswordResponse() (response *ResetDBInstancePasswordResp
 }
 
 // ResetDBInstancePassword
-// 修改实例用户的密码
+// 本接口（ResetDBInstancePassword）用于重置实例访问密码。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2868,7 +2868,7 @@ func (c *Client) ResetDBInstancePassword(request *ResetDBInstancePasswordRequest
 }
 
 // ResetDBInstancePassword
-// 修改实例用户的密码
+// 本接口（ResetDBInstancePassword）用于重置实例访问密码。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

@@ -5179,6 +5179,104 @@ func (r *CreateScheduleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSmartEraseTemplateRequestParams struct {
+	// 智能擦除模板名称长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 擦除类型
+	// - subtitle 去字幕
+	// - watermark 去水印
+	// - privacy 隐私保护
+	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
+
+	// 智能擦除模板描述信息长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 字幕擦除配置，EraseType取subtitle时必填且仅此时生效。
+	EraseSubtitleConfig *SmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
+
+	// 水印擦除配置，EraseType取watermark时必填且仅此时生效。
+	EraseWatermarkConfig *SmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
+
+	// 隐私保护配置，EraseType取privacy时必填且仅此时生效。
+	ErasePrivacyConfig *SmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
+}
+
+type CreateSmartEraseTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 智能擦除模板名称长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 擦除类型
+	// - subtitle 去字幕
+	// - watermark 去水印
+	// - privacy 隐私保护
+	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
+
+	// 智能擦除模板描述信息长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 字幕擦除配置，EraseType取subtitle时必填且仅此时生效。
+	EraseSubtitleConfig *SmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
+
+	// 水印擦除配置，EraseType取watermark时必填且仅此时生效。
+	EraseWatermarkConfig *SmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
+
+	// 隐私保护配置，EraseType取privacy时必填且仅此时生效。
+	ErasePrivacyConfig *SmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
+}
+
+func (r *CreateSmartEraseTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSmartEraseTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "EraseType")
+	delete(f, "Comment")
+	delete(f, "EraseSubtitleConfig")
+	delete(f, "EraseWatermarkConfig")
+	delete(f, "ErasePrivacyConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSmartEraseTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSmartEraseTemplateResponseParams struct {
+	// 智能擦除模板唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSmartEraseTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSmartEraseTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateSmartEraseTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSmartEraseTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSmartSubtitleTemplateRequestParams struct {
 	// 智能字幕模板名称
 	// 长度限制：64 个字符。
@@ -7118,6 +7216,60 @@ func (r *DeleteScheduleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSmartEraseTemplateRequestParams struct {
+	// 智能擦除模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type DeleteSmartEraseTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 智能擦除模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+func (r *DeleteSmartEraseTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSmartEraseTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSmartEraseTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSmartEraseTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSmartEraseTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSmartEraseTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteSmartEraseTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSmartEraseTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9696,6 +9848,98 @@ func (r *DescribeSchedulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSchedulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSmartEraseTemplatesRequestParams struct {
+	// 智能擦除模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，不填则返回所有，可选值：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 智能擦除模板名过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type DescribeSmartEraseTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 智能擦除模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，不填则返回所有，可选值：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 智能擦除模板名过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *DescribeSmartEraseTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSmartEraseTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Type")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmartEraseTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSmartEraseTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 智能擦除模板详情列表。
+	SmartEraseTemplateSet []*SmartEraseTemplateItem `json:"SmartEraseTemplateSet,omitnil,omitempty" name:"SmartEraseTemplateSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSmartEraseTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSmartEraseTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeSmartEraseTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSmartEraseTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16279,6 +16523,108 @@ func (r *ModifyScheduleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifySmartEraseTemplateRequestParams struct {
+	// 智能擦除模板唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 智能擦除模板名称长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 智能擦除模板描述信息长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 擦除类型
+	// - subtitle 去字幕
+	// - watermark 去水印
+	// - privacy 隐私保护
+	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
+
+	// 字幕擦除配置，EraseType取subtitle或者EraseType不填，对应模板原EraseType为subtitle时生效。
+	EraseSubtitleConfig *SmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
+
+	// 水印擦除配置，EraseType取watermark或者EraseType不填，对应模板原EraseType为watermark时生效。
+	EraseWatermarkConfig *SmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
+
+	// 隐私保护配置，EraseType取privacy或者EraseType不填，对应模板原EraseType为privacy时生效。
+	ErasePrivacyConfig *SmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
+}
+
+type ModifySmartEraseTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 智能擦除模板唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 智能擦除模板名称长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 智能擦除模板描述信息长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 擦除类型
+	// - subtitle 去字幕
+	// - watermark 去水印
+	// - privacy 隐私保护
+	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
+
+	// 字幕擦除配置，EraseType取subtitle或者EraseType不填，对应模板原EraseType为subtitle时生效。
+	EraseSubtitleConfig *SmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
+
+	// 水印擦除配置，EraseType取watermark或者EraseType不填，对应模板原EraseType为watermark时生效。
+	EraseWatermarkConfig *SmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
+
+	// 隐私保护配置，EraseType取privacy或者EraseType不填，对应模板原EraseType为privacy时生效。
+	ErasePrivacyConfig *SmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
+}
+
+func (r *ModifySmartEraseTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySmartEraseTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "EraseType")
+	delete(f, "EraseSubtitleConfig")
+	delete(f, "EraseWatermarkConfig")
+	delete(f, "ErasePrivacyConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySmartEraseTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySmartEraseTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySmartEraseTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySmartEraseTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifySmartEraseTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySmartEraseTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySmartSubtitleTemplateRequestParams struct {
 	// 智能字幕模板唯一标识
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -19613,11 +19959,11 @@ type SimpleAesDrm struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
 
-	// 加密key(32字节字符串)。
+	// 加密key(十六进制32字节字符串)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 加密初始化向量(32字节字符串)。
+	// 加密初始化向量(十六进制32字节字符串)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vector *string `json:"Vector,omitnil,omitempty" name:"Vector"`
 }
@@ -19757,6 +20103,49 @@ type SmartEraseTaskResult struct {
 
 	// 任务执行完毕的时间，采用 ISO 日期格式。
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+}
+
+type SmartEraseTemplateItem struct {
+	// 智能擦除模板唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 智能擦除模板名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 智能擦除模板描述信息
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 模板类型，取值范围：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 擦除类型
+	// - subtitle 去字幕
+	// - watermark 去水印
+	// - privacy 隐私保护
+	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
+
+	// 字幕擦除配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EraseSubtitleConfig *SmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
+
+	// 水印擦除配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EraseWatermarkConfig *SmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
+
+	// 隐私保护配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErasePrivacyConfig *SmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 智能擦除预设模板别名
+	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
 }
 
 type SmartEraseWatermarkConfig struct {
@@ -20185,7 +20574,7 @@ type SpekeDrm struct {
 	// 注: 不同DRM厂商对子流的数量限制不一样，如 PallyCon 限制不能超过5条子流，DRMtoday厂商最多仅支持9条子流加密
 	KeyServerUrl *string `json:"KeyServerUrl,omitnil,omitempty" name:"KeyServerUrl"`
 
-	// 加密初始化向量(32字节字符串)，该字段内容为用户自定义。
+	// 加密初始化向量(十六进制32字节字符串)，该字段内容为用户自定义。
 	Vector *string `json:"Vector,omitnil,omitempty" name:"Vector"`
 
 	// 加密方式，FairPlay 默认cbcs，PlayReady，Widevine 默认cenc

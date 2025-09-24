@@ -427,6 +427,9 @@ type CloudNativeAPIGatewayConfig struct {
 
 	// 是否为新 ipv6 CLB
 	IPV6FullChain *bool `json:"IPV6FullChain,omitnil,omitempty" name:"IPV6FullChain"`
+
+	// 负载均衡个性化配置内容
+	CustomizedConfigContent *string `json:"CustomizedConfigContent,omitnil,omitempty" name:"CustomizedConfigContent"`
 }
 
 type CloudNativeAPIGatewayNode struct {
@@ -2966,6 +2969,9 @@ func (r *CreateNativeGatewayServiceSourceRequest) FromJsonString(s string) error
 type CreateNativeGatewayServiceSourceResponseParams struct {
 	// 创建是否成功
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 服务来源ID
+	SourceID *string `json:"SourceID,omitnil,omitempty" name:"SourceID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7696,6 +7702,9 @@ type DescribeNativeGatewayServiceSourcesRequestParams struct {
 	// 分页偏移量
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
+	// 服务来源ID
+	SourceID *string `json:"SourceID,omitnil,omitempty" name:"SourceID"`
+
 	// 服务来源实例名称，模糊搜索
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
@@ -7720,6 +7729,9 @@ type DescribeNativeGatewayServiceSourcesRequest struct {
 
 	// 分页偏移量
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 服务来源ID
+	SourceID *string `json:"SourceID,omitnil,omitempty" name:"SourceID"`
 
 	// 服务来源实例名称，模糊搜索
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
@@ -7749,6 +7761,7 @@ func (r *DescribeNativeGatewayServiceSourcesRequest) FromJsonString(s string) er
 	delete(f, "GatewayID")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "SourceID")
 	delete(f, "SourceName")
 	delete(f, "SourceTypes")
 	delete(f, "OrderField")
@@ -11251,6 +11264,17 @@ type ModifyNetworkBasicInfoRequestParams struct {
 
 	// 负载均衡描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 负载均衡的规格类型，支持：
+	// - 不传为共享型。
+	// - clb.c2.medium：标准型规格
+	// - clb.c3.small：高阶型1规格
+	// - clb.c3.medium：高阶型2规格
+	// - clb.c4.small：超强型1规格
+	// - clb.c4.medium：超强型2规格
+	// - clb.c4.large：超强型3规格
+	// - clb.c4.xlarge：超强型4规格
+	SlaType *string `json:"SlaType,omitnil,omitempty" name:"SlaType"`
 }
 
 type ModifyNetworkBasicInfoRequest struct {
@@ -11276,6 +11300,17 @@ type ModifyNetworkBasicInfoRequest struct {
 
 	// 负载均衡描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 负载均衡的规格类型，支持：
+	// - 不传为共享型。
+	// - clb.c2.medium：标准型规格
+	// - clb.c3.small：高阶型1规格
+	// - clb.c3.medium：高阶型2规格
+	// - clb.c4.small：超强型1规格
+	// - clb.c4.medium：超强型2规格
+	// - clb.c4.large：超强型3规格
+	// - clb.c4.xlarge：超强型4规格
+	SlaType *string `json:"SlaType,omitnil,omitempty" name:"SlaType"`
 }
 
 func (r *ModifyNetworkBasicInfoRequest) ToJsonString() string {
@@ -11296,6 +11331,7 @@ func (r *ModifyNetworkBasicInfoRequest) FromJsonString(s string) error {
 	delete(f, "Vip")
 	delete(f, "InternetMaxBandwidthOut")
 	delete(f, "Description")
+	delete(f, "SlaType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetworkBasicInfoRequest has unknown keys!", "")
 	}

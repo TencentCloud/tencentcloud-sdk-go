@@ -1191,16 +1191,6 @@ type CacheKey struct {
 	KeyRules []*KeyRule `json:"KeyRules,omitnil,omitempty" name:"KeyRules"`
 }
 
-type CacheOptResult struct {
-	// 成功的url列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuccessUrls []*string `json:"SuccessUrls,omitnil,omitempty" name:"SuccessUrls"`
-
-	// 失败的url列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailUrls []*string `json:"FailUrls,omitnil,omitempty" name:"FailUrls"`
-}
-
 type CacheTagKey struct {
 	// 使用CacheTag作为CacheKey的一部分配置开关，取值有
 	// on：开启，使用CacheTag作为CacheKey的一部分
@@ -4948,68 +4938,6 @@ type DiagnoseUnit struct {
 }
 
 // Predefined struct for user
-type DisableCachesRequestParams struct {
-	// 禁用的 URL 列表（分协议生效，必须包含http://或https://）
-	// 每次最多可提交 100 条，每日最多可提交 3000 条
-	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
-}
-
-type DisableCachesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 禁用的 URL 列表（分协议生效，必须包含http://或https://）
-	// 每次最多可提交 100 条，每日最多可提交 3000 条
-	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
-}
-
-func (r *DisableCachesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DisableCachesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Urls")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableCachesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DisableCachesResponseParams struct {
-	// 提交结果
-	CacheOptResult *CacheOptResult `json:"CacheOptResult,omitnil,omitempty" name:"CacheOptResult"`
-
-	// 任务ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DisableCachesResponse struct {
-	*tchttp.BaseResponse
-	Response *DisableCachesResponseParams `json:"Response"`
-}
-
-func (r *DisableCachesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DisableCachesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DisableClsLogTopicRequestParams struct {
 	// 日志集ID
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
@@ -5280,73 +5208,6 @@ type EdgePackTaskStatus struct {
 }
 
 // Predefined struct for user
-type EnableCachesRequestParams struct {
-	// 解封 URL 列表
-	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
-
-	// URL封禁日期
-	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
-}
-
-type EnableCachesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 解封 URL 列表
-	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
-
-	// URL封禁日期
-	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
-}
-
-func (r *EnableCachesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EnableCachesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Urls")
-	delete(f, "Date")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableCachesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type EnableCachesResponseParams struct {
-	// 结果列表
-	CacheOptResult *CacheOptResult `json:"CacheOptResult,omitnil,omitempty" name:"CacheOptResult"`
-
-	// 任务ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type EnableCachesResponse struct {
-	*tchttp.BaseResponse
-	Response *EnableCachesResponseParams `json:"Response"`
-}
-
-func (r *EnableCachesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EnableCachesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type EnableClsLogTopicRequestParams struct {
 	// 日志集ID
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
@@ -5482,112 +5343,6 @@ type ForceRedirect struct {
 	// 强制跳转时是否返回增加的头部。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CarryHeaders *string `json:"CarryHeaders,omitnil,omitempty" name:"CarryHeaders"`
-}
-
-// Predefined struct for user
-type GetDisableRecordsRequestParams struct {
-	// 指定 URL 查询
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
-	// 开始时间，如：2018-12-12 10:24:00。
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 结束时间，如：2018-12-14 10:24:00。
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// URL 当前状态
-	// disable：当前仍为禁用状态，访问返回 403
-	// enable：当前为可用状态，已解禁，可正常访问
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 分页查询偏移量，默认为 0
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 分页查询限制数目，默认为20。
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 任务ID，任务ID和起始时间需要至少填写一项。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type GetDisableRecordsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 指定 URL 查询
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
-	// 开始时间，如：2018-12-12 10:24:00。
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 结束时间，如：2018-12-14 10:24:00。
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// URL 当前状态
-	// disable：当前仍为禁用状态，访问返回 403
-	// enable：当前为可用状态，已解禁，可正常访问
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 分页查询偏移量，默认为 0
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 分页查询限制数目，默认为20。
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 任务ID，任务ID和起始时间需要至少填写一项。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *GetDisableRecordsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetDisableRecordsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Url")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "Status")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDisableRecordsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetDisableRecordsResponseParams struct {
-	// 封禁历史记录
-	UrlRecordList []*UrlRecord `json:"UrlRecordList,omitnil,omitempty" name:"UrlRecordList"`
-
-	// 任务总数，用于分页
-	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type GetDisableRecordsResponse struct {
-	*tchttp.BaseResponse
-	Response *GetDisableRecordsResponseParams `json:"Response"`
-}
-
-func (r *GetDisableRecordsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetDisableRecordsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GuetzliAdapter struct {
@@ -9332,24 +9087,6 @@ func (r *UpdatePayTypeResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdatePayTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type UrlRecord struct {
-	// 状态(disable表示封禁，enable表示解封)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 对应的url
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RealUrl *string `json:"RealUrl,omitnil,omitempty" name:"RealUrl"`
-
-	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
-
-	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type UrlRedirect struct {

@@ -7961,7 +7961,7 @@ func NewModifyNetworkBasicInfoResponse() (response *ModifyNetworkBasicInfoRespon
 }
 
 // ModifyNetworkBasicInfo
-// 修改云原生API网关实例网络基本信息，例如带宽以及描述，只支持修改客户端公网/内网的信息。
+// 修改云原生API网关实例网络基本信息，例如带宽以及描述、规格升级，只支持修改客户端公网/内网的信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -7981,7 +7981,7 @@ func (c *Client) ModifyNetworkBasicInfo(request *ModifyNetworkBasicInfoRequest) 
 }
 
 // ModifyNetworkBasicInfo
-// 修改云原生API网关实例网络基本信息，例如带宽以及描述，只支持修改客户端公网/内网的信息。
+// 修改云原生API网关实例网络基本信息，例如带宽以及描述、规格升级，只支持修改客户端公网/内网的信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"

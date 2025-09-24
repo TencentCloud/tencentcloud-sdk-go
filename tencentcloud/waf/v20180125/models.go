@@ -557,6 +557,9 @@ type AddCustomRuleRequestParams struct {
 
 	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 按照动作灰度的比例，默认是100
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
 type AddCustomRuleRequest struct {
@@ -612,6 +615,9 @@ type AddCustomRuleRequest struct {
 
 	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 按照动作灰度的比例，默认是100
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
 func (r *AddCustomRuleRequest) ToJsonString() string {
@@ -643,6 +649,7 @@ func (r *AddCustomRuleRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "PageId")
 	delete(f, "LogicalOp")
+	delete(f, "ActionRatio")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomRuleRequest has unknown keys!", "")
 	}
@@ -928,6 +935,28 @@ type AddSpartaProtectionRequestParams struct {
 	// 必填项，域名所属实例id
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
+	// 必填项，是否开启HTTP强制跳转到HTTPS。
+	// 0：不强制跳转
+	// 1：开启强制跳转
+	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil,omitempty" name:"HttpsRewrite"`
+
+	// 必填项，是否开启HTTP2，需要开启HTTPS协议支持。
+	// 0：关闭
+	// 1：开启
+	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
+
+	// 必填项，是否开启主动健康检测。
+	// 0：不开启
+	// 1：开启
+	ActiveCheck *int64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
+
+	// 必填项，加密套件模板。
+	// 0：不支持选择，使用默认模板  
+	// 1：通用型模板 
+	// 2：安全型模板
+	// 3：自定义模板
+	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
+
 	// CertType为1时，需要填充此参数，表示自有证书的证书链
 	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
@@ -963,21 +992,11 @@ type AddSpartaProtectionRequestParams struct {
 	// Deprecated: GrayAreas is deprecated.
 	GrayAreas []*string `json:"GrayAreas,omitnil,omitempty" name:"GrayAreas"`
 
-	// 必填项，是否开启HTTP强制跳转到HTTPS。
-	// 0：不强制跳转
-	// 1：开启强制跳转
-	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil,omitempty" name:"HttpsRewrite"`
-
 	// 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
 	UpstreamDomain *string `json:"UpstreamDomain,omitnil,omitempty" name:"UpstreamDomain"`
 
 	// IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
 	SrcList []*string `json:"SrcList,omitnil,omitempty" name:"SrcList"`
-
-	// 必填项，是否开启HTTP2，需要开启HTTPS协议支持。
-	// 0：关闭
-	// 1：开启
-	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
 	// WAF实例类型。
 	// sparta-waf：SAAS型WAF
@@ -995,23 +1014,14 @@ type AddSpartaProtectionRequestParams struct {
 	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
 	Weights []*int64 `json:"Weights,omitnil,omitempty" name:"Weights"`
 
-	// 必填项，是否开启主动健康检测。
-	// 0：不开启
-	// 1：开启
-	ActiveCheck *int64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
-
 	// TLS版本信息
 	TLSVersion *int64 `json:"TLSVersion,omitnil,omitempty" name:"TLSVersion"`
 
-	// 必填项，加密套件模板。
-	// 0：不支持选择，使用默认模板  
-	// 1：通用型模板 
-	// 2：安全型模板
-	// 3：自定义模板
-	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
-
 	// 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
 	Ciphers []*int64 `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
+
+	// WAF与源站的连接超时，默认10s。
+	ProxyConnectTimeout *int64 `json:"ProxyConnectTimeout,omitnil,omitempty" name:"ProxyConnectTimeout"`
 
 	// WAF与源站的读超时时间，默认300s。
 	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil,omitempty" name:"ProxyReadTimeout"`
@@ -1073,6 +1083,9 @@ type AddSpartaProtectionRequestParams struct {
 
 	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
 	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
+
+	// gzip开关。0：关闭 1：默认值，打开。
+	Gzip *int64 `json:"Gzip,omitnil,omitempty" name:"Gzip"`
 }
 
 type AddSpartaProtectionRequest struct {
@@ -1126,6 +1139,28 @@ type AddSpartaProtectionRequest struct {
 	// 必填项，域名所属实例id
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
+	// 必填项，是否开启HTTP强制跳转到HTTPS。
+	// 0：不强制跳转
+	// 1：开启强制跳转
+	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil,omitempty" name:"HttpsRewrite"`
+
+	// 必填项，是否开启HTTP2，需要开启HTTPS协议支持。
+	// 0：关闭
+	// 1：开启
+	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
+
+	// 必填项，是否开启主动健康检测。
+	// 0：不开启
+	// 1：开启
+	ActiveCheck *int64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
+
+	// 必填项，加密套件模板。
+	// 0：不支持选择，使用默认模板  
+	// 1：通用型模板 
+	// 2：安全型模板
+	// 3：自定义模板
+	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
+
 	// CertType为1时，需要填充此参数，表示自有证书的证书链
 	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
@@ -1155,21 +1190,11 @@ type AddSpartaProtectionRequest struct {
 	// 灰度的地区
 	GrayAreas []*string `json:"GrayAreas,omitnil,omitempty" name:"GrayAreas"`
 
-	// 必填项，是否开启HTTP强制跳转到HTTPS。
-	// 0：不强制跳转
-	// 1：开启强制跳转
-	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil,omitempty" name:"HttpsRewrite"`
-
 	// 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
 	UpstreamDomain *string `json:"UpstreamDomain,omitnil,omitempty" name:"UpstreamDomain"`
 
 	// IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
 	SrcList []*string `json:"SrcList,omitnil,omitempty" name:"SrcList"`
-
-	// 必填项，是否开启HTTP2，需要开启HTTPS协议支持。
-	// 0：关闭
-	// 1：开启
-	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
 	// WAF实例类型。
 	// sparta-waf：SAAS型WAF
@@ -1183,23 +1208,14 @@ type AddSpartaProtectionRequest struct {
 	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
 	Weights []*int64 `json:"Weights,omitnil,omitempty" name:"Weights"`
 
-	// 必填项，是否开启主动健康检测。
-	// 0：不开启
-	// 1：开启
-	ActiveCheck *int64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
-
 	// TLS版本信息
 	TLSVersion *int64 `json:"TLSVersion,omitnil,omitempty" name:"TLSVersion"`
 
-	// 必填项，加密套件模板。
-	// 0：不支持选择，使用默认模板  
-	// 1：通用型模板 
-	// 2：安全型模板
-	// 3：自定义模板
-	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
-
 	// 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
 	Ciphers []*int64 `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
+
+	// WAF与源站的连接超时，默认10s。
+	ProxyConnectTimeout *int64 `json:"ProxyConnectTimeout,omitnil,omitempty" name:"ProxyConnectTimeout"`
 
 	// WAF与源站的读超时时间，默认300s。
 	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil,omitempty" name:"ProxyReadTimeout"`
@@ -1261,6 +1277,9 @@ type AddSpartaProtectionRequest struct {
 
 	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
 	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
+
+	// gzip开关。0：关闭 1：默认值，打开。
+	Gzip *int64 `json:"Gzip,omitnil,omitempty" name:"Gzip"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -1284,6 +1303,10 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "Ports")
 	delete(f, "IsKeepAlive")
 	delete(f, "InstanceID")
+	delete(f, "HttpsRewrite")
+	delete(f, "IsHttp2")
+	delete(f, "ActiveCheck")
+	delete(f, "CipherTemplate")
 	delete(f, "Cert")
 	delete(f, "PrivateKey")
 	delete(f, "SSLId")
@@ -1293,17 +1316,14 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "HttpsUpstreamPort")
 	delete(f, "IsGray")
 	delete(f, "GrayAreas")
-	delete(f, "HttpsRewrite")
 	delete(f, "UpstreamDomain")
 	delete(f, "SrcList")
-	delete(f, "IsHttp2")
 	delete(f, "Edition")
 	delete(f, "Anycast")
 	delete(f, "Weights")
-	delete(f, "ActiveCheck")
 	delete(f, "TLSVersion")
-	delete(f, "CipherTemplate")
 	delete(f, "Ciphers")
+	delete(f, "ProxyConnectTimeout")
 	delete(f, "ProxyReadTimeout")
 	delete(f, "ProxySendTimeout")
 	delete(f, "SniType")
@@ -1323,6 +1343,7 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "UpstreamPolicy")
 	delete(f, "UpstreamRules")
 	delete(f, "UseCase")
+	delete(f, "Gzip")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -1418,6 +1439,9 @@ type ApiDataFilter struct {
 
 	// 日期，手机号，邮箱等
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 风险等级
+	ValueList []*string `json:"ValueList,omitnil,omitempty" name:"ValueList"`
 }
 
 type ApiDetailSampleHistory struct {
@@ -2019,6 +2043,9 @@ type BotToken struct {
 
 	// 优先级
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// token有效性配置信息
+	TokenValidation *TokenValidation `json:"TokenValidation,omitnil,omitempty" name:"TokenValidation"`
 }
 
 type CCRuleData struct {
@@ -2116,7 +2143,7 @@ type CCRuleItems struct {
 	// 版本
 	TsVersion *uint64 `json:"TsVersion,omitnil,omitempty" name:"TsVersion"`
 
-	// 规则详情
+	// key为匹配字段；args为base64编码后的参数，等于号前为匹配参数，等于号后为匹配内容；match为逻辑符号；encodeflag为参数内容是否编码
 	Options *string `json:"Options,omitnil,omitempty" name:"Options"`
 
 	// 规则ID
@@ -2139,6 +2166,12 @@ type CCRuleItems struct {
 
 	// 逻辑操作符
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 页面ID
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 动作灰度比例，默认值100
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
 type CCRuleLists struct {
@@ -4655,11 +4688,11 @@ type DeleteSpartaProtectionRequestParams struct {
 	// 域名列表
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 实例类型
-	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
-
 	// 必填项。域名所属实例ID
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 实例类型
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 }
 
 type DeleteSpartaProtectionRequest struct {
@@ -4668,11 +4701,11 @@ type DeleteSpartaProtectionRequest struct {
 	// 域名列表
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 实例类型
-	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
-
 	// 必填项。域名所属实例ID
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 实例类型
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 }
 
 func (r *DeleteSpartaProtectionRequest) ToJsonString() string {
@@ -4688,8 +4721,8 @@ func (r *DeleteSpartaProtectionRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Domains")
-	delete(f, "Edition")
 	delete(f, "InstanceID")
+	delete(f, "Edition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -6370,6 +6403,9 @@ type DescribeBotSceneOverviewResponseParams struct {
 	// 自定义规则总数，不包括BOT白名单
 	CustomRuleNums *int64 `json:"CustomRuleNums,omitnil,omitempty" name:"CustomRuleNums"`
 
+	// 图灵盾开关状态
+	TldStatus *bool `json:"TldStatus,omitnil,omitempty" name:"TldStatus"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -7127,6 +7163,9 @@ type DescribeCustomRulesRspRuleListItem struct {
 
 	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 规则灰度的比例，默认是100，不灰度
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
 // Predefined struct for user
@@ -11633,6 +11672,9 @@ type DomainsPartInfo struct {
 	// 3：自定义模板
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
 
+	// WAF与源站的连接超时，默认10s。
+	ProxyConnectTimeout *int64 `json:"ProxyConnectTimeout,omitnil,omitempty" name:"ProxyConnectTimeout"`
+
 	// WAF与源站的读超时时间，默认300s。
 	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil,omitempty" name:"ProxyReadTimeout"`
 
@@ -11709,6 +11751,9 @@ type DomainsPartInfo struct {
 
 	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
 	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
+
+	// gzip开关。0：关闭 1：默认值，打开。
+	Gzip *int64 `json:"Gzip,omitnil,omitempty" name:"Gzip"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -13002,6 +13047,19 @@ type InstanceInfo struct {
 
 	// 实例的网络配置
 	NetworkConfig *NetworkConfig `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
+	// RCE设备安全信息包
+	RCEPkg *RCEPkg `json:"RCEPkg,omitnil,omitempty" name:"RCEPkg"`
+
+	// 超量策略。0：超量沙箱
+	// 1：超量限流
+	ExceedPolicy *int64 `json:"ExceedPolicy,omitnil,omitempty" name:"ExceedPolicy"`
+
+	// 大模型安全信息包
+	LLMPkg *LLMPkg `json:"LLMPkg,omitnil,omitempty" name:"LLMPkg"`
+
+	// 弹性资源Id
+	ElasticResourceId *string `json:"ElasticResourceId,omitnil,omitempty" name:"ElasticResourceId"`
 }
 
 type IpAccessControlData struct {
@@ -13098,6 +13156,14 @@ type IpHitItemsData struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
+type JWTConfig struct {
+	// 密钥信息
+	SecretInfo *SecretInfo `json:"SecretInfo,omitnil,omitempty" name:"SecretInfo"`
+
+	// Payload校验规则集合
+	PayloadRule []*TokenRuleEntry `json:"PayloadRule,omitnil,omitempty" name:"PayloadRule"`
+}
+
 type JobDateTime struct {
 	// 定时执行的时间参数
 	Timed []*TimedJob `json:"Timed,omitnil,omitempty" name:"Timed"`
@@ -13115,6 +13181,26 @@ type KVInt struct {
 
 	// Value
 	Value *uint64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type LLMPkg struct {
+	// 资源id
+	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 地域
+	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 计费项
+	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
 }
 
 type LoadBalancer struct {
@@ -13172,7 +13258,7 @@ type LoadBalancerPackageNew struct {
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 地区
-	// "多伦多": "ca",
+	//     "多伦多": "ca",
 	//     "广州": "gz",
 	//     "成都": "cd",
 	//     "福州": "fzec",
@@ -13199,7 +13285,8 @@ type LoadBalancerPackageNew struct {
 	//     "首尔": "kr",
 	//     "上海": "sh",
 	//     "新加坡": "sg",
-	//     "清远": "qy"
+	//     "清远": "qy",
+	//     "雅加达": "jkt"
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 接入IP
@@ -14618,6 +14705,9 @@ type ModifyCustomRuleRequestParams struct {
 
 	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 规则生效比例
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
 type ModifyCustomRuleRequest struct {
@@ -14673,6 +14763,9 @@ type ModifyCustomRuleRequest struct {
 
 	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 规则生效比例
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
 func (r *ModifyCustomRuleRequest) ToJsonString() string {
@@ -14703,6 +14796,7 @@ func (r *ModifyCustomRuleRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "PageId")
 	delete(f, "LogicalOp")
+	delete(f, "ActionRatio")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomRuleRequest has unknown keys!", "")
 	}
@@ -17017,6 +17111,9 @@ type ModifySpartaProtectionRequestParams struct {
 	// 加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
 
+	// WAF与源站的连接超时时间，默认10s。
+	ProxyConnectTimeout *int64 `json:"ProxyConnectTimeout,omitnil,omitempty" name:"ProxyConnectTimeout"`
+
 	// WAF与源站的读超时时间，默认300s。
 	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil,omitempty" name:"ProxyReadTimeout"`
 
@@ -17080,6 +17177,9 @@ type ModifySpartaProtectionRequestParams struct {
 
 	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
 	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
+
+	// gzip开关。0：关闭 1：默认值，打开
+	Gzip *int64 `json:"Gzip,omitnil,omitempty" name:"Gzip"`
 }
 
 type ModifySpartaProtectionRequest struct {
@@ -17168,6 +17268,9 @@ type ModifySpartaProtectionRequest struct {
 	// 加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
 
+	// WAF与源站的连接超时时间，默认10s。
+	ProxyConnectTimeout *int64 `json:"ProxyConnectTimeout,omitnil,omitempty" name:"ProxyConnectTimeout"`
+
 	// WAF与源站的读超时时间，默认300s。
 	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil,omitempty" name:"ProxyReadTimeout"`
 
@@ -17231,6 +17334,9 @@ type ModifySpartaProtectionRequest struct {
 
 	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
 	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
+
+	// gzip开关。0：关闭 1：默认值，打开
+	Gzip *int64 `json:"Gzip,omitnil,omitempty" name:"Gzip"`
 }
 
 func (r *ModifySpartaProtectionRequest) ToJsonString() string {
@@ -17272,6 +17378,7 @@ func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "TLSVersion")
 	delete(f, "Ciphers")
 	delete(f, "CipherTemplate")
+	delete(f, "ProxyConnectTimeout")
 	delete(f, "ProxyReadTimeout")
 	delete(f, "ProxySendTimeout")
 	delete(f, "SniType")
@@ -17292,6 +17399,7 @@ func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "UpstreamPolicy")
 	delete(f, "UpstreamRules")
 	delete(f, "UseCase")
+	delete(f, "Gzip")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySpartaProtectionRequest has unknown keys!", "")
 	}
@@ -18261,6 +18369,35 @@ type QpsData struct {
 	QPSExtendIntlMax *uint64 `json:"QPSExtendIntlMax,omitnil,omitempty" name:"QPSExtendIntlMax"`
 }
 
+type RCEPkg struct {
+	// 资源id
+	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 地域
+	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 申请数量
+	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
+
+	// 使用数量
+	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+
+	// 续费标志
+	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 计费项
+	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
+}
+
 // Predefined struct for user
 type RefreshAccessCheckResultRequestParams struct {
 	// 域名
@@ -18904,6 +19041,17 @@ func (r *SearchLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SecretInfo struct {
+	// 密钥上传方式，可选值：manual、upload
+	SecretSource *string `json:"SecretSource,omitnil,omitempty" name:"SecretSource"`
+
+	// 密钥内容（用户手动输入/前端从密钥文件提取出的密钥内容）
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 上传的密钥文件文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+}
+
 type SessionData struct {
 	// session定义
 	Res []*SessionItem `json:"Res,omitnil,omitempty" name:"Res"`
@@ -18942,6 +19090,9 @@ type SessionItem struct {
 
 	// Session关联的CC规则ID
 	RelatedRuleID []*int64 `json:"RelatedRuleID,omitnil,omitempty" name:"RelatedRuleID"`
+
+	// 精准匹配时，配置的key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
 type SpartaProtectionPort struct {
@@ -19227,6 +19378,63 @@ type TimedJob struct {
 
 	// 结束时间戳，单位为秒
 	EndDateTime *uint64 `json:"EndDateTime,omitnil,omitempty" name:"EndDateTime"`
+}
+
+type TokenDisplaySetting struct {
+	// 是否使用payload字段作为显示token
+	DisplayWithPayloadEnable *bool `json:"DisplayWithPayloadEnable,omitnil,omitempty" name:"DisplayWithPayloadEnable"`
+
+	// 用于显示的payload字段名
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+}
+
+type TokenRuleEntry struct {
+	// 校验方式，可选值：验签校验、字段校验
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 操作符
+	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
+
+	// 值
+	Value *TokenRuleEntryValue `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type TokenRuleEntryValue struct {
+	// 布尔类型值
+	LogicValue *bool `json:"LogicValue,omitnil,omitempty" name:"LogicValue"`
+
+	// 数组类型值
+	// 可以存储字符串/数值
+	// 如果只有一个元素，则为长度为1的数组
+	MultiValue []*string `json:"MultiValue,omitnil,omitempty" name:"MultiValue"`
+
+	// 指示有效的字段
+	ValidKey *string `json:"ValidKey,omitnil,omitempty" name:"ValidKey"`
+}
+
+type TokenValidation struct {
+	// 是否开启token有效性校验
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// token有效性的校验方式，可选值为：jws、jwe、contains、len、regex
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
+
+	// 有效性校验配置和规则
+	VerifyRule *TokenVerifyRule `json:"VerifyRule,omitnil,omitempty" name:"VerifyRule"`
+
+	// Token显示设置（只有当校验方式为jws/jwe的时候才会有该配置信息）
+	DisplaySetting *TokenDisplaySetting `json:"DisplaySetting,omitnil,omitempty" name:"DisplaySetting"`
+}
+
+type TokenVerifyRule struct {
+	// JWS、JWE专用校验规则
+	JWTRule *JWTConfig `json:"JWTRule,omitnil,omitempty" name:"JWTRule"`
+
+	// 其他会话有效性校验方式(contains、length、regex)的校验规则
+	GeneralRule *TokenRuleEntry `json:"GeneralRule,omitnil,omitempty" name:"GeneralRule"`
 }
 
 type TopicExtendInfo struct {
@@ -19566,6 +19774,12 @@ type UpsertCCRuleRequestParams struct {
 
 	// 配置方式的逻辑操作符，and或者or
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 页面ID
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 动作灰度比例，默认值100
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
 type UpsertCCRuleRequest struct {
@@ -19636,6 +19850,12 @@ type UpsertCCRuleRequest struct {
 
 	// 配置方式的逻辑操作符，and或者or
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 页面ID
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 动作灰度比例，默认值100
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
 func (r *UpsertCCRuleRequest) ToJsonString() string {
@@ -19672,6 +19892,8 @@ func (r *UpsertCCRuleRequest) FromJsonString(s string) error {
 	delete(f, "LimitMethod")
 	delete(f, "CelRule")
 	delete(f, "LogicalOp")
+	delete(f, "PageId")
+	delete(f, "ActionRatio")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertCCRuleRequest has unknown keys!", "")
 	}
@@ -19830,6 +20052,9 @@ type UpsertSessionRequestParams struct {
 
 	// Session对应ID
 	SessionID *int64 `json:"SessionID,omitnil,omitempty" name:"SessionID"`
+
+	// 精准匹配时配置的key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
 type UpsertSessionRequest struct {
@@ -19864,6 +20089,9 @@ type UpsertSessionRequest struct {
 
 	// Session对应ID
 	SessionID *int64 `json:"SessionID,omitnil,omitempty" name:"SessionID"`
+
+	// 精准匹配时配置的key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
 func (r *UpsertSessionRequest) ToJsonString() string {
@@ -19888,6 +20116,7 @@ func (r *UpsertSessionRequest) FromJsonString(s string) error {
 	delete(f, "Edition")
 	delete(f, "SessionName")
 	delete(f, "SessionID")
+	delete(f, "Key")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertSessionRequest has unknown keys!", "")
 	}

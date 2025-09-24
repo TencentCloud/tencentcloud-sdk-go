@@ -33869,6 +33869,12 @@ type VulInfo struct {
 
 	// 已防御攻击次数
 	DefendedCount *int64 `json:"DefendedCount,omitnil,omitempty" name:"DefendedCount"`
+
+	// 漏洞对应机器的应用防护开启数量
+	RaspOpenNodeCount *int64 `json:"RaspOpenNodeCount,omitnil,omitempty" name:"RaspOpenNodeCount"`
+
+	// 漏洞对应机器的应用防护关闭数量
+	RaspClosedNodeCount *int64 `json:"RaspClosedNodeCount,omitnil,omitempty" name:"RaspClosedNodeCount"`
 }
 
 type VulScanImageInfo struct {

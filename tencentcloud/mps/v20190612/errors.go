@@ -149,6 +149,9 @@ const (
 	// 参数错误：音频流采样率。
 	INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = "InvalidParameterValue.AudioSampleRate"
 
+	// 擦除模板自动区域错误
+	INVALIDPARAMETERVALUE_AUTOAREAS = "InvalidParameterValue.AutoAreas"
+
 	// 无效的音频/视频码率。
 	INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
 
@@ -179,6 +182,9 @@ const (
 	// 参数值错误：智能封面控制字段参数错误。
 	INVALIDPARAMETERVALUE_COVERCONFIGURE = "InvalidParameterValue.CoverConfigure"
 
+	// 擦除模板指定区域错误
+	INVALIDPARAMETERVALUE_CUSTOMAREAS = "InvalidParameterValue.CustomAreas"
+
 	// 参数值错误：人脸默认库过滤标签非法。
 	INVALIDPARAMETERVALUE_DEFAULTLIBRARYLABELSET = "InvalidParameterValue.DefaultLibraryLabelSet"
 
@@ -202,6 +208,18 @@ const (
 
 	// 模板开启的检测项为空。
 	INVALIDPARAMETERVALUE_EMPTYDETECTITEM = "InvalidParameterValue.EmptyDetectItem"
+
+	// 擦除模板隐私保护配置错误
+	INVALIDPARAMETERVALUE_ERASEPRIVACYCONFIG = "InvalidParameterValue.ErasePrivacyConfig"
+
+	// 擦除模板字幕擦除配置错误
+	INVALIDPARAMETERVALUE_ERASESUBTITLECONFIG = "InvalidParameterValue.EraseSubtitleConfig"
+
+	// 擦除模板擦除类型错误
+	INVALIDPARAMETERVALUE_ERASETYPE = "InvalidParameterValue.EraseType"
+
+	// 擦除模板水印擦除配置错误
+	INVALIDPARAMETERVALUE_ERASEWATERMARKCONFIG = "InvalidParameterValue.EraseWatermarkConfig"
 
 	// 参数值错误：人脸重复。
 	INVALIDPARAMETERVALUE_FACEDUPLICATE = "InvalidParameterValue.FaceDuplicate"
@@ -284,6 +302,12 @@ const (
 	// 参数值错误：人脸图片格式错误。
 	INVALIDPARAMETERVALUE_PICFORMATERROR = "InvalidParameterValue.PicFormatError"
 
+	// 擦除模板隐私保护模型错误
+	INVALIDPARAMETERVALUE_PRIVACYMODEL = "InvalidParameterValue.PrivacyModel"
+
+	// 擦除模板隐私保护目标错误
+	INVALIDPARAMETERVALUE_PRIVACYTARGETS = "InvalidParameterValue.PrivacyTargets"
+
 	// 参数值错误：Quality。
 	INVALIDPARAMETERVALUE_QUALITY = "InvalidParameterValue.Quality"
 
@@ -335,8 +359,17 @@ const (
 	// 源文件错误。
 	INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"
 
+	// 擦除模板字幕擦除方式错误
+	INVALIDPARAMETERVALUE_SUBTITLEERASEMETHOD = "InvalidParameterValue.SubtitleEraseMethod"
+
 	// 参数值错误：SubtitleFormat 参数非法。
 	INVALIDPARAMETERVALUE_SUBTITLEFORMAT = "InvalidParameterValue.SubtitleFormat"
+
+	// 擦除模板字幕擦除语种错误
+	INVALIDPARAMETERVALUE_SUBTITLELANG = "InvalidParameterValue.SubtitleLang"
+
+	// 擦除模板字幕擦除模型错误
+	INVALIDPARAMETERVALUE_SUBTITLEMODEL = "InvalidParameterValue.SubtitleModel"
 
 	// 参数值错误：字幕语言类型
 	INVALIDPARAMETERVALUE_SUBTITLETYPE = "InvalidParameterValue.SubtitleType"
@@ -368,6 +401,9 @@ const (
 	// 参数错误：文字模板。
 	INVALIDPARAMETERVALUE_TEXTTEMPLATE = "InvalidParameterValue.TextTemplate"
 
+	// 擦除模板字幕擦除翻译目标语种错误
+	INVALIDPARAMETERVALUE_TRANSDSTLANG = "InvalidParameterValue.TransDstLang"
+
 	// 参数值错误：翻译目标语言
 	INVALIDPARAMETERVALUE_TRANSLATEDSTLANGUAGE = "InvalidParameterValue.TranslateDstLanguage"
 
@@ -391,6 +427,12 @@ const (
 
 	// 参数值错误：视频源语言错误
 	INVALIDPARAMETERVALUE_VIDEOSRCLANGUAGE = "InvalidParameterValue.VideoSrcLanguage"
+
+	// 擦除模板去水印擦除方式错误
+	INVALIDPARAMETERVALUE_WATERMARKERASEMETHOD = "InvalidParameterValue.WatermarkEraseMethod"
+
+	// 擦除模板去水印擦除模型错误
+	INVALIDPARAMETERVALUE_WATERMARKMODEL = "InvalidParameterValue.WatermarkModel"
 
 	// 参数错误：宽度。
 	INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"

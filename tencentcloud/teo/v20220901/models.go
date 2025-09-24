@@ -18665,6 +18665,9 @@ type MultiPathGateway struct {
 
 	// 线路信息，当查询网关信息详情 DescribeMultiPathGateway 的时候会返回，当查询网关列表 DescribeMultiPathGateways 的时候不会返回。
 	Lines []*MultiPathGatewayLine `json:"Lines,omitnil,omitempty" name:"Lines"`
+
+	// 网关回源 IP 列表发生了变化是否需要重新确认，取值有：<li>true：回源 IP 列表发生了变化，需要确认；</li><li>false：回源 IP 列表未发生变化，无需确认。</li>
+	NeedConfirm *string `json:"NeedConfirm,omitnil,omitempty" name:"NeedConfirm"`
 }
 
 type MultiPathGatewayLine struct {

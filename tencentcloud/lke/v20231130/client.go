@@ -133,50 +133,6 @@ func (c *Client) CheckAttributeLabelReferWithContext(ctx context.Context, reques
     return
 }
 
-func NewCreateAgentRequest() (request *CreateAgentRequest) {
-    request = &CreateAgentRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "CreateAgent")
-    
-    
-    return
-}
-
-func NewCreateAgentResponse() (response *CreateAgentResponse) {
-    response = &CreateAgentResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateAgent
-// 创建一个Agent
-func (c *Client) CreateAgent(request *CreateAgentRequest) (response *CreateAgentResponse, err error) {
-    return c.CreateAgentWithContext(context.Background(), request)
-}
-
-// CreateAgent
-// 创建一个Agent
-func (c *Client) CreateAgentWithContext(ctx context.Context, request *CreateAgentRequest) (response *CreateAgentResponse, err error) {
-    if request == nil {
-        request = NewCreateAgentRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "lke", APIVersion, "CreateAgent")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateAgent require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateAgentResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateAppRequest() (request *CreateAppRequest) {
     request = &CreateAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4265,58 +4221,6 @@ func (c *Client) ListWorkflowRunsWithContext(ctx context.Context, request *ListW
     request.SetContext(ctx)
     
     response = NewListWorkflowRunsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyAgentRequest() (request *ModifyAgentRequest) {
-    request = &ModifyAgentRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "ModifyAgent")
-    
-    
-    return
-}
-
-func NewModifyAgentResponse() (response *ModifyAgentResponse) {
-    response = &ModifyAgentResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyAgent
-// 修改Agent信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) ModifyAgent(request *ModifyAgentRequest) (response *ModifyAgentResponse, err error) {
-    return c.ModifyAgentWithContext(context.Background(), request)
-}
-
-// ModifyAgent
-// 修改Agent信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) ModifyAgentWithContext(ctx context.Context, request *ModifyAgentRequest) (response *ModifyAgentResponse, err error) {
-    if request == nil {
-        request = NewModifyAgentRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "lke", APIVersion, "ModifyAgent")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyAgent require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyAgentResponse()
     err = c.Send(request, response)
     return
 }
