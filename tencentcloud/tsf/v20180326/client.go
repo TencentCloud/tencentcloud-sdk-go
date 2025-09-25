@@ -7762,6 +7762,7 @@ func NewDescribeImageRepositoryResponse() (response *DescribeImageRepositoryResp
 // 查询镜像仓库列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CAMROLEREQUESTERROR = "FailedOperation.CamRoleRequestError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -7777,6 +7778,7 @@ func (c *Client) DescribeImageRepository(request *DescribeImageRepositoryRequest
 // 查询镜像仓库列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CAMROLEREQUESTERROR = "FailedOperation.CamRoleRequestError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"

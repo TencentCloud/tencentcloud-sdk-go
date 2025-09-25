@@ -5159,7 +5159,6 @@ func (r *ModifyGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRoomRequestParams struct {
 	// 房间ID。
-	// 字符数不超过256
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 低代码互动课堂的SdkAppId
@@ -5175,6 +5174,7 @@ type ModifyRoomRequestParams struct {
 	TeacherId *string `json:"TeacherId,omitnil,omitempty" name:"TeacherId"`
 
 	// 房间名称。
+	// 字符数不超过256
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 分辨率。可以有如下取值：
@@ -5277,7 +5277,6 @@ type ModifyRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间ID。
-	// 字符数不超过256
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 低代码互动课堂的SdkAppId
@@ -5293,6 +5292,7 @@ type ModifyRoomRequest struct {
 	TeacherId *string `json:"TeacherId,omitnil,omitempty" name:"TeacherId"`
 
 	// 房间名称。
+	// 字符数不超过256
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 分辨率。可以有如下取值：

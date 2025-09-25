@@ -76,7 +76,9 @@ type ChatCompletionsRequestParams struct {
 	// 控制生成的随机性，较高的值会产生更多样化的输出。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
-	// 最大生成的token数量，默认为4096，最大可设置为16384
+	// 模型最大输出长度（单位 token），不包含思维链内容。
+	// 默认为4096，取值范围：各个模型不同，参考各个模型最大输出长度（示例：4k，即4096）。
+	// 输出 token 的总长度受模型的上下文长度限制。
 	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 
 	// 是否启用联网搜索
@@ -105,7 +107,9 @@ type ChatCompletionsRequest struct {
 	// 控制生成的随机性，较高的值会产生更多样化的输出。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
-	// 最大生成的token数量，默认为4096，最大可设置为16384
+	// 模型最大输出长度（单位 token），不包含思维链内容。
+	// 默认为4096，取值范围：各个模型不同，参考各个模型最大输出长度（示例：4k，即4096）。
+	// 输出 token 的总长度受模型的上下文长度限制。
 	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 
 	// 是否启用联网搜索
@@ -424,7 +428,8 @@ type CreateReconstructDocumentFlowConfig struct {
 	// 1：只返回每一页的OCR原始Json；
 	// 2：只返回每一页的MD，
 	// 3：返回全文MD + 每一页的OCR原始Json；
-	// 4：返回全文MD + 每一页的MD，
+	// 4：返回全文MD + 每一页的MD
+	// 5: 返回全文md，每一页ocr原始json，每一页md
 	// 默认值为0
 	ResultType *string `json:"ResultType,omitnil,omitempty" name:"ResultType"`
 
@@ -560,10 +565,10 @@ type CreateSplitDocumentFlowConfig struct {
 	// 智能文档解析返回结果的格式
 	// 0：只返回全文MD；
 	// 1：只返回每一页的OCR原始Json；
-	// 2：只返回每一页的MD，
+	// 2：只返回每一页的MD；
 	// 3：返回全文MD + 每一页的OCR原始Json；
-	// 4：返回全文MD + 每一页的MD，
-	// 默认值为3（返回全文MD + 每一页的OCR原始Json）
+	// 4：返回全文MD + 每一页的MD；
+	// 5：返回全文md，每一页ocr原始json，每一页md。
 	// 
 	//
 	// Deprecated: ResultType is deprecated.
@@ -577,6 +582,22 @@ type CreateSplitDocumentFlowConfig struct {
 
 	// 是否忽略返回失败页码
 	IgnoreFailedPage *bool `json:"IgnoreFailedPage,omitnil,omitempty" name:"IgnoreFailedPage"`
+
+	// 智能文档解析返回结果的格式
+	// 0：只返回全文MD；
+	// 1：只返回每一页的OCR原始Json；
+	// 2：只返回每一页的MD；
+	// 3：返回全文MD + 每一页的OCR原始Json；
+	// 4：返回全文MD + 每一页的MD；
+	// 5：返回全文md，每一页ocr原始json，每一页md。
+	// 
+	SplitResultType *string `json:"SplitResultType,omitnil,omitempty" name:"SplitResultType"`
+
+	// Markdown文件中表格返回的形式
+	// 0，表格以MD形式返回
+	// 1，表格以HTML形式返回
+	// 默认为
+	SplitTableResultType *string `json:"SplitTableResultType,omitnil,omitempty" name:"SplitTableResultType"`
 }
 
 // Predefined struct for user
@@ -1160,8 +1181,7 @@ func (r *GetCharacterUsageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetEmbeddingRequestParams struct {
-	// 说明：选择生成向量的模型
-	// 备注：仅一个模型可选
+	// 说明：选择生成向量的模型备注：可选[lke-text-embedding-v1,lke-text-embedding-v2]
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 说明：需要 embedding 的文本
@@ -1178,8 +1198,7 @@ type GetEmbeddingRequestParams struct {
 type GetEmbeddingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 说明：选择生成向量的模型
-	// 备注：仅一个模型可选
+	// 说明：选择生成向量的模型备注：可选[lke-text-embedding-v1,lke-text-embedding-v2]
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 说明：需要 embedding 的文本
@@ -1730,39 +1749,59 @@ type Message struct {
 
 // Predefined struct for user
 type ModifyAttributeLabelRequestParams struct {
-	// 知识库ID
+	// 说明：知识库ID
+	// 备注：通过创建知识库接口（DeleteKnowledgeBase）得到知识库ID（KnowledgeBaseId）
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
-	// 属性ID
+	// 说明：属性ID
+	// 备注：通过CreateAttributeLabel接口创建属性时会生成AttributeId，通过ListAttributeLabels接口可查询得到AttributeId、AttributeKey、AttributeName以及LabelId、LabelName的对应关系
 	AttributeId *string `json:"AttributeId,omitnil,omitempty" name:"AttributeId"`
 
-	// 属性标识，最大40个英文字符，如style
+	// 说明：属性标识，
+	// 备注：仅支持英文字符，不支持数字，支持下划线。最大支持40个英文字符，如style
 	AttributeKey *string `json:"AttributeKey,omitnil,omitempty" name:"AttributeKey"`
 
-	// 属性名称，最大80个英文字符，如风格
+	// 说明：属性名称
+	// 备注：支持中英文字符。最大支持80个中英文字符，如风格
 	AttributeName *string `json:"AttributeName,omitnil,omitempty" name:"AttributeName"`
 
-	// 属性标签
+	// 说明：标签ID（LabelId）以及标签名（LabelName）
+	// 备注：
+	// - 不填写LabelId，默认在当前AttributeId下新增标签值（LabelName）；
+	// - 若填写该AttributeId下的LabelId以及LabelName，则为修改该LabelId对应的标签值
 	Labels []*AttributeLabelItem `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 说明：删除的标签id
+	DeleteLabelIds []*string `json:"DeleteLabelIds,omitnil,omitempty" name:"DeleteLabelIds"`
 }
 
 type ModifyAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 知识库ID
+	// 说明：知识库ID
+	// 备注：通过创建知识库接口（DeleteKnowledgeBase）得到知识库ID（KnowledgeBaseId）
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
-	// 属性ID
+	// 说明：属性ID
+	// 备注：通过CreateAttributeLabel接口创建属性时会生成AttributeId，通过ListAttributeLabels接口可查询得到AttributeId、AttributeKey、AttributeName以及LabelId、LabelName的对应关系
 	AttributeId *string `json:"AttributeId,omitnil,omitempty" name:"AttributeId"`
 
-	// 属性标识，最大40个英文字符，如style
+	// 说明：属性标识，
+	// 备注：仅支持英文字符，不支持数字，支持下划线。最大支持40个英文字符，如style
 	AttributeKey *string `json:"AttributeKey,omitnil,omitempty" name:"AttributeKey"`
 
-	// 属性名称，最大80个英文字符，如风格
+	// 说明：属性名称
+	// 备注：支持中英文字符。最大支持80个中英文字符，如风格
 	AttributeName *string `json:"AttributeName,omitnil,omitempty" name:"AttributeName"`
 
-	// 属性标签
+	// 说明：标签ID（LabelId）以及标签名（LabelName）
+	// 备注：
+	// - 不填写LabelId，默认在当前AttributeId下新增标签值（LabelName）；
+	// - 若填写该AttributeId下的LabelId以及LabelName，则为修改该LabelId对应的标签值
 	Labels []*AttributeLabelItem `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 说明：删除的标签id
+	DeleteLabelIds []*string `json:"DeleteLabelIds,omitnil,omitempty" name:"DeleteLabelIds"`
 }
 
 func (r *ModifyAttributeLabelRequest) ToJsonString() string {
@@ -1782,6 +1821,7 @@ func (r *ModifyAttributeLabelRequest) FromJsonString(s string) error {
 	delete(f, "AttributeKey")
 	delete(f, "AttributeName")
 	delete(f, "Labels")
+	delete(f, "DeleteLabelIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAttributeLabelRequest has unknown keys!", "")
 	}

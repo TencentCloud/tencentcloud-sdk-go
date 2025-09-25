@@ -68,6 +68,9 @@ const (
 	// 单用户并发过载，请联系我们增大并发路数到合理值。
 	FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
 
+	// 请求过于频繁
+	FAILEDOPERATION_RESTRICTEDFREQUENCY = "FailedOperation.RestrictedFrequency"
+
 	// 房间不存在。
 	FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 

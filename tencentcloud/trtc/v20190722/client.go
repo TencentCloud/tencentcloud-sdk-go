@@ -4200,6 +4200,7 @@ func NewStartMCUMixTranscodeResponse() (response *StartMCUMixTranscodeResponse) 
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
+//  FAILEDOPERATION_RESTRICTEDFREQUENCY = "FailedOperation.RestrictedFrequency"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"
 //  INTERNALERROR = "InternalError"
@@ -4287,6 +4288,7 @@ func (c *Client) StartMCUMixTranscode(request *StartMCUMixTranscodeRequest) (res
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
+//  FAILEDOPERATION_RESTRICTEDFREQUENCY = "FailedOperation.RestrictedFrequency"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"
 //  INTERNALERROR = "InternalError"
@@ -4406,6 +4408,7 @@ func NewStartMCUMixTranscodeByStrRoomIdResponse() (response *StartMCUMixTranscod
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
+//  FAILEDOPERATION_RESTRICTEDFREQUENCY = "FailedOperation.RestrictedFrequency"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"
 //  INTERNALERROR = "InternalError"
@@ -4489,6 +4492,7 @@ func (c *Client) StartMCUMixTranscodeByStrRoomId(request *StartMCUMixTranscodeBy
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
+//  FAILEDOPERATION_RESTRICTEDFREQUENCY = "FailedOperation.RestrictedFrequency"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"
 //  INTERNALERROR = "InternalError"

@@ -11684,7 +11684,7 @@ type DescribeGroupsRequestParams struct {
 	// 部署组状态过滤字段
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 无
+	// 部署组ID列表
 	GroupIdList []*string `json:"GroupIdList,omitnil,omitempty" name:"GroupIdList"`
 }
 
@@ -11721,7 +11721,7 @@ type DescribeGroupsRequest struct {
 	// 部署组状态过滤字段
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 无
+	// 部署组ID列表
 	GroupIdList []*string `json:"GroupIdList,omitnil,omitempty" name:"GroupIdList"`
 }
 

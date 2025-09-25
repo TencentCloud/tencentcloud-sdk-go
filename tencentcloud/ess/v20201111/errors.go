@@ -533,7 +533,7 @@ const (
 	// 子企业的license已经过期
 	OPERATIONDENIED_LICENSEHASEXPIRED = "OperationDenied.LicenseHasExpired"
 
-	// 资源id超过使用上限限制，请联系客服了解规则，并在修改后重试。
+	// 资源id超过使用上限的限制，请联系客服了解规则，并在修改后重试。
 	OPERATIONDENIED_MANYRESOURCEID = "OperationDenied.ManyResourceId"
 
 	// 没有API权限。

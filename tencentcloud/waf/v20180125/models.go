@@ -935,26 +935,16 @@ type AddSpartaProtectionRequestParams struct {
 	// 必填项，域名所属实例id
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 必填项，是否开启HTTP强制跳转到HTTPS。
-	// 0：不强制跳转
-	// 1：开启强制跳转
+	// 是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转
 	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil,omitempty" name:"HttpsRewrite"`
 
-	// 必填项，是否开启HTTP2，需要开启HTTPS协议支持。
-	// 0：关闭
-	// 1：开启
+	// 是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启
 	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
-	// 必填项，是否开启主动健康检测。
-	// 0：不开启
-	// 1：开启
+	// 是否开启主动健康检测。0：不开启1：开启
 	ActiveCheck *int64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
 
-	// 必填项，加密套件模板。
-	// 0：不支持选择，使用默认模板  
-	// 1：通用型模板 
-	// 2：安全型模板
-	// 3：自定义模板
+	// 加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
 
 	// CertType为1时，需要填充此参数，表示自有证书的证书链
@@ -1139,26 +1129,16 @@ type AddSpartaProtectionRequest struct {
 	// 必填项，域名所属实例id
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 必填项，是否开启HTTP强制跳转到HTTPS。
-	// 0：不强制跳转
-	// 1：开启强制跳转
+	// 是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转
 	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil,omitempty" name:"HttpsRewrite"`
 
-	// 必填项，是否开启HTTP2，需要开启HTTPS协议支持。
-	// 0：关闭
-	// 1：开启
+	// 是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启
 	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
-	// 必填项，是否开启主动健康检测。
-	// 0：不开启
-	// 1：开启
+	// 是否开启主动健康检测。0：不开启1：开启
 	ActiveCheck *int64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
 
-	// 必填项，加密套件模板。
-	// 0：不支持选择，使用默认模板  
-	// 1：通用型模板 
-	// 2：安全型模板
-	// 3：自定义模板
+	// 加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
 
 	// CertType为1时，需要填充此参数，表示自有证书的证书链

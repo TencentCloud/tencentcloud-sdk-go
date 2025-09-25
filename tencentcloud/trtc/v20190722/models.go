@@ -6980,6 +6980,14 @@ type TencentVod struct {
 	UserDefineRecordId *string `json:"UserDefineRecordId,omitnil,omitempty" name:"UserDefineRecordId"`
 }
 
+type Terminology struct {
+	// 源术语
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 目标术语翻译结果
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+}
+
 // Predefined struct for user
 type TextToSpeechRequestParams struct {
 	// 需要转语音的文字内容，长度范围：[1, 255]
@@ -7202,6 +7210,9 @@ type TranslationConfig struct {
 
 	// 语音同传配置，开启同传时，需要传递
 	TTSConfig *TTSConfig `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 翻译术语集合
+	Terminology []*Terminology `json:"Terminology,omitnil,omitempty" name:"Terminology"`
 }
 
 type TrtcUsage struct {
