@@ -74,7 +74,7 @@ v1.0.170后可以按照产品下载，您只需下载基础包和对应的产品
 
 ## 通过源码安装
 
-前往代码托管地址 [Github](https://github.com/tencentcloud/tencentcloud-sdk-go) 或者 [Gitee](https://gitee.com/tencentcloud/tencentcloud-sdk-go) 下载最新代码，解压后安装到 $GOPATH/src/github.com/tencentcloud 目录下。
+前往代码托管地址 [CNB](https://cnb.cool/tencent/cloud/api/sdk/tencentcloud-sdk-go)、[Github](https://github.com/tencentcloud/tencentcloud-sdk-go) 或者 [Gitee](https://gitee.com/tencentcloud/tencentcloud-sdk-go) 下载最新代码，解压后安装到 $GOPATH/src/github.com/tencentcloud 目录下。
 
 # 快速开始
 
