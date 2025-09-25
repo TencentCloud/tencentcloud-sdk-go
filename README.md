@@ -227,7 +227,7 @@ func main() {
 }
 ```
 
-更多示例参见 [examples](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/examples) 目录。对于复杂接口的 Request 初始化例子，可以参考 [例一](examples/cvm/v20170312/run_instances.go) 。对于使用json字符串初始化 Request 的例子，可以参考 [例二](examples/cvm/v20170312/describe_instances.go) 。
+更多示例参见 [examples](examples) 目录。对于复杂接口的 Request 初始化例子，可以参考 [例一](examples/cvm/v20170312/run_instances.go) 。对于使用json字符串初始化 Request 的例子，可以参考 [例二](examples/cvm/v20170312/describe_instances.go) 。
 
 # 相关配置
 
@@ -254,7 +254,7 @@ cpf.HttpProfile.ReqMethod = "POST"
 ## 超时时间
 
 SDK有默认的超时时间，如非必要请不要修改默认设置。
-如有需要请在代码中查阅以获取最新的默认值。  
+如有需要请在代码中查阅以获取最新的默认值。
 单位：秒
 
 ```go
@@ -446,7 +446,7 @@ import "crypto/tls"
     credential, err := provider.GetCredential()
     ```
 
-    更详细的使用方式请参考示例：[使用ProviderChain](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/testing/integration/provider_chain_test.go)
+    更详细的使用方式请参考示例：[使用ProviderChain](testing/integration/provider_chain_test.go)
 
 ## 错误处理
 
@@ -521,7 +521,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 
 目前仅支持使用 POST 方式发送请求，且签名方法必须使用 签名方法 v3。
 
-详细使用请参阅示例：[使用 Common Client 进行调用](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/common_client.go)
+详细使用请参阅示例：[使用 Common Client 进行调用](examples/common/common_client.go)
 
 ## 自定义 Header
 
@@ -582,7 +582,7 @@ func main() {
 }
 ```
 
-更多用法参考[测试文件](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/tencentcloud/common/netretry_test.go)
+更多用法参考[测试文件](tencentcloud/common/netretry_test.go)
 
 ### 限频重试
 
@@ -625,7 +625,7 @@ func main() {
 
 在 >= v1.0.739 的版本, SDK使用`omitnil`标签来序列化请求, 此时nil数组会被忽略掉, 但是空数组可以被正常发送。
 
-在 >= v1.0.885 版本中我们对这一特性增加了开关, 当你不希望发送一个空数组时, 可以通过 `json.OmitBehaviour = json.OmitEmpty` 来关闭该特性, 参考[示例](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/omitempty.go)
+在 >= v1.0.885 版本中我们对这一特性增加了开关, 当你不希望发送一个空数组时, 可以通过 `json.OmitBehaviour = json.OmitEmpty` 来关闭该特性, 参考[示例](examples/common/omitempty.go)
 
 ## EOF 报错
 
@@ -638,4 +638,4 @@ func main() {
 
 # 支持产品列表
 
-参见[产品列表文档](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/products.md)
+参见[产品列表文档](products.md)
