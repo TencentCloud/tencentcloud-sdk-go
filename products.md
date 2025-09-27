@@ -85,7 +85,7 @@
 | dbdc | [云数据库独享集群](https://cloud.tencent.com/document/product/1322) | [查看](https://cloud.tencent.com/document/product/1322/74764) | 2025-08-15 01:36:35 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | [查看](https://cloud.tencent.com/document/product/216/18410) | 2025-09-11 01:36:19 |
 | dcdb | [TDSQL MySQL 版](https://cloud.tencent.com/document/product/557) | [查看](https://cloud.tencent.com/document/product/557/17373) | 2025-08-27 01:33:52 |
-| dlc | [数据湖计算 DLC](https://cloud.tencent.com/document/product/1342) | [查看](https://cloud.tencent.com/document/product/1342/53788) | 2025-09-09 01:37:23 |
+| dlc | [数据湖计算 DLC](https://cloud.tencent.com/document/product/1342) | [查看](https://cloud.tencent.com/document/product/1342/53788) | 2025-09-27 16:52:20 |
 | dnspod | [DNSPod](https://cloud.tencent.com/document/product/1427) | [查看](https://cloud.tencent.com/document/product/1427/56195) | 2025-09-09 01:39:09 |
 | domain | [域名注册](https://cloud.tencent.com/document/product/242) | [查看](https://cloud.tencent.com/document/product/242/38891) | 2025-07-17 01:36:05 |
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | [查看](https://cloud.tencent.com/document/product/1000/30705) | 2025-04-30 01:15:59 |

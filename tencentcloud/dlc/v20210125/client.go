@@ -3150,6 +3150,7 @@ func NewCreateTasksResponse() (response *CreateTasksResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFIGKEYPROHIBITED = "InvalidParameter.ConfigKeyProhibited"
 //  INVALIDPARAMETER_DATAENGINEONLYSUPPORTSQL = "InvalidParameter.DataEngineOnlySupportSQL"
 //  INVALIDPARAMETER_IMAGEENGINETYPENOTMATCH = "InvalidParameter.ImageEngineTypeNotMatch"
 //  INVALIDPARAMETER_IMAGEISPUBLICNOTMATCH = "InvalidParameter.ImageIsPublicNotMatch"
@@ -3192,6 +3193,7 @@ func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasks
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFIGKEYPROHIBITED = "InvalidParameter.ConfigKeyProhibited"
 //  INVALIDPARAMETER_DATAENGINEONLYSUPPORTSQL = "InvalidParameter.DataEngineOnlySupportSQL"
 //  INVALIDPARAMETER_IMAGEENGINETYPENOTMATCH = "InvalidParameter.ImageEngineTypeNotMatch"
 //  INVALIDPARAMETER_IMAGEISPUBLICNOTMATCH = "InvalidParameter.ImageIsPublicNotMatch"
@@ -7639,6 +7641,62 @@ func (c *Client) DescribeTaskMonitorInfosWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeTaskResourceUsageRequest() (request *DescribeTaskResourceUsageRequest) {
+    request = &DescribeTaskResourceUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTaskResourceUsage")
+    
+    
+    return
+}
+
+func NewDescribeTaskResourceUsageResponse() (response *DescribeTaskResourceUsageResponse) {
+    response = &DescribeTaskResourceUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskResourceUsage
+// 返回任务洞察资源用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+func (c *Client) DescribeTaskResourceUsage(request *DescribeTaskResourceUsageRequest) (response *DescribeTaskResourceUsageResponse, err error) {
+    return c.DescribeTaskResourceUsageWithContext(context.Background(), request)
+}
+
+// DescribeTaskResourceUsage
+// 返回任务洞察资源用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+func (c *Client) DescribeTaskResourceUsageWithContext(ctx context.Context, request *DescribeTaskResourceUsageRequest) (response *DescribeTaskResourceUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskResourceUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeTaskResourceUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskResourceUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskResourceUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskResultRequest() (request *DescribeTaskResultRequest) {
     request = &DescribeTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7812,10 +7870,12 @@ func NewDescribeTasksAnalysisResponse() (response *DescribeTasksAnalysisResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = "InvalidParameter.FiltersValuesNumberOutOfLimit"
 //  INVALIDPARAMETER_INVALIDFILTERLENGTH = "InvalidParameter.InvalidFilterLength"
+//  INVALIDPARAMETER_INVALIDPARAMETER_SQLTASKANALYSISSORTBYTYPENOTMATCH = "InvalidParameter.InvalidParameter_SQLTaskAnalysisSortByTypeNotMatch"
 //  INVALIDPARAMETER_INVALIDTIMEFORMAT = "InvalidParameter.InvalidTimeFormat"
 //  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETER_SQLTASKANALYSISFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskAnalysisFiltersKeyTypeNotMath"
 //  INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskFiltersKeyTypeNotMath"
 //  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
 //  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
@@ -7836,10 +7896,12 @@ func (c *Client) DescribeTasksAnalysis(request *DescribeTasksAnalysisRequest) (r
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = "InvalidParameter.FiltersValuesNumberOutOfLimit"
 //  INVALIDPARAMETER_INVALIDFILTERLENGTH = "InvalidParameter.InvalidFilterLength"
+//  INVALIDPARAMETER_INVALIDPARAMETER_SQLTASKANALYSISSORTBYTYPENOTMATCH = "InvalidParameter.InvalidParameter_SQLTaskAnalysisSortByTypeNotMatch"
 //  INVALIDPARAMETER_INVALIDTIMEFORMAT = "InvalidParameter.InvalidTimeFormat"
 //  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETER_SQLTASKANALYSISFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskAnalysisFiltersKeyTypeNotMath"
 //  INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskFiltersKeyTypeNotMath"
 //  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
 //  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"

@@ -1801,6 +1801,14 @@ type CommonMetrics struct {
 	ProcessedRows *int64 `json:"ProcessedRows,omitnil,omitempty" name:"ProcessedRows"`
 }
 
+type CoreInfo struct {
+	// 时间戳(毫秒)数组
+	Timestamp []*int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// core 用量
+	CoreUsage []*int64 `json:"CoreUsage,omitnil,omitempty" name:"CoreUsage"`
+}
+
 type CosPermission struct {
 	// cos路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2461,6 +2469,9 @@ func (r *CreateDataMaskStrategyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDataMaskStrategyResponseParams struct {
+	// 策略id
+	StrategyId *string `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3963,6 +3974,21 @@ type CreateStandardEngineResourceGroupRequestParams struct {
 
 	// 仅SQL资源组资源上限，仅用于快速模块
 	SparkSize *int64 `json:"SparkSize,omitnil,omitempty" name:"SparkSize"`
+
+	// GPUDriver规格
+	DriverGPUSpec *int64 `json:"DriverGPUSpec,omitnil,omitempty" name:"DriverGPUSpec"`
+
+	// GPUExecutor规格
+	ExecutorGPUSpec *int64 `json:"ExecutorGPUSpec,omitnil,omitempty" name:"ExecutorGPUSpec"`
+
+	// GPU上限
+	GPULimitSize *int64 `json:"GPULimitSize,omitnil,omitempty" name:"GPULimitSize"`
+
+	// GPU规格
+	GPUSize *int64 `json:"GPUSize,omitnil,omitempty" name:"GPUSize"`
+
+	// Pod GPU规格上限
+	PythonGPUSpec *int64 `json:"PythonGPUSpec,omitnil,omitempty" name:"PythonGPUSpec"`
 }
 
 type CreateStandardEngineResourceGroupRequest struct {
@@ -4047,6 +4073,21 @@ type CreateStandardEngineResourceGroupRequest struct {
 
 	// 仅SQL资源组资源上限，仅用于快速模块
 	SparkSize *int64 `json:"SparkSize,omitnil,omitempty" name:"SparkSize"`
+
+	// GPUDriver规格
+	DriverGPUSpec *int64 `json:"DriverGPUSpec,omitnil,omitempty" name:"DriverGPUSpec"`
+
+	// GPUExecutor规格
+	ExecutorGPUSpec *int64 `json:"ExecutorGPUSpec,omitnil,omitempty" name:"ExecutorGPUSpec"`
+
+	// GPU上限
+	GPULimitSize *int64 `json:"GPULimitSize,omitnil,omitempty" name:"GPULimitSize"`
+
+	// GPU规格
+	GPUSize *int64 `json:"GPUSize,omitnil,omitempty" name:"GPUSize"`
+
+	// Pod GPU规格上限
+	PythonGPUSpec *int64 `json:"PythonGPUSpec,omitnil,omitempty" name:"PythonGPUSpec"`
 }
 
 func (r *CreateStandardEngineResourceGroupRequest) ToJsonString() string {
@@ -4087,6 +4128,11 @@ func (r *CreateStandardEngineResourceGroupRequest) FromJsonString(s string) erro
 	delete(f, "PythonCuSpec")
 	delete(f, "SparkSpecMode")
 	delete(f, "SparkSize")
+	delete(f, "DriverGPUSpec")
+	delete(f, "ExecutorGPUSpec")
+	delete(f, "GPULimitSize")
+	delete(f, "GPUSize")
+	delete(f, "PythonGPUSpec")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStandardEngineResourceGroupRequest has unknown keys!", "")
 	}
@@ -11061,6 +11107,63 @@ func (r *DescribeTaskMonitorInfosResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTaskResourceUsageRequestParams struct {
+	// 任务 id
+	TaskInstanceId *string `json:"TaskInstanceId,omitnil,omitempty" name:"TaskInstanceId"`
+}
+
+type DescribeTaskResourceUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 id
+	TaskInstanceId *string `json:"TaskInstanceId,omitnil,omitempty" name:"TaskInstanceId"`
+}
+
+func (r *DescribeTaskResourceUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskResourceUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskResourceUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskResourceUsageResponseParams struct {
+	// core 用量信息
+	CoreInfo *CoreInfo `json:"CoreInfo,omitnil,omitempty" name:"CoreInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskResourceUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskResourceUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskResourceUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskResourceUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTaskResultRequestParams struct {
 	// 任务唯一ID，仅支持30天内的任务
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -17314,6 +17417,9 @@ type TaskResultInfo struct {
 
 	// 获取结果消耗的时间
 	QueryResultTime *float64 `json:"QueryResultTime,omitnil,omitempty" name:"QueryResultTime"`
+
+	// base64 编码结果集
+	ResultSetEncode *string `json:"ResultSetEncode,omitnil,omitempty" name:"ResultSetEncode"`
 }
 
 type TasksInfo struct {
@@ -18249,6 +18355,21 @@ type UpdateStandardEngineResourceGroupResourceInfoRequestParams struct {
 
 	// 仅SQL资源组资源上限，仅用于快速模式
 	SparkSize *int64 `json:"SparkSize,omitnil,omitempty" name:"SparkSize"`
+
+	// gpuDriver规格
+	DriverGPUSpec *int64 `json:"DriverGPUSpec,omitnil,omitempty" name:"DriverGPUSpec"`
+
+	// gpuExcutor 规格
+	ExecutorGPUSpec *int64 `json:"ExecutorGPUSpec,omitnil,omitempty" name:"ExecutorGPUSpec"`
+
+	// gpu 上限
+	GPULimitSize *int64 `json:"GPULimitSize,omitnil,omitempty" name:"GPULimitSize"`
+
+	// gpu 规格
+	GPUSize *int64 `json:"GPUSize,omitnil,omitempty" name:"GPUSize"`
+
+	// gpupod 规格
+	PythonGPUSpec *int64 `json:"PythonGPUSpec,omitnil,omitempty" name:"PythonGPUSpec"`
 }
 
 type UpdateStandardEngineResourceGroupResourceInfoRequest struct {
@@ -18306,6 +18427,21 @@ type UpdateStandardEngineResourceGroupResourceInfoRequest struct {
 
 	// 仅SQL资源组资源上限，仅用于快速模式
 	SparkSize *int64 `json:"SparkSize,omitnil,omitempty" name:"SparkSize"`
+
+	// gpuDriver规格
+	DriverGPUSpec *int64 `json:"DriverGPUSpec,omitnil,omitempty" name:"DriverGPUSpec"`
+
+	// gpuExcutor 规格
+	ExecutorGPUSpec *int64 `json:"ExecutorGPUSpec,omitnil,omitempty" name:"ExecutorGPUSpec"`
+
+	// gpu 上限
+	GPULimitSize *int64 `json:"GPULimitSize,omitnil,omitempty" name:"GPULimitSize"`
+
+	// gpu 规格
+	GPUSize *int64 `json:"GPUSize,omitnil,omitempty" name:"GPUSize"`
+
+	// gpupod 规格
+	PythonGPUSpec *int64 `json:"PythonGPUSpec,omitnil,omitempty" name:"PythonGPUSpec"`
 }
 
 func (r *UpdateStandardEngineResourceGroupResourceInfoRequest) ToJsonString() string {
@@ -18337,6 +18473,11 @@ func (r *UpdateStandardEngineResourceGroupResourceInfoRequest) FromJsonString(s 
 	delete(f, "PythonCuSpec")
 	delete(f, "SparkSpecMode")
 	delete(f, "SparkSize")
+	delete(f, "DriverGPUSpec")
+	delete(f, "ExecutorGPUSpec")
+	delete(f, "GPULimitSize")
+	delete(f, "GPUSize")
+	delete(f, "PythonGPUSpec")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateStandardEngineResourceGroupResourceInfoRequest has unknown keys!", "")
 	}

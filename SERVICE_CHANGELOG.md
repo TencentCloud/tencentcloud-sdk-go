@@ -1,69 +1,43 @@
-# Release v1.1.34
+# Release v1.1.35
 
-## 知识引擎原子能力(lkeap) 版本：2024-05-22
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
-### 第 18 次发布
+### 第 138 次发布
 
-发布时间：2025-09-26 01:56:17
+发布时间：2025-09-27 16:52:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
+
+新增接口：
+
+* [DescribeTaskResourceUsage](https://cloud.tencent.com/document/api/1342/123808)
 
 修改接口：
 
-* [ModifyAttributeLabel](https://cloud.tencent.com/document/api/1772/115351)
+* [CreateDataMaskStrategy](https://cloud.tencent.com/document/api/1342/122619)
 
-	* 新增入参：DeleteLabelIds
+	* 新增出参：StrategyId
 
+* [CreateStandardEngineResourceGroup](https://cloud.tencent.com/document/api/1342/122138)
 
-修改数据结构：
+	* 新增入参：DriverGPUSpec, ExecutorGPUSpec, GPULimitSize, GPUSize, PythonGPUSpec
 
-* [CreateSplitDocumentFlowConfig](https://cloud.tencent.com/document/api/1772/115364#CreateSplitDocumentFlowConfig)
+* [UpdateStandardEngineResourceGroupResourceInfo](https://cloud.tencent.com/document/api/1342/122128)
 
-	* 新增成员：SplitResultType, SplitTableResultType
+	* 新增入参：DriverGPUSpec, ExecutorGPUSpec, GPULimitSize, GPUSize, PythonGPUSpec
 
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 122 次发布
-
-发布时间：2025-09-26 03:04:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
 
 新增数据结构：
 
-* [Terminology](https://cloud.tencent.com/document/api/647/44055#Terminology)
+* [CoreInfo](https://cloud.tencent.com/document/api/1342/53778#CoreInfo)
 
 修改数据结构：
 
-* [TranslationConfig](https://cloud.tencent.com/document/api/647/44055#TranslationConfig)
+* [TaskResultInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResultInfo)
 
-	* 新增成员：Terminology
-
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 129 次发布
-
-发布时间：2025-09-26 03:26:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
-
-	* <font color="#dd0000">**修改入参**：</font>HttpsRewrite, IsHttp2, ActiveCheck, CipherTemplate
+	* 新增成员：ResultSetEncode
 
 
 
