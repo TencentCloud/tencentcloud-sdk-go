@@ -1678,6 +1678,74 @@ type ConfigGroupVersionInfo struct {
 }
 
 // Predefined struct for user
+type ConfirmMultiPathGatewayOriginACLRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 回源 IP 版本号。
+	OriginACLVersion *int64 `json:"OriginACLVersion,omitnil,omitempty" name:"OriginACLVersion"`
+}
+
+type ConfirmMultiPathGatewayOriginACLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 回源 IP 版本号。
+	OriginACLVersion *int64 `json:"OriginACLVersion,omitnil,omitempty" name:"OriginACLVersion"`
+}
+
+func (r *ConfirmMultiPathGatewayOriginACLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConfirmMultiPathGatewayOriginACLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GatewayId")
+	delete(f, "OriginACLVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConfirmMultiPathGatewayOriginACLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ConfirmMultiPathGatewayOriginACLResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ConfirmMultiPathGatewayOriginACLResponse struct {
+	*tchttp.BaseResponse
+	Response *ConfirmMultiPathGatewayOriginACLResponseParams `json:"Response"`
+}
+
+func (r *ConfirmMultiPathGatewayOriginACLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConfirmMultiPathGatewayOriginACLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ConfirmOriginACLUpdateRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -1729,6 +1797,14 @@ func (r *ConfirmOriginACLUpdateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ConfirmOriginACLUpdateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ContentCompressionParameters struct {
+	// 内容压缩配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	// 当 Switch 为 on 时，将同时支持 brotli 和 gzip 压缩算法。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
 type ContentIdentifier struct {
@@ -9662,6 +9738,70 @@ func (r *DescribeMultiPathGatewayLineResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMultiPathGatewayOriginACLRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+}
+
+type DescribeMultiPathGatewayOriginACLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+}
+
+func (r *DescribeMultiPathGatewayOriginACLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewayOriginACLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GatewayId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMultiPathGatewayOriginACLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultiPathGatewayOriginACLResponseParams struct {
+	// 多通道网关实例与回源 IP 网段的绑定关系详情。
+	MultiPathGatewayOriginACLInfo *MultiPathGatewayOriginACLInfo `json:"MultiPathGatewayOriginACLInfo,omitnil,omitempty" name:"MultiPathGatewayOriginACLInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMultiPathGatewayOriginACLResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMultiPathGatewayOriginACLResponseParams `json:"Response"`
+}
+
+func (r *DescribeMultiPathGatewayOriginACLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewayOriginACLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMultiPathGatewayRegionsRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -17250,6 +17390,74 @@ func (r *ModifyMultiPathGatewaySecretKeyResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type ModifyMultiPathGatewayStatusRequestParams struct {
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 修改网关的启用停用状态，取值有：<li> offline：停用；</li><li> online：启用。</li>
+	GatewayStatus *string `json:"GatewayStatus,omitnil,omitempty" name:"GatewayStatus"`
+}
+
+type ModifyMultiPathGatewayStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 修改网关的启用停用状态，取值有：<li> offline：停用；</li><li> online：启用。</li>
+	GatewayStatus *string `json:"GatewayStatus,omitnil,omitempty" name:"GatewayStatus"`
+}
+
+func (r *ModifyMultiPathGatewayStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMultiPathGatewayStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "ZoneId")
+	delete(f, "GatewayStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMultiPathGatewayStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMultiPathGatewayStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMultiPathGatewayStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMultiPathGatewayStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyMultiPathGatewayStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMultiPathGatewayStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyOriginACLRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -18670,6 +18878,20 @@ type MultiPathGateway struct {
 	NeedConfirm *string `json:"NeedConfirm,omitnil,omitempty" name:"NeedConfirm"`
 }
 
+type MultiPathGatewayCurrentOriginACL struct {
+	// 回源 IP 网段详情。
+	EntireAddresses *Addresses `json:"EntireAddresses,omitnil,omitempty" name:"EntireAddresses"`
+
+	// 版本号。
+	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 本参数用于记录当前版本生效前是否完成「我已更新至最新回源 IP 网段」的确认。取值有：
+	// <li>true：已完成更新至最新回源 IP 的确认；</li>
+	// <li>false：未完成更新至最新回源 IP 的确认；</li>
+	// 注意：本参数返回 false 时，请及时确认您的源站防火墙配置是否已更新至最新的回源 IP 网段，以避免出现回源失败。
+	IsPlaned *string `json:"IsPlaned,omitnil,omitempty" name:"IsPlaned"`
+}
+
 type MultiPathGatewayLine struct {
 	// 线路 ID ， 其中 line-0 和 line-1 为系统内置线路 ID，取值有:
 	// <li> line-0：直连线路，不支持添加、编辑和删除；</li>
@@ -18691,6 +18913,31 @@ type MultiPathGatewayLine struct {
 
 	// 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）返回。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+type MultiPathGatewayNextOriginACL struct {
+	// 版本号。
+	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 回源 IP 网段详情。
+	EntireAddresses *Addresses `json:"EntireAddresses,omitnil,omitempty" name:"EntireAddresses"`
+
+	// 最新回源 IP 网段相较于 MultiPathGatewayCurrentOrginACL 中回源 IP 网段新增的部分。
+	AddedAddresses *Addresses `json:"AddedAddresses,omitnil,omitempty" name:"AddedAddresses"`
+
+	// 最新回源 IP 网段相较于 MultiPathGatewayCurrentOrginACL 中回源 IP 网段删减的部分。
+	RemovedAddresses *Addresses `json:"RemovedAddresses,omitnil,omitempty" name:"RemovedAddresses"`
+
+	// 最新回源 IP 网段相较于 MultiPathGatewayCurrentOrginACL 中回源 IP 网段无变化的部分。
+	NoChangeAddresses *Addresses `json:"NoChangeAddresses,omitnil,omitempty" name:"NoChangeAddresses"`
+}
+
+type MultiPathGatewayOriginACLInfo struct {
+	// 当前生效的回源 IP 网段。
+	MultiPathGatewayCurrentOriginACL *MultiPathGatewayCurrentOriginACL `json:"MultiPathGatewayCurrentOriginACL,omitnil,omitempty" name:"MultiPathGatewayCurrentOriginACL"`
+
+	// 当回源 IP 网段发生更新时，该字段会返回下一个版本将要生效的回源 IP 网段，包含与当前回源 IP 网段的对比。无更新时该字段为空。
+	MultiPathGatewayNextOriginACL *MultiPathGatewayNextOriginACL `json:"MultiPathGatewayNextOriginACL,omitnil,omitempty" name:"MultiPathGatewayNextOriginACL"`
 }
 
 type MutualTLS struct {
@@ -19095,6 +19342,14 @@ type OriginProtectionInfo struct {
 	// 最新IP白名单与当前IP白名单的对比。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiffIPWhitelist *DiffIPWhitelist `json:"DiffIPWhitelist,omitnil,omitempty" name:"DiffIPWhitelist"`
+}
+
+type OriginPullProtocolParameters struct {
+	// 回源协议配置，取值有：
+	// <li>http：使用 HTTP 协议回源；</li>
+	// <li>https：使用 HTTPS 协议回源；</li>
+	// <li>follow：协议跟随。</li>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 type OriginRecord struct {
@@ -20122,6 +20377,10 @@ type RuleEngineAction struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForceRedirectHTTPSParameters *ForceRedirectHTTPSParameters `json:"ForceRedirectHTTPSParameters,omitnil,omitempty" name:"ForceRedirectHTTPSParameters"`
 
+	// 回源 HTTPS 配置参数，当 Name 取值为 OriginPullProtocol 时，该参数必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginPullProtocolParameters *OriginPullProtocolParameters `json:"OriginPullProtocolParameters,omitnil,omitempty" name:"OriginPullProtocolParameters"`
+
 	// 智能压缩配置，当 Name 取值为 Compression 时，该参数必填。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompressionParameters *CompressionParameters `json:"CompressionParameters,omitnil,omitempty" name:"CompressionParameters"`
@@ -20197,6 +20456,9 @@ type RuleEngineAction struct {
 
 	// Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。
 	VaryParameters *VaryParameters `json:"VaryParameters,omitnil,omitempty" name:"VaryParameters"`
+
+	// 内容压缩配置参数，当 Name 取值为 ContentCompression 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+	ContentCompressionParameters *ContentCompressionParameters `json:"ContentCompressionParameters,omitnil,omitempty" name:"ContentCompressionParameters"`
 }
 
 type RuleEngineItem struct {

@@ -301,7 +301,7 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
 }
 
 // CreateDBInstance
-// 本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。接口支持的售卖规格，可从查询云数据库的售卖规格（DescribeSpecInfo）获取。
+// 本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。接口支持的售卖规格，可通过接口查询 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/35767) 获取。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -326,7 +326,7 @@ func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *C
 }
 
 // CreateDBInstance
-// 本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。接口支持的售卖规格，可从查询云数据库的售卖规格（DescribeSpecInfo）获取。
+// 本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。接口支持的售卖规格，可通过接口查询 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/35767) 获取。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -747,7 +747,7 @@ func NewDescribeBackupDownloadTaskResponse() (response *DescribeBackupDownloadTa
 }
 
 // DescribeBackupDownloadTask
-// 查询备份下载任务信息
+// 本接口（DescribeBackupDownloadTask）用于查询备份下载任务信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -760,7 +760,7 @@ func (c *Client) DescribeBackupDownloadTask(request *DescribeBackupDownloadTaskR
 }
 
 // DescribeBackupDownloadTask
-// 查询备份下载任务信息
+// 本接口（DescribeBackupDownloadTask）用于查询备份下载任务信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1419,7 +1419,7 @@ func NewDescribeDetailedSlowLogsResponse() (response *DescribeDetailedSlowLogsRe
 }
 
 // DescribeDetailedSlowLogs
-// 查询实例慢日志详情
+// 本接口（DescribeDetailedSlowLogs）用于查询实例慢日志详情。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1435,7 +1435,7 @@ func (c *Client) DescribeDetailedSlowLogs(request *DescribeDetailedSlowLogsReque
 }
 
 // DescribeDetailedSlowLogs
-// 查询实例慢日志详情
+// 本接口（DescribeDetailedSlowLogs）用于查询实例慢日志详情。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1727,7 +1727,7 @@ func NewDescribeSpecInfoResponse() (response *DescribeSpecInfoResponse) {
 }
 
 // DescribeSpecInfo
-// 本接口(DescribeSpecInfo)用于查询实例的售卖规格。
+// 本接口（DescribeSpecInfo）用于查询实例的售卖规格。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -1738,7 +1738,7 @@ func (c *Client) DescribeSpecInfo(request *DescribeSpecInfoRequest) (response *D
 }
 
 // DescribeSpecInfo
-// 本接口(DescribeSpecInfo)用于查询实例的售卖规格。
+// 本接口（DescribeSpecInfo）用于查询实例的售卖规格。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -2249,7 +2249,7 @@ func NewIsolateDBInstanceResponse() (response *IsolateDBInstanceResponse) {
 }
 
 // IsolateDBInstance
-// 本接口(IsolateDBInstance)用于隔离MongoDB云数据库按量计费实例。隔离后实例保留在回收站中，不能再写入数据。隔离一定时间后，实例会彻底删除，回收站保存时间请参考按量计费的服务条款。在隔离中的按量计费实例无法恢复，请谨慎操作。
+// 本接口（IsolateDBInstance）用于隔离 MongoDB 云数据库按量计费实例。隔离后实例保留在回收站中，不能再写入数据。隔离一定时间后，实例会彻底删除，回收站保存时间请参考按量计费的服务条款。已删除的按量计费实例无法恢复，请谨慎操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETIONPROTECTIONENABLED = "FailedOperation.DeletionProtectionEnabled"
@@ -2266,7 +2266,7 @@ func (c *Client) IsolateDBInstance(request *IsolateDBInstanceRequest) (response 
 }
 
 // IsolateDBInstance
-// 本接口(IsolateDBInstance)用于隔离MongoDB云数据库按量计费实例。隔离后实例保留在回收站中，不能再写入数据。隔离一定时间后，实例会彻底删除，回收站保存时间请参考按量计费的服务条款。在隔离中的按量计费实例无法恢复，请谨慎操作。
+// 本接口（IsolateDBInstance）用于隔离 MongoDB 云数据库按量计费实例。隔离后实例保留在回收站中，不能再写入数据。隔离一定时间后，实例会彻底删除，回收站保存时间请参考按量计费的服务条款。已删除的按量计费实例无法恢复，请谨慎操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETIONPROTECTIONENABLED = "FailedOperation.DeletionProtectionEnabled"
@@ -2315,7 +2315,7 @@ func NewKillOpsResponse() (response *KillOpsResponse) {
 }
 
 // KillOps
-// 本接口(KillOps)用于终止MongoDB云数据库实例上执行的特定操作。
+// 本接口（KillOps）用于终止 MongoDB 云数据库实例上执行的特定操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2325,7 +2325,7 @@ func (c *Client) KillOps(request *KillOpsRequest) (response *KillOpsResponse, er
 }
 
 // KillOps
-// 本接口(KillOps)用于终止MongoDB云数据库实例上执行的特定操作。
+// 本接口（KillOps）用于终止 MongoDB 云数据库实例上执行的特定操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2547,7 +2547,7 @@ func NewModifyDBInstanceSpecResponse() (response *ModifyDBInstanceSpecResponse) 
 }
 
 // ModifyDBInstanceSpec
-// 本接口（ModifyDBInstanceSpec）用于调整MongoDB云数据库实例配置。接口支持的售卖规格，可从查询云数据库的售卖规格（DescribeSpecInfo）获取。
+// 本接口（ModifyDBInstanceSpec）用于调整MongoDB云数据库实例配置。接口支持的售卖规格，可从查询云数据库的售卖规格（[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)）获取。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -2564,7 +2564,7 @@ func (c *Client) ModifyDBInstanceSpec(request *ModifyDBInstanceSpecRequest) (res
 }
 
 // ModifyDBInstanceSpec
-// 本接口（ModifyDBInstanceSpec）用于调整MongoDB云数据库实例配置。接口支持的售卖规格，可从查询云数据库的售卖规格（DescribeSpecInfo）获取。
+// 本接口（ModifyDBInstanceSpec）用于调整MongoDB云数据库实例配置。接口支持的售卖规格，可从查询云数据库的售卖规格（[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)）获取。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -2917,7 +2917,7 @@ func NewRestartNodesResponse() (response *RestartNodesResponse) {
 }
 
 // RestartNodes
-// 本接口用于重启数据库节点。
+// 本接口（RestartNodes）用于批量重启数据库节点。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -2929,7 +2929,7 @@ func (c *Client) RestartNodes(request *RestartNodesRequest) (response *RestartNo
 }
 
 // RestartNodes
-// 本接口用于重启数据库节点。
+// 本接口（RestartNodes）用于批量重启数据库节点。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"

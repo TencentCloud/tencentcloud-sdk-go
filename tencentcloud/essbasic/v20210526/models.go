@@ -4233,6 +4233,9 @@ type ChannelCreateSealPolicyRequestParams struct {
 	//
 	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 type ChannelCreateSealPolicyRequest struct {
@@ -4267,6 +4270,9 @@ type ChannelCreateSealPolicyRequest struct {
 
 	// 企业机构信息，不用传
 	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 func (r *ChannelCreateSealPolicyRequest) ToJsonString() string {
@@ -4286,6 +4292,7 @@ func (r *ChannelCreateSealPolicyRequest) FromJsonString(s string) error {
 	delete(f, "UserIds")
 	delete(f, "Operator")
 	delete(f, "Organization")
+	delete(f, "Options")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateSealPolicyRequest has unknown keys!", "")
 	}
@@ -4297,6 +4304,12 @@ type ChannelCreateSealPolicyResponseParams struct {
 	// 最终授权成功的电子签系统用户ID数组。其他的跳过的是已经授权了的。
 	// 请求参数填写OpenId时，返回授权成功的 Openid。
 	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
+
+	// 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+	SealOperatorVerifyPath *string `json:"SealOperatorVerifyPath,omitnil,omitempty" name:"SealOperatorVerifyPath"`
+
+	// 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+	SealOperatorVerifyQrcodeUrl *string `json:"SealOperatorVerifyQrcodeUrl,omitnil,omitempty" name:"SealOperatorVerifyQrcodeUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6366,6 +6379,9 @@ type ChannelUpdateSealStatusRequestParams struct {
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 type ChannelUpdateSealStatusRequest struct {
@@ -6386,6 +6402,9 @@ type ChannelUpdateSealStatusRequest struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 func (r *ChannelUpdateSealStatusRequest) ToJsonString() string {
@@ -6405,6 +6424,7 @@ func (r *ChannelUpdateSealStatusRequest) FromJsonString(s string) error {
 	delete(f, "SealId")
 	delete(f, "Reason")
 	delete(f, "Operator")
+	delete(f, "Options")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelUpdateSealStatusRequest has unknown keys!", "")
 	}
@@ -6413,6 +6433,12 @@ func (r *ChannelUpdateSealStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelUpdateSealStatusResponseParams struct {
+	// 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+	SealOperatorVerifyPath *string `json:"SealOperatorVerifyPath,omitnil,omitempty" name:"SealOperatorVerifyPath"`
+
+	// 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+	SealOperatorVerifyQrcodeUrl *string `json:"SealOperatorVerifyQrcodeUrl,omitnil,omitempty" name:"SealOperatorVerifyQrcodeUrl"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -9321,6 +9347,9 @@ type CreateSealByImageRequestParams struct {
 
 	// 印章描述内容
 	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 type CreateSealByImageRequest struct {
@@ -9385,6 +9414,9 @@ type CreateSealByImageRequest struct {
 
 	// 印章描述内容
 	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 func (r *CreateSealByImageRequest) ToJsonString() string {
@@ -9410,6 +9442,7 @@ func (r *CreateSealByImageRequest) FromJsonString(s string) error {
 	delete(f, "SealSize")
 	delete(f, "TaxIdentifyCode")
 	delete(f, "SealDescription")
+	delete(f, "Options")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealByImageRequest has unknown keys!", "")
 	}
@@ -9426,6 +9459,12 @@ type CreateSealByImageResponseParams struct {
 	// 
 	// 注:`图片上传生成的电子印章无预览链接地址`
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+	SealOperatorVerifyPath *string `json:"SealOperatorVerifyPath,omitnil,omitempty" name:"SealOperatorVerifyPath"`
+
+	// 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+	SealOperatorVerifyQrcodeUrl *string `json:"SealOperatorVerifyQrcodeUrl,omitnil,omitempty" name:"SealOperatorVerifyQrcodeUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -12983,6 +13022,14 @@ func (r *OperateTemplateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OperateTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Option struct {
+	// 个性化配置参数Key字段，对应传入字段的字段名
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 个性化配置参数Value字段，对应传入字段的字段值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type OrganizationAuthUrl struct {

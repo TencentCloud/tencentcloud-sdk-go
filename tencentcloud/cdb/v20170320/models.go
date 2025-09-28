@@ -6220,14 +6220,14 @@ func (r *DescribeBackupEncryptionStatusResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeBackupOverviewRequestParams struct {
-	// 需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+	// 需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type DescribeBackupOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+	// 需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -6295,7 +6295,7 @@ func (r *DescribeBackupOverviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupSummariesRequestParams struct {
-	// 需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+	// 需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 分页查询数据的偏移量，默认为0。
@@ -6314,7 +6314,7 @@ type DescribeBackupSummariesRequestParams struct {
 type DescribeBackupSummariesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+	// 需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 分页查询数据的偏移量，默认为0。
@@ -6457,14 +6457,14 @@ func (r *DescribeBackupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBinlogBackupOverviewRequestParams struct {
-	// 需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+	// 需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type DescribeBinlogBackupOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+	// 需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -8251,14 +8251,14 @@ func (r *DescribeDBSwitchRecordsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataBackupOverviewRequestParams struct {
-	// 需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+	// 需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type DescribeDataBackupOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
+	// 需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点（云盘）实例，mysql-cluster 指云盘版实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -13324,6 +13324,77 @@ func (r *ModifyDBInstanceLogToCLSResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDBInstanceModesRequestParams struct {
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 云数据库的模式，目前仅支持传入 "protectMode" 表示修改主从同步方式。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 数据同步方式，可选值：0-异步复制，1-半同步复制，2-强同步复制。
+	ProtectMode *int64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
+}
+
+type ModifyDBInstanceModesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 云数据库的模式，目前仅支持传入 "protectMode" 表示修改主从同步方式。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 数据同步方式，可选值：0-异步复制，1-半同步复制，2-强同步复制。
+	ProtectMode *int64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
+}
+
+func (r *ModifyDBInstanceModesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceModesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Mode")
+	delete(f, "ProtectMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceModesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceModesResponseParams struct {
+	// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDBInstanceModesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBInstanceModesResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBInstanceModesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceModesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBInstanceNameRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -13530,7 +13601,7 @@ type ModifyDBInstanceSecurityGroupsRequestParams struct {
 	// 当传入只读实例 ID 时，默认操作的是对应只读组的安全组。如果需要操作只读实例 ID 的安全组， 需要将该入参置为 True。默认为 False。
 	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitnil,omitempty" name:"ForReadonlyInstance"`
 
-	// 变更集群版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	// 变更云盘版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
 	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
@@ -13547,7 +13618,7 @@ type ModifyDBInstanceSecurityGroupsRequest struct {
 	// 当传入只读实例 ID 时，默认操作的是对应只读组的安全组。如果需要操作只读实例 ID 的安全组， 需要将该入参置为 True。默认为 False。
 	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitnil,omitempty" name:"ForReadonlyInstance"`
 
-	// 变更集群版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	// 变更云盘版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
 	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
@@ -15308,7 +15379,7 @@ type ReadWriteNode struct {
 	// RW 节点所在可用区。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 升级集群版实例时，如果要调整只读节点可用区，需要指定节点id。
+	// 升级云盘版实例时，如果要调整只读节点可用区，需要指定节点 ID。
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
@@ -15319,7 +15390,7 @@ type ReadonlyNode struct {
 	// 指定该节点分布在哪个可用区。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 升级集群版实例时，如果要调整只读节点可用区，需要指定节点id。
+	// 升级云盘版实例时，如果要调整只读节点可用区，需要指定节点 ID。
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
@@ -17337,7 +17408,7 @@ type UpgradeDBInstanceRequestParams struct {
 	// 针对跨集群搬迁场景，选择同可用区RO的处理逻辑。together-同可用区RO跟随主实例迁移至目标可用区（默认选项），severally-同可用区RO保持原部署模式、不迁移至目标可用区。
 	RoTransType *string `json:"RoTransType,omitnil,omitempty" name:"RoTransType"`
 
-	// 集群版节点拓扑配置。
+	// 云盘版节点拓扑配置。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
 	// 检查原地升级是否需要重启，1 检查， 0 不检查。如果值为1，检查为原地升级需要重启，则会停止升级并进行返回提示，如果为原地升级不重启，则正常执行升级流程。
@@ -17410,7 +17481,7 @@ type UpgradeDBInstanceRequest struct {
 	// 针对跨集群搬迁场景，选择同可用区RO的处理逻辑。together-同可用区RO跟随主实例迁移至目标可用区（默认选项），severally-同可用区RO保持原部署模式、不迁移至目标可用区。
 	RoTransType *string `json:"RoTransType,omitnil,omitempty" name:"RoTransType"`
 
-	// 集群版节点拓扑配置。
+	// 云盘版节点拓扑配置。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
 	// 检查原地升级是否需要重启，1 检查， 0 不检查。如果值为1，检查为原地升级需要重启，则会停止升级并进行返回提示，如果为原地升级不重启，则正常执行升级流程。

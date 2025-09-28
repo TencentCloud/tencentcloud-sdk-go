@@ -561,6 +561,9 @@ type DescribeAccountGroupsData struct {
 
 	// 最新一次同步任务的结束时间
 	LatestSyncTime *string `json:"LatestSyncTime,omitnil,omitempty" name:"LatestSyncTime"`
+
+	// 分组名称数组
+	NamePathArr []*string `json:"NamePathArr,omitnil,omitempty" name:"NamePathArr"`
 }
 
 type DescribeAccountGroupsPageResp struct {

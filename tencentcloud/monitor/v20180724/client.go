@@ -752,6 +752,7 @@ func NewCreateGrafanaInstanceResponse() (response *CreateGrafanaInstanceResponse
 //  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
 //  FAILEDOPERATION_REGIONUNAVAILABLE = "FailedOperation.RegionUnavailable"
 //  FAILEDOPERATION_ZONEUNAVAILABLE = "FailedOperation.ZoneUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) CreateGrafanaInstance(request *CreateGrafanaInstanceRequest) (response *CreateGrafanaInstanceResponse, err error) {
     return c.CreateGrafanaInstanceWithContext(context.Background(), request)
 }
@@ -766,6 +767,7 @@ func (c *Client) CreateGrafanaInstance(request *CreateGrafanaInstanceRequest) (r
 //  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
 //  FAILEDOPERATION_REGIONUNAVAILABLE = "FailedOperation.RegionUnavailable"
 //  FAILEDOPERATION_ZONEUNAVAILABLE = "FailedOperation.ZoneUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) CreateGrafanaInstanceWithContext(ctx context.Context, request *CreateGrafanaInstanceRequest) (response *CreateGrafanaInstanceResponse, err error) {
     if request == nil {
         request = NewCreateGrafanaInstanceRequest()
@@ -3423,6 +3425,7 @@ func NewDescribeAlarmMetricsResponse() (response *DescribeAlarmMetricsResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILEDWITHCORRUPTIONDATA = "FailedOperation.DoTRPCTransferFailedWithCorruptionData"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAlarmMetrics(request *DescribeAlarmMetricsRequest) (response *DescribeAlarmMetricsResponse, err error) {
@@ -3434,6 +3437,7 @@ func (c *Client) DescribeAlarmMetrics(request *DescribeAlarmMetricsRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILEDWITHCORRUPTIONDATA = "FailedOperation.DoTRPCTransferFailedWithCorruptionData"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAlarmMetricsWithContext(ctx context.Context, request *DescribeAlarmMetricsRequest) (response *DescribeAlarmMetricsResponse, err error) {

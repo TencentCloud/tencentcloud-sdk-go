@@ -508,6 +508,8 @@ type BackupStorageLocation struct {
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 存储仓库状态
+	// - Available: 可用
+	// - Unavailable: 不可用
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 详细状态信息	
@@ -937,7 +939,10 @@ type ClusterAdvancedSettings struct {
 	// 2. 系统镜像必须是: Tencent Linux 2.4；
 	KubeProxyMode *string `json:"KubeProxyMode,omitnil,omitempty" name:"KubeProxyMode"`
 
-	// 集群网络类型。包括GR（全局路由）和VPC-CNI两种模式，默认为GR。
+	// 集群网络类型，默认为GR。
+	// - GR: 全局路由
+	// - VPC-CNI: VPC-CNI模式
+	// - CiliumOverlay: CiliumOverlay模式
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
@@ -9681,6 +9686,10 @@ func (r *DescribeEncryptionStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEncryptionStatusResponseParams struct {
 	// 加密状态
+	// - Opening: 开启中
+	// - Opened: 已开启
+	// - Closing: 关闭中
+	// - Closed: 已关闭
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 加密错误信息
@@ -15515,7 +15524,7 @@ type InstanceUpgradeProgressItem struct {
 }
 
 type KMSConfiguration struct {
-	// kms id
+	// kms id，可以在密钥管理控制台获取
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
 	// kms 地域
@@ -18746,7 +18755,7 @@ type RegionInstance struct {
 	// 地域ID
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 地域状态
+	// 地域状态\n- alluser: 所有用户可见
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域特性开关(按照JSON的形式返回所有属性)
@@ -21239,7 +21248,7 @@ type VersionInstance struct {
 	// 版本信息
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// Remark
+	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 

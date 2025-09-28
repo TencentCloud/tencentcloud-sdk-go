@@ -13288,11 +13288,9 @@ func NewModifyMasterComponentResponse() (response *ModifyMasterComponentResponse
 // 修改master组件，支持kube-apiserver、kube-scheduler、kube-controller-manager副本数调整为0和恢复
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  FAILEDOPERATION_OPERATIONFORBIDDEN = "FailedOperation.OperationForbidden"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
 func (c *Client) ModifyMasterComponent(request *ModifyMasterComponentRequest) (response *ModifyMasterComponentResponse, err error) {
     return c.ModifyMasterComponentWithContext(context.Background(), request)
 }
@@ -13301,11 +13299,9 @@ func (c *Client) ModifyMasterComponent(request *ModifyMasterComponentRequest) (r
 // 修改master组件，支持kube-apiserver、kube-scheduler、kube-controller-manager副本数调整为0和恢复
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  FAILEDOPERATION_OPERATIONFORBIDDEN = "FailedOperation.OperationForbidden"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
 func (c *Client) ModifyMasterComponentWithContext(ctx context.Context, request *ModifyMasterComponentRequest) (response *ModifyMasterComponentResponse, err error) {
     if request == nil {
         request = NewModifyMasterComponentRequest()

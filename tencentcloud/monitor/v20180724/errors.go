@@ -134,6 +134,9 @@ const (
 	// DoTRPCTransferFailed
 	FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
 
+	// 网络调用报错
+	FAILEDOPERATION_DOTRPCTRANSFERFAILEDWITHCORRUPTIONDATA = "FailedOperation.DoTRPCTransferFailedWithCorruptionData"
+
 	// 查询分析数据失败。
 	FAILEDOPERATION_DRUIDQUERYFAILED = "FailedOperation.DruidQueryFailed"
 
@@ -328,6 +331,9 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// 无Cam权限
+	UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"

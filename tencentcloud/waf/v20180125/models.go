@@ -8886,6 +8886,9 @@ type DescribeModuleStatusResponseParams struct {
 	// 限流模块开关
 	RateLimit *uint64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
 
+	// gzip 开关
+	GzipAnalysis *uint64 `json:"GzipAnalysis,omitnil,omitempty" name:"GzipAnalysis"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -16210,6 +16213,9 @@ type ModifyModuleStatusRequestParams struct {
 
 	// 限流模块开关，0或1
 	RateLimit *uint64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
+
+	// gzip 开关
+	GzipAnalysis *uint64 `json:"GzipAnalysis,omitnil,omitempty" name:"GzipAnalysis"`
 }
 
 type ModifyModuleStatusRequest struct {
@@ -16238,6 +16244,9 @@ type ModifyModuleStatusRequest struct {
 
 	// 限流模块开关，0或1
 	RateLimit *uint64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
+
+	// gzip 开关
+	GzipAnalysis *uint64 `json:"GzipAnalysis,omitnil,omitempty" name:"GzipAnalysis"`
 }
 
 func (r *ModifyModuleStatusRequest) ToJsonString() string {
@@ -16260,6 +16269,7 @@ func (r *ModifyModuleStatusRequest) FromJsonString(s string) error {
 	delete(f, "AntiTamper")
 	delete(f, "AntiLeakage")
 	delete(f, "RateLimit")
+	delete(f, "GzipAnalysis")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModuleStatusRequest has unknown keys!", "")
 	}

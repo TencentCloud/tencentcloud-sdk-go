@@ -479,6 +479,9 @@ const (
 	// root账号禁止被删除。
 	OPERATIONDENIED_DELETEROOTACCOUNTERROR = "OperationDenied.DeleteRootAccountError"
 
+	// 流程冲突，请稍后重试。
+	OPERATIONDENIED_FLOWCONFLICT = "OperationDenied.FlowConflict"
+
 	// 该实例无此功能权限。
 	OPERATIONDENIED_FUNCTIONDENIED = "OperationDenied.FunctionDenied"
 

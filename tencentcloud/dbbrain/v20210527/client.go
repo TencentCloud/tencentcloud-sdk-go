@@ -3229,6 +3229,80 @@ func (c *Client) DescribeMailProfileWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeMetricTopProxiesRequest() (request *DescribeMetricTopProxiesRequest) {
+    request = &DescribeMetricTopProxiesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeMetricTopProxies")
+    
+    
+    return
+}
+
+func NewDescribeMetricTopProxiesResponse() (response *DescribeMetricTopProxiesResponse) {
+    response = &DescribeMetricTopProxiesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMetricTopProxies
+// 获取指定时间段内Redis 访问命令 cost top N
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMetricTopProxies(request *DescribeMetricTopProxiesRequest) (response *DescribeMetricTopProxiesResponse, err error) {
+    return c.DescribeMetricTopProxiesWithContext(context.Background(), request)
+}
+
+// DescribeMetricTopProxies
+// 获取指定时间段内Redis 访问命令 cost top N
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMetricTopProxiesWithContext(ctx context.Context, request *DescribeMetricTopProxiesRequest) (response *DescribeMetricTopProxiesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMetricTopProxiesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeMetricTopProxies")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMetricTopProxies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMetricTopProxiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMySqlProcessListRequest() (request *DescribeMySqlProcessListRequest) {
     request = &DescribeMySqlProcessListRequest{
         BaseRequest: &tchttp.BaseRequest{},

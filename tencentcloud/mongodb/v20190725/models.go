@@ -27,7 +27,7 @@ type AddNodeList struct {
 	// - MONGOS：Mongos 节点。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 节点所对应的可用区。
+	// 节点所对应的可用区。当前支持的可用区，请参见[地域和可用区](https://cloud.tencent.com/document/product/240/3637)。
 	// - 单可用区，所有节点在同一可用区。
 	// - 多可用区：当前标准规格是三可用区分布，主从节点不在同一可用区，需注意配置新增节点对应的可用区，且新增后必须满足任意2个可用区节点数大于第3个可用区原则。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
@@ -113,34 +113,45 @@ type Auth struct {
 }
 
 type BackupDownloadTask struct {
-	// 任务创建时间
+	// 任务创建时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 备份文件名
+	// 备份文件名。
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 
-	// 分片名称
+	// 分片名称。
 	ReplicaSetId *string `json:"ReplicaSetId,omitnil,omitempty" name:"ReplicaSetId"`
 
-	// 备份数据大小，单位为字节
+	// 备份数据大小，单位：字节。
 	BackupSize *int64 `json:"BackupSize,omitnil,omitempty" name:"BackupSize"`
 
-	// 任务状态。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试
+	// 任务状态。
+	// - 0：等待执行。
+	// - 1：正在下载。
+	// - 2：下载完成。
+	// - 3：下载失败。
+	// - 4：等待重试。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 任务进度百分比
+	// 任务进度百分比。
 	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
-	// 耗时，单位为秒
+	// 耗时，单位为秒。
 	TimeSpend *int64 `json:"TimeSpend,omitnil,omitempty" name:"TimeSpend"`
 
-	// 备份数据下载链接
+	// 备份数据下载链接。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 备份文件备份类型，0-逻辑备份，1-物理备份
+	// 备份方式。
+	// - 0：逻辑备份。
+	// - 1：物理备份。
+	// - 3：快照备份。
+	// **说明**:
+	// 1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+	// 2. 实例开通存储加密，则备份方式不能为物理备份。
 	BackupMethod *int64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
-	// 发起备份时指定的备注信息
+	// 发起备份时指定的备注信息。
 	BackupDesc *string `json:"BackupDesc,omitnil,omitempty" name:"BackupDesc"`
 
 	// 地区信息。
@@ -151,10 +162,15 @@ type BackupDownloadTask struct {
 }
 
 type BackupDownloadTaskStatus struct {
-	// 分片名
+	// 分片名。
 	ReplicaSetId *string `json:"ReplicaSetId,omitnil,omitempty" name:"ReplicaSetId"`
 
-	// 任务当前状态。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试
+	// 任务当前状态。
+	// - 0：等待执行。
+	// - 1：正在下载。
+	// - 2：下载完成。
+	// - 3：下载失败。
+	// - 4：等待重试。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -162,38 +178,51 @@ type BackupInfo struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份方式，0-自动备份，1-手动备份
+	// 备份方式。
+	// - 0：自动备份。
+	// - 1：手动备份。
 	BackupType *uint64 `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
-	// 备份名称
+	// 备份文件名称。
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 
-	// 备份备注
+	// 备份任务备注信息。
 	BackupDesc *string `json:"BackupDesc,omitnil,omitempty" name:"BackupDesc"`
 
-	// 备份文件大小，单位KB
+	// 备份文件大小，单位：KB。
 	BackupSize *uint64 `json:"BackupSize,omitnil,omitempty" name:"BackupSize"`
 
-	// 备份开始时间
+	// 备份开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 备份结束时间
+	// 备份结束时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 备份状态，1-备份中，2-备份成功
+	// 备份状态。
+	// - 1：备份中。
+	// - 2：备份成功。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 备份方法，0-逻辑备份，1-物理备份
+	// 备份方式。
+	// - 0：逻辑备份。
+	// - 1：物理备份。
+	// - 3：快照备份。
+	// **说明:**
+	// - 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+	// - 实例开通存储加密，则备份方式不能为物理备份。
 	BackupMethod *uint64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
-	// 备份记录id
+	// 备份记录 ID。
 	BackId *int64 `json:"BackId,omitnil,omitempty" name:"BackId"`
 
-	// 备份删除时间
+	// 备份删除时间。
 	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
-	// 异地备份地域
+	// 异地备份地域。
 	BackupRegion *string `json:"BackupRegion,omitnil,omitempty" name:"BackupRegion"`
+
+	// 备份支持的回档时间。
+	RestoreTime *string `json:"RestoreTime,omitnil,omitempty" name:"RestoreTime"`
 }
 
 type ClientConnection struct {
@@ -315,6 +344,10 @@ type CreateBackupDBInstanceRequestParams struct {
 	// 设置备份方式。
 	// - 0：逻辑备份。
 	// - 1：物理备份。
+	// - 3：快照备份。
+	// **说明**:
+	// 1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+	// 2. 实例开通存储加密，则备份方式不能为物理备份。
 	BackupMethod *int64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// 备份备注信息。
@@ -330,6 +363,10 @@ type CreateBackupDBInstanceRequest struct {
 	// 设置备份方式。
 	// - 0：逻辑备份。
 	// - 1：物理备份。
+	// - 3：快照备份。
+	// **说明**:
+	// 1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+	// 2. 实例开通存储加密，则备份方式不能为物理备份。
 	BackupMethod *int64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// 备份备注信息。
@@ -384,30 +421,30 @@ func (r *CreateBackupDBInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBackupDownloadTaskRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	// 实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 要下载的备份文件名，可通过DescribeDBBackups接口获取。
+	// 要下载的备份文件名。请通过 [DescribeDBBackups](https://cloud.tencent.com/document/product/240/38574) 接口获取。
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 
-	// 指定要下载的副本集的节点名称 或 分片集群的分片名称列表。
-	// 如副本集cmgo-p8vnipr5，示例(固定取值)：BackupSets.0=cmgo-p8vnipr5_0，可下载全量数据。
-	// 如分片集群cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1，即下载分片0和分片1的数据，分片集群如需全量下载，请按示例方式传入全部分片名称。
+	// 指定要下载的副本集节点 ID 或分片集群的分片节点 ID 列表。
+	// - 如副本集实例 ID 为 cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0，可下载全量数据。
+	// - 如分片集群实例 ID 为 cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1，即下载分片0和分片1的数据。分片集群如需全量下载，请按示例方式传入全部分片名称。
 	BackupSets []*ReplicaSetInfo `json:"BackupSets,omitnil,omitempty" name:"BackupSets"`
 }
 
 type CreateBackupDownloadTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	// 实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 要下载的备份文件名，可通过DescribeDBBackups接口获取。
+	// 要下载的备份文件名。请通过 [DescribeDBBackups](https://cloud.tencent.com/document/product/240/38574) 接口获取。
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 
-	// 指定要下载的副本集的节点名称 或 分片集群的分片名称列表。
-	// 如副本集cmgo-p8vnipr5，示例(固定取值)：BackupSets.0=cmgo-p8vnipr5_0，可下载全量数据。
-	// 如分片集群cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1，即下载分片0和分片1的数据，分片集群如需全量下载，请按示例方式传入全部分片名称。
+	// 指定要下载的副本集节点 ID 或分片集群的分片节点 ID 列表。
+	// - 如副本集实例 ID 为 cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0，可下载全量数据。
+	// - 如分片集群实例 ID 为 cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1，即下载分片0和分片1的数据。分片集群如需全量下载，请按示例方式传入全部分片名称。
 	BackupSets []*ReplicaSetInfo `json:"BackupSets,omitnil,omitempty" name:"BackupSets"`
 }
 
@@ -434,7 +471,7 @@ func (r *CreateBackupDownloadTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBackupDownloadTaskResponseParams struct {
-	// 下载任务状态
+	// 下载任务状态。
 	Tasks []*BackupDownloadTaskStatus `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -474,12 +511,12 @@ type CreateDBInstanceHourRequestParams struct {
 	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
 	// 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
-	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
 	// 产品规格类型。
@@ -487,7 +524,7 @@ type CreateDBInstanceHourRequestParams struct {
 	// - HCD：云盘版类型。
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
-	// 实例数量，最小值1，最大值为10。
+	// 实例数量，最小值1，最大值为30。
 	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
 	// 可用区信息，输入格式如：ap-guangzhou-2。
@@ -500,10 +537,14 @@ type CreateDBInstanceHourRequestParams struct {
 	// - SHARD：分片集群。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 私有网络ID。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询确认正确的ID。 示例值：vpc-pxyzim13
+	// 私有网络ID。
+	// - 仅支持配置私有网络，必须选择一个与实例同一地域的私有网络。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的私有网络 ID。
+	// - 实例创建成功之后，支持更换私有网络。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
+	// 私有网络 VPC 的子网 ID。
+	// - 必须在已选的私有网络内指定一个子网。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的子网 ID。
+	// - 实例创建成功之后，支持更换私有网络及子网。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 实例密码。设置要求如下：
@@ -521,13 +562,19 @@ type CreateDBInstanceHourRequestParams struct {
 	// 实例标签信息。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：克隆实例，注意：克隆实例RestoreTime为必填项。
+	// 实例类型。
+	// - 1：正式实例。
+	// - 3：只读实例。
+	// - 4：灾备实例。
+	// - 5：克隆实例。注意：克隆实例 RestoreTime 为必填项。
 	Clone *int64 `json:"Clone,omitnil,omitempty" name:"Clone"`
 
-	// 父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+	// 父实例 ID。
+	// - 当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+	// - 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制父实例 ID。
 	Father *string `json:"Father,omitnil,omitempty" name:"Father"`
 
-	// 安全组 ID。
+	// 安全组 ID。 请登录[安全组控制台](https://console.cloud.tencent.com/vpc/security-group)页面获取与数据库实例同地域的安全组 ID。
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 克隆实例回档时间。
@@ -535,7 +582,10 @@ type CreateDBInstanceHourRequestParams struct {
 	// - 回档时间范围：仅能回档7天内时间点的数据。
 	RestoreTime *string `json:"RestoreTime,omitnil,omitempty" name:"RestoreTime"`
 
-	// 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
+	// 实例名称。仅支持长度为128个字符的中文、英文、数字、下划线\_、分隔符\-。批量购买数据库实例时，支持通过自定义命名模式串与数字后缀自动升序功能，高效设置实例名称。
+	// - 基础模式：前缀＋自动升序编号（默认从1开始），**lnstanceName**仅需自定义实例名称前缀，例如设置为：cmgo，设置购买数量为5，则购买后，实例名称依次分别为cmgo1、cmgo2、cmgo3、cmgo4、cmgo5。
+	// - 自定义起始序号模式：前缀+｛R:x｝（x为自定义起始序号）。**InstanceName**需填写“前缀｛R:x｝”，例如：cmgo｛R:3｝，设置购买数量为5，则实例名称为cmgo3、cmgo4、cmgo5、cmgo6、cmgo7。
+	// - 复合模式串：前缀1{R:x}+前缀2{R:y}+ ⋯+固定后缀，x与y分别为每一段前缀的起始序号。**instanceName**需填写复合模式串，例如：cmgo{R:10}\_node{R:12}\_db，设置批量购买数量为5，则实例名称为 cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, cluster14\_node16\_db. 
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 若多可用区部署云数据库实例，指定多可用区列表。
@@ -550,7 +600,6 @@ type CreateDBInstanceHourRequestParams struct {
 	// Mongos 内存大小。
 	// -  购买分片集群时，必须填写。
 	// - 单位：GB，支持1核2GB、2核4GB、4核8GB、8核16GB、16核32GB。
-	// 
 	MongosMemory *uint64 `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
 	// Mongos 数量。购买分片集群时，必须填写。
@@ -567,7 +616,9 @@ type CreateDBInstanceHourRequestParams struct {
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
 	HiddenZone *string `json:"HiddenZone,omitnil,omitempty" name:"HiddenZone"`
 
-	// 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本。
+	// 参数模板 ID。
+	// - 参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。
+	// - 参数模板 ID 可通过 [DescribeDBInstanceParamTpl ](https://cloud.tencent.com/document/product/240/109155)接口获取。请选择与实例版本与架构所对应的参数模板 ID。
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 }
 
@@ -589,12 +640,12 @@ type CreateDBInstanceHourRequest struct {
 	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
 	// 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
-	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
 	// 产品规格类型。
@@ -602,7 +653,7 @@ type CreateDBInstanceHourRequest struct {
 	// - HCD：云盘版类型。
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
-	// 实例数量，最小值1，最大值为10。
+	// 实例数量，最小值1，最大值为30。
 	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
 	// 可用区信息，输入格式如：ap-guangzhou-2。
@@ -615,10 +666,14 @@ type CreateDBInstanceHourRequest struct {
 	// - SHARD：分片集群。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 私有网络ID。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询确认正确的ID。 示例值：vpc-pxyzim13
+	// 私有网络ID。
+	// - 仅支持配置私有网络，必须选择一个与实例同一地域的私有网络。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的私有网络 ID。
+	// - 实例创建成功之后，支持更换私有网络。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
+	// 私有网络 VPC 的子网 ID。
+	// - 必须在已选的私有网络内指定一个子网。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的子网 ID。
+	// - 实例创建成功之后，支持更换私有网络及子网。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 实例密码。设置要求如下：
@@ -636,13 +691,19 @@ type CreateDBInstanceHourRequest struct {
 	// 实例标签信息。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：克隆实例，注意：克隆实例RestoreTime为必填项。
+	// 实例类型。
+	// - 1：正式实例。
+	// - 3：只读实例。
+	// - 4：灾备实例。
+	// - 5：克隆实例。注意：克隆实例 RestoreTime 为必填项。
 	Clone *int64 `json:"Clone,omitnil,omitempty" name:"Clone"`
 
-	// 父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+	// 父实例 ID。
+	// - 当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+	// - 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制父实例 ID。
 	Father *string `json:"Father,omitnil,omitempty" name:"Father"`
 
-	// 安全组 ID。
+	// 安全组 ID。 请登录[安全组控制台](https://console.cloud.tencent.com/vpc/security-group)页面获取与数据库实例同地域的安全组 ID。
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 克隆实例回档时间。
@@ -650,7 +711,10 @@ type CreateDBInstanceHourRequest struct {
 	// - 回档时间范围：仅能回档7天内时间点的数据。
 	RestoreTime *string `json:"RestoreTime,omitnil,omitempty" name:"RestoreTime"`
 
-	// 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
+	// 实例名称。仅支持长度为128个字符的中文、英文、数字、下划线\_、分隔符\-。批量购买数据库实例时，支持通过自定义命名模式串与数字后缀自动升序功能，高效设置实例名称。
+	// - 基础模式：前缀＋自动升序编号（默认从1开始），**lnstanceName**仅需自定义实例名称前缀，例如设置为：cmgo，设置购买数量为5，则购买后，实例名称依次分别为cmgo1、cmgo2、cmgo3、cmgo4、cmgo5。
+	// - 自定义起始序号模式：前缀+｛R:x｝（x为自定义起始序号）。**InstanceName**需填写“前缀｛R:x｝”，例如：cmgo｛R:3｝，设置购买数量为5，则实例名称为cmgo3、cmgo4、cmgo5、cmgo6、cmgo7。
+	// - 复合模式串：前缀1{R:x}+前缀2{R:y}+ ⋯+固定后缀，x与y分别为每一段前缀的起始序号。**instanceName**需填写复合模式串，例如：cmgo{R:10}\_node{R:12}\_db，设置批量购买数量为5，则实例名称为 cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, cluster14\_node16\_db. 
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 若多可用区部署云数据库实例，指定多可用区列表。
@@ -665,7 +729,6 @@ type CreateDBInstanceHourRequest struct {
 	// Mongos 内存大小。
 	// -  购买分片集群时，必须填写。
 	// - 单位：GB，支持1核2GB、2核4GB、4核8GB、8核16GB、16核32GB。
-	// 
 	MongosMemory *uint64 `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
 	// Mongos 数量。购买分片集群时，必须填写。
@@ -682,7 +745,9 @@ type CreateDBInstanceHourRequest struct {
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
 	HiddenZone *string `json:"HiddenZone,omitnil,omitempty" name:"HiddenZone"`
 
-	// 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本。
+	// 参数模板 ID。
+	// - 参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。
+	// - 参数模板 ID 可通过 [DescribeDBInstanceParamTpl ](https://cloud.tencent.com/document/product/240/109155)接口获取。请选择与实例版本与架构所对应的参数模板 ID。
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 }
 
@@ -764,20 +829,30 @@ type CreateDBInstanceParamTplRequestParams struct {
 	// 参数模板名称。
 	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
 
-	// 版本号，该参数模板支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是：MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。当MirrorTplId为空时，该字段必填。
+	// 参数模板版本号。当**MirrorTplId**为空时，该字段必填。参数模板支持的售卖版本，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/35767) 获取。
+	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
+	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 实例类型，REPLSET-副本集，SHARD-分片集群，STANDALONE-单节点
-	// 当MirrorTplId为空时，该字段必填。
+	// 实例类型。当 MirrorTplId 为空值时，该参数必填。
+	// - REPLSET：副本集实例。
+	// - SHARD：分片实例。
+	// - STANDALONE：单节点实例。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 模板描述信息。
 	TplDesc *string `json:"TplDesc,omitnil,omitempty" name:"TplDesc"`
 
-	// 模板参数，若为空，则以系统默认模板作为新版本参数。
+	// 模板参数，若不配置该参数，则以系统默认模板作为新版本参数。
 	Params []*ParamType `json:"Params,omitnil,omitempty" name:"Params"`
 
-	// 镜像模板ID，若该字段不为空，则以该模板为镜像，克隆出一个新的模板。注意：MirrorTplId不为空时，MongoVersion及ClusterType将以MirrorTpl模板的版本及实例类型为准。
+	// 镜像模板 ID。若指定镜像模板，则以该模板为镜像，克隆出一个新的模板。
+	// **注意**：MirrorTplId 不为空值时，MongoVersion 及 ClusterType 将以 MirrorTpl 模板的版本及实例类型为准。
 	MirrorTplId *string `json:"MirrorTplId,omitnil,omitempty" name:"MirrorTplId"`
 }
 
@@ -787,20 +862,30 @@ type CreateDBInstanceParamTplRequest struct {
 	// 参数模板名称。
 	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
 
-	// 版本号，该参数模板支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是：MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。当MirrorTplId为空时，该字段必填。
+	// 参数模板版本号。当**MirrorTplId**为空时，该字段必填。参数模板支持的售卖版本，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/35767) 获取。
+	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
+	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 实例类型，REPLSET-副本集，SHARD-分片集群，STANDALONE-单节点
-	// 当MirrorTplId为空时，该字段必填。
+	// 实例类型。当 MirrorTplId 为空值时，该参数必填。
+	// - REPLSET：副本集实例。
+	// - SHARD：分片实例。
+	// - STANDALONE：单节点实例。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 模板描述信息。
 	TplDesc *string `json:"TplDesc,omitnil,omitempty" name:"TplDesc"`
 
-	// 模板参数，若为空，则以系统默认模板作为新版本参数。
+	// 模板参数，若不配置该参数，则以系统默认模板作为新版本参数。
 	Params []*ParamType `json:"Params,omitnil,omitempty" name:"Params"`
 
-	// 镜像模板ID，若该字段不为空，则以该模板为镜像，克隆出一个新的模板。注意：MirrorTplId不为空时，MongoVersion及ClusterType将以MirrorTpl模板的版本及实例类型为准。
+	// 镜像模板 ID。若指定镜像模板，则以该模板为镜像，克隆出一个新的模板。
+	// **注意**：MirrorTplId 不为空值时，MongoVersion 及 ClusterType 将以 MirrorTpl 模板的版本及实例类型为准。
 	MirrorTplId *string `json:"MirrorTplId,omitnil,omitempty" name:"MirrorTplId"`
 }
 
@@ -866,15 +951,15 @@ type CreateDBInstanceRequestParams struct {
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
 	// 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
-	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 实例数量, 最小值1，最大值为10。
+	// 实例数量, 最小值1，最大值为30。
 	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
 	// 可用区信息，输入格式如：ap-guangzhou-2。
@@ -904,10 +989,14 @@ type CreateDBInstanceRequestParams struct {
 	// - 在 [MongoDB 控制台项目管理](https://console.cloud.tencent.com/project)页面，可获取项目ID。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 私有网络ID。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)查询确认正确的ID。 示例值：vpc-pxyzim13
+	// 私有网络 ID。
+	// - 仅支持配置私有网络，必须选择一个与实例同一地域的私有网络。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的私有网络 ID。
+	// - 实例创建成功之后，支持更换私有网络。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
+	// 私有网络 VPC 的子网 ID。
+	// - 必须在已选的私有网络内指定一个子网。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的子网 ID。
+	// - 实例创建成功之后，支持更换私有网络及子网。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 实例密码。设置要求如下：
@@ -930,19 +1019,28 @@ type CreateDBInstanceRequestParams struct {
 	// - 0：否。默认为0。
 	AutoVoucher *uint64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：整实例克隆，注意：克隆实例时，RestoreTime为必填项。
+	// 实例类型。
+	// - 1：正式实例。
+	// - 3：只读实例。
+	// - 4：灾备实例。
+	// - 5：克隆实例。注意：克隆实例 RestoreTime 为必填项。
 	Clone *int64 `json:"Clone,omitnil,omitempty" name:"Clone"`
 
-	// 父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+	// 父实例 ID。
+	// - 当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+	// - 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制父实例 ID。
 	Father *string `json:"Father,omitnil,omitempty" name:"Father"`
 
-	// 安全组 ID。 
+	// 安全组 ID。 请登录[安全组控制台](https://console.cloud.tencent.com/vpc/security-group)页面获取与数据库实例同地域的安全组 ID。
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 克隆实例回档时间，当Clone取值为5或6时为必填。- 若为克隆实例，则必须配置该参数。输入格式示例：2021-08-13 16:30:00。- 回档时间范围：仅能回档7天内时间点的数据。
 	RestoreTime *string `json:"RestoreTime,omitnil,omitempty" name:"RestoreTime"`
 
-	// 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
+	// 实例名称。仅支持长度为128个字符的中文、英文、数字、下划线\_、分隔符\-。批量购买数据库实例时，支持通过自定义命名模式串与数字后缀自动升序功能，高效设置实例名称。
+	// - 基础模式：前缀＋自动升序编号（默认从1开始），**lnstanceName**仅需自定义实例名称前缀，例如设置为：cmgo，设置购买数量为5，则购买后，实例名称依次分别为cmgo1、cmgo2、cmgo3、cmgo4、cmgo5。
+	// - 自定义起始序号模式：前缀+｛R:x｝（x为自定义起始序号）。**InstanceName**需填写“前缀｛R:x｝”，例如：cmgo｛R:3｝，设置购买数量为5，则实例名称为cmgo3、cmgo4、cmgo5、cmgo6、cmgo7。
+	// - 复合模式串：前缀1{R:x}+前缀2{R:y}+ ⋯+固定后缀，x与y分别为每一段前缀的起始序号。**instanceName**需填写复合模式串，例如：cmgo{R:10}\_node{R:12}\_db，设置批量购买数量为5，则实例名称为 cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, cluster14\_node16\_db. 
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 若多可用区部署云数据库实例，指定多可用区列表。
@@ -973,7 +1071,9 @@ type CreateDBInstanceRequestParams struct {
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
 	HiddenZone *string `json:"HiddenZone,omitnil,omitempty" name:"HiddenZone"`
 
-	// 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本及实例类型。
+	// 参数模板 ID。
+	// - 参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。
+	// - 参数模板 ID 可通过 [DescribeDBInstanceParamTpl ](https://cloud.tencent.com/document/product/240/109155)接口获取。请选择与实例版本与架构所对应的参数模板 ID。
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 }
 
@@ -991,15 +1091,15 @@ type CreateDBInstanceRequest struct {
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
 	// 指版本信息。具体支持的版本信息 ，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
-	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 实例数量, 最小值1，最大值为10。
+	// 实例数量, 最小值1，最大值为30。
 	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
 	// 可用区信息，输入格式如：ap-guangzhou-2。
@@ -1029,10 +1129,14 @@ type CreateDBInstanceRequest struct {
 	// - 在 [MongoDB 控制台项目管理](https://console.cloud.tencent.com/project)页面，可获取项目ID。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 私有网络ID。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)查询确认正确的ID。 示例值：vpc-pxyzim13
+	// 私有网络 ID。
+	// - 仅支持配置私有网络，必须选择一个与实例同一地域的私有网络。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的私有网络 ID。
+	// - 实例创建成功之后，支持更换私有网络。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
+	// 私有网络 VPC 的子网 ID。
+	// - 必须在已选的私有网络内指定一个子网。请登录[私有网络控制台](https://console.cloud.tencent.com/vpc)获取可使用的子网 ID。
+	// - 实例创建成功之后，支持更换私有网络及子网。具体操作，请参见[更换网络](https://cloud.tencent.com/document/product/239/30910)。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 实例密码。设置要求如下：
@@ -1055,19 +1159,28 @@ type CreateDBInstanceRequest struct {
 	// - 0：否。默认为0。
 	AutoVoucher *uint64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 实例类型。- 1：正式实例。- 3：只读实例。- 4：灾备实例。-5：整实例克隆，注意：克隆实例时，RestoreTime为必填项。
+	// 实例类型。
+	// - 1：正式实例。
+	// - 3：只读实例。
+	// - 4：灾备实例。
+	// - 5：克隆实例。注意：克隆实例 RestoreTime 为必填项。
 	Clone *int64 `json:"Clone,omitnil,omitempty" name:"Clone"`
 
-	// 父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+	// 父实例 ID。
+	// - 当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
+	// - 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制父实例 ID。
 	Father *string `json:"Father,omitnil,omitempty" name:"Father"`
 
-	// 安全组 ID。 
+	// 安全组 ID。 请登录[安全组控制台](https://console.cloud.tencent.com/vpc/security-group)页面获取与数据库实例同地域的安全组 ID。
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 克隆实例回档时间，当Clone取值为5或6时为必填。- 若为克隆实例，则必须配置该参数。输入格式示例：2021-08-13 16:30:00。- 回档时间范围：仅能回档7天内时间点的数据。
 	RestoreTime *string `json:"RestoreTime,omitnil,omitempty" name:"RestoreTime"`
 
-	// 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
+	// 实例名称。仅支持长度为128个字符的中文、英文、数字、下划线\_、分隔符\-。批量购买数据库实例时，支持通过自定义命名模式串与数字后缀自动升序功能，高效设置实例名称。
+	// - 基础模式：前缀＋自动升序编号（默认从1开始），**lnstanceName**仅需自定义实例名称前缀，例如设置为：cmgo，设置购买数量为5，则购买后，实例名称依次分别为cmgo1、cmgo2、cmgo3、cmgo4、cmgo5。
+	// - 自定义起始序号模式：前缀+｛R:x｝（x为自定义起始序号）。**InstanceName**需填写“前缀｛R:x｝”，例如：cmgo｛R:3｝，设置购买数量为5，则实例名称为cmgo3、cmgo4、cmgo5、cmgo6、cmgo7。
+	// - 复合模式串：前缀1{R:x}+前缀2{R:y}+ ⋯+固定后缀，x与y分别为每一段前缀的起始序号。**instanceName**需填写复合模式串，例如：cmgo{R:10}\_node{R:12}\_db，设置批量购买数量为5，则实例名称为 cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, cluster14\_node16\_db. 
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 若多可用区部署云数据库实例，指定多可用区列表。
@@ -1098,7 +1211,9 @@ type CreateDBInstanceRequest struct {
 	// Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
 	HiddenZone *string `json:"HiddenZone,omitnil,omitempty" name:"HiddenZone"`
 
-	// 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本及实例类型。
+	// 参数模板 ID。
+	// - 参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。
+	// - 参数模板 ID 可通过 [DescribeDBInstanceParamTpl ](https://cloud.tencent.com/document/product/240/109155)接口获取。请选择与实例版本与架构所对应的参数模板 ID。
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 }
 
@@ -1188,7 +1303,15 @@ type CurrentOp struct {
 	// 操作执行语句。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command。
+	// 操作类型。
+	// - none：特殊状态，空闲连接或内部任务等。
+	// - update：更新数据。
+	// - insert：插入操作。
+	// - query：查询操作。
+	// - command：命令操作。
+	// - getmore：获取更多数据。
+	// - remove：删除操作。
+	// - killcursors：释放查询游标的操作。
 	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
 
 	// 操作所在的分片名称。
@@ -1200,7 +1323,9 @@ type CurrentOp struct {
 	// 操作详细信息。
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 筛选条件，节点状态，可能的取值为：Primary、Secondary。
+	// 节点角色。
+	// - primary：主节点。
+	// - secondary：从节点。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 操作已执行时间（ms）。
@@ -1434,62 +1559,80 @@ func (r *DescribeAsyncRequestInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupDownloadTaskRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份文件名，用来过滤指定文件的下载任务
+	// 指定备份文件名，用于过滤指定文件的下载任务。请通过接口 [DescribeDBBackups](https://cloud.tencent.com/document/product/240/38574) 获取备份文件名。
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 
-	// 指定查询时间范围内的任务，StartTime指定开始时间，不填默认不限制开始时间
+	// 指定查询时间范围内的任务，StartTime 指定开始时间。若不指定开始时间，则默认不限制开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 指定查询时间范围内的任务，EndTime指定截止时间，不填默认不限制截止时间
+	// 指定查询时间范围内的任务，EndTime 指定截止时间。若不指定截止时间，则默认不限制截止时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 此次查询返回的条数，取值范围为1-100，默认为20
+	// 此次查询返回的条数，取值范围为1-100，默认为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 指定此次查询返回的页数，默认为0
+	// 指定此次查询返回的页数，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，取值为createTime，finishTime两种，默认为createTime
+	// 排序字段。
+	// - createTime：按照备份下载任务的创建时间排序。默认为 createTime。
+	// - finishTime：按照备份下载任务的完成时间排序。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，取值为asc，desc两种，默认desc
+	// 排序方式。
+	// - asc：升序排列。
+	// - desc：降序排列。默认为 desc。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 根据任务状态过滤。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试。不填默认返回所有类型
+	// 指定任务状态，用于过滤下载任务。若不配置该参数，则返回所有状态类型的任务。
+	// - 0：等待执行。
+	// - 1：正在下载。
+	// - 2：下载完成。
+	// - 3：下载失败。
+	// - 4：等待重试。
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type DescribeBackupDownloadTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份文件名，用来过滤指定文件的下载任务
+	// 指定备份文件名，用于过滤指定文件的下载任务。请通过接口 [DescribeDBBackups](https://cloud.tencent.com/document/product/240/38574) 获取备份文件名。
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 
-	// 指定查询时间范围内的任务，StartTime指定开始时间，不填默认不限制开始时间
+	// 指定查询时间范围内的任务，StartTime 指定开始时间。若不指定开始时间，则默认不限制开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 指定查询时间范围内的任务，EndTime指定截止时间，不填默认不限制截止时间
+	// 指定查询时间范围内的任务，EndTime 指定截止时间。若不指定截止时间，则默认不限制截止时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 此次查询返回的条数，取值范围为1-100，默认为20
+	// 此次查询返回的条数，取值范围为1-100，默认为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 指定此次查询返回的页数，默认为0
+	// 指定此次查询返回的页数，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，取值为createTime，finishTime两种，默认为createTime
+	// 排序字段。
+	// - createTime：按照备份下载任务的创建时间排序。默认为 createTime。
+	// - finishTime：按照备份下载任务的完成时间排序。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，取值为asc，desc两种，默认desc
+	// 排序方式。
+	// - asc：升序排列。
+	// - desc：降序排列。默认为 desc。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 根据任务状态过滤。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试。不填默认返回所有类型
+	// 指定任务状态，用于过滤下载任务。若不配置该参数，则返回所有状态类型的任务。
+	// - 0：等待执行。
+	// - 1：正在下载。
+	// - 2：下载完成。
+	// - 3：下载失败。
+	// - 4：等待重试。
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -1522,10 +1665,10 @@ func (r *DescribeBackupDownloadTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupDownloadTaskResponseParams struct {
-	// 满足查询条件的所有条数
+	// 满足查询条件的所有条数。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 下载任务列表
+	// 下载任务列表。
 	Tasks []*BackupDownloadTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1689,7 +1832,7 @@ func (r *DescribeClientConnectionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCurrentOpRequestParams struct {
-	// 指定要查询的实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// 指定要查询的实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 操作所属的命名空间 namespace，格式为 db.collection。
@@ -1700,7 +1843,15 @@ type DescribeCurrentOpRequestParams struct {
 	// - 结果将返回超过设置时间的操作。
 	MillisecondRunning *uint64 `json:"MillisecondRunning,omitnil,omitempty" name:"MillisecondRunning"`
 
-	// 设置查询筛选条件为操作任务类型。取值包括：none、update、insert，query、command、getmore、remove 和 killcursors。
+	// 设置查询筛选条件为操作任务类型。取值包括：
+	// - none：特殊状态，空闲连接或内部任务等。
+	// - update：更新数据。
+	// - insert：插入操作。
+	// - query：查询操作。
+	// - command：命令操作。
+	// - getmore：获取更多数据。
+	// - remove：删除操作。
+	// - killcursors：释放查询游标的操作。
 	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
 
 	// 筛选条件，分片名称。
@@ -1711,23 +1862,25 @@ type DescribeCurrentOpRequestParams struct {
 	// - secondary：从节点。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 单次请求返回的数量，默认值为100，取值范围为[0,100]
+	// 单次请求返回的数量，默认值为100，取值范围为[0,100]。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认值为0，取值范围为[0,10000]
+	// 偏移量，默认值为0，取值范围为[0,10000]。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回结果集排序的字段，目前支持："MicrosecsRunning"/"microsecsrunning"，默认为升序排序
+	// 返回结果集排序的字段，目前支持按照 MicrosecsRunning（操作任务已执行的时间）排序。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回结果集排序方式，可能的取值："ASC"/"asc"或"DESC"/"desc"
+	// 返回结果集排序方式。
+	// - ASC：升序。默认为 ASC，按照升序排序。
+	// - DESC：降序。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
 type DescribeCurrentOpRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定要查询的实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// 指定要查询的实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 操作所属的命名空间 namespace，格式为 db.collection。
@@ -1738,7 +1891,15 @@ type DescribeCurrentOpRequest struct {
 	// - 结果将返回超过设置时间的操作。
 	MillisecondRunning *uint64 `json:"MillisecondRunning,omitnil,omitempty" name:"MillisecondRunning"`
 
-	// 设置查询筛选条件为操作任务类型。取值包括：none、update、insert，query、command、getmore、remove 和 killcursors。
+	// 设置查询筛选条件为操作任务类型。取值包括：
+	// - none：特殊状态，空闲连接或内部任务等。
+	// - update：更新数据。
+	// - insert：插入操作。
+	// - query：查询操作。
+	// - command：命令操作。
+	// - getmore：获取更多数据。
+	// - remove：删除操作。
+	// - killcursors：释放查询游标的操作。
 	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
 
 	// 筛选条件，分片名称。
@@ -1749,16 +1910,18 @@ type DescribeCurrentOpRequest struct {
 	// - secondary：从节点。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 单次请求返回的数量，默认值为100，取值范围为[0,100]
+	// 单次请求返回的数量，默认值为100，取值范围为[0,100]。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认值为0，取值范围为[0,10000]
+	// 偏移量，默认值为0，取值范围为[0,10000]。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回结果集排序的字段，目前支持："MicrosecsRunning"/"microsecsrunning"，默认为升序排序
+	// 返回结果集排序的字段，目前支持按照 MicrosecsRunning（操作任务已执行的时间）排序。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回结果集排序方式，可能的取值："ASC"/"asc"或"DESC"/"desc"
+	// 返回结果集排序方式。
+	// - ASC：升序。默认为 ASC，按照升序排序。
+	// - DESC：降序。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -1820,10 +1983,16 @@ func (r *DescribeCurrentOpResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBBackupsRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份方式，当前支持：0-逻辑备份，1-物理备份，2-所有备份。默认为逻辑备份。
+	// 备份方式。
+	// - 0：逻辑备份。
+	// - 1：物理备份。
+	// - 3：快照备份。
+	// **说明**:
+	// 1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+	// 2. 实例开通存储加密，则备份方式不能为物理备份。
 	BackupMethod *int64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// 分页大小，最大值为100，不设置默认查询所有。
@@ -1836,10 +2005,16 @@ type DescribeDBBackupsRequestParams struct {
 type DescribeDBBackupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份方式，当前支持：0-逻辑备份，1-物理备份，2-所有备份。默认为逻辑备份。
+	// 备份方式。
+	// - 0：逻辑备份。
+	// - 1：物理备份。
+	// - 3：快照备份。
+	// **说明**:
+	// 1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+	// 2. 实例开通存储加密，则备份方式不能为物理备份。
 	BackupMethod *int64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// 分页大小，最大值为100，不设置默认查询所有。
@@ -1873,10 +2048,10 @@ func (r *DescribeDBBackupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBBackupsResponseParams struct {
-	// 备份列表
+	// 备份列表。
 	BackupList []*BackupInfo `json:"BackupList,omitnil,omitempty" name:"BackupList"`
 
-	// 备份总数
+	// 备份总数。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1901,14 +2076,18 @@ func (r *DescribeDBBackupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceDealRequestParams struct {
-	// 订单ID，通过CreateDBInstance等接口返回
+	// 订单 ID。
+	// - 按量计费实例，请通过 [CreateDBInstanceHour](https://cloud.tencent.com/document/product/240/38570) 接口输出的参数**DealId**获取。。
+	// - 包年包月计费实例，请通过 [CreateDBInstance](https://cloud.tencent.com/document/product/240/38571) 接口输出的参数**DealId**获取。
 	DealId *string `json:"DealId,omitnil,omitempty" name:"DealId"`
 }
 
 type DescribeDBInstanceDealRequest struct {
 	*tchttp.BaseRequest
 	
-	// 订单ID，通过CreateDBInstance等接口返回
+	// 订单 ID。
+	// - 按量计费实例，请通过 [CreateDBInstanceHour](https://cloud.tencent.com/document/product/240/38570) 接口输出的参数**DealId**获取。。
+	// - 包年包月计费实例，请通过 [CreateDBInstance](https://cloud.tencent.com/document/product/240/38571) 接口输出的参数**DealId**获取。
 	DealId *string `json:"DealId,omitnil,omitempty" name:"DealId"`
 }
 
@@ -1933,19 +2112,32 @@ func (r *DescribeDBInstanceDealRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceDealResponseParams struct {
-	// 订单状态，1：未支付，2：已支付，3：发货中，4：发货成功，5：发货失败，6：退款，7：订单关闭，8：超时未支付关闭。
+	// 订单状态。
+	// - 1：未支付。
+	// - 2：已支付。
+	// - 3：发货中。
+	// - 4：发货成功。
+	// - 5：发货失败。
+	// - 6：退款。
+	// - 7：订单关闭。
+	// - 8：超时未支付关闭。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 订单原价。
+	// 订单原价。单位：元。
 	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 订单折扣价格。
+	// 订单折扣价格。单位：元。
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
-	// 订单行为，purchase：新购，renew：续费，upgrade：升配，downgrade：降配，refund：退货退款。
+	// 订单操作行为。
+	// - purchase：新购。
+	// - renew：续费。
+	// - upgrade：升配.
+	// - downgrade：降配.
+	// - refund：退货退款。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 当前订单的资源Id。
+	// 当前订单的实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2037,24 +2229,28 @@ func (r *DescribeDBInstanceNamespaceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceNodePropertyRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 节点ID。
+	// 节点 ID。请登录 [MongoDB 控制台的节点管理](https://console.cloud.tencent.com/mongodb)复制节点 ID。
 	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
 
 	// 节点角色。可选值包括：
-	// <ul><li>PRIMARY：主节点。</li><li>SECONDARY：从节点。</li><li>READONLY：只读节点。</li><li>ARBITER：仲裁节点。</li></ul>
+	// - PRIMARY：主节点。
+	// - SECONDARY：从节点。
+	// - READONLY：只读节点。
+	// - ARBITER：仲裁节点。
 	Roles []*string `json:"Roles,omitnil,omitempty" name:"Roles"`
 
-	// 该参数指定节点是否为Hidden节点，默认为false。
+	// 该参数指定节点是否为 Hidden 节点，默认为 false。
 	OnlyHidden *bool `json:"OnlyHidden,omitnil,omitempty" name:"OnlyHidden"`
 
 	// 该参数指定选举新主节点的优先级。其取值范围为[0,100]，数值越高，优先级越高。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// 该参数指定节点投票权。
-	// <ul><li>1：具有投票权。</li><li>0：无投票权。</li></ul>
+	// - 1：具有投票权。
+	// - 0：无投票权。
 	Votes *int64 `json:"Votes,omitnil,omitempty" name:"Votes"`
 
 	// 节点标签。
@@ -2064,24 +2260,28 @@ type DescribeDBInstanceNodePropertyRequestParams struct {
 type DescribeDBInstanceNodePropertyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 节点ID。
+	// 节点 ID。请登录 [MongoDB 控制台的节点管理](https://console.cloud.tencent.com/mongodb)复制节点 ID。
 	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
 
 	// 节点角色。可选值包括：
-	// <ul><li>PRIMARY：主节点。</li><li>SECONDARY：从节点。</li><li>READONLY：只读节点。</li><li>ARBITER：仲裁节点。</li></ul>
+	// - PRIMARY：主节点。
+	// - SECONDARY：从节点。
+	// - READONLY：只读节点。
+	// - ARBITER：仲裁节点。
 	Roles []*string `json:"Roles,omitnil,omitempty" name:"Roles"`
 
-	// 该参数指定节点是否为Hidden节点，默认为false。
+	// 该参数指定节点是否为 Hidden 节点，默认为 false。
 	OnlyHidden *bool `json:"OnlyHidden,omitnil,omitempty" name:"OnlyHidden"`
 
 	// 该参数指定选举新主节点的优先级。其取值范围为[0,100]，数值越高，优先级越高。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// 该参数指定节点投票权。
-	// <ul><li>1：具有投票权。</li><li>0：无投票权。</li></ul>
+	// - 1：具有投票权。
+	// - 0：无投票权。
 	Votes *int64 `json:"Votes,omitnil,omitempty" name:"Votes"`
 
 	// 节点标签。
@@ -2143,7 +2343,7 @@ func (r *DescribeDBInstanceNodePropertyResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeDBInstanceParamTplDetailRequestParams struct {
-	// 参数模板 ID。
+	// 参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
 	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
 
 	// 参数名称，传入该值，则只会获取该字段的参数详情。为空时，返回全部参数。
@@ -2153,7 +2353,7 @@ type DescribeDBInstanceParamTplDetailRequestParams struct {
 type DescribeDBInstanceParamTplDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模板 ID。
+	// 参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
 	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
 
 	// 参数名称，传入该值，则只会获取该字段的参数详情。为空时，返回全部参数。
@@ -2197,10 +2397,20 @@ type DescribeDBInstanceParamTplDetailResponseParams struct {
 	// 参数总个数。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 模板适配实例版本。
+	// 模板适配的实例版本。
+	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
+	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 模板适配集群类型，副本集或分片。。
+	// 模板适配集群类型。
+	// - REPLSET：副本集实例。
+	// - SHARD：分片实例。
+	// - STANDALONE：单节点实例。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 参数模板名称。
@@ -2228,38 +2438,50 @@ func (r *DescribeDBInstanceParamTplDetailResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeDBInstanceParamTplRequestParams struct {
-	// 参数模板 ID 查询条件。
+	// 参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
 	TplIds []*string `json:"TplIds,omitnil,omitempty" name:"TplIds"`
 
-	// 模板名称，查询条件。
+	// 指定查询的模板名称。
 	TplNames []*string `json:"TplNames,omitnil,omitempty" name:"TplNames"`
 
-	// 根据版本号查询参数模板，具体支持的售卖版本，请参见[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询云数据库的售卖规格的返回结果。参数与版本对应关系如下所示：
-	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
-	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
+	// 指定所需查询的参数模板的数据库版本号。具体支持的版本信息，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersion []*string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 根据模板类型查询参数模板，支持DEFAULT（默认模板）和CUSTOMIZE（自定义模板）两种。
+	// 指定查询的模板类型。
+	// - DEFAULT：系统默认模板。
+	// - CUSTOMIZE：自定义模板。
 	TplType *string `json:"TplType,omitnil,omitempty" name:"TplType"`
 }
 
 type DescribeDBInstanceParamTplRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模板 ID 查询条件。
+	// 参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
 	TplIds []*string `json:"TplIds,omitnil,omitempty" name:"TplIds"`
 
-	// 模板名称，查询条件。
+	// 指定查询的模板名称。
 	TplNames []*string `json:"TplNames,omitnil,omitempty" name:"TplNames"`
 
-	// 根据版本号查询参数模板，具体支持的售卖版本，请参见[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询云数据库的售卖规格的返回结果。参数与版本对应关系如下所示：
-	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
-	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
+	// 指定所需查询的参数模板的数据库版本号。具体支持的版本信息，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersion []*string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 根据模板类型查询参数模板，支持DEFAULT（默认模板）和CUSTOMIZE（自定义模板）两种。
+	// 指定查询的模板类型。
+	// - DEFAULT：系统默认模板。
+	// - CUSTOMIZE：自定义模板。
 	TplType *string `json:"TplType,omitnil,omitempty" name:"TplType"`
 }
 
@@ -2372,16 +2594,29 @@ func (r *DescribeDBInstanceURLResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
-	// 实例 ID 列表。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// 实例 ID 列表。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 指定查询的实例类型。取值范围如下：<ul><li>0：所有实例。</li><li>1：正式实例。</li><li>3：只读实例。</li><li>4：灾备实例。</li></ul>
+	// 指定查询的实例类型。取值范围如下：
+	// - 0：所有实例。
+	// - 1：正式实例。
+	// - 2：临时实例
+	// - 3：只读实例。
+	// - -1：查询同时包括正式实例、只读实例与灾备实例。
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 指定所查询实例的集群类型，取值范围如下：<ul><li>0：副本集实例。</li><li>1：分片实例。</li><li>-1：副本集与分片实例。</li></ul>
+	// 指定所查询实例的集群类型，取值范围如下：
+	// - 0：副本集实例。
+	// - 1：分片实例。
+	// - -1：副本集与分片实例。
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 指定所查询实例的当前状态，取值范围如下所示：<ul><li>0：待初始化。</li><li>1：流程处理中，例如：变更规格、参数修改等。</li><li>2：实例正常运行中。</li><li>-2：实例已过期。</li></ul>
+	// 指定所查询实例的当前状态，取值范围如下所示：
+	// - 0：待初始化。
+	// - 1：流程处理中，例如：变更规格、参数修改等。
+	// - 2：实例正常运行中。
+	// - -2：已隔离（包年包月）。
+	// - -3：已隔离（按量计费）。
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 私有网络的 ID。
@@ -2394,10 +2629,13 @@ type DescribeDBInstancesRequestParams struct {
 	// - 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表中，单击私有网络名称，在**私有网络**页面获取其子网 ID。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 指定所查询实例的付费类型，取值范围如下：<ul><li>0：查询按量计费实例。</li><li>1：查询包年包月实例。</li><li>-1：查询按量计费与包年包月实例。</li></ul>
+	// 指定所查询实例的付费类型。
+	// - 0：查询按量计费实例。
+	// - 1：查询包年包月实例。
+	// - -1：查询按量计费与包年包月实例。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 单次请求返回的数量。默认值为20，取值范围为[1,100]。
+	// 单次请求返回的数量。默认值为20，取值范围为(1,100]。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认值为0。
@@ -2424,16 +2662,29 @@ type DescribeDBInstancesRequestParams struct {
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 列表。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// 实例 ID 列表。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 指定查询的实例类型。取值范围如下：<ul><li>0：所有实例。</li><li>1：正式实例。</li><li>3：只读实例。</li><li>4：灾备实例。</li></ul>
+	// 指定查询的实例类型。取值范围如下：
+	// - 0：所有实例。
+	// - 1：正式实例。
+	// - 2：临时实例
+	// - 3：只读实例。
+	// - -1：查询同时包括正式实例、只读实例与灾备实例。
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 指定所查询实例的集群类型，取值范围如下：<ul><li>0：副本集实例。</li><li>1：分片实例。</li><li>-1：副本集与分片实例。</li></ul>
+	// 指定所查询实例的集群类型，取值范围如下：
+	// - 0：副本集实例。
+	// - 1：分片实例。
+	// - -1：副本集与分片实例。
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 指定所查询实例的当前状态，取值范围如下所示：<ul><li>0：待初始化。</li><li>1：流程处理中，例如：变更规格、参数修改等。</li><li>2：实例正常运行中。</li><li>-2：实例已过期。</li></ul>
+	// 指定所查询实例的当前状态，取值范围如下所示：
+	// - 0：待初始化。
+	// - 1：流程处理中，例如：变更规格、参数修改等。
+	// - 2：实例正常运行中。
+	// - -2：已隔离（包年包月）。
+	// - -3：已隔离（按量计费）。
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 私有网络的 ID。
@@ -2446,10 +2697,13 @@ type DescribeDBInstancesRequest struct {
 	// - 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表中，单击私有网络名称，在**私有网络**页面获取其子网 ID。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 指定所查询实例的付费类型，取值范围如下：<ul><li>0：查询按量计费实例。</li><li>1：查询包年包月实例。</li><li>-1：查询按量计费与包年包月实例。</li></ul>
+	// 指定所查询实例的付费类型。
+	// - 0：查询按量计费实例。
+	// - 1：查询包年包月实例。
+	// - -1：查询按量计费与包年包月实例。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 单次请求返回的数量。默认值为20，取值范围为[1,100]。
+	// 单次请求返回的数量。默认值为20，取值范围为(1,100]。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认值为0。
@@ -2535,80 +2789,92 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDetailedSlowLogsRequestParams struct {
-	// 实例id
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 待查询慢日志的开始时间
+	// 指定查询慢日志的开始时间。- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 待慢日志的结束时间
+	// 指定查询慢日志的结束时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+	// - 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 过滤执行时间大于此值的慢日志，单位ms，默认值100
+	// 指定慢日志查询阈值，即查询执行时间大于此值的慢日志。单位：ms，默认值：100。
 	ExecTime *int64 `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
 
-	// 过滤慢日志的命令类型
+	// 指定查询慢日志的命令类型。
 	Commands []*string `json:"Commands,omitnil,omitempty" name:"Commands"`
 
-	// 全文搜索关键字，多个关键字间为或关系
+	// 全文搜索关键字，多个关键字间为或关系。
 	Texts []*string `json:"Texts,omitnil,omitempty" name:"Texts"`
 
-	// 根据节点名过滤
+	// 指定查询慢日志的节点名称。请通过接口 [DescribeDBInstanceNodeProperty](https://cloud.tencent.com/document/product/240/82022) 查询节点名称。
 	NodeNames []*string `json:"NodeNames,omitnil,omitempty" name:"NodeNames"`
 
-	// 根据queryHash过滤
+	// 指定查询 queryHash 值。
 	QueryHash []*string `json:"QueryHash,omitnil,omitempty" name:"QueryHash"`
 
-	// 分页偏移量
+	// 分页偏移量。默认值：0。取值范围：[0,100]。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回条数
+	// 返回条数。默认值：20。取值范围：[0,10000]
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序条件，只支持StartTime(按慢日志生成时间)和ExecTime(慢日志执行时间)
+	// 指定慢日志排序条件。
+	// - StartTime：按照慢日志生成时间排序。
+	// - ExecTime：按照慢日志执行时间排序。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序。desc倒排，asc正排
+	// 指定排序方式。
+	// - desc：倒序。
+	// - asc：顺序。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
 type DescribeDetailedSlowLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 待查询慢日志的开始时间
+	// 指定查询慢日志的开始时间。- 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。- 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 待慢日志的结束时间
+	// 指定查询慢日志的结束时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+	// - 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 过滤执行时间大于此值的慢日志，单位ms，默认值100
+	// 指定慢日志查询阈值，即查询执行时间大于此值的慢日志。单位：ms，默认值：100。
 	ExecTime *int64 `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
 
-	// 过滤慢日志的命令类型
+	// 指定查询慢日志的命令类型。
 	Commands []*string `json:"Commands,omitnil,omitempty" name:"Commands"`
 
-	// 全文搜索关键字，多个关键字间为或关系
+	// 全文搜索关键字，多个关键字间为或关系。
 	Texts []*string `json:"Texts,omitnil,omitempty" name:"Texts"`
 
-	// 根据节点名过滤
+	// 指定查询慢日志的节点名称。请通过接口 [DescribeDBInstanceNodeProperty](https://cloud.tencent.com/document/product/240/82022) 查询节点名称。
 	NodeNames []*string `json:"NodeNames,omitnil,omitempty" name:"NodeNames"`
 
-	// 根据queryHash过滤
+	// 指定查询 queryHash 值。
 	QueryHash []*string `json:"QueryHash,omitnil,omitempty" name:"QueryHash"`
 
-	// 分页偏移量
+	// 分页偏移量。默认值：0。取值范围：[0,100]。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回条数
+	// 返回条数。默认值：20。取值范围：[0,10000]
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序条件，只支持StartTime(按慢日志生成时间)和ExecTime(慢日志执行时间)
+	// 指定慢日志排序条件。
+	// - StartTime：按照慢日志生成时间排序。
+	// - ExecTime：按照慢日志执行时间排序。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序。desc倒排，asc正排
+	// 指定排序方式。
+	// - desc：倒序。
+	// - asc：顺序。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -2644,10 +2910,10 @@ func (r *DescribeDetailedSlowLogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDetailedSlowLogsResponseParams struct {
-	// 满足条件的慢日志数量
+	// 满足条件的慢日志数量。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 慢日志详情
+	// 慢日志详情。
 	DetailedSlowLogs []*SlowLogItem `json:"DetailedSlowLogs,omitnil,omitempty" name:"DetailedSlowLogs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2741,14 +3007,14 @@ func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecurityGroupRequestParams struct {
-	// 实例 ID。例如：cmgo-p8vn****。
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeSecurityGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。例如：cmgo-p8vn****。
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -2798,13 +3064,17 @@ func (r *DescribeSecurityGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowLogPatternsRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	// 慢日志起始时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+	// - 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	// 慢日志终止时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+	// - 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
@@ -2823,13 +3093,17 @@ type DescribeSlowLogPatternsRequestParams struct {
 type DescribeSlowLogPatternsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	// 慢日志起始时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+	// - 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	// 慢日志终止时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+	// - 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
@@ -2900,13 +3174,17 @@ func (r *DescribeSlowLogPatternsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowLogsRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	// 慢日志起始时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+	// - 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	// 慢日志终止时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+	// - 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
@@ -2925,13 +3203,17 @@ type DescribeSlowLogsRequestParams struct {
 type DescribeSlowLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	// 慢日志起始时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+	// - 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	// 慢日志终止时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。
+	// - 查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
@@ -2974,10 +3256,10 @@ func (r *DescribeSlowLogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowLogsResponseParams struct {
-	// 慢日志总数
+	// 慢日志总数。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 慢日志详情
+	// 慢日志详情。
 	SlowLogs []*string `json:"SlowLogs,omitnil,omitempty" name:"SlowLogs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3002,14 +3284,14 @@ func (r *DescribeSlowLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSpecInfoRequestParams struct {
-	// 待查询可用区
+	// 待查询可用区。当前支持的可用区，请参见[地域与可用区](https://cloud.tencent.com/document/product/240/3637)。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type DescribeSpecInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待查询可用区
+	// 待查询可用区。当前支持的可用区，请参见[地域与可用区](https://cloud.tencent.com/document/product/240/3637)。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
@@ -3034,7 +3316,7 @@ func (r *DescribeSpecInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSpecInfoResponseParams struct {
-	// 实例售卖规格信息列表
+	// 实例售卖规格信息列表。
 	SpecInfoList []*SpecificationInfo `json:"SpecInfoList,omitnil,omitempty" name:"SpecInfoList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3059,14 +3341,14 @@ func (r *DescribeSpecInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTransparentDataEncryptionStatusRequestParams struct {
-	// 指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// 指定实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeTransparentDataEncryptionStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// 指定实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -3122,14 +3404,14 @@ func (r *DescribeTransparentDataEncryptionStatusResponse) FromJsonString(s strin
 
 // Predefined struct for user
 type DropDBInstanceParamTplRequestParams struct {
-	// 参数模板 ID。
+	// 参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
 	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
 }
 
 type DropDBInstanceParamTplRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模板 ID。
+	// 参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
 	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
 }
 
@@ -3246,10 +3528,10 @@ func (r *EnableTransparentDataEncryptionResponse) FromJsonString(s string) error
 }
 
 type FBKeyValue struct {
-	// 用于按key回档过滤的key
+	// 指定按 Key 闪回的目标 Key （键） 。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 用于按key回档过滤的value
+	// 指定按 Key 闪回的目标 Key 所对应的 Value（值）。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -3332,24 +3614,24 @@ func (r *FlashBackDBInstanceResponse) FromJsonString(s string) error {
 }
 
 type FlashbackCollection struct {
-	// 按key回档指定的集合名
+	// 指定按 Key 闪回源数据库集合名。
 	CollectionName *string `json:"CollectionName,omitnil,omitempty" name:"CollectionName"`
 
-	// 按key回档到的目标集合名
+	// 指定按 Key 闪回目标数据库集合名。
 	TargetResultCollectionName *string `json:"TargetResultCollectionName,omitnil,omitempty" name:"TargetResultCollectionName"`
 
-	// 上传到cos的文件的value所对应的key值
+	// 指定用于过滤按 Key 闪回的 Key（键）。
 	FilterKey *string `json:"FilterKey,omitnil,omitempty" name:"FilterKey"`
 
-	// 用于按key回档过滤的键值对
+	// 指定用于按 Key 闪回的键值对。数组元素最大限制为 50000。
 	KeyValues []*FBKeyValue `json:"KeyValues,omitnil,omitempty" name:"KeyValues"`
 }
 
 type FlashbackDatabase struct {
-	// 按key回档源数据所在库
+	// 按 Key 闪回目标数据所在库。
 	DBName *string `json:"DBName,omitnil,omitempty" name:"DBName"`
 
-	// 按key回档的集群数组
+	// 按 Key 闪回的数据库集合。
 	Collections []*FlashbackCollection `json:"Collections,omitnil,omitempty" name:"Collections"`
 }
 
@@ -3783,19 +4065,23 @@ type InstanceChargePrepaid struct {
 }
 
 type InstanceDetail struct {
-	// 实例ID。
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 付费类型，可能的返回值：1-包年包月；0-按量计费
+	// 付费类型。
+	// - 1：包年包月。
+	// - 0：按量计费。
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 项目ID。
+	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 集群类型，可能的返回值：0-副本集实例，1-分片实例。
+	// 集群类型。
+	// - 0：副本集实例。
+	// - 1：分片实例。
 	ClusterType *uint64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 地域信息。
@@ -3804,7 +4090,9 @@ type InstanceDetail struct {
 	// 可用区信息。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 网络类型，可能的返回值：0-基础网络，1-私有网络
+	// 网络类型。
+	// - 0：基础网络。
+	// - 1：私有网络。
 	NetType *uint64 `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 私有网络的ID。
@@ -3813,7 +4101,12 @@ type InstanceDetail struct {
 	// 私有网络的子网ID。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例状态，可能的返回值：0-创建中，1-流程处理中，2-运行中，-2-实例已过期。
+	// 实例状态。
+	// - 0：待初始化。
+	// - 1：流程处理中，例如：变更规格、参数修改等。
+	// - 2：实例正常运行中。
+	// - -2：已隔离（包年包月）。
+	// - -3：已隔离（按量计费）。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例IP。
@@ -3828,19 +4121,28 @@ type InstanceDetail struct {
 	// 实例到期时间。
 	DeadLine *string `json:"DeadLine,omitnil,omitempty" name:"DeadLine"`
 
-	// 实例版本信息。
+	// 实例存储引擎版本信息。
+	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
+	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
+	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 实例内存规格，单位为MB。
+	// 实例内存规格，单位：MB。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例磁盘规格，单位为MB。
+	// 实例磁盘规格，单位：MB。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 实例CPU核心数。
+	// 实例 CPU 核心数。
 	CpuNum *uint64 `json:"CpuNum,omitnil,omitempty" name:"CpuNum"`
 
 	// 实例机器类型。
+	// - HIO10G：通用高 HIO 万兆型。
+	// - HCD：云盘版类型。
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 实例从节点数。
@@ -3849,10 +4151,13 @@ type InstanceDetail struct {
 	// 实例分片数。
 	ReplicationSetNum *uint64 `json:"ReplicationSetNum,omitnil,omitempty" name:"ReplicationSetNum"`
 
-	// 实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费。
+	// 实例自动续费标志。
+	// - 0：手动续费。
+	// - 1：自动续费。
+	// - 2：确认不续费。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 已用容量，单位MB。
+	// 已用容量，单位：MB。
 	UsedVolume *uint64 `json:"UsedVolume,omitnil,omitempty" name:"UsedVolume"`
 
 	// 维护窗口起始时间。
@@ -3885,40 +4190,45 @@ type InstanceDetail struct {
 	// 实例版本标记。
 	ClusterVer *uint64 `json:"ClusterVer,omitnil,omitempty" name:"ClusterVer"`
 
-	// 协议信息，可能的返回值：1-mongodb，2-dynamodb。
+	// 协议信息：mongodb。
 	Protocol *uint64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 实例类型，可能的返回值，1-正式实例，2-临时实例，3-只读实例，4-灾备实例
+	// 实例类型。
+	// - 0：所有实例。
+	// - 1：正式实例。
+	// - 2：临时实例
+	// - 3：只读实例。
+	// - -1：同时包括正式实例、只读实例与灾备实例。
 	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例状态描述
+	// 实例状态描述。
 	InstanceStatusDesc *string `json:"InstanceStatusDesc,omitnil,omitempty" name:"InstanceStatusDesc"`
 
-	// 实例对应的物理实例id，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
+	// 实例对应的物理实例 ID。回档并替换过的实例有不同的 InstanceId 和 RealInstanceId，从 barad 获取监控数据等场景下需要用物理 ID 获取。
 	RealInstanceId *string `json:"RealInstanceId,omitnil,omitempty" name:"RealInstanceId"`
 
 	// 实例当前可用区信息。
 	ZoneList []*string `json:"ZoneList,omitnil,omitempty" name:"ZoneList"`
 
-	// mongos节点个数。
+	// mongos 节点个数。
 	MongosNodeNum *uint64 `json:"MongosNodeNum,omitnil,omitempty" name:"MongosNodeNum"`
 
-	// mongos节点内存。
+	// mongos 节点内存。单位：MB。
 	MongosMemory *uint64 `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
-	// mongos节点CPU核数。
+	// mongos 节点 CPU 核数。
 	MongosCpuNum *uint64 `json:"MongosCpuNum,omitnil,omitempty" name:"MongosCpuNum"`
 
 	// Config Server节点个数。
 	ConfigServerNodeNum *uint64 `json:"ConfigServerNodeNum,omitnil,omitempty" name:"ConfigServerNodeNum"`
 
-	// Config Server节点内存。
+	// Config Server节点内存。单位：MB。
 	ConfigServerMemory *uint64 `json:"ConfigServerMemory,omitnil,omitempty" name:"ConfigServerMemory"`
 
-	// Config Server节点磁盘大小。
+	// Config Server节点磁盘大小。单位：MB。
 	ConfigServerVolume *uint64 `json:"ConfigServerVolume,omitnil,omitempty" name:"ConfigServerVolume"`
 
-	// Config Server节点CPU核数。
+	// Config Server 节点 CPU 核数。
 	ConfigServerCpuNum *uint64 `json:"ConfigServerCpuNum,omitnil,omitempty" name:"ConfigServerCpuNum"`
 
 	// readonly节点个数。
@@ -4051,14 +4361,14 @@ type InstanceTextParam struct {
 
 // Predefined struct for user
 type IsolateDBInstanceRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制需隔离的实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type IsolateDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制需隔离的实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -4117,6 +4427,8 @@ type KMSInfoDetail struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 密钥状态。
+	// - Enabled：开启。
+	// - Disabled：不开启。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 密钥用途。
@@ -4131,20 +4443,20 @@ type KMSInfoDetail struct {
 
 // Predefined struct for user
 type KillOpsRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 待终止的操作
+	// 待终止的操作。
 	Operations []*Operation `json:"Operations,omitnil,omitempty" name:"Operations"`
 }
 
 type KillOpsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 待终止的操作
+	// 待终止的操作。
 	Operations []*Operation `json:"Operations,omitnil,omitempty" name:"Operations"`
 }
 
@@ -4281,7 +4593,7 @@ func (r *ModifyDBInstanceNetworkAddressResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyDBInstanceParamTplRequestParams struct {
-	// 待修改的参数模板 ID，示例：tpl-jglr91vew。
+	// 待修改的参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
 	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
 
 	// 待修改参数模板名称，为空时，保持原有名称。
@@ -4297,7 +4609,7 @@ type ModifyDBInstanceParamTplRequestParams struct {
 type ModifyDBInstanceParamTplRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待修改的参数模板 ID，示例：tpl-jglr91vew。
+	// 待修改的参数模板 ID。请通过接口 [DescribeDBInstanceParamTpl](https://cloud.tencent.com/document/product/240/109155) 获取模板 ID。
 	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
 
 	// 待修改参数模板名称，为空时，保持原有名称。
@@ -4419,13 +4731,14 @@ func (r *ModifyDBInstanceSecurityGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceSpecRequestParams struct {
-	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例配置变更后的内存大小。- 单位：GB。为空时，默认取实例当前的内存大小。<br>  注意：内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
+	// 实例配置变更后的内存大小。单位：GB。该参数为空值时，默认取实例当前的内存大小。当前所支持的内存规格，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
+	// **注意**：内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例配置变更后的硬盘大小，单位：GB。为空时，默认取当前实例的磁盘大小。
+	// 实例配置变更后的硬盘大小，单位：GB。该参数为空值时，默认取当前实例的磁盘大小。当前所支持的磁盘容量，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
 	// - 内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
 	// - 降配时，变更后的磁盘容量必须大于已用磁盘容量的1.2倍。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
@@ -4439,16 +4752,15 @@ type ModifyDBInstanceSpecRequestParams struct {
 	// Deprecated: OplogSize is deprecated.
 	OplogSize *uint64 `json:"OplogSize,omitnil,omitempty" name:"OplogSize"`
 
-	// 实例变更后mongod的节点数（不包含readonly节点数）。
-	// - 变更mongod CPU与内存规格时，该参数可以不配置或者输入当前 mongod(不包含readonly) 节点数量。
-	// -  变更 mongos CPU与内存规格时，该参数可以不配置或者输入当前 mongod(不包含readonly) 节点数量。
-	// -  节点变更时(全部类型)，该参数可不配置或输入变更后的 mongod(不包含readonly) 节点数量。
-	// -  副本集节点数：请确认节点数量取值范围，通过云数据库的售卖规格 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38565)接口返回的参数 MinNodeNum 与 MaxNodeNum 获取。
-	// -  分片集群每个分片节点数：请确认节点数量取值范围，通过云数据库的售卖规格 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38565)接口返回的参数 MinReplicateSetNodeNum 与 MaxReplicateSetNodeNum 获取。
+	// 实例变更后 mongod 的节点数（不包含 readonly 只读节点数）。
+	// -  副本集节点数：请通过 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38567)接口返回的参数 MinNodeNum 与 MaxNodeNum 获取节点数量取值范围。
+	// -  分片集群每个分片节点数：请通过 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38567)接口返回的参数 MinReplicateSetNodeNum 与 MaxReplicateSetNodeNum 获取节点数量取值范围。
+	// **说明**：变更 mongod 或 mongos 的 CPU 与内存规格时，该参数可以不配置或者输入当前 mongod 或 mongos（不包含readonly）节点数量。
 	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
 	// 实例变更后的分片数。
-	// - 取值范围请通过云数据库的售卖规格[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 接口返回的参数**MinReplicateSetNum**与**MaxReplicateSetNum**获取。- 该参数只能增加不能减少。
+	// - 请通过 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 接口返回的参数**MinReplicateSetNum**与**MaxReplicateSetNum**获取实例分片数取值范围。
+	// - 实例分片数量只允许增加不允许减少。
 	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitnil,omitempty" name:"ReplicateSetNum"`
 
 	// 实例配置变更的切换时间。
@@ -4457,26 +4769,28 @@ type ModifyDBInstanceSpecRequestParams struct {
 	// **说明**：调整节点数和分片数不支持在<b>维护时间窗内</b>变更。
 	InMaintenance *uint64 `json:"InMaintenance,omitnil,omitempty" name:"InMaintenance"`
 
-	// 分片实例配置变更后的mongos内存大小。单位：GB。
+	// 分片实例配置变更后的 mongos 内存大小。单位：GB。实例支持的规格，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
 	MongosMemory *string `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
 	// 新增节点列表，节点类型及可用区信息。
 	AddNodeList []*AddNodeList `json:"AddNodeList,omitnil,omitempty" name:"AddNodeList"`
 
-	// 删除节点列表，注意：基于分片实例各片节点的一致性原则，删除分片实例节点时，只需指定0分片对应的节点即可，如：cmgo-9nl1czif_0-node-readonly0 将删除每个分片的第1个只读节点。
+	// 删除节点列表。
+	// **注意**：基于分片实例各片节点的一致性原则，删除分片实例节点时，只需指定0分片对应的节点即可，如：cmgo-9nl1czif_0-node-readonly0 将删除每个分片的第1个只读节点。
 	RemoveNodeList []*RemoveNodeList `json:"RemoveNodeList,omitnil,omitempty" name:"RemoveNodeList"`
 }
 
 type ModifyDBInstanceSpecRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例配置变更后的内存大小。- 单位：GB。为空时，默认取实例当前的内存大小。<br>  注意：内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
+	// 实例配置变更后的内存大小。单位：GB。该参数为空值时，默认取实例当前的内存大小。当前所支持的内存规格，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
+	// **注意**：内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例配置变更后的硬盘大小，单位：GB。为空时，默认取当前实例的磁盘大小。
+	// 实例配置变更后的硬盘大小，单位：GB。该参数为空值时，默认取当前实例的磁盘大小。当前所支持的磁盘容量，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
 	// - 内存和磁盘必须同时升配或同时降配，即 Memory 与 Volume 需同时配置变更。
 	// - 降配时，变更后的磁盘容量必须大于已用磁盘容量的1.2倍。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
@@ -4488,16 +4802,15 @@ type ModifyDBInstanceSpecRequest struct {
 	// - 默认 Oplog 占用容量为磁盘空间的10%。系统允许设置的 Oplog 容量范围为磁盘空间的[10%,90%]。
 	OplogSize *uint64 `json:"OplogSize,omitnil,omitempty" name:"OplogSize"`
 
-	// 实例变更后mongod的节点数（不包含readonly节点数）。
-	// - 变更mongod CPU与内存规格时，该参数可以不配置或者输入当前 mongod(不包含readonly) 节点数量。
-	// -  变更 mongos CPU与内存规格时，该参数可以不配置或者输入当前 mongod(不包含readonly) 节点数量。
-	// -  节点变更时(全部类型)，该参数可不配置或输入变更后的 mongod(不包含readonly) 节点数量。
-	// -  副本集节点数：请确认节点数量取值范围，通过云数据库的售卖规格 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38565)接口返回的参数 MinNodeNum 与 MaxNodeNum 获取。
-	// -  分片集群每个分片节点数：请确认节点数量取值范围，通过云数据库的售卖规格 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38565)接口返回的参数 MinReplicateSetNodeNum 与 MaxReplicateSetNodeNum 获取。
+	// 实例变更后 mongod 的节点数（不包含 readonly 只读节点数）。
+	// -  副本集节点数：请通过 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38567)接口返回的参数 MinNodeNum 与 MaxNodeNum 获取节点数量取值范围。
+	// -  分片集群每个分片节点数：请通过 [DescribeSpecInfo ](https://cloud.tencent.com/document/product/240/38567)接口返回的参数 MinReplicateSetNodeNum 与 MaxReplicateSetNodeNum 获取节点数量取值范围。
+	// **说明**：变更 mongod 或 mongos 的 CPU 与内存规格时，该参数可以不配置或者输入当前 mongod 或 mongos（不包含readonly）节点数量。
 	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
 	// 实例变更后的分片数。
-	// - 取值范围请通过云数据库的售卖规格[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 接口返回的参数**MinReplicateSetNum**与**MaxReplicateSetNum**获取。- 该参数只能增加不能减少。
+	// - 请通过 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 接口返回的参数**MinReplicateSetNum**与**MaxReplicateSetNum**获取实例分片数取值范围。
+	// - 实例分片数量只允许增加不允许减少。
 	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitnil,omitempty" name:"ReplicateSetNum"`
 
 	// 实例配置变更的切换时间。
@@ -4506,13 +4819,14 @@ type ModifyDBInstanceSpecRequest struct {
 	// **说明**：调整节点数和分片数不支持在<b>维护时间窗内</b>变更。
 	InMaintenance *uint64 `json:"InMaintenance,omitnil,omitempty" name:"InMaintenance"`
 
-	// 分片实例配置变更后的mongos内存大小。单位：GB。
+	// 分片实例配置变更后的 mongos 内存大小。单位：GB。实例支持的规格，请参见[产品规格](https://cloud.tencent.com/document/product/240/64125)。
 	MongosMemory *string `json:"MongosMemory,omitnil,omitempty" name:"MongosMemory"`
 
 	// 新增节点列表，节点类型及可用区信息。
 	AddNodeList []*AddNodeList `json:"AddNodeList,omitnil,omitempty" name:"AddNodeList"`
 
-	// 删除节点列表，注意：基于分片实例各片节点的一致性原则，删除分片实例节点时，只需指定0分片对应的节点即可，如：cmgo-9nl1czif_0-node-readonly0 将删除每个分片的第1个只读节点。
+	// 删除节点列表。
+	// **注意**：基于分片实例各片节点的一致性原则，删除分片实例节点时，只需指定0分片对应的节点即可，如：cmgo-9nl1czif_0-node-readonly0 将删除每个分片的第1个只读节点。
 	RemoveNodeList []*RemoveNodeList `json:"RemoveNodeList,omitnil,omitempty" name:"RemoveNodeList"`
 }
 
@@ -4678,28 +4992,45 @@ type NodeProperty struct {
 	// 节点公网访问外网地址(IP或域名，示例为IP方式)。
 	WanServiceAddress *string `json:"WanServiceAddress,omitnil,omitempty" name:"WanServiceAddress"`
 
-	// 角色。
+	// 节点角色。
+	// - PRIMARY：主节点。
+	// - SECONDARY：从节点。
+	// - READONLY：只读节点。
+	// - ARBITER：仲裁节点。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 是否为Hidden节点
+	// 节点是否为 Hidden 节点。
+	// - true：Hidden 节点。
+	// - false：非 Hidden 节点。
 	Hidden *bool `json:"Hidden,omitnil,omitempty" name:"Hidden"`
 
-	// 节点状态，包括：ORMAL/STARTUP/RECOVERING/STARTUP2/UNKNOWN/DOWN/ROLLBACK/REMOVED等。
+	// 节点状态。
+	// - NORMAL：正常运行中。
+	// - STARTUP：正在启动。
+	// - STARTUP2：正在启动，处理中间数据。
+	// - RECOVERING：恢复中，暂不可用。
+	// - DOWN：已掉线。
+	// - UNKNOWN：未知状态。
+	// - ROLLBACK：回滚中。
+	// - REMOVED：已移除。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 主从延迟，单位秒。
+	// 主从同步延迟时间，单位：秒。
 	SlaveDelay *int64 `json:"SlaveDelay,omitnil,omitempty" name:"SlaveDelay"`
 
-	// 节点优先级。
+	// 节点优先级。其取值范围为[0,100]，数值越高，优先级越高。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// 节点投票权。
+	// - 1：具有投票权。
+	// - 0：无投票权。
 	Votes *int64 `json:"Votes,omitnil,omitempty" name:"Votes"`
 
 	// 节点标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*NodeTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 副本集Id。
+	// 副本集 ID。
 	ReplicateSetId *string `json:"ReplicateSetId,omitnil,omitempty" name:"ReplicateSetId"`
 }
 
@@ -4713,14 +5044,14 @@ type NodeTag struct {
 
 // Predefined struct for user
 type OfflineIsolatedDBInstanceRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID。请登录 [MongoDB 控制台回收站](https://console.cloud.tencent.com/mongodb/recycle)在实例列表复制需下线的实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type OfflineIsolatedDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID。请登录 [MongoDB 控制台回收站](https://console.cloud.tencent.com/mongodb/recycle)在实例列表复制需下线的实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -4769,33 +5100,45 @@ func (r *OfflineIsolatedDBInstanceResponse) FromJsonString(s string) error {
 }
 
 type Operation struct {
-	// 操作所在的分片名
+	// 操作所在的分片名称。请通过接口 [DescribeCurrentOp](https://cloud.tencent.com/document/product/240/48120) 查询分片名称。
 	ReplicaSetName *string `json:"ReplicaSetName,omitnil,omitempty" name:"ReplicaSetName"`
 
-	// 操作所在的节点名
+	// 操作所在的节点名。请通过接口 [DescribeCurrentOp](https://cloud.tencent.com/document/product/240/48120) 查询节点名称。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 操作序号
+	// 操作序号。请通过接口 [DescribeCurrentOp](https://cloud.tencent.com/document/product/240/48120) 查询操作序号。
 	OpId *int64 `json:"OpId,omitnil,omitempty" name:"OpId"`
 }
 
 type ParamTpl struct {
-	// 参数模板名称
+	// 参数模板名称。
 	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
 
-	// 参数模板ID
+	// 参数模板 ID。
 	TplId *string `json:"TplId,omitnil,omitempty" name:"TplId"`
 
-	// 适用数据库版本
+	// 参数模板适用的数据库版本。
+	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，
+	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，
+	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// 适用数据库类型
+	// 参数模板适用的数据库类型。
+	// - REPLSET：副本集实例。
+	// - SHARD：分片实例。
+	// - STANDALONE：单节点实例。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 参数模板描述
+	// 参数模板描述。
 	TplDesc *string `json:"TplDesc,omitnil,omitempty" name:"TplDesc"`
 
-	// 模板类型，包括DEFAULT（默认模板）及CUSTOMIZE（定制模板）两种类型
+	// 模板类型。
+	// - DEFAULT：系统默认模板。
+	// - CUSTOMIZE：自定义模板。
 	TplType *string `json:"TplType,omitnil,omitempty" name:"TplType"`
 }
 
@@ -4814,13 +5157,12 @@ type RemoveNodeList struct {
 	// - MONGOS：Mongos 节点。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 要删除的节点 ID。分片集群须指定一组分片要删除的节点名称即可，其余分片对改组对齐。
-	// 
-	// - 获取方式：登录 [MongoDB控制台](https://console.cloud.tencent.com/)，在**节点管理**页签，可获取**节点 ID**。
-	// - 特别说明：分片集群同一节点上的分片，仅需指定0分片节点 ID 即可。例如：cmgo-6hfk****_0-node-primary。
+	// 要删除的节点 ID。分片集群须指定一组分片要删除的节点名称即可，其余分片对该组对齐。
+	// - 获取方式：登录 [MongoDB控制台](https://console.cloud.tencent.com/mongodb)，在**节点管理**页签，可获取**节点 ID**。
+	// - 特别说明：分片集群同一节点上的分片，仅需指定0分片节点 ID 即可。例如：cmgo-6hfk\*\*\*\*\_0-node-primary。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 节点所对应的可用区。
+	// 节点所对应的可用区。当前支持可用区信息，请参见[地域和可用区](https://cloud.tencent.com/document/product/240/3637)。
 	// - 单可用区，所有节点在同一可用区。
 	// - 多可用区：当前标准规格是三可用区分布，主从节点不在同一可用区，需注意配置所删除节点对应的可用区，且删除后必须满足任意2个可用区节点数大于第3个可用区原则。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
@@ -4890,7 +5232,7 @@ func (r *RenameInstanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RenewDBInstancesRequestParams struct {
 	// 指定续费的一个或多个待操作的实例ID。
-	// - 可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568)接口返回值中的**InstanceIds**获取。
+	// - 可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568)接口返回值中的**InstanceId**获取。
 	// - 每次续费请求的实例数量上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
@@ -4902,7 +5244,7 @@ type RenewDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定续费的一个或多个待操作的实例ID。
-	// - 可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568)接口返回值中的**InstanceIds**获取。
+	// - 可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568)接口返回值中的**InstanceId**获取。
 	// - 每次续费请求的实例数量上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
@@ -4953,7 +5295,7 @@ func (r *RenewDBInstancesResponse) FromJsonString(s string) error {
 }
 
 type ReplicaSetInfo struct {
-	// 副本集ID
+	// 副本集 ID。
 	ReplicaSetId *string `json:"ReplicaSetId,omitnil,omitempty" name:"ReplicaSetId"`
 }
 
@@ -5039,20 +5381,24 @@ func (r *ResetDBInstancePasswordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RestartNodesRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 节点Id。
+	// 需要重启的节点 ID 列表。
+	// - 支持重启的节点类型包含：mongod节点、只读节点、mongos节点。
+	// - 节点 ID，请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在**节点管理**页面复制，或者通过 [DescribeDBInstanceNodeProperty ](https://cloud.tencent.com/document/product/240/82022)接口获取。
 	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
 }
 
 type RestartNodesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 节点Id。
+	// 需要重启的节点 ID 列表。
+	// - 支持重启的节点类型包含：mongod节点、只读节点、mongos节点。
+	// - 节点 ID，请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在**节点管理**页面复制，或者通过 [DescribeDBInstanceNodeProperty ](https://cloud.tencent.com/document/product/240/82022)接口获取。
 	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
 }
 
@@ -5078,7 +5424,7 @@ func (r *RestartNodesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RestartNodesResponseParams struct {
-	// 流程Id。
+	// 流程 ID。
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5102,51 +5448,53 @@ func (r *RestartNodesResponse) FromJsonString(s string) error {
 }
 
 type SecurityGroup struct {
-	// 所属项目id
+	// 所属项目 ID。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 创建时间
+	// 安全组创建时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 入站规则
+	// 安全组入站规则。
 	Inbound []*SecurityGroupBound `json:"Inbound,omitnil,omitempty" name:"Inbound"`
 
-	// 出站规则
+	// 安全组出站规则。
 	Outbound []*SecurityGroupBound `json:"Outbound,omitnil,omitempty" name:"Outbound"`
 
-	// 安全组id
+	// 安全组 ID。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
-	// 安全组名称
+	// 安全组名称。
 	SecurityGroupName *string `json:"SecurityGroupName,omitnil,omitempty" name:"SecurityGroupName"`
 
-	// 安全组备注
+	// 安全组备注信息。
 	SecurityGroupRemark *string `json:"SecurityGroupRemark,omitnil,omitempty" name:"SecurityGroupRemark"`
 }
 
 type SecurityGroupBound struct {
-	// 执行规则。ACCEPT或DROP
+	// 执行策略。
+	// - ACCEPT：允许，放行该端口相应的访问请求。
+	// - DROP：拒绝，直接丢弃数据包，不返回任何回应信息。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// ip段。
+	// 访问数据库的入站 IP 或 IP 段。
 	CidrIp *string `json:"CidrIp,omitnil,omitempty" name:"CidrIp"`
 
-	// 端口范围
+	// 访问数据库的端口。
 	PortRange *string `json:"PortRange,omitnil,omitempty" name:"PortRange"`
 
-	// 传输层协议。tcp，udp或ALL
+	// 传输层协议：tcp。
 	IpProtocol *string `json:"IpProtocol,omitnil,omitempty" name:"IpProtocol"`
 
-	// 安全组id代表的地址集合
+	// 安全组 ID。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 地址组id代表的地址集合
+	// IP 地址或 IP 地址组参数模板 ID。请登录[参数模板控制台](https://console.cloud.tencent.com/vpc/template/ip)获取参数模板 IP 地址详情。
 	AddressModule *string `json:"AddressModule,omitnil,omitempty" name:"AddressModule"`
 
-	// 服务组id代表的协议和端口集合
+	// 协议端口或协议端口组参数模板 ID。请登录[参数模板控制台](https://console.cloud.tencent.com/vpc/template/protoport)获取参数模板协议端口详情。
 	ServiceModule *string `json:"ServiceModule,omitnil,omitempty" name:"ServiceModule"`
 
-	// 描述
+	// 安全组描述信息。
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 }
 
@@ -5226,7 +5574,13 @@ type SetBackupRulesRequestParams struct {
 	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设置自动备份方式。- 0：逻辑备份。- 1：物理备份。-3：快照备份(仅云盘版支持)。
+	// 备份方式。
+	// - 0：逻辑备份。
+	// - 1：物理备份。
+	// - 3：快照备份。
+	// **说明**:
+	// 1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+	// 2. 实例开通存储加密，则备份方式不能为物理备份。
 	BackupMethod *uint64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// 设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。
@@ -5247,7 +5601,13 @@ type SetBackupRulesRequest struct {
 	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设置自动备份方式。- 0：逻辑备份。- 1：物理备份。-3：快照备份(仅云盘版支持)。
+	// 备份方式。
+	// - 0：逻辑备份。
+	// - 1：物理备份。
+	// - 3：快照备份。
+	// **说明**:
+	// 1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
+	// 2. 实例开通存储加密，则备份方式不能为物理备份。
 	BackupMethod *uint64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// 设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。
@@ -5467,45 +5827,38 @@ type ShardInfo struct {
 }
 
 type SlowLogItem struct {
-	// 慢日志
+	// 慢日志详情。
 	Log *string `json:"Log,omitnil,omitempty" name:"Log"`
 
-	// 节点名称
+	// 节点名称。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// queryHash
+	// 查询哈希值。
 	QueryHash *string `json:"QueryHash,omitnil,omitempty" name:"QueryHash"`
 }
 
 type SlowLogPattern struct {
-	// 慢日志模式
+	// 慢日志输出格式：库名.表名.命令。
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 
-	// queryHash
+	// 记录慢日志时所带的queryHash 值，标识一类查询。
 	QueryHash *string `json:"QueryHash,omitnil,omitempty" name:"QueryHash"`
 
-	// 最大执行时间
+	// 最大执行时间。单位：毫秒。
 	MaxTime *uint64 `json:"MaxTime,omitnil,omitempty" name:"MaxTime"`
 
-	// 平均执行时间
+	// 平均执行时间。单位：毫秒。
 	AverageTime *uint64 `json:"AverageTime,omitnil,omitempty" name:"AverageTime"`
 
-	// 该模式慢日志条数
+	// 慢日志条数。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 }
 
 type SpecItem struct {
 	// 规格信息标识。格式如：mongo.HIO10G.128g。由节点类型、规格类型、内存规格三部分组成。
-	// - 节点类型，如下所示。
-	//   - mongo：Mongod 节点。
-	//  - mongos：Mongos 节点。
-	//  - cfgstr：Configserver 节点。
-	// - 规格类型，如下所示。
-	//  - HIO10G：通用高HIO万兆型。
-	//  - HCD：云盘版类型。
-	// - 内存规格，如下所示：
-	//  - 支持4、8、16、32、64、128、240、512。
-	//  - 单位g：表示GB。128g则表示128GB。
+	// - 节点类型：**mongo**，指 Mongod 节点；**mongos**，指 Mongos 节点；**cfgstr**，指 Configserver 节点。
+	// - 规格类型：**HIO10G**，指通用高HIO万兆型；**HCD**：指云盘版类型。
+	// - 内存规格：支持4、8、16、32、64、128、240、512。单位g：表示GB。128g 则表示128GB。
 	SpecCode *string `json:"SpecCode,omitnil,omitempty" name:"SpecCode"`
 
 	// 售卖规格有效标志，取值范围如下：
@@ -5535,18 +5888,18 @@ type SpecItem struct {
 	Conns *uint64 `json:"Conns,omitnil,omitempty" name:"Conns"`
 
 	// 实例存储引擎版本信息。
-	// - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 	// - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 	// - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 	// - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 	// - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
 	// - MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
+	// - MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。
 	MongoVersionCode *string `json:"MongoVersionCode,omitnil,omitempty" name:"MongoVersionCode"`
 
 	// 实例版本对应的数字版本。
 	MongoVersionValue *uint64 `json:"MongoVersionValue,omitnil,omitempty" name:"MongoVersionValue"`
 
-	// 实例版本信息。支持：3.6、4.2、4.4、5.0、6.0。
+	// 实例版本信息。支持：4.2、4.4、5.0、6.0、7.0。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 存储引擎。
@@ -5582,16 +5935,18 @@ type SpecItem struct {
 }
 
 type SpecificationInfo struct {
-	// 地域信息
+	// 地域信息。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 可用区信息
+	// 可用区信息。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 售卖规格信息
+	// 售卖规格信息。
 	SpecItems []*SpecItem `json:"SpecItems,omitnil,omitempty" name:"SpecItems"`
 
-	// 是否支持跨可用区部署 1-支持，0-不支持
+	// 是否支持跨可用区部署。
+	// - 1：支持。
+	// - 0：不支持。
 	SupportMultiAZ *int64 `json:"SupportMultiAZ,omitnil,omitempty" name:"SupportMultiAZ"`
 }
 

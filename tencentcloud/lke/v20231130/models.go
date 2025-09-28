@@ -3116,10 +3116,10 @@ type DescribeCallStatsGraphRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -3133,6 +3133,12 @@ type DescribeCallStatsGraphRequestParams struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 type DescribeCallStatsGraphRequest struct {
@@ -3153,10 +3159,10 @@ type DescribeCallStatsGraphRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -3170,6 +3176,12 @@ type DescribeCallStatsGraphRequest struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 func (r *DescribeCallStatsGraphRequest) ToJsonString() string {
@@ -3195,6 +3207,8 @@ func (r *DescribeCallStatsGraphRequest) FromJsonString(s string) error {
 	delete(f, "SubScenes")
 	delete(f, "AppType")
 	delete(f, "SpaceId")
+	delete(f, "StatStartTime")
+	delete(f, "StatEndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallStatsGraphRequest has unknown keys!", "")
 	}
@@ -3232,10 +3246,10 @@ type DescribeConcurrencyUsageGraphRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// uin
@@ -3255,6 +3269,12 @@ type DescribeConcurrencyUsageGraphRequestParams struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 type DescribeConcurrencyUsageGraphRequest struct {
@@ -3263,10 +3283,10 @@ type DescribeConcurrencyUsageGraphRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// uin
@@ -3286,6 +3306,12 @@ type DescribeConcurrencyUsageGraphRequest struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 func (r *DescribeConcurrencyUsageGraphRequest) ToJsonString() string {
@@ -3309,6 +3335,8 @@ func (r *DescribeConcurrencyUsageGraphRequest) FromJsonString(s string) error {
 	delete(f, "SubBizType")
 	delete(f, "AppBizIds")
 	delete(f, "SpaceId")
+	delete(f, "StatStartTime")
+	delete(f, "StatEndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConcurrencyUsageGraphRequest has unknown keys!", "")
 	}
@@ -3351,10 +3379,10 @@ type DescribeConcurrencyUsageRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -3362,6 +3390,12 @@ type DescribeConcurrencyUsageRequestParams struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 type DescribeConcurrencyUsageRequest struct {
@@ -3370,10 +3404,10 @@ type DescribeConcurrencyUsageRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -3381,6 +3415,12 @@ type DescribeConcurrencyUsageRequest struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 func (r *DescribeConcurrencyUsageRequest) ToJsonString() string {
@@ -3400,6 +3440,8 @@ func (r *DescribeConcurrencyUsageRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "AppBizIds")
 	delete(f, "SpaceId")
+	delete(f, "StatStartTime")
+	delete(f, "StatEndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConcurrencyUsageRequest has unknown keys!", "")
 	}
@@ -4218,10 +4260,10 @@ type DescribeSearchStatsGraphRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -4229,6 +4271,12 @@ type DescribeSearchStatsGraphRequestParams struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 type DescribeSearchStatsGraphRequest struct {
@@ -4249,10 +4297,10 @@ type DescribeSearchStatsGraphRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -4260,6 +4308,12 @@ type DescribeSearchStatsGraphRequest struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 func (r *DescribeSearchStatsGraphRequest) ToJsonString() string {
@@ -4283,6 +4337,8 @@ func (r *DescribeSearchStatsGraphRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "AppBizIds")
 	delete(f, "SpaceId")
+	delete(f, "StatStartTime")
+	delete(f, "StatEndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSearchStatsGraphRequest has unknown keys!", "")
 	}
@@ -4554,10 +4610,10 @@ type DescribeTokenUsageGraphRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -4568,6 +4624,12 @@ type DescribeTokenUsageGraphRequestParams struct {
 
 	// 筛选子场景
 	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 type DescribeTokenUsageGraphRequest struct {
@@ -4582,10 +4644,10 @@ type DescribeTokenUsageGraphRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间戳, 单位为秒(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间戳, 单位为秒(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -4596,6 +4658,12 @@ type DescribeTokenUsageGraphRequest struct {
 
 	// 筛选子场景
 	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 func (r *DescribeTokenUsageGraphRequest) ToJsonString() string {
@@ -4618,6 +4686,8 @@ func (r *DescribeTokenUsageGraphRequest) FromJsonString(s string) error {
 	delete(f, "AppBizIds")
 	delete(f, "AppType")
 	delete(f, "SubScenes")
+	delete(f, "StatStartTime")
+	delete(f, "StatEndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenUsageGraphRequest has unknown keys!", "")
 	}
@@ -4672,10 +4742,10 @@ type DescribeTokenUsageRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒(默认值0)
+	// 开始时间戳, 单位为秒(默认值0)(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)
+	// 结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -4689,6 +4759,12 @@ type DescribeTokenUsageRequestParams struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 type DescribeTokenUsageRequest struct {
@@ -4709,10 +4785,10 @@ type DescribeTokenUsageRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间戳, 单位为秒(默认值0)
+	// 开始时间戳, 单位为秒(默认值0)(废弃)
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)
+	// 结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -4726,6 +4802,12 @@ type DescribeTokenUsageRequest struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 结束时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 func (r *DescribeTokenUsageRequest) ToJsonString() string {
@@ -4751,6 +4833,8 @@ func (r *DescribeTokenUsageRequest) FromJsonString(s string) error {
 	delete(f, "SubScenes")
 	delete(f, "AppType")
 	delete(f, "SpaceId")
+	delete(f, "StatStartTime")
+	delete(f, "StatEndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenUsageRequest has unknown keys!", "")
 	}
@@ -9074,17 +9158,17 @@ type ListUsageCallDetailRequestParams struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 结束时间
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
 	// 页码（从1开始）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 分页数量(最大值1000)
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 开始时间(废弃)
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间(废弃)
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// uin列表
 	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
@@ -9106,6 +9190,12 @@ type ListUsageCallDetailRequestParams struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 开始时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 type ListUsageCallDetailRequest struct {
@@ -9114,17 +9204,17 @@ type ListUsageCallDetailRequest struct {
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 结束时间
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
 	// 页码（从1开始）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 分页数量(最大值1000)
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 开始时间(废弃)
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间(废弃)
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// uin列表
 	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
@@ -9146,6 +9236,12 @@ type ListUsageCallDetailRequest struct {
 
 	// 空间id
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 开始时间戳, 单位为秒
+	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
+
+	// 开始时间戳, 单位为秒
+	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 func (r *ListUsageCallDetailRequest) ToJsonString() string {
@@ -9161,10 +9257,10 @@ func (r *ListUsageCallDetailRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ModelName")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	delete(f, "UinAccount")
 	delete(f, "AppBizIds")
 	delete(f, "CallType")
@@ -9172,6 +9268,8 @@ func (r *ListUsageCallDetailRequest) FromJsonString(s string) error {
 	delete(f, "AppType")
 	delete(f, "BillingTag")
 	delete(f, "SpaceId")
+	delete(f, "StatStartTime")
+	delete(f, "StatEndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUsageCallDetailRequest has unknown keys!", "")
 	}

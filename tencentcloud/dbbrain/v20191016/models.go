@@ -122,7 +122,7 @@ type CreateDBDiagReportTaskRequestParams struct {
 	// 接收邮件的联系组ID数组。
 	ContactGroup []*int64 `json:"ContactGroup,omitnil,omitempty" name:"ContactGroup"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认值为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -147,7 +147,7 @@ type CreateDBDiagReportTaskRequest struct {
 	// 接收邮件的联系组ID数组。
 	ContactGroup []*int64 `json:"ContactGroup,omitnil,omitempty" name:"ContactGroup"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认值为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -203,26 +203,28 @@ func (r *CreateDBDiagReportTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDBDiagReportUrlRequestParams struct {
-	// 实例ID。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// 示例值：cdb-dctw4edd
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
+	// 健康报告相应的任务ID，可通过[DescribeDBDiagReportTasks](https://cloud.tencent.com/document/product/1130/54873)查询。
 	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type CreateDBDiagReportUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// 示例值：cdb-dctw4edd
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
+	// 健康报告相应的任务ID，可通过[DescribeDBDiagReportTasks](https://cloud.tencent.com/document/product/1130/54873)查询。
 	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -283,16 +285,16 @@ type CreateMailProfileRequestParams struct {
 	// 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
 	ProfileLevel *string `json:"ProfileLevel,omitnil,omitempty" name:"ProfileLevel"`
 
-	// 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+	// 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"scheduler_cdb-test"。
 	ProfileName *string `json:"ProfileName,omitnil,omitempty" name:"ProfileName"`
 
 	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
 	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 配置绑定的实例ID，当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
+	// 配置绑定的实例ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
 	BindInstanceIds []*string `json:"BindInstanceIds,omitnil,omitempty" name:"BindInstanceIds"`
 }
 
@@ -305,16 +307,16 @@ type CreateMailProfileRequest struct {
 	// 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
 	ProfileLevel *string `json:"ProfileLevel,omitnil,omitempty" name:"ProfileLevel"`
 
-	// 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+	// 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"scheduler_cdb-test"。
 	ProfileName *string `json:"ProfileName,omitnil,omitempty" name:"ProfileName"`
 
 	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
 	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 配置绑定的实例ID，当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
+	// 配置绑定的实例ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
 	BindInstanceIds []*string `json:"BindInstanceIds,omitnil,omitempty" name:"BindInstanceIds"`
 }
 
@@ -372,13 +374,13 @@ type CreateSchedulerMailProfileRequestParams struct {
 	// 邮件配置内容。
 	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitnil,omitempty" name:"ProfileInfo"`
 
-	// 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+	// 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"scheduler_cdb-test"。
 	ProfileName *string `json:"ProfileName,omitnil,omitempty" name:"ProfileName"`
 
-	// 配置订阅的实例ID。
+	// 配置订阅的实例ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	BindInstanceId *string `json:"BindInstanceId,omitnil,omitempty" name:"BindInstanceId"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -391,13 +393,13 @@ type CreateSchedulerMailProfileRequest struct {
 	// 邮件配置内容。
 	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitnil,omitempty" name:"ProfileInfo"`
 
-	// 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+	// 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"scheduler_cdb-test"。
 	ProfileName *string `json:"ProfileName,omitnil,omitempty" name:"ProfileName"`
 
-	// 配置订阅的实例ID。
+	// 配置订阅的实例ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	BindInstanceId *string `json:"BindInstanceId,omitnil,omitempty" name:"BindInstanceId"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -735,10 +737,10 @@ func (r *DescribeAllUserGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBDiagEventRequestParams struct {
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
+	// 事件 ID 。通过“获取实例诊断历史[DescribeDBDiagHistory](https://cloud.tencent.com/document/product/1130/39559) ”获取。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
@@ -748,10 +750,10 @@ type DescribeDBDiagEventRequestParams struct {
 type DescribeDBDiagEventRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
+	// 事件 ID 。通过“获取实例诊断历史[DescribeDBDiagHistory](https://cloud.tencent.com/document/product/1130/39559) ”获取。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
@@ -784,7 +786,7 @@ type DescribeDBDiagEventResponseParams struct {
 	// 诊断项。
 	DiagItem *string `json:"DiagItem,omitnil,omitempty" name:"DiagItem"`
 
-	// 诊断类型。
+	// 诊断类型。支持值包括"高危账号","自增键耗尽","连接性检查","CPU利用率","死锁","全表扫描","高并发/压力请求","预编译语句过多","内存利用率","Metadata lock","磁盘超限","内存超限","只读锁","只读实例剔除","行锁","活跃会话","慢SQL","数据库快照","磁盘空间利用率","执行计划变化","主从切换","Table open cache命中率低","大表","事务未提交","事务导致复制延迟"等。
 	DiagType *string `json:"DiagType,omitnil,omitempty" name:"DiagType"`
 
 	// 事件 ID 。
@@ -802,7 +804,7 @@ type DescribeDBDiagEventResponseParams struct {
 	// 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
 	Severity *int64 `json:"Severity,omitnil,omitempty" name:"Severity"`
 
-	// 开始时间
+	// 开始时间。格式: "yyyy-MM-dd HH:mm:ss"
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 建议。
@@ -811,7 +813,7 @@ type DescribeDBDiagEventResponseParams struct {
 	// 保留字段。
 	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
 
-	// 结束时间。
+	// 结束时间。格式: "yyyy-MM-dd HH:mm:ss"
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -914,13 +916,13 @@ func (r *DescribeDBDiagHistoryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBDiagReportTasksRequestParams struct {
-	// 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+	// 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10T12:13:14+08:00。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+	// 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10T12:13:14+08:00。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 实例ID数组，用于筛选指定实例的任务列表。
+	// 实例ID数组，用于筛选指定实例的任务列表，可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 计划任务；"MANUAL" - 手动触发。
@@ -945,13 +947,13 @@ type DescribeDBDiagReportTasksRequestParams struct {
 type DescribeDBDiagReportTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+	// 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10T12:13:14+08:00。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+	// 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10T12:13:14+08:00。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 实例ID数组，用于筛选指定实例的任务列表。
+	// 实例ID数组，用于筛选指定实例的任务列表，可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 计划任务；"MANUAL" - 手动触发。
@@ -1374,7 +1376,7 @@ func (r *DescribeMailProfileResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMySqlProcessListRequestParams struct {
-	// 实例ID。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 线程的ID，用于筛选线程列表。
@@ -1389,10 +1391,10 @@ type DescribeMySqlProcessListRequestParams struct {
 	// 线程的操作数据库，用于筛选线程列表。
 	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
 
-	// 线程的操作状态，用于筛选线程列表。
+	// 线程的操作状态，用于筛选线程列表。包含以下值：Sending data，Updating, Opening tables 等
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 线程的执行类型，用于筛选线程列表。
+	// 线程的执行类型，用于筛选线程列表。包含以下值：Sleep，Query ，Connect ，Binlog Dump等
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
@@ -1411,7 +1413,7 @@ type DescribeMySqlProcessListRequestParams struct {
 type DescribeMySqlProcessListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 线程的ID，用于筛选线程列表。
@@ -1426,10 +1428,10 @@ type DescribeMySqlProcessListRequest struct {
 	// 线程的操作数据库，用于筛选线程列表。
 	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
 
-	// 线程的操作状态，用于筛选线程列表。
+	// 线程的操作状态，用于筛选线程列表。包含以下值：Sending data，Updating, Opening tables 等
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 线程的执行类型，用于筛选线程列表。
+	// 线程的执行类型，用于筛选线程列表。包含以下值：Sleep，Query ，Connect ，Binlog Dump等
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
@@ -1744,7 +1746,7 @@ func (r *DescribeSlowLogTimeSeriesStatsResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeSlowLogTopSqlsRequestParams struct {
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。
@@ -1754,6 +1756,12 @@ type DescribeSlowLogTopSqlsRequestParams struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键。
+	// 其中：
+	// QueryTime    - 查询耗时  
+	// ExecTimes    - 执行次数  
+	// RowsSent     - 返回行数  
+	// LockTime     - 锁等待时间  
+	// RowsExamined - 扫描行数  
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// 排序方式，支持ASC（升序）以及DESC（降序）。
@@ -1775,7 +1783,7 @@ type DescribeSlowLogTopSqlsRequestParams struct {
 type DescribeSlowLogTopSqlsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。
@@ -1785,6 +1793,12 @@ type DescribeSlowLogTopSqlsRequest struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键。
+	// 其中：
+	// QueryTime    - 查询耗时  
+	// ExecTimes    - 执行次数  
+	// RowsSent     - 返回行数  
+	// LockTime     - 锁等待时间  
+	// RowsExamined - 扫描行数  
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// 排序方式，支持ASC（升序）以及DESC（降序）。
@@ -2039,13 +2053,21 @@ func (r *DescribeTopSpaceSchemaTimeSeriesResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeTopSpaceSchemasRequestParams struct {
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 返回的Top库数量，最大值为100，默认为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+	// 其中：
+	// DataLength       - 数据长度  
+	// IndexLength      - 索引长度  
+	// TotalLength      - 总长度  
+	// DataFree         - 空闲空间  
+	// FragRatio        - 碎片率  
+	// TableRows        - 表行数  
+	// PhysicalFileSize - 物理文件大小
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
@@ -2055,13 +2077,21 @@ type DescribeTopSpaceSchemasRequestParams struct {
 type DescribeTopSpaceSchemasRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 返回的Top库数量，最大值为100，默认为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+	// 其中：
+	// DataLength       - 数据长度  
+	// IndexLength      - 索引长度  
+	// TotalLength      - 总长度  
+	// DataFree         - 空闲空间  
+	// FragRatio        - 碎片率  
+	// TableRows        - 表行数  
+	// PhysicalFileSize - 物理文件大小
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
@@ -2212,13 +2242,20 @@ func (r *DescribeTopSpaceTableTimeSeriesResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeTopSpaceTablesRequestParams struct {
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 返回的Top表数量，最大值为100，默认为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+	// DataLength       - 数据长度  
+	// IndexLength      - 索引长度  
+	// TotalLength      - 总长度  
+	// DataFree         - 空闲空间  
+	// FragRatio        - 碎片率  
+	// TableRows        - 表行数  
+	// PhysicalFileSize - 物理文件大小
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
@@ -2228,13 +2265,20 @@ type DescribeTopSpaceTablesRequestParams struct {
 type DescribeTopSpaceTablesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 返回的Top表数量，最大值为100，默认为20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+	// DataLength       - 数据长度  
+	// IndexLength      - 索引长度  
+	// TotalLength      - 总长度  
+	// DataFree         - 空闲空间  
+	// FragRatio        - 碎片率  
+	// TableRows        - 表行数  
+	// PhysicalFileSize - 物理文件大小
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
@@ -2293,7 +2337,7 @@ func (r *DescribeTopSpaceTablesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserSqlAdviceRequestParams struct {
-	// 实例ID。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// SQL语句。
@@ -2306,7 +2350,7 @@ type DescribeUserSqlAdviceRequestParams struct {
 type DescribeUserSqlAdviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// SQL语句。
@@ -2462,13 +2506,13 @@ type HealthReportTask struct {
 	// 任务完成进度，单位%。
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// 任务创建时间。
+	// 任务创建时间，格式: "yyyy-MM-dd HH:mm:ss"。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 任务开始执行时间。
+	// 任务开始执行时间，格式: "yyyy-MM-dd HH:mm:ss"。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 任务完成执行时间。
+	// 任务完成执行时间，格式: "yyyy-MM-dd HH:mm:ss"。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 任务所属实例的基础信息。
@@ -2531,7 +2575,8 @@ type InstanceBasicInfo struct {
 	// CPU数量，对于Redis为0。
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 实例部署模式。
+	// 实例部署模式，取值包括"CUSTOM", "EXCLUSIVE", "CUSTOMER_AGENT", "CUSTOMER_DIRECT",
+	// "CLOUD_NATIVE_CLUSTER_EXCLUSIVE", "CLOUD_NATIVE_CLUSTER"。
 	DeployMode *string `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 
 	// 实例内存配置。
@@ -2686,7 +2731,7 @@ type MailConfiguration struct {
 	// 地域配置, 如["ap-guangzhou", "ap-shanghai"]。巡检的邮件发送模板，配置需要发送巡检邮件的地域；订阅的邮件发送模板，配置当前订阅实例的所属地域。
 	Region []*string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。
+	// 包含的健康等级，包括值：HEALTH-健康，SUB_HEALTH-亚健康，RISK-风险，HIGH_RISK-高危。
 	HealthStatus []*string `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
 
 	// 联系人id, 联系人/联系组不能都为空。
@@ -2701,13 +2746,14 @@ type ModifyDiagDBInstanceConfRequestParams struct {
 	// 巡检开关。
 	InstanceConfs *InstanceConfs `json:"InstanceConfs,omitnil,omitempty" name:"InstanceConfs"`
 
-	// 生效实例地域，取值为"All"，代表全地域。
+	// 生效实例地域，固定为"All"，代表全地域。
 	Regions *string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 指定更改巡检状态的实例ID。
+	// 可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -2717,13 +2763,14 @@ type ModifyDiagDBInstanceConfRequest struct {
 	// 巡检开关。
 	InstanceConfs *InstanceConfs `json:"InstanceConfs,omitnil,omitempty" name:"InstanceConfs"`
 
-	// 生效实例地域，取值为"All"，代表全地域。
+	// 生效实例地域，固定为"All"，代表全地域。
 	Regions *string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 指定更改巡检状态的实例ID。
+	// 可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -2805,7 +2852,7 @@ type MonitorMetricSeriesData struct {
 	// 监控指标。
 	Series []*MonitorMetric `json:"Series,omitnil,omitempty" name:"Series"`
 
-	// 监控指标对应的时间戳。
+	// 监控指标对应的时间戳。（精度：秒）
 	Timestamp []*int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 }
 
@@ -2836,7 +2883,7 @@ type MySqlProcess struct {
 }
 
 type ProfileInfo struct {
-	// 语言, 如"zh"。
+	// 语言类型, 包含“zh”-中文，“en”-英文。
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
 	// 邮件模板的内容。

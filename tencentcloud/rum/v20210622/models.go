@@ -4718,7 +4718,7 @@ type DescribeReleaseFileSignRequestParams struct {
 	// bucket类型，不填默认1:web，2:app
 	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 获取临时签名的bucket是国内站还是国际站（1表示国际站，其它表示国内站）
+	// 获取临时签名的bucket是境内还是境外（1表示境外，其它表示境内）
 	Site *int64 `json:"Site,omitnil,omitempty" name:"Site"`
 
 	// ProjectID
@@ -4734,7 +4734,7 @@ type DescribeReleaseFileSignRequest struct {
 	// bucket类型，不填默认1:web，2:app
 	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 获取临时签名的bucket是国内站还是国际站（1表示国际站，其它表示国内站）
+	// 获取临时签名的bucket是境内还是境外（1表示境外，其它表示境内）
 	Site *int64 `json:"Site,omitnil,omitempty" name:"Site"`
 
 	// ProjectID

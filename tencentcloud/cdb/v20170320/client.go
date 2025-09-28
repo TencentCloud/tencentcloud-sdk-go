@@ -8953,6 +8953,70 @@ func (c *Client) ModifyDBInstanceLogToCLSWithContext(ctx context.Context, reques
     return
 }
 
+func NewModifyDBInstanceModesRequest() (request *ModifyDBInstanceModesRequest) {
+    request = &ModifyDBInstanceModesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyDBInstanceModes")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceModesResponse() (response *ModifyDBInstanceModesResponse) {
+    response = &ModifyDBInstanceModesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBInstanceModes
+// 该接口（ModifyDBInstanceModes）用于更改云数据库的模式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWCONFLICT = "OperationDenied.FlowConflict"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) ModifyDBInstanceModes(request *ModifyDBInstanceModesRequest) (response *ModifyDBInstanceModesResponse, err error) {
+    return c.ModifyDBInstanceModesWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceModes
+// 该接口（ModifyDBInstanceModes）用于更改云数据库的模式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWCONFLICT = "OperationDenied.FlowConflict"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) ModifyDBInstanceModesWithContext(ctx context.Context, request *ModifyDBInstanceModesRequest) (response *ModifyDBInstanceModesResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceModesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cdb", APIVersion, "ModifyDBInstanceModes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceModes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceModesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceNameRequest() (request *ModifyDBInstanceNameRequest) {
     request = &ModifyDBInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -114,7 +114,7 @@ func (r *ActivateSubscribeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CompleteMigrateJobRequestParams struct {
-	// 数据迁移任务ID
+	// 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
@@ -124,7 +124,7 @@ type CompleteMigrateJobRequestParams struct {
 type CompleteMigrateJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据迁移任务ID
+	// 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
@@ -1894,14 +1894,14 @@ type SrcInfo struct {
 
 // Predefined struct for user
 type StartMigrateJobRequestParams struct {
-	// 数据迁移任务ID
+	// 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type StartMigrateJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据迁移任务ID
+	// 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 

@@ -8562,6 +8562,9 @@ type CreateSealPolicyRequestParams struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 type CreateSealPolicyRequest struct {
@@ -8591,6 +8594,9 @@ type CreateSealPolicyRequest struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 func (r *CreateSealPolicyRequest) ToJsonString() string {
@@ -8612,6 +8618,7 @@ func (r *CreateSealPolicyRequest) FromJsonString(s string) error {
 	delete(f, "UserIds")
 	delete(f, "Policy")
 	delete(f, "Agent")
+	delete(f, "Options")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealPolicyRequest has unknown keys!", "")
 	}
@@ -8623,6 +8630,12 @@ type CreateSealPolicyResponseParams struct {
 	// 最终授权成功的用户ID，在腾讯电子签平台的唯一身份标识，为32位字符串。
 	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
 	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
+
+	// 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+	SealOperatorVerifyPath *string `json:"SealOperatorVerifyPath,omitnil,omitempty" name:"SealOperatorVerifyPath"`
+
+	// 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+	SealOperatorVerifyQrcodeUrl *string `json:"SealOperatorVerifyQrcodeUrl,omitnil,omitempty" name:"SealOperatorVerifyQrcodeUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -8723,6 +8736,9 @@ type CreateSealRequestParams struct {
 
 	// 印章描述内容
 	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 type CreateSealRequest struct {
@@ -8805,6 +8821,9 @@ type CreateSealRequest struct {
 
 	// 印章描述内容
 	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 func (r *CreateSealRequest) ToJsonString() string {
@@ -8837,6 +8856,7 @@ func (r *CreateSealRequest) FromJsonString(s string) error {
 	delete(f, "SealSize")
 	delete(f, "TaxIdentifyCode")
 	delete(f, "SealDescription")
+	delete(f, "Options")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealRequest has unknown keys!", "")
 	}
@@ -8849,6 +8869,12 @@ type CreateSealResponseParams struct {
 	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
 	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
+
+	// 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+	SealOperatorVerifyPath *string `json:"SealOperatorVerifyPath,omitnil,omitempty" name:"SealOperatorVerifyPath"`
+
+	// 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+	SealOperatorVerifyQrcodeUrl *string `json:"SealOperatorVerifyQrcodeUrl,omitnil,omitempty" name:"SealOperatorVerifyQrcodeUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -14678,8 +14704,11 @@ type MiniAppCreateFlowOption struct {
 	// 小程序集成发起，是否禁止发起时修改合同内容
 	// <ul>
 	// <li>false：默认值，不禁止发起时修改合同内容</li>
-	// <li>true：禁止发起时修改合同内容</li>
+	// <li>true：禁止发起时修改合同内容（将直接跳过添加/编辑签署人步骤，直接到核对合同信息页面</li>
 	// </ul>
+	// 指定为true，效果如下：
+	// 
+	// 效果如下:![ForbidEditFlow](https://qcloudimg.tencent-cloud.cn/raw/2440eca624f2f6730fecbf69daad0533.jpg)
 	ForbidEditFlow *bool `json:"ForbidEditFlow,omitnil,omitempty" name:"ForbidEditFlow"`
 }
 
@@ -15423,6 +15452,9 @@ type OperateSealsRequestParams struct {
 
 	// 需要操作的印章ID，数组形式，印章ID可从【web控制台->印章 】获取。
 	SealIds []*string `json:"SealIds,omitnil,omitempty" name:"SealIds"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 type OperateSealsRequest struct {
@@ -15441,6 +15473,9 @@ type OperateSealsRequest struct {
 
 	// 需要操作的印章ID，数组形式，印章ID可从【web控制台->印章 】获取。
 	SealIds []*string `json:"SealIds,omitnil,omitempty" name:"SealIds"`
+
+	// 个性化配置字段，默认不传。
+	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 func (r *OperateSealsRequest) ToJsonString() string {
@@ -15459,6 +15494,7 @@ func (r *OperateSealsRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "Act")
 	delete(f, "SealIds")
+	delete(f, "Options")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateSealsRequest has unknown keys!", "")
 	}
@@ -15467,6 +15503,12 @@ func (r *OperateSealsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OperateSealsResponseParams struct {
+	// 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+	SealOperatorVerifyPath *string `json:"SealOperatorVerifyPath,omitnil,omitempty" name:"SealOperatorVerifyPath"`
+
+	// 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+	SealOperatorVerifyQrcodeUrl *string `json:"SealOperatorVerifyQrcodeUrl,omitnil,omitempty" name:"SealOperatorVerifyQrcodeUrl"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -15591,6 +15633,14 @@ func (r *OperateTemplateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OperateTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Option struct {
+	// 个性化配置参数Key字段，对应传入字段的字段名
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 个性化配置参数Value字段，对应传入字段的字段值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type OrgBillSummary struct {

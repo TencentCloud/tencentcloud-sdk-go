@@ -7513,6 +7513,15 @@ type StaffStatus struct {
 
 	// 状态关联的会话 Id
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 小休原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 座席邮箱
+	StaffEmail *string `json:"StaffEmail,omitnil,omitempty" name:"StaffEmail"`
+
+	// 座席工号
+	StaffNo *string `json:"StaffNo,omitnil,omitempty" name:"StaffNo"`
 }
 
 type StaffStatusExtra struct {
