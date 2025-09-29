@@ -1181,7 +1181,7 @@ func (r *GetCharacterUsageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetEmbeddingRequestParams struct {
-	// 说明：选择生成向量的模型备注：可选[lke-text-embedding-v1,lke-text-embedding-v2]
+	// 说明：选择生成向量的模型备注：可选[lke-text-embedding-v1,lke-text-embedding-v2,youtu-embedding-llm-v1]
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 说明：需要 embedding 的文本
@@ -1198,7 +1198,7 @@ type GetEmbeddingRequestParams struct {
 type GetEmbeddingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 说明：选择生成向量的模型备注：可选[lke-text-embedding-v1,lke-text-embedding-v2]
+	// 说明：选择生成向量的模型备注：可选[lke-text-embedding-v1,lke-text-embedding-v2,youtu-embedding-llm-v1]
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 说明：需要 embedding 的文本

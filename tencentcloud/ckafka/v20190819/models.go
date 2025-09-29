@@ -8432,6 +8432,24 @@ type KafkaConnectParam struct {
 
 	// CKafka连接源的实例资源地域, 跨地域时必填
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 网络类型：PUBLIC公网；VPC
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
+
+	// vpcId，NetworkType=VPC时必传
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// vip，NetworkType=VPC时必传
+	ServiceVip *string `json:"ServiceVip,omitnil,omitempty" name:"ServiceVip"`
+
+	// 端口，NetworkType=VPC时必传
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 跨云同步下需要客户传递唯一Id标志一组资源
+	CrossNetResourceUniqueId *string `json:"CrossNetResourceUniqueId,omitnil,omitempty" name:"CrossNetResourceUniqueId"`
+
+	// 跨云子网ID
+	CrossNetVpcSubNetId *string `json:"CrossNetVpcSubNetId,omitnil,omitempty" name:"CrossNetVpcSubNetId"`
 }
 
 type KafkaParam struct {

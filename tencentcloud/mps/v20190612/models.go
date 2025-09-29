@@ -436,6 +436,14 @@ type AddOnSubtitle struct {
 	// 注意：仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleName *string `json:"SubtitleName,omitnil,omitempty" name:"SubtitleName"`
+
+	// 字幕输出格式。取值{"WebVTT","TTML"}。
+	// 默认值："WebVTT"
+	OutputFormat *string `json:"OutputFormat,omitnil,omitempty" name:"OutputFormat"`
+
+	// 默认字幕轨道。为true时指定当前字幕为默认字幕轨道，最多可指定1条默认字幕轨道。
+	// 默认值：false
+	DefaultTrack *bool `json:"DefaultTrack,omitnil,omitempty" name:"DefaultTrack"`
 }
 
 type AiAnalysisResult struct {
@@ -11268,8 +11276,14 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTasksRequestParams struct {
-	// 过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
+	// 任务状态过滤条件，可选值：
+	// - WAITING（等待中）
+	// - PROCESSING（处理中）
+	// - FINISH（已完成）。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务结束时子任务是否有失败。
+	SubTaskHasFailed *bool `json:"SubTaskHasFailed,omitnil,omitempty" name:"SubTaskHasFailed"`
 
 	// 返回记录条数，默认值：10，最大值：100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -11287,8 +11301,14 @@ type DescribeTasksRequestParams struct {
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
+	// 任务状态过滤条件，可选值：
+	// - WAITING（等待中）
+	// - PROCESSING（处理中）
+	// - FINISH（已完成）。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务结束时子任务是否有失败。
+	SubTaskHasFailed *bool `json:"SubTaskHasFailed,omitnil,omitempty" name:"SubTaskHasFailed"`
 
 	// 返回记录条数，默认值：10，最大值：100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -11316,6 +11336,7 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Status")
+	delete(f, "SubTaskHasFailed")
 	delete(f, "Limit")
 	delete(f, "ScrollToken")
 	delete(f, "StartTime")
@@ -18898,7 +18919,9 @@ type QualityControlResult struct {
 	// LowVoice：低音，
 	// HighVoice：爆音，
 	// NoVoice：静音，
-	// LowEvaluation：无参考打分低于阈值。
+	// LowEvaluation：视频无参考评分（MOS）低于阈值，
+	// AudioEvaluation：音频无参考评分（MOS）低于阈值，
+	// AudioNoise：音频噪声。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 质检结果项。

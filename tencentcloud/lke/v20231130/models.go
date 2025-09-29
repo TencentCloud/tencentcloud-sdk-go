@@ -2057,11 +2057,11 @@ func (r *CreateVarResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateWorkflowRunRequestParams struct {
-	// 运行环境。0: 测试环境； 1: 正式环境
-	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
-
 	// 应用ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 运行环境。0: 测试环境； 1: 正式环境
+	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
 
 	// 用户输入的内容
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
@@ -2073,11 +2073,11 @@ type CreateWorkflowRunRequestParams struct {
 type CreateWorkflowRunRequest struct {
 	*tchttp.BaseRequest
 	
-	// 运行环境。0: 测试环境； 1: 正式环境
-	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
-
 	// 应用ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 运行环境。0: 测试环境； 1: 正式环境
+	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
 
 	// 用户输入的内容
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
@@ -2098,8 +2098,8 @@ func (r *CreateWorkflowRunRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "RunEnv")
 	delete(f, "AppBizId")
+	delete(f, "RunEnv")
 	delete(f, "Query")
 	delete(f, "CustomVariables")
 	if len(f) > 0 {
@@ -6568,6 +6568,11 @@ func (r *IgnoreUnsatisfiedReplyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type InputBoxConfig struct {
+	// 输入框按钮，1：上传图片、2：上传文档，3：腾讯文档，4：联网搜索
+	InputBoxButtons []*uint64 `json:"InputBoxButtons,omitnil,omitempty" name:"InputBoxButtons"`
+}
+
 type IntentAchievement struct {
 	// 意图达成方式，qa:问答回复、doc：文档回复、workflow：工作流回复，llm：大模型回复
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -6944,6 +6949,9 @@ type KnowledgeQaOutput struct {
 	// 推荐问模式，0.结合知识库&对话历史推荐问题Prompt(默认) 1.仅结合知识库输出推荐问的prompt
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecommendedPromptMode *uint64 `json:"RecommendedPromptMode,omitnil,omitempty" name:"RecommendedPromptMode"`
+
+	// 输入框按钮配置
+	InputBoxConfig *InputBoxConfig `json:"InputBoxConfig,omitnil,omitempty" name:"InputBoxConfig"`
 }
 
 type KnowledgeQaPlugin struct {
@@ -9306,17 +9314,17 @@ func (r *ListUsageCallDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListWorkflowRunsRequestParams struct {
-	// 运行环境。0: 测试环境； 1: 正式环境
-	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
-
 	// 应用ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 页码
-	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
-
 	// 每页数量
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 运行环境。0: 测试环境； 1: 正式环境
+	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
+
+	// 页码
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
 	// 登录用户主账号(集成商模式必填)
 	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
@@ -9328,17 +9336,17 @@ type ListWorkflowRunsRequestParams struct {
 type ListWorkflowRunsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 运行环境。0: 测试环境； 1: 正式环境
-	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
-
 	// 应用ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 页码
-	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
-
 	// 每页数量
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 运行环境。0: 测试环境； 1: 正式环境
+	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
+
+	// 页码
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
 	// 登录用户主账号(集成商模式必填)
 	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
@@ -9359,10 +9367,10 @@ func (r *ListWorkflowRunsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "RunEnv")
 	delete(f, "AppBizId")
-	delete(f, "Page")
 	delete(f, "PageSize")
+	delete(f, "RunEnv")
+	delete(f, "Page")
 	delete(f, "LoginUin")
 	delete(f, "LoginSubAccountUin")
 	if len(f) > 0 {
@@ -11449,8 +11457,11 @@ type RetryDocParseRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文档ID
+	// 废弃
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
+
+	// 集合最大上限50个，DocBizIds有值使用DocBizIds，为空时则使用DocBizId(兼容废弃字段)
+	DocBizIds []*string `json:"DocBizIds,omitnil,omitempty" name:"DocBizIds"`
 }
 
 type RetryDocParseRequest struct {
@@ -11459,8 +11470,11 @@ type RetryDocParseRequest struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文档ID
+	// 废弃
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
+
+	// 集合最大上限50个，DocBizIds有值使用DocBizIds，为空时则使用DocBizId(兼容废弃字段)
+	DocBizIds []*string `json:"DocBizIds,omitnil,omitempty" name:"DocBizIds"`
 }
 
 func (r *RetryDocParseRequest) ToJsonString() string {
@@ -11477,6 +11491,7 @@ func (r *RetryDocParseRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BotBizId")
 	delete(f, "DocBizId")
+	delete(f, "DocBizIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RetryDocParseRequest has unknown keys!", "")
 	}

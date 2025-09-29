@@ -302,7 +302,7 @@ type BatchCreateRoomRequestParams struct {
 	// 低代码平台的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 创建课堂ID列表
+	// 批量创建课堂的配置信息
 	RoomInfos []*RoomInfo `json:"RoomInfos,omitnil,omitempty" name:"RoomInfos"`
 }
 
@@ -312,7 +312,7 @@ type BatchCreateRoomRequest struct {
 	// 低代码平台的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 创建课堂ID列表
+	// 批量创建课堂的配置信息
 	RoomInfos []*RoomInfo `json:"RoomInfos,omitnil,omitempty" name:"RoomInfos"`
 }
 

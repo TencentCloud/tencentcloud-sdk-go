@@ -2888,7 +2888,11 @@ func (r *DescribeInstanceStateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceStateResponseParams struct {
-	// 集群状态，例如：Serving
+	// 集群状态 
+	//  Init  创建中 
+	// Serving   运行中 
+	// Isolated   已隔离 
+	// Changing  变更中
 	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
 
 	// 集群操作创建时间
@@ -4117,16 +4121,17 @@ type InstanceDetail struct {
 }
 
 type InstanceInfo struct {
-	// 集群实例ID, "cdw-xxxx" 字符串类型
+	// 集群实例ID, "cdwdoris-xxxx" 字符串类型
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 集群实例名称
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 状态,
-	// Init 创建中; Serving 运行中； 
-	// Deleted已销毁；Deleting 销毁中；
-	// Modify 集群变更中；
+	// Init  创建中
+	// Serving   运行中
+	// Isolated   已隔离
+	// Changing  变更中
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 版本
@@ -4177,7 +4182,7 @@ type InstanceInfo struct {
 	// regionId, 表示地域
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 可用区说明，例如 "广州二区"
+	// 可用区说明，例如 "广州三区"
 	ZoneDesc *string `json:"ZoneDesc,omitnil,omitempty" name:"ZoneDesc"`
 
 	// 错误流程说明信息
@@ -4291,6 +4296,12 @@ type InstanceInfo struct {
 
 	// 存算分离的指标 当是true 不支持新建计算组
 	IsMasterNonVM *bool `json:"IsMasterNonVM,omitnil,omitempty" name:"IsMasterNonVM"`
+
+	// Cos容量包大小
+	CosPkgCapacity *int64 `json:"CosPkgCapacity,omitnil,omitempty" name:"CosPkgCapacity"`
+
+	// 集群是否使用托管桶
+	UseManagedBucket *bool `json:"UseManagedBucket,omitnil,omitempty" name:"UseManagedBucket"`
 }
 
 type InstanceNode struct {

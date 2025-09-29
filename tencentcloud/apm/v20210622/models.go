@@ -760,7 +760,7 @@ type DescribeApmServiceMetricRequestParams struct {
 	// 是否demo模式
 	Demo *bool `json:"Demo,omitnil,omitempty" name:"Demo"`
 
-	// 应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，比如："warning,error"
+	// 应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，例如："warning,error"
 	ServiceStatus *string `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
 
 	// 标签列表
@@ -800,7 +800,7 @@ type DescribeApmServiceMetricRequest struct {
 	// 是否demo模式
 	Demo *bool `json:"Demo,omitnil,omitempty" name:"Demo"`
 
-	// 应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，比如："warning,error"
+	// 应用状态筛选，可枚举的值为：health、warning、error。如果选中多个状态用逗号隔开，例如："warning,error"
 	ServiceStatus *string `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
 
 	// 标签列表

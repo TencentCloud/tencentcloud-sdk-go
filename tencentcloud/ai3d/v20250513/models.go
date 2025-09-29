@@ -391,7 +391,7 @@ type SubmitHunyuanTo3DProJobRequestParams struct {
 	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
 
 	// 生成3D模型的面数，默认值为500000。
-	// 可支持生成面数范围，参考值：40000-500000。
+	// 可支持生成面数范围，参考值：40000-1500000。
 	FaceCount *int64 `json:"FaceCount,omitnil,omitempty" name:"FaceCount"`
 
 	// 生成任务类型，默认Normal，参考值：
@@ -400,6 +400,13 @@ type SubmitHunyuanTo3DProJobRequestParams struct {
 	// Geometry：可生成不带纹理的几何模型（白模），选择此任务时，EnablePBR参数不生效。
 	// Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。
 	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
+
+	// 该参数仅在GenerateType中选择LowPoly模式可生效。
+	// 
+	// 多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
+	// triangle: 三角形面。
+	// quadrilateral: 四边形面与三角形面混合生成。
+	PolygonType *string `json:"PolygonType,omitnil,omitempty" name:"PolygonType"`
 }
 
 type SubmitHunyuanTo3DProJobRequest struct {
@@ -437,7 +444,7 @@ type SubmitHunyuanTo3DProJobRequest struct {
 	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
 
 	// 生成3D模型的面数，默认值为500000。
-	// 可支持生成面数范围，参考值：40000-500000。
+	// 可支持生成面数范围，参考值：40000-1500000。
 	FaceCount *int64 `json:"FaceCount,omitnil,omitempty" name:"FaceCount"`
 
 	// 生成任务类型，默认Normal，参考值：
@@ -446,6 +453,13 @@ type SubmitHunyuanTo3DProJobRequest struct {
 	// Geometry：可生成不带纹理的几何模型（白模），选择此任务时，EnablePBR参数不生效。
 	// Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。
 	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
+
+	// 该参数仅在GenerateType中选择LowPoly模式可生效。
+	// 
+	// 多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
+	// triangle: 三角形面。
+	// quadrilateral: 四边形面与三角形面混合生成。
+	PolygonType *string `json:"PolygonType,omitnil,omitempty" name:"PolygonType"`
 }
 
 func (r *SubmitHunyuanTo3DProJobRequest) ToJsonString() string {
@@ -467,6 +481,7 @@ func (r *SubmitHunyuanTo3DProJobRequest) FromJsonString(s string) error {
 	delete(f, "EnablePBR")
 	delete(f, "FaceCount")
 	delete(f, "GenerateType")
+	delete(f, "PolygonType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuanTo3DProJobRequest has unknown keys!", "")
 	}
@@ -610,4 +625,7 @@ type ViewImage struct {
 
 	// 图片Url地址
 	ViewImageUrl *string `json:"ViewImageUrl,omitnil,omitempty" name:"ViewImageUrl"`
+
+	// 图片base64地址
+	ViewImageBase64 *string `json:"ViewImageBase64,omitnil,omitempty" name:"ViewImageBase64"`
 }

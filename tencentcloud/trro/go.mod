@@ -2,4 +2,4 @@ module github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trro
 
 go 1.14
 
-require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.1.36
+require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.1.37
