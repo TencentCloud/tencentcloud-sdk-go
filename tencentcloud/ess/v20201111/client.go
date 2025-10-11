@@ -8427,6 +8427,116 @@ func (c *Client) CreateSealPolicyWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateSingleSignOnEmployeesRequest() (request *CreateSingleSignOnEmployeesRequest) {
+    request = &CreateSingleSignOnEmployeesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateSingleSignOnEmployees")
+    
+    
+    return
+}
+
+func NewCreateSingleSignOnEmployeesResponse() (response *CreateSingleSignOnEmployeesResponse) {
+    response = &CreateSingleSignOnEmployeesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSingleSignOnEmployees
+// 此接口（CreateSingleSignOnEmployees）用于创建单点登录企业员工。
+//
+// 创建好的员工，可以通过腾讯电子签提供的链接， 如下图位置，进行登录。
+//
+// 此操作的功能：
+//
+// 1. 可以绑定已经实名的员工，然后 sso 登录实名绑定。
+//
+// 2. 可以提前导入员工，在 sso 登录的时候进行实名。
+//
+// 3. 如果已经绑定过，可以直接通过 sso 链接登录腾讯电子签。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/0cd98ca2cc49ea1472a2397cea9a3ef6.png)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAIL = "InvalidParameter.Email"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPENID = "InvalidParameter.InvalidOpenId"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  LIMITEXCEEDED_PROXYORGANIZATIONOPERATOR = "LimitExceeded.ProxyOrganizationOperator"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateSingleSignOnEmployees(request *CreateSingleSignOnEmployeesRequest) (response *CreateSingleSignOnEmployeesResponse, err error) {
+    return c.CreateSingleSignOnEmployeesWithContext(context.Background(), request)
+}
+
+// CreateSingleSignOnEmployees
+// 此接口（CreateSingleSignOnEmployees）用于创建单点登录企业员工。
+//
+// 创建好的员工，可以通过腾讯电子签提供的链接， 如下图位置，进行登录。
+//
+// 此操作的功能：
+//
+// 1. 可以绑定已经实名的员工，然后 sso 登录实名绑定。
+//
+// 2. 可以提前导入员工，在 sso 登录的时候进行实名。
+//
+// 3. 如果已经绑定过，可以直接通过 sso 链接登录腾讯电子签。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/0cd98ca2cc49ea1472a2397cea9a3ef6.png)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAIL = "InvalidParameter.Email"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPENID = "InvalidParameter.InvalidOpenId"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  LIMITEXCEEDED_PROXYORGANIZATIONOPERATOR = "LimitExceeded.ProxyOrganizationOperator"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateSingleSignOnEmployeesWithContext(ctx context.Context, request *CreateSingleSignOnEmployeesRequest) (response *CreateSingleSignOnEmployeesResponse, err error) {
+    if request == nil {
+        request = NewCreateSingleSignOnEmployeesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateSingleSignOnEmployees")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSingleSignOnEmployees require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSingleSignOnEmployeesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserAutoSignEnableUrlRequest() (request *CreateUserAutoSignEnableUrlRequest) {
     request = &CreateUserAutoSignEnableUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9329,6 +9439,92 @@ func (c *Client) DeleteSealPoliciesWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteSealPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSingleSignOnEmployeesRequest() (request *DeleteSingleSignOnEmployeesRequest) {
+    request = &DeleteSingleSignOnEmployeesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DeleteSingleSignOnEmployees")
+    
+    
+    return
+}
+
+func NewDeleteSingleSignOnEmployeesResponse() (response *DeleteSingleSignOnEmployeesResponse) {
+    response = &DeleteSingleSignOnEmployeesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSingleSignOnEmployees
+// 此接口（DeleteSingleSignOnEmployees）用于删除单点登录企业员工。
+//
+// 注意：
+//
+// 此接口只能删除未跟腾讯电子签绑定的单点登录企业员工，
+//
+// 如果企业员工的单点登录信息已经和腾讯电子签里面的企业员工绑定，需要企业的超级管理员或者组织管理员在腾讯电子签控制台对当前企业员工进行离职操作，如下图操作。
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/5e69f6e11859972d466900040f68c105.png)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DeleteSingleSignOnEmployees(request *DeleteSingleSignOnEmployeesRequest) (response *DeleteSingleSignOnEmployeesResponse, err error) {
+    return c.DeleteSingleSignOnEmployeesWithContext(context.Background(), request)
+}
+
+// DeleteSingleSignOnEmployees
+// 此接口（DeleteSingleSignOnEmployees）用于删除单点登录企业员工。
+//
+// 注意：
+//
+// 此接口只能删除未跟腾讯电子签绑定的单点登录企业员工，
+//
+// 如果企业员工的单点登录信息已经和腾讯电子签里面的企业员工绑定，需要企业的超级管理员或者组织管理员在腾讯电子签控制台对当前企业员工进行离职操作，如下图操作。
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/5e69f6e11859972d466900040f68c105.png)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DeleteSingleSignOnEmployeesWithContext(ctx context.Context, request *DeleteSingleSignOnEmployeesRequest) (response *DeleteSingleSignOnEmployeesResponse, err error) {
+    if request == nil {
+        request = NewDeleteSingleSignOnEmployeesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DeleteSingleSignOnEmployees")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSingleSignOnEmployees require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSingleSignOnEmployeesResponse()
     err = c.Send(request, response)
     return
 }
@@ -11689,6 +11885,76 @@ func (c *Client) DescribeSignFaceVideoWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeSingleSignOnEmployeesRequest() (request *DescribeSingleSignOnEmployeesRequest) {
+    request = &DescribeSingleSignOnEmployeesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeSingleSignOnEmployees")
+    
+    
+    return
+}
+
+func NewDescribeSingleSignOnEmployeesResponse() (response *DescribeSingleSignOnEmployeesResponse) {
+    response = &DescribeSingleSignOnEmployeesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSingleSignOnEmployees
+// 此接口（DescribeSingleSignOnEmployees）用于查询单点登录企业员工。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeSingleSignOnEmployees(request *DescribeSingleSignOnEmployeesRequest) (response *DescribeSingleSignOnEmployeesResponse, err error) {
+    return c.DescribeSingleSignOnEmployeesWithContext(context.Background(), request)
+}
+
+// DescribeSingleSignOnEmployees
+// 此接口（DescribeSingleSignOnEmployees）用于查询单点登录企业员工。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeSingleSignOnEmployeesWithContext(ctx context.Context, request *DescribeSingleSignOnEmployeesRequest) (response *DescribeSingleSignOnEmployeesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSingleSignOnEmployeesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeSingleSignOnEmployees")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSingleSignOnEmployees require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSingleSignOnEmployeesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeThirdPartyAuthCodeRequest() (request *DescribeThirdPartyAuthCodeRequest) {
     request = &DescribeThirdPartyAuthCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12797,6 +13063,100 @@ func (c *Client) ModifyPartnerAutoSignAuthUrlWithContext(ctx context.Context, re
     return
 }
 
+func NewModifySingleSignOnEmployeesRequest() (request *ModifySingleSignOnEmployeesRequest) {
+    request = &ModifySingleSignOnEmployeesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "ModifySingleSignOnEmployees")
+    
+    
+    return
+}
+
+func NewModifySingleSignOnEmployeesResponse() (response *ModifySingleSignOnEmployeesResponse) {
+    response = &ModifySingleSignOnEmployeesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySingleSignOnEmployees
+// 此接口（ModifySingleSignOnEmployees）用于修改单点登录企业员工。
+//
+//  注意： 此接口只能修改未跟腾讯电子签绑定的单点登录企业员工， 如果企业员工的单点登录信息已经和腾讯电子签里面的企业员工绑定，需要在腾讯电子签小程序进行个人信息变更操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAIL = "InvalidParameter.Email"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPENID = "InvalidParameter.InvalidOpenId"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifySingleSignOnEmployees(request *ModifySingleSignOnEmployeesRequest) (response *ModifySingleSignOnEmployeesResponse, err error) {
+    return c.ModifySingleSignOnEmployeesWithContext(context.Background(), request)
+}
+
+// ModifySingleSignOnEmployees
+// 此接口（ModifySingleSignOnEmployees）用于修改单点登录企业员工。
+//
+//  注意： 此接口只能修改未跟腾讯电子签绑定的单点登录企业员工， 如果企业员工的单点登录信息已经和腾讯电子签里面的企业员工绑定，需要在腾讯电子签小程序进行个人信息变更操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAIL = "InvalidParameter.Email"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPENID = "InvalidParameter.InvalidOpenId"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifySingleSignOnEmployeesWithContext(ctx context.Context, request *ModifySingleSignOnEmployeesRequest) (response *ModifySingleSignOnEmployeesResponse, err error) {
+    if request == nil {
+        request = NewModifySingleSignOnEmployeesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ModifySingleSignOnEmployees")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySingleSignOnEmployees require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySingleSignOnEmployeesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOperateSealsRequest() (request *OperateSealsRequest) {
     request = &OperateSealsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12820,9 +13180,26 @@ func NewOperateSealsResponse() (response *OperateSealsResponse) {
 // 修改印章状态（停用、启用）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAIL = "InvalidParameter.Email"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPENID = "InvalidParameter.InvalidOpenId"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) OperateSeals(request *OperateSealsRequest) (response *OperateSealsResponse, err error) {
     return c.OperateSealsWithContext(context.Background(), request)
@@ -12832,9 +13209,26 @@ func (c *Client) OperateSeals(request *OperateSealsRequest) (response *OperateSe
 // 修改印章状态（停用、启用）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAIL = "InvalidParameter.Email"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPENID = "InvalidParameter.InvalidOpenId"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) OperateSealsWithContext(ctx context.Context, request *OperateSealsRequest) (response *OperateSealsResponse, err error) {
     if request == nil {

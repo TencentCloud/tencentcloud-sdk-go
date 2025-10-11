@@ -4155,6 +4155,60 @@ func (r *CreateCheckComponentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateClusterAccessRequestParams struct {
+	// 集群ID
+	ClusterIDs []*string `json:"ClusterIDs,omitnil,omitempty" name:"ClusterIDs"`
+}
+
+type CreateClusterAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterIDs []*string `json:"ClusterIDs,omitnil,omitempty" name:"ClusterIDs"`
+}
+
+func (r *CreateClusterAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateClusterAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateClusterAccessResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateClusterAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateClusterAccessResponseParams `json:"Response"`
+}
+
+func (r *CreateClusterAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateClusterAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateClusterCheckTaskRequestParams struct {
 	// 指定要扫描的集群信息
 	ClusterCheckTaskList []*ClusterCheckTaskItem `json:"ClusterCheckTaskList,omitnil,omitempty" name:"ClusterCheckTaskList"`
@@ -27831,6 +27885,81 @@ func (r *ModifyContainerNetStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyContainerNetStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDefendStatusRequestParams struct {
+	// 开关是否开启
+	SwitchOn *bool `json:"SwitchOn,omitnil,omitempty" name:"SwitchOn"`
+
+	// 实例类型 <li> Cluster: 集群</li> <li> Node: 节点</li>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 是否是全部实例
+	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
+
+	// 实例id列表
+	InstanceIDs []*string `json:"InstanceIDs,omitnil,omitempty" name:"InstanceIDs"`
+}
+
+type ModifyDefendStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开关是否开启
+	SwitchOn *bool `json:"SwitchOn,omitnil,omitempty" name:"SwitchOn"`
+
+	// 实例类型 <li> Cluster: 集群</li> <li> Node: 节点</li>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 是否是全部实例
+	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
+
+	// 实例id列表
+	InstanceIDs []*string `json:"InstanceIDs,omitnil,omitempty" name:"InstanceIDs"`
+}
+
+func (r *ModifyDefendStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDefendStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SwitchOn")
+	delete(f, "InstanceType")
+	delete(f, "IsAll")
+	delete(f, "InstanceIDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDefendStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDefendStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDefendStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDefendStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyDefendStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDefendStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

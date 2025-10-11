@@ -1761,6 +1761,68 @@ func (c *Client) CreateCheckComponentWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateClusterAccessRequest() (request *CreateClusterAccessRequest) {
+    request = &CreateClusterAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "CreateClusterAccess")
+    
+    
+    return
+}
+
+func NewCreateClusterAccessResponse() (response *CreateClusterAccessResponse) {
+    response = &CreateClusterAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateClusterAccess
+// 创建集群接入
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateClusterAccess(request *CreateClusterAccessRequest) (response *CreateClusterAccessResponse, err error) {
+    return c.CreateClusterAccessWithContext(context.Background(), request)
+}
+
+// CreateClusterAccess
+// 创建集群接入
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateClusterAccessWithContext(ctx context.Context, request *CreateClusterAccessRequest) (response *CreateClusterAccessResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "CreateClusterAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateClusterAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateClusterAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterCheckTaskRequest() (request *CreateClusterCheckTaskRequest) {
     request = &CreateClusterCheckTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -17603,6 +17665,58 @@ func (c *Client) ModifyContainerNetStatusWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewModifyContainerNetStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDefendStatusRequest() (request *ModifyDefendStatusRequest) {
+    request = &ModifyDefendStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "ModifyDefendStatus")
+    
+    
+    return
+}
+
+func NewModifyDefendStatusResponse() (response *ModifyDefendStatusResponse) {
+    response = &ModifyDefendStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDefendStatus
+// 修改防护状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyDefendStatus(request *ModifyDefendStatusRequest) (response *ModifyDefendStatusResponse, err error) {
+    return c.ModifyDefendStatusWithContext(context.Background(), request)
+}
+
+// ModifyDefendStatus
+// 修改防护状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyDefendStatusWithContext(ctx context.Context, request *ModifyDefendStatusRequest) (response *ModifyDefendStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyDefendStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "ModifyDefendStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDefendStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDefendStatusResponse()
     err = c.Send(request, response)
     return
 }

@@ -1502,14 +1502,14 @@ func (r *DescribeAccountUsersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAsyncRequestInfoRequestParams struct {
-	// 异步请求Id，涉及到异步流程的接口返回，如CreateBackupDBInstance
+	// 指定需查询的异步请求 ID。当接口操作涉及异步流程时（如 [CreateBackupDBInstance](https://cloud.tencent.com/document/product/240/46599)），其返回值中的 AsyncRequestId 即为本参数所需填入的 ID。
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 }
 
 type DescribeAsyncRequestInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 异步请求Id，涉及到异步流程的接口返回，如CreateBackupDBInstance
+	// 指定需查询的异步请求 ID。当接口操作涉及异步流程时（如 [CreateBackupDBInstance](https://cloud.tencent.com/document/product/240/46599)），其返回值中的 AsyncRequestId 即为本参数所需填入的 ID。
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 }
 
@@ -1536,6 +1536,12 @@ func (r *DescribeAsyncRequestInfoRequest) FromJsonString(s string) error {
 type DescribeAsyncRequestInfoResponseParams struct {
 	// 状态。返回参数有：initial-初始化、running-运行中、paused-任务执行失败，已暂停、undoed-任务执行失败，已回滚、failed-任务执行失败, 已终止、success-成功
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务执行开始时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务执行结束时间。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3537,32 +3543,32 @@ type FBKeyValue struct {
 
 // Predefined struct for user
 type FlashBackDBInstanceRequestParams struct {
-	// 开启按 Key 回档的实例 ID。
+	// 开启按 Key 回档的实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制需开启按 Key 回档的实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 源数据想恢复到的时间。
+	// 指定数据回档的具体时间点，即将数据恢复到指定时间点的状态。
 	TargetFlashbackTime *string `json:"TargetFlashbackTime,omitnil,omitempty" name:"TargetFlashbackTime"`
 
-	// 源数据所在的库表信息。
+	// 指定回档数据的目标库表。
 	TargetDatabases []*FlashbackDatabase `json:"TargetDatabases,omitnil,omitempty" name:"TargetDatabases"`
 
-	// 数据最终写入的实例 ID。
+	// 数据回档的目标实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制目标实例 ID。
 	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
 }
 
 type FlashBackDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开启按 Key 回档的实例 ID。
+	// 开启按 Key 回档的实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制需开启按 Key 回档的实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 源数据想恢复到的时间。
+	// 指定数据回档的具体时间点，即将数据恢复到指定时间点的状态。
 	TargetFlashbackTime *string `json:"TargetFlashbackTime,omitnil,omitempty" name:"TargetFlashbackTime"`
 
-	// 源数据所在的库表信息。
+	// 指定回档数据的目标库表。
 	TargetDatabases []*FlashbackDatabase `json:"TargetDatabases,omitnil,omitempty" name:"TargetDatabases"`
 
-	// 数据最终写入的实例 ID。
+	// 数据回档的目标实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制目标实例 ID。
 	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
 }
 
@@ -4512,10 +4518,10 @@ type ModifyDBInstanceNetworkAddressRequestParams struct {
 	// - 原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。
 	OldIpExpiredTime *uint64 `json:"OldIpExpiredTime,omitnil,omitempty" name:"OldIpExpiredTime"`
 
-	// 切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。
+	// 切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络 ID。
 	NewUniqVpcId *string `json:"NewUniqVpcId,omitnil,omitempty" name:"NewUniqVpcId"`
 
-	// 切换私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。
+	// 切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络的子网 ID。
 	NewUniqSubnetId *string `json:"NewUniqSubnetId,omitnil,omitempty" name:"NewUniqSubnetId"`
 
 	// IP 地址信息，包含新 IP 地址与 原 IP 地址。
@@ -4533,10 +4539,10 @@ type ModifyDBInstanceNetworkAddressRequest struct {
 	// - 原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。
 	OldIpExpiredTime *uint64 `json:"OldIpExpiredTime,omitnil,omitempty" name:"OldIpExpiredTime"`
 
-	// 切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。
+	// 切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络 ID。
 	NewUniqVpcId *string `json:"NewUniqVpcId,omitnil,omitempty" name:"NewUniqVpcId"`
 
-	// 切换私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。
+	// 切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络的子网 ID。
 	NewUniqSubnetId *string `json:"NewUniqSubnetId,omitnil,omitempty" name:"NewUniqSubnetId"`
 
 	// IP 地址信息，包含新 IP 地址与 原 IP 地址。
@@ -4668,10 +4674,10 @@ func (r *ModifyDBInstanceParamTplResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceSecurityGroupRequestParams struct {
-	// 实例 ID。例如：cmgo-7pje****。
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 目标安全组 ID。请通过接口[DescribeSecurityGroup](https://cloud.tencent.com/document/product/240/55675)查看具体的安全组 ID。
+	// 目标安全组 ID。请登录[安全组控制台页面](https://console.cloud.tencent.com/vpc/security-group)复制目标安全组 ID。
 	// **注意**：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
@@ -4679,10 +4685,10 @@ type ModifyDBInstanceSecurityGroupRequestParams struct {
 type ModifyDBInstanceSecurityGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。例如：cmgo-7pje****。
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 目标安全组 ID。请通过接口[DescribeSecurityGroup](https://cloud.tencent.com/document/product/240/55675)查看具体的安全组 ID。
+	// 目标安全组 ID。请登录[安全组控制台页面](https://console.cloud.tencent.com/vpc/security-group)复制目标安全组 ID。
 	// **注意**：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }

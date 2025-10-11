@@ -8896,6 +8896,104 @@ func (r *CreateSealResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSingleSignOnEmployeesRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 待创建员工的信息最多不超过200个。
+	// 
+	// 注意：
+	// 1. 传递的 openId 不能重复， 且字符不能超过64位。
+	// 2. 传递的手机号不能重复。
+	// 3. 绑定的角色必须存在且不能超过 10 个。
+	Employees []*SingleSignOnEmployees `json:"Employees,omitnil,omitempty" name:"Employees"`
+
+	// 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+	SsoApplicationId *string `json:"SsoApplicationId,omitnil,omitempty" name:"SsoApplicationId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type CreateSingleSignOnEmployeesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 待创建员工的信息最多不超过200个。
+	// 
+	// 注意：
+	// 1. 传递的 openId 不能重复， 且字符不能超过64位。
+	// 2. 传递的手机号不能重复。
+	// 3. 绑定的角色必须存在且不能超过 10 个。
+	Employees []*SingleSignOnEmployees `json:"Employees,omitnil,omitempty" name:"Employees"`
+
+	// 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+	SsoApplicationId *string `json:"SsoApplicationId,omitnil,omitempty" name:"SsoApplicationId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *CreateSingleSignOnEmployeesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSingleSignOnEmployeesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Employees")
+	delete(f, "SsoApplicationId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSingleSignOnEmployeesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSingleSignOnEmployeesResponseParams struct {
+	// 导入员工返回的错误信息，信息数组的顺序跟导入的保持一致
+	ErrorMessages []*string `json:"ErrorMessages,omitnil,omitempty" name:"ErrorMessages"`
+
+	// 导入员工返回的状态码
+	// 0-全部成功
+	// 1-部分成功
+	// 2-全部失败
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSingleSignOnEmployeesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSingleSignOnEmployeesResponseParams `json:"Response"`
+}
+
+func (r *CreateSingleSignOnEmployeesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSingleSignOnEmployeesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateStaffResult struct {
 	// 创建员工的成功列表
 	SuccessEmployeeData []*SuccessCreateStaffData `json:"SuccessEmployeeData,omitnil,omitempty" name:"SuccessEmployeeData"`
@@ -10248,6 +10346,85 @@ func (r *DeleteSealPoliciesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSealPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSingleSignOnEmployeesRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+	SsoApplicationId *string `json:"SsoApplicationId,omitnil,omitempty" name:"SsoApplicationId"`
+
+	// 需要删除的单点登录员工的唯一Id 值
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type DeleteSingleSignOnEmployeesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+	SsoApplicationId *string `json:"SsoApplicationId,omitnil,omitempty" name:"SsoApplicationId"`
+
+	// 需要删除的单点登录员工的唯一Id 值
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *DeleteSingleSignOnEmployeesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSingleSignOnEmployeesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "SsoApplicationId")
+	delete(f, "OpenId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSingleSignOnEmployeesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSingleSignOnEmployeesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSingleSignOnEmployeesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSingleSignOnEmployeesResponseParams `json:"Response"`
+}
+
+func (r *DeleteSingleSignOnEmployeesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSingleSignOnEmployeesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13011,6 +13188,104 @@ func (r *DescribeSignFaceVideoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSingleSignOnEmployeesRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+	SsoApplicationId *string `json:"SsoApplicationId,omitnil,omitempty" name:"SsoApplicationId"`
+
+	// 需要删除的单点登录员工的唯一Id 值.不能超过 200 个。
+	// 如果传递了 openIds，limit 和 offset 参数无效，
+	OpenIds []*string `json:"OpenIds,omitnil,omitempty" name:"OpenIds"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 指定分页每页返回的数据条数，单页最大支持 200。如果不传， 则默认是 20.
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// OFFSET 用于指定查询结果的偏移量，如果不传默认偏移为0,最大20000。 分页参数, 需要limit, offset 配合使用 例如: 您希望得到第三页的数据, 且每页限制最多10条 您可以使用 LIMIT 10 OFFSET 20	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeSingleSignOnEmployeesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+	SsoApplicationId *string `json:"SsoApplicationId,omitnil,omitempty" name:"SsoApplicationId"`
+
+	// 需要删除的单点登录员工的唯一Id 值.不能超过 200 个。
+	// 如果传递了 openIds，limit 和 offset 参数无效，
+	OpenIds []*string `json:"OpenIds,omitnil,omitempty" name:"OpenIds"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 指定分页每页返回的数据条数，单页最大支持 200。如果不传， 则默认是 20.
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// OFFSET 用于指定查询结果的偏移量，如果不传默认偏移为0,最大20000。 分页参数, 需要limit, offset 配合使用 例如: 您希望得到第三页的数据, 且每页限制最多10条 您可以使用 LIMIT 10 OFFSET 20	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeSingleSignOnEmployeesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSingleSignOnEmployeesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "SsoApplicationId")
+	delete(f, "OpenIds")
+	delete(f, "Agent")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSingleSignOnEmployeesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSingleSignOnEmployeesResponseParams struct {
+	// 单点登录企业员工信息
+	Employees []*SingleSignOnEmployees `json:"Employees,omitnil,omitempty" name:"Employees"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSingleSignOnEmployeesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSingleSignOnEmployeesResponseParams `json:"Response"`
+}
+
+func (r *DescribeSingleSignOnEmployeesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSingleSignOnEmployeesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeThirdPartyAuthCodeRequestParams struct {
 	// 腾讯电子签小程序跳转客户企业小程序时携带的授权查看码，AuthCode由腾讯电子签小程序生成。
 	AuthCode *string `json:"AuthCode,omitnil,omitempty" name:"AuthCode"`
@@ -15350,6 +15625,85 @@ func (r *ModifyPartnerAutoSignAuthUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySingleSignOnEmployeesRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+	SsoApplicationId *string `json:"SsoApplicationId,omitnil,omitempty" name:"SsoApplicationId"`
+
+	// 待修改员工的信息。
+	Employee *SingleSignOnEmployees `json:"Employee,omitnil,omitempty" name:"Employee"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type ModifySingleSignOnEmployeesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 单点登录应用号的id,获取位置如下图![image](https://qcloudimg.tencent-cloud.cn/raw/9e61aaf390a5f90ea7606fe29b9a65fd.png)
+	SsoApplicationId *string `json:"SsoApplicationId,omitnil,omitempty" name:"SsoApplicationId"`
+
+	// 待修改员工的信息。
+	Employee *SingleSignOnEmployees `json:"Employee,omitnil,omitempty" name:"Employee"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *ModifySingleSignOnEmployeesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySingleSignOnEmployeesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "SsoApplicationId")
+	delete(f, "Employee")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySingleSignOnEmployeesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySingleSignOnEmployeesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySingleSignOnEmployeesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySingleSignOnEmployeesResponseParams `json:"Response"`
+}
+
+func (r *ModifySingleSignOnEmployeesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySingleSignOnEmployeesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type NeedReviewApproverInfo struct {
 	// 签署方经办人的类型，支持以下类型
 	// <ul><li> ORGANIZATION 企业（含企业自动签）</li>
@@ -16358,6 +16712,35 @@ type SignUrl struct {
 	// 跳转至电子签名小程序签署的链接地址，格式类似于https://essurl.cn/xxx。
 	// 打开此链接将会展示H5中间页面，随后唤起电子签名小程序以进行合同签署。
 	HttpSignUrl *string `json:"HttpSignUrl,omitnil,omitempty" name:"HttpSignUrl"`
+}
+
+type SingleSignOnEmployees struct {
+	// 用户在idp分配的唯一值，需要保持跟在电子签应用集成->单点登录配置->端点配置中配置的。
+	// 如下图配置![image](https://qcloudimg.tencent-cloud.cn/raw/6ff22248c930b2a7684322cac9401a9c.png)。
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
+
+	// 企业员工姓名。 员工的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。	
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+
+	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+	// 注：`创建和更新场景无需填写。`
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户邮箱。
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 员工角色信息。
+	// 此处roleId为电子签配置的 RoleId，可通过接口[查询企业角色列表](https://qian.tencent.com/developers/companyApis/roles/DescribeIntegrationRoles) 获取
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
+
+	// 员工是否实名。
+	IsVerified *bool `json:"IsVerified,omitnil,omitempty" name:"IsVerified"`
+
+	// 员工创建时间戳，单位秒。
+	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 }
 
 type Staff struct {

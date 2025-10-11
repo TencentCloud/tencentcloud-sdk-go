@@ -149,7 +149,7 @@ type TextModerationRequestParams struct {
 	// 该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置，控制台访问地址：。
+	// 该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
 	// 备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
@@ -165,7 +165,7 @@ type TextModerationRequestParams struct {
 	// 表示Content的原始语种，枚举值包括 "en" 和 "zh"。其中，"en" 表示英文，"zh" 表示中文。非中文场景的处理耗时较高，具体情况取决于送审文本长度，非中文场景需[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认。
 	SourceLanguage *string `json:"SourceLanguage,omitnil,omitempty" name:"SourceLanguage"`
 
-	// 审核的业务类型，枚举值包括"TEXT"和"TEXT_AIGC"。其中"TEXT"表示传统文本审核，"TEXT_AIGC”表示AI生成检测（生成检测能力具体能力了解可[参见文档](https://cloud.tencent.com/document/product/1124/118694)）。
+	// 审核的业务类型，枚举值包括"TEXT"和"TEXT_AIGC"。其中"TEXT"表示传统文本审核，"TEXT_AIGC"表示AI生成检测（生成检测能力具体能力了解可[参见文档](https://cloud.tencent.com/document/product/1124/118694)）。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -175,7 +175,7 @@ type TextModerationRequest struct {
 	// 该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置，控制台访问地址：。
+	// 该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
 	// 备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
@@ -191,7 +191,7 @@ type TextModerationRequest struct {
 	// 表示Content的原始语种，枚举值包括 "en" 和 "zh"。其中，"en" 表示英文，"zh" 表示中文。非中文场景的处理耗时较高，具体情况取决于送审文本长度，非中文场景需[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认。
 	SourceLanguage *string `json:"SourceLanguage,omitnil,omitempty" name:"SourceLanguage"`
 
-	// 审核的业务类型，枚举值包括"TEXT"和"TEXT_AIGC"。其中"TEXT"表示传统文本审核，"TEXT_AIGC”表示AI生成检测（生成检测能力具体能力了解可[参见文档](https://cloud.tencent.com/document/product/1124/118694)）。
+	// 审核的业务类型，枚举值包括"TEXT"和"TEXT_AIGC"。其中"TEXT"表示传统文本审核，"TEXT_AIGC"表示AI生成检测（生成检测能力具体能力了解可[参见文档](https://cloud.tencent.com/document/product/1124/118694)）。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 

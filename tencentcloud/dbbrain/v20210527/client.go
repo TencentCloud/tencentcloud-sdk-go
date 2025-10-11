@@ -3249,7 +3249,7 @@ func NewDescribeMetricTopProxiesResponse() (response *DescribeMetricTopProxiesRe
 }
 
 // DescribeMetricTopProxies
-// 获取指定时间段内Redis 访问命令 cost top N
+// 获取指定时间段内Redis Proxy 指标
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3270,7 +3270,7 @@ func (c *Client) DescribeMetricTopProxies(request *DescribeMetricTopProxiesReque
 }
 
 // DescribeMetricTopProxies
-// 获取指定时间段内Redis 访问命令 cost top N
+// 获取指定时间段内Redis Proxy 指标
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

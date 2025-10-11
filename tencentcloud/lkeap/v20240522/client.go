@@ -119,6 +119,14 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 //     -  支持128K上下文长度，最大输入长度96k，最大输出32k（默认4k），最大思维链输出长度32k。
 //
+// - DeepSeek-V3.2-Exp（model 参数值为 deepseek-v3.2-exp）
+//
+//     - DeepSeek-V3.2-Exp 为685B 参数 MoE 模型，在 V3.1-Terminus 的基础上引入了 DeepSeek Sparse Attention（一种稀疏注意力机制），针对长文本的训练和推理效率进行了探索性的优化和验证。
+//
+//     -  支持128K上下文长度，最大输入长度96k，非思考模式最大输出8k（默认4k），思考模式最大输出64k（默认32k），最大思维链输出长度32k。
+//
+//     -  该模型目前处于试运营阶段，仅支持少量接入，如需申请开通请联系您的商务经理。
+//
 // ### 计费说明
 //
 // 
@@ -148,6 +156,10 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 // 
 //
 //     - DeepSeek-V3.1-Terminus 模型 | 输入：0.004元/千token | 输出：0.012元/千token
+//
+// 
+//
+//     - DeepSeek-V3.2-Exp 模型 | 输入：0.002元/千token | 输出：0.003元/千token
 //
 // 
 //
@@ -368,6 +380,14 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 //     -  支持128K上下文长度，最大输入长度96k，最大输出32k（默认4k），最大思维链输出长度32k。
 //
+// - DeepSeek-V3.2-Exp（model 参数值为 deepseek-v3.2-exp）
+//
+//     - DeepSeek-V3.2-Exp 为685B 参数 MoE 模型，在 V3.1-Terminus 的基础上引入了 DeepSeek Sparse Attention（一种稀疏注意力机制），针对长文本的训练和推理效率进行了探索性的优化和验证。
+//
+//     -  支持128K上下文长度，最大输入长度96k，非思考模式最大输出8k（默认4k），思考模式最大输出64k（默认32k），最大思维链输出长度32k。
+//
+//     -  该模型目前处于试运营阶段，仅支持少量接入，如需申请开通请联系您的商务经理。
+//
 // ### 计费说明
 //
 // 
@@ -397,6 +417,10 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 // 
 //
 //     - DeepSeek-V3.1-Terminus 模型 | 输入：0.004元/千token | 输出：0.012元/千token
+//
+// 
+//
+//     - DeepSeek-V3.2-Exp 模型 | 输入：0.002元/千token | 输出：0.003元/千token
 //
 // 
 //

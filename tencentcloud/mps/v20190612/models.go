@@ -456,6 +456,7 @@ type AiAnalysisResult struct {
 	// <li>DeLogo：智能擦除</li>
 	// <li>Description：大模型摘要</li>
 	// <li>Dubbing：智能译制</li>
+	// <li>VideoRemake: 视频去重</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
@@ -501,6 +502,10 @@ type AiAnalysisResult struct {
 	// 视频内容分析译制任务的查询结果，当任务类型为 Dubbing 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DubbingTask *AiAnalysisTaskDubbingResult `json:"DubbingTask,omitnil,omitempty" name:"DubbingTask"`
+
+	// 视频内容分析去重任务的查询结果，当任务类型为 VideoRemake 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoRemakeTask *AiAnalysisTaskVideoRemakeResult `json:"VideoRemakeTask,omitnil,omitempty" name:"VideoRemakeTask"`
 }
 
 type AiAnalysisTaskClassificationInput struct {
@@ -892,6 +897,37 @@ type AiAnalysisTaskTagResult struct {
 	// 智能标签任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskTagOutput `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
+type AiAnalysisTaskVideoRemakeInput struct {
+	// 视频智能去重模板 ID
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type AiAnalysisTaskVideoRemakeOutput struct {
+	// 视频智能去重文件路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 智能视频去重的存储位置
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+}
+
+type AiAnalysisTaskVideoRemakeResult struct {
+	// 任务状态，有 `PROCESSING`，`SUCCESS` 和 `FAIL` 三种
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 去重任务输入
+	Input *AiAnalysisTaskVideoRemakeInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 去重任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskVideoRemakeOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }
 
 type AiContentReviewResult struct {
@@ -17987,6 +18023,10 @@ type ParseNotificationResponseParams struct {
 	// 事件通知安全签名 Sign = MD5（Timestamp + NotifyKey）。说明：媒体处理把Timestamp 和 TaskNotifyConfig 里面的NotifyKey 进行字符串拼接后通过 MD5 计算得出 Sign 值，并将其放在通知消息里，您的后台服务器在收到通知消息后可以根据同样的算法确认 Sign 是否正确，进而确认消息是否确实来自媒体处理后台。
 	Sign *string `json:"Sign,omitnil,omitempty" name:"Sign"`
 
+	// 批量处理任务信息，仅当 EventType 为 BatchTask，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchTaskEvent *BatchSubTaskResult `json:"BatchTaskEvent,omitnil,omitempty" name:"BatchTaskEvent"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -20191,11 +20231,12 @@ type SmartEraseWatermarkConfig struct {
 
 	// 自动擦除自定义区域。
 	// 对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。
-	// 注意，当擦除方式为custom时，此参数将不会生效。
+	// 注意，当擦除方式为custom时，此参数将不会生效。修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
 	AutoAreas []*EraseArea `json:"AutoAreas,omitnil,omitempty" name:"AutoAreas"`
 
 	// 指定擦除自定义区域。
 	// 对选定区域，在选定时间段内不进行检测识别直接进行擦除。
+	// 注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
 	CustomAreas []*EraseTimeArea `json:"CustomAreas,omitnil,omitempty" name:"CustomAreas"`
 }
 

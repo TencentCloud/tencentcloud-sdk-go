@@ -363,10 +363,6 @@ func NewCheckCdcClusterResponse() (response *CheckCdcClusterResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) CheckCdcCluster(request *CheckCdcClusterRequest) (response *CheckCdcClusterResponse, err error) {
     return c.CheckCdcClusterWithContext(context.Background(), request)
 }
@@ -376,10 +372,6 @@ func (c *Client) CheckCdcCluster(request *CheckCdcClusterRequest) (response *Che
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) CheckCdcClusterWithContext(ctx context.Context, request *CheckCdcClusterRequest) (response *CheckCdcClusterResponse, err error) {
     if request == nil {
         request = NewCheckCdcClusterRequest()
