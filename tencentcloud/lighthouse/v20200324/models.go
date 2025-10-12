@@ -3978,6 +3978,13 @@ type DescribeGeneralResourceQuotasRequestParams struct {
 	// - STARTER_BUNDLE_INSTANCE 入门型套餐实例
 	// - HK_EXCLUSIVE_BUNDLE_INSTANCE 中国香港专属型套餐实例
 	// - CAREFREE_BUNDLE_INSTANCE 无忧型套餐实例
+	// - EXCLUSIVE_BUNDLE_02_INSTANCE 境外专属Ⅱ型
+	// - NEWCOMER_BUNDLE_INSTANCE 新客专享型
+	// - GAME_PORTAL_BUNDLE_INSTANCE 游戏专区实例
+	// - ECONOMY_BUNDLE_INSTANCE 经济型套餐实例
+	// - BUDGET_BUNDLE_INSTANCE 特惠型套餐实例
+	// - RAZOR_SPEED_BUNDLE_INSTANCE 锐驰套餐实例
+	// - BANDWIDTH_BUNDLE_INSTANCE 带宽型套餐实例
 	// - USER_KEY_PAIR 密钥对
 	// - SNAPSHOT 快照
 	// - BLUEPRINT 自定义镜像
@@ -3998,6 +4005,13 @@ type DescribeGeneralResourceQuotasRequest struct {
 	// - STARTER_BUNDLE_INSTANCE 入门型套餐实例
 	// - HK_EXCLUSIVE_BUNDLE_INSTANCE 中国香港专属型套餐实例
 	// - CAREFREE_BUNDLE_INSTANCE 无忧型套餐实例
+	// - EXCLUSIVE_BUNDLE_02_INSTANCE 境外专属Ⅱ型
+	// - NEWCOMER_BUNDLE_INSTANCE 新客专享型
+	// - GAME_PORTAL_BUNDLE_INSTANCE 游戏专区实例
+	// - ECONOMY_BUNDLE_INSTANCE 经济型套餐实例
+	// - BUDGET_BUNDLE_INSTANCE 特惠型套餐实例
+	// - RAZOR_SPEED_BUNDLE_INSTANCE 锐驰套餐实例
+	// - BANDWIDTH_BUNDLE_INSTANCE 带宽型套餐实例
 	// - USER_KEY_PAIR 密钥对
 	// - SNAPSHOT 快照
 	// - BLUEPRINT 自定义镜像

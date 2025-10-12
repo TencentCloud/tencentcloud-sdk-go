@@ -116,6 +116,12 @@ type AccessPoint struct {
 
 	// 是否MACsec
 	IsMacSec *bool `json:"IsMacSec,omitnil,omitempty" name:"IsMacSec"`
+
+	// 版本号
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 接入点业务类型，枚举值：NORMAL-标准接入点，CDZ：EZ/CDZ接入点，COOPERATIVE-合作POP
+	AccessPointServiceType *string `json:"AccessPointServiceType,omitnil,omitempty" name:"AccessPointServiceType"`
 }
 
 // Predefined struct for user
@@ -198,6 +204,9 @@ func (r *ApplyInternetAddressResponse) FromJsonString(s string) error {
 }
 
 type BFDInfo struct {
+	// 使能BFD多跳，0:未开启，2-255:BFD跳数
+	EnableBfdMultiHop *int64 `json:"EnableBfdMultiHop,omitnil,omitempty" name:"EnableBfdMultiHop"`
+
 	// 健康检查次数
 	ProbeFailedTimes *int64 `json:"ProbeFailedTimes,omitnil,omitempty" name:"ProbeFailedTimes"`
 
@@ -293,6 +302,15 @@ type CloudAttachInfo struct {
 
 	// 接入地域
 	ArRegion *string `json:"ArRegion,omitnil,omitempty" name:"ArRegion"`
+
+	// 运营商代码
+	IapCode *string `json:"IapCode,omitnil,omitempty" name:"IapCode"`
+
+	// IDC侧类型。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+	IdcPointType *string `json:"IdcPointType,omitnil,omitempty" name:"IdcPointType"`
+
+	// 运营商链路是否有保护
+	BIapLinkProtected *bool `json:"BIapLinkProtected,omitnil,omitempty" name:"BIapLinkProtected"`
 }
 
 type Coordinate struct {
@@ -324,6 +342,12 @@ type CreateCasInput struct {
 
 	// 接入地域
 	ArRegion *string `json:"ArRegion,omitnil,omitempty" name:"ArRegion"`
+
+	// IDC侧类型，默认为OTHER。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+	IdcPointType *string `json:"IdcPointType,omitnil,omitempty" name:"IdcPointType"`
+
+	// 运营商链路是否有保护
+	BIapLinkProtected *bool `json:"BIapLinkProtected,omitnil,omitempty" name:"BIapLinkProtected"`
 }
 
 // Predefined struct for user
@@ -1574,6 +1598,9 @@ type DirectConnect struct {
 	// 报障联系电话。
 	FaultReportContactNumber *string `json:"FaultReportContactNumber,omitnil,omitempty" name:"FaultReportContactNumber"`
 
+	// 报障联系邮箱。
+	FaultReportContactEmail *string `json:"FaultReportContactEmail,omitnil,omitempty" name:"FaultReportContactEmail"`
+
 	// 标签键值对
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
@@ -2362,6 +2389,9 @@ type ModifyDirectConnectTunnelExtraRequestParams struct {
 
 	// 用户侧互联IPv6。
 	CustomerIPv6Address *string `json:"CustomerIPv6Address,omitnil,omitempty" name:"CustomerIPv6Address"`
+
+	// 互联IP重分布状态
+	ImportDirectRoute *bool `json:"ImportDirectRoute,omitnil,omitempty" name:"ImportDirectRoute"`
 }
 
 type ModifyDirectConnectTunnelExtraRequest struct {
@@ -2423,6 +2453,9 @@ type ModifyDirectConnectTunnelExtraRequest struct {
 
 	// 用户侧互联IPv6。
 	CustomerIPv6Address *string `json:"CustomerIPv6Address,omitnil,omitempty" name:"CustomerIPv6Address"`
+
+	// 互联IP重分布状态
+	ImportDirectRoute *bool `json:"ImportDirectRoute,omitnil,omitempty" name:"ImportDirectRoute"`
 }
 
 func (r *ModifyDirectConnectTunnelExtraRequest) ToJsonString() string {
@@ -2456,6 +2489,7 @@ func (r *ModifyDirectConnectTunnelExtraRequest) FromJsonString(s string) error {
 	delete(f, "TencentIPv6Address")
 	delete(f, "TencentBackupIPv6Address")
 	delete(f, "CustomerIPv6Address")
+	delete(f, "ImportDirectRoute")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDirectConnectTunnelExtraRequest has unknown keys!", "")
 	}

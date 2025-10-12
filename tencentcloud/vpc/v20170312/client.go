@@ -11245,6 +11245,62 @@ func (c *Client) DescribeAddressQuotaWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeAddressTemplateGroupInstancesRequest() (request *DescribeAddressTemplateGroupInstancesRequest) {
+    request = &DescribeAddressTemplateGroupInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeAddressTemplateGroupInstances")
+    
+    
+    return
+}
+
+func NewDescribeAddressTemplateGroupInstancesResponse() (response *DescribeAddressTemplateGroupInstancesResponse) {
+    response = &DescribeAddressTemplateGroupInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAddressTemplateGroupInstances
+// 本接口（DescribeAddressTemplateGroupInstances）用于查询参数模板IP地址组口关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+func (c *Client) DescribeAddressTemplateGroupInstances(request *DescribeAddressTemplateGroupInstancesRequest) (response *DescribeAddressTemplateGroupInstancesResponse, err error) {
+    return c.DescribeAddressTemplateGroupInstancesWithContext(context.Background(), request)
+}
+
+// DescribeAddressTemplateGroupInstances
+// 本接口（DescribeAddressTemplateGroupInstances）用于查询参数模板IP地址组口关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+func (c *Client) DescribeAddressTemplateGroupInstancesWithContext(ctx context.Context, request *DescribeAddressTemplateGroupInstancesRequest) (response *DescribeAddressTemplateGroupInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAddressTemplateGroupInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DescribeAddressTemplateGroupInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAddressTemplateGroupInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAddressTemplateGroupInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAddressTemplateGroupsRequest() (request *DescribeAddressTemplateGroupsRequest) {
     request = &DescribeAddressTemplateGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11295,6 +11351,62 @@ func (c *Client) DescribeAddressTemplateGroupsWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeAddressTemplateGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAddressTemplateInstancesRequest() (request *DescribeAddressTemplateInstancesRequest) {
+    request = &DescribeAddressTemplateInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeAddressTemplateInstances")
+    
+    
+    return
+}
+
+func NewDescribeAddressTemplateInstancesResponse() (response *DescribeAddressTemplateInstancesResponse) {
+    response = &DescribeAddressTemplateInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAddressTemplateInstances
+// 本接口（DescribeAddressTemplateInstances）用于查询参数模板IP地址关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+func (c *Client) DescribeAddressTemplateInstances(request *DescribeAddressTemplateInstancesRequest) (response *DescribeAddressTemplateInstancesResponse, err error) {
+    return c.DescribeAddressTemplateInstancesWithContext(context.Background(), request)
+}
+
+// DescribeAddressTemplateInstances
+// 本接口（DescribeAddressTemplateInstances）用于查询参数模板IP地址关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+func (c *Client) DescribeAddressTemplateInstancesWithContext(ctx context.Context, request *DescribeAddressTemplateInstancesRequest) (response *DescribeAddressTemplateInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAddressTemplateInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DescribeAddressTemplateInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAddressTemplateInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAddressTemplateInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -15891,6 +16003,62 @@ func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeServiceTemplateGroupInstancesRequest() (request *DescribeServiceTemplateGroupInstancesRequest) {
+    request = &DescribeServiceTemplateGroupInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeServiceTemplateGroupInstances")
+    
+    
+    return
+}
+
+func NewDescribeServiceTemplateGroupInstancesResponse() (response *DescribeServiceTemplateGroupInstancesResponse) {
+    response = &DescribeServiceTemplateGroupInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServiceTemplateGroupInstances
+// 本接口（DescribeServiceTemplateGroupInstances）用于查询参数模板协议端口组关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+func (c *Client) DescribeServiceTemplateGroupInstances(request *DescribeServiceTemplateGroupInstancesRequest) (response *DescribeServiceTemplateGroupInstancesResponse, err error) {
+    return c.DescribeServiceTemplateGroupInstancesWithContext(context.Background(), request)
+}
+
+// DescribeServiceTemplateGroupInstances
+// 本接口（DescribeServiceTemplateGroupInstances）用于查询参数模板协议端口组关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+func (c *Client) DescribeServiceTemplateGroupInstancesWithContext(ctx context.Context, request *DescribeServiceTemplateGroupInstancesRequest) (response *DescribeServiceTemplateGroupInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeServiceTemplateGroupInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DescribeServiceTemplateGroupInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceTemplateGroupInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServiceTemplateGroupInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServiceTemplateGroupsRequest() (request *DescribeServiceTemplateGroupsRequest) {
     request = &DescribeServiceTemplateGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15941,6 +16109,62 @@ func (c *Client) DescribeServiceTemplateGroupsWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeServiceTemplateGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeServiceTemplateInstancesRequest() (request *DescribeServiceTemplateInstancesRequest) {
+    request = &DescribeServiceTemplateInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeServiceTemplateInstances")
+    
+    
+    return
+}
+
+func NewDescribeServiceTemplateInstancesResponse() (response *DescribeServiceTemplateInstancesResponse) {
+    response = &DescribeServiceTemplateInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServiceTemplateInstances
+// 本接口（DescribeServiceTemplateInstances）用于查询参数模板协议端口关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+func (c *Client) DescribeServiceTemplateInstances(request *DescribeServiceTemplateInstancesRequest) (response *DescribeServiceTemplateInstancesResponse, err error) {
+    return c.DescribeServiceTemplateInstancesWithContext(context.Background(), request)
+}
+
+// DescribeServiceTemplateInstances
+// 本接口（DescribeServiceTemplateInstances）用于查询参数模板协议端口关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+func (c *Client) DescribeServiceTemplateInstancesWithContext(ctx context.Context, request *DescribeServiceTemplateInstancesRequest) (response *DescribeServiceTemplateInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeServiceTemplateInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DescribeServiceTemplateInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceTemplateInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServiceTemplateInstancesResponse()
     err = c.Send(request, response)
     return
 }

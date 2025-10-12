@@ -10894,6 +10894,111 @@ func (r *DescribeCancelFlowsTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeContractComparisonTaskRequestParams struct {
+	// 执行合同审查任务的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeContractComparisonTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行合同审查任务的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeContractComparisonTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractComparisonTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContractComparisonTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractComparisonTaskResponseParams struct {
+	// 合同对比任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 合同对比任务状态。
+	// 状态如下：
+	// <ul><li> **0**：待创建（未执行）</li>
+	// <li> **1**：对比中</li>
+	// <li> **2**：对比成功</li>
+	// <li> **3**：对比失败</li>
+	// </ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 对比失败的具体原因描述，仅当状态为失败时返回此字段。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 原版文件ID，对比基准的旧版本文件唯一标识。
+	OriginalFileResourceId *string `json:"OriginalFileResourceId,omitnil,omitempty" name:"OriginalFileResourceId"`
+
+	// 新版文件ID，与旧版进行对比的新版本文件唯一标识。
+	DiffFileResourceId *string `json:"DiffFileResourceId,omitnil,omitempty" name:"DiffFileResourceId"`
+
+	// 对比任务备注，长度不能超过50个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 合同对比差异点总数。
+	TotalDiffCount *int64 `json:"TotalDiffCount,omitnil,omitempty" name:"TotalDiffCount"`
+
+	// 合同对比新增点数量。
+	AddDiffCount *int64 `json:"AddDiffCount,omitnil,omitempty" name:"AddDiffCount"`
+
+	// 合同对比修改点数量。
+	ChangeDiffCount *int64 `json:"ChangeDiffCount,omitnil,omitempty" name:"ChangeDiffCount"`
+
+	// 合同对比删除点数量。
+	DeleteDiffCount *int64 `json:"DeleteDiffCount,omitnil,omitempty" name:"DeleteDiffCount"`
+
+	// 提交人，提交此任务或请求的用户唯一标识。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同对比任务创建时间，时间戳。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeContractComparisonTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeContractComparisonTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeContractComparisonTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractComparisonTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeContractDiffTaskWebUrlRequestParams struct {
 	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
 	// 

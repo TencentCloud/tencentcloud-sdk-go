@@ -9865,6 +9865,64 @@ func (c *Client) DescribeCancelFlowsTaskWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeContractComparisonTaskRequest() (request *DescribeContractComparisonTaskRequest) {
+    request = &DescribeContractComparisonTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeContractComparisonTask")
+    
+    
+    return
+}
+
+func NewDescribeContractComparisonTaskResponse() (response *DescribeContractComparisonTaskResponse) {
+    response = &DescribeContractComparisonTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeContractComparisonTask
+// 本接口（DescribeContractComparisonTask）用于查询合同对比任务结果详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContractComparisonTask(request *DescribeContractComparisonTaskRequest) (response *DescribeContractComparisonTaskResponse, err error) {
+    return c.DescribeContractComparisonTaskWithContext(context.Background(), request)
+}
+
+// DescribeContractComparisonTask
+// 本接口（DescribeContractComparisonTask）用于查询合同对比任务结果详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContractComparisonTaskWithContext(ctx context.Context, request *DescribeContractComparisonTaskRequest) (response *DescribeContractComparisonTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeContractComparisonTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeContractComparisonTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContractComparisonTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeContractComparisonTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContractDiffTaskWebUrlRequest() (request *DescribeContractDiffTaskWebUrlRequest) {
     request = &DescribeContractDiffTaskWebUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

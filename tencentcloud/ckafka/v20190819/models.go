@@ -9804,6 +9804,9 @@ type MongoDBParam struct {
 }
 
 type MqttConnectParam struct {
+	// MQTT的连接port
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
 	// MQTT连接源的用户名
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
@@ -9812,6 +9815,9 @@ type MqttConnectParam struct {
 
 	// MQTT连接源的实例资源
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// MQTT的连接ip
+	ServiceVip *string `json:"ServiceVip,omitnil,omitempty" name:"ServiceVip"`
 
 	// MQTT Instance vpc-id
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
@@ -9824,6 +9830,9 @@ type MqttConnectParam struct {
 
 	// MQTT连接源的实例资源地域, 跨地域时必填
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// IP
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 }
 
 type MqttParam struct {

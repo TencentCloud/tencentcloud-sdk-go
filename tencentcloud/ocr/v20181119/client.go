@@ -1459,7 +1459,7 @@ func NewExtractDocBasicResponse() (response *ExtractDocBasicResponse) {
 }
 
 // ExtractDocBasic
-// 本接口支持识别并提取制式卡证、票据、表单等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。点击[立即体验](https://ocrdemo.cloud.tencent.com/)。
+// 本接口支持识别并提取制式卡证、票据、表单等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。点击[立即体验](https://ocrdemo.cloud.tencent.com/?action=ExtractDocBasic)。
 //
 // 
 //
@@ -1485,7 +1485,7 @@ func (c *Client) ExtractDocBasic(request *ExtractDocBasicRequest) (response *Ext
 }
 
 // ExtractDocBasic
-// 本接口支持识别并提取制式卡证、票据、表单等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。点击[立即体验](https://ocrdemo.cloud.tencent.com/)。
+// 本接口支持识别并提取制式卡证、票据、表单等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。点击[立即体验](https://ocrdemo.cloud.tencent.com/?action=ExtractDocBasic)。
 //
 // 
 //
@@ -1543,7 +1543,7 @@ func NewExtractDocMultiResponse() (response *ExtractDocMultiResponse) {
 }
 
 // ExtractDocMulti
-// 本接口支持识别并提取场景复杂、版式多等结构化场景的字段信息。重点场景包括：金融、医疗、交通、出行、保险。点击[立即体验](https://ocrdemo.cloud.tencent.com/)。
+// 本接口支持识别并提取场景复杂、版式多等结构化场景的字段信息。重点场景包括：金融、医疗、交通、出行、保险。点击[立即体验](https://ocrdemo.cloud.tencent.com/?action=ExtractDocMulti)。
 //
 // 
 //
@@ -1569,7 +1569,7 @@ func (c *Client) ExtractDocMulti(request *ExtractDocMultiRequest) (response *Ext
 }
 
 // ExtractDocMulti
-// 本接口支持识别并提取场景复杂、版式多等结构化场景的字段信息。重点场景包括：金融、医疗、交通、出行、保险。点击[立即体验](https://ocrdemo.cloud.tencent.com/)。
+// 本接口支持识别并提取场景复杂、版式多等结构化场景的字段信息。重点场景包括：金融、医疗、交通、出行、保险。点击[立即体验](https://ocrdemo.cloud.tencent.com/?action=ExtractDocMulti)。
 //
 // 
 //
@@ -1627,7 +1627,7 @@ func NewExtractDocMultiProResponse() (response *ExtractDocMultiProResponse) {
 }
 
 // ExtractDocMultiPro
-// 本接口当前仅支持复杂磅单收发货单抽取，更多强推理场景支持定制咨询。点击[立即体验](https://ocrdemo.cloud.tencent.com/)。
+// 本接口当前仅支持复杂磅单收发货单抽取，更多强推理场景支持定制咨询。点击[立即体验](https://ocrdemo.cloud.tencent.com/?action=ExtractDocMultiPro)。
 //
 // 
 //
@@ -1649,7 +1649,7 @@ func (c *Client) ExtractDocMultiPro(request *ExtractDocMultiProRequest) (respons
 }
 
 // ExtractDocMultiPro
-// 本接口当前仅支持复杂磅单收发货单抽取，更多强推理场景支持定制咨询。点击[立即体验](https://ocrdemo.cloud.tencent.com/)。
+// 本接口当前仅支持复杂磅单收发货单抽取，更多强推理场景支持定制咨询。点击[立即体验](https://ocrdemo.cloud.tencent.com/?action=ExtractDocMultiPro)。
 //
 // 
 //

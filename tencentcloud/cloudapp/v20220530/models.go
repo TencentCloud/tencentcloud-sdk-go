@@ -151,6 +151,12 @@ type SaleParam struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamKeyName *string `json:"ParamKeyName,omitnil,omitempty" name:"ParamKeyName"`
 
+	// 参数 Id
+	ParamId *string `json:"ParamId,omitnil,omitempty" name:"ParamId"`
+
+	// 参数值 Id
+	ParamValueId *string `json:"ParamValueId,omitnil,omitempty" name:"ParamValueId"`
+
 	// 售卖参数值，当ParamType=Quant时，该值有可能为Null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamValue *string `json:"ParamValue,omitnil,omitempty" name:"ParamValue"`
@@ -162,6 +168,15 @@ type SaleParam struct {
 	// 售卖参数的类型，目前支持枚举类Enum/数量类Quant
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamType *string `json:"ParamType,omitnil,omitempty" name:"ParamType"`
+
+	// 模块ID
+	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
+
+	// 模块key
+	ModuleKey *string `json:"ModuleKey,omitnil,omitempty" name:"ModuleKey"`
+
+	// 模块名称
+	ModuleName *string `json:"ModuleName,omitnil,omitempty" name:"ModuleName"`
 }
 
 // Predefined struct for user

@@ -4970,6 +4970,9 @@ type ModifyUserPrivilegesV3RequestParams struct {
 
 	// 默认计算组
 	DefaultComputeGroup *string `json:"DefaultComputeGroup,omitnil,omitempty" name:"DefaultComputeGroup"`
+
+	// 0: 灵活场景 1: 固定场景
+	ComputeGroupType *int64 `json:"ComputeGroupType,omitnil,omitempty" name:"ComputeGroupType"`
 }
 
 type ModifyUserPrivilegesV3Request struct {
@@ -4995,6 +4998,9 @@ type ModifyUserPrivilegesV3Request struct {
 
 	// 默认计算组
 	DefaultComputeGroup *string `json:"DefaultComputeGroup,omitnil,omitempty" name:"DefaultComputeGroup"`
+
+	// 0: 灵活场景 1: 固定场景
+	ComputeGroupType *int64 `json:"ComputeGroupType,omitnil,omitempty" name:"ComputeGroupType"`
 }
 
 func (r *ModifyUserPrivilegesV3Request) ToJsonString() string {
@@ -5016,6 +5022,7 @@ func (r *ModifyUserPrivilegesV3Request) FromJsonString(s string) error {
 	delete(f, "UpdateType")
 	delete(f, "UpdateComputeGroups")
 	delete(f, "DefaultComputeGroup")
+	delete(f, "ComputeGroupType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserPrivilegesV3Request has unknown keys!", "")
 	}

@@ -1612,6 +1612,7 @@ func NewDescribeJobSubmissionLogResponse() (response *DescribeJobSubmissionLogRe
 //  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
 //  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
 //  RESOURCENOTFOUND_LOGTOPIC = "ResourceNotFound.LogTopic"
 //  UNSUPPORTEDOPERATION_CLSSQLNOTENABLED = "UnsupportedOperation.ClsSqlNotEnabled"
 func (c *Client) DescribeJobSubmissionLog(request *DescribeJobSubmissionLogRequest) (response *DescribeJobSubmissionLogResponse, err error) {
@@ -1632,6 +1633,7 @@ func (c *Client) DescribeJobSubmissionLog(request *DescribeJobSubmissionLogReque
 //  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
 //  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
 //  RESOURCENOTFOUND_LOGTOPIC = "ResourceNotFound.LogTopic"
 //  UNSUPPORTEDOPERATION_CLSSQLNOTENABLED = "UnsupportedOperation.ClsSqlNotEnabled"
 func (c *Client) DescribeJobSubmissionLogWithContext(ctx context.Context, request *DescribeJobSubmissionLogRequest) (response *DescribeJobSubmissionLogResponse, err error) {

@@ -548,6 +548,7 @@ func NewAttachDataMaskPolicyResponse() (response *AttachDataMaskPolicyResponse) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
+//  INVALIDPARAMETER_INVALIDPARAMETER_COLUMNTYPENOTCOMPATIBLE = "InvalidParameter.InvalidParameter_ColumnTypeNotCompatible"
 //  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
 //  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) AttachDataMaskPolicy(request *AttachDataMaskPolicyRequest) (response *AttachDataMaskPolicyResponse, err error) {
@@ -566,6 +567,7 @@ func (c *Client) AttachDataMaskPolicy(request *AttachDataMaskPolicyRequest) (res
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
+//  INVALIDPARAMETER_INVALIDPARAMETER_COLUMNTYPENOTCOMPATIBLE = "InvalidParameter.InvalidParameter_ColumnTypeNotCompatible"
 //  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
 //  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) AttachDataMaskPolicyWithContext(ctx context.Context, request *AttachDataMaskPolicyRequest) (response *AttachDataMaskPolicyResponse, err error) {
@@ -11016,7 +11018,7 @@ func NewUnboundDatasourceHouseResponse() (response *UnboundDatasourceHouseRespon
 // 解绑数据源与队列
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_FAILEDOPERATIONCODE_NETWORKCONNECTIONINUSED = "FailedOperation.FailedOperationCode_NetworkConnectionInUsed"
+//  FAILEDOPERATION_NETWORKCONNECTIONINUSED = "FailedOperation.NetworkConnectionInUsed"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  RESOURCENOTFOUND_EKSRESOURCENOTFOUND = "ResourceNotFound.EksResourceNotFound"
@@ -11029,7 +11031,7 @@ func (c *Client) UnboundDatasourceHouse(request *UnboundDatasourceHouseRequest) 
 // 解绑数据源与队列
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_FAILEDOPERATIONCODE_NETWORKCONNECTIONINUSED = "FailedOperation.FailedOperationCode_NetworkConnectionInUsed"
+//  FAILEDOPERATION_NETWORKCONNECTIONINUSED = "FailedOperation.NetworkConnectionInUsed"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  RESOURCENOTFOUND_EKSRESOURCENOTFOUND = "ResourceNotFound.EksResourceNotFound"

@@ -12114,6 +12114,74 @@ func (r *DescribeAddressQuotaResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAddressTemplateGroupInstancesRequestParams struct {
+	// IP地址组实例ID。例如：ipmg-12345678。
+	AddressTemplateGroupId *string `json:"AddressTemplateGroupId,omitnil,omitempty" name:"AddressTemplateGroupId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeAddressTemplateGroupInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// IP地址组实例ID。例如：ipmg-12345678。
+	AddressTemplateGroupId *string `json:"AddressTemplateGroupId,omitnil,omitempty" name:"AddressTemplateGroupId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAddressTemplateGroupInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddressTemplateGroupInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AddressTemplateGroupId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddressTemplateGroupInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAddressTemplateGroupInstancesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAddressTemplateGroupInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAddressTemplateGroupInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAddressTemplateGroupInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddressTemplateGroupInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAddressTemplateGroupsRequestParams struct {
 	// 过滤条件。
 	// <li>address-template-group-name - String - （过滤条件）IP地址模板集合名称。</li>
@@ -12223,6 +12291,74 @@ func (r *DescribeAddressTemplateGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAddressTemplateGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAddressTemplateInstancesRequestParams struct {
+	// IP地址实例ID。例如：ipm-12345678。
+	AddressTemplateId *string `json:"AddressTemplateId,omitnil,omitempty" name:"AddressTemplateId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeAddressTemplateInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// IP地址实例ID。例如：ipm-12345678。
+	AddressTemplateId *string `json:"AddressTemplateId,omitnil,omitempty" name:"AddressTemplateId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAddressTemplateInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddressTemplateInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AddressTemplateId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddressTemplateInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAddressTemplateInstancesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAddressTemplateInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAddressTemplateInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAddressTemplateInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddressTemplateInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18588,6 +18724,74 @@ func (r *DescribeSecurityGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeServiceTemplateGroupInstancesRequestParams struct {
+	// 协议端口实例ID。例如：ppmg-12345678。
+	ServiceTemplateGroupId *string `json:"ServiceTemplateGroupId,omitnil,omitempty" name:"ServiceTemplateGroupId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeServiceTemplateGroupInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 协议端口实例ID。例如：ppmg-12345678。
+	ServiceTemplateGroupId *string `json:"ServiceTemplateGroupId,omitnil,omitempty" name:"ServiceTemplateGroupId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeServiceTemplateGroupInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceTemplateGroupInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceTemplateGroupId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceTemplateGroupInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServiceTemplateGroupInstancesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServiceTemplateGroupInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServiceTemplateGroupInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeServiceTemplateGroupInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceTemplateGroupInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeServiceTemplateGroupsRequestParams struct {
 	// 过滤条件。
 	// <li>service-template-group-name - String - （过滤条件）协议端口模板集合名称。</li>
@@ -18697,6 +18901,74 @@ func (r *DescribeServiceTemplateGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeServiceTemplateGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServiceTemplateInstancesRequestParams struct {
+	// 协议端口实例ID。例如：ppm-12345678。
+	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeServiceTemplateInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 协议端口实例ID。例如：ppm-12345678。
+	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeServiceTemplateInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceTemplateInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceTemplateId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceTemplateInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServiceTemplateInstancesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServiceTemplateInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServiceTemplateInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeServiceTemplateInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceTemplateInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -20617,7 +20889,7 @@ type DescribeVpcPrivateIpAddressesRequestParams struct {
 	// `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 内网`IP`地址列表，批量查询单次请求最多支持`10`个。
+	// 内网`IP`地址列表，批量查询单次请求最多支持`100`个。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
 }
 
@@ -20627,7 +20899,7 @@ type DescribeVpcPrivateIpAddressesRequest struct {
 	// `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 内网`IP`地址列表，批量查询单次请求最多支持`10`个。
+	// 内网`IP`地址列表，批量查询单次请求最多支持`100`个。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
 }
 
@@ -28226,6 +28498,9 @@ type ModifyPrivateNatGatewayAttributeRequestParams struct {
 
 	// 私网网关名称，可任意命名，但不得超过60个字符。
 	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
+
+	// 私网NAT实例是否开启删除保护
+	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
 }
 
 type ModifyPrivateNatGatewayAttributeRequest struct {
@@ -28236,6 +28511,9 @@ type ModifyPrivateNatGatewayAttributeRequest struct {
 
 	// 私网网关名称，可任意命名，但不得超过60个字符。
 	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
+
+	// 私网NAT实例是否开启删除保护
+	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
 }
 
 func (r *ModifyPrivateNatGatewayAttributeRequest) ToJsonString() string {
@@ -28252,6 +28530,7 @@ func (r *ModifyPrivateNatGatewayAttributeRequest) FromJsonString(s string) error
 	}
 	delete(f, "NatGatewayId")
 	delete(f, "NatGatewayName")
+	delete(f, "DeletionProtectionEnabled")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrivateNatGatewayAttributeRequest has unknown keys!", "")
 	}

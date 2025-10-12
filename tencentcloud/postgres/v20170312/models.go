@@ -3845,14 +3845,14 @@ func (r *DescribeDBInstanceAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceHAConfigRequestParams struct {
-	// 实例ID
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 }
 
 type DescribeDBInstanceHAConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 }
 
@@ -3878,18 +3878,18 @@ func (r *DescribeDBInstanceHAConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBInstanceHAConfigResponseParams struct {
 	// 主从同步方式：
-	// <li>Semi-sync：半同步
-	// <li>Async：异步
+	// <li>Semi-sync：半同步</li>
+	// <li>Async：异步</li>
 	SyncMode *string `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
 
 	// 高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
-	// <li>单位：byte
-	// <li>参数范围：[1073741824, 322122547200]
+	// <li>单位：byte</li>
+	// <li>参数范围：[1073741824, 322122547200]</li>
 	MaxStandbyLatency *uint64 `json:"MaxStandbyLatency,omitnil,omitempty" name:"MaxStandbyLatency"`
 
 	// 高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
-	// <li>单位：s
-	// <li>参数范围：[5, 10]
+	// <li>单位：s</li>
+	// <li>参数范围：[5, 10]</li>
 	MaxStandbyLag *uint64 `json:"MaxStandbyLag,omitnil,omitempty" name:"MaxStandbyLag"`
 
 	// 同步备机最大延迟数据量。备机延迟数据量小于等于该值，且该备机延迟时间小于等于MaxSyncStandbyLag时，则该备机采用同步复制；否则，采用异步复制。

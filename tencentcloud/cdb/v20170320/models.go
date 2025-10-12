@@ -5224,6 +5224,9 @@ type DescribeAuditConfigResponseParams struct {
 	// 是否正在关闭审计。目前支持的值包括："false"-否，"true"-是
 	IsClosing *string `json:"IsClosing,omitnil,omitempty" name:"IsClosing"`
 
+	// 是否正在开启审计。目前支持的值包括："false"-否，"true"-是
+	IsOpening *string `json:"IsOpening,omitnil,omitempty" name:"IsOpening"`
+
 	// 审计服务开通时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
@@ -11398,6 +11401,21 @@ type InstanceDbAuditStatus struct {
 
 	// 实例所应用的规则模板。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
+
+	// 限免状态
+	TrialStatus *string `json:"TrialStatus,omitnil,omitempty" name:"TrialStatus"`
+
+	// 限免开启时间
+	TrialStartTime *int64 `json:"TrialStartTime,omitnil,omitempty" name:"TrialStartTime"`
+
+	// 限免持续时间
+	TrialDuration *int64 `json:"TrialDuration,omitnil,omitempty" name:"TrialDuration"`
+
+	// 限免关闭时间
+	TrialCloseTime *int64 `json:"TrialCloseTime,omitnil,omitempty" name:"TrialCloseTime"`
+
+	// 限免期查询日志时长
+	TrialDescribeLogHours *int64 `json:"TrialDescribeLogHours,omitnil,omitempty" name:"TrialDescribeLogHours"`
 }
 
 type InstanceInfo struct {
