@@ -2139,6 +2139,68 @@ func (c *Client) CreateTWeTalkProductConfigWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateTWeTalkProductConfigV2Request() (request *CreateTWeTalkProductConfigV2Request) {
+    request = &CreateTWeTalkProductConfigV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTWeTalkProductConfigV2")
+    
+    
+    return
+}
+
+func NewCreateTWeTalkProductConfigV2Response() (response *CreateTWeTalkProductConfigV2Response) {
+    response = &CreateTWeTalkProductConfigV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTWeTalkProductConfigV2
+// 用于配置TWeTalk服务连接产品配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) CreateTWeTalkProductConfigV2(request *CreateTWeTalkProductConfigV2Request) (response *CreateTWeTalkProductConfigV2Response, err error) {
+    return c.CreateTWeTalkProductConfigV2WithContext(context.Background(), request)
+}
+
+// CreateTWeTalkProductConfigV2
+// 用于配置TWeTalk服务连接产品配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) CreateTWeTalkProductConfigV2WithContext(ctx context.Context, request *CreateTWeTalkProductConfigV2Request) (response *CreateTWeTalkProductConfigV2Response, err error) {
+    if request == nil {
+        request = NewCreateTWeTalkProductConfigV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateTWeTalkProductConfigV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTWeTalkProductConfigV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTWeTalkProductConfigV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTopicPolicyRequest() (request *CreateTopicPolicyRequest) {
     request = &CreateTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6573,6 +6635,68 @@ func (c *Client) DescribeTWeTalkProductConfigWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeTWeTalkProductConfigV2Request() (request *DescribeTWeTalkProductConfigV2Request) {
+    request = &DescribeTWeTalkProductConfigV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeTalkProductConfigV2")
+    
+    
+    return
+}
+
+func NewDescribeTWeTalkProductConfigV2Response() (response *DescribeTWeTalkProductConfigV2Response) {
+    response = &DescribeTWeTalkProductConfigV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeTalkProductConfigV2
+// 用于查询TWeTalk服务连接产品配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeTWeTalkProductConfigV2(request *DescribeTWeTalkProductConfigV2Request) (response *DescribeTWeTalkProductConfigV2Response, err error) {
+    return c.DescribeTWeTalkProductConfigV2WithContext(context.Background(), request)
+}
+
+// DescribeTWeTalkProductConfigV2
+// 用于查询TWeTalk服务连接产品配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeTWeTalkProductConfigV2WithContext(ctx context.Context, request *DescribeTWeTalkProductConfigV2Request) (response *DescribeTWeTalkProductConfigV2Response, err error) {
+    if request == nil {
+        request = NewDescribeTWeTalkProductConfigV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeTWeTalkProductConfigV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeTalkProductConfigV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeTalkProductConfigV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicPolicyRequest() (request *DescribeTopicPolicyRequest) {
     request = &DescribeTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8133,6 +8257,68 @@ func (c *Client) GetTWeTalkProductConfigListWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewGetTWeTalkProductConfigListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTWeTalkProductConfigListV2Request() (request *GetTWeTalkProductConfigListV2Request) {
+    request = &GetTWeTalkProductConfigListV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetTWeTalkProductConfigListV2")
+    
+    
+    return
+}
+
+func NewGetTWeTalkProductConfigListV2Response() (response *GetTWeTalkProductConfigListV2Response) {
+    response = &GetTWeTalkProductConfigListV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTWeTalkProductConfigListV2
+// 用于查询TWeTalk服务连接产品配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) GetTWeTalkProductConfigListV2(request *GetTWeTalkProductConfigListV2Request) (response *GetTWeTalkProductConfigListV2Response, err error) {
+    return c.GetTWeTalkProductConfigListV2WithContext(context.Background(), request)
+}
+
+// GetTWeTalkProductConfigListV2
+// 用于查询TWeTalk服务连接产品配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) GetTWeTalkProductConfigListV2WithContext(ctx context.Context, request *GetTWeTalkProductConfigListV2Request) (response *GetTWeTalkProductConfigListV2Response, err error) {
+    if request == nil {
+        request = NewGetTWeTalkProductConfigListV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "GetTWeTalkProductConfigListV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTWeTalkProductConfigListV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTWeTalkProductConfigListV2Response()
     err = c.Send(request, response)
     return
 }
@@ -10015,6 +10201,68 @@ func (c *Client) ModifyTWeTalkProductConfigWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyTWeTalkProductConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTWeTalkProductConfigV2Request() (request *ModifyTWeTalkProductConfigV2Request) {
+    request = &ModifyTWeTalkProductConfigV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTWeTalkProductConfigV2")
+    
+    
+    return
+}
+
+func NewModifyTWeTalkProductConfigV2Response() (response *ModifyTWeTalkProductConfigV2Response) {
+    response = &ModifyTWeTalkProductConfigV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTWeTalkProductConfigV2
+// 用于修改配置TWeTalk服务连接产品配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) ModifyTWeTalkProductConfigV2(request *ModifyTWeTalkProductConfigV2Request) (response *ModifyTWeTalkProductConfigV2Response, err error) {
+    return c.ModifyTWeTalkProductConfigV2WithContext(context.Background(), request)
+}
+
+// ModifyTWeTalkProductConfigV2
+// 用于修改配置TWeTalk服务连接产品配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) ModifyTWeTalkProductConfigV2WithContext(ctx context.Context, request *ModifyTWeTalkProductConfigV2Request) (response *ModifyTWeTalkProductConfigV2Response, err error) {
+    if request == nil {
+        request = NewModifyTWeTalkProductConfigV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ModifyTWeTalkProductConfigV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTWeTalkProductConfigV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTWeTalkProductConfigV2Response()
     err = c.Send(request, response)
     return
 }

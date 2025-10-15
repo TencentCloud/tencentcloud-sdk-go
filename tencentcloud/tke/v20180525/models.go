@@ -435,7 +435,13 @@ type Addon struct {
 	// addon的参数，是一个json格式的base64转码后的字符串
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
 
-	// addon的状态
+	// addon的状态：
+	// - Installing：安装中
+	// - Upgrading：升级中
+	// - Terminating：删除中
+	// - Succeeded：安装/升级成功
+	// - InstallFailed：安装失败
+	// - UpgradFailed：升级失败
 	Phase *string `json:"Phase,omitnil,omitempty" name:"Phase"`
 
 	// addon失败的原因
@@ -4357,20 +4363,20 @@ type DataDisk struct {
 
 // Predefined struct for user
 type DeleteAddonRequestParams struct {
-	// 集群ID
+	// 集群ID，请从容器服务控制台集群列表中获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// addon名称
+	// addon名称，请从容器服务控制台进入集群详情页后，在组件管理页面中获取。
 	AddonName *string `json:"AddonName,omitnil,omitempty" name:"AddonName"`
 }
 
 type DeleteAddonRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID，请从容器服务控制台集群列表中获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// addon名称
+	// addon名称，请从容器服务控制台进入集群详情页后，在组件管理页面中获取。
 	AddonName *string `json:"AddonName,omitnil,omitempty" name:"AddonName"`
 }
 
@@ -6251,7 +6257,7 @@ func (r *DeleteTKEEdgeClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAddonRequestParams struct {
-	// 集群ID
+	// 集群ID，请从容器服务控制台集群列表中获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// addon名称（不传时会返回集群下全部的addon）
@@ -6261,7 +6267,7 @@ type DescribeAddonRequestParams struct {
 type DescribeAddonRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID，请从容器服务控制台集群列表中获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// addon名称（不传时会返回集群下全部的addon）
@@ -6315,20 +6321,20 @@ func (r *DescribeAddonResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAddonValuesRequestParams struct {
-	// 集群ID
+	// 集群ID，请从容器服务控制台集群列表中获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// addon名称
+	// addon名称，请从容器服务控制台进入集群详情页后，在组件管理页面中获取。
 	AddonName *string `json:"AddonName,omitnil,omitempty" name:"AddonName"`
 }
 
 type DescribeAddonValuesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID，请从容器服务控制台集群列表中获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// addon名称
+	// addon名称，请从容器服务控制台进入集群详情页后，在组件管理页面中获取。
 	AddonName *string `json:"AddonName,omitnil,omitempty" name:"AddonName"`
 }
 
@@ -15147,10 +15153,10 @@ type ImageRegistryCredential struct {
 
 // Predefined struct for user
 type InstallAddonRequestParams struct {
-	// 集群ID（仅支持标准tke集群）
+	// 集群ID（仅支持标准tke集群），请从容器服务控制台集群列表中获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// addon名称
+	// addon名称，请从容器服务控制台进入集群详情页后，在组件管理页面中获取。
 	AddonName *string `json:"AddonName,omitnil,omitempty" name:"AddonName"`
 
 	// addon版本（不传默认安装最新版本）
@@ -15159,17 +15165,17 @@ type InstallAddonRequestParams struct {
 	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
 
-	// 是否仅做安装检查，设置为true时仅做检查，不会安装组件
+	// 是否仅做安装检查，设置为true时仅做检查，不会安装组件。默认值为 false。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
 type InstallAddonRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID（仅支持标准tke集群）
+	// 集群ID（仅支持标准tke集群），请从容器服务控制台集群列表中获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// addon名称
+	// addon名称，请从容器服务控制台进入集群详情页后，在组件管理页面中获取。
 	AddonName *string `json:"AddonName,omitnil,omitempty" name:"AddonName"`
 
 	// addon版本（不传默认安装最新版本）
@@ -15178,7 +15184,7 @@ type InstallAddonRequest struct {
 	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
 
-	// 是否仅做安装检查，设置为true时仅做检查，不会安装组件
+	// 是否仅做安装检查，设置为true时仅做检查，不会安装组件。默认值为 false。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
@@ -20182,44 +20188,44 @@ func (r *UninstallLogAgentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateAddonRequestParams struct {
-	// 集群ID
+	// 集群ID，请从容器服务控制台集群列表中获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// addon名称
+	// addon名称，请从容器服务控制台进入集群详情页后，在组件管理页面中获取。
 	AddonName *string `json:"AddonName,omitnil,omitempty" name:"AddonName"`
 
 	// addon版本（不传默认不更新，不传AddonVersion时RawValues必传）
 	AddonVersion *string `json:"AddonVersion,omitnil,omitempty" name:"AddonVersion"`
 
-	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传））
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传）。
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
 
 	// addon参数的更新策略，支持replace和merge两种策略，默认值为merge，兼容旧版本API。replace：使用新RawValues全量替换addon原RawValues，merge：根据新RawValues新增或更新addon原RawValues中对应参数。
 	UpdateStrategy *string `json:"UpdateStrategy,omitnil,omitempty" name:"UpdateStrategy"`
 
-	// 是否仅做更新检查，设置为true时仅做检查，不会更新组件
+	// 是否仅做更新检查，设置为true时仅做检查，不会更新组件。默认值为 false。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
 type UpdateAddonRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID，请从容器服务控制台集群列表中获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// addon名称
+	// addon名称，请从容器服务控制台进入集群详情页后，在组件管理页面中获取。
 	AddonName *string `json:"AddonName,omitnil,omitempty" name:"AddonName"`
 
 	// addon版本（不传默认不更新，不传AddonVersion时RawValues必传）
 	AddonVersion *string `json:"AddonVersion,omitnil,omitempty" name:"AddonVersion"`
 
-	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传））
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传）。
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
 
 	// addon参数的更新策略，支持replace和merge两种策略，默认值为merge，兼容旧版本API。replace：使用新RawValues全量替换addon原RawValues，merge：根据新RawValues新增或更新addon原RawValues中对应参数。
 	UpdateStrategy *string `json:"UpdateStrategy,omitnil,omitempty" name:"UpdateStrategy"`
 
-	// 是否仅做更新检查，设置为true时仅做检查，不会更新组件
+	// 是否仅做更新检查，设置为true时仅做检查，不会更新组件。默认值为 false。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 

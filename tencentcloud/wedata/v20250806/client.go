@@ -1971,6 +1971,108 @@ func (c *Client) GetCodeFileWithContext(ctx context.Context, request *GetCodeFil
     return
 }
 
+func NewGetCodeFolderRequest() (request *GetCodeFolderRequest) {
+    request = &GetCodeFolderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "GetCodeFolder")
+    
+    
+    return
+}
+
+func NewGetCodeFolderResponse() (response *GetCodeFolderResponse) {
+    response = &GetCodeFolderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetCodeFolder
+// 获取sql文件夹详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetCodeFolder(request *GetCodeFolderRequest) (response *GetCodeFolderResponse, err error) {
+    return c.GetCodeFolderWithContext(context.Background(), request)
+}
+
+// GetCodeFolder
+// 获取sql文件夹详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetCodeFolderWithContext(ctx context.Context, request *GetCodeFolderRequest) (response *GetCodeFolderResponse, err error) {
+    if request == nil {
+        request = NewGetCodeFolderRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "GetCodeFolder")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCodeFolder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetCodeFolderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDataBackfillPlanRequest() (request *GetDataBackfillPlanRequest) {
+    request = &GetDataBackfillPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "GetDataBackfillPlan")
+    
+    
+    return
+}
+
+func NewGetDataBackfillPlanResponse() (response *GetDataBackfillPlanResponse) {
+    response = &GetDataBackfillPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetDataBackfillPlan
+// 获取补录计划详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetDataBackfillPlan(request *GetDataBackfillPlanRequest) (response *GetDataBackfillPlanResponse, err error) {
+    return c.GetDataBackfillPlanWithContext(context.Background(), request)
+}
+
+// GetDataBackfillPlan
+// 获取补录计划详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetDataBackfillPlanWithContext(ctx context.Context, request *GetDataBackfillPlanRequest) (response *GetDataBackfillPlanResponse, err error) {
+    if request == nil {
+        request = NewGetDataBackfillPlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "GetDataBackfillPlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDataBackfillPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDataBackfillPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDataSourceRequest() (request *GetDataSourceRequest) {
     request = &GetDataSourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2499,6 +2601,56 @@ func (c *Client) GetResourceGroupMetricsWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewGetResourceGroupMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetSQLFolderRequest() (request *GetSQLFolderRequest) {
+    request = &GetSQLFolderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "GetSQLFolder")
+    
+    
+    return
+}
+
+func NewGetSQLFolderResponse() (response *GetSQLFolderResponse) {
+    response = &GetSQLFolderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetSQLFolder
+// 获取sql文件夹详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetSQLFolder(request *GetSQLFolderRequest) (response *GetSQLFolderResponse, err error) {
+    return c.GetSQLFolderWithContext(context.Background(), request)
+}
+
+// GetSQLFolder
+// 获取sql文件夹详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetSQLFolderWithContext(ctx context.Context, request *GetSQLFolderRequest) (response *GetSQLFolderResponse, err error) {
+    if request == nil {
+        request = NewGetSQLFolderRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "GetSQLFolder")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSQLFolder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetSQLFolderResponse()
     err = c.Send(request, response)
     return
 }
@@ -5289,6 +5441,56 @@ func (c *Client) SetSuccessTaskInstancesAsyncWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewSetSuccessTaskInstancesAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartOpsTasksRequest() (request *StartOpsTasksRequest) {
+    request = &StartOpsTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "StartOpsTasks")
+    
+    
+    return
+}
+
+func NewStartOpsTasksResponse() (response *StartOpsTasksResponse) {
+    response = &StartOpsTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartOpsTasks
+// 异步批量启动任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) StartOpsTasks(request *StartOpsTasksRequest) (response *StartOpsTasksResponse, err error) {
+    return c.StartOpsTasksWithContext(context.Background(), request)
+}
+
+// StartOpsTasks
+// 异步批量启动任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) StartOpsTasksWithContext(ctx context.Context, request *StartOpsTasksRequest) (response *StartOpsTasksResponse, err error) {
+    if request == nil {
+        request = NewStartOpsTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "StartOpsTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartOpsTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartOpsTasksResponse()
     err = c.Send(request, response)
     return
 }

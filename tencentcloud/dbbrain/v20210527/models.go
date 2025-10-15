@@ -4054,10 +4054,10 @@ type DescribeMySqlProcessListRequestParams struct {
 	// 线程的操作数据库，用于筛选线程列表。
 	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
 
-	// 线程的操作状态，用于筛选线程列表。包含以下值：Sending data，Updating, Opening tables 等
+	// 线程的操作状态。包含以下枚举值：Sending data​-线程正在处理查询结果， ​Sorting result​-线程正在对查询结果进行排序​，Creating tmp table​-线程正在创建临时表，Altering table​-线程正在执行表结构变更，Updating-线程执行更新中。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 线程的操作状态，用于筛选线程列表。包含以下值：Sending data，Updating, Opening tables 等
+	// 线程的执行类型。包含以下枚举值：Sleep-线程处于空闲状态，Query-线程正在执行一个查询，Connect-从服务器连接到主服务器，Execute-线程正在执行预处理语句。
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
@@ -4069,7 +4069,8 @@ type DescribeMySqlProcessListRequestParams struct {
 	// 返回数量，默认20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL 默认为"mysql"。
+	// 
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 会话统计的维度信息,可以多个维度。
@@ -4094,10 +4095,10 @@ type DescribeMySqlProcessListRequest struct {
 	// 线程的操作数据库，用于筛选线程列表。
 	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
 
-	// 线程的操作状态，用于筛选线程列表。包含以下值：Sending data，Updating, Opening tables 等
+	// 线程的操作状态。包含以下枚举值：Sending data​-线程正在处理查询结果， ​Sorting result​-线程正在对查询结果进行排序​，Creating tmp table​-线程正在创建临时表，Altering table​-线程正在执行表结构变更，Updating-线程执行更新中。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 线程的操作状态，用于筛选线程列表。包含以下值：Sending data，Updating, Opening tables 等
+	// 线程的执行类型。包含以下枚举值：Sleep-线程处于空闲状态，Query-线程正在执行一个查询，Connect-从服务器连接到主服务器，Execute-线程正在执行预处理语句。
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
@@ -4109,7 +4110,8 @@ type DescribeMySqlProcessListRequest struct {
 	// 返回数量，默认20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL 默认为"mysql"。
+	// 
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 会话统计的维度信息,可以多个维度。
@@ -4151,7 +4153,7 @@ type DescribeMySqlProcessListResponseParams struct {
 	// 实时线程列表。
 	ProcessList []*MySqlProcess `json:"ProcessList,omitnil,omitempty" name:"ProcessList"`
 
-	// sql会话统计信息。
+	// sql会话统计信息。如果请求参数中包含StatDimensions，该参数则可能返回，否则不返回。
 	Statistics []*StatisticInfo `json:"Statistics,omitnil,omitempty" name:"Statistics"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7871,10 +7873,10 @@ type MySqlProcess struct {
 	// 线程的操作数据库。
 	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
 
-	// 线程的操作状态。
+	// 线程的操作状态。包含以下枚举值：Sending data​-线程正在处理查询结果， ​Sorting result​-线程正在对查询结果进行排序​，Creating tmp table​-线程正在创建临时表，Altering table​-线程正在执行表结构变更，Updating-线程执行更新中。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 线程的执行类型。
+	// 线程的执行类型。包含以下枚举值：Sleep-线程处于空闲状态，Query-线程正在执行一个查询，Connect-从服务器连接到主服务器，Execute-线程正在执行预处理语句。
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 线程的操作时长，单位秒。
@@ -7882,6 +7884,10 @@ type MySqlProcess struct {
 
 	// 线程的操作语句。
 	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// sql类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlType *string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
 }
 
 // Predefined struct for user

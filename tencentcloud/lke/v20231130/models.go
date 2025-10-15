@@ -5016,7 +5016,7 @@ func (r *DescribeWorkflowRunRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWorkflowRunResponseParams struct {
-	// 总数
+	// 工作流的详情
 	WorkflowRun *WorkflowRunDetail `json:"WorkflowRun,omitnil,omitempty" name:"WorkflowRun"`
 
 	// 节点列表

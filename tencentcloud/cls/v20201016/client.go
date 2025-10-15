@@ -1833,7 +1833,7 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 }
 
 // CreateTopic
-// 本接口用于创建日志主题。
+// 本接口用于创建日志或指标主题。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1856,7 +1856,7 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
 }
 
 // CreateTopic
-// 本接口用于创建日志主题。
+// 本接口用于创建日志或指标主题。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3395,7 +3395,7 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 }
 
 // DeleteTopic
-// 本接口用于删除日志主题。
+// 本接口用于删除日志或指标主题。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3419,7 +3419,7 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
 }
 
 // DeleteTopic
-// 本接口用于删除日志主题。
+// 本接口用于删除日志或指标主题。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5737,7 +5737,7 @@ func NewDescribeTopicsResponse() (response *DescribeTopicsResponse) {
 }
 
 // DescribeTopics
-// 本接口用于获取日志主题列表，支持分页
+// 本接口用于获取日志或指标主题列表，支持分页
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5761,7 +5761,7 @@ func (c *Client) DescribeTopics(request *DescribeTopicsRequest) (response *Descr
 }
 
 // DescribeTopics
-// 本接口用于获取日志主题列表，支持分页
+// 本接口用于获取日志或指标主题列表，支持分页
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7491,7 +7491,7 @@ func NewModifyTopicResponse() (response *ModifyTopicResponse) {
 }
 
 // ModifyTopic
-// 本接口用于修改日志主题。
+// 本接口用于修改日志或指标主题。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7516,7 +7516,7 @@ func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopic
 }
 
 // ModifyTopic
-// 本接口用于修改日志主题。
+// 本接口用于修改日志或指标主题。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

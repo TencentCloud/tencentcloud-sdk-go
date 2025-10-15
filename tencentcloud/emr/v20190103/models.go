@@ -4429,6 +4429,9 @@ type DescribeInstancesListRequestParams struct {
 
 	// 自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{"Name":"ClusterId","Values":["emr-xxxxxxxx"]}]</li><li>根据clusterName过滤实例：[{"Name": "ClusterName","Values": ["cluster_name"]}]</li><li>根据ClusterStatus过滤实例：[{"Name": "ClusterStatus","Values": ["2"]}]</li>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 默认0为普通集群，2为tke集群
+	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type DescribeInstancesListRequest struct {
@@ -4452,6 +4455,9 @@ type DescribeInstancesListRequest struct {
 
 	// 自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{"Name":"ClusterId","Values":["emr-xxxxxxxx"]}]</li><li>根据clusterName过滤实例：[{"Name": "ClusterName","Values": ["cluster_name"]}]</li><li>根据ClusterStatus过滤实例：[{"Name": "ClusterStatus","Values": ["2"]}]</li>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 默认0为普通集群，2为tke集群
+	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 func (r *DescribeInstancesListRequest) ToJsonString() string {
@@ -4472,6 +4478,7 @@ func (r *DescribeInstancesListRequest) FromJsonString(s string) error {
 	delete(f, "OrderField")
 	delete(f, "Asc")
 	delete(f, "Filters")
+	delete(f, "ClusterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesListRequest has unknown keys!", "")
 	}

@@ -2151,7 +2151,7 @@ type CreateBatchQuickSignUrlRequestParams struct {
 	// 是否允许此链接中签署方批量拒签。
 	//  <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
 	// 
-	// 注：`合同组暂不支持批量拒签功能。`
+	// 注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
 	// 	 预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
@@ -2241,7 +2241,7 @@ type CreateBatchQuickSignUrlRequest struct {
 	// 是否允许此链接中签署方批量拒签。
 	//  <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
 	// 
-	// 注：`合同组暂不支持批量拒签功能。`
+	// 注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
 	// 	 预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
@@ -2397,7 +2397,7 @@ type CreateBatchSignUrlRequestParams struct {
 	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
 
 	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
-	// 注：`1. 合同组暂不支持批量拒签功能。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
+	// 注：`1. 当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
 	// 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>
@@ -2498,7 +2498,7 @@ type CreateBatchSignUrlRequest struct {
 	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
 
 	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
-	// 注：`1. 合同组暂不支持批量拒签功能。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
+	// 注：`1. 当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
 	// 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>
@@ -7050,6 +7050,9 @@ type CreateOrganizationBatchSignUrlRequestParams struct {
 
 	// 合同组Id，传入此参数则可以不传FlowIds
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
+
+	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
+	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 }
 
 type CreateOrganizationBatchSignUrlRequest struct {
@@ -7095,6 +7098,9 @@ type CreateOrganizationBatchSignUrlRequest struct {
 
 	// 合同组Id，传入此参数则可以不传FlowIds
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
+
+	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
+	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 }
 
 func (r *CreateOrganizationBatchSignUrlRequest) ToJsonString() string {
@@ -7117,6 +7123,7 @@ func (r *CreateOrganizationBatchSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "Mobile")
 	delete(f, "RecipientIds")
 	delete(f, "FlowGroupId")
+	delete(f, "CanBatchReject")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationBatchSignUrlRequest has unknown keys!", "")
 	}

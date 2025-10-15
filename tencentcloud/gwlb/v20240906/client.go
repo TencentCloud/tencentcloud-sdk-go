@@ -459,6 +459,60 @@ func (c *Client) DescribeGatewayLoadBalancersWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeGatewayLoadBalancersResourcesRequest() (request *DescribeGatewayLoadBalancersResourcesRequest) {
+    request = &DescribeGatewayLoadBalancersResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gwlb", APIVersion, "DescribeGatewayLoadBalancersResources")
+    
+    
+    return
+}
+
+func NewDescribeGatewayLoadBalancersResourcesResponse() (response *DescribeGatewayLoadBalancersResourcesResponse) {
+    response = &DescribeGatewayLoadBalancersResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGatewayLoadBalancersResources
+// 查询用户在当前地域支持可用区列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+func (c *Client) DescribeGatewayLoadBalancersResources(request *DescribeGatewayLoadBalancersResourcesRequest) (response *DescribeGatewayLoadBalancersResourcesResponse, err error) {
+    return c.DescribeGatewayLoadBalancersResourcesWithContext(context.Background(), request)
+}
+
+// DescribeGatewayLoadBalancersResources
+// 查询用户在当前地域支持可用区列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+func (c *Client) DescribeGatewayLoadBalancersResourcesWithContext(ctx context.Context, request *DescribeGatewayLoadBalancersResourcesRequest) (response *DescribeGatewayLoadBalancersResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewayLoadBalancersResourcesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gwlb", APIVersion, "DescribeGatewayLoadBalancersResources")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGatewayLoadBalancersResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGatewayLoadBalancersResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTargetGroupInstanceStatusRequest() (request *DescribeTargetGroupInstanceStatusRequest) {
     request = &DescribeTargetGroupInstanceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

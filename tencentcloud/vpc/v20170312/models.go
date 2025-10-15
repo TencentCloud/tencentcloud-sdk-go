@@ -26760,6 +26760,9 @@ type ModifyFlowLogAttributeRequestParams struct {
 
 	// 流日志实例描述。长度为不超过512个字符。
 	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
+
+	// 流日志采集周期，只支持CCN类型流日志。 取值范围（单位s）：60， 300， 600。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
 type ModifyFlowLogAttributeRequest struct {
@@ -26776,6 +26779,9 @@ type ModifyFlowLogAttributeRequest struct {
 
 	// 流日志实例描述。长度为不超过512个字符。
 	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
+
+	// 流日志采集周期，只支持CCN类型流日志。 取值范围（单位s）：60， 300， 600。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
 func (r *ModifyFlowLogAttributeRequest) ToJsonString() string {
@@ -26794,6 +26800,7 @@ func (r *ModifyFlowLogAttributeRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "FlowLogName")
 	delete(f, "FlowLogDescription")
+	delete(f, "Period")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFlowLogAttributeRequest has unknown keys!", "")
 	}

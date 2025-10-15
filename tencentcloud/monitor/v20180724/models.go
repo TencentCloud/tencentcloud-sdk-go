@@ -10525,6 +10525,68 @@ func (r *DescribePrometheusScrapeJobsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrometheusScrapeStatisticsRequestParams struct {
+	// job 类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+}
+
+type DescribePrometheusScrapeStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// job 类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+}
+
+func (r *DescribePrometheusScrapeStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusScrapeStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusScrapeStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusScrapeStatisticsResponseParams struct {
+	// 总个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 实例指标抓取速率详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceResults []*PrometheusInstanceScrapeStatistics `json:"InstanceResults,omitnil,omitempty" name:"InstanceResults"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusScrapeStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusScrapeStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusScrapeStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusScrapeStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrometheusTargetsTMPRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -14327,6 +14389,23 @@ type PrometheusClusterAgentPodConfig struct {
 	Tolerations []*Toleration `json:"Tolerations,omitnil,omitempty" name:"Tolerations"`
 }
 
+type PrometheusClusterScrapeStatistics struct {
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
+
+	// 被采集的点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScrapedRate *float64 `json:"ScrapedRate,omitnil,omitempty" name:"ScrapedRate"`
+
+	// Job列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Jobs []*PrometheusJobScrapeStatistics `json:"Jobs,omitnil,omitempty" name:"Jobs"`
+
+	// 过滤前的指标采集速率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SamplesRate *float64 `json:"SamplesRate,omitnil,omitempty" name:"SamplesRate"`
+}
+
 type PrometheusConfigItem struct {
 	// 名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -14361,6 +14440,24 @@ type PrometheusInstanceGrantInfo struct {
 
 	// 是否显示API等信息(1=有, 2=无)
 	HasApiOperation *int64 `json:"HasApiOperation,omitnil,omitempty" name:"HasApiOperation"`
+}
+
+type PrometheusInstanceScrapeStatistics struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 被采集的点数
+	ScrapedRate *float64 `json:"ScrapedRate,omitnil,omitempty" name:"ScrapedRate"`
+
+	// 集群指标列表
+	Clusters []*PrometheusClusterScrapeStatistics `json:"Clusters,omitnil,omitempty" name:"Clusters"`
+
+	// 非容器指标列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Global []*PrometheusClusterScrapeStatistics `json:"Global,omitnil,omitempty" name:"Global"`
+
+	// 过滤前的指标采集速率
+	SamplesRate *float64 `json:"SamplesRate,omitnil,omitempty" name:"SamplesRate"`
 }
 
 type PrometheusInstanceTenantUsage struct {
@@ -14600,6 +14697,21 @@ type PrometheusInstancesOverview struct {
 	ResourcePackageSpecName *string `json:"ResourcePackageSpecName,omitnil,omitempty" name:"ResourcePackageSpecName"`
 }
 
+type PrometheusJobScrapeStatistics struct {
+	// Job 名
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
+	// 被采集的点数
+	ScrapedRate *float64 `json:"ScrapedRate,omitnil,omitempty" name:"ScrapedRate"`
+
+	// 指标列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metrics []*PrometheusMetricScrapeStatistics `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// Job 类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+}
+
 type PrometheusJobTargets struct {
 	// 该Job的targets列表
 	Targets []*PrometheusTarget `json:"Targets,omitnil,omitempty" name:"Targets"`
@@ -14612,6 +14724,24 @@ type PrometheusJobTargets struct {
 
 	// 健康的target总数
 	Up *uint64 `json:"Up,omitnil,omitempty" name:"Up"`
+}
+
+type PrometheusMetricScrapeStatistics struct {
+	// 指标名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 原始数据中的点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SamplesRate *float64 `json:"SamplesRate,omitnil,omitempty" name:"SamplesRate"`
+
+	// 被采集的点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScrapedRate *float64 `json:"ScrapedRate,omitnil,omitempty" name:"ScrapedRate"`
+
+	// 是否推荐采集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsRecommended *bool `json:"IsRecommended,omitnil,omitempty" name:"IsRecommended"`
 }
 
 type PrometheusNotificationItem struct {

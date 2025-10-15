@@ -332,6 +332,72 @@ func (c *Client) GetDocumentParseResultWithContext(ctx context.Context, request 
     return
 }
 
+func NewGetMultiModalEmbeddingRequest() (request *GetMultiModalEmbeddingRequest) {
+    request = &GetMultiModalEmbeddingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "GetMultiModalEmbedding")
+    
+    
+    return
+}
+
+func NewGetMultiModalEmbeddingResponse() (response *GetMultiModalEmbeddingResponse) {
+    response = &GetMultiModalEmbeddingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetMultiModalEmbedding
+// Embedding是一种将高维数据映射到低维空间的技术，通常用于将非结构化数据，如文本、图像或音频转化为向量表示，使其更容易输入机器模型进行处理，并且向量之间的距离可以反映对象之间的相似性。 本接口有模型维度调用上限控制，单个模型qps限制10，如您有提高并发限制的需求请[联系我们](https://cloud.tencent.com/act/event/Online_service)  。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetMultiModalEmbedding(request *GetMultiModalEmbeddingRequest) (response *GetMultiModalEmbeddingResponse, err error) {
+    return c.GetMultiModalEmbeddingWithContext(context.Background(), request)
+}
+
+// GetMultiModalEmbedding
+// Embedding是一种将高维数据映射到低维空间的技术，通常用于将非结构化数据，如文本、图像或音频转化为向量表示，使其更容易输入机器模型进行处理，并且向量之间的距离可以反映对象之间的相似性。 本接口有模型维度调用上限控制，单个模型qps限制10，如您有提高并发限制的需求请[联系我们](https://cloud.tencent.com/act/event/Online_service)  。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetMultiModalEmbeddingWithContext(ctx context.Context, request *GetMultiModalEmbeddingRequest) (response *GetMultiModalEmbeddingResponse, err error) {
+    if request == nil {
+        request = NewGetMultiModalEmbeddingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "GetMultiModalEmbedding")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetMultiModalEmbedding require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetMultiModalEmbeddingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetTextEmbeddingRequest() (request *GetTextEmbeddingRequest) {
     request = &GetTextEmbeddingRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -461,6 +461,10 @@ type CodeFile struct {
 	// 节点全路径，/aaa/bbb/ccc.ipynb，由各个节点的名称组成
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 父文件夹路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
 }
 
 type CodeFileConfig struct {
@@ -510,6 +514,10 @@ type CodeFolderNode struct {
 	// 子节点列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Children []*CodeFolderNode `json:"Children,omitnil,omitempty" name:"Children"`
+
+	// 父文件夹路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
 }
 
 type CodeStudioFileActionResult struct {
@@ -2569,6 +2577,76 @@ type DLCClusterInfo struct {
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 }
 
+type DataBackfill struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 数据补录计划id
+	DataBackfillPlanId *string `json:"DataBackfillPlanId,omitnil,omitempty" name:"DataBackfillPlanId"`
+
+	// 数据补录计划名称
+	DataBackfillPlanName *string `json:"DataBackfillPlanName,omitnil,omitempty" name:"DataBackfillPlanName"`
+
+	// 补录任务集合
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 补录任务的数据配置列表
+	DataBackfillRangeList []*DataBackfillRange `json:"DataBackfillRangeList,omitnil,omitempty" name:"DataBackfillRangeList"`
+
+	// 检查父任务类型，取值范围：- NONE-全部不检查- ALL-检查全部上游父任务- MAKE_SCOPE-只在（当前补录计划）选中任务中检查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckParentType *string `json:"CheckParentType,omitnil,omitempty" name:"CheckParentType"`
+
+	// 补录是否忽略事件依赖	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkipEventListening *bool `json:"SkipEventListening,omitnil,omitempty" name:"SkipEventListening"`
+
+	// 自定义实例运行并发度, 返回为null或者不返回，则表示任务原有自依赖
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RedefineParallelNum *uint64 `json:"RedefineParallelNum,omitnil,omitempty" name:"RedefineParallelNum"`
+
+	// 自定义的工作流自依赖，yes或者no；如果不配置，则使用工作流原有自依赖
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RedefineSelfWorkflowDependency *string `json:"RedefineSelfWorkflowDependency,omitnil,omitempty" name:"RedefineSelfWorkflowDependency"`
+
+	// 调度资源组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulerResourceGroupId *string `json:"SchedulerResourceGroupId,omitnil,omitempty" name:"SchedulerResourceGroupId"`
+
+	// 集成资源组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntegrationResourceGroupId *string `json:"IntegrationResourceGroupId,omitnil,omitempty" name:"IntegrationResourceGroupId"`
+
+	// 补录自定义的生成周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RedefineCycleType *string `json:"RedefineCycleType,omitnil,omitempty" name:"RedefineCycleType"`
+
+	// 自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RedefineParamList []*KVPair `json:"RedefineParamList,omitnil,omitempty" name:"RedefineParamList"`
+
+	// 补录任务的执行开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 补录任务的执行结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 创建用户id
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 补录计划实例完成百分数
+	CompletePercent *uint64 `json:"CompletePercent,omitnil,omitempty" name:"CompletePercent"`
+
+	// 补录计划实例成功百分数
+	SuccessPercent *uint64 `json:"SuccessPercent,omitnil,omitempty" name:"SuccessPercent"`
+
+	// 补录是实例数据时间顺序，生效必须满足2个条件:1. 必须同周期任务2. 优先按依赖关系执行，无依赖关系影响的情况下按配置执行顺序执行 可选值- NORMAL: 不设置- ORDER: 顺序- REVERSE: 逆序不设置默认为NORMAL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataTimeOrder *string `json:"DataTimeOrder,omitnil,omitempty" name:"DataTimeOrder"`
+}
+
 type DataBackfillRange struct {
 	// 开始日期，格式yyyy-MM-dd 表示从指定日期的00:00:00开始
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4192,6 +4270,141 @@ func (r *GetCodeFileResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetCodeFolderRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹id
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+}
+
+type GetCodeFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹id
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+}
+
+func (r *GetCodeFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCodeFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "FolderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCodeFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetCodeFolderResponseParams struct {
+	// codestudio文件夹
+	Data *CodeFolderNode `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetCodeFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *GetCodeFolderResponseParams `json:"Response"`
+}
+
+func (r *GetCodeFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCodeFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDataBackfillPlanRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 补录计划id
+	DataBackfillPlanId *string `json:"DataBackfillPlanId,omitnil,omitempty" name:"DataBackfillPlanId"`
+
+	// 展示时区，默认UTC+8
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+}
+
+type GetDataBackfillPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 补录计划id
+	DataBackfillPlanId *string `json:"DataBackfillPlanId,omitnil,omitempty" name:"DataBackfillPlanId"`
+
+	// 展示时区，默认UTC+8
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+}
+
+func (r *GetDataBackfillPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDataBackfillPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "DataBackfillPlanId")
+	delete(f, "TimeZone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDataBackfillPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDataBackfillPlanResponseParams struct {
+	// 补录详情
+	Data *DataBackfill `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetDataBackfillPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *GetDataBackfillPlanResponseParams `json:"Response"`
+}
+
+func (r *GetDataBackfillPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDataBackfillPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetDataSourceRelatedTasksRequestParams struct {
 	// 数据源id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -4851,6 +5064,70 @@ func (r *GetResourceGroupMetricsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetSQLFolderRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹id
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+}
+
+type GetSQLFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹id
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+}
+
+func (r *GetSQLFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetSQLFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "FolderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSQLFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetSQLFolderResponseParams struct {
+	// sql文件夹
+	Data *SQLFolderNode `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetSQLFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *GetSQLFolderResponseParams `json:"Response"`
+}
+
+func (r *GetSQLFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetSQLFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetSQLScriptRequestParams struct {
 	// 探索脚本Id
 	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
@@ -5461,8 +5738,12 @@ type GrantMemberProjectRoleRequestParams struct {
 	// 用户id
 	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
 
-	// 角色id
-	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+	// 角色id列表，目前支持的项目角色有
+	// - 308335260274237440 (项目管理员)
+	// - 308335260676890624 (数据工程师)
+	// - 308335260844662784 (运维工程师)
+	// - 308335260945326080 (普通成员)
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
 type GrantMemberProjectRoleRequest struct {
@@ -5474,8 +5755,12 @@ type GrantMemberProjectRoleRequest struct {
 	// 用户id
 	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
 
-	// 角色id
-	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+	// 角色id列表，目前支持的项目角色有
+	// - 308335260274237440 (项目管理员)
+	// - 308335260676890624 (数据工程师)
+	// - 308335260844662784 (运维工程师)
+	// - 308335260945326080 (普通成员)
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
 func (r *GrantMemberProjectRoleRequest) ToJsonString() string {
@@ -5492,7 +5777,7 @@ func (r *GrantMemberProjectRoleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "UserUin")
-	delete(f, "RoleId")
+	delete(f, "RoleIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GrantMemberProjectRoleRequest has unknown keys!", "")
 	}
@@ -10773,8 +11058,12 @@ type RemoveMemberProjectRoleRequestParams struct {
 	// 用户id
 	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
 
-	// 角色id
-	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+	// 角色id列表，目前支持的项目角色有
+	// - 308335260274237440 (项目管理员)
+	// - 308335260676890624 (数据工程师)
+	// - 308335260844662784 (运维工程师)
+	// - 308335260945326080 (普通成员)
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
 type RemoveMemberProjectRoleRequest struct {
@@ -10786,8 +11075,12 @@ type RemoveMemberProjectRoleRequest struct {
 	// 用户id
 	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
 
-	// 角色id
-	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+	// 角色id列表，目前支持的项目角色有
+	// - 308335260274237440 (项目管理员)
+	// - 308335260676890624 (数据工程师)
+	// - 308335260844662784 (运维工程师)
+	// - 308335260945326080 (普通成员)
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
 func (r *RemoveMemberProjectRoleRequest) ToJsonString() string {
@@ -10804,7 +11097,7 @@ func (r *RemoveMemberProjectRoleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "UserUin")
-	delete(f, "RoleId")
+	delete(f, "RoleIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveMemberProjectRoleRequest has unknown keys!", "")
 	}
@@ -11480,6 +11773,82 @@ type SqlCreateResult struct {
 	// 文件夹id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+}
+
+// Predefined struct for user
+type StartOpsTasksRequestParams struct {
+	// 所属项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务Id列表
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 启动时是否补录上次暂停到当前的中间实例，默认false即不补录
+	EnableDataBackfill *bool `json:"EnableDataBackfill,omitnil,omitempty" name:"EnableDataBackfill"`
+}
+
+type StartOpsTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所属项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务Id列表
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 启动时是否补录上次暂停到当前的中间实例，默认false即不补录
+	EnableDataBackfill *bool `json:"EnableDataBackfill,omitnil,omitempty" name:"EnableDataBackfill"`
+}
+
+func (r *StartOpsTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartOpsTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskIds")
+	delete(f, "EnableDataBackfill")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartOpsTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartOpsTasksResponseParams struct {
+	// 异步操作结果
+	Data *StartTasks `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartOpsTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *StartOpsTasksResponseParams `json:"Response"`
+}
+
+func (r *StartOpsTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartOpsTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StartTasks struct {
+	// 任务启动是否成功
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 // Predefined struct for user

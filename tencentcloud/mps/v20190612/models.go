@@ -11318,7 +11318,9 @@ type DescribeTasksRequestParams struct {
 	// - FINISH（已完成）。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 任务结束时子任务是否有失败。
+	// 任务结束时子任务是否有失败。如果不传则忽略。
+	// <li>false: 过滤子任务没有失败的任务；</li>
+	// <li>true: 过滤子任务有失败的任务。</li>
 	SubTaskHasFailed *bool `json:"SubTaskHasFailed,omitnil,omitempty" name:"SubTaskHasFailed"`
 
 	// 返回记录条数，默认值：10，最大值：100。
@@ -11343,7 +11345,9 @@ type DescribeTasksRequest struct {
 	// - FINISH（已完成）。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 任务结束时子任务是否有失败。
+	// 任务结束时子任务是否有失败。如果不传则忽略。
+	// <li>false: 过滤子任务没有失败的任务；</li>
+	// <li>true: 过滤子任务有失败的任务。</li>
 	SubTaskHasFailed *bool `json:"SubTaskHasFailed,omitnil,omitempty" name:"SubTaskHasFailed"`
 
 	// 返回记录条数，默认值：10，最大值：100。

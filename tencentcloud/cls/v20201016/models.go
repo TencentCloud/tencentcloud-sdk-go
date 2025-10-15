@@ -3965,17 +3965,17 @@ type CreateTopicRequestParams struct {
 	// - 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志主题名称
+	// 主题名称
 	// 名称限制
 	// - 不能为空字符串
 	// - 不能包含字符'|'
 	// - 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 日志主题分区个数。默认创建1个，最大支持创建10个分区。
+	// 主题分区个数。默认创建1个，最大支持创建10个分区。
 	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否开启自动分裂，默认值为true
@@ -3984,21 +3984,27 @@ type CreateTopicRequestParams struct {
 	// 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
-	// 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
+	// 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
 	// 存储时间，单位天。
-	// - 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-	// - 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+	// - 日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
+	// - 日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+	// - 指标主题：支持1至3600天，值为3640时代表永久保存。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 日志主题描述
+	// 主题描述
 	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
-	// 0：关闭日志沉降。
-	// 非0：开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
-	// 仅在StorageType为 hot 时生效。
+	// 0：日志主题关闭日志沉降。
+	// 非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
+	// 仅在StorageType为 hot 时生效，指标主题不支持该配置。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
+
+	// 主题类型
+	// - 0:日志主题，默认值
+	// - 1:指标主题
+	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
 	// - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
@@ -4007,10 +4013,10 @@ type CreateTopicRequestParams struct {
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 免鉴权开关。 false：关闭； true：开启。默认为false。
-	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。指标主题不支持该配置。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
-	// 日志主题扩展信息
+	// 主题扩展信息
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 }
 
@@ -4021,17 +4027,17 @@ type CreateTopicRequest struct {
 	// - 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志主题名称
+	// 主题名称
 	// 名称限制
 	// - 不能为空字符串
 	// - 不能包含字符'|'
 	// - 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 日志主题分区个数。默认创建1个，最大支持创建10个分区。
+	// 主题分区个数。默认创建1个，最大支持创建10个分区。
 	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否开启自动分裂，默认值为true
@@ -4040,21 +4046,27 @@ type CreateTopicRequest struct {
 	// 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
-	// 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
+	// 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
 	// 存储时间，单位天。
-	// - 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-	// - 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+	// - 日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
+	// - 日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+	// - 指标主题：支持1至3600天，值为3640时代表永久保存。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 日志主题描述
+	// 主题描述
 	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
-	// 0：关闭日志沉降。
-	// 非0：开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
-	// 仅在StorageType为 hot 时生效。
+	// 0：日志主题关闭日志沉降。
+	// 非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
+	// 仅在StorageType为 hot 时生效，指标主题不支持该配置。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
+
+	// 主题类型
+	// - 0:日志主题，默认值
+	// - 1:指标主题
+	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
 	// - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
@@ -4063,10 +4075,10 @@ type CreateTopicRequest struct {
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 免鉴权开关。 false：关闭； true：开启。默认为false。
-	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。指标主题不支持该配置。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
-	// 日志主题扩展信息
+	// 主题扩展信息
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 }
 
@@ -4092,6 +4104,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "Period")
 	delete(f, "Describes")
 	delete(f, "HotPeriod")
+	delete(f, "BizType")
 	delete(f, "TopicId")
 	delete(f, "IsWebTracking")
 	delete(f, "Extends")
@@ -4103,7 +4116,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicResponseParams struct {
-	// 日志主题ID
+	// 主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5734,16 +5747,14 @@ func (r *DeleteShipperResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTopicRequestParams struct {
-	// 日志主题ID
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// 主题ID- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type DeleteTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题ID
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// 主题ID- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
@@ -8980,13 +8991,13 @@ func (r *DescribeShippersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicsRequestParams struct {
-	// <ul><li>topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
+	// <ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
 	// <li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-	// <li>topicId 按照【日志主题ID】进行过滤。类型：String。必选：否</li>
+	// <li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li>
 	// <li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li>
 	// <li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
 	// <li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
-	// <li>storageType 按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
+	// <li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
 	// 注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -9012,13 +9023,13 @@ type DescribeTopicsRequestParams struct {
 type DescribeTopicsRequest struct {
 	*tchttp.BaseRequest
 	
-	// <ul><li>topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
+	// <ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
 	// <li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-	// <li>topicId 按照【日志主题ID】进行过滤。类型：String。必选：否</li>
+	// <li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li>
 	// <li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li>
 	// <li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
 	// <li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
-	// <li>storageType 按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
+	// <li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
 	// 注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -9066,7 +9077,7 @@ func (r *DescribeTopicsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicsResponseParams struct {
-	// 日志主题列表
+	// 主题列表
 	Topics []*TopicInfo `json:"Topics,omitnil,omitempty" name:"Topics"`
 
 	// 总数目
@@ -12633,18 +12644,18 @@ func (r *ModifyShipperResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTopicRequestParams struct {
-	// 日志主题ID
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// 主题ID
+	// - 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志主题名称
+	// 主题名称
 	// 输入限制：
 	// - 不能为空字符串
 	// - 不能包含字符'|'
 	// - 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，并且不能有重复的键值对。
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 主题是否开启采集，true：开启采集；false：关闭采集。
@@ -12654,28 +12665,29 @@ type ModifyTopicRequestParams struct {
 	// 是否开启自动分裂
 	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
-	// 若开启最大分裂，该主题能够能够允许的最大分区数；
+	// 若开启最大分裂，该主题能够允许的最大分区数；
 	// 默认为50；必须为正数
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
 	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 日志主题描述
+	// 主题描述
 	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
-	// 0：关闭日志沉降。
-	// 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
+	// 0：日志主题关闭日志沉降。
+	// 非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。
+	// 仅在StorageType为 hot 时生效，指标主题不支持该配置。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
 	// 免鉴权开关。 false：关闭； true：开启。
 	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
-	// 日志主题扩展信息
+	// 主题扩展信息
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 
-	// 日志主题分区数量。
+	// 主题分区数量。
 	// 默认为1；
 	// 取值范围及约束：
 	// - 当输入值<=0，系统自动调整为1。
@@ -12691,18 +12703,18 @@ type ModifyTopicRequestParams struct {
 type ModifyTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题ID
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// 主题ID
+	// - 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志主题名称
+	// 主题名称
 	// 输入限制：
 	// - 不能为空字符串
 	// - 不能包含字符'|'
 	// - 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，并且不能有重复的键值对。
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 主题是否开启采集，true：开启采集；false：关闭采集。
@@ -12712,28 +12724,29 @@ type ModifyTopicRequest struct {
 	// 是否开启自动分裂
 	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
-	// 若开启最大分裂，该主题能够能够允许的最大分区数；
+	// 若开启最大分裂，该主题能够允许的最大分区数；
 	// 默认为50；必须为正数
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
 	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 日志主题描述
+	// 主题描述
 	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
-	// 0：关闭日志沉降。
-	// 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
+	// 0：日志主题关闭日志沉降。
+	// 非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。
+	// 仅在StorageType为 hot 时生效，指标主题不支持该配置。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
 	// 免鉴权开关。 false：关闭； true：开启。
 	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
-	// 日志主题扩展信息
+	// 主题扩展信息
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 
-	// 日志主题分区数量。
+	// 主题分区数量。
 	// 默认为1；
 	// 取值范围及约束：
 	// - 当输入值<=0，系统自动调整为1。

@@ -80,7 +80,7 @@ const (
 	// 边缘客户端证书已过期，暂不支持下发过期证书。
 	FAILEDOPERATION_EDGECLIENTCERTIFICATEHASEXPIRED = "FailedOperation.EdgeClientCertificateHasExpired"
 
-	// 调用 DNSPod 失败，请稍后重试，若无法解决，请联系智能客服或提交工单。
+	// 调用 DNSPod 失败，请稍后重试，若无法解决，请提交工单。
 	FAILEDOPERATION_FAILEDTOCALLDNSPOD = "FailedOperation.FailedToCallDNSPod"
 
 	// 有其他任务正在部署中，请稍后重试。

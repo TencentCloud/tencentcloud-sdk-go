@@ -3621,6 +3621,9 @@ type DifferenceData struct {
 	// 目标端值
 	DstItem *string `json:"DstItem,omitnil,omitempty" name:"DstItem"`
 
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
 	// 更新时间
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 }

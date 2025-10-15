@@ -590,6 +590,73 @@ func (r *DescribeGatewayLoadBalancersRequest) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGatewayLoadBalancersResourcesRequestParams struct {
+	// 返回可用区资源列表数目，默认20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 返回可用区资源列表起始偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeGatewayLoadBalancersResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回可用区资源列表数目，默认20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 返回可用区资源列表起始偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeGatewayLoadBalancersResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGatewayLoadBalancersResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGatewayLoadBalancersResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGatewayLoadBalancersResourcesResponseParams struct {
+	// 可用区支持的资源列表。
+	ZoneResourceSet []*ZoneResource `json:"ZoneResourceSet,omitnil,omitempty" name:"ZoneResourceSet"`
+
+	// 可用区资源列表数目。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGatewayLoadBalancersResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGatewayLoadBalancersResourcesResponseParams `json:"Response"`
+}
+
+func (r *DescribeGatewayLoadBalancersResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGatewayLoadBalancersResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGatewayLoadBalancersResponseParams struct {
 	// 满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
@@ -1681,4 +1748,9 @@ type TargetGroupInstanceStatus struct {
 	// ● health：表示健康。
 	// ● unhealth：表示异常。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ZoneResource struct {
+	// 主可用区
+	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 }

@@ -522,6 +522,87 @@ func (r *GetDocumentParseResultResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetMultiModalEmbeddingRequestParams struct {
+	// 模型名称，支持WeCLIPv2-Base和WeCLIPv2-Large
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 需进行向量化的文本集，一次输入限10条，单条文本长度限72
+	Texts []*string `json:"Texts,omitnil,omitempty" name:"Texts"`
+
+	// 输入图片，base64编码格式，一次输入限制8个，单张图片限制1M
+	ImageData []*string `json:"ImageData,omitnil,omitempty" name:"ImageData"`
+
+	// 输入图片url，一次输入限8个，推荐cos地址，速度更快
+	ImageUrl []*string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+}
+
+type GetMultiModalEmbeddingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型名称，支持WeCLIPv2-Base和WeCLIPv2-Large
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 需进行向量化的文本集，一次输入限10条，单条文本长度限72
+	Texts []*string `json:"Texts,omitnil,omitempty" name:"Texts"`
+
+	// 输入图片，base64编码格式，一次输入限制8个，单张图片限制1M
+	ImageData []*string `json:"ImageData,omitnil,omitempty" name:"ImageData"`
+
+	// 输入图片url，一次输入限8个，推荐cos地址，速度更快
+	ImageUrl []*string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+}
+
+func (r *GetMultiModalEmbeddingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMultiModalEmbeddingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelName")
+	delete(f, "Texts")
+	delete(f, "ImageData")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMultiModalEmbeddingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetMultiModalEmbeddingResponseParams struct {
+	// 多模态特征向量输出
+	Data *MultiModalEmbeddingData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 消耗的tokens和输入图片数量
+	Usage *MultiModalUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetMultiModalEmbeddingResponse struct {
+	*tchttp.BaseResponse
+	Response *GetMultiModalEmbeddingResponseParams `json:"Response"`
+}
+
+func (r *GetMultiModalEmbeddingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMultiModalEmbeddingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetTextEmbeddingRequestParams struct {
 	// 模型名称，可选模型列表：bge-base-zh-v1.5,Conan-embedding-v1,bge-m3,KaLM-embedding-multilingual-mini-v1,Qwen3-Embedding-0.6B。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
@@ -600,6 +681,24 @@ type Message struct {
 
 	// 模型生成的工具调用
 	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
+}
+
+type MultiModalEmbeddingData struct {
+	// 文本特征向量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextEmbeddings []*EmbeddingData `json:"TextEmbeddings,omitnil,omitempty" name:"TextEmbeddings"`
+
+	// 图片特征向量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageEmbeddings []*EmbeddingData `json:"ImageEmbeddings,omitnil,omitempty" name:"ImageEmbeddings"`
+}
+
+type MultiModalUsage struct {
+	// 消耗tokens
+	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+
+	// 输入图片数量
+	TotalImages *uint64 `json:"TotalImages,omitnil,omitempty" name:"TotalImages"`
 }
 
 type OnlineSearchOptions struct {

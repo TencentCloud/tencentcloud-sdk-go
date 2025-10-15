@@ -659,6 +659,74 @@ func (c *Client) CreateResourceConfigWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateVariableRequest() (request *CreateVariableRequest) {
+    request = &CreateVariableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "CreateVariable")
+    
+    
+    return
+}
+
+func NewCreateVariableResponse() (response *CreateVariableResponse) {
+    response = &CreateVariableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVariable
+// 创建变量 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CREATEVARIABLEEXISTS = "InvalidParameter.CreateVariableExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_VARIABLENAME = "InvalidParameterValue.VariableName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_VARIABLES = "LimitExceeded.Variables"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) CreateVariable(request *CreateVariableRequest) (response *CreateVariableResponse, err error) {
+    return c.CreateVariableWithContext(context.Background(), request)
+}
+
+// CreateVariable
+// 创建变量 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CREATEVARIABLEEXISTS = "InvalidParameter.CreateVariableExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_VARIABLENAME = "InvalidParameterValue.VariableName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_VARIABLES = "LimitExceeded.Variables"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) CreateVariableWithContext(ctx context.Context, request *CreateVariableRequest) (response *CreateVariableResponse, err error) {
+    if request == nil {
+        request = NewCreateVariableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CreateVariable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVariable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVariableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWorkSpaceRequest() (request *CreateWorkSpaceRequest) {
     request = &CreateWorkSpaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2107,6 +2175,70 @@ func (c *Client) DescribeTreeResourcesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeTreeResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVariablesRequest() (request *DescribeVariablesRequest) {
+    request = &DescribeVariablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeVariables")
+    
+    
+    return
+}
+
+func NewDescribeVariablesResponse() (response *DescribeVariablesResponse) {
+    response = &DescribeVariablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVariables
+// 变量列表展示
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATASOURCECONNECTIONFAILED = "FailedOperation.DataSourceConnectionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeVariables(request *DescribeVariablesRequest) (response *DescribeVariablesResponse, err error) {
+    return c.DescribeVariablesWithContext(context.Background(), request)
+}
+
+// DescribeVariables
+// 变量列表展示
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATASOURCECONNECTIONFAILED = "FailedOperation.DataSourceConnectionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeVariablesWithContext(ctx context.Context, request *DescribeVariablesRequest) (response *DescribeVariablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeVariablesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeVariables")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVariables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVariablesResponse()
     err = c.Send(request, response)
     return
 }

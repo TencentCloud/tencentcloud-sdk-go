@@ -4011,7 +4011,7 @@ type InternetAccessible struct {
 	// <li> WanIP：普通公网IP。</li>
 	// <li> HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
 	// <li> AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646) 。  </li> 
-	// 如需为资源分配公网IPv4地址，请指定公网IPv4地址类型。
+	// 如需为资源分配弹性公网IPv4地址，请指定弹性公网IPv4地址类型。如只使用WanIP，不需要设置此字段。
 	// 
 	// 精品IP 高防IP功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
 	IPv4AddressType *string `json:"IPv4AddressType,omitnil,omitempty" name:"IPv4AddressType"`

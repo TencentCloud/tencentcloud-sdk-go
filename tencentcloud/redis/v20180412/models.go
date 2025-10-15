@@ -1739,14 +1739,14 @@ func (r *DeleteInstanceAccountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteParamTemplateRequestParams struct {
-	// 参数模板 ID。请登录 [Redis 控制台的参数模版](https://console.cloud.tencent.com/redis/templates)页面获取模版 ID。
+	// 参数模板 ID。请登录 [Redis 控制台的参数模板](https://console.cloud.tencent.com/redis/templates)页面获取模板 ID。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type DeleteParamTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模板 ID。请登录 [Redis 控制台的参数模版](https://console.cloud.tencent.com/redis/templates)页面获取模版 ID。
+	// 参数模板 ID。请登录 [Redis 控制台的参数模板](https://console.cloud.tencent.com/redis/templates)页面获取模板 ID。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 

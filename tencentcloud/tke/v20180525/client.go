@@ -2928,17 +2928,8 @@ func NewDeleteAddonResponse() (response *DeleteAddonResponse) {
 // 删除一个addon
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAddon(request *DeleteAddonRequest) (response *DeleteAddonResponse, err error) {
     return c.DeleteAddonWithContext(context.Background(), request)
 }
@@ -2947,17 +2938,8 @@ func (c *Client) DeleteAddon(request *DeleteAddonRequest) (response *DeleteAddon
 // 删除一个addon
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAddonWithContext(ctx context.Context, request *DeleteAddonRequest) (response *DeleteAddonResponse, err error) {
     if request == nil {
         request = NewDeleteAddonRequest()
@@ -4960,17 +4942,7 @@ func NewDescribeAddonResponse() (response *DescribeAddonResponse) {
 // 获取addon列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAddon(request *DescribeAddonRequest) (response *DescribeAddonResponse, err error) {
     return c.DescribeAddonWithContext(context.Background(), request)
 }
@@ -4979,17 +4951,7 @@ func (c *Client) DescribeAddon(request *DescribeAddonRequest) (response *Describ
 // 获取addon列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAddonWithContext(ctx context.Context, request *DescribeAddonRequest) (response *DescribeAddonResponse, err error) {
     if request == nil {
         request = NewDescribeAddonRequest()
@@ -12268,9 +12230,7 @@ func NewInstallAddonResponse() (response *InstallAddonResponse) {
 // 为目标集群安装一个addon
 //
 // 可能返回的错误码:
-//  INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
-//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) InstallAddon(request *InstallAddonRequest) (response *InstallAddonResponse, err error) {
     return c.InstallAddonWithContext(context.Background(), request)
 }
@@ -12279,9 +12239,7 @@ func (c *Client) InstallAddon(request *InstallAddonRequest) (response *InstallAd
 // 为目标集群安装一个addon
 //
 // 可能返回的错误码:
-//  INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
-//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) InstallAddonWithContext(ctx context.Context, request *InstallAddonRequest) (response *InstallAddonResponse, err error) {
     if request == nil {
         request = NewInstallAddonRequest()
@@ -14950,13 +14908,7 @@ func NewUpdateAddonResponse() (response *UpdateAddonResponse) {
 // 更新一个addon的参数和版本
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
-//  FAILEDOPERATION_DB = "FailedOperation.Db"
-//  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
-//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
-//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
-//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) UpdateAddon(request *UpdateAddonRequest) (response *UpdateAddonResponse, err error) {
     return c.UpdateAddonWithContext(context.Background(), request)
 }
@@ -14965,13 +14917,7 @@ func (c *Client) UpdateAddon(request *UpdateAddonRequest) (response *UpdateAddon
 // 更新一个addon的参数和版本
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
-//  FAILEDOPERATION_DB = "FailedOperation.Db"
-//  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
-//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
-//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
-//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) UpdateAddonWithContext(ctx context.Context, request *UpdateAddonRequest) (response *UpdateAddonResponse, err error) {
     if request == nil {
         request = NewUpdateAddonRequest()

@@ -7272,6 +7272,9 @@ type DescribeGovernanceServicesRequestParams struct {
 
 	// 是否开启同步到全局注册中心	
 	SyncToGlobalRegistry *string `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
+
+	// 过滤筛选条件
+	StatusFilter []*Filter `json:"StatusFilter,omitnil,omitempty" name:"StatusFilter"`
 }
 
 type DescribeGovernanceServicesRequest struct {
@@ -7309,6 +7312,9 @@ type DescribeGovernanceServicesRequest struct {
 
 	// 是否开启同步到全局注册中心	
 	SyncToGlobalRegistry *string `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
+
+	// 过滤筛选条件
+	StatusFilter []*Filter `json:"StatusFilter,omitnil,omitempty" name:"StatusFilter"`
 }
 
 func (r *DescribeGovernanceServicesRequest) ToJsonString() string {
@@ -7334,6 +7340,7 @@ func (r *DescribeGovernanceServicesRequest) FromJsonString(s string) error {
 	delete(f, "Host")
 	delete(f, "OnlyExistHealthyInstance")
 	delete(f, "SyncToGlobalRegistry")
+	delete(f, "StatusFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGovernanceServicesRequest has unknown keys!", "")
 	}
@@ -9057,6 +9064,12 @@ type GovernanceService struct {
 
 	// 是否开启同步到全局注册中心
 	SyncToGlobalRegistry *bool `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
+
+	// 隔离实例数
+	IsolateInstanceCount *uint64 `json:"IsolateInstanceCount,omitnil,omitempty" name:"IsolateInstanceCount"`
+
+	// 服务健康状态
+	ServiceStatus *int64 `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
 }
 
 type GovernanceServiceContract struct {

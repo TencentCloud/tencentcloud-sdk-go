@@ -7720,14 +7720,14 @@ type VoiceCloneRequestParams struct {
 	// TRTC的SdkAppId
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// TTS的API密钥
-	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
-
 	// 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
 
 	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
 	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
 	// 声音克隆的参考文本，为参考音频对应的文字。
 	PromptText *string `json:"PromptText,omitnil,omitempty" name:"PromptText"`
@@ -7739,14 +7739,14 @@ type VoiceCloneRequest struct {
 	// TRTC的SdkAppId
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// TTS的API密钥
-	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
-
 	// 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
 
 	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
 	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
+
+	// TTS的API密钥
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
 	// 声音克隆的参考文本，为参考音频对应的文字。
 	PromptText *string `json:"PromptText,omitnil,omitempty" name:"PromptText"`
@@ -7765,9 +7765,9 @@ func (r *VoiceCloneRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SdkAppId")
-	delete(f, "APIKey")
 	delete(f, "VoiceName")
 	delete(f, "PromptAudio")
+	delete(f, "APIKey")
 	delete(f, "PromptText")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoiceCloneRequest has unknown keys!", "")

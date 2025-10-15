@@ -84,55 +84,57 @@ type AccelerationDomain struct {
 	// <li>process：部署中；</li>
 	// <li>offline：已停用；</li>
 	// <li>forbidden：已封禁；</li>
-	// <li>init：未生效，待激活站点；</li>
+	// <li>init：未生效，待激活站点。</li>
 	DomainStatus *string `json:"DomainStatus,omitnil,omitempty" name:"DomainStatus"`
 
-	// 源站信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginDetail *OriginDetail `json:"OriginDetail,omitnil,omitempty" name:"OriginDetail"`
+	// CNAME 地址。
+	Cname *string `json:"Cname,omitnil,omitempty" name:"Cname"`
 
-	// 回源协议，取值有：
-	// <li>FOLLOW: 协议跟随；</li>
-	// <li>HTTP: HTTP协议回源；</li>
-	// <li>HTTPS: HTTPS协议回源。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginProtocol *string `json:"OriginProtocol,omitnil,omitempty" name:"OriginProtocol"`
-
-	// 域名证书信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Certificate *AccelerationDomainCertificate `json:"Certificate,omitnil,omitempty" name:"Certificate"`
-
-	// HTTP回源端口。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	HttpOriginPort *uint64 `json:"HttpOriginPort,omitnil,omitempty" name:"HttpOriginPort"`
-
-	// HTTPS回源端口。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	HttpsOriginPort *uint64 `json:"HttpsOriginPort,omitnil,omitempty" name:"HttpsOriginPort"`
-
-	// IPv6状态，取值有：
+	// IPv6 状态，取值有：
 	// <li>follow：遵循站点IPv6配置；</li>
 	// <li>on：开启状态；</li>
 	// <li>off：关闭状态。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPv6Status *string `json:"IPv6Status,omitnil,omitempty" name:"IPv6Status"`
 
-	// CNAME 地址。
-	Cname *string `json:"Cname,omitnil,omitempty" name:"Cname"`
-
-	// 加速域名归属权验证状态，取值有： <li>pending：待验证；</li> <li>finished：已完成验证。</li>	
+	// 加速域名归属权验证状态，取值有： 
+	// <li>pending：待验证；</li>
+	// <li>finished：已完成验证。</li>	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentificationStatus *string `json:"IdentificationStatus,omitnil,omitempty" name:"IdentificationStatus"`
+
+	// 加速域名需进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil,omitempty" name:"OwnershipVerification"`
+
+	// 源站信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginDetail *OriginDetail `json:"OriginDetail,omitnil,omitempty" name:"OriginDetail"`
+
+	// 回源协议，取值有：
+	// <li>FOLLOW：协议跟随；</li>
+	// <li>HTTP：HTTP协议回源；</li>
+	// <li>HTTPS：HTTPS协议回源。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginProtocol *string `json:"OriginProtocol,omitnil,omitempty" name:"OriginProtocol"`
+
+	// HTTP 回源端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpOriginPort *uint64 `json:"HttpOriginPort,omitnil,omitempty" name:"HttpOriginPort"`
+
+	// HTTPS 回源端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpsOriginPort *uint64 `json:"HttpsOriginPort,omitnil,omitempty" name:"HttpsOriginPort"`
+
+	// 加速域名证书信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Certificate *AccelerationDomainCertificate `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
 	// 创建时间。
 	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 修改时间。
 	ModifiedOn *string `json:"ModifiedOn,omitnil,omitempty" name:"ModifiedOn"`
-
-	// 当域名需要进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil,omitempty" name:"OwnershipVerification"`
 }
 
 type AccelerationDomainCertificate struct {

@@ -3233,6 +3233,116 @@ func (r *CreateTWeTalkProductConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateTWeTalkProductConfigV2RequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 名称
+	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
+
+	// 系统基础配置，当需要使用系统三段式配置时配置。
+	BasicConfig *TalkBasicConfigInfo `json:"BasicConfig,omitnil,omitempty" name:"BasicConfig"`
+
+	// 自定义语音识别配置
+	STTConfig *TalkSTTConfigInfo `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// 自定义大模型配置
+	LLMConfig *TalkLLMConfigInfo `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 语音合成配置
+	TTSConfig *TalkTTSConfigInfo `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 会话配置
+	ConversationConfig *TalkConversationConfigInfo `json:"ConversationConfig,omitnil,omitempty" name:"ConversationConfig"`
+}
+
+type CreateTWeTalkProductConfigV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 名称
+	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
+
+	// 系统基础配置，当需要使用系统三段式配置时配置。
+	BasicConfig *TalkBasicConfigInfo `json:"BasicConfig,omitnil,omitempty" name:"BasicConfig"`
+
+	// 自定义语音识别配置
+	STTConfig *TalkSTTConfigInfo `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// 自定义大模型配置
+	LLMConfig *TalkLLMConfigInfo `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 语音合成配置
+	TTSConfig *TalkTTSConfigInfo `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 会话配置
+	ConversationConfig *TalkConversationConfigInfo `json:"ConversationConfig,omitnil,omitempty" name:"ConversationConfig"`
+}
+
+func (r *CreateTWeTalkProductConfigV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTWeTalkProductConfigV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "TargetLanguage")
+	delete(f, "ConfigName")
+	delete(f, "BasicConfig")
+	delete(f, "STTConfig")
+	delete(f, "LLMConfig")
+	delete(f, "TTSConfig")
+	delete(f, "ConversationConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeTalkProductConfigV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTWeTalkProductConfigV2ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTWeTalkProductConfigV2Response struct {
+	*tchttp.BaseResponse
+	Response *CreateTWeTalkProductConfigV2ResponseParams `json:"Response"`
+}
+
+func (r *CreateTWeTalkProductConfigV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTWeTalkProductConfigV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTopicPolicyRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -8804,6 +8914,84 @@ func (r *DescribeTWeTalkProductConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTWeTalkProductConfigV2RequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 是否脱敏
+	IncludeCredentials *bool `json:"IncludeCredentials,omitnil,omitempty" name:"IncludeCredentials"`
+}
+
+type DescribeTWeTalkProductConfigV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 是否脱敏
+	IncludeCredentials *bool `json:"IncludeCredentials,omitnil,omitempty" name:"IncludeCredentials"`
+}
+
+func (r *DescribeTWeTalkProductConfigV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeTalkProductConfigV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "TargetLanguage")
+	delete(f, "IncludeCredentials")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTWeTalkProductConfigV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTWeTalkProductConfigV2ResponseParams struct {
+	// 配置信息
+	Data *TalkProductConfigV2Info `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTWeTalkProductConfigV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeTWeTalkProductConfigV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeTWeTalkProductConfigV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeTalkProductConfigV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTopicPolicyRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -11081,6 +11269,101 @@ func (r *GetTWeTalkProductConfigListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetTWeTalkProductConfigListV2RequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 是否脱敏
+	IncludeCredentials *bool `json:"IncludeCredentials,omitnil,omitempty" name:"IncludeCredentials"`
+
+	// 页码
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数据大小， 10-100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type GetTWeTalkProductConfigListV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 是否脱敏
+	IncludeCredentials *bool `json:"IncludeCredentials,omitnil,omitempty" name:"IncludeCredentials"`
+
+	// 页码
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数据大小， 10-100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *GetTWeTalkProductConfigListV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeTalkProductConfigListV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "TargetLanguage")
+	delete(f, "IncludeCredentials")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTWeTalkProductConfigListV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTWeTalkProductConfigListV2ResponseParams struct {
+	// 配置信息
+	Data []*TalkProductConfigV2Info `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTWeTalkProductConfigListV2Response struct {
+	*tchttp.BaseResponse
+	Response *GetTWeTalkProductConfigListV2ResponseParams `json:"Response"`
+}
+
+func (r *GetTWeTalkProductConfigListV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeTalkProductConfigListV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetTopicRuleListRequestParams struct {
 	// 请求的页数
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
@@ -11230,6 +11513,14 @@ func (r *GetWechatDeviceTicketResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetWechatDeviceTicketResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type IdleResponseInfo struct {
+	// 重试次数（1-3）
+	RetryCount *int64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
+
+	// 响应信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
 // Predefined struct for user
@@ -13926,6 +14217,116 @@ func (r *ModifyTWeTalkProductConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyTWeTalkProductConfigV2RequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 名称
+	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
+
+	// 系统基础配置，当需要使用系统三段式配置时配置。
+	BasicConfig *TalkBasicConfigInfo `json:"BasicConfig,omitnil,omitempty" name:"BasicConfig"`
+
+	// 自定义语音识别配置
+	STTConfig *TalkSTTConfigInfo `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// 自定义大模型配置
+	LLMConfig *TalkLLMConfigInfo `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 语音合成配置
+	TTSConfig *TalkTTSConfigInfo `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 会话配置
+	ConversationConfig *TalkConversationConfigInfo `json:"ConversationConfig,omitnil,omitempty" name:"ConversationConfig"`
+}
+
+type ModifyTWeTalkProductConfigV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 名称
+	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
+
+	// 系统基础配置，当需要使用系统三段式配置时配置。
+	BasicConfig *TalkBasicConfigInfo `json:"BasicConfig,omitnil,omitempty" name:"BasicConfig"`
+
+	// 自定义语音识别配置
+	STTConfig *TalkSTTConfigInfo `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// 自定义大模型配置
+	LLMConfig *TalkLLMConfigInfo `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 语音合成配置
+	TTSConfig *TalkTTSConfigInfo `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 会话配置
+	ConversationConfig *TalkConversationConfigInfo `json:"ConversationConfig,omitnil,omitempty" name:"ConversationConfig"`
+}
+
+func (r *ModifyTWeTalkProductConfigV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTWeTalkProductConfigV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "TargetLanguage")
+	delete(f, "ConfigName")
+	delete(f, "BasicConfig")
+	delete(f, "STTConfig")
+	delete(f, "LLMConfig")
+	delete(f, "TTSConfig")
+	delete(f, "ConversationConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeTalkProductConfigV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTWeTalkProductConfigV2ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTWeTalkProductConfigV2Response struct {
+	*tchttp.BaseResponse
+	Response *ModifyTWeTalkProductConfigV2ResponseParams `json:"Response"`
+}
+
+func (r *ModifyTWeTalkProductConfigV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTWeTalkProductConfigV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTopicPolicyRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -15551,6 +15952,133 @@ type TWeCallLicenseInfo struct {
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 }
 
+type TalkBasicConfigInfo struct {
+	// 系统提示词
+	SystemPrompt *string `json:"SystemPrompt,omitnil,omitempty" name:"SystemPrompt"`
+
+	// 欢迎语，支持多个欢迎语随机切换，格式：字符串数组，JSON字符串。
+	GreetingMessage *string `json:"GreetingMessage,omitnil,omitempty" name:"GreetingMessage"`
+
+	// 音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
+	DefaultVoiceType *int64 `json:"DefaultVoiceType,omitnil,omitempty" name:"DefaultVoiceType"`
+}
+
+type TalkConversationConfigInfo struct {
+	// 会话超时（秒）
+	SessionTimeout *int64 `json:"SessionTimeout,omitnil,omitempty" name:"SessionTimeout"`
+
+	// 允许打断
+	InterruptionEnabled *bool `json:"InterruptionEnabled,omitnil,omitempty" name:"InterruptionEnabled"`
+
+	// 最大上下文
+	MaxContextTokens *int64 `json:"MaxContextTokens,omitnil,omitempty" name:"MaxContextTokens"`
+
+	// 空闲检测配置
+	IdleDetection *TalkIdleDetectionConfigInfo `json:"IdleDetection,omitnil,omitempty" name:"IdleDetection"`
+
+	// 是否启用情绪识别
+	EmotionEnabled *bool `json:"EmotionEnabled,omitnil,omitempty" name:"EmotionEnabled"`
+}
+
+type TalkIdleDetectionConfigInfo struct {
+	// 是否启用
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 用户沉默多少秒后触发空闲回调
+	TimeoutSeconds *float64 `json:"TimeoutSeconds,omitnil,omitempty" name:"TimeoutSeconds"`
+
+	// 最大重试次数（1-3）
+	MaxRetries *int64 `json:"MaxRetries,omitnil,omitempty" name:"MaxRetries"`
+
+	// 空闲响应
+	IdleResponses []*IdleResponseInfo `json:"IdleResponses,omitnil,omitempty" name:"IdleResponses"`
+}
+
+type TalkLLMConfigInfo struct {
+	// 支持的LLM类型，tencent-腾讯；openai-OPENAI格式；anthropic-ANTHROPIC；gemini-GEMINI;gemini-GEMINI;coze-扣子;dify-DIFY；tencent_lke-腾讯智能体平台；系统默认-openai。
+	LLMType *string `json:"LLMType,omitnil,omitempty" name:"LLMType"`
+
+	// 是否开启
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 模型
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 是否开启
+	Streaming *bool `json:"Streaming,omitnil,omitempty" name:"Streaming"`
+
+	// 配置信息JSON字符串，根据`LLMType`进行不同的值匹配。例如`LLMType`是`openai`，`Config`值是`{\"ApiKey\":\"sk-09***\",\"ApiUrl\":\"base_url\",\"SystemPrompt\":\"你是一个语音助手\",\"Timeout\":30,\"History\":0,\"MetaInfo\":{\"productID\":\"test\"}}`
+	// 
+	// ## openai
+	// ```
+	// {
+	//    "ApiKey": "sk-XXXXXXXXXXXX",
+	//    "ApiUrl": "https://api.openai.com/v1",
+	//    "SystemPrompt": "一个小小助手",
+	//   "Timeout":20,
+	//   "History":10,
+	//   "MetaInfo":{}
+	// }
+	// ```
+	// 
+	// ## anthropic
+	// ```
+	// {
+	//    "ApiKey": "sk-XXXXXXXXXXXX",
+	//    "ApiUrl": "https://api.openai.com/v1",
+	//    "SystemPrompt": "一个小小助手"
+	// }
+	// ```
+	// ## gemini
+	// ```
+	// {
+	//   "AppId": 123456,
+	//   "AccessToken": "*****",
+	//   "ResourceId": "SecretKey****",
+	//   "ModelName": "16k_zh",
+	//   "Language":""
+	// }
+	// ```
+	// ## coze
+	// ```
+	// {
+	//    "ApiKey": "sk-XXXXXXXXXXXX",
+	//    "BotId": "v1",
+	//    "UserId": "xxx",
+	//   "ApiUrl": "https://api.coze.cn/v3/chat"
+	// }
+	// ```
+	// ## dify
+	// ```
+	// {
+	//    "ApiKey": "sk-XXXXXXXXXXXX",
+	//    "ApiUrl": "https://api.openai.com/v1",
+	//    "User": "xxx",
+	//   "Inputs":{},
+	//   "ConversationId":"c1"
+	// }
+	// ```
+	// ## tencent_lke
+	// ```
+	// {
+	//    "ApiKey": "sk-XXXXXXXXXXXX",
+	//    "ApiUrl": "https://api.openai.com/v1",
+	//    "SystemRole": "一个小小助手",
+	//   "SessionId":"123456"
+	// }
+	// ```
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 温度
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
+
+	// 最大token数
+	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
+
+	// topP
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+}
+
 type TalkProductConfigInfo struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -15572,6 +16100,183 @@ type TalkProductConfigInfo struct {
 
 	// 更新时间
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type TalkProductConfigV2Info struct {
+	// UIN
+	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// APPID
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 配置名称
+	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
+
+	// 语言，默认zh；zh-中文；en-英文
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 基础配置
+	BasicConfig *TalkBasicConfigInfo `json:"BasicConfig,omitnil,omitempty" name:"BasicConfig"`
+
+	// 语音识别配置
+	STTConfig *TalkSTTConfigInfo `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// 大模型配置
+	LLMConfig *TalkLLMConfigInfo `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 语音合成配置
+	TTSConfig *TalkTTSConfigInfo `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 会话配置
+	ConversationConfig *TalkConversationConfigInfo `json:"ConversationConfig,omitnil,omitempty" name:"ConversationConfig"`
+
+	// 版本号
+	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 创建时间，秒级时间戳
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间，秒级时间戳
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type TalkSTTConfigInfo struct {
+	// 支持的STT类型，tencent-腾讯；azure-亚马逊；volcengine-火山引擎；deepgram-Deepgram;系统默认-tencent。
+	STTType *string `json:"STTType,omitnil,omitempty" name:"STTType"`
+
+	// 是否开启
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 配置信息JSON字符串，根据STTType进行不同的值匹配。例如`STTType`是`tencent`，`Config`值是`{\"AppId\":123456,\"SecretId\":\"secretId*****\",\"SecretKey\":\"SecretKey****\",\"EngineType\":\"16k_zh\"}`
+	// 
+	// ## tencent
+	// ```
+	// {
+	//   "AppId": 123456,
+	//   "SecretId": "secretId*****",
+	//   "SecretKey": "SecretKey****",
+	//   "EngineType": "16k_zh"
+	// }
+	// ```
+	// 
+	// ## azure
+	// ```
+	// {
+	//   "Region": "",
+	//   "EndpointId": "id",
+	//   "Language": "zh-CN",
+	//   "SubscriptionKey": "*****"
+	// }
+	// ```
+	// ## volcengine
+	// ```
+	// {
+	//   "AppId": 123456,
+	//   "AccessToken": "*****",
+	//   "ResourceId": "SecretKey****",
+	//   "ModelName": "16k_zh",
+	//   "Language":""
+	// }
+	// ```
+	// ## deepgram
+	// ```
+	// {
+	//   "Model": "nova-2",
+	//   "Language": "zh",
+	//    "BaseUrl":"http://www.deepgram.com",
+	//   "ApiKey": "SecretKey****"
+	// }
+	// ```
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
+type TalkTTSConfigInfo struct {
+	// 支持的LLM类型，支持tencent-腾讯；azure-亚马逊；volcengine-火山引擎；elevenlabs-ELEVENLABS；minimax-MINIMAX；cartesia-CARTESIA；aliyun-阿里；系统默认-tencent。
+	TTSType *string `json:"TTSType,omitnil,omitempty" name:"TTSType"`
+
+	// 是否开启
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 配置信息JSON字符串，根据`TTSType`进行不同的值匹配。例如`TTSType`是`tencent`，`Config`值是`{\"AppId\":123456,\"SecretId\":\"secretId*****\",\"SecretKey\":\"SecretKey****\",\"VoiceType\":10001}`
+	// 
+	// ## tencent
+	// ```
+	// {
+	//    "AppId": 100203,
+	//    "SecretId": "XXXX",
+	//    "SecretKey": "XXXXX",
+	//   "VoiceType":123456
+	// }
+	// ```
+	// 
+	// ## azure
+	// ```
+	// {
+	//    "SubscriptionKey": 100203,
+	//    "Region": "ch-zn",
+	//    "VoiceName": "XXXXX",
+	//   "Language":"zh"
+	// }
+	// ```
+	// ## elevenlabs
+	// ```
+	// {
+	//    "ModelId": 100203,
+	//    "VoiceId": "ch-zn",
+	//    "ApiKey": "XXXXX"
+	// }
+	// ```
+	// ## minimax
+	// ```
+	// {  
+	//   "Model":"xxxx",
+	//    "ApiUrl": "346w34",
+	//    "ApiKey": "xxx",
+	//    "GroupId": "ion",
+	//   "VoiceType":"xioawei"
+	// }
+	// ```
+	// ## cartesia
+	// ```
+	// {  
+	//   "Model":"xxxx",
+	//    "ApiKey": "xxx",
+	//   "VoiceId":"xioawei"
+	// }
+	// ```
+	// ## aliyun
+	// ```
+	// {
+	//    "VoiceType": 100203,
+	//    "RegionId": "XXXX",
+	//    "ApiKey": "XXXXX"
+	// }
+	// ```
+	// ## volcengine
+	// ```
+	// {
+	//    "AppId": "346w34",
+	//    "AccessToken": "xxx",
+	//    "ResourceId": "volc.bigasr.sauc.duration",
+	//   "VoiceType":"xioawei"
+	// }
+	// ```
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 温度
+	Speed *float64 `json:"Speed,omitnil,omitempty" name:"Speed"`
+
+	// 最大token数
+	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// PITCH
+	Pitch *float64 `json:"Pitch,omitnil,omitempty" name:"Pitch"`
 }
 
 type TargetInfo struct {

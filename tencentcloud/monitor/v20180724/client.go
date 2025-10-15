@@ -7009,6 +7009,72 @@ func (c *Client) DescribePrometheusScrapeJobsWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribePrometheusScrapeStatisticsRequest() (request *DescribePrometheusScrapeStatisticsRequest) {
+    request = &DescribePrometheusScrapeStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePrometheusScrapeStatistics")
+    
+    
+    return
+}
+
+func NewDescribePrometheusScrapeStatisticsResponse() (response *DescribePrometheusScrapeStatisticsResponse) {
+    response = &DescribePrometheusScrapeStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrometheusScrapeStatistics
+// 获取实例采集速率信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DescribePrometheusScrapeStatistics(request *DescribePrometheusScrapeStatisticsRequest) (response *DescribePrometheusScrapeStatisticsResponse, err error) {
+    return c.DescribePrometheusScrapeStatisticsWithContext(context.Background(), request)
+}
+
+// DescribePrometheusScrapeStatistics
+// 获取实例采集速率信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DescribePrometheusScrapeStatisticsWithContext(ctx context.Context, request *DescribePrometheusScrapeStatisticsRequest) (response *DescribePrometheusScrapeStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusScrapeStatisticsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribePrometheusScrapeStatistics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusScrapeStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusScrapeStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrometheusTargetsTMPRequest() (request *DescribePrometheusTargetsTMPRequest) {
     request = &DescribePrometheusTargetsTMPRequest{
         BaseRequest: &tchttp.BaseRequest{},

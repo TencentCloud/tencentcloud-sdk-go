@@ -1,36 +1,10 @@
-# Release v1.1.39
+# Release v1.1.40
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 203 次发布
+### 第 136 次发布
 
-发布时间：2025-10-13 01:11:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAuditConfig](https://cloud.tencent.com/document/api/236/45455)
-
-	* 新增出参：IsOpening
-
-
-修改数据结构：
-
-* [InstanceDbAuditStatus](https://cloud.tencent.com/document/api/236/15878#InstanceDbAuditStatus)
-
-	* 新增成员：TrialStatus, TrialStartTime, TrialDuration, TrialCloseTime, TrialDescribeLogHours
-
-
-
-
-## 腾讯云数据仓库 TCHouse-D(cdwdoris) 版本：2021-12-28
-
-### 第 57 次发布
-
-发布时间：2025-10-13 01:12:29
+发布时间：2025-10-15 01:23:31
 
 本次发布包含了以下内容：
 
@@ -38,37 +12,18 @@
 
 修改接口：
 
-* [ModifyUserPrivilegesV3](https://cloud.tencent.com/document/api/1387/109432)
+* [CreateTopic](https://cloud.tencent.com/document/api/614/56456)
 
-	* 新增入参：ComputeGroupType
-
-
-
-
-## 消息队列 CKafka 版(ckafka) 版本：2019-08-19
-
-### 第 133 次发布
-
-发布时间：2025-10-13 01:14:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [MqttConnectParam](https://cloud.tencent.com/document/api/597/40861#MqttConnectParam)
-
-	* 新增成员：Port, ServiceVip, Ip
+	* 新增入参：BizType
 
 
 
 
-## 云应用(cloudapp) 版本：2022-05-30
+## 数据传输服务(dts) 版本：2021-12-06
 
-### 第 6 次发布
+### 第 45 次发布
 
-发布时间：2025-10-13 01:14:30
+发布时间：2025-10-15 01:35:06
 
 本次发布包含了以下内容：
 
@@ -76,83 +31,64 @@
 
 修改数据结构：
 
-* [SaleParam](https://cloud.tencent.com/document/api/1689/108875#SaleParam)
+* [DifferenceData](https://cloud.tencent.com/document/api/571/82108#DifferenceData)
 
-	* 新增成员：ParamId, ParamValueId, ModuleId, ModuleKey, ModuleName
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
-
-### 第 19 次发布
-
-发布时间：2025-10-13 01:16:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [MySqlProcess](https://cloud.tencent.com/document/api/1130/39561#MySqlProcess)
-
-	* 新增成员：SqlType
+	* 新增成员：CreatedAt
 
 
 
 
-## 专线接入(dc) 版本：2018-04-10
-
-### 第 37 次发布
-
-发布时间：2025-10-13 01:17:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49100)
-
-	* 新增入参：ImportDirectRoute
-
-
-修改数据结构：
-
-* [AccessPoint](https://cloud.tencent.com/document/api/216/18418#AccessPoint)
-
-	* 新增成员：Version, AccessPointServiceType
-
-* [BFDInfo](https://cloud.tencent.com/document/api/216/18418#BFDInfo)
-
-	* 新增成员：EnableBfdMultiHop
-
-* [CloudAttachInfo](https://cloud.tencent.com/document/api/216/18418#CloudAttachInfo)
-
-	* 新增成员：IapCode, IdcPointType, BIapLinkProtected
-
-* [CreateCasInput](https://cloud.tencent.com/document/api/216/18418#CreateCasInput)
-
-	* 新增成员：IdcPointType, BIapLinkProtected
-
-* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
-
-	* 新增成员：FaultReportContactEmail
-
+## 数据传输服务(dts) 版本：2018-03-30
 
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 250 次发布
+### 第 251 次发布
 
-发布时间：2025-10-13 01:21:30
+发布时间：2025-10-15 01:38:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateOrganizationBatchSignUrl](https://cloud.tencent.com/document/api/1323/95598)
+
+	* 新增入参：CanBatchReject
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 236 次发布
+
+发布时间：2025-10-15 01:40:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateOrganizationBatchSignUrl](https://cloud.tencent.com/document/api/1420/99258)
+
+	* 新增入参：CanBatchReject
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 网关负载均衡(gwlb) 版本：2024-09-06
+
+### 第 7 次发布
+
+发布时间：2025-10-15 01:43:18
 
 本次发布包含了以下内容：
 
@@ -160,43 +96,103 @@
 
 新增接口：
 
-* [DescribeContractComparisonTask](https://cloud.tencent.com/document/api/1323/123953)
+* [DescribeGatewayLoadBalancersResources](https://cloud.tencent.com/document/api/1782/124024)
+
+新增数据结构：
+
+* [ZoneResource](https://cloud.tencent.com/document/api/1782/111701#ZoneResource)
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 120 次发布
+
+发布时间：2025-10-15 01:46:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateTWeTalkProductConfigV2](https://cloud.tencent.com/document/api/1081/124029)
+* [DescribeTWeTalkProductConfigV2](https://cloud.tencent.com/document/api/1081/124028)
+* [GetTWeTalkProductConfigListV2](https://cloud.tencent.com/document/api/1081/124027)
+* [ModifyTWeTalkProductConfigV2](https://cloud.tencent.com/document/api/1081/124026)
+
+新增数据结构：
+
+* [IdleResponseInfo](https://cloud.tencent.com/document/api/1081/34988#IdleResponseInfo)
+* [TalkBasicConfigInfo](https://cloud.tencent.com/document/api/1081/34988#TalkBasicConfigInfo)
+* [TalkConversationConfigInfo](https://cloud.tencent.com/document/api/1081/34988#TalkConversationConfigInfo)
+* [TalkIdleDetectionConfigInfo](https://cloud.tencent.com/document/api/1081/34988#TalkIdleDetectionConfigInfo)
+* [TalkLLMConfigInfo](https://cloud.tencent.com/document/api/1081/34988#TalkLLMConfigInfo)
+* [TalkProductConfigV2Info](https://cloud.tencent.com/document/api/1081/34988#TalkProductConfigV2Info)
+* [TalkSTTConfigInfo](https://cloud.tencent.com/document/api/1081/34988#TalkSTTConfigInfo)
+* [TalkTTSConfigInfo](https://cloud.tencent.com/document/api/1081/34988#TalkTTSConfigInfo)
+
+
+
+## 消息队列 MQTT 版(mqtt) 版本：2024-05-16
+
+### 第 21 次发布
+
+发布时间：2025-10-15 02:09:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeInstance](https://cloud.tencent.com/document/api/1778/111030)
+
+	* 新增出参：TransportLayerSecurity
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 75 次发布
+
+发布时间：2025-10-15 02:12:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateVariable](https://cloud.tencent.com/document/api/849/124030)
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 267 次发布
+### 第 268 次发布
 
-发布时间：2025-10-13 02:33:45
+发布时间：2025-10-15 03:19:44
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
-
-* [DescribeAddressTemplateGroupInstances](https://cloud.tencent.com/document/api/215/123956)
-* [DescribeAddressTemplateInstances](https://cloud.tencent.com/document/api/215/42837)
-* [DescribeServiceTemplateGroupInstances](https://cloud.tencent.com/document/api/215/123955)
-* [DescribeServiceTemplateInstances](https://cloud.tencent.com/document/api/215/123954)
-
 修改接口：
 
-* [ModifyPrivateNatGatewayAttribute](https://cloud.tencent.com/document/api/215/107890)
+* [ModifyFlowLogAttribute](https://cloud.tencent.com/document/api/215/35011)
 
-	* 新增入参：DeletionProtectionEnabled
-
-	* <font color="#dd0000">**修改入参**：</font>NatGatewayName
+	* 新增入参：Period
 
 
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
 
-### 第 2 次发布
+### 第 4 次发布
 
-发布时间：2025-10-13 02:42:08
+发布时间：2025-10-15 03:30:31
 
 本次发布包含了以下内容：
 
@@ -204,98 +200,13 @@
 
 新增接口：
 
-* [AddCalcEnginesToProject](https://cloud.tencent.com/document/api/1267/123977)
-* [AssociateResourceGroupToProject](https://cloud.tencent.com/document/api/1267/123985)
-* [CreateDataSource](https://cloud.tencent.com/document/api/1267/123976)
-* [CreateProject](https://cloud.tencent.com/document/api/1267/123975)
-* [CreateProjectMember](https://cloud.tencent.com/document/api/1267/123974)
-* [CreateResourceGroup](https://cloud.tencent.com/document/api/1267/123984)
-* [DeleteDataSource](https://cloud.tencent.com/document/api/1267/123973)
-* [DeleteLineage](https://cloud.tencent.com/document/api/1267/123997)
-* [DeleteProjectMember](https://cloud.tencent.com/document/api/1267/123972)
-* [DeleteResourceGroup](https://cloud.tencent.com/document/api/1267/123983)
-* [DisableProject](https://cloud.tencent.com/document/api/1267/123971)
-* [DissociateResourceGroupFromProject](https://cloud.tencent.com/document/api/1267/123982)
-* [EnableProject](https://cloud.tencent.com/document/api/1267/123970)
-* [GetDataSource](https://cloud.tencent.com/document/api/1267/123969)
-* [GetDataSourceRelatedTasks](https://cloud.tencent.com/document/api/1267/123968)
-* [GetProject](https://cloud.tencent.com/document/api/1267/123967)
-* [GetResourceGroupMetrics](https://cloud.tencent.com/document/api/1267/123981)
-* [GetTable](https://cloud.tencent.com/document/api/1267/123996)
-* [GetTableColumns](https://cloud.tencent.com/document/api/1267/123995)
-* [GrantMemberProjectRole](https://cloud.tencent.com/document/api/1267/123966)
-* [ListCatalog](https://cloud.tencent.com/document/api/1267/123994)
-* [ListColumnLineage](https://cloud.tencent.com/document/api/1267/123993)
-* [ListDataSources](https://cloud.tencent.com/document/api/1267/123965)
-* [ListDatabase](https://cloud.tencent.com/document/api/1267/123992)
-* [ListLineage](https://cloud.tencent.com/document/api/1267/123991)
-* [ListProcessLineage](https://cloud.tencent.com/document/api/1267/123990)
-* [ListProjectMembers](https://cloud.tencent.com/document/api/1267/123964)
-* [ListProjectRoles](https://cloud.tencent.com/document/api/1267/123963)
-* [ListProjects](https://cloud.tencent.com/document/api/1267/123962)
-* [ListResourceGroups](https://cloud.tencent.com/document/api/1267/123980)
-* [ListSchema](https://cloud.tencent.com/document/api/1267/123989)
-* [ListTable](https://cloud.tencent.com/document/api/1267/123988)
-* [ListTenantRoles](https://cloud.tencent.com/document/api/1267/123961)
-* [RegisterLineage](https://cloud.tencent.com/document/api/1267/123987)
-* [RemoveMemberProjectRole](https://cloud.tencent.com/document/api/1267/123960)
-* [UpdateDataSource](https://cloud.tencent.com/document/api/1267/123959)
-* [UpdateProject](https://cloud.tencent.com/document/api/1267/123958)
-* [UpdateResourceGroup](https://cloud.tencent.com/document/api/1267/123979)
+* [GetDataBackfillPlan](https://cloud.tencent.com/document/api/1267/124032)
+* [StartOpsTasks](https://cloud.tencent.com/document/api/1267/124031)
 
 新增数据结构：
 
-* [BindProject](https://cloud.tencent.com/document/api/1267/123643#BindProject)
-* [BriefTask](https://cloud.tencent.com/document/api/1267/123643#BriefTask)
-* [BusinessMetadata](https://cloud.tencent.com/document/api/1267/123643#BusinessMetadata)
-* [CatalogInfo](https://cloud.tencent.com/document/api/1267/123643#CatalogInfo)
-* [ColumnInfo](https://cloud.tencent.com/document/api/1267/123643#ColumnInfo)
-* [CreateProjectResult](https://cloud.tencent.com/document/api/1267/123643#CreateProjectResult)
-* [DLCClusterInfo](https://cloud.tencent.com/document/api/1267/123643#DLCClusterInfo)
-* [DataSource](https://cloud.tencent.com/document/api/1267/123643#DataSource)
-* [DataSourceFileUpload](https://cloud.tencent.com/document/api/1267/123643#DataSourceFileUpload)
-* [DataSourceInfo](https://cloud.tencent.com/document/api/1267/123643#DataSourceInfo)
-* [DataSourceResult](https://cloud.tencent.com/document/api/1267/123643#DataSourceResult)
-* [DataSourceStatus](https://cloud.tencent.com/document/api/1267/123643#DataSourceStatus)
-* [DatabaseInfo](https://cloud.tencent.com/document/api/1267/123643#DatabaseInfo)
-* [DatasourceRelationTaskInfo](https://cloud.tencent.com/document/api/1267/123643#DatasourceRelationTaskInfo)
-* [ExecutorResourceGroupData](https://cloud.tencent.com/document/api/1267/123643#ExecutorResourceGroupData)
-* [ExecutorResourceGroupInfo](https://cloud.tencent.com/document/api/1267/123643#ExecutorResourceGroupInfo)
-* [IntegrationResource](https://cloud.tencent.com/document/api/1267/123643#IntegrationResource)
-* [LineageNodeInfo](https://cloud.tencent.com/document/api/1267/123643#LineageNodeInfo)
-* [LineagePair](https://cloud.tencent.com/document/api/1267/123643#LineagePair)
-* [LineageProcess](https://cloud.tencent.com/document/api/1267/123643#LineageProcess)
-* [LineageProperty](https://cloud.tencent.com/document/api/1267/123643#LineageProperty)
-* [LineageRelation](https://cloud.tencent.com/document/api/1267/123643#LineageRelation)
-* [LineageResouce](https://cloud.tencent.com/document/api/1267/123643#LineageResouce)
-* [LineageResource](https://cloud.tencent.com/document/api/1267/123643#LineageResource)
-* [ListCatalogPage](https://cloud.tencent.com/document/api/1267/123643#ListCatalogPage)
-* [ListDatabasePage](https://cloud.tencent.com/document/api/1267/123643#ListDatabasePage)
-* [ListLineagePage](https://cloud.tencent.com/document/api/1267/123643#ListLineagePage)
-* [ListProcessLineagePage](https://cloud.tencent.com/document/api/1267/123643#ListProcessLineagePage)
-* [ListSchemaPage](https://cloud.tencent.com/document/api/1267/123643#ListSchemaPage)
-* [ListTablePage](https://cloud.tencent.com/document/api/1267/123643#ListTablePage)
-* [MetricData](https://cloud.tencent.com/document/api/1267/123643#MetricData)
-* [OperateResult](https://cloud.tencent.com/document/api/1267/123643#OperateResult)
-* [PageRoles](https://cloud.tencent.com/document/api/1267/123643#PageRoles)
-* [Project](https://cloud.tencent.com/document/api/1267/123643#Project)
-* [ProjectBrief](https://cloud.tencent.com/document/api/1267/123643#ProjectBrief)
-* [ProjectRequest](https://cloud.tencent.com/document/api/1267/123643#ProjectRequest)
-* [ProjectResult](https://cloud.tencent.com/document/api/1267/123643#ProjectResult)
-* [ProjectUserRole](https://cloud.tencent.com/document/api/1267/123643#ProjectUserRole)
-* [ProjectUsersBrief](https://cloud.tencent.com/document/api/1267/123643#ProjectUsersBrief)
-* [RelateTask](https://cloud.tencent.com/document/api/1267/123643#RelateTask)
-* [ResourceGroupMetrics](https://cloud.tencent.com/document/api/1267/123643#ResourceGroupMetrics)
-* [ResourceGroupSpecification](https://cloud.tencent.com/document/api/1267/123643#ResourceGroupSpecification)
-* [ResourceNumber](https://cloud.tencent.com/document/api/1267/123643#ResourceNumber)
-* [ResourceResult](https://cloud.tencent.com/document/api/1267/123643#ResourceResult)
-* [ResourceStatus](https://cloud.tencent.com/document/api/1267/123643#ResourceStatus)
-* [ResourceType](https://cloud.tencent.com/document/api/1267/123643#ResourceType)
-* [SchemaInfo](https://cloud.tencent.com/document/api/1267/123643#SchemaInfo)
-* [SystemRole](https://cloud.tencent.com/document/api/1267/123643#SystemRole)
-* [TableInfo](https://cloud.tencent.com/document/api/1267/123643#TableInfo)
-* [TechnicalMetadata](https://cloud.tencent.com/document/api/1267/123643#TechnicalMetadata)
-* [TrendData](https://cloud.tencent.com/document/api/1267/123643#TrendData)
+* [DataBackfill](https://cloud.tencent.com/document/api/1267/123643#DataBackfill)
+* [StartTasks](https://cloud.tencent.com/document/api/1267/123643#StartTasks)
 
 
 

@@ -1489,6 +1489,91 @@ func (r *CreateResourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateVariableRequestParams struct {
+	// 变量名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 变量值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 变量类型  1：显式   2：隐藏
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 描述信息
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+}
+
+type CreateVariableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 变量名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 变量值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 变量类型  1：显式   2：隐藏
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 描述信息
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+}
+
+func (r *CreateVariableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVariableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Value")
+	delete(f, "Type")
+	delete(f, "Remark")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVariableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVariableResponseParams struct {
+	// 变量Id
+	VariableId *string `json:"VariableId,omitnil,omitempty" name:"VariableId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVariableResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVariableResponseParams `json:"Response"`
+}
+
+func (r *CreateVariableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVariableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateWorkSpaceRequestParams struct {
 	// 工作空间名称
 	WorkSpaceName *string `json:"WorkSpaceName,omitnil,omitempty" name:"WorkSpaceName"`
@@ -3451,6 +3536,60 @@ type DescribeTreeResourcesRsp struct {
 	// 资源总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+// Predefined struct for user
+type DescribeVariablesRequestParams struct {
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+}
+
+type DescribeVariablesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+}
+
+func (r *DescribeVariablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVariablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVariablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVariablesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVariablesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVariablesResponseParams `json:"Response"`
+}
+
+func (r *DescribeVariablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVariablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
