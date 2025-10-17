@@ -1,4 +1,4 @@
-# Release v1.1.42
+# Release v1.1.43
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
