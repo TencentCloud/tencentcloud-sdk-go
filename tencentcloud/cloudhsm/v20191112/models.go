@@ -875,14 +875,14 @@ type InquiryPriceBuyVsmRequestParams struct {
 	// 商品的时间单位，m表示月，y表示年
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 货币类型，默认为CNY
-	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
-
 	// 默认为CREATE，可选RENEW
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Hsm服务类型，可选值virtualization、physical、GHSM、EHSM、SHSM
 	HsmType *string `json:"HsmType,omitnil,omitempty" name:"HsmType"`
+
+	// 货币类型，默认为CNY
+	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
 }
 
 type InquiryPriceBuyVsmRequest struct {
@@ -900,14 +900,14 @@ type InquiryPriceBuyVsmRequest struct {
 	// 商品的时间单位，m表示月，y表示年
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 货币类型，默认为CNY
-	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
-
 	// 默认为CREATE，可选RENEW
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Hsm服务类型，可选值virtualization、physical、GHSM、EHSM、SHSM
 	HsmType *string `json:"HsmType,omitnil,omitempty" name:"HsmType"`
+
+	// 货币类型，默认为CNY
+	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
 }
 
 func (r *InquiryPriceBuyVsmRequest) ToJsonString() string {
@@ -926,9 +926,9 @@ func (r *InquiryPriceBuyVsmRequest) FromJsonString(s string) error {
 	delete(f, "PayMode")
 	delete(f, "TimeSpan")
 	delete(f, "TimeUnit")
-	delete(f, "Currency")
 	delete(f, "Type")
 	delete(f, "HsmType")
+	delete(f, "Currency")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceBuyVsmRequest has unknown keys!", "")
 	}

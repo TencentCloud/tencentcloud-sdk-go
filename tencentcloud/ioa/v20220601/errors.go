@@ -47,6 +47,9 @@ const (
 	// 黑白名单选中有相同的终端设备
 	INVALIDPARAMETER_DUPLICATEIDINBLACKWHITELIST = "InvalidParameter.DuplicateIdInBlackWhiteList"
 
+	// 参数错误有重复数据。
+	INVALIDPARAMETER_IDENTICALNAME = "InvalidParameter.IdenticalName"
+
 	// 请求参数错误。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 

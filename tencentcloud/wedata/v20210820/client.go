@@ -172,6 +172,8 @@ func NewBatchCreateTaskVersionAsyncResponse() (response *BatchCreateTaskVersionA
 //  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BatchCreateTaskVersionAsync(request *BatchCreateTaskVersionAsyncRequest) (response *BatchCreateTaskVersionAsyncResponse, err error) {
     return c.BatchCreateTaskVersionAsyncWithContext(context.Background(), request)
@@ -185,6 +187,8 @@ func (c *Client) BatchCreateTaskVersionAsync(request *BatchCreateTaskVersionAsyn
 //  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BatchCreateTaskVersionAsyncWithContext(ctx context.Context, request *BatchCreateTaskVersionAsyncRequest) (response *BatchCreateTaskVersionAsyncResponse, err error) {
     if request == nil {
@@ -1597,6 +1601,9 @@ func NewCreateCustomFunctionResponse() (response *CreateCustomFunctionResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateCustomFunction(request *CreateCustomFunctionRequest) (response *CreateCustomFunctionResponse, err error) {
     return c.CreateCustomFunctionWithContext(context.Background(), request)
 }
@@ -1606,6 +1613,9 @@ func (c *Client) CreateCustomFunction(request *CreateCustomFunctionRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateCustomFunctionWithContext(ctx context.Context, request *CreateCustomFunctionRequest) (response *CreateCustomFunctionResponse, err error) {
     if request == nil {
         request = NewCreateCustomFunctionRequest()
@@ -2375,6 +2385,9 @@ func NewCreateTaskFolderResponse() (response *CreateTaskFolderResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateTaskFolder(request *CreateTaskFolderRequest) (response *CreateTaskFolderResponse, err error) {
     return c.CreateTaskFolderWithContext(context.Background(), request)
 }
@@ -2384,6 +2397,9 @@ func (c *Client) CreateTaskFolder(request *CreateTaskFolderRequest) (response *C
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateTaskFolderWithContext(ctx context.Context, request *CreateTaskFolderRequest) (response *CreateTaskFolderResponse, err error) {
     if request == nil {
         request = NewCreateTaskFolderRequest()
@@ -2485,6 +2501,8 @@ func NewCreateTaskVersionDsResponse() (response *CreateTaskVersionDsResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTaskVersionDs(request *CreateTaskVersionDsRequest) (response *CreateTaskVersionDsResponse, err error) {
     return c.CreateTaskVersionDsWithContext(context.Background(), request)
@@ -2499,6 +2517,8 @@ func (c *Client) CreateTaskVersionDs(request *CreateTaskVersionDsRequest) (respo
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTaskVersionDsWithContext(ctx context.Context, request *CreateTaskVersionDsRequest) (response *CreateTaskVersionDsResponse, err error) {
     if request == nil {
@@ -2691,6 +2711,9 @@ func NewDeleteCustomFunctionResponse() (response *DeleteCustomFunctionResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteCustomFunction(request *DeleteCustomFunctionRequest) (response *DeleteCustomFunctionResponse, err error) {
     return c.DeleteCustomFunctionWithContext(context.Background(), request)
 }
@@ -2700,6 +2723,9 @@ func (c *Client) DeleteCustomFunction(request *DeleteCustomFunctionRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteCustomFunctionWithContext(ctx context.Context, request *DeleteCustomFunctionRequest) (response *DeleteCustomFunctionResponse, err error) {
     if request == nil {
         request = NewDeleteCustomFunctionRequest()
@@ -2843,6 +2869,9 @@ func NewDeleteDsFolderResponse() (response *DeleteDsFolderResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDsFolder(request *DeleteDsFolderRequest) (response *DeleteDsFolderResponse, err error) {
     return c.DeleteDsFolderWithContext(context.Background(), request)
 }
@@ -2852,6 +2881,9 @@ func (c *Client) DeleteDsFolder(request *DeleteDsFolderRequest) (response *Delet
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDsFolderWithContext(ctx context.Context, request *DeleteDsFolderRequest) (response *DeleteDsFolderResponse, err error) {
     if request == nil {
         request = NewDeleteDsFolderRequest()
@@ -2897,6 +2929,7 @@ func NewDeleteFileResponse() (response *DeleteFileResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteFile(request *DeleteFileRequest) (response *DeleteFileResponse, err error) {
     return c.DeleteFileWithContext(context.Background(), request)
@@ -2911,6 +2944,7 @@ func (c *Client) DeleteFile(request *DeleteFileRequest) (response *DeleteFileRes
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteFileWithContext(ctx context.Context, request *DeleteFileRequest) (response *DeleteFileResponse, err error) {
     if request == nil {
@@ -2953,6 +2987,9 @@ func NewDeleteFilePathResponse() (response *DeleteFilePathResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteFilePath(request *DeleteFilePathRequest) (response *DeleteFilePathResponse, err error) {
     return c.DeleteFilePathWithContext(context.Background(), request)
 }
@@ -2962,6 +2999,9 @@ func (c *Client) DeleteFilePath(request *DeleteFilePathRequest) (response *Delet
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteFilePathWithContext(ctx context.Context, request *DeleteFilePathRequest) (response *DeleteFilePathResponse, err error) {
     if request == nil {
         request = NewDeleteFilePathRequest()
@@ -3427,6 +3467,9 @@ func NewDeleteResourceFileResponse() (response *DeleteResourceFileResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteResourceFile(request *DeleteResourceFileRequest) (response *DeleteResourceFileResponse, err error) {
     return c.DeleteResourceFileWithContext(context.Background(), request)
 }
@@ -3436,6 +3479,9 @@ func (c *Client) DeleteResourceFile(request *DeleteResourceFileRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteResourceFileWithContext(ctx context.Context, request *DeleteResourceFileRequest) (response *DeleteResourceFileResponse, err error) {
     if request == nil {
         request = NewDeleteResourceFileRequest()
@@ -3477,6 +3523,9 @@ func NewDeleteResourceFilesResponse() (response *DeleteResourceFilesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteResourceFiles(request *DeleteResourceFilesRequest) (response *DeleteResourceFilesResponse, err error) {
     return c.DeleteResourceFilesWithContext(context.Background(), request)
 }
@@ -3486,6 +3535,9 @@ func (c *Client) DeleteResourceFiles(request *DeleteResourceFilesRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteResourceFilesWithContext(ctx context.Context, request *DeleteResourceFilesRequest) (response *DeleteResourceFilesResponse, err error) {
     if request == nil {
         request = NewDeleteResourceFilesRequest()
@@ -3705,6 +3757,9 @@ func NewDeleteTaskDsResponse() (response *DeleteTaskDsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteTaskDs(request *DeleteTaskDsRequest) (response *DeleteTaskDsResponse, err error) {
     return c.DeleteTaskDsWithContext(context.Background(), request)
 }
@@ -3714,6 +3769,9 @@ func (c *Client) DeleteTaskDs(request *DeleteTaskDsRequest) (response *DeleteTas
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteTaskDsWithContext(ctx context.Context, request *DeleteTaskDsRequest) (response *DeleteTaskDsResponse, err error) {
     if request == nil {
         request = NewDeleteTaskDsRequest()
@@ -5041,6 +5099,9 @@ func NewDescribeDsParentFolderTreeResponse() (response *DescribeDsParentFolderTr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDsParentFolderTree(request *DescribeDsParentFolderTreeRequest) (response *DescribeDsParentFolderTreeResponse, err error) {
     return c.DescribeDsParentFolderTreeWithContext(context.Background(), request)
 }
@@ -5050,6 +5111,9 @@ func (c *Client) DescribeDsParentFolderTree(request *DescribeDsParentFolderTreeR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDsParentFolderTreeWithContext(ctx context.Context, request *DescribeDsParentFolderTreeRequest) (response *DescribeDsParentFolderTreeResponse, err error) {
     if request == nil {
         request = NewDescribeDsParentFolderTreeRequest()
@@ -5091,6 +5155,9 @@ func NewDescribeDsTaskVersionInfoResponse() (response *DescribeDsTaskVersionInfo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDsTaskVersionInfo(request *DescribeDsTaskVersionInfoRequest) (response *DescribeDsTaskVersionInfoResponse, err error) {
     return c.DescribeDsTaskVersionInfoWithContext(context.Background(), request)
 }
@@ -5100,6 +5167,9 @@ func (c *Client) DescribeDsTaskVersionInfo(request *DescribeDsTaskVersionInfoReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDsTaskVersionInfoWithContext(ctx context.Context, request *DescribeDsTaskVersionInfoRequest) (response *DescribeDsTaskVersionInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDsTaskVersionInfoRequest()
@@ -5752,6 +5822,10 @@ func NewDescribeFunctionTypesResponse() (response *DescribeFunctionTypesResponse
 // 查询函数类型
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
 func (c *Client) DescribeFunctionTypes(request *DescribeFunctionTypesRequest) (response *DescribeFunctionTypesResponse, err error) {
     return c.DescribeFunctionTypesWithContext(context.Background(), request)
@@ -5761,6 +5835,10 @@ func (c *Client) DescribeFunctionTypes(request *DescribeFunctionTypesRequest) (r
 // 查询函数类型
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
 func (c *Client) DescribeFunctionTypesWithContext(ctx context.Context, request *DescribeFunctionTypesRequest) (response *DescribeFunctionTypesResponse, err error) {
     if request == nil {
@@ -5802,6 +5880,10 @@ func NewDescribeInstanceByCycleResponse() (response *DescribeInstanceByCycleResp
 // 根据周期类型查询所有实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
 func (c *Client) DescribeInstanceByCycle(request *DescribeInstanceByCycleRequest) (response *DescribeInstanceByCycleResponse, err error) {
     return c.DescribeInstanceByCycleWithContext(context.Background(), request)
@@ -5811,6 +5893,10 @@ func (c *Client) DescribeInstanceByCycle(request *DescribeInstanceByCycleRequest
 // 根据周期类型查询所有实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
 func (c *Client) DescribeInstanceByCycleWithContext(ctx context.Context, request *DescribeInstanceByCycleRequest) (response *DescribeInstanceByCycleResponse, err error) {
     if request == nil {
@@ -5852,6 +5938,10 @@ func NewDescribeInstanceDetailInfoResponse() (response *DescribeInstanceDetailIn
 // 实例详情页，返回某个实例所有生命周期信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
 func (c *Client) DescribeInstanceDetailInfo(request *DescribeInstanceDetailInfoRequest) (response *DescribeInstanceDetailInfoResponse, err error) {
     return c.DescribeInstanceDetailInfoWithContext(context.Background(), request)
@@ -5861,6 +5951,10 @@ func (c *Client) DescribeInstanceDetailInfo(request *DescribeInstanceDetailInfoR
 // 实例详情页，返回某个实例所有生命周期信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
 func (c *Client) DescribeInstanceDetailInfoWithContext(ctx context.Context, request *DescribeInstanceDetailInfoRequest) (response *DescribeInstanceDetailInfoResponse, err error) {
     if request == nil {
@@ -7895,7 +7989,7 @@ func NewDescribeReportTaskDetailResponse() (response *DescribeReportTaskDetailRe
 }
 
 // DescribeReportTaskDetail
-// 查询上报任务详情
+// 查询上报任务详情，注意：任务执行完后，任务详情上报存在10分钟的延迟，使用接口查询任务详情时需等待任务运行完10分钟后查询
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -7908,7 +8002,7 @@ func (c *Client) DescribeReportTaskDetail(request *DescribeReportTaskDetailReque
 }
 
 // DescribeReportTaskDetail
-// 查询上报任务详情
+// 查询上报任务详情，注意：任务执行完后，任务详情上报存在10分钟的延迟，使用接口查询任务详情时需等待任务运行完10分钟后查询
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -8015,6 +8109,9 @@ func NewDescribeResourceManagePathTreesResponse() (response *DescribeResourceMan
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeResourceManagePathTrees(request *DescribeResourceManagePathTreesRequest) (response *DescribeResourceManagePathTreesResponse, err error) {
     return c.DescribeResourceManagePathTreesWithContext(context.Background(), request)
 }
@@ -8024,6 +8121,9 @@ func (c *Client) DescribeResourceManagePathTrees(request *DescribeResourceManage
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeResourceManagePathTreesWithContext(ctx context.Context, request *DescribeResourceManagePathTreesRequest) (response *DescribeResourceManagePathTreesResponse, err error) {
     if request == nil {
         request = NewDescribeResourceManagePathTreesRequest()
@@ -10815,6 +10915,9 @@ func NewDescribeTestRunningRecordResponse() (response *DescribeTestRunningRecord
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeTestRunningRecord(request *DescribeTestRunningRecordRequest) (response *DescribeTestRunningRecordResponse, err error) {
     return c.DescribeTestRunningRecordWithContext(context.Background(), request)
 }
@@ -10824,6 +10927,9 @@ func (c *Client) DescribeTestRunningRecord(request *DescribeTestRunningRecordReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeTestRunningRecordWithContext(ctx context.Context, request *DescribeTestRunningRecordRequest) (response *DescribeTestRunningRecordResponse, err error) {
     if request == nil {
         request = NewDescribeTestRunningRecordRequest()
@@ -11020,6 +11126,9 @@ func NewDescribeWorkflowByFordIdsResponse() (response *DescribeWorkflowByFordIds
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeWorkflowByFordIds(request *DescribeWorkflowByFordIdsRequest) (response *DescribeWorkflowByFordIdsResponse, err error) {
     return c.DescribeWorkflowByFordIdsWithContext(context.Background(), request)
 }
@@ -11030,6 +11139,9 @@ func (c *Client) DescribeWorkflowByFordIds(request *DescribeWorkflowByFordIdsReq
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeWorkflowByFordIdsWithContext(ctx context.Context, request *DescribeWorkflowByFordIdsRequest) (response *DescribeWorkflowByFordIdsResponse, err error) {
     if request == nil {
         request = NewDescribeWorkflowByFordIdsRequest()
@@ -11693,6 +11805,9 @@ func NewFindAllFolderResponse() (response *FindAllFolderResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) FindAllFolder(request *FindAllFolderRequest) (response *FindAllFolderResponse, err error) {
     return c.FindAllFolderWithContext(context.Background(), request)
 }
@@ -11702,6 +11817,9 @@ func (c *Client) FindAllFolder(request *FindAllFolderRequest) (response *FindAll
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) FindAllFolderWithContext(ctx context.Context, request *FindAllFolderRequest) (response *FindAllFolderResponse, err error) {
     if request == nil {
         request = NewFindAllFolderRequest()
@@ -11893,6 +12011,9 @@ func NewGetBatchDetailErrorLogResponse() (response *GetBatchDetailErrorLogRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetBatchDetailErrorLog(request *GetBatchDetailErrorLogRequest) (response *GetBatchDetailErrorLogResponse, err error) {
     return c.GetBatchDetailErrorLogWithContext(context.Background(), request)
 }
@@ -11902,6 +12023,9 @@ func (c *Client) GetBatchDetailErrorLog(request *GetBatchDetailErrorLogRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetBatchDetailErrorLogWithContext(ctx context.Context, request *GetBatchDetailErrorLogRequest) (response *GetBatchDetailErrorLogResponse, err error) {
     if request == nil {
         request = NewGetBatchDetailErrorLogRequest()
@@ -12003,6 +12127,9 @@ func NewGetFileInfoResponse() (response *GetFileInfoResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetFileInfo(request *GetFileInfoRequest) (response *GetFileInfoResponse, err error) {
     return c.GetFileInfoWithContext(context.Background(), request)
 }
@@ -12012,6 +12139,9 @@ func (c *Client) GetFileInfo(request *GetFileInfoRequest) (response *GetFileInfo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetFileInfoWithContext(ctx context.Context, request *GetFileInfoRequest) (response *GetFileInfoResponse, err error) {
     if request == nil {
         request = NewGetFileInfoRequest()
@@ -12368,23 +12498,10 @@ func NewGetPaginationTaskScriptResponse() (response *GetPaginationTaskScriptResp
 // 获取带分页的任务脚本
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetPaginationTaskScript(request *GetPaginationTaskScriptRequest) (response *GetPaginationTaskScriptResponse, err error) {
     return c.GetPaginationTaskScriptWithContext(context.Background(), request)
 }
@@ -12393,23 +12510,10 @@ func (c *Client) GetPaginationTaskScript(request *GetPaginationTaskScriptRequest
 // 获取带分页的任务脚本
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetPaginationTaskScriptWithContext(ctx context.Context, request *GetPaginationTaskScriptRequest) (response *GetPaginationTaskScriptResponse, err error) {
     if request == nil {
         request = NewGetPaginationTaskScriptRequest()
@@ -12651,6 +12755,9 @@ func NewListBatchDetailResponse() (response *ListBatchDetailResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ListBatchDetail(request *ListBatchDetailRequest) (response *ListBatchDetailResponse, err error) {
     return c.ListBatchDetailWithContext(context.Background(), request)
 }
@@ -12660,6 +12767,9 @@ func (c *Client) ListBatchDetail(request *ListBatchDetailRequest) (response *Lis
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ListBatchDetailWithContext(ctx context.Context, request *ListBatchDetailRequest) (response *ListBatchDetailResponse, err error) {
     if request == nil {
         request = NewListBatchDetailRequest()
@@ -12833,6 +12943,7 @@ func NewModifyApproveStatusResponse() (response *ModifyApproveStatusResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION_FAILEDCHECKTASKDEPENDENCETIMEZONE = "UnsupportedOperation.FailedCheckTaskDependenceTimeZone"
 func (c *Client) ModifyApproveStatus(request *ModifyApproveStatusRequest) (response *ModifyApproveStatusResponse, err error) {
     return c.ModifyApproveStatusWithContext(context.Background(), request)
 }
@@ -12842,6 +12953,7 @@ func (c *Client) ModifyApproveStatus(request *ModifyApproveStatusRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION_FAILEDCHECKTASKDEPENDENCETIMEZONE = "UnsupportedOperation.FailedCheckTaskDependenceTimeZone"
 func (c *Client) ModifyApproveStatusWithContext(ctx context.Context, request *ModifyApproveStatusRequest) (response *ModifyApproveStatusResponse, err error) {
     if request == nil {
         request = NewModifyApproveStatusRequest()
@@ -12991,6 +13103,9 @@ func NewModifyDsFolderResponse() (response *ModifyDsFolderResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyDsFolder(request *ModifyDsFolderRequest) (response *ModifyDsFolderResponse, err error) {
     return c.ModifyDsFolderWithContext(context.Background(), request)
 }
@@ -13000,6 +13115,9 @@ func (c *Client) ModifyDsFolder(request *ModifyDsFolderRequest) (response *Modif
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyDsFolderWithContext(ctx context.Context, request *ModifyDsFolderRequest) (response *ModifyDsFolderResponse, err error) {
     if request == nil {
         request = NewModifyDsFolderRequest()
@@ -13760,6 +13878,9 @@ func NewModifyTaskLinksDsResponse() (response *ModifyTaskLinksDsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyTaskLinksDs(request *ModifyTaskLinksDsRequest) (response *ModifyTaskLinksDsResponse, err error) {
     return c.ModifyTaskLinksDsWithContext(context.Background(), request)
 }
@@ -13770,6 +13891,9 @@ func (c *Client) ModifyTaskLinksDs(request *ModifyTaskLinksDsRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyTaskLinksDsWithContext(ctx context.Context, request *ModifyTaskLinksDsRequest) (response *ModifyTaskLinksDsResponse, err error) {
     if request == nil {
         request = NewModifyTaskLinksDsRequest()
@@ -14065,6 +14189,9 @@ func NewRegisterDsEventResponse() (response *RegisterDsEventResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RegisterDsEvent(request *RegisterDsEventRequest) (response *RegisterDsEventResponse, err error) {
     return c.RegisterDsEventWithContext(context.Background(), request)
 }
@@ -14074,6 +14201,9 @@ func (c *Client) RegisterDsEvent(request *RegisterDsEventRequest) (response *Reg
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RegisterDsEventWithContext(ctx context.Context, request *RegisterDsEventRequest) (response *RegisterDsEventResponse, err error) {
     if request == nil {
         request = NewRegisterDsEventRequest()
@@ -14116,6 +14246,9 @@ func NewRegisterDsEventListenerResponse() (response *RegisterDsEventListenerResp
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RegisterDsEventListener(request *RegisterDsEventListenerRequest) (response *RegisterDsEventListenerResponse, err error) {
     return c.RegisterDsEventListenerWithContext(context.Background(), request)
 }
@@ -14126,6 +14259,9 @@ func (c *Client) RegisterDsEventListener(request *RegisterDsEventListenerRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RegisterDsEventListenerWithContext(ctx context.Context, request *RegisterDsEventListenerRequest) (response *RegisterDsEventListenerResponse, err error) {
     if request == nil {
         request = NewRegisterDsEventListenerRequest()
@@ -14425,6 +14561,9 @@ func NewRemoveWorkflowDsResponse() (response *RemoveWorkflowDsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RemoveWorkflowDs(request *RemoveWorkflowDsRequest) (response *RemoveWorkflowDsResponse, err error) {
     return c.RemoveWorkflowDsWithContext(context.Background(), request)
 }
@@ -14434,6 +14573,9 @@ func (c *Client) RemoveWorkflowDs(request *RemoveWorkflowDsRequest) (response *R
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RemoveWorkflowDsWithContext(ctx context.Context, request *RemoveWorkflowDsRequest) (response *RemoveWorkflowDsResponse, err error) {
     if request == nil {
         request = NewRemoveWorkflowDsRequest()
@@ -14475,6 +14617,9 @@ func NewRenewWorkflowOwnerDsResponse() (response *RenewWorkflowOwnerDsResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RenewWorkflowOwnerDs(request *RenewWorkflowOwnerDsRequest) (response *RenewWorkflowOwnerDsResponse, err error) {
     return c.RenewWorkflowOwnerDsWithContext(context.Background(), request)
 }
@@ -14484,6 +14629,9 @@ func (c *Client) RenewWorkflowOwnerDs(request *RenewWorkflowOwnerDsRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RenewWorkflowOwnerDsWithContext(ctx context.Context, request *RenewWorkflowOwnerDsRequest) (response *RenewWorkflowOwnerDsResponse, err error) {
     if request == nil {
         request = NewRenewWorkflowOwnerDsRequest()
@@ -15065,6 +15213,9 @@ func NewSaveCustomFunctionResponse() (response *SaveCustomFunctionResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) SaveCustomFunction(request *SaveCustomFunctionRequest) (response *SaveCustomFunctionResponse, err error) {
     return c.SaveCustomFunctionWithContext(context.Background(), request)
 }
@@ -15074,6 +15225,9 @@ func (c *Client) SaveCustomFunction(request *SaveCustomFunctionRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) SaveCustomFunctionWithContext(ctx context.Context, request *SaveCustomFunctionRequest) (response *SaveCustomFunctionResponse, err error) {
     if request == nil {
         request = NewSaveCustomFunctionRequest()
@@ -15117,6 +15271,9 @@ func NewSetTaskAlarmNewResponse() (response *SetTaskAlarmNewResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) SetTaskAlarmNew(request *SetTaskAlarmNewRequest) (response *SetTaskAlarmNewResponse, err error) {
     return c.SetTaskAlarmNewWithContext(context.Background(), request)
 }
@@ -15128,6 +15285,9 @@ func (c *Client) SetTaskAlarmNew(request *SetTaskAlarmNewRequest) (response *Set
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) SetTaskAlarmNewWithContext(ctx context.Context, request *SetTaskAlarmNewRequest) (response *SetTaskAlarmNewResponse, err error) {
     if request == nil {
         request = NewSetTaskAlarmNewRequest()
@@ -15332,23 +15492,10 @@ func NewSubmitCustomFunctionResponse() (response *SubmitCustomFunctionResponse) 
 // 提交自定义函数
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SubmitCustomFunction(request *SubmitCustomFunctionRequest) (response *SubmitCustomFunctionResponse, err error) {
     return c.SubmitCustomFunctionWithContext(context.Background(), request)
 }
@@ -15357,23 +15504,10 @@ func (c *Client) SubmitCustomFunction(request *SubmitCustomFunctionRequest) (res
 // 提交自定义函数
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SubmitCustomFunctionWithContext(ctx context.Context, request *SubmitCustomFunctionRequest) (response *SubmitCustomFunctionResponse, err error) {
     if request == nil {
         request = NewSubmitCustomFunctionRequest()
@@ -15861,6 +15995,9 @@ func NewTriggerDsEventResponse() (response *TriggerDsEventResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) TriggerDsEvent(request *TriggerDsEventRequest) (response *TriggerDsEventResponse, err error) {
     return c.TriggerDsEventWithContext(context.Background(), request)
 }
@@ -15870,6 +16007,9 @@ func (c *Client) TriggerDsEvent(request *TriggerDsEventRequest) (response *Trigg
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) TriggerDsEventWithContext(ctx context.Context, request *TriggerDsEventRequest) (response *TriggerDsEventResponse, err error) {
     if request == nil {
         request = NewTriggerDsEventRequest()

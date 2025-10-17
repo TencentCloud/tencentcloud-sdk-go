@@ -457,6 +457,7 @@ type AiAnalysisResult struct {
 	// <li>Description：大模型摘要</li>
 	// <li>Dubbing：智能译制</li>
 	// <li>VideoRemake: 视频去重</li>
+	// <li>VideoComprehension: 视频（音频）理解</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
@@ -506,6 +507,10 @@ type AiAnalysisResult struct {
 	// 视频内容分析去重任务的查询结果，当任务类型为 VideoRemake 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoRemakeTask *AiAnalysisTaskVideoRemakeResult `json:"VideoRemakeTask,omitnil,omitempty" name:"VideoRemakeTask"`
+
+	// 视频（音频）理解任务的查询结果，当任务类型为 VideoComprehension 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoComprehensionTask *AiAnalysisTaskVideoComprehensionResult `json:"VideoComprehensionTask,omitnil,omitempty" name:"VideoComprehensionTask"`
 }
 
 type AiAnalysisTaskClassificationInput struct {
@@ -897,6 +902,46 @@ type AiAnalysisTaskTagResult struct {
 	// 智能标签任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskTagOutput `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
+type AiAnalysisTaskVideoComprehensionInput struct {
+	// 视频（音频）理解模板ID
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type AiAnalysisTaskVideoComprehensionOutput struct {
+	// 视频（音频）理解内容详情
+	VideoComprehensionAnalysisResult *string `json:"VideoComprehensionAnalysisResult,omitnil,omitempty" name:"VideoComprehensionAnalysisResult"`
+}
+
+type AiAnalysisTaskVideoComprehensionResult struct {
+	// 任务状态，有 `PROCESSING`，`SUCCESS` 和 `FAIL` 三种。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 视频（音频）理解输入
+	Input *AiAnalysisTaskVideoComprehensionInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 视频（音频）理解输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskVideoComprehensionOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 媒体处理类错误码 列表
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// 任务进度
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 任务开始执行的时间，采用 ISO 日期格式。
+	BeginProcessTime *string `json:"BeginProcessTime,omitnil,omitempty" name:"BeginProcessTime"`
+
+	// 任务执行完毕时间，采用 ISO 日期格式。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
 
 type AiAnalysisTaskVideoRemakeInput struct {

@@ -165,6 +165,110 @@ type Condition struct {
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 }
 
+type CreateDLPFileDetectTaskData struct {
+	// 任务请求唯一Id
+	TaskRequestId []*string `json:"TaskRequestId,omitnil,omitempty" name:"TaskRequestId"`
+}
+
+// Predefined struct for user
+type CreateDLPFileDetectTaskRequestParams struct {
+	// 文件下载Url
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件Md5
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
+
+	// 负载类型  1 从GroupId中选一节点 鉴定  2使用所有SelectNodeIds节点鉴定
+	BalanceType *int64 `json:"BalanceType,omitnil,omitempty" name:"BalanceType"`
+
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 选中节点唯一Id列表,BalanceType=2时必填
+	SelectNodeIds []*string `json:"SelectNodeIds,omitnil,omitempty" name:"SelectNodeIds"`
+
+	// 节点组唯一Id,BalanceType=1时必填
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+type CreateDLPFileDetectTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件下载Url
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件Md5
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
+
+	// 负载类型  1 从GroupId中选一节点 鉴定  2使用所有SelectNodeIds节点鉴定
+	BalanceType *int64 `json:"BalanceType,omitnil,omitempty" name:"BalanceType"`
+
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 选中节点唯一Id列表,BalanceType=2时必填
+	SelectNodeIds []*string `json:"SelectNodeIds,omitnil,omitempty" name:"SelectNodeIds"`
+
+	// 节点组唯一Id,BalanceType=1时必填
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+func (r *CreateDLPFileDetectTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDLPFileDetectTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DownloadUrl")
+	delete(f, "FileName")
+	delete(f, "FileMd5")
+	delete(f, "BalanceType")
+	delete(f, "DomainInstanceId")
+	delete(f, "SelectNodeIds")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDLPFileDetectTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDLPFileDetectTaskResponseParams struct {
+	// 创建文件鉴定任务数据
+	Data *CreateDLPFileDetectTaskData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDLPFileDetectTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDLPFileDetectTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateDLPFileDetectTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDLPFileDetectTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateDLPFileDetectionTaskData struct {
 	// 提交任务生成的id，也即requestID。用于后续查询
 	DLPFileDetectionTaskID *string `json:"DLPFileDetectionTaskID,omitnil,omitempty" name:"DLPFileDetectionTaskID"`
@@ -950,6 +1054,202 @@ func (r *DescribeAggrSoftDeviceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDLPEdgeNodeGroupsRequestParams struct {
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 过滤条件
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+type DescribeDLPEdgeNodeGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 过滤条件
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+func (r *DescribeDLPEdgeNodeGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDLPEdgeNodeGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainInstanceId")
+	delete(f, "Condition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDLPEdgeNodeGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDLPEdgeNodeGroupsResponseParams struct {
+	// 业务响应数据
+	Data *DescribeDLPEdgeNodeGroupsRspData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDLPEdgeNodeGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDLPEdgeNodeGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDLPEdgeNodeGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDLPEdgeNodeGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDLPEdgeNodeGroupsRspData struct {
+	// 分组信息
+	Items []*DescribeDLPEdgeNodeGroupsRspItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 分页信息
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+type DescribeDLPEdgeNodeGroupsRspItem struct {
+	// 自增id，数据库中唯一
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 节点分组名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 节点分组id
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 包含边缘节点数量
+	EdgeCount *int64 `json:"EdgeCount,omitnil,omitempty" name:"EdgeCount"`
+}
+
+type DescribeDLPEdgeNodesPageData struct {
+	// 分页信息
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 节点列表
+	Items []*DescribeDLPEdgeNodesRspItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type DescribeDLPEdgeNodesRequestParams struct {
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 过滤条件、分页参数<li>EdgeNodeName - string - 是否必填：否 - 操作符: ilike  - 排序支持：否- 按节点名称过滤。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+type DescribeDLPEdgeNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 过滤条件、分页参数<li>EdgeNodeName - string - 是否必填：否 - 操作符: ilike  - 排序支持：否- 按节点名称过滤。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+func (r *DescribeDLPEdgeNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDLPEdgeNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainInstanceId")
+	delete(f, "Condition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDLPEdgeNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDLPEdgeNodesResponseParams struct {
+	// 业务响应数据
+	Data *DescribeDLPEdgeNodesPageData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDLPEdgeNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDLPEdgeNodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDLPEdgeNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDLPEdgeNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDLPEdgeNodesRspItem struct {
+	// 自增id，数据库中唯一
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 节点分组唯一id
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 节点id
+	EdgeNodeId *string `json:"EdgeNodeId,omitnil,omitempty" name:"EdgeNodeId"`
+
+	// 节点名称
+	EdgeNodeName *string `json:"EdgeNodeName,omitnil,omitempty" name:"EdgeNodeName"`
+
+	// 是否活跃/连通
+	IsActive *bool `json:"IsActive,omitnil,omitempty" name:"IsActive"`
+
+	// 节点分组名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 节点IP
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 节点版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 是否支持升级连接器
+	IsUpgradeEnable *bool `json:"IsUpgradeEnable,omitnil,omitempty" name:"IsUpgradeEnable"`
+
+	// 升级状态: 0(升级中) , 1(升级失败) 或 2(升级成功)
+	UpgradeStatus *int64 `json:"UpgradeStatus,omitnil,omitempty" name:"UpgradeStatus"`
+
+	// 升级状态描述
+	UpgradeDescription *string `json:"UpgradeDescription,omitnil,omitempty" name:"UpgradeDescription"`
+
+	// 规则版本
+	RuleVersion *string `json:"RuleVersion,omitnil,omitempty" name:"RuleVersion"`
+}
+
 type DescribeDLPFileDetectResultData struct {
 	// 提交任务时的文件md5
 	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
@@ -1025,6 +1325,112 @@ func (r *DescribeDLPFileDetectResultResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDLPFileDetectResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDLPFileDetectTaskResult struct {
+	// 提交任务时的文件md5
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
+
+	// 提交任务时的文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 检测执行状态：0未执行 1等待执行 2执行中 3执行失败 4执行完成 
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	//     FileAbstract:文件摘要
+	//     FileAttr:文件属性
+	//     FileCategory:命中分级分类 array
+	//     FileContent:命中信息json(array)
+	// 	            RuleId:规则Id
+	// 				RuleName:规则名称
+	// 				RuleLevel:规则等级
+	// 				Hits：命中词库内容
+	// 				    LibraryId：词库Id
+	// 					LibraryType:词库类型
+	// 					LibraryName:词库名称
+	// 					Attribute: 命中属性 doc.Content文件内容|doc.FileSize文件大小|doc.Name文件名|doc.Type文件类型
+	// 					String  待匹配内容
+	// 					Content 命中内容
+	//                 HitsTotal 规则命中次数
+	//     FileMd5 文件ND5
+	//     FileName 文件名
+	//     FileSize 文件大小
+	//     FileType 文件后缀
+	//     FileTypeName 文件类型名称
+	//     FinalDataLevel 命中最高等级
+	//     NodeId 节点唯一Id
+	//     NodeIp 节点IP
+	//     NodeName 节点名称
+	//     OperateTime 文件操作时间
+	//     Url 文件下载Url
+	DetectResult *string `json:"DetectResult,omitnil,omitempty" name:"DetectResult"`
+
+	// 检测执行状态描述
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
+// Predefined struct for user
+type DescribeDLPFileDetectTaskResultRequestParams struct {
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 任务请求Id
+	TaskRequestId *string `json:"TaskRequestId,omitnil,omitempty" name:"TaskRequestId"`
+}
+
+type DescribeDLPFileDetectTaskResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 任务请求Id
+	TaskRequestId *string `json:"TaskRequestId,omitnil,omitempty" name:"TaskRequestId"`
+}
+
+func (r *DescribeDLPFileDetectTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDLPFileDetectTaskResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainInstanceId")
+	delete(f, "TaskRequestId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDLPFileDetectTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDLPFileDetectTaskResultResponseParams struct {
+	// 文件鉴定任务结果数据。详情查看具体数据结构
+	Data *DescribeDLPFileDetectTaskResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDLPFileDetectTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDLPFileDetectTaskResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeDLPFileDetectTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDLPFileDetectTaskResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

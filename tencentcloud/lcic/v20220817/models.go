@@ -4964,7 +4964,7 @@ type MemberRecord struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubGroupId []*string `json:"SubGroupId,omitnil,omitempty" name:"SubGroupId"`
 
-	// 用户的上台状态
+	// 本堂课用户是否上过台。0 否；1 是
 	Stage *int64 `json:"Stage,omitnil,omitempty" name:"Stage"`
 
 	// 用户状态。0为未到，1为在线，2为离线，3为被踢，4为永久被踢，5为暂时掉线

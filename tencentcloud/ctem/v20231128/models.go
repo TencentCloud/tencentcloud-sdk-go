@@ -5160,6 +5160,12 @@ type DisplayWechatApplet struct {
 
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 认证主体
+	RecordSubject *string `json:"RecordSubject,omitnil,omitempty" name:"RecordSubject"`
+
+	// 账号Appid
+	AccountAppid *string `json:"AccountAppid,omitnil,omitempty" name:"AccountAppid"`
 }
 
 type DisplayWechatOfficialAccount struct {
@@ -5183,6 +5189,9 @@ type DisplayWechatOfficialAccount struct {
 
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 认证主体
+	RecordSubject *string `json:"RecordSubject,omitnil,omitempty" name:"RecordSubject"`
 }
 
 type Filter struct {

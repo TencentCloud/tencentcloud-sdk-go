@@ -4250,9 +4250,12 @@ type JobV1 struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 最新配置版本号
+	// 最新配置版本号，包括已经删除的版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestJobConfigVersion *int64 `json:"LatestJobConfigVersion,omitnil,omitempty" name:"LatestJobConfigVersion"`
+
+	// 最新的版本号，不包括已经删除的版本号
+	LatestValidJobConfigVersion *int64 `json:"LatestValidJobConfigVersion,omitnil,omitempty" name:"LatestValidJobConfigVersion"`
 
 	// 已发布的配置版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4341,6 +4344,9 @@ type JobV1 struct {
 
 	// 停止持续告警
 	ContinueAlarm *int64 `json:"ContinueAlarm,omitnil,omitempty" name:"ContinueAlarm"`
+
+	// 作业重启次数
+	RestartCount *int64 `json:"RestartCount,omitnil,omitempty" name:"RestartCount"`
 }
 
 type LogContent struct {
@@ -5767,6 +5773,9 @@ type TreeJobSets struct {
 	// sql
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DecodeSqlCode *string `json:"DecodeSqlCode,omitnil,omitempty" name:"DecodeSqlCode"`
+
+	// 发布版本配置id
+	PublishedJobConfigId *int64 `json:"PublishedJobConfigId,omitnil,omitempty" name:"PublishedJobConfigId"`
 }
 
 type TreeResourceItem struct {

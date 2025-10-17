@@ -969,6 +969,7 @@ type CreateDataSourceRequestParams struct {
 	// - GDB
 	// - TDENGINE
 	// - TDSQLC
+	// - FileSystem
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
@@ -1170,6 +1171,7 @@ type CreateDataSourceRequest struct {
 	// - GDB
 	// - TDENGINE
 	// - TDSQLC
+	// - FileSystem
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
@@ -1491,7 +1493,7 @@ type CreateProjectMemberRequestParams struct {
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 用户id
-	UseUins []*string `json:"UseUins,omitnil,omitempty" name:"UseUins"`
+	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
 
 	// 角色id
 	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
@@ -1504,7 +1506,7 @@ type CreateProjectMemberRequest struct {
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 用户id
-	UseUins []*string `json:"UseUins,omitnil,omitempty" name:"UseUins"`
+	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
 
 	// 角色id
 	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
@@ -1523,7 +1525,7 @@ func (r *CreateProjectMemberRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ProjectId")
-	delete(f, "UseUins")
+	delete(f, "UserUins")
 	delete(f, "RoleIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProjectMemberRequest has unknown keys!", "")
@@ -8592,7 +8594,7 @@ func (r *ListResourceFoldersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListResourceGroupsRequestParams struct {
-	// 执行资源组类型，不能为空
+	// 执行资源组类型
 	// 
 	// - Schedule --- 调度资源组
 	// - Integration --- 集成资源组
@@ -8618,7 +8620,7 @@ type ListResourceGroupsRequestParams struct {
 type ListResourceGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行资源组类型，不能为空
+	// 执行资源组类型
 	// 
 	// - Schedule --- 调度资源组
 	// - Integration --- 集成资源组

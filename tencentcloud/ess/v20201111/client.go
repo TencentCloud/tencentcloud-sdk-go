@@ -1375,6 +1375,68 @@ func (c *Client) CreateBatchSignUrlWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateContractComparisonTaskRequest() (request *CreateContractComparisonTaskRequest) {
+    request = &CreateContractComparisonTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateContractComparisonTask")
+    
+    
+    return
+}
+
+func NewCreateContractComparisonTaskResponse() (response *CreateContractComparisonTaskResponse) {
+    response = &CreateContractComparisonTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateContractComparisonTask
+// 此接口（CreateContractComparisonTask）用于创建合同对比任务。
+//
+// 适用场景：对比两份合同中字段（如：金额、日期、甲方名称等）的内容差异。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateContractComparisonTask(request *CreateContractComparisonTaskRequest) (response *CreateContractComparisonTaskResponse, err error) {
+    return c.CreateContractComparisonTaskWithContext(context.Background(), request)
+}
+
+// CreateContractComparisonTask
+// 此接口（CreateContractComparisonTask）用于创建合同对比任务。
+//
+// 适用场景：对比两份合同中字段（如：金额、日期、甲方名称等）的内容差异。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateContractComparisonTaskWithContext(ctx context.Context, request *CreateContractComparisonTaskRequest) (response *CreateContractComparisonTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateContractComparisonTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateContractComparisonTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateContractComparisonTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateContractComparisonTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateContractDiffTaskWebUrlRequest() (request *CreateContractDiffTaskWebUrlRequest) {
     request = &CreateContractDiffTaskWebUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12469,6 +12531,62 @@ func (c *Client) DisableUserAutoSignWithContext(ctx context.Context, request *Di
     request.SetContext(ctx)
     
     response = NewDisableUserAutoSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportContractComparisonTaskRequest() (request *ExportContractComparisonTaskRequest) {
+    request = &ExportContractComparisonTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "ExportContractComparisonTask")
+    
+    
+    return
+}
+
+func NewExportContractComparisonTaskResponse() (response *ExportContractComparisonTaskResponse) {
+    response = &ExportContractComparisonTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportContractComparisonTask
+// 本接口（ExportContractComparisonTask）用于导出指定的合同对比任务的结果文件。任务完成后，用户可根据不同的使用场景，选择导出可视化对比报告（PDF）或结构化差异明细（EXCEL）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ExportContractComparisonTask(request *ExportContractComparisonTaskRequest) (response *ExportContractComparisonTaskResponse, err error) {
+    return c.ExportContractComparisonTaskWithContext(context.Background(), request)
+}
+
+// ExportContractComparisonTask
+// 本接口（ExportContractComparisonTask）用于导出指定的合同对比任务的结果文件。任务完成后，用户可根据不同的使用场景，选择导出可视化对比报告（PDF）或结构化差异明细（EXCEL）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ExportContractComparisonTaskWithContext(ctx context.Context, request *ExportContractComparisonTaskRequest) (response *ExportContractComparisonTaskResponse, err error) {
+    if request == nil {
+        request = NewExportContractComparisonTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ExportContractComparisonTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportContractComparisonTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportContractComparisonTaskResponse()
     err = c.Send(request, response)
     return
 }

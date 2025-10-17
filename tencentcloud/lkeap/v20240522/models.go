@@ -1191,7 +1191,7 @@ type GetEmbeddingRequestParams struct {
 	// 说明：文本向量化的类型，为使得检索任务有更好的检索效果，建议区分查询文本（query）和文档文本（document）类型, 聚类、分类等对称任务可以不用特殊指定，采用系统默认值document即可。
 	TextType *string `json:"TextType,omitnil,omitempty" name:"TextType"`
 
-	// 说明：自定义任务指令词，当且仅当TextType=query时，生效
+	// 说明：自定义任务指令词，当且仅当TextType=query且Model为youtu-embedding-llm-v1时，生效
 	Instruction *string `json:"Instruction,omitnil,omitempty" name:"Instruction"`
 }
 
@@ -1208,7 +1208,7 @@ type GetEmbeddingRequest struct {
 	// 说明：文本向量化的类型，为使得检索任务有更好的检索效果，建议区分查询文本（query）和文档文本（document）类型, 聚类、分类等对称任务可以不用特殊指定，采用系统默认值document即可。
 	TextType *string `json:"TextType,omitnil,omitempty" name:"TextType"`
 
-	// 说明：自定义任务指令词，当且仅当TextType=query时，生效
+	// 说明：自定义任务指令词，当且仅当TextType=query且Model为youtu-embedding-llm-v1时，生效
 	Instruction *string `json:"Instruction,omitnil,omitempty" name:"Instruction"`
 }
 

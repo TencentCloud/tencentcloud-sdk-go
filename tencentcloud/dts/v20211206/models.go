@@ -6328,20 +6328,20 @@ type SkippedItem struct {
 
 // Predefined struct for user
 type StartCompareRequestParams struct {
-	// 迁移任务 Id
+	// 迁移任务 ID，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+	// 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 }
 
 type StartCompareRequest struct {
 	*tchttp.BaseRequest
 	
-	// 迁移任务 Id
+	// 迁移任务 ID，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+	// 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 }
 

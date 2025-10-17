@@ -1069,6 +1069,9 @@ type BatchCreateTaskVersionAsyncRequestParams struct {
 
 	// 是否需要校验父任务已经提交到调度
 	NeedCheckParentSubmitted *bool `json:"NeedCheckParentSubmitted,omitnil,omitempty" name:"NeedCheckParentSubmitted"`
+
+	// 是否需要补录中间实例
+	EnableMakeUp *bool `json:"EnableMakeUp,omitnil,omitempty" name:"EnableMakeUp"`
 }
 
 type BatchCreateTaskVersionAsyncRequest struct {
@@ -1091,6 +1094,9 @@ type BatchCreateTaskVersionAsyncRequest struct {
 
 	// 是否需要校验父任务已经提交到调度
 	NeedCheckParentSubmitted *bool `json:"NeedCheckParentSubmitted,omitnil,omitempty" name:"NeedCheckParentSubmitted"`
+
+	// 是否需要补录中间实例
+	EnableMakeUp *bool `json:"EnableMakeUp,omitnil,omitempty" name:"EnableMakeUp"`
 }
 
 func (r *BatchCreateTaskVersionAsyncRequest) ToJsonString() string {
@@ -1111,6 +1117,7 @@ func (r *BatchCreateTaskVersionAsyncRequest) FromJsonString(s string) error {
 	delete(f, "AlarmWays")
 	delete(f, "AlarmRecipientTypes")
 	delete(f, "NeedCheckParentSubmitted")
+	delete(f, "EnableMakeUp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchCreateTaskVersionAsyncRequest has unknown keys!", "")
 	}
@@ -3422,6 +3429,24 @@ type ColumnMeta struct {
 	// influxdb字段类别
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InfluxCategory *string `json:"InfluxCategory,omitnil,omitempty" name:"InfluxCategory"`
+
+	// 字段使用说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
+}
+
+type ColumnValueConfig struct {
+	// 字段值key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldKey *string `json:"FieldKey,omitnil,omitempty" name:"FieldKey"`
+
+	// 字段值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldValue *string `json:"FieldValue,omitnil,omitempty" name:"FieldValue"`
+
+	// 字段值类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldDataType *string `json:"FieldDataType,omitnil,omitempty" name:"FieldDataType"`
 }
 
 // Predefined struct for user
@@ -4758,6 +4783,9 @@ type CreateHiveTableRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
+	// 数据库类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
 	// 责任人
 	Incharge *string `json:"Incharge,omitnil,omitempty" name:"Incharge"`
 
@@ -4792,6 +4820,9 @@ type CreateHiveTableRequest struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
+	// 数据库类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
 	// 责任人
 	Incharge *string `json:"Incharge,omitnil,omitempty" name:"Incharge"`
 
@@ -4825,6 +4856,7 @@ func (r *CreateHiveTableRequest) FromJsonString(s string) error {
 	delete(f, "DDLSql")
 	delete(f, "Privilege")
 	delete(f, "ProjectId")
+	delete(f, "Type")
 	delete(f, "Incharge")
 	delete(f, "DataOptimizationResource")
 	delete(f, "SmartOptimizerWritten")
@@ -6167,6 +6199,9 @@ type CreateTaskVersionDsRequestParams struct {
 
 	// 是否需要校验循环依赖，默认为 true，如果使用了 CheckTaskCycleLink 和 CheckTaskCycleConfiguration 两个接口校验成功可以传 false，后台服务器不再做校验
 	EnableCheckTaskCycleLink *bool `json:"EnableCheckTaskCycleLink,omitnil,omitempty" name:"EnableCheckTaskCycleLink"`
+
+	// 是否需要补录中间实例
+	EnableMakeUp *bool `json:"EnableMakeUp,omitnil,omitempty" name:"EnableMakeUp"`
 }
 
 type CreateTaskVersionDsRequest struct {
@@ -6195,6 +6230,9 @@ type CreateTaskVersionDsRequest struct {
 
 	// 是否需要校验循环依赖，默认为 true，如果使用了 CheckTaskCycleLink 和 CheckTaskCycleConfiguration 两个接口校验成功可以传 false，后台服务器不再做校验
 	EnableCheckTaskCycleLink *bool `json:"EnableCheckTaskCycleLink,omitnil,omitempty" name:"EnableCheckTaskCycleLink"`
+
+	// 是否需要补录中间实例
+	EnableMakeUp *bool `json:"EnableMakeUp,omitnil,omitempty" name:"EnableMakeUp"`
 }
 
 func (r *CreateTaskVersionDsRequest) ToJsonString() string {
@@ -6217,6 +6255,7 @@ func (r *CreateTaskVersionDsRequest) FromJsonString(s string) error {
 	delete(f, "AlarmWays")
 	delete(f, "AlarmRecipientTypes")
 	delete(f, "EnableCheckTaskCycleLink")
+	delete(f, "EnableMakeUp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskVersionDsRequest has unknown keys!", "")
 	}
@@ -7037,6 +7076,18 @@ type DatabaseMeta struct {
 	// 库guid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseGuid *string `json:"DatabaseGuid,omitnil,omitempty" name:"DatabaseGuid"`
+
+	// 环境，取值 prod或者 dev
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Environment *string `json:"Environment,omitnil,omitempty" name:"Environment"`
+
+	// Owner的账户信息：账号信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerAccount *uint64 `json:"OwnerAccount,omitnil,omitempty" name:"OwnerAccount"`
+
+	// 操作权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateOption *OperateOption `json:"OperateOption,omitnil,omitempty" name:"OperateOption"`
 }
 
 type DatabaseSchemaIInfo struct {
@@ -11638,6 +11689,9 @@ type DescribeEventCasesRequestParams struct {
 
 	// 排序顺序
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 有效次数
+	ConsumeCount *string `json:"ConsumeCount,omitnil,omitempty" name:"ConsumeCount"`
 }
 
 type DescribeEventCasesRequest struct {
@@ -11706,6 +11760,9 @@ type DescribeEventCasesRequest struct {
 
 	// 排序顺序
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 有效次数
+	ConsumeCount *string `json:"ConsumeCount,omitnil,omitempty" name:"ConsumeCount"`
 }
 
 func (r *DescribeEventCasesRequest) ToJsonString() string {
@@ -11739,6 +11796,7 @@ func (r *DescribeEventCasesRequest) FromJsonString(s string) error {
 	delete(f, "TimeToLive")
 	delete(f, "SortItem")
 	delete(f, "SortType")
+	delete(f, "ConsumeCount")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEventCasesRequest has unknown keys!", "")
 	}
@@ -14370,6 +14428,9 @@ type DescribeOperateOpsTasksRequestParams struct {
 
 	// 时区
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 根据任务优先级筛选
+	RunPriorityList []*int64 `json:"RunPriorityList,omitnil,omitempty" name:"RunPriorityList"`
 }
 
 type DescribeOperateOpsTasksRequest struct {
@@ -14458,6 +14519,9 @@ type DescribeOperateOpsTasksRequest struct {
 
 	// 时区
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 根据任务优先级筛选
+	RunPriorityList []*int64 `json:"RunPriorityList,omitnil,omitempty" name:"RunPriorityList"`
 }
 
 func (r *DescribeOperateOpsTasksRequest) ToJsonString() string {
@@ -14500,6 +14564,7 @@ func (r *DescribeOperateOpsTasksRequest) FromJsonString(s string) error {
 	delete(f, "ProjectIds")
 	delete(f, "BlackTaskIdList")
 	delete(f, "ScheduleTimeZone")
+	delete(f, "RunPriorityList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOperateOpsTasksRequest has unknown keys!", "")
 	}
@@ -16292,9 +16357,6 @@ func (r *DescribeRelatedTasksByTaskIdResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReportTaskDetailRequestParams struct {
-	// 租户id
-	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
-
 	// 引擎任务id
 	EngineTaskId *string `json:"EngineTaskId,omitnil,omitempty" name:"EngineTaskId"`
 }
@@ -16302,9 +16364,6 @@ type DescribeReportTaskDetailRequestParams struct {
 type DescribeReportTaskDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 租户id
-	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
-
 	// 引擎任务id
 	EngineTaskId *string `json:"EngineTaskId,omitnil,omitempty" name:"EngineTaskId"`
 }
@@ -16321,7 +16380,6 @@ func (r *DescribeReportTaskDetailRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "TenantId")
 	delete(f, "EngineTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReportTaskDetailRequest has unknown keys!", "")
@@ -17897,60 +17955,77 @@ type DescribeScheduleInstancesRequestParams struct {
 	// 请求来源，WEB 前端；CLIENT 客户端
 	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
 
-	// 实例列表
+	// 【已废弃参数，新用户接入无需关注】
+	// 实例列表过滤条件
 	Instances []*InstanceOpsDto `json:"Instances,omitnil,omitempty" name:"Instances"`
 
-	// 检查父任务类型, true: 检查父任务; false: 不检查父任务 
+	// 【已废弃参数，新用户接入无需关注】
+	// 检查父任务类型,  true: 检查父任务类型;  false: 不检查父任务类型
 	CheckFather *bool `json:"CheckFather,omitnil,omitempty" name:"CheckFather"`
 
-	// 重跑类型, 1: 自身; 3: 孩子; 2: 自身以及孩子 
+	// 【已废弃参数，新用户接入无需关注】
+	// 重跑类型, 1: 仅重跑当前实例; 2: 重跑当前实例及其子实例; 3: 仅重跑子实例
 	RerunType *string `json:"RerunType,omitnil,omitempty" name:"RerunType"`
 
-	// 实例依赖方式, 1: 自依赖; 2: 任务依赖; 3: 自依赖及父子依赖 
+	// 【已废弃参数，新用户接入无需关注】
+	// 实例依赖方式, 1: 任务自依赖; 2: 任务上游依赖; 3: 自依赖及其上游依赖 
 	DependentWay *string `json:"DependentWay,omitnil,omitempty" name:"DependentWay"`
 
-	// 重跑忽略事件监听与否 
+	// 【已废弃参数，新用户接入无需关注】
+	// 重跑时是否忽略事件监听
 	SkipEventListening *bool `json:"SkipEventListening,omitnil,omitempty" name:"SkipEventListening"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 下游实例范围 1: 所在工作流 2: 所在项目 3: 所有跨工作流依赖的项目
 	SonInstanceType *string `json:"SonInstanceType,omitnil,omitempty" name:"SonInstanceType"`
 
 	// 查询条件
 	SearchCondition *InstanceApiOpsRequest `json:"SearchCondition,omitnil,omitempty" name:"SearchCondition"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 访问类型
 	OptType *string `json:"OptType,omitnil,omitempty" name:"OptType"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 操作者名称
 	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 操作者id
 	OperatorId *string `json:"OperatorId,omitnil,omitempty" name:"OperatorId"`
 
-	// 项目id
+	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目标志
+	// 【必要参数】
+	// 项目ID
 	ProjectIdent *string `json:"ProjectIdent,omitnil,omitempty" name:"ProjectIdent"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 索引页码
+	// 【必要参数】
+	// 分页查询开始页页码，默认值为 1
 	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 
-	// 页面大小
+	// 【必要参数】
+	// 分页查询每页返回的结果行数，默认值为 10
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 数据总数
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 基础请求信息
 	RequestBaseInfo *ProjectBaseInfoOpsRequest `json:"RequestBaseInfo,omitnil,omitempty" name:"RequestBaseInfo"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 是否计算总数
 	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 项目ID列表，用于多项目实例列表筛选，请注意，该字段传入时 ProjectId 字段也必须传，且传入的 ProjectIds 中的项目ID必须是当前用户有权限的项目ID，否则会由于权限校验失败报错
 	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
@@ -17961,60 +18036,77 @@ type DescribeScheduleInstancesRequest struct {
 	// 请求来源，WEB 前端；CLIENT 客户端
 	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
 
-	// 实例列表
+	// 【已废弃参数，新用户接入无需关注】
+	// 实例列表过滤条件
 	Instances []*InstanceOpsDto `json:"Instances,omitnil,omitempty" name:"Instances"`
 
-	// 检查父任务类型, true: 检查父任务; false: 不检查父任务 
+	// 【已废弃参数，新用户接入无需关注】
+	// 检查父任务类型,  true: 检查父任务类型;  false: 不检查父任务类型
 	CheckFather *bool `json:"CheckFather,omitnil,omitempty" name:"CheckFather"`
 
-	// 重跑类型, 1: 自身; 3: 孩子; 2: 自身以及孩子 
+	// 【已废弃参数，新用户接入无需关注】
+	// 重跑类型, 1: 仅重跑当前实例; 2: 重跑当前实例及其子实例; 3: 仅重跑子实例
 	RerunType *string `json:"RerunType,omitnil,omitempty" name:"RerunType"`
 
-	// 实例依赖方式, 1: 自依赖; 2: 任务依赖; 3: 自依赖及父子依赖 
+	// 【已废弃参数，新用户接入无需关注】
+	// 实例依赖方式, 1: 任务自依赖; 2: 任务上游依赖; 3: 自依赖及其上游依赖 
 	DependentWay *string `json:"DependentWay,omitnil,omitempty" name:"DependentWay"`
 
-	// 重跑忽略事件监听与否 
+	// 【已废弃参数，新用户接入无需关注】
+	// 重跑时是否忽略事件监听
 	SkipEventListening *bool `json:"SkipEventListening,omitnil,omitempty" name:"SkipEventListening"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 下游实例范围 1: 所在工作流 2: 所在项目 3: 所有跨工作流依赖的项目
 	SonInstanceType *string `json:"SonInstanceType,omitnil,omitempty" name:"SonInstanceType"`
 
 	// 查询条件
 	SearchCondition *InstanceApiOpsRequest `json:"SearchCondition,omitnil,omitempty" name:"SearchCondition"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 访问类型
 	OptType *string `json:"OptType,omitnil,omitempty" name:"OptType"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 操作者名称
 	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 操作者id
 	OperatorId *string `json:"OperatorId,omitnil,omitempty" name:"OperatorId"`
 
-	// 项目id
+	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目标志
+	// 【必要参数】
+	// 项目ID
 	ProjectIdent *string `json:"ProjectIdent,omitnil,omitempty" name:"ProjectIdent"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 索引页码
+	// 【必要参数】
+	// 分页查询开始页页码，默认值为 1
 	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 
-	// 页面大小
+	// 【必要参数】
+	// 分页查询每页返回的结果行数，默认值为 10
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 数据总数
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 基础请求信息
 	RequestBaseInfo *ProjectBaseInfoOpsRequest `json:"RequestBaseInfo,omitnil,omitempty" name:"RequestBaseInfo"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 是否计算总数
 	IsCount *bool `json:"IsCount,omitnil,omitempty" name:"IsCount"`
 
+	// 【已废弃参数，新用户接入无需关注】
 	// 项目ID列表，用于多项目实例列表筛选，请注意，该字段传入时 ProjectId 字段也必须传，且传入的 ProjectIds 中的项目ID必须是当前用户有权限的项目ID，否则会由于权限校验失败报错
 	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
@@ -21340,6 +21432,12 @@ type DescribeTestRunningRecordRequestParams struct {
 
 	// 试运行记录id
 	RecordIdList []*int64 `json:"RecordIdList,omitnil,omitempty" name:"RecordIdList"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页索引
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 }
 
 type DescribeTestRunningRecordRequest struct {
@@ -21365,6 +21463,12 @@ type DescribeTestRunningRecordRequest struct {
 
 	// 试运行记录id
 	RecordIdList []*int64 `json:"RecordIdList,omitnil,omitempty" name:"RecordIdList"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页索引
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 }
 
 func (r *DescribeTestRunningRecordRequest) ToJsonString() string {
@@ -21386,6 +21490,8 @@ func (r *DescribeTestRunningRecordRequest) FromJsonString(s string) error {
 	delete(f, "CreateTime")
 	delete(f, "EndTime")
 	delete(f, "RecordIdList")
+	delete(f, "PageSize")
+	delete(f, "PageIndex")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTestRunningRecordRequest has unknown keys!", "")
 	}
@@ -21397,6 +21503,14 @@ type DescribeTestRunningRecordResponseParams struct {
 	// 编排空间试运行任务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*TestRunningRecord `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalItems *int64 `json:"TotalItems,omitnil,omitempty" name:"TotalItems"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -21697,6 +21811,9 @@ type DescribeWorkflowCanvasInfoRequestParams struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
 }
 
 type DescribeWorkflowCanvasInfoRequest struct {
@@ -21707,6 +21824,9 @@ type DescribeWorkflowCanvasInfoRequest struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
 }
 
 func (r *DescribeWorkflowCanvasInfoRequest) ToJsonString() string {
@@ -21723,6 +21843,7 @@ func (r *DescribeWorkflowCanvasInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "WorkflowId")
 	delete(f, "ProjectId")
+	delete(f, "RequestFromSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkflowCanvasInfoRequest has unknown keys!", "")
 	}
@@ -22901,17 +23022,18 @@ type EngineTaskInfo struct {
 
 	// 引擎执行总时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EngineExeTimes *uint64 `json:"EngineExeTimes,omitnil,omitempty" name:"EngineExeTimes"`
+	EngineExeTimeCost *float64 `json:"EngineExeTimeCost,omitnil,omitempty" name:"EngineExeTimeCost"`
 
 	// cu消耗
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CuConsume *uint64 `json:"CuConsume,omitnil,omitempty" name:"CuConsume"`
 
-	// 资源消耗
+	// 该值表示任务预设资源，sql任务不需要预设资源，该值为-1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceUsage *int64 `json:"ResourceUsage,omitnil,omitempty" name:"ResourceUsage"`
 
-	// 引擎名
+	// 引擎名。在wedata侧若获取不到引擎名，则是wedata侧生成dlc标识，与dlc侧的引擎名存在不一致的情况
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
 
@@ -23249,6 +23371,22 @@ type EventDsDto struct {
 	// 项目名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 事件消费有效次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidConsumeCount *int64 `json:"ValidConsumeCount,omitnil,omitempty" name:"ValidConsumeCount"`
+
+	// 事件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// bundleId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// bundle信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
 }
 
 type EventListenerDTO struct {
@@ -23864,6 +24002,10 @@ type FieldConfig struct {
 	// 字段值类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldDataType *string `json:"FieldDataType,omitnil,omitempty" name:"FieldDataType"`
+
+	// 字段值变量信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueConfig *ColumnValueConfig `json:"ValueConfig,omitnil,omitempty" name:"ValueConfig"`
 }
 
 type Filter struct {
@@ -25503,6 +25645,12 @@ type InstanceApiOpsRequest struct {
 
 	// 计划调度时间
 	ScheduleTimeTo *string `json:"ScheduleTimeTo,omitnil,omitempty" name:"ScheduleTimeTo"`
+
+	// 任务优先级过滤实例列表
+	RunPriorityList []*int64 `json:"RunPriorityList,omitnil,omitempty" name:"RunPriorityList"`
+
+	// 实例调度周期筛选
+	InstanceCycleType []*string `json:"InstanceCycleType,omitnil,omitempty" name:"InstanceCycleType"`
 }
 
 type InstanceCondition struct {
@@ -26462,6 +26610,12 @@ type InstanceOpsDto struct {
 
 	// 允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
 	AllowRedoType *string `json:"AllowRedoType,omitnil,omitempty" name:"AllowRedoType"`
+
+	// 实例生命周期
+	InstanceCycleType *string `json:"InstanceCycleType,omitnil,omitempty" name:"InstanceCycleType"`
+
+	// 实例执行计划描述
+	InstanceSchedulerDesc *string `json:"InstanceSchedulerDesc,omitnil,omitempty" name:"InstanceSchedulerDesc"`
 }
 
 type InstanceOpsInfoPage struct {
@@ -27171,7 +27325,7 @@ type KVPair struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	K *string `json:"K,omitnil,omitempty" name:"K"`
 
-	// 值
+	// 值，请勿传SQL(请求会被视为攻击接口)，如果有需要，请将SQL进行Base64转码并解码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	V *string `json:"V,omitnil,omitempty" name:"V"`
 }
@@ -31373,6 +31527,12 @@ type OfflineTaskAddParam struct {
 	InstanceInitStrategy *string `json:"InstanceInitStrategy,omitnil,omitempty" name:"InstanceInitStrategy"`
 }
 
+type OperateOption struct {
+	// 是否有修改归属项目权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasProjectPermission *bool `json:"HasProjectPermission,omitnil,omitempty" name:"HasProjectPermission"`
+}
+
 type OperationOpsDto struct {
 	// 操作是否成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -32043,7 +32203,12 @@ type ProdSchedulerTask struct {
 	CycleType *int64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
 	// 生产任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 }
 
 type Project struct {
@@ -32289,6 +32454,12 @@ type RealTimeTaskSpeed struct {
 
 	// 同步速度字节/s列表
 	BytesSpeedList []*BytesSpeed `json:"BytesSpeedList,omitnil,omitempty" name:"BytesSpeedList"`
+
+	// 日志条数速度
+	RecordsLogSpeed []*RecordsSpeed `json:"RecordsLogSpeed,omitnil,omitempty" name:"RecordsLogSpeed"`
+
+	// 日志大小速度
+	BytesLogSpeed []*BytesSpeed `json:"BytesLogSpeed,omitnil,omitempty" name:"BytesLogSpeed"`
 }
 
 type RecordField struct {
@@ -32467,6 +32638,9 @@ type RegisterDsEventRequestParams struct {
 	//
 	// Deprecated: DimensionFormat is deprecated.
 	DimensionFormat *string `json:"DimensionFormat,omitnil,omitempty" name:"DimensionFormat"`
+
+	// 事件消费有效次数
+	ValidConsumeCount *int64 `json:"ValidConsumeCount,omitnil,omitempty" name:"ValidConsumeCount"`
 }
 
 type RegisterDsEventRequest struct {
@@ -32501,6 +32675,9 @@ type RegisterDsEventRequest struct {
 
 	// 时间格式	
 	DimensionFormat *string `json:"DimensionFormat,omitnil,omitempty" name:"DimensionFormat"`
+
+	// 事件消费有效次数
+	ValidConsumeCount *int64 `json:"ValidConsumeCount,omitnil,omitempty" name:"ValidConsumeCount"`
 }
 
 func (r *RegisterDsEventRequest) ToJsonString() string {
@@ -32525,6 +32702,7 @@ func (r *RegisterDsEventRequest) FromJsonString(s string) error {
 	delete(f, "EventType")
 	delete(f, "EventBroadcastType")
 	delete(f, "DimensionFormat")
+	delete(f, "ValidConsumeCount")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterDsEventRequest has unknown keys!", "")
 	}
@@ -34332,6 +34510,18 @@ type Rule struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// 数据库名称 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailMsg *string `json:"FailMsg,omitnil,omitempty" name:"FailMsg"`
 }
 
 type RuleConfig struct {
@@ -34384,6 +34574,10 @@ type RuleExecConfig struct {
 	// DLC执行引擎资源组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DlcGroupName *string `json:"DlcGroupName,omitnil,omitempty" name:"DlcGroupName"`
+
+	// 引擎参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineParam *string `json:"EngineParam,omitnil,omitempty" name:"EngineParam"`
 }
 
 type RuleExecDateStat struct {
@@ -34782,7 +34976,82 @@ type RuleGroup struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 监控创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserName *string `json:"CreateUserName,omitnil,omitempty" name:"CreateUserName"`
+}
+
+type RuleGroupConfig struct {
+	// 模型检测类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelMonitorType *string `json:"ModelMonitorType,omitnil,omitempty" name:"ModelMonitorType"`
+
+	// 预测列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PredictColumn *string `json:"PredictColumn,omitnil,omitempty" name:"PredictColumn"`
+
+	// 预测列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PredictColumnType *string `json:"PredictColumnType,omitnil,omitempty" name:"PredictColumnType"`
+
+	// 标签列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelColumn *string `json:"LabelColumn,omitnil,omitempty" name:"LabelColumn"`
+
+	// 标签列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelColumnType *string `json:"LabelColumnType,omitnil,omitempty" name:"LabelColumnType"`
+
+	// 模型id列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelIdColumn *string `json:"ModelIdColumn,omitnil,omitempty" name:"ModelIdColumn"`
+
+	// 模型id列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelIdColumnType *string `json:"ModelIdColumnType,omitnil,omitempty" name:"ModelIdColumnType"`
+
+	// 时间戳列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimestampColumn *string `json:"TimestampColumn,omitnil,omitempty" name:"TimestampColumn"`
+
+	// 时间戳列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimestampColumnType *string `json:"TimestampColumnType,omitnil,omitempty" name:"TimestampColumnType"`
+
+	// 指标粒度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 指标粒度单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GranularityType *string `json:"GranularityType,omitnil,omitempty" name:"GranularityType"`
+
+	// 基准表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseTable *string `json:"BaseTable,omitnil,omitempty" name:"BaseTable"`
+
+	// 基准库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseDb *string `json:"BaseDb,omitnil,omitempty" name:"BaseDb"`
+
+	// 对比列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComparisonColumn *string `json:"ComparisonColumn,omitnil,omitempty" name:"ComparisonColumn"`
+
+	// 对比列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComparisonColumnType *string `json:"ComparisonColumnType,omitnil,omitempty" name:"ComparisonColumnType"`
+
+	// 保护组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectionValue *string `json:"ProtectionValue,omitnil,omitempty" name:"ProtectionValue"`
+
+	// 正类值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PositiveValue *string `json:"PositiveValue,omitnil,omitempty" name:"PositiveValue"`
+
+	// 特征列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeatureColumn *string `json:"FeatureColumn,omitnil,omitempty" name:"FeatureColumn"`
 }
 
 type RuleGroupExecResult struct {
@@ -34983,26 +35252,40 @@ type RuleGroupExecStrategy struct {
 	DlcGroupName *string `json:"DlcGroupName,omitnil,omitempty" name:"DlcGroupName"`
 
 	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleGroupName *string `json:"RuleGroupName,omitnil,omitempty" name:"RuleGroupName"`
 
 	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
 	// schema名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
 	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// 数据源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
 
 	// 任务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 时区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 任务监控参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupConfig *RuleGroupConfig `json:"GroupConfig,omitnil,omitempty" name:"GroupConfig"`
+
+	// 引擎参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineParam *string `json:"EngineParam,omitnil,omitempty" name:"EngineParam"`
 }
 
 type RuleGroupPage struct {
@@ -36217,6 +36500,10 @@ type SearchColumnDocVO struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// 字段使用说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 }
 
 type SearchCondition struct {
@@ -36426,6 +36713,10 @@ type SqlExpression struct {
 	// sql表达式字段名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamExpressions []*string `json:"ParamExpressions,omitnil,omitempty" name:"ParamExpressions"`
+
+	// 新增模型检测类系统模板sql中占位符集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemTemplateExpressions []*string `json:"SystemTemplateExpressions,omitnil,omitempty" name:"SystemTemplateExpressions"`
 }
 
 type SqlExpressionTable struct {
@@ -38270,6 +38561,10 @@ type TagVoteSum struct {
 
 	// 标签名
 	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
+
+	// 标签描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagDesc *string `json:"TagDesc,omitnil,omitempty" name:"TagDesc"`
 }
 
 type TaskAlarmInfo struct {
@@ -39048,9 +39343,9 @@ type TaskDsDTO struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// Bundle名称
+	// bundle信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BundleName *string `json:"BundleName,omitnil,omitempty" name:"BundleName"`
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
 }
 
 type TaskExtDsVO struct {
@@ -39194,7 +39489,7 @@ type TaskInfoVo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 
-	// 引擎名称
+	// 引擎名称。在wedata侧若获取不到引擎名，则是wedata侧自动生成的标识，与集群侧的引擎名有可能不一致
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
 
@@ -39202,7 +39497,8 @@ type TaskInfoVo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineSubType *string `json:"EngineSubType,omitnil,omitempty" name:"EngineSubType"`
 
-	// 引擎taskId
+	// 引擎taskId，集成任务部分会使用资源组的资源运行任务，没有提交到引擎侧，所以没有引擎侧id
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineTaskId *string `json:"EngineTaskId,omitnil,omitempty" name:"EngineTaskId"`
 
@@ -39225,6 +39521,10 @@ type TaskInfoVo struct {
 	// 数据来源,DATA_INTEGRATION、DATA_EXPLORATION、DATA_QUALITY、OM_CENTER等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductSource *string `json:"ProductSource,omitnil,omitempty" name:"ProductSource"`
+
+	// 集成任务的任务类型，表明是读端还是写端，可选择READ、WRITE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntegrationType *string `json:"IntegrationType,omitnil,omitempty" name:"IntegrationType"`
 }
 
 type TaskInnerInfo struct {
@@ -39887,6 +40187,10 @@ type TaskOpsDto struct {
 
 	// 允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
 	AllowRedoType *string `json:"AllowRedoType,omitnil,omitempty" name:"AllowRedoType"`
+
+	// 负责人Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerId *string `json:"OwnerId,omitnil,omitempty" name:"OwnerId"`
 }
 
 type TaskScriptContent struct {
@@ -40472,6 +40776,10 @@ type TestRunningRecord struct {
 	// 结果或日志桶名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
 type TestRunningSubRecord struct {
@@ -42156,6 +42464,14 @@ type WorkflowDsDTO struct {
 	// 最近更新人id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateUserId *string `json:"UpdateUserId,omitnil,omitempty" name:"UpdateUserId"`
+
+	// BundleId CI/CD工程生成的bundle唯一标识	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// BundleId信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
 }
 
 type WorkflowExtOpsDto struct {

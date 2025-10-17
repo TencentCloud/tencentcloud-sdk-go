@@ -15978,6 +15978,12 @@ type TalkConversationConfigInfo struct {
 
 	// 是否启用情绪识别
 	EmotionEnabled *bool `json:"EmotionEnabled,omitnil,omitempty" name:"EmotionEnabled"`
+
+	// 是否启用语义vad
+	SemanticVADEnabled *bool `json:"SemanticVADEnabled,omitnil,omitempty" name:"SemanticVADEnabled"`
+
+	// 是否启用噪声过滤
+	NoiseFilterEnabled *bool `json:"NoiseFilterEnabled,omitnil,omitempty" name:"NoiseFilterEnabled"`
 }
 
 type TalkIdleDetectionConfigInfo struct {

@@ -1021,6 +1021,28 @@ type CcInfo struct {
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 }
 
+type ComparisonDetail struct {
+	// 对比前后差异类型，具体如下：
+	// <ul><li> **add**：新增</li>
+	// <li> **change**：变更</li>
+	// <li> **delete**：删除</li>
+	// </ul>
+	ComparisonType *string `json:"ComparisonType,omitnil,omitempty" name:"ComparisonType"`
+
+	// 对比内容类型，具体如下：
+	// <ul><li> **text**：文本</li>
+	// <li> **table**：表格</li>
+	// <li> **picture**：图片</li>
+	// </ul>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 原文文本。
+	OriginText *string `json:"OriginText,omitnil,omitempty" name:"OriginText"`
+
+	// 对比文本。
+	DiffText *string `json:"DiffText,omitnil,omitempty" name:"DiffText"`
+}
+
 type Component struct {
 	// **如果是Component填写控件类型，则可选的字段为**：
 	// 
@@ -2580,6 +2602,107 @@ func (r *CreateBatchSignUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateContractComparisonTaskRequestParams struct {
+	// 执行合同审查任务的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 原版文件ID，对比基准的旧版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	OriginFileResourceId *string `json:"OriginFileResourceId,omitnil,omitempty" name:"OriginFileResourceId"`
+
+	// 新版文件ID，与旧版进行对比的新版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	DiffFileResourceId *string `json:"DiffFileResourceId,omitnil,omitempty" name:"DiffFileResourceId"`
+
+	// 对比任务备注，长度不能超过50个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateContractComparisonTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行合同审查任务的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 原版文件ID，对比基准的旧版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	OriginFileResourceId *string `json:"OriginFileResourceId,omitnil,omitempty" name:"OriginFileResourceId"`
+
+	// 新版文件ID，与旧版进行对比的新版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	DiffFileResourceId *string `json:"DiffFileResourceId,omitnil,omitempty" name:"DiffFileResourceId"`
+
+	// 对比任务备注，长度不能超过50个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateContractComparisonTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateContractComparisonTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "OriginFileResourceId")
+	delete(f, "DiffFileResourceId")
+	delete(f, "Comment")
+	delete(f, "UserData")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateContractComparisonTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateContractComparisonTaskResponseParams struct {
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 合同对比任务ID，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractComparisonTask" target="_blank">查询合同对比任务结果</a>查看对比任务的结果。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateContractComparisonTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateContractComparisonTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateContractComparisonTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateContractComparisonTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateContractDiffTaskWebUrlRequestParams struct {
 	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
 	// 
@@ -2596,6 +2719,14 @@ type CreateContractDiffTaskWebUrlRequestParams struct {
 
 	// 需要对比的新合同文件资源ID，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
 	DiffFileResourceId *string `json:"DiffFileResourceId,omitnil,omitempty" name:"DiffFileResourceId"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateContractDiffTaskWebUrlRequest struct {
@@ -2616,6 +2747,14 @@ type CreateContractDiffTaskWebUrlRequest struct {
 
 	// 需要对比的新合同文件资源ID，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
 	DiffFileResourceId *string `json:"DiffFileResourceId,omitnil,omitempty" name:"DiffFileResourceId"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateContractDiffTaskWebUrlRequest) ToJsonString() string {
@@ -2634,6 +2773,8 @@ func (r *CreateContractDiffTaskWebUrlRequest) FromJsonString(s string) error {
 	delete(f, "SkipFileUpload")
 	delete(f, "OriginalFileResourceId")
 	delete(f, "DiffFileResourceId")
+	delete(f, "UserData")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateContractDiffTaskWebUrlRequest has unknown keys!", "")
 	}
@@ -2649,6 +2790,9 @@ type CreateContractDiffTaskWebUrlResponseParams struct {
 	// 合同对比嵌入式web页面链接，有效期：5分钟
 	// 链接仅能使用一次
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10908,6 +11052,10 @@ type DescribeContractComparisonTaskRequestParams struct {
 
 	// 合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 是否返回详细的对比结果。为 true时，响应中将包含详细的对比信息，如相似度、文本差异具体内容等；为 false时，仅返回任务基本状态信息。
+	// 注：`详细结果数据量可能较大，请按需开启。`
+	ShowDetail *bool `json:"ShowDetail,omitnil,omitempty" name:"ShowDetail"`
 }
 
 type DescribeContractComparisonTaskRequest struct {
@@ -10919,6 +11067,10 @@ type DescribeContractComparisonTaskRequest struct {
 
 	// 合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 是否返回详细的对比结果。为 true时，响应中将包含详细的对比信息，如相似度、文本差异具体内容等；为 false时，仅返回任务基本状态信息。
+	// 注：`详细结果数据量可能较大，请按需开启。`
+	ShowDetail *bool `json:"ShowDetail,omitnil,omitempty" name:"ShowDetail"`
 }
 
 func (r *DescribeContractComparisonTaskRequest) ToJsonString() string {
@@ -10935,6 +11087,7 @@ func (r *DescribeContractComparisonTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operator")
 	delete(f, "TaskId")
+	delete(f, "ShowDetail")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContractComparisonTaskRequest has unknown keys!", "")
 	}
@@ -10984,6 +11137,9 @@ type DescribeContractComparisonTaskResponseParams struct {
 
 	// 合同对比任务创建时间，时间戳。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 对比差异详情，请求参数ShowDetail为true时返回。
+	ComparisonDetail []*ComparisonDetail `json:"ComparisonDetail,omitnil,omitempty" name:"ComparisonDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -12934,7 +13090,7 @@ type DescribeOrganizationSealsRequestParams struct {
 	// 印章id，是否查询特定的印章（没有输入返回所有）
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>ORGANIZATION_SEAL</strong>：企业印章（通过图片上传创建）；</li> <li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li> </ul>
+	// 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>FINANCE</strong>：财务专用章；</li> <li><strong>PERSONNEL</strong>：人事专用章；</li><li><strong>INVOICE</strong>：发票专用章；</li><li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li> </ul>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
 	// 代理企业和员工的信息。
@@ -12977,7 +13133,7 @@ type DescribeOrganizationSealsRequest struct {
 	// 印章id，是否查询特定的印章（没有输入返回所有）
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>ORGANIZATION_SEAL</strong>：企业印章（通过图片上传创建）；</li> <li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li> </ul>
+	// 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>FINANCE</strong>：财务专用章；</li> <li><strong>PERSONNEL</strong>：人事专用章；</li><li><strong>INVOICE</strong>：发票专用章；</li><li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li> </ul>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
 	// 代理企业和员工的信息。
@@ -13899,6 +14055,107 @@ type EmbedUrlOption struct {
 	ForbidEditSealDescription *bool `json:"ForbidEditSealDescription,omitnil,omitempty" name:"ForbidEditSealDescription"`
 }
 
+// Predefined struct for user
+type ExportContractComparisonTaskRequestParams struct {
+	// 执行合同审查任务的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 导出对比结果文件类型。
+	// 类型如下：
+	// <ul>
+	// <li> **0**：【PDF】以新合同文件为基础，导出带有可视化对比点标注的PDF文件。</li>
+	// <li> **1**：【EXCEL】导出结构化的对比点明细表格，以列表形式罗列每一个差异点，包含改动位置、类型、标签及修改前后的完整内容。</li>
+	// </ul>
+	ExportType *int64 `json:"ExportType,omitnil,omitempty" name:"ExportType"`
+
+	// 是否忽略，适用于PDF。
+	// <ul>
+	// <li> **true**：导出文件标注去掉忽略项。</li>
+	// <li> **false**：导出文件包含所有对比点。</li>
+	// </ul>
+	Ignore *bool `json:"Ignore,omitnil,omitempty" name:"Ignore"`
+}
+
+type ExportContractComparisonTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行合同审查任务的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 导出对比结果文件类型。
+	// 类型如下：
+	// <ul>
+	// <li> **0**：【PDF】以新合同文件为基础，导出带有可视化对比点标注的PDF文件。</li>
+	// <li> **1**：【EXCEL】导出结构化的对比点明细表格，以列表形式罗列每一个差异点，包含改动位置、类型、标签及修改前后的完整内容。</li>
+	// </ul>
+	ExportType *int64 `json:"ExportType,omitnil,omitempty" name:"ExportType"`
+
+	// 是否忽略，适用于PDF。
+	// <ul>
+	// <li> **true**：导出文件标注去掉忽略项。</li>
+	// <li> **false**：导出文件包含所有对比点。</li>
+	// </ul>
+	Ignore *bool `json:"Ignore,omitnil,omitempty" name:"Ignore"`
+}
+
+func (r *ExportContractComparisonTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportContractComparisonTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	delete(f, "ExportType")
+	delete(f, "Ignore")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportContractComparisonTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportContractComparisonTaskResponseParams struct {
+	// 对比任务详情下载链接。
+	ResourceUrl *string `json:"ResourceUrl,omitnil,omitempty" name:"ResourceUrl"`
+
+	// 下载链接有效截止时间。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExportContractComparisonTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportContractComparisonTaskResponseParams `json:"Response"`
+}
+
+func (r *ExportContractComparisonTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportContractComparisonTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ExtendAuthInfo struct {
 	// 扩展服务的类型，可能是以下值：
 	// <ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
@@ -13963,12 +14220,14 @@ type ExtractionField struct {
 	// 用于描述字段信息。
 	// 
 	// 注意：
-	// 1、`如果Type值为OPTION时，需要在字段描述中填写选项值，用,分隔`
-	// 2、描述字段不能超过100个字符
+	// 1、描述字段不能超过100个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 提取出合同中的字段信息。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 当字段类型`Type`为OPTION时为必输项，输入选项值
+	ChoiceList []*string `json:"ChoiceList,omitnil,omitempty" name:"ChoiceList"`
 }
 
 type ExtractionFieldResult struct {
@@ -17094,6 +17353,14 @@ type SuccessUpdateStaffData struct {
 	// H5端员工实名链接
 	// 只有入参 InvitationNotifyType = H5的时候才会进行返回。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type Tag struct {
+	// 标签键，最大长度不超过50字符。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值，最大长度不超过50字符。
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type TemplateInfo struct {

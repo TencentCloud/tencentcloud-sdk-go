@@ -45,6 +45,68 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateDLPFileDetectTaskRequest() (request *CreateDLPFileDetectTaskRequest) {
+    request = &CreateDLPFileDetectTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "CreateDLPFileDetectTask")
+    
+    
+    return
+}
+
+func NewCreateDLPFileDetectTaskResponse() (response *CreateDLPFileDetectTaskResponse) {
+    response = &CreateDLPFileDetectTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDLPFileDetectTask
+// 创建文件鉴定任务，私有化调用path为：capi/DlpOpenApi/CreateDLPFileDetectTask
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_IDENTICALNAME = "InvalidParameter.IdenticalName"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) CreateDLPFileDetectTask(request *CreateDLPFileDetectTaskRequest) (response *CreateDLPFileDetectTaskResponse, err error) {
+    return c.CreateDLPFileDetectTaskWithContext(context.Background(), request)
+}
+
+// CreateDLPFileDetectTask
+// 创建文件鉴定任务，私有化调用path为：capi/DlpOpenApi/CreateDLPFileDetectTask
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_IDENTICALNAME = "InvalidParameter.IdenticalName"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) CreateDLPFileDetectTaskWithContext(ctx context.Context, request *CreateDLPFileDetectTaskRequest) (response *CreateDLPFileDetectTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateDLPFileDetectTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "CreateDLPFileDetectTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDLPFileDetectTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDLPFileDetectTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDLPFileDetectionTaskRequest() (request *CreateDLPFileDetectionTaskRequest) {
     request = &CreateDLPFileDetectionTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -517,6 +579,126 @@ func (c *Client) DescribeAggrSoftDeviceListWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeDLPEdgeNodeGroupsRequest() (request *DescribeDLPEdgeNodeGroupsRequest) {
+    request = &DescribeDLPEdgeNodeGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDLPEdgeNodeGroups")
+    
+    
+    return
+}
+
+func NewDescribeDLPEdgeNodeGroupsResponse() (response *DescribeDLPEdgeNodeGroupsResponse) {
+    response = &DescribeDLPEdgeNodeGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDLPEdgeNodeGroups
+// 查询边缘节点分组，私有化调用path为：capi/Connectors/DescribeDLPEdgeNodeGroups
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DescribeDLPEdgeNodeGroups(request *DescribeDLPEdgeNodeGroupsRequest) (response *DescribeDLPEdgeNodeGroupsResponse, err error) {
+    return c.DescribeDLPEdgeNodeGroupsWithContext(context.Background(), request)
+}
+
+// DescribeDLPEdgeNodeGroups
+// 查询边缘节点分组，私有化调用path为：capi/Connectors/DescribeDLPEdgeNodeGroups
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DescribeDLPEdgeNodeGroupsWithContext(ctx context.Context, request *DescribeDLPEdgeNodeGroupsRequest) (response *DescribeDLPEdgeNodeGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDLPEdgeNodeGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDLPEdgeNodeGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDLPEdgeNodeGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDLPEdgeNodeGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDLPEdgeNodesRequest() (request *DescribeDLPEdgeNodesRequest) {
+    request = &DescribeDLPEdgeNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDLPEdgeNodes")
+    
+    
+    return
+}
+
+func NewDescribeDLPEdgeNodesResponse() (response *DescribeDLPEdgeNodesResponse) {
+    response = &DescribeDLPEdgeNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDLPEdgeNodes
+// 查询边缘节点列表，私有化调用path为：capi/DlpOpenApi/DescribeDLPEdgeNodes
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DescribeDLPEdgeNodes(request *DescribeDLPEdgeNodesRequest) (response *DescribeDLPEdgeNodesResponse, err error) {
+    return c.DescribeDLPEdgeNodesWithContext(context.Background(), request)
+}
+
+// DescribeDLPEdgeNodes
+// 查询边缘节点列表，私有化调用path为：capi/DlpOpenApi/DescribeDLPEdgeNodes
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DescribeDLPEdgeNodesWithContext(ctx context.Context, request *DescribeDLPEdgeNodesRequest) (response *DescribeDLPEdgeNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDLPEdgeNodesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDLPEdgeNodes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDLPEdgeNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDLPEdgeNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDLPFileDetectResultRequest() (request *DescribeDLPFileDetectResultRequest) {
     request = &DescribeDLPFileDetectResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -569,6 +751,62 @@ func (c *Client) DescribeDLPFileDetectResultWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeDLPFileDetectResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDLPFileDetectTaskResultRequest() (request *DescribeDLPFileDetectTaskResultRequest) {
+    request = &DescribeDLPFileDetectTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDLPFileDetectTaskResult")
+    
+    
+    return
+}
+
+func NewDescribeDLPFileDetectTaskResultResponse() (response *DescribeDLPFileDetectTaskResultResponse) {
+    response = &DescribeDLPFileDetectTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDLPFileDetectTaskResult
+// 查询文件鉴定任务结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDLPFileDetectTaskResult(request *DescribeDLPFileDetectTaskResultRequest) (response *DescribeDLPFileDetectTaskResultResponse, err error) {
+    return c.DescribeDLPFileDetectTaskResultWithContext(context.Background(), request)
+}
+
+// DescribeDLPFileDetectTaskResult
+// 查询文件鉴定任务结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDLPFileDetectTaskResultWithContext(ctx context.Context, request *DescribeDLPFileDetectTaskResultRequest) (response *DescribeDLPFileDetectTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeDLPFileDetectTaskResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDLPFileDetectTaskResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDLPFileDetectTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDLPFileDetectTaskResultResponse()
     err = c.Send(request, response)
     return
 }
