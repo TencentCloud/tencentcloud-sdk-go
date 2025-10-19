@@ -2,4 +2,4 @@ module github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aai
 
 go 1.14
 
-require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.1.43
+require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.1.44

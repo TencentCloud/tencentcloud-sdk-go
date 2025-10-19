@@ -5694,6 +5694,102 @@ func (r *CreateFlowSignUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateInformationExtractionWebUrlRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 需要提取的合同文件资源ID,可通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	// 
+	// 注: 
+	// -  `word、pdf文件每个文件限制在10M以下`
+	// -  `png、jpg、jpeg文件每个限制在5M以下`
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 个性化参数，用于控制页面展示内容
+	Option *WebUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
+}
+
+type CreateInformationExtractionWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 需要提取的合同文件资源ID,可通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	// 
+	// 注: 
+	// -  `word、pdf文件每个文件限制在10M以下`
+	// -  `png、jpg、jpeg文件每个限制在5M以下`
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 个性化参数，用于控制页面展示内容
+	Option *WebUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
+}
+
+func (r *CreateInformationExtractionWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInformationExtractionWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ResourceIds")
+	delete(f, "UserData")
+	delete(f, "Option")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInformationExtractionWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInformationExtractionWebUrlResponseParams struct {
+	// 合同信息提取嵌入式web页面链接。
+	// 
+	// 注意：`链接有效期为5分钟，且链接仅能使用一次。`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateInformationExtractionWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateInformationExtractionWebUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateInformationExtractionWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInformationExtractionWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateIntegrationDepartmentRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得组织架构管理权限，并具备接口传入的相应资源的数据权限。`
@@ -12501,6 +12597,79 @@ func (r *DescribeInformationExtractionTaskResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type DescribeInformationExtractionWebUrlRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同信息提取任务ID，该参数可通过回调事件[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)获取或者从控制台信息提取任务列表获取。
+	// 
+	// 注意：`不填写任务ID时返回信息提取任务列表URL，填写任务ID时返回信息提取任务详情URL`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeInformationExtractionWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同信息提取任务ID，该参数可通过回调事件[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)获取或者从控制台信息提取任务列表获取。
+	// 
+	// 注意：`不填写任务ID时返回信息提取任务列表URL，填写任务ID时返回信息提取任务详情URL`
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeInformationExtractionWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInformationExtractionWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInformationExtractionWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInformationExtractionWebUrlResponseParams struct {
+	// 合同信息提取嵌入式web页面链接。
+	// 注意：`链接有效期为5分钟，且链接仅能使用一次。`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInformationExtractionWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInformationExtractionWebUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeInformationExtractionWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInformationExtractionWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIntegrationDepartmentsRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得组织架构管理权限，并具备接口传入的相应资源的数据权限。`
@@ -18121,4 +18290,15 @@ type WebThemeConfig struct {
 	// 支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
 	// <br/>
 	WebEmbedThemeColor *string `json:"WebEmbedThemeColor,omitnil,omitempty" name:"WebEmbedThemeColor"`
+}
+
+type WebUrlOption struct {
+	// 禁用链接预览
+	DisableLinkPreview *bool `json:"DisableLinkPreview,omitnil,omitempty" name:"DisableLinkPreview"`
+
+	// 禁用任务编辑
+	DisableTaskEditing *bool `json:"DisableTaskEditing,omitnil,omitempty" name:"DisableTaskEditing"`
+
+	// 禁用任务结果编辑
+	DisableTaskResultEditing *bool `json:"DisableTaskResultEditing,omitnil,omitempty" name:"DisableTaskResultEditing"`
 }

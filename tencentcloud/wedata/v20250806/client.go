@@ -2829,7 +2829,7 @@ func NewGetTaskResponse() (response *GetTaskResponse) {
 }
 
 // GetTask
-// 创建任务接口
+// 获取任务详情接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2841,7 +2841,7 @@ func (c *Client) GetTask(request *GetTaskRequest) (response *GetTaskResponse, er
 }
 
 // GetTask
-// 创建任务接口
+// 获取任务详情接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6267,7 +6267,7 @@ func NewUpdateTaskResponse() (response *UpdateTaskResponse) {
 }
 
 // UpdateTask
-// 创建任务接口
+// 更新任务接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6279,7 +6279,7 @@ func (c *Client) UpdateTask(request *UpdateTaskRequest) (response *UpdateTaskRes
 }
 
 // UpdateTask
-// 创建任务接口
+// 更新任务接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6379,7 +6379,7 @@ func NewUpdateWorkflowFolderResponse() (response *UpdateWorkflowFolderResponse) 
 }
 
 // UpdateWorkflowFolder
-// 创建文件夹
+// 更新工作流文件夹
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6395,7 +6395,7 @@ func (c *Client) UpdateWorkflowFolder(request *UpdateWorkflowFolderRequest) (res
 }
 
 // UpdateWorkflowFolder
-// 创建文件夹
+// 更新工作流文件夹
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

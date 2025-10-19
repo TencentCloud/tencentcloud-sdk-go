@@ -2841,8 +2841,21 @@ type CreateFunctionRuleRequestParams struct {
 	// 规则条件列表，相同触发规则的不同条件匹配项之间为或关系。
 	FunctionRuleConditions []*FunctionRuleCondition `json:"FunctionRuleConditions,omitnil,omitempty" name:"FunctionRuleConditions"`
 
-	// 函数 ID，命中触发规则条件后执行的函数。
+	// 函数选择配置类型：
+	// <li> direct：直接指定执行函数；</li>
+	// <li> weight：基于权重比选择函数；</li>
+	// <li> region：基于客户端 IP 的国家/地区选择函数。</li>
+	// 不填时默认为 direct 。
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// 指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。
 	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
+
+	// 基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中至少包含一项 Regions 为 Default 的配置。
+	RegionMappingSelections []*FunctionRegionSelection `json:"RegionMappingSelections,omitnil,omitempty" name:"RegionMappingSelections"`
+
+	// 基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。
+	WeightedSelections []*FunctionWeightedSelection `json:"WeightedSelections,omitnil,omitempty" name:"WeightedSelections"`
 
 	// 规则描述，最大支持 60 个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
@@ -2857,8 +2870,21 @@ type CreateFunctionRuleRequest struct {
 	// 规则条件列表，相同触发规则的不同条件匹配项之间为或关系。
 	FunctionRuleConditions []*FunctionRuleCondition `json:"FunctionRuleConditions,omitnil,omitempty" name:"FunctionRuleConditions"`
 
-	// 函数 ID，命中触发规则条件后执行的函数。
+	// 函数选择配置类型：
+	// <li> direct：直接指定执行函数；</li>
+	// <li> weight：基于权重比选择函数；</li>
+	// <li> region：基于客户端 IP 的国家/地区选择函数。</li>
+	// 不填时默认为 direct 。
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// 指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。
 	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
+
+	// 基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中至少包含一项 Regions 为 Default 的配置。
+	RegionMappingSelections []*FunctionRegionSelection `json:"RegionMappingSelections,omitnil,omitempty" name:"RegionMappingSelections"`
+
+	// 基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。
+	WeightedSelections []*FunctionWeightedSelection `json:"WeightedSelections,omitnil,omitempty" name:"WeightedSelections"`
 
 	// 规则描述，最大支持 60 个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
@@ -2878,7 +2904,10 @@ func (r *CreateFunctionRuleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ZoneId")
 	delete(f, "FunctionRuleConditions")
+	delete(f, "TriggerType")
 	delete(f, "FunctionId")
+	delete(f, "RegionMappingSelections")
+	delete(f, "WeightedSelections")
 	delete(f, "Remark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFunctionRuleRequest has unknown keys!", "")
@@ -13937,6 +13966,14 @@ type FunctionEnvironmentVariable struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type FunctionRegionSelection struct {
+	// 函数 ID 。
+	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
+
+	// 国家/地区列表。示例值：CN：中国，CN.GD：中国广东。取值请参考：[国家/地区及对应代码枚举](https://cloud.tencent.com/document/product/1552/112542)。
+	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
+}
+
 type FunctionRule struct {
 	// 规则ID。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
@@ -13944,17 +13981,29 @@ type FunctionRule struct {
 	// 规则条件列表，列表项之间为或关系。
 	FunctionRuleConditions []*FunctionRuleCondition `json:"FunctionRuleConditions,omitnil,omitempty" name:"FunctionRuleConditions"`
 
-	// 函数 ID，命中触发规则条件后执行的函数。
+	// 函数选择配置类型：
+	// <li> direct：直接指定执行函数；</li>
+	// <li> weight：基于权重比选择函数；</li>
+	// <li> region：基于客户端 IP 的国家/地区选择函数。</li>
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// 指定执行的函数 ID。当 TriggerType 为 direct 时有效。
 	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
 
-	// 规则描述。
-	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
-
-	// 函数名称。
+	// 指定执行的函数名称。
 	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// 基于客户端 IP 国家/地区的函数选择配置。
+	RegionMappingSelections []*FunctionRegionSelection `json:"RegionMappingSelections,omitnil,omitempty" name:"RegionMappingSelections"`
+
+	// 基于权重的函数选择配置。
+	WeightedSelections []*FunctionWeightedSelection `json:"WeightedSelections,omitnil,omitempty" name:"WeightedSelections"`
 
 	// 函数触发规则优先级，数值越大，优先级越高。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 规则描述。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
@@ -13966,6 +14015,16 @@ type FunctionRule struct {
 type FunctionRuleCondition struct {
 	// 边缘函数触发规则条件，该列表内所有项全部满足即判断该条件满足。
 	RuleConditions []*RuleCondition `json:"RuleConditions,omitnil,omitempty" name:"RuleConditions"`
+}
+
+type FunctionWeightedSelection struct {
+	// 函数 ID 。
+	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
+
+	// 选中权重。取值范围0-100，所有的权重之和需要为100。
+	// 选中概率计算方式为：
+	// weight/100。例如设置了两个函数 A 和 B ，其中 A 的权重为30，那么 B 的权重必须为70，最终选中 A 的概率为30%，选中 B 的概率为70%。
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 type GatewayRegion struct {
@@ -16364,14 +16423,27 @@ type ModifyFunctionRuleRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 规则 ID。
+	// 规则 ID。您可以先通过 DescribeFunctionRules 接口来获取需要修改的规则的 RuleId，然后传入修改后的规则内容，原规则内容会被覆盖式更新。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 规则条件列表，相同触发规则的不同条件匹配项之间为或关系，不填写保持原有配置。
 	FunctionRuleConditions []*FunctionRuleCondition `json:"FunctionRuleConditions,omitnil,omitempty" name:"FunctionRuleConditions"`
 
-	// 函数 ID，命中触发规则条件后执行的函数，不填写保持原有配置。
+	// 函数选择配置类型：
+	// <li> direct：直接指定执行函数；</li>
+	// <li> weight：基于权重比选择函数；</li>
+	// <li> region：基于客户端 IP 的国家/地区选择函数。</li>
+	// 不填时默认为 direct 。
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// 指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。
 	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
+
+	// 基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中至少包含一项 Regions 为 Default 的配置。
+	RegionMappingSelections []*FunctionRegionSelection `json:"RegionMappingSelections,omitnil,omitempty" name:"RegionMappingSelections"`
+
+	// 基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。
+	WeightedSelections []*FunctionWeightedSelection `json:"WeightedSelections,omitnil,omitempty" name:"WeightedSelections"`
 
 	// 规则描述，最大支持 60 个字符，不填写保持原有配置。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
@@ -16383,14 +16455,27 @@ type ModifyFunctionRuleRequest struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 规则 ID。
+	// 规则 ID。您可以先通过 DescribeFunctionRules 接口来获取需要修改的规则的 RuleId，然后传入修改后的规则内容，原规则内容会被覆盖式更新。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 规则条件列表，相同触发规则的不同条件匹配项之间为或关系，不填写保持原有配置。
 	FunctionRuleConditions []*FunctionRuleCondition `json:"FunctionRuleConditions,omitnil,omitempty" name:"FunctionRuleConditions"`
 
-	// 函数 ID，命中触发规则条件后执行的函数，不填写保持原有配置。
+	// 函数选择配置类型：
+	// <li> direct：直接指定执行函数；</li>
+	// <li> weight：基于权重比选择函数；</li>
+	// <li> region：基于客户端 IP 的国家/地区选择函数。</li>
+	// 不填时默认为 direct 。
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// 指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。
 	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
+
+	// 基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中至少包含一项 Regions 为 Default 的配置。
+	RegionMappingSelections []*FunctionRegionSelection `json:"RegionMappingSelections,omitnil,omitempty" name:"RegionMappingSelections"`
+
+	// 基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。
+	WeightedSelections []*FunctionWeightedSelection `json:"WeightedSelections,omitnil,omitempty" name:"WeightedSelections"`
 
 	// 规则描述，最大支持 60 个字符，不填写保持原有配置。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
@@ -16411,7 +16496,10 @@ func (r *ModifyFunctionRuleRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "RuleId")
 	delete(f, "FunctionRuleConditions")
+	delete(f, "TriggerType")
 	delete(f, "FunctionId")
+	delete(f, "RegionMappingSelections")
+	delete(f, "WeightedSelections")
 	delete(f, "Remark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFunctionRuleRequest has unknown keys!", "")

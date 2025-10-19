@@ -5421,6 +5421,82 @@ func (c *Client) CreateFlowSignUrlWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateInformationExtractionWebUrlRequest() (request *CreateInformationExtractionWebUrlRequest) {
+    request = &CreateInformationExtractionWebUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateInformationExtractionWebUrl")
+    
+    
+    return
+}
+
+func NewCreateInformationExtractionWebUrlResponse() (response *CreateInformationExtractionWebUrlResponse) {
+    response = &CreateInformationExtractionWebUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateInformationExtractionWebUrl
+// 此接口（CreateInformationExtractionWebUrl）用来创建合同信息提取web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 
+//
+// 注: 
+//
+// 1. pdf、word格式限制大小为10M以下
+//
+// 2. pdg、jpeg、jpg格式限制大小为5M以下
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateInformationExtractionWebUrl(request *CreateInformationExtractionWebUrlRequest) (response *CreateInformationExtractionWebUrlResponse, err error) {
+    return c.CreateInformationExtractionWebUrlWithContext(context.Background(), request)
+}
+
+// CreateInformationExtractionWebUrl
+// 此接口（CreateInformationExtractionWebUrl）用来创建合同信息提取web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 
+//
+// 注: 
+//
+// 1. pdf、word格式限制大小为10M以下
+//
+// 2. pdg、jpeg、jpg格式限制大小为5M以下
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateInformationExtractionWebUrlWithContext(ctx context.Context, request *CreateInformationExtractionWebUrlRequest) (response *CreateInformationExtractionWebUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateInformationExtractionWebUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateInformationExtractionWebUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInformationExtractionWebUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInformationExtractionWebUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateIntegrationDepartmentRequest() (request *CreateIntegrationDepartmentRequest) {
     request = &CreateIntegrationDepartmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11327,6 +11403,68 @@ func (c *Client) DescribeInformationExtractionTaskWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewDescribeInformationExtractionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInformationExtractionWebUrlRequest() (request *DescribeInformationExtractionWebUrlRequest) {
+    request = &DescribeInformationExtractionWebUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeInformationExtractionWebUrl")
+    
+    
+    return
+}
+
+func NewDescribeInformationExtractionWebUrlResponse() (response *DescribeInformationExtractionWebUrlResponse) {
+    response = &DescribeInformationExtractionWebUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInformationExtractionWebUrl
+// 此接口（DescribeInformationExtractionWebUrl）用来获取合同信息提取web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeInformationExtractionWebUrl(request *DescribeInformationExtractionWebUrlRequest) (response *DescribeInformationExtractionWebUrlResponse, err error) {
+    return c.DescribeInformationExtractionWebUrlWithContext(context.Background(), request)
+}
+
+// DescribeInformationExtractionWebUrl
+// 此接口（DescribeInformationExtractionWebUrl）用来获取合同信息提取web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeInformationExtractionWebUrlWithContext(ctx context.Context, request *DescribeInformationExtractionWebUrlRequest) (response *DescribeInformationExtractionWebUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeInformationExtractionWebUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeInformationExtractionWebUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInformationExtractionWebUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInformationExtractionWebUrlResponse()
     err = c.Send(request, response)
     return
 }

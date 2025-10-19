@@ -23,16 +23,16 @@ const (
 	// 引擎层内部错误；
 	FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
 
-	// 解析失败
+	// 解析失败。
 	FAILEDOPERATION_FILEPARSEERROR = "FailedOperation.FileParseError"
 
-	// 文档解析超时
+	// 文档解析超时。
 	FAILEDOPERATION_FILEPARSETIMEOUT = "FailedOperation.FileParseTimeout"
 
-	// 内部错误
+	// 内部错误。
 	FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 
-	// 暂不支持解析该文件
+	// 暂不支持解析该文件。
 	FAILEDOPERATION_NONSUPPORTPARSE = "FailedOperation.NonsupportParse"
 
 	// FailedOperation.OcrFailed
@@ -53,13 +53,13 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
-	// 文件url链接不正确
+	// 文件url链接不正确。
 	INVALIDPARAMETER_FILEURLINVALID = "InvalidParameter.FileURLInvalid"
 
-	// 无效的文件格式
+	// 无效的文件格式。
 	INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
 
-	// 无效的文件类型
+	// 无效的文件类型。
 	INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
 
 	// 参数值错误。
