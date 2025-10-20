@@ -361,6 +361,9 @@ type BindNumberCallInInterfaceRequestParams struct {
 
 	// 待绑定的回调地址
 	CallInInterface *Interface `json:"CallInInterface,omitnil,omitempty" name:"CallInInterface"`
+
+	// 绑定号码类型: inner: 内线号码 | number: 正常线路号码
+	NumberType *string `json:"NumberType,omitnil,omitempty" name:"NumberType"`
 }
 
 type BindNumberCallInInterfaceRequest struct {
@@ -374,6 +377,9 @@ type BindNumberCallInInterfaceRequest struct {
 
 	// 待绑定的回调地址
 	CallInInterface *Interface `json:"CallInInterface,omitnil,omitempty" name:"CallInInterface"`
+
+	// 绑定号码类型: inner: 内线号码 | number: 正常线路号码
+	NumberType *string `json:"NumberType,omitnil,omitempty" name:"NumberType"`
 }
 
 func (r *BindNumberCallInInterfaceRequest) ToJsonString() string {
@@ -391,6 +397,7 @@ func (r *BindNumberCallInInterfaceRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "Number")
 	delete(f, "CallInInterface")
+	delete(f, "NumberType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindNumberCallInInterfaceRequest has unknown keys!", "")
 	}

@@ -233,6 +233,9 @@ type AlarmRuleDetail struct {
 	// 离线集成对账告警配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReconciliationExtInfo []*ReconciliationStrategyInfo `json:"ReconciliationExtInfo,omitnil,omitempty" name:"ReconciliationExtInfo"`
+
+	// 监控对象的白名单配置
+	MonitorWhiteTasks []*MonitorWhiteTask `json:"MonitorWhiteTasks,omitnil,omitempty" name:"MonitorWhiteTasks"`
 }
 
 type AlarmWayWebHook struct {
@@ -10257,6 +10260,14 @@ type MetricData struct {
 type ModifyAlarmRuleResult struct {
 	// 是否更新成功
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type MonitorWhiteTask struct {
+	// 配置白名单的对应的工作流/项目的id
+	MonitorObjectId *string `json:"MonitorObjectId,omitnil,omitempty" name:"MonitorObjectId"`
+
+	// 白名单任务列表
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 }
 
 type NotebookSessionInfo struct {

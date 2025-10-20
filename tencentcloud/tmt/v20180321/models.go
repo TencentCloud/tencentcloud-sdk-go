@@ -34,6 +34,14 @@ type BoundingBox struct {
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
+type Coord struct {
+	// X坐标
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
+
+	// Y坐标
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
+}
+
 // Predefined struct for user
 type FileTranslateRequestParams struct {
 	// 源语言，支持
@@ -640,6 +648,17 @@ func (r *LanguageDetectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RotateParagraphRect struct {
+	// 段落文本坐标
+	Coord []*Coord `json:"Coord,omitnil,omitempty" name:"Coord"`
+
+	// 旋转角度
+	TiltAngle *float64 `json:"TiltAngle,omitnil,omitempty" name:"TiltAngle"`
+
+	// 段落文本信息是否有效
+	Valid *bool `json:"Valid,omitnil,omitempty" name:"Valid"`
+}
+
 // Predefined struct for user
 type SpeechTranslateRequestParams struct {
 	// 一段完整的语音对应一个SessionUuid
@@ -1169,4 +1188,7 @@ type TransDetail struct {
 
 	// 正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。
 	SpamCode *int64 `json:"SpamCode,omitnil,omitempty" name:"SpamCode"`
+
+	// 段落文本旋转信息，只在valid为true时表示坐标有效
+	RotateParagraphRect *RotateParagraphRect `json:"RotateParagraphRect,omitnil,omitempty" name:"RotateParagraphRect"`
 }

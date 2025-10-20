@@ -8323,7 +8323,7 @@ type SessionItem struct {
 }
 
 type SlowLogAgg struct {
-	// 命令模版。
+	// 命令模板。
 	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 
 	// 命令详情。
@@ -8332,19 +8332,19 @@ type SlowLogAgg struct {
 	// 执行次数。
 	ExecTimes *int64 `json:"ExecTimes,omitnil,omitempty" name:"ExecTimes"`
 
-	// 总耗时。
+	// 总耗时。单位：s
 	QueryTime *float64 `json:"QueryTime,omitnil,omitempty" name:"QueryTime"`
 
-	// 平均执行时间。
+	// 平均执行时间。单位：s
 	QueryTimeAvg *float64 `json:"QueryTimeAvg,omitnil,omitempty" name:"QueryTimeAvg"`
 
-	// 最大执行时间。
+	// 最大执行时间。单位：s
 	QueryTimeMax *float64 `json:"QueryTimeMax,omitnil,omitempty" name:"QueryTimeMax"`
 
-	// 最小执行时间。
+	// 最小执行时间。单位：s
 	QueryTimeMin *float64 `json:"QueryTimeMin,omitnil,omitempty" name:"QueryTimeMin"`
 
-	// 总耗时占比
+	// 总耗时占比。单位：%
 	QueryTimeRatio *float64 `json:"QueryTimeRatio,omitnil,omitempty" name:"QueryTimeRatio"`
 }
 

@@ -62,6 +62,9 @@ const (
 	// 缺少公共参数。
 	MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
 
+	// 终端导出任务同一时间仅允许一个，请稍后再试。
+	REQUESTLIMITEXCEEDED_DEVICEDOWNLOADTASK = "RequestLimitExceeded.DeviceDownloadTask"
+
 	// 上次操作还未完成，请稍后重试。
 	REQUESTLIMITEXCEEDED_WAITFORTHELASTOPERATIONTOCOMPLETE = "RequestLimitExceeded.WaitForTheLastOperationToComplete"
 

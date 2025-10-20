@@ -6031,6 +6031,76 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeInstancePasswordComplexityRequest() (request *DescribeInstancePasswordComplexityRequest) {
+    request = &DescribeInstancePasswordComplexityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeInstancePasswordComplexity")
+    
+    
+    return
+}
+
+func NewDescribeInstancePasswordComplexityResponse() (response *DescribeInstancePasswordComplexityResponse) {
+    response = &DescribeInstancePasswordComplexityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstancePasswordComplexity
+// 该接口（DescribeInstancePasswordComplexity）用于查询实例的密码复杂度参数列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeInstancePasswordComplexity(request *DescribeInstancePasswordComplexityRequest) (response *DescribeInstancePasswordComplexityResponse, err error) {
+    return c.DescribeInstancePasswordComplexityWithContext(context.Background(), request)
+}
+
+// DescribeInstancePasswordComplexity
+// 该接口（DescribeInstancePasswordComplexity）用于查询实例的密码复杂度参数列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeInstancePasswordComplexityWithContext(ctx context.Context, request *DescribeInstancePasswordComplexityRequest) (response *DescribeInstancePasswordComplexityResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancePasswordComplexityRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cdb", APIVersion, "DescribeInstancePasswordComplexity")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancePasswordComplexity require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancePasswordComplexityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceUpgradeCheckJobRequest() (request *DescribeInstanceUpgradeCheckJobRequest) {
     request = &DescribeInstanceUpgradeCheckJobRequest{
         BaseRequest: &tchttp.BaseRequest{},

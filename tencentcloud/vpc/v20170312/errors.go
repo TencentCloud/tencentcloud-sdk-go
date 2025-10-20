@@ -356,6 +356,9 @@ const (
 	// 集群类型不同的IP不可在同一请求中。
 	INVALIDPARAMETERVALUE_MIXEDADDRESSIPSETTYPE = "InvalidParameterValue.MixedAddressIpSetType"
 
+	// 缺少参数，至少提供一个。
+	INVALIDPARAMETERVALUE_MUSTHASONE = "InvalidParameterValue.MustHasOne"
+
 	// NAT网关的DNAT转换规则已存在。
 	INVALIDPARAMETERVALUE_NATGATEWAYDNATRULEEXISTED = "InvalidParameterValue.NatGatewayDnatRuleExisted"
 
@@ -445,6 +448,9 @@ const (
 
 	// 自定义路由的下一跳参数不正确。
 	INVALIDPARAMETERVALUE_ROUTENEXTHOPINVALID = "InvalidParameterValue.RouteNextHopInvalid"
+
+	// 路由策略绑定规则已经存在。
+	INVALIDPARAMETERVALUE_ROUTEPOLICYASSOCIATIONEXISTS = "InvalidParameterValue.RoutePolicyAssociationExists"
 
 	// 指定的优先级之间冲突或与已存在的优先级冲突。
 	INVALIDPARAMETERVALUE_ROUTEPOLICYPRIORITYCONFLICT = "InvalidParameterValue.RoutePolicyPriorityConflict"
@@ -1270,6 +1276,9 @@ const (
 
 	// 未找到相关角色，请确认角色是否授权。
 	UNSUPPORTEDOPERATION_ROLENOTFOUND = "UnsupportedOperation.RoleNotFound"
+
+	// 路由策略被关联到路由表，不支持删除。
+	UNSUPPORTEDOPERATION_ROUTEPOLICYASSOCIATION = "UnsupportedOperation.RoutePolicyAssociation"
 
 	// 只支持自研VPC创建或修改PVGW2类型路由。
 	UNSUPPORTEDOPERATION_ROUTEPVGW2 = "UnsupportedOperation.RoutePvgw2"

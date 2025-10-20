@@ -294,6 +294,12 @@ type CreateTawInstanceRequestParams struct {
 
 	// 实例类型 1:原web相关类型 2:app端类型
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 自动续费类型
+	AutoRenewalType *int64 `json:"AutoRenewalType,omitnil,omitempty" name:"AutoRenewalType"`
+
+	// 自动续费阈值
+	AutoRenewalThreshold *int64 `json:"AutoRenewalThreshold,omitnil,omitempty" name:"AutoRenewalThreshold"`
 }
 
 type CreateTawInstanceRequest struct {
@@ -334,6 +340,12 @@ type CreateTawInstanceRequest struct {
 
 	// 实例类型 1:原web相关类型 2:app端类型
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 自动续费类型
+	AutoRenewalType *int64 `json:"AutoRenewalType,omitnil,omitempty" name:"AutoRenewalType"`
+
+	// 自动续费阈值
+	AutoRenewalThreshold *int64 `json:"AutoRenewalThreshold,omitnil,omitempty" name:"AutoRenewalThreshold"`
 }
 
 func (r *CreateTawInstanceRequest) ToJsonString() string {
@@ -360,6 +372,8 @@ func (r *CreateTawInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ResourcePackageType")
 	delete(f, "ResourcePackageNum")
 	delete(f, "InstanceType")
+	delete(f, "AutoRenewalType")
+	delete(f, "AutoRenewalThreshold")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTawInstanceRequest has unknown keys!", "")
 	}

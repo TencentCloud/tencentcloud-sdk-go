@@ -5572,6 +5572,14 @@ func (r *DescribeZonesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DestinationRegionBlueprint struct {
+	// 目标地域。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 目标地域镜像ID。
+	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
+}
+
 // Predefined struct for user
 type DetachCcnRequestParams struct {
 	// 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
@@ -10105,6 +10113,9 @@ func (r *SyncBlueprintRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SyncBlueprintResponseParams struct {
+	// 目标地域镜像信息。
+	DestinationRegionBlueprintSet []*DestinationRegionBlueprint `json:"DestinationRegionBlueprintSet,omitnil,omitempty" name:"DestinationRegionBlueprintSet"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

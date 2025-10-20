@@ -9178,7 +9178,7 @@ type RuleInfo struct {
 	RealServerSet []*BindRealServer `json:"RealServerSet,omitnil,omitempty" name:"RealServerSet"`
 
 	// 源站的服务状态，0表示异常，1表示正常。
-	// 未开启健康检查时，该状态始终未正常。
+	// 未开启健康检查时，该状态始终为正常。
 	// 只要有一个源站健康状态为异常时，该状态为异常，具体源站的状态请查看RealServerSet。
 	BindStatus *uint64 `json:"BindStatus,omitnil,omitempty" name:"BindStatus"`
 
@@ -9196,6 +9196,9 @@ type RuleInfo struct {
 	// 强转HTTPS指示，当传递值为https:时表示强转为https
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForcedRedirect *string `json:"ForcedRedirect,omitnil,omitempty" name:"ForcedRedirect"`
+
+	// 七层转发规则的回源协议类型
+	ForwardProtocol *string `json:"ForwardProtocol,omitnil,omitempty" name:"ForwardProtocol"`
 }
 
 type SecurityPolicyRuleIn struct {

@@ -1455,6 +1455,70 @@ func (c *Client) DescribeVirtualDevicesWithContext(ctx context.Context, request 
     return
 }
 
+func NewExportDeviceDownloadTaskRequest() (request *ExportDeviceDownloadTaskRequest) {
+    request = &ExportDeviceDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "ExportDeviceDownloadTask")
+    
+    
+    return
+}
+
+func NewExportDeviceDownloadTaskResponse() (response *ExportDeviceDownloadTaskResponse) {
+    response = &ExportDeviceDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportDeviceDownloadTask
+// 创建终端导出任务，私有化调用path为：capi/Assets/Device/ExportDeviceDownloadTask
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  REQUESTLIMITEXCEEDED_DEVICEDOWNLOADTASK = "RequestLimitExceeded.DeviceDownloadTask"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ExportDeviceDownloadTask(request *ExportDeviceDownloadTaskRequest) (response *ExportDeviceDownloadTaskResponse, err error) {
+    return c.ExportDeviceDownloadTaskWithContext(context.Background(), request)
+}
+
+// ExportDeviceDownloadTask
+// 创建终端导出任务，私有化调用path为：capi/Assets/Device/ExportDeviceDownloadTask
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  REQUESTLIMITEXCEEDED_DEVICEDOWNLOADTASK = "RequestLimitExceeded.DeviceDownloadTask"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ExportDeviceDownloadTaskWithContext(ctx context.Context, request *ExportDeviceDownloadTaskRequest) (response *ExportDeviceDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewExportDeviceDownloadTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "ExportDeviceDownloadTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportDeviceDownloadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportDeviceDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportSoftwareInformationListRequest() (request *ExportSoftwareInformationListRequest) {
     request = &ExportSoftwareInformationListRequest{
         BaseRequest: &tchttp.BaseRequest{},
