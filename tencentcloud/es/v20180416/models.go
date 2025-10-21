@@ -2198,6 +2198,21 @@ type DescribeInstanceLogsRequestParams struct {
 	// <li>0, 降序</li>
 	// <li>1, 升序</li>
 	OrderByType *uint64 `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 日志级别
+	LogLevels []*string `json:"LogLevels,omitnil,omitempty" name:"LogLevels"`
+
+	// 节点ID
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+
+	// 慢日志索引名
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
+	// 慢日志索引分片
+	ShardId *string `json:"ShardId,omitnil,omitempty" name:"ShardId"`
+
+	// 慢日志查询耗时
+	QueryCost *uint64 `json:"QueryCost,omitnil,omitempty" name:"QueryCost"`
 }
 
 type DescribeInstanceLogsRequest struct {
@@ -2232,6 +2247,21 @@ type DescribeInstanceLogsRequest struct {
 	// <li>0, 降序</li>
 	// <li>1, 升序</li>
 	OrderByType *uint64 `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 日志级别
+	LogLevels []*string `json:"LogLevels,omitnil,omitempty" name:"LogLevels"`
+
+	// 节点ID
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+
+	// 慢日志索引名
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
+	// 慢日志索引分片
+	ShardId *string `json:"ShardId,omitnil,omitempty" name:"ShardId"`
+
+	// 慢日志查询耗时
+	QueryCost *uint64 `json:"QueryCost,omitnil,omitempty" name:"QueryCost"`
 }
 
 func (r *DescribeInstanceLogsRequest) ToJsonString() string {
@@ -2254,6 +2284,11 @@ func (r *DescribeInstanceLogsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "OrderByType")
+	delete(f, "LogLevels")
+	delete(f, "NodeIds")
+	delete(f, "IndexName")
+	delete(f, "ShardId")
+	delete(f, "QueryCost")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceLogsRequest has unknown keys!", "")
 	}
@@ -5008,6 +5043,15 @@ type InstanceLog struct {
 
 	// 集群节点ID
 	NodeID *string `json:"NodeID,omitnil,omitempty" name:"NodeID"`
+
+	// 慢日志索引名
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
+	// 慢日志索引分片
+	Shard *string `json:"Shard,omitnil,omitempty" name:"Shard"`
+
+	// 慢日志索引查询耗时
+	QueryCost *string `json:"QueryCost,omitnil,omitempty" name:"QueryCost"`
 }
 
 type IpTimePair struct {
@@ -6438,6 +6482,12 @@ type ServerlessSpace struct {
 	// 空间标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// 是否开启mcp服务
+	EnableMcpAccess *int64 `json:"EnableMcpAccess,omitnil,omitempty" name:"EnableMcpAccess"`
+
+	// mcp的访问地址
+	McpAccess *string `json:"McpAccess,omitnil,omitempty" name:"McpAccess"`
 }
 
 type ServerlessSpaceUser struct {

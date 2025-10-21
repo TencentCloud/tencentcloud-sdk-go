@@ -5010,7 +5010,7 @@ type ResourceRef struct {
 	// 资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源版本ID，-1表示使用最新版本
+	// 0-引用 JAR 程序包，1-主程序包，2-引用配置文件，3-Python程序包，4-Python数据文件
 	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 引用资源类型，例如主资源设置为1，代表main class所在的jar包

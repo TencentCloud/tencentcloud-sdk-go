@@ -3827,6 +3827,10 @@ func NewInstitutionOCRResponse() (response *InstitutionOCRResponse) {
 }
 
 // InstitutionOCR
+// 不再维护，功能已切到其它接口
+//
+// 
+//
 // <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
 //
 // 本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
@@ -3851,6 +3855,10 @@ func (c *Client) InstitutionOCR(request *InstitutionOCRRequest) (response *Insti
 }
 
 // InstitutionOCR
+// 不再维护，功能已切到其它接口
+//
+// 
+//
 // <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
 //
 // 本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
@@ -4535,6 +4543,10 @@ func NewOrgCodeCertOCRResponse() (response *OrgCodeCertOCRResponse) {
 }
 
 // OrgCodeCertOCR
+// 不再维护，功能已切到其它接口
+//
+// 
+//
 // <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
 //
 // 本接口支持组织机构代码证关键字段的识别，包括代码、有效期、地址、机构名称等。
@@ -4558,6 +4570,10 @@ func (c *Client) OrgCodeCertOCR(request *OrgCodeCertOCRRequest) (response *OrgCo
 }
 
 // OrgCodeCertOCR
+// 不再维护，功能已切到其它接口
+//
+// 
+//
 // <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
 //
 // 本接口支持组织机构代码证关键字段的识别，包括代码、有效期、地址、机构名称等。
@@ -4773,6 +4789,10 @@ func NewPropOwnerCertOCRResponse() (response *PropOwnerCertOCRResponse) {
 }
 
 // PropOwnerCertOCR
+// 不再维护，功能已切到其它接口
+//
+// 
+//
 // <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
 //
 // 本接口支持房产证关键字段的识别，包括房地产权利人、共有情况、登记时间、规划用途、房屋性质、房屋坐落等。
@@ -4802,6 +4822,10 @@ func (c *Client) PropOwnerCertOCR(request *PropOwnerCertOCRRequest) (response *P
 }
 
 // PropOwnerCertOCR
+// 不再维护，功能已切到其它接口
+//
+// 
+//
 // <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
 //
 // 本接口支持房产证关键字段的识别，包括房地产权利人、共有情况、登记时间、规划用途、房屋性质、房屋坐落等。
@@ -5541,6 +5565,10 @@ func NewRecognizeForeignPermanentResidentIdCardResponse() (response *RecognizeFo
 }
 
 // RecognizeForeignPermanentResidentIdCard
+// 不再维护，功能已切到其它接口
+//
+// 
+//
 // <b>因技术原因，本接口将不再迭代升级。有效身份证件识别（鉴伪版）可支持此类证件的识别，并包含质量和PS告警，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/112345">有效身份证件识别（鉴伪版）</a>。</b>
 //
 // 外国人永久居留身份证识别
@@ -5561,6 +5589,10 @@ func (c *Client) RecognizeForeignPermanentResidentIdCard(request *RecognizeForei
 }
 
 // RecognizeForeignPermanentResidentIdCard
+// 不再维护，功能已切到其它接口
+//
+// 
+//
 // <b>因技术原因，本接口将不再迭代升级。有效身份证件识别（鉴伪版）可支持此类证件的识别，并包含质量和PS告警，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/112345">有效身份证件识别（鉴伪版）</a>。</b>
 //
 // 外国人永久居留身份证识别
@@ -6639,6 +6671,10 @@ func NewRecognizeGeneralTextImageWarnResponse() (response *RecognizeGeneralTextI
 }
 
 // RecognizeGeneralTextImageWarn
+// 不再维护，功能已切到其它接口
+//
+// 
+//
 // <b>因技术原因，本接口将不再迭代升级。通用卡证鉴伪可支持更多告警类型，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/115916">通用卡证鉴伪</a>。</b>
 //
 // 本接口支持多种类型证件有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能。可以应用于各种证件信息有效性校验场景，例如银行开户、用户注册等场景。
@@ -6659,6 +6695,10 @@ func (c *Client) RecognizeGeneralTextImageWarn(request *RecognizeGeneralTextImag
 }
 
 // RecognizeGeneralTextImageWarn
+// 不再维护，功能已切到其它接口
+//
+// 
+//
 // <b>因技术原因，本接口将不再迭代升级。通用卡证鉴伪可支持更多告警类型，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/115916">通用卡证鉴伪</a>。</b>
 //
 // 本接口支持多种类型证件有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能。可以应用于各种证件信息有效性校验场景，例如银行开户、用户注册等场景。

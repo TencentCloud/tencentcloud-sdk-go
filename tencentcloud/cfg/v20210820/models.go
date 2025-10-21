@@ -2071,6 +2071,9 @@ type TaskListItem struct {
 
 	// 架构名称
 	ArchName *string `json:"ArchName,omitnil,omitempty" name:"ArchName"`
+
+	// 来源
+	TaskSource *int64 `json:"TaskSource,omitnil,omitempty" name:"TaskSource"`
 }
 
 type TaskMonitor struct {

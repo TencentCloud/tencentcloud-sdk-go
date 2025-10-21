@@ -5056,6 +5056,12 @@ type DescribeAccountsRequestParams struct {
 
 	// 匹配账号名的正则表达式，规则同 MySQL 官网。
 	AccountRegexp *string `json:"AccountRegexp,omitnil,omitempty" name:"AccountRegexp"`
+
+	// 默认无排序，支持：ASC、DESC、asc、desc
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 type DescribeAccountsRequest struct {
@@ -5072,6 +5078,12 @@ type DescribeAccountsRequest struct {
 
 	// 匹配账号名的正则表达式，规则同 MySQL 官网。
 	AccountRegexp *string `json:"AccountRegexp,omitnil,omitempty" name:"AccountRegexp"`
+
+	// 默认无排序，支持：ASC、DESC、asc、desc
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 func (r *DescribeAccountsRequest) ToJsonString() string {
@@ -5090,6 +5102,8 @@ func (r *DescribeAccountsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "AccountRegexp")
+	delete(f, "SortBy")
+	delete(f, "OrderBy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountsRequest has unknown keys!", "")
 	}

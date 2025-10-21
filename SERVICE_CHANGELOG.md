@@ -1,84 +1,10 @@
-# Release v1.1.45
-
-## 云联络中心(ccc) 版本：2020-02-10
-
-### 第 111 次发布
-
-发布时间：2025-10-21 01:15:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [BindNumberCallInInterface](https://cloud.tencent.com/document/api/679/119412)
-
-	* 新增入参：NumberType
-
-
-
+# Release v1.1.46
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 205 次发布
+### 第 206 次发布
 
-发布时间：2025-10-21 01:16:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeInstancePasswordComplexity](https://cloud.tencent.com/document/api/236/124417)
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 54 次发布
-
-发布时间：2025-10-21 01:42:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RuleInfo](https://cloud.tencent.com/document/api/608/37023#RuleInfo)
-
-	* 新增成员：ForwardProtocol
-
-
-
-
-## iOA 零信任安全管理系统(ioa) 版本：2022-06-01
-
-### 第 28 次发布
-
-发布时间：2025-10-21 01:45:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ExportDeviceDownloadTask](https://cloud.tencent.com/document/api/1092/124418)
-
-新增数据结构：
-
-* [DeviceDownloadTask](https://cloud.tencent.com/document/api/1092/102488#DeviceDownloadTask)
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 77 次发布
-
-发布时间：2025-10-21 01:54:04
+发布时间：2025-10-22 01:16:08
 
 本次发布包含了以下内容：
 
@@ -86,22 +12,18 @@
 
 修改接口：
 
-* [SyncBlueprint](https://cloud.tencent.com/document/api/1207/119880)
+* [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499)
 
-	* 新增出参：DestinationRegionBlueprintSet
-
-
-新增数据结构：
-
-* [DestinationRegionBlueprint](https://cloud.tencent.com/document/api/1207/47576#DestinationRegionBlueprint)
+	* 新增入参：SortBy, OrderBy
 
 
 
-## 媒体处理(mps) 版本：2019-06-12
 
-### 第 150 次发布
+## 云顾问-混沌演练(cfg) 版本：2021-08-20
 
-发布时间：2025-10-21 02:07:14
+### 第 33 次发布
+
+发布时间：2025-10-22 01:20:04
 
 本次发布包含了以下内容：
 
@@ -109,18 +31,80 @@
 
 修改数据结构：
 
-* [BeautyEffectItemConfig](https://cloud.tencent.com/document/api/862/37615#BeautyEffectItemConfig)
+* [TaskListItem](https://cloud.tencent.com/document/api/1500/71784#TaskListItem)
 
-	* 新增成员：ResourcePath, ExtInfo
-
-
+	* 新增成员：TaskSource
 
 
-## 前端性能监控(rum) 版本：2021-06-22
 
-### 第 44 次发布
 
-发布时间：2025-10-21 02:25:50
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 62 次发布
+
+发布时间：2025-10-22 01:26:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccessKeyAlarm](https://cloud.tencent.com/document/api/664/90825#AccessKeyAlarm)
+
+	* 新增成员：CloudType
+
+* [AccessKeyAsset](https://cloud.tencent.com/document/api/664/90825#AccessKeyAsset)
+
+	* 新增成员：CloudType
+
+* [AccessKeyUser](https://cloud.tencent.com/document/api/664/90825#AccessKeyUser)
+
+	* 新增成员：CloudType
+
+* [SourceIPAsset](https://cloud.tencent.com/document/api/664/90825#SourceIPAsset)
+
+	* 新增成员：VpcInfo, CloudType
+
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 46 次发布
+
+发布时间：2025-10-22 01:35:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CompareOptions](https://cloud.tencent.com/document/api/571/82108#CompareOptions)
+
+	* 新增成员：Type, CompareMode, ReCheckTime, ReCheckInterval
+
+* [ConsistencyOption](https://cloud.tencent.com/document/api/571/82108#ConsistencyOption)
+
+	* 新增成员：ObjectMode, Objects, Options
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## Elasticsearch Service(es) 版本：2025-01-01
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 88 次发布
+
+发布时间：2025-10-22 01:38:35
 
 本次发布包含了以下内容：
 
@@ -128,42 +112,33 @@
 
 修改接口：
 
-* [CreateTawInstance](https://cloud.tencent.com/document/api/1464/69244)
+* [DescribeInstanceLogs](https://cloud.tencent.com/document/api/845/33760)
 
-	* 新增入参：AutoRenewalType, AutoRenewalThreshold
+	* 新增入参：LogLevels, NodeIds, IndexName, ShardId, QueryCost
 
-
-
-
-## 机器翻译(tmt) 版本：2018-03-21
-
-### 第 14 次发布
-
-发布时间：2025-10-20 16:58:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [Coord](https://cloud.tencent.com/document/api/551/17233#Coord)
-* [RotateParagraphRect](https://cloud.tencent.com/document/api/551/17233#RotateParagraphRect)
 
 修改数据结构：
 
-* [TransDetail](https://cloud.tencent.com/document/api/551/17233#TransDetail)
+* [InstanceLog](https://cloud.tencent.com/document/api/845/30634#InstanceLog)
 
-	* 新增成员：RotateParagraphRect
+	* 新增成员：IndexName, Shard, QueryCost
+
+* [ServerlessSpace](https://cloud.tencent.com/document/api/845/30634#ServerlessSpace)
+
+	* 新增成员：EnableMcpAccess, McpAccess
 
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 腾讯云可观测平台(monitor) 版本：2023-06-16
 
-### 第 269 次发布
 
-发布时间：2025-10-21 03:21:31
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 142 次发布
+
+发布时间：2025-10-22 02:04:44
 
 本次发布包含了以下内容：
 
@@ -171,51 +146,38 @@
 
 新增接口：
 
-* [CreateRoutePolicy](https://cloud.tencent.com/document/api/215/124430)
-* [CreateRoutePolicyAssociations](https://cloud.tencent.com/document/api/215/124429)
-* [CreateRoutePolicyEntries](https://cloud.tencent.com/document/api/215/124428)
-* [DeleteRoutePolicy](https://cloud.tencent.com/document/api/215/124427)
-* [DeleteRoutePolicyAssociations](https://cloud.tencent.com/document/api/215/124426)
-* [DeleteRoutePolicyEntries](https://cloud.tencent.com/document/api/215/124425)
-* [DescribeRoutePolicyEntries](https://cloud.tencent.com/document/api/215/124424)
-* [ModifyRoutePolicyAttribute](https://cloud.tencent.com/document/api/215/124423)
-* [ReplaceRoutePolicyAssociations](https://cloud.tencent.com/document/api/215/124422)
-* [ReplaceRoutePolicyEntries](https://cloud.tencent.com/document/api/215/124421)
-* [ResetRoutePolicyAssociations](https://cloud.tencent.com/document/api/215/124420)
-* [ResetRoutePolicyEntries](https://cloud.tencent.com/document/api/215/124419)
+* [DescribeRemoteWrites](https://cloud.tencent.com/document/api/248/124448)
+
+修改接口：
+
+* [DescribePrometheusScrapeStatistics](https://cloud.tencent.com/document/api/248/124007)
+
+	* 新增入参：InstanceIds
+
 
 新增数据结构：
 
-* [RoutePolicy](https://cloud.tencent.com/document/api/215/15824#RoutePolicy)
-* [RoutePolicyAssociation](https://cloud.tencent.com/document/api/215/15824#RoutePolicyAssociation)
-* [RoutePolicyEntry](https://cloud.tencent.com/document/api/215/15824#RoutePolicyEntry)
+* [WriteDestination](https://cloud.tencent.com/document/api/248/30354#WriteDestination)
 
 
 
-## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 6 次发布
+### 第 217 次发布
 
-发布时间：2025-10-21 03:39:00
+发布时间：2025-10-22 02:14:30
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
+<font color="#dd0000">**预下线接口**：</font>
 
-* [MonitorWhiteTask](https://cloud.tencent.com/document/api/1267/123643#MonitorWhiteTask)
-
-修改数据结构：
-
-* [AlarmRuleDetail](https://cloud.tencent.com/document/api/1267/123643#AlarmRuleDetail)
-
-	* 新增成员：MonitorWhiteTasks
-
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+* InstitutionOCR
+* OrgCodeCertOCR
+* PropOwnerCertOCR
+* RecognizeForeignPermanentResidentIdCard
+* RecognizeGeneralTextImageWarn
 
 
 

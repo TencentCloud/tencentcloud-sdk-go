@@ -105,6 +105,9 @@ type AccessKeyAlarm struct {
 
 	// 告警规则标识
 	RuleKey *string `json:"RuleKey,omitnil,omitempty" name:"RuleKey"`
+
+	// 云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 }
 
 type AccessKeyAlarmCount struct {
@@ -194,6 +197,9 @@ type AccessKeyAsset struct {
 	// 0 表示已检测
 	// 1 表示检测中
 	CheckStatus *int64 `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
+
+	// 云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 }
 
 type AccessKeyRisk struct {
@@ -331,6 +337,9 @@ type AccessKeyUser struct {
 
 	// 0 表示已检测 1 表示检测中
 	CheckStatus *int64 `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
+
+	// 云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 }
 
 // Predefined struct for user
@@ -10108,6 +10117,7 @@ type SourceIPAsset struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 调用方式
+	// -1:未统计
 	// 0:控制台调用
 	// 1:API
 	EventType *int64 `json:"EventType,omitnil,omitempty" name:"EventType"`
@@ -10148,6 +10158,13 @@ type SourceIPAsset struct {
 
 	// 运营商字段
 	ISP *string `json:"ISP,omitnil,omitempty" name:"ISP"`
+
+	// 账号外vpc信息
+	VpcInfo []*SourceIPVpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
+
+	// 云类型
+	// 0为腾讯云
+	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 }
 
 type SourceIPVpcInfo struct {

@@ -7459,6 +7459,70 @@ func (c *Client) DescribeRemoteURLsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeRemoteWritesRequest() (request *DescribeRemoteWritesRequest) {
+    request = &DescribeRemoteWritesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeRemoteWrites")
+    
+    
+    return
+}
+
+func NewDescribeRemoteWritesResponse() (response *DescribeRemoteWritesResponse) {
+    response = &DescribeRemoteWritesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRemoteWrites
+// 查询安装的 Agent 列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) DescribeRemoteWrites(request *DescribeRemoteWritesRequest) (response *DescribeRemoteWritesResponse, err error) {
+    return c.DescribeRemoteWritesWithContext(context.Background(), request)
+}
+
+// DescribeRemoteWrites
+// 查询安装的 Agent 列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) DescribeRemoteWritesWithContext(ctx context.Context, request *DescribeRemoteWritesRequest) (response *DescribeRemoteWritesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRemoteWritesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeRemoteWrites")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRemoteWrites require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRemoteWritesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSSOAccountRequest() (request *DescribeSSOAccountRequest) {
     request = &DescribeSSOAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},

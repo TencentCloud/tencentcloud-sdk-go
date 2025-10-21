@@ -10526,6 +10526,9 @@ func (r *DescribePrometheusScrapeJobsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePrometheusScrapeStatisticsRequestParams struct {
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
 	// job 类型
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 }
@@ -10533,6 +10536,9 @@ type DescribePrometheusScrapeStatisticsRequestParams struct {
 type DescribePrometheusScrapeStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
 	// job 类型
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 }
@@ -10549,6 +10555,7 @@ func (r *DescribePrometheusScrapeStatisticsRequest) FromJsonString(s string) err
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceIds")
 	delete(f, "JobType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusScrapeStatisticsRequest has unknown keys!", "")
@@ -11056,6 +11063,80 @@ func (r *DescribeRemoteURLsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRemoteURLsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRemoteWritesRequestParams struct {
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 列表 offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回 limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeRemoteWritesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 列表 offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回 limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRemoteWritesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteWritesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRemoteWritesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRemoteWritesResponseParams struct {
+	// 存储数据
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 多写信息
+	RemoteWrites []*WriteDestination `json:"RemoteWrites,omitnil,omitempty" name:"RemoteWrites"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRemoteWritesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRemoteWritesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRemoteWritesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteWritesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11725,7 +11806,7 @@ type GetMonitorDataRequestParams struct {
 	// 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。注意: 仅支持对API配置文档中展示的统计方式返回对应的统计数据。如所需的统计方式不满足您的查询需求，请提工单反馈。
+	// 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。特别说明：建议查询时严格参考API配置文档中提供的统计方式。如选择其他未提供的统计方式，可能有数据统计误差。
 	SpecifyStatistics *int64 `json:"SpecifyStatistics,omitnil,omitempty" name:"SpecifyStatistics"`
 }
 
@@ -11750,7 +11831,7 @@ type GetMonitorDataRequest struct {
 	// 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。注意: 仅支持对API配置文档中展示的统计方式返回对应的统计数据。如所需的统计方式不满足您的查询需求，请提工单反馈。
+	// 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。特别说明：建议查询时严格参考API配置文档中提供的统计方式。如选择其他未提供的统计方式，可能有数据统计误差。
 	SpecifyStatistics *int64 `json:"SpecifyStatistics,omitnil,omitempty" name:"SpecifyStatistics"`
 }
 
@@ -17587,4 +17668,9 @@ type UserNotice struct {
 	// 电话按键确认
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceConfirmKey *string `json:"VoiceConfirmKey,omitnil,omitempty" name:"VoiceConfirmKey"`
+}
+
+type WriteDestination struct {
+	// 存储标识
+	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
 }

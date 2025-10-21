@@ -1537,7 +1537,7 @@ func NewDescribeCompareTasksResponse() (response *DescribeCompareTasksResponse) 
 }
 
 // DescribeCompareTasks
-// 查询一致性校验任务列表，调用该接口后可通过接口`DescribeCompareTasks` 查询一致性校验任务列表来获得启动后的状态。
+// 查询一致性校验任务列表。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -1564,7 +1564,7 @@ func (c *Client) DescribeCompareTasks(request *DescribeCompareTasksRequest) (res
 }
 
 // DescribeCompareTasks
-// 查询一致性校验任务列表，调用该接口后可通过接口`DescribeCompareTasks` 查询一致性校验任务列表来获得启动后的状态。
+// 查询一致性校验任务列表。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -2847,7 +2847,7 @@ func NewIsolateMigrateJobResponse() (response *IsolateMigrateJobResponse) {
 }
 
 // IsolateMigrateJob
-//  隔离退还数据迁移服务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。对于计费任务，在任务隔离后可进行解除隔离(RecoverMigrationJob)操作或直接进行下线销毁(DestroyMigrateJob)操作。对于不计费任务，调用此接口会直接销毁任务，无法进行恢复操作。
+// 隔离退还数据迁移服务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。对于计费任务，在任务隔离后可进行解除隔离(RecoverMigrateJob)操作或直接进行下线销毁(DestroyMigrateJob)操作。对于不计费任务，调用此接口会直接销毁任务，无法进行恢复操作。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -2874,7 +2874,7 @@ func (c *Client) IsolateMigrateJob(request *IsolateMigrateJobRequest) (response 
 }
 
 // IsolateMigrateJob
-//  隔离退还数据迁移服务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。对于计费任务，在任务隔离后可进行解除隔离(RecoverMigrationJob)操作或直接进行下线销毁(DestroyMigrateJob)操作。对于不计费任务，调用此接口会直接销毁任务，无法进行恢复操作。
+// 隔离退还数据迁移服务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。对于计费任务，在任务隔离后可进行解除隔离(RecoverMigrateJob)操作或直接进行下线销毁(DestroyMigrateJob)操作。对于不计费任务，调用此接口会直接销毁任务，无法进行恢复操作。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -3413,7 +3413,7 @@ func NewModifyMigrateJobSpecResponse() (response *ModifyMigrateJobSpecResponse) 
 }
 
 // ModifyMigrateJobSpec
-// 调整实例规格，此接口只支持按量计费任务的调整。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+// 调整实例规格，此接口只支持按量计费任务的调整，且仅在计费或者待计费状态下支持修改。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -3438,7 +3438,7 @@ func (c *Client) ModifyMigrateJobSpec(request *ModifyMigrateJobSpecRequest) (res
 }
 
 // ModifyMigrateJobSpec
-// 调整实例规格，此接口只支持按量计费任务的调整。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+// 调整实例规格，此接口只支持按量计费任务的调整，且仅在计费或者待计费状态下支持修改。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -3581,26 +3581,33 @@ func NewModifyMigrateRateLimitResponse() (response *ModifyMigrateRateLimitRespon
 }
 
 // ModifyMigrateRateLimit
-// 用户在发现迁移任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
+// 用户在发现迁移任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率；此操作仅在任务运行中可执行。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
-//  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
+//  AUTHFAILURE_AUTHORIZEDOPERATIONDENYERROR = "AuthFailure.AuthorizedOperationDenyError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
 //  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_INTERNALINNERCOMMONERROR = "InternalError.InternalInnerCommonError"
+//  INTERNALERROR_NOTENOUGHMONEYERROR = "InternalError.NotEnoughMoneyError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
-//  MISSINGPARAMETER_MISSINGPARAMETERERROR = "MissingParameter.MissingParameterError"
+//  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 //  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDEDERROR = "RequestLimitExceeded.RequestLimitExceededError"
-//  RESOURCEINUSE_RESOURCEINUSEERROR = "ResourceInUse.ResourceInUseError"
-//  RESOURCEINSUFFICIENT_RESOURCEINSUFFICIENTERROR = "ResourceInsufficient.ResourceInsufficientError"
-//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
-//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLEERROR = "ResourceUnavailable.ResourceUnavailableError"
-//  RESOURCESSOLDOUT_RESOURCESSOLDOUTERROR = "ResourcesSoldOut.ResourcesSoldOutError"
-//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONERROR = "UnauthorizedOperation.UnauthorizedOperationError"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 //  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
 func (c *Client) ModifyMigrateRateLimit(request *ModifyMigrateRateLimitRequest) (response *ModifyMigrateRateLimitResponse, err error) {
@@ -3608,26 +3615,33 @@ func (c *Client) ModifyMigrateRateLimit(request *ModifyMigrateRateLimitRequest) 
 }
 
 // ModifyMigrateRateLimit
-// 用户在发现迁移任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
+// 用户在发现迁移任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率；此操作仅在任务运行中可执行。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
-//  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
+//  AUTHFAILURE_AUTHORIZEDOPERATIONDENYERROR = "AuthFailure.AuthorizedOperationDenyError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
 //  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_INTERNALINNERCOMMONERROR = "InternalError.InternalInnerCommonError"
+//  INTERNALERROR_NOTENOUGHMONEYERROR = "InternalError.NotEnoughMoneyError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
-//  MISSINGPARAMETER_MISSINGPARAMETERERROR = "MissingParameter.MissingParameterError"
+//  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 //  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDEDERROR = "RequestLimitExceeded.RequestLimitExceededError"
-//  RESOURCEINUSE_RESOURCEINUSEERROR = "ResourceInUse.ResourceInUseError"
-//  RESOURCEINSUFFICIENT_RESOURCEINSUFFICIENTERROR = "ResourceInsufficient.ResourceInsufficientError"
-//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
-//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLEERROR = "ResourceUnavailable.ResourceUnavailableError"
-//  RESOURCESSOLDOUT_RESOURCESSOLDOUTERROR = "ResourcesSoldOut.ResourcesSoldOutError"
-//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONERROR = "UnauthorizedOperation.UnauthorizedOperationError"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 //  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
 func (c *Client) ModifyMigrateRateLimitWithContext(ctx context.Context, request *ModifyMigrateRateLimitRequest) (response *ModifyMigrateRateLimitResponse, err error) {
@@ -3733,7 +3747,7 @@ func NewModifyMigrationJobResponse() (response *ModifyMigrationJobResponse) {
 }
 
 // ModifyMigrationJob
-// 配置迁移服务，配置成功后可通过`CreateMigrationCheckJob` 创建迁移校验任务接口发起校验任务，只有校验通过才能启动迁移任务。
+// 配置迁移服务，配置成功后可通过`CreateMigrateCheckJob` 创建迁移校验任务接口发起校验任务，只有校验通过才能启动迁移任务。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -3765,7 +3779,7 @@ func (c *Client) ModifyMigrationJob(request *ModifyMigrationJobRequest) (respons
 }
 
 // ModifyMigrationJob
-// 配置迁移服务，配置成功后可通过`CreateMigrationCheckJob` 创建迁移校验任务接口发起校验任务，只有校验通过才能启动迁移任务。
+// 配置迁移服务，配置成功后可通过`CreateMigrateCheckJob` 创建迁移校验任务接口发起校验任务，只有校验通过才能启动迁移任务。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -4733,7 +4747,7 @@ func NewResumeMigrateJobResponse() (response *ResumeMigrateJobResponse) {
 }
 
 // ResumeMigrateJob
-// 重试数据迁移任务，针对异常情况可进行重试，对于redis在失败时也可重试。注意：此操作跳过校验阶段，直接重新发起任务，相当于从StartMigrationJob开始执行。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+// 重试数据迁移任务，针对异常情况可进行重试，对于redis在失败时也可重试。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -4764,7 +4778,7 @@ func (c *Client) ResumeMigrateJob(request *ResumeMigrateJobRequest) (response *R
 }
 
 // ResumeMigrateJob
-// 重试数据迁移任务，针对异常情况可进行重试，对于redis在失败时也可重试。注意：此操作跳过校验阶段，直接重新发起任务，相当于从StartMigrationJob开始执行。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+// 重试数据迁移任务，针对异常情况可进行重试，对于redis在失败时也可重试。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -5171,7 +5185,7 @@ func NewStartMigrateJobResponse() (response *StartMigrateJobResponse) {
 }
 
 // StartMigrateJob
-// 本接口（StartMigrationJob）用于启动迁移任务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+// 本接口（StartMigrateJob）用于启动迁移任务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -5212,7 +5226,7 @@ func (c *Client) StartMigrateJob(request *StartMigrateJobRequest) (response *Sta
 }
 
 // StartMigrateJob
-// 本接口（StartMigrationJob）用于启动迁移任务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+// 本接口（StartMigrateJob）用于启动迁移任务。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -5561,7 +5575,7 @@ func NewStopMigrateJobResponse() (response *StopMigrateJobResponse) {
 }
 
 // StopMigrateJob
-// 本接口（StopMigrateJob）用于终止数据迁移任务。
+// 本接口（StopMigrateJob）用于终止数据迁移任务。当任务状态为运行中、准备运行、准备完成、错误、暂停、未知等状态时可调用此接口终止任务。
 //
 // 调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 //
@@ -5598,7 +5612,7 @@ func (c *Client) StopMigrateJob(request *StopMigrateJobRequest) (response *StopM
 }
 
 // StopMigrateJob
-// 本接口（StopMigrateJob）用于终止数据迁移任务。
+// 本接口（StopMigrateJob）用于终止数据迁移任务。当任务状态为运行中、准备运行、准备完成、错误、暂停、未知等状态时可调用此接口终止任务。
 //
 // 调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 //
