@@ -714,6 +714,23 @@ type BandwidthAbuseDefense struct {
 	Action *SecurityAction `json:"Action,omitnil,omitempty" name:"Action"`
 }
 
+type BasicBotSettings struct {
+	// 客户端 IP 的来源 IDC 配置，用于处置来自 IDC（数据中心） 的客户端 IP 的访问请求。此类来源请求不是由移动端或浏览器端直接访问。
+	SourceIDC *SourceIDC `json:"SourceIDC,omitnil,omitempty" name:"SourceIDC"`
+
+	// 搜索引擎爬虫配置，用于处置来自搜索引擎爬虫的请求。此类请求的 IP、User-Agent 或 rDNS 结果匹配已知搜索引擎爬虫。
+	SearchEngineBots *SearchEngineBots `json:"SearchEngineBots,omitnil,omitempty" name:"SearchEngineBots"`
+
+	// 商业或开源工具 UA 特征配置（原 UA 特征规则），用于处置来自已知商业工具或开源工具的访问请求。此类请求的 User-Agent 头部符合已知商业或开源工具特征。
+	KnownBotCategories *KnownBotCategories `json:"KnownBotCategories,omitnil,omitempty" name:"KnownBotCategories"`
+
+	// IP 威胁情报库（原客户端画像分析）配置，用于处置近期访问行为具有特定风险特征的客户端 IP。
+	IPReputation *IPReputation `json:"IPReputation,omitnil,omitempty" name:"IPReputation"`
+
+	// Bot 智能分析的具体配置。
+	BotIntelligence *BotIntelligence `json:"BotIntelligence,omitnil,omitempty" name:"BotIntelligence"`
+}
+
 type BillingData struct {
 	// 数据时间戳。
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
@@ -1038,6 +1055,17 @@ type BotExtendAction struct {
 	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 }
 
+type BotIntelligence struct {
+	// 基于客户端和请求特征，将请求来源分为人类来源请求、合法 Bot 请求、疑似 Bot 请求和高风险 Bot 请求，并提供请求处置选项。
+	BotRatings *BotRatings `json:"BotRatings,omitnil,omitempty" name:"BotRatings"`
+
+	// Bot 智能分析的具体配置开关。取值有：
+	// 
+	// on：开启；
+	// off：关闭。
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
 type BotManagedRule struct {
 	// 触发规则后的处置方式，取值有：
 	// <li>drop：拦截；</li>
@@ -1066,8 +1094,53 @@ type BotManagedRule struct {
 }
 
 type BotManagement struct {
-	// 客户端认证规则的定义列表。该功能内测中，如需使用，请提工单或联系智能客服。
+	// Bot 管理是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// Bot 管理的自定义规则，组合各类爬虫和请求行为特征，精准定义 Bot 并配置定制化处置方式。
+	CustomRules *BotManagementCustomRules `json:"CustomRules,omitnil,omitempty" name:"CustomRules"`
+
+	// Bot 管理的基础配置，对策略关联的所有域名生效。可以通过 CustomRules 进行精细化定制。
+	BasicBotSettings *BasicBotSettings `json:"BasicBotSettings,omitnil,omitempty" name:"BasicBotSettings"`
+
+	// 客户端认证规则的定义列表。该功能内测中，如需使用，请提工单。
 	ClientAttestationRules *ClientAttestationRules `json:"ClientAttestationRules,omitnil,omitempty" name:"ClientAttestationRules"`
+
+	// 配置浏览器伪造识别规则（原主动特征识别规则）。设置注入 JavaScript 的响应页面范围，浏览器校验选项，以及对非浏览器客户端的处置方式。
+	BrowserImpersonationDetection *BrowserImpersonationDetection `json:"BrowserImpersonationDetection,omitnil,omitempty" name:"BrowserImpersonationDetection"`
+}
+
+type BotManagementActionOverrides struct {
+	// Bot 规则组下的具体项，用于改写此单条规则项配置的内容，Ids 所对应的具体信息请参考 DescribeBotManagedRules 接口返回的信息。
+	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// Ids 中指定 Bot 规则项的处置动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Disabled：未启用，不启用指定规则；</li><li>Challenge：挑战，其中 ChallengeActionParameters 中的 ChallengeOption 支持 JSChallenge 和 ManagedChallenge；</li><li>Allow：放行（仅限Bot基础特征管理）。</li>
+	Action *SecurityAction `json:"Action,omitnil,omitempty" name:"Action"`
+}
+
+type BotManagementCustomRule struct {
+	// Bot 自定义规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：BotManagementCustomRules 参数中，Rules 列表中未包含的已有规则将被删除。</li>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// Bot 自定义规则的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Bot 自定义规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// Bot 自定义规则的优先级，范围是 1 ~ 100，默认为 50。
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// Bot 自定义规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// Bot 自定义规则的处置方式。取值有：<li>Monitor：观察；</li><li>Deny：拦截，其中 DenyActionParameters.Name 支持 Deny 和 ReturnCustomPage；</li><li>Challenge：挑战，其中 ChallengeActionParameters.Name 支持 JSChallenge 和 ManagedChallenge；</li><li>Redirect：重定向至 URL。</li>
+	Action []*SecurityWeightedAction `json:"Action,omitnil,omitempty" name:"Action"`
+}
+
+type BotManagementCustomRules struct {
+	// Bot 自定义规则的列表。使用 ModifySecurityPolicy 修改 Web 防护配置时： <br> <li>  若未指定 SecurityPolicy.BotManagement.CustomRules 中的 Rules 参数，或 Rules 参数长度为零：清空所有 Bot 自定义规则配置。</li> <li> 若 SecurityPolicy.BotManagement 参数中，未指定 CustomRules 参数值：保持已有 Bot 自定义规则配置，不做修改。</li>
+	Rules []*BotManagementCustomRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type BotPortraitRule struct {
@@ -1090,6 +1163,37 @@ type BotPortraitRule struct {
 
 	// 拦截的规则ID。默认所有规则不配置拦截。
 	DropManagedIds []*int64 `json:"DropManagedIds,omitnil,omitempty" name:"DropManagedIds"`
+}
+
+type BotRatings struct {
+	// 恶意 Bot 请求的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Allow：放行；</li><li>Challenge：挑战，其中 ChallengeActionParameters 中的 ChallengeOption 支持 JSChallenge 和 ManagedChallenge。</li>
+	HighRiskBotRequestsAction *SecurityAction `json:"HighRiskBotRequestsAction,omitnil,omitempty" name:"HighRiskBotRequestsAction"`
+
+	// 疑似 Bot 请求的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Allow：放行；</li><li>Challenge：挑战，其中 ChallengeActionParameters 中的 ChallengeOption 支持 JSChallenge 和 ManagedChallenge。</li>
+	LikelyBotRequestsAction *SecurityAction `json:"LikelyBotRequestsAction,omitnil,omitempty" name:"LikelyBotRequestsAction"`
+
+	// 友好 Bot 请求的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Allow：放行；</li><li>Challenge：挑战，其中 ChallengeActionParameters 中的 ChallengeOption 支持 JSChallenge 和 ManagedChallenge。</li>
+	VerifiedBotRequestsAction *SecurityAction `json:"VerifiedBotRequestsAction,omitnil,omitempty" name:"VerifiedBotRequestsAction"`
+
+	// 正常 Bot 请求的执行动作。 SecurityAction 的 Name 取值支持：<li>Allow：放行。</li>
+	HumanRequestsAction *SecurityAction `json:"HumanRequestsAction,omitnil,omitempty" name:"HumanRequestsAction"`
+}
+
+type BotSessionValidation struct {
+	// 是否更新 Cookie 并校验。取值有：<li>on：更新 Cookie 并校验；</li><li>off：仅校验。</li>
+	IssueNewBotSessionCookie *string `json:"IssueNewBotSessionCookie,omitnil,omitempty" name:"IssueNewBotSessionCookie"`
+
+	// 更新 Cookie 并校验时的触发阈值，仅当 IssueNewBotSessionCookie 为 on 时有效。
+	MaxNewSessionTriggerConfig *MaxNewSessionTriggerConfig `json:"MaxNewSessionTriggerConfig,omitnil,omitempty" name:"MaxNewSessionTriggerConfig"`
+
+	// 未携带 Cookie 或 Cookie 已过期的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截，其中 DenyActionParameters 中支持 Stall 配置；</li><li>Monitor：观察；</li><li>Allow：等待后响应，其中 AllowActionParameters 需要 MinDelayTime 和 MaxDelayTime 配置。</li>
+	SessionExpiredAction *SecurityAction `json:"SessionExpiredAction,omitnil,omitempty" name:"SessionExpiredAction"`
+
+	// 不合法 Cookie 的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截，其中 DenyActionParameters 中支持 Stall 配置；</li><li>Monitor：观察；</li><li>Allow：等待后响应，其中 AllowActionParameters 需要 MinDelayTime 和 MaxDelayTime 配置。</li>
+	SessionInvalidAction *SecurityAction `json:"SessionInvalidAction,omitnil,omitempty" name:"SessionInvalidAction"`
+
+	// 会话速率和周期特征校验的具体配置。
+	SessionRateControl *SessionRateControl `json:"SessionRateControl,omitnil,omitempty" name:"SessionRateControl"`
 }
 
 type BotUserRule struct {
@@ -1154,6 +1258,36 @@ type BotUserRule struct {
 	RedirectUrl *string `json:"RedirectUrl,omitnil,omitempty" name:"RedirectUrl"`
 }
 
+type BrowserImpersonationDetection struct {
+	// 浏览器伪造识别规则的列表。使用 ModifySecurityPolicy 修改 Web 防护配置时： <br> <li>  若未指定 SecurityPolicy.BotManagement.BrowserImpersonationDetection 中的 Rules 参数，或 Rules 参数长度为零： 清空所有浏览器伪造识别规则配置。</li> <li> 若 SecurityPolicy.BotManagement 参数中，未指定 BrowserImpersonationDetection 参数值： 保持已有浏览器伪造识别规则配置，不做修改。</li>
+	Rules []*BrowserImpersonationDetectionRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+}
+
+type BrowserImpersonationDetectionAction struct {
+	// Cookie 校验和会话跟踪配置。
+	BotSessionValidation *BotSessionValidation `json:"BotSessionValidation,omitnil,omitempty" name:"BotSessionValidation"`
+
+	// 客户端行为校验配置。
+	ClientBehaviorDetection *ClientBehaviorDetection `json:"ClientBehaviorDetection,omitnil,omitempty" name:"ClientBehaviorDetection"`
+}
+
+type BrowserImpersonationDetectionRule struct {
+	// 浏览器伪造识别规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：BrowserImpersonationDetection 参数中，Rules 列表中未包含的已有规则将被删除。</li>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 浏览器伪造识别规则的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 浏览器伪造识别规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 浏览器伪造识别规则的具体内容，其中仅支持请求方式（Method）、请求路径（Path）和请求 URL 的配置，需符合表达式语法，详细规范参见产品文档。
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 浏览器伪造识别规则的处置方式，包括 Cookie 校验和会话跟踪配置以及客户端行为校验配置。
+	Action *BrowserImpersonationDetectionAction `json:"Action,omitnil,omitempty" name:"Action"`
+}
+
 type CC struct {
 	// Waf开关，取值为：
 	// <li> on：开启；</li>
@@ -1173,6 +1307,16 @@ type CLSTopic struct {
 
 	// 腾讯云 CLS 日志集所在的地域。
 	LogSetRegion *string `json:"LogSetRegion,omitnil,omitempty" name:"LogSetRegion"`
+}
+
+type CNAMEDetail struct {
+	// 是否伪站点，取值有：
+	// <li> 0：非伪站点；</li>
+	// <li> 1：伪站点。</li>
+	IsFake *int64 `json:"IsFake,omitnil,omitempty" name:"IsFake"`
+
+	// 归属权验证信息。详情请参考 [站点/域名归属权验证](https://cloud.tencent.com/document/product/1552/70789) 。
+	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil,omitempty" name:"OwnershipVerification"`
 }
 
 type Cache struct {
@@ -1554,6 +1698,29 @@ type ClientAttester struct {
 	// TC-CAPTCHA 认证的配置信息。
 	// <li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
 	TCCaptchaOption *TCCaptchaOption `json:"TCCaptchaOption,omitnil,omitempty" name:"TCCaptchaOption"`
+}
+
+type ClientBehaviorDetection struct {
+	// 工作量证明校验强度。取值有：<li>low：低；</li><li>medium：中；</li><li>high：高。</li>
+	CryptoChallengeIntensity *string `json:"CryptoChallengeIntensity,omitnil,omitempty" name:"CryptoChallengeIntensity"`
+
+	// 客户端行为校验的执行方式。取值有：<li>0ms：立即执行；</li><li>100ms：延迟 100ms 执行；</li><li>200ms：延迟 200ms 执行；</li><li>300ms：延迟 300ms 执行；</li><li>400ms：延迟 400ms 执行；</li><li>500ms：延迟 500ms 执行；</li><li>600ms：延迟 600ms 执行；</li><li>700ms：延迟 700ms 执行；</li><li>800ms：延迟 800ms 执行；</li><li>900ms：延迟 900ms 执行；</li><li>1000ms：延迟 1000ms 执行。</li> 
+	CryptoChallengeDelayBefore *string `json:"CryptoChallengeDelayBefore,omitnil,omitempty" name:"CryptoChallengeDelayBefore"`
+
+	// 触发阈值统计的时间窗口，取值有：<li>5s：5 秒内；</li><li>10s：10 秒内；</li><li>15s：15 秒内；</li><li>30s：30 秒内；</li><li>60s：60 秒内；</li><li>5m：5 分钟内；</li><li>10m：10 分钟内；</li><li>30m：30 分钟内；</li><li>60m：60 分钟内。</li> 
+	MaxChallengeCountInterval *string `json:"MaxChallengeCountInterval,omitnil,omitempty" name:"MaxChallengeCountInterval"`
+
+	// 触发阈值统计的累计次数，取值范围 1 ~ 100000000。
+	MaxChallengeCountThreshold *int64 `json:"MaxChallengeCountThreshold,omitnil,omitempty" name:"MaxChallengeCountThreshold"`
+
+	// 客户端未启用 JS（未完成检测）时的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截，其中 DenyActionParameters 中支持 Stall 配置；</li><li>Monitor：观察；</li><li>Allow：等待后响应，其中 AllowActionParameters 需要 MinDelayTime 和 MaxDelayTime 配置。</li>
+	ChallengeNotFinishedAction *SecurityAction `json:"ChallengeNotFinishedAction,omitnil,omitempty" name:"ChallengeNotFinishedAction"`
+
+	// 客户端检测超时的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截，其中 DenyActionParameters 中支持 Stall 配置；</li><li>Monitor：观察；</li><li>Allow：等待后响应，其中 AllowActionParameters 需要 MinDelayTime 和 MaxDelayTime 配置。</li>
+	ChallengeTimeoutAction *SecurityAction `json:"ChallengeTimeoutAction,omitnil,omitempty" name:"ChallengeTimeoutAction"`
+
+	// Bot 客户端的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截，其中 DenyActionParameters 中支持 Stall 配置；</li><li>Monitor：观察；</li><li>Allow：等待后响应，其中 AllowActionParameters 需要 MinDelayTime 和 MaxDelayTime 配置。</li>
+	BotClientAction *SecurityAction `json:"BotClientAction,omitnil,omitempty" name:"BotClientAction"`
 }
 
 type ClientFiltering struct {
@@ -5271,6 +5438,13 @@ type DDosProtectionConfig struct {
 	// <li>ANYCAST300：开启独立 DDoS 防护，提供 300 Gbps 防护带宽；</li>
 	// <li>ANYCAST_ALLIN：开启独立 DDoS 防护，使用全部可用防护资源进行防护。</li>不填写参数时，取默认值 PLATFORM。
 	LevelOverseas *string `json:"LevelOverseas,omitnil,omitempty" name:"LevelOverseas"`
+}
+
+type DNSPodDetail struct {
+	// 是否伪站点，取值有：
+	// <li> 0：非伪站点；</li>
+	// <li> 1：伪站点。</li>
+	IsFake *int64 `json:"IsFake,omitnil,omitempty" name:"IsFake"`
 }
 
 type DefaultServerCertInfo struct {
@@ -12814,7 +12988,7 @@ type DescribeZonesRequestParams struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 appid 下有权限的所有站点信息。详细的过滤条件如下：
-	// <li>zone-name：按照站点名称进行过滤；</li><li>zone-id：按照站点 ID进行过滤。站点 ID 形如：zone-2noz78a8ev6k；</li><li>status：按照站点状态进行过滤；</li><li>tag-key：按照标签键进行过滤；</li><li>tag-value： 按照标签值进行过滤。</li><li>alias-zone-name： 按照同名站点标识进行过滤。</li>模糊查询时支持过滤字段名为 zone-name 或 alias-zone-name。
+	// <li>zone-name：按照站点名称进行过滤；</li><li>zone-type：按照站点类型进行过滤。可选项：<br>   full：NS 接入类型；<br>   partial：CNAME 接入类型；<br>   partialComposite：无域名接入类型；<br>   dnsPodAccess：DNSPod 托管接入类型；<br>   pages：Pages 类型。</li><li>zone-id：按照站点 ID 进行过滤，站点 ID 形如：zone-2noz78a8ev6k；</li><li>status：按照站点状态进行过滤。可选项：<br>   active：NS 已切换；<br>   pending：NS 待切换；<br>   deleted：已删除。</li><li>tag-key：按照标签键进行过滤；</li><li>tag-value： 按照标签值进行过滤；</li><li>alias-zone-name： 按照同名站点标识进行过滤。</li>模糊查询时支持过滤字段名为 zone-name 或 alias-zone-name。
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 可根据该字段对返回结果进行排序，取值有：
@@ -12842,7 +13016,7 @@ type DescribeZonesRequest struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 appid 下有权限的所有站点信息。详细的过滤条件如下：
-	// <li>zone-name：按照站点名称进行过滤；</li><li>zone-id：按照站点 ID进行过滤。站点 ID 形如：zone-2noz78a8ev6k；</li><li>status：按照站点状态进行过滤；</li><li>tag-key：按照标签键进行过滤；</li><li>tag-value： 按照标签值进行过滤。</li><li>alias-zone-name： 按照同名站点标识进行过滤。</li>模糊查询时支持过滤字段名为 zone-name 或 alias-zone-name。
+	// <li>zone-name：按照站点名称进行过滤；</li><li>zone-type：按照站点类型进行过滤。可选项：<br>   full：NS 接入类型；<br>   partial：CNAME 接入类型；<br>   partialComposite：无域名接入类型；<br>   dnsPodAccess：DNSPod 托管接入类型；<br>   pages：Pages 类型。</li><li>zone-id：按照站点 ID 进行过滤，站点 ID 形如：zone-2noz78a8ev6k；</li><li>status：按照站点状态进行过滤。可选项：<br>   active：NS 已切换；<br>   pending：NS 待切换；<br>   deleted：已删除。</li><li>tag-key：按照标签键进行过滤；</li><li>tag-value： 按照标签值进行过滤；</li><li>alias-zone-name： 按照同名站点标识进行过滤。</li>模糊查询时支持过滤字段名为 zone-name 或 alias-zone-name。
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 可根据该字段对返回结果进行排序，取值有：
@@ -12888,7 +13062,7 @@ type DescribeZonesResponseParams struct {
 	// 符合条件的站点个数。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 站点详细信息。
+	// 站点列表详情。
 	Zones []*Zone `json:"Zones,omitnil,omitempty" name:"Zones"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14378,6 +14552,22 @@ type IPRegionInfo struct {
 	IsEdgeOneIP *string `json:"IsEdgeOneIP,omitnil,omitempty" name:"IsEdgeOneIP"`
 }
 
+type IPReputation struct {
+	// IP 情报库（原客户端画像分析）。取值有：<li>on：开启；</li><li>off：关闭。</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// IP 情报库（原客户端画像分析）的具体配置内容。
+	IPReputationGroup *IPReputationGroup `json:"IPReputationGroup,omitnil,omitempty" name:"IPReputationGroup"`
+}
+
+type IPReputationGroup struct {
+	// IP 情报库（原客户端画像分析）的执行动作。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Disabled：未启用，不启用指定规则；</li><li>Challenge：挑战，其中 ChallengeActionParameters 中的 ChallengeOption 支持 JSChallenge 和 ManagedChallenge。</li>
+	BaseAction *SecurityAction `json:"BaseAction,omitnil,omitempty" name:"BaseAction"`
+
+	// IP 情报库（原客户端画像分析）的具体配置，用于覆盖 BaseAction 中的默认配置。其中 BotManagementActionOverrides 的 Ids 中可以填写：<li>IPREP_WEB_AND_DDOS_ATTACKERS_LOW：网络攻击 - 一般置信度；</li><li>IPREP_WEB_AND_DDOS_ATTACKERS_MID：网络攻击 - 中等置信度；</li><li>IPREP_WEB_AND_DDOS_ATTACKERS_HIGH：网络攻击 - 高置信度；</li><li>IPREP_PROXIES_AND_ANONYMIZERS_LOW：网络代理 - 一般置信度；</li><li>IPREP_PROXIES_AND_ANONYMIZERS_MID：网络代理 - 中等置信度；</li><li>IPREP_PROXIES_AND_ANONYMIZERS_HIGH：网络代理 - 高置信度；</li><li>IPREP_SCANNING_TOOLS_LOW：扫描器 - 一般置信度；</li><li>IPREP_SCANNING_TOOLS_MID：扫描器 - 中等置信度；</li><li>IPREP_SCANNING_TOOLS_HIGH：扫描器 - 高置信度；</li><li>IPREP_ATO_ATTACKERS_LOW：账号接管攻击 - 一般置信度；</li><li>IPREP_ATO_ATTACKERS_MID：账号接管攻击 - 中等置信度；</li><li>IPREP_ATO_ATTACKERS_HIGH：账号接管攻击 - 高置信度；</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_LOW：恶意 BOT - 一般置信度；</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_MID：恶意 BOT - 中等置信度；</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_HIGH：恶意 BOT - 高置信度。</li>
+	BotManagementActionOverrides []*BotManagementActionOverrides `json:"BotManagementActionOverrides,omitnil,omitempty" name:"BotManagementActionOverrides"`
+}
+
 type IPWhitelist struct {
 	// IPv4列表。
 	IPv4 []*string `json:"IPv4,omitnil,omitempty" name:"IPv4"`
@@ -14779,6 +14969,14 @@ type JustInTimeTranscodeTemplate struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type KnownBotCategories struct {
+	// 来自已知商业工具或开源工具的访问请求的处置方式。 SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Disabled：未启用，不启用指定规则；</li><li>Challenge：挑战，其中 ChallengeActionParameters 中的 ChallengeOption 支持 JSChallenge 和 ManagedChallenge；</li><li>Allow：放行（待废弃）。</li> 
+	BaseAction *SecurityAction `json:"BaseAction,omitnil,omitempty" name:"BaseAction"`
+
+	// 指定已知商业工具或开源工具的访问请求的处置方式。
+	BotManagementActionOverrides []*BotManagementActionOverrides `json:"BotManagementActionOverrides,omitnil,omitempty" name:"BotManagementActionOverrides"`
+}
+
 type L4OfflineLog struct {
 	// 四层代理实例 ID。
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
@@ -15154,6 +15352,14 @@ type MaxAgeParameters struct {
 
 	// 自定义缓存时间数值，单位为秒，取值：0～315360000。<br>注意：当 FollowOrigin 为 off 时，表示不遵循源站，使用 CacheTime 设置缓存时间，否则此字段不生效。
 	CacheTime *int64 `json:"CacheTime,omitnil,omitempty" name:"CacheTime"`
+}
+
+type MaxNewSessionTriggerConfig struct {
+	// 触发阈值统计的时间窗口，取值有：<li>5s：5 秒内；</li><li>10s：10 秒内；</li><li>15s：15 秒内；</li><li>30s：30 秒内；</li><li>60s：60 秒内；</li><li>5m：5 分钟内；</li><li>10m：10 分钟内；</li><li>30m：30 分钟内；</li><li>60m：60 分钟内。</li> 
+	MaxNewSessionCountInterval *string `json:"MaxNewSessionCountInterval,omitnil,omitempty" name:"MaxNewSessionCountInterval"`
+
+	// 触发阈值统计的累计次数，取值范围 1 ~ 100000000。
+	MaxNewSessionCountThreshold *int64 `json:"MaxNewSessionCountThreshold,omitnil,omitempty" name:"MaxNewSessionCountThreshold"`
 }
 
 type MinimalRequestBodyTransferRate struct {
@@ -18375,10 +18581,10 @@ type ModifySecurityPolicyRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 安全策略配置。<li>当 SecurityPolicy 参数中的 ExceptionRules 被设置时，SecurityConfig 参数中的 ExceptConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 CustomRules 被设置时，SecurityConfig 参数中的 AclConfig、 IpTableConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 HttpDDoSProtection 和 RateLimitingRules 被设置时，SecurityConfig 参数中的 RateLimitConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略；</li><li>对于例外规则、自定义规则、速率限制以及托管规则策略配置建议使用 SecurityPolicy 参数进行设置。</li>
+	// 安全策略配置。<li>当 SecurityPolicy 参数中的 ExceptionRules 被设置时，SecurityConfig 参数中的 ExceptConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 CustomRules 被设置时，SecurityConfig 参数中的 AclConfig、 IpTableConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 HttpDDoSProtection 和 RateLimitingRules 被设置时，SecurityConfig 参数中的 RateLimitConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 BotManagement 被设置时，SecurityConfig 参数中的 BotConfig 将被忽略；</li><li>对于例外规则、自定义规则、速率限制、托管规则以及 Bot 管理策略配置建议使用 SecurityPolicy 参数进行设置。</li>
 	SecurityConfig *SecurityConfig `json:"SecurityConfig,omitnil,omitempty" name:"SecurityConfig"`
 
-	// 安全策略配置。对 Web 例外规则、防护自定义策略、速率规则和托管规则配置建议使用，支持表达式语法对安全策略进行配置。
+	// 安全策略配置。对 Web 例外规则、防护自定义策略、速率规则、托管规则和 Bot 管理配置建议使用，支持表达式语法对安全策略进行配置。
 	SecurityPolicy *SecurityPolicy `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
 
 	// 安全策略类型，可使用以下参数值： <li>ZoneDefaultPolicy：用于指定站点级策略；</li><li>Template：用于指定策略模板，需要同时指定 TemplateId 参数；</li><li>Host：用于指定域名级策略（注意：当使用域名来指定域名服务策略时，仅支持已经应用了域名级策略的域名服务或者策略模板）。</li>
@@ -18397,10 +18603,10 @@ type ModifySecurityPolicyRequest struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 安全策略配置。<li>当 SecurityPolicy 参数中的 ExceptionRules 被设置时，SecurityConfig 参数中的 ExceptConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 CustomRules 被设置时，SecurityConfig 参数中的 AclConfig、 IpTableConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 HttpDDoSProtection 和 RateLimitingRules 被设置时，SecurityConfig 参数中的 RateLimitConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略；</li><li>对于例外规则、自定义规则、速率限制以及托管规则策略配置建议使用 SecurityPolicy 参数进行设置。</li>
+	// 安全策略配置。<li>当 SecurityPolicy 参数中的 ExceptionRules 被设置时，SecurityConfig 参数中的 ExceptConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 CustomRules 被设置时，SecurityConfig 参数中的 AclConfig、 IpTableConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 HttpDDoSProtection 和 RateLimitingRules 被设置时，SecurityConfig 参数中的 RateLimitConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 BotManagement 被设置时，SecurityConfig 参数中的 BotConfig 将被忽略；</li><li>对于例外规则、自定义规则、速率限制、托管规则以及 Bot 管理策略配置建议使用 SecurityPolicy 参数进行设置。</li>
 	SecurityConfig *SecurityConfig `json:"SecurityConfig,omitnil,omitempty" name:"SecurityConfig"`
 
-	// 安全策略配置。对 Web 例外规则、防护自定义策略、速率规则和托管规则配置建议使用，支持表达式语法对安全策略进行配置。
+	// 安全策略配置。对 Web 例外规则、防护自定义策略、速率规则、托管规则和 Bot 管理配置建议使用，支持表达式语法对安全策略进行配置。
 	SecurityPolicy *SecurityPolicy `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
 
 	// 安全策略类型，可使用以下参数值： <li>ZoneDefaultPolicy：用于指定站点级策略；</li><li>Template：用于指定策略模板，需要同时指定 TemplateId 参数；</li><li>Host：用于指定域名级策略（注意：当使用域名来指定域名服务策略时，仅支持已经应用了域名级策略的域名服务或者策略模板）。</li>
@@ -19047,6 +19253,33 @@ type MutualTLS struct {
 	// 双向认证证书列表。
 	// 注意：MutualTLS 在 ModifyHostsCertificate 作为入参使用时，该参数传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/ssl) 查看 CertId。
 	CertInfos []*CertificateInfo `json:"CertInfos,omitnil,omitempty" name:"CertInfos"`
+}
+
+type NSDetail struct {
+	// 是否开启 CNAME 加速，取值有：
+	// <li> enabled：开启；</li>
+	// <li> disabled：关闭。</li>
+	CnameSpeedUp *string `json:"CnameSpeedUp,omitnil,omitempty" name:"CnameSpeedUp"`
+
+	// 是否存在同名站点，取值有：
+	// <li> 0：不存在同名站点；</li>
+	// <li> 1：已存在同名站点。</li>
+	IsFake *int64 `json:"IsFake,omitnil,omitempty" name:"IsFake"`
+
+	// 归属权验证信息。针对 NS 接入类型的站点，将当前的 NS 服务器切换至腾讯云 EdgeOne 指定的 NS 服务器，即视为通过归属权验证。详情请参考 [站点/域名归属权验证](https://cloud.tencent.com/document/product/1552/70789) 。
+	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil,omitempty" name:"OwnershipVerification"`
+
+	// 由 EdgeOne 检测到的站点当前正在使用的 NS 服务器列表。
+	OriginalNameServers []*string `json:"OriginalNameServers,omitnil,omitempty" name:"OriginalNameServers"`
+
+	// 腾讯云 EdgeOne 分配的 NS 服务器列表。需要将当前站点 NS 服务器指向该地址，站点才能生效。
+	NameServers []*string `json:"NameServers,omitnil,omitempty" name:"NameServers"`
+
+	// 用户自定义 NS 服务器域名信息。如果启用了自定义 NS 服务，需要在域名注册厂商内将 NS 指向该地址。
+	VanityNameServers *VanityNameServers `json:"VanityNameServers,omitnil,omitempty" name:"VanityNameServers"`
+
+	// 用户自定义 NS 服务器对应的 IP 地址信息。
+	VanityNameServersIps []*VanityNameServersIps `json:"VanityNameServersIps,omitnil,omitempty" name:"VanityNameServersIps"`
 }
 
 type NextOriginACL struct {
@@ -20742,6 +20975,14 @@ type S3 struct {
 	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
 }
 
+type SearchEngineBots struct {
+	// 来自搜索引擎爬虫的请求的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Disabled：未启用，不启用指定规则；</li><li>Challenge：挑战，其中 ChallengeActionParameters 中的 ChallengeOption 支持 JSChallenge 和 ManagedChallenge；</li><li>Allow：放行（待废弃）。</li> 
+	BaseAction *SecurityAction `json:"BaseAction,omitnil,omitempty" name:"BaseAction"`
+
+	// 指定搜索引擎爬虫请求的处置方式。
+	BotManagementActionOverrides []*BotManagementActionOverrides `json:"BotManagementActionOverrides,omitnil,omitempty" name:"BotManagementActionOverrides"`
+}
+
 type SecEntry struct {
 	// 查询维度值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -20775,6 +21016,7 @@ type SecurityAction struct {
 	// <li>Disabled：未启用，不启用指定规则；</li>
 	// <li>Allow：允许访问，但延迟处理请求；</li>
 	// <li>Challenge：挑战，响应挑战内容；</li>
+	// <li>Trans：放行，允许请求直接访问站点资源；</li>
 	// <li>BlockIP：待废弃，IP 封禁；</li>
 	// <li>ReturnCustomPage：待废弃，使用指定页面拦截；</li>
 	// <li>JSChallenge：待废弃，JavaScript 挑战；</li>
@@ -20884,6 +21126,14 @@ type SecurityType struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
+type SecurityWeightedAction struct {
+	// Bot 自定义规则的处置方式。取值有：<li>Allow：放行，其中 AllowActionParameters 支持 MinDelayTime 和 MaxDelayTime 配置；</li><li>Deny：拦截，其中 DenyActionParameters 中支持 BlockIp、ReturnCustomPage 和 Stall 配置；</li><li>Monitor：观察；</li><li>Challenge：挑战，其中 ChallengeActionParameters.ChallengeOption 支持 JSChallenge 和 ManagedChallenge；</li><li>Redirect：重定向至URL。</li>
+	SecurityAction *SecurityAction `json:"SecurityAction,omitnil,omitempty" name:"SecurityAction"`
+
+	// 当前 SecurityAction 的权重，仅支持 10 ~ 100 且必须为 10 的倍数，其中 Weight 参数全部相加须等于 100。
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+}
+
 type ServerCertInfo struct {
 	// 服务器证书 ID。来源于 SSL 侧，您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/ssl) 查看 CertId。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
@@ -20908,6 +21158,20 @@ type ServerCertInfo struct {
 
 	// 证书归属域名名称。
 	CommonName *string `json:"CommonName,omitnil,omitempty" name:"CommonName"`
+}
+
+type SessionRateControl struct {
+	// 会话速率和周期特征校验配置是否开启。取值有：<li>on：启用</li><li>off：关闭</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 会话速率和周期特征校验高风险的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截，其中 DenyActionParameters 中支持 Stall 配置；</li><li>Monitor：观察；</li><li>Allow：等待后响应，其中 AllowActionParameters 需要 MinDelayTime 和 MaxDelayTime 配置。</li>
+	HighRateSessionAction *SecurityAction `json:"HighRateSessionAction,omitnil,omitempty" name:"HighRateSessionAction"`
+
+	// 会话速率和周期特征校验中风险的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截，其中 DenyActionParameters 中支持 Stall 配置；</li><li>Monitor：观察；</li><li>Allow：等待后响应，其中 AllowActionParameters 需要 MinDelayTime 和 MaxDelayTime 配置。</li>
+	MidRateSessionAction *SecurityAction `json:"MidRateSessionAction,omitnil,omitempty" name:"MidRateSessionAction"`
+
+	// 会话速率和周期特征校验低风险的执行动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截，其中 DenyActionParameters 中支持 Stall 配置；</li><li>Monitor：观察；</li><li>Allow：等待后响应，其中 AllowActionParameters 需要 MinDelayTime 和 MaxDelayTime 配置。</li>
+	LowRateSessionAction *SecurityAction `json:"LowRateSessionAction,omitnil,omitempty" name:"LowRateSessionAction"`
 }
 
 type SetContentIdentifierParameters struct {
@@ -21012,6 +21276,14 @@ type SmartRoutingParameters struct {
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type SourceIDC struct {
+	// 来自指定 IDC 请求的处置方式。 SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Disabled：未启用，不启用指定规则；</li><li>Challenge：挑战，其中 ChallengeActionParameters 中的 ChallengeOption 支持 JSChallenge 和 ManagedChallenge；</li><li>Allow：放行（待废弃）。</li>
+	BaseAction *SecurityAction `json:"BaseAction,omitnil,omitempty" name:"BaseAction"`
+
+	// 指定 IDC 请求的处置方式。
+	BotManagementActionOverrides []*BotManagementActionOverrides `json:"BotManagementActionOverrides,omitnil,omitempty" name:"BotManagementActionOverrides"`
 }
 
 type StandardDebug struct {
@@ -21630,11 +21902,43 @@ type Zone struct {
 	// 站点名称。
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// 站点当前使用的 NS 列表。
-	OriginalNameServers []*string `json:"OriginalNameServers,omitnil,omitempty" name:"OriginalNameServers"`
+	// 同名站点标识。允许输入数字、英文、"." 、"-" 和 "_" 组合，长度 200 个字符以内。
+	AliasZoneName *string `json:"AliasZoneName,omitnil,omitempty" name:"AliasZoneName"`
 
-	// 腾讯云分配的 NS 列表。
-	NameServers []*string `json:"NameServers,omitnil,omitempty" name:"NameServers"`
+	// 站点加速区域，取值有：
+	// <li> global：全球可用区；</li>
+	// <li> mainland：中国大陆可用区；</li>
+	// <li> overseas：全球可用区（不含中国大陆）。</li>
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 站点接入类型，取值有：
+	// <li> full：NS 接入类型；</li>
+	// <li> partial：CNAME 接入类型；</li>
+	// <li> noDomainAccess：无域名接入类型；</li>
+	// <li>dnsPodAccess：DNSPod 托管类型，该类型要求您的域名已托管在腾讯云 DNSPod；</li>
+	// <li> pages：Pages 类型。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 站点关联的标签。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 计费资源列表。
+	Resources []*Resource `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// NS 类型站点详情。仅当 Type = full 时返回值。
+	NSDetail *NSDetail `json:"NSDetail,omitnil,omitempty" name:"NSDetail"`
+
+	// CNAME 类型站点详情。仅当 Type = partial 时返回值。
+	CNAMEDetail *CNAMEDetail `json:"CNAMEDetail,omitnil,omitempty" name:"CNAMEDetail"`
+
+	// DNSPod 托管类型站点详情。仅当 Type = dnsPodAccess 时返回值。
+	DNSPodDetail *DNSPodDetail `json:"DNSPodDetail,omitnil,omitempty" name:"DNSPodDetail"`
+
+	// 站点创建时间。
+	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
+
+	// 站点修改时间。
+	ModifiedOn *string `json:"ModifiedOn,omitnil,omitempty" name:"ModifiedOn"`
 
 	// 站点状态，取值有：
 	// <li> active：NS 已切换； </li>
@@ -21644,50 +21948,10 @@ type Zone struct {
 	// <li> initializing：待绑定套餐。 </li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 站点接入方式，取值有：
-	// <li> full：NS 接入；</li>
-	// <li> partial：CNAME 接入；</li>
-	// <li> noDomainAccess：无域名接入；</li>
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 站点是否关闭。
-	Paused *bool `json:"Paused,omitnil,omitempty" name:"Paused"`
-
-	// 是否开启 CNAME 加速，取值有：
-	// <li> enabled：开启；</li>
-	// <li> disabled：关闭。</li>
-	CnameSpeedUp *string `json:"CnameSpeedUp,omitnil,omitempty" name:"CnameSpeedUp"`
-
 	// CNAME 接入状态，取值有：
 	// <li> finished：站点已验证；</li>
 	// <li> pending：站点验证中。</li>
 	CnameStatus *string `json:"CnameStatus,omitnil,omitempty" name:"CnameStatus"`
-
-	// 资源标签列表。
-	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
-
-	// 计费资源列表。
-	Resources []*Resource `json:"Resources,omitnil,omitempty" name:"Resources"`
-
-	// 站点创建时间。
-	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
-
-	// 站点修改时间。
-	ModifiedOn *string `json:"ModifiedOn,omitnil,omitempty" name:"ModifiedOn"`
-
-	// 站点接入地域，取值有：
-	// <li> global：全球；</li>
-	// <li> mainland：中国大陆；</li>
-	// <li> overseas：境外区域。</li>
-	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
-
-	// 用户自定义 NS 信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	VanityNameServers *VanityNameServers `json:"VanityNameServers,omitnil,omitempty" name:"VanityNameServers"`
-
-	// 用户自定义 NS IP 信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	VanityNameServersIps []*VanityNameServersIps `json:"VanityNameServersIps,omitnil,omitempty" name:"VanityNameServersIps"`
 
 	// 展示状态，取值有：
 	// <li> active：已启用；</li>
@@ -21695,20 +21959,39 @@ type Zone struct {
 	// <li> paused：已停用。</li>
 	ActiveStatus *string `json:"ActiveStatus,omitnil,omitempty" name:"ActiveStatus"`
 
-	// 站点别名。数字、英文、-和_组合，限制20个字符。
-	AliasZoneName *string `json:"AliasZoneName,omitnil,omitempty" name:"AliasZoneName"`
+	// 锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作；</li><li> plan_migrate：套餐迁移中，不允许进行修改操作。</li>
+	LockStatus *string `json:"LockStatus,omitnil,omitempty" name:"LockStatus"`
 
-	// 是否伪站点，取值有：
+	// 站点是否关闭。
+	Paused *bool `json:"Paused,omitnil,omitempty" name:"Paused"`
+
+	// 是否伪站点（该字段为历史保留字段，已不再维护，请根据站点类型参考对应字段），取值有：
 	// <li> 0：非伪站点；</li>
 	// <li> 1：伪站点。</li>
 	IsFake *int64 `json:"IsFake,omitnil,omitempty" name:"IsFake"`
 
-	// 锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作；</li><li> plan_migrate：套餐迁移中，不允许进行修改操作。</li>
-	LockStatus *string `json:"LockStatus,omitnil,omitempty" name:"LockStatus"`
+	// 是否开启 CNAME 加速（该字段为历史保留字段，已不再维护，请根据站点类型参考对应字段），取值有：
+	// <li> enabled：开启；</li>
+	// <li> disabled：关闭。</li>
+	CnameSpeedUp *string `json:"CnameSpeedUp,omitnil,omitempty" name:"CnameSpeedUp"`
 
-	// 归属权验证信息。
+	// 归属权验证信息。（该字段为历史保留字段，已不再维护，请根据站点类型参考对应字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil,omitempty" name:"OwnershipVerification"`
+
+	// 站点当前使用的 NS 列表。（该字段为历史保留字段，已不再维护，请根据站点类型参考对应字段）
+	OriginalNameServers []*string `json:"OriginalNameServers,omitnil,omitempty" name:"OriginalNameServers"`
+
+	// 腾讯云分配的 NS 列表。（该字段为历史保留字段，已不再维护，请根据站点类型参考对应字段）
+	NameServers []*string `json:"NameServers,omitnil,omitempty" name:"NameServers"`
+
+	// 用户自定义 NS 信息。（该字段为历史保留字段，已不再维护，请根据站点类型参考对应字段）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VanityNameServers *VanityNameServers `json:"VanityNameServers,omitnil,omitempty" name:"VanityNameServers"`
+
+	// 用户自定义 NS IP 信息。（该字段为历史保留字段，已不再维护，请根据站点类型参考对应字段）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VanityNameServersIps []*VanityNameServersIps `json:"VanityNameServersIps,omitnil,omitempty" name:"VanityNameServersIps"`
 }
 
 type ZoneConfig struct {

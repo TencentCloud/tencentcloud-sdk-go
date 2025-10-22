@@ -7333,6 +7333,9 @@ type DeployContainerApplicationRequestParams struct {
 
 	// 滚动更新分区序号
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
+
+	// 是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数
+	IncrementalDeployment *bool `json:"IncrementalDeployment,omitnil,omitempty" name:"IncrementalDeployment"`
 }
 
 type DeployContainerApplicationRequest struct {
@@ -7520,6 +7523,9 @@ type DeployContainerApplicationRequest struct {
 
 	// 滚动更新分区序号
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
+
+	// 是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数
+	IncrementalDeployment *bool `json:"IncrementalDeployment,omitnil,omitempty" name:"IncrementalDeployment"`
 }
 
 func (r *DeployContainerApplicationRequest) ToJsonString() string {
@@ -7595,6 +7601,7 @@ func (r *DeployContainerApplicationRequest) FromJsonString(s string) error {
 	delete(f, "StaticIpEnabled")
 	delete(f, "PodManagementPolicyType")
 	delete(f, "Partition")
+	delete(f, "IncrementalDeployment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployContainerApplicationRequest has unknown keys!", "")
 	}
@@ -15069,6 +15076,9 @@ type DescribeSimpleGroupsRequestParams struct {
 
 	// 部署组类型，精确过滤字段，M：service mesh, P：原生应用， G：网关应用
 	AppMicroServiceType *string `json:"AppMicroServiceType,omitnil,omitempty" name:"AppMicroServiceType"`
+
+	// 按照【部署组名称】进行过滤，不填写时查询全量。可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 }
 
 type DescribeSimpleGroupsRequest struct {
@@ -15100,6 +15110,9 @@ type DescribeSimpleGroupsRequest struct {
 
 	// 部署组类型，精确过滤字段，M：service mesh, P：原生应用， G：网关应用
 	AppMicroServiceType *string `json:"AppMicroServiceType,omitnil,omitempty" name:"AppMicroServiceType"`
+
+	// 按照【部署组名称】进行过滤，不填写时查询全量。可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 }
 
 func (r *DescribeSimpleGroupsRequest) ToJsonString() string {
@@ -15123,6 +15136,7 @@ func (r *DescribeSimpleGroupsRequest) FromJsonString(s string) error {
 	delete(f, "GroupId")
 	delete(f, "SearchWord")
 	delete(f, "AppMicroServiceType")
+	delete(f, "GroupName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSimpleGroupsRequest has unknown keys!", "")
 	}
@@ -15332,6 +15346,9 @@ type DescribeStatisticsRequestParams struct {
 	// 独占配置中心的ID。
 	// 可通过调用[DescribeClusterInstances](https://cloud.tencent.com/document/product/649/36048)查询已导入的实例列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=instance)进行查询。实例ID例如：ins-6decplwk。
 	ConfigCenterInstanceId *string `json:"ConfigCenterInstanceId,omitnil,omitempty" name:"ConfigCenterInstanceId"`
+
+	// 服务过滤
+	ServiceFilter *string `json:"ServiceFilter,omitnil,omitempty" name:"ServiceFilter"`
 }
 
 type DescribeStatisticsRequest struct {
@@ -15386,6 +15403,9 @@ type DescribeStatisticsRequest struct {
 	// 独占配置中心的ID。
 	// 可通过调用[DescribeClusterInstances](https://cloud.tencent.com/document/product/649/36048)查询已导入的实例列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=instance)进行查询。实例ID例如：ins-6decplwk。
 	ConfigCenterInstanceId *string `json:"ConfigCenterInstanceId,omitnil,omitempty" name:"ConfigCenterInstanceId"`
+
+	// 服务过滤
+	ServiceFilter *string `json:"ServiceFilter,omitnil,omitempty" name:"ServiceFilter"`
 }
 
 func (r *DescribeStatisticsRequest) ToJsonString() string {
@@ -15416,6 +15436,7 @@ func (r *DescribeStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "DbName")
 	delete(f, "NamespaceIdList")
 	delete(f, "ConfigCenterInstanceId")
+	delete(f, "ServiceFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStatisticsRequest has unknown keys!", "")
 	}
@@ -17073,6 +17094,18 @@ type ExclusiveInstance struct {
 
 	// 实例命名空间ID，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
 	InstanceNamespaceId *string `json:"InstanceNamespaceId,omitnil,omitempty" name:"InstanceNamespaceId"`
+
+	// 部署组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 // Predefined struct for user

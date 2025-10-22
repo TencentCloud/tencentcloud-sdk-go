@@ -341,6 +341,9 @@ const (
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
+	// 此域名因遭受过大规模 DDoS 攻击，为了保证平台稳定，当前无法接入。
+	OPERATIONDENIED_CDNHOSTHASDDOSRISK = "OperationDenied.CdnHostHasDDosRisk"
+
 	// 腾讯云CDN已全面升级为边缘安全加速平台
 	OPERATIONDENIED_PRODUCTUPGRADED = "OperationDenied.ProductUpgraded"
 

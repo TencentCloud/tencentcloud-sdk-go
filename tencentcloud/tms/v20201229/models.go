@@ -20,6 +20,100 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+// Predefined struct for user
+type CreateFinancialLLMTaskRequestParams struct {
+	// 审核策略BizType
+	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
+
+	// 待审文件类型，目前支持：PDF, DOC, DOCX
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 送审内容类型：1-文档，2-文本
+	ContentType *int64 `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 送审内容，根据ContentType字段的取值，传入送审文档的Url链接，或送审文本的Base64编码
+	// 
+	// 文档限制：
+	// 
+	// - 文件下载时间不超过15秒（文件存储于腾讯云的Url可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。）
+	// - 所下载文件经 Base64 编码后不超过支持的文件大小：PDF/DOC/DOCX - 200M
+	// - 文档解析后的纯文本长度不超过 10000字
+	// 
+	// 文本限制：Base64解码后的文本长度不超过10000字
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type CreateFinancialLLMTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 审核策略BizType
+	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
+
+	// 待审文件类型，目前支持：PDF, DOC, DOCX
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 送审内容类型：1-文档，2-文本
+	ContentType *int64 `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// 送审内容，根据ContentType字段的取值，传入送审文档的Url链接，或送审文本的Base64编码
+	// 
+	// 文档限制：
+	// 
+	// - 文件下载时间不超过15秒（文件存储于腾讯云的Url可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。）
+	// - 所下载文件经 Base64 编码后不超过支持的文件大小：PDF/DOC/DOCX - 200M
+	// - 文档解析后的纯文本长度不超过 10000字
+	// 
+	// 文本限制：Base64解码后的文本长度不超过10000字
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+func (r *CreateFinancialLLMTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFinancialLLMTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizType")
+	delete(f, "FileType")
+	delete(f, "ContentType")
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFinancialLLMTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFinancialLLMTaskResponseParams struct {
+	// 金融大模型审校任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateFinancialLLMTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFinancialLLMTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateFinancialLLMTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFinancialLLMTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DetailResults struct {
 	// 该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
@@ -76,6 +170,101 @@ type Device struct {
 
 	// **iOS设备专用**，该字段表示业务用户对应的**IDFV**(应用开发商标识符),这是由苹果公司提供的用于标注应用开发商的标识符，由一串16进制的32位数字和字母组成，可被用于唯一标识设备。
 	IDFV *string `json:"IDFV,omitnil,omitempty" name:"IDFV"`
+}
+
+type FinancialLLMViolationDetail struct {
+	// 违规点
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 处置建议
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// 违规原因列表
+	Reasons []*FinancialLLMViolationReason `json:"Reasons,omitnil,omitempty" name:"Reasons"`
+}
+
+type FinancialLLMViolationReason struct {
+	// 违规原文片段
+	TargetText *string `json:"TargetText,omitnil,omitempty" name:"TargetText"`
+
+	// 违规原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+// Predefined struct for user
+type GetFinancialLLMTaskResultRequestParams struct {
+	// 金融大模型审校任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type GetFinancialLLMTaskResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 金融大模型审校任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *GetFinancialLLMTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFinancialLLMTaskResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFinancialLLMTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFinancialLLMTaskResultResponseParams struct {
+	// 审校任务状态：
+	// 
+	// - Success: 成功
+	// - Processing: 处理中，请等待
+	// - Failed: 失败
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 大模型审校结果
+	ModerationResult *string `json:"ModerationResult,omitnil,omitempty" name:"ModerationResult"`
+
+	// 审校任务失败原因，仅当任务失败时有值
+	FailureReason *string `json:"FailureReason,omitnil,omitempty" name:"FailureReason"`
+
+	// 审校任务开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 本次检测的违规点列表
+	ReviewedLabels []*string `json:"ReviewedLabels,omitnil,omitempty" name:"ReviewedLabels"`
+
+	// 违规明细
+	Details []*FinancialLLMViolationDetail `json:"Details,omitnil,omitempty" name:"Details"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetFinancialLLMTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFinancialLLMTaskResultResponseParams `json:"Response"`
+}
+
+func (r *GetFinancialLLMTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFinancialLLMTaskResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HitInfo struct {

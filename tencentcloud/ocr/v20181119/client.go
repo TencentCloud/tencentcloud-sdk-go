@@ -5029,6 +5029,82 @@ func (c *Client) QuestionOCRWithContext(ctx context.Context, request *QuestionOC
     return
 }
 
+func NewQuestionSplitLayoutOCRRequest() (request *QuestionSplitLayoutOCRRequest) {
+    request = &QuestionSplitLayoutOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "QuestionSplitLayoutOCR")
+    
+    
+    return
+}
+
+func NewQuestionSplitLayoutOCRResponse() (response *QuestionSplitLayoutOCRResponse) {
+    response = &QuestionSplitLayoutOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QuestionSplitLayoutOCR
+// 试卷切题（仅检测）可将整页练习册、试卷或教辅中的题目进行自动切题，返回试题边框和题目元素的坐标位置。
+//
+// 
+//
+// 默认接口请求频率限制：2次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) QuestionSplitLayoutOCR(request *QuestionSplitLayoutOCRRequest) (response *QuestionSplitLayoutOCRResponse, err error) {
+    return c.QuestionSplitLayoutOCRWithContext(context.Background(), request)
+}
+
+// QuestionSplitLayoutOCR
+// 试卷切题（仅检测）可将整页练习册、试卷或教辅中的题目进行自动切题，返回试题边框和题目元素的坐标位置。
+//
+// 
+//
+// 默认接口请求频率限制：2次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) QuestionSplitLayoutOCRWithContext(ctx context.Context, request *QuestionSplitLayoutOCRRequest) (response *QuestionSplitLayoutOCRResponse, err error) {
+    if request == nil {
+        request = NewQuestionSplitLayoutOCRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "QuestionSplitLayoutOCR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QuestionSplitLayoutOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQuestionSplitLayoutOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQuestionSplitOCRRequest() (request *QuestionSplitOCRRequest) {
     request = &QuestionSplitOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -45,6 +45,128 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateFinancialLLMTaskRequest() (request *CreateFinancialLLMTaskRequest) {
+    request = &CreateFinancialLLMTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tms", APIVersion, "CreateFinancialLLMTask")
+    
+    
+    return
+}
+
+func NewCreateFinancialLLMTaskResponse() (response *CreateFinancialLLMTaskResponse) {
+    response = &CreateFinancialLLMTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFinancialLLMTask
+// 创建金融大模型审校任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYREQLIMITED = "InternalError.QueryReqLimited"
+//  INVALIDPARAMETERVALUE_INVALIDBIZTYPE = "InvalidParameterValue.InvalidBizType"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENTTYPE = "InvalidParameterValue.InvalidContentType"
+//  INVALIDPARAMETERVALUE_INVALIDFILENAME = "InvalidParameterValue.InvalidFileName"
+//  INVALIDPARAMETERVALUE_INVALIDFILETYPE = "InvalidParameterValue.InvalidFileType"
+//  INVALIDPARAMETERVALUE_INVALIDFILEURL = "InvalidParameterValue.InvalidFileUrl"
+//  INVALIDPARAMETERVALUE_INVALIDREQUIREMENT = "InvalidParameterValue.InvalidRequirement"
+//  INVALIDPARAMETERVALUE_INVALIDVERBOSE = "InvalidParameterValue.InvalidVerbose"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) CreateFinancialLLMTask(request *CreateFinancialLLMTaskRequest) (response *CreateFinancialLLMTaskResponse, err error) {
+    return c.CreateFinancialLLMTaskWithContext(context.Background(), request)
+}
+
+// CreateFinancialLLMTask
+// 创建金融大模型审校任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYREQLIMITED = "InternalError.QueryReqLimited"
+//  INVALIDPARAMETERVALUE_INVALIDBIZTYPE = "InvalidParameterValue.InvalidBizType"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENTTYPE = "InvalidParameterValue.InvalidContentType"
+//  INVALIDPARAMETERVALUE_INVALIDFILENAME = "InvalidParameterValue.InvalidFileName"
+//  INVALIDPARAMETERVALUE_INVALIDFILETYPE = "InvalidParameterValue.InvalidFileType"
+//  INVALIDPARAMETERVALUE_INVALIDFILEURL = "InvalidParameterValue.InvalidFileUrl"
+//  INVALIDPARAMETERVALUE_INVALIDREQUIREMENT = "InvalidParameterValue.InvalidRequirement"
+//  INVALIDPARAMETERVALUE_INVALIDVERBOSE = "InvalidParameterValue.InvalidVerbose"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) CreateFinancialLLMTaskWithContext(ctx context.Context, request *CreateFinancialLLMTaskRequest) (response *CreateFinancialLLMTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateFinancialLLMTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tms", APIVersion, "CreateFinancialLLMTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFinancialLLMTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFinancialLLMTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetFinancialLLMTaskResultRequest() (request *GetFinancialLLMTaskResultRequest) {
+    request = &GetFinancialLLMTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tms", APIVersion, "GetFinancialLLMTaskResult")
+    
+    
+    return
+}
+
+func NewGetFinancialLLMTaskResultResponse() (response *GetFinancialLLMTaskResultResponse) {
+    response = &GetFinancialLLMTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetFinancialLLMTaskResult
+// 获取金融大模型审校任务结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDTASKID = "InvalidParameterValue.InvalidTaskId"
+//  INVALIDPARAMETERVALUE_TASKIDNOTFOUND = "InvalidParameterValue.TaskIdNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) GetFinancialLLMTaskResult(request *GetFinancialLLMTaskResultRequest) (response *GetFinancialLLMTaskResultResponse, err error) {
+    return c.GetFinancialLLMTaskResultWithContext(context.Background(), request)
+}
+
+// GetFinancialLLMTaskResult
+// 获取金融大模型审校任务结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDTASKID = "InvalidParameterValue.InvalidTaskId"
+//  INVALIDPARAMETERVALUE_TASKIDNOTFOUND = "InvalidParameterValue.TaskIdNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) GetFinancialLLMTaskResultWithContext(ctx context.Context, request *GetFinancialLLMTaskResultRequest) (response *GetFinancialLLMTaskResultResponse, err error) {
+    if request == nil {
+        request = NewGetFinancialLLMTaskResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tms", APIVersion, "GetFinancialLLMTaskResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFinancialLLMTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFinancialLLMTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTextModerationRequest() (request *TextModerationRequest) {
     request = &TextModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},

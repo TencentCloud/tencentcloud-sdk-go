@@ -47,6 +47,36 @@ const (
 	// Type参数值不支持
 	INVALIDPARAMETERVALUE_ERRTYPE = "InvalidParameterValue.ErrType"
 
+	// BizType参数错误
+	INVALIDPARAMETERVALUE_INVALIDBIZTYPE = "InvalidParameterValue.InvalidBizType"
+
+	// InvalidParameterValue.InvalidContent
+	INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
+
+	// ContentType参数错误
+	INVALIDPARAMETERVALUE_INVALIDCONTENTTYPE = "InvalidParameterValue.InvalidContentType"
+
+	// FileName参数错误
+	INVALIDPARAMETERVALUE_INVALIDFILENAME = "InvalidParameterValue.InvalidFileName"
+
+	// FileType参数错误
+	INVALIDPARAMETERVALUE_INVALIDFILETYPE = "InvalidParameterValue.InvalidFileType"
+
+	// FileUrl参数错误
+	INVALIDPARAMETERVALUE_INVALIDFILEURL = "InvalidParameterValue.InvalidFileUrl"
+
+	// Requirement参数错误
+	INVALIDPARAMETERVALUE_INVALIDREQUIREMENT = "InvalidParameterValue.InvalidRequirement"
+
+	// TaskId参数错误
+	INVALIDPARAMETERVALUE_INVALIDTASKID = "InvalidParameterValue.InvalidTaskId"
+
+	// Verbose参数错误
+	INVALIDPARAMETERVALUE_INVALIDVERBOSE = "InvalidParameterValue.InvalidVerbose"
+
+	// 任务ID不存在
+	INVALIDPARAMETERVALUE_TASKIDNOTFOUND = "InvalidParameterValue.TaskIdNotFound"
+
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 

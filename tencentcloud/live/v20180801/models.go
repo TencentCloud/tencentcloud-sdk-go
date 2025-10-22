@@ -18392,6 +18392,7 @@ type RecordParam struct {
 	// 录制存储时长。
 	// 单位秒，取值范围： 0 - 1500天。
 	// 0：表示永久存储。
+	// 注：此参数只对录制到VOD有效。
 	StorageTime *int64 `json:"StorageTime,omitnil,omitempty" name:"StorageTime"`
 
 	// 是否开启当前格式录制，默认值为0，0：否， 1：是。
