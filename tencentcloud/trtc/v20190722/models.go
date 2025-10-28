@@ -6324,20 +6324,20 @@ func (r *StartStreamIngestResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartWebRecordRequestParams struct {
-	// 需要录制的网页URL
+	// 【必填】需要录制的网页URL
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
-
-	// 录制最大时长限制， 单位 s, 合法取值范围[1800, 36000], 默认 36000s(10 小时)
-	MaxDurationLimit *uint64 `json:"MaxDurationLimit,omitnil,omitempty" name:"MaxDurationLimit"`
 
 	// 【必填】云存储相关的参数，目前支持腾讯云对象存储以及腾讯云云点播VOD，不支持第三方云存储；输出文件的存储格式仅支持hls或mp4
 	StorageParams *StorageParams `json:"StorageParams,omitnil,omitempty" name:"StorageParams"`
 
-	// 页面录制视频参数
-	WebRecordVideoParams *WebRecordVideoParams `json:"WebRecordVideoParams,omitnil,omitempty" name:"WebRecordVideoParams"`
-
 	// 【必填】TRTC的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 录制最大时长限制， 单位 s, 合法取值范围[1800, 86400], 默认 86400s(24 小时)
+	MaxDurationLimit *uint64 `json:"MaxDurationLimit,omitnil,omitempty" name:"MaxDurationLimit"`
+
+	// 页面录制视频参数
+	WebRecordVideoParams *WebRecordVideoParams `json:"WebRecordVideoParams,omitnil,omitempty" name:"WebRecordVideoParams"`
 
 	// 当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
 	// 传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
@@ -6356,20 +6356,20 @@ type StartWebRecordRequestParams struct {
 type StartWebRecordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要录制的网页URL
+	// 【必填】需要录制的网页URL
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
-
-	// 录制最大时长限制， 单位 s, 合法取值范围[1800, 36000], 默认 36000s(10 小时)
-	MaxDurationLimit *uint64 `json:"MaxDurationLimit,omitnil,omitempty" name:"MaxDurationLimit"`
 
 	// 【必填】云存储相关的参数，目前支持腾讯云对象存储以及腾讯云云点播VOD，不支持第三方云存储；输出文件的存储格式仅支持hls或mp4
 	StorageParams *StorageParams `json:"StorageParams,omitnil,omitempty" name:"StorageParams"`
 
-	// 页面录制视频参数
-	WebRecordVideoParams *WebRecordVideoParams `json:"WebRecordVideoParams,omitnil,omitempty" name:"WebRecordVideoParams"`
-
 	// 【必填】TRTC的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 录制最大时长限制， 单位 s, 合法取值范围[1800, 86400], 默认 86400s(24 小时)
+	MaxDurationLimit *uint64 `json:"MaxDurationLimit,omitnil,omitempty" name:"MaxDurationLimit"`
+
+	// 页面录制视频参数
+	WebRecordVideoParams *WebRecordVideoParams `json:"WebRecordVideoParams,omitnil,omitempty" name:"WebRecordVideoParams"`
 
 	// 当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
 	// 传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
@@ -6398,10 +6398,10 @@ func (r *StartWebRecordRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RecordUrl")
-	delete(f, "MaxDurationLimit")
 	delete(f, "StorageParams")
-	delete(f, "WebRecordVideoParams")
 	delete(f, "SdkAppId")
+	delete(f, "MaxDurationLimit")
+	delete(f, "WebRecordVideoParams")
 	delete(f, "RecordId")
 	delete(f, "PublishCdnParams")
 	delete(f, "ReadyTimeout")

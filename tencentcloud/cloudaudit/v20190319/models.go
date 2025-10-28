@@ -1525,6 +1525,10 @@ type Storage struct {
 
 	// 被指定存储用户appid
 	StorageAppId *string `json:"StorageAppId,omitnil,omitempty" name:"StorageAppId"`
+
+	// 是否压缩。
+	// 1:压缩  2:不压缩
+	Compress *uint64 `json:"Compress,omitnil,omitempty" name:"Compress"`
 }
 
 type Tracks struct {

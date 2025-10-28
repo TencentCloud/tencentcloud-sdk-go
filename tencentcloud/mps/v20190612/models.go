@@ -4747,8 +4747,13 @@ type CreateOutputInfo struct {
 	// 输出的RIST的配置。
 	RISTSettings *CreateOutputRistSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
 
-	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道。PidSelector 与 TrackSelector 只能存在一个
+	//
+	// Deprecated: PidSelector is deprecated.
 	PidSelector *PidSelector `json:"PidSelector,omitnil,omitempty" name:"PidSelector"`
+
+	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道。PidSelector 与 TrackSelector 只能存在一个
+	StreamSelector *StreamSelector `json:"StreamSelector,omitnil,omitempty" name:"StreamSelector"`
 }
 
 type CreateOutputInfoRTPSettings struct {
@@ -9010,7 +9015,6 @@ func (r *DescribeImageTaskDetailRequest) FromJsonString(s string) error {
 type DescribeImageTaskDetailResponseParams struct {
 	// 任务类型，目前取值有：
 	// <li>WorkflowTask：工作流处理任务。</li>
-	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
@@ -9020,6 +9024,15 @@ type DescribeImageTaskDetailResponseParams struct {
 	// <li>FINISH：已完成。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务失败时的错误码。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// 任务异常Message。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 图片处理任务的执行状态与结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9420,10 +9433,15 @@ type DescribeOutput struct {
 	RISTSettings *DescribeOutputRISTSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
 
 	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+	//
+	// Deprecated: PidSelector is deprecated.
 	PidSelector *PidSelector `json:"PidSelector,omitnil,omitempty" name:"PidSelector"`
 
 	// 输出模块配置，相关的URL，包括提供的拉流地址，或者配置的输出到第三方的转推地址
 	StreamUrls []*StreamUrlDetail `json:"StreamUrls,omitnil,omitempty" name:"StreamUrls"`
+
+	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+	StreamSelector *StreamSelector `json:"StreamSelector,omitnil,omitempty" name:"StreamSelector"`
 }
 
 type DescribeOutputHLSPullServerUrl struct {
@@ -16180,7 +16198,12 @@ type ModifyOutputInfo struct {
 	OutputType *string `json:"OutputType,omitnil,omitempty" name:"OutputType"`
 
 	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+	//
+	// Deprecated: PidSelector is deprecated.
 	PidSelector *PidSelector `json:"PidSelector,omitnil,omitempty" name:"PidSelector"`
+
+	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+	StreamSelector *StreamSelector `json:"StreamSelector,omitnil,omitempty" name:"StreamSelector"`
 }
 
 // Predefined struct for user
@@ -20853,6 +20876,17 @@ type StreamLinkRegionInfo struct {
 	Regions []*RegionInfo `json:"Regions,omitnil,omitempty" name:"Regions"`
 }
 
+type StreamSelector struct {
+	// 选择类型: PID | TRACK
+	SelectorType *string `json:"SelectorType,omitnil,omitempty" name:"SelectorType"`
+
+	// 根据 PID 配置选择器
+	PidSelector *PidSelector `json:"PidSelector,omitnil,omitempty" name:"PidSelector"`
+
+	// 根据 Track 配置选择器
+	TrackSelector *TrackSelector `json:"TrackSelector,omitnil,omitempty" name:"TrackSelector"`
+}
+
 type StreamUrlDetail struct {
 	// 会描述运营商信息等
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
@@ -21369,6 +21403,14 @@ type TrackInfo struct {
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelVolume []*float64 `json:"ChannelVolume,omitnil,omitempty" name:"ChannelVolume"`
+}
+
+type TrackSelector struct {
+	// 视频轨道序号，从1开始.
+	VideoIndex []*int64 `json:"VideoIndex,omitnil,omitempty" name:"VideoIndex"`
+
+	// 音频轨道序号，从1开始.
+	AudioIndex []*int64 `json:"AudioIndex,omitnil,omitempty" name:"AudioIndex"`
 }
 
 type TranscodeTaskInput struct {

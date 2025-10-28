@@ -1217,6 +1217,62 @@ func (c *Client) GetDevicesWithContext(ctx context.Context, request *GetDevicesR
     return
 }
 
+func NewGetDurationDetailsRequest() (request *GetDurationDetailsRequest) {
+    request = &GetDurationDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "GetDurationDetails")
+    
+    
+    return
+}
+
+func NewGetDurationDetailsResponse() (response *GetDurationDetailsResponse) {
+    response = &GetDurationDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetDurationDetails
+// 查询该时间段、对应项目、设备的不同分辨率的通话时长流水，流水以日期（天）为单位
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_LICENSESNOTENOUGHERROR = "OperationDenied.LicensesNotEnoughError"
+func (c *Client) GetDurationDetails(request *GetDurationDetailsRequest) (response *GetDurationDetailsResponse, err error) {
+    return c.GetDurationDetailsWithContext(context.Background(), request)
+}
+
+// GetDurationDetails
+// 查询该时间段、对应项目、设备的不同分辨率的通话时长流水，流水以日期（天）为单位
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_LICENSESNOTENOUGHERROR = "OperationDenied.LicensesNotEnoughError"
+func (c *Client) GetDurationDetailsWithContext(ctx context.Context, request *GetDurationDetailsRequest) (response *GetDurationDetailsResponse, err error) {
+    if request == nil {
+        request = NewGetDurationDetailsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trro", APIVersion, "GetDurationDetails")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDurationDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDurationDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetLicenseStatRequest() (request *GetLicenseStatRequest) {
     request = &GetLicenseStatRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1319,6 +1375,62 @@ func (c *Client) GetLicensesWithContext(ctx context.Context, request *GetLicense
     request.SetContext(ctx)
     
     response = NewGetLicensesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTotalDurationRequest() (request *GetTotalDurationRequest) {
+    request = &GetTotalDurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "GetTotalDuration")
+    
+    
+    return
+}
+
+func NewGetTotalDurationResponse() (response *GetTotalDurationResponse) {
+    response = &GetTotalDurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTotalDuration
+// 查询该时间段、对应项目、设备的不同分辨率的通话时长汇总
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_LICENSESNOTENOUGHERROR = "OperationDenied.LicensesNotEnoughError"
+func (c *Client) GetTotalDuration(request *GetTotalDurationRequest) (response *GetTotalDurationResponse, err error) {
+    return c.GetTotalDurationWithContext(context.Background(), request)
+}
+
+// GetTotalDuration
+// 查询该时间段、对应项目、设备的不同分辨率的通话时长汇总
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_LICENSESNOTENOUGHERROR = "OperationDenied.LicensesNotEnoughError"
+func (c *Client) GetTotalDurationWithContext(ctx context.Context, request *GetTotalDurationRequest) (response *GetTotalDurationResponse, err error) {
+    if request == nil {
+        request = NewGetTotalDurationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trro", APIVersion, "GetTotalDuration")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTotalDuration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTotalDurationResponse()
     err = c.Send(request, response)
     return
 }

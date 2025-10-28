@@ -1198,6 +1198,8 @@ type CreateRoomRequestParams struct {
 	// 字幕转写功能开关。可以有以下取值：
 	// 0 不开启字幕转写功能（默认值）
 	// 1 自动转写模式：上课自动开启，下课自动停止
+	// 2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写
+	// 设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
 	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
@@ -1326,6 +1328,8 @@ type CreateRoomRequest struct {
 	// 字幕转写功能开关。可以有以下取值：
 	// 0 不开启字幕转写功能（默认值）
 	// 1 自动转写模式：上课自动开启，下课自动停止
+	// 2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写
+	// 设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
 	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
@@ -3471,7 +3475,11 @@ type DescribeRoomResponseParams struct {
 	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 
-	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	// 字幕转写功能开关。可以有以下取值：
+	// 0 不开启字幕转写功能（默认值）
+	// 1 自动转写模式：上课自动开启，下课自动停止
+	// 2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写
+	// 设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
 	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
@@ -5264,6 +5272,8 @@ type ModifyRoomRequestParams struct {
 	// 字幕转写功能开关。可以有以下取值：
 	// 0 不开启字幕转写功能（默认值）
 	// 1 自动转写模式：上课自动开启，下课自动停止
+	// 2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写
+	// 设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
 	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
@@ -5380,6 +5390,8 @@ type ModifyRoomRequest struct {
 	// 字幕转写功能开关。可以有以下取值：
 	// 0 不开启字幕转写功能（默认值）
 	// 1 自动转写模式：上课自动开启，下课自动停止
+	// 2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写
+	// 设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
 	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
@@ -5756,6 +5768,8 @@ type RoomInfo struct {
 	// 字幕转写功能开关。可以有以下取值：
 	// 0 不开启字幕转写功能（默认值）
 	// 1 自动转写模式：上课自动开启，下课自动停止
+	// 2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写
+	// 设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
 	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效

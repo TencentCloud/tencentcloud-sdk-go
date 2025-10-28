@@ -965,6 +965,7 @@ func NewCreateCosRechargeResponse() (response *CreateCosRechargeResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  LIMITEXCEEDED_BILLINGCOSRECHARGEOUTOFLIMIT = "LimitExceeded.BillingCosRechargeOutOfLimit"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
@@ -985,6 +986,7 @@ func (c *Client) CreateCosRecharge(request *CreateCosRechargeRequest) (response 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  LIMITEXCEEDED_BILLINGCOSRECHARGEOUTOFLIMIT = "LimitExceeded.BillingCosRechargeOutOfLimit"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
@@ -1843,6 +1845,7 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_TOPICCONFLICT = "InvalidParameter.TopicConflict"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_BILLINGTOPICOUTOFLIMIT = "LimitExceeded.BillingTopicOutOfLimit"
 //  LIMITEXCEEDED_LOGSET = "LimitExceeded.Logset"
 //  LIMITEXCEEDED_TOPIC = "LimitExceeded.Topic"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -1866,6 +1869,7 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_TOPICCONFLICT = "InvalidParameter.TopicConflict"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_BILLINGTOPICOUTOFLIMIT = "LimitExceeded.BillingTopicOutOfLimit"
 //  LIMITEXCEEDED_LOGSET = "LimitExceeded.Logset"
 //  LIMITEXCEEDED_TOPIC = "LimitExceeded.Topic"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -6614,6 +6618,7 @@ func NewModifyCosRechargeResponse() (response *ModifyCosRechargeResponse) {
 //  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION_MODIFYBILLINGCOSRECHARGENOSUPPORT = "UnsupportedOperation.ModifyBillingCosRechargeNoSupport"
 func (c *Client) ModifyCosRecharge(request *ModifyCosRechargeRequest) (response *ModifyCosRechargeResponse, err error) {
     return c.ModifyCosRechargeWithContext(context.Background(), request)
 }
@@ -6634,6 +6639,7 @@ func (c *Client) ModifyCosRecharge(request *ModifyCosRechargeRequest) (response 
 //  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION_MODIFYBILLINGCOSRECHARGENOSUPPORT = "UnsupportedOperation.ModifyBillingCosRechargeNoSupport"
 func (c *Client) ModifyCosRechargeWithContext(ctx context.Context, request *ModifyCosRechargeRequest) (response *ModifyCosRechargeResponse, err error) {
     if request == nil {
         request = NewModifyCosRechargeRequest()

@@ -1507,6 +1507,53 @@ type DeviceInfo struct {
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
+type DurationDetails struct {
+	// 会话时间
+	SessionTime *string `json:"SessionTime,omitnil,omitempty" name:"SessionTime"`
+
+	// 语音:min
+	Voice *int64 `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// 标清:min
+	SD *int64 `json:"SD,omitnil,omitempty" name:"SD"`
+
+	// 高清:min
+	HD *int64 `json:"HD,omitnil,omitempty" name:"HD"`
+
+	// 超高清:min
+	FHD *int64 `json:"FHD,omitnil,omitempty" name:"FHD"`
+
+	// 2k:min
+	TwoK *int64 `json:"TwoK,omitnil,omitempty" name:"TwoK"`
+
+	// 4k:min
+	FourK *int64 `json:"FourK,omitnil,omitempty" name:"FourK"`
+
+	// 在线时长:min
+	Online *int64 `json:"Online,omitnil,omitempty" name:"Online"`
+
+	// 多网标清:min
+	MultiSD *int64 `json:"MultiSD,omitnil,omitempty" name:"MultiSD"`
+
+	// 多网高清:min
+	MultiHD *int64 `json:"MultiHD,omitnil,omitempty" name:"MultiHD"`
+
+	// 多网超高清:min
+	MultiFHD *int64 `json:"MultiFHD,omitnil,omitempty" name:"MultiFHD"`
+
+	// 多网2k:min
+	MultiTwoK *int64 `json:"MultiTwoK,omitnil,omitempty" name:"MultiTwoK"`
+
+	// 多网4k:min
+	MultiFourK *int64 `json:"MultiFourK,omitnil,omitempty" name:"MultiFourK"`
+
+	// 多网在线时长:min
+	MultiOnline *int64 `json:"MultiOnline,omitnil,omitempty" name:"MultiOnline"`
+
+	// 抵扣时长:min
+	DeductDuration *int64 `json:"DeductDuration,omitnil,omitempty" name:"DeductDuration"`
+}
+
 // Predefined struct for user
 type GetDeviceLicenseRequestParams struct {
 	// 目标设备所属项目ID
@@ -1649,6 +1696,101 @@ func (r *GetDevicesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetDevicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDurationDetailsRequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 页码
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 页面数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 设备ID，不传查全部设备
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+}
+
+type GetDurationDetailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 页码
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 页面数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 设备ID，不传查全部设备
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+}
+
+func (r *GetDurationDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDurationDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	delete(f, "ProjectId")
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDurationDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDurationDetailsResponseParams struct {
+	// 列表总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 时长明细列表
+	DurationDetails []*DurationDetails `json:"DurationDetails,omitnil,omitempty" name:"DurationDetails"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetDurationDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *GetDurationDetailsResponseParams `json:"Response"`
+}
+
+func (r *GetDurationDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDurationDetailsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1803,6 +1945,123 @@ func (r *GetLicensesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetLicensesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTotalDurationRequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 设备id，不传查全部
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+}
+
+type GetTotalDurationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 设备id，不传查全部
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+}
+
+func (r *GetTotalDurationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTotalDurationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ProjectId")
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTotalDurationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTotalDurationResponseParams struct {
+	// 语音:min
+	Voice *int64 `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// 标清:min
+	SD *int64 `json:"SD,omitnil,omitempty" name:"SD"`
+
+	// 高清:min
+	HD *int64 `json:"HD,omitnil,omitempty" name:"HD"`
+
+	// 超高清:min
+	FHD *int64 `json:"FHD,omitnil,omitempty" name:"FHD"`
+
+	// 2k:min
+	TwoK *int64 `json:"TwoK,omitnil,omitempty" name:"TwoK"`
+
+	// 4k:min
+	FourK *int64 `json:"FourK,omitnil,omitempty" name:"FourK"`
+
+	// 在线时长:min 
+	Online *int64 `json:"Online,omitnil,omitempty" name:"Online"`
+
+	// 多网标清:min
+	MultiSD *int64 `json:"MultiSD,omitnil,omitempty" name:"MultiSD"`
+
+	// 多网高清:min
+	MultiHD *int64 `json:"MultiHD,omitnil,omitempty" name:"MultiHD"`
+
+	// 多网超高清:min
+	MultiFHD *int64 `json:"MultiFHD,omitnil,omitempty" name:"MultiFHD"`
+
+	// 多网2k:min
+	MultiTwoK *int64 `json:"MultiTwoK,omitnil,omitempty" name:"MultiTwoK"`
+
+	// 多网4k:min
+	MultiFourK *int64 `json:"MultiFourK,omitnil,omitempty" name:"MultiFourK"`
+
+	// 多网在线时长:min 
+	MultiOnline *int64 `json:"MultiOnline,omitnil,omitempty" name:"MultiOnline"`
+
+	// 总抵扣时长:min 
+	DeductDuration *int64 `json:"DeductDuration,omitnil,omitempty" name:"DeductDuration"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTotalDurationResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTotalDurationResponseParams `json:"Response"`
+}
+
+func (r *GetTotalDurationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTotalDurationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

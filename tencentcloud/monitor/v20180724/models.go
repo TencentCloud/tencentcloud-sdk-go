@@ -10529,8 +10529,14 @@ type DescribePrometheusScrapeStatisticsRequestParams struct {
 	// 实例ID列表
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
 	// job 类型
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// job 过滤，不写就是全部 job
+	Job *string `json:"Job,omitnil,omitempty" name:"Job"`
 }
 
 type DescribePrometheusScrapeStatisticsRequest struct {
@@ -10539,8 +10545,14 @@ type DescribePrometheusScrapeStatisticsRequest struct {
 	// 实例ID列表
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
 	// job 类型
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// job 过滤，不写就是全部 job
+	Job *string `json:"Job,omitnil,omitempty" name:"Job"`
 }
 
 func (r *DescribePrometheusScrapeStatisticsRequest) ToJsonString() string {
@@ -10556,7 +10568,9 @@ func (r *DescribePrometheusScrapeStatisticsRequest) FromJsonString(s string) err
 		return err
 	}
 	delete(f, "InstanceIds")
+	delete(f, "ClusterId")
 	delete(f, "JobType")
+	delete(f, "Job")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusScrapeStatisticsRequest has unknown keys!", "")
 	}

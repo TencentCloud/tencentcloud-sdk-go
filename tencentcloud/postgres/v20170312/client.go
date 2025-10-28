@@ -362,10 +362,12 @@ func NewCreateAccountResponse() (response *CreateAccountResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPASSWORDVALUEERROR = "InvalidParameterValue.InvalidPasswordValueError"
 //  INVALIDPARAMETERVALUE_PARAMETERCHARACTERERROR = "InvalidParameterValue.ParameterCharacterError"
 //  INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = "InvalidParameterValue.ParameterLengthLimitError"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = "InvalidParameterValue.UnsupportedRegionError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
 //  OPERATIONDENIED_KERNELVERSIONERROR = "OperationDenied.KernelVersionError"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhiteListError"
 func (c *Client) CreateAccount(request *CreateAccountRequest) (response *CreateAccountResponse, err error) {
     return c.CreateAccountWithContext(context.Background(), request)
 }
@@ -386,10 +388,12 @@ func (c *Client) CreateAccount(request *CreateAccountRequest) (response *CreateA
 //  INVALIDPARAMETERVALUE_INVALIDPASSWORDVALUEERROR = "InvalidParameterValue.InvalidPasswordValueError"
 //  INVALIDPARAMETERVALUE_PARAMETERCHARACTERERROR = "InvalidParameterValue.ParameterCharacterError"
 //  INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = "InvalidParameterValue.ParameterLengthLimitError"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = "InvalidParameterValue.UnsupportedRegionError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
 //  OPERATIONDENIED_KERNELVERSIONERROR = "OperationDenied.KernelVersionError"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhiteListError"
 func (c *Client) CreateAccountWithContext(ctx context.Context, request *CreateAccountRequest) (response *CreateAccountResponse, err error) {
     if request == nil {
         request = NewCreateAccountRequest()
@@ -1390,8 +1394,10 @@ func NewDeleteAccountResponse() (response *DeleteAccountResponse) {
 //  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
 //  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
 //  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = "InvalidParameterValue.InvalidAccountNameFormatError"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = "InvalidParameterValue.UnsupportedRegionError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhiteListError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) DeleteAccount(request *DeleteAccountRequest) (response *DeleteAccountResponse, err error) {
     return c.DeleteAccountWithContext(context.Background(), request)
@@ -1407,8 +1413,10 @@ func (c *Client) DeleteAccount(request *DeleteAccountRequest) (response *DeleteA
 //  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
 //  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
 //  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = "InvalidParameterValue.InvalidAccountNameFormatError"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = "InvalidParameterValue.UnsupportedRegionError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhiteListError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAccountRequest) (response *DeleteAccountResponse, err error) {
     if request == nil {
@@ -7210,6 +7218,7 @@ func NewResetAccountPasswordResponse() (response *ResetAccountPasswordResponse) 
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_CHECKACCOUNTCAMCLOSEERROR = "FailedOperation.CheckAccountCAMCloseError"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  FAILEDOPERATION_OSSACCESSERROR = "FailedOperation.OssAccessError"
@@ -7243,6 +7252,7 @@ func (c *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (res
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_CHECKACCOUNTCAMCLOSEERROR = "FailedOperation.CheckAccountCAMCloseError"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  FAILEDOPERATION_OSSACCESSERROR = "FailedOperation.OssAccessError"

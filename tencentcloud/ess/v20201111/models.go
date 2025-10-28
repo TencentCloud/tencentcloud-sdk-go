@@ -6951,7 +6951,8 @@ type CreateOrganizationAuthUrlRequestParams struct {
 	// 企业法人的姓名
 	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
 
-	// 认证完成跳回的链接，最长500个字符
+	// <font color="red">即将废弃</font>，入参请使用JumpEvents。
+	// 认证完成跳回的链接，最长500个字符。
 	AutoJumpUrl *string `json:"AutoJumpUrl,omitnil,omitempty" name:"AutoJumpUrl"`
 
 	// 营业执照企业地址
@@ -7047,6 +7048,14 @@ type CreateOrganizationAuthUrlRequestParams struct {
 	// 
 	// p.s. 仅在对公打款不为空时有效
 	BankAccountNumberSame *bool `json:"BankAccountNumberSame,omitnil,omitempty" name:"BankAccountNumberSame"`
+
+	// 跳转事件，其中包括认证期间收录，授权书审核，企业认证的回跳事件。
+	// p.s.
+	// Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font>
+	// 如果 Endpoint 是 H5 类型，请参考文档跳转电子签H5 
+	// 
+	// p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+	JumpEvents []*JumpEvent `json:"JumpEvents,omitnil,omitempty" name:"JumpEvents"`
 }
 
 type CreateOrganizationAuthUrlRequest struct {
@@ -7078,7 +7087,8 @@ type CreateOrganizationAuthUrlRequest struct {
 	// 企业法人的姓名
 	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
 
-	// 认证完成跳回的链接，最长500个字符
+	// <font color="red">即将废弃</font>，入参请使用JumpEvents。
+	// 认证完成跳回的链接，最长500个字符。
 	AutoJumpUrl *string `json:"AutoJumpUrl,omitnil,omitempty" name:"AutoJumpUrl"`
 
 	// 营业执照企业地址
@@ -7174,6 +7184,14 @@ type CreateOrganizationAuthUrlRequest struct {
 	// 
 	// p.s. 仅在对公打款不为空时有效
 	BankAccountNumberSame *bool `json:"BankAccountNumberSame,omitnil,omitempty" name:"BankAccountNumberSame"`
+
+	// 跳转事件，其中包括认证期间收录，授权书审核，企业认证的回跳事件。
+	// p.s.
+	// Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font>
+	// 如果 Endpoint 是 H5 类型，请参考文档跳转电子签H5 
+	// 
+	// p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+	JumpEvents []*JumpEvent `json:"JumpEvents,omitnil,omitempty" name:"JumpEvents"`
 }
 
 func (r *CreateOrganizationAuthUrlRequest) ToJsonString() string {
@@ -7212,6 +7230,7 @@ func (r *CreateOrganizationAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "UserData")
 	delete(f, "BankAccountNumber")
 	delete(f, "BankAccountNumberSame")
+	delete(f, "JumpEvents")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationAuthUrlRequest has unknown keys!", "")
 	}
@@ -15455,6 +15474,21 @@ type IntentionQuestionResult struct {
 
 	// 回答问题语音识别结果列表
 	AsrResult []*string `json:"AsrResult,omitnil,omitempty" name:"AsrResult"`
+}
+
+type JumpEvent struct {
+	// 跳转事件枚举，
+	// * 1 - 企业收录。
+	// * 2 - 超管授权书审核。
+	// * 3 - 认证完成。
+	JumpEventType *uint64 `json:"JumpEventType,omitnil,omitempty" name:"JumpEventType"`
+
+	// 为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
+	// Endpoint如果是APP 类型，请传递<font color="red">"true"</font>
+	// 如果 Endpoint 是 H5 类型，请参考文档[跳转电子签H5](https://qian.tencent.com/developers/company/openqianh5/)
+	// 
+	// p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 }
 
 type MiniAppCreateApproverInfo struct {

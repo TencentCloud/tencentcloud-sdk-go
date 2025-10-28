@@ -659,7 +659,7 @@ type SavingPlanOverviewDetail struct {
 	// 结束时间 yyyy-mm-dd HH:mm:ss格式
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 状态
+	// 1 生效 2 失效 3 作废
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 累计节省金额（单位：元）
@@ -668,11 +668,15 @@ type SavingPlanOverviewDetail struct {
 	// 地域
 	Region []*string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 支付类型
+	// 1 全预付 2 部分预付 3 全不预付
 	PayType *uint64 `json:"PayType,omitnil,omitempty" name:"PayType"`
 
 	// 购买时间 yyyy-mm-dd HH:mm:ss格式
 	BuyTime *string `json:"BuyTime,omitnil,omitempty" name:"BuyTime"`
+
+	// 承诺金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PromiseAmount *string `json:"PromiseAmount,omitnil,omitempty" name:"PromiseAmount"`
 }
 
 type SavingPlanUsageDetail struct {

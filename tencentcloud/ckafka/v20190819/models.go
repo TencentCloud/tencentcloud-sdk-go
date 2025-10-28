@@ -9826,6 +9826,7 @@ type MqttConnectParam struct {
 	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
 
 	// 是否更新到关联的Dip任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdate *bool `json:"IsUpdate,omitnil,omitempty" name:"IsUpdate"`
 
 	// MQTT连接源的实例资源地域, 跨地域时必填

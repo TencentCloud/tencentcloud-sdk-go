@@ -8790,6 +8790,12 @@ type DescribeNativeSparkSessionsResponseParams struct {
 	// spark session列表
 	SparkSessionsList []*SparkSessionInfo `json:"SparkSessionsList,omitnil,omitempty" name:"SparkSessionsList"`
 
+	// 资源组总规格
+	TotalSpec *int64 `json:"TotalSpec,omitnil,omitempty" name:"TotalSpec"`
+
+	// 资源组当前可用规格
+	TotalAvailable *int64 `json:"TotalAvailable,omitnil,omitempty" name:"TotalAvailable"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -16555,6 +16561,9 @@ type SparkSessionInfo struct {
 
 	// 总规格最大
 	TotalSpecMax *int64 `json:"TotalSpecMax,omitnil,omitempty" name:"TotalSpecMax"`
+
+	// 状态，STARTING、RUNNING、TERMINATED
+	State *string `json:"State,omitnil,omitempty" name:"State"`
 }
 
 type SpecInfo struct {

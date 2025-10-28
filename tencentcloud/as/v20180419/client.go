@@ -1065,7 +1065,7 @@ func NewCreateNotificationConfigurationResponse() (response *CreateNotificationC
 //
 //             "Code": "InvalidInstanceType",
 //
-//             "Zone": "ap-guangzhou-2",
+//             "Zone": "ap-guangzhou-6",
 //
 //             "InstanceId": "",
 //
@@ -1073,7 +1073,7 @@ func NewCreateNotificationConfigurationResponse() (response *CreateNotificationC
 //
 //             "SubnetId": "subnet-4t5mgeuu",
 //
-//             "Message": "The specified instance type `S5.LARGE8` is invalid in `subnet-4t5mgeuu`, `ap-guangzhou-2`.",
+//             "Message": "The specified instance type `S5.LARGE8` is invalid in `subnet-4t5mgeuu`, `ap-guangzhou-6`.",
 //
 //             "InstanceType": "S5.LARGE8"
 //
@@ -1142,7 +1142,7 @@ func (c *Client) CreateNotificationConfiguration(request *CreateNotificationConf
 //
 //             "Code": "InvalidInstanceType",
 //
-//             "Zone": "ap-guangzhou-2",
+//             "Zone": "ap-guangzhou-6",
 //
 //             "InstanceId": "",
 //
@@ -1150,7 +1150,7 @@ func (c *Client) CreateNotificationConfiguration(request *CreateNotificationConf
 //
 //             "SubnetId": "subnet-4t5mgeuu",
 //
-//             "Message": "The specified instance type `S5.LARGE8` is invalid in `subnet-4t5mgeuu`, `ap-guangzhou-2`.",
+//             "Message": "The specified instance type `S5.LARGE8` is invalid in `subnet-4t5mgeuu`, `ap-guangzhou-6`.",
 //
 //             "InstanceType": "S5.LARGE8"
 //

@@ -8106,7 +8106,7 @@ type RedisKeySpaceData struct {
 	// key类型。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// key编码方式。
+	// key编码方式。包括 int、string、linkedlist、hashtable、skiplist、zipmap、ziplist、intset、quicklist、listpack。
 	Encoding *string `json:"Encoding,omitnil,omitempty" name:"Encoding"`
 
 	// key过期时间戳（毫秒），0代表未设置过期时间。
@@ -8126,6 +8126,9 @@ type RedisKeySpaceData struct {
 
 	// 所属分片序号。
 	ShardId *string `json:"ShardId,omitnil,omitempty" name:"ShardId"`
+
+	// key所属数据库编号。
+	Db *int64 `json:"Db,omitnil,omitempty" name:"Db"`
 }
 
 type RedisMetricTopProxiesData struct {

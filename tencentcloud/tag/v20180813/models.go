@@ -1061,7 +1061,7 @@ func (r *DescribeResourceTagsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourcesByTagsRequestParams struct {
-	// 标签过滤数组
+	// 标签过滤数组，数量最多6个
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
 	// 创建标签者uin
@@ -1089,7 +1089,7 @@ type DescribeResourcesByTagsRequestParams struct {
 type DescribeResourcesByTagsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 标签过滤数组
+	// 标签过滤数组，数量最多6个
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
 	// 创建标签者uin
@@ -1176,7 +1176,7 @@ func (r *DescribeResourcesByTagsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourcesByTagsUnionRequestParams struct {
-	// 标签过滤数组
+	// 标签过滤数组，数量最多六个
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
 	// 创建标签者uin
@@ -1204,7 +1204,7 @@ type DescribeResourcesByTagsUnionRequestParams struct {
 type DescribeResourcesByTagsUnionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 标签过滤数组
+	// 标签过滤数组，数量最多六个
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
 	// 创建标签者uin

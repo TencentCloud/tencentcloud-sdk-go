@@ -4847,6 +4847,9 @@ type CreateExportComplianceStatusListJobRequestParams struct {
 
 	// 要导出的资产ID列表或检测项ID列表，由ExportByAsset的取值决定。
 	IdList []*uint64 `json:"IdList,omitnil,omitempty" name:"IdList"`
+
+	// 筛选
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type CreateExportComplianceStatusListJobRequest struct {
@@ -4863,6 +4866,9 @@ type CreateExportComplianceStatusListJobRequest struct {
 
 	// 要导出的资产ID列表或检测项ID列表，由ExportByAsset的取值决定。
 	IdList []*uint64 `json:"IdList,omitnil,omitempty" name:"IdList"`
+
+	// 筛选
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *CreateExportComplianceStatusListJobRequest) ToJsonString() string {
@@ -4881,6 +4887,7 @@ func (r *CreateExportComplianceStatusListJobRequest) FromJsonString(s string) er
 	delete(f, "ExportByAsset")
 	delete(f, "ExportAll")
 	delete(f, "IdList")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExportComplianceStatusListJobRequest has unknown keys!", "")
 	}
@@ -10390,6 +10397,12 @@ type DescribeAssetImageDetailResponseParams struct {
 	// 授权为：1，未授权为：0
 	IsAuthorized *int64 `json:"IsAuthorized,omitnil,omitempty" name:"IsAuthorized"`
 
+	// 解决方案
+	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
+
+	// 原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -10770,6 +10783,12 @@ type DescribeAssetImageRegistryDetailResponseParams struct {
 
 	// Id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 解决方案
+	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
+
+	// 原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -11370,6 +11389,9 @@ func (r *DescribeAssetImageRegistryRiskListExportRequest) FromJsonString(s strin
 type DescribeAssetImageRegistryRiskListExportResponseParams struct {
 	// excel文件下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// 导出任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -26383,6 +26405,12 @@ type ImageRepoInfo struct {
 
 	// 是否推荐处置
 	RecommendedFix *bool `json:"RecommendedFix,omitnil,omitempty" name:"RecommendedFix"`
+
+	// 解决方案
+	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
+
+	// 原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 type ImageRepoRegistryInfo struct {
@@ -26805,6 +26833,12 @@ type ImagesInfo struct {
 
 	// 是否推荐处置
 	RecommendedFix *bool `json:"RecommendedFix,omitnil,omitempty" name:"RecommendedFix"`
+
+	// 解决方案
+	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
+
+	// 原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 type ImagesVul struct {

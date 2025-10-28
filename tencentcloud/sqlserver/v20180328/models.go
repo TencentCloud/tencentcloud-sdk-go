@@ -2988,6 +2988,12 @@ type DbNormalDetail struct {
 
 	// 是否全文启用 0：否 1：是
 	IsFullTextEnabled *string `json:"IsFullTextEnabled,omitnil,omitempty" name:"IsFullTextEnabled"`
+
+	// 是否是可用性组 0：否 1：是
+	IsAvailabilityGroups *string `json:"IsAvailabilityGroups,omitnil,omitempty" name:"IsAvailabilityGroups"`
+
+	// AG组数据库同步状态
+	AGSyncState *string `json:"AGSyncState,omitnil,omitempty" name:"AGSyncState"`
 }
 
 type DbRollbackTimeInfo struct {
@@ -9304,13 +9310,13 @@ type Events struct {
 	// 事件类型，slow-慢SQL事件，blocked-阻塞事件，deadlock-死锁事件
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
-	// 事件记录状态，1-成功，2-失败
+	// 事件记录状态，1-成功，2-失败，3-文件待删除，4-写入中
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 扩展文件生成开始时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 扩展文件生成开始时间
+	// 扩展文件最后更新时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 内网下载地址
@@ -14306,6 +14312,9 @@ type UpgradeDBInstanceRequestParams struct {
 
 	// 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
 	DrZones []*DrZoneInfo `json:"DrZones,omitnil,omitempty" name:"DrZones"`
+
+	// 是否自动升级数据库的兼容性级别，默认0。0-否，1-是
+	UpgradeCompatLevel *int64 `json:"UpgradeCompatLevel,omitnil,omitempty" name:"UpgradeCompatLevel"`
 }
 
 type UpgradeDBInstanceRequest struct {
@@ -14343,6 +14352,9 @@ type UpgradeDBInstanceRequest struct {
 
 	// 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
 	DrZones []*DrZoneInfo `json:"DrZones,omitnil,omitempty" name:"DrZones"`
+
+	// 是否自动升级数据库的兼容性级别，默认0。0-否，1-是
+	UpgradeCompatLevel *int64 `json:"UpgradeCompatLevel,omitnil,omitempty" name:"UpgradeCompatLevel"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -14368,6 +14380,7 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MultiZones")
 	delete(f, "WaitSwitch")
 	delete(f, "DrZones")
+	delete(f, "UpgradeCompatLevel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

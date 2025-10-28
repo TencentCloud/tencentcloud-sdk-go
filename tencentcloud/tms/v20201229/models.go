@@ -356,6 +356,9 @@ type TextModerationRequestParams struct {
 
 	// 审核的业务类型，枚举值包括"TEXT"和"TEXT_AIGC"。其中"TEXT"表示传统文本审核，"TEXT_AIGC"表示AI生成检测（生成检测能力具体能力了解可[参见文档](https://cloud.tencent.com/document/product/1124/118694)）。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 流式审核策略维度下的唯一会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 type TextModerationRequest struct {
@@ -382,6 +385,9 @@ type TextModerationRequest struct {
 
 	// 审核的业务类型，枚举值包括"TEXT"和"TEXT_AIGC"。其中"TEXT"表示传统文本审核，"TEXT_AIGC"表示AI生成检测（生成检测能力具体能力了解可[参见文档](https://cloud.tencent.com/document/product/1124/118694)）。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 流式审核策略维度下的唯一会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 func (r *TextModerationRequest) ToJsonString() string {
@@ -403,6 +409,7 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 	delete(f, "Device")
 	delete(f, "SourceLanguage")
 	delete(f, "Type")
+	delete(f, "SessionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextModerationRequest has unknown keys!", "")
 	}
@@ -453,6 +460,9 @@ type TextModerationResponseParams struct {
 
 	// 该字段用于标识本次审核决策归因，比如text_nlp_tianji标识是由nlp tianji模型给出的审核决策，text_keyword_public标识命中了业务的关键词库
 	HitType *string `json:"HitType,omitnil,omitempty" name:"HitType"`
+
+	// 流式审核策略维度下的唯一会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

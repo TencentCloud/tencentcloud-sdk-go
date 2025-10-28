@@ -7838,6 +7838,7 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// <li>**SHORT_H5**：<font color="red">H5短链</font>跳转H5的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签H5页面</li></ul>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
+	// <font color="red">已废弃</font> 请使用 JumpEvents 参数，进行替换。
 	// 触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
 	// <ul><li> **VERIFIED** :企业认证完成/员工认证完成后跳回原App/小程序</li></ul>
 	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitnil,omitempty" name:"AutoJumpBackEvent"`
@@ -7853,6 +7854,7 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持中国大陆居民身份证类型`。
 	ProxyOperatorIdCardNumber *string `json:"ProxyOperatorIdCardNumber,omitnil,omitempty" name:"ProxyOperatorIdCardNumber"`
 
+	// <font color="red">已废弃</font> 请使用 JumpEvents 参数，进行替换。
 	// 认证完成跳转链接。
 	// 注意：`此功能仅在Endpoint参数设置成 H5 或 PC时才有效`。
 	AutoJumpUrl *string `json:"AutoJumpUrl,omitnil,omitempty" name:"AutoJumpUrl"`
@@ -7900,6 +7902,11 @@ type CreateConsoleLoginUrlRequestParams struct {
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 跳转事件，其中包括认证期间收录，授权书审核，企业认证的回跳事件。
+	// p.s.Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font>
+	// 如果 Endpoint 是 H5 类型，请参考文档跳转电子签H5 p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+	JumpEvents []*JumpEvent `json:"JumpEvents,omitnil,omitempty" name:"JumpEvents"`
 }
 
 type CreateConsoleLoginUrlRequest struct {
@@ -7975,6 +7982,7 @@ type CreateConsoleLoginUrlRequest struct {
 	// <li>**SHORT_H5**：<font color="red">H5短链</font>跳转H5的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签H5页面</li></ul>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
+	// <font color="red">已废弃</font> 请使用 JumpEvents 参数，进行替换。
 	// 触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
 	// <ul><li> **VERIFIED** :企业认证完成/员工认证完成后跳回原App/小程序</li></ul>
 	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitnil,omitempty" name:"AutoJumpBackEvent"`
@@ -7990,6 +7998,7 @@ type CreateConsoleLoginUrlRequest struct {
 	// 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持中国大陆居民身份证类型`。
 	ProxyOperatorIdCardNumber *string `json:"ProxyOperatorIdCardNumber,omitnil,omitempty" name:"ProxyOperatorIdCardNumber"`
 
+	// <font color="red">已废弃</font> 请使用 JumpEvents 参数，进行替换。
 	// 认证完成跳转链接。
 	// 注意：`此功能仅在Endpoint参数设置成 H5 或 PC时才有效`。
 	AutoJumpUrl *string `json:"AutoJumpUrl,omitnil,omitempty" name:"AutoJumpUrl"`
@@ -8035,6 +8044,11 @@ type CreateConsoleLoginUrlRequest struct {
 
 	// 无
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 跳转事件，其中包括认证期间收录，授权书审核，企业认证的回跳事件。
+	// p.s.Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font>
+	// 如果 Endpoint 是 H5 类型，请参考文档跳转电子签H5 p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+	JumpEvents []*JumpEvent `json:"JumpEvents,omitnil,omitempty" name:"JumpEvents"`
 }
 
 func (r *CreateConsoleLoginUrlRequest) ToJsonString() string {
@@ -8071,6 +8085,7 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 	delete(f, "OrganizationAuthorizationOptions")
 	delete(f, "BankAccountNumber")
 	delete(f, "Operator")
+	delete(f, "JumpEvents")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsoleLoginUrlRequest has unknown keys!", "")
 	}
@@ -9048,6 +9063,8 @@ type CreatePartnerAutoSignAuthUrlRequestParams struct {
 	// 被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
 	// 
 	// 注：`被授权企业必须和当前企业在同一应用号下`
+	//
+	// Deprecated: AuthorizedOrganizationId is deprecated.
 	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
 
 	// 被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
@@ -9055,12 +9072,14 @@ type CreatePartnerAutoSignAuthUrlRequestParams struct {
 	// 注: 
 	// 1. 如果名称中包含英文括号()，请使用中文括号（）代替。
 	// 2. 被授权企业必须和当前企业在同一应用号下
+	//
+	// Deprecated: AuthorizedOrganizationName is deprecated.
 	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
 
 	// 是否给平台应用授权
 	// 
 	// <ul>
-	// <li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationId</code>和<code>AuthorizedOrganizationName</code>。</li>
+	// <li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li>
 	// <li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li>
 	// </ul>
 	// 
@@ -9079,10 +9098,16 @@ type CreatePartnerAutoSignAuthUrlRequestParams struct {
 
 	// 在处理授权关系时，授权的方向
 	// <ul>
-	// <li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
-	// <li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+	// <li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+	// <li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【授权方】的企业名称，即提供授权的企业。此场景下不支持批量</li>
 	// </ul>
 	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
+
+	// 被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationNames二选一传入，最大支持50个，注：`被授权企业必须和当前企业在同一应用号下`
+	AuthorizedOrganizationIds []*string `json:"AuthorizedOrganizationIds,omitnil,omitempty" name:"AuthorizedOrganizationIds"`
+
+	// 被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationIds二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。注: 1. 如果名称中包含英文括号()，请使用中文括号（）代替。2. 被授权企业必须和当前企业在同一应用号下 3. 数组最大长度50
+	AuthorizedOrganizationNames []*string `json:"AuthorizedOrganizationNames,omitnil,omitempty" name:"AuthorizedOrganizationNames"`
 }
 
 type CreatePartnerAutoSignAuthUrlRequest struct {
@@ -9114,7 +9139,7 @@ type CreatePartnerAutoSignAuthUrlRequest struct {
 	// 是否给平台应用授权
 	// 
 	// <ul>
-	// <li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationId</code>和<code>AuthorizedOrganizationName</code>。</li>
+	// <li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li>
 	// <li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li>
 	// </ul>
 	// 
@@ -9133,10 +9158,16 @@ type CreatePartnerAutoSignAuthUrlRequest struct {
 
 	// 在处理授权关系时，授权的方向
 	// <ul>
-	// <li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
-	// <li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+	// <li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+	// <li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【授权方】的企业名称，即提供授权的企业。此场景下不支持批量</li>
 	// </ul>
 	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
+
+	// 被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationNames二选一传入，最大支持50个，注：`被授权企业必须和当前企业在同一应用号下`
+	AuthorizedOrganizationIds []*string `json:"AuthorizedOrganizationIds,omitnil,omitempty" name:"AuthorizedOrganizationIds"`
+
+	// 被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationIds二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。注: 1. 如果名称中包含英文括号()，请使用中文括号（）代替。2. 被授权企业必须和当前企业在同一应用号下 3. 数组最大长度50
+	AuthorizedOrganizationNames []*string `json:"AuthorizedOrganizationNames,omitnil,omitempty" name:"AuthorizedOrganizationNames"`
 }
 
 func (r *CreatePartnerAutoSignAuthUrlRequest) ToJsonString() string {
@@ -9157,6 +9188,8 @@ func (r *CreatePartnerAutoSignAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "PlatformAppAuthorization")
 	delete(f, "SealTypes")
 	delete(f, "AuthToMe")
+	delete(f, "AuthorizedOrganizationIds")
+	delete(f, "AuthorizedOrganizationNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePartnerAutoSignAuthUrlRequest has unknown keys!", "")
 	}
@@ -12294,6 +12327,20 @@ type IntentionQuestionResult struct {
 
 	// 回答问题语音识别结果列表
 	AsrResult []*string `json:"AsrResult,omitnil,omitempty" name:"AsrResult"`
+}
+
+type JumpEvent struct {
+	// 跳转事件枚举，
+	// * 1 - 企业收录。
+	// * 2 - 超管授权书审核。
+	// * 3 - 认证完成。
+	JumpEventType *uint64 `json:"JumpEventType,omitnil,omitempty" name:"JumpEventType"`
+
+	// 为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
+	// Endpoint如果是APP 类型，请传递<font color="red">"true"</font>
+	// 如果 Endpoint 是 H5 类型，请参考文档[跳转电子签H5](https://qian.tencent.com/developers/partner/openqianh5)
+	// p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 }
 
 // Predefined struct for user

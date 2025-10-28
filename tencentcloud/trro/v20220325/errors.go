@@ -35,6 +35,9 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// license数量不足
+	OPERATIONDENIED_LICENSESNOTENOUGHERROR = "OperationDenied.LicensesNotEnoughError"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 )

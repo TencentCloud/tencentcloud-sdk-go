@@ -16171,6 +16171,70 @@ func (c *Client) DescribeSecurityGroupAssociationStatisticsWithContext(ctx conte
     return
 }
 
+func NewDescribeSecurityGroupExpandedPoliciesRequest() (request *DescribeSecurityGroupExpandedPoliciesRequest) {
+    request = &DescribeSecurityGroupExpandedPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeSecurityGroupExpandedPolicies")
+    
+    
+    return
+}
+
+func NewDescribeSecurityGroupExpandedPoliciesResponse() (response *DescribeSecurityGroupExpandedPoliciesResponse) {
+    response = &DescribeSecurityGroupExpandedPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSecurityGroupExpandedPolicies
+// 本接口（DescribeSecurityGroupExpandedPolicies）用于查看参数模板展开后的安全组规则。本接口会通过缓存降低请求后端服务的调用次数，因此拉取结果会存在延迟（缓存超时时间为1分钟）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSecurityGroupExpandedPolicies(request *DescribeSecurityGroupExpandedPoliciesRequest) (response *DescribeSecurityGroupExpandedPoliciesResponse, err error) {
+    return c.DescribeSecurityGroupExpandedPoliciesWithContext(context.Background(), request)
+}
+
+// DescribeSecurityGroupExpandedPolicies
+// 本接口（DescribeSecurityGroupExpandedPolicies）用于查看参数模板展开后的安全组规则。本接口会通过缓存降低请求后端服务的调用次数，因此拉取结果会存在延迟（缓存超时时间为1分钟）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSecurityGroupExpandedPoliciesWithContext(ctx context.Context, request *DescribeSecurityGroupExpandedPoliciesRequest) (response *DescribeSecurityGroupExpandedPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupExpandedPoliciesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DescribeSecurityGroupExpandedPolicies")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityGroupExpandedPolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityGroupExpandedPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityGroupLimitsRequest() (request *DescribeSecurityGroupLimitsRequest) {
     request = &DescribeSecurityGroupLimitsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -225,6 +225,58 @@ func (c *Client) CreateDatasetWithContext(ctx context.Context, request *CreateDa
     return
 }
 
+func NewCreateExportRequest() (request *CreateExportRequest) {
+    request = &CreateExportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateExport")
+    
+    
+    return
+}
+
+func NewCreateExportResponse() (response *CreateExportResponse) {
+    response = &CreateExportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateExport
+// 创建任务式建模训练任务，Notebook，在线服务和批量预测任务日志下载任务API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateExport(request *CreateExportRequest) (response *CreateExportResponse, err error) {
+    return c.CreateExportWithContext(context.Background(), request)
+}
+
+// CreateExport
+// 创建任务式建模训练任务，Notebook，在线服务和批量预测任务日志下载任务API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateExportWithContext(ctx context.Context, request *CreateExportRequest) (response *CreateExportResponse, err error) {
+    if request == nil {
+        request = NewCreateExportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateExport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateModelServiceRequest() (request *CreateModelServiceRequest) {
     request = &CreateModelServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -955,6 +1007,58 @@ func (c *Client) DeleteDatasetWithContext(ctx context.Context, request *DeleteDa
     request.SetContext(ctx)
     
     response = NewDeleteDatasetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteExportRequest() (request *DeleteExportRequest) {
+    request = &DeleteExportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteExport")
+    
+    
+    return
+}
+
+func NewDeleteExportResponse() (response *DeleteExportResponse) {
+    response = &DeleteExportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteExport
+// 删除任务式建模训练任务，Notebook，在线服务和批量预测任务日志导出任务API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteExport(request *DeleteExportRequest) (response *DeleteExportResponse, err error) {
+    return c.DeleteExportWithContext(context.Background(), request)
+}
+
+// DeleteExport
+// 删除任务式建模训练任务，Notebook，在线服务和批量预测任务日志导出任务API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteExportWithContext(ctx context.Context, request *DeleteExportRequest) (response *DeleteExportResponse, err error) {
+    if request == nil {
+        request = NewDeleteExportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteExport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteExport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteExportResponse()
     err = c.Send(request, response)
     return
 }
@@ -2037,6 +2141,58 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, request *Describ
     request.SetContext(ctx)
     
     response = NewDescribeEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExportRequest() (request *DescribeExportRequest) {
+    request = &DescribeExportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeExport")
+    
+    
+    return
+}
+
+func NewDescribeExportResponse() (response *DescribeExportResponse) {
+    response = &DescribeExportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExport
+// 查看任务式建模训练任务，Notebook，在线服务和批量预测任务日志下载任务状态API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeExport(request *DescribeExportRequest) (response *DescribeExportResponse, err error) {
+    return c.DescribeExportWithContext(context.Background(), request)
+}
+
+// DescribeExport
+// 查看任务式建模训练任务，Notebook，在线服务和批量预测任务日志下载任务状态API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeExportWithContext(ctx context.Context, request *DescribeExportRequest) (response *DescribeExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeExportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeExport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExportResponse()
     err = c.Send(request, response)
     return
 }

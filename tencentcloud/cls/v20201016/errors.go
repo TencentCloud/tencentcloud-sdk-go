@@ -191,6 +191,12 @@ const (
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
+	// 一个billing topic只能创建一个cos采集配置
+	LIMITEXCEEDED_BILLINGCOSRECHARGEOUTOFLIMIT = "LimitExceeded.BillingCosRechargeOutOfLimit"
+
+	// 一个uin只能创建一个billing topic
+	LIMITEXCEEDED_BILLINGTOPICOUTOFLIMIT = "LimitExceeded.BillingTopicOutOfLimit"
+
 	// 采集规则配置超过最大值限制。
 	LIMITEXCEEDED_CONFIG = "LimitExceeded.Config"
 
@@ -346,4 +352,7 @@ const (
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
+
+	// billing topic不允许修改cos导入配置
+	UNSUPPORTEDOPERATION_MODIFYBILLINGCOSRECHARGENOSUPPORT = "UnsupportedOperation.ModifyBillingCosRechargeNoSupport"
 )

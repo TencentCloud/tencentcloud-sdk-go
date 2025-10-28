@@ -2077,6 +2077,60 @@ func (c *Client) CreateTWeSeeRecognitionTaskWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateTWeSeeServiceRequest() (request *CreateTWeSeeServiceRequest) {
+    request = &CreateTWeSeeServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTWeSeeService")
+    
+    
+    return
+}
+
+func NewCreateTWeSeeServiceResponse() (response *CreateTWeSeeServiceResponse) {
+    response = &CreateTWeSeeServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTWeSeeService
+// 开通 TWeSee 后付费服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTWeSeeService(request *CreateTWeSeeServiceRequest) (response *CreateTWeSeeServiceResponse, err error) {
+    return c.CreateTWeSeeServiceWithContext(context.Background(), request)
+}
+
+// CreateTWeSeeService
+// 开通 TWeSee 后付费服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTWeSeeServiceWithContext(ctx context.Context, request *CreateTWeSeeServiceRequest) (response *CreateTWeSeeServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateTWeSeeServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateTWeSeeService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTWeSeeService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTWeSeeServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTWeTalkProductConfigRequest() (request *CreateTWeTalkProductConfigRequest) {
     request = &CreateTWeTalkProductConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11817,6 +11871,70 @@ func (c *Client) UpdateOtaModuleWithContext(ctx context.Context, request *Update
     request.SetContext(ctx)
     
     response = NewUpdateOtaModuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateOtaTaskStatusRequest() (request *UpdateOtaTaskStatusRequest) {
+    request = &UpdateOtaTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "UpdateOtaTaskStatus")
+    
+    
+    return
+}
+
+func NewUpdateOtaTaskStatusResponse() (response *UpdateOtaTaskStatusResponse) {
+    response = &UpdateOtaTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateOtaTaskStatus
+// 本接口（UpdateOtaTask）当固件升级大任务处于没有在全部成功的状态时，可修改为取消状态，取消部分或全部设备的升级;或其它允许的可修改的状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER_FIRMWAREALREADYEXIST = "InvalidParameter.FirmwareAlreadyExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
+//  LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) UpdateOtaTaskStatus(request *UpdateOtaTaskStatusRequest) (response *UpdateOtaTaskStatusResponse, err error) {
+    return c.UpdateOtaTaskStatusWithContext(context.Background(), request)
+}
+
+// UpdateOtaTaskStatus
+// 本接口（UpdateOtaTask）当固件升级大任务处于没有在全部成功的状态时，可修改为取消状态，取消部分或全部设备的升级;或其它允许的可修改的状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER_FIRMWAREALREADYEXIST = "InvalidParameter.FirmwareAlreadyExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
+//  LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) UpdateOtaTaskStatusWithContext(ctx context.Context, request *UpdateOtaTaskStatusRequest) (response *UpdateOtaTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdateOtaTaskStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "UpdateOtaTaskStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateOtaTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateOtaTaskStatusResponse()
     err = c.Send(request, response)
     return
 }

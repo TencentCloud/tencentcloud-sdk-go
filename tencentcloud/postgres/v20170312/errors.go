@@ -56,6 +56,9 @@ const (
 	// 获取项目信息失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_CDBCGWCONNECTERROR = "FailedOperation.CdbCgwConnectError"
 
+	// 检查数据库账号状态错误：账号已开启CAM验证，不支持当前操作。
+	FAILEDOPERATION_CHECKACCOUNTCAMCLOSEERROR = "FailedOperation.CheckAccountCAMCloseError"
+
 	// 不支持新增基础网络。
 	FAILEDOPERATION_CREATEBASICNETWORKDENIEDERROR = "FailedOperation.CreateBasicNetworkDeniedError"
 
@@ -440,6 +443,9 @@ const (
 	// 解析参数出错。
 	INVALIDPARAMETERVALUE_STRUCTPARSEFAILED = "InvalidParameterValue.StructParseFailed"
 
+	// 传入地域不支持使用本接口功能。
+	INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = "InvalidParameterValue.UnsupportedRegionError"
+
 	// PID参数输入错误。
 	INVALIDPID = "InvalidPid"
 
@@ -505,6 +511,9 @@ const (
 
 	// 用户未进行实名认证，请先进行实名认证才可购买。
 	OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"
+
+	// 用户不在白名单内。
+	OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhiteListError"
 
 	// 您没有权限操作该VPC网络。
 	OPERATIONDENIED_VPCDENIEDERROR = "OperationDenied.VpcDeniedError"

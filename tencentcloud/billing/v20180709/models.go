@@ -2086,10 +2086,10 @@ type BudgetInfoDiffEntity struct {
 }
 
 type BudgetOperationLogEntity struct {
-	// Uin
+	// 支付者Uin
 	PayerUin *uint64 `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 
-	// 主用户Uin
+	// 使用者Uin
 	OwnerUin *uint64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 操作用户Uin
@@ -2101,7 +2101,7 @@ type BudgetOperationLogEntity struct {
 	// 月份
 	BillMonth *string `json:"BillMonth,omitnil,omitempty" name:"BillMonth"`
 
-	// 修改类型：ADD(新增)、UPDATE(更新)
+	// 修改类型：ADD(新增)、UPDATE(更新)、DELETE(删除)
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 变更信息
@@ -2113,7 +2113,7 @@ type BudgetOperationLogEntity struct {
 	// 修改时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 修改渠道：官网修改/API修改
+	// 修改渠道：CONSOLE/API
 	OperationChannel *string `json:"OperationChannel,omitnil,omitempty" name:"OperationChannel"`
 
 	// 预算项目id

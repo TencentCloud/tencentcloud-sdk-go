@@ -352,7 +352,7 @@ func (r *AddNodeToNodePoolResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddVpcCniSubnetsRequestParams struct {
-	// 集群ID
+	// 集群 ID，请[登录控制台](https://console.cloud.tencent.com/tke2/cluster)在集群列表复制ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 为集群容器网络增加的子网列表
@@ -368,7 +368,7 @@ type AddVpcCniSubnetsRequestParams struct {
 type AddVpcCniSubnetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群 ID，请[登录控制台](https://console.cloud.tencent.com/tke2/cluster)在集群列表复制ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 为集群容器网络增加的子网列表
@@ -1537,7 +1537,7 @@ type CreateCLSLogConfigRequestParams struct {
 	// CLS日志集ID
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 当前集群类型支持tke、eks
+	// 当前集群类型支持tke（标准集群）、eks（serverless集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -1553,7 +1553,7 @@ type CreateCLSLogConfigRequest struct {
 	// CLS日志集ID
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 当前集群类型支持tke、eks
+	// 当前集群类型支持tke（标准集群）、eks（serverless集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -8202,7 +8202,7 @@ func (r *DescribeClusterRouteTablesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClusterRoutesRequestParams struct {
-	// 路由表名称。
+	// 路由表名称。与集群 ID 一致，可以到[集群控制台](https://console.cloud.tencent.com/tke2)进行复制。
 	RouteTableName *string `json:"RouteTableName,omitnil,omitempty" name:"RouteTableName"`
 
 	// 过滤条件,当前只支持按照单个条件GatewayIP进行过滤（可选）
@@ -8212,7 +8212,7 @@ type DescribeClusterRoutesRequestParams struct {
 type DescribeClusterRoutesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 路由表名称。
+	// 路由表名称。与集群 ID 一致，可以到[集群控制台](https://console.cloud.tencent.com/tke2)进行复制。
 	RouteTableName *string `json:"RouteTableName,omitnil,omitempty" name:"RouteTableName"`
 
 	// 过滤条件,当前只支持按照单个条件GatewayIP进行过滤（可选）
@@ -9938,14 +9938,14 @@ func (r *DescribeExternalNodeSupportConfigResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeIPAMDRequestParams struct {
-	// 集群ID
+	// 集群 ID，请[登录控制台](https://console.cloud.tencent.com/tke2/cluster)在集群列表复制ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type DescribeIPAMDRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群 ID，请[登录控制台](https://console.cloud.tencent.com/tke2/cluster)在集群列表复制ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
@@ -12818,7 +12818,7 @@ type DescribeRouteTableConflictsRequestParams struct {
 	// 路由表CIDR
 	RouteTableCidrBlock *string `json:"RouteTableCidrBlock,omitnil,omitempty" name:"RouteTableCidrBlock"`
 
-	// 路由表绑定的VPC
+	// 路由表绑定的VPC，请到 [VPC 控制台](https://console.cloud.tencent.com/vpc/vpc)复制 VPC ID
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
@@ -12828,7 +12828,7 @@ type DescribeRouteTableConflictsRequest struct {
 	// 路由表CIDR
 	RouteTableCidrBlock *string `json:"RouteTableCidrBlock,omitnil,omitempty" name:"RouteTableCidrBlock"`
 
-	// 路由表绑定的VPC
+	// 路由表绑定的VPC，请到 [VPC 控制台](https://console.cloud.tencent.com/vpc/vpc)复制 VPC ID
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
@@ -14128,10 +14128,10 @@ type EnableClusterAuditRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// CLS日志集ID
+	// CLS日志集ID，可以通过cls接口或者控制台获取
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// CLS日志主题ID
+	// CLS日志主题ID，可以通过cls接口或者控制台获取
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// topic所在region，默认为集群当前region
@@ -14144,10 +14144,10 @@ type EnableClusterAuditRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// CLS日志集ID
+	// CLS日志集ID，可以通过cls接口或者控制台获取
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// CLS日志主题ID
+	// CLS日志主题ID，可以通过cls接口或者控制台获取
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// topic所在region，默认为集群当前region
@@ -14318,10 +14318,10 @@ type EnableEventPersistenceRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// cls服务的logsetID
+	// cls服务的logsetID，通过cls接口或者控制台获取
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// cls服务的topicID
+	// cls服务的topicID，通过cls接口或者控制台获取
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// topic所在地域，默认为集群所在地域
@@ -14334,10 +14334,10 @@ type EnableEventPersistenceRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// cls服务的logsetID
+	// cls服务的logsetID，通过cls接口或者控制台获取
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// cls服务的topicID
+	// cls服务的topicID，通过cls接口或者控制台获取
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// topic所在地域，默认为集群所在地域
@@ -19442,6 +19442,7 @@ type RouteInfo struct {
 
 type RouteTableConflict struct {
 	// 路由表类型。
+	// 枚举值：CcsCluster、Vpc、VpcRouteTable、CcsClusterRouteTable
 	RouteTableType *string `json:"RouteTableType,omitnil,omitempty" name:"RouteTableType"`
 
 	// 路由表CIDR。

@@ -8154,7 +8154,7 @@ type DescribeDDoSAttackDataRequestParams struct {
 	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// DDoS策略组ID列表，不填默认选择全部策略ID。
@@ -8190,7 +8190,7 @@ type DescribeDDoSAttackDataRequest struct {
 	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// DDoS策略组ID列表，不填默认选择全部策略ID。
@@ -8275,7 +8275,7 @@ type DescribeDDoSAttackEventRequestParams struct {
 	// ddos策略组集合，不填默认选择全部策略。
 	PolicyIds []*int64 `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
@@ -8316,7 +8316,7 @@ type DescribeDDoSAttackEventRequest struct {
 	// ddos策略组集合，不填默认选择全部策略。
 	PolicyIds []*int64 `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
@@ -8419,7 +8419,7 @@ type DescribeDDoSAttackTopDataRequestParams struct {
 	// <li>ddos_attackFlux_sregion：按攻击源地区的攻击数量排行。</li>
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// DDoS策略组ID集合，不填默认选择全部策略ID。
@@ -8467,7 +8467,7 @@ type DescribeDDoSAttackTopDataRequest struct {
 	// <li>ddos_attackFlux_sregion：按攻击源地区的攻击数量排行。</li>
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// DDoS策略组ID集合，不填默认选择全部策略ID。
@@ -10824,7 +10824,7 @@ func (r *DescribePlansResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePrefetchTasksRequestParams struct {
-	// 站点ID。该参数必填。
+	// 站点ID。此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 查询起始时间，时间与 job-id 必填一个。
@@ -10839,14 +10839,14 @@ type DescribePrefetchTasksRequestParams struct {
 	// 分页查询限制数目，默认值：20，上限：1000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：<li>job-id：按照任务 ID 进行过滤。job-id 形如：1379afjk91u32h，暂不支持多值，不支持模糊查询；</li><li>target：按照目标资源信息进行过滤。target 形如：http://www.qq.com/1.txt，暂不支持多值，不支持模糊查询；</li><li>domains：按照域名行过滤。domains 形如：www.qq.com，不支持模糊查询；</li><li>statuses：按照任务状态进行过滤，不支持模糊查询。可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时<br>   invalid：无效。即源站响应非 2xx 状态码，请检查源站服务。</li>
+	// 过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：<li>job-id：按照任务 ID 进行过滤。job-id 形如：1379afjk91u32h，暂不支持多值，不支持模糊查询；</li><li>target：按照目标资源信息进行过滤。target 形如：http://www.qq.com/1.txt，暂不支持多值，不支持模糊查询；</li><li>domains：按照域名行过滤。domains 形如：www.qq.com，不支持模糊查询；</li><li>statuses：按照任务状态进行过滤，不支持模糊查询。可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时<br>   canceled：已取消<br>   invalid：无效。即源站响应非 2xx 状态码，请检查源站服务。</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribePrefetchTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID。该参数必填。
+	// 站点ID。此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 查询起始时间，时间与 job-id 必填一个。
@@ -10861,7 +10861,7 @@ type DescribePrefetchTasksRequest struct {
 	// 分页查询限制数目，默认值：20，上限：1000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：<li>job-id：按照任务 ID 进行过滤。job-id 形如：1379afjk91u32h，暂不支持多值，不支持模糊查询；</li><li>target：按照目标资源信息进行过滤。target 形如：http://www.qq.com/1.txt，暂不支持多值，不支持模糊查询；</li><li>domains：按照域名行过滤。domains 形如：www.qq.com，不支持模糊查询；</li><li>statuses：按照任务状态进行过滤，不支持模糊查询。可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时<br>   invalid：无效。即源站响应非 2xx 状态码，请检查源站服务。</li>
+	// 过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：<li>job-id：按照任务 ID 进行过滤。job-id 形如：1379afjk91u32h，暂不支持多值，不支持模糊查询；</li><li>target：按照目标资源信息进行过滤。target 形如：http://www.qq.com/1.txt，暂不支持多值，不支持模糊查询；</li><li>domains：按照域名行过滤。domains 形如：www.qq.com，不支持模糊查询；</li><li>statuses：按照任务状态进行过滤，不支持模糊查询。可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时<br>   canceled：已取消<br>   invalid：无效。即源站响应非 2xx 状态码，请检查源站服务。</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -10919,7 +10919,7 @@ func (r *DescribePrefetchTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePurgeTasksRequestParams struct {
-	// 站点 ID。该参数必填。
+	// 站点 ID。此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 查询起始时间，时间与 job-id 必填一个。
@@ -10938,7 +10938,7 @@ type DescribePurgeTasksRequestParams struct {
 	// <li>job-id：按照任务 ID 进行过滤。job-id 形如：1379afjk91u32h，暂不支持多值，不支持模糊查询；</li>
 	// <li>target：按照目标资源信息进行过滤，target 形如：http://www.qq.com/1.txt 或者 tag1，暂不支持多值，支持模糊查询；</li>
 	// <li>domains：按照域名进行过滤，形如：www.qq.com，不支持模糊查询；</li>
-	// <li>statuses：按照任务状态进行过滤，不支持模糊查询。可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
+	// <li>statuses：按照任务状态进行过滤，不支持模糊查询。可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时<br>   canceled：已取消</li>
 	// <li>type：按照清除缓存类型进行过滤，暂不支持多值，不支持模糊查询。可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -10946,7 +10946,7 @@ type DescribePurgeTasksRequestParams struct {
 type DescribePurgeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点 ID。该参数必填。
+	// 站点 ID。此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 查询起始时间，时间与 job-id 必填一个。
@@ -10965,7 +10965,7 @@ type DescribePurgeTasksRequest struct {
 	// <li>job-id：按照任务 ID 进行过滤。job-id 形如：1379afjk91u32h，暂不支持多值，不支持模糊查询；</li>
 	// <li>target：按照目标资源信息进行过滤，target 形如：http://www.qq.com/1.txt 或者 tag1，暂不支持多值，支持模糊查询；</li>
 	// <li>domains：按照域名进行过滤，形如：www.qq.com，不支持模糊查询；</li>
-	// <li>statuses：按照任务状态进行过滤，不支持模糊查询。可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
+	// <li>statuses：按照任务状态进行过滤，不支持模糊查询。可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时<br>   canceled：已取消</li>
 	// <li>type：按照清除缓存类型进行过滤，暂不支持多值，不支持模糊查询。可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -11915,7 +11915,8 @@ type DescribeTimingL4DataRequestParams struct {
 	// <li>l4Flow_outBandwidth: 访问出向带宽峰值。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点ID，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
+	// 最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 四层实例列表, 不填表示选择全部实例。
@@ -11955,7 +11956,8 @@ type DescribeTimingL4DataRequest struct {
 	// <li>l4Flow_outBandwidth: 访问出向带宽峰值。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点ID，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
+	// 最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 四层实例列表, 不填表示选择全部实例。
@@ -12052,7 +12054,7 @@ type DescribeTimingL7AnalysisDataRequestParams struct {
 	// <li> l7Flow_avgFirstByteResponseTime: L7 访问平均首字节响应耗时，单位：ms。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 查询时间粒度，取值有：
@@ -12091,7 +12093,7 @@ type DescribeTimingL7AnalysisDataRequest struct {
 	// <li> l7Flow_avgFirstByteResponseTime: L7 访问平均首字节响应耗时，单位：ms。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 查询时间粒度，取值有：
@@ -12450,7 +12452,7 @@ type DescribeTopL7AnalysisDataRequestParams struct {
 	// <li> l7Flow_request_ua：按 User-Agent 维度统计 L7 访问请求数指标。</li>
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 查询前多少个 top 数据，最大值为1000。不填默认为10，表示查询 top10 的数据。
@@ -12503,7 +12505,7 @@ type DescribeTopL7AnalysisDataRequest struct {
 	// <li> l7Flow_request_ua：按 User-Agent 维度统计 L7 访问请求数指标。</li>
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
-	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 查询前多少个 top 数据，最大值为1000。不填默认为10，表示查询 top10 的数据。
@@ -13426,7 +13428,7 @@ type DownloadL4LogsRequestParams struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 站点 ID 集合，此参数必填。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 四层实例 ID 集合。
@@ -13448,7 +13450,7 @@ type DownloadL4LogsRequest struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 站点 ID 集合，此参数必填。
+	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 四层实例 ID 集合。
@@ -13521,7 +13523,7 @@ type DownloadL7LogsRequestParams struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 站点ID集合，此参数必填。
+	// 站点ID集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 子域名集合，不填默认选择全部子域名。
@@ -13543,7 +13545,7 @@ type DownloadL7LogsRequest struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 站点ID集合，此参数必填。
+	// 站点ID集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 子域名集合，不填默认选择全部子域名。
@@ -14488,8 +14490,8 @@ type Https struct {
 
 	// Tls 版本设置，取值有：
 	// <li>TLSv1：TLSv1版本；</li>
-	// <li>TLSV1.1：TLSv1.1版本；</li>
-	// <li>TLSV1.2：TLSv1.2版本；</li>
+	// <li>TLSv1.1：TLSv1.1版本；</li>
+	// <li>TLSv1.2：TLSv1.2版本；</li>
 	// <li>TLSv1.3：TLSv1.3版本。</li>修改时必须开启连续的版本。
 	TlsVersion []*string `json:"TlsVersion,omitnil,omitempty" name:"TlsVersion"`
 
@@ -15339,7 +15341,7 @@ type MaxAge struct {
 	// <li>off：不遵循源站，使用MaxAge 时间设置。</li>
 	FollowOrigin *string `json:"FollowOrigin,omitnil,omitempty" name:"FollowOrigin"`
 
-	// MaxAge 时间设置，单位秒，最大365天。
+	// MaxAge 时间设置，单位为秒，取值：0～315360000。
 	// 注意：时间为0，即不缓存。
 	MaxAgeTime *int64 `json:"MaxAgeTime,omitnil,omitempty" name:"MaxAgeTime"`
 }
