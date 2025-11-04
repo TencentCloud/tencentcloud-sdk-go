@@ -5026,6 +5026,9 @@ type InstanceInfo struct {
 
 	// 是否为CDZLite可用区
 	IsCdzLite *bool `json:"IsCdzLite,omitnil,omitempty" name:"IsCdzLite"`
+
+	// 集群内网tcp地址
+	EsPrivateTcpUrl *string `json:"EsPrivateTcpUrl,omitnil,omitempty" name:"EsPrivateTcpUrl"`
 }
 
 type InstanceLog struct {
@@ -7551,6 +7554,9 @@ type UpdateLogstashInstanceRequestParams struct {
 
 	// 可维护时间段
 	OperationDuration *OperationDurationUpdated `json:"OperationDuration,omitnil,omitempty" name:"OperationDuration"`
+
+	// 多可用区部署
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil,omitempty" name:"MultiZoneInfo"`
 }
 
 type UpdateLogstashInstanceRequest struct {
@@ -7582,6 +7588,9 @@ type UpdateLogstashInstanceRequest struct {
 
 	// 可维护时间段
 	OperationDuration *OperationDurationUpdated `json:"OperationDuration,omitnil,omitempty" name:"OperationDuration"`
+
+	// 多可用区部署
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil,omitempty" name:"MultiZoneInfo"`
 }
 
 func (r *UpdateLogstashInstanceRequest) ToJsonString() string {
@@ -7605,6 +7614,7 @@ func (r *UpdateLogstashInstanceRequest) FromJsonString(s string) error {
 	delete(f, "NodeType")
 	delete(f, "DiskSize")
 	delete(f, "OperationDuration")
+	delete(f, "MultiZoneInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateLogstashInstanceRequest has unknown keys!", "")
 	}

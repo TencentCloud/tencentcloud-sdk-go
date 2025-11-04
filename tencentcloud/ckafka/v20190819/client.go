@@ -5975,6 +5975,66 @@ func (c *Client) ModifyTopicAttributesWithContext(ctx context.Context, request *
     return
 }
 
+func NewPauseDatahubTaskRequest() (request *PauseDatahubTaskRequest) {
+    request = &PauseDatahubTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "PauseDatahubTask")
+    
+    
+    return
+}
+
+func NewPauseDatahubTaskResponse() (response *PauseDatahubTaskResponse) {
+    response = &PauseDatahubTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PauseDatahubTask
+// 暂停Dip任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+func (c *Client) PauseDatahubTask(request *PauseDatahubTaskRequest) (response *PauseDatahubTaskResponse, err error) {
+    return c.PauseDatahubTaskWithContext(context.Background(), request)
+}
+
+// PauseDatahubTask
+// 暂停Dip任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+func (c *Client) PauseDatahubTaskWithContext(ctx context.Context, request *PauseDatahubTaskRequest) (response *PauseDatahubTaskResponse, err error) {
+    if request == nil {
+        request = NewPauseDatahubTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "PauseDatahubTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PauseDatahubTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPauseDatahubTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewCkafkaInstanceRequest() (request *RenewCkafkaInstanceRequest) {
     request = &RenewCkafkaInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6029,6 +6089,124 @@ func (c *Client) RenewCkafkaInstanceWithContext(ctx context.Context, request *Re
     request.SetContext(ctx)
     
     response = NewRenewCkafkaInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRestartDatahubTaskRequest() (request *RestartDatahubTaskRequest) {
+    request = &RestartDatahubTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "RestartDatahubTask")
+    
+    
+    return
+}
+
+func NewRestartDatahubTaskResponse() (response *RestartDatahubTaskResponse) {
+    response = &RestartDatahubTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestartDatahubTask
+// Datahub任务异常时，重启Datahub任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+func (c *Client) RestartDatahubTask(request *RestartDatahubTaskRequest) (response *RestartDatahubTaskResponse, err error) {
+    return c.RestartDatahubTaskWithContext(context.Background(), request)
+}
+
+// RestartDatahubTask
+// Datahub任务异常时，重启Datahub任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+func (c *Client) RestartDatahubTaskWithContext(ctx context.Context, request *RestartDatahubTaskRequest) (response *RestartDatahubTaskResponse, err error) {
+    if request == nil {
+        request = NewRestartDatahubTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "RestartDatahubTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartDatahubTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartDatahubTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResumeDatahubTaskRequest() (request *ResumeDatahubTaskRequest) {
+    request = &ResumeDatahubTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "ResumeDatahubTask")
+    
+    
+    return
+}
+
+func NewResumeDatahubTaskResponse() (response *ResumeDatahubTaskResponse) {
+    response = &ResumeDatahubTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResumeDatahubTask
+// 恢复Dip任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+func (c *Client) ResumeDatahubTask(request *ResumeDatahubTaskRequest) (response *ResumeDatahubTaskResponse, err error) {
+    return c.ResumeDatahubTaskWithContext(context.Background(), request)
+}
+
+// ResumeDatahubTask
+// 恢复Dip任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+func (c *Client) ResumeDatahubTaskWithContext(ctx context.Context, request *ResumeDatahubTaskRequest) (response *ResumeDatahubTaskResponse, err error) {
+    if request == nil {
+        request = NewResumeDatahubTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ResumeDatahubTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeDatahubTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResumeDatahubTaskResponse()
     err = c.Send(request, response)
     return
 }

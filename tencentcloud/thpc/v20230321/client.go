@@ -1503,6 +1503,60 @@ func (c *Client) DetachNodesWithContext(ctx context.Context, request *DetachNode
     return
 }
 
+func NewModifyClusterDeletionProtectionRequest() (request *ModifyClusterDeletionProtectionRequest) {
+    request = &ModifyClusterDeletionProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "ModifyClusterDeletionProtection")
+    
+    
+    return
+}
+
+func NewModifyClusterDeletionProtectionResponse() (response *ModifyClusterDeletionProtectionResponse) {
+    response = &ModifyClusterDeletionProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterDeletionProtection
+// 修改集群删除保护状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
+func (c *Client) ModifyClusterDeletionProtection(request *ModifyClusterDeletionProtectionRequest) (response *ModifyClusterDeletionProtectionResponse, err error) {
+    return c.ModifyClusterDeletionProtectionWithContext(context.Background(), request)
+}
+
+// ModifyClusterDeletionProtection
+// 修改集群删除保护状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
+func (c *Client) ModifyClusterDeletionProtectionWithContext(ctx context.Context, request *ModifyClusterDeletionProtectionRequest) (response *ModifyClusterDeletionProtectionResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterDeletionProtectionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "ModifyClusterDeletionProtection")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterDeletionProtection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterDeletionProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInitNodeScriptsRequest() (request *ModifyInitNodeScriptsRequest) {
     request = &ModifyInitNodeScriptsRequest{
         BaseRequest: &tchttp.BaseRequest{},

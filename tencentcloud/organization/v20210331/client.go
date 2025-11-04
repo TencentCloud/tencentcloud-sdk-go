@@ -136,6 +136,8 @@ func NewAddExternalSAMLIdPCertificateResponse() (response *AddExternalSAMLIdPCer
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
 //  FAILEDOPERATION_X509CERTIFICATEALREADYEXIST = "FailedOperation.X509CertificateAlreadyExist"
+//  FAILEDOPERATION_X509CERTIFICATELIMITEXCEEDED = "FailedOperation.X509CertificateLimitExceeded"
+//  FAILEDOPERATION_X509CERTIFICATEMINIMUMREQUIRED = "FailedOperation.X509CertificateMinimumRequired"
 //  FAILEDOPERATION_X509CERTIFICATEPARSINGFAILED = "FailedOperation.X509CertificateParsingFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_X509CERTIFICATEFORMATERROR = "InvalidParameterValue.X509CertificateFormatError"
@@ -149,6 +151,8 @@ func (c *Client) AddExternalSAMLIdPCertificate(request *AddExternalSAMLIdPCertif
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
 //  FAILEDOPERATION_X509CERTIFICATEALREADYEXIST = "FailedOperation.X509CertificateAlreadyExist"
+//  FAILEDOPERATION_X509CERTIFICATELIMITEXCEEDED = "FailedOperation.X509CertificateLimitExceeded"
+//  FAILEDOPERATION_X509CERTIFICATEMINIMUMREQUIRED = "FailedOperation.X509CertificateMinimumRequired"
 //  FAILEDOPERATION_X509CERTIFICATEPARSINGFAILED = "FailedOperation.X509CertificateParsingFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_X509CERTIFICATEFORMATERROR = "InvalidParameterValue.X509CertificateFormatError"
@@ -7007,6 +7011,8 @@ func NewRemoveExternalSAMLIdPCertificateResponse() (response *RemoveExternalSAML
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_X509CERTIFICATELIMITEXCEEDED = "FailedOperation.X509CertificateLimitExceeded"
+//  FAILEDOPERATION_X509CERTIFICATEMINIMUMREQUIRED = "FailedOperation.X509CertificateMinimumRequired"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_X509CERTIFICATENOTFOUND = "ResourceNotFound.X509CertificateNotFound"
 func (c *Client) RemoveExternalSAMLIdPCertificate(request *RemoveExternalSAMLIdPCertificateRequest) (response *RemoveExternalSAMLIdPCertificateResponse, err error) {
@@ -7018,6 +7024,8 @@ func (c *Client) RemoveExternalSAMLIdPCertificate(request *RemoveExternalSAMLIdP
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_X509CERTIFICATELIMITEXCEEDED = "FailedOperation.X509CertificateLimitExceeded"
+//  FAILEDOPERATION_X509CERTIFICATEMINIMUMREQUIRED = "FailedOperation.X509CertificateMinimumRequired"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_X509CERTIFICATENOTFOUND = "ResourceNotFound.X509CertificateNotFound"
 func (c *Client) RemoveExternalSAMLIdPCertificateWithContext(ctx context.Context, request *RemoveExternalSAMLIdPCertificateRequest) (response *RemoveExternalSAMLIdPCertificateResponse, err error) {
@@ -8163,6 +8171,7 @@ func NewUpdateUserResponse() (response *UpdateUserResponse) {
 //  FAILEDOPERATION_SYNCHRONIZEDUSERNOTUPDATE = "FailedOperation.SynchronizedUserNotUpdate"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_EMAILALREADYEXISTS = "InvalidParameter.EmailAlreadyExists"
+//  INVALIDPARAMETER_USERTYPEERROR = "InvalidParameter.UserTypeError"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) UpdateUser(request *UpdateUserRequest) (response *UpdateUserResponse, err error) {
     return c.UpdateUserWithContext(context.Background(), request)
@@ -8177,6 +8186,7 @@ func (c *Client) UpdateUser(request *UpdateUserRequest) (response *UpdateUserRes
 //  FAILEDOPERATION_SYNCHRONIZEDUSERNOTUPDATE = "FailedOperation.SynchronizedUserNotUpdate"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_EMAILALREADYEXISTS = "InvalidParameter.EmailAlreadyExists"
+//  INVALIDPARAMETER_USERTYPEERROR = "InvalidParameter.UserTypeError"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) UpdateUserWithContext(ctx context.Context, request *UpdateUserRequest) (response *UpdateUserResponse, err error) {
     if request == nil {

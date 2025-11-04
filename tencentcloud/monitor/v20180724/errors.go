@@ -296,6 +296,9 @@ const (
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
+	// 请求受限，查询实例数受到限制或者触发限频等限制操作
+	LIMITEXCEEDED_LIMITEDACCESS = "LimitExceeded.LimitedAccess"
+
 	// 指标数量达到配额限制，禁止含有未注册指标的请求。
 	LIMITEXCEEDED_METRICQUOTAEXCEEDED = "LimitExceeded.MetricQuotaExceeded"
 

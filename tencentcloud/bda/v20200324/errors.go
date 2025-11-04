@@ -26,32 +26,8 @@ const (
 	// 余额不足，开通失败，请充值后再开通。
 	FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 
-	// 人体特征检测失败。
-	FAILEDOPERATION_BODYFEATUREFAIL = "FailedOperation.BodyFeatureFail"
-
-	// 人体关键点检测失败。
-	FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
-
-	// 人体质量分过低。
-	FAILEDOPERATION_BODYQUALITYNOTQUALIFIED = "FailedOperation.BodyQualityNotQualified"
-
-	// 输入的人体框不合法。
-	FAILEDOPERATION_BODYRECTILLEGAL = "FailedOperation.BodyRectIllegal"
-
-	// 输入的人体框数量不合法。
-	FAILEDOPERATION_BODYRECTNUMILLEGAL = "FailedOperation.BodyRectNumIllegal"
-
-	// 创建动作轨迹失败，请选择符合要求的人体图片。
-	FAILEDOPERATION_CREATETRACEFAILED = "FailedOperation.CreateTraceFailed"
-
 	// 文件下载失败。
 	FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
-
-	// 搜索的人体库为空。
-	FAILEDOPERATION_GROUPEMPTY = "FailedOperation.GroupEmpty"
-
-	// 人体检测失败。
-	FAILEDOPERATION_IMAGEBODYDETECTFAILED = "FailedOperation.ImageBodyDetectFailed"
 
 	// 图片解码失败。
 	FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -86,17 +62,11 @@ const (
 	// 任务队列已满。
 	FAILEDOPERATION_JOBQUEUEFULL = "FailedOperation.JobQueueFull"
 
-	// 图片中没有人体。
-	FAILEDOPERATION_NOBODYINPHOTO = "FailedOperation.NoBodyInPhoto"
-
 	// 人像数过多。
 	FAILEDOPERATION_PROFILENUMEXCEED = "FailedOperation.ProfileNumExceed"
 
 	// 整个请求体太大（通常主要是图片）。
 	FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
-
-	// 请求的次数超过了频率限制。
-	FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
 
 	// 后端服务超时。
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
@@ -125,92 +95,17 @@ const (
 	// 内部错误。
 	FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 
-	// 未知错误。
-	FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-
 	// 视频解码失败。
 	FAILEDOPERATION_VIDEODECODEFAILED = "FailedOperation.VideoDecodeFailed"
 
 	// 参数不合法。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
-	// 账号人体动作轨迹数量超出限制。
-	INVALIDPARAMETERVALUE_ACCOUNTTRACENUMEXCEED = "InvalidParameterValue.AccountTraceNumExceed"
-
-	// 算法模型版本不合法。
-	INVALIDPARAMETERVALUE_BODYMODELVERSIONILLEGAL = "InvalidParameterValue.BodyModelVersionIllegal"
-
-	// 传入的人体框过多。
-	INVALIDPARAMETERVALUE_BODYRECTSEXCEED = "InvalidParameterValue.BodyRectsExceed"
-
-	// 人体库ID已经存在。人体库ID不可重复。
-	INVALIDPARAMETERVALUE_GROUPIDALREADYEXIST = "InvalidParameterValue.GroupIdAlreadyExist"
-
-	// 人体库ID包含非法字符。人体库ID只支持英文、数字、-%@#&_。
-	INVALIDPARAMETERVALUE_GROUPIDILLEGAL = "InvalidParameterValue.GroupIdIllegal"
-
-	// 人体库ID不存在。
-	INVALIDPARAMETERVALUE_GROUPIDNOTEXIST = "InvalidParameterValue.GroupIdNotExist"
-
-	// 人体库ID超出长度限制。
-	INVALIDPARAMETERVALUE_GROUPIDTOOLONG = "InvalidParameterValue.GroupIdTooLong"
-
-	// 人体库名称已经存在。人体库名称不可重复。
-	INVALIDPARAMETERVALUE_GROUPNAMEALREADYEXIST = "InvalidParameterValue.GroupNameAlreadyExist"
-
-	// 人体库名称超出长度限制。
-	INVALIDPARAMETERVALUE_GROUPNAMETOOLONG = "InvalidParameterValue.GroupNameTooLong"
-
-	// 人体库数量超出限制。
-	INVALIDPARAMETERVALUE_GROUPNUMEXCEED = "InvalidParameterValue.GroupNumExceed"
-
-	// 人体库备注超出长度限制。
-	INVALIDPARAMETERVALUE_GROUPTAGTOOLONG = "InvalidParameterValue.GroupTagTooLong"
-
-	// 人体库人体动作轨迹数量超出限制。
-	INVALIDPARAMETERVALUE_GROUPTRACENUMEXCEED = "InvalidParameterValue.GroupTraceNumExceed"
-
 	// 图片为空。
 	INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
 
-	// 返回数量不在合法范围内。
-	INVALIDPARAMETERVALUE_LIMITEXCEED = "InvalidParameterValue.LimitExceed"
-
 	// 图片中没有人脸。
 	INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
-
-	// 起始序号过大。请检查需要请求的数组长度。
-	INVALIDPARAMETERVALUE_OFFSETEXCEED = "InvalidParameterValue.OffsetExceed"
-
-	// 人员ID已经存在。人员ID不可重复。
-	INVALIDPARAMETERVALUE_PERSONIDALREADYEXIST = "InvalidParameterValue.PersonIdAlreadyExist"
-
-	// 人员ID包含非法字符。人员ID只支持英文、数字、-%@#&_。
-	INVALIDPARAMETERVALUE_PERSONIDILLEGAL = "InvalidParameterValue.PersonIdIllegal"
-
-	// 人员ID不存在。
-	INVALIDPARAMETERVALUE_PERSONIDNOTEXIST = "InvalidParameterValue.PersonIdNotExist"
-
-	// 人员ID超出长度限制。
-	INVALIDPARAMETERVALUE_PERSONIDTOOLONG = "InvalidParameterValue.PersonIdTooLong"
-
-	// 人员名称包含非法字符。
-	INVALIDPARAMETERVALUE_PERSONNAMEILLEGAL = "InvalidParameterValue.PersonNameIllegal"
-
-	// 人员名称超出长度限制。
-	INVALIDPARAMETERVALUE_PERSONNAMETOOLONG = "InvalidParameterValue.PersonNameTooLong"
-
-	// 人员人体动作轨迹数量超出限制。
-	INVALIDPARAMETERVALUE_PERSONTRACENUMEXCEED = "InvalidParameterValue.PersonTraceNumExceed"
-
-	// 搜索的人员数目超过限制。
-	INVALIDPARAMETERVALUE_SEARCHPERSONSEXCEED = "InvalidParameterValue.SearchPersonsExceed"
-
-	// 创建人体动作轨迹的人体图片数量超出限制。
-	INVALIDPARAMETERVALUE_TRACEBODYNUMEXCEED = "InvalidParameterValue.TraceBodyNumExceed"
-
-	// TraceMatchThreshold参数不合法。
-	INVALIDPARAMETERVALUE_TRACEMATCHTHRESHOLDILLEGAL = "InvalidParameterValue.TraceMatchThresholdIllegal"
 
 	// URL格式不合法。
 	INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
@@ -218,17 +113,11 @@ const (
 	// 文件太大。
 	LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 
-	// 必选参数为空。
-	MISSINGPARAMETER_ERRORPARAMETEREMPTY = "MissingParameter.ErrorParameterEmpty"
-
 	// 账号已欠费。
 	RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 
 	// 计费状态未知，请确认是否已在控制台开通服务。
 	RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-
-	// 服务未开通。
-	RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 
 	// 未知方法名。
 	UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"

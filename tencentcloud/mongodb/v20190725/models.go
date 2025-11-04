@@ -1293,6 +1293,119 @@ func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateLogDownloadTaskRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 节点名称
+	NodeNames []*string `json:"NodeNames,omitnil,omitempty" name:"NodeNames"`
+
+	// 日志类别
+	LogComponents []*string `json:"LogComponents,omitnil,omitempty" name:"LogComponents"`
+
+	// 日志等级
+	LogLevels []*string `json:"LogLevels,omitnil,omitempty" name:"LogLevels"`
+
+	// 日志ID
+	LogIds []*string `json:"LogIds,omitnil,omitempty" name:"LogIds"`
+
+	// 日志连接信息
+	LogConnections []*string `json:"LogConnections,omitnil,omitempty" name:"LogConnections"`
+
+	// 日志详情过滤字段
+	LogDetailParams []*string `json:"LogDetailParams,omitnil,omitempty" name:"LogDetailParams"`
+}
+
+type CreateLogDownloadTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 节点名称
+	NodeNames []*string `json:"NodeNames,omitnil,omitempty" name:"NodeNames"`
+
+	// 日志类别
+	LogComponents []*string `json:"LogComponents,omitnil,omitempty" name:"LogComponents"`
+
+	// 日志等级
+	LogLevels []*string `json:"LogLevels,omitnil,omitempty" name:"LogLevels"`
+
+	// 日志ID
+	LogIds []*string `json:"LogIds,omitnil,omitempty" name:"LogIds"`
+
+	// 日志连接信息
+	LogConnections []*string `json:"LogConnections,omitnil,omitempty" name:"LogConnections"`
+
+	// 日志详情过滤字段
+	LogDetailParams []*string `json:"LogDetailParams,omitnil,omitempty" name:"LogDetailParams"`
+}
+
+func (r *CreateLogDownloadTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLogDownloadTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "NodeNames")
+	delete(f, "LogComponents")
+	delete(f, "LogLevels")
+	delete(f, "LogIds")
+	delete(f, "LogConnections")
+	delete(f, "LogDetailParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLogDownloadTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLogDownloadTaskResponseParams struct {
+	// 任务状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLogDownloadTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLogDownloadTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateLogDownloadTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLogDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CurrentOp struct {
 	// 操作序号。
 	OpId *int64 `json:"OpId,omitnil,omitempty" name:"OpId"`
@@ -1440,6 +1553,70 @@ func (r *DeleteAccountUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAccountUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLogDownloadTaskRequestParams struct {
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteLogDownloadTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteLogDownloadTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLogDownloadTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLogDownloadTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLogDownloadTaskResponseParams struct {
+	// 任务状态，0:成功
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLogDownloadTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLogDownloadTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteLogDownloadTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLogDownloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3012,6 +3189,242 @@ func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLogDownloadTasksRequestParams struct {
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 下载任务的开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 下载任务的结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeLogDownloadTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 下载任务的开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 下载任务的结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeLogDownloadTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogDownloadTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogDownloadTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogDownloadTasksResponseParams struct {
+	// 数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*Task `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLogDownloadTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogDownloadTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogDownloadTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogDownloadTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMongodbLogsRequestParams struct {
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb#/)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询日志的开启时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+	// - 查询时间范围：仅支持查询最近 7 天内的日志数据。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询日志的结束时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+	// - 查询时间范围：仅支持查询最近 7 天内的日志数据。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 节点 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)的**节点管理**页面获取查询的节点 ID。
+	NodeNames []*string `json:"NodeNames,omitnil,omitempty" name:"NodeNames"`
+
+	// 日志类别。
+	// - 日志类别包括但不限于 COMMAND、ACCESS、CONTROL、FTDC、INDEX、NETWORK、QUERY、REPL、SHARDING、STORAGE、RECOVERY、JOURNAL 和 WRITE 等。具体支持的类别可能会因 MongoDB 的版本而存在差异。具体信息，请参见[日志消息](https://www.mongodb.com/zh-cn/docs/v5.0/reference/log-messages/#log-message-examples)。
+	// - 登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，也可查看**日志类别**。
+	LogComponents []*string `json:"LogComponents,omitnil,omitempty" name:"LogComponents"`
+
+	// 日志级别。
+	// - 日志级别按严重性从高到低依次为：FATAL、ERROR、WARNING。
+	// - 登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志级别**。
+	LogLevels []*string `json:"LogLevels,omitnil,omitempty" name:"LogLevels"`
+
+	// 日志 ID。登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志 ID**。
+	LogIds []*string `json:"LogIds,omitnil,omitempty" name:"LogIds"`
+
+	// 日志连接信息。登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志连接信息**。
+	LogConnections []*string `json:"LogConnections,omitnil,omitempty" name:"LogConnections"`
+
+	// 指定日志筛选的字段。
+	LogDetailParams []*string `json:"LogDetailParams,omitnil,omitempty" name:"LogDetailParams"`
+
+	// 偏移量，最小值为0，最大值为10000，默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小，最小值为1，最大值为100，默认值为20。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeMongodbLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb#/)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询日志的开启时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+	// - 查询时间范围：仅支持查询最近 7 天内的日志数据。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询日志的结束时间。
+	// - 格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。
+	// - 查询时间范围：仅支持查询最近 7 天内的日志数据。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 节点 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)的**节点管理**页面获取查询的节点 ID。
+	NodeNames []*string `json:"NodeNames,omitnil,omitempty" name:"NodeNames"`
+
+	// 日志类别。
+	// - 日志类别包括但不限于 COMMAND、ACCESS、CONTROL、FTDC、INDEX、NETWORK、QUERY、REPL、SHARDING、STORAGE、RECOVERY、JOURNAL 和 WRITE 等。具体支持的类别可能会因 MongoDB 的版本而存在差异。具体信息，请参见[日志消息](https://www.mongodb.com/zh-cn/docs/v5.0/reference/log-messages/#log-message-examples)。
+	// - 登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，也可查看**日志类别**。
+	LogComponents []*string `json:"LogComponents,omitnil,omitempty" name:"LogComponents"`
+
+	// 日志级别。
+	// - 日志级别按严重性从高到低依次为：FATAL、ERROR、WARNING。
+	// - 登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志级别**。
+	LogLevels []*string `json:"LogLevels,omitnil,omitempty" name:"LogLevels"`
+
+	// 日志 ID。登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志 ID**。
+	LogIds []*string `json:"LogIds,omitnil,omitempty" name:"LogIds"`
+
+	// 日志连接信息。登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在**日志管理**页面的**错误日志**页签，可查看**日志连接信息**。
+	LogConnections []*string `json:"LogConnections,omitnil,omitempty" name:"LogConnections"`
+
+	// 指定日志筛选的字段。
+	LogDetailParams []*string `json:"LogDetailParams,omitnil,omitempty" name:"LogDetailParams"`
+
+	// 偏移量，最小值为0，最大值为10000，默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小，最小值为1，最大值为100，默认值为20。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeMongodbLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMongodbLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "NodeNames")
+	delete(f, "LogComponents")
+	delete(f, "LogLevels")
+	delete(f, "LogIds")
+	delete(f, "LogConnections")
+	delete(f, "LogDetailParams")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMongodbLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMongodbLogsResponseParams struct {
+	// 日志总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 日志详情列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogList []*LogInfo `json:"LogList,omitnil,omitempty" name:"LogList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMongodbLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMongodbLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeMongodbLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMongodbLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSecurityGroupRequestParams struct {
 	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4508,6 +4921,32 @@ func (r *KillOpsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LogInfo struct {
+	// 日志类别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogComponent *string `json:"LogComponent,omitnil,omitempty" name:"LogComponent"`
+
+	// 日志级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogLevel *string `json:"LogLevel,omitnil,omitempty" name:"LogLevel"`
+
+	// 日志产生时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogTime *string `json:"LogTime,omitnil,omitempty" name:"LogTime"`
+
+	// 日志详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogDetail *string `json:"LogDetail,omitnil,omitempty" name:"LogDetail"`
+
+	// 日志连接信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogConnection *string `json:"LogConnection,omitnil,omitempty" name:"LogConnection"`
+
+	// 日志id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
+}
+
 // Predefined struct for user
 type ModifyDBInstanceNetworkAddressRequestParams struct {
 	// 指定需修改网络的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
@@ -5964,6 +6403,38 @@ type TagInfo struct {
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
+type Task struct {
+	// 下载任务类型，0:慢日志，1:错误日志
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 任务状态，0:初始化，1:运行中，2:成功，3:失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+
+	// 下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
 // Predefined struct for user
 type TerminateDBInstancesRequestParams struct {
 	// 指定预隔离实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制预隔离实例 ID。
@@ -6015,6 +6486,141 @@ func (r *TerminateDBInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TerminateDBInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeDBInstanceKernelVersionRequestParams struct {
+	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 是否维护时间内升级。0-否，1-是
+	InMaintenance *int64 `json:"InMaintenance,omitnil,omitempty" name:"InMaintenance"`
+}
+
+type UpgradeDBInstanceKernelVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 是否维护时间内升级。0-否，1-是
+	InMaintenance *int64 `json:"InMaintenance,omitnil,omitempty" name:"InMaintenance"`
+}
+
+func (r *UpgradeDBInstanceKernelVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeDBInstanceKernelVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "InMaintenance")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceKernelVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeDBInstanceKernelVersionResponseParams struct {
+	// 异步流程任务ID
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpgradeDBInstanceKernelVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpgradeDBInstanceKernelVersionResponseParams `json:"Response"`
+}
+
+func (r *UpgradeDBInstanceKernelVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeDBInstanceKernelVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeDbInstanceVersionRequestParams struct {
+	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 新升级的数据库版本，当前仅支持MONGO_40_WT（MongoDB 4.0 WiredTiger存储引擎版本）及MONGO_42_WT（MongoDB 4.0 WiredTiger存储引擎版本）。
+	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
+
+	// 是否在维护时间内升级。0-立即升级 1-维护时间内升级
+	InMaintenance *int64 `json:"InMaintenance,omitnil,omitempty" name:"InMaintenance"`
+}
+
+type UpgradeDbInstanceVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 新升级的数据库版本，当前仅支持MONGO_40_WT（MongoDB 4.0 WiredTiger存储引擎版本）及MONGO_42_WT（MongoDB 4.0 WiredTiger存储引擎版本）。
+	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
+
+	// 是否在维护时间内升级。0-立即升级 1-维护时间内升级
+	InMaintenance *int64 `json:"InMaintenance,omitnil,omitempty" name:"InMaintenance"`
+}
+
+func (r *UpgradeDbInstanceVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeDbInstanceVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "MongoVersion")
+	delete(f, "InMaintenance")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDbInstanceVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeDbInstanceVersionResponseParams struct {
+	// 异步流程任务ID
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpgradeDbInstanceVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpgradeDbInstanceVersionResponseParams `json:"Response"`
+}
+
+func (r *UpgradeDbInstanceVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeDbInstanceVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

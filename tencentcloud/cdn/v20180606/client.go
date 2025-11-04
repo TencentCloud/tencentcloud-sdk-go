@@ -913,6 +913,10 @@ func NewDescribeBillingDataResponse() (response *DescribeBillingDataResponse) {
 // DescribeBillingData
 // DescribeBillingData 用于查询实际计费数据明细。
 //
+// 注意:
+//
+// 受计费算法的影响，计费数据接口返回的数据均存在一定延时。小时结算客户预计延时3-5小时。月结算客户预计延迟4-28小时，在凌晨4点（不含4点）之前，仅能查询到前2天数据，4点（含）之后，能查询到前1天数据。若您对数据及时性较强的诉求，建议使用[监控访问数据](https://cloud.tencent.com/document/product/228/30986)。
+//
 // 可能返回的错误码:
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
@@ -948,6 +952,10 @@ func (c *Client) DescribeBillingData(request *DescribeBillingDataRequest) (respo
 
 // DescribeBillingData
 // DescribeBillingData 用于查询实际计费数据明细。
+//
+// 注意:
+//
+// 受计费算法的影响，计费数据接口返回的数据均存在一定延时。小时结算客户预计延时3-5小时。月结算客户预计延迟4-28小时，在凌晨4点（不含4点）之前，仅能查询到前2天数据，4点（含）之后，能查询到前1天数据。若您对数据及时性较强的诉求，建议使用[监控访问数据](https://cloud.tencent.com/document/product/228/30986)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"

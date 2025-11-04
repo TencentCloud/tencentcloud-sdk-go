@@ -401,14 +401,14 @@ func (r *CreateInboundEndpointResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePrivateDNSAccountRequestParams struct {
-	// 私有域解析账号
+	// 私有域解析账号，该账号不能与主账号一致且需要子账号授权
 	Account *PrivateDNSAccount `json:"Account,omitnil,omitempty" name:"Account"`
 }
 
 type CreatePrivateDNSAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 私有域解析账号
+	// 私有域解析账号，该账号不能与主账号一致且需要子账号授权
 	Account *PrivateDNSAccount `json:"Account,omitnil,omitempty" name:"Account"`
 }
 

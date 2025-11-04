@@ -9122,6 +9122,10 @@ type UrlRedirectRule struct {
 	// 指定是全路径配置还是任意匹配
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullMatch *bool `json:"FullMatch,omitnil,omitempty" name:"FullMatch"`
+
+	// pattern是否支持正则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Regex *bool `json:"Regex,omitnil,omitempty" name:"Regex"`
 }
 
 type UserAgentFilter struct {

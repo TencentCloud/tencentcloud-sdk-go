@@ -588,10 +588,15 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateInstancesResponseParams struct {
 	// 交易 ID。
+	//
+	// Deprecated: DealId is deprecated.
 	DealId *string `json:"DealId,omitnil,omitempty" name:"DealId"`
 
 	// 实例 ID 。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 订单号。	
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1011,7 +1016,12 @@ func (r *DescribeInstanceBinlogsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceDealDetailRequestParams struct {
 	// 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/1520/86207) 的输出参数DealId。
+	//
+	// Deprecated: DealIds is deprecated.
 	DealIds []*string `json:"DealIds,omitnil,omitempty" name:"DealIds"`
+
+	// 订单号，订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/1520/86207) 的输出参数DealName。
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 }
 
 type DescribeInstanceDealDetailRequest struct {
@@ -1019,6 +1029,9 @@ type DescribeInstanceDealDetailRequest struct {
 	
 	// 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/1520/86207) 的输出参数DealId。
 	DealIds []*string `json:"DealIds,omitnil,omitempty" name:"DealIds"`
+
+	// 订单号，订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/1520/86207) 的输出参数DealName。
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 }
 
 func (r *DescribeInstanceDealDetailRequest) ToJsonString() string {
@@ -1034,6 +1047,7 @@ func (r *DescribeInstanceDealDetailRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DealIds")
+	delete(f, "DealName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceDealDetailRequest has unknown keys!", "")
 	}
@@ -2242,7 +2256,12 @@ func (r *DestroyPrepaidInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DestroyPrepaidInstanceResponseParams struct {
 	// 交易ID。
+	//
+	// Deprecated: DealId is deprecated.
 	DealId *string `json:"DealId,omitnil,omitempty" name:"DealId"`
+
+	// 订单号。
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3401,7 +3420,12 @@ func (r *RenewInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RenewInstanceResponseParams struct {
 	// 交易 ID。
+	//
+	// Deprecated: DealId is deprecated.
 	DealId *string `json:"DealId,omitnil,omitempty" name:"DealId"`
+
+	// 订单号。
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3764,7 +3788,12 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpgradeInstanceResponseParams struct {
 	// 交易ID。
+	//
+	// Deprecated: DealId is deprecated.
 	DealId *string `json:"DealId,omitnil,omitempty" name:"DealId"`
+
+	// 订单号。
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

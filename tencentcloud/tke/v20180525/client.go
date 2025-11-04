@@ -318,7 +318,10 @@ func NewAddNodeToNodePoolResponse() (response *AddNodeToNodePoolResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 func (c *Client) AddNodeToNodePool(request *AddNodeToNodePoolRequest) (response *AddNodeToNodePoolResponse, err error) {
     return c.AddNodeToNodePoolWithContext(context.Background(), request)
 }
@@ -329,7 +332,10 @@ func (c *Client) AddNodeToNodePool(request *AddNodeToNodePoolRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 func (c *Client) AddNodeToNodePoolWithContext(ctx context.Context, request *AddNodeToNodePoolRequest) (response *AddNodeToNodePoolResponse, err error) {
     if request == nil {
         request = NewAddNodeToNodePoolRequest()
@@ -12683,7 +12689,7 @@ func NewModifyClusterAttributeResponse() (response *ModifyClusterAttributeRespon
 }
 
 // ModifyClusterAttribute
-// 修改集群属性
+// 修改集群属性，至少选择一个参数更新
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -12709,7 +12715,7 @@ func (c *Client) ModifyClusterAttribute(request *ModifyClusterAttributeRequest) 
 }
 
 // ModifyClusterAttribute
-// 修改集群属性
+// 修改集群属性，至少选择一个参数更新
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -13059,7 +13065,7 @@ func NewModifyClusterRuntimeConfigResponse() (response *ModifyClusterRuntimeConf
 }
 
 // ModifyClusterRuntimeConfig
-// 修改集群及节点池纬度运行时配置
+// 修改集群及节点池维度运行时配置
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -13076,7 +13082,7 @@ func (c *Client) ModifyClusterRuntimeConfig(request *ModifyClusterRuntimeConfigR
 }
 
 // ModifyClusterRuntimeConfig
-// 修改集群及节点池纬度运行时配置
+// 修改集群及节点池维度运行时配置
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

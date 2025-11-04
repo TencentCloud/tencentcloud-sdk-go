@@ -370,7 +370,17 @@ type Application struct {
 	// - Custom：表示用户自定义作业
 	// 
 	// 默认参数为：Custom
+	//
+	// Deprecated: JobType is deprecated.
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 表示所选训练框架，支持可选参数
+	//  
+	// - PyTorch：表示提交PyTorch训练作业
+	// - Custom：表示用户自定义作业
+	// 
+	// 默认参数为：Custom
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 }
 
 // Predefined struct for user
@@ -587,6 +597,12 @@ type ClusterOverview struct {
 
 	// 集群类型
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 集群销毁保护开关状态，当前支持参数：
+	// 
+	// - ON: 集群销毁保护打开
+	// - OFF: 集群销毁保护关闭
+	DeletionProtection *string `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 }
 
 type CommandItem struct {
@@ -1766,12 +1782,15 @@ func (r *DescribeJobSubmitInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobsOverviewRequestParams struct {
-
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type DescribeJobsOverviewRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeJobsOverviewRequest) ToJsonString() string {
@@ -1786,7 +1805,7 @@ func (r *DescribeJobsOverviewRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobsOverviewRequest has unknown keys!", "")
 	}
@@ -1795,6 +1814,15 @@ func (r *DescribeJobsOverviewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobsOverviewResponseParams struct {
+	// 作业任务数量
+	JobTotal *uint64 `json:"JobTotal,omitnil,omitempty" name:"JobTotal"`
+
+	// 排队中的作业任务数量
+	QueuingJobTotal *uint64 `json:"QueuingJobTotal,omitnil,omitempty" name:"QueuingJobTotal"`
+
+	// 运行中的作业数量
+	RunningJobTotal *uint64 `json:"RunningJobTotal,omitnil,omitempty" name:"RunningJobTotal"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2516,6 +2544,69 @@ type ManagerNodeOverview struct {
 }
 
 // Predefined struct for user
+type ModifyClusterDeletionProtectionRequestParams struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群删除保护开关。 
+	// 可选值：<li>OFF：关闭集群删除保护。</li><li>ON：打开集群删除保护。</li>
+	DeletionProtection *string `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+}
+
+type ModifyClusterDeletionProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群删除保护开关。 
+	// 可选值：<li>OFF：关闭集群删除保护。</li><li>ON：打开集群删除保护。</li>
+	DeletionProtection *string `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+}
+
+func (r *ModifyClusterDeletionProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterDeletionProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "DeletionProtection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterDeletionProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterDeletionProtectionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterDeletionProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterDeletionProtectionResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterDeletionProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterDeletionProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyInitNodeScriptsRequestParams struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -3234,12 +3325,31 @@ type StorageOptionOverview struct {
 
 // Predefined struct for user
 type SubmitJobRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
+	// 作业任务参数配置
+	Job *Job `json:"Job,omitnil,omitempty" name:"Job"`
+
+	// 队列名称。不指定则为默认队列：
+	// SLURM默认队列为：compute。 
+	// SGE默认队列为：all.q。
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 }
 
 type SubmitJobRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 作业任务参数配置
+	Job *Job `json:"Job,omitnil,omitempty" name:"Job"`
+
+	// 队列名称。不指定则为默认队列：
+	// SLURM默认队列为：compute。 
+	// SGE默认队列为：all.q。
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 }
 
 func (r *SubmitJobRequest) ToJsonString() string {
@@ -3254,7 +3364,9 @@ func (r *SubmitJobRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
+	delete(f, "Job")
+	delete(f, "QueueName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitJobRequest has unknown keys!", "")
 	}
@@ -3263,6 +3375,9 @@ func (r *SubmitJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitJobResponseParams struct {
+	// 作业任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

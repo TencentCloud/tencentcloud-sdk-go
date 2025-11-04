@@ -467,12 +467,69 @@ func (r *CreateDatasetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateExportRequestParams struct {
+	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测枚举值：- TRAIN- NOTEBOOK- INFER- BATCH
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
 
+	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：- Service类型为TRAIN：  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId- Service类型为NOTEBOOK：  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName- Service类型为INFER：  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId- Service类型为BATCH：  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 日志查询结束时间（RFC3339格式的时间字符串），开始时间和结束时间必须同时填或同时不填，默认值为当前时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 日志导出数据格式。json，csv，默认为csv
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：- Service类型为TRAIN：  调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames- Service类型为NOTEBOOK：  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName- Service类型为INFER：  调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos- Service类型为BATCH：  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList注：支持结尾通配符*
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// 描述任务的类型
+	JobCategory *string `json:"JobCategory,omitnil,omitempty" name:"JobCategory"`
+
+	// 实例的类型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 查实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 日志类型： PLATFORM_INIT, PLATFORM_SANITY_CHECK, USER
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type CreateExportRequest struct {
 	*tchttp.BaseRequest
 	
+	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测枚举值：- TRAIN- NOTEBOOK- INFER- BATCH
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：- Service类型为TRAIN：  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId- Service类型为NOTEBOOK：  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName- Service类型为INFER：  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId- Service类型为BATCH：  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 日志查询结束时间（RFC3339格式的时间字符串），开始时间和结束时间必须同时填或同时不填，默认值为当前时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 日志导出数据格式。json，csv，默认为csv
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：- Service类型为TRAIN：  调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames- Service类型为NOTEBOOK：  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName- Service类型为INFER：  调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos- Service类型为BATCH：  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList注：支持结尾通配符*
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// 描述任务的类型
+	JobCategory *string `json:"JobCategory,omitnil,omitempty" name:"JobCategory"`
+
+	// 实例的类型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 查实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 日志类型： PLATFORM_INIT, PLATFORM_SANITY_CHECK, USER
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *CreateExportRequest) ToJsonString() string {
@@ -487,7 +544,16 @@ func (r *CreateExportRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Service")
+	delete(f, "ServiceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Format")
+	delete(f, "PodName")
+	delete(f, "JobCategory")
+	delete(f, "InstanceType")
+	delete(f, "InstanceId")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExportRequest has unknown keys!", "")
 	}
@@ -496,6 +562,9 @@ func (r *CreateExportRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateExportResponseParams struct {
+	// 日志下载任务的ID
+	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3408,12 +3477,15 @@ func (r *DescribeEventsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExportRequestParams struct {
-
+	// 日志下载任务的ID
+	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 }
 
 type DescribeExportRequest struct {
 	*tchttp.BaseRequest
 	
+	// 日志下载任务的ID
+	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 }
 
 func (r *DescribeExportRequest) ToJsonString() string {
@@ -3428,7 +3500,7 @@ func (r *DescribeExportRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ExportId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExportRequest has unknown keys!", "")
 	}
@@ -3437,6 +3509,18 @@ func (r *DescribeExportRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExportResponseParams struct {
+	// 日志下载任务的ID
+	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
+
+	// 日志下载文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 日志导出路径,有效期一个小时，请尽快使用该路径下载。
+	CosPath *string `json:"CosPath,omitnil,omitempty" name:"CosPath"`
+
+	// 下载任务创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
 	// 日志文件大小
 	FileSize *string `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 

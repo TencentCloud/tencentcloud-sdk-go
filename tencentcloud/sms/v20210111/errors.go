@@ -143,7 +143,7 @@ const (
 	// 参数 BeginTime 校验失败。
 	INVALIDPARAMETERVALUE_BEGINTIMEVERIFYFAIL = "InvalidParameterValue.BeginTimeVerifyFail"
 
-	// 请求的短信内容太长，短信长度规则请参考 [国内短信内容长度计算规则](https://cloud.tencent.com/document/product/382/18058)。
+	// 请求的短信内容太长，短信长度规则请参考 [国内短信内容长度计算规则](https://cloud.tencent.com/document/product/382/18058) 或 [国际/港澳台短信内容长度计算规则](https://cloud.tencent.com/document/product/382/18052#size)。
 	INVALIDPARAMETERVALUE_CONTENTLENGTHLIMIT = "InvalidParameterValue.ContentLengthLimit"
 
 	// 参数 EndTime 校验失败。

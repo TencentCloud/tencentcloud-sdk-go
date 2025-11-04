@@ -535,6 +535,58 @@ func (c *Client) CreateDBInstanceParamTplWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateLogDownloadTaskRequest() (request *CreateLogDownloadTaskRequest) {
+    request = &CreateLogDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "CreateLogDownloadTask")
+    
+    
+    return
+}
+
+func NewCreateLogDownloadTaskResponse() (response *CreateLogDownloadTaskResponse) {
+    response = &CreateLogDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLogDownloadTask
+// 创建日志下载任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) CreateLogDownloadTask(request *CreateLogDownloadTaskRequest) (response *CreateLogDownloadTaskResponse, err error) {
+    return c.CreateLogDownloadTaskWithContext(context.Background(), request)
+}
+
+// CreateLogDownloadTask
+// 创建日志下载任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) CreateLogDownloadTaskWithContext(ctx context.Context, request *CreateLogDownloadTaskRequest) (response *CreateLogDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateLogDownloadTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "CreateLogDownloadTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLogDownloadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLogDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountUserRequest() (request *DeleteAccountUserRequest) {
     request = &DeleteAccountUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -558,24 +610,8 @@ func NewDeleteAccountUserResponse() (response *DeleteAccountUserResponse) {
 // 本接口（DeleteAccountUser）用于删除实例的自定义账号。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
-//  INVALIDPARAMETERVALUE_CLUSTERTYPEERROR = "InvalidParameterValue.ClusterTypeError"
-//  INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
-//  INVALIDPARAMETERVALUE_MACHINETYPEERROR = "InvalidParameterValue.MachineTypeError"
-//  INVALIDPARAMETERVALUE_MONGOVERSIONERROR = "InvalidParameterValue.MongoVersionError"
-//  INVALIDPARAMETERVALUE_PASSWORDRULEFAILED = "InvalidParameterValue.PasswordRuleFailed"
-//  INVALIDPARAMETERVALUE_POSTPAIDINSTANCEBEYONDLIMIT = "InvalidParameterValue.PostPaidInstanceBeyondLimit"
-//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
-//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
-//  INVALIDPARAMETERVALUE_REPLICASETNUMERROR = "InvalidParameterValue.ReplicaSetNumError"
-//  INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
-//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
-//  INVALIDPARAMETERVALUE_TAGNOTFOUND = "InvalidParameterValue.TagNotFound"
-//  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
-//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
-//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
-//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
 func (c *Client) DeleteAccountUser(request *DeleteAccountUserRequest) (response *DeleteAccountUserResponse, err error) {
     return c.DeleteAccountUserWithContext(context.Background(), request)
 }
@@ -584,24 +620,8 @@ func (c *Client) DeleteAccountUser(request *DeleteAccountUserRequest) (response 
 // 本接口（DeleteAccountUser）用于删除实例的自定义账号。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
-//  INVALIDPARAMETERVALUE_CLUSTERTYPEERROR = "InvalidParameterValue.ClusterTypeError"
-//  INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
-//  INVALIDPARAMETERVALUE_MACHINETYPEERROR = "InvalidParameterValue.MachineTypeError"
-//  INVALIDPARAMETERVALUE_MONGOVERSIONERROR = "InvalidParameterValue.MongoVersionError"
-//  INVALIDPARAMETERVALUE_PASSWORDRULEFAILED = "InvalidParameterValue.PasswordRuleFailed"
-//  INVALIDPARAMETERVALUE_POSTPAIDINSTANCEBEYONDLIMIT = "InvalidParameterValue.PostPaidInstanceBeyondLimit"
-//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
-//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
-//  INVALIDPARAMETERVALUE_REPLICASETNUMERROR = "InvalidParameterValue.ReplicaSetNumError"
-//  INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
-//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
-//  INVALIDPARAMETERVALUE_TAGNOTFOUND = "InvalidParameterValue.TagNotFound"
-//  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
-//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
-//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
-//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
 func (c *Client) DeleteAccountUserWithContext(ctx context.Context, request *DeleteAccountUserRequest) (response *DeleteAccountUserResponse, err error) {
     if request == nil {
         request = NewDeleteAccountUserRequest()
@@ -615,6 +635,58 @@ func (c *Client) DeleteAccountUserWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteAccountUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLogDownloadTaskRequest() (request *DeleteLogDownloadTaskRequest) {
+    request = &DeleteLogDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DeleteLogDownloadTask")
+    
+    
+    return
+}
+
+func NewDeleteLogDownloadTaskResponse() (response *DeleteLogDownloadTaskResponse) {
+    response = &DeleteLogDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLogDownloadTask
+// 删除日志下载任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DeleteLogDownloadTask(request *DeleteLogDownloadTaskRequest) (response *DeleteLogDownloadTaskResponse, err error) {
+    return c.DeleteLogDownloadTaskWithContext(context.Background(), request)
+}
+
+// DeleteLogDownloadTask
+// 删除日志下载任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DeleteLogDownloadTaskWithContext(ctx context.Context, request *DeleteLogDownloadTaskRequest) (response *DeleteLogDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteLogDownloadTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "DeleteLogDownloadTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLogDownloadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLogDownloadTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -1519,6 +1591,112 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeInstanceParamsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLogDownloadTasksRequest() (request *DescribeLogDownloadTasksRequest) {
+    request = &DescribeLogDownloadTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeLogDownloadTasks")
+    
+    
+    return
+}
+
+func NewDescribeLogDownloadTasksResponse() (response *DescribeLogDownloadTasksResponse) {
+    response = &DescribeLogDownloadTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLogDownloadTasks
+// 日志下载任务查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeLogDownloadTasks(request *DescribeLogDownloadTasksRequest) (response *DescribeLogDownloadTasksResponse, err error) {
+    return c.DescribeLogDownloadTasksWithContext(context.Background(), request)
+}
+
+// DescribeLogDownloadTasks
+// 日志下载任务查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeLogDownloadTasksWithContext(ctx context.Context, request *DescribeLogDownloadTasksRequest) (response *DescribeLogDownloadTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogDownloadTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "DescribeLogDownloadTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogDownloadTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogDownloadTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMongodbLogsRequest() (request *DescribeMongodbLogsRequest) {
+    request = &DescribeMongodbLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeMongodbLogs")
+    
+    
+    return
+}
+
+func NewDescribeMongodbLogsResponse() (response *DescribeMongodbLogsResponse) {
+    response = &DescribeMongodbLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMongodbLogs
+// 该接口（DescribeMongodbLogs）用于查询运行日志。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_TIMEFORMATERR = "InvalidParameterValue.TimeFormatErr"
+func (c *Client) DescribeMongodbLogs(request *DescribeMongodbLogsRequest) (response *DescribeMongodbLogsResponse, err error) {
+    return c.DescribeMongodbLogsWithContext(context.Background(), request)
+}
+
+// DescribeMongodbLogs
+// 该接口（DescribeMongodbLogs）用于查询运行日志。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_TIMEFORMATERR = "InvalidParameterValue.TimeFormatErr"
+func (c *Client) DescribeMongodbLogsWithContext(ctx context.Context, request *DescribeMongodbLogsRequest) (response *DescribeMongodbLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMongodbLogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "DescribeMongodbLogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMongodbLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMongodbLogsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3237,6 +3415,116 @@ func (c *Client) TerminateDBInstancesWithContext(ctx context.Context, request *T
     request.SetContext(ctx)
     
     response = NewTerminateDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeDBInstanceKernelVersionRequest() (request *UpgradeDBInstanceKernelVersionRequest) {
+    request = &UpgradeDBInstanceKernelVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "UpgradeDBInstanceKernelVersion")
+    
+    
+    return
+}
+
+func NewUpgradeDBInstanceKernelVersionResponse() (response *UpgradeDBInstanceKernelVersionResponse) {
+    response = &UpgradeDBInstanceKernelVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpgradeDBInstanceKernelVersion
+// 本接口(UpgradeDBInstanceKernelVersion)用于升级数据库实例内核版本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCESTATUS = "InvalidParameterValue.IllegalInstanceStatus"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+func (c *Client) UpgradeDBInstanceKernelVersion(request *UpgradeDBInstanceKernelVersionRequest) (response *UpgradeDBInstanceKernelVersionResponse, err error) {
+    return c.UpgradeDBInstanceKernelVersionWithContext(context.Background(), request)
+}
+
+// UpgradeDBInstanceKernelVersion
+// 本接口(UpgradeDBInstanceKernelVersion)用于升级数据库实例内核版本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCESTATUS = "InvalidParameterValue.IllegalInstanceStatus"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+func (c *Client) UpgradeDBInstanceKernelVersionWithContext(ctx context.Context, request *UpgradeDBInstanceKernelVersionRequest) (response *UpgradeDBInstanceKernelVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeDBInstanceKernelVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "UpgradeDBInstanceKernelVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeDBInstanceKernelVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeDBInstanceKernelVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeDbInstanceVersionRequest() (request *UpgradeDbInstanceVersionRequest) {
+    request = &UpgradeDbInstanceVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "UpgradeDbInstanceVersion")
+    
+    
+    return
+}
+
+func NewUpgradeDbInstanceVersionResponse() (response *UpgradeDbInstanceVersionResponse) {
+    response = &UpgradeDbInstanceVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpgradeDbInstanceVersion
+// 本接口用于跨版本升级数据库内核。当前仅支持3.6版本升级为4.0版本、4.0版本升级为4.2版本、4.2版本升级为4.4版本及4.4版本升级为5.0版本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATEERROR = "InternalError.DBOperateError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) UpgradeDbInstanceVersion(request *UpgradeDbInstanceVersionRequest) (response *UpgradeDbInstanceVersionResponse, err error) {
+    return c.UpgradeDbInstanceVersionWithContext(context.Background(), request)
+}
+
+// UpgradeDbInstanceVersion
+// 本接口用于跨版本升级数据库内核。当前仅支持3.6版本升级为4.0版本、4.0版本升级为4.2版本、4.2版本升级为4.4版本及4.4版本升级为5.0版本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATEERROR = "InternalError.DBOperateError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) UpgradeDbInstanceVersionWithContext(ctx context.Context, request *UpgradeDbInstanceVersionRequest) (response *UpgradeDbInstanceVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeDbInstanceVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "UpgradeDbInstanceVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeDbInstanceVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeDbInstanceVersionResponse()
     err = c.Send(request, response)
     return
 }

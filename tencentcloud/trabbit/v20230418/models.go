@@ -1172,6 +1172,21 @@ type DescribeRabbitMQServerlessConnectionRequestParams struct {
 
 	// vhost名
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 按哪个字段排序，支持：channel(channel数),incoming_bytes(入流量大小),outgoing_bytes(出流量大小)
+	SortElement *string `json:"SortElement,omitnil,omitempty" name:"SortElement"`
+
+	// 排序方式：ASC,DESC
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 分页参数，从第几条数据开始
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 一页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 连接名模糊搜索
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeRabbitMQServerlessConnectionRequest struct {
@@ -1182,6 +1197,21 @@ type DescribeRabbitMQServerlessConnectionRequest struct {
 
 	// vhost名
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
+
+	// 按哪个字段排序，支持：channel(channel数),incoming_bytes(入流量大小),outgoing_bytes(出流量大小)
+	SortElement *string `json:"SortElement,omitnil,omitempty" name:"SortElement"`
+
+	// 排序方式：ASC,DESC
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 分页参数，从第几条数据开始
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 一页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 连接名模糊搜索
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 func (r *DescribeRabbitMQServerlessConnectionRequest) ToJsonString() string {
@@ -1198,6 +1228,11 @@ func (r *DescribeRabbitMQServerlessConnectionRequest) FromJsonString(s string) e
 	}
 	delete(f, "InstanceId")
 	delete(f, "VirtualHost")
+	delete(f, "SortElement")
+	delete(f, "SortType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQServerlessConnectionRequest has unknown keys!", "")
 	}
@@ -1251,6 +1286,9 @@ type DescribeRabbitMQServerlessConsumersRequestParams struct {
 
 	// 搜索关键词
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
+
+	// channelId
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 }
 
 type DescribeRabbitMQServerlessConsumersRequest struct {
@@ -1273,6 +1311,9 @@ type DescribeRabbitMQServerlessConsumersRequest struct {
 
 	// 搜索关键词
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
+
+	// channelId
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 }
 
 func (r *DescribeRabbitMQServerlessConsumersRequest) ToJsonString() string {
@@ -1293,6 +1334,7 @@ func (r *DescribeRabbitMQServerlessConsumersRequest) FromJsonString(s string) er
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "SearchWord")
+	delete(f, "Channel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQServerlessConsumersRequest has unknown keys!", "")
 	}
@@ -2386,6 +2428,12 @@ type ModifyRabbitMQServerlessInstanceRequestParams struct {
 
 	// 限流生产消费比例
 	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
+
+	// 是否删除所有标签，默认为false
+	DeleteAllTags *bool `json:"DeleteAllTags,omitnil,omitempty" name:"DeleteAllTags"`
+
+	// 修改的实例标签列表
+	InstanceTags []*RabbitMQServerlessTag `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 }
 
 type ModifyRabbitMQServerlessInstanceRequest struct {
@@ -2405,6 +2453,12 @@ type ModifyRabbitMQServerlessInstanceRequest struct {
 
 	// 限流生产消费比例
 	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
+
+	// 是否删除所有标签，默认为false
+	DeleteAllTags *bool `json:"DeleteAllTags,omitnil,omitempty" name:"DeleteAllTags"`
+
+	// 修改的实例标签列表
+	InstanceTags []*RabbitMQServerlessTag `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 }
 
 func (r *ModifyRabbitMQServerlessInstanceRequest) ToJsonString() string {
@@ -2424,6 +2478,8 @@ func (r *ModifyRabbitMQServerlessInstanceRequest) FromJsonString(s string) error
 	delete(f, "Remark")
 	delete(f, "TraceFlag")
 	delete(f, "SendReceiveRatio")
+	delete(f, "DeleteAllTags")
+	delete(f, "InstanceTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRabbitMQServerlessInstanceRequest has unknown keys!", "")
 	}
@@ -2557,6 +2613,15 @@ type ModifyRabbitMQServerlessQueueRequestParams struct {
 
 	// 新修改的备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// MessageTTL参数单位ms,classic类型专用	
+	MessageTTL *int64 `json:"MessageTTL,omitnil,omitempty" name:"MessageTTL"`
+
+	// DeadLetterExchange参数。可将过期或被拒绝的消息投往指定的死信 exchange。
+	DeadLetterExchange *string `json:"DeadLetterExchange,omitnil,omitempty" name:"DeadLetterExchange"`
+
+	// DeadLetterRoutingKey参数。只能包含字母、数字、"."、"-"，"@"，"_"
+	DeadLetterRoutingKey *string `json:"DeadLetterRoutingKey,omitnil,omitempty" name:"DeadLetterRoutingKey"`
 }
 
 type ModifyRabbitMQServerlessQueueRequest struct {
@@ -2573,6 +2638,15 @@ type ModifyRabbitMQServerlessQueueRequest struct {
 
 	// 新修改的备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// MessageTTL参数单位ms,classic类型专用	
+	MessageTTL *int64 `json:"MessageTTL,omitnil,omitempty" name:"MessageTTL"`
+
+	// DeadLetterExchange参数。可将过期或被拒绝的消息投往指定的死信 exchange。
+	DeadLetterExchange *string `json:"DeadLetterExchange,omitnil,omitempty" name:"DeadLetterExchange"`
+
+	// DeadLetterRoutingKey参数。只能包含字母、数字、"."、"-"，"@"，"_"
+	DeadLetterRoutingKey *string `json:"DeadLetterRoutingKey,omitnil,omitempty" name:"DeadLetterRoutingKey"`
 }
 
 func (r *ModifyRabbitMQServerlessQueueRequest) ToJsonString() string {
@@ -2591,6 +2665,9 @@ func (r *ModifyRabbitMQServerlessQueueRequest) FromJsonString(s string) error {
 	delete(f, "VirtualHost")
 	delete(f, "QueueName")
 	delete(f, "Remark")
+	delete(f, "MessageTTL")
+	delete(f, "DeadLetterExchange")
+	delete(f, "DeadLetterRoutingKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRabbitMQServerlessQueueRequest has unknown keys!", "")
 	}
@@ -2911,6 +2988,9 @@ type RabbitMQClusterInfo struct {
 
 	// 消息轨迹保留时间，单位小时
 	TraceTime *uint64 `json:"TraceTime,omitnil,omitempty" name:"TraceTime"`
+
+	// 实例标签列表
+	Tags []*RabbitMQServerlessTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type RabbitMQClusterSpecInfo struct {
@@ -2966,6 +3046,21 @@ type RabbitMQConnection struct {
 
 	// 连接下的channel数
 	Channels *int64 `json:"Channels,omitnil,omitempty" name:"Channels"`
+
+	// 入流量大小，单位 bytes
+	IncomingBytes *float64 `json:"IncomingBytes,omitnil,omitempty" name:"IncomingBytes"`
+
+	// 出流量大小，单位bytes
+	OutgoingBytes *float64 `json:"OutgoingBytes,omitnil,omitempty" name:"OutgoingBytes"`
+
+	// 心跳间隔时间，默认60s
+	Heartbeat *uint64 `json:"Heartbeat,omitnil,omitempty" name:"Heartbeat"`
+
+	// 一个链接最大的channel数，默认1024
+	MaxChannel *uint64 `json:"MaxChannel,omitnil,omitempty" name:"MaxChannel"`
+
+	// 空闲时间点
+	IdleSince *string `json:"IdleSince,omitnil,omitempty" name:"IdleSince"`
 }
 
 type RabbitMQConsumersListInfo struct {
@@ -2974,6 +3069,27 @@ type RabbitMQConsumersListInfo struct {
 
 	// 消费者Tag
 	ConsumerTag *string `json:"ConsumerTag,omitnil,omitempty" name:"ConsumerTag"`
+
+	// 消费目标队列
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// 是否需要消费者手动 ack
+	AckRequired *bool `json:"AckRequired,omitnil,omitempty" name:"AckRequired"`
+
+	// 消费者 qos 值
+	PrefetchCount *uint64 `json:"PrefetchCount,omitnil,omitempty" name:"PrefetchCount"`
+
+	// 消费者状态
+	Active *string `json:"Active,omitnil,omitempty" name:"Active"`
+
+	// 最后一次投递消息时间
+	LastDeliveredTime *string `json:"LastDeliveredTime,omitnil,omitempty" name:"LastDeliveredTime"`
+
+	// 消费者未确认消息数
+	UnAckMsgCount *int64 `json:"UnAckMsgCount,omitnil,omitempty" name:"UnAckMsgCount"`
+
+	// consumer 所属的 channel 
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 }
 
 type RabbitMQExchangeListInfo struct {
@@ -3207,6 +3323,17 @@ type RabbitMQServerlessInstance struct {
 
 	// Serverless 扩展字段
 	ServerlessExt *string `json:"ServerlessExt,omitnil,omitempty" name:"ServerlessExt"`
+
+	// 实例标签列表
+	Tags []*RabbitMQServerlessTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type RabbitMQServerlessTag struct {
+	// 标签键
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type RabbitMQServerlessWhiteListInfo struct {

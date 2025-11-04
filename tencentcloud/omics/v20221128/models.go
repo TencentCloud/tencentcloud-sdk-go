@@ -313,6 +313,14 @@ func (r *CreateVolumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CromwellConfig struct {
+	// 工作流并发数
+	MaxConcurrentWorkflows *uint64 `json:"MaxConcurrentWorkflows,omitnil,omitempty" name:"MaxConcurrentWorkflows"`
+
+	// 作业并发数
+	ConcurrentJobLimit *uint64 `json:"ConcurrentJobLimit,omitnil,omitempty" name:"ConcurrentJobLimit"`
+}
+
 type DatabaseOption struct {
 	// 数据库可用区。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
@@ -1065,6 +1073,9 @@ type Environment struct {
 
 	// 创建时间。
 	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
+
+	// 运行时配置。
+	RuntimeConfig *EnvironmentRuntimeConfig `json:"RuntimeConfig,omitnil,omitempty" name:"RuntimeConfig"`
 }
 
 type EnvironmentConfig struct {
@@ -1085,6 +1096,14 @@ type EnvironmentConfig struct {
 
 	// 安全组配置。
 	SecurityGroupOption *SecurityGroupOption `json:"SecurityGroupOption,omitnil,omitempty" name:"SecurityGroupOption"`
+}
+
+type EnvironmentRuntimeConfig struct {
+	// Cromwell工作流引擎设置
+	CromwellConfig *CromwellConfig `json:"CromwellConfig,omitnil,omitempty" name:"CromwellConfig"`
+
+	// Nextflow工作流引擎设置
+	NextflowConfig *NextflowConfig `json:"NextflowConfig,omitnil,omitempty" name:"NextflowConfig"`
 }
 
 type ExecutionTime struct {
@@ -1562,6 +1581,11 @@ type NFOption struct {
 
 	// 启动路径。可填写指定缓存卷内的绝对路径，nextflow run 命令将在此路径执行。当WorkDir为COS路径时必填；当WorkDir为缓存卷路径时选填，不填默认使用WorkDir作为LaunchDir。
 	LaunchDir *string `json:"LaunchDir,omitnil,omitempty" name:"LaunchDir"`
+}
+
+type NextflowConfig struct {
+	// 工作流任务并发数
+	ExecutorQueueSize *uint64 `json:"ExecutorQueueSize,omitnil,omitempty" name:"ExecutorQueueSize"`
 }
 
 type NotificationType struct {

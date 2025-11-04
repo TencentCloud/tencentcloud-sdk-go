@@ -413,7 +413,7 @@ func NewCreatePrivateDNSAccountResponse() (response *CreatePrivateDNSAccountResp
 }
 
 // CreatePrivateDNSAccount
-// 跨账号关联VPC时绑定其他账号
+// 跨账号关联VPC时，可通过该API接口添加关联账号
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -444,7 +444,7 @@ func (c *Client) CreatePrivateDNSAccount(request *CreatePrivateDNSAccountRequest
 }
 
 // CreatePrivateDNSAccount
-// 跨账号关联VPC时绑定其他账号
+// 跨账号关联VPC时，可通过该API接口添加关联账号
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -995,7 +995,7 @@ func NewDeletePrivateDNSAccountResponse() (response *DeletePrivateDNSAccountResp
 }
 
 // DeletePrivateDNSAccount
-// 删除私有域解析账号
+// 适用于跨账号绑定VPC时需要移除关联账号的场景，解除账号关联后，将无法获取对应账号下的 VPC资源。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1025,7 +1025,7 @@ func (c *Client) DeletePrivateDNSAccount(request *DeletePrivateDNSAccountRequest
 }
 
 // DeletePrivateDNSAccount
-// 删除私有域解析账号
+// 适用于跨账号绑定VPC时需要移除关联账号的场景，解除账号关联后，将无法获取对应账号下的 VPC资源。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1891,7 +1891,7 @@ func NewDescribePrivateDNSAccountListResponse() (response *DescribePrivateDNSAcc
 }
 
 // DescribePrivateDNSAccountList
-// 获取私有域解析账号列表
+// 在跨账号绑定VPC的场景下，可通过该API接口获取所有已关联账号的列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1919,7 +1919,7 @@ func (c *Client) DescribePrivateDNSAccountList(request *DescribePrivateDNSAccoun
 }
 
 // DescribePrivateDNSAccountList
-// 获取私有域解析账号列表
+// 在跨账号绑定VPC的场景下，可通过该API接口获取所有已关联账号的列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

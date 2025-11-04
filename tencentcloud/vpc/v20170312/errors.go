@@ -422,6 +422,9 @@ const (
 	// 私网NAT网关传入规则类型不支持。
 	INVALIDPARAMETERVALUE_PRIVATENATSNATRULENOTSUPPORT = "InvalidParameterValue.PrivateNatSnatRuleNotSupport"
 
+	// 必须携带服务等级。
+	INVALIDPARAMETERVALUE_QOSLEVELREQUIRED = "InvalidParameterValue.QosLevelRequired"
+
 	// 参数值不在指定范围。
 	INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 
@@ -1432,6 +1435,9 @@ const (
 
 	// VPC类型VPN网关必须携带VpcId。
 	UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = "UnsupportedOperation.VpnGwVpcIdMustHave"
+
+	// CCN类型VPN网关 不用携带VpcId
+	UNSUPPORTEDOPERATION_VPNGWVPCIDNOTHAVE = "UnsupportedOperation.VpnGwVpcIdNotHave"
 
 	// VPN不支持BGP
 	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = "UnsupportedOperation.VpnUnsupportedBgp"

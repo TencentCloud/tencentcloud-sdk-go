@@ -8206,6 +8206,9 @@ type CreateVpcRequestParams struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+	EnableRouteVpcPublish *bool `json:"EnableRouteVpcPublish,omitnil,omitempty" name:"EnableRouteVpcPublish"`
 }
 
 type CreateVpcRequest struct {
@@ -8228,6 +8231,9 @@ type CreateVpcRequest struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+	EnableRouteVpcPublish *bool `json:"EnableRouteVpcPublish,omitnil,omitempty" name:"EnableRouteVpcPublish"`
 }
 
 func (r *CreateVpcRequest) ToJsonString() string {
@@ -8248,6 +8254,7 @@ func (r *CreateVpcRequest) FromJsonString(s string) error {
 	delete(f, "DnsServers")
 	delete(f, "DomainName")
 	delete(f, "Tags")
+	delete(f, "EnableRouteVpcPublish")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpcRequest has unknown keys!", "")
 	}
@@ -22293,31 +22300,31 @@ type DestinationIpPortTranslationNatRuleDiff struct {
 	// 协议
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 源端口
+	// 映射前端口
 	OriginalPort *int64 `json:"OriginalPort,omitnil,omitempty" name:"OriginalPort"`
 
-	// 源IP
+	// 映射前IP
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 
-	// 目的端口
+	// 映射后端口
 	TranslationPort *int64 `json:"TranslationPort,omitnil,omitempty" name:"TranslationPort"`
 
-	// 目的IP
+	// 映射后IP
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
 	// 旧协议。
 	OldProtocol *string `json:"OldProtocol,omitnil,omitempty" name:"OldProtocol"`
 
-	// 旧源端口
+	// 旧映射前端口
 	OldOriginalPort *int64 `json:"OldOriginalPort,omitnil,omitempty" name:"OldOriginalPort"`
 
-	// 旧源IP
+	// 旧映射前IP
 	OldOriginalIp *string `json:"OldOriginalIp,omitnil,omitempty" name:"OldOriginalIp"`
 
-	// 旧目的端口
+	// 旧映射后端口
 	OldTranslationPort *int64 `json:"OldTranslationPort,omitnil,omitempty" name:"OldTranslationPort"`
 
-	// 旧目的IP
+	// 旧映射后IP
 	OldTranslationIp *string `json:"OldTranslationIp,omitnil,omitempty" name:"OldTranslationIp"`
 
 	// 描述
@@ -25730,19 +25737,19 @@ type ItemPrice struct {
 }
 
 type LocalDestinationIpPortTranslationNatRule struct {
-	// 协议
+	// 协议，包含TCP和UDP
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 源端口
+	// 映射前端口
 	OriginalPort *int64 `json:"OriginalPort,omitnil,omitempty" name:"OriginalPort"`
 
-	// 源IP
+	// 映射前IP
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 
-	// 目的端口
+	// 映射后端口
 	TranslationPort *int64 `json:"TranslationPort,omitnil,omitempty" name:"TranslationPort"`
 
-	// 目的IP
+	// 映射后IP
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
 	// 描述
@@ -30186,6 +30193,9 @@ type ModifyVpcAttributeRequestParams struct {
 	// 域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
+	// vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+	EnableRouteVpcPublish *bool `json:"EnableRouteVpcPublish,omitnil,omitempty" name:"EnableRouteVpcPublish"`
+
 	// 发布cdc 子网到云联网的开关。true: 发布, false: 不发布。
 	EnableCdcPublish *bool `json:"EnableCdcPublish,omitnil,omitempty" name:"EnableCdcPublish"`
 }
@@ -30208,6 +30218,9 @@ type ModifyVpcAttributeRequest struct {
 	// 域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
+	// vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+	EnableRouteVpcPublish *bool `json:"EnableRouteVpcPublish,omitnil,omitempty" name:"EnableRouteVpcPublish"`
+
 	// 发布cdc 子网到云联网的开关。true: 发布, false: 不发布。
 	EnableCdcPublish *bool `json:"EnableCdcPublish,omitnil,omitempty" name:"EnableCdcPublish"`
 }
@@ -30229,6 +30242,7 @@ func (r *ModifyVpcAttributeRequest) FromJsonString(s string) error {
 	delete(f, "EnableMulticast")
 	delete(f, "DnsServers")
 	delete(f, "DomainName")
+	delete(f, "EnableRouteVpcPublish")
 	delete(f, "EnableCdcPublish")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpcAttributeRequest has unknown keys!", "")
@@ -31763,16 +31777,16 @@ type PrivateNatDestinationIpPortTranslationNatRule struct {
 	// 协议
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 原端口
+	// 映射前端口
 	OriginalPort *int64 `json:"OriginalPort,omitnil,omitempty" name:"OriginalPort"`
 
-	// 原IP
+	// 映射前IP
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 
-	// 映射端口
+	// 映射后端口
 	TranslationPort *int64 `json:"TranslationPort,omitnil,omitempty" name:"TranslationPort"`
 
-	// 映射IP
+	// 映射后IP
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
 	// 描述
@@ -31810,7 +31824,7 @@ type PrivateNatGateway struct {
 	// 专线网关唯一`ID`
 	DirectConnectGatewayIds []*string `json:"DirectConnectGatewayIds,omitnil,omitempty" name:"DirectConnectGatewayIds"`
 
-	// 私网网关类型
+	// 私网网关类型。可选类型："DCG","VPC","CCN"，分别对应专线网关、私有网络、云联网。
 	NatType *string `json:"NatType,omitnil,omitempty" name:"NatType"`
 
 	// 私网NAT跨域信息
@@ -34913,7 +34927,7 @@ type SourceIpTranslationNatRule struct {
 	// 资源ID，如果ResourceType为USERDEFINED，可以为空字符串
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED
+	// 资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED，分别表示子网、网卡、自定义网段
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 源IP/网段
@@ -35505,16 +35519,16 @@ type TranslationNatRule struct {
 	// 转换规则目标，可选值"LOCAL","PEER"。
 	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
 
-	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。分别对应三层和四层。
 	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
 
-	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	// 映射后IP,当转换规则类型为四层时为`IP`池。
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
 	// 转换规则描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 源`IP`,当转换规则类型为三层时有效。
+	// 映射前IP,当转换规则类型为三层时有效。
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 
 	// 创建时间。
@@ -35528,22 +35542,22 @@ type TranslationNatRuleDiff struct {
 	// 转发规则目标，可选值"LOCAL","PEER"。
 	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
 
-	// 转发规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。分别对应三层、四层。
 	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
 
-	// 转发规则映射`IP`,当转发规则类型为四层时为`IP`池
+	// 转发规则映射后`IP`,当转发规则类型为四层时为`IP`池
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
+
+	// 旧转发规则映射后`IP`,当转发规则类型为四层时为`IP`池
+	OldTranslationIp *string `json:"OldTranslationIp,omitnil,omitempty" name:"OldTranslationIp"`
 
 	// 转发规则描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 旧转发规则映射`IP`,当转发规则类型为四层时为`IP`池
-	OldTranslationIp *string `json:"OldTranslationIp,omitnil,omitempty" name:"OldTranslationIp"`
-
-	// 新转发规则源`IP`,当转发规则类型为三层时有效
+	// 新转发规则映射前`IP`,当转发规则类型为三层时有效
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 
-	// 旧转发规则源`IP`,当转发规则类型为三层时有效
+	// 旧转发规则映射前`IP`,当转发规则类型为三层时有效
 	OldOriginalIp *string `json:"OldOriginalIp,omitnil,omitempty" name:"OldOriginalIp"`
 }
 
@@ -35551,16 +35565,16 @@ type TranslationNatRuleInput struct {
 	// 转换规则目标，可选值"LOCAL","PEER"。
 	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
 
-	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。分别对应三层、四层。
 	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
 
-	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	// 映射后`IP`,当转换规则类型为四层时为`IP`池。
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
 	// 转换规则描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 源`IP`,当转换规则类型为三层时有效。
+	// 映射前`IP`,当转换规则类型为三层时有效。
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 }
 
@@ -36134,6 +36148,9 @@ type Vpc struct {
 
 	// 辅助CIDR
 	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitnil,omitempty" name:"AssistantCidrSet"`
+
+	// vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+	EnableRouteVpcPublish *bool `json:"EnableRouteVpcPublish,omitnil,omitempty" name:"EnableRouteVpcPublish"`
 
 	// 返回多运营商IPv6 Cidr Block
 	Ipv6CidrBlockSet []*ISPIPv6CidrBlock `json:"Ipv6CidrBlockSet,omitnil,omitempty" name:"Ipv6CidrBlockSet"`

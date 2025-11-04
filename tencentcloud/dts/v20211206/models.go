@@ -143,6 +143,12 @@ type CompareDetailInfo struct {
 
 	// 数据行不一致的详情，mongodb业务用到
 	DifferenceRow *DifferenceRowDetail `json:"DifferenceRow,omitnil,omitempty" name:"DifferenceRow"`
+
+	// 表结构不一致详情，pg用
+	DifferenceSchema *DifferenceSchemaDetail `json:"DifferenceSchema,omitnil,omitempty" name:"DifferenceSchema"`
+
+	// 对象owner不一致详情，pg用
+	DifferenceOwner *DifferenceOwnerDetail `json:"DifferenceOwner,omitnil,omitempty" name:"DifferenceOwner"`
 }
 
 type CompareObject struct {
@@ -3705,6 +3711,15 @@ type DifferenceItem struct {
 	FinishedAt *string `json:"FinishedAt,omitnil,omitempty" name:"FinishedAt"`
 }
 
+type DifferenceOwnerDetail struct {
+	// owner不一致总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// owner不一致详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*OwnerDifference `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
 type DifferenceRowDetail struct {
 	// 不一致总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
@@ -3712,6 +3727,15 @@ type DifferenceRowDetail struct {
 	// 不一致列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*RowsCountDifference `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type DifferenceSchemaDetail struct {
+	// 表结构不一致的数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 表结构不一致信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*SchemaDifference `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 type DistributeRule struct {
@@ -5448,6 +5472,26 @@ type Options struct {
 	FilterCheckpoint *bool `json:"FilterCheckpoint,omitnil,omitempty" name:"FilterCheckpoint"`
 }
 
+type OwnerDifference struct {
+	// owner不一致的pg对象所在库
+	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
+
+	// owner不一致的pg对象所在schema
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// owner不一致的pg对象名
+	ObjectName *string `json:"ObjectName,omitnil,omitempty" name:"ObjectName"`
+
+	// owner不一致的pg对象类型
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// 源库对象owner
+	SrcOwner *string `json:"SrcOwner,omitnil,omitempty" name:"SrcOwner"`
+
+	// 目标库对象owner
+	DstOwner *string `json:"DstOwner,omitnil,omitempty" name:"DstOwner"`
+}
+
 type PartitionAssignment struct {
 	// 消费者的clientId
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
@@ -6194,6 +6238,23 @@ type RowsCountDifference struct {
 
 	// 目标端行数
 	DstCount *int64 `json:"DstCount,omitnil,omitempty" name:"DstCount"`
+}
+
+type SchemaDifference struct {
+	// 结构不一致的表所在库
+	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
+
+	// 结构不一致的表所在schema
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 结构不一致的表
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 源库表结构
+	SrcSchema *string `json:"SrcSchema,omitnil,omitempty" name:"SrcSchema"`
+
+	// 目标库表结构
+	DstSchema *string `json:"DstSchema,omitnil,omitempty" name:"DstSchema"`
 }
 
 // Predefined struct for user

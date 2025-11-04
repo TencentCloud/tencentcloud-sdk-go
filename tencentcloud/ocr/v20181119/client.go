@@ -3410,6 +3410,7 @@ func NewHmtResidentPermitOCRResponse() (response *HmtResidentPermitOCRResponse) 
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
+//  FAILEDOPERATION_NOTAPPOINTCARD = "FailedOperation.NotAppointCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
@@ -3434,6 +3435,7 @@ func (c *Client) HmtResidentPermitOCR(request *HmtResidentPermitOCRRequest) (res
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
+//  FAILEDOPERATION_NOTAPPOINTCARD = "FailedOperation.NotAppointCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
@@ -3803,94 +3805,6 @@ func (c *Client) ImageEnhancementWithContext(ctx context.Context, request *Image
     request.SetContext(ctx)
     
     response = NewImageEnhancementResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewInstitutionOCRRequest() (request *InstitutionOCRRequest) {
-    request = &InstitutionOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "InstitutionOCR")
-    
-    
-    return
-}
-
-func NewInstitutionOCRResponse() (response *InstitutionOCRResponse) {
-    response = &InstitutionOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// InstitutionOCR
-// 不再维护，功能已切到其它接口
-//
-// 
-//
-// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
-//
-// 本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) InstitutionOCR(request *InstitutionOCRRequest) (response *InstitutionOCRResponse, err error) {
-    return c.InstitutionOCRWithContext(context.Background(), request)
-}
-
-// InstitutionOCR
-// 不再维护，功能已切到其它接口
-//
-// 
-//
-// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
-//
-// 本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) InstitutionOCRWithContext(ctx context.Context, request *InstitutionOCRRequest) (response *InstitutionOCRResponse, err error) {
-    if request == nil {
-        request = NewInstitutionOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "InstitutionOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("InstitutionOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewInstitutionOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -4523,92 +4437,6 @@ func (c *Client) MixedInvoiceOCRWithContext(ctx context.Context, request *MixedI
     return
 }
 
-func NewOrgCodeCertOCRRequest() (request *OrgCodeCertOCRRequest) {
-    request = &OrgCodeCertOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "OrgCodeCertOCR")
-    
-    
-    return
-}
-
-func NewOrgCodeCertOCRResponse() (response *OrgCodeCertOCRResponse) {
-    response = &OrgCodeCertOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// OrgCodeCertOCR
-// 不再维护，功能已切到其它接口
-//
-// 
-//
-// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
-//
-// 本接口支持组织机构代码证关键字段的识别，包括代码、有效期、地址、机构名称等。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) OrgCodeCertOCR(request *OrgCodeCertOCRRequest) (response *OrgCodeCertOCRResponse, err error) {
-    return c.OrgCodeCertOCRWithContext(context.Background(), request)
-}
-
-// OrgCodeCertOCR
-// 不再维护，功能已切到其它接口
-//
-// 
-//
-// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
-//
-// 本接口支持组织机构代码证关键字段的识别，包括代码、有效期、地址、机构名称等。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) OrgCodeCertOCRWithContext(ctx context.Context, request *OrgCodeCertOCRRequest) (response *OrgCodeCertOCRResponse, err error) {
-    if request == nil {
-        request = NewOrgCodeCertOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "OrgCodeCertOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("OrgCodeCertOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewOrgCodeCertOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewPassportOCRRequest() (request *PassportOCRRequest) {
     request = &PassportOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4765,104 +4593,6 @@ func (c *Client) PermitOCRWithContext(ctx context.Context, request *PermitOCRReq
     request.SetContext(ctx)
     
     response = NewPermitOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewPropOwnerCertOCRRequest() (request *PropOwnerCertOCRRequest) {
-    request = &PropOwnerCertOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "PropOwnerCertOCR")
-    
-    
-    return
-}
-
-func NewPropOwnerCertOCRResponse() (response *PropOwnerCertOCRResponse) {
-    response = &PropOwnerCertOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// PropOwnerCertOCR
-// 不再维护，功能已切到其它接口
-//
-// 
-//
-// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
-//
-// 本接口支持房产证关键字段的识别，包括房地产权利人、共有情况、登记时间、规划用途、房屋性质、房屋坐落等。
-//
-// 目前接口对合肥、成都、佛山三个城市的房产证版式识别较好。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_LANGUAGENOTSUPPORT = "FailedOperation.LanguageNotSupport"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) PropOwnerCertOCR(request *PropOwnerCertOCRRequest) (response *PropOwnerCertOCRResponse, err error) {
-    return c.PropOwnerCertOCRWithContext(context.Background(), request)
-}
-
-// PropOwnerCertOCR
-// 不再维护，功能已切到其它接口
-//
-// 
-//
-// <b>因技术原因，本接口将不再迭代升级。文档抽取(基础版)可支持此类证书的识别抽取，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/119452">文档抽取（基础版）</a>。</b>
-//
-// 本接口支持房产证关键字段的识别，包括房地产权利人、共有情况、登记时间、规划用途、房屋性质、房屋坐落等。
-//
-// 目前接口对合肥、成都、佛山三个城市的房产证版式识别较好。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_LANGUAGENOTSUPPORT = "FailedOperation.LanguageNotSupport"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) PropOwnerCertOCRWithContext(ctx context.Context, request *PropOwnerCertOCRRequest) (response *PropOwnerCertOCRResponse, err error) {
-    if request == nil {
-        request = NewPropOwnerCertOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "PropOwnerCertOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("PropOwnerCertOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewPropOwnerCertOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -5617,86 +5347,6 @@ func (c *Client) RecognizeEncryptedIDCardOCRWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewRecognizeEncryptedIDCardOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRecognizeForeignPermanentResidentIdCardRequest() (request *RecognizeForeignPermanentResidentIdCardRequest) {
-    request = &RecognizeForeignPermanentResidentIdCardRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeForeignPermanentResidentIdCard")
-    
-    
-    return
-}
-
-func NewRecognizeForeignPermanentResidentIdCardResponse() (response *RecognizeForeignPermanentResidentIdCardResponse) {
-    response = &RecognizeForeignPermanentResidentIdCardResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RecognizeForeignPermanentResidentIdCard
-// 不再维护，功能已切到其它接口
-//
-// 
-//
-// <b>因技术原因，本接口将不再迭代升级。有效身份证件识别（鉴伪版）可支持此类证件的识别，并包含质量和PS告警，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/112345">有效身份证件识别（鉴伪版）</a>。</b>
-//
-// 外国人永久居留身份证识别
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeForeignPermanentResidentIdCard(request *RecognizeForeignPermanentResidentIdCardRequest) (response *RecognizeForeignPermanentResidentIdCardResponse, err error) {
-    return c.RecognizeForeignPermanentResidentIdCardWithContext(context.Background(), request)
-}
-
-// RecognizeForeignPermanentResidentIdCard
-// 不再维护，功能已切到其它接口
-//
-// 
-//
-// <b>因技术原因，本接口将不再迭代升级。有效身份证件识别（鉴伪版）可支持此类证件的识别，并包含质量和PS告警，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/112345">有效身份证件识别（鉴伪版）</a>。</b>
-//
-// 外国人永久居留身份证识别
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeForeignPermanentResidentIdCardWithContext(ctx context.Context, request *RecognizeForeignPermanentResidentIdCardRequest) (response *RecognizeForeignPermanentResidentIdCardResponse, err error) {
-    if request == nil {
-        request = NewRecognizeForeignPermanentResidentIdCardRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "RecognizeForeignPermanentResidentIdCard")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RecognizeForeignPermanentResidentIdCard require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRecognizeForeignPermanentResidentIdCardResponse()
     err = c.Send(request, response)
     return
 }
@@ -6723,86 +6373,6 @@ func (c *Client) RecognizeGeneralInvoiceWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewRecognizeGeneralInvoiceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRecognizeGeneralTextImageWarnRequest() (request *RecognizeGeneralTextImageWarnRequest) {
-    request = &RecognizeGeneralTextImageWarnRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeGeneralTextImageWarn")
-    
-    
-    return
-}
-
-func NewRecognizeGeneralTextImageWarnResponse() (response *RecognizeGeneralTextImageWarnResponse) {
-    response = &RecognizeGeneralTextImageWarnResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RecognizeGeneralTextImageWarn
-// 不再维护，功能已切到其它接口
-//
-// 
-//
-// <b>因技术原因，本接口将不再迭代升级。通用卡证鉴伪可支持更多告警类型，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/115916">通用卡证鉴伪</a>。</b>
-//
-// 本接口支持多种类型证件有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能。可以应用于各种证件信息有效性校验场景，例如银行开户、用户注册等场景。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeGeneralTextImageWarn(request *RecognizeGeneralTextImageWarnRequest) (response *RecognizeGeneralTextImageWarnResponse, err error) {
-    return c.RecognizeGeneralTextImageWarnWithContext(context.Background(), request)
-}
-
-// RecognizeGeneralTextImageWarn
-// 不再维护，功能已切到其它接口
-//
-// 
-//
-// <b>因技术原因，本接口将不再迭代升级。通用卡证鉴伪可支持更多告警类型，效果、功能更强并将持续迭代优化，建议使用<a href="https://cloud.tencent.com/document/product/866/115916">通用卡证鉴伪</a>。</b>
-//
-// 本接口支持多种类型证件有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能。可以应用于各种证件信息有效性校验场景，例如银行开户、用户注册等场景。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeGeneralTextImageWarnWithContext(ctx context.Context, request *RecognizeGeneralTextImageWarnRequest) (response *RecognizeGeneralTextImageWarnResponse, err error) {
-    if request == nil {
-        request = NewRecognizeGeneralTextImageWarnRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "RecognizeGeneralTextImageWarn")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RecognizeGeneralTextImageWarn require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRecognizeGeneralTextImageWarnResponse()
     err = c.Send(request, response)
     return
 }

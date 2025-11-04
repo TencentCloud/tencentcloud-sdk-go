@@ -913,6 +913,56 @@ func (c *Client) DescribeApplicationListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeAuditResultExternalRequest() (request *DescribeAuditResultExternalRequest) {
+    request = &DescribeAuditResultExternalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "DescribeAuditResultExternal")
+    
+    
+    return
+}
+
+func NewDescribeAuditResultExternalResponse() (response *DescribeAuditResultExternalResponse) {
+    response = &DescribeAuditResultExternalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuditResultExternal
+// 获审核结果明细（外部API）
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDSDKAPPID = "InvalidParameter.InvalidSdkAppId"
+func (c *Client) DescribeAuditResultExternal(request *DescribeAuditResultExternalRequest) (response *DescribeAuditResultExternalResponse, err error) {
+    return c.DescribeAuditResultExternalWithContext(context.Background(), request)
+}
+
+// DescribeAuditResultExternal
+// 获审核结果明细（外部API）
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDSDKAPPID = "InvalidParameter.InvalidSdkAppId"
+func (c *Client) DescribeAuditResultExternalWithContext(ctx context.Context, request *DescribeAuditResultExternalRequest) (response *DescribeAuditResultExternalResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditResultExternalRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "DescribeAuditResultExternal")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditResultExternal require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditResultExternalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRealtimeScanConfigRequest() (request *DescribeRealtimeScanConfigRequest) {
     request = &DescribeRealtimeScanConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2419,7 +2469,7 @@ func NewStartAIConversationResponse() (response *StartAIConversationResponse) {
 //
 // 
 //
-// GME AI对话功能内置语音转文本能力，同时提供通道服务，即客户可灵活指定第三方AI模型（LLM）服务和文本转音频（TTS)服务，更多[功能说明](https://cloud.tencent.com/document/product/647/108901)。
+// GME AI对话功能内置语音转文本能力，同时提供通道服务，即客户可灵活指定第三方AI模型（LLM）服务和文本转音频（TTS）服务，更多[功能说明](https://cloud.tencent.com/document/product/647/108901)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"
@@ -2436,7 +2486,7 @@ func (c *Client) StartAIConversation(request *StartAIConversationRequest) (respo
 //
 // 
 //
-// GME AI对话功能内置语音转文本能力，同时提供通道服务，即客户可灵活指定第三方AI模型（LLM）服务和文本转音频（TTS)服务，更多[功能说明](https://cloud.tencent.com/document/product/647/108901)。
+// GME AI对话功能内置语音转文本能力，同时提供通道服务，即客户可灵活指定第三方AI模型（LLM）服务和文本转音频（TTS）服务，更多[功能说明](https://cloud.tencent.com/document/product/647/108901)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTABILITY = "FailedOperation.NotAbility"

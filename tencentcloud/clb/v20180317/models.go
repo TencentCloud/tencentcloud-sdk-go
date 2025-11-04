@@ -21,145 +21,6 @@ import (
 )
 
 // Predefined struct for user
-type AddCustomizedConfigRequestParams struct {
-	// 配置名字
-	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
-
-	// 配置类型，取值范围["CLB", "SERVER", "LOCATION"]，分别表示CLB配置，server配置，location配置。
-	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
-
-	// 配置内容
-	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
-
-	// 标签
-	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
-}
-
-type AddCustomizedConfigRequest struct {
-	*tchttp.BaseRequest
-	
-	// 配置名字
-	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
-
-	// 配置类型，取值范围["CLB", "SERVER", "LOCATION"]，分别表示CLB配置，server配置，location配置。
-	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
-
-	// 配置内容
-	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
-
-	// 标签
-	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
-}
-
-func (r *AddCustomizedConfigRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AddCustomizedConfigRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ConfigName")
-	delete(f, "ConfigType")
-	delete(f, "ConfigContent")
-	delete(f, "Tags")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomizedConfigRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type AddCustomizedConfigResponseParams struct {
-	// 配置ID
-	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type AddCustomizedConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *AddCustomizedConfigResponseParams `json:"Response"`
-}
-
-func (r *AddCustomizedConfigResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AddCustomizedConfigResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type AssociateCustomizedConfigRequestParams struct {
-	// 配置ID
-	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
-
-	// 关联的server或location
-	BindList []*BindItem `json:"BindList,omitnil,omitempty" name:"BindList"`
-}
-
-type AssociateCustomizedConfigRequest struct {
-	*tchttp.BaseRequest
-	
-	// 配置ID
-	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
-
-	// 关联的server或location
-	BindList []*BindItem `json:"BindList,omitnil,omitempty" name:"BindList"`
-}
-
-func (r *AssociateCustomizedConfigRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AssociateCustomizedConfigRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "UconfigId")
-	delete(f, "BindList")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateCustomizedConfigRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type AssociateCustomizedConfigResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type AssociateCustomizedConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *AssociateCustomizedConfigResponseParams `json:"Response"`
-}
-
-func (r *AssociateCustomizedConfigResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AssociateCustomizedConfigResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type AssociateTargetGroupsRequestParams struct {
 	// 绑定的关系数组，目标组类型需要一致。
 	// 一次请求最多支持20个。
@@ -689,20 +550,6 @@ type BindDetailItem struct {
 
 	// 配置ID
 	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
-}
-
-type BindItem struct {
-	// 配置绑定的CLB ID
-	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
-
-	// 配置绑定的监听器ID
-	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
-
-	// 配置绑定的域名
-	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
-
-	// 配置绑定的规则
-	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 }
 
 type BlockedIP struct {
@@ -1403,6 +1250,21 @@ type CreateListenerRequestParams struct {
 
 	// 数据压缩模式。可选值：transparent（透传模式）、compatibility（兼容模式）
 	DataCompressMode *string `json:"DataCompressMode,omitnil,omitempty" name:"DataCompressMode"`
+
+	// 重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。
+	RescheduleTargetZeroWeight *bool `json:"RescheduleTargetZeroWeight,omitnil,omitempty" name:"RescheduleTargetZeroWeight"`
+
+	// 重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。
+	RescheduleUnhealthy *bool `json:"RescheduleUnhealthy,omitnil,omitempty" name:"RescheduleUnhealthy"`
+
+	// 重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。
+	RescheduleExpandTarget *bool `json:"RescheduleExpandTarget,omitnil,omitempty" name:"RescheduleExpandTarget"`
+
+	// 重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。
+	RescheduleStartTime *int64 `json:"RescheduleStartTime,omitnil,omitempty" name:"RescheduleStartTime"`
+
+	// 重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。
+	RescheduleInterval *int64 `json:"RescheduleInterval,omitnil,omitempty" name:"RescheduleInterval"`
 }
 
 type CreateListenerRequest struct {
@@ -1489,6 +1351,21 @@ type CreateListenerRequest struct {
 
 	// 数据压缩模式。可选值：transparent（透传模式）、compatibility（兼容模式）
 	DataCompressMode *string `json:"DataCompressMode,omitnil,omitempty" name:"DataCompressMode"`
+
+	// 重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。
+	RescheduleTargetZeroWeight *bool `json:"RescheduleTargetZeroWeight,omitnil,omitempty" name:"RescheduleTargetZeroWeight"`
+
+	// 重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。
+	RescheduleUnhealthy *bool `json:"RescheduleUnhealthy,omitnil,omitempty" name:"RescheduleUnhealthy"`
+
+	// 重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。
+	RescheduleExpandTarget *bool `json:"RescheduleExpandTarget,omitnil,omitempty" name:"RescheduleExpandTarget"`
+
+	// 重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。
+	RescheduleStartTime *int64 `json:"RescheduleStartTime,omitnil,omitempty" name:"RescheduleStartTime"`
+
+	// 重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。
+	RescheduleInterval *int64 `json:"RescheduleInterval,omitnil,omitempty" name:"RescheduleInterval"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {
@@ -1527,6 +1404,11 @@ func (r *CreateListenerRequest) FromJsonString(s string) error {
 	delete(f, "H2cSwitch")
 	delete(f, "SslCloseSwitch")
 	delete(f, "DataCompressMode")
+	delete(f, "RescheduleTargetZeroWeight")
+	delete(f, "RescheduleUnhealthy")
+	delete(f, "RescheduleExpandTarget")
+	delete(f, "RescheduleStartTime")
+	delete(f, "RescheduleInterval")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateListenerRequest has unknown keys!", "")
 	}
@@ -1583,7 +1465,7 @@ type CreateLoadBalancerRequestParams struct {
 	// 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
 	AddressIPVersion *string `json:"AddressIPVersion,omitnil,omitempty" name:"AddressIPVersion"`
 
-	// 创建负载均衡的个数，默认值 1。创建个数不能超过帐号所能创建的最大值，默认创建最大值为20。
+	// 创建负载均衡的个数，默认值 1。创建个数不能超过账号所能创建的最大值，默认创建最大值为20。
 	Number *uint64 `json:"Number,omitnil,omitempty" name:"Number"`
 
 	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID， 可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1
@@ -1686,7 +1568,7 @@ type CreateLoadBalancerRequest struct {
 	// 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
 	AddressIPVersion *string `json:"AddressIPVersion,omitnil,omitempty" name:"AddressIPVersion"`
 
-	// 创建负载均衡的个数，默认值 1。创建个数不能超过帐号所能创建的最大值，默认创建最大值为20。
+	// 创建负载均衡的个数，默认值 1。创建个数不能超过账号所能创建的最大值，默认创建最大值为20。
 	Number *uint64 `json:"Number,omitnil,omitempty" name:"Number"`
 
 	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID， 可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1
@@ -2250,60 +2132,6 @@ type CrossTargets struct {
 }
 
 // Predefined struct for user
-type DeleteCustomizedConfigRequestParams struct {
-	// 删除的配置ID列表
-	UconfigIdList []*string `json:"UconfigIdList,omitnil,omitempty" name:"UconfigIdList"`
-}
-
-type DeleteCustomizedConfigRequest struct {
-	*tchttp.BaseRequest
-	
-	// 删除的配置ID列表
-	UconfigIdList []*string `json:"UconfigIdList,omitnil,omitempty" name:"UconfigIdList"`
-}
-
-func (r *DeleteCustomizedConfigRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteCustomizedConfigRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "UconfigIdList")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomizedConfigRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteCustomizedConfigResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteCustomizedConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteCustomizedConfigResponseParams `json:"Response"`
-}
-
-func (r *DeleteCustomizedConfigResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteCustomizedConfigResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DeleteListenerRequestParams struct {
 	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
@@ -2430,9 +2258,9 @@ type DeleteLoadBalancerRequestParams struct {
 	// 要删除的负载均衡实例 ID 数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取，数组大小最大支持20。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 是否强制删除clb。True表示强制删除，False表示不是强制删除，需要做拦截校验。
-	// 默认为 False。
-	// 以下几种情况会默认拦截删除操作，如果确认强制删除则需要传强制校验参数ForceDelete为True。
+	// 是否强制删除clb。true表示强制删除，false表示不是强制删除，需要做拦截校验。
+	// 默认为false。
+	// 以下几种情况会默认拦截删除操作，如果触发情况1、2但确认强制删除则需要传强制校验参数ForceDelete为true。
 	// 1、删除后端绑定大于等于 20 个 RS 的实例时。
 	// 2、删除后端有 RS 且 5 分钟 内“出/入带宽”峰值取大 > 10Mbps 的实例时。
 	// 3、单地域内 5 分钟 内删除大于等于 30 个实例时。
@@ -2445,9 +2273,9 @@ type DeleteLoadBalancerRequest struct {
 	// 要删除的负载均衡实例 ID 数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取，数组大小最大支持20。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 是否强制删除clb。True表示强制删除，False表示不是强制删除，需要做拦截校验。
-	// 默认为 False。
-	// 以下几种情况会默认拦截删除操作，如果确认强制删除则需要传强制校验参数ForceDelete为True。
+	// 是否强制删除clb。true表示强制删除，false表示不是强制删除，需要做拦截校验。
+	// 默认为false。
+	// 以下几种情况会默认拦截删除操作，如果触发情况1、2但确认强制删除则需要传强制校验参数ForceDelete为true。
 	// 1、删除后端绑定大于等于 20 个 RS 的实例时。
 	// 2、删除后端有 RS 且 5 分钟 内“出/入带宽”峰值取大 > 10Mbps 的实例时。
 	// 3、单地域内 5 分钟 内删除大于等于 30 个实例时。
@@ -5621,67 +5449,6 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DisassociateCustomizedConfigRequestParams struct {
-	// 配置ID
-	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
-
-	// 解绑的列表
-	BindList []*BindItem `json:"BindList,omitnil,omitempty" name:"BindList"`
-}
-
-type DisassociateCustomizedConfigRequest struct {
-	*tchttp.BaseRequest
-	
-	// 配置ID
-	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
-
-	// 解绑的列表
-	BindList []*BindItem `json:"BindList,omitnil,omitempty" name:"BindList"`
-}
-
-func (r *DisassociateCustomizedConfigRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DisassociateCustomizedConfigRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "UconfigId")
-	delete(f, "BindList")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateCustomizedConfigRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DisassociateCustomizedConfigResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DisassociateCustomizedConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *DisassociateCustomizedConfigResponseParams `json:"Response"`
-}
-
-func (r *DisassociateCustomizedConfigResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DisassociateCustomizedConfigResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DisassociateTargetGroupsRequestParams struct {
 	// 待解绑的规则关系数组，支持批量解绑多个监听器，单次批量解除最多20个。
 	Associations []*TargetGroupAssociation `json:"Associations,omitnil,omitempty" name:"Associations"`
@@ -7119,74 +6886,6 @@ func (r *ModifyBlockIPListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type ModifyCustomizedConfigRequestParams struct {
-	// 配置名字
-	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
-
-	// 配置ID
-	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
-
-	// 配置内容
-	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
-}
-
-type ModifyCustomizedConfigRequest struct {
-	*tchttp.BaseRequest
-	
-	// 配置名字
-	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
-
-	// 配置ID
-	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
-
-	// 配置内容
-	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
-}
-
-func (r *ModifyCustomizedConfigRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyCustomizedConfigRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ConfigName")
-	delete(f, "UconfigId")
-	delete(f, "ConfigContent")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomizedConfigRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyCustomizedConfigResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ModifyCustomizedConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *ModifyCustomizedConfigResponseParams `json:"Response"`
-}
-
-func (r *ModifyCustomizedConfigResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyCustomizedConfigResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type ModifyDomainAttributesRequestParams struct {
 	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
@@ -7549,6 +7248,21 @@ type ModifyListenerRequestParams struct {
 
 	// 数据压缩模式
 	DataCompressMode *string `json:"DataCompressMode,omitnil,omitempty" name:"DataCompressMode"`
+
+	// 重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。
+	RescheduleTargetZeroWeight *bool `json:"RescheduleTargetZeroWeight,omitnil,omitempty" name:"RescheduleTargetZeroWeight"`
+
+	// 重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。 
+	RescheduleUnhealthy *bool `json:"RescheduleUnhealthy,omitnil,omitempty" name:"RescheduleUnhealthy"`
+
+	// 重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。
+	RescheduleExpandTarget *bool `json:"RescheduleExpandTarget,omitnil,omitempty" name:"RescheduleExpandTarget"`
+
+	// 重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。
+	RescheduleStartTime *int64 `json:"RescheduleStartTime,omitnil,omitempty" name:"RescheduleStartTime"`
+
+	// 重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。
+	RescheduleInterval *int64 `json:"RescheduleInterval,omitnil,omitempty" name:"RescheduleInterval"`
 }
 
 type ModifyListenerRequest struct {
@@ -7621,6 +7335,21 @@ type ModifyListenerRequest struct {
 
 	// 数据压缩模式
 	DataCompressMode *string `json:"DataCompressMode,omitnil,omitempty" name:"DataCompressMode"`
+
+	// 重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。
+	RescheduleTargetZeroWeight *bool `json:"RescheduleTargetZeroWeight,omitnil,omitempty" name:"RescheduleTargetZeroWeight"`
+
+	// 重新调度功能，健康检查异常开关，打开此开关，后端服务器健康检查异常时触发重新调度。仅TCP/UDP监听器支持。 
+	RescheduleUnhealthy *bool `json:"RescheduleUnhealthy,omitnil,omitempty" name:"RescheduleUnhealthy"`
+
+	// 重新调度功能，扩容后端服务开关，打开此开关，后端服务器增加或者减少时触发重新调度。仅TCP/UDP监听器支持。
+	RescheduleExpandTarget *bool `json:"RescheduleExpandTarget,omitnil,omitempty" name:"RescheduleExpandTarget"`
+
+	// 重新调度触发开始时间，取值0~3600s。仅TCP/UDP监听器支持。
+	RescheduleStartTime *int64 `json:"RescheduleStartTime,omitnil,omitempty" name:"RescheduleStartTime"`
+
+	// 重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。
+	RescheduleInterval *int64 `json:"RescheduleInterval,omitnil,omitempty" name:"RescheduleInterval"`
 }
 
 func (r *ModifyListenerRequest) ToJsonString() string {
@@ -7654,6 +7383,11 @@ func (r *ModifyListenerRequest) FromJsonString(s string) error {
 	delete(f, "ProxyProtocol")
 	delete(f, "SnatEnable")
 	delete(f, "DataCompressMode")
+	delete(f, "RescheduleTargetZeroWeight")
+	delete(f, "RescheduleUnhealthy")
+	delete(f, "RescheduleExpandTarget")
+	delete(f, "RescheduleStartTime")
+	delete(f, "RescheduleInterval")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyListenerRequest has unknown keys!", "")
 	}

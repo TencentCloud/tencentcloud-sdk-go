@@ -446,6 +446,40 @@ type AddOnSubtitle struct {
 	DefaultTrack *bool `json:"DefaultTrack,omitnil,omitempty" name:"DefaultTrack"`
 }
 
+type AdvancedSuperResolutionConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>standard：通用超分</li>
+	// <li>super：高级超分。</li>
+	// 默认值：standard。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 输出图片模式，默认percent。
+	// <li> aspect: 超分至指定宽高的较大矩形。</li>
+	// <li> fixed: 超分至固定宽高，强制缩放。</li>
+	// <li> percent: 超分倍率，可以为小数。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 超分倍率，可以为小数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percent *float64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+
+	// 目标图片宽度，不能超过4096。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 目标图片高度，不能超过4096。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+}
+
 type AiAnalysisResult struct {
 	// 任务的类型，可以取的值有：
 	// <li>Classification：智能分类</li>
@@ -3526,7 +3560,25 @@ type CosFileUploadTrigger struct {
 	// 工作流绑定的输入路径目录，必须为绝对路径，即以 `/` 开头和结尾。如`/movie/201907/`，不填代表根目录`/`。
 	Dir *string `json:"Dir,omitnil,omitempty" name:"Dir"`
 
-	// 工作流允许触发的文件格式列表，如 ["mp4", "flv", "mov"]。不填代表所有格式的文件都可以触发工作流。
+	// 支持的所有格式如下：
+	// 
+	// - 视频文件扩展名，支持以下选择，共15种：
+	// `.mp4`、`.avi`、`.mov`、`.wmv`、`.flv`、`.mkv`、`.mpg`、`.mpeg`、`.rm`、`.rmvb`、`.asf`、`.3gp`、`.webm`、`.ts`、`.m4v`
+	// 
+	// - 音频文件扩展名，支持以下选择，共7种：
+	// `.mp3`、`.wav`、`.aac`、`.flac`、`.ogg`、`.m4a`、`.amr`
+	// 
+	// - 字幕文件扩展名，支持以下选择，共2种：
+	// `.vtt`、`.srt`
+	// 
+	// - `*`：支持任意文件格式
+	// 
+	// - 不传或者传空列表：支持系统预设文件格式（视频：`.mp4`、`.ts`、`.flv`、`.wmv`、`.asf`、`.rm`、`.rmvb`、`.mpg`、`.mpeg`、`.3gp`、`.mov`、`.webm`、`.mkv`、`.avi`、`.m4v`，音频：`.mp3`、`.m4a`、`.flac`、`.ogg`、`.wav`、`.amr`、`.aac`，字幕：`.vtt`、`.srt`）
+	// 
+	// **注意**：
+	// 1. 如果传入的格式列表中有`*`则表示为支持任意文件格式。
+	// 2. 扩展名传入时带不带`.`都可以，比如 `.mp4` 或 `mp4` 均支持。
+	// 3. 自定义文件扩展名需满足数字、字母字符，长度在[1,64]范围内。
 	Formats []*string `json:"Formats,omitnil,omitempty" name:"Formats"`
 }
 
@@ -5393,28 +5445,32 @@ type CreateSmartSubtitleTemplateRequestParams struct {
 
 	// 智能字幕视频源语言
 	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// zh-PY：中英粤
-	// zh-medical：中文医疗
-	// yue：中文粤语
-	// vi：越南语
-	// ms：马来语
-	// id：印度尼西亚语
-	// fil：菲律宾语
-	// th：泰语
-	// pt：葡萄牙语
-	// tr：土耳其语
-	// ar：阿拉伯语
-	// es：西班牙语
-	// hi：印地语
-	// fr：法语
-	// de：德语
-	// zh_dialect：中文方言
-	// zh_en: 中英
-	// prime_zh: 中英方言
+	// `zh`：简体中文
+	// `yue`：中文粵语
+	// `zh-PY`：中英粤
+	// `zh_medical`：中文医疗
+	// `zh_dialect`：中文方言
+	// `prime_zh`：中英方言
+	// `zh_en`：中英
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// `auto`：自动识别（仅在纯字幕翻译中支持）
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
 	// 智能字幕字幕语言类型
@@ -5429,41 +5485,64 @@ type CreateSmartSubtitleTemplateRequestParams struct {
 	// 长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 智能字幕文件格式
-	//  vtt: WebVTT 格式
-	//  srt: SRT 格式
-	// 不填或填空：不生成字幕文件
+	// 智能字幕文件格式:
+	// - ASR识别翻译处理类型下：
+	//      - vtt: WebVTT 格式字幕
+	//      - srt: SRT 格式字幕
+	//      - 不填或填空：不生成字幕文件
+	// - 纯字幕翻译处理类型下：
+	//     - original：与源文件一致
+	//     - vtt: WebVTT 格式字幕
+	//     - srt: SRT 格式字幕
+	// 
+	// **注意**：
+	// - ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
+	// - 纯字幕翻译方式下，不允许传空或不传
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
 	// ASR热词库参数
 	AsrHotWordsConfigure *AsrHotWordsConfigure `json:"AsrHotWordsConfigure,omitnil,omitempty" name:"AsrHotWordsConfigure"`
 
 	// 字幕翻译开关
-	// ON: 开启翻译
-	// OFF: 关闭翻译
+	// `ON`: 开启翻译
+	// `OFF`: 关闭翻译
+	// 
+	// **注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
 	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
 
-	// 字幕翻译目标语言
-	// 当TranslateSwitch为ON的时候生效
+	// 字幕翻译目标语言，当TranslateSwitch为`ON`的时候生效
 	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// fr：法语
-	// es：西班牙语
-	// it：意大利语
-	// de：德语
-	// tr：土耳其语
-	// ru：俄语
-	// pt：葡萄牙语
-	// vi：越南语
-	// id：印度尼西亚语
-	// ms：马来语
-	// th：泰语
-	// ar：阿拉伯语
-	// hi：印地语
+	// 
+	// `zh`：简体中文
+	// `zh-TW`：繁体中文
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语 
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语 
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// 
+	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
+
+	// 字幕处理类型：
+	// - 0：ASR识别字幕
+	// - 1：纯字幕翻译
+	// 
+	// **注意**：不传的情况下默认类型为 ASR识别字幕
+	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 }
 
 type CreateSmartSubtitleTemplateRequest struct {
@@ -5475,28 +5554,32 @@ type CreateSmartSubtitleTemplateRequest struct {
 
 	// 智能字幕视频源语言
 	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// zh-PY：中英粤
-	// zh-medical：中文医疗
-	// yue：中文粤语
-	// vi：越南语
-	// ms：马来语
-	// id：印度尼西亚语
-	// fil：菲律宾语
-	// th：泰语
-	// pt：葡萄牙语
-	// tr：土耳其语
-	// ar：阿拉伯语
-	// es：西班牙语
-	// hi：印地语
-	// fr：法语
-	// de：德语
-	// zh_dialect：中文方言
-	// zh_en: 中英
-	// prime_zh: 中英方言
+	// `zh`：简体中文
+	// `yue`：中文粵语
+	// `zh-PY`：中英粤
+	// `zh_medical`：中文医疗
+	// `zh_dialect`：中文方言
+	// `prime_zh`：中英方言
+	// `zh_en`：中英
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// `auto`：自动识别（仅在纯字幕翻译中支持）
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
 	// 智能字幕字幕语言类型
@@ -5511,41 +5594,64 @@ type CreateSmartSubtitleTemplateRequest struct {
 	// 长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 智能字幕文件格式
-	//  vtt: WebVTT 格式
-	//  srt: SRT 格式
-	// 不填或填空：不生成字幕文件
+	// 智能字幕文件格式:
+	// - ASR识别翻译处理类型下：
+	//      - vtt: WebVTT 格式字幕
+	//      - srt: SRT 格式字幕
+	//      - 不填或填空：不生成字幕文件
+	// - 纯字幕翻译处理类型下：
+	//     - original：与源文件一致
+	//     - vtt: WebVTT 格式字幕
+	//     - srt: SRT 格式字幕
+	// 
+	// **注意**：
+	// - ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
+	// - 纯字幕翻译方式下，不允许传空或不传
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
 	// ASR热词库参数
 	AsrHotWordsConfigure *AsrHotWordsConfigure `json:"AsrHotWordsConfigure,omitnil,omitempty" name:"AsrHotWordsConfigure"`
 
 	// 字幕翻译开关
-	// ON: 开启翻译
-	// OFF: 关闭翻译
+	// `ON`: 开启翻译
+	// `OFF`: 关闭翻译
+	// 
+	// **注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
 	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
 
-	// 字幕翻译目标语言
-	// 当TranslateSwitch为ON的时候生效
+	// 字幕翻译目标语言，当TranslateSwitch为`ON`的时候生效
 	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// fr：法语
-	// es：西班牙语
-	// it：意大利语
-	// de：德语
-	// tr：土耳其语
-	// ru：俄语
-	// pt：葡萄牙语
-	// vi：越南语
-	// id：印度尼西亚语
-	// ms：马来语
-	// th：泰语
-	// ar：阿拉伯语
-	// hi：印地语
+	// 
+	// `zh`：简体中文
+	// `zh-TW`：繁体中文
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语 
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语 
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// 
+	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
+
+	// 字幕处理类型：
+	// - 0：ASR识别字幕
+	// - 1：纯字幕翻译
+	// 
+	// **注意**：不传的情况下默认类型为 ASR识别字幕
+	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 }
 
 func (r *CreateSmartSubtitleTemplateRequest) ToJsonString() string {
@@ -5568,6 +5674,7 @@ func (r *CreateSmartSubtitleTemplateRequest) FromJsonString(s string) error {
 	delete(f, "AsrHotWordsConfigure")
 	delete(f, "TranslateSwitch")
 	delete(f, "TranslateDstLanguage")
+	delete(f, "ProcessType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSmartSubtitleTemplateRequest has unknown keys!", "")
 	}
@@ -10083,6 +10190,11 @@ type DescribeSmartSubtitleTemplatesRequestParams struct {
 
 	// 智能字幕模板标识过滤条件，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 字幕处理类型：
+	// - 0：ASR识别字幕
+	// - 1：纯字幕翻译
+	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 }
 
 type DescribeSmartSubtitleTemplatesRequest struct {
@@ -10104,6 +10216,11 @@ type DescribeSmartSubtitleTemplatesRequest struct {
 
 	// 智能字幕模板标识过滤条件，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 字幕处理类型：
+	// - 0：ASR识别字幕
+	// - 1：纯字幕翻译
+	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 }
 
 func (r *DescribeSmartSubtitleTemplatesRequest) ToJsonString() string {
@@ -10123,6 +10240,7 @@ func (r *DescribeSmartSubtitleTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Type")
 	delete(f, "Name")
+	delete(f, "ProcessType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmartSubtitleTemplatesRequest has unknown keys!", "")
 	}
@@ -11551,6 +11669,29 @@ type DescribeTranscodeTemplatesRequestParams struct {
 	// low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
 	// no_config：未配置。
 	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
+
+	// 增强场景配置，可选值：
+	// <li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
+	// <li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
+	// <li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
+	// <li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
+	// <li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
+	// <li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
+	// <li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
+	// <li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+	EnhanceSceneType *string `json:"EnhanceSceneType,omitnil,omitempty" name:"EnhanceSceneType"`
+
+	// 增强转码类型，可选值：
+	// <li>Common（普通转码）</li>
+	// <li>TEHD-100（极速高清视频转码）</li>
+	// <li>TEHD-200（极速高清音频转码）</li>
+	EnhanceTranscodeType *string `json:"EnhanceTranscodeType,omitnil,omitempty" name:"EnhanceTranscodeType"`
+
+	// 增强类型，可选值：
+	// <li>VideoEnhance（仅视频增强）</li>
+	// <li>AudioEnhance（仅音频增强）</li>
+	// <li>VideoAudioEnhance（视频音频增强都含）</li>
+	EnhanceType *string `json:"EnhanceType,omitnil,omitempty" name:"EnhanceType"`
 }
 
 type DescribeTranscodeTemplatesRequest struct {
@@ -11609,6 +11750,29 @@ type DescribeTranscodeTemplatesRequest struct {
 	// low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
 	// no_config：未配置。
 	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
+
+	// 增强场景配置，可选值：
+	// <li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
+	// <li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
+	// <li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
+	// <li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
+	// <li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
+	// <li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
+	// <li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
+	// <li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+	EnhanceSceneType *string `json:"EnhanceSceneType,omitnil,omitempty" name:"EnhanceSceneType"`
+
+	// 增强转码类型，可选值：
+	// <li>Common（普通转码）</li>
+	// <li>TEHD-100（极速高清视频转码）</li>
+	// <li>TEHD-200（极速高清音频转码）</li>
+	EnhanceTranscodeType *string `json:"EnhanceTranscodeType,omitnil,omitempty" name:"EnhanceTranscodeType"`
+
+	// 增强类型，可选值：
+	// <li>VideoEnhance（仅视频增强）</li>
+	// <li>AudioEnhance（仅音频增强）</li>
+	// <li>VideoAudioEnhance（视频音频增强都含）</li>
+	EnhanceType *string `json:"EnhanceType,omitnil,omitempty" name:"EnhanceType"`
 }
 
 func (r *DescribeTranscodeTemplatesRequest) ToJsonString() string {
@@ -11633,6 +11797,9 @@ func (r *DescribeTranscodeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "SceneType")
 	delete(f, "CompressType")
+	delete(f, "EnhanceSceneType")
+	delete(f, "EnhanceTranscodeType")
+	delete(f, "EnhanceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTranscodeTemplatesRequest has unknown keys!", "")
 	}
@@ -12173,6 +12340,24 @@ type DiagnoseResult struct {
 	SeverityLevel *string `json:"SeverityLevel,omitnil,omitempty" name:"SeverityLevel"`
 }
 
+type DiffusionEnhanceConfig struct {
+	// 能力配置开关，可选值：
+	// 
+	// ON：开启；
+	// OFF：关闭。
+	// 默认，OFF。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 强度类型，可选值：
+	// 
+	// weak
+	// normal
+	// strong
+	// 默认值：normal。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
 // Predefined struct for user
 type DisableScheduleRequestParams struct {
 	// 编排唯一表示。
@@ -12362,6 +12547,10 @@ type DrmInfo struct {
 	// 可以用于HLS和DASH，切片格式只能是mp4
 	// 输出HLS：可以使用切片模式或singlefile模式
 	// 输出DASH：只能singlefile模式
+	// 
+	// - widevine+fairplay:
+	//  只能用于HLS，切片格式只能是mp4
+	//  可以使用切片模式或singfile模式
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// SimpleAes 加密信息。
@@ -13270,6 +13459,22 @@ type FrameRateConfig struct {
 	Fps *uint64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 }
 
+type FrameRateWithDenConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 帧率分子，取值范围：非负数，除以分母后小于120，单位：Hz。 默认值 0。 注意：对于转码，该参数会覆盖 VideoTemplate 内部的 Fps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FpsNum *int64 `json:"FpsNum,omitnil,omitempty" name:"FpsNum"`
+
+	// 帧率分母，取值范围：大于等于1。 默认值 1。 注意：对于转码，该参数会覆盖 VideoTemplate 内部的 FpsDenominator。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FpsDen *int64 `json:"FpsDen,omitnil,omitempty" name:"FpsDen"`
+}
+
 type FrameTagConfigureInfo struct {
 	// 智能按帧标签任务开关，可选值：
 	// <li>ON：开启智能按帧标签任务；</li>
@@ -13319,7 +13524,7 @@ type HdrConfig struct {
 	// <li>HDR10</li>
 	// <li>HLG</li>
 	// 默认值：HDR10。
-	// 注意：video的编码方式需要为h265；
+	// 注意：video的编码方式需要为h264或h265；
 	// 注意：视频编码位深为10。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -13412,6 +13617,9 @@ type ImageEnhanceConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuperResolution *SuperResolutionConfig `json:"SuperResolution,omitnil,omitempty" name:"SuperResolution"`
 
+	// 高级超分配置。
+	AdvancedSuperResolutionConfig *AdvancedSuperResolutionConfig `json:"AdvancedSuperResolutionConfig,omitnil,omitempty" name:"AdvancedSuperResolutionConfig"`
+
 	// 降噪配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Denoise *ImageDenoiseConfig `json:"Denoise,omitnil,omitempty" name:"Denoise"`
@@ -13480,6 +13688,9 @@ type ImageProcessTaskResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 
 	// 错误信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -16774,8 +16985,10 @@ type ModifySmartSubtitleTemplateRequestParams struct {
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 字幕翻译开关
-	// ON: 开启翻译
-	// OFF: 关闭翻译
+	// `ON`: 开启翻译
+	// `OFF`: 关闭翻译
+	// 
+	// **注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
 	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
 
 	// 智能字幕模板名称
@@ -16788,34 +17001,48 @@ type ModifySmartSubtitleTemplateRequestParams struct {
 
 	// 智能字幕视频源语言
 	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// zh-PY：中英粤
-	// zh-medical：中文医疗
-	// yue：中文粤语
-	// vi：越南语
-	// ms：马来语
-	// id：印度尼西亚语
-	// fil：菲律宾语
-	// th：泰语
-	// pt：葡萄牙语
-	// tr：土耳其语
-	// ar：阿拉伯语
-	// es：西班牙语
-	// hi：印地语
-	// fr：法语
-	// de：德语
-	// zh_dialect：中文方言
-	// zh_en: 中英
-	// prime_zh: 中英方言
+	// 
+	// `zh`：简体中文
+	// `yue`：中文粵语
+	// `zh-PY`：中英粤
+	// `zh_medical`：中文医疗
+	// `zh_dialect`：中文方言
+	// `prime_zh`：中英方言
+	// `zh_en`：中英
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// `auto`：自动识别（仅在纯字幕翻译中支持）
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
-	// 智能字幕文件格式
-	//  vtt: WebVTT 格式
-	// srt: SRT格式
-	// 不填或填空：不生成字幕文件
+	// 智能字幕文件格式:
+	// - ASR识别翻译处理类型下：
+	//      - vtt: WebVTT 格式字幕
+	//      - srt: SRT 格式字幕
+	//      - 不填或填空：不生成字幕文件
+	// - 纯字幕翻译处理类型下：
+	//     - original：与源文件一致
+	//     - vtt: WebVTT 格式字幕
+	//     - srt: SRT 格式字幕
+	// 
+	// **注意**：
+	// - ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
+	// - 纯字幕翻译方式下，不允许传空或不传
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
 	// 智能字幕字幕语言类型
@@ -16832,24 +17059,37 @@ type ModifySmartSubtitleTemplateRequestParams struct {
 	// 字幕翻译目标语言
 	// 当TranslateSwitch为ON的时候生效
 	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// fr：法语
-	// es：西班牙语
-	// it：意大利语
-	// de：德语
-	// tr：土耳其语
-	// ru：俄语
-	// pt：葡萄牙语
-	// vi：越南语
-	// id：印度尼西亚语
-	// ms：马来语
-	// th：泰语
-	// ar：阿拉伯语
-	// hi：印地语
+	// 
+	// `zh`：简体中文
+	// `zh-TW`：繁体中文
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语 
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语 
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// 
+	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
+
+	// 字幕处理类型：
+	// - 0：ASR识别字幕
+	// - 1：纯字幕翻译
+	// 
+	// **注意**：不传的情况下，默认是ASR方式
+	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 }
 
 type ModifySmartSubtitleTemplateRequest struct {
@@ -16859,8 +17099,10 @@ type ModifySmartSubtitleTemplateRequest struct {
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 字幕翻译开关
-	// ON: 开启翻译
-	// OFF: 关闭翻译
+	// `ON`: 开启翻译
+	// `OFF`: 关闭翻译
+	// 
+	// **注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
 	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
 
 	// 智能字幕模板名称
@@ -16873,34 +17115,48 @@ type ModifySmartSubtitleTemplateRequest struct {
 
 	// 智能字幕视频源语言
 	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// zh-PY：中英粤
-	// zh-medical：中文医疗
-	// yue：中文粤语
-	// vi：越南语
-	// ms：马来语
-	// id：印度尼西亚语
-	// fil：菲律宾语
-	// th：泰语
-	// pt：葡萄牙语
-	// tr：土耳其语
-	// ar：阿拉伯语
-	// es：西班牙语
-	// hi：印地语
-	// fr：法语
-	// de：德语
-	// zh_dialect：中文方言
-	// zh_en: 中英
-	// prime_zh: 中英方言
+	// 
+	// `zh`：简体中文
+	// `yue`：中文粵语
+	// `zh-PY`：中英粤
+	// `zh_medical`：中文医疗
+	// `zh_dialect`：中文方言
+	// `prime_zh`：中英方言
+	// `zh_en`：中英
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// `auto`：自动识别（仅在纯字幕翻译中支持）
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
-	// 智能字幕文件格式
-	//  vtt: WebVTT 格式
-	// srt: SRT格式
-	// 不填或填空：不生成字幕文件
+	// 智能字幕文件格式:
+	// - ASR识别翻译处理类型下：
+	//      - vtt: WebVTT 格式字幕
+	//      - srt: SRT 格式字幕
+	//      - 不填或填空：不生成字幕文件
+	// - 纯字幕翻译处理类型下：
+	//     - original：与源文件一致
+	//     - vtt: WebVTT 格式字幕
+	//     - srt: SRT 格式字幕
+	// 
+	// **注意**：
+	// - ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
+	// - 纯字幕翻译方式下，不允许传空或不传
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
 	// 智能字幕字幕语言类型
@@ -16917,24 +17173,37 @@ type ModifySmartSubtitleTemplateRequest struct {
 	// 字幕翻译目标语言
 	// 当TranslateSwitch为ON的时候生效
 	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// fr：法语
-	// es：西班牙语
-	// it：意大利语
-	// de：德语
-	// tr：土耳其语
-	// ru：俄语
-	// pt：葡萄牙语
-	// vi：越南语
-	// id：印度尼西亚语
-	// ms：马来语
-	// th：泰语
-	// ar：阿拉伯语
-	// hi：印地语
+	// 
+	// `zh`：简体中文
+	// `zh-TW`：繁体中文
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语 
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语 
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// 
+	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
+
+	// 字幕处理类型：
+	// - 0：ASR识别字幕
+	// - 1：纯字幕翻译
+	// 
+	// **注意**：不传的情况下，默认是ASR方式
+	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 }
 
 func (r *ModifySmartSubtitleTemplateRequest) ToJsonString() string {
@@ -16958,6 +17227,7 @@ func (r *ModifySmartSubtitleTemplateRequest) FromJsonString(s string) error {
 	delete(f, "SubtitleType")
 	delete(f, "AsrHotWordsConfigure")
 	delete(f, "TranslateDstLanguage")
+	delete(f, "ProcessType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySmartSubtitleTemplateRequest has unknown keys!", "")
 	}
@@ -18920,6 +19190,42 @@ type ProhibitedOcrReviewTemplateInfoForUpdate struct {
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitnil,omitempty" name:"ReviewConfidence"`
 }
 
+type PureSubtitleTransResult struct {
+	// 任务状态（有以下三种）： 
+	// - PROCESSING
+	// - SUCCESS 
+	// - FAIL
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 媒体处理类错误码 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 翻译任务输入信息。
+	Input *SmartSubtitleTaskResultInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 纯字幕翻译输出结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *PureSubtitleTransResultOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 任务进度。
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+}
+
+type PureSubtitleTransResultOutput struct {
+	// 字幕文件存储位置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// 多语言翻译的结果集合
+	SubtitleResults []*SubtitleTransResultItem `json:"SubtitleResults,omitnil,omitempty" name:"SubtitleResults"`
+}
+
 type QualityControlData struct {
 	// 为true时表示视频无音频轨。
 	NoAudio *bool `json:"NoAudio,omitnil,omitempty" name:"NoAudio"`
@@ -19204,63 +19510,82 @@ type RawSmartSubtitleParameter struct {
 
 	// 智能字幕视频源语言
 	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// zh-PY：中英粤
-	// zh-medical：中文医疗
-	// yue：中文粤语
-	// vi：越南语
-	// ms：马来语
-	// id：印度尼西亚语
-	// fil：菲律宾语
-	// th：泰语
-	// pt：葡萄牙语
-	// tr：土耳其语
-	// ar：阿拉伯语
-	// es：西班牙语
-	// hi：印地语
-	// fr：法语
-	// de：德语
-	// zh_dialect：中文方言
-	// zh_en: 中英
-	// prime_zh: 中英方言
+	// `zh`：简体中文
+	// `yue`：中文粵语
+	// `zh-PY`：中英粤
+	// `zh_medical`：中文医疗
+	// `zh_dialect`：中文方言
+	// `prime_zh`：中英方言
+	// `zh_en`：中英
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// `auto`：自动识别（仅在纯字幕翻译中支持）
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
-	// 智能字幕文件格式
-	//  vtt: WebVTT 格式
-	// srt: SRT格式
-	// 不填或填空：不生成字幕文件
+	// 智能字幕文件格式:
+	// - ASR识别翻译处理类型下：
+	//      - vtt: WebVTT 格式字幕
+	//      - srt: SRT 格式字幕
+	//      - 不填或填空：不生成字幕文件
+	// - 纯字幕翻译处理类型下：
+	//     - original：与源文件一致
+	//     - vtt: WebVTT 格式字幕
+	//     - srt: SRT 格式字幕
+	// 
+	// **注意**：
+	// - ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
+	// - 纯字幕翻译方式下，不允许传空或不传
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
 	// 字幕翻译开关
-	// ON: 开启翻译
-	// OFF: 关闭翻译
+	// `ON`: 开启翻译
+	// `OFF`: 关闭翻译
+	// 
+	// **注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
 
 	// 字幕翻译目标语言
-	// 当TranslateSwitch为ON的时候生效
-	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// fr：法语
-	// es：西班牙语
-	// it：意大利语
-	// de：德语
-	// tr：土耳其语
-	// ru：俄语
-	// pt：葡萄牙语
-	// vi：越南语
-	// id：印度尼西亚语
-	// ms：马来语
-	// th：泰语
-	// ar：阿拉伯语
-	// hi：印地语
+	// 当TranslateSwitch为ON的时候生效，翻译语言列表：
+	// `zh`：简体中文
+	// `zh-TW`：繁体中文
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语 
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语 
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// 
+	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
 
@@ -19270,6 +19595,13 @@ type RawSmartSubtitleParameter struct {
 
 	// 自定义参数
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 字幕处理类型：
+	// - 0：ASR识别字幕
+	// - 1：纯字幕翻译
+	// 
+	// **注意**：不传的情况下默认类型为 ASR识别字幕
+	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 }
 
 type RawTranscodeParameter struct {
@@ -20381,6 +20713,9 @@ type SmartSubtitleTaskAsrFullTextResultOutput struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*SmartSubtitleTaskAsrFullTextSegmentItem `json:"SegmentSet,omitnil,omitempty" name:"SegmentSet"`
 
+	// 字幕文件路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
 	// 字幕文件地址。
 	SubtitlePath *string `json:"SubtitlePath,omitnil,omitempty" name:"SubtitlePath"`
 
@@ -20474,6 +20809,12 @@ type SmartSubtitleTaskTransTextResultOutput struct {
 
 	// 字幕文件存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// 字幕文件地址
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 多语言翻译时返回翻译结果。	
+	SubtitleResults []*SubtitleTransResultItem `json:"SubtitleResults,omitnil,omitempty" name:"SubtitleResults"`
 }
 
 type SmartSubtitleTaskTransTextSegmentItem struct {
@@ -20523,33 +20864,41 @@ type SmartSubtitleTemplateItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrHotWordsLibraryName *string `json:"AsrHotWordsLibraryName,omitnil,omitempty" name:"AsrHotWordsLibraryName"`
 
-	// 智能字幕视频源语言
-	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// zh-PY：中英粤
-	// zh-medical：中文医疗
-	// yue：中文粤语
-	// vi：越南语
-	// ms：马来语
-	// id：印度尼西亚语
-	// fil：菲律宾语
-	// th：泰语
-	// pt：葡萄牙语
-	// tr：土耳其语
-	// ar：阿拉伯语
-	// es：西班牙语
-	// hi：印地语
-	// fr：法语
-	// de：德语
-	// zh_dialect：中文方言
+	// 智能字幕视频源语言列表：
+	// 
+	// `zh`：简体中文
+	// `yue`：中文粵语
+	// `zh-PY`：中英粤
+	// `zh_medical`：中文医疗
+	// `zh_dialect`：中文方言
+	// `prime_zh`：中英方言
+	// `zh_en`：中英
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// `auto`：自动识别（仅在纯字幕翻译中支持）
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
 	// 智能字幕文件格式
-	//  vtt: WebVTT 格式
-	// 不填或填空：不生成字幕文件
+	// - vtt: WebVTT 格式
+	// - srt: SRT格式
+	// - original：与源字幕文件一致（用于纯字幕翻译模版）
+	// - 不填或填空：不生成字幕文件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
@@ -20569,24 +20918,30 @@ type SmartSubtitleTemplateItem struct {
 
 	// 字幕翻译目标语言
 	// 当TranslateSwitch为ON的时候生效
-	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// fr：法语
-	// es：西班牙语
-	// it：意大利语
-	// de：德语
-	// tr：土耳其语
-	// ru：俄语
-	// pt：葡萄牙语
-	// vi：越南语
-	// id：印度尼西亚语
-	// ms：马来语
-	// th：泰语
-	// ar：阿拉伯语
-	// hi：印地语
+	// `zh`：简体中文
+	// `zh-TW`：繁体中文
+	// `en`：英语
+	// `ja`：日语
+	// `ko`：韩语
+	// `fr`：法语
+	// `es`：西班牙语 
+	// `it`：意大利语
+	// `de`：德语
+	// `tr`：土耳其语
+	// `ru`：俄语
+	// `pt`：葡萄牙语（巴西）
+	// `pt-PT`：葡萄牙语（葡萄牙）
+	// `vi`：越南语
+	// `id`：印度尼西亚语 
+	// `ms`：马来语
+	// `th`：泰语
+	// `ar`：阿拉伯语
+	// `hi`：印地语
+	// `fil`：菲律宾语
+	// 
+	// 
+	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
 
@@ -20599,12 +20954,18 @@ type SmartSubtitleTemplateItem struct {
 	// 智能字幕预设模板别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+
+	// 字幕处理类型：
+	// - 0：ASR识别字幕
+	// - 1：纯字幕翻译
+	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 }
 
 type SmartSubtitlesResult struct {
-	// 任务的类型，取值范围： 
-	// <li>AsrFullTextRecognition：语音全文识别，</li> 
-	// <li>TransTextRecognition：语音翻译。</li>
+	// 任务的类型，取值范围：
+	// - AsrFullTextRecognition：语音全文识别
+	// - TransTextRecognition：语音翻译
+	// - PureSubtitleTrans:   纯字幕翻译
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 语音全文识别结果，当 Type 为
@@ -20617,6 +20978,10 @@ type SmartSubtitlesResult struct {
 	// TransTextRecognition 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransTextTask *SmartSubtitleTaskTransTextResult `json:"TransTextTask,omitnil,omitempty" name:"TransTextTask"`
+
+	// 当翻译类型为：PureSubtitleTrans 是返回纯字幕文件翻译结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PureSubtitleTransTask *PureSubtitleTransResult `json:"PureSubtitleTransTask,omitnil,omitempty" name:"PureSubtitleTransTask"`
 }
 
 type SmartSubtitlesTaskInput struct {
@@ -20740,7 +21105,9 @@ type SnapshotByTimeOffsetTemplate struct {
 
 type SpekeDrm struct {
 	// 资源标记，该字段内容为用户自定义；
-	// 支持1-128个字符的数字、字母、下划线(_)、中划线(-)。
+	// 支持1-128个字符的数字、字母、下划线(`_`)、中划线(-)。
+	// 该字段对应Speke请求中的cid字段。
+	// 注：不同DRM厂商对该字段的限制有所区别（如：华曦达不支持该字段带`_`），具体规则请与DRM厂商进行确认。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// DRM厂商访问地址，该字段内容从DRM厂商获取。
@@ -20752,8 +21119,9 @@ type SpekeDrm struct {
 	Vector *string `json:"Vector,omitnil,omitempty" name:"Vector"`
 
 	// 加密方式，FairPlay 默认cbcs，PlayReady，Widevine 默认cenc
+	// 加密方式选择WideVine+FairPlay时，仅支持cbcs
 	// 
-	// cbcs：PlayReady，Widevine，FairPlay 支持；
+	// cbcs：PlayReady，Widevine，FairPlay，WideVine+FairPlay 支持；
 	// cenc：PlayReady，Widevine支持；
 	EncryptionMethod *string `json:"EncryptionMethod,omitnil,omitempty" name:"EncryptionMethod"`
 
@@ -21036,6 +21404,22 @@ type SubtitleTemplate struct {
 	// 对齐方式，，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alignment *string `json:"Alignment,omitnil,omitempty" name:"Alignment"`
+}
+
+type SubtitleTransResultItem struct {
+	// 翻译标识：
+	// - Success
+	// - Error
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 源语言（如"en"）
+	TransSrc *string `json:"TransSrc,omitnil,omitempty" name:"TransSrc"`
+
+	// 目标语言（如"zh"）
+	TransDst *string `json:"TransDst,omitnil,omitempty" name:"TransDst"`
+
+	// 字幕文件地址
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
 type SuperResolutionConfig struct {
@@ -21870,11 +22254,13 @@ type VideoDenoiseConfig struct {
 }
 
 type VideoEnhanceConfig struct {
-	// 插帧帧率配置。
+	// 插帧帧率配置（旧）。新用户建议使用FrameRateWithDen配置插帧帧率，支持分数，且效果更好。注意，FrameRate 与FrameRateWithDen 只能二选一，同时配置可能导致任务失败。源帧率大于等于目标帧率时能力不会生效。
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameRate *FrameRateConfig `json:"FrameRate,omitnil,omitempty" name:"FrameRate"`
 
-	// 超分配置。
+	// 超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuperResolution *SuperResolutionConfig `json:"SuperResolution,omitnil,omitempty" name:"SuperResolution"`
 
@@ -21882,25 +22268,18 @@ type VideoEnhanceConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hdr *HdrConfig `json:"Hdr,omitnil,omitempty" name:"Hdr"`
 
-	// 视频降噪配置。
+	// 视频降噪配置。注意与大模型增强不可同时开启。
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Denoise *VideoDenoiseConfig `json:"Denoise,omitnil,omitempty" name:"Denoise"`
 
-	// 综合增强配置。
+	// 综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageQualityEnhance *ImageQualityEnhanceConfig `json:"ImageQualityEnhance,omitnil,omitempty" name:"ImageQualityEnhance"`
 
 	// 色彩增强配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColorEnhance *ColorEnhanceConfig `json:"ColorEnhance,omitnil,omitempty" name:"ColorEnhance"`
-
-	// 细节增强配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SharpEnhance *SharpEnhanceConfig `json:"SharpEnhance,omitnil,omitempty" name:"SharpEnhance"`
-
-	// 人脸增强配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	FaceEnhance *FaceEnhanceConfig `json:"FaceEnhance,omitnil,omitempty" name:"FaceEnhance"`
 
 	// 低光照增强配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -21910,9 +22289,32 @@ type VideoEnhanceConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScratchRepair *ScratchRepairConfig `json:"ScratchRepair,omitnil,omitempty" name:"ScratchRepair"`
 
-	// 去伪影（毛刺）配置。
+	// 去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ArtifactRepair *ArtifactRepairConfig `json:"ArtifactRepair,omitnil,omitempty" name:"ArtifactRepair"`
+
+	// 增强场景配置，可选值：
+	// <li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
+	// <li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
+	// <li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
+	// <li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
+	// <li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
+	// <li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
+	// <li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
+	// <li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+	// <li>填空字符串代表不使用增强场景</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnhanceSceneType *string `json:"EnhanceSceneType,omitnil,omitempty" name:"EnhanceSceneType"`
+
+	// 大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiffusionEnhance *DiffusionEnhanceConfig `json:"DiffusionEnhance,omitnil,omitempty" name:"DiffusionEnhance"`
+
+	// 新插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameRateWithDen *FrameRateWithDenConfig `json:"FrameRateWithDen,omitnil,omitempty" name:"FrameRateWithDen"`
 }
 
 type VideoTemplateInfo struct {

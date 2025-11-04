@@ -1904,67 +1904,6 @@ func (r *DeleteMigrationTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DeleteMountTargetRequestParams struct {
-	// 文件系统 ID
-	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
-
-	// 挂载点 ID
-	MountTargetId *string `json:"MountTargetId,omitnil,omitempty" name:"MountTargetId"`
-}
-
-type DeleteMountTargetRequest struct {
-	*tchttp.BaseRequest
-	
-	// 文件系统 ID
-	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
-
-	// 挂载点 ID
-	MountTargetId *string `json:"MountTargetId,omitnil,omitempty" name:"MountTargetId"`
-}
-
-func (r *DeleteMountTargetRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteMountTargetRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FileSystemId")
-	delete(f, "MountTargetId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMountTargetRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteMountTargetResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteMountTargetResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteMountTargetResponseParams `json:"Response"`
-}
-
-func (r *DeleteMountTargetResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteMountTargetResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DeleteUserQuotaRequestParams struct {
 	// 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`

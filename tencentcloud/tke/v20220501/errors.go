@@ -23,6 +23,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 没有权限。
+	INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+
 	// db错误。
 	INTERNALERROR_DB = "InternalError.Db"
 
@@ -38,8 +41,14 @@ const (
 	// 参数错误。
 	INTERNALERROR_PARAM = "InternalError.Param"
 
-	// 公共集群不支持扩展节点。
+	// 集群不支持当前操作。
 	INTERNALERROR_PUBLICCLUSTEROPNOTSUPPORT = "InternalError.PublicClusterOpNotSupport"
+
+	// 超过配额限制。
+	INTERNALERROR_QUOTAMAXCLSLIMIT = "InternalError.QuotaMaxClsLimit"
+
+	// 超过配额限制。
+	INTERNALERROR_QUOTAMAXNODLIMIT = "InternalError.QuotaMaxNodLimit"
 
 	// 内部错误。
 	INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
@@ -59,6 +68,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
@@ -73,6 +85,9 @@ const (
 
 	// 集群状态不支持该操作。
 	RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+
+	// 无该接口CAM权限。
+	UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"

@@ -144,10 +144,10 @@ func (r *AddClusterCIDRResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddExistedInstancesRequestParams struct {
-	// 集群ID
+	// 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 实例列表，不支持竞价实例
+	// 实例列表，不支持竞价实例（请登录 [CVM控制台](https://console.cloud.tencent.com/cvm) 获取待添加节点ID ）
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例额外需要设置参数信息(默认值)
@@ -181,10 +181,10 @@ type AddExistedInstancesRequestParams struct {
 type AddExistedInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 实例列表，不支持竞价实例
+	// 实例列表，不支持竞价实例（请登录 [CVM控制台](https://console.cloud.tencent.com/cvm) 获取待添加节点ID ）
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例额外需要设置参数信息(默认值)
@@ -290,7 +290,7 @@ type AddNodeToNodePoolRequestParams struct {
 	// 节点池id
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 节点id
+	// 节点id，获取参考 https://cloud.tencent.com/document/product/213/15728
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -303,7 +303,7 @@ type AddNodeToNodePoolRequest struct {
 	// 节点池id
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 节点id
+	// 节点id，获取参考 https://cloud.tencent.com/document/product/213/15728
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -865,19 +865,19 @@ type Cluster struct {
 	// 创建时间
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 删除保护开关
+	// 集群删除保护开关，打开：true，关闭：false
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 
-	// 集群是否开启第三方节点支持
+	// 集群是否开启第三方节点支持，开启：true，关闭：false
 	EnableExternalNode *bool `json:"EnableExternalNode,omitnil,omitempty" name:"EnableExternalNode"`
 
 	// 集群等级，针对托管集群生效
 	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
 
-	// 自动变配集群等级，针对托管集群生效
+	// 自动变配集群等级，针对托管集群生效。开启：true，关闭：false
 	AutoUpgradeClusterLevel *bool `json:"AutoUpgradeClusterLevel,omitnil,omitempty" name:"AutoUpgradeClusterLevel"`
 
-	// 是否开启QGPU共享
+	// 是否开启QGPU共享，开启：true，关闭：false
 	QGPUShareEnable *bool `json:"QGPUShareEnable,omitnil,omitempty" name:"QGPUShareEnable"`
 
 	// 运行时版本
@@ -1036,11 +1036,11 @@ type ClusterAsGroupOption struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxTotalUnreadyPercentage *int64 `json:"MaxTotalUnreadyPercentage,omitnil,omitempty" name:"MaxTotalUnreadyPercentage"`
 
-	// 表示未准备就绪的节点在有资格进行缩减之前应该停留多长时间
+	// 表示未准备就绪的节点在有资格进行缩减之前应该停留多少分钟
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleDownUnreadyTime *int64 `json:"ScaleDownUnreadyTime,omitnil,omitempty" name:"ScaleDownUnreadyTime"`
 
-	// CA删除未在Kubernetes中注册的节点之前等待的时间
+	// CA删除未在Kubernetes中注册的节点之前等待的分钟数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnregisteredNodeRemovalTime *int64 `json:"UnregisteredNodeRemovalTime,omitnil,omitempty" name:"UnregisteredNodeRemovalTime"`
 }
@@ -1449,10 +1449,10 @@ type CreateBackupStorageLocationRequestParams struct {
 	// 存储仓库所属地域，比如COS广州(ap-guangzhou)
 	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
 
-	// 对象存储桶名称，如果是COS必须是tke-backup前缀开头
+	// 对象存储桶名称，如果是COS必须是tke-backup前缀开头，字符长度是19
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 备份仓库名称
+	// 备份仓库名称，字符长度为63
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 存储服务提供方，默认腾讯云
@@ -1468,10 +1468,10 @@ type CreateBackupStorageLocationRequest struct {
 	// 存储仓库所属地域，比如COS广州(ap-guangzhou)
 	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
 
-	// 对象存储桶名称，如果是COS必须是tke-backup前缀开头
+	// 对象存储桶名称，如果是COS必须是tke-backup前缀开头，字符长度是19
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 备份仓库名称
+	// 备份仓库名称，字符长度为63
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 存储服务提供方，默认腾讯云
@@ -1606,7 +1606,7 @@ type CreateClusterEndpointRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群端口所在的子网ID  (仅在开启非外网访问时需要填，必须为集群所在VPC内的子网)
+	// 集群端口所在的子网ID  (仅在开启非外网访问时需要填，必须为集群所在VPC内的子网)。获取方式：https://cloud.tencent.com/document/product/215/15784
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
@@ -1615,7 +1615,7 @@ type CreateClusterEndpointRequestParams struct {
 	// 设置域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）
+	// 使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）。获取方式：https://cloud.tencent.com/document/api/215/15808
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 创建lb参数，只有外网访问需要设置，是一个json格式化后的字符串：{"InternetAccessible":{"InternetChargeType":"TRAFFIC_POSTPAID_BY_HOUR","InternetMaxBandwidthOut":200},"VipIsp":"","BandwidthPackageId":""}。
@@ -1636,7 +1636,7 @@ type CreateClusterEndpointRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群端口所在的子网ID  (仅在开启非外网访问时需要填，必须为集群所在VPC内的子网)
+	// 集群端口所在的子网ID  (仅在开启非外网访问时需要填，必须为集群所在VPC内的子网)。获取方式：https://cloud.tencent.com/document/product/215/15784
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
@@ -1645,7 +1645,7 @@ type CreateClusterEndpointRequest struct {
 	// 设置域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）
+	// 使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）。获取方式：https://cloud.tencent.com/document/api/215/15808
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 创建lb参数，只有外网访问需要设置，是一个json格式化后的字符串：{"InternetAccessible":{"InternetChargeType":"TRAFFIC_POSTPAID_BY_HOUR","InternetMaxBandwidthOut":200},"VipIsp":"","BandwidthPackageId":""}。
@@ -6397,20 +6397,20 @@ func (r *DescribeAddonValuesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAvailableClusterVersionRequestParams struct {
-	// 集群 Id。若只查询某个集群可升级的版本，需填写此项。
+	// 集群 Id。若只查询某个集群可升级的版本，需填写此项，与ClusterIds 参数二选一。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群 Id 列表。若查询多个集群可升级的版本，需填写此项。
+	// 集群 Id 列表。若查询多个集群可升级的版本，需填写此项，与ClusterId 参数二选一。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 }
 
 type DescribeAvailableClusterVersionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群 Id。若只查询某个集群可升级的版本，需填写此项。
+	// 集群 Id。若只查询某个集群可升级的版本，需填写此项，与ClusterIds 参数二选一。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群 Id 列表。若查询多个集群可升级的版本，需填写此项。
+	// 集群 Id 列表。若查询多个集群可升级的版本，需填写此项，与ClusterId 参数二选一。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 }
 
@@ -7023,7 +7023,7 @@ func (r *DescribeClusterEndpointStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClusterEndpointStatusResponseParams struct {
-	// 查询集群访问端口状态（Created 开启成功，Creating 开启中，NotFound 未开启）
+	// 查询集群访问端口状态（Created 开启成功，Creating 开启中，NotFound 未开启，CreateFailed 开启失败）
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 开启访问入口失败信息
@@ -8559,7 +8559,7 @@ type DescribeClustersRequestParams struct {
 	// · "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-2wds9k9p"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["product:tke"] 按照【标签键值对】进行过滤。 类型：String 必选：否
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 集群类型，例如：MANAGED_CLUSTER
+	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -8579,7 +8579,7 @@ type DescribeClustersRequest struct {
 	// · "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-2wds9k9p"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["product:tke"] 按照【标签键值对】进行过滤。 类型：String 必选：否
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 集群类型，例如：MANAGED_CLUSTER
+	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -12781,13 +12781,13 @@ type DescribeResourceUsageResponseParams struct {
 	// CRD使用量
 	CRDUsage *ResourceUsage `json:"CRDUsage,omitnil,omitempty" name:"CRDUsage"`
 
-	// Pod使用量
+	// Pod使用量，单位：个数
 	PodUsage *uint64 `json:"PodUsage,omitnil,omitempty" name:"PodUsage"`
 
-	// ReplicaSet使用量
+	// ReplicaSet使用量，单位：个数
 	RSUsage *uint64 `json:"RSUsage,omitnil,omitempty" name:"RSUsage"`
 
-	// ConfigMap使用量
+	// ConfigMap使用量，单位：个数
 	ConfigMapUsage *uint64 `json:"ConfigMapUsage,omitnil,omitempty" name:"ConfigMapUsage"`
 
 	// 其他资源使用量
@@ -14758,14 +14758,14 @@ type GPUArgs struct {
 
 // Predefined struct for user
 type GetClusterLevelPriceRequestParams struct {
-	// 集群规格，托管集群询价
+	// 集群规格，托管集群询价，集群等级：L20、L50、L100、L200、L500、L1000、L3000、L5000
 	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
 }
 
 type GetClusterLevelPriceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群规格，托管集群询价
+	// 集群规格，托管集群询价，集群等级：L20、L50、L100、L200、L500、L1000、L3000、L5000
 	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
 }
 
@@ -15627,6 +15627,12 @@ type KubeJarvisStateInspectionResultsItem struct {
 
 	// 诊断结果统计
 	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitnil,omitempty" name:"Statistics"`
+
+	// 诊断数据开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 诊断数据结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type KubeJarvisStateResultObjInfo struct {
@@ -15666,7 +15672,12 @@ type KubeJarvisStateResultsItem struct {
 }
 
 type KubeJarvisStateStatistic struct {
-	// 诊断结果的健康水平
+	// 诊断结果的健康水平，健康水平取值：
+	// serious：高风险
+	// risk：中风险
+	// warn：低风险
+	// good：健康
+	// failed：诊断流程异常
 	HealthyLevel *string `json:"HealthyLevel,omitnil,omitempty" name:"HealthyLevel"`
 
 	// 诊断结果的统计
@@ -15684,6 +15695,9 @@ type Label struct {
 // Predefined struct for user
 type ListClusterInspectionResultsItemsRequestParams struct {
 	// 目标集群ID
+	// 
+	// 取值可参考：
+	// [查询TKE集群列表](https://cloud.tencent.com/document/api/457/31862)
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 查询历史结果的开始时间，Unix时间戳
@@ -15697,6 +15711,9 @@ type ListClusterInspectionResultsItemsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 目标集群ID
+	// 
+	// 取值可参考：
+	// [查询TKE集群列表](https://cloud.tencent.com/document/api/457/31862)
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 查询历史结果的开始时间，Unix时间戳
@@ -15997,13 +16014,13 @@ type ModifyClusterAttributeRequestParams struct {
 	// 集群所属项目
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 集群名称
+	// 集群名称,字符长度50
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 集群描述
 	ClusterDesc *string `json:"ClusterDesc,omitnil,omitempty" name:"ClusterDesc"`
 
-	// 集群等级
+	// 集群等级，等级类型：L20、L50、L100、L200、L500、L1000、L3000、L5000
 	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
 
 	// 自动变配集群等级
@@ -16025,13 +16042,13 @@ type ModifyClusterAttributeRequest struct {
 	// 集群所属项目
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 集群名称
+	// 集群名称,字符长度50
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 集群描述
 	ClusterDesc *string `json:"ClusterDesc,omitnil,omitempty" name:"ClusterDesc"`
 
-	// 集群等级
+	// 集群等级，等级类型：L20、L50、L100、L200、L500、L1000、L3000、L5000
 	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
 
 	// 自动变配集群等级
@@ -16318,7 +16335,7 @@ type ModifyClusterNodePoolRequestParams struct {
 	// 节点池ID
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 名称
+	// 名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 最大节点数
@@ -16382,7 +16399,7 @@ type ModifyClusterNodePoolRequest struct {
 	// 节点池ID
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 名称
+	// 名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 最大节点数
@@ -16502,13 +16519,13 @@ type ModifyClusterRuntimeConfigRequestParams struct {
 	// 集群ID，必填
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 当需要修改运行时版本是根据另外的K8S版本获取时，需填写。例如升级校验有冲突后修改场景
+	// 运行时版本需依据指定的Kubernetes版本进行设置。典型情况为，在升级过程中因版本冲突而需要调整运行时版本时。
 	DstK8SVersion *string `json:"DstK8SVersion,omitnil,omitempty" name:"DstK8SVersion"`
 
-	// 需要修改集群运行时时填写
+	// 需要修改集群运行时填写
 	ClusterRuntimeConfig *RuntimeConfig `json:"ClusterRuntimeConfig,omitnil,omitempty" name:"ClusterRuntimeConfig"`
 
-	// 需要修改节点池运行时时，填需要修改的部分
+	// 需要修改节点池运行时，填需要修改的部分
 	NodePoolRuntimeConfig []*NodePoolRuntime `json:"NodePoolRuntimeConfig,omitnil,omitempty" name:"NodePoolRuntimeConfig"`
 }
 
@@ -16518,13 +16535,13 @@ type ModifyClusterRuntimeConfigRequest struct {
 	// 集群ID，必填
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 当需要修改运行时版本是根据另外的K8S版本获取时，需填写。例如升级校验有冲突后修改场景
+	// 运行时版本需依据指定的Kubernetes版本进行设置。典型情况为，在升级过程中因版本冲突而需要调整运行时版本时。
 	DstK8SVersion *string `json:"DstK8SVersion,omitnil,omitempty" name:"DstK8SVersion"`
 
-	// 需要修改集群运行时时填写
+	// 需要修改集群运行时填写
 	ClusterRuntimeConfig *RuntimeConfig `json:"ClusterRuntimeConfig,omitnil,omitempty" name:"ClusterRuntimeConfig"`
 
-	// 需要修改节点池运行时时，填需要修改的部分
+	// 需要修改节点池运行时，填需要修改的部分
 	NodePoolRuntimeConfig []*NodePoolRuntime `json:"NodePoolRuntimeConfig,omitnil,omitempty" name:"NodePoolRuntimeConfig"`
 }
 
@@ -16577,7 +16594,8 @@ type ModifyClusterTagsRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群标签
+	// 集群标签:
+	// [{"TagKey":"env","TagValue":"dev"}]}]
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否同步集群内子资源标签
@@ -16590,7 +16608,8 @@ type ModifyClusterTagsRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群标签
+	// 集群标签:
+	// [{"TagKey":"env","TagValue":"dev"}]}]
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否同步集群内子资源标签
@@ -16891,7 +16910,7 @@ type ModifyNodePoolInstanceTypesRequestParams struct {
 	// 节点池id
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 机型列表，主实例机型不支持修改
+	// 机型列表，参考 https://cloud.tencent.com/document/product/213/11518，主实例机型不支持修改
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 }
 
@@ -16904,7 +16923,7 @@ type ModifyNodePoolInstanceTypesRequest struct {
 	// 节点池id
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 机型列表，主实例机型不支持修改
+	// 机型列表，参考 https://cloud.tencent.com/document/product/213/11518，主实例机型不支持修改
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 }
 
@@ -17745,13 +17764,13 @@ type NodePoolRuntime struct {
 	// 节点池ID
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 运行时类型
+	// 运行时类型，参考：https://cloud.tencent.com/document/api/457/105241
 	RuntimeType *string `json:"RuntimeType,omitnil,omitempty" name:"RuntimeType"`
 
-	// 运行时版本
+	// 运行时版本，参考：https://cloud.tencent.com/document/api/457/105241
 	RuntimeVersion *string `json:"RuntimeVersion,omitnil,omitempty" name:"RuntimeVersion"`
 
-	// 节点池名称
+	// 节点池名称，限制 255 字符
 	NodePoolName *string `json:"NodePoolName,omitnil,omitempty" name:"NodePoolName"`
 }
 
@@ -19272,10 +19291,10 @@ type ResourceDeleteOption struct {
 }
 
 type ResourceUsage struct {
-	// 资源类型
+	// 资源类型，参考k8s 官方资源
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 资源使用量
+	// 资源使用量，单位：个数
 	Usage *uint64 `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 资源使用详情
@@ -19554,10 +19573,10 @@ type RunSecurityServiceEnabled struct {
 }
 
 type RuntimeConfig struct {
-	// 运行时类型
+	// 运行时类型，支持的类型有 docker、containerd
 	RuntimeType *string `json:"RuntimeType,omitnil,omitempty" name:"RuntimeType"`
 
-	// 运行时版本
+	// 运行时版本，参考：https://cloud.tencent.com/document/api/457/105241
 	RuntimeVersion *string `json:"RuntimeVersion,omitnil,omitempty" name:"RuntimeVersion"`
 }
 
@@ -20472,10 +20491,10 @@ type UpdateClusterVersionRequestParams struct {
 	// 集群自定义参数
 	ExtraArgs *ClusterExtraArgs `json:"ExtraArgs,omitnil,omitempty" name:"ExtraArgs"`
 
-	// 可容忍的最大不可用pod数目
+	// 可容忍的最大不可用pod数目。默认0
 	MaxNotReadyPercent *float64 `json:"MaxNotReadyPercent,omitnil,omitempty" name:"MaxNotReadyPercent"`
 
-	// 是否跳过预检查阶段
+	// 是否跳过预检查阶段，默认false
 	SkipPreCheck *bool `json:"SkipPreCheck,omitnil,omitempty" name:"SkipPreCheck"`
 }
 
@@ -20491,10 +20510,10 @@ type UpdateClusterVersionRequest struct {
 	// 集群自定义参数
 	ExtraArgs *ClusterExtraArgs `json:"ExtraArgs,omitnil,omitempty" name:"ExtraArgs"`
 
-	// 可容忍的最大不可用pod数目
+	// 可容忍的最大不可用pod数目。默认0
 	MaxNotReadyPercent *float64 `json:"MaxNotReadyPercent,omitnil,omitempty" name:"MaxNotReadyPercent"`
 
-	// 是否跳过预检查阶段
+	// 是否跳过预检查阶段，默认false
 	SkipPreCheck *bool `json:"SkipPreCheck,omitnil,omitempty" name:"SkipPreCheck"`
 }
 

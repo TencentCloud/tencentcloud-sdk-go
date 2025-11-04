@@ -2123,6 +2123,9 @@ type CreateUserRequestParams struct {
 
 	// 用户类型  Manual：手动创建，Synchronized：外部导入
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+
+	// 是否需要重置密码： true: 需要重置  false: 不需要重置密码。 默认false
+	NeedResetPassword *bool `json:"NeedResetPassword,omitnil,omitempty" name:"NeedResetPassword"`
 }
 
 type CreateUserRequest struct {
@@ -2154,6 +2157,9 @@ type CreateUserRequest struct {
 
 	// 用户类型  Manual：手动创建，Synchronized：外部导入
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+
+	// 是否需要重置密码： true: 需要重置  false: 不需要重置密码。 默认false
+	NeedResetPassword *bool `json:"NeedResetPassword,omitnil,omitempty" name:"NeedResetPassword"`
 }
 
 func (r *CreateUserRequest) ToJsonString() string {
@@ -2177,6 +2183,7 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 	delete(f, "Email")
 	delete(f, "UserStatus")
 	delete(f, "UserType")
+	delete(f, "NeedResetPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRequest has unknown keys!", "")
 	}
@@ -10643,6 +10650,9 @@ type UpdateUserRequestParams struct {
 
 	// 用户的电子邮箱。
 	NewEmail *string `json:"NewEmail,omitnil,omitempty" name:"NewEmail"`
+
+	// 是否需要重置密码
+	NeedResetPassword *bool `json:"NeedResetPassword,omitnil,omitempty" name:"NeedResetPassword"`
 }
 
 type UpdateUserRequest struct {
@@ -10668,6 +10678,9 @@ type UpdateUserRequest struct {
 
 	// 用户的电子邮箱。
 	NewEmail *string `json:"NewEmail,omitnil,omitempty" name:"NewEmail"`
+
+	// 是否需要重置密码
+	NeedResetPassword *bool `json:"NeedResetPassword,omitnil,omitempty" name:"NeedResetPassword"`
 }
 
 func (r *UpdateUserRequest) ToJsonString() string {
@@ -10689,6 +10702,7 @@ func (r *UpdateUserRequest) FromJsonString(s string) error {
 	delete(f, "NewDisplayName")
 	delete(f, "NewDescription")
 	delete(f, "NewEmail")
+	delete(f, "NeedResetPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserRequest has unknown keys!", "")
 	}
@@ -10970,6 +10984,9 @@ type UserInfo struct {
 
 	// 用户密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 下次登录是否需要重置密码， true: 需要重置密码， false：不需要重置密码
+	NeedResetPassword *bool `json:"NeedResetPassword,omitnil,omitempty" name:"NeedResetPassword"`
 }
 
 type UserProvisioning struct {

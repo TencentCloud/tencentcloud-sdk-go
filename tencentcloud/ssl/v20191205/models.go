@@ -603,6 +603,9 @@ type CertificateInfoSubmitRequestParams struct {
 
 	// 签名算法
 	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
+
+	// 是否使用交叉根证书
+	UseCrossSignRoot *bool `json:"UseCrossSignRoot,omitnil,omitempty" name:"UseCrossSignRoot"`
 }
 
 type CertificateInfoSubmitRequest struct {
@@ -751,6 +754,9 @@ type CertificateInfoSubmitRequest struct {
 
 	// 签名算法
 	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
+
+	// 是否使用交叉根证书
+	UseCrossSignRoot *bool `json:"UseCrossSignRoot,omitnil,omitempty" name:"UseCrossSignRoot"`
 }
 
 func (r *CertificateInfoSubmitRequest) ToJsonString() string {
@@ -806,6 +812,7 @@ func (r *CertificateInfoSubmitRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "CaType")
 	delete(f, "SignAlgo")
+	delete(f, "UseCrossSignRoot")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CertificateInfoSubmitRequest has unknown keys!", "")
 	}
@@ -3578,6 +3585,9 @@ type DescribeCertificateDetailResponseParams struct {
 
 	// 证书类型，DV（域名型）；OV（企业型）；EV（增强型）
 	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
+
+	// 是否使用交叉根
+	UseCrossSignRoot *bool `json:"UseCrossSignRoot,omitnil,omitempty" name:"UseCrossSignRoot"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7117,6 +7127,9 @@ type ReplaceCertificateRequestParams struct {
 
 	// 签名算法
 	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
+
+	// 是否使用交叉根证书，默认为true
+	UseCrossSignRoot *bool `json:"UseCrossSignRoot,omitnil,omitempty" name:"UseCrossSignRoot"`
 }
 
 type ReplaceCertificateRequest struct {
@@ -7149,6 +7162,9 @@ type ReplaceCertificateRequest struct {
 
 	// 签名算法
 	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
+
+	// 是否使用交叉根证书，默认为true
+	UseCrossSignRoot *bool `json:"UseCrossSignRoot,omitnil,omitempty" name:"UseCrossSignRoot"`
 }
 
 func (r *ReplaceCertificateRequest) ToJsonString() string {
@@ -7172,6 +7188,7 @@ func (r *ReplaceCertificateRequest) FromJsonString(s string) error {
 	delete(f, "CertCSREncryptAlgo")
 	delete(f, "CertCSRKeyParameter")
 	delete(f, "SignAlgo")
+	delete(f, "UseCrossSignRoot")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceCertificateRequest has unknown keys!", "")
 	}

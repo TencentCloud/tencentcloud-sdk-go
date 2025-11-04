@@ -360,7 +360,6 @@ func NewDescribeClusterInstancesResponse() (response *DescribeClusterInstancesRe
 //  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
 //  INTERNALERROR_INITMASTERFAILED = "InternalError.InitMasterFailed"
 //  INTERNALERROR_PARAM = "InternalError.Param"
-//  INTERNALERROR_PUBLICCLUSTEROPNOTSUPPORT = "InternalError.PublicClusterOpNotSupport"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
@@ -381,7 +380,6 @@ func (c *Client) DescribeClusterInstances(request *DescribeClusterInstancesReque
 //  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
 //  INTERNALERROR_INITMASTERFAILED = "InternalError.InitMasterFailed"
 //  INTERNALERROR_PARAM = "InternalError.Param"
-//  INTERNALERROR_PUBLICCLUSTEROPNOTSUPPORT = "InternalError.PublicClusterOpNotSupport"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
@@ -401,6 +399,82 @@ func (c *Client) DescribeClusterInstancesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeClusterInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
+    request = &DescribeClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusters")
+    
+    
+    return
+}
+
+func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
+    response = &DescribeClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusters
+// 查询集群列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_PUBLICCLUSTEROPNOTSUPPORT = "InternalError.PublicClusterOpNotSupport"
+//  INTERNALERROR_QUOTAMAXCLSLIMIT = "InternalError.QuotaMaxClsLimit"
+//  INTERNALERROR_QUOTAMAXNODLIMIT = "InternalError.QuotaMaxNodLimit"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
+    return c.DescribeClustersWithContext(context.Background(), request)
+}
+
+// DescribeClusters
+// 查询集群列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_PUBLICCLUSTEROPNOTSUPPORT = "InternalError.PublicClusterOpNotSupport"
+//  INTERNALERROR_QUOTAMAXCLSLIMIT = "InternalError.QuotaMaxClsLimit"
+//  INTERNALERROR_QUOTAMAXNODLIMIT = "InternalError.QuotaMaxNodLimit"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeClustersWithContext(ctx context.Context, request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeClustersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusters")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClustersResponse()
     err = c.Send(request, response)
     return
 }

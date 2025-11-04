@@ -9531,6 +9531,9 @@ type ModifyUserManagerPwdRequestParams struct {
 
 	// 密码
 	PassWord *string `json:"PassWord,omitnil,omitempty" name:"PassWord"`
+
+	// 是否同步密码
+	SyncPwd *bool `json:"SyncPwd,omitnil,omitempty" name:"SyncPwd"`
 }
 
 type ModifyUserManagerPwdRequest struct {
@@ -9544,6 +9547,9 @@ type ModifyUserManagerPwdRequest struct {
 
 	// 密码
 	PassWord *string `json:"PassWord,omitnil,omitempty" name:"PassWord"`
+
+	// 是否同步密码
+	SyncPwd *bool `json:"SyncPwd,omitnil,omitempty" name:"SyncPwd"`
 }
 
 func (r *ModifyUserManagerPwdRequest) ToJsonString() string {
@@ -9561,6 +9567,7 @@ func (r *ModifyUserManagerPwdRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "UserName")
 	delete(f, "PassWord")
+	delete(f, "SyncPwd")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserManagerPwdRequest has unknown keys!", "")
 	}

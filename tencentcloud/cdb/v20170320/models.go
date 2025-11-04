@@ -13019,6 +13019,9 @@ type ModifyBackupEncryptionStatusRequestParams struct {
 
 	// 设置实例新增的自动物理备份文件默认加密状态。可选值为 on或者off。
 	EncryptionStatus *string `json:"EncryptionStatus,omitnil,omitempty" name:"EncryptionStatus"`
+
+	// 设置实例新增的自动日志备份文件默认加密状态。可选值为 on或者off。
+	BinlogEncryptionStatus *string `json:"BinlogEncryptionStatus,omitnil,omitempty" name:"BinlogEncryptionStatus"`
 }
 
 type ModifyBackupEncryptionStatusRequest struct {
@@ -13029,6 +13032,9 @@ type ModifyBackupEncryptionStatusRequest struct {
 
 	// 设置实例新增的自动物理备份文件默认加密状态。可选值为 on或者off。
 	EncryptionStatus *string `json:"EncryptionStatus,omitnil,omitempty" name:"EncryptionStatus"`
+
+	// 设置实例新增的自动日志备份文件默认加密状态。可选值为 on或者off。
+	BinlogEncryptionStatus *string `json:"BinlogEncryptionStatus,omitnil,omitempty" name:"BinlogEncryptionStatus"`
 }
 
 func (r *ModifyBackupEncryptionStatusRequest) ToJsonString() string {
@@ -13045,6 +13051,7 @@ func (r *ModifyBackupEncryptionStatusRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "EncryptionStatus")
+	delete(f, "BinlogEncryptionStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupEncryptionStatusRequest has unknown keys!", "")
 	}

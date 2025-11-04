@@ -8158,6 +8158,7 @@ func NewGetMonitorDataResponse() (response *GetMonitorDataResponse) {
 //  FAILEDOPERATION_ERROWED = "FailedOperation.ErrOwed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_LIMITEDACCESS = "LimitExceeded.LimitedAccess"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetMonitorData(request *GetMonitorDataRequest) (response *GetMonitorDataResponse, err error) {
     return c.GetMonitorDataWithContext(context.Background(), request)
@@ -8189,6 +8190,7 @@ func (c *Client) GetMonitorData(request *GetMonitorDataRequest) (response *GetMo
 //  FAILEDOPERATION_ERROWED = "FailedOperation.ErrOwed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_LIMITEDACCESS = "LimitExceeded.LimitedAccess"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetMonitorDataWithContext(ctx context.Context, request *GetMonitorDataRequest) (response *GetMonitorDataResponse, err error) {
     if request == nil {

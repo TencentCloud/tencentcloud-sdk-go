@@ -7698,6 +7698,7 @@ func NewCreateVpnGatewayResponse() (response *CreateVpnGatewayResponse) {
 //  UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
 //  UNSUPPORTEDOPERATION_VPNGATEWAYVPCNOIPV6SUBNET = "UnsupportedOperation.VpnGatewayVpcNoIpv6Subnet"
 //  UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = "UnsupportedOperation.VpnGwVpcIdMustHave"
+//  UNSUPPORTEDOPERATION_VPNGWVPCIDNOTHAVE = "UnsupportedOperation.VpnGwVpcIdNotHave"
 //  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = "UnsupportedOperation.VpnUnsupportedBgp"
 func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *CreateVpnGatewayResponse, err error) {
     return c.CreateVpnGatewayWithContext(context.Background(), request)
@@ -7751,6 +7752,7 @@ func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *C
 //  UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
 //  UNSUPPORTEDOPERATION_VPNGATEWAYVPCNOIPV6SUBNET = "UnsupportedOperation.VpnGatewayVpcNoIpv6Subnet"
 //  UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = "UnsupportedOperation.VpnGwVpcIdMustHave"
+//  UNSUPPORTEDOPERATION_VPNGWVPCIDNOTHAVE = "UnsupportedOperation.VpnGwVpcIdNotHave"
 //  UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = "UnsupportedOperation.VpnUnsupportedBgp"
 func (c *Client) CreateVpnGatewayWithContext(ctx context.Context, request *CreateVpnGatewayRequest) (response *CreateVpnGatewayResponse, err error) {
     if request == nil {
@@ -17420,6 +17422,7 @@ func NewDescribeTrafficQosPolicyResponse() (response *DescribeTrafficQosPolicyRe
 // 查询流量调度规则
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_QOSLEVELREQUIRED = "InvalidParameterValue.QosLevelRequired"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrafficQosPolicy(request *DescribeTrafficQosPolicyRequest) (response *DescribeTrafficQosPolicyResponse, err error) {
     return c.DescribeTrafficQosPolicyWithContext(context.Background(), request)
@@ -17429,6 +17432,7 @@ func (c *Client) DescribeTrafficQosPolicy(request *DescribeTrafficQosPolicyReque
 // 查询流量调度规则
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_QOSLEVELREQUIRED = "InvalidParameterValue.QosLevelRequired"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrafficQosPolicyWithContext(ctx context.Context, request *DescribeTrafficQosPolicyRequest) (response *DescribeTrafficQosPolicyResponse, err error) {
     if request == nil {

@@ -8517,6 +8517,12 @@ type KafkaParam struct {
 
 	// 正则匹配Topic列表
 	TopicRegularExpression *string `json:"TopicRegularExpression,omitnil,omitempty" name:"TopicRegularExpression"`
+
+	// Topic 前缀
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// Topic前缀分隔符
+	Separator *string `json:"Separator,omitnil,omitempty" name:"Separator"`
 }
 
 type ListCvmAndIpInfoRsp struct {
@@ -10049,6 +10055,64 @@ type Partitions struct {
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
+// Predefined struct for user
+type PauseDatahubTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type PauseDatahubTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *PauseDatahubTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseDatahubTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PauseDatahubTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PauseDatahubTaskResponseParams struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DatahubTaskIdRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PauseDatahubTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *PauseDatahubTaskResponseParams `json:"Response"`
+}
+
+func (r *PauseDatahubTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseDatahubTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PostgreSQLConnectParam struct {
 	// PostgreSQL的连接port
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
@@ -10344,6 +10408,122 @@ type ReplaceParam struct {
 
 	// 替换值
 	NewValue *string `json:"NewValue,omitnil,omitempty" name:"NewValue"`
+}
+
+// Predefined struct for user
+type RestartDatahubTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type RestartDatahubTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *RestartDatahubTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartDatahubTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartDatahubTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartDatahubTaskResponseParams struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DatahubTaskIdRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RestartDatahubTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *RestartDatahubTaskResponseParams `json:"Response"`
+}
+
+func (r *RestartDatahubTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartDatahubTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeDatahubTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type ResumeDatahubTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *ResumeDatahubTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeDatahubTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeDatahubTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeDatahubTaskResponseParams struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DatahubTaskIdRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResumeDatahubTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ResumeDatahubTaskResponseParams `json:"Response"`
+}
+
+func (r *ResumeDatahubTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeDatahubTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Route struct {

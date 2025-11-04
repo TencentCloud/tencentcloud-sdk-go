@@ -308,6 +308,7 @@ type FuseFaceUltraRequestParams struct {
 	// 3：影视级场景，高分辨率，画面偏自然。
 	// 4：影视级场景，高分辦率，高人脸相似度，画面偏自然，可用于证件照等场景。
 	// 5：影视级场景，高分辨率，对闭眼和遮挡更友好。
+	// 6：影视级场景，高分辨率，极高人脸相似度，可用于电商照片、证件照、文旅照片等场景。
 	SwapModelType *int64 `json:"SwapModelType,omitnil,omitempty" name:"SwapModelType"`
 }
 
@@ -356,6 +357,7 @@ type FuseFaceUltraRequest struct {
 	// 3：影视级场景，高分辨率，画面偏自然。
 	// 4：影视级场景，高分辦率，高人脸相似度，画面偏自然，可用于证件照等场景。
 	// 5：影视级场景，高分辨率，对闭眼和遮挡更友好。
+	// 6：影视级场景，高分辨率，极高人脸相似度，可用于电商照片、证件照、文旅照片等场景。
 	SwapModelType *int64 `json:"SwapModelType,omitnil,omitempty" name:"SwapModelType"`
 }
 

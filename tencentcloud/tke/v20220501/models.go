@@ -56,6 +56,43 @@ type AutoscalingAdded struct {
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 }
 
+type Cluster struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 集群描述
+	ClusterDescription *string `json:"ClusterDescription,omitnil,omitempty" name:"ClusterDescription"`
+
+	// 集群版本（默认值为1.10.5）
+	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
+
+	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 标签描述列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
+
+	// 集群状态 (Trading 集群开通中,Creating 创建中,Running 运行中,Deleting 删除中,Idling 闲置中,Recovering 唤醒中,Upgrading 升级中,NodeUpgrading 节点升级中,RuntimeUpgrading 节点运行时升级中,MasterScaling Master扩缩容中,ClusterLevelUpgrading 调整规格中,ResourceIsolate 欠费隔离中,ResourceIsolated 欠费已隔离,ResourceReverse 冲正恢复中,Abnormal 异常)
+	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 集群等级，针对托管集群生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
+
+	// 集群所在vpc的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+}
+
 // Predefined struct for user
 type CreateHealthCheckPolicyRequestParams struct {
 	// 集群ID
@@ -640,6 +677,175 @@ func (r *DescribeClusterInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClustersRequestParams struct {
+	// 集群ID列表(为空时，
+	// 表示获取账号下所有集群)
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 最大输出条数，默认20，最大为100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// ·  ClusterName
+	//     按照【集群名】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  ClusterType
+	//     按照【集群类型】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  ClusterStatus
+	//     按照【集群状态】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  Tags
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  vpc-id
+	//     按照【VPC】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag-key
+	//     按照【标签键】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag-value
+	//     按照【标签值】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag:tag-key
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 集群类型，例如：MANAGED_CLUSTER
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+}
+
+type DescribeClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID列表(为空时，
+	// 表示获取账号下所有集群)
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 最大输出条数，默认20，最大为100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// ·  ClusterName
+	//     按照【集群名】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  ClusterType
+	//     按照【集群类型】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  ClusterStatus
+	//     按照【集群状态】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  Tags
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  vpc-id
+	//     按照【VPC】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag-key
+	//     按照【标签键】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag-value
+	//     按照【标签值】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag:tag-key
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 集群类型，例如：MANAGED_CLUSTER
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+}
+
+func (r *DescribeClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "ClusterType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClustersResponseParams struct {
+	// 集群总个数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 集群信息列表
+	Clusters []*Cluster `json:"Clusters,omitnil,omitempty" name:"Clusters"`
+
+	// 错误信息集合
+	Errors []*string `json:"Errors,omitnil,omitempty" name:"Errors"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClustersResponseParams `json:"Response"`
+}
+
+func (r *DescribeClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

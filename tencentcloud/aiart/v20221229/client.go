@@ -805,6 +805,64 @@ func (c *Client) QueryMemeJobWithContext(ctx context.Context, request *QueryMeme
     return
 }
 
+func NewQueryTextToImageJobRequest() (request *QueryTextToImageJobRequest) {
+    request = &QueryTextToImageJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("aiart", APIVersion, "QueryTextToImageJob")
+    
+    
+    return
+}
+
+func NewQueryTextToImageJobResponse() (response *QueryTextToImageJobResponse) {
+    response = &QueryTextToImageJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryTextToImageJob
+// 混元生图接口，基于混元大模型，根据输入的文本描述快速生成图片。
+//
+// 默认提供0个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+func (c *Client) QueryTextToImageJob(request *QueryTextToImageJobRequest) (response *QueryTextToImageJobResponse, err error) {
+    return c.QueryTextToImageJobWithContext(context.Background(), request)
+}
+
+// QueryTextToImageJob
+// 混元生图接口，基于混元大模型，根据输入的文本描述快速生成图片。
+//
+// 默认提供0个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+func (c *Client) QueryTextToImageJobWithContext(ctx context.Context, request *QueryTextToImageJobRequest) (response *QueryTextToImageJobResponse, err error) {
+    if request == nil {
+        request = NewQueryTextToImageJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "QueryTextToImageJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryTextToImageJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryTextToImageJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryTextToImageProJobRequest() (request *QueryTextToImageProJobRequest) {
     request = &QueryTextToImageProJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1449,6 +1507,110 @@ func (c *Client) SubmitMemeJobWithContext(ctx context.Context, request *SubmitMe
     request.SetContext(ctx)
     
     response = NewSubmitMemeJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitTextToImageJobRequest() (request *SubmitTextToImageJobRequest) {
+    request = &SubmitTextToImageJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("aiart", APIVersion, "SubmitTextToImageJob")
+    
+    
+    return
+}
+
+func NewSubmitTextToImageJobResponse() (response *SubmitTextToImageJobResponse) {
+    response = &SubmitTextToImageJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitTextToImageJob
+// 混元生图接口，基于混元大模型，根据输入的文本描述快速生成图片。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
+//  FAILEDOPERATION_GENERATEIMAGEFAILED = "FailedOperation.GenerateImageFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_LOGOPARAMERR = "InvalidParameterValue.LogoParamErr"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  INVALIDPARAMETERVALUE_TEXTLENGTHEXCEED = "InvalidParameterValue.TextLengthExceed"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+//  OPERATIONDENIED_TEXTILLEGALDETECTED = "OperationDenied.TextIllegalDetected"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitTextToImageJob(request *SubmitTextToImageJobRequest) (response *SubmitTextToImageJobResponse, err error) {
+    return c.SubmitTextToImageJobWithContext(context.Background(), request)
+}
+
+// SubmitTextToImageJob
+// 混元生图接口，基于混元大模型，根据输入的文本描述快速生成图片。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
+//  FAILEDOPERATION_GENERATEIMAGEFAILED = "FailedOperation.GenerateImageFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_LOGOPARAMERR = "InvalidParameterValue.LogoParamErr"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  INVALIDPARAMETERVALUE_TEXTLENGTHEXCEED = "InvalidParameterValue.TextLengthExceed"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+//  OPERATIONDENIED_TEXTILLEGALDETECTED = "OperationDenied.TextIllegalDetected"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitTextToImageJobWithContext(ctx context.Context, request *SubmitTextToImageJobRequest) (response *SubmitTextToImageJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitTextToImageJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "SubmitTextToImageJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitTextToImageJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitTextToImageJobResponse()
     err = c.Send(request, response)
     return
 }

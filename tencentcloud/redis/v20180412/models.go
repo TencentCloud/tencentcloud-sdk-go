@@ -4074,12 +4074,49 @@ func (r *DescribeInstanceShardsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceSpecBandwidthRequestParams struct {
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。填写实例id或者规格，两者必选其一。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 分片大小，单位：MB
+	ShardSize *int64 `json:"ShardSize,omitnil,omitempty" name:"ShardSize"`
+
+	// 分片数量。
+	ShardNum *int64 `json:"ShardNum,omitnil,omitempty" name:"ShardNum"`
+
+	// 复制组数量。
+	ReplicateNum *int64 `json:"ReplicateNum,omitnil,omitempty" name:"ReplicateNum"`
+
+	// 只读权重。
+	// - 100：开启从只读。
+	// - 0：关闭从只读。
+	ReadOnlyWeight *int64 `json:"ReadOnlyWeight,omitnil,omitempty" name:"ReadOnlyWeight"`
+
+	// 实例类型，同 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的Type。
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DescribeInstanceSpecBandwidthRequest struct {
 	*tchttp.BaseRequest
 	
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。填写实例id或者规格，两者必选其一。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 分片大小，单位：MB
+	ShardSize *int64 `json:"ShardSize,omitnil,omitempty" name:"ShardSize"`
+
+	// 分片数量。
+	ShardNum *int64 `json:"ShardNum,omitnil,omitempty" name:"ShardNum"`
+
+	// 复制组数量。
+	ReplicateNum *int64 `json:"ReplicateNum,omitnil,omitempty" name:"ReplicateNum"`
+
+	// 只读权重。
+	// - 100：开启从只读。
+	// - 0：关闭从只读。
+	ReadOnlyWeight *int64 `json:"ReadOnlyWeight,omitnil,omitempty" name:"ReadOnlyWeight"`
+
+	// 实例类型，同 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的Type。
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *DescribeInstanceSpecBandwidthRequest) ToJsonString() string {
@@ -4094,7 +4131,12 @@ func (r *DescribeInstanceSpecBandwidthRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "ShardSize")
+	delete(f, "ShardNum")
+	delete(f, "ReplicateNum")
+	delete(f, "ReadOnlyWeight")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceSpecBandwidthRequest has unknown keys!", "")
 	}
@@ -4103,6 +4145,12 @@ func (r *DescribeInstanceSpecBandwidthRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceSpecBandwidthResponseParams struct {
+	// 基础带宽。
+	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 链接限制。
+	ClientLimit *int64 `json:"ClientLimit,omitnil,omitempty" name:"ClientLimit"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

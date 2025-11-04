@@ -2854,7 +2854,7 @@ type OrderFlowPackageRequestParams struct {
 	// 是否自动续费，该选项和流量截断冲突，只能开启一个
 	AutoRenewFlag *bool `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 区域标识，0：国内，1：国外
+	// 区域标识，0：中国境内，1：中国境外
 	PackageRegion *int64 `json:"PackageRegion,omitnil,omitempty" name:"PackageRegion"`
 
 	// 是否开启流量截断功能，该选项和自动续费冲突
@@ -2893,7 +2893,7 @@ type OrderFlowPackageRequest struct {
 	// 是否自动续费，该选项和流量截断冲突，只能开启一个
 	AutoRenewFlag *bool `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 区域标识，0：国内，1：国外
+	// 区域标识，0：中国境内，1：中国境外
 	PackageRegion *int64 `json:"PackageRegion,omitnil,omitempty" name:"PackageRegion"`
 
 	// 是否开启流量截断功能，该选项和自动续费冲突

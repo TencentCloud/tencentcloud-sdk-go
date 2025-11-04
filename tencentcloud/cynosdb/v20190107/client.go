@@ -1355,6 +1355,104 @@ func (c *Client) CreateClustersWithContext(ctx context.Context, request *CreateC
     return
 }
 
+func NewCreateIntegrateClusterRequest() (request *CreateIntegrateClusterRequest) {
+    request = &CreateIntegrateClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CreateIntegrateCluster")
+    
+    
+    return
+}
+
+func NewCreateIntegrateClusterResponse() (response *CreateIntegrateClusterResponse) {
+    response = &CreateIntegrateClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateIntegrateCluster
+// 本接口（CreateClusters）用于新购集群。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSPECBYSPECCODEERROR = "FailedOperation.QuerySpecBySpecCodeError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INVALIDDBVERSION = "InvalidParameterValue.InvalidDBVersion"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDSPEC = "InvalidParameterValue.InvalidSpec"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  INVALIDPARAMETERVALUE_PROJECTIDNOTFOUND = "InvalidParameterValue.ProjectIdNotFound"
+//  INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
+//  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
+//  OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"
+//  UNAUTHORIZEDOPERATION_NOTREALNAMEACCOUNT = "UnauthorizedOperation.NotRealNameAccount"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateIntegrateCluster(request *CreateIntegrateClusterRequest) (response *CreateIntegrateClusterResponse, err error) {
+    return c.CreateIntegrateClusterWithContext(context.Background(), request)
+}
+
+// CreateIntegrateCluster
+// 本接口（CreateClusters）用于新购集群。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSPECBYSPECCODEERROR = "FailedOperation.QuerySpecBySpecCodeError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INVALIDDBVERSION = "InvalidParameterValue.InvalidDBVersion"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDSPEC = "InvalidParameterValue.InvalidSpec"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  INVALIDPARAMETERVALUE_PROJECTIDNOTFOUND = "InvalidParameterValue.ProjectIdNotFound"
+//  INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
+//  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
+//  OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"
+//  UNAUTHORIZEDOPERATION_NOTREALNAMEACCOUNT = "UnauthorizedOperation.NotRealNameAccount"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateIntegrateClusterWithContext(ctx context.Context, request *CreateIntegrateClusterRequest) (response *CreateIntegrateClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateIntegrateClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateIntegrateCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIntegrateCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIntegrateClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateParamTemplateRequest() (request *CreateParamTemplateRequest) {
     request = &CreateParamTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4765,6 +4863,76 @@ func (c *Client) DescribeInstancesWithinSameClusterWithContext(ctx context.Conte
     return
 }
 
+func NewDescribeIntegrateTaskRequest() (request *DescribeIntegrateTaskRequest) {
+    request = &DescribeIntegrateTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeIntegrateTask")
+    
+    
+    return
+}
+
+func NewDescribeIntegrateTaskResponse() (response *DescribeIntegrateTaskResponse) {
+    response = &DescribeIntegrateTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIntegrateTask
+// 本接口（DescribeIntegrateTask）用于查询集群任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeIntegrateTask(request *DescribeIntegrateTaskRequest) (response *DescribeIntegrateTaskResponse, err error) {
+    return c.DescribeIntegrateTaskWithContext(context.Background(), request)
+}
+
+// DescribeIntegrateTask
+// 本接口（DescribeIntegrateTask）用于查询集群任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeIntegrateTaskWithContext(ctx context.Context, request *DescribeIntegrateTaskRequest) (response *DescribeIntegrateTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeIntegrateTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeIntegrateTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIntegrateTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIntegrateTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIsolatedInstancesRequest() (request *DescribeIsolatedInstancesRequest) {
     request = &DescribeIsolatedInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6421,6 +6589,66 @@ func (c *Client) InquirePriceModifyWithContext(ctx context.Context, request *Inq
     request.SetContext(ctx)
     
     response = NewInquirePriceModifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquirePriceMultiSpecRequest() (request *InquirePriceMultiSpecRequest) {
+    request = &InquirePriceMultiSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "InquirePriceMultiSpec")
+    
+    
+    return
+}
+
+func NewInquirePriceMultiSpecResponse() (response *InquirePriceMultiSpecResponse) {
+    response = &InquirePriceMultiSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquirePriceMultiSpec
+// 此接口（InquirePriceMultiSpec）用于批量询价
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) InquirePriceMultiSpec(request *InquirePriceMultiSpecRequest) (response *InquirePriceMultiSpecResponse, err error) {
+    return c.InquirePriceMultiSpecWithContext(context.Background(), request)
+}
+
+// InquirePriceMultiSpec
+// 此接口（InquirePriceMultiSpec）用于批量询价
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) InquirePriceMultiSpecWithContext(ctx context.Context, request *InquirePriceMultiSpecRequest) (response *InquirePriceMultiSpecResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceMultiSpecRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "InquirePriceMultiSpec")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceMultiSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceMultiSpecResponse()
     err = c.Send(request, response)
     return
 }
