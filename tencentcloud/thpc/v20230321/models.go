@@ -901,7 +901,7 @@ type CreateWorkspacesRequestParams struct {
 	// 工作空间显示名称
 	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
 
-	// 工作空间登陆设置
+	// 工作空间登录设置
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
 
 	// 工作空间所属安全组
@@ -971,7 +971,7 @@ type CreateWorkspacesRequest struct {
 	// 工作空间显示名称
 	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
 
-	// 工作空间登陆设置
+	// 工作空间登录设置
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
 
 	// 工作空间所属安全组

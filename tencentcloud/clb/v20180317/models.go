@@ -7759,6 +7759,9 @@ type ModifyRuleRequestParams struct {
 
 	// OAuth配置信息。
 	OAuth *OAuth `json:"OAuth,omitnil,omitempty" name:"OAuth"`
+
+	// 自定义cookie名
+	CookieName *string `json:"CookieName,omitnil,omitempty" name:"CookieName"`
 }
 
 type ModifyRuleRequest struct {
@@ -7798,6 +7801,9 @@ type ModifyRuleRequest struct {
 
 	// OAuth配置信息。
 	OAuth *OAuth `json:"OAuth,omitnil,omitempty" name:"OAuth"`
+
+	// 自定义cookie名
+	CookieName *string `json:"CookieName,omitnil,omitempty" name:"CookieName"`
 }
 
 func (r *ModifyRuleRequest) ToJsonString() string {
@@ -7823,6 +7829,7 @@ func (r *ModifyRuleRequest) FromJsonString(s string) error {
 	delete(f, "TrpcCallee")
 	delete(f, "TrpcFunc")
 	delete(f, "OAuth")
+	delete(f, "CookieName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRuleRequest has unknown keys!", "")
 	}
@@ -8850,6 +8857,9 @@ type RuleInput struct {
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数和Certificate不能同时传入。
 	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitnil,omitempty" name:"MultiCertInfo"`
+
+	// 自定义cookie名
+	CookieName *string `json:"CookieName,omitnil,omitempty" name:"CookieName"`
 }
 
 type RuleOutput struct {
@@ -8928,6 +8938,9 @@ type RuleOutput struct {
 
 	// OAuth配置状态信息。
 	OAuth *OAuth `json:"OAuth,omitnil,omitempty" name:"OAuth"`
+
+	// 自定义cookie名。
+	CookieName *string `json:"CookieName,omitnil,omitempty" name:"CookieName"`
 }
 
 type RuleTargets struct {

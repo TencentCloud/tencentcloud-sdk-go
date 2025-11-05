@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 鉴权错误
+	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+
 	// 调用 CVM 失败。
 	FAILEDOPERATION_CVMERROR = "FailedOperation.CVMError"
 

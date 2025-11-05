@@ -7007,13 +7007,13 @@ type DescribeCpuExpandHistoryRequestParams struct {
 	// 查询的开始时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询的结束时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
+	// 查询的结束时间，默认为当前时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 分页入参
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页入参
+	// 分页入参，默认20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -7032,13 +7032,13 @@ type DescribeCpuExpandHistoryRequest struct {
 	// 查询的开始时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询的结束时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
+	// 查询的结束时间，默认为当前时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 分页入参
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页入参
+	// 分页入参，默认20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 

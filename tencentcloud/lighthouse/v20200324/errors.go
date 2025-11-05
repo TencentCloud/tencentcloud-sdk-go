@@ -104,6 +104,9 @@ const (
 	// 对密钥对的导入操作失败。
 	FAILEDOPERATION_IMPORTKEYPAIRFAILED = "FailedOperation.ImportKeyPairFailed"
 
+	// 命令内容的长度超出限制。
+	FAILEDOPERATION_INITCOMMANDCONTENTTOOLONG = "FailedOperation.InitCommandContentTooLong"
+
 	// 对实例的操作失败。
 	FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
 

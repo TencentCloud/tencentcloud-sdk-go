@@ -942,6 +942,21 @@ type CreateDataFlowRequestParams struct {
 
 	// 数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
 	DataFlowName *string `json:"DataFlowName,omitnil,omitempty" name:"DataFlowName"`
+
+	//  0：不开启自动更新  1：开启自动更新
+	AutoRefresh *uint64 `json:"AutoRefresh,omitnil,omitempty" name:"AutoRefresh"`
+
+	// KafkaConsumer 消费时使用的Topic参数
+	UserKafkaTopic *string `json:"UserKafkaTopic,omitnil,omitempty" name:"UserKafkaTopic"`
+
+	// 	服务地址 示例值：kafkaconsumer-ap-beijing.cls.tencentyun.com:9095
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
+
+	// Kafka消费用户名.示例值：name
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// Kafka消费用户密码。默认${SecretId}#${SecretKey}。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
 type CreateDataFlowRequest struct {
@@ -970,6 +985,21 @@ type CreateDataFlowRequest struct {
 
 	// 数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
 	DataFlowName *string `json:"DataFlowName,omitnil,omitempty" name:"DataFlowName"`
+
+	//  0：不开启自动更新  1：开启自动更新
+	AutoRefresh *uint64 `json:"AutoRefresh,omitnil,omitempty" name:"AutoRefresh"`
+
+	// KafkaConsumer 消费时使用的Topic参数
+	UserKafkaTopic *string `json:"UserKafkaTopic,omitnil,omitempty" name:"UserKafkaTopic"`
+
+	// 	服务地址 示例值：kafkaconsumer-ap-beijing.cls.tencentyun.com:9095
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
+
+	// Kafka消费用户名.示例值：name
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// Kafka消费用户密码。默认${SecretId}#${SecretKey}。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
 func (r *CreateDataFlowRequest) ToJsonString() string {
@@ -992,6 +1022,11 @@ func (r *CreateDataFlowRequest) FromJsonString(s string) error {
 	delete(f, "SecretId")
 	delete(f, "SecretKey")
 	delete(f, "DataFlowName")
+	delete(f, "AutoRefresh")
+	delete(f, "UserKafkaTopic")
+	delete(f, "ServerAddr")
+	delete(f, "UserName")
+	delete(f, "Password")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataFlowRequest has unknown keys!", "")
 	}
@@ -2798,13 +2833,13 @@ func (r *DescribeDataFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLifecycleDataTaskRequestParams struct {
-	// 开始时间
+	// 开始时间。须早于 EndTime ，仅支持查询最近3个月内的任务数据。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。须晚于 StartTime ，仅支持查询最近3个月内的任务数据。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 	任务ID
+	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// Offset 分页码	
@@ -2815,18 +2850,21 @@ type DescribeLifecycleDataTaskRequestParams struct {
 
 	// 过滤条件，TaskName，FileSystemId，Type
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 文件系统版本；v3.1: pcfs/hifs v4.0:Turbo
+	CfsVersion *string `json:"CfsVersion,omitnil,omitempty" name:"CfsVersion"`
 }
 
 type DescribeLifecycleDataTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间
+	// 开始时间。须早于 EndTime ，仅支持查询最近3个月内的任务数据。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。须晚于 StartTime ，仅支持查询最近3个月内的任务数据。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 	任务ID
+	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// Offset 分页码	
@@ -2837,6 +2875,9 @@ type DescribeLifecycleDataTaskRequest struct {
 
 	// 过滤条件，TaskName，FileSystemId，Type
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 文件系统版本；v3.1: pcfs/hifs v4.0:Turbo
+	CfsVersion *string `json:"CfsVersion,omitnil,omitempty" name:"CfsVersion"`
 }
 
 func (r *DescribeLifecycleDataTaskRequest) ToJsonString() string {
@@ -2857,6 +2898,7 @@ func (r *DescribeLifecycleDataTaskRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "CfsVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLifecycleDataTaskRequest has unknown keys!", "")
 	}
@@ -3724,6 +3766,21 @@ type ModifyDataFlowRequestParams struct {
 
 	// 密钥 key
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// KafkaConsumer 消费时使用的Topic参数
+	UserKafkaTopic *string `json:"UserKafkaTopic,omitnil,omitempty" name:"UserKafkaTopic"`
+
+	// 服务地址
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
+
+	// name
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// Kafka消费用户密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 元数据增量更新开关；1开启，0关闭
+	AutoRefresh *uint64 `json:"AutoRefresh,omitnil,omitempty" name:"AutoRefresh"`
 }
 
 type ModifyDataFlowRequest struct {
@@ -3743,6 +3800,21 @@ type ModifyDataFlowRequest struct {
 
 	// 密钥 key
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// KafkaConsumer 消费时使用的Topic参数
+	UserKafkaTopic *string `json:"UserKafkaTopic,omitnil,omitempty" name:"UserKafkaTopic"`
+
+	// 服务地址
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
+
+	// name
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// Kafka消费用户密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 元数据增量更新开关；1开启，0关闭
+	AutoRefresh *uint64 `json:"AutoRefresh,omitnil,omitempty" name:"AutoRefresh"`
 }
 
 func (r *ModifyDataFlowRequest) ToJsonString() string {
@@ -3762,6 +3834,11 @@ func (r *ModifyDataFlowRequest) FromJsonString(s string) error {
 	delete(f, "DataFlowName")
 	delete(f, "SecretId")
 	delete(f, "SecretKey")
+	delete(f, "UserKafkaTopic")
+	delete(f, "ServerAddr")
+	delete(f, "UserName")
+	delete(f, "Password")
+	delete(f, "AutoRefresh")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataFlowRequest has unknown keys!", "")
 	}

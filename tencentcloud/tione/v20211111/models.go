@@ -801,7 +801,7 @@ type CreateModelServiceRequestParams struct {
 	// sidecar配置
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
 
-	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 }
 
@@ -954,7 +954,7 @@ type CreateModelServiceRequest struct {
 	// sidecar配置
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
 
-	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 }
 
@@ -6012,7 +6012,7 @@ type ModifyModelServiceRequestParams struct {
 	// 资源组 id
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 }
 
@@ -6141,7 +6141,7 @@ type ModifyModelServiceRequest struct {
 	// 资源组 id
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 }
 

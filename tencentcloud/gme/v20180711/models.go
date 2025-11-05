@@ -220,6 +220,35 @@ type AudioTextStatisticsItem struct {
 	Data *float64 `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
+type AuditResultDetailExternal struct {
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 房间 ID
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// UserID
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
+
+	// 标签
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 恶意分数
+	Rate *float64 `json:"Rate,omitnil,omitempty" name:"Rate"`
+
+	// 创建时间
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 音频 Url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 文件Id
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// ASR结果
+	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
+}
+
 // Predefined struct for user
 type ControlAIConversationRequestParams struct {
 	// 任务唯一标识
@@ -1370,12 +1399,69 @@ func (r *DescribeApplicationListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuditResultExternalRequestParams struct {
+	// 应用 ID
+	BizId *int64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
+	// 页数  取值范围：>=1
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 每页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 起始时间戳（秒）
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 截止时间戳（秒）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 最小恶意分数
+	MinRate *int64 `json:"MinRate,omitnil,omitempty" name:"MinRate"`
+
+	// 最大恶意分数
+	MaxRate *int64 `json:"MaxRate,omitnil,omitempty" name:"MaxRate"`
+
+	// UserID
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
+
+	// 恶意分类
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 房间 ID
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 type DescribeAuditResultExternalRequest struct {
 	*tchttp.BaseRequest
 	
+	// 应用 ID
+	BizId *int64 `json:"BizId,omitnil,omitempty" name:"BizId"`
+
+	// 页数  取值范围：>=1
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 每页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 起始时间戳（秒）
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 截止时间戳（秒）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 最小恶意分数
+	MinRate *int64 `json:"MinRate,omitnil,omitempty" name:"MinRate"`
+
+	// 最大恶意分数
+	MaxRate *int64 `json:"MaxRate,omitnil,omitempty" name:"MaxRate"`
+
+	// UserID
+	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
+
+	// 恶意分类
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 房间 ID
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 func (r *DescribeAuditResultExternalRequest) ToJsonString() string {
@@ -1390,7 +1476,16 @@ func (r *DescribeAuditResultExternalRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "BizId")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "MinRate")
+	delete(f, "MaxRate")
+	delete(f, "OpenId")
+	delete(f, "Label")
+	delete(f, "RoomId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditResultExternalRequest has unknown keys!", "")
 	}
@@ -1399,6 +1494,12 @@ func (r *DescribeAuditResultExternalRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuditResultExternalResponseParams struct {
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 明细列表
+	Data []*AuditResultDetailExternal `json:"Data,omitnil,omitempty" name:"Data"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

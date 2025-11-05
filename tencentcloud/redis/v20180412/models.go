@@ -7054,6 +7054,12 @@ type InstanceClusterShard struct {
 	// - 0：down。
 	// - 1：on。
 	Connected *int64 `json:"Connected,omitnil,omitempty" name:"Connected"`
+
+	// 可用区信息。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 节点组 ID。
+	ReplicasNodeId *int64 `json:"ReplicasNodeId,omitnil,omitempty" name:"ReplicasNodeId"`
 }
 
 type InstanceEnumParam struct {

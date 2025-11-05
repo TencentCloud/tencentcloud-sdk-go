@@ -1,173 +1,10 @@
-# Release v1.1.49
+# Release v1.1.50
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 云联络中心(ccc) 版本：2020-02-10
 
-### 第 207 次发布
+### 第 112 次发布
 
-发布时间：2025-11-05 01:12:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyBackupEncryptionStatus](https://cloud.tencent.com/document/api/236/86507)
-
-	* 新增入参：BinlogEncryptionStatus
-
-
-
-
-## 事件总线(eb) 版本：2021-04-16
-
-### 第 17 次发布
-
-发布时间：2025-11-05 01:23:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CkafkaTargetParams](https://cloud.tencent.com/document/api/1359/67704#CkafkaTargetParams)
-
-	* 新增成员：EventDeliveryFormat
-
-
-
-
-## Elasticsearch Service(es) 版本：2025-01-01
-
-
-
-## Elasticsearch Service(es) 版本：2018-04-16
-
-### 第 89 次发布
-
-发布时间：2025-11-05 01:24:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UpdateLogstashInstance](https://cloud.tencent.com/document/api/845/77233)
-
-	* 新增入参：MultiZoneInfo
-
-
-修改数据结构：
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
-
-	* 新增成员：EsPrivateTcpUrl
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 257 次发布
-
-发布时间：2025-11-05 01:25:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CreateFlowOption](https://cloud.tencent.com/document/api/1323/70369#CreateFlowOption)
-
-	* 新增成员：HideOperationInstructions, HideOperationSteps, SelfName, HideSignCodeAfterStart
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 241 次发布
-
-发布时间：2025-11-05 01:25:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
-
-	* 新增成员：HideOperationSteps, SelfName, HideSignCodeAfterStart
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 220 次发布
-
-发布时间：2025-11-05 01:46:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [OnlineTaxiItinerary](https://cloud.tencent.com/document/api/866/33527#OnlineTaxiItinerary)
-
-	* <font color="#dd0000">**修改成员**：</font>Content
-
-
-
-
-## 集团账号管理(organization) 版本：2021-03-31
-
-### 第 53 次发布
-
-发布时间：2025-11-05 01:49:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateUser](https://cloud.tencent.com/document/api/850/109928)
-
-	* 新增入参：NeedResetPassword
-
-* [UpdateUser](https://cloud.tencent.com/document/api/850/109924)
-
-	* 新增入参：NeedResetPassword
-
-
-修改数据结构：
-
-* [UserInfo](https://cloud.tencent.com/document/api/850/67060#UserInfo)
-
-	* 新增成员：NeedResetPassword
-
-
-
-
-## 集团账号管理(organization) 版本：2018-12-25
-
-
-
-## 容器服务(tke) 版本：2022-05-01
-
-### 第 16 次发布
-
-发布时间：2025-11-05 02:25:36
+发布时间：2025-11-06 01:11:16
 
 本次发布包含了以下内容：
 
@@ -175,23 +12,19 @@
 
 新增接口：
 
-* [DescribeClusters](https://cloud.tencent.com/document/api/457/124673)
+* [DescribeAIAgentInfoList](https://cloud.tencent.com/document/api/679/124702)
 
 新增数据结构：
 
-* [Cluster](https://cloud.tencent.com/document/api/457/103206#Cluster)
+* [AIAgentInfo](https://cloud.tencent.com/document/api/679/47715#AIAgentInfo)
 
 
 
-## 容器服务(tke) 版本：2018-05-25
+## 文件存储(cfs) 版本：2019-07-19
 
+### 第 43 次发布
 
-
-## 消息队列 RabbitMQ Serverless 版(trabbit) 版本：2023-04-18
-
-### 第 6 次发布
-
-发布时间：2025-11-05 02:26:32
+发布时间：2025-11-06 01:13:27
 
 本次发布包含了以下内容：
 
@@ -199,46 +32,196 @@
 
 修改接口：
 
-* [DescribeRabbitMQServerlessConnection](https://cloud.tencent.com/document/api/1495/116138)
+* [CreateDataFlow](https://cloud.tencent.com/document/api/582/122053)
 
-	* 新增入参：SortElement, SortType, Offset, Limit, Name
+	* 新增入参：AutoRefresh, UserKafkaTopic, ServerAddr, UserName, Password
 
-* [DescribeRabbitMQServerlessConsumers](https://cloud.tencent.com/document/api/1495/116137)
+* [DescribeLifecycleDataTask](https://cloud.tencent.com/document/api/582/122047)
 
-	* 新增入参：Channel
+	* 新增入参：CfsVersion
 
-	* <font color="#dd0000">**修改入参**：</font>VirtualHost, QueueName
+* [ModifyDataFlow](https://cloud.tencent.com/document/api/582/122045)
 
-* [ModifyRabbitMQServerlessInstance](https://cloud.tencent.com/document/api/1495/116152)
+	* 新增入参：UserKafkaTopic, ServerAddr, UserName, Password, AutoRefresh
 
-	* 新增入参：DeleteAllTags, InstanceTags
 
-* [ModifyRabbitMQServerlessQueue](https://cloud.tencent.com/document/api/1495/116127)
 
-	* 新增入参：MessageTTL, DeadLetterExchange, DeadLetterRoutingKey
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 139 次发布
+
+发布时间：2025-11-06 01:14:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyRule](https://cloud.tencent.com/document/api/214/30679)
+
+	* 新增入参：CookieName
+
+
+修改数据结构：
+
+* [RuleInput](https://cloud.tencent.com/document/api/214/30694#RuleInput)
+
+	* 新增成员：CookieName
+
+* [RuleOutput](https://cloud.tencent.com/document/api/214/30694#RuleOutput)
+
+	* 新增成员：CookieName
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 48 次发布
+
+发布时间：2025-11-06 01:20:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyDomainCNAMESpeedupStatusBatch](https://cloud.tencent.com/document/api/1427/124704)
+* [ModifyDomainRecursiveStatusBatch](https://cloud.tencent.com/document/api/1427/124703)
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 44 次发布
+
+发布时间：2025-11-06 01:24:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAuditResultExternal](https://cloud.tencent.com/document/api/607/124601)
+
+	* 新增入参：BizId, PageNo, PageSize, BeginTime, EndTime, MinRate, MaxRate, OpenId, Label, RoomId
+
+	* 新增出参：TotalCount, Data
 
 
 新增数据结构：
 
-* [RabbitMQServerlessTag](https://cloud.tencent.com/document/api/1495/116155#RabbitMQServerlessTag)
+* [AuditResultDetailExternal](https://cloud.tencent.com/document/api/607/35375#AuditResultDetailExternal)
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 78 次发布
+
+发布时间：2025-11-06 01:28:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateMcpServer](https://cloud.tencent.com/document/api/1207/122838)
+
+	* 新增入参：TransportType
+
+* [ModifyMcpServer](https://cloud.tencent.com/document/api/1207/122836)
+
+	* 新增入参：TransportType
+
 
 修改数据结构：
 
-* [RabbitMQClusterInfo](https://cloud.tencent.com/document/api/1495/116155#RabbitMQClusterInfo)
+* [McpServer](https://cloud.tencent.com/document/api/1207/47576#McpServer)
 
-	* 新增成员：Tags
+	* 新增成员：TransportType
 
-* [RabbitMQConnection](https://cloud.tencent.com/document/api/1495/116155#RabbitMQConnection)
 
-	* 新增成员：IncomingBytes, OutgoingBytes, Heartbeat, MaxChannel, IdleSince
 
-* [RabbitMQConsumersListInfo](https://cloud.tencent.com/document/api/1495/116155#RabbitMQConsumersListInfo)
 
-	* 新增成员：QueueName, AckRequired, PrefetchCount, Active, LastDeliveredTime, UnAckMsgCount, ChannelName
+## 云数据库Redis(redis) 版本：2018-04-12
 
-* [RabbitMQServerlessInstance](https://cloud.tencent.com/document/api/1495/116155#RabbitMQServerlessInstance)
+### 第 95 次发布
 
-	* 新增成员：Tags
+发布时间：2025-11-06 01:50:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceClusterShard](https://cloud.tencent.com/document/api/239/20022#InstanceClusterShard)
+
+	* 新增成员：ZoneId, ReplicasNodeId
+
+
+
+
+## 自动化助手(tat) 版本：2020-10-28
+
+### 第 28 次发布
+
+发布时间：2025-11-06 02:00:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInvoker](https://cloud.tencent.com/document/api/1340/61762)
+
+	* 新增入参：Tags
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 83 次发布
+
+发布时间：2025-11-06 02:05:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UninstallClusterContainerSecurity](https://cloud.tencent.com/document/api/1285/124705)
+
+
+
+## 容器服务(tke) 版本：2022-05-01
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 207 次发布
+
+发布时间：2025-11-06 02:17:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteClusterInstances](https://cloud.tencent.com/document/api/457/31864)
+
+	* 新增入参：ResourceDeleteOptions
 
 
 

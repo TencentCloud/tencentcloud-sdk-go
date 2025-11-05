@@ -191,7 +191,7 @@ type AlarmInfo struct {
 	// Condition互斥。
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
-	// 云监控通知渠道相关信息，和AlarmNoticeIds互斥
+	// 腾讯云可观测平台通知渠道相关信息，和AlarmNoticeIds互斥
 	MonitorNotice *MonitorNotice `json:"MonitorNotice,omitnil,omitempty" name:"MonitorNotice"`
 }
 
@@ -404,7 +404,7 @@ type AlertHistoryRecord struct {
 	// 0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
-	// 通知渠道类型，0默认代表cls内部通知渠道，1代表云监控通知渠道
+	// 通知渠道类型，0默认代表cls内部通知渠道，1代表腾讯云可观测平台通知渠道
 	SendType *uint64 `json:"SendType,omitnil,omitempty" name:"SendType"`
 }
 

@@ -431,10 +431,6 @@ func NewCreateDomainResponse() (response *CreateDomainResponse) {
 // CreateDomain
 // 添加域名
 //
-// 
-//
-// 备注：该接口不支持添加子域名。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
@@ -459,10 +455,6 @@ func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDom
 
 // CreateDomain
 // 添加域名
-//
-// 
-//
-// 备注：该接口不支持添加子域名。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5801,6 +5793,76 @@ func (c *Client) DownloadSnapshotWithContext(ctx context.Context, request *Downl
     return
 }
 
+func NewModifyDomainCNAMESpeedupStatusBatchRequest() (request *ModifyDomainCNAMESpeedupStatusBatchRequest) {
+    request = &ModifyDomainCNAMESpeedupStatusBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainCNAMESpeedupStatusBatch")
+    
+    
+    return
+}
+
+func NewModifyDomainCNAMESpeedupStatusBatchResponse() (response *ModifyDomainCNAMESpeedupStatusBatchResponse) {
+    response = &ModifyDomainCNAMESpeedupStatusBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDomainCNAMESpeedupStatusBatch
+// 批量修改域名CNAME加速状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_BATCHTASKCOUNTLIMIT = "InvalidParameter.BatchTaskCountLimit"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_DOMAINSEMPTY = "InvalidParameter.DomainsEmpty"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+func (c *Client) ModifyDomainCNAMESpeedupStatusBatch(request *ModifyDomainCNAMESpeedupStatusBatchRequest) (response *ModifyDomainCNAMESpeedupStatusBatchResponse, err error) {
+    return c.ModifyDomainCNAMESpeedupStatusBatchWithContext(context.Background(), request)
+}
+
+// ModifyDomainCNAMESpeedupStatusBatch
+// 批量修改域名CNAME加速状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_BATCHTASKCOUNTLIMIT = "InvalidParameter.BatchTaskCountLimit"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_DOMAINSEMPTY = "InvalidParameter.DomainsEmpty"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+func (c *Client) ModifyDomainCNAMESpeedupStatusBatchWithContext(ctx context.Context, request *ModifyDomainCNAMESpeedupStatusBatchRequest) (response *ModifyDomainCNAMESpeedupStatusBatchResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainCNAMESpeedupStatusBatchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dnspod", APIVersion, "ModifyDomainCNAMESpeedupStatusBatch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainCNAMESpeedupStatusBatch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDomainCNAMESpeedupStatusBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDomainCustomLineRequest() (request *ModifyDomainCustomLineRequest) {
     request = &ModifyDomainCustomLineRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6107,6 +6169,76 @@ func (c *Client) ModifyDomainOwnerWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyDomainOwnerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDomainRecursiveStatusBatchRequest() (request *ModifyDomainRecursiveStatusBatchRequest) {
+    request = &ModifyDomainRecursiveStatusBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainRecursiveStatusBatch")
+    
+    
+    return
+}
+
+func NewModifyDomainRecursiveStatusBatchResponse() (response *ModifyDomainRecursiveStatusBatchResponse) {
+    response = &ModifyDomainRecursiveStatusBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDomainRecursiveStatusBatch
+// 批量修改域名递归解析加速状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_BATCHTASKCOUNTLIMIT = "InvalidParameter.BatchTaskCountLimit"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_DOMAINSEMPTY = "InvalidParameter.DomainsEmpty"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+func (c *Client) ModifyDomainRecursiveStatusBatch(request *ModifyDomainRecursiveStatusBatchRequest) (response *ModifyDomainRecursiveStatusBatchResponse, err error) {
+    return c.ModifyDomainRecursiveStatusBatchWithContext(context.Background(), request)
+}
+
+// ModifyDomainRecursiveStatusBatch
+// 批量修改域名递归解析加速状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_BATCHTASKCOUNTLIMIT = "InvalidParameter.BatchTaskCountLimit"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_DOMAINSEMPTY = "InvalidParameter.DomainsEmpty"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+func (c *Client) ModifyDomainRecursiveStatusBatchWithContext(ctx context.Context, request *ModifyDomainRecursiveStatusBatchRequest) (response *ModifyDomainRecursiveStatusBatchResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainRecursiveStatusBatchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dnspod", APIVersion, "ModifyDomainRecursiveStatusBatch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainRecursiveStatusBatch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDomainRecursiveStatusBatchResponse()
     err = c.Send(request, response)
     return
 }

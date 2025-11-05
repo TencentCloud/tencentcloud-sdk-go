@@ -17227,7 +17227,7 @@ type ExpandGroupRequestParams struct {
 	// 部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 扩容的机器实例ID列表，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1)接口，选定一个虚拟机集群，选择部署组，选择应用扩容可获取实例列表
+	// 扩容的机器实例ID列表，调用[DescribeGroupInstances](https://cloud.tencent.com/document/api/649/36066)查询虚拟机部署组云主机列表
 	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 }
 
@@ -17237,7 +17237,7 @@ type ExpandGroupRequest struct {
 	// 部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 扩容的机器实例ID列表，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1)接口，选定一个虚拟机集群，选择部署组，选择应用扩容可获取实例列表
+	// 扩容的机器实例ID列表，调用[DescribeGroupInstances](https://cloud.tencent.com/document/api/649/36066)查询虚拟机部署组云主机列表
 	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 }
 
@@ -19074,7 +19074,7 @@ func (r *ModifyContainerGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyContainerReplicasRequestParams struct {
-	// 部署组ID，部署组唯一标识，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)接口，选定一个容器集群，选择部署组，查看DescribeSingleContainerGroups接口返回的GroupId
+	// 部署组ID，部署组唯一标识，可以通过[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的容器部署组列表；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的容器部署组
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 实例数量
@@ -19084,7 +19084,7 @@ type ModifyContainerReplicasRequestParams struct {
 type ModifyContainerReplicasRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID，部署组唯一标识，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)接口，选定一个容器集群，选择部署组，查看DescribeSingleContainerGroups接口返回的GroupId
+	// 部署组ID，部署组唯一标识，可以通过[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的容器部署组列表；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的容器部署组
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 实例数量
@@ -21193,7 +21193,7 @@ type RemoveInstancesRequestParams struct {
 	// 集群 ID。调用[DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)查询已创建的集群或通过[CreateCluster](https://cloud.tencent.com/document/api/649/36049)接口创建新的集群。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 云主机 ID 列表
+	// 云主机 ID 列表，调用[DescribeInstances](https://cloud.tencent.com/document/api/649/72342)查询已有的云主机列表
 	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 }
 
@@ -21203,7 +21203,7 @@ type RemoveInstancesRequest struct {
 	// 集群 ID。调用[DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)查询已创建的集群或通过[CreateCluster](https://cloud.tencent.com/document/api/649/36049)接口创建新的集群。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 云主机 ID 列表
+	// 云主机 ID 列表，调用[DescribeInstances](https://cloud.tencent.com/document/api/649/72342)查询已有的云主机列表
 	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 }
 

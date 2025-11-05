@@ -1223,7 +1223,7 @@ type Component struct {
 	// <b>参数样例</b>：`{"UseSealSize":true}`
 	// 
 	// <font color="red">签署意见功能设置，</font>当ComponentType为SIGN_OPINION时，可以通过以下参数设置签署意见的相关内容：
-	// <ul><li> <b>Values</b>：签署意见预设的需要用户填写的的文本</li>
+	// <ul><li> <b>Values</b>：签署意见预设的需要用户填写的文本</li>
 	// <li> <b>ValuesArray</b>：签署意见需要用户按顺序点击的分词（组合后应和Values内容一致）</li></ul>
 	// <b>参数样例</b>：`{"Values":"我已知晓内容并同意签署","ValuesArray":["我","已知晓","内容","并","同意","签署"]}`
 	// 

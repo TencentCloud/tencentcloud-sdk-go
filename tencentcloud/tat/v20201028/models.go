@@ -407,6 +407,9 @@ type CreateInvokerRequestParams struct {
 	// 
 	// 当执行器类型为 `SCHEDULE` 时，必须指定此参数。
 	ScheduleSettings *ScheduleSettings `json:"ScheduleSettings,omitnil,omitempty" name:"ScheduleSettings"`
+
+	// 为命令关联的标签，列表长度不超过10
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateInvokerRequest struct {
@@ -446,6 +449,9 @@ type CreateInvokerRequest struct {
 	// 
 	// 当执行器类型为 `SCHEDULE` 时，必须指定此参数。
 	ScheduleSettings *ScheduleSettings `json:"ScheduleSettings,omitnil,omitempty" name:"ScheduleSettings"`
+
+	// 为命令关联的标签，列表长度不超过10
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateInvokerRequest) ToJsonString() string {
@@ -467,6 +473,7 @@ func (r *CreateInvokerRequest) FromJsonString(s string) error {
 	delete(f, "Username")
 	delete(f, "Parameters")
 	delete(f, "ScheduleSettings")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInvokerRequest has unknown keys!", "")
 	}

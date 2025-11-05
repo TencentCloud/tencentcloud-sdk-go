@@ -2341,7 +2341,7 @@ func NewDescribeLifecycleDataTaskResponse() (response *DescribeLifecycleDataTask
 }
 
 // DescribeLifecycleDataTask
-// 查询生命周期任务的接口
+// 查询生命周期任务的接口。仅支持查询最近三个月内的任务数据。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MISSINGTASKIDORREGION = "InvalidParameterValue.MissingTaskIdOrRegion"
@@ -2350,7 +2350,7 @@ func (c *Client) DescribeLifecycleDataTask(request *DescribeLifecycleDataTaskReq
 }
 
 // DescribeLifecycleDataTask
-// 查询生命周期任务的接口
+// 查询生命周期任务的接口。仅支持查询最近三个月内的任务数据。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MISSINGTASKIDORREGION = "InvalidParameterValue.MissingTaskIdOrRegion"

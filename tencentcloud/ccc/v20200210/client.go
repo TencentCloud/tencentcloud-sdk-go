@@ -1635,6 +1635,62 @@ func (c *Client) DeleteStaffWithContext(ctx context.Context, request *DeleteStaf
     return
 }
 
+func NewDescribeAIAgentInfoListRequest() (request *DescribeAIAgentInfoListRequest) {
+    request = &DescribeAIAgentInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeAIAgentInfoList")
+    
+    
+    return
+}
+
+func NewDescribeAIAgentInfoListResponse() (response *DescribeAIAgentInfoListResponse) {
+    response = &DescribeAIAgentInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIAgentInfoList
+// 获取智能体列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeAIAgentInfoList(request *DescribeAIAgentInfoListRequest) (response *DescribeAIAgentInfoListResponse, err error) {
+    return c.DescribeAIAgentInfoListWithContext(context.Background(), request)
+}
+
+// DescribeAIAgentInfoList
+// 获取智能体列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeAIAgentInfoListWithContext(ctx context.Context, request *DescribeAIAgentInfoListRequest) (response *DescribeAIAgentInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIAgentInfoListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ccc", APIVersion, "DescribeAIAgentInfoList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIAgentInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIAgentInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAIAnalysisResultRequest() (request *DescribeAIAnalysisResultRequest) {
     request = &DescribeAIAnalysisResultRequest{
         BaseRequest: &tchttp.BaseRequest{},

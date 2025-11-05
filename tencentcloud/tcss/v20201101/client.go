@@ -19951,6 +19951,58 @@ func (c *Client) SyncAssetImageRegistryAssetWithContext(ctx context.Context, req
     return
 }
 
+func NewUninstallClusterContainerSecurityRequest() (request *UninstallClusterContainerSecurityRequest) {
+    request = &UninstallClusterContainerSecurityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "UninstallClusterContainerSecurity")
+    
+    
+    return
+}
+
+func NewUninstallClusterContainerSecurityResponse() (response *UninstallClusterContainerSecurityResponse) {
+    response = &UninstallClusterContainerSecurityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UninstallClusterContainerSecurity
+// 卸载集群容器安全
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UninstallClusterContainerSecurity(request *UninstallClusterContainerSecurityRequest) (response *UninstallClusterContainerSecurityResponse, err error) {
+    return c.UninstallClusterContainerSecurityWithContext(context.Background(), request)
+}
+
+// UninstallClusterContainerSecurity
+// 卸载集群容器安全
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UninstallClusterContainerSecurityWithContext(ctx context.Context, request *UninstallClusterContainerSecurityRequest) (response *UninstallClusterContainerSecurityResponse, err error) {
+    if request == nil {
+        request = NewUninstallClusterContainerSecurityRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "UninstallClusterContainerSecurity")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UninstallClusterContainerSecurity require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUninstallClusterContainerSecurityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateAndPublishNetworkFirewallPolicyDetailRequest() (request *UpdateAndPublishNetworkFirewallPolicyDetailRequest) {
     request = &UpdateAndPublishNetworkFirewallPolicyDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
