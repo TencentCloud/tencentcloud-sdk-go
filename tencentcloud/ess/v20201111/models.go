@@ -3303,7 +3303,7 @@ type CreateEmbedWebUrlRequestParams struct {
 	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
 	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
 	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
-	// <li>EXTEND_SERVICE：生成拓展服务的嵌入页面</li>
+	// <li>EXTEND_SERVICE：生成高级签署能力的嵌入页面</li>
 	// <li>PREVIEW_FLOW：生成预览合同的嵌入页面（支持移动端）</li>
 	// <li>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面（仅支持PC端）</li></ul>
 	// 
@@ -3377,7 +3377,7 @@ type CreateEmbedWebUrlRequest struct {
 	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
 	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
 	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
-	// <li>EXTEND_SERVICE：生成拓展服务的嵌入页面</li>
+	// <li>EXTEND_SERVICE：生成高级签署能力的嵌入页面</li>
 	// <li>PREVIEW_FLOW：生成预览合同的嵌入页面（支持移动端）</li>
 	// <li>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面（仅支持PC端）</li></ul>
 	// 

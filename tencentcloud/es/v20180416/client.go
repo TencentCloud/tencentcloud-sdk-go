@@ -2795,6 +2795,66 @@ func (c *Client) GetDiagnoseSettingsWithContext(ctx context.Context, request *Ge
     return
 }
 
+func NewGetIpTraceStatusRequest() (request *GetIpTraceStatusRequest) {
+    request = &GetIpTraceStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "GetIpTraceStatus")
+    
+    
+    return
+}
+
+func NewGetIpTraceStatusResponse() (response *GetIpTraceStatusResponse) {
+    response = &GetIpTraceStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetIpTraceStatus
+// 查询IP溯源状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ABNORMALDATAFORMAT = "FailedOperation.AbnormalDataFormat"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) GetIpTraceStatus(request *GetIpTraceStatusRequest) (response *GetIpTraceStatusResponse, err error) {
+    return c.GetIpTraceStatusWithContext(context.Background(), request)
+}
+
+// GetIpTraceStatus
+// 查询IP溯源状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ABNORMALDATAFORMAT = "FailedOperation.AbnormalDataFormat"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) GetIpTraceStatusWithContext(ctx context.Context, request *GetIpTraceStatusRequest) (response *GetIpTraceStatusResponse, err error) {
+    if request == nil {
+        request = NewGetIpTraceStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "GetIpTraceStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetIpTraceStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetIpTraceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRequestTargetNodeTypesRequest() (request *GetRequestTargetNodeTypesRequest) {
     request = &GetRequestTargetNodeTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3027,6 +3087,74 @@ func (c *Client) ModifyEsVipSecurityGroupWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewModifyEsVipSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryIpTraceLogRequest() (request *QueryIpTraceLogRequest) {
+    request = &QueryIpTraceLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "QueryIpTraceLog")
+    
+    
+    return
+}
+
+func NewQueryIpTraceLogResponse() (response *QueryIpTraceLogResponse) {
+    response = &QueryIpTraceLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryIpTraceLog
+// 查询IP溯源日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeOut"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDLOGTYPE = "InvalidParameter.InvalidLogType"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) QueryIpTraceLog(request *QueryIpTraceLogRequest) (response *QueryIpTraceLogResponse, err error) {
+    return c.QueryIpTraceLogWithContext(context.Background(), request)
+}
+
+// QueryIpTraceLog
+// 查询IP溯源日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeOut"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDLOGTYPE = "InvalidParameter.InvalidLogType"
+//  INVALIDPARAMETER_INVALIDQUERYSTRING = "InvalidParameter.InvalidQueryString"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) QueryIpTraceLogWithContext(ctx context.Context, request *QueryIpTraceLogRequest) (response *QueryIpTraceLogResponse, err error) {
+    if request == nil {
+        request = NewQueryIpTraceLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "QueryIpTraceLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryIpTraceLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryIpTraceLogResponse()
     err = c.Send(request, response)
     return
 }
@@ -3963,6 +4091,78 @@ func (c *Client) UpdateInstanceWithContext(ctx context.Context, request *UpdateI
     request.SetContext(ctx)
     
     response = NewUpdateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateIpTraceStatusRequest() (request *UpdateIpTraceStatusRequest) {
+    request = &UpdateIpTraceStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "UpdateIpTraceStatus")
+    
+    
+    return
+}
+
+func NewUpdateIpTraceStatusResponse() (response *UpdateIpTraceStatusResponse) {
+    response = &UpdateIpTraceStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateIpTraceStatus
+// 更新ES集群IP溯源状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SETTINGIPTRACEERROR = "FailedOperation.SettingIpTraceError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDIP = "InvalidParameter.InvalidIp"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION_KERNELNOTSUPPORT = "UnsupportedOperation.KernelNotSupport"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+func (c *Client) UpdateIpTraceStatus(request *UpdateIpTraceStatusRequest) (response *UpdateIpTraceStatusResponse, err error) {
+    return c.UpdateIpTraceStatusWithContext(context.Background(), request)
+}
+
+// UpdateIpTraceStatus
+// 更新ES集群IP溯源状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SETTINGIPTRACEERROR = "FailedOperation.SettingIpTraceError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDIP = "InvalidParameter.InvalidIp"
+//  INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION_KERNELNOTSUPPORT = "UnsupportedOperation.KernelNotSupport"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+func (c *Client) UpdateIpTraceStatusWithContext(ctx context.Context, request *UpdateIpTraceStatusRequest) (response *UpdateIpTraceStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdateIpTraceStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "UpdateIpTraceStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateIpTraceStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateIpTraceStatusResponse()
     err = c.Send(request, response)
     return
 }

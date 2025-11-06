@@ -2985,6 +2985,8 @@ type ExtractDocMultiRequestParams struct {
 	// RegistrationCertificate -- 备案证
 	// ​GridPhoto -- 电网系统照片
 	// ​SignaturePage -- 签署页
+	// ​SalesDeliveryNote -- 销售发货单
+	// 
 	// 
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
@@ -3047,6 +3049,8 @@ type ExtractDocMultiRequest struct {
 	// RegistrationCertificate -- 备案证
 	// ​GridPhoto -- 电网系统照片
 	// ​SignaturePage -- 签署页
+	// ​SalesDeliveryNote -- 销售发货单
+	// 
 	// 
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 

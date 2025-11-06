@@ -20,6 +20,12 @@ const (
 	// 账号工厂必选基线项未配置
 	FAILEDOPERATION_AFREQUIREDITEMNOTSELECT = "FailedOperation.AFRequiredItemNotSelect"
 
+	// 联系人邮箱未验证。
+	FAILEDOPERATION_ACCOUNTFACTORYCONTACTEMAILNOTVERIFY = "FailedOperation.AccountFactoryContactEmailNotVerify"
+
+	// 联系人手机未验证。
+	FAILEDOPERATION_ACCOUNTFACTORYCONTACTPHONENOTVERIFY = "FailedOperation.AccountFactoryContactPhoneNotVerify"
+
 	// 账号工厂基线项的依赖项未配置
 	FAILEDOPERATION_ACCOUNTFACTORYDEPENDONITEMNOTCONFIG = "FailedOperation.AccountFactoryDependOnItemNotConfig"
 

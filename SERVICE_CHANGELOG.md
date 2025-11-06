@@ -1,10 +1,10 @@
-# Release v1.1.50
+# Release v1.1.51
 
 ## 云联络中心(ccc) 版本：2020-02-10
 
-### 第 112 次发布
+### 第 113 次发布
 
-发布时间：2025-11-06 01:11:16
+发布时间：2025-11-07 01:11:16
 
 本次发布包含了以下内容：
 
@@ -12,19 +12,39 @@
 
 新增接口：
 
-* [DescribeAIAgentInfoList](https://cloud.tencent.com/document/api/679/124702)
+* [SetStaffStatus](https://cloud.tencent.com/document/api/679/124802)
 
 新增数据结构：
 
-* [AIAgentInfo](https://cloud.tencent.com/document/api/679/47715#AIAgentInfo)
+* [SetStaffStatusItem](https://cloud.tencent.com/document/api/679/47715#SetStaffStatusItem)
+* [SetStaffStatusRspItem](https://cloud.tencent.com/document/api/679/47715#SetStaffStatusRspItem)
 
 
 
 ## 文件存储(cfs) 版本：2019-07-19
 
-### 第 43 次发布
+### 第 44 次发布
 
-发布时间：2025-11-06 01:13:27
+发布时间：2025-11-07 01:13:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataFlowInfo](https://cloud.tencent.com/document/api/582/38175#DataFlowInfo)
+
+	* 新增成员：AutoRefresh, UserKafkaTopic, ServerAddr, UserName, AutoRefreshStatus, AutoRefreshTime
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 137 次发布
+
+发布时间：2025-11-07 01:15:27
 
 本次发布包含了以下内容：
 
@@ -32,26 +52,18 @@
 
 修改接口：
 
-* [CreateDataFlow](https://cloud.tencent.com/document/api/582/122053)
+* [CreateTopic](https://cloud.tencent.com/document/api/614/56456)
 
-	* 新增入参：AutoRefresh, UserKafkaTopic, ServerAddr, UserName, Password
-
-* [DescribeLifecycleDataTask](https://cloud.tencent.com/document/api/582/122047)
-
-	* 新增入参：CfsVersion
-
-* [ModifyDataFlow](https://cloud.tencent.com/document/api/582/122045)
-
-	* 新增入参：UserKafkaTopic, ServerAddr, UserName, Password, AutoRefresh
+	* 新增入参：IsSourceFrom
 
 
 
 
-## 负载均衡(clb) 版本：2018-03-17
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 139 次发布
+### 第 143 次发布
 
-发布时间：2025-11-06 01:14:56
+发布时间：2025-11-07 01:17:15
 
 本次发布包含了以下内容：
 
@@ -59,29 +71,33 @@
 
 修改接口：
 
-* [ModifyRule](https://cloud.tencent.com/document/api/214/30679)
+* [DescribeClusterTransparentEncryptInfo](https://cloud.tencent.com/document/api/1003/113594)
 
-	* 新增入参：CookieName
+	* 新增出参：KeyType, IsOpenGlobalEncryption
+
+* [OpenClusterTransparentEncrypt](https://cloud.tencent.com/document/api/1003/113593)
+
+	* 新增入参：IsOpenGlobalEncryption
 
 
 修改数据结构：
 
-* [RuleInput](https://cloud.tencent.com/document/api/214/30694#RuleInput)
+* [Ability](https://cloud.tencent.com/document/api/1003/48097#Ability)
 
-	* 新增成员：CookieName
-
-* [RuleOutput](https://cloud.tencent.com/document/api/214/30694#RuleOutput)
-
-	* 新增成员：CookieName
+	* 新增成员：IsSupportGlobalEncryption, NoSupportGlobalEncryptionReason, NoSupportTransparentDataEncryptionReasonCode, NoSupportGlobalEncryptionReasonCode
 
 
 
 
-## DNSPod(dnspod) 版本：2021-03-23
+## Elasticsearch Service(es) 版本：2025-01-01
 
-### 第 48 次发布
 
-发布时间：2025-11-06 01:20:00
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 90 次发布
+
+发布时间：2025-11-07 01:21:58
 
 本次发布包含了以下内容：
 
@@ -89,109 +105,22 @@
 
 新增接口：
 
-* [ModifyDomainCNAMESpeedupStatusBatch](https://cloud.tencent.com/document/api/1427/124704)
-* [ModifyDomainRecursiveStatusBatch](https://cloud.tencent.com/document/api/1427/124703)
-
-
-
-## 游戏多媒体引擎(gme) 版本：2018-07-11
-
-### 第 44 次发布
-
-发布时间：2025-11-06 01:24:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAuditResultExternal](https://cloud.tencent.com/document/api/607/124601)
-
-	* 新增入参：BizId, PageNo, PageSize, BeginTime, EndTime, MinRate, MaxRate, OpenId, Label, RoomId
-
-	* 新增出参：TotalCount, Data
-
+* [GetIpTraceStatus](https://cloud.tencent.com/document/api/845/124805)
+* [QueryIpTraceLog](https://cloud.tencent.com/document/api/845/124804)
+* [UpdateIpTraceStatus](https://cloud.tencent.com/document/api/845/124803)
 
 新增数据结构：
 
-* [AuditResultDetailExternal](https://cloud.tencent.com/document/api/607/35375#AuditResultDetailExternal)
+* [IpTraceConfig](https://cloud.tencent.com/document/api/845/30634#IpTraceConfig)
+* [IpTraceLogEntry](https://cloud.tencent.com/document/api/845/30634#IpTraceLogEntry)
 
 
 
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
+## 边缘安全加速平台(teo) 版本：2022-09-01
 
-### 第 78 次发布
+### 第 124 次发布
 
-发布时间：2025-11-06 01:28:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateMcpServer](https://cloud.tencent.com/document/api/1207/122838)
-
-	* 新增入参：TransportType
-
-* [ModifyMcpServer](https://cloud.tencent.com/document/api/1207/122836)
-
-	* 新增入参：TransportType
-
-
-修改数据结构：
-
-* [McpServer](https://cloud.tencent.com/document/api/1207/47576#McpServer)
-
-	* 新增成员：TransportType
-
-
-
-
-## 云数据库Redis(redis) 版本：2018-04-12
-
-### 第 95 次发布
-
-发布时间：2025-11-06 01:50:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceClusterShard](https://cloud.tencent.com/document/api/239/20022#InstanceClusterShard)
-
-	* 新增成员：ZoneId, ReplicasNodeId
-
-
-
-
-## 自动化助手(tat) 版本：2020-10-28
-
-### 第 28 次发布
-
-发布时间：2025-11-06 02:00:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInvoker](https://cloud.tencent.com/document/api/1340/61762)
-
-	* 新增入参：Tags
-
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 83 次发布
-
-发布时间：2025-11-06 02:05:18
+发布时间：2025-11-07 02:09:22
 
 本次发布包含了以下内容：
 
@@ -199,19 +128,43 @@
 
 新增接口：
 
-* [UninstallClusterContainerSecurity](https://cloud.tencent.com/document/api/1285/124705)
+* [ApplyFreeCertificate](https://cloud.tencent.com/document/api/1552/124807)
+* [CheckFreeCertificateVerification](https://cloud.tencent.com/document/api/1552/124806)
 
 
 
-## 容器服务(tke) 版本：2022-05-01
+## 边缘安全加速平台(teo) 版本：2022-01-06
 
 
 
-## 容器服务(tke) 版本：2018-05-25
+## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 207 次发布
+### 第 94 次发布
 
-发布时间：2025-11-06 02:17:16
+发布时间：2025-11-07 02:13:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ResourceInfo](https://cloud.tencent.com/document/api/851/75051#ResourceInfo)
+
+	* 新增成员：EnableRDMA
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 125 次发布
+
+发布时间：2025-11-07 02:21:06
 
 本次发布包含了以下内容：
 
@@ -219,9 +172,32 @@
 
 修改接口：
 
-* [DeleteClusterInstances](https://cloud.tencent.com/document/api/457/31864)
+* [TextToSpeech](https://cloud.tencent.com/document/api/647/122475)
 
-	* 新增入参：ResourceDeleteOptions
+	* 新增入参：Model, Language
+
+* [TextToSpeechSSE](https://cloud.tencent.com/document/api/647/122474)
+
+	* 新增入参：Model, Language
+
+* [VoiceClone](https://cloud.tencent.com/document/api/647/122473)
+
+	* 新增入参：Model, Language
+
+
+修改数据结构：
+
+* [AudioFormat](https://cloud.tencent.com/document/api/647/44055#AudioFormat)
+
+	* 新增成员：SampleRate
+
+* [TTSConfig](https://cloud.tencent.com/document/api/647/44055#TTSConfig)
+
+	* 新增成员：Model
+
+* [Voice](https://cloud.tencent.com/document/api/647/44055#Voice)
+
+	* 新增成员：Speed, Volume, Pitch
 
 
 

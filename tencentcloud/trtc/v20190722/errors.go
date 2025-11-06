@@ -197,6 +197,9 @@ const (
 	// 待操作的图片未找到。
 	INVALIDPARAMETER_PICTURENOTFOUND = "InvalidParameter.PictureNotFound"
 
+	// 无效的语调
+	INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
+
 	// 自定义布局参数错误。
 	INVALIDPARAMETER_PRESETLAYOUTCONFIG = "InvalidParameter.PresetLayoutConfig"
 
@@ -218,6 +221,9 @@ const (
 	// RoomId参数错误。
 	INVALIDPARAMETER_ROOMID = "InvalidParameter.RoomId"
 
+	// 无效的采样率
+	INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
+
 	// SdkAppId参数错误。
 	INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 
@@ -226,6 +232,9 @@ const (
 
 	// 小画面布局中流类型参数错误。
 	INVALIDPARAMETER_SMALLVIDEOSTREAMTYPE = "InvalidParameter.SmallVideoStreamType"
+
+	// 无效的音速
+	INVALIDPARAMETER_SPEED = "InvalidParameter.Speed"
 
 	// 查询开始时间超过文档限制。
 	INVALIDPARAMETER_STARTTIMEEXPIRE = "InvalidParameter.StartTimeExpire"
@@ -280,6 +289,9 @@ const (
 
 	// 无效的声音名字
 	INVALIDPARAMETER_VOICENAME = "InvalidParameter.VoiceName"
+
+	// 无效的音量
+	INVALIDPARAMETER_VOLUME = "InvalidParameter.Volume"
 
 	// RoomId值错误。
 	INVALIDPARAMETERVALUE_ROOMID = "InvalidParameterValue.RoomId"
@@ -418,4 +430,7 @@ const (
 
 	// 不允许使用，请联系技术人员
 	UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
+
+	// 声音克隆错误
+	UNSUPPORTEDOPERATION_VOICECLONEERROR = "UnsupportedOperation.VoiceCloneError"
 )

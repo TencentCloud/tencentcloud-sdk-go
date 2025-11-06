@@ -82,7 +82,7 @@ type AddClusterCIDRRequestParams struct {
 	// 增加的ClusterCIDR
 	ClusterCIDRs []*string `json:"ClusterCIDRs,omitnil,omitempty" name:"ClusterCIDRs"`
 
-	// 是否忽略ClusterCIDR与VPC路由表的冲突
+	// 是否忽略ClusterCIDR与VPC路由表的冲突，默认false，为true时忽略冲突
 	IgnoreClusterCIDRConflict *bool `json:"IgnoreClusterCIDRConflict,omitnil,omitempty" name:"IgnoreClusterCIDRConflict"`
 }
 
@@ -95,7 +95,7 @@ type AddClusterCIDRRequest struct {
 	// 增加的ClusterCIDR
 	ClusterCIDRs []*string `json:"ClusterCIDRs,omitnil,omitempty" name:"ClusterCIDRs"`
 
-	// 是否忽略ClusterCIDR与VPC路由表的冲突
+	// 是否忽略ClusterCIDR与VPC路由表的冲突，默认false，为true时忽略冲突
 	IgnoreClusterCIDRConflict *bool `json:"IgnoreClusterCIDRConflict,omitnil,omitempty" name:"IgnoreClusterCIDRConflict"`
 }
 
@@ -547,7 +547,7 @@ type CancelClusterReleaseRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群类型
+	// 集群类型，支持传入 tke(标准集群), eks(Serverless集群), external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -560,7 +560,7 @@ type CancelClusterReleaseRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群类型
+	// 集群类型，支持传入 tke(标准集群), eks(Serverless集群), external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -2019,13 +2019,13 @@ type CreateClusterReleaseRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 应用名称
+	// 应用名称，最长63个字符，只能包含小写字母、数字及分隔符“-”，且必须以小写字母开头，数字或小写字母结尾
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 应用命名空间
+	// 应用命名空间，从集群详情命名空间获取
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 制品名称或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
+	// 制品名称(从应用市场获取)或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
 	Chart *string `json:"Chart,omitnil,omitempty" name:"Chart"`
 
 	// 自定义参数
@@ -2059,13 +2059,13 @@ type CreateClusterReleaseRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 应用名称
+	// 应用名称，最长63个字符，只能包含小写字母、数字及分隔符“-”，且必须以小写字母开头，数字或小写字母结尾
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 应用命名空间
+	// 应用命名空间，从集群详情命名空间获取
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 制品名称或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
+	// 制品名称(从应用市场获取)或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
 	Chart *string `json:"Chart,omitnil,omitempty" name:"Chart"`
 
 	// 自定义参数
@@ -7827,7 +7827,7 @@ type DescribeClusterPendingReleasesRequestParams struct {
 	// 偏移量，默认0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 集群类型
+	// 集群类型，支持传入tke（标准集群），eks（Serverless集群)，external（注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -7843,7 +7843,7 @@ type DescribeClusterPendingReleasesRequest struct {
 	// 偏移量，默认0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 集群类型
+	// 集群类型，支持传入tke（标准集群），eks（Serverless集群)，external（注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -7914,7 +7914,7 @@ type DescribeClusterReleaseDetailsRequestParams struct {
 	// 应用所在命名空间
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 集群类型
+	// 集群类型，传入 tke(标准集群), eks(Serverless集群), external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -7930,7 +7930,7 @@ type DescribeClusterReleaseDetailsRequest struct {
 	// 应用所在命名空间
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 集群类型
+	// 集群类型，传入 tke(标准集群), eks(Serverless集群), external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -7992,7 +7992,7 @@ type DescribeClusterReleaseHistoryRequestParams struct {
 	// 应用所在命名空间
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 集群类型
+	// 集群类型，传入 tke(标准集群), eks(Serverless集群), external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -8008,7 +8008,7 @@ type DescribeClusterReleaseHistoryRequest struct {
 	// 应用所在命名空间
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 集群类型
+	// 集群类型，传入 tke(标准集群), eks(Serverless集群), external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -8067,13 +8067,13 @@ type DescribeClusterReleasesRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 每页数量限制
+	// 每页数量限制，默认值为20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 页偏移量
+	// 页偏移量，默认值为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 集群类型, 目前支持传入 tke, eks, tkeedge, external 
+	// 集群类型，传入 tke(标准集群)，eks(Serverless集群)，external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// helm Release 安装的namespace
@@ -8092,13 +8092,13 @@ type DescribeClusterReleasesRequest struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 每页数量限制
+	// 每页数量限制，默认值为20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 页偏移量
+	// 页偏移量，默认值为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 集群类型, 目前支持传入 tke, eks, tkeedge, external 
+	// 集群类型，传入 tke(标准集群)，eks(Serverless集群)，external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// helm Release 安装的namespace
@@ -14980,7 +14980,7 @@ func (r *GetTkeAppChartListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetUpgradeInstanceProgressRequestParams struct {
-	// 集群ID
+	// 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 最多获取多少个节点的进度
@@ -14993,7 +14993,7 @@ type GetUpgradeInstanceProgressRequestParams struct {
 type GetUpgradeInstanceProgressRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 最多获取多少个节点的进度
@@ -15033,6 +15033,8 @@ type GetUpgradeInstanceProgressResponseParams struct {
 	Done *int64 `json:"Done,omitnil,omitempty" name:"Done"`
 
 	// 升级任务生命周期
+	// 
+	// pending 还未开始
 	// process 运行中
 	// paused 已停止
 	// pauing 正在停止
@@ -18035,7 +18037,17 @@ type PendingRelease struct {
 	// 应用命名空间
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 应用状态(参考helm的发布状态： unknown, deployed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade 或 pending-rollback)
+	// 应用状态，参考 Helm 发布状态。
+	// 可选值及其释义如下：
+	// • ​​unknown​​: 状态未知
+	// • ​​deployed​​: 已成功部署
+	// • ​​uninstalled​​: 已卸载
+	// • ​​superseded​​: 已被新版本替代
+	// • ​​failed​​: 部署失败
+	// • ​​uninstalling​​: 正在卸载中
+	// • ​​pending-install​​: 等待安装/安装进行中
+	// • ​​pending-upgrade​​: 等待升级/升级进行中
+	// • ​​pending-rollback​​: 等待回滚/回滚进行中
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 更新时间
@@ -18951,7 +18963,17 @@ type Release struct {
 	// 应用当前版本
 	Revision *string `json:"Revision,omitnil,omitempty" name:"Revision"`
 
-	// 应用状态
+	// 应用状态，参考 Helm 发布状态。
+	// 可选值及其释义如下：
+	// • ​​unknown​​: 状态未知
+	// • ​​deployed​​: 已成功部署
+	// • ​​uninstalled​​: 已卸载
+	// • ​​superseded​​: 已被新版本替代
+	// • ​​failed​​: 部署失败
+	// • ​​uninstalling​​: 正在卸载中
+	// • ​​pending-install​​: 等待安装/安装进行中
+	// • ​​pending-upgrade​​: 等待升级/升级进行中
+	// • ​​pending-rollback​​: 等待回滚/回滚进行中
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 制品名称
@@ -18980,7 +19002,17 @@ type ReleaseDetails struct {
 	// 应用当前版本
 	Version *uint64 `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 应用状态
+	// 应用状态，参考 Helm 发布状态。 
+	// 可选值及其释义如下：
+	// • ​​unknown​​: 状态未知 
+	// • ​​deployed​​: 已成功部署 
+	// • ​​uninstalled​​: 已卸载 
+	// • ​​superseded​​: 已被新版本替代 
+	// • ​​failed​​: 部署失败 
+	// • ​​uninstalling​​: 正在卸载中
+	// • ​​pending-install​​: 等待安装/安装进行中
+	// • ​​pending-upgrade​​: 等待升级/升级进行中 
+	// • ​​pending-rollback​​: 等待回滚/回滚进行中
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 应用描述
@@ -19036,7 +19068,17 @@ type ReleaseHistory struct {
 	// 应用版本
 	Revision *uint64 `json:"Revision,omitnil,omitempty" name:"Revision"`
 
-	// 应用状态
+	// 应用状态，参考 Helm 发布状态。 
+	// 可选值及其释义如下：
+	// • ​​unknown​​: 状态未知 
+	// • ​​deployed​​: 已成功部署 
+	// • ​​uninstalled​​: 已卸载 
+	// • ​​superseded​​: 已被新版本替代 
+	// • ​​failed​​: 部署失败 
+	// • ​​uninstalling​​: 正在卸载中
+	// • ​​pending-install​​: 等待安装/安装进行中
+	// • ​​pending-upgrade​​: 等待升级/升级进行中 
+	// • ​​pending-rollback​​: 等待回滚/回滚进行中
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 应用制品名称
@@ -19404,7 +19446,7 @@ type RollbackClusterReleaseRequestParams struct {
 	// 回滚版本号
 	Revision *int64 `json:"Revision,omitnil,omitempty" name:"Revision"`
 
-	// 集群类型
+	// 集群类型，传入 tke(标准集群)，eks(Serverless集群)，external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -19423,7 +19465,7 @@ type RollbackClusterReleaseRequest struct {
 	// 回滚版本号
 	Revision *int64 `json:"Revision,omitnil,omitempty" name:"Revision"`
 
-	// 集群类型
+	// 集群类型，传入 tke(标准集群)，eks(Serverless集群)，external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -20179,7 +20221,7 @@ type UninstallClusterReleaseRequestParams struct {
 	// 应用命名空间
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 集群类型
+	// 集群类型，传入 tke(标准集群)， eks(Serverless集群)，external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -20195,7 +20237,7 @@ type UninstallClusterReleaseRequest struct {
 	// 应用命名空间
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 集群类型
+	// 集群类型，传入 tke(标准集群)， eks(Serverless集群)，external(注册集群）
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 

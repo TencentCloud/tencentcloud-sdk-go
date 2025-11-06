@@ -69,6 +69,8 @@ func NewBatchApplyAccountBaselinesResponse() (response *BatchApplyAccountBaselin
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AFREQUIREDITEMNOTSELECT = "FailedOperation.AFRequiredItemNotSelect"
+//  FAILEDOPERATION_ACCOUNTFACTORYCONTACTEMAILNOTVERIFY = "FailedOperation.AccountFactoryContactEmailNotVerify"
+//  FAILEDOPERATION_ACCOUNTFACTORYCONTACTPHONENOTVERIFY = "FailedOperation.AccountFactoryContactPhoneNotVerify"
 //  FAILEDOPERATION_ACCOUNTFACTORYMEMBERUINNUMEXCEED = "FailedOperation.AccountFactoryMemberUinNumExceed"
 //  FAILEDOPERATION_ACCOUNTFACTORYTASKISDEPLOYING = "FailedOperation.AccountFactoryTaskIsDeploying"
 //  FAILEDOPERATION_CONTROLCENTERNOTOPEN = "FailedOperation.ControlCenterNotOpen"
@@ -87,6 +89,8 @@ func (c *Client) BatchApplyAccountBaselines(request *BatchApplyAccountBaselinesR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AFREQUIREDITEMNOTSELECT = "FailedOperation.AFRequiredItemNotSelect"
+//  FAILEDOPERATION_ACCOUNTFACTORYCONTACTEMAILNOTVERIFY = "FailedOperation.AccountFactoryContactEmailNotVerify"
+//  FAILEDOPERATION_ACCOUNTFACTORYCONTACTPHONENOTVERIFY = "FailedOperation.AccountFactoryContactPhoneNotVerify"
 //  FAILEDOPERATION_ACCOUNTFACTORYMEMBERUINNUMEXCEED = "FailedOperation.AccountFactoryMemberUinNumExceed"
 //  FAILEDOPERATION_ACCOUNTFACTORYTASKISDEPLOYING = "FailedOperation.AccountFactoryTaskIsDeploying"
 //  FAILEDOPERATION_CONTROLCENTERNOTOPEN = "FailedOperation.ControlCenterNotOpen"

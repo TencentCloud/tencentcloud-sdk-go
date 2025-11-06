@@ -154,8 +154,11 @@ type AudioEncodeParams struct {
 }
 
 type AudioFormat struct {
-	// 生成的音频格式，默认pcm，目前支持的格式列表：[pcm]。
+	// 生成的音频格式，默认pcm，目前支持的格式列表：流式：[pcm]，非流式 [pcm，wav]
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 采样率，默认24000， 可选16000, 24000 
+	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 }
 
 type AudioParams struct {
@@ -6947,6 +6950,9 @@ type TRTCDataResult struct {
 type TTSConfig struct {
 	// 音色ID
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// TTS 的模型，默认是：flow_01_turbo, 可选: [ flow_01_turbo, flow_01_ex]
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
 type TencentVod struct {
@@ -7003,7 +7009,15 @@ type TextToSpeechRequestParams struct {
 	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
 
 	// TTS的API密钥
+	//
+	// Deprecated: APIKey is deprecated.
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+
+	// TTS的模型：flow_01_turbo，flow_01_ex
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 type TextToSpeechRequest struct {
@@ -7023,6 +7037,12 @@ type TextToSpeechRequest struct {
 
 	// TTS的API密钥
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+
+	// TTS的模型：flow_01_turbo，flow_01_ex
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 func (r *TextToSpeechRequest) ToJsonString() string {
@@ -7042,6 +7062,8 @@ func (r *TextToSpeechRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "AudioFormat")
 	delete(f, "APIKey")
+	delete(f, "Model")
+	delete(f, "Language")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechRequest has unknown keys!", "")
 	}
@@ -7089,6 +7111,12 @@ type TextToSpeechSSERequestParams struct {
 
 	// TTS的API密钥
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+
+	// TTS的模型：flow_01_turbo，flow_01_ex
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 type TextToSpeechSSERequest struct {
@@ -7108,6 +7136,12 @@ type TextToSpeechSSERequest struct {
 
 	// TTS的API密钥
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+
+	// TTS的模型：flow_01_turbo，flow_01_ex
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 func (r *TextToSpeechSSERequest) ToJsonString() string {
@@ -7127,6 +7161,8 @@ func (r *TextToSpeechSSERequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "AudioFormat")
 	delete(f, "APIKey")
+	delete(f, "Model")
+	delete(f, "Language")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechSSERequest has unknown keys!", "")
 	}
@@ -7713,6 +7749,15 @@ type VideoParams struct {
 type Voice struct {
 	// TTS的声音的ID
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// 语速，范围 0.5-2.0，默认 1.0
+	Speed *float64 `json:"Speed,omitnil,omitempty" name:"Speed"`
+
+	// (0, 10]   默认值1.0 
+	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// 取值[-12,12],默认0
+	Pitch *int64 `json:"Pitch,omitnil,omitempty" name:"Pitch"`
 }
 
 // Predefined struct for user
@@ -7731,6 +7776,12 @@ type VoiceCloneRequestParams struct {
 
 	// 声音克隆的参考文本，为参考音频对应的文字。
 	PromptText *string `json:"PromptText,omitnil,omitempty" name:"PromptText"`
+
+	// TTS的模型：flow_01_turbo，flow_01_ex
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 type VoiceCloneRequest struct {
@@ -7750,6 +7801,12 @@ type VoiceCloneRequest struct {
 
 	// 声音克隆的参考文本，为参考音频对应的文字。
 	PromptText *string `json:"PromptText,omitnil,omitempty" name:"PromptText"`
+
+	// TTS的模型：flow_01_turbo，flow_01_ex
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 func (r *VoiceCloneRequest) ToJsonString() string {
@@ -7769,6 +7826,8 @@ func (r *VoiceCloneRequest) FromJsonString(s string) error {
 	delete(f, "PromptAudio")
 	delete(f, "APIKey")
 	delete(f, "PromptText")
+	delete(f, "Model")
+	delete(f, "Language")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoiceCloneRequest has unknown keys!", "")
 	}

@@ -98,6 +98,9 @@ const (
 	// 请求超时。
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeOut"
 
+	// 集群设置IP溯源失败
+	FAILEDOPERATION_SETTINGIPTRACEERROR = "FailedOperation.SettingIpTraceError"
+
 	// 变更space的kibana语言信息失败
 	FAILEDOPERATION_SPACELANGUAGE = "FailedOperation.SpaceLanguage"
 
@@ -622,6 +625,9 @@ const (
 
 	// 不支持该操作，服务类型有误。
 	UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+
+	// 内核版本不支持
+	UNSUPPORTEDOPERATION_KERNELNOTSUPPORT = "UnsupportedOperation.KernelNotSupport"
 
 	// 当前ES集群版本过低，不支持Gpu机器
 	UNSUPPORTEDOPERATION_KERNELNOTSUPPORTGPU = "UnsupportedOperation.KernelNotSupportGpu"

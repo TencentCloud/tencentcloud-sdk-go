@@ -5244,8 +5244,12 @@ func NewTextToSpeechResponse() (response *TextToSpeechResponse) {
 // 语音合成接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
+//  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
+//  INVALIDPARAMETER_SPEED = "InvalidParameter.Speed"
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  INVALIDPARAMETER_VOLUME = "InvalidParameter.Volume"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
@@ -5257,8 +5261,12 @@ func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpe
 // 语音合成接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
+//  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
+//  INVALIDPARAMETER_SPEED = "InvalidParameter.Speed"
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  INVALIDPARAMETER_VOLUME = "InvalidParameter.Volume"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
@@ -5300,8 +5308,12 @@ func NewTextToSpeechSSEResponse() (response *TextToSpeechSSEResponse) {
 // SSE流式文本转语音
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
+//  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
+//  INVALIDPARAMETER_SPEED = "InvalidParameter.Speed"
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  INVALIDPARAMETER_VOLUME = "InvalidParameter.Volume"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
@@ -5313,8 +5325,12 @@ func (c *Client) TextToSpeechSSE(request *TextToSpeechSSERequest) (response *Tex
 // SSE流式文本转语音
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
+//  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
+//  INVALIDPARAMETER_SPEED = "InvalidParameter.Speed"
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
+//  INVALIDPARAMETER_VOLUME = "InvalidParameter.Volume"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
@@ -5609,10 +5625,17 @@ func NewVoiceCloneResponse() (response *VoiceCloneResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_AUDIOPROMPT = "InvalidParameter.AudioPrompt"
+//  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
+//  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
+//  INVALIDPARAMETER_SPEED = "InvalidParameter.Speed"
+//  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
+//  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
 //  INVALIDPARAMETER_VOICENAME = "InvalidParameter.VoiceName"
+//  INVALIDPARAMETER_VOLUME = "InvalidParameter.Volume"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
+//  UNSUPPORTEDOPERATION_VOICECLONEERROR = "UnsupportedOperation.VoiceCloneError"
 func (c *Client) VoiceClone(request *VoiceCloneRequest) (response *VoiceCloneResponse, err error) {
     return c.VoiceCloneWithContext(context.Background(), request)
 }
@@ -5622,10 +5645,17 @@ func (c *Client) VoiceClone(request *VoiceCloneRequest) (response *VoiceCloneRes
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_AUDIOPROMPT = "InvalidParameter.AudioPrompt"
+//  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
+//  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
+//  INVALIDPARAMETER_SPEED = "InvalidParameter.Speed"
+//  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
+//  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
 //  INVALIDPARAMETER_VOICENAME = "InvalidParameter.VoiceName"
+//  INVALIDPARAMETER_VOLUME = "InvalidParameter.Volume"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 //  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
+//  UNSUPPORTEDOPERATION_VOICECLONEERROR = "UnsupportedOperation.VoiceCloneError"
 func (c *Client) VoiceCloneWithContext(ctx context.Context, request *VoiceCloneRequest) (response *VoiceCloneResponse, err error) {
     if request == nil {
         request = NewVoiceCloneRequest()

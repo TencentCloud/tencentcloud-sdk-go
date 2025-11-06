@@ -45,6 +45,90 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewApplyFreeCertificateRequest() (request *ApplyFreeCertificateRequest) {
+    request = &ApplyFreeCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ApplyFreeCertificate")
+    
+    
+    return
+}
+
+func NewApplyFreeCertificateResponse() (response *ApplyFreeCertificateResponse) {
+    response = &ApplyFreeCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ApplyFreeCertificate
+// 申请免费证书时，如果您需要通过使用 DNS 委派验证或者文件验证进行申请，您可以调用该接口来进行发起证书申请并根据申请方式来获取对应的验证内容。调用接口的顺序如下：
+//
+// 第一步：调用 ApplyFreeCertificate，指定申请免费证书的校验方式，获取验证内容；
+//
+// 第二步：为相应域名按照验证内容配置；
+//
+// 第三步：调用CheckFreeCertificateVerification 验证，验证通过后即完成免费证书申请；
+//
+// 第四步：调用ModifyHostsCertificate，下发域名证书为使用 EdgeOne 免费证书配置。
+//
+// 
+//
+// 申请方式的介绍可参考文档：[免费证书申请说明](https://cloud.tencent.com/document/product/1552/90437) 
+//
+// 说明：
+//
+// - 仅 CNAME 接入模式可调用该接口来指定免费证书申请方式。NS/DNSPod 托管接入模式都是使用自动验证来申请免费证书，无需调用该接口。
+//
+// - 如果您需要切换免费证书验证方式，您可以重新调用本接口通过修改 VerificationMethod 字段来进行变更。
+//
+// - 同个域名只能申请一本免费证书，在调用本接口后，后台会触发申请免费证书相关任务，您需要在2 天内，完成域名验证信息的相关配置，然后完成证书验证。
+func (c *Client) ApplyFreeCertificate(request *ApplyFreeCertificateRequest) (response *ApplyFreeCertificateResponse, err error) {
+    return c.ApplyFreeCertificateWithContext(context.Background(), request)
+}
+
+// ApplyFreeCertificate
+// 申请免费证书时，如果您需要通过使用 DNS 委派验证或者文件验证进行申请，您可以调用该接口来进行发起证书申请并根据申请方式来获取对应的验证内容。调用接口的顺序如下：
+//
+// 第一步：调用 ApplyFreeCertificate，指定申请免费证书的校验方式，获取验证内容；
+//
+// 第二步：为相应域名按照验证内容配置；
+//
+// 第三步：调用CheckFreeCertificateVerification 验证，验证通过后即完成免费证书申请；
+//
+// 第四步：调用ModifyHostsCertificate，下发域名证书为使用 EdgeOne 免费证书配置。
+//
+// 
+//
+// 申请方式的介绍可参考文档：[免费证书申请说明](https://cloud.tencent.com/document/product/1552/90437) 
+//
+// 说明：
+//
+// - 仅 CNAME 接入模式可调用该接口来指定免费证书申请方式。NS/DNSPod 托管接入模式都是使用自动验证来申请免费证书，无需调用该接口。
+//
+// - 如果您需要切换免费证书验证方式，您可以重新调用本接口通过修改 VerificationMethod 字段来进行变更。
+//
+// - 同个域名只能申请一本免费证书，在调用本接口后，后台会触发申请免费证书相关任务，您需要在2 天内，完成域名验证信息的相关配置，然后完成证书验证。
+func (c *Client) ApplyFreeCertificateWithContext(ctx context.Context, request *ApplyFreeCertificateRequest) (response *ApplyFreeCertificateResponse, err error) {
+    if request == nil {
+        request = NewApplyFreeCertificateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ApplyFreeCertificate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyFreeCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyFreeCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindSecurityTemplateToEntityRequest() (request *BindSecurityTemplateToEntityRequest) {
     request = &BindSecurityTemplateToEntityRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -275,6 +359,66 @@ func (c *Client) CheckCnameStatusWithContext(ctx context.Context, request *Check
     request.SetContext(ctx)
     
     response = NewCheckCnameStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCheckFreeCertificateVerificationRequest() (request *CheckFreeCertificateVerificationRequest) {
+    request = &CheckFreeCertificateVerificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CheckFreeCertificateVerification")
+    
+    
+    return
+}
+
+func NewCheckFreeCertificateVerificationResponse() (response *CheckFreeCertificateVerificationResponse) {
+    response = &CheckFreeCertificateVerificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckFreeCertificateVerification
+// 该接口用于验证免费证书并获取免费证书申请结果。如果验证通过，可通过该接口查询到对应域名申请的免费证书信息，如果申请失败，该接口将返回对应的验证失败信息。
+//
+// 在触发[申请免费证书接口](https://cloud.tencent.com/document/product/1552/90437)后，您可以通过本接口检查免费证书申请结果。在免费证书申请成功后， 还需要通过[配置域名证书](https://tcloud4api.woa.com/document/product/1657/80723?!preview)接口配置，才能将免费证书部署至加速域上。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) CheckFreeCertificateVerification(request *CheckFreeCertificateVerificationRequest) (response *CheckFreeCertificateVerificationResponse, err error) {
+    return c.CheckFreeCertificateVerificationWithContext(context.Background(), request)
+}
+
+// CheckFreeCertificateVerification
+// 该接口用于验证免费证书并获取免费证书申请结果。如果验证通过，可通过该接口查询到对应域名申请的免费证书信息，如果申请失败，该接口将返回对应的验证失败信息。
+//
+// 在触发[申请免费证书接口](https://cloud.tencent.com/document/product/1552/90437)后，您可以通过本接口检查免费证书申请结果。在免费证书申请成功后， 还需要通过[配置域名证书](https://tcloud4api.woa.com/document/product/1657/80723?!preview)接口配置，才能将免费证书部署至加速域上。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) CheckFreeCertificateVerificationWithContext(ctx context.Context, request *CheckFreeCertificateVerificationRequest) (response *CheckFreeCertificateVerificationResponse, err error) {
+    if request == nil {
+        request = NewCheckFreeCertificateVerificationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CheckFreeCertificateVerification")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckFreeCertificateVerification require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckFreeCertificateVerificationResponse()
     err = c.Send(request, response)
     return
 }

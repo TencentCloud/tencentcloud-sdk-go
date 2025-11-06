@@ -8648,16 +8648,9 @@ func NewDescribeMasterComponentResponse() (response *DescribeMasterComponentResp
 // 进行master组件停机故障演练时，获取master组件运行状态，支持kube-apiserver、kube-scheduler、kube-controller-manager
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
-//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
-//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
-//  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
-//  INTERNALERROR_PARAM = "InternalError.Param"
-//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  FAILEDOPERATION_OPERATIONFORBIDDEN = "FailedOperation.OperationForbidden"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeMasterComponent(request *DescribeMasterComponentRequest) (response *DescribeMasterComponentResponse, err error) {
     return c.DescribeMasterComponentWithContext(context.Background(), request)
 }
@@ -8666,16 +8659,9 @@ func (c *Client) DescribeMasterComponent(request *DescribeMasterComponentRequest
 // 进行master组件停机故障演练时，获取master组件运行状态，支持kube-apiserver、kube-scheduler、kube-controller-manager
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
-//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
-//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
-//  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
-//  INTERNALERROR_PARAM = "InternalError.Param"
-//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  FAILEDOPERATION_OPERATIONFORBIDDEN = "FailedOperation.OperationForbidden"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeMasterComponentWithContext(ctx context.Context, request *DescribeMasterComponentRequest) (response *DescribeMasterComponentResponse, err error) {
     if request == nil {
         request = NewDescribeMasterComponentRequest()

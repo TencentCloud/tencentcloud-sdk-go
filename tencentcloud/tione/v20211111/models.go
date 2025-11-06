@@ -7051,6 +7051,10 @@ type ResourceInfo struct {
 
 	// 创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。
 	RealGpuDetailSet []*GpuDetail `json:"RealGpuDetailSet,omitnil,omitempty" name:"RealGpuDetailSet"`
+
+	// 是否开启rdma
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableRDMA *bool `json:"EnableRDMA,omitnil,omitempty" name:"EnableRDMA"`
 }
 
 type ResourceInstanceRunningJobInfo struct {

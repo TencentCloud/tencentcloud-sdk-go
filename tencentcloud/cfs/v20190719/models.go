@@ -1463,6 +1463,28 @@ type DataFlowInfo struct {
 
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 0：不开启自动更新
+	// 
+	// 1：开启自动更新
+	AutoRefresh *uint64 `json:"AutoRefresh,omitnil,omitempty" name:"AutoRefresh"`
+
+	// KafkaConsumer 消费时使用的Topic参数
+	UserKafkaTopic *string `json:"UserKafkaTopic,omitnil,omitempty" name:"UserKafkaTopic"`
+
+	// 服务地址
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
+
+	// Kafka消费用户名
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 自动刷新的状态，available：已生效
+	// pending：配置中
+	// unavailable：失效
+	AutoRefreshStatus *string `json:"AutoRefreshStatus,omitnil,omitempty" name:"AutoRefreshStatus"`
+
+	// 自动刷新开启时间
+	AutoRefreshTime *string `json:"AutoRefreshTime,omitnil,omitempty" name:"AutoRefreshTime"`
 }
 
 // Predefined struct for user
@@ -3648,24 +3670,24 @@ type LifecyclePolicy struct {
 }
 
 type LifecycleRule struct {
-	// 数据转储后的存储类型
+	// 数据转储后的存储类型。其中：InfrequentAccess：低频介质存储；ColdStorage：冷存储。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 数据转储文件类型
+	// 数据转储文件类型。其中，BIG_FILE：超大文件；STD_FILE：普通文件；SMALL_FILE：小文件；ALL：所有文件。
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 数据转储行为
+	// 数据转储行为。其中，Archive：沉降；Noarchive：不沉降。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 数据转储触发时间
+	// 数据转储触发时间。由“DEFAULT_ATIME_”与“数字”组成，单位为天。当 Action 为 Noarchive，请保持为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 数据转储文件最大规格
+	// 数据转储文件最大规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMaxSize *string `json:"FileMaxSize,omitnil,omitempty" name:"FileMaxSize"`
 
-	// 数据转储文件最小规格
+	// 数据转储文件最小规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMinSize *string `json:"FileMinSize,omitnil,omitempty" name:"FileMinSize"`
 }

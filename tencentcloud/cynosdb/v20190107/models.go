@@ -44,6 +44,18 @@ type Ability struct {
 
 	// 是否支持手动发起逻辑备份
 	IsSupportManualLogic *string `json:"IsSupportManualLogic,omitnil,omitempty" name:"IsSupportManualLogic"`
+
+	// 是否支持开启全局加密
+	IsSupportGlobalEncryption *string `json:"IsSupportGlobalEncryption,omitnil,omitempty" name:"IsSupportGlobalEncryption"`
+
+	// 不支持全局加密的原因
+	NoSupportGlobalEncryptionReason *string `json:"NoSupportGlobalEncryptionReason,omitnil,omitempty" name:"NoSupportGlobalEncryptionReason"`
+
+	// 不支持透明加密原因状态码
+	NoSupportTransparentDataEncryptionReasonCode *string `json:"NoSupportTransparentDataEncryptionReasonCode,omitnil,omitempty" name:"NoSupportTransparentDataEncryptionReasonCode"`
+
+	// 不支持全局加密原因状态码
+	NoSupportGlobalEncryptionReasonCode *string `json:"NoSupportGlobalEncryptionReasonCode,omitnil,omitempty" name:"NoSupportGlobalEncryptionReasonCode"`
 }
 
 type Account struct {
@@ -6963,6 +6975,12 @@ type DescribeClusterTransparentEncryptInfoResponseParams struct {
 	// 加密秘钥地域
 	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
 
+	// 秘钥类型
+	KeyType *string `json:"KeyType,omitnil,omitempty" name:"KeyType"`
+
+	// 是否已经开启全局加密
+	IsOpenGlobalEncryption *bool `json:"IsOpenGlobalEncryption,omitnil,omitempty" name:"IsOpenGlobalEncryption"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -7093,7 +7111,7 @@ type DescribeDBSecurityGroupsRequestParams struct {
 	// Deprecated: InstanceId is deprecated.
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例组ID（InstanceId与InstanceGroupId必须任选一个传入）
+	// 实例组 ID，可通过 [DescribeClusterInstanceGroups](https://cloud.tencent.com/document/product/1003/103934) 接口查询。
 	InstanceGroupId *string `json:"InstanceGroupId,omitnil,omitempty" name:"InstanceGroupId"`
 }
 
@@ -7103,7 +7121,7 @@ type DescribeDBSecurityGroupsRequest struct {
 	// 实例ID（InstanceId与InstanceGroupId必须任选一个传入）
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例组ID（InstanceId与InstanceGroupId必须任选一个传入）
+	// 实例组 ID，可通过 [DescribeClusterInstanceGroups](https://cloud.tencent.com/document/product/1003/103934) 接口查询。
 	InstanceGroupId *string `json:"InstanceGroupId,omitnil,omitempty" name:"InstanceGroupId"`
 }
 
@@ -14351,6 +14369,9 @@ type OpenClusterTransparentEncryptRequestParams struct {
 
 	// 秘钥地域
 	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
+
+	// 是否开启全局加密
+	IsOpenGlobalEncryption *bool `json:"IsOpenGlobalEncryption,omitnil,omitempty" name:"IsOpenGlobalEncryption"`
 }
 
 type OpenClusterTransparentEncryptRequest struct {
@@ -14367,6 +14388,9 @@ type OpenClusterTransparentEncryptRequest struct {
 
 	// 秘钥地域
 	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
+
+	// 是否开启全局加密
+	IsOpenGlobalEncryption *bool `json:"IsOpenGlobalEncryption,omitnil,omitempty" name:"IsOpenGlobalEncryption"`
 }
 
 func (r *OpenClusterTransparentEncryptRequest) ToJsonString() string {
@@ -14385,6 +14409,7 @@ func (r *OpenClusterTransparentEncryptRequest) FromJsonString(s string) error {
 	delete(f, "KeyType")
 	delete(f, "KeyId")
 	delete(f, "KeyRegion")
+	delete(f, "IsOpenGlobalEncryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenClusterTransparentEncryptRequest has unknown keys!", "")
 	}

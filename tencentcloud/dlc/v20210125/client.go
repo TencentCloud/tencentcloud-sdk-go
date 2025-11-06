@@ -10235,6 +10235,7 @@ func NewQueryResultResponse() (response *QueryResultResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 func (c *Client) QueryResult(request *QueryResultRequest) (response *QueryResultResponse, err error) {
     return c.QueryResultWithContext(context.Background(), request)
@@ -10245,6 +10246,7 @@ func (c *Client) QueryResult(request *QueryResultRequest) (response *QueryResult
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
 //  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 func (c *Client) QueryResultWithContext(ctx context.Context, request *QueryResultRequest) (response *QueryResultResponse, err error) {
     if request == nil {

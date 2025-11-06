@@ -1303,7 +1303,7 @@ func NewCreateBatchSignUrlResponse() (response *CreateBatchSignUrlResponse) {
 //
 // 注意事项：
 //
-// - 使用此接口生成链接，需要贵企业先开通 <font color="red">个人签署方仅校验手机号 </font>功能。您可以在 <b>【腾讯电子签网页端】->【企业设置】->【拓展服务】</b>中找到该功能。
+// - 使用此接口生成链接，需要贵企业先开通 <font color="red">个人签署方仅校验手机号 </font>功能。您可以在 <b>【腾讯电子签网页端控制台】->【更多】->【高级签署能力】</b>中找到该功能。
 //
 // - 生成批量签署链接时，<font color="red">合同目标参与方的状态必须为<b>待签署</b>状态</font>。签署人点击链接后需要输入短信验证码才能查看合同内容。
 //
@@ -1336,7 +1336,7 @@ func (c *Client) CreateBatchSignUrl(request *CreateBatchSignUrlRequest) (respons
 //
 // 注意事项：
 //
-// - 使用此接口生成链接，需要贵企业先开通 <font color="red">个人签署方仅校验手机号 </font>功能。您可以在 <b>【腾讯电子签网页端】->【企业设置】->【拓展服务】</b>中找到该功能。
+// - 使用此接口生成链接，需要贵企业先开通 <font color="red">个人签署方仅校验手机号 </font>功能。您可以在 <b>【腾讯电子签网页端控制台】->【更多】->【高级签署能力】</b>中找到该功能。
 //
 // - 生成批量签署链接时，<font color="red">合同目标参与方的状态必须为<b>待签署</b>状态</font>。签署人点击链接后需要输入短信验证码才能查看合同内容。
 //
@@ -10403,11 +10403,11 @@ func NewDescribeExtendedServiceAuthInfosResponse() (response *DescribeExtendedSe
 //
 // 
 //
-// 对应能力开通页面在Web控制台-更多-企业设置-拓展服务，如下图所示:
+// 对应能力开通页面在【Web控制台】-> 【更多】->【高级签署能力】，如下图所示:
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/7d79746ecca1c5fe878a2ec36ed69c23.jpg)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/bc1414ed8c257cbc408201579cff72cd/a1111.png)
 //
 // 
 //
@@ -10458,11 +10458,11 @@ func (c *Client) DescribeExtendedServiceAuthInfos(request *DescribeExtendedServi
 //
 // 
 //
-// 对应能力开通页面在Web控制台-更多-企业设置-拓展服务，如下图所示:
+// 对应能力开通页面在【Web控制台】-> 【更多】->【高级签署能力】，如下图所示:
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/7d79746ecca1c5fe878a2ec36ed69c23.jpg)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/bc1414ed8c257cbc408201579cff72cd/a1111.png)
 //
 // 
 //
@@ -12907,11 +12907,11 @@ func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse
 //
 // 
 //
-// - **直接开通的情形：** 若在操作过程中接口没有返回跳转链接，这表明无需进行任何跳转操作。此时，相应的企业拓展服务将会直接被开通或关闭。
+// - **直接开通的情形：** 若在操作过程中接口没有返回跳转链接，这表明无需进行任何跳转操作。此时，相应的企业高级签署能力将会直接被开通或关闭。
 //
 // 
 //
-// - **需要法人或者超管签署开通协议的情形：** 当需要开通以下企业拓展服务时， 系统将返回一个操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成服务的开通操作。
+// - **需要法人或者超管签署开通协议的情形：** 当需要开通以下企业高级签署能力时， 系统将返回一个操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成服务的开通操作。
 //
 //   - **OPEN_SERVER_SIGN（企业自动签）**
 //
@@ -12923,9 +12923,13 @@ func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse
 //
 // 
 //
-// 对应的扩展服务能力可以在控制台的【扩展服务】中找到
+// 对应的扩展服务能力可以在控制台的【高级签署能力】中找到
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/7eb35d2473d6c29784f3b35617bca9a9.png)
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/70750ae61500bb9ef6c6be6ecd18cd0e/a2222.png)
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/8cb6c8707a3b8c86b55e47fd8d23b30a/a3333.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -12941,11 +12945,11 @@ func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (r
 //
 // 
 //
-// - **直接开通的情形：** 若在操作过程中接口没有返回跳转链接，这表明无需进行任何跳转操作。此时，相应的企业拓展服务将会直接被开通或关闭。
+// - **直接开通的情形：** 若在操作过程中接口没有返回跳转链接，这表明无需进行任何跳转操作。此时，相应的企业高级签署能力将会直接被开通或关闭。
 //
 // 
 //
-// - **需要法人或者超管签署开通协议的情形：** 当需要开通以下企业拓展服务时， 系统将返回一个操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成服务的开通操作。
+// - **需要法人或者超管签署开通协议的情形：** 当需要开通以下企业高级签署能力时， 系统将返回一个操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成服务的开通操作。
 //
 //   - **OPEN_SERVER_SIGN（企业自动签）**
 //
@@ -12957,9 +12961,13 @@ func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (r
 //
 // 
 //
-// 对应的扩展服务能力可以在控制台的【扩展服务】中找到
+// 对应的扩展服务能力可以在控制台的【高级签署能力】中找到
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/7eb35d2473d6c29784f3b35617bca9a9.png)
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/70750ae61500bb9ef6c6be6ecd18cd0e/a2222.png)
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/8cb6c8707a3b8c86b55e47fd8d23b30a/a3333.png)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

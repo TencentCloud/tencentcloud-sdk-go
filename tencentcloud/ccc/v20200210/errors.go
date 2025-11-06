@@ -17,6 +17,9 @@ package v20200210
 const (
 	// 此产品的特有错误码
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 无可用的AI并发许可，请去控制台进行购买
 	FAILEDOPERATION_AICONCURRENTNOPACKAGE = "FailedOperation.AIConcurrentNoPackage"
 

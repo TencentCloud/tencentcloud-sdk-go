@@ -4324,6 +4324,78 @@ func (r *GetDiagnoseSettingsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetIpTraceStatusRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type GetIpTraceStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *GetIpTraceStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetIpTraceStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetIpTraceStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetIpTraceStatusResponseParams struct {
+	// 是否开启IP溯源
+	OpenIpTrace *bool `json:"OpenIpTrace,omitnil,omitempty" name:"OpenIpTrace"`
+
+	// IP溯源开启持续时间，单位：秒
+	DurationTime *int64 `json:"DurationTime,omitnil,omitempty" name:"DurationTime"`
+
+	// IP溯源配置
+	IpTraceConfig *IpTraceConfig `json:"IpTraceConfig,omitnil,omitempty" name:"IpTraceConfig"`
+
+	// 上次执行时间
+	LastStartTime *string `json:"LastStartTime,omitnil,omitempty" name:"LastStartTime"`
+
+	// 上次关闭时间
+	LastEndTime *string `json:"LastEndTime,omitnil,omitempty" name:"LastEndTime"`
+
+	// 是否过滤Kibana节点IP
+	FilterKibanaIp *bool `json:"FilterKibanaIp,omitnil,omitempty" name:"FilterKibanaIp"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetIpTraceStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *GetIpTraceStatusResponseParams `json:"Response"`
+}
+
+func (r *GetIpTraceStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetIpTraceStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetRequestTargetNodeTypesRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5068,6 +5140,61 @@ type IpTimePair struct {
 	NodeIp *string `json:"NodeIp,omitnil,omitempty" name:"NodeIp"`
 }
 
+type IpTraceConfig struct {
+	// 请求溯源开关
+	EnableRequest *bool `json:"EnableRequest,omitnil,omitempty" name:"EnableRequest"`
+
+	// 返回溯源开关
+	EnableResponse *bool `json:"EnableResponse,omitnil,omitempty" name:"EnableResponse"`
+
+	// 请求消息体溯源开关
+	EnableRequestBody *bool `json:"EnableRequestBody,omitnil,omitempty" name:"EnableRequestBody"`
+
+	// 返回消息体溯源开关
+	EnableResponseBody *bool `json:"EnableResponseBody,omitnil,omitempty" name:"EnableResponseBody"`
+
+	// 排除IP
+	RemoteIpInclude []*string `json:"RemoteIpInclude,omitnil,omitempty" name:"RemoteIpInclude"`
+
+	// 包含IP
+	RemoteIpExclude []*string `json:"RemoteIpExclude,omitnil,omitempty" name:"RemoteIpExclude"`
+
+	// 排除uri
+	UriInclude []*string `json:"UriInclude,omitnil,omitempty" name:"UriInclude"`
+
+	// 包含uri
+	UriExclude []*string `json:"UriExclude,omitnil,omitempty" name:"UriExclude"`
+}
+
+type IpTraceLogEntry struct {
+	// 时间
+	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 访问IP
+	RemoteIp *string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
+
+	// 溯源类型rsp/req
+	TraceType *string `json:"TraceType,omitnil,omitempty" name:"TraceType"`
+
+	// 访问网络类型，公网/私网
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 原始消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 访问uri
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+
+	// 公网IP
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+
+	// 请求类型或返回状态
+	ReqTypeOrRspStatus *string `json:"ReqTypeOrRspStatus,omitnil,omitempty" name:"ReqTypeOrRspStatus"`
+
+	// 集群节点IP
+	NodeIp *string `json:"NodeIp,omitnil,omitempty" name:"NodeIp"`
+}
+
 type JobParam struct {
 	// 诊断项列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5760,6 +5887,143 @@ type ProcessDetail struct {
 	// 80：节点变配任务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+}
+
+// Predefined struct for user
+type QueryIpTraceLogRequestParams struct {
+	// ES集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 起始偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 数据条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 访问IP
+	RemoteIp []*string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
+
+	// Request/Response 请求/返回, 非必填
+	TraceType []*string `json:"TraceType,omitnil,omitempty" name:"TraceType"`
+
+	// Public/Private 公网访问/内网访问, 非必填
+	NetType []*string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+	ReqTypeOrRspStatus []*string `json:"ReqTypeOrRspStatus,omitnil,omitempty" name:"ReqTypeOrRspStatus"`
+
+	// 关键字模糊查询，支持Lucene Query String
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// Uri搜索
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+
+	// 集群节点IP
+	NodeIp []*string `json:"NodeIp,omitnil,omitempty" name:"NodeIp"`
+}
+
+type QueryIpTraceLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// ES集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 起始偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 数据条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 访问IP
+	RemoteIp []*string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
+
+	// Request/Response 请求/返回, 非必填
+	TraceType []*string `json:"TraceType,omitnil,omitempty" name:"TraceType"`
+
+	// Public/Private 公网访问/内网访问, 非必填
+	NetType []*string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+	ReqTypeOrRspStatus []*string `json:"ReqTypeOrRspStatus,omitnil,omitempty" name:"ReqTypeOrRspStatus"`
+
+	// 关键字模糊查询，支持Lucene Query String
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// Uri搜索
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+
+	// 集群节点IP
+	NodeIp []*string `json:"NodeIp,omitnil,omitempty" name:"NodeIp"`
+}
+
+func (r *QueryIpTraceLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryIpTraceLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "RemoteIp")
+	delete(f, "TraceType")
+	delete(f, "NetType")
+	delete(f, "ReqTypeOrRspStatus")
+	delete(f, "SearchKey")
+	delete(f, "Uri")
+	delete(f, "NodeIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryIpTraceLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryIpTraceLogResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// IP溯源日志列表
+	IpTraceLogList []*IpTraceLogEntry `json:"IpTraceLogList,omitnil,omitempty" name:"IpTraceLogList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryIpTraceLogResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryIpTraceLogResponseParams `json:"Response"`
+}
+
+func (r *QueryIpTraceLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryIpTraceLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -7448,6 +7712,88 @@ func (r *UpdateInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateIpTraceStatusRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// IP溯源配置开关
+	OpenIpTrace *bool `json:"OpenIpTrace,omitnil,omitempty" name:"OpenIpTrace"`
+
+	// IP溯源开启持续时间，单位：秒
+	DurationTime *int64 `json:"DurationTime,omitnil,omitempty" name:"DurationTime"`
+
+	// IP溯源配置
+	IpTraceConfig *IpTraceConfig `json:"IpTraceConfig,omitnil,omitempty" name:"IpTraceConfig"`
+
+	// 是否过滤kibana节点IP
+	FilterKibanaIp *bool `json:"FilterKibanaIp,omitnil,omitempty" name:"FilterKibanaIp"`
+}
+
+type UpdateIpTraceStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// IP溯源配置开关
+	OpenIpTrace *bool `json:"OpenIpTrace,omitnil,omitempty" name:"OpenIpTrace"`
+
+	// IP溯源开启持续时间，单位：秒
+	DurationTime *int64 `json:"DurationTime,omitnil,omitempty" name:"DurationTime"`
+
+	// IP溯源配置
+	IpTraceConfig *IpTraceConfig `json:"IpTraceConfig,omitnil,omitempty" name:"IpTraceConfig"`
+
+	// 是否过滤kibana节点IP
+	FilterKibanaIp *bool `json:"FilterKibanaIp,omitnil,omitempty" name:"FilterKibanaIp"`
+}
+
+func (r *UpdateIpTraceStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateIpTraceStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "OpenIpTrace")
+	delete(f, "DurationTime")
+	delete(f, "IpTraceConfig")
+	delete(f, "FilterKibanaIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateIpTraceStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateIpTraceStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateIpTraceStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateIpTraceStatusResponseParams `json:"Response"`
+}
+
+func (r *UpdateIpTraceStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateIpTraceStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

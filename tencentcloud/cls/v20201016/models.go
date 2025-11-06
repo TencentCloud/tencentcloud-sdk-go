@@ -4018,6 +4018,9 @@ type CreateTopicRequestParams struct {
 
 	// 主题扩展信息
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
+
+	// 开启记录公网来源ip和服务端接收时间
+	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 }
 
 type CreateTopicRequest struct {
@@ -4080,6 +4083,9 @@ type CreateTopicRequest struct {
 
 	// 主题扩展信息
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
+
+	// 开启记录公网来源ip和服务端接收时间
+	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -4108,6 +4114,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "TopicId")
 	delete(f, "IsWebTracking")
 	delete(f, "Extends")
+	delete(f, "IsSourceFrom")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}

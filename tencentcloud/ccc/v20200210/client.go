@@ -4149,6 +4149,62 @@ func (c *Client) ResumePredictiveDialingCampaignWithContext(ctx context.Context,
     return
 }
 
+func NewSetStaffStatusRequest() (request *SetStaffStatusRequest) {
+    request = &SetStaffStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "SetStaffStatus")
+    
+    
+    return
+}
+
+func NewSetStaffStatusResponse() (response *SetStaffStatusResponse) {
+    response = &SetStaffStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetStaffStatus
+// 设置 staff 状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SetStaffStatus(request *SetStaffStatusRequest) (response *SetStaffStatusResponse, err error) {
+    return c.SetStaffStatusWithContext(context.Background(), request)
+}
+
+// SetStaffStatus
+// 设置 staff 状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SetStaffStatusWithContext(ctx context.Context, request *SetStaffStatusRequest) (response *SetStaffStatusResponse, err error) {
+    if request == nil {
+        request = NewSetStaffStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ccc", APIVersion, "SetStaffStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetStaffStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetStaffStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopAutoCalloutTaskRequest() (request *StopAutoCalloutTaskRequest) {
     request = &StopAutoCalloutTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

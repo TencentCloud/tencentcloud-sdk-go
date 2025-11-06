@@ -7470,6 +7470,104 @@ type SessionEvent struct {
 	StaffEventDetail *EventStaffDetail `json:"StaffEventDetail,omitnil,omitempty" name:"StaffEventDetail"`
 }
 
+type SetStaffStatusItem struct {
+	// 座席账号
+	StaffUserId *string `json:"StaffUserId,omitnil,omitempty" name:"StaffUserId"`
+
+	// 状态，free 示闲 notReady 示忙 rest 小休	
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 如果设置小休状态，这里是原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+// Predefined struct for user
+type SetStaffStatusRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 设置座席状态列表，最大个数 10
+	StaffStatusList []*SetStaffStatusItem `json:"StaffStatusList,omitnil,omitempty" name:"StaffStatusList"`
+}
+
+type SetStaffStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 设置座席状态列表，最大个数 10
+	StaffStatusList []*SetStaffStatusItem `json:"StaffStatusList,omitnil,omitempty" name:"StaffStatusList"`
+}
+
+func (r *SetStaffStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetStaffStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StaffStatusList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetStaffStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetStaffStatusResponseParams struct {
+	// 设置座席状态应答列表
+	StaffStatusList []*SetStaffStatusRspItem `json:"StaffStatusList,omitnil,omitempty" name:"StaffStatusList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetStaffStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *SetStaffStatusResponseParams `json:"Response"`
+}
+
+func (r *SetStaffStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetStaffStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetStaffStatusRspItem struct {
+	// 座席账号
+	StaffUserId *string `json:"StaffUserId,omitnil,omitempty" name:"StaffUserId"`
+
+	// 错误码，参考协议整体错误码
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 当前状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 当前状态如果是小休，这里是原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 之前状态
+	PreviousStatus *string `json:"PreviousStatus,omitnil,omitempty" name:"PreviousStatus"`
+
+	// 之前状态如果是小休，这里是原因
+	PreviousReason *string `json:"PreviousReason,omitnil,omitempty" name:"PreviousReason"`
+}
+
 type SkillGroupInfoItem struct {
 	// 技能组ID
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
