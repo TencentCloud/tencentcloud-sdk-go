@@ -2191,7 +2191,9 @@ type CreateClustersRequestParams struct {
 	// 端口，默认3306，取值范围[0, 65535)
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 计费模式，按量计费：0，包年包月：1。默认按量计费。
+	// 计费模式，支持值为0和1，默认值为0。
+	// 取值为0，表示按量计费。
+	// 取值为1，表示包年包月。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 购买集群数，可选值范围[1,50]，默认为1
@@ -2352,7 +2354,9 @@ type CreateClustersRequest struct {
 	// 端口，默认3306，取值范围[0, 65535)
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 计费模式，按量计费：0，包年包月：1。默认按量计费。
+	// 计费模式，支持值为0和1，默认值为0。
+	// 取值为0，表示按量计费。
+	// 取值为1，表示包年包月。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 购买集群数，可选值范围[1,50]，默认为1
@@ -15287,7 +15291,7 @@ type QueryFilter struct {
 }
 
 type QueryParamFilter struct {
-	// 搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
+	// 搜索字段，目前支持：ProxyGroupId
 	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
 
 	// 搜索字符串
