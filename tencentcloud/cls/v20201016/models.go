@@ -2794,6 +2794,12 @@ type CreateDataTransformRequestParams struct {
 
 	// 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
 	DataTransformType *uint64 `json:"DataTransformType,omitnil,omitempty" name:"DataTransformType"`
+
+	// 保留失败日志状态，1:不保留(默认)，2:保留。
+	KeepFailureLog *uint64 `json:"KeepFailureLog,omitnil,omitempty" name:"KeepFailureLog"`
+
+	// 失败日志的字段名称
+	FailureLogKey *string `json:"FailureLogKey,omitnil,omitempty" name:"FailureLogKey"`
 }
 
 type CreateDataTransformRequest struct {
@@ -2839,6 +2845,12 @@ type CreateDataTransformRequest struct {
 
 	// 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
 	DataTransformType *uint64 `json:"DataTransformType,omitnil,omitempty" name:"DataTransformType"`
+
+	// 保留失败日志状态，1:不保留(默认)，2:保留。
+	KeepFailureLog *uint64 `json:"KeepFailureLog,omitnil,omitempty" name:"KeepFailureLog"`
+
+	// 失败日志的字段名称
+	FailureLogKey *string `json:"FailureLogKey,omitnil,omitempty" name:"FailureLogKey"`
 }
 
 func (r *CreateDataTransformRequest) ToJsonString() string {
@@ -2862,6 +2874,8 @@ func (r *CreateDataTransformRequest) FromJsonString(s string) error {
 	delete(f, "EnableFlag")
 	delete(f, "PreviewLogStatistics")
 	delete(f, "DataTransformType")
+	delete(f, "KeepFailureLog")
+	delete(f, "FailureLogKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataTransformRequest has unknown keys!", "")
 	}

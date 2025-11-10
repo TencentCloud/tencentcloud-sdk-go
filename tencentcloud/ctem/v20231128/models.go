@@ -2081,6 +2081,9 @@ type DescribeHttpsRequestParams struct {
 
 	// 是否仅显示过期风险资产
 	HasExpirationRisk *bool `json:"HasExpirationRisk,omitnil,omitempty" name:"HasExpirationRisk"`
+
+	// 是否只查询离线网站
+	OnlyOffline *bool `json:"OnlyOffline,omitnil,omitempty" name:"OnlyOffline"`
 }
 
 type DescribeHttpsRequest struct {
@@ -2133,6 +2136,9 @@ type DescribeHttpsRequest struct {
 
 	// 是否仅显示过期风险资产
 	HasExpirationRisk *bool `json:"HasExpirationRisk,omitnil,omitempty" name:"HasExpirationRisk"`
+
+	// 是否只查询离线网站
+	OnlyOffline *bool `json:"OnlyOffline,omitnil,omitempty" name:"OnlyOffline"`
 }
 
 func (r *DescribeHttpsRequest) ToJsonString() string {
@@ -2163,6 +2169,7 @@ func (r *DescribeHttpsRequest) FromJsonString(s string) error {
 	delete(f, "Ignored")
 	delete(f, "IsShowChange")
 	delete(f, "HasExpirationRisk")
+	delete(f, "OnlyOffline")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHttpsRequest has unknown keys!", "")
 	}
@@ -3441,6 +3448,9 @@ type DescribeSubDomainsRequestParams struct {
 
 	// 是否显示被忽略的数据
 	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+
+	// 是否只查询离线子域名
+	OnlyOffline *bool `json:"OnlyOffline,omitnil,omitempty" name:"OnlyOffline"`
 }
 
 type DescribeSubDomainsRequest struct {
@@ -3487,6 +3497,9 @@ type DescribeSubDomainsRequest struct {
 
 	// 是否显示被忽略的数据
 	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+
+	// 是否只查询离线子域名
+	OnlyOffline *bool `json:"OnlyOffline,omitnil,omitempty" name:"OnlyOffline"`
 }
 
 func (r *DescribeSubDomainsRequest) ToJsonString() string {
@@ -3515,6 +3528,7 @@ func (r *DescribeSubDomainsRequest) FromJsonString(s string) error {
 	delete(f, "UpdateAtEnd")
 	delete(f, "Filters")
 	delete(f, "Ignored")
+	delete(f, "OnlyOffline")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubDomainsRequest has unknown keys!", "")
 	}
@@ -4347,6 +4361,12 @@ type DisplayAsset struct {
 
 	// 端口和服务最近更新时间
 	LastModify *string `json:"LastModify,omitnil,omitempty" name:"LastModify"`
+
+	// 是否为云资产
+	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
+
+	// 云资产状态，-1为下线
+	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
 }
 
 type DisplayConfig struct {
@@ -4382,6 +4402,12 @@ type DisplayConfig struct {
 
 	// 建议
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// 是否为云资产
+	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
+
+	// 云资产状态，-1为下线
+	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
 }
 
 type DisplayDarkWeb struct {
@@ -4425,6 +4451,12 @@ type DisplayDomain struct {
 
 	// 公共字段
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
+
+	// 是否为云资产
+	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
+
+	// 云资产状态，-1为下线
+	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
 }
 
 type DisplayEnterprise struct {
@@ -4653,6 +4685,24 @@ type DisplayHttp struct {
 	// 资产是否发生变动
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsChange *bool `json:"IsChange,omitnil,omitempty" name:"IsChange"`
+
+	// 是否为云资产：0-非云资产 1-是云资产
+	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
+
+	// 云资产是否下线：-1-已下线 0-正常
+	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
+
+	// 可用率（百分比）
+	AvailabilityRate *int64 `json:"AvailabilityRate,omitnil,omitempty" name:"AvailabilityRate"`
+
+	// 可用状态 1:异常 0:正常
+	AvailabilityState *int64 `json:"AvailabilityState,omitnil,omitempty" name:"AvailabilityState"`
+
+	// 平均响应时间：单位ms
+	ResponseTime *int64 `json:"ResponseTime,omitnil,omitempty" name:"ResponseTime"`
+
+	// 域名解析状态 1:异常 0:正常
+	AnalysisState *int64 `json:"AnalysisState,omitnil,omitempty" name:"AnalysisState"`
 }
 
 type DisplayJobRecord struct {
@@ -4860,6 +4910,12 @@ type DisplayManage struct {
 
 	// 状态：not_converged:未收敛, converged:已收敛, ignore:已忽略
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否为云资产：0-非云资产 1-是云资产
+	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
+
+	// 云资产是否下线：-1-已下线 0-正常
+	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
 }
 
 type DisplayNetDisk struct {
@@ -4918,6 +4974,15 @@ type DisplayPort struct {
 
 	// 状态，close:连接超时，端口可能已关闭，open:端口开放, checking:复测中, ignore:已忽略
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否为云资产：0-非云资产 1-是云资产
+	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
+
+	// 云资产是否下线：-1-已下线 0-正常
+	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
+
+	// 域名解析状态 1:异常 0:正常
+	AnalysisState *int64 `json:"AnalysisState,omitnil,omitempty" name:"AnalysisState"`
 }
 
 type DisplaySensitiveInfo struct {
@@ -4935,6 +5000,12 @@ type DisplaySensitiveInfo struct {
 
 	// 公共字段
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
+
+	// 是否为云资产：0-非云资产 1-是云资产
+	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
+
+	// 云资产是否下线：-1-已下线 0-正常
+	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
 }
 
 type DisplaySubDomain struct {
@@ -4961,6 +5032,27 @@ type DisplaySubDomain struct {
 
 	// 公共字段
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
+
+	// 是否为云资产：0-非云资产 1-是云资产
+	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
+
+	// 云资产是否下线：-1-已下线 0-正常
+	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
+
+	// 可用率（百分比）
+	AvailabilityRate *int64 `json:"AvailabilityRate,omitnil,omitempty" name:"AvailabilityRate"`
+
+	// 可用状态 1:异常 0:正常
+	AvailabilityState *int64 `json:"AvailabilityState,omitnil,omitempty" name:"AvailabilityState"`
+
+	// 域名解析状态 1:异常 0:正常
+	AnalysisState *int64 `json:"AnalysisState,omitnil,omitempty" name:"AnalysisState"`
+
+	// 平均时延：单位ms
+	AverageDelay *int64 `json:"AverageDelay,omitnil,omitempty" name:"AverageDelay"`
+
+	// 丢包率（百分比）
+	LossRate *int64 `json:"LossRate,omitnil,omitempty" name:"LossRate"`
 }
 
 type DisplaySuspiciousAsset struct {
@@ -5099,6 +5191,15 @@ type DisplayVul struct {
 
 	// 上次复测时间
 	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
+
+	// 是否为云资产：0-非云资产 1-是云资产
+	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
+
+	// 云资产是否下线：-1-已下线 0-正常
+	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
+
+	// 域名解析状态 1:异常 0:正常
+	AnalysisState *int64 `json:"AnalysisState,omitnil,omitempty" name:"AnalysisState"`
 }
 
 type DisplayWeakPassword struct {
@@ -5126,7 +5227,7 @@ type DisplayWeakPassword struct {
 	// 弱口令密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 是否蜜罐
+	// 是否为蜜罐
 	IsHoneypot *bool `json:"IsHoneypot,omitnil,omitempty" name:"IsHoneypot"`
 
 	// 截图
@@ -5137,6 +5238,12 @@ type DisplayWeakPassword struct {
 
 	// 上次复测时间
 	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
+
+	// 是否为云资产：0-非云资产 1-是云资产
+	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
+
+	// 云资产是否下线：-1-已下线 0-正常
+	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
 }
 
 type DisplayWechatApplet struct {

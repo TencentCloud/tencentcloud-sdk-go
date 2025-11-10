@@ -9675,7 +9675,9 @@ type CreateSignUrlsRequestParams struct {
 	// <ul><li> **0** :合同签署页面更多操作按钮</li>
 	// <li> **1** :合同签署页面更多操作的拒绝签署按钮</li>
 	// <li> **2** :合同签署页面更多操作的转他人处理按钮</li>
-	// <li> **3** :签署成功页的查看详情按钮</li></ul>
+	// <li> **3** :签署成功页的查看详情按钮</li>
+	// <li> **4** :合同签署页面更多操作的查看合同基本信息按钮</li>
+	// <li> **5** :合同签署页面更多操作的撤销按钮</li></ul>
 	// 
 	// 注:  `字段为数组, 可以传值隐藏多个按钮`
 	Hides []*int64 `json:"Hides,omitnil,omitempty" name:"Hides"`
@@ -9800,7 +9802,9 @@ type CreateSignUrlsRequest struct {
 	// <ul><li> **0** :合同签署页面更多操作按钮</li>
 	// <li> **1** :合同签署页面更多操作的拒绝签署按钮</li>
 	// <li> **2** :合同签署页面更多操作的转他人处理按钮</li>
-	// <li> **3** :签署成功页的查看详情按钮</li></ul>
+	// <li> **3** :签署成功页的查看详情按钮</li>
+	// <li> **4** :合同签署页面更多操作的查看合同基本信息按钮</li>
+	// <li> **5** :合同签署页面更多操作的撤销按钮</li></ul>
 	// 
 	// 注:  `字段为数组, 可以传值隐藏多个按钮`
 	Hides []*int64 `json:"Hides,omitnil,omitempty" name:"Hides"`
@@ -11447,13 +11451,23 @@ type EmbedUrlOption struct {
 	// <li> <b>false</b> :（默认）不允许在模板预览页展示控件</li></ul>
 	ShowTemplateComponent *bool `json:"ShowTemplateComponent,omitnil,omitempty" name:"ShowTemplateComponent"`
 
-	// 跳过上传文件，默认为false(展示上传文件页）![image](https://qcloudimg.tencent-cloud.cn/raw/8ca33745cf772e79831dbe5a70e82400.png)
+	// 跳过上传文件，默认为false(展示上传文件页)![image](https://qcloudimg.tencent-cloud.cn/raw/8ca33745cf772e79831dbe5a70e82400.png)
 	// - false: 展示上传文件页
 	// - true: 不展示上传文件页
 	//  
 	// 
 	// 注意: 此参数仅针对**EmbedType=CREATE_TEMPLATE(创建模板)有效**，
-	SkipUploadFile *string `json:"SkipUploadFile,omitnil,omitempty" name:"SkipUploadFile"`
+	SkipUploadFile *bool `json:"SkipUploadFile,omitnil,omitempty" name:"SkipUploadFile"`
+
+	// 隐藏下载文件按钮，默认为false(展示下载文件按钮)
+	// 
+	// - false: 展示下载文件按钮
+	// - true: 不展示下载文件按钮
+	// 
+	// 
+	// 
+	// 注意: 此参数仅针对**EmbedType=PREVIEW_FLOW_DETAIL(查看合同详情)**有效
+	SkipDownloadFile *bool `json:"SkipDownloadFile,omitnil,omitempty" name:"SkipDownloadFile"`
 
 	// 是否禁止编辑（展示）水印控件属性
 	// <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
