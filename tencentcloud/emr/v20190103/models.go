@@ -10256,6 +10256,9 @@ type NodeSpecDisk struct {
 
 	// 指定磁盘大小
 	DefaultDiskSize *int64 `json:"DefaultDiskSize,omitnil,omitempty" name:"DefaultDiskSize"`
+
+	// 是否为特殊的数据盘，如：单副本盘
+	IsSpecialDisk *bool `json:"IsSpecialDisk,omitnil,omitempty" name:"IsSpecialDisk"`
 }
 
 type NodeSpecDiskV2 struct {

@@ -1210,6 +1210,14 @@ type CreateAndroidInstancesAccessTokenRequestParams struct {
 
 	// 有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
 	ExpirationDuration *string `json:"ExpirationDuration,omitnil,omitempty" name:"ExpirationDuration"`
+
+	// 模式。
+	// STANDARD：默认值，标准模式
+	// ACCELERATED：加速模式，该模式需要开通加速服务才能生效
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 用户 IP。在加速模式下，该字段必填。
+	UserIP *string `json:"UserIP,omitnil,omitempty" name:"UserIP"`
 }
 
 type CreateAndroidInstancesAccessTokenRequest struct {
@@ -1220,6 +1228,14 @@ type CreateAndroidInstancesAccessTokenRequest struct {
 
 	// 有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
 	ExpirationDuration *string `json:"ExpirationDuration,omitnil,omitempty" name:"ExpirationDuration"`
+
+	// 模式。
+	// STANDARD：默认值，标准模式
+	// ACCELERATED：加速模式，该模式需要开通加速服务才能生效
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 用户 IP。在加速模式下，该字段必填。
+	UserIP *string `json:"UserIP,omitnil,omitempty" name:"UserIP"`
 }
 
 func (r *CreateAndroidInstancesAccessTokenRequest) ToJsonString() string {
@@ -1236,6 +1252,8 @@ func (r *CreateAndroidInstancesAccessTokenRequest) FromJsonString(s string) erro
 	}
 	delete(f, "AndroidInstanceIds")
 	delete(f, "ExpirationDuration")
+	delete(f, "Mode")
+	delete(f, "UserIP")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstancesAccessTokenRequest has unknown keys!", "")
 	}

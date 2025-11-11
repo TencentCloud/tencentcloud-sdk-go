@@ -759,6 +759,14 @@ type AllocateAddressesRequestParams struct {
 
 	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 原生EIP IP资源的计费方式。
+	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
+	// <li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
+	// <li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
+	// </ul></li>
+	// </ul>
+	IPChargeType *string `json:"IPChargeType,omitnil,omitempty" name:"IPChargeType"`
 }
 
 type AllocateAddressesRequest struct {
@@ -840,6 +848,14 @@ type AllocateAddressesRequest struct {
 
 	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 原生EIP IP资源的计费方式。
+	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
+	// <li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
+	// <li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
+	// </ul></li>
+	// </ul>
+	IPChargeType *string `json:"IPChargeType,omitnil,omitempty" name:"IPChargeType"`
 }
 
 func (r *AllocateAddressesRequest) ToJsonString() string {
@@ -871,6 +887,7 @@ func (r *AllocateAddressesRequest) FromJsonString(s string) error {
 	delete(f, "Egress")
 	delete(f, "AntiDDoSPackageId")
 	delete(f, "ClientToken")
+	delete(f, "IPChargeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AllocateAddressesRequest has unknown keys!", "")
 	}
@@ -25042,6 +25059,14 @@ type InquiryPriceAllocateAddressesRequestParams struct {
 	// <ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅新加坡和中国香港支持精品IP。</li></ul>
 	// <ul style="margin:0"><li>高防IP，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li></ul>
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
+
+	// 原生EIP IP资源的计费方式。
+	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
+	// <li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
+	// <li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
+	// </ul></li>
+	// </ul>
+	IPChargeType *string `json:"IPChargeType,omitnil,omitempty" name:"IPChargeType"`
 }
 
 type InquiryPriceAllocateAddressesRequest struct {
@@ -25072,6 +25097,14 @@ type InquiryPriceAllocateAddressesRequest struct {
 	// <ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅新加坡和中国香港支持精品IP。</li></ul>
 	// <ul style="margin:0"><li>高防IP，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li></ul>
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
+
+	// 原生EIP IP资源的计费方式。
+	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
+	// <li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
+	// <li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
+	// </ul></li>
+	// </ul>
+	IPChargeType *string `json:"IPChargeType,omitnil,omitempty" name:"IPChargeType"`
 }
 
 func (r *InquiryPriceAllocateAddressesRequest) ToJsonString() string {
@@ -25090,6 +25123,7 @@ func (r *InquiryPriceAllocateAddressesRequest) FromJsonString(s string) error {
 	delete(f, "InternetMaxBandwidthOut")
 	delete(f, "AddressChargePrepaid")
 	delete(f, "AddressType")
+	delete(f, "IPChargeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceAllocateAddressesRequest has unknown keys!", "")
 	}
@@ -25525,8 +25559,17 @@ type InstanceStatistic struct {
 }
 
 type InternetPrice struct {
-	// 公网IP询价详细参数。
+	// 公网IP网络费询价详细参数。
 	AddressPrice *InternetPriceDetail `json:"AddressPrice,omitnil,omitempty" name:"AddressPrice"`
+
+	// 公网IP资源费询价详细参数。仅原生IP价格查询返回。
+	IPPrice *InternetPriceDetail `json:"IPPrice,omitnil,omitempty" name:"IPPrice"`
+
+	// 总原价，单位：元，仅预付费价格查询返回。
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
+
+	// 折扣后的总价格，单位：元。仅预付费价格查询返回。
+	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 }
 
 type InternetPriceDetail struct {

@@ -2792,6 +2792,15 @@ type CreateDataTransformRequestParams struct {
 	// 目标日志主题ID通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	PreviewLogStatistics []*PreviewLogStatistic `json:"PreviewLogStatistics,omitnil,omitempty" name:"PreviewLogStatistics"`
 
+	// 当FuncType为2时，动态创建的日志集、日志主题的个数超出产品规格限制是否丢弃数据， 默认为false。
+	// 
+	// false：创建兜底日志集、日志主题并将日志写入兜底主题；
+	// true：丢弃日志数据。
+	BackupGiveUpData *bool `json:"BackupGiveUpData,omitnil,omitempty" name:"BackupGiveUpData"`
+
+	// 是否开启投递服务日志。1：关闭，2：开启。
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
 	// 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
 	DataTransformType *uint64 `json:"DataTransformType,omitnil,omitempty" name:"DataTransformType"`
 
@@ -2800,6 +2809,26 @@ type CreateDataTransformRequestParams struct {
 
 	// 失败日志的字段名称
 	FailureLogKey *string `json:"FailureLogKey,omitnil,omitempty" name:"FailureLogKey"`
+
+	// 指定加工数据的开始时间, 秒级时间戳。
+	//  - 日志主题生命周期内的任意时间范围，如果超出了生命周期,只处理生命周期内有数据的部分。
+	ProcessFromTimestamp *uint64 `json:"ProcessFromTimestamp,omitnil,omitempty" name:"ProcessFromTimestamp"`
+
+	// 指定加工数据的结束时间，秒级时间戳。
+	// 
+	// -  不可指定未来的时间
+	// -  不填则表示持续执行
+	ProcessToTimestamp *uint64 `json:"ProcessToTimestamp,omitnil,omitempty" name:"ProcessToTimestamp"`
+
+	// 对已经创建的并且使用了关联外部数据库能力的任务预览（TaskType 为 1 或 2）时，该值必传
+	// 数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 关联的数据源信息
+	DataTransformSqlDataSources []*DataTransformSqlDataSource `json:"DataTransformSqlDataSources,omitnil,omitempty" name:"DataTransformSqlDataSources"`
+
+	// 设置的环境变量
+	EnvInfos []*EnvInfo `json:"EnvInfos,omitnil,omitempty" name:"EnvInfos"`
 }
 
 type CreateDataTransformRequest struct {
@@ -2843,6 +2872,15 @@ type CreateDataTransformRequest struct {
 	// 目标日志主题ID通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	PreviewLogStatistics []*PreviewLogStatistic `json:"PreviewLogStatistics,omitnil,omitempty" name:"PreviewLogStatistics"`
 
+	// 当FuncType为2时，动态创建的日志集、日志主题的个数超出产品规格限制是否丢弃数据， 默认为false。
+	// 
+	// false：创建兜底日志集、日志主题并将日志写入兜底主题；
+	// true：丢弃日志数据。
+	BackupGiveUpData *bool `json:"BackupGiveUpData,omitnil,omitempty" name:"BackupGiveUpData"`
+
+	// 是否开启投递服务日志。1：关闭，2：开启。
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
 	// 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
 	DataTransformType *uint64 `json:"DataTransformType,omitnil,omitempty" name:"DataTransformType"`
 
@@ -2851,6 +2889,26 @@ type CreateDataTransformRequest struct {
 
 	// 失败日志的字段名称
 	FailureLogKey *string `json:"FailureLogKey,omitnil,omitempty" name:"FailureLogKey"`
+
+	// 指定加工数据的开始时间, 秒级时间戳。
+	//  - 日志主题生命周期内的任意时间范围，如果超出了生命周期,只处理生命周期内有数据的部分。
+	ProcessFromTimestamp *uint64 `json:"ProcessFromTimestamp,omitnil,omitempty" name:"ProcessFromTimestamp"`
+
+	// 指定加工数据的结束时间，秒级时间戳。
+	// 
+	// -  不可指定未来的时间
+	// -  不填则表示持续执行
+	ProcessToTimestamp *uint64 `json:"ProcessToTimestamp,omitnil,omitempty" name:"ProcessToTimestamp"`
+
+	// 对已经创建的并且使用了关联外部数据库能力的任务预览（TaskType 为 1 或 2）时，该值必传
+	// 数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 关联的数据源信息
+	DataTransformSqlDataSources []*DataTransformSqlDataSource `json:"DataTransformSqlDataSources,omitnil,omitempty" name:"DataTransformSqlDataSources"`
+
+	// 设置的环境变量
+	EnvInfos []*EnvInfo `json:"EnvInfos,omitnil,omitempty" name:"EnvInfos"`
 }
 
 func (r *CreateDataTransformRequest) ToJsonString() string {
@@ -2873,9 +2931,16 @@ func (r *CreateDataTransformRequest) FromJsonString(s string) error {
 	delete(f, "DstResources")
 	delete(f, "EnableFlag")
 	delete(f, "PreviewLogStatistics")
+	delete(f, "BackupGiveUpData")
+	delete(f, "HasServicesLog")
 	delete(f, "DataTransformType")
 	delete(f, "KeepFailureLog")
 	delete(f, "FailureLogKey")
+	delete(f, "ProcessFromTimestamp")
+	delete(f, "ProcessToTimestamp")
+	delete(f, "TaskId")
+	delete(f, "DataTransformSqlDataSources")
+	delete(f, "EnvInfos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataTransformRequest has unknown keys!", "")
 	}
@@ -4449,6 +4514,27 @@ type DataTransformResouceInfo struct {
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 }
 
+type DataTransformSqlDataSource struct {
+	// 数据源类型 1:MySql;2:自建mysql;3:pgsql
+	DataSource *uint64 `json:"DataSource,omitnil,omitempty" name:"DataSource"`
+
+	// InstanceId所属地域。例如：ap-guangzhou
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 实例Id。
+	// - 当DataSource为1时，表示云数据库Mysql 实例id，如：cdb-zxcvbnm
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// mysql访问用户名
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 别名。数据加工语句中使用
+	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+
+	// mysql访问密码。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+}
+
 type DataTransformTaskInfo struct {
 	// 数据加工任务名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -4468,7 +4554,7 @@ type DataTransformTaskInfo struct {
 	// 当前加工任务状态（1准备中/2运行中/3停止中/4已停止）
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 加工任务创建时间
+	// 创建时间
 	// 时间格式：yyyy-MM-dd HH:mm:ss
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
@@ -4492,6 +4578,18 @@ type DataTransformTaskInfo struct {
 	// 加工逻辑函数。
 	EtlContent *string `json:"EtlContent,omitnil,omitempty" name:"EtlContent"`
 
+	// 兜底topic_id
+	BackupTopicID *string `json:"BackupTopicID,omitnil,omitempty" name:"BackupTopicID"`
+
+	// 超限之后是否丢弃日志数据
+	BackupGiveUpData *bool `json:"BackupGiveUpData,omitnil,omitempty" name:"BackupGiveUpData"`
+
+	// 是否开启投递服务日志。 1关闭,2开启
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// 任务目标日志主题数量
+	TaskDstCount *uint64 `json:"TaskDstCount,omitnil,omitempty" name:"TaskDstCount"`
+
 	// 数据加工类型。0：标准加工任务；1：前置加工任务。
 	DataTransformType *uint64 `json:"DataTransformType,omitnil,omitempty" name:"DataTransformType"`
 
@@ -4500,6 +4598,21 @@ type DataTransformTaskInfo struct {
 
 	// 失败日志的字段名称
 	FailureLogKey *string `json:"FailureLogKey,omitnil,omitempty" name:"FailureLogKey"`
+
+	// 指定加工数据的开始时间，秒级时间戳。
+	// - 日志主题生命周期内的任意时间范围，如果超出了生命周期,只处理生命周期内有数据的部分。
+	ProcessFromTimestamp *uint64 `json:"ProcessFromTimestamp,omitnil,omitempty" name:"ProcessFromTimestamp"`
+
+	// 指定加工数据的结束时间，秒级时间戳。
+	// 1. 不可指定未来的时间
+	// 2. 不填则表示持续执行
+	ProcessToTimestamp *uint64 `json:"ProcessToTimestamp,omitnil,omitempty" name:"ProcessToTimestamp"`
+
+	// sql数据源信息
+	DataTransformSqlDataSources []*DataTransformSqlDataSource `json:"DataTransformSqlDataSources,omitnil,omitempty" name:"DataTransformSqlDataSources"`
+
+	// 环境变量
+	EnvInfos []*EnvInfo `json:"EnvInfos,omitnil,omitempty" name:"EnvInfos"`
 }
 
 // Predefined struct for user
@@ -7229,7 +7342,7 @@ type DescribeDataTransformInfoRequestParams struct {
 	// 必选：否
 	// 示例：756cec3e-a0a5-44c3-85a8-090870582000
 	// 日志主题ID
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	// 
 	// - status
 	// 按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
@@ -7288,7 +7401,7 @@ type DescribeDataTransformInfoRequest struct {
 	// 必选：否
 	// 示例：756cec3e-a0a5-44c3-85a8-090870582000
 	// 日志主题ID
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	// 
 	// - status
 	// 按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
@@ -9231,6 +9344,14 @@ func (r *DescribeWebCallbacksResponse) FromJsonString(s string) error {
 type DynamicIndex struct {
 	// 键值索引自动配置开关
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type EnvInfo struct {
+	// 环境变量名
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 环境变量值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type EscalateNoticeInfo struct {
@@ -11638,8 +11759,23 @@ type ModifyDataTransformRequestParams struct {
 	// 加工任务目的topic_id以及别名
 	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
+	// 超限之后是否丢弃日志数据
+	BackupGiveUpData *bool `json:"BackupGiveUpData,omitnil,omitempty" name:"BackupGiveUpData"`
+
 	// 是否开启投递服务日志。1关闭，2开启
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// 保留失败日志状态。 1:不保留，2:保留
+	KeepFailureLog *uint64 `json:"KeepFailureLog,omitnil,omitempty" name:"KeepFailureLog"`
+
+	// 失败日志的字段名称
+	FailureLogKey *string `json:"FailureLogKey,omitnil,omitempty" name:"FailureLogKey"`
+
+	// 外部数据源信息
+	DataTransformSqlDataSources []*DataTransformSqlDataSource `json:"DataTransformSqlDataSources,omitnil,omitempty" name:"DataTransformSqlDataSources"`
+
+	// 设置的环境变量
+	EnvInfos []*EnvInfo `json:"EnvInfos,omitnil,omitempty" name:"EnvInfos"`
 }
 
 type ModifyDataTransformRequest struct {
@@ -11672,8 +11808,23 @@ type ModifyDataTransformRequest struct {
 	// 加工任务目的topic_id以及别名
 	DstResources []*DataTransformResouceInfo `json:"DstResources,omitnil,omitempty" name:"DstResources"`
 
+	// 超限之后是否丢弃日志数据
+	BackupGiveUpData *bool `json:"BackupGiveUpData,omitnil,omitempty" name:"BackupGiveUpData"`
+
 	// 是否开启投递服务日志。1关闭，2开启
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// 保留失败日志状态。 1:不保留，2:保留
+	KeepFailureLog *uint64 `json:"KeepFailureLog,omitnil,omitempty" name:"KeepFailureLog"`
+
+	// 失败日志的字段名称
+	FailureLogKey *string `json:"FailureLogKey,omitnil,omitempty" name:"FailureLogKey"`
+
+	// 外部数据源信息
+	DataTransformSqlDataSources []*DataTransformSqlDataSource `json:"DataTransformSqlDataSources,omitnil,omitempty" name:"DataTransformSqlDataSources"`
+
+	// 设置的环境变量
+	EnvInfos []*EnvInfo `json:"EnvInfos,omitnil,omitempty" name:"EnvInfos"`
 }
 
 func (r *ModifyDataTransformRequest) ToJsonString() string {
@@ -11693,7 +11844,12 @@ func (r *ModifyDataTransformRequest) FromJsonString(s string) error {
 	delete(f, "EtlContent")
 	delete(f, "EnableFlag")
 	delete(f, "DstResources")
+	delete(f, "BackupGiveUpData")
 	delete(f, "HasServicesLog")
+	delete(f, "KeepFailureLog")
+	delete(f, "FailureLogKey")
+	delete(f, "DataTransformSqlDataSources")
+	delete(f, "EnvInfos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataTransformRequest has unknown keys!", "")
 	}

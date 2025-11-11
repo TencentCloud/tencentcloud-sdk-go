@@ -2943,6 +2943,12 @@ type DeviceDetail struct {
 	// 账号组id
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
+	// 是否开启录屏权限，仅macOS， 0： 未开启 、1： 开启
+	ScreenRecordingPermission *int64 `json:"ScreenRecordingPermission,omitnil,omitempty" name:"ScreenRecordingPermission"`
+
+	// 是否开启磁盘访问权限，仅macOS， 0： 未开启、 1： 开启
+	DiskAccessPermission *int64 `json:"DiskAccessPermission,omitnil,omitempty" name:"DiskAccessPermission"`
+
 	// 终端备注名
 	RemarkName *string `json:"RemarkName,omitnil,omitempty" name:"RemarkName"`
 }
