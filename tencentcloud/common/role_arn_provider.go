@@ -27,6 +27,7 @@ type RoleArnProvider struct {
 	roleArn         string
 	roleSessionName string
 	durationSeconds int64
+	Endpoint        string
 }
 
 type stsRsp struct {
@@ -65,7 +66,11 @@ func (r *RoleArnProvider) GetCredential() (CredentialIface, error) {
 	}
 	credential := NewCredential(r.longSecretId, r.longSecretKey)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = endpoint
+	providerEndpoint := r.Endpoint
+	if providerEndpoint == "" {
+		providerEndpoint = endpoint
+	}
+	cpf.HttpProfile.Endpoint = providerEndpoint
 	cpf.HttpProfile.ReqMethod = "POST"
 
 	client := NewCommonClient(credential, region, cpf)
