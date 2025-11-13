@@ -5477,6 +5477,58 @@ func (c *Client) DescribeClusterAuthenticationOptionsWithContext(ctx context.Con
     return
 }
 
+func NewDescribeClusterAvailableExtraArgsRequest() (request *DescribeClusterAvailableExtraArgsRequest) {
+    request = &DescribeClusterAvailableExtraArgsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterAvailableExtraArgs")
+    
+    
+    return
+}
+
+func NewDescribeClusterAvailableExtraArgsResponse() (response *DescribeClusterAvailableExtraArgsResponse) {
+    response = &DescribeClusterAvailableExtraArgsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterAvailableExtraArgs
+// 查询集群可用的自定义参数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeClusterAvailableExtraArgs(request *DescribeClusterAvailableExtraArgsRequest) (response *DescribeClusterAvailableExtraArgsResponse, err error) {
+    return c.DescribeClusterAvailableExtraArgsWithContext(context.Background(), request)
+}
+
+// DescribeClusterAvailableExtraArgs
+// 查询集群可用的自定义参数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeClusterAvailableExtraArgsWithContext(ctx context.Context, request *DescribeClusterAvailableExtraArgsRequest) (response *DescribeClusterAvailableExtraArgsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterAvailableExtraArgsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterAvailableExtraArgs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterAvailableExtraArgs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterAvailableExtraArgsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterCommonNamesRequest() (request *DescribeClusterCommonNamesRequest) {
     request = &DescribeClusterCommonNamesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11049,6 +11101,58 @@ func (c *Client) DescribeTKEEdgeScriptWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
+    request = &DescribeTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeTasks")
+    
+    
+    return
+}
+
+func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
+    response = &DescribeTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTasks
+// 查询任务相关信息，只会查询对应任务类型的最新的一条任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
+    return c.DescribeTasksWithContext(context.Background(), request)
+}
+
+// DescribeTasks
+// 查询任务相关信息，只会查询对应任务类型的最新的一条任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVersionsRequest() (request *DescribeVersionsRequest) {
     request = &DescribeVersionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12680,6 +12784,7 @@ func NewModifyClusterAttributeResponse() (response *ModifyClusterAttributeRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_TRADECOMMON = "FailedOperation.TradeCommon"
+//  FAILEDOPERATION_TRADEINSUFFICIENTBALANCE = "FailedOperation.TradeInsufficientBalance"
 //  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
@@ -12706,6 +12811,7 @@ func (c *Client) ModifyClusterAttribute(request *ModifyClusterAttributeRequest) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_TRADECOMMON = "FailedOperation.TradeCommon"
+//  FAILEDOPERATION_TRADEINSUFFICIENTBALANCE = "FailedOperation.TradeInsufficientBalance"
 //  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
@@ -12887,6 +12993,112 @@ func (c *Client) ModifyClusterEndpointSPWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyClusterEndpointSPResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterExtraArgsRequest() (request *ModifyClusterExtraArgsRequest) {
+    request = &ModifyClusterExtraArgsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterExtraArgs")
+    
+    
+    return
+}
+
+func NewModifyClusterExtraArgsResponse() (response *ModifyClusterExtraArgsResponse) {
+    response = &ModifyClusterExtraArgsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterExtraArgs
+// 更新集群自定义参数，只支持托管集群
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyClusterExtraArgs(request *ModifyClusterExtraArgsRequest) (response *ModifyClusterExtraArgsResponse, err error) {
+    return c.ModifyClusterExtraArgsWithContext(context.Background(), request)
+}
+
+// ModifyClusterExtraArgs
+// 更新集群自定义参数，只支持托管集群
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyClusterExtraArgsWithContext(ctx context.Context, request *ModifyClusterExtraArgsRequest) (response *ModifyClusterExtraArgsResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterExtraArgsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterExtraArgs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterExtraArgs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterExtraArgsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterExtraArgsTaskStateRequest() (request *ModifyClusterExtraArgsTaskStateRequest) {
+    request = &ModifyClusterExtraArgsTaskStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterExtraArgsTaskState")
+    
+    
+    return
+}
+
+func NewModifyClusterExtraArgsTaskStateResponse() (response *ModifyClusterExtraArgsTaskStateResponse) {
+    response = &ModifyClusterExtraArgsTaskStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterExtraArgsTaskState
+// 暂停或者取消集群更新参数任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKLIFESTATEERROR = "FailedOperation.TaskLifeStateError"
+//  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyClusterExtraArgsTaskState(request *ModifyClusterExtraArgsTaskStateRequest) (response *ModifyClusterExtraArgsTaskStateResponse, err error) {
+    return c.ModifyClusterExtraArgsTaskStateWithContext(context.Background(), request)
+}
+
+// ModifyClusterExtraArgsTaskState
+// 暂停或者取消集群更新参数任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKLIFESTATEERROR = "FailedOperation.TaskLifeStateError"
+//  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyClusterExtraArgsTaskStateWithContext(ctx context.Context, request *ModifyClusterExtraArgsTaskStateRequest) (response *ModifyClusterExtraArgsTaskStateResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterExtraArgsTaskStateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterExtraArgsTaskState")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterExtraArgsTaskState require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterExtraArgsTaskStateResponse()
     err = c.Send(request, response)
     return
 }

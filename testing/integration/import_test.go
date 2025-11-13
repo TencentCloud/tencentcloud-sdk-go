@@ -106,6 +106,7 @@ import (
 	cwsv20180312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws/v20180312"
 	cynosdbv20190107 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cynosdb/v20190107"
 	dasbv20191018 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dasb/v20191018"
+	dataagentv20250513 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dataagent/v20250513"
 	dayuv20180709 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dayu/v20180709"
 	dbbrainv20191016 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain/v20191016"
 	dbbrainv20210527 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain/v20210527"
@@ -1414,6 +1415,19 @@ func TestDasbv20191018Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init dasb_v20191018 client: %v", err)
+    }
+}
+
+func TestDataagentv20250513Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := dataagentv20250513.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init dataagent_v20250513 client: %v", err)
     }
 }
 

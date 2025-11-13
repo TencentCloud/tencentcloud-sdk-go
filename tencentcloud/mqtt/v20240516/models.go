@@ -3818,6 +3818,67 @@ type IpRule struct {
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
+// Predefined struct for user
+type KickOutClientRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户端id
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+}
+
+type KickOutClientRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户端id
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+}
+
+func (r *KickOutClientRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *KickOutClientRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ClientId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KickOutClientRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type KickOutClientResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type KickOutClientResponse struct {
+	*tchttp.BaseResponse
+	Response *KickOutClientResponseParams `json:"Response"`
+}
+
+func (r *KickOutClientResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *KickOutClientResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MQTTAuthenticatorItem struct {
 	// 认证器类型
 	// JWT：JWT认证器

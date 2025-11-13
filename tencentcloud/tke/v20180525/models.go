@@ -497,6 +497,24 @@ type AutoscalingAdded struct {
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 }
 
+type AvailableExtraArgs struct {
+	// kube-apiserver可用的自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KubeAPIServer []*Flag `json:"KubeAPIServer,omitnil,omitempty" name:"KubeAPIServer"`
+
+	// kube-controller-manager可用的自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KubeControllerManager []*Flag `json:"KubeControllerManager,omitnil,omitempty" name:"KubeControllerManager"`
+
+	// kube-scheduler可用的自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KubeScheduler []*Flag `json:"KubeScheduler,omitnil,omitempty" name:"KubeScheduler"`
+
+	// kubelet可用的自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kubelet []*Flag `json:"Kubelet,omitnil,omitempty" name:"Kubelet"`
+}
+
 type BackupStorageLocation struct {
 	// 备份仓库名称	
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -6868,6 +6886,76 @@ func (r *DescribeClusterAuthenticationOptionsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterAuthenticationOptionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterAvailableExtraArgsRequestParams struct {
+	// 集群版本
+	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
+
+	// 集群类型(MANAGED_CLUSTER或INDEPENDENT_CLUSTER)
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+}
+
+type DescribeClusterAvailableExtraArgsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群版本
+	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
+
+	// 集群类型(MANAGED_CLUSTER或INDEPENDENT_CLUSTER)
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+}
+
+func (r *DescribeClusterAvailableExtraArgsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterAvailableExtraArgsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterVersion")
+	delete(f, "ClusterType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterAvailableExtraArgsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterAvailableExtraArgsResponseParams struct {
+	// 集群版本
+	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
+
+	// 可用的自定义参数
+	AvailableExtraArgs *AvailableExtraArgs `json:"AvailableExtraArgs,omitnil,omitempty" name:"AvailableExtraArgs"`
+
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterAvailableExtraArgsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterAvailableExtraArgsResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterAvailableExtraArgsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterAvailableExtraArgsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13342,6 +13430,70 @@ func (r *DescribeTKEEdgeScriptResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTasksRequestParams struct {
+	// 根据filter做过滤，支持ClusterId（取值示例：cls-xxxx）、TaskType（任务类型，取值示例：add_cluster_cidr、node_upgrade、node_upgrade_ctl等）其中任务类型必传
+	Filter []*Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 表示最新的任务条目，此值为true的话，输出任务列表中只会有最新的一条
+	Latest *bool `json:"Latest,omitnil,omitempty" name:"Latest"`
+}
+
+type DescribeTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 根据filter做过滤，支持ClusterId（取值示例：cls-xxxx）、TaskType（任务类型，取值示例：add_cluster_cidr、node_upgrade、node_upgrade_ctl等）其中任务类型必传
+	Filter []*Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 表示最新的任务条目，此值为true的话，输出任务列表中只会有最新的一条
+	Latest *bool `json:"Latest,omitnil,omitempty" name:"Latest"`
+}
+
+func (r *DescribeTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	delete(f, "Latest")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTasksResponseParams struct {
+	// 任务步骤信息
+	Tasks []*Task `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVersionsRequestParams struct {
 
 }
@@ -14665,6 +14817,23 @@ type Filter struct {
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type Flag struct {
+	// 参数名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 参数类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 参数描述
+	Usage *string `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 参数默认值
+	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
+
+	// 参数可选范围（目前包含range和in两种，"[]"代表range，如"[1, 5]"表示参数必须>=1且 <=5, "()"代表in， 如"('aa', 'bb')"表示参数只能为字符串'aa'或者'bb'，该参数为空表示不校验）
+	Constraint *string `json:"Constraint,omitnil,omitempty" name:"Constraint"`
 }
 
 // Predefined struct for user
@@ -16292,6 +16461,130 @@ func (r *ModifyClusterEndpointSPResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyClusterEndpointSPResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterExtraArgsRequestParams struct {
+	// 目标集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群自定义参数
+	ClusterExtraArgs *ClusterExtraArgs `json:"ClusterExtraArgs,omitnil,omitempty" name:"ClusterExtraArgs"`
+}
+
+type ModifyClusterExtraArgsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目标集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群自定义参数
+	ClusterExtraArgs *ClusterExtraArgs `json:"ClusterExtraArgs,omitnil,omitempty" name:"ClusterExtraArgs"`
+}
+
+func (r *ModifyClusterExtraArgsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterExtraArgsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ClusterExtraArgs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterExtraArgsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterExtraArgsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterExtraArgsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterExtraArgsResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterExtraArgsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterExtraArgsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterExtraArgsTaskStateRequestParams struct {
+	// 集群实例ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 操作类型：
+	// abort 取消并回退任务
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+}
+
+type ModifyClusterExtraArgsTaskStateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 操作类型：
+	// abort 取消并回退任务
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+}
+
+func (r *ModifyClusterExtraArgsTaskStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterExtraArgsTaskStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Operation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterExtraArgsTaskStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterExtraArgsTaskStateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterExtraArgsTaskStateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterExtraArgsTaskStateResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterExtraArgsTaskStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterExtraArgsTaskStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -20163,6 +20456,44 @@ type Taint struct {
 
 	// Effect
 	Effect *string `json:"Effect,omitnil,omitempty" name:"Effect"`
+}
+
+type Task struct {
+	// 任务状态（process(运行中)、pause(暂停)、pausing(暂停中)、paused(已暂停)、done(已完成)、abort(中止)、aborted(已中止)、resume(重新执行)）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeState *string `json:"LifeState,omitnil,omitempty" name:"LifeState"`
+
+	// 任务目标ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObj *string `json:"TargetObj,omitnil,omitempty" name:"TargetObj"`
+
+	// 任务参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Param *string `json:"Param,omitnil,omitempty" name:"Param"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastError *string `json:"LastError,omitnil,omitempty" name:"LastError"`
+
+	// 任务所属集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
+
+	// 任务开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 任务更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// 创建任务唯一请求ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 }
 
 type TaskStepInfo struct {

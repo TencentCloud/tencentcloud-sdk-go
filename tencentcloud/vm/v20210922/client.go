@@ -205,7 +205,7 @@ func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTask
 //
 // 
 //
-// ### 视频文件流调用说明：
+// ### 视频文件调用说明：
 //
 // 
 //
@@ -331,7 +331,7 @@ func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskReq
 //
 // 
 //
-// ### 视频文件流调用说明：
+// ### 视频文件调用说明：
 //
 // 
 //

@@ -344,6 +344,9 @@ const (
 	// 此域名因遭受过大规模 DDoS 攻击，为了保证平台稳定，当前无法接入。
 	OPERATIONDENIED_CDNHOSTHASDDOSRISK = "OperationDenied.CdnHostHasDDosRisk"
 
+	// 您的域名正在顺利升级至EdgeOne平台。在升级期间，您可能暂时无法进行配置修改。
+	OPERATIONDENIED_PRODUCTUPDATING = "OperationDenied.ProductUpdating"
+
 	// 腾讯云CDN已全面升级为边缘安全加速平台
 	OPERATIONDENIED_PRODUCTUPGRADED = "OperationDenied.ProductUpgraded"
 

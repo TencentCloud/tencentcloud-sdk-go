@@ -1,64 +1,70 @@
-# Release v1.1.54
+# Release v1.1.55
 
-## 日志服务(cls) 版本：2020-10-16
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 139 次发布
+### 第 140 次发布
 
-发布时间：2025-11-12 01:14:43
+发布时间：2025-11-13 01:14:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [CreateDataTransform](https://cloud.tencent.com/document/api/614/72184)
+* [Listener](https://cloud.tencent.com/document/api/214/30694#Listener)
 
-	* 新增入参：BackupGiveUpData, HasServicesLog, ProcessFromTimestamp, ProcessToTimestamp, TaskId, DataTransformSqlDataSources, EnvInfos
+	* 新增成员：RescheduleStartTime
 
-* [ModifyDataTransform](https://cloud.tencent.com/document/api/614/72181)
 
-	* 新增入参：BackupGiveUpData, KeepFailureLog, FailureLogKey, DataTransformSqlDataSources, EnvInfos
 
+
+## 腾讯云数据分析智能体(dataagent) 版本：2025-05-13
+
+### 第 2 次发布
+
+发布时间：2025-11-13 01:17:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChatAI](https://cloud.tencent.com/document/api/1800/125015)
+* [CreateDataAgentSession](https://cloud.tencent.com/document/api/1800/125014)
+* [DeleteChunk](https://cloud.tencent.com/document/api/1800/125009)
+* [DeleteDataAgentSession](https://cloud.tencent.com/document/api/1800/125013)
+* [GetKnowledgeBaseList](https://cloud.tencent.com/document/api/1800/125005)
+* [GetSessionDetails](https://cloud.tencent.com/document/api/1800/125012)
+* [ModifyChunk](https://cloud.tencent.com/document/api/1800/125008)
+* [ModifyKnowledgeBase](https://cloud.tencent.com/document/api/1800/125004)
+* [QueryChunkList](https://cloud.tencent.com/document/api/1800/125007)
+* [StopChatAI](https://cloud.tencent.com/document/api/1800/125011)
 
 新增数据结构：
 
-* [DataTransformSqlDataSource](https://cloud.tencent.com/document/api/614/56471#DataTransformSqlDataSource)
-* [EnvInfo](https://cloud.tencent.com/document/api/614/56471#EnvInfo)
+* [KnowledgeBase](https://cloud.tencent.com/document/api/1800/125016#KnowledgeBase)
 
-修改数据结构：
+### 第 1 次发布
 
-* [DataTransformTaskInfo](https://cloud.tencent.com/document/api/614/56471#DataTransformTaskInfo)
+发布时间：2025-11-12 11:02:59
 
-	* 新增成员：BackupTopicID, BackupGiveUpData, HasServicesLog, TaskDstCount, ProcessFromTimestamp, ProcessToTimestamp, DataTransformSqlDataSources, EnvInfos
+本次发布包含了以下内容：
 
+改善已有的文档。
+
+新增接口：
+
+* [AddChunk](https://cloud.tencent.com/document/api/1800/124923)
 
 
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 123 次发布
+### 第 124 次发布
 
-发布时间：2025-11-12 01:20:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [NodeSpecDisk](https://cloud.tencent.com/document/api/589/33981#NodeSpecDisk)
-
-	* 新增成员：IsSpecialDisk
-
-
-
-
-## 云游戏(gs) 版本：2019-11-18
-
-### 第 57 次发布
-
-发布时间：2025-11-12 01:23:15
+发布时间：2025-11-13 01:21:00
 
 本次发布包含了以下内容：
 
@@ -66,85 +72,55 @@
 
 修改接口：
 
-* [CreateAndroidInstancesAccessToken](https://cloud.tencent.com/document/api/1162/119708)
+* [ModifyUserGroup](https://cloud.tencent.com/document/api/589/118726)
 
-	* 新增入参：Mode, UserIP
-
-
-
-
-## iOA 零信任安全管理系统(ioa) 版本：2022-06-01
-
-### 第 29 次发布
-
-发布时间：2025-11-12 01:24:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DeviceDetail](https://cloud.tencent.com/document/api/1092/102488#DeviceDetail)
-
-	* 新增成员：ScreenRecordingPermission, DiskAccessPermission
+	* 新增入参：InstanceId
 
 
 
 
-## 媒体处理(mps) 版本：2019-06-12
+## 消息队列 MQTT 版(mqtt) 版本：2024-05-16
 
-### 第 156 次发布
+### 第 22 次发布
 
-发布时间：2025-11-12 01:36:01
+发布时间：2025-11-13 11:53:00
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateStreamLinkFlow](https://cloud.tencent.com/document/api/862/82445)
-
-	* <font color="#dd0000">**修改入参**：</font>OutputGroup
-
-
-修改数据结构：
-
-* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput)
-
-	* 新增成员：KeyPTSList
+* [KickOutClient](https://cloud.tencent.com/document/api/1778/125024)
 
 
 
+## 容器服务(tke) 版本：2022-05-01
 
-## 私有网络(vpc) 版本：2017-03-12
 
-### 第 274 次发布
 
-发布时间：2025-11-12 02:30:40
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 208 次发布
+
+发布时间：2025-11-13 02:14:28
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
+* [DescribeClusterAvailableExtraArgs](https://cloud.tencent.com/document/api/457/125021)
+* [DescribeTasks](https://cloud.tencent.com/document/api/457/125020)
+* [ModifyClusterExtraArgs](https://cloud.tencent.com/document/api/457/125019)
+* [ModifyClusterExtraArgsTaskState](https://cloud.tencent.com/document/api/457/125018)
 
-	* 新增入参：IPChargeType
+新增数据结构：
 
-* [InquiryPriceAllocateAddresses](https://cloud.tencent.com/document/api/215/114855)
-
-	* 新增入参：IPChargeType
-
-
-修改数据结构：
-
-* [InternetPrice](https://cloud.tencent.com/document/api/215/15824#InternetPrice)
-
-	* 新增成员：IPPrice, OriginalPrice, DiscountPrice
-
+* [AvailableExtraArgs](https://cloud.tencent.com/document/api/457/31866#AvailableExtraArgs)
+* [Flag](https://cloud.tencent.com/document/api/457/31866#Flag)
+* [Task](https://cloud.tencent.com/document/api/457/31866#Task)
 
 
 

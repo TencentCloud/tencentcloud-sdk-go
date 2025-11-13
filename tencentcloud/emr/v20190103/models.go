@@ -9448,6 +9448,9 @@ func (r *ModifySLInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserGroupRequestParams struct {
+	// 集群字符串ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
 	// 用户信息列表
 	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
 
@@ -9464,6 +9467,9 @@ type ModifyUserGroupRequestParams struct {
 type ModifyUserGroupRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群字符串ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
 	// 用户信息列表
 	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
 
@@ -9489,6 +9495,7 @@ func (r *ModifyUserGroupRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceId")
 	delete(f, "Users")
 	delete(f, "UserGroup")
 	delete(f, "Groups")
