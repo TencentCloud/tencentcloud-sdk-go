@@ -34,9 +34,9 @@ func getTimestamp() int64 {
 	return lastTimestamp
 }
 
-type mockMetadataTransport struct{}
+type camMockRoundTripper struct{}
 
-func (m *mockMetadataTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+func (m *camMockRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) {
 	url := req.URL.String()
 
 	if strings.HasSuffix(url, "/cam/security-credentials/") {
@@ -85,11 +85,9 @@ func (m *mockMetadataTransport) RoundTrip(req *http.Request) (*http.Response, er
 }
 
 func TestRoleArnCredentialConcurrent(t *testing.T) {
-	backup := http.DefaultTransport
-	t.Cleanup(func() {
-		http.DefaultTransport = backup
-	})
-	http.DefaultTransport = &mockMetadataTransport{}
+	hook := installHttpHook()
+	t.Cleanup(hook.Uninstall)
+	hook.RoundTripper = &camMockRoundTripper{}
 
 	provider := common.DefaultRoleArnProvider("example#test#123456", "example#test#123456", "mock-role-arn")
 	credIface, err := provider.GetCredential()
@@ -133,11 +131,9 @@ func TestRoleArnCredentialConcurrent(t *testing.T) {
 }
 
 func TestCvmRoleCredentialConcurrent(t *testing.T) {
-	backup := http.DefaultTransport
-	t.Cleanup(func() {
-		http.DefaultTransport = backup
-	})
-	http.DefaultTransport = &mockMetadataTransport{}
+	hook := installHttpHook()
+	t.Cleanup(hook.Uninstall)
+	hook.RoundTripper = &camMockRoundTripper{}
 
 	provider := common.DefaultCvmRoleProvider()
 	credIface, err := provider.GetCredential()
@@ -181,11 +177,9 @@ func TestCvmRoleCredentialConcurrent(t *testing.T) {
 }
 
 func TestOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
-	backup := http.DefaultTransport
-	t.Cleanup(func() {
-		http.DefaultTransport = backup
-	})
-	http.DefaultTransport = &mockMetadataTransport{}
+	hook := installHttpHook()
+	t.Cleanup(hook.Uninstall)
+	hook.RoundTripper = &camMockRoundTripper{}
 
 	provider := common.NewOIDCRoleArnProvider("ap-guangzhou", "mock-provider-id",
 		"mock-token", "mock-role-arn", "mock-role-session-name", 7200)
@@ -231,6 +225,10 @@ func TestOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
 }
 
 func TestTkeOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
+	hook := installHttpHook()
+	t.Cleanup(hook.Uninstall)
+	hook.RoundTripper = &camMockRoundTripper{}
+
 	tmpFile, err := os.CreateTemp("", "mock-token-*.txt")
 	if err != nil {
 		t.Fatalf("failed to create temp token file: %v", err)
@@ -243,12 +241,6 @@ func TestTkeOIDCRoleArnProviderConcurrentSafeRefresh(t *testing.T) {
 	os.Setenv("TKE_PROVIDER_ID", "mock-provider-id")
 	os.Setenv("TKE_WEB_IDENTITY_TOKEN_FILE", tmpFile.Name())
 	os.Setenv("TKE_ROLE_ARN", "mock-role-arn")
-
-	backup := http.DefaultTransport
-	t.Cleanup(func() {
-		http.DefaultTransport = backup
-	})
-	http.DefaultTransport = &mockMetadataTransport{}
 
 	provider, err := common.DefaultTkeOIDCRoleArnProvider()
 	if err != nil {

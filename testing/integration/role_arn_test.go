@@ -25,3 +25,24 @@ func TestRoleArnProvider(t *testing.T) {
 	}
 	t.Fatalf("unexpected error: %s", e)
 }
+
+func TestRoleArnProviderEndpoint(t *testing.T) {
+	hook := installHttpHook()
+	t.Cleanup(hook.Uninstall)
+
+	sKey := "skey"
+	sId := "sid"
+	roleArn := "qcs::cam::uin/123456:roleName/test"
+	ep := "sts.internal.tencentcloudapi.com"
+
+	pc := common.DefaultRoleArnProvider(sKey, sId, roleArn)
+	pc.Endpoint = ep
+	_, e := pc.GetCredential()
+	if hook.Reqs[0].Host != ep {
+		t.Fatalf("unexpected request host: %s", hook.Reqs[0].Host)
+	}
+
+	if e == nil {
+		t.Fatal("unexpected success")
+	}
+}
