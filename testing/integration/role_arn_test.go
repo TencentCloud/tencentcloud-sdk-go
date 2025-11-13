@@ -33,7 +33,7 @@ func TestRoleArnProviderEndpoint(t *testing.T) {
 	sKey := "skey"
 	sId := "sid"
 	roleArn := "qcs::cam::uin/123456:roleName/test"
-	ep := "sts.internal.tencentcloudapi.com"
+	ep := "sts.ap-guangzhou.tencentcloudapi.com"
 
 	pc := common.DefaultRoleArnProvider(sKey, sId, roleArn)
 	pc.Endpoint = ep
