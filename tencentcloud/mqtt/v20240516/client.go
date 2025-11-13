@@ -2405,56 +2405,6 @@ func (c *Client) DescribeUserListWithContext(ctx context.Context, request *Descr
     return
 }
 
-func NewKickOutClientRequest() (request *KickOutClientRequest) {
-    request = &KickOutClientRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("mqtt", APIVersion, "KickOutClient")
-    
-    
-    return
-}
-
-func NewKickOutClientResponse() (response *KickOutClientResponse) {
-    response = &KickOutClientResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// KickOutClient
-// 踢出客户端
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-func (c *Client) KickOutClient(request *KickOutClientRequest) (response *KickOutClientResponse, err error) {
-    return c.KickOutClientWithContext(context.Background(), request)
-}
-
-// KickOutClient
-// 踢出客户端
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-func (c *Client) KickOutClientWithContext(ctx context.Context, request *KickOutClientRequest) (response *KickOutClientResponse, err error) {
-    if request == nil {
-        request = NewKickOutClientRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "KickOutClient")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("KickOutClient require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewKickOutClientResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyAuthorizationPolicyRequest() (request *ModifyAuthorizationPolicyRequest) {
     request = &ModifyAuthorizationPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
