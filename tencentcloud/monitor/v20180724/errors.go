@@ -32,6 +32,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 云产品侧指标回调接口异常
+	FAILEDOPERATION_APITRANSLATEERROR = "FailedOperation.APITranslateError"
+
 	// 访问STS失败。
 	FAILEDOPERATION_ACCESSSTSFAIL = "FailedOperation.AccessSTSFail"
 

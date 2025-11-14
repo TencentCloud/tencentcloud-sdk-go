@@ -400,6 +400,10 @@ type BiddingSuccessfulResult struct {
 	// 支付结束时间
 	// 格式:YYYY-MM-DD HH:mm:ss
 	PayEndTime *string `json:"PayEndTime,omitnil,omitempty" name:"PayEndTime"`
+
+	// 交割时间
+	// 格式:YYYY-MM-DD HH:mm:ss
+	ModifyOwnerEndTime *string `json:"ModifyOwnerEndTime,omitnil,omitempty" name:"ModifyOwnerEndTime"`
 }
 
 type CertificateInfo struct {
@@ -2106,6 +2110,10 @@ type DescribeBiddingSuccessfulDetailResponseParams struct {
 
 	// 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 交割时间
+	// 格式:YYYY-MM-DD HH:mm:ss
+	ModifyOwnerEndTime *string `json:"ModifyOwnerEndTime,omitnil,omitempty" name:"ModifyOwnerEndTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

@@ -2225,6 +2225,62 @@ func (c *Client) DescribeAclsWithContext(ctx context.Context, request *DescribeA
     return
 }
 
+func NewDescribeAssetSyncFlagRequest() (request *DescribeAssetSyncFlagRequest) {
+    request = &DescribeAssetSyncFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeAssetSyncFlag")
+    
+    
+    return
+}
+
+func NewDescribeAssetSyncFlagResponse() (response *DescribeAssetSyncFlagResponse) {
+    response = &DescribeAssetSyncFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAssetSyncFlag
+// 查询资产自动同步开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetSyncFlag(request *DescribeAssetSyncFlagRequest) (response *DescribeAssetSyncFlagResponse, err error) {
+    return c.DescribeAssetSyncFlagWithContext(context.Background(), request)
+}
+
+// DescribeAssetSyncFlag
+// 查询资产自动同步开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetSyncFlagWithContext(ctx context.Context, request *DescribeAssetSyncFlagRequest) (response *DescribeAssetSyncFlagResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetSyncFlagRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DescribeAssetSyncFlag")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetSyncFlag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetSyncFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetSyncStatusRequest() (request *DescribeAssetSyncStatusRequest) {
     request = &DescribeAssetSyncStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3047,6 +3103,62 @@ func (c *Client) DescribeResourcesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeSecuritySettingRequest() (request *DescribeSecuritySettingRequest) {
+    request = &DescribeSecuritySettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeSecuritySetting")
+    
+    
+    return
+}
+
+func NewDescribeSecuritySettingResponse() (response *DescribeSecuritySettingResponse) {
+    response = &DescribeSecuritySettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSecuritySetting
+// 查询安全配置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSecuritySetting(request *DescribeSecuritySettingRequest) (response *DescribeSecuritySettingResponse, err error) {
+    return c.DescribeSecuritySettingWithContext(context.Background(), request)
+}
+
+// DescribeSecuritySetting
+// 查询安全配置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSecuritySettingWithContext(ctx context.Context, request *DescribeSecuritySettingRequest) (response *DescribeSecuritySettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecuritySettingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DescribeSecuritySetting")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecuritySetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecuritySettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserGroupMembersRequest() (request *DescribeUserGroupMembersRequest) {
     request = &DescribeUserGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3221,6 +3333,212 @@ func (c *Client) DescribeUsersWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDisableExternalAccessRequest() (request *DisableExternalAccessRequest) {
+    request = &DisableExternalAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DisableExternalAccess")
+    
+    
+    return
+}
+
+func NewDisableExternalAccessResponse() (response *DisableExternalAccessResponse) {
+    response = &DisableExternalAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableExternalAccess
+// 关闭公网访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DisableExternalAccess(request *DisableExternalAccessRequest) (response *DisableExternalAccessResponse, err error) {
+    return c.DisableExternalAccessWithContext(context.Background(), request)
+}
+
+// DisableExternalAccess
+// 关闭公网访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DisableExternalAccessWithContext(ctx context.Context, request *DisableExternalAccessRequest) (response *DisableExternalAccessResponse, err error) {
+    if request == nil {
+        request = NewDisableExternalAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DisableExternalAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableExternalAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableExternalAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableIntranetAccessRequest() (request *DisableIntranetAccessRequest) {
+    request = &DisableIntranetAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DisableIntranetAccess")
+    
+    
+    return
+}
+
+func NewDisableIntranetAccessResponse() (response *DisableIntranetAccessResponse) {
+    response = &DisableIntranetAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableIntranetAccess
+// 关闭内网访问
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DisableIntranetAccess(request *DisableIntranetAccessRequest) (response *DisableIntranetAccessResponse, err error) {
+    return c.DisableIntranetAccessWithContext(context.Background(), request)
+}
+
+// DisableIntranetAccess
+// 关闭内网访问
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DisableIntranetAccessWithContext(ctx context.Context, request *DisableIntranetAccessRequest) (response *DisableIntranetAccessResponse, err error) {
+    if request == nil {
+        request = NewDisableIntranetAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DisableIntranetAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableIntranetAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableIntranetAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableExternalAccessRequest() (request *EnableExternalAccessRequest) {
+    request = &EnableExternalAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "EnableExternalAccess")
+    
+    
+    return
+}
+
+func NewEnableExternalAccessResponse() (response *EnableExternalAccessResponse) {
+    response = &EnableExternalAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableExternalAccess
+// 开启公网访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) EnableExternalAccess(request *EnableExternalAccessRequest) (response *EnableExternalAccessResponse, err error) {
+    return c.EnableExternalAccessWithContext(context.Background(), request)
+}
+
+// EnableExternalAccess
+// 开启公网访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) EnableExternalAccessWithContext(ctx context.Context, request *EnableExternalAccessRequest) (response *EnableExternalAccessResponse, err error) {
+    if request == nil {
+        request = NewEnableExternalAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "EnableExternalAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableExternalAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableExternalAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableIntranetAccessRequest() (request *EnableIntranetAccessRequest) {
+    request = &EnableIntranetAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "EnableIntranetAccess")
+    
+    
+    return
+}
+
+func NewEnableIntranetAccessResponse() (response *EnableIntranetAccessResponse) {
+    response = &EnableIntranetAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableIntranetAccess
+// 开通内网访问
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+func (c *Client) EnableIntranetAccess(request *EnableIntranetAccessRequest) (response *EnableIntranetAccessResponse, err error) {
+    return c.EnableIntranetAccessWithContext(context.Background(), request)
+}
+
+// EnableIntranetAccess
+// 开通内网访问
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+func (c *Client) EnableIntranetAccessWithContext(ctx context.Context, request *EnableIntranetAccessRequest) (response *EnableIntranetAccessResponse, err error) {
+    if request == nil {
+        request = NewEnableIntranetAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "EnableIntranetAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableIntranetAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableIntranetAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImportExternalDeviceRequest() (request *ImportExternalDeviceRequest) {
     request = &ImportExternalDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3307,6 +3625,274 @@ func (c *Client) ImportExternalDeviceWithContext(ctx context.Context, request *I
     return
 }
 
+func NewModifyAccessWhiteListAutoStatusRequest() (request *ModifyAccessWhiteListAutoStatusRequest) {
+    request = &ModifyAccessWhiteListAutoStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "ModifyAccessWhiteListAutoStatus")
+    
+    
+    return
+}
+
+func NewModifyAccessWhiteListAutoStatusResponse() (response *ModifyAccessWhiteListAutoStatusResponse) {
+    response = &ModifyAccessWhiteListAutoStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAccessWhiteListAutoStatus
+// 修改访问白名单自动添加IP状态：开启或关闭自动添加IP
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAccessWhiteListAutoStatus(request *ModifyAccessWhiteListAutoStatusRequest) (response *ModifyAccessWhiteListAutoStatusResponse, err error) {
+    return c.ModifyAccessWhiteListAutoStatusWithContext(context.Background(), request)
+}
+
+// ModifyAccessWhiteListAutoStatus
+// 修改访问白名单自动添加IP状态：开启或关闭自动添加IP
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAccessWhiteListAutoStatusWithContext(ctx context.Context, request *ModifyAccessWhiteListAutoStatusRequest) (response *ModifyAccessWhiteListAutoStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessWhiteListAutoStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "ModifyAccessWhiteListAutoStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccessWhiteListAutoStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccessWhiteListAutoStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccessWhiteListRuleRequest() (request *ModifyAccessWhiteListRuleRequest) {
+    request = &ModifyAccessWhiteListRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "ModifyAccessWhiteListRule")
+    
+    
+    return
+}
+
+func NewModifyAccessWhiteListRuleResponse() (response *ModifyAccessWhiteListRuleResponse) {
+    response = &ModifyAccessWhiteListRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAccessWhiteListRule
+// 修改访问白名单规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAccessWhiteListRule(request *ModifyAccessWhiteListRuleRequest) (response *ModifyAccessWhiteListRuleResponse, err error) {
+    return c.ModifyAccessWhiteListRuleWithContext(context.Background(), request)
+}
+
+// ModifyAccessWhiteListRule
+// 修改访问白名单规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAccessWhiteListRuleWithContext(ctx context.Context, request *ModifyAccessWhiteListRuleRequest) (response *ModifyAccessWhiteListRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessWhiteListRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "ModifyAccessWhiteListRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccessWhiteListRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccessWhiteListRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccessWhiteListStatusRequest() (request *ModifyAccessWhiteListStatusRequest) {
+    request = &ModifyAccessWhiteListStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "ModifyAccessWhiteListStatus")
+    
+    
+    return
+}
+
+func NewModifyAccessWhiteListStatusResponse() (response *ModifyAccessWhiteListStatusResponse) {
+    response = &ModifyAccessWhiteListStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAccessWhiteListStatus
+// 修改访问白名单状态：开启或关闭放开全部来源IP。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAccessWhiteListStatus(request *ModifyAccessWhiteListStatusRequest) (response *ModifyAccessWhiteListStatusResponse, err error) {
+    return c.ModifyAccessWhiteListStatusWithContext(context.Background(), request)
+}
+
+// ModifyAccessWhiteListStatus
+// 修改访问白名单状态：开启或关闭放开全部来源IP。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAccessWhiteListStatusWithContext(ctx context.Context, request *ModifyAccessWhiteListStatusRequest) (response *ModifyAccessWhiteListStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessWhiteListStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "ModifyAccessWhiteListStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccessWhiteListStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccessWhiteListStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAclRequest() (request *ModifyAclRequest) {
     request = &ModifyAclRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3385,6 +3971,142 @@ func (c *Client) ModifyAclWithContext(ctx context.Context, request *ModifyAclReq
     return
 }
 
+func NewModifyAssetSyncFlagRequest() (request *ModifyAssetSyncFlagRequest) {
+    request = &ModifyAssetSyncFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "ModifyAssetSyncFlag")
+    
+    
+    return
+}
+
+func NewModifyAssetSyncFlagResponse() (response *ModifyAssetSyncFlagResponse) {
+    response = &ModifyAssetSyncFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAssetSyncFlag
+// 修改资产自动同步开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAssetSyncFlag(request *ModifyAssetSyncFlagRequest) (response *ModifyAssetSyncFlagResponse, err error) {
+    return c.ModifyAssetSyncFlagWithContext(context.Background(), request)
+}
+
+// ModifyAssetSyncFlag
+// 修改资产自动同步开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAssetSyncFlagWithContext(ctx context.Context, request *ModifyAssetSyncFlagRequest) (response *ModifyAssetSyncFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyAssetSyncFlagRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "ModifyAssetSyncFlag")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAssetSyncFlag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAssetSyncFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAuthModeSettingRequest() (request *ModifyAuthModeSettingRequest) {
+    request = &ModifyAuthModeSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "ModifyAuthModeSetting")
+    
+    
+    return
+}
+
+func NewModifyAuthModeSettingResponse() (response *ModifyAuthModeSettingResponse) {
+    response = &ModifyAuthModeSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAuthModeSetting
+// 修改认证方式配置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyAuthModeSetting(request *ModifyAuthModeSettingRequest) (response *ModifyAuthModeSettingResponse, err error) {
+    return c.ModifyAuthModeSettingWithContext(context.Background(), request)
+}
+
+// ModifyAuthModeSetting
+// 修改认证方式配置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyAuthModeSettingWithContext(ctx context.Context, request *ModifyAuthModeSettingRequest) (response *ModifyAuthModeSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyAuthModeSettingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "ModifyAuthModeSetting")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAuthModeSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAuthModeSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyChangePwdTaskRequest() (request *ModifyChangePwdTaskRequest) {
     request = &ModifyChangePwdTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3408,21 +4130,9 @@ func NewModifyChangePwdTaskResponse() (response *ModifyChangePwdTaskResponse) {
 // 更新修改密码任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
-//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyChangePwdTask(request *ModifyChangePwdTaskRequest) (response *ModifyChangePwdTaskResponse, err error) {
     return c.ModifyChangePwdTaskWithContext(context.Background(), request)
 }
@@ -3431,21 +4141,9 @@ func (c *Client) ModifyChangePwdTask(request *ModifyChangePwdTaskRequest) (respo
 // 更新修改密码任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
-//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyChangePwdTaskWithContext(ctx context.Context, request *ModifyChangePwdTaskRequest) (response *ModifyChangePwdTaskResponse, err error) {
     if request == nil {
         request = NewModifyChangePwdTaskRequest()
@@ -3951,6 +4649,62 @@ func (c *Client) ModifyOperationTaskWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyOperationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyReconnectionSettingRequest() (request *ModifyReconnectionSettingRequest) {
+    request = &ModifyReconnectionSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "ModifyReconnectionSetting")
+    
+    
+    return
+}
+
+func NewModifyReconnectionSettingResponse() (response *ModifyReconnectionSettingResponse) {
+    response = &ModifyReconnectionSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyReconnectionSetting
+// 修改运维资产连接重连次数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyReconnectionSetting(request *ModifyReconnectionSettingRequest) (response *ModifyReconnectionSettingResponse, err error) {
+    return c.ModifyReconnectionSettingWithContext(context.Background(), request)
+}
+
+// ModifyReconnectionSetting
+// 修改运维资产连接重连次数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyReconnectionSettingWithContext(ctx context.Context, request *ModifyReconnectionSettingRequest) (response *ModifyReconnectionSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyReconnectionSettingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "ModifyReconnectionSetting")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyReconnectionSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyReconnectionSettingResponse()
     err = c.Send(request, response)
     return
 }

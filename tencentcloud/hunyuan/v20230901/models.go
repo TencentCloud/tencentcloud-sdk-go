@@ -652,7 +652,7 @@ type Content struct {
 	// 内容类型
 	// 注意：
 	// 需包含至少一个 Type 为"text"的参数。
-	// 参数值可选范围：[text", "image_url"]
+	// 参数值可选范围：[text", "image_url","video_url"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -664,6 +664,14 @@ type Content struct {
 	// 如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64," 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"。当 Type 为 text 时，当前字段内容需保持为空，传递内容不生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrl *ImageUrl `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 当type为video_url时使用，标识具体的视频链接内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoUrl *VideoUrl `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
+
+	// 当type为video_frames时使用，标识具体的视频内图像帧内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoFrames *VideoFrames `json:"VideoFrames,omitnil,omitempty" name:"VideoFrames"`
 }
 
 // Predefined struct for user
@@ -2907,6 +2915,19 @@ type UserLocation struct {
 
 	// 用户近似位置的详细信息
 	Approximate *Approximate `json:"Approximate,omitnil,omitempty" name:"Approximate"`
+}
+
+type VideoFrames struct {
+	// 视频图像帧列表，图像帧传url
+	Frames []*string `json:"Frames,omitnil,omitempty" name:"Frames"`
+}
+
+type VideoUrl struct {
+	// 视频的url，如"https://your-video-path.mp/4"
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 控制视频抽帧频率，取值范围为 0.1 ~5，表示每隔 1/fps 秒抽取一帧，默认为 1s抽取一帧
+	Fps *float64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 }
 
 type WebSearchOptions struct {

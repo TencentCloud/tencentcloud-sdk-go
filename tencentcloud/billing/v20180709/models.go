@@ -7184,6 +7184,9 @@ type DescribeBillSummaryRequestParams struct {
 
 	// 标签键，GroupType=tag获取标签维度账单时传
 	TagKey []*string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
 }
 
 type DescribeBillSummaryRequest struct {
@@ -7197,6 +7200,9 @@ type DescribeBillSummaryRequest struct {
 
 	// 标签键，GroupType=tag获取标签维度账单时传
 	TagKey []*string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
 }
 
 func (r *DescribeBillSummaryRequest) ToJsonString() string {
@@ -7214,6 +7220,7 @@ func (r *DescribeBillSummaryRequest) FromJsonString(s string) error {
 	delete(f, "Month")
 	delete(f, "GroupType")
 	delete(f, "TagKey")
+	delete(f, "OperateUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillSummaryRequest has unknown keys!", "")
 	}

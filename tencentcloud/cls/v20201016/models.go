@@ -665,6 +665,9 @@ type CheckRechargeKafkaServerRequestParams struct {
 
 	// 加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 用户kafka拓展信息
+	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 type CheckRechargeKafkaServerRequest struct {
@@ -688,6 +691,9 @@ type CheckRechargeKafkaServerRequest struct {
 
 	// 加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 用户kafka拓展信息
+	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 func (r *CheckRechargeKafkaServerRequest) ToJsonString() string {
@@ -707,6 +713,7 @@ func (r *CheckRechargeKafkaServerRequest) FromJsonString(s string) error {
 	delete(f, "ServerAddr")
 	delete(f, "IsEncryptionAddr")
 	delete(f, "Protocol")
+	delete(f, "UserKafkaMeta")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckRechargeKafkaServerRequest has unknown keys!", "")
 	}
@@ -1043,6 +1050,9 @@ type ConfigInfo struct {
 	// 
 	// 控制台默认占位值：`{\"ClsAgentDefault\":0}`
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+
+	// 日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
 }
 
 type ConsoleSharingConfig struct {
@@ -2264,6 +2274,9 @@ type CreateConfigRequestParams struct {
 	// 
 	// 控制台默认占位值：`{\"ClsAgentDefault\":0}`
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+
+	// 日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
 }
 
 type CreateConfigRequest struct {
@@ -2311,6 +2324,9 @@ type CreateConfigRequest struct {
 	// 
 	// 控制台默认占位值：`{\"ClsAgentDefault\":0}`
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+
+	// 日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
 }
 
 func (r *CreateConfigRequest) ToJsonString() string {
@@ -2333,6 +2349,7 @@ func (r *CreateConfigRequest) FromJsonString(s string) error {
 	delete(f, "ExcludePaths")
 	delete(f, "UserDefineRule")
 	delete(f, "AdvancedConfig")
+	delete(f, "InputType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConfigRequest has unknown keys!", "")
 	}
@@ -3321,6 +3338,9 @@ type CreateKafkaRechargeRequestParams struct {
 	// 用户Kafka消费组名称。
 	// - 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
+
+	// 用户kafka拓展信息
+	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 type CreateKafkaRechargeRequest struct {
@@ -3363,6 +3383,9 @@ type CreateKafkaRechargeRequest struct {
 	// 用户Kafka消费组名称。
 	// - 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
+
+	// 用户kafka拓展信息
+	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 func (r *CreateKafkaRechargeRequest) ToJsonString() string {
@@ -3388,6 +3411,7 @@ func (r *CreateKafkaRechargeRequest) FromJsonString(s string) error {
 	delete(f, "IsEncryptionAddr")
 	delete(f, "Protocol")
 	delete(f, "ConsumerGroupName")
+	delete(f, "UserKafkaMeta")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKafkaRechargeRequest has unknown keys!", "")
 	}
@@ -9938,6 +9962,9 @@ type KafkaRechargeInfo struct {
 
 	// 日志导入规则
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
+
+	// 用户kafka拓展信息
+	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 type KeyRegexInfo struct {
@@ -10172,11 +10199,15 @@ type LogRechargeRuleInfo struct {
 	// 元数据信息，Kafka导入支持kafka_topic,kafka_partition,kafka_offset,kafka_timestamp
 	Metadata []*string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// 日志Key列表，RechargeType为full_regex_log时必填
+	// 日志Key列表，RechargeType为full_regex_log、delimiter_log时必填
 	Keys []*string `json:"Keys,omitnil,omitempty" name:"Keys"`
 
 	// json解析模式，开启首层数据解析
 	ParseArray *bool `json:"ParseArray,omitnil,omitempty" name:"ParseArray"`
+
+	// 分隔符解析模式-分隔符
+	// 当解析格式为分隔符提取时，该字段必填
+	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
 }
 
 type LogsetInfo struct {
@@ -11243,6 +11274,9 @@ type ModifyConfigRequestParams struct {
 	// 样例：
 	// `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+
+	// 日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
 }
 
 type ModifyConfigRequest struct {
@@ -11292,6 +11326,9 @@ type ModifyConfigRequest struct {
 	// 样例：
 	// `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+
+	// 日志输入类型，支持file、window_event、syslog、k8s_stdout、k8s_file
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
 }
 
 func (r *ModifyConfigRequest) ToJsonString() string {
@@ -11315,6 +11352,7 @@ func (r *ModifyConfigRequest) FromJsonString(s string) error {
 	delete(f, "Output")
 	delete(f, "UserDefineRule")
 	delete(f, "AdvancedConfig")
+	delete(f, "InputType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConfigRequest has unknown keys!", "")
 	}
@@ -12144,6 +12182,9 @@ type ModifyKafkaRechargeRequestParams struct {
 
 	// 导入控制，1：暂停；2：启动。
 	StatusControl *uint64 `json:"StatusControl,omitnil,omitempty" name:"StatusControl"`
+
+	// 用户kafka拓展信息
+	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 type ModifyKafkaRechargeRequest struct {
@@ -12191,6 +12232,9 @@ type ModifyKafkaRechargeRequest struct {
 
 	// 导入控制，1：暂停；2：启动。
 	StatusControl *uint64 `json:"StatusControl,omitnil,omitempty" name:"StatusControl"`
+
+	// 用户kafka拓展信息
+	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 func (r *ModifyKafkaRechargeRequest) ToJsonString() string {
@@ -12217,6 +12261,7 @@ func (r *ModifyKafkaRechargeRequest) FromJsonString(s string) error {
 	delete(f, "ConsumerGroupName")
 	delete(f, "LogRechargeRule")
 	delete(f, "StatusControl")
+	delete(f, "UserKafkaMeta")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKafkaRechargeRequest has unknown keys!", "")
 	}
@@ -13472,6 +13517,9 @@ type PreviewKafkaRechargeRequestParams struct {
 
 	// 日志导入规则
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
+
+	// 用户kafka拓展信息
+	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 type PreviewKafkaRechargeRequest struct {
@@ -13513,6 +13561,9 @@ type PreviewKafkaRechargeRequest struct {
 
 	// 日志导入规则
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
+
+	// 用户kafka拓展信息
+	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 func (r *PreviewKafkaRechargeRequest) ToJsonString() string {
@@ -13537,6 +13588,7 @@ func (r *PreviewKafkaRechargeRequest) FromJsonString(s string) error {
 	delete(f, "Protocol")
 	delete(f, "ConsumerGroupName")
 	delete(f, "LogRechargeRule")
+	delete(f, "UserKafkaMeta")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PreviewKafkaRechargeRequest has unknown keys!", "")
 	}
@@ -14852,6 +14904,22 @@ func (r *UploadLogResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UploadLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UserKafkaMeta struct {
+	// 用户kafka version
+	// 支持如下版本：
+	//   - 0.10.2.0
+	//   - 1.0.0
+	//   - 2.0.0
+	//   - 2.2.0
+	//   - 2.4.0
+	//   - 2.6.0
+	//   - 2.7.0
+	//   - 2.8.0
+	//   - 3.0.0
+	//   - 3.2.0
+	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 }
 
 type ValueInfo struct {

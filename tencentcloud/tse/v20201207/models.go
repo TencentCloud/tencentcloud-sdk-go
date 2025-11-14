@@ -2994,6 +2994,95 @@ func (r *CreateNativeGatewayServiceSourceResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type CreateOrModifyCloudNativeAPIGatewayIPRestrictionRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 访问控制插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 是否启用插件
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 访问控制类型：whiteList｜blackList
+	RestrictionType *string `json:"RestrictionType,omitnil,omitempty" name:"RestrictionType"`
+
+	// cidr｜ip
+	AddressList []*string `json:"AddressList,omitnil,omitempty" name:"AddressList"`
+}
+
+type CreateOrModifyCloudNativeAPIGatewayIPRestrictionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 访问控制插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 是否启用插件
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 访问控制类型：whiteList｜blackList
+	RestrictionType *string `json:"RestrictionType,omitnil,omitempty" name:"RestrictionType"`
+
+	// cidr｜ip
+	AddressList []*string `json:"AddressList,omitnil,omitempty" name:"AddressList"`
+}
+
+func (r *CreateOrModifyCloudNativeAPIGatewayIPRestrictionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrModifyCloudNativeAPIGatewayIPRestrictionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "SourceType")
+	delete(f, "SourceId")
+	delete(f, "Enabled")
+	delete(f, "RestrictionType")
+	delete(f, "AddressList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrModifyCloudNativeAPIGatewayIPRestrictionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrModifyCloudNativeAPIGatewayIPRestrictionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOrModifyCloudNativeAPIGatewayIPRestrictionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOrModifyCloudNativeAPIGatewayIPRestrictionResponseParams `json:"Response"`
+}
+
+func (r *CreateOrModifyCloudNativeAPIGatewayIPRestrictionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrModifyCloudNativeAPIGatewayIPRestrictionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOrUpdateConfigFileAndReleaseRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3339,6 +3428,74 @@ func (r *DeleteCloudNativeAPIGatewayCertificateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCloudNativeAPIGatewayCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudNativeAPIGatewayIPRestrictionRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 访问控制插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+}
+
+type DeleteCloudNativeAPIGatewayIPRestrictionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 访问控制插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+}
+
+func (r *DeleteCloudNativeAPIGatewayIPRestrictionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudNativeAPIGatewayIPRestrictionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "SourceType")
+	delete(f, "SourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudNativeAPIGatewayIPRestrictionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudNativeAPIGatewayIPRestrictionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCloudNativeAPIGatewayIPRestrictionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudNativeAPIGatewayIPRestrictionResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudNativeAPIGatewayIPRestrictionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudNativeAPIGatewayIPRestrictionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5056,6 +5213,78 @@ type DescribeCloudNativeAPIGatewayConfigResult struct {
 }
 
 // Predefined struct for user
+type DescribeCloudNativeAPIGatewayIPRestrictionRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 访问控制插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+}
+
+type DescribeCloudNativeAPIGatewayIPRestrictionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 访问控制插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayIPRestrictionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayIPRestrictionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "SourceType")
+	delete(f, "SourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayIPRestrictionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayIPRestrictionResponseParams struct {
+	// 出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DescribeKongIpRestrictionResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudNativeAPIGatewayIPRestrictionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudNativeAPIGatewayIPRestrictionResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayIPRestrictionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayIPRestrictionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudNativeAPIGatewayInfoByIpRequestParams struct {
 	// 云原生网关的公网ip
 	PublicNetworkIP *string `json:"PublicNetworkIP,omitnil,omitempty" name:"PublicNetworkIP"`
@@ -5393,6 +5622,10 @@ type DescribeCloudNativeAPIGatewayResult struct {
 
 	// 是否开启删除保护
 	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
+
+	// 表示可以升级的版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableVersions []*string `json:"AvailableVersions,omitnil,omitempty" name:"AvailableVersions"`
 }
 
 // Predefined struct for user
@@ -7470,6 +7703,28 @@ func (r *DescribeInstanceTagInfosResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceTagInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKongIpRestrictionResult struct {
+	// 访问控制插件绑定的资源类型：route | service
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 是否启用插件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 访问控制类型：whiteList｜blackList
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestrictionType *string `json:"RestrictionType,omitnil,omitempty" name:"RestrictionType"`
+
+	// cidr｜ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressList []*string `json:"AddressList,omitnil,omitempty" name:"AddressList"`
 }
 
 // Predefined struct for user

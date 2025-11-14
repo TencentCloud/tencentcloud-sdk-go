@@ -312,6 +312,15 @@ type Acl struct {
 
 	// 关联的应用资产列表
 	AppAssetSet []*AppAsset `json:"AppAssetSet,omitnil,omitempty" name:"AppAssetSet"`
+
+	// 权限类型 0-默认普通权限 1-工单权限,2-权限工单权限
+	AclType *uint64 `json:"AclType,omitnil,omitempty" name:"AclType"`
+
+	// 权限所属工单id
+	TicketId *string `json:"TicketId,omitnil,omitempty" name:"TicketId"`
+
+	// 权限所属工单名称
+	TicketName *string `json:"TicketName,omitnil,omitempty" name:"TicketName"`
 }
 
 // Predefined struct for user
@@ -493,6 +502,14 @@ type AppAsset struct {
 
 	// 资产所属部门
 	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
+}
+
+type AssetSyncFlags struct {
+	// 是否已完成角色授权
+	RoleGranted *bool `json:"RoleGranted,omitnil,omitempty" name:"RoleGranted"`
+
+	// 是否已开启自动资产同步
+	AutoSync *bool `json:"AutoSync,omitnil,omitempty" name:"AutoSync"`
 }
 
 type AssetSyncStatus struct {
@@ -3168,6 +3185,9 @@ type DescribeAclsRequestParams struct {
 	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
+	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
+	StatusSet []*uint64 `json:"StatusSet,omitnil,omitempty" name:"StatusSet"`
+
 	// 部门ID，用于过滤属于某个部门的访问权限
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
@@ -3208,6 +3228,9 @@ type DescribeAclsRequest struct {
 	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
+	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
+	StatusSet []*uint64 `json:"StatusSet,omitnil,omitempty" name:"StatusSet"`
+
 	// 部门ID，用于过滤属于某个部门的访问权限
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
@@ -3239,6 +3262,7 @@ func (r *DescribeAclsRequest) FromJsonString(s string) error {
 	delete(f, "AuthorizedDeviceIdSet")
 	delete(f, "AuthorizedAppAssetIdSet")
 	delete(f, "Status")
+	delete(f, "StatusSet")
 	delete(f, "DepartmentId")
 	delete(f, "ExactAccount")
 	delete(f, "Filters")
@@ -3273,6 +3297,60 @@ func (r *DescribeAclsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAclsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssetSyncFlagRequestParams struct {
+
+}
+
+type DescribeAssetSyncFlagRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAssetSyncFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetSyncFlagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetSyncFlagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssetSyncFlagResponseParams struct {
+	// 资产同步标志
+	AssetSyncFlags *AssetSyncFlags `json:"AssetSyncFlags,omitnil,omitempty" name:"AssetSyncFlags"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAssetSyncFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAssetSyncFlagResponseParams `json:"Response"`
+}
+
+func (r *DescribeAssetSyncFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetSyncFlagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3513,6 +3591,9 @@ type DescribeCmdTemplatesRequestParams struct {
 	// 命令模板类型 1-内置模板 2-自定义模板
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
+	// 命令模板类型 1-内置模板 2-自定义模板
+	TypeSet []*uint64 `json:"TypeSet,omitnil,omitempty" name:"TypeSet"`
+
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -3531,6 +3612,9 @@ type DescribeCmdTemplatesRequest struct {
 
 	// 命令模板类型 1-内置模板 2-自定义模板
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 命令模板类型 1-内置模板 2-自定义模板
+	TypeSet []*uint64 `json:"TypeSet,omitnil,omitempty" name:"TypeSet"`
 
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -3554,6 +3638,7 @@ func (r *DescribeCmdTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "IdSet")
 	delete(f, "Name")
 	delete(f, "Type")
+	delete(f, "TypeSet")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -3927,6 +4012,15 @@ type DescribeDevicesRequestParams struct {
 	// 过滤条件，可按照部门ID进行过滤
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
+	// 资产所属云账号id
+	AccountIdSet []*uint64 `json:"AccountIdSet,omitnil,omitempty" name:"AccountIdSet"`
+
+	// 云厂商类型，1-腾讯云，2-阿里云
+	ProviderTypeSet []*uint64 `json:"ProviderTypeSet,omitnil,omitempty" name:"ProviderTypeSet"`
+
+	// 同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+	CloudDeviceStatusSet []*uint64 `json:"CloudDeviceStatusSet,omitnil,omitempty" name:"CloudDeviceStatusSet"`
+
 	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
@@ -3974,6 +4068,15 @@ type DescribeDevicesRequest struct {
 	// 过滤条件，可按照部门ID进行过滤
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
+	// 资产所属云账号id
+	AccountIdSet []*uint64 `json:"AccountIdSet,omitnil,omitempty" name:"AccountIdSet"`
+
+	// 云厂商类型，1-腾讯云，2-阿里云
+	ProviderTypeSet []*uint64 `json:"ProviderTypeSet,omitnil,omitempty" name:"ProviderTypeSet"`
+
+	// 同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+	CloudDeviceStatusSet []*uint64 `json:"CloudDeviceStatusSet,omitnil,omitempty" name:"CloudDeviceStatusSet"`
+
 	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
@@ -4006,6 +4109,9 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 	delete(f, "KindSet")
 	delete(f, "ManagedAccount")
 	delete(f, "DepartmentId")
+	delete(f, "AccountIdSet")
+	delete(f, "ProviderTypeSet")
+	delete(f, "CloudDeviceStatusSet")
 	delete(f, "TagFilters")
 	delete(f, "Filters")
 	if len(f) > 0 {
@@ -4263,8 +4369,14 @@ type DescribeLoginEventRequestParams struct {
 	// 登录入口：1-字符界面,2-图形界面，3-web页面, 4-API
 	Entry *uint64 `json:"Entry,omitnil,omitempty" name:"Entry"`
 
+	// 登录入口：1-字符界面,2-图形界面，3-web页面, 4-API
+	EntrySet []*uint64 `json:"EntrySet,omitnil,omitempty" name:"EntrySet"`
+
 	// 操作结果，1-成功，2-失败
 	Result *uint64 `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 操作结果，1-成功，2-失败
+	ResultSet []*uint64 `json:"ResultSet,omitnil,omitempty" name:"ResultSet"`
 
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -4294,8 +4406,14 @@ type DescribeLoginEventRequest struct {
 	// 登录入口：1-字符界面,2-图形界面，3-web页面, 4-API
 	Entry *uint64 `json:"Entry,omitnil,omitempty" name:"Entry"`
 
+	// 登录入口：1-字符界面,2-图形界面，3-web页面, 4-API
+	EntrySet []*uint64 `json:"EntrySet,omitnil,omitempty" name:"EntrySet"`
+
 	// 操作结果，1-成功，2-失败
 	Result *uint64 `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 操作结果，1-成功，2-失败
+	ResultSet []*uint64 `json:"ResultSet,omitnil,omitempty" name:"ResultSet"`
 
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -4322,7 +4440,9 @@ func (r *DescribeLoginEventRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "SourceIp")
 	delete(f, "Entry")
+	delete(f, "EntrySet")
 	delete(f, "Result")
+	delete(f, "ResultSet")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -4379,8 +4499,14 @@ type DescribeOperationEventRequestParams struct {
 	// 操作类型，参考DescribeOperationType返回结果
 	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
 
+	// 操作类型，参考DescribeOperationType返回结果
+	KindSet []*uint64 `json:"KindSet,omitnil,omitempty" name:"KindSet"`
+
 	// 操作结果，1-成功，2-失败
 	Result *uint64 `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 操作结果，1-成功，2-失败
+	ResultSet []*uint64 `json:"ResultSet,omitnil,omitempty" name:"ResultSet"`
 
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -4410,8 +4536,14 @@ type DescribeOperationEventRequest struct {
 	// 操作类型，参考DescribeOperationType返回结果
 	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
 
+	// 操作类型，参考DescribeOperationType返回结果
+	KindSet []*uint64 `json:"KindSet,omitnil,omitempty" name:"KindSet"`
+
 	// 操作结果，1-成功，2-失败
 	Result *uint64 `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 操作结果，1-成功，2-失败
+	ResultSet []*uint64 `json:"ResultSet,omitnil,omitempty" name:"ResultSet"`
 
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -4438,7 +4570,9 @@ func (r *DescribeOperationEventRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "SourceIp")
 	delete(f, "Kind")
+	delete(f, "KindSet")
 	delete(f, "Result")
+	delete(f, "ResultSet")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -4641,6 +4775,57 @@ func (r *DescribeResourcesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSecuritySettingRequestParams struct {
+
+}
+
+type DescribeSecuritySettingRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeSecuritySettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecuritySettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecuritySettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSecuritySettingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSecuritySettingResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSecuritySettingResponseParams `json:"Response"`
+}
+
+func (r *DescribeSecuritySettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecuritySettingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4999,6 +5184,9 @@ type Device struct {
 	// 地域编码
 	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
 
+	// 地域名称
+	ApName *string `json:"ApName,omitnil,omitempty" name:"ApName"`
+
 	// 操作系统名称
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
@@ -5061,6 +5249,21 @@ type Device struct {
 
 	// K8S集群pod总数量	
 	TotalPodCount *uint64 `json:"TotalPodCount,omitnil,omitempty" name:"TotalPodCount"`
+
+	// 云账号id
+	CloudAccountId *uint64 `json:"CloudAccountId,omitnil,omitempty" name:"CloudAccountId"`
+
+	// 云账号名称
+	CloudAccountName *string `json:"CloudAccountName,omitnil,omitempty" name:"CloudAccountName"`
+
+	// 云厂商类型1-腾讯云，2-阿里云
+	ProviderType *uint64 `json:"ProviderType,omitnil,omitempty" name:"ProviderType"`
+
+	// 云厂商名称
+	ProviderName *string `json:"ProviderName,omitnil,omitempty" name:"ProviderName"`
+
+	// 同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+	SyncCloudDeviceStatus *uint64 `json:"SyncCloudDeviceStatus,omitnil,omitempty" name:"SyncCloudDeviceStatus"`
 }
 
 type DeviceAccount struct {
@@ -5084,6 +5287,114 @@ type DeviceAccount struct {
 
 	// 是否为k8s资产管理账号	
 	IsK8SManageAccount *bool `json:"IsK8SManageAccount,omitnil,omitempty" name:"IsK8SManageAccount"`
+}
+
+// Predefined struct for user
+type DisableExternalAccessRequestParams struct {
+	// 堡垒机id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type DisableExternalAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 堡垒机id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+func (r *DisableExternalAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableExternalAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableExternalAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableExternalAccessResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisableExternalAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableExternalAccessResponseParams `json:"Response"`
+}
+
+func (r *DisableExternalAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableExternalAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableIntranetAccessRequestParams struct {
+	// 堡垒机id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type DisableIntranetAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 堡垒机id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+func (r *DisableIntranetAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableIntranetAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableIntranetAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableIntranetAccessResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisableIntranetAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableIntranetAccessResponseParams `json:"Response"`
+}
+
+func (r *DisableIntranetAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableIntranetAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Domain struct {
@@ -5115,6 +5426,142 @@ type Domain struct {
 	Default *uint64 `json:"Default,omitnil,omitempty" name:"Default"`
 }
 
+// Predefined struct for user
+type EnableExternalAccessRequestParams struct {
+	// 堡垒机id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type EnableExternalAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 堡垒机id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+func (r *EnableExternalAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableExternalAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableExternalAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableExternalAccessResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableExternalAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableExternalAccessResponseParams `json:"Response"`
+}
+
+func (r *EnableExternalAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableExternalAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableIntranetAccessRequestParams struct {
+	// 堡垒机实例id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 开通内网访问的vpc id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// vpc的网段
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
+
+	// 开通内网访问的subnet id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 内网ip的自定义域名，可为空
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+}
+
+type EnableIntranetAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 堡垒机实例id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 开通内网访问的vpc id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// vpc的网段
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
+
+	// 开通内网访问的subnet id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 内网ip的自定义域名，可为空
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+}
+
+func (r *EnableIntranetAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableIntranetAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "VpcId")
+	delete(f, "VpcCidrBlock")
+	delete(f, "SubnetId")
+	delete(f, "DomainName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableIntranetAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableIntranetAccessResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableIntranetAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableIntranetAccessResponseParams `json:"Response"`
+}
+
+func (r *EnableIntranetAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableIntranetAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ExternalDevice struct {
 	// 操作系统名称，只能是Linux、Windows或MySQL
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
@@ -5142,6 +5589,24 @@ type ExternalDevice struct {
 
 	// SSL证书名称，EnableSSL时必填
 	SSLCertName *string `json:"SSLCertName,omitnil,omitempty" name:"SSLCertName"`
+
+	// 资产实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 资产所属地域
+	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
+
+	// 地域名称
+	ApName *string `json:"ApName,omitnil,omitempty" name:"ApName"`
+
+	// 资产所属VPC
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 资产所属子网
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 公网IP
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 }
 
 type Filter struct {
@@ -5189,6 +5654,9 @@ type IOAUserGroup struct {
 type ImportExternalDeviceRequestParams struct {
 	// 资产参数列表
 	DeviceSet []*ExternalDevice `json:"DeviceSet,omitnil,omitempty" name:"DeviceSet"`
+
+	//  资产所属云账号id
+	AccountId *uint64 `json:"AccountId,omitnil,omitempty" name:"AccountId"`
 }
 
 type ImportExternalDeviceRequest struct {
@@ -5196,6 +5664,9 @@ type ImportExternalDeviceRequest struct {
 	
 	// 资产参数列表
 	DeviceSet []*ExternalDevice `json:"DeviceSet,omitnil,omitempty" name:"DeviceSet"`
+
+	//  资产所属云账号id
+	AccountId *uint64 `json:"AccountId,omitnil,omitempty" name:"AccountId"`
 }
 
 func (r *ImportExternalDeviceRequest) ToJsonString() string {
@@ -5211,6 +5682,7 @@ func (r *ImportExternalDeviceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DeviceSet")
+	delete(f, "AccountId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportExternalDeviceRequest has unknown keys!", "")
 	}
@@ -5260,6 +5732,182 @@ type LoginEvent struct {
 
 	// 操作结果，1-成功，2-失败
 	Result *uint64 `json:"Result,omitnil,omitempty" name:"Result"`
+}
+
+// Predefined struct for user
+type ModifyAccessWhiteListAutoStatusRequestParams struct {
+	// true：放开自动添加IP；false：不放开自动添加IP
+	AllowAuto *bool `json:"AllowAuto,omitnil,omitempty" name:"AllowAuto"`
+}
+
+type ModifyAccessWhiteListAutoStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// true：放开自动添加IP；false：不放开自动添加IP
+	AllowAuto *bool `json:"AllowAuto,omitnil,omitempty" name:"AllowAuto"`
+}
+
+func (r *ModifyAccessWhiteListAutoStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccessWhiteListAutoStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AllowAuto")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccessWhiteListAutoStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccessWhiteListAutoStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAccessWhiteListAutoStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAccessWhiteListAutoStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyAccessWhiteListAutoStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccessWhiteListAutoStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccessWhiteListRuleRequestParams struct {
+	// 白名单规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// ip或网段信息，如10.10.10.1或10.10.10.0/24，最大长度40字节
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 备注信息，最大长度64字符。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type ModifyAccessWhiteListRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 白名单规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// ip或网段信息，如10.10.10.1或10.10.10.0/24，最大长度40字节
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 备注信息，最大长度64字符。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *ModifyAccessWhiteListRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccessWhiteListRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Source")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccessWhiteListRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccessWhiteListRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAccessWhiteListRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAccessWhiteListRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyAccessWhiteListRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccessWhiteListRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccessWhiteListStatusRequestParams struct {
+	// true：放开全部来源IP；false：不放开全部来源IP
+	AllowAny *bool `json:"AllowAny,omitnil,omitempty" name:"AllowAny"`
+}
+
+type ModifyAccessWhiteListStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// true：放开全部来源IP；false：不放开全部来源IP
+	AllowAny *bool `json:"AllowAny,omitnil,omitempty" name:"AllowAny"`
+}
+
+func (r *ModifyAccessWhiteListStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccessWhiteListStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AllowAny")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccessWhiteListStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccessWhiteListStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAccessWhiteListStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAccessWhiteListStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyAccessWhiteListStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccessWhiteListStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -5520,6 +6168,121 @@ func (r *ModifyAclResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAclResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAssetSyncFlagRequestParams struct {
+	// 是否开启资产自动同步，false-不开启，true-开启
+	AutoSync *bool `json:"AutoSync,omitnil,omitempty" name:"AutoSync"`
+}
+
+type ModifyAssetSyncFlagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否开启资产自动同步，false-不开启，true-开启
+	AutoSync *bool `json:"AutoSync,omitnil,omitempty" name:"AutoSync"`
+}
+
+func (r *ModifyAssetSyncFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAssetSyncFlagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoSync")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAssetSyncFlagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAssetSyncFlagResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAssetSyncFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAssetSyncFlagResponseParams `json:"Response"`
+}
+
+func (r *ModifyAssetSyncFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAssetSyncFlagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuthModeSettingRequestParams struct {
+	// 双因子认证，0-不开启，1-OTP，2-短信，3-USB Key
+	AuthMode *uint64 `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
+
+	// 资源类型，0：普通 1：国密
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+}
+
+type ModifyAuthModeSettingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 双因子认证，0-不开启，1-OTP，2-短信，3-USB Key
+	AuthMode *uint64 `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
+
+	// 资源类型，0：普通 1：国密
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+}
+
+func (r *ModifyAuthModeSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuthModeSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AuthMode")
+	delete(f, "ResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAuthModeSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuthModeSettingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAuthModeSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAuthModeSettingResponseParams `json:"Response"`
+}
+
+func (r *ModifyAuthModeSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuthModeSettingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6359,6 +7122,67 @@ func (r *ModifyOperationTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyReconnectionSettingRequestParams struct {
+	// 重试次数,取值范围：0-20
+	ReconnectionMaxCount *uint64 `json:"ReconnectionMaxCount,omitnil,omitempty" name:"ReconnectionMaxCount"`
+
+	// true：限制重连次数，false：不限制重连次数
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
+type ModifyReconnectionSettingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 重试次数,取值范围：0-20
+	ReconnectionMaxCount *uint64 `json:"ReconnectionMaxCount,omitnil,omitempty" name:"ReconnectionMaxCount"`
+
+	// true：限制重连次数，false：不限制重连次数
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
+func (r *ModifyReconnectionSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReconnectionSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReconnectionMaxCount")
+	delete(f, "Enable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyReconnectionSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyReconnectionSettingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyReconnectionSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyReconnectionSettingResponseParams `json:"Response"`
+}
+
+func (r *ModifyReconnectionSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReconnectionSettingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyResourceRequestParams struct {
 	// 需要开通服务的资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -7061,6 +7885,9 @@ type Resource struct {
 	// 开通内网访问vpc的网段
 	IntranetVpcCidr *string `json:"IntranetVpcCidr,omitnil,omitempty" name:"IntranetVpcCidr"`
 
+	// 堡垒机内网ip自定义域名
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
 	// 是否共享clb，true-共享clb，false-独享clb
 	ShareClb *bool `json:"ShareClb,omitnil,omitempty" name:"ShareClb"`
 
@@ -7640,6 +8467,9 @@ type SearchFileBySidRequestParams struct {
 	// 1-已执行，  2-被阻断
 	AuditAction *int64 `json:"AuditAction,omitnil,omitempty" name:"AuditAction"`
 
+	// 1-已执行，  2-被阻断
+	AuditActionSet []*int64 `json:"AuditActionSet,omitnil,omitempty" name:"AuditActionSet"`
+
 	// 以Protocol和Method为条件查询
 	TypeFilters []*SearchFileTypeFilter `json:"TypeFilters,omitnil,omitempty" name:"TypeFilters"`
 }
@@ -7665,6 +8495,9 @@ type SearchFileBySidRequest struct {
 	// 1-已执行，  2-被阻断
 	AuditAction *int64 `json:"AuditAction,omitnil,omitempty" name:"AuditAction"`
 
+	// 1-已执行，  2-被阻断
+	AuditActionSet []*int64 `json:"AuditActionSet,omitnil,omitempty" name:"AuditActionSet"`
+
 	// 以Protocol和Method为条件查询
 	TypeFilters []*SearchFileTypeFilter `json:"TypeFilters,omitnil,omitempty" name:"TypeFilters"`
 }
@@ -7687,6 +8520,7 @@ func (r *SearchFileBySidRequest) FromJsonString(s string) error {
 	delete(f, "FileName")
 	delete(f, "Offset")
 	delete(f, "AuditAction")
+	delete(f, "AuditActionSet")
 	delete(f, "TypeFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchFileBySidRequest has unknown keys!", "")
@@ -8133,6 +8967,9 @@ type SearchSessionRequestParams struct {
 	// 状态，1为活跃，2为结束，3为强制离线，4为其他错误
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
+	// 状态，1为活跃，2为结束，3为强制离线
+	StatusSet []*uint64 `json:"StatusSet,omitnil,omitempty" name:"StatusSet"`
+
 	// 若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
@@ -8144,6 +8981,9 @@ type SearchSessionRequestParams struct {
 
 	// 资产类型
 	DeviceKind *string `json:"DeviceKind,omitnil,omitempty" name:"DeviceKind"`
+
+	// 资产类型 Linux, EKS,TKE
+	DeviceKindSet []*string `json:"DeviceKindSet,omitnil,omitempty" name:"DeviceKindSet"`
 }
 
 type SearchSessionRequest struct {
@@ -8188,6 +9028,9 @@ type SearchSessionRequest struct {
 	// 状态，1为活跃，2为结束，3为强制离线，4为其他错误
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
+	// 状态，1为活跃，2为结束，3为强制离线
+	StatusSet []*uint64 `json:"StatusSet,omitnil,omitempty" name:"StatusSet"`
+
 	// 若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
@@ -8199,6 +9042,9 @@ type SearchSessionRequest struct {
 
 	// 资产类型
 	DeviceKind *string `json:"DeviceKind,omitnil,omitempty" name:"DeviceKind"`
+
+	// 资产类型 Linux, EKS,TKE
+	DeviceKindSet []*string `json:"DeviceKindSet,omitnil,omitempty" name:"DeviceKindSet"`
 }
 
 func (r *SearchSessionRequest) ToJsonString() string {
@@ -8226,10 +9072,12 @@ func (r *SearchSessionRequest) FromJsonString(s string) error {
 	delete(f, "RealName")
 	delete(f, "DeviceName")
 	delete(f, "Status")
+	delete(f, "StatusSet")
 	delete(f, "Id")
 	delete(f, "AppAssetKindSet")
 	delete(f, "AppAssetUrl")
 	delete(f, "DeviceKind")
+	delete(f, "DeviceKindSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchSessionRequest has unknown keys!", "")
 	}

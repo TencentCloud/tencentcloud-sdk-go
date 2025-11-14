@@ -147,9 +147,12 @@ type ConsumeGroupItem struct {
 	// 订阅的主题个数
 	SubscribeTopicNum *int64 `json:"SubscribeTopicNum,omitnil,omitempty" name:"SubscribeTopicNum"`
 
-	// 1753153590
+	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 绑定的标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type ConsumerClient struct {
@@ -1774,6 +1777,9 @@ type DescribeConsumerGroupListRequestParams struct {
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 标签过滤器
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
 	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -1802,6 +1808,9 @@ type DescribeConsumerGroupListRequest struct {
 	
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 标签过滤器
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
 	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -1839,6 +1848,7 @@ func (r *DescribeConsumerGroupListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "TagFilters")
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
@@ -2368,6 +2378,14 @@ type DescribeInstanceResponseParams struct {
 
 	// 所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构。
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// proxy节点数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
+
+	// proxy调度详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneScheduledList []*ZoneScheduledItem `json:"ZoneScheduledList,omitnil,omitempty" name:"ZoneScheduledList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4499,6 +4517,9 @@ type DescribeTopicListRequestParams struct {
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 标签过滤器
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
 	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -4517,6 +4538,9 @@ type DescribeTopicListRequest struct {
 	
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 标签过滤器
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
 	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -4544,6 +4568,7 @@ func (r *DescribeTopicListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "TagFilters")
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
@@ -4965,6 +4990,14 @@ type FusionInstanceItem struct {
 
 	// 是否开启删除保护
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+
+	// 实例创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 弹性TPS开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaledTpsEnabled *bool `json:"ScaledTpsEnabled,omitnil,omitempty" name:"ScaledTpsEnabled"`
 }
 
 // Predefined struct for user
@@ -7146,6 +7179,9 @@ type TopicItem struct {
 
 	// 消息保留时长
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
+
+	// 绑定的标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type TopicStageChangeResult struct {
@@ -7165,4 +7201,12 @@ type VpcInfo struct {
 
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+type ZoneScheduledItem struct {
+	// 可用区ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 有剔除的调度任务且没有切回的可用区时，该值为true，反之为false
+	NodePermWipeFlag *bool `json:"NodePermWipeFlag,omitnil,omitempty" name:"NodePermWipeFlag"`
 }
