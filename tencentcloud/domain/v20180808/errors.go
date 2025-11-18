@@ -341,6 +341,9 @@ const (
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
+	// 资源配额不足
+	RESOURCEINSUFFICIENT_INSUFFICIENTQUOTA = "ResourceInsufficient.InsufficientQuota"
+
 	// 当前正在执行中的任务过多，请稍后再提交新的任务。
 	RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 

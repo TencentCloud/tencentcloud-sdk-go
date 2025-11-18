@@ -1943,6 +1943,7 @@ type AssociateNatGatewayAddressRequestParams struct {
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
 
 	// 弹性IP可用区，自动分配弹性IP时传递。
+	// 其中产品可用区查询接口为[查询产品可用区列表](https://cloud.tencent.com/document/product/1596/77929)
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
@@ -1953,6 +1954,9 @@ type AssociateNatGatewayAddressRequestParams struct {
 
 	// 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
 	PublicIpFromSameZone *bool `json:"PublicIpFromSameZone,omitnil,omitempty" name:"PublicIpFromSameZone"`
+
+	// 启用或者禁用NAT网关绑定的EIP
+	IpAddressEnableMode *bool `json:"IpAddressEnableMode,omitnil,omitempty" name:"IpAddressEnableMode"`
 }
 
 type AssociateNatGatewayAddressRequest struct {
@@ -1968,6 +1972,7 @@ type AssociateNatGatewayAddressRequest struct {
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
 
 	// 弹性IP可用区，自动分配弹性IP时传递。
+	// 其中产品可用区查询接口为[查询产品可用区列表](https://cloud.tencent.com/document/product/1596/77929)
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
@@ -1978,6 +1983,9 @@ type AssociateNatGatewayAddressRequest struct {
 
 	// 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
 	PublicIpFromSameZone *bool `json:"PublicIpFromSameZone,omitnil,omitempty" name:"PublicIpFromSameZone"`
+
+	// 启用或者禁用NAT网关绑定的EIP
+	IpAddressEnableMode *bool `json:"IpAddressEnableMode,omitnil,omitempty" name:"IpAddressEnableMode"`
 }
 
 func (r *AssociateNatGatewayAddressRequest) ToJsonString() string {
@@ -1999,6 +2007,7 @@ func (r *AssociateNatGatewayAddressRequest) FromJsonString(s string) error {
 	delete(f, "StockPublicIpAddressesBandwidthOut")
 	delete(f, "PublicIpAddressesBandwidthOut")
 	delete(f, "PublicIpFromSameZone")
+	delete(f, "IpAddressEnableMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateNatGatewayAddressRequest has unknown keys!", "")
 	}
@@ -5527,7 +5536,7 @@ func (r *CreateNatGatewayDestinationIpPortTranslationNatRuleResponse) FromJsonSt
 
 // Predefined struct for user
 type CreateNatGatewayRequestParams struct {
-	// NAT网关名称
+	// NAT网关名称，限制60字符
 	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
 
 	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
@@ -5575,7 +5584,7 @@ type CreateNatGatewayRequestParams struct {
 type CreateNatGatewayRequest struct {
 	*tchttp.BaseRequest
 	
-	// NAT网关名称
+	// NAT网关名称，限制60字符
 	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
 
 	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
@@ -6272,7 +6281,7 @@ func (r *CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse) Fro
 
 // Predefined struct for user
 type CreatePrivateNatGatewayRequestParams struct {
-	// 私网网关名称
+	// 私网网关名称，限制60个字符
 	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
 
 	// 私有网络实例ID。当创建VPC类型私网NAT网关或者专线网关类型私网NAT网关时，此参数必填。
@@ -6297,7 +6306,7 @@ type CreatePrivateNatGatewayRequestParams struct {
 type CreatePrivateNatGatewayRequest struct {
 	*tchttp.BaseRequest
 	
-	// 私网网关名称
+	// 私网网关名称，限制60个字符
 	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
 
 	// 私有网络实例ID。当创建VPC类型私网NAT网关或者专线网关类型私网NAT网关时，此参数必填。
@@ -6377,19 +6386,19 @@ type CreatePrivateNatGatewayTranslationAclRuleRequestParams struct {
 	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 转换规则目标，可选值"LOCAL"。
+	// 转换规则目标，可选值LOCAL。
 	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
 
-	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	// 转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
 	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
 
-	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	// 映射后`IP`,当转换规则类型为四层时为`IP`池。
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
 	// 访问控制列表。
 	TranslationAclRules []*TranslationAclRule `json:"TranslationAclRules,omitnil,omitempty" name:"TranslationAclRules"`
 
-	// 源`IP`,当转换规则类型为三层时有效。
+	// 映射前`IP`,当转换规则类型为三层时有效。
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 }
 
@@ -6399,19 +6408,19 @@ type CreatePrivateNatGatewayTranslationAclRuleRequest struct {
 	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 转换规则目标，可选值"LOCAL"。
+	// 转换规则目标，可选值LOCAL。
 	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
 
-	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	// 转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
 	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
 
-	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	// 映射后`IP`,当转换规则类型为四层时为`IP`池。
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
 	// 访问控制列表。
 	TranslationAclRules []*TranslationAclRule `json:"TranslationAclRules,omitnil,omitempty" name:"TranslationAclRules"`
 
-	// 源`IP`,当转换规则类型为三层时有效。
+	// 映射前`IP`,当转换规则类型为三层时有效。
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 }
 
@@ -10234,6 +10243,9 @@ func (r *DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse) FromJsonSt
 type DeleteNatGatewayRequestParams struct {
 	// NAT网关的ID，形如：`nat-df45454`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 忽略操作风险
+	IgnoreOperationRisk *bool `json:"IgnoreOperationRisk,omitnil,omitempty" name:"IgnoreOperationRisk"`
 }
 
 type DeleteNatGatewayRequest struct {
@@ -10241,6 +10253,9 @@ type DeleteNatGatewayRequest struct {
 	
 	// NAT网关的ID，形如：`nat-df45454`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 忽略操作风险
+	IgnoreOperationRisk *bool `json:"IgnoreOperationRisk,omitnil,omitempty" name:"IgnoreOperationRisk"`
 }
 
 func (r *DeleteNatGatewayRequest) ToJsonString() string {
@@ -10256,6 +10271,7 @@ func (r *DeleteNatGatewayRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "NatGatewayId")
+	delete(f, "IgnoreOperationRisk")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNatGatewayRequest has unknown keys!", "")
 	}
@@ -10749,19 +10765,19 @@ type DeletePrivateNatGatewayTranslationAclRuleRequestParams struct {
 	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 转换规则目标，可选值"LOCAL"。
+	// 转换规则目标，可选值LOCAL。
 	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
 
-	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	// 转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
 	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
 
-	// 转换`IP`,当转换规则类型为四层时为`IP`池
+	// 映射后`IP`,当转换规则类型为四层时为`IP`池
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
 	// 访问控制规则对应`ID`
 	AclRuleIds []*uint64 `json:"AclRuleIds,omitnil,omitempty" name:"AclRuleIds"`
 
-	// 源`IP`,当转换规则类型为三层时有效
+	// 映射前`IP`,当转换规则类型为三层时有效
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 }
 
@@ -10771,19 +10787,19 @@ type DeletePrivateNatGatewayTranslationAclRuleRequest struct {
 	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 转换规则目标，可选值"LOCAL"。
+	// 转换规则目标，可选值LOCAL。
 	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
 
-	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	// 转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
 	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
 
-	// 转换`IP`,当转换规则类型为四层时为`IP`池
+	// 映射后`IP`,当转换规则类型为四层时为`IP`池
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
 	// 访问控制规则对应`ID`
 	AclRuleIds []*uint64 `json:"AclRuleIds,omitnil,omitempty" name:"AclRuleIds"`
 
-	// 源`IP`,当转换规则类型为三层时有效
+	// 映射前`IP`,当转换规则类型为三层时有效
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 }
 
@@ -16840,11 +16856,65 @@ func (r *DescribeNatGatewaySourceIpTranslationNatRulesResponse) FromJsonString(s
 }
 
 // Predefined struct for user
+type DescribeNatGatewayZonesRequestParams struct {
+
+}
+
+type DescribeNatGatewayZonesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeNatGatewayZonesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatGatewayZonesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNatGatewayZonesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNatGatewayZonesResponseParams struct {
+	// 可售卖可用区信息列表
+	ZoneSet []*NatZoneInfo `json:"ZoneSet,omitnil,omitempty" name:"ZoneSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNatGatewayZonesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNatGatewayZonesResponseParams `json:"Response"`
+}
+
+func (r *DescribeNatGatewayZonesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatGatewayZonesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNatGatewaysRequestParams struct {
 	// NAT网关统一 ID，形如：`nat-123xx454`。每次请求的实例上限为100。参数不支持同时指定NatGatewayIds和Filters。
 	NatGatewayIds []*string `json:"NatGatewayIds,omitnil,omitempty" name:"NatGatewayIds"`
 
-	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
+	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-state - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -16860,7 +16930,7 @@ type DescribeNatGatewaysRequest struct {
 	// NAT网关统一 ID，形如：`nat-123xx454`。每次请求的实例上限为100。参数不支持同时指定NatGatewayIds和Filters。
 	NatGatewayIds []*string `json:"NatGatewayIds,omitnil,omitempty" name:"NatGatewayIds"`
 
-	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
+	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-state - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -17547,7 +17617,7 @@ type DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequestParams 
 	// 私网网关唯一`ID`，形如"intranat-xxxxxxxx)
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 过滤条件，Name可选值"OriginalIp",  "TranslationIp", "OriginalPort","TranslationPort",  "Protocol", "Description"
+	// 过滤条件，Name可选值：OriginalIp、TranslationIp、OriginalPort、TranslationPort、Protocol、Description，分别表示映射前IP、映射后IP、映射前端口、映射后端口、协议类型、描述
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认值为0。
@@ -17563,7 +17633,7 @@ type DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest struct
 	// 私网网关唯一`ID`，形如"intranat-xxxxxxxx)
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 过滤条件，Name可选值"OriginalIp",  "TranslationIp", "OriginalPort","TranslationPort",  "Protocol", "Description"
+	// 过滤条件，Name可选值：OriginalIp、TranslationIp、OriginalPort、TranslationPort、Protocol、Description，分别表示映射前IP、映射后IP、映射前端口、映射后端口、协议类型、描述
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认值为0。
@@ -17761,16 +17831,16 @@ type DescribePrivateNatGatewayTranslationAclRulesRequestParams struct {
 	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 转换规则目标，可选值"LOCAL"。
+	// 转换规则目标，可选值LOCAL。
 	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
 
-	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	// 转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
 	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
 
-	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	// 映射后`IP`,当转换规则类型为四层时为`IP`池。
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
-	// 源`IP`,当转换规则类型为三层时有效。
+	// 映射前`IP`,当转换规则类型为三层时有效。
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 
 	// 偏移量。默认值为0。
@@ -17789,16 +17859,16 @@ type DescribePrivateNatGatewayTranslationAclRulesRequest struct {
 	// 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 转换规则目标，可选值"LOCAL"。
+	// 转换规则目标，可选值LOCAL。
 	TranslationDirection *string `json:"TranslationDirection,omitnil,omitempty" name:"TranslationDirection"`
 
-	// 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+	// 转换规则类型，可选值NETWORK_LAYER、TRANSPORT_LAYER。分别对应三层、四层。
 	TranslationType *string `json:"TranslationType,omitnil,omitempty" name:"TranslationType"`
 
-	// 转换`IP`,当转换规则类型为四层时为`IP`池。
+	// 映射后`IP`,当转换规则类型为四层时为`IP`池。
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
-	// 源`IP`,当转换规则类型为三层时有效。
+	// 映射前`IP`,当转换规则类型为三层时有效。
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 
 	// 偏移量。默认值为0。
@@ -17957,6 +18027,7 @@ func (r *DescribePrivateNatGatewayTranslationNatRulesResponse) FromJsonString(s 
 // Predefined struct for user
 type DescribePrivateNatGatewaysRequestParams struct {
 	// 私网网关唯一`ID`，形如：`intranat-0g3blj80`。
+	// 注意：NatGatewayIds和Filters参数互斥，不能同时传入。
 	NatGatewayIds []*string `json:"NatGatewayIds,omitnil,omitempty" name:"NatGatewayIds"`
 
 	// 过滤条件。<li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li><li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li><li>VpcId - String - 私网网关所在`VpcId`。</li><li>TagKey - Tag数组 - 私网网关标签键值对数组</li><li>intranat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
@@ -17968,10 +18039,10 @@ type DescribePrivateNatGatewaysRequestParams struct {
 	// 返回数量，默认为20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段。可选值："NatGatewayId"、"NatGatewayName"、"CreatedTime"
+	// 排序字段。可选值：NatGatewayId、NatGatewayName、CreatedTime。
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序方式。可选值："ASC"、"DESC"。
+	// 排序方式。可选值：ASC、DESC。分别表示升序、降序。
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 }
 
@@ -17979,6 +18050,7 @@ type DescribePrivateNatGatewaysRequest struct {
 	*tchttp.BaseRequest
 	
 	// 私网网关唯一`ID`，形如：`intranat-0g3blj80`。
+	// 注意：NatGatewayIds和Filters参数互斥，不能同时传入。
 	NatGatewayIds []*string `json:"NatGatewayIds,omitnil,omitempty" name:"NatGatewayIds"`
 
 	// 过滤条件。<li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li><li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li><li>VpcId - String - 私网网关所在`VpcId`。</li><li>TagKey - Tag数组 - 私网网关标签键值对数组</li><li>intranat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
@@ -17990,10 +18062,10 @@ type DescribePrivateNatGatewaysRequest struct {
 	// 返回数量，默认为20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段。可选值："NatGatewayId"、"NatGatewayName"、"CreatedTime"
+	// 排序字段。可选值：NatGatewayId、NatGatewayName、CreatedTime。
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序方式。可选值："ASC"、"DESC"。
+	// 排序方式。可选值：ASC、DESC。分别表示升序、降序。
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 }
 
@@ -20875,8 +20947,14 @@ type DescribeVpcEndPointRequestParams struct {
 	// 获取。
 	EndPointId []*string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
 
-	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	// 协议类型，支持 Ipv4，Ipv6， DualStack，默认 Ipv4。使用DualStack查询双栈的时候，必须要使用MaxResult配合NextToken查询。第1次查询的时候只需要携带MaxResult，如果返回NextToken非空，表示有更多可用数据。第2次查询的时候就需要携带NextToken进行分页查询。
 	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
+
+	// 每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
 type DescribeVpcEndPointRequest struct {
@@ -20902,8 +20980,14 @@ type DescribeVpcEndPointRequest struct {
 	// 获取。
 	EndPointId []*string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
 
-	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	// 协议类型，支持 Ipv4，Ipv6， DualStack，默认 Ipv4。使用DualStack查询双栈的时候，必须要使用MaxResult配合NextToken查询。第1次查询的时候只需要携带MaxResult，如果返回NextToken非空，表示有更多可用数据。第2次查询的时候就需要携带NextToken进行分页查询。
 	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
+
+	// 每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
 func (r *DescribeVpcEndPointRequest) ToJsonString() string {
@@ -20923,6 +21007,8 @@ func (r *DescribeVpcEndPointRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "EndPointId")
 	delete(f, "IpAddressType")
+	delete(f, "MaxResults")
+	delete(f, "NextToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpcEndPointRequest has unknown keys!", "")
 	}
@@ -20936,6 +21022,9 @@ type DescribeVpcEndPointResponseParams struct {
 
 	// 符合查询条件的终端节点个数。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -20983,8 +21072,14 @@ type DescribeVpcEndPointServiceRequestParams struct {
 	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，哪些终端节点服务授权了该账户。</li>
 	IsListAuthorizedEndPointService *bool `json:"IsListAuthorizedEndPointService,omitnil,omitempty" name:"IsListAuthorizedEndPointService"`
 
-	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	// 协议类型，支持 Ipv4，Ipv6， DualStack，默认 Ipv4。使用DualStack查询双栈的时候，必须要使用MaxResult配合NextToken查询。第1次查询的时候只需要携带MaxResult，如果返回NextToken非空，表示有更多可用数据。第2次查询的时候就需要携带NextToken进行分页查询。
 	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
+
+	// 每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 如果NextToken返回 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
 type DescribeVpcEndPointServiceRequest struct {
@@ -21014,8 +21109,14 @@ type DescribeVpcEndPointServiceRequest struct {
 	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，哪些终端节点服务授权了该账户。</li>
 	IsListAuthorizedEndPointService *bool `json:"IsListAuthorizedEndPointService,omitnil,omitempty" name:"IsListAuthorizedEndPointService"`
 
-	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	// 协议类型，支持 Ipv4，Ipv6， DualStack，默认 Ipv4。使用DualStack查询双栈的时候，必须要使用MaxResult配合NextToken查询。第1次查询的时候只需要携带MaxResult，如果返回NextToken非空，表示有更多可用数据。第2次查询的时候就需要携带NextToken进行分页查询。
 	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
+
+	// 每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 如果NextToken返回 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
 func (r *DescribeVpcEndPointServiceRequest) ToJsonString() string {
@@ -21036,6 +21137,8 @@ func (r *DescribeVpcEndPointServiceRequest) FromJsonString(s string) error {
 	delete(f, "EndPointServiceIds")
 	delete(f, "IsListAuthorizedEndPointService")
 	delete(f, "IpAddressType")
+	delete(f, "MaxResults")
+	delete(f, "NextToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpcEndPointServiceRequest has unknown keys!", "")
 	}
@@ -21049,6 +21152,9 @@ type DescribeVpcEndPointServiceResponseParams struct {
 
 	// 符合查询条件的个数。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -28539,7 +28645,7 @@ type ModifyNatGatewaySourceIpTranslationNatRuleRequestParams struct {
 	// NAT网关的ID，形如：`nat-df453454`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// NAT网关的SNAT转换规则。
+	// NAT网关的SNAT转换规则。仅支持根据指定的NatGatewaySnatId修改PublicIpAddresses或Description。
 	SourceIpTranslationNatRule *SourceIpTranslationNatRule `json:"SourceIpTranslationNatRule,omitnil,omitempty" name:"SourceIpTranslationNatRule"`
 }
 
@@ -28549,7 +28655,7 @@ type ModifyNatGatewaySourceIpTranslationNatRuleRequest struct {
 	// NAT网关的ID，形如：`nat-df453454`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// NAT网关的SNAT转换规则。
+	// NAT网关的SNAT转换规则。仅支持根据指定的NatGatewaySnatId修改PublicIpAddresses或Description。
 	SourceIpTranslationNatRule *SourceIpTranslationNatRule `json:"SourceIpTranslationNatRule,omitnil,omitempty" name:"SourceIpTranslationNatRule"`
 }
 
@@ -31339,6 +31445,14 @@ type NatRegionInfoWithArea struct {
 
 }
 
+type NatZoneInfo struct {
+	// 可用区名称
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 可用区id
+	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
 type NetDetect struct {
 	// `VPC`实例`ID`。形如：`vpc-12345678`
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
@@ -31956,7 +32070,7 @@ type RefreshDirectConnectGatewayRouteToNatGatewayRequestParams struct {
 	// NAT网关ID
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 是否是预刷新；True:是， False:否
+	// 是否是预刷新；true:是， false:否
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
@@ -31969,7 +32083,7 @@ type RefreshDirectConnectGatewayRouteToNatGatewayRequest struct {
 	// NAT网关ID
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 是否是预刷新；True:是， False:否
+	// 是否是预刷新；true:是， false:否
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 

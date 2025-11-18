@@ -3939,6 +3939,62 @@ func (c *Client) ModifyStaffPasswordWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewPauseAutoCalloutTaskRequest() (request *PauseAutoCalloutTaskRequest) {
+    request = &PauseAutoCalloutTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "PauseAutoCalloutTask")
+    
+    
+    return
+}
+
+func NewPauseAutoCalloutTaskResponse() (response *PauseAutoCalloutTaskResponse) {
+    response = &PauseAutoCalloutTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PauseAutoCalloutTask
+// 暂停未完成的自动外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PauseAutoCalloutTask(request *PauseAutoCalloutTaskRequest) (response *PauseAutoCalloutTaskResponse, err error) {
+    return c.PauseAutoCalloutTaskWithContext(context.Background(), request)
+}
+
+// PauseAutoCalloutTask
+// 暂停未完成的自动外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PauseAutoCalloutTaskWithContext(ctx context.Context, request *PauseAutoCalloutTaskRequest) (response *PauseAutoCalloutTaskResponse, err error) {
+    if request == nil {
+        request = NewPauseAutoCalloutTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ccc", APIVersion, "PauseAutoCalloutTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PauseAutoCalloutTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPauseAutoCalloutTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPausePredictiveDialingCampaignRequest() (request *PausePredictiveDialingCampaignRequest) {
     request = &PausePredictiveDialingCampaignRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4093,6 +4149,62 @@ func (c *Client) RestoreMemberOnlineWithContext(ctx context.Context, request *Re
     request.SetContext(ctx)
     
     response = NewRestoreMemberOnlineResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResumeAutoCalloutTaskRequest() (request *ResumeAutoCalloutTaskRequest) {
+    request = &ResumeAutoCalloutTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "ResumeAutoCalloutTask")
+    
+    
+    return
+}
+
+func NewResumeAutoCalloutTaskResponse() (response *ResumeAutoCalloutTaskResponse) {
+    response = &ResumeAutoCalloutTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResumeAutoCalloutTask
+// 暂停未完成的自动外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResumeAutoCalloutTask(request *ResumeAutoCalloutTaskRequest) (response *ResumeAutoCalloutTaskResponse, err error) {
+    return c.ResumeAutoCalloutTaskWithContext(context.Background(), request)
+}
+
+// ResumeAutoCalloutTask
+// 暂停未完成的自动外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResumeAutoCalloutTaskWithContext(ctx context.Context, request *ResumeAutoCalloutTaskRequest) (response *ResumeAutoCalloutTaskResponse, err error) {
+    if request == nil {
+        request = NewResumeAutoCalloutTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ccc", APIVersion, "ResumeAutoCalloutTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeAutoCalloutTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResumeAutoCalloutTaskResponse()
     err = c.Send(request, response)
     return
 }

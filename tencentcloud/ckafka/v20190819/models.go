@@ -11351,51 +11351,51 @@ type ZoneInfo struct {
 }
 
 type ZoneResponse struct {
-	// zone列表
+	// <p>zone列表</p>
 	ZoneList []*ZoneInfo `json:"ZoneList,omitnil,omitempty" name:"ZoneList"`
 
-	// 最大购买实例个数
+	// <p>最大购买实例个数</p>
 	MaxBuyInstanceNum *int64 `json:"MaxBuyInstanceNum,omitnil,omitempty" name:"MaxBuyInstanceNum"`
 
-	// 最大购买带宽 单位Mb/s
+	// <p>最大购买带宽 单位Mb/s</p>
 	MaxBandwidth *int64 `json:"MaxBandwidth,omitnil,omitempty" name:"MaxBandwidth"`
 
-	// 后付费单位价格
+	// <p>后付费单位价格</p>
 	UnitPrice *Price `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
 
-	// 后付费消息单价
+	// <p>后付费消息单价</p>
 	MessagePrice *Price `json:"MessagePrice,omitnil,omitempty" name:"MessagePrice"`
 
-	// 用户独占集群信息
+	// <p>用户独占集群信息</p>
 	ClusterInfo []*ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
 
-	// 购买标准版配置
+	// <p>购买标准版配置</p>
 	Standard *string `json:"Standard,omitnil,omitempty" name:"Standard"`
 
-	// 购买标准版S2配置
+	// <p>购买标准版S2配置</p>
 	StandardS2 *string `json:"StandardS2,omitnil,omitempty" name:"StandardS2"`
 
-	// 购买专业版配置
+	// <p>购买专业版配置</p>
 	Profession *string `json:"Profession,omitnil,omitempty" name:"Profession"`
 
-	// 购买物理独占版配置
+	// <p>购买物理独占版配置</p>
 	Physical *string `json:"Physical,omitnil,omitempty" name:"Physical"`
 
-	// 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写   已废弃,无实际意义
+	// <p>公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写   已废弃,无实际意义</p>
 	PublicNetwork *string `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
-	// 公网带宽配置
+	// <p>公网带宽配置</p>
 	PublicNetworkLimit *string `json:"PublicNetworkLimit,omitnil,omitempty" name:"PublicNetworkLimit"`
 
-	// 请求Id
+	// <p>请求Id</p>
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 
-	// 分页offset
+	// <p>分页offset</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页limit
+	// <p>分页limit</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否必须录入tag
+	// <p>是否必须录入tag</p>
 	ForceCheckTag *bool `json:"ForceCheckTag,omitnil,omitempty" name:"ForceCheckTag"`
 }

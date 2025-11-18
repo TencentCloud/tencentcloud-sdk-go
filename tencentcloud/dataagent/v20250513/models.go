@@ -37,7 +37,7 @@ type AddChunkRequestParams struct {
 	// chunk内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 	 新 Chunk 插入到目标 Chunk ​之后的位置。插入位置的上一个 chunkId
+	// 新 Chunk 插入到目标 Chunk ​之后的位置。插入位置的上一个 chunkId
 	AfterChunkId *string `json:"AfterChunkId,omitnil,omitempty" name:"AfterChunkId"`
 }
 
@@ -59,7 +59,7 @@ type AddChunkRequest struct {
 	// chunk内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 	 新 Chunk 插入到目标 Chunk ​之后的位置。插入位置的上一个 chunkId
+	// 新 Chunk 插入到目标 Chunk ​之后的位置。插入位置的上一个 chunkId
 	AfterChunkId *string `json:"AfterChunkId,omitnil,omitempty" name:"AfterChunkId"`
 }
 
@@ -89,7 +89,7 @@ func (r *AddChunkRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddChunkResponseParams struct {
-	// 新增的chunkid
+	// 新增的ChunkId
 	ChunkId *string `json:"ChunkId,omitnil,omitempty" name:"ChunkId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -229,14 +229,28 @@ func (r *ChatAIResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Chunk struct {
+	// 切片ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 切片内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 切片的字数
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+}
+
 // Predefined struct for user
 type CreateDataAgentSessionRequestParams struct {
-
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type CreateDataAgentSessionRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *CreateDataAgentSessionRequest) ToJsonString() string {
@@ -251,7 +265,7 @@ func (r *CreateDataAgentSessionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataAgentSessionRequest has unknown keys!", "")
 	}
@@ -260,6 +274,9 @@ func (r *CreateDataAgentSessionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDataAgentSessionResponseParams struct {
+	// 会话
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -350,12 +367,21 @@ func (r *DeleteChunkResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDataAgentSessionRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 type DeleteDataAgentSessionRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 func (r *DeleteDataAgentSessionRequest) ToJsonString() string {
@@ -370,7 +396,8 @@ func (r *DeleteDataAgentSessionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "SessionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataAgentSessionRequest has unknown keys!", "")
 	}
@@ -379,6 +406,9 @@ func (r *DeleteDataAgentSessionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDataAgentSessionResponseParams struct {
+	// 删除的会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -458,12 +488,21 @@ func (r *GetKnowledgeBaseListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetSessionDetailsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 type GetSessionDetailsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 func (r *GetSessionDetailsRequest) ToJsonString() string {
@@ -478,7 +517,8 @@ func (r *GetSessionDetailsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "SessionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSessionDetailsRequest has unknown keys!", "")
 	}
@@ -487,6 +527,9 @@ func (r *GetSessionDetailsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetSessionDetailsResponseParams struct {
+	// 会话记录详情
+	RecordList []*Record `json:"RecordList,omitnil,omitempty" name:"RecordList"`
+
 	// 记录总数
 	RecordCount *int64 `json:"RecordCount,omitnil,omitempty" name:"RecordCount"`
 
@@ -698,20 +741,20 @@ func (r *ModifyKnowledgeBaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QueryChunkListRequestParams struct {
-	// 默认 1 表示第一页
+	// 表示第一页
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 	 默认 10 一页展示 10 条
+	// 默认一页展示 10 条
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type QueryChunkListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 默认 1 表示第一页
+	// 表示第一页
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 	 默认 10 一页展示 10 条
+	// 默认一页展示 10 条
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
@@ -737,6 +780,12 @@ func (r *QueryChunkListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QueryChunkListResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 分片信息
+	Chunks []*Chunk `json:"Chunks,omitnil,omitempty" name:"Chunks"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -757,14 +806,104 @@ func (r *QueryChunkListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Record struct {
+	// 问题内容
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// 回答内容
+	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
+
+	// 思考内容
+	Think *string `json:"Think,omitnil,omitempty" name:"Think"`
+
+	// 任务列表
+	TaskList []*Task `json:"TaskList,omitnil,omitempty" name:"TaskList"`
+
+	// 记录创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 记录更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 记录id
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 总结内容
+	FinalSummary *string `json:"FinalSummary,omitnil,omitempty" name:"FinalSummary"`
+
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 1=赞，2=踩，0=无反馈
+	Feedback *int64 `json:"Feedback,omitnil,omitempty" name:"Feedback"`
+
+	// 数据库信息
+	DbInfo *string `json:"DbInfo,omitnil,omitempty" name:"DbInfo"`
+
+	// 错误信息
+	ErrorContext *string `json:"ErrorContext,omitnil,omitempty" name:"ErrorContext"`
+
+	// TaskList的string字符串
+	TaskListStr *string `json:"TaskListStr,omitnil,omitempty" name:"TaskListStr"`
+
+	// 知识库id列表
+	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitnil,omitempty" name:"KnowledgeBaseIds"`
+
+	// 上下文
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+}
+
+type StepExpand struct {
+	// 标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// cellid数组
+	CellIds []*string `json:"CellIds,omitnil,omitempty" name:"CellIds"`
+}
+
+type StepInfo struct {
+	// 步骤id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 步骤名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 步骤状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 类型(text/expand)
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 总结
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 步骤扩展结构
+	Expand *StepExpand `json:"Expand,omitnil,omitempty" name:"Expand"`
+
+	// 描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+}
+
 // Predefined struct for user
 type StopChatAIRequestParams struct {
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type StopChatAIRequest struct {
 	*tchttp.BaseRequest
 	
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *StopChatAIRequest) ToJsonString() string {
@@ -779,7 +918,8 @@ func (r *StopChatAIRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "SessionId")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopChatAIRequest has unknown keys!", "")
 	}
@@ -788,6 +928,9 @@ func (r *StopChatAIRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopChatAIResponseParams struct {
+	// 会话
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -806,4 +949,18 @@ func (r *StopChatAIResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopChatAIResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Task struct {
+	// 任务ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 任务状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务步骤列表
+	StepInfoList []*StepInfo `json:"StepInfoList,omitnil,omitempty" name:"StepInfoList"`
 }

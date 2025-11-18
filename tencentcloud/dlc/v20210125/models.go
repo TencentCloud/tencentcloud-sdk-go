@@ -5761,6 +5761,9 @@ type DatasourceConnectionConfig struct {
 
 	// TccHive数据目录连接信息
 	TccHive *TccHive `json:"TccHive,omitnil,omitempty" name:"TccHive"`
+
+	// MongoDB 数据源
+	MongoDB *DataSourceInfo `json:"MongoDB,omitnil,omitempty" name:"MongoDB"`
 }
 
 type DatasourceConnectionInfo struct {

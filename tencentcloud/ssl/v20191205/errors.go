@@ -338,6 +338,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 证书域名过长： 域名不能超过64位，请您重新输入
+	INVALIDPARAMETERVALUE_CERTIFICATEDOMAINMAXLENGTHINVALID = "InvalidParameterValue.CertificateDomainMaxLengthInvalid"
+
 	// 邮箱格式有误，请您重新输入
 	INVALIDPARAMETERVALUE_CERTIFICATEEMAILPARSEINVALID = "InvalidParameterValue.CertificateEmailParseInvalid"
 

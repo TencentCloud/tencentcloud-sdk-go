@@ -12300,27 +12300,27 @@ type TaskConfiguration struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	YarnQueue *string `json:"YarnQueue,omitnil,omitempty" name:"YarnQueue"`
 
-	// 来源数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+	// 来源数据源ID,  需要通过 DescribeDataSourceWithoutInfo 获取
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceServiceId *string `json:"SourceServiceId,omitnil,omitempty" name:"SourceServiceId"`
 
-	// 来源数据源类型, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+	// 来源数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceServiceType *string `json:"SourceServiceType,omitnil,omitempty" name:"SourceServiceType"`
 
-	// 来源数据源名称, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+	// 来源数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceServiceName *string `json:"SourceServiceName,omitnil,omitempty" name:"SourceServiceName"`
 
-	// 目标数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+	// 目标数据源ID, 需要通过 DescribeDataSourceWithoutInfo 获取
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetServiceId *string `json:"TargetServiceId,omitnil,omitempty" name:"TargetServiceId"`
 
-	// 目标数据源类型, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+	// 目标数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetServiceType *string `json:"TargetServiceType,omitnil,omitempty" name:"TargetServiceType"`
 
-	// 目标数据源名称, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+	// 目标数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetServiceName *string `json:"TargetServiceName,omitnil,omitempty" name:"TargetServiceName"`
 

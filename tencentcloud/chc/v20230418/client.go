@@ -418,12 +418,20 @@ func NewCreateQuitWorkOrderResponse() (response *CreateQuitWorkOrderResponse) {
 
 // CreateQuitWorkOrder
 // 创建设备退出工单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateQuitWorkOrder(request *CreateQuitWorkOrderRequest) (response *CreateQuitWorkOrderResponse, err error) {
     return c.CreateQuitWorkOrderWithContext(context.Background(), request)
 }
 
 // CreateQuitWorkOrder
 // 创建设备退出工单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateQuitWorkOrderWithContext(ctx context.Context, request *CreateQuitWorkOrderRequest) (response *CreateQuitWorkOrderResponse, err error) {
     if request == nil {
         request = NewCreateQuitWorkOrderRequest()
@@ -462,12 +470,20 @@ func NewCreateRackOffWorkOrderResponse() (response *CreateRackOffWorkOrderRespon
 
 // CreateRackOffWorkOrder
 // 创建设备下架工单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateRackOffWorkOrder(request *CreateRackOffWorkOrderRequest) (response *CreateRackOffWorkOrderResponse, err error) {
     return c.CreateRackOffWorkOrderWithContext(context.Background(), request)
 }
 
 // CreateRackOffWorkOrder
 // 创建设备下架工单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateRackOffWorkOrderWithContext(ctx context.Context, request *CreateRackOffWorkOrderRequest) (response *CreateRackOffWorkOrderResponse, err error) {
     if request == nil {
         request = NewCreateRackOffWorkOrderRequest()
@@ -506,12 +522,20 @@ func NewCreateRackOnWorkOrderResponse() (response *CreateRackOnWorkOrderResponse
 
 // CreateRackOnWorkOrder
 // 创建设备上架工单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateRackOnWorkOrder(request *CreateRackOnWorkOrderRequest) (response *CreateRackOnWorkOrderResponse, err error) {
     return c.CreateRackOnWorkOrderWithContext(context.Background(), request)
 }
 
 // CreateRackOnWorkOrder
 // 创建设备上架工单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateRackOnWorkOrderWithContext(ctx context.Context, request *CreateRackOnWorkOrderRequest) (response *CreateRackOnWorkOrderResponse, err error) {
     if request == nil {
         request = NewCreateRackOnWorkOrderRequest()
@@ -550,12 +574,20 @@ func NewCreateReceivingWorkOrderResponse() (response *CreateReceivingWorkOrderRe
 
 // CreateReceivingWorkOrder
 // 创建设备收货工单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateReceivingWorkOrder(request *CreateReceivingWorkOrderRequest) (response *CreateReceivingWorkOrderResponse, err error) {
     return c.CreateReceivingWorkOrderWithContext(context.Background(), request)
 }
 
 // CreateReceivingWorkOrder
 // 创建设备收货工单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateReceivingWorkOrderWithContext(ctx context.Context, request *CreateReceivingWorkOrderRequest) (response *CreateReceivingWorkOrderResponse, err error) {
     if request == nil {
         request = NewCreateReceivingWorkOrderRequest()
@@ -594,12 +626,20 @@ func NewCreateServerModelResponse() (response *CreateServerModelResponse) {
 
 // CreateServerModel
 // 新增服务器设备型号
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateServerModel(request *CreateServerModelRequest) (response *CreateServerModelResponse, err error) {
     return c.CreateServerModelWithContext(context.Background(), request)
 }
 
 // CreateServerModel
 // 新增服务器设备型号
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateServerModelWithContext(ctx context.Context, request *CreateServerModelRequest) (response *CreateServerModelResponse, err error) {
     if request == nil {
         request = NewCreateServerModelRequest()
@@ -638,12 +678,20 @@ func NewCreateSpeciallyQuitWorkOrderResponse() (response *CreateSpeciallyQuitWor
 
 // CreateSpeciallyQuitWorkOrder
 // 创建临时设备退出工单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateSpeciallyQuitWorkOrder(request *CreateSpeciallyQuitWorkOrderRequest) (response *CreateSpeciallyQuitWorkOrderResponse, err error) {
     return c.CreateSpeciallyQuitWorkOrderWithContext(context.Background(), request)
 }
 
 // CreateSpeciallyQuitWorkOrder
 // 创建临时设备退出工单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) CreateSpeciallyQuitWorkOrderWithContext(ctx context.Context, request *CreateSpeciallyQuitWorkOrderRequest) (response *CreateSpeciallyQuitWorkOrderResponse, err error) {
     if request == nil {
         request = NewCreateSpeciallyQuitWorkOrderRequest()
@@ -682,12 +730,20 @@ func NewDescribeAvailableModelListResponse() (response *DescribeAvailableModelLi
 
 // DescribeAvailableModelList
 // 获取机房内可用的型号列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeAvailableModelList(request *DescribeAvailableModelListRequest) (response *DescribeAvailableModelListResponse, err error) {
     return c.DescribeAvailableModelListWithContext(context.Background(), request)
 }
 
 // DescribeAvailableModelList
 // 获取机房内可用的型号列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeAvailableModelListWithContext(ctx context.Context, request *DescribeAvailableModelListRequest) (response *DescribeAvailableModelListResponse, err error) {
     if request == nil {
         request = NewDescribeAvailableModelListRequest()
@@ -726,12 +782,20 @@ func NewDescribeCampusListResponse() (response *DescribeCampusListResponse) {
 
 // DescribeCampusList
 // 获取用户可操作的园区列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeCampusList(request *DescribeCampusListRequest) (response *DescribeCampusListResponse, err error) {
     return c.DescribeCampusListWithContext(context.Background(), request)
 }
 
 // DescribeCampusList
 // 获取用户可操作的园区列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeCampusListWithContext(ctx context.Context, request *DescribeCampusListRequest) (response *DescribeCampusListResponse, err error) {
     if request == nil {
         request = NewDescribeCampusListRequest()
@@ -770,12 +834,20 @@ func NewDescribeCommonServiceWorkOrderDetailResponse() (response *DescribeCommon
 
 // DescribeCommonServiceWorkOrderDetail
 // 查询通用服务工单详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeCommonServiceWorkOrderDetail(request *DescribeCommonServiceWorkOrderDetailRequest) (response *DescribeCommonServiceWorkOrderDetailResponse, err error) {
     return c.DescribeCommonServiceWorkOrderDetailWithContext(context.Background(), request)
 }
 
 // DescribeCommonServiceWorkOrderDetail
 // 查询通用服务工单详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeCommonServiceWorkOrderDetailWithContext(ctx context.Context, request *DescribeCommonServiceWorkOrderDetailRequest) (response *DescribeCommonServiceWorkOrderDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCommonServiceWorkOrderDetailRequest()
@@ -814,12 +886,20 @@ func NewDescribeCustomerInfoResponse() (response *DescribeCustomerInfoResponse) 
 
 // DescribeCustomerInfo
 // 查询客户信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeCustomerInfo(request *DescribeCustomerInfoRequest) (response *DescribeCustomerInfoResponse, err error) {
     return c.DescribeCustomerInfoWithContext(context.Background(), request)
 }
 
 // DescribeCustomerInfo
 // 查询客户信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeCustomerInfoWithContext(ctx context.Context, request *DescribeCustomerInfoRequest) (response *DescribeCustomerInfoResponse, err error) {
     if request == nil {
         request = NewDescribeCustomerInfoRequest()
@@ -858,12 +938,20 @@ func NewDescribeDeviceListResponse() (response *DescribeDeviceListResponse) {
 
 // DescribeDeviceList
 // 获取设备列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeDeviceList(request *DescribeDeviceListRequest) (response *DescribeDeviceListResponse, err error) {
     return c.DescribeDeviceListWithContext(context.Background(), request)
 }
 
 // DescribeDeviceList
 // 获取设备列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeDeviceListWithContext(ctx context.Context, request *DescribeDeviceListRequest) (response *DescribeDeviceListResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceListRequest()
@@ -902,12 +990,20 @@ func NewDescribeDeviceWorkOrderDetailResponse() (response *DescribeDeviceWorkOrd
 
 // DescribeDeviceWorkOrderDetail
 // 用于查询设备类工单的工单详情，如：'receiving', 'rackOn', 'powerOn', 'powerOff', 'rackOff', 'quit'
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeDeviceWorkOrderDetail(request *DescribeDeviceWorkOrderDetailRequest) (response *DescribeDeviceWorkOrderDetailResponse, err error) {
     return c.DescribeDeviceWorkOrderDetailWithContext(context.Background(), request)
 }
 
 // DescribeDeviceWorkOrderDetail
 // 用于查询设备类工单的工单详情，如：'receiving', 'rackOn', 'powerOn', 'powerOff', 'rackOff', 'quit'
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeDeviceWorkOrderDetailWithContext(ctx context.Context, request *DescribeDeviceWorkOrderDetailRequest) (response *DescribeDeviceWorkOrderDetailResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceWorkOrderDetailRequest()
@@ -946,12 +1042,20 @@ func NewDescribeIdcUnitAssetDetailResponse() (response *DescribeIdcUnitAssetDeta
 
 // DescribeIdcUnitAssetDetail
 // 查询机房管理单元资产详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeIdcUnitAssetDetail(request *DescribeIdcUnitAssetDetailRequest) (response *DescribeIdcUnitAssetDetailResponse, err error) {
     return c.DescribeIdcUnitAssetDetailWithContext(context.Background(), request)
 }
 
 // DescribeIdcUnitAssetDetail
 // 查询机房管理单元资产详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeIdcUnitAssetDetailWithContext(ctx context.Context, request *DescribeIdcUnitAssetDetailRequest) (response *DescribeIdcUnitAssetDetailResponse, err error) {
     if request == nil {
         request = NewDescribeIdcUnitAssetDetailRequest()
@@ -990,12 +1094,20 @@ func NewDescribeIdcUnitDetailResponse() (response *DescribeIdcUnitDetailResponse
 
 // DescribeIdcUnitDetail
 // 查询机房管理单元详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeIdcUnitDetail(request *DescribeIdcUnitDetailRequest) (response *DescribeIdcUnitDetailResponse, err error) {
     return c.DescribeIdcUnitDetailWithContext(context.Background(), request)
 }
 
 // DescribeIdcUnitDetail
 // 查询机房管理单元详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeIdcUnitDetailWithContext(ctx context.Context, request *DescribeIdcUnitDetailRequest) (response *DescribeIdcUnitDetailResponse, err error) {
     if request == nil {
         request = NewDescribeIdcUnitDetailRequest()
@@ -1034,12 +1146,20 @@ func NewDescribeIdcsResponse() (response *DescribeIdcsResponse) {
 
 // DescribeIdcs
 // 获取机房和机房管理单元信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeIdcs(request *DescribeIdcsRequest) (response *DescribeIdcsResponse, err error) {
     return c.DescribeIdcsWithContext(context.Background(), request)
 }
 
 // DescribeIdcs
 // 获取机房和机房管理单元信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeIdcsWithContext(ctx context.Context, request *DescribeIdcsRequest) (response *DescribeIdcsResponse, err error) {
     if request == nil {
         request = NewDescribeIdcsRequest()
@@ -1078,12 +1198,20 @@ func NewDescribeModelResponse() (response *DescribeModelResponse) {
 
 // DescribeModel
 // 查询设备型号详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeModel(request *DescribeModelRequest) (response *DescribeModelResponse, err error) {
     return c.DescribeModelWithContext(context.Background(), request)
 }
 
 // DescribeModel
 // 查询设备型号详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeModelWithContext(ctx context.Context, request *DescribeModelRequest) (response *DescribeModelResponse, err error) {
     if request == nil {
         request = NewDescribeModelRequest()
@@ -1122,12 +1250,20 @@ func NewDescribeModelEvaluationWorkOrderDetailResponse() (response *DescribeMode
 
 // DescribeModelEvaluationWorkOrderDetail
 // 查询设备型号评估工单详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeModelEvaluationWorkOrderDetail(request *DescribeModelEvaluationWorkOrderDetailRequest) (response *DescribeModelEvaluationWorkOrderDetailResponse, err error) {
     return c.DescribeModelEvaluationWorkOrderDetailWithContext(context.Background(), request)
 }
 
 // DescribeModelEvaluationWorkOrderDetail
 // 查询设备型号评估工单详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeModelEvaluationWorkOrderDetailWithContext(ctx context.Context, request *DescribeModelEvaluationWorkOrderDetailRequest) (response *DescribeModelEvaluationWorkOrderDetailResponse, err error) {
     if request == nil {
         request = NewDescribeModelEvaluationWorkOrderDetailRequest()
@@ -1166,12 +1302,20 @@ func NewDescribeModelTemplateResponse() (response *DescribeModelTemplateResponse
 
 // DescribeModelTemplate
 // 获取型号的填写模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeModelTemplate(request *DescribeModelTemplateRequest) (response *DescribeModelTemplateResponse, err error) {
     return c.DescribeModelTemplateWithContext(context.Background(), request)
 }
 
 // DescribeModelTemplate
 // 获取型号的填写模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeModelTemplateWithContext(ctx context.Context, request *DescribeModelTemplateRequest) (response *DescribeModelTemplateResponse, err error) {
     if request == nil {
         request = NewDescribeModelTemplateRequest()
@@ -1210,12 +1354,20 @@ func NewDescribeModelVersionListResponse() (response *DescribeModelVersionListRe
 
 // DescribeModelVersionList
 // 获取用户的型号和对应的版本数量
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeModelVersionList(request *DescribeModelVersionListRequest) (response *DescribeModelVersionListResponse, err error) {
     return c.DescribeModelVersionListWithContext(context.Background(), request)
 }
 
 // DescribeModelVersionList
 // 获取用户的型号和对应的版本数量
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeModelVersionListWithContext(ctx context.Context, request *DescribeModelVersionListRequest) (response *DescribeModelVersionListResponse, err error) {
     if request == nil {
         request = NewDescribeModelVersionListRequest()
@@ -1254,12 +1406,20 @@ func NewDescribePersonnelVisitWorkOrderDetailResponse() (response *DescribePerso
 
 // DescribePersonnelVisitWorkOrderDetail
 // 查询人员到访工单详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribePersonnelVisitWorkOrderDetail(request *DescribePersonnelVisitWorkOrderDetailRequest) (response *DescribePersonnelVisitWorkOrderDetailResponse, err error) {
     return c.DescribePersonnelVisitWorkOrderDetailWithContext(context.Background(), request)
 }
 
 // DescribePersonnelVisitWorkOrderDetail
 // 查询人员到访工单详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribePersonnelVisitWorkOrderDetailWithContext(ctx context.Context, request *DescribePersonnelVisitWorkOrderDetailRequest) (response *DescribePersonnelVisitWorkOrderDetailResponse, err error) {
     if request == nil {
         request = NewDescribePersonnelVisitWorkOrderDetailRequest()
@@ -1298,12 +1458,20 @@ func NewDescribePositionStatusSummaryResponse() (response *DescribePositionStatu
 
 // DescribePositionStatusSummary
 // 获取机架总数及各状态对应的数量汇总
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribePositionStatusSummary(request *DescribePositionStatusSummaryRequest) (response *DescribePositionStatusSummaryResponse, err error) {
     return c.DescribePositionStatusSummaryWithContext(context.Background(), request)
 }
 
 // DescribePositionStatusSummary
 // 获取机架总数及各状态对应的数量汇总
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribePositionStatusSummaryWithContext(ctx context.Context, request *DescribePositionStatusSummaryRequest) (response *DescribePositionStatusSummaryResponse, err error) {
     if request == nil {
         request = NewDescribePositionStatusSummaryRequest()
@@ -1342,12 +1510,20 @@ func NewDescribePositionsResponse() (response *DescribePositionsResponse) {
 
 // DescribePositions
 // 获取机位列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribePositions(request *DescribePositionsRequest) (response *DescribePositionsResponse, err error) {
     return c.DescribePositionsWithContext(context.Background(), request)
 }
 
 // DescribePositions
 // 获取机位列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribePositionsWithContext(ctx context.Context, request *DescribePositionsRequest) (response *DescribePositionsResponse, err error) {
     if request == nil {
         request = NewDescribePositionsRequest()
@@ -1386,12 +1562,20 @@ func NewDescribeRacksResponse() (response *DescribeRacksResponse) {
 
 // DescribeRacks
 // 获取机架列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeRacks(request *DescribeRacksRequest) (response *DescribeRacksResponse, err error) {
     return c.DescribeRacksWithContext(context.Background(), request)
 }
 
 // DescribeRacks
 // 获取机架列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeRacksWithContext(ctx context.Context, request *DescribeRacksRequest) (response *DescribeRacksResponse, err error) {
     if request == nil {
         request = NewDescribeRacksRequest()
@@ -1430,12 +1614,20 @@ func NewDescribeRacksDistributionResponse() (response *DescribeRacksDistribution
 
 // DescribeRacksDistribution
 // 获取机房管理单元的机位分布
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeRacksDistribution(request *DescribeRacksDistributionRequest) (response *DescribeRacksDistributionResponse, err error) {
     return c.DescribeRacksDistributionWithContext(context.Background(), request)
 }
 
 // DescribeRacksDistribution
 // 获取机房管理单元的机位分布
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeRacksDistributionWithContext(ctx context.Context, request *DescribeRacksDistributionRequest) (response *DescribeRacksDistributionResponse, err error) {
     if request == nil {
         request = NewDescribeRacksDistributionRequest()
@@ -1474,12 +1666,20 @@ func NewDescribeResourceUsageResponse() (response *DescribeResourceUsageResponse
 
 // DescribeResourceUsage
 // 查询资源汇总
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeResourceUsage(request *DescribeResourceUsageRequest) (response *DescribeResourceUsageResponse, err error) {
     return c.DescribeResourceUsageWithContext(context.Background(), request)
 }
 
 // DescribeResourceUsage
 // 查询资源汇总
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeResourceUsageWithContext(ctx context.Context, request *DescribeResourceUsageRequest) (response *DescribeResourceUsageResponse, err error) {
     if request == nil {
         request = NewDescribeResourceUsageRequest()
@@ -1518,12 +1718,20 @@ func NewDescribeWorkOrderListResponse() (response *DescribeWorkOrderListResponse
 
 // DescribeWorkOrderList
 // 查询工单列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeWorkOrderList(request *DescribeWorkOrderListRequest) (response *DescribeWorkOrderListResponse, err error) {
     return c.DescribeWorkOrderListWithContext(context.Background(), request)
 }
 
 // DescribeWorkOrderList
 // 查询工单列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeWorkOrderListWithContext(ctx context.Context, request *DescribeWorkOrderListRequest) (response *DescribeWorkOrderListResponse, err error) {
     if request == nil {
         request = NewDescribeWorkOrderListRequest()
@@ -1562,12 +1770,20 @@ func NewDescribeWorkOrderStatisticsResponse() (response *DescribeWorkOrderStatis
 
 // DescribeWorkOrderStatistics
 // 工单统计数据查询
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeWorkOrderStatistics(request *DescribeWorkOrderStatisticsRequest) (response *DescribeWorkOrderStatisticsResponse, err error) {
     return c.DescribeWorkOrderStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeWorkOrderStatistics
 // 工单统计数据查询
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeWorkOrderStatisticsWithContext(ctx context.Context, request *DescribeWorkOrderStatisticsRequest) (response *DescribeWorkOrderStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeWorkOrderStatisticsRequest()
@@ -1606,12 +1822,20 @@ func NewDescribeWorkOrderTypesResponse() (response *DescribeWorkOrderTypesRespon
 
 // DescribeWorkOrderTypes
 // 获取用户可用的工单类型
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeWorkOrderTypes(request *DescribeWorkOrderTypesRequest) (response *DescribeWorkOrderTypesResponse, err error) {
     return c.DescribeWorkOrderTypesWithContext(context.Background(), request)
 }
 
 // DescribeWorkOrderTypes
 // 获取用户可用的工单类型
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 func (c *Client) DescribeWorkOrderTypesWithContext(ctx context.Context, request *DescribeWorkOrderTypesRequest) (response *DescribeWorkOrderTypesResponse, err error) {
     if request == nil {
         request = NewDescribeWorkOrderTypesRequest()

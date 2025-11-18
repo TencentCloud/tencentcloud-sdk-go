@@ -20,6 +20,12 @@ const (
 	// 结束时间必须大于起始时间
 	INVALIDPARAMETERVALUE_ENDTIMELOWERTHANSTARTTIME = "InvalidParameterValue.EndTimeLowerThanStartTime"
 
+	// 物资放行/ 退出交接工单，传入的额外参数不匹配
+	INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+
+	// 非法的参数组合
+	INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
+
 	// 时间格式不符合规范
 	INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
 

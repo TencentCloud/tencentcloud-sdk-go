@@ -143,6 +143,81 @@ func (r *ActivateDeviceCertificateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddClientSubscriptionRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户端id
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 订阅
+	TopicFilter *string `json:"TopicFilter,omitnil,omitempty" name:"TopicFilter"`
+
+	// 服务质量:0,1,2
+	Qos *string `json:"Qos,omitnil,omitempty" name:"Qos"`
+}
+
+type AddClientSubscriptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户端id
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 订阅
+	TopicFilter *string `json:"TopicFilter,omitnil,omitempty" name:"TopicFilter"`
+
+	// 服务质量:0,1,2
+	Qos *string `json:"Qos,omitnil,omitempty" name:"Qos"`
+}
+
+func (r *AddClientSubscriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddClientSubscriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ClientId")
+	delete(f, "TopicFilter")
+	delete(f, "Qos")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddClientSubscriptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddClientSubscriptionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddClientSubscriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *AddClientSubscriptionResponseParams `json:"Response"`
+}
+
+func (r *AddClientSubscriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddClientSubscriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ApplyRegistrationCodeRequestParams struct {
 	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1572,6 +1647,74 @@ func (r *DeleteCaCertificateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCaCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteClientSubscriptionRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户端id
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 订阅
+	TopicFilter *string `json:"TopicFilter,omitnil,omitempty" name:"TopicFilter"`
+}
+
+type DeleteClientSubscriptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户端id
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 订阅
+	TopicFilter *string `json:"TopicFilter,omitnil,omitempty" name:"TopicFilter"`
+}
+
+func (r *DeleteClientSubscriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClientSubscriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ClientId")
+	delete(f, "TopicFilter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteClientSubscriptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteClientSubscriptionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteClientSubscriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteClientSubscriptionResponseParams `json:"Response"`
+}
+
+func (r *DeleteClientSubscriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClientSubscriptionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3019,6 +3162,9 @@ type DescribeInstanceResponseParams struct {
 
 	// 服务端tls支持的协议，使用“,”分割。例如：TLSv1.3,TLSv1.2,TLSv1.1,TLSv1
 	TransportLayerSecurity *string `json:"TransportLayerSecurity,omitnil,omitempty" name:"TransportLayerSecurity"`
+
+	// 消息属性增强规则配额
+	MessageEnrichmentRuleLimit *int64 `json:"MessageEnrichmentRuleLimit,omitnil,omitempty" name:"MessageEnrichmentRuleLimit"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

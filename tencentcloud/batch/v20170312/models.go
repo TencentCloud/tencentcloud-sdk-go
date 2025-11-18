@@ -2205,6 +2205,9 @@ type InputMapping struct {
 
 	// 挂载配置项参数
 	MountOptionParameter *string `json:"MountOptionParameter,omitnil,omitempty" name:"MountOptionParameter"`
+
+	// 挂载COS存储时支持的挂载工具；当前可选值：COSFS、GooseFS-Lite。
+	MountType *string `json:"MountType,omitnil,omitempty" name:"MountType"`
 }
 
 type Instance struct {

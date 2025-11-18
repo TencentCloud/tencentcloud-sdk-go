@@ -566,6 +566,9 @@ type AgentToolInfo struct {
 
 	// 工具计费状态 0-不计费 1-可用 2-不可用（欠费、无资源等）
 	FinanceStatus *int64 `json:"FinanceStatus,omitnil,omitempty" name:"FinanceStatus"`
+
+	// 工具来源: 0-来自插件，1-来自工作流
+	ToolSource *uint64 `json:"ToolSource,omitnil,omitempty" name:"ToolSource"`
 }
 
 type AgentToolReqParam struct {
@@ -983,6 +986,10 @@ type CateInfo struct {
 	// 子分类
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Children []*CateInfo `json:"Children,omitnil,omitempty" name:"Children"`
+
+	// 是否为叶子节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLeaf *bool `json:"IsLeaf,omitnil,omitempty" name:"IsLeaf"`
 }
 
 type ChannelListInfo struct {
@@ -7496,6 +7503,21 @@ func (r *ListChannelResponse) FromJsonString(s string) error {
 type ListDocCateRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 分类查询类型：0-全量查询整棵标签树，1-根据父节点BizId分页查询子节点，2-关键词检索所有匹配的分类链路
+	QueryType *uint64 `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// QueryType=1时，父节点分类ID
+	ParentCateBizId *string `json:"ParentCateBizId,omitnil,omitempty" name:"ParentCateBizId"`
+
+	// QueryType=1时，页码（从1开始）
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数量（默认10）
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// QueryType=2时，搜索内容
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 }
 
 type ListDocCateRequest struct {
@@ -7503,6 +7525,21 @@ type ListDocCateRequest struct {
 	
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 分类查询类型：0-全量查询整棵标签树，1-根据父节点BizId分页查询子节点，2-关键词检索所有匹配的分类链路
+	QueryType *uint64 `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// QueryType=1时，父节点分类ID
+	ParentCateBizId *string `json:"ParentCateBizId,omitnil,omitempty" name:"ParentCateBizId"`
+
+	// QueryType=1时，页码（从1开始）
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数量（默认10）
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// QueryType=2时，搜索内容
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 }
 
 func (r *ListDocCateRequest) ToJsonString() string {
@@ -7518,6 +7555,11 @@ func (r *ListDocCateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BotBizId")
+	delete(f, "QueryType")
+	delete(f, "ParentCateBizId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Query")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDocCateRequest has unknown keys!", "")
 	}
@@ -7906,6 +7948,21 @@ func (r *ListModelResponse) FromJsonString(s string) error {
 type ListQACateRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 分类查询类型：0-全量查询整棵标签树，1-根据父节点BizId分页查询子节点，2-关键词检索所有匹配的分类链路
+	QueryType *uint64 `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// QueryType=1时，父节点分类ID
+	ParentCateBizId *string `json:"ParentCateBizId,omitnil,omitempty" name:"ParentCateBizId"`
+
+	// QueryType=1时，页码（从1开始）
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数量（默认10）
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// QueryType=2时，搜索内容
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 }
 
 type ListQACateRequest struct {
@@ -7913,6 +7970,21 @@ type ListQACateRequest struct {
 	
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 分类查询类型：0-全量查询整棵标签树，1-根据父节点BizId分页查询子节点，2-关键词检索所有匹配的分类链路
+	QueryType *uint64 `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// QueryType=1时，父节点分类ID
+	ParentCateBizId *string `json:"ParentCateBizId,omitnil,omitempty" name:"ParentCateBizId"`
+
+	// QueryType=1时，页码（从1开始）
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数量（默认10）
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// QueryType=2时，搜索内容
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 }
 
 func (r *ListQACateRequest) ToJsonString() string {
@@ -7928,6 +8000,11 @@ func (r *ListQACateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BotBizId")
+	delete(f, "QueryType")
+	delete(f, "ParentCateBizId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Query")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListQACateRequest has unknown keys!", "")
 	}
@@ -10875,6 +10952,10 @@ type QACate struct {
 	// 子分类
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Children []*QACate `json:"Children,omitnil,omitempty" name:"Children"`
+
+	// 是否是叶子节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLeaf *bool `json:"IsLeaf,omitnil,omitempty" name:"IsLeaf"`
 }
 
 type QAList struct {
@@ -10960,6 +11041,9 @@ type RateMsgRecordRequestParams struct {
 
 	// 原因，只有Score参数为2即点踩的时候才需要输入
 	Reasons []*string `json:"Reasons,omitnil,omitempty" name:"Reasons"`
+
+	// 用户自定义反馈内容
+	FeedbackContent *string `json:"FeedbackContent,omitnil,omitempty" name:"FeedbackContent"`
 }
 
 type RateMsgRecordRequest struct {
@@ -10980,6 +11064,9 @@ type RateMsgRecordRequest struct {
 
 	// 原因，只有Score参数为2即点踩的时候才需要输入
 	Reasons []*string `json:"Reasons,omitnil,omitempty" name:"Reasons"`
+
+	// 用户自定义反馈内容
+	FeedbackContent *string `json:"FeedbackContent,omitnil,omitempty" name:"FeedbackContent"`
 }
 
 func (r *RateMsgRecordRequest) ToJsonString() string {
@@ -10998,6 +11085,7 @@ func (r *RateMsgRecordRequest) FromJsonString(s string) error {
 	delete(f, "RecordId")
 	delete(f, "Score")
 	delete(f, "Reasons")
+	delete(f, "FeedbackContent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RateMsgRecordRequest has unknown keys!", "")
 	}
@@ -12448,6 +12536,9 @@ type UnsatisfiedReply struct {
 
 	// 操作人
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 自定义反馈
+	FeedbackContent *string `json:"FeedbackContent,omitnil,omitempty" name:"FeedbackContent"`
 }
 
 type UpdatePeriodInfo struct {

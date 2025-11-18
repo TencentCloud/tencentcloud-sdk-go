@@ -241,6 +241,74 @@ func (c *Client) CloneDBInstanceWithContext(ctx context.Context, request *CloneD
     return
 }
 
+func NewCloseAccountCAMRequest() (request *CloseAccountCAMRequest) {
+    request = &CloseAccountCAMRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "CloseAccountCAM")
+    
+    
+    return
+}
+
+func NewCloseAccountCAMResponse() (response *CloseAccountCAMResponse) {
+    response = &CloseAccountCAMResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CloseAccountCAM
+// 本接口用于关闭数据库账户的CAM验证服务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHECKACCOUNTCAMOPENERROR = "FailedOperation.CheckAccountCAMOpenError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = "InvalidParameterValue.InvalidAccountNameFormatError"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = "InvalidParameterValue.UnsupportedRegionError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhiteListError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) CloseAccountCAM(request *CloseAccountCAMRequest) (response *CloseAccountCAMResponse, err error) {
+    return c.CloseAccountCAMWithContext(context.Background(), request)
+}
+
+// CloseAccountCAM
+// 本接口用于关闭数据库账户的CAM验证服务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHECKACCOUNTCAMOPENERROR = "FailedOperation.CheckAccountCAMOpenError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = "InvalidParameterValue.InvalidAccountNameFormatError"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = "InvalidParameterValue.UnsupportedRegionError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhiteListError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) CloseAccountCAMWithContext(ctx context.Context, request *CloseAccountCAMRequest) (response *CloseAccountCAMResponse, err error) {
+    if request == nil {
+        request = NewCloseAccountCAMRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "CloseAccountCAM")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseAccountCAM require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloseAccountCAMResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseDBExtranetAccessRequest() (request *CloseDBExtranetAccessRequest) {
     request = &CloseDBExtranetAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5701,6 +5769,62 @@ func (c *Client) ModifyDBInstanceChargeTypeWithContext(ctx context.Context, requ
     return
 }
 
+func NewModifyDBInstanceDeletionProtectionRequest() (request *ModifyDBInstanceDeletionProtectionRequest) {
+    request = &ModifyDBInstanceDeletionProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceDeletionProtection")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceDeletionProtectionResponse() (response *ModifyDBInstanceDeletionProtectionResponse) {
+    response = &ModifyDBInstanceDeletionProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBInstanceDeletionProtection
+// 本接口（DeletionProtection）用于开启或关闭实例销毁保护
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+func (c *Client) ModifyDBInstanceDeletionProtection(request *ModifyDBInstanceDeletionProtectionRequest) (response *ModifyDBInstanceDeletionProtectionResponse, err error) {
+    return c.ModifyDBInstanceDeletionProtectionWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceDeletionProtection
+// 本接口（DeletionProtection）用于开启或关闭实例销毁保护
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+func (c *Client) ModifyDBInstanceDeletionProtectionWithContext(ctx context.Context, request *ModifyDBInstanceDeletionProtectionRequest) (response *ModifyDBInstanceDeletionProtectionResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceDeletionProtectionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "ModifyDBInstanceDeletionProtection")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceDeletionProtection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceDeletionProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceDeploymentRequest() (request *ModifyDBInstanceDeploymentRequest) {
     request = &ModifyDBInstanceDeploymentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6821,6 +6945,74 @@ func (c *Client) ModifySwitchTimePeriodWithContext(ctx context.Context, request 
     return
 }
 
+func NewOpenAccountCAMRequest() (request *OpenAccountCAMRequest) {
+    request = &OpenAccountCAMRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "OpenAccountCAM")
+    
+    
+    return
+}
+
+func NewOpenAccountCAMResponse() (response *OpenAccountCAMResponse) {
+    response = &OpenAccountCAMResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OpenAccountCAM
+// 本接口用于开启数据库账户的CAM验证服务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHECKACCOUNTCAMCLOSEERROR = "FailedOperation.CheckAccountCAMCloseError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXISTERROR = "InvalidParameterValue.AccountNotExistError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = "InvalidParameterValue.InvalidAccountNameFormatError"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = "InvalidParameterValue.UnsupportedRegionError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhiteListError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) OpenAccountCAM(request *OpenAccountCAMRequest) (response *OpenAccountCAMResponse, err error) {
+    return c.OpenAccountCAMWithContext(context.Background(), request)
+}
+
+// OpenAccountCAM
+// 本接口用于开启数据库账户的CAM验证服务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHECKACCOUNTCAMCLOSEERROR = "FailedOperation.CheckAccountCAMCloseError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXISTERROR = "InvalidParameterValue.AccountNotExistError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = "InvalidParameterValue.InvalidAccountNameFormatError"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = "InvalidParameterValue.UnsupportedRegionError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhiteListError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) OpenAccountCAMWithContext(ctx context.Context, request *OpenAccountCAMRequest) (response *OpenAccountCAMResponse, err error) {
+    if request == nil {
+        request = NewOpenAccountCAMRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "OpenAccountCAM")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenAccountCAM require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenAccountCAMResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenDBExtranetAccessRequest() (request *OpenDBExtranetAccessRequest) {
     request = &OpenDBExtranetAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6985,6 +7177,74 @@ func (c *Client) RebalanceReadOnlyGroupWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewRebalanceReadOnlyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRefreshAccountPasswordRequest() (request *RefreshAccountPasswordRequest) {
+    request = &RefreshAccountPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "RefreshAccountPassword")
+    
+    
+    return
+}
+
+func NewRefreshAccountPasswordResponse() (response *RefreshAccountPasswordResponse) {
+    response = &RefreshAccountPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RefreshAccountPassword
+// 本接口用于对开启CAM验证的账户执行手动刷新密码。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHECKACCOUNTCAMOPENERROR = "FailedOperation.CheckAccountCAMOpenError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXISTERROR = "InvalidParameterValue.AccountNotExistError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = "InvalidParameterValue.InvalidAccountNameFormatError"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = "InvalidParameterValue.UnsupportedRegionError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhiteListError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) RefreshAccountPassword(request *RefreshAccountPasswordRequest) (response *RefreshAccountPasswordResponse, err error) {
+    return c.RefreshAccountPasswordWithContext(context.Background(), request)
+}
+
+// RefreshAccountPassword
+// 本接口用于对开启CAM验证的账户执行手动刷新密码。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHECKACCOUNTCAMOPENERROR = "FailedOperation.CheckAccountCAMOpenError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXISTERROR = "InvalidParameterValue.AccountNotExistError"
+//  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = "InvalidParameterValue.InvalidAccountNameFormatError"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGIONERROR = "InvalidParameterValue.UnsupportedRegionError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhiteListError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) RefreshAccountPasswordWithContext(ctx context.Context, request *RefreshAccountPasswordRequest) (response *RefreshAccountPasswordResponse, err error) {
+    if request == nil {
+        request = NewRefreshAccountPasswordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "RefreshAccountPassword")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefreshAccountPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRefreshAccountPasswordResponse()
     err = c.Send(request, response)
     return
 }

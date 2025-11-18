@@ -9180,6 +9180,9 @@ func NewDeleteNatGatewayResponse() (response *DeleteNatGatewayResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_DELETIONPROTECTIONENABLED = "UnsupportedOperation.DeletionProtectionEnabled"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveHighTraffic"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTE = "UnsupportedOperation.NatGatewayHaveRoute"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTEANDHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveRouteAndHighTraffic"
 func (c *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (response *DeleteNatGatewayResponse, err error) {
     return c.DeleteNatGatewayWithContext(context.Background(), request)
 }
@@ -9196,6 +9199,9 @@ func (c *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (response *D
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_DELETIONPROTECTIONENABLED = "UnsupportedOperation.DeletionProtectionEnabled"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveHighTraffic"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTE = "UnsupportedOperation.NatGatewayHaveRoute"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTEANDHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveRouteAndHighTraffic"
 func (c *Client) DeleteNatGatewayWithContext(ctx context.Context, request *DeleteNatGatewayRequest) (response *DeleteNatGatewayResponse, err error) {
     if request == nil {
         request = NewDeleteNatGatewayRequest()
@@ -14653,6 +14659,74 @@ func (c *Client) DescribeNatGatewaySourceIpTranslationNatRulesWithContext(ctx co
     request.SetContext(ctx)
     
     response = NewDescribeNatGatewaySourceIpTranslationNatRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNatGatewayZonesRequest() (request *DescribeNatGatewayZonesRequest) {
+    request = &DescribeNatGatewayZonesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeNatGatewayZones")
+    
+    
+    return
+}
+
+func NewDescribeNatGatewayZonesResponse() (response *DescribeNatGatewayZonesResponse) {
+    response = &DescribeNatGatewayZonesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNatGatewayZones
+// 本接口(DescribeNatGatewayZones)用于查询NAT网关可售卖的可用区信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNatGatewayZones(request *DescribeNatGatewayZonesRequest) (response *DescribeNatGatewayZonesResponse, err error) {
+    return c.DescribeNatGatewayZonesWithContext(context.Background(), request)
+}
+
+// DescribeNatGatewayZones
+// 本接口(DescribeNatGatewayZones)用于查询NAT网关可售卖的可用区信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNatGatewayZonesWithContext(ctx context.Context, request *DescribeNatGatewayZonesRequest) (response *DescribeNatGatewayZonesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNatGatewayZonesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DescribeNatGatewayZones")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatGatewayZones require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNatGatewayZonesResponse()
     err = c.Send(request, response)
     return
 }

@@ -1505,7 +1505,9 @@ func NewDeleteImagesResponse() (response *DeleteImagesResponse) {
 //
 // 
 //
-// * 当[镜像状态](https://cloud.tencent.com/document/product/213/15753#Image)为`创建中`和`使用中`时, 不允许删除。镜像状态可以通过[DescribeImages](https://cloud.tencent.com/document/api/213/9418)获取。
+// * 当[镜像状态](https://cloud.tencent.com/document/product/213/15753#Image) 为`创建中`、`复制中`、`导入中`时, 不允许删除。镜像状态可以通过[DescribeImages](https://cloud.tencent.com/document/api/213/9418)获取。
+//
+// * 被共享的镜像，需要先取消共享关系，才能删除。
 //
 // * 每个地域最多只支持创建500个自定义镜像，删除镜像可以释放账户的配额。
 //
@@ -1530,7 +1532,9 @@ func (c *Client) DeleteImages(request *DeleteImagesRequest) (response *DeleteIma
 //
 // 
 //
-// * 当[镜像状态](https://cloud.tencent.com/document/product/213/15753#Image)为`创建中`和`使用中`时, 不允许删除。镜像状态可以通过[DescribeImages](https://cloud.tencent.com/document/api/213/9418)获取。
+// * 当[镜像状态](https://cloud.tencent.com/document/product/213/15753#Image) 为`创建中`、`复制中`、`导入中`时, 不允许删除。镜像状态可以通过[DescribeImages](https://cloud.tencent.com/document/api/213/9418)获取。
+//
+// * 被共享的镜像，需要先取消共享关系，才能删除。
 //
 // * 每个地域最多只支持创建500个自定义镜像，删除镜像可以释放账户的配额。
 //
@@ -3573,6 +3577,10 @@ func NewDescribeLaunchTemplateVersionsResponse() (response *DescribeLaunchTempla
 // DescribeLaunchTemplateVersions
 // 本接口（DescribeLaunchTemplateVersions）用于查询实例模板版本信息。
 //
+// 
+//
+// - 不支持参数`LaunchTemplateVersions`与以下参数同时指定，包括 `MaxVersion`、`MinVersion`、`Limit`、`Offset`和`DefaultVersion`。
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -3598,6 +3606,10 @@ func (c *Client) DescribeLaunchTemplateVersions(request *DescribeLaunchTemplateV
 
 // DescribeLaunchTemplateVersions
 // 本接口（DescribeLaunchTemplateVersions）用于查询实例模板版本信息。
+//
+// 
+//
+// - 不支持参数`LaunchTemplateVersions`与以下参数同时指定，包括 `MaxVersion`、`MinVersion`、`Limit`、`Offset`和`DefaultVersion`。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5952,6 +5964,7 @@ func NewModifyImageAttributeResponse() (response *ModifyImageAttributeResponse) 
 //  INVALIDPARAMETERVALUE_INVALIDIMAGEFAMILY = "InvalidParameterValue.InvalidImageFamily"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNSUPPORTEDOPERATION_SHAREDIMAGEMODIFYUNSUPPORTED = "UnsupportedOperation.SharedImageModifyUnsupported"
 func (c *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest) (response *ModifyImageAttributeResponse, err error) {
     return c.ModifyImageAttributeWithContext(context.Background(), request)
 }
@@ -5972,6 +5985,7 @@ func (c *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest) (res
 //  INVALIDPARAMETERVALUE_INVALIDIMAGEFAMILY = "InvalidParameterValue.InvalidImageFamily"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNSUPPORTEDOPERATION_SHAREDIMAGEMODIFYUNSUPPORTED = "UnsupportedOperation.SharedImageModifyUnsupported"
 func (c *Client) ModifyImageAttributeWithContext(ctx context.Context, request *ModifyImageAttributeRequest) (response *ModifyImageAttributeResponse, err error) {
     if request == nil {
         request = NewModifyImageAttributeRequest()

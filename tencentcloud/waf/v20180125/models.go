@@ -2152,6 +2152,30 @@ type CCRuleItems struct {
 
 	// 动作灰度比例，默认值100
 	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+
+	// 批量cc规则配置的批量域名
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 批量cc规则使用的批量防护组
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 定时任务类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 定时任务类型：month or week
+	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+
+	// 过期时间
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 是否生效
+	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+
+	// 来源：批量还是单个规则
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 type CCRuleLists struct {
@@ -2160,6 +2184,12 @@ type CCRuleLists struct {
 
 	// 规则
 	Res []*CCRuleItems `json:"Res,omitnil,omitempty" name:"Res"`
+
+	// 规则限制总数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 规则剩余多少可用
+	Available *int64 `json:"Available,omitnil,omitempty" name:"Available"`
 }
 
 type CacheUrlItems struct {
@@ -3153,6 +3183,9 @@ type CreateOwaspWhiteRuleRequestParams struct {
 
 	// 规则状态，0：关闭、1：开启，默认为开启
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 type CreateOwaspWhiteRuleRequest struct {
@@ -3184,6 +3217,9 @@ type CreateOwaspWhiteRuleRequest struct {
 
 	// 规则状态，0：关闭、1：开启，默认为开启
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 func (r *CreateOwaspWhiteRuleRequest) ToJsonString() string {
@@ -3207,6 +3243,7 @@ func (r *CreateOwaspWhiteRuleRequest) FromJsonString(s string) error {
 	delete(f, "JobDateTime")
 	delete(f, "ExpireTime")
 	delete(f, "Status")
+	delete(f, "LogicalOp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOwaspWhiteRuleRequest has unknown keys!", "")
 	}
@@ -11395,7 +11432,21 @@ type DomainInfo struct {
 	// 用户id
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 负载均衡型WAF域名LB监听器状态。
+	// SAAS型WAF域名状态：
+	// -2：配置下发失败
+	// -1：配置下发中
+	// 0：DNS解析中
+	// 1：无DNS解析记录，请接入WAF
+	// 10：DNS解析未知，域名启用了代理
+	// 11：DNS解析异常，使用A记录接入WAF IP
+	// 200：检测源站不可达
+	// 220：源站不支持长连接
+	// 311：证书过期
+	// 312：证书即将过期
+	// 310：证书异常
+	// 316：备案异常
+	// 5：WAF回源已变更
+	// 负载均衡型WAF域名LB监听器状态：
 	// 0：操作成功 
 	// 4：正在绑定LB 
 	// 6：正在解绑LB 
@@ -11737,6 +11788,29 @@ type DomainsPartInfo struct {
 
 	// gzip开关。0：关闭 1：默认值，打开。
 	Gzip *int64 `json:"Gzip,omitnil,omitempty" name:"Gzip"`
+
+	// SAAS型WAF域名状态：
+	// -2：配置下发失败
+	// -1：配置下发中
+	// 0：DNS解析中
+	// 1：无DNS解析记录，请接入WAF
+	// 10：DNS解析未知，域名启用了代理
+	// 11：DNS解析异常，使用A记录接入WAF IP
+	// 200：检测源站不可达
+	// 220：源站不支持长连接
+	// 311：证书过期
+	// 312：证书即将过期
+	// 310：证书异常
+	// 316：备案异常
+	// 5：WAF回源已变更
+	// 负载均衡型WAF域名LB监听器状态：
+	// 0：操作成功 
+	// 4：正在绑定LB 
+	// 6：正在解绑LB 
+	// 7：解绑LB失败 
+	// 8：绑定LB失败 
+	// 10：内部错误
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -13043,6 +13117,12 @@ type InstanceInfo struct {
 
 	// 弹性资源Id
 	ElasticResourceId *string `json:"ElasticResourceId,omitnil,omitempty" name:"ElasticResourceId"`
+
+	// 预付费大模型安全信息包
+	LLMMonPkg *LLMMonPkg `json:"LLMMonPkg,omitnil,omitempty" name:"LLMMonPkg"`
+
+	// 地域id
+	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
 type IpAccessControlData struct {
@@ -13164,6 +13244,36 @@ type KVInt struct {
 
 	// Value
 	Value *uint64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type LLMMonPkg struct {
+	// 资源id
+	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 地域
+	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 计费项
+	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
+
+	// 预付费大模型安全续费标识
+	// 0 手动续费；1自动续费；2 到期不续
+	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 大模型安全Token使用量
+	UseToken *uint64 `json:"UseToken,omitnil,omitempty" name:"UseToken"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type LLMPkg struct {
@@ -16711,6 +16821,9 @@ type ModifyOwaspWhiteRuleRequestParams struct {
 
 	// 规则状态，0：关闭、1：开启，默认为开启
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 type ModifyOwaspWhiteRuleRequest struct {
@@ -16745,6 +16858,9 @@ type ModifyOwaspWhiteRuleRequest struct {
 
 	// 规则状态，0：关闭、1：开启，默认为开启
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 func (r *ModifyOwaspWhiteRuleRequest) ToJsonString() string {
@@ -16769,6 +16885,7 @@ func (r *ModifyOwaspWhiteRuleRequest) FromJsonString(s string) error {
 	delete(f, "JobDateTime")
 	delete(f, "ExpireTime")
 	delete(f, "Status")
+	delete(f, "LogicalOp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOwaspWhiteRuleRequest has unknown keys!", "")
 	}
@@ -18022,6 +18139,9 @@ type OwaspWhiteRule struct {
 
 	// 当前是否有效
 	ValidStatus *bool `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 type ParamCompareList struct {
@@ -19770,6 +19890,9 @@ type UpsertCCRuleRequestParams struct {
 
 	// 动作灰度比例，默认值100
 	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+
+	// 规则来源
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 type UpsertCCRuleRequest struct {
@@ -19846,6 +19969,9 @@ type UpsertCCRuleRequest struct {
 
 	// 动作灰度比例，默认值100
 	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+
+	// 规则来源
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 func (r *UpsertCCRuleRequest) ToJsonString() string {
@@ -19884,6 +20010,7 @@ func (r *UpsertCCRuleRequest) FromJsonString(s string) error {
 	delete(f, "LogicalOp")
 	delete(f, "PageId")
 	delete(f, "ActionRatio")
+	delete(f, "Source")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertCCRuleRequest has unknown keys!", "")
 	}
@@ -20372,6 +20499,12 @@ type WafRuleLimit struct {
 
 	// 流量标记的规格
 	TrafficMarking *uint64 `json:"TrafficMarking,omitnil,omitempty" name:"TrafficMarking"`
+
+	// 批量cc
+	BatchCC *uint64 `json:"BatchCC,omitnil,omitempty" name:"BatchCC"`
+
+	// 批量session
+	BatchSession *uint64 `json:"BatchSession,omitnil,omitempty" name:"BatchSession"`
 }
 
 type WafThreatenIntelligenceDetails struct {

@@ -268,6 +268,9 @@ type AlarmNotice struct {
 	// 通知模板绑定的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 是否免登录，0-否，1-是
+	IsLoginFree *int64 `json:"IsLoginFree,omitnil,omitempty" name:"IsLoginFree"`
 }
 
 type AlarmPolicy struct {
@@ -1078,6 +1081,9 @@ type CreateAlarmNoticeRequestParams struct {
 
 	// 模板绑定的标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 是否免登录，0-否，1-是
+	IsLoginFree *int64 `json:"IsLoginFree,omitnil,omitempty" name:"IsLoginFree"`
 }
 
 type CreateAlarmNoticeRequest struct {
@@ -1106,6 +1112,9 @@ type CreateAlarmNoticeRequest struct {
 
 	// 模板绑定的标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 是否免登录，0-否，1-是
+	IsLoginFree *int64 `json:"IsLoginFree,omitnil,omitempty" name:"IsLoginFree"`
 }
 
 func (r *CreateAlarmNoticeRequest) ToJsonString() string {
@@ -1128,6 +1137,7 @@ func (r *CreateAlarmNoticeRequest) FromJsonString(s string) error {
 	delete(f, "URLNotices")
 	delete(f, "CLSNotices")
 	delete(f, "Tags")
+	delete(f, "IsLoginFree")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmNoticeRequest has unknown keys!", "")
 	}
@@ -1982,7 +1992,8 @@ type CreateGrafanaInstanceRequestParams struct {
 	// VPC ID (私有网络 ID)
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID 数组(VPC ID下的子网 ID，只取第一个)
+	// 子网 ID 数组(VPC ID下的子网 ID，只取第一个)。
+	// 注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 是否启用外网
@@ -2007,7 +2018,8 @@ type CreateGrafanaInstanceRequest struct {
 	// VPC ID (私有网络 ID)
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID 数组(VPC ID下的子网 ID，只取第一个)
+	// 子网 ID 数组(VPC ID下的子网 ID，只取第一个)。
+	// 注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 是否启用外网
@@ -12618,6 +12630,9 @@ type ModifyAlarmNoticeRequestParams struct {
 
 	// 告警通知模板绑定的告警策略ID列表
 	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
+
+	// 是否免登录，0-否，1-是
+	IsLoginFree *int64 `json:"IsLoginFree,omitnil,omitempty" name:"IsLoginFree"`
 }
 
 type ModifyAlarmNoticeRequest struct {
@@ -12649,6 +12664,9 @@ type ModifyAlarmNoticeRequest struct {
 
 	// 告警通知模板绑定的告警策略ID列表
 	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
+
+	// 是否免登录，0-否，1-是
+	IsLoginFree *int64 `json:"IsLoginFree,omitnil,omitempty" name:"IsLoginFree"`
 }
 
 func (r *ModifyAlarmNoticeRequest) ToJsonString() string {
@@ -12672,6 +12690,7 @@ func (r *ModifyAlarmNoticeRequest) FromJsonString(s string) error {
 	delete(f, "URLNotices")
 	delete(f, "CLSNotices")
 	delete(f, "PolicyIds")
+	delete(f, "IsLoginFree")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmNoticeRequest has unknown keys!", "")
 	}

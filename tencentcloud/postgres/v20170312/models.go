@@ -538,6 +538,81 @@ func (r *CloneDBInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CloseAccountCAMRequestParams struct {
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 需要关闭CAM服务的账号名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 关闭CAM后，登录该账号所需要的新密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 密码是否加密
+	PasswordEncrypt *bool `json:"PasswordEncrypt,omitnil,omitempty" name:"PasswordEncrypt"`
+}
+
+type CloseAccountCAMRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 需要关闭CAM服务的账号名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 关闭CAM后，登录该账号所需要的新密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 密码是否加密
+	PasswordEncrypt *bool `json:"PasswordEncrypt,omitnil,omitempty" name:"PasswordEncrypt"`
+}
+
+func (r *CloseAccountCAMRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseAccountCAMRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "UserName")
+	delete(f, "Password")
+	delete(f, "PasswordEncrypt")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseAccountCAMRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseAccountCAMResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CloseAccountCAMResponse struct {
+	*tchttp.BaseResponse
+	Response *CloseAccountCAMResponseParams `json:"Response"`
+}
+
+func (r *CloseAccountCAMResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseAccountCAMResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CloseDBExtranetAccessRequestParams struct {
 	// 实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。形如postgres-6r233v55
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
@@ -7076,6 +7151,67 @@ func (r *ModifyDBInstanceChargeTypeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDBInstanceDeletionProtectionRequestParams struct {
+	// 实例 ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 开启或关闭实例删除保护。true - 开启 ；false - 关闭。
+	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+}
+
+type ModifyDBInstanceDeletionProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 开启或关闭实例删除保护。true - 开启 ；false - 关闭。
+	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+}
+
+func (r *ModifyDBInstanceDeletionProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceDeletionProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "DeletionProtection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceDeletionProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceDeletionProtectionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDBInstanceDeletionProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBInstanceDeletionProtectionResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBInstanceDeletionProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceDeletionProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBInstanceDeploymentRequestParams struct {
 	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
@@ -8319,6 +8455,67 @@ type NetworkAccess struct {
 }
 
 // Predefined struct for user
+type OpenAccountCAMRequestParams struct {
+	// 数据库实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 需要开启CAM服务的账号名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+type OpenAccountCAMRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 需要开启CAM服务的账号名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+func (r *OpenAccountCAMRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenAccountCAMRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "UserName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenAccountCAMRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenAccountCAMResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OpenAccountCAMResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenAccountCAMResponseParams `json:"Response"`
+}
+
+func (r *OpenAccountCAMResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenAccountCAMResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type OpenDBExtranetAccessRequestParams struct {
 	// 实例ID，形如postgres-hez4fh0v。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
@@ -8693,6 +8890,67 @@ func (r *RebalanceReadOnlyGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RebalanceReadOnlyGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RefreshAccountPasswordRequestParams struct {
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 账号名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+type RefreshAccountPasswordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 账号名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+func (r *RefreshAccountPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefreshAccountPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "UserName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefreshAccountPasswordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RefreshAccountPasswordResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RefreshAccountPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *RefreshAccountPasswordResponseParams `json:"Response"`
+}
+
+func (r *RefreshAccountPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefreshAccountPasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

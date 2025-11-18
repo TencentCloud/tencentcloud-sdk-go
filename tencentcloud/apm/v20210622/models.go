@@ -36,6 +36,20 @@ type APMKVItem struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type AgentOperationConfigView struct {
+	// 当前接口配置是否开启了接口白名单配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetentionValid *bool `json:"RetentionValid,omitnil,omitempty" name:"RetentionValid"`
+
+	// RetentionValid为false时生效，接口配置中的黑名单配置，配置中的接口不采集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IgnoreOperation *string `json:"IgnoreOperation,omitnil,omitempty" name:"IgnoreOperation"`
+
+	// RetentionValid为true时生效，接口配置中的白名单配置，仅采集配置中的接口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetentionOperation *string `json:"RetentionOperation,omitnil,omitempty" name:"RetentionOperation"`
+}
+
 type ApmAgentInfo struct {
 	// Agent 下载地址
 	AgentDownloadURL *string `json:"AgentDownloadURL,omitnil,omitempty" name:"AgentDownloadURL"`
@@ -54,6 +68,187 @@ type ApmAgentInfo struct {
 
 	// 内网上报地址( Private Link 上报地址)
 	PrivateLinkCollectorURL *string `json:"PrivateLinkCollectorURL,omitnil,omitempty" name:"PrivateLinkCollectorURL"`
+}
+
+type ApmAppConfig struct {
+	// 实例ID
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// 服务名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// URL收敛开关
+	UrlConvergenceSwitch *int64 `json:"UrlConvergenceSwitch,omitnil,omitempty" name:"UrlConvergenceSwitch"`
+
+	// URL收敛阈值
+	UrlConvergenceThreshold *int64 `json:"UrlConvergenceThreshold,omitnil,omitempty" name:"UrlConvergenceThreshold"`
+
+	// URL收敛正则
+	UrlConvergence *string `json:"UrlConvergence,omitnil,omitempty" name:"UrlConvergence"`
+
+	// 异常过滤正则
+	ExceptionFilter *string `json:"ExceptionFilter,omitnil,omitempty" name:"ExceptionFilter"`
+
+	// 错误码过滤
+	ErrorCodeFilter *string `json:"ErrorCodeFilter,omitnil,omitempty" name:"ErrorCodeFilter"`
+
+	// 服务组件类型
+	Components *string `json:"Components,omitnil,omitempty" name:"Components"`
+
+	// URL排除正则
+	UrlExclude *string `json:"UrlExclude,omitnil,omitempty" name:"UrlExclude"`
+
+	// 日志来源
+	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
+
+	// 日志所在地域
+	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
+
+	// 是否开启日志 0 关 1 开
+	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
+
+	// 日志主题ID
+	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
+
+	// 需过滤的接口名
+	IgnoreOperationName *string `json:"IgnoreOperationName,omitnil,omitempty" name:"IgnoreOperationName"`
+
+	// CLS日志集 | ES集群ID
+	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
+
+	// 探针每秒上报trace数
+	TraceRateLimit *int64 `json:"TraceRateLimit,omitnil,omitempty" name:"TraceRateLimit"`
+
+	// 是否开启线程剖析
+	EnableSnapshot *bool `json:"EnableSnapshot,omitnil,omitempty" name:"EnableSnapshot"`
+
+	// 线程剖析超时阈值
+	SnapshotTimeout *int64 `json:"SnapshotTimeout,omitnil,omitempty" name:"SnapshotTimeout"`
+
+	// 是否开启agent
+	AgentEnable *bool `json:"AgentEnable,omitnil,omitempty" name:"AgentEnable"`
+
+	// 组件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstrumentList []*Instrument `json:"InstrumentList,omitnil,omitempty" name:"InstrumentList"`
+
+	// 是否开启链路压缩
+	TraceSquash *bool `json:"TraceSquash,omitnil,omitempty" name:"TraceSquash"`
+
+	// 是否开启应用诊断开关
+	EventEnable *bool `json:"EventEnable,omitnil,omitempty" name:"EventEnable"`
+
+	// 探针接口相关配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentOperationConfigView *AgentOperationConfigView `json:"AgentOperationConfigView,omitnil,omitempty" name:"AgentOperationConfigView"`
+
+	// 是否开启应用日志配置
+	EnableLogConfig *bool `json:"EnableLogConfig,omitnil,omitempty" name:"EnableLogConfig"`
+
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
+
+	// 应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableDashboardConfig *bool `json:"EnableDashboardConfig,omitnil,omitempty" name:"EnableDashboardConfig"`
+
+	// 是否关联dashboard： 0 关 1 开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
+
+	// dashboard ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
+
+	// 是否开启应用级别配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableSecurityConfig *bool `json:"EnableSecurityConfig,omitnil,omitempty" name:"EnableSecurityConfig"`
+
+	// 是否开启组件漏洞检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
+
+	// 是否开启SQL注入分析
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
+
+	// 是否开启远程命令执行分析
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
+
+	// 是否开启内存马检测分析
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
+
+	// CLS索引类型(0=全文索引，1=键值索引)
+	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
+
+	// traceId的索引key: 当CLS索引类型为键值索引时生效
+	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
+
+	// 是否开启删除任意文件检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
+
+	// 是否开启读取任意文件检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
+
+	// 是否开启上传任意文件检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
+
+	// 是否开启包含任意文件检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
+
+	// 是否开启目录遍历检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
+
+	// 是否开启模板引擎注入检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
+
+	// 是否开启脚本引擎注入检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
+
+	// 是否开启表达式注入检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
+
+	// 是否开启JNDI注入检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsJNDIInjectionAnalysis *int64 `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
+
+	// 是否开启JNI注入检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsJNIInjectionAnalysis *int64 `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
+
+	// 是否开启Webshell后门检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
+
+	// 是否开启反序列化检测（0-关闭，1-开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
+
+	// 接口名称自动收敛开关（0-关闭，1-开启）
+	UrlAutoConvergenceEnable *bool `json:"UrlAutoConvergenceEnable,omitnil,omitempty" name:"UrlAutoConvergenceEnable"`
+
+	// URL长分段收敛阈值
+	UrlLongSegmentThreshold *int64 `json:"UrlLongSegmentThreshold,omitnil,omitempty" name:"UrlLongSegmentThreshold"`
+
+	// URL数字分段收敛阈值
+	UrlNumberSegmentThreshold *int64 `json:"UrlNumberSegmentThreshold,omitnil,omitempty" name:"UrlNumberSegmentThreshold"`
+
+	// 探针熔断内存阈值
+	DisableMemoryUsed *int64 `json:"DisableMemoryUsed,omitnil,omitempty" name:"DisableMemoryUsed"`
+
+	// 探针熔断CPU阈值
+	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
 }
 
 type ApmApplicationConfigView struct {
@@ -119,6 +314,19 @@ type ApmApplicationConfigView struct {
 
 	// 探针熔断CPU阈值
 	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
+}
+
+type ApmAssociation struct {
+	// 关联产品的实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeerId *string `json:"PeerId,omitnil,omitempty" name:"PeerId"`
+
+	// 关联关系状态：1（启用）、2（不启用）、3（已失效）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// CKafka消息主题
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
 type ApmField struct {
@@ -333,6 +541,66 @@ type ApmMetricRecord struct {
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type ApmPrometheusRules struct {
+	// 指标匹配规则ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 指标匹配规则名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则生效的应用。生效于全部应用就传空字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 指标匹配规则状态：1(启用)、2（不启用）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 指标匹配规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricNameRule *string `json:"MetricNameRule,omitnil,omitempty" name:"MetricNameRule"`
+
+	// 匹配类型：0精准匹配，1前缀匹配，2后缀匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricMatchType *int64 `json:"MetricMatchType,omitnil,omitempty" name:"MetricMatchType"`
+}
+
+type ApmSampleConfig struct {
+	// 实例ID
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// 服务名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 采样名字
+	SampleName *string `json:"SampleName,omitnil,omitempty" name:"SampleName"`
+
+	// 接口名
+	OperationName *string `json:"OperationName,omitnil,omitempty" name:"OperationName"`
+
+	// 采样的span数
+	SpanNum *int64 `json:"SpanNum,omitnil,omitempty" name:"SpanNum"`
+
+	// 采样配置开关 0 关 1 开
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// tags数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*APMKVItem `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 采样率
+	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
+
+	// 0=精确匹配（默认）；1=前缀匹配；2=后缀匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationType *int64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 配置Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
 type ApmServiceMetric struct {
 	// filed数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -455,6 +723,187 @@ func (r *CreateApmInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateApmPrometheusRuleRequestParams struct {
+	// 指标匹配规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则生效的应用。作用全部应用就传空字符串
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 指标匹配类型：0精准匹配，1前缀匹配，2后缀匹配
+	MetricMatchType *int64 `json:"MetricMatchType,omitnil,omitempty" name:"MetricMatchType"`
+
+	// 客户定义的命中指标名规则。
+	MetricNameRule *string `json:"MetricNameRule,omitnil,omitempty" name:"MetricNameRule"`
+
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type CreateApmPrometheusRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标匹配规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则生效的应用。作用全部应用就传空字符串
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 指标匹配类型：0精准匹配，1前缀匹配，2后缀匹配
+	MetricMatchType *int64 `json:"MetricMatchType,omitnil,omitempty" name:"MetricMatchType"`
+
+	// 客户定义的命中指标名规则。
+	MetricNameRule *string `json:"MetricNameRule,omitnil,omitempty" name:"MetricNameRule"`
+
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *CreateApmPrometheusRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApmPrometheusRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "ServiceName")
+	delete(f, "MetricMatchType")
+	delete(f, "MetricNameRule")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApmPrometheusRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateApmPrometheusRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateApmPrometheusRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateApmPrometheusRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateApmPrometheusRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApmPrometheusRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateApmSampleConfigRequestParams struct {
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 采样率
+	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
+
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 采样规则名
+	SampleName *string `json:"SampleName,omitnil,omitempty" name:"SampleName"`
+
+	// 采样Tags
+	Tags []*APMKVItem `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 接口名
+	OperationName *string `json:"OperationName,omitnil,omitempty" name:"OperationName"`
+
+	// 0=精确匹配（默认）；1=前缀匹配；2=后缀匹配
+	OperationType *int64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+}
+
+type CreateApmSampleConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 采样率
+	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
+
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 采样规则名
+	SampleName *string `json:"SampleName,omitnil,omitempty" name:"SampleName"`
+
+	// 采样Tags
+	Tags []*APMKVItem `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 接口名
+	OperationName *string `json:"OperationName,omitnil,omitempty" name:"OperationName"`
+
+	// 0=精确匹配（默认）；1=前缀匹配；2=后缀匹配
+	OperationType *int64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+}
+
+func (r *CreateApmSampleConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApmSampleConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SampleRate")
+	delete(f, "ServiceName")
+	delete(f, "SampleName")
+	delete(f, "Tags")
+	delete(f, "OperationName")
+	delete(f, "OperationType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApmSampleConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateApmSampleConfigResponseParams struct {
+	// 采样配置参数
+	ApmSampleConfig *ApmSampleConfig `json:"ApmSampleConfig,omitnil,omitempty" name:"ApmSampleConfig"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateApmSampleConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateApmSampleConfigResponseParams `json:"Response"`
+}
+
+func (r *CreateApmSampleConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApmSampleConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateProfileTaskRequestParams struct {
 	// 应用名称
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
@@ -561,6 +1010,67 @@ func (r *CreateProfileTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteApmSampleConfigRequestParams struct {
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 采样规则名
+	SampleName *string `json:"SampleName,omitnil,omitempty" name:"SampleName"`
+}
+
+type DeleteApmSampleConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 采样规则名
+	SampleName *string `json:"SampleName,omitnil,omitempty" name:"SampleName"`
+}
+
+func (r *DeleteApmSampleConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApmSampleConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SampleName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteApmSampleConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteApmSampleConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteApmSampleConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteApmSampleConfigResponseParams `json:"Response"`
+}
+
+func (r *DeleteApmSampleConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApmSampleConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeApmAgentRequestParams struct {
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -642,6 +1152,135 @@ func (r *DescribeApmAgentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApmAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmApplicationConfigRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+}
+
+type DescribeApmApplicationConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+}
+
+func (r *DescribeApmApplicationConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmApplicationConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ServiceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmApplicationConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmApplicationConfigResponseParams struct {
+	// Apm应用配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApmAppConfig *ApmAppConfig `json:"ApmAppConfig,omitnil,omitempty" name:"ApmAppConfig"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApmApplicationConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApmApplicationConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeApmApplicationConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmApplicationConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmAssociationRequestParams struct {
+	// 关联的产品名，当前只支持Prometheus
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 业务系统名
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeApmAssociationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关联的产品名，当前只支持Prometheus
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 业务系统名
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeApmAssociationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmAssociationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductName")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmAssociationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmAssociationResponseParams struct {
+	// 关联的产品实例ID
+	ApmAssociation *ApmAssociation `json:"ApmAssociation,omitnil,omitempty" name:"ApmAssociation"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApmAssociationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApmAssociationResponseParams `json:"Response"`
+}
+
+func (r *DescribeApmAssociationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmAssociationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -734,6 +1373,128 @@ func (r *DescribeApmInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApmInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmPrometheusRuleRequestParams struct {
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeApmPrometheusRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeApmPrometheusRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmPrometheusRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmPrometheusRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmPrometheusRuleResponseParams struct {
+	// 指标匹配规则
+	ApmPrometheusRules []*ApmPrometheusRules `json:"ApmPrometheusRules,omitnil,omitempty" name:"ApmPrometheusRules"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApmPrometheusRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApmPrometheusRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeApmPrometheusRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmPrometheusRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmSampleConfigRequestParams struct {
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 采样规则名
+	SampleName *string `json:"SampleName,omitnil,omitempty" name:"SampleName"`
+}
+
+type DescribeApmSampleConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 采样规则名
+	SampleName *string `json:"SampleName,omitnil,omitempty" name:"SampleName"`
+}
+
+func (r *DescribeApmSampleConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmSampleConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SampleName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmSampleConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmSampleConfigResponseParams struct {
+	// 采样配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApmSampleConfigs []*ApmSampleConfig `json:"ApmSampleConfigs,omitnil,omitempty" name:"ApmSampleConfigs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApmSampleConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApmSampleConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeApmSampleConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmSampleConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1792,6 +2553,478 @@ type Line struct {
 }
 
 // Predefined struct for user
+type ModifyApmApplicationConfigRequestParams struct {
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// URL收敛开关,0 关 | 1 开
+	UrlConvergenceSwitch *int64 `json:"UrlConvergenceSwitch,omitnil,omitempty" name:"UrlConvergenceSwitch"`
+
+	// URL收敛阈值
+	UrlConvergenceThreshold *int64 `json:"UrlConvergenceThreshold,omitnil,omitempty" name:"UrlConvergenceThreshold"`
+
+	// 异常过滤正则规则，逗号分隔
+	ExceptionFilter *string `json:"ExceptionFilter,omitnil,omitempty" name:"ExceptionFilter"`
+
+	// URL收敛正则规则，逗号分隔
+	UrlConvergence *string `json:"UrlConvergence,omitnil,omitempty" name:"UrlConvergence"`
+
+	// 错误码过滤，逗号分隔
+	ErrorCodeFilter *string `json:"ErrorCodeFilter,omitnil,omitempty" name:"ErrorCodeFilter"`
+
+	// URL排除正则规则，逗号分隔
+	UrlExclude *string `json:"UrlExclude,omitnil,omitempty" name:"UrlExclude"`
+
+	// 日志开关 0 关 1 开
+	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
+
+	// 日志地域
+	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
+
+	// 日志主题ID
+	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
+
+	// CLS 日志集 | ES 集群ID
+	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
+
+	// 日志来源 CLS | ES
+	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
+
+	// 需过滤的接口
+	IgnoreOperationName *string `json:"IgnoreOperationName,omitnil,omitempty" name:"IgnoreOperationName"`
+
+	// 是否开启线程剖析
+	EnableSnapshot *bool `json:"EnableSnapshot,omitnil,omitempty" name:"EnableSnapshot"`
+
+	// 线程剖析超时阈值
+	SnapshotTimeout *int64 `json:"SnapshotTimeout,omitnil,omitempty" name:"SnapshotTimeout"`
+
+	// 是否开启agent
+	AgentEnable *bool `json:"AgentEnable,omitnil,omitempty" name:"AgentEnable"`
+
+	// 是否开启链路压缩
+	TraceSquash *bool `json:"TraceSquash,omitnil,omitempty" name:"TraceSquash"`
+
+	// 是否开启应用诊断的开关
+	EventEnable *bool `json:"EventEnable,omitnil,omitempty" name:"EventEnable"`
+
+	// 组件列表
+	InstrumentList []*Instrument `json:"InstrumentList,omitnil,omitempty" name:"InstrumentList"`
+
+	// 探针接口相关配置
+	AgentOperationConfigView *AgentOperationConfigView `json:"AgentOperationConfigView,omitnil,omitempty" name:"AgentOperationConfigView"`
+
+	// 是否开启应用日志配置
+	EnableLogConfig *bool `json:"EnableLogConfig,omitnil,omitempty" name:"EnableLogConfig"`
+
+	// 应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）
+	EnableDashboardConfig *bool `json:"EnableDashboardConfig,omitnil,omitempty" name:"EnableDashboardConfig"`
+
+	// 是否关联dashboard： 0 关 1 开
+	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
+
+	// dashboard ID
+	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
+
+	// CLS索引类型(0=全文索引，1=键值索引)
+	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
+
+	// traceId的索引key: 当CLS索引类型为键值索引时生效
+	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
+
+	// 是否开启应用安全配置
+	EnableSecurityConfig *bool `json:"EnableSecurityConfig,omitnil,omitempty" name:"EnableSecurityConfig"`
+
+	// 是否开启SQL注入分析
+	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
+
+	// 是否开启组件漏洞检测
+	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
+
+	// 是否开启远程命令检测
+	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
+
+	// 是否开启内存马检测
+	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
+
+	// 是否开启删除任意文件检测（0-关闭，1-开启）
+	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
+
+	// 是否开启读取任意文件检测（0-关闭，1-开启）
+	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
+
+	// 是否开启上传任意文件检测（0-关闭，1-开启）
+	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
+
+	// 是否开启包含任意文件检测（0-关闭，1-开启）
+	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
+
+	// 是否开启目录遍历检测（0-关闭，1-开启）
+	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
+
+	// 是否开启模板引擎注入检测（0-关闭，1-开启）
+	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
+
+	// 是否开启脚本引擎注入检测（0-关闭，1-开启）
+	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
+
+	// 是否开启表达式注入检测（0-关闭，1-开启）
+	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
+
+	// 是否开启JNDI注入检测（0-关闭，1-开启）
+	IsJNDIInjectionAnalysis *int64 `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
+
+	// 是否开启JNI注入检测（0-关闭，1-开启）
+	IsJNIInjectionAnalysis *int64 `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
+
+	// 是否开启Webshell后门检测（0-关闭，1-开启）
+	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
+
+	// 是否开启反序列化检测（0-关闭，1-开启）
+	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
+
+	// 接口自动收敛开关,0 关 | 1 开
+	UrlAutoConvergenceEnable *bool `json:"UrlAutoConvergenceEnable,omitnil,omitempty" name:"UrlAutoConvergenceEnable"`
+
+	// URL长分段收敛阈值
+	UrlLongSegmentThreshold *int64 `json:"UrlLongSegmentThreshold,omitnil,omitempty" name:"UrlLongSegmentThreshold"`
+
+	// URL数字分段收敛阈值
+	UrlNumberSegmentThreshold *int64 `json:"UrlNumberSegmentThreshold,omitnil,omitempty" name:"UrlNumberSegmentThreshold"`
+
+	// 探针熔断内存阈值
+	DisableMemoryUsed *int64 `json:"DisableMemoryUsed,omitnil,omitempty" name:"DisableMemoryUsed"`
+
+	// 探针熔断CPU阈值
+	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
+}
+
+type ModifyApmApplicationConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// URL收敛开关,0 关 | 1 开
+	UrlConvergenceSwitch *int64 `json:"UrlConvergenceSwitch,omitnil,omitempty" name:"UrlConvergenceSwitch"`
+
+	// URL收敛阈值
+	UrlConvergenceThreshold *int64 `json:"UrlConvergenceThreshold,omitnil,omitempty" name:"UrlConvergenceThreshold"`
+
+	// 异常过滤正则规则，逗号分隔
+	ExceptionFilter *string `json:"ExceptionFilter,omitnil,omitempty" name:"ExceptionFilter"`
+
+	// URL收敛正则规则，逗号分隔
+	UrlConvergence *string `json:"UrlConvergence,omitnil,omitempty" name:"UrlConvergence"`
+
+	// 错误码过滤，逗号分隔
+	ErrorCodeFilter *string `json:"ErrorCodeFilter,omitnil,omitempty" name:"ErrorCodeFilter"`
+
+	// URL排除正则规则，逗号分隔
+	UrlExclude *string `json:"UrlExclude,omitnil,omitempty" name:"UrlExclude"`
+
+	// 日志开关 0 关 1 开
+	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
+
+	// 日志地域
+	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
+
+	// 日志主题ID
+	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
+
+	// CLS 日志集 | ES 集群ID
+	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
+
+	// 日志来源 CLS | ES
+	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
+
+	// 需过滤的接口
+	IgnoreOperationName *string `json:"IgnoreOperationName,omitnil,omitempty" name:"IgnoreOperationName"`
+
+	// 是否开启线程剖析
+	EnableSnapshot *bool `json:"EnableSnapshot,omitnil,omitempty" name:"EnableSnapshot"`
+
+	// 线程剖析超时阈值
+	SnapshotTimeout *int64 `json:"SnapshotTimeout,omitnil,omitempty" name:"SnapshotTimeout"`
+
+	// 是否开启agent
+	AgentEnable *bool `json:"AgentEnable,omitnil,omitempty" name:"AgentEnable"`
+
+	// 是否开启链路压缩
+	TraceSquash *bool `json:"TraceSquash,omitnil,omitempty" name:"TraceSquash"`
+
+	// 是否开启应用诊断的开关
+	EventEnable *bool `json:"EventEnable,omitnil,omitempty" name:"EventEnable"`
+
+	// 组件列表
+	InstrumentList []*Instrument `json:"InstrumentList,omitnil,omitempty" name:"InstrumentList"`
+
+	// 探针接口相关配置
+	AgentOperationConfigView *AgentOperationConfigView `json:"AgentOperationConfigView,omitnil,omitempty" name:"AgentOperationConfigView"`
+
+	// 是否开启应用日志配置
+	EnableLogConfig *bool `json:"EnableLogConfig,omitnil,omitempty" name:"EnableLogConfig"`
+
+	// 应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）
+	EnableDashboardConfig *bool `json:"EnableDashboardConfig,omitnil,omitempty" name:"EnableDashboardConfig"`
+
+	// 是否关联dashboard： 0 关 1 开
+	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
+
+	// dashboard ID
+	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
+
+	// CLS索引类型(0=全文索引，1=键值索引)
+	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
+
+	// traceId的索引key: 当CLS索引类型为键值索引时生效
+	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
+
+	// 是否开启应用安全配置
+	EnableSecurityConfig *bool `json:"EnableSecurityConfig,omitnil,omitempty" name:"EnableSecurityConfig"`
+
+	// 是否开启SQL注入分析
+	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
+
+	// 是否开启组件漏洞检测
+	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
+
+	// 是否开启远程命令检测
+	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
+
+	// 是否开启内存马检测
+	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
+
+	// 是否开启删除任意文件检测（0-关闭，1-开启）
+	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
+
+	// 是否开启读取任意文件检测（0-关闭，1-开启）
+	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
+
+	// 是否开启上传任意文件检测（0-关闭，1-开启）
+	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
+
+	// 是否开启包含任意文件检测（0-关闭，1-开启）
+	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
+
+	// 是否开启目录遍历检测（0-关闭，1-开启）
+	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
+
+	// 是否开启模板引擎注入检测（0-关闭，1-开启）
+	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
+
+	// 是否开启脚本引擎注入检测（0-关闭，1-开启）
+	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
+
+	// 是否开启表达式注入检测（0-关闭，1-开启）
+	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
+
+	// 是否开启JNDI注入检测（0-关闭，1-开启）
+	IsJNDIInjectionAnalysis *int64 `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
+
+	// 是否开启JNI注入检测（0-关闭，1-开启）
+	IsJNIInjectionAnalysis *int64 `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
+
+	// 是否开启Webshell后门检测（0-关闭，1-开启）
+	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
+
+	// 是否开启反序列化检测（0-关闭，1-开启）
+	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
+
+	// 接口自动收敛开关,0 关 | 1 开
+	UrlAutoConvergenceEnable *bool `json:"UrlAutoConvergenceEnable,omitnil,omitempty" name:"UrlAutoConvergenceEnable"`
+
+	// URL长分段收敛阈值
+	UrlLongSegmentThreshold *int64 `json:"UrlLongSegmentThreshold,omitnil,omitempty" name:"UrlLongSegmentThreshold"`
+
+	// URL数字分段收敛阈值
+	UrlNumberSegmentThreshold *int64 `json:"UrlNumberSegmentThreshold,omitnil,omitempty" name:"UrlNumberSegmentThreshold"`
+
+	// 探针熔断内存阈值
+	DisableMemoryUsed *int64 `json:"DisableMemoryUsed,omitnil,omitempty" name:"DisableMemoryUsed"`
+
+	// 探针熔断CPU阈值
+	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
+}
+
+func (r *ModifyApmApplicationConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApmApplicationConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ServiceName")
+	delete(f, "UrlConvergenceSwitch")
+	delete(f, "UrlConvergenceThreshold")
+	delete(f, "ExceptionFilter")
+	delete(f, "UrlConvergence")
+	delete(f, "ErrorCodeFilter")
+	delete(f, "UrlExclude")
+	delete(f, "IsRelatedLog")
+	delete(f, "LogRegion")
+	delete(f, "LogTopicID")
+	delete(f, "LogSet")
+	delete(f, "LogSource")
+	delete(f, "IgnoreOperationName")
+	delete(f, "EnableSnapshot")
+	delete(f, "SnapshotTimeout")
+	delete(f, "AgentEnable")
+	delete(f, "TraceSquash")
+	delete(f, "EventEnable")
+	delete(f, "InstrumentList")
+	delete(f, "AgentOperationConfigView")
+	delete(f, "EnableLogConfig")
+	delete(f, "EnableDashboardConfig")
+	delete(f, "IsRelatedDashboard")
+	delete(f, "DashboardTopicID")
+	delete(f, "LogIndexType")
+	delete(f, "LogTraceIdKey")
+	delete(f, "EnableSecurityConfig")
+	delete(f, "IsSqlInjectionAnalysis")
+	delete(f, "IsInstrumentationVulnerabilityScan")
+	delete(f, "IsRemoteCommandExecutionAnalysis")
+	delete(f, "IsMemoryHijackingAnalysis")
+	delete(f, "IsDeleteAnyFileAnalysis")
+	delete(f, "IsReadAnyFileAnalysis")
+	delete(f, "IsUploadAnyFileAnalysis")
+	delete(f, "IsIncludeAnyFileAnalysis")
+	delete(f, "IsDirectoryTraversalAnalysis")
+	delete(f, "IsTemplateEngineInjectionAnalysis")
+	delete(f, "IsScriptEngineInjectionAnalysis")
+	delete(f, "IsExpressionInjectionAnalysis")
+	delete(f, "IsJNDIInjectionAnalysis")
+	delete(f, "IsJNIInjectionAnalysis")
+	delete(f, "IsWebshellBackdoorAnalysis")
+	delete(f, "IsDeserializationAnalysis")
+	delete(f, "UrlAutoConvergenceEnable")
+	delete(f, "UrlLongSegmentThreshold")
+	delete(f, "UrlNumberSegmentThreshold")
+	delete(f, "DisableMemoryUsed")
+	delete(f, "DisableCpuUsed")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmApplicationConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApmApplicationConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyApmApplicationConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyApmApplicationConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyApmApplicationConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApmApplicationConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApmAssociationRequestParams struct {
+	// 关联的产品名，当前只支持Prometheus
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 关联关系的状态：// 关联关系状态：1（启用）、2（不启用）、4（已删除）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 关联的产品实例ID
+	PeerId *string `json:"PeerId,omitnil,omitempty" name:"PeerId"`
+
+	// CKafka消息主题
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+}
+
+type ModifyApmAssociationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关联的产品名，当前只支持Prometheus
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 关联关系的状态：// 关联关系状态：1（启用）、2（不启用）、4（已删除）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 关联的产品实例ID
+	PeerId *string `json:"PeerId,omitnil,omitempty" name:"PeerId"`
+
+	// CKafka消息主题
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+}
+
+func (r *ModifyApmAssociationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApmAssociationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductName")
+	delete(f, "Status")
+	delete(f, "InstanceId")
+	delete(f, "PeerId")
+	delete(f, "Topic")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmAssociationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApmAssociationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyApmAssociationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyApmAssociationResponseParams `json:"Response"`
+}
+
+func (r *ModifyApmAssociationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApmAssociationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyApmInstanceRequestParams struct {
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -2129,6 +3362,212 @@ func (r *ModifyApmInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyApmInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApmPrometheusRuleRequestParams struct {
+	// 规则ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 所要修改的规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则状态：1(启用)、2（不启用）、3（删除）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 规则生效的应用。生效于全部应用就传空（这个如果不修改也要传旧的规则）
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 匹配类型：0精准匹配，1前缀匹配，2后缀匹配（这个如果不修改也要传旧的规则）
+	MetricMatchType *int64 `json:"MetricMatchType,omitnil,omitempty" name:"MetricMatchType"`
+
+	// 客户定义的命中指标名规则。
+	MetricNameRule *string `json:"MetricNameRule,omitnil,omitempty" name:"MetricNameRule"`
+}
+
+type ModifyApmPrometheusRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 所要修改的规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则状态：1(启用)、2（不启用）、3（删除）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 规则生效的应用。生效于全部应用就传空（这个如果不修改也要传旧的规则）
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 匹配类型：0精准匹配，1前缀匹配，2后缀匹配（这个如果不修改也要传旧的规则）
+	MetricMatchType *int64 `json:"MetricMatchType,omitnil,omitempty" name:"MetricMatchType"`
+
+	// 客户定义的命中指标名规则。
+	MetricNameRule *string `json:"MetricNameRule,omitnil,omitempty" name:"MetricNameRule"`
+}
+
+func (r *ModifyApmPrometheusRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApmPrometheusRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "InstanceId")
+	delete(f, "Name")
+	delete(f, "Status")
+	delete(f, "ServiceName")
+	delete(f, "MetricMatchType")
+	delete(f, "MetricNameRule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmPrometheusRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApmPrometheusRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyApmPrometheusRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyApmPrometheusRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyApmPrometheusRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApmPrometheusRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApmSampleConfigRequestParams struct {
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 采样规则名
+	SampleName *string `json:"SampleName,omitnil,omitempty" name:"SampleName"`
+
+	// 采样率
+	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
+
+	// 应用名，生效于所有应用则填空
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 接口名
+	OperationName *string `json:"OperationName,omitnil,omitempty" name:"OperationName"`
+
+	// 采样tag
+	Tags []*APMKVItem `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 采样开关 0关 1开 2删除
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 配置Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 0=精确匹配（默认）；1=前缀匹配；2=后缀匹配
+	OperationType *int64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+}
+
+type ModifyApmSampleConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 采样规则名
+	SampleName *string `json:"SampleName,omitnil,omitempty" name:"SampleName"`
+
+	// 采样率
+	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
+
+	// 应用名，生效于所有应用则填空
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 接口名
+	OperationName *string `json:"OperationName,omitnil,omitempty" name:"OperationName"`
+
+	// 采样tag
+	Tags []*APMKVItem `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 采样开关 0关 1开 2删除
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 配置Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 0=精确匹配（默认）；1=前缀匹配；2=后缀匹配
+	OperationType *int64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+}
+
+func (r *ModifyApmSampleConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApmSampleConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SampleName")
+	delete(f, "SampleRate")
+	delete(f, "ServiceName")
+	delete(f, "OperationName")
+	delete(f, "Tags")
+	delete(f, "Status")
+	delete(f, "Id")
+	delete(f, "OperationType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmSampleConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApmSampleConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyApmSampleConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyApmSampleConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyApmSampleConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApmSampleConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

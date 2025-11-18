@@ -746,6 +746,21 @@ type CreateQuitWorkOrderRequestParams struct {
 
 	// 客户上门自提必传
 	CustomerReceipt *CustomerReceipt `json:"CustomerReceipt,omitnil,omitempty" name:"CustomerReceipt"`
+
+	// 楼宇名
+	Building *string `json:"Building,omitnil,omitempty" name:"Building"`
+
+	// 机房管理单元id
+	IdcUnitId *string `json:"IdcUnitId,omitnil,omitempty" name:"IdcUnitId"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 放行邮件目的邮箱
+	EmailSet []*string `json:"EmailSet,omitnil,omitempty" name:"EmailSet"`
+
+	// 到访原因
+	FactorSet []*string `json:"FactorSet,omitnil,omitempty" name:"FactorSet"`
 }
 
 type CreateQuitWorkOrderRequest struct {
@@ -783,6 +798,21 @@ type CreateQuitWorkOrderRequest struct {
 
 	// 客户上门自提必传
 	CustomerReceipt *CustomerReceipt `json:"CustomerReceipt,omitnil,omitempty" name:"CustomerReceipt"`
+
+	// 楼宇名
+	Building *string `json:"Building,omitnil,omitempty" name:"Building"`
+
+	// 机房管理单元id
+	IdcUnitId *string `json:"IdcUnitId,omitnil,omitempty" name:"IdcUnitId"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 放行邮件目的邮箱
+	EmailSet []*string `json:"EmailSet,omitnil,omitempty" name:"EmailSet"`
+
+	// 到访原因
+	FactorSet []*string `json:"FactorSet,omitnil,omitempty" name:"FactorSet"`
 }
 
 func (r *CreateQuitWorkOrderRequest) ToJsonString() string {
@@ -808,6 +838,11 @@ func (r *CreateQuitWorkOrderRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "LogisticsReceipt")
 	delete(f, "CustomerReceipt")
+	delete(f, "Building")
+	delete(f, "IdcUnitId")
+	delete(f, "Isp")
+	delete(f, "EmailSet")
+	delete(f, "FactorSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQuitWorkOrderRequest has unknown keys!", "")
 	}
@@ -1376,7 +1411,7 @@ type CustomerReceipt struct {
 	// 自提人电话
 	PickUpStuffContact *string `json:"PickUpStuffContact,omitnil,omitempty" name:"PickUpStuffContact"`
 
-	// 自提人证件号码
+	// 到访人证件号码
 	PickUpStuffIDCard *string `json:"PickUpStuffIDCard,omitnil,omitempty" name:"PickUpStuffIDCard"`
 
 	// 自提时间
@@ -3157,6 +3192,15 @@ type DeviceOrderBaseInfo struct {
 
 	// 物流上门收货信息
 	LogisticsReceipt *LogisticsReceipt `json:"LogisticsReceipt,omitnil,omitempty" name:"LogisticsReceipt"`
+
+	// 涉及物资放行时的楼宇
+	Building *string `json:"Building,omitnil,omitempty" name:"Building"`
+
+	// 物资放行抄送邮箱
+	EmailSet []*string `json:"EmailSet,omitnil,omitempty" name:"EmailSet"`
+
+	// 物资放行到访原因
+	FactorSet []*string `json:"FactorSet,omitnil,omitempty" name:"FactorSet"`
 }
 
 type DevicePosition struct {

@@ -97,6 +97,97 @@ func (r *AssignProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AuditInstance struct {
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 审计状态。
+	AuditStatus *string `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
+
+	// 是否存在审计任务，0：无任务，1：创建中，2：关闭中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditTask *int64 `json:"AuditTask,omitnil,omitempty" name:"AuditTask"`
+
+	// 审计日志过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
+
+	// 高频日志过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighLogExpireDay *int64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
+
+	// 低频日志过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowLogExpireDay *int64 `json:"LowLogExpireDay,omitnil,omitempty" name:"LowLogExpireDay"`
+
+	// 费用信息。
+	BillingAmount *float64 `json:"BillingAmount,omitnil,omitempty" name:"BillingAmount"`
+
+	// 高频存储容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighRealStorage *float64 `json:"HighRealStorage,omitnil,omitempty" name:"HighRealStorage"`
+
+	// 低频存储容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowRealStorage *float64 `json:"LowRealStorage,omitnil,omitempty" name:"LowRealStorage"`
+
+	// 实例详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceInfo *InstanceInfo `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
+
+	// 性能分析
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PerformancesAnalyse *int64 `json:"PerformancesAnalyse,omitnil,omitempty" name:"PerformancesAnalyse"`
+
+	// true表示全审计，false表示规则审计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditAll *bool `json:"AuditAll,omitnil,omitempty" name:"AuditAll"`
+
+	// 实例审计最近一次的开通时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
+
+	// 实例绑定的规则模版ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
+
+	// 是否开启投递：ON，OFF
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Deliver *string `json:"Deliver,omitnil,omitempty" name:"Deliver"`
+
+	// 日志投递信息
+	DeliverSummary []*DeliverSummary `json:"DeliverSummary,omitnil,omitempty" name:"DeliverSummary"`
+
+	// 旧规则
+	OldRule *bool `json:"OldRule,omitnil,omitempty" name:"OldRule"`
+
+	// 实际存储容量
+	RealStorage *float64 `json:"RealStorage,omitnil,omitempty" name:"RealStorage"`
+}
+
+type AuditLogFilter struct {
+	// 客户端地址。
+	Host []*string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 用户名。
+	User []*string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 执行时间。单位为：ms。表示筛选执行时间大于该值的审计日志。
+	ExecTime *uint64 `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
+
+	// 影响行数。表示筛选影响行数大于该值的审计日志。
+	AffectRows *uint64 `json:"AffectRows,omitnil,omitempty" name:"AffectRows"`
+
+	// 操作类型。
+	Atype []*string `json:"Atype,omitnil,omitempty" name:"Atype"`
+
+	// 执行结果。
+	Result []*string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 根据此关键字过滤日志
+	Param []*string `json:"Param,omitnil,omitempty" name:"Param"`
+}
+
 type Auth struct {
 	// 当前账号具有的权限信息。
 	// - 0：无权限。
@@ -333,6 +424,102 @@ func (r *CreateAccountUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAccountUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuditLogFileRequestParams struct {
+	// 实例 ID，格式如：cmgo-xfts****，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，格式为："2021-07-12 10:29:20"。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，格式为："2021-07-12 10:39:20"。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 审计日志文件的排序方式。
+	// <ul><li>ASC：升序。</li><li>DESC：降序。</li></ul>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 审计日志文件的排序字段。当前支持的取值包括：
+	// <ul><li>timestamp：时间戳。</li><li>affectRows：影响行数。</li><li>execTime：执行时间。</li></ul>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 过滤条件。可按设置的过滤条件过滤审计日志。
+	Filter *AuditLogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type CreateAuditLogFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，格式如：cmgo-xfts****，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，格式为："2021-07-12 10:29:20"。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，格式为："2021-07-12 10:39:20"。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 审计日志文件的排序方式。
+	// <ul><li>ASC：升序。</li><li>DESC：降序。</li></ul>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 审计日志文件的排序字段。当前支持的取值包括：
+	// <ul><li>timestamp：时间戳。</li><li>affectRows：影响行数。</li><li>execTime：执行时间。</li></ul>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 过滤条件。可按设置的过滤条件过滤审计日志。
+	Filter *AuditLogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *CreateAuditLogFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditLogFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Order")
+	delete(f, "OrderBy")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditLogFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuditLogFileResponseParams struct {
+	// 审计日志文件名称。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAuditLogFileResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAuditLogFileResponseParams `json:"Response"`
+}
+
+func (r *CreateAuditLogFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditLogFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1557,6 +1744,67 @@ func (r *DeleteAccountUserResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAuditLogFileRequestParams struct {
+	// 实例ID，格式如：cmgo-test1234，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 审计日志文件名称，须保证文件名的准确性。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+}
+
+type DeleteAuditLogFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，格式如：cmgo-test1234，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 审计日志文件名称，须保证文件名的准确性。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+}
+
+func (r *DeleteAuditLogFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditLogFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FileName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuditLogFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuditLogFileResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAuditLogFileResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAuditLogFileResponseParams `json:"Response"`
+}
+
+func (r *DeleteAuditLogFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditLogFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteLogDownloadTaskRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1618,6 +1866,14 @@ func (r *DeleteLogDownloadTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteLogDownloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeliverSummary struct {
+	// 投递类型，store（存储类），mq（消息通道）
+	DeliverType *string `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
+
+	// 投递子类型：cls，ckafka。
+	DeliverSubType *string `json:"DeliverSubType,omitnil,omitempty" name:"DeliverSubType"`
 }
 
 // Predefined struct for user
@@ -1737,6 +1993,95 @@ func (r *DescribeAsyncRequestInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAsyncRequestInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditInstanceListRequestParams struct {
+	// 指明待查询的实例为已开通审计或未开通审计。<ul><li>1：已开通审计功能。</li><li>0：未开通审计功能。</li></ul>
+	AuditSwitch *uint64 `json:"AuditSwitch,omitnil,omitempty" name:"AuditSwitch"`
+
+	// 筛选条件。
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 审计类型，不传 默认全部，0 全审计，1 规则审计
+	AuditMode *uint64 `json:"AuditMode,omitnil,omitempty" name:"AuditMode"`
+
+	// 每页显示数量。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeAuditInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指明待查询的实例为已开通审计或未开通审计。<ul><li>1：已开通审计功能。</li><li>0：未开通审计功能。</li></ul>
+	AuditSwitch *uint64 `json:"AuditSwitch,omitnil,omitempty" name:"AuditSwitch"`
+
+	// 筛选条件。
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 审计类型，不传 默认全部，0 全审计，1 规则审计
+	AuditMode *uint64 `json:"AuditMode,omitnil,omitempty" name:"AuditMode"`
+
+	// 每页显示数量。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeAuditInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AuditSwitch")
+	delete(f, "Filters")
+	delete(f, "AuditMode")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditInstanceListResponseParams struct {
+	// 实例总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 审计实例详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*AuditInstance `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditInstanceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3954,6 +4299,17 @@ type FBKeyValue struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type Filters struct {
+	// 搜索字段，目前支持：
+	// "InstanceId"：实例Id，例如：cmgo-****）
+	// "InstanceName"：实例名称
+	// "ClusterId"：实例组Id，例如：cmgo-****
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 筛选值
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
 // Predefined struct for user
 type FlashBackDBInstanceRequestParams struct {
 	// 开启按 Key 回档的实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制需开启按 Key 回档的实例 ID。
@@ -4684,6 +5040,60 @@ type InstanceEnumParam struct {
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
+type InstanceInfo struct {
+	// 审计日志保存时长。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditLogExpireDay *uint64 `json:"AuditLogExpireDay,omitnil,omitempty" name:"AuditLogExpireDay"`
+
+	// 审计状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditStatus *string `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
+
+	// 实例 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例角色。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
+
+	// 实例类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 数据库版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MongodbVersion *string `json:"MongodbVersion,omitnil,omitempty" name:"MongodbVersion"`
+
+	// 项目 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 地域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 实例状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否支持审计。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportAudit *bool `json:"SupportAudit,omitnil,omitempty" name:"SupportAudit"`
+
+	// 可用区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
 type InstanceIntegerParam struct {
 	// 参数当前值。
 	CurrentValue *string `json:"CurrentValue,omitnil,omitempty" name:"CurrentValue"`
@@ -4921,6 +5331,17 @@ func (r *KillOpsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LogFilter struct {
+	// 过滤条件名称
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 过滤条件匹配类型，注意：此参数取值只能等于EQ
+	Compare *string `json:"Compare,omitnil,omitempty" name:"Compare"`
+
+	// 过滤条件匹配值
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type LogInfo struct {
 	// 日志类别
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4945,6 +5366,81 @@ type LogInfo struct {
 	// 日志id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
+}
+
+// Predefined struct for user
+type ModifyAuditServiceRequestParams struct {
+	// 实例ID，格式如：cmgo-xfts****，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 审计日志保存时长。单位为：天。当前支持的取值包括： 7： 一周。 30： 一个月。 90： 三个月。 180 ： 六个月。 365 ： 一年。 1095 ： 三年。 1825 ： 五年。
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
+
+	// true-全审计，false-规则审计，注意：AuditAll=true 时，RuleFilters 无需填参
+	AuditAll *bool `json:"AuditAll,omitnil,omitempty" name:"AuditAll"`
+
+	// 审计过滤规则，Type的范围【SrcIp、DB、Collection、User、SqlType】，注意：Type=SqlType时，Value必须在这个范围 ["query", "insert", "update", "delete", "command"]
+	RuleFilters []*LogFilter `json:"RuleFilters,omitnil,omitempty" name:"RuleFilters"`
+}
+
+type ModifyAuditServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，格式如：cmgo-xfts****，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 审计日志保存时长。单位为：天。当前支持的取值包括： 7： 一周。 30： 一个月。 90： 三个月。 180 ： 六个月。 365 ： 一年。 1095 ： 三年。 1825 ： 五年。
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
+
+	// true-全审计，false-规则审计，注意：AuditAll=true 时，RuleFilters 无需填参
+	AuditAll *bool `json:"AuditAll,omitnil,omitempty" name:"AuditAll"`
+
+	// 审计过滤规则，Type的范围【SrcIp、DB、Collection、User、SqlType】，注意：Type=SqlType时，Value必须在这个范围 ["query", "insert", "update", "delete", "command"]
+	RuleFilters []*LogFilter `json:"RuleFilters,omitnil,omitempty" name:"RuleFilters"`
+}
+
+func (r *ModifyAuditServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogExpireDay")
+	delete(f, "AuditAll")
+	delete(f, "RuleFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAuditServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuditServiceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAuditServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAuditServiceResponseParams `json:"Response"`
+}
+
+func (r *ModifyAuditServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -5541,6 +6037,81 @@ func (r *OfflineIsolatedDBInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *OfflineIsolatedDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenAuditServiceRequestParams struct {
+	// 实例 ID，格式如：cmgo-xfts****，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 审计日志保存时长。单位为：天。当前支持的取值包括： 7： 一周。 30： 一个月。 90： 三个月。 180 ： 六个月。 365 ： 一年。 1095 ： 三年。 1825 ： 五年。
+	LogExpireDay *uint64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
+
+	// true-全审计，false-规则审计，注意：AuditAll=true 时，RuleFilters 无需填参
+	AuditAll *bool `json:"AuditAll,omitnil,omitempty" name:"AuditAll"`
+
+	// 审计过滤规则，Type的范围【SrcIp、DB、Collection、User、SqlType】，注意：Type=SqlType时，Value必须在这个范围 ["query", "insert", "update", "delete", "command"]
+	RuleFilters []*LogFilter `json:"RuleFilters,omitnil,omitempty" name:"RuleFilters"`
+}
+
+type OpenAuditServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，格式如：cmgo-xfts****，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 审计日志保存时长。单位为：天。当前支持的取值包括： 7： 一周。 30： 一个月。 90： 三个月。 180 ： 六个月。 365 ： 一年。 1095 ： 三年。 1825 ： 五年。
+	LogExpireDay *uint64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
+
+	// true-全审计，false-规则审计，注意：AuditAll=true 时，RuleFilters 无需填参
+	AuditAll *bool `json:"AuditAll,omitnil,omitempty" name:"AuditAll"`
+
+	// 审计过滤规则，Type的范围【SrcIp、DB、Collection、User、SqlType】，注意：Type=SqlType时，Value必须在这个范围 ["query", "insert", "update", "delete", "command"]
+	RuleFilters []*LogFilter `json:"RuleFilters,omitnil,omitempty" name:"RuleFilters"`
+}
+
+func (r *OpenAuditServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenAuditServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogExpireDay")
+	delete(f, "AuditAll")
+	delete(f, "RuleFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenAuditServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenAuditServiceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OpenAuditServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenAuditServiceResponseParams `json:"Response"`
+}
+
+func (r *OpenAuditServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenAuditServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

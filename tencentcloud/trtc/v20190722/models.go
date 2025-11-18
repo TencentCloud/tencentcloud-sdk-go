@@ -6953,6 +6953,12 @@ type TTSConfig struct {
 
 	// TTS 的模型，默认是：flow_01_turbo, 可选: [ flow_01_turbo, flow_01_ex]
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 语速，范围 0.5-2.0，默认 1.0
+	Speed *float64 `json:"Speed,omitnil,omitempty" name:"Speed"`
+
+	// (0, 10] 默认值1.0
+	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
 type TencentVod struct {

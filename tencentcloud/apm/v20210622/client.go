@@ -103,6 +103,124 @@ func (c *Client) CreateApmInstanceWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateApmPrometheusRuleRequest() (request *CreateApmPrometheusRuleRequest) {
+    request = &CreateApmPrometheusRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "CreateApmPrometheusRule")
+    
+    
+    return
+}
+
+func NewCreateApmPrometheusRuleResponse() (response *CreateApmPrometheusRuleResponse) {
+    response = &CreateApmPrometheusRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateApmPrometheusRule
+// 用于创建apm业务系统与Prometheus实例的指标匹配规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROMRULECONFLICT = "FailedOperation.PromRuleConflict"
+//  FAILEDOPERATION_PROMRULEISEMPTYERR = "FailedOperation.PromRuleIsEmptyErr"
+//  FAILEDOPERATION_PROMRULENAMECONFLICT = "FailedOperation.PromRuleNameConflict"
+//  FAILEDOPERATION_PROMRULEREQUESTNOTVALIDERROR = "FailedOperation.PromRuleRequestNotValidError"
+func (c *Client) CreateApmPrometheusRule(request *CreateApmPrometheusRuleRequest) (response *CreateApmPrometheusRuleResponse, err error) {
+    return c.CreateApmPrometheusRuleWithContext(context.Background(), request)
+}
+
+// CreateApmPrometheusRule
+// 用于创建apm业务系统与Prometheus实例的指标匹配规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROMRULECONFLICT = "FailedOperation.PromRuleConflict"
+//  FAILEDOPERATION_PROMRULEISEMPTYERR = "FailedOperation.PromRuleIsEmptyErr"
+//  FAILEDOPERATION_PROMRULENAMECONFLICT = "FailedOperation.PromRuleNameConflict"
+//  FAILEDOPERATION_PROMRULEREQUESTNOTVALIDERROR = "FailedOperation.PromRuleRequestNotValidError"
+func (c *Client) CreateApmPrometheusRuleWithContext(ctx context.Context, request *CreateApmPrometheusRuleRequest) (response *CreateApmPrometheusRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateApmPrometheusRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "CreateApmPrometheusRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApmPrometheusRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateApmPrometheusRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateApmSampleConfigRequest() (request *CreateApmSampleConfigRequest) {
+    request = &CreateApmSampleConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "CreateApmSampleConfig")
+    
+    
+    return
+}
+
+func NewCreateApmSampleConfigResponse() (response *CreateApmSampleConfigResponse) {
+    response = &CreateApmSampleConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateApmSampleConfig
+// 创建采样配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEMOINSTANCENOTALLOWMODIFIED = "FailedOperation.DemoInstanceNotAllowModified"
+//  FAILEDOPERATION_INVALIDOPERATIONTYPE = "FailedOperation.InvalidOperationType"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+//  FAILEDOPERATION_OPERATIONNAMEISEMPTY = "FailedOperation.OperationNameIsEmpty"
+//  FAILEDOPERATION_SAMPLENAMECONFLICT = "FailedOperation.SampleNameConflict"
+//  FAILEDOPERATION_SAMPLERULECONFLICT = "FailedOperation.SampleRuleConflict"
+func (c *Client) CreateApmSampleConfig(request *CreateApmSampleConfigRequest) (response *CreateApmSampleConfigResponse, err error) {
+    return c.CreateApmSampleConfigWithContext(context.Background(), request)
+}
+
+// CreateApmSampleConfig
+// 创建采样配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEMOINSTANCENOTALLOWMODIFIED = "FailedOperation.DemoInstanceNotAllowModified"
+//  FAILEDOPERATION_INVALIDOPERATIONTYPE = "FailedOperation.InvalidOperationType"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+//  FAILEDOPERATION_OPERATIONNAMEISEMPTY = "FailedOperation.OperationNameIsEmpty"
+//  FAILEDOPERATION_SAMPLENAMECONFLICT = "FailedOperation.SampleNameConflict"
+//  FAILEDOPERATION_SAMPLERULECONFLICT = "FailedOperation.SampleRuleConflict"
+func (c *Client) CreateApmSampleConfigWithContext(ctx context.Context, request *CreateApmSampleConfigRequest) (response *CreateApmSampleConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateApmSampleConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "CreateApmSampleConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApmSampleConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateApmSampleConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateProfileTaskRequest() (request *CreateProfileTaskRequest) {
     request = &CreateProfileTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -157,6 +275,56 @@ func (c *Client) CreateProfileTaskWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateProfileTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteApmSampleConfigRequest() (request *DeleteApmSampleConfigRequest) {
+    request = &DeleteApmSampleConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DeleteApmSampleConfig")
+    
+    
+    return
+}
+
+func NewDeleteApmSampleConfigResponse() (response *DeleteApmSampleConfigResponse) {
+    response = &DeleteApmSampleConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteApmSampleConfig
+// 删除采样配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+func (c *Client) DeleteApmSampleConfig(request *DeleteApmSampleConfigRequest) (response *DeleteApmSampleConfigResponse, err error) {
+    return c.DeleteApmSampleConfigWithContext(context.Background(), request)
+}
+
+// DeleteApmSampleConfig
+// 删除采样配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+func (c *Client) DeleteApmSampleConfigWithContext(ctx context.Context, request *DeleteApmSampleConfigRequest) (response *DeleteApmSampleConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteApmSampleConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DeleteApmSampleConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApmSampleConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteApmSampleConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -229,6 +397,112 @@ func (c *Client) DescribeApmAgentWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeApmApplicationConfigRequest() (request *DescribeApmApplicationConfigRequest) {
+    request = &DescribeApmApplicationConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeApmApplicationConfig")
+    
+    
+    return
+}
+
+func NewDescribeApmApplicationConfigResponse() (response *DescribeApmApplicationConfigResponse) {
+    response = &DescribeApmApplicationConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApmApplicationConfig
+// 查询应用配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INVALIDSERVICENAME = "FailedOperation.InvalidServiceName"
+func (c *Client) DescribeApmApplicationConfig(request *DescribeApmApplicationConfigRequest) (response *DescribeApmApplicationConfigResponse, err error) {
+    return c.DescribeApmApplicationConfigWithContext(context.Background(), request)
+}
+
+// DescribeApmApplicationConfig
+// 查询应用配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INVALIDSERVICENAME = "FailedOperation.InvalidServiceName"
+func (c *Client) DescribeApmApplicationConfigWithContext(ctx context.Context, request *DescribeApmApplicationConfigRequest) (response *DescribeApmApplicationConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmApplicationConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeApmApplicationConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApmApplicationConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApmApplicationConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApmAssociationRequest() (request *DescribeApmAssociationRequest) {
+    request = &DescribeApmAssociationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeApmAssociation")
+    
+    
+    return
+}
+
+func NewDescribeApmAssociationResponse() (response *DescribeApmAssociationResponse) {
+    response = &DescribeApmAssociationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApmAssociation
+// 用于查询apm业务系统与其他产品的关联关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTNAMENOTAVAILABLE = "FailedOperation.ProductNameNotAvailable"
+func (c *Client) DescribeApmAssociation(request *DescribeApmAssociationRequest) (response *DescribeApmAssociationResponse, err error) {
+    return c.DescribeApmAssociationWithContext(context.Background(), request)
+}
+
+// DescribeApmAssociation
+// 用于查询apm业务系统与其他产品的关联关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTNAMENOTAVAILABLE = "FailedOperation.ProductNameNotAvailable"
+func (c *Client) DescribeApmAssociationWithContext(ctx context.Context, request *DescribeApmAssociationRequest) (response *DescribeApmAssociationResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmAssociationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeApmAssociation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApmAssociation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApmAssociationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApmInstancesRequest() (request *DescribeApmInstancesRequest) {
     request = &DescribeApmInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -283,6 +557,118 @@ func (c *Client) DescribeApmInstancesWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeApmInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApmPrometheusRuleRequest() (request *DescribeApmPrometheusRuleRequest) {
+    request = &DescribeApmPrometheusRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeApmPrometheusRule")
+    
+    
+    return
+}
+
+func NewDescribeApmPrometheusRuleResponse() (response *DescribeApmPrometheusRuleResponse) {
+    response = &DescribeApmPrometheusRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApmPrometheusRule
+// 用于查询apm业务系统与Prometheus实例的指标匹配规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
+//  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
+func (c *Client) DescribeApmPrometheusRule(request *DescribeApmPrometheusRuleRequest) (response *DescribeApmPrometheusRuleResponse, err error) {
+    return c.DescribeApmPrometheusRuleWithContext(context.Background(), request)
+}
+
+// DescribeApmPrometheusRule
+// 用于查询apm业务系统与Prometheus实例的指标匹配规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
+//  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
+func (c *Client) DescribeApmPrometheusRuleWithContext(ctx context.Context, request *DescribeApmPrometheusRuleRequest) (response *DescribeApmPrometheusRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmPrometheusRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeApmPrometheusRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApmPrometheusRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApmPrometheusRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApmSampleConfigRequest() (request *DescribeApmSampleConfigRequest) {
+    request = &DescribeApmSampleConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeApmSampleConfig")
+    
+    
+    return
+}
+
+func NewDescribeApmSampleConfigResponse() (response *DescribeApmSampleConfigResponse) {
+    response = &DescribeApmSampleConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApmSampleConfig
+// 查询采样配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_SAMPLENOTFOUND = "FailedOperation.SampleNotFound"
+func (c *Client) DescribeApmSampleConfig(request *DescribeApmSampleConfigRequest) (response *DescribeApmSampleConfigResponse, err error) {
+    return c.DescribeApmSampleConfigWithContext(context.Background(), request)
+}
+
+// DescribeApmSampleConfig
+// 查询采样配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_SAMPLENOTFOUND = "FailedOperation.SampleNotFound"
+func (c *Client) DescribeApmSampleConfigWithContext(ctx context.Context, request *DescribeApmSampleConfigRequest) (response *DescribeApmSampleConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmSampleConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeApmSampleConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApmSampleConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApmSampleConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -795,6 +1181,134 @@ func (c *Client) DescribeTagValuesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewModifyApmApplicationConfigRequest() (request *ModifyApmApplicationConfigRequest) {
+    request = &ModifyApmApplicationConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "ModifyApmApplicationConfig")
+    
+    
+    return
+}
+
+func NewModifyApmApplicationConfigResponse() (response *ModifyApmApplicationConfigResponse) {
+    response = &ModifyApmApplicationConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApmApplicationConfig
+// 修改应用配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENTOPERATIONCONFIGINVALID = "FailedOperation.AgentOperationConfigInvalid"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INVALIDREGEX = "FailedOperation.InvalidRegex"
+func (c *Client) ModifyApmApplicationConfig(request *ModifyApmApplicationConfigRequest) (response *ModifyApmApplicationConfigResponse, err error) {
+    return c.ModifyApmApplicationConfigWithContext(context.Background(), request)
+}
+
+// ModifyApmApplicationConfig
+// 修改应用配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENTOPERATIONCONFIGINVALID = "FailedOperation.AgentOperationConfigInvalid"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INVALIDREGEX = "FailedOperation.InvalidRegex"
+func (c *Client) ModifyApmApplicationConfigWithContext(ctx context.Context, request *ModifyApmApplicationConfigRequest) (response *ModifyApmApplicationConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyApmApplicationConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "ModifyApmApplicationConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApmApplicationConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApmApplicationConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyApmAssociationRequest() (request *ModifyApmAssociationRequest) {
+    request = &ModifyApmAssociationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "ModifyApmAssociation")
+    
+    
+    return
+}
+
+func NewModifyApmAssociationResponse() (response *ModifyApmAssociationResponse) {
+    response = &ModifyApmAssociationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApmAssociation
+// 用于修改apm业务系统与其他产品的关联关系（包括创建和删除）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASSOCIATIONMODIFYREQUESTNOTVALIDERROR = "FailedOperation.AssociationModifyRequestNotValidError"
+//  FAILEDOPERATION_CKAFKADIFFASSOCIATIONERROR = "FailedOperation.CKafkaDiffAssociationError"
+//  FAILEDOPERATION_CKAFKAEMPTYTOPICERROR = "FailedOperation.CKafkaEmptyTopicError"
+//  FAILEDOPERATION_CKAFKAGETROUTEIDFAILEDERROR = "FailedOperation.CKafkaGetRouteIDFailedError"
+//  FAILEDOPERATION_CKAFKAGETROUTETIMEOUTERROR = "FailedOperation.CKafkaGetRouteTimeoutError"
+//  FAILEDOPERATION_CKAFKANOTAVAILABLEERROR = "FailedOperation.CKafkaNotAvailableError"
+//  FAILEDOPERATION_PEERIDNOTAVAILABLE = "FailedOperation.PeerIdNotAvailable"
+//  FAILEDOPERATION_PRODUCTNAMENOTAVAILABLE = "FailedOperation.ProductNameNotAvailable"
+//  FAILEDOPERATION_PROMINSTANCENOTAVAILABLEERROR = "FailedOperation.PromInstanceNotAvailableError"
+//  FAILEDOPERATION_ROUTENOTAVAILABLEERROR = "FailedOperation.RouteNotAvailableError"
+//  FAILEDOPERATION_TOPICNOTAVAILABLEERROR = "FailedOperation.TopicNotAvailableError"
+func (c *Client) ModifyApmAssociation(request *ModifyApmAssociationRequest) (response *ModifyApmAssociationResponse, err error) {
+    return c.ModifyApmAssociationWithContext(context.Background(), request)
+}
+
+// ModifyApmAssociation
+// 用于修改apm业务系统与其他产品的关联关系（包括创建和删除）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASSOCIATIONMODIFYREQUESTNOTVALIDERROR = "FailedOperation.AssociationModifyRequestNotValidError"
+//  FAILEDOPERATION_CKAFKADIFFASSOCIATIONERROR = "FailedOperation.CKafkaDiffAssociationError"
+//  FAILEDOPERATION_CKAFKAEMPTYTOPICERROR = "FailedOperation.CKafkaEmptyTopicError"
+//  FAILEDOPERATION_CKAFKAGETROUTEIDFAILEDERROR = "FailedOperation.CKafkaGetRouteIDFailedError"
+//  FAILEDOPERATION_CKAFKAGETROUTETIMEOUTERROR = "FailedOperation.CKafkaGetRouteTimeoutError"
+//  FAILEDOPERATION_CKAFKANOTAVAILABLEERROR = "FailedOperation.CKafkaNotAvailableError"
+//  FAILEDOPERATION_PEERIDNOTAVAILABLE = "FailedOperation.PeerIdNotAvailable"
+//  FAILEDOPERATION_PRODUCTNAMENOTAVAILABLE = "FailedOperation.ProductNameNotAvailable"
+//  FAILEDOPERATION_PROMINSTANCENOTAVAILABLEERROR = "FailedOperation.PromInstanceNotAvailableError"
+//  FAILEDOPERATION_ROUTENOTAVAILABLEERROR = "FailedOperation.RouteNotAvailableError"
+//  FAILEDOPERATION_TOPICNOTAVAILABLEERROR = "FailedOperation.TopicNotAvailableError"
+func (c *Client) ModifyApmAssociationWithContext(ctx context.Context, request *ModifyApmAssociationRequest) (response *ModifyApmAssociationResponse, err error) {
+    if request == nil {
+        request = NewModifyApmAssociationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "ModifyApmAssociation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApmAssociation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApmAssociationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApmInstanceRequest() (request *ModifyApmInstanceRequest) {
     request = &ModifyApmInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -867,6 +1381,120 @@ func (c *Client) ModifyApmInstanceWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyApmInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyApmPrometheusRuleRequest() (request *ModifyApmPrometheusRuleRequest) {
+    request = &ModifyApmPrometheusRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "ModifyApmPrometheusRule")
+    
+    
+    return
+}
+
+func NewModifyApmPrometheusRuleResponse() (response *ModifyApmPrometheusRuleResponse) {
+    response = &ModifyApmPrometheusRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApmPrometheusRule
+// 用于修改apm业务系统与Prometheus实例的指标匹配规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROMRULECONFLICT = "FailedOperation.PromRuleConflict"
+//  FAILEDOPERATION_PROMRULEISEMPTYERR = "FailedOperation.PromRuleIsEmptyErr"
+//  FAILEDOPERATION_PROMRULEREQUESTNOTVALIDERROR = "FailedOperation.PromRuleRequestNotValidError"
+func (c *Client) ModifyApmPrometheusRule(request *ModifyApmPrometheusRuleRequest) (response *ModifyApmPrometheusRuleResponse, err error) {
+    return c.ModifyApmPrometheusRuleWithContext(context.Background(), request)
+}
+
+// ModifyApmPrometheusRule
+// 用于修改apm业务系统与Prometheus实例的指标匹配规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROMRULECONFLICT = "FailedOperation.PromRuleConflict"
+//  FAILEDOPERATION_PROMRULEISEMPTYERR = "FailedOperation.PromRuleIsEmptyErr"
+//  FAILEDOPERATION_PROMRULEREQUESTNOTVALIDERROR = "FailedOperation.PromRuleRequestNotValidError"
+func (c *Client) ModifyApmPrometheusRuleWithContext(ctx context.Context, request *ModifyApmPrometheusRuleRequest) (response *ModifyApmPrometheusRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyApmPrometheusRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "ModifyApmPrometheusRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApmPrometheusRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApmPrometheusRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyApmSampleConfigRequest() (request *ModifyApmSampleConfigRequest) {
+    request = &ModifyApmSampleConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "ModifyApmSampleConfig")
+    
+    
+    return
+}
+
+func NewModifyApmSampleConfigResponse() (response *ModifyApmSampleConfigResponse) {
+    response = &ModifyApmSampleConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApmSampleConfig
+// 修改采样配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDOPERATIONTYPE = "FailedOperation.InvalidOperationType"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+//  FAILEDOPERATION_OPERATIONNAMEISEMPTY = "FailedOperation.OperationNameIsEmpty"
+//  FAILEDOPERATION_SAMPLERULECONFLICT = "FailedOperation.SampleRuleConflict"
+func (c *Client) ModifyApmSampleConfig(request *ModifyApmSampleConfigRequest) (response *ModifyApmSampleConfigResponse, err error) {
+    return c.ModifyApmSampleConfigWithContext(context.Background(), request)
+}
+
+// ModifyApmSampleConfig
+// 修改采样配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDOPERATIONTYPE = "FailedOperation.InvalidOperationType"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+//  FAILEDOPERATION_OPERATIONNAMEISEMPTY = "FailedOperation.OperationNameIsEmpty"
+//  FAILEDOPERATION_SAMPLERULECONFLICT = "FailedOperation.SampleRuleConflict"
+func (c *Client) ModifyApmSampleConfigWithContext(ctx context.Context, request *ModifyApmSampleConfigRequest) (response *ModifyApmSampleConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyApmSampleConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "ModifyApmSampleConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApmSampleConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApmSampleConfigResponse()
     err = c.Send(request, response)
     return
 }

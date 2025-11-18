@@ -2994,6 +2994,7 @@ func NewSetUserQuotaResponse() (response *SetUserQuotaResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDCFSVERSION = "UnsupportedOperation.InvalidCfsVersion"
 func (c *Client) SetUserQuota(request *SetUserQuotaRequest) (response *SetUserQuotaResponse, err error) {
     return c.SetUserQuotaWithContext(context.Background(), request)
 }
@@ -3014,6 +3015,7 @@ func (c *Client) SetUserQuota(request *SetUserQuotaRequest) (response *SetUserQu
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDCFSVERSION = "UnsupportedOperation.InvalidCfsVersion"
 func (c *Client) SetUserQuotaWithContext(ctx context.Context, request *SetUserQuotaRequest) (response *SetUserQuotaResponse, err error) {
     if request == nil {
         request = NewSetUserQuotaRequest()

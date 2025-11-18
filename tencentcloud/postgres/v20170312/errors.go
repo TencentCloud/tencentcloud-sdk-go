@@ -59,6 +59,9 @@ const (
 	// 检查数据库账号状态错误：账号已开启CAM验证，不支持当前操作。
 	FAILEDOPERATION_CHECKACCOUNTCAMCLOSEERROR = "FailedOperation.CheckAccountCAMCloseError"
 
+	// 检查数据库账号状态错误：账号未开启CAM验证，不支持当前操作。
+	FAILEDOPERATION_CHECKACCOUNTCAMOPENERROR = "FailedOperation.CheckAccountCAMOpenError"
+
 	// 不支持新增基础网络。
 	FAILEDOPERATION_CREATEBASICNETWORKDENIEDERROR = "FailedOperation.CreateBasicNetworkDeniedError"
 

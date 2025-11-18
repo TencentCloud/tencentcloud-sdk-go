@@ -29,6 +29,44 @@ type Admin struct {
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 }
 
+type AdminChangeInvitationInfo struct {
+	// 要变更的企业Id。
+	// 使用接口进行变更，所支持的企业有两种。
+	// 1. 集团主企业替子企业进行超管变更。
+	//     子企业的企业 Id 可在更多-组织管理-集团组织管理处获取。如图位置![image](https://qcloudimg.tencent-cloud.cn/raw/3d4469c13ca9e66a847560fc4309c58b.png)
+	// 2. 使用接口[创建企业认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl) 创建的企业，企业 Id 可以从回调[企业引导企业实名认证后回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E4%B8%80-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%BC%81%E4%B8%9A%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%90%8E%E5%9B%9E%E8%B0%83)得到。
+	ChangeAdminOrganizationId *string `json:"ChangeAdminOrganizationId,omitnil,omitempty" name:"ChangeAdminOrganizationId"`
+
+	// 组织机构要变更的超管姓名。 
+	// 跟超管变更的操作人保持一致。
+	NewAdminName *string `json:"NewAdminName,omitnil,omitempty" name:"NewAdminName"`
+
+	// 授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
+	// p.s. 如果上传授权书 ，需遵循以下条件
+	// 1. 超管的信息（超管姓名，超管手机号）必须为必填参数。
+	AuthFiles []*string `json:"AuthFiles,omitnil,omitempty" name:"AuthFiles"`
+
+	// 组织机构要变更的超管手机号。
+	// 跟超管变更的操作人保持一致。
+	// 超管变更的手机号和超管变更的证件号，必须要传递一个。
+	NewAdminMobile *string `json:"NewAdminMobile,omitnil,omitempty" name:"NewAdminMobile"`
+
+	// 组织机构要变更的超管证件类型支持以下类型
+	// - ID_CARD : 中国大陆居民身份证 (默认值)
+	// - HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证
+	// - HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)
+	// 
+	// 跟超管变更的操作人保持一致。
+	NewAdminIdCardType *string `json:"NewAdminIdCardType,omitnil,omitempty" name:"NewAdminIdCardType"`
+
+	// 组织机构新超管证件号。
+	// 
+	// 跟超管变更的操作人保持一致。
+	// 
+	// 超管变更的手机号和超管变更的证件号，必须要传递一个。
+	NewAdminIdCardNumber *string `json:"NewAdminIdCardNumber,omitnil,omitempty" name:"NewAdminIdCardNumber"`
+}
+
 type Agent struct {
 	// 代理机构的应用编号,32位字符串，一般不用传
 	//
@@ -1387,6 +1425,233 @@ type ComponentLimit struct {
 	// 
 	// 3.当ComponentType 是 SIGN_LEGAL_PERSON_SEAL 时无需传递此参数。
 	ComponentValue []*string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
+}
+
+// Predefined struct for user
+type CreateBatchAdminChangeInvitationsRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 组织机构超管变更信息。
+	// 一次最多支持10条超管变更信息。
+	AdminChangeInvitationInfos []*AdminChangeInvitationInfo `json:"AdminChangeInvitationInfos,omitnil,omitempty" name:"AdminChangeInvitationInfos"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type CreateBatchAdminChangeInvitationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 组织机构超管变更信息。
+	// 一次最多支持10条超管变更信息。
+	AdminChangeInvitationInfos []*AdminChangeInvitationInfo `json:"AdminChangeInvitationInfos,omitnil,omitempty" name:"AdminChangeInvitationInfos"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *CreateBatchAdminChangeInvitationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchAdminChangeInvitationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "AdminChangeInvitationInfos")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchAdminChangeInvitationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchAdminChangeInvitationsResponseParams struct {
+	// 批量生成企业认证链接的详细错误信息，
+	// 顺序与输入参数保持一致。
+	// 若企业认证均成功生成，则不返回错误信息；
+	// 若存在任何错误，则返回具体的错误描述。
+	ErrorMessages []*string `json:"ErrorMessages,omitnil,omitempty" name:"ErrorMessages"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchAdminChangeInvitationsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchAdminChangeInvitationsResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchAdminChangeInvitationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchAdminChangeInvitationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchAdminChangeInvitationsUrlRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 组织机构要变更的超管姓名。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的姓名保持一致。
+	NewAdminName *string `json:"NewAdminName,omitnil,omitempty" name:"NewAdminName"`
+
+	// 组织机构要变更的超管手机号。 
+	// 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的手机号保持一致。
+	// 
+	// 超管手机号 和超管证件号 二选一 必填。
+	// 
+	// 注意：
+	// 1. 如果新超管的个人身份在电子签进行了手机号的变更，之前提交的超管变更任务将无法获取。
+	NewAdminMobile *string `json:"NewAdminMobile,omitnil,omitempty" name:"NewAdminMobile"`
+
+	// 组织机构要变更的超管证件类型支持以下类型
+	// - ID_CARD : 中国大陆居民身份证 (默认值)
+	// -  HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证
+	// - HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)
+	// 需要更当前操作人的证件类型保持一致。
+	NewAdminIdCardType *string `json:"NewAdminIdCardType,omitnil,omitempty" name:"NewAdminIdCardType"`
+
+	// 组织机构要变更的超管证件号。 
+	// 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的证件号保持一致。
+	// 
+	// 超管手机号和超管证件号 二选一必填。
+	NewAdminIdCardNumber *string `json:"NewAdminIdCardNumber,omitnil,omitempty" name:"NewAdminIdCardNumber"`
+
+	// 通知方式。
+	//  NONE（默认）
+	//  SMS  - 如果使用这个方式，则会给即将变更的超管发信息。
+	// 注意：
+	// 发送信息的手机号，是用户传递的手机号。
+	// 如果用户同时传递了证件号，手机号会用用户在电子签注册的手机号进行覆盖。
+	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
+
+	// 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+}
+
+type CreateBatchAdminChangeInvitationsUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 组织机构要变更的超管姓名。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的姓名保持一致。
+	NewAdminName *string `json:"NewAdminName,omitnil,omitempty" name:"NewAdminName"`
+
+	// 组织机构要变更的超管手机号。 
+	// 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的手机号保持一致。
+	// 
+	// 超管手机号 和超管证件号 二选一 必填。
+	// 
+	// 注意：
+	// 1. 如果新超管的个人身份在电子签进行了手机号的变更，之前提交的超管变更任务将无法获取。
+	NewAdminMobile *string `json:"NewAdminMobile,omitnil,omitempty" name:"NewAdminMobile"`
+
+	// 组织机构要变更的超管证件类型支持以下类型
+	// - ID_CARD : 中国大陆居民身份证 (默认值)
+	// -  HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证
+	// - HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)
+	// 需要更当前操作人的证件类型保持一致。
+	NewAdminIdCardType *string `json:"NewAdminIdCardType,omitnil,omitempty" name:"NewAdminIdCardType"`
+
+	// 组织机构要变更的超管证件号。 
+	// 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的证件号保持一致。
+	// 
+	// 超管手机号和超管证件号 二选一必填。
+	NewAdminIdCardNumber *string `json:"NewAdminIdCardNumber,omitnil,omitempty" name:"NewAdminIdCardNumber"`
+
+	// 通知方式。
+	//  NONE（默认）
+	//  SMS  - 如果使用这个方式，则会给即将变更的超管发信息。
+	// 注意：
+	// 发送信息的手机号，是用户传递的手机号。
+	// 如果用户同时传递了证件号，手机号会用用户在电子签注册的手机号进行覆盖。
+	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
+
+	// 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+}
+
+func (r *CreateBatchAdminChangeInvitationsUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchAdminChangeInvitationsUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "NewAdminName")
+	delete(f, "NewAdminMobile")
+	delete(f, "NewAdminIdCardType")
+	delete(f, "NewAdminIdCardNumber")
+	delete(f, "NotifyType")
+	delete(f, "Endpoint")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchAdminChangeInvitationsUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchAdminChangeInvitationsUrlResponseParams struct {
+	// 批量企业注册链接-单链接包含多条认证流，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天
+	// 跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
+	// <table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody>
+	//  <tr> <td>HTTP</td> <td>https://res.ess.tencent.cn/cdn/h5-activity-dev/jump-mp.html?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHHURDfBxSB2rj2Bfa</td> <td>7天</td> </tr> 
+	// <tr> <td>HTTP_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> 
+	// <tr> <td>APP</td> <td>pages/guide/index?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHpURDfR6iEkdpsDde</td> <td>7天</td> </tr><tr> <td>QR_CODE</td> <td>https://dyn.test.ess.tencent.cn/imgs/qrcode_urls/authorization_enterprise_for_batch_submit/yDCHHUUckpbdauq9UEjnoFDCCumAMmv1.png</td> <td>7天</td> </tr> </tbody> </table>
+	// 注： 
+	// `1.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 链接过期时间，为 7 天后，创建时间，格式为Unix标准时间戳（秒）。
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchAdminChangeInvitationsUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchAdminChangeInvitationsUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchAdminChangeInvitationsUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchAdminChangeInvitationsUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -5100,6 +5365,9 @@ type CreateFlowOption struct {
 
 	// 发起成功之后是否签署合同，仅当前经办人作为签署人时生效 <ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>	
 	SignAfterStart *bool `json:"SignAfterStart,omitnil,omitempty" name:"SignAfterStart"`
+
+	// 发起过程中是否保存草稿
+	NeedFlowDraft *bool `json:"NeedFlowDraft,omitnil,omitempty" name:"NeedFlowDraft"`
 }
 
 // Predefined struct for user
@@ -7132,6 +7400,9 @@ type CreateOrganizationAuthUrlRequestParams struct {
 	// 
 	// p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
 	JumpEvents []*JumpEvent `json:"JumpEvents,omitnil,omitempty" name:"JumpEvents"`
+
+	// 企业证照类型：<ul><li> **USCC** :(默认)工商组织营业执照</li><li> **PRACTICELICENSEOFMEDICALINSTITUTION** :医疗机构执业许可证</li></ul>
+	OrganizationIdCardType *string `json:"OrganizationIdCardType,omitnil,omitempty" name:"OrganizationIdCardType"`
 }
 
 type CreateOrganizationAuthUrlRequest struct {
@@ -7268,6 +7539,9 @@ type CreateOrganizationAuthUrlRequest struct {
 	// 
 	// p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
 	JumpEvents []*JumpEvent `json:"JumpEvents,omitnil,omitempty" name:"JumpEvents"`
+
+	// 企业证照类型：<ul><li> **USCC** :(默认)工商组织营业执照</li><li> **PRACTICELICENSEOFMEDICALINSTITUTION** :医疗机构执业许可证</li></ul>
+	OrganizationIdCardType *string `json:"OrganizationIdCardType,omitnil,omitempty" name:"OrganizationIdCardType"`
 }
 
 func (r *CreateOrganizationAuthUrlRequest) ToJsonString() string {
@@ -7307,6 +7581,7 @@ func (r *CreateOrganizationAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "BankAccountNumber")
 	delete(f, "BankAccountNumberSame")
 	delete(f, "JumpEvents")
+	delete(f, "OrganizationIdCardType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationAuthUrlRequest has unknown keys!", "")
 	}
@@ -8014,6 +8289,7 @@ type CreatePrepareFlowRequestParams struct {
 	// <ul>
 	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
 	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
+	// <li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
 	// </ul>
 	// 注意：需要同时设置 ResourceType 参数指定资源类型
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -8025,7 +8301,9 @@ type CreatePrepareFlowRequestParams struct {
 
 	// 资源类型，取值有：
 	// <ul><li> **1**：模板</li>
-	// <li> **2**：文件（默认值）</li></ul>
+	// <li> **2**：文件（默认值）</li>
+	// <li> **3**：草稿</li>
+	// </ul>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 合同流程的签署顺序类型：
@@ -8123,6 +8401,7 @@ type CreatePrepareFlowRequest struct {
 	// <ul>
 	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
 	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
+	// <li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
 	// </ul>
 	// 注意：需要同时设置 ResourceType 参数指定资源类型
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -8134,7 +8413,9 @@ type CreatePrepareFlowRequest struct {
 
 	// 资源类型，取值有：
 	// <ul><li> **1**：模板</li>
-	// <li> **2**：文件（默认值）</li></ul>
+	// <li> **2**：文件（默认值）</li>
+	// <li> **3**：草稿</li>
+	// </ul>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 合同流程的签署顺序类型：
@@ -8263,6 +8544,9 @@ type CreatePrepareFlowResponseParams struct {
 
 	// 创建的合同id（还未实际发起），每次调用会生成新的id，用户可以记录此字段对应后续页面发起的合同，若在页面上未成功发起，则此字段无效。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。
+	DraftId *string `json:"DraftId,omitnil,omitempty" name:"DraftId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -11537,6 +11821,10 @@ type DescribeContractReviewTaskResponseParams struct {
 
 	// 合同审查出的风险总数
 	TotalRiskCount *int64 `json:"TotalRiskCount,omitnil,omitempty" name:"TotalRiskCount"`
+
+	// 通过项信息(详细引文信息)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApprovedLists []*OutputReference `json:"ApprovedLists,omitnil,omitempty" name:"ApprovedLists"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -16787,6 +17075,27 @@ type OrganizationInfo struct {
 	ProxyIp *string `json:"ProxyIp,omitnil,omitempty" name:"ProxyIp"`
 }
 
+type OutputReference struct {
+	// 合同审查风险结果ID
+	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
+
+	// 风险名称
+	RiskName *string `json:"RiskName,omitnil,omitempty" name:"RiskName"`
+
+	// 风险描述
+	RiskDescription *string `json:"RiskDescription,omitnil,omitempty" name:"RiskDescription"`
+
+	// 风险要点分类名称
+	CategoryName *string `json:"CategoryName,omitnil,omitempty" name:"CategoryName"`
+
+	// 审查依据
+	RiskBasis *string `json:"RiskBasis,omitnil,omitempty" name:"RiskBasis"`
+
+	// 引文内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Excerpts []*ReferenceExcerpt `json:"Excerpts,omitnil,omitempty" name:"Excerpts"`
+}
+
 type OutputRisk struct {
 	// 合同审查风险结果ID
 	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
@@ -16820,6 +17129,9 @@ type OutputRisk struct {
 
 	// 审查依据
 	RiskBasis *string `json:"RiskBasis,omitnil,omitempty" name:"RiskBasis"`
+
+	// 风险等级id
+	RiskLevelId *int64 `json:"RiskLevelId,omitnil,omitempty" name:"RiskLevelId"`
 }
 
 type PdfVerifyResult struct {
@@ -17049,6 +17361,15 @@ type RecipientComponentInfo struct {
 
 	// 改参与方填写控件信息列表
 	Components []*FilledComponent `json:"Components,omitnil,omitempty" name:"Components"`
+}
+
+type ReferenceExcerpt struct {
+	// 原文内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 坐标信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Position *PositionInfo `json:"Position,omitnil,omitempty" name:"Position"`
 }
 
 type RegisterInfo struct {

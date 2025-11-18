@@ -1241,6 +1241,16 @@ type CreateAICallRequestParams struct {
 	// 该参数传false表示关闭合规提示音。该参数传false则代表您知晓并同意以下协议：
 	// 我方充分知悉和理解，根据[《网络安全法》](https://www.cac.gov.cn/2016-11/07/c_1119867116.htm)[《互联网信息服务深度合成管理规定》](https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm)[《生成式人工智能服务管理暂行办法》](https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm)[《人工智能生成合成内容标识办法》](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm)的法律法规的规定，对人工智能生成合成内容应当添加显式标识和隐式标识。我方基于业务需求，请腾讯云对生成合成内容不添加显式标识，我方承诺合法合规使用生成合成内容，避免造成混淆、误认；如果使用生成合成内容对公众提供服务的，或通过网络传播的，我方将自觉主动添加符合法律规定和国家标准要求的显式标识，承担人工智能生成合成内容标识的法律义务。我方未能恰当、合理地履行人工智能内容标识义务造成不良后果的，或遭受主管部门责罚的，相关责任由我方完全承担。
 	EnableComplianceAudio *bool `json:"EnableComplianceAudio,omitnil,omitempty" name:"EnableComplianceAudio"`
+
+	// 是否开启语音信箱识别
+	EnableVoicemailDetection *bool `json:"EnableVoicemailDetection,omitnil,omitempty" name:"EnableVoicemailDetection"`
+
+	// 识别到对端为语音信箱时的行为，当EnableVoicemailDetection为True时生效
+	// 0: 挂断电话（默认）
+	VoicemailAction *uint64 `json:"VoicemailAction,omitnil,omitempty" name:"VoicemailAction"`
+
+	// 大模型拓展参数， 格式为json字符串
+	LLMExtraBody *string `json:"LLMExtraBody,omitnil,omitempty" name:"LLMExtraBody"`
 }
 
 type CreateAICallRequest struct {
@@ -1512,6 +1522,16 @@ type CreateAICallRequest struct {
 	// 该参数传false表示关闭合规提示音。该参数传false则代表您知晓并同意以下协议：
 	// 我方充分知悉和理解，根据[《网络安全法》](https://www.cac.gov.cn/2016-11/07/c_1119867116.htm)[《互联网信息服务深度合成管理规定》](https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm)[《生成式人工智能服务管理暂行办法》](https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm)[《人工智能生成合成内容标识办法》](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm)的法律法规的规定，对人工智能生成合成内容应当添加显式标识和隐式标识。我方基于业务需求，请腾讯云对生成合成内容不添加显式标识，我方承诺合法合规使用生成合成内容，避免造成混淆、误认；如果使用生成合成内容对公众提供服务的，或通过网络传播的，我方将自觉主动添加符合法律规定和国家标准要求的显式标识，承担人工智能生成合成内容标识的法律义务。我方未能恰当、合理地履行人工智能内容标识义务造成不良后果的，或遭受主管部门责罚的，相关责任由我方完全承担。
 	EnableComplianceAudio *bool `json:"EnableComplianceAudio,omitnil,omitempty" name:"EnableComplianceAudio"`
+
+	// 是否开启语音信箱识别
+	EnableVoicemailDetection *bool `json:"EnableVoicemailDetection,omitnil,omitempty" name:"EnableVoicemailDetection"`
+
+	// 识别到对端为语音信箱时的行为，当EnableVoicemailDetection为True时生效
+	// 0: 挂断电话（默认）
+	VoicemailAction *uint64 `json:"VoicemailAction,omitnil,omitempty" name:"VoicemailAction"`
+
+	// 大模型拓展参数， 格式为json字符串
+	LLMExtraBody *string `json:"LLMExtraBody,omitnil,omitempty" name:"LLMExtraBody"`
 }
 
 func (r *CreateAICallRequest) ToJsonString() string {
@@ -1559,6 +1579,9 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "VadLevel")
 	delete(f, "ToneWord")
 	delete(f, "EnableComplianceAudio")
+	delete(f, "EnableVoicemailDetection")
+	delete(f, "VoicemailAction")
+	delete(f, "LLMExtraBody")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAICallRequest has unknown keys!", "")
 	}
@@ -7052,6 +7075,67 @@ type PackageBuyInfo struct {
 }
 
 // Predefined struct for user
+type PauseAutoCalloutTaskRequestParams struct {
+	// 任务Id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+type PauseAutoCalloutTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务Id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+func (r *PauseAutoCalloutTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseAutoCalloutTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PauseAutoCalloutTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PauseAutoCalloutTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PauseAutoCalloutTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *PauseAutoCalloutTaskResponseParams `json:"Response"`
+}
+
+func (r *PauseAutoCalloutTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseAutoCalloutTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type PausePredictiveDialingCampaignRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -7254,6 +7338,67 @@ func (r *RestoreMemberOnlineResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RestoreMemberOnlineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeAutoCalloutTaskRequestParams struct {
+	// 任务Id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+type ResumeAutoCalloutTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务Id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+func (r *ResumeAutoCalloutTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeAutoCalloutTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeAutoCalloutTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeAutoCalloutTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResumeAutoCalloutTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ResumeAutoCalloutTaskResponseParams `json:"Response"`
+}
+
+func (r *ResumeAutoCalloutTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeAutoCalloutTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -1130,6 +1130,15 @@ const (
 	// NAT网关存在未解绑的IP。
 	UNSUPPORTEDOPERATION_NATGATEWAYHADEIPUNASSOCIATE = "UnsupportedOperation.NatGatewayHadEipUnassociate"
 
+	// NAT网关最近流量“出/入带宽”峰值取大超过检测带宽阈值。
+	UNSUPPORTEDOPERATION_NATGATEWAYHAVEHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveHighTraffic"
+
+	// NAT网关存在路由。
+	UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTE = "UnsupportedOperation.NatGatewayHaveRoute"
+
+	// NAT网关存在路由和最近流量“出/入带宽”峰值取大超过检测带宽阈值。
+	UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTEANDHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveRouteAndHighTraffic"
+
 	// NAT网关已被封禁，不支持此操作。
 	UNSUPPORTEDOPERATION_NATGATEWAYRESTRICTED = "UnsupportedOperation.NatGatewayRestricted"
 

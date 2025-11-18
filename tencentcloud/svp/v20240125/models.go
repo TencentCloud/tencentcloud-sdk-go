@@ -647,6 +647,9 @@ type SavingPlanDeductDetail struct {
 }
 
 type SavingPlanOverviewDetail struct {
+	// 节省计划资源id
+	SpId *string `json:"SpId,omitnil,omitempty" name:"SpId"`
+
 	// 节省计划类型
 	SpType *string `json:"SpType,omitnil,omitempty" name:"SpType"`
 

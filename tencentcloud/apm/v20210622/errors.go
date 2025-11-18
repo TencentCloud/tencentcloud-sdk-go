@@ -41,6 +41,9 @@ const (
 	// 未检测到探针在线
 	FAILEDOPERATION_AGENTNOTONLINEERROR = "FailedOperation.AgentNotOnlineError"
 
+	// 探针接口相关配置错误
+	FAILEDOPERATION_AGENTOPERATIONCONFIGINVALID = "FailedOperation.AgentOperationConfigInvalid"
+
 	// 当前探针版本不支持此功能
 	FAILEDOPERATION_AGENTVERSIONNOTSUPPORTERROR = "FailedOperation.AgentVersionNotSupportError"
 
@@ -49,6 +52,24 @@ const (
 
 	// AppID 和业务系统信息不匹配。
 	FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+
+	// 关联关系修改请求有误
+	FAILEDOPERATION_ASSOCIATIONMODIFYREQUESTNOTVALIDERROR = "FailedOperation.AssociationModifyRequestNotValidError"
+
+	// ckafka与旧关联信息不一致
+	FAILEDOPERATION_CKAFKADIFFASSOCIATIONERROR = "FailedOperation.CKafkaDiffAssociationError"
+
+	// topic不能为空
+	FAILEDOPERATION_CKAFKAEMPTYTOPICERROR = "FailedOperation.CKafkaEmptyTopicError"
+
+	// 获取路由失败
+	FAILEDOPERATION_CKAFKAGETROUTEIDFAILEDERROR = "FailedOperation.CKafkaGetRouteIDFailedError"
+
+	// 获取路由超时
+	FAILEDOPERATION_CKAFKAGETROUTETIMEOUTERROR = "FailedOperation.CKafkaGetRouteTimeoutError"
+
+	// CKafka实例不可用
+	FAILEDOPERATION_CKAFKANOTAVAILABLEERROR = "FailedOperation.CKafkaNotAvailableError"
 
 	// 未命中白名单且业务系统 ID 为官方 Demo 业务系统 ID 时，不允许修改接口。
 	FAILEDOPERATION_DEMOINSTANCENOTALLOWMODIFIED = "FailedOperation.DemoInstanceNotAllowModified"
@@ -74,6 +95,9 @@ const (
 	// 非法业务系统 ID。
 	FAILEDOPERATION_INVALIDINSTANCEID = "FailedOperation.InvalidInstanceID"
 
+	// 不合法的接口匹配类型
+	FAILEDOPERATION_INVALIDOPERATIONTYPE = "FailedOperation.InvalidOperationType"
+
 	// 不合法入参
 	FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
 
@@ -98,11 +122,47 @@ const (
 	// 非内网 VPC。
 	FAILEDOPERATION_NOTINNERVPC = "FailedOperation.NotInnerVPC"
 
+	// 接口名不能为空
+	FAILEDOPERATION_OPERATIONNAMEISEMPTY = "FailedOperation.OperationNameIsEmpty"
+
+	// 关联产品ID不可用
+	FAILEDOPERATION_PEERIDNOTAVAILABLE = "FailedOperation.PeerIdNotAvailable"
+
+	// 关联的产品名称不可用或暂不支持
+	FAILEDOPERATION_PRODUCTNAMENOTAVAILABLE = "FailedOperation.ProductNameNotAvailable"
+
+	// 该Prometheus实例状态不可用
+	FAILEDOPERATION_PROMINSTANCENOTAVAILABLEERROR = "FailedOperation.PromInstanceNotAvailableError"
+
+	// Prometheus指标匹配规则冲突，有相同的指标匹配规则
+	FAILEDOPERATION_PROMRULECONFLICT = "FailedOperation.PromRuleConflict"
+
+	// Prometheus指标匹配规则为空
+	FAILEDOPERATION_PROMRULEISEMPTYERR = "FailedOperation.PromRuleIsEmptyErr"
+
+	// Prometheus指标匹配规则名已存在
+	FAILEDOPERATION_PROMRULENAMECONFLICT = "FailedOperation.PromRuleNameConflict"
+
+	// Prometheus指标匹配规则请求有误
+	FAILEDOPERATION_PROMRULEREQUESTNOTVALIDERROR = "FailedOperation.PromRuleRequestNotValidError"
+
 	// 查询时间区间不支持。
 	FAILEDOPERATION_QUERYTIMEINTERVALISNOTSUPPORTED = "FailedOperation.QueryTimeIntervalIsNotSupported"
 
 	// 不支持该地域。
 	FAILEDOPERATION_REGIONNOTSUPPORT = "FailedOperation.RegionNotSupport"
+
+	// 路由不可用
+	FAILEDOPERATION_ROUTENOTAVAILABLEERROR = "FailedOperation.RouteNotAvailableError"
+
+	// 该实例下采样名重复。
+	FAILEDOPERATION_SAMPLENAMECONFLICT = "FailedOperation.SampleNameConflict"
+
+	// 没有该采样规则。
+	FAILEDOPERATION_SAMPLENOTFOUND = "FailedOperation.SampleNotFound"
+
+	// 采样规则冲突。
+	FAILEDOPERATION_SAMPLERULECONFLICT = "FailedOperation.SampleRuleConflict"
 
 	// 发送查询请求失败。
 	FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
@@ -118,6 +178,9 @@ const (
 
 	// serviceId 与 appId 不匹配
 	FAILEDOPERATION_SERVICENOTMATCHAPPIDERR = "FailedOperation.ServiceNotMatchAppIdErr"
+
+	// topic不可用
+	FAILEDOPERATION_TOPICNOTAVAILABLEERROR = "FailedOperation.TopicNotAvailableError"
 
 	// 视图名不存在或非法。
 	FAILEDOPERATION_VIEWNAMENOTEXISTORILLEGAL = "FailedOperation.ViewNameNotExistOrIllegal"

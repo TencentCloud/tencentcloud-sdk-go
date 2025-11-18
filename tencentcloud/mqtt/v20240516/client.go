@@ -149,6 +149,58 @@ func (c *Client) ActivateDeviceCertificateWithContext(ctx context.Context, reque
     return
 }
 
+func NewAddClientSubscriptionRequest() (request *AddClientSubscriptionRequest) {
+    request = &AddClientSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "AddClientSubscription")
+    
+    
+    return
+}
+
+func NewAddClientSubscriptionResponse() (response *AddClientSubscriptionResponse) {
+    response = &AddClientSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddClientSubscription
+// 为MQTT客户端增加一条订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) AddClientSubscription(request *AddClientSubscriptionRequest) (response *AddClientSubscriptionResponse, err error) {
+    return c.AddClientSubscriptionWithContext(context.Background(), request)
+}
+
+// AddClientSubscription
+// 为MQTT客户端增加一条订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) AddClientSubscriptionWithContext(ctx context.Context, request *AddClientSubscriptionRequest) (response *AddClientSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewAddClientSubscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "AddClientSubscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddClientSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddClientSubscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyRegistrationCodeRequest() (request *ApplyRegistrationCodeRequest) {
     request = &ApplyRegistrationCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -979,6 +1031,62 @@ func (c *Client) DeleteCaCertificateWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteCaCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteClientSubscriptionRequest() (request *DeleteClientSubscriptionRequest) {
+    request = &DeleteClientSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DeleteClientSubscription")
+    
+    
+    return
+}
+
+func NewDeleteClientSubscriptionResponse() (response *DeleteClientSubscriptionResponse) {
+    response = &DeleteClientSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteClientSubscription
+// 删除MQTT客户端下的一条订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  FAILEDOPERATION_RELATEDDEVICECERTIFICATEEXISTS = "FailedOperation.RelatedDeviceCertificateExists"
+//  RESOURCENOTFOUND_CA = "ResourceNotFound.Ca"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteClientSubscription(request *DeleteClientSubscriptionRequest) (response *DeleteClientSubscriptionResponse, err error) {
+    return c.DeleteClientSubscriptionWithContext(context.Background(), request)
+}
+
+// DeleteClientSubscription
+// 删除MQTT客户端下的一条订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  FAILEDOPERATION_RELATEDDEVICECERTIFICATEEXISTS = "FailedOperation.RelatedDeviceCertificateExists"
+//  RESOURCENOTFOUND_CA = "ResourceNotFound.Ca"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteClientSubscriptionWithContext(ctx context.Context, request *DeleteClientSubscriptionRequest) (response *DeleteClientSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewDeleteClientSubscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeleteClientSubscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteClientSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteClientSubscriptionResponse()
     err = c.Send(request, response)
     return
 }

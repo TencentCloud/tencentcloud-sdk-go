@@ -669,7 +669,7 @@ func NewQueryChunkListResponse() (response *QueryChunkListResponse) {
 }
 
 // QueryChunkList
-// 分配查询
+// 文档切片查询
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -687,7 +687,7 @@ func (c *Client) QueryChunkList(request *QueryChunkListRequest) (response *Query
 }
 
 // QueryChunkList
-// 分配查询
+// 文档切片查询
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

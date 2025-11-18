@@ -464,6 +464,9 @@ const (
 	// 该可用区不支持基础网络。
 	UNSUPPORTEDOPERATION_BASICNETINTERFACENOTSUPPORTED = "UnsupportedOperation.BasicNetInterfaceNotSupported"
 
+	// 该文件系统版本不支持当前操作
+	UNSUPPORTEDOPERATION_INVALIDCFSVERSION = "UnsupportedOperation.InvalidCfsVersion"
+
 	// 该数据流动不支持删除，关联该数据流动的数据管理任务正在执行中，请等待执行完成或终止执行。
 	UNSUPPORTEDOPERATION_INVALIDLIFECYCLEDATATASKSTATUS = "UnsupportedOperation.InvalidLifecycleDataTaskStatus"
 

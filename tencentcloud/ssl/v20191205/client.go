@@ -93,6 +93,7 @@ func NewApplyCertificateResponse() (response *ApplyCertificateResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PACKAGEIDSINVALID = "InvalidParameter.PackageIdsInvalid"
+//  INVALIDPARAMETERVALUE_CERTIFICATEDOMAINMAXLENGTHINVALID = "InvalidParameterValue.CertificateDomainMaxLengthInvalid"
 //  INVALIDPARAMETERVALUE_CERTIFICATEEMAILPARSEINVALID = "InvalidParameterValue.CertificateEmailParseInvalid"
 func (c *Client) ApplyCertificate(request *ApplyCertificateRequest) (response *ApplyCertificateResponse, err error) {
     return c.ApplyCertificateWithContext(context.Background(), request)
@@ -127,6 +128,7 @@ func (c *Client) ApplyCertificate(request *ApplyCertificateRequest) (response *A
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PACKAGEIDSINVALID = "InvalidParameter.PackageIdsInvalid"
+//  INVALIDPARAMETERVALUE_CERTIFICATEDOMAINMAXLENGTHINVALID = "InvalidParameterValue.CertificateDomainMaxLengthInvalid"
 //  INVALIDPARAMETERVALUE_CERTIFICATEEMAILPARSEINVALID = "InvalidParameterValue.CertificateEmailParseInvalid"
 func (c *Client) ApplyCertificateWithContext(ctx context.Context, request *ApplyCertificateRequest) (response *ApplyCertificateResponse, err error) {
     if request == nil {

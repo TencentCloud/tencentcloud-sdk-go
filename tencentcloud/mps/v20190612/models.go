@@ -22353,7 +22353,7 @@ type VideoTemplateInfo struct {
 	// 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
 	// 注意：VP8、VP9编码容器目前只支持webm，mkv。
 	// 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
-	// 注意：MV-HEVC编码容器目前只支持mp4，hls，mov。其中hls格式只支持mp4分片格式。
+	// 注意：MV-HEVC编码容器目前只支持mp4，hls，mov。其中hls格式只支持mp4分片格式。且要求输入源为全景视频（带多视角）。
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
 	// 视频帧率，取值范围：

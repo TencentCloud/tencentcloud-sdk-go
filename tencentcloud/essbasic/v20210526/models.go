@@ -3625,7 +3625,9 @@ func (r *ChannelCreatePrepareFlowGroupResponse) FromJsonString(s string) error {
 type ChannelCreatePrepareFlowRequestParams struct {
 	// 资源类型，取值有：
 	// <ul><li> **1**：模板</li>
-	// <li> **2**：文件（默认值）</li></ul>
+	// <li> **2**：文件（默认值）</li>
+	// <li> **3**：草稿</li>
+	// </ul>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 要创建的合同信息
@@ -3646,6 +3648,7 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// <ul>
 	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
 	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
+	// <li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
 	// </ul>
 	// 注意：需要同时设置 ResourceType 参数指定资源类型
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -3691,7 +3694,9 @@ type ChannelCreatePrepareFlowRequest struct {
 	
 	// 资源类型，取值有：
 	// <ul><li> **1**：模板</li>
-	// <li> **2**：文件（默认值）</li></ul>
+	// <li> **2**：文件（默认值）</li>
+	// <li> **3**：草稿</li>
+	// </ul>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 要创建的合同信息
@@ -3712,6 +3717,7 @@ type ChannelCreatePrepareFlowRequest struct {
 	// <ul>
 	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
 	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
+	// <li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
 	// </ul>
 	// 注意：需要同时设置 ResourceType 参数指定资源类型
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -3781,6 +3787,9 @@ type ChannelCreatePrepareFlowResponseParams struct {
 
 	// 发起的合同临时Id， 只有当点击进入链接，成功发起合同后， 此Id才有效
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。
+	DraftId *string `json:"DraftId,omitnil,omitempty" name:"DraftId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7926,6 +7935,13 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// p.s.Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font>
 	// 如果 Endpoint 是 H5 类型，请参考文档跳转电子签H5 p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
 	JumpEvents []*JumpEvent `json:"JumpEvents,omitnil,omitempty" name:"JumpEvents"`
+
+	// 企业证照类型：
+	// <ul>
+	// <li> **USCC** :(默认)工商组织营业执照</li>
+	// <li> **PRACTICELICENSEOFMEDICALINSTITUTION** :医疗机构执业许可证</li>
+	// </ul>
+	ProxyOrganizationIdCardType *string `json:"ProxyOrganizationIdCardType,omitnil,omitempty" name:"ProxyOrganizationIdCardType"`
 }
 
 type CreateConsoleLoginUrlRequest struct {
@@ -8068,6 +8084,13 @@ type CreateConsoleLoginUrlRequest struct {
 	// p.s.Endpoint如果是APP 类型，请传递JumpUrl为<font color="red">"true" </font>
 	// 如果 Endpoint 是 H5 类型，请参考文档跳转电子签H5 p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
 	JumpEvents []*JumpEvent `json:"JumpEvents,omitnil,omitempty" name:"JumpEvents"`
+
+	// 企业证照类型：
+	// <ul>
+	// <li> **USCC** :(默认)工商组织营业执照</li>
+	// <li> **PRACTICELICENSEOFMEDICALINSTITUTION** :医疗机构执业许可证</li>
+	// </ul>
+	ProxyOrganizationIdCardType *string `json:"ProxyOrganizationIdCardType,omitnil,omitempty" name:"ProxyOrganizationIdCardType"`
 }
 
 func (r *CreateConsoleLoginUrlRequest) ToJsonString() string {
@@ -8105,6 +8128,7 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 	delete(f, "BankAccountNumber")
 	delete(f, "Operator")
 	delete(f, "JumpEvents")
+	delete(f, "ProxyOrganizationIdCardType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsoleLoginUrlRequest has unknown keys!", "")
 	}
@@ -8676,6 +8700,9 @@ type CreateFlowOption struct {
 
 	// 发起后签署码隐藏，默认false，注：仅对新版页面生效
 	HideSignCodeAfterStart *bool `json:"HideSignCodeAfterStart,omitnil,omitempty" name:"HideSignCodeAfterStart"`
+
+	// 发起过程中是否保存草稿	
+	NeedFlowDraft *bool `json:"NeedFlowDraft,omitnil,omitempty" name:"NeedFlowDraft"`
 }
 
 // Predefined struct for user
@@ -11417,7 +11444,10 @@ type DynamicFlowApproverResult struct {
 }
 
 type DynamicFlowInfo struct {
-	// 合同流程ID，为32位字符串。 - 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 - 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。 - <font color="red">不建议继续使用</font>，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId指定合同	
+	// 合同流程ID，为32位字符串。 
+	// - FlowId 在通过[ChannelCreateFlowByFiles](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles) 发起，可以在返回参数FlowId中获取。
+	// - 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 
+	// - 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，不同类型的签署方传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)。 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。	

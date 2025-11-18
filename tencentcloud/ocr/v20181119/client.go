@@ -6397,6 +6397,10 @@ func NewRecognizeHealthCodeOCRResponse() (response *RecognizeHealthCodeOCRRespon
 }
 
 // RecognizeHealthCodeOCR
+// 产品规划
+//
+// 
+//
 // 本接口支持北京、上海、广东、江苏、吉林、黑龙江、天津、辽宁、浙江、河南、四川、贵州、山东、安徽、福建、江西、湖北、湖南等省份健康码的识别，包括持码人姓名、持码人身份证号、健康码更新时间、健康码颜色、核酸检测结果、核酸检测间隔时长、核酸检测时间，疫苗接种信息，八个字段的识别结果输出。不同省市健康码显示的字段信息有所不同，上述字段的识别结果可能为空，以图片上具体展示的信息为准。
 //
 // 
@@ -6420,6 +6424,10 @@ func (c *Client) RecognizeHealthCodeOCR(request *RecognizeHealthCodeOCRRequest) 
 }
 
 // RecognizeHealthCodeOCR
+// 产品规划
+//
+// 
+//
 // 本接口支持北京、上海、广东、江苏、吉林、黑龙江、天津、辽宁、浙江、河南、四川、贵州、山东、安徽、福建、江西、湖北、湖南等省份健康码的识别，包括持码人姓名、持码人身份证号、健康码更新时间、健康码颜色、核酸检测结果、核酸检测间隔时长、核酸检测时间，疫苗接种信息，八个字段的识别结果输出。不同省市健康码显示的字段信息有所不同，上述字段的识别结果可能为空，以图片上具体展示的信息为准。
 //
 // 
@@ -7039,6 +7047,10 @@ func NewRecognizeTravelCardOCRResponse() (response *RecognizeTravelCardOCRRespon
 }
 
 // RecognizeTravelCardOCR
+// 产品规划
+//
+// 
+//
 // 本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
 //
 // 
@@ -7063,6 +7075,10 @@ func (c *Client) RecognizeTravelCardOCR(request *RecognizeTravelCardOCRRequest) 
 }
 
 // RecognizeTravelCardOCR
+// 产品规划
+//
+// 
+//
 // 本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
 //
 // 
