@@ -125,14 +125,6 @@ type AnalyseParam struct {
 	InputValue *string `json:"InputValue,omitnil,omitempty" name:"InputValue"`
 }
 
-type AppIdResponse struct {
-	// 符合要求的所有AppId数量
-	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 符合要求的App Id列表
-	AppIdList []*int64 `json:"AppIdList,omitnil,omitempty" name:"AppIdList"`
-}
-
 type Assignment struct {
 	// assingment版本信息
 	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
@@ -4116,70 +4108,6 @@ func (r *DescribeAclRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAclRuleResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAppInfoRequestParams struct {
-	// 偏移位置
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 本次查询用户数目最大数量限制，最大值为50，默认50
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-}
-
-type DescribeAppInfoRequest struct {
-	*tchttp.BaseRequest
-	
-	// 偏移位置
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 本次查询用户数目最大数量限制，最大值为50，默认50
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-}
-
-func (r *DescribeAppInfoRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAppInfoRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Offset")
-	delete(f, "Limit")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppInfoRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAppInfoResponseParams struct {
-	// 返回的符合要求的App Id列表
-	Result *AppIdResponse `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeAppInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeAppInfoResponseParams `json:"Response"`
-}
-
-func (r *DescribeAppInfoResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAppInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

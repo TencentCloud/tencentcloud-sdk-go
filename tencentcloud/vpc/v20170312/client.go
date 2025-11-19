@@ -9694,6 +9694,9 @@ func NewDeletePrivateNatGatewayResponse() (response *DeletePrivateNatGatewayResp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
 //  UNSUPPORTEDOPERATION_DELETIONPROTECTIONENABLED = "UnsupportedOperation.DeletionProtectionEnabled"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveHighTraffic"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTE = "UnsupportedOperation.NatGatewayHaveRoute"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTEANDHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveRouteAndHighTraffic"
 //  UNSUPPORTEDOPERATION_PRIVATENATGATEWAYASSOCIATIONEXISTS = "UnsupportedOperation.PrivateNatGatewayAssociationExists"
 func (c *Client) DeletePrivateNatGateway(request *DeletePrivateNatGatewayRequest) (response *DeletePrivateNatGatewayResponse, err error) {
     return c.DeletePrivateNatGatewayWithContext(context.Background(), request)
@@ -9711,6 +9714,9 @@ func (c *Client) DeletePrivateNatGateway(request *DeletePrivateNatGatewayRequest
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
 //  UNSUPPORTEDOPERATION_DELETIONPROTECTIONENABLED = "UnsupportedOperation.DeletionProtectionEnabled"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveHighTraffic"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTE = "UnsupportedOperation.NatGatewayHaveRoute"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTEANDHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveRouteAndHighTraffic"
 //  UNSUPPORTEDOPERATION_PRIVATENATGATEWAYASSOCIATIONEXISTS = "UnsupportedOperation.PrivateNatGatewayAssociationExists"
 func (c *Client) DeletePrivateNatGatewayWithContext(ctx context.Context, request *DeletePrivateNatGatewayRequest) (response *DeletePrivateNatGatewayResponse, err error) {
     if request == nil {

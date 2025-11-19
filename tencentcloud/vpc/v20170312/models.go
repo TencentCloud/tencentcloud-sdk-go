@@ -10710,6 +10710,9 @@ func (r *DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse) Fro
 type DeletePrivateNatGatewayRequestParams struct {
 	// 私网网关唯一`ID`，形如"intranat-xxxxxxxx"。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 忽略操作风险
+	IgnoreOperationRisk *bool `json:"IgnoreOperationRisk,omitnil,omitempty" name:"IgnoreOperationRisk"`
 }
 
 type DeletePrivateNatGatewayRequest struct {
@@ -10717,6 +10720,9 @@ type DeletePrivateNatGatewayRequest struct {
 	
 	// 私网网关唯一`ID`，形如"intranat-xxxxxxxx"。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 忽略操作风险
+	IgnoreOperationRisk *bool `json:"IgnoreOperationRisk,omitnil,omitempty" name:"IgnoreOperationRisk"`
 }
 
 func (r *DeletePrivateNatGatewayRequest) ToJsonString() string {
@@ -10732,6 +10738,7 @@ func (r *DeletePrivateNatGatewayRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "NatGatewayId")
+	delete(f, "IgnoreOperationRisk")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrivateNatGatewayRequest has unknown keys!", "")
 	}

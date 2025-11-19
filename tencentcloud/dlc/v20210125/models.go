@@ -900,6 +900,9 @@ type AttachUserPolicyRequestParams struct {
 
 	// 鉴权策略集合
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type AttachUserPolicyRequest struct {
@@ -910,6 +913,9 @@ type AttachUserPolicyRequest struct {
 
 	// 鉴权策略集合
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 func (r *AttachUserPolicyRequest) ToJsonString() string {
@@ -926,6 +932,7 @@ func (r *AttachUserPolicyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "UserId")
 	delete(f, "PolicySet")
+	delete(f, "AccountType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachUserPolicyRequest has unknown keys!", "")
 	}
@@ -4650,6 +4657,9 @@ type CreateUserRequestParams struct {
 
 	// 用户别名，字符长度小50
 	UserAlias *string `json:"UserAlias,omitnil,omitempty" name:"UserAlias"`
+
+	// 账号类型，UserAccount：用户账号 RoleAccount：角色账号，默认为用户账号
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type CreateUserRequest struct {
@@ -4672,6 +4682,9 @@ type CreateUserRequest struct {
 
 	// 用户别名，字符长度小50
 	UserAlias *string `json:"UserAlias,omitnil,omitempty" name:"UserAlias"`
+
+	// 账号类型，UserAccount：用户账号 RoleAccount：角色账号，默认为用户账号
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 func (r *CreateUserRequest) ToJsonString() string {
@@ -4692,6 +4705,7 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 	delete(f, "UserType")
 	delete(f, "WorkGroupIds")
 	delete(f, "UserAlias")
+	delete(f, "AccountType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRequest has unknown keys!", "")
 	}
@@ -6428,6 +6442,9 @@ func (r *DeleteThirdPartyAccessUserResponse) FromJsonString(s string) error {
 type DeleteUserRequestParams struct {
 	// 需要删除的用户的Id
 	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type DeleteUserRequest struct {
@@ -6435,6 +6452,9 @@ type DeleteUserRequest struct {
 	
 	// 需要删除的用户的Id
 	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 func (r *DeleteUserRequest) ToJsonString() string {
@@ -6450,6 +6470,7 @@ func (r *DeleteUserRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "UserIds")
+	delete(f, "AccountType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserRequest has unknown keys!", "")
 	}
@@ -12022,6 +12043,9 @@ type DescribeUserInfoRequestParams struct {
 
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type DescribeUserInfoRequest struct {
@@ -12071,6 +12095,9 @@ type DescribeUserInfoRequest struct {
 
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 func (r *DescribeUserInfoRequest) ToJsonString() string {
@@ -12092,6 +12119,7 @@ func (r *DescribeUserInfoRequest) FromJsonString(s string) error {
 	delete(f, "Sorting")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "AccountType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserInfoRequest has unknown keys!", "")
 	}
@@ -12280,6 +12308,9 @@ func (r *DescribeUserRolesResponse) FromJsonString(s string) error {
 type DescribeUserTypeRequestParams struct {
 	// 用户ID（UIN），如果不填默认为调用方的子UIN
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type DescribeUserTypeRequest struct {
@@ -12287,6 +12318,9 @@ type DescribeUserTypeRequest struct {
 	
 	// 用户ID（UIN），如果不填默认为调用方的子UIN
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 func (r *DescribeUserTypeRequest) ToJsonString() string {
@@ -12302,6 +12336,7 @@ func (r *DescribeUserTypeRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "UserId")
+	delete(f, "AccountType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserTypeRequest has unknown keys!", "")
 	}
@@ -12424,6 +12459,9 @@ type DescribeUsersRequestParams struct {
 
 	// 过滤条件，支持如下字段类型，user-type：根据用户类型过滤。user-keyword：根据用户名称过滤
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type DescribeUsersRequest struct {
@@ -12446,6 +12484,9 @@ type DescribeUsersRequest struct {
 
 	// 过滤条件，支持如下字段类型，user-type：根据用户类型过滤。user-keyword：根据用户名称过滤
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 func (r *DescribeUsersRequest) ToJsonString() string {
@@ -12466,6 +12507,7 @@ func (r *DescribeUsersRequest) FromJsonString(s string) error {
 	delete(f, "SortBy")
 	delete(f, "Sorting")
 	delete(f, "Filters")
+	delete(f, "AccountType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsersRequest has unknown keys!", "")
 	}
@@ -12879,6 +12921,9 @@ type DetachUserPolicyRequestParams struct {
 
 	// 解绑的权限集合
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type DetachUserPolicyRequest struct {
@@ -12889,6 +12934,9 @@ type DetachUserPolicyRequest struct {
 
 	// 解绑的权限集合
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 func (r *DetachUserPolicyRequest) ToJsonString() string {
@@ -12905,6 +12953,7 @@ func (r *DetachUserPolicyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "UserId")
 	delete(f, "PolicySet")
+	delete(f, "AccountType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachUserPolicyRequest has unknown keys!", "")
 	}
@@ -14787,6 +14836,9 @@ type ModifyUserRequestParams struct {
 
 	// 用户描述
 	UserDescription *string `json:"UserDescription,omitnil,omitempty" name:"UserDescription"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type ModifyUserRequest struct {
@@ -14797,6 +14849,9 @@ type ModifyUserRequest struct {
 
 	// 用户描述
 	UserDescription *string `json:"UserDescription,omitnil,omitempty" name:"UserDescription"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 func (r *ModifyUserRequest) ToJsonString() string {
@@ -14813,6 +14868,7 @@ func (r *ModifyUserRequest) FromJsonString(s string) error {
 	}
 	delete(f, "UserId")
 	delete(f, "UserDescription")
+	delete(f, "AccountType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserRequest has unknown keys!", "")
 	}
@@ -14848,6 +14904,9 @@ type ModifyUserTypeRequestParams struct {
 
 	// 用户要修改到的类型，ADMIN：管理员，COMMON：一般用户。
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type ModifyUserTypeRequest struct {
@@ -14858,6 +14917,9 @@ type ModifyUserTypeRequest struct {
 
 	// 用户要修改到的类型，ADMIN：管理员，COMMON：一般用户。
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 func (r *ModifyUserTypeRequest) ToJsonString() string {
@@ -14874,6 +14936,7 @@ func (r *ModifyUserTypeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "UserId")
 	delete(f, "UserType")
+	delete(f, "AccountType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserTypeRequest has unknown keys!", "")
 	}
@@ -15488,6 +15551,9 @@ type Policy struct {
 
 	// 引擎类型
 	EngineGeneration *string `json:"EngineGeneration,omitnil,omitempty" name:"EngineGeneration"`
+
+	// 需要授权的Model名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
 type Policys struct {
@@ -18756,6 +18822,9 @@ type UserDetailInfo struct {
 	// 数据源权限集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CatalogPolicyInfo *Policys `json:"CatalogPolicyInfo,omitnil,omitempty" name:"CatalogPolicyInfo"`
+
+	// 模型权限集合
+	ModelPolicyInfo *Policys `json:"ModelPolicyInfo,omitnil,omitempty" name:"ModelPolicyInfo"`
 }
 
 type UserIdSetOfWorkGroupId struct {
@@ -18816,6 +18885,9 @@ type UserMessage struct {
 
 	// 用户别名
 	UserAlias *string `json:"UserAlias,omitnil,omitempty" name:"UserAlias"`
+
+	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type UserRole struct {

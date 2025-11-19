@@ -383,6 +383,9 @@ func (r *CreateApplicationAndVideoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateApplicationAndVideoResponseParams struct {
+	// license唯一标识
+	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -444,6 +447,9 @@ func (r *CreateApplicationAndWebPlayerLicenseRequest) FromJsonString(s string) e
 
 // Predefined struct for user
 type CreateApplicationAndWebPlayerLicenseResponseParams struct {
+	// license的唯一标识
+	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1395,6 +1401,9 @@ type DescribeVcubeApplicationAndPlayListRequestParams struct {
 
 	// Windows 进程名
 	WinProcessName *string `json:"WinProcessName,omitnil,omitempty" name:"WinProcessName"`
+
+	// license唯一标识
+	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
 }
 
 type DescribeVcubeApplicationAndPlayListRequest struct {
@@ -1423,6 +1432,9 @@ type DescribeVcubeApplicationAndPlayListRequest struct {
 
 	// Windows 进程名
 	WinProcessName *string `json:"WinProcessName,omitnil,omitempty" name:"WinProcessName"`
+
+	// license唯一标识
+	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
 }
 
 func (r *DescribeVcubeApplicationAndPlayListRequest) ToJsonString() string {
@@ -1445,6 +1457,7 @@ func (r *DescribeVcubeApplicationAndPlayListRequest) FromJsonString(s string) er
 	delete(f, "Platform")
 	delete(f, "MacBundleId")
 	delete(f, "WinProcessName")
+	delete(f, "LicenseId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVcubeApplicationAndPlayListRequest has unknown keys!", "")
 	}

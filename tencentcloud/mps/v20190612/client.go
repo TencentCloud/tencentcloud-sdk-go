@@ -4474,6 +4474,7 @@ func NewDescribeSmartEraseTemplatesResponse() (response *DescribeSmartEraseTempl
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_ERASETYPE = "InvalidParameterValue.EraseType"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DescribeSmartEraseTemplates(request *DescribeSmartEraseTemplatesRequest) (response *DescribeSmartEraseTemplatesResponse, err error) {
@@ -4488,6 +4489,7 @@ func (c *Client) DescribeSmartEraseTemplates(request *DescribeSmartEraseTemplate
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_ERASETYPE = "InvalidParameterValue.EraseType"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DescribeSmartEraseTemplatesWithContext(ctx context.Context, request *DescribeSmartEraseTemplatesRequest) (response *DescribeSmartEraseTemplatesResponse, err error) {

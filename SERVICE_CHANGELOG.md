@@ -1,27 +1,30 @@
-# Release v1.2.2
+# Release v1.2.3
 
-## 云联络中心(ccc) 版本：2020-02-10
+## 消息队列 CKafka 版(ckafka) 版本：2019-08-19
 
-### 第 115 次发布
+### 第 136 次发布
 
-发布时间：2025-11-19 01:16:49
+发布时间：2025-11-20 01:14:29
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+<font color="#dd0000">**删除接口**：</font>
 
-* [PauseAutoCalloutTask](https://cloud.tencent.com/document/api/679/125357)
-* [ResumeAutoCalloutTask](https://cloud.tencent.com/document/api/679/125356)
+* DescribeAppInfo
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AppIdResponse
 
 
 
-## 云托付物理服务器(chc) 版本：2023-04-18
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
-### 第 9 次发布
+### 第 141 次发布
 
-发布时间：2025-11-19 01:23:33
+发布时间：2025-11-20 01:18:53
 
 本次发布包含了以下内容：
 
@@ -29,75 +32,88 @@
 
 修改接口：
 
-* [CreateQuitWorkOrder](https://cloud.tencent.com/document/api/1448/117184)
+* [AttachUserPolicy](https://cloud.tencent.com/document/api/1342/58468)
 
-	* 新增入参：Building, IdcUnitId, Isp, EmailSet, FactorSet
+	* 新增入参：AccountType
+
+* [CreateUser](https://cloud.tencent.com/document/api/1342/58465)
+
+	* 新增入参：AccountType
+
+* [DeleteUser](https://cloud.tencent.com/document/api/1342/58463)
+
+	* 新增入参：AccountType
+
+* [DescribeUserInfo](https://cloud.tencent.com/document/api/1342/99262)
+
+	* 新增入参：AccountType
+
+* [DescribeUserType](https://cloud.tencent.com/document/api/1342/99261)
+
+	* 新增入参：AccountType
+
+* [DescribeUsers](https://cloud.tencent.com/document/api/1342/58460)
+
+	* 新增入参：AccountType
+
+* [DetachUserPolicy](https://cloud.tencent.com/document/api/1342/58458)
+
+	* 新增入参：AccountType
+
+* [ModifyUser](https://cloud.tencent.com/document/api/1342/58456)
+
+	* 新增入参：AccountType
+
+* [ModifyUserType](https://cloud.tencent.com/document/api/1342/99259)
+
+	* 新增入参：AccountType
 
 
 修改数据结构：
 
-* [DeviceOrderBaseInfo](https://cloud.tencent.com/document/api/1448/117193#DeviceOrderBaseInfo)
+* [Policy](https://cloud.tencent.com/document/api/1342/53778#Policy)
 
-	* 新增成员：Building, EmailSet, FactorSet
+	* 新增成员：Model
 
+* [UserDetailInfo](https://cloud.tencent.com/document/api/1342/53778#UserDetailInfo)
 
+	* 新增成员：ModelPolicyInfo
 
+* [UserMessage](https://cloud.tencent.com/document/api/1342/53778#UserMessage)
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 260 次发布
-
-发布时间：2025-11-19 01:44:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateOrganizationAuthUrl](https://cloud.tencent.com/document/api/1323/105134)
-
-	* 新增入参：OrganizationIdCardType
-
-* [CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)
-
-	* 新增出参：DraftId
+	* 新增成员：AccountType
 
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 数据传输服务(dts) 版本：2021-12-06
 
-### 第 244 次发布
+### 第 48 次发布
 
-发布时间：2025-11-19 01:45:30
+发布时间：2025-11-20 01:20:59
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [ChannelCreatePrepareFlow](https://cloud.tencent.com/document/api/1420/87897)
+* [KafkaOption](https://cloud.tencent.com/document/api/571/82108#KafkaOption)
 
-	* 新增出参：DraftId
-
-* [CreateConsoleLoginUrl](https://cloud.tencent.com/document/api/1420/61524)
-
-	* 新增入参：ProxyOrganizationIdCardType
+	* 新增成员：DataOption
 
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 数据传输服务(dts) 版本：2018-03-30
 
 
 
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 60 次发布
+### 第 124 次发布
 
-发布时间：2025-11-19 02:06:26
+发布时间：2025-11-19 17:22:41
 
 本次发布包含了以下内容：
 
@@ -105,36 +121,46 @@
 
 新增接口：
 
-* [CreateAuditLogFile](https://cloud.tencent.com/document/api/240/125363)
-* [DeleteAuditLogFile](https://cloud.tencent.com/document/api/240/125362)
-* [DescribeAuditInstanceList](https://cloud.tencent.com/document/api/240/125361)
-* [ModifyAuditService](https://cloud.tencent.com/document/api/240/125360)
-* [OpenAuditService](https://cloud.tencent.com/document/api/240/125359)
+* [BatchCreateTWeSeeRecognitionTask](https://cloud.tencent.com/document/api/1081/125438)
+* [BatchInvokeTWeSeeRecognitionTask](https://cloud.tencent.com/document/api/1081/125437)
+* [CreateTWeSeeRecognitionTaskWithFile](https://cloud.tencent.com/document/api/1081/125436)
+* [DeleteTWeTalkProductConfigV2](https://cloud.tencent.com/document/api/1081/125433)
+* [InvokeTWeSeeRecognitionTaskWithFile](https://cloud.tencent.com/document/api/1081/125435)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeDeviceLocationSolve
 
 新增数据结构：
 
-* [AuditInstance](https://cloud.tencent.com/document/api/240/38576#AuditInstance)
-* [AuditLogFilter](https://cloud.tencent.com/document/api/240/38576#AuditLogFilter)
-* [DeliverSummary](https://cloud.tencent.com/document/api/240/38576#DeliverSummary)
-* [Filters](https://cloud.tencent.com/document/api/240/38576#Filters)
-* [InstanceInfo](https://cloud.tencent.com/document/api/240/38576#InstanceInfo)
-* [LogFilter](https://cloud.tencent.com/document/api/240/38576#LogFilter)
+* [CreateVisionRecognitionTaskInput](https://cloud.tencent.com/document/api/1081/34988#CreateVisionRecognitionTaskInput)
+* [CreateVisionRecognitionTaskOutput](https://cloud.tencent.com/document/api/1081/34988#CreateVisionRecognitionTaskOutput)
+* [InvokeVisionRecognitionTaskOutput](https://cloud.tencent.com/document/api/1081/34988#InvokeVisionRecognitionTaskOutput)
+* [VisionCustomDetectQuery](https://cloud.tencent.com/document/api/1081/34988#VisionCustomDetectQuery)
+* [VisionDetectedObject](https://cloud.tencent.com/document/api/1081/34988#VisionDetectedObject)
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* WifiInfo
+
+修改数据结构：
+
+* [VisionRecognitionResult](https://cloud.tencent.com/document/api/1081/34988#VisionRecognitionResult)
+
+	* 新增成员：DetectedObjects
+
+* [VisionSummaryConfig](https://cloud.tencent.com/document/api/1081/34988#VisionSummaryConfig)
+
+	* 新增成员：DetectTypes, CustomDetectQueries
 
 
 
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
 
+## 媒体处理(mps) 版本：2019-06-12
 
+### 第 157 次发布
 
-## 腾讯云可观测平台(monitor) 版本：2023-06-16
-
-
-
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
-
-### 第 145 次发布
-
-发布时间：2025-11-19 02:07:41
+发布时间：2025-11-20 01:37:36
 
 本次发布包含了以下内容：
 
@@ -142,77 +168,72 @@
 
 修改接口：
 
-* [CreateAlarmNotice](https://cloud.tencent.com/document/api/248/51288)
+* [DescribeSmartEraseTemplates](https://cloud.tencent.com/document/api/862/123733)
 
-	* 新增入参：IsLoginFree
+	* 新增入参：EraseType
 
-* [ModifyAlarmNotice](https://cloud.tencent.com/document/api/248/51277)
 
-	* 新增入参：IsLoginFree
+新增数据结构：
 
+* [LiveAiAnalysisDescriptionItem](https://cloud.tencent.com/document/api/862/37615#LiveAiAnalysisDescriptionItem)
+* [LiveAiParagraphInfo](https://cloud.tencent.com/document/api/862/37615#LiveAiParagraphInfo)
 
 修改数据结构：
 
-* [AlarmNotice](https://cloud.tencent.com/document/api/248/30354#AlarmNotice)
+* [LiveStreamAiAnalysisResultInfo](https://cloud.tencent.com/document/api/862/37615#LiveStreamAiAnalysisResultInfo)
 
-	* 新增成员：IsLoginFree
+	* <font color="#dd0000">**修改成员**：</font>ResultSet
+
+* [LiveStreamAiAnalysisResultItem](https://cloud.tencent.com/document/api/862/37615#LiveStreamAiAnalysisResultItem)
+
+	* 新增成员：DescriptionResult
 
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
+## 音视频终端引擎(vcube) 版本：2022-04-10
 
-### 第 222 次发布
+### 第 4 次发布
 
-发布时间：2025-11-19 02:17:19
+发布时间：2025-11-20 02:27:28
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**预下线接口**：</font>
+修改接口：
 
-* RecognizeHealthCodeOCR
-* RecognizeTravelCardOCR
+* [CreateApplicationAndVideo](https://cloud.tencent.com/document/api/1449/113532)
+
+	* 新增出参：LicenseId
+
+* [CreateApplicationAndWebPlayerLicense](https://cloud.tencent.com/document/api/1449/113536)
+
+	* 新增出参：LicenseId
+
+* [DescribeVcubeApplicationAndPlayList](https://cloud.tencent.com/document/api/1449/113527)
+
+	* 新增入参：LicenseId
+
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 276 次发布
+### 第 277 次发布
 
-发布时间：2025-11-19 03:23:00
+发布时间：2025-11-20 02:31:45
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
-
-* [DescribeNatGatewayZones](https://cloud.tencent.com/document/api/215/125365)
-
 修改接口：
 
-* [DeleteNatGateway](https://cloud.tencent.com/document/api/215/36719)
+* [DeletePrivateNatGateway](https://cloud.tencent.com/document/api/215/107900)
 
 	* 新增入参：IgnoreOperationRisk
 
-* [DescribeVpcEndPoint](https://cloud.tencent.com/document/api/215/54679)
-
-	* 新增入参：MaxResults, NextToken
-
-	* 新增出参：NextToken
-
-* [DescribeVpcEndPointService](https://cloud.tencent.com/document/api/215/54678)
-
-	* 新增入参：MaxResults, NextToken
-
-	* 新增出参：NextToken
-
-
-新增数据结构：
-
-* [NatZoneInfo](https://cloud.tencent.com/document/api/215/15824#NatZoneInfo)
 
 
 

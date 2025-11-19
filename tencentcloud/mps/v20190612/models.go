@@ -10107,6 +10107,12 @@ type DescribeSmartEraseTemplatesRequestParams struct {
 	// * Custom：用户自定义模板。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
+	// 智能擦除模板擦除类型过滤条件。
+	// - subtitle 去字幕
+	// - watermark 去水印
+	// - privacy 隐私保护
+	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
+
 	// 智能擦除模板名过滤条件，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
@@ -10128,6 +10134,12 @@ type DescribeSmartEraseTemplatesRequest struct {
 	// * Custom：用户自定义模板。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
+	// 智能擦除模板擦除类型过滤条件。
+	// - subtitle 去字幕
+	// - watermark 去水印
+	// - privacy 隐私保护
+	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
+
 	// 智能擦除模板名过滤条件，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
@@ -10148,6 +10160,7 @@ func (r *DescribeSmartEraseTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Type")
+	delete(f, "EraseType")
 	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmartEraseTemplatesRequest has unknown keys!", "")
@@ -13944,6 +13957,35 @@ type LiveActivityResult struct {
 	LiveActivityResItem *LiveActivityResItem `json:"LiveActivityResItem,omitnil,omitempty" name:"LiveActivityResItem"`
 }
 
+type LiveAiAnalysisDescriptionItem struct {
+	// 分段结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Paragraphs []*LiveAiParagraphInfo `json:"Paragraphs,omitnil,omitempty" name:"Paragraphs"`
+}
+
+type LiveAiParagraphInfo struct {
+	// 分段摘要
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 分段标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 分段关键词
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// 分段起始时间点，秒
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
+
+	// 分段结束时间点，秒
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
+
+	// 直播切片对应直播起始时间点，采用 ISO 日期格式。	
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 直播切片对应直播结束时间点，采用 ISO 日期格式。	
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
 type LiveRecordFile struct {
 	// 直播录制文件地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -14077,7 +14119,10 @@ type LiveScheduleTask struct {
 }
 
 type LiveStreamAiAnalysisResultInfo struct {
-	// 直播分析子任务结果，暂时只支持直播拆条。
+	// 直播分析子任务结果，支持：
+	// <li>直播拆条</li>
+	// <li>直播高光集锦</li>
+	// <li>直播摘要</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultSet []*LiveStreamAiAnalysisResultItem `json:"ResultSet,omitnil,omitempty" name:"ResultSet"`
 }
@@ -14086,6 +14131,7 @@ type LiveStreamAiAnalysisResultItem struct {
 	// 结果的类型，取值范围：
 	// <li>SegmentRecognition：拆条。</li>
 	// <li>Highlight ：集锦。</li>
+	// <li> Description：摘要。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 拆条结果，当 Type 为
@@ -14096,6 +14142,9 @@ type LiveStreamAiAnalysisResultItem struct {
 	// 集锦结果，当Type 为 Highlight 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighlightResultSet []*MediaAiAnalysisHighlightItem `json:"HighlightResultSet,omitnil,omitempty" name:"HighlightResultSet"`
+
+	// 摘要结果，当Type 为 Description 时有效。
+	DescriptionResult *LiveAiAnalysisDescriptionItem `json:"DescriptionResult,omitnil,omitempty" name:"DescriptionResult"`
 }
 
 type LiveStreamAiQualityControlResultInfo struct {
@@ -18288,6 +18337,7 @@ type ParseLiveStreamProcessNotificationResponseParams struct {
 	// <li>AiRecognitionResult：内容识别结果；</li>
 	// <li>LiveRecordResult：直播录制结果；</li>
 	// <li>AiQualityControlResult：媒体质检结果；</li>
+	// <li>AiAnalysisResult：内容分析结果；</li>
 	// <li>ProcessEof：直播流处理结束。</li>
 	NotificationType *string `json:"NotificationType,omitnil,omitempty" name:"NotificationType"`
 

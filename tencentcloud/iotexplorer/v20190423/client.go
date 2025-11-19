@@ -99,6 +99,114 @@ func (c *Client) ActivateTWeCallLicenseWithContext(ctx context.Context, request 
     return
 }
 
+func NewBatchCreateTWeSeeRecognitionTaskRequest() (request *BatchCreateTWeSeeRecognitionTaskRequest) {
+    request = &BatchCreateTWeSeeRecognitionTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "BatchCreateTWeSeeRecognitionTask")
+    
+    
+    return
+}
+
+func NewBatchCreateTWeSeeRecognitionTaskResponse() (response *BatchCreateTWeSeeRecognitionTaskResponse) {
+    response = &BatchCreateTWeSeeRecognitionTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchCreateTWeSeeRecognitionTask
+// 批量同步执行 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchCreateTWeSeeRecognitionTask(request *BatchCreateTWeSeeRecognitionTaskRequest) (response *BatchCreateTWeSeeRecognitionTaskResponse, err error) {
+    return c.BatchCreateTWeSeeRecognitionTaskWithContext(context.Background(), request)
+}
+
+// BatchCreateTWeSeeRecognitionTask
+// 批量同步执行 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchCreateTWeSeeRecognitionTaskWithContext(ctx context.Context, request *BatchCreateTWeSeeRecognitionTaskRequest) (response *BatchCreateTWeSeeRecognitionTaskResponse, err error) {
+    if request == nil {
+        request = NewBatchCreateTWeSeeRecognitionTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "BatchCreateTWeSeeRecognitionTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchCreateTWeSeeRecognitionTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchCreateTWeSeeRecognitionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchInvokeTWeSeeRecognitionTaskRequest() (request *BatchInvokeTWeSeeRecognitionTaskRequest) {
+    request = &BatchInvokeTWeSeeRecognitionTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "BatchInvokeTWeSeeRecognitionTask")
+    
+    
+    return
+}
+
+func NewBatchInvokeTWeSeeRecognitionTaskResponse() (response *BatchInvokeTWeSeeRecognitionTaskResponse) {
+    response = &BatchInvokeTWeSeeRecognitionTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchInvokeTWeSeeRecognitionTask
+// 批量同步执行 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchInvokeTWeSeeRecognitionTask(request *BatchInvokeTWeSeeRecognitionTaskRequest) (response *BatchInvokeTWeSeeRecognitionTaskResponse, err error) {
+    return c.BatchInvokeTWeSeeRecognitionTaskWithContext(context.Background(), request)
+}
+
+// BatchInvokeTWeSeeRecognitionTask
+// 批量同步执行 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchInvokeTWeSeeRecognitionTaskWithContext(ctx context.Context, request *BatchInvokeTWeSeeRecognitionTaskRequest) (response *BatchInvokeTWeSeeRecognitionTaskResponse, err error) {
+    if request == nil {
+        request = NewBatchInvokeTWeSeeRecognitionTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "BatchInvokeTWeSeeRecognitionTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchInvokeTWeSeeRecognitionTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchInvokeTWeSeeRecognitionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchUpdateFirmwareRequest() (request *BatchUpdateFirmwareRequest) {
     request = &BatchUpdateFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2077,6 +2185,68 @@ func (c *Client) CreateTWeSeeRecognitionTaskWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateTWeSeeRecognitionTaskWithFileRequest() (request *CreateTWeSeeRecognitionTaskWithFileRequest) {
+    request = &CreateTWeSeeRecognitionTaskWithFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTWeSeeRecognitionTaskWithFile")
+    
+    
+    return
+}
+
+func NewCreateTWeSeeRecognitionTaskWithFileResponse() (response *CreateTWeSeeRecognitionTaskWithFileResponse) {
+    response = &CreateTWeSeeRecognitionTaskWithFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTWeSeeRecognitionTaskWithFile
+// 同步执行 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTWeSeeRecognitionTaskWithFile(request *CreateTWeSeeRecognitionTaskWithFileRequest) (response *CreateTWeSeeRecognitionTaskWithFileResponse, err error) {
+    return c.CreateTWeSeeRecognitionTaskWithFileWithContext(context.Background(), request)
+}
+
+// CreateTWeSeeRecognitionTaskWithFile
+// 同步执行 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTWeSeeRecognitionTaskWithFileWithContext(ctx context.Context, request *CreateTWeSeeRecognitionTaskWithFileRequest) (response *CreateTWeSeeRecognitionTaskWithFileResponse, err error) {
+    if request == nil {
+        request = NewCreateTWeSeeRecognitionTaskWithFileRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateTWeSeeRecognitionTaskWithFile")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTWeSeeRecognitionTaskWithFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTWeSeeRecognitionTaskWithFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTWeSeeServiceRequest() (request *CreateTWeSeeServiceRequest) {
     request = &CreateTWeSeeServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3087,6 +3257,68 @@ func (c *Client) DeleteStudioProductWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteStudioProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTWeTalkProductConfigV2Request() (request *DeleteTWeTalkProductConfigV2Request) {
+    request = &DeleteTWeTalkProductConfigV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTWeTalkProductConfigV2")
+    
+    
+    return
+}
+
+func NewDeleteTWeTalkProductConfigV2Response() (response *DeleteTWeTalkProductConfigV2Response) {
+    response = &DeleteTWeTalkProductConfigV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTWeTalkProductConfigV2
+// 用于删除配置TWeTalk服务连接产品配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DeleteTWeTalkProductConfigV2(request *DeleteTWeTalkProductConfigV2Request) (response *DeleteTWeTalkProductConfigV2Response, err error) {
+    return c.DeleteTWeTalkProductConfigV2WithContext(context.Background(), request)
+}
+
+// DeleteTWeTalkProductConfigV2
+// 用于删除配置TWeTalk服务连接产品配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DeleteTWeTalkProductConfigV2WithContext(ctx context.Context, request *DeleteTWeTalkProductConfigV2Request) (response *DeleteTWeTalkProductConfigV2Response, err error) {
+    if request == nil {
+        request = NewDeleteTWeTalkProductConfigV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DeleteTWeTalkProductConfigV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTWeTalkProductConfigV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTWeTalkProductConfigV2Response()
     err = c.Send(request, response)
     return
 }
@@ -4927,78 +5159,6 @@ func (c *Client) DescribeDeviceFirmwaresWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeDeviceFirmwaresResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDeviceLocationSolveRequest() (request *DescribeDeviceLocationSolveRequest) {
-    request = &DescribeDeviceLocationSolveRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDeviceLocationSolve")
-    
-    
-    return
-}
-
-func NewDescribeDeviceLocationSolveResponse() (response *DescribeDeviceLocationSolveResponse) {
-    response = &DescribeDeviceLocationSolveResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDeviceLocationSolve
-// 获取实时位置解析依赖于teg位置服务，近30天调用只有2个个人账号调用，产品推下线
-//
-// 
-//
-// 获取实时位置解析
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
-//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_MODULENOTEXIST = "ResourceNotFound.ModuleNotExist"
-//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeDeviceLocationSolve(request *DescribeDeviceLocationSolveRequest) (response *DescribeDeviceLocationSolveResponse, err error) {
-    return c.DescribeDeviceLocationSolveWithContext(context.Background(), request)
-}
-
-// DescribeDeviceLocationSolve
-// 获取实时位置解析依赖于teg位置服务，近30天调用只有2个个人账号调用，产品推下线
-//
-// 
-//
-// 获取实时位置解析
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
-//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_MODULENOTEXIST = "ResourceNotFound.ModuleNotExist"
-//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeDeviceLocationSolveWithContext(ctx context.Context, request *DescribeDeviceLocationSolveRequest) (response *DescribeDeviceLocationSolveResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceLocationSolveRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeDeviceLocationSolve")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDeviceLocationSolve require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDeviceLocationSolveResponse()
     err = c.Send(request, response)
     return
 }
@@ -8787,6 +8947,68 @@ func (c *Client) InvokeTWeSeeRecognitionTaskWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewInvokeTWeSeeRecognitionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInvokeTWeSeeRecognitionTaskWithFileRequest() (request *InvokeTWeSeeRecognitionTaskWithFileRequest) {
+    request = &InvokeTWeSeeRecognitionTaskWithFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "InvokeTWeSeeRecognitionTaskWithFile")
+    
+    
+    return
+}
+
+func NewInvokeTWeSeeRecognitionTaskWithFileResponse() (response *InvokeTWeSeeRecognitionTaskWithFileResponse) {
+    response = &InvokeTWeSeeRecognitionTaskWithFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InvokeTWeSeeRecognitionTaskWithFile
+// 同步执行 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InvokeTWeSeeRecognitionTaskWithFile(request *InvokeTWeSeeRecognitionTaskWithFileRequest) (response *InvokeTWeSeeRecognitionTaskWithFileResponse, err error) {
+    return c.InvokeTWeSeeRecognitionTaskWithFileWithContext(context.Background(), request)
+}
+
+// InvokeTWeSeeRecognitionTaskWithFile
+// 同步执行 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
+//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InvokeTWeSeeRecognitionTaskWithFileWithContext(ctx context.Context, request *InvokeTWeSeeRecognitionTaskWithFileRequest) (response *InvokeTWeSeeRecognitionTaskWithFileResponse, err error) {
+    if request == nil {
+        request = NewInvokeTWeSeeRecognitionTaskWithFileRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "InvokeTWeSeeRecognitionTaskWithFile")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeTWeSeeRecognitionTaskWithFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInvokeTWeSeeRecognitionTaskWithFileResponse()
     err = c.Send(request, response)
     return
 }

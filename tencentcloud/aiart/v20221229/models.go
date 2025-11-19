@@ -355,7 +355,7 @@ type ImageInpaintingRemovalRequestParams struct {
 	// 图片限制：Mask 分辨率需要和输入原图保持一致，转成 Base64 字符串后小于 6MB。
 	MaskUrl *string `json:"MaskUrl,omitnil,omitempty" name:"MaskUrl"`
 
-	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	// 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 
 	// 为生成结果图添加标识的开关，默认为1。
@@ -395,7 +395,7 @@ type ImageInpaintingRemovalRequest struct {
 	// 图片限制：Mask 分辨率需要和输入原图保持一致，转成 Base64 字符串后小于 6MB。
 	MaskUrl *string `json:"MaskUrl,omitnil,omitempty" name:"MaskUrl"`
 
-	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	// 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 
 	// 为生成结果图添加标识的开关，默认为1。
@@ -476,7 +476,7 @@ type ImageOutpaintingRequestParams struct {
 	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
-	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	// 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 
 	// 为生成结果图添加标识的开关，默认为1。
@@ -508,7 +508,7 @@ type ImageOutpaintingRequest struct {
 	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
-	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	// 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 
 	// 为生成结果图添加标识的开关，默认为1。
@@ -1254,7 +1254,7 @@ type RefineImageRequestParams struct {
 	// 图片限制：转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
 
-	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。 示例值：url
+	// 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。 示例值：url
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
@@ -1271,7 +1271,7 @@ type RefineImageRequest struct {
 	// 图片限制：转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
 	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
 
-	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。 示例值：url
+	// 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。 示例值：url
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
@@ -2030,9 +2030,11 @@ type SubmitTextToImageJobRequestParams struct {
 	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
-	// 是否开启prompt改写，默认开启，改写预计会增加20s左右耗时。
-	// 
-	// 如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
+	// 是否开启prompt改写，为空时默认开启，改写预计会增加20s左右耗时。
+	// 0：关闭改写
+	// 1：开启改写
+	// 建议默认开启，如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
+	// 示例值：1
 	Revise *int64 `json:"Revise,omitnil,omitempty" name:"Revise"`
 }
 
@@ -2065,9 +2067,11 @@ type SubmitTextToImageJobRequest struct {
 	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
-	// 是否开启prompt改写，默认开启，改写预计会增加20s左右耗时。
-	// 
-	// 如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
+	// 是否开启prompt改写，为空时默认开启，改写预计会增加20s左右耗时。
+	// 0：关闭改写
+	// 1：开启改写
+	// 建议默认开启，如果关闭改写，需要调用方自己接改写，否则对生图效果有较大影响，改写方法可以参考：[改写](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/tree/main/PE)
+	// 示例值：1
 	Revise *int64 `json:"Revise,omitnil,omitempty" name:"Revise"`
 }
 
@@ -2496,7 +2500,7 @@ type TextToImageRapidRequestParams struct {
 	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
-	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	// 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
@@ -2571,7 +2575,7 @@ type TextToImageRapidRequest struct {
 	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
-	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+	// 返回图像方式（base64 或 url），二选一，默认为 base64。url 有效期为1小时。
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 }
 
