@@ -1,4 +1,4 @@
-# Release v1.2.3
+# Release v1.3.0
 
 ## 消息队列 CKafka 版(ckafka) 版本：2019-08-19
 
