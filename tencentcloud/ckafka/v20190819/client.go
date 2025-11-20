@@ -2655,6 +2655,56 @@ func (c *Client) DescribeAclRuleWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeCkafkaVersionRequest() (request *DescribeCkafkaVersionRequest) {
+    request = &DescribeCkafkaVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribeCkafkaVersion")
+    
+    
+    return
+}
+
+func NewDescribeCkafkaVersionResponse() (response *DescribeCkafkaVersionResponse) {
+    response = &DescribeCkafkaVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCkafkaVersion
+// 查询实例版本信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeCkafkaVersion(request *DescribeCkafkaVersionRequest) (response *DescribeCkafkaVersionResponse, err error) {
+    return c.DescribeCkafkaVersionWithContext(context.Background(), request)
+}
+
+// DescribeCkafkaVersion
+// 查询实例版本信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeCkafkaVersionWithContext(ctx context.Context, request *DescribeCkafkaVersionRequest) (response *DescribeCkafkaVersionResponse, err error) {
+    if request == nil {
+        request = NewDescribeCkafkaVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeCkafkaVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCkafkaVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCkafkaVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCkafkaZoneRequest() (request *DescribeCkafkaZoneRequest) {
     request = &DescribeCkafkaZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6201,6 +6251,60 @@ func (c *Client) SendMessageWithContext(ctx context.Context, request *SendMessag
     request.SetContext(ctx)
     
     response = NewSendMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeBrokerVersionRequest() (request *UpgradeBrokerVersionRequest) {
+    request = &UpgradeBrokerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "UpgradeBrokerVersion")
+    
+    
+    return
+}
+
+func NewUpgradeBrokerVersionResponse() (response *UpgradeBrokerVersionResponse) {
+    response = &UpgradeBrokerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpgradeBrokerVersion
+// broker版本升级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UpgradeBrokerVersion(request *UpgradeBrokerVersionRequest) (response *UpgradeBrokerVersionResponse, err error) {
+    return c.UpgradeBrokerVersionWithContext(context.Background(), request)
+}
+
+// UpgradeBrokerVersion
+// broker版本升级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UpgradeBrokerVersionWithContext(ctx context.Context, request *UpgradeBrokerVersionRequest) (response *UpgradeBrokerVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeBrokerVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "UpgradeBrokerVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeBrokerVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeBrokerVersionResponse()
     err = c.Send(request, response)
     return
 }

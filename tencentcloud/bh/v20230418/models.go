@@ -214,6 +214,47 @@ type AccessWhiteListRule struct {
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
+type AccountGroup struct {
+	// 账号组id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 账号组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 账号组id路径
+	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
+
+	// 账号组名称路径
+	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
+
+	// 父账号组id
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 账号组来源
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 账号组下用户总数
+	UserTotal *int64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
+
+	// 是否叶子节点
+	IsLeaf *bool `json:"IsLeaf,omitnil,omitempty" name:"IsLeaf"`
+
+	// 账号组导入类型
+	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
+
+	// 账号组描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+	ParentOrgId *string `json:"ParentOrgId,omitnil,omitempty" name:"ParentOrgId"`
+
+	// 源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
+
+	// 账号组是否已经接入，0表示未接入，1表示接入
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type Acl struct {
 	// 访问权限ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -2046,6 +2087,152 @@ func (r *CreateResourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSyncUserTaskRequestParams struct {
+	// 同步用户类型, 1-同步ioa用户
+	UserKind *uint64 `json:"UserKind,omitnil,omitempty" name:"UserKind"`
+}
+
+type CreateSyncUserTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 同步用户类型, 1-同步ioa用户
+	UserKind *uint64 `json:"UserKind,omitnil,omitempty" name:"UserKind"`
+}
+
+func (r *CreateSyncUserTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSyncUserTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserKind")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSyncUserTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSyncUserTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSyncUserTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSyncUserTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateSyncUserTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSyncUserTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserDirectoryRequestParams struct {
+	// 目录id
+	DirId *uint64 `json:"DirId,omitnil,omitempty" name:"DirId"`
+
+	// 目录名称
+	DirName *string `json:"DirName,omitnil,omitempty" name:"DirName"`
+
+	// ioa分组信息
+	UserOrgSet []*UserOrg `json:"UserOrgSet,omitnil,omitempty" name:"UserOrgSet"`
+
+	// ioa关联用户源类型
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// ioa关联用户源名称
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 目录包含用户数
+	UserCount *uint64 `json:"UserCount,omitnil,omitempty" name:"UserCount"`
+}
+
+type CreateUserDirectoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目录id
+	DirId *uint64 `json:"DirId,omitnil,omitempty" name:"DirId"`
+
+	// 目录名称
+	DirName *string `json:"DirName,omitnil,omitempty" name:"DirName"`
+
+	// ioa分组信息
+	UserOrgSet []*UserOrg `json:"UserOrgSet,omitnil,omitempty" name:"UserOrgSet"`
+
+	// ioa关联用户源类型
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// ioa关联用户源名称
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 目录包含用户数
+	UserCount *uint64 `json:"UserCount,omitnil,omitempty" name:"UserCount"`
+}
+
+func (r *CreateUserDirectoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserDirectoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DirId")
+	delete(f, "DirName")
+	delete(f, "UserOrgSet")
+	delete(f, "Source")
+	delete(f, "SourceName")
+	delete(f, "UserCount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserDirectoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserDirectoryResponseParams struct {
+	// 目录Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUserDirectoryResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserDirectoryResponseParams `json:"Response"`
+}
+
+func (r *CreateUserDirectoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserDirectoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateUserGroupRequestParams struct {
 	// 用户组名，最大长度32字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2727,6 +2914,60 @@ func (r *DeleteOperationTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteUserDirectoryRequestParams struct {
+	// 目录id集合
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+}
+
+type DeleteUserDirectoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目录id集合
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+}
+
+func (r *DeleteUserDirectoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserDirectoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserDirectoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserDirectoryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteUserDirectoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteUserDirectoryResponseParams `json:"Response"`
+}
+
+func (r *DeleteUserDirectoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserDirectoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteUserGroupMembersRequestParams struct {
 	// 用户组ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -3153,6 +3394,94 @@ func (r *DescribeAccessWhiteListRulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAccessWhiteListRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccountGroupsRequestParams struct {
+	// 是否递归查询，0为不递归，1为递归
+	DeepIn *int64 `json:"DeepIn,omitnil,omitempty" name:"DeepIn"`
+
+	// 父账号组ID, 默认0,查询根账号组下所有分组 
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 账号组名称，模糊查询
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 分页查询，每页条数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 获取第几页的数据
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+}
+
+type DescribeAccountGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否递归查询，0为不递归，1为递归
+	DeepIn *int64 `json:"DeepIn,omitnil,omitempty" name:"DeepIn"`
+
+	// 父账号组ID, 默认0,查询根账号组下所有分组 
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 账号组名称，模糊查询
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 分页查询，每页条数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 获取第几页的数据
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+}
+
+func (r *DescribeAccountGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeepIn")
+	delete(f, "ParentId")
+	delete(f, "GroupName")
+	delete(f, "PageSize")
+	delete(f, "PageNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccountGroupsResponseParams struct {
+	// 账号组总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 账号组信息
+	AccountGroupSet []*AccountGroup `json:"AccountGroupSet,omitnil,omitempty" name:"AccountGroupSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAccountGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccountGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccountGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4830,6 +5159,130 @@ func (r *DescribeSecuritySettingResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSourceTypesRequestParams struct {
+
+}
+
+type DescribeSourceTypesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeSourceTypesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSourceTypesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSourceTypesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSourceTypesResponseParams struct {
+	// 认证源总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 认证源信息
+	SourceTypeSet []*SourceType `json:"SourceTypeSet,omitnil,omitempty" name:"SourceTypeSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSourceTypesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSourceTypesResponseParams `json:"Response"`
+}
+
+func (r *DescribeSourceTypesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSourceTypesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserDirectoryRequestParams struct {
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeUserDirectoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeUserDirectoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserDirectoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserDirectoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserDirectoryResponseParams struct {
+	// 用户目录集
+	UserDirSet []*UserDirectory `json:"UserDirSet,omitnil,omitempty" name:"UserDirSet"`
+
+	// 用户目录集总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserDirectoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserDirectoryResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserDirectoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserDirectoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserGroupMembersRequestParams struct {
 	// 用户组ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -5009,6 +5462,63 @@ func (r *DescribeUserGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserSyncStatusRequestParams struct {
+	// 获取用户同步状态， 1-获取ioa用户同步状态
+	UserKind *uint64 `json:"UserKind,omitnil,omitempty" name:"UserKind"`
+}
+
+type DescribeUserSyncStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 获取用户同步状态， 1-获取ioa用户同步状态
+	UserKind *uint64 `json:"UserKind,omitnil,omitempty" name:"UserKind"`
+}
+
+func (r *DescribeUserSyncStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserSyncStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserKind")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserSyncStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserSyncStatusResponseParams struct {
+	// 用户同步状态
+	Status *AssetSyncStatus `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserSyncStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserSyncStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserSyncStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserSyncStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7288,6 +7798,67 @@ func (r *ModifyResourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyUserDirectoryRequestParams struct {
+	// 目录id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// ioa分组信息
+	UserOrgSet []*UserOrg `json:"UserOrgSet,omitnil,omitempty" name:"UserOrgSet"`
+}
+
+type ModifyUserDirectoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目录id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// ioa分组信息
+	UserOrgSet []*UserOrg `json:"UserOrgSet,omitnil,omitempty" name:"UserOrgSet"`
+}
+
+func (r *ModifyUserDirectoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserDirectoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "UserOrgSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserDirectoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserDirectoryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUserDirectoryResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserDirectoryResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserDirectoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserDirectoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyUserGroupRequestParams struct {
 	// 用户组ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -9447,6 +10018,128 @@ func (r *SetLDAPSyncFlagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SourceType struct {
+	// 账号组来源
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 账号组来源类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 账号组来源名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 区分ioa原来和iam-mini
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+}
+
+// Predefined struct for user
+type SyncDevicesToIOARequestParams struct {
+	// 资产ID集合。资产必须已绑定支持IOA功能的堡垒机实例。每次最多同步200个资产。
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
+}
+
+type SyncDevicesToIOARequest struct {
+	*tchttp.BaseRequest
+	
+	// 资产ID集合。资产必须已绑定支持IOA功能的堡垒机实例。每次最多同步200个资产。
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
+}
+
+func (r *SyncDevicesToIOARequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncDevicesToIOARequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncDevicesToIOARequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncDevicesToIOAResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SyncDevicesToIOAResponse struct {
+	*tchttp.BaseResponse
+	Response *SyncDevicesToIOAResponseParams `json:"Response"`
+}
+
+func (r *SyncDevicesToIOAResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncDevicesToIOAResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncUserToIOARequestParams struct {
+	// 需要同步到ioa的本地用户的id集合
+	UserIdSet []*uint64 `json:"UserIdSet,omitnil,omitempty" name:"UserIdSet"`
+}
+
+type SyncUserToIOARequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要同步到ioa的本地用户的id集合
+	UserIdSet []*uint64 `json:"UserIdSet,omitnil,omitempty" name:"UserIdSet"`
+}
+
+func (r *SyncUserToIOARequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncUserToIOARequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncUserToIOARequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncUserToIOAResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SyncUserToIOAResponse struct {
+	*tchttp.BaseResponse
+	Response *SyncUserToIOAResponseParams `json:"Response"`
+}
+
+func (r *SyncUserToIOAResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncUserToIOAResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TagFilter struct {
 	// 标签键
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
@@ -9597,4 +10290,47 @@ type User struct {
 
 	// ioa同步过来的用户相关信息
 	IOAUserGroup *IOAUserGroup `json:"IOAUserGroup,omitnil,omitempty" name:"IOAUserGroup"`
+}
+
+type UserDirectory struct {
+	// 目录id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// ioa目录id
+	DirId *uint64 `json:"DirId,omitnil,omitempty" name:"DirId"`
+
+	// ioa目录名称
+	DirName *string `json:"DirName,omitnil,omitempty" name:"DirName"`
+
+	// ioa关联用户源类型
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// ioa关联用户源名称
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 目录包含用户数
+	UserTotal *uint64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
+
+	// 目录接入时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 目录下的组织细节信息
+	UserOrgSet []*UserOrg `json:"UserOrgSet,omitnil,omitempty" name:"UserOrgSet"`
+}
+
+type UserOrg struct {
+	// ioa用户组织id
+	OrgId *uint64 `json:"OrgId,omitnil,omitempty" name:"OrgId"`
+
+	// ioa用户组织名称
+	OrgName *string `json:"OrgName,omitnil,omitempty" name:"OrgName"`
+
+	// ioa用户组织id路径
+	OrgIdPath *string `json:"OrgIdPath,omitnil,omitempty" name:"OrgIdPath"`
+
+	// ioa用户组织名称路径
+	OrgNamePath *string `json:"OrgNamePath,omitnil,omitempty" name:"OrgNamePath"`
+
+	// ioa用户组织id下的用户数
+	UserTotal *uint64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
 }

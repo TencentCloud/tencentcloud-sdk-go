@@ -1309,7 +1309,7 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// <li>请确认该名称与企业营业执照中注册的名称一致。</li>
 	// <li>如果名称中包含英文括号()，请使用中文括号（）代替。</li>
 	// <li>请确保此企业已完成腾讯电子签企业认证。</li>
-	// <li>**若为子客企业员工，请使用OpenId，OrganizationOpenId参数，此参数留空即可**</li>
+	// <li>**若为子客企业员工，请使用OpenId，OrganizationOpenId参数。如果此子客企业未认证，则此参数需要传子客企业名称**</li>
 	// </ul>
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
@@ -1436,7 +1436,7 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// <li>请确认该名称与企业营业执照中注册的名称一致。</li>
 	// <li>如果名称中包含英文括号()，请使用中文括号（）代替。</li>
 	// <li>请确保此企业已完成腾讯电子签企业认证。</li>
-	// <li>**若为子客企业员工，请使用OpenId，OrganizationOpenId参数，此参数留空即可**</li>
+	// <li>**若为子客企业员工，请使用OpenId，OrganizationOpenId参数。如果此子客企业未认证，则此参数需要传子客企业名称**</li>
 	// </ul>
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
@@ -8703,6 +8703,78 @@ type CreateFlowOption struct {
 
 	// 发起过程中是否保存草稿	
 	NeedFlowDraft *bool `json:"NeedFlowDraft,omitnil,omitempty" name:"NeedFlowDraft"`
+
+	// 在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用（注: 
+	// <font color='red'>空数组代表未指定</font>），具体的控件类型如下
+	// 
+	// <ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
+	// <li>SIGN_SEAL : 企业印章</li>
+	// <li>SIGN_PAGING_SEAL : 骑缝章</li>
+	// <li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
+	// <li>SIGN_APPROVE : 签批</li>
+	// <li>SIGN_OPINION : 签署意见</li>
+	// <li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
+	// <li>BUSI-FULL-NAME  : 企业全称</li>
+	// <li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
+	// <li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
+	// <li>PERSONAL-NAME : 签署人姓名</li>
+	// <li>PERSONAL-MOBILE : 签署人手机号</li>
+	// <li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
+	// <li>PERSONAL-IDCARD : 签署人证件号</li>
+	// <li>TEXT : 单行文本</li>
+	// <li>MULTI_LINE_TEXT : 多行文本</li>
+	// <li>CHECK_BOX : 勾选框</li>
+	// <li>SELECTOR : 选择器</li>
+	// <li>DIGIT : 数字</li>
+	// <li>DATE : 日期</li>
+	// <li>FILL_IMAGE : 图片</li>
+	// <li>ATTACHMENT : 附件</li>
+	// <li>EMAIL : 邮箱</li>
+	// <li>LOCATION : 地址</li>
+	// <li>EDUCATION : 学历</li>
+	// <li>GENDER : 性别</li>
+	// <li>DISTRICT : 省市区</li></ul>
+	HideComponentTypes []*string `json:"HideComponentTypes,omitnil,omitempty" name:"HideComponentTypes"`
+
+	// 在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用（注: 
+	// <font color='red'>空数组代表未指定</font>），具体的控件类型如下
+	// <ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
+	// <li>SIGN_SEAL : 企业印章</li>
+	// <li>SIGN_PAGING_SEAL : 骑缝章</li>
+	// <li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
+	// <li>SIGN_APPROVE : 签批</li>
+	// <li>SIGN_OPINION : 签署意见</li>
+	// <li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
+	// <li>BUSI-FULL-NAME  : 企业全称</li>
+	// <li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
+	// <li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
+	// <li>PERSONAL-NAME : 签署人姓名</li>
+	// <li>PERSONAL-MOBILE : 签署人手机号</li>
+	// <li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
+	// <li>PERSONAL-IDCARD : 签署人证件号</li>
+	// <li>TEXT : 单行文本</li>
+	// <li>MULTI_LINE_TEXT : 多行文本</li>
+	// <li>CHECK_BOX : 勾选框</li>
+	// <li>SELECTOR : 选择器</li>
+	// <li>DIGIT : 数字</li>
+	// <li>DATE : 日期</li>
+	// <li>FILL_IMAGE : 图片</li>
+	// <li>ATTACHMENT : 附件</li>
+	// <li>EMAIL : 邮箱</li>
+	// <li>LOCATION : 地址</li>
+	// <li>EDUCATION : 学历</li>
+	// <li>GENDER : 性别</li>
+	// <li>DISTRICT : 省市区</li></ul>
+	ShowComponentTypes []*string `json:"ShowComponentTypes,omitnil,omitempty" name:"ShowComponentTypes"`
+
+	//  禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
+	ForbidAddApprover *bool `json:"ForbidAddApprover,omitnil,omitempty" name:"ForbidAddApprover"`
+
+	//   禁止设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板
+	ForbidEditFlowProperties *bool `json:"ForbidEditFlowProperties,omitnil,omitempty" name:"ForbidEditFlowProperties"`
+
+	// 发起流程的可嵌入页面结果页配置
+	ResultPageConfig *CreateResultPageConfig `json:"ResultPageConfig,omitnil,omitempty" name:"ResultPageConfig"`
 }
 
 // Predefined struct for user
@@ -9391,6 +9463,19 @@ func (r *CreatePersonAuthCertificateImageResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreatePersonAuthCertificateImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateResultPageConfig struct {
+	// <ul>
+	//   <li>0 : 发起审批成功页面（通过接口<a href="https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow" target="_blank">创建发起流程web页面</a>发起时设置了NeedCreateReview参数为true）</li>
+	// </ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结果页标题，不超过50字
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 结果页描述，不超过200字
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 // Predefined struct for user

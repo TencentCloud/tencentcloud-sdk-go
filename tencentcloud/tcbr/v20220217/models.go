@@ -1201,6 +1201,9 @@ type ServerBaseConfig struct {
 
 	// 存储配置信息
 	VolumesConf []*VolumeConf `json:"VolumesConf,omitnil,omitempty" name:"VolumesConf"`
+
+	// 关联镜像密钥
+	LinkImageRegistry *string `json:"LinkImageRegistry,omitnil,omitempty" name:"LinkImageRegistry"`
 }
 
 type ServerBaseInfo struct {

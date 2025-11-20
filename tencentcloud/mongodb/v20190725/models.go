@@ -3534,6 +3534,72 @@ func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceSSLRequestParams struct {
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeInstanceSSLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceSSLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceSSLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceSSLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceSSLResponseParams struct {
+	// SSL开启状态。0为关闭，1为开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 证书过期时间，格式为2023-05-01 12:00:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// 证书下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertUrl *string `json:"CertUrl,omitnil,omitempty" name:"CertUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceSSLResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceSSLResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceSSLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceSSLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLogDownloadTasksRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5008,6 +5074,88 @@ type InstanceDetail struct {
 
 	// readonly节点个数。
 	ReadonlyNodeNum *uint64 `json:"ReadonlyNodeNum,omitnil,omitempty" name:"ReadonlyNodeNum"`
+}
+
+// Predefined struct for user
+type InstanceEnableSSLRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 配置是否要开启SSL访问。
+	// - true：开启。
+	// - false：关闭。
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
+type InstanceEnableSSLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 配置是否要开启SSL访问。
+	// - true：开启。
+	// - false：关闭。
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
+func (r *InstanceEnableSSLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstanceEnableSSLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Enable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstanceEnableSSLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InstanceEnableSSLResponseParams struct {
+	// SSL开启状态。
+	// - 0：关闭。
+	// - 1：开启。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 证书文件过期时间，格式为：2023-05-01 12:00:00。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// 证书文件的下载链接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertUrl *string `json:"CertUrl,omitnil,omitempty" name:"CertUrl"`
+
+	// 流程id
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InstanceEnableSSLResponse struct {
+	*tchttp.BaseResponse
+	Response *InstanceEnableSSLResponseParams `json:"Response"`
+}
+
+func (r *InstanceEnableSSLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstanceEnableSSLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InstanceEnumParam struct {

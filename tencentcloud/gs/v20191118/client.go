@@ -531,6 +531,68 @@ func (c *Client) CreateAndroidInstanceADBWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateAndroidInstanceAcceleratorTokenRequest() (request *CreateAndroidInstanceAcceleratorTokenRequest) {
+    request = &CreateAndroidInstanceAcceleratorTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "CreateAndroidInstanceAcceleratorToken")
+    
+    
+    return
+}
+
+func NewCreateAndroidInstanceAcceleratorTokenResponse() (response *CreateAndroidInstanceAcceleratorTokenResponse) {
+    response = &CreateAndroidInstanceAcceleratorTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAndroidInstanceAcceleratorToken
+// 创建安卓实例加速Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAndroidInstanceAcceleratorToken(request *CreateAndroidInstanceAcceleratorTokenRequest) (response *CreateAndroidInstanceAcceleratorTokenResponse, err error) {
+    return c.CreateAndroidInstanceAcceleratorTokenWithContext(context.Background(), request)
+}
+
+// CreateAndroidInstanceAcceleratorToken
+// 创建安卓实例加速Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAndroidInstanceAcceleratorTokenWithContext(ctx context.Context, request *CreateAndroidInstanceAcceleratorTokenRequest) (response *CreateAndroidInstanceAcceleratorTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateAndroidInstanceAcceleratorTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidInstanceAcceleratorToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAndroidInstanceAcceleratorToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAndroidInstanceAcceleratorTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAndroidInstanceImageRequest() (request *CreateAndroidInstanceImageRequest) {
     request = &CreateAndroidInstanceImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2187,6 +2249,62 @@ func (c *Client) DisconnectAndroidInstanceWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDisconnectAndroidInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisconnectAndroidInstanceAcceleratorRequest() (request *DisconnectAndroidInstanceAcceleratorRequest) {
+    request = &DisconnectAndroidInstanceAcceleratorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DisconnectAndroidInstanceAccelerator")
+    
+    
+    return
+}
+
+func NewDisconnectAndroidInstanceAcceleratorResponse() (response *DisconnectAndroidInstanceAcceleratorResponse) {
+    response = &DisconnectAndroidInstanceAcceleratorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisconnectAndroidInstanceAccelerator
+// 断开安卓实例加速节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+func (c *Client) DisconnectAndroidInstanceAccelerator(request *DisconnectAndroidInstanceAcceleratorRequest) (response *DisconnectAndroidInstanceAcceleratorResponse, err error) {
+    return c.DisconnectAndroidInstanceAcceleratorWithContext(context.Background(), request)
+}
+
+// DisconnectAndroidInstanceAccelerator
+// 断开安卓实例加速节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+func (c *Client) DisconnectAndroidInstanceAcceleratorWithContext(ctx context.Context, request *DisconnectAndroidInstanceAcceleratorRequest) (response *DisconnectAndroidInstanceAcceleratorResponse, err error) {
+    if request == nil {
+        request = NewDisconnectAndroidInstanceAcceleratorRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DisconnectAndroidInstanceAccelerator")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisconnectAndroidInstanceAccelerator require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisconnectAndroidInstanceAcceleratorResponse()
     err = c.Send(request, response)
     return
 }

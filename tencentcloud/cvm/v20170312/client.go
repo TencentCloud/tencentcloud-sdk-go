@@ -649,6 +649,7 @@ func NewCreateHpcClusterResponse() (response *CreateHpcClusterResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HPCCLUSTERBUSINESSIDNOTSUPPORTED = "InvalidParameterValue.HpcClusterBusinessIdNotSupported"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 //  LIMITEXCEEDED_HPCCLUSTERQUOTA = "LimitExceeded.HpcClusterQuota"
 //  UNSUPPORTEDOPERATION_INSUFFICIENTCLUSTERQUOTA = "UnsupportedOperation.InsufficientClusterQuota"
@@ -662,6 +663,7 @@ func (c *Client) CreateHpcCluster(request *CreateHpcClusterRequest) (response *C
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HPCCLUSTERBUSINESSIDNOTSUPPORTED = "InvalidParameterValue.HpcClusterBusinessIdNotSupported"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 //  LIMITEXCEEDED_HPCCLUSTERQUOTA = "LimitExceeded.HpcClusterQuota"
 //  UNSUPPORTEDOPERATION_INSUFFICIENTCLUSTERQUOTA = "UnsupportedOperation.InsufficientClusterQuota"

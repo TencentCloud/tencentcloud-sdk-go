@@ -923,6 +923,73 @@ func (r *CreateAndroidInstanceADBResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAndroidInstanceAcceleratorTokenRequestParams struct {
+	// 用户IP，用户客户端的公网IP，用于就近选择起始加速节点
+	UserIP *string `json:"UserIP,omitnil,omitempty" name:"UserIP"`
+
+	// 实例 ID 列表。每次请求的实例的上限为 500。
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+}
+
+type CreateAndroidInstanceAcceleratorTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户IP，用户客户端的公网IP，用于就近选择起始加速节点
+	UserIP *string `json:"UserIP,omitnil,omitempty" name:"UserIP"`
+
+	// 实例 ID 列表。每次请求的实例的上限为 500。
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+}
+
+func (r *CreateAndroidInstanceAcceleratorTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidInstanceAcceleratorTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserIP")
+	delete(f, "AndroidInstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstanceAcceleratorTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAndroidInstanceAcceleratorTokenResponseParams struct {
+	// 加速信息
+	AcceleratorInfo *string `json:"AcceleratorInfo,omitnil,omitempty" name:"AcceleratorInfo"`
+
+	// 安卓实例错误列表。列表包含有问题的安卓实例 ID 以及发生的错误信息。
+	AndroidInstanceErrors []*AndroidInstanceError `json:"AndroidInstanceErrors,omitnil,omitempty" name:"AndroidInstanceErrors"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAndroidInstanceAcceleratorTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAndroidInstanceAcceleratorTokenResponseParams `json:"Response"`
+}
+
+func (r *CreateAndroidInstanceAcceleratorTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidInstanceAcceleratorTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAndroidInstanceImageRequestParams struct {
 	// 安卓实例镜像名称
 	AndroidInstanceImageName *string `json:"AndroidInstanceImageName,omitnil,omitempty" name:"AndroidInstanceImageName"`
@@ -3036,6 +3103,67 @@ func (r *DisableAndroidInstancesAppResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DisableAndroidInstancesAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisconnectAndroidInstanceAcceleratorRequestParams struct {
+	// 实例ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 用户 ID。用户 ID 为空，将断开该实例的所有用户连接；用户 ID 不为空，只断开该用户的连接。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type DisconnectAndroidInstanceAcceleratorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 用户 ID。用户 ID 为空，将断开该实例的所有用户连接；用户 ID 不为空，只断开该用户的连接。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+func (r *DisconnectAndroidInstanceAcceleratorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisconnectAndroidInstanceAcceleratorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceId")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisconnectAndroidInstanceAcceleratorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisconnectAndroidInstanceAcceleratorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisconnectAndroidInstanceAcceleratorResponse struct {
+	*tchttp.BaseResponse
+	Response *DisconnectAndroidInstanceAcceleratorResponseParams `json:"Response"`
+}
+
+func (r *DisconnectAndroidInstanceAcceleratorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisconnectAndroidInstanceAcceleratorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

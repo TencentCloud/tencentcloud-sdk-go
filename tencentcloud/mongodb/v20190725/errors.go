@@ -329,6 +329,9 @@ const (
 	// 内核版本不支持。
 	UNSUPPORTEDOPERATION_KERNELVERSIONNOTSUPPORT = "UnsupportedOperation.KernelVersionNotSupport"
 
+	// 小版本不支持。
+	UNSUPPORTEDOPERATION_SECONDARYVERSIONNOTSUPPORTAUDIT = "UnsupportedOperation.SecondaryVersionNotSupportAudit"
+
 	// 当前版本不支持该操作。
 	UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
 )

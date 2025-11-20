@@ -1211,6 +1211,66 @@ func (c *Client) CreateResourceWithContext(ctx context.Context, request *CreateR
     return
 }
 
+func NewCreateSyncUserTaskRequest() (request *CreateSyncUserTaskRequest) {
+    request = &CreateSyncUserTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "CreateSyncUserTask")
+    
+    
+    return
+}
+
+func NewCreateSyncUserTaskResponse() (response *CreateSyncUserTaskResponse) {
+    response = &CreateSyncUserTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSyncUserTask
+// 创建用户同步任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateSyncUserTask(request *CreateSyncUserTaskRequest) (response *CreateSyncUserTaskResponse, err error) {
+    return c.CreateSyncUserTaskWithContext(context.Background(), request)
+}
+
+// CreateSyncUserTask
+// 创建用户同步任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateSyncUserTaskWithContext(ctx context.Context, request *CreateSyncUserTaskRequest) (response *CreateSyncUserTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateSyncUserTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "CreateSyncUserTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSyncUserTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSyncUserTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserRequest() (request *CreateUserRequest) {
     request = &CreateUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1295,6 +1355,94 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     request.SetContext(ctx)
     
     response = NewCreateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUserDirectoryRequest() (request *CreateUserDirectoryRequest) {
+    request = &CreateUserDirectoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "CreateUserDirectory")
+    
+    
+    return
+}
+
+func NewCreateUserDirectoryResponse() (response *CreateUserDirectoryResponse) {
+    response = &CreateUserDirectoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserDirectory
+// 创建用户目录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUserDirectory(request *CreateUserDirectoryRequest) (response *CreateUserDirectoryResponse, err error) {
+    return c.CreateUserDirectoryWithContext(context.Background(), request)
+}
+
+// CreateUserDirectory
+// 创建用户目录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUserDirectoryWithContext(ctx context.Context, request *CreateUserDirectoryRequest) (response *CreateUserDirectoryResponse, err error) {
+    if request == nil {
+        request = NewCreateUserDirectoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "CreateUserDirectory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserDirectory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserDirectoryResponse()
     err = c.Send(request, response)
     return
 }
@@ -1877,6 +2025,64 @@ func (c *Client) DeleteOperationTasksWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDeleteUserDirectoryRequest() (request *DeleteUserDirectoryRequest) {
+    request = &DeleteUserDirectoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DeleteUserDirectory")
+    
+    
+    return
+}
+
+func NewDeleteUserDirectoryResponse() (response *DeleteUserDirectoryResponse) {
+    response = &DeleteUserDirectoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUserDirectory
+// 删除用户目录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteUserDirectory(request *DeleteUserDirectoryRequest) (response *DeleteUserDirectoryResponse, err error) {
+    return c.DeleteUserDirectoryWithContext(context.Background(), request)
+}
+
+// DeleteUserDirectory
+// 删除用户目录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteUserDirectoryWithContext(ctx context.Context, request *DeleteUserDirectoryRequest) (response *DeleteUserDirectoryResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserDirectoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DeleteUserDirectory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserDirectory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserDirectoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteUserGroupMembersRequest() (request *DeleteUserGroupMembersRequest) {
     request = &DeleteUserGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2163,6 +2369,62 @@ func (c *Client) DescribeAccessWhiteListRulesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeAccessWhiteListRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccountGroupsRequest() (request *DescribeAccountGroupsRequest) {
+    request = &DescribeAccountGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeAccountGroups")
+    
+    
+    return
+}
+
+func NewDescribeAccountGroupsResponse() (response *DescribeAccountGroupsResponse) {
+    response = &DescribeAccountGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccountGroups
+// 获取账号组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccountGroups(request *DescribeAccountGroupsRequest) (response *DescribeAccountGroupsResponse, err error) {
+    return c.DescribeAccountGroupsWithContext(context.Background(), request)
+}
+
+// DescribeAccountGroups
+// 获取账号组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccountGroupsWithContext(ctx context.Context, request *DescribeAccountGroupsRequest) (response *DescribeAccountGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DescribeAccountGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccountGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3159,6 +3421,118 @@ func (c *Client) DescribeSecuritySettingWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeSourceTypesRequest() (request *DescribeSourceTypesRequest) {
+    request = &DescribeSourceTypesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeSourceTypes")
+    
+    
+    return
+}
+
+func NewDescribeSourceTypesResponse() (response *DescribeSourceTypesResponse) {
+    response = &DescribeSourceTypesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSourceTypes
+// 获取认证源信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSourceTypes(request *DescribeSourceTypesRequest) (response *DescribeSourceTypesResponse, err error) {
+    return c.DescribeSourceTypesWithContext(context.Background(), request)
+}
+
+// DescribeSourceTypes
+// 获取认证源信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSourceTypesWithContext(ctx context.Context, request *DescribeSourceTypesRequest) (response *DescribeSourceTypesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSourceTypesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DescribeSourceTypes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSourceTypes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSourceTypesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserDirectoryRequest() (request *DescribeUserDirectoryRequest) {
+    request = &DescribeUserDirectoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeUserDirectory")
+    
+    
+    return
+}
+
+func NewDescribeUserDirectoryResponse() (response *DescribeUserDirectoryResponse) {
+    response = &DescribeUserDirectoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserDirectory
+// 获取用户目录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeUserDirectory(request *DescribeUserDirectoryRequest) (response *DescribeUserDirectoryResponse, err error) {
+    return c.DescribeUserDirectoryWithContext(context.Background(), request)
+}
+
+// DescribeUserDirectory
+// 获取用户目录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeUserDirectoryWithContext(ctx context.Context, request *DescribeUserDirectoryRequest) (response *DescribeUserDirectoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserDirectoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DescribeUserDirectory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserDirectory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserDirectoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserGroupMembersRequest() (request *DescribeUserGroupMembersRequest) {
     request = &DescribeUserGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3271,6 +3645,64 @@ func (c *Client) DescribeUserGroupsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeUserGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserSyncStatusRequest() (request *DescribeUserSyncStatusRequest) {
+    request = &DescribeUserSyncStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeUserSyncStatus")
+    
+    
+    return
+}
+
+func NewDescribeUserSyncStatusResponse() (response *DescribeUserSyncStatusResponse) {
+    response = &DescribeUserSyncStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserSyncStatus
+// 获取用户同步状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserSyncStatus(request *DescribeUserSyncStatusRequest) (response *DescribeUserSyncStatusResponse, err error) {
+    return c.DescribeUserSyncStatusWithContext(context.Background(), request)
+}
+
+// DescribeUserSyncStatus
+// 获取用户同步状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserSyncStatusWithContext(ctx context.Context, request *DescribeUserSyncStatusRequest) (response *DescribeUserSyncStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserSyncStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DescribeUserSyncStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserSyncStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserSyncStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -4857,6 +5289,94 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     return
 }
 
+func NewModifyUserDirectoryRequest() (request *ModifyUserDirectoryRequest) {
+    request = &ModifyUserDirectoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "ModifyUserDirectory")
+    
+    
+    return
+}
+
+func NewModifyUserDirectoryResponse() (response *ModifyUserDirectoryResponse) {
+    response = &ModifyUserDirectoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserDirectory
+// 修改用户目录信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserDirectory(request *ModifyUserDirectoryRequest) (response *ModifyUserDirectoryResponse, err error) {
+    return c.ModifyUserDirectoryWithContext(context.Background(), request)
+}
+
+// ModifyUserDirectory
+// 修改用户目录信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserDirectoryWithContext(ctx context.Context, request *ModifyUserDirectoryRequest) (response *ModifyUserDirectoryResponse, err error) {
+    if request == nil {
+        request = NewModifyUserDirectoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "ModifyUserDirectory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserDirectory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserDirectoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserGroupRequest() (request *ModifyUserGroupRequest) {
     request = &ModifyUserGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5853,6 +6373,132 @@ func (c *Client) SetLDAPSyncFlagWithContext(ctx context.Context, request *SetLDA
     request.SetContext(ctx)
     
     response = NewSetLDAPSyncFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSyncDevicesToIOARequest() (request *SyncDevicesToIOARequest) {
+    request = &SyncDevicesToIOARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "SyncDevicesToIOA")
+    
+    
+    return
+}
+
+func NewSyncDevicesToIOAResponse() (response *SyncDevicesToIOAResponse) {
+    response = &SyncDevicesToIOAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SyncDevicesToIOA
+// 同步资产到IOA
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SyncDevicesToIOA(request *SyncDevicesToIOARequest) (response *SyncDevicesToIOAResponse, err error) {
+    return c.SyncDevicesToIOAWithContext(context.Background(), request)
+}
+
+// SyncDevicesToIOA
+// 同步资产到IOA
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SyncDevicesToIOAWithContext(ctx context.Context, request *SyncDevicesToIOARequest) (response *SyncDevicesToIOAResponse, err error) {
+    if request == nil {
+        request = NewSyncDevicesToIOARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "SyncDevicesToIOA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncDevicesToIOA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSyncDevicesToIOAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSyncUserToIOARequest() (request *SyncUserToIOARequest) {
+    request = &SyncUserToIOARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "SyncUserToIOA")
+    
+    
+    return
+}
+
+func NewSyncUserToIOAResponse() (response *SyncUserToIOAResponse) {
+    response = &SyncUserToIOAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SyncUserToIOA
+// 同步堡垒机本地用户到IOA
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) SyncUserToIOA(request *SyncUserToIOARequest) (response *SyncUserToIOAResponse, err error) {
+    return c.SyncUserToIOAWithContext(context.Background(), request)
+}
+
+// SyncUserToIOA
+// 同步堡垒机本地用户到IOA
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) SyncUserToIOAWithContext(ctx context.Context, request *SyncUserToIOARequest) (response *SyncUserToIOAResponse, err error) {
+    if request == nil {
+        request = NewSyncUserToIOARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "SyncUserToIOA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncUserToIOA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSyncUserToIOAResponse()
     err = c.Send(request, response)
     return
 }

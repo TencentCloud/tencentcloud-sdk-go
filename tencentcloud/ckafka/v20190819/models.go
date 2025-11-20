@@ -2642,6 +2642,9 @@ type CreateTopicRequestParams struct {
 
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 消息保存的时间类型:CreateTime/LogAppendTime
+	LogMsgTimestampType *string `json:"LogMsgTimestampType,omitnil,omitempty" name:"LogMsgTimestampType"`
 }
 
 type CreateTopicRequest struct {
@@ -2697,6 +2700,9 @@ type CreateTopicRequest struct {
 
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 消息保存的时间类型:CreateTime/LogAppendTime
+	LogMsgTimestampType *string `json:"LogMsgTimestampType,omitnil,omitempty" name:"LogMsgTimestampType"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -2728,6 +2734,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "AclRuleName")
 	delete(f, "RetentionBytes")
 	delete(f, "Tags")
+	delete(f, "LogMsgTimestampType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -4108,6 +4115,60 @@ func (r *DescribeAclRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAclRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCkafkaVersionRequestParams struct {
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeCkafkaVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeCkafkaVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCkafkaVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCkafkaVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCkafkaVersionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCkafkaVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCkafkaVersionResponseParams `json:"Response"`
+}
+
+func (r *DescribeCkafkaVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCkafkaVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5798,6 +5859,9 @@ type DescribeRouteRequestParams struct {
 
 	// 路由Id
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
+
+	// 是否显示主路由，true时会在返回原路由列表的基础上,再额外展示实例创建时的主路由信息(且不被InternalFlag/UsedFor等参数过滤影响)	
+	MainRouteFlag *bool `json:"MainRouteFlag,omitnil,omitempty" name:"MainRouteFlag"`
 }
 
 type DescribeRouteRequest struct {
@@ -5808,6 +5872,9 @@ type DescribeRouteRequest struct {
 
 	// 路由Id
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
+
+	// 是否显示主路由，true时会在返回原路由列表的基础上,再额外展示实例创建时的主路由信息(且不被InternalFlag/UsedFor等参数过滤影响)	
+	MainRouteFlag *bool `json:"MainRouteFlag,omitnil,omitempty" name:"MainRouteFlag"`
 }
 
 func (r *DescribeRouteRequest) ToJsonString() string {
@@ -5824,6 +5891,7 @@ func (r *DescribeRouteRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "RouteId")
+	delete(f, "MainRouteFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRouteRequest has unknown keys!", "")
 	}
@@ -8020,6 +8088,12 @@ type InstanceAttributesResponse struct {
 	// 动态硬盘扩容策略
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitnil,omitempty" name:"DynamicDiskConfig"`
 
+	// 系统维护时间
+	SystemMaintenanceTime *string `json:"SystemMaintenanceTime,omitnil,omitempty" name:"SystemMaintenanceTime"`
+
+	// 实例级别消息最大大小
+	MaxMessageByte *uint64 `json:"MaxMessageByte,omitnil,omitempty" name:"MaxMessageByte"`
+
 	// 实例计费类型  POSTPAID_BY_HOUR 按小时付费; PREPAID 包年包月
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
@@ -9527,6 +9601,9 @@ type ModifyTopicAttributesRequestParams struct {
 
 	// topic副本数  最小值 1,最大值 3
 	ReplicaNum *int64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
+
+	// 消息保存的时间类型：CreateTime/LogAppendTime
+	LogMsgTimestampType *string `json:"LogMsgTimestampType,omitnil,omitempty" name:"LogMsgTimestampType"`
 }
 
 type ModifyTopicAttributesRequest struct {
@@ -9585,6 +9662,9 @@ type ModifyTopicAttributesRequest struct {
 
 	// topic副本数  最小值 1,最大值 3
 	ReplicaNum *int64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
+
+	// 消息保存的时间类型：CreateTime/LogAppendTime
+	LogMsgTimestampType *string `json:"LogMsgTimestampType,omitnil,omitempty" name:"LogMsgTimestampType"`
 }
 
 func (r *ModifyTopicAttributesRequest) ToJsonString() string {
@@ -9617,6 +9697,7 @@ func (r *ModifyTopicAttributesRequest) FromJsonString(s string) error {
 	delete(f, "QuotaProducerByteRate")
 	delete(f, "QuotaConsumerByteRate")
 	delete(f, "ReplicaNum")
+	delete(f, "LogMsgTimestampType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicAttributesRequest has unknown keys!", "")
 	}
@@ -11162,6 +11243,91 @@ type TransformsParam struct {
 
 	// 数组解析
 	BatchAnalyse *BatchAnalyseParam `json:"BatchAnalyse,omitnil,omitempty" name:"BatchAnalyse"`
+}
+
+// Predefined struct for user
+type UpgradeBrokerVersionRequestParams struct {
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 1.平滑升配.2.垂直升配
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 版本号
+	SourceVersion *string `json:"SourceVersion,omitnil,omitempty" name:"SourceVersion"`
+
+	// 版本号
+	TargetVersion *string `json:"TargetVersion,omitnil,omitempty" name:"TargetVersion"`
+
+	// 延迟时间
+	DelayTimeStamp *string `json:"DelayTimeStamp,omitnil,omitempty" name:"DelayTimeStamp"`
+}
+
+type UpgradeBrokerVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 1.平滑升配.2.垂直升配
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 版本号
+	SourceVersion *string `json:"SourceVersion,omitnil,omitempty" name:"SourceVersion"`
+
+	// 版本号
+	TargetVersion *string `json:"TargetVersion,omitnil,omitempty" name:"TargetVersion"`
+
+	// 延迟时间
+	DelayTimeStamp *string `json:"DelayTimeStamp,omitnil,omitempty" name:"DelayTimeStamp"`
+}
+
+func (r *UpgradeBrokerVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeBrokerVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "SourceVersion")
+	delete(f, "TargetVersion")
+	delete(f, "DelayTimeStamp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeBrokerVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeBrokerVersionResponseParams struct {
+	// 升配结果
+	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpgradeBrokerVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpgradeBrokerVersionResponseParams `json:"Response"`
+}
+
+func (r *UpgradeBrokerVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeBrokerVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UrlDecodeParam struct {

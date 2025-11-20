@@ -1427,6 +1427,20 @@ type ComponentLimit struct {
 	ComponentValue []*string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
 }
 
+type ContractReviewWebUrlOption struct {
+	// 禁用暂存。 默认 false，设置为 true 会隐藏界面上的临时保存按钮
+	DisableTemporaryStore *bool `json:"DisableTemporaryStore,omitnil,omitempty" name:"DisableTemporaryStore"`
+
+	// 禁用导出。默认 false，设置为 true 会隐藏界面上的导出按钮
+	DisableExport *bool `json:"DisableExport,omitnil,omitempty" name:"DisableExport"`
+
+	// 禁用重新审查。默认 false，设置为 true 会隐藏界面上的重新审查按钮
+	DisableReviewAgain *bool `json:"DisableReviewAgain,omitnil,omitempty" name:"DisableReviewAgain"`
+
+	// 禁用二维码分享。默认 false，设置为 true 会隐藏界面上的分享二维码
+	DisableWxQrcode *bool `json:"DisableWxQrcode,omitnil,omitempty" name:"DisableWxQrcode"`
+}
+
 // Predefined struct for user
 type CreateBatchAdminChangeInvitationsRequestParams struct {
 	// 执行本接口操作的员工信息。
@@ -1543,10 +1557,14 @@ type CreateBatchAdminChangeInvitationsUrlRequestParams struct {
 	//  SMS  - 如果使用这个方式，则会给即将变更的超管发信息。
 	// 注意：
 	// 发送信息的手机号，是用户传递的手机号。
-	// 如果用户同时传递了证件号，手机号会用用户在电子签注册的手机号进行覆盖。
+	// 如果用户同时传递了证件号，手机号会被用户在电子签注册的手机号进行覆盖。
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
-	// 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+	// 要跳转的链接类型
+	// <ul>
+	// <li> **HTTP**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li>
+	// <li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li>
+	// </ul>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
@@ -1587,10 +1605,14 @@ type CreateBatchAdminChangeInvitationsUrlRequest struct {
 	//  SMS  - 如果使用这个方式，则会给即将变更的超管发信息。
 	// 注意：
 	// 发送信息的手机号，是用户传递的手机号。
-	// 如果用户同时传递了证件号，手机号会用用户在电子签注册的手机号进行覆盖。
+	// 如果用户同时传递了证件号，手机号会被用户在电子签注册的手机号进行覆盖。
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
-	// 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+	// 要跳转的链接类型
+	// <ul>
+	// <li> **HTTP**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li>
+	// <li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li>
+	// </ul>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
@@ -2667,7 +2689,6 @@ type CreateBatchSignUrlRequestParams struct {
 	// <ul>
 	// <li>请确认该名称与企业营业执照中注册的名称一致。</li>
 	// <li>如果名称中包含英文括号()，请使用中文括号（）代替。</li>
-	// <li>请确保此企业已完成腾讯电子签企业认证。</li>
 	// </ul>
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
@@ -2768,7 +2789,6 @@ type CreateBatchSignUrlRequest struct {
 	// <ul>
 	// <li>请确认该名称与企业营业执照中注册的名称一致。</li>
 	// <li>如果名称中包含英文括号()，请使用中文括号（）代替。</li>
-	// <li>请确保此企业已完成腾讯电子签企业认证。</li>
 	// </ul>
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
@@ -3107,6 +3127,9 @@ type CreateContractReviewWebUrlRequestParams struct {
 	// 
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 个性化参数，用于控制页面展示内容
+	Option *ContractReviewWebUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
 }
 
 type CreateContractReviewWebUrlRequest struct {
@@ -3126,6 +3149,9 @@ type CreateContractReviewWebUrlRequest struct {
 	// 
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 个性化参数，用于控制页面展示内容
+	Option *ContractReviewWebUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
 }
 
 func (r *CreateContractReviewWebUrlRequest) ToJsonString() string {
@@ -3143,6 +3169,7 @@ func (r *CreateContractReviewWebUrlRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "ResourceId")
 	delete(f, "UserData")
+	delete(f, "Option")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateContractReviewWebUrlRequest has unknown keys!", "")
 	}

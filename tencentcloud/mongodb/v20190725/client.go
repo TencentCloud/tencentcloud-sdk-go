@@ -1847,6 +1847,66 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeInstanceSSLRequest() (request *DescribeInstanceSSLRequest) {
+    request = &DescribeInstanceSSLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeInstanceSSL")
+    
+    
+    return
+}
+
+func NewDescribeInstanceSSLResponse() (response *DescribeInstanceSSLResponse) {
+    response = &DescribeInstanceSSLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceSSL
+// 查看实例SSL开启状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_KERNELVERSIONNOTSUPPORT = "UnsupportedOperation.KernelVersionNotSupport"
+//  UNSUPPORTEDOPERATION_SECONDARYVERSIONNOTSUPPORTAUDIT = "UnsupportedOperation.SecondaryVersionNotSupportAudit"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) DescribeInstanceSSL(request *DescribeInstanceSSLRequest) (response *DescribeInstanceSSLResponse, err error) {
+    return c.DescribeInstanceSSLWithContext(context.Background(), request)
+}
+
+// DescribeInstanceSSL
+// 查看实例SSL开启状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_KERNELVERSIONNOTSUPPORT = "UnsupportedOperation.KernelVersionNotSupport"
+//  UNSUPPORTEDOPERATION_SECONDARYVERSIONNOTSUPPORTAUDIT = "UnsupportedOperation.SecondaryVersionNotSupportAudit"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) DescribeInstanceSSLWithContext(ctx context.Context, request *DescribeInstanceSSLRequest) (response *DescribeInstanceSSLResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceSSLRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "DescribeInstanceSSL")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceSSL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceSSLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogDownloadTasksRequest() (request *DescribeLogDownloadTasksRequest) {
     request = &DescribeLogDownloadTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2655,6 +2715,66 @@ func (c *Client) InquirePriceRenewDBInstancesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewInquirePriceRenewDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInstanceEnableSSLRequest() (request *InstanceEnableSSLRequest) {
+    request = &InstanceEnableSSLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "InstanceEnableSSL")
+    
+    
+    return
+}
+
+func NewInstanceEnableSSLResponse() (response *InstanceEnableSSLResponse) {
+    response = &InstanceEnableSSLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InstanceEnableSSL
+// 本接口（InstanceEnableSSL）用于设置实例SSL状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_KERNELVERSIONNOTSUPPORT = "UnsupportedOperation.KernelVersionNotSupport"
+//  UNSUPPORTEDOPERATION_SECONDARYVERSIONNOTSUPPORTAUDIT = "UnsupportedOperation.SecondaryVersionNotSupportAudit"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) InstanceEnableSSL(request *InstanceEnableSSLRequest) (response *InstanceEnableSSLResponse, err error) {
+    return c.InstanceEnableSSLWithContext(context.Background(), request)
+}
+
+// InstanceEnableSSL
+// 本接口（InstanceEnableSSL）用于设置实例SSL状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_KERNELVERSIONNOTSUPPORT = "UnsupportedOperation.KernelVersionNotSupport"
+//  UNSUPPORTEDOPERATION_SECONDARYVERSIONNOTSUPPORTAUDIT = "UnsupportedOperation.SecondaryVersionNotSupportAudit"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) InstanceEnableSSLWithContext(ctx context.Context, request *InstanceEnableSSLRequest) (response *InstanceEnableSSLResponse, err error) {
+    if request == nil {
+        request = NewInstanceEnableSSLRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "InstanceEnableSSL")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InstanceEnableSSL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInstanceEnableSSLResponse()
     err = c.Send(request, response)
     return
 }

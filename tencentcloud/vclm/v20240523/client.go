@@ -87,6 +87,7 @@ func NewCheckAnimateImageJobResponse() (response *CheckAnimateImageJobResponse) 
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CheckAnimateImageJob(request *CheckAnimateImageJobRequest) (response *CheckAnimateImageJobResponse, err error) {
@@ -116,6 +117,7 @@ func (c *Client) CheckAnimateImageJob(request *CheckAnimateImageJobRequest) (res
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CheckAnimateImageJobWithContext(ctx context.Context, request *CheckAnimateImageJobRequest) (response *CheckAnimateImageJobResponse, err error) {
@@ -131,6 +133,66 @@ func (c *Client) CheckAnimateImageJobWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCheckAnimateImageJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHumanActorJobRequest() (request *DescribeHumanActorJobRequest) {
+    request = &DescribeHumanActorJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeHumanActorJob")
+    
+    
+    return
+}
+
+func NewDescribeHumanActorJobResponse() (response *DescribeHumanActorJobResponse) {
+    response = &DescribeHumanActorJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHumanActorJob
+// 通过JobId提交请求，获取人像驱动任务的结果信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeHumanActorJob(request *DescribeHumanActorJobRequest) (response *DescribeHumanActorJobResponse, err error) {
+    return c.DescribeHumanActorJobWithContext(context.Background(), request)
+}
+
+// DescribeHumanActorJob
+// 通过JobId提交请求，获取人像驱动任务的结果信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeHumanActorJobWithContext(ctx context.Context, request *DescribeHumanActorJobRequest) (response *DescribeHumanActorJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeHumanActorJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeHumanActorJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHumanActorJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHumanActorJobResponse()
     err = c.Send(request, response)
     return
 }
@@ -385,21 +447,11 @@ func NewDescribeTemplateToVideoJobResponse() (response *DescribeTemplateToVideoJ
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
-//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
-//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
-//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
-//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
-//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
-//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
-//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
-//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
-//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTemplateToVideoJob(request *DescribeTemplateToVideoJobRequest) (response *DescribeTemplateToVideoJobResponse, err error) {
     return c.DescribeTemplateToVideoJobWithContext(context.Background(), request)
@@ -410,21 +462,11 @@ func (c *Client) DescribeTemplateToVideoJob(request *DescribeTemplateToVideoJobR
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
-//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
-//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
-//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
-//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
-//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
-//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
-//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
-//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
-//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTemplateToVideoJobWithContext(ctx context.Context, request *DescribeTemplateToVideoJobRequest) (response *DescribeTemplateToVideoJobResponse, err error) {
     if request == nil {
@@ -505,6 +547,72 @@ func (c *Client) DescribeVideoStylizationJobWithContext(ctx context.Context, req
     return
 }
 
+func NewSubmitHumanActorJobRequest() (request *SubmitHumanActorJobRequest) {
+    request = &SubmitHumanActorJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitHumanActorJob")
+    
+    
+    return
+}
+
+func NewSubmitHumanActorJobResponse() (response *SubmitHumanActorJobResponse) {
+    response = &SubmitHumanActorJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitHumanActorJob
+// 用于提交人像驱动任务
+//
+// 支持提交音频和图文来生成对应视频，满足动态交互、内容生产等场景需求。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  FAILEDOPERATION_TASKSTATUSERROR = "FailedOperation.TaskStatusError"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+func (c *Client) SubmitHumanActorJob(request *SubmitHumanActorJobRequest) (response *SubmitHumanActorJobResponse, err error) {
+    return c.SubmitHumanActorJobWithContext(context.Background(), request)
+}
+
+// SubmitHumanActorJob
+// 用于提交人像驱动任务
+//
+// 支持提交音频和图文来生成对应视频，满足动态交互、内容生产等场景需求。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  FAILEDOPERATION_TASKSTATUSERROR = "FailedOperation.TaskStatusError"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+func (c *Client) SubmitHumanActorJobWithContext(ctx context.Context, request *SubmitHumanActorJobRequest) (response *SubmitHumanActorJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitHumanActorJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitHumanActorJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitHumanActorJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitHumanActorJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitImageAnimateJobRequest() (request *SubmitImageAnimateJobRequest) {
     request = &SubmitImageAnimateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -549,6 +657,7 @@ func NewSubmitImageAnimateJobResponse() (response *SubmitImageAnimateJobResponse
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -581,6 +690,7 @@ func (c *Client) SubmitImageAnimateJob(request *SubmitImageAnimateJobRequest) (r
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -645,6 +755,7 @@ func NewSubmitImageToVideoGeneralJobResponse() (response *SubmitImageToVideoGene
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -677,6 +788,7 @@ func (c *Client) SubmitImageToVideoGeneralJob(request *SubmitImageToVideoGeneral
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -808,24 +920,18 @@ func NewSubmitTemplateToVideoJobResponse() (response *SubmitTemplateToVideoJobRe
 // 提交视频特效任务接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
-//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
-//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
-//  FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
-//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
-//  FAILEDOPERATION_SUBMITASSPFAILED = "FailedOperation.SubmitAsspFailed"
-//  INVALIDPARAMETERVALUE_INVALIDAUDIODURATION = "InvalidParameterValue.InvalidAudioDuration"
-//  INVALIDPARAMETERVALUE_INVALIDAUDIOFORMAT = "InvalidParameterValue.InvalidAudioFormat"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGEASPECTRATIO = "InvalidParameterValue.InvalidImageAspectRatio"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGESIZE = "InvalidParameterValue.InvalidImageSize"
-//  INVALIDPARAMETERVALUE_INVALIDMODEL = "InvalidParameterValue.InvalidModel"
-//  INVALIDPARAMETERVALUE_TOOLARGEFACEANGLE = "InvalidParameterValue.TooLargeFaceAngle"
-//  INVALIDPARAMETERVALUE_TOOLOWFACEQUALITY = "InvalidParameterValue.TooLowFaceQuality"
-//  INVALIDPARAMETERVALUE_TOOMANYFACES = "InvalidParameterValue.TooManyFaces"
-//  INVALIDPARAMETERVALUE_TOOMUCHFACEOCCLUSION = "InvalidParameterValue.TooMuchFaceOcclusion"
-//  INVALIDPARAMETERVALUE_TOOSMALLFACESIZE = "InvalidParameterValue.TooSmallFaceSize"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) SubmitTemplateToVideoJob(request *SubmitTemplateToVideoJobRequest) (response *SubmitTemplateToVideoJobResponse, err error) {
     return c.SubmitTemplateToVideoJobWithContext(context.Background(), request)
 }
@@ -834,24 +940,18 @@ func (c *Client) SubmitTemplateToVideoJob(request *SubmitTemplateToVideoJobReque
 // 提交视频特效任务接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
-//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
-//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
-//  FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
-//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
-//  FAILEDOPERATION_SUBMITASSPFAILED = "FailedOperation.SubmitAsspFailed"
-//  INVALIDPARAMETERVALUE_INVALIDAUDIODURATION = "InvalidParameterValue.InvalidAudioDuration"
-//  INVALIDPARAMETERVALUE_INVALIDAUDIOFORMAT = "InvalidParameterValue.InvalidAudioFormat"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGEASPECTRATIO = "InvalidParameterValue.InvalidImageAspectRatio"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
-//  INVALIDPARAMETERVALUE_INVALIDIMAGESIZE = "InvalidParameterValue.InvalidImageSize"
-//  INVALIDPARAMETERVALUE_INVALIDMODEL = "InvalidParameterValue.InvalidModel"
-//  INVALIDPARAMETERVALUE_TOOLARGEFACEANGLE = "InvalidParameterValue.TooLargeFaceAngle"
-//  INVALIDPARAMETERVALUE_TOOLOWFACEQUALITY = "InvalidParameterValue.TooLowFaceQuality"
-//  INVALIDPARAMETERVALUE_TOOMANYFACES = "InvalidParameterValue.TooManyFaces"
-//  INVALIDPARAMETERVALUE_TOOMUCHFACEOCCLUSION = "InvalidParameterValue.TooMuchFaceOcclusion"
-//  INVALIDPARAMETERVALUE_TOOSMALLFACESIZE = "InvalidParameterValue.TooSmallFaceSize"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) SubmitTemplateToVideoJobWithContext(ctx context.Context, request *SubmitTemplateToVideoJobRequest) (response *SubmitTemplateToVideoJobResponse, err error) {
     if request == nil {
         request = NewSubmitTemplateToVideoJobRequest()

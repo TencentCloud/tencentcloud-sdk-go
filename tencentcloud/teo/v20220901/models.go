@@ -19075,6 +19075,9 @@ type ModifyZoneSettingRequestParams struct {
 	// 不填写表示保持原有配置。
 	Grpc *Grpc `json:"Grpc,omitnil,omitempty" name:"Grpc"`
 
+	// 网络错误日志记录配置。不填写表示保持原有配置。
+	NetworkErrorLogging *NetworkErrorLogging `json:"NetworkErrorLogging,omitnil,omitempty" name:"NetworkErrorLogging"`
+
 	// 图片优化配置。
 	// 不填写表示关闭。
 	ImageOptimize *ImageOptimize `json:"ImageOptimize,omitnil,omitempty" name:"ImageOptimize"`
@@ -19164,6 +19167,9 @@ type ModifyZoneSettingRequest struct {
 	// 不填写表示保持原有配置。
 	Grpc *Grpc `json:"Grpc,omitnil,omitempty" name:"Grpc"`
 
+	// 网络错误日志记录配置。不填写表示保持原有配置。
+	NetworkErrorLogging *NetworkErrorLogging `json:"NetworkErrorLogging,omitnil,omitempty" name:"NetworkErrorLogging"`
+
 	// 图片优化配置。
 	// 不填写表示关闭。
 	ImageOptimize *ImageOptimize `json:"ImageOptimize,omitnil,omitempty" name:"ImageOptimize"`
@@ -19206,6 +19212,7 @@ func (r *ModifyZoneSettingRequest) FromJsonString(s string) error {
 	delete(f, "Ipv6")
 	delete(f, "ClientIpCountry")
 	delete(f, "Grpc")
+	delete(f, "NetworkErrorLogging")
 	delete(f, "ImageOptimize")
 	delete(f, "StandardDebug")
 	delete(f, "JITVideoProcess")
@@ -19435,6 +19442,20 @@ type NSDetail struct {
 
 	// 用户自定义 NS 服务器对应的 IP 地址信息。
 	VanityNameServersIps []*VanityNameServersIps `json:"VanityNameServersIps,omitnil,omitempty" name:"VanityNameServersIps"`
+}
+
+type NetworkErrorLogging struct {
+	// 是否开启网络错误日志记录配置，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type NetworkErrorLoggingParameters struct {
+	// 网络错误日志记录配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
 type NextOriginACL struct {
@@ -22242,6 +22263,10 @@ type ZoneConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Grpc *GrpcParameters `json:"Grpc,omitnil,omitempty" name:"Grpc"`
 
+	// 网络错误日志记录配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkErrorLogging *NetworkErrorLoggingParameters `json:"NetworkErrorLogging,omitnil,omitempty" name:"NetworkErrorLogging"`
+
 	// 中国大陆加速优化配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccelerateMainland *AccelerateMainlandParameters `json:"AccelerateMainland,omitnil,omitempty" name:"AccelerateMainland"`
@@ -22352,6 +22377,10 @@ type ZoneSetting struct {
 	// Grpc协议支持配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Grpc *Grpc `json:"Grpc,omitnil,omitempty" name:"Grpc"`
+
+	// 网络错误日志记录配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkErrorLogging *NetworkErrorLogging `json:"NetworkErrorLogging,omitnil,omitempty" name:"NetworkErrorLogging"`
 
 	// 图片优化相关配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。

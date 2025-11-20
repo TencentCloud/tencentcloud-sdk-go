@@ -146,6 +146,9 @@ type AutoSnapshotPolicyInfo struct {
 
 	// 跨地域复制的快照保留时间，单位天
 	CrossRegionsAliveDays *uint64 `json:"CrossRegionsAliveDays,omitnil,omitempty" name:"CrossRegionsAliveDays"`
+
+	// 快照策略标签
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type AvailableProtoStatus struct {
@@ -367,6 +370,9 @@ type CreateAutoSnapshotPolicyRequestParams struct {
 
 	// 间隔天数，与DayOfWeek，DayOfMonth 三者选一
 	IntervalDays *uint64 `json:"IntervalDays,omitnil,omitempty" name:"IntervalDays"`
+
+	// 快照策略标签
+	ResourceTags []*TagInfo `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 }
 
 type CreateAutoSnapshotPolicyRequest struct {
@@ -389,6 +395,9 @@ type CreateAutoSnapshotPolicyRequest struct {
 
 	// 间隔天数，与DayOfWeek，DayOfMonth 三者选一
 	IntervalDays *uint64 `json:"IntervalDays,omitnil,omitempty" name:"IntervalDays"`
+
+	// 快照策略标签
+	ResourceTags []*TagInfo `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 }
 
 func (r *CreateAutoSnapshotPolicyRequest) ToJsonString() string {
@@ -409,6 +418,7 @@ func (r *CreateAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 	delete(f, "AliveDays")
 	delete(f, "DayOfMonth")
 	delete(f, "IntervalDays")
+	delete(f, "ResourceTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoSnapshotPolicyRequest has unknown keys!", "")
 	}

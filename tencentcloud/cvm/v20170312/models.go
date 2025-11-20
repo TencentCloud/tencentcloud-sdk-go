@@ -837,44 +837,44 @@ func (r *CreateDisasterRecoverGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateHpcClusterRequestParams struct {
-	// 可用区。
+	// 可用区信息。可用区信息可通过 [查询可用区信息](https://cloud.tencent.com/document/api/213/15707) 接口获取。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 高性能计算集群名称。
+	// 高性能计算集群名称，长度限制[1-60]。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 高性能计算集群备注。
+	// 高性能计算集群备注，长度[1-256]。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 高性能计算集群类型。
+	// 高性能计算集群类型，当前有三个取值：分别是CDC/CHC/STANDARD，其中STANDARD是默认的标准模式。
 	HpcClusterType *string `json:"HpcClusterType,omitnil,omitempty" name:"HpcClusterType"`
 
-	// 高性能计算集群对应的业务场景标识，当前只支持CDC。
+	// 高性能计算集群对应的业务场景标识，当前只支持CDC场景类型。
 	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil,omitempty" name:"HpcClusterBusinessId"`
 
-	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。
+	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。集群信息可通过 [查询高性能集群信息](https://cloud.tencent.com/document/api/213/83220) 接口获取。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 }
 
 type CreateHpcClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区。
+	// 可用区信息。可用区信息可通过 [查询可用区信息](https://cloud.tencent.com/document/api/213/15707) 接口获取。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 高性能计算集群名称。
+	// 高性能计算集群名称，长度限制[1-60]。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 高性能计算集群备注。
+	// 高性能计算集群备注，长度[1-256]。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 高性能计算集群类型。
+	// 高性能计算集群类型，当前有三个取值：分别是CDC/CHC/STANDARD，其中STANDARD是默认的标准模式。
 	HpcClusterType *string `json:"HpcClusterType,omitnil,omitempty" name:"HpcClusterType"`
 
-	// 高性能计算集群对应的业务场景标识，当前只支持CDC。
+	// 高性能计算集群对应的业务场景标识，当前只支持CDC场景类型。
 	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil,omitempty" name:"HpcClusterBusinessId"`
 
-	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。
+	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。集群信息可通过 [查询高性能集群信息](https://cloud.tencent.com/document/api/213/83220) 接口获取。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 }
 

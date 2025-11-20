@@ -286,6 +286,10 @@ type AdaptiveDynamicStreamingTaskInput struct {
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitnil,omitempty" name:"WatermarkSet"`
 
+	// 数字水印参数	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlindWatermark *BlindWatermarkInput `json:"BlindWatermark,omitnil,omitempty" name:"BlindWatermark"`
+
 	// 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
@@ -2956,6 +2960,11 @@ type BlindWatermarkEmbedInfo struct {
 	// 盲水印文字，经过URL安全的Base64编码的4Byte数据。Base64解码之后，少于4Byte将会填充0x00到4Byte，超过4Byte将会截断为4Byte。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmbedText *string `json:"EmbedText,omitnil,omitempty" name:"EmbedText"`
+}
+
+type BlindWatermarkInput struct {
+	// 数字水印模板ID
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 }
 
 type ClassificationConfigureInfo struct {
@@ -13604,16 +13613,19 @@ type ImageAreaBoxInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 图片框选区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	// 图片框选区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。注意：该字段最大值为4096。
 	// 示例值：[101, 85, 111, 95]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitnil,omitempty" name:"AreaCoordSet"`
 
-	// 图片框选区域坐标，[x1, y1, x2, y2]，即左上角坐标、右下角坐标， 当AreaCoordSet未指定时生效。
+	// 图片框选区域坐标，[x1, y1, x2, y2]，即左上角坐标、右下角坐标， 当AreaCoordSet未指定时生效。当表示像素时，该字段最大值为4096。
 	// - [0.1, 0.1, 0.3, 0.3] :  表示比例 （数值小于1）
 	// - [50, 50, 350, 280] : 表示像素 （数值大于等于1）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BoundingBox []*float64 `json:"BoundingBox,omitnil,omitempty" name:"BoundingBox"`
+
+	// BoundingBox字段单位。设置为0时，按照该字段规则自动选择单位；设置为1时，单位为比例；设置为2时，单位为像素。
+	BoundingBoxUnitType *uint64 `json:"BoundingBoxUnitType,omitnil,omitempty" name:"BoundingBoxUnitType"`
 }
 
 type ImageDenoiseConfig struct {
@@ -18757,6 +18769,12 @@ type ProcessImageRequestParams struct {
 	// 如果不填，则默认为相对路径：{inputName}.{format}。
 	OutputPath *string `json:"OutputPath,omitnil,omitempty" name:"OutputPath"`
 
+	// 图片处理模板唯一标识。
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
 	// 图片处理参数。
 	ImageTask *ImageTaskInput `json:"ImageTask,omitnil,omitempty" name:"ImageTask"`
 }
@@ -18783,6 +18801,12 @@ type ProcessImageRequest struct {
 	// 如果不填，则默认为相对路径：{inputName}.{format}。
 	OutputPath *string `json:"OutputPath,omitnil,omitempty" name:"OutputPath"`
 
+	// 图片处理模板唯一标识。
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
 	// 图片处理参数。
 	ImageTask *ImageTaskInput `json:"ImageTask,omitnil,omitempty" name:"ImageTask"`
 }
@@ -18803,6 +18827,8 @@ func (r *ProcessImageRequest) FromJsonString(s string) error {
 	delete(f, "OutputStorage")
 	delete(f, "OutputDir")
 	delete(f, "OutputPath")
+	delete(f, "Definition")
+	delete(f, "ResourceId")
 	delete(f, "ImageTask")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessImageRequest has unknown keys!", "")
@@ -21883,6 +21909,10 @@ type TranscodeTaskInput struct {
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitnil,omitempty" name:"WatermarkSet"`
+
+	// 数字水印参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlindWatermark *BlindWatermarkInput `json:"BlindWatermark,omitnil,omitempty" name:"BlindWatermark"`
 
 	// 马赛克列表，最大可支持 10 张。
 	MosaicSet []*MosaicInput `json:"MosaicSet,omitnil,omitempty" name:"MosaicSet"`

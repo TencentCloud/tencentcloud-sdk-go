@@ -3303,6 +3303,66 @@ func (c *Client) DescribeMetricTopProxiesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeMongoDBProcessListRequest() (request *DescribeMongoDBProcessListRequest) {
+    request = &DescribeMongoDBProcessListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeMongoDBProcessList")
+    
+    
+    return
+}
+
+func NewDescribeMongoDBProcessListResponse() (response *DescribeMongoDBProcessListResponse) {
+    response = &DescribeMongoDBProcessListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMongoDBProcessList
+// 查询MongoDB实时会话列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) DescribeMongoDBProcessList(request *DescribeMongoDBProcessListRequest) (response *DescribeMongoDBProcessListResponse, err error) {
+    return c.DescribeMongoDBProcessListWithContext(context.Background(), request)
+}
+
+// DescribeMongoDBProcessList
+// 查询MongoDB实时会话列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) DescribeMongoDBProcessListWithContext(ctx context.Context, request *DescribeMongoDBProcessListRequest) (response *DescribeMongoDBProcessListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMongoDBProcessListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeMongoDBProcessList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMongoDBProcessList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMongoDBProcessListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMySqlProcessListRequest() (request *DescribeMySqlProcessListRequest) {
     request = &DescribeMySqlProcessListRequest{
         BaseRequest: &tchttp.BaseRequest{},

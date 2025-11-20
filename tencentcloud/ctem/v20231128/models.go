@@ -187,6 +187,130 @@ func (r *CreateCustomerResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateEnterpriseRequestParams struct {
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 上一级企业
+	ParentEnterpriseUid *string `json:"ParentEnterpriseUid,omitnil,omitempty" name:"ParentEnterpriseUid"`
+
+	// 统一社会信用代码
+	CreditCode *string `json:"CreditCode,omitnil,omitempty" name:"CreditCode"`
+
+	// 企业状态:存续、已注销
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 注册资本（单位:元）
+	RegisteredCapital *string `json:"RegisteredCapital,omitnil,omitempty" name:"RegisteredCapital"`
+
+	// 持股比例
+	ShareholdingRatio *string `json:"ShareholdingRatio,omitnil,omitempty" name:"ShareholdingRatio"`
+
+	// 法人代表
+	LegalPerson *string `json:"LegalPerson,omitnil,omitempty" name:"LegalPerson"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 行业类型
+	Industry *string `json:"Industry,omitnil,omitempty" name:"Industry"`
+
+	// 子公司ID
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+type CreateEnterpriseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 上一级企业
+	ParentEnterpriseUid *string `json:"ParentEnterpriseUid,omitnil,omitempty" name:"ParentEnterpriseUid"`
+
+	// 统一社会信用代码
+	CreditCode *string `json:"CreditCode,omitnil,omitempty" name:"CreditCode"`
+
+	// 企业状态:存续、已注销
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 注册资本（单位:元）
+	RegisteredCapital *string `json:"RegisteredCapital,omitnil,omitempty" name:"RegisteredCapital"`
+
+	// 持股比例
+	ShareholdingRatio *string `json:"ShareholdingRatio,omitnil,omitempty" name:"ShareholdingRatio"`
+
+	// 法人代表
+	LegalPerson *string `json:"LegalPerson,omitnil,omitempty" name:"LegalPerson"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 行业类型
+	Industry *string `json:"Industry,omitnil,omitempty" name:"Industry"`
+
+	// 子公司ID
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+func (r *CreateEnterpriseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEnterpriseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "Name")
+	delete(f, "ParentEnterpriseUid")
+	delete(f, "CreditCode")
+	delete(f, "Status")
+	delete(f, "RegisteredCapital")
+	delete(f, "ShareholdingRatio")
+	delete(f, "LegalPerson")
+	delete(f, "Type")
+	delete(f, "Industry")
+	delete(f, "EnterpriseUid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEnterpriseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEnterpriseResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateEnterpriseResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEnterpriseResponseParams `json:"Response"`
+}
+
+func (r *CreateEnterpriseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEnterpriseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateJobRecordRequestParams struct {
 	// 企业ID
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
@@ -341,6 +465,157 @@ type Customer struct {
 
 	// 是否识别集团成员
 	EnableGroupMemberDiscovered *bool `json:"EnableGroupMemberDiscovered,omitnil,omitempty" name:"EnableGroupMemberDiscovered"`
+}
+
+// Predefined struct for user
+type DescribeApiSecsRequestParams struct {
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否显示被忽略的数据
+	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+
+	// 更新时间-结束
+	UpdateAtEnd *string `json:"UpdateAtEnd,omitnil,omitempty" name:"UpdateAtEnd"`
+
+	// 创建时间-结束
+	CreateAtEnd *string `json:"CreateAtEnd,omitnil,omitempty" name:"CreateAtEnd"`
+
+	// 更新时间-开始
+	UpdateAtStart *string `json:"UpdateAtStart,omitnil,omitempty" name:"UpdateAtStart"`
+
+	// 创建时间-开始
+	CreateAtStart *string `json:"CreateAtStart,omitnil,omitempty" name:"CreateAtStart"`
+
+	// 数据输出格式：json、file，默认不填为json
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 是否新增数据
+	IsNew *bool `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 子公司ID列表
+	EnterpriseUidList []*string `json:"EnterpriseUidList,omitnil,omitempty" name:"EnterpriseUidList"`
+
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+}
+
+type DescribeApiSecsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否显示被忽略的数据
+	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+
+	// 更新时间-结束
+	UpdateAtEnd *string `json:"UpdateAtEnd,omitnil,omitempty" name:"UpdateAtEnd"`
+
+	// 创建时间-结束
+	CreateAtEnd *string `json:"CreateAtEnd,omitnil,omitempty" name:"CreateAtEnd"`
+
+	// 更新时间-开始
+	UpdateAtStart *string `json:"UpdateAtStart,omitnil,omitempty" name:"UpdateAtStart"`
+
+	// 创建时间-开始
+	CreateAtStart *string `json:"CreateAtStart,omitnil,omitempty" name:"CreateAtStart"`
+
+	// 数据输出格式：json、file，默认不填为json
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 是否新增数据
+	IsNew *bool `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 子公司ID列表
+	EnterpriseUidList []*string `json:"EnterpriseUidList,omitnil,omitempty" name:"EnterpriseUidList"`
+
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+}
+
+func (r *DescribeApiSecsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IsAggregation")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Ignored")
+	delete(f, "UpdateAtEnd")
+	delete(f, "CreateAtEnd")
+	delete(f, "UpdateAtStart")
+	delete(f, "CreateAtStart")
+	delete(f, "Format")
+	delete(f, "IsNew")
+	delete(f, "CustomerIdList")
+	delete(f, "EnterpriseUidList")
+	delete(f, "Filters")
+	delete(f, "CustomerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiSecsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiSecsResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// API安全数组
+	List []*DisplayApiSec `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApiSecsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApiSecsResponseParams `json:"Response"`
+}
+
+func (r *DescribeApiSecsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -4288,6 +4563,41 @@ func (r *DescribeWechatOfficialAccountsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeWechatOfficialAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisplayApiSec struct {
+	// 主键ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 公共字段
+	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
+
+	// Url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// Host地址
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// Path路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 方法：POST、GET、DELETE等
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 修复状态：unrepaired:未修复，repaired:已修复, ignore:已忽略,checking:复测中
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 请求体
+	Request *string `json:"Request,omitnil,omitempty" name:"Request"`
+
+	// 响应体
+	Response *string `json:"Response,omitnil,omitempty" name:"Response"`
+
+	// 是否风险API
+	IsRiskAPI *bool `json:"IsRiskAPI,omitnil,omitempty" name:"IsRiskAPI"`
 }
 
 type DisplayApp struct {

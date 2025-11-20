@@ -2158,6 +2158,39 @@ type ElectronicFlightTicketFull struct {
 	InvoiceStatus *string `json:"InvoiceStatus,omitnil,omitempty" name:"InvoiceStatus"`
 }
 
+type ElectronicTollSummary struct {
+	// 发票名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 金额
+	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 列表
+	Items []*ElectronicTollSummaryItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 表格
+	TableItems []*ElectronicTollSummaryList `json:"TableItems,omitnil,omitempty" name:"TableItems"`
+
+	// 发票日期
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+}
+
+type ElectronicTollSummaryItem struct {
+	// 票面key值
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 票面value值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 字段所在行，下标从0开始，非行字段或未能识别行号的返回-1
+	Row *int64 `json:"Row,omitnil,omitempty" name:"Row"`
+}
+
+type ElectronicTollSummaryList struct {
+	// 列表
+	Items []*ElectronicTollSummaryItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
 type ElectronicTrainTicket struct {
 	// 购方名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10303,6 +10336,10 @@ type SingleInvoiceItem struct {
 	// 二手车销售统一发票（电子）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedCarPurchaseInvoiceElectronic *UsedCarPurchaseInvoice `json:"UsedCarPurchaseInvoiceElectronic,omitnil,omitempty" name:"UsedCarPurchaseInvoiceElectronic"`
+
+	// 通行费电子票据汇总单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElectronicTollSummary *ElectronicTollSummary `json:"ElectronicTollSummary,omitnil,omitempty" name:"ElectronicTollSummary"`
 }
 
 // Predefined struct for user

@@ -133,6 +133,94 @@ func (c *Client) CreateCustomerWithContext(ctx context.Context, request *CreateC
     return
 }
 
+func NewCreateEnterpriseRequest() (request *CreateEnterpriseRequest) {
+    request = &CreateEnterpriseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ctem", APIVersion, "CreateEnterprise")
+    
+    
+    return
+}
+
+func NewCreateEnterpriseResponse() (response *CreateEnterpriseResponse) {
+    response = &CreateEnterpriseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateEnterprise
+// 添加企业架构数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEnterprise(request *CreateEnterpriseRequest) (response *CreateEnterpriseResponse, err error) {
+    return c.CreateEnterpriseWithContext(context.Background(), request)
+}
+
+// CreateEnterprise
+// 添加企业架构数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEnterpriseWithContext(ctx context.Context, request *CreateEnterpriseRequest) (response *CreateEnterpriseResponse, err error) {
+    if request == nil {
+        request = NewCreateEnterpriseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "CreateEnterprise")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEnterprise require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEnterpriseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateJobRecordRequest() (request *CreateJobRecordRequest) {
     request = &CreateJobRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -217,6 +305,94 @@ func (c *Client) CreateJobRecordWithContext(ctx context.Context, request *Create
     request.SetContext(ctx)
     
     response = NewCreateJobRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiSecsRequest() (request *DescribeApiSecsRequest) {
+    request = &DescribeApiSecsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ctem", APIVersion, "DescribeApiSecs")
+    
+    
+    return
+}
+
+func NewDescribeApiSecsResponse() (response *DescribeApiSecsResponse) {
+    response = &DescribeApiSecsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApiSecs
+// 查看API安全数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecs(request *DescribeApiSecsRequest) (response *DescribeApiSecsResponse, err error) {
+    return c.DescribeApiSecsWithContext(context.Background(), request)
+}
+
+// DescribeApiSecs
+// 查看API安全数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecsWithContext(ctx context.Context, request *DescribeApiSecsRequest) (response *DescribeApiSecsResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiSecsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeApiSecs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiSecs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApiSecsResponse()
     err = c.Send(request, response)
     return
 }

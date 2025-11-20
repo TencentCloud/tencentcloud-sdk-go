@@ -132,6 +132,72 @@ func (r *CheckAnimateImageJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHumanActorJobRequestParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeHumanActorJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeHumanActorJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHumanActorJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHumanActorJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHumanActorJobResponseParams struct {
+	// 任务状态。  WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 结果视频URL。有效期 24 小时。
+	ResultVideoUrl *string `json:"ResultVideoUrl,omitnil,omitempty" name:"ResultVideoUrl"`
+
+	// 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHumanActorJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHumanActorJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeHumanActorJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHumanActorJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeImageAnimateJobRequestParams struct {
 	// 任务ID。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -484,6 +550,11 @@ func (r *DescribeVideoStylizationJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ExtraParam struct {
+	// 预签名的上传url，支持把视频直接传到客户指定的地址。
+	UserDesignatedUrl *string `json:"UserDesignatedUrl,omitnil,omitempty" name:"UserDesignatedUrl"`
+}
+
 type Image struct {
 	// 图片Base64
 	Base64 *string `json:"Base64,omitnil,omitempty" name:"Base64"`
@@ -515,6 +586,148 @@ type LogoRect struct {
 
 	// 水印图框高度。
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+}
+
+// Predefined struct for user
+type SubmitHumanActorJobRequestParams struct {
+	// 文本提示词，不能超过5000字符。
+	// 提示词支持全局和局部控制：
+	// 
+	// - 全局控制：正常输入提示词即可
+	// - 局部控制：可用双井号进行特定时间的提示词约束，例如： "画面中的人物正在对着镜头讲话，偶尔做些手势匹配说话的内容。镜头保持固定。#3#画面中的人物正在对着镜头讲话，同时做出单手做向左方引导的手势。镜头保持固定。"（意思是第三秒的时候让人物做出左方引导手势）
+	//  -- 局部控制时间建议整数，最大可读小数点后两位。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 传入音频URL地址，音频要求：
+	// - 音频时长：2秒 - 60秒
+	// - 音频格式：mp3、wav
+	// - 音频大小：10M以内
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// 传入图片URL地址，图片要求：
+	// - 图片格式：jpg、jpeg、png、bmp、webp
+	// - 图片分辨率：192～4096
+	// - 图片大小：不超过10M
+	// - 图片宽高比：图片【宽：高】在1:4到4:1范围内
+	// - 图片内容：避免上传无人脸、无宠物脸或脸部过小、不完整、不清晰、偏转角度过大、嘴部被遮挡的图片。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 传入图片Base64编码，编码后请求体大小不超过10M。
+	// 图片Base64编码与URL地址必传其一，如果都传以ImageUrl为准。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 生成视频分辨率
+	// 枚举值：720p，1080p
+	// 默认1080p
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 生成视频帧数，单位fps。
+	// 枚举值：25，50
+	// 默认50帧
+	FrameRate *int64 `json:"FrameRate,omitnil,omitempty" name:"FrameRate"`
+
+	// 为生成视频添加标识的开关，默认为1。 1：添加标识。 0：不添加标识。 其他数值：默认按1处理。 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+type SubmitHumanActorJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文本提示词，不能超过5000字符。
+	// 提示词支持全局和局部控制：
+	// 
+	// - 全局控制：正常输入提示词即可
+	// - 局部控制：可用双井号进行特定时间的提示词约束，例如： "画面中的人物正在对着镜头讲话，偶尔做些手势匹配说话的内容。镜头保持固定。#3#画面中的人物正在对着镜头讲话，同时做出单手做向左方引导的手势。镜头保持固定。"（意思是第三秒的时候让人物做出左方引导手势）
+	//  -- 局部控制时间建议整数，最大可读小数点后两位。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 传入音频URL地址，音频要求：
+	// - 音频时长：2秒 - 60秒
+	// - 音频格式：mp3、wav
+	// - 音频大小：10M以内
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// 传入图片URL地址，图片要求：
+	// - 图片格式：jpg、jpeg、png、bmp、webp
+	// - 图片分辨率：192～4096
+	// - 图片大小：不超过10M
+	// - 图片宽高比：图片【宽：高】在1:4到4:1范围内
+	// - 图片内容：避免上传无人脸、无宠物脸或脸部过小、不完整、不清晰、偏转角度过大、嘴部被遮挡的图片。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 传入图片Base64编码，编码后请求体大小不超过10M。
+	// 图片Base64编码与URL地址必传其一，如果都传以ImageUrl为准。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 生成视频分辨率
+	// 枚举值：720p，1080p
+	// 默认1080p
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 生成视频帧数，单位fps。
+	// 枚举值：25，50
+	// 默认50帧
+	FrameRate *int64 `json:"FrameRate,omitnil,omitempty" name:"FrameRate"`
+
+	// 为生成视频添加标识的开关，默认为1。 1：添加标识。 0：不添加标识。 其他数值：默认按1处理。 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+func (r *SubmitHumanActorJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHumanActorJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Prompt")
+	delete(f, "AudioUrl")
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "Resolution")
+	delete(f, "FrameRate")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHumanActorJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHumanActorJobResponseParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitHumanActorJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitHumanActorJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitHumanActorJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHumanActorJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -896,28 +1109,31 @@ type SubmitTemplateToVideoJobRequestParams struct {
 	// 特效模板名称。请在 [视频特效模板列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
 	Template *string `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 参考图像，最多输入2张图。
+	// 参考图像，不同特效输入图片的数量详见： [视频特效模板-图片要求说明](https://cloud.tencent.com/document/product/1616/119194)
 	// - 支持传入图片Base64编码或图片URL（确保可访问）
 	// - 图片格式：支持png、jpg、jpeg、webp、bmp、tiff
-	// - 图片文件：大小不能超过10MB（base64后），图片分辨率不小于300\*300px，不大于4096\*4096，图片宽高比应在1:4 ~ 4:1之间
+	// - 图片文件：大小不能超过10MB（base64后），图片分辨率不小于300*300px，不大于4096*4096，图片宽高比应在1:4 ~ 4:1之间
 	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 为生成视频添加标识的开关，默认为1。
-	// 1：添加标识。
-	// 0：不添加标识。
+	// 为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting) 申请开启显式标识自主完成后方可生效。
+	// 1：添加标识；
+	// 0：不添加标识；
 	// 其他数值：默认按1处理。
 	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
 	// 标识内容设置。
-	// 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	// 默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往  [控制台](https://console.cloud.tencent.com/vtc/setting) 申请开启显式标识自主完成。
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
-	// 视频输出分辨率，默认值：360p  - 枚举值：  720p  360p。
+	// 视频输出分辨率，默认值：360p 。不同特效支持的清晰度及消耗积分数详见：[视频特效模板-单次调用消耗积分数列](https://cloud.tencent.com/document/product/1616/119194 )
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。
 	BGM *bool `json:"BGM,omitnil,omitempty" name:"BGM"`
+
+	// 扩展字段。
+	ExtraParam *ExtraParam `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 }
 
 type SubmitTemplateToVideoJobRequest struct {
@@ -926,28 +1142,31 @@ type SubmitTemplateToVideoJobRequest struct {
 	// 特效模板名称。请在 [视频特效模板列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
 	Template *string `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 参考图像，最多输入2张图。
+	// 参考图像，不同特效输入图片的数量详见： [视频特效模板-图片要求说明](https://cloud.tencent.com/document/product/1616/119194)
 	// - 支持传入图片Base64编码或图片URL（确保可访问）
 	// - 图片格式：支持png、jpg、jpeg、webp、bmp、tiff
-	// - 图片文件：大小不能超过10MB（base64后），图片分辨率不小于300\*300px，不大于4096\*4096，图片宽高比应在1:4 ~ 4:1之间
+	// - 图片文件：大小不能超过10MB（base64后），图片分辨率不小于300*300px，不大于4096*4096，图片宽高比应在1:4 ~ 4:1之间
 	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 为生成视频添加标识的开关，默认为1。
-	// 1：添加标识。
-	// 0：不添加标识。
+	// 为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting) 申请开启显式标识自主完成后方可生效。
+	// 1：添加标识；
+	// 0：不添加标识；
 	// 其他数值：默认按1处理。
 	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
 	// 标识内容设置。
-	// 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	// 默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往  [控制台](https://console.cloud.tencent.com/vtc/setting) 申请开启显式标识自主完成。
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
-	// 视频输出分辨率，默认值：360p  - 枚举值：  720p  360p。
+	// 视频输出分辨率，默认值：360p 。不同特效支持的清晰度及消耗积分数详见：[视频特效模板-单次调用消耗积分数列](https://cloud.tencent.com/document/product/1616/119194 )
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。
 	BGM *bool `json:"BGM,omitnil,omitempty" name:"BGM"`
+
+	// 扩展字段。
+	ExtraParam *ExtraParam `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 }
 
 func (r *SubmitTemplateToVideoJobRequest) ToJsonString() string {
@@ -968,6 +1187,7 @@ func (r *SubmitTemplateToVideoJobRequest) FromJsonString(s string) error {
 	delete(f, "LogoParam")
 	delete(f, "Resolution")
 	delete(f, "BGM")
+	delete(f, "ExtraParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTemplateToVideoJobRequest has unknown keys!", "")
 	}

@@ -16544,6 +16544,9 @@ type TalkBasicConfigInfo struct {
 
 	// 音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
 	DefaultVoiceType *int64 `json:"DefaultVoiceType,omitnil,omitempty" name:"DefaultVoiceType"`
+
+	// 复刻音色ID，当不为空时，DefaultVoiceType为200000000
+	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
 }
 
 type TalkConversationConfigInfo struct {

@@ -2774,12 +2774,14 @@ func (r *DescribeDBAutonomyEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBDiagEventRequestParams struct {
 	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// 
+	// 查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 事件 ID 。通过“获取实例诊断历史[DescribeDBDiagHistory](https://cloud.tencent.com/document/product/1130/39559) ”获取。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL ;"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -2787,12 +2789,14 @@ type DescribeDBDiagEventRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// 
+	// 查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 事件 ID 。通过“获取实例诊断历史[DescribeDBDiagHistory](https://cloud.tencent.com/document/product/1130/39559) ”获取。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL ;"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -2877,16 +2881,17 @@ type DescribeDBDiagEventsRequestParams struct {
 	// 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，如“2021-05-27 01:00:00”，结束时间与开始时间的间隔最大可为7天。
+	// 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。
 	Severities []*int64 `json:"Severities,omitnil,omitempty" name:"Severities"`
 
-	// 实例ID列表。
+	// 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// 查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 偏移量，默认0。
@@ -2902,16 +2907,17 @@ type DescribeDBDiagEventsRequest struct {
 	// 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，如“2021-05-27 01:00:00”，结束时间与开始时间的间隔最大可为7天。
+	// 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。
 	Severities []*int64 `json:"Severities,omitnil,omitempty" name:"Severities"`
 
-	// 实例ID列表。
+	// 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// 查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 偏移量，默认0。
@@ -2977,6 +2983,8 @@ func (r *DescribeDBDiagEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBDiagHistoryRequestParams struct {
 	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// 
+	// 查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。结束时间与开始时间的间隔最大可为2天。
@@ -2985,7 +2993,7 @@ type DescribeDBDiagHistoryRequestParams struct {
 	// 结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL ;"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -2993,6 +3001,8 @@ type DescribeDBDiagHistoryRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// 
+	// 查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。结束时间与开始时间的间隔最大可为2天。
@@ -3001,7 +3011,7 @@ type DescribeDBDiagHistoryRequest struct {
 	// 结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL ;"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -4034,6 +4044,113 @@ func (r *DescribeMetricTopProxiesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMetricTopProxiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMongoDBProcessListRequestParams struct {
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值：mongodb
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 线程的ID，用于筛选线程列表。
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 线程的操作主机地址，用于筛选线程列表。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 线程的操作数据库，用于筛选线程列表,如果是多个 使用 ','  分割
+	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
+
+	// 命令类型 ,如果是多个 使用 ','  分割
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 返回数量，默认20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeMongoDBProcessListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值：mongodb
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 线程的ID，用于筛选线程列表。
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 线程的操作主机地址，用于筛选线程列表。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 线程的操作数据库，用于筛选线程列表,如果是多个 使用 ','  分割
+	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
+
+	// 命令类型 ,如果是多个 使用 ','  分割
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 返回数量，默认20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeMongoDBProcessListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMongoDBProcessListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "ID")
+	delete(f, "Host")
+	delete(f, "DB")
+	delete(f, "Type")
+	delete(f, "Time")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMongoDBProcessListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMongoDBProcessListResponseParams struct {
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessList *MongoDBProcessList `json:"ProcessList,omitnil,omitempty" name:"ProcessList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMongoDBProcessListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMongoDBProcessListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMongoDBProcessListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMongoDBProcessListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6826,7 +6943,7 @@ func (r *DescribeUserSqlAdviceResponse) FromJsonString(s string) error {
 }
 
 type DiagHistoryEventItem struct {
-	// 诊断类型。
+	// 诊断类型。支持值包括"高危账号","自增键耗尽","连接性检查","CPU利用率","死锁","全表扫描","高并发/压力请求","预编译语句过多","内存利用率","Metadata lock","磁盘超限","内存超限","只读锁","只读实例剔除","行锁","活跃会话","慢SQL","数据库快照","磁盘空间利用率","执行计划变化","主从切换","Table open cache命中率低","大表","事务未提交","事务导致复制延迟"等。
 	DiagType *string `json:"DiagType,omitnil,omitempty" name:"DiagType"`
 
 	// 结束时间。
@@ -7820,6 +7937,59 @@ type MongoDBIndex struct {
 
 	// 无效索引列表。
 	IndexesToDrop []*IndexesToDrop `json:"IndexesToDrop,omitnil,omitempty" name:"IndexesToDrop"`
+}
+
+type MongoDBProcessItem struct {
+	// 是否内部IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsInternalIp *bool `json:"IsInternalIp,omitnil,omitempty" name:"IsInternalIp"`
+
+	// 语句类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 语句详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceNodeId *string `json:"InstanceNodeId,omitnil,omitempty" name:"InstanceNodeId"`
+
+	// 客户端ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *float64 `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 会话ID
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 分片名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShardName *string `json:"ShardName,omitnil,omitempty" name:"ShardName"`
+
+	// 用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 数据库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
+}
+
+type MongoDBProcessList struct {
+	// 列名字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
+
+	// 接口返回数据详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*MongoDBProcessItem `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 type MonitorFloatMetric struct {
