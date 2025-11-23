@@ -700,7 +700,7 @@ func (r *ConvertOperatingSystemsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ConvertOperatingSystemsResponseParams struct {
-	// 转换的目标操系统信息，仅在入参 DryRun 为 true 时返回。
+	// 转换的目标操作系统信息，仅在入参 DryRun 为 true 时返回。
 	SupportTargetOSList []*TargetOS `json:"SupportTargetOSList,omitnil,omitempty" name:"SupportTargetOSList"`
 
 	// 操作系统转换的任务 ID

@@ -21,6 +21,239 @@ import (
 )
 
 // Predefined struct for user
+type CreateAppRequestParams struct {
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 移动端名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片地址
+	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
+
+	// 平台，ios或android
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 版本
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
+
+	// 下载地址
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// 安装包名
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+
+	// 开发者
+	Developer *string `json:"Developer,omitnil,omitempty" name:"Developer"`
+
+	// 移动端地址
+	ServerUrl *string `json:"ServerUrl,omitnil,omitempty" name:"ServerUrl"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 子公司ID
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+type CreateAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 移动端名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片地址
+	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
+
+	// 平台，ios或android
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 版本
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
+
+	// 下载地址
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// 安装包名
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+
+	// 开发者
+	Developer *string `json:"Developer,omitnil,omitempty" name:"Developer"`
+
+	// 移动端地址
+	ServerUrl *string `json:"ServerUrl,omitnil,omitempty" name:"ServerUrl"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 子公司ID
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+func (r *CreateAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "Name")
+	delete(f, "Logo")
+	delete(f, "Platform")
+	delete(f, "AppVersion")
+	delete(f, "DownloadUrl")
+	delete(f, "PackageName")
+	delete(f, "Developer")
+	delete(f, "ServerUrl")
+	delete(f, "Description")
+	delete(f, "EnterpriseUid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAppResponseParams struct {
+	// Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAppResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAppResponseParams `json:"Response"`
+}
+
+func (r *CreateAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAssetRequestParams struct {
+	// IP地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 类型
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 国家
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// 省份
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// 城市
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 子公司Id
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+type CreateAssetRequest struct {
+	*tchttp.BaseRequest
+	
+	// IP地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 类型
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 国家
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// 省份
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// 城市
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 子公司Id
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+func (r *CreateAssetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAssetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ip")
+	delete(f, "CustomerId")
+	delete(f, "Os")
+	delete(f, "Country")
+	delete(f, "Province")
+	delete(f, "City")
+	delete(f, "Isp")
+	delete(f, "EnterpriseUid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAssetResponseParams struct {
+	// Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAssetResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAssetResponseParams `json:"Response"`
+}
+
+func (r *CreateAssetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAssetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCustomerRequestParams struct {
 	// 企业名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -187,6 +420,105 @@ func (r *CreateCustomerResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDomainRequestParams struct {
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 主域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// ICP
+	ICP *string `json:"ICP,omitnil,omitempty" name:"ICP"`
+
+	// 注册时间
+	RegisteredTime *string `json:"RegisteredTime,omitnil,omitempty" name:"RegisteredTime"`
+
+	// 过期时间
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// 公司
+	Company *string `json:"Company,omitnil,omitempty" name:"Company"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+type CreateDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 主域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// ICP
+	ICP *string `json:"ICP,omitnil,omitempty" name:"ICP"`
+
+	// 注册时间
+	RegisteredTime *string `json:"RegisteredTime,omitnil,omitempty" name:"RegisteredTime"`
+
+	// 过期时间
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// 公司
+	Company *string `json:"Company,omitnil,omitempty" name:"Company"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+func (r *CreateDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "Domain")
+	delete(f, "ICP")
+	delete(f, "RegisteredTime")
+	delete(f, "ExpiredTime")
+	delete(f, "Company")
+	delete(f, "EnterpriseUid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDomainResponseParams struct {
+	// Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDomainResponseParams `json:"Response"`
+}
+
+func (r *CreateDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateEnterpriseRequestParams struct {
 	// 企业ID
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
@@ -290,6 +622,9 @@ func (r *CreateEnterpriseRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEnterpriseResponseParams struct {
+	// Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -307,6 +642,140 @@ func (r *CreateEnterpriseResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEnterpriseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHttpRequestParams struct {
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// Url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// 标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 报文长度
+	ContentLength *int64 `json:"ContentLength,omitnil,omitempty" name:"ContentLength"`
+
+	// 报文内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 缩略图Url
+	ScreenshotUrl *string `json:"ScreenshotUrl,omitnil,omitempty" name:"ScreenshotUrl"`
+
+	// 标签
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 解析的IP
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 证书信息
+	Ssl *string `json:"Ssl,omitnil,omitempty" name:"Ssl"`
+
+	// ssl证书过期时间
+	SslExpiredTime *string `json:"SslExpiredTime,omitnil,omitempty" name:"SslExpiredTime"`
+}
+
+type CreateHttpRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// Url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// 标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 报文长度
+	ContentLength *int64 `json:"ContentLength,omitnil,omitempty" name:"ContentLength"`
+
+	// 报文内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 缩略图Url
+	ScreenshotUrl *string `json:"ScreenshotUrl,omitnil,omitempty" name:"ScreenshotUrl"`
+
+	// 标签
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 解析的IP
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 证书信息
+	Ssl *string `json:"Ssl,omitnil,omitempty" name:"Ssl"`
+
+	// ssl证书过期时间
+	SslExpiredTime *string `json:"SslExpiredTime,omitnil,omitempty" name:"SslExpiredTime"`
+}
+
+func (r *CreateHttpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHttpRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "Url")
+	delete(f, "EnterpriseUid")
+	delete(f, "Title")
+	delete(f, "ContentLength")
+	delete(f, "Content")
+	delete(f, "ScreenshotUrl")
+	delete(f, "Tags")
+	delete(f, "Code")
+	delete(f, "Ip")
+	delete(f, "Ssl")
+	delete(f, "SslExpiredTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHttpRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHttpResponseParams struct {
+	// Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateHttpResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateHttpResponseParams `json:"Response"`
+}
+
+func (r *CreateHttpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHttpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -395,6 +864,752 @@ func (r *CreateJobRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateManageRequestParams struct {
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// Url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// Screenshot
+	Screenshot *string `json:"Screenshot,omitnil,omitempty" name:"Screenshot"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+type CreateManageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// Url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// Screenshot
+	Screenshot *string `json:"Screenshot,omitnil,omitempty" name:"Screenshot"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+func (r *CreateManageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateManageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "Url")
+	delete(f, "Title")
+	delete(f, "Screenshot")
+	delete(f, "Code")
+	delete(f, "EnterpriseUid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateManageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateManageResponseParams struct {
+	// Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateManageResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateManageResponseParams `json:"Response"`
+}
+
+func (r *CreateManageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateManageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePortRequestParams struct {
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// IP或域名地址
+	Asset *string `json:"Asset,omitnil,omitempty" name:"Asset"`
+
+	// 是否高危
+	IsHighRisk *bool `json:"IsHighRisk,omitnil,omitempty" name:"IsHighRisk"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// base64编码后的指纹
+	Banner *string `json:"Banner,omitnil,omitempty" name:"Banner"`
+
+	// 解析的IP
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 组件名称
+	App *string `json:"App,omitnil,omitempty" name:"App"`
+
+	// 服务名称
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+}
+
+type CreatePortRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// IP或域名地址
+	Asset *string `json:"Asset,omitnil,omitempty" name:"Asset"`
+
+	// 是否高危
+	IsHighRisk *bool `json:"IsHighRisk,omitnil,omitempty" name:"IsHighRisk"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// base64编码后的指纹
+	Banner *string `json:"Banner,omitnil,omitempty" name:"Banner"`
+
+	// 解析的IP
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 组件名称
+	App *string `json:"App,omitnil,omitempty" name:"App"`
+
+	// 服务名称
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+}
+
+func (r *CreatePortRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePortRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "Port")
+	delete(f, "Asset")
+	delete(f, "IsHighRisk")
+	delete(f, "EnterpriseUid")
+	delete(f, "Banner")
+	delete(f, "Ip")
+	delete(f, "App")
+	delete(f, "Service")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePortRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePortResponseParams struct {
+	// Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePortResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePortResponseParams `json:"Response"`
+}
+
+func (r *CreatePortResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePortResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSeedsRequestParams struct {
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// ip种子数组
+	Ips []*string `json:"Ips,omitnil,omitempty" name:"Ips"`
+
+	// icon种子数组
+	Icons []*string `json:"Icons,omitnil,omitempty" name:"Icons"`
+
+	// 主域名种子数组
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// title种子数组
+	Titles []*string `json:"Titles,omitnil,omitempty" name:"Titles"`
+
+	// 子域名种子数组
+	SubDomains []*string `json:"SubDomains,omitnil,omitempty" name:"SubDomains"`
+
+	// 关键词种子数组
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// 母公司种子数组
+	ParentCompanies []*string `json:"ParentCompanies,omitnil,omitempty" name:"ParentCompanies"`
+}
+
+type CreateSeedsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// ip种子数组
+	Ips []*string `json:"Ips,omitnil,omitempty" name:"Ips"`
+
+	// icon种子数组
+	Icons []*string `json:"Icons,omitnil,omitempty" name:"Icons"`
+
+	// 主域名种子数组
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// title种子数组
+	Titles []*string `json:"Titles,omitnil,omitempty" name:"Titles"`
+
+	// 子域名种子数组
+	SubDomains []*string `json:"SubDomains,omitnil,omitempty" name:"SubDomains"`
+
+	// 关键词种子数组
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// 母公司种子数组
+	ParentCompanies []*string `json:"ParentCompanies,omitnil,omitempty" name:"ParentCompanies"`
+}
+
+func (r *CreateSeedsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSeedsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "Ips")
+	delete(f, "Icons")
+	delete(f, "Domains")
+	delete(f, "Titles")
+	delete(f, "SubDomains")
+	delete(f, "Keywords")
+	delete(f, "ParentCompanies")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSeedsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSeedsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSeedsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSeedsResponseParams `json:"Response"`
+}
+
+func (r *CreateSeedsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSeedsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubDomainRequestParams struct {
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 子域名
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// Ip
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 国家
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// 省
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// 城市
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// Isp
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+type CreateSubDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 子域名
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// Ip
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 国家
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// 省
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// 城市
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// Isp
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+}
+
+func (r *CreateSubDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "SubDomain")
+	delete(f, "Ip")
+	delete(f, "Country")
+	delete(f, "Province")
+	delete(f, "City")
+	delete(f, "Isp")
+	delete(f, "EnterpriseUid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubDomainResponseParams struct {
+	// Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSubDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSubDomainResponseParams `json:"Response"`
+}
+
+func (r *CreateSubDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSuspiciousAssetRequestParams struct {
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// Url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// 标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 标签
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 所属者
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 来源类型
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 来源值
+	SourceValue *string `json:"SourceValue,omitnil,omitempty" name:"SourceValue"`
+
+	// 是否信任
+	Trusted *bool `json:"Trusted,omitnil,omitempty" name:"Trusted"`
+}
+
+type CreateSuspiciousAssetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// Url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// 标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 标签
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 所属者
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 来源类型
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 来源值
+	SourceValue *string `json:"SourceValue,omitnil,omitempty" name:"SourceValue"`
+
+	// 是否信任
+	Trusted *bool `json:"Trusted,omitnil,omitempty" name:"Trusted"`
+}
+
+func (r *CreateSuspiciousAssetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSuspiciousAssetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "Url")
+	delete(f, "EnterpriseUid")
+	delete(f, "Title")
+	delete(f, "Tags")
+	delete(f, "Owner")
+	delete(f, "SourceType")
+	delete(f, "SourceValue")
+	delete(f, "Trusted")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSuspiciousAssetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSuspiciousAssetResponseParams struct {
+	// Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSuspiciousAssetResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSuspiciousAssetResponseParams `json:"Response"`
+}
+
+func (r *CreateSuspiciousAssetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSuspiciousAssetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWechatAppletRequestParams struct {
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片地址
+	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
+
+	// 账号
+	AccountId *string `json:"AccountId,omitnil,omitempty" name:"AccountId"`
+
+	// 二维码
+	QrCode *string `json:"QrCode,omitnil,omitempty" name:"QrCode"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// 账号Appid
+	AccountAppid *string `json:"AccountAppid,omitnil,omitempty" name:"AccountAppid"`
+
+	// 认证主体
+	RecordSubject *string `json:"RecordSubject,omitnil,omitempty" name:"RecordSubject"`
+}
+
+type CreateWechatAppletRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片地址
+	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
+
+	// 账号
+	AccountId *string `json:"AccountId,omitnil,omitempty" name:"AccountId"`
+
+	// 二维码
+	QrCode *string `json:"QrCode,omitnil,omitempty" name:"QrCode"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// 账号Appid
+	AccountAppid *string `json:"AccountAppid,omitnil,omitempty" name:"AccountAppid"`
+
+	// 认证主体
+	RecordSubject *string `json:"RecordSubject,omitnil,omitempty" name:"RecordSubject"`
+}
+
+func (r *CreateWechatAppletRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWechatAppletRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "Name")
+	delete(f, "Logo")
+	delete(f, "AccountId")
+	delete(f, "QrCode")
+	delete(f, "Description")
+	delete(f, "EnterpriseUid")
+	delete(f, "AccountAppid")
+	delete(f, "RecordSubject")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWechatAppletRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWechatAppletResponseParams struct {
+	// Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateWechatAppletResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWechatAppletResponseParams `json:"Response"`
+}
+
+func (r *CreateWechatAppletResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWechatAppletResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWechatOfficialAccountRequestParams struct {
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片地址
+	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
+
+	// 账号
+	AccountId *string `json:"AccountId,omitnil,omitempty" name:"AccountId"`
+
+	// 二维码
+	QrCode *string `json:"QrCode,omitnil,omitempty" name:"QrCode"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// 认证主体
+	RecordSubject *string `json:"RecordSubject,omitnil,omitempty" name:"RecordSubject"`
+}
+
+type CreateWechatOfficialAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业Id
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片地址
+	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
+
+	// 账号
+	AccountId *string `json:"AccountId,omitnil,omitempty" name:"AccountId"`
+
+	// 二维码
+	QrCode *string `json:"QrCode,omitnil,omitempty" name:"QrCode"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 子公司
+	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// 认证主体
+	RecordSubject *string `json:"RecordSubject,omitnil,omitempty" name:"RecordSubject"`
+}
+
+func (r *CreateWechatOfficialAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWechatOfficialAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "Name")
+	delete(f, "Logo")
+	delete(f, "AccountId")
+	delete(f, "QrCode")
+	delete(f, "Description")
+	delete(f, "EnterpriseUid")
+	delete(f, "RecordSubject")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWechatOfficialAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWechatOfficialAccountResponseParams struct {
+	// Id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateWechatOfficialAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWechatOfficialAccountResponseParams `json:"Response"`
+}
+
+func (r *CreateWechatOfficialAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWechatOfficialAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Customer struct {
 	// 企业ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -465,6 +1680,724 @@ type Customer struct {
 
 	// 是否识别集团成员
 	EnableGroupMemberDiscovered *bool `json:"EnableGroupMemberDiscovered,omitnil,omitempty" name:"EnableGroupMemberDiscovered"`
+}
+
+// Predefined struct for user
+type DeleteAppsRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteAppsRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteAppsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAppsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAppsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAppsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAppsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAppsResponseParams `json:"Response"`
+}
+
+func (r *DeleteAppsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAppsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAssetsRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteAssetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteAssetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAssetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAssetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAssetsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAssetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAssetsResponseParams `json:"Response"`
+}
+
+func (r *DeleteAssetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDomainsRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDomainsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDomainsResponseParams `json:"Response"`
+}
+
+func (r *DeleteDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteEnterprisesRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteEnterprisesRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteEnterprisesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEnterprisesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEnterprisesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteEnterprisesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteEnterprisesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteEnterprisesResponseParams `json:"Response"`
+}
+
+func (r *DeleteEnterprisesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEnterprisesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteHttpsRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+}
+
+type DeleteHttpsRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+}
+
+func (r *DeleteHttpsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteHttpsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "CustomerIdList")
+	delete(f, "IsAggregation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteHttpsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteHttpsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteHttpsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteHttpsResponseParams `json:"Response"`
+}
+
+func (r *DeleteHttpsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteHttpsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteManagesRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+}
+
+type DeleteManagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+}
+
+func (r *DeleteManagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteManagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "CustomerIdList")
+	delete(f, "IsAggregation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteManagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteManagesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteManagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteManagesResponseParams `json:"Response"`
+}
+
+func (r *DeleteManagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteManagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePortsRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+}
+
+type DeletePortsRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+}
+
+func (r *DeletePortsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePortsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "CustomerIdList")
+	delete(f, "IsAggregation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePortsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePortsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePortsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePortsResponseParams `json:"Response"`
+}
+
+func (r *DeletePortsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePortsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSeedsRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteSeedsRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteSeedsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSeedsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSeedsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSeedsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSeedsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSeedsResponseParams `json:"Response"`
+}
+
+func (r *DeleteSeedsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSeedsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSubDomainsRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+}
+
+type DeleteSubDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+}
+
+func (r *DeleteSubDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSubDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "CustomerIdList")
+	delete(f, "IsAggregation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSubDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSubDomainsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSubDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSubDomainsResponseParams `json:"Response"`
+}
+
+func (r *DeleteSubDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSubDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSuspiciousAssetsRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+}
+
+type DeleteSuspiciousAssetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+}
+
+func (r *DeleteSuspiciousAssetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSuspiciousAssetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "CustomerIdList")
+	delete(f, "IsAggregation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSuspiciousAssetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSuspiciousAssetsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSuspiciousAssetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSuspiciousAssetsResponseParams `json:"Response"`
+}
+
+func (r *DeleteSuspiciousAssetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSuspiciousAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWechatAppletsRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteWechatAppletsRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteWechatAppletsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWechatAppletsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWechatAppletsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWechatAppletsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteWechatAppletsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteWechatAppletsResponseParams `json:"Response"`
+}
+
+func (r *DeleteWechatAppletsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWechatAppletsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWechatOfficialAccountsRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteWechatOfficialAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteWechatOfficialAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWechatOfficialAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWechatOfficialAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWechatOfficialAccountsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteWechatOfficialAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteWechatOfficialAccountsResponseParams `json:"Response"`
+}
+
+func (r *DeleteWechatOfficialAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWechatOfficialAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -3530,6 +5463,101 @@ func (r *DescribePortsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSeedsRequestParams struct {
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 创建时间-开始
+	CreateAtStart *string `json:"CreateAtStart,omitnil,omitempty" name:"CreateAtStart"`
+
+	// 创建时间-结束
+	CreateAtEnd *string `json:"CreateAtEnd,omitnil,omitempty" name:"CreateAtEnd"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeSeedsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 创建时间-开始
+	CreateAtStart *string `json:"CreateAtStart,omitnil,omitempty" name:"CreateAtStart"`
+
+	// 创建时间-结束
+	CreateAtEnd *string `json:"CreateAtEnd,omitnil,omitempty" name:"CreateAtEnd"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeSeedsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSeedsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerId")
+	delete(f, "CreateAtStart")
+	delete(f, "CreateAtEnd")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSeedsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSeedsResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 种子列表
+	List []*DisplaySeed `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSeedsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSeedsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSeedsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSeedsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSensitiveInfosRequestParams struct {
 	// 企业ID列表，可多选
 	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
@@ -5295,6 +7323,33 @@ type DisplayPort struct {
 	AnalysisState *int64 `json:"AnalysisState,omitnil,omitempty" name:"AnalysisState"`
 }
 
+type DisplaySeed struct {
+	// 主键ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 分类，包括：domain(主域名)、icon(图标)、ip(IP)、
+	// keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(标题)
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// 值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// md5值
+	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
+
+	// 来源
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 创建时间
+	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
+
+	// 是否可信
+	IsValid *bool `json:"IsValid,omitnil,omitempty" name:"IsValid"`
+}
+
 type DisplaySensitiveInfo struct {
 	// 主键Id
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -5629,6 +7684,95 @@ type IdndValue struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type IgnoreDataRequestParams struct {
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 模块，包括：enterprise：企业架构，domain：主域名，sub_domain：子域名，asset：IP资产，port：端口服务，http：HTTP资产，vul：漏洞信息，app：APP，wechat_applet：微信小程序，wechat_official_account：微信公众号，github：Github信息泄露，manage：管理后台暴露，config：目录爆破，dark_web：暗网泄露，net_disk：文库网盘泄露，supply_chain：供应链，weak_password：弱口令，sensitive_info：敏感信息泄露
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 是否显示被忽略的数据
+	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+
+	// 是否忽略全部
+	IsAffectOther *bool `json:"IsAffectOther,omitnil,omitempty" name:"IsAffectOther"`
+}
+
+type IgnoreDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID列表
+	Ids []*int64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 模块，包括：enterprise：企业架构，domain：主域名，sub_domain：子域名，asset：IP资产，port：端口服务，http：HTTP资产，vul：漏洞信息，app：APP，wechat_applet：微信小程序，wechat_official_account：微信公众号，github：Github信息泄露，manage：管理后台暴露，config：目录爆破，dark_web：暗网泄露，net_disk：文库网盘泄露，supply_chain：供应链，weak_password：弱口令，sensitive_info：敏感信息泄露
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 企业ID列表，可多选
+	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 是否显示被忽略的数据
+	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+
+	// 是否忽略全部
+	IsAffectOther *bool `json:"IsAffectOther,omitnil,omitempty" name:"IsAffectOther"`
+}
+
+func (r *IgnoreDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IgnoreDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "Module")
+	delete(f, "CustomerIdList")
+	delete(f, "IsAggregation")
+	delete(f, "Ignored")
+	delete(f, "IsAffectOther")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IgnoreDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type IgnoreDataResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type IgnoreDataResponse struct {
+	*tchttp.BaseResponse
+	Response *IgnoreDataResponseParams `json:"Response"`
+}
+
+func (r *IgnoreDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IgnoreDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type JobRecordProgress struct {
 	// 正在执行的任务数
 	Doing *int64 `json:"Doing,omitnil,omitempty" name:"Doing"`
@@ -5911,6 +8055,67 @@ func (r *ModifyLabelResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyLabelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySeedStatusRequestParams struct {
+	// ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 是否可信
+	IsValid *bool `json:"IsValid,omitnil,omitempty" name:"IsValid"`
+}
+
+type ModifySeedStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 是否可信
+	IsValid *bool `json:"IsValid,omitnil,omitempty" name:"IsValid"`
+}
+
+func (r *ModifySeedStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySeedStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "IsValid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySeedStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySeedStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySeedStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySeedStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifySeedStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySeedStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

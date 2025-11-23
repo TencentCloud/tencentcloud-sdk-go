@@ -1802,6 +1802,13 @@ type CreateBatchContractReviewTaskRequestParams struct {
 	// 
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 启用附加通用风险审查清单。默认为启用状态
+	// 可选值如下：
+	// 
+	// - 1: 启用系统提供的附加通用风险审查清单
+	// - 2:不启用系统提供的附加通用风险审查清单
+	EnableGeneralChecklist *int64 `json:"EnableGeneralChecklist,omitnil,omitempty" name:"EnableGeneralChecklist"`
 }
 
 type CreateBatchContractReviewTaskRequest struct {
@@ -1844,6 +1851,13 @@ type CreateBatchContractReviewTaskRequest struct {
 	// 
 	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 启用附加通用风险审查清单。默认为启用状态
+	// 可选值如下：
+	// 
+	// - 1: 启用系统提供的附加通用风险审查清单
+	// - 2:不启用系统提供的附加通用风险审查清单
+	EnableGeneralChecklist *int64 `json:"EnableGeneralChecklist,omitnil,omitempty" name:"EnableGeneralChecklist"`
 }
 
 func (r *CreateBatchContractReviewTaskRequest) ToJsonString() string {
@@ -1866,6 +1880,7 @@ func (r *CreateBatchContractReviewTaskRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "Comment")
 	delete(f, "UserData")
+	delete(f, "EnableGeneralChecklist")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchContractReviewTaskRequest has unknown keys!", "")
 	}

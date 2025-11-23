@@ -515,7 +515,7 @@ func NewConvertOperatingSystemsResponse() (response *ConvertOperatingSystemsResp
 }
 
 // ConvertOperatingSystems
-// 本接口(ConvertOperatingSystem)用于转换实例的操作系统，仅支持源操作系统为 CentOS 7、CentOS 8 的实例。
+// 本接口(ConvertOperatingSystems)用于转换实例的操作系统，仅支持源操作系统为 CentOS 7、CentOS 8 的实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GETINSTANCETATAGENTSTATUSFAILED = "FailedOperation.GetInstanceTATAgentStatusFailed"
@@ -536,7 +536,7 @@ func (c *Client) ConvertOperatingSystems(request *ConvertOperatingSystemsRequest
 }
 
 // ConvertOperatingSystems
-// 本接口(ConvertOperatingSystem)用于转换实例的操作系统，仅支持源操作系统为 CentOS 7、CentOS 8 的实例。
+// 本接口(ConvertOperatingSystems)用于转换实例的操作系统，仅支持源操作系统为 CentOS 7、CentOS 8 的实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GETINSTANCETATAGENTSTATUSFAILED = "FailedOperation.GetInstanceTATAgentStatusFailed"

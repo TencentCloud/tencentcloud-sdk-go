@@ -909,6 +909,111 @@ func (r *CreateXMagicResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteApplicationAndVideoLicenseRequestParams struct {
+
+}
+
+type DeleteApplicationAndVideoLicenseRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DeleteApplicationAndVideoLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApplicationAndVideoLicenseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteApplicationAndVideoLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteApplicationAndVideoLicenseResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteApplicationAndVideoLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteApplicationAndVideoLicenseResponseParams `json:"Response"`
+}
+
+func (r *DeleteApplicationAndVideoLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApplicationAndVideoLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteApplicationAndWebPlayerLicenseRequestParams struct {
+	// license唯一标识
+	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
+}
+
+type DeleteApplicationAndWebPlayerLicenseRequest struct {
+	*tchttp.BaseRequest
+	
+	// license唯一标识
+	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
+}
+
+func (r *DeleteApplicationAndWebPlayerLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApplicationAndWebPlayerLicenseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LicenseId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteApplicationAndWebPlayerLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteApplicationAndWebPlayerLicenseResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteApplicationAndWebPlayerLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteApplicationAndWebPlayerLicenseResponseParams `json:"Response"`
+}
+
+func (r *DeleteApplicationAndWebPlayerLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApplicationAndWebPlayerLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFeatureListRequestParams struct {
 
 }

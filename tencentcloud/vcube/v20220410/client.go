@@ -589,6 +589,130 @@ func (c *Client) CreateXMagicWithContext(ctx context.Context, request *CreateXMa
     return
 }
 
+func NewDeleteApplicationAndVideoLicenseRequest() (request *DeleteApplicationAndVideoLicenseRequest) {
+    request = &DeleteApplicationAndVideoLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vcube", APIVersion, "DeleteApplicationAndVideoLicense")
+    
+    
+    return
+}
+
+func NewDeleteApplicationAndVideoLicenseResponse() (response *DeleteApplicationAndVideoLicenseResponse) {
+    response = &DeleteApplicationAndVideoLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteApplicationAndVideoLicense
+// 删除视频播放器 License 和相关应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteApplicationAndVideoLicense(request *DeleteApplicationAndVideoLicenseRequest) (response *DeleteApplicationAndVideoLicenseResponse, err error) {
+    return c.DeleteApplicationAndVideoLicenseWithContext(context.Background(), request)
+}
+
+// DeleteApplicationAndVideoLicense
+// 删除视频播放器 License 和相关应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteApplicationAndVideoLicenseWithContext(ctx context.Context, request *DeleteApplicationAndVideoLicenseRequest) (response *DeleteApplicationAndVideoLicenseResponse, err error) {
+    if request == nil {
+        request = NewDeleteApplicationAndVideoLicenseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DeleteApplicationAndVideoLicense")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApplicationAndVideoLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteApplicationAndVideoLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteApplicationAndWebPlayerLicenseRequest() (request *DeleteApplicationAndWebPlayerLicenseRequest) {
+    request = &DeleteApplicationAndWebPlayerLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vcube", APIVersion, "DeleteApplicationAndWebPlayerLicense")
+    
+    
+    return
+}
+
+func NewDeleteApplicationAndWebPlayerLicenseResponse() (response *DeleteApplicationAndWebPlayerLicenseResponse) {
+    response = &DeleteApplicationAndWebPlayerLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteApplicationAndWebPlayerLicense
+// 删除web播放器license和应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteApplicationAndWebPlayerLicense(request *DeleteApplicationAndWebPlayerLicenseRequest) (response *DeleteApplicationAndWebPlayerLicenseResponse, err error) {
+    return c.DeleteApplicationAndWebPlayerLicenseWithContext(context.Background(), request)
+}
+
+// DeleteApplicationAndWebPlayerLicense
+// 删除web播放器license和应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteApplicationAndWebPlayerLicenseWithContext(ctx context.Context, request *DeleteApplicationAndWebPlayerLicenseRequest) (response *DeleteApplicationAndWebPlayerLicenseResponse, err error) {
+    if request == nil {
+        request = NewDeleteApplicationAndWebPlayerLicenseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vcube", APIVersion, "DeleteApplicationAndWebPlayerLicense")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApplicationAndWebPlayerLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteApplicationAndWebPlayerLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFeatureListRequest() (request *DescribeFeatureListRequest) {
     request = &DescribeFeatureListRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -611,6 +611,120 @@ func (c *Client) CreatePrivateZoneWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreatePrivateZoneListRequest() (request *CreatePrivateZoneListRequest) {
+    request = &CreatePrivateZoneListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("privatedns", APIVersion, "CreatePrivateZoneList")
+    
+    
+    return
+}
+
+func NewCreatePrivateZoneListResponse() (response *CreatePrivateZoneListResponse) {
+    response = &CreatePrivateZoneListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePrivateZoneList
+// 批量创建私有域
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEZONEFAILED = "FailedOperation.CreateZoneFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALCIDR = "InvalidParameter.IllegalCidr"
+//  INVALIDPARAMETER_ILLEGALDOMAIN = "InvalidParameter.IllegalDomain"
+//  INVALIDPARAMETER_ILLEGALDOMAINTLD = "InvalidParameter.IllegalDomainTld"
+//  INVALIDPARAMETER_ILLEGALRECORD = "InvalidParameter.IllegalRecord"
+//  INVALIDPARAMETER_ILLEGALRECORDVALUE = "InvalidParameter.IllegalRecordValue"
+//  INVALIDPARAMETER_RECORDLEVELEXCEED = "InvalidParameter.RecordLevelExceed"
+//  INVALIDPARAMETER_VPCBINDED = "InvalidParameter.VpcBinded"
+//  INVALIDPARAMETER_VPCCONFLICT = "InvalidParameter.VpcConflict"
+//  INVALIDPARAMETER_ZONENOTEXISTS = "InvalidParameter.ZoneNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnAuthorized"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACCOUNTNOTBOUND = "UnsupportedOperation.AccountNotBound"
+func (c *Client) CreatePrivateZoneList(request *CreatePrivateZoneListRequest) (response *CreatePrivateZoneListResponse, err error) {
+    return c.CreatePrivateZoneListWithContext(context.Background(), request)
+}
+
+// CreatePrivateZoneList
+// 批量创建私有域
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEZONEFAILED = "FailedOperation.CreateZoneFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALCIDR = "InvalidParameter.IllegalCidr"
+//  INVALIDPARAMETER_ILLEGALDOMAIN = "InvalidParameter.IllegalDomain"
+//  INVALIDPARAMETER_ILLEGALDOMAINTLD = "InvalidParameter.IllegalDomainTld"
+//  INVALIDPARAMETER_ILLEGALRECORD = "InvalidParameter.IllegalRecord"
+//  INVALIDPARAMETER_ILLEGALRECORDVALUE = "InvalidParameter.IllegalRecordValue"
+//  INVALIDPARAMETER_RECORDLEVELEXCEED = "InvalidParameter.RecordLevelExceed"
+//  INVALIDPARAMETER_VPCBINDED = "InvalidParameter.VpcBinded"
+//  INVALIDPARAMETER_VPCCONFLICT = "InvalidParameter.VpcConflict"
+//  INVALIDPARAMETER_ZONENOTEXISTS = "InvalidParameter.ZoneNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnAuthorized"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACCOUNTNOTBOUND = "UnsupportedOperation.AccountNotBound"
+func (c *Client) CreatePrivateZoneListWithContext(ctx context.Context, request *CreatePrivateZoneListRequest) (response *CreatePrivateZoneListResponse, err error) {
+    if request == nil {
+        request = NewCreatePrivateZoneListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "privatedns", APIVersion, "CreatePrivateZoneList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrivateZoneList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrivateZoneListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrivateZoneRecordRequest() (request *CreatePrivateZoneRecordRequest) {
     request = &CreatePrivateZoneRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -741,6 +855,84 @@ func (c *Client) CreatePrivateZoneRecordWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewCreatePrivateZoneRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePrivateZoneRecordListRequest() (request *CreatePrivateZoneRecordListRequest) {
+    request = &CreatePrivateZoneRecordListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("privatedns", APIVersion, "CreatePrivateZoneRecordList")
+    
+    
+    return
+}
+
+func NewCreatePrivateZoneRecordListResponse() (response *CreatePrivateZoneRecordListResponse) {
+    response = &CreatePrivateZoneRecordListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePrivateZoneRecordList
+// 批量添加私有域解析记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDZONEVPCFAILED = "FailedOperation.BindZoneVpcFailed"
+//  FAILEDOPERATION_CREATERECORDFAILED = "FailedOperation.CreateRecordFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDMX = "InvalidParameter.InvalidMX"
+//  INVALIDPARAMETER_INVALIDZONEFILEFORMAT = "InvalidParameter.InvalidZoneFileFormat"
+//  INVALIDPARAMETER_RECORDAAAACOUNTEXCEED = "InvalidParameter.RecordAAAACountExceed"
+//  INVALIDPARAMETER_RECORDACOUNTEXCEED = "InvalidParameter.RecordACountExceed"
+//  INVALIDPARAMETER_RECORDCNAMECOUNTEXCEED = "InvalidParameter.RecordCNAMECountExceed"
+//  INVALIDPARAMETER_RECORDCONFLICT = "InvalidParameter.RecordConflict"
+//  INVALIDPARAMETER_RECORDCOUNTEXCEED = "InvalidParameter.RecordCountExceed"
+//  INVALIDPARAMETER_RECORDEXIST = "InvalidParameter.RecordExist"
+//  INVALIDPARAMETER_RECORDMXCOUNTEXCEED = "InvalidParameter.RecordMXCountExceed"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePrivateZoneRecordList(request *CreatePrivateZoneRecordListRequest) (response *CreatePrivateZoneRecordListResponse, err error) {
+    return c.CreatePrivateZoneRecordListWithContext(context.Background(), request)
+}
+
+// CreatePrivateZoneRecordList
+// 批量添加私有域解析记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDZONEVPCFAILED = "FailedOperation.BindZoneVpcFailed"
+//  FAILEDOPERATION_CREATERECORDFAILED = "FailedOperation.CreateRecordFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDMX = "InvalidParameter.InvalidMX"
+//  INVALIDPARAMETER_INVALIDZONEFILEFORMAT = "InvalidParameter.InvalidZoneFileFormat"
+//  INVALIDPARAMETER_RECORDAAAACOUNTEXCEED = "InvalidParameter.RecordAAAACountExceed"
+//  INVALIDPARAMETER_RECORDACOUNTEXCEED = "InvalidParameter.RecordACountExceed"
+//  INVALIDPARAMETER_RECORDCNAMECOUNTEXCEED = "InvalidParameter.RecordCNAMECountExceed"
+//  INVALIDPARAMETER_RECORDCONFLICT = "InvalidParameter.RecordConflict"
+//  INVALIDPARAMETER_RECORDCOUNTEXCEED = "InvalidParameter.RecordCountExceed"
+//  INVALIDPARAMETER_RECORDEXIST = "InvalidParameter.RecordExist"
+//  INVALIDPARAMETER_RECORDMXCOUNTEXCEED = "InvalidParameter.RecordMXCountExceed"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePrivateZoneRecordListWithContext(ctx context.Context, request *CreatePrivateZoneRecordListRequest) (response *CreatePrivateZoneRecordListResponse, err error) {
+    if request == nil {
+        request = NewCreatePrivateZoneRecordListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "privatedns", APIVersion, "CreatePrivateZoneRecordList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrivateZoneRecordList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrivateZoneRecordListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1395,7 +1587,7 @@ func NewDescribeAccountVpcListResponse() (response *DescribeAccountVpcListRespon
 }
 
 // DescribeAccountVpcList
-// 获取私有域解析账号的VPC列表
+// 获取关联账号的VPC列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1425,7 +1617,7 @@ func (c *Client) DescribeAccountVpcList(request *DescribeAccountVpcListRequest) 
 }
 
 // DescribeAccountVpcList
-// 获取私有域解析账号的VPC列表
+// 获取关联账号的VPC列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1547,6 +1739,160 @@ func (c *Client) DescribeAuditLogWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeAuditLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCreateRecordListResultRequest() (request *DescribeCreateRecordListResultRequest) {
+    request = &DescribeCreateRecordListResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("privatedns", APIVersion, "DescribeCreateRecordListResult")
+    
+    
+    return
+}
+
+func NewDescribeCreateRecordListResultResponse() (response *DescribeCreateRecordListResultResponse) {
+    response = &DescribeCreateRecordListResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCreateRecordListResult
+// 查询批量添加私有域解析记录结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATERECORDERROR = "FailedOperation.CreateRecordError"
+//  FAILEDOPERATION_CREATERECORDFAILED = "FailedOperation.CreateRecordFailed"
+//  FAILEDOPERATION_CREATEZONEFAILED = "FailedOperation.CreateZoneFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnAuthorized"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCreateRecordListResult(request *DescribeCreateRecordListResultRequest) (response *DescribeCreateRecordListResultResponse, err error) {
+    return c.DescribeCreateRecordListResultWithContext(context.Background(), request)
+}
+
+// DescribeCreateRecordListResult
+// 查询批量添加私有域解析记录结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATERECORDERROR = "FailedOperation.CreateRecordError"
+//  FAILEDOPERATION_CREATERECORDFAILED = "FailedOperation.CreateRecordFailed"
+//  FAILEDOPERATION_CREATEZONEFAILED = "FailedOperation.CreateZoneFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnAuthorized"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCreateRecordListResultWithContext(ctx context.Context, request *DescribeCreateRecordListResultRequest) (response *DescribeCreateRecordListResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeCreateRecordListResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "privatedns", APIVersion, "DescribeCreateRecordListResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCreateRecordListResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCreateRecordListResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCreateZoneListResultRequest() (request *DescribeCreateZoneListResultRequest) {
+    request = &DescribeCreateZoneListResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("privatedns", APIVersion, "DescribeCreateZoneListResult")
+    
+    
+    return
+}
+
+func NewDescribeCreateZoneListResultResponse() (response *DescribeCreateZoneListResultResponse) {
+    response = &DescribeCreateZoneListResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCreateZoneListResult
+// 查询批量添加私有域结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATERECORDFAILED = "FailedOperation.CreateRecordFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDMX = "InvalidParameter.InvalidMX"
+//  INVALIDPARAMETER_INVALIDZONEFILEFORMAT = "InvalidParameter.InvalidZoneFileFormat"
+//  INVALIDPARAMETER_RECORDAAAACOUNTEXCEED = "InvalidParameter.RecordAAAACountExceed"
+//  INVALIDPARAMETER_RECORDACOUNTEXCEED = "InvalidParameter.RecordACountExceed"
+//  INVALIDPARAMETER_RECORDCNAMECOUNTEXCEED = "InvalidParameter.RecordCNAMECountExceed"
+//  INVALIDPARAMETER_RECORDCONFLICT = "InvalidParameter.RecordConflict"
+//  INVALIDPARAMETER_RECORDCOUNTEXCEED = "InvalidParameter.RecordCountExceed"
+//  INVALIDPARAMETER_RECORDEXIST = "InvalidParameter.RecordExist"
+//  INVALIDPARAMETER_RECORDLEVELEXCEED = "InvalidParameter.RecordLevelExceed"
+//  INVALIDPARAMETER_RECORDMXCOUNTEXCEED = "InvalidParameter.RecordMXCountExceed"
+func (c *Client) DescribeCreateZoneListResult(request *DescribeCreateZoneListResultRequest) (response *DescribeCreateZoneListResultResponse, err error) {
+    return c.DescribeCreateZoneListResultWithContext(context.Background(), request)
+}
+
+// DescribeCreateZoneListResult
+// 查询批量添加私有域结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATERECORDFAILED = "FailedOperation.CreateRecordFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDMX = "InvalidParameter.InvalidMX"
+//  INVALIDPARAMETER_INVALIDZONEFILEFORMAT = "InvalidParameter.InvalidZoneFileFormat"
+//  INVALIDPARAMETER_RECORDAAAACOUNTEXCEED = "InvalidParameter.RecordAAAACountExceed"
+//  INVALIDPARAMETER_RECORDACOUNTEXCEED = "InvalidParameter.RecordACountExceed"
+//  INVALIDPARAMETER_RECORDCNAMECOUNTEXCEED = "InvalidParameter.RecordCNAMECountExceed"
+//  INVALIDPARAMETER_RECORDCONFLICT = "InvalidParameter.RecordConflict"
+//  INVALIDPARAMETER_RECORDCOUNTEXCEED = "InvalidParameter.RecordCountExceed"
+//  INVALIDPARAMETER_RECORDEXIST = "InvalidParameter.RecordExist"
+//  INVALIDPARAMETER_RECORDLEVELEXCEED = "InvalidParameter.RecordLevelExceed"
+//  INVALIDPARAMETER_RECORDMXCOUNTEXCEED = "InvalidParameter.RecordMXCountExceed"
+func (c *Client) DescribeCreateZoneListResultWithContext(ctx context.Context, request *DescribeCreateZoneListResultRequest) (response *DescribeCreateZoneListResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeCreateZoneListResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "privatedns", APIVersion, "DescribeCreateZoneListResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCreateZoneListResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCreateZoneListResultResponse()
     err = c.Send(request, response)
     return
 }

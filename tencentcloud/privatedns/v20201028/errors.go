@@ -32,6 +32,9 @@ const (
 	// 私有域关联VPC失败。
 	FAILEDOPERATION_BINDZONEVPCFAILED = "FailedOperation.BindZoneVpcFailed"
 
+	// 创建解析记录异常。
+	FAILEDOPERATION_CREATERECORDERROR = "FailedOperation.CreateRecordError"
+
 	// 记录创建失败。
 	FAILEDOPERATION_CREATERECORDFAILED = "FailedOperation.CreateRecordFailed"
 
@@ -125,6 +128,9 @@ const (
 	// MX 必须为5-50之间且为5的倍数。
 	INVALIDPARAMETER_INVALIDMX = "InvalidParameter.InvalidMX"
 
+	// 文件类型不支持。
+	INVALIDPARAMETER_INVALIDZONEFILEFORMAT = "InvalidParameter.InvalidZoneFileFormat"
+
 	// 该记录类型不支持 MX 优先级设置
 	INVALIDPARAMETER_MXNOTSUPPORTED = "InvalidParameter.MXNotSupported"
 
@@ -172,6 +178,9 @@ const (
 
 	// 当前VPC已关联相同主域名。
 	INVALIDPARAMETER_VPCBINDEDMAINDOMAIN = "InvalidParameter.VpcBindedMainDomain"
+
+	// 相同私有域不能绑定相同的VPC。
+	INVALIDPARAMETER_VPCCONFLICT = "InvalidParameter.VpcConflict"
 
 	// VPC关联反解析域超过限制。
 	INVALIDPARAMETER_VPCPTRZONEBINDEXCEED = "InvalidParameter.VpcPtrZoneBindExceed"

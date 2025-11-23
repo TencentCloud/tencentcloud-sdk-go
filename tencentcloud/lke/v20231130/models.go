@@ -4989,6 +4989,21 @@ type DescribeWorkflowRunRequestParams struct {
 
 	// 工作流运行实例ID
 	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+
+	// 指定的子工作流对应的NodePath。
+	// 格式：`[<node_id>[<index>].]*<node_id>[<index>]`
+	// - 此路径用于定位一个具体的工作流实例（Workflow Run），可以是主工作流实例或某个子工作流节点产生的子实例。
+	// - 路径由点号（.）分隔的节点标识符组成，每个节点标识符格式为 `节点ID[实例索引]`。
+	// - **节点ID (node_id)**：子工作流所属的节点的ID。
+	// - **实例索引 (index)**：“实例索引” 在工作流节点的时候为空，循环、批处理节点非空，从1开始。
+	// 示例：
+	// - "" 或 不设置 -> 查询主工作流实例 (父工作流)
+	// - "node_id_a" -> 查询由主工作流中工作流节点`node_id_a`对应的子工作流实例
+	// - "node_id_a.node_id_b[1]" -> 查询工作流节点`node_id_a`对应的子工作流的循环节点node_id_b的第1轮循环的子工作流运行状态
+	SubWorkflowNodePath *string `json:"SubWorkflowNodePath,omitnil,omitempty" name:"SubWorkflowNodePath"`
+
+	// 是否需要返回工作流的流程图配置
+	IncludeWorkflowGraph *bool `json:"IncludeWorkflowGraph,omitnil,omitempty" name:"IncludeWorkflowGraph"`
 }
 
 type DescribeWorkflowRunRequest struct {
@@ -4999,6 +5014,21 @@ type DescribeWorkflowRunRequest struct {
 
 	// 工作流运行实例ID
 	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+
+	// 指定的子工作流对应的NodePath。
+	// 格式：`[<node_id>[<index>].]*<node_id>[<index>]`
+	// - 此路径用于定位一个具体的工作流实例（Workflow Run），可以是主工作流实例或某个子工作流节点产生的子实例。
+	// - 路径由点号（.）分隔的节点标识符组成，每个节点标识符格式为 `节点ID[实例索引]`。
+	// - **节点ID (node_id)**：子工作流所属的节点的ID。
+	// - **实例索引 (index)**：“实例索引” 在工作流节点的时候为空，循环、批处理节点非空，从1开始。
+	// 示例：
+	// - "" 或 不设置 -> 查询主工作流实例 (父工作流)
+	// - "node_id_a" -> 查询由主工作流中工作流节点`node_id_a`对应的子工作流实例
+	// - "node_id_a.node_id_b[1]" -> 查询工作流节点`node_id_a`对应的子工作流的循环节点node_id_b的第1轮循环的子工作流运行状态
+	SubWorkflowNodePath *string `json:"SubWorkflowNodePath,omitnil,omitempty" name:"SubWorkflowNodePath"`
+
+	// 是否需要返回工作流的流程图配置
+	IncludeWorkflowGraph *bool `json:"IncludeWorkflowGraph,omitnil,omitempty" name:"IncludeWorkflowGraph"`
 }
 
 func (r *DescribeWorkflowRunRequest) ToJsonString() string {
@@ -5015,6 +5045,8 @@ func (r *DescribeWorkflowRunRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AppBizId")
 	delete(f, "WorkflowRunId")
+	delete(f, "SubWorkflowNodePath")
+	delete(f, "IncludeWorkflowGraph")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkflowRunRequest has unknown keys!", "")
 	}
@@ -5028,6 +5060,9 @@ type DescribeWorkflowRunResponseParams struct {
 
 	// 节点列表
 	NodeRuns []*NodeRunBase `json:"NodeRuns,omitnil,omitempty" name:"NodeRuns"`
+
+	// 子工作流对应的NodePath
+	SubWorkflowNodePath *string `json:"SubWorkflowNodePath,omitnil,omitempty" name:"SubWorkflowNodePath"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -13106,6 +13141,8 @@ type WorkflowRunDetail struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 工作流画布Json
+	//
+	// Deprecated: DialogJson is deprecated.
 	DialogJson *string `json:"DialogJson,omitnil,omitempty" name:"DialogJson"`
 
 	// 用户的输入
@@ -13116,6 +13153,9 @@ type WorkflowRunDetail struct {
 
 	// API参数配置
 	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+
+	// 工作流的流程图
+	WorkflowGraph *string `json:"WorkflowGraph,omitnil,omitempty" name:"WorkflowGraph"`
 }
 
 type WorkflowRunNodeInfo struct {

@@ -454,6 +454,121 @@ func (r *CreatePrivateDNSAccountResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePrivateZoneListRequestParams struct {
+	// 私有域域名数组，域名格式必须是标准的TLD
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+}
+
+type CreatePrivateZoneListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私有域域名数组，域名格式必须是标准的TLD
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+}
+
+func (r *CreatePrivateZoneListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateZoneListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateZoneListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivateZoneListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePrivateZoneListResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrivateZoneListResponseParams `json:"Response"`
+}
+
+func (r *CreatePrivateZoneListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateZoneListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivateZoneRecordListRequestParams struct {
+	// 私有域ID数组
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// 私有域解析记录数据
+	RecordsInfo []*RecordsInfo `json:"RecordsInfo,omitnil,omitempty" name:"RecordsInfo"`
+}
+
+type CreatePrivateZoneRecordListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私有域ID数组
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// 私有域解析记录数据
+	RecordsInfo []*RecordsInfo `json:"RecordsInfo,omitnil,omitempty" name:"RecordsInfo"`
+}
+
+func (r *CreatePrivateZoneRecordListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateZoneRecordListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneIds")
+	delete(f, "RecordsInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateZoneRecordListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivateZoneRecordListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePrivateZoneRecordListResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrivateZoneRecordListResponseParams `json:"Response"`
+}
+
+func (r *CreatePrivateZoneRecordListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateZoneRecordListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePrivateZoneRecordRequestParams struct {
 	// 私有域ID
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -1165,10 +1280,10 @@ func (r *DescribeAccountVpcListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccountVpcListResponseParams struct {
-	// VPC数量
+	// 关联账号VPC数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// VPC 列表
+	// 关联账号VPC 列表
 	VpcSet []*AccountVpcInfoOut `json:"VpcSet,omitnil,omitempty" name:"VpcSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1273,6 +1388,129 @@ func (r *DescribeAuditLogResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAuditLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCreateRecordListResultRequestParams struct {
+	// 私有域ID数组
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// 私有域解析记录数据
+	RecordsInfo []*RecordsInfo `json:"RecordsInfo,omitnil,omitempty" name:"RecordsInfo"`
+}
+
+type DescribeCreateRecordListResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私有域ID数组
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// 私有域解析记录数据
+	RecordsInfo []*RecordsInfo `json:"RecordsInfo,omitnil,omitempty" name:"RecordsInfo"`
+}
+
+func (r *DescribeCreateRecordListResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCreateRecordListResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneIds")
+	delete(f, "RecordsInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCreateRecordListResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCreateRecordListResultResponseParams struct {
+	// 批量添加解析记录结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordsResult []*RecordsInfoResult `json:"RecordsResult,omitnil,omitempty" name:"RecordsResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCreateRecordListResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCreateRecordListResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeCreateRecordListResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCreateRecordListResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCreateZoneListResultRequestParams struct {
+	// 私有域域名数组，域名格式必须是标准的TLD
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+}
+
+type DescribeCreateZoneListResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私有域域名数组，域名格式必须是标准的TLD
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+}
+
+func (r *DescribeCreateZoneListResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCreateZoneListResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCreateZoneListResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCreateZoneListResultResponseParams struct {
+	// 私有域域名和zoneId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZonesInfo []*ZoneInfo `json:"ZonesInfo,omitnil,omitempty" name:"ZonesInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCreateZoneListResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCreateZoneListResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeCreateZoneListResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCreateZoneListResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1489,7 +1727,7 @@ type DescribeInboundEndpointListRequestParams struct {
 	// 分页限制数目， 最大100，默认20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤参数，支持EndPointName，EndpointName，EndpointId
+	// 过滤参数，支持EndPointName，EndpointName，EndPointId
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -1502,7 +1740,7 @@ type DescribeInboundEndpointListRequest struct {
 	// 分页限制数目， 最大100，默认20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤参数，支持EndPointName，EndpointName，EndpointId
+	// 过滤参数，支持EndPointName，EndpointName，EndPointId
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2894,6 +3132,75 @@ type RecordInfo struct {
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
+type RecordsInfo struct {
+	// 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
+
+	// 子域名，例如 "www", "m", "@"
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// 记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
+	RecordValue *string `json:"RecordValue,omitnil,omitempty" name:"RecordValue"`
+
+	// 记录权重，值为1-100
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TTL *int64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MX *int64 `json:"MX,omitnil,omitempty" name:"MX"`
+}
+
+type RecordsInfoResult struct {
+	// 私有域ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 私有域域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 私有域解析记录创建结果
+	RecordsStatus []*RecordsInfoStatus `json:"RecordsStatus,omitnil,omitempty" name:"RecordsStatus"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type RecordsInfoStatus struct {
+	// 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
+
+	// 子域名，例如 "www", "m", "@"
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// 记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
+	RecordValue *string `json:"RecordValue,omitnil,omitempty" name:"RecordValue"`
+
+	// 记录权重，值为1-100
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TTL *int64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MX *int64 `json:"MX,omitnil,omitempty" name:"MX"`
+
+	// 是否添加成功：0是失败，1是成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 若status为0，则此处为失败原因描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
 type SubnetIpInfo struct {
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
@@ -2984,4 +3291,17 @@ type VpcInfo struct {
 
 	// Vpc所属地区: ap-guangzhou, ap-shanghai
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+type ZoneInfo struct {
+	// 私有域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 私有域域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }

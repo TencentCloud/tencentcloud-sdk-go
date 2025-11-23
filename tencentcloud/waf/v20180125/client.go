@@ -1483,6 +1483,90 @@ func (c *Client) CreatePostCLSFlowWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateRateLimitV2Request() (request *CreateRateLimitV2Request) {
+    request = &CreateRateLimitV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "CreateRateLimitV2")
+    
+    
+    return
+}
+
+func NewCreateRateLimitV2Response() (response *CreateRateLimitV2Response) {
+    response = &CreateRateLimitV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRateLimitV2
+// 创建限流规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateRateLimitV2(request *CreateRateLimitV2Request) (response *CreateRateLimitV2Response, err error) {
+    return c.CreateRateLimitV2WithContext(context.Background(), request)
+}
+
+// CreateRateLimitV2
+// 创建限流规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateRateLimitV2WithContext(ctx context.Context, request *CreateRateLimitV2Request) (response *CreateRateLimitV2Response, err error) {
+    if request == nil {
+        request = NewCreateRateLimitV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreateRateLimitV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRateLimitV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRateLimitV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccessExportRequest() (request *DeleteAccessExportRequest) {
     request = &DeleteAccessExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2553,6 +2637,94 @@ func (c *Client) DeleteOwaspWhiteRuleWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteOwaspWhiteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRateLimitsV2Request() (request *DeleteRateLimitsV2Request) {
+    request = &DeleteRateLimitsV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteRateLimitsV2")
+    
+    
+    return
+}
+
+func NewDeleteRateLimitsV2Response() (response *DeleteRateLimitsV2Response) {
+    response = &DeleteRateLimitsV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRateLimitsV2
+// 删除自研版限流规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteRateLimitsV2(request *DeleteRateLimitsV2Request) (response *DeleteRateLimitsV2Response, err error) {
+    return c.DeleteRateLimitsV2WithContext(context.Background(), request)
+}
+
+// DeleteRateLimitsV2
+// 删除自研版限流规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteRateLimitsV2WithContext(ctx context.Context, request *DeleteRateLimitsV2Request) (response *DeleteRateLimitsV2Response, err error) {
+    if request == nil {
+        request = NewDeleteRateLimitsV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteRateLimitsV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRateLimitsV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRateLimitsV2Response()
     err = c.Send(request, response)
     return
 }
@@ -6517,6 +6689,90 @@ func (c *Client) DescribeProtectionModesWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeRateLimitsV2Request() (request *DescribeRateLimitsV2Request) {
+    request = &DescribeRateLimitsV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeRateLimitsV2")
+    
+    
+    return
+}
+
+func NewDescribeRateLimitsV2Response() (response *DescribeRateLimitsV2Response) {
+    response = &DescribeRateLimitsV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRateLimitsV2
+// 查询限流规则列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRateLimitsV2(request *DescribeRateLimitsV2Request) (response *DescribeRateLimitsV2Response, err error) {
+    return c.DescribeRateLimitsV2WithContext(context.Background(), request)
+}
+
+// DescribeRateLimitsV2
+// 查询限流规则列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRateLimitsV2WithContext(ctx context.Context, request *DescribeRateLimitsV2Request) (response *DescribeRateLimitsV2Response, err error) {
+    if request == nil {
+        request = NewDescribeRateLimitsV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeRateLimitsV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRateLimitsV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRateLimitsV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRuleLimitRequest() (request *DescribeRuleLimitRequest) {
     request = &DescribeRuleLimitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7991,6 +8247,90 @@ func (c *Client) DestroyPostCLSFlowWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewEnableRateLimitsV2Request() (request *EnableRateLimitsV2Request) {
+    request = &EnableRateLimitsV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "EnableRateLimitsV2")
+    
+    
+    return
+}
+
+func NewEnableRateLimitsV2Response() (response *EnableRateLimitsV2Response) {
+    response = &EnableRateLimitsV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableRateLimitsV2
+// 批量更改自研版限流规则开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnableRateLimitsV2(request *EnableRateLimitsV2Request) (response *EnableRateLimitsV2Response, err error) {
+    return c.EnableRateLimitsV2WithContext(context.Background(), request)
+}
+
+// EnableRateLimitsV2
+// 批量更改自研版限流规则开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnableRateLimitsV2WithContext(ctx context.Context, request *EnableRateLimitsV2Request) (response *EnableRateLimitsV2Response, err error) {
+    if request == nil {
+        request = NewEnableRateLimitsV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "EnableRateLimitsV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableRateLimitsV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableRateLimitsV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFreshAntiFakeUrlRequest() (request *FreshAntiFakeUrlRequest) {
     request = &FreshAntiFakeUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8755,6 +9095,56 @@ func (c *Client) ModifyApiSecEventChangeWithContext(ctx context.Context, request
     return
 }
 
+func NewModifyApiSecSensitiveRuleRequest() (request *ModifyApiSecSensitiveRuleRequest) {
+    request = &ModifyApiSecSensitiveRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyApiSecSensitiveRule")
+    
+    
+    return
+}
+
+func NewModifyApiSecSensitiveRuleResponse() (response *ModifyApiSecSensitiveRuleResponse) {
+    response = &ModifyApiSecSensitiveRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApiSecSensitiveRule
+// 修改api安全敏感检测规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyApiSecSensitiveRule(request *ModifyApiSecSensitiveRuleRequest) (response *ModifyApiSecSensitiveRuleResponse, err error) {
+    return c.ModifyApiSecSensitiveRuleWithContext(context.Background(), request)
+}
+
+// ModifyApiSecSensitiveRule
+// 修改api安全敏感检测规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyApiSecSensitiveRuleWithContext(ctx context.Context, request *ModifyApiSecSensitiveRuleRequest) (response *ModifyApiSecSensitiveRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyApiSecSensitiveRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyApiSecSensitiveRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApiSecSensitiveRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApiSecSensitiveRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAreaBanAreasRequest() (request *ModifyAreaBanAreasRequest) {
     request = &ModifyAreaBanAreasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9105,6 +9495,66 @@ func (c *Client) ModifyBatchIpAccessControlWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyBatchIpAccessControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBotIdRuleRequest() (request *ModifyBotIdRuleRequest) {
+    request = &ModifyBotIdRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyBotIdRule")
+    
+    
+    return
+}
+
+func NewModifyBotIdRuleResponse() (response *ModifyBotIdRuleResponse) {
+    response = &ModifyBotIdRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBotIdRule
+// 修改Bot-ID规则配置1
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyBotIdRule(request *ModifyBotIdRuleRequest) (response *ModifyBotIdRuleResponse, err error) {
+    return c.ModifyBotIdRuleWithContext(context.Background(), request)
+}
+
+// ModifyBotIdRule
+// 修改Bot-ID规则配置1
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyBotIdRuleWithContext(ctx context.Context, request *ModifyBotIdRuleRequest) (response *ModifyBotIdRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyBotIdRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyBotIdRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBotIdRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBotIdRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -12351,6 +12801,62 @@ func (c *Client) UpdateProtectionModesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewUpdateProtectionModesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateRateLimitV2Request() (request *UpdateRateLimitV2Request) {
+    request = &UpdateRateLimitV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "UpdateRateLimitV2")
+    
+    
+    return
+}
+
+func NewUpdateRateLimitV2Response() (response *UpdateRateLimitV2Response) {
+    response = &UpdateRateLimitV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateRateLimitV2
+// 更新自研版限流规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) UpdateRateLimitV2(request *UpdateRateLimitV2Request) (response *UpdateRateLimitV2Response, err error) {
+    return c.UpdateRateLimitV2WithContext(context.Background(), request)
+}
+
+// UpdateRateLimitV2
+// 更新自研版限流规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) UpdateRateLimitV2WithContext(ctx context.Context, request *UpdateRateLimitV2Request) (response *UpdateRateLimitV2Response, err error) {
+    if request == nil {
+        request = NewUpdateRateLimitV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "UpdateRateLimitV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateRateLimitV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateRateLimitV2Response()
     err = c.Send(request, response)
     return
 }
