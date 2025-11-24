@@ -19577,6 +19577,22 @@ type OriginACLInfo struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
+type OriginAuthenticationParameters struct {
+	// 回源鉴权请求属性。
+	RequestProperties []*OriginAuthenticationRequestProperties `json:"RequestProperties,omitnil,omitempty" name:"RequestProperties"`
+}
+
+type OriginAuthenticationRequestProperties struct {
+	// 设置回源鉴权参数类型，取值有：<li>QueryString：表示设置回源鉴权参数类型为查询字符串；</li><li>Header：表示设置回源鉴权参数类型为请求头。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 设置回源鉴权类型对应的参数名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 设置回源鉴权类型对应的参数值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type OriginCertificateVerify struct {
 	// 源站证书校验模式。取值有：<li>disable:禁用源站证书校验。</li><li>custom_ca:使用指定受信任 CA 证书校验。</li>
 	VerificationMode *string `json:"VerificationMode,omitnil,omitempty" name:"VerificationMode"`
@@ -20826,7 +20842,9 @@ type RuleEngineAction struct {
 	// <li>ModifyRequestHeader：修改 HTTP 节点请求头；</li>
 	// <li>ResponseSpeedLimit：单连接下载限速；</li>
 	// <li>SetContentIdentifier：设置内容标识符；</li>
-	// <li>Vary：Vary 特性配置。</li>
+	// <li>Vary：Vary 特性配置；</li>
+	// <li>ContentCompression：内容压缩配置；</li>
+	// <li>OriginAuthentication：回源鉴权配置。</li>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。
@@ -20975,6 +20993,9 @@ type RuleEngineAction struct {
 
 	// 内容压缩配置参数，当 Name 取值为 ContentCompression 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
 	ContentCompressionParameters *ContentCompressionParameters `json:"ContentCompressionParameters,omitnil,omitempty" name:"ContentCompressionParameters"`
+
+	// 回源鉴权配置参数，当 Name 取值为 OriginAuthentication 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+	OriginAuthenticationParameters *OriginAuthenticationParameters `json:"OriginAuthenticationParameters,omitnil,omitempty" name:"OriginAuthenticationParameters"`
 }
 
 type RuleEngineItem struct {

@@ -308,6 +308,9 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceResponseParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1054,6 +1057,9 @@ func (r *DescribeDetectPackageDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDetectTaskPackageListRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
 	// 每页条数
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
@@ -1064,6 +1070,9 @@ type DescribeDetectTaskPackageListRequestParams struct {
 type DescribeDetectTaskPackageListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
 	// 每页条数
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
@@ -1083,6 +1092,7 @@ func (r *DescribeDetectTaskPackageListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
 	if len(f) > 0 {
@@ -1232,12 +1242,15 @@ func (r *DescribeDnsLineListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceDetailRequestParams struct {
-
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeInstanceDetailRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *DescribeInstanceDetailRequest) ToJsonString() string {
@@ -1252,7 +1265,7 @@ func (r *DescribeInstanceDetailRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceDetailRequest has unknown keys!", "")
 	}
@@ -1363,6 +1376,9 @@ func (r *DescribeInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancePackageListRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
 	// 每页条数
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
@@ -1376,6 +1392,9 @@ type DescribeInstancePackageListRequestParams struct {
 type DescribeInstancePackageListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
 	// 每页条数
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
@@ -1398,6 +1417,7 @@ func (r *DescribeInstancePackageListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "IsUsed")
@@ -1500,6 +1520,9 @@ type DescribeMonitorsRequestParams struct {
 	// 分页，当前分页记录数
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
+	// 查询过滤条件：MonitorName：监控器名称；MonitorId：监控器id
+	Filters []*ResourceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
 	// 是否查探测次数0否1是
 	IsDetectNum *uint64 `json:"IsDetectNum,omitnil,omitempty" name:"IsDetectNum"`
 }
@@ -1512,6 +1535,9 @@ type DescribeMonitorsRequest struct {
 
 	// 分页，当前分页记录数
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询过滤条件：MonitorName：监控器名称；MonitorId：监控器id
+	Filters []*ResourceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 是否查探测次数0否1是
 	IsDetectNum *uint64 `json:"IsDetectNum,omitnil,omitempty" name:"IsDetectNum"`
@@ -1531,6 +1557,7 @@ func (r *DescribeMonitorsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Filters")
 	delete(f, "IsDetectNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMonitorsRequest has unknown keys!", "")
@@ -2187,6 +2214,9 @@ func (r *ModifyAddressPoolResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceConfigRequestParams struct {
+	// 实例id	
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
 	// 实例配置详情
 	InstanceConfig *InstanceConfig `json:"InstanceConfig,omitnil,omitempty" name:"InstanceConfig"`
 }
@@ -2194,6 +2224,9 @@ type ModifyInstanceConfigRequestParams struct {
 type ModifyInstanceConfigRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例id	
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
 	// 实例配置详情
 	InstanceConfig *InstanceConfig `json:"InstanceConfig,omitnil,omitempty" name:"InstanceConfig"`
 }
@@ -2210,6 +2243,7 @@ func (r *ModifyInstanceConfigRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceId")
 	delete(f, "InstanceConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceConfigRequest has unknown keys!", "")

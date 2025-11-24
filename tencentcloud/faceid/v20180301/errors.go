@@ -236,9 +236,6 @@ const (
 	// 该用户未注册E证通，请先注册并跟权威库核验。
 	FAILEDOPERATION_UNREGISTEREDEID = "FailedOperation.UnregisteredEid"
 
-	// 认证不通过。
-	FAILEDOPERATION_VERIFICATIONFAIL = "FailedOperation.VerificationFail"
-
 	// 视频解码异常
 	FAILEDOPERATION_VIDEODECODEFAILED = "FailedOperation.VideoDecodeFailed"
 
@@ -256,9 +253,6 @@ const (
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
-
-	// RuleId不存在。
-	INVALIDPARAMETER_RULEID = "InvalidParameter.RuleId"
 
 	// 存在不加密的字段，请参考文档修改。
 	INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"

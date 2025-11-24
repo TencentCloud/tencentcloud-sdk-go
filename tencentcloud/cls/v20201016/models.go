@@ -3098,6 +3098,121 @@ func (r *CreateDeliverCloudFunctionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDlcDeliverRequestParams struct {
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 投递类型。0:批投递,1:实时投递
+	DeliverType *uint64 `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
+
+	// 投递时间范围的开始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// dlc配置信息
+	DlcInfo *DlcInfo `json:"DlcInfo,omitnil,omitempty" name:"DlcInfo"`
+
+	// 投递文件大小,单位MB。 DeliverType=0时必填，范围 5<= MaxSize <= 256。
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
+
+	// 投递间隔，单位秒。 DeliverType=0时必填，范围 300<= Interval <=900。
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 投递时间范围的结束时间。 如果为空，则表示不限时。EndTime不为空时，需要大于StartTime。
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 是否开启投递服务日志。1关闭，2开启。默认开启
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+type CreateDlcDeliverRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 投递类型。0:批投递,1:实时投递
+	DeliverType *uint64 `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
+
+	// 投递时间范围的开始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// dlc配置信息
+	DlcInfo *DlcInfo `json:"DlcInfo,omitnil,omitempty" name:"DlcInfo"`
+
+	// 投递文件大小,单位MB。 DeliverType=0时必填，范围 5<= MaxSize <= 256。
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
+
+	// 投递间隔，单位秒。 DeliverType=0时必填，范围 300<= Interval <=900。
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 投递时间范围的结束时间。 如果为空，则表示不限时。EndTime不为空时，需要大于StartTime。
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 是否开启投递服务日志。1关闭，2开启。默认开启
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+func (r *CreateDlcDeliverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDlcDeliverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Name")
+	delete(f, "DeliverType")
+	delete(f, "StartTime")
+	delete(f, "DlcInfo")
+	delete(f, "MaxSize")
+	delete(f, "Interval")
+	delete(f, "EndTime")
+	delete(f, "HasServicesLog")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDlcDeliverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDlcDeliverResponseParams struct {
+	// 配置id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDlcDeliverResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDlcDeliverResponseParams `json:"Response"`
+}
+
+func (r *CreateDlcDeliverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDlcDeliverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateExportRequestParams struct {
 	// 日志主题Id
 	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
@@ -5386,6 +5501,69 @@ func (r *DeleteDataTransformResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteDlcDeliverRequestParams struct {
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 任务id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteDlcDeliverRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 任务id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteDlcDeliverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDlcDeliverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDlcDeliverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDlcDeliverResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDlcDeliverResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDlcDeliverResponseParams `json:"Response"`
+}
+
+func (r *DeleteDlcDeliverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDlcDeliverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteExportRequestParams struct {
 	// 日志导出任务Id
 	// - 通过[获取日志下载任务列表](https://cloud.tencent.com/document/product/614/56449)获取日志导出任务Id。
@@ -7523,6 +7701,129 @@ func (r *DescribeDataTransformInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDlcDeliversRequestParams struct {
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - taskId
+	// 按照【任务id】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - name
+	// 按照【任务名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - tableName
+	// 按照【数据表】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - statusFlag
+	// 按照【状态】进行过滤。支持："1","2","3","4"。含义：1：RUNNING，2：STOPPED，3：FINISHED，4：FAILED
+	// 类型：String
+	// 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeDlcDeliversRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - taskId
+	// 按照【任务id】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - name
+	// 按照【任务名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - tableName
+	// 按照【数据表】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - statusFlag
+	// 按照【状态】进行过滤。支持："1","2","3","4"。含义：1：RUNNING，2：STOPPED，3：FINISHED，4：FAILED
+	// 类型：String
+	// 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDlcDeliversRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDlcDeliversRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDlcDeliversRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDlcDeliversResponseParams struct {
+	// 告警渠道回调配置列表。
+	Infos []*DlcDeliverInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 符合条件的通知内容配置总数。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDlcDeliversResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDlcDeliversResponseParams `json:"Response"`
+}
+
+func (r *DescribeDlcDeliversResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDlcDeliversResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExportsRequestParams struct {
 	// 日志主题Id
 	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
@@ -9372,6 +9673,117 @@ func (r *DescribeWebCallbacksResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeWebCallbacksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DlcDeliverInfo struct {
+	// 任务id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 账号id。
+	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 日志主题id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 任务名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 投递类型，0：实时投递，1：历史投递
+	DeliverType *uint64 `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
+
+	// 投递文件大小，单位MB
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
+
+	// 投递间隔 单位秒
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 投递时间范围的开始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 投递时间范围的结束时间
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// dlc配置信息
+	DlcInfo *DlcInfo `json:"DlcInfo,omitnil,omitempty" name:"DlcInfo"`
+
+	// 是否开启投递服务日志。1关闭，2开启
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// 任务状态。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务进度。历史投递任务生效。
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 日志主题类型。0:标准主题，1:指标主题
+	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
+
+	// 任务创建时间。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 任务修改时间。
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type DlcFiledInfo struct {
+	// cls日志中的字段名
+	ClsField *string `json:"ClsField,omitnil,omitempty" name:"ClsField"`
+
+	// 数据湖计算服务表的列名
+	DlcField *string `json:"DlcField,omitnil,omitempty" name:"DlcField"`
+
+	// 数据湖计算服务字段类型
+	DlcFieldType *string `json:"DlcFieldType,omitnil,omitempty" name:"DlcFieldType"`
+
+	// 解析失败填充字段
+	FillField *string `json:"FillField,omitnil,omitempty" name:"FillField"`
+
+	// 是否禁用
+	Disable *bool `json:"Disable,omitnil,omitempty" name:"Disable"`
+}
+
+type DlcInfo struct {
+	// dlc表信息
+	TableInfo *DlcTableInfo `json:"TableInfo,omitnil,omitempty" name:"TableInfo"`
+
+	// dlc数据字段信息
+	FieldInfos []*DlcFiledInfo `json:"FieldInfos,omitnil,omitempty" name:"FieldInfos"`
+
+	// dlc分区信息
+	PartitionInfos []*DlcPartitionInfo `json:"PartitionInfos,omitnil,omitempty" name:"PartitionInfos"`
+
+	// dlc分区额外信息
+	PartitionExtra *DlcPartitionExtra `json:"PartitionExtra,omitnil,omitempty" name:"PartitionExtra"`
+}
+
+type DlcPartitionExtra struct {
+	// 时间格式	eg: %Y-%m-%d %H:%M:%S.%f
+	TimeFormat *string `json:"TimeFormat,omitnil,omitempty" name:"TimeFormat"`
+
+	// 时间时区
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+}
+
+type DlcPartitionInfo struct {
+	// cls日志中的字段名
+	ClsField *string `json:"ClsField,omitnil,omitempty" name:"ClsField"`
+
+	// dlc表的列名
+	DlcField *string `json:"DlcField,omitnil,omitempty" name:"DlcField"`
+
+	// dlc字段类型
+	DlcFieldType *string `json:"DlcFieldType,omitnil,omitempty" name:"DlcFieldType"`
+}
+
+type DlcTableInfo struct {
+	// 数据目录
+	DataDirectory *string `json:"DataDirectory,omitnil,omitempty" name:"DataDirectory"`
+
+	// 数据库
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据表
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 }
 
 type DynamicIndex struct {
@@ -11928,6 +12340,132 @@ func (r *ModifyDataTransformResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDataTransformResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDlcDeliverRequestParams struct {
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 任务id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 投递类型。0:批投递,1:实时投递
+	DeliverType *uint64 `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
+
+	// 投递时间范围的开始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 投递时间范围的结束时间。 如果为空，则表示不限时
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 投递文件大小,单位MB。 DeliverType=0时必填，范围 5<= MaxSize <= 256。
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
+
+	// 投递间隔，单位秒。 DeliverType=0时必填，范围 300<= Interval <=900。
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// dlc配置信息
+	DlcInfo *DlcInfo `json:"DlcInfo,omitnil,omitempty" name:"DlcInfo"`
+
+	// 是否开启投递服务日志。1关闭，2开启。默认开启
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// 任务状态。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyDlcDeliverRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 任务id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 投递类型。0:批投递,1:实时投递
+	DeliverType *uint64 `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
+
+	// 投递时间范围的开始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 投递时间范围的结束时间。 如果为空，则表示不限时
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 投递文件大小,单位MB。 DeliverType=0时必填，范围 5<= MaxSize <= 256。
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
+
+	// 投递间隔，单位秒。 DeliverType=0时必填，范围 300<= Interval <=900。
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// dlc配置信息
+	DlcInfo *DlcInfo `json:"DlcInfo,omitnil,omitempty" name:"DlcInfo"`
+
+	// 是否开启投递服务日志。1关闭，2开启。默认开启
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// 任务状态。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyDlcDeliverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDlcDeliverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "TaskId")
+	delete(f, "Name")
+	delete(f, "DeliverType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MaxSize")
+	delete(f, "Interval")
+	delete(f, "DlcInfo")
+	delete(f, "HasServicesLog")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDlcDeliverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDlcDeliverResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDlcDeliverResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDlcDeliverResponseParams `json:"Response"`
+}
+
+func (r *ModifyDlcDeliverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDlcDeliverResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

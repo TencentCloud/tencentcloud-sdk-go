@@ -8420,7 +8420,7 @@ type RecordListItem struct {
 	// 记录备注说明
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 记录缓存时间
+	// 记录缓存时间，单位：秒
 	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
 
 	// MX值

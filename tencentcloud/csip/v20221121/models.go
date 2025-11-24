@@ -1130,6 +1130,9 @@ type AssetRiskItem struct {
 
 	// 风险规则ID
 	RiskRuleId *string `json:"RiskRuleId,omitnil,omitempty" name:"RiskRuleId"`
+
+	// 处置分类
+	Classify *string `json:"Classify,omitnil,omitempty" name:"Classify"`
 }
 
 type AssetTag struct {
@@ -2027,6 +2030,9 @@ type CheckViewRiskItem struct {
 
 	// 事件类型
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 处置分类
+	Classify *string `json:"Classify,omitnil,omitempty" name:"Classify"`
 }
 
 type ClbListenerListInfo struct {
@@ -8545,6 +8551,18 @@ type ExposesItem struct {
 
 	// 端口开放结果
 	PortDetectResult *string `json:"PortDetectResult,omitnil,omitempty" name:"PortDetectResult"`
+
+	// 标签
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 备注
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 待治理风险数量
+	ToGovernedRiskCount *uint64 `json:"ToGovernedRiskCount,omitnil,omitempty" name:"ToGovernedRiskCount"`
+
+	// 待治理风险内容
+	ToGovernedRiskContent *string `json:"ToGovernedRiskContent,omitnil,omitempty" name:"ToGovernedRiskContent"`
 }
 
 type Filter struct {
@@ -8679,6 +8697,9 @@ type GateWayAsset struct {
 
 	// TSE的网关真实地域
 	EngineRegion *string `json:"EngineRegion,omitnil,omitempty" name:"EngineRegion"`
+
+	// 弱口令风险
+	WeakPasswordRisk *uint64 `json:"WeakPasswordRisk,omitnil,omitempty" name:"WeakPasswordRisk"`
 }
 
 type HighBaseLineRiskItem struct {

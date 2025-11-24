@@ -2387,6 +2387,64 @@ func (c *Client) DescribeInspectionTaskResultWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeInstanceOplogRequest() (request *DescribeInstanceOplogRequest) {
+    request = &DescribeInstanceOplogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeInstanceOplog")
+    
+    
+    return
+}
+
+func NewDescribeInstanceOplogResponse() (response *DescribeInstanceOplogResponse) {
+    response = &DescribeInstanceOplogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceOplog
+// 获取实例操作日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDRESOURCEID = "InvalidParameter.InvalidResourceId"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DescribeInstanceOplog(request *DescribeInstanceOplogRequest) (response *DescribeInstanceOplogResponse, err error) {
+    return c.DescribeInstanceOplogWithContext(context.Background(), request)
+}
+
+// DescribeInstanceOplog
+// 获取实例操作日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDRESOURCEID = "InvalidParameter.InvalidResourceId"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DescribeInstanceOplogWithContext(ctx context.Context, request *DescribeInstanceOplogRequest) (response *DescribeInstanceOplogResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceOplogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeInstanceOplog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceOplog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceOplogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceRenewNodesRequest() (request *DescribeInstanceRenewNodesRequest) {
     request = &DescribeInstanceRenewNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

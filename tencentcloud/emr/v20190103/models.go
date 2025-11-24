@@ -4342,6 +4342,121 @@ func (r *DescribeInspectionTaskResultResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceOplogRequestParams struct {
+	// EMR实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 开头时间时间戳
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结尾时间时间戳
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 搜索项数组
+	SearchFields []*SearchItem `json:"SearchFields,omitnil,omitempty" name:"SearchFields"`
+
+	// 集群、节点、组件
+	Operand *string `json:"Operand,omitnil,omitempty" name:"Operand"`
+
+	// 一般、危险、高危
+	SecurityLevel *string `json:"SecurityLevel,omitnil,omitempty" name:"SecurityLevel"`
+}
+
+type DescribeInstanceOplogRequest struct {
+	*tchttp.BaseRequest
+	
+	// EMR实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 开头时间时间戳
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结尾时间时间戳
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 搜索项数组
+	SearchFields []*SearchItem `json:"SearchFields,omitnil,omitempty" name:"SearchFields"`
+
+	// 集群、节点、组件
+	Operand *string `json:"Operand,omitnil,omitempty" name:"Operand"`
+
+	// 一般、危险、高危
+	SecurityLevel *string `json:"SecurityLevel,omitnil,omitempty" name:"SecurityLevel"`
+}
+
+func (r *DescribeInstanceOplogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceOplogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SearchFields")
+	delete(f, "Operand")
+	delete(f, "SecurityLevel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceOplogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceOplogResponseParams struct {
+	// 操作日志数量
+	TotalCnt *int64 `json:"TotalCnt,omitnil,omitempty" name:"TotalCnt"`
+
+	// 操作日志列表
+	LogList []*OperationLog `json:"LogList,omitnil,omitempty" name:"LogList"`
+
+	// 操作对象筛选项数组
+	OperandList []*string `json:"OperandList,omitnil,omitempty" name:"OperandList"`
+
+	// 安全级别筛选数组
+	SecurityLevelList []*string `json:"SecurityLevelList,omitnil,omitempty" name:"SecurityLevelList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceOplogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceOplogResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceOplogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceOplogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceRenewNodesRequestParams struct {
 	// 集群实例ID,实例ID形如: emr-xxxxxxxx
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -10390,6 +10505,35 @@ type OpScope struct {
 	// 操作范围，要操作的服务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceInfoList []*ServiceBasicRestartInfo `json:"ServiceInfoList,omitnil,omitempty" name:"ServiceInfoList"`
+}
+
+type OperationLog struct {
+	// EMR实例ID
+	InstanceId *int64 `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 操作名称
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 操作类型
+	OperationType *int64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 用户类型
+	UserType *int64 `json:"UserType,omitnil,omitempty" name:"UserType"`
+
+	// 操作者
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 操作时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 操作对象
+	Operand *string `json:"Operand,omitnil,omitempty" name:"Operand"`
+
+	// 操作详情
+	OperationDesc *string `json:"OperationDesc,omitnil,omitempty" name:"OperationDesc"`
+
+	// 安全级别
+	SecurityLevel *string `json:"SecurityLevel,omitnil,omitempty" name:"SecurityLevel"`
 }
 
 type Order struct {

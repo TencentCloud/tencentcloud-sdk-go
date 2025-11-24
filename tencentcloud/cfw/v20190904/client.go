@@ -3769,6 +3769,58 @@ func (c *Client) DescribeNatFwInstancesInfoWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeNatFwSwitchRequest() (request *DescribeNatFwSwitchRequest) {
+    request = &DescribeNatFwSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatFwSwitch")
+    
+    
+    return
+}
+
+func NewDescribeNatFwSwitchResponse() (response *DescribeNatFwSwitchResponse) {
+    response = &DescribeNatFwSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNatFwSwitch
+// 查询NAT边界防火墙开关列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNatFwSwitch(request *DescribeNatFwSwitchRequest) (response *DescribeNatFwSwitchResponse, err error) {
+    return c.DescribeNatFwSwitchWithContext(context.Background(), request)
+}
+
+// DescribeNatFwSwitch
+// 查询NAT边界防火墙开关列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNatFwSwitchWithContext(ctx context.Context, request *DescribeNatFwSwitchRequest) (response *DescribeNatFwSwitchResponse, err error) {
+    if request == nil {
+        request = NewDescribeNatFwSwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNatFwSwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatFwSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNatFwSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNatFwVpcDnsLstRequest() (request *DescribeNatFwVpcDnsLstRequest) {
     request = &DescribeNatFwVpcDnsLstRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -131,6 +131,9 @@ const (
 	// 请求量统计数据暂时不可用，请稍后再试。
 	FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
 
+	// 按腾讯云域名新规范，tencentyun.com不允许新增子域名和修改存量解析
+	FAILEDOPERATION_TENCENTCLOUDFORBID = "FailedOperation.TencentCloudForbid"
+
 	// 不能转移到企业账号。
 	FAILEDOPERATION_TRANSFERTOENTERPRISEDENIED = "FailedOperation.TransferToEnterpriseDenied"
 

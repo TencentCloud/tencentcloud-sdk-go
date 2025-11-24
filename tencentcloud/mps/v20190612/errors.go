@@ -206,6 +206,9 @@ const (
 	// 无效的禁止分辨率低转高开关值。
 	INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
 
+	// 水印文本重复
+	INVALIDPARAMETERVALUE_DUPLICATEDTEXTCONTENT = "InvalidParameterValue.DuplicatedTextContent"
+
 	// 模板开启的检测项为空。
 	INVALIDPARAMETERVALUE_EMPTYDETECTITEM = "InvalidParameterValue.EmptyDetectItem"
 

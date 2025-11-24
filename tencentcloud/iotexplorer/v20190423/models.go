@@ -3104,6 +3104,9 @@ type CreateTWeSeeRecognitionTaskRequestParams struct {
 	// 输入视频 / 图片的 URL
 	InputURL *string `json:"InputURL,omitnil,omitempty" name:"InputURL"`
 
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
 	// 自定义事件 ID
 	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
 
@@ -3157,6 +3160,9 @@ type CreateTWeSeeRecognitionTaskRequest struct {
 
 	// 输入视频 / 图片的 URL
 	InputURL *string `json:"InputURL,omitnil,omitempty" name:"InputURL"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	// 自定义事件 ID
 	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
@@ -3215,6 +3221,7 @@ func (r *CreateTWeSeeRecognitionTaskRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	delete(f, "InputURL")
+	delete(f, "ChannelId")
 	delete(f, "CustomId")
 	delete(f, "EnableSearch")
 	delete(f, "StartTimeMs")

@@ -2967,6 +2967,29 @@ type BlindWatermarkInput struct {
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 }
 
+type BlindWatermarkTemplate struct {
+	// 数字水印模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：NAGRA取证水印；</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数字水印模板名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数字水印模板文本内容，长度不超过64个字符。
+	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+
+	// 数字水印模板描述信息。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 数字水印模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 数字水印模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 type ClassificationConfigureInfo struct {
 	// 智能分类任务开关，可选值：
 	// <li>ON：开启智能分类任务；</li>
@@ -4190,6 +4213,84 @@ func (r *CreateAsrHotwordsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateBlindWatermarkTemplateRequestParams struct {
+	// 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：NAGRA水印；</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板创建后不支持修改文字内容。
+	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+
+	// 数字水印模板名称，支持中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数字水印模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+type CreateBlindWatermarkTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：NAGRA水印；</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板创建后不支持修改文字内容。
+	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+
+	// 数字水印模板名称，支持中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数字水印模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+func (r *CreateBlindWatermarkTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBlindWatermarkTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "TextContent")
+	delete(f, "Name")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBlindWatermarkTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBlindWatermarkTemplateResponseParams struct {
+	// 数字水印模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBlindWatermarkTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBlindWatermarkTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateBlindWatermarkTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBlindWatermarkTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateContentReviewTemplateRequestParams struct {
 	// 内容审核模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -5004,6 +5105,77 @@ func (r *CreatePersonSampleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePersonSampleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateProcessImageTemplateRequestParams struct {
+	// 图片处理模板。
+	ProcessImageTemplate *ImageTaskInput `json:"ProcessImageTemplate,omitnil,omitempty" name:"ProcessImageTemplate"`
+
+	// 图片处理模板名称，长度限制：64个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片处理模板描述信息，长度限制：256个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+type CreateProcessImageTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片处理模板。
+	ProcessImageTemplate *ImageTaskInput `json:"ProcessImageTemplate,omitnil,omitempty" name:"ProcessImageTemplate"`
+
+	// 图片处理模板名称，长度限制：64个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片处理模板描述信息，长度限制：256个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+func (r *CreateProcessImageTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProcessImageTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProcessImageTemplate")
+	delete(f, "Name")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProcessImageTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateProcessImageTemplateResponseParams struct {
+	// 图片处理模板唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateProcessImageTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateProcessImageTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateProcessImageTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProcessImageTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7078,6 +7250,60 @@ func (r *DeleteAsrHotwordsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteBlindWatermarkTemplateRequestParams struct {
+	// 数字水印模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type DeleteBlindWatermarkTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字水印模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+func (r *DeleteBlindWatermarkTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBlindWatermarkTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBlindWatermarkTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBlindWatermarkTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBlindWatermarkTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBlindWatermarkTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteBlindWatermarkTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBlindWatermarkTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteContentReviewTemplateRequestParams struct {
 	// 内容审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -7290,6 +7516,60 @@ func (r *DeletePersonSampleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePersonSampleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProcessImageTemplateRequestParams struct {
+	// 图片处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type DeleteProcessImageTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+func (r *DeleteProcessImageTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProcessImageTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProcessImageTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProcessImageTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteProcessImageTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteProcessImageTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteProcessImageTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProcessImageTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8796,6 +9076,98 @@ func (r *DescribeBatchTaskDetailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBlindWatermarkTemplatesRequestParams struct {
+	// 数字水印模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 数字水印模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：Nagra取证水印；</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数
+	// <li>默认值：10；</li>
+	// <li>最大值：100。</li>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeBlindWatermarkTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字水印模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 数字水印模板标识过滤条件，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-nagra：Nagra取证水印；</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数
+	// <li>默认值：10；</li>
+	// <li>最大值：100。</li>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeBlindWatermarkTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlindWatermarkTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlindWatermarkTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlindWatermarkTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 数字水印模板详情列表。
+	BlindWatermarkTemplateSet []*BlindWatermarkTemplate `json:"BlindWatermarkTemplateSet,omitnil,omitempty" name:"BlindWatermarkTemplateSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBlindWatermarkTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBlindWatermarkTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeBlindWatermarkTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlindWatermarkTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeContentReviewTemplatesRequestParams struct {
 	// 智能审核模板唯一标识过滤条件，数组长度限制：50。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
@@ -9797,6 +10169,112 @@ func (r *DescribePersonSamplesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePersonSamplesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProcessImageTemplatesRequestParams struct {
+	// 图片处理模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数 默认值：10；最大值：100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 图片处理模板标识过滤条件。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 排序方式，OrderBy设置后才有效，可选值：   0：升序   1：降序  默认 0。
+	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// 排序字段，可选值：  
+	// Definition：模板唯一标识； 
+	// 默认值：创建时间。
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 模板类型过滤条件，可选值： <li>Preset：系统预置模板；</li> <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DescribeProcessImageTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片处理模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数 默认值：10；最大值：100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 图片处理模板标识过滤条件。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 排序方式，OrderBy设置后才有效，可选值：   0：升序   1：降序  默认 0。
+	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// 排序字段，可选值：  
+	// Definition：模板唯一标识； 
+	// 默认值：创建时间。
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 模板类型过滤条件，可选值： <li>Preset：系统预置模板；</li> <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DescribeProcessImageTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProcessImageTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Name")
+	delete(f, "OrderType")
+	delete(f, "OrderBy")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProcessImageTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProcessImageTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 图片处理模板详情列表。
+	ProcessImageTemplateSet []*ProcessImageTemplate `json:"ProcessImageTemplateSet,omitnil,omitempty" name:"ProcessImageTemplateSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProcessImageTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProcessImageTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeProcessImageTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProcessImageTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13095,6 +13573,91 @@ type ExtractBlindWatermarkConfig struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
+// Predefined struct for user
+type ExtractBlindWatermarkRequestParams struct {
+	// 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 媒体处理的文件输入信息。
+	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// 任务的事件通知信息，不填代表不获取事件通知。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
+
+	// 提取数字水印任务配置
+	ExtractBlindWatermarkConfig *ExtractBlindWatermarkTaskConfig `json:"ExtractBlindWatermarkConfig,omitnil,omitempty" name:"ExtractBlindWatermarkConfig"`
+
+	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type ExtractBlindWatermarkRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 媒体处理的文件输入信息。
+	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// 任务的事件通知信息，不填代表不获取事件通知。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
+
+	// 提取数字水印任务配置
+	ExtractBlindWatermarkConfig *ExtractBlindWatermarkTaskConfig `json:"ExtractBlindWatermarkConfig,omitnil,omitempty" name:"ExtractBlindWatermarkConfig"`
+
+	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+func (r *ExtractBlindWatermarkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExtractBlindWatermarkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "InputInfo")
+	delete(f, "TaskNotifyConfig")
+	delete(f, "ExtractBlindWatermarkConfig")
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExtractBlindWatermarkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExtractBlindWatermarkResponseParams struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExtractBlindWatermarkResponse struct {
+	*tchttp.BaseResponse
+	Response *ExtractBlindWatermarkResponseParams `json:"Response"`
+}
+
+func (r *ExtractBlindWatermarkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExtractBlindWatermarkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ExtractBlindWatermarkTask struct {
 	// 媒体处理任务 ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -16020,6 +16583,81 @@ func (r *ModifyAsrHotwordsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyBlindWatermarkTemplateRequestParams struct {
+	// 数字水印模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 数字水印模板名称，支持 中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数字水印模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板不支持修改文字内容。
+	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+}
+
+type ModifyBlindWatermarkTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字水印模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 数字水印模板名称，支持 中文、英文、数字、_、-和. 六种格式，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数字水印模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板不支持修改文字内容。
+	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+}
+
+func (r *ModifyBlindWatermarkTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBlindWatermarkTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "TextContent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBlindWatermarkTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBlindWatermarkTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBlindWatermarkTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBlindWatermarkTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyBlindWatermarkTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBlindWatermarkTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyContentReviewTemplateRequestParams struct {
 	// 内容审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -16592,6 +17230,81 @@ func (r *ModifyPersonSampleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyPersonSampleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyProcessImageTemplateRequestParams struct {
+	// 图片处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 图片处理模板名称，长度限制：64个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制256个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 图片处理模板参数。
+	ProcessImageTemplate *ImageTaskInput `json:"ProcessImageTemplate,omitnil,omitempty" name:"ProcessImageTemplate"`
+}
+
+type ModifyProcessImageTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 图片处理模板名称，长度限制：64个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制256个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 图片处理模板参数。
+	ProcessImageTemplate *ImageTaskInput `json:"ProcessImageTemplate,omitnil,omitempty" name:"ProcessImageTemplate"`
+}
+
+func (r *ModifyProcessImageTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProcessImageTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "ProcessImageTemplate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProcessImageTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyProcessImageTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyProcessImageTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyProcessImageTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyProcessImageTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProcessImageTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18863,6 +19576,29 @@ func (r *ProcessImageResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ProcessImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ProcessImageTemplate struct {
+	// 图片处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 图片处理模板名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片处理模板描述信息。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 模板类型。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 图片处理模板配置参数。
+	ProcessImageConfig *ImageTaskInput `json:"ProcessImageConfig,omitnil,omitempty" name:"ProcessImageConfig"`
+
+	// 模板创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 // Predefined struct for user

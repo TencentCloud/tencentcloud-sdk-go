@@ -1221,6 +1221,86 @@ func (c *Client) CreateDeliverCloudFunctionWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateDlcDeliverRequest() (request *CreateDlcDeliverRequest) {
+    request = &CreateDlcDeliverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateDlcDeliver")
+    
+    
+    return
+}
+
+func NewCreateDlcDeliverResponse() (response *CreateDlcDeliverResponse) {
+    response = &CreateDlcDeliverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDlcDeliver
+// 创建DLC投递任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDlcDeliver(request *CreateDlcDeliverRequest) (response *CreateDlcDeliverResponse, err error) {
+    return c.CreateDlcDeliverWithContext(context.Background(), request)
+}
+
+// CreateDlcDeliver
+// 创建DLC投递任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDlcDeliverWithContext(ctx context.Context, request *CreateDlcDeliverRequest) (response *CreateDlcDeliverResponse, err error) {
+    if request == nil {
+        request = NewCreateDlcDeliverRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateDlcDeliver")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDlcDeliver require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDlcDeliverResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateExportRequest() (request *CreateExportRequest) {
     request = &CreateExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2763,6 +2843,86 @@ func (c *Client) DeleteDataTransformWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteDataTransformResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDlcDeliverRequest() (request *DeleteDlcDeliverRequest) {
+    request = &DeleteDlcDeliverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteDlcDeliver")
+    
+    
+    return
+}
+
+func NewDeleteDlcDeliverResponse() (response *DeleteDlcDeliverResponse) {
+    response = &DeleteDlcDeliverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDlcDeliver
+// 删除DLC投递任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDlcDeliver(request *DeleteDlcDeliverRequest) (response *DeleteDlcDeliverResponse, err error) {
+    return c.DeleteDlcDeliverWithContext(context.Background(), request)
+}
+
+// DeleteDlcDeliver
+// 删除DLC投递任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDlcDeliverWithContext(ctx context.Context, request *DeleteDlcDeliverRequest) (response *DeleteDlcDeliverResponse, err error) {
+    if request == nil {
+        request = NewDeleteDlcDeliverRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteDlcDeliver")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDlcDeliver require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDlcDeliverResponse()
     err = c.Send(request, response)
     return
 }
@@ -4467,6 +4627,72 @@ func (c *Client) DescribeDataTransformInfoWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeDataTransformInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDlcDeliversRequest() (request *DescribeDlcDeliversRequest) {
+    request = &DescribeDlcDeliversRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeDlcDelivers")
+    
+    
+    return
+}
+
+func NewDescribeDlcDeliversResponse() (response *DescribeDlcDeliversResponse) {
+    response = &DescribeDlcDeliversResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDlcDelivers
+// 获取告警渠道回调配置列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeDlcDelivers(request *DescribeDlcDeliversRequest) (response *DescribeDlcDeliversResponse, err error) {
+    return c.DescribeDlcDeliversWithContext(context.Background(), request)
+}
+
+// DescribeDlcDelivers
+// 获取告警渠道回调配置列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeDlcDeliversWithContext(ctx context.Context, request *DescribeDlcDeliversRequest) (response *DescribeDlcDeliversResponse, err error) {
+    if request == nil {
+        request = NewDescribeDlcDeliversRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeDlcDelivers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDlcDelivers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDlcDeliversResponse()
     err = c.Send(request, response)
     return
 }
@@ -6803,6 +7029,86 @@ func (c *Client) ModifyDataTransformWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyDataTransformResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDlcDeliverRequest() (request *ModifyDlcDeliverRequest) {
+    request = &ModifyDlcDeliverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyDlcDeliver")
+    
+    
+    return
+}
+
+func NewModifyDlcDeliverResponse() (response *ModifyDlcDeliverResponse) {
+    response = &ModifyDlcDeliverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDlcDeliver
+// 修改DLC投递任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDlcDeliver(request *ModifyDlcDeliverRequest) (response *ModifyDlcDeliverResponse, err error) {
+    return c.ModifyDlcDeliverWithContext(context.Background(), request)
+}
+
+// ModifyDlcDeliver
+// 修改DLC投递任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDlcDeliverWithContext(ctx context.Context, request *ModifyDlcDeliverRequest) (response *ModifyDlcDeliverResponse, err error) {
+    if request == nil {
+        request = NewModifyDlcDeliverRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyDlcDeliver")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDlcDeliver require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDlcDeliverResponse()
     err = c.Send(request, response)
     return
 }

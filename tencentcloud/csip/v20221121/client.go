@@ -1927,7 +1927,7 @@ func NewDescribeCheckViewRisksResponse() (response *DescribeCheckViewRisksRespon
 }
 
 // DescribeCheckViewRisks
-// 检查视角下云资源配置风险列表示例
+// 检查视角下云资源配置风险列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1953,7 +1953,7 @@ func (c *Client) DescribeCheckViewRisks(request *DescribeCheckViewRisksRequest) 
 }
 
 // DescribeCheckViewRisks
-// 检查视角下云资源配置风险列表示例
+// 检查视角下云资源配置风险列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

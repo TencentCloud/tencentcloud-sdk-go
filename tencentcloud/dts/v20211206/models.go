@@ -219,6 +219,12 @@ type CompareTableItem struct {
 
 	// 当 ColumnMode 为 partial 时必填(该参数仅对数据同步任务有效)
 	Columns []*CompareColumnItem `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// 过滤条件
+	FilterCondition *string `json:"FilterCondition,omitnil,omitempty" name:"FilterCondition"`
+
+	// 时区选择。如 "+08:00", "-08:00", "+00:00"（空值等价于"+00:00"）	
+	FilterTimeZone *string `json:"FilterTimeZone,omitnil,omitempty" name:"FilterTimeZone"`
 }
 
 type CompareTaskInfo struct {
@@ -1366,6 +1372,92 @@ func (r *CreateSubscribeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSyncCompareTaskRequestParams struct {
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 数据对比任务名称，若为空则默认给CompareTaskId相同值
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)，custom(自定义模式)
+	ObjectMode *string `json:"ObjectMode,omitnil,omitempty" name:"ObjectMode"`
+
+	// 对比对象，当ObjectMode值为custom时，此项需要填写
+	Objects *CompareObject `json:"Objects,omitnil,omitempty" name:"Objects"`
+
+	// 一致性校验选项
+	Options *CompareOptions `json:"Options,omitnil,omitempty" name:"Options"`
+}
+
+type CreateSyncCompareTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 数据对比任务名称，若为空则默认给CompareTaskId相同值
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)，custom(自定义模式)
+	ObjectMode *string `json:"ObjectMode,omitnil,omitempty" name:"ObjectMode"`
+
+	// 对比对象，当ObjectMode值为custom时，此项需要填写
+	Objects *CompareObject `json:"Objects,omitnil,omitempty" name:"Objects"`
+
+	// 一致性校验选项
+	Options *CompareOptions `json:"Options,omitnil,omitempty" name:"Options"`
+}
+
+func (r *CreateSyncCompareTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSyncCompareTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "TaskName")
+	delete(f, "ObjectMode")
+	delete(f, "Objects")
+	delete(f, "Options")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSyncCompareTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSyncCompareTaskResponseParams struct {
+	// 数据对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSyncCompareTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSyncCompareTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateSyncCompareTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSyncCompareTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSyncJobRequestParams struct {
 	// 付款类型, 如：PrePay(表示包年包月)、PostPay(表示按时按量)
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
@@ -1884,6 +1976,67 @@ func (r *DeleteConsumerGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteConsumerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSyncCompareTaskRequestParams struct {
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+}
+
+type DeleteSyncCompareTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+}
+
+func (r *DeleteSyncCompareTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSyncCompareTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "CompareTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSyncCompareTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSyncCompareTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSyncCompareTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSyncCompareTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteSyncCompareTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSyncCompareTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3285,6 +3438,224 @@ func (r *DescribeSubscribeReturnableResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSyncCompareReportRequestParams struct {
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 校验任务 Id
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 校验不一致结果的 limit
+	DifferenceLimit *uint64 `json:"DifferenceLimit,omitnil,omitempty" name:"DifferenceLimit"`
+
+	// 不一致的 Offset
+	DifferenceOffset *uint64 `json:"DifferenceOffset,omitnil,omitempty" name:"DifferenceOffset"`
+
+	// 搜索条件，不一致的库名
+	DifferenceDB *string `json:"DifferenceDB,omitnil,omitempty" name:"DifferenceDB"`
+
+	// 搜索条件，不一致的表名
+	DifferenceTable *string `json:"DifferenceTable,omitnil,omitempty" name:"DifferenceTable"`
+
+	// 未校验的 Limit
+	SkippedLimit *uint64 `json:"SkippedLimit,omitnil,omitempty" name:"SkippedLimit"`
+
+	// 未校验的 Offset
+	SkippedOffset *uint64 `json:"SkippedOffset,omitnil,omitempty" name:"SkippedOffset"`
+
+	// 搜索条件，未校验的库名
+	SkippedDB *string `json:"SkippedDB,omitnil,omitempty" name:"SkippedDB"`
+
+	// 搜索条件，未校验的表名
+	SkippedTable *string `json:"SkippedTable,omitnil,omitempty" name:"SkippedTable"`
+}
+
+type DescribeSyncCompareReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 校验任务 Id
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 校验不一致结果的 limit
+	DifferenceLimit *uint64 `json:"DifferenceLimit,omitnil,omitempty" name:"DifferenceLimit"`
+
+	// 不一致的 Offset
+	DifferenceOffset *uint64 `json:"DifferenceOffset,omitnil,omitempty" name:"DifferenceOffset"`
+
+	// 搜索条件，不一致的库名
+	DifferenceDB *string `json:"DifferenceDB,omitnil,omitempty" name:"DifferenceDB"`
+
+	// 搜索条件，不一致的表名
+	DifferenceTable *string `json:"DifferenceTable,omitnil,omitempty" name:"DifferenceTable"`
+
+	// 未校验的 Limit
+	SkippedLimit *uint64 `json:"SkippedLimit,omitnil,omitempty" name:"SkippedLimit"`
+
+	// 未校验的 Offset
+	SkippedOffset *uint64 `json:"SkippedOffset,omitnil,omitempty" name:"SkippedOffset"`
+
+	// 搜索条件，未校验的库名
+	SkippedDB *string `json:"SkippedDB,omitnil,omitempty" name:"SkippedDB"`
+
+	// 搜索条件，未校验的表名
+	SkippedTable *string `json:"SkippedTable,omitnil,omitempty" name:"SkippedTable"`
+}
+
+func (r *DescribeSyncCompareReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSyncCompareReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "CompareTaskId")
+	delete(f, "DifferenceLimit")
+	delete(f, "DifferenceOffset")
+	delete(f, "DifferenceDB")
+	delete(f, "DifferenceTable")
+	delete(f, "SkippedLimit")
+	delete(f, "SkippedOffset")
+	delete(f, "SkippedDB")
+	delete(f, "SkippedTable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSyncCompareReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSyncCompareReportResponseParams struct {
+	// 一致性校验摘要信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Abstract *CompareAbstractInfo `json:"Abstract,omitnil,omitempty" name:"Abstract"`
+
+	// 一致性校验详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail *CompareDetailInfo `json:"Detail,omitnil,omitempty" name:"Detail"`
+
+	// 增量校验阶段的摘要
+	IncAbstract *IncCompareAbstractInfo `json:"IncAbstract,omitnil,omitempty" name:"IncAbstract"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSyncCompareReportResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSyncCompareReportResponseParams `json:"Response"`
+}
+
+func (r *DescribeSyncCompareReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSyncCompareReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSyncCompareTasksRequestParams struct {
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 分页设置，表示每页显示多少条任务，默认为 20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 校验任务 ID
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type DescribeSyncCompareTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 分页设置，表示每页显示多少条任务，默认为 20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 校验任务 ID
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *DescribeSyncCompareTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSyncCompareTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "CompareTaskId")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSyncCompareTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSyncCompareTasksResponseParams struct {
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 一致性校验任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*CompareTaskItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSyncCompareTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSyncCompareTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeSyncCompareTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSyncCompareTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSyncJobsRequestParams struct {
 	// 同步任务id，如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -3990,6 +4361,23 @@ type GroupInfo struct {
 
 	// 每个消费者正在消费的分区
 	PartitionAssignment []*PartitionAssignment `json:"PartitionAssignment,omitnil,omitempty" name:"PartitionAssignment"`
+}
+
+type IncCompareAbstractInfo struct {
+	// 增量起始位点
+	StartPosition *string `json:"StartPosition,omitnil,omitempty" name:"StartPosition"`
+
+	// 增量当前位点
+	CurrentPosition *string `json:"CurrentPosition,omitnil,omitempty" name:"CurrentPosition"`
+
+	// 已校验行数
+	CheckedRecord *uint64 `json:"CheckedRecord,omitnil,omitempty" name:"CheckedRecord"`
+
+	// 不一致行数
+	DiffRecord *uint64 `json:"DiffRecord,omitnil,omitempty" name:"DiffRecord"`
+
+	// 不一致表的数量
+	DiffTable *uint64 `json:"DiffTable,omitnil,omitempty" name:"DiffTable"`
 }
 
 // Predefined struct for user
@@ -5230,6 +5618,163 @@ func (r *ModifySubscribeObjectsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifySubscribeObjectsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySyncCompareTaskNameRequestParams struct {
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 一致性校验任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+}
+
+type ModifySyncCompareTaskNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 一致性校验任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+}
+
+func (r *ModifySyncCompareTaskNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySyncCompareTaskNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "CompareTaskId")
+	delete(f, "TaskName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySyncCompareTaskNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySyncCompareTaskNameResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySyncCompareTaskNameResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySyncCompareTaskNameResponseParams `json:"Response"`
+}
+
+func (r *ModifySyncCompareTaskNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySyncCompareTaskNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySyncCompareTaskRequestParams struct {
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)、custom(自定义)，注意自定义对比对象必须是迁移对象的子集
+	ObjectMode *string `json:"ObjectMode,omitnil,omitempty" name:"ObjectMode"`
+
+	// 对比对象，若CompareObjectMode取值为custom，则此项必填
+	Objects *CompareObject `json:"Objects,omitnil,omitempty" name:"Objects"`
+
+	// 一致性校验选项
+	Options *CompareOptions `json:"Options,omitnil,omitempty" name:"Options"`
+}
+
+type ModifySyncCompareTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)、custom(自定义)，注意自定义对比对象必须是迁移对象的子集
+	ObjectMode *string `json:"ObjectMode,omitnil,omitempty" name:"ObjectMode"`
+
+	// 对比对象，若CompareObjectMode取值为custom，则此项必填
+	Objects *CompareObject `json:"Objects,omitnil,omitempty" name:"Objects"`
+
+	// 一致性校验选项
+	Options *CompareOptions `json:"Options,omitnil,omitempty" name:"Options"`
+}
+
+func (r *ModifySyncCompareTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySyncCompareTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "CompareTaskId")
+	delete(f, "TaskName")
+	delete(f, "ObjectMode")
+	delete(f, "Objects")
+	delete(f, "Options")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySyncCompareTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySyncCompareTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySyncCompareTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySyncCompareTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifySyncCompareTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySyncCompareTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6638,6 +7183,67 @@ func (r *StartSubscribeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type StartSyncCompareRequestParams struct {
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+}
+
+type StartSyncCompareRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+}
+
+func (r *StartSyncCompareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartSyncCompareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "CompareTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartSyncCompareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartSyncCompareResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartSyncCompareResponse struct {
+	*tchttp.BaseResponse
+	Response *StartSyncCompareResponseParams `json:"Response"`
+}
+
+func (r *StartSyncCompareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartSyncCompareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StartSyncJobRequestParams struct {
 	// 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -6884,6 +7490,74 @@ func (r *StopMigrateJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopMigrateJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopSyncCompareRequestParams struct {
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 是否强制停止。如果填true，迁移任务增量阶段会跳过一致性校验产生的binlog，达到快速恢复任务的效果
+	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
+}
+
+type StopSyncCompareRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 对比任务 ID，形如：sync-8yv4w2i1-cmp-37skmii9
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 是否强制停止。如果填true，迁移任务增量阶段会跳过一致性校验产生的binlog，达到快速恢复任务的效果
+	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
+}
+
+func (r *StopSyncCompareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopSyncCompareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "CompareTaskId")
+	delete(f, "ForceStop")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopSyncCompareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopSyncCompareResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopSyncCompareResponse struct {
+	*tchttp.BaseResponse
+	Response *StopSyncCompareResponseParams `json:"Response"`
+}
+
+func (r *StopSyncCompareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopSyncCompareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

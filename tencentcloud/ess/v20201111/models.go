@@ -13549,6 +13549,8 @@ type DescribeOrganizationGroupOrganizationsRequestParams struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询成员企业的企业名，模糊匹配
+	//
+	// Deprecated: Name is deprecated.
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 成员企业加入集团的当前状态

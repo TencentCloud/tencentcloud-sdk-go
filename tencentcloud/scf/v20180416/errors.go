@@ -635,6 +635,9 @@ const (
 	// PluginConfig 参数异常。
 	INVALIDPARAMETERVALUE_PLUGINCONFIG = "InvalidParameterValue.PluginConfig"
 
+	// 端口号不符合规范，请参考文档修正之后重试。
+	INVALIDPARAMETERVALUE_PORT = "InvalidParameterValue.Port"
+
 	// ProtocolType参数传入错误。
 	INVALIDPARAMETERVALUE_PROTOCOLTYPE = "InvalidParameterValue.ProtocolType"
 
@@ -658,6 +661,9 @@ const (
 
 	// 查询版本详情，版本参数传入错误。
 	INVALIDPARAMETERVALUE_QUERYVERSION = "InvalidParameterValue.QueryVersion"
+
+	// 就绪探测参数错误，请根据文档或者错误提示修正之后重试。
+	INVALIDPARAMETERVALUE_READINESSPROBE = "InvalidParameterValue.ReadinessProbe"
 
 	// 企业版镜像实例ID[RegistryId]传值错误。
 	INVALIDPARAMETERVALUE_REGISTRYID = "InvalidParameterValue.RegistryId"
