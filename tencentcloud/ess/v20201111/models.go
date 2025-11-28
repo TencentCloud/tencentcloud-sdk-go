@@ -1060,6 +1060,9 @@ type CcInfo struct {
 }
 
 type ComparisonDetail struct {
+	// 合同对比差异点唯一ID。
+	ComparisonPointId *string `json:"ComparisonPointId,omitnil,omitempty" name:"ComparisonPointId"`
+
 	// 对比前后差异类型，具体如下：
 	// <ul><li> **add**：新增</li>
 	// <li> **change**：变更</li>
@@ -14964,10 +14967,7 @@ type FillApproverInfo struct {
 	// <br/>当ApproverSource为WEWORKAPP的企微或签场景下，必须指企业自有应用获取企业微信的UserId
 	CustomUserId *string `json:"CustomUserId,omitnil,omitempty" name:"CustomUserId"`
 
-	// 补充企业签署人员工姓名
-	// <ul>
-	// <li>ApproverSource!=WEWORKAPP时，必传</li>
-	// </ul>
+	// 企业签署人的员工姓名。除企业微信应用场景（ApproverSource设置为WEWORKAPP）外，本字段为必填。
 	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
 
 	// 补充企业签署人员工手机号

@@ -5909,6 +5909,72 @@ func (c *Client) DescribeTranscodeTemplatesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeUsageDataRequest() (request *DescribeUsageDataRequest) {
+    request = &DescribeUsageDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeUsageData")
+    
+    
+    return
+}
+
+func NewDescribeUsageDataResponse() (response *DescribeUsageDataResponse) {
+    response = &DescribeUsageDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUsageData
+// 该接口返回查询时间范围内每天使用的媒体处理用量信息。
+//
+//    1. 可以查询最近365天内的媒体处理统计数据。
+//
+//    2. 查询时间跨度不超过90天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetWorkError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SERVICE = "InvalidParameterValue.Service"
+func (c *Client) DescribeUsageData(request *DescribeUsageDataRequest) (response *DescribeUsageDataResponse, err error) {
+    return c.DescribeUsageDataWithContext(context.Background(), request)
+}
+
+// DescribeUsageData
+// 该接口返回查询时间范围内每天使用的媒体处理用量信息。
+//
+//    1. 可以查询最近365天内的媒体处理统计数据。
+//
+//    2. 查询时间跨度不超过90天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetWorkError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SERVICE = "InvalidParameterValue.Service"
+func (c *Client) DescribeUsageDataWithContext(ctx context.Context, request *DescribeUsageDataRequest) (response *DescribeUsageDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsageDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeUsageData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsageData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUsageDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVideoDatabaseEntryTaskDetailRequest() (request *DescribeVideoDatabaseEntryTaskDetailRequest) {
     request = &DescribeVideoDatabaseEntryTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

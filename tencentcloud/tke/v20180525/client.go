@@ -497,6 +497,78 @@ func (c *Client) CancelClusterReleaseWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCancelUpgradePlanRequest() (request *CancelUpgradePlanRequest) {
+    request = &CancelUpgradePlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CancelUpgradePlan")
+    
+    
+    return
+}
+
+func NewCancelUpgradePlanResponse() (response *CancelUpgradePlanResponse) {
+    response = &CancelUpgradePlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelUpgradePlan
+// 取消升级计划
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CancelUpgradePlan(request *CancelUpgradePlanRequest) (response *CancelUpgradePlanResponse, err error) {
+    return c.CancelUpgradePlanWithContext(context.Background(), request)
+}
+
+// CancelUpgradePlan
+// 取消升级计划
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CancelUpgradePlanWithContext(ctx context.Context, request *CancelUpgradePlanRequest) (response *CancelUpgradePlanResponse, err error) {
+    if request == nil {
+        request = NewCancelUpgradePlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CancelUpgradePlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelUpgradePlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelUpgradePlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckEdgeClusterCIDRRequest() (request *CheckEdgeClusterCIDRRequest) {
     request = &CheckEdgeClusterCIDRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1317,6 +1389,136 @@ func (c *Client) CreateClusterInstancesWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewCreateClusterInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateClusterMaintenanceWindowAndExclusionsRequest() (request *CreateClusterMaintenanceWindowAndExclusionsRequest) {
+    request = &CreateClusterMaintenanceWindowAndExclusionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CreateClusterMaintenanceWindowAndExclusions")
+    
+    
+    return
+}
+
+func NewCreateClusterMaintenanceWindowAndExclusionsResponse() (response *CreateClusterMaintenanceWindowAndExclusionsResponse) {
+    response = &CreateClusterMaintenanceWindowAndExclusionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateClusterMaintenanceWindowAndExclusions
+// 创建集群维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTCOMMON = "FailedOperation.AccountCommon"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_NETWORKSCALEERROR = "FailedOperation.NetworkScaleError"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  FAILEDOPERATION_QUOTAMAXNODLIMIT = "FailedOperation.QuotaMaxNodLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTCOMMON = "InternalError.AccountCommon"
+//  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
+//  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_COMPONENTCLINETHTTP = "InternalError.ComponentClinetHttp"
+//  INTERNALERROR_CVMCOMMON = "InternalError.CvmCommon"
+//  INTERNALERROR_CVMNOTFOUND = "InternalError.CvmNotFound"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_IMAGEIDNOTFOUND = "InternalError.ImageIdNotFound"
+//  INTERNALERROR_OSNOTSUPPORT = "InternalError.OsNotSupport"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_QUOTAMAXCLSLIMIT = "InternalError.QuotaMaxClsLimit"
+//  INTERNALERROR_QUOTAMAXNODLIMIT = "InternalError.QuotaMaxNodLimit"
+//  INTERNALERROR_QUOTAMAXRTLIMIT = "InternalError.QuotaMaxRtLimit"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INTERNALERROR_VPCCOMMON = "InternalError.VpcCommon"
+//  INTERNALERROR_VPCPEERNOTFOUND = "InternalError.VpcPeerNotFound"
+//  INTERNALERROR_VPCRECODRNOTFOUND = "InternalError.VpcRecodrNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_VERSIONNOTSUPPORTCGROUPV2 = "InvalidParameter.VersionNotSupportCgroupV2"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateClusterMaintenanceWindowAndExclusions(request *CreateClusterMaintenanceWindowAndExclusionsRequest) (response *CreateClusterMaintenanceWindowAndExclusionsResponse, err error) {
+    return c.CreateClusterMaintenanceWindowAndExclusionsWithContext(context.Background(), request)
+}
+
+// CreateClusterMaintenanceWindowAndExclusions
+// 创建集群维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTCOMMON = "FailedOperation.AccountCommon"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_NETWORKSCALEERROR = "FailedOperation.NetworkScaleError"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  FAILEDOPERATION_QUOTAMAXNODLIMIT = "FailedOperation.QuotaMaxNodLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTCOMMON = "InternalError.AccountCommon"
+//  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
+//  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_COMPONENTCLINETHTTP = "InternalError.ComponentClinetHttp"
+//  INTERNALERROR_CVMCOMMON = "InternalError.CvmCommon"
+//  INTERNALERROR_CVMNOTFOUND = "InternalError.CvmNotFound"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_IMAGEIDNOTFOUND = "InternalError.ImageIdNotFound"
+//  INTERNALERROR_OSNOTSUPPORT = "InternalError.OsNotSupport"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_QUOTAMAXCLSLIMIT = "InternalError.QuotaMaxClsLimit"
+//  INTERNALERROR_QUOTAMAXNODLIMIT = "InternalError.QuotaMaxNodLimit"
+//  INTERNALERROR_QUOTAMAXRTLIMIT = "InternalError.QuotaMaxRtLimit"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INTERNALERROR_VPCCOMMON = "InternalError.VpcCommon"
+//  INTERNALERROR_VPCPEERNOTFOUND = "InternalError.VpcPeerNotFound"
+//  INTERNALERROR_VPCRECODRNOTFOUND = "InternalError.VpcRecodrNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_VERSIONNOTSUPPORTCGROUPV2 = "InvalidParameter.VersionNotSupportCgroupV2"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateClusterMaintenanceWindowAndExclusionsWithContext(ctx context.Context, request *CreateClusterMaintenanceWindowAndExclusionsRequest) (response *CreateClusterMaintenanceWindowAndExclusionsResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterMaintenanceWindowAndExclusionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateClusterMaintenanceWindowAndExclusions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateClusterMaintenanceWindowAndExclusions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateClusterMaintenanceWindowAndExclusionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2161,6 +2363,80 @@ func (c *Client) CreateEksLogConfigWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateGlobalMaintenanceWindowAndExclusionsRequest() (request *CreateGlobalMaintenanceWindowAndExclusionsRequest) {
+    request = &CreateGlobalMaintenanceWindowAndExclusionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CreateGlobalMaintenanceWindowAndExclusions")
+    
+    
+    return
+}
+
+func NewCreateGlobalMaintenanceWindowAndExclusionsResponse() (response *CreateGlobalMaintenanceWindowAndExclusionsResponse) {
+    response = &CreateGlobalMaintenanceWindowAndExclusionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGlobalMaintenanceWindowAndExclusions
+// 创建全局维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_CREATECLSTOPIC = "FailedOperation.CreateClsTopic"
+//  FAILEDOPERATION_GETCLSTOPIC = "FailedOperation.GetClsTopic"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateGlobalMaintenanceWindowAndExclusions(request *CreateGlobalMaintenanceWindowAndExclusionsRequest) (response *CreateGlobalMaintenanceWindowAndExclusionsResponse, err error) {
+    return c.CreateGlobalMaintenanceWindowAndExclusionsWithContext(context.Background(), request)
+}
+
+// CreateGlobalMaintenanceWindowAndExclusions
+// 创建全局维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_CREATECLSTOPIC = "FailedOperation.CreateClsTopic"
+//  FAILEDOPERATION_GETCLSTOPIC = "FailedOperation.GetClsTopic"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateGlobalMaintenanceWindowAndExclusionsWithContext(ctx context.Context, request *CreateGlobalMaintenanceWindowAndExclusionsRequest) (response *CreateGlobalMaintenanceWindowAndExclusionsResponse, err error) {
+    if request == nil {
+        request = NewCreateGlobalMaintenanceWindowAndExclusionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateGlobalMaintenanceWindowAndExclusions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlobalMaintenanceWindowAndExclusions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlobalMaintenanceWindowAndExclusionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageCacheRequest() (request *CreateImageCacheRequest) {
     request = &CreateImageCacheRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2841,6 +3117,68 @@ func (c *Client) CreateReservedInstancesWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateRollOutSequenceRequest() (request *CreateRollOutSequenceRequest) {
+    request = &CreateRollOutSequenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CreateRollOutSequence")
+    
+    
+    return
+}
+
+func NewCreateRollOutSequenceResponse() (response *CreateRollOutSequenceResponse) {
+    response = &CreateRollOutSequenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRollOutSequence
+// 创建集群发布序列
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
+//  INTERNALERROR_NOPAYMENTACCESS = "InternalError.NoPaymentAccess"
+//  INTERNALERROR_NOTVERIFIED = "InternalError.NotVerified"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) CreateRollOutSequence(request *CreateRollOutSequenceRequest) (response *CreateRollOutSequenceResponse, err error) {
+    return c.CreateRollOutSequenceWithContext(context.Background(), request)
+}
+
+// CreateRollOutSequence
+// 创建集群发布序列
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
+//  INTERNALERROR_NOPAYMENTACCESS = "InternalError.NoPaymentAccess"
+//  INTERNALERROR_NOTVERIFIED = "InternalError.NotVerified"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) CreateRollOutSequenceWithContext(ctx context.Context, request *CreateRollOutSequenceRequest) (response *CreateRollOutSequenceResponse, err error) {
+    if request == nil {
+        request = NewCreateRollOutSequenceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateRollOutSequence")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRollOutSequence require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRollOutSequenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTKEEdgeClusterRequest() (request *CreateTKEEdgeClusterRequest) {
     request = &CreateTKEEdgeClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3453,6 +3791,86 @@ func (c *Client) DeleteClusterInstancesWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDeleteClusterInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteClusterMaintenanceWindowAndExclusionRequest() (request *DeleteClusterMaintenanceWindowAndExclusionRequest) {
+    request = &DeleteClusterMaintenanceWindowAndExclusionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterMaintenanceWindowAndExclusion")
+    
+    
+    return
+}
+
+func NewDeleteClusterMaintenanceWindowAndExclusionResponse() (response *DeleteClusterMaintenanceWindowAndExclusionResponse) {
+    response = &DeleteClusterMaintenanceWindowAndExclusionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteClusterMaintenanceWindowAndExclusion
+// 删除集群维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASCOMMON = "FailedOperation.AsCommon"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_CVMDELETIONPROTECTION = "FailedOperation.CvmDeletionProtection"
+//  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
+//  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DeleteClusterMaintenanceWindowAndExclusion(request *DeleteClusterMaintenanceWindowAndExclusionRequest) (response *DeleteClusterMaintenanceWindowAndExclusionResponse, err error) {
+    return c.DeleteClusterMaintenanceWindowAndExclusionWithContext(context.Background(), request)
+}
+
+// DeleteClusterMaintenanceWindowAndExclusion
+// 删除集群维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASCOMMON = "FailedOperation.AsCommon"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_CVMDELETIONPROTECTION = "FailedOperation.CvmDeletionProtection"
+//  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
+//  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DeleteClusterMaintenanceWindowAndExclusionWithContext(ctx context.Context, request *DeleteClusterMaintenanceWindowAndExclusionRequest) (response *DeleteClusterMaintenanceWindowAndExclusionResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterMaintenanceWindowAndExclusionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteClusterMaintenanceWindowAndExclusion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteClusterMaintenanceWindowAndExclusion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteClusterMaintenanceWindowAndExclusionResponse()
     err = c.Send(request, response)
     return
 }
@@ -4107,6 +4525,78 @@ func (c *Client) DeleteEdgeClusterInstancesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteEdgeClusterInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGlobalMaintenanceWindowAndExclusionRequest() (request *DeleteGlobalMaintenanceWindowAndExclusionRequest) {
+    request = &DeleteGlobalMaintenanceWindowAndExclusionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteGlobalMaintenanceWindowAndExclusion")
+    
+    
+    return
+}
+
+func NewDeleteGlobalMaintenanceWindowAndExclusionResponse() (response *DeleteGlobalMaintenanceWindowAndExclusionResponse) {
+    response = &DeleteGlobalMaintenanceWindowAndExclusionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGlobalMaintenanceWindowAndExclusion
+// 删除全集维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteGlobalMaintenanceWindowAndExclusion(request *DeleteGlobalMaintenanceWindowAndExclusionRequest) (response *DeleteGlobalMaintenanceWindowAndExclusionResponse, err error) {
+    return c.DeleteGlobalMaintenanceWindowAndExclusionWithContext(context.Background(), request)
+}
+
+// DeleteGlobalMaintenanceWindowAndExclusion
+// 删除全集维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteGlobalMaintenanceWindowAndExclusionWithContext(ctx context.Context, request *DeleteGlobalMaintenanceWindowAndExclusionRequest) (response *DeleteGlobalMaintenanceWindowAndExclusionResponse, err error) {
+    if request == nil {
+        request = NewDeleteGlobalMaintenanceWindowAndExclusionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteGlobalMaintenanceWindowAndExclusion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGlobalMaintenanceWindowAndExclusion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGlobalMaintenanceWindowAndExclusionResponse()
     err = c.Send(request, response)
     return
 }
@@ -4851,6 +5341,64 @@ func (c *Client) DeleteReservedInstancesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteReservedInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRollOutSequenceRequest() (request *DeleteRollOutSequenceRequest) {
+    request = &DeleteRollOutSequenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteRollOutSequence")
+    
+    
+    return
+}
+
+func NewDeleteRollOutSequenceResponse() (response *DeleteRollOutSequenceResponse) {
+    response = &DeleteRollOutSequenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRollOutSequence
+// 删除集群发布序列
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DeleteRollOutSequence(request *DeleteRollOutSequenceRequest) (response *DeleteRollOutSequenceResponse, err error) {
+    return c.DeleteRollOutSequenceWithContext(context.Background(), request)
+}
+
+// DeleteRollOutSequence
+// 删除集群发布序列
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DeleteRollOutSequenceWithContext(ctx context.Context, request *DeleteRollOutSequenceRequest) (response *DeleteRollOutSequenceResponse, err error) {
+    if request == nil {
+        request = NewDeleteRollOutSequenceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteRollOutSequence")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRollOutSequence require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRollOutSequenceResponse()
     err = c.Send(request, response)
     return
 }
@@ -6313,6 +6861,62 @@ func (c *Client) DescribeClusterLevelChangeRecordsWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeClusterMaintenanceWindowAndExclusionsRequest() (request *DescribeClusterMaintenanceWindowAndExclusionsRequest) {
+    request = &DescribeClusterMaintenanceWindowAndExclusionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterMaintenanceWindowAndExclusions")
+    
+    
+    return
+}
+
+func NewDescribeClusterMaintenanceWindowAndExclusionsResponse() (response *DescribeClusterMaintenanceWindowAndExclusionsResponse) {
+    response = &DescribeClusterMaintenanceWindowAndExclusionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterMaintenanceWindowAndExclusions
+// 获取集群维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeClusterMaintenanceWindowAndExclusions(request *DescribeClusterMaintenanceWindowAndExclusionsRequest) (response *DescribeClusterMaintenanceWindowAndExclusionsResponse, err error) {
+    return c.DescribeClusterMaintenanceWindowAndExclusionsWithContext(context.Background(), request)
+}
+
+// DescribeClusterMaintenanceWindowAndExclusions
+// 获取集群维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeClusterMaintenanceWindowAndExclusionsWithContext(ctx context.Context, request *DescribeClusterMaintenanceWindowAndExclusionsRequest) (response *DescribeClusterMaintenanceWindowAndExclusionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterMaintenanceWindowAndExclusionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterMaintenanceWindowAndExclusions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterMaintenanceWindowAndExclusions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterMaintenanceWindowAndExclusionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterNodePoolDetailRequest() (request *DescribeClusterNodePoolDetailRequest) {
     request = &DescribeClusterNodePoolDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6731,6 +7335,82 @@ func (c *Client) DescribeClusterReleasesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeClusterReleasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterRollOutSequenceTagsRequest() (request *DescribeClusterRollOutSequenceTagsRequest) {
+    request = &DescribeClusterRollOutSequenceTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterRollOutSequenceTags")
+    
+    
+    return
+}
+
+func NewDescribeClusterRollOutSequenceTagsResponse() (response *DescribeClusterRollOutSequenceTagsResponse) {
+    response = &DescribeClusterRollOutSequenceTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterRollOutSequenceTags
+// 查询集群发布序列标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterRollOutSequenceTags(request *DescribeClusterRollOutSequenceTagsRequest) (response *DescribeClusterRollOutSequenceTagsResponse, err error) {
+    return c.DescribeClusterRollOutSequenceTagsWithContext(context.Background(), request)
+}
+
+// DescribeClusterRollOutSequenceTags
+// 查询集群发布序列标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterRollOutSequenceTagsWithContext(ctx context.Context, request *DescribeClusterRollOutSequenceTagsRequest) (response *DescribeClusterRollOutSequenceTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterRollOutSequenceTagsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterRollOutSequenceTags")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterRollOutSequenceTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterRollOutSequenceTagsResponse()
     err = c.Send(request, response)
     return
 }
@@ -8351,6 +9031,68 @@ func (c *Client) DescribeExternalNodeSupportConfigWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewDescribeExternalNodeSupportConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGlobalMaintenanceWindowAndExclusionsRequest() (request *DescribeGlobalMaintenanceWindowAndExclusionsRequest) {
+    request = &DescribeGlobalMaintenanceWindowAndExclusionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeGlobalMaintenanceWindowAndExclusions")
+    
+    
+    return
+}
+
+func NewDescribeGlobalMaintenanceWindowAndExclusionsResponse() (response *DescribeGlobalMaintenanceWindowAndExclusionsResponse) {
+    response = &DescribeGlobalMaintenanceWindowAndExclusionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGlobalMaintenanceWindowAndExclusions
+// 获取全局维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+func (c *Client) DescribeGlobalMaintenanceWindowAndExclusions(request *DescribeGlobalMaintenanceWindowAndExclusionsRequest) (response *DescribeGlobalMaintenanceWindowAndExclusionsResponse, err error) {
+    return c.DescribeGlobalMaintenanceWindowAndExclusionsWithContext(context.Background(), request)
+}
+
+// DescribeGlobalMaintenanceWindowAndExclusions
+// 获取全局维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+func (c *Client) DescribeGlobalMaintenanceWindowAndExclusionsWithContext(ctx context.Context, request *DescribeGlobalMaintenanceWindowAndExclusionsRequest) (response *DescribeGlobalMaintenanceWindowAndExclusionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGlobalMaintenanceWindowAndExclusionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeGlobalMaintenanceWindowAndExclusions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGlobalMaintenanceWindowAndExclusions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGlobalMaintenanceWindowAndExclusionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -10617,6 +11359,68 @@ func (c *Client) DescribeResourceUsageWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeRollOutSequencesRequest() (request *DescribeRollOutSequencesRequest) {
+    request = &DescribeRollOutSequencesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeRollOutSequences")
+    
+    
+    return
+}
+
+func NewDescribeRollOutSequencesResponse() (response *DescribeRollOutSequencesResponse) {
+    response = &DescribeRollOutSequencesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRollOutSequences
+// 查询集群发布序列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeRollOutSequences(request *DescribeRollOutSequencesRequest) (response *DescribeRollOutSequencesResponse, err error) {
+    return c.DescribeRollOutSequencesWithContext(context.Background(), request)
+}
+
+// DescribeRollOutSequences
+// 查询集群发布序列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeRollOutSequencesWithContext(ctx context.Context, request *DescribeRollOutSequencesRequest) (response *DescribeRollOutSequencesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRollOutSequencesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeRollOutSequences")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRollOutSequences require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRollOutSequencesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRouteTableConflictsRequest() (request *DescribeRouteTableConflictsRequest) {
     request = &DescribeRouteTableConflictsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11149,6 +11953,110 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUpgradeTaskDetailRequest() (request *DescribeUpgradeTaskDetailRequest) {
+    request = &DescribeUpgradeTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeUpgradeTaskDetail")
+    
+    
+    return
+}
+
+func NewDescribeUpgradeTaskDetailResponse() (response *DescribeUpgradeTaskDetailResponse) {
+    response = &DescribeUpgradeTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUpgradeTaskDetail
+// 查询计划升级任务详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeUpgradeTaskDetail(request *DescribeUpgradeTaskDetailRequest) (response *DescribeUpgradeTaskDetailResponse, err error) {
+    return c.DescribeUpgradeTaskDetailWithContext(context.Background(), request)
+}
+
+// DescribeUpgradeTaskDetail
+// 查询计划升级任务详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeUpgradeTaskDetailWithContext(ctx context.Context, request *DescribeUpgradeTaskDetailRequest) (response *DescribeUpgradeTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeUpgradeTaskDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeUpgradeTaskDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUpgradeTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUpgradeTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUpgradeTasksRequest() (request *DescribeUpgradeTasksRequest) {
+    request = &DescribeUpgradeTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeUpgradeTasks")
+    
+    
+    return
+}
+
+func NewDescribeUpgradeTasksResponse() (response *DescribeUpgradeTasksResponse) {
+    response = &DescribeUpgradeTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUpgradeTasks
+// 查询计划升级任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeUpgradeTasks(request *DescribeUpgradeTasksRequest) (response *DescribeUpgradeTasksResponse, err error) {
+    return c.DescribeUpgradeTasksWithContext(context.Background(), request)
+}
+
+// DescribeUpgradeTasks
+// 查询计划升级任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeUpgradeTasksWithContext(ctx context.Context, request *DescribeUpgradeTasksRequest) (response *DescribeUpgradeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeUpgradeTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeUpgradeTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUpgradeTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUpgradeTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -13177,6 +14085,80 @@ func (c *Client) ModifyClusterImageWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyClusterMaintenanceWindowAndExclusionsRequest() (request *ModifyClusterMaintenanceWindowAndExclusionsRequest) {
+    request = &ModifyClusterMaintenanceWindowAndExclusionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterMaintenanceWindowAndExclusions")
+    
+    
+    return
+}
+
+func NewModifyClusterMaintenanceWindowAndExclusionsResponse() (response *ModifyClusterMaintenanceWindowAndExclusionsResponse) {
+    response = &ModifyClusterMaintenanceWindowAndExclusionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterMaintenanceWindowAndExclusions
+// 更新集群维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CVMCOMMON = "InternalError.CvmCommon"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_IMAGEIDNOTFOUND = "InternalError.ImageIdNotFound"
+//  INTERNALERROR_OSNOTSUPPORT = "InternalError.OsNotSupport"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_VERSIONNOTSUPPORTCGROUPV2 = "InvalidParameter.VersionNotSupportCgroupV2"
+func (c *Client) ModifyClusterMaintenanceWindowAndExclusions(request *ModifyClusterMaintenanceWindowAndExclusionsRequest) (response *ModifyClusterMaintenanceWindowAndExclusionsResponse, err error) {
+    return c.ModifyClusterMaintenanceWindowAndExclusionsWithContext(context.Background(), request)
+}
+
+// ModifyClusterMaintenanceWindowAndExclusions
+// 更新集群维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CVMCOMMON = "InternalError.CvmCommon"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_IMAGEIDNOTFOUND = "InternalError.ImageIdNotFound"
+//  INTERNALERROR_OSNOTSUPPORT = "InternalError.OsNotSupport"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_VERSIONNOTSUPPORTCGROUPV2 = "InvalidParameter.VersionNotSupportCgroupV2"
+func (c *Client) ModifyClusterMaintenanceWindowAndExclusionsWithContext(ctx context.Context, request *ModifyClusterMaintenanceWindowAndExclusionsRequest) (response *ModifyClusterMaintenanceWindowAndExclusionsResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterMaintenanceWindowAndExclusionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterMaintenanceWindowAndExclusions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterMaintenanceWindowAndExclusions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterMaintenanceWindowAndExclusionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterNodePoolRequest() (request *ModifyClusterNodePoolRequest) {
     request = &ModifyClusterNodePoolRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13241,6 +14223,74 @@ func (c *Client) ModifyClusterNodePoolWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyClusterNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterRollOutSequenceTagsRequest() (request *ModifyClusterRollOutSequenceTagsRequest) {
+    request = &ModifyClusterRollOutSequenceTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterRollOutSequenceTags")
+    
+    
+    return
+}
+
+func NewModifyClusterRollOutSequenceTagsResponse() (response *ModifyClusterRollOutSequenceTagsResponse) {
+    response = &ModifyClusterRollOutSequenceTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterRollOutSequenceTags
+// 更新集群发布序列标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ASASGNOTEXIST = "ResourceNotFound.AsAsgNotExist"
+//  UNSUPPORTEDOPERATION_CAENABLEFAILED = "UnsupportedOperation.CaEnableFailed"
+func (c *Client) ModifyClusterRollOutSequenceTags(request *ModifyClusterRollOutSequenceTagsRequest) (response *ModifyClusterRollOutSequenceTagsResponse, err error) {
+    return c.ModifyClusterRollOutSequenceTagsWithContext(context.Background(), request)
+}
+
+// ModifyClusterRollOutSequenceTags
+// 更新集群发布序列标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ASASGNOTEXIST = "ResourceNotFound.AsAsgNotExist"
+//  UNSUPPORTEDOPERATION_CAENABLEFAILED = "UnsupportedOperation.CaEnableFailed"
+func (c *Client) ModifyClusterRollOutSequenceTagsWithContext(ctx context.Context, request *ModifyClusterRollOutSequenceTagsRequest) (response *ModifyClusterRollOutSequenceTagsResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterRollOutSequenceTagsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterRollOutSequenceTags")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterRollOutSequenceTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterRollOutSequenceTagsResponse()
     err = c.Send(request, response)
     return
 }
@@ -13425,6 +14475,64 @@ func (c *Client) ModifyClusterVirtualNodePoolWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewModifyClusterVirtualNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGlobalMaintenanceWindowAndExclusionsRequest() (request *ModifyGlobalMaintenanceWindowAndExclusionsRequest) {
+    request = &ModifyGlobalMaintenanceWindowAndExclusionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyGlobalMaintenanceWindowAndExclusions")
+    
+    
+    return
+}
+
+func NewModifyGlobalMaintenanceWindowAndExclusionsResponse() (response *ModifyGlobalMaintenanceWindowAndExclusionsResponse) {
+    response = &ModifyGlobalMaintenanceWindowAndExclusionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGlobalMaintenanceWindowAndExclusions
+// 更新全局维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
+func (c *Client) ModifyGlobalMaintenanceWindowAndExclusions(request *ModifyGlobalMaintenanceWindowAndExclusionsRequest) (response *ModifyGlobalMaintenanceWindowAndExclusionsResponse, err error) {
+    return c.ModifyGlobalMaintenanceWindowAndExclusionsWithContext(context.Background(), request)
+}
+
+// ModifyGlobalMaintenanceWindowAndExclusions
+// 更新全局维护时间窗口和排除项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
+func (c *Client) ModifyGlobalMaintenanceWindowAndExclusionsWithContext(ctx context.Context, request *ModifyGlobalMaintenanceWindowAndExclusionsRequest) (response *ModifyGlobalMaintenanceWindowAndExclusionsResponse, err error) {
+    if request == nil {
+        request = NewModifyGlobalMaintenanceWindowAndExclusionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyGlobalMaintenanceWindowAndExclusions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGlobalMaintenanceWindowAndExclusions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGlobalMaintenanceWindowAndExclusionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -14269,6 +15377,62 @@ func (c *Client) ModifyReservedInstanceScopeWithContext(ctx context.Context, req
     return
 }
 
+func NewModifyRollOutSequenceRequest() (request *ModifyRollOutSequenceRequest) {
+    request = &ModifyRollOutSequenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyRollOutSequence")
+    
+    
+    return
+}
+
+func NewModifyRollOutSequenceResponse() (response *ModifyRollOutSequenceResponse) {
+    response = &ModifyRollOutSequenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRollOutSequence
+// 更新集群发布序列
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) ModifyRollOutSequence(request *ModifyRollOutSequenceRequest) (response *ModifyRollOutSequenceResponse, err error) {
+    return c.ModifyRollOutSequenceWithContext(context.Background(), request)
+}
+
+// ModifyRollOutSequence
+// 更新集群发布序列
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) ModifyRollOutSequenceWithContext(ctx context.Context, request *ModifyRollOutSequenceRequest) (response *ModifyRollOutSequenceResponse, err error) {
+    if request == nil {
+        request = NewModifyRollOutSequenceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyRollOutSequence")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRollOutSequence require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRollOutSequenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveNodeFromNodePoolRequest() (request *RemoveNodeFromNodePoolRequest) {
     request = &RemoveNodeFromNodePoolRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14755,6 +15919,60 @@ func (c *Client) SetNodePoolNodeProtectionWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewSetNodePoolNodeProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchClusterEndpointRequest() (request *SwitchClusterEndpointRequest) {
+    request = &SwitchClusterEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "SwitchClusterEndpoint")
+    
+    
+    return
+}
+
+func NewSwitchClusterEndpointResponse() (response *SwitchClusterEndpointResponse) {
+    response = &SwitchClusterEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SwitchClusterEndpoint
+// 切换集群网络访问链路为直连
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SWITCHCLUSTERENDPOINT = "FailedOperation.SwitchClusterEndpoint"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SwitchClusterEndpoint(request *SwitchClusterEndpointRequest) (response *SwitchClusterEndpointResponse, err error) {
+    return c.SwitchClusterEndpointWithContext(context.Background(), request)
+}
+
+// SwitchClusterEndpoint
+// 切换集群网络访问链路为直连
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SWITCHCLUSTERENDPOINT = "FailedOperation.SwitchClusterEndpoint"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SwitchClusterEndpointWithContext(ctx context.Context, request *SwitchClusterEndpointRequest) (response *SwitchClusterEndpointResponse, err error) {
+    if request == nil {
+        request = NewSwitchClusterEndpointRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "SwitchClusterEndpoint")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchClusterEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchClusterEndpointResponse()
     err = c.Send(request, response)
     return
 }

@@ -4767,7 +4767,7 @@ type DescribeLogsRequestParams struct {
 	// 操作日志：防火墙开关-开关操作operate_switch，防火墙开关-实例配置operate_instance，资产中心操作operate_assetgroup，访问控制操作operate_acl，零信任防护操作operate_identity，入侵防御操作-入侵防御operate_ids，入侵防御操作-安全基线operate_baseline，常用工具操作operate_tool，网络蜜罐操作operate_honeypot，日志投递操作operate_logdelivery，通用设置操作operate_logstorage，登录日志operate_login
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 每页条数，最大支持2000
+	// 每页条数，最大支持1000
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移值，最大支持60000
@@ -4793,7 +4793,7 @@ type DescribeLogsRequest struct {
 	// 操作日志：防火墙开关-开关操作operate_switch，防火墙开关-实例配置operate_instance，资产中心操作operate_assetgroup，访问控制操作operate_acl，零信任防护操作operate_identity，入侵防御操作-入侵防御operate_ids，入侵防御操作-安全基线operate_baseline，常用工具操作operate_tool，网络蜜罐操作operate_honeypot，日志投递操作operate_logdelivery，通用设置操作operate_logstorage，登录日志operate_login
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 每页条数，最大支持2000
+	// 每页条数，最大支持1000
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移值，最大支持60000

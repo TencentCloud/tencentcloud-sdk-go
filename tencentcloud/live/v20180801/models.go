@@ -9455,93 +9455,6 @@ func (r *DescribeLiveEnhanceInfoListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeLiveForbidStreamListRequestParams struct {
-	// 取得第几页，默认1。
-	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
-
-	// 每页大小，最大100。 
-	// 取值：1~100之前的任意整数。
-	// 默认值：10。
-	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-
-	// 按流名称查询。
-	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
-}
-
-type DescribeLiveForbidStreamListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 取得第几页，默认1。
-	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
-
-	// 每页大小，最大100。 
-	// 取值：1~100之前的任意整数。
-	// 默认值：10。
-	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-
-	// 按流名称查询。
-	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
-}
-
-func (r *DescribeLiveForbidStreamListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeLiveForbidStreamListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "PageNum")
-	delete(f, "PageSize")
-	delete(f, "StreamName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveForbidStreamListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeLiveForbidStreamListResponseParams struct {
-	// 符合条件的总个数。
-	TotalNum *int64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
-
-	// 总页数。
-	TotalPage *int64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
-
-	// 分页的页码。
-	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
-
-	// 每页显示的条数。
-	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-
-	// 禁推流列表。
-	ForbidStreamList []*ForbidStreamInfo `json:"ForbidStreamList,omitnil,omitempty" name:"ForbidStreamList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeLiveForbidStreamListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeLiveForbidStreamListResponseParams `json:"Response"`
-}
-
-func (r *DescribeLiveForbidStreamListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeLiveForbidStreamListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeLivePackageInfoRequestParams struct {
 	// 包类型，可选值：
 	// 0：流量包
@@ -14922,27 +14835,6 @@ func (r *ForbidLiveStreamResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ForbidLiveStreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type ForbidStreamInfo struct {
-	// 流名称。
-	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
-
-	// 创建时间。
-	// 注：此字段为北京时间（UTC+8时区）。
-	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
-
-	// 禁推过期时间。
-	// 注：此字段为北京时间（UTC+8时区）。
-	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
-
-	// 推流路径。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
-
-	// 推流域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 }
 
 type GroupProIspDataInfo struct {

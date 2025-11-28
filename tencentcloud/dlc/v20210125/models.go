@@ -10927,6 +10927,139 @@ func (r *DescribeTablesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTaskListRequestParams struct {
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
+	// task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
+	// task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
+	// task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
+	// task-operator- string （子uin过滤）
+	// task-kind - string （任务类型过滤）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc。
+	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 数据引擎名称，用于筛选
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// spark引擎资源组名称
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 引擎id列表
+	HouseIds []*string `json:"HouseIds,omitnil,omitempty" name:"HouseIds"`
+}
+
+type DescribeTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
+	// task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
+	// task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
+	// task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
+	// task-operator- string （子uin过滤）
+	// task-kind - string （任务类型过滤）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc。
+	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 数据引擎名称，用于筛选
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// spark引擎资源组名称
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 引擎id列表
+	HouseIds []*string `json:"HouseIds,omitnil,omitempty" name:"HouseIds"`
+}
+
+func (r *DescribeTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DataEngineName")
+	delete(f, "ResourceGroupName")
+	delete(f, "HouseIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskListResponseParams struct {
+	// 任务对象列表。
+	TaskList []*TaskFullRespInfo `json:"TaskList,omitnil,omitempty" name:"TaskList"`
+
+	// 实例总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTaskLogRequestParams struct {
 	// 列表返回的Id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -16044,6 +16177,11 @@ func (r *ReportHeartbeatMetaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResourceConf struct {
+	// 当为TCLake优化资源时，优化任务的并行度
+	Parallelism *int64 `json:"Parallelism,omitnil,omitempty" name:"Parallelism"`
+}
+
 type ResourceInfo struct {
 	// 归属类型
 	AttributionType *string `json:"AttributionType,omitnil,omitempty" name:"AttributionType"`
@@ -16066,6 +16204,9 @@ type ResourceInfo struct {
 
 	// 标准引擎资源组信息
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 资源配置信息
+	ResourceConf *ResourceConf `json:"ResourceConf,omitnil,omitempty" name:"ResourceConf"`
 }
 
 // Predefined struct for user
@@ -17272,6 +17413,241 @@ type Task struct {
 
 	// Spark SQL查询任务
 	SparkSQLTask *SQLTask `json:"SparkSQLTask,omitnil,omitempty" name:"SparkSQLTask"`
+}
+
+type TaskFullRespInfo struct {
+	// 任务所属Database的名称。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 任务数据量。
+	DataAmount *int64 `json:"DataAmount,omitnil,omitempty" name:"DataAmount"`
+
+	// 任务Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 计算耗时，单位： ms
+	UsedTime *int64 `json:"UsedTime,omitnil,omitempty" name:"UsedTime"`
+
+	// 任务输出路径。
+	OutputPath *string `json:"OutputPath,omitnil,omitempty" name:"OutputPath"`
+
+	// 任务创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 任务SQL类型，DDL|DML等
+	SQLType *string `json:"SQLType,omitnil,omitempty" name:"SQLType"`
+
+	// 任务SQL语句
+	SQL *string `json:"SQL,omitnil,omitempty" name:"SQL"`
+
+	// 结果是否过期。
+	ResultExpired *bool `json:"ResultExpired,omitnil,omitempty" name:"ResultExpired"`
+
+	// 数据影响统计信息。
+	RowAffectInfo *string `json:"RowAffectInfo,omitnil,omitempty" name:"RowAffectInfo"`
+
+	// 任务结果数据表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSet *string `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+
+	// 失败信息, 例如：errorMessage。该字段已废弃。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
+
+	// 任务执行进度num/100(%)
+	Percentage *int64 `json:"Percentage,omitnil,omitempty" name:"Percentage"`
+
+	// 任务执行输出信息。
+	OutputMessage *string `json:"OutputMessage,omitnil,omitempty" name:"OutputMessage"`
+
+	// 执行SQL的引擎类型
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务进度明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgressDetail *string `json:"ProgressDetail,omitnil,omitempty" name:"ProgressDetail"`
+
+	// 任务结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 计算资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 执行sql的子uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
+
+	// 计算资源名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 导入类型是本地导入还是cos
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
+
+	// 导入配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputConf *string `json:"InputConf,omitnil,omitempty" name:"InputConf"`
+
+	// 数据条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataNumber *int64 `json:"DataNumber,omitnil,omitempty" name:"DataNumber"`
+
+	// 查询数据能不能下载
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanDownload *bool `json:"CanDownload,omitnil,omitempty" name:"CanDownload"`
+
+	// 用户别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAlias *string `json:"UserAlias,omitnil,omitempty" name:"UserAlias"`
+
+	// spark应用作业名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkJobName *string `json:"SparkJobName,omitnil,omitempty" name:"SparkJobName"`
+
+	// spark应用作业Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkJobId *string `json:"SparkJobId,omitnil,omitempty" name:"SparkJobId"`
+
+	// spark应用入口jar文件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkJobFile *string `json:"SparkJobFile,omitnil,omitempty" name:"SparkJobFile"`
+
+	// spark ui url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UiUrl *string `json:"UiUrl,omitnil,omitempty" name:"UiUrl"`
+
+	// 任务耗时，单位： ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalTime *int64 `json:"TotalTime,omitnil,omitempty" name:"TotalTime"`
+
+	// spark app job执行task的程序入口参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CmdArgs *string `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
+
+	// 集群镜像大版本名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
+
+	// driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DriverSize *string `json:"DriverSize,omitnil,omitempty" name:"DriverSize"`
+
+	// executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorSize *string `json:"ExecutorSize,omitnil,omitempty" name:"ExecutorSize"`
+
+	// 指定executor数量，最小值为1，最大值小于集群规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorNums *uint64 `json:"ExecutorNums,omitnil,omitempty" name:"ExecutorNums"`
+
+	// 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitnil,omitempty" name:"ExecutorMaxNumbers"`
+
+	// 任务公共指标数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommonMetrics *CommonMetrics `json:"CommonMetrics,omitnil,omitempty" name:"CommonMetrics"`
+
+	// spark任务指标数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkMonitorMetrics *SparkMonitorMetrics `json:"SparkMonitorMetrics,omitnil,omitempty" name:"SparkMonitorMetrics"`
+
+	// presto任务指标数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrestoMonitorMetrics *PrestoMonitorMetrics `json:"PrestoMonitorMetrics,omitnil,omitempty" name:"PrestoMonitorMetrics"`
+
+	// 结果文件格式：默认为csv
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultFormat *string `json:"ResultFormat,omitnil,omitempty" name:"ResultFormat"`
+
+	// 引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil,omitempty" name:"EngineTypeDetail"`
+
+	// spark引擎资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 任务来源信息,如thirdPartyApi,dataExploration, sparkAppTask等
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 子渠道信息，一般由第三方调用定义
+	SourceExtra *string `json:"SourceExtra,omitnil,omitempty" name:"SourceExtra"`
+
+	// 创建人uin
+	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
+
+	// 创建人名字
+	CreatorAlias *string `json:"CreatorAlias,omitnil,omitempty" name:"CreatorAlias"`
+
+	// 引擎参数
+	CustomizedConf *string `json:"CustomizedConf,omitnil,omitempty" name:"CustomizedConf"`
+
+	// 单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和
+	// 示例值：4329
+	TaskTimeSum *int64 `json:"TaskTimeSum,omitnil,omitempty" name:"TaskTimeSum"`
+
+	// 引擎执行时间
+	StageStartTime *int64 `json:"StageStartTime,omitnil,omitempty" name:"StageStartTime"`
+
+	// 数据扫描条数
+	InputRecordsSum *int64 `json:"InputRecordsSum,omitnil,omitempty" name:"InputRecordsSum"`
+
+	// 健康状态
+	AnalysisStatusType *int64 `json:"AnalysisStatusType,omitnil,omitempty" name:"AnalysisStatusType"`
+
+	// 输出总行数
+	OutputRecordsSum *int64 `json:"OutputRecordsSum,omitnil,omitempty" name:"OutputRecordsSum"`
+
+	// 输出总大小
+	OutputBytesSum *int64 `json:"OutputBytesSum,omitnil,omitempty" name:"OutputBytesSum"`
+
+	// 输出文件个数
+	OutputFilesNum *int64 `json:"OutputFilesNum,omitnil,omitempty" name:"OutputFilesNum"`
+
+	// 输出小文件个数
+	OutputSmallFilesNum *int64 `json:"OutputSmallFilesNum,omitnil,omitempty" name:"OutputSmallFilesNum"`
+
+	// 数据shuffle行数
+	ShuffleReadRecordsSum *int64 `json:"ShuffleReadRecordsSum,omitnil,omitempty" name:"ShuffleReadRecordsSum"`
+
+	// 数据shuffle大小
+	ShuffleReadBytesSum *int64 `json:"ShuffleReadBytesSum,omitnil,omitempty" name:"ShuffleReadBytesSum"`
+
+	// spark作业id
+	SparkAppId *string `json:"SparkAppId,omitnil,omitempty" name:"SparkAppId"`
+
+	// 任务大类，DLC2.0中任务区分为两大类，sql任务和作业任务
+	TaskCategory *string `json:"TaskCategory,omitnil,omitempty" name:"TaskCategory"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 引擎类型，用做任务详情页跳转引擎tab
+	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// 引擎是否支持洞察数据采集
+	EngineHasListenerConfig *bool `json:"EngineHasListenerConfig,omitnil,omitempty" name:"EngineHasListenerConfig"`
+
+	// spark引擎资源组id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 任务计算耗时
+	JobTimeSum *int64 `json:"JobTimeSum,omitnil,omitempty" name:"JobTimeSum"`
+
+	// 任务启动耗时
+	LaunchTime *string `json:"LaunchTime,omitnil,omitempty" name:"LaunchTime"`
+
+	// Gpu Driver 规格
+	GpuDriverSize *int64 `json:"GpuDriverSize,omitnil,omitempty" name:"GpuDriverSize"`
+
+	// Gpu Executor 规格
+	GpuExecutorSize *int64 `json:"GpuExecutorSize,omitnil,omitempty" name:"GpuExecutorSize"`
 }
 
 type TaskMonitorInfo struct {

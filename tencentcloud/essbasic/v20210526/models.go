@@ -12979,7 +12979,8 @@ type OperateChannelTemplateRequestParams struct {
 	// 注: ` 此处为第三方应用平台模板库模板ID，非子客模板ID`
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 第三方平台子客企业的唯一标识，支持批量(用,分割)，
+	// 第三方平台子客企业的唯一标识，支持批量(用,分割) 
+	// 一次批量操作最多支持100个第三方平台子客
 	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitnil,omitempty" name:"ProxyOrganizationOpenIds"`
 
 	// 模板可见范围, 可以设置的值如下:
@@ -13007,6 +13008,13 @@ type OperateChannelTemplateRequestParams struct {
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 指定分页每页返回的数据条数，单页最大支持 100。
+	// 不传默认值为 20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页查询偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type OperateChannelTemplateRequest struct {
@@ -13032,7 +13040,8 @@ type OperateChannelTemplateRequest struct {
 	// 注: ` 此处为第三方应用平台模板库模板ID，非子客模板ID`
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 第三方平台子客企业的唯一标识，支持批量(用,分割)，
+	// 第三方平台子客企业的唯一标识，支持批量(用,分割) 
+	// 一次批量操作最多支持100个第三方平台子客
 	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitnil,omitempty" name:"ProxyOrganizationOpenIds"`
 
 	// 模板可见范围, 可以设置的值如下:
@@ -13058,6 +13067,13 @@ type OperateChannelTemplateRequest struct {
 
 	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 指定分页每页返回的数据条数，单页最大支持 100。
+	// 不传默认值为 20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页查询偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *OperateChannelTemplateRequest) ToJsonString() string {
@@ -13079,6 +13095,8 @@ func (r *OperateChannelTemplateRequest) FromJsonString(s string) error {
 	delete(f, "AuthTag")
 	delete(f, "Available")
 	delete(f, "Operator")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateChannelTemplateRequest has unknown keys!", "")
 	}
@@ -13106,11 +13124,14 @@ type OperateChannelTemplateResponseParams struct {
 	// **part**: 指定的本第三方应用合作企业
 	AuthTag *string `json:"AuthTag,omitnil,omitempty" name:"AuthTag"`
 
-	// 第三方平台子客企业标识列表
+	// 第三方平台子客企业标识列表，仅在select 模式下返回
 	ProxyOrganizationOpenIds []*string `json:"ProxyOrganizationOpenIds,omitnil,omitempty" name:"ProxyOrganizationOpenIds"`
 
 	// 操作失败信息数组
 	FailMessageList []*AuthFailMessage `json:"FailMessageList,omitnil,omitempty" name:"FailMessageList"`
+
+	// 授权的平台子企业数量，OperateType 为select 时返回。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

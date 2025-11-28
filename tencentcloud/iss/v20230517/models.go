@@ -4127,7 +4127,7 @@ type DescribeRecordPlaybackUrlRequestParams struct {
 	// 是否获取内网地址
 	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 
-	// 云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转，会退等问题导致无法播放
+	// 云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转、回退等问题导致无法播放
 	CorrectTimestamp *bool `json:"CorrectTimestamp,omitnil,omitempty" name:"CorrectTimestamp"`
 }
 
@@ -4146,7 +4146,7 @@ type DescribeRecordPlaybackUrlRequest struct {
 	// 是否获取内网地址
 	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 
-	// 云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转，会退等问题导致无法播放
+	// 云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转、回退等问题导致无法播放
 	CorrectTimestamp *bool `json:"CorrectTimestamp,omitnil,omitempty" name:"CorrectTimestamp"`
 }
 

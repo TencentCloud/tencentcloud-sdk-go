@@ -2003,6 +2003,58 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGrou
     return
 }
 
+func NewDeleteGroupSubscribeTopicRequest() (request *DeleteGroupSubscribeTopicRequest) {
+    request = &DeleteGroupSubscribeTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DeleteGroupSubscribeTopic")
+    
+    
+    return
+}
+
+func NewDeleteGroupSubscribeTopicResponse() (response *DeleteGroupSubscribeTopicResponse) {
+    response = &DeleteGroupSubscribeTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGroupSubscribeTopic
+// 删除消费分组订阅的topic(消费分组必须是Empty 状态)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteGroupSubscribeTopic(request *DeleteGroupSubscribeTopicRequest) (response *DeleteGroupSubscribeTopicResponse, err error) {
+    return c.DeleteGroupSubscribeTopicWithContext(context.Background(), request)
+}
+
+// DeleteGroupSubscribeTopic
+// 删除消费分组订阅的topic(消费分组必须是Empty 状态)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteGroupSubscribeTopicWithContext(ctx context.Context, request *DeleteGroupSubscribeTopicRequest) (response *DeleteGroupSubscribeTopicResponse, err error) {
+    if request == nil {
+        request = NewDeleteGroupSubscribeTopicRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DeleteGroupSubscribeTopic")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGroupSubscribeTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGroupSubscribeTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteInstancePostRequest() (request *DeleteInstancePostRequest) {
     request = &DeleteInstancePostRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3853,6 +3905,114 @@ func (c *Client) DescribeInstancesDetailWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeInstancesDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeModifyTypeRequest() (request *DescribeModifyTypeRequest) {
+    request = &DescribeModifyTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribeModifyType")
+    
+    
+    return
+}
+
+func NewDescribeModifyTypeResponse() (response *DescribeModifyTypeResponse) {
+    response = &DescribeModifyTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModifyType
+// 查询实例变配类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ROUTEOVERLIMIT = "LimitExceeded.RouteOverLimit"
+//  LIMITEXCEEDED_ROUTESASLOVERLIMIT = "LimitExceeded.RouteSASLOverLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) DescribeModifyType(request *DescribeModifyTypeRequest) (response *DescribeModifyTypeResponse, err error) {
+    return c.DescribeModifyTypeWithContext(context.Background(), request)
+}
+
+// DescribeModifyType
+// 查询实例变配类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ROUTEOVERLIMIT = "LimitExceeded.RouteOverLimit"
+//  LIMITEXCEEDED_ROUTESASLOVERLIMIT = "LimitExceeded.RouteSASLOverLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) DescribeModifyTypeWithContext(ctx context.Context, request *DescribeModifyTypeRequest) (response *DescribeModifyTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeModifyTypeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeModifyType")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModifyType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModifyTypeResponse()
     err = c.Send(request, response)
     return
 }

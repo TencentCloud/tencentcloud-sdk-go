@@ -1425,6 +1425,7 @@ func NewCreateCHDFSBindingProductResponse() (response *CreateCHDFSBindingProduct
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDBUCKETNAME = "InvalidParameter.InvalidBucketName"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateCHDFSBindingProduct(request *CreateCHDFSBindingProductRequest) (response *CreateCHDFSBindingProductResponse, err error) {
     return c.CreateCHDFSBindingProductWithContext(context.Background(), request)
@@ -1437,6 +1438,7 @@ func (c *Client) CreateCHDFSBindingProduct(request *CreateCHDFSBindingProductReq
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDBUCKETNAME = "InvalidParameter.InvalidBucketName"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateCHDFSBindingProductWithContext(ctx context.Context, request *CreateCHDFSBindingProductRequest) (response *CreateCHDFSBindingProductResponse, err error) {
     if request == nil {
@@ -7487,6 +7489,88 @@ func (c *Client) DescribeTablesNameWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeTaskListRequest() (request *DescribeTaskListRequest) {
+    request = &DescribeTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTaskList")
+    
+    
+    return
+}
+
+func NewDescribeTaskListResponse() (response *DescribeTaskListResponse) {
+    response = &DescribeTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskList
+// 该接口（DescribleTasks）用于查询任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = "InvalidParameter.FiltersValuesNumberOutOfLimit"
+//  INVALIDPARAMETER_INVALIDFILTERLENGTH = "InvalidParameter.InvalidFilterLength"
+//  INVALIDPARAMETER_INVALIDTASKSFILTERLENGTH = "InvalidParameter.InvalidTasksFilterLength"
+//  INVALIDPARAMETER_INVALIDTIMEFORMAT = "InvalidParameter.InvalidTimeFormat"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskFiltersKeyTypeNotMath"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_TASKLISTSORTBYTYPENOTMATCH = "InvalidParameter.TaskListSortByTypeNotMatch"
+//  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeTaskList(request *DescribeTaskListRequest) (response *DescribeTaskListResponse, err error) {
+    return c.DescribeTaskListWithContext(context.Background(), request)
+}
+
+// DescribeTaskList
+// 该接口（DescribleTasks）用于查询任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = "InvalidParameter.FiltersValuesNumberOutOfLimit"
+//  INVALIDPARAMETER_INVALIDFILTERLENGTH = "InvalidParameter.InvalidFilterLength"
+//  INVALIDPARAMETER_INVALIDTASKSFILTERLENGTH = "InvalidParameter.InvalidTasksFilterLength"
+//  INVALIDPARAMETER_INVALIDTIMEFORMAT = "InvalidParameter.InvalidTimeFormat"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskFiltersKeyTypeNotMath"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_TASKLISTSORTBYTYPENOTMATCH = "InvalidParameter.TaskListSortByTypeNotMatch"
+//  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeTaskListWithContext(ctx context.Context, request *DescribeTaskListRequest) (response *DescribeTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeTaskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskLogRequest() (request *DescribeTaskLogRequest) {
     request = &DescribeTaskLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11612,6 +11696,7 @@ func NewUpdateStandardEngineResourceGroupConfigInfoResponse() (response *UpdateS
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_GATEWAYNOTRUNNING = "ResourceUnavailable.GatewayNotRunning"
 //  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
 func (c *Client) UpdateStandardEngineResourceGroupConfigInfo(request *UpdateStandardEngineResourceGroupConfigInfoRequest) (response *UpdateStandardEngineResourceGroupConfigInfoResponse, err error) {
     return c.UpdateStandardEngineResourceGroupConfigInfoWithContext(context.Background(), request)
@@ -11627,6 +11712,7 @@ func (c *Client) UpdateStandardEngineResourceGroupConfigInfo(request *UpdateStan
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_GATEWAYNOTRUNNING = "ResourceUnavailable.GatewayNotRunning"
 //  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
 func (c *Client) UpdateStandardEngineResourceGroupConfigInfoWithContext(ctx context.Context, request *UpdateStandardEngineResourceGroupConfigInfoRequest) (response *UpdateStandardEngineResourceGroupConfigInfoResponse, err error) {
     if request == nil {

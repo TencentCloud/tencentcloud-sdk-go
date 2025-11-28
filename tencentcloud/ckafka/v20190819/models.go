@@ -3497,6 +3497,77 @@ func (r *DeleteGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteGroupSubscribeTopicRequestParams struct {
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 消费分组名称
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// 主题名
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+}
+
+type DeleteGroupSubscribeTopicRequest struct {
+	*tchttp.BaseRequest
+	
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 消费分组名称
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// 主题名
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+}
+
+func (r *DeleteGroupSubscribeTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGroupSubscribeTopicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Group")
+	delete(f, "Topic")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGroupSubscribeTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGroupSubscribeTopicResponseParams struct {
+	// 返回结果
+	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGroupSubscribeTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGroupSubscribeTopicResponseParams `json:"Response"`
+}
+
+func (r *DeleteGroupSubscribeTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGroupSubscribeTopicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteInstancePostRequestParams struct {
 	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3946,6 +4017,26 @@ func (r *DeleteUserResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescModifyType struct {
+	// 变配类型
+	ModifyType *int64 `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
+
+	// 是否迁移标志
+	MigrateFlag *bool `json:"MigrateFlag,omitnil,omitempty" name:"MigrateFlag"`
+
+	// 迁移预计耗时(稳定模式)秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MigrateCostTime *int64 `json:"MigrateCostTime,omitnil,omitempty" name:"MigrateCostTime"`
+
+	// 升配模式(1:稳定模式，2:高速模式)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpgradeStrategy *int64 `json:"UpgradeStrategy,omitnil,omitempty" name:"UpgradeStrategy"`
+
+	// 迁移预计耗时(高速模式)秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MigrateCostTimeHighSpeed *int64 `json:"MigrateCostTimeHighSpeed,omitnil,omitempty" name:"MigrateCostTimeHighSpeed"`
 }
 
 // Predefined struct for user
@@ -5714,6 +5805,112 @@ func (r *DescribeInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModifyTypeRequestParams struct {
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 升配后的带宽，单位mb
+	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
+
+	// 升配后的磁盘，单位G
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 磁盘类型，例如 CLOUD_PREMIUM
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 分区数量
+	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
+
+	// topic数量
+	Topic *int64 `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 实例类型例如 sp_ckafka_profession
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 变配入口
+	ModifyEntry *string `json:"ModifyEntry,omitnil,omitempty" name:"ModifyEntry"`
+}
+
+type DescribeModifyTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 升配后的带宽，单位mb
+	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
+
+	// 升配后的磁盘，单位G
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 磁盘类型，例如 CLOUD_PREMIUM
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 分区数量
+	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
+
+	// topic数量
+	Topic *int64 `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 实例类型例如 sp_ckafka_profession
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 变配入口
+	ModifyEntry *string `json:"ModifyEntry,omitnil,omitempty" name:"ModifyEntry"`
+}
+
+func (r *DescribeModifyTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModifyTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BandWidth")
+	delete(f, "DiskSize")
+	delete(f, "DiskType")
+	delete(f, "Partition")
+	delete(f, "Topic")
+	delete(f, "Type")
+	delete(f, "ModifyEntry")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModifyTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModifyTypeResponseParams struct {
+	// 返回的变配类型结构
+	Result *DescModifyType `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModifyTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModifyTypeResponseParams `json:"Response"`
+}
+
+func (r *DescribeModifyTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModifyTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

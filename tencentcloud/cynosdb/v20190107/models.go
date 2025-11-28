@@ -3963,6 +3963,15 @@ type CynosdbInstanceDetail struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 实例状态
+	// creating：创建中
+	// running：运行中
+	// isolating：隔离中
+	// isolated：已隔离
+	// activating：解隔离中
+	// offlining：下线中
+	// offlined：已下线
+	// deleting：删除中
+	// deleted：已删除
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例状态中文描述
@@ -10170,7 +10179,7 @@ type GdnTaskInfo struct {
 	// 从集群ID
 	StandbyClusterId *string `json:"StandbyClusterId,omitnil,omitempty" name:"StandbyClusterId"`
 
-	// 从集群别名
+	// 从集群名称
 	StandbyClusterName *string `json:"StandbyClusterName,omitnil,omitempty" name:"StandbyClusterName"`
 }
 
@@ -15287,6 +15296,8 @@ type QueryFilter struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 操作符
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
@@ -17475,6 +17486,15 @@ type TradePrice struct {
 
 	// 计费价格单位
 	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
+
+	// 高精度下不包含优惠价格
+	UnitPriceHighPrecision *string `json:"UnitPriceHighPrecision,omitnil,omitempty" name:"UnitPriceHighPrecision"`
+
+	// 高精度下优惠后价格
+	UnitPriceDiscountHighPrecision *string `json:"UnitPriceDiscountHighPrecision,omitnil,omitempty" name:"UnitPriceDiscountHighPrecision"`
+
+	// 货币单位
+	AmountUnit *string `json:"AmountUnit,omitnil,omitempty" name:"AmountUnit"`
 }
 
 // Predefined struct for user
@@ -17781,6 +17801,12 @@ type UpgradeProxyRequestParams struct {
 
 	// 数据库代理节点信息
 	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
+
+	// 是否滚动升级
+	IsRollUpgrade *string `json:"IsRollUpgrade,omitnil,omitempty" name:"IsRollUpgrade"`
+
+	// 滚动升级等待时间，单位：秒
+	RollUpgradeWaitingTime *int64 `json:"RollUpgradeWaitingTime,omitnil,omitempty" name:"RollUpgradeWaitingTime"`
 }
 
 type UpgradeProxyRequest struct {
@@ -17809,6 +17835,12 @@ type UpgradeProxyRequest struct {
 
 	// 数据库代理节点信息
 	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
+
+	// 是否滚动升级
+	IsRollUpgrade *string `json:"IsRollUpgrade,omitnil,omitempty" name:"IsRollUpgrade"`
+
+	// 滚动升级等待时间，单位：秒
+	RollUpgradeWaitingTime *int64 `json:"RollUpgradeWaitingTime,omitnil,omitempty" name:"RollUpgradeWaitingTime"`
 }
 
 func (r *UpgradeProxyRequest) ToJsonString() string {
@@ -17831,6 +17863,8 @@ func (r *UpgradeProxyRequest) FromJsonString(s string) error {
 	delete(f, "ReloadBalance")
 	delete(f, "IsInMaintainPeriod")
 	delete(f, "ProxyZones")
+	delete(f, "IsRollUpgrade")
+	delete(f, "RollUpgradeWaitingTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeProxyRequest has unknown keys!", "")
 	}

@@ -243,8 +243,10 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  LIMITEXCEEDED_CLUSTERS = "LimitExceeded.Clusters"
+//  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCEINUSE_CLUSTER = "ResourceInUse.Cluster"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -261,8 +263,10 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  LIMITEXCEEDED_CLUSTERS = "LimitExceeded.Clusters"
+//  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCEINUSE_CLUSTER = "ResourceInUse.Cluster"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -681,6 +685,7 @@ func NewCreateProClusterResponse() (response *CreateProClusterResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_CREATEPROCLUSTERREGIONNOTEXIST = "FailedOperation.CreateProClusterRegionNotExist"
 //  FAILEDOPERATION_GENERATEDEALSANDPAYERROR = "FailedOperation.GenerateDealsAndPayError"
 //  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
@@ -695,6 +700,7 @@ func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *C
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_CREATEPROCLUSTERREGIONNOTEXIST = "FailedOperation.CreateProClusterRegionNotExist"
 //  FAILEDOPERATION_GENERATEDEALSANDPAYERROR = "FailedOperation.GenerateDealsAndPayError"
 //  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
@@ -849,6 +855,7 @@ func NewCreateRabbitMQVipInstanceResponse() (response *CreateRabbitMQVipInstance
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateRabbitMQVipInstance(request *CreateRabbitMQVipInstanceRequest) (response *CreateRabbitMQVipInstanceResponse, err error) {
@@ -860,6 +867,7 @@ func (c *Client) CreateRabbitMQVipInstance(request *CreateRabbitMQVipInstanceReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateRabbitMQVipInstanceWithContext(ctx context.Context, request *CreateRabbitMQVipInstanceRequest) (response *CreateRabbitMQVipInstanceResponse, err error) {
@@ -5745,180 +5753,6 @@ func (c *Client) DescribeRocketMQSmoothMigrationTaskWithContext(ctx context.Cont
     return
 }
 
-func NewDescribeRocketMQSmoothMigrationTaskListRequest() (request *DescribeRocketMQSmoothMigrationTaskListRequest) {
-    request = &DescribeRocketMQSmoothMigrationTaskListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQSmoothMigrationTaskList")
-    
-    
-    return
-}
-
-func NewDescribeRocketMQSmoothMigrationTaskListResponse() (response *DescribeRocketMQSmoothMigrationTaskListResponse) {
-    response = &DescribeRocketMQSmoothMigrationTaskListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRocketMQSmoothMigrationTaskList
-// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-//
-// 
-//
-// 用于查询RocketMQ平滑迁移任务列表
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
-func (c *Client) DescribeRocketMQSmoothMigrationTaskList(request *DescribeRocketMQSmoothMigrationTaskListRequest) (response *DescribeRocketMQSmoothMigrationTaskListResponse, err error) {
-    return c.DescribeRocketMQSmoothMigrationTaskListWithContext(context.Background(), request)
-}
-
-// DescribeRocketMQSmoothMigrationTaskList
-// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-//
-// 
-//
-// 用于查询RocketMQ平滑迁移任务列表
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
-func (c *Client) DescribeRocketMQSmoothMigrationTaskListWithContext(ctx context.Context, request *DescribeRocketMQSmoothMigrationTaskListRequest) (response *DescribeRocketMQSmoothMigrationTaskListResponse, err error) {
-    if request == nil {
-        request = NewDescribeRocketMQSmoothMigrationTaskListRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQSmoothMigrationTaskList")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRocketMQSmoothMigrationTaskList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRocketMQSmoothMigrationTaskListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeRocketMQSourceClusterGroupListRequest() (request *DescribeRocketMQSourceClusterGroupListRequest) {
-    request = &DescribeRocketMQSourceClusterGroupListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQSourceClusterGroupList")
-    
-    
-    return
-}
-
-func NewDescribeRocketMQSourceClusterGroupListResponse() (response *DescribeRocketMQSourceClusterGroupListResponse) {
-    response = &DescribeRocketMQSourceClusterGroupListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRocketMQSourceClusterGroupList
-// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-//
-// 
-//
-// 平滑迁移过程获取源集群group列表接口
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
-func (c *Client) DescribeRocketMQSourceClusterGroupList(request *DescribeRocketMQSourceClusterGroupListRequest) (response *DescribeRocketMQSourceClusterGroupListResponse, err error) {
-    return c.DescribeRocketMQSourceClusterGroupListWithContext(context.Background(), request)
-}
-
-// DescribeRocketMQSourceClusterGroupList
-// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-//
-// 
-//
-// 平滑迁移过程获取源集群group列表接口
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
-func (c *Client) DescribeRocketMQSourceClusterGroupListWithContext(ctx context.Context, request *DescribeRocketMQSourceClusterGroupListRequest) (response *DescribeRocketMQSourceClusterGroupListResponse, err error) {
-    if request == nil {
-        request = NewDescribeRocketMQSourceClusterGroupListRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQSourceClusterGroupList")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRocketMQSourceClusterGroupList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRocketMQSourceClusterGroupListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeRocketMQSourceClusterTopicListRequest() (request *DescribeRocketMQSourceClusterTopicListRequest) {
-    request = &DescribeRocketMQSourceClusterTopicListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQSourceClusterTopicList")
-    
-    
-    return
-}
-
-func NewDescribeRocketMQSourceClusterTopicListResponse() (response *DescribeRocketMQSourceClusterTopicListResponse) {
-    response = &DescribeRocketMQSourceClusterTopicListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRocketMQSourceClusterTopicList
-// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-//
-// 
-//
-// 平滑迁移过程获取源集群topic列表接口
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
-func (c *Client) DescribeRocketMQSourceClusterTopicList(request *DescribeRocketMQSourceClusterTopicListRequest) (response *DescribeRocketMQSourceClusterTopicListResponse, err error) {
-    return c.DescribeRocketMQSourceClusterTopicListWithContext(context.Background(), request)
-}
-
-// DescribeRocketMQSourceClusterTopicList
-// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
-//
-// 
-//
-// 平滑迁移过程获取源集群topic列表接口
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
-func (c *Client) DescribeRocketMQSourceClusterTopicListWithContext(ctx context.Context, request *DescribeRocketMQSourceClusterTopicListRequest) (response *DescribeRocketMQSourceClusterTopicListResponse, err error) {
-    if request == nil {
-        request = NewDescribeRocketMQSourceClusterTopicListRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQSourceClusterTopicList")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRocketMQSourceClusterTopicList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRocketMQSourceClusterTopicListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeRocketMQSubscriptionsRequest() (request *DescribeRocketMQSubscriptionsRequest) {
     request = &DescribeRocketMQSubscriptionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6019,6 +5853,58 @@ func (c *Client) DescribeRocketMQTopUsagesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeRocketMQTopUsagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRocketMQTopicRequest() (request *DescribeRocketMQTopicRequest) {
+    request = &DescribeRocketMQTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQTopic")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQTopicResponse() (response *DescribeRocketMQTopicResponse) {
+    response = &DescribeRocketMQTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQTopic
+// 获取RocketMQ主题详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribeRocketMQTopic(request *DescribeRocketMQTopicRequest) (response *DescribeRocketMQTopicResponse, err error) {
+    return c.DescribeRocketMQTopicWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQTopic
+// 获取RocketMQ主题详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribeRocketMQTopicWithContext(ctx context.Context, request *DescribeRocketMQTopicRequest) (response *DescribeRocketMQTopicResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQTopicRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQTopic")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQTopicResponse()
     err = c.Send(request, response)
     return
 }

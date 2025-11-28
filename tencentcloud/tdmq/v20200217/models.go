@@ -772,7 +772,7 @@ type ConsumerStats struct {
 type ConsumersSchedule struct {
 	// 当前分区id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Partitions *uint64 `json:"Partitions,omitnil,omitempty" name:"Partitions"`
+	Partitions *int64 `json:"Partitions,omitnil,omitempty" name:"Partitions"`
 
 	// 消息数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1770,11 +1770,11 @@ type CreateRabbitMQVipInstanceRequestParams struct {
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 集群的节点规格，需要输入对应的规格标识：
-	// 2C8G：rabbit-vip-basic-2c8g
-	// 4C16G：rabbit-vip-basic-4c16g
-	// 8C32G：rabbit-vip-basic-8c32g
+	// 2C8G：rabbit-vip-profession-2c8g
+	// 4C16G：rabbit-vip-profession-4c16g
+	// 8C32G：rabbit-vip-profession-8c32g
 	// 16C32G：rabbit-vip-basic-4
-	// 16C64G：rabbit-vip-basic-16c64g
+	// 16C64G：rabbit-vip-profession-16c64g
 	// 2C4G：rabbit-vip-basic-5
 	// 4C8G：rabbit-vip-basic-1
 	// 8C16G（已售罄）：rabbit-vip-basic-2
@@ -1799,7 +1799,7 @@ type CreateRabbitMQVipInstanceRequestParams struct {
 	// 付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 集群版本，不传默认为 3.8.30，可选值为 3.8.30 和 3.11.8
+	// 集群版本，不传默认为 3.8.30，可选值为 3.8.30、3.11.8和3.13.7
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 
 	// 是否国际站请求，默认 false
@@ -1834,11 +1834,11 @@ type CreateRabbitMQVipInstanceRequest struct {
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 集群的节点规格，需要输入对应的规格标识：
-	// 2C8G：rabbit-vip-basic-2c8g
-	// 4C16G：rabbit-vip-basic-4c16g
-	// 8C32G：rabbit-vip-basic-8c32g
+	// 2C8G：rabbit-vip-profession-2c8g
+	// 4C16G：rabbit-vip-profession-4c16g
+	// 8C32G：rabbit-vip-profession-8c32g
 	// 16C32G：rabbit-vip-basic-4
-	// 16C64G：rabbit-vip-basic-16c64g
+	// 16C64G：rabbit-vip-profession-16c64g
 	// 2C4G：rabbit-vip-basic-5
 	// 4C8G：rabbit-vip-basic-1
 	// 8C16G（已售罄）：rabbit-vip-basic-2
@@ -1863,7 +1863,7 @@ type CreateRabbitMQVipInstanceRequest struct {
 	// 付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 集群版本，不传默认为 3.8.30，可选值为 3.8.30 和 3.11.8
+	// 集群版本，不传默认为 3.8.30，可选值为 3.8.30、3.11.8和3.13.7
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 
 	// 是否国际站请求，默认 false
@@ -5789,6 +5789,14 @@ type DescribeMsgResponseParams struct {
 	// 生产者名称。
 	ProducerName *string `json:"ProducerName,omitnil,omitempty" name:"ProducerName"`
 
+	// 消息 key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 消息的元数据信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadata *string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -8099,6 +8107,9 @@ type DescribeRocketMQGroupsRequestParams struct {
 
 	// group类型
 	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
+
+	// 标签过滤器
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 type DescribeRocketMQGroupsRequest struct {
@@ -8133,6 +8144,9 @@ type DescribeRocketMQGroupsRequest struct {
 
 	// group类型
 	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
+
+	// 标签过滤器
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 func (r *DescribeRocketMQGroupsRequest) ToJsonString() string {
@@ -8157,6 +8171,7 @@ func (r *DescribeRocketMQGroupsRequest) FromJsonString(s string) error {
 	delete(f, "SortOrder")
 	delete(f, "FilterOneGroup")
 	delete(f, "Types")
+	delete(f, "TagFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQGroupsRequest has unknown keys!", "")
 	}
@@ -8986,90 +9001,6 @@ func (r *DescribeRocketMQRolesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeRocketMQSmoothMigrationTaskListRequestParams struct {
-	// 查询起始偏移量
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 查询最大数量
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 查询过滤器，
-	// 支持的字段如下
-	// TaskStatus, 支持多选
-	// ConnectionType，支持多选
-	// ClusterId，精确搜索
-	// TaskName，支持模糊搜索
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-type DescribeRocketMQSmoothMigrationTaskListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 查询起始偏移量
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 查询最大数量
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 查询过滤器，
-	// 支持的字段如下
-	// TaskStatus, 支持多选
-	// ConnectionType，支持多选
-	// ClusterId，精确搜索
-	// TaskName，支持模糊搜索
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-func (r *DescribeRocketMQSmoothMigrationTaskListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRocketMQSmoothMigrationTaskListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "Filters")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQSmoothMigrationTaskListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRocketMQSmoothMigrationTaskListResponseParams struct {
-	// 任务总数
-	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 任务列表
-	Data []*RocketMQSmoothMigrationTaskItem `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeRocketMQSmoothMigrationTaskListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeRocketMQSmoothMigrationTaskListResponseParams `json:"Response"`
-}
-
-func (r *DescribeRocketMQSmoothMigrationTaskListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRocketMQSmoothMigrationTaskListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeRocketMQSmoothMigrationTaskRequestParams struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -9191,172 +9122,6 @@ func (r *DescribeRocketMQSmoothMigrationTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRocketMQSmoothMigrationTaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRocketMQSourceClusterGroupListRequestParams struct {
-	// 页大小
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 迁移任务名称
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 查询过滤器，支持字段groupName，imported
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-type DescribeRocketMQSourceClusterGroupListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 页大小
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 迁移任务名称
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 查询过滤器，支持字段groupName，imported
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-func (r *DescribeRocketMQSourceClusterGroupListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRocketMQSourceClusterGroupListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "TaskId")
-	delete(f, "Filters")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQSourceClusterGroupListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRocketMQSourceClusterGroupListResponseParams struct {
-	// group列表
-	Groups []*RocketMQGroupConfigOutput `json:"Groups,omitnil,omitempty" name:"Groups"`
-
-	// 总条数
-	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeRocketMQSourceClusterGroupListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeRocketMQSourceClusterGroupListResponseParams `json:"Response"`
-}
-
-func (r *DescribeRocketMQSourceClusterGroupListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRocketMQSourceClusterGroupListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRocketMQSourceClusterTopicListRequestParams struct {
-	// 分页大小
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 迁移任务名
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 查询过滤器，支持字段如下
-	// TopicName,
-	// Type，Imported
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-type DescribeRocketMQSourceClusterTopicListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 分页大小
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 迁移任务名
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 查询过滤器，支持字段如下
-	// TopicName,
-	// Type，Imported
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-func (r *DescribeRocketMQSourceClusterTopicListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRocketMQSourceClusterTopicListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "TaskId")
-	delete(f, "Filters")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQSourceClusterTopicListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRocketMQSourceClusterTopicListResponseParams struct {
-	// topic层列表
-	Topics []*RocketMQTopicConfigOutput `json:"Topics,omitnil,omitempty" name:"Topics"`
-
-	// 总条数
-	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeRocketMQSourceClusterTopicListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeRocketMQSourceClusterTopicListResponseParams `json:"Response"`
-}
-
-func (r *DescribeRocketMQSourceClusterTopicListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRocketMQSourceClusterTopicListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9694,6 +9459,98 @@ func (r *DescribeRocketMQTopicMsgsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRocketMQTopicRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 订阅列表分页参数Offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 订阅列表分页参数Limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeRocketMQTopicRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 订阅列表分页参数Offset
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 订阅列表分页参数Limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRocketMQTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQTopicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NamespaceId")
+	delete(f, "TopicName")
+	delete(f, "ConsumerGroup")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQTopicResponseParams struct {
+	// Topic详情
+	Topic *RocketMQTopic `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRocketMQTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQTopicResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQTopicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQTopicStatsRequestParams struct {
 	// 实例ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -9874,6 +9731,9 @@ type DescribeRocketMQTopicsRequestParams struct {
 
 	// 按订阅消费组名称过滤
 	FilterGroup *string `json:"FilterGroup,omitnil,omitempty" name:"FilterGroup"`
+
+	// 标签过滤器
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 type DescribeRocketMQTopicsRequest struct {
@@ -9899,6 +9759,9 @@ type DescribeRocketMQTopicsRequest struct {
 
 	// 按订阅消费组名称过滤
 	FilterGroup *string `json:"FilterGroup,omitnil,omitempty" name:"FilterGroup"`
+
+	// 标签过滤器
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 func (r *DescribeRocketMQTopicsRequest) ToJsonString() string {
@@ -9920,6 +9783,7 @@ func (r *DescribeRocketMQTopicsRequest) FromJsonString(s string) error {
 	delete(f, "FilterType")
 	delete(f, "FilterName")
 	delete(f, "FilterGroup")
+	delete(f, "TagFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQTopicsRequest has unknown keys!", "")
 	}
@@ -12022,6 +11886,12 @@ type ModifyRabbitMQVipInstanceRequestParams struct {
 
 	// 是否开启删除保护，不填则不修改
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+
+	// 是否删除所有标签，默认为false
+	RemoveAllTags *bool `json:"RemoveAllTags,omitnil,omitempty" name:"RemoveAllTags"`
+
+	// 修改实例的标签信息，全量标签信息，非增量
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ModifyRabbitMQVipInstanceRequest struct {
@@ -12038,6 +11908,12 @@ type ModifyRabbitMQVipInstanceRequest struct {
 
 	// 是否开启删除保护，不填则不修改
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+
+	// 是否删除所有标签，默认为false
+	RemoveAllTags *bool `json:"RemoveAllTags,omitnil,omitempty" name:"RemoveAllTags"`
+
+	// 修改实例的标签信息，全量标签信息，非增量
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *ModifyRabbitMQVipInstanceRequest) ToJsonString() string {
@@ -12056,6 +11932,8 @@ func (r *ModifyRabbitMQVipInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ClusterName")
 	delete(f, "Remark")
 	delete(f, "EnableDeletionProtection")
+	delete(f, "RemoveAllTags")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRabbitMQVipInstanceRequest has unknown keys!", "")
 	}
@@ -12431,6 +12309,9 @@ type ModifyRocketMQInstanceRequestParams struct {
 
 	// 是否开启删除保护
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+
+	// 控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5
+	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
 }
 
 type ModifyRocketMQInstanceRequest struct {
@@ -12450,6 +12331,9 @@ type ModifyRocketMQInstanceRequest struct {
 
 	// 是否开启删除保护
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+
+	// 控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5
+	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
 }
 
 func (r *ModifyRocketMQInstanceRequest) ToJsonString() string {
@@ -12469,6 +12353,7 @@ func (r *ModifyRocketMQInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "MessageRetention")
 	delete(f, "EnableDeletionProtection")
+	delete(f, "SendReceiveRatio")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRocketMQInstanceRequest has unknown keys!", "")
 	}
@@ -13604,6 +13489,9 @@ type RabbitMQClusterAccessInfo struct {
 
 	// TLS加密的数据流公网接入点
 	PublicTlsAccessEndpoint *string `json:"PublicTlsAccessEndpoint,omitnil,omitempty" name:"PublicTlsAccessEndpoint"`
+
+	// 公网IP是否复用
+	PublicIpReused *bool `json:"PublicIpReused,omitnil,omitempty" name:"PublicIpReused"`
 }
 
 type RabbitMQClusterInfo struct {
@@ -14009,16 +13897,16 @@ type RabbitMQVipInstance struct {
 	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 集群的节点规格，需要输入对应的规格标识：
-	// 2C8G：rabbit-vip-basic-2c8g
-	// 4C16G：rabbit-vip-basic-4c16g
-	// 8C32G：rabbit-vip-basic-8c32g
+	// 集群的节点规格，对应的规格标识：
+	// 2C8G：rabbit-vip-profession-2c8g
+	// 4C16G：rabbit-vip-profession-4c16g
+	// 8C32G：rabbit-vip-profession-8c32g
 	// 16C32G：rabbit-vip-basic-4
-	// 16C64G：rabbit-vip-basic-16c64g
+	// 16C64G：rabbit-vip-profession-16c64g
 	// 2C4G：rabbit-vip-basic-5
 	// 4C8G：rabbit-vip-basic-1
 	// 8C16G（已售罄）：rabbit-vip-basic-2
-	// 不传默认为4C8G：rabbit-vip-basic-1
+	// 不传默认为 4C8G：rabbit-vip-basic-1
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
 	// 集群异常信息
@@ -14859,6 +14747,9 @@ type RocketMQGroup struct {
 
 	// 订阅的主题个数
 	SubscribeTopicNum *int64 `json:"SubscribeTopicNum,omitnil,omitempty" name:"SubscribeTopicNum"`
+
+	// 绑定的标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type RocketMQGroupConfig struct {
@@ -14881,24 +14772,6 @@ type RocketMQGroupConfig struct {
 	// TCP;
 	// HTTP;
 	ConsumerGroupType *string `json:"ConsumerGroupType,omitnil,omitempty" name:"ConsumerGroupType"`
-}
-
-type RocketMQGroupConfigOutput struct {
-	// 命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
-
-	// 消费组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
-
-	// 是否已导入
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Imported *bool `json:"Imported,omitnil,omitempty" name:"Imported"`
-
-	// remark
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type RocketMQInstanceConfig struct {
@@ -14958,6 +14831,9 @@ type RocketMQInstanceConfig struct {
 	// Topic个数最大配额，默认为集群规格单节点最大配额*节点个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicNumUpperLimit *int64 `json:"TopicNumUpperLimit,omitnil,omitempty" name:"TopicNumUpperLimit"`
+
+	// 控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5
+	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
 }
 
 type RocketMQMessageTrack struct {
@@ -15046,46 +14922,6 @@ type RocketMQNamespace struct {
 	// 内部接入点地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternalEndpoint *string `json:"InternalEndpoint,omitnil,omitempty" name:"InternalEndpoint"`
-}
-
-type RocketMQSmoothMigrationTaskItem struct {
-	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
-
-	// 源集群名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SourceClusterName *string `json:"SourceClusterName,omitnil,omitempty" name:"SourceClusterName"`
-
-	// 目标集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
-	// 网络连接类型，
-	// PUBLIC 公网
-	// VPC 私有网络
-	// OTHER 其他
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConnectionType *string `json:"ConnectionType,omitnil,omitempty" name:"ConnectionType"`
-
-	// 源集群NameServer地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SourceNameServer *string `json:"SourceNameServer,omitnil,omitempty" name:"SourceNameServer"`
-
-	// 任务状态
-	// Configuration 迁移配置
-	// SourceConnecting 连接源集群中
-	// MetaDataImport 元数据导入
-	// EndpointSetup 切换接入点
-	// ServiceMigration 切流中
-	// Completed 已完成
-	// Cancelled 已取消
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 }
 
 type RocketMQSubscription struct {
@@ -15207,6 +15043,9 @@ type RocketMQTopic struct {
 	// 订阅关系列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscriptionData []*RocketMQSubscription `json:"SubscriptionData,omitnil,omitempty" name:"SubscriptionData"`
+
+	// 绑定的标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type RocketMQTopicConfig struct {
@@ -15228,37 +15067,6 @@ type RocketMQTopicConfig struct {
 
 	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
-}
-
-type RocketMQTopicConfigOutput struct {
-	// 命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
-
-	// 主题名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
-
-	// 主题类型：
-	// Normal，普通
-	// GlobalOrder， 全局顺序
-	// PartitionedOrder, 分区顺序
-	// Transaction，事务消息
-	// DelayScheduled，延迟/定时消息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 分区个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Partitions *int64 `json:"Partitions,omitnil,omitempty" name:"Partitions"`
-
-	// 备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
-
-	// 是否导入
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Imported *bool `json:"Imported,omitnil,omitempty" name:"Imported"`
 }
 
 type RocketMQTopicDistribution struct {
@@ -16027,6 +15835,14 @@ type Tag struct {
 	// 标签的Value的值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
+type TagFilter struct {
+	// 标签键名称
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值列表
+	TagValues []*string `json:"TagValues,omitnil,omitempty" name:"TagValues"`
 }
 
 type Topic struct {

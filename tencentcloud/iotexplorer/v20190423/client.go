@@ -465,6 +465,68 @@ func (c *Client) BindProductsWithContext(ctx context.Context, request *BindProdu
     return
 }
 
+func NewBindTWeTalkAIBotRequest() (request *BindTWeTalkAIBotRequest) {
+    request = &BindTWeTalkAIBotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "BindTWeTalkAIBot")
+    
+    
+    return
+}
+
+func NewBindTWeTalkAIBotResponse() (response *BindTWeTalkAIBotResponse) {
+    response = &BindTWeTalkAIBotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindTWeTalkAIBot
+// 用于绑定一个产品和智能体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) BindTWeTalkAIBot(request *BindTWeTalkAIBotRequest) (response *BindTWeTalkAIBotResponse, err error) {
+    return c.BindTWeTalkAIBotWithContext(context.Background(), request)
+}
+
+// BindTWeTalkAIBot
+// 用于绑定一个产品和智能体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) BindTWeTalkAIBotWithContext(ctx context.Context, request *BindTWeTalkAIBotRequest) (response *BindTWeTalkAIBotResponse, err error) {
+    if request == nil {
+        request = NewBindTWeTalkAIBotRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "BindTWeTalkAIBot")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindTWeTalkAIBot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindTWeTalkAIBotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCallDeviceActionAsyncRequest() (request *CallDeviceActionAsyncRequest) {
     request = &CallDeviceActionAsyncRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2301,6 +2363,68 @@ func (c *Client) CreateTWeSeeServiceWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateTWeTalkAIBotRequest() (request *CreateTWeTalkAIBotRequest) {
+    request = &CreateTWeTalkAIBotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTWeTalkAIBot")
+    
+    
+    return
+}
+
+func NewCreateTWeTalkAIBotResponse() (response *CreateTWeTalkAIBotResponse) {
+    response = &CreateTWeTalkAIBotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTWeTalkAIBot
+// 用于新增TWeTalk智能体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) CreateTWeTalkAIBot(request *CreateTWeTalkAIBotRequest) (response *CreateTWeTalkAIBotResponse, err error) {
+    return c.CreateTWeTalkAIBotWithContext(context.Background(), request)
+}
+
+// CreateTWeTalkAIBot
+// 用于新增TWeTalk智能体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) CreateTWeTalkAIBotWithContext(ctx context.Context, request *CreateTWeTalkAIBotRequest) (response *CreateTWeTalkAIBotResponse, err error) {
+    if request == nil {
+        request = NewCreateTWeTalkAIBotRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateTWeTalkAIBot")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTWeTalkAIBot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTWeTalkAIBotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTWeTalkProductConfigRequest() (request *CreateTWeTalkProductConfigRequest) {
     request = &CreateTWeTalkProductConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3257,6 +3381,68 @@ func (c *Client) DeleteStudioProductWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteStudioProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTWeTalkAIBotRequest() (request *DeleteTWeTalkAIBotRequest) {
+    request = &DeleteTWeTalkAIBotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTWeTalkAIBot")
+    
+    
+    return
+}
+
+func NewDeleteTWeTalkAIBotResponse() (response *DeleteTWeTalkAIBotResponse) {
+    response = &DeleteTWeTalkAIBotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTWeTalkAIBot
+// 用于删除TWeTalk智能体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DeleteTWeTalkAIBot(request *DeleteTWeTalkAIBotRequest) (response *DeleteTWeTalkAIBotResponse, err error) {
+    return c.DeleteTWeTalkAIBotWithContext(context.Background(), request)
+}
+
+// DeleteTWeTalkAIBot
+// 用于删除TWeTalk智能体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DeleteTWeTalkAIBotWithContext(ctx context.Context, request *DeleteTWeTalkAIBotRequest) (response *DeleteTWeTalkAIBotResponse, err error) {
+    if request == nil {
+        request = NewDeleteTWeTalkAIBotRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DeleteTWeTalkAIBot")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTWeTalkAIBot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTWeTalkAIBotResponse()
     err = c.Send(request, response)
     return
 }
@@ -6787,6 +6973,68 @@ func (c *Client) DescribeTWeSeeRecognitionTaskWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeTWeTalkAIBotRequest() (request *DescribeTWeTalkAIBotRequest) {
+    request = &DescribeTWeTalkAIBotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeTalkAIBot")
+    
+    
+    return
+}
+
+func NewDescribeTWeTalkAIBotResponse() (response *DescribeTWeTalkAIBotResponse) {
+    response = &DescribeTWeTalkAIBotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeTalkAIBot
+// 用于查询TWeTalk智能体详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeTWeTalkAIBot(request *DescribeTWeTalkAIBotRequest) (response *DescribeTWeTalkAIBotResponse, err error) {
+    return c.DescribeTWeTalkAIBotWithContext(context.Background(), request)
+}
+
+// DescribeTWeTalkAIBot
+// 用于查询TWeTalk智能体详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeTWeTalkAIBotWithContext(ctx context.Context, request *DescribeTWeTalkAIBotRequest) (response *DescribeTWeTalkAIBotResponse, err error) {
+    if request == nil {
+        request = NewDescribeTWeTalkAIBotRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeTWeTalkAIBot")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeTalkAIBot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeTalkAIBotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTWeTalkProductConfigRequest() (request *DescribeTWeTalkProductConfigRequest) {
     request = &DescribeTWeTalkProductConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8409,6 +8657,68 @@ func (c *Client) GetTWeCallActiveStatusWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewGetTWeCallActiveStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTWeTalkAIBotListRequest() (request *GetTWeTalkAIBotListRequest) {
+    request = &GetTWeTalkAIBotListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetTWeTalkAIBotList")
+    
+    
+    return
+}
+
+func NewGetTWeTalkAIBotListResponse() (response *GetTWeTalkAIBotListResponse) {
+    response = &GetTWeTalkAIBotListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTWeTalkAIBotList
+// 用于查询TWeTalk智能体列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) GetTWeTalkAIBotList(request *GetTWeTalkAIBotListRequest) (response *GetTWeTalkAIBotListResponse, err error) {
+    return c.GetTWeTalkAIBotListWithContext(context.Background(), request)
+}
+
+// GetTWeTalkAIBotList
+// 用于查询TWeTalk智能体列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) GetTWeTalkAIBotListWithContext(ctx context.Context, request *GetTWeTalkAIBotListRequest) (response *GetTWeTalkAIBotListResponse, err error) {
+    if request == nil {
+        request = NewGetTWeTalkAIBotListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "GetTWeTalkAIBotList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTWeTalkAIBotList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTWeTalkAIBotListResponse()
     err = c.Send(request, response)
     return
 }
@@ -10419,6 +10729,68 @@ func (c *Client) ModifyTWeSeeConfigWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyTWeTalkAIBotRequest() (request *ModifyTWeTalkAIBotRequest) {
+    request = &ModifyTWeTalkAIBotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTWeTalkAIBot")
+    
+    
+    return
+}
+
+func NewModifyTWeTalkAIBotResponse() (response *ModifyTWeTalkAIBotResponse) {
+    response = &ModifyTWeTalkAIBotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTWeTalkAIBot
+// 用于修改TWeTalk智能体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) ModifyTWeTalkAIBot(request *ModifyTWeTalkAIBotRequest) (response *ModifyTWeTalkAIBotResponse, err error) {
+    return c.ModifyTWeTalkAIBotWithContext(context.Background(), request)
+}
+
+// ModifyTWeTalkAIBot
+// 用于修改TWeTalk智能体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) ModifyTWeTalkAIBotWithContext(ctx context.Context, request *ModifyTWeTalkAIBotRequest) (response *ModifyTWeTalkAIBotResponse, err error) {
+    if request == nil {
+        request = NewModifyTWeTalkAIBotRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ModifyTWeTalkAIBot")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTWeTalkAIBot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTWeTalkAIBotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTWeTalkProductConfigRequest() (request *ModifyTWeTalkProductConfigRequest) {
     request = &ModifyTWeTalkProductConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11827,6 +12199,68 @@ func (c *Client) UnbindProductsWithContext(ctx context.Context, request *UnbindP
     request.SetContext(ctx)
     
     response = NewUnbindProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindTWeTalkAIBotRequest() (request *UnbindTWeTalkAIBotRequest) {
+    request = &UnbindTWeTalkAIBotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "UnbindTWeTalkAIBot")
+    
+    
+    return
+}
+
+func NewUnbindTWeTalkAIBotResponse() (response *UnbindTWeTalkAIBotResponse) {
+    response = &UnbindTWeTalkAIBotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnbindTWeTalkAIBot
+// 用于解除一个产品和智能体的绑定。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) UnbindTWeTalkAIBot(request *UnbindTWeTalkAIBotRequest) (response *UnbindTWeTalkAIBotResponse, err error) {
+    return c.UnbindTWeTalkAIBotWithContext(context.Background(), request)
+}
+
+// UnbindTWeTalkAIBot
+// 用于解除一个产品和智能体的绑定。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) UnbindTWeTalkAIBotWithContext(ctx context.Context, request *UnbindTWeTalkAIBotRequest) (response *UnbindTWeTalkAIBotResponse, err error) {
+    if request == nil {
+        request = NewUnbindTWeTalkAIBotRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "UnbindTWeTalkAIBot")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindTWeTalkAIBot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnbindTWeTalkAIBotResponse()
     err = c.Send(request, response)
     return
 }

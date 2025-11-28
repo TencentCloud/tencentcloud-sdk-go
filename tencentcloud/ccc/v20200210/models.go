@@ -1843,6 +1843,9 @@ type CreateAutoCalloutTaskRequestParams struct {
 
 	// 智能体 ID，不填写时需要填写 IvrId
 	AIAgentId *int64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
+
+	// 任务失败重试时间间隔，重试间隔 600秒～86400 秒
+	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 }
 
 type CreateAutoCalloutTaskRequest struct {
@@ -1892,6 +1895,9 @@ type CreateAutoCalloutTaskRequest struct {
 
 	// 智能体 ID，不填写时需要填写 IvrId
 	AIAgentId *int64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
+
+	// 任务失败重试时间间隔，重试间隔 600秒～86400 秒
+	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 }
 
 func (r *CreateAutoCalloutTaskRequest) ToJsonString() string {
@@ -1921,6 +1927,7 @@ func (r *CreateAutoCalloutTaskRequest) FromJsonString(s string) error {
 	delete(f, "TimeZone")
 	delete(f, "AvailableTime")
 	delete(f, "AIAgentId")
+	delete(f, "RetryInterval")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoCalloutTaskRequest has unknown keys!", "")
 	}

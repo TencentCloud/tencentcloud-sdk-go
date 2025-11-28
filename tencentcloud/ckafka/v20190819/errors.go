@@ -104,6 +104,9 @@ const (
 	// Broker 磁盘资源异常
 	RESOURCEUNAVAILABLE_KAFKASTORAGEERROR = "ResourceUnavailable.KafkaStorageError"
 
+	// 资源售罄。
+	RESOURCESSOLDOUT = "ResourcesSoldOut"
+
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 

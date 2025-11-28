@@ -260,6 +260,9 @@ const (
 	// 流程创建失败。
 	INTERNALERROR_FLOWERROR = "InternalError.FlowError"
 
+	// 服务异常，请稍后重试。
+	INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+
 	// 管控系统元数据访问异常，请联系客服处理。
 	INTERNALERROR_INSTANCEDATAERROR = "InternalError.InstanceDataError"
 
@@ -556,6 +559,9 @@ const (
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"
+
+	// 服务异常，请稍后重试。
+	UNKNOWNPARAMETER_HTTPERROR = "UnknownParameter.HttpError"
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"

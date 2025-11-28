@@ -2519,6 +2519,10 @@ type GetFunctionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolParams *ProtocolParams `json:"ProtocolParams,omitnil,omitempty" name:"ProtocolParams"`
 
+	// 单实例多并发配置。只支持Web函数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceConcurrencyConfig *InstanceConcurrencyConfig `json:"InstanceConcurrencyConfig,omitnil,omitempty" name:"InstanceConcurrencyConfig"`
+
 	// 是否开启DNS缓存
 	DnsCache *string `json:"DnsCache,omitnil,omitempty" name:"DnsCache"`
 
@@ -2908,6 +2912,18 @@ type InstanceConcurrencyConfig struct {
 	// 单实例并发数最大值。取值范围 [1,100]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxConcurrency *uint64 `json:"MaxConcurrency,omitnil,omitempty" name:"MaxConcurrency"`
+
+	// 安全隔离开关
+	InstanceIsolationEnabled *string `json:"InstanceIsolationEnabled,omitnil,omitempty" name:"InstanceIsolationEnabled"`
+
+	// 基于会话：Session-Based ， 或者基于请求：Request-Based，二选一
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 动态并发参数
+	MixNodeConfig []*MixNodeConfig `json:"MixNodeConfig,omitnil,omitempty" name:"MixNodeConfig"`
+
+	// 会话配置参数
+	SessionConfig *SessionConfig `json:"SessionConfig,omitnil,omitempty" name:"SessionConfig"`
 }
 
 type IntranetConfigIn struct {
@@ -4080,6 +4096,14 @@ type LogSearchContext struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type MixNodeConfig struct {
+	// GPU机型名
+	NodeSpec *string `json:"NodeSpec,omitnil,omitempty" name:"NodeSpec"`
+
+	// 并发个数
+	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
+}
+
 type Namespace struct {
 	// 命名空间创建时间
 	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
@@ -4731,6 +4755,29 @@ type SearchKey struct {
 
 	// 搜索内容
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type SessionConfig struct {
+	// session 来源，三选一：'HEADER', 'COOKIE', 'QUERY_STRING' 
+	SessionSource *string `json:"SessionSource,omitnil,omitempty" name:"SessionSource"`
+
+	// session 名称，以字母开头，非首字母可包含数字、字母、下划线、中划线，长度5-40个字符
+	SessionName *string `json:"SessionName,omitnil,omitempty" name:"SessionName"`
+
+	// 最大并发会话数
+	MaximumConcurrencySessionPerInstance *uint64 `json:"MaximumConcurrencySessionPerInstance,omitnil,omitempty" name:"MaximumConcurrencySessionPerInstance"`
+
+	// 生命周期
+	MaximumTTLInSeconds *uint64 `json:"MaximumTTLInSeconds,omitnil,omitempty" name:"MaximumTTLInSeconds"`
+
+	// 空闲时长
+	MaximumIdleTimeInSeconds *uint64 `json:"MaximumIdleTimeInSeconds,omitnil,omitempty" name:"MaximumIdleTimeInSeconds"`
+
+	// session 对应的路径信息
+	SessionPath *string `json:"SessionPath,omitnil,omitempty" name:"SessionPath"`
+
+	// 自动销毁 FATAL、自动暂停PAUSE， 只有启动安全隔离的时候才会有
+	IdleTimeoutStrategy *string `json:"IdleTimeoutStrategy,omitnil,omitempty" name:"IdleTimeoutStrategy"`
 }
 
 type StatusReason struct {

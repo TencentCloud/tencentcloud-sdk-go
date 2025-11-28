@@ -230,6 +230,9 @@ const (
 	// 记录没有发现。
 	FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
 
+	// 切换内网直连失败
+	FAILEDOPERATION_SWITCHCLUSTERENDPOINT = "FailedOperation.SwitchClusterEndpoint"
+
 	// tag错误
 	FAILEDOPERATION_TAGCOMMON = "FailedOperation.TagCommon"
 

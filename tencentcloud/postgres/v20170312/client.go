@@ -2784,6 +2784,7 @@ func NewDescribeDBErrlogsResponse() (response *DescribeDBErrlogsResponse) {
 //  FAILEDOPERATION_ESCONNECTERROR = "FailedOperation.ESConnectError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2796,6 +2797,7 @@ func NewDescribeDBErrlogsResponse() (response *DescribeDBErrlogsResponse) {
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNKNOWNPARAMETER_HTTPERROR = "UnknownParameter.HttpError"
 func (c *Client) DescribeDBErrlogs(request *DescribeDBErrlogsRequest) (response *DescribeDBErrlogsResponse, err error) {
     return c.DescribeDBErrlogsWithContext(context.Background(), request)
 }
@@ -2810,6 +2812,7 @@ func (c *Client) DescribeDBErrlogs(request *DescribeDBErrlogsRequest) (response 
 //  FAILEDOPERATION_ESCONNECTERROR = "FailedOperation.ESConnectError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2822,6 +2825,7 @@ func (c *Client) DescribeDBErrlogs(request *DescribeDBErrlogsRequest) (response 
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNKNOWNPARAMETER_HTTPERROR = "UnknownParameter.HttpError"
 func (c *Client) DescribeDBErrlogsWithContext(ctx context.Context, request *DescribeDBErrlogsRequest) (response *DescribeDBErrlogsResponse, err error) {
     if request == nil {
         request = NewDescribeDBErrlogsRequest()
@@ -4401,6 +4405,7 @@ func NewDescribeSlowQueryAnalysisResponse() (response *DescribeSlowQueryAnalysis
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ESQUERYERROR = "FailedOperation.ESQueryError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = "InvalidParameterValue.ParameterValueExceedError"
@@ -4415,6 +4420,7 @@ func (c *Client) DescribeSlowQueryAnalysis(request *DescribeSlowQueryAnalysisReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ESQUERYERROR = "FailedOperation.ESQueryError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = "InvalidParameterValue.ParameterValueExceedError"
@@ -4463,12 +4469,14 @@ func NewDescribeSlowQueryListResponse() (response *DescribeSlowQueryListResponse
 //  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
 //  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = "InvalidParameterValue.ParameterValueExceedError"
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNKNOWNPARAMETER_HTTPERROR = "UnknownParameter.HttpError"
 func (c *Client) DescribeSlowQueryList(request *DescribeSlowQueryListRequest) (response *DescribeSlowQueryListResponse, err error) {
     return c.DescribeSlowQueryListWithContext(context.Background(), request)
 }
@@ -4480,12 +4488,14 @@ func (c *Client) DescribeSlowQueryList(request *DescribeSlowQueryListRequest) (r
 //  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
 //  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = "InvalidParameterValue.ParameterValueExceedError"
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNKNOWNPARAMETER_HTTPERROR = "UnknownParameter.HttpError"
 func (c *Client) DescribeSlowQueryListWithContext(ctx context.Context, request *DescribeSlowQueryListRequest) (response *DescribeSlowQueryListResponse, err error) {
     if request == nil {
         request = NewDescribeSlowQueryListRequest()

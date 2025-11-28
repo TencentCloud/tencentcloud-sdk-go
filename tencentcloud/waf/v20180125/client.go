@@ -325,6 +325,58 @@ func (c *Client) AddAttackWhiteRuleWithContext(ctx context.Context, request *Add
     return
 }
 
+func NewAddBypassAllRuleRequest() (request *AddBypassAllRuleRequest) {
+    request = &AddBypassAllRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "AddBypassAllRule")
+    
+    
+    return
+}
+
+func NewAddBypassAllRuleResponse() (response *AddBypassAllRuleResponse) {
+    response = &AddBypassAllRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddBypassAllRule
+// 添加一键bypass能力支持,直接添加APPID
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) AddBypassAllRule(request *AddBypassAllRuleRequest) (response *AddBypassAllRuleResponse, err error) {
+    return c.AddBypassAllRuleWithContext(context.Background(), request)
+}
+
+// AddBypassAllRule
+// 添加一键bypass能力支持,直接添加APPID
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) AddBypassAllRuleWithContext(ctx context.Context, request *AddBypassAllRuleRequest) (response *AddBypassAllRuleResponse, err error) {
+    if request == nil {
+        request = NewAddBypassAllRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "AddBypassAllRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddBypassAllRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddBypassAllRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddCustomRuleRequest() (request *AddCustomRuleRequest) {
     request = &AddCustomRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12303,6 +12355,56 @@ func (c *Client) PostAttackDownloadTaskWithContext(ctx context.Context, request 
     return
 }
 
+func NewQueryBypassAllStatusRequest() (request *QueryBypassAllStatusRequest) {
+    request = &QueryBypassAllStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "QueryBypassAllStatus")
+    
+    
+    return
+}
+
+func NewQueryBypassAllStatusResponse() (response *QueryBypassAllStatusResponse) {
+    response = &QueryBypassAllStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryBypassAllStatus
+// 查询该用户是否被加入了全局的bypass列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) QueryBypassAllStatus(request *QueryBypassAllStatusRequest) (response *QueryBypassAllStatusResponse, err error) {
+    return c.QueryBypassAllStatusWithContext(context.Background(), request)
+}
+
+// QueryBypassAllStatus
+// 查询该用户是否被加入了全局的bypass列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) QueryBypassAllStatusWithContext(ctx context.Context, request *QueryBypassAllStatusRequest) (response *QueryBypassAllStatusResponse, err error) {
+    if request == nil {
+        request = NewQueryBypassAllStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "QueryBypassAllStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryBypassAllStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryBypassAllStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRefreshAccessCheckResultRequest() (request *RefreshAccessCheckResultRequest) {
     request = &RefreshAccessCheckResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12326,10 +12428,7 @@ func NewRefreshAccessCheckResultResponse() (response *RefreshAccessCheckResultRe
 // 刷新接入检查的结果，后台会生成接入检查任务
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
-//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RefreshAccessCheckResult(request *RefreshAccessCheckResultRequest) (response *RefreshAccessCheckResultResponse, err error) {
     return c.RefreshAccessCheckResultWithContext(context.Background(), request)
 }
@@ -12338,10 +12437,7 @@ func (c *Client) RefreshAccessCheckResult(request *RefreshAccessCheckResultReque
 // 刷新接入检查的结果，后台会生成接入检查任务
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
-//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RefreshAccessCheckResultWithContext(ctx context.Context, request *RefreshAccessCheckResultRequest) (response *RefreshAccessCheckResultResponse, err error) {
     if request == nil {
         request = NewRefreshAccessCheckResultRequest()
@@ -12355,6 +12451,56 @@ func (c *Client) RefreshAccessCheckResultWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewRefreshAccessCheckResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveBypassAllRuleRequest() (request *RemoveBypassAllRuleRequest) {
+    request = &RemoveBypassAllRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "RemoveBypassAllRule")
+    
+    
+    return
+}
+
+func NewRemoveBypassAllRuleResponse() (response *RemoveBypassAllRuleResponse) {
+    response = &RemoveBypassAllRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveBypassAllRule
+// 删除一键bypass规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) RemoveBypassAllRule(request *RemoveBypassAllRuleRequest) (response *RemoveBypassAllRuleResponse, err error) {
+    return c.RemoveBypassAllRuleWithContext(context.Background(), request)
+}
+
+// RemoveBypassAllRule
+// 删除一键bypass规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) RemoveBypassAllRuleWithContext(ctx context.Context, request *RemoveBypassAllRuleRequest) (response *RemoveBypassAllRuleResponse, err error) {
+    if request == nil {
+        request = NewRemoveBypassAllRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "RemoveBypassAllRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveBypassAllRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveBypassAllRuleResponse()
     err = c.Send(request, response)
     return
 }

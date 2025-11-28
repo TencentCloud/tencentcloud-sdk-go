@@ -1708,7 +1708,7 @@ type CheckFreeCertificateVerificationRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 加速域名，该域名为[申请免费证书](https://tcloud4api.woa.com/document/product/1657/927654?!preview&!document=1)时使用的域名。
+	// 加速域名，该域名为[申请免费证书](https://cloud.tencent.com/document/product/1552/124807)时使用的域名。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
@@ -1718,7 +1718,7 @@ type CheckFreeCertificateVerificationRequest struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 加速域名，该域名为[申请免费证书](https://tcloud4api.woa.com/document/product/1657/927654?!preview&!document=1)时使用的域名。
+	// 加速域名，该域名为[申请免费证书](https://cloud.tencent.com/document/product/1552/124807)时使用的域名。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 

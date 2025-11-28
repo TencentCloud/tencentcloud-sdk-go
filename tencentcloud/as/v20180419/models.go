@@ -6177,6 +6177,9 @@ type ServiceSettings struct {
 	// <li>True: 修改最大值或最小值时，如与当前期望数存在冲突，则同步调整期望数。例如修改时传入最小值 2，当前期望数为 1，则同步调整期望数为 2。</li>
 	// <li>False: 修改最大值或最小值时，如与当前期望数存在冲突，报错提示不允许修改。</li>
 	DesiredCapacitySyncWithMaxMinSize *bool `json:"DesiredCapacitySyncWithMaxMinSize,omitnil,omitempty" name:"DesiredCapacitySyncWithMaxMinSize"`
+
+	// 优先缩容不健康实例。若开启，缩容时会优先选择不健康实例。默认值为 False。
+	PriorityScaleInUnhealthy *bool `json:"PriorityScaleInUnhealthy,omitnil,omitempty" name:"PriorityScaleInUnhealthy"`
 }
 
 // Predefined struct for user

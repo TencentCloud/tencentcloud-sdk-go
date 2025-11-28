@@ -238,6 +238,9 @@ type Chunk struct {
 
 	// 切片的字数
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 切片概要
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
 }
 
 // Predefined struct for user

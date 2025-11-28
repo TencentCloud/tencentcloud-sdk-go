@@ -4228,6 +4228,13 @@ type CreateTopicRequestParams struct {
 	// 仅在StorageType为 hot 时生效，指标主题不支持该配置。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
+	// 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
+	// 0或者不传： 不加密
+	// 1：kms-cls 云产品密钥加密
+	// 
+	// 支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo
+	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
 	// 主题类型
 	// - 0:日志主题，默认值
 	// - 1:指标主题
@@ -4293,6 +4300,13 @@ type CreateTopicRequest struct {
 	// 仅在StorageType为 hot 时生效，指标主题不支持该配置。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
+	// 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
+	// 0或者不传： 不加密
+	// 1：kms-cls 云产品密钥加密
+	// 
+	// 支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo
+	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
 	// 主题类型
 	// - 0:日志主题，默认值
 	// - 1:指标主题
@@ -4337,6 +4351,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "Period")
 	delete(f, "Describes")
 	delete(f, "HotPeriod")
+	delete(f, "Encryption")
 	delete(f, "BizType")
 	delete(f, "TopicId")
 	delete(f, "IsWebTracking")

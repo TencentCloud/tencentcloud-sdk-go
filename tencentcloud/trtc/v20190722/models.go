@@ -4461,7 +4461,7 @@ type MixLayout struct {
 	// 该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。
 	ImageLayer *uint64 `json:"ImageLayer,omitnil,omitempty" name:"ImageLayer"`
 
-	// 图片的url地址， 只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+	// 图片的url地址， 只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
 	SubBackgroundImage *string `json:"SubBackgroundImage,omitnil,omitempty" name:"SubBackgroundImage"`
 }
 
@@ -4496,7 +4496,7 @@ type MixLayoutParams struct {
 	// 这个位置的MediaId代表的是对应MaxResolutionUserId的主辅路，MixLayoutList内代表的是自定义用户的主辅路。
 	MediaId *uint64 `json:"MediaId,omitnil,omitempty" name:"MediaId"`
 
-	// 图片的url地址，只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+	// 图片的url地址，只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
 	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitnil,omitempty" name:"BackgroundImageUrl"`
 
 	// 设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行音视频时可显示对应的占位图。
@@ -4505,7 +4505,7 @@ type MixLayoutParams struct {
 	// 背景画面宽高比不一致的时候处理方案，与MixLayoutList定义的RenderMode一致。
 	BackgroundImageRenderMode *uint64 `json:"BackgroundImageRenderMode,omitnil,omitempty" name:"BackgroundImageRenderMode"`
 
-	// 子画面占位图url地址，只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+	// 子画面占位图url地址，只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
 	DefaultSubBackgroundImage *string `json:"DefaultSubBackgroundImage,omitnil,omitempty" name:"DefaultSubBackgroundImage"`
 
 	// 水印布局参数， 最多支持25个。
@@ -5557,6 +5557,9 @@ type ServerPushText struct {
 
 	// 是否将文本加入到llm历史上下文中
 	AddHistory *bool `json:"AddHistory,omitnil,omitempty" name:"AddHistory"`
+
+	// 如果填写，会和字幕绑定发送到端上，注意确保内容为json字符串
+	MetaInfo *string `json:"MetaInfo,omitnil,omitempty" name:"MetaInfo"`
 }
 
 type SingleSubscribeParams struct {

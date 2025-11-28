@@ -504,6 +504,57 @@ func (r *AddAttackWhiteRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddBypassAllRuleRequestParams struct {
+
+}
+
+type AddBypassAllRuleRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *AddBypassAllRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddBypassAllRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddBypassAllRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddBypassAllRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddBypassAllRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *AddBypassAllRuleResponseParams `json:"Response"`
+}
+
+func (r *AddBypassAllRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddBypassAllRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddCustomRuleRequestParams struct {
 	// 规则名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -19535,6 +19586,60 @@ type QpsData struct {
 	QPSExtendIntlMax *uint64 `json:"QPSExtendIntlMax,omitnil,omitempty" name:"QPSExtendIntlMax"`
 }
 
+// Predefined struct for user
+type QueryBypassAllStatusRequestParams struct {
+
+}
+
+type QueryBypassAllStatusRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *QueryBypassAllStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryBypassAllStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBypassAllStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryBypassAllStatusResponseParams struct {
+	// 该用户是否被加入了全局的bypass列表
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryBypassAllStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryBypassAllStatusResponseParams `json:"Response"`
+}
+
+func (r *QueryBypassAllStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryBypassAllStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RCEPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
@@ -19637,6 +19742,57 @@ func (r *RefreshAccessCheckResultResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RefreshAccessCheckResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveBypassAllRuleRequestParams struct {
+
+}
+
+type RemoveBypassAllRuleRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RemoveBypassAllRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveBypassAllRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveBypassAllRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveBypassAllRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RemoveBypassAllRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveBypassAllRuleResponseParams `json:"Response"`
+}
+
+func (r *RemoveBypassAllRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveBypassAllRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

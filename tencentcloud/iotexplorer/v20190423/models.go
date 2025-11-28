@@ -361,6 +361,9 @@ type BatchUpdateFirmwareRequestParams struct {
 
 	// 用户自定义信息
 	TaskUserDefine *string `json:"TaskUserDefine,omitnil,omitempty" name:"TaskUserDefine"`
+
+	// 每分钟下发设备量
+	RateLimit *int64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
 }
 
 type BatchUpdateFirmwareRequest struct {
@@ -413,6 +416,9 @@ type BatchUpdateFirmwareRequest struct {
 
 	// 用户自定义信息
 	TaskUserDefine *string `json:"TaskUserDefine,omitnil,omitempty" name:"TaskUserDefine"`
+
+	// 每分钟下发设备量
+	RateLimit *int64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
 }
 
 func (r *BatchUpdateFirmwareRequest) ToJsonString() string {
@@ -443,6 +449,7 @@ func (r *BatchUpdateFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "RetryInterval")
 	delete(f, "FwType")
 	delete(f, "TaskUserDefine")
+	delete(f, "RateLimit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchUpdateFirmwareRequest has unknown keys!", "")
 	}
@@ -712,6 +719,67 @@ func (r *BindProductsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BindProductsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindTWeTalkAIBotRequestParams struct {
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+}
+
+type BindTWeTalkAIBotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+}
+
+func (r *BindTWeTalkAIBotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindTWeTalkAIBotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotId")
+	delete(f, "ProductId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindTWeTalkAIBotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindTWeTalkAIBotResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BindTWeTalkAIBotResponse struct {
+	*tchttp.BaseResponse
+	Response *BindTWeTalkAIBotResponseParams `json:"Response"`
+}
+
+func (r *BindTWeTalkAIBotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindTWeTalkAIBotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3494,6 +3562,112 @@ func (r *CreateTWeSeeServiceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateTWeTalkAIBotRequestParams struct {
+	// 产品ID
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 名称
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 自定义语音识别配置
+	STTConfig *TalkSTTConfigInfo `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// 自定义大模型配置
+	LLMConfig *TalkLLMConfigInfo `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 语音合成配置
+	TTSConfig *TalkTTSConfigInfo `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 智能体配置
+	AgentConfig *TalkAgentConfigInfo `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type CreateTWeTalkAIBotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 名称
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 自定义语音识别配置
+	STTConfig *TalkSTTConfigInfo `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// 自定义大模型配置
+	LLMConfig *TalkLLMConfigInfo `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 语音合成配置
+	TTSConfig *TalkTTSConfigInfo `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 智能体配置
+	AgentConfig *TalkAgentConfigInfo `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *CreateTWeTalkAIBotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTWeTalkAIBotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "TargetLanguage")
+	delete(f, "STTConfig")
+	delete(f, "LLMConfig")
+	delete(f, "TTSConfig")
+	delete(f, "AgentConfig")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeTalkAIBotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTWeTalkAIBotResponseParams struct {
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTWeTalkAIBotResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTWeTalkAIBotResponseParams `json:"Response"`
+}
+
+func (r *CreateTWeTalkAIBotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTWeTalkAIBotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTWeTalkProductConfigRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -4573,6 +4747,60 @@ func (r *DeleteStudioProductResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteStudioProductResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTWeTalkAIBotRequestParams struct {
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+}
+
+type DeleteTWeTalkAIBotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+}
+
+func (r *DeleteTWeTalkAIBotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTWeTalkAIBotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTWeTalkAIBotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTWeTalkAIBotResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTWeTalkAIBotResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTWeTalkAIBotResponseParams `json:"Response"`
+}
+
+func (r *DeleteTWeTalkAIBotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTWeTalkAIBotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9246,6 +9474,63 @@ func (r *DescribeTWeSeeRecognitionTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTWeTalkAIBotRequestParams struct {
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+}
+
+type DescribeTWeTalkAIBotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+}
+
+func (r *DescribeTWeTalkAIBotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeTalkAIBotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTWeTalkAIBotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTWeTalkAIBotResponseParams struct {
+	// 无
+	Data *TalkAIBotInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTWeTalkAIBotResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTWeTalkAIBotResponseParams `json:"Response"`
+}
+
+func (r *DescribeTWeTalkAIBotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeTalkAIBotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTWeTalkProductConfigRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -11580,6 +11865,101 @@ func (r *GetTWeCallActiveStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetTWeCallActiveStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTWeTalkAIBotListRequestParams struct {
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 是否脱敏
+	IncludeCredentials *bool `json:"IncludeCredentials,omitnil,omitempty" name:"IncludeCredentials"`
+
+	// 1
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type GetTWeTalkAIBotListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 是否脱敏
+	IncludeCredentials *bool `json:"IncludeCredentials,omitnil,omitempty" name:"IncludeCredentials"`
+
+	// 1
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *GetTWeTalkAIBotListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeTalkAIBotListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotId")
+	delete(f, "ProductId")
+	delete(f, "InstanceId")
+	delete(f, "IncludeCredentials")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTWeTalkAIBotListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTWeTalkAIBotListResponseParams struct {
+	// 无
+	Data []*TalkAIBotInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTWeTalkAIBotListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTWeTalkAIBotListResponseParams `json:"Response"`
+}
+
+func (r *GetTWeTalkAIBotListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeTalkAIBotListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14718,6 +15098,109 @@ func (r *ModifyTWeSeeConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyTWeTalkAIBotRequestParams struct {
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 产品ID
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 名称
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 自定义语音识别配置
+	STTConfig *TalkSTTConfigInfo `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// 自定义大模型配置
+	LLMConfig *TalkLLMConfigInfo `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 语音合成配置
+	TTSConfig *TalkTTSConfigInfo `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 智能体配置
+	AgentConfig *TalkAgentConfigInfo `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+}
+
+type ModifyTWeTalkAIBotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 产品ID
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 名称
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 支持的语言，zh-中文；en-英文；默认zh
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 自定义语音识别配置
+	STTConfig *TalkSTTConfigInfo `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// 自定义大模型配置
+	LLMConfig *TalkLLMConfigInfo `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 语音合成配置
+	TTSConfig *TalkTTSConfigInfo `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 智能体配置
+	AgentConfig *TalkAgentConfigInfo `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+}
+
+func (r *ModifyTWeTalkAIBotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTWeTalkAIBotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "TargetLanguage")
+	delete(f, "STTConfig")
+	delete(f, "LLMConfig")
+	delete(f, "TTSConfig")
+	delete(f, "AgentConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeTalkAIBotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTWeTalkAIBotResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTWeTalkAIBotResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTWeTalkAIBotResponseParams `json:"Response"`
+}
+
+func (r *ModifyTWeTalkAIBotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTWeTalkAIBotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTWeTalkProductConfigRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -16542,6 +17025,94 @@ type TWeCallLicenseInfo struct {
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 }
 
+type TalkAIBotInfo struct {
+	// UIN
+	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// APPID
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 语言
+	TargetLanguage *string `json:"TargetLanguage,omitnil,omitempty" name:"TargetLanguage"`
+
+	// 语音识别
+	STTConfig *TalkSTTConfigInfo `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// 大模型
+	LLMConfig *TalkLLMConfigInfo `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// 语音合成
+	TTSConfig *TalkTTSConfigInfo `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 智能体配置
+	AgentConfig *TalkAgentConfigInfo `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// 产品信息列表
+	ProductList *TalkProductInfo `json:"ProductList,omitnil,omitempty" name:"ProductList"`
+
+	// 创建时间
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type TalkAgentConfigInfo struct {
+	// 会话超时（秒），指连接会话的时间，例如30秒是指会话在30秒后断开
+	SessionTimeout *int64 `json:"SessionTimeout,omitnil,omitempty" name:"SessionTimeout"`
+
+	// 允许打断
+	InterruptionEnabled *bool `json:"InterruptionEnabled,omitnil,omitempty" name:"InterruptionEnabled"`
+
+	// 最大上下文
+	MaxContextTokens *int64 `json:"MaxContextTokens,omitnil,omitempty" name:"MaxContextTokens"`
+
+	// 空闲检测配置
+	IdleDetection *TalkIdleDetectionConfigInfo `json:"IdleDetection,omitnil,omitempty" name:"IdleDetection"`
+
+	// 是否启用情绪识别
+	EmotionEnabled *bool `json:"EmotionEnabled,omitnil,omitempty" name:"EmotionEnabled"`
+
+	// 是否启用语义vad
+	SemanticVADEnabled *bool `json:"SemanticVADEnabled,omitnil,omitempty" name:"SemanticVADEnabled"`
+
+	// 语义vad灵敏度， 1-慢 2-适中 3-快
+	SemanticVADSensitivity *int64 `json:"SemanticVADSensitivity,omitnil,omitempty" name:"SemanticVADSensitivity"`
+
+	// VAD 静默检测时间， 当开启语义vad此配置失效
+	SilenceTime *int64 `json:"SilenceTime,omitnil,omitempty" name:"SilenceTime"`
+
+	// 是否启用噪声过滤
+	NoiseFilterEnabled *bool `json:"NoiseFilterEnabled,omitnil,omitempty" name:"NoiseFilterEnabled"`
+
+	// 是否开启长记忆，默认开启
+	LongTermMemoryEnabled *bool `json:"LongTermMemoryEnabled,omitnil,omitempty" name:"LongTermMemoryEnabled"`
+
+	// 系统提示词，仅当未配置LLMConfig时使用
+	SystemPrompt *string `json:"SystemPrompt,omitnil,omitempty" name:"SystemPrompt"`
+
+	// 开机问候语，如果未配置默认不开启
+	GreetingMessage *string `json:"GreetingMessage,omitnil,omitempty" name:"GreetingMessage"`
+
+	// 系统默认音色，当配置复刻音色时，默认值为200000000
+	DefaultVoiceType *int64 `json:"DefaultVoiceType,omitnil,omitempty" name:"DefaultVoiceType"`
+
+	// 复刻音色
+	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
+}
+
 type TalkBasicConfigInfo struct {
 	// 系统提示词
 	SystemPrompt *string `json:"SystemPrompt,omitnil,omitempty" name:"SystemPrompt"`
@@ -16594,7 +17165,7 @@ type TalkIdleDetectionConfigInfo struct {
 }
 
 type TalkLLMConfigInfo struct {
-	// 支持的LLM类型，tencent-腾讯；openai-OPENAI格式；anthropic-ANTHROPIC；gemini-GEMINI;gemini-GEMINI;coze-扣子;dify-DIFY；tencent_lke-腾讯智能体平台；系统默认-openai。
+	// 支持的LLM类型，openai-OPENAI格式。
 	LLMType *string `json:"LLMType,omitnil,omitempty" name:"LLMType"`
 
 	// 是否开启
@@ -16619,53 +17190,6 @@ type TalkLLMConfigInfo struct {
 	//   "MetaInfo":{}
 	// }
 	// ```
-	// 
-	// ## anthropic
-	// ```
-	// {
-	//    "ApiKey": "sk-XXXXXXXXXXXX",
-	//    "ApiUrl": "https://api.openai.com/v1",
-	//    "SystemPrompt": "一个小小助手"
-	// }
-	// ```
-	// ## gemini
-	// ```
-	// {
-	//   "AppId": 123456,
-	//   "AccessToken": "*****",
-	//   "ResourceId": "SecretKey****",
-	//   "ModelName": "16k_zh",
-	//   "Language":""
-	// }
-	// ```
-	// ## coze
-	// ```
-	// {
-	//    "ApiKey": "sk-XXXXXXXXXXXX",
-	//    "BotId": "v1",
-	//    "UserId": "xxx",
-	//   "ApiUrl": "https://api.coze.cn/v3/chat"
-	// }
-	// ```
-	// ## dify
-	// ```
-	// {
-	//    "ApiKey": "sk-XXXXXXXXXXXX",
-	//    "ApiUrl": "https://api.openai.com/v1",
-	//    "User": "xxx",
-	//   "Inputs":{},
-	//   "ConversationId":"c1"
-	// }
-	// ```
-	// ## tencent_lke
-	// ```
-	// {
-	//    "ApiKey": "sk-XXXXXXXXXXXX",
-	//    "ApiUrl": "https://api.openai.com/v1",
-	//    "SystemRole": "一个小小助手",
-	//   "SessionId":"123456"
-	// }
-	// ```
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
 	// 温度
@@ -16676,6 +17200,9 @@ type TalkLLMConfigInfo struct {
 
 	// topP
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// 工具ID列表
+	Tools []*string `json:"Tools,omitnil,omitempty" name:"Tools"`
 }
 
 type TalkProductConfigInfo struct {
@@ -16745,8 +17272,16 @@ type TalkProductConfigV2Info struct {
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type TalkProductInfo struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+}
+
 type TalkSTTConfigInfo struct {
-	// 支持的STT类型，tencent-腾讯；azure-亚马逊；volcengine-火山引擎；deepgram-Deepgram;系统默认-tencent。
+	// 支持的STT类型，tencent-腾讯；azure-亚马逊；deepgram-Deepgram;系统默认-tencent。
 	STTType *string `json:"STTType,omitnil,omitempty" name:"STTType"`
 
 	// 是否开启
@@ -16773,16 +17308,7 @@ type TalkSTTConfigInfo struct {
 	//   "SubscriptionKey": "*****"
 	// }
 	// ```
-	// ## volcengine
-	// ```
-	// {
-	//   "AppId": 123456,
-	//   "AccessToken": "*****",
-	//   "ResourceId": "SecretKey****",
-	//   "ModelName": "16k_zh",
-	//   "Language":""
-	// }
-	// ```
+	// 
 	// ## deepgram
 	// ```
 	// {
@@ -17288,6 +17814,67 @@ func (r *UnbindProductsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindProductsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindTWeTalkAIBotRequestParams struct {
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+}
+
+type UnbindTWeTalkAIBotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 智能体ID
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+}
+
+func (r *UnbindTWeTalkAIBotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindTWeTalkAIBotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotId")
+	delete(f, "ProductId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindTWeTalkAIBotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindTWeTalkAIBotResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UnbindTWeTalkAIBotResponse struct {
+	*tchttp.BaseResponse
+	Response *UnbindTWeTalkAIBotResponseParams `json:"Response"`
+}
+
+func (r *UnbindTWeTalkAIBotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindTWeTalkAIBotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
