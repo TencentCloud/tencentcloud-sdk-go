@@ -8338,7 +8338,7 @@ func (r *DeleteWorkflowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAIAnalysisTemplatesRequestParams struct {
-	// 视频内容分析模板唯一标识过滤条件，数组长度限制：10。
+	// 视频内容分析模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -8359,7 +8359,7 @@ type DescribeAIAnalysisTemplatesRequestParams struct {
 type DescribeAIAnalysisTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 视频内容分析模板唯一标识过滤条件，数组长度限制：10。
+	// 视频内容分析模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -8430,7 +8430,7 @@ func (r *DescribeAIAnalysisTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAIRecognitionTemplatesRequestParams struct {
-	// 视频内容识别模板唯一标识过滤条件，数组长度限制：10。
+	// 视频内容识别模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -8451,7 +8451,7 @@ type DescribeAIRecognitionTemplatesRequestParams struct {
 type DescribeAIRecognitionTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 视频内容识别模板唯一标识过滤条件，数组长度限制：10。
+	// 视频内容识别模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。

@@ -1361,6 +1361,78 @@ func (c *Client) CreateRocketMQTopicWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateRocketMQTopicV2Request() (request *CreateRocketMQTopicV2Request) {
+    request = &CreateRocketMQTopicV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQTopicV2")
+    
+    
+    return
+}
+
+func NewCreateRocketMQTopicV2Response() (response *CreateRocketMQTopicV2Response) {
+    response = &CreateRocketMQTopicV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRocketMQTopicV2
+// 创建RocketMQ主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARTITION = "InvalidParameter.Partition"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+func (c *Client) CreateRocketMQTopicV2(request *CreateRocketMQTopicV2Request) (response *CreateRocketMQTopicV2Response, err error) {
+    return c.CreateRocketMQTopicV2WithContext(context.Background(), request)
+}
+
+// CreateRocketMQTopicV2
+// 创建RocketMQ主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARTITION = "InvalidParameter.Partition"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+func (c *Client) CreateRocketMQTopicV2WithContext(ctx context.Context, request *CreateRocketMQTopicV2Request) (response *CreateRocketMQTopicV2Response, err error) {
+    if request == nil {
+        request = NewCreateRocketMQTopicV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQTopicV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQTopicV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRocketMQTopicV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRocketMQVipInstanceRequest() (request *CreateRocketMQVipInstanceRequest) {
     request = &CreateRocketMQVipInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

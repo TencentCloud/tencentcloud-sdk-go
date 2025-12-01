@@ -305,6 +305,9 @@ type ConfigSubmitContext struct {
 
 	// 保存配置文件的路径
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// 节点ip信息，可选参数，当修改集群节点级配置（例如keeper_config.xml）时此参数必填；
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 }
 
 // Predefined struct for user
@@ -2174,7 +2177,7 @@ type InstanceNode struct {
 	// VPC IP
 	Rip *string `json:"Rip,omitnil,omitempty" name:"Rip"`
 
-	// ture的时候表示该节点上部署了chproxy进程
+	// ture的时候表示该节点上部署了chPROXY进程
 	IsCHProxy *bool `json:"IsCHProxy,omitnil,omitempty" name:"IsCHProxy"`
 
 	// 节点状态
@@ -2186,11 +2189,14 @@ type InstanceNode struct {
 	// 区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 区描述
+	// 去描述
 	ZoneDesc *string `json:"ZoneDesc,omitnil,omitempty" name:"ZoneDesc"`
 
 	// 真实资源id
 	RealResourceId *string `json:"RealResourceId,omitnil,omitempty" name:"RealResourceId"`
+
+	// 子网信息
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 }
 
 type InstanceStateInfo struct {

@@ -307,6 +307,9 @@ func (r *CreateAgentInstanceResponse) FromJsonString(s string) error {
 type CreateChatCompletionRequestParams struct {
 	// 是否隐藏
 	IsHidden *bool `json:"IsHidden,omitnil,omitempty" name:"IsHidden"`
+
+	// 是否隐藏会话
+	IsChatHidden *bool `json:"IsChatHidden,omitnil,omitempty" name:"IsChatHidden"`
 }
 
 type CreateChatCompletionRequest struct {
@@ -314,6 +317,9 @@ type CreateChatCompletionRequest struct {
 	
 	// 是否隐藏
 	IsHidden *bool `json:"IsHidden,omitnil,omitempty" name:"IsHidden"`
+
+	// 是否隐藏会话
+	IsChatHidden *bool `json:"IsChatHidden,omitnil,omitempty" name:"IsChatHidden"`
 }
 
 func (r *CreateChatCompletionRequest) ToJsonString() string {
@@ -329,6 +335,7 @@ func (r *CreateChatCompletionRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "IsHidden")
+	delete(f, "IsChatHidden")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChatCompletionRequest has unknown keys!", "")
 	}

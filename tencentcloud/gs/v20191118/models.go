@@ -3759,6 +3759,11 @@ type InstallAndroidInstancesAppRequestParams struct {
 
 	// 应用版本
 	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
+
+	// 安装方式。
+	// CLEAR_DATA 默认，清理数据
+	// KEEP_DATA 保留数据
+	InstallationMethod *string `json:"InstallationMethod,omitnil,omitempty" name:"InstallationMethod"`
 }
 
 type InstallAndroidInstancesAppRequest struct {
@@ -3772,6 +3777,11 @@ type InstallAndroidInstancesAppRequest struct {
 
 	// 应用版本
 	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
+
+	// 安装方式。
+	// CLEAR_DATA 默认，清理数据
+	// KEEP_DATA 保留数据
+	InstallationMethod *string `json:"InstallationMethod,omitnil,omitempty" name:"InstallationMethod"`
 }
 
 func (r *InstallAndroidInstancesAppRequest) ToJsonString() string {
@@ -3789,6 +3799,7 @@ func (r *InstallAndroidInstancesAppRequest) FromJsonString(s string) error {
 	delete(f, "AndroidInstanceIds")
 	delete(f, "AndroidAppId")
 	delete(f, "AndroidAppVersion")
+	delete(f, "InstallationMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallAndroidInstancesAppRequest has unknown keys!", "")
 	}
@@ -4663,6 +4674,9 @@ type ModifyAndroidInstancesUserIdRequestParams struct {
 
 	// 用户 ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 有效时长。如果不填该字段，默认为永久。支持 s（秒）、m（分）、h（小时）、d（天）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+	ExpirationDuration *string `json:"ExpirationDuration,omitnil,omitempty" name:"ExpirationDuration"`
 }
 
 type ModifyAndroidInstancesUserIdRequest struct {
@@ -4673,6 +4687,9 @@ type ModifyAndroidInstancesUserIdRequest struct {
 
 	// 用户 ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 有效时长。如果不填该字段，默认为永久。支持 s（秒）、m（分）、h（小时）、d（天）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+	ExpirationDuration *string `json:"ExpirationDuration,omitnil,omitempty" name:"ExpirationDuration"`
 }
 
 func (r *ModifyAndroidInstancesUserIdRequest) ToJsonString() string {
@@ -4689,6 +4706,7 @@ func (r *ModifyAndroidInstancesUserIdRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AndroidInstanceIds")
 	delete(f, "UserId")
+	delete(f, "ExpirationDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAndroidInstancesUserIdRequest has unknown keys!", "")
 	}

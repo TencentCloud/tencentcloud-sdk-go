@@ -1699,6 +1699,9 @@ type CreateDSPACosMetaResourcesRequestParams struct {
 	// DSPA实例ID。
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
+	// 必填，COS资源列表
+	CosBucketItems []*CosBucketItem `json:"CosBucketItems,omitnil,omitempty" name:"CosBucketItems"`
+
 	// 资源所处地域。
 	//
 	// Deprecated: ResourceRegion is deprecated.
@@ -1708,9 +1711,6 @@ type CreateDSPACosMetaResourcesRequestParams struct {
 	//
 	// Deprecated: Buckets is deprecated.
 	Buckets []*string `json:"Buckets,omitnil,omitempty" name:"Buckets"`
-
-	// 必填，COS资源列表
-	CosBucketItems []*CosBucketItem `json:"CosBucketItems,omitnil,omitempty" name:"CosBucketItems"`
 }
 
 type CreateDSPACosMetaResourcesRequest struct {
@@ -1719,14 +1719,14 @@ type CreateDSPACosMetaResourcesRequest struct {
 	// DSPA实例ID。
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
+	// 必填，COS资源列表
+	CosBucketItems []*CosBucketItem `json:"CosBucketItems,omitnil,omitempty" name:"CosBucketItems"`
+
 	// 资源所处地域。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// COS桶列表
 	Buckets []*string `json:"Buckets,omitnil,omitempty" name:"Buckets"`
-
-	// 必填，COS资源列表
-	CosBucketItems []*CosBucketItem `json:"CosBucketItems,omitnil,omitempty" name:"CosBucketItems"`
 }
 
 func (r *CreateDSPACosMetaResourcesRequest) ToJsonString() string {
@@ -1742,9 +1742,9 @@ func (r *CreateDSPACosMetaResourcesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DspaId")
+	delete(f, "CosBucketItems")
 	delete(f, "ResourceRegion")
 	delete(f, "Buckets")
-	delete(f, "CosBucketItems")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDSPACosMetaResourcesRequest has unknown keys!", "")
 	}
@@ -1781,6 +1781,9 @@ type CreateDSPADbMetaResourcesRequestParams struct {
 	// 资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
 	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
 
+	// 必填，云数据库资源列表。
+	CloudResourceItems []*CloudResourceItem `json:"CloudResourceItems,omitnil,omitempty" name:"CloudResourceItems"`
+
 	// 资源所处地域。
 	//
 	// Deprecated: ResourceRegion is deprecated.
@@ -1800,9 +1803,6 @@ type CreateDSPADbMetaResourcesRequestParams struct {
 	//
 	// Deprecated: Items is deprecated.
 	Items []*DspaCloudResourceMeta `json:"Items,omitnil,omitempty" name:"Items"`
-
-	// 必填，云数据库资源列表。
-	CloudResourceItems []*CloudResourceItem `json:"CloudResourceItems,omitnil,omitempty" name:"CloudResourceItems"`
 }
 
 type CreateDSPADbMetaResourcesRequest struct {
@@ -1813,6 +1813,9 @@ type CreateDSPADbMetaResourcesRequest struct {
 
 	// 资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
 	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
+
+	// 必填，云数据库资源列表。
+	CloudResourceItems []*CloudResourceItem `json:"CloudResourceItems,omitnil,omitempty" name:"CloudResourceItems"`
 
 	// 资源所处地域。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
@@ -1825,9 +1828,6 @@ type CreateDSPADbMetaResourcesRequest struct {
 
 	// 云上资源列表。
 	Items []*DspaCloudResourceMeta `json:"Items,omitnil,omitempty" name:"Items"`
-
-	// 必填，云数据库资源列表。
-	CloudResourceItems []*CloudResourceItem `json:"CloudResourceItems,omitnil,omitempty" name:"CloudResourceItems"`
 }
 
 func (r *CreateDSPADbMetaResourcesRequest) ToJsonString() string {
@@ -1844,11 +1844,11 @@ func (r *CreateDSPADbMetaResourcesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DspaId")
 	delete(f, "MetaType")
+	delete(f, "CloudResourceItems")
 	delete(f, "ResourceRegion")
 	delete(f, "UpdateStatus")
 	delete(f, "UpdateId")
 	delete(f, "Items")
-	delete(f, "CloudResourceItems")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDSPADbMetaResourcesRequest has unknown keys!", "")
 	}

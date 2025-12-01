@@ -665,7 +665,7 @@ func NewCreateBlindWatermarkTemplateResponse() (response *CreateBlindWatermarkTe
 }
 
 // CreateBlindWatermarkTemplate
-// 创建用户自定义数字水印模板，数量上限：1000。
+// 创建用户自定义数字水印模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -681,7 +681,7 @@ func (c *Client) CreateBlindWatermarkTemplate(request *CreateBlindWatermarkTempl
 }
 
 // CreateBlindWatermarkTemplate
-// 创建用户自定义数字水印模板，数量上限：1000。
+// 创建用户自定义数字水印模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"

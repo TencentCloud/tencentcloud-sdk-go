@@ -173,7 +173,7 @@ func NewCreateChatCompletionResponse() (response *CreateChatCompletionResponse) 
 }
 
 // CreateChatCompletion
-// 用于创建一次回话的SSE接口
+// 用于创建一次会话的SSE接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -184,7 +184,7 @@ func (c *Client) CreateChatCompletion(request *CreateChatCompletionRequest) (res
 }
 
 // CreateChatCompletion
-// 用于创建一次回话的SSE接口
+// 用于创建一次会话的SSE接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
