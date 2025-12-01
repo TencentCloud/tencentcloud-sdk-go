@@ -786,8 +786,14 @@ type DescribeChatDetailRequestParams struct {
 	// 会话Id
 	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
 
-	// 最后一条流式TokenID
-	LastStreamingTokenId *int64 `json:"LastStreamingTokenId,omitnil,omitempty" name:"LastStreamingTokenId"`
+	// 流ID
+	StreamingId *string `json:"StreamingId,omitnil,omitempty" name:"StreamingId"`
+
+	// 开始拉取的流式TokenID。0表示从该流最早的TokenID开始获取
+	BeginStreamingTokenId *string `json:"BeginStreamingTokenId,omitnil,omitempty" name:"BeginStreamingTokenId"`
+
+	// 单次获取的token数量，默认2000
+	TokenLimit *int64 `json:"TokenLimit,omitnil,omitempty" name:"TokenLimit"`
 }
 
 type DescribeChatDetailRequest struct {
@@ -799,8 +805,14 @@ type DescribeChatDetailRequest struct {
 	// 会话Id
 	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
 
-	// 最后一条流式TokenID
-	LastStreamingTokenId *int64 `json:"LastStreamingTokenId,omitnil,omitempty" name:"LastStreamingTokenId"`
+	// 流ID
+	StreamingId *string `json:"StreamingId,omitnil,omitempty" name:"StreamingId"`
+
+	// 开始拉取的流式TokenID。0表示从该流最早的TokenID开始获取
+	BeginStreamingTokenId *string `json:"BeginStreamingTokenId,omitnil,omitempty" name:"BeginStreamingTokenId"`
+
+	// 单次获取的token数量，默认2000
+	TokenLimit *int64 `json:"TokenLimit,omitnil,omitempty" name:"TokenLimit"`
 }
 
 func (r *DescribeChatDetailRequest) ToJsonString() string {
@@ -817,7 +829,9 @@ func (r *DescribeChatDetailRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "ChatId")
-	delete(f, "LastStreamingTokenId")
+	delete(f, "StreamingId")
+	delete(f, "BeginStreamingTokenId")
+	delete(f, "TokenLimit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChatDetailRequest has unknown keys!", "")
 	}

@@ -5171,10 +5171,10 @@ type CreateTaskFlowRequestParams struct {
 	// 工作流任务节点列表
 	FlowEdges []*TaskFlowEdge `json:"FlowEdges,omitnil,omitempty" name:"FlowEdges"`
 
-	// 工作流执行超时时间
+	// 工作流执行超时时间，单位：毫秒
 	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
 
-	// 无
+	// 数据集列表
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 
@@ -5190,10 +5190,10 @@ type CreateTaskFlowRequest struct {
 	// 工作流任务节点列表
 	FlowEdges []*TaskFlowEdge `json:"FlowEdges,omitnil,omitempty" name:"FlowEdges"`
 
-	// 工作流执行超时时间
+	// 工作流执行超时时间，单位：毫秒
 	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
 
-	// 无
+	// 数据集列表
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 }
 

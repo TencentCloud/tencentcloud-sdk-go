@@ -14407,6 +14407,7 @@ type ImageEraseLogoConfig struct {
 	// 图片框选区域类型，可选值：
 	// <li>logo：图标；</li>
 	// <li>text：文字；</li>
+	// <li>watermark：水印；</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetectTypes []*string `json:"DetectTypes,omitnil,omitempty" name:"DetectTypes"`
 }
@@ -19623,9 +19624,10 @@ type ProcessImageRequestParams struct {
 	OutputPath *string `json:"OutputPath,omitnil,omitempty" name:"OutputPath"`
 
 	// 图片处理模板唯一标识。
+	// 图片模板功能内测中，如需使用请提交工单申请。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 图片处理参数。
@@ -19655,9 +19657,10 @@ type ProcessImageRequest struct {
 	OutputPath *string `json:"OutputPath,omitnil,omitempty" name:"OutputPath"`
 
 	// 图片处理模板唯一标识。
+	// 图片模板功能内测中，如需使用请提交工单申请。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 图片处理参数。

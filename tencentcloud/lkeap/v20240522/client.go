@@ -89,18 +89,6 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 //     - 注意：相比于DeepSeek-V3，DeepSeek-V3-0324仅更新了模型权重，未增加参数量。总模型大小为685B，其中包括671B的主模型权重和 14B 的多令牌预测（MTP）模块权重，后续均描述主模型参数量。
 //
-// - DeepSeek-V3（model 参数值为**deepseek-v3**）
-//
-//     - DeepSeek-V3为671B参数MoE模型，在百科知识、数学推理等多项任务上优势突出，评测成绩在主流榜单中位列开源模型榜首。
-//
-//     - 支持64K上下文长度，最大输出16k。
-//
-// - DeepSeek-R1（model 参数值为**deepseek-r1**）
-//
-//     - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
-//
-//     -  支持96K上下文长度，最大输入长度64k，最大输出16k（默认4k），最大思维链输出长度32k。
-//
 // - DeepSeek-R1-0528（model 参数值为**deepseek-r1-0528**）
 //
 //     - DeepSeek-R1-0528为671B 模型，架构优化与训练策略升级后，相比上一版本在代码生成、长文本处理和复杂推理领域提升明显。
@@ -135,15 +123,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 
 //
-//     -  DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
-//
-// 
-//
 //     -  DeepSeek-R1-0528 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
-//
-// 
-//
-//     - DeepSeek-V3 模型 | 输入：0.002元/千token | 输出：0.008元/千token
 //
 // 
 //
@@ -219,7 +199,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 
 //
-// - 参数params中模型Model字段可以选择“deepseek-r1“和“deepseek-v3”
+// - 参数params中模型Model字段可以选择“deepseek-r1-0528“和“deepseek-v3-0324”
 //
 // 
 //
@@ -281,7 +261,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 
 //
-//     params = "{\"Model\":\"deepseek-r1\",\"Messages\":[{\"Role\":\"user\",\"Content\":\"你好\"}],\"Stream\":true}";
+//     params = "{\"Model\":\"deepseek-r1-0528\",\"Messages\":[{\"Role\":\"user\",\"Content\":\"你好\"}],\"Stream\":true}";
 //
 //     common_client = CommonClient("lkeap", "2024-05-22", cred, "ap-guangzhou", profile=clientProfile)
 //
@@ -307,7 +287,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 
 //
-// **DeepSeek-R1使用建议**
+// **DeepSeek-R1-0528使用建议**
 //
 // 
 //
@@ -350,18 +330,6 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 //     - 注意：相比于DeepSeek-V3，DeepSeek-V3-0324仅更新了模型权重，未增加参数量。总模型大小为685B，其中包括671B的主模型权重和 14B 的多令牌预测（MTP）模块权重，后续均描述主模型参数量。
 //
-// - DeepSeek-V3（model 参数值为**deepseek-v3**）
-//
-//     - DeepSeek-V3为671B参数MoE模型，在百科知识、数学推理等多项任务上优势突出，评测成绩在主流榜单中位列开源模型榜首。
-//
-//     - 支持64K上下文长度，最大输出16k。
-//
-// - DeepSeek-R1（model 参数值为**deepseek-r1**）
-//
-//     - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
-//
-//     -  支持96K上下文长度，最大输入长度64k，最大输出16k（默认4k），最大思维链输出长度32k。
-//
 // - DeepSeek-R1-0528（model 参数值为**deepseek-r1-0528**）
 //
 //     - DeepSeek-R1-0528为671B 模型，架构优化与训练策略升级后，相比上一版本在代码生成、长文本处理和复杂推理领域提升明显。
@@ -396,15 +364,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 
 //
-//     -  DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
-//
-// 
-//
 //     -  DeepSeek-R1-0528 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
-//
-// 
-//
-//     - DeepSeek-V3 模型 | 输入：0.002元/千token | 输出：0.008元/千token
 //
 // 
 //
@@ -480,7 +440,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 
 //
-// - 参数params中模型Model字段可以选择“deepseek-r1“和“deepseek-v3”
+// - 参数params中模型Model字段可以选择“deepseek-r1-0528“和“deepseek-v3-0324”
 //
 // 
 //
@@ -542,7 +502,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 
 //
-//     params = "{\"Model\":\"deepseek-r1\",\"Messages\":[{\"Role\":\"user\",\"Content\":\"你好\"}],\"Stream\":true}";
+//     params = "{\"Model\":\"deepseek-r1-0528\",\"Messages\":[{\"Role\":\"user\",\"Content\":\"你好\"}],\"Stream\":true}";
 //
 //     common_client = CommonClient("lkeap", "2024-05-22", cred, "ap-guangzhou", profile=clientProfile)
 //
@@ -568,7 +528,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 
 //
-// **DeepSeek-R1使用建议**
+// **DeepSeek-R1-0528使用建议**
 //
 // 
 //
