@@ -1191,6 +1191,124 @@ func (r *CreateJWTAuthenticatorResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateMessageEnrichmentRuleRequestParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则匹配条件，JSON格式，需要Base64编码
+	// 样例
+	// {"clientId":"client-1","username":"client-1","topic":"home/room1"}
+	// Base64后
+	// eyJjbGllbnRJZCI6ImNsaWVudC0xIiwidXNlcm5hbWUiOiJjbGllbnQtMSIsInRvcGljIjoiaG9tZS9yb29tMSJ9
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 规则执行的动作，JSON格式，需要Base64编码
+	// 样例
+	// {"messageExpiryInterval":360,"responseTopic":"replies/devices/${clientid}","correlationData":"${traceid}","userProperty":[{"key":"trace-id","value":"${traceid}"}]}
+	// BASE64后
+	// eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2VUb3BpYyI6InJlcGxpZXMvZGV2aWNlcy8ke2NsaWVudGlkfSIsImNvcnJlbGF0aW9uRGF0YSI6IiR7dHJhY2VpZH0iLCJ1c2VyUHJvcGVydHkiOlt7ImtleSI6InRyYWNlLWlkIiwidmFsdWUiOiIke3RyYWNlaWR9In1dfQ==
+	Actions *string `json:"Actions,omitnil,omitempty" name:"Actions"`
+
+	// 规则优先级，数字越小，优先级越高，高优先级覆盖低低优先级。UserPropertiy字段会合并
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 策略状态。 0:未定义；1:激活；2:不激活；默认不激活
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 备注，长度不超过128个字符。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type CreateMessageEnrichmentRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则匹配条件，JSON格式，需要Base64编码
+	// 样例
+	// {"clientId":"client-1","username":"client-1","topic":"home/room1"}
+	// Base64后
+	// eyJjbGllbnRJZCI6ImNsaWVudC0xIiwidXNlcm5hbWUiOiJjbGllbnQtMSIsInRvcGljIjoiaG9tZS9yb29tMSJ9
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 规则执行的动作，JSON格式，需要Base64编码
+	// 样例
+	// {"messageExpiryInterval":360,"responseTopic":"replies/devices/${clientid}","correlationData":"${traceid}","userProperty":[{"key":"trace-id","value":"${traceid}"}]}
+	// BASE64后
+	// eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2VUb3BpYyI6InJlcGxpZXMvZGV2aWNlcy8ke2NsaWVudGlkfSIsImNvcnJlbGF0aW9uRGF0YSI6IiR7dHJhY2VpZH0iLCJ1c2VyUHJvcGVydHkiOlt7ImtleSI6InRyYWNlLWlkIiwidmFsdWUiOiIke3RyYWNlaWR9In1dfQ==
+	Actions *string `json:"Actions,omitnil,omitempty" name:"Actions"`
+
+	// 规则优先级，数字越小，优先级越高，高优先级覆盖低低优先级。UserPropertiy字段会合并
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 策略状态。 0:未定义；1:激活；2:不激活；默认不激活
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 备注，长度不超过128个字符。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *CreateMessageEnrichmentRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMessageEnrichmentRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RuleName")
+	delete(f, "Condition")
+	delete(f, "Actions")
+	delete(f, "Priority")
+	delete(f, "Status")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMessageEnrichmentRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMessageEnrichmentRuleResponseParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 规则id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMessageEnrichmentRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMessageEnrichmentRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateMessageEnrichmentRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMessageEnrichmentRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTopicRequestParams struct {
 	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1945,6 +2063,67 @@ func (r *DeleteInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMessageEnrichmentRuleRequestParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 消息属性增强规则id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DeleteMessageEnrichmentRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 消息属性增强规则id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DeleteMessageEnrichmentRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMessageEnrichmentRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMessageEnrichmentRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMessageEnrichmentRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteMessageEnrichmentRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMessageEnrichmentRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteMessageEnrichmentRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMessageEnrichmentRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3397,6 +3576,63 @@ func (r *DescribeMessageDetailsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMessageEnrichmentRulesRequestParams struct {
+	// 腾讯云MQTT实例ID，从 DescribeInstanceList接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeMessageEnrichmentRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 DescribeInstanceList接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeMessageEnrichmentRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageEnrichmentRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMessageEnrichmentRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMessageEnrichmentRulesResponseParams struct {
+	// 消息增强策略
+	Data []*MessageEnrichmentRuleItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMessageEnrichmentRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMessageEnrichmentRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeMessageEnrichmentRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageEnrichmentRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMessageListRequestParams struct {
 	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4322,6 +4558,51 @@ type MQTTUserItem struct {
 	ModifiedTime *int64 `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
 }
 
+type MessageEnrichmentRuleItem struct {
+	// 策略规则ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// MQTT集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 策略规则名
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则匹配条件，JSON格式，需要Base64编码 
+	// 样例 {"clientId":"client-1","username":"client-1","topic":"home/room1"}
+	// Base64后 eyJjbGllbnRJZCI6ImNsaWVudC0xIiwidXNlcm5hbWUiOiJjbGllbnQtMSIsInRvcGljIjoiaG9tZS9yb29tMSJ9
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 规则执行的动作，JSON格式，需要Base64编码
+	//  样例
+	// {"messageExpiryInterval":360,"response Topic":"replies/devices/${clientid}","correlationData":"${traceid}","userProperty":[{"key":"trace-id","value":"${traceid}"},{"key":"data-source","value":"rule-engine"}]}
+	// BASE64后 eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2UgVG9waWMiOiJyZXBsaWVzL2RldmljZXMvJHtjbGllbnRpZH0iLCJjb3JyZWxhdGlvbkRhdGEiOiIke3RyYWNlaWR9IiwidXNlclByb3BlcnR5IjpbeyJrZXkiOiJ0cmFjZS1pZCIsInZhbHVlIjoiJHt0cmFjZWlkfSJ9LHsia2V5IjoiZGF0YS1zb3VyY2UiLCJ2YWx1ZSI6InJ1bGUtZW5naW5lIn1dfQ==
+	Actions *string `json:"Actions,omitnil,omitempty" name:"Actions"`
+
+	// 规则优先级，数字越小，优先级越高，高优先级覆盖低优先级。UserProperty字段会合并
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 策略状态。 0:未定义；1:激活；2:不激活；默认不激活
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 创建时间。毫秒级时间戳 。
+	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 更新时间。毫秒级时间戳 。
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type MessageEnrichmentRulePriority struct {
+	// 消息属性增强规则id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 优先级
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
 // Predefined struct for user
 type ModifyAuthorizationPolicyRequestParams struct {
 	// 授权策略ID，从 [查询授权策略](https://cloud.tencent.com/document/product/1778/111074) 接口获取
@@ -5207,6 +5488,123 @@ func (r *ModifyJWTAuthenticatorResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyMessageEnrichmentRuleRequestParams struct {
+	// 消息属性增强规则ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则匹配条件，JSON格式，需要Base64编码
+	// 样例
+	// {"clientId":"client-1","username":"client-1","topic":"home/room1"}
+	// Base64后
+	// eyJjbGllbnRJZCI6ImNsaWVudC0xIiwidXNlcm5hbWUiOiJjbGllbnQtMSIsInRvcGljIjoiaG9tZS9yb29tMSJ9
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 规则执行的动作，JSON格式，需要Base64编码 
+	// 样例
+	// {"messageExpiryInterval":360,"responseTopic":"replies/${clientid}","correlationData":"${traceid}","userProperty":[{"key":"trace-id","value":"${traceid}"}]}
+	//  BASE64后 eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2VUb3BpYyI6InJlcGxpZXMvJHtjbGllbnRpZH0iLCJjb3JyZWxhdGlvbkRhdGEiOiIke3RyYWNlaWR9IiwidXNlclByb3BlcnR5IjpbeyJrZXkiOiJ0cmFjZS1pZCIsInZhbHVlIjoiJHt0cmFjZWlkfSJ9XX0=
+	Actions *string `json:"Actions,omitnil,omitempty" name:"Actions"`
+
+	// 规则优先级，数字越小，优先级越高，高优先级覆盖低优先级。UserProperty字段会合并
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 策略状态。 0:未定义；1:激活；2:不激活；默认不激活
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 备注信息，最长 128 字符
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type ModifyMessageEnrichmentRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 消息属性增强规则ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则匹配条件，JSON格式，需要Base64编码
+	// 样例
+	// {"clientId":"client-1","username":"client-1","topic":"home/room1"}
+	// Base64后
+	// eyJjbGllbnRJZCI6ImNsaWVudC0xIiwidXNlcm5hbWUiOiJjbGllbnQtMSIsInRvcGljIjoiaG9tZS9yb29tMSJ9
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 规则执行的动作，JSON格式，需要Base64编码 
+	// 样例
+	// {"messageExpiryInterval":360,"responseTopic":"replies/${clientid}","correlationData":"${traceid}","userProperty":[{"key":"trace-id","value":"${traceid}"}]}
+	//  BASE64后 eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2VUb3BpYyI6InJlcGxpZXMvJHtjbGllbnRpZH0iLCJjb3JyZWxhdGlvbkRhdGEiOiIke3RyYWNlaWR9IiwidXNlclByb3BlcnR5IjpbeyJrZXkiOiJ0cmFjZS1pZCIsInZhbHVlIjoiJHt0cmFjZWlkfSJ9XX0=
+	Actions *string `json:"Actions,omitnil,omitempty" name:"Actions"`
+
+	// 规则优先级，数字越小，优先级越高，高优先级覆盖低优先级。UserProperty字段会合并
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 策略状态。 0:未定义；1:激活；2:不激活；默认不激活
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 备注信息，最长 128 字符
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *ModifyMessageEnrichmentRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMessageEnrichmentRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "InstanceId")
+	delete(f, "RuleName")
+	delete(f, "Condition")
+	delete(f, "Actions")
+	delete(f, "Priority")
+	delete(f, "Status")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMessageEnrichmentRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMessageEnrichmentRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMessageEnrichmentRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMessageEnrichmentRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyMessageEnrichmentRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMessageEnrichmentRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTopicRequestParams struct {
 	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5849,6 +6247,67 @@ func (r *UpdateAuthorizationPolicyPriorityResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateAuthorizationPolicyPriorityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateMessageEnrichmentRulePriorityRequestParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 策略ID和优先级
+	Priorities []*MessageEnrichmentRulePriority `json:"Priorities,omitnil,omitempty" name:"Priorities"`
+}
+
+type UpdateMessageEnrichmentRulePriorityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 策略ID和优先级
+	Priorities []*MessageEnrichmentRulePriority `json:"Priorities,omitnil,omitempty" name:"Priorities"`
+}
+
+func (r *UpdateMessageEnrichmentRulePriorityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateMessageEnrichmentRulePriorityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Priorities")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateMessageEnrichmentRulePriorityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateMessageEnrichmentRulePriorityResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateMessageEnrichmentRulePriorityResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateMessageEnrichmentRulePriorityResponseParams `json:"Response"`
+}
+
+func (r *UpdateMessageEnrichmentRulePriorityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateMessageEnrichmentRulePriorityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -257,6 +257,12 @@ type ClusterConfigsInfoFromEMR struct {
 
 	// 保存配置文件的路径
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// 节点级配置的ip，当ConfigLevel取值为node时，此参数必选；
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 可选参数，参数取值：node,cluster; node: 节点级参数配置，cluster: 实例级参数配置；
+	ConfigLevel *string `json:"ConfigLevel,omitnil,omitempty" name:"ConfigLevel"`
 }
 
 type ClusterInfo struct {

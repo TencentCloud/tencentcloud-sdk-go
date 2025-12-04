@@ -7835,6 +7835,62 @@ func (c *Client) ModifyClusterDatabaseWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyClusterGlobalEncryptionRequest() (request *ModifyClusterGlobalEncryptionRequest) {
+    request = &ModifyClusterGlobalEncryptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyClusterGlobalEncryption")
+    
+    
+    return
+}
+
+func NewModifyClusterGlobalEncryptionResponse() (response *ModifyClusterGlobalEncryptionResponse) {
+    response = &ModifyClusterGlobalEncryptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterGlobalEncryption
+// 开关全局加密
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyClusterGlobalEncryption(request *ModifyClusterGlobalEncryptionRequest) (response *ModifyClusterGlobalEncryptionResponse, err error) {
+    return c.ModifyClusterGlobalEncryptionWithContext(context.Background(), request)
+}
+
+// ModifyClusterGlobalEncryption
+// 开关全局加密
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyClusterGlobalEncryptionWithContext(ctx context.Context, request *ModifyClusterGlobalEncryptionRequest) (response *ModifyClusterGlobalEncryptionResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterGlobalEncryptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyClusterGlobalEncryption")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterGlobalEncryption require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterGlobalEncryptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterNameRequest() (request *ModifyClusterNameRequest) {
     request = &ModifyClusterNameRequest{
         BaseRequest: &tchttp.BaseRequest{},

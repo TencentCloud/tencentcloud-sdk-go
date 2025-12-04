@@ -677,6 +677,9 @@ type DataKeyMetadata struct {
 	// CMK的全局唯一标识
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
+	// CMK的名称
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
 	// 作为密钥更容易辨识，更容易被人看懂的数据密钥名称
 	DataKeyName *string `json:"DataKeyName,omitnil,omitempty" name:"DataKeyName"`
 
@@ -1070,7 +1073,7 @@ func (r *DescribeKeyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeKeyResponseParams struct {
-	// 密钥属性信息
+	// 密钥属性信息。
 	KeyMetadata *KeyMetadata `json:"KeyMetadata,omitnil,omitempty" name:"KeyMetadata"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2422,6 +2425,9 @@ type GenerateDataKeyRequestParams struct {
 
 	// KMS 独享版对应的 HSM 集群 ID。如果指定HsmClusterId，表明根密钥在此集群里，会校验KeyId是否和HsmClusterId对应。
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+
+	// 标签列表,当参数IsHostedByKms=1，数据密钥托管到kms时有效.
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type GenerateDataKeyRequest struct {
@@ -2456,6 +2462,9 @@ type GenerateDataKeyRequest struct {
 
 	// KMS 独享版对应的 HSM 集群 ID。如果指定HsmClusterId，表明根密钥在此集群里，会校验KeyId是否和HsmClusterId对应。
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+
+	// 标签列表,当参数IsHostedByKms=1，数据密钥托管到kms时有效.
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *GenerateDataKeyRequest) ToJsonString() string {
@@ -2480,6 +2489,7 @@ func (r *GenerateDataKeyRequest) FromJsonString(s string) error {
 	delete(f, "DataKeyName")
 	delete(f, "Description")
 	delete(f, "HsmClusterId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateDataKeyRequest has unknown keys!", "")
 	}
@@ -2500,6 +2510,12 @@ type GenerateDataKeyResponseParams struct {
 
 	// DataKey的全局唯一标识,当KMS托管数据密钥时返回。
 	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+	TagCode *uint64 `json:"TagCode,omitnil,omitempty" name:"TagCode"`
+
+	// 标签操作的返回信息
+	TagMsg *string `json:"TagMsg,omitnil,omitempty" name:"TagMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3085,6 +3101,9 @@ type ImportDataKeyRequestParams struct {
 
 	// KMS 独享版对应的 HSM 集群 ID。如果指定HsmClusterId，表明根密钥在此集群里，会校验KeyId是否和HsmClusterId对应。
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ImportDataKeyRequest struct {
@@ -3108,6 +3127,9 @@ type ImportDataKeyRequest struct {
 
 	// KMS 独享版对应的 HSM 集群 ID。如果指定HsmClusterId，表明根密钥在此集群里，会校验KeyId是否和HsmClusterId对应。
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *ImportDataKeyRequest) ToJsonString() string {
@@ -3128,6 +3150,7 @@ func (r *ImportDataKeyRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "KeyId")
 	delete(f, "HsmClusterId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportDataKeyRequest has unknown keys!", "")
 	}
@@ -3141,6 +3164,12 @@ type ImportDataKeyResponseParams struct {
 
 	// DataKey的全局唯一标识  否  官网/国内&国际站展示
 	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+	TagCode *uint64 `json:"TagCode,omitnil,omitempty" name:"TagCode"`
+
+	// 标签操作的返回信息
+	TagMsg *string `json:"TagMsg,omitnil,omitempty" name:"TagMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3410,6 +3439,9 @@ type ListDataKeyDetailRequestParams struct {
 
 	// 数据密钥的长度
 	DataKeyLen *uint64 `json:"DataKeyLen,omitnil,omitempty" name:"DataKeyLen"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 type ListDataKeyDetailRequest struct {
@@ -3444,6 +3476,9 @@ type ListDataKeyDetailRequest struct {
 
 	// 数据密钥的长度
 	DataKeyLen *uint64 `json:"DataKeyLen,omitnil,omitempty" name:"DataKeyLen"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 func (r *ListDataKeyDetailRequest) ToJsonString() string {
@@ -3468,6 +3503,7 @@ func (r *ListDataKeyDetailRequest) FromJsonString(s string) error {
 	delete(f, "HsmClusterId")
 	delete(f, "KeyId")
 	delete(f, "DataKeyLen")
+	delete(f, "TagFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDataKeyDetailRequest has unknown keys!", "")
 	}

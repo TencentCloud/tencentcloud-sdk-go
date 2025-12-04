@@ -12228,6 +12228,70 @@ func (r *ModifyClusterDatabaseResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyClusterGlobalEncryptionRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 开启或关闭全局加密
+	IsOpenGlobalEncryption *bool `json:"IsOpenGlobalEncryption,omitnil,omitempty" name:"IsOpenGlobalEncryption"`
+}
+
+type ModifyClusterGlobalEncryptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 开启或关闭全局加密
+	IsOpenGlobalEncryption *bool `json:"IsOpenGlobalEncryption,omitnil,omitempty" name:"IsOpenGlobalEncryption"`
+}
+
+func (r *ModifyClusterGlobalEncryptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterGlobalEncryptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "IsOpenGlobalEncryption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterGlobalEncryptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterGlobalEncryptionResponseParams struct {
+	// 异步任务id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterGlobalEncryptionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterGlobalEncryptionResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterGlobalEncryptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterGlobalEncryptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyClusterNameRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`

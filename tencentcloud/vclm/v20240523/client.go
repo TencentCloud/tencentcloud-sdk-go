@@ -485,6 +485,68 @@ func (c *Client) DescribeTemplateToVideoJobWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeVideoFaceFusionJobRequest() (request *DescribeVideoFaceFusionJobRequest) {
+    request = &DescribeVideoFaceFusionJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeVideoFaceFusionJob")
+    
+    
+    return
+}
+
+func NewDescribeVideoFaceFusionJobResponse() (response *DescribeVideoFaceFusionJobResponse) {
+    response = &DescribeVideoFaceFusionJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVideoFaceFusionJob
+// 查询视频人脸融合任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeVideoFaceFusionJob(request *DescribeVideoFaceFusionJobRequest) (response *DescribeVideoFaceFusionJobResponse, err error) {
+    return c.DescribeVideoFaceFusionJobWithContext(context.Background(), request)
+}
+
+// DescribeVideoFaceFusionJob
+// 查询视频人脸融合任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeVideoFaceFusionJobWithContext(ctx context.Context, request *DescribeVideoFaceFusionJobRequest) (response *DescribeVideoFaceFusionJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoFaceFusionJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeVideoFaceFusionJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoFaceFusionJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoFaceFusionJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVideoStylizationJobRequest() (request *DescribeVideoStylizationJobRequest) {
     request = &DescribeVideoStylizationJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -965,6 +1027,66 @@ func (c *Client) SubmitTemplateToVideoJobWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewSubmitTemplateToVideoJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitVideoFaceFusionJobRequest() (request *SubmitVideoFaceFusionJobRequest) {
+    request = &SubmitVideoFaceFusionJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitVideoFaceFusionJob")
+    
+    
+    return
+}
+
+func NewSubmitVideoFaceFusionJobResponse() (response *SubmitVideoFaceFusionJobResponse) {
+    response = &SubmitVideoFaceFusionJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitVideoFaceFusionJob
+// 提交视频人脸融合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+func (c *Client) SubmitVideoFaceFusionJob(request *SubmitVideoFaceFusionJobRequest) (response *SubmitVideoFaceFusionJobResponse, err error) {
+    return c.SubmitVideoFaceFusionJobWithContext(context.Background(), request)
+}
+
+// SubmitVideoFaceFusionJob
+// 提交视频人脸融合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+func (c *Client) SubmitVideoFaceFusionJobWithContext(ctx context.Context, request *SubmitVideoFaceFusionJobRequest) (response *SubmitVideoFaceFusionJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitVideoFaceFusionJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitVideoFaceFusionJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitVideoFaceFusionJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitVideoFaceFusionJobResponse()
     err = c.Send(request, response)
     return
 }

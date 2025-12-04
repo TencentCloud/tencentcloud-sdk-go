@@ -475,6 +475,72 @@ func (r *DescribeTemplateToVideoJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeVideoFaceFusionJobRequestParams struct {
+	// 任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeVideoFaceFusionJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeVideoFaceFusionJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoFaceFusionJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoFaceFusionJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoFaceFusionJobResponseParams struct {
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 结果视频 URL。有效期 24 小时。
+	ResultVideoUrl *string `json:"ResultVideoUrl,omitnil,omitempty" name:"ResultVideoUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVideoFaceFusionJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVideoFaceFusionJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeVideoFaceFusionJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoFaceFusionJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVideoStylizationJobRequestParams struct {
 	// 任务ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -553,6 +619,43 @@ func (r *DescribeVideoStylizationJobResponse) FromJsonString(s string) error {
 type ExtraParam struct {
 	// 预签名的上传url，支持把视频直接传到客户指定的地址。
 	UserDesignatedUrl *string `json:"UserDesignatedUrl,omitnil,omitempty" name:"UserDesignatedUrl"`
+}
+
+type FaceMergeInfo struct {
+	// 融合图片
+	MergeFaceImage *Image `json:"MergeFaceImage,omitnil,omitempty" name:"MergeFaceImage"`
+
+	// 上传的图片人脸位置信息（人脸框）
+	// Width、Height >= 30。
+	MergeFaceRect *FaceRect `json:"MergeFaceRect,omitnil,omitempty" name:"MergeFaceRect"`
+
+	// 素材人脸ID，不填默认取上传图片中最大人脸。
+	TemplateFaceID *string `json:"TemplateFaceID,omitnil,omitempty" name:"TemplateFaceID"`
+}
+
+type FaceRect struct {
+	// 人脸框左上角横坐标。
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
+
+	// 人脸框左上角纵坐标。
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
+
+	// 人脸框宽度。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 人脸框高度。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+}
+
+type FaceTemplateInfo struct {
+	// 角色ID。需要与MergeInfos中的TemplateFaceID依次对应。需要填数字，建议填"0"、"1"，依次累加。
+	TemplateFaceID *string `json:"TemplateFaceID,omitnil,omitempty" name:"TemplateFaceID"`
+
+	// 视频模板中要替换的人脸图片
+	TemplateFaceImage *Image `json:"TemplateFaceImage,omitnil,omitempty" name:"TemplateFaceImage"`
+
+	// 视频模板中要替换的人脸图片的人脸框。不填默认取要替换的人脸图片中最大人脸。
+	TemplateFaceRect *FaceRect `json:"TemplateFaceRect,omitnil,omitempty" name:"TemplateFaceRect"`
 }
 
 type Image struct {
@@ -1216,6 +1319,135 @@ func (r *SubmitTemplateToVideoJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitTemplateToVideoJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitVideoFaceFusionJobRequestParams struct {
+	// 视频素材下载地址。用户自定义模版视频下载地址，使用前需要先调用视频审核接口进行内容审核。视频限制：分辨率≤4k，fps≤25，视频大小≤1G，时长≤20 秒，支持格式mp4。
+	// 
+	// 输入视频建议：
+	// 姿态：人脸相对镜头水平方向角度转动不超过 90°,垂直方向角度转动不超过 20°。遮挡：脸部遮挡面积不超过 50%，不要完全遮挡五官，不要有半透明遮挡（强光，玻璃，透明眼镜等）、以及细碎离散的脸部遮挡（如飘落的花瓣）。妆容及光照：避免浓妆、复杂妆容，避免复杂光照、闪烁，这些属性无法完全恢复，并对稳定性有影响。针对特殊表情和微表情，针对局部肌肉控制下的微表情，以及过于夸张的特殊表情等不保证表情效果完全恢复。
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
+
+	// 视频素材模板的人脸位置信息。
+	// 目前最多支持融合视频素材中的 6 张人脸  
+	// 输入图片要求：  
+	// 1、用户图限制大小不超过 10MB  
+	// 2、图片最大分辨率不超过 4k，建议最小为 128，  人脸框最小为 68
+	// 3、支持格式 jpg，png  
+	// 4、如果用户图中未指定人脸且有多张人脸，  默认融合最大人脸  
+	// 输入图片建议：  包含上述视频中出现的人物的单人照，并且正面、清晰、无遮挡
+	TemplateInfos []*FaceTemplateInfo `json:"TemplateInfos,omitnil,omitempty" name:"TemplateInfos"`
+
+	// 用户人脸图片位置信息。
+	// 输入图片要求：
+	// 1、用户图限制大小不超过 10MB
+	// 2、图片最大分辨率不超过 4k，建议最小为 128，人脸框最小为 68
+	// 3、支持格式 jpg，png
+	// 4、如果未指定人脸且用户图中有多张人脸，
+	// 默认融合最大人脸
+	// 输入图建议：
+	// 正脸无遮挡
+	MergeInfos []*FaceMergeInfo `json:"MergeInfos,omitnil,omitempty" name:"MergeInfos"`
+
+	// 为生成视频添加标识的开关，默认为1。 
+	// 1：添加标识。 0：不添加标识。 其他数值：默认按1处理。 
+	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 视频水印Logo参数标识内容设置。   
+	// 默认在融合结果图右下角添加“AI生成”类似字样，您可根据自身需要替换为其他的Logo图片。   
+	// 输入建议：输入水印图片宽高需小于视频宽高
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+type SubmitVideoFaceFusionJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 视频素材下载地址。用户自定义模版视频下载地址，使用前需要先调用视频审核接口进行内容审核。视频限制：分辨率≤4k，fps≤25，视频大小≤1G，时长≤20 秒，支持格式mp4。
+	// 
+	// 输入视频建议：
+	// 姿态：人脸相对镜头水平方向角度转动不超过 90°,垂直方向角度转动不超过 20°。遮挡：脸部遮挡面积不超过 50%，不要完全遮挡五官，不要有半透明遮挡（强光，玻璃，透明眼镜等）、以及细碎离散的脸部遮挡（如飘落的花瓣）。妆容及光照：避免浓妆、复杂妆容，避免复杂光照、闪烁，这些属性无法完全恢复，并对稳定性有影响。针对特殊表情和微表情，针对局部肌肉控制下的微表情，以及过于夸张的特殊表情等不保证表情效果完全恢复。
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
+
+	// 视频素材模板的人脸位置信息。
+	// 目前最多支持融合视频素材中的 6 张人脸  
+	// 输入图片要求：  
+	// 1、用户图限制大小不超过 10MB  
+	// 2、图片最大分辨率不超过 4k，建议最小为 128，  人脸框最小为 68
+	// 3、支持格式 jpg，png  
+	// 4、如果用户图中未指定人脸且有多张人脸，  默认融合最大人脸  
+	// 输入图片建议：  包含上述视频中出现的人物的单人照，并且正面、清晰、无遮挡
+	TemplateInfos []*FaceTemplateInfo `json:"TemplateInfos,omitnil,omitempty" name:"TemplateInfos"`
+
+	// 用户人脸图片位置信息。
+	// 输入图片要求：
+	// 1、用户图限制大小不超过 10MB
+	// 2、图片最大分辨率不超过 4k，建议最小为 128，人脸框最小为 68
+	// 3、支持格式 jpg，png
+	// 4、如果未指定人脸且用户图中有多张人脸，
+	// 默认融合最大人脸
+	// 输入图建议：
+	// 正脸无遮挡
+	MergeInfos []*FaceMergeInfo `json:"MergeInfos,omitnil,omitempty" name:"MergeInfos"`
+
+	// 为生成视频添加标识的开关，默认为1。 
+	// 1：添加标识。 0：不添加标识。 其他数值：默认按1处理。 
+	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 视频水印Logo参数标识内容设置。   
+	// 默认在融合结果图右下角添加“AI生成”类似字样，您可根据自身需要替换为其他的Logo图片。   
+	// 输入建议：输入水印图片宽高需小于视频宽高
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+func (r *SubmitVideoFaceFusionJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitVideoFaceFusionJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VideoUrl")
+	delete(f, "TemplateInfos")
+	delete(f, "MergeInfos")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitVideoFaceFusionJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitVideoFaceFusionJobResponseParams struct {
+	// 视频人脸融合任务的job id（job有效期24小时）
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitVideoFaceFusionJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitVideoFaceFusionJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitVideoFaceFusionJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitVideoFaceFusionJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

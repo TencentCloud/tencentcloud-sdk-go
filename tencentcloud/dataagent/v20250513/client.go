@@ -509,6 +509,72 @@ func (c *Client) GetSessionDetailsWithContext(ctx context.Context, request *GetS
     return
 }
 
+func NewGetUploadJobDetailsRequest() (request *GetUploadJobDetailsRequest) {
+    request = &GetUploadJobDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "GetUploadJobDetails")
+    
+    
+    return
+}
+
+func NewGetUploadJobDetailsResponse() (response *GetUploadJobDetailsResponse) {
+    response = &GetUploadJobDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetUploadJobDetails
+// 查询上传任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetUploadJobDetails(request *GetUploadJobDetailsRequest) (response *GetUploadJobDetailsResponse, err error) {
+    return c.GetUploadJobDetailsWithContext(context.Background(), request)
+}
+
+// GetUploadJobDetails
+// 查询上传任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetUploadJobDetailsWithContext(ctx context.Context, request *GetUploadJobDetailsRequest) (response *GetUploadJobDetailsResponse, err error) {
+    if request == nil {
+        request = NewGetUploadJobDetailsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "GetUploadJobDetails")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUploadJobDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetUploadJobDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyChunkRequest() (request *ModifyChunkRequest) {
     request = &ModifyChunkRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -779,6 +845,80 @@ func (c *Client) StopChatAIWithContext(ctx context.Context, request *StopChatAIR
     request.SetContext(ctx)
     
     response = NewStopChatAIResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadAndCommitFileRequest() (request *UploadAndCommitFileRequest) {
+    request = &UploadAndCommitFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "UploadAndCommitFile")
+    
+    
+    return
+}
+
+func NewUploadAndCommitFileResponse() (response *UploadAndCommitFileResponse) {
+    response = &UploadAndCommitFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UploadAndCommitFile
+// 上传提交文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UploadAndCommitFile(request *UploadAndCommitFileRequest) (response *UploadAndCommitFileResponse, err error) {
+    return c.UploadAndCommitFileWithContext(context.Background(), request)
+}
+
+// UploadAndCommitFile
+// 上传提交文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UploadAndCommitFileWithContext(ctx context.Context, request *UploadAndCommitFileRequest) (response *UploadAndCommitFileResponse, err error) {
+    if request == nil {
+        request = NewUploadAndCommitFileRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "UploadAndCommitFile")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadAndCommitFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadAndCommitFileResponse()
     err = c.Send(request, response)
     return
 }

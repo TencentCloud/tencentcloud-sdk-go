@@ -8816,10 +8816,13 @@ func (r *DescribeRocketMQProducersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRocketMQPublicAccessMonitorDataRequestParams struct {
-	// 专享集群ID
+	// 集群 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 指标名称，仅支持单指标拉取。目前仅支持：ClientIntraffic; ClientOuttraffic
+	// 指标名称，仅支持单指标拉取。指标枚举如下：
+	// 
+	// - ClientIntraffic：入流量
+	// - ClientOuttraffic：出流量
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 起始时间
@@ -8835,10 +8838,13 @@ type DescribeRocketMQPublicAccessMonitorDataRequestParams struct {
 type DescribeRocketMQPublicAccessMonitorDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 专享集群ID
+	// 集群 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 指标名称，仅支持单指标拉取。目前仅支持：ClientIntraffic; ClientOuttraffic
+	// 指标名称，仅支持单指标拉取。指标枚举如下：
+	// 
+	// - ClientIntraffic：入流量
+	// - ClientOuttraffic：出流量
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 起始时间

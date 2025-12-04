@@ -1770,6 +1770,20 @@ type DBItem struct {
 	Triggers []*string `json:"Triggers,omitnil,omitempty" name:"Triggers"`
 }
 
+type DBOpFilter struct {
+	// 规则生效的库名
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// 库级 DDL/DML 过滤规则
+	OpFilter *OpFilter `json:"OpFilter,omitnil,omitempty" name:"OpFilter"`
+
+	// 表级 DDL/DML 过滤信息
+	Tables []*TableFilter `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// 视图级 DDL/DML 过滤信息
+	Views []*ViewFilter `json:"Views,omitnil,omitempty" name:"Views"`
+}
+
 type Database struct {
 	// 需要迁移或同步的库名，当ObjectMode为Partial时，此项必填
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
@@ -5962,6 +5976,9 @@ type Objects struct {
 
 	// OnlineDDL类型，冗余字段不做配置用途
 	OnlineDDL *OnlineDDL `json:"OnlineDDL,omitnil,omitempty" name:"OnlineDDL"`
+
+	// 库/表/视图级 DML/DDL 白名单
+	DatabasesOpFilter []*DBOpFilter `json:"DatabasesOpFilter,omitnil,omitempty" name:"DatabasesOpFilter"`
 }
 
 type OffsetTimeMap struct {
@@ -5975,6 +5992,14 @@ type OffsetTimeMap struct {
 type OnlineDDL struct {
 	// 状态，ON-启用，OFF-不启用。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type OpFilter struct {
+	// DML 白名单
+	OpTypes []*string `json:"OpTypes,omitnil,omitempty" name:"OpTypes"`
+
+	// DDL 白名单
+	DdlOptions []*DdlOption `json:"DdlOptions,omitnil,omitempty" name:"DdlOptions"`
 }
 
 type Options struct {
@@ -7934,6 +7959,14 @@ type Table struct {
 	TableEditMode *string `json:"TableEditMode,omitnil,omitempty" name:"TableEditMode"`
 }
 
+type TableFilter struct {
+	// 规则生效的表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 表级 DDL/DML 过滤规则
+	OpFilter *OpFilter `json:"OpFilter,omitnil,omitempty" name:"OpFilter"`
+}
+
 type TableItem struct {
 	// 迁移的表名，大小写敏感
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
@@ -8029,6 +8062,14 @@ type View struct {
 
 	// 预留字段、目前暂时不支持view的重命名
 	NewViewName *string `json:"NewViewName,omitnil,omitempty" name:"NewViewName"`
+}
+
+type ViewFilter struct {
+	// 规则生效的视图名
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// 视图级 DDL/DML 过滤规则
+	OpFilter *OpFilter `json:"OpFilter,omitnil,omitempty" name:"OpFilter"`
 }
 
 type ViewItem struct {

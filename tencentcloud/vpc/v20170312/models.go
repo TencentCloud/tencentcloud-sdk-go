@@ -699,6 +699,10 @@ type AllocateAddressesRequestParams struct {
 	// <li>传统账户类型，无需传递此参数，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
+	// IP 资源计费模式，当前仅支持原生 IP。
+	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul><li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li><li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li></ul></li></ul>
+	IPChargeType *string `json:"IPChargeType,omitnil,omitempty" name:"IPChargeType"`
+
 	// EIP出带宽上限，单位：Mbps。
 	// <ul style="margin:0"><li>标准账户类型EIP出带宽上限，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li>
 	// <li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li>
@@ -714,7 +718,9 @@ type AllocateAddressesRequestParams struct {
 	// <li>EIP：弹性公网 IP。 </li>
 	// <li>AnycastEIP：加速 IP，已开通 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)白名单的用户可选。仅部分地域支持加速IP，详情可见Anycast公网加速[购买指南](https://cloud.tencent.com/document/product/644/12617)。</li>
 	// <li>HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
-	// <li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li>
+	// <li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP。</li>
+	// <li>ResidentialEIP：原生 IP。仅部分地域支持原生IP。</li>
+	// 关于弹性公网 IP 支持的 IP 类型，请见[产品概述](https://cloud.tencent.com/document/product/1199/41646)。
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 
 	// Anycast发布域。
@@ -759,14 +765,6 @@ type AllocateAddressesRequestParams struct {
 
 	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
-
-	// 原生EIP IP资源的计费方式。
-	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
-	// <li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
-	// <li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
-	// </ul></li>
-	// </ul>
-	IPChargeType *string `json:"IPChargeType,omitnil,omitempty" name:"IPChargeType"`
 }
 
 type AllocateAddressesRequest struct {
@@ -790,6 +788,10 @@ type AllocateAddressesRequest struct {
 	// <li>传统账户类型，无需传递此参数，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
+	// IP 资源计费模式，当前仅支持原生 IP。
+	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul><li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li><li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li></ul></li></ul>
+	IPChargeType *string `json:"IPChargeType,omitnil,omitempty" name:"IPChargeType"`
+
 	// EIP出带宽上限，单位：Mbps。
 	// <ul style="margin:0"><li>标准账户类型EIP出带宽上限，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li>
 	// <li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li>
@@ -805,7 +807,9 @@ type AllocateAddressesRequest struct {
 	// <li>EIP：弹性公网 IP。 </li>
 	// <li>AnycastEIP：加速 IP，已开通 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)白名单的用户可选。仅部分地域支持加速IP，详情可见Anycast公网加速[购买指南](https://cloud.tencent.com/document/product/644/12617)。</li>
 	// <li>HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
-	// <li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li>
+	// <li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP。</li>
+	// <li>ResidentialEIP：原生 IP。仅部分地域支持原生IP。</li>
+	// 关于弹性公网 IP 支持的 IP 类型，请见[产品概述](https://cloud.tencent.com/document/product/1199/41646)。
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 
 	// Anycast发布域。
@@ -848,14 +852,6 @@ type AllocateAddressesRequest struct {
 
 	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
-
-	// 原生EIP IP资源的计费方式。
-	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
-	// <li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li>
-	// <li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li>
-	// </ul></li>
-	// </ul>
-	IPChargeType *string `json:"IPChargeType,omitnil,omitempty" name:"IPChargeType"`
 }
 
 func (r *AllocateAddressesRequest) ToJsonString() string {
@@ -873,6 +869,7 @@ func (r *AllocateAddressesRequest) FromJsonString(s string) error {
 	delete(f, "AddressCount")
 	delete(f, "InternetServiceProvider")
 	delete(f, "InternetChargeType")
+	delete(f, "IPChargeType")
 	delete(f, "InternetMaxBandwidthOut")
 	delete(f, "AddressChargePrepaid")
 	delete(f, "AddressType")
@@ -887,7 +884,6 @@ func (r *AllocateAddressesRequest) FromJsonString(s string) error {
 	delete(f, "Egress")
 	delete(f, "AntiDDoSPackageId")
 	delete(f, "ClientToken")
-	delete(f, "IPChargeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AllocateAddressesRequest has unknown keys!", "")
 	}
@@ -3663,6 +3659,17 @@ type ConflictSource struct {
 	ConflictItemSet []*ConflictItem `json:"ConflictItemSet,omitnil,omitempty" name:"ConflictItemSet"`
 }
 
+type ConnectionStateTimeouts struct {
+	// UDP映射空闲时间，指多少秒以后UDP流停止向端点发送。取值范围为：3-7200秒，默认为10秒。
+	UDPMappingTimeout *uint64 `json:"UDPMappingTimeout,omitnil,omitempty" name:"UDPMappingTimeout"`
+
+	// TCP已建立的连接空闲超时，指多少秒以后连接变为空闲状态。取值范围为：40-10800秒，默认为10800秒。
+	TCPEstablishedConnectionTimeout *uint64 `json:"TCPEstablishedConnectionTimeout,omitnil,omitempty" name:"TCPEstablishedConnectionTimeout"`
+
+	// TCP TIME_WAIT超时，指完全关闭的TCP连接在到期后保留在NAT映射中的秒数。取值范围为：10-600秒，默认为120秒。
+	TcpTimeWaitTimeout *uint64 `json:"TcpTimeWaitTimeout,omitnil,omitempty" name:"TcpTimeWaitTimeout"`
+}
+
 // Predefined struct for user
 type CreateAddressTemplateGroupRequestParams struct {
 	// IP地址模板集合名称。
@@ -5579,6 +5586,9 @@ type CreateNatGatewayRequestParams struct {
 
 	// NAT实例是否开启删除保护
 	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
+
+	// 独享实例规格。取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
+	ExclusiveType *string `json:"ExclusiveType,omitnil,omitempty" name:"ExclusiveType"`
 }
 
 type CreateNatGatewayRequest struct {
@@ -5625,6 +5635,9 @@ type CreateNatGatewayRequest struct {
 
 	// NAT实例是否开启删除保护
 	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
+
+	// 独享实例规格。取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
+	ExclusiveType *string `json:"ExclusiveType,omitnil,omitempty" name:"ExclusiveType"`
 }
 
 func (r *CreateNatGatewayRequest) ToJsonString() string {
@@ -5653,6 +5666,7 @@ func (r *CreateNatGatewayRequest) FromJsonString(s string) error {
 	delete(f, "PublicIpFromSameZone")
 	delete(f, "NatProductVersion")
 	delete(f, "DeletionProtectionEnabled")
+	delete(f, "ExclusiveType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNatGatewayRequest has unknown keys!", "")
 	}
@@ -8235,6 +8249,9 @@ type CreateVpcRequestParams struct {
 
 	// vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
 	EnableRouteVpcPublish *bool `json:"EnableRouteVpcPublish,omitnil,omitempty" name:"EnableRouteVpcPublish"`
+
+	// vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+	EnableRouteVpcPublishIpv6 *bool `json:"EnableRouteVpcPublishIpv6,omitnil,omitempty" name:"EnableRouteVpcPublishIpv6"`
 }
 
 type CreateVpcRequest struct {
@@ -8260,6 +8277,9 @@ type CreateVpcRequest struct {
 
 	// vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
 	EnableRouteVpcPublish *bool `json:"EnableRouteVpcPublish,omitnil,omitempty" name:"EnableRouteVpcPublish"`
+
+	// vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+	EnableRouteVpcPublishIpv6 *bool `json:"EnableRouteVpcPublishIpv6,omitnil,omitempty" name:"EnableRouteVpcPublishIpv6"`
 }
 
 func (r *CreateVpcRequest) ToJsonString() string {
@@ -8281,6 +8301,7 @@ func (r *CreateVpcRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "Tags")
 	delete(f, "EnableRouteVpcPublish")
+	delete(f, "EnableRouteVpcPublishIpv6")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpcRequest has unknown keys!", "")
 	}
@@ -30354,6 +30375,9 @@ type ModifyVpcAttributeRequestParams struct {
 
 	// 发布cdc 子网到云联网的开关。true: 发布, false: 不发布。
 	EnableCdcPublish *bool `json:"EnableCdcPublish,omitnil,omitempty" name:"EnableCdcPublish"`
+
+	// vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+	EnableRouteVpcPublishIpv6 *bool `json:"EnableRouteVpcPublishIpv6,omitnil,omitempty" name:"EnableRouteVpcPublishIpv6"`
 }
 
 type ModifyVpcAttributeRequest struct {
@@ -30379,6 +30403,9 @@ type ModifyVpcAttributeRequest struct {
 
 	// 发布cdc 子网到云联网的开关。true: 发布, false: 不发布。
 	EnableCdcPublish *bool `json:"EnableCdcPublish,omitnil,omitempty" name:"EnableCdcPublish"`
+
+	// vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+	EnableRouteVpcPublishIpv6 *bool `json:"EnableRouteVpcPublishIpv6,omitnil,omitempty" name:"EnableRouteVpcPublishIpv6"`
 }
 
 func (r *ModifyVpcAttributeRequest) ToJsonString() string {
@@ -30400,6 +30427,7 @@ func (r *ModifyVpcAttributeRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "EnableRouteVpcPublish")
 	delete(f, "EnableCdcPublish")
+	delete(f, "EnableRouteVpcPublishIpv6")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpcAttributeRequest has unknown keys!", "")
 	}
@@ -31380,6 +31408,12 @@ type NatGateway struct {
 
 	// NAT实例是否开启删除保护
 	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
+
+	// NAT实例连接超时时间
+	ConnectionStateTimeouts *ConnectionStateTimeouts `json:"ConnectionStateTimeouts,omitnil,omitempty" name:"ConnectionStateTimeouts"`
+
+	// 独享实例规格。取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
+	ExclusiveType *string `json:"ExclusiveType,omitnil,omitempty" name:"ExclusiveType"`
 }
 
 type NatGatewayAddress struct {
@@ -33574,6 +33608,9 @@ type ResetNatGatewayConnectionRequestParams struct {
 
 	// NAT网关并发连接上限，形如：1000000、3000000、10000000。
 	MaxConcurrentConnection *uint64 `json:"MaxConcurrentConnection,omitnil,omitempty" name:"MaxConcurrentConnection"`
+
+	// 独享实例规格。如果要变配到独享实例，此参数必选，取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
+	ExclusiveType *string `json:"ExclusiveType,omitnil,omitempty" name:"ExclusiveType"`
 }
 
 type ResetNatGatewayConnectionRequest struct {
@@ -33584,6 +33621,9 @@ type ResetNatGatewayConnectionRequest struct {
 
 	// NAT网关并发连接上限，形如：1000000、3000000、10000000。
 	MaxConcurrentConnection *uint64 `json:"MaxConcurrentConnection,omitnil,omitempty" name:"MaxConcurrentConnection"`
+
+	// 独享实例规格。如果要变配到独享实例，此参数必选，取值范围：ExclusiveSmall/ExclusiveMedium1/ExclusiveLarge1
+	ExclusiveType *string `json:"ExclusiveType,omitnil,omitempty" name:"ExclusiveType"`
 }
 
 func (r *ResetNatGatewayConnectionRequest) ToJsonString() string {
@@ -33600,6 +33640,7 @@ func (r *ResetNatGatewayConnectionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "NatGatewayId")
 	delete(f, "MaxConcurrentConnection")
+	delete(f, "ExclusiveType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetNatGatewayConnectionRequest has unknown keys!", "")
 	}
@@ -35660,14 +35701,14 @@ type TranslationAclRule struct {
 	// 源端口。
 	SourcePort *string `json:"SourcePort,omitnil,omitempty" name:"SourcePort"`
 
-	// 源地址。支持`ip`或`cidr`格式"xxx.xxx.xxx.000/xx"
-	SourceCidr *string `json:"SourceCidr,omitnil,omitempty" name:"SourceCidr"`
-
 	// 目的端口。
 	DestinationPort *string `json:"DestinationPort,omitnil,omitempty" name:"DestinationPort"`
 
 	// 目的地址。
 	DestinationCidr *string `json:"DestinationCidr,omitnil,omitempty" name:"DestinationCidr"`
+
+	// 源地址。支持`ip`或`cidr`格式"xxx.xxx.xxx.000/xx"
+	SourceCidr *string `json:"SourceCidr,omitnil,omitempty" name:"SourceCidr"`
 
 	// ACL规则`ID`。
 	AclRuleId *uint64 `json:"AclRuleId,omitnil,omitempty" name:"AclRuleId"`
@@ -36318,6 +36359,9 @@ type Vpc struct {
 
 	// 返回多运营商IPv6 Cidr Block
 	Ipv6CidrBlockSet []*ISPIPv6CidrBlock `json:"Ipv6CidrBlockSet,omitnil,omitempty" name:"Ipv6CidrBlockSet"`
+
+	// vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+	EnableRouteVpcPublishIpv6 *bool `json:"EnableRouteVpcPublishIpv6,omitnil,omitempty" name:"EnableRouteVpcPublishIpv6"`
 }
 
 type VpcEndPointServiceUser struct {

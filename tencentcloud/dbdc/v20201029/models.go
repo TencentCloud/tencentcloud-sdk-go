@@ -332,6 +332,12 @@ type DescribeInstanceDetail struct {
 
 	// 所属集群ID(默认集群为空)
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 实例标签
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// CPU类型：Intel/AMD,Hygon
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 // Predefined struct for user
@@ -445,6 +451,12 @@ type DescribeInstanceDetailResponseParams struct {
 
 	// 所属集群ID(默认集群为空)
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 独享集群的标签信息
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// CPU类型，Intel/AMD,Hygon
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -961,4 +973,12 @@ func (r *ModifyInstanceNameResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyInstanceNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceTag struct {
+	// 标签键
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }

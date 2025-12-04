@@ -40,7 +40,7 @@ type CreateTtsTaskRequestParams struct {
 	// 音色 ID，价格请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
 	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 
-	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
+	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitnil,omitempty" name:"PrimaryLanguage"`
 
 	// 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
@@ -86,7 +86,7 @@ type CreateTtsTaskRequest struct {
 	// 音色 ID，价格请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
 	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 
-	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
+	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitnil,omitempty" name:"PrimaryLanguage"`
 
 	// 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
@@ -298,7 +298,7 @@ type TextToVoiceRequestParams struct {
 	// 一句话版声音复刻音色ID，使用一句话版声音复刻音色时需填写。
 	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
 
-	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
+	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitnil,omitempty" name:"PrimaryLanguage"`
 
 	// 音频采样率：
@@ -352,7 +352,7 @@ type TextToVoiceRequest struct {
 	// 一句话版声音复刻音色ID，使用一句话版声音复刻音色时需填写。
 	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
 
-	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
+	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitnil,omitempty" name:"PrimaryLanguage"`
 
 	// 音频采样率：

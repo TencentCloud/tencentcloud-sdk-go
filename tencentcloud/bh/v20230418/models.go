@@ -567,6 +567,11 @@ type AssetSyncStatus struct {
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
+type AuthModeSetting struct {
+	// 双因子认证，0-不开启，1-OTP，2-短信
+	AuthMode *uint64 `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
+}
+
 // Predefined struct for user
 type BindDeviceAccountPasswordRequestParams struct {
 	// 主机账号ID
@@ -5138,6 +5143,9 @@ func (r *DescribeSecuritySettingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecuritySettingResponseParams struct {
+	// 无
+	SecuritySetting *SecuritySetting `json:"SecuritySetting,omitnil,omitempty" name:"SecuritySetting"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -8102,6 +8110,14 @@ type OperationTask struct {
 	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
 }
 
+type ReconnectionSetting struct {
+	// 重连次数
+	ReconnectionMaxCount *uint64 `json:"ReconnectionMaxCount,omitnil,omitempty" name:"ReconnectionMaxCount"`
+
+	// true：可以重连，false：不可以重连
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
 type ReplayInformation struct {
 	// 令牌
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
@@ -9890,6 +9906,14 @@ func (r *SearchTaskResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SecuritySetting struct {
+	// 国密认证方式设置
+	AuthModeGM *AuthModeSetting `json:"AuthModeGM,omitnil,omitempty" name:"AuthModeGM"`
+
+	// 资产重连次数
+	Reconnection *ReconnectionSetting `json:"Reconnection,omitnil,omitempty" name:"Reconnection"`
+}
+
 type SessionResult struct {
 	// 用户名
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
@@ -10232,7 +10256,7 @@ func (r *UnlockUserResponse) FromJsonString(s string) error {
 }
 
 type User struct {
-	// 用户名, 3-20个字符 必须以英文字母开头，且不能包含字母、数字、.、_、-以外的字符
+	// 用户名,1 - 128个字符 必须以英文字母开头，只能由a-zA-Z0-9以及+=,.@_-组成，支持邮箱格式
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 用户姓名， 最大20个字符，不能包含空白字符
@@ -10290,6 +10314,9 @@ type User struct {
 
 	// ioa同步过来的用户相关信息
 	IOAUserGroup *IOAUserGroup `json:"IOAUserGroup,omitnil,omitempty" name:"IOAUserGroup"`
+
+	// cam角色用户载体
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 }
 
 type UserDirectory struct {

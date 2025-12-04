@@ -775,8 +775,6 @@ func NewChannelCreateBatchSignUrlResponse() (response *ChannelCreateBatchSignUrl
 //
 // - 生成批量签署链接时，合同目标参与方状态需为<font color="red">待签署</font>状态。
 //
-// - 个人批量签署进行的合同的签名区， 全部变成<font color="red">手写签名</font>（不管合同里边设置的签名限制）来进行。
-//
 // - 不支持签署方含有签批控件，或设置了签署方在签署时自行添加签署控件功能的合同进行批量签署。
 //
 // - 进行小程序批量签署必须指定待签署的流程id，<font color="red">接口中FlowIds参数必传。</font>
@@ -813,8 +811,6 @@ func (c *Client) ChannelCreateBatchSignUrl(request *ChannelCreateBatchSignUrlReq
 // - 子客企业员工用户批量签署，需要传递员工OpenId和子客企业的OrganizationOpenId，以及该员工的Name，Mobile等信息。如果此子客企业未认证，则除了上述参数之外，需要传递OrganizationName（子客企业名称）。
 //
 // - 生成批量签署链接时，合同目标参与方状态需为<font color="red">待签署</font>状态。
-//
-// - 个人批量签署进行的合同的签名区， 全部变成<font color="red">手写签名</font>（不管合同里边设置的签名限制）来进行。
 //
 // - 不支持签署方含有签批控件，或设置了签署方在签署时自行添加签署控件功能的合同进行批量签署。
 //

@@ -119,6 +119,11 @@ type AgentDebugInfo struct {
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 }
 
+type AgentHandoffAdvancedSetting struct {
+	// 对话流转策略；0-由上一轮回复用户的 Agent 继续发起，1- 回到主Agent
+	ConversationPolicy *int64 `json:"ConversationPolicy,omitnil,omitempty" name:"ConversationPolicy"`
+}
+
 type AgentInput struct {
 	// 输入来源类型：0 用户输入，3 自定义变量（API参数）
 	InputType *uint64 `json:"InputType,omitnil,omitempty" name:"InputType"`
@@ -569,6 +574,9 @@ type AgentToolInfo struct {
 
 	// 工具来源: 0-来自插件，1-来自工作流
 	ToolSource *uint64 `json:"ToolSource,omitnil,omitempty" name:"ToolSource"`
+
+	// 计费状态；0-不计费，1-限时免费，2-官方收费
+	FinanceType *int64 `json:"FinanceType,omitnil,omitempty" name:"FinanceType"`
 }
 
 type AgentToolReqParam struct {
@@ -2854,6 +2862,9 @@ type DescribeAppAgentListResponseParams struct {
 
 	// 应用Agent信息列表
 	Agents []*Agent `json:"Agents,omitnil,omitempty" name:"Agents"`
+
+	// Agent转交高级设置
+	HandoffAdvancedSetting *AgentHandoffAdvancedSetting `json:"HandoffAdvancedSetting,omitnil,omitempty" name:"HandoffAdvancedSetting"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

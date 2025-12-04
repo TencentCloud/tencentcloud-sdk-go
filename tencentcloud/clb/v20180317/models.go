@@ -196,6 +196,19 @@ func (r *AutoRewriteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AvailableZoneAffinityInfo struct {
+	// 是否开启可用区转发亲和。true：开启可用区转发亲和；false：开启可用区转发亲和。
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 可用区转发亲和失效阈值，当可用区内后端服务健康比例小于该阈值时，负载均衡会退出可用区转发亲和，转为全可用区转发。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExitRatio *uint64 `json:"ExitRatio,omitnil,omitempty" name:"ExitRatio"`
+
+	// 可用区转发亲和的重新生效阈值，当处于全可用区转发，且负载均衡可用区内的后端服务健康比例大于等于该阈值时，负载均衡会重新进入可用区转发亲和。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReentryRatio *uint64 `json:"ReentryRatio,omitnil,omitempty" name:"ReentryRatio"`
+}
+
 type Backend struct {
 	// 后端服务的类型，可取：CVM、ENI、CCN、EVM、GLOBALROUTE、NAT、SRV等
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -229,6 +242,10 @@ type Backend struct {
 
 	// 标签。
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 后端服务所在的可用区，如ap-guangzhou-1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type BasicTargetGroupInfo struct {
@@ -6444,6 +6461,9 @@ type LoadBalancer struct {
 
 	// 负载均衡实例关联的Endpoint id。
 	AssociateEndpoint *string `json:"AssociateEndpoint,omitnil,omitempty" name:"AssociateEndpoint"`
+
+	// 可用区转发亲和信息
+	AvailableZoneAffinityInfo *AvailableZoneAffinityInfo `json:"AvailableZoneAffinityInfo,omitnil,omitempty" name:"AvailableZoneAffinityInfo"`
 }
 
 type LoadBalancerDetail struct {
@@ -6613,6 +6633,10 @@ type LoadBalancerDetail struct {
 	// 0：表示非独占型实例，1：表示独占型态实例。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Exclusive *uint64 `json:"Exclusive,omitnil,omitempty" name:"Exclusive"`
+
+	// 可用区转发亲和信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableZoneAffinityInfo *AvailableZoneAffinityInfo `json:"AvailableZoneAffinityInfo,omitnil,omitempty" name:"AvailableZoneAffinityInfo"`
 }
 
 type LoadBalancerHealth struct {

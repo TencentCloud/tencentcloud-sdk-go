@@ -2580,6 +2580,9 @@ type DescribeDBInstanceDetailResponseParams struct {
 	// 删除保护标记，1: 已开启删除保护，0: 未开启删除保护
 	ProtectedProperty *int64 `json:"ProtectedProperty,omitnil,omitempty" name:"ProtectedProperty"`
 
+	// 流程Id，标志实例当前所处的异步任务
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

@@ -6002,7 +6002,7 @@ type DomainShareUserInfo struct {
 	// 共享记录ID
 	DomainShareId *uint64 `json:"DomainShareId,omitnil,omitempty" name:"DomainShareId"`
 
-	// 共享模式。r-只读；w-可写；rw-可读写。
+	// 共享模式。r-只读；rw-可读写。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// 共享到的用户昵称
@@ -6688,7 +6688,7 @@ type ModifyDomainStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名状态，”enable” 、”disable” 分别代表启用和暂停
+	// 域名状态，"enable"、"disable" 分别代表启用和暂停
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
@@ -6701,7 +6701,7 @@ type ModifyDomainStatusRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名状态，”enable” 、”disable” 分别代表启用和暂停
+	// 域名状态，"enable"、"disable" 分别代表启用和暂停
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
@@ -7077,7 +7077,7 @@ func (r *ModifyLineGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyPackageAutoRenewRequestParams struct {
-	// 资源ID。可以在控制台查看所有的资源
+	// 计费资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// enable 开启自动续费；disable 关闭自动续费
@@ -7087,7 +7087,7 @@ type ModifyPackageAutoRenewRequestParams struct {
 type ModifyPackageAutoRenewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源ID。可以在控制台查看所有的资源
+	// 计费资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// enable 开启自动续费；disable 关闭自动续费

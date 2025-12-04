@@ -645,6 +645,56 @@ func (c *Client) CreateJWTAuthenticatorWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateMessageEnrichmentRuleRequest() (request *CreateMessageEnrichmentRuleRequest) {
+    request = &CreateMessageEnrichmentRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "CreateMessageEnrichmentRule")
+    
+    
+    return
+}
+
+func NewCreateMessageEnrichmentRuleResponse() (response *CreateMessageEnrichmentRuleResponse) {
+    response = &CreateMessageEnrichmentRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMessageEnrichmentRule
+// 创建一条消息属性增强规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+func (c *Client) CreateMessageEnrichmentRule(request *CreateMessageEnrichmentRuleRequest) (response *CreateMessageEnrichmentRuleResponse, err error) {
+    return c.CreateMessageEnrichmentRuleWithContext(context.Background(), request)
+}
+
+// CreateMessageEnrichmentRule
+// 创建一条消息属性增强规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+func (c *Client) CreateMessageEnrichmentRuleWithContext(ctx context.Context, request *CreateMessageEnrichmentRuleRequest) (response *CreateMessageEnrichmentRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateMessageEnrichmentRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "CreateMessageEnrichmentRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMessageEnrichmentRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMessageEnrichmentRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTopicRequest() (request *CreateTopicRequest) {
     request = &CreateTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1297,6 +1347,58 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
     request.SetContext(ctx)
     
     response = NewDeleteInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMessageEnrichmentRuleRequest() (request *DeleteMessageEnrichmentRuleRequest) {
+    request = &DeleteMessageEnrichmentRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DeleteMessageEnrichmentRule")
+    
+    
+    return
+}
+
+func NewDeleteMessageEnrichmentRuleResponse() (response *DeleteMessageEnrichmentRuleResponse) {
+    response = &DeleteMessageEnrichmentRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMessageEnrichmentRule
+// 删除消息属性增强规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteMessageEnrichmentRule(request *DeleteMessageEnrichmentRuleRequest) (response *DeleteMessageEnrichmentRuleResponse, err error) {
+    return c.DeleteMessageEnrichmentRuleWithContext(context.Background(), request)
+}
+
+// DeleteMessageEnrichmentRule
+// 删除消息属性增强规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteMessageEnrichmentRuleWithContext(ctx context.Context, request *DeleteMessageEnrichmentRuleRequest) (response *DeleteMessageEnrichmentRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteMessageEnrichmentRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeleteMessageEnrichmentRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMessageEnrichmentRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMessageEnrichmentRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -2189,6 +2291,60 @@ func (c *Client) DescribeMessageDetailsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeMessageEnrichmentRulesRequest() (request *DescribeMessageEnrichmentRulesRequest) {
+    request = &DescribeMessageEnrichmentRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeMessageEnrichmentRules")
+    
+    
+    return
+}
+
+func NewDescribeMessageEnrichmentRulesResponse() (response *DescribeMessageEnrichmentRulesResponse) {
+    response = &DescribeMessageEnrichmentRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMessageEnrichmentRules
+// 查询消息属性增强规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMessageEnrichmentRules(request *DescribeMessageEnrichmentRulesRequest) (response *DescribeMessageEnrichmentRulesResponse, err error) {
+    return c.DescribeMessageEnrichmentRulesWithContext(context.Background(), request)
+}
+
+// DescribeMessageEnrichmentRules
+// 查询消息属性增强规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMessageEnrichmentRulesWithContext(ctx context.Context, request *DescribeMessageEnrichmentRulesRequest) (response *DescribeMessageEnrichmentRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMessageEnrichmentRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeMessageEnrichmentRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMessageEnrichmentRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMessageEnrichmentRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMessageListRequest() (request *DescribeMessageListRequest) {
     request = &DescribeMessageListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2991,6 +3147,60 @@ func (c *Client) ModifyJWTAuthenticatorWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyMessageEnrichmentRuleRequest() (request *ModifyMessageEnrichmentRuleRequest) {
+    request = &ModifyMessageEnrichmentRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "ModifyMessageEnrichmentRule")
+    
+    
+    return
+}
+
+func NewModifyMessageEnrichmentRuleResponse() (response *ModifyMessageEnrichmentRuleResponse) {
+    response = &ModifyMessageEnrichmentRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMessageEnrichmentRule
+// 修改消息属性增强规则
+//
+// 注意：需要提交当前规则的所有属性，即使某些字段没有修改。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ModifyMessageEnrichmentRule(request *ModifyMessageEnrichmentRuleRequest) (response *ModifyMessageEnrichmentRuleResponse, err error) {
+    return c.ModifyMessageEnrichmentRuleWithContext(context.Background(), request)
+}
+
+// ModifyMessageEnrichmentRule
+// 修改消息属性增强规则
+//
+// 注意：需要提交当前规则的所有属性，即使某些字段没有修改。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ModifyMessageEnrichmentRuleWithContext(ctx context.Context, request *ModifyMessageEnrichmentRuleRequest) (response *ModifyMessageEnrichmentRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyMessageEnrichmentRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyMessageEnrichmentRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMessageEnrichmentRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMessageEnrichmentRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTopicRequest() (request *ModifyTopicRequest) {
     request = &ModifyTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3357,6 +3567,58 @@ func (c *Client) UpdateAuthorizationPolicyPriorityWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewUpdateAuthorizationPolicyPriorityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateMessageEnrichmentRulePriorityRequest() (request *UpdateMessageEnrichmentRulePriorityRequest) {
+    request = &UpdateMessageEnrichmentRulePriorityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "UpdateMessageEnrichmentRulePriority")
+    
+    
+    return
+}
+
+func NewUpdateMessageEnrichmentRulePriorityResponse() (response *UpdateMessageEnrichmentRulePriorityResponse) {
+    response = &UpdateMessageEnrichmentRulePriorityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateMessageEnrichmentRulePriority
+// 修改消息属性增强规则优先级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) UpdateMessageEnrichmentRulePriority(request *UpdateMessageEnrichmentRulePriorityRequest) (response *UpdateMessageEnrichmentRulePriorityResponse, err error) {
+    return c.UpdateMessageEnrichmentRulePriorityWithContext(context.Background(), request)
+}
+
+// UpdateMessageEnrichmentRulePriority
+// 修改消息属性增强规则优先级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) UpdateMessageEnrichmentRulePriorityWithContext(ctx context.Context, request *UpdateMessageEnrichmentRulePriorityRequest) (response *UpdateMessageEnrichmentRulePriorityResponse, err error) {
+    if request == nil {
+        request = NewUpdateMessageEnrichmentRulePriorityRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "UpdateMessageEnrichmentRulePriority")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateMessageEnrichmentRulePriority require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateMessageEnrichmentRulePriorityResponse()
     err = c.Send(request, response)
     return
 }

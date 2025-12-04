@@ -27773,26 +27773,28 @@ func NewResetNatGatewayConnectionResponse() (response *ResetNatGatewayConnection
 }
 
 // ResetNatGatewayConnection
-// 本接口（ResetNatGatewayConnection）用来NAT网关并发连接上限。
+// 本接口（ResetNatGatewayConnection）用于调整传统型NAT网关并发连接数上限。
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_NATGATEWAYISBUSY = "UnsupportedOperation.NatGatewayIsBusy"
 //  UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = "UnsupportedOperation.UnpaidOrderAlreadyExists"
 func (c *Client) ResetNatGatewayConnection(request *ResetNatGatewayConnectionRequest) (response *ResetNatGatewayConnectionResponse, err error) {
     return c.ResetNatGatewayConnectionWithContext(context.Background(), request)
 }
 
 // ResetNatGatewayConnection
-// 本接口（ResetNatGatewayConnection）用来NAT网关并发连接上限。
+// 本接口（ResetNatGatewayConnection）用于调整传统型NAT网关并发连接数上限。
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_NATGATEWAYISBUSY = "UnsupportedOperation.NatGatewayIsBusy"
 //  UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = "UnsupportedOperation.UnpaidOrderAlreadyExists"
 func (c *Client) ResetNatGatewayConnectionWithContext(ctx context.Context, request *ResetNatGatewayConnectionRequest) (response *ResetNatGatewayConnectionResponse, err error) {
     if request == nil {

@@ -243,6 +243,17 @@ type Chunk struct {
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
 }
 
+type CosFileInfo struct {
+	// 文件名称，包含后缀
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件类型，"PDF", "DOC", "DOCX", "XLS", "XLSX", "PPT", "PPTX", "MD", "TXT", "PNG", "JPG", "JPEG", "CSV"
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 用户文件的cosurl
+	UserCosUrl *string `json:"UserCosUrl,omitnil,omitempty" name:"UserCosUrl"`
+}
+
 // Predefined struct for user
 type CreateDataAgentSessionRequestParams struct {
 	// 实例ID
@@ -556,6 +567,70 @@ func (r *GetSessionDetailsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetSessionDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetUploadJobDetailsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type GetUploadJobDetailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *GetUploadJobDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetUploadJobDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUploadJobDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetUploadJobDetailsResponseParams struct {
+	// 任务详情
+	Job *UploadJob `json:"Job,omitnil,omitempty" name:"Job"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetUploadJobDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *GetUploadJobDetailsResponseParams `json:"Response"`
+}
+
+func (r *GetUploadJobDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetUploadJobDetailsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -966,4 +1041,111 @@ type Task struct {
 
 	// 任务步骤列表
 	StepInfoList []*StepInfo `json:"StepInfoList,omitnil,omitempty" name:"StepInfoList"`
+}
+
+// Predefined struct for user
+type UploadAndCommitFileRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 上传文件列表
+	CosFiles []*CosFileInfo `json:"CosFiles,omitnil,omitempty" name:"CosFiles"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+}
+
+type UploadAndCommitFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 上传文件列表
+	CosFiles []*CosFileInfo `json:"CosFiles,omitnil,omitempty" name:"CosFiles"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+}
+
+func (r *UploadAndCommitFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadAndCommitFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "CosFiles")
+	delete(f, "KnowledgeBaseId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadAndCommitFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadAndCommitFileResponseParams struct {
+	// 上传任务
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UploadAndCommitFileResponse struct {
+	*tchttp.BaseResponse
+	Response *UploadAndCommitFileResponseParams `json:"Response"`
+}
+
+func (r *UploadAndCommitFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadAndCommitFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadJob struct {
+	// id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// uin
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// subuin
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// Pending、FileUploading、
+	// FileParsing、
+	// Success、
+	// Failed 
+	// 	
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 任务更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }

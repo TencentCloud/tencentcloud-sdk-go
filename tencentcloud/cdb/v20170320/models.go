@@ -12111,6 +12111,9 @@ type ModifyAccountPasswordRequestParams struct {
 
 	// 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
+
+	// 是否跳过校验密码复杂度
+	SkipValidatePassword *bool `json:"SkipValidatePassword,omitnil,omitempty" name:"SkipValidatePassword"`
 }
 
 type ModifyAccountPasswordRequest struct {
@@ -12124,6 +12127,9 @@ type ModifyAccountPasswordRequest struct {
 
 	// 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
+
+	// 是否跳过校验密码复杂度
+	SkipValidatePassword *bool `json:"SkipValidatePassword,omitnil,omitempty" name:"SkipValidatePassword"`
 }
 
 func (r *ModifyAccountPasswordRequest) ToJsonString() string {
@@ -12141,6 +12147,7 @@ func (r *ModifyAccountPasswordRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "NewPassword")
 	delete(f, "Accounts")
+	delete(f, "SkipValidatePassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccountPasswordRequest has unknown keys!", "")
 	}
@@ -17076,6 +17083,9 @@ func (r *SwitchDrInstanceToMasterResponse) FromJsonString(s string) error {
 type SwitchForUpgradeRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 是否开启关联切换，true为开启，false为关闭，默认false
+	IsRelatedSwitch *bool `json:"IsRelatedSwitch,omitnil,omitempty" name:"IsRelatedSwitch"`
 }
 
 type SwitchForUpgradeRequest struct {
@@ -17083,6 +17093,9 @@ type SwitchForUpgradeRequest struct {
 	
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 是否开启关联切换，true为开启，false为关闭，默认false
+	IsRelatedSwitch *bool `json:"IsRelatedSwitch,omitnil,omitempty" name:"IsRelatedSwitch"`
 }
 
 func (r *SwitchForUpgradeRequest) ToJsonString() string {
@@ -17098,6 +17111,7 @@ func (r *SwitchForUpgradeRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "IsRelatedSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchForUpgradeRequest has unknown keys!", "")
 	}
