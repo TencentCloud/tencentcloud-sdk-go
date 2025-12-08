@@ -510,13 +510,13 @@ type BindStaffSkillGroupListRequestParams struct {
 	// 座席邮箱
 	StaffEmail *string `json:"StaffEmail,omitnil,omitempty" name:"StaffEmail"`
 
+	// 绑定技能组列表(必填)
+	StaffSkillGroupList []*StaffSkillGroupList `json:"StaffSkillGroupList,omitnil,omitempty" name:"StaffSkillGroupList"`
+
 	// 绑定技能组列表
 	//
 	// Deprecated: SkillGroupList is deprecated.
 	SkillGroupList []*int64 `json:"SkillGroupList,omitnil,omitempty" name:"SkillGroupList"`
-
-	// 绑定技能组列表(必填)
-	StaffSkillGroupList []*StaffSkillGroupList `json:"StaffSkillGroupList,omitnil,omitempty" name:"StaffSkillGroupList"`
 }
 
 type BindStaffSkillGroupListRequest struct {
@@ -528,11 +528,11 @@ type BindStaffSkillGroupListRequest struct {
 	// 座席邮箱
 	StaffEmail *string `json:"StaffEmail,omitnil,omitempty" name:"StaffEmail"`
 
-	// 绑定技能组列表
-	SkillGroupList []*int64 `json:"SkillGroupList,omitnil,omitempty" name:"SkillGroupList"`
-
 	// 绑定技能组列表(必填)
 	StaffSkillGroupList []*StaffSkillGroupList `json:"StaffSkillGroupList,omitnil,omitempty" name:"StaffSkillGroupList"`
+
+	// 绑定技能组列表
+	SkillGroupList []*int64 `json:"SkillGroupList,omitnil,omitempty" name:"SkillGroupList"`
 }
 
 func (r *BindStaffSkillGroupListRequest) ToJsonString() string {
@@ -549,8 +549,8 @@ func (r *BindStaffSkillGroupListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SdkAppId")
 	delete(f, "StaffEmail")
-	delete(f, "SkillGroupList")
 	delete(f, "StaffSkillGroupList")
+	delete(f, "SkillGroupList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindStaffSkillGroupListRequest has unknown keys!", "")
 	}
@@ -2880,11 +2880,11 @@ type CreateUserSigRequestParams struct {
 	// 用户 ID，该值必须与 ClientData 字段中 Uid 的值一致
 	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
-	// 有效期，单位秒，不超过 1 小时
-	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
-
 	// 用户签名数据，必填字段，为标准 JSON 格式
 	ClientData *string `json:"ClientData,omitnil,omitempty" name:"ClientData"`
+
+	// 有效期，单位秒，不超过 1 小时
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 type CreateUserSigRequest struct {
@@ -2896,11 +2896,11 @@ type CreateUserSigRequest struct {
 	// 用户 ID，该值必须与 ClientData 字段中 Uid 的值一致
 	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
-	// 有效期，单位秒，不超过 1 小时
-	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
-
 	// 用户签名数据，必填字段，为标准 JSON 格式
 	ClientData *string `json:"ClientData,omitnil,omitempty" name:"ClientData"`
+
+	// 有效期，单位秒，不超过 1 小时
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 func (r *CreateUserSigRequest) ToJsonString() string {
@@ -2917,8 +2917,8 @@ func (r *CreateUserSigRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SdkAppId")
 	delete(f, "Uid")
-	delete(f, "ExpiredTime")
 	delete(f, "ClientData")
+	delete(f, "ExpiredTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserSigRequest has unknown keys!", "")
 	}
@@ -5874,6 +5874,15 @@ type DescribeTelCdrRequestParams struct {
 	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
 
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸（必填），上限 100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码（必填），从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
 	// 实例 ID（废弃）
 	//
 	// Deprecated: InstanceId is deprecated.
@@ -5884,15 +5893,6 @@ type DescribeTelCdrRequestParams struct {
 
 	// 偏移（废弃）
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
-	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
-
-	// 分页尺寸（必填），上限 100
-	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-
-	// 分页页码（必填），从 0 开始
-	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 按手机号筛选
 	Phones []*string `json:"Phones,omitnil,omitempty" name:"Phones"`
@@ -5910,15 +5910,6 @@ type DescribeTelCdrRequest struct {
 	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
 
-	// 实例 ID（废弃）
-	InstanceId *int64 `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 返回数据条数，上限（废弃）
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移（废弃）
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
@@ -5927,6 +5918,15 @@ type DescribeTelCdrRequest struct {
 
 	// 分页页码（必填），从 0 开始
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 实例 ID（废弃）
+	InstanceId *int64 `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 返回数据条数，上限（废弃）
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移（废弃）
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 按手机号筛选
 	Phones []*string `json:"Phones,omitnil,omitempty" name:"Phones"`
@@ -5949,12 +5949,12 @@ func (r *DescribeTelCdrRequest) FromJsonString(s string) error {
 	}
 	delete(f, "StartTimeStamp")
 	delete(f, "EndTimeStamp")
-	delete(f, "InstanceId")
-	delete(f, "Limit")
-	delete(f, "Offset")
 	delete(f, "SdkAppId")
 	delete(f, "PageSize")
 	delete(f, "PageNumber")
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	delete(f, "Phones")
 	delete(f, "SessionIds")
 	if len(f) > 0 {
@@ -8070,6 +8070,8 @@ type TelCdrInfo struct {
 	// 电话呼出        220     callerCancelWhileRing      **振铃中主叫取消**
 	// 
 	// 电话呼出        221     callerCancelWithoutRing      **未振铃被叫号码异常**
+	// 
+	// 电话呼出        222     voiceMailReached      **语音信箱挂断**
 	// 
 	// 音频呼入        501     callConflict      **VoIP用户呼叫冲突终止**
 	// 

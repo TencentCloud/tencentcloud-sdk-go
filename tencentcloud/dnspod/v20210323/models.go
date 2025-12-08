@@ -7136,6 +7136,81 @@ func (r *ModifyPackageAutoRenewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyPackageDomainRequestParams struct {
+	// 操作类型：change: 套餐换域名；unbind: 解绑套餐域名；bind: 套餐绑定域名。
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 域名ID。Operation为change时必传，代表更换前的域名。
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 域名ID。Operation为change或bind时必传，代表更换后或要绑定的域名。
+	NewDomainId *uint64 `json:"NewDomainId,omitnil,omitempty" name:"NewDomainId"`
+
+	// 套餐资源ID。Operation为bind或unbind时必传，代表将要操作的套餐资源。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type ModifyPackageDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作类型：change: 套餐换域名；unbind: 解绑套餐域名；bind: 套餐绑定域名。
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 域名ID。Operation为change时必传，代表更换前的域名。
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 域名ID。Operation为change或bind时必传，代表更换后或要绑定的域名。
+	NewDomainId *uint64 `json:"NewDomainId,omitnil,omitempty" name:"NewDomainId"`
+
+	// 套餐资源ID。Operation为bind或unbind时必传，代表将要操作的套餐资源。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+func (r *ModifyPackageDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPackageDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operation")
+	delete(f, "DomainId")
+	delete(f, "NewDomainId")
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPackageDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPackageDomainResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPackageDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPackageDomainResponseParams `json:"Response"`
+}
+
+func (r *ModifyPackageDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPackageDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyRecordBatchDetail struct {
 	// 见RecordInfoBatchModify
 	RecordList []*BatchRecordInfo `json:"RecordList,omitnil,omitempty" name:"RecordList"`

@@ -4122,3 +4122,107 @@ func (c *Client) RollbackMigratingTopicStageWithContext(ctx context.Context, req
     err = c.Send(request, response)
     return
 }
+
+func NewSendMessageRequest() (request *SendMessageRequest) {
+    request = &SendMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "SendMessage")
+    
+    
+    return
+}
+
+func NewSendMessageResponse() (response *SendMessageResponse) {
+    response = &SendMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SendMessage
+// 发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) SendMessage(request *SendMessageRequest) (response *SendMessageResponse, err error) {
+    return c.SendMessageWithContext(context.Background(), request)
+}
+
+// SendMessage
+// 发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) SendMessageWithContext(ctx context.Context, request *SendMessageRequest) (response *SendMessageResponse, err error) {
+    if request == nil {
+        request = NewSendMessageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "SendMessage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSendMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyMessageConsumptionRequest() (request *VerifyMessageConsumptionRequest) {
+    request = &VerifyMessageConsumptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "VerifyMessageConsumption")
+    
+    
+    return
+}
+
+func NewVerifyMessageConsumptionResponse() (response *VerifyMessageConsumptionResponse) {
+    response = &VerifyMessageConsumptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VerifyMessageConsumption
+// 消息消费验证
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDCONSUMERTYPE = "UnsupportedOperation.UnsupportedConsumerType"
+func (c *Client) VerifyMessageConsumption(request *VerifyMessageConsumptionRequest) (response *VerifyMessageConsumptionResponse, err error) {
+    return c.VerifyMessageConsumptionWithContext(context.Background(), request)
+}
+
+// VerifyMessageConsumption
+// 消息消费验证
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDCONSUMERTYPE = "UnsupportedOperation.UnsupportedConsumerType"
+func (c *Client) VerifyMessageConsumptionWithContext(ctx context.Context, request *VerifyMessageConsumptionRequest) (response *VerifyMessageConsumptionResponse, err error) {
+    if request == nil {
+        request = NewVerifyMessageConsumptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "VerifyMessageConsumption")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyMessageConsumption require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyMessageConsumptionResponse()
+    err = c.Send(request, response)
+    return
+}

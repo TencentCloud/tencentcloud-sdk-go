@@ -1265,6 +1265,7 @@ func NewDeleteLoadBalancerResponse() (response *DeleteLoadBalancerResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EIPTRAFFICCHECKRISK = "FailedOperation.EipTrafficCheckRisk"
 //  FAILEDOPERATION_FREQUENCYCHECKRISK = "FailedOperation.FrequencyCheckRisk"
 //  FAILEDOPERATION_TARGETNUMCHECKRISK = "FailedOperation.TargetNumCheckRisk"
 //  FAILEDOPERATION_TRAFFICCHECKRISK = "FailedOperation.TrafficCheckRisk"
@@ -1288,6 +1289,7 @@ func (c *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EIPTRAFFICCHECKRISK = "FailedOperation.EipTrafficCheckRisk"
 //  FAILEDOPERATION_FREQUENCYCHECKRISK = "FailedOperation.FrequencyCheckRisk"
 //  FAILEDOPERATION_TARGETNUMCHECKRISK = "FailedOperation.TargetNumCheckRisk"
 //  FAILEDOPERATION_TRAFFICCHECKRISK = "FailedOperation.TrafficCheckRisk"

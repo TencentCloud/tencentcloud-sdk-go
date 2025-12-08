@@ -15956,6 +15956,30 @@ type LowLightEnhanceInfo struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type MPSAiMediaInfo struct {
+	// MPS处理后的智能媒体信息列表
+	AiMediaList []*MPSAiMediaItem `json:"AiMediaList,omitnil,omitempty" name:"AiMediaList"`
+}
+
+type MPSAiMediaItem struct {
+	// MPS智能处理任务类型
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// MPS 智能媒资任务输出
+	AiMediaTasks []*MPSAiMediaTask `json:"AiMediaTasks,omitnil,omitempty" name:"AiMediaTasks"`
+}
+
+type MPSAiMediaTask struct {
+	// MPS智能任务的模板 ID
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// MPS智能任务输出文件集合
+	OutputFile []*MPSOutputFileInfo `json:"OutputFile,omitnil,omitempty" name:"OutputFile"`
+
+	// MPS智能任务输出
+	OutputText *string `json:"OutputText,omitnil,omitempty" name:"OutputText"`
+}
+
 type MPSOutputFile struct {
 	// 文件类型。用于标识 MPS 视频处理任务执行结果中的特定返回文件。
 	// 取值：<li>AiAnalysis.DeLogo.Video: 智能擦除任务中产生的擦除后视频文件，默认以原文件类型存储；</li><li>AiAnalysis.DeLogo.OriginSubtitle: 智能擦除任务中基于画面提取的字幕文件；</li><li>AiAnalysis.DeLogo.TranslateSubtitle: 智能擦除任务中基于画面提取的字幕翻译文件。</li><li>MediaProcess.Transcode.Video: 音视频增强任务中增强后的音视频文件，默认以转码文件类型存储。</li>
@@ -15975,6 +15999,14 @@ type MPSOutputFile struct {
 
 	// 过期时间。当 StorageMode 为 Temporary 时有效，表示 Url 的过期时间，单位为秒。
 	ExpiredTime *uint64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+}
+
+type MPSOutputFileInfo struct {
+	// MPS输出文件类型
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// MPS输出文件的URL
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type MPSSubTaskResult struct {
@@ -16000,6 +16032,9 @@ type MPSSubTaskResult struct {
 type MPSTaskOutput struct {
 	// 任务返回结果中的文件类型结果。如智能擦除中，擦除后的视频文件将被存入媒资，并在此字段中给出 FileId；基于画面提取的字幕文件 Url 将在此字段中给出。
 	OutputFiles []*MPSOutputFile `json:"OutputFiles,omitnil,omitempty" name:"OutputFiles"`
+
+	// 任务返回的结果JSON
+	OutputText *string `json:"OutputText,omitnil,omitempty" name:"OutputText"`
 }
 
 type MPSTemplate struct {
@@ -16529,6 +16564,9 @@ type MediaInfo struct {
 	// 审核信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReviewInfo *FileReviewInfo `json:"ReviewInfo,omitnil,omitempty" name:"ReviewInfo"`
+
+	// MPS智能媒资信息
+	MPSAiMediaInfo *MPSAiMediaInfo `json:"MPSAiMediaInfo,omitnil,omitempty" name:"MPSAiMediaInfo"`
 }
 
 type MediaInputInfo struct {

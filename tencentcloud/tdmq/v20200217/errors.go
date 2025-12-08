@@ -176,6 +176,9 @@ const (
 	// 设置消息TTL失败。
 	FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 
+	// 存储规格选择错误，请选择正确存储规格
+	FAILEDOPERATION_STORAGESIZEERROR = "FailedOperation.StorageSizeError"
+
 	// 必须先清除关联主题数据才能继续操作。
 	FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
 

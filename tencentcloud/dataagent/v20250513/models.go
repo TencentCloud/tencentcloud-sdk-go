@@ -444,6 +444,81 @@ func (r *DeleteDataAgentSessionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetKnowledgeBaseFileListRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 默认 1 表示第一页，可以不填
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 默认 10 一页展示 10 条，可以不填
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+}
+
+type GetKnowledgeBaseFileListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 默认 1 表示第一页，可以不填
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 默认 10 一页展示 10 条，可以不填
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+}
+
+func (r *GetKnowledgeBaseFileListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetKnowledgeBaseFileListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	delete(f, "KnowledgeBaseId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetKnowledgeBaseFileListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetKnowledgeBaseFileListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetKnowledgeBaseFileListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetKnowledgeBaseFileListResponseParams `json:"Response"`
+}
+
+func (r *GetKnowledgeBaseFileListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetKnowledgeBaseFileListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetKnowledgeBaseListRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

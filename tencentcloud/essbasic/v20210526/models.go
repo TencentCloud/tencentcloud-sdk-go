@@ -3860,6 +3860,9 @@ type ChannelCreatePreparedPersonalEsignRequestParams struct {
 
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
 	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
+
+	// 印章图片文件 id取值：填写的FileId通过UploadFiles接口上传文件获取。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 type ChannelCreatePreparedPersonalEsignRequest struct {
@@ -3912,6 +3915,9 @@ type ChannelCreatePreparedPersonalEsignRequest struct {
 
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
 	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
+
+	// 印章图片文件 id取值：填写的FileId通过UploadFiles接口上传文件获取。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 func (r *ChannelCreatePreparedPersonalEsignRequest) ToJsonString() string {
@@ -3938,6 +3944,7 @@ func (r *ChannelCreatePreparedPersonalEsignRequest) FromJsonString(s string) err
 	delete(f, "EnableAutoSign")
 	delete(f, "LicenseType")
 	delete(f, "SceneKey")
+	delete(f, "FileId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreatePreparedPersonalEsignRequest has unknown keys!", "")
 	}
@@ -5486,7 +5493,7 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 指定分页每页返回的数据条数，单页最大支持 100。
+	// 指定分页每页返回的数据条数，单页最大支持 100。默认值为20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页查询偏移量，默认为0，最大为20000
@@ -5526,7 +5533,7 @@ type ChannelDescribeOrganizationSealsRequest struct {
 	// 第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 指定分页每页返回的数据条数，单页最大支持 100。
+	// 指定分页每页返回的数据条数，单页最大支持 100。默认值为20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页查询偏移量，默认为0，最大为20000

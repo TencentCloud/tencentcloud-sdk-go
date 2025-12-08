@@ -339,6 +339,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_NOTAGREEMENT = "UnsupportedOperation.NotAgreement"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
 //  UNSUPPORTEDOPERATION_VPCINFONOTFOUND = "UnsupportedOperation.VPCInfoNotFound"
 func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
     return c.CreateInstanceWithContext(context.Background(), request)
@@ -393,6 +394,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 //  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
 //  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_NOTAGREEMENT = "UnsupportedOperation.NotAgreement"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
 //  UNSUPPORTEDOPERATION_VPCINFONOTFOUND = "UnsupportedOperation.VPCInfoNotFound"
 func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
     if request == nil {

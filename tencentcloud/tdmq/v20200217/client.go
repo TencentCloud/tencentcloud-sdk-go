@@ -689,6 +689,7 @@ func NewCreateProClusterResponse() (response *CreateProClusterResponse) {
 //  FAILEDOPERATION_GENERATEDEALSANDPAYERROR = "FailedOperation.GenerateDealsAndPayError"
 //  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
+//  FAILEDOPERATION_STORAGESIZEERROR = "FailedOperation.StorageSizeError"
 //  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
 //  MISSINGPARAMETER_TAG = "MissingParameter.Tag"
 func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *CreateProClusterResponse, err error) {
@@ -704,6 +705,7 @@ func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *C
 //  FAILEDOPERATION_GENERATEDEALSANDPAYERROR = "FailedOperation.GenerateDealsAndPayError"
 //  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
+//  FAILEDOPERATION_STORAGESIZEERROR = "FailedOperation.StorageSizeError"
 //  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
 //  MISSINGPARAMETER_TAG = "MissingParameter.Tag"
 func (c *Client) CreateProClusterWithContext(ctx context.Context, request *CreateProClusterRequest) (response *CreateProClusterResponse, err error) {
@@ -1033,7 +1035,9 @@ func NewCreateRocketMQEnvironmentRoleResponse() (response *CreateRocketMQEnviron
 }
 
 // CreateRocketMQEnvironmentRole
-// 创建环境角色授权
+// 创建角色授权。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的创建角色接口文档见 [CreateRole](https://cloud.tencent.com/document/api/1493/98864)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -1052,7 +1056,9 @@ func (c *Client) CreateRocketMQEnvironmentRole(request *CreateRocketMQEnvironmen
 }
 
 // CreateRocketMQEnvironmentRole
-// 创建环境角色授权
+// 创建角色授权。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的创建角色接口文档见 [CreateRole](https://cloud.tencent.com/document/api/1493/98864)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -1237,7 +1243,9 @@ func NewCreateRocketMQRoleResponse() (response *CreateRocketMQRoleResponse) {
 }
 
 // CreateRocketMQRole
-// 创建角色
+// 创建角色。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的创建角色接口文档见 [CreateRole](https://cloud.tencent.com/document/api/1493/98864)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -1257,7 +1265,9 @@ func (c *Client) CreateRocketMQRole(request *CreateRocketMQRoleRequest) (respons
 }
 
 // CreateRocketMQRole
-// 创建角色
+// 创建角色。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的创建角色接口文档见 [CreateRole](https://cloud.tencent.com/document/api/1493/98864)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -2517,7 +2527,9 @@ func NewDeleteRocketMQEnvironmentRolesResponse() (response *DeleteRocketMQEnviro
 }
 
 // DeleteRocketMQEnvironmentRoles
-// 删除环境角色授权。
+// 批量删除角色授权。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的删除角色接口文档见 [DeleteRole](https://cloud.tencent.com/document/api/1493/98863)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -2532,7 +2544,9 @@ func (c *Client) DeleteRocketMQEnvironmentRoles(request *DeleteRocketMQEnvironme
 }
 
 // DeleteRocketMQEnvironmentRoles
-// 删除环境角色授权。
+// 批量删除角色授权。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的删除角色接口文档见 [DeleteRole](https://cloud.tencent.com/document/api/1493/98863)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -2699,7 +2713,9 @@ func NewDeleteRocketMQRolesResponse() (response *DeleteRocketMQRolesResponse) {
 }
 
 // DeleteRocketMQRoles
-// 删除角色，支持批量。
+// 批量删除角色。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的删除角色接口文档见 [DeleteRole](https://cloud.tencent.com/document/api/1493/98863)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -2715,7 +2731,9 @@ func (c *Client) DeleteRocketMQRoles(request *DeleteRocketMQRolesRequest) (respo
 }
 
 // DeleteRocketMQRoles
-// 删除角色，支持批量。
+// 批量删除角色。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的删除角色接口文档见 [DeleteRole](https://cloud.tencent.com/document/api/1493/98863)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -4003,7 +4021,7 @@ func NewDescribeMsgTraceResponse() (response *DescribeMsgTraceResponse) {
 }
 
 // DescribeMsgTrace
-// 查询消息轨迹
+// 查询单条消息的消息轨迹
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
@@ -4017,7 +4035,7 @@ func (c *Client) DescribeMsgTrace(request *DescribeMsgTraceRequest) (response *D
 }
 
 // DescribeMsgTrace
-// 查询消息轨迹
+// 查询单条消息的消息轨迹
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
@@ -5227,7 +5245,9 @@ func NewDescribeRocketMQEnvironmentRolesResponse() (response *DescribeRocketMQEn
 }
 
 // DescribeRocketMQEnvironmentRoles
-// 获取命名空间角色列表
+// 查询角色授权列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的查询角色列表接口文档见 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -5242,7 +5262,9 @@ func (c *Client) DescribeRocketMQEnvironmentRoles(request *DescribeRocketMQEnvir
 }
 
 // DescribeRocketMQEnvironmentRoles
-// 获取命名空间角色列表
+// 查询角色授权列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的查询角色列表接口文档见 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -5739,7 +5761,9 @@ func NewDescribeRocketMQRolesResponse() (response *DescribeRocketMQRolesResponse
 }
 
 // DescribeRocketMQRoles
-// 获取角色列表
+// 查询角色列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的查询角色列表接口文档见 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -5753,7 +5777,9 @@ func (c *Client) DescribeRocketMQRoles(request *DescribeRocketMQRolesRequest) (r
 }
 
 // DescribeRocketMQRoles
-// 获取角色列表
+// 查询角色列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的查询角色列表接口文档见 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -7645,7 +7671,9 @@ func NewModifyRocketMQEnvironmentRoleResponse() (response *ModifyRocketMQEnviron
 }
 
 // ModifyRocketMQEnvironmentRole
-// 修改环境角色授权。
+// 修改角色授权。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的修改角色接口文档见 [ModifyRole](https://cloud.tencent.com/document/api/1493/98861)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -7660,7 +7688,9 @@ func (c *Client) ModifyRocketMQEnvironmentRole(request *ModifyRocketMQEnvironmen
 }
 
 // ModifyRocketMQEnvironmentRole
-// 修改环境角色授权。
+// 修改角色授权。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的修改角色接口文档见 [ModifyRole](https://cloud.tencent.com/document/api/1493/98861)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -7941,7 +7971,9 @@ func NewModifyRocketMQRoleResponse() (response *ModifyRocketMQRoleResponse) {
 }
 
 // ModifyRocketMQRole
-// 角色修改
+// 修改角色。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的修改角色接口文档见 [ModifyRole](https://cloud.tencent.com/document/api/1493/98861)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -7957,7 +7989,9 @@ func (c *Client) ModifyRocketMQRole(request *ModifyRocketMQRoleRequest) (respons
 }
 
 // ModifyRocketMQRole
-// 角色修改
+// 修改角色。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的修改角色接口文档见 [ModifyRole](https://cloud.tencent.com/document/api/1493/98861)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -8467,7 +8501,9 @@ func NewResetRocketMQConsumerOffSetResponse() (response *ResetRocketMQConsumerOf
 }
 
 // ResetRocketMQConsumerOffSet
-// 重置指定Group的消费位点到指定时间戳
+// 重置消费位点。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的重置消费位点接口文档见 [ResetConsumerGroupOffset](https://cloud.tencent.com/document/api/1493/116942)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8480,7 +8516,9 @@ func (c *Client) ResetRocketMQConsumerOffSet(request *ResetRocketMQConsumerOffSe
 }
 
 // ResetRocketMQConsumerOffSet
-// 重置指定Group的消费位点到指定时间戳
+// 重置消费位点。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的重置消费位点接口文档见 [ResetConsumerGroupOffset](https://cloud.tencent.com/document/api/1493/116942)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

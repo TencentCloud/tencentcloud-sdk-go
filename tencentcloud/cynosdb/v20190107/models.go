@@ -13354,7 +13354,6 @@ type ModifyProxyRwSplitRequestParams struct {
 	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
 
 	// 实例只读权重。
-	// 该参数必填。
 	InstanceWeights []*ProxyInstanceWeight `json:"InstanceWeights,omitnil,omitempty" name:"InstanceWeights"`
 
 	// 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："yes" , "no"
@@ -13418,7 +13417,6 @@ type ModifyProxyRwSplitRequest struct {
 	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
 
 	// 实例只读权重。
-	// 该参数必填。
 	InstanceWeights []*ProxyInstanceWeight `json:"InstanceWeights,omitnil,omitempty" name:"InstanceWeights"`
 
 	// 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："yes" , "no"

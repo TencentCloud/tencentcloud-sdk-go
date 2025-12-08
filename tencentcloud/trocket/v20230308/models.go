@@ -6872,6 +6872,91 @@ func (r *RollbackMigratingTopicStageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendMessageRequestParams struct {
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 消息内容
+	MsgBody *string `json:"MsgBody,omitnil,omitempty" name:"MsgBody"`
+
+	// 消息Key
+	MsgKey *string `json:"MsgKey,omitnil,omitempty" name:"MsgKey"`
+
+	// 消息Tag
+	MsgTag *string `json:"MsgTag,omitnil,omitempty" name:"MsgTag"`
+}
+
+type SendMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 消息内容
+	MsgBody *string `json:"MsgBody,omitnil,omitempty" name:"MsgBody"`
+
+	// 消息Key
+	MsgKey *string `json:"MsgKey,omitnil,omitempty" name:"MsgKey"`
+
+	// 消息Tag
+	MsgTag *string `json:"MsgTag,omitnil,omitempty" name:"MsgTag"`
+}
+
+func (r *SendMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Topic")
+	delete(f, "MsgBody")
+	delete(f, "MsgKey")
+	delete(f, "MsgTag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SendMessageResponseParams struct {
+	// 消息ID
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SendMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *SendMessageResponseParams `json:"Response"`
+}
+
+func (r *SendMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SmoothMigrationTaskItem struct {
 	// 任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7193,6 +7278,88 @@ type TopicStageChangeResult struct {
 
 	// 命名空间，仅4.x有效
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+// Predefined struct for user
+type VerifyMessageConsumptionRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 客户端ID
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 消息ID
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+}
+
+type VerifyMessageConsumptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 客户端ID
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 消息ID
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 消费组名称
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+}
+
+func (r *VerifyMessageConsumptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyMessageConsumptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Topic")
+	delete(f, "ClientId")
+	delete(f, "MsgId")
+	delete(f, "ConsumerGroup")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyMessageConsumptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyMessageConsumptionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VerifyMessageConsumptionResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyMessageConsumptionResponseParams `json:"Response"`
+}
+
+func (r *VerifyMessageConsumptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyMessageConsumptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VpcInfo struct {

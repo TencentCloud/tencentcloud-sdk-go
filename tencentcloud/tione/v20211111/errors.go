@@ -44,6 +44,9 @@ const (
 	// CAM内部错误。
 	FAILEDOPERATION_CAMFAILURE = "FailedOperation.CAMFailure"
 
+	// 日志内容太大无法加载，建议缩小日志查询时间范围，或者通过日志下载查看
+	FAILEDOPERATION_CLSSIZEEXCEED = "FailedOperation.CLSSizeExceed"
+
 	// 调用集群失败。
 	FAILEDOPERATION_CALLCLUSTERFAIL = "FailedOperation.CallClusterFail"
 

@@ -197,6 +197,66 @@ func (c *Client) DescribeHumanActorJobWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeHunyuanToVideoJobRequest() (request *DescribeHunyuanToVideoJobRequest) {
+    request = &DescribeHunyuanToVideoJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeHunyuanToVideoJob")
+    
+    
+    return
+}
+
+func NewDescribeHunyuanToVideoJobResponse() (response *DescribeHunyuanToVideoJobResponse) {
+    response = &DescribeHunyuanToVideoJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHunyuanToVideoJob
+// 查询混元生视频任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeHunyuanToVideoJob(request *DescribeHunyuanToVideoJobRequest) (response *DescribeHunyuanToVideoJobResponse, err error) {
+    return c.DescribeHunyuanToVideoJobWithContext(context.Background(), request)
+}
+
+// DescribeHunyuanToVideoJob
+// 查询混元生视频任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeHunyuanToVideoJobWithContext(ctx context.Context, request *DescribeHunyuanToVideoJobRequest) (response *DescribeHunyuanToVideoJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeHunyuanToVideoJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeHunyuanToVideoJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHunyuanToVideoJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHunyuanToVideoJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageAnimateJobRequest() (request *DescribeImageAnimateJobRequest) {
     request = &DescribeImageAnimateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -609,6 +669,66 @@ func (c *Client) DescribeVideoStylizationJobWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeVideoVoiceJobRequest() (request *DescribeVideoVoiceJobRequest) {
+    request = &DescribeVideoVoiceJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeVideoVoiceJob")
+    
+    
+    return
+}
+
+func NewDescribeVideoVoiceJobResponse() (response *DescribeVideoVoiceJobResponse) {
+    response = &DescribeVideoVoiceJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVideoVoiceJob
+// 通过JobId提交请求，获取视频配音频任务的结果信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeVideoVoiceJob(request *DescribeVideoVoiceJobRequest) (response *DescribeVideoVoiceJobResponse, err error) {
+    return c.DescribeVideoVoiceJobWithContext(context.Background(), request)
+}
+
+// DescribeVideoVoiceJob
+// 通过JobId提交请求，获取视频配音频任务的结果信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeVideoVoiceJobWithContext(ctx context.Context, request *DescribeVideoVoiceJobRequest) (response *DescribeVideoVoiceJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoVoiceJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeVideoVoiceJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoVoiceJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoVoiceJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitHumanActorJobRequest() (request *SubmitHumanActorJobRequest) {
     request = &SubmitHumanActorJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -634,13 +754,12 @@ func NewSubmitHumanActorJobResponse() (response *SubmitHumanActorJobResponse) {
 // 支持提交音频和图文来生成对应视频，满足动态交互、内容生产等场景需求。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
-//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
-//  FAILEDOPERATION_TASKSTATUSERROR = "FailedOperation.TaskStatusError"
-//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
 func (c *Client) SubmitHumanActorJob(request *SubmitHumanActorJobRequest) (response *SubmitHumanActorJobResponse, err error) {
     return c.SubmitHumanActorJobWithContext(context.Background(), request)
 }
@@ -651,13 +770,12 @@ func (c *Client) SubmitHumanActorJob(request *SubmitHumanActorJobRequest) (respo
 // 支持提交音频和图文来生成对应视频，满足动态交互、内容生产等场景需求。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
-//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
-//  FAILEDOPERATION_TASKSTATUSERROR = "FailedOperation.TaskStatusError"
-//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
 func (c *Client) SubmitHumanActorJobWithContext(ctx context.Context, request *SubmitHumanActorJobRequest) (response *SubmitHumanActorJobResponse, err error) {
     if request == nil {
         request = NewSubmitHumanActorJobRequest()
@@ -671,6 +789,74 @@ func (c *Client) SubmitHumanActorJobWithContext(ctx context.Context, request *Su
     request.SetContext(ctx)
     
     response = NewSubmitHumanActorJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitHunyuanToVideoJobRequest() (request *SubmitHunyuanToVideoJobRequest) {
+    request = &SubmitHunyuanToVideoJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitHunyuanToVideoJob")
+    
+    
+    return
+}
+
+func NewSubmitHunyuanToVideoJobResponse() (response *SubmitHunyuanToVideoJobResponse) {
+    response = &SubmitHunyuanToVideoJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitHunyuanToVideoJob
+// ●混元生视频接口，基于混元大模型，根据输入的文本或图片智能生成视频。
+//
+// 
+//
+// ●默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) SubmitHunyuanToVideoJob(request *SubmitHunyuanToVideoJobRequest) (response *SubmitHunyuanToVideoJobResponse, err error) {
+    return c.SubmitHunyuanToVideoJobWithContext(context.Background(), request)
+}
+
+// SubmitHunyuanToVideoJob
+// ●混元生视频接口，基于混元大模型，根据输入的文本或图片智能生成视频。
+//
+// 
+//
+// ●默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) SubmitHunyuanToVideoJobWithContext(ctx context.Context, request *SubmitHunyuanToVideoJobRequest) (response *SubmitHunyuanToVideoJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitHunyuanToVideoJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitHunyuanToVideoJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitHunyuanToVideoJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitHunyuanToVideoJobResponse()
     err = c.Send(request, response)
     return
 }
@@ -1163,6 +1349,82 @@ func (c *Client) SubmitVideoStylizationJobWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewSubmitVideoStylizationJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitVideoVoiceJobRequest() (request *SubmitVideoVoiceJobRequest) {
+    request = &SubmitVideoVoiceJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitVideoVoiceJob")
+    
+    
+    return
+}
+
+func NewSubmitVideoVoiceJobResponse() (response *SubmitVideoVoiceJobResponse) {
+    response = &SubmitVideoVoiceJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitVideoVoiceJob
+// 提交视频配音效任务，输入视频后提交请求，会返回一个JobId，用于查询视频配音效的处理进度。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
+//  FAILEDOPERATION_VIDEODECODEFAILED = "FailedOperation.VideoDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEOASPECTRATIO = "InvalidParameterValue.InvalidVideoAspectRatio"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEODURATION = "InvalidParameterValue.InvalidVideoDuration"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEOFPS = "InvalidParameterValue.InvalidVideoFPS"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEOFORMAT = "InvalidParameterValue.InvalidVideoFormat"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  INVALIDPARAMETERVALUE_STYLENOTEXIST = "InvalidParameterValue.StyleNotExist"
+//  INVALIDPARAMETERVALUE_STYLESTRENGTHNOTEXIST = "InvalidParameterValue.StyleStrengthNotExist"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  INVALIDPARAMETERVALUE_VIDEOSIZEEXCEED = "InvalidParameterValue.VideoSizeExceed"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+func (c *Client) SubmitVideoVoiceJob(request *SubmitVideoVoiceJobRequest) (response *SubmitVideoVoiceJobResponse, err error) {
+    return c.SubmitVideoVoiceJobWithContext(context.Background(), request)
+}
+
+// SubmitVideoVoiceJob
+// 提交视频配音效任务，输入视频后提交请求，会返回一个JobId，用于查询视频配音效的处理进度。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
+//  FAILEDOPERATION_VIDEODECODEFAILED = "FailedOperation.VideoDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEOASPECTRATIO = "InvalidParameterValue.InvalidVideoAspectRatio"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEODURATION = "InvalidParameterValue.InvalidVideoDuration"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEOFPS = "InvalidParameterValue.InvalidVideoFPS"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEOFORMAT = "InvalidParameterValue.InvalidVideoFormat"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  INVALIDPARAMETERVALUE_STYLENOTEXIST = "InvalidParameterValue.StyleNotExist"
+//  INVALIDPARAMETERVALUE_STYLESTRENGTHNOTEXIST = "InvalidParameterValue.StyleStrengthNotExist"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  INVALIDPARAMETERVALUE_VIDEOSIZEEXCEED = "InvalidParameterValue.VideoSizeExceed"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+func (c *Client) SubmitVideoVoiceJobWithContext(ctx context.Context, request *SubmitVideoVoiceJobRequest) (response *SubmitVideoVoiceJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitVideoVoiceJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitVideoVoiceJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitVideoVoiceJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitVideoVoiceJobResponse()
     err = c.Send(request, response)
     return
 }

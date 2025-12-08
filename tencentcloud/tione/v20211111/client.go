@@ -2310,6 +2310,7 @@ func NewDescribeLogsResponse() (response *DescribeLogsResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSSIZEEXCEED = "FailedOperation.CLSSizeExceed"
 //  FAILEDOPERATION_CONTEXTLIMITERROR = "FailedOperation.ContextLimitError"
 func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
     return c.DescribeLogsWithContext(context.Background(), request)
@@ -2321,6 +2322,7 @@ func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeL
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSSIZEEXCEED = "FailedOperation.CLSSizeExceed"
 //  FAILEDOPERATION_CONTEXTLIMITERROR = "FailedOperation.ContextLimitError"
 func (c *Client) DescribeLogsWithContext(ctx context.Context, request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
     if request == nil {
@@ -3996,11 +3998,14 @@ func NewStartTrainingTaskResponse() (response *StartTrainingTaskResponse) {
 //  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
 //  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
 //  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INTERNALERROR_VALIDATECREATETASKFAILED = "InternalError.ValidateCreateTaskFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_COSPATHNOTEXIST = "InvalidParameterValue.CosPathNotExist"
 //  INVALIDPARAMETERVALUE_DATASETNOTEXIST = "InvalidParameterValue.DatasetNotExist"
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
 //  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  INVALIDPARAMETERVALUE_IMAGEADDRESSILLEGAL = "InvalidParameterValue.ImageAddressIllegal"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGAL = "InvalidParameterValue.ImageIllegal"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 //  OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
 //  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
@@ -4033,11 +4038,14 @@ func (c *Client) StartTrainingTask(request *StartTrainingTaskRequest) (response 
 //  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
 //  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
 //  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INTERNALERROR_VALIDATECREATETASKFAILED = "InternalError.ValidateCreateTaskFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_COSPATHNOTEXIST = "InvalidParameterValue.CosPathNotExist"
 //  INVALIDPARAMETERVALUE_DATASETNOTEXIST = "InvalidParameterValue.DatasetNotExist"
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
 //  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  INVALIDPARAMETERVALUE_IMAGEADDRESSILLEGAL = "InvalidParameterValue.ImageAddressIllegal"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGAL = "InvalidParameterValue.ImageIllegal"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 //  OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
 //  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"

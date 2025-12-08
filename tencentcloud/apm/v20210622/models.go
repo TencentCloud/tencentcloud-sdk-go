@@ -249,6 +249,12 @@ type ApmAppConfig struct {
 
 	// 探针熔断CPU阈值
 	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
+
+	// 是否开启SQL参数获取
+	DbStatementParametersEnabled *bool `json:"DbStatementParametersEnabled,omitnil,omitempty" name:"DbStatementParametersEnabled"`
+
+	// 慢SQL阈值
+	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
 }
 
 type ApmApplicationConfigView struct {
@@ -314,6 +320,12 @@ type ApmApplicationConfigView struct {
 
 	// 探针熔断CPU阈值
 	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
+
+	// 是否开启SQL参数获取
+	DbStatementParametersEnabled *bool `json:"DbStatementParametersEnabled,omitnil,omitempty" name:"DbStatementParametersEnabled"`
+
+	// 慢SQL阈值
+	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
 }
 
 type ApmAssociation struct {
@@ -784,6 +796,9 @@ func (r *CreateApmPrometheusRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateApmPrometheusRuleResponseParams struct {
+	// 指标匹配规则的ID
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2700,6 +2715,12 @@ type ModifyApmApplicationConfigRequestParams struct {
 
 	// 探针熔断CPU阈值
 	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
+
+	// 是否开启SQL参数获取
+	DbStatementParametersEnabled *bool `json:"DbStatementParametersEnabled,omitnil,omitempty" name:"DbStatementParametersEnabled"`
+
+	// 慢SQL阈值
+	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
 }
 
 type ModifyApmApplicationConfigRequest struct {
@@ -2851,6 +2872,12 @@ type ModifyApmApplicationConfigRequest struct {
 
 	// 探针熔断CPU阈值
 	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
+
+	// 是否开启SQL参数获取
+	DbStatementParametersEnabled *bool `json:"DbStatementParametersEnabled,omitnil,omitempty" name:"DbStatementParametersEnabled"`
+
+	// 慢SQL阈值
+	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
 }
 
 func (r *ModifyApmApplicationConfigRequest) ToJsonString() string {
@@ -2914,6 +2941,8 @@ func (r *ModifyApmApplicationConfigRequest) FromJsonString(s string) error {
 	delete(f, "UrlNumberSegmentThreshold")
 	delete(f, "DisableMemoryUsed")
 	delete(f, "DisableCpuUsed")
+	delete(f, "DbStatementParametersEnabled")
+	delete(f, "SlowSQLThresholds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmApplicationConfigRequest has unknown keys!", "")
 	}
@@ -2944,10 +2973,10 @@ func (r *ModifyApmApplicationConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApmAssociationRequestParams struct {
-	// 关联的产品名，当前只支持Prometheus
+	// 关联的产品名，当前只支持Prometheus、CKafka
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 关联关系的状态：// 关联关系状态：1（启用）、2（不启用）、4（已删除）
+	// 关联关系的状态：// 关联关系状态：1（启用）、2（不启用）
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 业务系统ID
@@ -2963,10 +2992,10 @@ type ModifyApmAssociationRequestParams struct {
 type ModifyApmAssociationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关联的产品名，当前只支持Prometheus
+	// 关联的产品名，当前只支持Prometheus、CKafka
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 关联关系的状态：// 关联关系状态：1（启用）、2（不启用）、4（已删除）
+	// 关联关系的状态：// 关联关系状态：1（启用）、2（不启用）
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 业务系统ID

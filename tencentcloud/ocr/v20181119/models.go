@@ -2044,6 +2044,18 @@ type ElectronicAirTransport struct {
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElectronicAirTransportDetails []*ElectronicAirTransportDetail `json:"ElectronicAirTransportDetails,omitnil,omitempty" name:"ElectronicAirTransportDetails"`
+
+	// 票价
+	Fare *string `json:"Fare,omitnil,omitempty" name:"Fare"`
+
+	// 燃油附加费
+	FuelSurcharge *string `json:"FuelSurcharge,omitnil,omitempty" name:"FuelSurcharge"`
+
+	// 增值税税额
+	TaxAmount *string `json:"TaxAmount,omitnil,omitempty" name:"TaxAmount"`
+
+	// 民航发展基金
+	DevelopmentFund *string `json:"DevelopmentFund,omitnil,omitempty" name:"DevelopmentFund"`
 }
 
 type ElectronicAirTransportDetail struct {
@@ -2711,6 +2723,7 @@ type ExtractDocBasicRequestParams struct {
 
 	// 配置id支持：
 	// General -- 通用场景
+	// GeneralNoDate -- 无后处理日期格式模版
 	// OnlineTaxiItinerary -- 网约车行程单
 	// RideHailingDriverLicense -- 网约车驾驶证
 	// RideHailingTransportLicense -- 网约车运输证
@@ -2755,6 +2768,7 @@ type ExtractDocBasicRequest struct {
 
 	// 配置id支持：
 	// General -- 通用场景
+	// GeneralNoDate -- 无后处理日期格式模版
 	// OnlineTaxiItinerary -- 网约车行程单
 	// RideHailingDriverLicense -- 网约车驾驶证
 	// RideHailingTransportLicense -- 网约车运输证
@@ -8873,7 +8887,7 @@ type RecognizeTableAccurateOCRResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PdfPageSize *int64 `json:"PdfPageSize,omitnil,omitempty" name:"PdfPageSize"`
 
-	// 图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
+	// 图片旋转角度（角度制），文本的水平方向为0°。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 

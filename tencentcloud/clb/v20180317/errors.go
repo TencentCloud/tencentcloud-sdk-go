@@ -29,6 +29,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 该实例绑定的EIP资源业务带宽超过防误操作检测阈值，执行操作可能存在风险，如仍想继续，请在EIP控制台关闭对应EIP的防误操作检测开关后重试。
+	FAILEDOPERATION_EIPTRAFFICCHECKRISK = "FailedOperation.EipTrafficCheckRisk"
+
 	// 删除实例频次校验被判定为高风险，请检查业务或稍后重试。
 	FAILEDOPERATION_FREQUENCYCHECKRISK = "FailedOperation.FrequencyCheckRisk"
 

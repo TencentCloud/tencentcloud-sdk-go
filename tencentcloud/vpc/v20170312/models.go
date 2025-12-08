@@ -2677,8 +2677,14 @@ type CCN struct {
 	// 是否支持路由表聚合策略
 	MrtbAggregatePolicyFlag *bool `json:"MrtbAggregatePolicyFlag,omitnil,omitempty" name:"MrtbAggregatePolicyFlag"`
 
-	// 是否支持策略值
+	// 是否支持AsPath策略值
 	MrtbPolicyValueFlag *bool `json:"MrtbPolicyValueFlag,omitnil,omitempty" name:"MrtbPolicyValueFlag"`
+
+	// 是否支持Community策略值
+	RouteTablePolicyValueCommunityFlag *bool `json:"RouteTablePolicyValueCommunityFlag,omitnil,omitempty" name:"RouteTablePolicyValueCommunityFlag"`
+
+	// 是否支持策略路由
+	PolicyBasedRoutingFlag *bool `json:"PolicyBasedRoutingFlag,omitnil,omitempty" name:"PolicyBasedRoutingFlag"`
 }
 
 type CcnAttachedInstance struct {

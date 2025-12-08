@@ -323,19 +323,19 @@ func (r *SubmitHunyuanTo3DProJobResponse) FromJsonString(s string) error {
 type SubmitHunyuanTo3DRapidJobRequestParams struct {
 	// 文生3D，3D内容的描述，中文正向提示词。
 	// 最多支持200个 utf-8 字符。
-	// 文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+	// 文生3D, ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
 	// 输入图 Base64 数据。
-	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过5m）
 	// 格式：jpg，png，jpeg，webp。
 	// ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
 	// 输入图Url。
-	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过5m）
 	// 格式：jpg，png，jpeg，webp。
-	// ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+	// ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 生成模型的格式，仅限制生成一种格式。
@@ -345,6 +345,9 @@ type SubmitHunyuanTo3DRapidJobRequestParams struct {
 
 	// 是否开启 PBR材质生成，默认 false。
 	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
+
+	// 是否开启单几何生成选项，开启后会生成不带纹理的3D模型（白模）； 开启时，生成模型文件不支持OBJ格式，默认生成模型文件为GLB格式。
+	EnableGeometry *bool `json:"EnableGeometry,omitnil,omitempty" name:"EnableGeometry"`
 }
 
 type SubmitHunyuanTo3DRapidJobRequest struct {
@@ -352,19 +355,19 @@ type SubmitHunyuanTo3DRapidJobRequest struct {
 	
 	// 文生3D，3D内容的描述，中文正向提示词。
 	// 最多支持200个 utf-8 字符。
-	// 文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+	// 文生3D, ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
 	// 输入图 Base64 数据。
-	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过5m）
 	// 格式：jpg，png，jpeg，webp。
 	// ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
 	// 输入图Url。
-	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 大小：单边分辨率要求不小于128，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过5m）
 	// 格式：jpg，png，jpeg，webp。
-	// ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+	// ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 生成模型的格式，仅限制生成一种格式。
@@ -374,6 +377,9 @@ type SubmitHunyuanTo3DRapidJobRequest struct {
 
 	// 是否开启 PBR材质生成，默认 false。
 	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
+
+	// 是否开启单几何生成选项，开启后会生成不带纹理的3D模型（白模）； 开启时，生成模型文件不支持OBJ格式，默认生成模型文件为GLB格式。
+	EnableGeometry *bool `json:"EnableGeometry,omitnil,omitempty" name:"EnableGeometry"`
 }
 
 func (r *SubmitHunyuanTo3DRapidJobRequest) ToJsonString() string {
@@ -393,6 +399,7 @@ func (r *SubmitHunyuanTo3DRapidJobRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ResultFormat")
 	delete(f, "EnablePBR")
+	delete(f, "EnableGeometry")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuanTo3DRapidJobRequest has unknown keys!", "")
 	}

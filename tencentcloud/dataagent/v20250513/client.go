@@ -375,6 +375,76 @@ func (c *Client) DeleteDataAgentSessionWithContext(ctx context.Context, request 
     return
 }
 
+func NewGetKnowledgeBaseFileListRequest() (request *GetKnowledgeBaseFileListRequest) {
+    request = &GetKnowledgeBaseFileListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "GetKnowledgeBaseFileList")
+    
+    
+    return
+}
+
+func NewGetKnowledgeBaseFileListResponse() (response *GetKnowledgeBaseFileListResponse) {
+    response = &GetKnowledgeBaseFileListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetKnowledgeBaseFileList
+// 获取知识库文件信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetKnowledgeBaseFileList(request *GetKnowledgeBaseFileListRequest) (response *GetKnowledgeBaseFileListResponse, err error) {
+    return c.GetKnowledgeBaseFileListWithContext(context.Background(), request)
+}
+
+// GetKnowledgeBaseFileList
+// 获取知识库文件信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetKnowledgeBaseFileListWithContext(ctx context.Context, request *GetKnowledgeBaseFileListRequest) (response *GetKnowledgeBaseFileListResponse, err error) {
+    if request == nil {
+        request = NewGetKnowledgeBaseFileListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "GetKnowledgeBaseFileList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetKnowledgeBaseFileList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetKnowledgeBaseFileListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetKnowledgeBaseListRequest() (request *GetKnowledgeBaseListRequest) {
     request = &GetKnowledgeBaseListRequest{
         BaseRequest: &tchttp.BaseRequest{},

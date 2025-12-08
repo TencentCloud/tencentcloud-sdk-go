@@ -1357,7 +1357,7 @@ type CreateTrainingModelRequestParams struct {
 	// 模型来源cos目录，以/结尾
 	TrainingModelCosPath *CosPathInfo `json:"TrainingModelCosPath,omitnil,omitempty" name:"TrainingModelCosPath"`
 
-	// 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION)
+	// 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION/ONNX)
 	AlgorithmFramework *string `json:"AlgorithmFramework,omitnil,omitempty" name:"AlgorithmFramework"`
 
 	// 推理环境
@@ -1401,7 +1401,7 @@ type CreateTrainingModelRequestParams struct {
 	// 注意:  默认为NORMAL
 	ModelVersionType *string `json:"ModelVersionType,omitnil,omitempty" name:"ModelVersionType"`
 
-	// 模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE）
+	// 模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE_BERT/HUGGING_FACE_STABLE_DIFFUSION/HUGGING_FACE_STABLE_DIFFUSION_LORA/WEB_UI_STABLE_DIFFUSION）
 	ModelFormat *string `json:"ModelFormat,omitnil,omitempty" name:"ModelFormat"`
 
 	// 推理镜像ID
@@ -1444,7 +1444,7 @@ type CreateTrainingModelRequest struct {
 	// 模型来源cos目录，以/结尾
 	TrainingModelCosPath *CosPathInfo `json:"TrainingModelCosPath,omitnil,omitempty" name:"TrainingModelCosPath"`
 
-	// 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION)
+	// 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION/ONNX)
 	AlgorithmFramework *string `json:"AlgorithmFramework,omitnil,omitempty" name:"AlgorithmFramework"`
 
 	// 推理环境
@@ -1488,7 +1488,7 @@ type CreateTrainingModelRequest struct {
 	// 注意:  默认为NORMAL
 	ModelVersionType *string `json:"ModelVersionType,omitnil,omitempty" name:"ModelVersionType"`
 
-	// 模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE）
+	// 模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE_BERT/HUGGING_FACE_STABLE_DIFFUSION/HUGGING_FACE_STABLE_DIFFUSION_LORA/WEB_UI_STABLE_DIFFUSION）
 	ModelFormat *string `json:"ModelFormat,omitnil,omitempty" name:"ModelFormat"`
 
 	// 推理镜像ID
@@ -2423,6 +2423,8 @@ type DeleteModelServiceRequestParams struct {
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// 服务分类
+	//
+	// Deprecated: ServiceCategory is deprecated.
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 }
 
@@ -3959,6 +3961,8 @@ type DescribeModelServiceCallInfoRequestParams struct {
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
 	// 服务分类
+	//
+	// Deprecated: ServiceCategory is deprecated.
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 }
 
@@ -4044,6 +4048,8 @@ type DescribeModelServiceGroupRequestParams struct {
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
 	// 服务分类
+	//
+	// Deprecated: ServiceCategory is deprecated.
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 }
 
@@ -4125,6 +4131,8 @@ type DescribeModelServiceGroupsRequestParams struct {
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
 	// 服务分类
+	//
+	// Deprecated: ServiceCategory is deprecated.
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 }
 
@@ -4286,6 +4294,8 @@ type DescribeModelServiceRequestParams struct {
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// 服务分类
+	//
+	// Deprecated: ServiceCategory is deprecated.
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 }
 
@@ -4492,7 +4502,7 @@ func (r *DescribeNotebooksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNotebooksResponseParams struct {
-	// 详情
+	// notebook详情
 	NotebookSet []*NotebookSetItem `json:"NotebookSet,omitnil,omitempty" name:"NotebookSet"`
 
 	// 总条数
@@ -5014,6 +5024,10 @@ type Event struct {
 type ExecAction struct {
 	// 执行命令列表
 	Command []*string `json:"Command,omitnil,omitempty" name:"Command"`
+}
+
+type ExposePortConfig struct {
+
 }
 
 type Filter struct {
@@ -6576,6 +6590,9 @@ type NotebookSetItem struct {
 	// AppId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 容器服务暴露端口配置
+	ExposePortConfig *ExposePortConfig `json:"ExposePortConfig,omitnil,omitempty" name:"ExposePortConfig"`
 }
 
 type NumOrPercent struct {
