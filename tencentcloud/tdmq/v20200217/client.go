@@ -963,7 +963,9 @@ func NewCreateRocketMQClusterResponse() (response *CreateRocketMQClusterResponse
 }
 
 // CreateRocketMQCluster
-// 此接口用于创建一个RocketMQ集群
+// 创建 RocketMQ 集群。
+//
+// 当前 API 适用集群：4.x 虚拟集群。创建 4.x 专享或通用集群的接口文档见 [CreateRocketMQVipInstance](https://cloud.tencent.com/document/api/1179/95721)，创建 5.x 集群接口文档见 [CreateInstance](https://cloud.tencent.com/document/api/1493/97868)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -983,7 +985,9 @@ func (c *Client) CreateRocketMQCluster(request *CreateRocketMQClusterRequest) (r
 }
 
 // CreateRocketMQCluster
-// 此接口用于创建一个RocketMQ集群
+// 创建 RocketMQ 集群。
+//
+// 当前 API 适用集群：4.x 虚拟集群。创建 4.x 专享或通用集群的接口文档见 [CreateRocketMQVipInstance](https://cloud.tencent.com/document/api/1179/95721)，创建 5.x 集群接口文档见 [CreateInstance](https://cloud.tencent.com/document/api/1493/97868)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1109,7 +1113,9 @@ func NewCreateRocketMQGroupResponse() (response *CreateRocketMQGroupResponse) {
 }
 
 // CreateRocketMQGroup
-// 创建RocketMQ消费组
+// 创建 RocketMQ 消费组。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。创建 5.x 集群消费组的接口文档见 [CreateConsumerGroup](https://cloud.tencent.com/document/api/1493/97943)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1124,7 +1130,9 @@ func (c *Client) CreateRocketMQGroup(request *CreateRocketMQGroupRequest) (respo
 }
 
 // CreateRocketMQGroup
-// 创建RocketMQ消费组
+// 创建 RocketMQ 消费组。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。创建 5.x 集群消费组的接口文档见 [CreateConsumerGroup](https://cloud.tencent.com/document/api/1493/97943)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1171,7 +1179,9 @@ func NewCreateRocketMQNamespaceResponse() (response *CreateRocketMQNamespaceResp
 }
 
 // CreateRocketMQNamespace
-// 创建RocketMQ命名空间
+// 创建 RocketMQ 命名空间。
+//
+// 当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1191,7 +1201,9 @@ func (c *Client) CreateRocketMQNamespace(request *CreateRocketMQNamespaceRequest
 }
 
 // CreateRocketMQNamespace
-// 创建RocketMQ命名空间
+// 创建 RocketMQ 命名空间。
+//
+// 当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1319,7 +1331,9 @@ func NewCreateRocketMQTopicResponse() (response *CreateRocketMQTopicResponse) {
 }
 
 // CreateRocketMQTopic
-// 创建RocketMQ主题
+// 批量创建 RocketMQ 主题。
+//
+// 当前云 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的创建 Topic 接口文档见 [CreateTopic](https://cloud.tencent.com/document/api/1493/97947)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1339,7 +1353,9 @@ func (c *Client) CreateRocketMQTopic(request *CreateRocketMQTopicRequest) (respo
 }
 
 // CreateRocketMQTopic
-// 创建RocketMQ主题
+// 批量创建 RocketMQ 主题。
+//
+// 当前云 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的创建 Topic 接口文档见 [CreateTopic](https://cloud.tencent.com/document/api/1493/97947)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1391,7 +1407,9 @@ func NewCreateRocketMQTopicV2Response() (response *CreateRocketMQTopicV2Response
 }
 
 // CreateRocketMQTopicV2
-// 创建RocketMQ主题
+// 创建 RocketMQ 主题。
+//
+// 当前云 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的创建 Topic 接口文档见 [CreateTopic](https://cloud.tencent.com/document/api/1493/97947)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1411,7 +1429,9 @@ func (c *Client) CreateRocketMQTopicV2(request *CreateRocketMQTopicV2Request) (r
 }
 
 // CreateRocketMQTopicV2
-// 创建RocketMQ主题
+// 创建 RocketMQ 主题。
+//
+// 当前云 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的创建 Topic 接口文档见 [CreateTopic](https://cloud.tencent.com/document/api/1493/97947)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2467,7 +2487,9 @@ func NewDeleteRocketMQClusterResponse() (response *DeleteRocketMQClusterResponse
 }
 
 // DeleteRocketMQCluster
-// 删除RocketMQ集群
+// 删除 RocketMQ 集群。
+//
+// 当前 API 适用集群：4.x 虚拟集群。删除 4.x 专享或通用集群的接口文档见 [DeleteRocketMQVipInstance](https://cloud.tencent.com/document/api/1179/95802)，删除 5.x 集群的接口文档见 [DeleteInstance](https://cloud.tencent.com/document/product/1493/97867)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2481,7 +2503,9 @@ func (c *Client) DeleteRocketMQCluster(request *DeleteRocketMQClusterRequest) (r
 }
 
 // DeleteRocketMQCluster
-// 删除RocketMQ集群
+// 删除 RocketMQ 集群。
+//
+// 当前 API 适用集群：4.x 虚拟集群。删除 4.x 专享或通用集群的接口文档见 [DeleteRocketMQVipInstance](https://cloud.tencent.com/document/api/1179/95802)，删除 5.x 集群的接口文档见 [DeleteInstance](https://cloud.tencent.com/document/product/1493/97867)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2593,7 +2617,9 @@ func NewDeleteRocketMQGroupResponse() (response *DeleteRocketMQGroupResponse) {
 }
 
 // DeleteRocketMQGroup
-// 删除RocketMQ消费组
+// 删除 RocketMQ 消费组。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。删除 5.x 集群消费组的接口文档见 [DeleteConsumerGroup](https://cloud.tencent.com/document/api/1493/97942)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2608,7 +2634,9 @@ func (c *Client) DeleteRocketMQGroup(request *DeleteRocketMQGroupRequest) (respo
 }
 
 // DeleteRocketMQGroup
-// 删除RocketMQ消费组
+// 删除 RocketMQ 消费组。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。删除 5.x 集群消费组的接口文档见 [DeleteConsumerGroup](https://cloud.tencent.com/document/api/1493/97942)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2655,7 +2683,9 @@ func NewDeleteRocketMQNamespaceResponse() (response *DeleteRocketMQNamespaceResp
 }
 
 // DeleteRocketMQNamespace
-// 删除RocketMQ命名空间
+// 删除 RocketMQ 命名空间。
+//
+// 当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2668,7 +2698,9 @@ func (c *Client) DeleteRocketMQNamespace(request *DeleteRocketMQNamespaceRequest
 }
 
 // DeleteRocketMQNamespace
-// 删除RocketMQ命名空间
+// 删除 RocketMQ 命名空间。
+//
+// 当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2781,7 +2813,9 @@ func NewDeleteRocketMQTopicResponse() (response *DeleteRocketMQTopicResponse) {
 }
 
 // DeleteRocketMQTopic
-// 删除RocketMQ主题
+// 删除 RocketMQ 主题。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。删除 5.x 集群主题的接口文档见 [DeleteTopic](https://cloud.tencent.com/document/api/1493/97946)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2794,7 +2828,9 @@ func (c *Client) DeleteRocketMQTopic(request *DeleteRocketMQTopicRequest) (respo
 }
 
 // DeleteRocketMQTopic
-// 删除RocketMQ主题
+// 删除 RocketMQ 主题。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。删除 5.x 集群主题的接口文档见 [DeleteTopic](https://cloud.tencent.com/document/api/1493/97946)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5073,7 +5109,9 @@ func NewDescribeRocketMQConsumeStatsResponse() (response *DescribeRocketMQConsum
 }
 
 // DescribeRocketMQConsumeStats
-// 获取消费详情列表
+// 查询 RocketMQ 消费详情列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。查询 5.x 集群消费详情的接口文档见 [DescribeConsumerGroup](https://cloud.tencent.com/document/api/1493/97941)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5085,7 +5123,9 @@ func (c *Client) DescribeRocketMQConsumeStats(request *DescribeRocketMQConsumeSt
 }
 
 // DescribeRocketMQConsumeStats
-// 获取消费详情列表
+// 查询 RocketMQ 消费详情列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。查询 5.x 集群消费详情的接口文档见 [DescribeConsumerGroup](https://cloud.tencent.com/document/api/1493/97941)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5129,7 +5169,9 @@ func NewDescribeRocketMQConsumerConnectionDetailResponse() (response *DescribeRo
 }
 
 // DescribeRocketMQConsumerConnectionDetail
-// 获取在线消费端详情
+// 查询 RocketMQ 消费者客户端详情。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的查询消费者客户端详情接口文档见 [DescribeConsumerClient](https://cloud.tencent.com/document/api/1493/115240)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5141,7 +5183,9 @@ func (c *Client) DescribeRocketMQConsumerConnectionDetail(request *DescribeRocke
 }
 
 // DescribeRocketMQConsumerConnectionDetail
-// 获取在线消费端详情
+// 查询 RocketMQ 消费者客户端详情。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的查询消费者客户端详情接口文档见 [DescribeConsumerClient](https://cloud.tencent.com/document/api/1493/115240)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5185,7 +5229,9 @@ func NewDescribeRocketMQConsumerConnectionsResponse() (response *DescribeRocketM
 }
 
 // DescribeRocketMQConsumerConnections
-// 获取指定消费组下当前客户端的连接情况
+// 查询 RocketMQ 消费组下的客户端连接列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消费组下的客户端连接列表接口文档见 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5199,7 +5245,9 @@ func (c *Client) DescribeRocketMQConsumerConnections(request *DescribeRocketMQCo
 }
 
 // DescribeRocketMQConsumerConnections
-// 获取指定消费组下当前客户端的连接情况
+// 查询 RocketMQ 消费组下的客户端连接列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消费组下的客户端连接列表接口文档见 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5311,7 +5359,9 @@ func NewDescribeRocketMQGroupsResponse() (response *DescribeRocketMQGroupsRespon
 }
 
 // DescribeRocketMQGroups
-// 获取RocketMQ消费组列表
+// 查询 RocketMQ 消费组列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。查询 5.x 集群的消费组列表接口文档见 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5326,7 +5376,9 @@ func (c *Client) DescribeRocketMQGroups(request *DescribeRocketMQGroupsRequest) 
 }
 
 // DescribeRocketMQGroups
-// 获取RocketMQ消费组列表
+// 查询 RocketMQ 消费组列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。查询 5.x 集群的消费组列表接口文档见 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5487,7 +5539,9 @@ func NewDescribeRocketMQMsgTraceResponse() (response *DescribeRocketMQMsgTraceRe
 }
 
 // DescribeRocketMQMsgTrace
-// 查询消息轨迹
+// 查询消息轨迹。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消息轨迹的接口文档见 [DescribeMessageTrace](https://cloud.tencent.com/document/api/1493/114302)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5497,7 +5551,9 @@ func (c *Client) DescribeRocketMQMsgTrace(request *DescribeRocketMQMsgTraceReque
 }
 
 // DescribeRocketMQMsgTrace
-// 查询消息轨迹
+// 查询消息轨迹。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消息轨迹的接口文档见 [DescribeMessageTrace](https://cloud.tencent.com/document/api/1493/114302)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5539,7 +5595,9 @@ func NewDescribeRocketMQNamespacesResponse() (response *DescribeRocketMQNamespac
 }
 
 // DescribeRocketMQNamespaces
-// 获取RocketMQ命名空间列表
+// 获取 RocketMQ 命名空间列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5554,7 +5612,9 @@ func (c *Client) DescribeRocketMQNamespaces(request *DescribeRocketMQNamespacesR
 }
 
 // DescribeRocketMQNamespaces
-// 获取RocketMQ命名空间列表
+// 获取 RocketMQ 命名空间列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5875,7 +5935,9 @@ func NewDescribeRocketMQSubscriptionsResponse() (response *DescribeRocketMQSubsc
 }
 
 // DescribeRocketMQSubscriptions
-// 用于获取RocketMQ消费组订阅关系数据
+// 查询 RocketMQ 消费组订阅关系列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消费组订阅的主题列表接口文档见 [DescribeTopicListByGroup](https://cloud.tencent.com/document/api/1493/115314)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5886,7 +5948,9 @@ func (c *Client) DescribeRocketMQSubscriptions(request *DescribeRocketMQSubscrip
 }
 
 // DescribeRocketMQSubscriptions
-// 用于获取RocketMQ消费组订阅关系数据
+// 查询 RocketMQ 消费组订阅关系列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消费组订阅的主题列表接口文档见 [DescribeTopicListByGroup](https://cloud.tencent.com/document/api/1493/115314)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6031,7 +6095,9 @@ func NewDescribeRocketMQTopicMsgsResponse() (response *DescribeRocketMQTopicMsgs
 }
 
 // DescribeRocketMQTopicMsgs
-// rocketmq 消息查询
+// 查询 RocketMQ 消息列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的查询消息列表接口文档见 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6042,7 +6108,9 @@ func (c *Client) DescribeRocketMQTopicMsgs(request *DescribeRocketMQTopicMsgsReq
 }
 
 // DescribeRocketMQTopicMsgs
-// rocketmq 消息查询
+// 查询 RocketMQ 消息列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的查询消息列表接口文档见 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6085,7 +6153,9 @@ func NewDescribeRocketMQTopicStatsResponse() (response *DescribeRocketMQTopicSta
 }
 
 // DescribeRocketMQTopicStats
-// 获取Topic生产详情列表
+// 查询 RocketMQ 主题生产详情列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群暂不支持该功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6096,7 +6166,9 @@ func (c *Client) DescribeRocketMQTopicStats(request *DescribeRocketMQTopicStatsR
 }
 
 // DescribeRocketMQTopicStats
-// 获取Topic生产详情列表
+// 查询 RocketMQ 主题生产详情列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群暂不支持该功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6139,7 +6211,9 @@ func NewDescribeRocketMQTopicsResponse() (response *DescribeRocketMQTopicsRespon
 }
 
 // DescribeRocketMQTopics
-// 获取RocketMQ主题列表
+// 查询 RocketMQ 主题列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。查询 5.x 集群的主题列表接口文档见 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6155,7 +6229,9 @@ func (c *Client) DescribeRocketMQTopics(request *DescribeRocketMQTopicsRequest) 
 }
 
 // DescribeRocketMQTopics
-// 获取RocketMQ主题列表
+// 查询 RocketMQ 主题列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。查询 5.x 集群的主题列表接口文档见 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6203,7 +6279,9 @@ func NewDescribeRocketMQTopicsByGroupResponse() (response *DescribeRocketMQTopic
 }
 
 // DescribeRocketMQTopicsByGroup
-// 获取指定消费组下订阅的主题列表
+// 查询 RocketMQ 消费组订阅的主题列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消费组订阅的主题列表接口文档见 [DescribeTopicListByGroup](https://cloud.tencent.com/document/api/1493/115314)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6216,7 +6294,9 @@ func (c *Client) DescribeRocketMQTopicsByGroup(request *DescribeRocketMQTopicsBy
 }
 
 // DescribeRocketMQTopicsByGroup
-// 获取指定消费组下订阅的主题列表
+// 查询 RocketMQ 消费组订阅的主题列表。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群查询消费组订阅的主题列表接口文档见 [DescribeTopicListByGroup](https://cloud.tencent.com/document/api/1493/115314)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7737,7 +7817,9 @@ func NewModifyRocketMQGroupResponse() (response *ModifyRocketMQGroupResponse) {
 }
 
 // ModifyRocketMQGroup
-// 更新RocketMQ消费组信息
+// 修改 RocketMQ 消费组属性。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。修改 5.x 集群消费组属性的接口文档见 [ModifyConsumerGroup](https://cloud.tencent.com/document/api/1493/97940)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7750,7 +7832,9 @@ func (c *Client) ModifyRocketMQGroup(request *ModifyRocketMQGroupRequest) (respo
 }
 
 // ModifyRocketMQGroup
-// 更新RocketMQ消费组信息
+// 修改 RocketMQ 消费组属性。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。修改 5.x 集群消费组属性的接口文档见 [ModifyConsumerGroup](https://cloud.tencent.com/document/api/1493/97940)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7903,7 +7987,9 @@ func NewModifyRocketMQNamespaceResponse() (response *ModifyRocketMQNamespaceResp
 }
 
 // ModifyRocketMQNamespace
-// 更新RocketMQ命名空间
+// 更新 RocketMQ 命名空间。
+//
+// 当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7921,7 +8007,9 @@ func (c *Client) ModifyRocketMQNamespace(request *ModifyRocketMQNamespaceRequest
 }
 
 // ModifyRocketMQNamespace
-// 更新RocketMQ命名空间
+// 更新 RocketMQ 命名空间。
+//
+// 当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8039,7 +8127,9 @@ func NewModifyRocketMQTopicResponse() (response *ModifyRocketMQTopicResponse) {
 }
 
 // ModifyRocketMQTopic
-// 更新RocketMQ主题信息
+// 修改 RocketMQ 主题属性。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。修改 5.x 集群主题属性的接口文档见 [ModifyTopic](https://cloud.tencent.com/document/api/1493/97944)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8053,7 +8143,9 @@ func (c *Client) ModifyRocketMQTopic(request *ModifyRocketMQTopicRequest) (respo
 }
 
 // ModifyRocketMQTopic
-// 更新RocketMQ主题信息
+// 修改 RocketMQ 主题属性。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。修改 5.x 集群主题属性的接口文档见 [ModifyTopic](https://cloud.tencent.com/document/api/1493/97944)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8563,7 +8655,9 @@ func NewRetryRocketMQDlqMessageResponse() (response *RetryRocketMQDlqMessageResp
 }
 
 // RetryRocketMQDlqMessage
-// 重发RocketMQ死信消息
+// 重发 RocketMQ 死信消息。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的重发死信消息接口文档见 [ResendDeadLetterMessage](https://cloud.tencent.com/document/api/1493/114592)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8573,7 +8667,9 @@ func (c *Client) RetryRocketMQDlqMessage(request *RetryRocketMQDlqMessageRequest
 }
 
 // RetryRocketMQDlqMessage
-// 重发RocketMQ死信消息
+// 重发 RocketMQ 死信消息。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的重发死信消息接口文档见 [ResendDeadLetterMessage](https://cloud.tencent.com/document/api/1493/114592)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

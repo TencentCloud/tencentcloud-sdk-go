@@ -5690,6 +5690,7 @@ type ModelInfo struct {
 	CosPathInfo *CosPathInfo `json:"CosPathInfo,omitnil,omitempty" name:"CosPathInfo"`
 
 	// GooseFSx的配置，ModelSource为GooseFSx时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	GooseFSx *GooseFSx `json:"GooseFSx,omitnil,omitempty" name:"GooseFSx"`
 
 	// 模型对应的算法框架，预留

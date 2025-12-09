@@ -22,48 +22,52 @@ import (
 
 // Predefined struct for user
 type CreateFinancialLLMTaskRequestParams struct {
-	// 审核策略BizType
+	// 接口使用的识别策略 ID，请参考 [快速指引](https://cloud.tencent.com/document/product/1124/124604) 获取该值。  
+	// 示例值：TencentCloudFinancialLLMDefault
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 待审文件类型，目前支持：PDF, DOC, DOCX
-	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
-
-	// 送审内容类型：1-文档，2-文本
+	// 送审内容的格式，有两个可选值：
+	// - 1：代表送审内容为**文档**，如DOC文档
+	// - 2：代表送审内容为**纯文本**
+	// 
+	// 示例值：1
 	ContentType *int64 `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 送审内容，根据ContentType字段的取值，传入送审文档的Url链接，或送审文本的Base64编码
+	// 若送审内容为文档（ContentType=1），需要传入具体格式，当前支持：DOC、DOCX、PDF。  
+	// 说明：若送审内容为纯文本（ContentType=2），则本字段传空（FileType=""）。
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 送审内容的传入方式如下：
+	// - 若为文档类，需传入文档的URL（原文档文字数不超过10,000字），例如：http://xxxxxxxxxxxx/financial_test.doc
+	// - 若为纯文本类，请以UTF-8格式进行Base64编码后传入（编码后字符数不超过10,000字），例如：5piO5aSpNjAz5LiA5a6a5rao
 	// 
-	// 文档限制：
-	// 
-	// - 文件下载时间不超过15秒（文件存储于腾讯云的Url可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。）
-	// - 所下载文件经 Base64 编码后不超过支持的文件大小：PDF/DOC/DOCX - 200M
-	// - 文档解析后的纯文本长度不超过 10000字
-	// 
-	// 文本限制：Base64解码后的文本长度不超过10000字
+	// 示例值：5piO5aSpNjAz5LiA5a6a5rao
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type CreateFinancialLLMTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 审核策略BizType
+	// 接口使用的识别策略 ID，请参考 [快速指引](https://cloud.tencent.com/document/product/1124/124604) 获取该值。  
+	// 示例值：TencentCloudFinancialLLMDefault
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 待审文件类型，目前支持：PDF, DOC, DOCX
-	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
-
-	// 送审内容类型：1-文档，2-文本
+	// 送审内容的格式，有两个可选值：
+	// - 1：代表送审内容为**文档**，如DOC文档
+	// - 2：代表送审内容为**纯文本**
+	// 
+	// 示例值：1
 	ContentType *int64 `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 送审内容，根据ContentType字段的取值，传入送审文档的Url链接，或送审文本的Base64编码
+	// 若送审内容为文档（ContentType=1），需要传入具体格式，当前支持：DOC、DOCX、PDF。  
+	// 说明：若送审内容为纯文本（ContentType=2），则本字段传空（FileType=""）。
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 送审内容的传入方式如下：
+	// - 若为文档类，需传入文档的URL（原文档文字数不超过10,000字），例如：http://xxxxxxxxxxxx/financial_test.doc
+	// - 若为纯文本类，请以UTF-8格式进行Base64编码后传入（编码后字符数不超过10,000字），例如：5piO5aSpNjAz5LiA5a6a5rao
 	// 
-	// 文档限制：
-	// 
-	// - 文件下载时间不超过15秒（文件存储于腾讯云的Url可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。）
-	// - 所下载文件经 Base64 编码后不超过支持的文件大小：PDF/DOC/DOCX - 200M
-	// - 文档解析后的纯文本长度不超过 10000字
-	// 
-	// 文本限制：Base64解码后的文本长度不超过10000字
+	// 示例值：5piO5aSpNjAz5LiA5a6a5rao
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -80,8 +84,8 @@ func (r *CreateFinancialLLMTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BizType")
-	delete(f, "FileType")
 	delete(f, "ContentType")
+	delete(f, "FileType")
 	delete(f, "Content")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFinancialLLMTaskRequest has unknown keys!", "")
@@ -91,7 +95,8 @@ func (r *CreateFinancialLLMTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFinancialLLMTaskResponseParams struct {
-	// 金融大模型审校任务ID
+	// 本次请求返回的任务ID将用于后续查询接口，以获取对应的审校结果。
+	// 示例值：3570106e-b156-45d9-8af5-99b46f7eb2f9。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -193,14 +198,16 @@ type FinancialLLMViolationReason struct {
 
 // Predefined struct for user
 type GetFinancialLLMTaskResultRequestParams struct {
-	// 金融大模型审校任务ID
+	// 该值对应创建任务接口里返回的TaskId字段值，创建任务接口见[创建金融大模型审校任务](https://cloud.tencent.com/document/product/1124/124463)。
+	// 示例值：3570106e-b156-45d9-8af5-99b46f7eb2f9
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type GetFinancialLLMTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 金融大模型审校任务ID
+	// 该值对应创建任务接口里返回的TaskId字段值，创建任务接口见[创建金融大模型审校任务](https://cloud.tencent.com/document/product/1124/124463)。
+	// 示例值：3570106e-b156-45d9-8af5-99b46f7eb2f9
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -225,27 +232,28 @@ func (r *GetFinancialLLMTaskResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFinancialLLMTaskResultResponseParams struct {
-	// 审校任务状态：
-	// 
-	// - Success: 成功
-	// - Processing: 处理中，请等待
-	// - Failed: 失败
+	// TaskId对应的任务的状态：
+	// - Success: 任务已完成
+	// - Processing: 任务进行中，建议10秒后再查询
+	// - Failed: 任务失败
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 大模型审校结果
-	ModerationResult *string `json:"ModerationResult,omitnil,omitempty" name:"ModerationResult"`
-
-	// 审校任务失败原因，仅当任务失败时有值
-	FailureReason *string `json:"FailureReason,omitnil,omitempty" name:"FailureReason"`
-
-	// 审校任务开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+	// 该字段标识服务检测到的违规点，具体内容参阅数据结构[FinancialLLMViolationDetail](https://cloud.tencent.com/document/api/1124/51861#FinancialLLMViolationDetail)
+	Details []*FinancialLLMViolationDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 本次检测的违规点列表
 	ReviewedLabels []*string `json:"ReviewedLabels,omitnil,omitempty" name:"ReviewedLabels"`
 
-	// 违规明细
-	Details []*FinancialLLMViolationDetail `json:"Details,omitnil,omitempty" name:"Details"`
+	// 审校任务的开始时间
+	// 示例值：2025-09-25 19:42:35
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 若审校任务失败（Status="Failed"），该字段返回失败的具体原因。
+	// 示例值：文档解析失败
+	FailureReason *string `json:"FailureReason,omitnil,omitempty" name:"FailureReason"`
+
+	// 该字段为历史结构字段，不再推荐使用。
+	ModerationResult *string `json:"ModerationResult,omitnil,omitempty" name:"ModerationResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -335,58 +343,84 @@ type Tag struct {
 
 // Predefined struct for user
 type TextModerationRequestParams struct {
-	// 该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
+	// 待检测的文本内容，需为UTF-8编码并以Base64格式传入。
+	// 示例值：5L2g55qE5Lil6LCo6K6p5L2g5Y+R546w77yM5Lqn5ZOB57uP55CG5Y+r5YmR6Z2S
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
-	// 备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+	// 接口使用的识别策略编号，需在[控制台](https://console.cloud.tencent.com/cms/clouds/manage)获取。详细获取方式请参考以下链接：
+	// - **内容安全**（详见步骤四：策略配置）：[点击这里](https://cloud.tencent.com/document/product/1124/37119)
+	// - **AI生成识别**（详见服务对接->方式二）：[点击这里](https://cloud.tencent.com/document/product/1124/118694)
+	// 
+	// 示例值：TencentCloudDefault
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**
+	// 该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。
+	// 取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+	// 示例值：a6127dd-c2a0-43e7-a3da-d27022d39ba7
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
-	// 该字段表示待检测对象对应的用户相关信息，传入后可便于甄别相应违规风险用户
+	// 该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
-	// 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
+	// 该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。
 	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 表示Content的原始语种，枚举值包括 "en" 和 "zh"。其中，"en" 表示英文，"zh" 表示中文。非中文场景的处理耗时较高，具体情况取决于送审文本长度，非中文场景需[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认。
+	// Content字段的原始语种，枚举值包括 zh 和 en：
+	// - 推荐使用 zh
+	// - en 适用于纯英文内容，耗时较高。若需使用 en，请先通过[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认
+	// 
+	// 示例值：zh
 	SourceLanguage *string `json:"SourceLanguage,omitnil,omitempty" name:"SourceLanguage"`
 
-	// 审核的业务类型，枚举值包括"TEXT"和"TEXT_AIGC"。其中"TEXT"表示传统文本审核，"TEXT_AIGC"表示AI生成检测（生成检测能力具体能力了解可[参见文档](https://cloud.tencent.com/document/product/1124/118694)）。
+	// 服务类型，枚举值包括 TEXT 和 TEXT_AIGC：
+	// TEXT：内容安全
+	// TEXT_AIGC：AI生成识别
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 流式审核策略维度下的唯一会话ID
+	// 适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。
+	// 示例值：7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 type TextModerationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
+	// 待检测的文本内容，需为UTF-8编码并以Base64格式传入。
+	// 示例值：5L2g55qE5Lil6LCo6K6p5L2g5Y+R546w77yM5Lqn5ZOB57uP55CG5Y+r5YmR6Z2S
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
-	// 备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+	// 接口使用的识别策略编号，需在[控制台](https://console.cloud.tencent.com/cms/clouds/manage)获取。详细获取方式请参考以下链接：
+	// - **内容安全**（详见步骤四：策略配置）：[点击这里](https://cloud.tencent.com/document/product/1124/37119)
+	// - **AI生成识别**（详见服务对接->方式二）：[点击这里](https://cloud.tencent.com/document/product/1124/118694)
+	// 
+	// 示例值：TencentCloudDefault
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**
+	// 该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。
+	// 取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+	// 示例值：a6127dd-c2a0-43e7-a3da-d27022d39ba7
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
-	// 该字段表示待检测对象对应的用户相关信息，传入后可便于甄别相应违规风险用户
+	// 该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
-	// 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
+	// 该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。
 	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 表示Content的原始语种，枚举值包括 "en" 和 "zh"。其中，"en" 表示英文，"zh" 表示中文。非中文场景的处理耗时较高，具体情况取决于送审文本长度，非中文场景需[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认。
+	// Content字段的原始语种，枚举值包括 zh 和 en：
+	// - 推荐使用 zh
+	// - en 适用于纯英文内容，耗时较高。若需使用 en，请先通过[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认
+	// 
+	// 示例值：zh
 	SourceLanguage *string `json:"SourceLanguage,omitnil,omitempty" name:"SourceLanguage"`
 
-	// 审核的业务类型，枚举值包括"TEXT"和"TEXT_AIGC"。其中"TEXT"表示传统文本审核，"TEXT_AIGC"表示AI生成检测（生成检测能力具体能力了解可[参见文档](https://cloud.tencent.com/document/product/1124/118694)）。
+	// 服务类型，枚举值包括 TEXT 和 TEXT_AIGC：
+	// TEXT：内容安全
+	// TEXT_AIGC：AI生成识别
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 流式审核策略维度下的唯一会话ID
+	// 适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。
+	// 示例值：7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
@@ -418,50 +452,58 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TextModerationResponseParams struct {
-	// 该字段用于返回请求参数中的BizType参数
+	// 该字段用于回显检测对象请求参数中的 BizType，与输入的 BizType 值对应。
+	// 示例值：TencentCloudDefault
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
+
+	// 用于标识对本次请求的处置建议，共三种返回值。
+	// 返回值：**Block**: 建议直接做违规处置，**Review**: 建议人工二次确认，**Pass**: 未识别到风险。
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 该字段用于返回检测结果（DetailResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+	// 对应 Label 字段下的二级子标签，表示该 Label 下更细分的违规点。
+	// 示例值：SexualBehavior（该值为 Porn 下的一个二级标签）
+	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
-	// 该字段用于返回当前标签（Label）下被检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值
+	// 该字段标识 SubLabel 的置信度，取值范围为 0 - 100，值越高代表置信度越高。
+	// 示例值：85
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 该字段标识被检测文本所命中的关键词，可能返回0个或多个关键词。
+	// 示例值：["优惠券", "线下兑换"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容
-	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
-
-	// 该字段用于返回基于文本风险库审核的详细结果，返回值信息可参阅对应数据结构（DetailResults）的详细描述
+	// 该字段返回的检测的详细信息，返回值信息可参阅对应数据结构 DetailResults 的详细描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetailResults []*DetailResults `json:"DetailResults,omitnil,omitempty" name:"DetailResults"`
 
-	// 该字段用于返回文本检测中存在违规风险的账号检测结果，主要包括违规风险类别和风险等级信息，具体内容可参阅对应数据结构（RiskDetails）的详细描述
+	// 该字段标识入参 User 的检测结果，具体内容参阅数据结构 RiskDetails。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskDetails []*RiskDetails `json:"RiskDetails,omitnil,omitempty" name:"RiskDetails"`
 
-	// 该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理
+	// 该字段用于返回根据您的需求配置的附加信息（Extra），如未配置则默认返回值为空。
+	// 备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 该字段用于返回检测对象对应请求参数中的DataId，与输入的DataId字段中的内容对应
+	// 该字段用于回显检测对象请求参数中的 DataId，与输入的 DataId 值对应。
+	// 示例值：a6127dd-c2a0-43e7-a3da-d27022d39ba7
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
-	// 该字段用于返回当前标签（Label）下的二级标签。
-	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
-
-	// 该字段用于返回上下文关联文本
+	// 历史上下文关联的字段，不再推荐使用。上下文关联审核可通过入参的 SessionId 来实现。
 	ContextText *string `json:"ContextText,omitnil,omitempty" name:"ContextText"`
 
-	// 情感分析结果
+	// 该字段为历史结构字段，不再推荐使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SentimentAnalysis *SentimentAnalysis `json:"SentimentAnalysis,omitnil,omitempty" name:"SentimentAnalysis"`
 
-	// 该字段用于标识本次审核决策归因，比如text_nlp_tianji标识是由nlp tianji模型给出的审核决策，text_keyword_public标识命中了业务的关键词库
+	// 该字段为历史结构字段，不再推荐使用。
 	HitType *string `json:"HitType,omitnil,omitempty" name:"HitType"`
 
-	// 流式审核策略维度下的唯一会话ID
+	// 该字段用于回显检测对象请求参数中的 SessionId，与输入的 SessionId 值对应。
+	// 示例值：7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

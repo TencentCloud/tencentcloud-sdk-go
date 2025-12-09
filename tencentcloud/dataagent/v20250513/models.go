@@ -243,6 +243,23 @@ type Chunk struct {
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
 }
 
+type ColumnInfo struct {
+	// 列名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 列类型：int, bigint, double, date, datetime, string，decimal
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 列名称描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 列索引
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 原始字段名称
+	OriginalName *string `json:"OriginalName,omitnil,omitempty" name:"OriginalName"`
+}
+
 type CosFileInfo struct {
 	// 文件名称，包含后缀
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
@@ -443,6 +460,44 @@ func (r *DeleteDataAgentSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FileInfo struct {
+	// 文件名称
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件大小，字节
+	FileSize *float64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 文件类型,0=文本,1=表格，默认0
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 文件ID
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 状态，0：数据处理中  1：可用 -1：错误
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 操作者
+	CreateUser *string `json:"CreateUser,omitnil,omitempty" name:"CreateUser"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 分片策略
+	ChunkConfig *KnowledgeTaskConfig `json:"ChunkConfig,omitnil,omitempty" name:"ChunkConfig"`
+
+	// 文件来源0=unknow,1=user_cos,2=local
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 文件url
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 是否官方示例，0=否，1=是
+	IsShowCase *int64 `json:"IsShowCase,omitnil,omitempty" name:"IsShowCase"`
+
+	// 文档摘要
+	DocumentSummary *string `json:"DocumentSummary,omitnil,omitempty" name:"DocumentSummary"`
+}
+
 // Predefined struct for user
 type GetKnowledgeBaseFileListRequestParams struct {
 	// 实例id
@@ -498,6 +553,12 @@ func (r *GetKnowledgeBaseFileListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetKnowledgeBaseFileListResponseParams struct {
+	// 文件信息列表
+	FileList []*FileInfo `json:"FileList,omitnil,omitempty" name:"FileList"`
+
+	// 文件信息总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -730,6 +791,33 @@ type KnowledgeBase struct {
 
 	// 知识库关联的数据库列表，目前是只绑定一个数据源，数组预留拓展
 	DatasourceIds []*string `json:"DatasourceIds,omitnil,omitempty" name:"DatasourceIds"`
+}
+
+type KnowledgeTaskConfig struct {
+	// 切片类型  0:自定义切片，1：智能切片
+	ChunkType *int64 `json:"ChunkType,omitnil,omitempty" name:"ChunkType"`
+
+	// /智能切片：最小值 1000，默认 4800 自定义切片：正整数即可,默认值 1000
+	MaxChunkSize *int64 `json:"MaxChunkSize,omitnil,omitempty" name:"MaxChunkSize"`
+
+	//  切片分隔符,自定义切片使用：默认值为：["\n\n", "\n", "。", "！", "？", "，", ""]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Delimiters []*string `json:"Delimiters,omitnil,omitempty" name:"Delimiters"`
+
+	// 自定义切片使用:默认0 可重叠字符长度
+	ChunkOverlap *int64 `json:"ChunkOverlap,omitnil,omitempty" name:"ChunkOverlap"`
+
+	// 表格类文档解析
+	Columns []*ColumnInfo `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// 带检索的索引列表
+	Indexes []*int64 `json:"Indexes,omitnil,omitempty" name:"Indexes"`
+
+	// 0：不生成文档摘要，1：生成文档概要。默认0，当取1时，GenParaSummary必须也为1
+	GenDocSummary *int64 `json:"GenDocSummary,omitnil,omitempty" name:"GenDocSummary"`
+
+	// 0：不生成段落摘要，1：生成段落概要。默认0
+	GenParaSummary *int64 `json:"GenParaSummary,omitnil,omitempty" name:"GenParaSummary"`
 }
 
 // Predefined struct for user

@@ -12935,7 +12935,9 @@ type DescribeAddressesRequestParams struct {
 	// <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取private-ip-address。注意：当指定 private-ip-address 参数时，仅支持按第一个传入的 private-ip-address 参数执行查询操作。</li>
 	// <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的弹性网卡 ID 过滤。弹性网卡 ID 形如：eni-11112222。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取network-interface-id。</li>
 	// <li> is-arrears - String - 是否必填：否 - （过滤条件）按照 EIP 是否欠费进行过滤。（TRUE：EIP 处于欠费状态|FALSE：EIP 费用状态正常）</li>
-	// <li> address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'WanIP'：普通公网 IP, 'EIP'：弹性公网 IP，'AnycastEIP'：加速 IP，'HighQualityEIP'：精品弹性公网 IP， 'AntiDDoSEIP'：高防 IP。默认值是'EIP'。</li>
+	// <li> instance-type - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的实例类型进行过滤。绑定的实例类型可选值：'CVM'：云服务器，'NAT'：NAT 网关，'ENI'：弹性网卡，'CLB'：负载均衡，'HAVIP'：高可用虚拟IP，'DHCPIP'：弹性内网IP，'EKS'：弹性容器服务，'VPCE'：终端节点，'WAF'：Web 应用防火墙。
+	// 注意：过滤条件仅使用 instance-type 时，系统默认返回所有EIP类型（包括EIP、AnycastEIP、HighQualityEIP、AntiDDoSEIP、ResidentialEIP）绑定的资源列表。若需查询特定EIP类型绑定的资源，或查询普通公网IP绑定的资源，请同时指定 instance-type 和 address-type 参数进行配置。</li>
+	// <li> address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'WanIP'：普通公网 IP, 'EIP'：弹性公网 IP，'AnycastEIP'：加速 IP，'HighQualityEIP'：精品弹性公网 IP， 'AntiDDoSEIP'：高防 IP，'ResidentialEIP'：原生 IP。默认值是'EIP'。</li>
 	// <li> address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'：常规BGP，'CMCC'：移动，'CUCC'：联通, 'CTCC'：电信</li>
 	// <li> dedicated-cluster-id - String - 是否必填：否 - （过滤条件）按照 CDC 的唯一 ID 过滤。CDC 唯一 ID 形如：cluster-11112222。</li>
 	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
@@ -12965,7 +12967,9 @@ type DescribeAddressesRequest struct {
 	// <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取private-ip-address。注意：当指定 private-ip-address 参数时，仅支持按第一个传入的 private-ip-address 参数执行查询操作。</li>
 	// <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的弹性网卡 ID 过滤。弹性网卡 ID 形如：eni-11112222。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取network-interface-id。</li>
 	// <li> is-arrears - String - 是否必填：否 - （过滤条件）按照 EIP 是否欠费进行过滤。（TRUE：EIP 处于欠费状态|FALSE：EIP 费用状态正常）</li>
-	// <li> address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'WanIP'：普通公网 IP, 'EIP'：弹性公网 IP，'AnycastEIP'：加速 IP，'HighQualityEIP'：精品弹性公网 IP， 'AntiDDoSEIP'：高防 IP。默认值是'EIP'。</li>
+	// <li> instance-type - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的实例类型进行过滤。绑定的实例类型可选值：'CVM'：云服务器，'NAT'：NAT 网关，'ENI'：弹性网卡，'CLB'：负载均衡，'HAVIP'：高可用虚拟IP，'DHCPIP'：弹性内网IP，'EKS'：弹性容器服务，'VPCE'：终端节点，'WAF'：Web 应用防火墙。
+	// 注意：过滤条件仅使用 instance-type 时，系统默认返回所有EIP类型（包括EIP、AnycastEIP、HighQualityEIP、AntiDDoSEIP、ResidentialEIP）绑定的资源列表。若需查询特定EIP类型绑定的资源，或查询普通公网IP绑定的资源，请同时指定 instance-type 和 address-type 参数进行配置。</li>
+	// <li> address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'WanIP'：普通公网 IP, 'EIP'：弹性公网 IP，'AnycastEIP'：加速 IP，'HighQualityEIP'：精品弹性公网 IP， 'AntiDDoSEIP'：高防 IP，'ResidentialEIP'：原生 IP。默认值是'EIP'。</li>
 	// <li> address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'：常规BGP，'CMCC'：移动，'CUCC'：联通, 'CTCC'：电信</li>
 	// <li> dedicated-cluster-id - String - 是否必填：否 - （过滤条件）按照 CDC 的唯一 ID 过滤。CDC 唯一 ID 形如：cluster-11112222。</li>
 	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。</li>

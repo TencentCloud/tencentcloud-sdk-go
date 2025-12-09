@@ -65,7 +65,37 @@ func NewCreateFinancialLLMTaskResponse() (response *CreateFinancialLLMTaskRespon
 }
 
 // CreateFinancialLLMTask
-// 创建金融大模型审校任务
+// 本接口适用于“金融大模型审校”服务。在对接前，请参考快速入门文档并配置好业务基础信息。
+//
+// - **快速入门**：[快速入门文档](https://cloud.tencent.com/document/product/1124/124604)
+//
+// 
+//
+// ### 接口功能说明：
+//
+// 由于大模型审校服务耗时较长，通常达到分钟级，因此采用异步模式，整体流程分为两步：
+//
+// 1. 创建金融大模型审校任务（详见本文档）。
+//
+// 2. 查询审校结果（详见 [查询结果文档](https://cloud.tencent.com/document/product/1124/124463)）。
+//
+// 
+//
+// ### 接口调用说明：
+//
+// - **请求域名**：tms.tencentcloudapi.com
+//
+// - **并发限制**：每个账号最多可同时进行3个审校任务。
+//
+// - **支持的文件格式**：纯文本、PDF、DOC、DOCX。
+//
+// 
+//
+// ### 文件限制说明：
+//
+// - **文档大小限制**：PDF/DOC/DOCX 格式文件不超过 200M（该大小为Base64编码后）。
+//
+// - **文档下载时长**：不超过 15 秒（建议将文档存储在腾讯云 URL，以确保更高的下载稳定性）。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_QUERYREQLIMITED = "InternalError.QueryReqLimited"
@@ -83,7 +113,37 @@ func (c *Client) CreateFinancialLLMTask(request *CreateFinancialLLMTaskRequest) 
 }
 
 // CreateFinancialLLMTask
-// 创建金融大模型审校任务
+// 本接口适用于“金融大模型审校”服务。在对接前，请参考快速入门文档并配置好业务基础信息。
+//
+// - **快速入门**：[快速入门文档](https://cloud.tencent.com/document/product/1124/124604)
+//
+// 
+//
+// ### 接口功能说明：
+//
+// 由于大模型审校服务耗时较长，通常达到分钟级，因此采用异步模式，整体流程分为两步：
+//
+// 1. 创建金融大模型审校任务（详见本文档）。
+//
+// 2. 查询审校结果（详见 [查询结果文档](https://cloud.tencent.com/document/product/1124/124463)）。
+//
+// 
+//
+// ### 接口调用说明：
+//
+// - **请求域名**：tms.tencentcloudapi.com
+//
+// - **并发限制**：每个账号最多可同时进行3个审校任务。
+//
+// - **支持的文件格式**：纯文本、PDF、DOC、DOCX。
+//
+// 
+//
+// ### 文件限制说明：
+//
+// - **文档大小限制**：PDF/DOC/DOCX 格式文件不超过 200M（该大小为Base64编码后）。
+//
+// - **文档下载时长**：不超过 15 秒（建议将文档存储在腾讯云 URL，以确保更高的下载稳定性）。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_QUERYREQLIMITED = "InternalError.QueryReqLimited"
@@ -133,7 +193,7 @@ func NewGetFinancialLLMTaskResultResponse() (response *GetFinancialLLMTaskResult
 }
 
 // GetFinancialLLMTaskResult
-// 获取金融大模型审校任务结果
+// 本接口适用于“金融大模型审校”服务的结果查询。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDTASKID = "InvalidParameterValue.InvalidTaskId"
@@ -144,7 +204,7 @@ func (c *Client) GetFinancialLLMTaskResult(request *GetFinancialLLMTaskResultReq
 }
 
 // GetFinancialLLMTaskResult
-// 获取金融大模型审校任务结果
+// 本接口适用于“金融大模型审校”服务的结果查询。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDTASKID = "InvalidParameterValue.InvalidTaskId"
@@ -187,41 +247,31 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
 }
 
 // TextModeration
-// 本接口（Text Moderation）用于提交文本内容进行智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通文本内容安全服务](https://console.cloud.tencent.com/cms) 并调整好对应的业务配置。
+// 本接口提供“内容安全”和“AI生成识别”服务。在对接之前，请先参考快速入门，以配置业务基础信息。
 //
-// 
+// - **内容安全**：[快速入门](https://cloud.tencent.com/document/product/1124/37119)
 //
-// ### 接口使用说明
-//
-// - 前往“[内容安全控制台-文本内容安全](https://console.cloud.tencent.com/cms)”开启使用文本内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含**3000条**文本识别额度，有效期为15天。
-//
-// - 该接口为收费接口，计费方式敬请参见 [腾讯云文本内容安全定价](https://cloud.tencent.com/product/tms/pricing)。
+// - **AI生成识别**：[快速入门](https://cloud.tencent.com/document/product/1124/118694)
 //
 // 
 //
 // ### 接口功能说明：
 //
-// - 支持对文本文件进行检测，通过深度学习技术，识别可能令人反感、不安全或不适宜的违规文本内容；
+// - **内容安全**：对输入的文本，识别其中是否存在色情、违法等风险，返回处置建议、风险标签及对应的模型阈值。
 //
-// - 支持识别多种违规场景，包括：低俗、谩骂、色情、广告等场景；
-//
-// - 支持根据不同的业务场景配置自定义的审核策略，可在控制台文本内容安全-策略管理中配置；
-//
-// - 支持用户自定义配置词库黑白名单，打击自定义识别类型的违规文本（目前仅支持黑名单配置）；
-//
-// - 支持在审核文本内容时同时关联账号或设备信息，可识别违规风险账号或设备；
-//
-// - 支持大模型、聊天室等场景下的流式上下文审核。
+// - **AI生成识别**：对输入的文本，判断其是否为AI工具生成，返回AI生成的概率分数。
 //
 // 
 //
 // ### 接口调用说明：
 //
-// - 文本内容大小支持：文本原文长度不能超过unicode编码长度10000个字符；
+// - **请求域名**：tms.tencentcloudapi.com
 //
-// - 文本审核语言支持：目前支持中文、英文、阿拉伯数字的检测；
+// - **文本长度限制**：最长10,000个字符（以Unicode编码计量）。
 //
-// - 默认接口请求频率限制：**1000次/秒**，超过该频率限制则接口会报错。
+// - **请求频率**：内容安全默认1000次/秒，AI生成识别默认50次/秒。
+//
+// - **支持语言**：中文、英文。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ERRTEXTTIMEOUT = "InternalError.ErrTextTimeOut"
@@ -241,41 +291,31 @@ func (c *Client) TextModeration(request *TextModerationRequest) (response *TextM
 }
 
 // TextModeration
-// 本接口（Text Moderation）用于提交文本内容进行智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通文本内容安全服务](https://console.cloud.tencent.com/cms) 并调整好对应的业务配置。
+// 本接口提供“内容安全”和“AI生成识别”服务。在对接之前，请先参考快速入门，以配置业务基础信息。
 //
-// 
+// - **内容安全**：[快速入门](https://cloud.tencent.com/document/product/1124/37119)
 //
-// ### 接口使用说明
-//
-// - 前往“[内容安全控制台-文本内容安全](https://console.cloud.tencent.com/cms)”开启使用文本内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含**3000条**文本识别额度，有效期为15天。
-//
-// - 该接口为收费接口，计费方式敬请参见 [腾讯云文本内容安全定价](https://cloud.tencent.com/product/tms/pricing)。
+// - **AI生成识别**：[快速入门](https://cloud.tencent.com/document/product/1124/118694)
 //
 // 
 //
 // ### 接口功能说明：
 //
-// - 支持对文本文件进行检测，通过深度学习技术，识别可能令人反感、不安全或不适宜的违规文本内容；
+// - **内容安全**：对输入的文本，识别其中是否存在色情、违法等风险，返回处置建议、风险标签及对应的模型阈值。
 //
-// - 支持识别多种违规场景，包括：低俗、谩骂、色情、广告等场景；
-//
-// - 支持根据不同的业务场景配置自定义的审核策略，可在控制台文本内容安全-策略管理中配置；
-//
-// - 支持用户自定义配置词库黑白名单，打击自定义识别类型的违规文本（目前仅支持黑名单配置）；
-//
-// - 支持在审核文本内容时同时关联账号或设备信息，可识别违规风险账号或设备；
-//
-// - 支持大模型、聊天室等场景下的流式上下文审核。
+// - **AI生成识别**：对输入的文本，判断其是否为AI工具生成，返回AI生成的概率分数。
 //
 // 
 //
 // ### 接口调用说明：
 //
-// - 文本内容大小支持：文本原文长度不能超过unicode编码长度10000个字符；
+// - **请求域名**：tms.tencentcloudapi.com
 //
-// - 文本审核语言支持：目前支持中文、英文、阿拉伯数字的检测；
+// - **文本长度限制**：最长10,000个字符（以Unicode编码计量）。
 //
-// - 默认接口请求频率限制：**1000次/秒**，超过该频率限制则接口会报错。
+// - **请求频率**：内容安全默认1000次/秒，AI生成识别默认50次/秒。
+//
+// - **支持语言**：中文、英文。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ERRTEXTTIMEOUT = "InternalError.ErrTextTimeOut"

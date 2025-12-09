@@ -2220,7 +2220,7 @@ type CreateRocketMQGroupRequestParams struct {
 	// Group名称，8~64个字符
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 命名空间，目前只支持单个命名空间
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	Namespaces []*string `json:"Namespaces,omitnil,omitempty" name:"Namespaces"`
 
 	// 是否开启消费
@@ -2248,7 +2248,7 @@ type CreateRocketMQGroupRequest struct {
 	// Group名称，8~64个字符
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 命名空间，目前只支持单个命名空间
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	Namespaces []*string `json:"Namespaces,omitnil,omitempty" name:"Namespaces"`
 
 	// 是否开启消费
@@ -2490,7 +2490,7 @@ type CreateRocketMQTopicRequestParams struct {
 	// 主题名称，3-64个字符，只能包含字母、数字、“-”及“_”
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 主题所在的命名空间，目前支持在单个命名空间下创建主题
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	Namespaces []*string `json:"Namespaces,omitnil,omitempty" name:"Namespaces"`
 
 	// 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder, Transaction, DelayScheduled。Transaction仅在专享版支持。
@@ -2512,7 +2512,7 @@ type CreateRocketMQTopicRequest struct {
 	// 主题名称，3-64个字符，只能包含字母、数字、“-”及“_”
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 主题所在的命名空间，目前支持在单个命名空间下创建主题
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	Namespaces []*string `json:"Namespaces,omitnil,omitempty" name:"Namespaces"`
 
 	// 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder, Transaction, DelayScheduled。Transaction仅在专享版支持。
@@ -2585,7 +2585,7 @@ type CreateRocketMQTopicV2RequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 备注
@@ -2610,7 +2610,7 @@ type CreateRocketMQTopicV2Request struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 备注
@@ -4036,7 +4036,7 @@ type DeleteRocketMQGroupRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组名称
@@ -4049,7 +4049,7 @@ type DeleteRocketMQGroupRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组名称
@@ -4229,7 +4229,7 @@ type DeleteRocketMQTopicRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 主题名称
@@ -4242,7 +4242,7 @@ type DeleteRocketMQTopicRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 主题名称
@@ -7858,7 +7858,7 @@ type DescribeRocketMQConsumeStatsRequestParams struct {
 	// 实例ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组
@@ -7871,7 +7871,7 @@ type DescribeRocketMQConsumeStatsRequest struct {
 	// 实例ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组
@@ -7929,7 +7929,7 @@ type DescribeRocketMQConsumerConnectionDetailRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组名称
@@ -7954,7 +7954,7 @@ type DescribeRocketMQConsumerConnectionDetailRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组名称
@@ -8031,7 +8031,7 @@ type DescribeRocketMQConsumerConnectionsRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组ID
@@ -8056,7 +8056,7 @@ type DescribeRocketMQConsumerConnectionsRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组ID
@@ -8232,7 +8232,7 @@ type DescribeRocketMQGroupsRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 偏移量
@@ -8269,7 +8269,7 @@ type DescribeRocketMQGroupsRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 偏移量
@@ -8588,7 +8588,7 @@ type DescribeRocketMQMsgTraceRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 主题，rocketmq查询死信时值为groupId
@@ -8615,7 +8615,7 @@ type DescribeRocketMQMsgTraceRequest struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 主题，rocketmq查询死信时值为groupId
@@ -9287,7 +9287,7 @@ type DescribeRocketMQSubscriptionsRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 消费组名称
@@ -9306,7 +9306,7 @@ type DescribeRocketMQSubscriptionsRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 消费组名称
@@ -9463,7 +9463,7 @@ type DescribeRocketMQTopicMsgsRequestParams struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 主题名称，查询死信时为groupId
@@ -9511,7 +9511,7 @@ type DescribeRocketMQTopicMsgsRequest struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 主题名称，查询死信时为groupId
@@ -9712,7 +9712,7 @@ type DescribeRocketMQTopicStatsRequestParams struct {
 	// 实例ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 主题名
@@ -9725,7 +9725,7 @@ type DescribeRocketMQTopicStatsRequest struct {
 	// 实例ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 主题名
@@ -9783,7 +9783,7 @@ type DescribeRocketMQTopicsByGroupRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组名称
@@ -9802,7 +9802,7 @@ type DescribeRocketMQTopicsByGroupRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组名称
@@ -9877,7 +9877,7 @@ type DescribeRocketMQTopicsRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 按主题类型过滤查询结果，可选择Normal, GlobalOrder, PartitionedOrder, Transaction
@@ -9905,7 +9905,7 @@ type DescribeRocketMQTopicsRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 按主题类型过滤查询结果，可选择Normal, GlobalOrder, PartitionedOrder, Transaction
@@ -12394,7 +12394,7 @@ type ModifyRocketMQGroupRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组名称
@@ -12419,7 +12419,7 @@ type ModifyRocketMQGroupRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 消费组名称
@@ -12835,7 +12835,7 @@ type ModifyRocketMQTopicRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 主题名称
@@ -12854,7 +12854,7 @@ type ModifyRocketMQTopicRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 主题名称
@@ -14511,7 +14511,7 @@ type RetryRocketMQDlqMessageRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// group名称
@@ -14527,7 +14527,7 @@ type RetryRocketMQDlqMessageRequest struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间名称
+	// 命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// group名称

@@ -880,6 +880,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_CLUSTERCREATEVPCFAIL = "FailedOperation.ClusterCreateVpcFail"
+//  FAILEDOPERATION_CLUSTERNATIVECONNECTERROR = "FailedOperation.ClusterNativeConnectError"
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
 //  FAILEDOPERATION_TKECLUSTERCREATEFAILED = "FailedOperation.TkeClusterCreateFailed"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
@@ -912,6 +913,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_CLUSTERCREATEVPCFAIL = "FailedOperation.ClusterCreateVpcFail"
+//  FAILEDOPERATION_CLUSTERNATIVECONNECTERROR = "FailedOperation.ClusterNativeConnectError"
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
 //  FAILEDOPERATION_TKECLUSTERCREATEFAILED = "FailedOperation.TkeClusterCreateFailed"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"

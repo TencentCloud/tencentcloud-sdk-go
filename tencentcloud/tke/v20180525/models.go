@@ -2601,11 +2601,11 @@ type CreateClusterVirtualNodePoolRequestParams struct {
 	// 节点池名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
+	// 安全组ID列表
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
 	// 子网ID列表
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
-
-	// 安全组ID列表，必选参数
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 虚拟节点label
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
@@ -2634,11 +2634,11 @@ type CreateClusterVirtualNodePoolRequest struct {
 	// 节点池名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
+	// 安全组ID列表
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
 	// 子网ID列表
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
-
-	// 安全组ID列表，必选参数
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 虚拟节点label
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
@@ -2672,8 +2672,8 @@ func (r *CreateClusterVirtualNodePoolRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "Name")
-	delete(f, "SubnetIds")
 	delete(f, "SecurityGroupIds")
+	delete(f, "SubnetIds")
 	delete(f, "Labels")
 	delete(f, "Taints")
 	delete(f, "VirtualNodes")

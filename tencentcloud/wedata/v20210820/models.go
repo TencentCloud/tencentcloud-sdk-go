@@ -699,6 +699,128 @@ type ApproveType struct {
 	Classification *string `json:"Classification,omitnil,omitempty" name:"Classification"`
 }
 
+type AssetDim struct {
+	// 文件夹 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderId *uint64 `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 维度编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DimCode *string `json:"DimCode,omitnil,omitempty" name:"DimCode"`
+
+	// 维度名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DimName *string `json:"DimName,omitnil,omitempty" name:"DimName"`
+
+	// 维度描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 维度负责人UserId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerAccount *uint64 `json:"OwnerAccount,omitnil,omitempty" name:"OwnerAccount"`
+
+	// 维度负责人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 变更人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyUserId *int64 `json:"ModifyUserId,omitnil,omitempty" name:"ModifyUserId"`
+
+	// 维度最近修改人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyUser *string `json:"ModifyUser,omitnil,omitempty" name:"ModifyUser"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 维度录入方式， 取值：manual-手动录入；dict-关联字典表；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DimType *string `json:"DimType,omitnil,omitempty" name:"DimType"`
+
+	// 枚举值数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValuePairCount *uint64 `json:"ValuePairCount,omitnil,omitempty" name:"ValuePairCount"`
+
+	// 关联指标数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicatorPairCount *uint64 `json:"IndicatorPairCount,omitnil,omitempty" name:"IndicatorPairCount"`
+
+	// 关联字段数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableColumnCount *uint64 `json:"TableColumnCount,omitnil,omitempty" name:"TableColumnCount"`
+
+	// 维度 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DimId *uint64 `json:"DimId,omitnil,omitempty" name:"DimId"`
+
+	// 维度关联表字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DimTableLink *DimTableLink `json:"DimTableLink,omitnil,omitempty" name:"DimTableLink"`
+
+	// 枚举值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValuePairs []*Pair `json:"ValuePairs,omitnil,omitempty" name:"ValuePairs"`
+
+	// 维度关联字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableColumns []*AssetDimTableColumn `json:"TableColumns,omitnil,omitempty" name:"TableColumns"`
+
+	// 关联指标列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceIndicatorIds []*IndicatorBaseSimpleInfo `json:"SourceIndicatorIds,omitnil,omitempty" name:"SourceIndicatorIds"`
+
+	// 权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DimPermission *PermissionStatus `json:"DimPermission,omitnil,omitempty" name:"DimPermission"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+}
+
+type AssetDimTableColumn struct {
+	// 表字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnName *string `json:"ColumnName,omitnil,omitempty" name:"ColumnName"`
+
+	// 表字段中文名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnNameCn *string `json:"ColumnNameCn,omitnil,omitempty" name:"ColumnNameCn"`
+
+	// 表字段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnType *string `json:"ColumnType,omitnil,omitempty" name:"ColumnType"`
+
+	// 表字段描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnDescription *string `json:"ColumnDescription,omitnil,omitempty" name:"ColumnDescription"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 表GUID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableGuid *string `json:"TableGuid,omitnil,omitempty" name:"TableGuid"`
+
+	// 表归属的数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 表归属的Schema名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+}
+
 type AsyncResourceVO struct {
 	// 处理Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3433,6 +3555,22 @@ type ColumnMeta struct {
 	// 字段使用说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
+
+	// 目录名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CategoryName *string `json:"CategoryName,omitnil,omitempty" name:"CategoryName"`
+
+	// 源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginType *string `json:"OriginType,omitnil,omitempty" name:"OriginType"`
+
+	// 列绑定的指标信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicatorBase *IndicatorBaseSimpleInfo `json:"IndicatorBase,omitnil,omitempty" name:"IndicatorBase"`
+
+	// 列绑定的维度信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetDim *AssetDim `json:"AssetDim,omitnil,omitempty" name:"AssetDim"`
 }
 
 type ColumnValueConfig struct {
@@ -3674,6 +3812,10 @@ type CommonIdOpsDto struct {
 	// 返回补录计划名称_ok
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 补录计划Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MakeId *string `json:"MakeId,omitnil,omitempty" name:"MakeId"`
 }
 
 type CompareResult struct {
@@ -6725,6 +6867,9 @@ type DataSourceEnvInfo struct {
 	// 配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizParams *string `json:"BizParams,omitnil,omitempty" name:"BizParams"`
+
+	// 是否支持tccatalog
+	TcCatalogOpen *bool `json:"TcCatalogOpen,omitnil,omitempty" name:"TcCatalogOpen"`
 }
 
 type DataSourceInfo struct {
@@ -6894,6 +7039,9 @@ type DataSourceInfo struct {
 	// 数据源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceType *string `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
+
+	// 是否开通tccatalog,默认没有开启
+	TcCatalogOpen *bool `json:"TcCatalogOpen,omitnil,omitempty" name:"TcCatalogOpen"`
 }
 
 type DataSourceInfoPage struct {
@@ -14431,6 +14579,12 @@ type DescribeOperateOpsTasksRequestParams struct {
 
 	// 根据任务优先级筛选
 	RunPriorityList []*int64 `json:"RunPriorityList,omitnil,omitempty" name:"RunPriorityList"`
+
+	// 是否包含手动工作流
+	IncludeManualTask *string `json:"IncludeManualTask,omitnil,omitempty" name:"IncludeManualTask"`
+
+	// 是否检查权限
+	CheckPrivilege *bool `json:"CheckPrivilege,omitnil,omitempty" name:"CheckPrivilege"`
 }
 
 type DescribeOperateOpsTasksRequest struct {
@@ -14522,6 +14676,12 @@ type DescribeOperateOpsTasksRequest struct {
 
 	// 根据任务优先级筛选
 	RunPriorityList []*int64 `json:"RunPriorityList,omitnil,omitempty" name:"RunPriorityList"`
+
+	// 是否包含手动工作流
+	IncludeManualTask *string `json:"IncludeManualTask,omitnil,omitempty" name:"IncludeManualTask"`
+
+	// 是否检查权限
+	CheckPrivilege *bool `json:"CheckPrivilege,omitnil,omitempty" name:"CheckPrivilege"`
 }
 
 func (r *DescribeOperateOpsTasksRequest) ToJsonString() string {
@@ -14565,6 +14725,8 @@ func (r *DescribeOperateOpsTasksRequest) FromJsonString(s string) error {
 	delete(f, "BlackTaskIdList")
 	delete(f, "ScheduleTimeZone")
 	delete(f, "RunPriorityList")
+	delete(f, "IncludeManualTask")
+	delete(f, "CheckPrivilege")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOperateOpsTasksRequest has unknown keys!", "")
 	}
@@ -15027,6 +15189,11 @@ type DescribeOpsWorkflowsRequestParams struct {
 
 	// **时区** timeZone, 默认UTC+8
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 是否过滤无权限的工作流
+	// true: 过滤无权限的仅返回有权限的工作流列表(默认)
+	// false： 返回所有的工作流列表
+	CheckPrivilege *bool `json:"CheckPrivilege,omitnil,omitempty" name:"CheckPrivilege"`
 }
 
 type DescribeOpsWorkflowsRequest struct {
@@ -15082,6 +15249,11 @@ type DescribeOpsWorkflowsRequest struct {
 
 	// **时区** timeZone, 默认UTC+8
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 是否过滤无权限的工作流
+	// true: 过滤无权限的仅返回有权限的工作流列表(默认)
+	// false： 返回所有的工作流列表
+	CheckPrivilege *bool `json:"CheckPrivilege,omitnil,omitempty" name:"CheckPrivilege"`
 }
 
 func (r *DescribeOpsWorkflowsRequest) ToJsonString() string {
@@ -15113,6 +15285,7 @@ func (r *DescribeOpsWorkflowsRequest) FromJsonString(s string) error {
 	delete(f, "WorkflowTypeList")
 	delete(f, "KeyWord")
 	delete(f, "ScheduleTimeZone")
+	delete(f, "CheckPrivilege")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOpsWorkflowsRequest has unknown keys!", "")
 	}
@@ -22394,6 +22567,24 @@ type DiagnoseRep struct {
 	Table *Table `json:"Table,omitnil,omitempty" name:"Table"`
 }
 
+type DimTableLink struct {
+	// 维度主键KEY对应的表列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 维度值对应的表列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 表 GUID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableGuid *string `json:"TableGuid,omitnil,omitempty" name:"TableGuid"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+}
+
 type DimensionCount struct {
 	// 维度类型1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -25540,6 +25731,43 @@ type GovDatasourceInfo struct {
 	DatasourceEnv *string `json:"DatasourceEnv,omitnil,omitempty" name:"DatasourceEnv"`
 }
 
+type IndicatorBaseSimpleInfo struct {
+	// ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MeasureUnit *int64 `json:"MeasureUnit,omitnil,omitempty" name:"MeasureUnit"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicatorCode *string `json:"IndicatorCode,omitnil,omitempty" name:"IndicatorCode"`
+
+	// 业务负责人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizOwnerName *string `json:"BizOwnerName,omitnil,omitempty" name:"BizOwnerName"`
+
+	// 技术服务站名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TechOwnerName *string `json:"TechOwnerName,omitnil,omitempty" name:"TechOwnerName"`
+
+	// 业务口径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizCaliber *string `json:"BizCaliber,omitnil,omitempty" name:"BizCaliber"`
+
+	// 指标类型（1-原子指标 2-衍生指标 3-复合指标）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicatorType *int64 `json:"IndicatorType,omitnil,omitempty" name:"IndicatorType"`
+}
+
 type InstanceApiOpsRequest struct {
 	// 单个查询条件
 	Instance *InstanceOpsDto `json:"Instance,omitnil,omitempty" name:"Instance"`
@@ -26616,6 +26844,9 @@ type InstanceOpsDto struct {
 
 	// 实例执行计划描述
 	InstanceSchedulerDesc *string `json:"InstanceSchedulerDesc,omitnil,omitempty" name:"InstanceSchedulerDesc"`
+
+	// 当前用户对该实例的权限列表
+	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
 }
 
 type InstanceOpsInfoPage struct {
@@ -32185,6 +32416,20 @@ type PathNodeDsVO struct {
 	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
 }
 
+type PermissionStatus struct {
+	// 写权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanWrite *bool `json:"CanWrite,omitnil,omitempty" name:"CanWrite"`
+
+	// 写权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanDelete *bool `json:"CanDelete,omitnil,omitempty" name:"CanDelete"`
+
+	// 写权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanRead *bool `json:"CanRead,omitnil,omitempty" name:"CanRead"`
+}
+
 type ProdSchedulerTask struct {
 	// 生产调度任务工作流ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -32209,6 +32454,14 @@ type ProdSchedulerTask struct {
 	// 时区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 负责人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InChargeIdList []*string `json:"InChargeIdList,omitnil,omitempty" name:"InChargeIdList"`
+
+	// 负责人name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InChargeNameList []*string `json:"InChargeNameList,omitnil,omitempty" name:"InChargeNameList"`
 }
 
 type Project struct {
@@ -32841,10 +33094,10 @@ type RegisterEventRequestParams struct {
 	// 事件所属人
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
-	// 必填，事件类型，默认值：TIME_SERIES
+	// 事件类型，不填会使用默认值 TIME_SERIES 填充
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
-	// 必填，对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
+	// 对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
 	DimensionFormat *string `json:"DimensionFormat,omitnil,omitempty" name:"DimensionFormat"`
 
 	// 存活时间
@@ -32875,10 +33128,10 @@ type RegisterEventRequest struct {
 	// 事件所属人
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
-	// 必填，事件类型，默认值：TIME_SERIES
+	// 事件类型，不填会使用默认值 TIME_SERIES 填充
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
-	// 必填，对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
+	// 对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
 	DimensionFormat *string `json:"DimensionFormat,omitnil,omitempty" name:"DimensionFormat"`
 
 	// 存活时间
@@ -37546,6 +37799,11 @@ type SuccessorTaskInfo struct {
 	// 任务类型描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeDesc *string `json:"TaskTypeDesc,omitnil,omitempty" name:"TaskTypeDesc"`
+
+	// 当前用户对该资源的权限列表
+	// CAN_MANAGE 有修改操作权限
+	// NO_PERMISSION 无权限
+	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
 }
 
 // Predefined struct for user
@@ -38553,18 +38811,34 @@ type TagVoteSum struct {
 	// 标签id
 	TagId *int64 `json:"TagId,omitnil,omitempty" name:"TagId"`
 
+	// 标签名
+	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
+
 	// 该表该标签投票次数
 	VoteSum *int64 `json:"VoteSum,omitnil,omitempty" name:"VoteSum"`
 
 	// 当前用户对这张表是否加了该标签 true 已添加 false 未添加
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 标签名
-	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
-
 	// 标签描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagDesc *string `json:"TagDesc,omitnil,omitempty" name:"TagDesc"`
+
+	// 标签值Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValueId *int64 `json:"TagValueId,omitnil,omitempty" name:"TagValueId"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+
+	// 标签是否已删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagIsDeleted *bool `json:"TagIsDeleted,omitnil,omitempty" name:"TagIsDeleted"`
+
+	// 标签值是否已删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValueIsDeleted *bool `json:"TagValueIsDeleted,omitnil,omitempty" name:"TagValueIsDeleted"`
 }
 
 type TaskAlarmInfo struct {
@@ -40191,6 +40465,18 @@ type TaskOpsDto struct {
 	// 负责人Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerId *string `json:"OwnerId,omitnil,omitempty" name:"OwnerId"`
+
+	// 当前用户对该任务的权限列表， 当前支持
+	// CAN_MANAGE : 有权限管理操作
+	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+
+	// bundle客户端唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// bundle客户端信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
 }
 
 type TaskScriptContent struct {
@@ -42538,6 +42824,12 @@ type WorkflowExtOpsDto struct {
 	// 工作流类型，周期cycle，手动manual
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowType *string `json:"WorkflowType,omitnil,omitempty" name:"WorkflowType"`
+
+	// bundle客户端绑定唯一id
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// bundle客户端扩展信息，json格式
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
 }
 
 type WorkflowExtOpsDtoPage struct {

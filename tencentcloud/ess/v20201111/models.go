@@ -2500,6 +2500,9 @@ type CreateBatchQuickSignUrlRequestParams struct {
 
 	// 	 预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
 	PresetApproverInfo *PresetApproverInfo `json:"PresetApproverInfo,omitnil,omitempty" name:"PresetApproverInfo"`
+
+	// 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 若批量签署的合同中第一份待签署合同所选择的印章或者签名无法完全覆盖后续合同要求，或者当前签署人没有指定印章使用权限，则无法使用此功能，会自动退化为逐份确认。`
+	CanSkipReadFlow *bool `json:"CanSkipReadFlow,omitnil,omitempty" name:"CanSkipReadFlow"`
 }
 
 type CreateBatchQuickSignUrlRequest struct {
@@ -2593,6 +2596,9 @@ type CreateBatchQuickSignUrlRequest struct {
 
 	// 	 预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
 	PresetApproverInfo *PresetApproverInfo `json:"PresetApproverInfo,omitnil,omitempty" name:"PresetApproverInfo"`
+
+	// 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 若批量签署的合同中第一份待签署合同所选择的印章或者签名无法完全覆盖后续合同要求，或者当前签署人没有指定印章使用权限，则无法使用此功能，会自动退化为逐份确认。`
+	CanSkipReadFlow *bool `json:"CanSkipReadFlow,omitnil,omitempty" name:"CanSkipReadFlow"`
 }
 
 func (r *CreateBatchQuickSignUrlRequest) ToJsonString() string {
@@ -2622,6 +2628,7 @@ func (r *CreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "CacheApproverInfo")
 	delete(f, "CanBatchReject")
 	delete(f, "PresetApproverInfo")
+	delete(f, "CanSkipReadFlow")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchQuickSignUrlRequest has unknown keys!", "")
 	}
@@ -3902,6 +3909,10 @@ type CreateEmployeeQualificationSealQrCodeRequestParams struct {
 	// 
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/8436ffd78c20605e6b133ff4bc4d2ac7.png)
 	HintText *string `json:"HintText,omitnil,omitempty" name:"HintText"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 2000长度。在执业章授权完成后的回调场景，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_seals#%E4%BA%8C-%E5%91%98%E5%B7%A5%E6%89%A7%E4%B8%9A%E7%AB%A0%E5%9B%9E%E8%B0%83%E9%80%9A%E7%9F%A5">回调通知</a>模块。
+	// 示例值:QmFzZTYOIEJhc2U2NCA=
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
 type CreateEmployeeQualificationSealQrCodeRequest struct {
@@ -3917,6 +3928,10 @@ type CreateEmployeeQualificationSealQrCodeRequest struct {
 	// 
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/8436ffd78c20605e6b133ff4bc4d2ac7.png)
 	HintText *string `json:"HintText,omitnil,omitempty" name:"HintText"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 2000长度。在执业章授权完成后的回调场景，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_seals#%E4%BA%8C-%E5%91%98%E5%B7%A5%E6%89%A7%E4%B8%9A%E7%AB%A0%E5%9B%9E%E8%B0%83%E9%80%9A%E7%9F%A5">回调通知</a>模块。
+	// 示例值:QmFzZTYOIEJhc2U2NCA=
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
 func (r *CreateEmployeeQualificationSealQrCodeRequest) ToJsonString() string {
@@ -3934,6 +3949,7 @@ func (r *CreateEmployeeQualificationSealQrCodeRequest) FromJsonString(s string) 
 	delete(f, "Operator")
 	delete(f, "Agent")
 	delete(f, "HintText")
+	delete(f, "UserData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmployeeQualificationSealQrCodeRequest has unknown keys!", "")
 	}

@@ -47,6 +47,9 @@ const (
 	// 创建集群，开通VPC网络权限失败。
 	FAILEDOPERATION_CLUSTERCREATEVPCFAIL = "FailedOperation.ClusterCreateVpcFail"
 
+	// 原生集群检测失败
+	FAILEDOPERATION_CLUSTERNATIVECONNECTERROR = "FailedOperation.ClusterNativeConnectError"
+
 	// 本环境仅允许操作名称 %s 的集群
 	FAILEDOPERATION_CLUSTEROPERATEENVILLEGALERROR = "FailedOperation.ClusterOperateEnvIllegalError"
 
