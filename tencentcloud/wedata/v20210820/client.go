@@ -16449,6 +16449,9 @@ func NewUpdateWorkflowInfoResponse() (response *UpdateWorkflowInfoResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UpdateWorkflowInfo(request *UpdateWorkflowInfoRequest) (response *UpdateWorkflowInfoResponse, err error) {
     return c.UpdateWorkflowInfoWithContext(context.Background(), request)
 }
@@ -16460,6 +16463,9 @@ func (c *Client) UpdateWorkflowInfo(request *UpdateWorkflowInfoRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UpdateWorkflowInfoWithContext(ctx context.Context, request *UpdateWorkflowInfoRequest) (response *UpdateWorkflowInfoResponse, err error) {
     if request == nil {
         request = NewUpdateWorkflowInfoRequest()

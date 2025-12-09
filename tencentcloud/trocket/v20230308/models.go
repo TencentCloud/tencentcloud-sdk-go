@@ -7282,10 +7282,10 @@ type TopicStageChangeResult struct {
 
 // Predefined struct for user
 type VerifyMessageConsumptionRequestParams struct {
-	// 实例ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 客户端ID
@@ -7294,17 +7294,17 @@ type VerifyMessageConsumptionRequestParams struct {
 	// 消息ID
 	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 }
 
 type VerifyMessageConsumptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 客户端ID
@@ -7313,7 +7313,7 @@ type VerifyMessageConsumptionRequest struct {
 	// 消息ID
 	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 }
 

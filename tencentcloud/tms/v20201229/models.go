@@ -23,14 +23,11 @@ import (
 // Predefined struct for user
 type CreateFinancialLLMTaskRequestParams struct {
 	// 接口使用的识别策略 ID，请参考 [快速指引](https://cloud.tencent.com/document/product/1124/124604) 获取该值。  
-	// 示例值：TencentCloudFinancialLLMDefault
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 送审内容的格式，有两个可选值：
 	// - 1：代表送审内容为**文档**，如DOC文档
 	// - 2：代表送审内容为**纯文本**
-	// 
-	// 示例值：1
 	ContentType *int64 `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
 	// 若送审内容为文档（ContentType=1），需要传入具体格式，当前支持：DOC、DOCX、PDF。  
@@ -40,8 +37,6 @@ type CreateFinancialLLMTaskRequestParams struct {
 	// 送审内容的传入方式如下：
 	// - 若为文档类，需传入文档的URL（原文档文字数不超过10,000字），例如：http://xxxxxxxxxxxx/financial_test.doc
 	// - 若为纯文本类，请以UTF-8格式进行Base64编码后传入（编码后字符数不超过10,000字），例如：5piO5aSpNjAz5LiA5a6a5rao
-	// 
-	// 示例值：5piO5aSpNjAz5LiA5a6a5rao
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -49,14 +44,11 @@ type CreateFinancialLLMTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 接口使用的识别策略 ID，请参考 [快速指引](https://cloud.tencent.com/document/product/1124/124604) 获取该值。  
-	// 示例值：TencentCloudFinancialLLMDefault
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 送审内容的格式，有两个可选值：
 	// - 1：代表送审内容为**文档**，如DOC文档
 	// - 2：代表送审内容为**纯文本**
-	// 
-	// 示例值：1
 	ContentType *int64 `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
 	// 若送审内容为文档（ContentType=1），需要传入具体格式，当前支持：DOC、DOCX、PDF。  
@@ -66,8 +58,6 @@ type CreateFinancialLLMTaskRequest struct {
 	// 送审内容的传入方式如下：
 	// - 若为文档类，需传入文档的URL（原文档文字数不超过10,000字），例如：http://xxxxxxxxxxxx/financial_test.doc
 	// - 若为纯文本类，请以UTF-8格式进行Base64编码后传入（编码后字符数不超过10,000字），例如：5piO5aSpNjAz5LiA5a6a5rao
-	// 
-	// 示例值：5piO5aSpNjAz5LiA5a6a5rao
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -96,7 +86,6 @@ func (r *CreateFinancialLLMTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFinancialLLMTaskResponseParams struct {
 	// 本次请求返回的任务ID将用于后续查询接口，以获取对应的审校结果。
-	// 示例值：3570106e-b156-45d9-8af5-99b46f7eb2f9。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -199,7 +188,6 @@ type FinancialLLMViolationReason struct {
 // Predefined struct for user
 type GetFinancialLLMTaskResultRequestParams struct {
 	// 该值对应创建任务接口里返回的TaskId字段值，创建任务接口见[创建金融大模型审校任务](https://cloud.tencent.com/document/product/1124/124463)。
-	// 示例值：3570106e-b156-45d9-8af5-99b46f7eb2f9
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -207,7 +195,6 @@ type GetFinancialLLMTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// 该值对应创建任务接口里返回的TaskId字段值，创建任务接口见[创建金融大模型审校任务](https://cloud.tencent.com/document/product/1124/124463)。
-	// 示例值：3570106e-b156-45d9-8af5-99b46f7eb2f9
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -245,11 +232,9 @@ type GetFinancialLLMTaskResultResponseParams struct {
 	ReviewedLabels []*string `json:"ReviewedLabels,omitnil,omitempty" name:"ReviewedLabels"`
 
 	// 审校任务的开始时间
-	// 示例值：2025-09-25 19:42:35
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 若审校任务失败（Status="Failed"），该字段返回失败的具体原因。
-	// 示例值：文档解析失败
 	FailureReason *string `json:"FailureReason,omitnil,omitempty" name:"FailureReason"`
 
 	// 该字段为历史结构字段，不再推荐使用。
@@ -344,19 +329,15 @@ type Tag struct {
 // Predefined struct for user
 type TextModerationRequestParams struct {
 	// 待检测的文本内容，需为UTF-8编码并以Base64格式传入。
-	// 示例值：5L2g55qE5Lil6LCo6K6p5L2g5Y+R546w77yM5Lqn5ZOB57uP55CG5Y+r5YmR6Z2S
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 接口使用的识别策略编号，需在[控制台](https://console.cloud.tencent.com/cms/clouds/manage)获取。详细获取方式请参考以下链接：
 	// - **内容安全**（详见步骤四：策略配置）：[点击这里](https://cloud.tencent.com/document/product/1124/37119)
 	// - **AI生成识别**（详见服务对接->方式二）：[点击这里](https://cloud.tencent.com/document/product/1124/118694)
-	// 
-	// 示例值：TencentCloudDefault
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。
 	// 取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
-	// 示例值：a6127dd-c2a0-43e7-a3da-d27022d39ba7
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// 该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。
@@ -368,8 +349,6 @@ type TextModerationRequestParams struct {
 	// Content字段的原始语种，枚举值包括 zh 和 en：
 	// - 推荐使用 zh
 	// - en 适用于纯英文内容，耗时较高。若需使用 en，请先通过[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认
-	// 
-	// 示例值：zh
 	SourceLanguage *string `json:"SourceLanguage,omitnil,omitempty" name:"SourceLanguage"`
 
 	// 服务类型，枚举值包括 TEXT 和 TEXT_AIGC：
@@ -378,7 +357,6 @@ type TextModerationRequestParams struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。
-	// 示例值：7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
@@ -386,19 +364,15 @@ type TextModerationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待检测的文本内容，需为UTF-8编码并以Base64格式传入。
-	// 示例值：5L2g55qE5Lil6LCo6K6p5L2g5Y+R546w77yM5Lqn5ZOB57uP55CG5Y+r5YmR6Z2S
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 接口使用的识别策略编号，需在[控制台](https://console.cloud.tencent.com/cms/clouds/manage)获取。详细获取方式请参考以下链接：
 	// - **内容安全**（详见步骤四：策略配置）：[点击这里](https://cloud.tencent.com/document/product/1124/37119)
 	// - **AI生成识别**（详见服务对接->方式二）：[点击这里](https://cloud.tencent.com/document/product/1124/118694)
-	// 
-	// 示例值：TencentCloudDefault
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。
 	// 取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
-	// 示例值：a6127dd-c2a0-43e7-a3da-d27022d39ba7
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// 该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。
@@ -410,8 +384,6 @@ type TextModerationRequest struct {
 	// Content字段的原始语种，枚举值包括 zh 和 en：
 	// - 推荐使用 zh
 	// - en 适用于纯英文内容，耗时较高。若需使用 en，请先通过[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认
-	// 
-	// 示例值：zh
 	SourceLanguage *string `json:"SourceLanguage,omitnil,omitempty" name:"SourceLanguage"`
 
 	// 服务类型，枚举值包括 TEXT 和 TEXT_AIGC：
@@ -420,7 +392,6 @@ type TextModerationRequest struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。
-	// 示例值：7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
@@ -453,7 +424,6 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type TextModerationResponseParams struct {
 	// 该字段用于回显检测对象请求参数中的 BizType，与输入的 BizType 值对应。
-	// 示例值：TencentCloudDefault
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 用于标识对本次请求的处置建议，共三种返回值。
@@ -464,15 +434,12 @@ type TextModerationResponseParams struct {
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 对应 Label 字段下的二级子标签，表示该 Label 下更细分的违规点。
-	// 示例值：SexualBehavior（该值为 Porn 下的一个二级标签）
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
 	// 该字段标识 SubLabel 的置信度，取值范围为 0 - 100，值越高代表置信度越高。
-	// 示例值：85
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 该字段标识被检测文本所命中的关键词，可能返回0个或多个关键词。
-	// 示例值：["优惠券", "线下兑换"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
@@ -489,7 +456,6 @@ type TextModerationResponseParams struct {
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
 	// 该字段用于回显检测对象请求参数中的 DataId，与输入的 DataId 值对应。
-	// 示例值：a6127dd-c2a0-43e7-a3da-d27022d39ba7
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// 历史上下文关联的字段，不再推荐使用。上下文关联审核可通过入参的 SessionId 来实现。
@@ -503,7 +469,6 @@ type TextModerationResponseParams struct {
 	HitType *string `json:"HitType,omitnil,omitempty" name:"HitType"`
 
 	// 该字段用于回显检测对象请求参数中的 SessionId，与输入的 SessionId 值对应。
-	// 示例值：7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

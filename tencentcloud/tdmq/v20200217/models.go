@@ -8443,7 +8443,7 @@ type DescribeRocketMQMsgRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 主题，查询死信时传groupId
@@ -8479,7 +8479,7 @@ type DescribeRocketMQMsgRequest struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 主题，查询死信时传groupId
@@ -8773,7 +8773,7 @@ type DescribeRocketMQProducersRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 主题名
@@ -8798,7 +8798,7 @@ type DescribeRocketMQProducersRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间
+	// 主题所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 主题名

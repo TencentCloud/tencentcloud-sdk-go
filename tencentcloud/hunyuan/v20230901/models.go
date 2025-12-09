@@ -190,6 +190,8 @@ type ChatCompletionsRequestParams struct {
 	EnableMultimedia *bool `json:"EnableMultimedia,omitnil,omitempty" name:"EnableMultimedia"`
 
 	// 是否开启深度研究该问题，默认是false，在值为true且命中深度研究该问题时，会返回深度研究该问题信息。
+	//
+	// Deprecated: EnableDeepSearch is deprecated.
 	EnableDeepSearch *bool `json:"EnableDeepSearch,omitnil,omitempty" name:"EnableDeepSearch"`
 
 	// 说明： 1. 确保模型的输出是可复现的。 2. 取值区间为非0正整数，最大值10000。 3. 非必要不建议使用，不合理的取值会影响效果。
@@ -218,6 +220,8 @@ type ChatCompletionsRequestParams struct {
 	EnableRecommendedQuestions *bool `json:"EnableRecommendedQuestions,omitnil,omitempty" name:"EnableRecommendedQuestions"`
 
 	// 是否开启深度阅读，默认是false，在值为true时，会返回深度阅读的结果信息。说明:1.深度阅读需要开启插件增强,即设置EnableEnhancement为true,当设置EnableDeepRead为true时EnableEnhancement默认为true；2.目前暂时只支持单文档单轮的深度阅读；3.深度阅读功能的文件上传可以使用FilesUploads接口，具体参数详见FilesUploads接口文档
+	//
+	// Deprecated: EnableDeepRead is deprecated.
 	EnableDeepRead *bool `json:"EnableDeepRead,omitnil,omitempty" name:"EnableDeepRead"`
 
 	// 知识注入相关的参数信息
@@ -1886,6 +1890,11 @@ type Processes struct {
 	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
 }
 
+type PromptTokensDetails struct {
+	// 缓存 token 的数量。
+	CachedTokens *string `json:"CachedTokens,omitnil,omitempty" name:"CachedTokens"`
+}
+
 // Predefined struct for user
 type QueryHunyuanImageChatJobRequestParams struct {
 	// 任务 ID。
@@ -2907,6 +2916,9 @@ type Usage struct {
 
 	// 总 Token 数量。
 	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+
+	// 输入 token 的详情。
+	PromptTokensDetails *PromptTokensDetails `json:"PromptTokensDetails,omitnil,omitempty" name:"PromptTokensDetails"`
 }
 
 type UserLocation struct {

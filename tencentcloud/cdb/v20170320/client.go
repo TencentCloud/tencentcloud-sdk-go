@@ -5143,6 +5143,8 @@ func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
 // DescribeDBInstances
 // 本接口（DescribeDBInstances）用于查询云数据库实例列表，支持通过项目 ID、实例 ID、访问地址、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
 //
+// 说明：通过本接口返回的可用区情况为购买时的情况，不随主动 HA 切换变化。如需了解实时可用区情况，请通过 [DescribeDBInstanceConfig](https://cloud.tencent.com/document/product/236/17491) 接口进行查询。
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
@@ -5168,6 +5170,8 @@ func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (respo
 
 // DescribeDBInstances
 // 本接口（DescribeDBInstances）用于查询云数据库实例列表，支持通过项目 ID、实例 ID、访问地址、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
+//
+// 说明：通过本接口返回的可用区情况为购买时的情况，不随主动 HA 切换变化。如需了解实时可用区情况，请通过 [DescribeDBInstanceConfig](https://cloud.tencent.com/document/product/236/17491) 接口进行查询。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

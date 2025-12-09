@@ -10982,8 +10982,11 @@ type DescribeLiveStreamPushInfoListRequestParams struct {
 	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
 	// 每页个数，
-	// 范围：[1,1000]，
+	// 范围：[1,100000]，
 	// 默认值： 200。
+	// 注意： 
+	// 1. 这里尽量PageSize填大于预估在线流数，一次性全部把在线流拉过去，减少分页查询次数。
+	// 2. 该接口用于拉取在线流，减少高频调用，推荐每分钟查询一次，结合推断流在线回调来维护在线流状态。
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
@@ -11002,8 +11005,11 @@ type DescribeLiveStreamPushInfoListRequest struct {
 	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
 	// 每页个数，
-	// 范围：[1,1000]，
+	// 范围：[1,100000]，
 	// 默认值： 200。
+	// 注意： 
+	// 1. 这里尽量PageSize填大于预估在线流数，一次性全部把在线流拉过去，减少分页查询次数。
+	// 2. 该接口用于拉取在线流，减少高频调用，推荐每分钟查询一次，结合推断流在线回调来维护在线流状态。
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 

@@ -21611,6 +21611,12 @@ type DescribeTestRunningRecordRequestParams struct {
 
 	// 分页索引
 	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 状态列表  LAUNCHED:等待运行 RUNNING:运行中 KILLING:终止中 KILLED:已终止 SUCCESS:成功 FAILED:失败 SKIP_RUNNING 跳过运行 NEVER_RUN:未运行
+	StatusList []*string `json:"StatusList,omitnil,omitempty" name:"StatusList"`
+
+	// 排序条件 排序的key：timeCost,startTime
+	OrderConditionList []*OrderCondition `json:"OrderConditionList,omitnil,omitempty" name:"OrderConditionList"`
 }
 
 type DescribeTestRunningRecordRequest struct {
@@ -21642,6 +21648,12 @@ type DescribeTestRunningRecordRequest struct {
 
 	// 分页索引
 	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 状态列表  LAUNCHED:等待运行 RUNNING:运行中 KILLING:终止中 KILLED:已终止 SUCCESS:成功 FAILED:失败 SKIP_RUNNING 跳过运行 NEVER_RUN:未运行
+	StatusList []*string `json:"StatusList,omitnil,omitempty" name:"StatusList"`
+
+	// 排序条件 排序的key：timeCost,startTime
+	OrderConditionList []*OrderCondition `json:"OrderConditionList,omitnil,omitempty" name:"OrderConditionList"`
 }
 
 func (r *DescribeTestRunningRecordRequest) ToJsonString() string {
@@ -21665,6 +21677,8 @@ func (r *DescribeTestRunningRecordRequest) FromJsonString(s string) error {
 	delete(f, "RecordIdList")
 	delete(f, "PageSize")
 	delete(f, "PageIndex")
+	delete(f, "StatusList")
+	delete(f, "OrderConditionList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTestRunningRecordRequest has unknown keys!", "")
 	}
@@ -42008,6 +42022,9 @@ type UpdateWorkflowInfoRequestParams struct {
 
 	// 用于配置优化参数（线程、内存、CPU核数等），仅作用于Spark SQL节点。多个参数用英文分号分隔。
 	GeneralTaskParams []*GeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+
+	// 工作流依赖，yes/no。开启后表示当前任务依赖本工作流上个周期的所有任务。仅支持当前任务所在工作流的任务全部为同周期的情况，如果非同周期则不生效，请在工作流-统一调度上进行配置。
+	DependencyWorkflow *string `json:"DependencyWorkflow,omitnil,omitempty" name:"DependencyWorkflow"`
 }
 
 type UpdateWorkflowInfoRequest struct {
@@ -42048,6 +42065,9 @@ type UpdateWorkflowInfoRequest struct {
 
 	// 用于配置优化参数（线程、内存、CPU核数等），仅作用于Spark SQL节点。多个参数用英文分号分隔。
 	GeneralTaskParams []*GeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+
+	// 工作流依赖，yes/no。开启后表示当前任务依赖本工作流上个周期的所有任务。仅支持当前任务所在工作流的任务全部为同周期的情况，如果非同周期则不生效，请在工作流-统一调度上进行配置。
+	DependencyWorkflow *string `json:"DependencyWorkflow,omitnil,omitempty" name:"DependencyWorkflow"`
 }
 
 func (r *UpdateWorkflowInfoRequest) ToJsonString() string {
@@ -42074,6 +42094,7 @@ func (r *UpdateWorkflowInfoRequest) FromJsonString(s string) error {
 	delete(f, "UserGroupName")
 	delete(f, "WorkflowParams")
 	delete(f, "GeneralTaskParams")
+	delete(f, "DependencyWorkflow")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateWorkflowInfoRequest has unknown keys!", "")
 	}

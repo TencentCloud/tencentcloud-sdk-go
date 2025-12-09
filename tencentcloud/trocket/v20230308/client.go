@@ -221,6 +221,10 @@ func NewCreateMQTTInsPublicEndpointResponse() (response *CreateMQTTInsPublicEndp
 }
 
 // CreateMQTTInsPublicEndpoint
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 为MQTT实例创建公网接入点
 //
 // 可能返回的错误码:
@@ -230,6 +234,10 @@ func (c *Client) CreateMQTTInsPublicEndpoint(request *CreateMQTTInsPublicEndpoin
 }
 
 // CreateMQTTInsPublicEndpoint
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 为MQTT实例创建公网接入点
 //
 // 可能返回的错误码:
@@ -271,6 +279,10 @@ func NewCreateMQTTInstanceResponse() (response *CreateMQTTInstanceResponse) {
 }
 
 // CreateMQTTInstance
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 购买新的MQTT实例
 //
 // 可能返回的错误码:
@@ -280,6 +292,10 @@ func (c *Client) CreateMQTTInstance(request *CreateMQTTInstanceRequest) (respons
 }
 
 // CreateMQTTInstance
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 购买新的MQTT实例
 //
 // 可能返回的错误码:
@@ -321,6 +337,10 @@ func NewCreateMQTTTopicResponse() (response *CreateMQTTTopicResponse) {
 }
 
 // CreateMQTTTopic
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 创建主题
 //
 // 可能返回的错误码:
@@ -335,6 +355,10 @@ func (c *Client) CreateMQTTTopic(request *CreateMQTTTopicRequest) (response *Cre
 }
 
 // CreateMQTTTopic
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 创建主题
 //
 // 可能返回的错误码:
@@ -381,6 +405,10 @@ func NewCreateMQTTUserResponse() (response *CreateMQTTUserResponse) {
 }
 
 // CreateMQTTUser
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 添加mqtt角色
 //
 // 可能返回的错误码:
@@ -395,6 +423,10 @@ func (c *Client) CreateMQTTUser(request *CreateMQTTUserRequest) (response *Creat
 }
 
 // CreateMQTTUser
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 添加mqtt角色
 //
 // 可能返回的错误码:
@@ -667,6 +699,10 @@ func NewDeleteMQTTInsPublicEndpointResponse() (response *DeleteMQTTInsPublicEndp
 }
 
 // DeleteMQTTInsPublicEndpoint
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 删除MQTT实例的公网接入点
 //
 // 可能返回的错误码:
@@ -678,6 +714,10 @@ func (c *Client) DeleteMQTTInsPublicEndpoint(request *DeleteMQTTInsPublicEndpoin
 }
 
 // DeleteMQTTInsPublicEndpoint
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 删除MQTT实例的公网接入点
 //
 // 可能返回的错误码:
@@ -721,6 +761,10 @@ func NewDeleteMQTTInstanceResponse() (response *DeleteMQTTInstanceResponse) {
 }
 
 // DeleteMQTTInstance
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 删除MQTT实例
 //
 // 可能返回的错误码:
@@ -732,6 +776,10 @@ func (c *Client) DeleteMQTTInstance(request *DeleteMQTTInstanceRequest) (respons
 }
 
 // DeleteMQTTInstance
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 删除MQTT实例
 //
 // 可能返回的错误码:
@@ -775,6 +823,10 @@ func NewDeleteMQTTTopicResponse() (response *DeleteMQTTTopicResponse) {
 }
 
 // DeleteMQTTTopic
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 删除MQTT主题
 //
 // 可能返回的错误码:
@@ -785,6 +837,10 @@ func (c *Client) DeleteMQTTTopic(request *DeleteMQTTTopicRequest) (response *Del
 }
 
 // DeleteMQTTTopic
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 删除MQTT主题
 //
 // 可能返回的错误码:
@@ -827,6 +883,10 @@ func NewDeleteMQTTUserResponse() (response *DeleteMQTTUserResponse) {
 }
 
 // DeleteMQTTUser
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 删除MQTT访问用户
 //
 // 可能返回的错误码:
@@ -838,6 +898,10 @@ func (c *Client) DeleteMQTTUser(request *DeleteMQTTUserRequest) (response *Delet
 }
 
 // DeleteMQTTUser
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 删除MQTT访问用户
 //
 // 可能返回的错误码:
@@ -1559,6 +1623,10 @@ func NewDescribeMQTTClientResponse() (response *DescribeMQTTClientResponse) {
 }
 
 // DescribeMQTTClient
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询 MQTT 客户端详情
 //
 // 可能返回的错误码:
@@ -1568,6 +1636,10 @@ func (c *Client) DescribeMQTTClient(request *DescribeMQTTClientRequest) (respons
 }
 
 // DescribeMQTTClient
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询 MQTT 客户端详情
 //
 // 可能返回的错误码:
@@ -1609,6 +1681,10 @@ func NewDescribeMQTTInsPublicEndpointsResponse() (response *DescribeMQTTInsPubli
 }
 
 // DescribeMQTTInsPublicEndpoints
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询MQTT实例公网接入点
 //
 // 可能返回的错误码:
@@ -1618,6 +1694,10 @@ func (c *Client) DescribeMQTTInsPublicEndpoints(request *DescribeMQTTInsPublicEn
 }
 
 // DescribeMQTTInsPublicEndpoints
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询MQTT实例公网接入点
 //
 // 可能返回的错误码:
@@ -1659,6 +1739,10 @@ func NewDescribeMQTTInsVPCEndpointsResponse() (response *DescribeMQTTInsVPCEndpo
 }
 
 // DescribeMQTTInsVPCEndpoints
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询MQTT实例公网接入点
 //
 // 可能返回的错误码:
@@ -1668,6 +1752,10 @@ func (c *Client) DescribeMQTTInsVPCEndpoints(request *DescribeMQTTInsVPCEndpoint
 }
 
 // DescribeMQTTInsVPCEndpoints
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询MQTT实例公网接入点
 //
 // 可能返回的错误码:
@@ -1709,6 +1797,10 @@ func NewDescribeMQTTInstanceResponse() (response *DescribeMQTTInstanceResponse) 
 }
 
 // DescribeMQTTInstance
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询实例信息
 //
 // 可能返回的错误码:
@@ -1718,6 +1810,10 @@ func (c *Client) DescribeMQTTInstance(request *DescribeMQTTInstanceRequest) (res
 }
 
 // DescribeMQTTInstance
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询实例信息
 //
 // 可能返回的错误码:
@@ -1759,6 +1855,10 @@ func NewDescribeMQTTInstanceCertResponse() (response *DescribeMQTTInstanceCertRe
 }
 
 // DescribeMQTTInstanceCert
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询MQTT集群证书列表
 //
 // 可能返回的错误码:
@@ -1768,6 +1868,10 @@ func (c *Client) DescribeMQTTInstanceCert(request *DescribeMQTTInstanceCertReque
 }
 
 // DescribeMQTTInstanceCert
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询MQTT集群证书列表
 //
 // 可能返回的错误码:
@@ -1809,6 +1913,10 @@ func NewDescribeMQTTInstanceListResponse() (response *DescribeMQTTInstanceListRe
 }
 
 // DescribeMQTTInstanceList
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 获取实例列表，Filters参数使用说明如下：
 //
 // 1. InstanceName, 名称模糊查询
@@ -1830,6 +1938,10 @@ func (c *Client) DescribeMQTTInstanceList(request *DescribeMQTTInstanceListReque
 }
 
 // DescribeMQTTInstanceList
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 获取实例列表，Filters参数使用说明如下：
 //
 // 1. InstanceName, 名称模糊查询
@@ -1883,6 +1995,10 @@ func NewDescribeMQTTMessageResponse() (response *DescribeMQTTMessageResponse) {
 }
 
 // DescribeMQTTMessage
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询MQTT消息详情
 //
 // 可能返回的错误码:
@@ -1893,6 +2009,10 @@ func (c *Client) DescribeMQTTMessage(request *DescribeMQTTMessageRequest) (respo
 }
 
 // DescribeMQTTMessage
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询MQTT消息详情
 //
 // 可能返回的错误码:
@@ -1935,6 +2055,10 @@ func NewDescribeMQTTMessageListResponse() (response *DescribeMQTTMessageListResp
 }
 
 // DescribeMQTTMessageList
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询消息列表，如查询死信，请设置ConsumerGroup参数
 //
 // 可能返回的错误码:
@@ -1944,6 +2068,10 @@ func (c *Client) DescribeMQTTMessageList(request *DescribeMQTTMessageListRequest
 }
 
 // DescribeMQTTMessageList
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询消息列表，如查询死信，请设置ConsumerGroup参数
 //
 // 可能返回的错误码:
@@ -1985,6 +2113,10 @@ func NewDescribeMQTTProductSKUListResponse() (response *DescribeMQTTProductSKULi
 }
 
 // DescribeMQTTProductSKUList
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 获取产品售卖规格
 //
 // 可能返回的错误码:
@@ -1994,6 +2126,10 @@ func (c *Client) DescribeMQTTProductSKUList(request *DescribeMQTTProductSKUListR
 }
 
 // DescribeMQTTProductSKUList
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 获取产品售卖规格
 //
 // 可能返回的错误码:
@@ -2035,6 +2171,10 @@ func NewDescribeMQTTTopicResponse() (response *DescribeMQTTTopicResponse) {
 }
 
 // DescribeMQTTTopic
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询mqtt主题详情
 //
 // 可能返回的错误码:
@@ -2045,6 +2185,10 @@ func (c *Client) DescribeMQTTTopic(request *DescribeMQTTTopicRequest) (response 
 }
 
 // DescribeMQTTTopic
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询mqtt主题详情
 //
 // 可能返回的错误码:
@@ -2087,6 +2231,10 @@ func NewDescribeMQTTTopicListResponse() (response *DescribeMQTTTopicListResponse
 }
 
 // DescribeMQTTTopicList
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 获取主题列表，Filter参数使用说明如下：
 //
 // 
@@ -2102,6 +2250,10 @@ func (c *Client) DescribeMQTTTopicList(request *DescribeMQTTTopicListRequest) (r
 }
 
 // DescribeMQTTTopicList
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 获取主题列表，Filter参数使用说明如下：
 //
 // 
@@ -2149,6 +2301,10 @@ func NewDescribeMQTTUserListResponse() (response *DescribeMQTTUserListResponse) 
 }
 
 // DescribeMQTTUserList
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询用户列表，Filter参数使用说明如下：
 //
 // 
@@ -2162,6 +2318,10 @@ func (c *Client) DescribeMQTTUserList(request *DescribeMQTTUserListRequest) (res
 }
 
 // DescribeMQTTUserList
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 查询用户列表，Filter参数使用说明如下：
 //
 // 
@@ -2645,6 +2805,8 @@ func NewDescribeProducerListResponse() (response *DescribeProducerListResponse) 
 //
 // - ClientID，客户端ID
 //
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询生产者客户端列表接口文档见 [DescribeRocketMQProducers](https://cloud.tencent.com/document/api/1179/122749)。
+//
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
@@ -2660,6 +2822,8 @@ func (c *Client) DescribeProducerList(request *DescribeProducerListRequest) (res
 // - ClientIP，客户端IP
 //
 // - ClientID，客户端ID
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询生产者客户端列表接口文档见 [DescribeRocketMQProducers](https://cloud.tencent.com/document/api/1179/122749)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -3573,6 +3737,10 @@ func NewModifyMQTTInsPublicEndpointResponse() (response *ModifyMQTTInsPublicEndp
 }
 
 // ModifyMQTTInsPublicEndpoint
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 更新MQTT实例公网接入点
 //
 // 可能返回的错误码:
@@ -3584,6 +3752,10 @@ func (c *Client) ModifyMQTTInsPublicEndpoint(request *ModifyMQTTInsPublicEndpoin
 }
 
 // ModifyMQTTInsPublicEndpoint
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 更新MQTT实例公网接入点
 //
 // 可能返回的错误码:
@@ -3627,6 +3799,10 @@ func NewModifyMQTTInstanceResponse() (response *ModifyMQTTInstanceResponse) {
 }
 
 // ModifyMQTTInstance
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 修改实例属性
 //
 // 可能返回的错误码:
@@ -3638,6 +3814,10 @@ func (c *Client) ModifyMQTTInstance(request *ModifyMQTTInstanceRequest) (respons
 }
 
 // ModifyMQTTInstance
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 修改实例属性
 //
 // 可能返回的错误码:
@@ -3681,6 +3861,10 @@ func NewModifyMQTTInstanceCertBindingResponse() (response *ModifyMQTTInstanceCer
 }
 
 // ModifyMQTTInstanceCertBinding
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 更新MQTT集群绑定证书
 //
 // 参数传空，则为删除证书
@@ -3694,6 +3878,10 @@ func (c *Client) ModifyMQTTInstanceCertBinding(request *ModifyMQTTInstanceCertBi
 }
 
 // ModifyMQTTInstanceCertBinding
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 更新MQTT集群绑定证书
 //
 // 参数传空，则为删除证书
@@ -3739,6 +3927,10 @@ func NewModifyMQTTTopicResponse() (response *ModifyMQTTTopicResponse) {
 }
 
 // ModifyMQTTTopic
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 修改主题属性
 //
 // 可能返回的错误码:
@@ -3748,6 +3940,10 @@ func (c *Client) ModifyMQTTTopic(request *ModifyMQTTTopicRequest) (response *Mod
 }
 
 // ModifyMQTTTopic
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 修改主题属性
 //
 // 可能返回的错误码:
@@ -3789,6 +3985,10 @@ func NewModifyMQTTUserResponse() (response *ModifyMQTTUserResponse) {
 }
 
 // ModifyMQTTUser
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 修改MQTT角色
 //
 // 可能返回的错误码:
@@ -3798,6 +3998,10 @@ func (c *Client) ModifyMQTTUser(request *ModifyMQTTUserRequest) (response *Modif
 }
 
 // ModifyMQTTUser
+// 下线trocket下mqtt接口
+//
+// 
+//
 // 修改MQTT角色
 //
 // 可能返回的错误码:
@@ -3993,7 +4197,9 @@ func NewResendDeadLetterMessageResponse() (response *ResendDeadLetterMessageResp
 }
 
 // ResendDeadLetterMessage
-// 重新发送死信消息
+// 重新发送死信消息。
+//
+// 当前 API 适用集群：5.x集群。4.x 集群的重发死信消息接口文档见 [RetryRocketMQDlqMessage](https://cloud.tencent.com/document/api/1179/114595)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4002,7 +4208,9 @@ func (c *Client) ResendDeadLetterMessage(request *ResendDeadLetterMessageRequest
 }
 
 // ResendDeadLetterMessage
-// 重新发送死信消息
+// 重新发送死信消息。
+//
+// 当前 API 适用集群：5.x集群。4.x 集群的重发死信消息接口文档见 [RetryRocketMQDlqMessage](https://cloud.tencent.com/document/api/1179/114595)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4143,7 +4351,9 @@ func NewSendMessageResponse() (response *SendMessageResponse) {
 }
 
 // SendMessage
-// 发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+// 发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证 SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的发送消息接口文档见 [SendRocketMQMessage](https://cloud.tencent.com/document/api/1179/94179)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4153,7 +4363,9 @@ func (c *Client) SendMessage(request *SendMessageRequest) (response *SendMessage
 }
 
 // SendMessage
-// 发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+// 发送 RocketMQ 消息，该接口仅用于控制台发送少量测试消息，不保证 SLA，且云 API 存在限流，在真实业务场景下，请使用 RocketMQ SDK 发送消息。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的发送消息接口文档见 [SendRocketMQMessage](https://cloud.tencent.com/document/api/1179/94179)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4195,7 +4407,9 @@ func NewVerifyMessageConsumptionResponse() (response *VerifyMessageConsumptionRe
 }
 
 // VerifyMessageConsumption
-// 消息消费验证
+// 消息消费验证。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的消息消费验证接口文档见 [VerifyRocketMQConsume](https://cloud.tencent.com/document/api/1179/101061)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4205,7 +4419,9 @@ func (c *Client) VerifyMessageConsumption(request *VerifyMessageConsumptionReque
 }
 
 // VerifyMessageConsumption
-// 消息消费验证
+// 消息消费验证。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的消息消费验证接口文档见 [VerifyRocketMQConsume](https://cloud.tencent.com/document/api/1179/101061)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

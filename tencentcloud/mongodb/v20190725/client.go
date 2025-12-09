@@ -3755,7 +3755,7 @@ func NewSetBackupRulesResponse() (response *SetBackupRulesResponse) {
 }
 
 // SetBackupRules
-// 本接口(SetBackupRules)用于设置 MongoDB 云数据库的自动备份规则。
+// 本接口（SetBackupRules）用于设置 MongoDB 云数据库的自动备份规则。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3766,7 +3766,7 @@ func (c *Client) SetBackupRules(request *SetBackupRulesRequest) (response *SetBa
 }
 
 // SetBackupRules
-// 本接口(SetBackupRules)用于设置 MongoDB 云数据库的自动备份规则。
+// 本接口（SetBackupRules）用于设置 MongoDB 云数据库的自动备份规则。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
