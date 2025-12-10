@@ -6791,8 +6791,8 @@ type SetBackupRulesRequestParams struct {
 	LongTermUnit *string `json:"LongTermUnit,omitnil,omitempty" name:"LongTermUnit"`
 
 	// 指定用于长期保留的具体备份日期。此设置仅在 **LongTermUnit** 被设为**weekly** 或 **monthly** 时生效。
-	// - 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号 , 分隔。
-	// - 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号 , 分隔。
+	// - 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。
+	// - 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。
 	LongTermActiveDays *string `json:"LongTermActiveDays,omitnil,omitempty" name:"LongTermActiveDays"`
 
 	// 长期备份保留时长。取值范围[30,1075]。
@@ -6862,8 +6862,8 @@ type SetBackupRulesRequest struct {
 	LongTermUnit *string `json:"LongTermUnit,omitnil,omitempty" name:"LongTermUnit"`
 
 	// 指定用于长期保留的具体备份日期。此设置仅在 **LongTermUnit** 被设为**weekly** 或 **monthly** 时生效。
-	// - 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号 , 分隔。
-	// - 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号 , 分隔。
+	// - 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。
+	// - 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。
 	LongTermActiveDays *string `json:"LongTermActiveDays,omitnil,omitempty" name:"LongTermActiveDays"`
 
 	// 长期备份保留时长。取值范围[30,1075]。

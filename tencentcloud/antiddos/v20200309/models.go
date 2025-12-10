@@ -9213,10 +9213,10 @@ type TagFilter struct {
 }
 
 type TagInfo struct {
-	// 标签键
+	// 标签键。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 标签值
+	// 标签值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 

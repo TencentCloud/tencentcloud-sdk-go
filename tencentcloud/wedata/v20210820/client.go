@@ -4246,6 +4246,9 @@ func NewDescribeBatchOperateTaskResponse() (response *DescribeBatchOperateTaskRe
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeBatchOperateTask(request *DescribeBatchOperateTaskRequest) (response *DescribeBatchOperateTaskResponse, err error) {
     return c.DescribeBatchOperateTaskWithContext(context.Background(), request)
 }
@@ -4256,6 +4259,9 @@ func (c *Client) DescribeBatchOperateTask(request *DescribeBatchOperateTaskReque
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeBatchOperateTaskWithContext(ctx context.Context, request *DescribeBatchOperateTaskRequest) (response *DescribeBatchOperateTaskResponse, err error) {
     if request == nil {
         request = NewDescribeBatchOperateTaskRequest()

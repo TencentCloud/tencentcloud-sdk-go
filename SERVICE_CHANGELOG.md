@@ -1,10 +1,10 @@
-# Release v1.3.10
+# Release v1.3.11
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+## 腾讯云数据仓库TCHouse-C(cdwch) 版本：2020-09-15
 
-### 第 148 次发布
+### 第 35 次发布
 
-发布时间：2025-12-10 01:31:14
+发布时间：2025-12-11 01:20:00
 
 本次发布包含了以下内容：
 
@@ -12,18 +12,43 @@
 
 修改数据结构：
 
-* [BinlogItem](https://cloud.tencent.com/document/api/1003/48097#BinlogItem)
+* [CkUserAlterInfo](https://cloud.tencent.com/document/api/1299/83429#CkUserAlterInfo)
 
-	* 新增成员：CrossRegions
-
-
+	* 新增成员：OriginalPassword
 
 
-## 腾讯混元大模型(hunyuan) 版本：2023-09-01
 
-### 第 48 次发布
 
-发布时间：2025-12-10 01:49:36
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 163 次发布
+
+发布时间：2025-12-11 02:19:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [SmartSubtitleTaskFullTextResult](https://cloud.tencent.com/document/api/862/37615#SmartSubtitleTaskFullTextResult)
+* [SmartSubtitleTaskTextResultOutput](https://cloud.tencent.com/document/api/862/37615#SmartSubtitleTaskTextResultOutput)
+* [SubtitleResult](https://cloud.tencent.com/document/api/862/37615#SubtitleResult)
+
+修改数据结构：
+
+* [SmartSubtitlesResult](https://cloud.tencent.com/document/api/862/37615#SmartSubtitlesResult)
+
+	* 新增成员：OcrFullTextTask
+
+
+
+
+## 容器服务(tke) 版本：2022-05-01
+
+### 第 18 次发布
+
+发布时间：2025-12-11 03:13:31
 
 本次发布包含了以下内容：
 
@@ -31,77 +56,62 @@
 
 修改接口：
 
-* [ChatCompletions](https://cloud.tencent.com/document/api/1729/105701)
+* [ModifyClusterMachine](https://cloud.tencent.com/document/api/457/126106)
 
+	* 新增入参：SystemDisk
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+
+
+## 云点播(vod) 版本：2024-07-18
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 211 次发布
+
+发布时间：2025-12-11 03:28:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ImportMediaKnowledge](https://cloud.tencent.com/document/api/266/126286)
+* [SearchMediaBySemantics](https://cloud.tencent.com/document/api/266/126287)
 
 新增数据结构：
 
-* [PromptTokensDetails](https://cloud.tencent.com/document/api/1729/101838#PromptTokensDetails)
-
-修改数据结构：
-
-* [Usage](https://cloud.tencent.com/document/api/1729/101838#Usage)
-
-	* 新增成员：PromptTokensDetails
+* [SemanticsSearchResult](https://cloud.tencent.com/document/api/266/31773#SemanticsSearchResult)
 
 
 
+## Web 应用防火墙(waf) 版本：2018-01-25
 
-## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
+### 第 135 次发布
 
-### 第 48 次发布
-
-发布时间：2025-12-10 03:10:46
+发布时间：2025-12-11 03:39:29
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**预下线接口**：</font>
+新增数据结构：
 
-* CreateMQTTInsPublicEndpoint
-* CreateMQTTInstance
-* CreateMQTTTopic
-* CreateMQTTUser
-* DeleteMQTTInsPublicEndpoint
-* DeleteMQTTInstance
-* DeleteMQTTTopic
-* DeleteMQTTUser
-* DescribeMQTTClient
-* DescribeMQTTInsPublicEndpoints
-* DescribeMQTTInsVPCEndpoints
-* DescribeMQTTInstance
-* DescribeMQTTInstanceCert
-* DescribeMQTTInstanceList
-* DescribeMQTTMessage
-* DescribeMQTTMessageList
-* DescribeMQTTProductSKUList
-* DescribeMQTTTopic
-* DescribeMQTTTopicList
-* DescribeMQTTUserList
-* ModifyMQTTInsPublicEndpoint
-* ModifyMQTTInstance
-* ModifyMQTTInstanceCertBinding
-* ModifyMQTTTopic
-* ModifyMQTTUser
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 281 次发布
-
-发布时间：2025-12-10 03:27:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [BotMonitorPkg](https://cloud.tencent.com/document/api/627/53609#BotMonitorPkg)
+* [BotSecurityPkg](https://cloud.tencent.com/document/api/627/53609#BotSecurityPkg)
 
 修改数据结构：
 
-* [SecurityGroupPolicy](https://cloud.tencent.com/document/api/215/15824#SecurityGroupPolicy)
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
 
-	* 新增成员：Priority
+	* 新增成员：BotSecurityPkg, BotMonitorPkg
 
 
 
@@ -112,9 +122,9 @@
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
-### 第 172 次发布
+### 第 173 次发布
 
-发布时间：2025-12-10 03:38:55
+发布时间：2025-12-11 03:43:29
 
 本次发布包含了以下内容：
 
@@ -122,13 +132,16 @@
 
 修改接口：
 
-* [DescribeTestRunningRecord](https://cloud.tencent.com/document/api/1267/122750)
+* [DescribeBatchOperateTask](https://cloud.tencent.com/document/api/1267/94610)
 
-	* 新增入参：StatusList, OrderConditionList
+	* 新增入参：TimeZone, MinUpdateTime, MaxUpdateTime
 
-* [UpdateWorkflowInfo](https://cloud.tencent.com/document/api/1267/118382)
 
-	* 新增入参：DependencyWorkflow
+修改数据结构：
+
+* [DescribeBatchOperateTaskDTO](https://cloud.tencent.com/document/api/1267/76336#DescribeBatchOperateTaskDTO)
+
+	* 新增成员：ComputeResource, DlcRegion, IsInherit
 
 
 

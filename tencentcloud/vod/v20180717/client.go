@@ -8603,6 +8603,70 @@ func (c *Client) HandleCurrentPlaylistWithContext(ctx context.Context, request *
     return
 }
 
+func NewImportMediaKnowledgeRequest() (request *ImportMediaKnowledgeRequest) {
+    request = &ImportMediaKnowledgeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ImportMediaKnowledge")
+    
+    
+    return
+}
+
+func NewImportMediaKnowledgeResponse() (response *ImportMediaKnowledgeResponse) {
+    response = &ImportMediaKnowledgeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportMediaKnowledge
+// 用于将智能分析的结果导入到知识库中。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_INDEX = "InvalidParameterValue.Index"
+//  INVALIDPARAMETERVALUE_ITEMID = "InvalidParameterValue.ItemId"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYID = "InvalidParameterValue.RoundPlayId"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
+//  LIMITEXCEEDED_ROUNDPLAYLIST = "LimitExceeded.RoundPlaylist"
+func (c *Client) ImportMediaKnowledge(request *ImportMediaKnowledgeRequest) (response *ImportMediaKnowledgeResponse, err error) {
+    return c.ImportMediaKnowledgeWithContext(context.Background(), request)
+}
+
+// ImportMediaKnowledge
+// 用于将智能分析的结果导入到知识库中。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_INDEX = "InvalidParameterValue.Index"
+//  INVALIDPARAMETERVALUE_ITEMID = "InvalidParameterValue.ItemId"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYID = "InvalidParameterValue.RoundPlayId"
+//  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
+//  LIMITEXCEEDED_ROUNDPLAYLIST = "LimitExceeded.RoundPlaylist"
+func (c *Client) ImportMediaKnowledgeWithContext(ctx context.Context, request *ImportMediaKnowledgeRequest) (response *ImportMediaKnowledgeResponse, err error) {
+    if request == nil {
+        request = NewImportMediaKnowledgeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ImportMediaKnowledge")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportMediaKnowledge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportMediaKnowledgeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInspectMediaQualityRequest() (request *InspectMediaQualityRequest) {
     request = &InspectMediaQualityRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12665,6 +12729,102 @@ func (c *Client) SearchMediaWithContext(ctx context.Context, request *SearchMedi
     request.SetContext(ctx)
     
     response = NewSearchMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchMediaBySemanticsRequest() (request *SearchMediaBySemanticsRequest) {
+    request = &SearchMediaBySemanticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "SearchMediaBySemantics")
+    
+    
+    return
+}
+
+func NewSearchMediaBySemanticsResponse() (response *SearchMediaBySemanticsResponse) {
+    response = &SearchMediaBySemanticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SearchMediaBySemantics
+// 使用自然语言对媒体进行语义搜索。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETMEDIALISTERROR = "InternalError.GetMediaListError"
+//  INVALIDPARAMETERVALUE_CATEGORIES = "InvalidParameterValue.Categories"
+//  INVALIDPARAMETERVALUE_CLASSIDS = "InvalidParameterValue.ClassIds"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
+//  INVALIDPARAMETERVALUE_NAMEPREFIXES = "InvalidParameterValue.NamePrefixes"
+//  INVALIDPARAMETERVALUE_NAMES = "InvalidParameterValue.Names"
+//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
+//  INVALIDPARAMETERVALUE_SORT = "InvalidParameterValue.Sort"
+//  INVALIDPARAMETERVALUE_SOURCETYPE = "InvalidParameterValue.SourceType"
+//  INVALIDPARAMETERVALUE_SOURCETYPES = "InvalidParameterValue.SourceTypes"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+//  INVALIDPARAMETERVALUE_STORAGEREGIONS = "InvalidParameterValue.StorageRegions"
+//  INVALIDPARAMETERVALUE_STREAMIDS = "InvalidParameterValue.StreamIds"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
+//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
+//  INVALIDPARAMETERVALUE_TYPES = "InvalidParameterValue.Types"
+//  INVALIDPARAMETERVALUE_VIDS = "InvalidParameterValue.Vids"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) SearchMediaBySemantics(request *SearchMediaBySemanticsRequest) (response *SearchMediaBySemanticsResponse, err error) {
+    return c.SearchMediaBySemanticsWithContext(context.Background(), request)
+}
+
+// SearchMediaBySemantics
+// 使用自然语言对媒体进行语义搜索。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETMEDIALISTERROR = "InternalError.GetMediaListError"
+//  INVALIDPARAMETERVALUE_CATEGORIES = "InvalidParameterValue.Categories"
+//  INVALIDPARAMETERVALUE_CLASSIDS = "InvalidParameterValue.ClassIds"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
+//  INVALIDPARAMETERVALUE_NAMEPREFIXES = "InvalidParameterValue.NamePrefixes"
+//  INVALIDPARAMETERVALUE_NAMES = "InvalidParameterValue.Names"
+//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
+//  INVALIDPARAMETERVALUE_SORT = "InvalidParameterValue.Sort"
+//  INVALIDPARAMETERVALUE_SOURCETYPE = "InvalidParameterValue.SourceType"
+//  INVALIDPARAMETERVALUE_SOURCETYPES = "InvalidParameterValue.SourceTypes"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+//  INVALIDPARAMETERVALUE_STORAGEREGIONS = "InvalidParameterValue.StorageRegions"
+//  INVALIDPARAMETERVALUE_STREAMIDS = "InvalidParameterValue.StreamIds"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
+//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
+//  INVALIDPARAMETERVALUE_TYPES = "InvalidParameterValue.Types"
+//  INVALIDPARAMETERVALUE_VIDS = "InvalidParameterValue.Vids"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) SearchMediaBySemanticsWithContext(ctx context.Context, request *SearchMediaBySemanticsRequest) (response *SearchMediaBySemanticsResponse, err error) {
+    if request == nil {
+        request = NewSearchMediaBySemanticsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "SearchMediaBySemantics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchMediaBySemantics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchMediaBySemanticsResponse()
     err = c.Send(request, response)
     return
 }

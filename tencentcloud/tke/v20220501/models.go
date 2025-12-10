@@ -1548,6 +1548,9 @@ type ModifyClusterMachineRequestParams struct {
 	// machine的display name
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
+	// 系统盘的信息
+	SystemDisk *Disk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
+
 	// 节点预付费信息
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 }
@@ -1563,6 +1566,9 @@ type ModifyClusterMachineRequest struct {
 
 	// machine的display name
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// 系统盘的信息
+	SystemDisk *Disk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
 	// 节点预付费信息
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
@@ -1583,6 +1589,7 @@ func (r *ModifyClusterMachineRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "MachineNames")
 	delete(f, "DisplayName")
+	delete(f, "SystemDisk")
 	delete(f, "InstanceChargePrepaid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterMachineRequest has unknown keys!", "")

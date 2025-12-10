@@ -3706,7 +3706,7 @@ type GeneralAccurateOCRRequestParams struct {
 	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 是否返回单字信息，默认关
+	// 是否返回单字信息，默认值为false，注：仅ConfigID配置为OCR时支持。
 	IsWords *bool `json:"IsWords,omitnil,omitempty" name:"IsWords"`
 
 	// 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。
@@ -3721,7 +3721,7 @@ type GeneralAccurateOCRRequestParams struct {
 	// 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
 	EnableDetectText *bool `json:"EnableDetectText,omitnil,omitempty" name:"EnableDetectText"`
 
-	// 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景，注：仅ConfigID配置为OCR时支持
+	// 配置ID支持： OCR -- 通用场景 MulOCR--多语种场景，默认值为OCR
 	ConfigID *string `json:"ConfigID,omitnil,omitempty" name:"ConfigID"`
 }
 
@@ -3734,7 +3734,7 @@ type GeneralAccurateOCRRequest struct {
 	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 是否返回单字信息，默认关
+	// 是否返回单字信息，默认值为false，注：仅ConfigID配置为OCR时支持。
 	IsWords *bool `json:"IsWords,omitnil,omitempty" name:"IsWords"`
 
 	// 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。
@@ -3749,7 +3749,7 @@ type GeneralAccurateOCRRequest struct {
 	// 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
 	EnableDetectText *bool `json:"EnableDetectText,omitnil,omitempty" name:"EnableDetectText"`
 
-	// 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景，注：仅ConfigID配置为OCR时支持
+	// 配置ID支持： OCR -- 通用场景 MulOCR--多语种场景，默认值为OCR
 	ConfigID *string `json:"ConfigID,omitnil,omitempty" name:"ConfigID"`
 }
 

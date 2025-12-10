@@ -1492,12 +1492,14 @@ type ClusterInstanceDetail struct {
 	InstanceDeviceType *string `json:"InstanceDeviceType,omitnil,omitempty" name:"InstanceDeviceType"`
 
 	// 实例存储类型
+	// 说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
 	InstanceStorageType *string `json:"InstanceStorageType,omitnil,omitempty" name:"InstanceStorageType"`
 
 	// 数据库类型
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
 	// 节点列表
+	// 说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
 	NodeList []*string `json:"NodeList,omitnil,omitempty" name:"NodeList"`
 }
 
@@ -6077,7 +6079,7 @@ type DescribeBinlogsRequestParams struct {
 	// 偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制条数
+	// 限制条数，默认值为20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -6096,7 +6098,7 @@ type DescribeBinlogsRequest struct {
 	// 偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制条数
+	// 限制条数，默认值为20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 

@@ -2093,9 +2093,11 @@ type DescribeCdnDataRequestParams struct {
 	// all：所有协议
 	// http：指定查询 HTTP 对应指标
 	// https：指定查询 HTTPS 对应指标
+	// quic：指定查询 QUIC 对应指标
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 指定数据源查询，白名单功能
+	// 指定数据源查询
+	// monitor：监控数据
 	DataSource *string `json:"DataSource,omitnil,omitempty" name:"DataSource"`
 
 	// 指定IP协议查询，不填充表示查询所有协议
@@ -2192,9 +2194,11 @@ type DescribeCdnDataRequest struct {
 	// all：所有协议
 	// http：指定查询 HTTP 对应指标
 	// https：指定查询 HTTPS 对应指标
+	// quic：指定查询 QUIC 对应指标
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 指定数据源查询，白名单功能
+	// 指定数据源查询
+	// monitor：监控数据
 	DataSource *string `json:"DataSource,omitnil,omitempty" name:"DataSource"`
 
 	// 指定IP协议查询，不填充表示查询所有协议

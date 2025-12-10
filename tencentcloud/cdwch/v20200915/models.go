@@ -237,6 +237,9 @@ type CkUserAlterInfo struct {
 
 	// 描述
 	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// 账户的当前密码
+	OriginalPassword *string `json:"OriginalPassword,omitnil,omitempty" name:"OriginalPassword"`
 }
 
 type ClusterConfigsInfoFromEMR struct {

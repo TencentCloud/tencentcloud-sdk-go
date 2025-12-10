@@ -1980,6 +1980,35 @@ type BotIdConfig struct {
 	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
 }
 
+type BotMonitorPkg struct {
+	// 资源id
+	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 地域
+	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 申请数量
+	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
+
+	// 使用数量
+	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+
+	// 续费标志
+	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 计费项
+	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
+}
+
 type BotPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
@@ -2203,6 +2232,35 @@ type BotScoreRuleEntry struct {
 
 	// 重定向
 	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
+}
+
+type BotSecurityPkg struct {
+	// 资源id
+	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 地域
+	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 申请数量
+	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
+
+	// 使用数量
+	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+
+	// 续费标志
+	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 计费项
+	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 }
 
 type BotStatPointItem struct {
@@ -13823,6 +13881,12 @@ type InstanceInfo struct {
 
 	// 地域id
 	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// BOT安全护航信息
+	BotSecurityPkg *BotSecurityPkg `json:"BotSecurityPkg,omitnil,omitempty" name:"BotSecurityPkg"`
+
+	// BOT安全监测资源信息
+	BotMonitorPkg *BotMonitorPkg `json:"BotMonitorPkg,omitnil,omitempty" name:"BotMonitorPkg"`
 }
 
 type IpAccessControlData struct {

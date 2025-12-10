@@ -2041,8 +2041,8 @@ type AigcVideoOutputConfig struct {
 
 	// 生成视频的分辨率。
 	// <li>当 ModelName 是 Kling，可选值为 720P、1080P，默认为 720P；</li>
-	// <li>当 ModelName 是 Jimeng，可选值为 768P、1080P，默认为 768P；</li>
-	// <li>当 ModelName 是 Hailuo，可选值为 1080P；</li>
+	// <li>当 ModelName 是 Hailuo，可选值为 768P、1080P，默认为 768P；</li>
+	// <li>当 ModelName 是 Jimeng，可选值为 1080P；</li>
 	// <li>当 ModelName 是 Vidu，可选值为 720P、1080P，默认为 720P；</li>
 	// <li>当 ModelName 是 GV，可选值为 720P、1080P，默认为 720P；</li>
 	// <li>当 ModelName 是 OS，可选值为 720P；</li>
@@ -16214,6 +16214,81 @@ type ImageWatermarkTemplate struct {
 }
 
 // Predefined struct for user
+type ImportMediaKnowledgeRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 需要导入知识库任务类型，可选值有：
+	// - AiAnalysis.DescriptionTask
+	// - SmartSubtitle.AsrFullTextTask
+	ImportTasks []*string `json:"ImportTasks,omitnil,omitempty" name:"ImportTasks"`
+}
+
+type ImportMediaKnowledgeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 需要导入知识库任务类型，可选值有：
+	// - AiAnalysis.DescriptionTask
+	// - SmartSubtitle.AsrFullTextTask
+	ImportTasks []*string `json:"ImportTasks,omitnil,omitempty" name:"ImportTasks"`
+}
+
+func (r *ImportMediaKnowledgeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportMediaKnowledgeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "FileId")
+	delete(f, "ImportTasks")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportMediaKnowledgeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportMediaKnowledgeResponseParams struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ImportMediaKnowledgeResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportMediaKnowledgeResponseParams `json:"Response"`
+}
+
+func (r *ImportMediaKnowledgeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportMediaKnowledgeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type InspectMediaQualityRequestParams struct {
 	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
@@ -25281,6 +25356,102 @@ type ScratchRepairInfo struct {
 }
 
 // Predefined struct for user
+type SearchMediaBySemanticsRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要进行搜索的内容
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 返回的记录条数，默认值：20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+	Categories []*string `json:"Categories,omitnil,omitempty" name:"Categories"`
+
+	// 标签集合，匹配集合中任意元素。 <li>单个标签长度限制：32个字符。</li> <li>数组长度限制：16。</li>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 搜索的任务类型，可选值有： 
+	// - AiAnalysis.DescriptionTask 
+	// - SmartSubtitle.AsrFullTextTask
+	TaskTypes []*string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
+}
+
+type SearchMediaBySemanticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要进行搜索的内容
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 返回的记录条数，默认值：20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+	Categories []*string `json:"Categories,omitnil,omitempty" name:"Categories"`
+
+	// 标签集合，匹配集合中任意元素。 <li>单个标签长度限制：32个字符。</li> <li>数组长度限制：16。</li>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 搜索的任务类型，可选值有： 
+	// - AiAnalysis.DescriptionTask 
+	// - SmartSubtitle.AsrFullTextTask
+	TaskTypes []*string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
+}
+
+func (r *SearchMediaBySemanticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchMediaBySemanticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "Text")
+	delete(f, "Limit")
+	delete(f, "Categories")
+	delete(f, "Tags")
+	delete(f, "TaskTypes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchMediaBySemanticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchMediaBySemanticsResponseParams struct {
+	// 媒体列表。
+	SearchResults []*SemanticsSearchResult `json:"SearchResults,omitnil,omitempty" name:"SearchResults"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SearchMediaBySemanticsResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchMediaBySemanticsResponseParams `json:"Response"`
+}
+
+func (r *SearchMediaBySemanticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchMediaBySemanticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SearchMediaRequestParams struct {
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -25676,6 +25847,20 @@ type SegmentConfigureInfoForUpdate struct {
 	// <li>ON：开启智能视频拆条识别任务；</li>
 	// <li>OFF：关闭智能视频拆条识别任务。</li>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type SemanticsSearchResult struct {
+	// 媒体文件唯一标识 ID。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 视频在本次检索中的得分，得分越高和检索值越相似，取值范围[0,1]
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 视频片段的开始时间，单位：秒
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
+
+	// 视频片段的开始时间，单位：秒
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 }
 
 // Predefined struct for user

@@ -9707,7 +9707,15 @@ type DescribeBatchOperateTaskDTO struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 周期类型
+	// 周期类型D天周期
+	// H小时
+	// Ccrontab类型
+	// I分钟
+	// O一次性
+	// Y年
+	// R用户驱动
+	// W周
+	// M月
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleUnit *string `json:"CycleUnit,omitnil,omitempty" name:"CycleUnit"`
 
@@ -9722,6 +9730,18 @@ type DescribeBatchOperateTaskDTO struct {
 	// 数据源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceType *string `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
+
+	// 引擎名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComputeResource *string `json:"ComputeResource,omitnil,omitempty" name:"ComputeResource"`
+
+	// dlc地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DlcRegion *string `json:"DlcRegion,omitnil,omitempty" name:"DlcRegion"`
+
+	// 资源组或自定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsInherit *string `json:"IsInherit,omitnil,omitempty" name:"IsInherit"`
 }
 
 type DescribeBatchOperateTaskPage struct {
@@ -9813,6 +9833,15 @@ type DescribeBatchOperateTaskRequestParams struct {
 
 	// 是否筛选出可提交的任务
 	CanSubmit *bool `json:"CanSubmit,omitnil,omitempty" name:"CanSubmit"`
+
+	// 返回时间字段需要转换的时区
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 任务最后更新时间最小值，ISO8601格式，如2025-07-16T15:00:00+08:00
+	MinUpdateTime *string `json:"MinUpdateTime,omitnil,omitempty" name:"MinUpdateTime"`
+
+	// 任务最后更新时间最大值，ISO8601格式，如2025-07-17T15:00:00+08:00
+	MaxUpdateTime *string `json:"MaxUpdateTime,omitnil,omitempty" name:"MaxUpdateTime"`
 }
 
 type DescribeBatchOperateTaskRequest struct {
@@ -9891,6 +9920,15 @@ type DescribeBatchOperateTaskRequest struct {
 
 	// 是否筛选出可提交的任务
 	CanSubmit *bool `json:"CanSubmit,omitnil,omitempty" name:"CanSubmit"`
+
+	// 返回时间字段需要转换的时区
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 任务最后更新时间最小值，ISO8601格式，如2025-07-16T15:00:00+08:00
+	MinUpdateTime *string `json:"MinUpdateTime,omitnil,omitempty" name:"MinUpdateTime"`
+
+	// 任务最后更新时间最大值，ISO8601格式，如2025-07-17T15:00:00+08:00
+	MaxUpdateTime *string `json:"MaxUpdateTime,omitnil,omitempty" name:"MaxUpdateTime"`
 }
 
 func (r *DescribeBatchOperateTaskRequest) ToJsonString() string {
@@ -9926,6 +9964,9 @@ func (r *DescribeBatchOperateTaskRequest) FromJsonString(s string) error {
 	delete(f, "DatasourceTypeList")
 	delete(f, "CycleUnitList")
 	delete(f, "CanSubmit")
+	delete(f, "TimeZone")
+	delete(f, "MinUpdateTime")
+	delete(f, "MaxUpdateTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchOperateTaskRequest has unknown keys!", "")
 	}
