@@ -83,3 +83,7 @@ func (c *RoleArnCredential) refresh() {
 	c.tmpSecretKey = newCred.tmpSecretKey
 	c.source = newCred.source
 }
+
+func (c *RoleArnCredential) GetExpiration() time.Time {
+	return time.Unix(c.expiredTime, 0)
+}
