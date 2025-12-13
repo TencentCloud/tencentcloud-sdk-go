@@ -583,72 +583,6 @@ func (c *Client) CreatePostpayPackageWithContext(ctx context.Context, request *C
     return
 }
 
-func NewCreateStandaloneGatewayRequest() (request *CreateStandaloneGatewayRequest) {
-    request = &CreateStandaloneGatewayRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "CreateStandaloneGateway")
-    
-    
-    return
-}
-
-func NewCreateStandaloneGatewayResponse() (response *CreateStandaloneGatewayResponse) {
-    response = &CreateStandaloneGatewayResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateStandaloneGateway
-// 本接口（CreateStandaloneGateway）用于创建独立网关。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-func (c *Client) CreateStandaloneGateway(request *CreateStandaloneGatewayRequest) (response *CreateStandaloneGatewayResponse, err error) {
-    return c.CreateStandaloneGatewayWithContext(context.Background(), request)
-}
-
-// CreateStandaloneGateway
-// 本接口（CreateStandaloneGateway）用于创建独立网关。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-func (c *Client) CreateStandaloneGatewayWithContext(ctx context.Context, request *CreateStandaloneGatewayRequest) (response *CreateStandaloneGatewayResponse, err error) {
-    if request == nil {
-        request = NewCreateStandaloneGatewayRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateStandaloneGateway")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateStandaloneGateway require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateStandaloneGatewayResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateStaticStoreRequest() (request *CreateStaticStoreRequest) {
     request = &CreateStaticStoreRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -949,62 +883,6 @@ func (c *Client) DeleteCloudBaseRunServerVersionWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDeleteCloudBaseRunServerVersionResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteEndUserRequest() (request *DeleteEndUserRequest) {
-    request = &DeleteEndUserRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DeleteEndUser")
-    
-    
-    return
-}
-
-func NewDeleteEndUserResponse() (response *DeleteEndUserResponse) {
-    response = &DeleteEndUserResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DeleteEndUser
-// 删除终端用户
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-func (c *Client) DeleteEndUser(request *DeleteEndUserRequest) (response *DeleteEndUserResponse, err error) {
-    return c.DeleteEndUserWithContext(context.Background(), request)
-}
-
-// DeleteEndUser
-// 删除终端用户
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-func (c *Client) DeleteEndUserWithContext(ctx context.Context, request *DeleteEndUserRequest) (response *DeleteEndUserResponse, err error) {
-    if request == nil {
-        request = NewDeleteEndUserRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteEndUser")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteEndUser require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteEndUserResponse()
     err = c.Send(request, response)
     return
 }
@@ -2485,192 +2363,6 @@ func (c *Client) DescribeDownloadFileWithContext(ctx context.Context, request *D
     return
 }
 
-func NewDescribeEndUserLoginStatisticRequest() (request *DescribeEndUserLoginStatisticRequest) {
-    request = &DescribeEndUserLoginStatisticRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEndUserLoginStatistic")
-    
-    
-    return
-}
-
-func NewDescribeEndUserLoginStatisticResponse() (response *DescribeEndUserLoginStatisticResponse) {
-    response = &DescribeEndUserLoginStatisticResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeEndUserLoginStatistic
-// 获取环境终端用户新增与登录信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeEndUserLoginStatistic(request *DescribeEndUserLoginStatisticRequest) (response *DescribeEndUserLoginStatisticResponse, err error) {
-    return c.DescribeEndUserLoginStatisticWithContext(context.Background(), request)
-}
-
-// DescribeEndUserLoginStatistic
-// 获取环境终端用户新增与登录信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeEndUserLoginStatisticWithContext(ctx context.Context, request *DescribeEndUserLoginStatisticRequest) (response *DescribeEndUserLoginStatisticResponse, err error) {
-    if request == nil {
-        request = NewDescribeEndUserLoginStatisticRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEndUserLoginStatistic")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeEndUserLoginStatistic require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeEndUserLoginStatisticResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeEndUserStatisticRequest() (request *DescribeEndUserStatisticRequest) {
-    request = &DescribeEndUserStatisticRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEndUserStatistic")
-    
-    
-    return
-}
-
-func NewDescribeEndUserStatisticResponse() (response *DescribeEndUserStatisticResponse) {
-    response = &DescribeEndUserStatisticResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeEndUserStatistic
-// 获取终端用户总量与平台分布情况
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeEndUserStatistic(request *DescribeEndUserStatisticRequest) (response *DescribeEndUserStatisticResponse, err error) {
-    return c.DescribeEndUserStatisticWithContext(context.Background(), request)
-}
-
-// DescribeEndUserStatistic
-// 获取终端用户总量与平台分布情况
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeEndUserStatisticWithContext(ctx context.Context, request *DescribeEndUserStatisticRequest) (response *DescribeEndUserStatisticResponse, err error) {
-    if request == nil {
-        request = NewDescribeEndUserStatisticRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEndUserStatistic")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeEndUserStatistic require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeEndUserStatisticResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeEndUsersRequest() (request *DescribeEndUsersRequest) {
-    request = &DescribeEndUsersRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEndUsers")
-    
-    
-    return
-}
-
-func NewDescribeEndUsersResponse() (response *DescribeEndUsersResponse) {
-    response = &DescribeEndUsersResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeEndUsers
-// 获取终端用户列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-func (c *Client) DescribeEndUsers(request *DescribeEndUsersRequest) (response *DescribeEndUsersResponse, err error) {
-    return c.DescribeEndUsersWithContext(context.Background(), request)
-}
-
-// DescribeEndUsers
-// 获取终端用户列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-func (c *Client) DescribeEndUsersWithContext(ctx context.Context, request *DescribeEndUsersRequest) (response *DescribeEndUsersResponse, err error) {
-    if request == nil {
-        request = NewDescribeEndUsersRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEndUsers")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeEndUsers require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeEndUsersResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeEnvDealRegionRequest() (request *DescribeEnvDealRegionRequest) {
     request = &DescribeEnvDealRegionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3641,132 +3333,6 @@ func (c *Client) DescribeSpecialCostItemsWithContext(ctx context.Context, reques
     return
 }
 
-func NewDescribeStandaloneGatewayRequest() (request *DescribeStandaloneGatewayRequest) {
-    request = &DescribeStandaloneGatewayRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DescribeStandaloneGateway")
-    
-    
-    return
-}
-
-func NewDescribeStandaloneGatewayResponse() (response *DescribeStandaloneGatewayResponse) {
-    response = &DescribeStandaloneGatewayResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeStandaloneGateway
-// 本接口（DescribeStandaloneGateway）查询小租户网关套餐信息。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeStandaloneGateway(request *DescribeStandaloneGatewayRequest) (response *DescribeStandaloneGatewayResponse, err error) {
-    return c.DescribeStandaloneGatewayWithContext(context.Background(), request)
-}
-
-// DescribeStandaloneGateway
-// 本接口（DescribeStandaloneGateway）查询小租户网关套餐信息。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeStandaloneGatewayWithContext(ctx context.Context, request *DescribeStandaloneGatewayRequest) (response *DescribeStandaloneGatewayResponse, err error) {
-    if request == nil {
-        request = NewDescribeStandaloneGatewayRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeStandaloneGateway")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeStandaloneGateway require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeStandaloneGatewayResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeStandaloneGatewayPackageRequest() (request *DescribeStandaloneGatewayPackageRequest) {
-    request = &DescribeStandaloneGatewayPackageRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DescribeStandaloneGatewayPackage")
-    
-    
-    return
-}
-
-func NewDescribeStandaloneGatewayPackageResponse() (response *DescribeStandaloneGatewayPackageResponse) {
-    response = &DescribeStandaloneGatewayPackageResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeStandaloneGatewayPackage
-// 本接口（DescribeStandaloneGatewayPackage）用于查询小租户网关套餐信息。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
-func (c *Client) DescribeStandaloneGatewayPackage(request *DescribeStandaloneGatewayPackageRequest) (response *DescribeStandaloneGatewayPackageResponse, err error) {
-    return c.DescribeStandaloneGatewayPackageWithContext(context.Background(), request)
-}
-
-// DescribeStandaloneGatewayPackage
-// 本接口（DescribeStandaloneGatewayPackage）用于查询小租户网关套餐信息。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
-func (c *Client) DescribeStandaloneGatewayPackageWithContext(ctx context.Context, request *DescribeStandaloneGatewayPackageRequest) (response *DescribeStandaloneGatewayPackageResponse, err error) {
-    if request == nil {
-        request = NewDescribeStandaloneGatewayPackageRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeStandaloneGatewayPackage")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeStandaloneGatewayPackage require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeStandaloneGatewayPackageResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeUserActivityInfoRequest() (request *DescribeUserActivityInfoRequest) {
     request = &DescribeUserActivityInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4123,66 +3689,6 @@ func (c *Client) DestroyEnvWithContext(ctx context.Context, request *DestroyEnvR
     request.SetContext(ctx)
     
     response = NewDestroyEnvResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDestroyStandaloneGatewayRequest() (request *DestroyStandaloneGatewayRequest) {
-    request = &DestroyStandaloneGatewayRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DestroyStandaloneGateway")
-    
-    
-    return
-}
-
-func NewDestroyStandaloneGatewayResponse() (response *DestroyStandaloneGatewayResponse) {
-    response = &DestroyStandaloneGatewayResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DestroyStandaloneGateway
-// 本接口（DestroyStandaloneGateway）用于销毁小租户网关。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DestroyStandaloneGateway(request *DestroyStandaloneGatewayRequest) (response *DestroyStandaloneGatewayResponse, err error) {
-    return c.DestroyStandaloneGatewayWithContext(context.Background(), request)
-}
-
-// DestroyStandaloneGateway
-// 本接口（DestroyStandaloneGateway）用于销毁小租户网关。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DestroyStandaloneGatewayWithContext(ctx context.Context, request *DestroyStandaloneGatewayRequest) (response *DestroyStandaloneGatewayResponse, err error) {
-    if request == nil {
-        request = NewDestroyStandaloneGatewayRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DestroyStandaloneGateway")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DestroyStandaloneGateway require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDestroyStandaloneGatewayResponse()
     err = c.Send(request, response)
     return
 }
@@ -4709,62 +4215,6 @@ func (c *Client) ModifyDatabaseACLWithContext(ctx context.Context, request *Modi
     return
 }
 
-func NewModifyEndUserRequest() (request *ModifyEndUserRequest) {
-    request = &ModifyEndUserRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "ModifyEndUser")
-    
-    
-    return
-}
-
-func NewModifyEndUserResponse() (response *ModifyEndUserResponse) {
-    response = &ModifyEndUserResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyEndUser
-// 管理终端用户
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-func (c *Client) ModifyEndUser(request *ModifyEndUserRequest) (response *ModifyEndUserResponse, err error) {
-    return c.ModifyEndUserWithContext(context.Background(), request)
-}
-
-// ModifyEndUser
-// 管理终端用户
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-func (c *Client) ModifyEndUserWithContext(ctx context.Context, request *ModifyEndUserRequest) (response *ModifyEndUserResponse, err error) {
-    if request == nil {
-        request = NewModifyEndUserRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyEndUser")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyEndUser require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyEndUserResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyEnvRequest() (request *ModifyEnvRequest) {
     request = &ModifyEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5076,8 +4526,14 @@ func NewSearchClsLogResponse() (response *SearchClsLogResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) SearchClsLog(request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
     return c.SearchClsLogWithContext(context.Background(), request)
 }
@@ -5088,8 +4544,14 @@ func (c *Client) SearchClsLog(request *SearchClsLogRequest) (response *SearchCls
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) SearchClsLogWithContext(ctx context.Context, request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
     if request == nil {
         request = NewSearchClsLogRequest()
@@ -5103,132 +4565,6 @@ func (c *Client) SearchClsLogWithContext(ctx context.Context, request *SearchCls
     request.SetContext(ctx)
     
     response = NewSearchClsLogResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewTurnOffStandaloneGatewayRequest() (request *TurnOffStandaloneGatewayRequest) {
-    request = &TurnOffStandaloneGatewayRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "TurnOffStandaloneGateway")
-    
-    
-    return
-}
-
-func NewTurnOffStandaloneGatewayResponse() (response *TurnOffStandaloneGatewayResponse) {
-    response = &TurnOffStandaloneGatewayResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// TurnOffStandaloneGateway
-// 本接口（TurnOffStandaloneGateway）用于关闭小租户网关。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PARTIALFAILURE = "FailedOperation.PartialFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-func (c *Client) TurnOffStandaloneGateway(request *TurnOffStandaloneGatewayRequest) (response *TurnOffStandaloneGatewayResponse, err error) {
-    return c.TurnOffStandaloneGatewayWithContext(context.Background(), request)
-}
-
-// TurnOffStandaloneGateway
-// 本接口（TurnOffStandaloneGateway）用于关闭小租户网关。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PARTIALFAILURE = "FailedOperation.PartialFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-func (c *Client) TurnOffStandaloneGatewayWithContext(ctx context.Context, request *TurnOffStandaloneGatewayRequest) (response *TurnOffStandaloneGatewayResponse, err error) {
-    if request == nil {
-        request = NewTurnOffStandaloneGatewayRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "TurnOffStandaloneGateway")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("TurnOffStandaloneGateway require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewTurnOffStandaloneGatewayResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewTurnOnStandaloneGatewayRequest() (request *TurnOnStandaloneGatewayRequest) {
-    request = &TurnOnStandaloneGatewayRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "TurnOnStandaloneGateway")
-    
-    
-    return
-}
-
-func NewTurnOnStandaloneGatewayResponse() (response *TurnOnStandaloneGatewayResponse) {
-    response = &TurnOnStandaloneGatewayResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// TurnOnStandaloneGateway
-// 本接口（TurnOnStandaloneGateway）用于开启小租户网关。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-func (c *Client) TurnOnStandaloneGateway(request *TurnOnStandaloneGatewayRequest) (response *TurnOnStandaloneGatewayResponse, err error) {
-    return c.TurnOnStandaloneGatewayWithContext(context.Background(), request)
-}
-
-// TurnOnStandaloneGateway
-// 本接口（TurnOnStandaloneGateway）用于开启小租户网关。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-func (c *Client) TurnOnStandaloneGatewayWithContext(ctx context.Context, request *TurnOnStandaloneGatewayRequest) (response *TurnOnStandaloneGatewayResponse, err error) {
-    if request == nil {
-        request = NewTurnOnStandaloneGatewayRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "TurnOnStandaloneGateway")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("TurnOnStandaloneGateway require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewTurnOnStandaloneGatewayResponse()
     err = c.Send(request, response)
     return
 }

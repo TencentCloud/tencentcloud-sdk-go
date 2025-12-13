@@ -73,7 +73,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.11
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.12
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -90,6 +90,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dayu v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbdc v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbs v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dcdb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dlc v0.0.0
@@ -339,6 +340,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dayu => ../tencentcloud/dayu
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain => ../tencentcloud/dbbrain
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbdc => ../tencentcloud/dbdc
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbs => ../tencentcloud/dbs
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dc => ../tencentcloud/dc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dcdb => ../tencentcloud/dcdb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dlc => ../tencentcloud/dlc

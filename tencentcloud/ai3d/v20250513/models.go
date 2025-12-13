@@ -20,6 +20,268 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+// Predefined struct for user
+type Convert3DFormatRequestParams struct {
+	// 3D文件url地址。
+	File3D *string `json:"File3D,omitnil,omitempty" name:"File3D"`
+
+	// 返回的3D文件格式，参考值：STL, USDZ, FBX, MP4, GIF。
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
+type Convert3DFormatRequest struct {
+	*tchttp.BaseRequest
+	
+	// 3D文件url地址。
+	File3D *string `json:"File3D,omitnil,omitempty" name:"File3D"`
+
+	// 返回的3D文件格式，参考值：STL, USDZ, FBX, MP4, GIF。
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
+func (r *Convert3DFormatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *Convert3DFormatRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "File3D")
+	delete(f, "Format")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "Convert3DFormatRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type Convert3DFormatResponseParams struct {
+	// 3D文件地址
+	ResultFile3D *string `json:"ResultFile3D,omitnil,omitempty" name:"ResultFile3D"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type Convert3DFormatResponse struct {
+	*tchttp.BaseResponse
+	Response *Convert3DFormatResponseParams `json:"Response"`
+}
+
+func (r *Convert3DFormatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *Convert3DFormatResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHunyuanTo3DUVJobRequestParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeHunyuanTo3DUVJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeHunyuanTo3DUVJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHunyuanTo3DUVJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHunyuanTo3DUVJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHunyuanTo3DUVJobResponseParams struct {
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码。
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 错误信息。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 生成文件的URL地址，有效期1天。
+	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHunyuanTo3DUVJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHunyuanTo3DUVJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeHunyuanTo3DUVJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHunyuanTo3DUVJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReduceFaceJobRequestParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeReduceFaceJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeReduceFaceJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReduceFaceJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReduceFaceJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReduceFaceJobResponseParams struct {
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 生成的3D文件数组。
+	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeReduceFaceJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReduceFaceJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeReduceFaceJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReduceFaceJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTextureTo3DJobRequestParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeTextureTo3DJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeTextureTo3DJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTextureTo3DJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTextureTo3DJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTextureTo3DJobResponseParams struct {
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 生成的3D文件数组。
+	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTextureTo3DJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTextureTo3DJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeTextureTo3DJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTextureTo3DJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type File3D struct {
 	// 文件格式
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -29,6 +291,88 @@ type File3D struct {
 
 	// 预览图片Url
 	PreviewImageUrl *string `json:"PreviewImageUrl,omitnil,omitempty" name:"PreviewImageUrl"`
+}
+
+type Image struct {
+	// 图片base64
+	Base64 *string `json:"Base64,omitnil,omitempty" name:"Base64"`
+
+	// 图片url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type InputFile3D struct {
+	// 文件的Url（有效期24小时）
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 文件格式
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+// Predefined struct for user
+type QueryHunyuan3DPartJobRequestParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type QueryHunyuan3DPartJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *QueryHunyuan3DPartJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryHunyuan3DPartJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryHunyuan3DPartJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryHunyuan3DPartJobResponseParams struct {
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码。
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 错误信息。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 生成文件的URL地址，有效期1天。
+	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryHunyuan3DPartJobResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryHunyuan3DPartJobResponseParams `json:"Response"`
+}
+
+func (r *QueryHunyuan3DPartJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryHunyuan3DPartJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -160,6 +504,63 @@ func (r *QueryHunyuanTo3DRapidJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryHunyuanTo3DRapidJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuan3DPartJobRequestParams struct {
+	// 需进行组件生成的3D模型文件，仅支持FBX格式。
+	File *InputFile3D `json:"File,omitnil,omitempty" name:"File"`
+}
+
+type SubmitHunyuan3DPartJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需进行组件生成的3D模型文件，仅支持FBX格式。
+	File *InputFile3D `json:"File,omitnil,omitempty" name:"File"`
+}
+
+func (r *SubmitHunyuan3DPartJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuan3DPartJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "File")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuan3DPartJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuan3DPartJobResponseParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitHunyuan3DPartJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitHunyuan3DPartJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitHunyuan3DPartJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuan3DPartJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -428,6 +829,228 @@ func (r *SubmitHunyuanTo3DRapidJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitHunyuanTo3DRapidJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuanTo3DUVJobRequestParams struct {
+	// 需进行UV展开的3D文件URL，可支持FBX,OBJ,GLB格式。
+	File *InputFile3D `json:"File,omitnil,omitempty" name:"File"`
+}
+
+type SubmitHunyuanTo3DUVJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需进行UV展开的3D文件URL，可支持FBX,OBJ,GLB格式。
+	File *InputFile3D `json:"File,omitnil,omitempty" name:"File"`
+}
+
+func (r *SubmitHunyuanTo3DUVJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuanTo3DUVJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "File")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuanTo3DUVJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuanTo3DUVJobResponseParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitHunyuanTo3DUVJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitHunyuanTo3DUVJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitHunyuanTo3DUVJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuanTo3DUVJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitReduceFaceJobRequestParams struct {
+	// 源3D模型文件。其中参数 Type 和 Url 必填，参数 PreviewImageUrl 无意义，可忽略。
+	// Type可选值：OBJ，GLB
+	File3D *File3D `json:"File3D,omitnil,omitempty" name:"File3D"`
+
+	// 多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
+	// triangle:三角形面。
+	// quadrilateral：四边形面。
+	PolygonType *string `json:"PolygonType,omitnil,omitempty" name:"PolygonType"`
+
+	// 减面后面数档位类型，可选值：high，medium, low。
+	FaceLevel *string `json:"FaceLevel,omitnil,omitempty" name:"FaceLevel"`
+}
+
+type SubmitReduceFaceJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 源3D模型文件。其中参数 Type 和 Url 必填，参数 PreviewImageUrl 无意义，可忽略。
+	// Type可选值：OBJ，GLB
+	File3D *File3D `json:"File3D,omitnil,omitempty" name:"File3D"`
+
+	// 多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
+	// triangle:三角形面。
+	// quadrilateral：四边形面。
+	PolygonType *string `json:"PolygonType,omitnil,omitempty" name:"PolygonType"`
+
+	// 减面后面数档位类型，可选值：high，medium, low。
+	FaceLevel *string `json:"FaceLevel,omitnil,omitempty" name:"FaceLevel"`
+}
+
+func (r *SubmitReduceFaceJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitReduceFaceJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "File3D")
+	delete(f, "PolygonType")
+	delete(f, "FaceLevel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitReduceFaceJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitReduceFaceJobResponseParams struct {
+	// 任务ID（有效期24小时）
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitReduceFaceJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitReduceFaceJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitReduceFaceJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitReduceFaceJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitTextureTo3DJobRequestParams struct {
+	// 源3D模型文件。
+	// Type可选值：OBJ，GLB
+	File3D *File3D `json:"File3D,omitnil,omitempty" name:"File3D"`
+
+	// 文生3D，3D内容的描述，中文正向提示词。
+	// 最多支持200个 utf-8 字符。
+	// 文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 3D模型纹理参考图 Base64 数据和参考图图 Url。
+	// - Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// - 图片限制：单边分辨率小于4096且大于128，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。
+	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 是否开启 PBR材质生成，默认 false。
+	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
+}
+
+type SubmitTextureTo3DJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 源3D模型文件。
+	// Type可选值：OBJ，GLB
+	File3D *File3D `json:"File3D,omitnil,omitempty" name:"File3D"`
+
+	// 文生3D，3D内容的描述，中文正向提示词。
+	// 最多支持200个 utf-8 字符。
+	// 文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 3D模型纹理参考图 Base64 数据和参考图图 Url。
+	// - Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// - 图片限制：单边分辨率小于4096且大于128，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。
+	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 是否开启 PBR材质生成，默认 false。
+	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
+}
+
+func (r *SubmitTextureTo3DJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitTextureTo3DJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "File3D")
+	delete(f, "Prompt")
+	delete(f, "Image")
+	delete(f, "EnablePBR")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTextureTo3DJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitTextureTo3DJobResponseParams struct {
+	// 任务ID（有效期24小时）
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitTextureTo3DJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitTextureTo3DJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitTextureTo3DJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitTextureTo3DJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

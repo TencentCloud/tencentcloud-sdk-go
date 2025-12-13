@@ -9175,6 +9175,66 @@ func (c *Client) StopStreamLinkFlowWithContext(ctx context.Context, request *Sto
     return
 }
 
+func NewTextTranslationRequest() (request *TextTranslationRequest) {
+    request = &TextTranslationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "TextTranslation")
+    
+    
+    return
+}
+
+func NewTextTranslationResponse() (response *TextTranslationResponse) {
+    response = &TextTranslationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TextTranslation
+// 文本翻译
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_SOURCELANGUAGE = "InvalidParameterValue.SourceLanguage"
+//  INVALIDPARAMETERVALUE_SOURCETEXT = "InvalidParameterValue.SourceText"
+//  INVALIDPARAMETERVALUE_TEXTCONTENT = "InvalidParameterValue.TextContent"
+//  INVALIDPARAMETERVALUE_TRANSLATEDSTLANGUAGE = "InvalidParameterValue.TranslateDstLanguage"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+//  UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"
+func (c *Client) TextTranslation(request *TextTranslationRequest) (response *TextTranslationResponse, err error) {
+    return c.TextTranslationWithContext(context.Background(), request)
+}
+
+// TextTranslation
+// 文本翻译
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_SOURCELANGUAGE = "InvalidParameterValue.SourceLanguage"
+//  INVALIDPARAMETERVALUE_SOURCETEXT = "InvalidParameterValue.SourceText"
+//  INVALIDPARAMETERVALUE_TEXTCONTENT = "InvalidParameterValue.TextContent"
+//  INVALIDPARAMETERVALUE_TRANSLATEDSTLANGUAGE = "InvalidParameterValue.TranslateDstLanguage"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+//  UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"
+func (c *Client) TextTranslationWithContext(ctx context.Context, request *TextTranslationRequest) (response *TextTranslationResponse, err error) {
+    if request == nil {
+        request = NewTextTranslationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "TextTranslation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextTranslation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTextTranslationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewWithdrawsWatermarkRequest() (request *WithdrawsWatermarkRequest) {
     request = &WithdrawsWatermarkRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -154,10 +154,21 @@ type AudioEncodeParams struct {
 }
 
 type AudioFormat struct {
-	// 生成的音频格式，默认pcm，目前支持的格式列表：流式：[pcm]，非流式 [pcm，wav]
+	// 生成的音频格式
+	// 
+	// - TextToSpeech流式接口
+	// 
+	//  支持 pcm, 默认: pcm
+	// 
+	// - TextToSpeech非流式接口
+	// 
+	//  支持 pcm,wav,  默认: pcm
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	// 采样率，默认24000， 可选16000, 24000 
+	// 生成的音频采样率，默认24000
+	// 可选
+	// - 16000
+	// - 24000 
 	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 }
 
@@ -7022,10 +7033,10 @@ type TextToSpeechRequestParams struct {
 	// Deprecated: APIKey is deprecated.
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// TTS的模型：flow_01_turbo，flow_01_ex
+	// TTS的模型，当前固定为：flow_01_turbo
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	//  需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
@@ -7047,10 +7058,10 @@ type TextToSpeechRequest struct {
 	// TTS的API密钥
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// TTS的模型：flow_01_turbo，flow_01_ex
+	// TTS的模型，当前固定为：flow_01_turbo
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	//  需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
@@ -7119,12 +7130,14 @@ type TextToSpeechSSERequestParams struct {
 	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
 
 	// TTS的API密钥
+	//
+	// Deprecated: APIKey is deprecated.
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// TTS的模型：flow_01_turbo，flow_01_ex
+	// TTS的模型，当前固定为：flow_01_turbo
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	//  需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
@@ -7146,10 +7159,10 @@ type TextToSpeechSSERequest struct {
 	// TTS的API密钥
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// TTS的模型：flow_01_turbo，flow_01_ex
+	// TTS的模型，当前固定为：flow_01_turbo
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	//  需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
@@ -7756,16 +7769,16 @@ type VideoParams struct {
 }
 
 type Voice struct {
-	// TTS的声音的ID
+	//  音色 ID，可从音色列表获取，或使用声音克隆生成的自定义音色 ID
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
-	// 语速，范围 0.5-2.0，默认 1.0
+	// 语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0
 	Speed *float64 `json:"Speed,omitnil,omitempty" name:"Speed"`
 
-	// (0, 10]   默认值1.0 
+	//  音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0
 	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 取值[-12,12],默认0
+	//  音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12],  默认0
 	Pitch *int64 `json:"Pitch,omitnil,omitempty" name:"Pitch"`
 }
 

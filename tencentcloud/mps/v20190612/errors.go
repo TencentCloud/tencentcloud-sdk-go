@@ -368,6 +368,9 @@ const (
 	// SourceLanguage参数错误
 	INVALIDPARAMETERVALUE_SOURCELANGUAGE = "InvalidParameterValue.SourceLanguage"
 
+	// SourceText参数错误
+	INVALIDPARAMETERVALUE_SOURCETEXT = "InvalidParameterValue.SourceText"
+
 	// 源文件错误。
 	INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"
 
@@ -409,6 +412,9 @@ const (
 
 	// 参数错误：文字透明度。
 	INVALIDPARAMETERVALUE_TEXTALPHA = "InvalidParameterValue.TextAlpha"
+
+	// TextContent参数值错误
+	INVALIDPARAMETERVALUE_TEXTCONTENT = "InvalidParameterValue.TextContent"
 
 	// 参数错误：文字模板。
 	INVALIDPARAMETERVALUE_TEXTTEMPLATE = "InvalidParameterValue.TextTemplate"
@@ -482,9 +488,15 @@ const (
 	// 资源不存在：模板不存在。
 	RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 
+	// 用户未注册。
+	RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+
 	// 资源不存在：关键词。
 	RESOURCENOTFOUND_WORD = "ResourceNotFound.Word"
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// 单次请求text超过长度限制
+	UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"
 )

@@ -4641,6 +4641,9 @@ type TableInfoNew struct {
 
 	// 表格的缓写信息
 	SyncTableInfo *SyncTableInfo `json:"SyncTableInfo,omitnil,omitempty" name:"SyncTableInfo"`
+
+	// 表格分片数量
+	ShardNum *uint64 `json:"ShardNum,omitnil,omitempty" name:"ShardNum"`
 }
 
 type TableResultNew struct {

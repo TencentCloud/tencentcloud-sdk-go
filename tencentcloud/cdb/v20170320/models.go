@@ -12113,6 +12113,8 @@ type ModifyAccountPasswordRequestParams struct {
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
 	// 是否跳过校验密码复杂度
+	//
+	// Deprecated: SkipValidatePassword is deprecated.
 	SkipValidatePassword *bool `json:"SkipValidatePassword,omitnil,omitempty" name:"SkipValidatePassword"`
 }
 

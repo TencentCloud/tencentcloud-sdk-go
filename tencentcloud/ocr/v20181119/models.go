@@ -8287,6 +8287,9 @@ type RecognizeGeneralCardWarnResponseParams struct {
 	// 是否水印
 	Watermark *GeneralCardWarnInfo `json:"Watermark,omitnil,omitempty" name:"Watermark"`
 
+	// 是否电子证照（目前仅支持电子身份证、电子营业执照识别
+	Electron *GeneralCardWarnInfo `json:"Electron,omitnil,omitempty" name:"Electron"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
