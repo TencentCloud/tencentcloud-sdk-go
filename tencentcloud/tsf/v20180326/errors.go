@@ -668,6 +668,9 @@ const (
 	// 示例：本环境集群名称禁止以 11 开头
 	INVALIDPARAMETERVALUE_CLUSTERNAMEPREFIXILLEGALERROR = "InvalidParameterValue.ClusterNamePrefixIllegalError"
 
+	// 集群名称格式不正确,只能包含小写字母、数字及分隔符("-"),且不能以分隔符开头或结尾
+	INVALIDPARAMETERVALUE_CLUSTERNAMEREGEXMISMATCH = "InvalidParameterValue.ClusterNameRegexMismatch"
+
 	// 集群命名不能为空。
 	INVALIDPARAMETERVALUE_CLUSTERNAMEREQUIRED = "InvalidParameterValue.ClusterNameRequired"
 

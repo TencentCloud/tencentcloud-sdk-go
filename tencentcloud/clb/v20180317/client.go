@@ -3545,6 +3545,76 @@ func (c *Client) DescribeRewriteWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeTargetGroupInstanceStatusRequest() (request *DescribeTargetGroupInstanceStatusRequest) {
+    request = &DescribeTargetGroupInstanceStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeTargetGroupInstanceStatus")
+    
+    
+    return
+}
+
+func NewDescribeTargetGroupInstanceStatusResponse() (response *DescribeTargetGroupInstanceStatusResponse) {
+    response = &DescribeTargetGroupInstanceStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTargetGroupInstanceStatus
+// 查询目标组后端服务状态。目前仅支持网关负载均衡类型的目标组支持查询后端服务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTargetGroupInstanceStatus(request *DescribeTargetGroupInstanceStatusRequest) (response *DescribeTargetGroupInstanceStatusResponse, err error) {
+    return c.DescribeTargetGroupInstanceStatusWithContext(context.Background(), request)
+}
+
+// DescribeTargetGroupInstanceStatus
+// 查询目标组后端服务状态。目前仅支持网关负载均衡类型的目标组支持查询后端服务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTargetGroupInstanceStatusWithContext(ctx context.Context, request *DescribeTargetGroupInstanceStatusRequest) (response *DescribeTargetGroupInstanceStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeTargetGroupInstanceStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeTargetGroupInstanceStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTargetGroupInstanceStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTargetGroupInstanceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTargetGroupInstancesRequest() (request *DescribeTargetGroupInstancesRequest) {
     request = &DescribeTargetGroupInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -5446,7 +5446,7 @@ type CreateScheduleRequestParams struct {
 	// 任务的事件通知配置，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
-	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
@@ -5472,7 +5472,7 @@ type CreateScheduleRequest struct {
 	// 任务的事件通知配置，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
-	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
@@ -5698,7 +5698,7 @@ type CreateSmartSubtitleTemplateRequestParams struct {
 	// `en-AU`：英语（澳大利亚）
 	// `en-CA`：英语（加拿大）
 	// `en-GH`：英语（加纳）
-	// `en-HK`：英语（香港）
+	// `en-HK`：英语（中国香港）
 	// `en-IN`：英语（印度）
 	// `en-IE`：英语（爱尔兰）
 	// `en-KE`：英语（肯尼亚）
@@ -6121,7 +6121,7 @@ type CreateSmartSubtitleTemplateRequest struct {
 	// `en-AU`：英语（澳大利亚）
 	// `en-CA`：英语（加拿大）
 	// `en-GH`：英语（加纳）
-	// `en-HK`：英语（香港）
+	// `en-HK`：英语（中国香港）
 	// `en-IN`：英语（印度）
 	// `en-IE`：英语（爱尔兰）
 	// `en-KE`：英语（肯尼亚）
@@ -18633,7 +18633,7 @@ type ModifySmartSubtitleTemplateRequestParams struct {
 	// `en-AU`：英语（澳大利亚）
 	// `en-CA`：英语（加拿大）
 	// `en-GH`：英语（加纳）
-	// `en-HK`：英语（香港）
+	// `en-HK`：英语（中国香港）
 	// `en-IN`：英语（印度）
 	// `en-IE`：英语（爱尔兰）
 	// `en-KE`：英语（肯尼亚）
@@ -19059,7 +19059,7 @@ type ModifySmartSubtitleTemplateRequest struct {
 	// `en-AU`：英语（澳大利亚）
 	// `en-CA`：英语（加拿大）
 	// `en-GH`：英语（加纳）
-	// `en-HK`：英语（香港）
+	// `en-HK`：英语（中国香港）
 	// `en-IN`：英语（印度）
 	// `en-IE`：英语（爱尔兰）
 	// `en-KE`：英语（肯尼亚）
@@ -21211,7 +21211,7 @@ type ProcessMediaRequestParams struct {
 	// <li> Offline：闲时任务，不保证实效性，默认3天内处理完</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 是否跳过元信息获取，可选值： 
@@ -21283,7 +21283,7 @@ type ProcessMediaRequest struct {
 	// <li> Offline：闲时任务，不保证实效性，默认3天内处理完</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 是否跳过元信息获取，可选值： 
@@ -21810,7 +21810,7 @@ type RawSmartSubtitleParameter struct {
 	// `en-AU`：英语（澳大利亚）
 	// `en-CA`：英语（加拿大）
 	// `en-GH`：英语（加纳）
-	// `en-HK`：英语（香港）
+	// `en-HK`：英语（中国香港）
 	// `en-IN`：英语（印度）
 	// `en-IE`：英语（爱尔兰）
 	// `en-KE`：英语（肯尼亚）
@@ -24429,7 +24429,7 @@ type TerrorismOcrReviewTemplateInfoForUpdate struct {
 
 // Predefined struct for user
 type TextTranslationRequestParams struct {
-	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于1000字符。
+	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于2000字符。
 	SourceText *string `json:"SourceText,omitnil,omitempty" name:"SourceText"`
 
 	// 源语言，支持： 
@@ -24830,7 +24830,7 @@ type TextTranslationRequestParams struct {
 type TextTranslationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于1000字符。
+	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于2000字符。
 	SourceText *string `json:"SourceText,omitnil,omitempty" name:"SourceText"`
 
 	// 源语言，支持： 

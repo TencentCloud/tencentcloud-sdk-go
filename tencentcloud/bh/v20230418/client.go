@@ -2755,6 +2755,62 @@ func (c *Client) DescribeCmdTemplatesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeDepartmentsRequest() (request *DescribeDepartmentsRequest) {
+    request = &DescribeDepartmentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeDepartments")
+    
+    
+    return
+}
+
+func NewDescribeDepartmentsResponse() (response *DescribeDepartmentsResponse) {
+    response = &DescribeDepartmentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDepartments
+// 查询部门信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDepartments(request *DescribeDepartmentsRequest) (response *DescribeDepartmentsResponse, err error) {
+    return c.DescribeDepartmentsWithContext(context.Background(), request)
+}
+
+// DescribeDepartments
+// 查询部门信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDepartmentsWithContext(ctx context.Context, request *DescribeDepartmentsRequest) (response *DescribeDepartmentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDepartmentsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DescribeDepartments")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDepartments require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDepartmentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceAccountsRequest() (request *DescribeDeviceAccountsRequest) {
     request = &DescribeDeviceAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},

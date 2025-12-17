@@ -1457,6 +1457,23 @@ type CommonName struct {
 	CN *string `json:"CN,omitnil,omitempty" name:"CN"`
 }
 
+type ComponentLogConfig struct {
+	// 组件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 日志级别，对于支持动态调整日志级别的组件，开启日志时可指定该参数
+	LogLevel *int64 `json:"LogLevel,omitnil,omitempty" name:"LogLevel"`
+
+	// 日志集ID。如果不指定，则自动创建
+	LogSetId *string `json:"LogSetId,omitnil,omitempty" name:"LogSetId"`
+
+	// 日志主题ID。如果不指定，则自动创建
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// topic 所属region。 该参数可实现日志跨地域投递
+	TopicRegion *string `json:"TopicRegion,omitnil,omitempty" name:"TopicRegion"`
+}
+
 type Container struct {
 	// 镜像
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
@@ -9367,6 +9384,70 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeControlPlaneLogsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群类型。当前只支持tke
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+}
+
+type DescribeControlPlaneLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群类型。当前只支持tke
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+}
+
+func (r *DescribeControlPlaneLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeControlPlaneLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ClusterType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeControlPlaneLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeControlPlaneLogsResponseParams struct {
+	// 日志采集配置查询结果
+	Details []*ComponentLogConfig `json:"Details,omitnil,omitempty" name:"Details"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeControlPlaneLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeControlPlaneLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeControlPlaneLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeControlPlaneLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeECMInstancesRequestParams struct {
 	// 集群id
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
@@ -14639,6 +14720,81 @@ func (r *DisableClusterDeletionProtectionResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type DisableControlPlaneLogsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群类型。当前只支持tke
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 组件名称列表，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+	ComponentNames []*string `json:"ComponentNames,omitnil,omitempty" name:"ComponentNames"`
+
+	// 是否删除日志集和topic。 如果日志集和topic被其他采集规则使用，则不会被删除
+	DeleteLogSetAndTopic *bool `json:"DeleteLogSetAndTopic,omitnil,omitempty" name:"DeleteLogSetAndTopic"`
+}
+
+type DisableControlPlaneLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群类型。当前只支持tke
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 组件名称列表，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+	ComponentNames []*string `json:"ComponentNames,omitnil,omitempty" name:"ComponentNames"`
+
+	// 是否删除日志集和topic。 如果日志集和topic被其他采集规则使用，则不会被删除
+	DeleteLogSetAndTopic *bool `json:"DeleteLogSetAndTopic,omitnil,omitempty" name:"DeleteLogSetAndTopic"`
+}
+
+func (r *DisableControlPlaneLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableControlPlaneLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ClusterType")
+	delete(f, "ComponentNames")
+	delete(f, "DeleteLogSetAndTopic")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableControlPlaneLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableControlPlaneLogsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisableControlPlaneLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableControlPlaneLogsResponseParams `json:"Response"`
+}
+
+func (r *DisableControlPlaneLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableControlPlaneLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DisableEncryptionProtectionRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -15327,6 +15483,74 @@ func (r *EnableClusterDeletionProtectionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *EnableClusterDeletionProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableControlPlaneLogsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群类型。当前只支持tke
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 各组件日志采集配置，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+	Components []*ComponentLogConfig `json:"Components,omitnil,omitempty" name:"Components"`
+}
+
+type EnableControlPlaneLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群类型。当前只支持tke
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 各组件日志采集配置，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+	Components []*ComponentLogConfig `json:"Components,omitnil,omitempty" name:"Components"`
+}
+
+func (r *EnableControlPlaneLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableControlPlaneLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ClusterType")
+	delete(f, "Components")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableControlPlaneLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableControlPlaneLogsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableControlPlaneLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableControlPlaneLogsResponseParams `json:"Response"`
+}
+
+func (r *EnableControlPlaneLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableControlPlaneLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -2778,6 +2778,9 @@ type CostDetail struct {
 
 	// 子产品名称代码
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 标签信息	
+	Tags []*BillTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 // Predefined struct for user

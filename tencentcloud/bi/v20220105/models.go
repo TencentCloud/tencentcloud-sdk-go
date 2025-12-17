@@ -4342,7 +4342,7 @@ type UserIdAndUserName struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 首次登陆是否修改密码
+	// 首次登录是否修改密码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstModify *int64 `json:"FirstModify,omitnil,omitempty" name:"FirstModify"`
 
@@ -4362,7 +4362,7 @@ type UserIdAndUserName struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 更改人
+	// 修改人
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedUser *string `json:"UpdatedUser,omitnil,omitempty" name:"UpdatedUser"`
 
@@ -4370,11 +4370,11 @@ type UserIdAndUserName struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
-	// 全局角色
+	// 系统全局角色
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GlobalUserName *string `json:"GlobalUserName,omitnil,omitempty" name:"GlobalUserName"`
 
-	// 全局角色编码
+	// 系统全局角色编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GlobalUserCode *string `json:"GlobalUserCode,omitnil,omitempty" name:"GlobalUserCode"`
 

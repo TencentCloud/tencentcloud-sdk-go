@@ -1439,6 +1439,82 @@ func (c *Client) EstateCertOCRWithContext(ctx context.Context, request *EstateCe
     return
 }
 
+func NewExtractDocAgentRequest() (request *ExtractDocAgentRequest) {
+    request = &ExtractDocAgentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "ExtractDocAgent")
+    
+    
+    return
+}
+
+func NewExtractDocAgentResponse() (response *ExtractDocAgentResponse) {
+    response = &ExtractDocAgentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExtractDocAgent
+// 用于查询文档处理任务。文档处理领域里常见的通用Agent 如抽取、比对之类的，目前我们提供的抽取，但未来可以根据实际情况和客户需求扩展。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_RESPONSEPARSEFAILED = "FailedOperation.ResponseParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ExtractDocAgent(request *ExtractDocAgentRequest) (response *ExtractDocAgentResponse, err error) {
+    return c.ExtractDocAgentWithContext(context.Background(), request)
+}
+
+// ExtractDocAgent
+// 用于查询文档处理任务。文档处理领域里常见的通用Agent 如抽取、比对之类的，目前我们提供的抽取，但未来可以根据实际情况和客户需求扩展。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_RESPONSEPARSEFAILED = "FailedOperation.ResponseParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ExtractDocAgentWithContext(ctx context.Context, request *ExtractDocAgentRequest) (response *ExtractDocAgentResponse, err error) {
+    if request == nil {
+        request = NewExtractDocAgentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "ExtractDocAgent")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExtractDocAgent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExtractDocAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExtractDocBasicRequest() (request *ExtractDocBasicRequest) {
     request = &ExtractDocBasicRequest{
         BaseRequest: &tchttp.BaseRequest{},

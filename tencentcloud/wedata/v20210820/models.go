@@ -20760,6 +20760,83 @@ func (r *DescribeTaskDetailDsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTaskInstancesStatusDto struct {
+	// 根据任务信息获取实例状态信息实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instances []*ParamGetTaskInstancesStatusInfoResponseInstance `json:"Instances,omitnil,omitempty" name:"Instances"`
+}
+
+// Predefined struct for user
+type DescribeTaskInstancesStatusRequestParams struct {
+	// 任务列表
+	RecordIdList []*string `json:"RecordIdList,omitnil,omitempty" name:"RecordIdList"`
+
+	// 工作流id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type DescribeTaskInstancesStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务列表
+	RecordIdList []*string `json:"RecordIdList,omitnil,omitempty" name:"RecordIdList"`
+
+	// 工作流id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeTaskInstancesStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskInstancesStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RecordIdList")
+	delete(f, "WorkflowId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskInstancesStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskInstancesStatusResponseParams struct {
+	// 实例列表
+	Data []*DescribeTaskInstancesStatusDto `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskInstancesStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskInstancesStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskInstancesStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskInstancesStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DescribeTaskLineageRequestParams struct {
 	// 请求来源，WEB 前端；CLIENT 客户端
@@ -32280,6 +32357,24 @@ type PairDto struct {
 
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ParamGetTaskInstancesStatusInfoResponseInstance struct {
+	// 实例编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 记录编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 任务编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type ParamInfo struct {

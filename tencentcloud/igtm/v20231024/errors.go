@@ -23,6 +23,9 @@ const (
 	// 地址池中地址数量超出限额
 	FAILEDOPERATION_ADDREXCEEDEDLIMIT = "FailedOperation.AddrExceededLimit"
 
+	// 自动续费设置失败
+	FAILEDOPERATION_AUTORENEWFAILED = "FailedOperation.AutoRenewFailed"
+
 	// 必须存在一条默认解析线路。
 	FAILEDOPERATION_CANNOTDELETEDEFAULTLINEERROR = "FailedOperation.CanNotDeleteDefaultLineError"
 
@@ -40,6 +43,9 @@ const (
 
 	// 创建策略失败
 	FAILEDOPERATION_CREATESTRATEGYFAILED = "FailedOperation.CreateStrategyFailed"
+
+	// 下单与支付失败
+	FAILEDOPERATION_DEALANDPAYFAILED = "FailedOperation.DealAndPayFailed"
 
 	// 操作删除失败。
 	FAILEDOPERATION_DELETEERROR = "FailedOperation.DeleteError"
@@ -104,11 +110,38 @@ const (
 	// 实例接入类型不合法
 	INVALIDPARAMETER_ACCESSTYPEINVALID = "InvalidParameter.AccessTypeInvalid"
 
+	// 标准版只支持变配到旗舰版
+	INVALIDPARAMETER_DEALSTANDARDMODIFYFAILED = "InvalidParameter.DealStandardModifyFailed"
+
+	// 此套餐非标准版，不支持变配到旗舰版
+	INVALIDPARAMETER_DEALSTANDARDMODIFYINVALID = "InvalidParameter.DealStandardModifyInvalid"
+
+	// resourceId非探测任务，请确认参数
+	INVALIDPARAMETER_DEALTASKMODIFYINVALID = "InvalidParameter.DealTaskModifyInvalid"
+
+	// 变配的探测任务配额小于已使用数，请重新输入
+	INVALIDPARAMETER_DEALTASKMODIFYNUMLESS = "InvalidParameter.DealTaskModifyNumLess"
+
+	// 变配的探测任务配额无变化，请重新输入
+	INVALIDPARAMETER_DEALTASKMODIFYNUMSAME = "InvalidParameter.DealTaskModifyNumSame"
+
+	// 旗舰版不支持变配
+	INVALIDPARAMETER_DEALULTIMATEMODIFYFAILED = "InvalidParameter.DealUltimateModifyFailed"
+
 	// 全局接入域名冲突，当前域名被其他实例使用，请解决占用后重试
 	INVALIDPARAMETER_GLOBALACCESSDOMAINCONFLICT = "InvalidParameter.GlobalAccessDomainConflict"
 
 	// 实例不可用，请检查实例状态
 	INVALIDPARAMETER_INSTANCEDISABLED = "InvalidParameter.InstanceDisabled"
+
+	// 续费或变配时，资源ID不能为空
+	INVALIDPARAMETER_RESOURCEIDEMPTY = "InvalidParameter.ResourceIdEmpty"
+
+	// 创建或续费时，下单时间长度不能为空
+	INVALIDPARAMETER_TIMESPANEMPTY = "InvalidParameter.TimeSpanEmpty"
+
+	// 下单时间范围非法，只支持1到120
+	INVALIDPARAMETER_TIMESPANINVALID = "InvalidParameter.TimeSpanInvalid"
 
 	// 流量策略不合法
 	INVALIDPARAMETER_TRAFFICSTRATEGYINVALID = "InvalidParameter.TrafficStrategyInvalid"
@@ -175,6 +208,12 @@ const (
 
 	// 未授权,不可操作该地址池
 	UNAUTHORIZEDOPERATION_POOLUNAUTHORIZED = "UnauthorizedOperation.PoolUnauthorized"
+
+	// 资源Id与传入的套餐类型不匹配
+	UNAUTHORIZEDOPERATION_RESOURCEIDNOTMATCH = "UnauthorizedOperation.ResourceIdNotMatch"
+
+	// 资源Id未授权或已过期，请重新输入
+	UNAUTHORIZEDOPERATION_RESOURCEIDUNAUTHORIZED = "UnauthorizedOperation.ResourceIdUnauthorized"
 
 	// 未授权,不可操作该策略
 	UNAUTHORIZEDOPERATION_STRATEGYUNAUTHORIZED = "UnauthorizedOperation.StrategyUnauthorized"

@@ -3163,6 +3163,17 @@ type DepartmentManagerUser struct {
 	ManagerName *string `json:"ManagerName,omitnil,omitempty" name:"ManagerName"`
 }
 
+type Departments struct {
+	// 部门列表
+	DepartmentSet []*Department `json:"DepartmentSet,omitnil,omitempty" name:"DepartmentSet"`
+
+	// 是否开启了部门管理 true - 已开启, false - 未开启
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 当前操作UIN是否是根部门管理员
+	RootManager *bool `json:"RootManager,omitnil,omitempty" name:"RootManager"`
+}
+
 // Predefined struct for user
 type DeployResourceRequestParams struct {
 	// 需要开通服务的资源ID
@@ -4006,6 +4017,60 @@ func (r *DescribeCmdTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCmdTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDepartmentsRequestParams struct {
+
+}
+
+type DescribeDepartmentsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeDepartmentsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDepartmentsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDepartmentsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDepartmentsResponseParams struct {
+	// 部门列表
+	Departments *Departments `json:"Departments,omitnil,omitempty" name:"Departments"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDepartmentsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDepartmentsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDepartmentsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDepartmentsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -7911,6 +7911,66 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeControlPlaneLogsRequest() (request *DescribeControlPlaneLogsRequest) {
+    request = &DescribeControlPlaneLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeControlPlaneLogs")
+    
+    
+    return
+}
+
+func NewDescribeControlPlaneLogsResponse() (response *DescribeControlPlaneLogsResponse) {
+    response = &DescribeControlPlaneLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeControlPlaneLogs
+// 查询插件日志采集配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  FAILEDOPERATION_KUBERNETESRESOURCENOTFOUND = "FailedOperation.KubernetesResourceNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeControlPlaneLogs(request *DescribeControlPlaneLogsRequest) (response *DescribeControlPlaneLogsResponse, err error) {
+    return c.DescribeControlPlaneLogsWithContext(context.Background(), request)
+}
+
+// DescribeControlPlaneLogs
+// 查询插件日志采集配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  FAILEDOPERATION_KUBERNETESRESOURCENOTFOUND = "FailedOperation.KubernetesResourceNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeControlPlaneLogsWithContext(ctx context.Context, request *DescribeControlPlaneLogsRequest) (response *DescribeControlPlaneLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeControlPlaneLogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeControlPlaneLogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeControlPlaneLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeControlPlaneLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeECMInstancesRequest() (request *DescribeECMInstancesRequest) {
     request = &DescribeECMInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12333,6 +12393,66 @@ func (c *Client) DisableClusterDeletionProtectionWithContext(ctx context.Context
     return
 }
 
+func NewDisableControlPlaneLogsRequest() (request *DisableControlPlaneLogsRequest) {
+    request = &DisableControlPlaneLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DisableControlPlaneLogs")
+    
+    
+    return
+}
+
+func NewDisableControlPlaneLogsResponse() (response *DisableControlPlaneLogsResponse) {
+    response = &DisableControlPlaneLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableControlPlaneLogs
+// 删除插件日志采集配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DisableControlPlaneLogs(request *DisableControlPlaneLogsRequest) (response *DisableControlPlaneLogsResponse, err error) {
+    return c.DisableControlPlaneLogsWithContext(context.Background(), request)
+}
+
+// DisableControlPlaneLogs
+// 删除插件日志采集配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DisableControlPlaneLogsWithContext(ctx context.Context, request *DisableControlPlaneLogsRequest) (response *DisableControlPlaneLogsResponse, err error) {
+    if request == nil {
+        request = NewDisableControlPlaneLogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DisableControlPlaneLogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableControlPlaneLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableControlPlaneLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableEncryptionProtectionRequest() (request *DisableEncryptionProtectionRequest) {
     request = &DisableEncryptionProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12709,6 +12829,66 @@ func (c *Client) EnableClusterDeletionProtectionWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewEnableClusterDeletionProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableControlPlaneLogsRequest() (request *EnableControlPlaneLogsRequest) {
+    request = &EnableControlPlaneLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "EnableControlPlaneLogs")
+    
+    
+    return
+}
+
+func NewEnableControlPlaneLogsResponse() (response *EnableControlPlaneLogsResponse) {
+    response = &EnableControlPlaneLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableControlPlaneLogs
+// 创建插件日志采集配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) EnableControlPlaneLogs(request *EnableControlPlaneLogsRequest) (response *EnableControlPlaneLogsResponse, err error) {
+    return c.EnableControlPlaneLogsWithContext(context.Background(), request)
+}
+
+// EnableControlPlaneLogs
+// 创建插件日志采集配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) EnableControlPlaneLogsWithContext(ctx context.Context, request *EnableControlPlaneLogsRequest) (response *EnableControlPlaneLogsResponse, err error) {
+    if request == nil {
+        request = NewEnableControlPlaneLogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "EnableControlPlaneLogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableControlPlaneLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableControlPlaneLogsResponse()
     err = c.Send(request, response)
     return
 }

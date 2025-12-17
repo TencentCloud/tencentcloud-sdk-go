@@ -96,6 +96,17 @@ type AdvanceFilterRuleInfo struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type AdvancedConsumerConfiguration struct {
+	// Ckafka分区hash状态。 默认 false
+	// 
+	// - true：开启根据字段 Hash 值结果相等的信息投递到统一 ckafka 分区
+	// - false：关闭根据字段 Hash 值结果相等的信息投递到统一 ckafka 分区
+	PartitionHashStatus *bool `json:"PartitionHashStatus,omitnil,omitempty" name:"PartitionHashStatus"`
+
+	// 需要计算 hash 的字段列表。最大支持5个字段。
+	PartitionFields []*string `json:"PartitionFields,omitnil,omitempty" name:"PartitionFields"`
+}
+
 type AlarmAnalysisConfig struct {
 	// 键。支持以下key：
 	// SyntaxRule：语法规则，value支持 0：Lucene语法；1： CQL语法。
@@ -236,6 +247,35 @@ type AlarmNotice struct {
 
 	// 最近更新时间。格式： YYYY-MM-DD HH:MM:SS
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 投递日志开关。
+	// 
+	// 参数值：
+	// 
+	// 1：关闭
+	// 
+	// 2：开启 
+	DeliverStatus *uint64 `json:"DeliverStatus,omitnil,omitempty" name:"DeliverStatus"`
+
+	// 投递日志标识。
+	// 
+	// 参数值：
+	// 
+	// 1：未启用
+	// 
+	// 2：已启用
+	// 
+	// 3：投递异常
+	DeliverFlag *uint64 `json:"DeliverFlag,omitnil,omitempty" name:"DeliverFlag"`
+
+	// 通知渠道组配置的告警屏蔽统计状态数量信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmShieldCount *AlarmShieldCount `json:"AlarmShieldCount,omitnil,omitempty" name:"AlarmShieldCount"`
+
+	// 统一设定自定义回调参数。
+	// -  true: 使用通知内容模板中的自定义回调参数覆盖告警策略中单独配置的请求头及请求内容。
+	// -  false:优先使用告警策略中单独配置的请求头及请求内容。
+	CallbackPrioritize *bool `json:"CallbackPrioritize,omitnil,omitempty" name:"CallbackPrioritize"`
 }
 
 type AlarmNoticeDeliverConfig struct {
@@ -244,6 +284,20 @@ type AlarmNoticeDeliverConfig struct {
 
 	// 投递失败原因。
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+}
+
+type AlarmShieldCount struct {
+	// 符合检索条件的告警屏蔽总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 告警屏蔽未生效数量
+	InvalidCount *uint64 `json:"InvalidCount,omitnil,omitempty" name:"InvalidCount"`
+
+	// 告警屏蔽生效中数量
+	ValidCount *uint64 `json:"ValidCount,omitnil,omitempty" name:"ValidCount"`
+
+	// 告警屏蔽已过期数量
+	ExpireCount *uint64 `json:"ExpireCount,omitnil,omitempty" name:"ExpireCount"`
 }
 
 type AlarmShieldInfo struct {
@@ -1412,6 +1466,11 @@ type CreateAlarmNoticeRequestParams struct {
 	// -      1：关闭
 	// -      2：开启（默认值）
 	AlarmShieldStatus *uint64 `json:"AlarmShieldStatus,omitnil,omitempty" name:"AlarmShieldStatus"`
+
+	// 统一设定自定义回调参数。
+	// -  true: 使用通知内容模板中的自定义回调参数覆盖告警策略中单独配置的请求头及请求内容。
+	// -  false:优先使用告警策略中单独配置的请求头及请求内容。
+	CallbackPrioritize *bool `json:"CallbackPrioritize,omitnil,omitempty" name:"CallbackPrioritize"`
 }
 
 type CreateAlarmNoticeRequest struct {
@@ -1458,6 +1517,11 @@ type CreateAlarmNoticeRequest struct {
 	// -      1：关闭
 	// -      2：开启（默认值）
 	AlarmShieldStatus *uint64 `json:"AlarmShieldStatus,omitnil,omitempty" name:"AlarmShieldStatus"`
+
+	// 统一设定自定义回调参数。
+	// -  true: 使用通知内容模板中的自定义回调参数覆盖告警策略中单独配置的请求头及请求内容。
+	// -  false:优先使用告警策略中单独配置的请求头及请求内容。
+	CallbackPrioritize *bool `json:"CallbackPrioritize,omitnil,omitempty" name:"CallbackPrioritize"`
 }
 
 func (r *CreateAlarmNoticeRequest) ToJsonString() string {
@@ -1482,6 +1546,7 @@ func (r *CreateAlarmNoticeRequest) FromJsonString(s string) error {
 	delete(f, "DeliverStatus")
 	delete(f, "DeliverConfig")
 	delete(f, "AlarmShieldStatus")
+	delete(f, "CallbackPrioritize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmNoticeRequest has unknown keys!", "")
 	}
@@ -2470,6 +2535,15 @@ type CreateConsumerRequestParams struct {
 
 	// 投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
+
+	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 外部ID
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
+
+	// 高级配置项
+	AdvancedConfig *AdvancedConsumerConfiguration `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 type CreateConsumerRequest struct {
@@ -2493,6 +2567,15 @@ type CreateConsumerRequest struct {
 
 	// 投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
+
+	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 外部ID
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
+
+	// 高级配置项
+	AdvancedConfig *AdvancedConsumerConfiguration `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 func (r *CreateConsumerRequest) ToJsonString() string {
@@ -2512,6 +2595,9 @@ func (r *CreateConsumerRequest) FromJsonString(s string) error {
 	delete(f, "Content")
 	delete(f, "Ckafka")
 	delete(f, "Compression")
+	delete(f, "RoleArn")
+	delete(f, "ExternalId")
+	delete(f, "AdvancedConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsumerRequest has unknown keys!", "")
 	}
@@ -3351,6 +3437,9 @@ type CreateIndexRequestParams struct {
 	// * 1:包含所有元数据字段
 	// * 2:不包含任何元数据字段
 	MetadataFlag *uint64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
+
+	// 自定义日志解析异常存储字段。
+	CoverageField *string `json:"CoverageField,omitnil,omitempty" name:"CoverageField"`
 }
 
 type CreateIndexRequest struct {
@@ -3376,6 +3465,9 @@ type CreateIndexRequest struct {
 	// * 1:包含所有元数据字段
 	// * 2:不包含任何元数据字段
 	MetadataFlag *uint64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
+
+	// 自定义日志解析异常存储字段。
+	CoverageField *string `json:"CoverageField,omitnil,omitempty" name:"CoverageField"`
 }
 
 func (r *CreateIndexRequest) ToJsonString() string {
@@ -3395,6 +3487,7 @@ func (r *CreateIndexRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "IncludeInternalFields")
 	delete(f, "MetadataFlag")
+	delete(f, "CoverageField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIndexRequest has unknown keys!", "")
 	}
@@ -4064,6 +4157,12 @@ type CreateShipperRequestParams struct {
 	// - INTELLIGENT_TIERING：智能分层存储
 	// - MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 外部ID
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
 }
 
 type CreateShipperRequest struct {
@@ -4127,6 +4226,12 @@ type CreateShipperRequest struct {
 	// - INTELLIGENT_TIERING：智能分层存储
 	// - MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 外部ID
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
 }
 
 func (r *CreateShipperRequest) ToJsonString() string {
@@ -4155,6 +4260,8 @@ func (r *CreateShipperRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "StorageType")
+	delete(f, "RoleArn")
+	delete(f, "ExternalId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateShipperRequest has unknown keys!", "")
 	}
@@ -6237,32 +6344,32 @@ type DeliverConfig struct {
 
 // Predefined struct for user
 type DescribeAlarmNoticesRequestParams struct {
-	// <li> name
+	// name
 	// 按照【通知渠道组名称】进行过滤。
 	// 类型：String
 	// 示例："Filters":[{"Key":"name","Values":["test-notice"]}]
-	// 必选：否</li>
-	// <li> alarmNoticeId
+	// 必选：否
+	// alarmNoticeId
 	// 按照【通知渠道组ID】进行过滤。
 	// 类型：String
 	// 示例："Filters": [{Key: "alarmNoticeId", Values: ["notice-5281f1d2-6275-4e56-9ec3-a1eb19d8bc2f"]}]
-	// 必选：否</li>
-	// <li> uid
+	// 必选：否
+	// uid
 	// 按照【接收用户ID】进行过滤。
 	// 类型：String
 	// 示例："Filters": [{Key: "uid", Values: ["1137546"]}]
-	// 必选：否</li>
-	// <li> groupId
+	// 必选：否
+	// groupId
 	// 按照【接收用户组ID】进行过滤。
 	// 类型：String
 	// 示例："Filters": [{Key: "groupId", Values: ["344098"]}]
-	// 必选：否</li>
+	// 必选：否
 	// 
-	// <li> deliverFlag
+	// deliverFlag
 	// 按照【投递状态】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
+	// 可选值： "1":未启用,  "2": 已启用, "3":投递异常
 	// 示例："Filters":[{"Key":"deliverFlag","Values":["2"]}]
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -6272,37 +6379,42 @@ type DescribeAlarmNoticesRequestParams struct {
 
 	// 分页单页限制数目，默认值为20，最大值100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否需要返回通知渠道组配置的告警屏蔽统计状态数量信息。
+	// - true：需要返回；
+	// - false：不返回（默认false）。
+	HasAlarmShieldCount *bool `json:"HasAlarmShieldCount,omitnil,omitempty" name:"HasAlarmShieldCount"`
 }
 
 type DescribeAlarmNoticesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <li> name
+	// name
 	// 按照【通知渠道组名称】进行过滤。
 	// 类型：String
 	// 示例："Filters":[{"Key":"name","Values":["test-notice"]}]
-	// 必选：否</li>
-	// <li> alarmNoticeId
+	// 必选：否
+	// alarmNoticeId
 	// 按照【通知渠道组ID】进行过滤。
 	// 类型：String
 	// 示例："Filters": [{Key: "alarmNoticeId", Values: ["notice-5281f1d2-6275-4e56-9ec3-a1eb19d8bc2f"]}]
-	// 必选：否</li>
-	// <li> uid
+	// 必选：否
+	// uid
 	// 按照【接收用户ID】进行过滤。
 	// 类型：String
 	// 示例："Filters": [{Key: "uid", Values: ["1137546"]}]
-	// 必选：否</li>
-	// <li> groupId
+	// 必选：否
+	// groupId
 	// 按照【接收用户组ID】进行过滤。
 	// 类型：String
 	// 示例："Filters": [{Key: "groupId", Values: ["344098"]}]
-	// 必选：否</li>
+	// 必选：否
 	// 
-	// <li> deliverFlag
+	// deliverFlag
 	// 按照【投递状态】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
+	// 可选值： "1":未启用,  "2": 已启用, "3":投递异常
 	// 示例："Filters":[{"Key":"deliverFlag","Values":["2"]}]
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -6312,6 +6424,11 @@ type DescribeAlarmNoticesRequest struct {
 
 	// 分页单页限制数目，默认值为20，最大值100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否需要返回通知渠道组配置的告警屏蔽统计状态数量信息。
+	// - true：需要返回；
+	// - false：不返回（默认false）。
+	HasAlarmShieldCount *bool `json:"HasAlarmShieldCount,omitnil,omitempty" name:"HasAlarmShieldCount"`
 }
 
 func (r *DescribeAlarmNoticesRequest) ToJsonString() string {
@@ -6329,6 +6446,7 @@ func (r *DescribeAlarmNoticesRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "HasAlarmShieldCount")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmNoticesRequest has unknown keys!", "")
 	}
@@ -7974,6 +8092,9 @@ type DescribeIndexResponseParams struct {
 	// * 1:包含所有元数据字段
 	// * 2:不包含任何元数据字段
 	MetadataFlag *uint64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
+
+	// 自定义日志解析异常存储字段。
+	CoverageField *string `json:"CoverageField,omitnil,omitempty" name:"CoverageField"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10656,6 +10777,9 @@ type LogsetInfo struct {
 	// 创建时间。格式 `YYYY-MM-DD HH:MM:SS`
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
+	// 若AssumerUin非空，则表示创建该日志集的服务方Uin
+	AssumerUin *uint64 `json:"AssumerUin,omitnil,omitempty" name:"AssumerUin"`
+
 	// 云产品标识，日志集由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
 	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
@@ -10667,6 +10791,9 @@ type LogsetInfo struct {
 
 	// 若AssumerName非空，则表示创建该日志集的服务方角色
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// 日志集下指标主题的数目
+	MetricTopicCount *int64 `json:"MetricTopicCount,omitnil,omitempty" name:"MetricTopicCount"`
 }
 
 type MachineGroupInfo struct {
@@ -10892,6 +11019,11 @@ type ModifyAlarmNoticeRequestParams struct {
 	//         1：关闭
 	//         2：开启（默认开启）
 	AlarmShieldStatus *uint64 `json:"AlarmShieldStatus,omitnil,omitempty" name:"AlarmShieldStatus"`
+
+	// 统一设定自定义回调参数。
+	// -  true: 使用通知内容模板中的自定义回调参数覆盖告警策略中单独配置的请求头及请求内容。
+	// -  false:优先使用告警策略中单独配置的请求头及请求内容。
+	CallbackPrioritize *bool `json:"CallbackPrioritize,omitnil,omitempty" name:"CallbackPrioritize"`
 }
 
 type ModifyAlarmNoticeRequest struct {
@@ -10946,6 +11078,11 @@ type ModifyAlarmNoticeRequest struct {
 	//         1：关闭
 	//         2：开启（默认开启）
 	AlarmShieldStatus *uint64 `json:"AlarmShieldStatus,omitnil,omitempty" name:"AlarmShieldStatus"`
+
+	// 统一设定自定义回调参数。
+	// -  true: 使用通知内容模板中的自定义回调参数覆盖告警策略中单独配置的请求头及请求内容。
+	// -  false:优先使用告警策略中单独配置的请求头及请求内容。
+	CallbackPrioritize *bool `json:"CallbackPrioritize,omitnil,omitempty" name:"CallbackPrioritize"`
 }
 
 func (r *ModifyAlarmNoticeRequest) ToJsonString() string {
@@ -10971,6 +11108,7 @@ func (r *ModifyAlarmNoticeRequest) FromJsonString(s string) error {
 	delete(f, "DeliverStatus")
 	delete(f, "DeliverConfig")
 	delete(f, "AlarmShieldStatus")
+	delete(f, "CallbackPrioritize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmNoticeRequest has unknown keys!", "")
 	}
@@ -11911,6 +12049,15 @@ type ModifyConsumerRequestParams struct {
 
 	// 投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
+
+	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 外部ID
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
+
+	// 高级配置
+	AdvancedConfig *AdvancedConsumerConfiguration `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 type ModifyConsumerRequest struct {
@@ -11937,6 +12084,15 @@ type ModifyConsumerRequest struct {
 
 	// 投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
+
+	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 外部ID
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
+
+	// 高级配置
+	AdvancedConfig *AdvancedConsumerConfiguration `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 func (r *ModifyConsumerRequest) ToJsonString() string {
@@ -11957,6 +12113,9 @@ func (r *ModifyConsumerRequest) FromJsonString(s string) error {
 	delete(f, "Content")
 	delete(f, "Ckafka")
 	delete(f, "Compression")
+	delete(f, "RoleArn")
+	delete(f, "ExternalId")
+	delete(f, "AdvancedConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsumerRequest has unknown keys!", "")
 	}
@@ -12507,6 +12666,9 @@ type ModifyIndexRequestParams struct {
 	// * 1:包含所有元数据字段
 	// * 2:不包含任何元数据字段
 	MetadataFlag *uint64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
+
+	// 自定义日志解析异常存储字段。
+	CoverageField *string `json:"CoverageField,omitnil,omitempty" name:"CoverageField"`
 }
 
 type ModifyIndexRequest struct {
@@ -12533,6 +12695,9 @@ type ModifyIndexRequest struct {
 	// * 1:包含所有元数据字段
 	// * 2:不包含任何元数据字段
 	MetadataFlag *uint64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
+
+	// 自定义日志解析异常存储字段。
+	CoverageField *string `json:"CoverageField,omitnil,omitempty" name:"CoverageField"`
 }
 
 func (r *ModifyIndexRequest) ToJsonString() string {
@@ -12552,6 +12717,7 @@ func (r *ModifyIndexRequest) FromJsonString(s string) error {
 	delete(f, "Rule")
 	delete(f, "IncludeInternalFields")
 	delete(f, "MetadataFlag")
+	delete(f, "CoverageField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIndexRequest has unknown keys!", "")
 	}
@@ -13318,6 +13484,12 @@ type ModifyShipperRequestParams struct {
 	// - INTELLIGENT_TIERING：智能分层存储
 	// - MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 外部ID
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
 }
 
 type ModifyShipperRequest struct {
@@ -13377,6 +13549,12 @@ type ModifyShipperRequest struct {
 	// - INTELLIGENT_TIERING：智能分层存储
 	// - MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 外部ID
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
 }
 
 func (r *ModifyShipperRequest) ToJsonString() string {
@@ -13404,6 +13582,8 @@ func (r *ModifyShipperRequest) FromJsonString(s string) error {
 	delete(f, "Content")
 	delete(f, "FilenameMode")
 	delete(f, "StorageType")
+	delete(f, "RoleArn")
+	delete(f, "ExternalId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyShipperRequest has unknown keys!", "")
 	}
@@ -13434,8 +13614,7 @@ func (r *ModifyShipperResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTopicRequestParams struct {
-	// 主题ID
-	// - 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
+	//  主题ID- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 主题名称
@@ -13461,6 +13640,9 @@ type ModifyTopicRequestParams struct {
 
 	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 存储类型：cold 低频存储，hot 标准存储
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
 	// 主题描述
 	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
@@ -13488,13 +13670,19 @@ type ModifyTopicRequestParams struct {
 	// 取消切换存储任务的id
 	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
 	CancelTopicAsyncTaskID *string `json:"CancelTopicAsyncTaskID,omitnil,omitempty" name:"CancelTopicAsyncTaskID"`
+
+	// 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
+	// 只支持传入1：kms-cls 云产品秘钥加密
+	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 开启记录公网来源ip和服务端接收时间
+	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 }
 
 type ModifyTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题ID
-	// - 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
+	//  主题ID- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 主题名称
@@ -13520,6 +13708,9 @@ type ModifyTopicRequest struct {
 
 	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 存储类型：cold 低频存储，hot 标准存储
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
 	// 主题描述
 	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
@@ -13547,6 +13738,13 @@ type ModifyTopicRequest struct {
 	// 取消切换存储任务的id
 	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
 	CancelTopicAsyncTaskID *string `json:"CancelTopicAsyncTaskID,omitnil,omitempty" name:"CancelTopicAsyncTaskID"`
+
+	// 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
+	// 只支持传入1：kms-cls 云产品秘钥加密
+	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 开启记录公网来源ip和服务端接收时间
+	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 }
 
 func (r *ModifyTopicRequest) ToJsonString() string {
@@ -13568,12 +13766,15 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 	delete(f, "AutoSplit")
 	delete(f, "MaxSplitPartitions")
 	delete(f, "Period")
+	delete(f, "StorageType")
 	delete(f, "Describes")
 	delete(f, "HotPeriod")
 	delete(f, "IsWebTracking")
 	delete(f, "Extends")
 	delete(f, "PartitionCount")
 	delete(f, "CancelTopicAsyncTaskID")
+	delete(f, "Encryption")
+	delete(f, "IsSourceFrom")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicRequest has unknown keys!", "")
 	}
@@ -15154,6 +15355,19 @@ type ShipperInfo struct {
 	// INTELLIGENT_TIERING：智能分层存储
 	// MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 外部ID
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
+
+	// 任务运行状态。支持`0`,`1`,`2`
+	// 
+	// - `0`: 停止
+	// - `1`: 运行中
+	// - `2`: 异常
+	TaskStatus *uint64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 }
 
 type ShipperTaskInfo struct {
@@ -15330,11 +15544,13 @@ type TopicInfo struct {
 	// 主题是否开启索引（主题类型需为日志主题）
 	Index *bool `json:"Index,omitnil,omitempty" name:"Index"`
 
+	// AssumerUin非空则表示创建该日志主题的服务方Uin
+	AssumerUin *uint64 `json:"AssumerUin,omitnil,omitempty" name:"AssumerUin"`
+
 	// 云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
 	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
-	// 创建时间
-	// 时间格式：yyyy-MM-dd HH:mm:ss
+	// 创建时间。格式：yyyy-MM-dd HH:mm:ss
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 主题是否开启采集，true：开启采集；false：关闭采集。
@@ -15344,6 +15560,9 @@ type TopicInfo struct {
 
 	// 主题绑定的标签信息
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// RoleName非空则表示创建该日志主题的服务方使用的角色
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
 	// 该主题是否开启自动分裂
 	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
@@ -15396,6 +15615,9 @@ type TopicInfo struct {
 	// 异步迁移完成后，预计生效日期
 	// 时间格式：yyyy-MM-dd HH:mm:ss
 	EffectiveDate *string `json:"EffectiveDate,omitnil,omitempty" name:"EffectiveDate"`
+
+	// IsSourceFrom 开启记录公网来源ip和服务端接收时间
+	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 }
 
 // Predefined struct for user

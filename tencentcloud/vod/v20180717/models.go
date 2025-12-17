@@ -2021,6 +2021,42 @@ type AigcImageTaskOutputFileInfo struct {
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 }
 
+type AigcUsageDataItem struct {
+	// AIGC规格。
+	// 取值有：
+	// <li>Qwen2.0</li>
+	// <li>Gem2.5</li>
+	// <li>Gem3.0_1K</li>
+	// <li>Gem3.0_2K</li>
+	// <li>Gem3.0_4K</li>
+	// <li>Seedream4.0</li>
+	// <li>Sora2</li>
+	// <li>Veo3.1Standard</li>
+	// <li>Veo3.1Fast</li>
+	// <li>Kling2.5pro_720P</li>
+	// <li>Kling2.5pro_1080P</li>
+	// <li>Kling2.0&2.1std_720P</li>
+	// <li>Kling2.0&2.1pro_1080P</li>
+	// <li>Hailuo02&2.3_1080P</li>
+	// <li>Hailuo02&2.3_768P</li>
+	// <li>Hailuo2.3fast_768P</li>
+	// <li>Hailuo2.3fast_1080P</li>
+	// <li>Seedance3.0pro</li>
+	// <li>Jimeng4.0</li>
+	// <li>Jimeng3.0pro</li>
+	// <li>Vidu2.0_720P</li>
+	// <li>Vidu2.0_1080P</li>
+	// <li>ViduQ2pro_720P</li>
+	// <li>ViduQ2pro_1080P</li>
+	// <li>ViduQ2turbo_720P</li>
+	// <li>ViduQ2turbo_1080P</li>
+	// <li> unknown</li>
+	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
+
+	// 用量数据。
+	DataSet []*TaskStatDataItem `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+}
+
 type AigcVideoOutputConfig struct {
 	// 存储模式。取值有： <li>Permanent：永久存储，生成的视频文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的视频文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>
 	// 默认值：Temporary
@@ -9502,6 +9538,84 @@ func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) ToJsonString() strin
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcUsageDataRequestParams struct {
+	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// AIGC类型，取值有：<li> Video：视频。</li><li> Image：图片。</li>
+	AigcType *string `json:"AigcType,omitnil,omitempty" name:"AigcType"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+type DescribeAigcUsageDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// AIGC类型，取值有：<li> Video：视频。</li><li> Image：图片。</li>
+	AigcType *string `json:"AigcType,omitnil,omitempty" name:"AigcType"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeAigcUsageDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcUsageDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AigcType")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcUsageDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcUsageDataResponseParams struct {
+	// AIGC统计数据。
+	AigcUsageDataSet []*AigcUsageDataItem `json:"AigcUsageDataSet,omitnil,omitempty" name:"AigcUsageDataSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcUsageDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcUsageDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcUsageDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcUsageDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

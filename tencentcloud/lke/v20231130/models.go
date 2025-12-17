@@ -785,6 +785,20 @@ type AppModel struct {
 	ModelParams *ModelParams `json:"ModelParams,omitnil,omitempty" name:"ModelParams"`
 }
 
+type AppModelDetailInfo struct {
+	// 模型名称
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 模型参数
+	ModelParams *ModelParams `json:"ModelParams,omitnil,omitempty" name:"ModelParams"`
+
+	// 限制
+	HistoryLimit *uint64 `json:"HistoryLimit,omitnil,omitempty" name:"HistoryLimit"`
+
+	// 模型别名
+	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+}
+
 type AttrLabel struct {
 	// 标签来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -814,6 +828,8 @@ type AttrLabelDetail struct {
 
 	// 标签标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: AttrKey is deprecated.
 	AttrKey *string `json:"AttrKey,omitnil,omitempty" name:"AttrKey"`
 
 	// 标签名称
@@ -828,7 +844,7 @@ type AttrLabelDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdating *bool `json:"IsUpdating,omitnil,omitempty" name:"IsUpdating"`
 
-	// 状态
+	// 发布状态(1 待发布 2 发布中 3 已发布 4 发布失败)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
@@ -1032,13 +1048,13 @@ type ChannelListInfo struct {
 
 // Predefined struct for user
 type CheckAttributeLabelExistRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 属性名称
+	// 标签名称
 	LabelName *string `json:"LabelName,omitnil,omitempty" name:"LabelName"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizId *string `json:"AttributeBizId,omitnil,omitempty" name:"AttributeBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -1047,20 +1063,20 @@ type CheckAttributeLabelExistRequestParams struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 滚动加载，最后一个属性标签ID
+	// 最后一个标签ID。用于滚动加载：是一种分批、滚动式的存在性检查机制。客户端需要持续调用接口，并每次传入上一次返回的最后一个记录的ID，直到接口明确返回“存在”或“已检查全部数据且不存在”为止。
 	LastLabelBizId *string `json:"LastLabelBizId,omitnil,omitempty" name:"LastLabelBizId"`
 }
 
 type CheckAttributeLabelExistRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 属性名称
+	// 标签名称
 	LabelName *string `json:"LabelName,omitnil,omitempty" name:"LabelName"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizId *string `json:"AttributeBizId,omitnil,omitempty" name:"AttributeBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -1069,7 +1085,7 @@ type CheckAttributeLabelExistRequest struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 滚动加载，最后一个属性标签ID
+	// 最后一个标签ID。用于滚动加载：是一种分批、滚动式的存在性检查机制。客户端需要持续调用接口，并每次传入上一次返回的最后一个记录的ID，直到接口明确返回“存在”或“已检查全部数据且不存在”为止。
 	LastLabelBizId *string `json:"LastLabelBizId,omitnil,omitempty" name:"LastLabelBizId"`
 }
 
@@ -1124,7 +1140,7 @@ func (r *CheckAttributeLabelExistResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckAttributeLabelReferRequestParams struct {
-	// 应用ID
+	// 应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -1133,17 +1149,17 @@ type CheckAttributeLabelReferRequestParams struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 属性标签
+	// 属性标签ID
 	LabelBizId *string `json:"LabelBizId,omitnil,omitempty" name:"LabelBizId"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizId []*string `json:"AttributeBizId,omitnil,omitempty" name:"AttributeBizId"`
 }
 
 type CheckAttributeLabelReferRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -1152,10 +1168,10 @@ type CheckAttributeLabelReferRequest struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 属性标签
+	// 属性标签ID
 	LabelBizId *string `json:"LabelBizId,omitnil,omitempty" name:"LabelBizId"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizId []*string `json:"AttributeBizId,omitnil,omitempty" name:"AttributeBizId"`
 }
 
@@ -1354,7 +1370,7 @@ func (r *CreateAppResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAttributeLabelRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 标签名
@@ -1376,7 +1392,7 @@ type CreateAttributeLabelRequestParams struct {
 type CreateAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 标签名
@@ -1743,14 +1759,14 @@ func (r *CreateQAResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRejectedQuestionRequestParams struct {
-	// 应用ID
+	// 应用ID, 获取方式参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题
 	// 
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 拒答问题来源的数据源唯一id， - 拒答来源于不满意回复  2 - 拒答来源于手动添加
+	// 拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加
 	BusinessSource *uint64 `json:"BusinessSource,omitnil,omitempty" name:"BusinessSource"`
 
 	// 拒答问题来源的数据源唯一id
@@ -1761,14 +1777,14 @@ type CreateRejectedQuestionRequestParams struct {
 type CreateRejectedQuestionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID, 获取方式参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题
 	// 
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 拒答问题来源的数据源唯一id， - 拒答来源于不满意回复  2 - 拒答来源于手动添加
+	// 拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加
 	BusinessSource *uint64 `json:"BusinessSource,omitnil,omitempty" name:"BusinessSource"`
 
 	// 拒答问题来源的数据源唯一id
@@ -2316,7 +2332,7 @@ func (r *DeleteAppResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAttributeLabelRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 标签ID
@@ -2332,7 +2348,7 @@ type DeleteAttributeLabelRequestParams struct {
 type DeleteAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 标签ID
@@ -2635,7 +2651,7 @@ func (r *DeleteQAResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRejectedQuestionRequestParams struct {
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题来源的数据源唯一id
@@ -2647,7 +2663,7 @@ type DeleteRejectedQuestionRequestParams struct {
 type DeleteRejectedQuestionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题来源的数据源唯一id
@@ -3001,13 +3017,13 @@ func (r *DescribeAppResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAttributeLabelRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizId *string `json:"AttributeBizId,omitnil,omitempty" name:"AttributeBizId"`
 
-	// 每次加载的数量 
+	// 每次请求返回的最大标签数量​，限制单次接口返回的标签数量，避免数据量过大。取值范围：大于0。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -3016,10 +3032,10 @@ type DescribeAttributeLabelRequestParams struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 查询标签或相似标签
+	// 搜索关键词，用于查询标签标准词或相似词
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 滚动加载游标的标签ID
+	// 滚动加载游标，上一次请求返回的最后一个标签ID
 	LastLabelBizId *string `json:"LastLabelBizId,omitnil,omitempty" name:"LastLabelBizId"`
 
 	// 查询范围 all(或者传空):标准词和相似词 standard:标准词 similar:相似词
@@ -3029,13 +3045,13 @@ type DescribeAttributeLabelRequestParams struct {
 type DescribeAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizId *string `json:"AttributeBizId,omitnil,omitempty" name:"AttributeBizId"`
 
-	// 每次加载的数量 
+	// 每次请求返回的最大标签数量​，限制单次接口返回的标签数量，避免数据量过大。取值范围：大于0。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -3044,10 +3060,10 @@ type DescribeAttributeLabelRequest struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 查询标签或相似标签
+	// 搜索关键词，用于查询标签标准词或相似词
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 滚动加载游标的标签ID
+	// 滚动加载游标，上一次请求返回的最后一个标签ID
 	LastLabelBizId *string `json:"LastLabelBizId,omitnil,omitempty" name:"LastLabelBizId"`
 
 	// 查询范围 all(或者传空):标准词和相似词 standard:标准词 similar:相似词
@@ -4916,10 +4932,10 @@ func (r *DescribeTokenUsageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUnsatisfiedReplyContextRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 回复ID
+	// 回复ID，调用这个接口获得：[ListUnsatisfiedReply](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListUnsatisfiedReply) 
 	ReplyBizId *string `json:"ReplyBizId,omitnil,omitempty" name:"ReplyBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -4932,10 +4948,10 @@ type DescribeUnsatisfiedReplyContextRequestParams struct {
 type DescribeUnsatisfiedReplyContextRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 回复ID
+	// 回复ID，调用这个接口获得：[ListUnsatisfiedReply](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListUnsatisfiedReply) 
 	ReplyBizId *string `json:"ReplyBizId,omitnil,omitempty" name:"ReplyBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -4995,7 +5011,7 @@ func (r *DescribeUnsatisfiedReplyContextResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeWorkflowRunRequestParams struct {
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
 	// 工作流运行实例ID
@@ -5020,7 +5036,7 @@ type DescribeWorkflowRunRequestParams struct {
 type DescribeWorkflowRunRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
 	// 工作流运行实例ID
@@ -5066,7 +5082,7 @@ func (r *DescribeWorkflowRunRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWorkflowRunResponseParams struct {
-	// 工作流的详情
+	// 工作流运行实例详情
 	WorkflowRun *WorkflowRunDetail `json:"WorkflowRun,omitnil,omitempty" name:"WorkflowRun"`
 
 	// 节点列表
@@ -5175,7 +5191,7 @@ type DuplicateFileHandle struct {
 
 // Predefined struct for user
 type ExportAttributeLabelRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -5184,7 +5200,7 @@ type ExportAttributeLabelRequestParams struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizIds []*string `json:"AttributeBizIds,omitnil,omitempty" name:"AttributeBizIds"`
 
 	// 根据筛选数据导出
@@ -5194,7 +5210,7 @@ type ExportAttributeLabelRequestParams struct {
 type ExportAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -5203,7 +5219,7 @@ type ExportAttributeLabelRequest struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 属性ID
+	// 标签ID
 	AttributeBizIds []*string `json:"AttributeBizIds,omitnil,omitempty" name:"AttributeBizIds"`
 
 	// 根据筛选数据导出
@@ -5446,11 +5462,14 @@ type Filters struct {
 
 	// 错误类型检索
 	Reasons []*string `json:"Reasons,omitnil,omitempty" name:"Reasons"`
+
+	// 处理状态 0-待处理 1-已拒答 2-已忽略 3-已添加为新问答 4-已添加为相似问
+	HandlingStatuses []*uint64 `json:"HandlingStatuses,omitnil,omitempty" name:"HandlingStatuses"`
 }
 
 // Predefined struct for user
 type GenerateQARequestParams struct {
-	// 应用ID
+	// 应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -5460,7 +5479,7 @@ type GenerateQARequestParams struct {
 type GenerateQARequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -6362,6 +6381,10 @@ type GetWsTokenResponseParams struct {
 
 	// SingleWorkflow
 	SingleWorkflow *KnowledgeQaSingleWorkflow `json:"SingleWorkflow,omitnil,omitempty" name:"SingleWorkflow"`
+
+	// 使用视觉模型时对话窗口输入字符限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VisionModelInputLimit *int64 `json:"VisionModelInputLimit,omitnil,omitempty" name:"VisionModelInputLimit"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -9023,26 +9046,26 @@ func (r *ListReleaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListSelectDocRequestParams struct {
-	// 应用ID
+	// 应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档名称。可通过文档名称检索支持生成问答的文档，不支持xlsx、xls、csv格式
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文档状态筛选。文档状态对应码为7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期。其中仅状态为10 待发布、12 已发布的文档支持生成问答
+	// 文档状态筛选。文档状态对应码为7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期。其中仅状态为10 待发布、12 已发布的文档支持生成问答（未填写时默认值为空数组）
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ListSelectDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID,获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档名称。可通过文档名称检索支持生成问答的文档，不支持xlsx、xls、csv格式
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文档状态筛选。文档状态对应码为7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期。其中仅状态为10 待发布、12 已发布的文档支持生成问答
+	// 文档状态筛选。文档状态对应码为7 审核中、8 审核失败、10 待发布、11 发布中、12 已发布、13 学习中、14 学习失败 20 已过期。其中仅状态为10 待发布、12 已发布的文档支持生成问答（未填写时默认值为空数组）
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -9176,13 +9199,13 @@ func (r *ListSharedKnowledgeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListUnsatisfiedReplyRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码，取值范围：大于0
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页数量
+	// 分页数量，取值范围：大于0
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -9191,26 +9214,29 @@ type ListUnsatisfiedReplyRequestParams struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 用户请求(问题或答案)
+	// 用户请求(问题或答案)，按关键词检索，可匹配用户问题或答案
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 错误类型检索
+	// 按错误类型检索
 	Reasons []*string `json:"Reasons,omitnil,omitempty" name:"Reasons"`
 
-	// 操作状态  0-全部 1-待处理  2-已处理【包括答案纠错，拒答，忽略】
+	// 按操作状态检索  0-全部 1-待处理  2-已处理【包括答案纠错，拒答，忽略】，不填时默认值为0
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 处理状态 0-待处理 1-已拒答 2-已忽略 3-已添加为新问答 4-已添加为相似问
+	HandlingStatuses []*int64 `json:"HandlingStatuses,omitnil,omitempty" name:"HandlingStatuses"`
 }
 
 type ListUnsatisfiedReplyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码，取值范围：大于0
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页数量
+	// 分页数量，取值范围：大于0
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -9219,14 +9245,17 @@ type ListUnsatisfiedReplyRequest struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 用户请求(问题或答案)
+	// 用户请求(问题或答案)，按关键词检索，可匹配用户问题或答案
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 错误类型检索
+	// 按错误类型检索
 	Reasons []*string `json:"Reasons,omitnil,omitempty" name:"Reasons"`
 
-	// 操作状态  0-全部 1-待处理  2-已处理【包括答案纠错，拒答，忽略】
+	// 按操作状态检索  0-全部 1-待处理  2-已处理【包括答案纠错，拒答，忽略】，不填时默认值为0
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 处理状态 0-待处理 1-已拒答 2-已忽略 3-已添加为新问答 4-已添加为相似问
+	HandlingStatuses []*int64 `json:"HandlingStatuses,omitnil,omitempty" name:"HandlingStatuses"`
 }
 
 func (r *ListUnsatisfiedReplyRequest) ToJsonString() string {
@@ -9249,6 +9278,7 @@ func (r *ListUnsatisfiedReplyRequest) FromJsonString(s string) error {
 	delete(f, "Query")
 	delete(f, "Reasons")
 	delete(f, "Status")
+	delete(f, "HandlingStatuses")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUnsatisfiedReplyRequest has unknown keys!", "")
 	}
@@ -10684,6 +10714,12 @@ type MsgRecordReference struct {
 
 	// 文档索引id
 	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
+}
+
+type NL2SQLModelConfig struct {
+	// 模型配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Model *AppModelDetailInfo `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
 type NodeRunBase struct {
@@ -12166,6 +12202,10 @@ type SearchStrategy struct {
 	// 结果重排序模型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RerankModel *string `json:"RerankModel,omitnil,omitempty" name:"RerankModel"`
+
+	// NL2SQL模型配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatureLanguageToSqlModelConfig *NL2SQLModelConfig `json:"NatureLanguageToSqlModelConfig,omitnil,omitempty" name:"NatureLanguageToSqlModelConfig"`
 }
 
 type ShareKnowledgeBase struct {

@@ -131,6 +131,9 @@ const (
 	// PDF解析失败。
 	FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
 
+	// 结果解析失败
+	FAILEDOPERATION_RESPONSEPARSEFAILED = "FailedOperation.ResponseParseFailed"
+
 	// 未知错误。
 	FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 

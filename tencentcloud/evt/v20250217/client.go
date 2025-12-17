@@ -45,6 +45,50 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCompleteApprovalRequest() (request *CompleteApprovalRequest) {
+    request = &CompleteApprovalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("evt", APIVersion, "CompleteApproval")
+    
+    
+    return
+}
+
+func NewCompleteApprovalResponse() (response *CompleteApprovalResponse) {
+    response = &CompleteApprovalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CompleteApproval
+// 执行审批
+func (c *Client) CompleteApproval(request *CompleteApprovalRequest) (response *CompleteApprovalResponse, err error) {
+    return c.CompleteApprovalWithContext(context.Background(), request)
+}
+
+// CompleteApproval
+// 执行审批
+func (c *Client) CompleteApprovalWithContext(ctx context.Context, request *CompleteApprovalRequest) (response *CompleteApprovalResponse, err error) {
+    if request == nil {
+        request = NewCompleteApprovalRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "evt", APIVersion, "CompleteApproval")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CompleteApproval require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCompleteApprovalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRoleUserRequest() (request *CreateRoleUserRequest) {
     request = &CreateRoleUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

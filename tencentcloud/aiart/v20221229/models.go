@@ -2009,8 +2009,9 @@ type SubmitTextToImageJobRequestParams struct {
 	// 不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 生成图分辨率，仅支持以下分辨率：
-	// 640:1408,704:1344,768:1280,832:1216,896:1152,960:1088,1024:1024,1088:960,1152:896,1216:832,1280:768,1344:704,1408:640
+	// 生成图分辨率，默认1024:1024：
+	//  - 宽高维度均在 [512, 2048] 像素范围内;
+	//  - 宽高乘积（即图像面积）不超过 1024×1024 像素;
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 随机种子，默认随机。
@@ -2046,8 +2047,9 @@ type SubmitTextToImageJobRequest struct {
 	// 不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 生成图分辨率，仅支持以下分辨率：
-	// 640:1408,704:1344,768:1280,832:1216,896:1152,960:1088,1024:1024,1088:960,1152:896,1216:832,1280:768,1344:704,1408:640
+	// 生成图分辨率，默认1024:1024：
+	//  - 宽高维度均在 [512, 2048] 像素范围内;
+	//  - 宽高乘积（即图像面积）不超过 1024×1024 像素;
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 随机种子，默认随机。

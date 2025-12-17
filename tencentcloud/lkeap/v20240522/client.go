@@ -45,6 +45,56 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCancelTaskRequest() (request *CancelTaskRequest) {
+    request = &CancelTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lkeap", APIVersion, "CancelTask")
+    
+    
+    return
+}
+
+func NewCancelTaskResponse() (response *CancelTaskResponse) {
+    response = &CancelTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelTask
+// 文档解析任务取消
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
+    return c.CancelTaskWithContext(context.Background(), request)
+}
+
+// CancelTask
+// 文档解析任务取消
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lkeap", APIVersion, "CancelTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChatCompletionsRequest() (request *ChatCompletionsRequest) {
     request = &ChatCompletionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -107,21 +157,13 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 //     -  支持128K上下文长度，最大输入长度96k，最大输出32k（默认4k），最大思维链输出长度32k。
 //
-// - DeepSeek-V3.2-Exp（model 参数值为 deepseek-v3.2-exp）
-//
-//     - DeepSeek-V3.2-Exp 为685B 参数 MoE 模型，在 V3.1-Terminus 的基础上引入了 DeepSeek Sparse Attention（一种稀疏注意力机制），针对长文本的训练和推理效率进行了探索性的优化和验证。
-//
-//     -  支持128K上下文长度，最大输入长度96k，非思考模式最大输出8k（默认4k），思考模式最大输出64k（默认32k），最大思维链输出长度32k。
-//
-//     -  该模型目前处于试运营阶段，仅支持少量接入，如需申请开通请联系您的商务经理。
-//
 // - DeepSeek-V3.2（model 参数值为 deepseek-v3.2）
 //
 //     - DeepSeek-V3.2 为685B 参数 MoE 模型，其引入的稀疏注意力架构使长文本处理更高效，并在推理评测中达到GPT-5水平。
 //
 //     -  支持128K上下文长度，最大输入长度96k，非思考模式最大输出8k（默认4k），思考模式最大输出64k（默认32k），最大思维链输出长度32k。
 //
-//     -  该模型目前处于试运营阶段，仅支持少量接入，如需申请开通请联系您的商务经理。
+//     -  默认单账号下 DeepSeek-V3.2 模型的限制为：QPM：15,000 ，TPM：300,000
 //
 // ### 计费说明
 //
@@ -144,10 +186,6 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 // 
 //
 //     - DeepSeek-V3.1-Terminus 模型 | 输入：0.004元/千token | 输出：0.012元/千token
-//
-// 
-//
-//     - DeepSeek-V3.2-Exp 模型 | 输入：0.002元/千token | 输出：0.003元/千token
 //
 // 
 //
@@ -360,21 +398,13 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 //     -  支持128K上下文长度，最大输入长度96k，最大输出32k（默认4k），最大思维链输出长度32k。
 //
-// - DeepSeek-V3.2-Exp（model 参数值为 deepseek-v3.2-exp）
-//
-//     - DeepSeek-V3.2-Exp 为685B 参数 MoE 模型，在 V3.1-Terminus 的基础上引入了 DeepSeek Sparse Attention（一种稀疏注意力机制），针对长文本的训练和推理效率进行了探索性的优化和验证。
-//
-//     -  支持128K上下文长度，最大输入长度96k，非思考模式最大输出8k（默认4k），思考模式最大输出64k（默认32k），最大思维链输出长度32k。
-//
-//     -  该模型目前处于试运营阶段，仅支持少量接入，如需申请开通请联系您的商务经理。
-//
 // - DeepSeek-V3.2（model 参数值为 deepseek-v3.2）
 //
 //     - DeepSeek-V3.2 为685B 参数 MoE 模型，其引入的稀疏注意力架构使长文本处理更高效，并在推理评测中达到GPT-5水平。
 //
 //     -  支持128K上下文长度，最大输入长度96k，非思考模式最大输出8k（默认4k），思考模式最大输出64k（默认32k），最大思维链输出长度32k。
 //
-//     -  该模型目前处于试运营阶段，仅支持少量接入，如需申请开通请联系您的商务经理。
+//     -  默认单账号下 DeepSeek-V3.2 模型的限制为：QPM：15,000 ，TPM：300,000
 //
 // ### 计费说明
 //
@@ -397,10 +427,6 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 // 
 //
 //     - DeepSeek-V3.1-Terminus 模型 | 输入：0.004元/千token | 输出：0.012元/千token
-//
-// 
-//
-//     - DeepSeek-V3.2-Exp 模型 | 输入：0.002元/千token | 输出：0.003元/千token
 //
 // 
 //

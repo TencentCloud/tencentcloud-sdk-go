@@ -924,21 +924,21 @@ func (r *CreateAndroidInstanceADBResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAndroidInstanceAcceleratorTokenRequestParams struct {
-	// 用户IP，用户客户端的公网IP，用于就近选择起始加速节点
-	UserIP *string `json:"UserIP,omitnil,omitempty" name:"UserIP"`
-
 	// 实例 ID 列表。每次请求的实例的上限为 500。
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 用户IP，可以根据该 IP 选择就近加速点。如果不填，将自动选择就近加速点。
+	UserIP *string `json:"UserIP,omitnil,omitempty" name:"UserIP"`
 }
 
 type CreateAndroidInstanceAcceleratorTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户IP，用户客户端的公网IP，用于就近选择起始加速节点
-	UserIP *string `json:"UserIP,omitnil,omitempty" name:"UserIP"`
-
 	// 实例 ID 列表。每次请求的实例的上限为 500。
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 用户IP，可以根据该 IP 选择就近加速点。如果不填，将自动选择就近加速点。
+	UserIP *string `json:"UserIP,omitnil,omitempty" name:"UserIP"`
 }
 
 func (r *CreateAndroidInstanceAcceleratorTokenRequest) ToJsonString() string {
@@ -953,8 +953,8 @@ func (r *CreateAndroidInstanceAcceleratorTokenRequest) FromJsonString(s string) 
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "UserIP")
 	delete(f, "AndroidInstanceIds")
+	delete(f, "UserIP")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstanceAcceleratorTokenRequest has unknown keys!", "")
 	}
@@ -963,6 +963,9 @@ func (r *CreateAndroidInstanceAcceleratorTokenRequest) FromJsonString(s string) 
 
 // Predefined struct for user
 type CreateAndroidInstanceAcceleratorTokenResponseParams struct {
+	// token
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
 	// 加速信息
 	AcceleratorInfo *string `json:"AcceleratorInfo,omitnil,omitempty" name:"AcceleratorInfo"`
 

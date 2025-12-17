@@ -299,6 +299,100 @@ func (c *Client) CreateMonitorWithContext(ctx context.Context, request *CreateMo
     return
 }
 
+func NewCreatePackageAndPayRequest() (request *CreatePackageAndPayRequest) {
+    request = &CreatePackageAndPayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("igtm", APIVersion, "CreatePackageAndPay")
+    
+    
+    return
+}
+
+func NewCreatePackageAndPayResponse() (response *CreatePackageAndPayResponse) {
+    response = &CreatePackageAndPayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePackageAndPay
+// 购买套餐并支付，此接口会在余额扣费，谨慎调用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEERROR = "FailedOperation.CreateError"
+//  FAILEDOPERATION_DEALANDPAYFAILED = "FailedOperation.DealAndPayFailed"
+//  FAILEDOPERATION_QUERYERR = "FailedOperation.QueryErr"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DEALSTANDARDMODIFYFAILED = "InvalidParameter.DealStandardModifyFailed"
+//  INVALIDPARAMETER_DEALSTANDARDMODIFYINVALID = "InvalidParameter.DealStandardModifyInvalid"
+//  INVALIDPARAMETER_DEALTASKMODIFYINVALID = "InvalidParameter.DealTaskModifyInvalid"
+//  INVALIDPARAMETER_DEALTASKMODIFYNUMLESS = "InvalidParameter.DealTaskModifyNumLess"
+//  INVALIDPARAMETER_DEALTASKMODIFYNUMSAME = "InvalidParameter.DealTaskModifyNumSame"
+//  INVALIDPARAMETER_DEALULTIMATEMODIFYFAILED = "InvalidParameter.DealUltimateModifyFailed"
+//  INVALIDPARAMETER_RESOURCEIDEMPTY = "InvalidParameter.ResourceIdEmpty"
+//  INVALIDPARAMETER_TIMESPANEMPTY = "InvalidParameter.TimeSpanEmpty"
+//  INVALIDPARAMETER_TIMESPANINVALID = "InvalidParameter.TimeSpanInvalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_RESOURCEIDNOTMATCH = "UnauthorizedOperation.ResourceIdNotMatch"
+//  UNAUTHORIZEDOPERATION_RESOURCEIDUNAUTHORIZED = "UnauthorizedOperation.ResourceIdUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDERROR = "UnauthorizedOperation.UnauthorizedError"
+//  UNSUPPORTEDOPERATION_USERNOTFOUND = "UnsupportedOperation.UserNotFound"
+func (c *Client) CreatePackageAndPay(request *CreatePackageAndPayRequest) (response *CreatePackageAndPayResponse, err error) {
+    return c.CreatePackageAndPayWithContext(context.Background(), request)
+}
+
+// CreatePackageAndPay
+// 购买套餐并支付，此接口会在余额扣费，谨慎调用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEERROR = "FailedOperation.CreateError"
+//  FAILEDOPERATION_DEALANDPAYFAILED = "FailedOperation.DealAndPayFailed"
+//  FAILEDOPERATION_QUERYERR = "FailedOperation.QueryErr"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DEALSTANDARDMODIFYFAILED = "InvalidParameter.DealStandardModifyFailed"
+//  INVALIDPARAMETER_DEALSTANDARDMODIFYINVALID = "InvalidParameter.DealStandardModifyInvalid"
+//  INVALIDPARAMETER_DEALTASKMODIFYINVALID = "InvalidParameter.DealTaskModifyInvalid"
+//  INVALIDPARAMETER_DEALTASKMODIFYNUMLESS = "InvalidParameter.DealTaskModifyNumLess"
+//  INVALIDPARAMETER_DEALTASKMODIFYNUMSAME = "InvalidParameter.DealTaskModifyNumSame"
+//  INVALIDPARAMETER_DEALULTIMATEMODIFYFAILED = "InvalidParameter.DealUltimateModifyFailed"
+//  INVALIDPARAMETER_RESOURCEIDEMPTY = "InvalidParameter.ResourceIdEmpty"
+//  INVALIDPARAMETER_TIMESPANEMPTY = "InvalidParameter.TimeSpanEmpty"
+//  INVALIDPARAMETER_TIMESPANINVALID = "InvalidParameter.TimeSpanInvalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_RESOURCEIDNOTMATCH = "UnauthorizedOperation.ResourceIdNotMatch"
+//  UNAUTHORIZEDOPERATION_RESOURCEIDUNAUTHORIZED = "UnauthorizedOperation.ResourceIdUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDERROR = "UnauthorizedOperation.UnauthorizedError"
+//  UNSUPPORTEDOPERATION_USERNOTFOUND = "UnsupportedOperation.UserNotFound"
+func (c *Client) CreatePackageAndPayWithContext(ctx context.Context, request *CreatePackageAndPayRequest) (response *CreatePackageAndPayResponse, err error) {
+    if request == nil {
+        request = NewCreatePackageAndPayRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "CreatePackageAndPay")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePackageAndPay require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePackageAndPayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateStrategyRequest() (request *CreateStrategyRequest) {
     request = &CreateStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1911,6 +2005,78 @@ func (c *Client) ModifyMonitorWithContext(ctx context.Context, request *ModifyMo
     request.SetContext(ctx)
     
     response = NewModifyMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPackageAutoRenewRequest() (request *ModifyPackageAutoRenewRequest) {
+    request = &ModifyPackageAutoRenewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("igtm", APIVersion, "ModifyPackageAutoRenew")
+    
+    
+    return
+}
+
+func NewModifyPackageAutoRenewResponse() (response *ModifyPackageAutoRenewResponse) {
+    response = &ModifyPackageAutoRenewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPackageAutoRenew
+// 设置自动续费接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTORENEWFAILED = "FailedOperation.AutoRenewFailed"
+//  FAILEDOPERATION_CREATEERROR = "FailedOperation.CreateError"
+//  FAILEDOPERATION_QUERYERR = "FailedOperation.QueryErr"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDERROR = "UnauthorizedOperation.UnauthorizedError"
+//  UNSUPPORTEDOPERATION_USERNOTFOUND = "UnsupportedOperation.UserNotFound"
+func (c *Client) ModifyPackageAutoRenew(request *ModifyPackageAutoRenewRequest) (response *ModifyPackageAutoRenewResponse, err error) {
+    return c.ModifyPackageAutoRenewWithContext(context.Background(), request)
+}
+
+// ModifyPackageAutoRenew
+// 设置自动续费接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTORENEWFAILED = "FailedOperation.AutoRenewFailed"
+//  FAILEDOPERATION_CREATEERROR = "FailedOperation.CreateError"
+//  FAILEDOPERATION_QUERYERR = "FailedOperation.QueryErr"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDERROR = "UnauthorizedOperation.UnauthorizedError"
+//  UNSUPPORTEDOPERATION_USERNOTFOUND = "UnsupportedOperation.UserNotFound"
+func (c *Client) ModifyPackageAutoRenewWithContext(ctx context.Context, request *ModifyPackageAutoRenewRequest) (response *ModifyPackageAutoRenewResponse, err error) {
+    if request == nil {
+        request = NewModifyPackageAutoRenewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "igtm", APIVersion, "ModifyPackageAutoRenew")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPackageAutoRenew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPackageAutoRenewResponse()
     err = c.Send(request, response)
     return
 }

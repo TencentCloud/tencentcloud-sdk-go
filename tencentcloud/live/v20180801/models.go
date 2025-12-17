@@ -1222,28 +1222,22 @@ type CasterInputInfo struct {
 }
 
 type CasterLayoutInfo struct {
-	// 布局Index。
+	// <p>布局Index。</p>取值范围：[1, 1000]
 	LayoutIndex *int64 `json:"LayoutIndex,omitnil,omitempty" name:"LayoutIndex"`
 
-	// 布局模板Id。
-	// 有效值[1，20，21，31，32，41]
-	// 当使用布局模板时，无需LayoutParams参数，导播台将使用模板布局参数。
+	// <p>布局模板Id。有效值[1，20，21，31，32，41]当使用布局模板时，无需LayoutParams参数，导播台将使用模板布局参数。</p>
 	LayoutTemplateId *int64 `json:"LayoutTemplateId,omitnil,omitempty" name:"LayoutTemplateId"`
 
-	// 布局绑定的输入列表。按布局LayerId从小到大，按顺序排列。
-	// 已有两个画面的布局为例，输入1对应LayerId为1，输入2对应的LayerId为2，该字段应该填入"1|2"。
+	// <p>布局绑定的输入列表。按布局LayerId从小到大，按顺序排列。已有两个画面的布局为例，输入1对应LayerId为1，输入2对应的LayerId为2，该字段应该填入"1|2"。</p>
 	InputIndexList *string `json:"InputIndexList,omitnil,omitempty" name:"InputIndexList"`
 
-	// 详细的布局参数列表。
+	// <p>详细的布局参数列表。</p>
 	LayoutParams []*CasterLayoutParam `json:"LayoutParams,omitnil,omitempty" name:"LayoutParams"`
 
-	// 布局输出的宽度，单位为像素。
-	// 默认为1280像素。
-	// 注：该值仅在画中画布局，且未设置PgmWidth时生效。
+	// <p>布局输出的宽度，单位为像素。默认为1280像素。注：该值仅在画中画布局，且未设置PgmWidth时生效。</p>
 	LayoutWidth *uint64 `json:"LayoutWidth,omitnil,omitempty" name:"LayoutWidth"`
 
-	// 布局输出的高度，单位为像素。
-	// 注：该参数仅在画中画布局，且未设置PgmHeight时生效。
+	// <p>布局输出的高度，单位为像素。注：该参数仅在画中画布局，且未设置PgmHeight时生效。</p>
 	LayoutHeight *uint64 `json:"LayoutHeight,omitnil,omitempty" name:"LayoutHeight"`
 }
 

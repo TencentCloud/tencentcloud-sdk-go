@@ -226,6 +226,9 @@ type CreateNativeNodePoolParam struct {
 
 	// 原生节点池安装节点自动化助手开关
 	AutomationService *bool `json:"AutomationService,omitnil,omitempty" name:"AutomationService"`
+
+	// 原生节点池密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
 // Predefined struct for user
@@ -2557,4 +2560,7 @@ type UpdateNativeNodePoolParam struct {
 
 	// 节点池 GPU 配置
 	GPUConfigs []*GPUConfig `json:"GPUConfigs,omitnil,omitempty" name:"GPUConfigs"`
+
+	// 原生节点池密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }

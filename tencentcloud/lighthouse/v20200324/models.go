@@ -5400,9 +5400,13 @@ type DescribeSnapshotsRequestParams struct {
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
 	// <li>tag-key</li>
-	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// 按照【标签键】进行过滤。
+	// 类型：String
+	// 必选：否
 	// <li>tag-value</li>
-	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// 按照【标签值】进行过滤。
+	// 类型：String
+	// 必选：否
 	// <li>tag:tag-key</li>
 	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 SnapshotIds 和 Filters。
@@ -5441,9 +5445,13 @@ type DescribeSnapshotsRequest struct {
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
 	// <li>tag-key</li>
-	// 按照【标签键】进行过滤。 类型：String 必选：否
+	// 按照【标签键】进行过滤。
+	// 类型：String
+	// 必选：否
 	// <li>tag-value</li>
-	// 按照【标签值】进行过滤。 类型：String 必选：否
+	// 按照【标签值】进行过滤。
+	// 类型：String
+	// 必选：否
 	// <li>tag:tag-key</li>
 	// 按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 SnapshotIds 和 Filters。

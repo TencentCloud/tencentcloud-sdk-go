@@ -115,7 +115,9 @@ func NewCreateConsumerGroupResponse() (response *CreateConsumerGroupResponse) {
 }
 
 // CreateConsumerGroup
-// 创建消费组
+// 创建消费组。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的创建消费组接口文档见 [CreateRocketMQGroup](https://cloud.tencent.com/document/api/1179/63428)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -127,7 +129,9 @@ func (c *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (respo
 }
 
 // CreateConsumerGroup
-// 创建消费组
+// 创建消费组。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的创建消费组接口文档见 [CreateRocketMQGroup](https://cloud.tencent.com/document/api/1179/63428)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -171,7 +175,9 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 }
 
 // CreateInstance
-// 创建 RocketMQ 5.x 集群
+// 创建 RocketMQ 5.x 集群。
+//
+// 当前 API 适用集群：5.x 集群。创建 4.x 专享/通用集群的接口文档见 [CreateRocketMQVipInstance](https://cloud.tencent.com/document/product/1179/95721)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -180,7 +186,9 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 }
 
 // CreateInstance
-// 创建 RocketMQ 5.x 集群
+// 创建 RocketMQ 5.x 集群。
+//
+// 当前 API 适用集群：5.x 集群。创建 4.x 专享/通用集群的接口文档见 [CreateRocketMQVipInstance](https://cloud.tencent.com/document/product/1179/95721)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -473,7 +481,9 @@ func NewCreateRoleResponse() (response *CreateRoleResponse) {
 }
 
 // CreateRole
-// 添加角色
+// 添加角色。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的创建角色接口文档见 [CreateRocketMQRole](https://cloud.tencent.com/document/product/1179/107538)，给角色授权接口文档见 [CreateRocketMQEnvironmentRole](https://cloud.tencent.com/document/product/1179/107539)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -487,7 +497,9 @@ func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleRes
 }
 
 // CreateRole
-// 添加角色
+// 添加角色。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的创建角色接口文档见 [CreateRocketMQRole](https://cloud.tencent.com/document/product/1179/107538)，给角色授权接口文档见 [CreateRocketMQEnvironmentRole](https://cloud.tencent.com/document/product/1179/107539)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -533,7 +545,9 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 }
 
 // CreateTopic
-// 创建主题
+// 创建 RocketMQ 主题。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的创建主题接口文档见 [CreateRocketMQTopic](https://cloud.tencent.com/document/api/1179/63426)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -547,7 +561,9 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
 }
 
 // CreateTopic
-// 创建主题
+// 创建 RocketMQ 主题。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的创建主题接口文档见 [CreateRocketMQTopic](https://cloud.tencent.com/document/api/1179/63426)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -595,6 +611,8 @@ func NewDeleteConsumerGroupResponse() (response *DeleteConsumerGroupResponse) {
 // DeleteConsumerGroup
 // 删除消费组。消费者组删除后，消费者组的所有配置和相关数据都会被清空，且无法找回。删除后，在线的消费者客户端会出现报错，建议您提前下线客户端。
 //
+// 当前 API 适用集群：5.x 集群。4.x 集群的删除消费组接口文档见 [DeleteRocketMQGroup](https://cloud.tencent.com/document/api/1179/63424)。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
@@ -604,6 +622,8 @@ func (c *Client) DeleteConsumerGroup(request *DeleteConsumerGroupRequest) (respo
 
 // DeleteConsumerGroup
 // 删除消费组。消费者组删除后，消费者组的所有配置和相关数据都会被清空，且无法找回。删除后，在线的消费者客户端会出现报错，建议您提前下线客户端。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的删除消费组接口文档见 [DeleteRocketMQGroup](https://cloud.tencent.com/document/api/1179/63424)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -647,6 +667,8 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 // DeleteInstance
 // 删除 RocketMQ 5.x 集群，删除前请先删除正在使用的主题、消费组和角色信息。
 //
+// 当前 API 适用集群：5.x 集群。删除 4.x 集群接口文档见 [DeleteRocketMQVipInstance](https://cloud.tencent.com/document/product/1179/95802)。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCEINUSE = "ResourceInUse"
@@ -657,6 +679,8 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
 
 // DeleteInstance
 // 删除 RocketMQ 5.x 集群，删除前请先删除正在使用的主题、消费组和角色信息。
+//
+// 当前 API 适用集群：5.x 集群。删除 4.x 集群接口文档见 [DeleteRocketMQVipInstance](https://cloud.tencent.com/document/product/1179/95802)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -947,6 +971,8 @@ func NewDeleteRoleResponse() (response *DeleteRoleResponse) {
 // DeleteRole
 // 删除角色。请确保该角色相关信息不在当前代码中被使用。删除角色后，原先使用该角色进行生产或消费消息的密钥（AccessKey 和 SecretKey）将立即失效。
 //
+// 当前 API 适用集群：5.x 集群。4.x 集群的删除角色接口文档见 [DeleteRocketMQRoles](https://cloud.tencent.com/document/product/1179/107536)，删除角色授权接口文档见 [DeleteRocketMQEnvironmentRoles](https://cloud.tencent.com/document/product/1179/107537)。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -957,6 +983,8 @@ func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleRes
 
 // DeleteRole
 // 删除角色。请确保该角色相关信息不在当前代码中被使用。删除角色后，原先使用该角色进行生产或消费消息的密钥（AccessKey 和 SecretKey）将立即失效。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的删除角色接口文档见 [DeleteRocketMQRoles](https://cloud.tencent.com/document/product/1179/107536)，删除角色授权接口文档见 [DeleteRocketMQEnvironmentRoles](https://cloud.tencent.com/document/product/1179/107537)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1055,6 +1083,8 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 // DeleteTopic
 // 删除主题。主题删除后，主题的所有配置和相关数据都会被清空，且无法找回。
 //
+// 当前 API 适用集群：5.x 集群。4.x 集群的删除主题接口文档见 [DeleteRocketMQTopic](https://cloud.tencent.com/document/api/1179/63423)。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
@@ -1064,6 +1094,8 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
 
 // DeleteTopic
 // 删除主题。主题删除后，主题的所有配置和相关数据都会被清空，且无法找回。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的删除主题接口文档见 [DeleteRocketMQTopic](https://cloud.tencent.com/document/api/1179/63423)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1105,7 +1137,9 @@ func NewDescribeConsumerClientResponse() (response *DescribeConsumerClientRespon
 }
 
 // DescribeConsumerClient
-// 查询消费者客户端详情
+// 查询消费者客户端详情。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询消费者客户端详情接口文档见 [DescribeRocketMQConsumerConnectionDetail](https://cloud.tencent.com/document/product/1179/102490)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -1114,7 +1148,9 @@ func (c *Client) DescribeConsumerClient(request *DescribeConsumerClientRequest) 
 }
 
 // DescribeConsumerClient
-// 查询消费者客户端详情
+// 查询消费者客户端详情。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询消费者客户端详情接口文档见 [DescribeRocketMQConsumerConnectionDetail](https://cloud.tencent.com/document/product/1179/102490)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -1157,6 +1193,8 @@ func NewDescribeConsumerClientListResponse() (response *DescribeConsumerClientLi
 // DescribeConsumerClientList
 // 查询消费组下的客户端连接列表。
 //
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询消费组下的客户端列表接口文档见 [DescribeRocketMQConsumerConnections](https://cloud.tencent.com/document/product/1179/100460)。
+//
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeConsumerClientList(request *DescribeConsumerClientListRequest) (response *DescribeConsumerClientListResponse, err error) {
@@ -1165,6 +1203,8 @@ func (c *Client) DescribeConsumerClientList(request *DescribeConsumerClientListR
 
 // DescribeConsumerClientList
 // 查询消费组下的客户端连接列表。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询消费组下的客户端列表接口文档见 [DescribeRocketMQConsumerConnections](https://cloud.tencent.com/document/product/1179/100460)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -1205,7 +1245,9 @@ func NewDescribeConsumerGroupResponse() (response *DescribeConsumerGroupResponse
 }
 
 // DescribeConsumerGroup
-// 查询消费组详情
+// 查询消费组详情。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询消费组详情接口文档见 [DescribeRocketMQConsumerConnections](https://cloud.tencent.com/document/product/1179/100460)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
@@ -1215,7 +1257,9 @@ func (c *Client) DescribeConsumerGroup(request *DescribeConsumerGroupRequest) (r
 }
 
 // DescribeConsumerGroup
-// 查询消费组详情
+// 查询消费组详情。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询消费组详情接口文档见 [DescribeRocketMQConsumerConnections](https://cloud.tencent.com/document/product/1179/100460)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
@@ -1275,6 +1319,8 @@ func NewDescribeConsumerGroupListResponse() (response *DescribeConsumerGroupList
 //
 // [{ "Name": "ConsumeMessageOrderly", "Values": ["true"] }]
 //
+// 当前 API 适用集群：5.x 集群。4.x 集群的获取消费组列表接口文档见 [DescribeRocketMQGroups](https://cloud.tencent.com/document/api/1179/63420)。
+//
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeConsumerGroupList(request *DescribeConsumerGroupListRequest) (response *DescribeConsumerGroupListResponse, err error) {
@@ -1299,6 +1345,8 @@ func (c *Client) DescribeConsumerGroupList(request *DescribeConsumerGroupListReq
 // Filters示例： 
 //
 // [{ "Name": "ConsumeMessageOrderly", "Values": ["true"] }]
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的获取消费组列表接口文档见 [DescribeRocketMQGroups](https://cloud.tencent.com/document/api/1179/63420)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -1341,6 +1389,8 @@ func NewDescribeConsumerLagResponse() (response *DescribeConsumerLagResponse) {
 // DescribeConsumerLag
 // 查询指定消费组堆积数。
 //
+// 当前 API 适用集群：4.x 集群和 5.x 集群。
+//
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeConsumerLag(request *DescribeConsumerLagRequest) (response *DescribeConsumerLagResponse, err error) {
@@ -1349,6 +1399,8 @@ func (c *Client) DescribeConsumerLag(request *DescribeConsumerLagRequest) (respo
 
 // DescribeConsumerLag
 // 查询指定消费组堆积数。
+//
+// 当前 API 适用集群：4.x 集群和 5.x 集群。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -1481,6 +1533,8 @@ func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
 // DescribeInstance
 // 查询 RocketMQ 5.x 集群信息。
 //
+// 当前 API 适用集群：5.x 集群。查询 4.x 专享/通用集群信息的接口文档见 [DescribeRocketMQVipInstanceDetail](https://cloud.tencent.com/document/product/1179/86725)。
+//
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
@@ -1489,6 +1543,8 @@ func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *D
 
 // DescribeInstance
 // 查询 RocketMQ 5.x 集群信息。
+//
+// 当前 API 适用集群：5.x 集群。查询 4.x 专享/通用集群信息的接口文档见 [DescribeRocketMQVipInstanceDetail](https://cloud.tencent.com/document/product/1179/86725)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2425,6 +2481,8 @@ func NewDescribeMessageListResponse() (response *DescribeMessageListResponse) {
 // DescribeMessageList
 // 查询消息列表。如果查询死信消息，请设置ConsumerGroup参数。
 //
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询消息列表接口文档见 [DescribeRocketMQTopicMsgs](https://cloud.tencent.com/document/product/1179/97761)。
+//
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeMessageList(request *DescribeMessageListRequest) (response *DescribeMessageListResponse, err error) {
@@ -2433,6 +2491,8 @@ func (c *Client) DescribeMessageList(request *DescribeMessageListRequest) (respo
 
 // DescribeMessageList
 // 查询消息列表。如果查询死信消息，请设置ConsumerGroup参数。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询消息列表接口文档见 [DescribeRocketMQTopicMsgs](https://cloud.tencent.com/document/product/1179/97761)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2475,6 +2535,8 @@ func NewDescribeMessageTraceResponse() (response *DescribeMessageTraceResponse) 
 // DescribeMessageTrace
 // 根据消息 ID 查询消息轨迹。
 //
+// 当前 API 适用集群：5.x 集群。4.x 集群查询消息轨迹接口文档见 [DescribeRocketMQMsgTrace](https://cloud.tencent.com/document/product/1179/97760)。
+//
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
@@ -2484,6 +2546,8 @@ func (c *Client) DescribeMessageTrace(request *DescribeMessageTraceRequest) (res
 
 // DescribeMessageTrace
 // 根据消息 ID 查询消息轨迹。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群查询消息轨迹接口文档见 [DescribeRocketMQMsgTrace](https://cloud.tencent.com/document/product/1179/97760)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2937,6 +3001,8 @@ func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
 //
 // [{ "Name": "RoleName", "Values": ["test_role"] }]
 //
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询角色列表接口文档见 [DescribeRocketMQRoles](https://cloud.tencent.com/document/product/1179/107534)，查询角色授权列表接口文档见 [DescribeRocketMQEnvironmentRoles](https://cloud.tencent.com/document/product/1179/107535)。
+//
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
@@ -2960,6 +3026,8 @@ func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *D
 // Filters示例： 
 //
 // [{ "Name": "RoleName", "Values": ["test_role"] }]
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询角色列表接口文档见 [DescribeRocketMQRoles](https://cloud.tencent.com/document/product/1179/107534)，查询角色授权列表接口文档见 [DescribeRocketMQEnvironmentRoles](https://cloud.tencent.com/document/product/1179/107535)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -3297,6 +3365,8 @@ func NewDescribeTopicListResponse() (response *DescribeTopicListResponse) {
 //
 //  [{ "Name": "TopicName", "Values": ["test_topic"] }]
 //
+// 当前 API 适用集群：5.x 集群。4.x 集群的获取主题列表接口文档见 [DescribeRocketMQTopics](https://cloud.tencent.com/document/api/1179/63418)。
+//
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeTopicList(request *DescribeTopicListRequest) (response *DescribeTopicListResponse, err error) {
@@ -3317,6 +3387,8 @@ func (c *Client) DescribeTopicList(request *DescribeTopicListRequest) (response 
 // Filters示例：
 //
 //  [{ "Name": "TopicName", "Values": ["test_topic"] }]
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的获取主题列表接口文档见 [DescribeRocketMQTopics](https://cloud.tencent.com/document/api/1179/63418)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -3577,7 +3649,9 @@ func NewModifyConsumerGroupResponse() (response *ModifyConsumerGroupResponse) {
 }
 
 // ModifyConsumerGroup
-// 修改消费组属性
+// 修改消费组属性。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的修改消费组属性接口文档见 [ModifyRocketMQGroup](https://cloud.tencent.com/document/api/1179/63416)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -3586,7 +3660,9 @@ func (c *Client) ModifyConsumerGroup(request *ModifyConsumerGroupRequest) (respo
 }
 
 // ModifyConsumerGroup
-// 修改消费组属性
+// 修改消费组属性。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的修改消费组属性接口文档见 [ModifyRocketMQGroup](https://cloud.tencent.com/document/api/1179/63416)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -3629,6 +3705,8 @@ func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
 // ModifyInstance
 // 修改 RocketMQ 5.x 集群属性，仅支持修改运行中的集群。
 //
+// 当前 API 适用集群：5.x 集群。修改 4.x 集群属性的接口文档见 [ModifyRocketMQInstance](https://cloud.tencent.com/document/product/1179/108862)。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
@@ -3640,6 +3718,8 @@ func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *Modif
 
 // ModifyInstance
 // 修改 RocketMQ 5.x 集群属性，仅支持修改运行中的集群。
+//
+// 当前 API 适用集群：5.x 集群。修改 4.x 集群属性的接口文档见 [ModifyRocketMQInstance](https://cloud.tencent.com/document/product/1179/108862)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4043,7 +4123,9 @@ func NewModifyRoleResponse() (response *ModifyRoleResponse) {
 }
 
 // ModifyRole
-// 修改角色
+// 修改角色。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的修改角色接口文档见 [ModifyRocketMQRole](https://cloud.tencent.com/document/product/1179/107532)，修改角色的授权接口文档见 [ModifyRocketMQEnvironmentRole](https://cloud.tencent.com/document/product/1179/107533)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4054,7 +4136,9 @@ func (c *Client) ModifyRole(request *ModifyRoleRequest) (response *ModifyRoleRes
 }
 
 // ModifyRole
-// 修改角色
+// 修改角色。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的修改角色接口文档见 [ModifyRocketMQRole](https://cloud.tencent.com/document/product/1179/107532)，修改角色的授权接口文档见 [ModifyRocketMQEnvironmentRole](https://cloud.tencent.com/document/product/1179/107533)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4097,7 +4181,9 @@ func NewModifyTopicResponse() (response *ModifyTopicResponse) {
 }
 
 // ModifyTopic
-// 修改主题属性
+// 修改主题属性。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的修改主题属性接口文档见 [ModifyRocketMQTopic](https://cloud.tencent.com/document/api/1179/63414)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4106,7 +4192,9 @@ func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopic
 }
 
 // ModifyTopic
-// 修改主题属性
+// 修改主题属性。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的修改主题属性接口文档见 [ModifyRocketMQTopic](https://cloud.tencent.com/document/api/1179/63414)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4251,7 +4339,9 @@ func NewResetConsumerGroupOffsetResponse() (response *ResetConsumerGroupOffsetRe
 }
 
 // ResetConsumerGroupOffset
-// 重置消费位点
+// 重置消费位点。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的重置消费位点接口文档见 [ResetRocketMQConsumerOffSet](https://cloud.tencent.com/document/api/1179/71662)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4260,7 +4350,9 @@ func (c *Client) ResetConsumerGroupOffset(request *ResetConsumerGroupOffsetReque
 }
 
 // ResetConsumerGroupOffset
-// 重置消费位点
+// 重置消费位点。
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的重置消费位点接口文档见 [ResetRocketMQConsumerOffSet](https://cloud.tencent.com/document/api/1179/71662)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

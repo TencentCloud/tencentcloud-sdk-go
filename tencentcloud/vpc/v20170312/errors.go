@@ -290,6 +290,9 @@ const (
 	// 网络计费模式没有更改。
 	INVALIDPARAMETERVALUE_INTERNETCHARGETYPENOTCHANGED = "InvalidParameterValue.InternetChargeTypeNotChanged"
 
+	// 参数非法
+	INVALIDPARAMETERVALUE_INVALID = "InvalidParameterValue.Invalid"
+
 	// 无效的带宽包计费方式。
 	INVALIDPARAMETERVALUE_INVALIDBANDWIDTHPACKAGECHARGETYPE = "InvalidParameterValue.InvalidBandwidthPackageChargeType"
 

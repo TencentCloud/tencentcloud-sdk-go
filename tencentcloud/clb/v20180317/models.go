@@ -4989,6 +4989,70 @@ func (r *DescribeRewriteResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTargetGroupInstanceStatusRequestParams struct {
+	// 目标组唯一id
+	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
+
+	// 目标组绑定的后端服务ip列表
+	TargetGroupInstanceIps []*string `json:"TargetGroupInstanceIps,omitnil,omitempty" name:"TargetGroupInstanceIps"`
+}
+
+type DescribeTargetGroupInstanceStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目标组唯一id
+	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
+
+	// 目标组绑定的后端服务ip列表
+	TargetGroupInstanceIps []*string `json:"TargetGroupInstanceIps,omitnil,omitempty" name:"TargetGroupInstanceIps"`
+}
+
+func (r *DescribeTargetGroupInstanceStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTargetGroupInstanceStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetGroupId")
+	delete(f, "TargetGroupInstanceIps")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTargetGroupInstanceStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTargetGroupInstanceStatusResponseParams struct {
+	// 健康检查后端rs状态列表
+	TargetGroupInstanceSet []*TargetGroupInstanceStatus `json:"TargetGroupInstanceSet,omitnil,omitempty" name:"TargetGroupInstanceSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTargetGroupInstanceStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTargetGroupInstanceStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeTargetGroupInstanceStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTargetGroupInstanceStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTargetGroupInstancesRequestParams struct {
 	// 过滤条件，当前支持按照 TargetGroupId，BindIP，InstanceId 多个条件组合过滤。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -9650,6 +9714,28 @@ type TargetGroupInstance struct {
 
 	// 目标组实例的新端口，全监听目标组不支持传此字段。
 	NewPort *uint64 `json:"NewPort,omitnil,omitempty" name:"NewPort"`
+}
+
+type TargetGroupInstanceStatus struct {
+	// 后端rs的IP
+	InstanceIp *string `json:"InstanceIp,omitnil,omitempty" name:"InstanceIp"`
+
+	// 健康检查状态，参数值及含义如下：
+	// ● on：表示探测中。
+	// ● off：表示健康检查关闭。
+	// ● health：表示健康。
+	// ● unhealth：表示异常。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 端口
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 网卡ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EniId *string `json:"EniId,omitnil,omitempty" name:"EniId"`
 }
 
 type TargetHealth struct {

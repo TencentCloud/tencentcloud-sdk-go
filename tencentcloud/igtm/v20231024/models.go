@@ -501,6 +501,112 @@ func (r *CreateMonitorResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePackageAndPayRequestParams struct {
+	// 下单类型：CREATE 新购；RENEW 续费；MODIFY 变配
+	DealType *string `json:"DealType,omitnil,omitempty" name:"DealType"`
+
+	// 套餐类型：STANDARD 标准版；ULTIMATE 旗舰版；TASK 任务探测
+	GoodsType *string `json:"GoodsType,omitnil,omitempty" name:"GoodsType"`
+
+	// 商品数量：STANDARD和ULTIMATE固定为1，TASK为任务探测数量。取值范围：1～10000
+	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// 自动续费：1 开启自动续费；2 关闭自动续费
+	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// 资源ID，续费和变配的时候需要传
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 套餐时长，以月为单位，创建和续费的时候需要传。取值范围：1～120
+	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 升级的套餐类型，暂时只支持传ULTIMATE，不支持降配
+	NewPackageType *string `json:"NewPackageType,omitnil,omitempty" name:"NewPackageType"`
+
+	// 是否自动选择代金券，1 是；0否，默认为0
+	AutoVoucher *uint64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+}
+
+type CreatePackageAndPayRequest struct {
+	*tchttp.BaseRequest
+	
+	// 下单类型：CREATE 新购；RENEW 续费；MODIFY 变配
+	DealType *string `json:"DealType,omitnil,omitempty" name:"DealType"`
+
+	// 套餐类型：STANDARD 标准版；ULTIMATE 旗舰版；TASK 任务探测
+	GoodsType *string `json:"GoodsType,omitnil,omitempty" name:"GoodsType"`
+
+	// 商品数量：STANDARD和ULTIMATE固定为1，TASK为任务探测数量。取值范围：1～10000
+	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// 自动续费：1 开启自动续费；2 关闭自动续费
+	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// 资源ID，续费和变配的时候需要传
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 套餐时长，以月为单位，创建和续费的时候需要传。取值范围：1～120
+	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 升级的套餐类型，暂时只支持传ULTIMATE，不支持降配
+	NewPackageType *string `json:"NewPackageType,omitnil,omitempty" name:"NewPackageType"`
+
+	// 是否自动选择代金券，1 是；0否，默认为0
+	AutoVoucher *uint64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+}
+
+func (r *CreatePackageAndPayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePackageAndPayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DealType")
+	delete(f, "GoodsType")
+	delete(f, "GoodsNum")
+	delete(f, "AutoRenew")
+	delete(f, "ResourceId")
+	delete(f, "TimeSpan")
+	delete(f, "NewPackageType")
+	delete(f, "AutoVoucher")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePackageAndPayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePackageAndPayResponseParams struct {
+	// 资源id列表，目前只会返回一个资源，取第一个值即可
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePackageAndPayResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePackageAndPayResponseParams `json:"Response"`
+}
+
+func (r *CreatePackageAndPayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePackageAndPayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateStrategyRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -2449,6 +2555,70 @@ func (r *ModifyMonitorResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPackageAutoRenewRequestParams struct {
+	// 资源ID，续费和变配的时候需要传
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 自动续费：1 开启自动续费；2 关闭自动续费
+	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+}
+
+type ModifyPackageAutoRenewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源ID，续费和变配的时候需要传
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 自动续费：1 开启自动续费；2 关闭自动续费
+	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+}
+
+func (r *ModifyPackageAutoRenewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPackageAutoRenewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "AutoRenew")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPackageAutoRenewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPackageAutoRenewResponseParams struct {
+	// 资源id列表，目前只会返回一个资源，取第一个值即可
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPackageAutoRenewResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPackageAutoRenewResponseParams `json:"Response"`
+}
+
+func (r *ModifyPackageAutoRenewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPackageAutoRenewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

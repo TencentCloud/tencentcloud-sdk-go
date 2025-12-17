@@ -4519,6 +4519,74 @@ func (c *Client) DescribeAdaptiveDynamicStreamingTemplatesWithContext(ctx contex
     return
 }
 
+func NewDescribeAigcUsageDataRequest() (request *DescribeAigcUsageDataRequest) {
+    request = &DescribeAigcUsageDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAigcUsageData")
+    
+    
+    return
+}
+
+func NewDescribeAigcUsageDataResponse() (response *DescribeAigcUsageDataResponse) {
+    response = &DescribeAigcUsageDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcUsageData
+// 该接口返回查询时间范围内AIGC的统计信息。
+//
+//    1. 可以查询最近365天内的AIGC统计数据。
+//
+//    2. 查询时间跨度不超过90天。
+//
+//    3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAigcUsageData(request *DescribeAigcUsageDataRequest) (response *DescribeAigcUsageDataResponse, err error) {
+    return c.DescribeAigcUsageDataWithContext(context.Background(), request)
+}
+
+// DescribeAigcUsageData
+// 该接口返回查询时间范围内AIGC的统计信息。
+//
+//    1. 可以查询最近365天内的AIGC统计数据。
+//
+//    2. 查询时间跨度不超过90天。
+//
+//    3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAigcUsageDataWithContext(ctx context.Context, request *DescribeAigcUsageDataRequest) (response *DescribeAigcUsageDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcUsageDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeAigcUsageData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcUsageData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcUsageDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllClassRequest() (request *DescribeAllClassRequest) {
     request = &DescribeAllClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8626,14 +8694,9 @@ func NewImportMediaKnowledgeResponse() (response *ImportMediaKnowledgeResponse) 
 // 用于将智能分析的结果导入到知识库中。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
-//  INVALIDPARAMETERVALUE_INDEX = "InvalidParameterValue.Index"
-//  INVALIDPARAMETERVALUE_ITEMID = "InvalidParameterValue.ItemId"
-//  INVALIDPARAMETERVALUE_ROUNDPLAYID = "InvalidParameterValue.RoundPlayId"
-//  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
-//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
-//  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
-//  LIMITEXCEEDED_ROUNDPLAYLIST = "LimitExceeded.RoundPlaylist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ImportMediaKnowledge(request *ImportMediaKnowledgeRequest) (response *ImportMediaKnowledgeResponse, err error) {
     return c.ImportMediaKnowledgeWithContext(context.Background(), request)
 }
@@ -8642,14 +8705,9 @@ func (c *Client) ImportMediaKnowledge(request *ImportMediaKnowledgeRequest) (res
 // 用于将智能分析的结果导入到知识库中。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
-//  INVALIDPARAMETERVALUE_INDEX = "InvalidParameterValue.Index"
-//  INVALIDPARAMETERVALUE_ITEMID = "InvalidParameterValue.ItemId"
-//  INVALIDPARAMETERVALUE_ROUNDPLAYID = "InvalidParameterValue.RoundPlayId"
-//  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
-//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
-//  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
-//  LIMITEXCEEDED_ROUNDPLAYLIST = "LimitExceeded.RoundPlaylist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ImportMediaKnowledgeWithContext(ctx context.Context, request *ImportMediaKnowledgeRequest) (response *ImportMediaKnowledgeResponse, err error) {
     if request == nil {
         request = NewImportMediaKnowledgeRequest()
@@ -12756,30 +12814,8 @@ func NewSearchMediaBySemanticsResponse() (response *SearchMediaBySemanticsRespon
 // 使用自然语言对媒体进行语义搜索。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_GETMEDIALISTERROR = "InternalError.GetMediaListError"
-//  INVALIDPARAMETERVALUE_CATEGORIES = "InvalidParameterValue.Categories"
-//  INVALIDPARAMETERVALUE_CLASSIDS = "InvalidParameterValue.ClassIds"
-//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
-//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
-//  INVALIDPARAMETERVALUE_NAMEPREFIXES = "InvalidParameterValue.NamePrefixes"
-//  INVALIDPARAMETERVALUE_NAMES = "InvalidParameterValue.Names"
-//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
-//  INVALIDPARAMETERVALUE_SORT = "InvalidParameterValue.Sort"
-//  INVALIDPARAMETERVALUE_SOURCETYPE = "InvalidParameterValue.SourceType"
-//  INVALIDPARAMETERVALUE_SOURCETYPES = "InvalidParameterValue.SourceTypes"
-//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
-//  INVALIDPARAMETERVALUE_STORAGEREGIONS = "InvalidParameterValue.StorageRegions"
-//  INVALIDPARAMETERVALUE_STREAMIDS = "InvalidParameterValue.StreamIds"
-//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
-//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
-//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
-//  INVALIDPARAMETERVALUE_TYPES = "InvalidParameterValue.Types"
-//  INVALIDPARAMETERVALUE_VIDS = "InvalidParameterValue.Vids"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) SearchMediaBySemantics(request *SearchMediaBySemanticsRequest) (response *SearchMediaBySemanticsResponse, err error) {
     return c.SearchMediaBySemanticsWithContext(context.Background(), request)
 }
@@ -12788,30 +12824,8 @@ func (c *Client) SearchMediaBySemantics(request *SearchMediaBySemanticsRequest) 
 // 使用自然语言对媒体进行语义搜索。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_GETMEDIALISTERROR = "InternalError.GetMediaListError"
-//  INVALIDPARAMETERVALUE_CATEGORIES = "InvalidParameterValue.Categories"
-//  INVALIDPARAMETERVALUE_CLASSIDS = "InvalidParameterValue.ClassIds"
-//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
-//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
-//  INVALIDPARAMETERVALUE_NAMEPREFIXES = "InvalidParameterValue.NamePrefixes"
-//  INVALIDPARAMETERVALUE_NAMES = "InvalidParameterValue.Names"
-//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
-//  INVALIDPARAMETERVALUE_SORT = "InvalidParameterValue.Sort"
-//  INVALIDPARAMETERVALUE_SOURCETYPE = "InvalidParameterValue.SourceType"
-//  INVALIDPARAMETERVALUE_SOURCETYPES = "InvalidParameterValue.SourceTypes"
-//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
-//  INVALIDPARAMETERVALUE_STORAGEREGIONS = "InvalidParameterValue.StorageRegions"
-//  INVALIDPARAMETERVALUE_STREAMIDS = "InvalidParameterValue.StreamIds"
-//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
-//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
-//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
-//  INVALIDPARAMETERVALUE_TYPES = "InvalidParameterValue.Types"
-//  INVALIDPARAMETERVALUE_VIDS = "InvalidParameterValue.Vids"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) SearchMediaBySemanticsWithContext(ctx context.Context, request *SearchMediaBySemanticsRequest) (response *SearchMediaBySemanticsResponse, err error) {
     if request == nil {
         request = NewSearchMediaBySemanticsRequest()
@@ -12852,30 +12866,8 @@ func NewSetCLSPushTargetResponse() (response *SetCLSPushTargetResponse) {
 // 为点播域名设置投递 CLS 的目标。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_GETMEDIALISTERROR = "InternalError.GetMediaListError"
-//  INVALIDPARAMETERVALUE_CATEGORIES = "InvalidParameterValue.Categories"
-//  INVALIDPARAMETERVALUE_CLASSIDS = "InvalidParameterValue.ClassIds"
-//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
-//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
-//  INVALIDPARAMETERVALUE_NAMEPREFIXES = "InvalidParameterValue.NamePrefixes"
-//  INVALIDPARAMETERVALUE_NAMES = "InvalidParameterValue.Names"
-//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
-//  INVALIDPARAMETERVALUE_SORT = "InvalidParameterValue.Sort"
-//  INVALIDPARAMETERVALUE_SOURCETYPE = "InvalidParameterValue.SourceType"
-//  INVALIDPARAMETERVALUE_SOURCETYPES = "InvalidParameterValue.SourceTypes"
-//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
-//  INVALIDPARAMETERVALUE_STORAGEREGIONS = "InvalidParameterValue.StorageRegions"
-//  INVALIDPARAMETERVALUE_STREAMIDS = "InvalidParameterValue.StreamIds"
-//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
-//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
-//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
-//  INVALIDPARAMETERVALUE_TYPES = "InvalidParameterValue.Types"
-//  INVALIDPARAMETERVALUE_VIDS = "InvalidParameterValue.Vids"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) SetCLSPushTarget(request *SetCLSPushTargetRequest) (response *SetCLSPushTargetResponse, err error) {
     return c.SetCLSPushTargetWithContext(context.Background(), request)
 }
@@ -12884,30 +12876,8 @@ func (c *Client) SetCLSPushTarget(request *SetCLSPushTargetRequest) (response *S
 // 为点播域名设置投递 CLS 的目标。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_GETMEDIALISTERROR = "InternalError.GetMediaListError"
-//  INVALIDPARAMETERVALUE_CATEGORIES = "InvalidParameterValue.Categories"
-//  INVALIDPARAMETERVALUE_CLASSIDS = "InvalidParameterValue.ClassIds"
-//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
-//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
-//  INVALIDPARAMETERVALUE_NAMEPREFIXES = "InvalidParameterValue.NamePrefixes"
-//  INVALIDPARAMETERVALUE_NAMES = "InvalidParameterValue.Names"
-//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
-//  INVALIDPARAMETERVALUE_SORT = "InvalidParameterValue.Sort"
-//  INVALIDPARAMETERVALUE_SOURCETYPE = "InvalidParameterValue.SourceType"
-//  INVALIDPARAMETERVALUE_SOURCETYPES = "InvalidParameterValue.SourceTypes"
-//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
-//  INVALIDPARAMETERVALUE_STORAGEREGIONS = "InvalidParameterValue.StorageRegions"
-//  INVALIDPARAMETERVALUE_STREAMIDS = "InvalidParameterValue.StreamIds"
-//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
-//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
-//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
-//  INVALIDPARAMETERVALUE_TYPES = "InvalidParameterValue.Types"
-//  INVALIDPARAMETERVALUE_VIDS = "InvalidParameterValue.Vids"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) SetCLSPushTargetWithContext(ctx context.Context, request *SetCLSPushTargetRequest) (response *SetCLSPushTargetResponse, err error) {
     if request == nil {
         request = NewSetCLSPushTargetRequest()

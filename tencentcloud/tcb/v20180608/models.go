@@ -24,8 +24,14 @@ type ActivityRecordItem struct {
 	// 用户uin
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 活动id
 	ActivityId *int64 `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
+
+	// 活动名称（唯一英文标识）
+	ActivityName *string `json:"ActivityName,omitnil,omitempty" name:"ActivityName"`
 
 	// 自定义状态码
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -36,8 +42,11 @@ type ActivityRecordItem struct {
 	// 整型子状态码
 	SubStatusInt *int64 `json:"SubStatusInt,omitnil,omitempty" name:"SubStatusInt"`
 
-	// 是否软删除
+	// 是否已删除
 	IsDeleted *bool `json:"IsDeleted,omitnil,omitempty" name:"IsDeleted"`
+
+	// 活动参与时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type AuthDomain struct {

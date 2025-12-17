@@ -10367,6 +10367,62 @@ func (c *Client) DescribeTaskDetailDsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTaskInstancesStatusRequest() (request *DescribeTaskInstancesStatusRequest) {
+    request = &DescribeTaskInstancesStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskInstancesStatus")
+    
+    
+    return
+}
+
+func NewDescribeTaskInstancesStatusResponse() (response *DescribeTaskInstancesStatusResponse) {
+    response = &DescribeTaskInstancesStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskInstancesStatus
+// 分组获取编排空间调试任务实例状态信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeTaskInstancesStatus(request *DescribeTaskInstancesStatusRequest) (response *DescribeTaskInstancesStatusResponse, err error) {
+    return c.DescribeTaskInstancesStatusWithContext(context.Background(), request)
+}
+
+// DescribeTaskInstancesStatus
+// 分组获取编排空间调试任务实例状态信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeTaskInstancesStatusWithContext(ctx context.Context, request *DescribeTaskInstancesStatusRequest) (response *DescribeTaskInstancesStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskInstancesStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "DescribeTaskInstancesStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskInstancesStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskInstancesStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskLineageRequest() (request *DescribeTaskLineageRequest) {
     request = &DescribeTaskLineageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10391,7 +10447,7 @@ func NewDescribeTaskLineageResponse() (response *DescribeTaskLineageResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeTaskLineage(request *DescribeTaskLineageRequest) (response *DescribeTaskLineageResponse, err error) {
@@ -10403,7 +10459,7 @@ func (c *Client) DescribeTaskLineage(request *DescribeTaskLineageRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeTaskLineageWithContext(ctx context.Context, request *DescribeTaskLineageRequest) (response *DescribeTaskLineageResponse, err error) {

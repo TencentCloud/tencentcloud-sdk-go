@@ -264,8 +264,14 @@ type CosBackup struct {
 	// 自动备份执行时间（精确到小时）, e.g. "22:00"
 	BackupTime *string `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
 
+	// 备份快照前缀
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
 	// 0 腾讯云仓库; 1 客户仓库
 	EsRepositoryType *uint64 `json:"EsRepositoryType,omitnil,omitempty" name:"EsRepositoryType"`
+
+	// 托管快照仓库名称
+	PaasEsRepository *string `json:"PaasEsRepository,omitnil,omitempty" name:"PaasEsRepository"`
 
 	// 客户快照仓库名称
 	UserEsRepository *string `json:"UserEsRepository,omitnil,omitempty" name:"UserEsRepository"`
@@ -275,6 +281,30 @@ type CosBackup struct {
 
 	// 自动备份频率单位小时
 	AutoBackupInterval *uint64 `json:"AutoBackupInterval,omitnil,omitempty" name:"AutoBackupInterval"`
+
+	// 备份锁定 0 不锁定; 1 锁定
+	CosRetention *uint64 `json:"CosRetention,omitnil,omitempty" name:"CosRetention"`
+
+	// 锁定截止日期 2022-12-10T08:34:48.000Z
+	RetainUntilDate *string `json:"RetainUntilDate,omitnil,omitempty" name:"RetainUntilDate"`
+
+	// 锁定宽限期
+	RetentionGraceTime *uint64 `json:"RetentionGraceTime,omitnil,omitempty" name:"RetentionGraceTime"`
+
+	// 跨地域备份 0 不跨地域; 1 跨地域
+	RemoteCos *uint64 `json:"RemoteCos,omitnil,omitempty" name:"RemoteCos"`
+
+	// 跨地域备份地域名称 ap-guangzhou
+	RemoteCosRegion *string `json:"RemoteCosRegion,omitnil,omitempty" name:"RemoteCosRegion"`
+
+	// 策略名称
+	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
+
+	// 备份索引列表，如果不填表示备份所有索引
+	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
+
+	// 策略创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type CosSnapShotInfo struct {
@@ -317,6 +347,30 @@ type CreateClusterSnapshotRequestParams struct {
 
 	// 索引名称
 	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
+
+	// 0 腾讯云仓库; 1 客户仓库
+	EsRepositoryType *uint64 `json:"EsRepositoryType,omitnil,omitempty" name:"EsRepositoryType"`
+
+	// 客户快照仓库名称
+	UserEsRepository *string `json:"UserEsRepository,omitnil,omitempty" name:"UserEsRepository"`
+
+	// 快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+	StorageDuration *uint64 `json:"StorageDuration,omitnil,omitempty" name:"StorageDuration"`
+
+	// 备份锁定 0 不锁定; 1 锁定
+	CosRetention *uint64 `json:"CosRetention,omitnil,omitempty" name:"CosRetention"`
+
+	// 锁定截止日期 2022-12-10T08:34:48.000Z
+	RetainUntilDate *string `json:"RetainUntilDate,omitnil,omitempty" name:"RetainUntilDate"`
+
+	// 锁定宽限期,单位天
+	RetentionGraceTime *uint64 `json:"RetentionGraceTime,omitnil,omitempty" name:"RetentionGraceTime"`
+
+	// 跨地域备份 0 不跨地域; 1 跨地域
+	RemoteCos *uint64 `json:"RemoteCos,omitnil,omitempty" name:"RemoteCos"`
+
+	// 跨地域备份地域名称 ap-guangzhou
+	RemoteCosRegion *string `json:"RemoteCosRegion,omitnil,omitempty" name:"RemoteCosRegion"`
 }
 
 type CreateClusterSnapshotRequest struct {
@@ -330,6 +384,30 @@ type CreateClusterSnapshotRequest struct {
 
 	// 索引名称
 	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
+
+	// 0 腾讯云仓库; 1 客户仓库
+	EsRepositoryType *uint64 `json:"EsRepositoryType,omitnil,omitempty" name:"EsRepositoryType"`
+
+	// 客户快照仓库名称
+	UserEsRepository *string `json:"UserEsRepository,omitnil,omitempty" name:"UserEsRepository"`
+
+	// 快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+	StorageDuration *uint64 `json:"StorageDuration,omitnil,omitempty" name:"StorageDuration"`
+
+	// 备份锁定 0 不锁定; 1 锁定
+	CosRetention *uint64 `json:"CosRetention,omitnil,omitempty" name:"CosRetention"`
+
+	// 锁定截止日期 2022-12-10T08:34:48.000Z
+	RetainUntilDate *string `json:"RetainUntilDate,omitnil,omitempty" name:"RetainUntilDate"`
+
+	// 锁定宽限期,单位天
+	RetentionGraceTime *uint64 `json:"RetentionGraceTime,omitnil,omitempty" name:"RetentionGraceTime"`
+
+	// 跨地域备份 0 不跨地域; 1 跨地域
+	RemoteCos *uint64 `json:"RemoteCos,omitnil,omitempty" name:"RemoteCos"`
+
+	// 跨地域备份地域名称 ap-guangzhou
+	RemoteCosRegion *string `json:"RemoteCosRegion,omitnil,omitempty" name:"RemoteCosRegion"`
 }
 
 func (r *CreateClusterSnapshotRequest) ToJsonString() string {
@@ -347,6 +425,14 @@ func (r *CreateClusterSnapshotRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "SnapshotName")
 	delete(f, "Indices")
+	delete(f, "EsRepositoryType")
+	delete(f, "UserEsRepository")
+	delete(f, "StorageDuration")
+	delete(f, "CosRetention")
+	delete(f, "RetainUntilDate")
+	delete(f, "RetentionGraceTime")
+	delete(f, "RemoteCos")
+	delete(f, "RemoteCosRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterSnapshotRequest has unknown keys!", "")
 	}
@@ -6862,6 +6948,62 @@ type Snapshots struct {
 	// 是否用户备份
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserBackUp *string `json:"UserBackUp,omitnil,omitempty" name:"UserBackUp"`
+
+	// 0 腾讯云仓库; 1 客户仓库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsRepositoryType *uint64 `json:"EsRepositoryType,omitnil,omitempty" name:"EsRepositoryType"`
+
+	// 托管快照仓库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaasEsRepository *string `json:"PaasEsRepository,omitnil,omitempty" name:"PaasEsRepository"`
+
+	// 客户快照仓库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserEsRepository *string `json:"UserEsRepository,omitnil,omitempty" name:"UserEsRepository"`
+
+	// 快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageDuration *uint64 `json:"StorageDuration,omitnil,omitempty" name:"StorageDuration"`
+
+	// 自动备份频率, 如果是0,则等效24
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoBackupInterval *uint64 `json:"AutoBackupInterval,omitnil,omitempty" name:"AutoBackupInterval"`
+
+	// 备份锁定 0 不锁定; 1 锁定
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosRetention *uint64 `json:"CosRetention,omitnil,omitempty" name:"CosRetention"`
+
+	// 锁定截止日期 2022-12-10T08:34:48.000Z
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetainUntilDate *string `json:"RetainUntilDate,omitnil,omitempty" name:"RetainUntilDate"`
+
+	// 锁定宽限期,单位天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetentionGraceTime *uint64 `json:"RetentionGraceTime,omitnil,omitempty" name:"RetentionGraceTime"`
+
+	// 是否已经备份锁定 0 不锁定; 1 锁定
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLocked *uint64 `json:"IsLocked,omitnil,omitempty" name:"IsLocked"`
+
+	// 跨地域备份 0 不跨地域; 1 跨地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteCos *uint64 `json:"RemoteCos,omitnil,omitempty" name:"RemoteCos"`
+
+	// 跨地域备份地域名称 ap-guangzhou
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteCosRegion *string `json:"RemoteCosRegion,omitnil,omitempty" name:"RemoteCosRegion"`
+
+	// 备份加密 0 不加密; 1 加密
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosEncryption *uint64 `json:"CosEncryption,omitnil,omitempty" name:"CosEncryption"`
+
+	// kms密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KmsKey *string `json:"KmsKey,omitnil,omitempty" name:"KmsKey"`
+
+	// 策略名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
 }
 
 // Predefined struct for user

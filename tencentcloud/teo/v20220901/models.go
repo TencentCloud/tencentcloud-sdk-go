@@ -12598,7 +12598,7 @@ type DescribeTopL7AnalysisDataRequestParams struct {
 	// <li> l7Flow_request_url：按 URL Path 维度统计 L7 访问请求数指标; </li>
 	// <li> l7Flow_request_resourceType：按资源类型维度统计 L7 访问请求数指标；</li>
 	// <li> l7Flow_request_sip：按客户端 IP 维度统计 L7 访问请求数指标；</li>
-	// <li> l7Flow_request_referer：按 Referer 维度统计 L7 访问请求数指标；</li>
+	// <li> l7Flow_request_referers：按 Referer 维度统计 L7 访问请求数指标；</li>
 	// <li> l7Flow_request_ua_device：按设备类型维度统计 L7 访问请求数指标; </li>
 	// <li> l7Flow_request_ua_browser：按浏览器类型维度统计 L7 访问请求数指标；</li>
 	// <li> l7Flow_request_ua_os：按操作系统类型维度统计 L7 访问请求数指标；</li>
@@ -12651,7 +12651,7 @@ type DescribeTopL7AnalysisDataRequest struct {
 	// <li> l7Flow_request_url：按 URL Path 维度统计 L7 访问请求数指标; </li>
 	// <li> l7Flow_request_resourceType：按资源类型维度统计 L7 访问请求数指标；</li>
 	// <li> l7Flow_request_sip：按客户端 IP 维度统计 L7 访问请求数指标；</li>
-	// <li> l7Flow_request_referer：按 Referer 维度统计 L7 访问请求数指标；</li>
+	// <li> l7Flow_request_referers：按 Referer 维度统计 L7 访问请求数指标；</li>
 	// <li> l7Flow_request_ua_device：按设备类型维度统计 L7 访问请求数指标; </li>
 	// <li> l7Flow_request_ua_browser：按浏览器类型维度统计 L7 访问请求数指标；</li>
 	// <li> l7Flow_request_ua_os：按操作系统类型维度统计 L7 访问请求数指标；</li>
