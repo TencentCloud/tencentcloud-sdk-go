@@ -65,11 +65,11 @@ func NewAdvertiseOCRResponse() (response *AdvertiseOCRResponse) {
 }
 
 // AdvertiseOCR
-// 本接口支持广告商品图片内文字的检测和识别，返回文本框位置与文字内容。
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/33526">通用印刷体识别</a>。</b>
 //
 // 
 //
-// 产品优势：针对广告商品图片普遍存在较多繁体字、艺术字的特点，进行了识别能力的增强。支持中英文、横排、竖排以及倾斜场景文字识别。文字识别的召回率和准确率能达到96%以上。
+// 支持广告商品图片内文字的检测和识别，返回文本框位置与文字内容。支持中英文、横排、竖排以及倾斜场景文字识别，支持90度、180度、270度翻转以及倾斜场景文字识别，具有较高召回率和准确率。
 //
 // 
 //
@@ -95,11 +95,11 @@ func (c *Client) AdvertiseOCR(request *AdvertiseOCRRequest) (response *Advertise
 }
 
 // AdvertiseOCR
-// 本接口支持广告商品图片内文字的检测和识别，返回文本框位置与文字内容。
+// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/33526">通用印刷体识别</a>。</b>
 //
 // 
 //
-// 产品优势：针对广告商品图片普遍存在较多繁体字、艺术字的特点，进行了识别能力的增强。支持中英文、横排、竖排以及倾斜场景文字识别。文字识别的召回率和准确率能达到96%以上。
+// 支持广告商品图片内文字的检测和识别，返回文本框位置与文字内容。支持中英文、横排、竖排以及倾斜场景文字识别，支持90度、180度、270度翻转以及倾斜场景文字识别，具有较高召回率和准确率。
 //
 // 
 //
@@ -5161,7 +5161,7 @@ func NewRecognizeEncryptedIDCardOCRResponse() (response *RecognizeEncryptedIDCar
 //
 // 
 //
-// 本接口支持中国大陆居民二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限，识别准确度达到99%以上。
+// 本接口支持中国大陆居民二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限，识别速度快、准确度高。
 //
 // 
 //
@@ -5290,7 +5290,7 @@ func (c *Client) RecognizeEncryptedIDCardOCR(request *RecognizeEncryptedIDCardOC
 //
 // 
 //
-// 本接口支持中国大陆居民二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限，识别准确度达到99%以上。
+// 本接口支持中国大陆居民二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限，识别速度快、准确度高。
 //
 // 
 //
@@ -5991,7 +5991,17 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //         <tr>
 //
-//           <td> OtherInvoice </td>
+//            <td> ElectronicTollSummary </td>
+//
+//           <td> 通行费电子票据汇总单 </td>
+//
+//           <td> 26 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//            <td> OtherInvoice </td>
 //
 //           <td> 其他发票 </td>
 //
@@ -6412,7 +6422,17 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //         <tr>
 //
-//           <td> OtherInvoice </td>
+//            <td> ElectronicTollSummary </td>
+//
+//           <td> 通行费电子票据汇总单 </td>
+//
+//           <td> 26 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//            <td> OtherInvoice </td>
 //
 //           <td> 其他发票 </td>
 //

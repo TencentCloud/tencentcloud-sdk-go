@@ -13779,6 +13779,9 @@ type ModifyServerlessStrategyRequestParams struct {
 
 	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
 	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
+
+	// 升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改
+	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 }
 
 type ModifyServerlessStrategyRequest struct {
@@ -13821,6 +13824,9 @@ type ModifyServerlessStrategyRequest struct {
 
 	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
 	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
+
+	// 升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改
+	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 }
 
 func (r *ModifyServerlessStrategyRequest) ToJsonString() string {
@@ -13847,6 +13853,7 @@ func (r *ModifyServerlessStrategyRequest) FromJsonString(s string) error {
 	delete(f, "MinRoCount")
 	delete(f, "MaxRoCount")
 	delete(f, "AutoArchive")
+	delete(f, "UpgradeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServerlessStrategyRequest has unknown keys!", "")
 	}
@@ -13856,7 +13863,12 @@ func (r *ModifyServerlessStrategyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyServerlessStrategyResponseParams struct {
 	// 异步流程id
+	//
+	// Deprecated: FlowId is deprecated.
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 任务id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

@@ -276,6 +276,9 @@ type CosBackup struct {
 	// 客户快照仓库名称
 	UserEsRepository *string `json:"UserEsRepository,omitnil,omitempty" name:"UserEsRepository"`
 
+	// cos存储文件夹目录
+	CosBasePath *string `json:"CosBasePath,omitnil,omitempty" name:"CosBasePath"`
+
 	// 快照存储周期 单位天
 	StorageDuration *uint64 `json:"StorageDuration,omitnil,omitempty" name:"StorageDuration"`
 

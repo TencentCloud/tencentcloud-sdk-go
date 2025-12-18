@@ -335,6 +335,9 @@ type DataSourceDetail struct {
 	// DB来源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbSourceType *string `json:"DbSourceType,omitnil,omitempty" name:"DbSourceType"`
+
+	// 模型预览状态开关
+	StagingSwitch *bool `json:"StagingSwitch,omitnil,omitempty" name:"StagingSwitch"`
 }
 
 type DataSourceDetailItems struct {

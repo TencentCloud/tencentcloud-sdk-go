@@ -213,6 +213,78 @@ func (c *Client) AssociateDDoSEipLoadBalancerWithContext(ctx context.Context, re
     return
 }
 
+func NewCreateBgpInstanceRequest() (request *CreateBgpInstanceRequest) {
+    request = &CreateBgpInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("antiddos", APIVersion, "CreateBgpInstance")
+    
+    
+    return
+}
+
+func NewCreateBgpInstanceResponse() (response *CreateBgpInstanceResponse) {
+    response = &CreateBgpInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBgpInstance
+// 通过API 购买高防包接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SPECIALPARAMETERFORSPECIALACCOUNT = "InvalidParameter.SpecialParameterForSpecialAccount"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BANDWIDTHNOTSUPPORTED = "UnsupportedOperation.BandwidthNotSupported"
+//  UNSUPPORTEDOPERATION_BASICPROTECTBANDWIDTHNOTSUPPORTED = "UnsupportedOperation.BasicProtectBandwidthNotSupported"
+//  UNSUPPORTEDOPERATION_ELASTICPROTECTBANDWIDTHNOTSUPPORTED = "UnsupportedOperation.ElasticProtectBandwidthNotSupported"
+//  UNSUPPORTEDOPERATION_INSTANCECHARGETYPENOTSUPPORTED = "UnsupportedOperation.InstanceChargeTypeNotSupported"
+//  UNSUPPORTEDOPERATION_PERIODNOTSUPPORTED = "UnsupportedOperation.PeriodNotSupported"
+//  UNSUPPORTEDOPERATION_PROTECTIPCOUNTNOTSUPPORTED = "UnsupportedOperation.ProtectIpCountNotSupported"
+//  UNSUPPORTEDOPERATION_REGIONNOTSUPPORTED = "UnsupportedOperation.RegionNotSupported"
+func (c *Client) CreateBgpInstance(request *CreateBgpInstanceRequest) (response *CreateBgpInstanceResponse, err error) {
+    return c.CreateBgpInstanceWithContext(context.Background(), request)
+}
+
+// CreateBgpInstance
+// 通过API 购买高防包接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SPECIALPARAMETERFORSPECIALACCOUNT = "InvalidParameter.SpecialParameterForSpecialAccount"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BANDWIDTHNOTSUPPORTED = "UnsupportedOperation.BandwidthNotSupported"
+//  UNSUPPORTEDOPERATION_BASICPROTECTBANDWIDTHNOTSUPPORTED = "UnsupportedOperation.BasicProtectBandwidthNotSupported"
+//  UNSUPPORTEDOPERATION_ELASTICPROTECTBANDWIDTHNOTSUPPORTED = "UnsupportedOperation.ElasticProtectBandwidthNotSupported"
+//  UNSUPPORTEDOPERATION_INSTANCECHARGETYPENOTSUPPORTED = "UnsupportedOperation.InstanceChargeTypeNotSupported"
+//  UNSUPPORTEDOPERATION_PERIODNOTSUPPORTED = "UnsupportedOperation.PeriodNotSupported"
+//  UNSUPPORTEDOPERATION_PROTECTIPCOUNTNOTSUPPORTED = "UnsupportedOperation.ProtectIpCountNotSupported"
+//  UNSUPPORTEDOPERATION_REGIONNOTSUPPORTED = "UnsupportedOperation.RegionNotSupported"
+func (c *Client) CreateBgpInstanceWithContext(ctx context.Context, request *CreateBgpInstanceRequest) (response *CreateBgpInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateBgpInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "CreateBgpInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBgpInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBgpInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBlackWhiteIpListRequest() (request *CreateBlackWhiteIpListRequest) {
     request = &CreateBlackWhiteIpListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2543,6 +2615,56 @@ func (c *Client) DescribeBgpBizTrendWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeBgpBizTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBgpInstancesRequest() (request *DescribeBgpInstancesRequest) {
+    request = &DescribeBgpInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeBgpInstances")
+    
+    
+    return
+}
+
+func NewDescribeBgpInstancesResponse() (response *DescribeBgpInstancesResponse) {
+    response = &DescribeBgpInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBgpInstances
+// 购买后，查询购买的高防包实例信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+func (c *Client) DescribeBgpInstances(request *DescribeBgpInstancesRequest) (response *DescribeBgpInstancesResponse, err error) {
+    return c.DescribeBgpInstancesWithContext(context.Background(), request)
+}
+
+// DescribeBgpInstances
+// 购买后，查询购买的高防包实例信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+func (c *Client) DescribeBgpInstancesWithContext(ctx context.Context, request *DescribeBgpInstancesRequest) (response *DescribeBgpInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBgpInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeBgpInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBgpInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBgpInstancesResponse()
     err = c.Send(request, response)
     return
 }

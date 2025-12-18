@@ -15590,6 +15590,9 @@ type TopicInfo struct {
 	// HotPeriod=0为没有开启日志沉降。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
+	// kms-cls服务秘钥id
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
 	// 主题类型。
 	// - 0: 日志主题 
 	// - 1: 指标主题

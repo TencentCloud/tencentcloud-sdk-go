@@ -3317,6 +3317,9 @@ type Deal struct {
 	// 订单对应的资源id, 查询参数Limit超过200，将返回null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId []*string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 订单对应的可用区Id
+	ZoneCode *string `json:"ZoneCode,omitnil,omitempty" name:"ZoneCode"`
 }
 
 // Predefined struct for user
@@ -8256,6 +8259,9 @@ type DescribeDealsByCondRequestParams struct {
 
 	// 资源id
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 订单状态
+	StatusSet []*int64 `json:"StatusSet,omitnil,omitempty" name:"StatusSet"`
 }
 
 type DescribeDealsByCondRequest struct {
@@ -8296,6 +8302,9 @@ type DescribeDealsByCondRequest struct {
 
 	// 资源id
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 订单状态
+	StatusSet []*int64 `json:"StatusSet,omitnil,omitempty" name:"StatusSet"`
 }
 
 func (r *DescribeDealsByCondRequest) ToJsonString() string {
@@ -8318,6 +8327,7 @@ func (r *DescribeDealsByCondRequest) FromJsonString(s string) error {
 	delete(f, "OrderId")
 	delete(f, "BigDealId")
 	delete(f, "ResourceId")
+	delete(f, "StatusSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDealsByCondRequest has unknown keys!", "")
 	}

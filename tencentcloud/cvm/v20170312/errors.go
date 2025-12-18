@@ -494,6 +494,9 @@ const (
 	// 该实例配置来自免费升配活动，暂不支持3个月内进行降配。
 	INVALIDPARAMETERVALUE_INVALIDINSTANCESOURCE = "InvalidParameterValue.InvalidInstanceSource"
 
+	// 该机型不支持周期合约
+	INVALIDPARAMETERVALUE_INVALIDINSTANCETYPEPERIODICCONTRACT = "InvalidParameterValue.InvalidInstanceTypePeriodicContract"
+
 	// 指定机型不支持包销付费模式。
 	INVALIDPARAMETERVALUE_INVALIDINSTANCETYPEUNDERWRITE = "InvalidParameterValue.InvalidInstanceTypeUnderwrite"
 

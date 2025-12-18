@@ -26,11 +26,17 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 账户余额不足
+	FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 这个参数需要开启白名单才可以使用
+	INVALIDPARAMETER_SPECIALPARAMETERFORSPECIALACCOUNT = "InvalidParameter.SpecialParameterForSpecialAccount"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -70,4 +76,25 @@ const (
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
+
+	// 不支持此业务带宽
+	UNSUPPORTEDOPERATION_BANDWIDTHNOTSUPPORTED = "UnsupportedOperation.BandwidthNotSupported"
+
+	// 不支持此保底防护带宽的取值
+	UNSUPPORTEDOPERATION_BASICPROTECTBANDWIDTHNOTSUPPORTED = "UnsupportedOperation.BasicProtectBandwidthNotSupported"
+
+	// 不支持此弹性带宽的取值
+	UNSUPPORTEDOPERATION_ELASTICPROTECTBANDWIDTHNOTSUPPORTED = "UnsupportedOperation.ElasticProtectBandwidthNotSupported"
+
+	// 不支持此种付费类型
+	UNSUPPORTEDOPERATION_INSTANCECHARGETYPENOTSUPPORTED = "UnsupportedOperation.InstanceChargeTypeNotSupported"
+
+	// 不支持该计费周期，参考对应高防包支持的计费周期
+	UNSUPPORTEDOPERATION_PERIODNOTSUPPORTED = "UnsupportedOperation.PeriodNotSupported"
+
+	// 不支持该防护IP数量取值
+	UNSUPPORTEDOPERATION_PROTECTIPCOUNTNOTSUPPORTED = "UnsupportedOperation.ProtectIpCountNotSupported"
+
+	// 不支持此地域
+	UNSUPPORTEDOPERATION_REGIONNOTSUPPORTED = "UnsupportedOperation.RegionNotSupported"
 )

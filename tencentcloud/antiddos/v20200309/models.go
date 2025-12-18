@@ -536,6 +536,44 @@ type BGPInstance struct {
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 
+type BGPInstanceInfo struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 续费周期相关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
+
+	// 企业版高防包配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnterprisePackageConfig *EnterprisePackageConfig `json:"EnterprisePackageConfig,omitnil,omitempty" name:"EnterprisePackageConfig"`
+
+	// 标准版高防包配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StandardPackageConfig *StandardPackageConfig `json:"StandardPackageConfig,omitnil,omitempty" name:"StandardPackageConfig"`
+
+	// 标准版2.0高防包配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StandardPlusPackageConfig *StandardPlusPackageConfig `json:"StandardPlusPackageConfig,omitnil,omitempty" name:"StandardPlusPackageConfig"`
+
+	// tag信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagInfoList []*TagInfo `json:"TagInfoList,omitnil,omitempty" name:"TagInfoList"`
+
+	// 高防包类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// 数量1
+	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// 付费方式
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// 无实际意义，创建时如果为true，只进行参数校验，默认为false
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+}
+
 type BGPInstanceSpecification struct {
 	// 保底防护峰值，单位Gbps
 	ProtectBandwidth *uint64 `json:"ProtectBandwidth,omitnil,omitempty" name:"ProtectBandwidth"`
@@ -891,6 +929,119 @@ type ConnectLimitRelation struct {
 
 	// 连接抑制关联的实例信息
 	InstanceDetailList []*InstanceRelation `json:"InstanceDetailList,omitnil,omitempty" name:"InstanceDetailList"`
+}
+
+// Predefined struct for user
+type CreateBgpInstanceRequestParams struct {
+	// 付费类型：付费模式：PREPAID 预付费 POSTPAID_BY_MONTH 后付费
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// 高防包类型：高防包类型，Enterprise(企业版) Standard(标准版) StandardPlus(标准版2.0)
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// 购买高防包的数量，一次购买数量不超过10
+	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// { "Period": 3, "RenewFlag": "NOTIFY_AND_AUTO_RENEW" }
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
+
+	// { "Region": "ap-guangzhou", "ProtectIpCount": 1, "BasicProtectBandwidth": 300, "Bandwidth": 100, "ElasticProtectLimit": 0, "ElasticBandwidthFlag": true }
+	EnterprisePackageConfig *EnterprisePackageConfig `json:"EnterprisePackageConfig,omitnil,omitempty" name:"EnterprisePackageConfig"`
+
+	// { "Region": "ap-guangzhou", "ProtectIpCount": 1, "BasicProtectBandwidth": 300, "Bandwidth": 100, "ElasticProtectLimit": 0, "ElasticBandwidthFlag": true }
+	StandardPackageConfig *StandardPackageConfig `json:"StandardPackageConfig,omitnil,omitempty" name:"StandardPackageConfig"`
+
+	// { "Region": "ap-guangzhou", "ProtectCount": "TWO_TIMES", "ProtectIpCount": 1, "Bandwidth": 100, "ElasticBandwidthFlag": true }
+	StandardPlusPackageConfig *StandardPlusPackageConfig `json:"StandardPlusPackageConfig,omitnil,omitempty" name:"StandardPlusPackageConfig"`
+
+	// [ { "TagKey": "beal-test",                 "TagValue": "beal-test"               }             ]
+	TagInfoList []*TagInfo `json:"TagInfoList,omitnil,omitempty" name:"TagInfoList"`
+
+	// 默认为false,true表示只进行参数校验，不进行实际购买
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+}
+
+type CreateBgpInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 付费类型：付费模式：PREPAID 预付费 POSTPAID_BY_MONTH 后付费
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// 高防包类型：高防包类型，Enterprise(企业版) Standard(标准版) StandardPlus(标准版2.0)
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// 购买高防包的数量，一次购买数量不超过10
+	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// { "Period": 3, "RenewFlag": "NOTIFY_AND_AUTO_RENEW" }
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
+
+	// { "Region": "ap-guangzhou", "ProtectIpCount": 1, "BasicProtectBandwidth": 300, "Bandwidth": 100, "ElasticProtectLimit": 0, "ElasticBandwidthFlag": true }
+	EnterprisePackageConfig *EnterprisePackageConfig `json:"EnterprisePackageConfig,omitnil,omitempty" name:"EnterprisePackageConfig"`
+
+	// { "Region": "ap-guangzhou", "ProtectIpCount": 1, "BasicProtectBandwidth": 300, "Bandwidth": 100, "ElasticProtectLimit": 0, "ElasticBandwidthFlag": true }
+	StandardPackageConfig *StandardPackageConfig `json:"StandardPackageConfig,omitnil,omitempty" name:"StandardPackageConfig"`
+
+	// { "Region": "ap-guangzhou", "ProtectCount": "TWO_TIMES", "ProtectIpCount": 1, "Bandwidth": 100, "ElasticBandwidthFlag": true }
+	StandardPlusPackageConfig *StandardPlusPackageConfig `json:"StandardPlusPackageConfig,omitnil,omitempty" name:"StandardPlusPackageConfig"`
+
+	// [ { "TagKey": "beal-test",                 "TagValue": "beal-test"               }             ]
+	TagInfoList []*TagInfo `json:"TagInfoList,omitnil,omitempty" name:"TagInfoList"`
+
+	// 默认为false,true表示只进行参数校验，不进行实际购买
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+}
+
+func (r *CreateBgpInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBgpInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceChargeType")
+	delete(f, "PackageType")
+	delete(f, "InstanceCount")
+	delete(f, "InstanceChargePrepaid")
+	delete(f, "EnterprisePackageConfig")
+	delete(f, "StandardPackageConfig")
+	delete(f, "StandardPlusPackageConfig")
+	delete(f, "TagInfoList")
+	delete(f, "DryRun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBgpInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBgpInstanceResponseParams struct {
+	// bgpIds
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBgpInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBgpInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateBgpInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBgpInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -3624,6 +3775,94 @@ func (r *DescribeBgpBizTrendResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBgpBizTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBgpInstancesRequestParams struct {
+	// 地域
+	FilterRegion *string `json:"FilterRegion,omitnil,omitempty" name:"FilterRegion"`
+
+	// ["bgp-0000041i"]
+	FilterInstanceIdList []*string `json:"FilterInstanceIdList,omitnil,omitempty" name:"FilterInstanceIdList"`
+
+	// [{}]
+	FilterTag []*TagInfo `json:"FilterTag,omitnil,omitempty" name:"FilterTag"`
+
+	// 分页数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeBgpInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 地域
+	FilterRegion *string `json:"FilterRegion,omitnil,omitempty" name:"FilterRegion"`
+
+	// ["bgp-0000041i"]
+	FilterInstanceIdList []*string `json:"FilterInstanceIdList,omitnil,omitempty" name:"FilterInstanceIdList"`
+
+	// [{}]
+	FilterTag []*TagInfo `json:"FilterTag,omitnil,omitempty" name:"FilterTag"`
+
+	// 分页数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeBgpInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBgpInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FilterRegion")
+	delete(f, "FilterInstanceIdList")
+	delete(f, "FilterTag")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBgpInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBgpInstancesResponseParams struct {
+	// 返回数量
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 返回购买高防包信息
+	BGPInstanceList []*BGPInstanceInfo `json:"BGPInstanceList,omitnil,omitempty" name:"BGPInstanceList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBgpInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBgpInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeBgpInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBgpInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7333,6 +7572,28 @@ type EipProductInfo struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
+type EnterprisePackageConfig struct {
+	// 购买高防包所属地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 防护IP数
+	ProtectIpCount *uint64 `json:"ProtectIpCount,omitnil,omitempty" name:"ProtectIpCount"`
+
+	// 保底防护带宽
+	BasicProtectBandwidth *uint64 `json:"BasicProtectBandwidth,omitnil,omitempty" name:"BasicProtectBandwidth"`
+
+	// 业务带宽规模
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 弹性带宽 Gbps，可选择的弹性带宽[0,400,500,600,800,1000]
+	// 默认为0
+	ElasticProtectBandwidth *uint64 `json:"ElasticProtectBandwidth,omitnil,omitempty" name:"ElasticProtectBandwidth"`
+
+	// 是否开启弹性业务带宽
+	// 默认为false
+	ElasticBandwidthFlag *bool `json:"ElasticBandwidthFlag,omitnil,omitempty" name:"ElasticBandwidthFlag"`
+}
+
 type ForwardListener struct {
 	// 转发监听端口下限，取值1~65535
 	FrontendPort *int64 `json:"FrontendPort,omitnil,omitempty" name:"FrontendPort"`
@@ -7438,6 +7699,19 @@ type InsL7Rules struct {
 
 	// 证书ID
 	SSLId *string `json:"SSLId,omitnil,omitempty" name:"SSLId"`
+}
+
+type InstanceChargePrepaid struct {
+	// 购买时长：单位月
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+	// NOTIFY_AND_AUTO_RENEW：到期通知且自动续费
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+	// 默认为：通知过期不自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
 type InstanceRelation struct {
@@ -9109,6 +9383,50 @@ type SpeedValue struct {
 
 	// 值大小
 	Value *uint64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type StandardPackageConfig struct {
+	// 高防包购买地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 防护IP数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectIpCount *uint64 `json:"ProtectIpCount,omitnil,omitempty" name:"ProtectIpCount"`
+
+	// 防护业务带宽 50Mbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 是否开启弹性防护带宽 true 开启 
+	// 默认为false 不开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticBandwidthFlag *bool `json:"ElasticBandwidthFlag,omitnil,omitempty" name:"ElasticBandwidthFlag"`
+}
+
+type StandardPlusPackageConfig struct {
+	// 购买高防包所属地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 防护次数：TWO_TIMES:两次全力防 UNLIMITED无限次防
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectCount *string `json:"ProtectCount,omitnil,omitempty" name:"ProtectCount"`
+
+	// 防护IP数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectIpCount *uint64 `json:"ProtectIpCount,omitnil,omitempty" name:"ProtectIpCount"`
+
+	// 防护带宽50Mbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 是否开启弹性业务带宽
+	// true 开启
+	// false 不开启 
+	// 默认不开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticBandwidthFlag *bool `json:"ElasticBandwidthFlag,omitnil,omitempty" name:"ElasticBandwidthFlag"`
 }
 
 type StaticPackRelation struct {

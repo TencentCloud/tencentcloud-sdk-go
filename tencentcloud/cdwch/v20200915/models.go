@@ -300,6 +300,12 @@ type CnInstanceInfo struct {
 
 	// 无
 	Resources []*CNResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// desc
+	IsSecondaryZone *string `json:"IsSecondaryZone,omitnil,omitempty" name:"IsSecondaryZone"`
+
+	// desc
+	SecondaryZoneInfo *string `json:"SecondaryZoneInfo,omitnil,omitempty" name:"SecondaryZoneInfo"`
 }
 
 type ConfigSubmitContext struct {

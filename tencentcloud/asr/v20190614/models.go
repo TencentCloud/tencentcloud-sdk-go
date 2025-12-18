@@ -579,6 +579,7 @@ type CreateRecTaskRequestParams struct {
 	// 是否开启说话人分离
 	// 0：不开启；
 	// 1：开启（仅支持以下引擎：8k_zh/8k_zh_large/16k_zh/16k_ms/16k_en/16k_id/16k_zh_large/16k_zh_dialect/16k_zh_en，且ChannelNum=1时可用）；
+	// 3: 开启角色分离，需配合SpeakerRoles参数使用（增值服务，仅支持16k_zh_en引擎，可支持传入声纹对录音文件内的说话人进行角色认证）
 	// 默认值为 0
 	// 
 	// 注意：
@@ -700,6 +701,15 @@ type CreateRecTaskRequestParams struct {
 	// 注意：
 	// 1. 本功能配置完成后，预计在10分钟后生效
 	ReplaceTextId *string `json:"ReplaceTextId,omitnil,omitempty" name:"ReplaceTextId"`
+
+	// 开启角色分离能力
+	// 配合SpeakerDiarization: 3 使用，ASR增值服务，可传入一组声纹信息进行角色认证，仅支持16k_zh_en引擎。
+	// 需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 
+	// RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 
+	// RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。 
+	// 示例： 
+	// "{\"EngineModelType\":\"16k_zh_en\",\"ChannelNum\":1,\"ResTextFormat\":1,\"SourceType\":0,\"Url\":\"需要进行ASR识别的音频链接\",\"SpeakerDiarization\":3,\"SpeakerRoles\":[{\"RoleAudioUrl\":\"需要认证角色的声纹音频地址\",\"RoleName\":\"需要认证角色的名称\"}]}"
+	SpeakerRoles []*SpeakerRoleInfo `json:"SpeakerRoles,omitnil,omitempty" name:"SpeakerRoles"`
 }
 
 type CreateRecTaskRequest struct {
@@ -801,6 +811,7 @@ type CreateRecTaskRequest struct {
 	// 是否开启说话人分离
 	// 0：不开启；
 	// 1：开启（仅支持以下引擎：8k_zh/8k_zh_large/16k_zh/16k_ms/16k_en/16k_id/16k_zh_large/16k_zh_dialect/16k_zh_en，且ChannelNum=1时可用）；
+	// 3: 开启角色分离，需配合SpeakerRoles参数使用（增值服务，仅支持16k_zh_en引擎，可支持传入声纹对录音文件内的说话人进行角色认证）
 	// 默认值为 0
 	// 
 	// 注意：
@@ -920,6 +931,15 @@ type CreateRecTaskRequest struct {
 	// 注意：
 	// 1. 本功能配置完成后，预计在10分钟后生效
 	ReplaceTextId *string `json:"ReplaceTextId,omitnil,omitempty" name:"ReplaceTextId"`
+
+	// 开启角色分离能力
+	// 配合SpeakerDiarization: 3 使用，ASR增值服务，可传入一组声纹信息进行角色认证，仅支持16k_zh_en引擎。
+	// 需传入SpeakerRoleInfo数据组，确定说话人的角色信息，涉及RoleAudioUrl和RoleName两个参数。 
+	// RoleAudioUrl：需要认证角色的声纹音频地址，建议30s内的纯净人声，最长不能超过45s。 
+	// RoleName：需要认证角色的名称，若匹配成功，会替换话者分离中的SpeakerID。 
+	// 示例： 
+	// "{\"EngineModelType\":\"16k_zh_en\",\"ChannelNum\":1,\"ResTextFormat\":1,\"SourceType\":0,\"Url\":\"需要进行ASR识别的音频链接\",\"SpeakerDiarization\":3,\"SpeakerRoles\":[{\"RoleAudioUrl\":\"需要认证角色的声纹音频地址\",\"RoleName\":\"需要认证角色的名称\"}]}"
+	SpeakerRoles []*SpeakerRoleInfo `json:"SpeakerRoles,omitnil,omitempty" name:"SpeakerRoles"`
 }
 
 func (r *CreateRecTaskRequest) ToJsonString() string {
@@ -958,6 +978,7 @@ func (r *CreateRecTaskRequest) FromJsonString(s string) error {
 	delete(f, "HotwordList")
 	delete(f, "KeyWordLibIdList")
 	delete(f, "ReplaceTextId")
+	delete(f, "SpeakerRoles")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecTaskRequest has unknown keys!", "")
 	}
@@ -2482,6 +2503,14 @@ func (r *SetVocabStateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SetVocabStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SpeakerRoleInfo struct {
+	// 音频url地址，建议不超过30秒，最大45秒
+	RoleAudioUrl *string `json:"RoleAudioUrl,omitnil,omitempty" name:"RoleAudioUrl"`
+
+	// 不超过30字节
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 }
 
 type Task struct {

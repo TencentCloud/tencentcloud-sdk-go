@@ -78,6 +78,9 @@ type AudioResult struct {
 
 	// 审核命中类型
 	HitType *string `json:"HitType,omitnil,omitempty" name:"HitType"`
+
+	// ASR句子的起止时间
+	Sentences []*Sentence `json:"Sentences,omitnil,omitempty" name:"Sentences"`
 }
 
 type AudioResultDetailLanguageResult struct {
@@ -807,6 +810,17 @@ type SegmentCosUrlList struct {
 
 	// 全量音频识别文本的cos url
 	AsrUrl *string `json:"AsrUrl,omitnil,omitempty" name:"AsrUrl"`
+}
+
+type Sentence struct {
+	// ASR句子
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type SpeakerResult struct {

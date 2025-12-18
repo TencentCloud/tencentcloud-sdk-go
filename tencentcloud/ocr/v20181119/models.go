@@ -5573,6 +5573,7 @@ type InvoiceItem struct {
 	SubTypeDescription *string `json:"SubTypeDescription,omitnil,omitempty" name:"SubTypeDescription"`
 
 	// 该发票中所有字段坐标信息。包括字段英文名称、字段值所在位置四点坐标、字段所属行号，具体内容请点击左侧链接。
+	// 字段在原始图的坐标可以根据Polygon转换得出。
 	ItemPolygon []*ItemPolygonInfo `json:"ItemPolygon,omitnil,omitempty" name:"ItemPolygon"`
 
 	// 二维码数据。
