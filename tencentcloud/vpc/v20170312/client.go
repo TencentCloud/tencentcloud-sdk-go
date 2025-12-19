@@ -18892,6 +18892,8 @@ func NewDetachCcnInstancesResponse() (response *DetachCcnInstancesResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_APPIDNOTFOUND = "UnsupportedOperation.AppIdNotFound"
+//  UNSUPPORTEDOPERATION_CCNINSTANCEHASBOUNDPOLICYROUTENEXTHOPNOTALLOWEDDETACH = "UnsupportedOperation.CcnInstanceHasBoundPolicyRouteNextHopNotAllowedDetach"
+//  UNSUPPORTEDOPERATION_CCNINSTANCEHASBOUNDPOLICYROUTERULENOTALLOWEDDETACH = "UnsupportedOperation.CcnInstanceHasBoundPolicyRouteRuleNotAllowedDetach"
 //  UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) DetachCcnInstances(request *DetachCcnInstancesRequest) (response *DetachCcnInstancesResponse, err error) {
@@ -18910,6 +18912,8 @@ func (c *Client) DetachCcnInstances(request *DetachCcnInstancesRequest) (respons
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_APPIDNOTFOUND = "UnsupportedOperation.AppIdNotFound"
+//  UNSUPPORTEDOPERATION_CCNINSTANCEHASBOUNDPOLICYROUTENEXTHOPNOTALLOWEDDETACH = "UnsupportedOperation.CcnInstanceHasBoundPolicyRouteNextHopNotAllowedDetach"
+//  UNSUPPORTEDOPERATION_CCNINSTANCEHASBOUNDPOLICYROUTERULENOTALLOWEDDETACH = "UnsupportedOperation.CcnInstanceHasBoundPolicyRouteRuleNotAllowedDetach"
 //  UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) DetachCcnInstancesWithContext(ctx context.Context, request *DetachCcnInstancesRequest) (response *DetachCcnInstancesResponse, err error) {

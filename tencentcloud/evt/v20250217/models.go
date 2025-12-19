@@ -201,6 +201,67 @@ func (r *CreateRoleUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteRoleUserRequestParams struct {
+	// <p>自定义角色体系的ID</p>
+	RoleSystemId *uint64 `json:"RoleSystemId,omitnil,omitempty" name:"RoleSystemId"`
+
+	// <p>需要删除的自定义用户ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type DeleteRoleUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>自定义角色体系的ID</p>
+	RoleSystemId *uint64 `json:"RoleSystemId,omitnil,omitempty" name:"RoleSystemId"`
+
+	// <p>需要删除的自定义用户ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+func (r *DeleteRoleUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoleUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoleSystemId")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRoleUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRoleUserResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteRoleUserResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRoleUserResponseParams `json:"Response"`
+}
+
+func (r *DeleteRoleUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoleUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UserAttribute struct {
 	// <p>自定义角色体系中用户属性的ID</p><p>属性键名</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`

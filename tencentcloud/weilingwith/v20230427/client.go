@@ -1269,68 +1269,6 @@ func (c *Client) DescribeCameraExtendInfoWithContext(ctx context.Context, reques
     return
 }
 
-func NewDescribeCityWorkspaceListRequest() (request *DescribeCityWorkspaceListRequest) {
-    request = &DescribeCityWorkspaceListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("weilingwith", APIVersion, "DescribeCityWorkspaceList")
-    
-    
-    return
-}
-
-func NewDescribeCityWorkspaceListResponse() (response *DescribeCityWorkspaceListResponse) {
-    response = &DescribeCityWorkspaceListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeCityWorkspaceList
-// 老微瓴后续不继续更新
-//
-// 
-//
-// 通过城市id查询工作空间列表
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_EMPTYADMINISTRATIVECODE = "InvalidParameterValue.EmptyAdministrativeCode"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeCityWorkspaceList(request *DescribeCityWorkspaceListRequest) (response *DescribeCityWorkspaceListResponse, err error) {
-    return c.DescribeCityWorkspaceListWithContext(context.Background(), request)
-}
-
-// DescribeCityWorkspaceList
-// 老微瓴后续不继续更新
-//
-// 
-//
-// 通过城市id查询工作空间列表
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_EMPTYADMINISTRATIVECODE = "InvalidParameterValue.EmptyAdministrativeCode"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeCityWorkspaceListWithContext(ctx context.Context, request *DescribeCityWorkspaceListRequest) (response *DescribeCityWorkspaceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCityWorkspaceListRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "weilingwith", APIVersion, "DescribeCityWorkspaceList")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeCityWorkspaceList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeCityWorkspaceListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeDeviceGroupListRequest() (request *DescribeDeviceGroupListRequest) {
     request = &DescribeDeviceGroupListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1354,9 +1292,9 @@ func NewDescribeDeviceGroupListResponse() (response *DescribeDeviceGroupListResp
 // 设备分组列表
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_EMPTYADMINISTRATIVECODE = "InvalidParameterValue.EmptyAdministrativeCode"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER_EMPTYWID = "MissingParameter.EmptyWID"
+//  RESOURCENOTFOUND_CAMERAINFONOTEXIST = "ResourceNotFound.CameraInfoNotExist"
 func (c *Client) DescribeDeviceGroupList(request *DescribeDeviceGroupListRequest) (response *DescribeDeviceGroupListResponse, err error) {
     return c.DescribeDeviceGroupListWithContext(context.Background(), request)
 }
@@ -1365,9 +1303,9 @@ func (c *Client) DescribeDeviceGroupList(request *DescribeDeviceGroupListRequest
 // 设备分组列表
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_EMPTYADMINISTRATIVECODE = "InvalidParameterValue.EmptyAdministrativeCode"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER_EMPTYWID = "MissingParameter.EmptyWID"
+//  RESOURCENOTFOUND_CAMERAINFONOTEXIST = "ResourceNotFound.CameraInfoNotExist"
 func (c *Client) DescribeDeviceGroupListWithContext(ctx context.Context, request *DescribeDeviceGroupListRequest) (response *DescribeDeviceGroupListResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceGroupListRequest()

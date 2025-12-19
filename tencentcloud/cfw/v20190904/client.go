@@ -1303,6 +1303,10 @@ func NewDeleteAllAccessControlRuleResponse() (response *DeleteAllAccessControlRu
 }
 
 // DeleteAllAccessControlRule
+// 业务废弃
+//
+// 
+//
 // 全部删除规则
 //
 // 可能返回的错误码:
@@ -1315,6 +1319,10 @@ func (c *Client) DeleteAllAccessControlRule(request *DeleteAllAccessControlRuleR
 }
 
 // DeleteAllAccessControlRule
+// 业务废弃
+//
+// 
+//
 // 全部删除规则
 //
 // 可能返回的错误码:

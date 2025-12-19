@@ -539,7 +539,7 @@ const (
 	// 超过快照配额。
 	LIMITEXCEEDED_SNAPSHOTQUOTALIMITEXCEEDED = "LimitExceeded.SnapshotQuotaLimitExceeded"
 
-	// 超过同步镜像目的地域镜像配额。
+	// 超过目的地域镜像的配额限制。
 	LIMITEXCEEDED_SYNCBLUEPRINTQUOTALIMITEXCEEDED = "LimitExceeded.SyncBlueprintQuotaLimitExceeded"
 
 	// 缺少参数错误。
@@ -815,7 +815,7 @@ const (
 	// 镜像已经被共享。不支持此操作。
 	UNSUPPORTEDOPERATION_IMAGEALREADYSHARED = "UnsupportedOperation.ImageAlreadyShared"
 
-	// 镜像整在被资源进行操作，镜像被占用，不支持此操作。请稍后再试。
+	// 镜像被其他操作占用，不支持此操作。请稍后再试。
 	UNSUPPORTEDOPERATION_IMAGEOCCUPIED = "UnsupportedOperation.ImageOccupied"
 
 	// 镜像不支持共享。

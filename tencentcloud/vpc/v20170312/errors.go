@@ -884,6 +884,12 @@ const (
 	// CCN实例所属账号未通过联通审批。
 	UNSUPPORTEDOPERATION_CCNINSTANCEACCOUNTNOTAPPROVEDBYUNICOM = "UnsupportedOperation.CcnInstanceAccountNotApprovedByUnicom"
 
+	// 云联网关联实例绑定了策略路由下一跳，不允许解关联，需要先解绑策略路由下一跳
+	UNSUPPORTEDOPERATION_CCNINSTANCEHASBOUNDPOLICYROUTENEXTHOPNOTALLOWEDDETACH = "UnsupportedOperation.CcnInstanceHasBoundPolicyRouteNextHopNotAllowedDetach"
+
+	// 云联网关联实例绑定了策略路由规则，不允许解关联，需要先解绑策略路由规则
+	UNSUPPORTEDOPERATION_CCNINSTANCEHASBOUNDPOLICYROUTERULENOTALLOWEDDETACH = "UnsupportedOperation.CcnInstanceHasBoundPolicyRouteRuleNotAllowedDetach"
+
 	// 云联网开启ipv6不支持创建多路由表
 	UNSUPPORTEDOPERATION_CCNIPV6NOTSUPPORTMULTIPLEROUTETABLE = "UnsupportedOperation.CcnIpv6NotSupportMultipleRouteTable"
 

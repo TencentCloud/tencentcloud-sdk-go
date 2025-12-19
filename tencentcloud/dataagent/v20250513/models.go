@@ -499,6 +499,70 @@ type FileInfo struct {
 }
 
 // Predefined struct for user
+type GetJobsByKnowledgeBaseIdRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+}
+
+type GetJobsByKnowledgeBaseIdRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+}
+
+func (r *GetJobsByKnowledgeBaseIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetJobsByKnowledgeBaseIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "KnowledgeBaseId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetJobsByKnowledgeBaseIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetJobsByKnowledgeBaseIdResponseParams struct {
+	// 任务列表详情
+	Jobs []*UploadJob `json:"Jobs,omitnil,omitempty" name:"Jobs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetJobsByKnowledgeBaseIdResponse struct {
+	*tchttp.BaseResponse
+	Response *GetJobsByKnowledgeBaseIdResponseParams `json:"Response"`
+}
+
+func (r *GetJobsByKnowledgeBaseIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetJobsByKnowledgeBaseIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetKnowledgeBaseFileListRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

@@ -375,6 +375,72 @@ func (c *Client) DeleteDataAgentSessionWithContext(ctx context.Context, request 
     return
 }
 
+func NewGetJobsByKnowledgeBaseIdRequest() (request *GetJobsByKnowledgeBaseIdRequest) {
+    request = &GetJobsByKnowledgeBaseIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "GetJobsByKnowledgeBaseId")
+    
+    
+    return
+}
+
+func NewGetJobsByKnowledgeBaseIdResponse() (response *GetJobsByKnowledgeBaseIdResponse) {
+    response = &GetJobsByKnowledgeBaseIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetJobsByKnowledgeBaseId
+// 根据知识库id查询jobs 列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetJobsByKnowledgeBaseId(request *GetJobsByKnowledgeBaseIdRequest) (response *GetJobsByKnowledgeBaseIdResponse, err error) {
+    return c.GetJobsByKnowledgeBaseIdWithContext(context.Background(), request)
+}
+
+// GetJobsByKnowledgeBaseId
+// 根据知识库id查询jobs 列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetJobsByKnowledgeBaseIdWithContext(ctx context.Context, request *GetJobsByKnowledgeBaseIdRequest) (response *GetJobsByKnowledgeBaseIdResponse, err error) {
+    if request == nil {
+        request = NewGetJobsByKnowledgeBaseIdRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "GetJobsByKnowledgeBaseId")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetJobsByKnowledgeBaseId require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetJobsByKnowledgeBaseIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetKnowledgeBaseFileListRequest() (request *GetKnowledgeBaseFileListRequest) {
     request = &GetKnowledgeBaseFileListRequest{
         BaseRequest: &tchttp.BaseRequest{},

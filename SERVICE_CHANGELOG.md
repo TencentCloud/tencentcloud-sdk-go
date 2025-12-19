@@ -1,37 +1,10 @@
-# Release v1.3.14
-
-## 音频内容安全(ams) 版本：2020-12-29
-
-### 第 16 次发布
-
-发布时间：2025-12-18 01:08:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [Sentence](https://cloud.tencent.com/document/api/1219/53259#Sentence)
-
-修改数据结构：
-
-* [AudioResult](https://cloud.tencent.com/document/api/1219/53259#AudioResult)
-
-	* 新增成员：Sentences
-
-
-
-
-## 音频内容安全(ams) 版本：2020-06-08
-
-
+# Release v1.3.15
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
 
-### 第 71 次发布
+### 第 72 次发布
 
-发布时间：2025-12-18 01:08:53
+发布时间：2025-12-19 01:08:27
 
 本次发布包含了以下内容：
 
@@ -39,24 +12,20 @@
 
 新增接口：
 
-* [CreateBgpInstance](https://cloud.tencent.com/document/api/297/126515)
-* [DescribeBgpInstances](https://cloud.tencent.com/document/api/297/126514)
+* [DescribeListProtectThresholdConfigNew](https://cloud.tencent.com/document/api/297/126578)
 
 新增数据结构：
 
-* [BGPInstanceInfo](https://cloud.tencent.com/document/api/297/95396#BGPInstanceInfo)
-* [EnterprisePackageConfig](https://cloud.tencent.com/document/api/297/95396#EnterprisePackageConfig)
-* [InstanceChargePrepaid](https://cloud.tencent.com/document/api/297/95396#InstanceChargePrepaid)
-* [StandardPackageConfig](https://cloud.tencent.com/document/api/297/95396#StandardPackageConfig)
-* [StandardPlusPackageConfig](https://cloud.tencent.com/document/api/297/95396#StandardPlusPackageConfig)
+* [ListenerCcThresholdConfig](https://cloud.tencent.com/document/api/297/95396#ListenerCcThresholdConfig)
+* [ProtectThresholdRelationNew](https://cloud.tencent.com/document/api/297/95396#ProtectThresholdRelationNew)
 
 
 
-## 语音识别(asr) 版本：2019-06-14
+## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 44 次发布
+### 第 90 次发布
 
-发布时间：2025-12-18 01:11:44
+发布时间：2025-12-19 01:10:37
 
 本次发布包含了以下内容：
 
@@ -64,22 +33,81 @@
 
 修改接口：
 
-* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
+* [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440)
 
-	* 新增入参：SpeakerRoles
+	* 新增入参：HostNameIndexSettings, ConcurrentScaleOutForDesiredCapacity
+
+* [ModifyAutoScalingGroup](https://cloud.tencent.com/document/api/377/20433)
+
+	* 新增入参：HostNameIndexSettings, ConcurrentScaleOutForDesiredCapacity
 
 
 新增数据结构：
 
-* [SpeakerRoleInfo](https://cloud.tencent.com/document/api/1093/37824#SpeakerRoleInfo)
+* [HostNameIndexSettings](https://cloud.tencent.com/document/api/377/20453#HostNameIndexSettings)
+
+修改数据结构：
+
+* [AutoScalingGroup](https://cloud.tencent.com/document/api/377/20453#AutoScalingGroup)
+
+	* 新增成员：HostNameIndexSettings, ConcurrentScaleOutForDesiredCapacity
 
 
 
-## 费用中心(billing) 版本：2018-07-09
 
-### 第 79 次发布
+## 云防火墙(cfw) 版本：2019-09-04
 
-发布时间：2025-12-18 01:13:56
+### 第 87 次发布
+
+发布时间：2025-12-19 01:21:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DeleteAllAccessControlRule
+
+
+
+## 腾讯云数据分析智能体(dataagent) 版本：2025-05-13
+
+### 第 8 次发布
+
+发布时间：2025-12-19 01:32:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetJobsByKnowledgeBaseId](https://cloud.tencent.com/document/api/1800/126579)
+
+
+
+## 事件中心(evt) 版本：2025-02-17
+
+### 第 4 次发布
+
+发布时间：2025-12-19 01:45:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteRoleUser](https://cloud.tencent.com/document/api/1808/126580)
+
+
+
+## 腾讯云智能体开发平台(lke) 版本：2023-11-30
+
+### 第 73 次发布
+
+发布时间：2025-12-19 01:59:23
 
 本次发布包含了以下内容：
 
@@ -87,172 +115,68 @@
 
 修改接口：
 
-* [DescribeDealsByCond](https://cloud.tencent.com/document/api/555/19179)
+* [VerifyQA](https://cloud.tencent.com/document/api/1759/105022)
 
-	* 新增入参：StatusSet
-
-
-修改数据结构：
-
-* [Deal](https://cloud.tencent.com/document/api/555/19183#Deal)
-
-	* 新增成员：ZoneCode
+	* 新增入参：KnowledgeBizId
 
 
 
 
-## 腾讯云数据仓库TCHouse-C(cdwch) 版本：2020-09-15
+## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
 
-### 第 36 次发布
 
-发布时间：2025-12-18 01:20:37
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 175 次发布
+
+发布时间：2025-12-19 03:39:17
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [CnInstanceInfo](https://cloud.tencent.com/document/api/1299/83429#CnInstanceInfo)
-
-	* 新增成员：IsSecondaryZone, SecondaryZoneInfo
-
-
-
-
-## 日志服务(cls) 版本：2020-10-16
-
-### 第 144 次发布
-
-发布时间：2025-12-18 01:26:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TopicInfo](https://cloud.tencent.com/document/api/614/56471#TopicInfo)
-
-	* 新增成员：KeyId
-
-
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 149 次发布
-
-发布时间：2025-12-18 01:31:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyServerlessStrategy](https://cloud.tencent.com/document/api/1003/110600)
-
-	* 新增入参：UpgradeType
-
-	* 新增出参：TaskId
-
-
-
-
-## Elasticsearch Service(es) 版本：2025-01-01
-
-
-
-## Elasticsearch Service(es) 版本：2018-04-16
-
-### 第 92 次发布
-
-发布时间：2025-12-18 01:43:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CosBackup](https://cloud.tencent.com/document/api/845/30634#CosBackup)
-
-	* 新增成员：CosBasePath
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 267 次发布
-
-发布时间：2025-12-18 01:44:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1323/94888)
-
-	* 新增入参：UserFlowType
-
-* [CreateFlowGroupByTemplates](https://cloud.tencent.com/document/api/1323/94887)
-
-	* 新增入参：UserFlowType
-
-
-
-
-## 云开发低码(lowcode) 版本：2021-01-08
-
-### 第 9 次发布
-
-发布时间：2025-12-18 02:03:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DataSourceDetail](https://cloud.tencent.com/document/api/1301/68878#DataSourceDetail)
-
-	* 新增成员：StagingSwitch
-
-
-
-
-## 视频内容安全(vm) 版本：2021-09-22
-
-### 第 9 次发布
-
-发布时间：2025-12-18 03:24:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [DescribeLineageInfo](https://cloud.tencent.com/document/api/1267/126581)
 
 新增数据结构：
 
-* [Sentence](https://cloud.tencent.com/document/api/1265/80019#Sentence)
-
-修改数据结构：
-
-* [AudioResult](https://cloud.tencent.com/document/api/1265/80019#AudioResult)
-
-	* 新增成员：Sentences
-
+* [LineageCommonInfoVO](https://cloud.tencent.com/document/api/1267/76336#LineageCommonInfoVO)
+* [LineageNodeInfoVO](https://cloud.tencent.com/document/api/1267/76336#LineageNodeInfoVO)
+* [LineageProcessVO](https://cloud.tencent.com/document/api/1267/76336#LineageProcessVO)
+* [LineageProperty](https://cloud.tencent.com/document/api/1267/76336#LineageProperty)
+* [LineageRelationVO](https://cloud.tencent.com/document/api/1267/76336#LineageRelationVO)
+* [LineageResouce](https://cloud.tencent.com/document/api/1267/76336#LineageResouce)
 
 
 
-## 视频内容安全(vm) 版本：2020-12-29
+## 微瓴同业开放平台(weilingwith) 版本：2023-04-27
+
+### 第 10 次发布
+
+发布时间：2025-12-19 14:32:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeCityWorkspaceList
+
+修改接口：
+
+* [DescribeVideoRecordStream](https://cloud.tencent.com/document/api/1693/101464)
+
+	* 新增出参：Result
 
 
+<font color="#dd0000">**删除数据结构**：</font>
 
-## 视频内容安全(vm) 版本：2020-07-09
+* AdministrativeDetail
+* DescribeCityWorkspaceListRes
+* WorkspaceInfo
 
 
 

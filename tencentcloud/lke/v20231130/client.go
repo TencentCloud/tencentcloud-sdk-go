@@ -5331,6 +5331,12 @@ func NewVerifyQAResponse() (response *VerifyQAResponse) {
 // VerifyQA
 // 校验问答
 //
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -5340,6 +5346,12 @@ func (c *Client) VerifyQA(request *VerifyQARequest) (response *VerifyQAResponse,
 
 // VerifyQA
 // 校验问答
+//
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

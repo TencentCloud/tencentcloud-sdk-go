@@ -4489,6 +4489,56 @@ func (c *Client) DescribeListPortAclListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeListProtectThresholdConfigNewRequest() (request *DescribeListProtectThresholdConfigNewRequest) {
+    request = &DescribeListProtectThresholdConfigNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeListProtectThresholdConfigNew")
+    
+    
+    return
+}
+
+func NewDescribeListProtectThresholdConfigNewResponse() (response *DescribeListProtectThresholdConfigNewResponse) {
+    response = &DescribeListProtectThresholdConfigNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeListProtectThresholdConfigNew
+// 获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+func (c *Client) DescribeListProtectThresholdConfigNew(request *DescribeListProtectThresholdConfigNewRequest) (response *DescribeListProtectThresholdConfigNewResponse, err error) {
+    return c.DescribeListProtectThresholdConfigNewWithContext(context.Background(), request)
+}
+
+// DescribeListProtectThresholdConfigNew
+// 获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+func (c *Client) DescribeListProtectThresholdConfigNewWithContext(ctx context.Context, request *DescribeListProtectThresholdConfigNewRequest) (response *DescribeListProtectThresholdConfigNewResponse, err error) {
+    if request == nil {
+        request = NewDescribeListProtectThresholdConfigNewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "antiddos", APIVersion, "DescribeListProtectThresholdConfigNew")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeListProtectThresholdConfigNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeListProtectThresholdConfigNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListProtocolBlockConfigRequest() (request *DescribeListProtocolBlockConfigRequest) {
     request = &DescribeListProtocolBlockConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4513,23 +4563,6 @@ func NewDescribeListProtocolBlockConfigResponse() (response *DescribeListProtoco
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeListProtocolBlockConfig(request *DescribeListProtocolBlockConfigRequest) (response *DescribeListProtocolBlockConfigResponse, err error) {
     return c.DescribeListProtocolBlockConfigWithContext(context.Background(), request)
 }
@@ -4539,23 +4572,6 @@ func (c *Client) DescribeListProtocolBlockConfig(request *DescribeListProtocolBl
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeListProtocolBlockConfigWithContext(ctx context.Context, request *DescribeListProtocolBlockConfigRequest) (response *DescribeListProtocolBlockConfigResponse, err error) {
     if request == nil {
         request = NewDescribeListProtocolBlockConfigRequest()
@@ -4597,23 +4613,6 @@ func NewDescribeListSchedulingDomainResponse() (response *DescribeListScheduling
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeListSchedulingDomain(request *DescribeListSchedulingDomainRequest) (response *DescribeListSchedulingDomainResponse, err error) {
     return c.DescribeListSchedulingDomainWithContext(context.Background(), request)
 }
@@ -4623,23 +4622,6 @@ func (c *Client) DescribeListSchedulingDomain(request *DescribeListSchedulingDom
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeListSchedulingDomainWithContext(ctx context.Context, request *DescribeListSchedulingDomainRequest) (response *DescribeListSchedulingDomainResponse, err error) {
     if request == nil {
         request = NewDescribeListSchedulingDomainRequest()
@@ -4681,23 +4663,6 @@ func NewDescribeListWaterPrintConfigResponse() (response *DescribeListWaterPrint
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeListWaterPrintConfig(request *DescribeListWaterPrintConfigRequest) (response *DescribeListWaterPrintConfigResponse, err error) {
     return c.DescribeListWaterPrintConfigWithContext(context.Background(), request)
 }
@@ -4707,23 +4672,6 @@ func (c *Client) DescribeListWaterPrintConfig(request *DescribeListWaterPrintCon
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeListWaterPrintConfigWithContext(ctx context.Context, request *DescribeListWaterPrintConfigRequest) (response *DescribeListWaterPrintConfigResponse, err error) {
     if request == nil {
         request = NewDescribeListWaterPrintConfigRequest()

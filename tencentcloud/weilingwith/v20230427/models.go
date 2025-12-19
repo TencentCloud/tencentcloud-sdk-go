@@ -196,17 +196,6 @@ type AdministrationData struct {
 	AdministrationName *string `json:"AdministrationName,omitnil,omitempty" name:"AdministrationName"`
 }
 
-type AdministrativeDetail struct {
-	// 行政区域类型编码
-	AdministrativeTypeCode *string `json:"AdministrativeTypeCode,omitnil,omitempty" name:"AdministrativeTypeCode"`
-
-	// 行政区域编码
-	AdministrativeCode *string `json:"AdministrativeCode,omitnil,omitempty" name:"AdministrativeCode"`
-
-	// 行政区域名称
-	AdministrativeName *string `json:"AdministrativeName,omitnil,omitempty" name:"AdministrativeName"`
-}
-
 type AlarmInfo struct {
 	// 工作空间id
 	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
@@ -2402,76 +2391,6 @@ func (r *DescribeCameraExtendInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCameraExtendInfoResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCityWorkspaceListRequestParams struct {
-	// 行政区编码集合
-	AdministrativeCodeSet []*string `json:"AdministrativeCodeSet,omitnil,omitempty" name:"AdministrativeCodeSet"`
-
-	// 应用token
-	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
-}
-
-type DescribeCityWorkspaceListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 行政区编码集合
-	AdministrativeCodeSet []*string `json:"AdministrativeCodeSet,omitnil,omitempty" name:"AdministrativeCodeSet"`
-
-	// 应用token
-	ApplicationToken *string `json:"ApplicationToken,omitnil,omitempty" name:"ApplicationToken"`
-}
-
-func (r *DescribeCityWorkspaceListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCityWorkspaceListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "AdministrativeCodeSet")
-	delete(f, "ApplicationToken")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCityWorkspaceListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeCityWorkspaceListRes struct {
-	// 通过城市id查询工作空间列表结果
-	WorkspaceSet []*WorkspaceInfo `json:"WorkspaceSet,omitnil,omitempty" name:"WorkspaceSet"`
-}
-
-// Predefined struct for user
-type DescribeCityWorkspaceListResponseParams struct {
-	// 工作空间信息集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *DescribeCityWorkspaceListRes `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeCityWorkspaceListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeCityWorkspaceListResponseParams `json:"Response"`
-}
-
-func (r *DescribeCityWorkspaceListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCityWorkspaceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5396,6 +5315,9 @@ func (r *DescribeVideoRecordStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVideoRecordStreamResponseParams struct {
+	// 获取历史流结果
+	Result *VideoRecordStreamRes `json:"Result,omitnil,omitempty" name:"Result"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -7442,29 +7364,6 @@ type VideoRecordStreamRes struct {
 
 	// 视频流的唯一标识
 	Stream *string `json:"Stream,omitnil,omitempty" name:"Stream"`
-}
-
-type WorkspaceInfo struct {
-	// 工作空间Id
-	WorkspaceId *int64 `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
-
-	// 工作空间中文名字
-	ChineseName *string `json:"ChineseName,omitnil,omitempty" name:"ChineseName"`
-
-	// 工作空间描述
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// 工作空间是否删除状态
-	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 该工作空间绑定的区/县的行政区名字
-	ParkName *string `json:"ParkName,omitnil,omitempty" name:"ParkName"`
-
-	// 该工作空间绑定的区/县的行政区编码
-	ParkNum *string `json:"ParkNum,omitnil,omitempty" name:"ParkNum"`
-
-	// 获取该工作空间绑定的区/县的上级行政区划信息
-	AdministrativeDetailSet []*AdministrativeDetail `json:"AdministrativeDetailSet,omitnil,omitempty" name:"AdministrativeDetailSet"`
 }
 
 type WorkspaceInfoList struct {

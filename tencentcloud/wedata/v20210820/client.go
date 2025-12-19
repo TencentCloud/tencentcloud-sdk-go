@@ -6867,6 +6867,88 @@ func (c *Client) DescribeIntegrationVersionNodesInfoWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeLineageInfoRequest() (request *DescribeLineageInfoRequest) {
+    request = &DescribeLineageInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeLineageInfo")
+    
+    
+    return
+}
+
+func NewDescribeLineageInfoResponse() (response *DescribeLineageInfoResponse) {
+    response = &DescribeLineageInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLineageInfo
+// 通用血缘查询接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLineageInfo(request *DescribeLineageInfoRequest) (response *DescribeLineageInfoResponse, err error) {
+    return c.DescribeLineageInfoWithContext(context.Background(), request)
+}
+
+// DescribeLineageInfo
+// 通用血缘查询接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLineageInfoWithContext(ctx context.Context, request *DescribeLineageInfoRequest) (response *DescribeLineageInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeLineageInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "DescribeLineageInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLineageInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLineageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeManualTriggerRecordPageRequest() (request *DescribeManualTriggerRecordPageRequest) {
     request = &DescribeManualTriggerRecordPageRequest{
         BaseRequest: &tchttp.BaseRequest{},

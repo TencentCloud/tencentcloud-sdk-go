@@ -132,3 +132,47 @@ func (c *Client) CreateRoleUserWithContext(ctx context.Context, request *CreateR
     err = c.Send(request, response)
     return
 }
+
+func NewDeleteRoleUserRequest() (request *DeleteRoleUserRequest) {
+    request = &DeleteRoleUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("evt", APIVersion, "DeleteRoleUser")
+    
+    
+    return
+}
+
+func NewDeleteRoleUserResponse() (response *DeleteRoleUserResponse) {
+    response = &DeleteRoleUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRoleUser
+// 删除自定义用户
+func (c *Client) DeleteRoleUser(request *DeleteRoleUserRequest) (response *DeleteRoleUserResponse, err error) {
+    return c.DeleteRoleUserWithContext(context.Background(), request)
+}
+
+// DeleteRoleUser
+// 删除自定义用户
+func (c *Client) DeleteRoleUserWithContext(ctx context.Context, request *DeleteRoleUserRequest) (response *DeleteRoleUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteRoleUserRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "evt", APIVersion, "DeleteRoleUser")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRoleUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRoleUserResponse()
+    err = c.Send(request, response)
+    return
+}

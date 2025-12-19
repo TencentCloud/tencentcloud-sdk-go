@@ -4833,6 +4833,7 @@ type PhoneVerificationResponseParams struct {
 	// -9: 没有记录。
 	// -11: 验证中心服务繁忙。
 	// -12: 认证次数超过当日限制，请次日重试。
+	// -13：该号段不支持验证
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 业务结果描述。

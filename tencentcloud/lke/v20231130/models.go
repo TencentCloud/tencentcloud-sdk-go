@@ -2088,7 +2088,7 @@ func (r *CreateVarResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateWorkflowRunRequestParams struct {
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
 	// 运行环境。0: 测试环境； 1: 正式环境
@@ -2104,7 +2104,7 @@ type CreateWorkflowRunRequestParams struct {
 type CreateWorkflowRunRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
 	// 运行环境。0: 测试环境； 1: 正式环境
@@ -7371,13 +7371,13 @@ func (r *ListAppResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListAttributeLabelRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码，取值范围：大于0
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量，取值范围：大于0
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -7386,23 +7386,23 @@ type ListAttributeLabelRequestParams struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 查询内容
+	// 查询内容，同时匹配标签内容和标签值内容
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 每个属性同步拉取的标签值数量
+	// 每个标签同步拉取的标签值数量。即在展示标签列表时，为每一个标签加载多少个具体的标签值。
 	LabelSize *uint64 `json:"LabelSize,omitnil,omitempty" name:"LabelSize"`
 }
 
 type ListAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码，取值范围：大于0
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量，取值范围：大于0
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -7411,10 +7411,10 @@ type ListAttributeLabelRequest struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 查询内容
+	// 查询内容，同时匹配标签内容和标签值内容
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 每个属性同步拉取的标签值数量
+	// 每个标签同步拉取的标签值数量。即在展示标签列表时，为每一个标签加载多少个具体的标签值。
 	LabelSize *uint64 `json:"LabelSize,omitnil,omitempty" name:"LabelSize"`
 }
 
@@ -7473,7 +7473,7 @@ func (r *ListAttributeLabelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListChannelRequestParams struct {
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
 	// 应用ID
@@ -7481,38 +7481,38 @@ type ListChannelRequestParams struct {
 	// Deprecated: BotBizId is deprecated.
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页数量
+	// 分页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 
+	// 渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 。（默认为[]）
 	ChannelType []*uint64 `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
 
-	// 渠道状态 1未发布 2运行中 3已下线
+	// 渠道状态 1未发布 2运行中 3已下线 （默认为[]）
 	ChannelStatus []*uint64 `json:"ChannelStatus,omitnil,omitempty" name:"ChannelStatus"`
 }
 
 type ListChannelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页数量
+	// 分页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 
+	// 渠道类型, 10000: 微信订阅号，10001: 微信服务号，10002：企微应用，10004：微信客服，10005：小程序，10009：企微智能机器人 。（默认为[]）
 	ChannelType []*uint64 `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
 
-	// 渠道状态 1未发布 2运行中 3已下线
+	// 渠道状态 1未发布 2运行中 3已下线 （默认为[]）
 	ChannelStatus []*uint64 `json:"ChannelStatus,omitnil,omitempty" name:"ChannelStatus"`
 }
 
@@ -8412,56 +8412,56 @@ func (r *ListReferShareKnowledgeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRejectedQuestionPreviewRequestParams struct {
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
+	// 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 发布单ID
+	// 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 
 	// 状态(1新增2更新3删除)
 	Actions []*uint64 `json:"Actions,omitnil,omitempty" name:"Actions"`
 
-	// 开始时间
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type ListRejectedQuestionPreviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
+	// 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 发布单ID
+	// 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 
 	// 状态(1新增2更新3删除)
 	Actions []*uint64 `json:"Actions,omitnil,omitempty" name:"Actions"`
 
-	// 开始时间
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -8521,13 +8521,13 @@ func (r *ListRejectedQuestionPreviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRejectedQuestionRequestParams struct {
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 查询内容
@@ -8537,13 +8537,13 @@ type ListRejectedQuestionRequestParams struct {
 type ListRejectedQuestionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 查询内容
@@ -8602,62 +8602,62 @@ func (r *ListRejectedQuestionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListReleaseConfigPreviewRequestParams struct {
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
+	// 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 发布单ID
+	// 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 
 	// 状态(1新增2更新3删除)
 	Actions []*uint64 `json:"Actions,omitnil,omitempty" name:"Actions"`
 
-	// 开始时间
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 发布状态
+	// 发布状态(2 待发布 3 发布中 4 已发布 5 发布失败)，默认为空
 	ReleaseStatus []*uint64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 }
 
 type ListReleaseConfigPreviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
+	// 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 发布单ID
+	// 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 
 	// 状态(1新增2更新3删除)
 	Actions []*uint64 `json:"Actions,omitnil,omitempty" name:"Actions"`
 
-	// 开始时间
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 发布状态
+	// 发布状态(2 待发布 3 发布中 4 已发布 5 发布失败)，默认为空
 	ReleaseStatus []*uint64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 }
 
@@ -8718,56 +8718,56 @@ func (r *ListReleaseConfigPreviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListReleaseDocPreviewRequestParams struct {
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
+	// 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 发布单ID
+	// 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 
-	// 开始时间
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 状态(1新增2修改3删除)
+	// 状态(1新增2修改3删除)，其和ReleaseStatus的区别为： Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据 / 内容本身的发布状态
 	Actions []*uint64 `json:"Actions,omitnil,omitempty" name:"Actions"`
 }
 
 type ListReleaseDocPreviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
+	// 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 发布单ID
+	// 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 
-	// 开始时间
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 状态(1新增2修改3删除)
+	// 状态(1新增2修改3删除)，其和ReleaseStatus的区别为： Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据 / 内容本身的发布状态
 	Actions []*uint64 `json:"Actions,omitnil,omitempty" name:"Actions"`
 }
 
@@ -8856,62 +8856,62 @@ type ListReleaseItem struct {
 
 // Predefined struct for user
 type ListReleaseQAPreviewRequestParams struct {
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
+	// 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 发布单ID
+	// 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 
-	// 开始时间
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 状态(1新增2修改3删除)
+	// 状态(1新增2修改3删除)，其和ReleaseStatus的区别为：Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据/内容本身的发布状态
 	Actions []*uint64 `json:"Actions,omitnil,omitempty" name:"Actions"`
 
-	// 发布状态(4发布成功5发布失败)
+	// 发布状态(4发布成功5发布失败)。其和Actions的区别为：Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据/内容本身的发布状态
 	ReleaseStatus []*uint64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 }
 
 type ListReleaseQAPreviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（必须大于0）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
+	// 查询内容关键字，用于模糊查询，若未提供该参数，默认为查询全部。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 发布单ID
+	// 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 
-	// 开始时间
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 状态(1新增2修改3删除)
+	// 状态(1新增2修改3删除)，其和ReleaseStatus的区别为：Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据/内容本身的发布状态
 	Actions []*uint64 `json:"Actions,omitnil,omitempty" name:"Actions"`
 
-	// 发布状态(4发布成功5发布失败)
+	// 发布状态(4发布成功5发布失败)。其和Actions的区别为：Actions表示的是对数据/内容的操作状态，ReleaseStatus表示数据/内容本身的发布状态
 	ReleaseStatus []*uint64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 }
 
@@ -9467,16 +9467,16 @@ func (r *ListUsageCallDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListWorkflowRunsRequestParams struct {
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 每页数量
+	// 每页数量(取值范围1-200)
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 运行环境。0: 测试环境； 1: 正式环境
 	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
 
-	// 页码
+	// 页码(必须大于0)
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -9489,16 +9489,16 @@ type ListWorkflowRunsRequestParams struct {
 type ListWorkflowRunsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 每页数量
+	// 每页数量(取值范围1-200)
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 运行环境。0: 测试环境； 1: 正式环境
 	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
 
-	// 页码
+	// 页码(必须大于0)
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -10484,14 +10484,14 @@ func (r *ModifyQAResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRejectedQuestionRequestParams struct {
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题
 	// 
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 拒答问题来源的数据源唯一id
+	// 拒答问题来源的数据源唯一id, 通过[ListRejectedQuestion](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListRejectedQuestion)接口获取
 	// 
 	// 
 	RejectedBizId *string `json:"RejectedBizId,omitnil,omitempty" name:"RejectedBizId"`
@@ -10500,14 +10500,14 @@ type ModifyRejectedQuestionRequestParams struct {
 type ModifyRejectedQuestionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID, 获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 拒答问题
 	// 
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 拒答问题来源的数据源唯一id
+	// 拒答问题来源的数据源唯一id, 通过[ListRejectedQuestion](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListRejectedQuestion)接口获取
 	// 
 	// 
 	RejectedBizId *string `json:"RejectedBizId,omitnil,omitempty" name:"RejectedBizId"`
@@ -11111,7 +11111,7 @@ type RateMsgRecordRequestParams struct {
 	// 应用appKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
-	// 消息ID 【大模型回复答案的RecordID】
+	// 消息ID 【大模型回复答案的RecordID】可以通过[GetMsgRecord](https://cloud.tencent.com/document/product/1759/105090)接口获取
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 0: 取消前置状态 ; 1: 点赞;   2: 点踩;   
@@ -11134,7 +11134,7 @@ type RateMsgRecordRequest struct {
 	// 应用appKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
-	// 消息ID 【大模型回复答案的RecordID】
+	// 消息ID 【大模型回复答案的RecordID】可以通过[GetMsgRecord](https://cloud.tencent.com/document/product/1759/105090)接口获取
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 0: 取消前置状态 ; 1: 点赞;   2: 点踩;   
@@ -12964,6 +12964,9 @@ type VerifyQARequestParams struct {
 
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 用于操作共享知识库
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
 }
 
 type VerifyQARequest struct {
@@ -12980,6 +12983,9 @@ type VerifyQARequest struct {
 
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 用于操作共享知识库
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
 }
 
 func (r *VerifyQARequest) ToJsonString() string {
@@ -12998,6 +13004,7 @@ func (r *VerifyQARequest) FromJsonString(s string) error {
 	delete(f, "BotBizId")
 	delete(f, "LoginUin")
 	delete(f, "LoginSubAccountUin")
+	delete(f, "KnowledgeBizId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyQARequest has unknown keys!", "")
 	}

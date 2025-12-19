@@ -7584,6 +7584,7 @@ func NewRenewInstancesResponse() (response *RenewInstancesResponse) {
 //  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 //  UNSUPPORTEDOPERATION_INVALIDDISKBACKUPQUOTA = "UnsupportedOperation.InvalidDiskBackupQuota"
+//  UNSUPPORTEDOPERATION_PERIODICCONTRACTNOTSUPPORTMANUALRENEW = "UnsupportedOperation.PeriodicContractNotSupportManualRenew"
 //  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
 func (c *Client) RenewInstances(request *RenewInstancesRequest) (response *RenewInstancesResponse, err error) {
     return c.RenewInstancesWithContext(context.Background(), request)
@@ -7627,6 +7628,7 @@ func (c *Client) RenewInstances(request *RenewInstancesRequest) (response *Renew
 //  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 //  UNSUPPORTEDOPERATION_INVALIDDISKBACKUPQUOTA = "UnsupportedOperation.InvalidDiskBackupQuota"
+//  UNSUPPORTEDOPERATION_PERIODICCONTRACTNOTSUPPORTMANUALRENEW = "UnsupportedOperation.PeriodicContractNotSupportManualRenew"
 //  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
 func (c *Client) RenewInstancesWithContext(ctx context.Context, request *RenewInstancesRequest) (response *RenewInstancesResponse, err error) {
     if request == nil {

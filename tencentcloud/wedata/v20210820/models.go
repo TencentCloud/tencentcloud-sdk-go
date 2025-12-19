@@ -14364,6 +14364,127 @@ func (r *DescribeIntegrationVersionNodesInfoResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
+type DescribeLineageInfoRequestParams struct {
+	// 实体原始唯一ID
+	ResourceOriId *string `json:"ResourceOriId,omitnil,omitempty" name:"ResourceOriId"`
+
+	// 实体类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 血缘唯一ID
+	QualifiedId *string `json:"QualifiedId,omitnil,omitempty" name:"QualifiedId"`
+
+	// 查询方向
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// 查询入度
+	InputDepth *int64 `json:"InputDepth,omitnil,omitempty" name:"InputDepth"`
+
+	// 查询出度
+	OutputDepth *int64 `json:"OutputDepth,omitnil,omitempty" name:"OutputDepth"`
+
+	// 数据来源
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 血缘类型（分页使用）
+	LineageType *string `json:"LineageType,omitnil,omitempty" name:"LineageType"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeLineageInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实体原始唯一ID
+	ResourceOriId *string `json:"ResourceOriId,omitnil,omitempty" name:"ResourceOriId"`
+
+	// 实体类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 血缘唯一ID
+	QualifiedId *string `json:"QualifiedId,omitnil,omitempty" name:"QualifiedId"`
+
+	// 查询方向
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// 查询入度
+	InputDepth *int64 `json:"InputDepth,omitnil,omitempty" name:"InputDepth"`
+
+	// 查询出度
+	OutputDepth *int64 `json:"OutputDepth,omitnil,omitempty" name:"OutputDepth"`
+
+	// 数据来源
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 血缘类型（分页使用）
+	LineageType *string `json:"LineageType,omitnil,omitempty" name:"LineageType"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeLineageInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLineageInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceOriId")
+	delete(f, "ResourceType")
+	delete(f, "QualifiedId")
+	delete(f, "Direction")
+	delete(f, "InputDepth")
+	delete(f, "OutputDepth")
+	delete(f, "Platform")
+	delete(f, "LineageType")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLineageInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLineageInfoResponseParams struct {
+	// 血缘信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *LineageCommonInfoVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLineageInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLineageInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeLineageInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLineageInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeManualTriggerRecordPageRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -27968,6 +28089,62 @@ type LifecycleInfo struct {
 	DateFormat []*string `json:"DateFormat,omitnil,omitempty" name:"DateFormat"`
 }
 
+type LineageCommonInfoVO struct {
+	// 当前节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentResource *LineageResouce `json:"CurrentResource,omitnil,omitempty" name:"CurrentResource"`
+
+	// 上游节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSet []*LineageNodeInfoVO `json:"ParentSet,omitnil,omitempty" name:"ParentSet"`
+
+	// 下游节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildSet []*LineageNodeInfoVO `json:"ChildSet,omitnil,omitempty" name:"ChildSet"`
+
+	// 下游数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownStreamCount *int64 `json:"DownStreamCount,omitnil,omitempty" name:"DownStreamCount"`
+
+	// 上游数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpStreamCount *int64 `json:"UpStreamCount,omitnil,omitempty" name:"UpStreamCount"`
+
+	// 父/子节点是否展示上下游数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamCountFlag *bool `json:"StreamCountFlag,omitnil,omitempty" name:"StreamCountFlag"`
+}
+
+type LineageNodeInfoVO struct {
+	// 当前资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentResource *LineageResouce `json:"CurrentResource,omitnil,omitempty" name:"CurrentResource"`
+
+	// 关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Relation *LineageRelationVO `json:"Relation,omitnil,omitempty" name:"Relation"`
+
+	// 上游数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownStreamCount *int64 `json:"DownStreamCount,omitnil,omitempty" name:"DownStreamCount"`
+
+	// 下游数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpStreamCount *int64 `json:"UpStreamCount,omitnil,omitempty" name:"UpStreamCount"`
+
+	// 上游节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSet []*LineageNodeInfoVO `json:"ParentSet,omitnil,omitempty" name:"ParentSet"`
+
+	// 下游节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildSet []*LineageNodeInfoVO `json:"ChildSet,omitnil,omitempty" name:"ChildSet"`
+
+	// 父/子节点是否展示上下游数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamCountFlag *bool `json:"StreamCountFlag,omitnil,omitempty" name:"StreamCountFlag"`
+}
+
 type LineageParamRecord struct {
 	// 字段名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -27975,6 +28152,108 @@ type LineageParamRecord struct {
 	// 字段值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type LineageProcessVO struct {
+	// 原始唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessId *string `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessType *string `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
+
+	// 任务子类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessSubType *string `json:"ProcessSubType,omitnil,omitempty" name:"ProcessSubType"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualifiedId *string `json:"QualifiedId,omitnil,omitempty" name:"QualifiedId"`
+
+	// 来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 额外扩展参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessProperties []*LineageProperty `json:"ProcessProperties,omitnil,omitempty" name:"ProcessProperties"`
+}
+
+type LineageProperty struct {
+	// 属性名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 属性值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type LineageRelationVO struct {
+	// 关联ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelationId *string `json:"RelationId,omitnil,omitempty" name:"RelationId"`
+
+	// 源端唯一血缘ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceQualifiedId *string `json:"SourceQualifiedId,omitnil,omitempty" name:"SourceQualifiedId"`
+
+	// 目标端唯一血缘ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetQualifiedId *string `json:"TargetQualifiedId,omitnil,omitempty" name:"TargetQualifiedId"`
+
+	// 血缘加工过程
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Processes []*LineageProcessVO `json:"Processes,omitnil,omitempty" name:"Processes"`
+}
+
+type LineageResouce struct {
+	// 实体原始唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceOriId *string `json:"ResourceOriId,omitnil,omitempty" name:"ResourceOriId"`
+
+	// 业务名称：库名.表名｜指标名称｜模型名称|字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// 实体类型
+	// TABLE|METRIC|MODEL|SERVICE|COLUMN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 血缘全局唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualifiedId *string `json:"QualifiedId,omitnil,omitempty" name:"QualifiedId"`
+
+	// 描述：表类型｜指标描述｜模型描述|字段描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 来源：WEDATA|THIRD
+	// 默认wedata
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// resource 额外扩展参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceProperties []*LineageProperty `json:"ResourceProperties,omitnil,omitempty" name:"ResourceProperties"`
 }
 
 type LineageTask struct {
