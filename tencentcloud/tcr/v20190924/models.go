@@ -2917,6 +2917,74 @@ func (r *DeleteReplicationInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteReplicationRuleRequestParams struct {
+	// 源实例ID
+	SourceRegistryId *string `json:"SourceRegistryId,omitnil,omitempty" name:"SourceRegistryId"`
+
+	// 同步规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type DeleteReplicationRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 源实例ID
+	SourceRegistryId *string `json:"SourceRegistryId,omitnil,omitempty" name:"SourceRegistryId"`
+
+	// 同步规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *DeleteReplicationRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReplicationRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SourceRegistryId")
+	delete(f, "RuleName")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteReplicationRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteReplicationRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteReplicationRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteReplicationRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteReplicationRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReplicationRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteRepositoryPersonalRequestParams struct {
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
@@ -5429,6 +5497,82 @@ func (r *DescribeReplicationInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeReplicationInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReplicationPoliciesRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 页数，默认为1
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页展示个数，默认为100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeReplicationPoliciesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 页数，默认为1
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页展示个数，默认为100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeReplicationPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReplicationPoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReplicationPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReplicationPoliciesResponseParams struct {
+	// 实例同步策略列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicationPolicyInfoList []*ReplicationPolicyInfo `json:"ReplicationPolicyInfoList,omitnil,omitempty" name:"ReplicationPolicyInfoList"`
+
+	// 策略总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeReplicationPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReplicationPoliciesResponseParams `json:"Response"`
+}
+
+func (r *DescribeReplicationPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReplicationPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8222,6 +8366,16 @@ type Permission struct {
 	Actions []*string `json:"Actions,omitnil,omitempty" name:"Actions"`
 }
 
+type PolicyFilter struct {
+	// 策略过滤类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 策略过滤值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type Region struct {
 	// gz
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
@@ -8436,6 +8590,48 @@ type ReplicationLog struct {
 
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type ReplicationPolicyInfo struct {
+	// 策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 策略名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 策略描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 策略过滤条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Filters []*PolicyFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否覆盖对端同名镜像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Override *bool `json:"Override,omitnil,omitempty" name:"Override"`
+
+	// 是否开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcResource *string `json:"SrcResource,omitnil,omitempty" name:"SrcResource"`
+
+	// 目的资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestResource *string `json:"DestResource,omitnil,omitempty" name:"DestResource"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type ReplicationRegistry struct {

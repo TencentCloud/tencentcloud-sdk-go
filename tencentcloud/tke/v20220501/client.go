@@ -403,6 +403,64 @@ func (c *Client) DescribeClusterInstancesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeClusterMachinesRequest() (request *DescribeClusterMachinesRequest) {
+    request = &DescribeClusterMachinesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterMachines")
+    
+    
+    return
+}
+
+func NewDescribeClusterMachinesResponse() (response *DescribeClusterMachinesResponse) {
+    response = &DescribeClusterMachinesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterMachines
+// 查询托原生点列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeClusterMachines(request *DescribeClusterMachinesRequest) (response *DescribeClusterMachinesResponse, err error) {
+    return c.DescribeClusterMachinesWithContext(context.Background(), request)
+}
+
+// DescribeClusterMachines
+// 查询托原生点列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeClusterMachinesWithContext(ctx context.Context, request *DescribeClusterMachinesRequest) (response *DescribeClusterMachinesResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterMachinesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterMachines")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterMachines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterMachinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
     request = &DescribeClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},

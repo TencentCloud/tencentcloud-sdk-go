@@ -2121,6 +2121,118 @@ func (c *Client) DescribeHBaseTableOverviewWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeHBaseTableRequestMetricRequest() (request *DescribeHBaseTableRequestMetricRequest) {
+    request = &DescribeHBaseTableRequestMetricRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeHBaseTableRequestMetric")
+    
+    
+    return
+}
+
+func NewDescribeHBaseTableRequestMetricResponse() (response *DescribeHBaseTableRequestMetricResponse) {
+    response = &DescribeHBaseTableRequestMetricResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHBaseTableRequestMetric
+// Hbase的表粒度读取和写入速率
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DOOPENTSDBREQUESTEXCEPTION = "InternalError.DoOpenTSDBRequestException"
+//  INTERNALERROR_OPENTSDBHTTPRETURNCODENOTOK = "InternalError.OpenTSDBHttpReturnCodeNotOK"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeHBaseTableRequestMetric(request *DescribeHBaseTableRequestMetricRequest) (response *DescribeHBaseTableRequestMetricResponse, err error) {
+    return c.DescribeHBaseTableRequestMetricWithContext(context.Background(), request)
+}
+
+// DescribeHBaseTableRequestMetric
+// Hbase的表粒度读取和写入速率
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DOOPENTSDBREQUESTEXCEPTION = "InternalError.DoOpenTSDBRequestException"
+//  INTERNALERROR_OPENTSDBHTTPRETURNCODENOTOK = "InternalError.OpenTSDBHttpReturnCodeNotOK"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeHBaseTableRequestMetricWithContext(ctx context.Context, request *DescribeHBaseTableRequestMetricRequest) (response *DescribeHBaseTableRequestMetricResponse, err error) {
+    if request == nil {
+        request = NewDescribeHBaseTableRequestMetricRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeHBaseTableRequestMetric")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHBaseTableRequestMetric require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHBaseTableRequestMetricResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHBaseTableStoreSizeMetricRequest() (request *DescribeHBaseTableStoreSizeMetricRequest) {
+    request = &DescribeHBaseTableStoreSizeMetricRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeHBaseTableStoreSizeMetric")
+    
+    
+    return
+}
+
+func NewDescribeHBaseTableStoreSizeMetricResponse() (response *DescribeHBaseTableStoreSizeMetricResponse) {
+    response = &DescribeHBaseTableStoreSizeMetricResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHBaseTableStoreSizeMetric
+// 查询Hbase的表粒度StoreSize大小监控指标数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DOOPENTSDBREQUESTEXCEPTION = "InternalError.DoOpenTSDBRequestException"
+//  INTERNALERROR_OPENTSDBHTTPRETURNCODENOTOK = "InternalError.OpenTSDBHttpReturnCodeNotOK"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeHBaseTableStoreSizeMetric(request *DescribeHBaseTableStoreSizeMetricRequest) (response *DescribeHBaseTableStoreSizeMetricResponse, err error) {
+    return c.DescribeHBaseTableStoreSizeMetricWithContext(context.Background(), request)
+}
+
+// DescribeHBaseTableStoreSizeMetric
+// 查询Hbase的表粒度StoreSize大小监控指标数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DOOPENTSDBREQUESTEXCEPTION = "InternalError.DoOpenTSDBRequestException"
+//  INTERNALERROR_OPENTSDBHTTPRETURNCODENOTOK = "InternalError.OpenTSDBHttpReturnCodeNotOK"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeHBaseTableStoreSizeMetricWithContext(ctx context.Context, request *DescribeHBaseTableStoreSizeMetricRequest) (response *DescribeHBaseTableStoreSizeMetricResponse, err error) {
+    if request == nil {
+        request = NewDescribeHBaseTableStoreSizeMetricRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeHBaseTableStoreSizeMetric")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHBaseTableStoreSizeMetric require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHBaseTableStoreSizeMetricResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHDFSStorageInfoRequest() (request *DescribeHDFSStorageInfoRequest) {
     request = &DescribeHDFSStorageInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

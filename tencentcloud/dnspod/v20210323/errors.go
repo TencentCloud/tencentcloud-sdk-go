@@ -620,6 +620,9 @@ const (
 	// 未实名认证用户，请先完成实名认证再操作。
 	INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
 
+	// 不支持的筛选类型
+	INVALIDPARAMETER_UNSUPPORTEDFILTERTYPE = "InvalidParameter.UnsupportedFilterType"
+
 	// 更新新域名等级失败。
 	INVALIDPARAMETER_UPDATENEWGRADEFAILED = "InvalidParameter.UpdateNewGradeFailed"
 

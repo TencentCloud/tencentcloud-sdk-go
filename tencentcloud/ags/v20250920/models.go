@@ -97,6 +97,17 @@ func (r *AcquireSandboxInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CosStorageSource struct {
+	// 对象存储访问域名
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 对象存储桶名称
+	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
+
+	// 对象存储桶路径，必须为以/起始的绝对路径
+	BucketPath *string `json:"BucketPath,omitnil,omitempty" name:"BucketPath"`
+}
+
 // Predefined struct for user
 type CreateAPIKeyRequestParams struct {
 	// API密钥名称，方便用户记忆
@@ -182,6 +193,12 @@ type CreateSandboxToolRequestParams struct {
 
 	// 幂等性 Token，长度不超过 64 字符
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 角色ARN
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 沙箱工具存储配置
+	StorageMounts []*StorageMount `json:"StorageMounts,omitnil,omitempty" name:"StorageMounts"`
 }
 
 type CreateSandboxToolRequest struct {
@@ -207,6 +224,12 @@ type CreateSandboxToolRequest struct {
 
 	// 幂等性 Token，长度不超过 64 字符
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 角色ARN
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 沙箱工具存储配置
+	StorageMounts []*StorageMount `json:"StorageMounts,omitnil,omitempty" name:"StorageMounts"`
 }
 
 func (r *CreateSandboxToolRequest) ToJsonString() string {
@@ -228,6 +251,8 @@ func (r *CreateSandboxToolRequest) FromJsonString(s string) error {
 	delete(f, "DefaultTimeout")
 	delete(f, "Tags")
 	delete(f, "ClientToken")
+	delete(f, "RoleArn")
+	delete(f, "StorageMounts")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSandboxToolRequest has unknown keys!", "")
 	}
@@ -601,9 +626,26 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type MountOption struct {
+	// 指定沙箱工具中的存储配置名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 沙箱实例本地挂载路径（可选），默认继承工具中的存储配置
+	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
+
+	// 沙箱实例存储挂载子路径（可选）
+	SubPath *string `json:"SubPath,omitnil,omitempty" name:"SubPath"`
+
+	// 沙箱实例存储挂载读写权限（可选），默认继承工具存储配置
+	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
+}
+
 type NetworkConfiguration struct {
-	// 网络模式（当前支持 PUBLIC）
+	// 网络模式（当前支持 PUBLIC, VPC, SANDBOX）
 	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
+
+	// VPC网络相关配置
+	VpcConfig *VPCConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
 }
 
 type SandboxInstance struct {
@@ -633,6 +675,9 @@ type SandboxInstance struct {
 
 	// 更新时间（ISO 8601 格式）
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 存储挂载选项
+	MountOptions []*MountOption `json:"MountOptions,omitnil,omitempty" name:"MountOptions"`
 }
 
 type SandboxTool struct {
@@ -665,6 +710,12 @@ type SandboxTool struct {
 
 	// 沙箱工具更新时间，格式：ISO8601
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 沙箱工具绑定角色ARN
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 沙箱工具中实例存储挂载配置
+	StorageMounts []*StorageMount `json:"StorageMounts,omitnil,omitempty" name:"StorageMounts"`
 }
 
 // Predefined struct for user
@@ -680,6 +731,9 @@ type StartSandboxInstanceRequestParams struct {
 
 	// 幂等性 Token，长度不超过 64 字符
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 沙箱实例存储挂载配置
+	MountOptions []*MountOption `json:"MountOptions,omitnil,omitempty" name:"MountOptions"`
 }
 
 type StartSandboxInstanceRequest struct {
@@ -696,6 +750,9 @@ type StartSandboxInstanceRequest struct {
 
 	// 幂等性 Token，长度不超过 64 字符
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 沙箱实例存储挂载配置
+	MountOptions []*MountOption `json:"MountOptions,omitnil,omitempty" name:"MountOptions"`
 }
 
 func (r *StartSandboxInstanceRequest) ToJsonString() string {
@@ -714,6 +771,7 @@ func (r *StartSandboxInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ToolName")
 	delete(f, "Timeout")
 	delete(f, "ClientToken")
+	delete(f, "MountOptions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartSandboxInstanceRequest has unknown keys!", "")
 	}
@@ -797,6 +855,25 @@ func (r *StopSandboxInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopSandboxInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type StorageMount struct {
+	// 存储挂载配置名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 存储配置
+	StorageSource *StorageSource `json:"StorageSource,omitnil,omitempty" name:"StorageSource"`
+
+	// 沙箱实例本地挂载路径
+	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
+
+	// 存储挂载读写权限配置，默认为false
+	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
+}
+
+type StorageSource struct {
+	// 对象存储桶配置
+	Cos *CosStorageSource `json:"Cos,omitnil,omitempty" name:"Cos"`
 }
 
 type Tag struct {
@@ -941,4 +1018,12 @@ func (r *UpdateSandboxToolResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateSandboxToolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VPCConfig struct {
+	// VPC子网ID列表
+	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
+
+	// 安全组ID列表
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }

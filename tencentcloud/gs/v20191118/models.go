@@ -179,6 +179,26 @@ type AndroidInstanceAppInfo struct {
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 }
 
+type AndroidInstanceBackup struct {
+	// 备份ID
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+
+	// 备份状态
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 大小，单位 Byte
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 备份的安卓实例 ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
 type AndroidInstanceDevice struct {
 	// 品牌
 	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
@@ -2362,6 +2382,12 @@ func (r *DescribeAndroidInstanceBackupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAndroidInstanceBackupsResponseParams struct {
+	// 备份列表
+	Backups []*AndroidInstanceBackup `json:"Backups,omitnil,omitempty" name:"Backups"`
+
+	// 备份总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

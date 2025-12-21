@@ -1777,141 +1777,147 @@ type CreateInstancePreData struct {
 
 // Predefined struct for user
 type CreateInstancePreRequestParams struct {
-	// ckafka集群实例Name，是一个不超过 128 个字符的任意字符串。
+	// <p>ckafka集群实例Name，是一个不超过 128 个字符的任意字符串。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 可用区。当购买多可用区实例时，当前参数为主可用区。  [查看可用区](https://cloud.tencent.com/document/product/597/55246)
+	// <p>可用区。当购买多可用区实例时，当前参数为主可用区。  <a href="https://cloud.tencent.com/document/product/597/55246">查看可用区</a></p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m
+	// <p>预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m</p>
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
+	// <p>国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。</p>
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 私有网络Id
+	// <p>私有网络Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网id
+	// <p>子网id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 可选。实例日志的最长保留时间，单位分钟，不填默认为1440（1天），可设置范围为1分钟到90天。
+	// <p>可选。实例日志的最长保留时间，单位分钟，不填默认为1440（1天），可设置范围为1分钟到90天。</p>
 	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitnil,omitempty" name:"MsgRetentionTime"`
 
-	// 创建实例时可以选择集群Id, 该入参表示集群Id
+	// <p>创建实例时可以选择集群Id, 该入参表示集群Id</p>
 	ClusterId *int64 `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// <p>预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
+	// <p>CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。</p>
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// 实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"
+	// <p>实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"</p>
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
-	// 磁盘大小，如果跟控制台规格配比不相符，则无法创建成功。默认取值为500，步长设置为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562
+	// <p>磁盘大小，如果跟控制台规格配比不相符，则无法创建成功。默认取值为500，步长设置为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 实例带宽,默认值为40，单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745
+	// <p>实例带宽,默认值为40，单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745</p>
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
-	// 分区大小，如果跟控制台规格配比不相符，则无法创建成功。默认值为800，步长为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122563
+	// <p>分区大小，如果跟控制台规格配比不相符，则无法创建成功。默认值为800，步长为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122563</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 专业版/高级版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"
+	// <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 是否创建跨可用区实例，当前参数为 true 时，zoneIds必填
+	// <p>是否创建跨可用区实例，当前参数为 true 时，zoneIds必填</p>
 	MultiZoneFlag *bool `json:"MultiZoneFlag,omitnil,omitempty" name:"MultiZoneFlag"`
 
-	// 可用区列表，购买多可用区实例时为必填项
+	// <p>可用区列表，购买多可用区实例时为必填项</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。默认值为 0。需要保证传入参数为 3 的整数倍
+	// <p>公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。默认值为 0。需要保证传入参数为 3 的整数倍</p>
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitnil,omitempty" name:"PublicNetworkMonthly"`
 
-	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+	// <p>购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例</p>
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// 是否自动选择代金券:1-是;0否。默认为0
+	// <p>是否自动选择代金券:1-是;0否。默认为0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 弹性带宽开关 0不开启  1开启（0默认）
+	// <p>弹性带宽开关 0不开启  1开启（0默认）</p>
 	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
+
+	// <p>自定义证书Id,仅当SpecificationsType为profession时生效,支持自定义证书能力</p><p>可通过<a href="https://cloud.tencent.com/document/product/400/41673">DescribeCertificateDetail</a>接口获取</p>
+	CustomSSLCertId *string `json:"CustomSSLCertId,omitnil,omitempty" name:"CustomSSLCertId"`
 }
 
 type CreateInstancePreRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Name，是一个不超过 128 个字符的任意字符串。
+	// <p>ckafka集群实例Name，是一个不超过 128 个字符的任意字符串。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 可用区。当购买多可用区实例时，当前参数为主可用区。  [查看可用区](https://cloud.tencent.com/document/product/597/55246)
+	// <p>可用区。当购买多可用区实例时，当前参数为主可用区。  <a href="https://cloud.tencent.com/document/product/597/55246">查看可用区</a></p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m
+	// <p>预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m</p>
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
+	// <p>国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。</p>
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 私有网络Id
+	// <p>私有网络Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网id
+	// <p>子网id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 可选。实例日志的最长保留时间，单位分钟，不填默认为1440（1天），可设置范围为1分钟到90天。
+	// <p>可选。实例日志的最长保留时间，单位分钟，不填默认为1440（1天），可设置范围为1分钟到90天。</p>
 	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitnil,omitempty" name:"MsgRetentionTime"`
 
-	// 创建实例时可以选择集群Id, 该入参表示集群Id
+	// <p>创建实例时可以选择集群Id, 该入参表示集群Id</p>
 	ClusterId *int64 `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// <p>预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
+	// <p>CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。</p>
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// 实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"
+	// <p>实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"</p>
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
-	// 磁盘大小，如果跟控制台规格配比不相符，则无法创建成功。默认取值为500，步长设置为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562
+	// <p>磁盘大小，如果跟控制台规格配比不相符，则无法创建成功。默认取值为500，步长设置为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 实例带宽,默认值为40，单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745
+	// <p>实例带宽,默认值为40，单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745</p>
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
-	// 分区大小，如果跟控制台规格配比不相符，则无法创建成功。默认值为800，步长为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122563
+	// <p>分区大小，如果跟控制台规格配比不相符，则无法创建成功。默认值为800，步长为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122563</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 专业版/高级版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"
+	// <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 是否创建跨可用区实例，当前参数为 true 时，zoneIds必填
+	// <p>是否创建跨可用区实例，当前参数为 true 时，zoneIds必填</p>
 	MultiZoneFlag *bool `json:"MultiZoneFlag,omitnil,omitempty" name:"MultiZoneFlag"`
 
-	// 可用区列表，购买多可用区实例时为必填项
+	// <p>可用区列表，购买多可用区实例时为必填项</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。默认值为 0。需要保证传入参数为 3 的整数倍
+	// <p>公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。默认值为 0。需要保证传入参数为 3 的整数倍</p>
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitnil,omitempty" name:"PublicNetworkMonthly"`
 
-	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+	// <p>购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例</p>
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// 是否自动选择代金券:1-是;0否。默认为0
+	// <p>是否自动选择代金券:1-是;0否。默认为0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 弹性带宽开关 0不开启  1开启（0默认）
+	// <p>弹性带宽开关 0不开启  1开启（0默认）</p>
 	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
+
+	// <p>自定义证书Id,仅当SpecificationsType为profession时生效,支持自定义证书能力</p><p>可通过<a href="https://cloud.tencent.com/document/product/400/41673">DescribeCertificateDetail</a>接口获取</p>
+	CustomSSLCertId *string `json:"CustomSSLCertId,omitnil,omitempty" name:"CustomSSLCertId"`
 }
 
 func (r *CreateInstancePreRequest) ToJsonString() string {
@@ -1948,6 +1954,7 @@ func (r *CreateInstancePreRequest) FromJsonString(s string) error {
 	delete(f, "InstanceNum")
 	delete(f, "AutoVoucher")
 	delete(f, "ElasticBandwidthSwitch")
+	delete(f, "CustomSSLCertId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancePreRequest has unknown keys!", "")
 	}
@@ -1973,7 +1980,7 @@ type CreateInstancePreResp struct {
 
 // Predefined struct for user
 type CreateInstancePreResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *CreateInstancePreResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2069,129 +2076,135 @@ func (r *CreatePartitionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePostPaidInstanceRequestParams struct {
-	// 私有网络Id,可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取
+	// <p>私有网络Id,可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>接口获取</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网Id,可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取
+	// <p>子网Id,可通过<a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a>接口获取</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// ckafka集群实例名称，是一个长度不超过128的任意字符。
+	// <p>ckafka集群实例名称，是一个长度不超过128的任意字符。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
+	// <p>国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。</p>
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准
+	// <p>实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准</p>
 	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitnil,omitempty" name:"MsgRetentionTime"`
 
-	// 创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
+	// <p>创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数</p>
 	ClusterId *int64 `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 实例版本。目前支持当前支持"2.4.1", "2.4.2","2.8.1", "3.2.3"，默认取值"2.4.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
+	// <p>实例版本。目前支持当前支持"2.4.1", "2.4.2","2.8.1", "3.2.3"，默认取值"2.4.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。</p>
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// 实例类型。"standard"：标准版，"profession"：专业版。  (标准版仅国际站支持，国内站目前支持专业版)
+	// <p>实例类型。"standard"：标准版，"profession"：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
-	// 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"
+	// <p>专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 实例内网峰值带宽，默认值为40。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745
+	// <p>实例内网峰值带宽，默认值为40。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745</p>
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
-	// 实例硬盘大小，默认取值为500，步长设置为100。需要满足当前实例的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562
+	// <p>实例硬盘大小，默认取值为500，步长设置为100。需要满足当前实例的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 实例最大分区数量，需要满足当前实例的计费规格。默认值为800，步长为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122563
+	// <p>实例最大分区数量，需要满足当前实例的计费规格。默认值为800，步长为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122563</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 实例最大 topic 数量，需要满足当前实例的计费规格。默认值为800，步长设置为100。
+	// <p>实例最大 topic 数量，需要满足当前实例的计费规格。默认值为800，步长设置为100。</p>
 	TopicNum *int64 `json:"TopicNum,omitnil,omitempty" name:"TopicNum"`
 
-	// 实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在子网的可用区 id。ZoneId、ZoneIds不能同时为空，可通过[DescribeCkafkaZone](https://cloud.tencent.com/document/product/597/55246)接口获取。
+	// <p>实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在子网的可用区 id。ZoneId、ZoneIds不能同时为空，可通过<a href="https://cloud.tencent.com/document/product/597/55246">DescribeCkafkaZone</a>接口获取。</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 当前实例是否为多可用区实例。
+	// <p>当前实例是否为多可用区实例。</p>
 	MultiZoneFlag *bool `json:"MultiZoneFlag,omitnil,omitempty" name:"MultiZoneFlag"`
 
-	// 当实例为多可用区实例时，多可用区 id 列表。注意参数 ZoneId 对应的多可用区需要包含在该参数数组中。ZoneId、ZoneIds不能同时为空，可通过[DescribeCkafkaZone](https://cloud.tencent.com/document/product/597/55246)接口获取。
+	// <p>当实例为多可用区实例时，多可用区 id 列表。注意参数 ZoneId 对应的多可用区需要包含在该参数数组中。ZoneId、ZoneIds不能同时为空，可通过<a href="https://cloud.tencent.com/document/product/597/55246">DescribeCkafkaZone</a>接口获取。</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+	// <p>购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例</p>
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
+	// <p>公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍</p>
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitnil,omitempty" name:"PublicNetworkMonthly"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性带宽开关 0不开启  1开启（0默认)
+	// <p>弹性带宽开关 0不开启  1开启（0默认)</p>
 	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
+
+	// <p>自定义证书Id,仅当SpecificationsType为profession时生效,支持自定义证书能力</p><p>可通过<a href="https://cloud.tencent.com/document/product/400/41673">DescribeCertificateDetail</a>接口获取</p>
+	CustomSSLCertId *string `json:"CustomSSLCertId,omitnil,omitempty" name:"CustomSSLCertId"`
 }
 
 type CreatePostPaidInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 私有网络Id,可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取
+	// <p>私有网络Id,可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>接口获取</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网Id,可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取
+	// <p>子网Id,可通过<a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a>接口获取</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// ckafka集群实例名称，是一个长度不超过128的任意字符。
+	// <p>ckafka集群实例名称，是一个长度不超过128的任意字符。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
+	// <p>国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。</p>
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准
+	// <p>实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准</p>
 	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitnil,omitempty" name:"MsgRetentionTime"`
 
-	// 创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
+	// <p>创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数</p>
 	ClusterId *int64 `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 实例版本。目前支持当前支持"2.4.1", "2.4.2","2.8.1", "3.2.3"，默认取值"2.4.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
+	// <p>实例版本。目前支持当前支持"2.4.1", "2.4.2","2.8.1", "3.2.3"，默认取值"2.4.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。</p>
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// 实例类型。"standard"：标准版，"profession"：专业版。  (标准版仅国际站支持，国内站目前支持专业版)
+	// <p>实例类型。"standard"：标准版，"profession"：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
-	// 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"
+	// <p>专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 实例内网峰值带宽，默认值为40。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745
+	// <p>实例内网峰值带宽，默认值为40。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745</p>
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
-	// 实例硬盘大小，默认取值为500，步长设置为100。需要满足当前实例的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562
+	// <p>实例硬盘大小，默认取值为500，步长设置为100。需要满足当前实例的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 实例最大分区数量，需要满足当前实例的计费规格。默认值为800，步长为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122563
+	// <p>实例最大分区数量，需要满足当前实例的计费规格。默认值为800，步长为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122563</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 实例最大 topic 数量，需要满足当前实例的计费规格。默认值为800，步长设置为100。
+	// <p>实例最大 topic 数量，需要满足当前实例的计费规格。默认值为800，步长设置为100。</p>
 	TopicNum *int64 `json:"TopicNum,omitnil,omitempty" name:"TopicNum"`
 
-	// 实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在子网的可用区 id。ZoneId、ZoneIds不能同时为空，可通过[DescribeCkafkaZone](https://cloud.tencent.com/document/product/597/55246)接口获取。
+	// <p>实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在子网的可用区 id。ZoneId、ZoneIds不能同时为空，可通过<a href="https://cloud.tencent.com/document/product/597/55246">DescribeCkafkaZone</a>接口获取。</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 当前实例是否为多可用区实例。
+	// <p>当前实例是否为多可用区实例。</p>
 	MultiZoneFlag *bool `json:"MultiZoneFlag,omitnil,omitempty" name:"MultiZoneFlag"`
 
-	// 当实例为多可用区实例时，多可用区 id 列表。注意参数 ZoneId 对应的多可用区需要包含在该参数数组中。ZoneId、ZoneIds不能同时为空，可通过[DescribeCkafkaZone](https://cloud.tencent.com/document/product/597/55246)接口获取。
+	// <p>当实例为多可用区实例时，多可用区 id 列表。注意参数 ZoneId 对应的多可用区需要包含在该参数数组中。ZoneId、ZoneIds不能同时为空，可通过<a href="https://cloud.tencent.com/document/product/597/55246">DescribeCkafkaZone</a>接口获取。</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+	// <p>购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例</p>
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
+	// <p>公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍</p>
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitnil,omitempty" name:"PublicNetworkMonthly"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性带宽开关 0不开启  1开启（0默认)
+	// <p>弹性带宽开关 0不开启  1开启（0默认)</p>
 	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
+
+	// <p>自定义证书Id,仅当SpecificationsType为profession时生效,支持自定义证书能力</p><p>可通过<a href="https://cloud.tencent.com/document/product/400/41673">DescribeCertificateDetail</a>接口获取</p>
+	CustomSSLCertId *string `json:"CustomSSLCertId,omitnil,omitempty" name:"CustomSSLCertId"`
 }
 
 func (r *CreatePostPaidInstanceRequest) ToJsonString() string {
@@ -2226,6 +2239,7 @@ func (r *CreatePostPaidInstanceRequest) FromJsonString(s string) error {
 	delete(f, "PublicNetworkMonthly")
 	delete(f, "Tags")
 	delete(f, "ElasticBandwidthSwitch")
+	delete(f, "CustomSSLCertId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePostPaidInstanceRequest has unknown keys!", "")
 	}
@@ -2234,7 +2248,7 @@ func (r *CreatePostPaidInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePostPaidInstanceResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *CreateInstancePostResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4243,6 +4257,9 @@ func (r *DescribeCkafkaVersionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCkafkaVersionResponseParams struct {
+	// 实例版本信息
+	Result *InstanceVersion `json:"Result,omitnil,omitempty" name:"Result"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -8176,161 +8193,142 @@ type Instance struct {
 }
 
 type InstanceAttributesResponse struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// ckafka集群实例Name
+	// <p>ckafka集群实例Name</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 接入点 VIP 列表信息
+	// <p>接入点 VIP 列表信息</p>
 	VipList []*VipEntity `json:"VipList,omitnil,omitempty" name:"VipList"`
 
-	// 虚拟IP
+	// <p>虚拟IP</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 虚拟端口
+	// <p>虚拟端口</p>
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 
+	// <p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 </p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例带宽，单位：Mbps
+	// <p>实例带宽，单位：Mbps</p>
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 实例的存储大小，单位：GB
+	// <p>实例的存储大小，单位：GB</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 可用区
+	// <p>可用区</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// VPC 的 ID，为空表示是基础网络
+	// <p>VPC 的 ID，为空表示是基础网络</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID， 为空表示基础网络
+	// <p>子网 ID， 为空表示基础网络</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例健康状态， 1：健康，2：告警，3：异常
+	// <p>实例健康状态， 1：健康，2：告警，3：异常</p>
 	Healthy *int64 `json:"Healthy,omitnil,omitempty" name:"Healthy"`
 
-	// 实例健康信息，当前会展示磁盘利用率，最大长度为256
+	// <p>实例健康信息，当前会展示磁盘利用率，最大长度为256</p>
 	HealthyMessage *string `json:"HealthyMessage,omitnil,omitempty" name:"HealthyMessage"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 消息保存时间,单位为分钟
+	// <p>消息保存时间,单位为分钟</p>
 	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitnil,omitempty" name:"MsgRetentionTime"`
 
-	// 自动创建 Topic 配置， 若该字段为空，则表示未开启自动创建
+	// <p>自动创建 Topic 配置， 若该字段为空，则表示未开启自动创建</p>
 	Config *InstanceConfigDO `json:"Config,omitnil,omitempty" name:"Config"`
 
-	// 剩余创建分区数
+	// <p>剩余创建分区数</p>
 	RemainderPartitions *int64 `json:"RemainderPartitions,omitnil,omitempty" name:"RemainderPartitions"`
 
-	// 剩余创建主题数
+	// <p>剩余创建主题数</p>
 	RemainderTopics *int64 `json:"RemainderTopics,omitnil,omitempty" name:"RemainderTopics"`
 
-	// 当前创建分区数
+	// <p>当前创建分区数</p>
 	CreatedPartitions *int64 `json:"CreatedPartitions,omitnil,omitempty" name:"CreatedPartitions"`
 
-	// 当前创建主题数
+	// <p>当前创建主题数</p>
 	CreatedTopics *int64 `json:"CreatedTopics,omitnil,omitempty" name:"CreatedTopics"`
 
-	// 标签数组
+	// <p>标签数组</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 过期时间
+	// <p>过期时间</p>
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 可用区列表
+	// <p>可用区列表</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// ckafka集群实例版本
+	// <p>ckafka集群实例版本</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 最大分组数
+	// <p>最大分组数</p>
 	MaxGroupNum *int64 `json:"MaxGroupNum,omitnil,omitempty" name:"MaxGroupNum"`
 
-	// 售卖类型,0:标准版,1:专业版
+	// <p>售卖类型,0:标准版,1:专业版</p>
 	Cvm *int64 `json:"Cvm,omitnil,omitempty" name:"Cvm"`
 
-	// 实例类型  枚举列表: 
-	// profession  :专业版    
-	// standards2  :标准版
-	// premium   :高级版
-	// serverless  :serverless版
+	// <p>实例类型  枚举列表: profession  :专业版  <br />standards2  :标准版premium   :高级版serverless  :serverless版</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。
+	// <p>表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。</p>
 	Features []*string `json:"Features,omitnil,omitempty" name:"Features"`
 
-	// 动态消息保留策略
+	// <p>动态消息保留策略</p>
 	RetentionTimeConfig *DynamicRetentionTime `json:"RetentionTimeConfig,omitnil,omitempty" name:"RetentionTimeConfig"`
 
-	// 最大连接数
+	// <p>最大连接数</p>
 	MaxConnection *uint64 `json:"MaxConnection,omitnil,omitempty" name:"MaxConnection"`
 
-	// 公网带宽
+	// <p>公网带宽</p>
 	PublicNetwork *int64 `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
-	// 该字段已废弃,无实际含义
+	// <p>该字段已废弃,无实际含义</p>
 	DeleteRouteTimestamp *string `json:"DeleteRouteTimestamp,omitnil,omitempty" name:"DeleteRouteTimestamp"`
 
-	// 剩余创建分区数
+	// <p>剩余创建分区数</p>
 	RemainingPartitions *int64 `json:"RemainingPartitions,omitnil,omitempty" name:"RemainingPartitions"`
 
-	// 剩余创建主题数
+	// <p>剩余创建主题数</p>
 	RemainingTopics *int64 `json:"RemainingTopics,omitnil,omitempty" name:"RemainingTopics"`
 
-	// 动态硬盘扩容策略
+	// <p>动态硬盘扩容策略</p>
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitnil,omitempty" name:"DynamicDiskConfig"`
 
-	// 系统维护时间
+	// <p>系统维护时间</p>
 	SystemMaintenanceTime *string `json:"SystemMaintenanceTime,omitnil,omitempty" name:"SystemMaintenanceTime"`
 
-	// 实例级别消息最大大小
+	// <p>实例级别消息最大大小</p>
 	MaxMessageByte *uint64 `json:"MaxMessageByte,omitnil,omitempty" name:"MaxMessageByte"`
 
-	// 实例计费类型  POSTPAID_BY_HOUR 按小时付费; PREPAID 包年包月
+	// <p>实例计费类型  POSTPAID_BY_HOUR 按小时付费; PREPAID 包年包月</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 是否开启弹性带宽白名单   
-	// 1:已开启弹性带宽白名单;
-	// 0:未开启弹性带宽白名单;
+	// <p>是否开启弹性带宽白名单 <br />1:已开启弹性带宽白名单;0:未开启弹性带宽白名单;</p>
 	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
 
-	// 弹性带宽开通状态
-	// 1:未开启弹性带宽;
-	// 16: 开启弹性带宽中;
-	// 32:开启弹性带宽成功;
-	// 33:关闭弹性带宽中;
-	// 34:关闭弹性带宽成功;
-	// 64:开启弹性带宽失败;
-	// 65:关闭弹性带宽失败;
+	// <p>弹性带宽开通状态1:未开启弹性带宽;16: 开启弹性带宽中;32:开启弹性带宽成功;33:关闭弹性带宽中;34:关闭弹性带宽成功;64:开启弹性带宽失败;65:关闭弹性带宽失败;</p>
 	ElasticBandwidthOpenStatus *int64 `json:"ElasticBandwidthOpenStatus,omitnil,omitempty" name:"ElasticBandwidthOpenStatus"`
 
-	// 集群类型  
-	// CLOUD_IDC IDC集群
-	// CLOUD_CVM_SHARE CVM共享集群
-	// CLOUD_CVM_YUNTI 云梯CVM集群
-	// CLOUD_CVM    CVM集群
-	// CLOUD_CDC CDC集群
-	// CLOUD_EKS_TSE EKS集群
+	// <p>集群类型<br />CLOUD_IDC IDC集群CLOUD_CVM_SHARE CVM共享集群CLOUD_CVM_YUNTI 云梯CVM集群CLOUD_CVM    CVM集群CLOUD_CDC CDC集群CLOUD_EKS_TSE EKS集群</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 免费分区数量
+	// <p>免费分区数量</p>
 	FreePartitionNumber *int64 `json:"FreePartitionNumber,omitnil,omitempty" name:"FreePartitionNumber"`
 
-	// 弹性带宽上浮值
+	// <p>弹性带宽上浮值</p>
 	ElasticFloatBandwidth *int64 `json:"ElasticFloatBandwidth,omitnil,omitempty" name:"ElasticFloatBandwidth"`
 
-	// ssl自定义证书id  仅自定义证书实例集群返回
+	// <p>ssl自定义证书id  仅自定义证书实例集群返回</p>
 	CustomCertId *string `json:"CustomCertId,omitnil,omitempty" name:"CustomCertId"`
 
-	// 集群topic默认 unclean.leader.election.enable配置: 1 开启 0 关闭
+	// <p>集群topic默认 unclean.leader.election.enable配置: 1 开启 0 关闭</p>
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
-	// 实例删除保护开关: 1 开启 0 关闭
+	// <p>实例删除保护开关: 1 开启 0 关闭</p>
 	DeleteProtectionEnable *int64 `json:"DeleteProtectionEnable,omitnil,omitempty" name:"DeleteProtectionEnable"`
 }
 
@@ -8359,100 +8357,100 @@ type InstanceDeleteResponse struct {
 }
 
 type InstanceDetail struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// ckafka集群实例名称
+	// <p>ckafka集群实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 访问实例的vip 信息
+	// <p>访问实例的vip 信息</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 访问实例的端口信息
+	// <p>访问实例的端口信息</p>
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 虚拟IP列表
+	// <p>虚拟IP列表</p>
 	VipList []*VipEntity `json:"VipList,omitnil,omitempty" name:"VipList"`
 
-	// 实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 
+	// <p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 </p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例带宽，单位Mbps
+	// <p>实例带宽，单位Mbps</p>
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// ckafka集群实例磁盘大小，单位G
+	// <p>ckafka集群实例磁盘大小，单位G</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 可用区域ID
+	// <p>可用区域ID</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// vpcId，如果为空，说明是基础网络
+	// <p>vpcId，如果为空，说明是基础网络</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网id
+	// <p>子网id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例是否续费，int  枚举值：1表示自动续费，2表示明确不自动续费
+	// <p>实例是否续费，int  枚举值：1表示自动续费，2表示明确不自动续费</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 实例状态 int：1表示健康，2表示告警，3 表示实例状态异常
+	// <p>实例状态 int：1表示健康，2表示告警，3 表示实例状态异常</p>
 	Healthy *int64 `json:"Healthy,omitnil,omitempty" name:"Healthy"`
 
-	// 实例状态信息
+	// <p>实例状态信息</p>
 	HealthyMessage *string `json:"HealthyMessage,omitnil,omitempty" name:"HealthyMessage"`
 
-	// 实例创建时间
+	// <p>实例创建时间</p>
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 实例过期时间
+	// <p>实例过期时间</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 是否为内部客户。值为1 表示内部客户
+	// <p>是否为内部客户。值为1 表示内部客户</p>
 	IsInternal *int64 `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 
-	// Topic个数
+	// <p>Topic个数</p>
 	TopicNum *int64 `json:"TopicNum,omitnil,omitempty" name:"TopicNum"`
 
-	// 标识tag
+	// <p>标识tag</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// kafka版本信息
+	// <p>kafka版本信息</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 跨可用区
+	// <p>跨可用区</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// ckafka售卖类型
+	// <p>ckafka售卖类型</p>
 	Cvm *int64 `json:"Cvm,omitnil,omitempty" name:"Cvm"`
 
-	// ckafka集群实例类型
+	// <p>ckafka集群实例类型</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// ckafka集群实例磁盘类型
+	// <p>ckafka集群实例磁盘类型</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 当前规格最大Topic数
+	// <p>当前规格最大Topic数</p>
 	MaxTopicNumber *int64 `json:"MaxTopicNumber,omitnil,omitempty" name:"MaxTopicNumber"`
 
-	// 当前规格最大Partition数
+	// <p>当前规格最大Partition数</p>
 	MaxPartitionNumber *int64 `json:"MaxPartitionNumber,omitnil,omitempty" name:"MaxPartitionNumber"`
 
-	// 计划升级配置时间
+	// <p>计划升级配置时间</p>
 	RebalanceTime *string `json:"RebalanceTime,omitnil,omitempty" name:"RebalanceTime"`
 
-	// 实例当前partition数量
+	// <p>实例当前partition数量</p>
 	PartitionNumber *uint64 `json:"PartitionNumber,omitnil,omitempty" name:"PartitionNumber"`
 
-	// ckafka集群实例公网带宽类型
+	// <p>ckafka集群实例公网带宽类型</p>
 	PublicNetworkChargeType *string `json:"PublicNetworkChargeType,omitnil,omitempty" name:"PublicNetworkChargeType"`
 
-	// 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
+	// <p>公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写</p>
 	PublicNetwork *int64 `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
-	// ckafka集群实例底层集群类型
+	// <p>ckafka集群实例底层集群类型</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 实例功能列表
+	// <p>实例功能列表</p>
 	Features []*string `json:"Features,omitnil,omitempty" name:"Features"`
 }
 
@@ -8583,6 +8581,26 @@ func (r *InstanceScalingDownResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *InstanceScalingDownResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InstanceVersion struct {
+	// ckafka集群实例版本
+	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+
+	// broker版本信息
+	CurBrokerVersion *string `json:"CurBrokerVersion,omitnil,omitempty" name:"CurBrokerVersion"`
+
+	// 最新版本信息
+	LatestBrokerVersion []*LatestBrokerVersion `json:"LatestBrokerVersion,omitnil,omitempty" name:"LatestBrokerVersion"`
+
+	// 允许跨大版本内核升级
+	AllowUpgradeHighVersion *bool `json:"AllowUpgradeHighVersion,omitnil,omitempty" name:"AllowUpgradeHighVersion"`
+
+	// 允许升级的大版本
+	HighVersionSet []*string `json:"HighVersionSet,omitnil,omitempty" name:"HighVersionSet"`
+
+	// 允许小版本号配置自动删除消费者组
+	AllowAutoDeleteTimestamp *bool `json:"AllowAutoDeleteTimestamp,omitnil,omitempty" name:"AllowAutoDeleteTimestamp"`
 }
 
 type JgwOperateResponse struct {
@@ -8723,6 +8741,14 @@ type KafkaParam struct {
 
 	// Topic前缀分隔符
 	Separator *string `json:"Separator,omitnil,omitempty" name:"Separator"`
+}
+
+type LatestBrokerVersion struct {
+	// ckafka集群实例版本
+	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+
+	// broker版本号
+	BrokerVersion *string `json:"BrokerVersion,omitnil,omitempty" name:"BrokerVersion"`
 }
 
 type ListCvmAndIpInfoRsp struct {

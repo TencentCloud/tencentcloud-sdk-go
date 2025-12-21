@@ -1428,6 +1428,70 @@ type SqlAgentParameter struct {
 	CodeRepo *CodeRepo `json:"CodeRepo,omitnil,omitempty" name:"CodeRepo"`
 }
 
+// Predefined struct for user
+type StartAgentTaskRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 配置Token
+	InstanceToken *string `json:"InstanceToken,omitnil,omitempty" name:"InstanceToken"`
+}
+
+type StartAgentTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 配置Token
+	InstanceToken *string `json:"InstanceToken,omitnil,omitempty" name:"InstanceToken"`
+}
+
+func (r *StartAgentTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartAgentTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "InstanceToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartAgentTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartAgentTaskResponseParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartAgentTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *StartAgentTaskResponseParams `json:"Response"`
+}
+
+func (r *StartAgentTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartAgentTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TagFilter struct {
 	// 标签键
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`

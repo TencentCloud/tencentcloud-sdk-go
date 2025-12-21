@@ -2687,6 +2687,80 @@ func (c *Client) DeleteReplicationInstanceWithContext(ctx context.Context, reque
     return
 }
 
+func NewDeleteReplicationRuleRequest() (request *DeleteReplicationRuleRequest) {
+    request = &DeleteReplicationRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteReplicationRule")
+    
+    
+    return
+}
+
+func NewDeleteReplicationRuleResponse() (response *DeleteReplicationRuleResponse) {
+    response = &DeleteReplicationRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteReplicationRule
+// 删除实例同步规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRECONDITIONFAILED = "FailedOperation.PreconditionFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteReplicationRule(request *DeleteReplicationRuleRequest) (response *DeleteReplicationRuleResponse, err error) {
+    return c.DeleteReplicationRuleWithContext(context.Background(), request)
+}
+
+// DeleteReplicationRule
+// 删除实例同步规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRECONDITIONFAILED = "FailedOperation.PreconditionFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteReplicationRuleWithContext(ctx context.Context, request *DeleteReplicationRuleRequest) (response *DeleteReplicationRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteReplicationRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "DeleteReplicationRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteReplicationRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteReplicationRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRepositoryRequest() (request *DeleteRepositoryRequest) {
     request = &DeleteRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4951,6 +5025,62 @@ func (c *Client) DescribeReplicationInstancesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeReplicationInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReplicationPoliciesRequest() (request *DescribeReplicationPoliciesRequest) {
+    request = &DescribeReplicationPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeReplicationPolicies")
+    
+    
+    return
+}
+
+func NewDescribeReplicationPoliciesResponse() (response *DescribeReplicationPoliciesResponse) {
+    response = &DescribeReplicationPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReplicationPolicies
+// 获取实例同步规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplicationPolicies(request *DescribeReplicationPoliciesRequest) (response *DescribeReplicationPoliciesResponse, err error) {
+    return c.DescribeReplicationPoliciesWithContext(context.Background(), request)
+}
+
+// DescribeReplicationPolicies
+// 获取实例同步规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplicationPoliciesWithContext(ctx context.Context, request *DescribeReplicationPoliciesRequest) (response *DescribeReplicationPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplicationPoliciesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "DescribeReplicationPolicies")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReplicationPolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReplicationPoliciesResponse()
     err = c.Send(request, response)
     return
 }

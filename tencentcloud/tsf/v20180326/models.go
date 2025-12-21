@@ -1105,22 +1105,18 @@ type BusinessLogConfig struct {
 	ConfigPath *string `json:"ConfigPath,omitnil,omitempty" name:"ConfigPath"`
 
 	// 配置项描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigDesc *string `json:"ConfigDesc,omitnil,omitempty" name:"ConfigDesc"`
 
 	// 配置项标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigTags *string `json:"ConfigTags,omitnil,omitempty" name:"ConfigTags"`
 
 	// 配置项对应的ES管道
 	ConfigPipeline *string `json:"ConfigPipeline,omitnil,omitempty" name:"ConfigPipeline"`
 
 	// 配置项创建时间，格式为yyyy-MM-dd HH:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigCreateTime *string `json:"ConfigCreateTime,omitnil,omitempty" name:"ConfigCreateTime"`
 
 	// 配置项更新时间，格式为yyyy-MM-dd HH:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigUpdateTime *string `json:"ConfigUpdateTime,omitnil,omitempty" name:"ConfigUpdateTime"`
 
 	// 配置项解析规则
@@ -1152,6 +1148,9 @@ type BusinessLogConfig struct {
 
 	// filebeat clean_inactive参数
 	FilebeatCleanInactive *int64 `json:"FilebeatCleanInactive,omitnil,omitempty" name:"FilebeatCleanInactive"`
+
+	// 是否开启自定义pattern
+	CustomMultilinePattern *bool `json:"CustomMultilinePattern,omitnil,omitempty" name:"CustomMultilinePattern"`
 }
 
 type BusinessLogConfigAssociatedGroup struct {
@@ -1194,22 +1193,18 @@ type BusinessLogConfigSchema struct {
 	SchemaType *int64 `json:"SchemaType,omitnil,omitempty" name:"SchemaType"`
 
 	// 解析规则内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaContent *string `json:"SchemaContent,omitnil,omitempty" name:"SchemaContent"`
 
 	// 解析规则时间格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaDateFormat *string `json:"SchemaDateFormat,omitnil,omitempty" name:"SchemaDateFormat"`
 
 	// 解析规则对应的多行匹配规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaMultilinePattern *string `json:"SchemaMultilinePattern,omitnil,omitempty" name:"SchemaMultilinePattern"`
 
 	// 解析规则创建时间，格式为yyyy-MM-dd HH:mm:ss
 	SchemaCreateTime *string `json:"SchemaCreateTime,omitnil,omitempty" name:"SchemaCreateTime"`
 
 	// 用户填写的解析规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaPatternLayout *string `json:"SchemaPatternLayout,omitnil,omitempty" name:"SchemaPatternLayout"`
 }
 

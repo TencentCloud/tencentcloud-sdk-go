@@ -983,6 +983,62 @@ func (c *Client) RemoveChatWithContext(ctx context.Context, request *RemoveChatR
     return
 }
 
+func NewStartAgentTaskRequest() (request *StartAgentTaskRequest) {
+    request = &StartAgentTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdai", APIVersion, "StartAgentTask")
+    
+    
+    return
+}
+
+func NewStartAgentTaskResponse() (response *StartAgentTaskResponse) {
+    response = &StartAgentTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartAgentTask
+// 该接口用于启动一个智能体的任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StartAgentTask(request *StartAgentTaskRequest) (response *StartAgentTaskResponse, err error) {
+    return c.StartAgentTaskWithContext(context.Background(), request)
+}
+
+// StartAgentTask
+// 该接口用于启动一个智能体的任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StartAgentTaskWithContext(ctx context.Context, request *StartAgentTaskRequest) (response *StartAgentTaskResponse, err error) {
+    if request == nil {
+        request = NewStartAgentTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdai", APIVersion, "StartAgentTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartAgentTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartAgentTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTerminateAgentInstanceRequest() (request *TerminateAgentInstanceRequest) {
     request = &TerminateAgentInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

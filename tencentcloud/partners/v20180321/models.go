@@ -1070,72 +1070,68 @@ func (r *DescribeAgentClientsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAgentDealsByCacheRequestParams struct {
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目 最大200
+	// <p>限制数目 最大200</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】
+	// <p>下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】</p>
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitnil,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】
+	// <p>下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】</p>
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitnil,omitempty" name:"CreatTimeRangeEnd"`
 
-	// 0:下单时间降序；其他：下单时间升序
+	// <p>0:下单时间降序；其他：下单时间升序</p>
 	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 子订单状态(1-待支付,2-已支付,3-发货中,4-已发货,5-发货失败,6-已退款,7-已取消,8-已过期,9-已失效,12-支付中,13-退款中,30-处理中)
-	// 
-	// 控制台订单状态为以上状态的组合：未支付(1) 处理中(2,3,5,12,13,30) 已取消(7) 交易成功(4) 已过期(8) 已退款(6) 订单错误(9)
+	// <p>子订单状态(1-待支付,2-已支付,3-发货中,4-已发货,5-发货失败,6-已退款,7-已取消,8-已过期,9-已失效,12-支付中,13-退款中,30-处理中)</p><p>控制台订单状态为以上状态的组合：未支付(1) 处理中(2,3,5,12,13,30) 已取消(7) 交易成功(4) 已过期(8) 已退款(6) 订单错误(9)</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 下单人账号ID列表
+	// <p>下单人账号ID列表</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 子订单号列表
+	// <p>子订单号列表</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 大订单号列表
+	// <p>大订单号列表</p>
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 
-	// 支付方式，0：自付；1：代付
+	// <p>支付方式，0：自付；1：代付</p>
 	PayerMode *uint64 `json:"PayerMode,omitnil,omitempty" name:"PayerMode"`
 }
 
 type DescribeAgentDealsByCacheRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目 最大200
+	// <p>限制数目 最大200</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】
+	// <p>下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】</p>
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitnil,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】
+	// <p>下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】</p>
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitnil,omitempty" name:"CreatTimeRangeEnd"`
 
-	// 0:下单时间降序；其他：下单时间升序
+	// <p>0:下单时间降序；其他：下单时间升序</p>
 	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 子订单状态(1-待支付,2-已支付,3-发货中,4-已发货,5-发货失败,6-已退款,7-已取消,8-已过期,9-已失效,12-支付中,13-退款中,30-处理中)
-	// 
-	// 控制台订单状态为以上状态的组合：未支付(1) 处理中(2,3,5,12,13,30) 已取消(7) 交易成功(4) 已过期(8) 已退款(6) 订单错误(9)
+	// <p>子订单状态(1-待支付,2-已支付,3-发货中,4-已发货,5-发货失败,6-已退款,7-已取消,8-已过期,9-已失效,12-支付中,13-退款中,30-处理中)</p><p>控制台订单状态为以上状态的组合：未支付(1) 处理中(2,3,5,12,13,30) 已取消(7) 交易成功(4) 已过期(8) 已退款(6) 订单错误(9)</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 下单人账号ID列表
+	// <p>下单人账号ID列表</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 子订单号列表
+	// <p>子订单号列表</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 大订单号列表
+	// <p>大订单号列表</p>
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 
-	// 支付方式，0：自付；1：代付
+	// <p>支付方式，0：自付；1：代付</p>
 	PayerMode *uint64 `json:"PayerMode,omitnil,omitempty" name:"PayerMode"`
 }
 
@@ -1169,10 +1165,10 @@ func (r *DescribeAgentDealsByCacheRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAgentDealsByCacheResponseParams struct {
-	// 订单数组
+	// <p>订单数组</p>
 	AgentDealSet []*AgentDealNewElem `json:"AgentDealSet,omitnil,omitempty" name:"AgentDealSet"`
 
-	// 符合条件的订单总数量
+	// <p>符合条件的订单总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1268,62 +1264,62 @@ func (r *DescribeAgentDealsPriceDetailByDealNameResponse) FromJsonString(s strin
 
 // Predefined struct for user
 type DescribeAgentPayDealsV2RequestParams struct {
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目 最大100
+	// <p>限制数目 最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
+	// <p>下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)</p>
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitnil,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点
+	// <p>下单时间范围终止点</p>
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitnil,omitempty" name:"CreatTimeRangeEnd"`
 
-	// 0:下单时间降序；其他：下单时间升序
+	// <p>0:下单时间降序；其他：下单时间升序</p>
 	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	// <p>订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 下单人账号ID列表
+	// <p>下单人账号ID列表</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 子订单号列表
+	// <p>子订单号列表</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 大订单号列表
+	// <p>大订单号列表</p>
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 }
 
 type DescribeAgentPayDealsV2Request struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目 最大100
+	// <p>限制数目 最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
+	// <p>下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)</p>
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitnil,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点
+	// <p>下单时间范围终止点</p>
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitnil,omitempty" name:"CreatTimeRangeEnd"`
 
-	// 0:下单时间降序；其他：下单时间升序
+	// <p>0:下单时间降序；其他：下单时间升序</p>
 	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	// <p>订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 下单人账号ID列表
+	// <p>下单人账号ID列表</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 子订单号列表
+	// <p>子订单号列表</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 大订单号列表
+	// <p>大订单号列表</p>
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 }
 
@@ -1356,10 +1352,10 @@ func (r *DescribeAgentPayDealsV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAgentPayDealsV2ResponseParams struct {
-	// 订单数组
+	// <p>订单数组</p>
 	AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitnil,omitempty" name:"AgentPayDealSet"`
 
-	// 符合条件的订单总数量
+	// <p>符合条件的订单总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1441,62 +1437,62 @@ func (r *DescribeAgentRelateBigDealIdsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAgentSelfPayDealsV2RequestParams struct {
-	// 下单人账号ID
+	// <p>下单人账号ID</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目 最大100
+	// <p>限制数目 最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
+	// <p>下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)</p>
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitnil,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点
+	// <p>下单时间范围终止点</p>
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitnil,omitempty" name:"CreatTimeRangeEnd"`
 
-	// 0:下单时间降序；其他：下单时间升序
+	// <p>0:下单时间降序；其他：下单时间升序</p>
 	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	// <p>订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 子订单号列表
+	// <p>子订单号列表</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 大订单号列表
+	// <p>大订单号列表</p>
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 }
 
 type DescribeAgentSelfPayDealsV2Request struct {
 	*tchttp.BaseRequest
 	
-	// 下单人账号ID
+	// <p>下单人账号ID</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目 最大100
+	// <p>限制数目 最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
+	// <p>下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)</p>
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitnil,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点
+	// <p>下单时间范围终止点</p>
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitnil,omitempty" name:"CreatTimeRangeEnd"`
 
-	// 0:下单时间降序；其他：下单时间升序
+	// <p>0:下单时间降序；其他：下单时间升序</p>
 	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	// <p>订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 子订单号列表
+	// <p>子订单号列表</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 大订单号列表
+	// <p>大订单号列表</p>
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 }
 
@@ -1529,10 +1525,10 @@ func (r *DescribeAgentSelfPayDealsV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAgentSelfPayDealsV2ResponseParams struct {
-	// 订单数组
+	// <p>订单数组</p>
 	AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitnil,omitempty" name:"AgentPayDealSet"`
 
-	// 符合条件的订单总数量
+	// <p>符合条件的订单总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1750,26 +1746,26 @@ func (r *DescribeClientSwitchTraTaskInfoResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeRebateInfosNewRequestParams struct {
-	// 返佣月份，如2018-02
+	// <p>返佣月份，如2018-02</p>
 	RebateMonth *string `json:"RebateMonth,omitnil,omitempty" name:"RebateMonth"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目
+	// <p>限制数目</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeRebateInfosNewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 返佣月份，如2018-02
+	// <p>返佣月份，如2018-02</p>
 	RebateMonth *string `json:"RebateMonth,omitnil,omitempty" name:"RebateMonth"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目
+	// <p>限制数目</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -1796,10 +1792,10 @@ func (r *DescribeRebateInfosNewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRebateInfosNewResponseParams struct {
-	// 返佣信息列表
+	// <p>返佣信息列表</p>
 	RebateInfoSet []*RebateInfoElemNew `json:"RebateInfoSet,omitnil,omitempty" name:"RebateInfoSet"`
 
-	// 符合查询条件返佣信息数目
+	// <p>符合查询条件返佣信息数目</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1824,26 +1820,26 @@ func (r *DescribeRebateInfosNewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRebateInfosRequestParams struct {
-	// 返佣月份，如2018-02
+	// <p>返佣月份，如2018-02</p>
 	RebateMonth *string `json:"RebateMonth,omitnil,omitempty" name:"RebateMonth"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目
+	// <p>限制数目</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeRebateInfosRequest struct {
 	*tchttp.BaseRequest
 	
-	// 返佣月份，如2018-02
+	// <p>返佣月份，如2018-02</p>
 	RebateMonth *string `json:"RebateMonth,omitnil,omitempty" name:"RebateMonth"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目
+	// <p>限制数目</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -1870,10 +1866,10 @@ func (r *DescribeRebateInfosRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRebateInfosResponseParams struct {
-	// 返佣信息列表
+	// <p>返佣信息列表</p>
 	RebateInfoSet []*RebateInfoElem `json:"RebateInfoSet,omitnil,omitempty" name:"RebateInfoSet"`
 
-	// 符合查询条件返佣信息数目
+	// <p>符合查询条件返佣信息数目</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

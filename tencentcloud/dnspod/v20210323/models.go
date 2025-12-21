@@ -3013,7 +3013,7 @@ type DescribeDomainFilterListRequestParams struct {
 	// 要获取域名的记录数查询区间终点。
 	RecordCountEnd *uint64 `json:"RecordCountEnd,omitnil,omitempty" name:"RecordCountEnd"`
 
-	// 项目ID
+	// 项目ID，"帐号中心-项目管理"拿到项目ID
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 标签过滤
@@ -3078,7 +3078,7 @@ type DescribeDomainFilterListRequest struct {
 	// 要获取域名的记录数查询区间终点。
 	RecordCountEnd *uint64 `json:"RecordCountEnd,omitnil,omitempty" name:"RecordCountEnd"`
 
-	// 项目ID
+	// 项目ID，"帐号中心-项目管理"拿到项目ID
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 标签过滤
@@ -5925,7 +5925,7 @@ type DomainListItem struct {
 	// 域名的状态，正常：ENABLE，暂停：PAUSE，封禁：SPAM
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 域名默认的解析记录默认TTL值
+	// 域名默认的解析记录默认TTL值，单位：秒
 	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
 
 	// 是否开启CNAME加速，开启：ENABLE，未开启：DISABLE

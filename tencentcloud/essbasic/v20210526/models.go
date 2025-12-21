@@ -13967,14 +13967,15 @@ type Staff struct {
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 显示的员工名
-	// 注意：2024-07-08 及之后创建的应用号，该字段返回的是打码信息
+	// 注意：该字段返回的是打码信息
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
 	// 员工手机号
-	// 注意：2024-07-08 及之后创建的应用号，该字段返回的是打码信息
+	// 注意：该字段返回的是打码信息
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 员工邮箱
+	// 注意：该字段返回的是打码信息
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 员工在第三方应用平台的用户ID

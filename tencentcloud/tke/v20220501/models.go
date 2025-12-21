@@ -684,6 +684,126 @@ func (r *DescribeClusterInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClusterMachinesRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点过滤条件，支持以下过滤条件：
+	// ·  NodePoolsName
+	//     按照【节点池名】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  NodePoolsId
+	//     按照【节点池id】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tags
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag:tag-key
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认0
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 最大输出条数，默认20，最大为100
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeClusterMachinesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点过滤条件，支持以下过滤条件：
+	// ·  NodePoolsName
+	//     按照【节点池名】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  NodePoolsId
+	//     按照【节点池id】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tags
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag:tag-key
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认0
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 最大输出条数，默认20，最大为100
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeClusterMachinesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterMachinesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterMachinesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterMachinesResponseParams struct {
+	// 节点池节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Machines []*Machine `json:"Machines,omitnil,omitempty" name:"Machines"`
+
+	// 资源总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterMachinesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterMachinesResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterMachinesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterMachinesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClustersRequestParams struct {
 	// 集群ID列表(为空时，
 	// 表示获取账号下所有集群)
@@ -1483,6 +1603,70 @@ type LifecycleConfig struct {
 	// 节点初始化后自定义脚本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostInit *string `json:"PostInit,omitnil,omitempty" name:"PostInit"`
+}
+
+type Machine struct {
+	// 节点名称
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
+
+	// Machine 状态
+	MachineState *string `json:"MachineState,omitnil,omitempty" name:"MachineState"`
+
+	// Machine 所在可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// Machine 登录状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoginStatus *string `json:"LoginStatus,omitnil,omitempty" name:"LoginStatus"`
+
+	// 是否开启缩容保护
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsProtectedFromScaleIn *bool `json:"IsProtectedFromScaleIn,omitnil,omitempty" name:"IsProtectedFromScaleIn"`
+
+	// Machine 名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// CPU核数，单位：核
+	CPU *uint64 `json:"CPU,omitnil,omitempty" name:"CPU"`
+
+	// GPU核数，单位：核
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GPU *uint64 `json:"GPU,omitnil,omitempty" name:"GPU"`
+
+	// 自动续费标识
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 节点计费模式（已弃用）
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 节点内存容量，单位：`GB`
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 节点系统盘配置信息
+	SystemDisk *Disk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
+
+	// 公网带宽相关信息设置
+	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
+
+	// 机型所属机型族
+	InstanceFamily *string `json:"InstanceFamily,omitnil,omitempty" name:"InstanceFamily"`
+
+	// 节点内网 IP
+	LanIP *string `json:"LanIP,omitnil,omitempty" name:"LanIP"`
+
+	// 机型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 包年包月节点计费过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 type MachineSetScaling struct {

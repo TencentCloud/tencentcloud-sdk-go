@@ -3848,6 +3848,192 @@ func (r *DescribeHBaseTableOverviewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHBaseTableRequestMetricRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Hbase表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// Hbase的RegionServer服务
+	RegionServer *string `json:"RegionServer,omitnil,omitempty" name:"RegionServer"`
+
+	// 获取监控的数据粒度
+	Downsample *string `json:"Downsample,omitnil,omitempty" name:"Downsample"`
+
+	// 查询监控数据起始时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询监控数据结束时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeHBaseTableRequestMetricRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Hbase表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// Hbase的RegionServer服务
+	RegionServer *string `json:"RegionServer,omitnil,omitempty" name:"RegionServer"`
+
+	// 获取监控的数据粒度
+	Downsample *string `json:"Downsample,omitnil,omitempty" name:"Downsample"`
+
+	// 查询监控数据起始时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询监控数据结束时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeHBaseTableRequestMetricRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHBaseTableRequestMetricRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "TableName")
+	delete(f, "RegionServer")
+	delete(f, "Downsample")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHBaseTableRequestMetricRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHBaseTableRequestMetricResponseParams struct {
+	// Hbase监控指标返回包装结构
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricDataList []*HBaseMetricData `json:"MetricDataList,omitnil,omitempty" name:"MetricDataList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHBaseTableRequestMetricResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHBaseTableRequestMetricResponseParams `json:"Response"`
+}
+
+func (r *DescribeHBaseTableRequestMetricResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHBaseTableRequestMetricResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHBaseTableStoreSizeMetricRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Hbase表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// Hbase的RegionServer服务
+	RegionServer *string `json:"RegionServer,omitnil,omitempty" name:"RegionServer"`
+
+	// 获取监控的数据粒度
+	Downsample *string `json:"Downsample,omitnil,omitempty" name:"Downsample"`
+
+	// 查询监控数据起始时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询监控数据结束时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeHBaseTableStoreSizeMetricRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Hbase表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// Hbase的RegionServer服务
+	RegionServer *string `json:"RegionServer,omitnil,omitempty" name:"RegionServer"`
+
+	// 获取监控的数据粒度
+	Downsample *string `json:"Downsample,omitnil,omitempty" name:"Downsample"`
+
+	// 查询监控数据起始时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询监控数据结束时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeHBaseTableStoreSizeMetricRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHBaseTableStoreSizeMetricRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "TableName")
+	delete(f, "RegionServer")
+	delete(f, "Downsample")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHBaseTableStoreSizeMetricRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHBaseTableStoreSizeMetricResponseParams struct {
+	// Hbase监控指标返回包装结构
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricDataList []*HBaseMetricData `json:"MetricDataList,omitnil,omitempty" name:"MetricDataList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHBaseTableStoreSizeMetricResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHBaseTableStoreSizeMetricResponseParams `json:"Response"`
+}
+
+func (r *DescribeHBaseTableStoreSizeMetricResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHBaseTableStoreSizeMetricResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHDFSStorageInfoRequestParams struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -7227,6 +7413,20 @@ type GroupInfos struct {
 
 	// 用户组类型描述
 	GroupTypeDesc *string `json:"GroupTypeDesc,omitnil,omitempty" name:"GroupTypeDesc"`
+}
+
+type HBaseMetricData struct {
+	// 指标名称，如 read_request_rate
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 指标描述，如 read request rate
+	MetricDesc *string `json:"MetricDesc,omitnil,omitempty" name:"MetricDesc"`
+
+	// 时间戳数组
+	Timestamps []*int64 `json:"Timestamps,omitnil,omitempty" name:"Timestamps"`
+
+	// 数值数组
+	Values []*float64 `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type HealthStatus struct {
