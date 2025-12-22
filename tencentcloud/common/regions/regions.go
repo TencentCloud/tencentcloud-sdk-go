@@ -51,7 +51,7 @@ const (
 	Frankfurt = "eu-frankfurt"
 	// 莫斯科
 	Moscow = "eu-moscow"
-	// 阿什本
+	// 弗吉尼亚，阿什本
 	Ashburn = "na-ashburn"
 	// 硅谷
 	SiliconValley = "na-siliconvalley"
