@@ -428,6 +428,19 @@ type AddBlindWatermarkConfig struct {
 	EmbedInfo *BlindWatermarkEmbedInfo `json:"EmbedInfo,omitnil,omitempty" name:"EmbedInfo"`
 }
 
+type AddOnImageInput struct {
+	// 图片路径。
+	Image *MediaInputInfo `json:"Image,omitnil,omitempty" name:"Image"`
+}
+
+type AddOnParameter struct {
+	// 附加图片输入。
+	ImageSet []*AddOnImageInput `json:"ImageSet,omitnil,omitempty" name:"ImageSet"`
+
+	// 图片处理输出配置。
+	OutputConfig *ImageProcessOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+}
+
 type AddOnSubtitle struct {
 	// 插入形式，可选值：
 	// <li>subtitle-stream：插入字幕轨道</li>
@@ -15042,6 +15055,25 @@ type ImageEraseLogoConfig struct {
 	DetectTypes []*string `json:"DetectTypes,omitnil,omitempty" name:"DetectTypes"`
 }
 
+type ImageProcessOutputConfig struct {
+	// 输出图片的宽高比。可以配合ImageWidth 和 ImageHeight 使用，规则如下：
+	// 
+	// 1. 仅指定 AspectRatio 时，根据原图输入进行自适应调整。
+	// 2. 指定 AspectRatio 和 ImageWidth 时，ImageHeight  由两者计算得出，反亦是如此。
+	// 3. 当AspectRatio、ImageWidth、ImageHeight 同时指定的时候，优先使用ImageWidth、ImageHeight。
+	// 
+	// 可取值：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9
+	// 
+	// 支持该参数 ScheduleId: 30010(扩图)
+	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+
+	// 图片输出高度，单位：像素。
+	ImageHeight *int64 `json:"ImageHeight,omitnil,omitempty" name:"ImageHeight"`
+
+	// 图片输出宽度，单位：像素。
+	ImageWidth *int64 `json:"ImageWidth,omitnil,omitempty" name:"ImageWidth"`
+}
+
 type ImageProcessTaskOutput struct {
 	// 输出文件的路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -20895,6 +20927,16 @@ type ProcessImageRequestParams struct {
 
 	// 图片处理参数。
 	ImageTask *ImageTaskInput `json:"ImageTask,omitnil,omitempty" name:"ImageTask"`
+
+	// 图片处理编排场景 ID。
+	// 
+	// - 30000：文字水印擦除
+	// - 30010：图片扩展
+	// - 30100：换装场景
+	ScheduleId *uint64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
+
+	// 图片处理附加参数。
+	AddOnParameter *AddOnParameter `json:"AddOnParameter,omitnil,omitempty" name:"AddOnParameter"`
 }
 
 type ProcessImageRequest struct {
@@ -20928,6 +20970,16 @@ type ProcessImageRequest struct {
 
 	// 图片处理参数。
 	ImageTask *ImageTaskInput `json:"ImageTask,omitnil,omitempty" name:"ImageTask"`
+
+	// 图片处理编排场景 ID。
+	// 
+	// - 30000：文字水印擦除
+	// - 30010：图片扩展
+	// - 30100：换装场景
+	ScheduleId *uint64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
+
+	// 图片处理附加参数。
+	AddOnParameter *AddOnParameter `json:"AddOnParameter,omitnil,omitempty" name:"AddOnParameter"`
 }
 
 func (r *ProcessImageRequest) ToJsonString() string {
@@ -20949,6 +21001,8 @@ func (r *ProcessImageRequest) FromJsonString(s string) error {
 	delete(f, "Definition")
 	delete(f, "ResourceId")
 	delete(f, "ImageTask")
+	delete(f, "ScheduleId")
+	delete(f, "AddOnParameter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessImageRequest has unknown keys!", "")
 	}

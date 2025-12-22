@@ -299,6 +299,12 @@ func NewCreateQAResponse() (response *CreateQAResponse) {
 // CreateQA
 // 录入问答
 //
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateQA(request *CreateQARequest) (response *CreateQAResponse, err error) {
@@ -307,6 +313,12 @@ func (c *Client) CreateQA(request *CreateQARequest) (response *CreateQAResponse,
 
 // CreateQA
 // 录入问答
+//
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3541,6 +3553,12 @@ func NewListQAResponse() (response *ListQAResponse) {
 // ListQA
 // 问答列表
 //
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ListQA(request *ListQARequest) (response *ListQAResponse, err error) {
@@ -3549,6 +3567,12 @@ func (c *Client) ListQA(request *ListQARequest) (response *ListQAResponse, err e
 
 // ListQA
 // 问答列表
+//
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

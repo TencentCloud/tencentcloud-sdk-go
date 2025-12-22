@@ -545,6 +545,66 @@ func (c *Client) DescribeTemplateToVideoJobWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeVideoEditJobRequest() (request *DescribeVideoEditJobRequest) {
+    request = &DescribeVideoEditJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeVideoEditJob")
+    
+    
+    return
+}
+
+func NewDescribeVideoEditJobResponse() (response *DescribeVideoEditJobResponse) {
+    response = &DescribeVideoEditJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVideoEditJob
+// 用于提交视频编辑任务，支持上传视频、文本及图片素材开展编辑操作，涵盖风格迁移、元素替换、内容增减等核心能力。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeVideoEditJob(request *DescribeVideoEditJobRequest) (response *DescribeVideoEditJobResponse, err error) {
+    return c.DescribeVideoEditJobWithContext(context.Background(), request)
+}
+
+// DescribeVideoEditJob
+// 用于提交视频编辑任务，支持上传视频、文本及图片素材开展编辑操作，涵盖风格迁移、元素替换、内容增减等核心能力。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeVideoEditJobWithContext(ctx context.Context, request *DescribeVideoEditJobRequest) (response *DescribeVideoEditJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoEditJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeVideoEditJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoEditJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoEditJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVideoFaceFusionJobRequest() (request *DescribeVideoFaceFusionJobRequest) {
     request = &DescribeVideoFaceFusionJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -568,13 +628,12 @@ func NewDescribeVideoFaceFusionJobResponse() (response *DescribeVideoFaceFusionJ
 // 查询视频人脸融合任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
-//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
 func (c *Client) DescribeVideoFaceFusionJob(request *DescribeVideoFaceFusionJobRequest) (response *DescribeVideoFaceFusionJobResponse, err error) {
     return c.DescribeVideoFaceFusionJobWithContext(context.Background(), request)
 }
@@ -583,13 +642,12 @@ func (c *Client) DescribeVideoFaceFusionJob(request *DescribeVideoFaceFusionJobR
 // 查询视频人脸融合任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
-//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
 func (c *Client) DescribeVideoFaceFusionJobWithContext(ctx context.Context, request *DescribeVideoFaceFusionJobRequest) (response *DescribeVideoFaceFusionJobResponse, err error) {
     if request == nil {
         request = NewDescribeVideoFaceFusionJobRequest()
@@ -1213,6 +1271,78 @@ func (c *Client) SubmitTemplateToVideoJobWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewSubmitTemplateToVideoJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitVideoEditJobRequest() (request *SubmitVideoEditJobRequest) {
+    request = &SubmitVideoEditJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitVideoEditJob")
+    
+    
+    return
+}
+
+func NewSubmitVideoEditJobResponse() (response *SubmitVideoEditJobResponse) {
+    response = &SubmitVideoEditJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitVideoEditJob
+// 用于提交视频编辑任务，支持上传视频、文本及图片素材开展编辑操作，涵盖风格迁移、元素替换、内容增减等核心能力。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitVideoEditJob(request *SubmitVideoEditJobRequest) (response *SubmitVideoEditJobResponse, err error) {
+    return c.SubmitVideoEditJobWithContext(context.Background(), request)
+}
+
+// SubmitVideoEditJob
+// 用于提交视频编辑任务，支持上传视频、文本及图片素材开展编辑操作，涵盖风格迁移、元素替换、内容增减等核心能力。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitVideoEditJobWithContext(ctx context.Context, request *SubmitVideoEditJobRequest) (response *SubmitVideoEditJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitVideoEditJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitVideoEditJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitVideoEditJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitVideoEditJobResponse()
     err = c.Send(request, response)
     return
 }

@@ -1626,6 +1626,7 @@ func (r *CreateQACateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateQARequestParams struct {
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问题
@@ -1649,7 +1650,7 @@ type CreateQARequestParams struct {
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// 有效开始时间，unix时间戳
+	// 有效开始时间，单位是unix时间戳。默认值为0，表示问答为永久有效.
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
 	// 有效结束时间，unix时间戳，0代表永久有效
@@ -1660,12 +1661,16 @@ type CreateQARequestParams struct {
 
 	// 问题描述
 	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
+
+	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 type CreateQARequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问题
@@ -1689,7 +1694,7 @@ type CreateQARequest struct {
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// 有效开始时间，unix时间戳
+	// 有效开始时间，单位是unix时间戳。默认值为0，表示问答为永久有效.
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
 	// 有效结束时间，unix时间戳，0代表永久有效
@@ -1700,6 +1705,9 @@ type CreateQARequest struct {
 
 	// 问题描述
 	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
+
+	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 func (r *CreateQARequest) ToJsonString() string {
@@ -1726,6 +1734,7 @@ func (r *CreateQARequest) FromJsonString(s string) error {
 	delete(f, "ExpireEnd")
 	delete(f, "SimilarQuestions")
 	delete(f, "QuestionDesc")
+	delete(f, "EnableScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQARequest has unknown keys!", "")
 	}
@@ -3641,6 +3650,17 @@ type DescribeDocResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
 
+	// 从根节点开始的路径分类ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CateBizIdPath []*string `json:"CateBizIdPath,omitnil,omitempty" name:"CateBizIdPath"`
+
+	// 从根节点开始的路径分类名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CateNamePath []*string `json:"CateNamePath,omitnil,omitempty" name:"CateNamePath"`
+
+	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3982,6 +4002,21 @@ type DescribeQAResponseParams struct {
 
 	// 问答是否停用，false:未停用，true已停用
 	IsDisabled *bool `json:"IsDisabled,omitnil,omitempty" name:"IsDisabled"`
+
+	// 从根节点开始的路径分类ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CateBizIdPath []*string `json:"CateBizIdPath,omitnil,omitempty" name:"CateBizIdPath"`
+
+	// 从根节点开始的路径分类名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CateNamePath []*string `json:"CateNamePath,omitnil,omitempty" name:"CateNamePath"`
+
+	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
+
+	// 问答关联的文档生效域
+	DocEnableScope *int64 `json:"DocEnableScope,omitnil,omitempty" name:"DocEnableScope"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7799,17 +7834,21 @@ type ListDocItem struct {
 
 	// 员工名称
 	StaffName *string `json:"StaffName,omitnil,omitempty" name:"StaffName"`
+
+	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 // Predefined struct for user
 type ListDocRequestParams struct {
-	// 应用ID
+	// 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码(必须大于0)
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量(取值范围1-200)
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 查询内容
@@ -7823,7 +7862,7 @@ type ListDocRequestParams struct {
 	// 查询类型 filename 文档、 attribute 标签
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 
-	// 分类ID
+	// 分类ID, 调用接口[ListDocCate](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListDocCate)获取
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
 	// 文件类型分类筛选
@@ -7834,18 +7873,21 @@ type ListDocRequestParams struct {
 
 	// 是否只展示当前分类的数据 0不是，1是
 	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
+
+	// 文档生效域；不检索默认为0
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 type ListDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码(必须大于0)
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量(取值范围1-200)
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 查询内容
@@ -7859,7 +7901,7 @@ type ListDocRequest struct {
 	// 查询类型 filename 文档、 attribute 标签
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 
-	// 分类ID
+	// 分类ID, 调用接口[ListDocCate](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListDocCate)获取
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
 	// 文件类型分类筛选
@@ -7870,6 +7912,9 @@ type ListDocRequest struct {
 
 	// 是否只展示当前分类的数据 0不是，1是
 	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
+
+	// 文档生效域；不检索默认为0
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 func (r *ListDocRequest) ToJsonString() string {
@@ -7894,6 +7939,7 @@ func (r *ListDocRequest) FromJsonString(s string) error {
 	delete(f, "FileTypes")
 	delete(f, "FilterFlag")
 	delete(f, "ShowCurrCate")
+	delete(f, "EnableScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDocRequest has unknown keys!", "")
 	}
@@ -8108,12 +8154,13 @@ func (r *ListQACateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListQARequestParams struct {
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（取值范围>0）
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页大小
+	// 每页大小(取值范围1-200)
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 查询问题
@@ -8122,15 +8169,18 @@ type ListQARequestParams struct {
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 校验状态(1未校验2采纳3不采纳)
+	// 如果不填默认值为空数组，表示不筛选，返回所有状态
 	AcceptStatus []*int64 `json:"AcceptStatus,omitnil,omitempty" name:"AcceptStatus"`
 
 	// 发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
+	// 如果不填默认值为空数组，表示不筛选返回所有状态
 	ReleaseStatus []*int64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 
 	// 文档ID
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
 	// 来源(1 文档生成 2 批量导入 3 手动添加)
+	// 不填默认值为0，表示不过滤，返回所有状态
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 查询答案
@@ -8143,22 +8193,27 @@ type ListQARequestParams struct {
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
 
 	// 查询类型 filename 名称、 attribute 标签
+	// 如果不填默认值为"filename"
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 
 	// 是否只展示当前分类的数据 0不是，1是
 	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
+
+	// // 知识生效作用域枚举值 enum RetrievalEnableScope {   ENABLE_SCOPE_TYPE_UNKNOWN = 0; // 未知类型   ENABLE_SCOPE_TYPE_NONE = 1; // 停用   ENABLE_SCOPE_TYPE_DEV = 2; // 仅开发域   ENABLE_SCOPE_TYPE_RELEASE = 3; // 仅发布域   ENABLE_SCOPE_TYPE_ALL = 4; // 全域 }  问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 type ListQARequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码（取值范围>0）
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页大小
+	// 每页大小(取值范围1-200)
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 查询问题
@@ -8167,15 +8222,18 @@ type ListQARequest struct {
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 校验状态(1未校验2采纳3不采纳)
+	// 如果不填默认值为空数组，表示不筛选，返回所有状态
 	AcceptStatus []*int64 `json:"AcceptStatus,omitnil,omitempty" name:"AcceptStatus"`
 
 	// 发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
+	// 如果不填默认值为空数组，表示不筛选返回所有状态
 	ReleaseStatus []*int64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 
 	// 文档ID
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
 	// 来源(1 文档生成 2 批量导入 3 手动添加)
+	// 不填默认值为0，表示不过滤，返回所有状态
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 查询答案
@@ -8188,10 +8246,14 @@ type ListQARequest struct {
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
 
 	// 查询类型 filename 名称、 attribute 标签
+	// 如果不填默认值为"filename"
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 
 	// 是否只展示当前分类的数据 0不是，1是
 	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
+
+	// // 知识生效作用域枚举值 enum RetrievalEnableScope {   ENABLE_SCOPE_TYPE_UNKNOWN = 0; // 未知类型   ENABLE_SCOPE_TYPE_NONE = 1; // 停用   ENABLE_SCOPE_TYPE_DEV = 2; // 仅开发域   ENABLE_SCOPE_TYPE_RELEASE = 3; // 仅发布域   ENABLE_SCOPE_TYPE_ALL = 4; // 全域 }  问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 func (r *ListQARequest) ToJsonString() string {
@@ -8219,6 +8281,7 @@ func (r *ListQARequest) FromJsonString(s string) error {
 	delete(f, "QaBizIds")
 	delete(f, "QueryType")
 	delete(f, "ShowCurrCate")
+	delete(f, "EnableScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListQARequest has unknown keys!", "")
 	}
@@ -8337,6 +8400,13 @@ type ListQaItem struct {
 
 	// 员工名称
 	StaffName *string `json:"StaffName,omitnil,omitempty" name:"StaffName"`
+
+	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
+
+	// 问答关联的文档生效域
+	DocEnableScope *int64 `json:"DocEnableScope,omitnil,omitempty" name:"DocEnableScope"`
 }
 
 // Predefined struct for user
@@ -10042,7 +10112,7 @@ func (r *ModifyDocCateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDocRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -10051,7 +10121,7 @@ type ModifyDocRequestParams struct {
 	// 是否引用链接
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 标签适用范围，需要传参为1
+	// 标签适用范围，1:全部，2:按条件。默认为1。
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -10070,10 +10140,10 @@ type ModifyDocRequestParams struct {
 	// 值为1时，WebUrl 字段不能为空，否则不生效。
 	ReferUrlType *uint64 `json:"ReferUrlType,omitnil,omitempty" name:"ReferUrlType"`
 
-	// 有效开始时间，unix时间戳
+	// 有效开始时间，单位为unix时间戳
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
-	// 有效结束时间，unix时间戳，0代表永久有效
+	// 有效结束时间，单位为unix时间戳，默认值为0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
 
 	// 分类ID
@@ -10090,12 +10160,15 @@ type ModifyDocRequestParams struct {
 
 	// 自定义切分规则
 	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
+
+	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 type ModifyDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -10104,7 +10177,7 @@ type ModifyDocRequest struct {
 	// 是否引用链接
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 标签适用范围，需要传参为1
+	// 标签适用范围，1:全部，2:按条件。默认为1。
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -10123,10 +10196,10 @@ type ModifyDocRequest struct {
 	// 值为1时，WebUrl 字段不能为空，否则不生效。
 	ReferUrlType *uint64 `json:"ReferUrlType,omitnil,omitempty" name:"ReferUrlType"`
 
-	// 有效开始时间，unix时间戳
+	// 有效开始时间，单位为unix时间戳
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
-	// 有效结束时间，unix时间戳，0代表永久有效
+	// 有效结束时间，单位为unix时间戳，默认值为0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
 
 	// 分类ID
@@ -10143,6 +10216,9 @@ type ModifyDocRequest struct {
 
 	// 自定义切分规则
 	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
+
+	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 func (r *ModifyDocRequest) ToJsonString() string {
@@ -10173,6 +10249,7 @@ func (r *ModifyDocRequest) FromJsonString(s string) error {
 	delete(f, "ModifyTypes")
 	delete(f, "UpdatePeriodInfo")
 	delete(f, "SplitRule")
+	delete(f, "EnableScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDocRequest has unknown keys!", "")
 	}
@@ -10347,6 +10424,7 @@ func (r *ModifyQACateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyQARequestParams struct {
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问答ID
@@ -10362,6 +10440,8 @@ type ModifyQARequestParams struct {
 	CustomParam *string `json:"CustomParam,omitnil,omitempty" name:"CustomParam"`
 
 	// 标签适用范围 1：全部，2：按条件
+	// 默认值：当没有属性标签，labelRefers为空时，默认值为1
+	// 有属性标签，labelRefers不为空，默认值为2
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 标签引用
@@ -10373,10 +10453,10 @@ type ModifyQARequestParams struct {
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// 有效开始时间，unix时间戳
+	// 有效开始时间，单位是unix时间戳，默认值为0，代表永久有效
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
-	// 有效结束时间，unix时间戳，0代表永久有效
+	// 有效结束时间，单位是unix时间戳，默认值为0，代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
 
 	// 相似问修改信息(相似问没有修改则不传)
@@ -10384,12 +10464,16 @@ type ModifyQARequestParams struct {
 
 	// 问题描述
 	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
+
+	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 type ModifyQARequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 问答ID
@@ -10405,6 +10489,8 @@ type ModifyQARequest struct {
 	CustomParam *string `json:"CustomParam,omitnil,omitempty" name:"CustomParam"`
 
 	// 标签适用范围 1：全部，2：按条件
+	// 默认值：当没有属性标签，labelRefers为空时，默认值为1
+	// 有属性标签，labelRefers不为空，默认值为2
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 标签引用
@@ -10416,10 +10502,10 @@ type ModifyQARequest struct {
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// 有效开始时间，unix时间戳
+	// 有效开始时间，单位是unix时间戳，默认值为0，代表永久有效
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
-	// 有效结束时间，unix时间戳，0代表永久有效
+	// 有效结束时间，单位是unix时间戳，默认值为0，代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
 
 	// 相似问修改信息(相似问没有修改则不传)
@@ -10427,6 +10513,9 @@ type ModifyQARequest struct {
 
 	// 问题描述
 	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
+
+	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 func (r *ModifyQARequest) ToJsonString() string {
@@ -10454,6 +10543,7 @@ func (r *ModifyQARequest) FromJsonString(s string) error {
 	delete(f, "ExpireEnd")
 	delete(f, "SimilarQuestionModify")
 	delete(f, "QuestionDesc")
+	delete(f, "EnableScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQARequest has unknown keys!", "")
 	}
@@ -11777,10 +11867,10 @@ type RunNodeInfo struct {
 
 // Predefined struct for user
 type SaveDocRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文件名
+	// 文件名，需要包含文件扩展名
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文档支持下面类型
@@ -11807,7 +11897,7 @@ type SaveDocRequestParams struct {
 	// 文件大小
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 标签适用范围，需要传参为1
+	// 标签适用范围，1:全部，2:按条件。默认为1。
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 来源（0 从本地文档导入），默认值为0
@@ -11823,16 +11913,16 @@ type SaveDocRequestParams struct {
 	// 值为1时，WebUrl 字段不能为空，否则不生效。
 	ReferUrlType *uint64 `json:"ReferUrlType,omitnil,omitempty" name:"ReferUrlType"`
 
-	// 有效开始时间，unix秒级时间戳
+	// 有效开始时间，unix秒级时间戳，默认为0
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
-	// 有效结束时间，unix秒级时间戳，0代表永久有效
+	// 有效结束时间，unix秒级时间戳，默认为0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
 
-	// 是否引用链接
+	// 是否显示引用的文档来源(false不显示 true显示）默认false
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为1  <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
+	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
 	Opt *uint64 `json:"Opt,omitnil,omitempty" name:"Opt"`
 
 	// 分类ID
@@ -11931,17 +12021,20 @@ type SaveDocRequestParams struct {
 	// | `table_style` | String | 指定表格内容的输出格式。可用值：<br>• `"html"`：以 HTML 表格形式返回，适合网页展示。<br>• `"md"`：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。|
 	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
 
-	// 文档更新频率
+	// 文档更新频率，默认值为0不更新
 	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
+
+	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 type SaveDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文件名
+	// 文件名，需要包含文件扩展名
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文档支持下面类型
@@ -11968,7 +12061,7 @@ type SaveDocRequest struct {
 	// 文件大小
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 标签适用范围，需要传参为1
+	// 标签适用范围，1:全部，2:按条件。默认为1。
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 来源（0 从本地文档导入），默认值为0
@@ -11984,16 +12077,16 @@ type SaveDocRequest struct {
 	// 值为1时，WebUrl 字段不能为空，否则不生效。
 	ReferUrlType *uint64 `json:"ReferUrlType,omitnil,omitempty" name:"ReferUrlType"`
 
-	// 有效开始时间，unix秒级时间戳
+	// 有效开始时间，unix秒级时间戳，默认为0
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
-	// 有效结束时间，unix秒级时间戳，0代表永久有效
+	// 有效结束时间，unix秒级时间戳，默认为0代表永久有效
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
 
-	// 是否引用链接
+	// 是否显示引用的文档来源(false不显示 true显示）默认false
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为1  <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
+	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
 	Opt *uint64 `json:"Opt,omitnil,omitempty" name:"Opt"`
 
 	// 分类ID
@@ -12092,8 +12185,11 @@ type SaveDocRequest struct {
 	// | `table_style` | String | 指定表格内容的输出格式。可用值：<br>• `"html"`：以 HTML 表格形式返回，适合网页展示。<br>• `"md"`：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。|
 	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
 
-	// 文档更新频率
+	// 文档更新频率，默认值为0不更新
 	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
+
+	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 func (r *SaveDocRequest) ToJsonString() string {
@@ -12129,6 +12225,7 @@ func (r *SaveDocRequest) FromJsonString(s string) error {
 	delete(f, "DuplicateFileHandles")
 	delete(f, "SplitRule")
 	delete(f, "UpdatePeriodInfo")
+	delete(f, "EnableScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveDocRequest has unknown keys!", "")
 	}

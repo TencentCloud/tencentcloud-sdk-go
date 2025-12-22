@@ -29,6 +29,9 @@ const (
 	// 域名配置更新操作失败，请重试或联系客服人员解决。
 	FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
 
+	// 数据查询错误，请联系腾讯云工程师进一步排查。
+	FAILEDOPERATION_DATASYSTEMERROR = "FailedOperation.DataSystemError"
+
 	// 证书不存在
 	FAILEDOPERATION_SSLCERTNOTFOUND = "FailedOperation.SslCertNotFound"
 

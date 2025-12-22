@@ -4400,6 +4400,10 @@ type DescribeInstancesRequestParams struct {
 	// <li> tag:tag-key</li>按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 类型：String
 	// 必选：否
+	// <li>bundle-id</li>按照【套餐 ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 InstanceIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -4451,6 +4455,10 @@ type DescribeInstancesRequest struct {
 	// <li> tag:tag-key</li>按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
 	// 类型：String
 	// 必选：否
+	// <li>bundle-id</li>按照【套餐 ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 InstanceIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 

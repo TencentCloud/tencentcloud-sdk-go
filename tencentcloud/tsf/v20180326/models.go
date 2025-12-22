@@ -12079,141 +12079,6 @@ func (r *DescribeImageTagsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeInovcationIndicatorsRequestParams struct {
-	// 维度
-	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
-
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 结束时间
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 命名空间ID
-	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
-
-	// 微服务ID
-	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
-
-	// 调用方服务名
-	CallerServiceName *string `json:"CallerServiceName,omitnil,omitempty" name:"CallerServiceName"`
-
-	// 被调方服务名
-	CalleeServiceName *string `json:"CalleeServiceName,omitnil,omitempty" name:"CalleeServiceName"`
-
-	// 调用方接口名
-	CallerInterfaceName *string `json:"CallerInterfaceName,omitnil,omitempty" name:"CallerInterfaceName"`
-
-	// 被调方接口名
-	CalleeInterfaceName *string `json:"CalleeInterfaceName,omitnil,omitempty" name:"CalleeInterfaceName"`
-
-	// 应用ID
-	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
-
-	// 部署组ID
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
-
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-}
-
-type DescribeInovcationIndicatorsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 维度
-	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
-
-	// 开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 结束时间
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 命名空间ID
-	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
-
-	// 微服务ID
-	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
-
-	// 调用方服务名
-	CallerServiceName *string `json:"CallerServiceName,omitnil,omitempty" name:"CallerServiceName"`
-
-	// 被调方服务名
-	CalleeServiceName *string `json:"CalleeServiceName,omitnil,omitempty" name:"CalleeServiceName"`
-
-	// 调用方接口名
-	CallerInterfaceName *string `json:"CallerInterfaceName,omitnil,omitempty" name:"CallerInterfaceName"`
-
-	// 被调方接口名
-	CalleeInterfaceName *string `json:"CalleeInterfaceName,omitnil,omitempty" name:"CalleeInterfaceName"`
-
-	// 应用ID
-	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
-
-	// 部署组ID
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
-
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-}
-
-func (r *DescribeInovcationIndicatorsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInovcationIndicatorsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Dimension")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "NamespaceId")
-	delete(f, "ServiceId")
-	delete(f, "CallerServiceName")
-	delete(f, "CalleeServiceName")
-	delete(f, "CallerInterfaceName")
-	delete(f, "CalleeInterfaceName")
-	delete(f, "ApplicationId")
-	delete(f, "GroupId")
-	delete(f, "InstanceId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInovcationIndicatorsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeInovcationIndicatorsResponseParams struct {
-	// 服务调用监控指标
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *InvocationIndicator `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeInovcationIndicatorsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeInovcationIndicatorsResponseParams `json:"Response"`
-}
-
-func (r *DescribeInovcationIndicatorsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInovcationIndicatorsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeInstancesRequestParams struct {
 	// 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。
 	// 参考：[{"Name":"ip","Values":["172.16.16.139"]}]
@@ -18040,17 +17905,6 @@ type ImageTagsResult struct {
 	Content []*ImageTag `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
-type IndicatorCoord struct {
-	// 指标横坐标值
-	CoordX *string `json:"CoordX,omitnil,omitempty" name:"CoordX"`
-
-	// 指标纵坐标值
-	CoordY *string `json:"CoordY,omitnil,omitempty" name:"CoordY"`
-
-	// 指标标签，用于标识附加信息
-	CoordTag *string `json:"CoordTag,omitnil,omitempty" name:"CoordTag"`
-}
-
 type Instance struct {
 	// 机器实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -18298,35 +18152,6 @@ type InstanceResourceConfig struct {
 	// 虚拟机实例相关的参数配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vm *VmInstanceResourceConfig `json:"Vm,omitnil,omitempty" name:"Vm"`
-}
-
-type InvocationIndicator struct {
-	// 总请求数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InvocationQuantity *int64 `json:"InvocationQuantity,omitnil,omitempty" name:"InvocationQuantity"`
-
-	// 请求成功率，百分比
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InvocationSuccessRate *float64 `json:"InvocationSuccessRate,omitnil,omitempty" name:"InvocationSuccessRate"`
-
-	// 请求平均耗时，单位毫秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InvocationAvgDuration *float64 `json:"InvocationAvgDuration,omitnil,omitempty" name:"InvocationAvgDuration"`
-
-	// 成功请求数时间分布
-	InvocationSuccessDistribution []*IndicatorCoord `json:"InvocationSuccessDistribution,omitnil,omitempty" name:"InvocationSuccessDistribution"`
-
-	// 失败请求数时间分布
-	InvocationFailedDistribution []*IndicatorCoord `json:"InvocationFailedDistribution,omitnil,omitempty" name:"InvocationFailedDistribution"`
-
-	// 状态码分布
-	InvocationStatusDistribution []*IndicatorCoord `json:"InvocationStatusDistribution,omitnil,omitempty" name:"InvocationStatusDistribution"`
-
-	// 时延分布
-	InvocationDurationDistribution []*IndicatorCoord `json:"InvocationDurationDistribution,omitnil,omitempty" name:"InvocationDurationDistribution"`
-
-	// 并发请求次数时间分布
-	InvocationQuantityDistribution []*IndicatorCoord `json:"InvocationQuantityDistribution,omitnil,omitempty" name:"InvocationQuantityDistribution"`
 }
 
 type InvocationMetricScatterPlot struct {

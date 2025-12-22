@@ -153,7 +153,7 @@ func NewDescribeReduceFaceJobResponse() (response *DescribeReduceFaceJobResponse
 }
 
 // DescribeReduceFaceJob
-// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+// 混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
 //
 // 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) DescribeReduceFaceJob(request *DescribeReduceFaceJobRequest) (response *DescribeReduceFaceJobResponse, err error) {
@@ -161,7 +161,7 @@ func (c *Client) DescribeReduceFaceJob(request *DescribeReduceFaceJobRequest) (r
 }
 
 // DescribeReduceFaceJob
-// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+// 混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
 //
 // 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) DescribeReduceFaceJobWithContext(ctx context.Context, request *DescribeReduceFaceJobRequest) (response *DescribeReduceFaceJobResponse, err error) {
@@ -201,7 +201,7 @@ func NewDescribeTextureTo3DJobResponse() (response *DescribeTextureTo3DJobRespon
 }
 
 // DescribeTextureTo3DJob
-// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+// 混元生3D接口，输入单几何模型和参考图或文字描述后，可生成对应的纹理贴图。
 //
 // 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) DescribeTextureTo3DJob(request *DescribeTextureTo3DJobRequest) (response *DescribeTextureTo3DJobResponse, err error) {
@@ -209,7 +209,7 @@ func (c *Client) DescribeTextureTo3DJob(request *DescribeTextureTo3DJobRequest) 
 }
 
 // DescribeTextureTo3DJob
-// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+// 混元生3D接口，输入单几何模型和参考图或文字描述后，可生成对应的纹理贴图。
 //
 // 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) DescribeTextureTo3DJobWithContext(ctx context.Context, request *DescribeTextureTo3DJobRequest) (response *DescribeTextureTo3DJobResponse, err error) {
@@ -573,7 +573,7 @@ func NewSubmitReduceFaceJobResponse() (response *SubmitReduceFaceJobResponse) {
 }
 
 // SubmitReduceFaceJob
-// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+// 混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
 //
 // 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) SubmitReduceFaceJob(request *SubmitReduceFaceJobRequest) (response *SubmitReduceFaceJobResponse, err error) {
@@ -581,7 +581,7 @@ func (c *Client) SubmitReduceFaceJob(request *SubmitReduceFaceJobRequest) (respo
 }
 
 // SubmitReduceFaceJob
-// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+// 混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
 //
 // 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) SubmitReduceFaceJobWithContext(ctx context.Context, request *SubmitReduceFaceJobRequest) (response *SubmitReduceFaceJobResponse, err error) {
@@ -621,7 +621,7 @@ func NewSubmitTextureTo3DJobResponse() (response *SubmitTextureTo3DJobResponse) 
 }
 
 // SubmitTextureTo3DJob
-// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+// 混元生3D接口，输入单几何模型和参考图或文字描述后，可生成对应的纹理贴图。
 //
 // 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) SubmitTextureTo3DJob(request *SubmitTextureTo3DJobRequest) (response *SubmitTextureTo3DJobResponse, err error) {
@@ -629,7 +629,7 @@ func (c *Client) SubmitTextureTo3DJob(request *SubmitTextureTo3DJobRequest) (res
 }
 
 // SubmitTextureTo3DJob
-// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+// 混元生3D接口，输入单几何模型和参考图或文字描述后，可生成对应的纹理贴图。
 //
 // 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
 func (c *Client) SubmitTextureTo3DJobWithContext(ctx context.Context, request *SubmitTextureTo3DJobRequest) (response *SubmitTextureTo3DJobResponse, err error) {

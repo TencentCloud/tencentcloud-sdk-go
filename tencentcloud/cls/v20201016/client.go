@@ -361,6 +361,70 @@ func (c *Client) CloseKafkaConsumerWithContext(ctx context.Context, request *Clo
     return
 }
 
+func NewCommitConsumerOffsetsRequest() (request *CommitConsumerOffsetsRequest) {
+    request = &CommitConsumerOffsetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CommitConsumerOffsets")
+    
+    
+    return
+}
+
+func NewCommitConsumerOffsetsResponse() (response *CommitConsumerOffsetsResponse) {
+    response = &CommitConsumerOffsetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CommitConsumerOffsets
+// 提交消费点位
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CommitConsumerOffsets(request *CommitConsumerOffsetsRequest) (response *CommitConsumerOffsetsResponse, err error) {
+    return c.CommitConsumerOffsetsWithContext(context.Background(), request)
+}
+
+// CommitConsumerOffsets
+// 提交消费点位
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CommitConsumerOffsetsWithContext(ctx context.Context, request *CommitConsumerOffsetsRequest) (response *CommitConsumerOffsetsResponse, err error) {
+    if request == nil {
+        request = NewCommitConsumerOffsetsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CommitConsumerOffsets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CommitConsumerOffsets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCommitConsumerOffsetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAlarmRequest() (request *CreateAlarmRequest) {
     request = &CreateAlarmRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -937,6 +1001,72 @@ func (c *Client) CreateConsumerWithContext(ctx context.Context, request *CreateC
     return
 }
 
+func NewCreateConsumerGroupRequest() (request *CreateConsumerGroupRequest) {
+    request = &CreateConsumerGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateConsumerGroup")
+    
+    
+    return
+}
+
+func NewCreateConsumerGroupResponse() (response *CreateConsumerGroupResponse) {
+    response = &CreateConsumerGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateConsumerGroup
+// 消费组心跳
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (response *CreateConsumerGroupResponse, err error) {
+    return c.CreateConsumerGroupWithContext(context.Background(), request)
+}
+
+// CreateConsumerGroup
+// 消费组心跳
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateConsumerGroupWithContext(ctx context.Context, request *CreateConsumerGroupRequest) (response *CreateConsumerGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateConsumerGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateConsumerGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConsumerGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConsumerGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCosRechargeRequest() (request *CreateCosRechargeRequest) {
     request = &CreateCosRechargeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1301,6 +1431,86 @@ func (c *Client) CreateDlcDeliverWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateEsRechargeRequest() (request *CreateEsRechargeRequest) {
+    request = &CreateEsRechargeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateEsRecharge")
+    
+    
+    return
+}
+
+func NewCreateEsRechargeResponse() (response *CreateEsRechargeResponse) {
+    response = &CreateEsRechargeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateEsRecharge
+// 创建es导入配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEsRecharge(request *CreateEsRechargeRequest) (response *CreateEsRechargeResponse, err error) {
+    return c.CreateEsRechargeWithContext(context.Background(), request)
+}
+
+// CreateEsRecharge
+// 创建es导入配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEsRechargeWithContext(ctx context.Context, request *CreateEsRechargeRequest) (response *CreateEsRechargeResponse, err error) {
+    if request == nil {
+        request = NewCreateEsRechargeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateEsRecharge")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEsRecharge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEsRechargeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateExportRequest() (request *CreateExportRequest) {
     request = &CreateExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1367,6 +1577,86 @@ func (c *Client) CreateExportWithContext(ctx context.Context, request *CreateExp
     request.SetContext(ctx)
     
     response = NewCreateExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateHostMetricConfigRequest() (request *CreateHostMetricConfigRequest) {
+    request = &CreateHostMetricConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateHostMetricConfig")
+    
+    
+    return
+}
+
+func NewCreateHostMetricConfigResponse() (response *CreateHostMetricConfigResponse) {
+    response = &CreateHostMetricConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateHostMetricConfig
+// 创建主机指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateHostMetricConfig(request *CreateHostMetricConfigRequest) (response *CreateHostMetricConfigResponse, err error) {
+    return c.CreateHostMetricConfigWithContext(context.Background(), request)
+}
+
+// CreateHostMetricConfig
+// 创建主机指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateHostMetricConfigWithContext(ctx context.Context, request *CreateHostMetricConfigRequest) (response *CreateHostMetricConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateHostMetricConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateHostMetricConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHostMetricConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateHostMetricConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -1679,6 +1969,166 @@ func (c *Client) CreateMachineGroupWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateMetricConfigRequest() (request *CreateMetricConfigRequest) {
+    request = &CreateMetricConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateMetricConfig")
+    
+    
+    return
+}
+
+func NewCreateMetricConfigResponse() (response *CreateMetricConfigResponse) {
+    response = &CreateMetricConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMetricConfig
+// 创建指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateMetricConfig(request *CreateMetricConfigRequest) (response *CreateMetricConfigResponse, err error) {
+    return c.CreateMetricConfigWithContext(context.Background(), request)
+}
+
+// CreateMetricConfig
+// 创建指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateMetricConfigWithContext(ctx context.Context, request *CreateMetricConfigRequest) (response *CreateMetricConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateMetricConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateMetricConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMetricConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMetricConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMetricSubscribeRequest() (request *CreateMetricSubscribeRequest) {
+    request = &CreateMetricSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateMetricSubscribe")
+    
+    
+    return
+}
+
+func NewCreateMetricSubscribeResponse() (response *CreateMetricSubscribeResponse) {
+    response = &CreateMetricSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMetricSubscribe
+// 创建指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateMetricSubscribe(request *CreateMetricSubscribeRequest) (response *CreateMetricSubscribeResponse, err error) {
+    return c.CreateMetricSubscribeWithContext(context.Background(), request)
+}
+
+// CreateMetricSubscribe
+// 创建指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateMetricSubscribeWithContext(ctx context.Context, request *CreateMetricSubscribeRequest) (response *CreateMetricSubscribeResponse, err error) {
+    if request == nil {
+        request = NewCreateMetricSubscribeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateMetricSubscribe")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMetricSubscribe require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMetricSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNoticeContentRequest() (request *CreateNoticeContentRequest) {
     request = &CreateNoticeContentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1891,6 +2341,82 @@ func (c *Client) CreateShipperWithContext(ctx context.Context, request *CreateSh
     request.SetContext(ctx)
     
     response = NewCreateShipperResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSplunkDeliverRequest() (request *CreateSplunkDeliverRequest) {
+    request = &CreateSplunkDeliverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateSplunkDeliver")
+    
+    
+    return
+}
+
+func NewCreateSplunkDeliverResponse() (response *CreateSplunkDeliverResponse) {
+    response = &CreateSplunkDeliverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSplunkDeliver
+// 创建Splunk投递任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateSplunkDeliver(request *CreateSplunkDeliverRequest) (response *CreateSplunkDeliverResponse, err error) {
+    return c.CreateSplunkDeliverWithContext(context.Background(), request)
+}
+
+// CreateSplunkDeliver
+// 创建Splunk投递任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateSplunkDeliverWithContext(ctx context.Context, request *CreateSplunkDeliverRequest) (response *CreateSplunkDeliverResponse, err error) {
+    if request == nil {
+        request = NewCreateSplunkDeliverRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateSplunkDeliver")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSplunkDeliver require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSplunkDeliverResponse()
     err = c.Send(request, response)
     return
 }
@@ -2637,6 +3163,70 @@ func (c *Client) DeleteConsumerWithContext(ctx context.Context, request *DeleteC
     return
 }
 
+func NewDeleteConsumerGroupRequest() (request *DeleteConsumerGroupRequest) {
+    request = &DeleteConsumerGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteConsumerGroup")
+    
+    
+    return
+}
+
+func NewDeleteConsumerGroupResponse() (response *DeleteConsumerGroupResponse) {
+    response = &DeleteConsumerGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteConsumerGroup
+// 删除消费组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DeleteConsumerGroup(request *DeleteConsumerGroupRequest) (response *DeleteConsumerGroupResponse, err error) {
+    return c.DeleteConsumerGroupWithContext(context.Background(), request)
+}
+
+// DeleteConsumerGroup
+// 删除消费组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DeleteConsumerGroupWithContext(ctx context.Context, request *DeleteConsumerGroupRequest) (response *DeleteConsumerGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteConsumerGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteConsumerGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConsumerGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteConsumerGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCosRechargeRequest() (request *DeleteCosRechargeRequest) {
     request = &DeleteCosRechargeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2927,6 +3517,84 @@ func (c *Client) DeleteDlcDeliverWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteEsRechargeRequest() (request *DeleteEsRechargeRequest) {
+    request = &DeleteEsRechargeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteEsRecharge")
+    
+    
+    return
+}
+
+func NewDeleteEsRechargeResponse() (response *DeleteEsRechargeResponse) {
+    response = &DeleteEsRechargeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteEsRecharge
+// 删除es导入配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEsRecharge(request *DeleteEsRechargeRequest) (response *DeleteEsRechargeResponse, err error) {
+    return c.DeleteEsRechargeWithContext(context.Background(), request)
+}
+
+// DeleteEsRecharge
+// 删除es导入配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEsRechargeWithContext(ctx context.Context, request *DeleteEsRechargeRequest) (response *DeleteEsRechargeResponse, err error) {
+    if request == nil {
+        request = NewDeleteEsRechargeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteEsRecharge")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEsRecharge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteEsRechargeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteExportRequest() (request *DeleteExportRequest) {
     request = &DeleteExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2989,6 +3657,86 @@ func (c *Client) DeleteExportWithContext(ctx context.Context, request *DeleteExp
     request.SetContext(ctx)
     
     response = NewDeleteExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteHostMetricConfigRequest() (request *DeleteHostMetricConfigRequest) {
+    request = &DeleteHostMetricConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteHostMetricConfig")
+    
+    
+    return
+}
+
+func NewDeleteHostMetricConfigResponse() (response *DeleteHostMetricConfigResponse) {
+    response = &DeleteHostMetricConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteHostMetricConfig
+// 删除主机指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteHostMetricConfig(request *DeleteHostMetricConfigRequest) (response *DeleteHostMetricConfigResponse, err error) {
+    return c.DeleteHostMetricConfigWithContext(context.Background(), request)
+}
+
+// DeleteHostMetricConfig
+// 删除主机指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteHostMetricConfigWithContext(ctx context.Context, request *DeleteHostMetricConfigRequest) (response *DeleteHostMetricConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteHostMetricConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteHostMetricConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteHostMetricConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteHostMetricConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -3325,6 +4073,164 @@ func (c *Client) DeleteMachineGroupInfoWithContext(ctx context.Context, request 
     return
 }
 
+func NewDeleteMetricConfigRequest() (request *DeleteMetricConfigRequest) {
+    request = &DeleteMetricConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteMetricConfig")
+    
+    
+    return
+}
+
+func NewDeleteMetricConfigResponse() (response *DeleteMetricConfigResponse) {
+    response = &DeleteMetricConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMetricConfig
+// 删除指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMetricConfig(request *DeleteMetricConfigRequest) (response *DeleteMetricConfigResponse, err error) {
+    return c.DeleteMetricConfigWithContext(context.Background(), request)
+}
+
+// DeleteMetricConfig
+// 删除指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMetricConfigWithContext(ctx context.Context, request *DeleteMetricConfigRequest) (response *DeleteMetricConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteMetricConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteMetricConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMetricConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMetricConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMetricSubscribeRequest() (request *DeleteMetricSubscribeRequest) {
+    request = &DeleteMetricSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteMetricSubscribe")
+    
+    
+    return
+}
+
+func NewDeleteMetricSubscribeResponse() (response *DeleteMetricSubscribeResponse) {
+    response = &DeleteMetricSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMetricSubscribe
+// 删除指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMetricSubscribe(request *DeleteMetricSubscribeRequest) (response *DeleteMetricSubscribeResponse, err error) {
+    return c.DeleteMetricSubscribeWithContext(context.Background(), request)
+}
+
+// DeleteMetricSubscribe
+// 删除指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMetricSubscribeWithContext(ctx context.Context, request *DeleteMetricSubscribeRequest) (response *DeleteMetricSubscribeResponse, err error) {
+    if request == nil {
+        request = NewDeleteMetricSubscribeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteMetricSubscribe")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMetricSubscribe require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMetricSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNoticeContentRequest() (request *DeleteNoticeContentRequest) {
     request = &DeleteNoticeContentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3535,6 +4441,86 @@ func (c *Client) DeleteShipperWithContext(ctx context.Context, request *DeleteSh
     request.SetContext(ctx)
     
     response = NewDeleteShipperResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSplunkDeliverRequest() (request *DeleteSplunkDeliverRequest) {
+    request = &DeleteSplunkDeliverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteSplunkDeliver")
+    
+    
+    return
+}
+
+func NewDeleteSplunkDeliverResponse() (response *DeleteSplunkDeliverResponse) {
+    response = &DeleteSplunkDeliverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSplunkDeliver
+// 删除Splunk投递任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_RECORDNOTEXIST = "ResourceNotFound.RecordNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSplunkDeliver(request *DeleteSplunkDeliverRequest) (response *DeleteSplunkDeliverResponse, err error) {
+    return c.DeleteSplunkDeliverWithContext(context.Background(), request)
+}
+
+// DeleteSplunkDeliver
+// 删除Splunk投递任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_RECORDNOTEXIST = "ResourceNotFound.RecordNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSplunkDeliverWithContext(ctx context.Context, request *DeleteSplunkDeliverRequest) (response *DeleteSplunkDeliverResponse, err error) {
+    if request == nil {
+        request = NewDeleteSplunkDeliverRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteSplunkDeliver")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSplunkDeliver require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSplunkDeliverResponse()
     err = c.Send(request, response)
     return
 }
@@ -4013,6 +4999,162 @@ func (c *Client) DescribeCloudProductLogTasksWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeClusterBaseMetricConfigsRequest() (request *DescribeClusterBaseMetricConfigsRequest) {
+    request = &DescribeClusterBaseMetricConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeClusterBaseMetricConfigs")
+    
+    
+    return
+}
+
+func NewDescribeClusterBaseMetricConfigsResponse() (response *DescribeClusterBaseMetricConfigsResponse) {
+    response = &DescribeClusterBaseMetricConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterBaseMetricConfigs
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeClusterBaseMetricConfigs(request *DescribeClusterBaseMetricConfigsRequest) (response *DescribeClusterBaseMetricConfigsResponse, err error) {
+    return c.DescribeClusterBaseMetricConfigsWithContext(context.Background(), request)
+}
+
+// DescribeClusterBaseMetricConfigs
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeClusterBaseMetricConfigsWithContext(ctx context.Context, request *DescribeClusterBaseMetricConfigsRequest) (response *DescribeClusterBaseMetricConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterBaseMetricConfigsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeClusterBaseMetricConfigs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterBaseMetricConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterBaseMetricConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterMetricConfigsRequest() (request *DescribeClusterMetricConfigsRequest) {
+    request = &DescribeClusterMetricConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeClusterMetricConfigs")
+    
+    
+    return
+}
+
+func NewDescribeClusterMetricConfigsResponse() (response *DescribeClusterMetricConfigsResponse) {
+    response = &DescribeClusterMetricConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterMetricConfigs
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeClusterMetricConfigs(request *DescribeClusterMetricConfigsRequest) (response *DescribeClusterMetricConfigsResponse, err error) {
+    return c.DescribeClusterMetricConfigsWithContext(context.Background(), request)
+}
+
+// DescribeClusterMetricConfigs
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeClusterMetricConfigsWithContext(ctx context.Context, request *DescribeClusterMetricConfigsRequest) (response *DescribeClusterMetricConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterMetricConfigsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeClusterMetricConfigs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterMetricConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterMetricConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConfigExtrasRequest() (request *DescribeConfigExtrasRequest) {
     request = &DescribeConfigExtrasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4341,6 +5483,278 @@ func (c *Client) DescribeConsumerWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeConsumerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConsumerGroupsRequest() (request *DescribeConsumerGroupsRequest) {
+    request = &DescribeConsumerGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeConsumerGroups")
+    
+    
+    return
+}
+
+func NewDescribeConsumerGroupsResponse() (response *DescribeConsumerGroupsResponse) {
+    response = &DescribeConsumerGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsumerGroups
+// 获取消费组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeConsumerGroups(request *DescribeConsumerGroupsRequest) (response *DescribeConsumerGroupsResponse, err error) {
+    return c.DescribeConsumerGroupsWithContext(context.Background(), request)
+}
+
+// DescribeConsumerGroups
+// 获取消费组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeConsumerGroupsWithContext(ctx context.Context, request *DescribeConsumerGroupsRequest) (response *DescribeConsumerGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeConsumerGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumerGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumerGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConsumerOffsetsRequest() (request *DescribeConsumerOffsetsRequest) {
+    request = &DescribeConsumerOffsetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeConsumerOffsets")
+    
+    
+    return
+}
+
+func NewDescribeConsumerOffsetsResponse() (response *DescribeConsumerOffsetsResponse) {
+    response = &DescribeConsumerOffsetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsumerOffsets
+// 获取消费组点位信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeConsumerOffsets(request *DescribeConsumerOffsetsRequest) (response *DescribeConsumerOffsetsResponse, err error) {
+    return c.DescribeConsumerOffsetsWithContext(context.Background(), request)
+}
+
+// DescribeConsumerOffsets
+// 获取消费组点位信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeConsumerOffsetsWithContext(ctx context.Context, request *DescribeConsumerOffsetsRequest) (response *DescribeConsumerOffsetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerOffsetsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeConsumerOffsets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumerOffsets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumerOffsetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConsumerPreviewRequest() (request *DescribeConsumerPreviewRequest) {
+    request = &DescribeConsumerPreviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeConsumerPreview")
+    
+    
+    return
+}
+
+func NewDescribeConsumerPreviewResponse() (response *DescribeConsumerPreviewResponse) {
+    response = &DescribeConsumerPreviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsumerPreview
+// 本接口用于kafka投递数据预览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeConsumerPreview(request *DescribeConsumerPreviewRequest) (response *DescribeConsumerPreviewResponse, err error) {
+    return c.DescribeConsumerPreviewWithContext(context.Background(), request)
+}
+
+// DescribeConsumerPreview
+// 本接口用于kafka投递数据预览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeConsumerPreviewWithContext(ctx context.Context, request *DescribeConsumerPreviewRequest) (response *DescribeConsumerPreviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerPreviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeConsumerPreview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumerPreview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumerPreviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConsumersRequest() (request *DescribeConsumersRequest) {
+    request = &DescribeConsumersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeConsumers")
+    
+    
+    return
+}
+
+func NewDescribeConsumersResponse() (response *DescribeConsumersResponse) {
+    response = &DescribeConsumersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsumers
+// 获取投递规则信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeConsumers(request *DescribeConsumersRequest) (response *DescribeConsumersResponse, err error) {
+    return c.DescribeConsumersWithContext(context.Background(), request)
+}
+
+// DescribeConsumers
+// 获取投递规则信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeConsumersWithContext(ctx context.Context, request *DescribeConsumersRequest) (response *DescribeConsumersResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeConsumers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumersResponse()
     err = c.Send(request, response)
     return
 }
@@ -4697,6 +6111,166 @@ func (c *Client) DescribeDlcDeliversWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeEsRechargePreviewRequest() (request *DescribeEsRechargePreviewRequest) {
+    request = &DescribeEsRechargePreviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeEsRechargePreview")
+    
+    
+    return
+}
+
+func NewDescribeEsRechargePreviewResponse() (response *DescribeEsRechargePreviewResponse) {
+    response = &DescribeEsRechargePreviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEsRechargePreview
+// es导入预览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEsRechargePreview(request *DescribeEsRechargePreviewRequest) (response *DescribeEsRechargePreviewResponse, err error) {
+    return c.DescribeEsRechargePreviewWithContext(context.Background(), request)
+}
+
+// DescribeEsRechargePreview
+// es导入预览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEsRechargePreviewWithContext(ctx context.Context, request *DescribeEsRechargePreviewRequest) (response *DescribeEsRechargePreviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeEsRechargePreviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeEsRechargePreview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEsRechargePreview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEsRechargePreviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEsRechargesRequest() (request *DescribeEsRechargesRequest) {
+    request = &DescribeEsRechargesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeEsRecharges")
+    
+    
+    return
+}
+
+func NewDescribeEsRechargesResponse() (response *DescribeEsRechargesResponse) {
+    response = &DescribeEsRechargesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEsRecharges
+// 获取es导入配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEsRecharges(request *DescribeEsRechargesRequest) (response *DescribeEsRechargesResponse, err error) {
+    return c.DescribeEsRechargesWithContext(context.Background(), request)
+}
+
+// DescribeEsRecharges
+// 获取es导入配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEsRechargesWithContext(ctx context.Context, request *DescribeEsRechargesRequest) (response *DescribeEsRechargesResponse, err error) {
+    if request == nil {
+        request = NewDescribeEsRechargesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeEsRecharges")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEsRecharges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEsRechargesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExportsRequest() (request *DescribeExportsRequest) {
     request = &DescribeExportsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4765,6 +6339,84 @@ func (c *Client) DescribeExportsWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeExportsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostMetricConfigsRequest() (request *DescribeHostMetricConfigsRequest) {
+    request = &DescribeHostMetricConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeHostMetricConfigs")
+    
+    
+    return
+}
+
+func NewDescribeHostMetricConfigsResponse() (response *DescribeHostMetricConfigsResponse) {
+    response = &DescribeHostMetricConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHostMetricConfigs
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeHostMetricConfigs(request *DescribeHostMetricConfigsRequest) (response *DescribeHostMetricConfigsResponse, err error) {
+    return c.DescribeHostMetricConfigsWithContext(context.Background(), request)
+}
+
+// DescribeHostMetricConfigs
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeHostMetricConfigsWithContext(ctx context.Context, request *DescribeHostMetricConfigsRequest) (response *DescribeHostMetricConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostMetricConfigsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeHostMetricConfigs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostMetricConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostMetricConfigsResponse()
     err = c.Send(request, response)
     return
 }
@@ -5059,6 +6711,120 @@ func (c *Client) DescribeKafkaConsumerGroupListWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeKafkaConsumerGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKafkaConsumerPreviewRequest() (request *DescribeKafkaConsumerPreviewRequest) {
+    request = &DescribeKafkaConsumerPreviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeKafkaConsumerPreview")
+    
+    
+    return
+}
+
+func NewDescribeKafkaConsumerPreviewResponse() (response *DescribeKafkaConsumerPreviewResponse) {
+    response = &DescribeKafkaConsumerPreviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKafkaConsumerPreview
+// kafka协议消费预览接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeKafkaConsumerPreview(request *DescribeKafkaConsumerPreviewRequest) (response *DescribeKafkaConsumerPreviewResponse, err error) {
+    return c.DescribeKafkaConsumerPreviewWithContext(context.Background(), request)
+}
+
+// DescribeKafkaConsumerPreview
+// kafka协议消费预览接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeKafkaConsumerPreviewWithContext(ctx context.Context, request *DescribeKafkaConsumerPreviewRequest) (response *DescribeKafkaConsumerPreviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeKafkaConsumerPreviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeKafkaConsumerPreview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKafkaConsumerPreview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKafkaConsumerPreviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKafkaConsumerTopicsRequest() (request *DescribeKafkaConsumerTopicsRequest) {
+    request = &DescribeKafkaConsumerTopicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeKafkaConsumerTopics")
+    
+    
+    return
+}
+
+func NewDescribeKafkaConsumerTopicsResponse() (response *DescribeKafkaConsumerTopicsResponse) {
+    response = &DescribeKafkaConsumerTopicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKafkaConsumerTopics
+// 本接口用于获取kafka协议消费主题信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeKafkaConsumerTopics(request *DescribeKafkaConsumerTopicsRequest) (response *DescribeKafkaConsumerTopicsResponse, err error) {
+    return c.DescribeKafkaConsumerTopicsWithContext(context.Background(), request)
+}
+
+// DescribeKafkaConsumerTopics
+// 本接口用于获取kafka协议消费主题信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeKafkaConsumerTopicsWithContext(ctx context.Context, request *DescribeKafkaConsumerTopicsRequest) (response *DescribeKafkaConsumerTopicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeKafkaConsumerTopicsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeKafkaConsumerTopics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKafkaConsumerTopics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKafkaConsumerTopicsResponse()
     err = c.Send(request, response)
     return
 }
@@ -5593,6 +7359,242 @@ func (c *Client) DescribeMachinesWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeMetricCorrectDimensionRequest() (request *DescribeMetricCorrectDimensionRequest) {
+    request = &DescribeMetricCorrectDimensionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeMetricCorrectDimension")
+    
+    
+    return
+}
+
+func NewDescribeMetricCorrectDimensionResponse() (response *DescribeMetricCorrectDimensionResponse) {
+    response = &DescribeMetricCorrectDimensionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMetricCorrectDimension
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMetricCorrectDimension(request *DescribeMetricCorrectDimensionRequest) (response *DescribeMetricCorrectDimensionResponse, err error) {
+    return c.DescribeMetricCorrectDimensionWithContext(context.Background(), request)
+}
+
+// DescribeMetricCorrectDimension
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMetricCorrectDimensionWithContext(ctx context.Context, request *DescribeMetricCorrectDimensionRequest) (response *DescribeMetricCorrectDimensionResponse, err error) {
+    if request == nil {
+        request = NewDescribeMetricCorrectDimensionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeMetricCorrectDimension")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMetricCorrectDimension require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMetricCorrectDimensionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMetricSubscribePreviewRequest() (request *DescribeMetricSubscribePreviewRequest) {
+    request = &DescribeMetricSubscribePreviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeMetricSubscribePreview")
+    
+    
+    return
+}
+
+func NewDescribeMetricSubscribePreviewResponse() (response *DescribeMetricSubscribePreviewResponse) {
+    response = &DescribeMetricSubscribePreviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMetricSubscribePreview
+// 创建指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMetricSubscribePreview(request *DescribeMetricSubscribePreviewRequest) (response *DescribeMetricSubscribePreviewResponse, err error) {
+    return c.DescribeMetricSubscribePreviewWithContext(context.Background(), request)
+}
+
+// DescribeMetricSubscribePreview
+// 创建指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMetricSubscribePreviewWithContext(ctx context.Context, request *DescribeMetricSubscribePreviewRequest) (response *DescribeMetricSubscribePreviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeMetricSubscribePreviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeMetricSubscribePreview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMetricSubscribePreview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMetricSubscribePreviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMetricSubscribesRequest() (request *DescribeMetricSubscribesRequest) {
+    request = &DescribeMetricSubscribesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeMetricSubscribes")
+    
+    
+    return
+}
+
+func NewDescribeMetricSubscribesResponse() (response *DescribeMetricSubscribesResponse) {
+    response = &DescribeMetricSubscribesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMetricSubscribes
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMetricSubscribes(request *DescribeMetricSubscribesRequest) (response *DescribeMetricSubscribesResponse, err error) {
+    return c.DescribeMetricSubscribesWithContext(context.Background(), request)
+}
+
+// DescribeMetricSubscribes
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMetricSubscribesWithContext(ctx context.Context, request *DescribeMetricSubscribesRequest) (response *DescribeMetricSubscribesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMetricSubscribesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeMetricSubscribes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMetricSubscribes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMetricSubscribesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNoticeContentsRequest() (request *DescribeNoticeContentsRequest) {
     request = &DescribeNoticeContentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5947,6 +7949,312 @@ func (c *Client) DescribeShippersWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeSplunkDeliversRequest() (request *DescribeSplunkDeliversRequest) {
+    request = &DescribeSplunkDeliversRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeSplunkDelivers")
+    
+    
+    return
+}
+
+func NewDescribeSplunkDeliversResponse() (response *DescribeSplunkDeliversResponse) {
+    response = &DescribeSplunkDeliversResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSplunkDelivers
+// 获取Splunk投递任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_RECORDNOTEXIST = "ResourceNotFound.RecordNotExist"
+func (c *Client) DescribeSplunkDelivers(request *DescribeSplunkDeliversRequest) (response *DescribeSplunkDeliversResponse, err error) {
+    return c.DescribeSplunkDeliversWithContext(context.Background(), request)
+}
+
+// DescribeSplunkDelivers
+// 获取Splunk投递任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_RECORDNOTEXIST = "ResourceNotFound.RecordNotExist"
+func (c *Client) DescribeSplunkDeliversWithContext(ctx context.Context, request *DescribeSplunkDeliversRequest) (response *DescribeSplunkDeliversResponse, err error) {
+    if request == nil {
+        request = NewDescribeSplunkDeliversRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeSplunkDelivers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSplunkDelivers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSplunkDeliversResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSplunkPreviewRequest() (request *DescribeSplunkPreviewRequest) {
+    request = &DescribeSplunkPreviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeSplunkPreview")
+    
+    
+    return
+}
+
+func NewDescribeSplunkPreviewResponse() (response *DescribeSplunkPreviewResponse) {
+    response = &DescribeSplunkPreviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSplunkPreview
+// splunk投递任务预览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSplunkPreview(request *DescribeSplunkPreviewRequest) (response *DescribeSplunkPreviewResponse, err error) {
+    return c.DescribeSplunkPreviewWithContext(context.Background(), request)
+}
+
+// DescribeSplunkPreview
+// splunk投递任务预览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSplunkPreviewWithContext(ctx context.Context, request *DescribeSplunkPreviewRequest) (response *DescribeSplunkPreviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeSplunkPreviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeSplunkPreview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSplunkPreview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSplunkPreviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopicBaseMetricConfigsRequest() (request *DescribeTopicBaseMetricConfigsRequest) {
+    request = &DescribeTopicBaseMetricConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeTopicBaseMetricConfigs")
+    
+    
+    return
+}
+
+func NewDescribeTopicBaseMetricConfigsResponse() (response *DescribeTopicBaseMetricConfigsResponse) {
+    response = &DescribeTopicBaseMetricConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTopicBaseMetricConfigs
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopicBaseMetricConfigs(request *DescribeTopicBaseMetricConfigsRequest) (response *DescribeTopicBaseMetricConfigsResponse, err error) {
+    return c.DescribeTopicBaseMetricConfigsWithContext(context.Background(), request)
+}
+
+// DescribeTopicBaseMetricConfigs
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopicBaseMetricConfigsWithContext(ctx context.Context, request *DescribeTopicBaseMetricConfigsRequest) (response *DescribeTopicBaseMetricConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicBaseMetricConfigsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeTopicBaseMetricConfigs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopicBaseMetricConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopicBaseMetricConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopicMetricConfigsRequest() (request *DescribeTopicMetricConfigsRequest) {
+    request = &DescribeTopicMetricConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeTopicMetricConfigs")
+    
+    
+    return
+}
+
+func NewDescribeTopicMetricConfigsResponse() (response *DescribeTopicMetricConfigsResponse) {
+    response = &DescribeTopicMetricConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTopicMetricConfigs
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopicMetricConfigs(request *DescribeTopicMetricConfigsRequest) (response *DescribeTopicMetricConfigsResponse, err error) {
+    return c.DescribeTopicMetricConfigsWithContext(context.Background(), request)
+}
+
+// DescribeTopicMetricConfigs
+// 获取指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopicMetricConfigsWithContext(ctx context.Context, request *DescribeTopicMetricConfigsRequest) (response *DescribeTopicMetricConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicMetricConfigsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeTopicMetricConfigs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopicMetricConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopicMetricConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicsRequest() (request *DescribeTopicsRequest) {
     request = &DescribeTopicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6179,6 +8487,72 @@ func (c *Client) GetAlarmLogWithContext(ctx context.Context, request *GetAlarmLo
     request.SetContext(ctx)
     
     response = NewGetAlarmLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetMetricLabelValuesRequest() (request *GetMetricLabelValuesRequest) {
+    request = &GetMetricLabelValuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "GetMetricLabelValues")
+    
+    
+    return
+}
+
+func NewGetMetricLabelValuesResponse() (response *GetMetricLabelValuesResponse) {
+    response = &GetMetricLabelValuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetMetricLabelValues
+// 获取时序label values列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) GetMetricLabelValues(request *GetMetricLabelValuesRequest) (response *GetMetricLabelValuesResponse, err error) {
+    return c.GetMetricLabelValuesWithContext(context.Background(), request)
+}
+
+// GetMetricLabelValues
+// 获取时序label values列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) GetMetricLabelValuesWithContext(ctx context.Context, request *GetMetricLabelValuesRequest) (response *GetMetricLabelValuesResponse, err error) {
+    if request == nil {
+        request = NewGetMetricLabelValuesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "GetMetricLabelValues")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetMetricLabelValues require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetMetricLabelValuesResponse()
     err = c.Send(request, response)
     return
 }
@@ -6809,6 +9183,70 @@ func (c *Client) ModifyConsumerWithContext(ctx context.Context, request *ModifyC
     return
 }
 
+func NewModifyConsumerGroupRequest() (request *ModifyConsumerGroupRequest) {
+    request = &ModifyConsumerGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyConsumerGroup")
+    
+    
+    return
+}
+
+func NewModifyConsumerGroupResponse() (response *ModifyConsumerGroupResponse) {
+    response = &ModifyConsumerGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyConsumerGroup
+// 更新消费组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) ModifyConsumerGroup(request *ModifyConsumerGroupRequest) (response *ModifyConsumerGroupResponse, err error) {
+    return c.ModifyConsumerGroupWithContext(context.Background(), request)
+}
+
+// ModifyConsumerGroup
+// 更新消费组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) ModifyConsumerGroupWithContext(ctx context.Context, request *ModifyConsumerGroupRequest) (response *ModifyConsumerGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyConsumerGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyConsumerGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConsumerGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyConsumerGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCosRechargeRequest() (request *ModifyCosRechargeRequest) {
     request = &ModifyCosRechargeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7109,6 +9547,166 @@ func (c *Client) ModifyDlcDeliverWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifyDlcDeliverResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEsRechargeRequest() (request *ModifyEsRechargeRequest) {
+    request = &ModifyEsRechargeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyEsRecharge")
+    
+    
+    return
+}
+
+func NewModifyEsRechargeResponse() (response *ModifyEsRechargeResponse) {
+    response = &ModifyEsRechargeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyEsRecharge
+// 修改es导入配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEsRecharge(request *ModifyEsRechargeRequest) (response *ModifyEsRechargeResponse, err error) {
+    return c.ModifyEsRechargeWithContext(context.Background(), request)
+}
+
+// ModifyEsRecharge
+// 修改es导入配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEsRechargeWithContext(ctx context.Context, request *ModifyEsRechargeRequest) (response *ModifyEsRechargeResponse, err error) {
+    if request == nil {
+        request = NewModifyEsRechargeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyEsRecharge")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEsRecharge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEsRechargeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyHostMetricConfigRequest() (request *ModifyHostMetricConfigRequest) {
+    request = &ModifyHostMetricConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyHostMetricConfig")
+    
+    
+    return
+}
+
+func NewModifyHostMetricConfigResponse() (response *ModifyHostMetricConfigResponse) {
+    response = &ModifyHostMetricConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyHostMetricConfig
+// 修改主机指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyHostMetricConfig(request *ModifyHostMetricConfigRequest) (response *ModifyHostMetricConfigResponse, err error) {
+    return c.ModifyHostMetricConfigWithContext(context.Background(), request)
+}
+
+// ModifyHostMetricConfig
+// 修改主机指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyHostMetricConfigWithContext(ctx context.Context, request *ModifyHostMetricConfigRequest) (response *ModifyHostMetricConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyHostMetricConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyHostMetricConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHostMetricConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyHostMetricConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -7565,6 +10163,166 @@ func (c *Client) ModifyMachineGroupWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyMetricConfigRequest() (request *ModifyMetricConfigRequest) {
+    request = &ModifyMetricConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyMetricConfig")
+    
+    
+    return
+}
+
+func NewModifyMetricConfigResponse() (response *ModifyMetricConfigResponse) {
+    response = &ModifyMetricConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMetricConfig
+// 创建指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyMetricConfig(request *ModifyMetricConfigRequest) (response *ModifyMetricConfigResponse, err error) {
+    return c.ModifyMetricConfigWithContext(context.Background(), request)
+}
+
+// ModifyMetricConfig
+// 创建指标采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyMetricConfigWithContext(ctx context.Context, request *ModifyMetricConfigRequest) (response *ModifyMetricConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyMetricConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyMetricConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMetricConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMetricConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMetricSubscribeRequest() (request *ModifyMetricSubscribeRequest) {
+    request = &ModifyMetricSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyMetricSubscribe")
+    
+    
+    return
+}
+
+func NewModifyMetricSubscribeResponse() (response *ModifyMetricSubscribeResponse) {
+    response = &ModifyMetricSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMetricSubscribe
+// 修改指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyMetricSubscribe(request *ModifyMetricSubscribeRequest) (response *ModifyMetricSubscribeResponse, err error) {
+    return c.ModifyMetricSubscribeWithContext(context.Background(), request)
+}
+
+// ModifyMetricSubscribe
+// 修改指标订阅配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyMetricSubscribeWithContext(ctx context.Context, request *ModifyMetricSubscribeRequest) (response *ModifyMetricSubscribeResponse, err error) {
+    if request == nil {
+        request = NewModifyMetricSubscribeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyMetricSubscribe")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMetricSubscribe require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMetricSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNoticeContentRequest() (request *ModifyNoticeContentRequest) {
     request = &ModifyNoticeContentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7779,6 +10537,84 @@ func (c *Client) ModifyShipperWithContext(ctx context.Context, request *ModifySh
     request.SetContext(ctx)
     
     response = NewModifyShipperResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySplunkDeliverRequest() (request *ModifySplunkDeliverRequest) {
+    request = &ModifySplunkDeliverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifySplunkDeliver")
+    
+    
+    return
+}
+
+func NewModifySplunkDeliverResponse() (response *ModifySplunkDeliverResponse) {
+    response = &ModifySplunkDeliverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySplunkDeliver
+// 修改splunk投递任务相关信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySplunkDeliver(request *ModifySplunkDeliverRequest) (response *ModifySplunkDeliverResponse, err error) {
+    return c.ModifySplunkDeliverWithContext(context.Background(), request)
+}
+
+// ModifySplunkDeliver
+// 修改splunk投递任务相关信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySplunkDeliverWithContext(ctx context.Context, request *ModifySplunkDeliverRequest) (response *ModifySplunkDeliverResponse, err error) {
+    if request == nil {
+        request = NewModifySplunkDeliverRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifySplunkDeliver")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySplunkDeliver require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySplunkDeliverResponse()
     err = c.Send(request, response)
     return
 }
@@ -8543,6 +11379,70 @@ func (c *Client) SearchLogWithContext(ctx context.Context, request *SearchLogReq
     request.SetContext(ctx)
     
     response = NewSearchLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSendConsumerHeartbeatRequest() (request *SendConsumerHeartbeatRequest) {
+    request = &SendConsumerHeartbeatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "SendConsumerHeartbeat")
+    
+    
+    return
+}
+
+func NewSendConsumerHeartbeatResponse() (response *SendConsumerHeartbeatResponse) {
+    response = &SendConsumerHeartbeatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SendConsumerHeartbeat
+// 消费组心跳
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) SendConsumerHeartbeat(request *SendConsumerHeartbeatRequest) (response *SendConsumerHeartbeatResponse, err error) {
+    return c.SendConsumerHeartbeatWithContext(context.Background(), request)
+}
+
+// SendConsumerHeartbeat
+// 消费组心跳
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) SendConsumerHeartbeatWithContext(ctx context.Context, request *SendConsumerHeartbeatRequest) (response *SendConsumerHeartbeatResponse, err error) {
+    if request == nil {
+        request = NewSendConsumerHeartbeatRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "SendConsumerHeartbeat")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendConsumerHeartbeat require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSendConsumerHeartbeatResponse()
     err = c.Send(request, response)
     return
 }

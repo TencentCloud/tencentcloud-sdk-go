@@ -1656,7 +1656,7 @@ type CreateResourceFileRequestParams struct {
 	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
 
 	// - 上传文件及手填两种方式只能选择其一，如果两者均提供，取值顺序为文件>手填值
-	// -   手填值必须是存在的cos路径, /datastudio/resource/ 为固定前缀, projectId 为项目ID,需传入具体值, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:     /datastudio/resource/projectId/parentFolderPath/name 
+	// -   手填值必须是存在的cos路径, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:     /datastudio/resource/projectId/parentFolderPath/name 
 	ResourceFile *string `json:"ResourceFile,omitnil,omitempty" name:"ResourceFile"`
 
 	// bundle客户端ID
@@ -1685,7 +1685,7 @@ type CreateResourceFileRequest struct {
 	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
 
 	// - 上传文件及手填两种方式只能选择其一，如果两者均提供，取值顺序为文件>手填值
-	// -   手填值必须是存在的cos路径, /datastudio/resource/ 为固定前缀, projectId 为项目ID,需传入具体值, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:     /datastudio/resource/projectId/parentFolderPath/name 
+	// -   手填值必须是存在的cos路径, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:     /datastudio/resource/projectId/parentFolderPath/name 
 	ResourceFile *string `json:"ResourceFile,omitnil,omitempty" name:"ResourceFile"`
 
 	// bundle客户端ID
@@ -2150,6 +2150,13 @@ type CreateTaskBaseAttribute struct {
 
 	// 任务描述
 	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
+
+	// 任务文件夹路径
+	// 
+	// 注意：
+	// - 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+	// - 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+	TaskFolderPath *string `json:"TaskFolderPath,omitnil,omitempty" name:"TaskFolderPath"`
 }
 
 type CreateTaskConfiguration struct {
@@ -2304,9 +2311,6 @@ type CreateTaskSchedulerConfiguration struct {
 	// 执行时间 右闭区间，默认 23:59
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 调度类型: 0 正常调度 1 空跑调度，默认为 0
-	ScheduleRunType *string `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
-
 	// 日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
 	CalendarOpen *string `json:"CalendarOpen,omitnil,omitempty" name:"CalendarOpen"`
 
@@ -2321,21 +2325,6 @@ type CreateTaskSchedulerConfiguration struct {
 
 	// 事件数组
 	EventListenerList []*EventListener `json:"EventListenerList,omitnil,omitempty" name:"EventListenerList"`
-
-	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
-	RunPriority *string `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
-
-	// 重试策略 重试等待时间,单位分钟: 默认: 5
-	RetryWait *string `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
-
-	// 重试策略 最大尝试次数, 默认: 4
-	MaxRetryAttempts *string `json:"MaxRetryAttempts,omitnil,omitempty" name:"MaxRetryAttempts"`
-
-	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
-	ExecutionTTL *string `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
-
-	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
-	WaitExecutionTotalTTL *string `json:"WaitExecutionTotalTTL,omitnil,omitempty" name:"WaitExecutionTotalTTL"`
 
 	// 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
 	AllowRedoType *string `json:"AllowRedoType,omitnil,omitempty" name:"AllowRedoType"`
@@ -2353,6 +2342,54 @@ type CreateTaskSchedulerConfiguration struct {
 	// * T_PLUS_0: T+0生成,默认策略
 	// * T_PLUS_1: T+1生成
 	InitStrategy *string `json:"InitStrategy,omitnil,omitempty" name:"InitStrategy"`
+
+	// 调度类型: 0 正常调度 1 空跑调度，默认为 0
+	//
+	// Deprecated: ScheduleRunType is deprecated.
+	ScheduleRunType *string `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
+
+	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	//
+	// Deprecated: RunPriority is deprecated.
+	RunPriority *string `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
+
+	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	//
+	// Deprecated: RetryWait is deprecated.
+	RetryWait *string `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
+
+	// 重试策略 最大尝试次数, 默认: 4
+	//
+	// Deprecated: MaxRetryAttempts is deprecated.
+	MaxRetryAttempts *string `json:"MaxRetryAttempts,omitnil,omitempty" name:"MaxRetryAttempts"`
+
+	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	//
+	// Deprecated: ExecutionTTL is deprecated.
+	ExecutionTTL *string `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
+
+	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	//
+	// Deprecated: WaitExecutionTotalTTL is deprecated.
+	WaitExecutionTotalTTL *string `json:"WaitExecutionTotalTTL,omitnil,omitempty" name:"WaitExecutionTotalTTL"`
+
+	// 调度类型: 0 正常调度 1 空跑调度，默认为 0
+	ScheduleType *int64 `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
+
+	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	RunPriorityType *int64 `json:"RunPriorityType,omitnil,omitempty" name:"RunPriorityType"`
+
+	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	RetryWaitMinute *int64 `json:"RetryWaitMinute,omitnil,omitempty" name:"RetryWaitMinute"`
+
+	// 重试策略 最大尝试次数, 默认: 4
+	MaxRetryNumber *int64 `json:"MaxRetryNumber,omitnil,omitempty" name:"MaxRetryNumber"`
+
+	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	ExecutionTTLMinute *int64 `json:"ExecutionTTLMinute,omitnil,omitempty" name:"ExecutionTTLMinute"`
+
+	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	WaitExecutionTotalTTLMinute *int64 `json:"WaitExecutionTotalTTLMinute,omitnil,omitempty" name:"WaitExecutionTotalTTLMinute"`
 }
 
 // Predefined struct for user
@@ -12259,6 +12296,14 @@ type TaskBaseAttribute struct {
 	// 创建用户ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 任务文件夹路径
+	// 
+	// 注意：
+	// - 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+	// - 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFolderPath *string `json:"TaskFolderPath,omitnil,omitempty" name:"TaskFolderPath"`
 }
 
 type TaskCode struct {
@@ -12975,10 +13020,6 @@ type TaskSchedulerConfiguration struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 调度类型: 0 正常调度 1 空跑调度
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScheduleRunType *int64 `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
-
 	// 日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalendarOpen *string `json:"CalendarOpen,omitnil,omitempty" name:"CalendarOpen"`
@@ -13001,31 +13042,11 @@ type TaskSchedulerConfiguration struct {
 
 	// 下游依赖数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownStreamDependencyConfigList []*DependencyTaskBrief `json:"DownStreamDependencyConfigList,omitnil,omitempty" name:"DownStreamDependencyConfigList"`
+	DownstreamDependencyConfigList []*DependencyTaskBrief `json:"DownstreamDependencyConfigList,omitnil,omitempty" name:"DownstreamDependencyConfigList"`
 
 	// 事件数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventListenerList []*EventListener `json:"EventListenerList,omitnil,omitempty" name:"EventListenerList"`
-
-	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RunPriority *uint64 `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
-
-	// 重试策略 重试等待时间,单位分钟: 默认: 5
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RetryWait *int64 `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
-
-	// 重试策略 最大尝试次数, 默认: 4
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxRetryAttempts *int64 `json:"MaxRetryAttempts,omitnil,omitempty" name:"MaxRetryAttempts"`
-
-	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExecutionTTL *int64 `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
-
-	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	WaitExecutionTotalTTL *string `json:"WaitExecutionTotalTTL,omitnil,omitempty" name:"WaitExecutionTotalTTL"`
 
 	// 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13048,6 +13069,72 @@ type TaskSchedulerConfiguration struct {
 	// * T_PLUS_1: T+1生成
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitStrategy *string `json:"InitStrategy,omitnil,omitempty" name:"InitStrategy"`
+
+	// 调度类型: 0 正常调度 1 空跑调度，默认为 0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ScheduleRunType is deprecated.
+	ScheduleRunType *int64 `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
+
+	// （废弃，建议使用 DownstreamDependencyConfigList）下游依赖数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: DownStreamDependencyConfigList is deprecated.
+	DownStreamDependencyConfigList []*DependencyTaskBrief `json:"DownStreamDependencyConfigList,omitnil,omitempty" name:"DownStreamDependencyConfigList"`
+
+	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: RunPriority is deprecated.
+	RunPriority *uint64 `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
+
+	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: RetryWait is deprecated.
+	RetryWait *int64 `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
+
+	// 重试策略 最大尝试次数, 默认: 4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: MaxRetryAttempts is deprecated.
+	MaxRetryAttempts *int64 `json:"MaxRetryAttempts,omitnil,omitempty" name:"MaxRetryAttempts"`
+
+	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ExecutionTTL is deprecated.
+	ExecutionTTL *int64 `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
+
+	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: WaitExecutionTotalTTL is deprecated.
+	WaitExecutionTotalTTL *string `json:"WaitExecutionTotalTTL,omitnil,omitempty" name:"WaitExecutionTotalTTL"`
+
+	// 调度类型: 0 正常调度 1 空跑调度，默认为 0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleType *int64 `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
+
+	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunPriorityType *int64 `json:"RunPriorityType,omitnil,omitempty" name:"RunPriorityType"`
+
+	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryWaitMinute *int64 `json:"RetryWaitMinute,omitnil,omitempty" name:"RetryWaitMinute"`
+
+	// 重试策略 最大尝试次数, 默认: 4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxRetryNumber *int64 `json:"MaxRetryNumber,omitnil,omitempty" name:"MaxRetryNumber"`
+
+	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionTTLMinute *int64 `json:"ExecutionTTLMinute,omitnil,omitempty" name:"ExecutionTTLMinute"`
+
+	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaitExecutionTotalTTLMinute *int64 `json:"WaitExecutionTotalTTLMinute,omitnil,omitempty" name:"WaitExecutionTotalTTLMinute"`
 }
 
 type TaskSchedulingParameter struct {
@@ -13954,7 +14041,7 @@ type UpdateResourceFileRequestParams struct {
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// - 上传文件及手填两种方式只能选择其一，如果两者均提供，取值顺序为文件>手填值
-	// -  手填值必须是存在的cos路径, /datastudio/resource/ 为固定前缀, projectId 为项目ID,需传入具体值, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:
+	// -  手填值必须是存在的cos路径, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:
 	//      /datastudio/resource/projectId/parentFolderPath/name 
 	ResourceFile *string `json:"ResourceFile,omitnil,omitempty" name:"ResourceFile"`
 
@@ -13978,7 +14065,7 @@ type UpdateResourceFileRequest struct {
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// - 上传文件及手填两种方式只能选择其一，如果两者均提供，取值顺序为文件>手填值
-	// -  手填值必须是存在的cos路径, /datastudio/resource/ 为固定前缀, projectId 为项目ID,需传入具体值, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:
+	// -  手填值必须是存在的cos路径, parentFolderPath为父文件夹路径, name为文件名, 手填值取值示例:
 	//      /datastudio/resource/projectId/parentFolderPath/name 
 	ResourceFile *string `json:"ResourceFile,omitnil,omitempty" name:"ResourceFile"`
 
@@ -14407,6 +14494,11 @@ type UpdateTaskBaseAttribute struct {
 
 	// 任务描述
 	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
+
+	// 注意：
+	// - 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+	// - 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+	TaskFolderPath *string `json:"TaskFolderPath,omitnil,omitempty" name:"TaskFolderPath"`
 }
 
 type UpdateTaskBrief struct {

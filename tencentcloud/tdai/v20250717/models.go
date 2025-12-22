@@ -797,7 +797,7 @@ type DescribeChatDetailRequestParams struct {
 	StreamingId *string `json:"StreamingId,omitnil,omitempty" name:"StreamingId"`
 
 	// 开始拉取的流式TokenID。0表示从该流最早的TokenID开始获取
-	BeginStreamingTokenId *string `json:"BeginStreamingTokenId,omitnil,omitempty" name:"BeginStreamingTokenId"`
+	BeginStreamingTokenId *int64 `json:"BeginStreamingTokenId,omitnil,omitempty" name:"BeginStreamingTokenId"`
 
 	// 单次获取的token数量，默认2000
 	TokenLimit *int64 `json:"TokenLimit,omitnil,omitempty" name:"TokenLimit"`
@@ -816,7 +816,7 @@ type DescribeChatDetailRequest struct {
 	StreamingId *string `json:"StreamingId,omitnil,omitempty" name:"StreamingId"`
 
 	// 开始拉取的流式TokenID。0表示从该流最早的TokenID开始获取
-	BeginStreamingTokenId *string `json:"BeginStreamingTokenId,omitnil,omitempty" name:"BeginStreamingTokenId"`
+	BeginStreamingTokenId *int64 `json:"BeginStreamingTokenId,omitnil,omitempty" name:"BeginStreamingTokenId"`
 
 	// 单次获取的token数量，默认2000
 	TokenLimit *int64 `json:"TokenLimit,omitnil,omitempty" name:"TokenLimit"`

@@ -167,6 +167,45 @@ type BackUpJobDisplay struct {
 
 	// 隔离次数
 	IsolationCount *int64 `json:"IsolationCount,omitnil,omitempty" name:"IsolationCount"`
+
+	// 是否开启安全锁
+	EnableSecurityLock *uint64 `json:"EnableSecurityLock,omitnil,omitempty" name:"EnableSecurityLock"`
+
+	// 宽限期天数
+	GracePeriod *uint64 `json:"GracePeriod,omitnil,omitempty" name:"GracePeriod"`
+
+	// 宽限期开始时间
+	GraceStartTime *string `json:"GraceStartTime,omitnil,omitempty" name:"GraceStartTime"`
+
+	// 是否在宽限期内
+	IsWithinGracePeriod *bool `json:"IsWithinGracePeriod,omitnil,omitempty" name:"IsWithinGracePeriod"`
+
+	// 是否使用托管桶
+	UseManagedBucket *bool `json:"UseManagedBucket,omitnil,omitempty" name:"UseManagedBucket"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例状态
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
+
+	// 实例状态描述
+	InstanceStatusDesc *string `json:"InstanceStatusDesc,omitnil,omitempty" name:"InstanceStatusDesc"`
+
+	// 备份远程桶地域
+	DataRemoteRegion *string `json:"DataRemoteRegion,omitnil,omitempty" name:"DataRemoteRegion"`
+
+	// 桶加密状态信息
+	BucketEncryption *BucketEncryptionInfo `json:"BucketEncryption,omitnil,omitempty" name:"BucketEncryption"`
+
+	// 备份任务创建时记录的加密类型：SSE-COS/SSE-KMS/disabled
+	Encryption *string `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 是否开通加密存储：0-未开通，1-已开通
+	EncryptionEnabled *bool `json:"EncryptionEnabled,omitnil,omitempty" name:"EncryptionEnabled"`
 }
 
 type BackupCosInfo struct {
@@ -231,6 +270,9 @@ type BackupStatus struct {
 
 	// 实例对应Snapshot的id
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 上传大小
+	UploadBytes *int64 `json:"UploadBytes,omitnil,omitempty" name:"UploadBytes"`
 }
 
 type BackupTableContent struct {
@@ -262,6 +304,20 @@ type BindUser struct {
 
 	// 主机信息
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+}
+
+type BucketEncryptionInfo struct {
+	// 是否已加密
+	IsEncrypted *bool `json:"IsEncrypted,omitnil,omitempty" name:"IsEncrypted"`
+
+	// 加密类型：SSE-COS/SSE-KMS/disabled
+	EncryptionType *string `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
+
+	// 最后操作类型：enable/disable
+	LastOperation *string `json:"LastOperation,omitnil,omitempty" name:"LastOperation"`
+
+	// 最后更新时间
+	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 }
 
 // Predefined struct for user
@@ -609,6 +665,15 @@ type CreateBackUpScheduleRequestParams struct {
 
 	// 备份数据所在地域，当前地域应该为空
 	DataRemoteRegion *string `json:"DataRemoteRegion,omitnil,omitempty" name:"DataRemoteRegion"`
+
+	// 托管桶类型：standard-标准，maz-多可用区
+	BucketType *string `json:"BucketType,omitnil,omitempty" name:"BucketType"`
+
+	// 是否开启安全锁：0-未开启，1-开启
+	EnableSecurityLock *int64 `json:"EnableSecurityLock,omitnil,omitempty" name:"EnableSecurityLock"`
+
+	// 宽限期（天数）
+	GracePeriod *uint64 `json:"GracePeriod,omitnil,omitempty" name:"GracePeriod"`
 }
 
 type CreateBackUpScheduleRequest struct {
@@ -672,6 +737,15 @@ type CreateBackUpScheduleRequest struct {
 
 	// 备份数据所在地域，当前地域应该为空
 	DataRemoteRegion *string `json:"DataRemoteRegion,omitnil,omitempty" name:"DataRemoteRegion"`
+
+	// 托管桶类型：standard-标准，maz-多可用区
+	BucketType *string `json:"BucketType,omitnil,omitempty" name:"BucketType"`
+
+	// 是否开启安全锁：0-未开启，1-开启
+	EnableSecurityLock *int64 `json:"EnableSecurityLock,omitnil,omitempty" name:"EnableSecurityLock"`
+
+	// 宽限期（天数）
+	GracePeriod *uint64 `json:"GracePeriod,omitnil,omitempty" name:"GracePeriod"`
 }
 
 func (r *CreateBackUpScheduleRequest) ToJsonString() string {
@@ -704,6 +778,9 @@ func (r *CreateBackUpScheduleRequest) FromJsonString(s string) error {
 	delete(f, "CosBucket")
 	delete(f, "SnapshotRemainPolicy")
 	delete(f, "DataRemoteRegion")
+	delete(f, "BucketType")
+	delete(f, "EnableSecurityLock")
+	delete(f, "GracePeriod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackUpScheduleRequest has unknown keys!", "")
 	}
@@ -1447,6 +1524,9 @@ type DescribeBackUpJobRequestParams struct {
 
 	// jobid的string类型
 	JobIdFiltersStr *string `json:"JobIdFiltersStr,omitnil,omitempty" name:"JobIdFiltersStr"`
+
+	// 0-未加密；1-已加密
+	EncryptionFilters []*int64 `json:"EncryptionFilters,omitnil,omitempty" name:"EncryptionFilters"`
 }
 
 type DescribeBackUpJobRequest struct {
@@ -1475,6 +1555,9 @@ type DescribeBackUpJobRequest struct {
 
 	// jobid的string类型
 	JobIdFiltersStr *string `json:"JobIdFiltersStr,omitnil,omitempty" name:"JobIdFiltersStr"`
+
+	// 0-未加密；1-已加密
+	EncryptionFilters []*int64 `json:"EncryptionFilters,omitnil,omitempty" name:"EncryptionFilters"`
 }
 
 func (r *DescribeBackUpJobRequest) ToJsonString() string {
@@ -1496,6 +1579,7 @@ func (r *DescribeBackUpJobRequest) FromJsonString(s string) error {
 	delete(f, "BeginTime")
 	delete(f, "EndTime")
 	delete(f, "JobIdFiltersStr")
+	delete(f, "EncryptionFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackUpJobRequest has unknown keys!", "")
 	}
@@ -1512,6 +1596,9 @@ type DescribeBackUpJobResponseParams struct {
 
 	// 总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 当前时间
+	CurrentTime *string `json:"CurrentTime,omitnil,omitempty" name:"CurrentTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1540,6 +1627,9 @@ type DescribeBackUpSchedulesRequestParams struct {
 	// 1-备份恢复（包括周期备份和一次性备份）；
 	// 2-数据迁移（包括跨集群迁移和cos迁移）
 	ApplicationType *int64 `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
+
+	// 0-未加密；1-已加密
+	EncryptionFilters []*int64 `json:"EncryptionFilters,omitnil,omitempty" name:"EncryptionFilters"`
 }
 
 type DescribeBackUpSchedulesRequest struct {
@@ -1550,6 +1640,9 @@ type DescribeBackUpSchedulesRequest struct {
 	// 1-备份恢复（包括周期备份和一次性备份）；
 	// 2-数据迁移（包括跨集群迁移和cos迁移）
 	ApplicationType *int64 `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
+
+	// 0-未加密；1-已加密
+	EncryptionFilters []*int64 `json:"EncryptionFilters,omitnil,omitempty" name:"EncryptionFilters"`
 }
 
 func (r *DescribeBackUpSchedulesRequest) ToJsonString() string {
@@ -1565,6 +1658,7 @@ func (r *DescribeBackUpSchedulesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ApplicationType")
+	delete(f, "EncryptionFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackUpSchedulesRequest has unknown keys!", "")
 	}
@@ -1573,6 +1667,12 @@ func (r *DescribeBackUpSchedulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackUpSchedulesResponseParams struct {
+	// 当前系统时间
+	CurrentTime *string `json:"CurrentTime,omitnil,omitempty" name:"CurrentTime"`
+
+	// 桶加密状态信息
+	BucketEncryption *BucketEncryptionInfo `json:"BucketEncryption,omitnil,omitempty" name:"BucketEncryption"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4305,6 +4405,15 @@ type InstanceInfo struct {
 
 	// 集群是否使用托管桶
 	UseManagedBucket *bool `json:"UseManagedBucket,omitnil,omitempty" name:"UseManagedBucket"`
+
+	// 集群类型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 对应主集群
+	MasterInstance *string `json:"MasterInstance,omitnil,omitempty" name:"MasterInstance"`
+
+	// 对应备集群
+	SlaveInstances []*string `json:"SlaveInstances,omitnil,omitempty" name:"SlaveInstances"`
 }
 
 type InstanceNode struct {
@@ -5235,6 +5344,9 @@ type NodeInfo struct {
 
 	// 虚拟可用区
 	VirtualZone *string `json:"VirtualZone,omitnil,omitempty" name:"VirtualZone"`
+
+	// 是否有fdb
+	HasFDB *bool `json:"HasFDB,omitnil,omitempty" name:"HasFDB"`
 }
 
 type NodeInfos struct {
@@ -5273,6 +5385,9 @@ type NodeInfos struct {
 
 	// 虚拟可用区
 	VirtualZone *string `json:"VirtualZone,omitnil,omitempty" name:"VirtualZone"`
+
+	// 是否有fdb
+	HasFDB *bool `json:"HasFDB,omitnil,omitempty" name:"HasFDB"`
 }
 
 type NodesSummary struct {

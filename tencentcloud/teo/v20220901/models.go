@@ -4251,29 +4251,38 @@ type CreatePrefetchTaskRequestParams struct {
 	// 若您希望快速提交不同站点下的 Targets Url，可以将其填写为 *，但前提是调用该 API 的账号必须具备主账号下全部站点资源的权限。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 要预热的资源列表，每个元素格式类似如下:
-	// http://www.example.com/example.txt。参数值当前必填。
+	// 要预热的资源列表，必填。每个元素格式类似如下:
+	// http://www.example.com/example.txt。
 	// 注意：提交任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。
 	Targets []*string `json:"Targets,omitnil,omitempty" name:"Targets"`
+
+	// 预热模式，取值有：
+	// <li>default：默认模式，即预热到中间层；</li>
+	// <li>edge：边缘预热模式，即预热到边缘和中间层。</li>不填写时，默认值为 default。
+	// 注意事项：
+	// 1.预热至边缘产生的边缘层流量，会计入计费流量；
+	// 2.边缘预热默认分配单独的预热额度 1000 条/天，不消费常规预热额度。
+	// 说明：
+	// 该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// 是否对url进行encode，若内容含有非 ASCII 字符集的字符，请开启此开关进行编码转换（编码规则遵循 RFC3986）。
 	//
 	// Deprecated: EncodeUrl is deprecated.
 	EncodeUrl *bool `json:"EncodeUrl,omitnil,omitempty" name:"EncodeUrl"`
 
-	// 附带的http头部信息。
+	// 若需要携带 HTTP 头部信息预热，可入参该参数，否则放空即可。
 	Headers []*Header `json:"Headers,omitnil,omitempty" name:"Headers"`
 
 	// 媒体分片预热控制，取值有：
 	// <li>on：开启分片预热，预热描述文件，并递归解析描述文件分片进行预热；</li>
 	// <li>off：仅预热提交的描述文件；</li>不填写时，默认值为 off。
-	// 
 	// 注意事项：
 	// 1. 支持的描述文件为 M3U8，对应分片为 TS；
 	// 2. 要求描述文件能正常请求，并按行业标准描述分片路径；
 	// 3. 递归解析深度不超过 3 层；
 	// 4. 解析获取的分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热。
-	// 
+	// 说明：
 	// 该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
 	PrefetchMediaSegments *string `json:"PrefetchMediaSegments,omitnil,omitempty" name:"PrefetchMediaSegments"`
 }
@@ -4285,27 +4294,36 @@ type CreatePrefetchTaskRequest struct {
 	// 若您希望快速提交不同站点下的 Targets Url，可以将其填写为 *，但前提是调用该 API 的账号必须具备主账号下全部站点资源的权限。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 要预热的资源列表，每个元素格式类似如下:
-	// http://www.example.com/example.txt。参数值当前必填。
+	// 要预热的资源列表，必填。每个元素格式类似如下:
+	// http://www.example.com/example.txt。
 	// 注意：提交任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。
 	Targets []*string `json:"Targets,omitnil,omitempty" name:"Targets"`
+
+	// 预热模式，取值有：
+	// <li>default：默认模式，即预热到中间层；</li>
+	// <li>edge：边缘预热模式，即预热到边缘和中间层。</li>不填写时，默认值为 default。
+	// 注意事项：
+	// 1.预热至边缘产生的边缘层流量，会计入计费流量；
+	// 2.边缘预热默认分配单独的预热额度 1000 条/天，不消费常规预热额度。
+	// 说明：
+	// 该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// 是否对url进行encode，若内容含有非 ASCII 字符集的字符，请开启此开关进行编码转换（编码规则遵循 RFC3986）。
 	EncodeUrl *bool `json:"EncodeUrl,omitnil,omitempty" name:"EncodeUrl"`
 
-	// 附带的http头部信息。
+	// 若需要携带 HTTP 头部信息预热，可入参该参数，否则放空即可。
 	Headers []*Header `json:"Headers,omitnil,omitempty" name:"Headers"`
 
 	// 媒体分片预热控制，取值有：
 	// <li>on：开启分片预热，预热描述文件，并递归解析描述文件分片进行预热；</li>
 	// <li>off：仅预热提交的描述文件；</li>不填写时，默认值为 off。
-	// 
 	// 注意事项：
 	// 1. 支持的描述文件为 M3U8，对应分片为 TS；
 	// 2. 要求描述文件能正常请求，并按行业标准描述分片路径；
 	// 3. 递归解析深度不超过 3 层；
 	// 4. 解析获取的分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热。
-	// 
+	// 说明：
 	// 该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
 	PrefetchMediaSegments *string `json:"PrefetchMediaSegments,omitnil,omitempty" name:"PrefetchMediaSegments"`
 }
@@ -4324,6 +4342,7 @@ func (r *CreatePrefetchTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ZoneId")
 	delete(f, "Targets")
+	delete(f, "Mode")
 	delete(f, "EncodeUrl")
 	delete(f, "Headers")
 	delete(f, "PrefetchMediaSegments")
@@ -15374,6 +15393,9 @@ type LoadBalancer struct {
 
 	// 该负载均衡实例绑定的七层域名列表。
 	L7UsedList []*string `json:"L7UsedList,omitnil,omitempty" name:"L7UsedList"`
+
+	// 负载均衡被引用实例的列表。
+	References []*OriginGroupReference `json:"References,omitnil,omitempty" name:"References"`
 }
 
 type LogFormat struct {
@@ -19737,17 +19759,26 @@ type OriginGroupInLoadBalancer struct {
 
 type OriginGroupReference struct {
 	// 引用服务类型，取值有：
-	// <li>AccelerationDomain: 加速域名；</li>
-	// <li>RuleEngine: 规则引擎；</li>
-	// <li>Loadbalance: 负载均衡；</li>
-	// <li>ApplicationProxy: 四层代理。</li>
+	// <li>acceleration-domain: 加速域名；</li>
+	// <li>rule-engine: 规则引擎；</li>
+	// <li>load-balancer: 负载均衡；</li>
+	// <li>application-proxy: 四层代理。</li>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 引用类型的实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 应用类型的实例名称。
+	// 引用类型的实例名称。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 引用站点ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 引用站点名称。
+	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
+
+	// 引用站点别名。
+	AliasZoneName *string `json:"AliasZoneName,omitnil,omitempty" name:"AliasZoneName"`
 }
 
 type OriginHealthStatus struct {

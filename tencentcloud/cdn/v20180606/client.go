@@ -1596,6 +1596,7 @@ func NewDescribeDistrictIspDataResponse() (response *DescribeDistrictIspDataResp
 // 注意事项：接口尚未全面开放，未在内测名单中的账号不支持调用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATASYSTEMERROR = "FailedOperation.DataSystemError"
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
@@ -1623,6 +1624,7 @@ func (c *Client) DescribeDistrictIspData(request *DescribeDistrictIspDataRequest
 // 注意事项：接口尚未全面开放，未在内测名单中的账号不支持调用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATASYSTEMERROR = "FailedOperation.DataSystemError"
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"

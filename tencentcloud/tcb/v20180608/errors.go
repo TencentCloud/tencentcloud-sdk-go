@@ -131,6 +131,9 @@ const (
 	// 用户不存在。
 	RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
 
+	// 请求参数中的云托管版本未找到
+	RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
@@ -145,6 +148,15 @@ const (
 
 	// 云项目oAuth授权失效（即RefreshToken过期）。
 	RESOURCEUNAVAILABLE_REFRESHTOKENEXPIRED = "ResourceUnavailable.RefreshTokenExpired"
+
+	// 资源被封禁
+	RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+
+	// 资源已冻结
+	RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+
+	// 资源已隔离
+	RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
 
 	// 资源过期。
 	RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"

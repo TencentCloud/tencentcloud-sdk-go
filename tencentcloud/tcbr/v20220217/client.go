@@ -129,6 +129,9 @@ func NewCreateCloudRunServerResponse() (response *CreateCloudRunServerResponse) 
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
 func (c *Client) CreateCloudRunServer(request *CreateCloudRunServerRequest) (response *CreateCloudRunServerResponse, err error) {
     return c.CreateCloudRunServerWithContext(context.Background(), request)
 }
@@ -140,6 +143,9 @@ func (c *Client) CreateCloudRunServer(request *CreateCloudRunServerRequest) (res
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
 func (c *Client) CreateCloudRunServerWithContext(ctx context.Context, request *CreateCloudRunServerRequest) (response *CreateCloudRunServerResponse, err error) {
     if request == nil {
         request = NewCreateCloudRunServerRequest()
@@ -153,6 +159,196 @@ func (c *Client) CreateCloudRunServerWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCreateCloudRunServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudRunServerRequest() (request *DeleteCloudRunServerRequest) {
+    request = &DeleteCloudRunServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "DeleteCloudRunServer")
+    
+    
+    return
+}
+
+func NewDeleteCloudRunServerResponse() (response *DeleteCloudRunServerResponse) {
+    response = &DeleteCloudRunServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudRunServer
+// 删除云托管服务：包括服务下的版本，镜像，流水线
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteCloudRunServer(request *DeleteCloudRunServerRequest) (response *DeleteCloudRunServerResponse, err error) {
+    return c.DeleteCloudRunServerWithContext(context.Background(), request)
+}
+
+// DeleteCloudRunServer
+// 删除云托管服务：包括服务下的版本，镜像，流水线
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteCloudRunServerWithContext(ctx context.Context, request *DeleteCloudRunServerRequest) (response *DeleteCloudRunServerResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudRunServerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DeleteCloudRunServer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudRunServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudRunServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudRunVersionsRequest() (request *DeleteCloudRunVersionsRequest) {
+    request = &DeleteCloudRunVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "DeleteCloudRunVersions")
+    
+    
+    return
+}
+
+func NewDeleteCloudRunVersionsResponse() (response *DeleteCloudRunVersionsResponse) {
+    response = &DeleteCloudRunVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudRunVersions
+// 批量删除版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteCloudRunVersions(request *DeleteCloudRunVersionsRequest) (response *DeleteCloudRunVersionsResponse, err error) {
+    return c.DeleteCloudRunVersionsWithContext(context.Background(), request)
+}
+
+// DeleteCloudRunVersions
+// 批量删除版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteCloudRunVersionsWithContext(ctx context.Context, request *DeleteCloudRunVersionsRequest) (response *DeleteCloudRunVersionsResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudRunVersionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DeleteCloudRunVersions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudRunVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudRunVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudRunDeployRecordRequest() (request *DescribeCloudRunDeployRecordRequest) {
+    request = &DescribeCloudRunDeployRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "DescribeCloudRunDeployRecord")
+    
+    
+    return
+}
+
+func NewDescribeCloudRunDeployRecordResponse() (response *DescribeCloudRunDeployRecordResponse) {
+    response = &DescribeCloudRunDeployRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudRunDeployRecord
+// 查询云托管部署记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudRunDeployRecord(request *DescribeCloudRunDeployRecordRequest) (response *DescribeCloudRunDeployRecordResponse, err error) {
+    return c.DescribeCloudRunDeployRecordWithContext(context.Background(), request)
+}
+
+// DescribeCloudRunDeployRecord
+// 查询云托管部署记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudRunDeployRecordWithContext(ctx context.Context, request *DescribeCloudRunDeployRecordRequest) (response *DescribeCloudRunDeployRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudRunDeployRecordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DescribeCloudRunDeployRecord")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudRunDeployRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudRunDeployRecordResponse()
     err = c.Send(request, response)
     return
 }
@@ -213,6 +409,116 @@ func (c *Client) DescribeCloudRunEnvsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeCloudRunPodListRequest() (request *DescribeCloudRunPodListRequest) {
+    request = &DescribeCloudRunPodListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "DescribeCloudRunPodList")
+    
+    
+    return
+}
+
+func NewDescribeCloudRunPodListResponse() (response *DescribeCloudRunPodListResponse) {
+    response = &DescribeCloudRunPodListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudRunPodList
+// 查询云托管Pod实例列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCloudRunPodList(request *DescribeCloudRunPodListRequest) (response *DescribeCloudRunPodListResponse, err error) {
+    return c.DescribeCloudRunPodListWithContext(context.Background(), request)
+}
+
+// DescribeCloudRunPodList
+// 查询云托管Pod实例列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCloudRunPodListWithContext(ctx context.Context, request *DescribeCloudRunPodListRequest) (response *DescribeCloudRunPodListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudRunPodListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DescribeCloudRunPodList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudRunPodList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudRunPodListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudRunProcessLogRequest() (request *DescribeCloudRunProcessLogRequest) {
+    request = &DescribeCloudRunProcessLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "DescribeCloudRunProcessLog")
+    
+    
+    return
+}
+
+func NewDescribeCloudRunProcessLogResponse() (response *DescribeCloudRunProcessLogResponse) {
+    response = &DescribeCloudRunProcessLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudRunProcessLog
+// 查询运行日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCloudRunProcessLog(request *DescribeCloudRunProcessLogRequest) (response *DescribeCloudRunProcessLogResponse, err error) {
+    return c.DescribeCloudRunProcessLogWithContext(context.Background(), request)
+}
+
+// DescribeCloudRunProcessLog
+// 查询运行日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCloudRunProcessLogWithContext(ctx context.Context, request *DescribeCloudRunProcessLogRequest) (response *DescribeCloudRunProcessLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudRunProcessLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DescribeCloudRunProcessLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudRunProcessLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudRunProcessLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudRunServerDetailRequest() (request *DescribeCloudRunServerDetailRequest) {
     request = &DescribeCloudRunServerDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -237,6 +543,10 @@ func NewDescribeCloudRunServerDetailResponse() (response *DescribeCloudRunServer
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
 func (c *Client) DescribeCloudRunServerDetail(request *DescribeCloudRunServerDetailRequest) (response *DescribeCloudRunServerDetailResponse, err error) {
     return c.DescribeCloudRunServerDetailWithContext(context.Background(), request)
 }
@@ -246,6 +556,10 @@ func (c *Client) DescribeCloudRunServerDetail(request *DescribeCloudRunServerDet
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
 func (c *Client) DescribeCloudRunServerDetailWithContext(ctx context.Context, request *DescribeCloudRunServerDetailRequest) (response *DescribeCloudRunServerDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCloudRunServerDetailRequest()
@@ -367,6 +681,60 @@ func (c *Client) DescribeEnvBaseInfoWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeReleaseOrderRequest() (request *DescribeReleaseOrderRequest) {
+    request = &DescribeReleaseOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "DescribeReleaseOrder")
+    
+    
+    return
+}
+
+func NewDescribeReleaseOrderResponse() (response *DescribeReleaseOrderResponse) {
+    response = &DescribeReleaseOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReleaseOrder
+// 查询发布单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReleaseOrder(request *DescribeReleaseOrderRequest) (response *DescribeReleaseOrderResponse, err error) {
+    return c.DescribeReleaseOrderWithContext(context.Background(), request)
+}
+
+// DescribeReleaseOrder
+// 查询发布单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReleaseOrderWithContext(ctx context.Context, request *DescribeReleaseOrderRequest) (response *DescribeReleaseOrderResponse, err error) {
+    if request == nil {
+        request = NewDescribeReleaseOrderRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DescribeReleaseOrder")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReleaseOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReleaseOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServerManageTaskRequest() (request *DescribeServerManageTaskRequest) {
     request = &DescribeServerManageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -415,6 +783,62 @@ func (c *Client) DescribeServerManageTaskWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeServerManageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVersionDetailRequest() (request *DescribeVersionDetailRequest) {
+    request = &DescribeVersionDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "DescribeVersionDetail")
+    
+    
+    return
+}
+
+func NewDescribeVersionDetailResponse() (response *DescribeVersionDetailResponse) {
+    response = &DescribeVersionDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVersionDetail
+// 查询版本详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVersionDetail(request *DescribeVersionDetailRequest) (response *DescribeVersionDetailResponse, err error) {
+    return c.DescribeVersionDetailWithContext(context.Background(), request)
+}
+
+// DescribeVersionDetail
+// 查询版本详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVersionDetailWithContext(ctx context.Context, request *DescribeVersionDetailRequest) (response *DescribeVersionDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeVersionDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "DescribeVersionDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVersionDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVersionDetailResponse()
     err = c.Send(request, response)
     return
 }
@@ -521,6 +945,110 @@ func (c *Client) ReleaseGrayWithContext(ctx context.Context, request *ReleaseGra
     request.SetContext(ctx)
     
     response = NewReleaseGrayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchClsLogRequest() (request *SearchClsLogRequest) {
+    request = &SearchClsLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "SearchClsLog")
+    
+    
+    return
+}
+
+func NewSearchClsLogResponse() (response *SearchClsLogResponse) {
+    response = &SearchClsLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SearchClsLog
+// 查询日志信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SearchClsLog(request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
+    return c.SearchClsLogWithContext(context.Background(), request)
+}
+
+// SearchClsLog
+// 查询日志信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SearchClsLogWithContext(ctx context.Context, request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
+    if request == nil {
+        request = NewSearchClsLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "SearchClsLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchClsLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchClsLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitServerRollbackRequest() (request *SubmitServerRollbackRequest) {
+    request = &SubmitServerRollbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "SubmitServerRollback")
+    
+    
+    return
+}
+
+func NewSubmitServerRollbackResponse() (response *SubmitServerRollbackResponse) {
+    response = &SubmitServerRollbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitServerRollback
+// 回滚版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) SubmitServerRollback(request *SubmitServerRollbackRequest) (response *SubmitServerRollbackResponse, err error) {
+    return c.SubmitServerRollbackWithContext(context.Background(), request)
+}
+
+// SubmitServerRollback
+// 回滚版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) SubmitServerRollbackWithContext(ctx context.Context, request *SubmitServerRollbackRequest) (response *SubmitServerRollbackResponse, err error) {
+    if request == nil {
+        request = NewSubmitServerRollbackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "SubmitServerRollback")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitServerRollback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitServerRollbackResponse()
     err = c.Send(request, response)
     return
 }

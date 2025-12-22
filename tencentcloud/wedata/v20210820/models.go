@@ -677,7 +677,16 @@ type Apply struct {
 	ApplyId *string `json:"ApplyId,omitnil,omitempty" name:"ApplyId"`
 
 	// 扩展字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metadata *string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTimestamp *uint64 `json:"CreateTimestamp,omitnil,omitempty" name:"CreateTimestamp"`
+
+	// 审批时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproveTimestamp *uint64 `json:"ApproveTimestamp,omitnil,omitempty" name:"ApproveTimestamp"`
 }
 
 type ApproveModify struct {
@@ -935,6 +944,14 @@ type BaseClusterInfo struct {
 	// cdw账号（用于展示）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdwUserName *string `json:"CdwUserName,omitnil,omitempty" name:"CdwUserName"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTimestamp *uint64 `json:"CreateTimestamp,omitnil,omitempty" name:"CreateTimestamp"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTimestamp *uint64 `json:"UpdateTimestamp,omitnil,omitempty" name:"UpdateTimestamp"`
 }
 
 type BaseProject struct {
@@ -973,6 +990,9 @@ type BaseProject struct {
 	// 项目类型，SIMPLE：简单模式 STANDARD：标准模式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 项目调度模式，task：任务模式 workflow：工作流模式
+	ScheduleMode *string `json:"ScheduleMode,omitnil,omitempty" name:"ScheduleMode"`
 }
 
 type BaseRole struct {
@@ -8986,6 +9006,25 @@ type DependencyConfigDsDTO struct {
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
+type DependencyConfigTimeoutDTO struct {
+	// 超时类型
+	// WAIT_TOTAL_TIMEOUT 等待总时长
+	// 
+	// RUNNING_TIMEOUT 运行时长
+	// 
+	// WAIT_TIME_POINT_TIMEOUT 等待超过配置时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeoutType *string `json:"TimeoutType,omitnil,omitempty" name:"TimeoutType"`
+
+	// 超时时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeoutValue *int64 `json:"TimeoutValue,omitnil,omitempty" name:"TimeoutValue"`
+
+	// 固定时间点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeoutPoint *string `json:"TimeoutPoint,omitnil,omitempty" name:"TimeoutPoint"`
+}
+
 type DependencyStrategyDs struct {
 	// 等待上游任务实例策略：EXECUTING（执行）；WAITING（等待）
 	// 
@@ -9001,6 +9040,10 @@ type DependencyStrategyDs struct {
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskDependencyExecutingTimeoutValue *int64 `json:"TaskDependencyExecutingTimeoutValue,omitnil,omitempty" name:"TaskDependencyExecutingTimeoutValue"`
+
+	// 超时依赖策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DependencyConfigTimeoutTypeList []*DependencyConfigTimeoutDTO `json:"DependencyConfigTimeoutTypeList,omitnil,omitempty" name:"DependencyConfigTimeoutTypeList"`
 }
 
 // Predefined struct for user
@@ -12533,6 +12576,9 @@ type DescribeFormVersionParamRequestParams struct {
 
 	// 页号
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 来源 studio(Studio脚本)/codeTemplate(代码模版)
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 type DescribeFormVersionParamRequest struct {
@@ -12552,6 +12598,9 @@ type DescribeFormVersionParamRequest struct {
 
 	// 页号
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 来源 studio(Studio脚本)/codeTemplate(代码模版)
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 func (r *DescribeFormVersionParamRequest) ToJsonString() string {
@@ -12571,6 +12620,7 @@ func (r *DescribeFormVersionParamRequest) FromJsonString(s string) error {
 	delete(f, "OriginalParams")
 	delete(f, "Page")
 	delete(f, "Size")
+	delete(f, "Source")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFormVersionParamRequest has unknown keys!", "")
 	}
@@ -32960,6 +33010,10 @@ type Project struct {
 	// 项目扩展信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkspaceExt []*WorkspaceExt `json:"WorkspaceExt,omitnil,omitempty" name:"WorkspaceExt"`
+
+	// 创建时间时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTimestamp *uint64 `json:"CreateTimestamp,omitnil,omitempty" name:"CreateTimestamp"`
 }
 
 type ProjectBaseInfoOpsRequest struct {
@@ -33046,6 +33100,14 @@ type ProjectUserRole struct {
 	// 是否项目负责人
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsProjectOwner *bool `json:"IsProjectOwner,omitnil,omitempty" name:"IsProjectOwner"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTimestamp *uint64 `json:"CreateTimestamp,omitnil,omitempty" name:"CreateTimestamp"`
+
+	// 用户状态 0:历史 1:正常 2:已删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ProjectUsersPage struct {

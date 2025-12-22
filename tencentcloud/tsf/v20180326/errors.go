@@ -50,7 +50,7 @@ const (
 	// 原生集群检测失败
 	FAILEDOPERATION_CLUSTERNATIVECONNECTERROR = "FailedOperation.ClusterNativeConnectError"
 
-	// 本环境仅允许操作名称 %s 的集群
+	// 本集群在当前环境不允许操作
 	FAILEDOPERATION_CLUSTEROPERATEENVILLEGALERROR = "FailedOperation.ClusterOperateEnvIllegalError"
 
 	// 查询集群失败。
@@ -119,7 +119,7 @@ const (
 	// k8s集群可能处于异常状态，请删除或恢复k8s集群后，再进行操作
 	FAILEDOPERATION_CONTAINERGROUPKUBERNETESTKECLUSTERABNORMAL = "FailedOperation.ContainergroupKubernetesTkeClusterAbnormal"
 
-	// 容器平台集群不可用，当前状态 %s
+	// 容器平台集群当前不可用
 	FAILEDOPERATION_CPCLUSTERUNAVAILABLE = "FailedOperation.CpClusterUnavailable"
 
 	// 健康检查配置失败。
@@ -1259,7 +1259,7 @@ const (
 	// 无法获取机器信息。
 	RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 
-	// [%s]模块未提供该接口[%s]。
+	// 后端模块未提供该接口。
 	RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
 
 	// 无法找到License服务器。

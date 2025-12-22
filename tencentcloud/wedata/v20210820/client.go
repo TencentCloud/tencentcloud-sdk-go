@@ -5729,6 +5729,9 @@ func NewDescribeFormVersionParamResponse() (response *DescribeFormVersionParamRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeFormVersionParam(request *DescribeFormVersionParamRequest) (response *DescribeFormVersionParamResponse, err error) {
     return c.DescribeFormVersionParamWithContext(context.Background(), request)
 }
@@ -5738,6 +5741,9 @@ func (c *Client) DescribeFormVersionParam(request *DescribeFormVersionParamReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeFormVersionParamWithContext(ctx context.Context, request *DescribeFormVersionParamRequest) (response *DescribeFormVersionParamResponse, err error) {
     if request == nil {
         request = NewDescribeFormVersionParamRequest()

@@ -589,6 +589,33 @@ func (r *ApplyConfigToMachineGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AppointLabel struct {
+	// 指定标签类型。
+	// 
+	// - 0：所有Pod label，Keys字段无效
+	// - 1：指定Pod label，Keys字段不能为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 元数据Pod标签的键。有效标签键有两个部分：可选前缀和名称，以斜杠 (/) 分隔。名称部分是必需的，并且必须不超过 63 个字符，以字母数字字符 ([a-z0-9A-Z]) 开头和结尾，中间有破折号(-)、下划线(_)、点(.) 和字母数字。前缀是可选的。如果指定，前缀必须是 DNS 子域：一系列以点 (.) 分隔的 DNS 标签，总长度不超过 253 个字符，后跟斜杠 ( /)。
+	// 
+	// -  prefix 格式  `[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`
+	// -  name 格式 `([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]`
+	// - key不能重复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keys []*string `json:"Keys,omitnil,omitempty" name:"Keys"`
+}
+
+type BaseMetricCollectConfig struct {
+	// 机器组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 基础监控采集配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Configs []*MetricCollectConfig `json:"Configs,omitnil,omitempty" name:"Configs"`
+}
+
 type CallBackInfo struct {
 	// 回调时的Body。
 	// 可将各类告警变量放在请求内容中，详见[帮助文档](https://cloud.tencent.com/document/product/614/74718)。
@@ -956,6 +983,81 @@ type Column struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+// Predefined struct for user
+type CommitConsumerOffsetsRequestParams struct {
+	// 消费组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 消费机器名称
+	Consumer *string `json:"Consumer,omitnil,omitempty" name:"Consumer"`
+
+	// 日志集id
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// topic分区点位信息
+	TopicPartitionOffsetsInfo []*TopicPartitionOffsetInfo `json:"TopicPartitionOffsetsInfo,omitnil,omitempty" name:"TopicPartitionOffsetsInfo"`
+}
+
+type CommitConsumerOffsetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 消费组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 消费机器名称
+	Consumer *string `json:"Consumer,omitnil,omitempty" name:"Consumer"`
+
+	// 日志集id
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// topic分区点位信息
+	TopicPartitionOffsetsInfo []*TopicPartitionOffsetInfo `json:"TopicPartitionOffsetsInfo,omitnil,omitempty" name:"TopicPartitionOffsetsInfo"`
+}
+
+func (r *CommitConsumerOffsetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CommitConsumerOffsetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConsumerGroup")
+	delete(f, "Consumer")
+	delete(f, "LogsetId")
+	delete(f, "TopicPartitionOffsetsInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CommitConsumerOffsetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CommitConsumerOffsetsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CommitConsumerOffsetsResponse struct {
+	*tchttp.BaseResponse
+	Response *CommitConsumerOffsetsResponseParams `json:"Response"`
+}
+
+func (r *CommitConsumerOffsetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CommitConsumerOffsetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CompressInfo struct {
 	// 压缩格式，支持gzip、lzop、snappy和none不压缩
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
@@ -1260,6 +1362,61 @@ type ConsumerGroup struct {
 	//     - roundrobin:轮询式分配
 	//     - sticky:粘性分配（避免不必要的重平衡）
 	ProtocolName *string `json:"ProtocolName,omitnil,omitempty" name:"ProtocolName"`
+}
+
+type ConsumerGroupInfo struct {
+	// 消费组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 消费者心跳超时时间（秒）
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// topic列表
+	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
+}
+
+type ConsumerInfo struct {
+	// 投递规则ID
+	ConsumerId *string `json:"ConsumerId,omitnil,omitempty" name:"ConsumerId"`
+
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 投递任务是否生效
+	Effective *bool `json:"Effective,omitnil,omitempty" name:"Effective"`
+
+	// CKafka的描述
+	Ckafka *Ckafka `json:"Ckafka,omitnil,omitempty" name:"Ckafka"`
+
+	// 是否投递日志的元数据信息
+	NeedContent *bool `json:"NeedContent,omitnil,omitempty" name:"NeedContent"`
+
+	// 如果需要投递元数据信息，元数据信息的描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *ConsumerContent `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
+
+	// 投递任务创建毫秒时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 外部ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
+
+	// 任务运行状态。支持`0`,`1`,`2` - `0`: 停止 - `1`: 运行中 - `2`: 异常	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskStatus *uint64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// 高级配置
+	AdvancedConfig *AdvancedConsumerConfiguration `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
 type ContainerFileInfo struct {
@@ -2516,6 +2673,86 @@ func (r *CreateConsoleSharingResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateConsumerGroupRequestParams struct {
+	// 创建的消费者组标识
+	// 限制： 字母数字下划线，不允许数字开头，长度限制256
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 消费者心跳超时时间（秒）
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 创建的消费者组包含的日志主题列表
+	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// 日志集Id（日志主题所属的日志集）
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+}
+
+type CreateConsumerGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 创建的消费者组标识
+	// 限制： 字母数字下划线，不允许数字开头，长度限制256
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 消费者心跳超时时间（秒）
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 创建的消费者组包含的日志主题列表
+	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// 日志集Id（日志主题所属的日志集）
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+}
+
+func (r *CreateConsumerGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsumerGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConsumerGroup")
+	delete(f, "Timeout")
+	delete(f, "Topics")
+	delete(f, "LogsetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsumerGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConsumerGroupResponseParams struct {
+	// 消费组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateConsumerGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateConsumerGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateConsumerGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsumerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateConsumerRequestParams struct {
 	// 投递任务绑定的日志主题Id。
 	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
@@ -3299,6 +3536,116 @@ func (r *CreateDlcDeliverResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateEsRechargeRequestParams struct {
+	// 日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 名称：长度不超过64字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// es查询语句。
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// es集群配置信息。
+	EsInfo *EsInfo `json:"EsInfo,omitnil,omitempty" name:"EsInfo"`
+
+	// es导入信息。
+	ImportInfo *EsImportInfo `json:"ImportInfo,omitnil,omitempty" name:"ImportInfo"`
+
+	// es导入时间字段信息。
+	TimeInfo *EsTimeInfo `json:"TimeInfo,omitnil,omitempty" name:"TimeInfo"`
+
+	// 是否开启投递服务日志。1：关闭，2：开启。默认开启。
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+type CreateEsRechargeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 名称：长度不超过64字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// es查询语句。
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// es集群配置信息。
+	EsInfo *EsInfo `json:"EsInfo,omitnil,omitempty" name:"EsInfo"`
+
+	// es导入信息。
+	ImportInfo *EsImportInfo `json:"ImportInfo,omitnil,omitempty" name:"ImportInfo"`
+
+	// es导入时间字段信息。
+	TimeInfo *EsTimeInfo `json:"TimeInfo,omitnil,omitempty" name:"TimeInfo"`
+
+	// 是否开启投递服务日志。1：关闭，2：开启。默认开启。
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+func (r *CreateEsRechargeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEsRechargeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Name")
+	delete(f, "Index")
+	delete(f, "Query")
+	delete(f, "EsInfo")
+	delete(f, "ImportInfo")
+	delete(f, "TimeInfo")
+	delete(f, "HasServicesLog")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEsRechargeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEsRechargeResponseParams struct {
+	// 配置id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateEsRechargeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEsRechargeResponseParams `json:"Response"`
+}
+
+func (r *CreateEsRechargeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEsRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateExportRequestParams struct {
 	// 日志主题Id
 	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
@@ -3412,6 +3759,109 @@ func (r *CreateExportResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateExportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHostMetricConfigRequestParams struct {
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 名称。
+	// 
+	// - 长度不超过 64字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 机器组id列表。最多支持100个机器组。
+	MachineGroupIds []*string `json:"MachineGroupIds,omitnil,omitempty" name:"MachineGroupIds"`
+
+	// 采集频率。单位:ms。 最小支持5000ms
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 采集项。支持"cpu"，"mem"，"net"，"disk"，"system"。**目前仅支持:所有采集项都需配置**。
+	// - cpu：CPU
+	// - mem：内存
+	// - net：网络
+	// - disk：磁盘
+	// - system：系统
+	HostMetricItems []*HostMetricItem `json:"HostMetricItems,omitnil,omitempty" name:"HostMetricItems"`
+}
+
+type CreateHostMetricConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 名称。
+	// 
+	// - 长度不超过 64字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 机器组id列表。最多支持100个机器组。
+	MachineGroupIds []*string `json:"MachineGroupIds,omitnil,omitempty" name:"MachineGroupIds"`
+
+	// 采集频率。单位:ms。 最小支持5000ms
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 采集项。支持"cpu"，"mem"，"net"，"disk"，"system"。**目前仅支持:所有采集项都需配置**。
+	// - cpu：CPU
+	// - mem：内存
+	// - net：网络
+	// - disk：磁盘
+	// - system：系统
+	HostMetricItems []*HostMetricItem `json:"HostMetricItems,omitnil,omitempty" name:"HostMetricItems"`
+}
+
+func (r *CreateHostMetricConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHostMetricConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Name")
+	delete(f, "MachineGroupIds")
+	delete(f, "Interval")
+	delete(f, "HostMetricItems")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHostMetricConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHostMetricConfigResponseParams struct {
+	// 主机指标采集配置id
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateHostMetricConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateHostMetricConfigResponseParams `json:"Response"`
+}
+
+func (r *CreateHostMetricConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHostMetricConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3886,6 +4336,267 @@ func (r *CreateMachineGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateMetricConfigRequestParams struct {
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 采集配置来源。支持 ：`0`、`1`
+	// - 0:自建k8s
+	// - 1:TKE
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 机器组id。
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 监控类型。支持 ：`0`、`1`，不支持修改
+	// - 0:基础监控
+	// - 1:自定义监控, 
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 采集配置方式。支持 ：`0`、`1`，不支持修改
+	// - 0:普通配置方式，Type字段只能为：``1`
+	// - 1:YAML导入方式， Type 可以是：`0`或者`1`
+	Flag *uint64 `json:"Flag,omitnil,omitempty" name:"Flag"`
+
+	// 名称：长度不超过253字符，校验格式  ` [a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 采集对象, Flag=0时生效
+	Spec *MetricSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// 标签处理, Flag=0时生效
+	MetricRelabels []*Relabeling `json:"MetricRelabels,omitnil,omitempty" name:"MetricRelabels"`
+
+	// 自定义元数据, Flag=0时生效
+	MetricLabel *MetricConfigLabel `json:"MetricLabel,omitnil,omitempty" name:"MetricLabel"`
+
+	// 通信协议 http、https; Flag=0时生效
+	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
+
+	// 采集频率,  Flag=0时生效
+	// - 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+	// - 默认：60s
+	ScrapeInterval *string `json:"ScrapeInterval,omitnil,omitempty" name:"ScrapeInterval"`
+
+	// 采集超时时间， Flag=0时生效
+	// - 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+	// - 默认：30s
+	ScrapeTimeout *string `json:"ScrapeTimeout,omitnil,omitempty" name:"ScrapeTimeout"`
+
+	// Prometheus如何处理标签之间的冲突。当Flag=0时生效，支持`true`,`false`
+	// - `false`:配置数据中冲突的标签重命名
+	// - `true`:忽略冲突的服务器端标签
+	HonorLabels *bool `json:"HonorLabels,omitnil,omitempty" name:"HonorLabels"`
+
+	// 采集配置yaml格式字符串, Flag=1时必填
+	YamlSpec *MetricYamlSpec `json:"YamlSpec,omitnil,omitempty" name:"YamlSpec"`
+}
+
+type CreateMetricConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 采集配置来源。支持 ：`0`、`1`
+	// - 0:自建k8s
+	// - 1:TKE
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 机器组id。
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 监控类型。支持 ：`0`、`1`，不支持修改
+	// - 0:基础监控
+	// - 1:自定义监控, 
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 采集配置方式。支持 ：`0`、`1`，不支持修改
+	// - 0:普通配置方式，Type字段只能为：``1`
+	// - 1:YAML导入方式， Type 可以是：`0`或者`1`
+	Flag *uint64 `json:"Flag,omitnil,omitempty" name:"Flag"`
+
+	// 名称：长度不超过253字符，校验格式  ` [a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 采集对象, Flag=0时生效
+	Spec *MetricSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// 标签处理, Flag=0时生效
+	MetricRelabels []*Relabeling `json:"MetricRelabels,omitnil,omitempty" name:"MetricRelabels"`
+
+	// 自定义元数据, Flag=0时生效
+	MetricLabel *MetricConfigLabel `json:"MetricLabel,omitnil,omitempty" name:"MetricLabel"`
+
+	// 通信协议 http、https; Flag=0时生效
+	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
+
+	// 采集频率,  Flag=0时生效
+	// - 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+	// - 默认：60s
+	ScrapeInterval *string `json:"ScrapeInterval,omitnil,omitempty" name:"ScrapeInterval"`
+
+	// 采集超时时间， Flag=0时生效
+	// - 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+	// - 默认：30s
+	ScrapeTimeout *string `json:"ScrapeTimeout,omitnil,omitempty" name:"ScrapeTimeout"`
+
+	// Prometheus如何处理标签之间的冲突。当Flag=0时生效，支持`true`,`false`
+	// - `false`:配置数据中冲突的标签重命名
+	// - `true`:忽略冲突的服务器端标签
+	HonorLabels *bool `json:"HonorLabels,omitnil,omitempty" name:"HonorLabels"`
+
+	// 采集配置yaml格式字符串, Flag=1时必填
+	YamlSpec *MetricYamlSpec `json:"YamlSpec,omitnil,omitempty" name:"YamlSpec"`
+}
+
+func (r *CreateMetricConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetricConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Source")
+	delete(f, "GroupIds")
+	delete(f, "Type")
+	delete(f, "Flag")
+	delete(f, "Name")
+	delete(f, "Spec")
+	delete(f, "MetricRelabels")
+	delete(f, "MetricLabel")
+	delete(f, "Scheme")
+	delete(f, "ScrapeInterval")
+	delete(f, "ScrapeTimeout")
+	delete(f, "HonorLabels")
+	delete(f, "YamlSpec")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMetricConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetricConfigResponseParams struct {
+	// 指标采集配置id列表。
+	ConfigIds []*string `json:"ConfigIds,omitnil,omitempty" name:"ConfigIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMetricConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMetricConfigResponseParams `json:"Response"`
+}
+
+func (r *CreateMetricConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetricConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetricSubscribeRequestParams struct {
+	// 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 日志主题id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 云产品命名空间。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 数据库配置信息。
+	Metrics []*MetricConfig `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 实例配置配置。
+	InstanceInfo *InstanceConfig `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
+}
+
+type CreateMetricSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 日志主题id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 云产品命名空间。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 数据库配置信息。
+	Metrics []*MetricConfig `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 实例配置配置。
+	InstanceInfo *InstanceConfig `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
+}
+
+func (r *CreateMetricSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetricSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "TopicId")
+	delete(f, "Namespace")
+	delete(f, "Metrics")
+	delete(f, "InstanceInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMetricSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetricSubscribeResponseParams struct {
+	// 配置id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMetricSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMetricSubscribeResponseParams `json:"Response"`
+}
+
+func (r *CreateMetricSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetricSubscribeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateNoticeContentRequestParams struct {
 	// 模板名称。最大支持255个字节
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -4294,6 +5005,140 @@ func (r *CreateShipperResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSplunkDeliverRequestParams struct {
+	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// splunk投递任务名称；
+	// name有如下限制：
+	// - 不能为空
+	// - 长度不大于64
+	// - 只能包含aA-zZ、下划线、-、0-9
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Splunk投递任务-目标配置-网络信息
+	NetInfo *NetInfo `json:"NetInfo,omitnil,omitempty" name:"NetInfo"`
+
+	// Splunk投递任务元信息
+	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
+
+	// 是否开启服务日志 1:关闭；2:开启 ;默认开启
+	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
+
+	// 高级配置-是否启用索引器；1-不启用；2-启用；
+	// 默认：1
+	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
+
+	// 高级配置-数据来源；不超过64个字符
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 高级配置-数据来源类型；不超过64个字符
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 高级配置-Splunk写入的索引；不超过64个字符
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 高级配置-通道
+	// 需满足限制：如果启用索引器，那么Channel必填
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+}
+
+type CreateSplunkDeliverRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// splunk投递任务名称；
+	// name有如下限制：
+	// - 不能为空
+	// - 长度不大于64
+	// - 只能包含aA-zZ、下划线、-、0-9
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Splunk投递任务-目标配置-网络信息
+	NetInfo *NetInfo `json:"NetInfo,omitnil,omitempty" name:"NetInfo"`
+
+	// Splunk投递任务元信息
+	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
+
+	// 是否开启服务日志 1:关闭；2:开启 ;默认开启
+	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
+
+	// 高级配置-是否启用索引器；1-不启用；2-启用；
+	// 默认：1
+	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
+
+	// 高级配置-数据来源；不超过64个字符
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 高级配置-数据来源类型；不超过64个字符
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 高级配置-Splunk写入的索引；不超过64个字符
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 高级配置-通道
+	// 需满足限制：如果启用索引器，那么Channel必填
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+}
+
+func (r *CreateSplunkDeliverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSplunkDeliverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Name")
+	delete(f, "NetInfo")
+	delete(f, "MetadataInfo")
+	delete(f, "HasServiceLog")
+	delete(f, "IndexAck")
+	delete(f, "Source")
+	delete(f, "SourceType")
+	delete(f, "Index")
+	delete(f, "Channel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSplunkDeliverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSplunkDeliverResponseParams struct {
+	// splunk投递任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSplunkDeliverResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSplunkDeliverResponseParams `json:"Response"`
+}
+
+func (r *CreateSplunkDeliverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSplunkDeliverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTopicRequestParams struct {
 	// 日志集ID
 	// - 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
@@ -4604,6 +5449,43 @@ type CsvInfo struct {
 
 	// 对于上面指定的不存在字段使用该内容填充
 	NonExistingField *string `json:"NonExistingField,omitnil,omitempty" name:"NonExistingField"`
+}
+
+type CustomLabel struct {
+	// 标签的键。
+	// - 必须以字母或下划线开头，但不可以双下划线（__）开头，后面可以跟任意字母，数字或下划线。
+	// - 最大支持256个字符。
+	// - key不能重复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签的值。
+	// - 最大支持256个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type CustomMetricSpec struct {
+	// 端口。取值范围 [1,65535]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// Metric地址。校验格式：`^/[a-zA-Z0-9-_./]*$`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 命名空间列表。
+	// - 最大支持100个
+	// - namespace 校验格式 `[a-z0-9]([-a-z0-9]*[a-z0-9])?` ， 长度不能超过63
+	// - namespace 不能重复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespaces []*string `json:"Namespaces,omitnil,omitempty" name:"Namespaces"`
+
+	// Pod标签。
+	// - 最大支持100个
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodLabel []*Label `json:"PodLabel,omitnil,omitempty" name:"PodLabel"`
 }
 
 type DashboardInfo struct {
@@ -5392,6 +6274,67 @@ func (r *DeleteConsoleSharingResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteConsumerGroupRequestParams struct {
+	// 需要删除的消费者组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 日志集id
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+}
+
+type DeleteConsumerGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要删除的消费者组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 日志集id
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+}
+
+func (r *DeleteConsumerGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsumerGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConsumerGroup")
+	delete(f, "LogsetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConsumerGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteConsumerGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteConsumerGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteConsumerGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteConsumerGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsumerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteConsumerRequestParams struct {
 	// 投递任务绑定的日志主题Id。
 	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
@@ -5686,6 +6629,71 @@ func (r *DeleteDlcDeliverResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteEsRechargeRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务配置的日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+type DeleteEsRechargeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务配置的日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+func (r *DeleteEsRechargeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEsRechargeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEsRechargeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteEsRechargeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteEsRechargeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteEsRechargeResponseParams `json:"Response"`
+}
+
+func (r *DeleteEsRechargeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEsRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteExportRequestParams struct {
 	// 日志导出任务Id
 	// - 通过[获取日志下载任务列表](https://cloud.tencent.com/document/product/614/56449)获取日志导出任务Id。
@@ -5738,6 +6746,71 @@ func (r *DeleteExportResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteExportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteHostMetricConfigRequestParams struct {
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 采集配置id。
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+}
+
+type DeleteHostMetricConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 采集配置id。
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+}
+
+func (r *DeleteHostMetricConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteHostMetricConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "ConfigId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteHostMetricConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteHostMetricConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteHostMetricConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteHostMetricConfigResponseParams `json:"Response"`
+}
+
+func (r *DeleteHostMetricConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteHostMetricConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6042,6 +7115,132 @@ func (r *DeleteMachineGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteMetricConfigRequestParams struct {
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 指标采集配置id。
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+}
+
+type DeleteMetricConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 指标采集配置id。
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+}
+
+func (r *DeleteMetricConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMetricConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "ConfigId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMetricConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMetricConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteMetricConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMetricConfigResponseParams `json:"Response"`
+}
+
+func (r *DeleteMetricConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMetricConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMetricSubscribeRequestParams struct {
+	// 指标采集任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 指标采集任务配置的日志主题id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+type DeleteMetricSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标采集任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 指标采集任务配置的日志主题id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+func (r *DeleteMetricSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMetricSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMetricSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMetricSubscribeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteMetricSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMetricSubscribeResponseParams `json:"Response"`
+}
+
+func (r *DeleteMetricSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMetricSubscribeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteNoticeContentRequestParams struct {
 	// 通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
 	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
@@ -6209,6 +7408,69 @@ func (r *DeleteShipperResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteShipperResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSplunkDeliverRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+type DeleteSplunkDeliverRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+func (r *DeleteSplunkDeliverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSplunkDeliverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSplunkDeliverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSplunkDeliverResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSplunkDeliverResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSplunkDeliverResponseParams `json:"Response"`
+}
+
+func (r *DeleteSplunkDeliverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSplunkDeliverResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6889,6 +8151,176 @@ func (r *DescribeCloudProductLogTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClusterBaseMetricConfigsRequestParams struct {
+	// 机器组id
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <li> topicId按照【指标主题id】进行过滤。类型：String  必选：否</li>
+	// <li> 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeClusterBaseMetricConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 机器组id
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <li> topicId按照【指标主题id】进行过滤。类型：String  必选：否</li>
+	// <li> 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeClusterBaseMetricConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterBaseMetricConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterBaseMetricConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterBaseMetricConfigsResponseParams struct {
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 指标采集配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Datas []*BaseMetricCollectConfig `json:"Datas,omitnil,omitempty" name:"Datas"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterBaseMetricConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterBaseMetricConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterBaseMetricConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterBaseMetricConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterMetricConfigsRequestParams struct {
+	// 机器组id
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <li> configId按照【指标采集配置id】进行过滤。类型：String  必选：否</li>
+	// <li> name按照【配置名称】进行过滤。类型：String 必选：否</li>
+	// <li> 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeClusterMetricConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 机器组id
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <li> configId按照【指标采集配置id】进行过滤。类型：String  必选：否</li>
+	// <li> name按照【配置名称】进行过滤。类型：String 必选：否</li>
+	// <li> 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeClusterMetricConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterMetricConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterMetricConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterMetricConfigsResponseParams struct {
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 指标采集配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Datas []*MetricCollectConfig `json:"Datas,omitnil,omitempty" name:"Datas"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterMetricConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterMetricConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterMetricConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterMetricConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeConfigExtrasRequestParams struct {
 	// 过滤器，支持如下选项：
 	// name
@@ -7236,6 +8668,209 @@ func (r *DescribeConsoleSharingListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeConsumerGroupsRequestParams struct {
+	// 日志集Id（日志主题所属的日志集）
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// topic列表
+	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
+}
+
+type DescribeConsumerGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志集Id（日志主题所属的日志集）
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// topic列表
+	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
+}
+
+func (r *DescribeConsumerGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogsetId")
+	delete(f, "Topics")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerGroupsResponseParams struct {
+	// 消费组详情列表
+	ConsumerGroupsInfo []*ConsumerGroupInfo `json:"ConsumerGroupsInfo,omitnil,omitempty" name:"ConsumerGroupsInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsumerGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumerGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumerGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerOffsetsRequestParams struct {
+	// 日志主题对应的消费组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 时间戳(秒级时间戳)
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志集id(日志主题对应的id)
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// 日志主题id
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 分区id
+	PartitionId *string `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
+}
+
+type DescribeConsumerOffsetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题对应的消费组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 时间戳(秒级时间戳)
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志集id(日志主题对应的id)
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// 日志主题id
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 分区id
+	PartitionId *string `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
+}
+
+func (r *DescribeConsumerOffsetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerOffsetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConsumerGroup")
+	delete(f, "From")
+	delete(f, "LogsetId")
+	delete(f, "TopicId")
+	delete(f, "PartitionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerOffsetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerOffsetsResponseParams struct {
+	// 消费者组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 消费点位信息
+	TopicPartitionOffsetsInfo []*TopicPartitionOffsetInfo `json:"TopicPartitionOffsetsInfo,omitnil,omitempty" name:"TopicPartitionOffsetsInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsumerOffsetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumerOffsetsResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumerOffsetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerOffsetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerPreviewRequestParams struct {
+
+}
+
+type DescribeConsumerPreviewRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeConsumerPreviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerPreviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerPreviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerPreviewResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsumerPreviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumerPreviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumerPreviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerPreviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeConsumerRequestParams struct {
 	// 投递任务绑定的日志主题Id。
 	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
@@ -7306,6 +8941,113 @@ func (r *DescribeConsumerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeConsumerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumersRequestParams struct {
+	// - consumerId
+	// 按照【投递规则ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - topicId
+	// 按照【日志主题】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - taskStatus
+	// 按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+	// 类型：String
+	// 必选：否
+	// 
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页的限制数目，默认值为20，最大值100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeConsumersRequest struct {
+	*tchttp.BaseRequest
+	
+	// - consumerId
+	// 按照【投递规则ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - topicId
+	// 按照【日志主题】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - taskStatus
+	// 按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+	// 类型：String
+	// 必选：否
+	// 
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页的限制数目，默认值为20，最大值100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeConsumersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumersResponseParams struct {
+	// 投递规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Consumers []*ConsumerInfo `json:"Consumers,omitnil,omitempty" name:"Consumers"`
+
+	// 本次查询获取到的总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsumersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumersResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7957,6 +9699,200 @@ func (r *DescribeDlcDeliversResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEsRechargePreviewRequestParams struct {
+	// 名称：长度不超过64字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// es查询语句。
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// es集群配置信息。
+	EsInfo *EsInfo `json:"EsInfo,omitnil,omitempty" name:"EsInfo"`
+
+	// es导入信息。
+	ImportInfo *EsImportInfo `json:"ImportInfo,omitnil,omitempty" name:"ImportInfo"`
+
+	// es导入时间字段信息。
+	TimeInfo *EsTimeInfo `json:"TimeInfo,omitnil,omitempty" name:"TimeInfo"`
+}
+
+type DescribeEsRechargePreviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 名称：长度不超过64字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// es查询语句。
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// es集群配置信息。
+	EsInfo *EsInfo `json:"EsInfo,omitnil,omitempty" name:"EsInfo"`
+
+	// es导入信息。
+	ImportInfo *EsImportInfo `json:"ImportInfo,omitnil,omitempty" name:"ImportInfo"`
+
+	// es导入时间字段信息。
+	TimeInfo *EsTimeInfo `json:"TimeInfo,omitnil,omitempty" name:"TimeInfo"`
+}
+
+func (r *DescribeEsRechargePreviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEsRechargePreviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "TopicId")
+	delete(f, "Index")
+	delete(f, "Query")
+	delete(f, "EsInfo")
+	delete(f, "ImportInfo")
+	delete(f, "TimeInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEsRechargePreviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEsRechargePreviewResponseParams struct {
+	// 预览数据信息
+	Data []*string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEsRechargePreviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEsRechargePreviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeEsRechargePreviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEsRechargePreviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEsRechargesRequestParams struct {
+	// 日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// -  taskId按照【配置id】进行过滤。类型：String  必选：否
+	// -  name按照【配置名称】进行过滤。类型：String 必选：否
+	// -  statusFlag按照【配置状态标记】进行过滤。类型：String 必选：否
+	// -  每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeEsRechargesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// -  taskId按照【配置id】进行过滤。类型：String  必选：否
+	// -  name按照【配置名称】进行过滤。类型：String 必选：否
+	// -  statusFlag按照【配置状态标记】进行过滤。类型：String 必选：否
+	// -  每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeEsRechargesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEsRechargesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEsRechargesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEsRechargesResponseParams struct {
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// es导入配置信息
+	Infos []*EsRechargeInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEsRechargesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEsRechargesResponseParams `json:"Response"`
+}
+
+func (r *DescribeEsRechargesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEsRechargesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExportsRequestParams struct {
 	// 日志主题Id
 	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
@@ -8029,6 +9965,97 @@ func (r *DescribeExportsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeExportsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostMetricConfigsRequestParams struct {
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - configId按照【配置id】进行过滤。类型：String  必选：否
+	// - name按照【配置名称】进行过滤。类型：String 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeHostMetricConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - configId按照【配置id】进行过滤。类型：String  必选：否
+	// - name按照【配置名称】进行过滤。类型：String 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeHostMetricConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostMetricConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostMetricConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostMetricConfigsResponseParams struct {
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 指标订阅配置信息
+	Infos []*HostMetricConfig `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHostMetricConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostMetricConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostMetricConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostMetricConfigsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8297,6 +10324,57 @@ func (r *DescribeKafkaConsumerGroupListResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeKafkaConsumerPreviewRequestParams struct {
+
+}
+
+type DescribeKafkaConsumerPreviewRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeKafkaConsumerPreviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaConsumerPreviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKafkaConsumerPreviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaConsumerPreviewResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKafkaConsumerPreviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKafkaConsumerPreviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeKafkaConsumerPreviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaConsumerPreviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeKafkaConsumerRequestParams struct {
 	// 日志主题Id。
 	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
@@ -8363,6 +10441,57 @@ func (r *DescribeKafkaConsumerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeKafkaConsumerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaConsumerTopicsRequestParams struct {
+
+}
+
+type DescribeKafkaConsumerTopicsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeKafkaConsumerTopicsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaConsumerTopicsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKafkaConsumerTopicsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaConsumerTopicsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKafkaConsumerTopicsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKafkaConsumerTopicsResponseParams `json:"Response"`
+}
+
+func (r *DescribeKafkaConsumerTopicsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaConsumerTopicsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9152,6 +11281,227 @@ func (r *DescribeMachinesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMetricCorrectDimensionRequestParams struct {
+
+}
+
+type DescribeMetricCorrectDimensionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeMetricCorrectDimensionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetricCorrectDimensionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMetricCorrectDimensionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMetricCorrectDimensionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMetricCorrectDimensionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMetricCorrectDimensionResponseParams `json:"Response"`
+}
+
+func (r *DescribeMetricCorrectDimensionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetricCorrectDimensionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMetricSubscribePreviewRequestParams struct {
+	// 云产品命名空间。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 数据库配置信息。
+	Metrics []*MetricConfig `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 实例配置配置。
+	InstanceInfo *InstanceConfig `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
+}
+
+type DescribeMetricSubscribePreviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云产品命名空间。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 数据库配置信息。
+	Metrics []*MetricConfig `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 实例配置配置。
+	InstanceInfo *InstanceConfig `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
+}
+
+func (r *DescribeMetricSubscribePreviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetricSubscribePreviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Namespace")
+	delete(f, "Metrics")
+	delete(f, "InstanceInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMetricSubscribePreviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMetricSubscribePreviewResponseParams struct {
+	// 总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 成功数量
+	SuccessCount *uint64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 失败数量
+	FailCount *uint64 `json:"FailCount,omitnil,omitempty" name:"FailCount"`
+
+	// 成功实例数据
+	SuccessInstances []*InstanceData `json:"SuccessInstances,omitnil,omitempty" name:"SuccessInstances"`
+
+	// 失败实例数据
+	FailInstances []*InstanceData `json:"FailInstances,omitnil,omitempty" name:"FailInstances"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMetricSubscribePreviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMetricSubscribePreviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeMetricSubscribePreviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetricSubscribePreviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMetricSubscribesRequestParams struct {
+	// 日志主题id
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <br><li> taskId按照【配置id】进行过滤。类型：String  必选：否</li>
+	// <br><li> name按照【配置名称】进行过滤。类型：String 必选：否</li>
+	// <br><li> status按照【配置状态标记】进行过滤。类型：String 必选：否</li>
+	// <br><li> 每次请求的Filters的上限为10，Filter.Values的上限为100。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeMetricSubscribesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题id
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <br><li> taskId按照【配置id】进行过滤。类型：String  必选：否</li>
+	// <br><li> name按照【配置名称】进行过滤。类型：String 必选：否</li>
+	// <br><li> status按照【配置状态标记】进行过滤。类型：String 必选：否</li>
+	// <br><li> 每次请求的Filters的上限为10，Filter.Values的上限为100。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeMetricSubscribesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetricSubscribesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMetricSubscribesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMetricSubscribesResponseParams struct {
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 指标订阅配置信息
+	Datas []*MetricSubscribeInfo `json:"Datas,omitnil,omitempty" name:"Datas"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMetricSubscribesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMetricSubscribesResponseParams `json:"Response"`
+}
+
+func (r *DescribeMetricSubscribesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetricSubscribesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNoticeContentsRequestParams struct {
 	// <li> name
 	// 按照【通知内容模板名称】进行过滤。
@@ -9594,6 +11944,339 @@ func (r *DescribeShippersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSplunkDeliversRequestParams struct {
+	// 日志主题Id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - taskId 按照【任务id】进行过滤。 类型：String 必选：否  
+	// - name 按照【任务名称】进行过滤。 类型：String 必选：否  
+	// - statusFlag 按照【状态】进行过滤。 类型：String 必选：否  
+	//  每次请求的Filters的上限为10，Filter.Values的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeSplunkDeliversRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题Id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - taskId 按照【任务id】进行过滤。 类型：String 必选：否  
+	// - name 按照【任务名称】进行过滤。 类型：String 必选：否  
+	// - statusFlag 按照【状态】进行过滤。 类型：String 必选：否  
+	//  每次请求的Filters的上限为10，Filter.Values的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSplunkDeliversRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSplunkDeliversRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSplunkDeliversRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSplunkDeliversResponseParams struct {
+	// Splunk投递任务信息列表
+	Infos []*SplunkDeliverInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 符合条件的任务总数。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSplunkDeliversResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSplunkDeliversResponseParams `json:"Response"`
+}
+
+func (r *DescribeSplunkDeliversResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSplunkDeliversResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSplunkPreviewRequestParams struct {
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// splunk投递任务-元信息
+	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
+}
+
+type DescribeSplunkPreviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题id。
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// splunk投递任务-元信息
+	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
+}
+
+func (r *DescribeSplunkPreviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSplunkPreviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "MetadataInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSplunkPreviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSplunkPreviewResponseParams struct {
+	// 预览结果
+	PreviewInfos []*string `json:"PreviewInfos,omitnil,omitempty" name:"PreviewInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSplunkPreviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSplunkPreviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeSplunkPreviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSplunkPreviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopicBaseMetricConfigsRequestParams struct {
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// groupId按照【机器组id】进行过滤。类型：String  必选：否
+	// 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeTopicBaseMetricConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// groupId按照【机器组id】进行过滤。类型：String  必选：否
+	// 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTopicBaseMetricConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopicBaseMetricConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicBaseMetricConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopicBaseMetricConfigsResponseParams struct {
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 指标采集配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Datas []*BaseMetricCollectConfig `json:"Datas,omitnil,omitempty" name:"Datas"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTopicBaseMetricConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTopicBaseMetricConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTopicBaseMetricConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopicBaseMetricConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopicMetricConfigsRequestParams struct {
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// configId按照【指标采集配置id】进行过滤。类型：String  必选：否
+	// name按照【配置名称】进行过滤。类型：String 必选：否
+	// 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeTopicMetricConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// configId按照【指标采集配置id】进行过滤。类型：String  必选：否
+	// name按照【配置名称】进行过滤。类型：String 必选：否
+	// 每次请求的Filters的上限为10，所有Filter.Values总和上限为100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTopicMetricConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopicMetricConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicMetricConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopicMetricConfigsResponseParams struct {
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 指标采集配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Datas []*MetricCollectConfig `json:"Datas,omitnil,omitempty" name:"Datas"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTopicMetricConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTopicMetricConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTopicMetricConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopicMetricConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTopicsRequestParams struct {
 	// <ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
 	// <li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
@@ -9811,6 +12494,16 @@ func (r *DescribeWebCallbacksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Dimension struct {
+	// 实例维度名称,此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 实例维度值,此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type DlcDeliverInfo struct {
 	// 任务id。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -9933,6 +12626,132 @@ type EnvInfo struct {
 
 	// 环境变量值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type EsImportInfo struct {
+	// 导入模式。
+	// 1. 导入历史数据
+	// 2. 导入实时数据
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 开始时间。 单位:秒级时间戳。
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间。 单位：秒级时间戳。
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 最大延迟时间。单位：s
+	// 
+	// 导入模式为 2: 导入实时数据时必填
+	MaxDelay *uint64 `json:"MaxDelay,omitnil,omitempty" name:"MaxDelay"`
+
+	// 检查间隔。单位：s
+	// 
+	// 导入模式为 2: 导入实时数据时必填
+	CheckInterval *uint64 `json:"CheckInterval,omitnil,omitempty" name:"CheckInterval"`
+}
+
+type EsInfo struct {
+	// es类型。 1:云es, 2:自建es
+	EsType *uint64 `json:"EsType,omitnil,omitempty" name:"EsType"`
+
+	// 访问方式 1:内网, 2:外网。自建es必填
+	AccessMode *uint64 `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+
+	// 实例id。云es实例必填
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户名。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 访问地址。自建es必填
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 访问端口。自建es必填
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 所属网络。自建es且访问方式为内网访问时必填
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 网络服务类型。自建es且访问方式为内网访问时必填。
+	// 负载均衡 CLB:1025 云服务器CVM:0
+	VirtualGatewayType *uint64 `json:"VirtualGatewayType,omitnil,omitempty" name:"VirtualGatewayType"`
+
+	// 密码。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+}
+
+type EsRechargeInfo struct {
+	// 任务id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 主账号id。
+	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 配置名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// es索引。
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// es查询语句。
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// es集群信息。
+	EsInfo *EsInfo `json:"EsInfo,omitnil,omitempty" name:"EsInfo"`
+
+	// es导入信息。
+	ImportInfo *EsImportInfo `json:"ImportInfo,omitnil,omitempty" name:"ImportInfo"`
+
+	// es导入时间配置信息。
+	TimeInfo *EsTimeInfo `json:"TimeInfo,omitnil,omitempty" name:"TimeInfo"`
+
+	// 任务状态。
+	// 1. 运行中
+	// 2. 暂停
+	// 3. 完成
+	// 4. 异常
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务进度 0~100 百分比。100：表示完成。
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 子账号id。
+	SubUin *uint64 `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// 创建时间。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间。
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 是否开启投递服务日志。1：关闭，2：开启。
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+type EsTimeInfo struct {
+	// 时间类型 1: 日志采集时间 2: 指定日志字段
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 日志时间字段。
+	// 
+	// 时间类型为 2: 指定日志字段时必填
+	TimeKey *string `json:"TimeKey,omitnil,omitempty" name:"TimeKey"`
+
+	// 日志时间格式。
+	// 
+	// 时间类型为 2: 指定日志字段时必填
+	TimeFormat *string `json:"TimeFormat,omitnil,omitempty" name:"TimeFormat"`
+
+	// 时间字段时区。
+	// 
+	// 时间类型为 2: 指定日志字段时必填
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 }
 
 type EscalateNoticeInfo struct {
@@ -10342,6 +13161,60 @@ func (r *GetAlarmLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetMetricLabelValuesRequestParams struct {
+
+}
+
+type GetMetricLabelValuesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetMetricLabelValuesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMetricLabelValuesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMetricLabelValuesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetMetricLabelValuesResponseParams struct {
+	// 时序metric label values
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetMetricLabelValuesResponse struct {
+	*tchttp.BaseResponse
+	Response *GetMetricLabelValuesResponseParams `json:"Response"`
+}
+
+func (r *GetMetricLabelValuesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMetricLabelValuesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GroupPartitionInfo struct {
 	// 分区id
 	PartitionId *int64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
@@ -10387,6 +13260,83 @@ type HostFileInfo struct {
 	// metadata信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomLabels []*string `json:"CustomLabels,omitnil,omitempty" name:"CustomLabels"`
+}
+
+type HostMetricConfig struct {
+	// 采集配置 id
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// 采集配置名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 采集频率,单位ms
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 采集项.
+	HostMetricItems []*HostMetricItem `json:"HostMetricItems,omitnil,omitempty" name:"HostMetricItems"`
+
+	// 机器组 id 列表
+	MachineGroupIds []*string `json:"MachineGroupIds,omitnil,omitempty" name:"MachineGroupIds"`
+
+	// 创建时间
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type HostMetricItem struct {
+	// 主机指标采集项类型。支持"cpu"，"mem"，"net"，"disk"，"system"。
+	// 
+	// - cpu：CPU
+	// - mem：内存
+	// - net：网络
+	// - disk：磁盘
+	// - system：系统
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type Instance struct {
+	// 实例信息
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type InstanceConfig struct {
+	// 实例维度
+	InstanceDimension []*string `json:"InstanceDimension,omitnil,omitempty" name:"InstanceDimension"`
+
+	// 实例值
+	Instances []*Instance `json:"Instances,omitnil,omitempty" name:"Instances"`
+}
+
+type InstanceData struct {
+	// 云监控指标名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// CLS指标名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLSMetricName *string `json:"CLSMetricName,omitnil,omitempty" name:"CLSMetricName"`
+
+	// 云产品命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dimensions []*Dimension `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
+
+	// 周期,单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 指标统计值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
 type JsonInfo struct {
@@ -10544,6 +13494,27 @@ type KeyValueInfo struct {
 
 	// 字段的索引描述信息
 	Value *ValueInfo `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type Label struct {
+	// 标签的键。有效标签键有两个部分：可选前缀和名称，以斜杠 (/) 分隔。名称部分是必需的，并且必须不超过 63 个字符，以字母数字字符 ([a-z0-9A-Z]) 开头和结尾，中间有破折号(-)、下划线(_)、点(.) 和字母数字。前缀是可选的。如果指定，前缀必须是 DNS 子域：一系列以点 (.) 分隔的 DNS 标签，总长度不超过 253 个字符，后跟斜杠 ( /)。
+	// 
+	// -  prefix 格式  `[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`
+	// -  name 格式 `([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]`
+	// - key不能重复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签键值直接的比较关系。 不同业务场景支持的比较符不同，具体支持那些参考接口业务描述。
+	// 例如：`in`、`notin`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
+
+	// 标签的值.
+	// - 最大支持63个字符。
+	// - 格式：`([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type LogContextInfo struct {
@@ -10960,12 +13931,232 @@ type MetaTagInfo struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type MetadataInfo struct {
+	// 数据格式,rawlog/json
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 投递字段，包括\_\_SOURCE\_\_、\_\_FILENAME\_\_
+	// 、\_\_TIMESTAMP\_\_、\_\_HOSTNAME\_\_、\_\_PKG\_ID\_\_
+	MetaFields []*string `json:"MetaFields,omitnil,omitempty" name:"MetaFields"`
+
+	// 是否投递__TAG__字段
+	EnableTag *bool `json:"EnableTag,omitnil,omitempty" name:"EnableTag"`
+
+	// JSON是否平铺，投递__TAG__字段时必填
+	TagJsonTiled *bool `json:"TagJsonTiled,omitnil,omitempty" name:"TagJsonTiled"`
+}
+
+type MetricCollectConfig struct {
+	// 采集配置id
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// 日志主题id。
+	TopicIds []*string `json:"TopicIds,omitnil,omitempty" name:"TopicIds"`
+
+	// 采集配置来源。支持 ：`0`、`1`
+	// - 0:自建k8s
+	// - 1:TKE
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 机器组id。
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 监控类型。支持 ：`0`、`1`，不支持修改
+	// 
+	// - 0:基础监控
+	// - 1:自定义监控, 
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 采集配置方式。支持 ：`0`、`1`，不支持修改
+	// - 0:普通配置方式，Type字段只能为：`1`
+	// - 1:YAML导入方式，Type 可以是：`0`或者`1`
+	Flag *uint64 `json:"Flag,omitnil,omitempty" name:"Flag"`
+
+	// 名称：长度不超过253字符，校验格式  ` [a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 采集对象, Flag=0时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spec *MetricSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// 标签处理, Flag=0时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricRelabels []*Relabeling `json:"MetricRelabels,omitnil,omitempty" name:"MetricRelabels"`
+
+	// 自定义元数据, Flag=0时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricLabel *MetricConfigLabel `json:"MetricLabel,omitnil,omitempty" name:"MetricLabel"`
+
+	// 通信协议 `http`、`https`；Flag=0时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
+
+	// 采集频率,  Flag=0时生效
+	// - 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScrapeInterval *string `json:"ScrapeInterval,omitnil,omitempty" name:"ScrapeInterval"`
+
+	// 采集超时时间。  Flag=0 && Type=1时生效
+	// - format:`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScrapeTimeout *string `json:"ScrapeTimeout,omitnil,omitempty" name:"ScrapeTimeout"`
+
+	// Prometheus如何处理标签之间的冲突。当Flag=0生效，支持`true`,`false`
+	// 
+	// - `false`:配置数据中冲突的标签重命名
+	// - `true`:忽略冲突的服务器端标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HonorLabels *bool `json:"HonorLabels,omitnil,omitempty" name:"HonorLabels"`
+
+	// 采集配置yaml格式字符串, Flag=1时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	YamlSpec *MetricYamlSpec `json:"YamlSpec,omitnil,omitempty" name:"YamlSpec"`
+
+	// 操作状态,0:应用,1:暂停
+	Operate *uint64 `json:"Operate,omitnil,omitempty" name:"Operate"`
+
+	// 创建时间戳 秒级
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间戳 秒级
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type MetricConfig struct {
+	// 指标名称
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 统计周期,单位:秒（s）
+	Periods []*uint64 `json:"Periods,omitnil,omitempty" name:"Periods"`
+
+	// 自定义指标标签
+	MetricLabels []*MetricLabel `json:"MetricLabels,omitnil,omitempty" name:"MetricLabels"`
+}
+
+type MetricConfigLabel struct {
+	// 元数据。
+	// 支持
+	// - `namespace`
+	// - `pod_name`
+	// - `pod_ip`
+	// - `pod_uid`
+	// - `container_name`
+	// - `container_id`
+	// - `image_name`
+	// - `cluster_id`
+	// - `node_id`
+	// - `node_ip`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadata []*string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// 元数据Pod Label信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *AppointLabel `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 自定义label信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomLabels []*CustomLabel `json:"CustomLabels,omitnil,omitempty" name:"CustomLabels"`
+}
+
 type MetricLabel struct {
 	// 指标名称
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 指标内容
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type MetricSpec struct {
+	// 自定义指标采集配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomSpecs []*CustomMetricSpec `json:"CustomSpecs,omitnil,omitempty" name:"CustomSpecs"`
+}
+
+type MetricSubscribeInfo struct {
+	// 订阅任务id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 日志主题id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 订阅任务名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 云产品命名空间。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 指标配置信息。
+	Metrics []*MetricConfig `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 实例配置信息。
+	InstanceInfo *InstanceConfig `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
+
+	// 订阅任务开关。1:暂停 2:启用
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 订阅任务运行状态。0:创建中 1:暂停 2:运行中 3:异常
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 订阅任务运行异常时的错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// 创建时间（秒级时间戳）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间（秒级时间戳）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type MetricYamlSpec struct {
+	// yaml监控类型。
+	// 支持：
+	// - PodMonitor
+	// - ServiceMonitor
+	// - ScrapeConfig
+	// - ScrapeConfig-prometheus
+	// 
+	// `PodMonitor `,`ServiceMonitor `,`ScrapeConfig ` 属于prometheus-operator
+	// `ScrapeConfig-prometheus` 属于prometheus
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 配置yaml格式。
+	// 例如：Type: ServiceMonitor
+	// 
+	// 
+	// ```
+	// apiVersion: monitoring.coreos.com/v1
+	// kind: ServiceMonitor
+	// metadata:
+	//   name: test
+	//   namespace: test
+	//   labels:
+	//     k8s-app1: test
+	//     k8s-app2: test
+	// spec:
+	//   endpoints:
+	//     - interval: 15s
+	//       port: 8080-8080-tcp
+	//       path: /metrics
+	//       relabelings:
+	//         - action: replace
+	//           sourceLabels:
+	//             - __meta_kubernetes_pod_label_app
+	//           targetLabel: application
+	//   namespaceSelector:
+	//     matchNames:
+	//       - test
+	//   selector:
+	//     matchLabels:
+	//       app: test
+	// ```
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
 }
 
 // Predefined struct for user
@@ -12027,6 +15218,81 @@ func (r *ModifyConsoleSharingResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyConsumerGroupRequestParams struct {
+	// 更新的目标消费者组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 消费者心跳超时时间（秒）
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 更新的消费者组包含的日志主题列表
+	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// 日志集Id（日志主题所属的日志集）
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+}
+
+type ModifyConsumerGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 更新的目标消费者组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 消费者心跳超时时间（秒）
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 更新的消费者组包含的日志主题列表
+	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// 日志集Id（日志主题所属的日志集）
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+}
+
+func (r *ModifyConsumerGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsumerGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConsumerGroup")
+	delete(f, "Timeout")
+	delete(f, "Topics")
+	delete(f, "LogsetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsumerGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConsumerGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyConsumerGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyConsumerGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyConsumerGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsumerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyConsumerRequestParams struct {
 	// 投递任务绑定的日志主题Id。
 	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
@@ -12644,6 +15910,234 @@ func (r *ModifyDlcDeliverResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyEsRechargeRequestParams struct {
+	// 导入任务id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 名称：长度不超过64字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// es查询语句。
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// es集群配置信息。
+	EsInfo *EsInfo `json:"EsInfo,omitnil,omitempty" name:"EsInfo"`
+
+	// es导入信息。
+	ImportInfo *EsImportInfo `json:"ImportInfo,omitnil,omitempty" name:"ImportInfo"`
+
+	// es导入时间字段信息。
+	TimeInfo *EsTimeInfo `json:"TimeInfo,omitnil,omitempty" name:"TimeInfo"`
+
+	// 任务状态。1:运行， 2:暂停
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否开启投递服务日志。1：关闭，2：开启。
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+type ModifyEsRechargeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导入任务id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 名称：长度不超过64字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 索引信息。不同索引可以通过英文逗号分隔，支持*通配符
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// es查询语句。
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// es集群配置信息。
+	EsInfo *EsInfo `json:"EsInfo,omitnil,omitempty" name:"EsInfo"`
+
+	// es导入信息。
+	ImportInfo *EsImportInfo `json:"ImportInfo,omitnil,omitempty" name:"ImportInfo"`
+
+	// es导入时间字段信息。
+	TimeInfo *EsTimeInfo `json:"TimeInfo,omitnil,omitempty" name:"TimeInfo"`
+
+	// 任务状态。1:运行， 2:暂停
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否开启投递服务日志。1：关闭，2：开启。
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+func (r *ModifyEsRechargeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEsRechargeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicId")
+	delete(f, "Name")
+	delete(f, "Index")
+	delete(f, "Query")
+	delete(f, "EsInfo")
+	delete(f, "ImportInfo")
+	delete(f, "TimeInfo")
+	delete(f, "Status")
+	delete(f, "HasServicesLog")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEsRechargeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEsRechargeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyEsRechargeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyEsRechargeResponseParams `json:"Response"`
+}
+
+func (r *ModifyEsRechargeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEsRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyHostMetricConfigRequestParams struct {
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 采集配置id
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// 名称。
+	// 
+	// - 长度不超过 64字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 机器组id列表。最多支持100个机器组。
+	MachineGroupIds []*string `json:"MachineGroupIds,omitnil,omitempty" name:"MachineGroupIds"`
+
+	// 采集频率。单位:ms。 最小支持5000ms
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 采集项。支持"cpu"，"mem"，"net"，"disk"，"system"。**目前仅支持:所有采集项都需配置**。
+	// - cpu：CPU
+	// - mem：内存
+	// - net：网络
+	// - disk：磁盘
+	// - system：系统
+	HostMetricItems []*HostMetricItem `json:"HostMetricItems,omitnil,omitempty" name:"HostMetricItems"`
+}
+
+type ModifyHostMetricConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 采集配置id
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// 名称。
+	// 
+	// - 长度不超过 64字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 机器组id列表。最多支持100个机器组。
+	MachineGroupIds []*string `json:"MachineGroupIds,omitnil,omitempty" name:"MachineGroupIds"`
+
+	// 采集频率。单位:ms。 最小支持5000ms
+	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 采集项。支持"cpu"，"mem"，"net"，"disk"，"system"。**目前仅支持:所有采集项都需配置**。
+	// - cpu：CPU
+	// - mem：内存
+	// - net：网络
+	// - disk：磁盘
+	// - system：系统
+	HostMetricItems []*HostMetricItem `json:"HostMetricItems,omitnil,omitempty" name:"HostMetricItems"`
+}
+
+func (r *ModifyHostMetricConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyHostMetricConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "ConfigId")
+	delete(f, "Name")
+	delete(f, "MachineGroupIds")
+	delete(f, "Interval")
+	delete(f, "HostMetricItems")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyHostMetricConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyHostMetricConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyHostMetricConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyHostMetricConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyHostMetricConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyHostMetricConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyIndexRequestParams struct {
 	// 日志主题Id。
 	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
@@ -13226,6 +16720,266 @@ func (r *ModifyMachineGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyMetricConfigRequestParams struct {
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 指标采集配置id
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// 采集配置来源。支持 ：`0`、`1`
+	// - 0:自建k8s
+	// - 1:TKE
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 机器组id。
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 操作状态,0:应用,1:暂停
+	Operate *uint64 `json:"Operate,omitnil,omitempty" name:"Operate"`
+
+	// 采集对象, Flag=0时生效
+	Spec *MetricSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// 标签处理, Flag=0时生效
+	MetricRelabels []*Relabeling `json:"MetricRelabels,omitnil,omitempty" name:"MetricRelabels"`
+
+	// 自定义元数据, Flag=0时生效
+	MetricLabel *MetricConfigLabel `json:"MetricLabel,omitnil,omitempty" name:"MetricLabel"`
+
+	// 通信协议 `http`、`https`；Flag=0时生效
+	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
+
+	// 采集频率,  Flag=0时生效
+	// - 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+	// - 默认：60s
+	ScrapeInterval *string `json:"ScrapeInterval,omitnil,omitempty" name:"ScrapeInterval"`
+
+	// 采集超时时间。   Flag=0时生效
+	// - 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+	ScrapeTimeout *string `json:"ScrapeTimeout,omitnil,omitempty" name:"ScrapeTimeout"`
+
+	// Prometheus如何处理标签之间的冲突。当Flag=0 && Type=1时生效，支持`true`,`false`
+	// - `false`:配置数据中冲突的标签重命名
+	// - `true`:忽略冲突的服务器端标签
+	HonorLabels *bool `json:"HonorLabels,omitnil,omitempty" name:"HonorLabels"`
+
+	// 采集配置yaml格式字符串, Flag=1时必填
+	YamlSpec *MetricYamlSpec `json:"YamlSpec,omitnil,omitempty" name:"YamlSpec"`
+}
+
+type ModifyMetricConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标日志主题id。
+	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。注意BizType 0:日志主题（默认值）， 1:指标主题
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 指标采集配置id
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// 采集配置来源。支持 ：`0`、`1`
+	// - 0:自建k8s
+	// - 1:TKE
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 机器组id。
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 操作状态,0:应用,1:暂停
+	Operate *uint64 `json:"Operate,omitnil,omitempty" name:"Operate"`
+
+	// 采集对象, Flag=0时生效
+	Spec *MetricSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// 标签处理, Flag=0时生效
+	MetricRelabels []*Relabeling `json:"MetricRelabels,omitnil,omitempty" name:"MetricRelabels"`
+
+	// 自定义元数据, Flag=0时生效
+	MetricLabel *MetricConfigLabel `json:"MetricLabel,omitnil,omitempty" name:"MetricLabel"`
+
+	// 通信协议 `http`、`https`；Flag=0时生效
+	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
+
+	// 采集频率,  Flag=0时生效
+	// - 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+	// - 默认：60s
+	ScrapeInterval *string `json:"ScrapeInterval,omitnil,omitempty" name:"ScrapeInterval"`
+
+	// 采集超时时间。   Flag=0时生效
+	// - 校验格式：`^(((\d+)y)?((\d+)w)?((\d+)d)?((\d+)h)?((\d+)m)?((\d+)s)?((\d+)ms)?|0)$`
+	ScrapeTimeout *string `json:"ScrapeTimeout,omitnil,omitempty" name:"ScrapeTimeout"`
+
+	// Prometheus如何处理标签之间的冲突。当Flag=0 && Type=1时生效，支持`true`,`false`
+	// - `false`:配置数据中冲突的标签重命名
+	// - `true`:忽略冲突的服务器端标签
+	HonorLabels *bool `json:"HonorLabels,omitnil,omitempty" name:"HonorLabels"`
+
+	// 采集配置yaml格式字符串, Flag=1时必填
+	YamlSpec *MetricYamlSpec `json:"YamlSpec,omitnil,omitempty" name:"YamlSpec"`
+}
+
+func (r *ModifyMetricConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMetricConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "ConfigId")
+	delete(f, "Source")
+	delete(f, "GroupIds")
+	delete(f, "Operate")
+	delete(f, "Spec")
+	delete(f, "MetricRelabels")
+	delete(f, "MetricLabel")
+	delete(f, "Scheme")
+	delete(f, "ScrapeInterval")
+	delete(f, "ScrapeTimeout")
+	delete(f, "HonorLabels")
+	delete(f, "YamlSpec")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMetricConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMetricConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMetricConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMetricConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyMetricConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMetricConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMetricSubscribeRequestParams struct {
+	// 指标采集任务的日志主题id。必填字段
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 指标采集任务id。必填字段
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 云产品命名空间。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 指标配置信息。
+	Metrics []*MetricConfig `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 实例配置信息。
+	InstanceInfo *InstanceConfig `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
+
+	// 任务状态。
+	// 
+	// 1： 未启用
+	// 
+	// 2： 启用
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
+type ModifyMetricSubscribeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标采集任务的日志主题id。必填字段
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 指标采集任务id。必填字段
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 云产品命名空间。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 指标配置信息。
+	Metrics []*MetricConfig `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 实例配置信息。
+	InstanceInfo *InstanceConfig `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
+
+	// 任务状态。
+	// 
+	// 1： 未启用
+	// 
+	// 2： 启用
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
+func (r *ModifyMetricSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMetricSubscribeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "TaskId")
+	delete(f, "Name")
+	delete(f, "Namespace")
+	delete(f, "Metrics")
+	delete(f, "InstanceInfo")
+	delete(f, "Enable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMetricSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMetricSubscribeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMetricSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMetricSubscribeResponseParams `json:"Response"`
+}
+
+func (r *ModifyMetricSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMetricSubscribeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyNoticeContentRequestParams struct {
 	// 通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模板ID
 	NoticeContentId *string `json:"NoticeContentId,omitnil,omitempty" name:"NoticeContentId"`
@@ -13613,6 +17367,151 @@ func (r *ModifyShipperResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifySplunkDeliverRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 投递任务名称
+	// name有以下限制：
+	// - 不能为空
+	// - 长度不大于64
+	// - 只能包含aA-zZ、下划线、-、0-9
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 投递任务启用状态；0:禁用；1:启用
+	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// splunk投递任务-目标配置
+	NetInfo *NetInfo `json:"NetInfo,omitnil,omitempty" name:"NetInfo"`
+
+	// splunk投递任务元信息
+	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
+
+	// 是否启用服务日志；1:关闭；2:开启
+	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
+
+	// 高级配置-是否启用索引器;
+	// 1-不开启；2-开启；默认为：1
+	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
+
+	// 高级配置-数据来源；不超过64个字符
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 高级配置-数据来源类型；不超过64个字符
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 高级配置-Splunk写入的索引；不超过64个字符
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 高级配置-通道。
+	// 需满足限制：如果启用索引器，该值不能为空
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+}
+
+type ModifySplunkDeliverRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 日志主题id
+	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 投递任务名称
+	// name有以下限制：
+	// - 不能为空
+	// - 长度不大于64
+	// - 只能包含aA-zZ、下划线、-、0-9
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 投递任务启用状态；0:禁用；1:启用
+	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// splunk投递任务-目标配置
+	NetInfo *NetInfo `json:"NetInfo,omitnil,omitempty" name:"NetInfo"`
+
+	// splunk投递任务元信息
+	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
+
+	// 是否启用服务日志；1:关闭；2:开启
+	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
+
+	// 高级配置-是否启用索引器;
+	// 1-不开启；2-开启；默认为：1
+	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
+
+	// 高级配置-数据来源；不超过64个字符
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 高级配置-数据来源类型；不超过64个字符
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 高级配置-Splunk写入的索引；不超过64个字符
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 高级配置-通道。
+	// 需满足限制：如果启用索引器，该值不能为空
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+}
+
+func (r *ModifySplunkDeliverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySplunkDeliverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicId")
+	delete(f, "Name")
+	delete(f, "Enable")
+	delete(f, "NetInfo")
+	delete(f, "MetadataInfo")
+	delete(f, "HasServiceLog")
+	delete(f, "IndexAck")
+	delete(f, "Source")
+	delete(f, "SourceType")
+	delete(f, "Index")
+	delete(f, "Channel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySplunkDeliverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySplunkDeliverResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySplunkDeliverResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySplunkDeliverResponseParams `json:"Response"`
+}
+
+func (r *ModifySplunkDeliverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySplunkDeliverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTopicRequestParams struct {
 	//  主题ID- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
@@ -13956,6 +17855,33 @@ type MultiTopicSearchInformation struct {
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 }
 
+type NetInfo struct {
+	// 网络地址
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 端口
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 认证token
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 网络类型;1：内网；2:外网
+	NetType *uint64 `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 所属网络；如果网络类型为内网，该字段必填
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 网络服务类型；如果网络类型为内网，该字段必填
+	// - 0:云上cvm
+	// - 3:云上专线网关
+	// - 11:云联网
+	// - 1025:云上clb
+	VirtualGatewayType *uint64 `json:"VirtualGatewayType,omitnil,omitempty" name:"VirtualGatewayType"`
+
+	// 认证机制，是否使用SSL，默认不使用
+	IsSSL *bool `json:"IsSSL,omitnil,omitempty" name:"IsSSL"`
+}
+
 type NoticeContent struct {
 	// 渠道类型
 	// 
@@ -14246,6 +18172,16 @@ type PartitionInfo struct {
 	// 时间格式：yyyy-MM-dd HH:mm:ss
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastWriteTime *string `json:"LastWriteTime,omitnil,omitempty" name:"LastWriteTime"`
+}
+
+type PartitionOffsetInfo struct {
+	// 分区id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionId *uint64 `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
+
+	// offset点位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 // Predefined struct for user
@@ -14595,6 +18531,49 @@ func (r *QueryRangeMetricResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryRangeMetricResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Relabeling struct {
+	// 基于正则表达式匹配执行的动作。
+	// - replace: Label替换, 必填: SourceLabels, Separator, Regex, TargetLabel, Replacement
+	// - labeldrop: 丢弃Label, 必填: Regex
+	// - labelkeep: 保留Label, 必填: Regex
+	// - lowercase: 小写化, 必填: SourceLabels, Separator, TargetLabel
+	// - uppercase: 大写化, 必填: SourceLabels, Separator, TargetLabel
+	// - dropequal: 丢弃指标-完全匹配, 必填: SourceLabels, Separator, TargetLabel
+	// - keepequal: 保留指标-完全匹配, 必填: SourceLabels, Separator, TargetLabel
+	// - drop: 丢弃指标-正则匹配, 必填: SourceLabels, Separator, Regex
+	// - keep: 保留指标-正则匹配, 必填: SourceLabels, Separator, Regex
+	// - hashmod:哈希取模, 必填: SourceLabels, Separator, TargetLabel, Modulus
+	// - labelmap:Label映射, 必填: Regex, Replacement
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 原始label
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceLabels []*string `json:"SourceLabels,omitnil,omitempty" name:"SourceLabels"`
+
+	// 原始label连接符。 必填时不能为空串， 长度不能超过256
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Separator *string `json:"Separator,omitnil,omitempty" name:"Separator"`
+
+	// 目标label。必填时不能为空串，校验格式：`^[a-zA-Z_][a-zA-Z0-9_]*$` ， 长度不能超过256
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetLabel *string `json:"TargetLabel,omitnil,omitempty" name:"TargetLabel"`
+
+	// 替换值。如果正则表达式匹配，则对其执行替换操作。
+	// - 必填时不能为空串，长度不能超过256
+	// - 当action为LabelMap时， Replacement 校验格式：`^(?:(?:[a-zA-Z_]|\$(?:\{\w+\}|\w+))+\w*)+$`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Replacement *string `json:"Replacement,omitnil,omitempty" name:"Replacement"`
+
+	// 正则表达式。提取与之匹配值。必填时不能为空串，校验必须是一个合法的 RE2 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Regex *string `json:"Regex,omitnil,omitempty" name:"Regex"`
+
+	// 获取源标签值的哈希值。必填时不能为空,不能为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Modulus *uint64 `json:"Modulus,omitnil,omitempty" name:"Modulus"`
 }
 
 // Predefined struct for user
@@ -15281,6 +19260,89 @@ type SearchLogTopics struct {
 	Infos []*SearchLogInfos `json:"Infos,omitnil,omitempty" name:"Infos"`
 }
 
+// Predefined struct for user
+type SendConsumerHeartbeatRequestParams struct {
+	// 上报心跳的消费组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 上报心跳的消费者名称
+	// （字母数字下划线，不允许数字、_开头， 长度小于256）
+	Consumer *string `json:"Consumer,omitnil,omitempty" name:"Consumer"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// topic 分区信息
+	TopicPartitionsInfo []*TopicPartitionInfo `json:"TopicPartitionsInfo,omitnil,omitempty" name:"TopicPartitionsInfo"`
+}
+
+type SendConsumerHeartbeatRequest struct {
+	*tchttp.BaseRequest
+	
+	// 上报心跳的消费组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 上报心跳的消费者名称
+	// （字母数字下划线，不允许数字、_开头， 长度小于256）
+	Consumer *string `json:"Consumer,omitnil,omitempty" name:"Consumer"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// topic 分区信息
+	TopicPartitionsInfo []*TopicPartitionInfo `json:"TopicPartitionsInfo,omitnil,omitempty" name:"TopicPartitionsInfo"`
+}
+
+func (r *SendConsumerHeartbeatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendConsumerHeartbeatRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConsumerGroup")
+	delete(f, "Consumer")
+	delete(f, "LogsetId")
+	delete(f, "TopicPartitionsInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendConsumerHeartbeatRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SendConsumerHeartbeatResponseParams struct {
+	// 日志主题对应的消费组标识
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
+
+	// 分区信息
+	TopicPartitionsInfo []*TopicPartitionInfo `json:"TopicPartitionsInfo,omitnil,omitempty" name:"TopicPartitionsInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SendConsumerHeartbeatResponse struct {
+	*tchttp.BaseResponse
+	Response *SendConsumerHeartbeatResponseParams `json:"Response"`
+}
+
+func (r *SendConsumerHeartbeatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendConsumerHeartbeatResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ShipperInfo struct {
 	// 投递规则ID
 	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
@@ -15485,6 +19547,56 @@ func (r *SplitPartitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SplunkDeliverInfo struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户id
+	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 日志主题id
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 任务状态；1.运行中；2:暂停；3：异常
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 启用状态；0:禁用；1:启用
+	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 创建时间；单位：秒
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间；单位：秒
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// splunk投递任务-目标配置
+	NetInfo *NetInfo `json:"NetInfo,omitnil,omitempty" name:"NetInfo"`
+
+	// splunk投递任务元信息
+	Metadata *MetadataInfo `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// 是否启用服务日志；1:关闭；2:开启
+	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
+
+	// 高级配置-数据来源；
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 高级配置-数据来源类型；
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 高级配置-Splunk写入的索引
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 高级配置-是否启用索引器；1-不开启；2-开启；
+	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
+
+	// 高级配置-通道
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+}
+
 type Tag struct {
 	// 标签键
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -15621,6 +19733,26 @@ type TopicInfo struct {
 
 	// IsSourceFrom 开启记录公网来源ip和服务端接收时间
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
+}
+
+type TopicPartitionInfo struct {
+	// 日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicID *string `json:"TopicID,omitnil,omitempty" name:"TopicID"`
+
+	// 分区id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Partitions []*uint64 `json:"Partitions,omitnil,omitempty" name:"Partitions"`
+}
+
+type TopicPartitionOffsetInfo struct {
+	// 日志主题id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicID *string `json:"TopicID,omitnil,omitempty" name:"TopicID"`
+
+	// 分区点位信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionOffsets []*PartitionOffsetInfo `json:"PartitionOffsets,omitnil,omitempty" name:"PartitionOffsets"`
 }
 
 // Predefined struct for user

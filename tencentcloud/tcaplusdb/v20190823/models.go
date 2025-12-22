@@ -4036,87 +4036,6 @@ type RegionInfo struct {
 	Ipv6Enable *uint64 `json:"Ipv6Enable,omitnil,omitempty" name:"Ipv6Enable"`
 }
 
-// Predefined struct for user
-type RollbackTablesRequestParams struct {
-	// 待回档表格所在集群ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
-	// 待回档表格列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitnil,omitempty" name:"SelectedTables"`
-
-	// 待回档时间
-	RollbackTime *string `json:"RollbackTime,omitnil,omitempty" name:"RollbackTime"`
-
-	// 回档模式，支持：`KEYS`
-	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
-}
-
-type RollbackTablesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 待回档表格所在集群ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
-	// 待回档表格列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitnil,omitempty" name:"SelectedTables"`
-
-	// 待回档时间
-	RollbackTime *string `json:"RollbackTime,omitnil,omitempty" name:"RollbackTime"`
-
-	// 回档模式，支持：`KEYS`
-	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
-}
-
-func (r *RollbackTablesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RollbackTablesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ClusterId")
-	delete(f, "SelectedTables")
-	delete(f, "RollbackTime")
-	delete(f, "Mode")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackTablesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RollbackTablesResponseParams struct {
-	// 表格回档任务结果数量
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 表格回档任务结果列表
-	TableResults []*TableRollbackResultNew `json:"TableResults,omitnil,omitempty" name:"TableResults"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type RollbackTablesResponse struct {
-	*tchttp.BaseResponse
-	Response *RollbackTablesResponseParams `json:"Response"`
-}
-
-func (r *RollbackTablesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RollbackTablesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type SelectedTableInfoNew struct {
 	// 表所属表格组ID
 	TableGroupId *string `json:"TableGroupId,omitnil,omitempty" name:"TableGroupId"`
@@ -4673,41 +4592,6 @@ type TableResultNew struct {
 
 	// 腾讯云申请审核单Id
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
-}
-
-type TableRollbackResultNew struct {
-	// 表格实例ID，形如：tcaplus-3be64cbb
-	TableInstanceId *string `json:"TableInstanceId,omitnil,omitempty" name:"TableInstanceId"`
-
-	// 任务ID，对于创建单任务的接口有效
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 表格名称
-	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
-
-	// 表格数据结构类型，如：`GENERIC`或`LIST`
-	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
-
-	// 表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
-	TableIdlType *string `json:"TableIdlType,omitnil,omitempty" name:"TableIdlType"`
-
-	// 表格所属表格组ID
-	TableGroupId *string `json:"TableGroupId,omitnil,omitempty" name:"TableGroupId"`
-
-	// 错误信息
-	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
-
-	// 任务ID列表，对于创建多任务的接口有效
-	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
-
-	// 上传的key文件ID
-	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
-
-	// 校验成功Key数量
-	SuccKeyNum *uint64 `json:"SuccKeyNum,omitnil,omitempty" name:"SuccKeyNum"`
-
-	// Key文件中包含总的Key数量
-	TotalKeyNum *uint64 `json:"TotalKeyNum,omitnil,omitempty" name:"TotalKeyNum"`
 }
 
 type TagInfoUnit struct {

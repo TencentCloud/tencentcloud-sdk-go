@@ -6145,6 +6145,14 @@ func (r *EnableIntranetAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EnvInternetAccessSetting struct {
+	// true：不能访问公网
+	DisableExternalAccess *bool `json:"DisableExternalAccess,omitnil,omitempty" name:"DisableExternalAccess"`
+
+	// true：不能创建数据下载权限
+	DisableDownloadDataAcl *bool `json:"DisableDownloadDataAcl,omitnil,omitempty" name:"DisableDownloadDataAcl"`
+}
+
 type ExternalDevice struct {
 	// 操作系统名称，只能是Linux、Windows或MySQL
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
@@ -8534,6 +8542,9 @@ type Resource struct {
 	// 开通内网访问的vpc
 	IntranetVpcId *string `json:"IntranetVpcId,omitnil,omitempty" name:"IntranetVpcId"`
 
+	// 开通内网访问的subnetId
+	IntranetSubnetId *string `json:"IntranetSubnetId,omitnil,omitempty" name:"IntranetSubnetId"`
+
 	// 开通内网访问vpc的网段
 	IntranetVpcCidr *string `json:"IntranetVpcCidr,omitnil,omitempty" name:"IntranetVpcCidr"`
 
@@ -9977,6 +9988,9 @@ type SecuritySetting struct {
 
 	// 资产重连次数
 	Reconnection *ReconnectionSetting `json:"Reconnection,omitnil,omitempty" name:"Reconnection"`
+
+	// 大区环境网络设置
+	EnvInternetAccess *EnvInternetAccessSetting `json:"EnvInternetAccess,omitnil,omitempty" name:"EnvInternetAccess"`
 }
 
 type SessionResult struct {

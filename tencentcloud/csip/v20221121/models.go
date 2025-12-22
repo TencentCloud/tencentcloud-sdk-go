@@ -1133,6 +1133,9 @@ type AssetRiskItem struct {
 
 	// 处置分类
 	Classify *string `json:"Classify,omitnil,omitempty" name:"Classify"`
+
+	// 等保合规
+	StandardTerms []*StandardTerm `json:"StandardTerms,omitnil,omitempty" name:"StandardTerms"`
 }
 
 type AssetTag struct {
@@ -2033,6 +2036,9 @@ type CheckViewRiskItem struct {
 
 	// 处置分类
 	Classify *string `json:"Classify,omitnil,omitempty" name:"Classify"`
+
+	// cspm规范条款
+	StandardTerms []*StandardTerm `json:"StandardTerms,omitnil,omitempty" name:"StandardTerms"`
 }
 
 type ClbListenerListInfo struct {
@@ -3680,6 +3686,9 @@ type DescribeAssetRiskListResponseParams struct {
 	// 资产视角下风险列表
 	AssetRiskList []*AssetRiskItem `json:"AssetRiskList,omitnil,omitempty" name:"AssetRiskList"`
 
+	// 等保规范名称集合
+	StandardNameList []*StandardItem `json:"StandardNameList,omitnil,omitempty" name:"StandardNameList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4262,6 +4271,9 @@ type DescribeCheckViewRisksResponseParams struct {
 
 	// 检查视角下风险列表
 	CheckViewRiskList []*CheckViewRiskItem `json:"CheckViewRiskList,omitnil,omitempty" name:"CheckViewRiskList"`
+
+	// 检查视角下cspm规范标签列表
+	StandardNameList []*StandardItem `json:"StandardNameList,omitnil,omitempty" name:"StandardNameList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10200,6 +10212,22 @@ type SourceIPVpcInfo struct {
 
 	// vpc 名称
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+}
+
+type StandardItem struct {
+	// 规范ID
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 规范名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type StandardTerm struct {
+	// 标签
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 条款
+	Terms []*string `json:"Terms,omitnil,omitempty" name:"Terms"`
 }
 
 type StatisticalFilter struct {
