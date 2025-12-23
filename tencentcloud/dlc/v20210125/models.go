@@ -8777,6 +8777,12 @@ type DescribeNativeSparkSessionsRequestParams struct {
 
 	// 资源组ID
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 用户Uin
+	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
 }
 
 type DescribeNativeSparkSessionsRequest struct {
@@ -8787,6 +8793,12 @@ type DescribeNativeSparkSessionsRequest struct {
 
 	// 资源组ID
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 用户Uin
+	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
 }
 
 func (r *DescribeNativeSparkSessionsRequest) ToJsonString() string {
@@ -8803,6 +8815,8 @@ func (r *DescribeNativeSparkSessionsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DataEngineId")
 	delete(f, "ResourceGroupId")
+	delete(f, "ProjectId")
+	delete(f, "UserUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNativeSparkSessionsRequest has unknown keys!", "")
 	}

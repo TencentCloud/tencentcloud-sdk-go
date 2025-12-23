@@ -4660,7 +4660,8 @@ type HandwritingEssayOCRRequestParams struct {
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
 	// 配置id支持：
-	// ArticleRecognize -- 手写作文模板
+	// ArticleRecognize -- 手写中文作文模板
+	// ArticleRecognizeEng -- 手写英文作文模板
 	// 默认：ArticleRecognize
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
@@ -4681,7 +4682,8 @@ type HandwritingEssayOCRRequest struct {
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
 	// 配置id支持：
-	// ArticleRecognize -- 手写作文模板
+	// ArticleRecognize -- 手写中文作文模板
+	// ArticleRecognizeEng -- 手写英文作文模板
 	// 默认：ArticleRecognize
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 

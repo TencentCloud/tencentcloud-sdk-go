@@ -55,6 +55,29 @@ type Agent struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type AgentDutyTask struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 任务开始运行时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 任务状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 对外展示的Extra信息
+	ResultExtraKey []*string `json:"ResultExtraKey,omitnil,omitempty" name:"ResultExtraKey"`
+
+	// 业务的额外敏感信息
+	Extra []*ExtraInfo `json:"Extra,omitnil,omitempty" name:"Extra"`
+}
+
 type AgentInstance struct {
 	// 智能体实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -433,6 +456,9 @@ func (r *DescribeAgentDutyTaskDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAgentDutyTaskDetailResponseParams struct {
+	// 任务详细信息
+	AgentDutyTask *AgentDutyTask `json:"AgentDutyTask,omitnil,omitempty" name:"AgentDutyTask"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1017,6 +1043,20 @@ func (r *DescribeReportUrlResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeReportUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExtraInfo struct {
+	// 出参额外信息的Key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 额外信息描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// ExtraInfo的值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 值的数据结构类型
+	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
 }
 
 type InstanceInfos struct {

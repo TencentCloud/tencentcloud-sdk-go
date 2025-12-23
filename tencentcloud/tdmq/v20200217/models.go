@@ -8238,7 +8238,7 @@ type DescribeRocketMQGroupsRequestParams struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制条数
+	// 单次查询最大条数。取值范围：[0~100]，默认值为20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 主题名称，输入此参数可查询该主题下所有的订阅组
@@ -8275,7 +8275,7 @@ type DescribeRocketMQGroupsRequest struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制条数
+	// 单次查询最大条数。取值范围：[0~100]，默认值为20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 主题名称，输入此参数可查询该主题下所有的订阅组
@@ -15050,6 +15050,12 @@ type RocketMQMessageTrack struct {
 	// 异常信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptionDesc *string `json:"ExceptionDesc,omitnil,omitempty" name:"ExceptionDesc"`
+
+	// 消费状态来源，枚举值如下：
+	// 
+	// - DIFF_OFFSET：通过服务端offset计算
+	// - TRACE_REPORT：通过上报的轨迹判断
+	ConsumeStatusSource *string `json:"ConsumeStatusSource,omitnil,omitempty" name:"ConsumeStatusSource"`
 }
 
 type RocketMQMigrationTopicDistribution struct {

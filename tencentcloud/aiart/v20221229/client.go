@@ -157,6 +157,60 @@ func (c *Client) ChangeClothesWithContext(ctx context.Context, request *ChangeCl
     return
 }
 
+func NewDescribeTemplateToImageJobRequest() (request *DescribeTemplateToImageJobRequest) {
+    request = &DescribeTemplateToImageJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("aiart", APIVersion, "DescribeTemplateToImageJob")
+    
+    
+    return
+}
+
+func NewDescribeTemplateToImageJobResponse() (response *DescribeTemplateToImageJobResponse) {
+    response = &DescribeTemplateToImageJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTemplateToImageJob
+// 查询图片特效任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+func (c *Client) DescribeTemplateToImageJob(request *DescribeTemplateToImageJobRequest) (response *DescribeTemplateToImageJobResponse, err error) {
+    return c.DescribeTemplateToImageJobWithContext(context.Background(), request)
+}
+
+// DescribeTemplateToImageJob
+// 查询图片特效任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+func (c *Client) DescribeTemplateToImageJobWithContext(ctx context.Context, request *DescribeTemplateToImageJobRequest) (response *DescribeTemplateToImageJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeTemplateToImageJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "DescribeTemplateToImageJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTemplateToImageJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTemplateToImageJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGenerateAvatarRequest() (request *GenerateAvatarRequest) {
     request = &GenerateAvatarRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1507,6 +1561,106 @@ func (c *Client) SubmitMemeJobWithContext(ctx context.Context, request *SubmitMe
     request.SetContext(ctx)
     
     response = NewSubmitMemeJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitTemplateToImageJobRequest() (request *SubmitTemplateToImageJobRequest) {
+    request = &SubmitTemplateToImageJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("aiart", APIVersion, "SubmitTemplateToImageJob")
+    
+    
+    return
+}
+
+func NewSubmitTemplateToImageJobResponse() (response *SubmitTemplateToImageJobResponse) {
+    response = &SubmitTemplateToImageJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitTemplateToImageJob
+// 提交图片特效任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
+//  FAILEDOPERATION_GENERATEIMAGEFAILED = "FailedOperation.GenerateImageFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_LOGOPARAMERR = "InvalidParameterValue.LogoParamErr"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  INVALIDPARAMETERVALUE_TEXTLENGTHEXCEED = "InvalidParameterValue.TextLengthExceed"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+//  OPERATIONDENIED_TEXTILLEGALDETECTED = "OperationDenied.TextIllegalDetected"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitTemplateToImageJob(request *SubmitTemplateToImageJobRequest) (response *SubmitTemplateToImageJobResponse, err error) {
+    return c.SubmitTemplateToImageJobWithContext(context.Background(), request)
+}
+
+// SubmitTemplateToImageJob
+// 提交图片特效任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
+//  FAILEDOPERATION_GENERATEIMAGEFAILED = "FailedOperation.GenerateImageFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_LOGOPARAMERR = "InvalidParameterValue.LogoParamErr"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  INVALIDPARAMETERVALUE_TEXTLENGTHEXCEED = "InvalidParameterValue.TextLengthExceed"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+//  OPERATIONDENIED_TEXTILLEGALDETECTED = "OperationDenied.TextIllegalDetected"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitTemplateToImageJobWithContext(ctx context.Context, request *SubmitTemplateToImageJobRequest) (response *SubmitTemplateToImageJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitTemplateToImageJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "aiart", APIVersion, "SubmitTemplateToImageJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitTemplateToImageJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitTemplateToImageJobResponse()
     err = c.Send(request, response)
     return
 }

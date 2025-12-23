@@ -3429,7 +3429,7 @@ func NewDescribeTopicListByGroupResponse() (response *DescribeTopicListByGroupRe
 }
 
 // DescribeTopicListByGroup
-// 根据消费组获取主题列表，Filter参数使用说明如下：
+// 查询消费组订阅的主题列表，Filter参数使用说明如下：
 //
 // 
 //
@@ -3440,6 +3440,8 @@ func NewDescribeTopicListByGroupResponse() (response *DescribeTopicListByGroupRe
 // Filters示例： 
 //
 // [{ "Name": "TopicName", "Values": ["test_topic"] }]
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询消费组订阅的主题列表接口文档见 [DescribeRocketMQTopicsByGroup](https://cloud.tencent.com/document/product/1179/108863)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -3448,7 +3450,7 @@ func (c *Client) DescribeTopicListByGroup(request *DescribeTopicListByGroupReque
 }
 
 // DescribeTopicListByGroup
-// 根据消费组获取主题列表，Filter参数使用说明如下：
+// 查询消费组订阅的主题列表，Filter参数使用说明如下：
 //
 // 
 //
@@ -3459,6 +3461,8 @@ func (c *Client) DescribeTopicListByGroup(request *DescribeTopicListByGroupReque
 // Filters示例： 
 //
 // [{ "Name": "TopicName", "Values": ["test_topic"] }]
+//
+// 当前 API 适用集群：5.x 集群。4.x 集群的查询消费组订阅的主题列表接口文档见 [DescribeRocketMQTopicsByGroup](https://cloud.tencent.com/document/product/1179/108863)。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"

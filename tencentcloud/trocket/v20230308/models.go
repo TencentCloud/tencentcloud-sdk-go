@@ -5524,6 +5524,12 @@ type MessageTrackItem struct {
 	// 异常信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptionDesc *string `json:"ExceptionDesc,omitnil,omitempty" name:"ExceptionDesc"`
+
+	// 消费状态来源，枚举值如下：
+	// 
+	// - DIFF_OFFSET：通过服务端offset计算
+	// - TRACE_REPORT：通过上报的轨迹判断
+	ConsumeStatusSource *string `json:"ConsumeStatusSource,omitnil,omitempty" name:"ConsumeStatusSource"`
 }
 
 type MigratingTopic struct {
@@ -5592,15 +5598,15 @@ type ModifyConsumerGroupRequestParams struct {
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
-	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
-
 	// 是否开启消费
 	ConsumeEnable *bool `json:"ConsumeEnable,omitnil,omitempty" name:"ConsumeEnable"`
 
 	// 顺序投递：true
 	// 并发投递：false
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
+
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
 	// 最大重试次数，取值范围0～1000
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil,omitempty" name:"MaxRetryTimes"`
@@ -5615,15 +5621,15 @@ type ModifyConsumerGroupRequest struct {
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
-	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
-
 	// 是否开启消费
 	ConsumeEnable *bool `json:"ConsumeEnable,omitnil,omitempty" name:"ConsumeEnable"`
 
 	// 顺序投递：true
 	// 并发投递：false
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
+
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
 	// 最大重试次数，取值范围0～1000
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil,omitempty" name:"MaxRetryTimes"`
@@ -5645,9 +5651,9 @@ func (r *ModifyConsumerGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "ConsumerGroup")
 	delete(f, "ConsumeEnable")
 	delete(f, "ConsumeMessageOrderly")
+	delete(f, "ConsumerGroup")
 	delete(f, "MaxRetryTimes")
 	delete(f, "Remark")
 	if len(f) > 0 {

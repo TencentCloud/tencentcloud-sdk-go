@@ -2032,7 +2032,7 @@ type DescribeGeneralSpanListRequestParams struct {
 	// 业务自身服务名，控制台用户请填写taw
 	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// 单页项目个数，默认为10000，合法取值范围为0～10000
+	// 单页项目个数，默认为1000，合法取值范围为1～1000
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页
@@ -2070,7 +2070,7 @@ type DescribeGeneralSpanListRequest struct {
 	// 业务自身服务名，控制台用户请填写taw
 	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// 单页项目个数，默认为10000，合法取值范围为0～10000
+	// 单页项目个数，默认为1000，合法取值范围为1～1000
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页

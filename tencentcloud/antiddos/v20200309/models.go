@@ -6492,10 +6492,10 @@ type DescribeListProtectThresholdConfigNewRequestParams struct {
 	// IP搜索
 	FilterIp *string `json:"FilterIp,omitnil,omitempty" name:"FilterIp"`
 
-	// 域名搜索(查询域名与协议的CC防护阈值时使用）
+	// 域名搜索，查询域名与协议的CC防护阈值时使用
 	FilterDomain *string `json:"FilterDomain,omitnil,omitempty" name:"FilterDomain"`
 
-	// 协议搜索(查询域名与协议的CC防护阈值时使用）
+	// 协议搜索，查询域名与协议的CC防护阈值时使用
 	FilterProtocol *string `json:"FilterProtocol,omitnil,omitempty" name:"FilterProtocol"`
 }
 
@@ -6514,10 +6514,10 @@ type DescribeListProtectThresholdConfigNewRequest struct {
 	// IP搜索
 	FilterIp *string `json:"FilterIp,omitnil,omitempty" name:"FilterIp"`
 
-	// 域名搜索(查询域名与协议的CC防护阈值时使用）
+	// 域名搜索，查询域名与协议的CC防护阈值时使用
 	FilterDomain *string `json:"FilterDomain,omitnil,omitempty" name:"FilterDomain"`
 
-	// 协议搜索(查询域名与协议的CC防护阈值时使用）
+	// 协议搜索，查询域名与协议的CC防护阈值时使用
 	FilterProtocol *string `json:"FilterProtocol,omitnil,omitempty" name:"FilterProtocol"`
 }
 

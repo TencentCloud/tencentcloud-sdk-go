@@ -591,6 +591,47 @@ type BasicAuth struct {
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
+type BindProgressResponse struct {
+	// 绑定步骤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Steps []*BindProgressStep `json:"Steps,omitnil,omitempty" name:"Steps"`
+
+	// 集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群绑定状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type BindProgressStep struct {
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndAt *string `json:"EndAt,omitnil,omitempty" name:"EndAt"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedMsg *string `json:"FailedMsg,omitnil,omitempty" name:"FailedMsg"`
+
+	// 状态
+	LifeState *string `json:"LifeState,omitnil,omitempty" name:"LifeState"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartAt *string `json:"StartAt,omitnil,omitempty" name:"StartAt"`
+
+	// 任务进程
+	// "prepare_env"   // 准备环境,安装instance EKS
+	// "check_target"  // 检查target是否为running
+	// "install_crd"   // 安装需要测crd
+	// "install_rbac"  // 安装rbac
+	// "install_agent" // 安装agent
+	// "install_cr"    // 安装prometheus CR
+	// "install_basic" // 安装基础采集信息，标记target状态为normal
+	Step *string `json:"Step,omitnil,omitempty" name:"Step"`
+}
+
 // Predefined struct for user
 type BindPrometheusManagedGrafanaRequestParams struct {
 	// Prometheus 实例 ID
@@ -6614,12 +6655,21 @@ func (r *DescribeBindingPolicyObjectListResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeClusterAgentCreatingProgressRequestParams struct {
+	// prom实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 集群ids
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 }
 
 type DescribeClusterAgentCreatingProgressRequest struct {
 	*tchttp.BaseRequest
 	
+	// prom实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 集群ids
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 }
 
 func (r *DescribeClusterAgentCreatingProgressRequest) ToJsonString() string {
@@ -6634,7 +6684,8 @@ func (r *DescribeClusterAgentCreatingProgressRequest) FromJsonString(s string) e
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "ClusterIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterAgentCreatingProgressRequest has unknown keys!", "")
 	}
@@ -6643,6 +6694,9 @@ func (r *DescribeClusterAgentCreatingProgressRequest) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeClusterAgentCreatingProgressResponseParams struct {
+	// 绑定状态response
+	Response []*BindProgressResponse `json:"Response,omitnil,omitempty" name:"Response"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

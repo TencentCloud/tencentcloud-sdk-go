@@ -10995,6 +10995,91 @@ func (r *DescribePlansResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrefetchOriginLimitRequestParams struct {
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认值：20，上限：100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：
+	// <li>domain-name：按照域名过滤。domain-name 形如：www.qq.com，不支持模糊查询；</li>
+	// <li>area：按照限制加速区域过滤，不支持模糊查询。可选项：<br> Overseas：全球可用区（不含中国大陆）；<br> MainlandChina：中国大陆可用区。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribePrefetchOriginLimitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认值：20，上限：100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：
+	// <li>domain-name：按照域名过滤。domain-name 形如：www.qq.com，不支持模糊查询；</li>
+	// <li>area：按照限制加速区域过滤，不支持模糊查询。可选项：<br> Overseas：全球可用区（不含中国大陆）；<br> MainlandChina：中国大陆可用区。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribePrefetchOriginLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrefetchOriginLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrefetchOriginLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrefetchOriginLimitResponseParams struct {
+	// 回源限速限制总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 回源限速限制详情List。
+	Limits []*PrefetchOriginLimit `json:"Limits,omitnil,omitempty" name:"Limits"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrefetchOriginLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrefetchOriginLimitResponseParams `json:"Response"`
+}
+
+func (r *DescribePrefetchOriginLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrefetchOriginLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrefetchTasksRequestParams struct {
 	// 站点ID。此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -18193,6 +18278,102 @@ func (r *ModifyPlanResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyPrefetchOriginLimitRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 加速域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 回源限速限制的加速区域。
+	// 预热时，该加速区域将会受到配置的Bandwidth值限制。取值有：
+	// <li>Overseas：全球可用区（不含中国大陆）；</li>
+	// <li>MainlandChina：中国大陆可用区。</li>
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 回源限速带宽。
+	// 预热时回到源站的带宽上限值，取值范围 100 - 100,000，单位 Mbps。
+	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 回源限速限制控制开关。
+	// 用于启用/删除本条回源限速限制，取值有：
+	// <li>on：启用限制；</li>
+	// <li>off：删除限制。</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type ModifyPrefetchOriginLimitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 加速域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 回源限速限制的加速区域。
+	// 预热时，该加速区域将会受到配置的Bandwidth值限制。取值有：
+	// <li>Overseas：全球可用区（不含中国大陆）；</li>
+	// <li>MainlandChina：中国大陆可用区。</li>
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 回源限速带宽。
+	// 预热时回到源站的带宽上限值，取值范围 100 - 100,000，单位 Mbps。
+	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 回源限速限制控制开关。
+	// 用于启用/删除本条回源限速限制，取值有：
+	// <li>on：启用限制；</li>
+	// <li>off：删除限制。</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+func (r *ModifyPrefetchOriginLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrefetchOriginLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "DomainName")
+	delete(f, "Area")
+	delete(f, "Bandwidth")
+	delete(f, "Enabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrefetchOriginLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPrefetchOriginLimitResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPrefetchOriginLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPrefetchOriginLimitResponseParams `json:"Response"`
+}
+
+func (r *ModifyPrefetchOriginLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrefetchOriginLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRealtimeLogDeliveryTaskRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -20115,6 +20296,30 @@ type PostMaxSizeParameters struct {
 
 	// POST 请求上传文件流式传输最大限制，该字段仅在 Switch 为 on 时生效，取值在 1MB 和 800MB 之间，单位字节。
 	MaxSize *int64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
+}
+
+type PrefetchOriginLimit struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 加速域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 回源限速限制的加速区域。
+	// 预热时，该加速区域将会受到配置的Bandwidth值限制。取值有：
+	// <li>Overseas：全球可用区（不含中国大陆）；</li>
+	// <li>MainlandChina：中国大陆可用区。</li>
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 回源限速带宽。
+	// 预热时回到源站的带宽上限值，取值范围 100 - 100,000，单位 Mbps。
+	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 回源限速限制创建的时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 回源限速限制更新的时间。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type PrepaidPlanParam struct {

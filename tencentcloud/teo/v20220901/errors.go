@@ -77,6 +77,9 @@ const (
 	// 创建自定义推送任务认证失败, 请检查推送地址是否正确。
 	FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = "FailedOperation.CreateLogTopicTaskAuthFailure"
 
+	// 创建预热回源限速配置失败，请稍后重试或联系智能客服或提交工单。
+	FAILEDOPERATION_CREATEPREFETCHORIGINLIMITFAILED = "FailedOperation.CreatePrefetchOriginLimitFailed"
+
 	// 边缘客户端证书已过期，暂不支持下发过期证书。
 	FAILEDOPERATION_EDGECLIENTCERTIFICATEHASEXPIRED = "FailedOperation.EdgeClientCertificateHasExpired"
 
@@ -97,6 +100,12 @@ const (
 
 	// 操作失败。
 	FAILEDOPERATION_MODIFYFAILED = "FailedOperation.ModifyFailed"
+
+	// 超出配置数量限制，无法创建更多，请删除不必要配置或申请提升配置数量。
+	FAILEDOPERATION_PREFETCHORIGINLIMITCOUNTEXCEEDED = "FailedOperation.PrefetchOriginLimitCountExceeded"
+
+	// 未找到对应预热回源限速配置，请确认是否存在配置后重试。
+	FAILEDOPERATION_PREFETCHORIGINLIMITNOTFOUND = "FailedOperation.PrefetchOriginLimitNotFound"
 
 	// 该产品即将下架，操作被拒绝。
 	FAILEDOPERATION_PRODUCTDISCONTINUED = "FailedOperation.ProductDiscontinued"
@@ -220,6 +229,9 @@ const (
 
 	// 函数内容超过大小限制。
 	INVALIDPARAMETER_CONTENTEXCEEDSLIMIT = "InvalidParameter.ContentExceedsLimit"
+
+	// 域名加速区域，无法支持该预热回源限速区域配置，请调整后重新提交。
+	INVALIDPARAMETER_DOMAINAREANOTSUPPORTPREFETCHORIGINLIMITAREA = "InvalidParameter.DomainAreaNotSupportPrefetchOriginLimitArea"
 
 	// 域名不存在或不属于该账号。
 	INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
@@ -686,6 +698,18 @@ const (
 	// 最大上传大小超出限制
 	INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = "InvalidParameter.PostMaxSizeLimitExceeded"
 
+	// 预热回源限速区域参数无效，请调整区域后重新提交。
+	INVALIDPARAMETER_PREFETCHORIGINLIMITAREAINVALID = "InvalidParameter.PrefetchOriginLimitAreaInvalid"
+
+	// 预热回源限速带宽值过大，请调整后重新提交。
+	INVALIDPARAMETER_PREFETCHORIGINLIMITBANDWIDTHTOOLARGE = "InvalidParameter.PrefetchOriginLimitBandwidthTooLarge"
+
+	// 预热回源限速带宽值过小，请调整后重新提交。
+	INVALIDPARAMETER_PREFETCHORIGINLIMITBANDWIDTHTOOSMALL = "InvalidParameter.PrefetchOriginLimitBandwidthTooSmall"
+
+	// 预热回源限速控制开关参数无效，请调整区域后重新提交。
+	INVALIDPARAMETER_PREFETCHORIGINLIMITENABLEDINVALID = "InvalidParameter.PrefetchOriginLimitEnabledInvalid"
+
 	// 实例名称重复。
 	INVALIDPARAMETER_PROXYNAMEDUPLICATING = "InvalidParameter.ProxyNameDuplicating"
 
@@ -775,6 +799,9 @@ const (
 
 	// 无效的源站证书校验配置，证书内容为空。
 	INVALIDPARAMETER_UPSTREAMVERIFYCUSTOMCACERTNOINFO = "InvalidParameter.UpstreamVerifyCustomCACertNoInfo"
+
+	// 站点加速区域，无法支持该预热回源限速区域配置，请调整后重新提交。
+	INVALIDPARAMETER_ZONEAREANOTSUPPORTPREFETCHORIGINLIMITAREA = "InvalidParameter.ZoneAreaNotSupportPrefetchOriginLimitArea"
 
 	// 站点已被绑定。
 	INVALIDPARAMETER_ZONEHASBEENBOUND = "InvalidParameter.ZoneHasBeenBound"
@@ -1154,6 +1181,9 @@ const (
 	// 当前无私钥证书功能仅针对白名单用户开放。
 	OPERATIONDENIED_NOTINKEYLESSWHITELIST = "OperationDenied.NotInKeylessWhiteList"
 
+	// 不在预热回源限速配置白名单中，请联系智能客服或提交工单。
+	OPERATIONDENIED_NOTINPREFETCHORIGINLIMITWHITELIST = "OperationDenied.NotInPrefetchOriginLimitWhiteList"
+
 	// 当前回源双向认证功能仅针对白名单用户开放。
 	OPERATIONDENIED_NOTINUPSTREAMMTLSWHITELIST = "OperationDenied.NotInUpstreamMTLSWhiteList"
 
@@ -1297,6 +1327,9 @@ const (
 
 	// 资源被其他账号NS接入占用。
 	RESOURCEINUSE_OTHERSNS = "ResourceInUse.OthersNS"
+
+	// 预热回源限速配置已存在，无法重复创建，请检查是否已创建对应配置。
+	RESOURCEINUSE_PREFETCHORIGINLIMITALREADYEXISTS = "ResourceInUse.PrefetchOriginLimitAlreadyExists"
 
 	// 资源被本账号和其他账号同时Cname接入占用。
 	RESOURCEINUSE_SELFANDOTHERSCNAME = "ResourceInUse.SelfAndOthersCname"

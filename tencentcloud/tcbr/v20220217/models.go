@@ -53,72 +53,68 @@ type ClsInfo struct {
 
 // Predefined struct for user
 type CreateCloudRunEnvRequestParams struct {
-	// Trial,Standard,Professional,Enterprise
+	// <p>Trial,Standard,Professional,Enterprise</p>
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符
+	// <p>环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+	// <p>用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。</p>
 	FreeQuota *string `json:"FreeQuota,omitnil,omitempty" name:"FreeQuota"`
 
-	// 订单标记。建议使用方统一转大小写之后再判断。
-	// QuickStart：快速启动来源
-	// Activity：活动来源
+	// <p>订单标记。建议使用方统一转大小写之后再判断。QuickStart：快速启动来源Activity：活动来源</p>
 	Flag *string `json:"Flag,omitnil,omitempty" name:"Flag"`
 
-	// 私有网络Id
+	// <p>私有网络Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网列表
+	// <p>子网列表</p>
 	SubNetIds []*string `json:"SubNetIds,omitnil,omitempty" name:"SubNetIds"`
 
-	// 请求key 用于防重
+	// <p>请求key 用于防重</p>
 	ReqKey *string `json:"ReqKey,omitnil,omitempty" name:"ReqKey"`
 
-	// 来源：wechat | cloud | weda
+	// <p>来源：wechat | cloud | weda</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 渠道：wechat | cloud | weda
+	// <p>渠道：wechat | cloud | weda</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
-	// 环境ID 云开发平台必填
+	// <p>环境ID 云开发平台必填</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
 type CreateCloudRunEnvRequest struct {
 	*tchttp.BaseRequest
 	
-	// Trial,Standard,Professional,Enterprise
+	// <p>Trial,Standard,Professional,Enterprise</p>
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符
+	// <p>环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+	// <p>用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。</p>
 	FreeQuota *string `json:"FreeQuota,omitnil,omitempty" name:"FreeQuota"`
 
-	// 订单标记。建议使用方统一转大小写之后再判断。
-	// QuickStart：快速启动来源
-	// Activity：活动来源
+	// <p>订单标记。建议使用方统一转大小写之后再判断。QuickStart：快速启动来源Activity：活动来源</p>
 	Flag *string `json:"Flag,omitnil,omitempty" name:"Flag"`
 
-	// 私有网络Id
+	// <p>私有网络Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网列表
+	// <p>子网列表</p>
 	SubNetIds []*string `json:"SubNetIds,omitnil,omitempty" name:"SubNetIds"`
 
-	// 请求key 用于防重
+	// <p>请求key 用于防重</p>
 	ReqKey *string `json:"ReqKey,omitnil,omitempty" name:"ReqKey"`
 
-	// 来源：wechat | cloud | weda
+	// <p>来源：wechat | cloud | weda</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 渠道：wechat | cloud | weda
+	// <p>渠道：wechat | cloud | weda</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
-	// 环境ID 云开发平台必填
+	// <p>环境ID 云开发平台必填</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
@@ -152,10 +148,10 @@ func (r *CreateCloudRunEnvRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudRunEnvResponseParams struct {
-	// 环境Id
+	// <p>环境Id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 后付费订单号
+	// <p>后付费订单号</p>
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -180,44 +176,44 @@ func (r *CreateCloudRunEnvResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudRunServerRequestParams struct {
-	// 环境Id
+	// <p>环境Id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 服务名
+	// <p>服务名</p>
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
-	// 部署信息
+	// <p>部署信息</p>
 	DeployInfo *DeployParam `json:"DeployInfo,omitnil,omitempty" name:"DeployInfo"`
 
-	// 服务配置信息(已废弃)
+	// <p>服务配置信息(已废弃)</p>
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil,omitempty" name:"ServerConfig"`
 
-	// 服务配置信息
+	// <p>服务配置信息</p>
 	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// vpc 信息
+	// <p>vpc 信息</p>
 	VpcInfo *CreateVpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
 }
 
 type CreateCloudRunServerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 环境Id
+	// <p>环境Id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 服务名
+	// <p>服务名</p>
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
-	// 部署信息
+	// <p>部署信息</p>
 	DeployInfo *DeployParam `json:"DeployInfo,omitnil,omitempty" name:"DeployInfo"`
 
-	// 服务配置信息(已废弃)
+	// <p>服务配置信息(已废弃)</p>
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil,omitempty" name:"ServerConfig"`
 
-	// 服务配置信息
+	// <p>服务配置信息</p>
 	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// vpc 信息
+	// <p>vpc 信息</p>
 	VpcInfo *CreateVpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
 }
 
@@ -247,7 +243,7 @@ func (r *CreateCloudRunServerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudRunServerResponseParams struct {
-	// 一键部署任务Id，微信云托管，暂时用不到
+	// <p>一键部署任务Id，微信云托管，暂时用不到</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -985,14 +981,14 @@ func (r *DescribeCloudRunServersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEnvBaseInfoRequestParams struct {
-	// 环境 Id
+	// <p>环境 Id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
 type DescribeEnvBaseInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 环境 Id
+	// <p>环境 Id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
@@ -1017,10 +1013,10 @@ func (r *DescribeEnvBaseInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEnvBaseInfoResponseParams struct {
-	// 环境基础信息
+	// <p>环境基础信息</p>
 	EnvBaseInfo *EnvBaseInfo `json:"EnvBaseInfo,omitnil,omitempty" name:"EnvBaseInfo"`
 
-	// 是否存在
+	// <p>是否存在</p>
 	IsExist *bool `json:"IsExist,omitnil,omitempty" name:"IsExist"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2324,44 +2320,44 @@ type TimerScale struct {
 
 // Predefined struct for user
 type UpdateCloudRunServerRequestParams struct {
-	// 环境Id
+	// <p>环境Id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 服务名
+	// <p>服务名</p>
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
-	// 部署信息
+	// <p>部署信息</p>
 	DeployInfo *DeployParam `json:"DeployInfo,omitnil,omitempty" name:"DeployInfo"`
 
-	// 服务配置信息(已废弃)
+	// <p>服务配置信息(已废弃)</p>
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil,omitempty" name:"ServerConfig"`
 
-	// 业务类型，默认tcr
+	// <p>业务类型，默认tcr</p>
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 服务配置信息
+	// <p>服务配置信息</p>
 	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 type UpdateCloudRunServerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 环境Id
+	// <p>环境Id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 服务名
+	// <p>服务名</p>
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
-	// 部署信息
+	// <p>部署信息</p>
 	DeployInfo *DeployParam `json:"DeployInfo,omitnil,omitempty" name:"DeployInfo"`
 
-	// 服务配置信息(已废弃)
+	// <p>服务配置信息(已废弃)</p>
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil,omitempty" name:"ServerConfig"`
 
-	// 业务类型，默认tcr
+	// <p>业务类型，默认tcr</p>
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 服务配置信息
+	// <p>服务配置信息</p>
 	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
@@ -2391,10 +2387,10 @@ func (r *UpdateCloudRunServerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCloudRunServerResponseParams struct {
-	// 环境Id
+	// <p>环境Id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 一键部署任务Id，暂时用不到
+	// <p>一键部署任务Id，暂时用不到</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

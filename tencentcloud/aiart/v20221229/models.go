@@ -150,6 +150,73 @@ func (r *ChangeClothesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTemplateToImageJobRequestParams struct {
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeTemplateToImageJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeTemplateToImageJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTemplateToImageJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplateToImageJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTemplateToImageJobResponseParams struct {
+	// 当前任务状态码：
+	// 1：等待中、2：运行中、4：处理失败、5：处理完成。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务处理失败错误码。
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 任务处理失败错误信息。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 生成图 URL 列表，有效期1小时，请及时保存。
+	ResultImage []*string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTemplateToImageJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTemplateToImageJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeTemplateToImageJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTemplateToImageJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FaceInfo struct {
 	// 用户图 URL 列表
 	ImageUrls []*string `json:"ImageUrls,omitnil,omitempty" name:"ImageUrls"`
@@ -1999,6 +2066,98 @@ func (r *SubmitMemeJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitMemeJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitTemplateToImageJobRequestParams struct {
+	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 绘画风格当前仅支持美术馆风格（gallerying）。
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 为生成结果图添加显式水印标识的开关，默认为1。  
+	// 1：添加。  
+	// 0：不添加。  
+	// 其他数值：默认按1处理。  
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+type SubmitTemplateToImageJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 绘画风格当前仅支持美术馆风格（gallerying）。
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 为生成结果图添加显式水印标识的开关，默认为1。  
+	// 1：添加。  
+	// 0：不添加。  
+	// 其他数值：默认按1处理。  
+	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+func (r *SubmitTemplateToImageJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitTemplateToImageJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "Style")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTemplateToImageJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitTemplateToImageJobResponseParams struct {
+	// 任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitTemplateToImageJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitTemplateToImageJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitTemplateToImageJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitTemplateToImageJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
