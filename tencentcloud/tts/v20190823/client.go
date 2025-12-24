@@ -409,7 +409,7 @@ func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
 //
 // 大模型音色：默认20并发
 //
-// 超自然大模型音色：暂不支持
+// 超自然大模型音色：默认10并发
 //
 // 一句话复刻音色：默认10并发
 //
@@ -468,7 +468,7 @@ func (c *Client) TextToVoice(request *TextToVoiceRequest) (response *TextToVoice
 //
 // 大模型音色：默认20并发
 //
-// 超自然大模型音色：暂不支持
+// 超自然大模型音色：默认10并发
 //
 // 一句话复刻音色：默认10并发
 //

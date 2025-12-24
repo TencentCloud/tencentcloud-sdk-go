@@ -2757,6 +2757,66 @@ func (c *Client) DescribeCostSummaryByResourceWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeCostSummaryByTagRequest() (request *DescribeCostSummaryByTagRequest) {
+    request = &DescribeCostSummaryByTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByTag")
+    
+    
+    return
+}
+
+func NewDescribeCostSummaryByTagResponse() (response *DescribeCostSummaryByTagResponse) {
+    response = &DescribeCostSummaryByTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCostSummaryByTag
+// 获取按标签汇总消耗详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeCostSummaryByTag(request *DescribeCostSummaryByTagRequest) (response *DescribeCostSummaryByTagResponse, err error) {
+    return c.DescribeCostSummaryByTagWithContext(context.Background(), request)
+}
+
+// DescribeCostSummaryByTag
+// 获取按标签汇总消耗详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeCostSummaryByTagWithContext(ctx context.Context, request *DescribeCostSummaryByTagRequest) (response *DescribeCostSummaryByTagResponse, err error) {
+    if request == nil {
+        request = NewDescribeCostSummaryByTagRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "billing", APIVersion, "DescribeCostSummaryByTag")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCostSummaryByTag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCostSummaryByTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDealsByCondRequest() (request *DescribeDealsByCondRequest) {
     request = &DescribeDealsByCondRequest{
         BaseRequest: &tchttp.BaseRequest{},

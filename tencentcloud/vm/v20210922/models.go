@@ -81,6 +81,9 @@ type AudioResult struct {
 
 	// ASR句子的起止时间
 	Sentences []*Sentence `json:"Sentences,omitnil,omitempty" name:"Sentences"`
+
+	// 切片请求ID
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type AudioResultDetailLanguageResult struct {
@@ -595,6 +598,9 @@ type ImageResult struct {
 
 	// 审核命中类型
 	HitType *string `json:"HitType,omitnil,omitempty" name:"HitType"`
+
+	// 截帧请求ID
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ImageResultResult struct {

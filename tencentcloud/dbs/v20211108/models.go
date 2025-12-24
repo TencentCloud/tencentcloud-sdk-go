@@ -134,6 +134,85 @@ type BackupPeriod struct {
 	Day []*string `json:"Day,omitnil,omitempty" name:"Day"`
 }
 
+type BackupPlanInfo struct {
+	// 地域信息。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 备份计划 ID。
+	BackupPlanId *string `json:"BackupPlanId,omitnil,omitempty" name:"BackupPlanId"`
+
+	// 备份计划名称。
+	BackupPlanName *string `json:"BackupPlanName,omitnil,omitempty" name:"BackupPlanName"`
+
+	// 备份计划状态。可能的取值为：
+	// "notStarted" - 未启动;
+	// "checking" - 校验中;
+	// "checkPass" - 校验通过;
+	// "checkNotPass" - 校验未通过;
+	// "running" - 运行中;
+	// "fullBacking" - 全量备份中;
+	// "isolating" - 隔离中;
+	// "isolated" - 已隔离;
+	// "offlining" - 下线中;
+	// "offlined" - 已下线;
+	// "paused" - 已暂停。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 数据库类型。
+	DatabaseType *string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
+
+	// 访问类型。可能的取值为：
+	// "extranet" - 外网;
+	// "cvm" - cvm 自建实例;
+	// "dcg" - 专线接入;
+	// "vpncloud" - 云vpn接入;
+	// "cdb" - 腾讯云数据库实例;
+	// "ccn" - 云联网。
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// 源实例信息。
+	SourceInfo []*string `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 到期时间。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 下线时间。
+	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
+
+	// 实例规格类型。可能的取值为：["micro", "small", "medium", "large", "xlarge"]。
+	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
+
+	// 备份方式。可能的取值为：
+	// "logical" - 逻辑备份;
+	// "physical" - 物理备份。
+	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
+
+	// 标签信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 自动续费标记。可能的取值为：
+	// 0 - 未开启自动续费;
+	// 1 - 已开启自动续费;
+	// 2 - 已关闭自动续费。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// 是否开启增量备份标记。
+	EnableIncrement *bool `json:"EnableIncrement,omitnil,omitempty" name:"EnableIncrement"`
+
+	// 付费类型。可能的取值为：
+	// "prePay" - 预付费类型;
+	// "postPay" - 后付费类型。
+	PayType *string `json:"PayType,omitnil,omitempty" name:"PayType"`
+
+	// 源端信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetSourceInfo []*string `json:"SetSourceInfo,omitnil,omitempty" name:"SetSourceInfo"`
+}
+
 type BackupStrategy struct {
 	// 全量备份开始时间。周期性的全量备份将在当天该时间开始。
 	BackupStartTime *string `json:"BackupStartTime,omitnil,omitempty" name:"BackupStartTime"`
@@ -177,6 +256,9 @@ type ConfigureBackupPlanRequestParams struct {
 	// 备份计划名称。支持数字、英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@,且长度不能超过60。
 	BackupPlanName *string `json:"BackupPlanName,omitnil,omitempty" name:"BackupPlanName"`
 
+	// 全量备份并发数上限。
+	UpperParallel *int64 `json:"UpperParallel,omitnil,omitempty" name:"UpperParallel"`
+
 	// 备份源实例信息。
 	SourceEndPoint *BackupEndpoint `json:"SourceEndPoint,omitnil,omitempty" name:"SourceEndPoint"`
 
@@ -198,6 +280,9 @@ type ConfigureBackupPlanRequest struct {
 
 	// 备份计划名称。支持数字、英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@,且长度不能超过60。
 	BackupPlanName *string `json:"BackupPlanName,omitnil,omitempty" name:"BackupPlanName"`
+
+	// 全量备份并发数上限。
+	UpperParallel *int64 `json:"UpperParallel,omitnil,omitempty" name:"UpperParallel"`
 
 	// 备份源实例信息。
 	SourceEndPoint *BackupEndpoint `json:"SourceEndPoint,omitnil,omitempty" name:"SourceEndPoint"`
@@ -226,6 +311,7 @@ func (r *ConfigureBackupPlanRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BackupPlanId")
 	delete(f, "BackupPlanName")
+	delete(f, "UpperParallel")
 	delete(f, "SourceEndPoint")
 	delete(f, "BackupObject")
 	delete(f, "BackupStrategy")
@@ -255,6 +341,136 @@ func (r *ConfigureBackupPlanResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ConfigureBackupPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ConnectTestResult struct {
+	// <p>任务 ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>是否通过。0 表示未通过，1 表示通过。</p>
+	IsPass *int64 `json:"IsPass,omitnil,omitempty" name:"IsPass"`
+
+	// <p>源端地址</p>
+	Addr *string `json:"Addr,omitnil,omitempty" name:"Addr"`
+
+	// <p>源地址转换IP</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SNatIp *string `json:"SNatIp,omitnil,omitempty" name:"SNatIp"`
+
+	// <p>检测结果集</p>
+	TestItems []*TestItem `json:"TestItems,omitnil,omitempty" name:"TestItems"`
+}
+
+// Predefined struct for user
+type CreateBackupPlanRequestParams struct {
+	// 源端数据库类型。当前支持值为: ["mysql","cynosdbmysql","percona","mariadb","tdsqlmysql"]。
+	DatabaseType *string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
+
+	// 备份方式。当前仅支持"logical"，即逻辑备份。
+	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
+
+	// 规格。当前支持值为: ["micro","small","medium","large","xlarge"]。默认为"small"。
+	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
+
+	// 购买时长，单位为月，默认值为1。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 计费模式。当前仅支持"prepay"，即包年包月。
+	PayType *string `json:"PayType,omitnil,omitempty" name:"PayType"`
+
+	// 购买数量。取值范围为[1, 10]，默认值为1。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 自动续费标识。1 - 开启自动续费；0 - 不开启自动续费。
+	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// 标签值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateBackupPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// 源端数据库类型。当前支持值为: ["mysql","cynosdbmysql","percona","mariadb","tdsqlmysql"]。
+	DatabaseType *string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
+
+	// 备份方式。当前仅支持"logical"，即逻辑备份。
+	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
+
+	// 规格。当前支持值为: ["micro","small","medium","large","xlarge"]。默认为"small"。
+	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
+
+	// 购买时长，单位为月，默认值为1。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 计费模式。当前仅支持"prepay"，即包年包月。
+	PayType *string `json:"PayType,omitnil,omitempty" name:"PayType"`
+
+	// 购买数量。取值范围为[1, 10]，默认值为1。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 自动续费标识。1 - 开启自动续费；0 - 不开启自动续费。
+	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// 标签值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateBackupPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBackupPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseType")
+	delete(f, "BackupMethod")
+	delete(f, "InstanceClass")
+	delete(f, "Period")
+	delete(f, "PayType")
+	delete(f, "Count")
+	delete(f, "AutoRenew")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackupPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBackupPlanResponseParams struct {
+	// 订单参数。
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+
+	// 资源ID。
+	BackupPlanIds []*string `json:"BackupPlanIds,omitnil,omitempty" name:"BackupPlanIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBackupPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBackupPlanResponseParams `json:"Response"`
+}
+
+func (r *CreateBackupPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBackupPlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -382,6 +598,175 @@ func (r *DescribeBackupCheckJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBackupPlansRequestParams struct {
+	// 过滤条件，备份计划 ID。
+	BackupPlanId *string `json:"BackupPlanId,omitnil,omitempty" name:"BackupPlanId"`
+
+	// 过滤条件，备份计划状态。
+	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 过滤条件，数据库类型。
+	DatabaseType []*string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
+
+	// 过滤条件，接入访问类型。
+	AccessType []*string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// 过滤条件，备份计划名称。
+	BackupPlanName *string `json:"BackupPlanName,omitnil,omitempty" name:"BackupPlanName"`
+
+	// 过滤条件，标签键值。
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
+	// 分页参数。取值范围为(0, 100]，默认值为20。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页参数。默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeBackupPlansRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件，备份计划 ID。
+	BackupPlanId *string `json:"BackupPlanId,omitnil,omitempty" name:"BackupPlanId"`
+
+	// 过滤条件，备份计划状态。
+	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 过滤条件，数据库类型。
+	DatabaseType []*string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
+
+	// 过滤条件，接入访问类型。
+	AccessType []*string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// 过滤条件，备份计划名称。
+	BackupPlanName *string `json:"BackupPlanName,omitnil,omitempty" name:"BackupPlanName"`
+
+	// 过滤条件，标签键值。
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
+	// 分页参数。取值范围为(0, 100]，默认值为20。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页参数。默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeBackupPlansRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupPlansRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BackupPlanId")
+	delete(f, "Status")
+	delete(f, "DatabaseType")
+	delete(f, "AccessType")
+	delete(f, "BackupPlanName")
+	delete(f, "TagFilters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupPlansRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupPlansResponseParams struct {
+	// 备份计划数量。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 备份计划详情。
+	Items []*BackupPlanInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupPlansResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupPlansResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupPlansResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupPlansResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConnectTestResultRequestParams struct {
+	// <p>连通性检测任务 ID。</p>
+	TaskIds []*int64 `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+}
+
+type DescribeConnectTestResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>连通性检测任务 ID。</p>
+	TaskIds []*int64 `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+}
+
+func (r *DescribeConnectTestResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConnectTestResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConnectTestResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConnectTestResultResponseParams struct {
+	// <p>任务总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>检测结果详情。</p>
+	Items []*ConnectTestResult `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConnectTestResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConnectTestResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeConnectTestResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConnectTestResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StartBackupCheckJobRequestParams struct {
 	// 备份计划 ID。
 	BackupPlanId *string `json:"BackupPlanId,omitnil,omitempty" name:"BackupPlanId"`
@@ -501,4 +886,31 @@ type StorageStrategy struct {
 
 	// 日志保留时间，单位为天。取值范围为[7, 3650]，默认值为 30。
 	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitnil,omitempty" name:"BackupRetentionPeriod"`
+}
+
+type Tag struct {
+	// 标签键。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值。
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
+type TagFilter struct {
+	// 标签键。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值。
+	TagValue []*string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
+type TestItem struct {
+	// <p>检测步骤名称</p>
+	TestName *string `json:"TestName,omitnil,omitempty" name:"TestName"`
+
+	// <p>错误码</p>
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// <p>错误信息</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }

@@ -12835,6 +12835,85 @@ func (r *DescribePullStreamConfigsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePullTransformPushInfoListRequestParams struct {
+	// utc开始时间，格式为：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I，
+	// 例如：北京时间2019-01-08 10:00:00，对应utc时间为：2019-01-08T10:00:00+08:00。
+	// 支持最近一个月的查询。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// utc结束时间，格式为：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I，
+	// 例如：北京时间2019-01-08 10:00:00，对应utc时间为：2019-01-08T10:00:00+08:00。
+	// 支持最近一个月的查询，时间跨度为一个月。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 拉流转推任务Id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribePullTransformPushInfoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// utc开始时间，格式为：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I，
+	// 例如：北京时间2019-01-08 10:00:00，对应utc时间为：2019-01-08T10:00:00+08:00。
+	// 支持最近一个月的查询。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// utc结束时间，格式为：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I，
+	// 例如：北京时间2019-01-08 10:00:00，对应utc时间为：2019-01-08T10:00:00+08:00。
+	// 支持最近一个月的查询，时间跨度为一个月。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 拉流转推任务Id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribePullTransformPushInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePullTransformPushInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePullTransformPushInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePullTransformPushInfoListResponseParams struct {
+	// 拉流任务流信息列表。
+	DataInfoList []*TurnPushInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePullTransformPushInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePullTransformPushInfoListResponseParams `json:"Response"`
+}
+
+func (r *DescribePullTransformPushInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePullTransformPushInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePullTransformPushInfoRequestParams struct {
 	// 起始时间点，接口查询支持两种时间格式：
 	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
@@ -19872,6 +19951,26 @@ type TransitionTypeInfo struct {
 
 	// 转场的下标，可用来排序，从1开始递增
 	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
+}
+
+type TurnPushInfo struct {
+	// 视频帧率，单位fps。
+	VideoFps *int64 `json:"VideoFps,omitnil,omitempty" name:"VideoFps"`
+
+	// 音频帧率，单位fps。
+	AudioFps *int64 `json:"AudioFps,omitnil,omitempty" name:"AudioFps"`
+
+	// 视频码率，单位bps。
+	VideoRate *int64 `json:"VideoRate,omitnil,omitempty" name:"VideoRate"`
+
+	// 音频码率，单位bps。
+	AudioRate *int64 `json:"AudioRate,omitnil,omitempty" name:"AudioRate"`
+
+	// 流标识。
+	StreamFlag *string `json:"StreamFlag,omitnil,omitempty" name:"StreamFlag"`
+
+	// 时间，utc格式：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I。
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
 // Predefined struct for user

@@ -6225,6 +6225,12 @@ type StartStreamIngestRequestParams struct {
 
 	// 音量，取值范围[0, 100]，默认100，表示原音量。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// 开启播放进度回调, 默认false，当开启后，播放进度会通过trtc custom data 回调给播放端
+	EnableProgress *bool `json:"EnableProgress,omitnil,omitempty" name:"EnableProgress"`
+
+	// 播放倍速，默认1.0，可取[0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
+	Tempo *float64 `json:"Tempo,omitnil,omitempty" name:"Tempo"`
 }
 
 type StartStreamIngestRequest struct {
@@ -6279,6 +6285,12 @@ type StartStreamIngestRequest struct {
 
 	// 音量，取值范围[0, 100]，默认100，表示原音量。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// 开启播放进度回调, 默认false，当开启后，播放进度会通过trtc custom data 回调给播放端
+	EnableProgress *bool `json:"EnableProgress,omitnil,omitempty" name:"EnableProgress"`
+
+	// 播放倍速，默认1.0，可取[0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
+	Tempo *float64 `json:"Tempo,omitnil,omitempty" name:"Tempo"`
 }
 
 func (r *StartStreamIngestRequest) ToJsonString() string {
@@ -6308,6 +6320,8 @@ func (r *StartStreamIngestRequest) FromJsonString(s string) error {
 	delete(f, "RepeatNum")
 	delete(f, "MaxDuration")
 	delete(f, "Volume")
+	delete(f, "EnableProgress")
+	delete(f, "Tempo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartStreamIngestRequest has unknown keys!", "")
 	}
@@ -7532,6 +7546,12 @@ type UpdateStreamIngestRequestParams struct {
 
 	// 是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，暂停超过12小时会自动销毁任务, 建议主动调用停止任务接口。
 	IsPause *bool `json:"IsPause,omitnil,omitempty" name:"IsPause"`
+
+	// 是否开启播放进度回调, 默认false，当开启后，播放进度会通过trtc custom data 回调给播放端
+	EnableProgress *bool `json:"EnableProgress,omitnil,omitempty" name:"EnableProgress"`
+
+	// 播放倍速，默认1.0，可取[0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
+	Tempo *float64 `json:"Tempo,omitnil,omitempty" name:"Tempo"`
 }
 
 type UpdateStreamIngestRequest struct {
@@ -7551,6 +7571,12 @@ type UpdateStreamIngestRequest struct {
 
 	// 是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，暂停超过12小时会自动销毁任务, 建议主动调用停止任务接口。
 	IsPause *bool `json:"IsPause,omitnil,omitempty" name:"IsPause"`
+
+	// 是否开启播放进度回调, 默认false，当开启后，播放进度会通过trtc custom data 回调给播放端
+	EnableProgress *bool `json:"EnableProgress,omitnil,omitempty" name:"EnableProgress"`
+
+	// 播放倍速，默认1.0，可取[0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
+	Tempo *float64 `json:"Tempo,omitnil,omitempty" name:"Tempo"`
 }
 
 func (r *UpdateStreamIngestRequest) ToJsonString() string {
@@ -7570,6 +7596,8 @@ func (r *UpdateStreamIngestRequest) FromJsonString(s string) error {
 	delete(f, "StreamUrl")
 	delete(f, "Volume")
 	delete(f, "IsPause")
+	delete(f, "EnableProgress")
+	delete(f, "Tempo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateStreamIngestRequest has unknown keys!", "")
 	}
@@ -7790,7 +7818,7 @@ type VoiceCloneRequestParams struct {
 	// 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
 
-	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
+	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在10秒～180秒之间
 	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
 
 	// TTS的API密钥
@@ -7815,7 +7843,7 @@ type VoiceCloneRequest struct {
 	// 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
 
-	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
+	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在10秒～180秒之间
 	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
 
 	// TTS的API密钥

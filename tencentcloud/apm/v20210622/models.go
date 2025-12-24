@@ -635,6 +635,30 @@ type ApmTag struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type CVMMeta struct {
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+}
+
+type ComponentTopologyView struct {
+	// 服务纬度的节点数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Service *int64 `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 数据库节点数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Database *int64 `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// 消息队列节点数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MQ *int64 `json:"MQ,omitnil,omitempty" name:"MQ"`
+}
+
 // Predefined struct for user
 type CreateApmInstanceRequestParams struct {
 	// 业务系统名
@@ -2520,6 +2544,187 @@ func (r *DescribeTagValuesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTopologyNewRequestParams struct {
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 上游层级
+	UpLevel *int64 `json:"UpLevel,omitnil,omitempty" name:"UpLevel"`
+
+	// 应用实例信息
+	ServiceInstance *string `json:"ServiceInstance,omitnil,omitempty" name:"ServiceInstance"`
+
+	// 下游层级
+	DownLevel *int64 `json:"DownLevel,omitnil,omitempty" name:"DownLevel"`
+
+	// 视角
+	View *string `json:"View,omitnil,omitempty" name:"View"`
+
+	// 过滤器
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 表示Topic（MQ拓扑图用）
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 视图筛选列表
+	Selectors *Selectors `json:"Selectors,omitnil,omitempty" name:"Selectors"`
+
+	// 视图ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// TraceID
+	TraceID *string `json:"TraceID,omitnil,omitempty" name:"TraceID"`
+
+	// 查询top5慢响应节点
+	IsSlowTopFive *bool `json:"IsSlowTopFive,omitnil,omitempty" name:"IsSlowTopFive"`
+
+	// 是否获取资源层信息
+	GetResource *bool `json:"GetResource,omitnil,omitempty" name:"GetResource"`
+
+	// 根据应用标签过滤
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 不显示的节点类型
+	Hidden *Selectors `json:"Hidden,omitnil,omitempty" name:"Hidden"`
+}
+
+type DescribeTopologyNewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 上游层级
+	UpLevel *int64 `json:"UpLevel,omitnil,omitempty" name:"UpLevel"`
+
+	// 应用实例信息
+	ServiceInstance *string `json:"ServiceInstance,omitnil,omitempty" name:"ServiceInstance"`
+
+	// 下游层级
+	DownLevel *int64 `json:"DownLevel,omitnil,omitempty" name:"DownLevel"`
+
+	// 视角
+	View *string `json:"View,omitnil,omitempty" name:"View"`
+
+	// 过滤器
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 表示Topic（MQ拓扑图用）
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 视图筛选列表
+	Selectors *Selectors `json:"Selectors,omitnil,omitempty" name:"Selectors"`
+
+	// 视图ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// TraceID
+	TraceID *string `json:"TraceID,omitnil,omitempty" name:"TraceID"`
+
+	// 查询top5慢响应节点
+	IsSlowTopFive *bool `json:"IsSlowTopFive,omitnil,omitempty" name:"IsSlowTopFive"`
+
+	// 是否获取资源层信息
+	GetResource *bool `json:"GetResource,omitnil,omitempty" name:"GetResource"`
+
+	// 根据应用标签过滤
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 不显示的节点类型
+	Hidden *Selectors `json:"Hidden,omitnil,omitempty" name:"Hidden"`
+}
+
+func (r *DescribeTopologyNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopologyNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ServiceName")
+	delete(f, "UpLevel")
+	delete(f, "ServiceInstance")
+	delete(f, "DownLevel")
+	delete(f, "View")
+	delete(f, "Filters")
+	delete(f, "Topic")
+	delete(f, "Selectors")
+	delete(f, "Id")
+	delete(f, "TraceID")
+	delete(f, "IsSlowTopFive")
+	delete(f, "GetResource")
+	delete(f, "Tags")
+	delete(f, "Hidden")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopologyNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopologyNewResponseParams struct {
+	// 节点集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nodes []*TopologyNode `json:"Nodes,omitnil,omitempty" name:"Nodes"`
+
+	// 边集合
+	Edges []*TopologyEdgeNew `json:"Edges,omitnil,omitempty" name:"Edges"`
+
+	// 拓扑图是否有修改
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopologyModifyFlag *int64 `json:"TopologyModifyFlag,omitnil,omitempty" name:"TopologyModifyFlag"`
+
+	// 节点数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Selectors *SelectorView `json:"Selectors,omitnil,omitempty" name:"Selectors"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTopologyNewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTopologyNewResponseParams `json:"Response"`
+}
+
+func (r *DescribeTopologyNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopologyNewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 	// 过滤方式（=, !=, in）
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -3681,6 +3886,16 @@ type OrderBy struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type Position struct {
+	// 节点位置横坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	X *float64 `json:"X,omitnil,omitempty" name:"X"`
+
+	// 节点位置纵坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Y *float64 `json:"Y,omitnil,omitempty" name:"Y"`
+}
+
 type QueryMetricItem struct {
 	// 指标名
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
@@ -3690,6 +3905,31 @@ type QueryMetricItem struct {
 
 	// 同比，已弃用，不建议使用
 	Compare *string `json:"Compare,omitnil,omitempty" name:"Compare"`
+}
+
+type Resource struct {
+	// 资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type []*string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// tke资源层信息
+	TKEMeta []*TkeMeta `json:"TKEMeta,omitnil,omitempty" name:"TKEMeta"`
+
+	// cvm资源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVMMeta []*CVMMeta `json:"CVMMeta,omitnil,omitempty" name:"CVMMeta"`
+}
+
+type SelectorView struct {
+	// 组件数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Component *ComponentTopologyView `json:"Component,omitnil,omitempty" name:"Component"`
+}
+
+type Selectors struct {
+	// 组件勾选情况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Component []*string `json:"Component,omitnil,omitempty" name:"Component"`
 }
 
 type ServiceDetail struct {
@@ -3859,4 +4099,151 @@ func (r *TerminateApmInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TerminateApmInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TkeMeta struct {
+	// 地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
+
+	// pod name
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 工作负载
+	Deployment *string `json:"Deployment,omitnil,omitempty" name:"Deployment"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitnil,omitempty" name:"PodIP"`
+
+	// node ip
+	NodeIP *string `json:"NodeIP,omitnil,omitempty" name:"NodeIP"`
+}
+
+type TopologyEdgeNew struct {
+	// 源节点
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 边ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 边权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *float64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 目标节点
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// 响应时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 错误率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrRate *float64 `json:"ErrRate,omitnil,omitempty" name:"ErrRate"`
+
+	// 吞吐量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Qps *float64 `json:"Qps,omitnil,omitempty" name:"Qps"`
+
+	// 边类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 边颜色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
+
+	// Sql调用数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlRequestCount *float64 `json:"SqlRequestCount,omitnil,omitempty" name:"SqlRequestCount"`
+
+	// Sql调用错误数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlErrorRequestCount *float64 `json:"SqlErrorRequestCount,omitnil,omitempty" name:"SqlErrorRequestCount"`
+
+	// 边上源节点类型 应用/MQ/DB
+	SourceComp *string `json:"SourceComp,omitnil,omitempty" name:"SourceComp"`
+
+	// 边上目标节点类型 应用/MQ/DB
+	TargetComp *string `json:"TargetComp,omitnil,omitempty" name:"TargetComp"`
+}
+
+type TopologyNode struct {
+	// 错误率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrRate *float64 `json:"ErrRate,omitnil,omitempty" name:"ErrRate"`
+
+	// 节点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
+
+	// 节点名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 节点权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *float64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 节点颜色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
+
+	// 响应时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 吞吐量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Qps *float64 `json:"Qps,omitnil,omitempty" name:"Qps"`
+
+	// 节点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 节点ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 节点大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 节点是否为组件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsModule *bool `json:"IsModule,omitnil,omitempty" name:"IsModule"`
+
+	// 节点位置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Position *Position `json:"Position,omitnil,omitempty" name:"Position"`
+
+	// 节点标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 节点是否可以下钻
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanDrillDown *bool `json:"CanDrillDown,omitnil,omitempty" name:"CanDrillDown"`
+
+	// 资源层信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *Resource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 拓扑节点视图名字
+	NodeView *string `json:"NodeView,omitnil,omitempty" name:"NodeView"`
+
+	// MQ 消费者视角的响应时间 ms
+	ConsumerDuration *float64 `json:"ConsumerDuration,omitnil,omitempty" name:"ConsumerDuration"`
+
+	// MQ 消费者视角的错误率 %
+	ConsumerErrRate *float64 `json:"ConsumerErrRate,omitnil,omitempty" name:"ConsumerErrRate"`
+
+	// MQ 消费者视角的吞吐量
+	ConsumerQps *float64 `json:"ConsumerQps,omitnil,omitempty" name:"ConsumerQps"`
+
+	// 应用 ID
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 }

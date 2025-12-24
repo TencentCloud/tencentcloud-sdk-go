@@ -50,12 +50,6 @@ const (
 	// 数据库错误。
 	INTERNALERROR_DATABASE = "InternalError.Database"
 
-	// 系统失败。
-	INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-
-	// 服务超时。
-	INTERNALERROR_TIMEOUT = "InternalError.Timeout"
-
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
@@ -173,12 +167,6 @@ const (
 	// 外部代码仓库未授权。
 	UNAUTHORIZEDOPERATION_CODEOAUTHUNAUTHORIZED = "UnauthorizedOperation.CodeOAuthUnauthorized"
 
-	// 未知参数错误。
-	UNKNOWNPARAMETER = "UnknownParameter"
-
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
-
-	// 有正在进行中的任务。
-	UNSUPPORTEDOPERATION_TASKEXISTED = "UnsupportedOperation.TaskExisted"
 )

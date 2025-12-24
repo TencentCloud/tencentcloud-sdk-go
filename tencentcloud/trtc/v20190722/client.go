@@ -749,6 +749,7 @@ func NewDeleteCloudModerationResponse() (response *DeleteCloudModerationResponse
 //  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 func (c *Client) DeleteCloudModeration(request *DeleteCloudModerationRequest) (response *DeleteCloudModerationResponse, err error) {
     return c.DeleteCloudModerationWithContext(context.Background(), request)
 }
@@ -770,6 +771,7 @@ func (c *Client) DeleteCloudModeration(request *DeleteCloudModerationRequest) (r
 //  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 func (c *Client) DeleteCloudModerationWithContext(ctx context.Context, request *DeleteCloudModerationRequest) (response *DeleteCloudModerationResponse, err error) {
     if request == nil {
         request = NewDeleteCloudModerationRequest()
@@ -897,6 +899,7 @@ func NewDeleteCloudSliceTaskResponse() (response *DeleteCloudSliceTaskResponse) 
 //  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 func (c *Client) DeleteCloudSliceTask(request *DeleteCloudSliceTaskRequest) (response *DeleteCloudSliceTaskResponse, err error) {
     return c.DeleteCloudSliceTaskWithContext(context.Background(), request)
 }
@@ -918,6 +921,7 @@ func (c *Client) DeleteCloudSliceTask(request *DeleteCloudSliceTaskRequest) (res
 //  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 func (c *Client) DeleteCloudSliceTaskWithContext(ctx context.Context, request *DeleteCloudSliceTaskRequest) (response *DeleteCloudSliceTaskResponse, err error) {
     if request == nil {
         request = NewDeleteCloudSliceTaskRequest()

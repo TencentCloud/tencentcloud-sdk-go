@@ -2643,6 +2643,15 @@ type ClbObject struct {
 
 	// 创建时间
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
+
+	// 跨账号时，表示成员账号的appid
+	MemberAppId *uint64 `json:"MemberAppId,omitnil,omitempty" name:"MemberAppId"`
+
+	// 跨账号时，表示成员账号的uin
+	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 跨账号时，表示成员账号的昵称
+	MemberNickName *string `json:"MemberNickName,omitnil,omitempty" name:"MemberNickName"`
 }
 
 type ClbWafRegionItem struct {
@@ -9508,6 +9517,12 @@ type DescribeObjectsRequestParams struct {
 
 	// 根据哪个字段排序
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 集团成员列表
+	MemberAppIdList []*uint64 `json:"MemberAppIdList,omitnil,omitempty" name:"MemberAppIdList"`
+
+	// 1代表跨账号情况，0代表单账号情况
+	IsCrossAccount *int64 `json:"IsCrossAccount,omitnil,omitempty" name:"IsCrossAccount"`
 }
 
 type DescribeObjectsRequest struct {
@@ -9521,6 +9536,12 @@ type DescribeObjectsRequest struct {
 
 	// 根据哪个字段排序
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 集团成员列表
+	MemberAppIdList []*uint64 `json:"MemberAppIdList,omitnil,omitempty" name:"MemberAppIdList"`
+
+	// 1代表跨账号情况，0代表单账号情况
+	IsCrossAccount *int64 `json:"IsCrossAccount,omitnil,omitempty" name:"IsCrossAccount"`
 }
 
 func (r *DescribeObjectsRequest) ToJsonString() string {
@@ -9538,6 +9559,8 @@ func (r *DescribeObjectsRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
+	delete(f, "MemberAppIdList")
+	delete(f, "IsCrossAccount")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeObjectsRequest has unknown keys!", "")
 	}
@@ -14240,6 +14263,12 @@ type LoadBalancer struct {
 
 	// 负载均衡的域名
 	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil,omitempty" name:"LoadBalancerDomain"`
+
+	// 监听器所属成员id
+	MemberAppId *uint64 `json:"MemberAppId,omitnil,omitempty" name:"MemberAppId"`
+
+	// 监听器所属成员的uin
+	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
 type LoadBalancerPackageNew struct {
@@ -14307,6 +14336,18 @@ type LoadBalancerPackageNew struct {
 
 	// 负载均衡器的域名
 	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil,omitempty" name:"LoadBalancerDomain"`
+
+	// 监听器所属appid
+	MemberAppId *uint64 `json:"MemberAppId,omitnil,omitempty" name:"MemberAppId"`
+
+	// 监听器自身所属uin
+	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 监听器被接入的waf账号
+	Appid *uint64 `json:"Appid,omitnil,omitempty" name:"Appid"`
+
+	// 集团账号昵称
+	MemberNickName *string `json:"MemberNickName,omitnil,omitempty" name:"MemberNickName"`
 }
 
 type LogHistogramInfo struct {
@@ -17590,6 +17631,12 @@ type ModifyObjectRequestParams struct {
 
 	// IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
+
+	// 对象所属集团成员appid
+	MemberAppId *uint64 `json:"MemberAppId,omitnil,omitempty" name:"MemberAppId"`
+
+	// 对象所属集团成员uin
+	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
 type ModifyObjectRequest struct {
@@ -17612,6 +17659,12 @@ type ModifyObjectRequest struct {
 
 	// IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
+
+	// 对象所属集团成员appid
+	MemberAppId *uint64 `json:"MemberAppId,omitnil,omitempty" name:"MemberAppId"`
+
+	// 对象所属集团成员uin
+	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
 func (r *ModifyObjectRequest) ToJsonString() string {
@@ -17632,6 +17685,8 @@ func (r *ModifyObjectRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "Proxy")
 	delete(f, "IpHeaders")
+	delete(f, "MemberAppId")
+	delete(f, "MemberUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyObjectRequest has unknown keys!", "")
 	}

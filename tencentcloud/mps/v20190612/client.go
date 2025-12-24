@@ -8955,6 +8955,64 @@ func (c *Client) ProcessMediaWithContext(ctx context.Context, request *ProcessMe
     return
 }
 
+func NewRecognizeAudioRequest() (request *RecognizeAudioRequest) {
+    request = &RecognizeAudioRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "RecognizeAudio")
+    
+    
+    return
+}
+
+func NewRecognizeAudioResponse() (response *RecognizeAudioResponse) {
+    response = &RecognizeAudioResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecognizeAudio
+// 同步接口，返回语音识别结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
+//  INVALIDPARAMETERVALUE_AUDIODATATOOLONG = "InvalidParameterValue.AudioDataTooLong"
+//  INVALIDPARAMETERVALUE_AUDIOFORMAT = "InvalidParameterValue.AudioFormat"
+//  INVALIDPARAMETERVALUE_SOURCELANGUAGE = "InvalidParameterValue.SourceLanguage"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+func (c *Client) RecognizeAudio(request *RecognizeAudioRequest) (response *RecognizeAudioResponse, err error) {
+    return c.RecognizeAudioWithContext(context.Background(), request)
+}
+
+// RecognizeAudio
+// 同步接口，返回语音识别结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
+//  INVALIDPARAMETERVALUE_AUDIODATATOOLONG = "InvalidParameterValue.AudioDataTooLong"
+//  INVALIDPARAMETERVALUE_AUDIOFORMAT = "InvalidParameterValue.AudioFormat"
+//  INVALIDPARAMETERVALUE_SOURCELANGUAGE = "InvalidParameterValue.SourceLanguage"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+func (c *Client) RecognizeAudioWithContext(ctx context.Context, request *RecognizeAudioRequest) (response *RecognizeAudioResponse, err error) {
+    if request == nil {
+        request = NewRecognizeAudioRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "RecognizeAudio")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeAudio require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeAudioResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeMediaForZhiXueRequest() (request *RecognizeMediaForZhiXueRequest) {
     request = &RecognizeMediaForZhiXueRequest{
         BaseRequest: &tchttp.BaseRequest{},

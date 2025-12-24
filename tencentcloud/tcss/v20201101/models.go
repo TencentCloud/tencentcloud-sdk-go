@@ -26130,6 +26130,9 @@ type HostInfo struct {
 
 	// 核数
 	CoresCnt *uint64 `json:"CoresCnt,omitnil,omitempty" name:"CoresCnt"`
+
+	// 最近在线时间
+	LastOnlineTime *string `json:"LastOnlineTime,omitnil,omitempty" name:"LastOnlineTime"`
 }
 
 type ImageAutoAuthorizedTask struct {

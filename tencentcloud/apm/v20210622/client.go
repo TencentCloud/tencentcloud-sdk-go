@@ -1181,6 +1181,64 @@ func (c *Client) DescribeTagValuesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeTopologyNewRequest() (request *DescribeTopologyNewRequest) {
+    request = &DescribeTopologyNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeTopologyNew")
+    
+    
+    return
+}
+
+func NewDescribeTopologyNewResponse() (response *DescribeTopologyNewResponse) {
+    response = &DescribeTopologyNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTopologyNew
+// 根据应用名查询服务拓扑图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_FOCUSNODENOTFOUND = "FailedOperation.FocusNodeNotFound"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+func (c *Client) DescribeTopologyNew(request *DescribeTopologyNewRequest) (response *DescribeTopologyNewResponse, err error) {
+    return c.DescribeTopologyNewWithContext(context.Background(), request)
+}
+
+// DescribeTopologyNew
+// 根据应用名查询服务拓扑图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_FOCUSNODENOTFOUND = "FailedOperation.FocusNodeNotFound"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+func (c *Client) DescribeTopologyNewWithContext(ctx context.Context, request *DescribeTopologyNewRequest) (response *DescribeTopologyNewResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopologyNewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeTopologyNew")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopologyNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopologyNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApmApplicationConfigRequest() (request *ModifyApmApplicationConfigRequest) {
     request = &ModifyApmApplicationConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

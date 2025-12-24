@@ -73,6 +73,7 @@ func NewConfigureBackupPlanResponse() (response *ConfigureBackupPlanResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BIZOPERATIONDENIEDERROR = "OperationDenied.BizOperationDeniedError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ConfigureBackupPlan(request *ConfigureBackupPlanRequest) (response *ConfigureBackupPlanResponse, err error) {
     return c.ConfigureBackupPlanWithContext(context.Background(), request)
@@ -87,6 +88,7 @@ func (c *Client) ConfigureBackupPlan(request *ConfigureBackupPlanRequest) (respo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BIZOPERATIONDENIEDERROR = "OperationDenied.BizOperationDeniedError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ConfigureBackupPlanWithContext(ctx context.Context, request *ConfigureBackupPlanRequest) (response *ConfigureBackupPlanResponse, err error) {
     if request == nil {
@@ -101,6 +103,58 @@ func (c *Client) ConfigureBackupPlanWithContext(ctx context.Context, request *Co
     request.SetContext(ctx)
     
     response = NewConfigureBackupPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateBackupPlanRequest() (request *CreateBackupPlanRequest) {
+    request = &CreateBackupPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "CreateBackupPlan")
+    
+    
+    return
+}
+
+func NewCreateBackupPlanResponse() (response *CreateBackupPlanResponse) {
+    response = &CreateBackupPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBackupPlan
+// 该接口用于创建备份计划。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEBACKUPERR = "FailedOperation.CreateBackupErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (response *CreateBackupPlanResponse, err error) {
+    return c.CreateBackupPlanWithContext(context.Background(), request)
+}
+
+// CreateBackupPlan
+// 该接口用于创建备份计划。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEBACKUPERR = "FailedOperation.CreateBackupErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateBackupPlanWithContext(ctx context.Context, request *CreateBackupPlanRequest) (response *CreateBackupPlanResponse, err error) {
+    if request == nil {
+        request = NewCreateBackupPlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "CreateBackupPlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBackupPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBackupPlanResponse()
     err = c.Send(request, response)
     return
 }
@@ -201,6 +255,114 @@ func (c *Client) DescribeBackupCheckJobWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeBackupCheckJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBackupPlansRequest() (request *DescribeBackupPlansRequest) {
+    request = &DescribeBackupPlansRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "DescribeBackupPlans")
+    
+    
+    return
+}
+
+func NewDescribeBackupPlansResponse() (response *DescribeBackupPlansResponse) {
+    response = &DescribeBackupPlansResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackupPlans
+// 本接口（DescribeBackupPlans）用于查询备份计划列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBackupPlans(request *DescribeBackupPlansRequest) (response *DescribeBackupPlansResponse, err error) {
+    return c.DescribeBackupPlansWithContext(context.Background(), request)
+}
+
+// DescribeBackupPlans
+// 本接口（DescribeBackupPlans）用于查询备份计划列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBackupPlansWithContext(ctx context.Context, request *DescribeBackupPlansRequest) (response *DescribeBackupPlansResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupPlansRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "DescribeBackupPlans")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupPlans require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupPlansResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConnectTestResultRequest() (request *DescribeConnectTestResultRequest) {
+    request = &DescribeConnectTestResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "DescribeConnectTestResult")
+    
+    
+    return
+}
+
+func NewDescribeConnectTestResultResponse() (response *DescribeConnectTestResultResponse) {
+    response = &DescribeConnectTestResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConnectTestResult
+// 该接口用于查询连通性检测任务的结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BIZOPERATIONDENIEDERROR = "OperationDenied.BizOperationDeniedError"
+func (c *Client) DescribeConnectTestResult(request *DescribeConnectTestResultRequest) (response *DescribeConnectTestResultResponse, err error) {
+    return c.DescribeConnectTestResultWithContext(context.Background(), request)
+}
+
+// DescribeConnectTestResult
+// 该接口用于查询连通性检测任务的结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BIZOPERATIONDENIEDERROR = "OperationDenied.BizOperationDeniedError"
+func (c *Client) DescribeConnectTestResultWithContext(ctx context.Context, request *DescribeConnectTestResultRequest) (response *DescribeConnectTestResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeConnectTestResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "DescribeConnectTestResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConnectTestResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConnectTestResultResponse()
     err = c.Send(request, response)
     return
 }

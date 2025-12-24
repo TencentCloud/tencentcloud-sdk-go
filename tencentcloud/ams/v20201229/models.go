@@ -81,6 +81,9 @@ type AudioResult struct {
 
 	// ASR句子的起止时间
 	Sentences []*Sentence `json:"Sentences,omitnil,omitempty" name:"Sentences"`
+
+	// 切片请求ID
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type AudioResultDetailLanguageResult struct {

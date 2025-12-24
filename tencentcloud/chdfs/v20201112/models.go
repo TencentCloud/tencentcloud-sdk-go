@@ -908,6 +908,9 @@ type DescribeAccessGroupsRequestParams struct {
 
 	// 资源所属者Uin
 	OwnerUin *uint64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 起始权限组ID标记
+	AccessGroupIdMarker *string `json:"AccessGroupIdMarker,omitnil,omitempty" name:"AccessGroupIdMarker"`
 }
 
 type DescribeAccessGroupsRequest struct {
@@ -919,6 +922,9 @@ type DescribeAccessGroupsRequest struct {
 
 	// 资源所属者Uin
 	OwnerUin *uint64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 起始权限组ID标记
+	AccessGroupIdMarker *string `json:"AccessGroupIdMarker,omitnil,omitempty" name:"AccessGroupIdMarker"`
 }
 
 func (r *DescribeAccessGroupsRequest) ToJsonString() string {
@@ -935,6 +941,7 @@ func (r *DescribeAccessGroupsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VpcId")
 	delete(f, "OwnerUin")
+	delete(f, "AccessGroupIdMarker")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessGroupsRequest has unknown keys!", "")
 	}
@@ -945,6 +952,12 @@ func (r *DescribeAccessGroupsRequest) FromJsonString(s string) error {
 type DescribeAccessGroupsResponseParams struct {
 	// 权限组列表
 	AccessGroups []*AccessGroup `json:"AccessGroups,omitnil,omitempty" name:"AccessGroups"`
+
+	// 标识是否已获取全量
+	IsOver *bool `json:"IsOver,omitnil,omitempty" name:"IsOver"`
+
+	// 下一次请求起始权限组ID标记
+	NextAccessGroupIdMarker *string `json:"NextAccessGroupIdMarker,omitnil,omitempty" name:"NextAccessGroupIdMarker"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1100,12 +1113,15 @@ func (r *DescribeFileSystemResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileSystemsRequestParams struct {
-
+	// 起始文件系统ID标记
+	FileSystemIdMarker *string `json:"FileSystemIdMarker,omitnil,omitempty" name:"FileSystemIdMarker"`
 }
 
 type DescribeFileSystemsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 起始文件系统ID标记
+	FileSystemIdMarker *string `json:"FileSystemIdMarker,omitnil,omitempty" name:"FileSystemIdMarker"`
 }
 
 func (r *DescribeFileSystemsRequest) ToJsonString() string {
@@ -1120,7 +1136,7 @@ func (r *DescribeFileSystemsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "FileSystemIdMarker")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileSystemsRequest has unknown keys!", "")
 	}
@@ -1131,6 +1147,12 @@ func (r *DescribeFileSystemsRequest) FromJsonString(s string) error {
 type DescribeFileSystemsResponseParams struct {
 	// 文件系统列表
 	FileSystems []*FileSystem `json:"FileSystems,omitnil,omitempty" name:"FileSystems"`
+
+	// 标识是否已获取全量
+	IsOver *bool `json:"IsOver,omitnil,omitempty" name:"IsOver"`
+
+	// 下一次请求起始文件系统ID标记
+	NextFileSystemIdMarker *string `json:"NextFileSystemIdMarker,omitnil,omitempty" name:"NextFileSystemIdMarker"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1400,6 +1422,9 @@ func (r *DescribeResourceTagsResponse) FromJsonString(s string) error {
 type DescribeRestoreTasksRequestParams struct {
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 起始回热任务ID标记
+	RestoreTaskIdMarker *uint64 `json:"RestoreTaskIdMarker,omitnil,omitempty" name:"RestoreTaskIdMarker"`
 }
 
 type DescribeRestoreTasksRequest struct {
@@ -1407,6 +1432,9 @@ type DescribeRestoreTasksRequest struct {
 	
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 起始回热任务ID标记
+	RestoreTaskIdMarker *uint64 `json:"RestoreTaskIdMarker,omitnil,omitempty" name:"RestoreTaskIdMarker"`
 }
 
 func (r *DescribeRestoreTasksRequest) ToJsonString() string {
@@ -1422,6 +1450,7 @@ func (r *DescribeRestoreTasksRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FileSystemId")
+	delete(f, "RestoreTaskIdMarker")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRestoreTasksRequest has unknown keys!", "")
 	}
@@ -1432,6 +1461,12 @@ func (r *DescribeRestoreTasksRequest) FromJsonString(s string) error {
 type DescribeRestoreTasksResponseParams struct {
 	// 回热任务列表
 	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitnil,omitempty" name:"RestoreTasks"`
+
+	// 标识是否已获取全量
+	IsOver *bool `json:"IsOver,omitnil,omitempty" name:"IsOver"`
+
+	// 下一次请求起始回热任务ID标记
+	NextRestoreTaskIdMarker *uint64 `json:"NextRestoreTaskIdMarker,omitnil,omitempty" name:"NextRestoreTaskIdMarker"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

@@ -11219,6 +11219,70 @@ func (c *Client) DescribePullTransformPushInfoWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribePullTransformPushInfoListRequest() (request *DescribePullTransformPushInfoListRequest) {
+    request = &DescribePullTransformPushInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribePullTransformPushInfoList")
+    
+    
+    return
+}
+
+func NewDescribePullTransformPushInfoListResponse() (response *DescribePullTransformPushInfoListResponse) {
+    response = &DescribePullTransformPushInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePullTransformPushInfoList
+// 查询拉流转推任务流数据统计信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribePullTransformPushInfoList(request *DescribePullTransformPushInfoListRequest) (response *DescribePullTransformPushInfoListResponse, err error) {
+    return c.DescribePullTransformPushInfoListWithContext(context.Background(), request)
+}
+
+// DescribePullTransformPushInfoList
+// 查询拉流转推任务流数据统计信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribePullTransformPushInfoListWithContext(ctx context.Context, request *DescribePullTransformPushInfoListRequest) (response *DescribePullTransformPushInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribePullTransformPushInfoListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribePullTransformPushInfoList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePullTransformPushInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePullTransformPushInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePushBandwidthAndFluxListRequest() (request *DescribePushBandwidthAndFluxListRequest) {
     request = &DescribePushBandwidthAndFluxListRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -910,12 +910,15 @@ func (r *CreateXMagicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteApplicationAndVideoLicenseRequestParams struct {
-
+	// license唯一标识
+	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
 }
 
 type DeleteApplicationAndVideoLicenseRequest struct {
 	*tchttp.BaseRequest
 	
+	// license唯一标识
+	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
 }
 
 func (r *DeleteApplicationAndVideoLicenseRequest) ToJsonString() string {
@@ -930,7 +933,7 @@ func (r *DeleteApplicationAndVideoLicenseRequest) FromJsonString(s string) error
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "LicenseId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteApplicationAndVideoLicenseRequest has unknown keys!", "")
 	}

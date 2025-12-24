@@ -1219,6 +1219,9 @@ type DescribeRelatedUsersRequestParams struct {
 
 	// 环境类型
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
+
+	// 新角色id
+	RoleStringId *string `json:"RoleStringId,omitnil,omitempty" name:"RoleStringId"`
 }
 
 type DescribeRelatedUsersRequest struct {
@@ -1238,6 +1241,9 @@ type DescribeRelatedUsersRequest struct {
 
 	// 环境类型
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
+
+	// 新角色id
+	RoleStringId *string `json:"RoleStringId,omitnil,omitempty" name:"RoleStringId"`
 }
 
 func (r *DescribeRelatedUsersRequest) ToJsonString() string {
@@ -1257,6 +1263,7 @@ func (r *DescribeRelatedUsersRequest) FromJsonString(s string) error {
 	delete(f, "PageNo")
 	delete(f, "PageSize")
 	delete(f, "EnvType")
+	delete(f, "RoleStringId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRelatedUsersRequest has unknown keys!", "")
 	}

@@ -466,6 +466,35 @@ type AlarmExtDsVO struct {
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
+type AlarmGroup struct {
+	// 告警方式,1.邮件，2.短信，3.微信，4.语音，5.企业微信，6.Http，7.企业微信群；告警方式code列表（默认1.邮件）
+	AlarmWays []*string `json:"AlarmWays,omitnil,omitempty" name:"AlarmWays"`
+
+	// 告警接收人类型：1.指定人员，2.任务责任人，3.值班表（默认1.指定人员）
+	AlarmRecipientType *uint64 `json:"AlarmRecipientType,omitnil,omitempty" name:"AlarmRecipientType"`
+
+	// 告警接收人
+	AlarmRecipients []*string `json:"AlarmRecipients,omitnil,omitempty" name:"AlarmRecipients"`
+
+	// 告警接收人ID
+	AlarmRecipientIds []*string `json:"AlarmRecipientIds,omitnil,omitempty" name:"AlarmRecipientIds"`
+
+	// 告警升级人
+	AlarmEscalationRecipients []*string `json:"AlarmEscalationRecipients,omitnil,omitempty" name:"AlarmEscalationRecipients"`
+
+	// 告警升级人ID
+	AlarmEscalationRecipientIds []*string `json:"AlarmEscalationRecipientIds,omitnil,omitempty" name:"AlarmEscalationRecipientIds"`
+
+	// 告警升级间隔
+	AlarmEscalationInterval *uint64 `json:"AlarmEscalationInterval,omitnil,omitempty" name:"AlarmEscalationInterval"`
+
+	// 告警通知疲劳度配置。
+	NotificationFatigue *NotificationFatigue `json:"NotificationFatigue,omitnil,omitempty" name:"NotificationFatigue"`
+
+	// 告警渠道规则 json 格式
+	AlarmMessageRule *string `json:"AlarmMessageRule,omitnil,omitempty" name:"AlarmMessageRule"`
+}
+
 type AlarmIndicatorInfo struct {
 	// 指标id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -547,6 +576,20 @@ type AlarmInfo struct {
 
 	// 告警状态设置；1表示可用；0表示不可用，默认可用
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type AlarmQuietInterval struct {
+	// ISO标准，1表示周一，7表示周日。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DaysOfWeek []*int64 `json:"DaysOfWeek,omitnil,omitempty" name:"DaysOfWeek"`
+
+	// 开始时间，精度时分秒，格式 HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，精度时分秒，格式 HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type AlarmReceiverGroup struct {
@@ -872,6 +915,20 @@ type AttributeItemDsVO struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type AttributeItemOpsDto struct {
+	// 属性键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 属性值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 属性描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
@@ -7130,6 +7187,10 @@ type DatabaseInfo struct {
 	// 模式名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 是否展示目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShowEnableCatalog *bool `json:"ShowEnableCatalog,omitnil,omitempty" name:"ShowEnableCatalog"`
 }
 
 type DatabaseMeta struct {
@@ -17373,6 +17434,12 @@ type DescribeRuleExecResultsRequestParams struct {
 
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 过滤条件	
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 }
 
 type DescribeRuleExecResultsRequest struct {
@@ -17383,6 +17450,12 @@ type DescribeRuleExecResultsRequest struct {
 
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 过滤条件	
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 }
 
 func (r *DescribeRuleExecResultsRequest) ToJsonString() string {
@@ -17399,6 +17472,8 @@ func (r *DescribeRuleExecResultsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RuleGroupExecId")
 	delete(f, "ProjectId")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRuleExecResultsRequest has unknown keys!", "")
 	}
@@ -27150,6 +27225,22 @@ type InstanceOpsDto struct {
 
 	// 当前用户对该实例的权限列表
 	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+
+	// 任务执行id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskExecutionId *string `json:"TaskExecutionId,omitnil,omitempty" name:"TaskExecutionId"`
+
+	// dlc taskid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DlcTaskId *string `json:"DlcTaskId,omitnil,omitempty" name:"DlcTaskId"`
+
+	// dlc jobid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DlcSparkJobId *string `json:"DlcSparkJobId,omitnil,omitempty" name:"DlcSparkJobId"`
+
+	// 扩展属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ext *StrToStrMap `json:"Ext,omitnil,omitempty" name:"Ext"`
 }
 
 type InstanceOpsInfoPage struct {
@@ -28125,6 +28216,46 @@ func (r *KillScheduleInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LabelTag struct {
+	// 标签id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagId *int64 `json:"TagId,omitnil,omitempty" name:"TagId"`
+
+	// 标签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
+
+	// 标签描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagDesc *string `json:"TagDesc,omitnil,omitempty" name:"TagDesc"`
+
+	// 标签值Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValueId *int64 `json:"TagValueId,omitnil,omitempty" name:"TagValueId"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+
+	// 标签是否已删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagIsDeleted *bool `json:"TagIsDeleted,omitnil,omitempty" name:"TagIsDeleted"`
+
+	// 标签值是否已删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValueIsDeleted *bool `json:"TagValueIsDeleted,omitnil,omitempty" name:"TagValueIsDeleted"`
+}
+
+type LabelValueSelection struct {
+	// 标签ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelId *int64 `json:"LabelId,omitnil,omitempty" name:"LabelId"`
+
+	// 标签值ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelValue *string `json:"LabelValue,omitnil,omitempty" name:"LabelValue"`
+}
+
 type LifecycleInfo struct {
 	// 生命周期值
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -28929,6 +29060,27 @@ type MQPackageVO struct {
 	LifeTime *int64 `json:"LifeTime,omitnil,omitempty" name:"LifeTime"`
 }
 
+type MakePlanAlarmRule struct {
+	// 告警的级别
+	// 1 -- 普通
+	// 2 -- 重要
+	// 3 -- 紧急
+	AlarmLevel *int64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
+
+	// 告警的类型，补录计划支持：
+	// start：启动告警
+	// failure：失败告警
+	// success：成功告警
+	// overtime：超过配置时间告警
+	AlarmTypes []*string `json:"AlarmTypes,omitnil,omitempty" name:"AlarmTypes"`
+
+	// 告警超时时间
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 告警接受人 升级人配置信息
+	AlarmGroup []*AlarmGroup `json:"AlarmGroup,omitnil,omitempty" name:"AlarmGroup"`
+}
+
 type MakePlanInstanceOpsDtoCollection struct {
 	// 记录总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -29082,6 +29234,28 @@ type MakePlanOpsDto struct {
 	// 补录计划时间范围的类型： 
 	// DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 	TimeType *string `json:"TimeType,omitnil,omitempty" name:"TimeType"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 失败百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailurePercent *int64 `json:"FailurePercent,omitnil,omitempty" name:"FailurePercent"`
+
+	// 补录计划的告警规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmRule *MakePlanAlarmRule `json:"AlarmRule,omitnil,omitempty" name:"AlarmRule"`
+
+	// 运行类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunType *int64 `json:"RunType,omitnil,omitempty" name:"RunType"`
+
+	// 定时运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunDateTime *string `json:"RunDateTime,omitnil,omitempty" name:"RunDateTime"`
 }
 
 type MakePlanOpsDtoCollection struct {
@@ -29127,9 +29301,13 @@ type MakePlanTaskOpsDto struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessPercent *int64 `json:"SuccessPercent,omitnil,omitempty" name:"SuccessPercent"`
 
-	// 预计生成的总实例个数，由于是异步生成，-1代表实例还未完完全生成
+	// 预计生成的总实例个数，由于是异步生成，-1代表实例还未完全生成
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTotalCount *int64 `json:"InstanceTotalCount,omitnil,omitempty" name:"InstanceTotalCount"`
+
+	// 补录任务实例失败百分数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailurePercent *int64 `json:"FailurePercent,omitnil,omitempty" name:"FailurePercent"`
 }
 
 type MakePlanTaskOpsDtoCollection struct {
@@ -30391,6 +30569,12 @@ type ModifyRuleRequestParams struct {
 
 	// 目标表名
 	TargetTableName *string `json:"TargetTableName,omitnil,omitempty" name:"TargetTableName"`
+
+	// 目录
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 目标目录
+	TargetCatalogName *string `json:"TargetCatalogName,omitnil,omitempty" name:"TargetCatalogName"`
 }
 
 type ModifyRuleRequest struct {
@@ -30473,6 +30657,12 @@ type ModifyRuleRequest struct {
 
 	// 目标表名
 	TargetTableName *string `json:"TargetTableName,omitnil,omitempty" name:"TargetTableName"`
+
+	// 目录
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 目标目录
+	TargetCatalogName *string `json:"TargetCatalogName,omitnil,omitempty" name:"TargetCatalogName"`
 }
 
 func (r *ModifyRuleRequest) ToJsonString() string {
@@ -30513,6 +30703,8 @@ func (r *ModifyRuleRequest) FromJsonString(s string) error {
 	delete(f, "TargetDatabaseName")
 	delete(f, "TargetSchemaName")
 	delete(f, "TargetTableName")
+	delete(f, "CatalogName")
+	delete(f, "TargetCatalogName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRuleRequest has unknown keys!", "")
 	}
@@ -32085,6 +32277,20 @@ func (r *MoveTasksToFolderResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *MoveTasksToFolderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type NotificationFatigue struct {
+	// 通知次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyCount *int64 `json:"NotifyCount,omitnil,omitempty" name:"NotifyCount"`
+
+	// 通知间隔，单位分钟。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyInterval *int64 `json:"NotifyInterval,omitnil,omitempty" name:"NotifyInterval"`
+
+	// 免打扰时间，例如示例值每周一、周二的00:00到09:00免打扰
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuietIntervals []*AlarmQuietInterval `json:"QuietIntervals,omitnil,omitempty" name:"QuietIntervals"`
 }
 
 type OfflineInstance struct {
@@ -35266,6 +35472,22 @@ type Rule struct {
 	// 失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailMsg *string `json:"FailMsg,omitnil,omitempty" name:"FailMsg"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// 编排任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AspectTaskId *string `json:"AspectTaskId,omitnil,omitempty" name:"AspectTaskId"`
+
+	// 目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 目标目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetCatalogName *string `json:"TargetCatalogName,omitnil,omitempty" name:"TargetCatalogName"`
 }
 
 type RuleConfig struct {
@@ -35477,6 +35699,18 @@ type RuleExecResult struct {
 	// 执行结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// 编排任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AspectTaskId *string `json:"AspectTaskId,omitnil,omitempty" name:"AspectTaskId"`
+
+	// 目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 }
 
 type RuleExecResultDetail struct {
@@ -35722,10 +35956,31 @@ type RuleGroup struct {
 	// 监控创建人
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserName *string `json:"CreateUserName,omitnil,omitempty" name:"CreateUserName"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AspectTaskId *string `json:"AspectTaskId,omitnil,omitempty" name:"AspectTaskId"`
+
+	// catalog名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 }
 
 type RuleGroupConfig struct {
-	// 模型检测类型
+	// 分析类型，可选值：
+	// INFERENCE-推理表
+	// TIME_SERIES-时序表
+	// SNAPSHOT-快照表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnalysisType *string `json:"AnalysisType,omitnil,omitempty" name:"AnalysisType"`
+
+	// 模型检测类型，分析类型为推理表（INFERENCE）时必填，可选值：
+	// CLAASSIFICATION-分类
+	// REGRESSION-回归
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelMonitorType *string `json:"ModelMonitorType,omitnil,omitempty" name:"ModelMonitorType"`
 
@@ -35793,9 +36048,17 @@ type RuleGroupConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PositiveValue *string `json:"PositiveValue,omitnil,omitempty" name:"PositiveValue"`
 
-	// 特征列
+	// 数值型特征列
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureColumn *string `json:"FeatureColumn,omitnil,omitempty" name:"FeatureColumn"`
+
+	// 分类型特征列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CategoricalFeatureColumn *string `json:"CategoricalFeatureColumn,omitnil,omitempty" name:"CategoricalFeatureColumn"`
+
+	// 目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseCatalog *string `json:"BaseCatalog,omitnil,omitempty" name:"BaseCatalog"`
 }
 
 type RuleGroupExecResult struct {
@@ -36030,6 +36293,10 @@ type RuleGroupExecStrategy struct {
 	// 引擎参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineParam *string `json:"EngineParam,omitnil,omitempty" name:"EngineParam"`
+
+	// catalog名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 }
 
 type RuleGroupPage struct {
@@ -39141,6 +39408,50 @@ type TableMeta struct {
 	// 字段数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnCount *int64 `json:"ColumnCount,omitnil,omitempty" name:"ColumnCount"`
+
+	// 权限标记
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TablePermissionFlag *bool `json:"TablePermissionFlag,omitnil,omitempty" name:"TablePermissionFlag"`
+
+	// 资产状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetStatus *int64 `json:"AssetStatus,omitnil,omitempty" name:"AssetStatus"`
+
+	// 资产等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetLevel *int64 `json:"AssetLevel,omitnil,omitempty" name:"AssetLevel"`
+
+	// 资产code
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetCode *string `json:"AssetCode,omitnil,omitempty" name:"AssetCode"`
+
+	// 审批状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetAuditStatus *string `json:"AssetAuditStatus,omitnil,omitempty" name:"AssetAuditStatus"`
+
+	// 发布时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublishedTime *string `json:"PublishedTime,omitnil,omitempty" name:"PublishedTime"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagInfoList []*LabelTag `json:"TagInfoList,omitnil,omitempty" name:"TagInfoList"`
+
+	// 标签值选择列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelValueSelections []*LabelValueSelection `json:"LabelValueSelections,omitnil,omitempty" name:"LabelValueSelections"`
+
+	// 命名空间 - 对应TC-Catalog
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// Catalog来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaFrom *string `json:"MetaFrom,omitnil,omitempty" name:"MetaFrom"`
+
+	// 引擎侧创建者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineCreator *string `json:"EngineCreator,omitnil,omitempty" name:"EngineCreator"`
 }
 
 type TableMetaProperty struct {
@@ -39272,6 +39583,10 @@ type TableQualityDetail struct {
 	// 规则表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleGroupTableId *string `json:"RuleGroupTableId,omitnil,omitempty" name:"RuleGroupTableId"`
+
+	// catalog名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 }
 
 type TableQualityDetailPage struct {
@@ -40139,6 +40454,24 @@ type TaskExtInfo struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type TaskExtOpsDto struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务属性（key-value 形式）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Properties *StrToStrMap `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// 任务试运行-扩展业务属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DryRunExtAttributes []*AttributeItemOpsDto `json:"DryRunExtAttributes,omitnil,omitempty" name:"DryRunExtAttributes"`
+
+	// 任务试运行动态传参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DryRunParameter []*AttributeItemOpsDto `json:"DryRunParameter,omitnil,omitempty" name:"DryRunParameter"`
+}
+
 type TaskFormParams struct {
 	// 任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -40968,6 +41301,14 @@ type TaskOpsDto struct {
 	// bundle客户端信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+
+	// 工作流类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowType *string `json:"WorkflowType,omitnil,omitempty" name:"WorkflowType"`
+
+	// 任务扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskExtDTO *TaskExtOpsDto `json:"TaskExtDTO,omitnil,omitempty" name:"TaskExtDTO"`
 }
 
 type TaskScriptContent struct {
