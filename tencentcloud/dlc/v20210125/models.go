@@ -15757,6 +15757,9 @@ type QueryInternalTableWarehouseRequestParams struct {
 
 	// 表名
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// catalog名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type QueryInternalTableWarehouseRequest struct {
@@ -15767,6 +15770,9 @@ type QueryInternalTableWarehouseRequest struct {
 
 	// 表名
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// catalog名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *QueryInternalTableWarehouseRequest) ToJsonString() string {
@@ -15783,6 +15789,7 @@ func (r *QueryInternalTableWarehouseRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DatabaseName")
 	delete(f, "TableName")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryInternalTableWarehouseRequest has unknown keys!", "")
 	}
