@@ -39,7 +39,7 @@ func main() {
 		PublicIpAssigned:        common.BoolPtr(true),
 	}
 	request.LoginSettings = &cvm.LoginSettings{
-		Password: common.StringPtr("passw0rdExample"),
+		Password: common.StringPtr("example#test#123456"),
 	}
 	request.SecurityGroupIds = common.StringPtrs([]string{"sg-icy671l9"})
 	request.SystemDisk = &cvm.SystemDisk{
