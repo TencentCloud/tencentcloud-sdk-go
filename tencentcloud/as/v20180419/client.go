@@ -4383,7 +4383,7 @@ func NewSetInstancesProtectionResponse() (response *SetInstancesProtectionRespon
 // SetInstancesProtection
 // 本接口（SetInstancesProtection）用于设置实例保护。
 //
-// 实例设置保护之后，当发生不健康替换、报警策略、期望值变更等触发缩容时，将不对此实例缩容操作。
+// 实例设置保护之后，当发生不健康替换、报警策略、期望值变更等自动缩容时，将不对此实例缩容操作；对于 [DetachInstances](https://cloud.tencent.com/document/api/377/20436) 和 [RemoveInstances](https://cloud.tencent.com/document/api/377/20431) 接口，允许指定移出被保护的实例。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
@@ -4399,7 +4399,7 @@ func (c *Client) SetInstancesProtection(request *SetInstancesProtectionRequest) 
 // SetInstancesProtection
 // 本接口（SetInstancesProtection）用于设置实例保护。
 //
-// 实例设置保护之后，当发生不健康替换、报警策略、期望值变更等触发缩容时，将不对此实例缩容操作。
+// 实例设置保护之后，当发生不健康替换、报警策略、期望值变更等自动缩容时，将不对此实例缩容操作；对于 [DetachInstances](https://cloud.tencent.com/document/api/377/20436) 和 [RemoveInstances](https://cloud.tencent.com/document/api/377/20431) 接口，允许指定移出被保护的实例。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"

@@ -1199,32 +1199,32 @@ func (r *DescribeServerManageTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVersionDetailRequestParams struct {
-	// 环境Id
+	// <p>环境Id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 服务名
+	// <p>服务名</p>
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
-	// 版本名
+	// <p>版本名</p>
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
-	// channel
+	// <p>channel</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 }
 
 type DescribeVersionDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 环境Id
+	// <p>环境Id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 服务名
+	// <p>服务名</p>
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
-	// 版本名
+	// <p>版本名</p>
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
-	// channel
+	// <p>channel</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 }
 
@@ -1252,63 +1252,67 @@ func (r *DescribeVersionDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVersionDetailResponseParams struct {
-	// 版本名
+	// <p>版本名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 端口号
+	// <p>端口号</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// cpu 规格
+	// <p>cpu 规格</p>
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// mem 规格
+	// <p>mem 规格</p>
 	Mem *float64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
-	// 最小副本数
+	// <p>最小副本数</p>
 	MinNum *int64 `json:"MinNum,omitnil,omitempty" name:"MinNum"`
 
-	// 最大副本数
+	// <p>最大副本数</p>
 	MaxNum *int64 `json:"MaxNum,omitnil,omitempty" name:"MaxNum"`
 
-	// 扩缩容策略
+	// <p>扩缩容策略</p>
 	PolicyDetails []*HpaPolicy `json:"PolicyDetails,omitnil,omitempty" name:"PolicyDetails"`
 
-	// Dockerfile path
+	// <p>Dockerfile path</p>
 	Dockerfile *string `json:"Dockerfile,omitnil,omitempty" name:"Dockerfile"`
 
-	// 目标目录
+	// <p>目标目录</p>
 	BuildDir *string `json:"BuildDir,omitnil,omitempty" name:"BuildDir"`
 
-	// 环境变量
+	// <p>环境变量</p>
 	EnvParams *string `json:"EnvParams,omitnil,omitempty" name:"EnvParams"`
 
-	// 状态
+	// <p>状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
-	// 日志采集路径
+	// <p>日志采集路径</p>
 	LogPath *string `json:"LogPath,omitnil,omitempty" name:"LogPath"`
 
-	// entryPoint
+	// <p>entryPoint</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EntryPoint *string `json:"EntryPoint,omitnil,omitempty" name:"EntryPoint"`
 
-	// Cmd
+	// <p>Cmd</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 
-	// vpc conf
+	// <p>vpc conf</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcConf *VpcConf `json:"VpcConf,omitnil,omitempty" name:"VpcConf"`
 
-	// volume conf
+	// <p>volume conf</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumesConf []*VolumeConf `json:"VolumesConf,omitnil,omitempty" name:"VolumesConf"`
+
+	// <p>buildpack 信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuildPacks *BuildPacksInfo `json:"BuildPacks,omitnil,omitempty" name:"BuildPacks"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

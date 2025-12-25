@@ -1408,14 +1408,14 @@ func (r *CreateAclResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAssetSyncJobRequestParams struct {
-	// 同步资产类别，1 - 主机资产, 2 - 数据库资产
+	// 同步资产类别，1 - 主机资产, 2 - 数据库资产，3-容器资产
 	Category *uint64 `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
 type CreateAssetSyncJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 同步资产类别，1 - 主机资产, 2 - 数据库资产
+	// 同步资产类别，1 - 主机资产, 2 - 数据库资产，3-容器资产
 	Category *uint64 `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
@@ -6154,7 +6154,7 @@ type EnvInternetAccessSetting struct {
 }
 
 type ExternalDevice struct {
-	// 操作系统名称，只能是Linux、Windows或MySQL
+	// 操作系统名称，只能是主机（Linux、Windows）、数据库（MySQL、SQL Server、MariaDB、PostgreSQL、MongoDBReplicaSet、MongoDBSharded、Redis）、容器（TKE、EKS）
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
 	// IP地址

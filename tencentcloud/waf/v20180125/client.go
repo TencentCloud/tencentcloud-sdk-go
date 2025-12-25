@@ -11275,6 +11275,70 @@ func (c *Client) ModifyObjectWithContext(ctx context.Context, request *ModifyObj
     return
 }
 
+func NewModifyObjectsRequest() (request *ModifyObjectsRequest) {
+    request = &ModifyObjectsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyObjects")
+    
+    
+    return
+}
+
+func NewModifyObjectsResponse() (response *ModifyObjectsResponse) {
+    response = &ModifyObjectsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyObjects
+// 批量修改防护对象
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INTERNALERROR_SSACALLFAILED = "InternalError.SsaCallFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyObjects(request *ModifyObjectsRequest) (response *ModifyObjectsResponse, err error) {
+    return c.ModifyObjectsWithContext(context.Background(), request)
+}
+
+// ModifyObjects
+// 批量修改防护对象
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INTERNALERROR_SSACALLFAILED = "InternalError.SsaCallFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyObjectsWithContext(ctx context.Context, request *ModifyObjectsRequest) (response *ModifyObjectsResponse, err error) {
+    if request == nil {
+        request = NewModifyObjectsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyObjects")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyObjects require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyObjectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyOwaspRuleStatusRequest() (request *ModifyOwaspRuleStatusRequest) {
     request = &ModifyOwaspRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

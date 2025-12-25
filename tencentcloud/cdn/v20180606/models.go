@@ -900,6 +900,10 @@ type AutoGuard struct {
 	// 流量防盗刷配置开关，取值有： on：开启 off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 流量防盗刷配置规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilterRules []*FilterRules `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 }
 
 type AvifAdapter struct {
@@ -5326,6 +5330,20 @@ type ExtraLogset struct {
 	// 日志主题信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topics []*TopicInfo `json:"Topics,omitnil,omitempty" name:"Topics"`
+}
+
+type FilterRules struct {
+	// 封禁类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilterType *string `json:"FilterType,omitnil,omitempty" name:"FilterType"`
+
+	// 封禁规则类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 封禁规则路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulePaths []*string `json:"RulePaths,omitnil,omitempty" name:"RulePaths"`
 }
 
 type FollowRedirect struct {

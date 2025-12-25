@@ -1049,12 +1049,13 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 	// <li>**1**：OCR楷体</li>
 	// <li>**2**：姓名印章</li>
 	// <li>**3**：图片印章</li>
-	// <li>**4**：系统签名</li></ul>
+	// <li>**4**：系统签名</li>
+	// <li>**5**：长效手写签名（包含手写签名）</li></ul>
 	// 注：
 	// <ul><li>默认情况下，签名类型为手写签名</li>
 	// <li>您可以传递多种值，表示可用多种签名类型。</li>
 	// <li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li>
-	// <li>若签署方为企业员工，此参数无效，签名方式将以合同中为准。</li>
+	// <li>若签署方为个人，签名类型“5:长效手写签名”不可用，签名方式将以合同中为准。</li>
 	// </ul>
 	SignatureTypes []*int64 `json:"SignatureTypes,omitnil,omitempty" name:"SignatureTypes"`
 
@@ -1130,12 +1131,13 @@ type ChannelCreateBatchQuickSignUrlRequest struct {
 	// <li>**1**：OCR楷体</li>
 	// <li>**2**：姓名印章</li>
 	// <li>**3**：图片印章</li>
-	// <li>**4**：系统签名</li></ul>
+	// <li>**4**：系统签名</li>
+	// <li>**5**：长效手写签名（包含手写签名）</li></ul>
 	// 注：
 	// <ul><li>默认情况下，签名类型为手写签名</li>
 	// <li>您可以传递多种值，表示可用多种签名类型。</li>
 	// <li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li>
-	// <li>若签署方为企业员工，此参数无效，签名方式将以合同中为准。</li>
+	// <li>若签署方为个人，签名类型“5:长效手写签名”不可用，签名方式将以合同中为准。</li>
 	// </ul>
 	SignatureTypes []*int64 `json:"SignatureTypes,omitnil,omitempty" name:"SignatureTypes"`
 
@@ -1313,7 +1315,7 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// </ul>
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
-	// 指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li><li>若签署方为企业员工，此参数无效，签名方式将以合同中为准。</li></ul>
+	// 指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li></ul>
 	SignatureTypes []*int64 `json:"SignatureTypes,omitnil,omitempty" name:"SignatureTypes"`
 
 	// 是否直接跳转至合同内容页面进行签署
@@ -1440,7 +1442,7 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// </ul>
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
-	// 指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li><li>若签署方为企业员工，此参数无效，签名方式将以合同中为准。</li></ul>
+	// 指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li></ul>
 	SignatureTypes []*int64 `json:"SignatureTypes,omitnil,omitempty" name:"SignatureTypes"`
 
 	// 是否直接跳转至合同内容页面进行签署

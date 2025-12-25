@@ -4815,7 +4815,7 @@ func NewDescribeCDNUsageDataResponse() (response *DescribeCDNUsageDataResponse) 
 // DescribeCDNUsageData
 // 该接口用于查询点播 CDN 的流量、带宽等统计数据。
 //
-//    1. 可以查询最近365天内的 CDN 用量数据。
+//    1. CDN 用量数据系统侧保留 13 个月，您通过接口仅可查询最近 365 天内的用量数据。如需调取超出 365 天的历史用量数据，请联系我们。
 //
 //    2. 查询时间跨度不超过90天。
 //
@@ -4845,7 +4845,7 @@ func (c *Client) DescribeCDNUsageData(request *DescribeCDNUsageDataRequest) (res
 // DescribeCDNUsageData
 // 该接口用于查询点播 CDN 的流量、带宽等统计数据。
 //
-//    1. 可以查询最近365天内的 CDN 用量数据。
+//    1. CDN 用量数据系统侧保留 13 个月，您通过接口仅可查询最近 365 天内的用量数据。如需调取超出 365 天的历史用量数据，请联系我们。
 //
 //    2. 查询时间跨度不超过90天。
 //
@@ -6671,7 +6671,7 @@ func NewDescribeMediaProcessUsageDataResponse() (response *DescribeMediaProcessU
 // DescribeMediaProcessUsageData
 // 该接口返回查询时间范围内每天使用的视频处理用量信息。
 //
-//    1. 可以查询最近365天内的视频处理统计数据。
+//    1. 视频处理用量数据系统侧保留 13 个月，您通过接口仅可查询最近 365 天内的用量数据。如需调取超出 365 天的历史用量数据，请联系我们。
 //
 //    2. 查询时间跨度不超过90天。
 //
@@ -6687,7 +6687,7 @@ func (c *Client) DescribeMediaProcessUsageData(request *DescribeMediaProcessUsag
 // DescribeMediaProcessUsageData
 // 该接口返回查询时间范围内每天使用的视频处理用量信息。
 //
-//    1. 可以查询最近365天内的视频处理统计数据。
+//    1. 视频处理用量数据系统侧保留 13 个月，您通过接口仅可查询最近 365 天内的用量数据。如需调取超出 365 天的历史用量数据，请联系我们。
 //
 //    2. 查询时间跨度不超过90天。
 //
@@ -7399,7 +7399,7 @@ func NewDescribeStorageDetailsResponse() (response *DescribeStorageDetailsRespon
 // DescribeStorageDetails
 // 该接口返回查询时间范围内使用的点播存储空间，单位：字节。
 //
-//     1. 可以查询最近365天内的存储空间数据；
+//     1. 存储用量数据系统侧保留 13 个月，您通过接口仅可查询最近 365 天内的用量数据。如需调取超出 365 天的历史用量数据，请联系我们；
 //
 //     2. 查询时间跨度不超过90天；
 //
@@ -7424,7 +7424,7 @@ func (c *Client) DescribeStorageDetails(request *DescribeStorageDetailsRequest) 
 // DescribeStorageDetails
 // 该接口返回查询时间范围内使用的点播存储空间，单位：字节。
 //
-//     1. 可以查询最近365天内的存储空间数据；
+//     1. 存储用量数据系统侧保留 13 个月，您通过接口仅可查询最近 365 天内的用量数据。如需调取超出 365 天的历史用量数据，请联系我们；
 //
 //     2. 查询时间跨度不超过90天；
 //

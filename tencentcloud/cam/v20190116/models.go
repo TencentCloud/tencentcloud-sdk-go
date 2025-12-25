@@ -1006,6 +1006,9 @@ type CreatePolicyRequestParams struct {
 
 	// 策略描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 策略关联的标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreatePolicyRequest struct {
@@ -1019,6 +1022,9 @@ type CreatePolicyRequest struct {
 
 	// 策略描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 策略关联的标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreatePolicyRequest) ToJsonString() string {
@@ -1036,6 +1042,7 @@ func (r *CreatePolicyRequest) FromJsonString(s string) error {
 	delete(f, "PolicyName")
 	delete(f, "PolicyDocument")
 	delete(f, "Description")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePolicyRequest has unknown keys!", "")
 	}
@@ -3370,6 +3377,9 @@ type GetPolicyResponseParams struct {
 
 	// 是否是服务相关策略，0代表不是服务相关策略，1代表是服务相关策略。
 	IsServiceLinkedRolePolicy *uint64 `json:"IsServiceLinkedRolePolicy,omitnil,omitempty" name:"IsServiceLinkedRolePolicy"`
+
+	// 策略关联的标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5909,7 +5919,6 @@ type StrategyInfo struct {
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 策略创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 策略类型。1 表示自定义策略，2 表示预设策略。
@@ -5956,6 +5965,9 @@ type StrategyInfo struct {
 	// 最后编辑时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type SubAccountInfo struct {
@@ -6016,6 +6028,14 @@ type SubAccountUser struct {
 	// 最近登录时间，回参为空，即为未登录过控制台
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastLoginTime *string `json:"LastLoginTime,omitnil,omitempty" name:"LastLoginTime"`
+}
+
+type Tag struct {
+	// 标签键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user

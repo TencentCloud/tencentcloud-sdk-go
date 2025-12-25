@@ -381,15 +381,11 @@ func NewCreateAIAgentCallResponse() (response *CreateAIAgentCallResponse) {
 }
 
 // CreateAIAgentCall
-// 用于创建**一次性的智能体外呼任务**。与直接调用原始AI模型的模型通话不同，此接口基于您在实例中预配置的、具备完整业务流程的智能体来发起通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
+// 用于创建**一次性的智能体外呼通话**。你可以在管理端-智能体管理中，新建语音智能体，进行 [对话流程配置](https://cloud.tencent.com/document/product/679/119796) 。该接口可调用配置完成的智能体发起单次的外呼任务。若需创建批量智能体外呼任务，请参考文档 [创建自动外呼任务](https://cloud.tencent.com/document/product/679/69194)。
 //
 // 
 //
-// 若需创建批量智能体外呼任务，请参考文档 [创建自动外呼任务](https://cloud.tencent.com/document/product/679/69194)。
-//
-// 
-//
-// 发起通话前，请先确认您的AI模型是否兼容 OpenAI、Azure 或 Minimax 协议，并前往模型服务商网站获取相关鉴权信息。 具体功能说明请参考文档 [腾讯云联络中心AI通话平台](https://cloud.tencent.com/document/product/679/112100)。
+// 该功能需购买语音智能体通话套餐，并且仅限自有电话号码使用。详情请参考 [语音智能体通话购买指引](https://cloud.tencent.com/document/product/679/125953)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AILICENSEHASEXPIRED = "FailedOperation.AILicenseHasExpired"
@@ -411,15 +407,11 @@ func (c *Client) CreateAIAgentCall(request *CreateAIAgentCallRequest) (response 
 }
 
 // CreateAIAgentCall
-// 用于创建**一次性的智能体外呼任务**。与直接调用原始AI模型的模型通话不同，此接口基于您在实例中预配置的、具备完整业务流程的智能体来发起通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
+// 用于创建**一次性的智能体外呼通话**。你可以在管理端-智能体管理中，新建语音智能体，进行 [对话流程配置](https://cloud.tencent.com/document/product/679/119796) 。该接口可调用配置完成的智能体发起单次的外呼任务。若需创建批量智能体外呼任务，请参考文档 [创建自动外呼任务](https://cloud.tencent.com/document/product/679/69194)。
 //
 // 
 //
-// 若需创建批量智能体外呼任务，请参考文档 [创建自动外呼任务](https://cloud.tencent.com/document/product/679/69194)。
-//
-// 
-//
-// 发起通话前，请先确认您的AI模型是否兼容 OpenAI、Azure 或 Minimax 协议，并前往模型服务商网站获取相关鉴权信息。 具体功能说明请参考文档 [腾讯云联络中心AI通话平台](https://cloud.tencent.com/document/product/679/112100)。
+// 该功能需购买语音智能体通话套餐，并且仅限自有电话号码使用。详情请参考 [语音智能体通话购买指引](https://cloud.tencent.com/document/product/679/125953)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AILICENSEHASEXPIRED = "FailedOperation.AILicenseHasExpired"
@@ -685,7 +677,11 @@ func NewCreateAutoCalloutTaskResponse() (response *CreateAutoCalloutTaskResponse
 }
 
 // CreateAutoCalloutTask
-// 创建自动外呼任务
+// 用于**创建批量自动外呼通话**，系统将根据任务配置，自动向指定的**被叫号码列表**发起外呼通话。该接口可调用配置完成的智能体发起批量的外呼任务，你可以在管理端-智能体管理中，新建语音智能体，进行 [对话流程配置](https://cloud.tencent.com/document/product/679/119796)。若需创建单次智能体外呼任务，请参考文档 [创建单次智能体通话](https://cloud.tencent.com/document/product/679/115681)。
+//
+// 
+//
+// 该功能需购买语音智能体通话套餐，并且仅限自有电话号码使用。详情请参考 [语音智能体通话购买指引](https://cloud.tencent.com/document/product/679/125953)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
@@ -699,7 +695,11 @@ func (c *Client) CreateAutoCalloutTask(request *CreateAutoCalloutTaskRequest) (r
 }
 
 // CreateAutoCalloutTask
-// 创建自动外呼任务
+// 用于**创建批量自动外呼通话**，系统将根据任务配置，自动向指定的**被叫号码列表**发起外呼通话。该接口可调用配置完成的智能体发起批量的外呼任务，你可以在管理端-智能体管理中，新建语音智能体，进行 [对话流程配置](https://cloud.tencent.com/document/product/679/119796)。若需创建单次智能体外呼任务，请参考文档 [创建单次智能体通话](https://cloud.tencent.com/document/product/679/115681)。
+//
+// 
+//
+// 该功能需购买语音智能体通话套餐，并且仅限自有电话号码使用。详情请参考 [语音智能体通话购买指引](https://cloud.tencent.com/document/product/679/125953)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
@@ -1665,7 +1665,7 @@ func NewDescribeAIAgentInfoListResponse() (response *DescribeAIAgentInfoListResp
 }
 
 // DescribeAIAgentInfoList
-// 获取智能体列表
+// 本接口用于分页查询指定实例（SdkAppId）下已配置的智能体信息列表，包括智能体ID和名称等基本信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1677,7 +1677,7 @@ func (c *Client) DescribeAIAgentInfoList(request *DescribeAIAgentInfoListRequest
 }
 
 // DescribeAIAgentInfoList
-// 获取智能体列表
+// 本接口用于分页查询指定实例（SdkAppId）下已配置的智能体信息列表，包括智能体ID和名称等基本信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1775,7 +1775,7 @@ func NewDescribeAICallExtractResultResponse() (response *DescribeAICallExtractRe
 }
 
 // DescribeAICallExtractResult
-// 获取 AI 通话内容提取结果。
+// 本接口用于：在语音智能体通话结束后，通过 Session ID 查询指定会话的 **话后标签** 结果。相关话后标签需提前在管理端完成配置，具体说明请参见 [话后标签](https://cloud.tencent.com/document/product/679/119800) 。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1786,7 +1786,7 @@ func (c *Client) DescribeAICallExtractResult(request *DescribeAICallExtractResul
 }
 
 // DescribeAICallExtractResult
-// 获取 AI 通话内容提取结果。
+// 本接口用于：在语音智能体通话结束后，通过 Session ID 查询指定会话的 **话后标签** 结果。相关话后标签需提前在管理端完成配置，具体说明请参见 [话后标签](https://cloud.tencent.com/document/product/679/119800) 。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1829,7 +1829,15 @@ func NewDescribeAILatencyResponse() (response *DescribeAILatencyResponse) {
 }
 
 // DescribeAILatency
-// 获取 AI 时延信息
+// 调用该接口，可以通过 Session ID 查询指定会话在特定时间段内，AI服务的处理时延明细与统计数据，时延信息包括：
+//
+// - 端到端（ETE）时延：统计从用户语音输入到 AI 返回完整响应的整体耗时。
+//
+// - 自动语音识别（ASR）时延：统计语音输入被识别为文本所需的处理耗时。
+//
+// - 大语言模型（LLM）时延：统计 AI 模型生成文本内容的推理耗时。
+//
+// - 语音合成（TTS）时延：统计文本转换为语音音频的合成耗时。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -1840,7 +1848,15 @@ func (c *Client) DescribeAILatency(request *DescribeAILatencyRequest) (response 
 }
 
 // DescribeAILatency
-// 获取 AI 时延信息
+// 调用该接口，可以通过 Session ID 查询指定会话在特定时间段内，AI服务的处理时延明细与统计数据，时延信息包括：
+//
+// - 端到端（ETE）时延：统计从用户语音输入到 AI 返回完整响应的整体耗时。
+//
+// - 自动语音识别（ASR）时延：统计语音输入被识别为文本所需的处理耗时。
+//
+// - 大语言模型（LLM）时延：统计 AI 模型生成文本内容的推理耗时。
+//
+// - 语音合成（TTS）时延：统计文本转换为语音音频的合成耗时。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -3969,7 +3985,9 @@ func NewPauseAutoCalloutTaskResponse() (response *PauseAutoCalloutTaskResponse) 
 }
 
 // PauseAutoCalloutTask
-// 暂停未完成的自动外呼任务
+// 用于通过 TaskId **暂停一个正在执行的自动外呼任务**。调用该接口后，任务将被临时中断，不再发起新的外呼请求；已发起的通话不受影响。
+//
+// 暂停后的任务可通过 [恢复暂停的自动外呼任务](https://cloud.tencent.com/document/product/679/125356) 接口继续执行。如需永久终止任务，请参考 [停止自动外呼任务](https://cloud.tencent.com/document/product/679/69192)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3981,7 +3999,9 @@ func (c *Client) PauseAutoCalloutTask(request *PauseAutoCalloutTaskRequest) (res
 }
 
 // PauseAutoCalloutTask
-// 暂停未完成的自动外呼任务
+// 用于通过 TaskId **暂停一个正在执行的自动外呼任务**。调用该接口后，任务将被临时中断，不再发起新的外呼请求；已发起的通话不受影响。
+//
+// 暂停后的任务可通过 [恢复暂停的自动外呼任务](https://cloud.tencent.com/document/product/679/125356) 接口继续执行。如需永久终止任务，请参考 [停止自动外呼任务](https://cloud.tencent.com/document/product/679/69192)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4183,7 +4203,7 @@ func NewResumeAutoCalloutTaskResponse() (response *ResumeAutoCalloutTaskResponse
 }
 
 // ResumeAutoCalloutTask
-// 暂停未完成的自动外呼任务
+// 用于通过 TaskId **恢复一个已被暂停的自动外呼任务**。该接口适用于在调用 [暂停自动外呼任务](https://cloud.tencent.com/document/product/679/125357) 后，需继续执行剩余外呼计划的场景。调用成功后，任务将从暂停状态恢复，重新发起未完成的外呼请求。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4195,7 +4215,7 @@ func (c *Client) ResumeAutoCalloutTask(request *ResumeAutoCalloutTaskRequest) (r
 }
 
 // ResumeAutoCalloutTask
-// 暂停未完成的自动外呼任务
+// 用于通过 TaskId **恢复一个已被暂停的自动外呼任务**。该接口适用于在调用 [暂停自动外呼任务](https://cloud.tencent.com/document/product/679/125357) 后，需继续执行剩余外呼计划的场景。调用成功后，任务将从暂停状态恢复，重新发起未完成的外呼请求。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

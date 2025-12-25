@@ -176,3 +176,47 @@ func (c *Client) DeleteRoleUserWithContext(ctx context.Context, request *DeleteR
     err = c.Send(request, response)
     return
 }
+
+func NewPutMessageRequest() (request *PutMessageRequest) {
+    request = &PutMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("evt", APIVersion, "PutMessage")
+    
+    
+    return
+}
+
+func NewPutMessageResponse() (response *PutMessageResponse) {
+    response = &PutMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PutMessage
+// 推送事件数据
+func (c *Client) PutMessage(request *PutMessageRequest) (response *PutMessageResponse, err error) {
+    return c.PutMessageWithContext(context.Background(), request)
+}
+
+// PutMessage
+// 推送事件数据
+func (c *Client) PutMessageWithContext(ctx context.Context, request *PutMessageRequest) (response *PutMessageResponse, err error) {
+    if request == nil {
+        request = NewPutMessageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "evt", APIVersion, "PutMessage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PutMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPutMessageResponse()
+    err = c.Send(request, response)
+    return
+}

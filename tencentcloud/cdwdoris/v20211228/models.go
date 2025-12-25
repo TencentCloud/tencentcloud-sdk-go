@@ -4414,6 +4414,9 @@ type InstanceInfo struct {
 
 	// 对应备集群
 	SlaveInstances []*string `json:"SlaveInstances,omitnil,omitempty" name:"SlaveInstances"`
+
+	// ccr服务部署节点ip
+	SyncerIp *string `json:"SyncerIp,omitnil,omitempty" name:"SyncerIp"`
 }
 
 type InstanceNode struct {

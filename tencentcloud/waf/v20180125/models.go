@@ -17716,6 +17716,81 @@ func (r *ModifyObjectResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyObjectsRequestParams struct {
+	// 修改对象标识
+	ObjectId []*string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
+
+	// 改动作类型:InstanceId绑定实例；UnbindInstance解绑实例。
+	OpType *string `json:"OpType,omitnil,omitempty" name:"OpType"`
+
+	// 新的实例ID，如果和已绑定的实例相同认为修改成功
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 对象列表，仅跨账号接入使用
+	Objects []*Object `json:"Objects,omitnil,omitempty" name:"Objects"`
+}
+
+type ModifyObjectsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 修改对象标识
+	ObjectId []*string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
+
+	// 改动作类型:InstanceId绑定实例；UnbindInstance解绑实例。
+	OpType *string `json:"OpType,omitnil,omitempty" name:"OpType"`
+
+	// 新的实例ID，如果和已绑定的实例相同认为修改成功
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 对象列表，仅跨账号接入使用
+	Objects []*Object `json:"Objects,omitnil,omitempty" name:"Objects"`
+}
+
+func (r *ModifyObjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyObjectsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ObjectId")
+	delete(f, "OpType")
+	delete(f, "InstanceId")
+	delete(f, "Objects")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyObjectsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyObjectsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyObjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyObjectsResponseParams `json:"Response"`
+}
+
+func (r *ModifyObjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyObjectsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyOwaspRuleStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -19250,6 +19325,20 @@ type NetworkConfig struct {
 	// 0：解绑
 	// 1：绑定
 	VipStatus *uint64 `json:"VipStatus,omitnil,omitempty" name:"VipStatus"`
+}
+
+type Object struct {
+	// 对象id
+	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
+
+	// 成员appid
+	MemberAppId *uint64 `json:"MemberAppId,omitnil,omitempty" name:"MemberAppId"`
+
+	// 成员uin
+	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// 成员昵称
+	MemberNickName *string `json:"MemberNickName,omitnil,omitempty" name:"MemberNickName"`
 }
 
 type OwaspRule struct {

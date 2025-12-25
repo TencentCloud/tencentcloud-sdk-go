@@ -481,21 +481,57 @@ func (r *DescribeAgentDutyTaskDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAgentDutyTasksRequestParams struct {
+	// agent实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 会话ID
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
 	// 查询开始位置
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 列表查询数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 任务启动时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 任务类型
+	AgentTaskType *string `json:"AgentTaskType,omitnil,omitempty" name:"AgentTaskType"`
+
+	// 业务参数
+	Parameters []*Parameter `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 }
 
 type DescribeAgentDutyTasksRequest struct {
 	*tchttp.BaseRequest
 	
+	// agent实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 会话ID
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
 	// 查询开始位置
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 列表查询数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 任务启动时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 任务类型
+	AgentTaskType *string `json:"AgentTaskType,omitnil,omitempty" name:"AgentTaskType"`
+
+	// 业务参数
+	Parameters []*Parameter `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 }
 
 func (r *DescribeAgentDutyTasksRequest) ToJsonString() string {
@@ -510,8 +546,14 @@ func (r *DescribeAgentDutyTasksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceId")
+	delete(f, "ChatId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AgentTaskType")
+	delete(f, "Parameters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentDutyTasksRequest has unknown keys!", "")
 	}
@@ -522,6 +564,9 @@ func (r *DescribeAgentDutyTasksRequest) FromJsonString(s string) error {
 type DescribeAgentDutyTasksResponseParams struct {
 	// 查询结果总数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 任务详细信息
+	DutyTasks []*AgentDutyTask `json:"DutyTasks,omitnil,omitempty" name:"DutyTasks"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

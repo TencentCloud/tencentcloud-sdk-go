@@ -262,6 +262,77 @@ func (r *DeleteRoleUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PutMessageRequestParams struct {
+	// <p>事件ID</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// <p>需要推送的事件数据内容，格式为json，字段定义需要与事件中的定义一致</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>数据推送来源，会在生成的单据中展示数据来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
+type PutMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>事件ID</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// <p>需要推送的事件数据内容，格式为json，字段定义需要与事件中的定义一致</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>数据推送来源，会在生成的单据中展示数据来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
+func (r *PutMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventId")
+	delete(f, "Data")
+	delete(f, "Source")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PutMessageResponseParams struct {
+	// <p>满足条件时生成的事件单id，不满足条件时为空</p>
+	TicketId *string `json:"TicketId,omitnil,omitempty" name:"TicketId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PutMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *PutMessageResponseParams `json:"Response"`
+}
+
+func (r *PutMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UserAttribute struct {
 	// <p>自定义角色体系中用户属性的ID</p><p>属性键名</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`

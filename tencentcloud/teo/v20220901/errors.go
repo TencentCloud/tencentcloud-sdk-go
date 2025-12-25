@@ -77,7 +77,7 @@ const (
 	// 创建自定义推送任务认证失败, 请检查推送地址是否正确。
 	FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = "FailedOperation.CreateLogTopicTaskAuthFailure"
 
-	// 创建预热回源限速配置失败，请稍后重试或联系智能客服或提交工单。
+	// 创建预热回源限速配置失败，请稍后重试或提交工单。
 	FAILEDOPERATION_CREATEPREFETCHORIGINLIMITFAILED = "FailedOperation.CreatePrefetchOriginLimitFailed"
 
 	// 边缘客户端证书已过期，暂不支持下发过期证书。
@@ -1181,7 +1181,7 @@ const (
 	// 当前无私钥证书功能仅针对白名单用户开放。
 	OPERATIONDENIED_NOTINKEYLESSWHITELIST = "OperationDenied.NotInKeylessWhiteList"
 
-	// 不在预热回源限速配置白名单中，请联系智能客服或提交工单。
+	// 不在预热回源限速配置白名单中，请提交工单。
 	OPERATIONDENIED_NOTINPREFETCHORIGINLIMITWHITELIST = "OperationDenied.NotInPrefetchOriginLimitWhiteList"
 
 	// 当前回源双向认证功能仅针对白名单用户开放。
