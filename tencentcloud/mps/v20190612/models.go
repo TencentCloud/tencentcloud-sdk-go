@@ -513,6 +513,8 @@ type AiAnalysisResult struct {
 	// <li>Dubbing：智能译制</li>
 	// <li>VideoRemake: 视频去重</li>
 	// <li>VideoComprehension: 视频（音频）理解</li>
+	// <li>Cutout：视频抠图</li>
+	// <li>Reel：智能成片</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
@@ -566,6 +568,14 @@ type AiAnalysisResult struct {
 	// 视频（音频）理解任务的查询结果，当任务类型为 VideoComprehension 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoComprehensionTask *AiAnalysisTaskVideoComprehensionResult `json:"VideoComprehensionTask,omitnil,omitempty" name:"VideoComprehensionTask"`
+
+	// 视频内容分析抠图任务的查询结果，当任务类型为Cutout时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CutoutTask *AiAnalysisTaskCutoutResult `json:"CutoutTask,omitnil,omitempty" name:"CutoutTask"`
+
+	// 视频内容分析成片任务的查询结果，当任务类型为Reel时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReelTask *AiAnalysisTaskReelResult `json:"ReelTask,omitnil,omitempty" name:"ReelTask"`
 }
 
 type AiAnalysisTaskClassificationInput struct {
@@ -631,6 +641,46 @@ type AiAnalysisTaskCoverResult struct {
 	// 智能封面任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskCoverOutput `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
+type AiAnalysisTaskCutoutInput struct {
+	// 视频智能抠图模板 ID。
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type AiAnalysisTaskCutoutOutput struct {
+	// 视频智能抠图文件路径。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 视频智能抠图的存储位置。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+}
+
+type AiAnalysisTaskCutoutResult struct {
+	// 任务状态，有 `PROCESSING`，`SUCCESS` 和 `FAIL` 三种
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// 错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 抠图任务输入
+	Input *AiAnalysisTaskCutoutInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 抠图任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskCutoutOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 任务进度
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 任务开始执行的时间，采用 ISO 日期格式。
+	BeginProcessTime *string `json:"BeginProcessTime,omitnil,omitempty" name:"BeginProcessTime"`
+
+	// 任务结束执行的时间，采用 ISO 日期格式。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
 
 type AiAnalysisTaskDelLogoInput struct {
@@ -894,6 +944,56 @@ type AiAnalysisTaskInput struct {
 	// [智能横转竖](https://cloud.tencent.com/document/product/862/112112)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
+}
+
+type AiAnalysisTaskReelInput struct {
+	// 智能成片模板 ID。
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type AiAnalysisTaskReelOutput struct {
+	// 成片视频路径。
+	VideoPath *string `json:"VideoPath,omitnil,omitempty" name:"VideoPath"`
+
+	// 脚本文件路径
+	ScriptPath *string `json:"ScriptPath,omitnil,omitempty" name:"ScriptPath"`
+
+	// 成片视频存储位置。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+}
+
+type AiAnalysisTaskReelResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 智能成片任务输入。
+	Input *AiAnalysisTaskReelInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 智能成片任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskReelOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 媒体处理类错误码 列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// 任务进度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 任务开始执行的时间，采用 ISO 日期格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginProcessTime *string `json:"BeginProcessTime,omitnil,omitempty" name:"BeginProcessTime"`
+
+	// 任务执行完毕的时间，采用 ISO 日期格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
 
 type AiAnalysisTaskSegmentInput struct {
@@ -22081,7 +22181,6 @@ type RawSmartSubtitleParameter struct {
 	// `iw`：希伯来语
 	// `ja`：日语
 	// `jv`：爪哇语
-	// `jw`：爪哇语
 	// `ka`：格鲁吉亚语
 	// `kk`：哈萨克语
 	// `km`：高棉语
@@ -22168,7 +22267,6 @@ type RawSmartSubtitleParameter struct {
 	// `th`：泰语
 	// `ti`：提格里尼亚语
 	// `tk`：土库曼语
-	// `tl`：菲律宾语（塔加拉语）
 	// `tn`：茨瓦纳语
 	// `tr`：土耳其语
 	// `ts`：聪加语
@@ -22205,6 +22303,10 @@ type RawSmartSubtitleParameter struct {
 	// 
 	// **注意**：不传的情况下默认类型为 ASR识别字幕
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
+
+	// 字幕OCR提取框选区域配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
 }
 
 type RawTranscodeParameter struct {
@@ -23310,6 +23412,18 @@ type SegmentSpecificInfo struct {
 	FragmentEndNum *int64 `json:"FragmentEndNum,omitnil,omitempty" name:"FragmentEndNum"`
 }
 
+type SelectingSubtitleAreasConfig struct {
+	// 自动选择自定义区域。
+	// 对选定区域，利用AI模型自动检测其中存在的选择目标并提取。
+	AutoAreas []*EraseArea `json:"AutoAreas,omitnil,omitempty" name:"AutoAreas"`
+
+	// 示例视频或图片的宽，单位像素值
+	SampleWidth *uint64 `json:"SampleWidth,omitnil,omitempty" name:"SampleWidth"`
+
+	// 示例视频或图片的高，单位像素值
+	SampleHeight *uint64 `json:"SampleHeight,omitnil,omitempty" name:"SampleHeight"`
+}
+
 type SharpEnhanceConfig struct {
 	// 能力配置开关，可选值：
 	// <li>ON：开启；</li>
@@ -23804,7 +23918,7 @@ type SmartSubtitleTemplateItem struct {
 	// 智能字幕文件格式
 	// - vtt: WebVTT 格式
 	// - srt: SRT格式
-	// - original：与源字幕文件一致（用于纯字幕翻译模版）
+	// - original：与源字幕文件一致（用于纯字幕翻译模板）
 	// - 不填或填空：不生成字幕文件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
@@ -23865,7 +23979,12 @@ type SmartSubtitleTemplateItem struct {
 	// 字幕处理类型：
 	// - 0：ASR识别字幕
 	// - 1：纯字幕翻译
+	// - 2:  OCR识别字幕
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
+
+	// 字幕OCR提取框选区域配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
 }
 
 type SmartSubtitlesResult struct {

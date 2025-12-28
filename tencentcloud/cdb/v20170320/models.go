@@ -2789,7 +2789,7 @@ type CreateCloneInstanceRequestParams struct {
 	SpecifiedRollbackTime *string `json:"SpecifiedRollbackTime,omitnil,omitempty" name:"SpecifiedRollbackTime"`
 
 	// 如果需要克隆实例回档到指定备份集，则指定该值为备份文件的 Id。请使用 [查询数据备份文件列表](/document/api/236/15842)。
-	// 说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、集群版实例，备份文件为快照备份。
+	// 说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、云盘版实例，备份文件为快照备份。
 	SpecifiedBackupId *int64 `json:"SpecifiedBackupId,omitnil,omitempty" name:"SpecifiedBackupId"`
 
 	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
@@ -2828,7 +2828,7 @@ type CreateCloneInstanceRequestParams struct {
 	// 备库 2 的可用区信息，默认为空，克隆强同步主实例时可指定该参数。
 	BackupZone *string `json:"BackupZone,omitnil,omitempty" name:"BackupZone"`
 
-	// 克隆实例类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"CLOUD_NATIVE_CLUSTER" - 集群版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。不指定则默认为通用型。
+	// 克隆实例类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"CLOUD_NATIVE_CLUSTER" - 云盘版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 云盘版加强型。不指定则默认为通用型。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 新克隆实例节点数。如果需要克隆出三节点实例， 请将该值设置为3 或指定 BackupZone 参数。如果需要克隆出两节点实例，请将该值设置为2。默认克隆出两节点实例。
@@ -2852,7 +2852,7 @@ type CreateCloneInstanceRequestParams struct {
 	// 实例时长，PayType为PRE_PAID时必传，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 集群版节点拓扑配置。
+	// 云盘版节点拓扑配置。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
 	// 原实例所在地域名，当传入异地备份时为必选项，例：ap-guangzhou
@@ -2860,6 +2860,9 @@ type CreateCloneInstanceRequestParams struct {
 
 	// 异地数据备份id
 	SpecifiedSubBackupId *int64 `json:"SpecifiedSubBackupId,omitnil,omitempty" name:"SpecifiedSubBackupId"`
+
+	// 新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
+	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 }
 
 type CreateCloneInstanceRequest struct {
@@ -2873,7 +2876,7 @@ type CreateCloneInstanceRequest struct {
 	SpecifiedRollbackTime *string `json:"SpecifiedRollbackTime,omitnil,omitempty" name:"SpecifiedRollbackTime"`
 
 	// 如果需要克隆实例回档到指定备份集，则指定该值为备份文件的 Id。请使用 [查询数据备份文件列表](/document/api/236/15842)。
-	// 说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、集群版实例，备份文件为快照备份。
+	// 说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、云盘版实例，备份文件为快照备份。
 	SpecifiedBackupId *int64 `json:"SpecifiedBackupId,omitnil,omitempty" name:"SpecifiedBackupId"`
 
 	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
@@ -2912,7 +2915,7 @@ type CreateCloneInstanceRequest struct {
 	// 备库 2 的可用区信息，默认为空，克隆强同步主实例时可指定该参数。
 	BackupZone *string `json:"BackupZone,omitnil,omitempty" name:"BackupZone"`
 
-	// 克隆实例类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"CLOUD_NATIVE_CLUSTER" - 集群版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。不指定则默认为通用型。
+	// 克隆实例类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"CLOUD_NATIVE_CLUSTER" - 云盘版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 云盘版加强型。不指定则默认为通用型。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 新克隆实例节点数。如果需要克隆出三节点实例， 请将该值设置为3 或指定 BackupZone 参数。如果需要克隆出两节点实例，请将该值设置为2。默认克隆出两节点实例。
@@ -2936,7 +2939,7 @@ type CreateCloneInstanceRequest struct {
 	// 实例时长，PayType为PRE_PAID时必传，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 集群版节点拓扑配置。
+	// 云盘版节点拓扑配置。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
 	// 原实例所在地域名，当传入异地备份时为必选项，例：ap-guangzhou
@@ -2944,6 +2947,9 @@ type CreateCloneInstanceRequest struct {
 
 	// 异地数据备份id
 	SpecifiedSubBackupId *int64 `json:"SpecifiedSubBackupId,omitnil,omitempty" name:"SpecifiedSubBackupId"`
+
+	// 新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
+	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 }
 
 func (r *CreateCloneInstanceRequest) ToJsonString() string {
@@ -2984,6 +2990,7 @@ func (r *CreateCloneInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ClusterTopology")
 	delete(f, "SrcRegion")
 	delete(f, "SpecifiedSubBackupId")
+	delete(f, "MasterZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloneInstanceRequest has unknown keys!", "")
 	}
@@ -15612,7 +15619,10 @@ type ReloadBalanceProxyNodeRequestParams struct {
 	// 代理组 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
-	// 代理组地址 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。如果不传则会对所有代理组地址进行负载均衡。
+	// 代理组地址 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+	// 说明：
+	// 1. 对于双节点实例而言，此参数为非必填，如果不传则会对所有代理组地址进行负载均衡。
+	// 2. 对于云盘版实例而言，此参数为必填。
 	ProxyAddressId *string `json:"ProxyAddressId,omitnil,omitempty" name:"ProxyAddressId"`
 }
 
@@ -15622,7 +15632,10 @@ type ReloadBalanceProxyNodeRequest struct {
 	// 代理组 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
-	// 代理组地址 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。如果不传则会对所有代理组地址进行负载均衡。
+	// 代理组地址 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+	// 说明：
+	// 1. 对于双节点实例而言，此参数为非必填，如果不传则会对所有代理组地址进行负载均衡。
+	// 2. 对于云盘版实例而言，此参数为必填。
 	ProxyAddressId *string `json:"ProxyAddressId,omitnil,omitempty" name:"ProxyAddressId"`
 }
 

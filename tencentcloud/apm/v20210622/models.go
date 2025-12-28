@@ -255,6 +255,12 @@ type ApmAppConfig struct {
 
 	// 慢SQL阈值
 	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
+
+	// 是否开启脱敏规则
+	EnableDesensitizationRule *int64 `json:"EnableDesensitizationRule,omitnil,omitempty" name:"EnableDesensitizationRule"`
+
+	// 脱敏规则
+	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
 }
 
 type ApmApplicationConfigView struct {
@@ -326,6 +332,12 @@ type ApmApplicationConfigView struct {
 
 	// 慢SQL阈值
 	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
+
+	// 是否开启脱敏规则
+	EnableDesensitizationRule *int64 `json:"EnableDesensitizationRule,omitnil,omitempty" name:"EnableDesensitizationRule"`
+
+	// 脱敏规则
+	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
 }
 
 type ApmAssociation struct {
@@ -2926,6 +2938,12 @@ type ModifyApmApplicationConfigRequestParams struct {
 
 	// 慢SQL阈值
 	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
+
+	// 是否开启脱敏规则
+	EnableDesensitizationRule *int64 `json:"EnableDesensitizationRule,omitnil,omitempty" name:"EnableDesensitizationRule"`
+
+	// 脱敏规则
+	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
 }
 
 type ModifyApmApplicationConfigRequest struct {
@@ -3083,6 +3101,12 @@ type ModifyApmApplicationConfigRequest struct {
 
 	// 慢SQL阈值
 	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
+
+	// 是否开启脱敏规则
+	EnableDesensitizationRule *int64 `json:"EnableDesensitizationRule,omitnil,omitempty" name:"EnableDesensitizationRule"`
+
+	// 脱敏规则
+	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
 }
 
 func (r *ModifyApmApplicationConfigRequest) ToJsonString() string {
@@ -3148,6 +3172,8 @@ func (r *ModifyApmApplicationConfigRequest) FromJsonString(s string) error {
 	delete(f, "DisableCpuUsed")
 	delete(f, "DbStatementParametersEnabled")
 	delete(f, "SlowSQLThresholds")
+	delete(f, "EnableDesensitizationRule")
+	delete(f, "DesensitizationRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmApplicationConfigRequest has unknown keys!", "")
 	}

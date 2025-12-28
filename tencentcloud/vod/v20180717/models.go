@@ -2211,6 +2211,21 @@ type AigcVideoTaskInputFileInfo struct {
 	// 1. 推荐使用小于10M的图片；
 	// 2. 图片格式的取值为：jpeg，jpg, png。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 参考类型，GV模型适用。
+	// 注意：
+	// 
+	// 当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+
+	// 主体id.
+	// 适用模型：Vidu-q2.
+	// 当需要对图片标识主体时，需要每个图片都带主体id，后续生成时可以通过@主体id的方式使用。
+	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
+
+	// 适用于Vidu-q2模型。
+	// 当全部图片携带主体id时，可针对主体设置音色id。 音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 }
 
 type AigcVideoTaskOutput struct {
@@ -4372,9 +4387,15 @@ type CreateAigcVideoTaskRequestParams struct {
 	// 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// AIGC 生视频任务的输入图片的文件信息。说明
-	// 1. 当 ModelName 是 GV 时，最大长度为 3；其他情况下最大长度为1。
-	// 2. 当 ModelName 是 GV 时，并且长度大于1时，则不能再指定 LastFrameFileId 参数。
+	// 最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
+	// 
+	// 支持多图输入的模型：
+	// 1. GV，使用多图输入时，不可使用LastFrameFileId和LastFrameUrl。
+	// 2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过FileInfos里面的ObjectId作为主体id来传入。
+	// 
+	// 注意：
+	// 1. 图片大小不超过10M。
+	// 2. 支持的图片格式：jpeg、png。
 	FileInfos []*AigcVideoTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
 	// 用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。说明：
@@ -4389,10 +4410,11 @@ type CreateAigcVideoTaskRequestParams struct {
 	// 3. 3. 图片格式的取值为：jpeg，jpg, png, webp。
 	LastFrameUrl *string `json:"LastFrameUrl,omitnil,omitempty" name:"LastFrameUrl"`
 
-	// 生成图片的提示词。当 FileInfos 为空时，此参数必填。
+	// 生成视频的提示词。当 FileInfos 为空时，此参数必填。
+	// 示例值：move the picture
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 要阻止模型生成图片的提示词。
+	// 要阻止模型生成视频的提示词。
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
 	// 是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
@@ -4412,6 +4434,9 @@ type CreateAigcVideoTaskRequestParams struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 输入图片的区域信息。当图片url是国外地址时候，可选Oversea。默认Mainland。
+	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 }
 
 type CreateAigcVideoTaskRequest struct {
@@ -4426,9 +4451,15 @@ type CreateAigcVideoTaskRequest struct {
 	// 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// AIGC 生视频任务的输入图片的文件信息。说明
-	// 1. 当 ModelName 是 GV 时，最大长度为 3；其他情况下最大长度为1。
-	// 2. 当 ModelName 是 GV 时，并且长度大于1时，则不能再指定 LastFrameFileId 参数。
+	// 最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
+	// 
+	// 支持多图输入的模型：
+	// 1. GV，使用多图输入时，不可使用LastFrameFileId和LastFrameUrl。
+	// 2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过FileInfos里面的ObjectId作为主体id来传入。
+	// 
+	// 注意：
+	// 1. 图片大小不超过10M。
+	// 2. 支持的图片格式：jpeg、png。
 	FileInfos []*AigcVideoTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
 	// 用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。说明：
@@ -4443,10 +4474,11 @@ type CreateAigcVideoTaskRequest struct {
 	// 3. 3. 图片格式的取值为：jpeg，jpg, png, webp。
 	LastFrameUrl *string `json:"LastFrameUrl,omitnil,omitempty" name:"LastFrameUrl"`
 
-	// 生成图片的提示词。当 FileInfos 为空时，此参数必填。
+	// 生成视频的提示词。当 FileInfos 为空时，此参数必填。
+	// 示例值：move the picture
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 要阻止模型生成图片的提示词。
+	// 要阻止模型生成视频的提示词。
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
 	// 是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
@@ -4466,6 +4498,9 @@ type CreateAigcVideoTaskRequest struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 输入图片的区域信息。当图片url是国外地址时候，可选Oversea。默认Mainland。
+	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 }
 
 func (r *CreateAigcVideoTaskRequest) ToJsonString() string {
@@ -4494,6 +4529,7 @@ func (r *CreateAigcVideoTaskRequest) FromJsonString(s string) error {
 	delete(f, "SessionContext")
 	delete(f, "TasksPriority")
 	delete(f, "ExtInfo")
+	delete(f, "InputRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcVideoTaskRequest has unknown keys!", "")
 	}

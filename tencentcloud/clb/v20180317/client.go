@@ -5811,6 +5811,64 @@ func (c *Client) RegisterTargetsWithClassicalLBWithContext(ctx context.Context, 
     return
 }
 
+func NewRenewLoadBalancersRequest() (request *RenewLoadBalancersRequest) {
+    request = &RenewLoadBalancersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "RenewLoadBalancers")
+    
+    
+    return
+}
+
+func NewRenewLoadBalancersResponse() (response *RenewLoadBalancersResponse) {
+    response = &RenewLoadBalancersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenewLoadBalancers
+// API接口续费包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) RenewLoadBalancers(request *RenewLoadBalancersRequest) (response *RenewLoadBalancersResponse, err error) {
+    return c.RenewLoadBalancersWithContext(context.Background(), request)
+}
+
+// RenewLoadBalancers
+// API接口续费包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) RenewLoadBalancersWithContext(ctx context.Context, request *RenewLoadBalancersRequest) (response *RenewLoadBalancersResponse, err error) {
+    if request == nil {
+        request = NewRenewLoadBalancersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "RenewLoadBalancers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewLoadBalancers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewLoadBalancersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReplaceCertForLoadBalancersRequest() (request *ReplaceCertForLoadBalancersRequest) {
     request = &ReplaceCertForLoadBalancersRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -5666,6 +5666,9 @@ type LicensePlateInfo struct {
 
 	// 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
 	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
+
+	// 车牌类别， 如： 实体车牌、非实体车牌
+	LicensePlateCategory *string `json:"LicensePlateCategory,omitnil,omitempty" name:"LicensePlateCategory"`
 }
 
 // Predefined struct for user
@@ -5718,11 +5721,14 @@ type LicensePlateOCRResponseParams struct {
 	// 文本行在原图片中的像素坐标框。
 	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
 
-	// 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
+	// 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿”、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
 	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
 
 	// 全部车牌信息。
 	LicensePlateInfos []*LicensePlateInfo `json:"LicensePlateInfos,omitnil,omitempty" name:"LicensePlateInfos"`
+
+	// 车牌类别， 如： 实体车牌、非实体车牌 示例值：实体车牌
+	LicensePlateCategory *string `json:"LicensePlateCategory,omitnil,omitempty" name:"LicensePlateCategory"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

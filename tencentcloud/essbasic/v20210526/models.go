@@ -6853,8 +6853,10 @@ type Component struct {
 	// <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
 	// <li> <b>FontSize</b>： 范围6 :72</li>
 	// <li> <b>FontAlign</b>： Left/Right/Center，左对齐/居中/右对齐</li>
-	// <li> <b>FontColor</b>：字符串类型，格式为RGB颜色数字</li></ul>
-	// <b>参数样例</b>：`{"FontColor":"255,0,0","FontSize":12}`
+	// <li> <b>FontColor</b>：字符串类型，格式为RGB颜色数字</li>
+	// <li> <b>Bold</b>是否加粗：true/false</li>
+	// </ul>
+	// <b>参数样例</b>：`{"FontColor":"255,0,0","FontSize":12,"Bold":false}`
 	// 
 	// <font color="red">ComponentType为DATE时</font>，支持以下参数：
 	// <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
@@ -13774,8 +13776,7 @@ type ReleasedApprover struct {
 	// <li> **ENTERPRISESERVER**：企业静默签</li></ul>
 	ApproverType *string `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
 
-	// 签署人在原合同中的RecipientId，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo" target="_blank">DescribeFlowDetailInfo</a>接口查看原流程中的签署人信息，可参考返回结构体<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverdetail" target="_blank">FlowApproverDetail</a>中的RecipientId。
-	// **注意**：当指定了此参数后，ApproverNumber即失效，会以本参数作为原合同参与人的选取。与ApproverNumber二选一。
+	// <font color="red">【已废弃】</font>请用ApproverNumber来指定替换的参与方的位置
 	ReleasedApproverRecipientId *string `json:"ReleasedApproverRecipientId,omitnil,omitempty" name:"ReleasedApproverRecipientId"`
 
 	// 签署人姓名，最大长度50个字。

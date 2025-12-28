@@ -14727,7 +14727,7 @@ type DisableControlPlaneLogsRequestParams struct {
 	// 集群类型。当前只支持tke
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 组件名称列表，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+	// 组件名称列表，目前支持的组件有：cluster-autoscaler、kapenter
 	ComponentNames []*string `json:"ComponentNames,omitnil,omitempty" name:"ComponentNames"`
 
 	// 是否删除日志集和topic。 如果日志集和topic被其他采集规则使用，则不会被删除
@@ -14743,7 +14743,7 @@ type DisableControlPlaneLogsRequest struct {
 	// 集群类型。当前只支持tke
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 组件名称列表，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+	// 组件名称列表，目前支持的组件有：cluster-autoscaler、kapenter
 	ComponentNames []*string `json:"ComponentNames,omitnil,omitempty" name:"ComponentNames"`
 
 	// 是否删除日志集和topic。 如果日志集和topic被其他采集规则使用，则不会被删除
@@ -15494,7 +15494,7 @@ type EnableControlPlaneLogsRequestParams struct {
 	// 集群类型。当前只支持tke
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 各组件日志采集配置，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+	// 组件名称列表，目前支持的组件有：cluster-autoscaler、kapenter
 	Components []*ComponentLogConfig `json:"Components,omitnil,omitempty" name:"Components"`
 }
 
@@ -15507,7 +15507,7 @@ type EnableControlPlaneLogsRequest struct {
 	// 集群类型。当前只支持tke
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 各组件日志采集配置，目前支持的组件有：kube-apiserver、kube-controller-manager、kube-scheduler、cluster-autoscaler、kapenter
+	// 组件名称列表，目前支持的组件有：cluster-autoscaler、kapenter
 	Components []*ComponentLogConfig `json:"Components,omitnil,omitempty" name:"Components"`
 }
 
