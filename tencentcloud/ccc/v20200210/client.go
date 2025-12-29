@@ -4077,6 +4077,64 @@ func (c *Client) PausePredictiveDialingCampaignWithContext(ctx context.Context, 
     return
 }
 
+func NewPlaySoundCallRequest() (request *PlaySoundCallRequest) {
+    request = &PlaySoundCallRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "PlaySoundCall")
+    
+    
+    return
+}
+
+func NewPlaySoundCallResponse() (response *PlaySoundCallResponse) {
+    response = &PlaySoundCallResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PlaySoundCall
+// 对与座席通话中的会话，进行放音
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  FAILEDOPERATION_SESSIONNOTINCONTROLSTATE = "FailedOperation.SessionNotInControlState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_FILENOTEXIST = "InvalidParameterValue.FileNotExist"
+func (c *Client) PlaySoundCall(request *PlaySoundCallRequest) (response *PlaySoundCallResponse, err error) {
+    return c.PlaySoundCallWithContext(context.Background(), request)
+}
+
+// PlaySoundCall
+// 对与座席通话中的会话，进行放音
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  FAILEDOPERATION_SESSIONNOTINCONTROLSTATE = "FailedOperation.SessionNotInControlState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_FILENOTEXIST = "InvalidParameterValue.FileNotExist"
+func (c *Client) PlaySoundCallWithContext(ctx context.Context, request *PlaySoundCallRequest) (response *PlaySoundCallResponse, err error) {
+    if request == nil {
+        request = NewPlaySoundCallRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ccc", APIVersion, "PlaySoundCall")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PlaySoundCall require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPlaySoundCallResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetExtensionPasswordRequest() (request *ResetExtensionPasswordRequest) {
     request = &ResetExtensionPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4100,8 +4158,11 @@ func NewResetExtensionPasswordResponse() (response *ResetExtensionPasswordRespon
 // 重置话机注册密码
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  FAILEDOPERATION_SESSIONNOTINCONTROLSTATE = "FailedOperation.SessionNotInControlState"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILENOTEXIST = "InvalidParameterValue.FileNotExist"
 func (c *Client) ResetExtensionPassword(request *ResetExtensionPasswordRequest) (response *ResetExtensionPasswordResponse, err error) {
     return c.ResetExtensionPasswordWithContext(context.Background(), request)
 }
@@ -4110,8 +4171,11 @@ func (c *Client) ResetExtensionPassword(request *ResetExtensionPasswordRequest) 
 // 重置话机注册密码
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  FAILEDOPERATION_SESSIONNOTINCONTROLSTATE = "FailedOperation.SessionNotInControlState"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILENOTEXIST = "InvalidParameterValue.FileNotExist"
 func (c *Client) ResetExtensionPasswordWithContext(ctx context.Context, request *ResetExtensionPasswordRequest) (response *ResetExtensionPasswordResponse, err error) {
     if request == nil {
         request = NewResetExtensionPasswordRequest()

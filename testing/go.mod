@@ -68,12 +68,13 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudapp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudhsm v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudmate v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.22
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.23
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -318,6 +319,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudapp => ../tencentcloud/cloudapp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit => ../tencentcloud/cloudaudit
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudhsm => ../tencentcloud/cloudhsm
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudmate => ../tencentcloud/cloudmate
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio => ../tencentcloud/cloudstudio
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls => ../tencentcloud/cls
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme => ../tencentcloud/cme

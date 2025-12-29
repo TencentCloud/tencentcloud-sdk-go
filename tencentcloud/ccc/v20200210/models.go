@@ -7224,6 +7224,81 @@ type PhoneNumBuyInfo struct {
 }
 
 // Predefined struct for user
+type PlaySoundCallRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 音频文件 ID，参见管理端-电话客服-放音文件管理
+	FileId *int64 `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 放音次数，默认 1 次
+	PlayTimes *int64 `json:"PlayTimes,omitnil,omitempty" name:"PlayTimes"`
+}
+
+type PlaySoundCallRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 音频文件 ID，参见管理端-电话客服-放音文件管理
+	FileId *int64 `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 放音次数，默认 1 次
+	PlayTimes *int64 `json:"PlayTimes,omitnil,omitempty" name:"PlayTimes"`
+}
+
+func (r *PlaySoundCallRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PlaySoundCallRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SessionId")
+	delete(f, "FileId")
+	delete(f, "PlayTimes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PlaySoundCallRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PlaySoundCallResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PlaySoundCallResponse struct {
+	*tchttp.BaseResponse
+	Response *PlaySoundCallResponseParams `json:"Response"`
+}
+
+func (r *PlaySoundCallResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PlaySoundCallResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResetExtensionPasswordRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -8175,6 +8250,12 @@ type TelCdrInfo struct {
 
 	// 通话中语音留言ASR文本信息地址
 	VoicemailAsrURL []*string `json:"VoicemailAsrURL,omitnil,omitempty" name:"VoicemailAsrURL"`
+
+	// 如果是智能体相关通话，这里是智能体 ID
+	AIAgentId *int64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
+
+	// 如果是智能体相关通话，这里是智能体名称
+	AIAgentName *string `json:"AIAgentName,omitnil,omitempty" name:"AIAgentName"`
 }
 
 type TimeRange struct {

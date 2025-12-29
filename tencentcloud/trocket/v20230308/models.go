@@ -3971,26 +3971,26 @@ func (r *DescribeMigratingTopicStatsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMigrationTaskListRequestParams struct {
-	// 查询条件列表
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeMigrationTaskListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询条件列表
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 

@@ -1289,6 +1289,9 @@ type SubmitImageToVideoGeneralJobRequestParams struct {
 	// 视频内容的描述，中文正向提示词。最多支持200个 utf-8 字符（首尾空格不计入字符数）。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
+	// 输出视频分辨率。可选择：480p、720p、1080p。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
 	// 为生成视频添加标识的开关，默认为1，0 需前往 控制台 申请开启显示标识自主完成方可生效。  1：添加标识；  0：不添加标识；  其他数值：默认按1处理。
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
@@ -1308,6 +1311,9 @@ type SubmitImageToVideoGeneralJobRequest struct {
 
 	// 视频内容的描述，中文正向提示词。最多支持200个 utf-8 字符（首尾空格不计入字符数）。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 输出视频分辨率。可选择：480p、720p、1080p。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 为生成视频添加标识的开关，默认为1，0 需前往 控制台 申请开启显示标识自主完成方可生效。  1：添加标识；  0：不添加标识；  其他数值：默认按1处理。
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
@@ -1330,6 +1336,7 @@ func (r *SubmitImageToVideoGeneralJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Image")
 	delete(f, "Prompt")
+	delete(f, "Resolution")
 	delete(f, "LogoAdd")
 	delete(f, "LogoParam")
 	if len(f) > 0 {

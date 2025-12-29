@@ -772,6 +772,10 @@ type CloudResource struct {
 	// 所选数据盘信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Disks []*Disk `json:"Disks,omitnil,omitempty" name:"Disks"`
+
+	// 容忍
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tolerations []*Toleration `json:"Tolerations,omitnil,omitempty" name:"Tolerations"`
 }
 
 type ClusterExternalServiceInfo struct {
@@ -6010,7 +6014,7 @@ type DescribeServiceNodeInfosRequestParams struct {
 	// "-4"代表未探测
 	HealthStateId *string `json:"HealthStateId,omitnil,omitempty" name:"HealthStateId"`
 
-	// 服务组件名称，都是大写例如YARN
+	// 服务组件名称应采用全大写形式（例如：YARN），api调用时须与 ServiceGroupType 在两者之中任选其一并保证必填。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 节点名称master,core,task,common,router
@@ -6064,7 +6068,7 @@ type DescribeServiceNodeInfosRequest struct {
 	// "-4"代表未探测
 	HealthStateId *string `json:"HealthStateId,omitnil,omitempty" name:"HealthStateId"`
 
-	// 服务组件名称，都是大写例如YARN
+	// 服务组件名称应采用全大写形式（例如：YARN），api调用时须与 ServiceGroupType 在两者之中任选其一并保证必填。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 节点名称master,core,task,common,router
@@ -10744,6 +10748,16 @@ type Order struct {
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
+type OtherAccountInfo struct {
+	// 其他账号UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherUin *string `json:"OtherUin,omitnil,omitempty" name:"OtherUin"`
+
+	// 其他账号授权角色名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+}
+
 type OutterResource struct {
 	// 规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11035,6 +11049,9 @@ type PodNewSpec struct {
 
 	// pod name
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// 其他账号授权信息
+	OtherAccountInfo *OtherAccountInfo `json:"OtherAccountInfo,omitnil,omitempty" name:"OtherAccountInfo"`
 }
 
 type PodParameter struct {
@@ -13737,6 +13754,23 @@ type TkeLabel struct {
 
 	// Label Value
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type Toleration struct {
+	// 键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 操作符
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 污点排斥效果
+	Effect *string `json:"Effect,omitnil,omitempty" name:"Effect"`
+
+	// 驱逐等待时间
+	TolerationSeconds *int64 `json:"TolerationSeconds,omitnil,omitempty" name:"TolerationSeconds"`
 }
 
 type TopologyInfo struct {

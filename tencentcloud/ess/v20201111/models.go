@@ -7803,9 +7803,7 @@ type CreateOrganizationBatchSignUrlRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 请指定需执行批量签署的流程ID，数量范围为1-100。
-	// 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。
-	// 用户将利用链接对这些合同实施批量操作。
+	// 请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。 
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 代理企业和员工的信息。
@@ -7830,9 +7828,7 @@ type CreateOrganizationBatchSignUrlRequestParams struct {
 	//  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。
-	// 您可以通过查询合同接口（DescribeFlowInfo）查询此参数。
-	// 若传了此参数，则可以不传 UserId, Name, Mobile等参数
+	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。
 	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 
 	// 合同组Id，传入此参数则可以不传FlowIds
@@ -7840,6 +7836,9 @@ type CreateOrganizationBatchSignUrlRequestParams struct {
 
 	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
+
+	// 动态签署方领取链接配置。
+	DynamicSignOption *DynamicSignOption `json:"DynamicSignOption,omitnil,omitempty" name:"DynamicSignOption"`
 }
 
 type CreateOrganizationBatchSignUrlRequest struct {
@@ -7851,9 +7850,7 @@ type CreateOrganizationBatchSignUrlRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 请指定需执行批量签署的流程ID，数量范围为1-100。
-	// 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。
-	// 用户将利用链接对这些合同实施批量操作。
+	// 请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。 
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 代理企业和员工的信息。
@@ -7878,9 +7875,7 @@ type CreateOrganizationBatchSignUrlRequest struct {
 	//  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。
-	// 您可以通过查询合同接口（DescribeFlowInfo）查询此参数。
-	// 若传了此参数，则可以不传 UserId, Name, Mobile等参数
+	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。
 	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 
 	// 合同组Id，传入此参数则可以不传FlowIds
@@ -7888,6 +7883,9 @@ type CreateOrganizationBatchSignUrlRequest struct {
 
 	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
+
+	// 动态签署方领取链接配置。
+	DynamicSignOption *DynamicSignOption `json:"DynamicSignOption,omitnil,omitempty" name:"DynamicSignOption"`
 }
 
 func (r *CreateOrganizationBatchSignUrlRequest) ToJsonString() string {
@@ -7911,6 +7909,7 @@ func (r *CreateOrganizationBatchSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "RecipientIds")
 	delete(f, "FlowGroupId")
 	delete(f, "CanBatchReject")
+	delete(f, "DynamicSignOption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationBatchSignUrlRequest has unknown keys!", "")
 	}
@@ -14759,6 +14758,14 @@ type DynamicFlowApproverResult struct {
 	ApproverStatus *int64 `json:"ApproverStatus,omitnil,omitempty" name:"ApproverStatus"`
 }
 
+type DynamicSignOption struct {
+	// 多份合同批量签署时，动态签署领取要求：<ul><li><b>0（默认值）</b>: 可以领取部分合同进入签署。</li><li><b>1 </b>: 必须全部领取进入签署，生成链接的所有合同必须相同经办人完成合同的领取签署。</li></ul>
+	DynamicReceiveType *uint64 `json:"DynamicReceiveType,omitnil,omitempty" name:"DynamicReceiveType"`
+
+	// 动态签署方时，预设的企业名称，预设企业名称后，只允许对应的企业员工进行领取签署。
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+}
+
 type EmbedUrlOption struct {
 	// 合同详情预览，允许展示控件信息
 	// <ul>
@@ -16022,7 +16029,7 @@ type IntentionActionResultDetail struct {
 }
 
 type IntentionQuestion struct {
-	// 当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
+	// 当选择语音问答模式时，系统自动播报的问题文本，最大长度为250个字符。
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
 	//  当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表，传入后可自动判断用户回答文本是否在标准文本列表中。

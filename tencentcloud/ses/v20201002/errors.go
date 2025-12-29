@@ -257,6 +257,9 @@ const (
 	// 超出最大发信地址限制。
 	OPERATIONDENIED_EXCEEDSENDERLIMIT = "OperationDenied.ExceedSenderLimit"
 
+	// 不允许删除域名
+	OPERATIONDENIED_NOTALLOWDELETE = "OperationDenied.NotAllowDelete"
+
 	// 收件人列表正在上传中，请稍后操作。
 	OPERATIONDENIED_RECEIVERISOPERATING = "OperationDenied.ReceiverIsOperating"
 

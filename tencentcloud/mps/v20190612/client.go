@@ -515,6 +515,178 @@ func (c *Client) CreateAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     return
 }
 
+func NewCreateAigcImageTaskRequest() (request *CreateAigcImageTaskRequest) {
+    request = &CreateAigcImageTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateAigcImageTask")
+    
+    
+    return
+}
+
+func NewCreateAigcImageTaskResponse() (response *CreateAigcImageTaskResponse) {
+    response = &CreateAigcImageTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcImageTask
+// 调用该接口用于创建AIGC生图片任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_GOP = "InvalidParameterValue.Gop"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateAigcImageTask(request *CreateAigcImageTaskRequest) (response *CreateAigcImageTaskResponse, err error) {
+    return c.CreateAigcImageTaskWithContext(context.Background(), request)
+}
+
+// CreateAigcImageTask
+// 调用该接口用于创建AIGC生图片任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_GOP = "InvalidParameterValue.Gop"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateAigcImageTaskWithContext(ctx context.Context, request *CreateAigcImageTaskRequest) (response *CreateAigcImageTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcImageTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateAigcImageTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcImageTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcImageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAigcVideoTaskRequest() (request *CreateAigcVideoTaskRequest) {
+    request = &CreateAigcVideoTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateAigcVideoTask")
+    
+    
+    return
+}
+
+func NewCreateAigcVideoTaskResponse() (response *CreateAigcVideoTaskResponse) {
+    response = &CreateAigcVideoTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcVideoTask
+// 调用该接口，用于创建AI生视频任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_GOP = "InvalidParameterValue.Gop"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateAigcVideoTask(request *CreateAigcVideoTaskRequest) (response *CreateAigcVideoTaskResponse, err error) {
+    return c.CreateAigcVideoTaskWithContext(context.Background(), request)
+}
+
+// CreateAigcVideoTask
+// 调用该接口，用于创建AI生视频任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_GOP = "InvalidParameterValue.Gop"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateAigcVideoTaskWithContext(ctx context.Context, request *CreateAigcVideoTaskRequest) (response *CreateAigcVideoTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcVideoTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateAigcVideoTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcVideoTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcVideoTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAnimatedGraphicsTemplateRequest() (request *CreateAnimatedGraphicsTemplateRequest) {
     request = &CreateAnimatedGraphicsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3891,6 +4063,126 @@ func (c *Client) DescribeAdaptiveDynamicStreamingTemplatesWithContext(ctx contex
     request.SetContext(ctx)
     
     response = NewDescribeAdaptiveDynamicStreamingTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAigcImageTaskRequest() (request *DescribeAigcImageTaskRequest) {
+    request = &DescribeAigcImageTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeAigcImageTask")
+    
+    
+    return
+}
+
+func NewDescribeAigcImageTaskResponse() (response *DescribeAigcImageTaskResponse) {
+    response = &DescribeAigcImageTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcImageTask
+// 调用该接口，查询AIGC生图片任务进度以及获取生成结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcImageTask(request *DescribeAigcImageTaskRequest) (response *DescribeAigcImageTaskResponse, err error) {
+    return c.DescribeAigcImageTaskWithContext(context.Background(), request)
+}
+
+// DescribeAigcImageTask
+// 调用该接口，查询AIGC生图片任务进度以及获取生成结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcImageTaskWithContext(ctx context.Context, request *DescribeAigcImageTaskRequest) (response *DescribeAigcImageTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcImageTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAigcImageTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcImageTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcImageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAigcVideoTaskRequest() (request *DescribeAigcVideoTaskRequest) {
+    request = &DescribeAigcVideoTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeAigcVideoTask")
+    
+    
+    return
+}
+
+func NewDescribeAigcVideoTaskResponse() (response *DescribeAigcVideoTaskResponse) {
+    response = &DescribeAigcVideoTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcVideoTask
+// 调用该接口，用于查询AIGC生视频任务的进度以及获取生成结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcVideoTask(request *DescribeAigcVideoTaskRequest) (response *DescribeAigcVideoTaskResponse, err error) {
+    return c.DescribeAigcVideoTaskWithContext(context.Background(), request)
+}
+
+// DescribeAigcVideoTask
+// 调用该接口，用于查询AIGC生视频任务的进度以及获取生成结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcVideoTaskWithContext(ctx context.Context, request *DescribeAigcVideoTaskRequest) (response *DescribeAigcVideoTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcVideoTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAigcVideoTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcVideoTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcVideoTaskResponse()
     err = c.Send(request, response)
     return
 }

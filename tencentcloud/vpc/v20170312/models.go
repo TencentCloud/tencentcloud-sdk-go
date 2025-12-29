@@ -6477,6 +6477,9 @@ func (r *CreatePrivateNatGatewayTranslationAclRuleRequest) FromJsonString(s stri
 
 // Predefined struct for user
 type CreatePrivateNatGatewayTranslationAclRuleResponseParams struct {
+	// 创建成功的访问控制列表。
+	TranslationAclRuleSet []*TranslationAclRule `json:"TranslationAclRuleSet,omitnil,omitempty" name:"TranslationAclRuleSet"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -17900,6 +17903,9 @@ type DescribePrivateNatGatewayTranslationAclRulesRequestParams struct {
 
 	// ACL规则描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 过滤条件。<li>AclRuleId - Integer - ACL规则ID。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribePrivateNatGatewayTranslationAclRulesRequest struct {
@@ -17928,6 +17934,9 @@ type DescribePrivateNatGatewayTranslationAclRulesRequest struct {
 
 	// ACL规则描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 过滤条件。<li>AclRuleId - Integer - ACL规则ID。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribePrivateNatGatewayTranslationAclRulesRequest) ToJsonString() string {
@@ -17950,6 +17959,7 @@ func (r *DescribePrivateNatGatewayTranslationAclRulesRequest) FromJsonString(s s
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Description")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateNatGatewayTranslationAclRulesRequest has unknown keys!", "")
 	}

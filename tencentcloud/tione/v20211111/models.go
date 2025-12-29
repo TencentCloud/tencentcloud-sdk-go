@@ -803,6 +803,9 @@ type CreateModelServiceRequestParams struct {
 
 	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
+
+	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
 }
 
 type CreateModelServiceRequest struct {
@@ -956,6 +959,9 @@ type CreateModelServiceRequest struct {
 
 	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
+
+	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1012,6 +1018,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "RollingUpdate")
 	delete(f, "Sidecar")
 	delete(f, "VolumeMounts")
+	delete(f, "SchedulingStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -5027,7 +5034,21 @@ type ExecAction struct {
 }
 
 type ExposePortConfig struct {
+	// 是否开启暴露容器服务端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
+	// vpc id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// clb id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClbId *string `json:"ClbId,omitnil,omitempty" name:"ClbId"`
+
+	// clb domain
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClbHost *string `json:"ClbHost,omitnil,omitempty" name:"ClbHost"`
 }
 
 type Filter struct {
@@ -6029,6 +6050,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
+
+	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -6158,6 +6182,9 @@ type ModifyModelServiceRequest struct {
 
 	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
+
+	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -6206,6 +6233,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "Sidecar")
 	delete(f, "ResourceGroupId")
 	delete(f, "VolumeMounts")
+	delete(f, "SchedulingStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -7073,6 +7101,12 @@ type ResourceInfo struct {
 	// 是否开启rdma
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableRDMA *bool `json:"EnableRDMA,omitnil,omitempty" name:"EnableRDMA"`
+
+	// root disk size(GB)
+	RootDisk *uint64 `json:"RootDisk,omitnil,omitempty" name:"RootDisk"`
+
+	// data disk size(GB)
+	DataDisk *uint64 `json:"DataDisk,omitnil,omitempty" name:"DataDisk"`
 }
 
 type ResourceInstanceRunningJobInfo struct {
@@ -7227,13 +7261,11 @@ type Service struct {
 	BusinessStatus *string `json:"BusinessStatus,omitnil,omitempty" name:"BusinessStatus"`
 
 	// 已废弃,以ServiceInfo中的对应为准
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: ServiceLimit is deprecated.
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitnil,omitempty" name:"ServiceLimit"`
 
 	// 已废弃,以ServiceInfo中的对应为准
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: ScheduledAction is deprecated.
 	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitnil,omitempty" name:"ScheduledAction"`
@@ -7523,27 +7555,21 @@ type ServiceInfo struct {
 	Resources *ResourceInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
 
 	// 后付费实例对应的机型规格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 模型信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelInfo *ModelInfo `json:"ModelInfo,omitnil,omitempty" name:"ModelInfo"`
 
 	// 是否启用日志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
 	// 日志配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
 	// 是否开启鉴权
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
 
 	// hpa配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HorizontalPodAutoscaler *HorizontalPodAutoscaler `json:"HorizontalPodAutoscaler,omitnil,omitempty" name:"HorizontalPodAutoscaler"`
 
 	// 服务的状态描述
@@ -7658,6 +7684,12 @@ type ServiceInfo struct {
 
 	// 批量数据盘挂载配置
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
+
+	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
+
+	// 服务实际运行的节点数
+	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 }
 
 type ServiceLimit struct {

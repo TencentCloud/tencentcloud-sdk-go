@@ -104,6 +104,12 @@ type AgentAdvancedConfig struct {
 
 	// 结构化输出配置
 	StructuredOutputConfig *StructuredOutputConfig `json:"StructuredOutputConfig,omitnil,omitempty" name:"StructuredOutputConfig"`
+
+	// Agent输出配置
+	AgentOutputConfig *AgentOutputConfig `json:"AgentOutputConfig,omitnil,omitempty" name:"AgentOutputConfig"`
+
+	// 澄清询问配置
+	ClarificationConfig *ClarificationConfig `json:"ClarificationConfig,omitnil,omitempty" name:"ClarificationConfig"`
 }
 
 type AgentDebugInfo struct {
@@ -142,6 +148,9 @@ type AgentInput struct {
 
 	// 系统参数
 	SystemVariable *AgentInputSystemVariable `json:"SystemVariable,omitnil,omitempty" name:"SystemVariable"`
+
+	// 工具参数
+	ToolParam *string `json:"ToolParam,omitnil,omitempty" name:"ToolParam"`
 }
 
 type AgentInputSystemVariable struct {
@@ -274,6 +283,17 @@ type AgentModelInfo struct {
 
 	// 模型参数
 	ModelParams *ModelParams `json:"ModelParams,omitnil,omitempty" name:"ModelParams"`
+}
+
+type AgentOutputConfig struct {
+	// 输出类型，1-文本 2-json 3-widget
+	OutputType *int64 `json:"OutputType,omitnil,omitempty" name:"OutputType"`
+
+	// Json结构化输出参数列表
+	StructuredOutputParams []*ParameterConfig `json:"StructuredOutputParams,omitnil,omitempty" name:"StructuredOutputParams"`
+
+	// widget id
+	WidgetId *string `json:"WidgetId,omitnil,omitempty" name:"WidgetId"`
 }
 
 type AgentPluginHeader struct {
@@ -577,6 +597,9 @@ type AgentToolInfo struct {
 
 	// 计费状态；0-不计费，1-限时免费，2-官方收费
 	FinanceType *int64 `json:"FinanceType,omitnil,omitempty" name:"FinanceType"`
+
+	// 工具高级设置
+	ToolAdvanceConfig *ToolAdvanceConfig `json:"ToolAdvanceConfig,omitnil,omitempty" name:"ToolAdvanceConfig"`
 }
 
 type AgentToolReqParam struct {
@@ -1227,6 +1250,31 @@ func (r *CheckAttributeLabelReferResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClarificationConfig struct {
+	// 输出类型，1-文本 3-widget
+	OutputType *int64 `json:"OutputType,omitnil,omitempty" name:"OutputType"`
+
+	// 澄清widget配置
+	WidgetConfigs []*ClarificationWidgetConfig `json:"WidgetConfigs,omitnil,omitempty" name:"WidgetConfigs"`
+}
+
+type ClarificationWidgetConfig struct {
+	// widget id
+	WidgetId *string `json:"WidgetId,omitnil,omitempty" name:"WidgetId"`
+
+	// 澄清widget类型
+	ClarificationWidgetType *int64 `json:"ClarificationWidgetType,omitnil,omitempty" name:"ClarificationWidgetType"`
+
+	// Widget名称
+	WidgetName *string `json:"WidgetName,omitnil,omitempty" name:"WidgetName"`
+
+	// Widget预览
+	WidgetPreview *string `json:"WidgetPreview,omitnil,omitempty" name:"WidgetPreview"`
+
+	// 是否启用该Widget作为澄清样式
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
 type ClassifyConfig struct {
 	// 模型配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1253,6 +1301,101 @@ type ClassifyLabel struct {
 	// 标签取值范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type Content struct {
+	// 消息内容类型
+	// text：文本
+	// image：图片
+	// file：文件
+	// option_cards：选项卡
+	// custom_params：用户自定义业务参数
+	// sandbox：云桌面
+	// custom_variables：自定义输入参数
+	// web_search: 网页搜索内容
+	// file_collection：文件收集信息
+	// widget：widget信息
+	// widget_action：用户端widget动作信息
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 引用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuoteInfos []*QuoteInfo `json:"QuoteInfos,omitnil,omitempty" name:"QuoteInfos"`
+
+	// 参考文献信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	References []*ContentReference `json:"References,omitnil,omitempty" name:"References"`
+
+	// 图片信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Image *ImageInfoContent `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 文件信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	File *FileInfoContent `json:"File,omitnil,omitempty" name:"File"`
+
+	// 选项卡信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OptionCards []*string `json:"OptionCards,omitnil,omitempty" name:"OptionCards"`
+
+	// 用户自定义业务参数信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomParams []*string `json:"CustomParams,omitnil,omitempty" name:"CustomParams"`
+
+	// 自定义变量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomVariables []*string `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+
+	// 沙盒信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sandbox *SandboxContent `json:"Sandbox,omitnil,omitempty" name:"Sandbox"`
+
+	// 网页搜索内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebSearch *WebSearchContent `json:"WebSearch,omitnil,omitempty" name:"WebSearch"`
+
+	// 文件收集信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileCollection *FileCollection `json:"FileCollection,omitnil,omitempty" name:"FileCollection"`
+
+	// Widget信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Widget *Widget `json:"Widget,omitnil,omitempty" name:"Widget"`
+
+	// Widget动作信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WidgetAction *WidgetAction `json:"WidgetAction,omitnil,omitempty" name:"WidgetAction"`
+}
+
+type ContentReference struct {
+	// 引用来源索引ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 参考来源名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 参考来源类型
+	// 1：问答
+	// 2：文档片段
+	// 4：联网检索到的内容
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 文档片段参考信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocRefer *DocReference `json:"DocRefer,omitnil,omitempty" name:"DocRefer"`
+
+	// 问答参考信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QaRefer *QaReference `json:"QaRefer,omitnil,omitempty" name:"QaRefer"`
+
+	// 联网检索内容参考信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebSearchRefer *WebSearchReference `json:"WebSearchRefer,omitnil,omitempty" name:"WebSearchRefer"`
 }
 
 type Context struct {
@@ -1546,12 +1689,13 @@ func (r *CreateDocCateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateQACateRequestParams struct {
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 父级业务ID，创建顶级分类时传字符串"0"
 	ParentBizId *string `json:"ParentBizId,omitnil,omitempty" name:"ParentBizId"`
 
-	// 分类名称
+	// 创建的分类名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -1559,12 +1703,13 @@ type CreateQACateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 父级业务ID，创建顶级分类时传字符串"0"
 	ParentBizId *string `json:"ParentBizId,omitnil,omitempty" name:"ParentBizId"`
 
-	// 分类名称
+	// 创建的分类名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -1662,7 +1807,8 @@ type CreateQARequestParams struct {
 	// 问题描述
 	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
 
-	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 问答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+	// 默认值：应用内默认知识库为2，共享知识库为4。
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
@@ -1706,7 +1852,8 @@ type CreateQARequest struct {
 	// 问题描述
 	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
 
-	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 问答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+	// 默认值：应用内默认知识库为2，共享知识库为4。
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
@@ -3144,7 +3291,7 @@ func (r *DescribeAttributeLabelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCallStatsGraphRequestParams struct {
-	// uin
+	// 子账号标识列表，支持批量查询多个子账号。不填时查询主账号下所有子账号的汇总数据
 	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -3153,16 +3300,20 @@ type DescribeCallStatsGraphRequestParams struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 子业务类型
+	// 子业务类型，用于筛选不同业务场景的调用统计
 	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
 
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// 开始时间戳, 单位为秒(废弃)
+	//
+	// Deprecated: StartTime is deprecated.
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间戳, 单位为秒(废弃)
+	//
+	// Deprecated: EndTime is deprecated.
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -3174,20 +3325,20 @@ type DescribeCallStatsGraphRequestParams struct {
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
-	// 空间id
+	// 空间ID，用于限定查询范围。不填时查询所有空间的数据
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 type DescribeCallStatsGraphRequest struct {
 	*tchttp.BaseRequest
 	
-	// uin
+	// 子账号标识列表，支持批量查询多个子账号。不填时查询主账号下所有子账号的汇总数据
 	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -3196,7 +3347,7 @@ type DescribeCallStatsGraphRequest struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// 子业务类型
+	// 子业务类型，用于筛选不同业务场景的调用统计
 	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
 
 	// 模型标识
@@ -3217,13 +3368,13 @@ type DescribeCallStatsGraphRequest struct {
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
-	// 空间id
+	// 空间ID，用于限定查询范围。不填时查询所有空间的数据
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
@@ -3658,7 +3809,7 @@ type DescribeDocResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CateNamePath []*string `json:"CateNamePath,omitnil,omitempty" name:"CateNamePath"`
 
-	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3686,7 +3837,7 @@ type DescribeKnowledgeUsagePieGraphRequestParams struct {
 	// 应用ID数组
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
 
-	// 空间列表
+	// 空间ID，用于限定查询范围。不填时查询所有空间的数据
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
@@ -3696,7 +3847,7 @@ type DescribeKnowledgeUsagePieGraphRequest struct {
 	// 应用ID数组
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
 
-	// 空间列表
+	// 空间ID，用于限定查询范围。不填时查询所有空间的数据
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
@@ -4011,11 +4162,12 @@ type DescribeQAResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CateNamePath []*string `json:"CateNamePath,omitnil,omitempty" name:"CateNamePath"`
 
-	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 问答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 
-	// 问答关联的文档生效域
+	// 问答关联的文档生效域:1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效.
+	// 若问答未关联文档，则该字段值同问答生效域
 	DocEnableScope *int64 `json:"DocEnableScope,omitnil,omitempty" name:"DocEnableScope"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4184,20 +4336,20 @@ func (r *DescribeReleaseInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReleaseRequestParams struct {
-	// 应用ID
+	// 应用ID。获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)  
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 发布详情
+	// 发布ID
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 }
 
 type DescribeReleaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID。获取方法参看如何获取 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)  
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 发布详情
+	// 发布ID
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 }
 
@@ -4670,7 +4822,7 @@ func (r *DescribeStorageCredentialResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTokenUsageGraphRequestParams struct {
-	// 腾讯云主账号
+	// 子账号标识列表，支持批量查询多个子账号。不填时查询主账号下所有子账号的汇总数据
 	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 
 	// 知识引擎子业务类型:  FileParse(文档解析)、Embedding、Rewrite(多轮改写)、 Concurrency(并发)、KnowledgeSummary(知识总结)   KnowledgeQA(知识问答)、KnowledgeCapacity(知识库容量)、SearchEngine(搜索引擎)
@@ -4680,31 +4832,35 @@ type DescribeTokenUsageGraphRequestParams struct {
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// 开始时间戳, 单位为秒(废弃)
+	//
+	// Deprecated: StartTime is deprecated.
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间戳, 单位为秒(废弃)
+	//
+	// Deprecated: EndTime is deprecated.
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 应用id列表
+	// 应用ID列表。不填时：若指定SpaceId则查该空间所有应用；否则查用户下所有应用
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
 
-	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+	// 应用类型。可选值：knowledge_qa(知识问答)/plugin_parsing_qa(插件)/shared_knowledge(知识库)/evaluate_test(评测)。不填时查所有类型
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
 	// 筛选子场景
 	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 type DescribeTokenUsageGraphRequest struct {
 	*tchttp.BaseRequest
 	
-	// 腾讯云主账号
+	// 子账号标识列表，支持批量查询多个子账号。不填时查询主账号下所有子账号的汇总数据
 	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 
 	// 知识引擎子业务类型:  FileParse(文档解析)、Embedding、Rewrite(多轮改写)、 Concurrency(并发)、KnowledgeSummary(知识总结)   KnowledgeQA(知识问答)、KnowledgeCapacity(知识库容量)、SearchEngine(搜索引擎)
@@ -4719,19 +4875,19 @@ type DescribeTokenUsageGraphRequest struct {
 	// 结束时间戳, 单位为秒(废弃)
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 应用id列表
+	// 应用ID列表。不填时：若指定SpaceId则查该空间所有应用；否则查用户下所有应用
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
 
-	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+	// 应用类型。可选值：knowledge_qa(知识问答)/plugin_parsing_qa(插件)/shared_knowledge(知识库)/evaluate_test(评测)。不填时查所有类型
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
 	// 筛选子场景
 	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
@@ -4796,7 +4952,7 @@ func (r *DescribeTokenUsageGraphResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTokenUsageRequestParams struct {
-	// 腾讯云主账号
+	// 子账号标识列表，用于筛选指定子账号的统计数据，不填时查询主账号下所有子账号的汇总数据
 	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -4812,9 +4968,13 @@ type DescribeTokenUsageRequestParams struct {
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// 开始时间戳, 单位为秒(默认值0)(废弃)
+	//
+	// Deprecated: StartTime is deprecated.
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)(废弃)
+	//
+	// Deprecated: EndTime is deprecated.
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
@@ -4826,20 +4986,20 @@ type DescribeTokenUsageRequestParams struct {
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
-	// 空间id
+	// 空间ID，用于限定查询范围。不填时查询所有空间的数据
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
 type DescribeTokenUsageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 腾讯云主账号
+	// 子账号标识列表，用于筛选指定子账号的统计数据，不填时查询主账号下所有子账号的汇总数据
 	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -4869,13 +5029,13 @@ type DescribeTokenUsageRequest struct {
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
-	// 空间id
+	// 空间ID，用于限定查询范围。不填时查询所有空间的数据
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
@@ -4970,7 +5130,7 @@ type DescribeUnsatisfiedReplyContextRequestParams struct {
 	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 回复ID，调用这个接口获得：[ListUnsatisfiedReply](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListUnsatisfiedReply) 
+	// 回复ID
 	ReplyBizId *string `json:"ReplyBizId,omitnil,omitempty" name:"ReplyBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -4986,7 +5146,7 @@ type DescribeUnsatisfiedReplyContextRequest struct {
 	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 回复ID，调用这个接口获得：[ListUnsatisfiedReply](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListUnsatisfiedReply) 
+	// 回复ID
 	ReplyBizId *string `json:"ReplyBizId,omitnil,omitempty" name:"ReplyBizId"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -5168,6 +5328,31 @@ type DocFilterFlag struct {
 	Value *bool `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type DocReference struct {
+	// 文档业务ID
+	DocBizId *uint64 `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
+
+	// 文档片段参考ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReferBizId *uint64 `json:"ReferBizId,omitnil,omitempty" name:"ReferBizId"`
+
+	// 文档名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocName *string `json:"DocName,omitnil,omitempty" name:"DocName"`
+
+	// 文档所在知识库业务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeBizId *uint64 `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 文档所在知识库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
+
+	// 文档访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
 type DocSegment struct {
 	// 片段ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5312,12 +5497,20 @@ func (r *ExportAttributeLabelResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportQAListRequestParams struct {
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// QA业务ID
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
 
 	// 查询参数
+	// Filters.pageNumber范围是>0,0<Filters.pageSize<=200
+	// Filters.query用于内容检索，模糊匹配
+	// Filters.AcceptStatus默认值是0，表示不筛选，返回所有状态
+	// Filters.ReleaseStatus默认值是0，表示不筛选，返回所有状态
+	// Filters.Source默认值是0，表示不筛选，返回所有来源。表示来源(1 文档生成 2 批量导入 3 手动添加)。
+	// Filter.QueryType默认值是"filename"，表示查询类型。
+	// ShowCurrCate表示，是否只展示当前分类的数据 0不是，1是
 	Filters *QAQuery `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5325,12 +5518,20 @@ type ExportQAListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// QA业务ID
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
 
 	// 查询参数
+	// Filters.pageNumber范围是>0,0<Filters.pageSize<=200
+	// Filters.query用于内容检索，模糊匹配
+	// Filters.AcceptStatus默认值是0，表示不筛选，返回所有状态
+	// Filters.ReleaseStatus默认值是0，表示不筛选，返回所有状态
+	// Filters.Source默认值是0，表示不筛选，返回所有来源。表示来源(1 文档生成 2 批量导入 3 手动添加)。
+	// Filter.QueryType默认值是"filename"，表示查询类型。
+	// ShowCurrCate表示，是否只展示当前分类的数据 0不是，1是
 	Filters *QAQuery `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5380,9 +5581,10 @@ func (r *ExportQAListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportUnsatisfiedReplyRequestParams struct {
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 勾选导出ID列表
+	// 勾选导出不满意回复的ID列表
 	ReplyBizIds []*string `json:"ReplyBizIds,omitnil,omitempty" name:"ReplyBizIds"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -5399,9 +5601,10 @@ type ExportUnsatisfiedReplyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 勾选导出ID列表
+	// 勾选导出不满意回复的ID列表
 	ReplyBizIds []*string `json:"ReplyBizIds,omitnil,omitempty" name:"ReplyBizIds"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -5465,6 +5668,15 @@ type ExtraInfo struct {
 	EChartsInfo []*string `json:"EChartsInfo,omitnil,omitempty" name:"EChartsInfo"`
 }
 
+type FileCollection struct {
+	// 最大上传文件的数量
+	MaxFileCount *int64 `json:"MaxFileCount,omitnil,omitempty" name:"MaxFileCount"`
+
+	// 支持的上传文件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportedFileTypes []*string `json:"SupportedFileTypes,omitnil,omitempty" name:"SupportedFileTypes"`
+}
+
 type FileInfo struct {
 	// 文件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5489,6 +5701,27 @@ type FileInfo struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+}
+
+type FileInfoContent struct {
+	// 实时文档解析接口返回的 DocBizId
+	DocBizId *uint64 `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
+
+	// 文件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 文件 URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 }
 
 type Filters struct {
@@ -6032,58 +6265,70 @@ func (r *GetLikeDataCountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetMsgRecordRequestParams struct {
-	// 类型
+	// 接入类型， 5-API 访客，目前仅支持传5
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数量,  数量需大于2, 最大1000
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 会话sessionid
+	// 会话sessionid。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// 应用AppKey, 当Type=5[API访客]时, 该字段必填  :</br>  获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
-	// 场景, 体验: 1; 正式: 2
+	// 场景, 体验: 1; 正式: 2 。
+	// 
+	// 体验用于创建应用测试的时候使用，正式是应用发布后对外的时候使用
 	Scene *uint64 `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 最后一条记录ID， 消息从后往前获取
 	// 
 	// MidRecordId与LastRecordId只能选择一个
+	// 
+	// LastRecordId 和MidRecordId都不填的时候，默认从最新的消息ID开始取。
 	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
 
 	// 传该值，代表拉取该记录id的前后总共count条消息记录
 	// 
 	// MidRecordId与LastRecordId只能选择一个
+	// 
+	// LastRecordId 和MidRecordId都不填的时候，默认从最新的消息Id开始取
 	MidRecordId *string `json:"MidRecordId,omitnil,omitempty" name:"MidRecordId"`
 }
 
 type GetMsgRecordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 类型
+	// 接入类型， 5-API 访客，目前仅支持传5
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数量,  数量需大于2, 最大1000
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 会话sessionid
+	// 会话sessionid。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// 应用AppKey, 当Type=5[API访客]时, 该字段必填  :</br>  获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
-	// 场景, 体验: 1; 正式: 2
+	// 场景, 体验: 1; 正式: 2 。
+	// 
+	// 体验用于创建应用测试的时候使用，正式是应用发布后对外的时候使用
 	Scene *uint64 `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 最后一条记录ID， 消息从后往前获取
 	// 
 	// MidRecordId与LastRecordId只能选择一个
+	// 
+	// LastRecordId 和MidRecordId都不填的时候，默认从最新的消息ID开始取。
 	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
 
 	// 传该值，代表拉取该记录id的前后总共count条消息记录
 	// 
 	// MidRecordId与LastRecordId只能选择一个
+	// 
+	// LastRecordId 和MidRecordId都不填的时候，默认从最新的消息Id开始取
 	MidRecordId *string `json:"MidRecordId,omitnil,omitempty" name:"MidRecordId"`
 }
 
@@ -6353,10 +6598,12 @@ type GetWsTokenRequestParams struct {
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 访客ID（外部输入，建议唯一，标识当前接入会话的用户）
-	// 长度限制： string(64)
+	// 长度限制： string(64)，即最长不超过64个字符
 	VisitorBizId *string `json:"VisitorBizId,omitnil,omitempty" name:"VisitorBizId"`
 
 	// 知识标签，用于知识库中知识的检索过滤。该字段即将下线，请使用对话端接口中的 custom_variables 字段替代该字段。
+	//
+	// Deprecated: VisitorLabels is deprecated.
 	VisitorLabels []*GetWsTokenReq_Label `json:"VisitorLabels,omitnil,omitempty" name:"VisitorLabels"`
 }
 
@@ -6370,7 +6617,7 @@ type GetWsTokenRequest struct {
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 访客ID（外部输入，建议唯一，标识当前接入会话的用户）
-	// 长度限制： string(64)
+	// 长度限制： string(64)，即最长不超过64个字符
 	VisitorBizId *string `json:"VisitorBizId,omitnil,omitempty" name:"VisitorBizId"`
 
 	// 知识标签，用于知识库中知识的检索过滤。该字段即将下线，请使用对话端接口中的 custom_variables 字段替代该字段。
@@ -6512,6 +6759,7 @@ func (r *GroupDocResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GroupQARequestParams struct {
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// QaBizID列表
@@ -6525,6 +6773,7 @@ type GroupQARequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// QaBizID列表
@@ -6677,6 +6926,11 @@ func (r *IgnoreUnsatisfiedReplyResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *IgnoreUnsatisfiedReplyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ImageInfoContent struct {
+	// 图片文件链接
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type InputBoxConfig struct {
@@ -8062,6 +8316,7 @@ func (r *ListModelResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListQACateRequestParams struct {
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 分类查询类型：0-全量查询整棵标签树，1-根据父节点BizId分页查询子节点，2-关键词检索所有匹配的分类链路
@@ -8084,6 +8339,7 @@ type ListQACateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
+	// 若要操作共享知识库，传KnowledgeBizId
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 分类查询类型：0-全量查询整棵标签树，1-根据父节点BizId分页查询子节点，2-关键词检索所有匹配的分类链路
@@ -8922,6 +9178,12 @@ type ListReleaseItem struct {
 
 	// 发布失败数
 	FailCount *int64 `json:"FailCount,omitnil,omitempty" name:"FailCount"`
+
+	// 版本号，格式是 v{date}{time}
+	ReleaseVersion *string `json:"ReleaseVersion,omitnil,omitempty" name:"ReleaseVersion"`
+
+	// 是否可还原
+	CanRollback *bool `json:"CanRollback,omitnil,omitempty" name:"CanRollback"`
 }
 
 // Predefined struct for user
@@ -9042,26 +9304,26 @@ func (r *ListReleaseQAPreviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListReleaseRequestParams struct {
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码(必须大于0)
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type ListReleaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码
+	// 页码(必须大于0)
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 每页数量（取值范围为1-200）
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
@@ -9723,6 +9985,19 @@ type ModelInfo struct {
 }
 
 type ModelParameter struct {
+	// 超参名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 默认值
+	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
+
+	// 枚举值
+	EnumValues []*string `json:"EnumValues,omitnil,omitempty" name:"EnumValues"`
+
 	// 默认值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Default *float64 `json:"Default,omitnil,omitempty" name:"Default"`
@@ -9734,10 +10009,6 @@ type ModelParameter struct {
 	// 最大值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Max *float64 `json:"Max,omitnil,omitempty" name:"Max"`
-
-	// 超参名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type ModelParams struct {
@@ -9767,14 +10038,24 @@ type ModelParams struct {
 
 	// 输出格式
 	ReplyFormat *string `json:"ReplyFormat,omitnil,omitempty" name:"ReplyFormat"`
+
+	// 深度思考值
+	// disabled
+	// enabled
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeepThinking *string `json:"DeepThinking,omitnil,omitempty" name:"DeepThinking"`
+
+	// 效果 disabled low medium high
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReasoningEffort *string `json:"ReasoningEffort,omitnil,omitempty" name:"ReasoningEffort"`
 }
 
 // Predefined struct for user
 type ModifyAppRequestParams struct {
-	// 应用 ID
+	// 应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classify-知识标签提取
+	// 应用类型；"knowledge_qa" 知识问答应用（包含标准模式 单工作流 Multi-Agent 等模式）
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
 	// 应用基础配置
@@ -9790,10 +10071,10 @@ type ModifyAppRequestParams struct {
 type ModifyAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID
+	// 应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classify-知识标签提取
+	// 应用类型；"knowledge_qa" 知识问答应用（包含标准模式 单工作流 Multi-Agent 等模式）
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
 	// 应用基础配置
@@ -10161,7 +10442,8 @@ type ModifyDocRequestParams struct {
 	// 自定义切分规则
 	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
 
-	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+	// 若不传，则不会修改文档生效域。
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
@@ -10217,7 +10499,8 @@ type ModifyDocRequest struct {
 	// 自定义切分规则
 	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
 
-	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+	// 若不传，则不会修改文档生效域。
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
@@ -10465,7 +10748,7 @@ type ModifyQARequestParams struct {
 	// 问题描述
 	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
 
-	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 问答生效范围: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。若不传该字段，则不修改问答的生效范围。
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
@@ -10514,7 +10797,7 @@ type ModifyQARequest struct {
 	// 问题描述
 	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
 
-	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 问答生效范围: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。若不传该字段，则不修改问答的生效范围。
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
@@ -10581,7 +10864,7 @@ type ModifyRejectedQuestionRequestParams struct {
 	// 
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 拒答问题来源的数据源唯一id, 通过[ListRejectedQuestion](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListRejectedQuestion)接口获取
+	// 拒答问题来源的数据源唯一id, 通过调用ListRejectedQuestion接口获取
 	// 
 	// 
 	RejectedBizId *string `json:"RejectedBizId,omitnil,omitempty" name:"RejectedBizId"`
@@ -10597,7 +10880,7 @@ type ModifyRejectedQuestionRequest struct {
 	// 
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 拒答问题来源的数据源唯一id, 通过[ListRejectedQuestion](https://capi.woa.com/api/detail?product=lke&version=2023-11-30&action=ListRejectedQuestion)接口获取
+	// 拒答问题来源的数据源唯一id, 通过调用ListRejectedQuestion接口获取
 	// 
 	// 
 	RejectedBizId *string `json:"RejectedBizId,omitnil,omitempty" name:"RejectedBizId"`
@@ -10772,6 +11055,14 @@ type MsgRecord struct {
 	// 工作流信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkFlow *WorkflowInfo `json:"WorkFlow,omitnil,omitempty" name:"WorkFlow"`
+
+	// Widget信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Widgets []*Widget `json:"Widgets,omitnil,omitempty" name:"Widgets"`
+
+	// Widget动作信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WidgetAction *WidgetAction `json:"WidgetAction,omitnil,omitempty" name:"WidgetAction"`
 }
 
 type MsgRecordReference struct {
@@ -10971,6 +11262,17 @@ type OptionCardIndex struct {
 
 	// 选项卡索引
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+}
+
+type OutputWidgetConfig struct {
+	// widget id
+	WidgetId *string `json:"WidgetId,omitnil,omitempty" name:"WidgetId"`
+
+	// widget名字
+	WidgetName *string `json:"WidgetName,omitnil,omitempty" name:"WidgetName"`
+
+	// 展示结果
+	WidgetParam []*WidgetParam `json:"WidgetParam,omitnil,omitempty" name:"WidgetParam"`
 }
 
 type ParameterConfig struct {
@@ -11184,6 +11486,23 @@ type QAQuery struct {
 
 	// 查询类型 filename 名称、 attribute 标签
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+}
+
+type QaReference struct {
+	// 问答业务ID
+	QaBizId *uint64 `json:"QaBizId,omitnil,omitempty" name:"QaBizId"`
+
+	// 文档片段参考ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReferBizId *uint64 `json:"ReferBizId,omitnil,omitempty" name:"ReferBizId"`
+
+	// 问答所在知识库业务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeBizId *uint64 `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 问答所在知识库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
 }
 
 type QuoteInfo struct {
@@ -11784,20 +12103,20 @@ func (r *RetryDocParseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RetryReleaseRequestParams struct {
-	// 机器人ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 发布业务ID
+	// 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 }
 
 type RetryReleaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID（获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)）
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 发布业务ID
+	// 发布单ID（可以通过[ListRelease](https://cloud.tencent.com/document/product/1759/105077)获得）
 	ReleaseBizId *string `json:"ReleaseBizId,omitnil,omitempty" name:"ReleaseBizId"`
 }
 
@@ -11863,6 +12182,20 @@ type RunNodeInfo struct {
 	// 当前节点的所有槽位的值，key：SlotID。没有值的时候也要返回空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlotValues []*ValueInfo `json:"SlotValues,omitnil,omitempty" name:"SlotValues"`
+}
+
+type SandboxContent struct {
+	// 沙盒的URL地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 沙盒通过浏览器打开的URL地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayUrl *string `json:"DisplayUrl,omitnil,omitempty" name:"DisplayUrl"`
+
+	// 沙盒输出内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 // Predefined struct for user
@@ -12024,7 +12357,8 @@ type SaveDocRequestParams struct {
 	// 文档更新频率，默认值为0不更新
 	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
 
-	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+	// 默认值：应用内默认知识库为2，共享知识库为4。
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
@@ -12188,7 +12522,8 @@ type SaveDocRequest struct {
 	// 文档更新频率，默认值为0不更新
 	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
 
-	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+	// 默认值：应用内默认知识库为2，共享知识库为4。
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
@@ -12686,6 +13021,23 @@ type TokenStat struct {
 	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
 }
 
+type ToolAdvanceConfig struct {
+	// 工具调用结果是否直接返回给用户
+	EnableDirectResultReturn *bool `json:"EnableDirectResultReturn,omitnil,omitempty" name:"EnableDirectResultReturn"`
+
+	// 输出样式 1-文本 2-json 3-widget
+	OutputType *int64 `json:"OutputType,omitnil,omitempty" name:"OutputType"`
+
+	// 原始结构化JSON输出
+	RawStructuredOutput *string `json:"RawStructuredOutput,omitnil,omitempty" name:"RawStructuredOutput"`
+
+	// 自定义文本输出，多行展示
+	CustomTextOutputs *string `json:"CustomTextOutputs,omitnil,omitempty" name:"CustomTextOutputs"`
+
+	// Widget输出配置
+	OutputWidgetConfig *OutputWidgetConfig `json:"OutputWidgetConfig,omitnil,omitempty" name:"OutputWidgetConfig"`
+}
+
 type UnsatisfiedReply struct {
 	// 不满意回复ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13144,6 +13496,73 @@ type VoiceConfig struct {
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
 }
 
+type WebSearchContent struct {
+	// 网页搜索结果，json格式的string
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type WebSearchReference struct {
+	// 网页URL
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type Widget struct {
+	// Widget配置ID
+	WidgetId *string `json:"WidgetId,omitnil,omitempty" name:"WidgetId"`
+
+	// Widget实例ID
+	WidgetRunId *string `json:"WidgetRunId,omitnil,omitempty" name:"WidgetRunId"`
+
+	// Widget状态数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// Widget位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Position *int64 `json:"Position,omitnil,omitempty" name:"Position"`
+
+	// Base64编码的Widget信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncodedWidget *string `json:"EncodedWidget,omitnil,omitempty" name:"EncodedWidget"`
+
+	// 用户最近一次提交的payload
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+}
+
+type WidgetAction struct {
+	// Widget配置ID
+	WidgetId *string `json:"WidgetId,omitnil,omitempty" name:"WidgetId"`
+
+	// Widget实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WidgetRunId *string `json:"WidgetRunId,omitnil,omitempty" name:"WidgetRunId"`
+
+	// Widget动作
+	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// Widget动作提交的数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+}
+
+type WidgetParam struct {
+	// 参数名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 参数类型
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 子参数
+	SubParams []*WidgetParam `json:"SubParams,omitnil,omitempty" name:"SubParams"`
+
+	// 默认值, Input未指定时，使用该值
+	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
+
+	// 输入的值
+	Input *AgentInput `json:"Input,omitnil,omitempty" name:"Input"`
+}
+
 type WorkFlowSummary struct {
 	// 工作流ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13178,6 +13597,10 @@ type WorkFlowSummary struct {
 
 	// 选项卡索引
 	OptionCardIndex *OptionCardIndex `json:"OptionCardIndex,omitnil,omitempty" name:"OptionCardIndex"`
+
+	// 工作流多气泡输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contents []*Content `json:"Contents,omitnil,omitempty" name:"Contents"`
 }
 
 type WorkflowInfo struct {
@@ -13204,6 +13627,10 @@ type WorkflowInfo struct {
 	// 工作流发布时间，unix时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowReleaseTime *string `json:"WorkflowReleaseTime,omitnil,omitempty" name:"WorkflowReleaseTime"`
+
+	// 工作流多气泡输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contents []*Content `json:"Contents,omitnil,omitempty" name:"Contents"`
 }
 
 type WorkflowRef struct {

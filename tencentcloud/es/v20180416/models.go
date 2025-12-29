@@ -4768,6 +4768,18 @@ type InstallInstanceModelRequestParams struct {
 
 	// 模型使用的任务类型，包括：fill_mask, ner, question_answering, text_classification, text_embedding, text_expansion, text_similarity和zero_shot_classification，默认为text_embedding
 	TaskTypes []*string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
+
+	// HuggingFace模型名称
+	HuggingFaceModelNames []*string `json:"HuggingFaceModelNames,omitnil,omitempty" name:"HuggingFaceModelNames"`
+
+	// 模型描述
+	ModelDescription *string `json:"ModelDescription,omitnil,omitempty" name:"ModelDescription"`
+
+	// 模型来源：UserModel、HuggingFace和PlatformModel
+	ModelSourceType *string `json:"ModelSourceType,omitnil,omitempty" name:"ModelSourceType"`
+
+	// 已上传的模型路径
+	UploadedCosPaths []*string `json:"UploadedCosPaths,omitnil,omitempty" name:"UploadedCosPaths"`
 }
 
 type InstallInstanceModelRequest struct {
@@ -4784,6 +4796,18 @@ type InstallInstanceModelRequest struct {
 
 	// 模型使用的任务类型，包括：fill_mask, ner, question_answering, text_classification, text_embedding, text_expansion, text_similarity和zero_shot_classification，默认为text_embedding
 	TaskTypes []*string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
+
+	// HuggingFace模型名称
+	HuggingFaceModelNames []*string `json:"HuggingFaceModelNames,omitnil,omitempty" name:"HuggingFaceModelNames"`
+
+	// 模型描述
+	ModelDescription *string `json:"ModelDescription,omitnil,omitempty" name:"ModelDescription"`
+
+	// 模型来源：UserModel、HuggingFace和PlatformModel
+	ModelSourceType *string `json:"ModelSourceType,omitnil,omitempty" name:"ModelSourceType"`
+
+	// 已上传的模型路径
+	UploadedCosPaths []*string `json:"UploadedCosPaths,omitnil,omitempty" name:"UploadedCosPaths"`
 }
 
 func (r *InstallInstanceModelRequest) ToJsonString() string {
@@ -4802,6 +4826,10 @@ func (r *InstallInstanceModelRequest) FromJsonString(s string) error {
 	delete(f, "UsrCosModelUrlList")
 	delete(f, "ModelNames")
 	delete(f, "TaskTypes")
+	delete(f, "HuggingFaceModelNames")
+	delete(f, "ModelDescription")
+	delete(f, "ModelSourceType")
+	delete(f, "UploadedCosPaths")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallInstanceModelRequest has unknown keys!", "")
 	}

@@ -5507,6 +5507,27 @@ type DataEngineInfo struct {
 
 	// 引擎资源弹性伸缩策略
 	ScheduleElasticityConf *ScheduleElasticityConf `json:"ScheduleElasticityConf,omitnil,omitempty" name:"ScheduleElasticityConf"`
+
+	// GPU 信息
+	GPUInfo *GPUInfo `json:"GPUInfo,omitnil,omitempty" name:"GPUInfo"`
+
+	// GPU 使用量
+	EngineResourceUsedGPU *int64 `json:"EngineResourceUsedGPU,omitnil,omitempty" name:"EngineResourceUsedGPU"`
+
+	// GPU 总规格
+	GPUTotalSize *int64 `json:"GPUTotalSize,omitnil,omitempty" name:"GPUTotalSize"`
+
+	// GPU 机型
+	InstanceModel *string `json:"InstanceModel,omitnil,omitempty" name:"InstanceModel"`
+
+	// 节点数量
+	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
+
+	// 引擎规格，包含负载弹性或分时弹性
+	SizeWithElastic *uint64 `json:"SizeWithElastic,omitnil,omitempty" name:"SizeWithElastic"`
+
+	// 最大弹性值，包含负载弹性或分时弹性
+	MaxElasticSize *uint64 `json:"MaxElasticSize,omitnil,omitempty" name:"MaxElasticSize"`
 }
 
 type DataEngineScaleInfo struct {
@@ -13461,6 +13482,9 @@ type ElasticPlan struct {
 
 	// 结束时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分时弹性上限
+	ElasticLimit *int64 `json:"ElasticLimit,omitnil,omitempty" name:"ElasticLimit"`
 }
 
 type ElasticsearchInfo struct {
@@ -13585,6 +13609,32 @@ type Filter struct {
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type GPUInfo struct {
+	// 计费项
+	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
+
+	// 机型
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// cu
+	CU *int64 `json:"CU,omitnil,omitempty" name:"CU"`
+
+	// gpu 机型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数量
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 显存
+	GPUMemory *int64 `json:"GPUMemory,omitnil,omitempty" name:"GPUMemory"`
+
+	// 机型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 售卖情况（1-缺货，2-低库存，3-充足）
+	SaleStatus *int64 `json:"SaleStatus,omitnil,omitempty" name:"SaleStatus"`
 }
 
 type GatewayInfo struct {
@@ -16586,6 +16636,10 @@ type SmartOptimizerPolicy struct {
 type SmartOptimizerWrittenPolicy struct {
 	// none/enable/disable/default
 	WrittenEnable *string `json:"WrittenEnable,omitnil,omitempty" name:"WrittenEnable"`
+
+	// 用户自定义高级参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancePolicy *WrittenAdvancePolicy `json:"AdvancePolicy,omitnil,omitempty" name:"AdvancePolicy"`
 }
 
 type SmartPolicy struct {
@@ -16624,6 +16678,17 @@ type Sort struct {
 
 	// 是否按照ASC排序，否则DESC排序
 	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
+}
+
+type SortOrder struct {
+	// sort的数据表列名称
+	Column *string `json:"Column,omitnil,omitempty" name:"Column"`
+
+	// 按照升序或者降序进行排序
+	SortDirection *string `json:"SortDirection,omitnil,omitempty" name:"SortDirection"`
+
+	// null值放在开头或者末尾
+	NullOrder *string `json:"NullOrder,omitnil,omitempty" name:"NullOrder"`
 }
 
 type SparkJobInfo struct {
@@ -19552,4 +19617,40 @@ type WorkGroups struct {
 
 	// 工作组总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+type WrittenAdvancePolicy struct {
+	// 是否启用合并
+	CompactEnable *string `json:"CompactEnable,omitnil,omitempty" name:"CompactEnable"`
+
+	// 是否启用历史数据清理
+	DeleteEnable *string `json:"DeleteEnable,omitnil,omitempty" name:"DeleteEnable"`
+
+	// 合并最新文件数量
+	MinInputFiles *int64 `json:"MinInputFiles,omitnil,omitempty" name:"MinInputFiles"`
+
+	// 合并文件目录文件大小
+	TargetFileSizeBytes *int64 `json:"TargetFileSizeBytes,omitnil,omitempty" name:"TargetFileSizeBytes"`
+
+	// 保留过期时间的快照数量
+	RetainLast *int64 `json:"RetainLast,omitnil,omitempty" name:"RetainLast"`
+
+	// 快照过期时间
+	BeforeDays *int64 `json:"BeforeDays,omitnil,omitempty" name:"BeforeDays"`
+
+	// 快照过期执行周期
+	ExpiredSnapshotsIntervalMin *int64 `json:"ExpiredSnapshotsIntervalMin,omitnil,omitempty" name:"ExpiredSnapshotsIntervalMin"`
+
+	// 移除孤立文件执行周期
+	RemoveOrphanIntervalMin *int64 `json:"RemoveOrphanIntervalMin,omitnil,omitempty" name:"RemoveOrphanIntervalMin"`
+
+	// 是否开启COW表合并
+	CowCompactEnable *string `json:"CowCompactEnable,omitnil,omitempty" name:"CowCompactEnable"`
+
+	// 文件合并策略
+	CompactStrategy *string `json:"CompactStrategy,omitnil,omitempty" name:"CompactStrategy"`
+
+	// sort合并策略的规则定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SortOrders []*SortOrder `json:"SortOrders,omitnil,omitempty" name:"SortOrders"`
 }

@@ -135,7 +135,9 @@ type AddDeviceRequestParams struct {
 	// 新建设备的base64密钥字符串，非必选，如果不填写则由系统自动生成
 	DataKey *string `json:"DataKey,omitnil,omitempty" name:"DataKey"`
 
-	// 是否设置预置密钥
+	// 是否设置预置密钥。
+	// true：设置预置密钥；
+	// false：不设置预置密钥。
 	Encrypted *bool `json:"Encrypted,omitnil,omitempty" name:"Encrypted"`
 
 	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。
@@ -173,7 +175,9 @@ type AddDeviceRequest struct {
 	// 新建设备的base64密钥字符串，非必选，如果不填写则由系统自动生成
 	DataKey *string `json:"DataKey,omitnil,omitempty" name:"DataKey"`
 
-	// 是否设置预置密钥
+	// 是否设置预置密钥。
+	// true：设置预置密钥；
+	// false：不设置预置密钥。
 	Encrypted *bool `json:"Encrypted,omitnil,omitempty" name:"Encrypted"`
 
 	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。
@@ -1757,9 +1761,11 @@ type GetGroupDetailRequestParams struct {
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+	// 示例值：1
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+	// 示例值：10
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 搜索关键字
@@ -1773,9 +1779,11 @@ type GetGroupDetailRequest struct {
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+	// 示例值：1
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+	// 示例值：10
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 搜索关键字
@@ -1841,9 +1849,11 @@ func (r *GetGroupDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetGroupListRequestParams struct {
 	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	// 示例值：10
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	// 示例值：1
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 搜索分组的关键字，为空时匹配所有分组
@@ -1854,9 +1864,11 @@ type GetGroupListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	// 示例值：10
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+	// 示例值：1
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 搜索分组的关键字，为空时匹配所有分组

@@ -361,6 +361,12 @@ func NewCreateQACateResponse() (response *CreateQACateResponse) {
 // CreateQACate
 // 创建QA分类
 //
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateQACate(request *CreateQACateRequest) (response *CreateQACateResponse, err error) {
@@ -369,6 +375,12 @@ func (c *Client) CreateQACate(request *CreateQACateRequest) (response *CreateQAC
 
 // CreateQACate
 // 创建QA分类
+//
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2385,6 +2397,12 @@ func NewExportQAListResponse() (response *ExportQAListResponse) {
 // ExportQAList
 // 导出QA列表
 //
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2394,6 +2412,12 @@ func (c *Client) ExportQAList(request *ExportQAListRequest) (response *ExportQAL
 
 // ExportQAList
 // 导出QA列表
+//
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2437,6 +2461,12 @@ func NewExportUnsatisfiedReplyResponse() (response *ExportUnsatisfiedReplyRespon
 // ExportUnsatisfiedReply
 // 导出不满意回复
 //
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2446,6 +2476,12 @@ func (c *Client) ExportUnsatisfiedReply(request *ExportUnsatisfiedReplyRequest) 
 
 // ExportUnsatisfiedReply
 // 导出不满意回复
+//
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3051,7 +3087,13 @@ func NewGroupQAResponse() (response *GroupQAResponse) {
 }
 
 // GroupQA
-// QA分组
+// 用户将多个问答批量的分类到知识库的具体分类
+//
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3060,7 +3102,13 @@ func (c *Client) GroupQA(request *GroupQARequest) (response *GroupQAResponse, er
 }
 
 // GroupQA
-// QA分组
+// 用户将多个问答批量的分类到知识库的具体分类
+//
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3615,6 +3663,12 @@ func NewListQACateResponse() (response *ListQACateResponse) {
 // ListQACate
 // 获取QA分类
 //
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ListQACate(request *ListQACateRequest) (response *ListQACateResponse, err error) {
@@ -3623,6 +3677,12 @@ func (c *Client) ListQACate(request *ListQACateRequest) (response *ListQACateRes
 
 // ListQACate
 // 获取QA分类
+//
+// 知识库相关背景知识介绍
+//
+// “知识库检索范围”文档：https://cloud.tencent.com/document/product/1759/112704
+//
+// “标签”文档：https://cloud.tencent.com/document/product/1759/112956
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -5831,7 +5831,7 @@ func NewRenewLoadBalancersResponse() (response *RenewLoadBalancersResponse) {
 }
 
 // RenewLoadBalancers
-// API接口续费包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+// 本接口 (RenewLoadBalancers) 用于续费包年包月实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5844,7 +5844,7 @@ func (c *Client) RenewLoadBalancers(request *RenewLoadBalancersRequest) (respons
 }
 
 // RenewLoadBalancers
-// API接口续费包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
+// 本接口 (RenewLoadBalancers) 用于续费包年包月实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

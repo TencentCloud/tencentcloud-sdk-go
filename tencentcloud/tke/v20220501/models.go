@@ -2742,8 +2742,14 @@ type UpdateNativeNodePoolParam struct {
 	// ssh公钥id数组
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
+	// 节点移出策略，有Random（随机）、Newest（优先移出最新实例）、Oldest（优先移出最旧实例）三种可选，默认是Newest
+	DeletePolicy *string `json:"DeletePolicy,omitnil,omitempty" name:"DeletePolicy"`
+
 	// 节点池 GPU 配置
 	GPUConfigs []*GPUConfig `json:"GPUConfigs,omitnil,omitempty" name:"GPUConfigs"`
+
+	// 原生节点池安装自动化助手开关状态
+	AutomationService *bool `json:"AutomationService,omitnil,omitempty" name:"AutomationService"`
 
 	// 原生节点池密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`

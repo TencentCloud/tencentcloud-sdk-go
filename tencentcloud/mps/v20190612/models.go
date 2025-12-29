@@ -2228,6 +2228,99 @@ type AiSampleWordInfo struct {
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type AigcImageExtraParam struct {
+	// 指定所生成视频的宽高比。
+	// 
+	// 不同模型支持的宽高比:
+	// 1. GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。
+	// 2. Jimeng：合用户prompt意图、参考图尺寸，由模型智能判断生图宽高比。
+	// 
+	// 注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。
+	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+
+	// 指定图片输出分辨率。
+	// 
+	// 支持该参数的模型：
+	// 支持选择: 720P, 1080P, 2K, 4K。
+	// 
+	// 1. Jimeng推荐通过prompt指定图片分辨率和宽高比。
+	//     2K
+	//     2048x2048 （1:1）
+	//     2304x1728（4:3）
+	//     2496x1664 （3:2）
+	//     2560x1440 （16:9）
+	//     3024x1296 （21:9）
+	//     4K
+	//     4096x4096 （1:1）
+	//     4694x3520（4:3）
+	//     4992x3328 （3:2）
+	//     5404x3040 （16:9）
+	//     6198x2656 （21:9）
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+}
+
+type AigcImageInfo struct {
+	// 用于指导视频生成的图片 URL。该URL需外网可访问。同时允许爬虫拉取。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 参考类型。
+	// 注意：
+	// 1. 当模型使用Vidu的q2多参考生图时，也可用于指定主体id。
+	// 2. 当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+}
+
+type AigcStoreCosParam struct {
+	// 存储至 cos 的 bucket 桶名称。需要cos存储时，该值必填。 示例值：bucket。
+	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
+
+	// 存储至 cos 的 bucket 区域。与bucket所属区域相同，上传cos时必填。 示例值：ap-guangzhou
+	CosBucketRegion *string `json:"CosBucketRegion,omitnil,omitempty" name:"CosBucketRegion"`
+
+	// 存储至 cos 的 bucket 路径。
+	// 可选。
+	// 示例值：my_file
+	CosBucketPath *string `json:"CosBucketPath,omitnil,omitempty" name:"CosBucketPath"`
+}
+
+type AigcVideoExtraParam struct {
+	// 生成视频的分辨率，分辨率与选择模型及设置的视频时长相关。 
+	// 
+	// 不同模型支持的分辨率选项:
+	// 1. Kling 720P(默认), 1080P。
+	// 2. Hailuo 768P(默认), 1080P。
+	// 3. Jimeng 1080P(默认)。
+	// 4. Vidu 720P(默认)，1080P。
+	// 5. GV 720P(默认),1080P。
+	// 6. OS 720P, 图片仅支持1280x720、720x1280，暂不支持指定。
+	// 
+	// 注意：除模型可支持的分辨率外，还可以生成 2K、4K分辨率。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 指定所生成视频的宽高比。 
+	// 
+	// 不同模型对于此参数的支持：
+	// 1. Kling 仅文生视频支持, 16:9(默认值)、9:16、 1:1。
+	// 2. Hailuo 暂不支持。
+	// 3. Jimeng ["16:9"、"4:3"、"1:1"、"3:4"、"9:16"、"21:9"]
+	// 4. Vidu 仅文生和参考图生视频 支持[16:9、9:16、4:3、3:4、1:1]，其中仅q2支持4:3、3:4。
+	// 5. GV 16:9(默认值)、9:16。
+	// 6. OS 仅文生视频支持, 16:9(默认), 9:16。
+	// 
+	// 注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。
+	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+}
+
+type AigcVideoReferenceImageInfo struct {
+	// 用于指导视频生成的图片 URL。该URL需外网可访问。同时允许爬虫拉取。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 参考类型。
+	// 注意：
+	// 1. 当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+}
+
 type AnimatedGraphicTaskInput struct {
 	// 视频转动图模板 ID。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -4105,6 +4198,372 @@ func (r *CreateAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcImageTaskRequestParams struct {
+	// 模型名称。
+	// 当前支持的模型列表：
+	// GEM，
+	// Jimeng，
+	// Qwen。
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
+	// 
+	// 1. GEM， 可选[2.5,3.0]。
+	// 2. Jimeng，可选[4.0]。
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// 生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。
+	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
+
+	// 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+	EnhancePrompt *bool `json:"EnhancePrompt,omitnil,omitempty" name:"EnhancePrompt"`
+
+	// 用于传入参考的资源图片信息，默认支持传入一张图片。
+	// 
+	// 支持多图输入的模型：
+	// 1. GEM，可支持最多3张图片输入作为资源图。
+	// 
+	// 注意：
+	// 1. 推荐图片小于7M，各模型限制不同。
+	// 2. 图片格式支持：jpeg, png, webp。
+	ImageInfos []*AigcImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
+
+	// 用于传入模型要求的额外参数。
+	ExtraParameters *AigcImageExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
+
+	// 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// 接口操作者名称。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type CreateAigcImageTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型名称。
+	// 当前支持的模型列表：
+	// GEM，
+	// Jimeng，
+	// Qwen。
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
+	// 
+	// 1. GEM， 可选[2.5,3.0]。
+	// 2. Jimeng，可选[4.0]。
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// 生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。
+	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
+
+	// 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+	EnhancePrompt *bool `json:"EnhancePrompt,omitnil,omitempty" name:"EnhancePrompt"`
+
+	// 用于传入参考的资源图片信息，默认支持传入一张图片。
+	// 
+	// 支持多图输入的模型：
+	// 1. GEM，可支持最多3张图片输入作为资源图。
+	// 
+	// 注意：
+	// 1. 推荐图片小于7M，各模型限制不同。
+	// 2. 图片格式支持：jpeg, png, webp。
+	ImageInfos []*AigcImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
+
+	// 用于传入模型要求的额外参数。
+	ExtraParameters *AigcImageExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
+
+	// 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// 接口操作者名称。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *CreateAigcImageTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcImageTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelName")
+	delete(f, "ModelVersion")
+	delete(f, "Prompt")
+	delete(f, "NegativePrompt")
+	delete(f, "EnhancePrompt")
+	delete(f, "ImageInfos")
+	delete(f, "ExtraParameters")
+	delete(f, "StoreCosParam")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcImageTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcImageTaskResponseParams struct {
+	// 返回的任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAigcImageTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAigcImageTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateAigcImageTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcImageTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcVideoTaskRequestParams struct {
+	// 模型名称。
+	// 当前支持的模型列表:
+	// Hailuo，
+	// Kling，
+	// Jimeng，
+	// Vidu，
+	// OS，
+	// GV。
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
+	// 1. Hailuo， 可选[02、2.3]。
+	// 2. Kling，可选[2.0、2.1、2.5]。
+	// 3. Jimeng, 可选[3.0pro]。
+	// 4. Vidu,可选[q2、q2-pro、q2-turbo]。
+	// 4. GV, 可选[3.1]。
+	// 5. OS，可选[2.0]。
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// 生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 用于描述您想要阻止模型生成的内容。
+	// 注意：部分模型支持。
+	// 例如：
+	// 顶部照明、明亮的色彩
+	// 人物、动物
+	// 多辆汽车、风。
+	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
+
+	// 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+	EnhancePrompt *bool `json:"EnhancePrompt,omitnil,omitempty" name:"EnhancePrompt"`
+
+	// 用于指导视频生成的图片 URL。该URL需外网可访问。
+	// 注意：
+	// 1. 推荐图片大小不超过10M，不同模型大小限制不相同。
+	// 2. 支持的图片格式：jpeg、png。
+	// 3. 使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 模型将以此参数传入的图片作为尾帧画面来生成视频。
+	// 支持此参数的模型：
+	// 1. GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。
+	// 2. Kling， 在Resolution:1080P的情况下 2.1版本支持首位帧。
+	// 3. Vidu, q2-pro, q2-turbo 支持首尾帧。
+	// 
+	// 注意：
+	// 1. 推荐图片大小不超过10M，各模型限制不同。
+	// 2. 支持的图片格式：jpeg、png。
+	LastImageUrl *string `json:"LastImageUrl,omitnil,omitempty" name:"LastImageUrl"`
+
+	// 最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
+	// 
+	// 支持多图输入的模型：
+	// 1. GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。
+	// 2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。
+	// 
+	// 注意：
+	// 1. 图片大小不超过10M。
+	// 2. 支持的图片格式：jpeg、png。
+	ImageInfos []*AigcVideoReferenceImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
+
+	// 生成视频的时长。
+	// 注意：
+	// 1. Kling支持 5、10秒。默认: 5秒。
+	// 2. Jimeng支持5、10秒。 默认: 5秒。
+	// 3. Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。
+	// 4. Vidu支持1-10秒。
+	// 4. GV支持 8秒。 默认：8秒。
+	// 5. OS支持4、8、12秒。 默认：8秒。
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 用于传入模型要求的额外参数。
+	ExtraParameters *AigcVideoExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
+
+	// 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// 接口操作者名称。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type CreateAigcVideoTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型名称。
+	// 当前支持的模型列表:
+	// Hailuo，
+	// Kling，
+	// Jimeng，
+	// Vidu，
+	// OS，
+	// GV。
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
+	// 1. Hailuo， 可选[02、2.3]。
+	// 2. Kling，可选[2.0、2.1、2.5]。
+	// 3. Jimeng, 可选[3.0pro]。
+	// 4. Vidu,可选[q2、q2-pro、q2-turbo]。
+	// 4. GV, 可选[3.1]。
+	// 5. OS，可选[2.0]。
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// 生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 用于描述您想要阻止模型生成的内容。
+	// 注意：部分模型支持。
+	// 例如：
+	// 顶部照明、明亮的色彩
+	// 人物、动物
+	// 多辆汽车、风。
+	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
+
+	// 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+	EnhancePrompt *bool `json:"EnhancePrompt,omitnil,omitempty" name:"EnhancePrompt"`
+
+	// 用于指导视频生成的图片 URL。该URL需外网可访问。
+	// 注意：
+	// 1. 推荐图片大小不超过10M，不同模型大小限制不相同。
+	// 2. 支持的图片格式：jpeg、png。
+	// 3. 使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 模型将以此参数传入的图片作为尾帧画面来生成视频。
+	// 支持此参数的模型：
+	// 1. GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。
+	// 2. Kling， 在Resolution:1080P的情况下 2.1版本支持首位帧。
+	// 3. Vidu, q2-pro, q2-turbo 支持首尾帧。
+	// 
+	// 注意：
+	// 1. 推荐图片大小不超过10M，各模型限制不同。
+	// 2. 支持的图片格式：jpeg、png。
+	LastImageUrl *string `json:"LastImageUrl,omitnil,omitempty" name:"LastImageUrl"`
+
+	// 最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
+	// 
+	// 支持多图输入的模型：
+	// 1. GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。
+	// 2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。
+	// 
+	// 注意：
+	// 1. 图片大小不超过10M。
+	// 2. 支持的图片格式：jpeg、png。
+	ImageInfos []*AigcVideoReferenceImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
+
+	// 生成视频的时长。
+	// 注意：
+	// 1. Kling支持 5、10秒。默认: 5秒。
+	// 2. Jimeng支持5、10秒。 默认: 5秒。
+	// 3. Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。
+	// 4. Vidu支持1-10秒。
+	// 4. GV支持 8秒。 默认：8秒。
+	// 5. OS支持4、8、12秒。 默认：8秒。
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 用于传入模型要求的额外参数。
+	ExtraParameters *AigcVideoExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
+
+	// 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// 接口操作者名称。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *CreateAigcVideoTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcVideoTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelName")
+	delete(f, "ModelVersion")
+	delete(f, "Prompt")
+	delete(f, "NegativePrompt")
+	delete(f, "EnhancePrompt")
+	delete(f, "ImageUrl")
+	delete(f, "LastImageUrl")
+	delete(f, "ImageInfos")
+	delete(f, "Duration")
+	delete(f, "ExtraParameters")
+	delete(f, "StoreCosParam")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcVideoTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcVideoTaskResponseParams struct {
+	// 任务创建成功后，返回的任务ID。
+	// 调用查询接口，轮询获取任务进度及生成结果。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAigcVideoTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAigcVideoTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateAigcVideoTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcVideoTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6041,7 +6500,6 @@ type CreateSmartSubtitleTemplateRequestParams struct {
 	// `iw`：希伯来语
 	// `ja`：日语
 	// `jv`：爪哇语
-	// `jw`：爪哇语
 	// `ka`：格鲁吉亚语
 	// `kk`：哈萨克语
 	// `km`：高棉语
@@ -6128,7 +6586,6 @@ type CreateSmartSubtitleTemplateRequestParams struct {
 	// `th`：泰语
 	// `ti`：提格里尼亚语
 	// `tk`：土库曼语
-	// `tl`：菲律宾语（塔加拉语）
 	// `tn`：茨瓦纳语
 	// `tr`：土耳其语
 	// `ts`：聪加语
@@ -6157,6 +6614,9 @@ type CreateSmartSubtitleTemplateRequestParams struct {
 	// 
 	// **注意**：不传的情况下默认类型为 ASR识别字幕
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
+
+	// 字幕OCR提取框选区域配置
+	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
 }
 
 type CreateSmartSubtitleTemplateRequest struct {
@@ -6464,7 +6924,6 @@ type CreateSmartSubtitleTemplateRequest struct {
 	// `iw`：希伯来语
 	// `ja`：日语
 	// `jv`：爪哇语
-	// `jw`：爪哇语
 	// `ka`：格鲁吉亚语
 	// `kk`：哈萨克语
 	// `km`：高棉语
@@ -6551,7 +7010,6 @@ type CreateSmartSubtitleTemplateRequest struct {
 	// `th`：泰语
 	// `ti`：提格里尼亚语
 	// `tk`：土库曼语
-	// `tl`：菲律宾语（塔加拉语）
 	// `tn`：茨瓦纳语
 	// `tr`：土耳其语
 	// `ts`：聪加语
@@ -6580,6 +7038,9 @@ type CreateSmartSubtitleTemplateRequest struct {
 	// 
 	// **注意**：不传的情况下默认类型为 ASR识别字幕
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
+
+	// 字幕OCR提取框选区域配置
+	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
 }
 
 func (r *CreateSmartSubtitleTemplateRequest) ToJsonString() string {
@@ -6603,6 +7064,7 @@ func (r *CreateSmartSubtitleTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TranslateSwitch")
 	delete(f, "TranslateDstLanguage")
 	delete(f, "ProcessType")
+	delete(f, "SelectingSubtitleAreasConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSmartSubtitleTemplateRequest has unknown keys!", "")
 	}
@@ -9361,6 +9823,135 @@ func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) ToJsonString() strin
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcImageTaskRequestParams struct {
+	// 创建的AIGC生图片任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeAigcImageTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 创建的AIGC生图片任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeAigcImageTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcImageTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcImageTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcImageTaskResponseParams struct {
+	// 任务当前状态。 WAIT：等待中， RUN：执行中， FAIL：任务失败， DONE：任务成功。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 当任务状态为 DONE时，返回的图片Url列表，图片存储12小时，请尽快取走使用。
+	ImageUrls []*string `json:"ImageUrls,omitnil,omitempty" name:"ImageUrls"`
+
+	// 当任务状态为 FAIL时，返回失败信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcImageTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcImageTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcImageTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcImageTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcVideoTaskRequestParams struct {
+	// 创建AIGC生视频任务时，返回的任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeAigcVideoTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 创建AIGC生视频任务时，返回的任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeAigcVideoTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcVideoTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcVideoTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcVideoTaskResponseParams struct {
+	// 任务当前状态。 WAIT：等待中， RUN：执行中， FAIL：任务失败， DONE：任务成功。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 当任务状态为 DONE时，返回视频Url列表，视频存储12小时，请尽快取走使用。
+	VideoUrls []*string `json:"VideoUrls,omitnil,omitempty" name:"VideoUrls"`
+
+	// 输出视频的分辨率。示例：1080*720；
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 当任务状态为 FAIL时，返回失败信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcVideoTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcVideoTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcVideoTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcVideoTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18984,7 +19575,6 @@ type ModifySmartSubtitleTemplateRequestParams struct {
 	// `iw`：希伯来语
 	// `ja`：日语
 	// `jv`：爪哇语
-	// `jw`：爪哇语
 	// `ka`：格鲁吉亚语
 	// `kk`：哈萨克语
 	// `km`：高棉语
@@ -19071,7 +19661,6 @@ type ModifySmartSubtitleTemplateRequestParams struct {
 	// `th`：泰语
 	// `ti`：提格里尼亚语
 	// `tk`：土库曼语
-	// `tl`：菲律宾语（塔加拉语）
 	// `tn`：茨瓦纳语
 	// `tr`：土耳其语
 	// `ts`：聪加语
@@ -19100,6 +19689,9 @@ type ModifySmartSubtitleTemplateRequestParams struct {
 	// 
 	// **注意**：不传的情况下，默认是ASR方式
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
+
+	// 字幕OCR提取框选区域配置
+	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
 }
 
 type ModifySmartSubtitleTemplateRequest struct {
@@ -19410,7 +20002,6 @@ type ModifySmartSubtitleTemplateRequest struct {
 	// `iw`：希伯来语
 	// `ja`：日语
 	// `jv`：爪哇语
-	// `jw`：爪哇语
 	// `ka`：格鲁吉亚语
 	// `kk`：哈萨克语
 	// `km`：高棉语
@@ -19497,7 +20088,6 @@ type ModifySmartSubtitleTemplateRequest struct {
 	// `th`：泰语
 	// `ti`：提格里尼亚语
 	// `tk`：土库曼语
-	// `tl`：菲律宾语（塔加拉语）
 	// `tn`：茨瓦纳语
 	// `tr`：土耳其语
 	// `ts`：聪加语
@@ -19526,6 +20116,9 @@ type ModifySmartSubtitleTemplateRequest struct {
 	// 
 	// **注意**：不传的情况下，默认是ASR方式
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
+
+	// 字幕OCR提取框选区域配置
+	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
 }
 
 func (r *ModifySmartSubtitleTemplateRequest) ToJsonString() string {
@@ -19550,6 +20143,7 @@ func (r *ModifySmartSubtitleTemplateRequest) FromJsonString(s string) error {
 	delete(f, "AsrHotWordsConfigure")
 	delete(f, "TranslateDstLanguage")
 	delete(f, "ProcessType")
+	delete(f, "SelectingSubtitleAreasConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySmartSubtitleTemplateRequest has unknown keys!", "")
 	}
