@@ -45,6 +45,58 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCallbackWorkflowToolNodeRequest() (request *CallbackWorkflowToolNodeRequest) {
+    request = &CallbackWorkflowToolNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "CallbackWorkflowToolNode")
+    
+    
+    return
+}
+
+func NewCallbackWorkflowToolNodeResponse() (response *CallbackWorkflowToolNodeResponse) {
+    response = &CallbackWorkflowToolNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CallbackWorkflowToolNode
+// 工作流工具节点异步回调
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CallbackWorkflowToolNode(request *CallbackWorkflowToolNodeRequest) (response *CallbackWorkflowToolNodeResponse, err error) {
+    return c.CallbackWorkflowToolNodeWithContext(context.Background(), request)
+}
+
+// CallbackWorkflowToolNode
+// 工作流工具节点异步回调
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CallbackWorkflowToolNodeWithContext(ctx context.Context, request *CallbackWorkflowToolNodeRequest) (response *CallbackWorkflowToolNodeResponse, err error) {
+    if request == nil {
+        request = NewCallbackWorkflowToolNodeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lke", APIVersion, "CallbackWorkflowToolNode")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CallbackWorkflowToolNode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCallbackWorkflowToolNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckAttributeLabelExistRequest() (request *CheckAttributeLabelExistRequest) {
     request = &CheckAttributeLabelExistRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -66,12 +118,20 @@ func NewCheckAttributeLabelExistResponse() (response *CheckAttributeLabelExistRe
 
 // CheckAttributeLabelExist
 // 检查属性下的标签名是否存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckAttributeLabelExist(request *CheckAttributeLabelExistRequest) (response *CheckAttributeLabelExistResponse, err error) {
     return c.CheckAttributeLabelExistWithContext(context.Background(), request)
 }
 
 // CheckAttributeLabelExist
 // 检查属性下的标签名是否存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckAttributeLabelExistWithContext(ctx context.Context, request *CheckAttributeLabelExistRequest) (response *CheckAttributeLabelExistResponse, err error) {
     if request == nil {
         request = NewCheckAttributeLabelExistRequest()
@@ -110,12 +170,20 @@ func NewCheckAttributeLabelReferResponse() (response *CheckAttributeLabelReferRe
 
 // CheckAttributeLabelRefer
 // 检查属性标签引用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckAttributeLabelRefer(request *CheckAttributeLabelReferRequest) (response *CheckAttributeLabelReferResponse, err error) {
     return c.CheckAttributeLabelReferWithContext(context.Background(), request)
 }
 
 // CheckAttributeLabelRefer
 // 检查属性标签引用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckAttributeLabelReferWithContext(ctx context.Context, request *CheckAttributeLabelReferRequest) (response *CheckAttributeLabelReferResponse, err error) {
     if request == nil {
         request = NewCheckAttributeLabelReferRequest()
@@ -154,12 +222,20 @@ func NewCreateAppResponse() (response *CreateAppResponse) {
 
 // CreateApp
 // 创建知识引擎应用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateApp(request *CreateAppRequest) (response *CreateAppResponse, err error) {
     return c.CreateAppWithContext(context.Background(), request)
 }
 
 // CreateApp
 // 创建知识引擎应用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateAppWithContext(ctx context.Context, request *CreateAppRequest) (response *CreateAppResponse, err error) {
     if request == nil {
         request = NewCreateAppRequest()

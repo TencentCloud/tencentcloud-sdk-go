@@ -1454,6 +1454,29 @@ type ContractReviewWebUrlOption struct {
 	DisableWxQrcode *bool `json:"DisableWxQrcode,omitnil,omitempty" name:"DisableWxQrcode"`
 }
 
+type ContractSummary struct {
+	// 提取内容分类：
+	// Base 合同信息
+	// Identity 主体信息
+	// Performance 履约条款
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 详细信息
+	Infos []*ContractSummaryInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+}
+
+type ContractSummaryInfo struct {
+	// 字段 key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 字段值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 主体信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Identity *Identity `json:"Identity,omitnil,omitempty" name:"Identity"`
+}
+
 // Predefined struct for user
 type CreateBatchAdminChangeInvitationsRequestParams struct {
 	// 执行本接口操作的员工信息。
@@ -12002,6 +12025,9 @@ type DescribeContractReviewTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApprovedLists []*OutputReference `json:"ApprovedLists,omitnil,omitempty" name:"ApprovedLists"`
 
+	// 摘要信息
+	Summaries []*ContractSummary `json:"Summaries,omitnil,omitempty" name:"Summaries"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -15954,6 +15980,96 @@ type HasAuthUser struct {
 	MainOrganizationId *string `json:"MainOrganizationId,omitnil,omitempty" name:"MainOrganizationId"`
 }
 
+type Identity struct {
+	// 统一社会信用代码
+	CreditCode *string `json:"CreditCode,omitnil,omitempty" name:"CreditCode"`
+
+	// 组织机构代码
+	OrgCode *string `json:"OrgCode,omitnil,omitempty" name:"OrgCode"`
+
+	// 营业执照注册编号
+	RegNo *string `json:"RegNo,omitnil,omitempty" name:"RegNo"`
+
+	// 企业名称
+	EntName *string `json:"EntName,omitnil,omitempty" name:"EntName"`
+
+	// 修改人法人代表姓名
+	LegalRepName *string `json:"LegalRepName,omitnil,omitempty" name:"LegalRepName"`
+
+	// 渠道经营状态
+	OpState *string `json:"OpState,omitnil,omitempty" name:"OpState"`
+
+	// 经营期限自(格式YYYY-MM-DD)
+	OpFromDate *string `json:"OpFromDate,omitnil,omitempty" name:"OpFromDate"`
+
+	// 经营期限至
+	OpToDate *string `json:"OpToDate,omitnil,omitempty" name:"OpToDate"`
+
+	// 成立日期(格式YYYY-MM-DD)
+	EstabDate *string `json:"EstabDate,omitnil,omitempty" name:"EstabDate"`
+
+	// 核准日期(格式YYYY-MM-DD)
+	ApprDate *string `json:"ApprDate,omitnil,omitempty" name:"ApprDate"`
+
+	// 吊销日期(格式YYYY-MM-DD)
+	RevoDate *string `json:"RevoDate,omitnil,omitempty" name:"RevoDate"`
+
+	// 注销日期(格式YYYY-MM-DD)
+	CancelDate *string `json:"CancelDate,omitnil,omitempty" name:"CancelDate"`
+
+	// 登记机关
+	RegOrg *string `json:"RegOrg,omitnil,omitempty" name:"RegOrg"`
+
+	// 企业类型编码
+	EntTypeCode *string `json:"EntTypeCode,omitnil,omitempty" name:"EntTypeCode"`
+
+	// 企业类型
+	EntType *string `json:"EntType,omitnil,omitempty" name:"EntType"`
+
+	// 经营业务范围
+	BizScope *string `json:"BizScope,omitnil,omitempty" name:"BizScope"`
+
+	// 许可经营项目
+	LicenseBizItem *string `json:"LicenseBizItem,omitnil,omitempty" name:"LicenseBizItem"`
+
+	// 注册地址行政编号
+	RegAreaCode *string `json:"RegAreaCode,omitnil,omitempty" name:"RegAreaCode"`
+
+	// 注册地址
+	RegAddress *string `json:"RegAddress,omitnil,omitempty" name:"RegAddress"`
+
+	// 注册资本币种
+	RegCapitalCurtype *string `json:"RegCapitalCurtype,omitnil,omitempty" name:"RegCapitalCurtype"`
+
+	// 注册资本（万元）
+	RegCapital *string `json:"RegCapital,omitnil,omitempty" name:"RegCapital"`
+
+	// 实收资本（万元）
+	PaidCapital *string `json:"PaidCapital,omitnil,omitempty" name:"PaidCapital"`
+
+	// 原注册号
+	OriRegNo *string `json:"OriRegNo,omitnil,omitempty" name:"OriRegNo"`
+
+	// 企业英文名称
+	EntNameEng *string `json:"EntNameEng,omitnil,omitempty" name:"EntNameEng"`
+
+	// 曾用名
+	OriEntName *string `json:"OriEntName,omitnil,omitempty" name:"OriEntName"`
+
+	// 企业经营状态枚举。常见值如下：
+	// 未定义的状态 = 0
+	// 正常  = 1
+	// 注销 = 2
+	// 吊销 = 3
+	// 吊销后注销 = 4
+	// 撤销 = 5
+	// 其他 = 99
+	OpStateCode *int64 `json:"OpStateCode,omitnil,omitempty" name:"OpStateCode"`
+
+	// 查询日期(格式YYYY-MM-DD)
+	SearchDate *string `json:"SearchDate,omitnil,omitempty" name:"SearchDate"`
+}
+
 type IntegrateRole struct {
 	// 角色id
 	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
@@ -17325,6 +17441,21 @@ type OutputRisk struct {
 
 	// 风险等级id。1 为最高风险等级，0 为最低风险等级，从[2,n]数字越大风险等级逐渐降低。
 	RiskLevelId *int64 `json:"RiskLevelId,omitnil,omitempty" name:"RiskLevelId"`
+
+	// 风险标签
+	RiskLabels []*string `json:"RiskLabels,omitnil,omitempty" name:"RiskLabels"`
+
+	// 风险来源 0:模型标注的风险 1:人工标注的风险
+	RiskOrigin *int64 `json:"RiskOrigin,omitnil,omitempty" name:"RiskOrigin"`
+
+	// 创建人
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 创建人ID
+	CreatorId *string `json:"CreatorId,omitnil,omitempty" name:"CreatorId"`
+
+	// 创建时间
+	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 }
 
 type PdfVerifyResult struct {
@@ -17443,6 +17574,15 @@ type PositionInfo struct {
 
 	// 系统生成的唯一ID值
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 开始位置
+	Begin *int64 `json:"Begin,omitnil,omitempty" name:"Begin"`
+
+	// 结束位置
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
+
+	// 文档类型，1：pdf，2：doc 文档
+	DocType *int64 `json:"DocType,omitnil,omitempty" name:"DocType"`
 }
 
 type PresetApproverInfo struct {

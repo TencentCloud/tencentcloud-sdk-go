@@ -638,12 +638,33 @@ func (r *CreateCronJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEnvironmentRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
+	// 环境名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 环境变量
+	EnvVars []*EnvVar `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+
+	// 环境描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateEnvironmentRequest struct {
 	*tchttp.BaseRequest
 	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 环境名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 环境变量
+	EnvVars []*EnvVar `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+
+	// 环境描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateEnvironmentRequest) ToJsonString() string {
@@ -658,7 +679,10 @@ func (r *CreateEnvironmentRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ProjectId")
+	delete(f, "Name")
+	delete(f, "EnvVars")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEnvironmentRequest has unknown keys!", "")
 	}
@@ -667,6 +691,9 @@ func (r *CreateEnvironmentRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEnvironmentResponseParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3755,6 +3782,20 @@ type DomainNameConfig struct {
 	// DNS 配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DNSConfig *DNSConfig `json:"DNSConfig,omitnil,omitempty" name:"DNSConfig"`
+}
+
+type EnvVar struct {
+	// 变量引用键，建议为 C_IDENTIFIER 全大写风格
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 默认 NORMAL，支持 NORMAL、PASSWORD 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 变量引用值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 描述内容
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type ErrorSummary struct {

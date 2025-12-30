@@ -2057,12 +2057,18 @@ type AigcUsageDataItem struct {
 	// <li>Hailuo2.3fast_1080P</li>
 	// <li>Jimeng4.0</li>
 	// <li>Jimeng3.0pro</li>
-	// <li>Vidu2.0_720P</li>
-	// <li>Vidu2.0_1080P</li>
+	// <li>ViduQ2_720P</li>
+	// <li>ViduQ2_1080P</li>
 	// <li>ViduQ2pro_720P</li>
 	// <li>ViduQ2pro_1080P</li>
 	// <li>ViduQ2turbo_720P</li>
 	// <li>ViduQ2turbo_1080P</li>
+	// <li>ViduQ2_720P_OffPeak</li>
+	// <li>ViduQ2_1080P_OffPeak</li>
+	// <li>ViduQ2turbo_720P_OffPeak</li>
+	// <li>ViduQ2turbo_1080P_OffPeak</li>
+	// <li>ViduQ2pro_720P_OffPeak</li>
+	// <li>ViduQ2pro_1080P_OffPeak</li>
 	// <li>Hunyuan1.5_720P</li>
 	// <li>Hunyuan1.5_1080P</li>
 	// <li>Hunyuan3.0_1K</li>

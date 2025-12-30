@@ -283,162 +283,146 @@ func (r *CreateDedicatedClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSiteRequestParams struct {
-	// 站点名称
+	// <p>站点名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 站点所在国家
+	// <p>站点所在国家</p>
 	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
 
-	// 站点所在省份
+	// <p>站点所在省份</p>
 	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
 
-	// 站点所在城市
+	// <p>站点所在城市</p>
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
-	// 站点所在地区的详细地址信息
+	// <p>站点所在地区的详细地址信息</p>
 	AddressLine *string `json:"AddressLine,omitnil,omitempty" name:"AddressLine"`
 
-	// 站点描述
+	// <p>站点描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 注意事项
+	// <p>注意事项</p>
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"
+	// <p>您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"</p>
 	FiberType *string `json:"FiberType,omitnil,omitempty" name:"FiberType"`
 
-	// 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+	// <p>您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。</p>
 	OpticalStandard *string `json:"OpticalStandard,omitnil,omitempty" name:"OpticalStandard"`
 
-	// 电源连接器类型
+	// <p>电源连接器类型</p>
 	PowerConnectors *string `json:"PowerConnectors,omitnil,omitempty" name:"PowerConnectors"`
 
-	// 从机架上方还是下方供电。取值范围：["UP","DOWN"]
+	// <p>从机架上方还是下方供电。取值范围：["UP","DOWN"]</p>
 	PowerFeedDrop *string `json:"PowerFeedDrop,omitnil,omitempty" name:"PowerFeedDrop"`
 
-	// 最大承重(KG)
+	// <p>最大承重(KG)</p>
 	MaxWeight *int64 `json:"MaxWeight,omitnil,omitempty" name:"MaxWeight"`
 
-	// 功耗(KW)
+	// <p>功耗(KW)</p>
 	PowerDrawKva *int64 `json:"PowerDrawKva,omitnil,omitempty" name:"PowerDrawKva"`
 
-	// 网络到腾讯云Region区域的上行链路速度(Gbps)
+	// <p>网络到腾讯云Region区域的上行链路速度(Gbps)</p>
 	UplinkSpeedGbps *int64 `json:"UplinkSpeedGbps,omitnil,omitempty" name:"UplinkSpeedGbps"`
 
-	// 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+	// <p>将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。</p>
 	UplinkCount *int64 `json:"UplinkCount,omitnil,omitempty" name:"UplinkCount"`
 
-	// 是否满足下面环境条件：
-	// 1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
-	// 2、确定的机架位置包含:
-	// 温度范围为 41 到 104°F (5 到 40°C)。
-	// 湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
-	// 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
+	// <p>是否满足下面环境条件：1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。2、确定的机架位置包含:温度范围为 41 到 104°F (5 到 40°C)。湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。</p>
 	ConditionRequirement *bool `json:"ConditionRequirement,omitnil,omitempty" name:"ConditionRequirement"`
 
-	// 是否满足下面的尺寸条件：
-	// 您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
-	// 您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
-	// 在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+	// <p>是否满足下面的尺寸条件：您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。</p>
 	DimensionRequirement *bool `json:"DimensionRequirement,omitnil,omitempty" name:"DimensionRequirement"`
 
-	// 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+	// <p>是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。</p>
 	RedundantNetworking *bool `json:"RedundantNetworking,omitnil,omitempty" name:"RedundantNetworking"`
 
-	// 站点所在地区的邮编
+	// <p>站点所在地区的邮编</p>
 	PostalCode *int64 `json:"PostalCode,omitnil,omitempty" name:"PostalCode"`
 
-	// 站点所在地区的详细地址信息（补充）
+	// <p>站点所在地区的详细地址信息（补充）</p>
 	OptionalAddressLine *string `json:"OptionalAddressLine,omitnil,omitempty" name:"OptionalAddressLine"`
 
-	// 是否需要腾讯云团队协助完成机架支撑工作
+	// <p>是否需要腾讯云团队协助完成机架支撑工作</p>
 	NeedHelp *bool `json:"NeedHelp,omitnil,omitempty" name:"NeedHelp"`
 
-	// 是否电源冗余
+	// <p>是否电源冗余</p>
 	RedundantPower *bool `json:"RedundantPower,omitnil,omitempty" name:"RedundantPower"`
 
-	// 上游断路器是否具备
+	// <p>上游断路器是否具备</p>
 	BreakerRequirement *bool `json:"BreakerRequirement,omitnil,omitempty" name:"BreakerRequirement"`
 }
 
 type CreateSiteRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点名称
+	// <p>站点名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 站点所在国家
+	// <p>站点所在国家</p>
 	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
 
-	// 站点所在省份
+	// <p>站点所在省份</p>
 	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
 
-	// 站点所在城市
+	// <p>站点所在城市</p>
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
-	// 站点所在地区的详细地址信息
+	// <p>站点所在地区的详细地址信息</p>
 	AddressLine *string `json:"AddressLine,omitnil,omitempty" name:"AddressLine"`
 
-	// 站点描述
+	// <p>站点描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 注意事项
+	// <p>注意事项</p>
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"
+	// <p>您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"</p>
 	FiberType *string `json:"FiberType,omitnil,omitempty" name:"FiberType"`
 
-	// 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+	// <p>您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。</p>
 	OpticalStandard *string `json:"OpticalStandard,omitnil,omitempty" name:"OpticalStandard"`
 
-	// 电源连接器类型
+	// <p>电源连接器类型</p>
 	PowerConnectors *string `json:"PowerConnectors,omitnil,omitempty" name:"PowerConnectors"`
 
-	// 从机架上方还是下方供电。取值范围：["UP","DOWN"]
+	// <p>从机架上方还是下方供电。取值范围：["UP","DOWN"]</p>
 	PowerFeedDrop *string `json:"PowerFeedDrop,omitnil,omitempty" name:"PowerFeedDrop"`
 
-	// 最大承重(KG)
+	// <p>最大承重(KG)</p>
 	MaxWeight *int64 `json:"MaxWeight,omitnil,omitempty" name:"MaxWeight"`
 
-	// 功耗(KW)
+	// <p>功耗(KW)</p>
 	PowerDrawKva *int64 `json:"PowerDrawKva,omitnil,omitempty" name:"PowerDrawKva"`
 
-	// 网络到腾讯云Region区域的上行链路速度(Gbps)
+	// <p>网络到腾讯云Region区域的上行链路速度(Gbps)</p>
 	UplinkSpeedGbps *int64 `json:"UplinkSpeedGbps,omitnil,omitempty" name:"UplinkSpeedGbps"`
 
-	// 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+	// <p>将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。</p>
 	UplinkCount *int64 `json:"UplinkCount,omitnil,omitempty" name:"UplinkCount"`
 
-	// 是否满足下面环境条件：
-	// 1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
-	// 2、确定的机架位置包含:
-	// 温度范围为 41 到 104°F (5 到 40°C)。
-	// 湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
-	// 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
+	// <p>是否满足下面环境条件：1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。2、确定的机架位置包含:温度范围为 41 到 104°F (5 到 40°C)。湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。</p>
 	ConditionRequirement *bool `json:"ConditionRequirement,omitnil,omitempty" name:"ConditionRequirement"`
 
-	// 是否满足下面的尺寸条件：
-	// 您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
-	// 您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
-	// 在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+	// <p>是否满足下面的尺寸条件：您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。</p>
 	DimensionRequirement *bool `json:"DimensionRequirement,omitnil,omitempty" name:"DimensionRequirement"`
 
-	// 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+	// <p>是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。</p>
 	RedundantNetworking *bool `json:"RedundantNetworking,omitnil,omitempty" name:"RedundantNetworking"`
 
-	// 站点所在地区的邮编
+	// <p>站点所在地区的邮编</p>
 	PostalCode *int64 `json:"PostalCode,omitnil,omitempty" name:"PostalCode"`
 
-	// 站点所在地区的详细地址信息（补充）
+	// <p>站点所在地区的详细地址信息（补充）</p>
 	OptionalAddressLine *string `json:"OptionalAddressLine,omitnil,omitempty" name:"OptionalAddressLine"`
 
-	// 是否需要腾讯云团队协助完成机架支撑工作
+	// <p>是否需要腾讯云团队协助完成机架支撑工作</p>
 	NeedHelp *bool `json:"NeedHelp,omitnil,omitempty" name:"NeedHelp"`
 
-	// 是否电源冗余
+	// <p>是否电源冗余</p>
 	RedundantPower *bool `json:"RedundantPower,omitnil,omitempty" name:"RedundantPower"`
 
-	// 上游断路器是否具备
+	// <p>上游断路器是否具备</p>
 	BreakerRequirement *bool `json:"BreakerRequirement,omitnil,omitempty" name:"BreakerRequirement"`
 }
 
@@ -485,7 +469,7 @@ func (r *CreateSiteRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSiteResponseParams struct {
-	// 创建Site生成的id
+	// <p>创建Site生成的id</p>
 	SiteId *string `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1510,38 +1494,38 @@ func (r *DescribeDedicatedClusterOverviewResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeDedicatedClusterTypesRequestParams struct {
-	// 模糊匹配专用集群配置名称
+	// <p>模糊匹配专用集群配置名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 待查询的专用集群配置id列表
+	// <p>待查询的专用集群配置id列表</p>
 	DedicatedClusterTypeIds []*string `json:"DedicatedClusterTypeIds,omitnil,omitempty" name:"DedicatedClusterTypeIds"`
 
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	// <p>偏移量，默认为0。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688">简介</a>中的相关小节。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	// <p>返回数量，默认为20，最大值为100。关于<code>Limit</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688">简介</a>中的相关小节。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否只查询计算规格类型
+	// <p>是否只查询计算规格类型</p>
 	IsCompute *bool `json:"IsCompute,omitnil,omitempty" name:"IsCompute"`
 }
 
 type DescribeDedicatedClusterTypesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模糊匹配专用集群配置名称
+	// <p>模糊匹配专用集群配置名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 待查询的专用集群配置id列表
+	// <p>待查询的专用集群配置id列表</p>
 	DedicatedClusterTypeIds []*string `json:"DedicatedClusterTypeIds,omitnil,omitempty" name:"DedicatedClusterTypeIds"`
 
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	// <p>偏移量，默认为0。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688">简介</a>中的相关小节。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	// <p>返回数量，默认为20，最大值为100。关于<code>Limit</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688">简介</a>中的相关小节。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否只查询计算规格类型
+	// <p>是否只查询计算规格类型</p>
 	IsCompute *bool `json:"IsCompute,omitnil,omitempty" name:"IsCompute"`
 }
 
@@ -1570,10 +1554,10 @@ func (r *DescribeDedicatedClusterTypesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDedicatedClusterTypesResponseParams struct {
-	// 专用集群配置列表
+	// <p>专用集群配置列表</p>
 	DedicatedClusterTypeSet []*DedicatedClusterType `json:"DedicatedClusterTypeSet,omitnil,omitempty" name:"DedicatedClusterTypeSet"`
 
-	// 符合条件的个数
+	// <p>符合条件的个数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2191,114 +2175,98 @@ func (r *ModifyOrderStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySiteDeviceInfoRequestParams struct {
-	// 机房ID
+	// <p>机房ID</p>
 	SiteId *string `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
-	// 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+	// <p>您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。</p>
 	FiberType *string `json:"FiberType,omitnil,omitempty" name:"FiberType"`
 
-	// 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+	// <p>您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。</p>
 	OpticalStandard *string `json:"OpticalStandard,omitnil,omitempty" name:"OpticalStandard"`
 
-	// 电源连接器类型
+	// <p>电源连接器类型</p>
 	PowerConnectors *string `json:"PowerConnectors,omitnil,omitempty" name:"PowerConnectors"`
 
-	// 从机架上方还是下方供电。取值范围：["UP","DOWN"]
+	// <p>从机架上方还是下方供电。取值范围：["UP","DOWN"]</p>
 	PowerFeedDrop *string `json:"PowerFeedDrop,omitnil,omitempty" name:"PowerFeedDrop"`
 
-	// 最大承重(KG)
+	// <p>最大承重(KG)</p>
 	MaxWeight *int64 `json:"MaxWeight,omitnil,omitempty" name:"MaxWeight"`
 
-	// 功耗(KW)
+	// <p>功耗(KW)</p>
 	PowerDrawKva *int64 `json:"PowerDrawKva,omitnil,omitempty" name:"PowerDrawKva"`
 
-	// 网络到腾讯云Region区域的上行链路速度(Gbps)
+	// <p>网络到腾讯云Region区域的上行链路速度(Gbps)</p>
 	UplinkSpeedGbps *int64 `json:"UplinkSpeedGbps,omitnil,omitempty" name:"UplinkSpeedGbps"`
 
-	// 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+	// <p>将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。</p>
 	UplinkCount *int64 `json:"UplinkCount,omitnil,omitempty" name:"UplinkCount"`
 
-	// 是否满足下面环境条件：
-	// 1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
-	// 2、确定的机架位置包含:
-	// 温度范围为 41 到 104°F (5 到 40°C)。
-	// 湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
-	// 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)，散热功率须达到CDC运行功率值的 145.8 倍以上。
+	// <p>是否满足下面环境条件：1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。2、确定的机架位置包含:温度范围为 41 到 104°F (5 到 40°C)。湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)，散热功率须达到CDC运行功率值的 145.8 倍以上。</p>
 	ConditionRequirement *bool `json:"ConditionRequirement,omitnil,omitempty" name:"ConditionRequirement"`
 
-	// 是否满足下面的尺寸条件：
-	// 您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
-	// 您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
-	// 在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+	// <p>是否满足下面的尺寸条件：您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。</p>
 	DimensionRequirement *bool `json:"DimensionRequirement,omitnil,omitempty" name:"DimensionRequirement"`
 
-	// 是否提供冗余的上游设备(交换机或路由器)，以便实现网络出口的高可用。
+	// <p>是否提供冗余的上游设备(交换机或路由器)，以便实现网络出口的高可用。</p>
 	RedundantNetworking *bool `json:"RedundantNetworking,omitnil,omitempty" name:"RedundantNetworking"`
 
-	// 是否需要腾讯云团队协助完成机架支撑工作
+	// <p>是否需要腾讯云团队协助完成机架支撑工作</p>
 	NeedHelp *bool `json:"NeedHelp,omitnil,omitempty" name:"NeedHelp"`
 
-	// 是否电源冗余
+	// <p>是否电源冗余</p>
 	RedundantPower *bool `json:"RedundantPower,omitnil,omitempty" name:"RedundantPower"`
 
-	// 上游断路器是否具备
+	// <p>上游断路器是否具备</p>
 	BreakerRequirement *bool `json:"BreakerRequirement,omitnil,omitempty" name:"BreakerRequirement"`
 }
 
 type ModifySiteDeviceInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机房ID
+	// <p>机房ID</p>
 	SiteId *string `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
-	// 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+	// <p>您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。</p>
 	FiberType *string `json:"FiberType,omitnil,omitempty" name:"FiberType"`
 
-	// 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+	// <p>您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。</p>
 	OpticalStandard *string `json:"OpticalStandard,omitnil,omitempty" name:"OpticalStandard"`
 
-	// 电源连接器类型
+	// <p>电源连接器类型</p>
 	PowerConnectors *string `json:"PowerConnectors,omitnil,omitempty" name:"PowerConnectors"`
 
-	// 从机架上方还是下方供电。取值范围：["UP","DOWN"]
+	// <p>从机架上方还是下方供电。取值范围：["UP","DOWN"]</p>
 	PowerFeedDrop *string `json:"PowerFeedDrop,omitnil,omitempty" name:"PowerFeedDrop"`
 
-	// 最大承重(KG)
+	// <p>最大承重(KG)</p>
 	MaxWeight *int64 `json:"MaxWeight,omitnil,omitempty" name:"MaxWeight"`
 
-	// 功耗(KW)
+	// <p>功耗(KW)</p>
 	PowerDrawKva *int64 `json:"PowerDrawKva,omitnil,omitempty" name:"PowerDrawKva"`
 
-	// 网络到腾讯云Region区域的上行链路速度(Gbps)
+	// <p>网络到腾讯云Region区域的上行链路速度(Gbps)</p>
 	UplinkSpeedGbps *int64 `json:"UplinkSpeedGbps,omitnil,omitempty" name:"UplinkSpeedGbps"`
 
-	// 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+	// <p>将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。</p>
 	UplinkCount *int64 `json:"UplinkCount,omitnil,omitempty" name:"UplinkCount"`
 
-	// 是否满足下面环境条件：
-	// 1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
-	// 2、确定的机架位置包含:
-	// 温度范围为 41 到 104°F (5 到 40°C)。
-	// 湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
-	// 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)，散热功率须达到CDC运行功率值的 145.8 倍以上。
+	// <p>是否满足下面环境条件：1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。2、确定的机架位置包含:温度范围为 41 到 104°F (5 到 40°C)。湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)，散热功率须达到CDC运行功率值的 145.8 倍以上。</p>
 	ConditionRequirement *bool `json:"ConditionRequirement,omitnil,omitempty" name:"ConditionRequirement"`
 
-	// 是否满足下面的尺寸条件：
-	// 您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
-	// 您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
-	// 在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+	// <p>是否满足下面的尺寸条件：您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。</p>
 	DimensionRequirement *bool `json:"DimensionRequirement,omitnil,omitempty" name:"DimensionRequirement"`
 
-	// 是否提供冗余的上游设备(交换机或路由器)，以便实现网络出口的高可用。
+	// <p>是否提供冗余的上游设备(交换机或路由器)，以便实现网络出口的高可用。</p>
 	RedundantNetworking *bool `json:"RedundantNetworking,omitnil,omitempty" name:"RedundantNetworking"`
 
-	// 是否需要腾讯云团队协助完成机架支撑工作
+	// <p>是否需要腾讯云团队协助完成机架支撑工作</p>
 	NeedHelp *bool `json:"NeedHelp,omitnil,omitempty" name:"NeedHelp"`
 
-	// 是否电源冗余
+	// <p>是否电源冗余</p>
 	RedundantPower *bool `json:"RedundantPower,omitnil,omitempty" name:"RedundantPower"`
 
-	// 上游断路器是否具备
+	// <p>上游断路器是否具备</p>
 	BreakerRequirement *bool `json:"BreakerRequirement,omitnil,omitempty" name:"BreakerRequirement"`
 }
 

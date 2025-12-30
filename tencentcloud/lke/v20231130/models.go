@@ -1001,6 +1001,94 @@ type CallDetail struct {
 	BillingTag *string `json:"BillingTag,omitnil,omitempty" name:"BillingTag"`
 }
 
+// Predefined struct for user
+type CallbackWorkflowToolNodeRequestParams struct {
+	// ADP调用外部API时,通过HTTP Header(X-ADP-Callback-Token)传递回调CallbackToken
+	CallbackToken *string `json:"CallbackToken,omitnil,omitempty" name:"CallbackToken"`
+
+	// 回调结果,可选,为JSON字符串
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+}
+
+type CallbackWorkflowToolNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// ADP调用外部API时,通过HTTP Header(X-ADP-Callback-Token)传递回调CallbackToken
+	CallbackToken *string `json:"CallbackToken,omitnil,omitempty" name:"CallbackToken"`
+
+	// 回调结果,可选,为JSON字符串
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+}
+
+func (r *CallbackWorkflowToolNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CallbackWorkflowToolNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CallbackToken")
+	delete(f, "Result")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	delete(f, "AppBizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CallbackWorkflowToolNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CallbackWorkflowToolNodeResponseParams struct {
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 状态详情
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CallbackWorkflowToolNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *CallbackWorkflowToolNodeResponseParams `json:"Response"`
+}
+
+func (r *CallbackWorkflowToolNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CallbackWorkflowToolNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CateInfo struct {
 	// 分类ID
 	// 注意：此字段可能返回 null，表示取不到有效值。

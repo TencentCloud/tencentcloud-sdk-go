@@ -191,6 +191,9 @@ const (
 	// 创建批量域名任务失败，原因：内部错误。
 	INVALIDPARAMETER_BATCHDOMAINCREATEACTIONERROR = "InvalidParameter.BatchDomainCreateActionError"
 
+	// 列表中存在您没有权限的域名
+	INVALIDPARAMETER_BATCHDOMAINNOTAUTH = "InvalidParameter.BatchDomainNotAuth"
+
 	// 您有批量任务未执行完成，请等待完成后继续添加。
 	INVALIDPARAMETER_BATCHLIMITUNDO = "InvalidParameter.BatchLimitUndo"
 

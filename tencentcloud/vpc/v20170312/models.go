@@ -36768,6 +36768,9 @@ type VpnGatewayRoute struct {
 
 	// 更新时间。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 路由备注
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type VpnGatewayRouteModify struct {
@@ -36776,6 +36779,9 @@ type VpnGatewayRouteModify struct {
 
 	// VPN网关状态, ENABLE 启用, DISABLE禁用。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// VPN路由备注
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type VpngwCcnRoutes struct {

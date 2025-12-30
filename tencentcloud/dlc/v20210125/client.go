@@ -6465,6 +6465,62 @@ func (c *Client) DescribeOtherCHDFSBindingListWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeResourceGroupUsageInfoRequest() (request *DescribeResourceGroupUsageInfoRequest) {
+    request = &DescribeResourceGroupUsageInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeResourceGroupUsageInfo")
+    
+    
+    return
+}
+
+func NewDescribeResourceGroupUsageInfoResponse() (response *DescribeResourceGroupUsageInfoResponse) {
+    response = &DescribeResourceGroupUsageInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourceGroupUsageInfo
+// 本接口根据资源组ID查询资源组CU使用情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
+func (c *Client) DescribeResourceGroupUsageInfo(request *DescribeResourceGroupUsageInfoRequest) (response *DescribeResourceGroupUsageInfoResponse, err error) {
+    return c.DescribeResourceGroupUsageInfoWithContext(context.Background(), request)
+}
+
+// DescribeResourceGroupUsageInfo
+// 本接口根据资源组ID查询资源组CU使用情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
+func (c *Client) DescribeResourceGroupUsageInfoWithContext(ctx context.Context, request *DescribeResourceGroupUsageInfoRequest) (response *DescribeResourceGroupUsageInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceGroupUsageInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeResourceGroupUsageInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceGroupUsageInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceGroupUsageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResultDownloadRequest() (request *DescribeResultDownloadRequest) {
     request = &DescribeResultDownloadRequest{
         BaseRequest: &tchttp.BaseRequest{},

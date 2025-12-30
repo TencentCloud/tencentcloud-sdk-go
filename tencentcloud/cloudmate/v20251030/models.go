@@ -115,7 +115,7 @@ type CloudMateAgentResponseParams struct {
 	// 会话ID，用于后续继续对话
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// unix时间戳
+	// Unix 时间戳
 	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 诊断内容

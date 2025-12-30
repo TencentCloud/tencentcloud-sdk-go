@@ -817,6 +817,18 @@ func (r *DescribeVideoVoiceJobResponse) FromJsonString(s string) error {
 type ExtraParam struct {
 	// 预签名的上传url，支持把视频直接传到客户指定的地址。
 	UserDesignatedUrl *string `json:"UserDesignatedUrl,omitnil,omitempty" name:"UserDesignatedUrl"`
+
+	// 回调地址
+	// 需要您在创建任务时主动设置 CallbackUrl，请求方法为 POST，当视频生成结束时，我们将向此地址发送生成结果。
+	// 数据格式如下：
+	// {
+	//     "JobId": "1397428070633955328",
+	//     "Status": "DONE",
+	//     "ErrorCode": "",
+	//     "ErrorMessage": "",
+	//     "ResultVideoUrl": "https://vcg.cos.tencentcos.cn/template_to_video/fa80b846-b933-4981-afad-8a39b46ef2ca.mp4"
+	// }
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 }
 
 type FaceMergeInfo struct {
@@ -1633,6 +1645,9 @@ type SubmitVideoEditJobRequestParams struct {
 	// 支持风格迁移、替换、元素增加、删除控制
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
+	// 图片数组
+	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
+
 	// 图片base64或者图片url
 	// 
 	// - Base64 和 Url 必须提供一个，如果都提供以Url为准。
@@ -1661,6 +1676,9 @@ type SubmitVideoEditJobRequest struct {
 	// 视频内容的描述，中文正向提示词。最多支持200个 utf-8 字符（首尾空格不计入字符数）。
 	// 支持风格迁移、替换、元素增加、删除控制
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 图片数组
+	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
 
 	// 图片base64或者图片url
 	// 
@@ -1691,6 +1709,7 @@ func (r *SubmitVideoEditJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VideoUrl")
 	delete(f, "Prompt")
+	delete(f, "Images")
 	delete(f, "Image")
 	delete(f, "LogoAdd")
 	delete(f, "LogoParam")

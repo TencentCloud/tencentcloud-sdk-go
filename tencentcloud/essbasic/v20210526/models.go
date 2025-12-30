@@ -3361,6 +3361,12 @@ type ChannelCreateOrganizationBatchSignUrlRequestParams struct {
 
 	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
+
+	// 动态签署方领取链接配置。
+	DynamicSignOption *DynamicSignOption `json:"DynamicSignOption,omitnil,omitempty" name:"DynamicSignOption"`
+
+	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。 注：生成动态签署方领取时此参数必传。
+	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 }
 
 type ChannelCreateOrganizationBatchSignUrlRequest struct {
@@ -3394,6 +3400,12 @@ type ChannelCreateOrganizationBatchSignUrlRequest struct {
 
 	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
+
+	// 动态签署方领取链接配置。
+	DynamicSignOption *DynamicSignOption `json:"DynamicSignOption,omitnil,omitempty" name:"DynamicSignOption"`
+
+	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。 注：生成动态签署方领取时此参数必传。
+	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 }
 
 func (r *ChannelCreateOrganizationBatchSignUrlRequest) ToJsonString() string {
@@ -3415,6 +3427,8 @@ func (r *ChannelCreateOrganizationBatchSignUrlRequest) FromJsonString(s string) 
 	delete(f, "Mobile")
 	delete(f, "FlowGroupId")
 	delete(f, "CanBatchReject")
+	delete(f, "DynamicSignOption")
+	delete(f, "RecipientIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateOrganizationBatchSignUrlRequest has unknown keys!", "")
 	}
@@ -11569,6 +11583,14 @@ type DynamicFlowResult struct {
 
 	// 动态合同签署人补充结果信息列表
 	DynamicFlowApproverList []*DynamicFlowApproverResult `json:"DynamicFlowApproverList,omitnil,omitempty" name:"DynamicFlowApproverList"`
+}
+
+type DynamicSignOption struct {
+	// 多份合同批量签署时，动态签署领取要求：<ul><li><b>0（默认值）</b>: 可以领取部分合同进入签署。</li><li><b>1 </b>: 必须全部领取进入签署，生成链接的所有合同必须相同经办人完成合同的领取签署。</li></ul>
+	DynamicReceiveType *uint64 `json:"DynamicReceiveType,omitnil,omitempty" name:"DynamicReceiveType"`
+
+	// 动态签署方时，预设的企业OpenId，预设企业OpenId后，只允许对应的企业员工进行领取签署。
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 }
 
 type EmbedUrlOption struct {

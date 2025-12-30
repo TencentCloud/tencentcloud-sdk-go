@@ -9520,6 +9520,69 @@ func (r *DescribeOtherCHDFSBindingListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeResourceGroupUsageInfoRequestParams struct {
+	// 资源组ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type DescribeResourceGroupUsageInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源组ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+func (r *DescribeResourceGroupUsageInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceGroupUsageInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceGroupUsageInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceGroupUsageInfoResponseParams struct {
+	// 资源上限
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 已占用资源
+	Used *int64 `json:"Used,omitnil,omitempty" name:"Used"`
+
+	// 剩余可用资源
+	Available *int64 `json:"Available,omitnil,omitempty" name:"Available"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourceGroupUsageInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourceGroupUsageInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourceGroupUsageInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceGroupUsageInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResultDownloadRequestParams struct {
 	// 查询任务Id
 	DownloadId *string `json:"DownloadId,omitnil,omitempty" name:"DownloadId"`

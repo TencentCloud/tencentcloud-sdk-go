@@ -4205,6 +4205,7 @@ func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string
 type CreateAigcImageTaskRequestParams struct {
 	// 模型名称。
 	// 当前支持的模型列表：
+	// Hunyuan,
 	// GEM，
 	// Jimeng，
 	// Qwen。
@@ -4250,6 +4251,7 @@ type CreateAigcImageTaskRequest struct {
 	
 	// 模型名称。
 	// 当前支持的模型列表：
+	// Hunyuan,
 	// GEM，
 	// Jimeng，
 	// Qwen。
@@ -4346,6 +4348,7 @@ func (r *CreateAigcImageTaskResponse) FromJsonString(s string) error {
 type CreateAigcVideoTaskRequestParams struct {
 	// 模型名称。
 	// 当前支持的模型列表:
+	// Hunyuan,
 	// Hailuo，
 	// Kling，
 	// Jimeng，
@@ -4431,6 +4434,7 @@ type CreateAigcVideoTaskRequest struct {
 	
 	// 模型名称。
 	// 当前支持的模型列表:
+	// Hunyuan,
 	// Hailuo，
 	// Kling，
 	// Jimeng，

@@ -22977,11 +22977,9 @@ type TsfPageBusinessLogV2 struct {
 	Content []*BusinessLogV2 `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 游标ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScrollId *string `json:"ScrollId,omitnil,omitempty" name:"ScrollId"`
 
 	// 查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 查询es时，使用searchAfter返回的游标
@@ -23152,11 +23150,9 @@ type TsfPageStdoutLogV2 struct {
 	Content []*StdoutLogV2 `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 游标ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScrollId *string `json:"ScrollId,omitnil,omitempty" name:"ScrollId"`
 
 	// 查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 查询es使用searchAfter时，游标
