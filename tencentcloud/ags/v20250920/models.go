@@ -176,7 +176,7 @@ type CreateSandboxToolRequestParams struct {
 	// 沙箱工具名称，长度 1-50 字符，支持英文、数字、下划线和连接线。同一 AppId 下沙箱工具名称必须唯一
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
 
-	// 沙箱工具类型，目前支持：browser、code-interpreter
+	// 沙箱工具类型，目前支持：browser、code-interpreter、custom
 	ToolType *string `json:"ToolType,omitnil,omitempty" name:"ToolType"`
 
 	// 网络配置
@@ -199,6 +199,9 @@ type CreateSandboxToolRequestParams struct {
 
 	// 沙箱工具存储配置
 	StorageMounts []*StorageMount `json:"StorageMounts,omitnil,omitempty" name:"StorageMounts"`
+
+	// 沙箱工具自定义配置
+	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 }
 
 type CreateSandboxToolRequest struct {
@@ -207,7 +210,7 @@ type CreateSandboxToolRequest struct {
 	// 沙箱工具名称，长度 1-50 字符，支持英文、数字、下划线和连接线。同一 AppId 下沙箱工具名称必须唯一
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
 
-	// 沙箱工具类型，目前支持：browser、code-interpreter
+	// 沙箱工具类型，目前支持：browser、code-interpreter、custom
 	ToolType *string `json:"ToolType,omitnil,omitempty" name:"ToolType"`
 
 	// 网络配置
@@ -230,6 +233,9 @@ type CreateSandboxToolRequest struct {
 
 	// 沙箱工具存储配置
 	StorageMounts []*StorageMount `json:"StorageMounts,omitnil,omitempty" name:"StorageMounts"`
+
+	// 沙箱工具自定义配置
+	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 }
 
 func (r *CreateSandboxToolRequest) ToJsonString() string {
@@ -253,6 +259,7 @@ func (r *CreateSandboxToolRequest) FromJsonString(s string) error {
 	delete(f, "ClientToken")
 	delete(f, "RoleArn")
 	delete(f, "StorageMounts")
+	delete(f, "CustomConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSandboxToolRequest has unknown keys!", "")
 	}
@@ -282,6 +289,61 @@ func (r *CreateSandboxToolResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateSandboxToolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CustomConfiguration struct {
+	// 镜像地址
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 镜像仓库类型：`enterprise`、`personal`。
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// 启动命令
+	Command []*string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 启动参数
+	Args []*string `json:"Args,omitnil,omitempty" name:"Args"`
+
+	// 环境变量
+	Env []*EnvVar `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 端口配置
+	Ports []*PortConfiguration `json:"Ports,omitnil,omitempty" name:"Ports"`
+
+	// 资源配置
+	Resources *ResourceConfiguration `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// 探针配置
+	Probe *ProbeConfiguration `json:"Probe,omitnil,omitempty" name:"Probe"`
+}
+
+type CustomConfigurationDetail struct {
+	// 镜像地址
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 镜像仓库类型：`TCR`、`CCR`。
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// 镜像 Digest
+	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
+
+	// 启动命令
+	Command []*string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 启动参数
+	Args []*string `json:"Args,omitnil,omitempty" name:"Args"`
+
+	// 环境变量
+	Env []*EnvVar `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 端口配置
+	Ports []*PortConfiguration `json:"Ports,omitnil,omitempty" name:"Ports"`
+
+	// 资源配置
+	Resources *ResourceConfiguration `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// 探针配置
+	Probe *ProbeConfiguration `json:"Probe,omitnil,omitempty" name:"Probe"`
 }
 
 // Predefined struct for user
@@ -618,12 +680,45 @@ func (r *DescribeSandboxToolListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EnvVar struct {
+	// 环境变量名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 环境变量值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type Filter struct {
 	// 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type HttpGetAction struct {
+	// 路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 协议
+	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
+}
+
+type ImageStorageSource struct {
+	// 镜像地址
+	Reference *string `json:"Reference,omitnil,omitempty" name:"Reference"`
+
+	// 镜像仓库类型：`enterprise`、`personal`。
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// 镜像内部的路径
+	SubPath *string `json:"SubPath,omitnil,omitempty" name:"SubPath"`
+
+	// 镜像 Digest，请求时无需传入
+	Digest *string `json:"Digest,omitnil,omitempty" name:"Digest"`
 }
 
 type MountOption struct {
@@ -646,6 +741,45 @@ type NetworkConfiguration struct {
 
 	// VPC网络相关配置
 	VpcConfig *VPCConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
+}
+
+type PortConfiguration struct {
+	// 端口名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+}
+
+type ProbeConfiguration struct {
+	// HTTP GET 探测配置
+	HttpGet *HttpGetAction `json:"HttpGet,omitnil,omitempty" name:"HttpGet"`
+
+	// 健康检查就绪超时
+	ReadyTimeoutMs *int64 `json:"ReadyTimeoutMs,omitnil,omitempty" name:"ReadyTimeoutMs"`
+
+	// 健康检查单次探测超时
+	ProbeTimeoutMs *int64 `json:"ProbeTimeoutMs,omitnil,omitempty" name:"ProbeTimeoutMs"`
+
+	// 健康检查间隔
+	ProbePeriodMs *int64 `json:"ProbePeriodMs,omitnil,omitempty" name:"ProbePeriodMs"`
+
+	// 健康检查成功阈值
+	SuccessThreshold *int64 `json:"SuccessThreshold,omitnil,omitempty" name:"SuccessThreshold"`
+
+	// 健康检查失败阈值
+	FailureThreshold *int64 `json:"FailureThreshold,omitnil,omitempty" name:"FailureThreshold"`
+}
+
+type ResourceConfiguration struct {
+	// cpu 资源量
+	CPU *string `json:"CPU,omitnil,omitempty" name:"CPU"`
+
+	// 内存资源量
+	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
 }
 
 type SandboxInstance struct {
@@ -678,6 +812,9 @@ type SandboxInstance struct {
 
 	// 存储挂载选项
 	MountOptions []*MountOption `json:"MountOptions,omitnil,omitempty" name:"MountOptions"`
+
+	// 沙箱实例自定义配置
+	CustomConfiguration *CustomConfigurationDetail `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 }
 
 type SandboxTool struct {
@@ -716,6 +853,9 @@ type SandboxTool struct {
 
 	// 沙箱工具中实例存储挂载配置
 	StorageMounts []*StorageMount `json:"StorageMounts,omitnil,omitempty" name:"StorageMounts"`
+
+	// 沙箱工具自定义配置
+	CustomConfiguration *CustomConfigurationDetail `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 }
 
 // Predefined struct for user
@@ -734,6 +874,9 @@ type StartSandboxInstanceRequestParams struct {
 
 	// 沙箱实例存储挂载配置
 	MountOptions []*MountOption `json:"MountOptions,omitnil,omitempty" name:"MountOptions"`
+
+	// 沙箱实例自定义配置
+	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 }
 
 type StartSandboxInstanceRequest struct {
@@ -753,6 +896,9 @@ type StartSandboxInstanceRequest struct {
 
 	// 沙箱实例存储挂载配置
 	MountOptions []*MountOption `json:"MountOptions,omitnil,omitempty" name:"MountOptions"`
+
+	// 沙箱实例自定义配置
+	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 }
 
 func (r *StartSandboxInstanceRequest) ToJsonString() string {
@@ -772,6 +918,7 @@ func (r *StartSandboxInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Timeout")
 	delete(f, "ClientToken")
 	delete(f, "MountOptions")
+	delete(f, "CustomConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartSandboxInstanceRequest has unknown keys!", "")
 	}
@@ -874,6 +1021,9 @@ type StorageMount struct {
 type StorageSource struct {
 	// 对象存储桶配置
 	Cos *CosStorageSource `json:"Cos,omitnil,omitempty" name:"Cos"`
+
+	// 镜像卷配置
+	Image *ImageStorageSource `json:"Image,omitnil,omitempty" name:"Image"`
 }
 
 type Tag struct {
@@ -958,6 +1108,9 @@ type UpdateSandboxToolRequestParams struct {
 
 	// 标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 沙箱工具自定义配置
+	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 }
 
 type UpdateSandboxToolRequest struct {
@@ -974,6 +1127,9 @@ type UpdateSandboxToolRequest struct {
 
 	// 标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 沙箱工具自定义配置
+	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 }
 
 func (r *UpdateSandboxToolRequest) ToJsonString() string {
@@ -992,6 +1148,7 @@ func (r *UpdateSandboxToolRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "NetworkConfiguration")
 	delete(f, "Tags")
+	delete(f, "CustomConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateSandboxToolRequest has unknown keys!", "")
 	}

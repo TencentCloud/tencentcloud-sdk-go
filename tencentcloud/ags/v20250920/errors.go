@@ -38,6 +38,12 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 网络初始化失败
+	INTERNALERROR_NETWORKSETUPFAILED = "InternalError.NetworkSetupFailed"
+
+	// VPC服务不可用
+	INTERNALERROR_VPCSERVICEUNAVAILABLE = "InternalError.VPCServiceUnavailable"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
@@ -56,8 +62,14 @@ const (
 	// 沙箱工具名称不可用，可能是已经存在
 	INVALIDPARAMETERVALUE_SANDBOXTOOL = "InvalidParameterValue.SandboxTool"
 
+	// 安全组ID格式错误
+	INVALIDPARAMETERVALUE_SECURITYGROUPID = "InvalidParameterValue.SecurityGroupId"
+
 	// StorageMount部分参数错误
 	INVALIDPARAMETERVALUE_STORAGEMOUNT = "InvalidParameterValue.StorageMount"
+
+	// 子网ID格式错误
+	INVALIDPARAMETERVALUE_SUBNETID = "InvalidParameterValue.SubnetId"
 
 	// 超时时间格式错误或超过最大限制
 	INVALIDPARAMETERVALUE_TIMEOUT = "InvalidParameterValue.Timeout"
@@ -80,6 +92,9 @@ const (
 	// 缺少角色Arn
 	MISSINGPARAMETER_ROLEARN = "MissingParameter.RoleArn"
 
+	// VPC网络模式缺少必需参数
+	MISSINGPARAMETER_VPCPARAMETERS = "MissingParameter.VPCParameters"
+
 	// 沙箱工具正在使用中
 	RESOURCEINUSE_SANDBOXTOOL = "ResourceInUse.SandboxTool"
 
@@ -92,8 +107,14 @@ const (
 	// 沙箱工具不存在
 	RESOURCENOTFOUND_SANDBOXTOOL = "ResourceNotFound.SandboxTool"
 
+	// 安全组不存在或不属于用户
+	RESOURCENOTFOUND_SECURITYGROUP = "ResourceNotFound.SecurityGroup"
+
 	// 指定的StorageMount不存在
 	RESOURCENOTFOUND_STORAGEMOUNT = "ResourceNotFound.StorageMount"
+
+	// 子网不存在或不属于用户
+	RESOURCENOTFOUND_SUBNET = "ResourceNotFound.Subnet"
 
 	// 沙箱工具不可用
 	RESOURCEUNAVAILABLE_SANDBOXTOOL = "ResourceUnavailable.SandboxTool"

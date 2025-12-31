@@ -1519,10 +1519,10 @@ func (r *DetectFaceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetectFaceResponseParams struct {
-	// 请求的图片宽度。
+	// 请求的图片宽度，单位为：像素（px）。
 	ImageWidth *int64 `json:"ImageWidth,omitnil,omitempty" name:"ImageWidth"`
 
-	// 请求的图片高度。
+	// 请求的图片高度，单位为：像素（px）。
 	ImageHeight *int64 `json:"ImageHeight,omitnil,omitempty" name:"ImageHeight"`
 
 	// 人脸信息列表。包含人脸坐标信息、属性信息（若需要）、质量分信息（若需要）。
