@@ -2976,32 +2976,32 @@ func (r *InquiryPriceCreateDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceRenewDisksRequestParams struct {
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	// <p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。</p>
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。</p>
 	DiskChargePrepaids []*DiskChargePrepaid `json:"DiskChargePrepaids,omitnil,omitempty" name:"DiskChargePrepaids"`
 
-	// 指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
+	// <p>指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数<code>NewDeadline</code>和<code>DiskChargePrepaids</code>是两种指定询价时长的方式，两者必传一个。</p>
 	NewDeadline *string `json:"NewDeadline,omitnil,omitempty" name:"NewDeadline"`
 
-	// 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
+	// <p>云硬盘所属项目ID。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type InquiryPriceRenewDisksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	// <p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。</p>
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。</p>
 	DiskChargePrepaids []*DiskChargePrepaid `json:"DiskChargePrepaids,omitnil,omitempty" name:"DiskChargePrepaids"`
 
-	// 指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
+	// <p>指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数<code>NewDeadline</code>和<code>DiskChargePrepaids</code>是两种指定询价时长的方式，两者必传一个。</p>
 	NewDeadline *string `json:"NewDeadline,omitnil,omitempty" name:"NewDeadline"`
 
-	// 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
+	// <p>云硬盘所属项目ID。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -3029,7 +3029,7 @@ func (r *InquiryPriceRenewDisksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceRenewDisksResponseParams struct {
-	// 描述了续费云盘的价格。
+	// <p>描述了续费云盘的价格。</p>
 	DiskPrice *PrepayPrice `json:"DiskPrice,omitnil,omitempty" name:"DiskPrice"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3844,20 +3844,20 @@ type Price struct {
 
 // Predefined struct for user
 type RenewDiskRequestParams struct {
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云硬盘的续费时长。<br>在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云硬盘会按对齐到实例续费后的到期时间来续费。
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云硬盘的续费时长。<br>在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云硬盘会按对齐到实例续费后的到期时间来续费。</p>
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
 
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	// <p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。</p>
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 }
 
 type RenewDiskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云硬盘的续费时长。<br>在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云硬盘会按对齐到实例续费后的到期时间来续费。
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云硬盘的续费时长。<br>在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云硬盘会按对齐到实例续费后的到期时间来续费。</p>
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
 
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	// <p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。</p>
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 }
 

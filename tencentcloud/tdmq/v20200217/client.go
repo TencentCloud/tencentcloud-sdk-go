@@ -5355,6 +5355,72 @@ func (c *Client) DescribeRocketMQEnvironmentRolesWithContext(ctx context.Context
     return
 }
 
+func NewDescribeRocketMQGeneralSKUsRequest() (request *DescribeRocketMQGeneralSKUsRequest) {
+    request = &DescribeRocketMQGeneralSKUsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQGeneralSKUs")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQGeneralSKUsResponse() (response *DescribeRocketMQGeneralSKUsResponse) {
+    response = &DescribeRocketMQGeneralSKUsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQGeneralSKUs
+// 查询通用集群售卖规格。
+//
+// 当前 API 适用集群：4.x 通用集群。查询 5.x 集群的售卖规格接口文档见 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676)。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DescribeRocketMQGeneralSKUs(request *DescribeRocketMQGeneralSKUsRequest) (response *DescribeRocketMQGeneralSKUsResponse, err error) {
+    return c.DescribeRocketMQGeneralSKUsWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQGeneralSKUs
+// 查询通用集群售卖规格。
+//
+// 当前 API 适用集群：4.x 通用集群。查询 5.x 集群的售卖规格接口文档见 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676)。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DescribeRocketMQGeneralSKUsWithContext(ctx context.Context, request *DescribeRocketMQGeneralSKUsRequest) (response *DescribeRocketMQGeneralSKUsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQGeneralSKUsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "DescribeRocketMQGeneralSKUs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQGeneralSKUs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQGeneralSKUsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQGroupsRequest() (request *DescribeRocketMQGroupsRequest) {
     request = &DescribeRocketMQGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

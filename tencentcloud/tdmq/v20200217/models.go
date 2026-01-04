@@ -8228,6 +8228,60 @@ func (r *DescribeRocketMQEnvironmentRolesResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type DescribeRocketMQGeneralSKUsRequestParams struct {
+
+}
+
+type DescribeRocketMQGeneralSKUsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeRocketMQGeneralSKUsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQGeneralSKUsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQGeneralSKUsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQGeneralSKUsResponseParams struct {
+	// 商品配置信息
+	Skus []*GeneralSKU `json:"Skus,omitnil,omitempty" name:"Skus"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRocketMQGeneralSKUsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQGeneralSKUsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQGeneralSKUsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQGeneralSKUsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQGroupsRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -10870,6 +10924,29 @@ type FilterSubscription struct {
 	SubscriptionNames []*string `json:"SubscriptionNames,omitnil,omitempty" name:"SubscriptionNames"`
 }
 
+type GeneralSKU struct {
+	// 规格标识
+	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
+
+	// 是否可售卖
+	OnSale *bool `json:"OnSale,omitnil,omitempty" name:"OnSale"`
+
+	// TPS上限
+	TpsLimit *int64 `json:"TpsLimit,omitnil,omitempty" name:"TpsLimit"`
+
+	// 主题数免费额度
+	TopicNumLimit *int64 `json:"TopicNumLimit,omitnil,omitempty" name:"TopicNumLimit"`
+
+	// 主题数上限
+	TopicNumUpperLimit *int64 `json:"TopicNumUpperLimit,omitnil,omitempty" name:"TopicNumUpperLimit"`
+
+	// 计费项信息
+	PriceTags []*PriceTag `json:"PriceTags,omitnil,omitempty" name:"PriceTags"`
+
+	// 存储节点个数
+	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
+}
+
 // Predefined struct for user
 type GetTopicListRequestParams struct {
 	// 环境（命名空间）名称。
@@ -13182,6 +13259,23 @@ type PartitionsTopic struct {
 	// topic类型描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicType *uint64 `json:"TopicType,omitnil,omitempty" name:"TopicType"`
+}
+
+type PriceTag struct {
+	// 计价名称。枚举值如下：
+	// 
+	// - tps：TPS基础价
+	// - stepTps：TPS步长
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 计价类别
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// 计费项标签
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 计费项对应的步长数
+	Step *int64 `json:"Step,omitnil,omitempty" name:"Step"`
 }
 
 type ProducerInfo struct {

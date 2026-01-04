@@ -5111,11 +5111,11 @@ type DescribeRedisTopBigKeysRequestParams struct {
 	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 查询日期，如2021-05-27，最早可为前30天的日期。
-	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
-
 	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 查询某个日期最新的任务，如2021-05-27，最早可为前30天的日期。该参数与AsyncRequestId参数不可同时为空。
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
 	// 排序字段，取值包括Capacity - 内存，ItemCount - 元素数量，默认为Capacity。
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
@@ -5131,6 +5131,10 @@ type DescribeRedisTopBigKeysRequestParams struct {
 
 	// 分片节点序号列表。当列表为空时，选择所有分片节点。
 	ShardIds []*int64 `json:"ShardIds,omitnil,omitempty" name:"ShardIds"`
+
+	// 是否仅查询未设置过期时间的大Key。
+	// 当为true时，仅查询未设置过期时间的大Key，默认为false。
+	UnExpireKey *bool `json:"UnExpireKey,omitnil,omitempty" name:"UnExpireKey"`
 }
 
 type DescribeRedisTopBigKeysRequest struct {
@@ -5139,11 +5143,11 @@ type DescribeRedisTopBigKeysRequest struct {
 	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 查询日期，如2021-05-27，最早可为前30天的日期。
-	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
-
 	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 查询某个日期最新的任务，如2021-05-27，最早可为前30天的日期。该参数与AsyncRequestId参数不可同时为空。
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
 	// 排序字段，取值包括Capacity - 内存，ItemCount - 元素数量，默认为Capacity。
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
@@ -5159,6 +5163,10 @@ type DescribeRedisTopBigKeysRequest struct {
 
 	// 分片节点序号列表。当列表为空时，选择所有分片节点。
 	ShardIds []*int64 `json:"ShardIds,omitnil,omitempty" name:"ShardIds"`
+
+	// 是否仅查询未设置过期时间的大Key。
+	// 当为true时，仅查询未设置过期时间的大Key，默认为false。
+	UnExpireKey *bool `json:"UnExpireKey,omitnil,omitempty" name:"UnExpireKey"`
 }
 
 func (r *DescribeRedisTopBigKeysRequest) ToJsonString() string {
@@ -5174,13 +5182,14 @@ func (r *DescribeRedisTopBigKeysRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "Date")
 	delete(f, "Product")
+	delete(f, "Date")
 	delete(f, "SortBy")
 	delete(f, "KeyType")
 	delete(f, "Limit")
 	delete(f, "AsyncRequestId")
 	delete(f, "ShardIds")
+	delete(f, "UnExpireKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisTopBigKeysRequest has unknown keys!", "")
 	}
@@ -5484,6 +5493,91 @@ func (r *DescribeRedisTopKeyPrefixListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRedisTopKeyPrefixListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisUnExpiredKeyStatisticsRequestParams struct {
+	// 实例 ID。可通过接口获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 查询某个日期最新的任务，如2021-05-27，最早可为前30天的日期。该参数与AsyncRequestId参数不可同时为空。
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// 异步任务ID。当为空时，选择最近任务的ID。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// 分片节点序号列表。当列表为空时，选择所有分片节点。
+	ShardIds []*int64 `json:"ShardIds,omitnil,omitempty" name:"ShardIds"`
+}
+
+type DescribeRedisUnExpiredKeyStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID。可通过接口获取。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 查询某个日期最新的任务，如2021-05-27，最早可为前30天的日期。该参数与AsyncRequestId参数不可同时为空。
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// 异步任务ID。当为空时，选择最近任务的ID。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// 分片节点序号列表。当列表为空时，选择所有分片节点。
+	ShardIds []*int64 `json:"ShardIds,omitnil,omitempty" name:"ShardIds"`
+}
+
+func (r *DescribeRedisUnExpiredKeyStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisUnExpiredKeyStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "Date")
+	delete(f, "AsyncRequestId")
+	delete(f, "ShardIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisUnExpiredKeyStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisUnExpiredKeyStatisticsResponseParams struct {
+	// 全量Key的聚合分布信息列表。
+	SeriesData []*RedisGlobalKeyInfo `json:"SeriesData,omitnil,omitempty" name:"SeriesData"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedisUnExpiredKeyStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisUnExpiredKeyStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisUnExpiredKeyStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisUnExpiredKeyStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8256,6 +8350,22 @@ type RedisCostCmd struct {
 
 	// 最大cost
 	MaxCost *uint64 `json:"MaxCost,omitnil,omitempty" name:"MaxCost"`
+}
+
+type RedisGlobalKeyInfo struct {
+	// 占用内存大小，单位Byte。
+	Capacity *int64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
+
+	// Key个数。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 剩余过期时间范围的结束时间，当小于0时，代表已过期时间，单位：小时。当RangeMin与RangeMax同时为空时，代表未设置过期时间。当RangeMax为空时，代表剩余过期时间大于等于RangeMin小时。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RangeMax *int64 `json:"RangeMax,omitnil,omitempty" name:"RangeMax"`
+
+	// 剩余过期时间范围的起始时间，当小于0时，代表已过期时间，单位：小时。当RangeMin与RangeMax同时为空时，代表未设置过期时间。当RangeMin为空时，代表已过期。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RangeMin *int64 `json:"RangeMin,omitnil,omitempty" name:"RangeMin"`
 }
 
 type RedisInstanceConf struct {

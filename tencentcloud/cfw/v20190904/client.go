@@ -2397,6 +2397,60 @@ func (c *Client) DescribeCcnInstanceRegionStatusWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeCcnVpcFwPolicyLimitRequest() (request *DescribeCcnVpcFwPolicyLimitRequest) {
+    request = &DescribeCcnVpcFwPolicyLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCcnVpcFwPolicyLimit")
+    
+    
+    return
+}
+
+func NewDescribeCcnVpcFwPolicyLimitResponse() (response *DescribeCcnVpcFwPolicyLimitResponse) {
+    response = &DescribeCcnVpcFwPolicyLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCcnVpcFwPolicyLimit
+// 查询CCN中VPC防火墙接入策略配置时的规则数量限制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCcnVpcFwPolicyLimit(request *DescribeCcnVpcFwPolicyLimitRequest) (response *DescribeCcnVpcFwPolicyLimitResponse, err error) {
+    return c.DescribeCcnVpcFwPolicyLimitWithContext(context.Background(), request)
+}
+
+// DescribeCcnVpcFwPolicyLimit
+// 查询CCN中VPC防火墙接入策略配置时的规则数量限制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCcnVpcFwPolicyLimitWithContext(ctx context.Context, request *DescribeCcnVpcFwPolicyLimitRequest) (response *DescribeCcnVpcFwPolicyLimitResponse, err error) {
+    if request == nil {
+        request = NewDescribeCcnVpcFwPolicyLimitRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCcnVpcFwPolicyLimit")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCcnVpcFwPolicyLimit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCcnVpcFwPolicyLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCcnVpcFwSwitchRequest() (request *DescribeCcnVpcFwSwitchRequest) {
     request = &DescribeCcnVpcFwSwitchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2613,6 +2667,62 @@ func (c *Client) DescribeCfwInsStatusWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeCfwInsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterVpcFwSwitchsRequest() (request *DescribeClusterVpcFwSwitchsRequest) {
+    request = &DescribeClusterVpcFwSwitchsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeClusterVpcFwSwitchs")
+    
+    
+    return
+}
+
+func NewDescribeClusterVpcFwSwitchsResponse() (response *DescribeClusterVpcFwSwitchsResponse) {
+    response = &DescribeClusterVpcFwSwitchsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterVpcFwSwitchs
+// 查询集群模式Vpc间防火墙开关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClusterVpcFwSwitchs(request *DescribeClusterVpcFwSwitchsRequest) (response *DescribeClusterVpcFwSwitchsResponse, err error) {
+    return c.DescribeClusterVpcFwSwitchsWithContext(context.Background(), request)
+}
+
+// DescribeClusterVpcFwSwitchs
+// 查询集群模式Vpc间防火墙开关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClusterVpcFwSwitchsWithContext(ctx context.Context, request *DescribeClusterVpcFwSwitchsRequest) (response *DescribeClusterVpcFwSwitchsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterVpcFwSwitchsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeClusterVpcFwSwitchs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterVpcFwSwitchs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterVpcFwSwitchsResponse()
     err = c.Send(request, response)
     return
 }

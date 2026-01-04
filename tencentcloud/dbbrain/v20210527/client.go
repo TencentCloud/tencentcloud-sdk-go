@@ -4415,6 +4415,80 @@ func (c *Client) DescribeRedisTopKeyPrefixListWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeRedisUnExpiredKeyStatisticsRequest() (request *DescribeRedisUnExpiredKeyStatisticsRequest) {
+    request = &DescribeRedisUnExpiredKeyStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeRedisUnExpiredKeyStatistics")
+    
+    
+    return
+}
+
+func NewDescribeRedisUnExpiredKeyStatisticsResponse() (response *DescribeRedisUnExpiredKeyStatisticsResponse) {
+    response = &DescribeRedisUnExpiredKeyStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedisUnExpiredKeyStatistics
+// 查询Redis全量Key的内存分布情况。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisUnExpiredKeyStatistics(request *DescribeRedisUnExpiredKeyStatisticsRequest) (response *DescribeRedisUnExpiredKeyStatisticsResponse, err error) {
+    return c.DescribeRedisUnExpiredKeyStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeRedisUnExpiredKeyStatistics
+// 查询Redis全量Key的内存分布情况。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisUnExpiredKeyStatisticsWithContext(ctx context.Context, request *DescribeRedisUnExpiredKeyStatisticsRequest) (response *DescribeRedisUnExpiredKeyStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisUnExpiredKeyStatisticsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeRedisUnExpiredKeyStatistics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisUnExpiredKeyStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisUnExpiredKeyStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityAuditLogDownloadUrlsRequest() (request *DescribeSecurityAuditLogDownloadUrlsRequest) {
     request = &DescribeSecurityAuditLogDownloadUrlsRequest{
         BaseRequest: &tchttp.BaseRequest{},

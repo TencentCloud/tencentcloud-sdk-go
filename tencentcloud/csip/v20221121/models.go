@@ -119,6 +119,15 @@ type AccessKeyAlarmCount struct {
 
 	// 告警数量
 	AlarmCount *int64 `json:"AlarmCount,omitnil,omitempty" name:"AlarmCount"`
+
+	// 访问密钥状态 0 禁用 1 已启用 2 已删除
+	AccessKeyStatus *int64 `json:"AccessKeyStatus,omitnil,omitempty" name:"AccessKeyStatus"`
+
+	// AK创建时间
+	AccessKeyCreateTime *string `json:"AccessKeyCreateTime,omitnil,omitempty" name:"AccessKeyCreateTime"`
+
+	// AK最后使用时间，从未使用过则返回“-”
+	LastAccessTime *string `json:"LastAccessTime,omitnil,omitempty" name:"LastAccessTime"`
 }
 
 type AccessKeyAlarmInfo struct {
@@ -272,6 +281,12 @@ type AccessKeyRisk struct {
 
 	// 对应风险的查询参数
 	QueryParam *string `json:"QueryParam,omitnil,omitempty" name:"QueryParam"`
+
+	// 云类型 0-腾讯云 4-阿里云
+	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
+
+	// 相关的AK列表，包含AK名和AK备注
+	RelatedAK []*AKInfo `json:"RelatedAK,omitnil,omitempty" name:"RelatedAK"`
 }
 
 type AccessKeyUser struct {

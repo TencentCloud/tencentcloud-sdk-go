@@ -21788,6 +21788,9 @@ type SuperNodeResource struct {
 
 	// 置放群组 ID，QuotaType为 exact 时有效，表示购买的精确配额需满足置放群组。可通过 [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/product/213/17810) 接口返回值中的DisasterRecoverGroupId获取。
 	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId,omitnil,omitempty" name:"DisasterRecoverGroupId"`
+
+	// 定价类型
+	PriceType *string `json:"PriceType,omitnil,omitempty" name:"PriceType"`
 }
 
 type Switch struct {

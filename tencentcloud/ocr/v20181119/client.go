@@ -3085,7 +3085,7 @@ func NewGeneralHandwritingOCRResponse() (response *GeneralHandwritingOCRResponse
 }
 
 // GeneralHandwritingOCR
-// <b>此接口为通用手写体识别的旧版本服务，不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/34937">通用印刷体识别(高精度)识别服务</a>。</b>
+// <b>此接口为通用手写体识别的旧版本服务，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/34937">通用印刷体识别(高精度)识别服务</a>。</b>
 //
 // 
 //
@@ -3117,7 +3117,7 @@ func (c *Client) GeneralHandwritingOCR(request *GeneralHandwritingOCRRequest) (r
 }
 
 // GeneralHandwritingOCR
-// <b>此接口为通用手写体识别的旧版本服务，不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/34937">通用印刷体识别(高精度)识别服务</a>。</b>
+// <b>此接口为通用手写体识别的旧版本服务，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/34937">通用印刷体识别(高精度)识别服务</a>。</b>
 //
 // 
 //

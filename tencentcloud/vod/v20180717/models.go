@@ -4264,7 +4264,7 @@ type CreateAigcImageTaskRequestParams struct {
 	// <li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时最多指定3个。
+	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时，版本2.5最多指定3个，版本3.0最多指定14个。
 	FileInfos []*AigcImageTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
 	// 生成图片的提示词。当 FileInfos 为空时，此参数必填。
@@ -4314,7 +4314,7 @@ type CreateAigcImageTaskRequest struct {
 	// <li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时最多指定3个。
+	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时，版本2.5最多指定3个，版本3.0最多指定14个。
 	FileInfos []*AigcImageTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
 	// 生成图片的提示词。当 FileInfos 为空时，此参数必填。

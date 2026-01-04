@@ -7096,6 +7096,10 @@ type PermanentResidencePermitInfo struct {
 
 	// 国籍，外国人永久居留证 返回该字段
 	Nationality *ContentInfo `json:"Nationality,omitnil,omitempty" name:"Nationality"`
+
+	// 英文名
+	// 示例值：Ming Li
+	EnName *ContentInfo `json:"EnName,omitnil,omitempty" name:"EnName"`
 }
 
 // Predefined struct for user
