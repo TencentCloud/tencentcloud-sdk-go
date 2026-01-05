@@ -804,6 +804,323 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePriceCreateInstanceRequestParams struct {
+	// 实例类型。
+	// - base：免费测试版。
+	// - single：单机版。
+	// - cluster：高可用版。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
+	// - 计算型： 1、2、4、8、16、24、32。
+	// - 标准型： 1、2、4、8、12、16。
+	// - 存储型： 1、2、4、6、8。
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	WorkerNodeNum *uint64 `json:"WorkerNodeNum,omitnil,omitempty" name:"WorkerNodeNum"`
+
+	// 指定实例计费方式。
+	// - 0：按量付费。
+	// - 1：包年包月。
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 购买实例数量。
+	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// 产品版本，0-标准版，1-容量增强版
+	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
+	// 实例类型为高可用版，需指定可用区选项。
+	// - two：两可用区。
+	// - three：三可用区。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 若计费方式为包年包月，指定包年包月续费的时长。
+	// - 单位：月。
+	// - 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
+	PayPeriod *int64 `json:"PayPeriod,omitnil,omitempty" name:"PayPeriod"`
+}
+
+type DescribePriceCreateInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例类型。
+	// - base：免费测试版。
+	// - single：单机版。
+	// - cluster：高可用版。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
+	// - 计算型： 1、2、4、8、16、24、32。
+	// - 标准型： 1、2、4、8、12、16。
+	// - 存储型： 1、2、4、6、8。
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	WorkerNodeNum *uint64 `json:"WorkerNodeNum,omitnil,omitempty" name:"WorkerNodeNum"`
+
+	// 指定实例计费方式。
+	// - 0：按量付费。
+	// - 1：包年包月。
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 购买实例数量。
+	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// 产品版本，0-标准版，1-容量增强版
+	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
+	// 实例类型为高可用版，需指定可用区选项。
+	// - two：两可用区。
+	// - three：三可用区。
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 若计费方式为包年包月，指定包年包月续费的时长。
+	// - 单位：月。
+	// - 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
+	PayPeriod *int64 `json:"PayPeriod,omitnil,omitempty" name:"PayPeriod"`
+}
+
+func (r *DescribePriceCreateInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePriceCreateInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceType")
+	delete(f, "Cpu")
+	delete(f, "Memory")
+	delete(f, "DiskSize")
+	delete(f, "WorkerNodeNum")
+	delete(f, "PayMode")
+	delete(f, "GoodsNum")
+	delete(f, "ProductType")
+	delete(f, "Mode")
+	delete(f, "PayPeriod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePriceCreateInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePriceCreateInstanceResponseParams struct {
+	// 优惠后价格，单位：分
+	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 原价格，单位：分
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
+
+	// 币种。CNY-人民币，USD-美元
+	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePriceCreateInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePriceCreateInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribePriceCreateInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePriceCreateInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePriceRenewInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 包年包月的时长，单位：月
+	PayPeriod *int64 `json:"PayPeriod,omitnil,omitempty" name:"PayPeriod"`
+}
+
+type DescribePriceRenewInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 包年包月的时长，单位：月
+	PayPeriod *int64 `json:"PayPeriod,omitnil,omitempty" name:"PayPeriod"`
+}
+
+func (r *DescribePriceRenewInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePriceRenewInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PayPeriod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePriceRenewInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePriceRenewInstanceResponseParams struct {
+	// 优惠后价格，单位：分
+	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 原价格，单位：分
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
+
+	// 币种。CNY-人民币，USD-美元
+	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePriceRenewInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePriceRenewInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribePriceRenewInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePriceRenewInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePriceResizeInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
+	// - 计算型： 1、2、4、8、16、24、32。
+	// - 标准型： 1、2、4、8、12、16。
+	// - 存储型： 1、2、4、6、8。
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	WorkerNodeNum *uint64 `json:"WorkerNodeNum,omitnil,omitempty" name:"WorkerNodeNum"`
+}
+
+type DescribePriceResizeInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
+	// - 计算型： 1、2、4、8、16、24、32。
+	// - 标准型： 1、2、4、8、12、16。
+	// - 存储型： 1、2、4、6、8。
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	WorkerNodeNum *uint64 `json:"WorkerNodeNum,omitnil,omitempty" name:"WorkerNodeNum"`
+}
+
+func (r *DescribePriceResizeInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePriceResizeInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Cpu")
+	delete(f, "Memory")
+	delete(f, "DiskSize")
+	delete(f, "WorkerNodeNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePriceResizeInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePriceResizeInstanceResponseParams struct {
+	// 优惠后价格，单位：分
+	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 原价格，单位：分
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
+
+	// 币种。CNY-人民币，USD-美元
+	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePriceResizeInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePriceResizeInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribePriceResizeInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePriceResizeInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DestroyInstancesRequestParams struct {
 	// 以数组形式指定待销毁下线的实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`

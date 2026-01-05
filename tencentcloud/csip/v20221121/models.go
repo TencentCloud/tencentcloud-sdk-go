@@ -108,6 +108,20 @@ type AccessKeyAlarm struct {
 
 	// 云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
 	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
+
+	// 告警AI分析状态
+	// -1 分析失败
+	// 0 未分析
+	// 1 分析中
+	// 2 分析成功，真实告警
+	// 3 分析成功，可疑告警
+	AIStatus *int64 `json:"AIStatus,omitnil,omitempty" name:"AIStatus"`
+
+	// 首次告警时间戳（秒级）
+	FirstAlarmTimestamp *int64 `json:"FirstAlarmTimestamp,omitnil,omitempty" name:"FirstAlarmTimestamp"`
+
+	// 最后告警时间戳（秒级）
+	LastAlarmTimestamp *int64 `json:"LastAlarmTimestamp,omitnil,omitempty" name:"LastAlarmTimestamp"`
 }
 
 type AccessKeyAlarmCount struct {

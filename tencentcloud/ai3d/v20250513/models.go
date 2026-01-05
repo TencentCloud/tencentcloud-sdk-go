@@ -614,6 +614,9 @@ type SubmitHunyuanTo3DProJobRequestParams struct {
 	// triangle: 三角形面。
 	// quadrilateral: 四边形面与三角形面混合生成。
 	PolygonType *string `json:"PolygonType,omitnil,omitempty" name:"PolygonType"`
+
+	// 生成模型的格式，仅限制生成一种格式； 生成模型文件组默认返回obj、glb格式（开启时Geometry参数时，默认为glb格式）； 可选值：STL，USDZ，FBX；
+	ResultFormat *string `json:"ResultFormat,omitnil,omitempty" name:"ResultFormat"`
 }
 
 type SubmitHunyuanTo3DProJobRequest struct {
@@ -667,6 +670,9 @@ type SubmitHunyuanTo3DProJobRequest struct {
 	// triangle: 三角形面。
 	// quadrilateral: 四边形面与三角形面混合生成。
 	PolygonType *string `json:"PolygonType,omitnil,omitempty" name:"PolygonType"`
+
+	// 生成模型的格式，仅限制生成一种格式； 生成模型文件组默认返回obj、glb格式（开启时Geometry参数时，默认为glb格式）； 可选值：STL，USDZ，FBX；
+	ResultFormat *string `json:"ResultFormat,omitnil,omitempty" name:"ResultFormat"`
 }
 
 func (r *SubmitHunyuanTo3DProJobRequest) ToJsonString() string {
@@ -689,6 +695,7 @@ func (r *SubmitHunyuanTo3DProJobRequest) FromJsonString(s string) error {
 	delete(f, "FaceCount")
 	delete(f, "GenerateType")
 	delete(f, "PolygonType")
+	delete(f, "ResultFormat")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuanTo3DProJobRequest has unknown keys!", "")
 	}

@@ -683,33 +683,36 @@ type SavingPlanOverviewDetail struct {
 }
 
 type SavingPlanUsageDetail struct {
-	// 节省计划类型
+	// <p>节省计划资源id</p>
+	SpId *string `json:"SpId,omitnil,omitempty" name:"SpId"`
+
+	// <p>节省计划类型</p>
 	SpType *string `json:"SpType,omitnil,omitempty" name:"SpType"`
 
-	// 节省计划状态
+	// <p>节省计划状态</p>枚举值：<ul><li> 1：  生效</li><li> 2： 失效 </li><li> 3： 作废</li></ul>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 累计抵扣的金额（单位：元）
+	// <p>累计抵扣的金额（单位：元）</p>
 	DeductAmount *string `json:"DeductAmount,omitnil,omitempty" name:"DeductAmount"`
 
-	// 累计承诺消费金额（单位：元）
+	// <p>累计承诺消费金额（单位：元）</p>
 	PromiseAmount *string `json:"PromiseAmount,omitnil,omitempty" name:"PromiseAmount"`
 
-	// 累计净节省金额（单位：元）
+	// <p>累计净节省金额（单位：元）</p>
 	NetSavings *string `json:"NetSavings,omitnil,omitempty" name:"NetSavings"`
 
-	// 使用率
+	// <p>使用率</p>
 	UtilizationRate *float64 `json:"UtilizationRate,omitnil,omitempty" name:"UtilizationRate"`
 
-	// 累计流失金额（单位：元）
+	// <p>累计流失金额（单位：元）</p>
 	LossAmount *string `json:"LossAmount,omitnil,omitempty" name:"LossAmount"`
 
-	// 累计按量计费预期金额（单位：元）
+	// <p>累计按量计费预期金额（单位：元）</p>
 	DosageAmount *string `json:"DosageAmount,omitnil,omitempty" name:"DosageAmount"`
 
-	// 累计成本金额（单位：元）
+	// <p>累计成本金额（单位：元）</p>
 	CostAmount *string `json:"CostAmount,omitnil,omitempty" name:"CostAmount"`
 
-	// 地域
+	// <p>地域</p>
 	Region []*string `json:"Region,omitnil,omitempty" name:"Region"`
 }

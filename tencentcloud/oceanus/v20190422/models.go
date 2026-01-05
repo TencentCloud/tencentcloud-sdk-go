@@ -541,6 +541,9 @@ type ClusterSession struct {
 
 	// TaskManagerMem
 	TaskManagerMem *float64 `json:"TaskManagerMem,omitnil,omitempty" name:"TaskManagerMem"`
+
+	// jdk版本
+	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
 }
 
 type ClusterVersion struct {
@@ -551,6 +554,9 @@ type ClusterVersion struct {
 	// 集群支持的Flink版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportedFlink []*string `json:"SupportedFlink,omitnil,omitempty" name:"SupportedFlink"`
+
+	// jdk支持版本
+	JdkSupportVersion []*FlinkJdkVersion `json:"JdkSupportVersion,omitnil,omitempty" name:"JdkSupportVersion"`
 }
 
 type Connectors struct {
@@ -957,6 +963,9 @@ type CreateJobConfigRequestParams struct {
 	// JobManager 内存
 	JobManagerMem *float64 `json:"JobManagerMem,omitnil,omitempty" name:"JobManagerMem"`
 
+	// jdk版本
+	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
+
 	// TaskManager cpu
 	TaskManagerCpu *float64 `json:"TaskManagerCpu,omitnil,omitempty" name:"TaskManagerCpu"`
 
@@ -1072,6 +1081,9 @@ type CreateJobConfigRequest struct {
 	// JobManager 内存
 	JobManagerMem *float64 `json:"JobManagerMem,omitnil,omitempty" name:"JobManagerMem"`
 
+	// jdk版本
+	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
+
 	// TaskManager cpu
 	TaskManagerCpu *float64 `json:"TaskManagerCpu,omitnil,omitempty" name:"TaskManagerCpu"`
 
@@ -1134,6 +1146,7 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "FlinkVersion")
 	delete(f, "JobManagerCpu")
 	delete(f, "JobManagerMem")
+	delete(f, "JdkVersion")
 	delete(f, "TaskManagerCpu")
 	delete(f, "TaskManagerMem")
 	delete(f, "UseOldSystemConnector")
@@ -1208,6 +1221,12 @@ type CreateJobRequestParams struct {
 
 	// 开启默认告警
 	OpenJobDefaultAlarm *int64 `json:"OpenJobDefaultAlarm,omitnil,omitempty" name:"OpenJobDefaultAlarm"`
+
+	// 用户Uid
+	Uid *int64 `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// jdk版本
+	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
 }
 
 type CreateJobRequest struct {
@@ -1248,6 +1267,12 @@ type CreateJobRequest struct {
 
 	// 开启默认告警
 	OpenJobDefaultAlarm *int64 `json:"OpenJobDefaultAlarm,omitnil,omitempty" name:"OpenJobDefaultAlarm"`
+
+	// 用户Uid
+	Uid *int64 `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// jdk版本
+	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -1274,6 +1299,8 @@ func (r *CreateJobRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "Description")
 	delete(f, "OpenJobDefaultAlarm")
+	delete(f, "Uid")
+	delete(f, "JdkVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRequest has unknown keys!", "")
 	}
@@ -3799,6 +3826,14 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type FlinkJdkVersion struct {
+	// flink版本
+	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
+
+	// jdk版本
+	JdkVersions []*string `json:"JdkVersions,omitnil,omitempty" name:"JdkVersions"`
+}
+
 type GatewayRefItem struct {
 	// 空间唯一标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3986,7 +4021,7 @@ type JobConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	COSBucket *string `json:"COSBucket,omitnil,omitempty" name:"COSBucket"`
 
-	// 是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
+	// 是否启用日志收集，0-未启用，1-采集到cls，4-采集到cos，5-采集到es
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogCollect *int64 `json:"LogCollect,omitnil,omitempty" name:"LogCollect"`
 
@@ -4069,6 +4104,9 @@ type JobConfig struct {
 	// flink 版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
+
+	// jdk版本
+	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
 
 	// jm使用cpu数目
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4351,6 +4389,12 @@ type JobV1 struct {
 
 	// 作业重启次数
 	RestartCount *int64 `json:"RestartCount,omitnil,omitempty" name:"RestartCount"`
+
+	// 期望是开启默认告警
+	ExpectJobDefaultAlarmStatus *int64 `json:"ExpectJobDefaultAlarmStatus,omitnil,omitempty" name:"ExpectJobDefaultAlarmStatus"`
+
+	// jdk版本
+	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
 }
 
 type LogContent struct {
@@ -4479,7 +4523,7 @@ func (r *ModifyConnectorResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyFolderRequestParams struct {
-	// 文件夹ID（必填）
+	// 只有移动文件夹的场景必填，如果是批量移动作业的场景，非必填。
 	SourceFolderId *string `json:"SourceFolderId,omitnil,omitempty" name:"SourceFolderId"`
 
 	// 如需拖拽文件夹，需传入目标文件夹ID
@@ -4501,7 +4545,7 @@ type ModifyFolderRequestParams struct {
 type ModifyFolderRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件夹ID（必填）
+	// 只有移动文件夹的场景必填，如果是批量移动作业的场景，非必填。
 	SourceFolderId *string `json:"SourceFolderId,omitnil,omitempty" name:"SourceFolderId"`
 
 	// 如需拖拽文件夹，需传入目标文件夹ID
@@ -5039,6 +5083,9 @@ type ResourceRefDetail struct {
 
 	// Connector
 	Connector *string `json:"Connector,omitnil,omitempty" name:"Connector"`
+
+	// Connector版本
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil,omitempty" name:"ConnectorVersion"`
 }
 
 type ResourceRefJobInfo struct {
@@ -5570,6 +5617,9 @@ type SqlGatewayItem struct {
 
 	// Mem
 	Mem *float64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+
+	// jdk版本
+	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
 }
 
 type StatementResult struct {

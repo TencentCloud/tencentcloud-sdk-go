@@ -47,8 +47,14 @@ const (
 	// 查询资源关联标签失败。
 	FAILEDOPERATION_GETRESOURCETAGSBYRESOURCEIDS = "FailedOperation.GetResourceTagsByResourceIds"
 
+	// Failed to obtain resource information through Tag
+	FAILEDOPERATION_GETRESOURCESBYTAGSUNION = "FailedOperation.GetResourcesByTagsUnion"
+
 	// 语法检查失败。
 	FAILEDOPERATION_GRAMMARCHECKFAILURE = "FailedOperation.GrammarCheckFailure"
+
+	// 作业绑定默认告警失败
+	FAILEDOPERATION_JOBBINDDEFAULTMONITORFAILED = "FailedOperation.JobBindDefaultMonitorFailed"
 
 	// 作业配置在使用中。
 	FAILEDOPERATION_JOBCONFIGONPUBLISH = "FailedOperation.JobConfigOnPublish"
@@ -226,6 +232,9 @@ const (
 
 	// 作业配置超出限制。
 	LIMITEXCEEDED_JOBCONFIG = "LimitExceeded.JobConfig"
+
+	// 用户作业默认告警配额达到上限
+	LIMITEXCEEDED_JOBDEFAULTMONITORLIMITEXCEEDED = "LimitExceeded.JobDefaultMonitorLimitExceeded"
 
 	// 变量数超过限制。
 	LIMITEXCEEDED_VARIABLES = "LimitExceeded.Variables"

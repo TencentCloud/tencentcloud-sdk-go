@@ -1980,6 +1980,73 @@ type BotIdConfig struct {
 	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
 }
 
+type BotIdDetail struct {
+	// 规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 规则开关
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 规则动作
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 风险等级
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 规则类型
+	BotIdType *string `json:"BotIdType,omitnil,omitempty" name:"BotIdType"`
+
+	// 修改时间
+	ModifyTime *int64 `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 插入时间
+	InsertTime *int64 `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
+
+	// 规则描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 影响
+	Influence *string `json:"Influence,omitnil,omitempty" name:"Influence"`
+
+	// 重定向路径
+	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
+
+	// 是否关联事件
+	HasEvent *bool `json:"HasEvent,omitnil,omitempty" name:"HasEvent"`
+}
+
+type BotIdStat struct {
+	// 模式：观察/拦截/自定义
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// 规则总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 配置观察的规则数
+	MonitorCount *int64 `json:"MonitorCount,omitnil,omitempty" name:"MonitorCount"`
+
+	// 配置拦截的规则数
+	InterceptCount *int64 `json:"InterceptCount,omitnil,omitempty" name:"InterceptCount"`
+
+	// 配置重定向的规则数
+	RedirectCount *int64 `json:"RedirectCount,omitnil,omitempty" name:"RedirectCount"`
+
+	// 配置人机识别的规则数
+	CaptchaCount *int64 `json:"CaptchaCount,omitnil,omitempty" name:"CaptchaCount"`
+
+	// 全局防护等级
+	ProtectLevel *string `json:"ProtectLevel,omitnil,omitempty" name:"ProtectLevel"`
+
+	// 全局重定向路径
+	GlobalRedirect *string `json:"GlobalRedirect,omitnil,omitempty" name:"GlobalRedirect"`
+
+	// JS挑战的数目
+	JsChallengeCount *int64 `json:"JsChallengeCount,omitnil,omitempty" name:"JsChallengeCount"`
+}
+
 type BotMonitorPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
@@ -6817,6 +6884,119 @@ func (r *DescribeBatchIpAccessControlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBatchIpAccessControlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBotIdRuleRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 风险等级筛选
+	Level []*int64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 规则类型筛选
+	BotIdType []*string `json:"BotIdType,omitnil,omitempty" name:"BotIdType"`
+
+	// 规则开关-用于筛选: 0-全部 1-关闭 2-开启
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 动作类型-用于筛选
+	RuleAction []*string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
+}
+
+type DescribeBotIdRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 风险等级筛选
+	Level []*int64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 规则类型筛选
+	BotIdType []*string `json:"BotIdType,omitnil,omitempty" name:"BotIdType"`
+
+	// 规则开关-用于筛选: 0-全部 1-关闭 2-开启
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 动作类型-用于筛选
+	RuleAction []*string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
+}
+
+func (r *DescribeBotIdRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBotIdRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SceneId")
+	delete(f, "RuleId")
+	delete(f, "BotId")
+	delete(f, "Level")
+	delete(f, "BotIdType")
+	delete(f, "Status")
+	delete(f, "RuleAction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBotIdRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBotIdRuleResponseParams struct {
+	// 规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*BotIdDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 符合条件的规则数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// Bot规则数量统计信息
+	StatInfo *BotIdStat `json:"StatInfo,omitnil,omitempty" name:"StatInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBotIdRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBotIdRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeBotIdRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBotIdRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

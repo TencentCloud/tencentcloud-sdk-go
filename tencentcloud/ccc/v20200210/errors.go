@@ -182,6 +182,9 @@ const (
 	// 套餐包耗尽
 	LIMITEXCEEDED_BASEPACKAGEEXPIRED = "LimitExceeded.BasePackageExpired"
 
+	// 许可不足
+	LIMITEXCEEDED_INSUFFICIENTLICENSE = "LimitExceeded.InsufficientLicense"
+
 	// 超出数量限制。
 	LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"
 

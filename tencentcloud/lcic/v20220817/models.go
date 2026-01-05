@@ -4173,6 +4173,9 @@ type EventDataInfo struct {
 
 	// 录制url
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
+
+	// MemberQuit事件，对应Reason（0:主动退出 1:被踢 2:永久被踢 4:失去心跳下线 5:房间结束，成员自动退出）
+	Reason *uint64 `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 type EventInfo struct {

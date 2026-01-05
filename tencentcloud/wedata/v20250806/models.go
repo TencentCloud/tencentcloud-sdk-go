@@ -328,6 +328,92 @@ func (r *AssociateResourceGroupToProjectResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AuthInfo struct {
+	// 授权给的目标项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthProjectIds []*string `json:"AuthProjectIds,omitnil,omitempty" name:"AuthProjectIds"`
+
+	// 授权给的项目下用户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthUsers []*string `json:"AuthUsers,omitnil,omitempty" name:"AuthUsers"`
+}
+
+// Predefined struct for user
+type AuthorizeDataSourceRequestParams struct {
+	// 数据源ID
+	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// 授权给的目标项目id
+	AuthProjectId *string `json:"AuthProjectId,omitnil,omitempty" name:"AuthProjectId"`
+
+	// 授权项目下用户列表，格式为：项目id_用户id
+	// 与AuthProjectId参数只能选填一个
+	// 当授权给多个对象时，项目id必须一致
+	AuthUsers []*string `json:"AuthUsers,omitnil,omitempty" name:"AuthUsers"`
+}
+
+type AuthorizeDataSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源ID
+	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// 授权给的目标项目id
+	AuthProjectId *string `json:"AuthProjectId,omitnil,omitempty" name:"AuthProjectId"`
+
+	// 授权项目下用户列表，格式为：项目id_用户id
+	// 与AuthProjectId参数只能选填一个
+	// 当授权给多个对象时，项目id必须一致
+	AuthUsers []*string `json:"AuthUsers,omitnil,omitempty" name:"AuthUsers"`
+}
+
+func (r *AuthorizeDataSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuthorizeDataSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataSourceId")
+	delete(f, "AuthProjectId")
+	delete(f, "AuthUsers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AuthorizeDataSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AuthorizeDataSourceResponseParams struct {
+	// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DataSourceStatus `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AuthorizeDataSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *AuthorizeDataSourceResponseParams `json:"Response"`
+}
+
+func (r *AuthorizeDataSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuthorizeDataSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BackfillInstance struct {
 	// 任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
@@ -371,6 +457,20 @@ type BackfillInstanceCollection struct {
 	Items []*BackfillInstance `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
+type BatchOperationOpsDto struct {
+	// 批量操作成功数
+	SuccessCount *int64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 批量操作失败数
+	FailedCount *int64 `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
+
+	// 批量操作的总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 异步操作记录的唯一id
+	AsyncActionId *string `json:"AsyncActionId,omitnil,omitempty" name:"AsyncActionId"`
+}
+
 type BindProject struct {
 	// 项目id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -383,6 +483,20 @@ type BindProject struct {
 	// 项目展示名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectDisplayName *string `json:"ProjectDisplayName,omitnil,omitempty" name:"ProjectDisplayName"`
+}
+
+type BizStateEnumInfoBrief struct {
+	// 标签key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelKey *string `json:"LabelKey,omitnil,omitempty" name:"LabelKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelValue *string `json:"LabelValue,omitnil,omitempty" name:"LabelValue"`
+
+	// 标签总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type BriefTask struct {
@@ -539,6 +653,20 @@ type CodeFolderNode struct {
 	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
 }
 
+type CodePermissionsResultItem struct {
+	// 资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Item *string `json:"Item,omitnil,omitempty" name:"Item"`
+
+	// 该资源权限操作是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 若是创建失败, 提供失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
 type CodeStudioFileActionResult struct {
 	// 成功true，失败false
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -565,6 +693,12 @@ type CodeStudioFolderResult struct {
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 }
 
+type CodeStudioMaxPermission struct {
+	// 授权权限类型(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PermissionType *string `json:"PermissionType,omitnil,omitempty" name:"PermissionType"`
+}
+
 type ColumnInfo struct {
 	// 字段类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -588,6 +722,72 @@ type ColumnInfo struct {
 	// 是否为分区字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPartition *bool `json:"IsPartition,omitnil,omitempty" name:"IsPartition"`
+}
+
+type CommonQualityOperateResult struct {
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 文案提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 操作是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
+}
+
+type CompareQualityResult struct {
+	// 对比结果项列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*CompareQualityResultItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 检测总行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalRows *uint64 `json:"TotalRows,omitnil,omitempty" name:"TotalRows"`
+
+	// 检测通过行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassRows *uint64 `json:"PassRows,omitnil,omitempty" name:"PassRows"`
+
+	// 检测不通过行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerRows *uint64 `json:"TriggerRows,omitnil,omitempty" name:"TriggerRows"`
+
+	// 比较关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComputeExpression *string `json:"ComputeExpression,omitnil,omitempty" name:"ComputeExpression"`
+}
+
+type CompareQualityResultItem struct {
+	// 对比结果， 1为真 2为假
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixResult *uint64 `json:"FixResult,omitnil,omitempty" name:"FixResult"`
+
+	// 质量sql执行结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultValue *string `json:"ResultValue,omitnil,omitempty" name:"ResultValue"`
+
+	// 阈值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*QualityThresholdValue `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 比较操作类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 比较类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareType *uint64 `json:"CompareType,omitnil,omitempty" name:"CompareType"`
+
+	// 值比较类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueComputeType *uint64 `json:"ValueComputeType,omitnil,omitempty" name:"ValueComputeType"`
 }
 
 type CreateAlarmRuleData struct {
@@ -748,6 +948,70 @@ func (r *CreateCodeFolderResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCodeFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCodePermissionsRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 权限操作对象
+	AuthorizePermissionObjects []*ExploreAuthorizationObject `json:"AuthorizePermissionObjects,omitnil,omitempty" name:"AuthorizePermissionObjects"`
+}
+
+type CreateCodePermissionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 权限操作对象
+	AuthorizePermissionObjects []*ExploreAuthorizationObject `json:"AuthorizePermissionObjects,omitnil,omitempty" name:"AuthorizePermissionObjects"`
+}
+
+func (r *CreateCodePermissionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCodePermissionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "AuthorizePermissionObjects")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodePermissionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCodePermissionsResponseParams struct {
+	// 授权结果列表
+	Data []*CodePermissionsResultItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCodePermissionsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCodePermissionsResponseParams `json:"Response"`
+}
+
+func (r *CreateCodePermissionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCodePermissionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1655,6 +1919,76 @@ type CreateProjectResult struct {
 }
 
 // Predefined struct for user
+type CreateQualityRuleGroupRequestParams struct {
+	// 任务参数
+	RuleGroupExecStrategyBOList []*QualityRuleGroupExecStrategy `json:"RuleGroupExecStrategyBOList,omitnil,omitempty" name:"RuleGroupExecStrategyBOList"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type CreateQualityRuleGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务参数
+	RuleGroupExecStrategyBOList []*QualityRuleGroupExecStrategy `json:"RuleGroupExecStrategyBOList,omitnil,omitempty" name:"RuleGroupExecStrategyBOList"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *CreateQualityRuleGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateQualityRuleGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleGroupExecStrategyBOList")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQualityRuleGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateQualityRuleGroupResponseParams struct {
+	// 是否更新成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateQualityRuleGroupResultVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateQualityRuleGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateQualityRuleGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateQualityRuleGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateQualityRuleGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateQualityRuleGroupResultVO struct {
+	// 任务创建结构
+	RuleGroupResultList []*QualityRuleGroupResult `json:"RuleGroupResultList,omitnil,omitempty" name:"RuleGroupResultList"`
+}
+
+// Predefined struct for user
 type CreateResourceFileRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -2211,6 +2545,121 @@ type CreateTaskConfiguration struct {
 }
 
 // Predefined struct for user
+type CreateTaskFolderRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 父文件夹绝对路径，如/abc/de，如果是根目录则传/
+	ParentTaskFolderPath *string `json:"ParentTaskFolderPath,omitnil,omitempty" name:"ParentTaskFolderPath"`
+
+	// 要创建的文件夹名字
+	TaskFolderName *string `json:"TaskFolderName,omitnil,omitempty" name:"TaskFolderName"`
+
+	// 任务文件夹类型
+	// 
+	// | 任务文件夹类型取值 | 任务文件夹类型界面对应名称 |
+	// | ---------------- | ------------------------ |
+	// | ETL              | 集成任务                 |
+	// | EMR              | EMR                      |
+	// | DLC              | DLC                      |
+	// | SETATS           | SETATS                   |
+	// | TDSQL            | TDSQL                    |
+	// | TCHOUSE          | TCHOUSE                  |
+	// | GENERAL          | 通用                     |
+	// | TI_ONE           | TI-ONE机器学习           |
+	// | ACROSS_WORKFLOWS | 跨工作流                 |
+	TaskFolderType *string `json:"TaskFolderType,omitnil,omitempty" name:"TaskFolderType"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+}
+
+type CreateTaskFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 父文件夹绝对路径，如/abc/de，如果是根目录则传/
+	ParentTaskFolderPath *string `json:"ParentTaskFolderPath,omitnil,omitempty" name:"ParentTaskFolderPath"`
+
+	// 要创建的文件夹名字
+	TaskFolderName *string `json:"TaskFolderName,omitnil,omitempty" name:"TaskFolderName"`
+
+	// 任务文件夹类型
+	// 
+	// | 任务文件夹类型取值 | 任务文件夹类型界面对应名称 |
+	// | ---------------- | ------------------------ |
+	// | ETL              | 集成任务                 |
+	// | EMR              | EMR                      |
+	// | DLC              | DLC                      |
+	// | SETATS           | SETATS                   |
+	// | TDSQL            | TDSQL                    |
+	// | TCHOUSE          | TCHOUSE                  |
+	// | GENERAL          | 通用                     |
+	// | TI_ONE           | TI-ONE机器学习           |
+	// | ACROSS_WORKFLOWS | 跨工作流                 |
+	TaskFolderType *string `json:"TaskFolderType,omitnil,omitempty" name:"TaskFolderType"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+}
+
+func (r *CreateTaskFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ParentTaskFolderPath")
+	delete(f, "TaskFolderName")
+	delete(f, "TaskFolderType")
+	delete(f, "WorkflowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTaskFolderResponseParams struct {
+	// 创建文件夹结果，如果创建失败则报错。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateTaskFolderResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTaskFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTaskFolderResponseParams `json:"Response"`
+}
+
+func (r *CreateTaskFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTaskFolderResult struct {
+	// 创建成功的文件夹ID。如果创建失败则报错。
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+}
+
+// Predefined struct for user
 type CreateTaskRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -2408,6 +2857,317 @@ type CreateTaskSchedulerConfiguration struct {
 	WaitExecutionTotalTTLMinute *int64 `json:"WaitExecutionTotalTTLMinute,omitnil,omitempty" name:"WaitExecutionTotalTTLMinute"`
 }
 
+type CreateTriggerTaskBaseAttribute struct {
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务类型ID：
+	// * 26:OfflineSynchronization
+	// * 30:Python
+	// * 32:DLC SQL
+	// * 35:Shell
+	// * 38:Shell Form Mode
+	// * 46:DLC Spark
+	// * 50:DLC PySpark
+	// * 130:Branch Node
+	// * 131:Merged Node
+	// * 132:Notebook
+	// * 133:SSH
+	// * 137:For-each
+	// * 139:DLC Spark Streaming
+	// * 140:Run Workflow
+	TaskTypeId *string `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务负责人ID，默认为当前用户
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 任务描述
+	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
+
+	// 任务文件夹路径
+	// 
+	// 注意：
+	// - 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+	// - 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+	TaskFolderPath *string `json:"TaskFolderPath,omitnil,omitempty" name:"TaskFolderPath"`
+}
+
+type CreateTriggerTaskConfiguration struct {
+	// 资源组ID： 需要通过 DescribeNormalSchedulerExecutorGroups 获取 ExecutorGroupId
+	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
+
+	// 代码内容的Base64编码
+	CodeContent *string `json:"CodeContent,omitnil,omitempty" name:"CodeContent"`
+
+	// 任务扩展属性配置列表
+	TaskExtConfigurationList []*TaskExtParameter `json:"TaskExtConfigurationList,omitnil,omitempty" name:"TaskExtConfigurationList"`
+
+	// 集群ID
+	DataCluster *string `json:"DataCluster,omitnil,omitempty" name:"DataCluster"`
+
+	// 指定的运行节点
+	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
+
+	// 资源池队列名称，需要通过 DescribeProjectClusterQueues 获取
+	YarnQueue *string `json:"YarnQueue,omitnil,omitempty" name:"YarnQueue"`
+
+	// 来源数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+	SourceServiceId *string `json:"SourceServiceId,omitnil,omitempty" name:"SourceServiceId"`
+
+	// 目标数据源ID, 使用 ; 分隔, 需要通过 DescribeDataSourceWithoutInfo 获取
+	TargetServiceId *string `json:"TargetServiceId,omitnil,omitempty" name:"TargetServiceId"`
+
+	// 调度参数
+	TaskSchedulingParameterList []*TaskSchedulingParameter `json:"TaskSchedulingParameterList,omitnil,omitempty" name:"TaskSchedulingParameterList"`
+
+	// Bundle使用的ID
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// Bundle信息
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+}
+
+// Predefined struct for user
+type CreateTriggerTaskRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务基本属性
+	TriggerTaskBaseAttribute *CreateTriggerTaskBaseAttribute `json:"TriggerTaskBaseAttribute,omitnil,omitempty" name:"TriggerTaskBaseAttribute"`
+
+	// 任务配置
+	TriggerTaskConfiguration *CreateTriggerTaskConfiguration `json:"TriggerTaskConfiguration,omitnil,omitempty" name:"TriggerTaskConfiguration"`
+
+	// 任务调度配置
+	TriggerTaskSchedulerConfiguration *CreateTriggerTaskSchedulerConfiguration `json:"TriggerTaskSchedulerConfiguration,omitnil,omitempty" name:"TriggerTaskSchedulerConfiguration"`
+}
+
+type CreateTriggerTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务基本属性
+	TriggerTaskBaseAttribute *CreateTriggerTaskBaseAttribute `json:"TriggerTaskBaseAttribute,omitnil,omitempty" name:"TriggerTaskBaseAttribute"`
+
+	// 任务配置
+	TriggerTaskConfiguration *CreateTriggerTaskConfiguration `json:"TriggerTaskConfiguration,omitnil,omitempty" name:"TriggerTaskConfiguration"`
+
+	// 任务调度配置
+	TriggerTaskSchedulerConfiguration *CreateTriggerTaskSchedulerConfiguration `json:"TriggerTaskSchedulerConfiguration,omitnil,omitempty" name:"TriggerTaskSchedulerConfiguration"`
+}
+
+func (r *CreateTriggerTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTriggerTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TriggerTaskBaseAttribute")
+	delete(f, "TriggerTaskConfiguration")
+	delete(f, "TriggerTaskSchedulerConfiguration")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTriggerTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTriggerTaskResponseParams struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateTaskResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTriggerTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTriggerTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateTriggerTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTriggerTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTriggerTaskSchedulerConfiguration struct {
+	// 上游依赖的任务数组
+	UpstreamDependencyConfigList []*DependencyTriggerTaskBrief `json:"UpstreamDependencyConfigList,omitnil,omitempty" name:"UpstreamDependencyConfigList"`
+
+	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	RunPriorityType *int64 `json:"RunPriorityType,omitnil,omitempty" name:"RunPriorityType"`
+
+	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	RetryWaitMinute *int64 `json:"RetryWaitMinute,omitnil,omitempty" name:"RetryWaitMinute"`
+
+	// 重试策略 最大尝试次数, 默认: 4
+	MaxRetryNumber *int64 `json:"MaxRetryNumber,omitnil,omitempty" name:"MaxRetryNumber"`
+
+	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	ExecutionTTLMinute *int64 `json:"ExecutionTTLMinute,omitnil,omitempty" name:"ExecutionTTLMinute"`
+
+	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	WaitExecutionTotalTTLMinute *int64 `json:"WaitExecutionTotalTTLMinute,omitnil,omitempty" name:"WaitExecutionTotalTTLMinute"`
+
+	// 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+	AllowRedoType *string `json:"AllowRedoType,omitnil,omitempty" name:"AllowRedoType"`
+
+	// 输出参数数组
+	ParamTaskOutList []*OutTaskParameter `json:"ParamTaskOutList,omitnil,omitempty" name:"ParamTaskOutList"`
+
+	// 输入参数数组
+	ParamTaskInList []*InTaskParameter `json:"ParamTaskInList,omitnil,omitempty" name:"ParamTaskInList"`
+
+	// 产出登记
+	TaskOutputRegistryList []*TaskDataRegistry `json:"TaskOutputRegistryList,omitnil,omitempty" name:"TaskOutputRegistryList"`
+}
+
+// Predefined struct for user
+type CreateTriggerWorkflowRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 所属文件夹路径
+	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
+
+	// 工作流描述
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// 工作流负责人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 工作流参数
+	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+
+	// 统一调度信息
+	TriggerWorkflowSchedulerConfigurations []*WorkflowTriggerConfig `json:"TriggerWorkflowSchedulerConfigurations,omitnil,omitempty" name:"TriggerWorkflowSchedulerConfigurations"`
+
+	// BundleId项
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// Bundle信息
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+
+	// 通用参数配置
+	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+}
+
+type CreateTriggerWorkflowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 所属文件夹路径
+	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
+
+	// 工作流描述
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// 工作流负责人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 工作流参数
+	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+
+	// 统一调度信息
+	TriggerWorkflowSchedulerConfigurations []*WorkflowTriggerConfig `json:"TriggerWorkflowSchedulerConfigurations,omitnil,omitempty" name:"TriggerWorkflowSchedulerConfigurations"`
+
+	// BundleId项
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// Bundle信息
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+
+	// 通用参数配置
+	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+}
+
+func (r *CreateTriggerWorkflowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTriggerWorkflowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowName")
+	delete(f, "ParentFolderPath")
+	delete(f, "WorkflowDesc")
+	delete(f, "OwnerUin")
+	delete(f, "WorkflowParams")
+	delete(f, "TriggerWorkflowSchedulerConfigurations")
+	delete(f, "BundleId")
+	delete(f, "BundleInfo")
+	delete(f, "GeneralTaskParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTriggerWorkflowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTriggerWorkflowResponseParams struct {
+	// 返回工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateTriggerWorkflowResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTriggerWorkflowResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTriggerWorkflowResponseParams `json:"Response"`
+}
+
+func (r *CreateTriggerWorkflowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTriggerWorkflowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTriggerWorkflowResult struct {
+	// 创建成功后的工作流id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+}
+
 // Predefined struct for user
 type CreateWorkflowFolderRequestParams struct {
 	// 项目ID
@@ -2477,6 +3237,89 @@ func (r *CreateWorkflowFolderResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateWorkflowFolderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWorkflowPermissionsRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 授权实体ID
+	EntityId *string `json:"EntityId,omitnil,omitempty" name:"EntityId"`
+
+	// 授权实体类型,folder/workflow
+	EntityType *string `json:"EntityType,omitnil,omitempty" name:"EntityType"`
+
+	// 授权信息数组
+	PermissionList []*WorkflowPermission `json:"PermissionList,omitnil,omitempty" name:"PermissionList"`
+}
+
+type CreateWorkflowPermissionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 授权实体ID
+	EntityId *string `json:"EntityId,omitnil,omitempty" name:"EntityId"`
+
+	// 授权实体类型,folder/workflow
+	EntityType *string `json:"EntityType,omitnil,omitempty" name:"EntityType"`
+
+	// 授权信息数组
+	PermissionList []*WorkflowPermission `json:"PermissionList,omitnil,omitempty" name:"PermissionList"`
+}
+
+func (r *CreateWorkflowPermissionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkflowPermissionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "EntityId")
+	delete(f, "EntityType")
+	delete(f, "PermissionList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkflowPermissionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWorkflowPermissionsResponseParams struct {
+	// 实体授权结果
+	Data *CreateWorkflowPermissionsResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateWorkflowPermissionsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWorkflowPermissionsResponseParams `json:"Response"`
+}
+
+func (r *CreateWorkflowPermissionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkflowPermissionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateWorkflowPermissionsResult struct {
+	// 实体授权结果，true/false
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 // Predefined struct for user
@@ -3028,6 +3871,134 @@ func (r *DeleteCodeFolderResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCodePermissionsRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 回收的权限列表
+	RecyclePolicySet []*ExploreAuthorizationRecycleObject `json:"RecyclePolicySet,omitnil,omitempty" name:"RecyclePolicySet"`
+}
+
+type DeleteCodePermissionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 回收的权限列表
+	RecyclePolicySet []*ExploreAuthorizationRecycleObject `json:"RecyclePolicySet,omitnil,omitempty" name:"RecyclePolicySet"`
+}
+
+func (r *DeleteCodePermissionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCodePermissionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "RecyclePolicySet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCodePermissionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCodePermissionsResponseParams struct {
+	// 权限回收结果
+	Data []*CodePermissionsResultItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCodePermissionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCodePermissionsResponseParams `json:"Response"`
+}
+
+func (r *DeleteCodePermissionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCodePermissionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDataBackfillPlanAsyncRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 补录计划id
+	DataBackfillPlanId *string `json:"DataBackfillPlanId,omitnil,omitempty" name:"DataBackfillPlanId"`
+}
+
+type DeleteDataBackfillPlanAsyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 补录计划id
+	DataBackfillPlanId *string `json:"DataBackfillPlanId,omitnil,omitempty" name:"DataBackfillPlanId"`
+}
+
+func (r *DeleteDataBackfillPlanAsyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataBackfillPlanAsyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "DataBackfillPlanId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataBackfillPlanAsyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDataBackfillPlanAsyncResponseParams struct {
+	// 删除执行计划返回的异步响应
+	Data *OpsAsyncResponse `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDataBackfillPlanAsyncResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDataBackfillPlanAsyncResponseParams `json:"Response"`
+}
+
+func (r *DeleteDataBackfillPlanAsyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataBackfillPlanAsyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDataSourceRequestParams struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -3277,6 +4248,154 @@ func (r *DeleteProjectMemberResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteProjectMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteQualityRuleGroupRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 监控任务id
+	RuleGroupIdList []*uint64 `json:"RuleGroupIdList,omitnil,omitempty" name:"RuleGroupIdList"`
+}
+
+type DeleteQualityRuleGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 监控任务id
+	RuleGroupIdList []*uint64 `json:"RuleGroupIdList,omitnil,omitempty" name:"RuleGroupIdList"`
+}
+
+func (r *DeleteQualityRuleGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteQualityRuleGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "RuleGroupIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteQualityRuleGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteQualityRuleGroupResponseParams struct {
+	// 批量删除操作的具体执行结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DeleteQualityRuleGroupResultVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteQualityRuleGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteQualityRuleGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteQualityRuleGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteQualityRuleGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteQualityRuleGroupResultVO struct {
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SumCount *uint64 `json:"SumCount,omitnil,omitempty" name:"SumCount"`
+
+	// 成功条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessCount *uint64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 失败条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedCount *uint64 `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
+
+	// 操作详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*CommonQualityOperateResult `json:"Results,omitnil,omitempty" name:"Results"`
+}
+
+// Predefined struct for user
+type DeleteQualityRuleRequestParams struct {
+	// 质量规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type DeleteQualityRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 质量规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *DeleteQualityRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteQualityRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteQualityRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteQualityRuleResponseParams struct {
+	// 是否删除成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteQualityRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteQualityRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteQualityRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteQualityRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3599,6 +4718,83 @@ func (r *DeleteSQLScriptResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteTaskFolderRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 文件夹ID，可通过ListTaskFolders接口获取
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+}
+
+type DeleteTaskFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 文件夹ID，可通过ListTaskFolders接口获取
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+}
+
+func (r *DeleteTaskFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTaskFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	delete(f, "TaskFolderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTaskFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTaskFolderResponseParams struct {
+	// 删除结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DeleteTaskFolderResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTaskFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTaskFolderResponseParams `json:"Response"`
+}
+
+func (r *DeleteTaskFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTaskFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTaskFolderResult struct {
+	// 删除状态,true表示成功，false表示失败
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
 type DeleteTaskRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -3696,6 +4892,167 @@ type DeleteTaskResult struct {
 }
 
 // Predefined struct for user
+type DeleteTriggerTaskRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	// 和VirtualTaskId选填一个
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务操作是否消息通知下游任务责任人true：通知
+	// false：不通知
+	// 不传默认false
+	OperateInform *bool `json:"OperateInform,omitnil,omitempty" name:"OperateInform"`
+
+	// 任务删除方式
+	// true：不针对下游任务实例进行强制失败
+	// false：针对下游任务实例进行强制失败
+	// 不传默认false
+	DeleteMode *bool `json:"DeleteMode,omitnil,omitempty" name:"DeleteMode"`
+}
+
+type DeleteTriggerTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	// 和VirtualTaskId选填一个
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务操作是否消息通知下游任务责任人true：通知
+	// false：不通知
+	// 不传默认false
+	OperateInform *bool `json:"OperateInform,omitnil,omitempty" name:"OperateInform"`
+
+	// 任务删除方式
+	// true：不针对下游任务实例进行强制失败
+	// false：针对下游任务实例进行强制失败
+	// 不传默认false
+	DeleteMode *bool `json:"DeleteMode,omitnil,omitempty" name:"DeleteMode"`
+}
+
+func (r *DeleteTriggerTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTriggerTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "OperateInform")
+	delete(f, "DeleteMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTriggerTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTriggerTaskResponseParams struct {
+	// 是否删除成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DeleteTaskResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTriggerTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTriggerTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteTriggerTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTriggerTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTriggerWorkflowRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+}
+
+type DeleteTriggerWorkflowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+}
+
+func (r *DeleteTriggerWorkflowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTriggerWorkflowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTriggerWorkflowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTriggerWorkflowResponseParams struct {
+	// 是否删除成功
+	Data *DeleteTriggerWorkflowResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTriggerWorkflowResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTriggerWorkflowResponseParams `json:"Response"`
+}
+
+func (r *DeleteTriggerWorkflowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTriggerWorkflowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTriggerWorkflowResult struct {
+	// 删除工作流是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
 type DeleteWorkflowFolderRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -3757,6 +5114,100 @@ func (r *DeleteWorkflowFolderResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteWorkflowFolderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWorkflowPermission struct {
+	// 要删除的授权目标类型（用户：user，角色：role，组：group）
+	PermissionTargetType *string `json:"PermissionTargetType,omitnil,omitempty" name:"PermissionTargetType"`
+
+	// 要删除的授权目标id(userId/roleId)
+	PermissionTargetId *string `json:"PermissionTargetId,omitnil,omitempty" name:"PermissionTargetId"`
+
+	// 要删除的授权权限类型数组(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，当前仅支持CAN_MANAGE)
+	PermissionTypeList []*string `json:"PermissionTypeList,omitnil,omitempty" name:"PermissionTypeList"`
+}
+
+// Predefined struct for user
+type DeleteWorkflowPermissionsRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 授权实体ID
+	EntityId *string `json:"EntityId,omitnil,omitempty" name:"EntityId"`
+
+	// 授权实体类型,folder/workflow
+	EntityType *string `json:"EntityType,omitnil,omitempty" name:"EntityType"`
+
+	// 删除权限数组
+	DeletePermissionList []*DeleteWorkflowPermission `json:"DeletePermissionList,omitnil,omitempty" name:"DeletePermissionList"`
+}
+
+type DeleteWorkflowPermissionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 授权实体ID
+	EntityId *string `json:"EntityId,omitnil,omitempty" name:"EntityId"`
+
+	// 授权实体类型,folder/workflow
+	EntityType *string `json:"EntityType,omitnil,omitempty" name:"EntityType"`
+
+	// 删除权限数组
+	DeletePermissionList []*DeleteWorkflowPermission `json:"DeletePermissionList,omitnil,omitempty" name:"DeletePermissionList"`
+}
+
+func (r *DeleteWorkflowPermissionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWorkflowPermissionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "EntityId")
+	delete(f, "EntityType")
+	delete(f, "DeletePermissionList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWorkflowPermissionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWorkflowPermissionsResponseParams struct {
+	// 资源删除结果
+	Data *DeleteWorkflowPermissionsResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteWorkflowPermissionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteWorkflowPermissionsResponseParams `json:"Response"`
+}
+
+func (r *DeleteWorkflowPermissionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWorkflowPermissionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWorkflowPermissionsResult struct {
+	// 整体删除结果 true/false
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 // Predefined struct for user
@@ -3924,6 +5375,70 @@ type DependencyTaskBrief struct {
 	// 依赖执行策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependencyStrategy *DependencyStrategyTask `json:"DependencyStrategy,omitnil,omitempty" name:"DependencyStrategy"`
+}
+
+type DependencyTriggerTaskBrief struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+// Predefined struct for user
+type DescribeDataSourceAuthorityRequestParams struct {
+	// 对象唯一ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DescribeDataSourceAuthorityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 对象唯一ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DescribeDataSourceAuthorityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourceAuthorityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataSourceAuthorityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataSourceAuthorityResponseParams struct {
+	// 数据源权限对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *AuthInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataSourceAuthorityResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataSourceAuthorityResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataSourceAuthorityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourceAuthorityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -4122,6 +5637,27 @@ type EventListener struct {
 	PropertiesList []*ParamInfo `json:"PropertiesList,omitnil,omitempty" name:"PropertiesList"`
 }
 
+type ExecutionActionBrief struct {
+	// 操作实体 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemId *string `json:"ItemId,omitnil,omitempty" name:"ItemId"`
+
+	// 操作实体名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemName *string `json:"ItemName,omitnil,omitempty" name:"ItemName"`
+
+	// 操作 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionActionId *string `json:"ExecutionActionId,omitnil,omitempty" name:"ExecutionActionId"`
+
+	// 失败信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 操作状态，true：成功，false：失败
+	OpStatus *bool `json:"OpStatus,omitnil,omitempty" name:"OpStatus"`
+}
+
 type ExecutorResourceGroupData struct {
 	// 结果list
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4183,6 +5719,110 @@ type ExecutorResourceGroupInfo struct {
 	// 是否自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitnil,omitempty" name:"AutoRenewEnabled"`
+}
+
+type ExploreAuthorizationObject struct {
+	// 授权资源信息，包含resourceId和resourceType
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *ExploreFileResource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 授权详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizeSubjects []*ExploreAuthorizeSubject `json:"AuthorizeSubjects,omitnil,omitempty" name:"AuthorizeSubjects"`
+}
+
+type ExploreAuthorizationRecycleObject struct {
+	// 文件资源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *ExploreFileResource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 授权详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecycleSubjects []*ExploreAuthorizeSubject `json:"RecycleSubjects,omitnil,omitempty" name:"RecycleSubjects"`
+}
+
+type ExploreAuthorizeSubject struct {
+	// 主体类型（用户：user，角色：role，组：group）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubjectType *string `json:"SubjectType,omitnil,omitempty" name:"SubjectType"`
+
+	// 主体值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubjectValues []*string `json:"SubjectValues,omitnil,omitempty" name:"SubjectValues"`
+
+	// 权限列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+}
+
+type ExploreFilePermissionsPage struct {
+	// 分页页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 权限列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rows []*ExploreFilePrivilegeItem `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// 总个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 总分页页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+}
+
+type ExploreFilePrivilegeItem struct {
+	// 权限点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+
+	// 用户：user 角色： role 组：group
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// 用户或角色ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// 授权资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *ExploreFileResource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 是否可以被删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteAble *bool `json:"DeleteAble,omitnil,omitempty" name:"DeleteAble"`
+}
+
+type ExploreFileResource struct {
+	// 资源类型，只能是这两种类型: folder, script
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源ID：目录id或脚本id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// id全路径，用于递归鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIdForPath *string `json:"ResourceIdForPath,omitnil,omitempty" name:"ResourceIdForPath"`
+
+	// cfs路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceCFSPath *string `json:"ResourceCFSPath,omitnil,omitempty" name:"ResourceCFSPath"`
+}
+
+type Filter struct {
+	// 过滤字段名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 过滤值列表
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 // Predefined struct for user
@@ -4585,6 +6225,142 @@ func (r *GetDataSourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetMyCodeMaxPermissionRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 授权资源唯一id，文件夹id或文件id、
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type GetMyCodeMaxPermissionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 授权资源唯一id，文件夹id或文件id、
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+func (r *GetMyCodeMaxPermissionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMyCodeMaxPermissionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMyCodeMaxPermissionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetMyCodeMaxPermissionResponseParams struct {
+	// 用户对CodeStudio文件/文件夹的递归最大权限类型
+	Data *CodeStudioMaxPermission `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetMyCodeMaxPermissionResponse struct {
+	*tchttp.BaseResponse
+	Response *GetMyCodeMaxPermissionResponseParams `json:"Response"`
+}
+
+func (r *GetMyCodeMaxPermissionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMyCodeMaxPermissionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetMyWorkflowMaxPermissionRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 授权实体ID
+	EntityId *string `json:"EntityId,omitnil,omitempty" name:"EntityId"`
+
+	// 授权实体类型,folder/workflow
+	EntityType *string `json:"EntityType,omitnil,omitempty" name:"EntityType"`
+}
+
+type GetMyWorkflowMaxPermissionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 授权实体ID
+	EntityId *string `json:"EntityId,omitnil,omitempty" name:"EntityId"`
+
+	// 授权实体类型,folder/workflow
+	EntityType *string `json:"EntityType,omitnil,omitempty" name:"EntityType"`
+}
+
+func (r *GetMyWorkflowMaxPermissionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMyWorkflowMaxPermissionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "EntityId")
+	delete(f, "EntityType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMyWorkflowMaxPermissionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetMyWorkflowMaxPermissionResponseParams struct {
+	// 当前用户对实体资源的递归最大权限类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *WorkflowMaxPermission `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetMyWorkflowMaxPermissionResponse struct {
+	*tchttp.BaseResponse
+	Response *GetMyWorkflowMaxPermissionResponseParams `json:"Response"`
+}
+
+func (r *GetMyWorkflowMaxPermissionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMyWorkflowMaxPermissionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetOpsAlarmRuleRequestParams struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -4842,6 +6618,77 @@ func (r *GetOpsTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetOpsTriggerWorkflowRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流执行ID
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitnil,omitempty" name:"WorkflowExecutionId"`
+}
+
+type GetOpsTriggerWorkflowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流执行ID
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitnil,omitempty" name:"WorkflowExecutionId"`
+}
+
+func (r *GetOpsTriggerWorkflowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOpsTriggerWorkflowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	delete(f, "WorkflowExecutionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOpsTriggerWorkflowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetOpsTriggerWorkflowResponseParams struct {
+	// 工作流任务信息
+	Data *TriggerTaskDAGBrief `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetOpsTriggerWorkflowResponse struct {
+	*tchttp.BaseResponse
+	Response *GetOpsTriggerWorkflowResponseParams `json:"Response"`
+}
+
+func (r *GetOpsTriggerWorkflowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOpsTriggerWorkflowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetOpsWorkflowRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -5024,6 +6871,71 @@ func (r *GetResourceFileResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetResourceFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetResourceFolderRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹id
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+}
+
+type GetResourceFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹id
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+}
+
+func (r *GetResourceFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetResourceFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "FolderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetResourceFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetResourceFolderResponseParams struct {
+	// 资源文件夹信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ResourceFolderDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetResourceFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *GetResourceFolderResponseParams `json:"Response"`
+}
+
+func (r *GetResourceFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetResourceFolderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5431,6 +7343,78 @@ func (r *GetTaskCodeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetTaskFolderRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 文件夹ID
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+}
+
+type GetTaskFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 文件夹ID
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+}
+
+func (r *GetTaskFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTaskFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	delete(f, "TaskFolderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTaskFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTaskFolderResponseParams struct {
+	// 文件夹详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TaskFolderDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTaskFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTaskFolderResponseParams `json:"Response"`
+}
+
+func (r *GetTaskFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTaskFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetTaskInstanceLogRequestParams struct {
 	// **项目ID**
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -5720,6 +7704,480 @@ func (r *GetTaskVersionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetTaskVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerTaskCodeRequestParams struct {
+	// 所属项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type GetTriggerTaskCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所属项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *GetTriggerTaskCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerTaskCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTriggerTaskCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerTaskCodeResponseParams struct {
+	// 获取任务代码结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TaskCodeResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTriggerTaskCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTriggerTaskCodeResponseParams `json:"Response"`
+}
+
+func (r *GetTriggerTaskCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerTaskCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerTaskRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type GetTriggerTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *GetTriggerTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTriggerTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerTaskResponseParams struct {
+	// 任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TriggerTask `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTriggerTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTriggerTaskResponseParams `json:"Response"`
+}
+
+func (r *GetTriggerTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerTaskRunRequestParams struct {
+	// 工作空间 ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务运行 ID
+	TaskExecutionId *string `json:"TaskExecutionId,omitnil,omitempty" name:"TaskExecutionId"`
+}
+
+type GetTriggerTaskRunRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间 ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务运行 ID
+	TaskExecutionId *string `json:"TaskExecutionId,omitnil,omitempty" name:"TaskExecutionId"`
+}
+
+func (r *GetTriggerTaskRunRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerTaskRunRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskExecutionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTriggerTaskRunRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerTaskRunResponseParams struct {
+	// 工作流任务运行列表分页结果
+	Data *TriggerTaskRunBrief `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTriggerTaskRunResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTriggerTaskRunResponseParams `json:"Response"`
+}
+
+func (r *GetTriggerTaskRunResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerTaskRunResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerTaskVersionRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 提交版本ID，不填默认拿最新提交版本
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+}
+
+type GetTriggerTaskVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 提交版本ID，不填默认拿最新提交版本
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+}
+
+func (r *GetTriggerTaskVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerTaskVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "VersionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTriggerTaskVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerTaskVersionResponseParams struct {
+	// 版本详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TriggerTaskVersionDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTriggerTaskVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTriggerTaskVersionResponseParams `json:"Response"`
+}
+
+func (r *GetTriggerTaskVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerTaskVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerWorkflowRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID 通过ListWorkflows接口获取
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+}
+
+type GetTriggerWorkflowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID 通过ListWorkflows接口获取
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+}
+
+func (r *GetTriggerWorkflowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerWorkflowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTriggerWorkflowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerWorkflowResponseParams struct {
+	// 工作流详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TriggerWorkflowDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTriggerWorkflowResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTriggerWorkflowResponseParams `json:"Response"`
+}
+
+func (r *GetTriggerWorkflowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerWorkflowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerWorkflowRunRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流执行ID
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitnil,omitempty" name:"WorkflowExecutionId"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序条件
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+type GetTriggerWorkflowRunRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流执行ID
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitnil,omitempty" name:"WorkflowExecutionId"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序条件
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+func (r *GetTriggerWorkflowRunRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerWorkflowRunRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowExecutionId")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTriggerWorkflowRunRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTriggerWorkflowRunResponseParams struct {
+	// 工作流任务信息
+	Data *TriggerWorkflowTaskRunDetailBrief `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTriggerWorkflowRunResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTriggerWorkflowRunResponseParams `json:"Response"`
+}
+
+func (r *GetTriggerWorkflowRunResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTriggerWorkflowRunResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetWorkflowFolderRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹id
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+}
+
+type GetWorkflowFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹id
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+}
+
+func (r *GetWorkflowFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetWorkflowFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "FolderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetWorkflowFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetWorkflowFolderResponseParams struct {
+	// 文件夹详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *WorkflowFolderDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetWorkflowFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *GetWorkflowFolderResponseParams `json:"Response"`
+}
+
+func (r *GetWorkflowFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetWorkflowFolderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6214,6 +8672,91 @@ func (r *KillTaskInstancesAsyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type KillTriggerWorkflowRunsRequestParams struct {
+	// 项目ID	
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 指定要停止的工作流执行ID
+	WorkflowExecutionIdList []*string `json:"WorkflowExecutionIdList,omitnil,omitempty" name:"WorkflowExecutionIdList"`
+
+	// 当指定的工作流运行为空时，是否全部终止正在运行的工作流执行	
+	All *bool `json:"All,omitnil,omitempty" name:"All"`
+
+	// 当指定的工作流运行为空时，是否仅停止等待中的工作流运行
+	Pending *bool `json:"Pending,omitnil,omitempty" name:"Pending"`
+}
+
+type KillTriggerWorkflowRunsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID	
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 指定要停止的工作流执行ID
+	WorkflowExecutionIdList []*string `json:"WorkflowExecutionIdList,omitnil,omitempty" name:"WorkflowExecutionIdList"`
+
+	// 当指定的工作流运行为空时，是否全部终止正在运行的工作流执行	
+	All *bool `json:"All,omitnil,omitempty" name:"All"`
+
+	// 当指定的工作流运行为空时，是否仅停止等待中的工作流运行
+	Pending *bool `json:"Pending,omitnil,omitempty" name:"Pending"`
+}
+
+func (r *KillTriggerWorkflowRunsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *KillTriggerWorkflowRunsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	delete(f, "WorkflowExecutionIdList")
+	delete(f, "All")
+	delete(f, "Pending")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KillTriggerWorkflowRunsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type KillTriggerWorkflowRunsResponseParams struct {
+	// 工作流运行操作结果
+	Data []*ExecutionActionBrief `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type KillTriggerWorkflowRunsResponse struct {
+	*tchttp.BaseResponse
+	Response *KillTriggerWorkflowRunsResponseParams `json:"Response"`
+}
+
+func (r *KillTriggerWorkflowRunsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *KillTriggerWorkflowRunsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type LineageNodeInfo struct {
 	// 当前资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6698,6 +9241,91 @@ func (r *ListCodeFolderContentsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListCodeFolderContentsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListCodePermissionsRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 返回数量，默认为20，最大值为100。要求500、1000或者更大
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 授权资源
+	Resource *ExploreFileResource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 用户筛选条件
+	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
+}
+
+type ListCodePermissionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 返回数量，默认为20，最大值为100。要求500、1000或者更大
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 授权资源
+	Resource *ExploreFileResource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 用户筛选条件
+	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
+}
+
+func (r *ListCodePermissionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListCodePermissionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Resource")
+	delete(f, "Users")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListCodePermissionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListCodePermissionsResponseParams struct {
+	// 权限列表
+	Data *ExploreFilePermissionsPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListCodePermissionsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListCodePermissionsResponseParams `json:"Response"`
+}
+
+func (r *ListCodePermissionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListCodePermissionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7433,6 +10061,85 @@ func (r *ListDownstreamTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListDownstreamTriggerTasksRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 分页页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListDownstreamTriggerTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 分页页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListDownstreamTriggerTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListDownstreamTriggerTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDownstreamTriggerTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListDownstreamTriggerTasksResponseParams struct {
+	// 下游依赖详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TriggerDependencyConfigPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListDownstreamTriggerTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *ListDownstreamTriggerTasksResponseParams `json:"Response"`
+}
+
+func (r *ListDownstreamTriggerTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListDownstreamTriggerTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListLineagePage struct {
 	// 血缘记录列表
 	Items []*LineageNodeInfo `json:"Items,omitnil,omitempty" name:"Items"`
@@ -7935,6 +10642,92 @@ func (r *ListOpsTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListOpsTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListOpsTriggerWorkflowsRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，排序字段名称 如下 任务数：TaskCount
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+type ListOpsTriggerWorkflowsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，排序字段名称 如下 任务数：TaskCount
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+func (r *ListOpsTriggerWorkflowsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListOpsTriggerWorkflowsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListOpsTriggerWorkflowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListOpsTriggerWorkflowsResponseParams struct {
+	// 工作流查询结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TriggerWorkflowResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListOpsTriggerWorkflowsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListOpsTriggerWorkflowsResponseParams `json:"Response"`
+}
+
+func (r *ListOpsTriggerWorkflowsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListOpsTriggerWorkflowsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8445,6 +11238,1131 @@ func (r *ListProjectsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListProjectsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListQualityRuleGroupExecResult struct {
+	// 规则组执行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupExecId *uint64 `json:"RuleGroupExecId,omitnil,omitempty" name:"RuleGroupExecId"`
+
+	// 规则组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupId *uint64 `json:"RuleGroupId,omitnil,omitempty" name:"RuleGroupId"`
+
+	// 执行触发类型（1：手动触发， 2：调度事中触发，3：周期调度触发）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *uint64 `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// 执行时间 yyyy-MM-dd HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecTime *string `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
+
+	// 执行状态（1.已提交 2.检测中 3.正常 4.异常）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 异常规则数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmRuleCount *uint64 `json:"AlarmRuleCount,omitnil,omitempty" name:"AlarmRuleCount"`
+
+	// 总规则数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalRuleCount *uint64 `json:"TotalRuleCount,omitnil,omitempty" name:"TotalRuleCount"`
+
+	// 源表负责人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableOwnerName *string `json:"TableOwnerName,omitnil,omitempty" name:"TableOwnerName"`
+
+	// 源表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 数据库id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// 数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 有无权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Permission *bool `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// 执行详情，调度计划或者关联生产任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecDetail *string `json:"ExecDetail,omitnil,omitempty" name:"ExecDetail"`
+
+	// 实际执行引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// 规则执行结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleExecResultVOList []*QualityRuleExecResult `json:"RuleExecResultVOList,omitnil,omitempty" name:"RuleExecResultVOList"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 本地规则表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupTableId *int64 `json:"RuleGroupTableId,omitnil,omitempty" name:"RuleGroupTableId"`
+
+	// 集群部署类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterDeployType *string `json:"ClusterDeployType,omitnil,omitempty" name:"ClusterDeployType"`
+
+	// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 数据库所属环境，0.未定义，1.生产 2.开发
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DsEnvType *int64 `json:"DsEnvType,omitnil,omitempty" name:"DsEnvType"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
+
+	// 实例运行的开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 实例运行的结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 监控名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupName *string `json:"RuleGroupName,omitnil,omitempty" name:"RuleGroupName"`
+
+	// 判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupExist *int64 `json:"RuleGroupExist,omitnil,omitempty" name:"RuleGroupExist"`
+
+	// 类目名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizCatalogName *string `json:"BizCatalogName,omitnil,omitempty" name:"BizCatalogName"`
+
+	// 类目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizCatalogId *string `json:"BizCatalogId,omitnil,omitempty" name:"BizCatalogId"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailMsg *string `json:"FailMsg,omitnil,omitempty" name:"FailMsg"`
+}
+
+type ListQualityRuleGroupExecResultPage struct {
+	// 记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 规则组执行结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ListQualityRuleGroupExecResult `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type ListQualityRuleGroupExecResultsByPageRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 分页序号，默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件，支持的过滤条件如下：
+	// 1. GroupType
+	// 描述：规则组类型，标识规则组所属的分类。
+	// 取值：DEFAULT - 默认类型；WORKFLOW_NODE - 编排空间工作流节点类型
+	// 
+	// 2. InstanceId
+	// 描述：规则组执行实例ID。
+	// 取值：字符串
+	// 
+	// 3. ParentInstanceId
+	// 描述：父实例ID。
+	// 取值：字符串
+	// 
+	// 4. LifeCycleRunNum
+	// 描述：生命周期运行号。
+	// 取值：字符串
+	// 
+	// 5. InstanceStatus
+	// 描述：实例状态。质量侧的实例状态，一个状态对应调度侧多个状态，具体参考取值说明
+	// 取值：
+	// 等待运行 - 
+	// ["INITIAL", "EVENT_LISTENING", "DEPENDENCE", "ALLOCATED", "LAUNCHED", "BEFORE_ASPECT", "ISSUED"]；
+	// 运行中 - ["RUNNING", "AFTER_ASPECT", "WAITING_AFTER_ASPECT"]
+	// 失败 - ["FAILED", "EXPIRED", "KILL", "KILLING", "PENDING"]
+	// 成功 - ["COMPLETED"]
+	// 
+	// 
+	// 6. DatasourceId
+	// 描述：数据源ID。
+	// 取值：字符串
+	// 
+	// 7. DatasourceType
+	// 描述：数据源类型。
+	// 取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+	// 
+	// 8. DatabaseName
+	// 描述：数据库名称。
+	// 取值：字符串
+	// 
+	// 9. DatabaseId
+	// 描述：数据库ID。
+	// 取值：字符串
+	// 
+	// 10. SchemaName
+	// 描述：Schema名称。
+	// 取值：字符串
+	// 
+	// 11. ReceiverFlag
+	// 描述：是否为当前登录用户的订阅。
+	// 取值：true - 是；false - 否
+	// 
+	// 12. TableName
+	// 描述：数据表名称，支持模糊匹配。
+	// 取值：字符串
+	// 
+	// 13. RuleGroupName
+	// 描述：规则组名称。
+	// 取值：字符串
+	// 
+	// 14. RuleGroupExecId
+	// 描述：规则组执行ID。
+	// 取值：整数
+	// 
+	// 15. RuleGroupTableId
+	// 描述：规则组表ID。
+	// 取值：整数
+	// 
+	// 16. Keyword
+	// 描述：关键字搜索，支持规则组执行Id、表名称、表负责人模糊搜索。如果keyword是纯数字，默认只匹配规则组执行Id。
+	// 取值：字符串
+	// 
+	// 17. StartTime
+	// 描述：实际运行时间，开始时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 18. EndTime
+	// 描述：实际运行时间，结束时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 19. ScheduledStartTime
+	// 描述：计划调度时间，开始时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 20. ScheduledEndTime
+	// 描述：计划调度时间，结束时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 21. DsJobId
+	// 描述：数据源任务ID。
+	// 取值：字符串
+	// 
+	// 22. TriggerType
+	// 描述：触发类型。
+	// 取值：1 - 手动触发；2 - 调度事中触发；3 - 周期调度触发；
+	// 
+	// 23. Status
+	// 描述：规则组执行状态。
+	// 取值：0 - 初始状态，未提交；1 - 已提交；2 - 检测中；3 - 正常；4 - 异常；5 - 下发中；6 - 执行链路异常；7 - 未检测，没有执行结果；
+	// 
+	// 24. TableIds
+	// 描述：数据表ID集合。
+	// 取值：字符串，支持多个值（OR关系）
+	// 
+	// 25. RuleGroupId
+	// 描述：规则组ID。
+	// 取值：整数
+	// 
+	// 26. BizCatalogIds
+	// 描述：业务目录ID。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 27. CatalogName
+	// 描述：数据目录名称。
+	// 取值：字符串
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 通用排序， 
+	// 支持的排序字段：
+	// CreateTime - 按创建时间排序
+	// UpdateTime - 按更新时间排序（默认）
+	// 排序方向：
+	// 1 - 升序（ASC）
+	// 2 - 降序（DESC）
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+type ListQualityRuleGroupExecResultsByPageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 分页序号，默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件，支持的过滤条件如下：
+	// 1. GroupType
+	// 描述：规则组类型，标识规则组所属的分类。
+	// 取值：DEFAULT - 默认类型；WORKFLOW_NODE - 编排空间工作流节点类型
+	// 
+	// 2. InstanceId
+	// 描述：规则组执行实例ID。
+	// 取值：字符串
+	// 
+	// 3. ParentInstanceId
+	// 描述：父实例ID。
+	// 取值：字符串
+	// 
+	// 4. LifeCycleRunNum
+	// 描述：生命周期运行号。
+	// 取值：字符串
+	// 
+	// 5. InstanceStatus
+	// 描述：实例状态。质量侧的实例状态，一个状态对应调度侧多个状态，具体参考取值说明
+	// 取值：
+	// 等待运行 - 
+	// ["INITIAL", "EVENT_LISTENING", "DEPENDENCE", "ALLOCATED", "LAUNCHED", "BEFORE_ASPECT", "ISSUED"]；
+	// 运行中 - ["RUNNING", "AFTER_ASPECT", "WAITING_AFTER_ASPECT"]
+	// 失败 - ["FAILED", "EXPIRED", "KILL", "KILLING", "PENDING"]
+	// 成功 - ["COMPLETED"]
+	// 
+	// 
+	// 6. DatasourceId
+	// 描述：数据源ID。
+	// 取值：字符串
+	// 
+	// 7. DatasourceType
+	// 描述：数据源类型。
+	// 取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+	// 
+	// 8. DatabaseName
+	// 描述：数据库名称。
+	// 取值：字符串
+	// 
+	// 9. DatabaseId
+	// 描述：数据库ID。
+	// 取值：字符串
+	// 
+	// 10. SchemaName
+	// 描述：Schema名称。
+	// 取值：字符串
+	// 
+	// 11. ReceiverFlag
+	// 描述：是否为当前登录用户的订阅。
+	// 取值：true - 是；false - 否
+	// 
+	// 12. TableName
+	// 描述：数据表名称，支持模糊匹配。
+	// 取值：字符串
+	// 
+	// 13. RuleGroupName
+	// 描述：规则组名称。
+	// 取值：字符串
+	// 
+	// 14. RuleGroupExecId
+	// 描述：规则组执行ID。
+	// 取值：整数
+	// 
+	// 15. RuleGroupTableId
+	// 描述：规则组表ID。
+	// 取值：整数
+	// 
+	// 16. Keyword
+	// 描述：关键字搜索，支持规则组执行Id、表名称、表负责人模糊搜索。如果keyword是纯数字，默认只匹配规则组执行Id。
+	// 取值：字符串
+	// 
+	// 17. StartTime
+	// 描述：实际运行时间，开始时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 18. EndTime
+	// 描述：实际运行时间，结束时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 19. ScheduledStartTime
+	// 描述：计划调度时间，开始时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 20. ScheduledEndTime
+	// 描述：计划调度时间，结束时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 21. DsJobId
+	// 描述：数据源任务ID。
+	// 取值：字符串
+	// 
+	// 22. TriggerType
+	// 描述：触发类型。
+	// 取值：1 - 手动触发；2 - 调度事中触发；3 - 周期调度触发；
+	// 
+	// 23. Status
+	// 描述：规则组执行状态。
+	// 取值：0 - 初始状态，未提交；1 - 已提交；2 - 检测中；3 - 正常；4 - 异常；5 - 下发中；6 - 执行链路异常；7 - 未检测，没有执行结果；
+	// 
+	// 24. TableIds
+	// 描述：数据表ID集合。
+	// 取值：字符串，支持多个值（OR关系）
+	// 
+	// 25. RuleGroupId
+	// 描述：规则组ID。
+	// 取值：整数
+	// 
+	// 26. BizCatalogIds
+	// 描述：业务目录ID。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 27. CatalogName
+	// 描述：数据目录名称。
+	// 取值：字符串
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 通用排序， 
+	// 支持的排序字段：
+	// CreateTime - 按创建时间排序
+	// UpdateTime - 按更新时间排序（默认）
+	// 排序方向：
+	// 1 - 升序（ASC）
+	// 2 - 降序（DESC）
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+func (r *ListQualityRuleGroupExecResultsByPageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListQualityRuleGroupExecResultsByPageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListQualityRuleGroupExecResultsByPageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListQualityRuleGroupExecResultsByPageResponseParams struct {
+	// 规则组执行结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ListQualityRuleGroupExecResultPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListQualityRuleGroupExecResultsByPageResponse struct {
+	*tchttp.BaseResponse
+	Response *ListQualityRuleGroupExecResultsByPageResponseParams `json:"Response"`
+}
+
+func (r *ListQualityRuleGroupExecResultsByPageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListQualityRuleGroupExecResultsByPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListQualityRuleGroupsTableRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 分页序号，默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件, 可选过滤条件如下：
+	// 1. GroupType
+	// 描述：规则组类型，标识规则组所属的分类。
+	// 取值：DEFAULT - 默认类型；DASHBOARD-仪表盘类型；WORKFLOW_NODE - 编排空间工作流节点类型
+	// 
+	// 2. DeployStatus
+	// 描述：规则组部署状态，主要用于WORKFLOW_NODE类型的规则组
+	// 取值：PRODUCTION - 生产环境；DRAFT - 草稿套
+	// 
+	// 3. RuleGroupName
+	// 描述：规则组名称。
+	// 取值：字符串
+	// 
+	// 4. RuleGroupId
+	// 描述：规则组ID。
+	// 取值：整数
+	// 
+	// 5. TableOwnerName
+	// 描述：表负责人名称，支持模糊匹配。
+	// 取值：字符串
+	// 
+	// 6. TableOwnerAccount
+	// 描述：表负责人账号ID。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 7. TableOwnerFlag
+	// 描述：是否为当前表负责人。
+	// 取值：true - 是；false - 否
+	// 
+	// 8. DatasourceType
+	// 描述：数据源类型。
+	// 取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+	// 
+	// 9. DatasourceId
+	// 描述：数据源ID。
+	// 取值：字符串
+	// 
+	// 10. DatabaseName
+	// 描述：数据库名称。
+	// 取值：字符串
+	// 
+	// 11. SchemaName
+	// 描述：Schema名称。
+	// 取值：字符串
+	// 
+	// 12. TableName
+	// 描述：数据源表名称，支持模糊匹配。
+	// 取值：字符串
+	// 
+	// 13. BizCatalogIds
+	// 描述：业务目录ID。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 14. CatalogName
+	// 描述：数据目录名称。
+	// 取值：字符串
+	// 
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 通用排序，
+	// 支持的排序字段：
+	// UpdateTime - 按更新时间排序（默认）
+	// 排序方向：
+	// 1 - 升序（ASC）
+	// 2 - 降序（DESC）
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+type ListQualityRuleGroupsTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 分页序号，默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件, 可选过滤条件如下：
+	// 1. GroupType
+	// 描述：规则组类型，标识规则组所属的分类。
+	// 取值：DEFAULT - 默认类型；DASHBOARD-仪表盘类型；WORKFLOW_NODE - 编排空间工作流节点类型
+	// 
+	// 2. DeployStatus
+	// 描述：规则组部署状态，主要用于WORKFLOW_NODE类型的规则组
+	// 取值：PRODUCTION - 生产环境；DRAFT - 草稿套
+	// 
+	// 3. RuleGroupName
+	// 描述：规则组名称。
+	// 取值：字符串
+	// 
+	// 4. RuleGroupId
+	// 描述：规则组ID。
+	// 取值：整数
+	// 
+	// 5. TableOwnerName
+	// 描述：表负责人名称，支持模糊匹配。
+	// 取值：字符串
+	// 
+	// 6. TableOwnerAccount
+	// 描述：表负责人账号ID。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 7. TableOwnerFlag
+	// 描述：是否为当前表负责人。
+	// 取值：true - 是；false - 否
+	// 
+	// 8. DatasourceType
+	// 描述：数据源类型。
+	// 取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+	// 
+	// 9. DatasourceId
+	// 描述：数据源ID。
+	// 取值：字符串
+	// 
+	// 10. DatabaseName
+	// 描述：数据库名称。
+	// 取值：字符串
+	// 
+	// 11. SchemaName
+	// 描述：Schema名称。
+	// 取值：字符串
+	// 
+	// 12. TableName
+	// 描述：数据源表名称，支持模糊匹配。
+	// 取值：字符串
+	// 
+	// 13. BizCatalogIds
+	// 描述：业务目录ID。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 14. CatalogName
+	// 描述：数据目录名称。
+	// 取值：字符串
+	// 
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 通用排序，
+	// 支持的排序字段：
+	// UpdateTime - 按更新时间排序（默认）
+	// 排序方向：
+	// 1 - 升序（ASC）
+	// 2 - 降序（DESC）
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+func (r *ListQualityRuleGroupsTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListQualityRuleGroupsTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListQualityRuleGroupsTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListQualityRuleGroupsTableResponseParams struct {
+	// 监控对象列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *QualityRuleGroupsTableVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListQualityRuleGroupsTableResponse struct {
+	*tchttp.BaseResponse
+	Response *ListQualityRuleGroupsTableResponseParams `json:"Response"`
+}
+
+func (r *ListQualityRuleGroupsTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListQualityRuleGroupsTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListQualityRuleTemplatesRequestParams struct {
+	// 工作空间ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 当前页，默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页记录数，默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 通用排序，
+	// 支持的排序字段：
+	// CitationCount - 按引用数量排序
+	// UpdateTime - 按更新时间排序
+	// 排序方向：
+	// 1 - 升序（ASC）
+	// 2 - 降序（DESC）
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 通用过滤条件
+	// 1. Id
+	// 描述：模板ID。
+	// 取值：模板的唯一标识
+	// 
+	// 2. Keyword
+	// 描述：关键字搜索，支持模板名称模糊搜索。
+	// 取值：字符串
+	// 
+	// 3. Type
+	// 描述：模板类型。
+	// 取值：1 - 系统模板；2 - 自定义模板；支持多个值（OR关系）
+	// 
+	// 4. QualityDim
+	// 描述：质量检测维度。
+	// 取值：1 - 准确性；2 - 唯一性；3 - 完整性；4 - 一致性；5 - 及时性；6 - 有效性；支持多个值（OR关系）
+	// 
+	// 5. SourceObjectType
+	// 描述：规则适用的源数据对象类型。
+	// 取值：1 - 常量；2 - 离线表级；3 - 离线字段级；4 - 库级；支持多个值（OR关系）
+	// 
+	// 6. SourceEngineTypes
+	// 描述：模板适用的源数据引擎类型。
+	// 取值：1 - MySQL；2 - Hive；4 - Spark；8 - Livy；16 - DLC；32 - Gbase；64 - TCHouse-P；128 - Doris；256 - TCHouse-D；512 - EMR_StarRocks；1024 - TCHouse-X；支持多个值（OR关系）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type ListQualityRuleTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 当前页，默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页记录数，默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 通用排序，
+	// 支持的排序字段：
+	// CitationCount - 按引用数量排序
+	// UpdateTime - 按更新时间排序
+	// 排序方向：
+	// 1 - 升序（ASC）
+	// 2 - 降序（DESC）
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 通用过滤条件
+	// 1. Id
+	// 描述：模板ID。
+	// 取值：模板的唯一标识
+	// 
+	// 2. Keyword
+	// 描述：关键字搜索，支持模板名称模糊搜索。
+	// 取值：字符串
+	// 
+	// 3. Type
+	// 描述：模板类型。
+	// 取值：1 - 系统模板；2 - 自定义模板；支持多个值（OR关系）
+	// 
+	// 4. QualityDim
+	// 描述：质量检测维度。
+	// 取值：1 - 准确性；2 - 唯一性；3 - 完整性；4 - 一致性；5 - 及时性；6 - 有效性；支持多个值（OR关系）
+	// 
+	// 5. SourceObjectType
+	// 描述：规则适用的源数据对象类型。
+	// 取值：1 - 常量；2 - 离线表级；3 - 离线字段级；4 - 库级；支持多个值（OR关系）
+	// 
+	// 6. SourceEngineTypes
+	// 描述：模板适用的源数据引擎类型。
+	// 取值：1 - MySQL；2 - Hive；4 - Spark；8 - Livy；16 - DLC；32 - Gbase；64 - TCHouse-P；128 - Doris；256 - TCHouse-D；512 - EMR_StarRocks；1024 - TCHouse-X；支持多个值（OR关系）
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *ListQualityRuleTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListQualityRuleTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "OrderFields")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListQualityRuleTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListQualityRuleTemplatesResponseParams struct {
+	// 结果
+	Data *QualityRuleTemplatePage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListQualityRuleTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListQualityRuleTemplatesResponseParams `json:"Response"`
+}
+
+func (r *ListQualityRuleTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListQualityRuleTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListQualityRulesRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 分页序号，默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件，可选过滤条件如下：
+	// 1. GroupType
+	// 描述：规则组类型，标识规则组所属的分类。
+	// 取值：DEFAULT - 默认类型，DASHBOARD - 仪表盘类型，WORKFLOW_NODE - 编排空间工作流节点类型
+	// 
+	// 2. Operator
+	// 描述：创建人ID。
+	// 取值：用户ID，支持多个值（OR关系）
+	// 
+	// 3. Keyword
+	// 描述：关键字搜索，支持规则名称模糊搜索。
+	// 取值：字符串
+	// 
+	// 4. RuleName
+	// 描述：规则名称。
+	// 取值：字符串
+	// 
+	// 5. Type
+	// 描述：规则类型。
+	// 取值：1 - 系统模板，2 - 自定义SQL，3 - 自定义模板
+	// 
+	// 6. SourceObjectValue
+	// 描述：数据对象，可以是字段名称或表名称。
+	// 取值：字符串，支持多个值（OR关系）
+	// 
+	// 7. RuleGroupId
+	// 描述：规则所属的规则组ID。
+	// 取值：整数
+	// 
+	// 8. RuleGroupName
+	// 描述：规则所属的规则组名称。
+	// 取值：字符串
+	// 
+	// 9. TableId
+	// 描述：数据表ID。
+	// 取值：字符串，支持多个值（OR关系）
+	// 
+	// 10. TableName
+	// 描述：数据表名称。
+	// 取值：字符串
+	// 
+	// 11. SourceEngineType
+	// 描述：数据源引擎类型。
+	// 取值：整数，1 - MYSQL；2 - HIVE；4 - SPARK；8 - LIVY；16 - DLC；32 - GBASE；64 - TCHouse-P；128 - DORIS；256 - TCHouse-D；512 - EMR_STARROCKS；1024 - TCHouse-X；支持多个值（OR关系）
+	// 
+	// 12. DatasourceId
+	// 描述：数据源ID。
+	// 取值：整数
+	// 
+	// 13. DatasourceType
+	// 描述：数据源类型。
+	// 取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+	// 
+	// 14. DatabaseName
+	// 描述：数据库名称。
+	// 取值：字符串
+	// 
+	// 15. SchemaName
+	// 描述：Schema名称。
+	// 取值：字符串
+	// 
+	// 16. RuleIds
+	// 描述：规则ID集合。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 17. RuleTemplateId
+	// 描述：规则模板ID。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 18. ReceiverUserId / ReceiverUserIdStr
+	// 描述：订阅人用户ID。
+	// 取值：整数
+	// 
+	// 19. StartTime
+	// 描述：查询开始时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 20. EndTime
+	// 描述：查询结束时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 21. ReceiverFlag
+	// 描述：是否为当前登录用户的订阅。
+	// 取值：
+	// true - 是
+	// false - 否
+	// 
+	// 22. MonitorType
+	// 描述：规则的监控执行方式。
+	// 取值：1 - 未配置；2 - 关联生产调度；3 - 离线周期检测；支持多个值（OR关系）
+	// 支持多个值（OR关系）
+	// 
+	// 23. MonitorStatus
+	// 描述：规则的监控状态。
+	// 取值：
+	// true - 已启用
+	// false - 已禁用
+	// 
+	// 24. BizCatalogIds
+	// 描述：业务目录ID。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 25. CatalogName
+	// 描述：数据目录名称。
+	// 取值：字符串
+	// 
+	// 26. DeployStatus
+	// 描述：规则部署状态，主要用于WORKFLOW_NODE类型的规则组（监控）上
+	// 取值：PRODUCTION - 生产环境，DRAFT - 草稿态
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 通用排序，
+	// 支持的排序字段：
+	// CreateTime - 按创建时间排序
+	// UpdateTime - 按更新时间排序（默认）
+	// 排序方向：
+	// 1 - 升序（ASC）
+	// 2 - 降序（DESC）
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+type ListQualityRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 分页序号，默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件，可选过滤条件如下：
+	// 1. GroupType
+	// 描述：规则组类型，标识规则组所属的分类。
+	// 取值：DEFAULT - 默认类型，DASHBOARD - 仪表盘类型，WORKFLOW_NODE - 编排空间工作流节点类型
+	// 
+	// 2. Operator
+	// 描述：创建人ID。
+	// 取值：用户ID，支持多个值（OR关系）
+	// 
+	// 3. Keyword
+	// 描述：关键字搜索，支持规则名称模糊搜索。
+	// 取值：字符串
+	// 
+	// 4. RuleName
+	// 描述：规则名称。
+	// 取值：字符串
+	// 
+	// 5. Type
+	// 描述：规则类型。
+	// 取值：1 - 系统模板，2 - 自定义SQL，3 - 自定义模板
+	// 
+	// 6. SourceObjectValue
+	// 描述：数据对象，可以是字段名称或表名称。
+	// 取值：字符串，支持多个值（OR关系）
+	// 
+	// 7. RuleGroupId
+	// 描述：规则所属的规则组ID。
+	// 取值：整数
+	// 
+	// 8. RuleGroupName
+	// 描述：规则所属的规则组名称。
+	// 取值：字符串
+	// 
+	// 9. TableId
+	// 描述：数据表ID。
+	// 取值：字符串，支持多个值（OR关系）
+	// 
+	// 10. TableName
+	// 描述：数据表名称。
+	// 取值：字符串
+	// 
+	// 11. SourceEngineType
+	// 描述：数据源引擎类型。
+	// 取值：整数，1 - MYSQL；2 - HIVE；4 - SPARK；8 - LIVY；16 - DLC；32 - GBASE；64 - TCHouse-P；128 - DORIS；256 - TCHouse-D；512 - EMR_STARROCKS；1024 - TCHouse-X；支持多个值（OR关系）
+	// 
+	// 12. DatasourceId
+	// 描述：数据源ID。
+	// 取值：整数
+	// 
+	// 13. DatasourceType
+	// 描述：数据源类型。
+	// 取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+	// 
+	// 14. DatabaseName
+	// 描述：数据库名称。
+	// 取值：字符串
+	// 
+	// 15. SchemaName
+	// 描述：Schema名称。
+	// 取值：字符串
+	// 
+	// 16. RuleIds
+	// 描述：规则ID集合。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 17. RuleTemplateId
+	// 描述：规则模板ID。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 18. ReceiverUserId / ReceiverUserIdStr
+	// 描述：订阅人用户ID。
+	// 取值：整数
+	// 
+	// 19. StartTime
+	// 描述：查询开始时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 20. EndTime
+	// 描述：查询结束时间。
+	// 取值：Unix时间戳（秒）
+	// 
+	// 21. ReceiverFlag
+	// 描述：是否为当前登录用户的订阅。
+	// 取值：
+	// true - 是
+	// false - 否
+	// 
+	// 22. MonitorType
+	// 描述：规则的监控执行方式。
+	// 取值：1 - 未配置；2 - 关联生产调度；3 - 离线周期检测；支持多个值（OR关系）
+	// 支持多个值（OR关系）
+	// 
+	// 23. MonitorStatus
+	// 描述：规则的监控状态。
+	// 取值：
+	// true - 已启用
+	// false - 已禁用
+	// 
+	// 24. BizCatalogIds
+	// 描述：业务目录ID。
+	// 取值：整数，支持多个值（OR关系）
+	// 
+	// 25. CatalogName
+	// 描述：数据目录名称。
+	// 取值：字符串
+	// 
+	// 26. DeployStatus
+	// 描述：规则部署状态，主要用于WORKFLOW_NODE类型的规则组（监控）上
+	// 取值：PRODUCTION - 生产环境，DRAFT - 草稿态
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 通用排序，
+	// 支持的排序字段：
+	// CreateTime - 按创建时间排序
+	// UpdateTime - 按更新时间排序（默认）
+	// 排序方向：
+	// 1 - 升序（ASC）
+	// 2 - 降序（DESC）
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+func (r *ListQualityRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListQualityRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListQualityRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListQualityRulesResponseParams struct {
+	// 规则质量列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *QualityRulePage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListQualityRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListQualityRulesResponseParams `json:"Response"`
+}
+
+func (r *ListQualityRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListQualityRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9164,6 +13082,125 @@ func (r *ListTableResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListTaskFoldersRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 父文件夹绝对路径，如/abc/de，如果是根目录则传/
+	ParentTaskFolderPath *string `json:"ParentTaskFolderPath,omitnil,omitempty" name:"ParentTaskFolderPath"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务文件夹类型
+	// 
+	// | 任务文件夹类型取值 | 任务文件夹类型界面对应名称 |
+	// | ---------------- | ------------------------ |
+	// | ETL              | 集成任务                 |
+	// | EMR              | EMR                      |
+	// | DLC              | DLC                      |
+	// | SETATS           | SETATS                   |
+	// | TDSQL            | TDSQL                    |
+	// | TCHOUSE          | TCHOUSE                  |
+	// | GENERAL          | 通用                     |
+	// | TI_ONE           | TI-ONE机器学习           |
+	// | ACROSS_WORKFLOWS | 跨工作流                 |
+	// 
+	TaskFolderType *string `json:"TaskFolderType,omitnil,omitempty" name:"TaskFolderType"`
+
+	// 数据页数，大于等于1。默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数，最小为10条，最大为200 条。默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListTaskFoldersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 父文件夹绝对路径，如/abc/de，如果是根目录则传/
+	ParentTaskFolderPath *string `json:"ParentTaskFolderPath,omitnil,omitempty" name:"ParentTaskFolderPath"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务文件夹类型
+	// 
+	// | 任务文件夹类型取值 | 任务文件夹类型界面对应名称 |
+	// | ---------------- | ------------------------ |
+	// | ETL              | 集成任务                 |
+	// | EMR              | EMR                      |
+	// | DLC              | DLC                      |
+	// | SETATS           | SETATS                   |
+	// | TDSQL            | TDSQL                    |
+	// | TCHOUSE          | TCHOUSE                  |
+	// | GENERAL          | 通用                     |
+	// | TI_ONE           | TI-ONE机器学习           |
+	// | ACROSS_WORKFLOWS | 跨工作流                 |
+	// 
+	TaskFolderType *string `json:"TaskFolderType,omitnil,omitempty" name:"TaskFolderType"`
+
+	// 数据页数，大于等于1。默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数，最小为10条，最大为200 条。默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListTaskFoldersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTaskFoldersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ParentTaskFolderPath")
+	delete(f, "WorkflowId")
+	delete(f, "TaskFolderType")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTaskFoldersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTaskFoldersResponseParams struct {
+	// 分页的文件夹查询结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TaskFolderPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListTaskFoldersResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTaskFoldersResponseParams `json:"Response"`
+}
+
+func (r *ListTaskFoldersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTaskFoldersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListTaskInfo struct {
 	// 任务数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9816,6 +13853,517 @@ func (r *ListTenantRolesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListTriggerTaskInfo struct {
+	// 任务数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*TriggerTaskBaseAttribute `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 当前请求的数据页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 当前请求的数据页条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 满足查询条件的数据总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 满足查询条件的数据总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+}
+
+type ListTriggerTaskVersions struct {
+	// 记录列表	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*TriggerTaskVersion `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 满足查询条件的数据总条数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 满足查询条件的数据总页数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+
+	// 当前页记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageCount *uint64 `json:"PageCount,omitnil,omitempty" name:"PageCount"`
+
+	// 当前请求的数据页条数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 当前请求的数据页数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+// Predefined struct for user
+type ListTriggerTaskVersionsRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 保存版本：SAVE
+	// 提交版本：SUBMIT
+	// 默认为SAVE
+	TaskVersionType *string `json:"TaskVersionType,omitnil,omitempty" name:"TaskVersionType"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListTriggerTaskVersionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 保存版本：SAVE
+	// 提交版本：SUBMIT
+	// 默认为SAVE
+	TaskVersionType *string `json:"TaskVersionType,omitnil,omitempty" name:"TaskVersionType"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListTriggerTaskVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTriggerTaskVersionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "TaskVersionType")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTriggerTaskVersionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTriggerTaskVersionsResponseParams struct {
+	// 版本列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ListTriggerTaskVersions `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListTriggerTaskVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTriggerTaskVersionsResponseParams `json:"Response"`
+}
+
+func (r *ListTriggerTaskVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTriggerTaskVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTriggerTasksRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 所属工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 责任人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 任务类型
+	TaskTypeId *int64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 任务状态
+	// * N: 新建 
+	// * Y: 调度中 
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 提交状态
+	Submit *bool `json:"Submit,omitnil,omitempty" name:"Submit"`
+
+	// BundleId信息
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// 创建人ID
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	ModifyTime []*string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	CreateTime []*string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type ListTriggerTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 所属工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 责任人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 任务类型
+	TaskTypeId *int64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 任务状态
+	// * N: 新建 
+	// * Y: 调度中 
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 提交状态
+	Submit *bool `json:"Submit,omitnil,omitempty" name:"Submit"`
+
+	// BundleId信息
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// 创建人ID
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	ModifyTime []*string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	CreateTime []*string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+func (r *ListTriggerTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTriggerTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "TaskName")
+	delete(f, "WorkflowId")
+	delete(f, "OwnerUin")
+	delete(f, "TaskTypeId")
+	delete(f, "Status")
+	delete(f, "Submit")
+	delete(f, "BundleId")
+	delete(f, "CreateUserUin")
+	delete(f, "ModifyTime")
+	delete(f, "CreateTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTriggerTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTriggerTasksResponseParams struct {
+	// 任务分页信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ListTriggerTaskInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListTriggerTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTriggerTasksResponseParams `json:"Response"`
+}
+
+func (r *ListTriggerTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTriggerTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTriggerWorkflowInfo struct {
+	// 列表item
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*TriggerWorkflowInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 满足查询条件的数据总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+
+	// 当前请求的数据页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 当前请求的数据页条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 满足查询条件的数据总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+// Predefined struct for user
+type ListTriggerWorkflowRunsRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin, 工作流执行id: ExecutionId
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListTriggerWorkflowRunsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin, 工作流执行id: ExecutionId
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListTriggerWorkflowRunsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTriggerWorkflowRunsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTriggerWorkflowRunsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTriggerWorkflowRunsResponseParams struct {
+	// 工作流运行查询结果
+	Data *TriggerWorkflowRunResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListTriggerWorkflowRunsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTriggerWorkflowRunsResponseParams `json:"Response"`
+}
+
+func (r *ListTriggerWorkflowRunsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTriggerWorkflowRunsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTriggerWorkflowsRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 搜索关键词
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 工作流所属文件夹
+	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
+
+	// bundleId项
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// 负责人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 创建人ID
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	ModifyTime []*string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	CreateTime []*string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type ListTriggerWorkflowsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 搜索关键词
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 工作流所属文件夹
+	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
+
+	// bundleId项
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// 负责人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 创建人ID
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	ModifyTime []*string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	CreateTime []*string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+func (r *ListTriggerWorkflowsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTriggerWorkflowsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Keyword")
+	delete(f, "ParentFolderPath")
+	delete(f, "BundleId")
+	delete(f, "OwnerUin")
+	delete(f, "CreateUserUin")
+	delete(f, "ModifyTime")
+	delete(f, "CreateTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTriggerWorkflowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTriggerWorkflowsResponseParams struct {
+	// 查询工作流分页信息
+	Data *ListTriggerWorkflowInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListTriggerWorkflowsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTriggerWorkflowsResponseParams `json:"Response"`
+}
+
+func (r *ListTriggerWorkflowsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTriggerWorkflowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type ListUpstreamOpsTasksRequestParams struct {
 	// 项目Id
@@ -10058,6 +14606,85 @@ func (r *ListUpstreamTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListUpstreamTriggerTasksRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListUpstreamTriggerTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListUpstreamTriggerTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListUpstreamTriggerTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUpstreamTriggerTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListUpstreamTriggerTasksResponseParams struct {
+	// 上游任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TriggerDependencyConfigPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListUpstreamTriggerTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *ListUpstreamTriggerTasksResponseParams `json:"Response"`
+}
+
+func (r *ListUpstreamTriggerTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListUpstreamTriggerTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListWorkflowFoldersRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -10155,6 +14782,91 @@ type ListWorkflowInfo struct {
 	// 满足查询条件的数据总条数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+// Predefined struct for user
+type ListWorkflowPermissionsRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 授权实体ID
+	EntityId *string `json:"EntityId,omitnil,omitempty" name:"EntityId"`
+
+	// 授权实体类型,folder/workflow
+	EntityType *string `json:"EntityType,omitnil,omitempty" name:"EntityType"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListWorkflowPermissionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 授权实体ID
+	EntityId *string `json:"EntityId,omitnil,omitempty" name:"EntityId"`
+
+	// 授权实体类型,folder/workflow
+	EntityType *string `json:"EntityType,omitnil,omitempty" name:"EntityType"`
+
+	// 请求的数据页数。默认值为1，取值大于等于1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListWorkflowPermissionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListWorkflowPermissionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "EntityId")
+	delete(f, "EntityType")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListWorkflowPermissionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListWorkflowPermissionsResponseParams struct {
+	// 分页的授权信息查询结果
+	Data *WorkflowPermissionPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListWorkflowPermissionsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListWorkflowPermissionsResponseParams `json:"Response"`
+}
+
+func (r *ListWorkflowPermissionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListWorkflowPermissionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -10313,6 +15025,324 @@ type MetricData struct {
 type ModifyAlarmRuleResult struct {
 	// 是否更新成功
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
+type ModifyQualityRuleGroupRequestParams struct {
+	// 任务参数
+	RuleGroupExecStrategyBOList []*QualityRuleGroupExecStrategy `json:"RuleGroupExecStrategyBOList,omitnil,omitempty" name:"RuleGroupExecStrategyBOList"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type ModifyQualityRuleGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务参数
+	RuleGroupExecStrategyBOList []*QualityRuleGroupExecStrategy `json:"RuleGroupExecStrategyBOList,omitnil,omitempty" name:"RuleGroupExecStrategyBOList"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *ModifyQualityRuleGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyQualityRuleGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleGroupExecStrategyBOList")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQualityRuleGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyQualityRuleGroupResponseParams struct {
+	// 是否更新成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ModifyQualityRuleGroupResultVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyQualityRuleGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyQualityRuleGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyQualityRuleGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyQualityRuleGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyQualityRuleGroupResultVO struct {
+	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+}
+
+// Predefined struct for user
+type ModifyQualityRuleRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 报警触发条件
+	CompareRule *QualityCompareRule `json:"CompareRule,omitnil,omitempty" name:"CompareRule"`
+
+	// 报警触发级别 1.低, 2.中, 3.高
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
+
+	// 数据表ID
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 规则模板ID，当Type≠3（自定义SQL）时必填
+	RuleTemplateId *uint64 `json:"RuleTemplateId,omitnil,omitempty" name:"RuleTemplateId"`
+
+	// 规则所属质量维度，Type=3（自定义SQL）时必填（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+	QualityDim *uint64 `json:"QualityDim,omitnil,omitempty" name:"QualityDim"`
+
+	// 规则组ID
+	RuleGroupId *uint64 `json:"RuleGroupId,omitnil,omitempty" name:"RuleGroupId"`
+
+	// 源字段详细类型，int、string
+	SourceObjectDataTypeName *string `json:"SourceObjectDataTypeName,omitnil,omitempty" name:"SourceObjectDataTypeName"`
+
+	// 源字段名称
+	SourceObjectValue *string `json:"SourceObjectValue,omitnil,omitempty" name:"SourceObjectValue"`
+
+	// 检测范围，当Type=1(系统模板)时必填。 1.全表 2.条件扫描
+	ConditionType *uint64 `json:"ConditionType,omitnil,omitempty" name:"ConditionType"`
+
+	// 条件扫描WHERE条件表达式，ConditionType=2(条件扫描)时必填
+	ConditionExpression *string `json:"ConditionExpression,omitnil,omitempty" name:"ConditionExpression"`
+
+	// 自定义SQL，Type=3（自定义SQL）时必填
+	CustomSql *string `json:"CustomSql,omitnil,omitempty" name:"CustomSql"`
+
+	// 规则描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 目标库Id
+	TargetDatabaseId *string `json:"TargetDatabaseId,omitnil,omitempty" name:"TargetDatabaseId"`
+
+	// 目标表Id
+	TargetTableId *string `json:"TargetTableId,omitnil,omitempty" name:"TargetTableId"`
+
+	// 目标过滤条件表达式
+	TargetConditionExpr *string `json:"TargetConditionExpr,omitnil,omitempty" name:"TargetConditionExpr"`
+
+	// 源字段与目标字段关联条件on表达式
+	RelConditionExpr *string `json:"RelConditionExpr,omitnil,omitempty" name:"RelConditionExpr"`
+
+	// 自定义模版sql表达式字段替换参数，Type=2时必填
+	FieldConfig *QualityRuleFieldConfig `json:"FieldConfig,omitnil,omitempty" name:"FieldConfig"`
+
+	// 目标字段名称  CITY
+	TargetObjectValue *string `json:"TargetObjectValue,omitnil,omitempty" name:"TargetObjectValue"`
+
+	// 该规则支持的执行引擎列表，Type=3（自定义SQL）时必填，可选值如下：1 - MYSQL2 - HIVE4 - SPARK8 - LIVY16 - DLC32 - GBASE64 - TCHouse-P128 - DORIS256 - TCHouse-D512 - EMR_STARROCKS1024 - TCHouse-X
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitnil,omitempty" name:"SourceEngineTypes"`
+
+	// 目标库名
+	TargetDatabaseName *string `json:"TargetDatabaseName,omitnil,omitempty" name:"TargetDatabaseName"`
+
+	// 目标模式名
+	TargetSchemaName *string `json:"TargetSchemaName,omitnil,omitempty" name:"TargetSchemaName"`
+
+	// 目标表名
+	TargetTableName *string `json:"TargetTableName,omitnil,omitempty" name:"TargetTableName"`
+
+	// 数据目录名称，主要用于dlc数据源
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 目标数据目录名称，主要用于dlc数据源
+	TargetCatalogName *string `json:"TargetCatalogName,omitnil,omitempty" name:"TargetCatalogName"`
+}
+
+type ModifyQualityRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 报警触发条件
+	CompareRule *QualityCompareRule `json:"CompareRule,omitnil,omitempty" name:"CompareRule"`
+
+	// 报警触发级别 1.低, 2.中, 3.高
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
+
+	// 数据表ID
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 规则模板ID，当Type≠3（自定义SQL）时必填
+	RuleTemplateId *uint64 `json:"RuleTemplateId,omitnil,omitempty" name:"RuleTemplateId"`
+
+	// 规则所属质量维度，Type=3（自定义SQL）时必填（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+	QualityDim *uint64 `json:"QualityDim,omitnil,omitempty" name:"QualityDim"`
+
+	// 规则组ID
+	RuleGroupId *uint64 `json:"RuleGroupId,omitnil,omitempty" name:"RuleGroupId"`
+
+	// 源字段详细类型，int、string
+	SourceObjectDataTypeName *string `json:"SourceObjectDataTypeName,omitnil,omitempty" name:"SourceObjectDataTypeName"`
+
+	// 源字段名称
+	SourceObjectValue *string `json:"SourceObjectValue,omitnil,omitempty" name:"SourceObjectValue"`
+
+	// 检测范围，当Type=1(系统模板)时必填。 1.全表 2.条件扫描
+	ConditionType *uint64 `json:"ConditionType,omitnil,omitempty" name:"ConditionType"`
+
+	// 条件扫描WHERE条件表达式，ConditionType=2(条件扫描)时必填
+	ConditionExpression *string `json:"ConditionExpression,omitnil,omitempty" name:"ConditionExpression"`
+
+	// 自定义SQL，Type=3（自定义SQL）时必填
+	CustomSql *string `json:"CustomSql,omitnil,omitempty" name:"CustomSql"`
+
+	// 规则描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 目标库Id
+	TargetDatabaseId *string `json:"TargetDatabaseId,omitnil,omitempty" name:"TargetDatabaseId"`
+
+	// 目标表Id
+	TargetTableId *string `json:"TargetTableId,omitnil,omitempty" name:"TargetTableId"`
+
+	// 目标过滤条件表达式
+	TargetConditionExpr *string `json:"TargetConditionExpr,omitnil,omitempty" name:"TargetConditionExpr"`
+
+	// 源字段与目标字段关联条件on表达式
+	RelConditionExpr *string `json:"RelConditionExpr,omitnil,omitempty" name:"RelConditionExpr"`
+
+	// 自定义模版sql表达式字段替换参数，Type=2时必填
+	FieldConfig *QualityRuleFieldConfig `json:"FieldConfig,omitnil,omitempty" name:"FieldConfig"`
+
+	// 目标字段名称  CITY
+	TargetObjectValue *string `json:"TargetObjectValue,omitnil,omitempty" name:"TargetObjectValue"`
+
+	// 该规则支持的执行引擎列表，Type=3（自定义SQL）时必填，可选值如下：1 - MYSQL2 - HIVE4 - SPARK8 - LIVY16 - DLC32 - GBASE64 - TCHouse-P128 - DORIS256 - TCHouse-D512 - EMR_STARROCKS1024 - TCHouse-X
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitnil,omitempty" name:"SourceEngineTypes"`
+
+	// 目标库名
+	TargetDatabaseName *string `json:"TargetDatabaseName,omitnil,omitempty" name:"TargetDatabaseName"`
+
+	// 目标模式名
+	TargetSchemaName *string `json:"TargetSchemaName,omitnil,omitempty" name:"TargetSchemaName"`
+
+	// 目标表名
+	TargetTableName *string `json:"TargetTableName,omitnil,omitempty" name:"TargetTableName"`
+
+	// 数据目录名称，主要用于dlc数据源
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 目标数据目录名称，主要用于dlc数据源
+	TargetCatalogName *string `json:"TargetCatalogName,omitnil,omitempty" name:"TargetCatalogName"`
+}
+
+func (r *ModifyQualityRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyQualityRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "RuleId")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "CompareRule")
+	delete(f, "AlarmLevel")
+	delete(f, "TableId")
+	delete(f, "RuleTemplateId")
+	delete(f, "QualityDim")
+	delete(f, "RuleGroupId")
+	delete(f, "SourceObjectDataTypeName")
+	delete(f, "SourceObjectValue")
+	delete(f, "ConditionType")
+	delete(f, "ConditionExpression")
+	delete(f, "CustomSql")
+	delete(f, "Description")
+	delete(f, "TargetDatabaseId")
+	delete(f, "TargetTableId")
+	delete(f, "TargetConditionExpr")
+	delete(f, "RelConditionExpr")
+	delete(f, "FieldConfig")
+	delete(f, "TargetObjectValue")
+	delete(f, "SourceEngineTypes")
+	delete(f, "TargetDatabaseName")
+	delete(f, "TargetSchemaName")
+	delete(f, "TargetTableName")
+	delete(f, "CatalogName")
+	delete(f, "TargetCatalogName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQualityRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyQualityRuleResponseParams struct {
+	// 是否更新成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyQualityRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyQualityRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyQualityRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyQualityRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MonitorWhiteTask struct {
@@ -10715,6 +15745,14 @@ type OpsWorkflows struct {
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 }
 
+type OrderField struct {
+	// 排序字段名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 排序方向：ASC|DESC
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
 type OutTaskParameter struct {
 	// 参数名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11019,6 +16057,1064 @@ type ProjectUsersBrief struct {
 	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
 }
 
+type QualityColumnValueConfig struct {
+	// 字段值key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldKey *string `json:"FieldKey,omitnil,omitempty" name:"FieldKey"`
+
+	// 字段值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldValue *string `json:"FieldValue,omitnil,omitempty" name:"FieldValue"`
+
+	// 字段值类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldDataType *string `json:"FieldDataType,omitnil,omitempty" name:"FieldDataType"`
+}
+
+type QualityCompareRule struct {
+	// 比较条件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*QualityCompareRuleItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 周期性模板默认周期，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleStep *uint64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
+
+	// o 表示 或，a 表示 且，数字表示items下标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComputeExpression *string `json:"ComputeExpression,omitnil,omitempty" name:"ComputeExpression"`
+}
+
+type QualityCompareRuleItem struct {
+	// 比较类型 1.固定值  2.波动值  3.数值范围比较  4.枚举范围比较  5.不用比较
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareType *uint64 `json:"CompareType,omitnil,omitempty" name:"CompareType"`
+
+	// 比较操作类型
+	// <  <=  ==  =>  > !=
+	// IRLCRO:在区间内(左闭右开)
+	// IRLORC:在区间内(左开右闭)
+	// IRLCRC:在区间内(左闭右闭)
+	// IRLORO:在区间内(左开右开)
+	// NRLCRO:不在区间内(左闭右开)
+	// NRLORC:不在区间内(左开右闭)
+	// NRLCRC:不在区间内(左闭右闭)
+	// NRLORO:不在区间内(左开右开)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 质量统计值类型 1.绝对值  2.上升 3. 下降  4._C包含   5. N_C不包含
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueComputeType *uint64 `json:"ValueComputeType,omitnil,omitempty" name:"ValueComputeType"`
+
+	// 比较阈值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueList []*QualityThresholdValue `json:"ValueList,omitnil,omitempty" name:"ValueList"`
+}
+
+type QualityFieldConfig struct {
+	// 字段key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldKey *string `json:"FieldKey,omitnil,omitempty" name:"FieldKey"`
+
+	// 字段值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldValue *string `json:"FieldValue,omitnil,omitempty" name:"FieldValue"`
+
+	// 字段值类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldDataType *string `json:"FieldDataType,omitnil,omitempty" name:"FieldDataType"`
+
+	// 字段值变量信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueConfig *QualityColumnValueConfig `json:"ValueConfig,omitnil,omitempty" name:"ValueConfig"`
+}
+
+type QualityProdSchedulerTask struct {
+	// 生产调度任务工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 生产调度任务Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 生产调度任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 生产调度任务周期类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleType *int64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 生产任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 负责人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InChargeIdList []*string `json:"InChargeIdList,omitnil,omitempty" name:"InChargeIdList"`
+
+	// 负责人name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InChargeNameList []*string `json:"InChargeNameList,omitnil,omitempty" name:"InChargeNameList"`
+}
+
+type QualityRule struct {
+	// 规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupId *uint64 `json:"RuleGroupId,omitnil,omitempty" name:"RuleGroupId"`
+
+	// 数据表Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 规则模板Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateId *uint64 `json:"RuleTemplateId,omitnil,omitempty" name:"RuleTemplateId"`
+
+	// 规则模板概述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateContent *string `json:"RuleTemplateContent,omitnil,omitempty" name:"RuleTemplateContent"`
+
+	// 规则所属质量维度 1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityDim *uint64 `json:"QualityDim,omitnil,omitempty" name:"QualityDim"`
+
+	// 规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceObjectType *uint64 `json:"SourceObjectType,omitnil,omitempty" name:"SourceObjectType"`
+
+	// 规则适用的源数据对象类型（1：数值，2：字符串）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceObjectDataType *uint64 `json:"SourceObjectDataType,omitnil,omitempty" name:"SourceObjectDataType"`
+
+	// 源字段详细类型，INT、STRING
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceObjectDataTypeName *string `json:"SourceObjectDataTypeName,omitnil,omitempty" name:"SourceObjectDataTypeName"`
+
+	// 源字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceObjectValue *string `json:"SourceObjectValue,omitnil,omitempty" name:"SourceObjectValue"`
+
+	// 检测范围 1.全表, 2.条件扫描
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConditionType *uint64 `json:"ConditionType,omitnil,omitempty" name:"ConditionType"`
+
+	// 条件扫描WHERE条件表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConditionExpression *string `json:"ConditionExpression,omitnil,omitempty" name:"ConditionExpression"`
+
+	// 自定义SQL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomSql *string `json:"CustomSql,omitnil,omitempty" name:"CustomSql"`
+
+	// 报警触发条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareRule *QualityCompareRule `json:"CompareRule,omitnil,omitempty" name:"CompareRule"`
+
+	// 报警触发级别 1.低, 2.中, 3.高
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
+
+	// 规则描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 规则配置人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 目标库Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetDatabaseId *string `json:"TargetDatabaseId,omitnil,omitempty" name:"TargetDatabaseId"`
+
+	// 目标库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetDatabaseName *string `json:"TargetDatabaseName,omitnil,omitempty" name:"TargetDatabaseName"`
+
+	// 目标表Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetTableId *string `json:"TargetTableId,omitnil,omitempty" name:"TargetTableId"`
+
+	// 目标表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetTableName *string `json:"TargetTableName,omitnil,omitempty" name:"TargetTableName"`
+
+	// 目标字段过滤条件表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetConditionExpr *string `json:"TargetConditionExpr,omitnil,omitempty" name:"TargetConditionExpr"`
+
+	// 源字段与目标字段关联条件on表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelConditionExpr *string `json:"RelConditionExpr,omitnil,omitempty" name:"RelConditionExpr"`
+
+	// 自定义模版sql表达式参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldConfig *QualityRuleFieldConfig `json:"FieldConfig,omitnil,omitempty" name:"FieldConfig"`
+
+	// 是否关联多表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiSourceFlag *bool `json:"MultiSourceFlag,omitnil,omitempty" name:"MultiSourceFlag"`
+
+	// 是否where参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WhereFlag *bool `json:"WhereFlag,omitnil,omitempty" name:"WhereFlag"`
+
+	// 模版原始SQL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateSql *string `json:"TemplateSql,omitnil,omitempty" name:"TemplateSql"`
+
+	// 模版子维度：0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubQualityDim *uint64 `json:"SubQualityDim,omitnil,omitempty" name:"SubQualityDim"`
+
+	// 规则适用的目标数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObjectType *uint64 `json:"TargetObjectType,omitnil,omitempty" name:"TargetObjectType"`
+
+	// 规则适用的目标数据对象类型（1：数值，2：字符串）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObjectDataType *uint64 `json:"TargetObjectDataType,omitnil,omitempty" name:"TargetObjectDataType"`
+
+	// 目标字段详细类型，INT、STRING
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObjectDataTypeName *string `json:"TargetObjectDataTypeName,omitnil,omitempty" name:"TargetObjectDataTypeName"`
+
+	// 目标字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObjectValue *string `json:"TargetObjectValue,omitnil,omitempty" name:"TargetObjectValue"`
+
+	// 源端对应的引擎类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitnil,omitempty" name:"SourceEngineTypes"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 表负责人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableOwnerName *string `json:"TableOwnerName,omitnil,omitempty" name:"TableOwnerName"`
+
+	// 执行策略信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecStrategy *QualityRuleGroupExecStrategy `json:"ExecStrategy,omitnil,omitempty" name:"ExecStrategy"`
+
+	// 订阅信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Subscription *QualityRuleGroupSubscribe `json:"Subscription,omitnil,omitempty" name:"Subscription"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 数据源 id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *uint64 `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据库 id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// 监控是否开启.0false,1true
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorStatus *int64 `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
+
+	// 触发条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerCondition *string `json:"TriggerCondition,omitnil,omitempty" name:"TriggerCondition"`
+
+	// 0或者未返回或者null：未定义，1：生产，2：开发
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DsEnvType *int64 `json:"DsEnvType,omitnil,omitempty" name:"DsEnvType"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceType *int64 `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
+
+	// 模式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 目标模式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetSchemaName *string `json:"TargetSchemaName,omitnil,omitempty" name:"TargetSchemaName"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// 数据库名称 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailMsg *string `json:"FailMsg,omitnil,omitempty" name:"FailMsg"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// 编排任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AspectTaskId *string `json:"AspectTaskId,omitnil,omitempty" name:"AspectTaskId"`
+
+	// 数据目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 目标表的数据目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetCatalogName *string `json:"TargetCatalogName,omitnil,omitempty" name:"TargetCatalogName"`
+}
+
+type QualityRuleExecResult struct {
+	// 规则执行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleExecId *uint64 `json:"RuleExecId,omitnil,omitempty" name:"RuleExecId"`
+
+	// 规则组执行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupExecId *uint64 `json:"RuleGroupExecId,omitnil,omitempty" name:"RuleGroupExecId"`
+
+	// 规则组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupId *uint64 `json:"RuleGroupId,omitnil,omitempty" name:"RuleGroupId"`
+
+	// 规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *uint64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 源字段详细类型，int string
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceObjectDataTypeName *string `json:"SourceObjectDataTypeName,omitnil,omitempty" name:"SourceObjectDataTypeName"`
+
+	// 源字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceObjectValue *string `json:"SourceObjectValue,omitnil,omitempty" name:"SourceObjectValue"`
+
+	// 条件扫描WHERE条件表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConditionExpression *string `json:"ConditionExpression,omitnil,omitempty" name:"ConditionExpression"`
+
+	// 检测结果（1:检测通过，2：触发规则，3：检测失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecResultStatus *uint64 `json:"ExecResultStatus,omitnil,omitempty" name:"ExecResultStatus"`
+
+	// 触发结果，告警发送成功, 阻断任务成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerResult *string `json:"TriggerResult,omitnil,omitempty" name:"TriggerResult"`
+
+	// 对比结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareResult *CompareQualityResult `json:"CompareResult,omitnil,omitempty" name:"CompareResult"`
+
+	// 模版名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// 质量维度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityDim *uint64 `json:"QualityDim,omitnil,omitempty" name:"QualityDim"`
+
+	// 目标表-库表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetDBTableName *string `json:"TargetDBTableName,omitnil,omitempty" name:"TargetDBTableName"`
+
+	// 目标表-字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObjectValue *string `json:"TargetObjectValue,omitnil,omitempty" name:"TargetObjectValue"`
+
+	// 目标表-字段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObjectDataType *string `json:"TargetObjectDataType,omitnil,omitempty" name:"TargetObjectDataType"`
+
+	// 自定义模版sql表达式参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldConfig *QualityRuleFieldConfig `json:"FieldConfig,omitnil,omitempty" name:"FieldConfig"`
+
+	// 源字段与目标字段关联条件on表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelConditionExpr *string `json:"RelConditionExpr,omitnil,omitempty" name:"RelConditionExpr"`
+
+	// 执行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 1/2/3:低/中/高
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
+
+	// 触发条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerCondition *string `json:"TriggerCondition,omitnil,omitempty" name:"TriggerCondition"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupName *string `json:"RuleGroupName,omitnil,omitempty" name:"RuleGroupName"`
+
+	// 数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 模式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupExist *int64 `json:"RuleGroupExist,omitnil,omitempty" name:"RuleGroupExist"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceType *int64 `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
+
+	// 数据表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupTableId *uint64 `json:"RuleGroupTableId,omitnil,omitempty" name:"RuleGroupTableId"`
+
+	// 监控方式 1.未配置, 2.关联生产调度, 3.离线周期检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorType *int64 `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 执行结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 监控任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// 编排任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AspectTaskId *string `json:"AspectTaskId,omitnil,omitempty" name:"AspectTaskId"`
+
+	// 数据目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+}
+
+type QualityRuleFieldConfig struct {
+	// where变量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WhereConfig []*QualityFieldConfig `json:"WhereConfig,omitnil,omitempty" name:"WhereConfig"`
+
+	// 库表变量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableConfig []*QualityTableConfig `json:"TableConfig,omitnil,omitempty" name:"TableConfig"`
+}
+
+type QualityRuleGroupConfig struct {
+	// 分析类型，可选值：
+	// INFERENCE-推理表
+	// TIME_SERIES-时序表
+	// SNAPSHOT-快照表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnalysisType *string `json:"AnalysisType,omitnil,omitempty" name:"AnalysisType"`
+
+	// 模型检测类型，分析类型为推理表（INFERENCE）时必填，可选值：
+	// CLAASSIFICATION-分类
+	// REGRESSION-回归
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelMonitorType *string `json:"ModelMonitorType,omitnil,omitempty" name:"ModelMonitorType"`
+
+	// 预测列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PredictColumn *string `json:"PredictColumn,omitnil,omitempty" name:"PredictColumn"`
+
+	// 预测列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PredictColumnType *string `json:"PredictColumnType,omitnil,omitempty" name:"PredictColumnType"`
+
+	// 标签列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelColumn *string `json:"LabelColumn,omitnil,omitempty" name:"LabelColumn"`
+
+	// 标签列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelColumnType *string `json:"LabelColumnType,omitnil,omitempty" name:"LabelColumnType"`
+
+	// 模型id列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelIdColumn *string `json:"ModelIdColumn,omitnil,omitempty" name:"ModelIdColumn"`
+
+	// 模型id列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelIdColumnType *string `json:"ModelIdColumnType,omitnil,omitempty" name:"ModelIdColumnType"`
+
+	// 时间戳列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimestampColumn *string `json:"TimestampColumn,omitnil,omitempty" name:"TimestampColumn"`
+
+	// 时间戳列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimestampColumnType *string `json:"TimestampColumnType,omitnil,omitempty" name:"TimestampColumnType"`
+
+	// 指标粒度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 指标粒度单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GranularityType *string `json:"GranularityType,omitnil,omitempty" name:"GranularityType"`
+
+	// 基准表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseTable *string `json:"BaseTable,omitnil,omitempty" name:"BaseTable"`
+
+	// 基准库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseDb *string `json:"BaseDb,omitnil,omitempty" name:"BaseDb"`
+
+	// 对比列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComparisonColumn *string `json:"ComparisonColumn,omitnil,omitempty" name:"ComparisonColumn"`
+
+	// 对比列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComparisonColumnType *string `json:"ComparisonColumnType,omitnil,omitempty" name:"ComparisonColumnType"`
+
+	// 保护组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectionValue *string `json:"ProtectionValue,omitnil,omitempty" name:"ProtectionValue"`
+
+	// 正类值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PositiveValue *string `json:"PositiveValue,omitnil,omitempty" name:"PositiveValue"`
+
+	// 特征列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeatureColumn *string `json:"FeatureColumn,omitnil,omitempty" name:"FeatureColumn"`
+}
+
+type QualityRuleGroupExecStrategy struct {
+	// 监控类型 2.关联生产调度, 3.离线周期检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorType *uint64 `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 执行资源组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
+
+	// 监控任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupName *string `json:"RuleGroupName,omitnil,omitempty" name:"RuleGroupName"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 监控任务的Id，编辑更新监控任务时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupId *uint64 `json:"RuleGroupId,omitnil,omitempty" name:"RuleGroupId"`
+
+	// 计算队列，数据源为HIVE、ICEBERG、DLC时必填，数据源为DLC时，该字段填写DLC数据引擎名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecQueue *string `json:"ExecQueue,omitnil,omitempty" name:"ExecQueue"`
+
+	// 执行资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
+
+	// 关联的生产调度任务列表，MonitorType=2时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*QualityProdSchedulerTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 周期开始时间，MonitorType=3时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 周期结束时间，MonitorType=3时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 调度周期类型，MonitorType=3时必填，具体可填值参考：
+	// I：按分钟调度
+	// H：按小时调度
+	// D：按天调度
+	// W：按周调度
+	// M：按月调度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 延迟调度时间，MonitorType=3时必填，主要用于调度周期为天/周/月的任务，
+	// 计量单位为分钟，比如天任务需要延迟到02:00执行，则该字段值为120，表示延迟2小时（120分钟）
+	// 对于小时/分钟任务，该字段无意义，填固定值0，否则字段校验不通过
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 间隔，MonitorType=3时必填，表示周期任务间隔时间
+	// 周/月/天任务可选：1
+	// 分钟任务可选：10，20，30
+	// 小时任务可选：1，2，3，4，6，8，12
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleStep *uint64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
+
+	// 时间指定，主要用于调度周期为周/月的任务
+	// 调度周期为周时：含义为指定周几运行，可选多个，英文逗号隔开
+	// 可填1,2...7，依次代表周日，周一...周六，例如填“1,2”，表示周日、周一执行；
+	// 
+	// 调度周期为月时，含义为指定每月的几号运行，可选多个，英文逗号隔开
+	// 可填1,2,...,31，依次代表1号，2号...31号，例如填“1,2”，表示每月的1号、2号执行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskAction *string `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
+
+	// 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecEngineType *string `json:"ExecEngineType,omitnil,omitempty" name:"ExecEngineType"`
+
+	// 执行计划
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecPlan *string `json:"ExecPlan,omitnil,omitempty" name:"ExecPlan"`
+
+	// 规则id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 触发类型，主要用于“关联生产调度”（MonitorType=2）的监控任务，可选值：
+	// CYCLE：周期调度
+	// MAKE_UP：补录
+	// RERUN：重跑
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerTypes []*string `json:"TriggerTypes,omitnil,omitempty" name:"TriggerTypes"`
+
+	// 数据源为DLC时，对应DLC资源组，根据ExecQueue中填的DLC引擎名称，选择对应引擎下的资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DlcGroupName *string `json:"DlcGroupName,omitnil,omitempty" name:"DlcGroupName"`
+
+	// schema名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 任务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 时区，默认为UTC+8
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 任务监控参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupConfig *QualityRuleGroupConfig `json:"GroupConfig,omitnil,omitempty" name:"GroupConfig"`
+
+	// 引擎参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineParam *string `json:"EngineParam,omitnil,omitempty" name:"EngineParam"`
+
+	// 数据目录名称，不填默认为DataLakeCatalog
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+}
+
+type QualityRuleGroupResult struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 监控表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupTableId *uint64 `json:"RuleGroupTableId,omitnil,omitempty" name:"RuleGroupTableId"`
+
+	// 数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 模式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 监控类型：1.未配置, 2.关联生产调度, 3.离线周期检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorType *int64 `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 执行描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecDetail *string `json:"ExecDetail,omitnil,omitempty" name:"ExecDetail"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailMsg *string `json:"FailMsg,omitnil,omitempty" name:"FailMsg"`
+
+	// 数据目录名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+}
+
+type QualityRuleGroupSubscribe struct {
+	// 规则组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupId *uint64 `json:"RuleGroupId,omitnil,omitempty" name:"RuleGroupId"`
+
+	// 订阅接收人列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Receivers []*QualitySubscribeReceiver `json:"Receivers,omitnil,omitempty" name:"Receivers"`
+
+	// 订阅方式 1.邮件email  2.短信sms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeType []*uint64 `json:"SubscribeType,omitnil,omitempty" name:"SubscribeType"`
+
+	// 群机器人配置的webhook信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebHooks []*QualitySubscribeWebHook `json:"WebHooks,omitnil,omitempty" name:"WebHooks"`
+
+	// 规则Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 发送对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmMessageRule *string `json:"AlarmMessageRule,omitnil,omitempty" name:"AlarmMessageRule"`
+}
+
+type QualityRuleGroupTableV2 struct {
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 规则组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupId *uint64 `json:"RuleGroupId,omitnil,omitempty" name:"RuleGroupId"`
+
+	// 表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 模式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 表负责人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableOwnerUserId *uint64 `json:"TableOwnerUserId,omitnil,omitempty" name:"TableOwnerUserId"`
+
+	// 表负责人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableOwnerName *string `json:"TableOwnerName,omitnil,omitempty" name:"TableOwnerName"`
+
+	// 数据源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceType *int64 `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
+
+	// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 监控数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupCount *uint64 `json:"RuleGroupCount,omitnil,omitempty" name:"RuleGroupCount"`
+
+	// 规则数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleCount *int64 `json:"RuleCount,omitnil,omitempty" name:"RuleCount"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 生效监控数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableRuleGroupCount *uint64 `json:"EnableRuleGroupCount,omitnil,omitempty" name:"EnableRuleGroupCount"`
+
+	// 数据目录名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+}
+
+type QualityRuleGroupsTableVO struct {
+	// 记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 监控对象列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*QualityRuleGroupTableV2 `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type QualityRulePage struct {
+	// 记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*QualityRule `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type QualityRuleTemplate struct {
+	// 规则模版ID
+	RuleTemplateId *uint64 `json:"RuleTemplateId,omitnil,omitempty" name:"RuleTemplateId"`
+
+	// 规则模版名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则模版描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 模版类型（1：系统模版，2：自定义）
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+	SourceObjectType *uint64 `json:"SourceObjectType,omitnil,omitempty" name:"SourceObjectType"`
+
+	// 规则适用的源数据对象类型（1：数值，2：字符串）
+	SourceObjectDataType *uint64 `json:"SourceObjectDataType,omitnil,omitempty" name:"SourceObjectDataType"`
+
+	// 规则模版源侧内容，区分引擎，JSON 结构
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
+
+	// 源数据适用类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitnil,omitempty" name:"SourceEngineTypes"`
+
+	// 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityDim *uint64 `json:"QualityDim,omitnil,omitempty" name:"QualityDim"`
+
+	// 规则支持的比较方式类型（1：固定值比较，大于、小于，大于等于等 2：波动值比较，绝对值、上升、下降）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareType *uint64 `json:"CompareType,omitnil,omitempty" name:"CompareType"`
+
+	// 引用次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CitationCount *uint64 `json:"CitationCount,omitnil,omitempty" name:"CitationCount"`
+
+	// 创建人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *uint64 `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 创建人昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 更新时间yyyy-MM-dd HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 是否添加where参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WhereFlag *bool `json:"WhereFlag,omitnil,omitempty" name:"WhereFlag"`
+
+	// 是否关联多个库表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiSourceFlag *bool `json:"MultiSourceFlag,omitnil,omitempty" name:"MultiSourceFlag"`
+
+	// 自定义模板SQL表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlExpression *string `json:"SqlExpression,omitnil,omitempty" name:"SqlExpression"`
+
+	// 模版子维度，0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubQualityDim *uint64 `json:"SubQualityDim,omitnil,omitempty" name:"SubQualityDim"`
+
+	// sql表达式解析对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResolvedSqlExpression *QualitySqlExpression `json:"ResolvedSqlExpression,omitnil,omitempty" name:"ResolvedSqlExpression"`
+
+	// 支持的数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceTypes []*int64 `json:"DatasourceTypes,omitnil,omitempty" name:"DatasourceTypes"`
+
+	// 创建人IdStr
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserIdStr *string `json:"UserIdStr,omitnil,omitempty" name:"UserIdStr"`
+}
+
+type QualityRuleTemplatePage struct {
+	// 记录数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 模版列表
+	Items []*QualityRuleTemplate `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type QualitySqlExpression struct {
+	// sql表达式表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableExpressions []*QualitySqlExpressionTable `json:"TableExpressions,omitnil,omitempty" name:"TableExpressions"`
+
+	// sql表达式字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamExpressions []*string `json:"ParamExpressions,omitnil,omitempty" name:"ParamExpressions"`
+
+	// 新增模型检测类系统模板sql中占位符集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemTemplateExpressions []*string `json:"SystemTemplateExpressions,omitnil,omitempty" name:"SystemTemplateExpressions"`
+}
+
+type QualitySqlExpressionTable struct {
+	// sql表达式表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableExpression *string `json:"TableExpression,omitnil,omitempty" name:"TableExpression"`
+
+	// sql表达式字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnExpression []*string `json:"ColumnExpression,omitnil,omitempty" name:"ColumnExpression"`
+}
+
+type QualitySubscribeReceiver struct {
+	// 接收人Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverUserId *uint64 `json:"ReceiverUserId,omitnil,omitempty" name:"ReceiverUserId"`
+
+	// 接收人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverName *string `json:"ReceiverName,omitnil,omitempty" name:"ReceiverName"`
+
+	// 接收人Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverUserIdStr *string `json:"ReceiverUserIdStr,omitnil,omitempty" name:"ReceiverUserIdStr"`
+}
+
+type QualitySubscribeWebHook struct {
+	// 群机器人类型，当前支持飞书
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HookType *string `json:"HookType,omitnil,omitempty" name:"HookType"`
+
+	// 群机器人webhook地址，配置方式参考https://cloud.tencent.com/document/product/1254/70736
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HookAddress *string `json:"HookAddress,omitnil,omitempty" name:"HookAddress"`
+}
+
+type QualityTableConfig struct {
+	// 数据库Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 表Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 表Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableKey *string `json:"TableKey,omitnil,omitempty" name:"TableKey"`
+
+	// 字段变量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldConfig []*QualityFieldConfig `json:"FieldConfig,omitnil,omitempty" name:"FieldConfig"`
+}
+
+type QualityThresholdValue struct {
+	// 阈值类型  1.低阈值  2.高阈值   3.普通阈值  4.枚举值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueType *uint64 `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+
+	// 阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type ReconciliationStrategyInfo struct {
 	// 离线告警规则类型
 	// reconciliationFailure： 离线对账失败告警
@@ -11305,6 +17401,112 @@ func (r *RerunTaskInstancesAsyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RerunTriggerWorkflowRunAsyncRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流运行ID
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitnil,omitempty" name:"WorkflowExecutionId"`
+
+	// 运行方式：普通运行默认所有参数：1，高级运行可选任务范围和运行参数：2
+	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
+
+	// 运行类型为高级运行时填写的自定义运行参数
+	AdvancedParams []*SchedulingParameter `json:"AdvancedParams,omitnil,omitempty" name:"AdvancedParams"`
+
+	// 高级运行模式下本次需要运行指定的任务ID集合
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 指定调度资源组,为空时默认使用配置的原调度资源组
+	SchedulingResourceGroup *string `json:"SchedulingResourceGroup,omitnil,omitempty" name:"SchedulingResourceGroup"`
+
+	// 指定集成资源组,为空时默认使用配置的原集成资源组
+	IntegrationResourceGroup *string `json:"IntegrationResourceGroup,omitnil,omitempty" name:"IntegrationResourceGroup"`
+}
+
+type RerunTriggerWorkflowRunAsyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流运行ID
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitnil,omitempty" name:"WorkflowExecutionId"`
+
+	// 运行方式：普通运行默认所有参数：1，高级运行可选任务范围和运行参数：2
+	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
+
+	// 运行类型为高级运行时填写的自定义运行参数
+	AdvancedParams []*SchedulingParameter `json:"AdvancedParams,omitnil,omitempty" name:"AdvancedParams"`
+
+	// 高级运行模式下本次需要运行指定的任务ID集合
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 指定调度资源组,为空时默认使用配置的原调度资源组
+	SchedulingResourceGroup *string `json:"SchedulingResourceGroup,omitnil,omitempty" name:"SchedulingResourceGroup"`
+
+	// 指定集成资源组,为空时默认使用配置的原集成资源组
+	IntegrationResourceGroup *string `json:"IntegrationResourceGroup,omitnil,omitempty" name:"IntegrationResourceGroup"`
+}
+
+func (r *RerunTriggerWorkflowRunAsyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RerunTriggerWorkflowRunAsyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	delete(f, "WorkflowExecutionId")
+	delete(f, "ExecuteType")
+	delete(f, "AdvancedParams")
+	delete(f, "TaskIds")
+	delete(f, "SchedulingResourceGroup")
+	delete(f, "IntegrationResourceGroup")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RerunTriggerWorkflowRunAsyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RerunTriggerWorkflowRunAsyncResponseParams struct {
+	// 操作结果
+	Data *OpsAsyncResponse `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RerunTriggerWorkflowRunAsyncResponse struct {
+	*tchttp.BaseResponse
+	Response *RerunTriggerWorkflowRunAsyncResponseParams `json:"Response"`
+}
+
+func (r *RerunTriggerWorkflowRunAsyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RerunTriggerWorkflowRunAsyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResourceFile struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -11408,6 +17610,29 @@ type ResourceFolder struct {
 
 	// 文件夹名称
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+}
+
+type ResourceFolderDetail struct {
+	// 资源文件夹ID
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 创建人ID
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 创建人名称
+	CreateUserName *string `json:"CreateUserName,omitnil,omitempty" name:"CreateUserName"`
+
+	// 文件夹路径
+	FolderPath *string `json:"FolderPath,omitnil,omitempty" name:"FolderPath"`
+
+	// 文件夹名称
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// 父文件夹绝对路径,不包含文件名夹名
+	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type ResourceFolderPage struct {
@@ -11535,6 +17760,81 @@ type ResourceType struct {
 	// - ds_m(普及规格)
 	// - ds_l(专业规格)
 	DataService *ResourceGroupSpecification `json:"DataService,omitnil,omitempty" name:"DataService"`
+}
+
+// Predefined struct for user
+type RevokeDataSourceAuthorizationRequestParams struct {
+	// 数据源id
+	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// 回收的项目id，与UserUin参数只能填一个
+	RevokeProjectId *string `json:"RevokeProjectId,omitnil,omitempty" name:"RevokeProjectId"`
+
+	// 回收项目下用户列表，格式为：项目id_用户id
+	// 与RevokeProjectId参数只能填一个
+	// 
+	RevokeUser *string `json:"RevokeUser,omitnil,omitempty" name:"RevokeUser"`
+}
+
+type RevokeDataSourceAuthorizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源id
+	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// 回收的项目id，与UserUin参数只能填一个
+	RevokeProjectId *string `json:"RevokeProjectId,omitnil,omitempty" name:"RevokeProjectId"`
+
+	// 回收项目下用户列表，格式为：项目id_用户id
+	// 与RevokeProjectId参数只能填一个
+	// 
+	RevokeUser *string `json:"RevokeUser,omitnil,omitempty" name:"RevokeUser"`
+}
+
+func (r *RevokeDataSourceAuthorizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RevokeDataSourceAuthorizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataSourceId")
+	delete(f, "RevokeProjectId")
+	delete(f, "RevokeUser")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RevokeDataSourceAuthorizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RevokeDataSourceAuthorizationResponseParams struct {
+	// 回收数据源响应体
+	Data *DataSourceStatus `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RevokeDataSourceAuthorizationResponse struct {
+	*tchttp.BaseResponse
+	Response *RevokeDataSourceAuthorizationResponseParams `json:"Response"`
+}
+
+func (r *RevokeDataSourceAuthorizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RevokeDataSourceAuthorizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -11755,6 +18055,20 @@ type SQLStopResult struct {
 	// 是否成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type SchedulingParameter struct {
+	// 参数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamKey *string `json:"ParamKey,omitnil,omitempty" name:"ParamKey"`
+
+	// 参数值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamValue *string `json:"ParamValue,omitnil,omitempty" name:"ParamValue"`
+
+	// 拓展参数json
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtProperties *string `json:"ExtProperties,omitnil,omitempty" name:"ExtProperties"`
 }
 
 type SchemaInfo struct {
@@ -12131,6 +18445,78 @@ type SubmitTaskResult struct {
 	// 提交状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
+type SubmitTriggerTaskRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 版本备注
+	VersionRemark *string `json:"VersionRemark,omitnil,omitempty" name:"VersionRemark"`
+}
+
+type SubmitTriggerTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 版本备注
+	VersionRemark *string `json:"VersionRemark,omitnil,omitempty" name:"VersionRemark"`
+}
+
+func (r *SubmitTriggerTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitTriggerTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "VersionRemark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTriggerTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitTriggerTaskResponseParams struct {
+	// 成功或者失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *SubmitTaskResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitTriggerTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitTriggerTaskResponseParams `json:"Response"`
+}
+
+func (r *SubmitTriggerTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitTriggerTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SystemRole struct {
@@ -12569,6 +18955,93 @@ type TaskExtParameter struct {
 	// 参数值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamValue *string `json:"ParamValue,omitnil,omitempty" name:"ParamValue"`
+}
+
+type TaskFolder struct {
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+
+	// 文件夹绝对路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFolderPath *string `json:"TaskFolderPath,omitnil,omitempty" name:"TaskFolderPath"`
+
+	// 创建人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+}
+
+type TaskFolderDetail struct {
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+
+	// 文件夹绝对路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFolderPath *string `json:"TaskFolderPath,omitnil,omitempty" name:"TaskFolderPath"`
+
+	// 创建人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 父文件夹绝对路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentTaskFolderPath *string `json:"ParentTaskFolderPath,omitnil,omitempty" name:"ParentTaskFolderPath"`
+
+	// 文件夹名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFolderName *string `json:"TaskFolderName,omitnil,omitempty" name:"TaskFolderName"`
+
+	// 工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务文件夹类型
+	// 
+	// | 任务文件夹类型取值 | 任务文件夹类型界面对应名称 |
+	// | ---------------- | ------------------------ |
+	// | ETL              | 集成任务                 |
+	// | EMR              | EMR                      |
+	// | DLC              | DLC                      |
+	// | SETATS           | SETATS                   |
+	// | TDSQL            | TDSQL                    |
+	// | TCHOUSE          | TCHOUSE                  |
+	// | GENERAL          | 通用                     |
+	// | TI_ONE           | TI-ONE机器学习           |
+	// | ACROSS_WORKFLOWS | 跨工作流                 |
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFolderType *string `json:"TaskFolderType,omitnil,omitempty" name:"TaskFolderType"`
+}
+
+type TaskFolderPage struct {
+	// 数据页数，大于等于1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数，最小为10条，最大为200 条
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 文件夹总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+
+	// 文件夹列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*TaskFolder `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 type TaskInstance struct {
@@ -13298,6 +19771,1009 @@ type TrendData struct {
 	Value *uint64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type TriggerDependencyConfigPage struct {
+	// 满足查询条件的数据总条数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 满足查询条件的数据总页数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+
+	// 当前请求的数据页数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 当前请求的数据页条数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*TriggerTaskDependDto `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type TriggerTask struct {
+	// 任务基本属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerTaskBaseAttribute *TriggerTaskBaseAttribute `json:"TriggerTaskBaseAttribute,omitnil,omitempty" name:"TriggerTaskBaseAttribute"`
+
+	// 任务配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerTaskConfiguration *TriggerTaskConfiguration `json:"TriggerTaskConfiguration,omitnil,omitempty" name:"TriggerTaskConfiguration"`
+
+	// 任务调度配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerTaskSchedulerConfiguration *TriggerTaskSchedulerConfiguration `json:"TriggerTaskSchedulerConfiguration,omitnil,omitempty" name:"TriggerTaskSchedulerConfiguration"`
+}
+
+type TriggerTaskBaseAttribute struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务类型ID：
+	// 
+	// - 26:OfflineSynchronization
+	// - 30:Python
+	// - 32:DLC SQL
+	// - 35:Shell
+	// - 38:Shell Form Mode
+	// - 46:DLC Spark
+	// - 50:DLC PySpark
+	// - 130:Branch Node
+	// - 131:Merged Node
+	// - 132:Notebook
+	// - 133:SSH
+	// - 137:For-each
+	// - 139:DLC Spark Streaming
+	// - 140:Run Workflow
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeId *uint64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 最近一次保存版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskLatestVersionNo *string `json:"TaskLatestVersionNo,omitnil,omitempty" name:"TaskLatestVersionNo"`
+
+	// 最近一次提交的版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskLatestSubmitVersionNo *string `json:"TaskLatestSubmitVersionNo,omitnil,omitempty" name:"TaskLatestSubmitVersionNo"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 任务状态：
+	// * N: 新建
+	// * Y: 调度中
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务最新提交状态，任务是否已经提交：true/false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Submit *bool `json:"Submit,omitnil,omitempty" name:"Submit"`
+
+	// 任务创建时间，示例：2022-02-12 11:13:41
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 最后更新时间，示例：2025-08-13 16:34:06
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
+
+	// 最后更新人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateUserName *string `json:"LastUpdateUserName,omitnil,omitempty" name:"LastUpdateUserName"`
+
+	// 最后运维时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastOpsTime *string `json:"LastOpsTime,omitnil,omitempty" name:"LastOpsTime"`
+
+	// 最后运维人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastOpsUserName *string `json:"LastOpsUserName,omitnil,omitempty" name:"LastOpsUserName"`
+
+	// 任务负责人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 任务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
+
+	// 最近一次更新用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateUserUin *string `json:"UpdateUserUin,omitnil,omitempty" name:"UpdateUserUin"`
+
+	// 创建用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 任务文件夹路径
+	// 
+	// 注意：
+	// 
+	// 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+	// 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskFolderPath *string `json:"TaskFolderPath,omitnil,omitempty" name:"TaskFolderPath"`
+}
+
+type TriggerTaskBrief struct {
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 工作流id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 责任人user UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserUinInCharge *string `json:"UserUinInCharge,omitnil,omitempty" name:"UserUinInCharge"`
+
+	// 责任人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserNameInCharge *string `json:"UserNameInCharge,omitnil,omitempty" name:"UserNameInCharge"`
+
+	// 文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 文件夹名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// 任务类型ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeId *uint64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionState *string `json:"ExecutionState,omitnil,omitempty" name:"ExecutionState"`
+
+	// 运行开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
+}
+
+type TriggerTaskConfiguration struct {
+	// 代码内容的Base64编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeContent *string `json:"CodeContent,omitnil,omitempty" name:"CodeContent"`
+
+	// 任务扩展属性配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskExtConfigurationList []*TaskExtParameter `json:"TaskExtConfigurationList,omitnil,omitempty" name:"TaskExtConfigurationList"`
+
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataCluster *string `json:"DataCluster,omitnil,omitempty" name:"DataCluster"`
+
+	// 指定的运行节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
+
+	// 资源池队列名称，需要通过 DescribeProjectClusterQueues 获取
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	YarnQueue *string `json:"YarnQueue,omitnil,omitempty" name:"YarnQueue"`
+
+	// 来源数据源ID,  需要通过 DescribeDataSourceWithoutInfo 获取
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceServiceId *string `json:"SourceServiceId,omitnil,omitempty" name:"SourceServiceId"`
+
+	// 来源数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceServiceType *string `json:"SourceServiceType,omitnil,omitempty" name:"SourceServiceType"`
+
+	// 来源数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceServiceName *string `json:"SourceServiceName,omitnil,omitempty" name:"SourceServiceName"`
+
+	// 目标数据源ID, 需要通过 DescribeDataSourceWithoutInfo 获取
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetServiceId *string `json:"TargetServiceId,omitnil,omitempty" name:"TargetServiceId"`
+
+	// 目标数据源类型,  需要通过 DescribeDataSourceWithoutInfo 获取
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetServiceType *string `json:"TargetServiceType,omitnil,omitempty" name:"TargetServiceType"`
+
+	// 目标数据源名称, 需要通过 DescribeDataSourceWithoutInfo 获取
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetServiceName *string `json:"TargetServiceName,omitnil,omitempty" name:"TargetServiceName"`
+
+	// 资源组ID： 需要通过 DescribeNormalSchedulerExecutorGroups 获取 ExecutorGroupId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
+
+	// 资源组名称： 需要通过 DescribeNormalSchedulerExecutorGroups 获取 ExecutorGroupName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 调度参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskSchedulingParameterList []*TaskSchedulingParameter `json:"TaskSchedulingParameterList,omitnil,omitempty" name:"TaskSchedulingParameterList"`
+
+	// Bundle使用的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// Bundle信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+}
+
+type TriggerTaskDAGBrief struct {
+	// 任务信息合集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerTasks []*TriggerTaskBrief `json:"TriggerTasks,omitnil,omitempty" name:"TriggerTasks"`
+
+	// 任务连接信息合集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerTaskLinks []*TriggerTaskLinkBrief `json:"TriggerTaskLinks,omitnil,omitempty" name:"TriggerTaskLinks"`
+}
+
+type TriggerTaskDependDto struct {
+	// 任务Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 工作流id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务状态:
+	// - Y: 运行
+	// - N: 新建
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务类型id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeId *uint64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 任务类型描述
+	//  - 20 :  通用数据同步
+	//  - 25 :  ETLTaskType
+	//  - 26 :  ETLTaskType
+	//  - 30 :  python
+	//  - 31 :  pyspark
+	//  - 34 :  hivesql
+	//  - 35 :  shell
+	//  - 36 :  sparksql
+	//  - 21 :  jdbcsql
+	//  - 32 :  dlc
+	//  - 33 :  ImpalaTaskType
+	//  - 40 :  CDWTaskType
+	//  - 41 :  kettle
+	//  - 42 :  TCHouse-X
+	//  - 43 :  TCHouse-X SQL
+	//  - 46 :  dlcsparkTaskType
+	//  - 47 :  TiOneMachineLearningTaskType
+	//  - 48 :  Trino
+	//  - 50 :  DLCPyspark
+	//  - 23 :  TencentDistributedSQL
+	//  - 39 :  spark
+	//  - 92 :  MRTaskType
+	//  - 38 :  ShellScript
+	//  - 70 :  HiveSQLScrip
+	//  - 130 :  分支
+	//  - 131 :  归并
+	//  - 132 :  Notebook探索
+	//  - 133 :  SSH节点
+	//  - 134 :  StarRocks
+	//  - 137 :  For-each
+	//  - 10000 :  自定义业务通用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeDesc *string `json:"TaskTypeDesc,omitnil,omitempty" name:"TaskTypeDesc"`
+
+	// 负责人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+}
+
+type TriggerTaskLinkBrief struct {
+	// 连接ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LinkId *string `json:"LinkId,omitnil,omitempty" name:"LinkId"`
+
+	// 所属工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 所属工作流版本ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowVersionId *string `json:"WorkflowVersionId,omitnil,omitempty" name:"WorkflowVersionId"`
+
+	// 上游任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpstreamTaskId *string `json:"UpstreamTaskId,omitnil,omitempty" name:"UpstreamTaskId"`
+
+	// 下游任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownstreamTaskId *string `json:"DownstreamTaskId,omitnil,omitempty" name:"DownstreamTaskId"`
+}
+
+type TriggerTaskRunBrief struct {
+	// 任务运行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+
+	// 执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIP、运行中:RUNNING
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionState *string `json:"ExecutionState,omitnil,omitempty" name:"ExecutionState"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流运行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitnil,omitempty" name:"WorkflowExecutionId"`
+
+	// 任务 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskVersionId *string `json:"TaskVersionId,omitnil,omitempty" name:"TaskVersionId"`
+
+	// 触发类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// 等待时长，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaitTime *string `json:"WaitTime,omitnil,omitempty" name:"WaitTime"`
+
+	// 所属资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
+
+	// 错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 运行账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
+
+	// 创建人 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreaterUin *string `json:"CreaterUin,omitnil,omitempty" name:"CreaterUin"`
+
+	// 执行平台执行 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 创建时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 依赖任务完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DependenceFinishedTime *string `json:"DependenceFinishedTime,omitnil,omitempty" name:"DependenceFinishedTime"`
+
+	// 任务下发执行平台时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueStartTime *string `json:"QueueStartTime,omitnil,omitempty" name:"QueueStartTime"`
+
+	// 开始等待资源时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PendingStartTime *string `json:"PendingStartTime,omitnil,omitempty" name:"PendingStartTime"`
+
+	// 运行开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
+
+	// 运行结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
+
+	// 排队时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueCostTime *string `json:"QueueCostTime,omitnil,omitempty" name:"QueueCostTime"`
+
+	// 运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionTime *string `json:"ExecutionTime,omitnil,omitempty" name:"ExecutionTime"`
+
+	// 总花费时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllCostTime *string `json:"AllCostTime,omitnil,omitempty" name:"AllCostTime"`
+
+	// 时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 依赖上游任务 ID 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DependOnList []*string `json:"DependOnList,omitnil,omitempty" name:"DependOnList"`
+
+	// 运行参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunParams *string `json:"RunParams,omitnil,omitempty" name:"RunParams"`
+
+	// 任务扩展信息，包含脚本路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeExtensions *string `json:"TaskTypeExtensions,omitnil,omitempty" name:"TaskTypeExtensions"`
+
+	// 重试次数，为 0 则表示首次运行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryTimes *uint64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
+
+	// 左侧坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LeftCoordinate *float64 `json:"LeftCoordinate,omitnil,omitempty" name:"LeftCoordinate"`
+
+	// 顶部坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopCoordinate *float64 `json:"TopCoordinate,omitnil,omitempty" name:"TopCoordinate"`
+
+	// 资源组 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 错误码描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCodeStr *string `json:"ErrorCodeStr,omitnil,omitempty" name:"ErrorCodeStr"`
+
+	// 创建人 UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUin *string `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
+
+	// 下发执行平台时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IssueTime *string `json:"IssueTime,omitnil,omitempty" name:"IssueTime"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 运行人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUserName *string `json:"ExecuteUserName,omitnil,omitempty" name:"ExecuteUserName"`
+
+	// 重跑次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RerunTimes *uint64 `json:"RerunTimes,omitnil,omitempty" name:"RerunTimes"`
+
+	// 是否是最新一次运行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLatestExecution *bool `json:"IsLatestExecution,omitnil,omitempty" name:"IsLatestExecution"`
+
+	// 任务运行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskExecutionState *string `json:"TaskExecutionState,omitnil,omitempty" name:"TaskExecutionState"`
+
+	// 周期类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 责任人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserNameInCharge *string `json:"UserNameInCharge,omitnil,omitempty" name:"UserNameInCharge"`
+
+	// 责任人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserUinInCharge *string `json:"UserUinInCharge,omitnil,omitempty" name:"UserUinInCharge"`
+
+	// 资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timezone *string `json:"Timezone,omitnil,omitempty" name:"Timezone"`
+
+	// 文件夹id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 文件夹名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 任务类型id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeId *int64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 工作流运行参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowParams *string `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+
+	// 是否支持重跑
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportRerun *bool `json:"SupportRerun,omitnil,omitempty" name:"SupportRerun"`
+
+	// 工作流运行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowExecutionState *string `json:"WorkflowExecutionState,omitnil,omitempty" name:"WorkflowExecutionState"`
+
+	// 任务执行结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionResult *string `json:"ExecutionResult,omitnil,omitempty" name:"ExecutionResult"`
+}
+
+type TriggerTaskSchedulerConfiguration struct {
+	// 上游依赖数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpstreamDependencyConfigList []*DependencyTriggerTaskBrief `json:"UpstreamDependencyConfigList,omitnil,omitempty" name:"UpstreamDependencyConfigList"`
+
+	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunPriorityType *int64 `json:"RunPriorityType,omitnil,omitempty" name:"RunPriorityType"`
+
+	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryWaitMinute *int64 `json:"RetryWaitMinute,omitnil,omitempty" name:"RetryWaitMinute"`
+
+	// 重试策略 最大尝试次数, 默认: 4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxRetryNumber *int64 `json:"MaxRetryNumber,omitnil,omitempty" name:"MaxRetryNumber"`
+
+	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionTTLMinute *int64 `json:"ExecutionTTLMinute,omitnil,omitempty" name:"ExecutionTTLMinute"`
+
+	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaitExecutionTotalTTLMinute *int64 `json:"WaitExecutionTotalTTLMinute,omitnil,omitempty" name:"WaitExecutionTotalTTLMinute"`
+
+	// 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowRedoType *string `json:"AllowRedoType,omitnil,omitempty" name:"AllowRedoType"`
+
+	// 输出参数数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamTaskOutList []*OutTaskParameter `json:"ParamTaskOutList,omitnil,omitempty" name:"ParamTaskOutList"`
+
+	// 输入参数数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamTaskInList []*InTaskParameter `json:"ParamTaskInList,omitnil,omitempty" name:"ParamTaskInList"`
+
+	// 产出登记
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskOutputRegistryList []*TaskDataRegistry `json:"TaskOutputRegistryList,omitnil,omitempty" name:"TaskOutputRegistryList"`
+}
+
+type TriggerTaskVersion struct {
+	// 保存时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 保存版本id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// 版本描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionRemark *string `json:"VersionRemark,omitnil,omitempty" name:"VersionRemark"`
+
+	// 审批状态（只有提交版本有）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproveStatus *string `json:"ApproveStatus,omitnil,omitempty" name:"ApproveStatus"`
+
+	// 生产状态（只有提交版本有）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 审批人（只有提交版本有）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproveUserUin *string `json:"ApproveUserUin,omitnil,omitempty" name:"ApproveUserUin"`
+}
+
+type TriggerTaskVersionDetail struct {
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 版本创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 保存版本Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// 版本描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionRemark *string `json:"VersionRemark,omitnil,omitempty" name:"VersionRemark"`
+
+	// 审批状态（只有提交版本有）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproveStatus *string `json:"ApproveStatus,omitnil,omitempty" name:"ApproveStatus"`
+
+	// 生产状态（只有提交版本有）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproveTime *string `json:"ApproveTime,omitnil,omitempty" name:"ApproveTime"`
+
+	// 审批人Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproveUserUin *string `json:"ApproveUserUin,omitnil,omitempty" name:"ApproveUserUin"`
+
+	// 版本的任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Task *TriggerTask `json:"Task,omitnil,omitempty" name:"Task"`
+}
+
+type TriggerWorkflowBrief struct {
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 任务数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskCount *uint64 `json:"TaskCount,omitnil,omitempty" name:"TaskCount"`
+
+	// 文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 文件夹名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// 调度配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowTriggerConfig *WorkflowTriggerConfig `json:"WorkflowTriggerConfig,omitnil,omitempty" name:"WorkflowTriggerConfig"`
+
+	// 责任人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserNameInCharge *string `json:"UserNameInCharge,omitnil,omitempty" name:"UserNameInCharge"`
+
+	// 责任人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserUinInCharge *string `json:"UserUinInCharge,omitnil,omitempty" name:"UserUinInCharge"`
+
+	// 工作流参数
+	WorkflowParams *string `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+}
+
+type TriggerWorkflowDetail struct {
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 责任人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 创建人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 工作流参数数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+
+	// 统一调度参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerWorkflowSchedulerConfigurations []*WorkflowTriggerConfig `json:"TriggerWorkflowSchedulerConfigurations,omitnil,omitempty" name:"TriggerWorkflowSchedulerConfigurations"`
+
+	// 工作流描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// 工作流所属路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// BundleId项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// BundleInfo项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+
+	// 通用参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+
+	// Trigger 状态 启动ACTIVE，暂停PAUSED
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulerStatus *string `json:"SchedulerStatus,omitnil,omitempty" name:"SchedulerStatus"`
+}
+
+type TriggerWorkflowInfo struct {
+	// 工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 负责人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 最新修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 最后更新人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateUserUin *string `json:"UpdateUserUin,omitnil,omitempty" name:"UpdateUserUin"`
+
+	// 工作流描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// 创建人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+}
+
+type TriggerWorkflowResult struct {
+	// 总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+
+	// 页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 工作流信息集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*TriggerWorkflowBrief `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type TriggerWorkflowRunBrief struct {
+	// 用户AppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流运行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+
+	// 触发器ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+
+	// 触发方式:调度触发Scheduler、手动触发ManualTrigger、事件触发Event
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// 工作流触发时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 执行开始时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
+
+	// 执行结束时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
+
+	// 运行时长，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionCostTime *string `json:"ExecutionCostTime,omitnil,omitempty" name:"ExecutionCostTime"`
+
+	// 并发排队花费时间，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueCostTime *string `json:"QueueCostTime,omitnil,omitempty" name:"QueueCostTime"`
+
+	// 等待资源花费时间，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PendingCostTime *string `json:"PendingCostTime,omitnil,omitempty" name:"PendingCostTime"`
+
+	// 执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIPED、运行中:RUNNING
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionState *string `json:"ExecutionState,omitnil,omitempty" name:"ExecutionState"`
+
+	// 运行用户UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
+
+	// 运行用户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUserName *string `json:"ExecuteUserName,omitnil,omitempty" name:"ExecuteUserName"`
+
+	// 错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCodeStr *string `json:"ErrorCodeStr,omitnil,omitempty" name:"ErrorCodeStr"`
+
+	// 运行参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowParams *string `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+
+	// 工作流版本信息ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowVersionId *string `json:"WorkflowVersionId,omitnil,omitempty" name:"WorkflowVersionId"`
+
+	// 是否支持重跑
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportRerun *bool `json:"SupportRerun,omitnil,omitempty" name:"SupportRerun"`
+
+	// 重跑次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RerunTimes *uint64 `json:"RerunTimes,omitnil,omitempty" name:"RerunTimes"`
+
+	// 运行的任务范围,逗号分隔的任务ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelectedTaskIds []*string `json:"SelectedTaskIds,omitnil,omitempty" name:"SelectedTaskIds"`
+
+	// 等待并发开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PendingStartTime *string `json:"PendingStartTime,omitnil,omitempty" name:"PendingStartTime"`
+
+	// 排队等待开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueStartTime *string `json:"QueueStartTime,omitnil,omitempty" name:"QueueStartTime"`
+
+	// 运行结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 文件夹名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// 计划调度时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlannedSchedulingTime *string `json:"PlannedSchedulingTime,omitnil,omitempty" name:"PlannedSchedulingTime"`
+
+	// 周期类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 责任人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserNameInCharge *string `json:"UserNameInCharge,omitnil,omitempty" name:"UserNameInCharge"`
+
+	// 责任人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserUinInCharge *string `json:"UserUinInCharge,omitnil,omitempty" name:"UserUinInCharge"`
+}
+
+type TriggerWorkflowRunResult struct {
+	// 总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+
+	// 页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 工作流运行以及相关任务运行信息集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*TriggerWorkflowRunBrief `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type TriggerWorkflowTaskRunDetailBrief struct {
+	// 工作流运行信息
+	TriggerWorkflowRun *TriggerWorkflowRunBrief `json:"TriggerWorkflowRun,omitnil,omitempty" name:"TriggerWorkflowRun"`
+
+	// 任务运行信息
+	TriggerTaskRuns []*TriggerTaskRunBrief `json:"TriggerTaskRuns,omitnil,omitempty" name:"TriggerTaskRuns"`
+
+	// 业务状态枚举信息
+	BizStateEnumInfos []*BizStateEnumInfoBrief `json:"BizStateEnumInfos,omitnil,omitempty" name:"BizStateEnumInfos"`
+}
+
 // Predefined struct for user
 type UpdateCodeFileRequestParams struct {
 	// 项目ID
@@ -13988,6 +21464,77 @@ func (r *UpdateOpsTasksOwnerResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateOpsTriggerTasksOwnerRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 负责人UIN
+	OwnerIds []*string `json:"OwnerIds,omitnil,omitempty" name:"OwnerIds"`
+
+	// 将要修改的任务ID集合
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+}
+
+type UpdateOpsTriggerTasksOwnerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 负责人UIN
+	OwnerIds []*string `json:"OwnerIds,omitnil,omitempty" name:"OwnerIds"`
+
+	// 将要修改的任务ID集合
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+}
+
+func (r *UpdateOpsTriggerTasksOwnerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOpsTriggerTasksOwnerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "OwnerIds")
+	delete(f, "TaskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOpsTriggerTasksOwnerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateOpsTriggerTasksOwnerResponseParams struct {
+	// 批量操作结果
+	Data *BatchOperationOpsDto `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateOpsTriggerTasksOwnerResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateOpsTriggerTasksOwnerResponseParams `json:"Response"`
+}
+
+func (r *UpdateOpsTriggerTasksOwnerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOpsTriggerTasksOwnerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateProjectRequestParams struct {
 	// 目标修改的项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -14531,6 +22078,22 @@ type UpdateTaskBaseAttribute struct {
 	TaskFolderPath *string `json:"TaskFolderPath,omitnil,omitempty" name:"TaskFolderPath"`
 }
 
+type UpdateTaskBaseAttributePart struct {
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务负责人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 任务描述
+	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
+
+	// 注意：
+	// - 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+	// - 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+	TaskFolderPath *string `json:"TaskFolderPath,omitnil,omitempty" name:"TaskFolderPath"`
+}
+
 type UpdateTaskBrief struct {
 	// 任务基本属性
 	TaskBaseAttribute *UpdateTaskBaseAttribute `json:"TaskBaseAttribute,omitnil,omitempty" name:"TaskBaseAttribute"`
@@ -14540,6 +22103,179 @@ type UpdateTaskBrief struct {
 
 	// 任务调度配置
 	TaskSchedulerConfiguration *TaskSchedulerConfiguration `json:"TaskSchedulerConfiguration,omitnil,omitempty" name:"TaskSchedulerConfiguration"`
+}
+
+// Predefined struct for user
+type UpdateTaskFolderRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 文件夹ID，可通过ListTaskFolders接口获取
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+
+	// 更新后的任务文件夹名称
+	TaskFolderName *string `json:"TaskFolderName,omitnil,omitempty" name:"TaskFolderName"`
+}
+
+type UpdateTaskFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 文件夹ID，可通过ListTaskFolders接口获取
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+
+	// 更新后的任务文件夹名称
+	TaskFolderName *string `json:"TaskFolderName,omitnil,omitempty" name:"TaskFolderName"`
+}
+
+func (r *UpdateTaskFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTaskFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	delete(f, "TaskFolderId")
+	delete(f, "TaskFolderName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTaskFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTaskFolderResponseParams struct {
+	// 更新文件夹结果，如果更新失败则报错。
+	Data *UpdateTaskFolderResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTaskFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTaskFolderResponseParams `json:"Response"`
+}
+
+func (r *UpdateTaskFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTaskFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateTaskFolderResult struct {
+	// 更新状态,true表示更新成功，false表示更新失败
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type UpdateTaskPart struct {
+	// 任务基本属性
+	TaskBaseAttribute *UpdateTaskBaseAttributePart `json:"TaskBaseAttribute,omitnil,omitempty" name:"TaskBaseAttribute"`
+
+	// 任务配置
+	TaskConfiguration *TaskConfiguration `json:"TaskConfiguration,omitnil,omitempty" name:"TaskConfiguration"`
+
+	// 任务调度配置
+	TaskSchedulerConfiguration *TaskSchedulerConfiguration `json:"TaskSchedulerConfiguration,omitnil,omitempty" name:"TaskSchedulerConfiguration"`
+}
+
+// Predefined struct for user
+type UpdateTaskPartiallyRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务基本属性
+	NewSetting *UpdateTaskPart `json:"NewSetting,omitnil,omitempty" name:"NewSetting"`
+
+	// 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割 // 删除调度参数中 ParamKey 为 aa,bb 的属性 "TaskConfiguration/TaskSchedulingParameterList:aa,bb" // 删除上游依赖中 TaskId 为 2509162129381111,2509162129381112 的上游依赖 "TaskSchedulerConfiguration/UpstreamDependencyConfigList:2509162129381111,2509162129381112" // 删除下游循环依赖中 TaskId 为 2509162129382222,2509162129382223 的下游依赖 "TaskSchedulerConfiguration/DownStreamDependencyConfigList:2509162129382222,2509162129382223" // 删除事件中 EventName 为 event_250916_213234,event_250916_213235 的事件 "TaskSchedulerConfiguration/EventListenerList:event_250916_213234,event_250916_213235" // 删除传递参数输出中 ParamKey 为 pp_out,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskOutList:pp_out,pp_1" // 删除传递参数应用中 ParamKey 为 pp_in,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskInList:pp_in,pp_1" // 删除产品登记中 TablePhysicalId 为6578laxif4d1的产出登记 "TaskSchedulerConfiguration/TaskOutputRegistryList:6578laxif4d1"
+	FieldToRemoveList []*string `json:"FieldToRemoveList,omitnil,omitempty" name:"FieldToRemoveList"`
+}
+
+type UpdateTaskPartiallyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务基本属性
+	NewSetting *UpdateTaskPart `json:"NewSetting,omitnil,omitempty" name:"NewSetting"`
+
+	// 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割 // 删除调度参数中 ParamKey 为 aa,bb 的属性 "TaskConfiguration/TaskSchedulingParameterList:aa,bb" // 删除上游依赖中 TaskId 为 2509162129381111,2509162129381112 的上游依赖 "TaskSchedulerConfiguration/UpstreamDependencyConfigList:2509162129381111,2509162129381112" // 删除下游循环依赖中 TaskId 为 2509162129382222,2509162129382223 的下游依赖 "TaskSchedulerConfiguration/DownStreamDependencyConfigList:2509162129382222,2509162129382223" // 删除事件中 EventName 为 event_250916_213234,event_250916_213235 的事件 "TaskSchedulerConfiguration/EventListenerList:event_250916_213234,event_250916_213235" // 删除传递参数输出中 ParamKey 为 pp_out,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskOutList:pp_out,pp_1" // 删除传递参数应用中 ParamKey 为 pp_in,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskInList:pp_in,pp_1" // 删除产品登记中 TablePhysicalId 为6578laxif4d1的产出登记 "TaskSchedulerConfiguration/TaskOutputRegistryList:6578laxif4d1"
+	FieldToRemoveList []*string `json:"FieldToRemoveList,omitnil,omitempty" name:"FieldToRemoveList"`
+}
+
+func (r *UpdateTaskPartiallyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTaskPartiallyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "NewSetting")
+	delete(f, "FieldToRemoveList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTaskPartiallyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTaskPartiallyResponseParams struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *UpdateTaskResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTaskPartiallyResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTaskPartiallyResponseParams `json:"Response"`
+}
+
+func (r *UpdateTaskPartiallyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTaskPartiallyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -14621,6 +22357,442 @@ type UpdateTaskResult struct {
 
 type UpdateTasksOwner struct {
 	// 修改任务责任人结果
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type UpdateTriggerTaskBaseAttribute struct {
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务负责人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 任务描述
+	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
+
+	// 注意：
+	// - 路径上不要填写任务节点类型；例如，在 一个名为 wf01 的工作流，“通用” 分类下，现在想要在这个分类下的 tf_01 文件夹下，新建一个 shell 任务；则 填写 /tf_01 即可；
+	// - 如果 tf_01 文件夹不存在，则需要先创建这个文件夹（使用 CreateTaskFolder 接口）才能操作成功；
+	TaskFolderPath *string `json:"TaskFolderPath,omitnil,omitempty" name:"TaskFolderPath"`
+}
+
+type UpdateTriggerTaskBaseAttributePart struct {
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务负责人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 任务描述
+	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
+}
+
+type UpdateTriggerTaskBrief struct {
+	// 任务基本属性
+	TriggerTaskBaseAttribute *UpdateTriggerTaskBaseAttribute `json:"TriggerTaskBaseAttribute,omitnil,omitempty" name:"TriggerTaskBaseAttribute"`
+
+	// 任务配置
+	TriggerTaskConfiguration *TriggerTaskConfiguration `json:"TriggerTaskConfiguration,omitnil,omitempty" name:"TriggerTaskConfiguration"`
+
+	// 任务调度配置
+	TriggerTaskSchedulerConfiguration *TriggerTaskSchedulerConfiguration `json:"TriggerTaskSchedulerConfiguration,omitnil,omitempty" name:"TriggerTaskSchedulerConfiguration"`
+}
+
+type UpdateTriggerTaskPart struct {
+	// 任务基本属性
+	TriggerTaskBaseAttribute *UpdateTriggerTaskBaseAttributePart `json:"TriggerTaskBaseAttribute,omitnil,omitempty" name:"TriggerTaskBaseAttribute"`
+
+	// 任务配置
+	TriggerTaskConfiguration *TriggerTaskConfiguration `json:"TriggerTaskConfiguration,omitnil,omitempty" name:"TriggerTaskConfiguration"`
+
+	// 任务调度配置
+	TriggerTaskSchedulerConfiguration *TriggerTaskSchedulerConfiguration `json:"TriggerTaskSchedulerConfiguration,omitnil,omitempty" name:"TriggerTaskSchedulerConfiguration"`
+}
+
+// Predefined struct for user
+type UpdateTriggerTaskPartiallyRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务基本属性
+	NewSetting *UpdateTriggerTaskPart `json:"NewSetting,omitnil,omitempty" name:"NewSetting"`
+
+	// 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割 // 删除调度参数中 ParamKey 为 aa,bb 的属性 "TaskConfiguration/TaskSchedulingParameterList:aa,bb" // 删除上游依赖中 TaskId 为 2509162129381111,2509162129381112 的上游依赖 "TaskSchedulerConfiguration/UpstreamDependencyConfigList:2509162129381111,2509162129381112" // 删除下游循环依赖中 TaskId 为 2509162129382222,2509162129382223 的下游依赖 "TaskSchedulerConfiguration/DownStreamDependencyConfigList:2509162129382222,2509162129382223" // 删除事件中 EventName 为 event_250916_213234,event_250916_213235 的事件 "TaskSchedulerConfiguration/EventListenerList:event_250916_213234,event_250916_213235" // 删除传递参数输出中 ParamKey 为 pp_out,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskOutList:pp_out,pp_1" // 删除传递参数应用中 ParamKey 为 pp_in,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskInList:pp_in,pp_1" // 删除产品登记中 TablePhysicalId 为6578laxif4d1的产出登记 "TaskSchedulerConfiguration/TaskOutputRegistryList:6578laxif4d1"
+	FieldToRemoveList []*string `json:"FieldToRemoveList,omitnil,omitempty" name:"FieldToRemoveList"`
+}
+
+type UpdateTriggerTaskPartiallyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务基本属性
+	NewSetting *UpdateTriggerTaskPart `json:"NewSetting,omitnil,omitempty" name:"NewSetting"`
+
+	// 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割 // 删除调度参数中 ParamKey 为 aa,bb 的属性 "TaskConfiguration/TaskSchedulingParameterList:aa,bb" // 删除上游依赖中 TaskId 为 2509162129381111,2509162129381112 的上游依赖 "TaskSchedulerConfiguration/UpstreamDependencyConfigList:2509162129381111,2509162129381112" // 删除下游循环依赖中 TaskId 为 2509162129382222,2509162129382223 的下游依赖 "TaskSchedulerConfiguration/DownStreamDependencyConfigList:2509162129382222,2509162129382223" // 删除事件中 EventName 为 event_250916_213234,event_250916_213235 的事件 "TaskSchedulerConfiguration/EventListenerList:event_250916_213234,event_250916_213235" // 删除传递参数输出中 ParamKey 为 pp_out,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskOutList:pp_out,pp_1" // 删除传递参数应用中 ParamKey 为 pp_in,pp_1 的参数 "TaskSchedulerConfiguration/ParamTaskInList:pp_in,pp_1" // 删除产品登记中 TablePhysicalId 为6578laxif4d1的产出登记 "TaskSchedulerConfiguration/TaskOutputRegistryList:6578laxif4d1"
+	FieldToRemoveList []*string `json:"FieldToRemoveList,omitnil,omitempty" name:"FieldToRemoveList"`
+}
+
+func (r *UpdateTriggerTaskPartiallyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTriggerTaskPartiallyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "NewSetting")
+	delete(f, "FieldToRemoveList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTriggerTaskPartiallyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTriggerTaskPartiallyResponseParams struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *UpdateTaskResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTriggerTaskPartiallyResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTriggerTaskPartiallyResponseParams `json:"Response"`
+}
+
+func (r *UpdateTriggerTaskPartiallyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTriggerTaskPartiallyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTriggerTaskRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务基本属性
+	Task *UpdateTriggerTaskBrief `json:"Task,omitnil,omitempty" name:"Task"`
+}
+
+type UpdateTriggerTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务基本属性
+	Task *UpdateTriggerTaskBrief `json:"Task,omitnil,omitempty" name:"Task"`
+}
+
+func (r *UpdateTriggerTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTriggerTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "Task")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTriggerTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTriggerTaskResponseParams struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *UpdateTaskResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTriggerTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTriggerTaskResponseParams `json:"Response"`
+}
+
+func (r *UpdateTriggerTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTriggerTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateTriggerWorkflowPartially struct {
+	// 工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 责任人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 工作流参数数组
+	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+
+	// 统一调度参数
+	TriggerWorkflowSchedulerConfigurations []*WorkflowTriggerConfig `json:"TriggerWorkflowSchedulerConfigurations,omitnil,omitempty" name:"TriggerWorkflowSchedulerConfigurations"`
+
+	// 工作流描述
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// BundleId项
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// BundleInfo项
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+
+	// 通用参数
+	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+}
+
+// Predefined struct for user
+type UpdateTriggerWorkflowPartiallyRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 责任人ID
+	NewSetting *UpdateTriggerWorkflowPartially `json:"NewSetting,omitnil,omitempty" name:"NewSetting"`
+
+	// 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割
+	//  // 删除调度参数中 ParamKey 为 aa,bb 的属性 "WorkflowParams:aa,bb"
+	//  // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置"TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0" 
+	// // 删除spark sql通用参数 "GeneralTaskParams: SPARK_SQL" 
+	FieldToRemoveList []*string `json:"FieldToRemoveList,omitnil,omitempty" name:"FieldToRemoveList"`
+}
+
+type UpdateTriggerWorkflowPartiallyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 责任人ID
+	NewSetting *UpdateTriggerWorkflowPartially `json:"NewSetting,omitnil,omitempty" name:"NewSetting"`
+
+	// 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割
+	//  // 删除调度参数中 ParamKey 为 aa,bb 的属性 "WorkflowParams:aa,bb"
+	//  // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置"TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0" 
+	// // 删除spark sql通用参数 "GeneralTaskParams: SPARK_SQL" 
+	FieldToRemoveList []*string `json:"FieldToRemoveList,omitnil,omitempty" name:"FieldToRemoveList"`
+}
+
+func (r *UpdateTriggerWorkflowPartiallyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTriggerWorkflowPartiallyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	delete(f, "NewSetting")
+	delete(f, "FieldToRemoveList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTriggerWorkflowPartiallyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTriggerWorkflowPartiallyResponseParams struct {
+	// true代表成功，false代表失败
+	Data *UpdateTriggerWorkflowResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTriggerWorkflowPartiallyResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTriggerWorkflowPartiallyResponseParams `json:"Response"`
+}
+
+func (r *UpdateTriggerWorkflowPartiallyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTriggerWorkflowPartiallyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTriggerWorkflowRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 责任人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 备注
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// 工作流参数列表
+	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+
+	// 统一调度参数
+	TriggerWorkflowSchedulerConfigurations []*WorkflowTriggerConfig `json:"TriggerWorkflowSchedulerConfigurations,omitnil,omitempty" name:"TriggerWorkflowSchedulerConfigurations"`
+
+	// BundleId项
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// Bundle信息
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+
+	// 通用参数配置
+	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+}
+
+type UpdateTriggerWorkflowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 责任人ID
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 备注
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// 工作流参数列表
+	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+
+	// 统一调度参数
+	TriggerWorkflowSchedulerConfigurations []*WorkflowTriggerConfig `json:"TriggerWorkflowSchedulerConfigurations,omitnil,omitempty" name:"TriggerWorkflowSchedulerConfigurations"`
+
+	// BundleId项
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// Bundle信息
+	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+
+	// 通用参数配置
+	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+}
+
+func (r *UpdateTriggerWorkflowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTriggerWorkflowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	delete(f, "WorkflowName")
+	delete(f, "OwnerUin")
+	delete(f, "WorkflowDesc")
+	delete(f, "WorkflowParams")
+	delete(f, "TriggerWorkflowSchedulerConfigurations")
+	delete(f, "BundleId")
+	delete(f, "BundleInfo")
+	delete(f, "GeneralTaskParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTriggerWorkflowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTriggerWorkflowResponseParams struct {
+	// true代表成功，false代表失败
+	Data *UpdateTriggerWorkflowResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTriggerWorkflowResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTriggerWorkflowResponseParams `json:"Response"`
+}
+
+func (r *UpdateTriggerWorkflowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTriggerWorkflowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateTriggerWorkflowResult struct {
+	// 更新工作流结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -14870,6 +23042,27 @@ type WorkflowFolder struct {
 	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
 }
 
+type WorkflowFolderDetail struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹ID
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 文件夹绝对路径
+	FolderPath *string `json:"FolderPath,omitnil,omitempty" name:"FolderPath"`
+
+	// 创建人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// 父文件夹绝对路径
+	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
+
+	// 文件夹名称
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+}
+
 type WorkflowFolderPage struct {
 	// 数据页数，大于等于1
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -14887,6 +23080,17 @@ type WorkflowFolderPage struct {
 
 	// 文件夹列表
 	Items []*WorkflowFolder `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type WorkflowGeneralTaskParam struct {
+	// 通用任务参数类型,目前只支持SPARK_SQL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 通用任务参数内容, 不同参数用;
+	// 分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type WorkflowInfo struct {
@@ -14925,6 +23129,43 @@ type WorkflowInfo struct {
 	// 创建人ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+}
+
+type WorkflowMaxPermission struct {
+	// 授权权限类型(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，当前仅支持CAN_MANAGE)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PermissionType *string `json:"PermissionType,omitnil,omitempty" name:"PermissionType"`
+}
+
+type WorkflowPermission struct {
+	// 授权目标类型（用户：user，角色：role）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PermissionTargetType *string `json:"PermissionTargetType,omitnil,omitempty" name:"PermissionTargetType"`
+
+	// 授权目标id数组(userId/roleId)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PermissionTargetId *string `json:"PermissionTargetId,omitnil,omitempty" name:"PermissionTargetId"`
+
+	// 授权权限类型数组(CAN_VIEW/CAN_RUN/CAN_EDIT/CAN_MANAGE，当前仅支持CAN_MANAGE)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PermissionTypeList []*string `json:"PermissionTypeList,omitnil,omitempty" name:"PermissionTypeList"`
+}
+
+type WorkflowPermissionPage struct {
+	// 数据页数，大于等于1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示的数据条数，最小为10条，最大为200 条
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 授权数据总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 总页数
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+
+	// 授权信息列表
+	Items []*WorkflowPermission `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 type WorkflowSchedulerConfiguration struct {
@@ -15079,4 +23320,73 @@ type WorkflowSchedulerConfigurationInfo struct {
 
 	// 日历id
 	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
+}
+
+type WorkflowTriggerConfig struct {
+	// 触发方式，
+	// - 定时触发：TIME_TRIGGER
+	// - 持续运行：CONTINUE_RUN
+	// - 文件到达：FILE_ARRIVAL
+	// 
+	// 注意：
+	// - TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；
+	// - FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
+
+	// WorkflowTriggerConfig转换成Json格式，对账使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+
+	// 调度时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 调度生效时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 调度结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigMode *string `json:"ConfigMode,omitnil,omitempty" name:"ConfigMode"`
+
+	// 周期类型：支持的类型为
+	// ONEOFF_CYCLE: 一次性
+	// YEAR_CYCLE: 年
+	// MONTH_CYCLE: 月
+	// WEEK_CYCLE: 周
+	// DAY_CYCLE: 天
+	// HOUR_CYCLE: 小时
+	// MINUTE_CYCLE: 分钟
+	// CRONTAB_CYCLE: crontab表达式类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// cron表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
+
+	// triggerId, uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+
+	// 文件到达模式下	存储系统中的监听路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileArrivalPath *string `json:"FileArrivalPath,omitnil,omitempty" name:"FileArrivalPath"`
+
+	// 文件到达模式下	触发最短间隔时间（单位：秒）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerMinimumIntervalSecond *uint64 `json:"TriggerMinimumIntervalSecond,omitnil,omitempty" name:"TriggerMinimumIntervalSecond"`
+
+	// 文件到达模式下	触发等待时间（单位：秒）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerWaitTimeSecond *uint64 `json:"TriggerWaitTimeSecond,omitnil,omitempty" name:"TriggerWaitTimeSecond"`
+
+	// Trigger 状态 启动ACTIVE，暂停PAUSED
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulerStatus *string `json:"SchedulerStatus,omitnil,omitempty" name:"SchedulerStatus"`
 }

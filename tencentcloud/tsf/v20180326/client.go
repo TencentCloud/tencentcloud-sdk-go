@@ -489,6 +489,10 @@ func NewContinueRunFailedTaskBatchResponse() (response *ContinueRunFailedTaskBat
 }
 
 // ContinueRunFailedTaskBatch
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 对执行失败的任务批次执行续跑
 //
 // 可能返回的错误码:
@@ -511,6 +515,10 @@ func (c *Client) ContinueRunFailedTaskBatch(request *ContinueRunFailedTaskBatchR
 }
 
 // ContinueRunFailedTaskBatch
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 对执行失败的任务批次执行续跑
 //
 // 可能返回的错误码:
@@ -2475,6 +2483,10 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 }
 
 // CreateTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 创建任务
 //
 // 可能返回的错误码:
@@ -2498,6 +2510,10 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 }
 
 // CreateTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 创建任务
 //
 // 可能返回的错误码:
@@ -2553,6 +2569,10 @@ func NewCreateTaskFlowResponse() (response *CreateTaskFlowResponse) {
 }
 
 // CreateTaskFlow
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 创建工作流
 //
 // 可能返回的错误码:
@@ -2573,6 +2593,10 @@ func (c *Client) CreateTaskFlow(request *CreateTaskFlowRequest) (response *Creat
 }
 
 // CreateTaskFlow
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 创建工作流
 //
 // 可能返回的错误码:
@@ -4245,6 +4269,10 @@ func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
 }
 
 // DeleteTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 删除任务
 //
 // 可能返回的错误码:
@@ -4262,6 +4290,10 @@ func (c *Client) DeleteTask(request *DeleteTaskRequest) (response *DeleteTaskRes
 }
 
 // DeleteTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 删除任务
 //
 // 可能返回的错误码:
@@ -6865,6 +6897,10 @@ func NewDescribeFlowLastBatchStateResponse() (response *DescribeFlowLastBatchSta
 }
 
 // DescribeFlowLastBatchState
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 查询工作流最新一个批次的状态信息
 //
 // 可能返回的错误码:
@@ -6882,6 +6918,10 @@ func (c *Client) DescribeFlowLastBatchState(request *DescribeFlowLastBatchStateR
 }
 
 // DescribeFlowLastBatchState
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 查询工作流最新一个批次的状态信息
 //
 // 可能返回的错误码:
@@ -10229,6 +10269,10 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 }
 
 // DescribeTaskDetail
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 查询任务详情
 //
 // 可能返回的错误码:
@@ -10248,6 +10292,10 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
 }
 
 // DescribeTaskDetail
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 查询任务详情
 //
 // 可能返回的错误码:
@@ -10299,6 +10347,10 @@ func NewDescribeTaskLastStatusResponse() (response *DescribeTaskLastStatusRespon
 }
 
 // DescribeTaskLastStatus
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 查询任务最近一次执行状态
 //
 // 可能返回的错误码:
@@ -10314,6 +10366,10 @@ func (c *Client) DescribeTaskLastStatus(request *DescribeTaskLastStatusRequest) 
 }
 
 // DescribeTaskLastStatus
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 查询任务最近一次执行状态
 //
 // 可能返回的错误码:
@@ -10361,6 +10417,10 @@ func NewDescribeTaskRecordsResponse() (response *DescribeTaskRecordsResponse) {
 }
 
 // DescribeTaskRecords
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 翻页查询任务列表
 //
 // 可能返回的错误码:
@@ -10378,6 +10438,10 @@ func (c *Client) DescribeTaskRecords(request *DescribeTaskRecordsRequest) (respo
 }
 
 // DescribeTaskRecords
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 翻页查询任务列表
 //
 // 可能返回的错误码:
@@ -10959,6 +11023,10 @@ func NewDisableTaskResponse() (response *DisableTaskResponse) {
 }
 
 // DisableTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 停用任务
 //
 // 可能返回的错误码:
@@ -10975,6 +11043,10 @@ func (c *Client) DisableTask(request *DisableTaskRequest) (response *DisableTask
 }
 
 // DisableTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 停用任务
 //
 // 可能返回的错误码:
@@ -11023,6 +11095,10 @@ func NewDisableTaskFlowResponse() (response *DisableTaskFlowResponse) {
 }
 
 // DisableTaskFlow
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 停用工作流
 //
 // 可能返回的错误码:
@@ -11039,6 +11115,10 @@ func (c *Client) DisableTaskFlow(request *DisableTaskFlowRequest) (response *Dis
 }
 
 // DisableTaskFlow
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 停用工作流
 //
 // 可能返回的错误码:
@@ -11497,6 +11577,10 @@ func NewEnableTaskResponse() (response *EnableTaskResponse) {
 }
 
 // EnableTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 启用任务
 //
 // 可能返回的错误码:
@@ -11515,6 +11599,10 @@ func (c *Client) EnableTask(request *EnableTaskRequest) (response *EnableTaskRes
 }
 
 // EnableTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 启用任务
 //
 // 可能返回的错误码:
@@ -11565,6 +11653,10 @@ func NewEnableTaskFlowResponse() (response *EnableTaskFlowResponse) {
 }
 
 // EnableTaskFlow
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 启用工作流
 //
 // 可能返回的错误码:
@@ -11582,6 +11674,10 @@ func (c *Client) EnableTaskFlow(request *EnableTaskFlowRequest) (response *Enabl
 }
 
 // EnableTaskFlow
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 启用工作流
 //
 // 可能返回的错误码:
@@ -11739,6 +11835,10 @@ func NewExecuteTaskResponse() (response *ExecuteTaskResponse) {
 }
 
 // ExecuteTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 手动执行一次任务
 //
 // 可能返回的错误码:
@@ -11758,6 +11858,10 @@ func (c *Client) ExecuteTask(request *ExecuteTaskRequest) (response *ExecuteTask
 }
 
 // ExecuteTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 手动执行一次任务
 //
 // 可能返回的错误码:
@@ -11809,6 +11913,10 @@ func NewExecuteTaskFlowResponse() (response *ExecuteTaskFlowResponse) {
 }
 
 // ExecuteTaskFlow
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 执行一次工作流
 //
 // 可能返回的错误码:
@@ -11828,6 +11936,10 @@ func (c *Client) ExecuteTaskFlow(request *ExecuteTaskFlowRequest) (response *Exe
 }
 
 // ExecuteTaskFlow
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 执行一次工作流
 //
 // 可能返回的错误码:
@@ -12855,6 +12967,10 @@ func NewModifyTaskResponse() (response *ModifyTaskResponse) {
 }
 
 // ModifyTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 修改任务
 //
 // 可能返回的错误码:
@@ -12874,6 +12990,10 @@ func (c *Client) ModifyTask(request *ModifyTaskRequest) (response *ModifyTaskRes
 }
 
 // ModifyTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 修改任务
 //
 // 可能返回的错误码:
@@ -13109,6 +13229,10 @@ func NewRedoTaskResponse() (response *RedoTaskResponse) {
 }
 
 // RedoTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 重新执行任务
 //
 // 可能返回的错误码:
@@ -13131,6 +13255,10 @@ func (c *Client) RedoTask(request *RedoTaskRequest) (response *RedoTaskResponse,
 }
 
 // RedoTask
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 重新执行任务
 //
 // 可能返回的错误码:
@@ -13185,6 +13313,10 @@ func NewRedoTaskBatchResponse() (response *RedoTaskBatchResponse) {
 }
 
 // RedoTaskBatch
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 重新执行任务批次
 //
 // 可能返回的错误码:
@@ -13203,6 +13335,10 @@ func (c *Client) RedoTaskBatch(request *RedoTaskBatchRequest) (response *RedoTas
 }
 
 // RedoTaskBatch
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 重新执行任务批次
 //
 // 可能返回的错误码:
@@ -13253,6 +13389,10 @@ func NewRedoTaskExecuteResponse() (response *RedoTaskExecuteResponse) {
 }
 
 // RedoTaskExecute
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 重新执行在某个节点上执行任务。
 //
 // 可能返回的错误码:
@@ -13272,6 +13412,10 @@ func (c *Client) RedoTaskExecute(request *RedoTaskExecuteRequest) (response *Red
 }
 
 // RedoTaskExecute
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 重新执行在某个节点上执行任务。
 //
 // 可能返回的错误码:
@@ -13323,6 +13467,10 @@ func NewRedoTaskFlowBatchResponse() (response *RedoTaskFlowBatchResponse) {
 }
 
 // RedoTaskFlowBatch
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 重新执行工作流批次
 //
 // 可能返回的错误码:
@@ -13342,6 +13490,10 @@ func (c *Client) RedoTaskFlowBatch(request *RedoTaskFlowBatchRequest) (response 
 }
 
 // RedoTaskFlowBatch
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 重新执行工作流批次
 //
 // 可能返回的错误码:
@@ -14503,6 +14655,10 @@ func NewStopTaskBatchResponse() (response *StopTaskBatchResponse) {
 }
 
 // StopTaskBatch
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 停止执行中的任务批次， 非运行中的任务不可调用。
 //
 // 可能返回的错误码:
@@ -14523,6 +14679,10 @@ func (c *Client) StopTaskBatch(request *StopTaskBatchRequest) (response *StopTas
 }
 
 // StopTaskBatch
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 停止执行中的任务批次， 非运行中的任务不可调用。
 //
 // 可能返回的错误码:
@@ -14575,6 +14735,10 @@ func NewStopTaskExecuteResponse() (response *StopTaskExecuteResponse) {
 }
 
 // StopTaskExecute
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 停止正在某个节点上执行的任务
 //
 // 可能返回的错误码:
@@ -14596,6 +14760,10 @@ func (c *Client) StopTaskExecute(request *StopTaskExecuteRequest) (response *Sto
 }
 
 // StopTaskExecute
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 停止正在某个节点上执行的任务
 //
 // 可能返回的错误码:
@@ -14649,6 +14817,10 @@ func NewTerminateTaskFlowBatchResponse() (response *TerminateTaskFlowBatchRespon
 }
 
 // TerminateTaskFlowBatch
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 停止一个工作流批次
 //
 // 可能返回的错误码:
@@ -14667,6 +14839,10 @@ func (c *Client) TerminateTaskFlowBatch(request *TerminateTaskFlowBatchRequest) 
 }
 
 // TerminateTaskFlowBatch
+// 分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
+//
+// 
+//
 // 停止一个工作流批次
 //
 // 可能返回的错误码:

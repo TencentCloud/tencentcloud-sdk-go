@@ -379,6 +379,168 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribePriceCreateInstanceRequest() (request *DescribePriceCreateInstanceRequest) {
+    request = &DescribePriceCreateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vdb", APIVersion, "DescribePriceCreateInstance")
+    
+    
+    return
+}
+
+func NewDescribePriceCreateInstanceResponse() (response *DescribePriceCreateInstanceResponse) {
+    response = &DescribePriceCreateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePriceCreateInstance
+// 查询新购实例价格
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribePriceCreateInstance(request *DescribePriceCreateInstanceRequest) (response *DescribePriceCreateInstanceResponse, err error) {
+    return c.DescribePriceCreateInstanceWithContext(context.Background(), request)
+}
+
+// DescribePriceCreateInstance
+// 查询新购实例价格
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribePriceCreateInstanceWithContext(ctx context.Context, request *DescribePriceCreateInstanceRequest) (response *DescribePriceCreateInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribePriceCreateInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "DescribePriceCreateInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePriceCreateInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePriceCreateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePriceRenewInstanceRequest() (request *DescribePriceRenewInstanceRequest) {
+    request = &DescribePriceRenewInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vdb", APIVersion, "DescribePriceRenewInstance")
+    
+    
+    return
+}
+
+func NewDescribePriceRenewInstanceResponse() (response *DescribePriceRenewInstanceResponse) {
+    response = &DescribePriceRenewInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePriceRenewInstance
+// 查询实例续费价格（包年包月）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribePriceRenewInstance(request *DescribePriceRenewInstanceRequest) (response *DescribePriceRenewInstanceResponse, err error) {
+    return c.DescribePriceRenewInstanceWithContext(context.Background(), request)
+}
+
+// DescribePriceRenewInstance
+// 查询实例续费价格（包年包月）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribePriceRenewInstanceWithContext(ctx context.Context, request *DescribePriceRenewInstanceRequest) (response *DescribePriceRenewInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribePriceRenewInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "DescribePriceRenewInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePriceRenewInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePriceRenewInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePriceResizeInstanceRequest() (request *DescribePriceResizeInstanceRequest) {
+    request = &DescribePriceResizeInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vdb", APIVersion, "DescribePriceResizeInstance")
+    
+    
+    return
+}
+
+func NewDescribePriceResizeInstanceResponse() (response *DescribePriceResizeInstanceResponse) {
+    response = &DescribePriceResizeInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePriceResizeInstance
+// 查询实例变配价格
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribePriceResizeInstance(request *DescribePriceResizeInstanceRequest) (response *DescribePriceResizeInstanceResponse, err error) {
+    return c.DescribePriceResizeInstanceWithContext(context.Background(), request)
+}
+
+// DescribePriceResizeInstance
+// 查询实例变配价格
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribePriceResizeInstanceWithContext(ctx context.Context, request *DescribePriceResizeInstanceRequest) (response *DescribePriceResizeInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribePriceResizeInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vdb", APIVersion, "DescribePriceResizeInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePriceResizeInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePriceResizeInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyInstancesRequest() (request *DestroyInstancesRequest) {
     request = &DestroyInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

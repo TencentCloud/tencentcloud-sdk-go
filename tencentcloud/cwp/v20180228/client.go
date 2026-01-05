@@ -109,74 +109,6 @@ func (c *Client) AddLoginWhiteListsWithContext(ctx context.Context, request *Add
     return
 }
 
-func NewCancelIgnoreVulRequest() (request *CancelIgnoreVulRequest) {
-    request = &CancelIgnoreVulRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "CancelIgnoreVul")
-    
-    
-    return
-}
-
-func NewCancelIgnoreVulResponse() (response *CancelIgnoreVulResponse) {
-    response = &CancelIgnoreVulResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CancelIgnoreVul
-// 产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
-//
-// 
-//
-// 取消漏洞忽略
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) CancelIgnoreVul(request *CancelIgnoreVulRequest) (response *CancelIgnoreVulResponse, err error) {
-    return c.CancelIgnoreVulWithContext(context.Background(), request)
-}
-
-// CancelIgnoreVul
-// 产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
-//
-// 
-//
-// 取消漏洞忽略
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) CancelIgnoreVulWithContext(ctx context.Context, request *CancelIgnoreVulRequest) (response *CancelIgnoreVulResponse, err error) {
-    if request == nil {
-        request = NewCancelIgnoreVulRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "CancelIgnoreVul")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CancelIgnoreVul require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCancelIgnoreVulResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewChangeRuleEventsIgnoreStatusRequest() (request *ChangeRuleEventsIgnoreStatusRequest) {
     request = &ChangeRuleEventsIgnoreStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7509,60 +7441,6 @@ func (c *Client) DescribeAttackVulTypeListWithContext(ctx context.Context, reque
     return
 }
 
-func NewDescribeAvailableExpertServiceDetailRequest() (request *DescribeAvailableExpertServiceDetailRequest) {
-    request = &DescribeAvailableExpertServiceDetailRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAvailableExpertServiceDetail")
-    
-    
-    return
-}
-
-func NewDescribeAvailableExpertServiceDetailResponse() (response *DescribeAvailableExpertServiceDetailResponse) {
-    response = &DescribeAvailableExpertServiceDetailResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAvailableExpertServiceDetail
-// 专家服务-可用订单详情
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeAvailableExpertServiceDetail(request *DescribeAvailableExpertServiceDetailRequest) (response *DescribeAvailableExpertServiceDetailResponse, err error) {
-    return c.DescribeAvailableExpertServiceDetailWithContext(context.Background(), request)
-}
-
-// DescribeAvailableExpertServiceDetail
-// 专家服务-可用订单详情
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeAvailableExpertServiceDetailWithContext(ctx context.Context, request *DescribeAvailableExpertServiceDetailRequest) (response *DescribeAvailableExpertServiceDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAvailableExpertServiceDetailRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeAvailableExpertServiceDetail")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAvailableExpertServiceDetail require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAvailableExpertServiceDetailResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeBanModeRequest() (request *DescribeBanModeRequest) {
     request = &DescribeBanModeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10403,62 +10281,6 @@ func (c *Client) DescribeESAggregationsWithContext(ctx context.Context, request 
     return
 }
 
-func NewDescribeEmergencyResponseListRequest() (request *DescribeEmergencyResponseListRequest) {
-    request = &DescribeEmergencyResponseListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeEmergencyResponseList")
-    
-    
-    return
-}
-
-func NewDescribeEmergencyResponseListResponse() (response *DescribeEmergencyResponseListResponse) {
-    response = &DescribeEmergencyResponseListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeEmergencyResponseList
-// 专家服务-应急响应列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeEmergencyResponseList(request *DescribeEmergencyResponseListRequest) (response *DescribeEmergencyResponseListResponse, err error) {
-    return c.DescribeEmergencyResponseListWithContext(context.Background(), request)
-}
-
-// DescribeEmergencyResponseList
-// 专家服务-应急响应列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeEmergencyResponseListWithContext(ctx context.Context, request *DescribeEmergencyResponseListRequest) (response *DescribeEmergencyResponseListResponse, err error) {
-    if request == nil {
-        request = NewDescribeEmergencyResponseListRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeEmergencyResponseList")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeEmergencyResponseList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeEmergencyResponseListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeEmergencyVulListRequest() (request *DescribeEmergencyVulListRequest) {
     request = &DescribeEmergencyVulListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10575,118 +10397,6 @@ func (c *Client) DescribeEventByTableWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeEventByTableResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeExpertServiceListRequest() (request *DescribeExpertServiceListRequest) {
-    request = &DescribeExpertServiceListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeExpertServiceList")
-    
-    
-    return
-}
-
-func NewDescribeExpertServiceListResponse() (response *DescribeExpertServiceListResponse) {
-    response = &DescribeExpertServiceListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeExpertServiceList
-// 专家服务-安全管家列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeExpertServiceList(request *DescribeExpertServiceListRequest) (response *DescribeExpertServiceListResponse, err error) {
-    return c.DescribeExpertServiceListWithContext(context.Background(), request)
-}
-
-// DescribeExpertServiceList
-// 专家服务-安全管家列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeExpertServiceListWithContext(ctx context.Context, request *DescribeExpertServiceListRequest) (response *DescribeExpertServiceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeExpertServiceListRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeExpertServiceList")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeExpertServiceList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeExpertServiceListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeExpertServiceOrderListRequest() (request *DescribeExpertServiceOrderListRequest) {
-    request = &DescribeExpertServiceOrderListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeExpertServiceOrderList")
-    
-    
-    return
-}
-
-func NewDescribeExpertServiceOrderListResponse() (response *DescribeExpertServiceOrderListResponse) {
-    response = &DescribeExpertServiceOrderListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeExpertServiceOrderList
-// 专家服务-专家服务订单列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeExpertServiceOrderList(request *DescribeExpertServiceOrderListRequest) (response *DescribeExpertServiceOrderListResponse, err error) {
-    return c.DescribeExpertServiceOrderListWithContext(context.Background(), request)
-}
-
-// DescribeExpertServiceOrderList
-// 专家服务-专家服务订单列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeExpertServiceOrderListWithContext(ctx context.Context, request *DescribeExpertServiceOrderListRequest) (response *DescribeExpertServiceOrderListResponse, err error) {
-    if request == nil {
-        request = NewDescribeExpertServiceOrderListRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeExpertServiceOrderList")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeExpertServiceOrderList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeExpertServiceOrderListResponse()
     err = c.Send(request, response)
     return
 }
@@ -14305,70 +14015,6 @@ func (c *Client) DescribeMalwareWhiteListAffectListWithContext(ctx context.Conte
     return
 }
 
-func NewDescribeMonthInspectionReportRequest() (request *DescribeMonthInspectionReportRequest) {
-    request = &DescribeMonthInspectionReportRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeMonthInspectionReport")
-    
-    
-    return
-}
-
-func NewDescribeMonthInspectionReportResponse() (response *DescribeMonthInspectionReportResponse) {
-    response = &DescribeMonthInspectionReportResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeMonthInspectionReport
-// 专家服务-安全管家月巡检报告下载
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeMonthInspectionReport(request *DescribeMonthInspectionReportRequest) (response *DescribeMonthInspectionReportResponse, err error) {
-    return c.DescribeMonthInspectionReportWithContext(context.Background(), request)
-}
-
-// DescribeMonthInspectionReport
-// 专家服务-安全管家月巡检报告下载
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeMonthInspectionReportWithContext(ctx context.Context, request *DescribeMonthInspectionReportRequest) (response *DescribeMonthInspectionReportResponse, err error) {
-    if request == nil {
-        request = NewDescribeMonthInspectionReportRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeMonthInspectionReport")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeMonthInspectionReport require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeMonthInspectionReportResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeNetAttackSettingRequest() (request *DescribeNetAttackSettingRequest) {
     request = &DescribeNetAttackSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14394,11 +14040,11 @@ func NewDescribeNetAttackSettingResponse() (response *DescribeNetAttackSettingRe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNetAttackSetting(request *DescribeNetAttackSettingRequest) (response *DescribeNetAttackSettingResponse, err error) {
     return c.DescribeNetAttackSettingWithContext(context.Background(), request)
@@ -14410,11 +14056,11 @@ func (c *Client) DescribeNetAttackSetting(request *DescribeNetAttackSettingReque
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNetAttackSettingWithContext(ctx context.Context, request *DescribeNetAttackSettingRequest) (response *DescribeNetAttackSettingResponse, err error) {
     if request == nil {
@@ -15161,62 +14807,6 @@ func (c *Client) DescribeProtectDirRelatedServerWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeProtectDirRelatedServerResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeProtectNetListRequest() (request *DescribeProtectNetListRequest) {
-    request = &DescribeProtectNetListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeProtectNetList")
-    
-    
-    return
-}
-
-func NewDescribeProtectNetListResponse() (response *DescribeProtectNetListResponse) {
-    response = &DescribeProtectNetListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeProtectNetList
-// 专家服务-旗舰重保列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeProtectNetList(request *DescribeProtectNetListRequest) (response *DescribeProtectNetListResponse, err error) {
-    return c.DescribeProtectNetListWithContext(context.Background(), request)
-}
-
-// DescribeProtectNetList
-// 专家服务-旗舰重保列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeProtectNetListWithContext(ctx context.Context, request *DescribeProtectNetListRequest) (response *DescribeProtectNetListResponse, err error) {
-    if request == nil {
-        request = NewDescribeProtectNetListRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeProtectNetList")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeProtectNetList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeProtectNetListResponse()
     err = c.Send(request, response)
     return
 }
@@ -25249,80 +24839,6 @@ func (c *Client) GetLocalStorageItemWithContext(ctx context.Context, request *Ge
     request.SetContext(ctx)
     
     response = NewGetLocalStorageItemResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewIgnoreImpactedHostsRequest() (request *IgnoreImpactedHostsRequest) {
-    request = &IgnoreImpactedHostsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "IgnoreImpactedHosts")
-    
-    
-    return
-}
-
-func NewIgnoreImpactedHostsResponse() (response *IgnoreImpactedHostsResponse) {
-    response = &IgnoreImpactedHostsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// IgnoreImpactedHosts
-// 产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
-//
-// 
-//
-// 本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) IgnoreImpactedHosts(request *IgnoreImpactedHostsRequest) (response *IgnoreImpactedHostsResponse, err error) {
-    return c.IgnoreImpactedHostsWithContext(context.Background(), request)
-}
-
-// IgnoreImpactedHosts
-// 产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
-//
-// 
-//
-// 本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) IgnoreImpactedHostsWithContext(ctx context.Context, request *IgnoreImpactedHostsRequest) (response *IgnoreImpactedHostsResponse, err error) {
-    if request == nil {
-        request = NewIgnoreImpactedHostsRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "IgnoreImpactedHosts")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("IgnoreImpactedHosts require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewIgnoreImpactedHostsResponse()
     err = c.Send(request, response)
     return
 }

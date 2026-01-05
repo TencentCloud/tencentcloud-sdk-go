@@ -3879,6 +3879,7 @@ func NewModifyStaffResponse() (response *ModifyStaffResponse) {
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
 //  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+//  LIMITEXCEEDED_INSUFFICIENTLICENSE = "LimitExceeded.InsufficientLicense"
 //  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 func (c *Client) ModifyStaff(request *ModifyStaffRequest) (response *ModifyStaffResponse, err error) {
     return c.ModifyStaffWithContext(context.Background(), request)
@@ -3895,6 +3896,7 @@ func (c *Client) ModifyStaff(request *ModifyStaffRequest) (response *ModifyStaff
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
 //  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+//  LIMITEXCEEDED_INSUFFICIENTLICENSE = "LimitExceeded.InsufficientLicense"
 //  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 func (c *Client) ModifyStaffWithContext(ctx context.Context, request *ModifyStaffRequest) (response *ModifyStaffResponse, err error) {
     if request == nil {

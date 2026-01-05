@@ -3959,6 +3959,56 @@ func (c *Client) DescribeBatchIpAccessControlWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeBotIdRuleRequest() (request *DescribeBotIdRuleRequest) {
+    request = &DescribeBotIdRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeBotIdRule")
+    
+    
+    return
+}
+
+func NewDescribeBotIdRuleResponse() (response *DescribeBotIdRuleResponse) {
+    response = &DescribeBotIdRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBotIdRule
+// 获取BotId规则列表1
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) DescribeBotIdRule(request *DescribeBotIdRuleRequest) (response *DescribeBotIdRuleResponse, err error) {
+    return c.DescribeBotIdRuleWithContext(context.Background(), request)
+}
+
+// DescribeBotIdRule
+// 获取BotId规则列表1
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) DescribeBotIdRuleWithContext(ctx context.Context, request *DescribeBotIdRuleRequest) (response *DescribeBotIdRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeBotIdRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeBotIdRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBotIdRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBotIdRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBotSceneListRequest() (request *DescribeBotSceneListRequest) {
     request = &DescribeBotSceneListRequest{
         BaseRequest: &tchttp.BaseRequest{},
