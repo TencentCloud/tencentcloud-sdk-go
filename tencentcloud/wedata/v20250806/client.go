@@ -1703,6 +1703,56 @@ func (c *Client) DeleteOpsAlarmRuleWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
+    request = &DeleteProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteProject")
+    
+    
+    return
+}
+
+func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
+    response = &DeleteProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteProject
+// 删除项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
+    return c.DeleteProjectWithContext(context.Background(), request)
+}
+
+// DeleteProject
+// 删除项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
+    if request == nil {
+        request = NewDeleteProjectRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "DeleteProject")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteProjectMemberRequest() (request *DeleteProjectMemberRequest) {
     request = &DeleteProjectMemberRequest{
         BaseRequest: &tchttp.BaseRequest{},

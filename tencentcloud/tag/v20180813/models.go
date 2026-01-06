@@ -1972,30 +1972,26 @@ func (r *GetResourcesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTagKeysRequestParams struct {
-	// 从上一页的响应中获取的下一页的Token值。
-	// 如果是第一次请求，设置为空。
+	// <p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
-	// 每一页返回的数据最大条数，最大1000。
-	// 缺省值：50。
+	// <p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	// <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
 type GetTagKeysRequest struct {
 	*tchttp.BaseRequest
 	
-	// 从上一页的响应中获取的下一页的Token值。
-	// 如果是第一次请求，设置为空。
+	// <p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
-	// 每一页返回的数据最大条数，最大1000。
-	// 缺省值：50。
+	// <p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	// <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
@@ -2022,10 +2018,10 @@ func (r *GetTagKeysRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTagKeysResponseParams struct {
-	// 获取的下一页的Token值，如果当前是最后一页，返回为空
+	// <p>获取的下一页的Token值，如果当前是最后一页，返回为空</p>
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
-	// 标签键信息。
+	// <p>标签键信息。</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2050,40 +2046,32 @@ func (r *GetTagKeysResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTagValuesRequestParams struct {
-	// 标签键。
-	// 返回所有标签键列表对应的标签值。
-	// 最大长度：20
+	// <p>标签键。返回所有标签键列表对应的标签值。最大长度：20</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 从上一页的响应中获取的下一页的Token值。
-	// 如果是第一次请求，设置为空。
+	// <p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
-	// 每一页返回的数据最大条数，最大1000。
-	// 缺省值：50。
+	// <p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	// <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
 type GetTagValuesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 标签键。
-	// 返回所有标签键列表对应的标签值。
-	// 最大长度：20
+	// <p>标签键。返回所有标签键列表对应的标签值。最大长度：20</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 从上一页的响应中获取的下一页的Token值。
-	// 如果是第一次请求，设置为空。
+	// <p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
-	// 每一页返回的数据最大条数，最大1000。
-	// 缺省值：50。
+	// <p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	// <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
@@ -2111,10 +2099,10 @@ func (r *GetTagValuesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTagValuesResponseParams struct {
-	// 获取的下一页的Token值，如果当前是最后一页，返回为空
+	// <p>获取的下一页的Token值，如果当前是最后一页，返回为空</p>
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
-	// 标签列表。
+	// <p>标签列表。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2139,40 +2127,32 @@ func (r *GetTagValuesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTagsRequestParams struct {
-	// 从上一页的响应中获取的下一页的Token值。
-	// 如果是第一次请求，设置为空。
+	// <p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
-	// 每一页返回的数据最大条数，最大1000。
-	// 缺省值：50。
+	// <p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 标签键。
-	// 返回所有标签键列表对应的标签。
-	// 最大长度：20
+	// <p>标签键。返回所有标签键列表对应的标签。最大长度：20</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	// <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
 type GetTagsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 从上一页的响应中获取的下一页的Token值。
-	// 如果是第一次请求，设置为空。
+	// <p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
-	// 每一页返回的数据最大条数，最大1000。
-	// 缺省值：50。
+	// <p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 标签键。
-	// 返回所有标签键列表对应的标签。
-	// 最大长度：20
+	// <p>标签键。返回所有标签键列表对应的标签。最大长度：20</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	// <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
@@ -2200,10 +2180,10 @@ func (r *GetTagsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTagsResponseParams struct {
-	// 获取的下一页的Token值，如果当前是最后一页，返回为空
+	// <p>获取的下一页的Token值，如果当前是最后一页，返回为空</p>
 	PaginationToken *string `json:"PaginationToken,omitnil,omitempty" name:"PaginationToken"`
 
-	// 标签列表。
+	// <p>标签列表。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

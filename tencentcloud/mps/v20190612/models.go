@@ -2233,7 +2233,6 @@ type AigcImageExtraParam struct {
 	// 
 	// 不同模型支持的宽高比:
 	// 1. GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。
-	// 2. Jimeng：合用户prompt意图、参考图尺寸，由模型智能判断生图宽高比。
 	// 
 	// 注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
@@ -2242,20 +2241,6 @@ type AigcImageExtraParam struct {
 	// 
 	// 支持该参数的模型：
 	// 支持选择: 720P, 1080P, 2K, 4K。
-	// 
-	// 1. Jimeng推荐通过prompt指定图片分辨率和宽高比。
-	//     2K
-	//     2048x2048 （1:1）
-	//     2304x1728（4:3）
-	//     2496x1664 （3:2）
-	//     2560x1440 （16:9）
-	//     3024x1296 （21:9）
-	//     4K
-	//     4096x4096 （1:1）
-	//     4694x3520（4:3）
-	//     4992x3328 （3:2）
-	//     5404x3040 （16:9）
-	//     6198x2656 （21:9）
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 }
 
@@ -15766,6 +15751,9 @@ type ImageProcessOutputConfig struct {
 
 	// 图片输出宽度，单位：像素。
 	ImageWidth *int64 `json:"ImageWidth,omitnil,omitempty" name:"ImageWidth"`
+
+	// 图片输出分辨率，取值：1K/2K/4K。
+	ImageSize *string `json:"ImageSize,omitnil,omitempty" name:"ImageSize"`
 }
 
 type ImageProcessTaskOutput struct {
@@ -15779,6 +15767,9 @@ type ImageProcessTaskOutput struct {
 
 	// 输出文件的URL。
 	SignedUrl *string `json:"SignedUrl,omitnil,omitempty" name:"SignedUrl"`
+
+	// 图生文任务的处理结果。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type ImageProcessTaskResult struct {

@@ -2139,6 +2139,9 @@ type AigcVideoOutputConfig struct {
 	// 1. 对于选择的分辨率超过模型可生成分辨率时，默认会启用增强。
 	// 2. 对于模型可以直出的分辨率，也可以主动选择模型直出低分辨率，使用增强获得指定分辨率。
 	EnhanceSwitch *string `json:"EnhanceSwitch,omitnil,omitempty" name:"EnhanceSwitch"`
+
+	// 是否开启vidu智能插帧。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+	FrameInterpolate *string `json:"FrameInterpolate,omitnil,omitempty" name:"FrameInterpolate"`
 }
 
 type AigcVideoTask struct {
@@ -4238,14 +4241,12 @@ type CreateAigcImageTaskRequestParams struct {
 	// <li>GEM：Gemini；</li>
 	// <li>Qwen：千问。</li>
 	// <li>Hunyuan：混元。</li>
-	// <li>Mingmou：明眸。</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// 模型版本。取值：
 	// <li>当 ModelName 是 GEM，可选值为 2.5、3.0；</li>
 	// <li>当 ModelName 是 Qwen，可选值为 0925；</li>
 	// <li>当 ModelName 是 Hunyuan，可选值为 3.0；</li>
-	// <li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时，版本2.5最多指定3个，版本3.0最多指定14个。
@@ -4286,14 +4287,12 @@ type CreateAigcImageTaskRequest struct {
 	// <li>GEM：Gemini；</li>
 	// <li>Qwen：千问。</li>
 	// <li>Hunyuan：混元。</li>
-	// <li>Mingmou：明眸。</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// 模型版本。取值：
 	// <li>当 ModelName 是 GEM，可选值为 2.5、3.0；</li>
 	// <li>当 ModelName 是 Qwen，可选值为 0925；</li>
 	// <li>当 ModelName 是 Hunyuan，可选值为 3.0；</li>
-	// <li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时，版本2.5最多指定3个，版本3.0最多指定14个。

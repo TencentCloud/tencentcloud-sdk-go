@@ -24725,11 +24725,14 @@ type GatewayQos struct {
 	// 云服务器内网IP。
 	IpAddress *string `json:"IpAddress,omitnil,omitempty" name:"IpAddress"`
 
-	// 流控带宽值。
+	// 网关流控出方向带宽值，当值为-1时，代表未限速；当值大于等于0时，限速带宽上限为返回值。
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 网关流控入方向带宽值，当值为-1时，代表未限速；当值大于等于0时，限速带宽上限为返回值。
+	InBandwidth *int64 `json:"InBandwidth,omitnil,omitempty" name:"InBandwidth"`
 }
 
 // Predefined struct for user

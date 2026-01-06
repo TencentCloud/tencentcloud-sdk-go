@@ -4893,7 +4893,7 @@ type UpdateCfsFileSystemSizeLimitRequestParams struct {
 	// 文件系统容量限制大小，输入范围0-1073741824, 单位为GB；其中输入值为0时，表示不限制文件系统容量。
 	FsLimit *uint64 `json:"FsLimit,omitnil,omitempty" name:"FsLimit"`
 
-	// 文件系统ID，目前仅支持标准型文件系统。该参数通过查询文件系统列表获取
+	// 文件系统 ID，此功能需要开白使用，请[提交工单](https://console.cloud.tencent.com/workorder/category?from=ticket-tab)进行申请。当前仅支持通用标准型文件系统设置存储容量上限。该参数通过[查询文件系统](https://cloud.tencent.com/document/product/582/38170)获取。
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
@@ -4903,7 +4903,7 @@ type UpdateCfsFileSystemSizeLimitRequest struct {
 	// 文件系统容量限制大小，输入范围0-1073741824, 单位为GB；其中输入值为0时，表示不限制文件系统容量。
 	FsLimit *uint64 `json:"FsLimit,omitnil,omitempty" name:"FsLimit"`
 
-	// 文件系统ID，目前仅支持标准型文件系统。该参数通过查询文件系统列表获取
+	// 文件系统 ID，此功能需要开白使用，请[提交工单](https://console.cloud.tencent.com/workorder/category?from=ticket-tab)进行申请。当前仅支持通用标准型文件系统设置存储容量上限。该参数通过[查询文件系统](https://cloud.tencent.com/document/product/582/38170)获取。
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 

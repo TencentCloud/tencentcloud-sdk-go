@@ -2079,6 +2079,9 @@ type SubmitTemplateToImageJobRequestParams struct {
 	// 绘画风格当前仅支持美术馆风格（gallerying）。
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
 
+	// 特效模式，默认使用人像模式。 Person：人像模式，仅支持上传人像图片，人像生成效果更好【这里需要加非人脸的拦截】。 Pet：宠物模式，支持宠物等非人像图片。 示例值：Person
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
 	// 为生成结果图添加显式水印标识的开关，默认为1。  
 	// 1：添加。  
 	// 0：不添加。  
@@ -2101,6 +2104,9 @@ type SubmitTemplateToImageJobRequest struct {
 
 	// 绘画风格当前仅支持美术馆风格（gallerying）。
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 特效模式，默认使用人像模式。 Person：人像模式，仅支持上传人像图片，人像生成效果更好【这里需要加非人脸的拦截】。 Pet：宠物模式，支持宠物等非人像图片。 示例值：Person
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// 为生成结果图添加显式水印标识的开关，默认为1。  
 	// 1：添加。  
@@ -2128,6 +2134,7 @@ func (r *SubmitTemplateToImageJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Image")
 	delete(f, "Style")
+	delete(f, "Mode")
 	delete(f, "LogoAdd")
 	delete(f, "LogoParam")
 	if len(f) > 0 {

@@ -5353,6 +5353,9 @@ type DescribeScoresRequestParams struct {
 	//
 	// Deprecated: IsDemo is deprecated.
 	IsDemo *int64 `json:"IsDemo,omitnil,omitempty" name:"IsDemo"`
+
+	// 项目 ID 列表
+	IDList []*int64 `json:"IDList,omitnil,omitempty" name:"IDList"`
 }
 
 type DescribeScoresRequest struct {
@@ -5369,6 +5372,9 @@ type DescribeScoresRequest struct {
 
 	// 该参数已废弃
 	IsDemo *int64 `json:"IsDemo,omitnil,omitempty" name:"IsDemo"`
+
+	// 项目 ID 列表
+	IDList []*int64 `json:"IDList,omitnil,omitempty" name:"IDList"`
 }
 
 func (r *DescribeScoresRequest) ToJsonString() string {
@@ -5387,6 +5393,7 @@ func (r *DescribeScoresRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "ID")
 	delete(f, "IsDemo")
+	delete(f, "IDList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScoresRequest has unknown keys!", "")
 	}
