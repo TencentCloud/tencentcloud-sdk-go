@@ -12567,6 +12567,76 @@ func (c *Client) ForbidLiveStreamWithContext(ctx context.Context, request *Forbi
     return
 }
 
+func NewInsertTaskTemporaryFilesRequest() (request *InsertTaskTemporaryFilesRequest) {
+    request = &InsertTaskTemporaryFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "InsertTaskTemporaryFiles")
+    
+    
+    return
+}
+
+func NewInsertTaskTemporaryFilesResponse() (response *InsertTaskTemporaryFilesResponse) {
+    response = &InsertTaskTemporaryFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InsertTaskTemporaryFiles
+// 可通过调用该接口，对点播源的直播拉流任务进行插播操作。
+//
+// 注意：
+//
+// 1. 仅支持对有效且运行中的点播源任务进行插播操作。
+//
+// 2. 拉转推插播文件时，事件及回调中的索引均保持为插播前的值。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) InsertTaskTemporaryFiles(request *InsertTaskTemporaryFilesRequest) (response *InsertTaskTemporaryFilesResponse, err error) {
+    return c.InsertTaskTemporaryFilesWithContext(context.Background(), request)
+}
+
+// InsertTaskTemporaryFiles
+// 可通过调用该接口，对点播源的直播拉流任务进行插播操作。
+//
+// 注意：
+//
+// 1. 仅支持对有效且运行中的点播源任务进行插播操作。
+//
+// 2. 拉转推插播文件时，事件及回调中的索引均保持为插播前的值。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) InsertTaskTemporaryFilesWithContext(ctx context.Context, request *InsertTaskTemporaryFilesRequest) (response *InsertTaskTemporaryFilesResponse, err error) {
+    if request == nil {
+        request = NewInsertTaskTemporaryFilesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "InsertTaskTemporaryFiles")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InsertTaskTemporaryFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInsertTaskTemporaryFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCasterRequest() (request *ModifyCasterRequest) {
     request = &ModifyCasterRequest{
         BaseRequest: &tchttp.BaseRequest{},

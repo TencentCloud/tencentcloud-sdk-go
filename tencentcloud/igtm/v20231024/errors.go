@@ -260,7 +260,7 @@ const (
 	// 主力集合不能为空
 	UNSUPPORTEDOPERATION_MAINPOOLEMPTY = "UnsupportedOperation.MainPoolEmpty"
 
-	// 主力地址池阀值不合法
+	// 主力地址池阈值不合法
 	UNSUPPORTEDOPERATION_MAINPOOLSURVIVENUMINVALID = "UnsupportedOperation.MainPoolSurviveNumInvalid"
 
 	// 监控器名已存在

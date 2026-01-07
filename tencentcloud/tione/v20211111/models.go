@@ -2738,7 +2738,7 @@ type DescribeBillingResourceGroupRequestParams struct {
 	// 3. 每次请求的Filters的上限为10，Filter.Values的上限为100
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10....即每页左边为闭区间; 默认0
+	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页查询每页大小，默认20
@@ -2766,7 +2766,7 @@ type DescribeBillingResourceGroupRequest struct {
 	// 3. 每次请求的Filters的上限为10，Filter.Values的上限为100
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10....即每页左边为闭区间; 默认0
+	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 分页查询每页大小，默认20
@@ -6263,6 +6263,240 @@ func (r *ModifyModelServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyModelServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNotebookRequestParams struct {
+	// notebook id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// （不允许修改）计算资源付费模式 ，可选值为：
+	// PREPAID：预付费，即包年包月
+	// POSTPAID_BY_HOUR：按小时后付费
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 计算资源配置
+	ResourceConf *ResourceConf `json:"ResourceConf,omitnil,omitempty" name:"ResourceConf"`
+
+	// 是否自动停止
+	AutoStopping *bool `json:"AutoStopping,omitnil,omitempty" name:"AutoStopping"`
+
+	// 是否访问公网
+	DirectInternetAccess *bool `json:"DirectInternetAccess,omitnil,omitempty" name:"DirectInternetAccess"`
+
+	// 是否ROOT权限
+	RootAccess *bool `json:"RootAccess,omitnil,omitempty" name:"RootAccess"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
+
+	// 资源组ID(for预付费)
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// （不允许修改）Vpc-Id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// （不允许修改）子网Id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 存储卷大小，单位GB
+	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil,omitempty" name:"VolumeSizeInGB"`
+
+	// （不允许修改）存储的类型。取值包含： 
+	//     FREE:    预付费的免费存储
+	//     CLOUD_PREMIUM： 高性能云硬盘
+	//     CLOUD_SSD： SSD云硬盘
+	//     CFS:     CFS存储，包含NFS和turbo
+	VolumeSourceType *string `json:"VolumeSourceType,omitnil,omitempty" name:"VolumeSourceType"`
+
+	// （不允许修改）CFS存储的配置
+	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitnil,omitempty" name:"VolumeSourceCFS"`
+
+	// 日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
+
+	// 生命周期脚本的ID
+	LifecycleScriptId *string `json:"LifecycleScriptId,omitnil,omitempty" name:"LifecycleScriptId"`
+
+	// 默认GIT存储库的ID
+	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitnil,omitempty" name:"DefaultCodeRepoId"`
+
+	// 其他GIT存储库的ID，最多3个
+	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitnil,omitempty" name:"AdditionalCodeRepoIds"`
+
+	// 自动停止时间，单位小时
+	AutomaticStopTime *int64 `json:"AutomaticStopTime,omitnil,omitempty" name:"AutomaticStopTime"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 数据配置，只支持WEDATA_HDFS
+	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
+
+	// 镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
+
+	// 镜像类型，包括SYSTEM、TCR、CCR
+	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
+
+	// SSH配置
+	SSHConfig *SSHConfig `json:"SSHConfig,omitnil,omitempty" name:"SSHConfig"`
+
+	// 自定义环境变量
+	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
+}
+
+type ModifyNotebookRequest struct {
+	*tchttp.BaseRequest
+	
+	// notebook id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// （不允许修改）计算资源付费模式 ，可选值为：
+	// PREPAID：预付费，即包年包月
+	// POSTPAID_BY_HOUR：按小时后付费
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 计算资源配置
+	ResourceConf *ResourceConf `json:"ResourceConf,omitnil,omitempty" name:"ResourceConf"`
+
+	// 是否自动停止
+	AutoStopping *bool `json:"AutoStopping,omitnil,omitempty" name:"AutoStopping"`
+
+	// 是否访问公网
+	DirectInternetAccess *bool `json:"DirectInternetAccess,omitnil,omitempty" name:"DirectInternetAccess"`
+
+	// 是否ROOT权限
+	RootAccess *bool `json:"RootAccess,omitnil,omitempty" name:"RootAccess"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
+
+	// 资源组ID(for预付费)
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// （不允许修改）Vpc-Id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// （不允许修改）子网Id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 存储卷大小，单位GB
+	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil,omitempty" name:"VolumeSizeInGB"`
+
+	// （不允许修改）存储的类型。取值包含： 
+	//     FREE:    预付费的免费存储
+	//     CLOUD_PREMIUM： 高性能云硬盘
+	//     CLOUD_SSD： SSD云硬盘
+	//     CFS:     CFS存储，包含NFS和turbo
+	VolumeSourceType *string `json:"VolumeSourceType,omitnil,omitempty" name:"VolumeSourceType"`
+
+	// （不允许修改）CFS存储的配置
+	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitnil,omitempty" name:"VolumeSourceCFS"`
+
+	// 日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
+
+	// 生命周期脚本的ID
+	LifecycleScriptId *string `json:"LifecycleScriptId,omitnil,omitempty" name:"LifecycleScriptId"`
+
+	// 默认GIT存储库的ID
+	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitnil,omitempty" name:"DefaultCodeRepoId"`
+
+	// 其他GIT存储库的ID，最多3个
+	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitnil,omitempty" name:"AdditionalCodeRepoIds"`
+
+	// 自动停止时间，单位小时
+	AutomaticStopTime *int64 `json:"AutomaticStopTime,omitnil,omitempty" name:"AutomaticStopTime"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 数据配置，只支持WEDATA_HDFS
+	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
+
+	// 镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
+
+	// 镜像类型，包括SYSTEM、TCR、CCR
+	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
+
+	// SSH配置
+	SSHConfig *SSHConfig `json:"SSHConfig,omitnil,omitempty" name:"SSHConfig"`
+
+	// 自定义环境变量
+	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
+}
+
+func (r *ModifyNotebookRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotebookRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "ChargeType")
+	delete(f, "ResourceConf")
+	delete(f, "AutoStopping")
+	delete(f, "DirectInternetAccess")
+	delete(f, "RootAccess")
+	delete(f, "LogEnable")
+	delete(f, "ResourceGroupId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "VolumeSizeInGB")
+	delete(f, "VolumeSourceType")
+	delete(f, "VolumeSourceCFS")
+	delete(f, "LogConfig")
+	delete(f, "LifecycleScriptId")
+	delete(f, "DefaultCodeRepoId")
+	delete(f, "AdditionalCodeRepoIds")
+	delete(f, "AutomaticStopTime")
+	delete(f, "Tags")
+	delete(f, "DataConfigs")
+	delete(f, "ImageInfo")
+	delete(f, "ImageType")
+	delete(f, "SSHConfig")
+	delete(f, "Envs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotebookRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNotebookResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyNotebookResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNotebookResponseParams `json:"Response"`
+}
+
+func (r *ModifyNotebookResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotebookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

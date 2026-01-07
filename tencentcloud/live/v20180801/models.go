@@ -14935,6 +14935,109 @@ type HttpStatusInfo struct {
 	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
 }
 
+// Predefined struct for user
+type InsertTaskTemporaryFilesRequestParams struct {
+	// 直播拉流任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 插播文件列表，支持一次性插播多个文件，文件个数最大支持30个。可在轮播过程中追加新的插播文件。
+	TemporaryFiles []*string `json:"TemporaryFiles,omitnil,omitempty" name:"TemporaryFiles"`
+
+	// 操作人名称。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 将文件插在当前轮播序列的指定位置后面。索引序列从1开始。默认为：0，表示播完当前文件立即播放插入文件。注意：索引不要超过当前总文件个数，否则按播完全部文件后再处理插播文件。
+	InsertAfterIndex *int64 `json:"InsertAfterIndex,omitnil,omitempty" name:"InsertAfterIndex"`
+
+	// 用于多个文件插播在同一个轮播序号之后时，可指定队列顺序。
+	// 0 - 最高优先级队列。默认值。
+	// 1 - 中等优先级队列。
+	// 2 - 最低优先级队列。
+	// 场景示例：
+	// 比如当前播放第2个文件，多个新文件插播在第2个文件之后，播完第二个轮播文件之后，优先播放InsertPriorityType为0的插播队列中的文件，再播放InsertPriorityType为1的插播队列中的文件，最后播放InsertPriorityType为2的插播队列文件。
+	// 如果插播无队列优先级要求，则无需使用此参数。
+	InsertPriorityType *int64 `json:"InsertPriorityType,omitnil,omitempty" name:"InsertPriorityType"`
+
+	// 插播上下文信息。由用户自定义传入。当播放到使用本此插播请求插入的文件时，在文件播放开始和文件播放结束的回调时，将此上下文信息通过创建任务携带的回调地址回调给用户。
+	// 注意：如果有关联每个插播文件的信息需要回调时，可将需要回调的信息自行拼接到插播文件URL上，通过回调信息中的URL进行读取使用。
+	InsertContext *string `json:"InsertContext,omitnil,omitempty" name:"InsertContext"`
+}
+
+type InsertTaskTemporaryFilesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 直播拉流任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 插播文件列表，支持一次性插播多个文件，文件个数最大支持30个。可在轮播过程中追加新的插播文件。
+	TemporaryFiles []*string `json:"TemporaryFiles,omitnil,omitempty" name:"TemporaryFiles"`
+
+	// 操作人名称。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 将文件插在当前轮播序列的指定位置后面。索引序列从1开始。默认为：0，表示播完当前文件立即播放插入文件。注意：索引不要超过当前总文件个数，否则按播完全部文件后再处理插播文件。
+	InsertAfterIndex *int64 `json:"InsertAfterIndex,omitnil,omitempty" name:"InsertAfterIndex"`
+
+	// 用于多个文件插播在同一个轮播序号之后时，可指定队列顺序。
+	// 0 - 最高优先级队列。默认值。
+	// 1 - 中等优先级队列。
+	// 2 - 最低优先级队列。
+	// 场景示例：
+	// 比如当前播放第2个文件，多个新文件插播在第2个文件之后，播完第二个轮播文件之后，优先播放InsertPriorityType为0的插播队列中的文件，再播放InsertPriorityType为1的插播队列中的文件，最后播放InsertPriorityType为2的插播队列文件。
+	// 如果插播无队列优先级要求，则无需使用此参数。
+	InsertPriorityType *int64 `json:"InsertPriorityType,omitnil,omitempty" name:"InsertPriorityType"`
+
+	// 插播上下文信息。由用户自定义传入。当播放到使用本此插播请求插入的文件时，在文件播放开始和文件播放结束的回调时，将此上下文信息通过创建任务携带的回调地址回调给用户。
+	// 注意：如果有关联每个插播文件的信息需要回调时，可将需要回调的信息自行拼接到插播文件URL上，通过回调信息中的URL进行读取使用。
+	InsertContext *string `json:"InsertContext,omitnil,omitempty" name:"InsertContext"`
+}
+
+func (r *InsertTaskTemporaryFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InsertTaskTemporaryFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TemporaryFiles")
+	delete(f, "Operator")
+	delete(f, "InsertAfterIndex")
+	delete(f, "InsertPriorityType")
+	delete(f, "InsertContext")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InsertTaskTemporaryFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InsertTaskTemporaryFilesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InsertTaskTemporaryFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *InsertTaskTemporaryFilesResponseParams `json:"Response"`
+}
+
+func (r *InsertTaskTemporaryFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InsertTaskTemporaryFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type LiveCertDomainInfo struct {
 	// 域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`

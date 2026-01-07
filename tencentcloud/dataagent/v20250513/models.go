@@ -39,6 +39,9 @@ type AddChunkRequestParams struct {
 
 	// 新 Chunk 插入到目标 Chunk ​之后的位置。插入位置的上一个 chunkId
 	AfterChunkId *string `json:"AfterChunkId,omitnil,omitempty" name:"AfterChunkId"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
 type AddChunkRequest struct {
@@ -61,6 +64,9 @@ type AddChunkRequest struct {
 
 	// 新 Chunk 插入到目标 Chunk ​之后的位置。插入位置的上一个 chunkId
 	AfterChunkId *string `json:"AfterChunkId,omitnil,omitempty" name:"AfterChunkId"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
 func (r *AddChunkRequest) ToJsonString() string {
@@ -81,6 +87,7 @@ func (r *AddChunkRequest) FromJsonString(s string) error {
 	delete(f, "InsertPos")
 	delete(f, "Content")
 	delete(f, "AfterChunkId")
+	delete(f, "KnowledgeBaseId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddChunkRequest has unknown keys!", "")
 	}
@@ -338,6 +345,9 @@ type DeleteChunkRequestParams struct {
 
 	// 切片ID
 	ChunkIds []*string `json:"ChunkIds,omitnil,omitempty" name:"ChunkIds"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
 type DeleteChunkRequest struct {
@@ -351,6 +361,9 @@ type DeleteChunkRequest struct {
 
 	// 切片ID
 	ChunkIds []*string `json:"ChunkIds,omitnil,omitempty" name:"ChunkIds"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
 func (r *DeleteChunkRequest) ToJsonString() string {
@@ -368,6 +381,7 @@ func (r *DeleteChunkRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "FileId")
 	delete(f, "ChunkIds")
+	delete(f, "KnowledgeBaseId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteChunkRequest has unknown keys!", "")
 	}
@@ -897,6 +911,9 @@ type ModifyChunkRequestParams struct {
 
 	// 编辑后的文本
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
 type ModifyChunkRequest struct {
@@ -913,6 +930,9 @@ type ModifyChunkRequest struct {
 
 	// 编辑后的文本
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
 func (r *ModifyChunkRequest) ToJsonString() string {
@@ -931,6 +951,7 @@ func (r *ModifyChunkRequest) FromJsonString(s string) error {
 	delete(f, "FileId")
 	delete(f, "ChunkId")
 	delete(f, "Content")
+	delete(f, "KnowledgeBaseId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyChunkRequest has unknown keys!", "")
 	}
@@ -975,6 +996,12 @@ type ModifyKnowledgeBaseRequestParams struct {
 
 	// 知识库描述，create和update时必填
 	KnowledgeBaseDesc *string `json:"KnowledgeBaseDesc,omitnil,omitempty" name:"KnowledgeBaseDesc"`
+
+	// 1仅自己使用，2指定用户，0全员
+	UseScope *int64 `json:"UseScope,omitnil,omitempty" name:"UseScope"`
+
+	// 可使用用户列表
+	AuthorityUins []*string `json:"AuthorityUins,omitnil,omitempty" name:"AuthorityUins"`
 }
 
 type ModifyKnowledgeBaseRequest struct {
@@ -994,6 +1021,12 @@ type ModifyKnowledgeBaseRequest struct {
 
 	// 知识库描述，create和update时必填
 	KnowledgeBaseDesc *string `json:"KnowledgeBaseDesc,omitnil,omitempty" name:"KnowledgeBaseDesc"`
+
+	// 1仅自己使用，2指定用户，0全员
+	UseScope *int64 `json:"UseScope,omitnil,omitempty" name:"UseScope"`
+
+	// 可使用用户列表
+	AuthorityUins []*string `json:"AuthorityUins,omitnil,omitempty" name:"AuthorityUins"`
 }
 
 func (r *ModifyKnowledgeBaseRequest) ToJsonString() string {
@@ -1013,6 +1046,8 @@ func (r *ModifyKnowledgeBaseRequest) FromJsonString(s string) error {
 	delete(f, "KnowledgeBaseId")
 	delete(f, "KnowledgeBaseName")
 	delete(f, "KnowledgeBaseDesc")
+	delete(f, "UseScope")
+	delete(f, "AuthorityUins")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKnowledgeBaseRequest has unknown keys!", "")
 	}
@@ -1051,6 +1086,9 @@ type QueryChunkListRequestParams struct {
 
 	// 默认一页展示 10 条
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
 type QueryChunkListRequest struct {
@@ -1061,6 +1099,9 @@ type QueryChunkListRequest struct {
 
 	// 默认一页展示 10 条
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 知识库id
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
 func (r *QueryChunkListRequest) ToJsonString() string {
@@ -1077,6 +1118,7 @@ func (r *QueryChunkListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Page")
 	delete(f, "PageSize")
+	delete(f, "KnowledgeBaseId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryChunkListRequest has unknown keys!", "")
 	}

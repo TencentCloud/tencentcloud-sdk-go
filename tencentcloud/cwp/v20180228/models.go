@@ -41709,6 +41709,9 @@ type NetAttackEventInfo struct {
 
 	// IP分析
 	IPAnalyse *IPAnalyse `json:"IPAnalyse,omitnil,omitempty" name:"IPAnalyse"`
+
+	// 响应数据包 base64编码
+	NetResponsePayload *string `json:"NetResponsePayload,omitnil,omitempty" name:"NetResponsePayload"`
 }
 
 type NetAttackTopInfo struct {

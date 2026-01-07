@@ -985,7 +985,7 @@ type BackupConfig struct {
 	// 第二个从库复制方式，可能的返回值：async-异步，semisync-半同步
 	ReplicationMode *string `json:"ReplicationMode,omitnil,omitempty" name:"ReplicationMode"`
 
-	// 第二个从库可用区的正式名称，如ap-shanghai-1
+	// 第二个从库可用区的正式名称，如 ap-shanghai-2
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 第二个从库内网IP地址
@@ -7383,7 +7383,7 @@ type DescribeDBInstanceConfigResponseParams struct {
 	// 主实例部署方式，可能的返回值：0 - 单可用部署，1 - 多可用区部署。
 	DeployMode *int64 `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 
-	// 实例可用区信息，格式如 "ap-shanghai-1"。
+	// 实例可用区信息，格式如 "ap-shanghai-2"。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 备库的配置信息。
@@ -16047,7 +16047,7 @@ type RoInstanceInfo struct {
 	// RO实例所在区域名称，如ap-shanghai
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// RO可用区的正式名称，如ap-shanghai-1
+	// RO可用区的正式名称，如 ap-shanghai-2
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// RO实例ID，格式如：cdbro-c1nl9rpv
@@ -16285,7 +16285,7 @@ type SlaveConfig struct {
 	// 从库复制方式，可能的返回值：aysnc-异步，semisync-半同步
 	ReplicationMode *string `json:"ReplicationMode,omitnil,omitempty" name:"ReplicationMode"`
 
-	// 从库可用区的正式名称，如ap-shanghai-1
+	// 从库可用区的正式名称，如 ap-shanghai-2
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 

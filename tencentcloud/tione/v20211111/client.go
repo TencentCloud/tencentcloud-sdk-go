@@ -3717,6 +3717,126 @@ func (c *Client) ModifyModelServiceAuthorizationWithContext(ctx context.Context,
     return
 }
 
+func NewModifyNotebookRequest() (request *ModifyNotebookRequest) {
+    request = &ModifyNotebookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyNotebook")
+    
+    
+    return
+}
+
+func NewModifyNotebookResponse() (response *ModifyNotebookResponse) {
+    response = &ModifyNotebookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNotebook
+// 修改Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  FAILEDOPERATION_MODIFYRESOURCEBILLINGTAGSFAILED = "FailedOperation.ModifyResourceBillingTagsFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
+//  FAILEDOPERATION_UNAUTHORIZEDOPERATION = "FailedOperation.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  INTERNALERROR_CREATECUSTOMSECRETFAILED = "InternalError.CreateCustomSecretFailed"
+//  INTERNALERROR_DELETECUSTOMSECRETFAILED = "InternalError.DeleteCustomSecretFailed"
+//  INTERNALERROR_DESCRIBECUSTOMSECRETFAILED = "InternalError.DescribeCustomSecretFailed"
+//  INTERNALERROR_DESCRIBESUBUINDEPENDENCYACCESSIBILITYFAILED = "InternalError.DescribeSubuinDependencyAccessibilityFailed"
+//  INTERNALERROR_MODIFYCUSTOMSECRETFAILED = "InternalError.ModifyCustomSecretFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDMULTILOCALDISK = "InvalidParameter.UnsupportedMultiLocalDisk"
+//  INVALIDPARAMETERVALUE_CCNHASNOATTACHEDVPC = "InvalidParameterValue.CcnHasNoAttachedVpc"
+//  INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
+//  INVALIDPARAMETERVALUE_DATACONFIGNUMLIMITEXCEEDED = "InvalidParameterValue.DataConfigNumLimitExceeded"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_IMAGEADDRESSILLEGAL = "InvalidParameterValue.ImageAddressIllegal"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGAL = "InvalidParameterValue.ImageIllegal"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGENAME = "InvalidParameterValue.InvalidImageName"
+//  INVALIDPARAMETERVALUE_INVALIDRESOURCESPEC = "InvalidParameterValue.InvalidResourceSpec"
+//  INVALIDPARAMETERVALUE_LIFECYCLENOTFOUND = "InvalidParameterValue.LifecycleNotFound"
+//  INVALIDPARAMETERVALUE_PATHILLEGAL = "InvalidParameterValue.PathIllegal"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+//  INVALIDPARAMETERVALUE_VOLUMESHRINKNOTALLOW = "InvalidParameterValue.VolumeShrinkNotAllow"
+//  OPERATIONDENIED_FORBIDMODIFYVPCANDSUBNET = "OperationDenied.ForbidModifyVpcAndSubnet"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCEGROUPNOTFOUND = "ResourceNotFound.ResourceGroupNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyNotebook(request *ModifyNotebookRequest) (response *ModifyNotebookResponse, err error) {
+    return c.ModifyNotebookWithContext(context.Background(), request)
+}
+
+// ModifyNotebook
+// 修改Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  FAILEDOPERATION_MODIFYRESOURCEBILLINGTAGSFAILED = "FailedOperation.ModifyResourceBillingTagsFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
+//  FAILEDOPERATION_UNAUTHORIZEDOPERATION = "FailedOperation.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  INTERNALERROR_CREATECUSTOMSECRETFAILED = "InternalError.CreateCustomSecretFailed"
+//  INTERNALERROR_DELETECUSTOMSECRETFAILED = "InternalError.DeleteCustomSecretFailed"
+//  INTERNALERROR_DESCRIBECUSTOMSECRETFAILED = "InternalError.DescribeCustomSecretFailed"
+//  INTERNALERROR_DESCRIBESUBUINDEPENDENCYACCESSIBILITYFAILED = "InternalError.DescribeSubuinDependencyAccessibilityFailed"
+//  INTERNALERROR_MODIFYCUSTOMSECRETFAILED = "InternalError.ModifyCustomSecretFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDMULTILOCALDISK = "InvalidParameter.UnsupportedMultiLocalDisk"
+//  INVALIDPARAMETERVALUE_CCNHASNOATTACHEDVPC = "InvalidParameterValue.CcnHasNoAttachedVpc"
+//  INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
+//  INVALIDPARAMETERVALUE_DATACONFIGNUMLIMITEXCEEDED = "InvalidParameterValue.DataConfigNumLimitExceeded"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_IMAGEADDRESSILLEGAL = "InvalidParameterValue.ImageAddressIllegal"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGAL = "InvalidParameterValue.ImageIllegal"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGENAME = "InvalidParameterValue.InvalidImageName"
+//  INVALIDPARAMETERVALUE_INVALIDRESOURCESPEC = "InvalidParameterValue.InvalidResourceSpec"
+//  INVALIDPARAMETERVALUE_LIFECYCLENOTFOUND = "InvalidParameterValue.LifecycleNotFound"
+//  INVALIDPARAMETERVALUE_PATHILLEGAL = "InvalidParameterValue.PathIllegal"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+//  INVALIDPARAMETERVALUE_VOLUMESHRINKNOTALLOW = "InvalidParameterValue.VolumeShrinkNotAllow"
+//  OPERATIONDENIED_FORBIDMODIFYVPCANDSUBNET = "OperationDenied.ForbidModifyVpcAndSubnet"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCEGROUPNOTFOUND = "ResourceNotFound.ResourceGroupNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyNotebookWithContext(ctx context.Context, request *ModifyNotebookRequest) (response *ModifyNotebookResponse, err error) {
+    if request == nil {
+        request = NewModifyNotebookRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ModifyNotebook")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNotebook require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNotebookResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNotebookTagsRequest() (request *ModifyNotebookTagsRequest) {
     request = &ModifyNotebookTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},

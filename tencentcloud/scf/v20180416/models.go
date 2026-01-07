@@ -3548,7 +3548,20 @@ type ListFunctionsRequestParams struct {
 	// 函数描述，支持模糊搜索
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// `过滤特定属性或者有特定标签的函数。`- 传值方式key-value 进行传值  例如："Filters": [{ "Name": "Status", "Values": ["CreateFailed","Creating"]}, {"Name": "Type","Values": ["HTTP"]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数`如果通过标签进行过滤：`- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。示例值："Filters": [{"Name":"tag-dmtest","Values":["dmtest"]}]`入参限制：`1.每次请求的Filters的上限为10，Filter.Values的上限为5。2.[VpcId', 'SubnetId', 'ClsTopicId', 'ClsLogsetId', 'Role', 'CfsId', 'CfsMountInsId', 'Eip'] 过滤的Name 为这些属性时， values 只能传一个值3.['Status', 'Runtime', 'Type', 'PublicNetStatus', 'AsyncRunEnable', 'TraceEnable', 'Stamp'] 过滤的Name 为这些属性时 ，values 可以传多个值
+	// `过滤特定属性或者有特定标签的函数。`
+	// - 传值方式 
+	//    key-value 进行传值
+	//     例如："Filters": [{ "Name": "Status", "Values": ["CreateFailed","Creating"]}, {"Name": "Type","Values": ["HTTP"]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数
+	// - `如果通过标签进行过滤：`Filter 中  Name 字段需要以 `tag-` 起始，`-` 后跟着标签名称，`Values` 指定对应的标签值
+	//    示例值："Filters": [{"Name":"tag-dmtest","Values":["dmtest"]}]
+	// - `入参限制：`
+	// `Filter`:对应的`Name`支持的字段有：
+	// `单 Value Filter`支持的 `Name` 字段入参：['VpcId', 'SubnetId', 'ClsTopicId', 'ClsLogsetId', 'Role', 'CfsId', 'CfsMountInsId', 'Eip'] 
+	// `多 Value Filter`支持的 `Name` 字段入参：['Status', 'Runtime', 'Type', 'PublicNetStatus', 'AsyncRunEnable', 'TraceEnable', 'Stamp']
+	// 
+	// 单次 API 请求的`Filters` 的上限为`10`, 即Filters 最多有 10个 {"Name":"","Values":[]} `Name -Values` 的键值对。`Filter.Values`的上限，由 `Filter` 的 `Name` 决定。
+	// 1.[ VpcId', 'SubnetId', 'ClsTopicId', 'ClsLogsetId', 'Role', 'CfsId', 'CfsMountInsId', 'Eip' ] 过滤的 Name 为这些属性时， Values `只能传一个值`
+	//  2.['Status', 'Runtime', 'Type', 'PublicNetStatus', 'AsyncRunEnable', 'TraceEnable', 'Stamp'] 过滤的Name 为这些属性时 ，Values `至多可以传20个值`
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -3576,7 +3589,20 @@ type ListFunctionsRequest struct {
 	// 函数描述，支持模糊搜索
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// `过滤特定属性或者有特定标签的函数。`- 传值方式key-value 进行传值  例如："Filters": [{ "Name": "Status", "Values": ["CreateFailed","Creating"]}, {"Name": "Type","Values": ["HTTP"]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数`如果通过标签进行过滤：`- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。示例值："Filters": [{"Name":"tag-dmtest","Values":["dmtest"]}]`入参限制：`1.每次请求的Filters的上限为10，Filter.Values的上限为5。2.[VpcId', 'SubnetId', 'ClsTopicId', 'ClsLogsetId', 'Role', 'CfsId', 'CfsMountInsId', 'Eip'] 过滤的Name 为这些属性时， values 只能传一个值3.['Status', 'Runtime', 'Type', 'PublicNetStatus', 'AsyncRunEnable', 'TraceEnable', 'Stamp'] 过滤的Name 为这些属性时 ，values 可以传多个值
+	// `过滤特定属性或者有特定标签的函数。`
+	// - 传值方式 
+	//    key-value 进行传值
+	//     例如："Filters": [{ "Name": "Status", "Values": ["CreateFailed","Creating"]}, {"Name": "Type","Values": ["HTTP"]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数
+	// - `如果通过标签进行过滤：`Filter 中  Name 字段需要以 `tag-` 起始，`-` 后跟着标签名称，`Values` 指定对应的标签值
+	//    示例值："Filters": [{"Name":"tag-dmtest","Values":["dmtest"]}]
+	// - `入参限制：`
+	// `Filter`:对应的`Name`支持的字段有：
+	// `单 Value Filter`支持的 `Name` 字段入参：['VpcId', 'SubnetId', 'ClsTopicId', 'ClsLogsetId', 'Role', 'CfsId', 'CfsMountInsId', 'Eip'] 
+	// `多 Value Filter`支持的 `Name` 字段入参：['Status', 'Runtime', 'Type', 'PublicNetStatus', 'AsyncRunEnable', 'TraceEnable', 'Stamp']
+	// 
+	// 单次 API 请求的`Filters` 的上限为`10`, 即Filters 最多有 10个 {"Name":"","Values":[]} `Name -Values` 的键值对。`Filter.Values`的上限，由 `Filter` 的 `Name` 决定。
+	// 1.[ VpcId', 'SubnetId', 'ClsTopicId', 'ClsLogsetId', 'Role', 'CfsId', 'CfsMountInsId', 'Eip' ] 过滤的 Name 为这些属性时， Values `只能传一个值`
+	//  2.['Status', 'Runtime', 'Type', 'PublicNetStatus', 'AsyncRunEnable', 'TraceEnable', 'Stamp'] 过滤的Name 为这些属性时 ，Values `至多可以传20个值`
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 

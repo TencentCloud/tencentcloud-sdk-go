@@ -131,6 +131,9 @@ const (
 	// 变更计费配置失败。
 	FAILEDOPERATION_MODIFYBILLINGINSTANCEBATCHFAILED = "FailedOperation.ModifyBillingInstanceBatchFailed"
 
+	// 修改计费统计的资源关联标签失败
+	FAILEDOPERATION_MODIFYRESOURCEBILLINGTAGSFAILED = "FailedOperation.ModifyResourceBillingTagsFailed"
+
 	// 移动模型目录失败。
 	FAILEDOPERATION_MOVEMODELDIRFAILED = "FailedOperation.MoveModelDirFailed"
 
@@ -470,6 +473,9 @@ const (
 	// 不支持同一实例挂载多个CBS存储
 	INVALIDPARAMETERVALUE_UNSUPPORTEDMULTICBSSTORAGE = "InvalidParameterValue.UnsupportedMultiCBSStorage"
 
+	// Notebook卷大小只能增加，如需减小容量请重新创建实例。
+	INVALIDPARAMETERVALUE_VOLUMESHRINKNOTALLOW = "InvalidParameterValue.VolumeShrinkNotAllow"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
@@ -490,6 +496,9 @@ const (
 
 	// 按量计费资源售罄。
 	OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
+
+	// vpc 和 子网 禁止修改
+	OPERATIONDENIED_FORBIDMODIFYVPCANDSUBNET = "OperationDenied.ForbidModifyVpcAndSubnet"
 
 	// IP不合法。
 	OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"

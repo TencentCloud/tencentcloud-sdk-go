@@ -382,6 +382,9 @@ type Concurrency struct {
 
 	// 资源数
 	Resources *int64 `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// 压力模型
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 // Predefined struct for user
@@ -4448,6 +4451,9 @@ type RequestsPerSecond struct {
 
 	// 优雅关停的等待时间
 	GracefulStopSeconds *int64 `json:"GracefulStopSeconds,omitnil,omitempty" name:"GracefulStopSeconds"`
+
+	// 场景最大执行次数
+	IterationCount *int64 `json:"IterationCount,omitnil,omitempty" name:"IterationCount"`
 }
 
 // Predefined struct for user

@@ -581,6 +581,9 @@ const (
 	// 本地盘的限制范围。
 	INVALIDPARAMETERVALUE_LOCALDISKSIZERANGE = "InvalidParameterValue.LocalDiskSizeRange"
 
+	// 专属可用区本地COS集群缺少endpoint配置
+	INVALIDPARAMETERVALUE_MISSINGLOCATIONCOSENDPOINT = "InvalidParameterValue.MissingLocationCosEndpoint"
+
 	// 参数值必须为开启DHCP的VPC
 	INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
 

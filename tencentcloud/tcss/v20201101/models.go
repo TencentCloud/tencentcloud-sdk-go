@@ -3527,6 +3527,9 @@ type CreateAssetImageRegistryScanTaskOneKeyRequestParams struct {
 	// 扫描的镜像列表Id
 	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
+	// 剔除扫描的镜像id列表
+	ExcludeIDs []*uint64 `json:"ExcludeIDs,omitnil,omitempty" name:"ExcludeIDs"`
+
 	// 是否最新镜像
 	IsLatest *bool `json:"IsLatest,omitnil,omitempty" name:"IsLatest"`
 
@@ -3560,6 +3563,9 @@ type CreateAssetImageRegistryScanTaskOneKeyRequest struct {
 
 	// 扫描的镜像列表Id
 	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 剔除扫描的镜像id列表
+	ExcludeIDs []*uint64 `json:"ExcludeIDs,omitnil,omitempty" name:"ExcludeIDs"`
 
 	// 是否最新镜像
 	IsLatest *bool `json:"IsLatest,omitnil,omitempty" name:"IsLatest"`
@@ -3596,6 +3602,7 @@ func (r *CreateAssetImageRegistryScanTaskOneKeyRequest) FromJsonString(s string)
 	delete(f, "Images")
 	delete(f, "ScanType")
 	delete(f, "Id")
+	delete(f, "ExcludeIDs")
 	delete(f, "IsLatest")
 	delete(f, "ScanScope")
 	delete(f, "RegistryType")
