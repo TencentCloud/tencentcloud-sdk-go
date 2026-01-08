@@ -1208,6 +1208,9 @@ const (
 	// 默认路由表，不支持修改。
 	UNSUPPORTEDOPERATION_NOTSUPPORTMODIFYDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportModifyDefaultCcnRouteTable"
 
+	// 不支持的自定义路由类型。
+	UNSUPPORTEDOPERATION_NOTSUPPORTROUTETYPE = "UnsupportedOperation.NotSupportRouteType"
+
 	// 不支持编辑相同的实例和源地址。
 	UNSUPPORTEDOPERATION_NOTSUPPORTSAMECCNINSTANCEANDSOURCEADDRESS = "UnsupportedOperation.NotSupportSameCcnInstanceAndSourceAddress"
 

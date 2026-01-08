@@ -26380,7 +26380,7 @@ type SemanticsSearchResult struct {
 	// 视频片段的开始时间，单位：秒
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
-	// 视频片段的开始时间，单位：秒
+	// 视频片段的结束时间，单位：秒
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 }
 

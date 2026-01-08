@@ -226,6 +226,73 @@ func (r *CreateSessionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeConcurrentCountRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 应用类别（DESKTOP: 桌面端，MOBILE：移动端）
+	ApplicationCategory *string `json:"ApplicationCategory,omitnil,omitempty" name:"ApplicationCategory"`
+}
+
+type DescribeConcurrentCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 应用类别（DESKTOP: 桌面端，MOBILE：移动端）
+	ApplicationCategory *string `json:"ApplicationCategory,omitnil,omitempty" name:"ApplicationCategory"`
+}
+
+func (r *DescribeConcurrentCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConcurrentCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ApplicationCategory")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConcurrentCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConcurrentCountResponseParams struct {
+	// 并发总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 并发运行数，包括预启动中的、已连接的、等待重连、清理恢复等所有非空闲的并发数，所以刷新项目或断开并发包的用户连接，都会影响到该值
+	Running *uint64 `json:"Running,omitnil,omitempty" name:"Running"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConcurrentCountResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConcurrentCountResponseParams `json:"Response"`
+}
+
+func (r *DescribeConcurrentCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConcurrentCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DestroySessionRequestParams struct {
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`

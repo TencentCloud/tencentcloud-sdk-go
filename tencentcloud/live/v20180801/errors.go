@@ -215,8 +215,14 @@ const (
 	// 当前 CA 机构访问繁忙，请稍后重试。
 	FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
 
+	// 未设置备播流
+	FAILEDOPERATION_NOBACKUPINPUT = "FailedOperation.NoBackupInput"
+
 	// 直播未配置推流或播放域名
 	FAILEDOPERATION_NOLVBPUSHORPLAYDOMAIN = "FailedOperation.NoLVBPushOrPlayDomain"
+
+	// 无运行中的PGM
+	FAILEDOPERATION_NOPGMRUNNING = "FailedOperation.NoPgmRunning"
 
 	// 您没有该项目的操作权限。
 	FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"

@@ -261,6 +261,9 @@ type ApmAppConfig struct {
 
 	// 脱敏规则
 	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
+
+	// spanId的索引key: 当CLS索引类型为键值索引时生效
+	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
 }
 
 type ApmApplicationConfigView struct {
@@ -555,6 +558,9 @@ type ApmInstanceDetail struct {
 
 	// URL数字分段收敛阈值
 	UrlNumberSegmentThreshold *int64 `json:"UrlNumberSegmentThreshold,omitnil,omitempty" name:"UrlNumberSegmentThreshold"`
+
+	// spanId的索引key: 当CLS索引类型为键值索引时生效
+	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
 }
 
 type ApmMetricRecord struct {
@@ -2944,6 +2950,9 @@ type ModifyApmApplicationConfigRequestParams struct {
 
 	// 脱敏规则
 	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
+
+	// spanId的索引key: 当CLS索引类型为键值索引时生效
+	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
 }
 
 type ModifyApmApplicationConfigRequest struct {
@@ -3107,6 +3116,9 @@ type ModifyApmApplicationConfigRequest struct {
 
 	// 脱敏规则
 	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
+
+	// spanId的索引key: 当CLS索引类型为键值索引时生效
+	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
 }
 
 func (r *ModifyApmApplicationConfigRequest) ToJsonString() string {
@@ -3174,6 +3186,7 @@ func (r *ModifyApmApplicationConfigRequest) FromJsonString(s string) error {
 	delete(f, "SlowSQLThresholds")
 	delete(f, "EnableDesensitizationRule")
 	delete(f, "DesensitizationRule")
+	delete(f, "LogSpanIdKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmApplicationConfigRequest has unknown keys!", "")
 	}
@@ -3411,6 +3424,9 @@ type ModifyApmInstanceRequestParams struct {
 
 	// URL数字分段收敛阈值
 	UrlNumberSegmentThreshold *int64 `json:"UrlNumberSegmentThreshold,omitnil,omitempty" name:"UrlNumberSegmentThreshold"`
+
+	// spanId的索引key: 当CLS索引类型为键值索引时生效
+	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -3541,6 +3557,9 @@ type ModifyApmInstanceRequest struct {
 
 	// URL数字分段收敛阈值
 	UrlNumberSegmentThreshold *int64 `json:"UrlNumberSegmentThreshold,omitnil,omitempty" name:"UrlNumberSegmentThreshold"`
+
+	// spanId的索引key: 当CLS索引类型为键值索引时生效
+	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -3597,6 +3616,7 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "IsDeserializationAnalysis")
 	delete(f, "UrlLongSegmentThreshold")
 	delete(f, "UrlNumberSegmentThreshold")
+	delete(f, "LogSpanIdKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}

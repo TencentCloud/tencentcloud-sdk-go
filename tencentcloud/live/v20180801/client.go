@@ -5951,6 +5951,86 @@ func (c *Client) DescribeCasterDisplayInfoWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeCasterEmergencyStatusRequest() (request *DescribeCasterEmergencyStatusRequest) {
+    request = &DescribeCasterEmergencyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeCasterEmergencyStatus")
+    
+    
+    return
+}
+
+func NewDescribeCasterEmergencyStatusResponse() (response *DescribeCasterEmergencyStatusResponse) {
+    response = &DescribeCasterEmergencyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCasterEmergencyStatus
+// 该接口用查询导播台的备播状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTEREXPIRED = "FailedOperation.CasterExpired"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_CREATECASTERTASKFAILED = "FailedOperation.CreateCasterTaskFailed"
+//  FAILEDOPERATION_NOBACKUPINPUT = "FailedOperation.NoBackupInput"
+//  FAILEDOPERATION_NOLVBPUSHORPLAYDOMAIN = "FailedOperation.NoLVBPushOrPlayDomain"
+//  FAILEDOPERATION_NOPGMRUNNING = "FailedOperation.NoPgmRunning"
+//  FAILEDOPERATION_RESOURCENOTENOUGH = "FailedOperation.ResourceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterEmergencyStatus(request *DescribeCasterEmergencyStatusRequest) (response *DescribeCasterEmergencyStatusResponse, err error) {
+    return c.DescribeCasterEmergencyStatusWithContext(context.Background(), request)
+}
+
+// DescribeCasterEmergencyStatus
+// 该接口用查询导播台的备播状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTEREXPIRED = "FailedOperation.CasterExpired"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_CREATECASTERTASKFAILED = "FailedOperation.CreateCasterTaskFailed"
+//  FAILEDOPERATION_NOBACKUPINPUT = "FailedOperation.NoBackupInput"
+//  FAILEDOPERATION_NOLVBPUSHORPLAYDOMAIN = "FailedOperation.NoLVBPushOrPlayDomain"
+//  FAILEDOPERATION_NOPGMRUNNING = "FailedOperation.NoPgmRunning"
+//  FAILEDOPERATION_RESOURCENOTENOUGH = "FailedOperation.ResourceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCasterEmergencyStatusWithContext(ctx context.Context, request *DescribeCasterEmergencyStatusRequest) (response *DescribeCasterEmergencyStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeCasterEmergencyStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeCasterEmergencyStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCasterEmergencyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCasterEmergencyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCasterInputInfosRequest() (request *DescribeCasterInputInfosRequest) {
     request = &DescribeCasterInputInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15555,6 +15635,90 @@ func (c *Client) SwitchBackupStreamWithContext(ctx context.Context, request *Swi
     request.SetContext(ctx)
     
     response = NewSwitchBackupStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchCasterToEmergencyRequest() (request *SwitchCasterToEmergencyRequest) {
+    request = &SwitchCasterToEmergencyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "SwitchCasterToEmergency")
+    
+    
+    return
+}
+
+func NewSwitchCasterToEmergencyResponse() (response *SwitchCasterToEmergencyResponse) {
+    response = &SwitchCasterToEmergencyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SwitchCasterToEmergency
+// 该接口用来将导播台切换到备播状态。
+//
+// 该接口使用时，主监任务需处于运行状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTEREXPIRED = "FailedOperation.CasterExpired"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_CREATECASTERTASKFAILED = "FailedOperation.CreateCasterTaskFailed"
+//  FAILEDOPERATION_NOBACKUPINPUT = "FailedOperation.NoBackupInput"
+//  FAILEDOPERATION_NOLVBPUSHORPLAYDOMAIN = "FailedOperation.NoLVBPushOrPlayDomain"
+//  FAILEDOPERATION_NOPGMRUNNING = "FailedOperation.NoPgmRunning"
+//  FAILEDOPERATION_RESOURCENOTENOUGH = "FailedOperation.ResourceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SwitchCasterToEmergency(request *SwitchCasterToEmergencyRequest) (response *SwitchCasterToEmergencyResponse, err error) {
+    return c.SwitchCasterToEmergencyWithContext(context.Background(), request)
+}
+
+// SwitchCasterToEmergency
+// 该接口用来将导播台切换到备播状态。
+//
+// 该接口使用时，主监任务需处于运行状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTEREXPIRED = "FailedOperation.CasterExpired"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_CREATECASTERTASKFAILED = "FailedOperation.CreateCasterTaskFailed"
+//  FAILEDOPERATION_NOBACKUPINPUT = "FailedOperation.NoBackupInput"
+//  FAILEDOPERATION_NOLVBPUSHORPLAYDOMAIN = "FailedOperation.NoLVBPushOrPlayDomain"
+//  FAILEDOPERATION_NOPGMRUNNING = "FailedOperation.NoPgmRunning"
+//  FAILEDOPERATION_RESOURCENOTENOUGH = "FailedOperation.ResourceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SwitchCasterToEmergencyWithContext(ctx context.Context, request *SwitchCasterToEmergencyRequest) (response *SwitchCasterToEmergencyResponse, err error) {
+    if request == nil {
+        request = NewSwitchCasterToEmergencyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "SwitchCasterToEmergency")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchCasterToEmergency require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchCasterToEmergencyResponse()
     err = c.Send(request, response)
     return
 }

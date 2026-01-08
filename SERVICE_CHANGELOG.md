@@ -1,29 +1,10 @@
-# Release v1.3.29
+# Release v1.3.30
 
-## 主机安全(cwp) 版本：2018-02-28
+## 应用性能监控(apm) 版本：2021-06-22
 
-### 第 155 次发布
+### 第 52 次发布
 
-发布时间：2026-01-08 01:31:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [NetAttackEventInfo](https://cloud.tencent.com/document/api/296/19867#NetAttackEventInfo)
-
-	* 新增成员：NetResponsePayload
-
-
-
-
-## 腾讯云数据分析智能体(dataagent) 版本：2025-05-13
-
-### 第 9 次发布
-
-发布时间：2026-01-08 01:37:07
+发布时间：2026-01-09 01:10:24
 
 本次发布包含了以下内容：
 
@@ -31,34 +12,114 @@
 
 修改接口：
 
-* [AddChunk](https://cloud.tencent.com/document/api/1800/124923)
+* [ModifyApmApplicationConfig](https://cloud.tencent.com/document/api/1463/125072)
 
-	* 新增入参：KnowledgeBaseId
+	* 新增入参：LogSpanIdKey
 
-* [DeleteChunk](https://cloud.tencent.com/document/api/1800/125009)
+* [ModifyApmInstance](https://cloud.tencent.com/document/api/1463/89002)
 
-	* 新增入参：KnowledgeBaseId
+	* 新增入参：LogSpanIdKey
 
-* [ModifyChunk](https://cloud.tencent.com/document/api/1800/125008)
 
-	* 新增入参：KnowledgeBaseId
+修改数据结构：
 
-* [ModifyKnowledgeBase](https://cloud.tencent.com/document/api/1800/125004)
+* [ApmAppConfig](https://cloud.tencent.com/document/api/1463/64927#ApmAppConfig)
 
-	* 新增入参：UseScope, AuthorityUins
+	* 新增成员：LogSpanIdKey
 
-* [QueryChunkList](https://cloud.tencent.com/document/api/1800/125007)
+* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
 
-	* 新增入参：KnowledgeBaseId
+	* 新增成员：LogSpanIdKey
+
+
+
+
+## 应用云渲染(car) 版本：2022-01-10
+
+### 第 10 次发布
+
+发布时间：2026-01-09 01:16:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeConcurrentCount](https://cloud.tencent.com/document/api/1547/127347)
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 91 次发布
+
+发布时间：2026-01-09 01:22:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EdgeIpInfo](https://cloud.tencent.com/document/api/1132/49071#EdgeIpInfo)
+
+	* 新增成员：SwitchSupportType
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 156 次发布
+
+发布时间：2026-01-09 01:32:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrivilegeEscalationProcess](https://cloud.tencent.com/document/api/296/19867#PrivilegeEscalationProcess)
+
+	* 新增成员：Count
+
+* [PrivilegeEventInfo](https://cloud.tencent.com/document/api/296/19867#PrivilegeEventInfo)
+
+	* 新增成员：Count
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 128 次发布
+
+发布时间：2026-01-09 01:47:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StarRocksQueryInfo](https://cloud.tencent.com/document/api/589/33981#StarRocksQueryInfo)
+
+	* 新增成员：ErrorCode
+
+* [TrinoQueryInfo](https://cloud.tencent.com/document/api/589/33981#TrinoQueryInfo)
+
+	* 新增成员：ErrorMessage
 
 
 
 
 ## 云直播CSS(live) 版本：2018-08-01
 
-### 第 158 次发布
+### 第 159 次发布
 
-发布时间：2026-01-08 02:02:38
+发布时间：2026-01-09 02:03:50
 
 本次发布包含了以下内容：
 
@@ -66,15 +127,16 @@
 
 新增接口：
 
-* [InsertTaskTemporaryFiles](https://cloud.tencent.com/document/api/267/127302)
+* [DescribeCasterEmergencyStatus](https://cloud.tencent.com/document/api/267/127349)
+* [SwitchCasterToEmergency](https://cloud.tencent.com/document/api/267/127348)
 
 
 
-## 云压测(pts) 版本：2021-07-28
+## 腾讯云智能体开发平台(lke) 版本：2023-11-30
 
-### 第 24 次发布
+### 第 77 次发布
 
-发布时间：2026-01-08 02:29:48
+发布时间：2026-01-09 02:05:38
 
 本次发布包含了以下内容：
 
@@ -82,22 +144,22 @@
 
 修改数据结构：
 
-* [Concurrency](https://cloud.tencent.com/document/api/1484/78100#Concurrency)
+* [ListDocItem](https://cloud.tencent.com/document/api/1759/105104#ListDocItem)
 
-	* 新增成员：Mode
+	* 新增成员：DocSize
 
-* [RequestsPerSecond](https://cloud.tencent.com/document/api/1484/78100#RequestsPerSecond)
+* [ListQaItem](https://cloud.tencent.com/document/api/1759/105104#ListQaItem)
 
-	* 新增成员：IterationCount
-
-
+	* 新增成员：QaSize
 
 
-## 容器安全服务(tcss) 版本：2020-11-01
 
-### 第 85 次发布
 
-发布时间：2026-01-08 02:49:41
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 131 次发布
+
+发布时间：2026-01-09 03:01:32
 
 本次发布包含了以下内容：
 
@@ -105,18 +167,25 @@
 
 修改接口：
 
-* [CreateAssetImageRegistryScanTaskOneKey](https://cloud.tencent.com/document/api/1285/65516)
-
-	* 新增入参：ExcludeIDs
+* [CreateL4Proxy](https://cloud.tencent.com/document/api/1552/103417)
 
 
+修改数据结构：
+
+* [L4Proxy](https://cloud.tencent.com/document/api/1552/80721#L4Proxy)
 
 
-## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 97 次发布
 
-发布时间：2026-01-08 03:05:42
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 287 次发布
+
+发布时间：2026-01-09 03:31:51
 
 本次发布包含了以下内容：
 
@@ -124,11 +193,54 @@
 
 新增接口：
 
-* [ModifyNotebook](https://cloud.tencent.com/document/api/851/127303)
+* [ReplaceRoutesWithRoutePolicy](https://cloud.tencent.com/document/api/215/127350)
+
+新增数据结构：
+
+* [ReplaceRoutesWithRoutePolicyRoute](https://cloud.tencent.com/document/api/215/15824#ReplaceRoutesWithRoutePolicyRoute)
+
+修改数据结构：
+
+* [NetworkAclQuintupleEntry](https://cloud.tencent.com/document/api/215/15824#NetworkAclQuintupleEntry)
+
+	* 新增成员：SourceIPv6Cidr, DestinationIPv6Cidr
 
 
 
-## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
+
+### 第 11 次发布
+
+发布时间：2026-01-09 03:49:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateQualityRule](https://cloud.tencent.com/document/api/1267/127352)
+* [ListQualityRuleGroups](https://cloud.tencent.com/document/api/1267/127351)
+
+新增数据结构：
+
+* [CreateQualityRuleVO](https://cloud.tencent.com/document/api/1267/123643#CreateQualityRuleVO)
+* [QualityRuleCreateResult](https://cloud.tencent.com/document/api/1267/123643#QualityRuleCreateResult)
+* [QualityRuleGroup](https://cloud.tencent.com/document/api/1267/123643#QualityRuleGroup)
+* [QualityRuleGroupPage](https://cloud.tencent.com/document/api/1267/123643#QualityRuleGroupPage)
+* [QualityRuleInfo](https://cloud.tencent.com/document/api/1267/123643#QualityRuleInfo)
+
+修改数据结构：
+
+* [QualityCompareRule](https://cloud.tencent.com/document/api/1267/123643#QualityCompareRule)
+
+	* <font color="#dd0000">**修改成员**：</font>Items
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
 
 

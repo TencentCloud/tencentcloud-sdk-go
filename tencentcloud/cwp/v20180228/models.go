@@ -41917,6 +41917,9 @@ type PrivilegeEscalationProcess struct {
 
 	// 进程id
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
+
+	// 告警数量
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type PrivilegeEventInfo struct {
@@ -41997,6 +42000,9 @@ type PrivilegeEventInfo struct {
 
 	// 处理时间
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 告警数量
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type PrivilegeRule struct {

@@ -13104,6 +13104,9 @@ type StarRocksQueryInfo struct {
 
 	// 用户
 	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 }
 
 // Predefined struct for user
@@ -13854,6 +13857,9 @@ type TrinoQueryInfo struct {
 
 	// 写入字节数
 	WrittenBytes *int64 `json:"WrittenBytes,omitnil,omitempty" name:"WrittenBytes"`
+
+	// Error日志
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
 type UpdateInstanceSettings struct {

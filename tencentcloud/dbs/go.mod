@@ -2,4 +2,4 @@ module github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbs
 
 go 1.14
 
-require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.29
+require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.30

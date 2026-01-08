@@ -1989,6 +1989,110 @@ type CreateQualityRuleGroupResultVO struct {
 }
 
 // Predefined struct for user
+type CreateQualityRuleRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 规则创建场景
+	// 1：单表多规则
+	// 2：多表单规则
+	// 3：克隆创建规则
+	CreateRuleScene *int64 `json:"CreateRuleScene,omitnil,omitempty" name:"CreateRuleScene"`
+
+	// 单条规则信息集合	
+	RuleBOList []*QualityRuleInfo `json:"RuleBOList,omitnil,omitempty" name:"RuleBOList"`
+}
+
+type CreateQualityRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 规则创建场景
+	// 1：单表多规则
+	// 2：多表单规则
+	// 3：克隆创建规则
+	CreateRuleScene *int64 `json:"CreateRuleScene,omitnil,omitempty" name:"CreateRuleScene"`
+
+	// 单条规则信息集合	
+	RuleBOList []*QualityRuleInfo `json:"RuleBOList,omitnil,omitempty" name:"RuleBOList"`
+}
+
+func (r *CreateQualityRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateQualityRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "CreateRuleScene")
+	delete(f, "RuleBOList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQualityRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateQualityRuleResponseParams struct {
+	// 规则创建结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateQualityRuleVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateQualityRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateQualityRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateQualityRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateQualityRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateQualityRuleVO struct {
+	// 操作结果文案
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 单条数据新增结果对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*QualityRuleCreateResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 总新增条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SumCount *uint64 `json:"SumCount,omitnil,omitempty" name:"SumCount"`
+
+	// 新增成功条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessCount *uint64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 新增失败条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedCount *uint64 `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
+
+	// 新增成功的 ruleId集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessRuleIds []*uint64 `json:"SuccessRuleIds,omitnil,omitempty" name:"SuccessRuleIds"`
+}
+
+// Predefined struct for user
 type CreateResourceFileRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -11759,6 +11863,186 @@ func (r *ListQualityRuleGroupExecResultsByPageResponse) FromJsonString(s string)
 }
 
 // Predefined struct for user
+type ListQualityRuleGroupsRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 分页序号，默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件,每次请求的Filters的上限为10，Filter.Values的上限为5，可选过滤条件如下：
+	// 
+	// 1. RuleGroupId
+	// 描述：规则组ID。
+	// 取值：整数
+	// 
+	// 2. RuleGroupName
+	// 描述：规则组名称。
+	// 取值：字符串
+	// 
+	// 3. TableId
+	// 描述：数据源表id
+	// 取值：字符串
+	// 
+	// 4. TableName
+	// 描述：数据源表名称，支持模糊匹配。
+	// 取值：字符串
+	// 
+	// 5. TableOwnerName
+	// 描述：表负责人名称，支持模糊匹配。
+	// 取值：字符串
+	// 
+	// 
+	// 6. DatasourceType
+	// 描述：数据源类型。
+	// 取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+	// 
+	// 7. DatasourceId
+	// 描述：数据源ID。
+	// 取值：字符串
+	// 
+	// 8. DatabaseName
+	// 描述：数据库名称。
+	// 取值：字符串
+	// 
+	// 9. SchemaName
+	// 描述：Schema名称。
+	// 取值：字符串
+	// 
+	// 10. CatalogName
+	// 描述：数据目录名称。
+	// 取值：字符串
+	// 
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 通用排序，支持的排序字段：
+	// CreateTime - 按创建时间排序
+	// UpdateTime - 按更新时间排序（默认）
+	// 排序方向：
+	// 1 - 升序（ASC）
+	// 2 - 降序（DESC）
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+type ListQualityRuleGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 分页序号，默认1
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认10
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 过滤条件,每次请求的Filters的上限为10，Filter.Values的上限为5，可选过滤条件如下：
+	// 
+	// 1. RuleGroupId
+	// 描述：规则组ID。
+	// 取值：整数
+	// 
+	// 2. RuleGroupName
+	// 描述：规则组名称。
+	// 取值：字符串
+	// 
+	// 3. TableId
+	// 描述：数据源表id
+	// 取值：字符串
+	// 
+	// 4. TableName
+	// 描述：数据源表名称，支持模糊匹配。
+	// 取值：字符串
+	// 
+	// 5. TableOwnerName
+	// 描述：表负责人名称，支持模糊匹配。
+	// 取值：字符串
+	// 
+	// 
+	// 6. DatasourceType
+	// 描述：数据源类型。
+	// 取值：1 - MYSQL；2 - HIVE；3 - DLC；4 - GBASE；5 - TCHouse-P/CDW；6 - ICEBERG；7 - DORIS；8 - TCHouse-D；9 - EMR_STARROCKS；10 - TBDS_STARROCKS；11 - TCHouse-X
+	// 
+	// 7. DatasourceId
+	// 描述：数据源ID。
+	// 取值：字符串
+	// 
+	// 8. DatabaseName
+	// 描述：数据库名称。
+	// 取值：字符串
+	// 
+	// 9. SchemaName
+	// 描述：Schema名称。
+	// 取值：字符串
+	// 
+	// 10. CatalogName
+	// 描述：数据目录名称。
+	// 取值：字符串
+	// 
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 通用排序，支持的排序字段：
+	// CreateTime - 按创建时间排序
+	// UpdateTime - 按更新时间排序（默认）
+	// 排序方向：
+	// 1 - 升序（ASC）
+	// 2 - 降序（DESC）
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+func (r *ListQualityRuleGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListQualityRuleGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListQualityRuleGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListQualityRuleGroupsResponseParams struct {
+	// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *QualityRuleGroupPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListQualityRuleGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListQualityRuleGroupsResponseParams `json:"Response"`
+}
+
+func (r *ListQualityRuleGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListQualityRuleGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListQualityRuleGroupsTableRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -16143,11 +16427,11 @@ type QualityCompareRule struct {
 }
 
 type QualityCompareRuleItem struct {
-	// 比较类型 1.固定值  2.波动值  3.数值范围比较  4.枚举范围比较  5.不用比较
+	// 比较类型【入参必填】，1.固定值  2.波动值  3.数值范围比较  4.枚举范围比较  5.不用比较   6.字段数据相关性  7.公平性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareType *uint64 `json:"CompareType,omitnil,omitempty" name:"CompareType"`
 
-	// 比较操作类型
+	// 比较操作类型【入参条件必填】，CompareType ∈ {1,2,6,7} 时必填
 	// <  <=  ==  =>  > !=
 	// IRLCRO:在区间内(左闭右开)
 	// IRLORC:在区间内(左开右闭)
@@ -16160,11 +16444,24 @@ type QualityCompareRuleItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 质量统计值类型 1.绝对值  2.上升 3. 下降  4._C包含   5. N_C不包含
+	// 质量统计值类型【入参条件必填】，当 CompareType ∈ {2,3,7} 时必填
+	// 可选值：
+	// 当 compareType = 2(波动值) 时：
+	//   - 1 = 绝对值(ABS)
+	//   - 2 = 上升(ASCEND)
+	//   - 3 = 下降(DESCEND)
+	// 
+	// 当 compareType = 3(数值范围) 时：
+	//   - 4 = 范围内(WITH_IN_RANGE)
+	//   - 5 = 范围外(OUT_OF_RANGE)
+	// 
+	// 当 compareType = 7(公平性) 时：
+	//   - 6 = 公平率(FAIRNESS_RATE)
+	//   - 7 = 公平差(FAIRNESS_GAP)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueComputeType *uint64 `json:"ValueComputeType,omitnil,omitempty" name:"ValueComputeType"`
 
-	// 比较阈值列表
+	// 比较阈值列表【入参必填】
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueList []*QualityThresholdValue `json:"ValueList,omitnil,omitempty" name:"ValueList"`
 }
@@ -16455,6 +16752,32 @@ type QualityRule struct {
 	TargetCatalogName *string `json:"TargetCatalogName,omitnil,omitempty" name:"TargetCatalogName"`
 }
 
+type QualityRuleCreateResult struct {
+	// 操作结果文案
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 操作结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
+
+	// 规则名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupId *uint64 `json:"RuleGroupId,omitnil,omitempty" name:"RuleGroupId"`
+
+	// 本地表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupTableId *int64 `json:"RuleGroupTableId,omitnil,omitempty" name:"RuleGroupTableId"`
+
+	// 规则id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
 type QualityRuleExecResult struct {
 	// 规则执行ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -16609,6 +16932,140 @@ type QualityRuleFieldConfig struct {
 	// 库表变量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableConfig []*QualityTableConfig `json:"TableConfig,omitnil,omitempty" name:"TableConfig"`
+}
+
+type QualityRuleGroup struct {
+	// 规则组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupId *uint64 `json:"RuleGroupId,omitnil,omitempty" name:"RuleGroupId"`
+
+	// 数据源Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceType *uint64 `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
+
+	// 监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorType *uint64 `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 关联数据表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 关联数据表Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 关联数据表负责人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableOwnerName *string `json:"TableOwnerName,omitnil,omitempty" name:"TableOwnerName"`
+
+	// 执行策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecStrategy *QualityRuleGroupExecStrategy `json:"ExecStrategy,omitnil,omitempty" name:"ExecStrategy"`
+
+	// 订阅信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Subscription *QualityRuleGroupSubscribe `json:"Subscription,omitnil,omitempty" name:"Subscription"`
+
+	// 数据库id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 模式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 是否有权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Permission *bool `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// 已经配置的规则数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleCount *uint64 `json:"RuleCount,omitnil,omitempty" name:"RuleCount"`
+
+	// 监控状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorStatus *bool `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
+
+	// 表负责人UserId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableOwnerUserId *uint64 `json:"TableOwnerUserId,omitnil,omitempty" name:"TableOwnerUserId"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 是否已配置执行策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyConfig *bool `json:"StrategyConfig,omitnil,omitempty" name:"StrategyConfig"`
+
+	// 是否已配置执行策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeConfig *bool `json:"SubscribeConfig,omitnil,omitempty" name:"SubscribeConfig"`
+
+	// 数据源环境：0或者未返回.未定义，1.生产 2.开发
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DsEnvType *int64 `json:"DsEnvType,omitnil,omitempty" name:"DsEnvType"`
+
+	// EMR集群部署方式：CVM/TKE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterDeployType *string `json:"ClusterDeployType,omitnil,omitempty" name:"ClusterDeployType"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 执行详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecDetail *string `json:"ExecDetail,omitnil,omitempty" name:"ExecDetail"`
+
+	// 事中关联任务数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PipelineTaskCount *int64 `json:"PipelineTaskCount,omitnil,omitempty" name:"PipelineTaskCount"`
+
+	// 有效规则数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableRuleCount *int64 `json:"EnableRuleCount,omitnil,omitempty" name:"EnableRuleCount"`
+
+	// 任务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 监控创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserName *string `json:"CreateUserName,omitnil,omitempty" name:"CreateUserName"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AspectTaskId *string `json:"AspectTaskId,omitnil,omitempty" name:"AspectTaskId"`
+
+	// 数据目录名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 }
 
 type QualityRuleGroupConfig struct {
@@ -16821,9 +17278,19 @@ type QualityRuleGroupExecStrategy struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineParam *string `json:"EngineParam,omitnil,omitempty" name:"EngineParam"`
 
-	// 数据目录名称，不填默认为DataLakeCatalog
+	// 数据目录名称，不填默认为DataLakeCatalog（更新质量监控时该参数无效）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+}
+
+type QualityRuleGroupPage struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 质量监控列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*QualityRuleGroup `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 type QualityRuleGroupResult struct {
@@ -16988,6 +17455,163 @@ type QualityRuleGroupsTableVO struct {
 	// 监控对象列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*QualityRuleGroupTableV2 `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type QualityRuleInfo struct {
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则类型 
+	// 1：系统模版
+	// 2：自定义模版
+	// 3：自定义SQL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据源Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 报警触发条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareRule *QualityCompareRule `json:"CompareRule,omitnil,omitempty" name:"CompareRule"`
+
+	// 报警触发级别 1.低, 2.中, 3.高
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
+
+	// 该规则支持的执行引擎列表，可选值如下：
+	// 1 - MYSQL
+	// 2 - HIVE
+	// 4 - SPARK
+	// 8 - LIVY
+	// 16 - DLC
+	// 32 - GBASE
+	// 64 - TCHouse-P
+	// 128 - DORIS
+	// 256 - TCHouse-D
+	// 512 - EMR_STARROCKS
+	// 1024 - TCHouse-X
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitnil,omitempty" name:"SourceEngineTypes"`
+
+	// 表名称，TableId和TableName至少填一个
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 规则模板id，【条件必填】当Type≠3（自定义SQL）时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateId *uint64 `json:"RuleTemplateId,omitnil,omitempty" name:"RuleTemplateId"`
+
+	// 规则所属质量维度，Type=3（自定义SQL）时必填（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityDim *uint64 `json:"QualityDim,omitnil,omitempty" name:"QualityDim"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 规则组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupId *uint64 `json:"RuleGroupId,omitnil,omitempty" name:"RuleGroupId"`
+
+	// 数据表ID，TableId和TableName至少要有一个
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 源数据对象（表、字段等）详细类型，【条件必填】当Type=1（系统模板）时必填
+	// 表对应固定值“table”（模板是表级的）
+	// 字段则是对应字段类型：int、string等（模板是字段级的）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceObjectDataTypeName *string `json:"SourceObjectDataTypeName,omitnil,omitempty" name:"SourceObjectDataTypeName"`
+
+	// 源数据对象（表、字段等）名称，【条件必填】当Type=1（系统模板）时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceObjectValue *string `json:"SourceObjectValue,omitnil,omitempty" name:"SourceObjectValue"`
+
+	// 检测范围，【条件必填】当Type=1（系统模板）或2（自定义模板）时必填。 
+	// 1.全表
+	// 2.条件扫描
+	// 注意：CompareType为2（波动值）或 使用用户自定义模板时包含过滤条件${FILTER}时，检测范围必须为2条件扫描
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConditionType *uint64 `json:"ConditionType,omitnil,omitempty" name:"ConditionType"`
+
+	// 条件扫描WHERE条件表达式，【条件必填】ConditionType=2(条件扫描)时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConditionExpression *string `json:"ConditionExpression,omitnil,omitempty" name:"ConditionExpression"`
+
+	// 自定义SQL（Base64编码），【条件必填】Type=3（自定义SQL）时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomSql *string `json:"CustomSql,omitnil,omitempty" name:"CustomSql"`
+
+	// 规则描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 数据库Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// 目标库Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetDatabaseId *string `json:"TargetDatabaseId,omitnil,omitempty" name:"TargetDatabaseId"`
+
+	// 目标表Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetTableId *string `json:"TargetTableId,omitnil,omitempty" name:"TargetTableId"`
+
+	// 目标过滤条件表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetConditionExpr *string `json:"TargetConditionExpr,omitnil,omitempty" name:"TargetConditionExpr"`
+
+	// 源字段与目标字段关联条件on表达式，【条件必填】仅在字段数据相关性规则时必填（ruleTemplate中qualityDim=4(一致性) 且 subQualityDim=3(字段数据相关性)），例如sourceTable.model_id=targetTable.model_id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelConditionExpr *string `json:"RelConditionExpr,omitnil,omitempty" name:"RelConditionExpr"`
+
+	// 自定义模版sql表达式字段替换参数，【条件必填】Type=2（自定义模板）时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldConfig *QualityRuleFieldConfig `json:"FieldConfig,omitnil,omitempty" name:"FieldConfig"`
+
+	// 目标字段名称  CITY
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObjectValue *string `json:"TargetObjectValue,omitnil,omitempty" name:"TargetObjectValue"`
+
+	// 下标，新增时区分不同数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 模式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 目标schema名称，【条件必填】仅在系统模板的“字段数据相关性”规则以及数据源为TCHouse-P时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetSchemaName *string `json:"TargetSchemaName,omitnil,omitempty" name:"TargetSchemaName"`
+
+	// 目标库名称，【条件必填】仅在系统模板的“字段数据相关性”规则时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetDatabaseName *string `json:"TargetDatabaseName,omitnil,omitempty" name:"TargetDatabaseName"`
+
+	// 目标表名称，【条件必填】仅在系统模板的“字段数据相关性”规则时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetTableName *string `json:"TargetTableName,omitnil,omitempty" name:"TargetTableName"`
+
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 数据目录名称，主要用于dlc数据源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 目标数据目录名称，【条件必填】仅在系统模板的“字段数据相关性”规则以及数据源为DLC时必填（ruleTemplate的qualityDim=4 且 subQualityDim=3）。用于校验和关联跨表数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetCatalogName *string `json:"TargetCatalogName,omitnil,omitempty" name:"TargetCatalogName"`
 }
 
 type QualityRulePage struct {
@@ -17163,11 +17787,11 @@ type QualityTableConfig struct {
 }
 
 type QualityThresholdValue struct {
-	// 阈值类型  1.低阈值  2.高阈值   3.普通阈值  4.枚举值
+	// 阈值类型【入参必填】  1.低阈值  2.高阈值   3.普通阈值  4.枚举值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueType *uint64 `json:"ValueType,omitnil,omitempty" name:"ValueType"`
 
-	// 阈值
+	// 阈值【入参必填】
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }

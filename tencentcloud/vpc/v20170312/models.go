@@ -31841,6 +31841,12 @@ type NetworkAclQuintupleEntry struct {
 
 	// 方向，INGRESS或EGRESS，用于DescribeNetworkAclQuintupleEntries的出参。
 	NetworkAclDirection *string `json:"NetworkAclDirection,omitnil,omitempty" name:"NetworkAclDirection"`
+
+	// IPv6源CIDR。
+	SourceIPv6Cidr *string `json:"SourceIPv6Cidr,omitnil,omitempty" name:"SourceIPv6Cidr"`
+
+	// IPv6目的CIDR。
+	DestinationIPv6Cidr *string `json:"DestinationIPv6Cidr,omitnil,omitempty" name:"DestinationIPv6Cidr"`
 }
 
 type NetworkInterface struct {
@@ -33444,6 +33450,75 @@ func (r *ReplaceRoutesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ReplaceRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReplaceRoutesWithRoutePolicyRequestParams struct {
+	// 路由表实例ID。
+	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
+
+	// 路由策略对象。需要指定路由策略唯一ID（RouteItemId）。
+	Routes []*ReplaceRoutesWithRoutePolicyRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
+}
+
+type ReplaceRoutesWithRoutePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 路由表实例ID。
+	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
+
+	// 路由策略对象。需要指定路由策略唯一ID（RouteItemId）。
+	Routes []*ReplaceRoutesWithRoutePolicyRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
+}
+
+func (r *ReplaceRoutesWithRoutePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaceRoutesWithRoutePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RouteTableId")
+	delete(f, "Routes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceRoutesWithRoutePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReplaceRoutesWithRoutePolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReplaceRoutesWithRoutePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ReplaceRoutesWithRoutePolicyResponseParams `json:"Response"`
+}
+
+func (r *ReplaceRoutesWithRoutePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaceRoutesWithRoutePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceRoutesWithRoutePolicyRoute struct {
+	// 路由唯一策略ID。
+	RouteItemId *string `json:"RouteItemId,omitnil,omitempty" name:"RouteItemId"`
+
+	// 匹配路由接收策略标记。
+	ForceMatchPolicy *bool `json:"ForceMatchPolicy,omitnil,omitempty" name:"ForceMatchPolicy"`
 }
 
 // Predefined struct for user

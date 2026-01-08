@@ -617,6 +617,60 @@ func (c *Client) CreateProjectMemberWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateQualityRuleRequest() (request *CreateQualityRuleRequest) {
+    request = &CreateQualityRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateQualityRule")
+    
+    
+    return
+}
+
+func NewCreateQualityRuleResponse() (response *CreateQualityRuleResponse) {
+    response = &CreateQualityRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateQualityRule
+// 创建质量规则接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+func (c *Client) CreateQualityRule(request *CreateQualityRuleRequest) (response *CreateQualityRuleResponse, err error) {
+    return c.CreateQualityRuleWithContext(context.Background(), request)
+}
+
+// CreateQualityRule
+// 创建质量规则接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+func (c *Client) CreateQualityRuleWithContext(ctx context.Context, request *CreateQualityRuleRequest) (response *CreateQualityRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateQualityRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "CreateQualityRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateQualityRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateQualityRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateQualityRuleGroupRequest() (request *CreateQualityRuleGroupRequest) {
     request = &CreateQualityRuleGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -641,6 +695,8 @@ func NewCreateQualityRuleGroupResponse() (response *CreateQualityRuleGroupRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
 func (c *Client) CreateQualityRuleGroup(request *CreateQualityRuleGroupRequest) (response *CreateQualityRuleGroupResponse, err error) {
     return c.CreateQualityRuleGroupWithContext(context.Background(), request)
 }
@@ -650,6 +706,8 @@ func (c *Client) CreateQualityRuleGroup(request *CreateQualityRuleGroupRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
 func (c *Client) CreateQualityRuleGroupWithContext(ctx context.Context, request *CreateQualityRuleGroupRequest) (response *CreateQualityRuleGroupResponse, err error) {
     if request == nil {
         request = NewCreateQualityRuleGroupRequest()
@@ -6105,6 +6163,76 @@ func (c *Client) ListQualityRuleGroupExecResultsByPageWithContext(ctx context.Co
     request.SetContext(ctx)
     
     response = NewListQualityRuleGroupExecResultsByPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListQualityRuleGroupsRequest() (request *ListQualityRuleGroupsRequest) {
+    request = &ListQualityRuleGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ListQualityRuleGroups")
+    
+    
+    return
+}
+
+func NewListQualityRuleGroupsResponse() (response *ListQualityRuleGroupsResponse) {
+    response = &ListQualityRuleGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListQualityRuleGroups
+// 【过滤条件】
+//
+// {表idTableId,支持匹配}       {任务负责人Operator,支持匹配}    
+//
+// 【必要字段】
+//
+// {数据来源TableId}
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) ListQualityRuleGroups(request *ListQualityRuleGroupsRequest) (response *ListQualityRuleGroupsResponse, err error) {
+    return c.ListQualityRuleGroupsWithContext(context.Background(), request)
+}
+
+// ListQualityRuleGroups
+// 【过滤条件】
+//
+// {表idTableId,支持匹配}       {任务负责人Operator,支持匹配}    
+//
+// 【必要字段】
+//
+// {数据来源TableId}
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) ListQualityRuleGroupsWithContext(ctx context.Context, request *ListQualityRuleGroupsRequest) (response *ListQualityRuleGroupsResponse, err error) {
+    if request == nil {
+        request = NewListQualityRuleGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "ListQualityRuleGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListQualityRuleGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListQualityRuleGroupsResponse()
     err = c.Send(request, response)
     return
 }

@@ -8177,9 +8177,12 @@ type ListDocItem struct {
 	// 员工名称
 	StaffName *string `json:"StaffName,omitnil,omitempty" name:"StaffName"`
 
-	// 文档生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
+
+	// 文档大小，单位：字节
+	DocSize *string `json:"DocSize,omitnil,omitempty" name:"DocSize"`
 }
 
 // Predefined struct for user
@@ -8745,12 +8748,16 @@ type ListQaItem struct {
 	// 员工名称
 	StaffName *string `json:"StaffName,omitnil,omitempty" name:"StaffName"`
 
-	// 问答生效域: 1-停用；2-仅开发域；3-仅发布域；4-全域
+	// 问答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 
-	// 问答关联的文档生效域
+	// 问答关联的文档生效域：1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+	// 若问答未关联文档，则该字段值同问答生效域。
 	DocEnableScope *int64 `json:"DocEnableScope,omitnil,omitempty" name:"DocEnableScope"`
+
+	// 问答大小（含相似问），单位：字节
+	QaSize *string `json:"QaSize,omitnil,omitempty" name:"QaSize"`
 }
 
 // Predefined struct for user

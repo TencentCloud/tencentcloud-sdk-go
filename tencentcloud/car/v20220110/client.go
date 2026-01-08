@@ -185,6 +185,82 @@ func (c *Client) CreateSessionWithContext(ctx context.Context, request *CreateSe
     return
 }
 
+func NewDescribeConcurrentCountRequest() (request *DescribeConcurrentCountRequest) {
+    request = &DescribeConcurrentCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("car", APIVersion, "DescribeConcurrentCount")
+    
+    
+    return
+}
+
+func NewDescribeConcurrentCountResponse() (response *DescribeConcurrentCountResponse) {
+    response = &DescribeConcurrentCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConcurrentCount
+// 获取并发计数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
+//  FAILEDOPERATION_PATHNOTFOUND = "FailedOperation.PathNotFound"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_ROLE = "LimitExceeded.Role"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
+//  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
+func (c *Client) DescribeConcurrentCount(request *DescribeConcurrentCountRequest) (response *DescribeConcurrentCountResponse, err error) {
+    return c.DescribeConcurrentCountWithContext(context.Background(), request)
+}
+
+// DescribeConcurrentCount
+// 获取并发计数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
+//  FAILEDOPERATION_PATHNOTFOUND = "FailedOperation.PathNotFound"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_ROLE = "LimitExceeded.Role"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
+//  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
+func (c *Client) DescribeConcurrentCountWithContext(ctx context.Context, request *DescribeConcurrentCountRequest) (response *DescribeConcurrentCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeConcurrentCountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "car", APIVersion, "DescribeConcurrentCount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConcurrentCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConcurrentCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroySessionRequest() (request *DestroySessionRequest) {
     request = &DestroySessionRequest{
         BaseRequest: &tchttp.BaseRequest{},

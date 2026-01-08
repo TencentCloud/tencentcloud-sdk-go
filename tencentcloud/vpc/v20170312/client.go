@@ -27521,6 +27521,66 @@ func (c *Client) ReplaceRoutesWithContext(ctx context.Context, request *ReplaceR
     return
 }
 
+func NewReplaceRoutesWithRoutePolicyRequest() (request *ReplaceRoutesWithRoutePolicyRequest) {
+    request = &ReplaceRoutesWithRoutePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ReplaceRoutesWithRoutePolicy")
+    
+    
+    return
+}
+
+func NewReplaceRoutesWithRoutePolicyResponse() (response *ReplaceRoutesWithRoutePolicyResponse) {
+    response = &ReplaceRoutesWithRoutePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReplaceRoutesWithRoutePolicy
+// 本接口（ReplaceRoutes）根据路由策略ID（RouteId）修改指定的路由策略（Route），支持批量修改。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTROUTETYPE = "UnsupportedOperation.NotSupportRouteType"
+func (c *Client) ReplaceRoutesWithRoutePolicy(request *ReplaceRoutesWithRoutePolicyRequest) (response *ReplaceRoutesWithRoutePolicyResponse, err error) {
+    return c.ReplaceRoutesWithRoutePolicyWithContext(context.Background(), request)
+}
+
+// ReplaceRoutesWithRoutePolicy
+// 本接口（ReplaceRoutes）根据路由策略ID（RouteId）修改指定的路由策略（Route），支持批量修改。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTROUTETYPE = "UnsupportedOperation.NotSupportRouteType"
+func (c *Client) ReplaceRoutesWithRoutePolicyWithContext(ctx context.Context, request *ReplaceRoutesWithRoutePolicyRequest) (response *ReplaceRoutesWithRoutePolicyResponse, err error) {
+    if request == nil {
+        request = NewReplaceRoutesWithRoutePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "ReplaceRoutesWithRoutePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceRoutesWithRoutePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReplaceRoutesWithRoutePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReplaceSecurityGroupPoliciesRequest() (request *ReplaceSecurityGroupPoliciesRequest) {
     request = &ReplaceSecurityGroupPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
