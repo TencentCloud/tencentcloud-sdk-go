@@ -851,6 +851,74 @@ func (c *Client) ModifyKnowledgeBaseWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyUserAuthorityRequest() (request *ModifyUserAuthorityRequest) {
+    request = &ModifyUserAuthorityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "ModifyUserAuthority")
+    
+    
+    return
+}
+
+func NewModifyUserAuthorityResponse() (response *ModifyUserAuthorityResponse) {
+    response = &ModifyUserAuthorityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserAuthority
+// 修改对象权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserAuthority(request *ModifyUserAuthorityRequest) (response *ModifyUserAuthorityResponse, err error) {
+    return c.ModifyUserAuthorityWithContext(context.Background(), request)
+}
+
+// ModifyUserAuthority
+// 修改对象权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserAuthorityWithContext(ctx context.Context, request *ModifyUserAuthorityRequest) (response *ModifyUserAuthorityResponse, err error) {
+    if request == nil {
+        request = NewModifyUserAuthorityRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "ModifyUserAuthority")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserAuthority require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserAuthorityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryChunkListRequest() (request *QueryChunkListRequest) {
     request = &QueryChunkListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -915,6 +983,74 @@ func (c *Client) QueryChunkListWithContext(ctx context.Context, request *QueryCh
     request.SetContext(ctx)
     
     response = NewQueryChunkListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryUserAuthorityRequest() (request *QueryUserAuthorityRequest) {
+    request = &QueryUserAuthorityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "QueryUserAuthority")
+    
+    
+    return
+}
+
+func NewQueryUserAuthorityResponse() (response *QueryUserAuthorityResponse) {
+    response = &QueryUserAuthorityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryUserAuthority
+// 查询对象权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryUserAuthority(request *QueryUserAuthorityRequest) (response *QueryUserAuthorityResponse, err error) {
+    return c.QueryUserAuthorityWithContext(context.Background(), request)
+}
+
+// QueryUserAuthority
+// 查询对象权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryUserAuthorityWithContext(ctx context.Context, request *QueryUserAuthorityRequest) (response *QueryUserAuthorityResponse, err error) {
+    if request == nil {
+        request = NewQueryUserAuthorityRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "QueryUserAuthority")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryUserAuthority require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryUserAuthorityResponse()
     err = c.Send(request, response)
     return
 }

@@ -898,6 +898,32 @@ type KnowledgeTaskConfig struct {
 	GenParaSummary *int64 `json:"GenParaSummary,omitnil,omitempty" name:"GenParaSummary"`
 }
 
+type ModelUserAuthority struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 模块，分为知识库knowledge、数据源datasource、自定义场景scene
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 对象创建者
+	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
+
+	// 对象id,分为知识库id、数据源id、场景id
+	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
+
+	// 作用范围：1仅自己使用，2指定用户，0全员
+	UseScope *int64 `json:"UseScope,omitnil,omitempty" name:"UseScope"`
+
+	// 可使用的用户列表
+	AuthorityUins []*string `json:"AuthorityUins,omitnil,omitempty" name:"AuthorityUins"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 // Predefined struct for user
 type ModifyChunkRequestParams struct {
 	// 实例ID
@@ -1080,6 +1106,67 @@ func (r *ModifyKnowledgeBaseResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyUserAuthorityRequestParams struct {
+	// 作用范围：1仅自己使用，2指定用户，0全员
+	UseScope *int64 `json:"UseScope,omitnil,omitempty" name:"UseScope"`
+
+	// 可使用的用户列表，UseScope=0/1,取值为[]
+	AuthorityUins []*string `json:"AuthorityUins,omitnil,omitempty" name:"AuthorityUins"`
+}
+
+type ModifyUserAuthorityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 作用范围：1仅自己使用，2指定用户，0全员
+	UseScope *int64 `json:"UseScope,omitnil,omitempty" name:"UseScope"`
+
+	// 可使用的用户列表，UseScope=0/1,取值为[]
+	AuthorityUins []*string `json:"AuthorityUins,omitnil,omitempty" name:"AuthorityUins"`
+}
+
+func (r *ModifyUserAuthorityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserAuthorityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UseScope")
+	delete(f, "AuthorityUins")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserAuthorityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserAuthorityResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUserAuthorityResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserAuthorityResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserAuthorityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserAuthorityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type QueryChunkListRequestParams struct {
 	// 表示第一页
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
@@ -1150,6 +1237,60 @@ func (r *QueryChunkListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryChunkListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryUserAuthorityRequestParams struct {
+
+}
+
+type QueryUserAuthorityRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *QueryUserAuthorityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryUserAuthorityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryUserAuthorityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryUserAuthorityResponseParams struct {
+	// 对象权限信息
+	ModelUserAuthority *ModelUserAuthority `json:"ModelUserAuthority,omitnil,omitempty" name:"ModelUserAuthority"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryUserAuthorityResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryUserAuthorityResponseParams `json:"Response"`
+}
+
+func (r *QueryUserAuthorityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryUserAuthorityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

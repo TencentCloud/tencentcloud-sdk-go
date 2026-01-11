@@ -2292,6 +2292,10 @@ type AigcVideoExtraParam struct {
 	// 
 	// 注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+
+	// 错峰模型，目前仅支持Vidu模型。
+	// 错峰模式下提交的任务，会在48小时内生成，未能完成的任务会被自动取消。
+	OffPeak *bool `json:"OffPeak,omitnil,omitempty" name:"OffPeak"`
 }
 
 type AigcVideoReferenceImageInfo struct {

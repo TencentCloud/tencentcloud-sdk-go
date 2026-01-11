@@ -266,6 +266,10 @@ type AdaptiveStreamTemplate struct {
 	// 极速高清转码参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
+
+	// 音视频增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 }
 
 type AiAnalysisResult struct {
@@ -2923,6 +2927,19 @@ func (r *AttachMediaSubtitlesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AudioBeautifyInfo struct {
+	// 音频美化控制开关，可选值：
+	// <li>ON：开启音频美化；</li>
+	// <li>OFF：关闭音频美化。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 类型，可多选，可选值：
+	// <li>declick：杂音去除</li>
+	// <li>deesser：齿音压制</li>
+	// 默认值：declick。
+	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
+}
+
 type AudioDenoiseInfo struct {
 	// 音频降噪控制开关，可选值：
 	// <li>ON：开启音频降噪；</li>
@@ -2930,11 +2947,46 @@ type AudioDenoiseInfo struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// 音频降噪类型，仅当音频降噪控制开关为 ON 时有效，可选值：
-	// <li>weak：轻音频降噪；</li>
 	// <li>normal：正常音频降噪；</li>
-	// <li>strong：强音频降噪。</li>
-	// 默认值：weak。
+	// 默认值：normal。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type AudioEnhanceConfig struct {
+	// 音频降噪配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Denoise *AudioDenoiseInfo `json:"Denoise,omitnil,omitempty" name:"Denoise"`
+
+	// 音频分离配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Separate *AudioSeparateInfo `json:"Separate,omitnil,omitempty" name:"Separate"`
+
+	// 音量均衡配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeBalance *AudioVolumeBalanceInfo `json:"VolumeBalance,omitnil,omitempty" name:"VolumeBalance"`
+
+	// 音量美化配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Beautify *AudioBeautifyInfo `json:"Beautify,omitnil,omitempty" name:"Beautify"`
+}
+
+type AudioSeparateInfo struct {
+	// 音频分离控制开关，可选值：
+	// <li>ON：开启音频分离；</li>
+	// <li>OFF：关闭音频分离。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 场景类型，可选值：
+	// <li>normal：人声背景声场景</li>
+	// <li>music：演唱伴奏场景</li>
+	// 默认值：normal。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 输出音轨，可选值：
+	// <li>vocal：输出人声</li>
+	// <li>background：应用场景为normal时输出背景声，应用场景为music时输出伴奏</li>
+	// 默认值：vocal。
+	Track *string `json:"Track,omitnil,omitempty" name:"Track"`
 }
 
 type AudioTemplateInfo struct {
@@ -3052,6 +3104,19 @@ type AudioTransform struct {
 
 	// 音量调节参数， 当 Type = Volume 时有效。
 	VolumeParam *AudioVolumeParam `json:"VolumeParam,omitnil,omitempty" name:"VolumeParam"`
+}
+
+type AudioVolumeBalanceInfo struct {
+	// 音量均衡控制开关，可选值：
+	// <li>ON：开启音量均衡；</li>
+	// <li>OFF：关闭音量均衡。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>loudNorm：响度标准化</li>
+	// <li>gainControl：减小突变</li>
+	// 默认值：loudNorm。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type AudioVolumeParam struct {
@@ -7371,6 +7436,9 @@ type CreateTranscodeTemplateRequestParams struct {
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
+	// 音视频增强配置。
+	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
 	// 切片类型，当 Container 为 hls 时有效，可选值：
 	// <li>ts：ts 切片；</li>
 	// <li>fmp4：fmp4 切片。</li>
@@ -7414,6 +7482,9 @@ type CreateTranscodeTemplateRequest struct {
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
+	// 音视频增强配置。
+	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
 	// 切片类型，当 Container 为 hls 时有效，可选值：
 	// <li>ts：ts 切片；</li>
 	// <li>fmp4：fmp4 切片。</li>
@@ -7442,6 +7513,7 @@ func (r *CreateTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "VideoTemplate")
 	delete(f, "AudioTemplate")
 	delete(f, "TEHDConfig")
+	delete(f, "EnhanceConfig")
 	delete(f, "SegmentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeTemplateRequest has unknown keys!", "")
@@ -14208,6 +14280,17 @@ type DescribeTranscodeTemplatesRequestParams struct {
 
 	// 返回记录条数，默认值：10，最大值：100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 增强类型，可选值：
+	// <li>VideoEnhance（仅视频增强）</li>
+	// <li>AudioEnhance（仅音频增强）</li>
+	// <li>AudioVideoEnhance（音视频增强）</li>
+	// <li>AnyEnhance（包括仅视频增强、仅音频增强、音视频增强）</li>
+	// <li>None（非增强）</li>
+	EnhanceType *string `json:"EnhanceType,omitnil,omitempty" name:"EnhanceType"`
+
+	// 增强场景配置，可选值： <li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li> <li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li> <li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li> <li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li> <li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li> <li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li> <li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li> <li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+	EnhanceScenarioType *string `json:"EnhanceScenarioType,omitnil,omitempty" name:"EnhanceScenarioType"`
 }
 
 type DescribeTranscodeTemplatesRequest struct {
@@ -14239,6 +14322,17 @@ type DescribeTranscodeTemplatesRequest struct {
 
 	// 返回记录条数，默认值：10，最大值：100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 增强类型，可选值：
+	// <li>VideoEnhance（仅视频增强）</li>
+	// <li>AudioEnhance（仅音频增强）</li>
+	// <li>AudioVideoEnhance（音视频增强）</li>
+	// <li>AnyEnhance（包括仅视频增强、仅音频增强、音视频增强）</li>
+	// <li>None（非增强）</li>
+	EnhanceType *string `json:"EnhanceType,omitnil,omitempty" name:"EnhanceType"`
+
+	// 增强场景配置，可选值： <li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li> <li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li> <li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li> <li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li> <li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li> <li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li> <li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li> <li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+	EnhanceScenarioType *string `json:"EnhanceScenarioType,omitnil,omitempty" name:"EnhanceScenarioType"`
 }
 
 func (r *DescribeTranscodeTemplatesRequest) ToJsonString() string {
@@ -14260,6 +14354,8 @@ func (r *DescribeTranscodeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "TEHDType")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "EnhanceType")
+	delete(f, "EnhanceScenarioType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTranscodeTemplatesRequest has unknown keys!", "")
 	}
@@ -14584,6 +14680,20 @@ func (r *DescribeWordSamplesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeWordSamplesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DiffusionEnhanceInfo struct {
+	// 大模型增强开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 强度类型，仅当大模型增强控制开关为 ON 时有效，可选值：
+	// <li>weak：弱；</li>
+	// <li>normal：正常；</li>
+	// <li>strong：强。</li>
+	// 默认值：normal。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DomainCLSTargetInfo struct {
@@ -14987,6 +15097,26 @@ type EditMediaVideoStream struct {
 type EmptyTrackItem struct {
 	// 持续时间，单位为秒。
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+}
+
+type EnhanceConfig struct {
+	// 视频增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoEnhance *VideoEnhanceConfig `json:"VideoEnhance,omitnil,omitempty" name:"VideoEnhance"`
+
+	// 音频增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioEnhance *AudioEnhanceConfig `json:"AudioEnhance,omitnil,omitempty" name:"AudioEnhance"`
+}
+
+type EnhanceConfigForUpdate struct {
+	// 视频增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoEnhance *VideoEnhanceConfig `json:"VideoEnhance,omitnil,omitempty" name:"VideoEnhance"`
+
+	// 音频增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioEnhance *AudioEnhanceConfig `json:"AudioEnhance,omitnil,omitempty" name:"AudioEnhance"`
 }
 
 // Predefined struct for user
@@ -16044,6 +16174,19 @@ func (r *ForbidMediaDistributionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FrameRateWithDenInfo struct {
+	// 插帧帧率配置控制开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 帧率分子，取值范围：非负数，除以分母后小于100，单位：Hz。 默认值 0。 注意：对于转码，该参数会覆盖 VideoTemplate 内部的 Fps。
+	FpsNum *int64 `json:"FpsNum,omitnil,omitempty" name:"FpsNum"`
+
+	// 帧率分母，取值范围：大于等于1。 默认值 1。
+	FpsDen *int64 `json:"FpsDen,omitnil,omitempty" name:"FpsDen"`
+}
+
 type FrameTagConfigureInfo struct {
 	// 智能按帧标签任务开关，可选值：
 	// <li>ON：开启智能按帧标签任务；</li>
@@ -16076,7 +16219,7 @@ type HDRInfo struct {
 	// 
 	// 注意：
 	// <li> 仅当高动态范围类型控制开关为 ON 时有效；</li>
-	// <li>当画质重生目标参数中指定视频输出参数的视频流编码格式 Codec 为 libx265 时有效。</li>
+	// <li>当目标参数中指定视频输出参数的视频流编码格式 Codec 为 libx264、libx265 时有效。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -16333,6 +16476,20 @@ type ImageProcessingTemplate struct {
 
 	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type ImageQualityEnhanceInfo struct {
+	// 综合增强控制开关，可选值：
+	// <li>ON：开启综合增强；</li>
+	// <li>OFF：关闭综合增强。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 综合增强类型，仅当综合增强控制开关为 ON 时有效，可选值：
+	// <li>weak：轻综合增强；</li>
+	// <li>normal：正常综合增强；</li>
+	// <li>strong：强综合增强。</li>
+	// 默认值：weak。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type ImageReviewUsageDataItem struct {
@@ -21301,6 +21458,9 @@ type ModifyTranscodeTemplateRequestParams struct {
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
+	// 音视频增强配置。
+	EnhanceConfig *EnhanceConfigForUpdate `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
 	// 切片类型，当 Container 为 hls 时有效，可选值：
 	// <li>ts：ts 切片；</li>
 	// <li>fmp4：fmp4 切片。</li>
@@ -21344,6 +21504,9 @@ type ModifyTranscodeTemplateRequest struct {
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
+	// 音视频增强配置。
+	EnhanceConfig *EnhanceConfigForUpdate `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
 	// 切片类型，当 Container 为 hls 时有效，可选值：
 	// <li>ts：ts 切片；</li>
 	// <li>fmp4：fmp4 切片。</li>
@@ -21372,6 +21535,7 @@ func (r *ModifyTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "VideoTemplate")
 	delete(f, "AudioTemplate")
 	delete(f, "TEHDConfig")
+	delete(f, "EnhanceConfig")
 	delete(f, "SegmentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTranscodeTemplateRequest has unknown keys!", "")
@@ -27234,7 +27398,6 @@ type SuperResolutionInfo struct {
 	// 画面超分控制开关，可选值：
 	// <li>ON：开启画面超分；</li>
 	// <li>OFF：关闭画面超分。</li>
-	// 当开启画面超分时，默认2倍超分。
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// 画面超分类型，仅当画面超分控制开关为 ON 时有效，可选值：
@@ -27789,6 +27952,10 @@ type TranscodeTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
+	// 音视频增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
 	// 封装格式过滤条件，可选值：
 	// <li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>
 	// <li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>
@@ -28207,6 +28374,60 @@ type VideoDenoiseInfo struct {
 	// <li>strong：强视频降噪。</li>
 	// 默认值：weak。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type VideoEnhanceConfig struct {
+	// 增强场景配置，可选值：
+	// <li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
+	// <li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
+	// <li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
+	// <li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
+	// <li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
+	// <li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
+	// <li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
+	// <li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
+	// <li>填空字符串代表不使用增强场景</li>
+	EnhanceScenarioType *string `json:"EnhanceScenarioType,omitnil,omitempty" name:"EnhanceScenarioType"`
+
+	// 超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuperResolution *SuperResolutionInfo `json:"SuperResolution,omitnil,omitempty" name:"SuperResolution"`
+
+	// HDR配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hdr *HDRInfo `json:"Hdr,omitnil,omitempty" name:"Hdr"`
+
+	// 视频降噪配置。注意与大模型增强不可同时开启。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Denoise *VideoDenoiseInfo `json:"Denoise,omitnil,omitempty" name:"Denoise"`
+
+	// 综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageQualityEnhance *ImageQualityEnhanceInfo `json:"ImageQualityEnhance,omitnil,omitempty" name:"ImageQualityEnhance"`
+
+	// 色彩增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColorEnhance *ColorEnhanceInfo `json:"ColorEnhance,omitnil,omitempty" name:"ColorEnhance"`
+
+	// 低光照增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowLightEnhance *LowLightEnhanceInfo `json:"LowLightEnhance,omitnil,omitempty" name:"LowLightEnhance"`
+
+	// 去划痕配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScratchRepair *ScratchRepairInfo `json:"ScratchRepair,omitnil,omitempty" name:"ScratchRepair"`
+
+	// 去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArtifactRepair *ArtifactRepairInfo `json:"ArtifactRepair,omitnil,omitempty" name:"ArtifactRepair"`
+
+	// 大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiffusionEnhance *DiffusionEnhanceInfo `json:"DiffusionEnhance,omitnil,omitempty" name:"DiffusionEnhance"`
+
+	// 插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameRateWithDen *FrameRateWithDenInfo `json:"FrameRateWithDen,omitnil,omitempty" name:"FrameRateWithDen"`
 }
 
 type VideoFrameInterpolationInfo struct {
