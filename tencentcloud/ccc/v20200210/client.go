@@ -465,11 +465,11 @@ func NewCreateAICallResponse() (response *CreateAICallResponse) {
 }
 
 // CreateAICall
-// 用于调用AI模型发起外呼通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
+// 用于 **直接调用AI模型** 发起 **单次** 外呼通话，支持通过API参数直接配置模型、提示词、语音等全部通话要素。
 //
 // 
 //
-// 发起通话前，请先确认您的AI模型是否兼容 OpenAI、Azure 或 Minimax 协议，并前往模型服务商网站获取相关鉴权信息。 具体功能说明请参考文档 [腾讯云联络中心AI通话平台](https://cloud.tencent.com/document/product/679/112100)。
+// 该功能需购买语音智能体通话套餐，并且仅限自有电话号码使用。详情请参考 [语音智能体通话购买指引](https://cloud.tencent.com/document/product/679/125953)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
@@ -490,11 +490,11 @@ func (c *Client) CreateAICall(request *CreateAICallRequest) (response *CreateAIC
 }
 
 // CreateAICall
-// 用于调用AI模型发起外呼通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
+// 用于 **直接调用AI模型** 发起 **单次** 外呼通话，支持通过API参数直接配置模型、提示词、语音等全部通话要素。
 //
 // 
 //
-// 发起通话前，请先确认您的AI模型是否兼容 OpenAI、Azure 或 Minimax 协议，并前往模型服务商网站获取相关鉴权信息。 具体功能说明请参考文档 [腾讯云联络中心AI通话平台](https://cloud.tencent.com/document/product/679/112100)。
+// 该功能需购买语音智能体通话套餐，并且仅限自有电话号码使用。详情请参考 [语音智能体通话购买指引](https://cloud.tencent.com/document/product/679/125953)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
@@ -2007,7 +2007,9 @@ func NewDescribeAutoCalloutTaskResponse() (response *DescribeAutoCalloutTaskResp
 }
 
 // DescribeAutoCalloutTask
-// 查询自动外呼任务详情
+// 用于通过 TaskId 查询**自动外呼任务的详细信息**，包括任务基础配置、起止时间、外呼名单、执行状态以及实际通话情况等。
+//
+// 该接口通常与 [创建批量自动外呼任务](https://cloud.tencent.com/document/product/679/69194) 配合使用，用于在任务创建后查看任务配置是否生效、任务当前状态，以及后续执行过程中的实时进展。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -2018,7 +2020,9 @@ func (c *Client) DescribeAutoCalloutTask(request *DescribeAutoCalloutTaskRequest
 }
 
 // DescribeAutoCalloutTask
-// 查询自动外呼任务详情
+// 用于通过 TaskId 查询**自动外呼任务的详细信息**，包括任务基础配置、起止时间、外呼名单、执行状态以及实际通话情况等。
+//
+// 该接口通常与 [创建批量自动外呼任务](https://cloud.tencent.com/document/product/679/69194) 配合使用，用于在任务创建后查看任务配置是否生效、任务当前状态，以及后续执行过程中的实时进展。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

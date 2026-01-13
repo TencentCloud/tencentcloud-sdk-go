@@ -1266,9 +1266,9 @@ type CreateDataSourceRequestParams struct {
 	// mysql: 自建实例
 	// {
 	//     "deployType": "CONNSTR_CVMDB",
-	//     "url": "jdbc:mysql://1.1.1.1:1111/database",
+	//     "url": "jdbc:mysql://1.1.1.1:1111/example#test#123456",
 	//     "username": "root",
-	//     "password": "root",
+	//     "password": "example#test#123456",
 	//     "region": "ap-shanghai",
 	//     "vpcId": "vpc-kprq42yo",
 	//     "type": "MYSQL"
@@ -1279,16 +1279,16 @@ type CreateDataSourceRequestParams struct {
 	//     "db": "db",
 	//     "region": "ap-shanghai",
 	//     "username": "msyql",
-	//     "password": "mysql",
+	//     "password": "example#test#123456",
 	//     "deployType": "INSTANCE",
 	//     "type": "TENCENT_MYSQL"
 	// }
 	// sql_server: 
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
-	//     "url": "jdbc:sqlserver://1.1.1.1:223;DatabaseName=database",
+	//     "url": "jdbc:sqlserver://1.1.1.1:223;example#test#123456",
 	//     "username": "user_1",
-	//     "password": "pass_2",
+	//     "password": "example#test#123456",
 	//     "type": "SQLSERVER"
 	// }
 	// redis:
@@ -1298,7 +1298,7 @@ type CreateDataSourceRequestParams struct {
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
 	//     "username":""
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "ip": "1.1.1.1",
 	//     "port": "6379",
 	//     "redisType": "NO_ACCOUT",
@@ -1307,9 +1307,9 @@ type CreateDataSourceRequestParams struct {
 	// oracle: 
 	// {
 	//     "deployType": "CONNSTR_CVMDB",
-	//     "url": "jdbc:oracle:thin:@1.1.1.1:1521:prod",
+	//     "url": "jdbc:oracle:thin:@1.1.1.1:1521:example#test#123456",
 	//     "username": "oracle",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "region": "ap-shanghai",
 	//     "vpcId": "vpc-kprq42yo",
 	//     "type": "ORACLE"
@@ -1326,16 +1326,16 @@ type CreateDataSourceRequestParams struct {
 	//     "db": "admin",
 	//     "deployType": "CONNSTR_PUBLICDB",
 	//     "username": "user",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "type": "MONGODB",
 	//     "host": "1.1.1.1:9200"
 	// }
 	// postgresql:
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
-	//     "url": "jdbc:postgresql://1.1.1.1:1921/database",
+	//     "url": "jdbc:postgresql://1.1.1.1:1921/example#test#123456",
 	//     "username": "user",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "type": "POSTGRE"
 	// }
 	// kafka:
@@ -1363,7 +1363,7 @@ type CreateDataSourceRequestParams struct {
 	//     "region": "ap-shanghai",
 	//     "deployType": "INSTANCE",
 	//     "secretId": "aaaaa",
-	//     "secretKey": "sssssss",
+	//     "secretKey": "example#test#123456",
 	//     "bucket": "aaa",
 	//     "type": "COS"
 	// }
@@ -1468,9 +1468,9 @@ type CreateDataSourceRequest struct {
 	// mysql: 自建实例
 	// {
 	//     "deployType": "CONNSTR_CVMDB",
-	//     "url": "jdbc:mysql://1.1.1.1:1111/database",
+	//     "url": "jdbc:mysql://1.1.1.1:1111/example#test#123456",
 	//     "username": "root",
-	//     "password": "root",
+	//     "password": "example#test#123456",
 	//     "region": "ap-shanghai",
 	//     "vpcId": "vpc-kprq42yo",
 	//     "type": "MYSQL"
@@ -1481,16 +1481,16 @@ type CreateDataSourceRequest struct {
 	//     "db": "db",
 	//     "region": "ap-shanghai",
 	//     "username": "msyql",
-	//     "password": "mysql",
+	//     "password": "example#test#123456",
 	//     "deployType": "INSTANCE",
 	//     "type": "TENCENT_MYSQL"
 	// }
 	// sql_server: 
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
-	//     "url": "jdbc:sqlserver://1.1.1.1:223;DatabaseName=database",
+	//     "url": "jdbc:sqlserver://1.1.1.1:223;example#test#123456",
 	//     "username": "user_1",
-	//     "password": "pass_2",
+	//     "password": "example#test#123456",
 	//     "type": "SQLSERVER"
 	// }
 	// redis:
@@ -1500,7 +1500,7 @@ type CreateDataSourceRequest struct {
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
 	//     "username":""
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "ip": "1.1.1.1",
 	//     "port": "6379",
 	//     "redisType": "NO_ACCOUT",
@@ -1509,9 +1509,9 @@ type CreateDataSourceRequest struct {
 	// oracle: 
 	// {
 	//     "deployType": "CONNSTR_CVMDB",
-	//     "url": "jdbc:oracle:thin:@1.1.1.1:1521:prod",
+	//     "url": "jdbc:oracle:thin:@1.1.1.1:1521:example#test#123456",
 	//     "username": "oracle",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "region": "ap-shanghai",
 	//     "vpcId": "vpc-kprq42yo",
 	//     "type": "ORACLE"
@@ -1528,16 +1528,16 @@ type CreateDataSourceRequest struct {
 	//     "db": "admin",
 	//     "deployType": "CONNSTR_PUBLICDB",
 	//     "username": "user",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "type": "MONGODB",
 	//     "host": "1.1.1.1:9200"
 	// }
 	// postgresql:
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
-	//     "url": "jdbc:postgresql://1.1.1.1:1921/database",
+	//     "url": "jdbc:postgresql://1.1.1.1:1921/example#test#123456",
 	//     "username": "user",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "type": "POSTGRE"
 	// }
 	// kafka:
@@ -1565,7 +1565,7 @@ type CreateDataSourceRequest struct {
 	//     "region": "ap-shanghai",
 	//     "deployType": "INSTANCE",
 	//     "secretId": "aaaaa",
-	//     "secretKey": "sssssss",
+	//     "secretKey": "example#test#123456",
 	//     "bucket": "aaa",
 	//     "type": "COS"
 	// }
@@ -5066,10 +5066,7 @@ type DeleteTriggerTaskRequestParams struct {
 	// 不传默认false
 	OperateInform *bool `json:"OperateInform,omitnil,omitempty" name:"OperateInform"`
 
-	// 任务删除方式
-	// true：不针对下游任务实例进行强制失败
-	// false：针对下游任务实例进行强制失败
-	// 不传默认false
+	// (本参数暂不生效)当前删除上游任务时，不会针对下游任务实例进行强制失败
 	DeleteMode *bool `json:"DeleteMode,omitnil,omitempty" name:"DeleteMode"`
 }
 
@@ -5088,10 +5085,7 @@ type DeleteTriggerTaskRequest struct {
 	// 不传默认false
 	OperateInform *bool `json:"OperateInform,omitnil,omitempty" name:"OperateInform"`
 
-	// 任务删除方式
-	// true：不针对下游任务实例进行强制失败
-	// false：针对下游任务实例进行强制失败
-	// 不传默认false
+	// (本参数暂不生效)当前删除上游任务时，不会针对下游任务实例进行强制失败
 	DeleteMode *bool `json:"DeleteMode,omitnil,omitempty" name:"DeleteMode"`
 }
 
@@ -21623,9 +21617,9 @@ type UpdateDataSourceRequestParams struct {
 	// mysql: 自建实例
 	// {
 	//     "deployType": "CONNSTR_CVMDB",
-	//     "url": "jdbc:mysql://1.1.1.1:1111/database",
+	//     "url": "jdbc:mysql://1.1.1.1:1111/example#test#123456",
 	//     "username": "root",
-	//     "password": "root",
+	//     "password": "example#test#123456",
 	//     "region": "ap-shanghai",
 	//     "vpcId": "vpc-kprq42yo",
 	//     "type": "MYSQL"
@@ -21636,16 +21630,16 @@ type UpdateDataSourceRequestParams struct {
 	//     "db": "db",
 	//     "region": "ap-shanghai",
 	//     "username": "msyql",
-	//     "password": "mysql",
+	//     "password": "example#test#123456",
 	//     "deployType": "INSTANCE",
 	//     "type": "TENCENT_MYSQL"
 	// }
 	// sql_server: 
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
-	//     "url": "jdbc:sqlserver://1.1.1.1:223;DatabaseName=database",
+	//     "url": "jdbc:sqlserver://1.1.1.1:223;example#test#123456",
 	//     "username": "user_1",
-	//     "password": "pass_2",
+	//     "password": "example#test#123456",
 	//     "type": "SQLSERVER"
 	// }
 	// redis:
@@ -21655,7 +21649,7 @@ type UpdateDataSourceRequestParams struct {
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
 	//     "username":""
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "ip": "1.1.1.1",
 	//     "port": "6379",
 	//     "redisType": "NO_ACCOUT",
@@ -21664,9 +21658,9 @@ type UpdateDataSourceRequestParams struct {
 	// oracle: 
 	// {
 	//     "deployType": "CONNSTR_CVMDB",
-	//     "url": "jdbc:oracle:thin:@1.1.1.1:1521:prod",
+	//     "url": "jdbc:oracle:thin:@1.1.1.1:1521:example#test#123456",
 	//     "username": "oracle",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "region": "ap-shanghai",
 	//     "vpcId": "vpc-kprq42yo",
 	//     "type": "ORACLE"
@@ -21683,16 +21677,16 @@ type UpdateDataSourceRequestParams struct {
 	//     "db": "admin",
 	//     "deployType": "CONNSTR_PUBLICDB",
 	//     "username": "user",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "type": "MONGODB",
 	//     "host": "1.1.1.1:9200"
 	// }
 	// postgresql:
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
-	//     "url": "jdbc:postgresql://1.1.1.1:1921/database",
+	//     "url": "jdbc:postgresql://1.1.1.1:1921/example#test#123456",
 	//     "username": "user",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "type": "POSTGRE"
 	// }
 	// kafka:
@@ -21720,7 +21714,7 @@ type UpdateDataSourceRequestParams struct {
 	//     "region": "ap-shanghai",
 	//     "deployType": "INSTANCE",
 	//     "secretId": "aaaaa",
-	//     "secretKey": "sssssss",
+	//     "secretKey": "example#test#123456",
 	//     "bucket": "aaa",
 	//     "type": "COS"
 	// }
@@ -21764,9 +21758,9 @@ type UpdateDataSourceRequest struct {
 	// mysql: 自建实例
 	// {
 	//     "deployType": "CONNSTR_CVMDB",
-	//     "url": "jdbc:mysql://1.1.1.1:1111/database",
+	//     "url": "jdbc:mysql://1.1.1.1:1111/example#test#123456",
 	//     "username": "root",
-	//     "password": "root",
+	//     "password": "example#test#123456",
 	//     "region": "ap-shanghai",
 	//     "vpcId": "vpc-kprq42yo",
 	//     "type": "MYSQL"
@@ -21777,16 +21771,16 @@ type UpdateDataSourceRequest struct {
 	//     "db": "db",
 	//     "region": "ap-shanghai",
 	//     "username": "msyql",
-	//     "password": "mysql",
+	//     "password": "example#test#123456",
 	//     "deployType": "INSTANCE",
 	//     "type": "TENCENT_MYSQL"
 	// }
 	// sql_server: 
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
-	//     "url": "jdbc:sqlserver://1.1.1.1:223;DatabaseName=database",
+	//     "url": "jdbc:sqlserver://1.1.1.1:223;example#test#123456",
 	//     "username": "user_1",
-	//     "password": "pass_2",
+	//     "password": "example#test#123456",
 	//     "type": "SQLSERVER"
 	// }
 	// redis:
@@ -21796,7 +21790,7 @@ type UpdateDataSourceRequest struct {
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
 	//     "username":""
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "ip": "1.1.1.1",
 	//     "port": "6379",
 	//     "redisType": "NO_ACCOUT",
@@ -21805,9 +21799,9 @@ type UpdateDataSourceRequest struct {
 	// oracle: 
 	// {
 	//     "deployType": "CONNSTR_CVMDB",
-	//     "url": "jdbc:oracle:thin:@1.1.1.1:1521:prod",
+	//     "url": "jdbc:oracle:thin:@1.1.1.1:1521:example#test#123456",
 	//     "username": "oracle",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "region": "ap-shanghai",
 	//     "vpcId": "vpc-kprq42yo",
 	//     "type": "ORACLE"
@@ -21824,16 +21818,16 @@ type UpdateDataSourceRequest struct {
 	//     "db": "admin",
 	//     "deployType": "CONNSTR_PUBLICDB",
 	//     "username": "user",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "type": "MONGODB",
 	//     "host": "1.1.1.1:9200"
 	// }
 	// postgresql:
 	// {
 	//     "deployType": "CONNSTR_PUBLICDB",
-	//     "url": "jdbc:postgresql://1.1.1.1:1921/database",
+	//     "url": "jdbc:postgresql://1.1.1.1:1921/example#test#123456",
 	//     "username": "user",
-	//     "password": "pass",
+	//     "password": "example#test#123456",
 	//     "type": "POSTGRE"
 	// }
 	// kafka:
@@ -21861,7 +21855,7 @@ type UpdateDataSourceRequest struct {
 	//     "region": "ap-shanghai",
 	//     "deployType": "INSTANCE",
 	//     "secretId": "aaaaa",
-	//     "secretKey": "sssssss",
+	//     "secretKey": "example#test#123456",
 	//     "bucket": "aaa",
 	//     "type": "COS"
 	// }

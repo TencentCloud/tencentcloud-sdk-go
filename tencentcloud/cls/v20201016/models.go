@@ -3005,6 +3005,77 @@ func (r *CreateCosRechargeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDashboardRequestParams struct {
+	// 仪表盘名称
+	DashboardName *string `json:"DashboardName,omitnil,omitempty" name:"DashboardName"`
+
+	// 仪表盘配置数据
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateDashboardRequest struct {
+	*tchttp.BaseRequest
+	
+	// 仪表盘名称
+	DashboardName *string `json:"DashboardName,omitnil,omitempty" name:"DashboardName"`
+
+	// 仪表盘配置数据
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateDashboardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDashboardRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DashboardName")
+	delete(f, "Data")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDashboardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDashboardResponseParams struct {
+	// 仪表盘id
+	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDashboardResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDashboardResponseParams `json:"Response"`
+}
+
+func (r *CreateDashboardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDashboardResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDashboardSubscribeRequestParams struct {
 	// 仪表盘订阅名称。
 	// 输入限制：
@@ -6454,6 +6525,60 @@ func (r *DeleteCosRechargeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCosRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDashboardRequestParams struct {
+	// 仪表盘id
+	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
+}
+
+type DeleteDashboardRequest struct {
+	*tchttp.BaseRequest
+	
+	// 仪表盘id
+	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
+}
+
+func (r *DeleteDashboardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDashboardRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DashboardId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDashboardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDashboardResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDashboardResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDashboardResponseParams `json:"Response"`
+}
+
+func (r *DeleteDashboardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDashboardResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15550,6 +15675,81 @@ func (r *ModifyCosRechargeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCosRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDashboardRequestParams struct {
+	// 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
+
+	// 仪表盘名称
+	DashboardName *string `json:"DashboardName,omitnil,omitempty" name:"DashboardName"`
+
+	// 仪表盘配置数据
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type ModifyDashboardRequest struct {
+	*tchttp.BaseRequest
+	
+	// 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+	DashboardId *string `json:"DashboardId,omitnil,omitempty" name:"DashboardId"`
+
+	// 仪表盘名称
+	DashboardName *string `json:"DashboardName,omitnil,omitempty" name:"DashboardName"`
+
+	// 仪表盘配置数据
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *ModifyDashboardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDashboardRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DashboardId")
+	delete(f, "DashboardName")
+	delete(f, "Data")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDashboardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDashboardResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDashboardResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDashboardResponseParams `json:"Response"`
+}
+
+func (r *ModifyDashboardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDashboardResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

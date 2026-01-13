@@ -120,6 +120,84 @@ func (r *AddChunkResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddSceneRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 场景
+	Scene *Scene `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// 1仅自己使用，2指定用户，0全员
+	UseScope *int64 `json:"UseScope,omitnil,omitempty" name:"UseScope"`
+
+	// 可使用用户列表
+	AuthorityUins []*string `json:"AuthorityUins,omitnil,omitempty" name:"AuthorityUins"`
+}
+
+type AddSceneRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 场景
+	Scene *Scene `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// 1仅自己使用，2指定用户，0全员
+	UseScope *int64 `json:"UseScope,omitnil,omitempty" name:"UseScope"`
+
+	// 可使用用户列表
+	AuthorityUins []*string `json:"AuthorityUins,omitnil,omitempty" name:"AuthorityUins"`
+}
+
+func (r *AddSceneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddSceneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Scene")
+	delete(f, "UseScope")
+	delete(f, "AuthorityUins")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSceneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddSceneResponseParams struct {
+	// 场景id
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddSceneResponse struct {
+	*tchttp.BaseResponse
+	Response *AddSceneResponseParams `json:"Response"`
+}
+
+func (r *AddSceneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddSceneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChatAIRequestParams struct {
 	// 会话ID
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
@@ -472,6 +550,87 @@ func (r *DeleteDataAgentSessionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteDataAgentSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSceneRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 场景id
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+}
+
+type DeleteSceneRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 场景id
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+}
+
+func (r *DeleteSceneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSceneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SceneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSceneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSceneResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSceneResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSceneResponseParams `json:"Response"`
+}
+
+func (r *DeleteSceneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSceneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExampleQA struct {
+	// 示例记录的唯一业务 ID
+	ExampleId *string `json:"ExampleId,omitnil,omitempty" name:"ExampleId"`
+
+	// 问题列表
+	Questions []*string `json:"Questions,omitnil,omitempty" name:"Questions"`
+
+	// 对应的标准答案或回复
+	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
+
+	// 内容类型，类型包含 'text', 'sql', 'code' 
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 记录的创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 记录的最后更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type FileInfo struct {
@@ -1107,6 +1266,15 @@ func (r *ModifyKnowledgeBaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserAuthorityRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 分为知识库knowledge、数据源datasource、自定义场景scene
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 对象id,分为知识库id、数据源id、场景id
+	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
+
 	// 作用范围：1仅自己使用，2指定用户，0全员
 	UseScope *int64 `json:"UseScope,omitnil,omitempty" name:"UseScope"`
 
@@ -1117,6 +1285,15 @@ type ModifyUserAuthorityRequestParams struct {
 type ModifyUserAuthorityRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 分为知识库knowledge、数据源datasource、自定义场景scene
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 对象id,分为知识库id、数据源id、场景id
+	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
+
 	// 作用范围：1仅自己使用，2指定用户，0全员
 	UseScope *int64 `json:"UseScope,omitnil,omitempty" name:"UseScope"`
 
@@ -1136,6 +1313,9 @@ func (r *ModifyUserAuthorityRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceId")
+	delete(f, "Module")
+	delete(f, "ObjectId")
 	delete(f, "UseScope")
 	delete(f, "AuthorityUins")
 	if len(f) > 0 {
@@ -1241,13 +1421,113 @@ func (r *QueryChunkListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type QueryUserAuthorityRequestParams struct {
+type QuerySceneListRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 场景id
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 场景名称
+	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+
+	// 页数
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 页的大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type QuerySceneListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 场景id
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 场景名称
+	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+
+	// 页数
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 页的大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *QuerySceneListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QuerySceneListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SceneId")
+	delete(f, "SceneName")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuerySceneListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QuerySceneListResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QuerySceneListResponse struct {
+	*tchttp.BaseResponse
+	Response *QuerySceneListResponseParams `json:"Response"`
+}
+
+func (r *QuerySceneListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QuerySceneListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryUserAuthorityRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 分为知识库knowledge、数据源datasource、自定义场景scene
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 对象id,分为知识库id、数据源id、场景id
+	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
 }
 
 type QueryUserAuthorityRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 分为知识库knowledge、数据源datasource、自定义场景scene
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 对象id,分为知识库id、数据源id、场景id
+	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
 }
 
 func (r *QueryUserAuthorityRequest) ToJsonString() string {
@@ -1262,7 +1542,9 @@ func (r *QueryUserAuthorityRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "Module")
+	delete(f, "ObjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryUserAuthorityRequest has unknown keys!", "")
 	}
@@ -1339,6 +1621,61 @@ type Record struct {
 
 	// 上下文
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+}
+
+type Scene struct {
+	// 场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 场景名称
+	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+
+	// 技能列表，包含：rag（知识检索）、data_analytics（数据分析）、data_prediction（数据预测）
+	Skills []*string `json:"Skills,omitnil,omitempty" name:"Skills"`
+
+	// 提示词文本
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 检索配置
+	SearchConfig *SearchConfig `json:"SearchConfig,omitnil,omitempty" name:"SearchConfig"`
+
+	// 示例问答列表
+	ExampleQAList []*ExampleQA `json:"ExampleQAList,omitnil,omitempty" name:"ExampleQAList"`
+
+	// 记录的创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 记录的最后更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 创建者Uin
+	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
+}
+
+type SearchConfig struct {
+	// 检索类型：0:混合搜索 1：向量搜索 2：全文搜索
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 召回数量最大值
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 权重配置
+	EmbeddingWeight *float64 `json:"EmbeddingWeight,omitnil,omitempty" name:"EmbeddingWeight"`
+
+	// 0:关闭 1:开启，默认1
+	Rerank *int64 `json:"Rerank,omitnil,omitempty" name:"Rerank"`
+
+	// 0:关闭 1:开启，默认0
+	AutoRag *int64 `json:"AutoRag,omitnil,omitempty" name:"AutoRag"`
+
+	// AutoRag关联的知识库ID列表
+	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitnil,omitempty" name:"KnowledgeBaseIds"`
+
+	// AutoRag搜索状态：0-未完成，1-已完成。仅当AutoRag=1时，该字段有效
+	SearchStatus *int64 `json:"SearchStatus,omitnil,omitempty" name:"SearchStatus"`
 }
 
 type StepExpand struct {
@@ -1451,6 +1788,67 @@ type Task struct {
 
 	// 任务步骤列表
 	StepInfoList []*StepInfo `json:"StepInfoList,omitnil,omitempty" name:"StepInfoList"`
+}
+
+// Predefined struct for user
+type UpdateSceneRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 场景
+	Scene *Scene `json:"Scene,omitnil,omitempty" name:"Scene"`
+}
+
+type UpdateSceneRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 场景
+	Scene *Scene `json:"Scene,omitnil,omitempty" name:"Scene"`
+}
+
+func (r *UpdateSceneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateSceneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Scene")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateSceneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateSceneResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateSceneResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateSceneResponseParams `json:"Response"`
+}
+
+func (r *UpdateSceneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateSceneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

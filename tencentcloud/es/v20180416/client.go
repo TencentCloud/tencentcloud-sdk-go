@@ -89,6 +89,70 @@ func (c *Client) CheckMigrateIndexMetaDataWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateAutoBackUpStrategyRequest() (request *CreateAutoBackUpStrategyRequest) {
+    request = &CreateAutoBackUpStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "CreateAutoBackUpStrategy")
+    
+    
+    return
+}
+
+func NewCreateAutoBackUpStrategyResponse() (response *CreateAutoBackUpStrategyResponse) {
+    response = &CreateAutoBackUpStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAutoBackUpStrategy
+// 新建自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+func (c *Client) CreateAutoBackUpStrategy(request *CreateAutoBackUpStrategyRequest) (response *CreateAutoBackUpStrategyResponse, err error) {
+    return c.CreateAutoBackUpStrategyWithContext(context.Background(), request)
+}
+
+// CreateAutoBackUpStrategy
+// 新建自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+func (c *Client) CreateAutoBackUpStrategyWithContext(ctx context.Context, request *CreateAutoBackUpStrategyRequest) (response *CreateAutoBackUpStrategyResponse, err error) {
+    if request == nil {
+        request = NewCreateAutoBackUpStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CreateAutoBackUpStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAutoBackUpStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAutoBackUpStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterSnapshotRequest() (request *CreateClusterSnapshotRequest) {
     request = &CreateClusterSnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -869,6 +933,64 @@ func (c *Client) CreateServerlessSpaceV2WithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteAutoBackUpStrategyRequest() (request *DeleteAutoBackUpStrategyRequest) {
+    request = &DeleteAutoBackUpStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DeleteAutoBackUpStrategy")
+    
+    
+    return
+}
+
+func NewDeleteAutoBackUpStrategyResponse() (response *DeleteAutoBackUpStrategyResponse) {
+    response = &DeleteAutoBackUpStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAutoBackUpStrategy
+// 删除自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAutoBackUpStrategy(request *DeleteAutoBackUpStrategyRequest) (response *DeleteAutoBackUpStrategyResponse, err error) {
+    return c.DeleteAutoBackUpStrategyWithContext(context.Background(), request)
+}
+
+// DeleteAutoBackUpStrategy
+// 删除自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAutoBackUpStrategyWithContext(ctx context.Context, request *DeleteAutoBackUpStrategyRequest) (response *DeleteAutoBackUpStrategyResponse, err error) {
+    if request == nil {
+        request = NewDeleteAutoBackUpStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DeleteAutoBackUpStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAutoBackUpStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAutoBackUpStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterSnapshotRequest() (request *DeleteClusterSnapshotRequest) {
     request = &DeleteClusterSnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -892,29 +1014,11 @@ func NewDeleteClusterSnapshotResponse() (response *DeleteClusterSnapshotResponse
 // 删除快照仓库里备份的快照
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
-//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
-//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
-//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
-//  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
-//  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
-//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
-//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
-//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
-//  RESOURCEINSUFFICIENT_CLB = "ResourceInsufficient.Clb"
-//  RESOURCEINSUFFICIENT_ES = "ResourceInsufficient.Es"
-//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
-//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteClusterSnapshot(request *DeleteClusterSnapshotRequest) (response *DeleteClusterSnapshotResponse, err error) {
     return c.DeleteClusterSnapshotWithContext(context.Background(), request)
 }
@@ -923,29 +1027,11 @@ func (c *Client) DeleteClusterSnapshot(request *DeleteClusterSnapshotRequest) (r
 // 删除快照仓库里备份的快照
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
-//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
-//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
-//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
-//  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
-//  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
-//  LIMITEXCEEDED_INDEXCREATE = "LimitExceeded.IndexCreate"
-//  LIMITEXCEEDED_SPACECOUNT = "LimitExceeded.SpaceCount"
-//  LIMITEXCEEDED_SPACECREATE = "LimitExceeded.SpaceCreate"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
-//  RESOURCEINSUFFICIENT_CLB = "ResourceInsufficient.Clb"
-//  RESOURCEINSUFFICIENT_ES = "ResourceInsufficient.Es"
-//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
-//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteClusterSnapshotWithContext(ctx context.Context, request *DeleteClusterSnapshotRequest) (response *DeleteClusterSnapshotResponse, err error) {
     if request == nil {
         request = NewDeleteClusterSnapshotRequest()
@@ -1363,6 +1449,62 @@ func (c *Client) DeleteServerlessSpaceUserWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDeleteServerlessSpaceUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAutoBackUpStrategyRequest() (request *DescribeAutoBackUpStrategyRequest) {
+    request = &DescribeAutoBackUpStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "DescribeAutoBackUpStrategy")
+    
+    
+    return
+}
+
+func NewDescribeAutoBackUpStrategyResponse() (response *DescribeAutoBackUpStrategyResponse) {
+    response = &DescribeAutoBackUpStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAutoBackUpStrategy
+// 获取自动备份快照策略信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeAutoBackUpStrategy(request *DescribeAutoBackUpStrategyRequest) (response *DescribeAutoBackUpStrategyResponse, err error) {
+    return c.DescribeAutoBackUpStrategyWithContext(context.Background(), request)
+}
+
+// DescribeAutoBackUpStrategy
+// 获取自动备份快照策略信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+func (c *Client) DescribeAutoBackUpStrategyWithContext(ctx context.Context, request *DescribeAutoBackUpStrategyRequest) (response *DescribeAutoBackUpStrategyResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoBackUpStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "DescribeAutoBackUpStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoBackUpStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoBackUpStrategyResponse()
     err = c.Send(request, response)
     return
 }
@@ -3031,6 +3173,134 @@ func (c *Client) InstallInstanceModelWithContext(ctx context.Context, request *I
     request.SetContext(ctx)
     
     response = NewInstallInstanceModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAutoBackUpCommonInfoRequest() (request *ModifyAutoBackUpCommonInfoRequest) {
+    request = &ModifyAutoBackUpCommonInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "ModifyAutoBackUpCommonInfo")
+    
+    
+    return
+}
+
+func NewModifyAutoBackUpCommonInfoResponse() (response *ModifyAutoBackUpCommonInfoResponse) {
+    response = &ModifyAutoBackUpCommonInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAutoBackUpCommonInfo
+// 修改自动备份快照策略公共信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAutoBackUpCommonInfo(request *ModifyAutoBackUpCommonInfoRequest) (response *ModifyAutoBackUpCommonInfoResponse, err error) {
+    return c.ModifyAutoBackUpCommonInfoWithContext(context.Background(), request)
+}
+
+// ModifyAutoBackUpCommonInfo
+// 修改自动备份快照策略公共信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAutoBackUpCommonInfoWithContext(ctx context.Context, request *ModifyAutoBackUpCommonInfoRequest) (response *ModifyAutoBackUpCommonInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoBackUpCommonInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ModifyAutoBackUpCommonInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoBackUpCommonInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAutoBackUpCommonInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAutoBackUpStrategyRequest() (request *ModifyAutoBackUpStrategyRequest) {
+    request = &ModifyAutoBackUpStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "ModifyAutoBackUpStrategy")
+    
+    
+    return
+}
+
+func NewModifyAutoBackUpStrategyResponse() (response *ModifyAutoBackUpStrategyResponse) {
+    response = &ModifyAutoBackUpStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAutoBackUpStrategy
+// 修改自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+func (c *Client) ModifyAutoBackUpStrategy(request *ModifyAutoBackUpStrategyRequest) (response *ModifyAutoBackUpStrategyResponse, err error) {
+    return c.ModifyAutoBackUpStrategyWithContext(context.Background(), request)
+}
+
+// ModifyAutoBackUpStrategy
+// 修改自动备份快照策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+func (c *Client) ModifyAutoBackUpStrategyWithContext(ctx context.Context, request *ModifyAutoBackUpStrategyRequest) (response *ModifyAutoBackUpStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoBackUpStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ModifyAutoBackUpStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoBackUpStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAutoBackUpStrategyResponse()
     err = c.Send(request, response)
     return
 }

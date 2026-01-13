@@ -901,6 +901,56 @@ func (c *Client) CopyCasterWithContext(ctx context.Context, request *CopyCasterR
     return
 }
 
+func NewCreateAuditKeywordLibRequest() (request *CreateAuditKeywordLibRequest) {
+    request = &CreateAuditKeywordLibRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateAuditKeywordLib")
+    
+    
+    return
+}
+
+func NewCreateAuditKeywordLibResponse() (response *CreateAuditKeywordLibResponse) {
+    response = &CreateAuditKeywordLibResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAuditKeywordLib
+// 创建关键词库，直播审核功能使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateAuditKeywordLib(request *CreateAuditKeywordLibRequest) (response *CreateAuditKeywordLibResponse, err error) {
+    return c.CreateAuditKeywordLibWithContext(context.Background(), request)
+}
+
+// CreateAuditKeywordLib
+// 创建关键词库，直播审核功能使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateAuditKeywordLibWithContext(ctx context.Context, request *CreateAuditKeywordLibRequest) (response *CreateAuditKeywordLibResponse, err error) {
+    if request == nil {
+        request = NewCreateAuditKeywordLibRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateAuditKeywordLib")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAuditKeywordLib require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAuditKeywordLibResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAuditKeywordsRequest() (request *CreateAuditKeywordsRequest) {
     request = &CreateAuditKeywordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

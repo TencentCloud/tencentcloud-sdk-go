@@ -2314,6 +2314,9 @@ type CreateClustersRequestParams struct {
 
 	// 暂停后的归档处理时间
 	AutoArchiveDelayHours *int64 `json:"AutoArchiveDelayHours,omitnil,omitempty" name:"AutoArchiveDelayHours"`
+
+	// 内核小版本号
+	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
 }
 
 type CreateClustersRequest struct {
@@ -2477,6 +2480,9 @@ type CreateClustersRequest struct {
 
 	// 暂停后的归档处理时间
 	AutoArchiveDelayHours *int64 `json:"AutoArchiveDelayHours,omitnil,omitempty" name:"AutoArchiveDelayHours"`
+
+	// 内核小版本号
+	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
 }
 
 func (r *CreateClustersRequest) ToJsonString() string {
@@ -2536,6 +2542,7 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "ProxyConfig")
 	delete(f, "AutoArchive")
 	delete(f, "AutoArchiveDelayHours")
+	delete(f, "CynosVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClustersRequest has unknown keys!", "")
 	}
@@ -10221,6 +10228,18 @@ type GdnTaskInfo struct {
 
 	// 从集群名称
 	StandbyClusterName *string `json:"StandbyClusterName,omitnil,omitempty" name:"StandbyClusterName"`
+
+	// 是否已强切
+	ForceSwitchGdn *string `json:"ForceSwitchGdn,omitnil,omitempty" name:"ForceSwitchGdn"`
+
+	// 返回码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 提示信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 是否支持强切
+	IsSupportForce *string `json:"IsSupportForce,omitnil,omitempty" name:"IsSupportForce"`
 }
 
 type GoodsPrice struct {

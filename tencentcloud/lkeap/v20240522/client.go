@@ -161,7 +161,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 //     - DeepSeek-V3.2 为685B 参数 MoE 模型，其引入的稀疏注意力架构使长文本处理更高效，并在推理评测中达到GPT-5水平。
 //
-//     -  支持128K上下文长度，最大输入长度96k，非思考模式最大输出8k（默认4k），思考模式最大输出64k（默认32k），最大思维链输出长度32k。
+//     -  支持128K上下文长度，最大输入长度96k，最大输出32k（默认4k），最大思维链输出长度32k。
 //
 //     -  默认单账号下 DeepSeek-V3.2 模型的限制为：QPM：15,000 ，TPM：300,000
 //
@@ -402,7 +402,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 //     - DeepSeek-V3.2 为685B 参数 MoE 模型，其引入的稀疏注意力架构使长文本处理更高效，并在推理评测中达到GPT-5水平。
 //
-//     -  支持128K上下文长度，最大输入长度96k，非思考模式最大输出8k（默认4k），思考模式最大输出64k（默认32k），最大思维链输出长度32k。
+//     -  支持128K上下文长度，最大输入长度96k，最大输出32k（默认4k），最大思维链输出长度32k。
 //
 //     -  默认单账号下 DeepSeek-V3.2 模型的限制为：QPM：15,000 ，TPM：300,000
 //

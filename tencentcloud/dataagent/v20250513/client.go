@@ -113,6 +113,76 @@ func (c *Client) AddChunkWithContext(ctx context.Context, request *AddChunkReque
     return
 }
 
+func NewAddSceneRequest() (request *AddSceneRequest) {
+    request = &AddSceneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "AddScene")
+    
+    
+    return
+}
+
+func NewAddSceneResponse() (response *AddSceneResponse) {
+    response = &AddSceneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddScene
+// 新增场景
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddScene(request *AddSceneRequest) (response *AddSceneResponse, err error) {
+    return c.AddSceneWithContext(context.Background(), request)
+}
+
+// AddScene
+// 新增场景
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddSceneWithContext(ctx context.Context, request *AddSceneRequest) (response *AddSceneResponse, err error) {
+    if request == nil {
+        request = NewAddSceneRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "AddScene")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddScene require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddSceneResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChatAIRequest() (request *ChatAIRequest) {
     request = &ChatAIRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -371,6 +441,76 @@ func (c *Client) DeleteDataAgentSessionWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDeleteDataAgentSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSceneRequest() (request *DeleteSceneRequest) {
+    request = &DeleteSceneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "DeleteScene")
+    
+    
+    return
+}
+
+func NewDeleteSceneResponse() (response *DeleteSceneResponse) {
+    response = &DeleteSceneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteScene
+// 删除场景
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteScene(request *DeleteSceneRequest) (response *DeleteSceneResponse, err error) {
+    return c.DeleteSceneWithContext(context.Background(), request)
+}
+
+// DeleteScene
+// 删除场景
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSceneWithContext(ctx context.Context, request *DeleteSceneRequest) (response *DeleteSceneResponse, err error) {
+    if request == nil {
+        request = NewDeleteSceneRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "DeleteScene")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteScene require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSceneResponse()
     err = c.Send(request, response)
     return
 }
@@ -987,6 +1127,72 @@ func (c *Client) QueryChunkListWithContext(ctx context.Context, request *QueryCh
     return
 }
 
+func NewQuerySceneListRequest() (request *QuerySceneListRequest) {
+    request = &QuerySceneListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "QuerySceneList")
+    
+    
+    return
+}
+
+func NewQuerySceneListResponse() (response *QuerySceneListResponse) {
+    response = &QuerySceneListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QuerySceneList
+// 查询场景列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QuerySceneList(request *QuerySceneListRequest) (response *QuerySceneListResponse, err error) {
+    return c.QuerySceneListWithContext(context.Background(), request)
+}
+
+// QuerySceneList
+// 查询场景列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QuerySceneListWithContext(ctx context.Context, request *QuerySceneListRequest) (response *QuerySceneListResponse, err error) {
+    if request == nil {
+        request = NewQuerySceneListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "QuerySceneList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QuerySceneList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQuerySceneListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryUserAuthorityRequest() (request *QueryUserAuthorityRequest) {
     request = &QueryUserAuthorityRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1117,6 +1323,76 @@ func (c *Client) StopChatAIWithContext(ctx context.Context, request *StopChatAIR
     request.SetContext(ctx)
     
     response = NewStopChatAIResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateSceneRequest() (request *UpdateSceneRequest) {
+    request = &UpdateSceneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "UpdateScene")
+    
+    
+    return
+}
+
+func NewUpdateSceneResponse() (response *UpdateSceneResponse) {
+    response = &UpdateSceneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateScene
+// 更新场景
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateScene(request *UpdateSceneRequest) (response *UpdateSceneResponse, err error) {
+    return c.UpdateSceneWithContext(context.Background(), request)
+}
+
+// UpdateScene
+// 更新场景
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateSceneWithContext(ctx context.Context, request *UpdateSceneRequest) (response *UpdateSceneResponse, err error) {
+    if request == nil {
+        request = NewUpdateSceneRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "UpdateScene")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateScene require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateSceneResponse()
     err = c.Send(request, response)
     return
 }

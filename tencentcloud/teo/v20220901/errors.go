@@ -881,6 +881,9 @@ const (
 	// 入参中的域名与站点参数不匹配，请更正后重试。
 	INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = "InvalidParameterValue.DomainNotMatchZone"
 
+	// 当指定 DimensionName 参数时，Filters 字段必须包含与 DimensionName 对应的过滤条件。
+	INVALIDPARAMETERVALUE_FILTERSMUSTINCLUDEDIMENSIONNAME = "InvalidParameterValue.FiltersMustIncludeDimensionName"
+
 	// 格式不匹配。
 	INVALIDPARAMETERVALUE_FORMATMISMATCH = "InvalidParameterValue.FormatMismatch"
 
@@ -1024,6 +1027,9 @@ const (
 
 	// 超出功能限制。
 	LIMITEXCEEDED_SECURITY = "LimitExceeded.Security"
+
+	// 本次查询的时序数据项超出上限。
+	LIMITEXCEEDED_TIMINGDATAITEMLIMITEXCEEDED = "LimitExceeded.TimingDataItemLimitExceeded"
 
 	// 用户实例数量限制。
 	LIMITEXCEEDED_USERQUOTALIMITED = "LimitExceeded.UserQuotaLimited"

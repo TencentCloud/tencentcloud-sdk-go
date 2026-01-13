@@ -1141,6 +1141,78 @@ func (c *Client) CreateCosRechargeWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateDashboardRequest() (request *CreateDashboardRequest) {
+    request = &CreateDashboardRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateDashboard")
+    
+    
+    return
+}
+
+func NewCreateDashboardResponse() (response *CreateDashboardResponse) {
+    response = &CreateDashboardResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDashboard
+// 本接口用于创建仪表盘
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DASHBOARDNAMECONFLICT = "InvalidParameter.DashboardNameConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TAG = "LimitExceeded.Tag"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateDashboard(request *CreateDashboardRequest) (response *CreateDashboardResponse, err error) {
+    return c.CreateDashboardWithContext(context.Background(), request)
+}
+
+// CreateDashboard
+// 本接口用于创建仪表盘
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DASHBOARDNAMECONFLICT = "InvalidParameter.DashboardNameConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TAG = "LimitExceeded.Tag"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateDashboardWithContext(ctx context.Context, request *CreateDashboardRequest) (response *CreateDashboardResponse, err error) {
+    if request == nil {
+        request = NewCreateDashboardRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateDashboard")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDashboard require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDashboardResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDashboardSubscribeRequest() (request *CreateDashboardSubscribeRequest) {
     request = &CreateDashboardSubscribeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3295,6 +3367,76 @@ func (c *Client) DeleteCosRechargeWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteCosRechargeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDashboardRequest() (request *DeleteDashboardRequest) {
+    request = &DeleteDashboardRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteDashboard")
+    
+    
+    return
+}
+
+func NewDeleteDashboardResponse() (response *DeleteDashboardResponse) {
+    response = &DeleteDashboardResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDashboard
+// 本接口用于删除仪表盘
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TAG = "LimitExceeded.Tag"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DeleteDashboard(request *DeleteDashboardRequest) (response *DeleteDashboardResponse, err error) {
+    return c.DeleteDashboardWithContext(context.Background(), request)
+}
+
+// DeleteDashboard
+// 本接口用于删除仪表盘
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TAG = "LimitExceeded.Tag"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DeleteDashboardWithContext(ctx context.Context, request *DeleteDashboardRequest) (response *DeleteDashboardResponse, err error) {
+    if request == nil {
+        request = NewDeleteDashboardRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteDashboard")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDashboard require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDashboardResponse()
     err = c.Send(request, response)
     return
 }
@@ -9317,6 +9459,78 @@ func (c *Client) ModifyCosRechargeWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyCosRechargeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDashboardRequest() (request *ModifyDashboardRequest) {
+    request = &ModifyDashboardRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyDashboard")
+    
+    
+    return
+}
+
+func NewModifyDashboardResponse() (response *ModifyDashboardResponse) {
+    response = &ModifyDashboardResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDashboard
+// 本接口用于修改仪表盘
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DASHBOARDNAMECONFLICT = "InvalidParameter.DashboardNameConflict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) ModifyDashboard(request *ModifyDashboardRequest) (response *ModifyDashboardResponse, err error) {
+    return c.ModifyDashboardWithContext(context.Background(), request)
+}
+
+// ModifyDashboard
+// 本接口用于修改仪表盘
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DASHBOARDNAMECONFLICT = "InvalidParameter.DashboardNameConflict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) ModifyDashboardWithContext(ctx context.Context, request *ModifyDashboardRequest) (response *ModifyDashboardResponse, err error) {
+    if request == nil {
+        request = NewModifyDashboardRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyDashboard")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDashboard require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDashboardResponse()
     err = c.Send(request, response)
     return
 }

@@ -169,6 +169,60 @@ func (c *Client) CreateAPIKeyWithContext(ctx context.Context, request *CreateAPI
     return
 }
 
+func NewCreatePreCacheImageTaskRequest() (request *CreatePreCacheImageTaskRequest) {
+    request = &CreatePreCacheImageTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "CreatePreCacheImageTask")
+    
+    
+    return
+}
+
+func NewCreatePreCacheImageTaskResponse() (response *CreatePreCacheImageTaskResponse) {
+    response = &CreatePreCacheImageTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePreCacheImageTask
+// 创建镜像预热任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreatePreCacheImageTask(request *CreatePreCacheImageTaskRequest) (response *CreatePreCacheImageTaskResponse, err error) {
+    return c.CreatePreCacheImageTaskWithContext(context.Background(), request)
+}
+
+// CreatePreCacheImageTask
+// 创建镜像预热任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreatePreCacheImageTaskWithContext(ctx context.Context, request *CreatePreCacheImageTaskRequest) (response *CreatePreCacheImageTaskResponse, err error) {
+    if request == nil {
+        request = NewCreatePreCacheImageTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "CreatePreCacheImageTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePreCacheImageTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePreCacheImageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSandboxToolRequest() (request *CreateSandboxToolRequest) {
     request = &CreateSandboxToolRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -429,6 +483,60 @@ func (c *Client) DescribeAPIKeyListWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeAPIKeyListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePreCacheImageTaskRequest() (request *DescribePreCacheImageTaskRequest) {
+    request = &DescribePreCacheImageTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "DescribePreCacheImageTask")
+    
+    
+    return
+}
+
+func NewDescribePreCacheImageTaskResponse() (response *DescribePreCacheImageTaskResponse) {
+    response = &DescribePreCacheImageTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePreCacheImageTask
+// 查询镜像预热任务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePreCacheImageTask(request *DescribePreCacheImageTaskRequest) (response *DescribePreCacheImageTaskResponse, err error) {
+    return c.DescribePreCacheImageTaskWithContext(context.Background(), request)
+}
+
+// DescribePreCacheImageTask
+// 查询镜像预热任务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePreCacheImageTaskWithContext(ctx context.Context, request *DescribePreCacheImageTaskRequest) (response *DescribePreCacheImageTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribePreCacheImageTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "DescribePreCacheImageTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePreCacheImageTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePreCacheImageTaskResponse()
     err = c.Send(request, response)
     return
 }

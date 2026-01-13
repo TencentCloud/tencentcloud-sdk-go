@@ -2231,6 +2231,7 @@ type Invocation struct {
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 执行活动结束时间。格式为：YYYY-MM-DDThh:mm:ssZ
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 执行活动创建时间。格式为：YYYY-MM-DDThh:mm:ssZ

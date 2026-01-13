@@ -341,6 +341,70 @@ type CosSnapShotInfo struct {
 }
 
 // Predefined struct for user
+type CreateAutoBackUpStrategyRequestParams struct {
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 策略信息
+	CosBackup *CosBackup `json:"CosBackup,omitnil,omitempty" name:"CosBackup"`
+}
+
+type CreateAutoBackUpStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 策略信息
+	CosBackup *CosBackup `json:"CosBackup,omitnil,omitempty" name:"CosBackup"`
+}
+
+func (r *CreateAutoBackUpStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoBackUpStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "CosBackup")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoBackUpStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAutoBackUpStrategyResponseParams struct {
+	// true 成功; false 失败
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAutoBackUpStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAutoBackUpStrategyResponseParams `json:"Response"`
+}
+
+func (r *CreateAutoBackUpStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoBackUpStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateClusterSnapshotRequestParams struct {
 	// 实例名称
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -762,7 +826,7 @@ type CreateInstanceRequestParams struct {
 	// 是否开启存算分离
 	EnableHybridStorage *bool `json:"EnableHybridStorage,omitnil,omitempty" name:"EnableHybridStorage"`
 
-	// 是否开启essd 增强型云盘
+	// 硬盘额外性能
 	DiskEnhance *uint64 `json:"DiskEnhance,omitnil,omitempty" name:"DiskEnhance"`
 
 	// 是否开启智能巡检
@@ -900,7 +964,7 @@ type CreateInstanceRequest struct {
 	// 是否开启存算分离
 	EnableHybridStorage *bool `json:"EnableHybridStorage,omitnil,omitempty" name:"EnableHybridStorage"`
 
-	// 是否开启essd 增强型云盘
+	// 硬盘额外性能
 	DiskEnhance *uint64 `json:"DiskEnhance,omitnil,omitempty" name:"DiskEnhance"`
 
 	// 是否开启智能巡检
@@ -1451,6 +1515,70 @@ type DataStreamInfo struct {
 }
 
 // Predefined struct for user
+type DeleteAutoBackUpStrategyRequestParams struct {
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 策略名称
+	StrategyName []*string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
+}
+
+type DeleteAutoBackUpStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 策略名称
+	StrategyName []*string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
+}
+
+func (r *DeleteAutoBackUpStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAutoBackUpStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StrategyName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAutoBackUpStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAutoBackUpStrategyResponseParams struct {
+	// true 成功; false 失败
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAutoBackUpStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAutoBackUpStrategyResponseParams `json:"Response"`
+}
+
+func (r *DeleteAutoBackUpStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAutoBackUpStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteClusterSnapshotRequestParams struct {
 	// 集群实例Id，格式：es-xxxx
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1891,6 +2019,63 @@ func (r *DeleteServerlessSpaceUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteServerlessSpaceUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoBackUpStrategyRequestParams struct {
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeAutoBackUpStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeAutoBackUpStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoBackUpStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoBackUpStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoBackUpStrategyResponseParams struct {
+	// 策略信息
+	CosBackupList []*CosBackup `json:"CosBackupList,omitnil,omitempty" name:"CosBackupList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAutoBackUpStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAutoBackUpStrategyResponseParams `json:"Response"`
+}
+
+func (r *DescribeAutoBackUpStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoBackUpStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5691,6 +5876,128 @@ type MetricMapByIndexId struct {
 }
 
 // Predefined struct for user
+type ModifyAutoBackUpCommonInfoRequestParams struct {
+
+}
+
+type ModifyAutoBackUpCommonInfoRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ModifyAutoBackUpCommonInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAutoBackUpCommonInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoBackUpCommonInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAutoBackUpCommonInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAutoBackUpCommonInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAutoBackUpCommonInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyAutoBackUpCommonInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAutoBackUpCommonInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAutoBackUpStrategyRequestParams struct {
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 当前策略名称
+	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
+
+	// 策略信息
+	CosBackup *CosBackup `json:"CosBackup,omitnil,omitempty" name:"CosBackup"`
+}
+
+type ModifyAutoBackUpStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 当前策略名称
+	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
+
+	// 策略信息
+	CosBackup *CosBackup `json:"CosBackup,omitnil,omitempty" name:"CosBackup"`
+}
+
+func (r *ModifyAutoBackUpStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAutoBackUpStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StrategyName")
+	delete(f, "CosBackup")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoBackUpStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAutoBackUpStrategyResponseParams struct {
+	// true 成功; false 失败
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAutoBackUpStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAutoBackUpStrategyResponseParams `json:"Response"`
+}
+
+func (r *ModifyAutoBackUpStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAutoBackUpStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyEsVipSecurityGroupRequestParams struct {
 	// es集群的实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5788,7 +6095,7 @@ type NodeInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
-	// /
+	// 硬盘额外性能
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskEnhance *int64 `json:"DiskEnhance,omitnil,omitempty" name:"DiskEnhance"`
 

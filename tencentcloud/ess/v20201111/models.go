@@ -1440,6 +1440,11 @@ type ComponentLimit struct {
 	ComponentValue []*string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
 }
 
+type ContractReviewChecklistWebUrlOption struct {
+	// 禁用新建清单功能。默认 false，设置为 true 会隐藏界面的新建按钮。
+	DisableCreateChecklist *bool `json:"DisableCreateChecklist,omitnil,omitempty" name:"DisableCreateChecklist"`
+}
+
 type ContractReviewWebUrlOption struct {
 	// 禁用暂存。 默认 false，设置为 true 会隐藏界面上的临时保存按钮
 	DisableTemporaryStore *bool `json:"DisableTemporaryStore,omitnil,omitempty" name:"DisableTemporaryStore"`
@@ -2069,6 +2074,7 @@ type CreateBatchInitOrganizationUrlRequestParams struct {
 	// <li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li>
 	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li>
 	// <li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权自动签</li>
+	// <li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(**授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用**)</li>
 	// </ul>
 	OperateTypes []*string `json:"OperateTypes,omitnil,omitempty" name:"OperateTypes"`
 
@@ -2084,6 +2090,9 @@ type CreateBatchInitOrganizationUrlRequestParams struct {
 	// 
 	// ![企业电子签账号](https://qcloudimg.tencent-cloud.cn/raw/4e6b30ee92f00671f7f1c5bd127c27db.png)
 	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
+
+	// 初始化操作类型里含有CHANGE_SUB_ORGANIZATION_ADMIN_AUTH（变更子企业超管授权）操作类型时，授权协议中主企业的签署方是否使用自动签（需操作人有自动签授权）
+	ChangeAdminAuthAutoSign *bool `json:"ChangeAdminAuthAutoSign,omitnil,omitempty" name:"ChangeAdminAuthAutoSign"`
 }
 
 type CreateBatchInitOrganizationUrlRequest struct {
@@ -2099,6 +2108,7 @@ type CreateBatchInitOrganizationUrlRequest struct {
 	// <li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li>
 	// <li>OPEN_AUTO_SIGN :开通企业自动签署</li>
 	// <li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权自动签</li>
+	// <li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(**授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用**)</li>
 	// </ul>
 	OperateTypes []*string `json:"OperateTypes,omitnil,omitempty" name:"OperateTypes"`
 
@@ -2114,6 +2124,9 @@ type CreateBatchInitOrganizationUrlRequest struct {
 	// 
 	// ![企业电子签账号](https://qcloudimg.tencent-cloud.cn/raw/4e6b30ee92f00671f7f1c5bd127c27db.png)
 	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
+
+	// 初始化操作类型里含有CHANGE_SUB_ORGANIZATION_ADMIN_AUTH（变更子企业超管授权）操作类型时，授权协议中主企业的签署方是否使用自动签（需操作人有自动签授权）
+	ChangeAdminAuthAutoSign *bool `json:"ChangeAdminAuthAutoSign,omitnil,omitempty" name:"ChangeAdminAuthAutoSign"`
 }
 
 func (r *CreateBatchInitOrganizationUrlRequest) ToJsonString() string {
@@ -2133,6 +2146,7 @@ func (r *CreateBatchInitOrganizationUrlRequest) FromJsonString(s string) error {
 	delete(f, "OrganizationIds")
 	delete(f, "Agent")
 	delete(f, "AuthorizedOrganizationId")
+	delete(f, "ChangeAdminAuthAutoSign")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchInitOrganizationUrlRequest has unknown keys!", "")
 	}
@@ -3168,6 +3182,67 @@ func (r *CreateContractDiffTaskWebUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateContractDiffTaskWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateContractReviewChecklistWebUrlRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type CreateContractReviewChecklistWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *CreateContractReviewChecklistWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateContractReviewChecklistWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateContractReviewChecklistWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateContractReviewChecklistWebUrlResponseParams struct {
+	// 嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateContractReviewChecklistWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateContractReviewChecklistWebUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateContractReviewChecklistWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateContractReviewChecklistWebUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11899,6 +11974,206 @@ func (r *DescribeContractDiffTaskWebUrlResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeContractReviewChecklistWebUrlRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 清单 id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DescribeContractReviewChecklistWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 清单 id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DescribeContractReviewChecklistWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewChecklistWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContractReviewChecklistWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractReviewChecklistWebUrlResponseParams struct {
+	// 嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
+
+	// 清单 id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeContractReviewChecklistWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeContractReviewChecklistWebUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeContractReviewChecklistWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewChecklistWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractReviewChecklistsWebUrlRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查清单个性化参数
+	Option *ContractReviewChecklistWebUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
+}
+
+type DescribeContractReviewChecklistsWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查清单个性化参数
+	Option *ContractReviewChecklistWebUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
+}
+
+func (r *DescribeContractReviewChecklistsWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewChecklistsWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Option")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContractReviewChecklistsWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractReviewChecklistsWebUrlResponseParams struct {
+	// 嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeContractReviewChecklistsWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeContractReviewChecklistsWebUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeContractReviewChecklistsWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewChecklistsWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractReviewTaskListWebUrlRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type DescribeContractReviewTaskListWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *DescribeContractReviewTaskListWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewTaskListWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContractReviewTaskListWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractReviewTaskListWebUrlResponseParams struct {
+	// 嵌入式web页面链接。注意：`链接有效期为5分钟，且链接仅能使用一次。`
+	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeContractReviewTaskListWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeContractReviewTaskListWebUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeContractReviewTaskListWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewTaskListWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeContractReviewTaskRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -14921,6 +15196,88 @@ func (r *ExportContractComparisonTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ExportContractComparisonTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportContractReviewResultRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type ExportContractReviewResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *ExportContractReviewResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportContractReviewResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	delete(f, "FileType")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportContractReviewResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportContractReviewResultResponseParams struct {
+	// 文件下载链接
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExportContractReviewResultResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportContractReviewResultResponseParams `json:"Response"`
+}
+
+func (r *ExportContractReviewResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportContractReviewResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

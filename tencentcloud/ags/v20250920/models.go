@@ -172,6 +172,76 @@ func (r *CreateAPIKeyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePreCacheImageTaskRequestParams struct {
+	// 镜像地址
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 镜像仓库类型：`enterprise`、`personal`。
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+}
+
+type CreatePreCacheImageTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像地址
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 镜像仓库类型：`enterprise`、`personal`。
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+}
+
+func (r *CreatePreCacheImageTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePreCacheImageTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "ImageRegistryType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePreCacheImageTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePreCacheImageTaskResponseParams struct {
+	// 镜像地址
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 镜像 Digest
+	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
+
+	// 镜像仓库类型：`enterprise`、`personal`。
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePreCacheImageTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePreCacheImageTaskResponseParams `json:"Response"`
+}
+
+func (r *CreatePreCacheImageTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePreCacheImageTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSandboxToolRequestParams struct {
 	// 沙箱工具名称，长度 1-50 字符，支持英文、数字、下划线和连接线。同一 AppId 下沙箱工具名称必须唯一
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
@@ -508,6 +578,89 @@ func (r *DescribeAPIKeyListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAPIKeyListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePreCacheImageTaskRequestParams struct {
+	// 镜像地址
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 镜像 Digest
+	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
+
+	// 镜像仓库类型：`enterprise`、`personal`。
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+}
+
+type DescribePreCacheImageTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像地址
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 镜像 Digest
+	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
+
+	// 镜像仓库类型：`enterprise`、`personal`。
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+}
+
+func (r *DescribePreCacheImageTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreCacheImageTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "ImageDigest")
+	delete(f, "ImageRegistryType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePreCacheImageTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePreCacheImageTaskResponseParams struct {
+	// 镜像地址
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 镜像 Digest
+	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
+
+	// 镜像仓库类型：`enterprise`、`personal`。
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// 镜像预热状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 镜像预热状态描述
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePreCacheImageTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePreCacheImageTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribePreCacheImageTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreCacheImageTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

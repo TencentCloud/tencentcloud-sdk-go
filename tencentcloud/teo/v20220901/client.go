@@ -9177,20 +9177,262 @@ func NewDescribeTimingL7OriginPullDataResponse() (response *DescribeTimingL7Orig
 }
 
 // DescribeTimingL7OriginPullData
-// 本接口用以查询七层域名业务的回源时序数据。
+// 本接口用以查询七层域名业务的回源时序数据，可以通过指定查询维度 <code>DimensionName</code> 进行分组查询，返回多组时序数据。
+//
+// 
+//
+// <p>单次请求最多返回 <strong>50,000</strong> 个数据项<code> TimingDataItem </code>。数据项总数的计算规则如下：</p>
+//
+// <pre>
+//
+//    指标个数 * 时间点个数 * 维度值个数 = 数据项总数
+//
+// </pre>
+//
+// <ul>
+//
+//   <li>
+//
+//     <strong>指标个数</strong>：<code>MetricNames</code> 的列表长度。
+//
+//   </li>
+//
+//   <li>
+//
+//     <strong>时间点个数</strong>：<code>(EndTime - StartTime) / Interval</code>。
+//
+//   </li>
+//
+//   <li>
+//
+//     <strong>维度值个数</strong>：
+//
+//     <ul>
+//
+//       <li>当未指定 <code>DimensionName</code> 时，默认按账号维度汇总数据，维度值个数为 1。</li>
+//
+//       <li>当 <code>DimensionName = domain</code> 时，维度值个数为 <code>Filters</code> 中 <code>domain</code> 过滤条件指定的域名列表长度。</li>
+//
+//       <li>当 <code>DimensionName = origin-status-code-category</code> 时，维度值个数默认为 <code>6</code>。</li>
+//
+//       <li>当 <code>DimensionName = origin-status-code</code> 时，维度值个数默认为 <code>600</code>。</li>
+//
+//     </ul>
+//
+//   </li>
+//
+// </ul>
+//
+// 
+//
+// <p><code>DimensionName</code> 可以与 <code>Filters</code> 组合使用，通过在 <code>Filters</code> 中指定 <code>DimensionName</code> 对应的过滤条件以限制维度值个数。</p>
+//
+// 
+//
+// <h3>示例</h3>
+//
+// <p>以查询某一小时的具体状态码维度的时序数据为例，假设查询条件如下：</p>
+//
+// <ul>
+//
+//   <li><code>MetricNames = ["l7Flow_request_hy"]</code>（指标个数 = 1）</li>
+//
+//   <li><code>StartTime = 2025-10-01T06:00:00+08:00</code>，<code>EndTime = 2025-10-01T06:59:59+08:00</code>，<code>Interval = "min"</code>（时间点个数 = 60）</li>
+//
+//   <li><code>DimensionName = origin-status-code</code>，<code>Filters = [{"originStatusCode": ["0", "4xx", "5xx"]}]</code>（维度值个数 = 201）</li>
+//
+// </ul>
+//
+// <p>则数据项总数为：</p>
+//
+// <pre>1 × 60 × 201 = 12060 </pre>
+//
+// <p>未超过限制。</p>
+//
+// 
+//
+// <p><strong>注意</strong>：若查询的数据项总数超过 <strong>50,000</strong>，系统会返回错误 <strong>LimitExceeded.TimingDataItemLimitExceeded</strong>。</p>
+//
+// <p>此时，请通过调整入参减少单次查询的数据项至 50,000 以内，可采取的做法有：</p>
+//
+// <ol>
+//
+//   <li>
+//
+//     <strong>减少时间点个数</strong>：
+//
+//     <ul>
+//
+//       <li>缩短查询时间范围（<code>StartTime</code> 到 <code>EndTime</code> 之间的时间跨度）。</li>
+//
+//       <li>选择更大的时间间隔（<code>Interval</code>）。</li>
+//
+//     </ul>
+//
+//   </li>
+//
+//   <li>
+//
+//     <strong>减少维度值个数</strong>：
+//
+//     <ul>
+//
+//       <li>调整 <code>Filters</code>，指定更少的 <code>domain</code> 或 <code>originStatusCode</code> 列表。</li>
+//
+//     </ul>
+//
+//   </li>
+//
+//   <li>
+//
+//     <strong>减少指标值个数</strong>：
+//
+//     <ul>
+//
+//       <li>调整 <code>MetricNames</code>，指定更少的查询指标。</li>
+//
+//     </ul>
+//
+//   </li>
+//
+// </ol>
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
+//  INVALIDPARAMETERVALUE_FILTERSMUSTINCLUDEDIMENSIONNAME = "InvalidParameterValue.FiltersMustIncludeDimensionName"
 //  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
+//  LIMITEXCEEDED_TIMINGDATAITEMLIMITEXCEEDED = "LimitExceeded.TimingDataItemLimitExceeded"
 //  OPERATIONDENIED_ORIGINPULLDATANOTSUPPORTED = "OperationDenied.OriginPullDataNotSupported"
 func (c *Client) DescribeTimingL7OriginPullData(request *DescribeTimingL7OriginPullDataRequest) (response *DescribeTimingL7OriginPullDataResponse, err error) {
     return c.DescribeTimingL7OriginPullDataWithContext(context.Background(), request)
 }
 
 // DescribeTimingL7OriginPullData
-// 本接口用以查询七层域名业务的回源时序数据。
+// 本接口用以查询七层域名业务的回源时序数据，可以通过指定查询维度 <code>DimensionName</code> 进行分组查询，返回多组时序数据。
+//
+// 
+//
+// <p>单次请求最多返回 <strong>50,000</strong> 个数据项<code> TimingDataItem </code>。数据项总数的计算规则如下：</p>
+//
+// <pre>
+//
+//    指标个数 * 时间点个数 * 维度值个数 = 数据项总数
+//
+// </pre>
+//
+// <ul>
+//
+//   <li>
+//
+//     <strong>指标个数</strong>：<code>MetricNames</code> 的列表长度。
+//
+//   </li>
+//
+//   <li>
+//
+//     <strong>时间点个数</strong>：<code>(EndTime - StartTime) / Interval</code>。
+//
+//   </li>
+//
+//   <li>
+//
+//     <strong>维度值个数</strong>：
+//
+//     <ul>
+//
+//       <li>当未指定 <code>DimensionName</code> 时，默认按账号维度汇总数据，维度值个数为 1。</li>
+//
+//       <li>当 <code>DimensionName = domain</code> 时，维度值个数为 <code>Filters</code> 中 <code>domain</code> 过滤条件指定的域名列表长度。</li>
+//
+//       <li>当 <code>DimensionName = origin-status-code-category</code> 时，维度值个数默认为 <code>6</code>。</li>
+//
+//       <li>当 <code>DimensionName = origin-status-code</code> 时，维度值个数默认为 <code>600</code>。</li>
+//
+//     </ul>
+//
+//   </li>
+//
+// </ul>
+//
+// 
+//
+// <p><code>DimensionName</code> 可以与 <code>Filters</code> 组合使用，通过在 <code>Filters</code> 中指定 <code>DimensionName</code> 对应的过滤条件以限制维度值个数。</p>
+//
+// 
+//
+// <h3>示例</h3>
+//
+// <p>以查询某一小时的具体状态码维度的时序数据为例，假设查询条件如下：</p>
+//
+// <ul>
+//
+//   <li><code>MetricNames = ["l7Flow_request_hy"]</code>（指标个数 = 1）</li>
+//
+//   <li><code>StartTime = 2025-10-01T06:00:00+08:00</code>，<code>EndTime = 2025-10-01T06:59:59+08:00</code>，<code>Interval = "min"</code>（时间点个数 = 60）</li>
+//
+//   <li><code>DimensionName = origin-status-code</code>，<code>Filters = [{"originStatusCode": ["0", "4xx", "5xx"]}]</code>（维度值个数 = 201）</li>
+//
+// </ul>
+//
+// <p>则数据项总数为：</p>
+//
+// <pre>1 × 60 × 201 = 12060 </pre>
+//
+// <p>未超过限制。</p>
+//
+// 
+//
+// <p><strong>注意</strong>：若查询的数据项总数超过 <strong>50,000</strong>，系统会返回错误 <strong>LimitExceeded.TimingDataItemLimitExceeded</strong>。</p>
+//
+// <p>此时，请通过调整入参减少单次查询的数据项至 50,000 以内，可采取的做法有：</p>
+//
+// <ol>
+//
+//   <li>
+//
+//     <strong>减少时间点个数</strong>：
+//
+//     <ul>
+//
+//       <li>缩短查询时间范围（<code>StartTime</code> 到 <code>EndTime</code> 之间的时间跨度）。</li>
+//
+//       <li>选择更大的时间间隔（<code>Interval</code>）。</li>
+//
+//     </ul>
+//
+//   </li>
+//
+//   <li>
+//
+//     <strong>减少维度值个数</strong>：
+//
+//     <ul>
+//
+//       <li>调整 <code>Filters</code>，指定更少的 <code>domain</code> 或 <code>originStatusCode</code> 列表。</li>
+//
+//     </ul>
+//
+//   </li>
+//
+//   <li>
+//
+//     <strong>减少指标值个数</strong>：
+//
+//     <ul>
+//
+//       <li>调整 <code>MetricNames</code>，指定更少的查询指标。</li>
+//
+//     </ul>
+//
+//   </li>
+//
+// </ol>
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
+//  INVALIDPARAMETERVALUE_FILTERSMUSTINCLUDEDIMENSIONNAME = "InvalidParameterValue.FiltersMustIncludeDimensionName"
 //  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
+//  LIMITEXCEEDED_TIMINGDATAITEMLIMITEXCEEDED = "LimitExceeded.TimingDataItemLimitExceeded"
 //  OPERATIONDENIED_ORIGINPULLDATANOTSUPPORTED = "OperationDenied.OriginPullDataNotSupported"
 func (c *Client) DescribeTimingL7OriginPullDataWithContext(ctx context.Context, request *DescribeTimingL7OriginPullDataRequest) (response *DescribeTimingL7OriginPullDataResponse, err error) {
     if request == nil {

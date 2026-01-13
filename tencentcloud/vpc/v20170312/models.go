@@ -187,6 +187,9 @@ type AddBandwidthPackageResourcesRequestParams struct {
 
 	// 带宽包协议类型。当前支持'ipv4'和'ipv6'协议类型。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 用于带宽包内添加IP资源时指定IP带宽值。<p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
 type AddBandwidthPackageResourcesRequest struct {
@@ -214,6 +217,9 @@ type AddBandwidthPackageResourcesRequest struct {
 
 	// 带宽包协议类型。当前支持'ipv4'和'ipv6'协议类型。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 用于带宽包内添加IP资源时指定IP带宽值。<p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
 func (r *AddBandwidthPackageResourcesRequest) ToJsonString() string {
@@ -233,6 +239,7 @@ func (r *AddBandwidthPackageResourcesRequest) FromJsonString(s string) error {
 	delete(f, "NetworkType")
 	delete(f, "ResourceType")
 	delete(f, "Protocol")
+	delete(f, "InternetMaxBandwidthOut")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddBandwidthPackageResourcesRequest has unknown keys!", "")
 	}
@@ -2634,6 +2641,9 @@ type CCN struct {
 
 	// 付费类型，PREPAID为预付费，POSTPAID为后付费。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// 计量类型
+	InstanceMeteringType *string `json:"InstanceMeteringType,omitnil,omitempty" name:"InstanceMeteringType"`
 
 	// 限速类型，`INTER_REGION_LIMIT` 为地域间限速；`OUTER_REGION_LIMIT` 为地域出口限速。
 	BandwidthLimitType *string `json:"BandwidthLimitType,omitnil,omitempty" name:"BandwidthLimitType"`
@@ -32634,6 +32644,12 @@ type RemoveBandwidthPackageResourcesRequestParams struct {
 	// <li>Address：弹性公网IP</li>
 	// <li>LoadBalance：负载均衡</li>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 用于移除带宽包内IP资源时指定IP的带宽值。<p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 用于移除带宽包内IP资源时指定资源移除后的计费模式。<li>小时流量：TRAFFIC_POSTPAID_BY_HOUR；</li><li>小时带宽：BANDWIDTH_POSTPAID_BY_HOUR</li><p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 }
 
 type RemoveBandwidthPackageResourcesRequest struct {
@@ -32649,6 +32665,12 @@ type RemoveBandwidthPackageResourcesRequest struct {
 	// <li>Address：弹性公网IP</li>
 	// <li>LoadBalance：负载均衡</li>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 用于移除带宽包内IP资源时指定IP的带宽值。<p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 用于移除带宽包内IP资源时指定资源移除后的计费模式。<li>小时流量：TRAFFIC_POSTPAID_BY_HOUR；</li><li>小时带宽：BANDWIDTH_POSTPAID_BY_HOUR</li><p>说明：当前功能处于内测中，如需使用，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</p>
+	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 }
 
 func (r *RemoveBandwidthPackageResourcesRequest) ToJsonString() string {
@@ -32666,6 +32688,8 @@ func (r *RemoveBandwidthPackageResourcesRequest) FromJsonString(s string) error 
 	delete(f, "ResourceIds")
 	delete(f, "BandwidthPackageId")
 	delete(f, "ResourceType")
+	delete(f, "InternetMaxBandwidthOut")
+	delete(f, "InternetChargeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveBandwidthPackageResourcesRequest has unknown keys!", "")
 	}

@@ -357,6 +357,9 @@ type AutoCalloutTaskInfo struct {
 
 	// 任务Id
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
 }
 
 // Predefined struct for user
@@ -894,6 +897,9 @@ type CreateAIAgentCallRequestParams struct {
 	// 2.  dify-inputs-user 为dify的user值
 	// 3.  dify-inputs-conversation_id 为dify的conversation_id值
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
 }
 
 type CreateAIAgentCallRequest struct {
@@ -920,6 +926,9 @@ type CreateAIAgentCallRequest struct {
 	// 2.  dify-inputs-user 为dify的user值
 	// 3.  dify-inputs-conversation_id 为dify的conversation_id值
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
 }
 
 func (r *CreateAIAgentCallRequest) ToJsonString() string {
@@ -940,6 +949,7 @@ func (r *CreateAIAgentCallRequest) FromJsonString(s string) error {
 	delete(f, "Callers")
 	delete(f, "PromptVariables")
 	delete(f, "Variables")
+	delete(f, "MaxRingTimeoutSecond")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIAgentCallRequest has unknown keys!", "")
 	}
@@ -1251,6 +1261,9 @@ type CreateAICallRequestParams struct {
 
 	// 大模型拓展参数， 格式为json字符串
 	LLMExtraBody *string `json:"LLMExtraBody,omitnil,omitempty" name:"LLMExtraBody"`
+
+	// 最大通话时长， 默认不限制。单位毫秒(ms)
+	MaxCallDurationMs *uint64 `json:"MaxCallDurationMs,omitnil,omitempty" name:"MaxCallDurationMs"`
 }
 
 type CreateAICallRequest struct {
@@ -1532,6 +1545,9 @@ type CreateAICallRequest struct {
 
 	// 大模型拓展参数， 格式为json字符串
 	LLMExtraBody *string `json:"LLMExtraBody,omitnil,omitempty" name:"LLMExtraBody"`
+
+	// 最大通话时长， 默认不限制。单位毫秒(ms)
+	MaxCallDurationMs *uint64 `json:"MaxCallDurationMs,omitnil,omitempty" name:"MaxCallDurationMs"`
 }
 
 func (r *CreateAICallRequest) ToJsonString() string {
@@ -1582,6 +1598,7 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "EnableVoicemailDetection")
 	delete(f, "VoicemailAction")
 	delete(f, "LLMExtraBody")
+	delete(f, "MaxCallDurationMs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAICallRequest has unknown keys!", "")
 	}
@@ -1846,6 +1863,9 @@ type CreateAutoCalloutTaskRequestParams struct {
 
 	// 任务失败重试时间间隔，重试间隔 600秒～86400 秒
 	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
+
+	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
 }
 
 type CreateAutoCalloutTaskRequest struct {
@@ -1898,6 +1918,9 @@ type CreateAutoCalloutTaskRequest struct {
 
 	// 任务失败重试时间间隔，重试间隔 600秒～86400 秒
 	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
+
+	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
 }
 
 func (r *CreateAutoCalloutTaskRequest) ToJsonString() string {
@@ -1928,6 +1951,7 @@ func (r *CreateAutoCalloutTaskRequest) FromJsonString(s string) error {
 	delete(f, "AvailableTime")
 	delete(f, "AIAgentId")
 	delete(f, "RetryInterval")
+	delete(f, "MaxRingTimeoutSecond")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoCalloutTaskRequest has unknown keys!", "")
 	}
@@ -2044,7 +2068,7 @@ type CreateCallOutSessionRequestParams struct {
 	// 应用 ID
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 客服用户 ID，一般为客服邮箱，确保已经绑定了手机号 https://cloud.tencent.com/document/product/679/76067#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF
+	// 座席邮箱，确保已经绑定了手机号 https://cloud.tencent.com/document/product/679/76067#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 被叫号码，须带 0086 前缀
@@ -2074,7 +2098,7 @@ type CreateCallOutSessionRequest struct {
 	// 应用 ID
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 客服用户 ID，一般为客服邮箱，确保已经绑定了手机号 https://cloud.tencent.com/document/product/679/76067#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF
+	// 座席邮箱，确保已经绑定了手机号 https://cloud.tencent.com/document/product/679/76067#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 被叫号码，须带 0086 前缀
@@ -2383,6 +2407,9 @@ type CreateIVRSessionRequestParams struct {
 
 	// 用户数据
 	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+
+	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
 }
 
 type CreateIVRSessionRequest struct {
@@ -2405,6 +2432,9 @@ type CreateIVRSessionRequest struct {
 
 	// 用户数据
 	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+
+	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
 }
 
 func (r *CreateIVRSessionRequest) ToJsonString() string {
@@ -2425,6 +2455,7 @@ func (r *CreateIVRSessionRequest) FromJsonString(s string) error {
 	delete(f, "Callers")
 	delete(f, "Variables")
 	delete(f, "UUI")
+	delete(f, "MaxRingTimeoutSecond")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIVRSessionRequest has unknown keys!", "")
 	}
@@ -3750,6 +3781,9 @@ type DescribeAutoCalloutTaskResponseParams struct {
 
 	// 任务状态 0初始 1运行中 2已完成 3结束中 4已终止
 	State *uint64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7635,6 +7669,10 @@ type ServeParticipant struct {
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
 
 	// 结束状态
+	// 
+	// 中文详情[参考](https://www.tencentcloud.com/zh/document/product/1229/71847)
+	// 
+	// 英文详情[参考](https://www.tencentcloud.com/document/product/1229/71847?lang=en)
 	EndStatusString *string `json:"EndStatusString,omitnil,omitempty" name:"EndStatusString"`
 
 	// 录音 URL

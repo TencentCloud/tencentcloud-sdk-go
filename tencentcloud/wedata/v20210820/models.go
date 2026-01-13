@@ -20936,10 +20936,10 @@ func (r *DescribeTaskByStatusReportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskDetailDsRequestParams struct {
-	// 任务Id
+	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 项目Id
+	// 项目ID （必填属性）
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 已废弃，无需填写
@@ -20949,10 +20949,10 @@ type DescribeTaskDetailDsRequestParams struct {
 type DescribeTaskDetailDsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务Id
+	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 项目Id
+	// 项目ID （必填属性）
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 已废弃，无需填写
@@ -28257,7 +28257,7 @@ type LabelValueSelection struct {
 }
 
 type LifecycleInfo struct {
-	// 生命周期值
+	// 生命周期值，如果PartitionLifeCycle=custom时，表示自定义生命周期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Lifecycle *int64 `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 
@@ -39228,10 +39228,6 @@ type TableMeta struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasFavorite *bool `json:"HasFavorite,omitnil,omitempty" name:"HasFavorite"`
 
-	// 生命周期
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LifeCycleTime *int64 `json:"LifeCycleTime,omitnil,omitempty" name:"LifeCycleTime"`
-
 	// 存储量，已转为适合的单位展示
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageSizeWithUnit *string `json:"StorageSizeWithUnit,omitnil,omitempty" name:"StorageSizeWithUnit"`
@@ -39333,6 +39329,10 @@ type TableMeta struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 
+	// 生命周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeCycleTime *int64 `json:"LifeCycleTime,omitnil,omitempty" name:"LifeCycleTime"`
+
 	// 判断是否是分区表1 是 0否
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPartitionTable *int64 `json:"IsPartitionTable,omitnil,omitempty" name:"IsPartitionTable"`
@@ -39340,6 +39340,10 @@ type TableMeta struct {
 	// 分区字段 key
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PartitionColumns []*string `json:"PartitionColumns,omitnil,omitempty" name:"PartitionColumns"`
+
+	// 分区时间格式：yyyy-MM-dd
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DateFormat *string `json:"DateFormat,omitnil,omitempty" name:"DateFormat"`
 
 	// 生命周期-分区保留天数【分区保留策略时有效】
 	// 注意：此字段可能返回 null，表示取不到有效值。

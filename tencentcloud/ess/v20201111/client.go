@@ -1715,6 +1715,84 @@ func (c *Client) CreateContractDiffTaskWebUrlWithContext(ctx context.Context, re
     return
 }
 
+func NewCreateContractReviewChecklistWebUrlRequest() (request *CreateContractReviewChecklistWebUrlRequest) {
+    request = &CreateContractReviewChecklistWebUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateContractReviewChecklistWebUrl")
+    
+    
+    return
+}
+
+func NewCreateContractReviewChecklistWebUrlResponse() (response *CreateContractReviewChecklistWebUrlResponse) {
+    response = &CreateContractReviewChecklistWebUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateContractReviewChecklistWebUrl
+// 此接口（CreateContractReviewChecklistWebUrl）用来创建新建审查要点清单web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 
+//
+// 适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+//
+// 
+//
+// 注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateContractReviewChecklistWebUrl(request *CreateContractReviewChecklistWebUrlRequest) (response *CreateContractReviewChecklistWebUrlResponse, err error) {
+    return c.CreateContractReviewChecklistWebUrlWithContext(context.Background(), request)
+}
+
+// CreateContractReviewChecklistWebUrl
+// 此接口（CreateContractReviewChecklistWebUrl）用来创建新建审查要点清单web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 
+//
+// 适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+//
+// 
+//
+// 注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateContractReviewChecklistWebUrlWithContext(ctx context.Context, request *CreateContractReviewChecklistWebUrlRequest) (response *CreateContractReviewChecklistWebUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateContractReviewChecklistWebUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateContractReviewChecklistWebUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateContractReviewChecklistWebUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateContractReviewChecklistWebUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateContractReviewWebUrlRequest() (request *CreateContractReviewWebUrlRequest) {
     request = &CreateContractReviewWebUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10333,6 +10411,162 @@ func (c *Client) DescribeContractDiffTaskWebUrlWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeContractReviewChecklistWebUrlRequest() (request *DescribeContractReviewChecklistWebUrlRequest) {
+    request = &DescribeContractReviewChecklistWebUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeContractReviewChecklistWebUrl")
+    
+    
+    return
+}
+
+func NewDescribeContractReviewChecklistWebUrlResponse() (response *DescribeContractReviewChecklistWebUrlResponse) {
+    response = &DescribeContractReviewChecklistWebUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeContractReviewChecklistWebUrl
+// 此接口（DescribeContractReviewChecklistWebUrl）用来创建查看审查要点清单web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 
+//
+// 适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+//
+// 
+//
+// 注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContractReviewChecklistWebUrl(request *DescribeContractReviewChecklistWebUrlRequest) (response *DescribeContractReviewChecklistWebUrlResponse, err error) {
+    return c.DescribeContractReviewChecklistWebUrlWithContext(context.Background(), request)
+}
+
+// DescribeContractReviewChecklistWebUrl
+// 此接口（DescribeContractReviewChecklistWebUrl）用来创建查看审查要点清单web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 
+//
+// 适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+//
+// 
+//
+// 注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContractReviewChecklistWebUrlWithContext(ctx context.Context, request *DescribeContractReviewChecklistWebUrlRequest) (response *DescribeContractReviewChecklistWebUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeContractReviewChecklistWebUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeContractReviewChecklistWebUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContractReviewChecklistWebUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeContractReviewChecklistWebUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeContractReviewChecklistsWebUrlRequest() (request *DescribeContractReviewChecklistsWebUrlRequest) {
+    request = &DescribeContractReviewChecklistsWebUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeContractReviewChecklistsWebUrl")
+    
+    
+    return
+}
+
+func NewDescribeContractReviewChecklistsWebUrlResponse() (response *DescribeContractReviewChecklistsWebUrlResponse) {
+    response = &DescribeContractReviewChecklistsWebUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeContractReviewChecklistsWebUrl
+// 此接口（DescribeContractReviewChecklistsWebUrl）用来创建审查要点清单列表web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 
+//
+// 适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+//
+// 
+//
+// 注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContractReviewChecklistsWebUrl(request *DescribeContractReviewChecklistsWebUrlRequest) (response *DescribeContractReviewChecklistsWebUrlResponse, err error) {
+    return c.DescribeContractReviewChecklistsWebUrlWithContext(context.Background(), request)
+}
+
+// DescribeContractReviewChecklistsWebUrl
+// 此接口（DescribeContractReviewChecklistsWebUrl）用来创建审查要点清单列表web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 
+//
+// 适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+//
+// 
+//
+// 注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContractReviewChecklistsWebUrlWithContext(ctx context.Context, request *DescribeContractReviewChecklistsWebUrlRequest) (response *DescribeContractReviewChecklistsWebUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeContractReviewChecklistsWebUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeContractReviewChecklistsWebUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContractReviewChecklistsWebUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeContractReviewChecklistsWebUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContractReviewTaskRequest() (request *DescribeContractReviewTaskRequest) {
     request = &DescribeContractReviewTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10393,6 +10627,84 @@ func (c *Client) DescribeContractReviewTaskWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeContractReviewTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeContractReviewTaskListWebUrlRequest() (request *DescribeContractReviewTaskListWebUrlRequest) {
+    request = &DescribeContractReviewTaskListWebUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeContractReviewTaskListWebUrl")
+    
+    
+    return
+}
+
+func NewDescribeContractReviewTaskListWebUrlResponse() (response *DescribeContractReviewTaskListWebUrlResponse) {
+    response = &DescribeContractReviewTaskListWebUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeContractReviewTaskListWebUrl
+// 此接口（DescribeContractReviewTaskListWebUrl）用来创建合同审查记录列表web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 
+//
+// 适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+//
+// 
+//
+// 注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContractReviewTaskListWebUrl(request *DescribeContractReviewTaskListWebUrlRequest) (response *DescribeContractReviewTaskListWebUrlResponse, err error) {
+    return c.DescribeContractReviewTaskListWebUrlWithContext(context.Background(), request)
+}
+
+// DescribeContractReviewTaskListWebUrl
+// 此接口（DescribeContractReviewTaskListWebUrl）用来创建合同审查记录列表web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 
+//
+// 适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+//
+// 
+//
+// 注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContractReviewTaskListWebUrlWithContext(ctx context.Context, request *DescribeContractReviewTaskListWebUrlRequest) (response *DescribeContractReviewTaskListWebUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeContractReviewTaskListWebUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeContractReviewTaskListWebUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContractReviewTaskListWebUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeContractReviewTaskListWebUrlResponse()
     err = c.Send(request, response)
     return
 }
@@ -12925,6 +13237,70 @@ func (c *Client) ExportContractComparisonTaskWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewExportContractComparisonTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportContractReviewResultRequest() (request *ExportContractReviewResultRequest) {
+    request = &ExportContractReviewResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "ExportContractReviewResult")
+    
+    
+    return
+}
+
+func NewExportContractReviewResultResponse() (response *ExportContractReviewResultResponse) {
+    response = &ExportContractReviewResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportContractReviewResult
+// 本接口（ExportContractReviewResult）用于导出和同审查结果。支持选择 1 “带风险批注文件”、 2 “审查结果＆摘要（.xIsx）”
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) ExportContractReviewResult(request *ExportContractReviewResultRequest) (response *ExportContractReviewResultResponse, err error) {
+    return c.ExportContractReviewResultWithContext(context.Background(), request)
+}
+
+// ExportContractReviewResult
+// 本接口（ExportContractReviewResult）用于导出和同审查结果。支持选择 1 “带风险批注文件”、 2 “审查结果＆摘要（.xIsx）”
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) ExportContractReviewResultWithContext(ctx context.Context, request *ExportContractReviewResultRequest) (response *ExportContractReviewResultResponse, err error) {
+    if request == nil {
+        request = NewExportContractReviewResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ExportContractReviewResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportContractReviewResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportContractReviewResultResponse()
     err = c.Send(request, response)
     return
 }
